@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -14,10 +11,18 @@ import (
 
 type AddExternalSAMLIdPCertificateRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The X.509 certificate in the PEM format.
 	//
 	// The certificate is provided by the SAML IdP.
+	//
+	// example:
+	//
+	// MIIC8DCCAdigAwIBAgIQP9eomUYGeoND****
 	X509Certificate *string `json:"X509Certificate,omitempty" xml:"X509Certificate,omitempty"`
 }
 
@@ -41,8 +46,16 @@ func (s *AddExternalSAMLIdPCertificateRequest) SetX509Certificate(v string) *Add
 
 type AddExternalSAMLIdPCertificateResponseBody struct {
 	// The ID of the SAML signing certificate.
+	//
+	// example:
+	//
+	// idp-c-00wk2fb4foracls0****
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 12B3E332-DD16-515B-B695-39BA233AA172
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -95,24 +108,46 @@ func (s *AddExternalSAMLIdPCertificateResponse) SetBody(v *AddExternalSAMLIdPCer
 
 type AddPermissionPolicyToAccessConfigurationRequest struct {
 	// The ID of the access configuration.
+	//
+	// example:
+	//
+	// ac-00jhtfl8thteu6uj****
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The configurations of the inline policy.
 	//
 	// The value can be up to 4,096 characters in length.
 	//
-	// If you set `PermissionPolicyType` to `Inline`, you must specify this parameter. For more information about the syntax and structure of RAM policies, see [Policy syntax and structure](~~93739~~).
+	// If you set `PermissionPolicyType` to `Inline`, you must specify this parameter. For more information about the syntax and structure of RAM policies, see [Policy syntax and structure](https://help.aliyun.com/document_detail/93739.html).
+	//
+	// example:
+	//
+	// {"Statement": [{"Action": "*","Effect": "Allow","Resource": "*"}],"Version": "1"}
 	InlinePolicyDocument *string `json:"InlinePolicyDocument,omitempty" xml:"InlinePolicyDocument,omitempty"`
 	// The name of the policy.
 	//
-	// *   If you set `PermissionPolicyType` to `System`, you must set this parameter to the name of the system policy. You can obtain the name of the system policy from RAM.
-	// *   If you set `PermissionPolicyType` to `Inline`, you must set this parameter to the name of the inline policy. A custom value is supported.
+	// 	- If you set `PermissionPolicyType` to `System`, you must set this parameter to the name of the system policy. You can obtain the name of the system policy from RAM.
+	//
+	// 	- If you set `PermissionPolicyType` to `Inline`, you must set this parameter to the name of the inline policy. A custom value is supported.
+	//
+	// example:
+	//
+	// AliyunECSFullAccess
 	PermissionPolicyName *string `json:"PermissionPolicyName,omitempty" xml:"PermissionPolicyName,omitempty"`
 	// The type of the policy. Valid values:
 	//
-	// *   System: system policy. Resource Access Management (RAM) system policies are reused.
-	// *   Inline: inline policy. Inline policies are created based on the RAM policy syntax and structure.
+	// 	- System: system policy. Resource Access Management (RAM) system policies are reused.
+	//
+	// 	- Inline: inline policy. Inline policies are created based on the RAM policy syntax and structure.
+	//
+	// example:
+	//
+	// System
 	PermissionPolicyType *string `json:"PermissionPolicyType,omitempty" xml:"PermissionPolicyType,omitempty"`
 }
 
@@ -151,6 +186,10 @@ func (s *AddPermissionPolicyToAccessConfigurationRequest) SetPermissionPolicyTyp
 
 type AddPermissionPolicyToAccessConfigurationResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// B7C6E839-FB65-59BE-B753-003AA8AF7DF7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -198,10 +237,22 @@ func (s *AddPermissionPolicyToAccessConfigurationResponse) SetBody(v *AddPermiss
 
 type AddUserToGroupRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The ID of the group.
+	//
+	// example:
+	//
+	// g-00jqzghi2n3o5hkh****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The ID of the user.
+	//
+	// example:
+	//
+	// u-00q8wbq42wiltcrk****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -230,6 +281,10 @@ func (s *AddUserToGroupRequest) SetUserId(v string) *AddUserToGroupRequest {
 
 type AddUserToGroupResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F76AF4FC-25E4-5CF1-B7CB-74F3CB72F0F0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -277,6 +332,10 @@ func (s *AddUserToGroupResponse) SetBody(v *AddUserToGroupResponseBody) *AddUser
 
 type ClearExternalSAMLIdentityProviderRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 }
 
@@ -295,6 +354,10 @@ func (s *ClearExternalSAMLIdentityProviderRequest) SetDirectoryId(v string) *Cle
 
 type ClearExternalSAMLIdentityProviderResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 96D1E5FF-0301-5636-8D33-071E033CFB82
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -342,22 +405,48 @@ func (s *ClearExternalSAMLIdentityProviderResponse) SetBody(v *ClearExternalSAML
 
 type CreateAccessAssignmentRequest struct {
 	// The ID of the access configuration.
+	//
+	// example:
+	//
+	// ac-00jhtfl8thteu6uj****
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The ID of the CloudSSO identity.
 	//
-	// *   If you set `PrincipalType` to `User`, set `PrincipalId` to the ID of the CloudSSO user.
-	// *   If you set `PrincipalType` to `Group`, set `PrincipalId` to the ID of the CloudSSO group.
+	// 	- If you set `PrincipalType` to `User`, set `PrincipalId` to the ID of the CloudSSO user.
+	//
+	// 	- If you set `PrincipalType` to `Group`, set `PrincipalId` to the ID of the CloudSSO group.
+	//
+	// example:
+	//
+	// u-00q8wbq42wiltcrk****
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
 	// The type of the CloudSSO identity. Valid values:
 	//
-	// *   User
-	// *   Group
+	// 	- User
+	//
+	// 	- Group
+	//
+	// example:
+	//
+	// User
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
 	// The ID of the task object.
+	//
+	// example:
+	//
+	// 114240524784****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The type of the task object. Set the value to RD-Account, which specifies the accounts in the resource directory.
+	//
+	// example:
+	//
+	// RD-Account
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
@@ -401,6 +490,10 @@ func (s *CreateAccessAssignmentRequest) SetTargetType(v string) *CreateAccessAss
 
 type CreateAccessAssignmentResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 4726AA56-E138-5C99-85E4-F493536D042F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The queried task.
 	Task *CreateAccessAssignmentResponseBodyTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
@@ -426,37 +519,92 @@ func (s *CreateAccessAssignmentResponseBody) SetTask(v *CreateAccessAssignmentRe
 
 type CreateAccessAssignmentResponseBodyTask struct {
 	// The ID of the access configuration.
+	//
+	// example:
+	//
+	// ac-00jhtfl8thteu6uj****
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
 	// The name of the access configuration.
+	//
+	// example:
+	//
+	// ECS-Admin
 	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
 	// The ID of the CloudSSO identity.
+	//
+	// example:
+	//
+	// u-00q8wbq42wiltcrk****
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
 	// The name of the CloudSSO identity.
+	//
+	// example:
+	//
+	// Alice
 	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
 	// The type of the CloudSSO identity. Valid values:
 	//
-	// *   User
-	// *   Group
+	// 	- User
+	//
+	// 	- Group
+	//
+	// example:
+	//
+	// User
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
 	// The task status. Valid values:
 	//
-	// *   InProgress: The task is running.
-	// *   Success: The task is successful.
-	// *   Failed: The task failed.
+	// 	- InProgress: The task is running.
+	//
+	// 	- Success: The task is successful.
+	//
+	// 	- Failed: The task failed.
+	//
+	// example:
+	//
+	// InProgress
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the task object.
+	//
+	// example:
+	//
+	// 114240524784****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The name of the task object.
+	//
+	// example:
+	//
+	// dev-test
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
 	// The path ID of the task object in the resource directory.
+	//
+	// example:
+	//
+	// rd-3G****/r-Wm****/114240524784****
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	// The path name of the task object in the resource directory.
+	//
+	// example:
+	//
+	// rd-3G****/root/dev-test
 	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
 	// The type of the task object. The value is fixed as RD-Account, which indicates the accounts in the resource directory.
+	//
+	// example:
+	//
+	// RD-Account
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 	// The ID of the job.
+	//
+	// example:
+	//
+	// t-sh6tceylhvgejpip****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The task type. The value is fixed as CreateAccessAssignment, which indicates that access permissions on an account in your resource directory are assigned.
+	//
+	// example:
+	//
+	// CreateAccessAssignment
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -568,16 +716,32 @@ type CreateAccessConfigurationRequest struct {
 	// The name can contain letters, digits, and hyphens (-).
 	//
 	// The name can be up to 32 characters in length.
+	//
+	// example:
+	//
+	// ECS-Admin
 	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
 	// The description of the access configuration.
 	//
 	// The description can be up to 1,024 characters in length.
+	//
+	// example:
+	//
+	// This is an access configuration.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The initial web page that is displayed after a CloudSSO user accesses an account in your resource directory by using the access configuration.
 	//
 	// The web page must be a page of the Alibaba Cloud Management Console. By default, this parameter is empty, which indicates that the initial web page is the homepage of the Alibaba Cloud Management Console.
+	//
+	// example:
+	//
+	// https://cloudsso.console.aliyun.com
 	RelayState *string `json:"RelayState,omitempty" xml:"RelayState,omitempty"`
 	// The duration of a session in which a CloudSSO user accesses an account in your resource directory by using the access configuration.
 	//
@@ -586,6 +750,10 @@ type CreateAccessConfigurationRequest struct {
 	// Valid values: 900 to 43200. The value 900 indicates 15 minutes. The value 43200 indicates 12 hours.
 	//
 	// Default value: 3600. The value indicates 1 hour.
+	//
+	// example:
+	//
+	// 3600
 	SessionDuration *int32 `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
 }
 
@@ -626,6 +794,10 @@ type CreateAccessConfigurationResponseBody struct {
 	// The information about the access configuration.
 	AccessConfiguration *CreateAccessConfigurationResponseBodyAccessConfiguration `json:"AccessConfiguration,omitempty" xml:"AccessConfiguration,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// A3A41736-A050-50B6-ABC5-590F376A0044
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -649,22 +821,50 @@ func (s *CreateAccessConfigurationResponseBody) SetRequestId(v string) *CreateAc
 
 type CreateAccessConfigurationResponseBodyAccessConfiguration struct {
 	// The ID of the access configuration.
+	//
+	// example:
+	//
+	// ac-00jhtfl8thteu6uj****
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
 	// The name of the access configuration.
+	//
+	// example:
+	//
+	// ECS-Admin
 	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
 	// The time when the access configuration was created.
+	//
+	// example:
+	//
+	// 2021-11-02T08:44:23Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the access configuration.
+	//
+	// example:
+	//
+	// This is an access configuration.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The initial web page that is displayed after a CloudSSO user accesses an account in your resource directory by using the access configuration.
+	//
+	// example:
+	//
+	// https://cloudsso.console.aliyun.com
 	RelayState *string `json:"RelayState,omitempty" xml:"RelayState,omitempty"`
 	// The duration of a session in which a CloudSSO user accesses an account in your resource directory by using the access configuration.
 	//
 	// Unit: seconds.
+	//
+	// example:
+	//
+	// 3600
 	SessionDuration *int32 `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
 	// The status notification.
 	StatusNotifications []*string `json:"StatusNotifications,omitempty" xml:"StatusNotifications,omitempty" type:"Repeated"`
 	// The time when the information about the access configuration was modified.
+	//
+	// example:
+	//
+	// 2021-11-02T08:44:23Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -753,6 +953,10 @@ type CreateDirectoryRequest struct {
 	// The name must be 2 to 64 characters in length.
 	//
 	// >  If you do not specify this parameter, the value of this parameter is automatically generated by the system.
+	//
+	// example:
+	//
+	// example
 	DirectoryName *string `json:"DirectoryName,omitempty" xml:"DirectoryName,omitempty"`
 }
 
@@ -773,6 +977,10 @@ type CreateDirectoryResponseBody struct {
 	// The information about the directory.
 	Directory *CreateDirectoryResponseBodyDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// ADADC31D-90EE-5459-99B0-D83DF07769A3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -796,14 +1004,34 @@ func (s *CreateDirectoryResponseBody) SetRequestId(v string) *CreateDirectoryRes
 
 type CreateDirectoryResponseBodyDirectory struct {
 	// The time when the directory was created. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2021-10-10T04:04:04Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The name of the directory.
+	//
+	// example:
+	//
+	// example
 	DirectoryName *string `json:"DirectoryName,omitempty" xml:"DirectoryName,omitempty"`
 	// The region ID of the directory.
+	//
+	// example:
+	//
+	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The time when the directory was modified. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2021-10-10T04:04:04Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -873,14 +1101,26 @@ type CreateGroupRequest struct {
 	// The description of the group.
 	//
 	// The description can be up to 1,024 characters in length.
+	//
+	// example:
+	//
+	// This is a group.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The name of the group.
 	//
-	// The name can contain letters, digits, underscores (\_), hyphens (-), and periods (.).
+	// The name can contain letters, digits, underscores (_), hyphens (-), and periods (.).
 	//
 	// The name can be up to 128 characters in length.
+	//
+	// example:
+	//
+	// TestGroup
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 
@@ -911,6 +1151,10 @@ type CreateGroupResponseBody struct {
 	// The information about the group.
 	Group *CreateGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 20E9650E-EC23-593E-933F-EA0D280D040C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -934,16 +1178,40 @@ func (s *CreateGroupResponseBody) SetRequestId(v string) *CreateGroupResponseBod
 
 type CreateGroupResponseBodyGroup struct {
 	// The time when the group was created.
+	//
+	// example:
+	//
+	// 2021-11-01T02:38:27Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the group.
+	//
+	// example:
+	//
+	// This is a group.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the group.
+	//
+	// example:
+	//
+	// g-00jqzghi2n3o5hkh****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The name of the group.
+	//
+	// example:
+	//
+	// TestGroup
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The type of the group. The value is fixed as Manual, which indicates that the group is manually created.
+	//
+	// example:
+	//
+	// Manual
 	ProvisionType *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
 	// The time when the information about the group was modified.
+	//
+	// example:
+	//
+	// 2021-11-01T02:38:27Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -1016,6 +1284,10 @@ func (s *CreateGroupResponse) SetBody(v *CreateGroupResponseBody) *CreateGroupRe
 
 type CreateSCIMServerCredentialRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 }
 
@@ -1034,6 +1306,10 @@ func (s *CreateSCIMServerCredentialRequest) SetDirectoryId(v string) *CreateSCIM
 
 type CreateSCIMServerCredentialResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 2D2E5180-7ACF-57FF-A56C-26A49ABEBFF7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the SCIM credential.
 	SCIMServerCredential *CreateSCIMServerCredentialResponseBodySCIMServerCredential `json:"SCIMServerCredential,omitempty" xml:"SCIMServerCredential,omitempty" type:"Struct"`
@@ -1059,20 +1335,48 @@ func (s *CreateSCIMServerCredentialResponseBody) SetSCIMServerCredential(v *Crea
 
 type CreateSCIMServerCredentialResponseBodySCIMServerCredential struct {
 	// The time when the SCIM credential was created.
+	//
+	// example:
+	//
+	// 2021-11-09T08:12:52Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The ID of the SCIM credential.
+	//
+	// example:
+	//
+	// scimcred-004whl0kvfwcypbi****
 	CredentialId *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
 	// The SCIM credential.
 	//
 	// >  The SCIM credential is returned only when it is created. After the SCIM credential is created, you cannot query it. Keep the SCIM 
+	//
+	// example:
+	//
+	// 8aAJCtpbyPJ8saXeYDgyw****
 	CredentialSecret *string `json:"CredentialSecret,omitempty" xml:"CredentialSecret,omitempty"`
 	// The type of the SCIM credential.
+	//
+	// example:
+	//
+	// BearerToken
 	CredentialType *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The time when the SCIM credential expires.
+	//
+	// example:
+	//
+	// 2022-11-09T08:12:52Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The status of the SCIM credential. The value is fixed as Enabled, which indicates that the SCIM credential is enabled.
+	//
+	// example:
+	//
+	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -1152,35 +1456,68 @@ type CreateUserRequest struct {
 	// The description of the user.
 	//
 	// The description can be up to 1,024 characters in length.
+	//
+	// example:
+	//
+	// This is a user.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The display name of the user.
 	//
 	// The name can be up to 256 characters in length.
+	//
+	// example:
+	//
+	// Alice
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The email address of the user. The email address must be unique within the directory.
 	//
 	// The email address can be up to 128 characters in length.
+	//
+	// example:
+	//
+	// Alice@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// The first name of the user.
 	//
 	// The name can be up to 64 characters in length.
+	//
+	// example:
+	//
+	// Alice
 	FirstName *string `json:"FirstName,omitempty" xml:"FirstName,omitempty"`
 	// The last name of the user.
 	//
 	// The name can be up to 64 characters in length.
+	//
+	// example:
+	//
+	// Lee
 	LastName *string `json:"LastName,omitempty" xml:"LastName,omitempty"`
 	// The status of the user. Valid values:
 	//
-	// *   Enabled: The logon of the user is enabled. This is the default value.
-	// *   Disabled: The logon of the user is disabled.
+	// 	- Enabled: The logon of the user is enabled. This is the default value.
+	//
+	// 	- Disabled: The logon of the user is disabled.
+	//
+	// example:
+	//
+	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The name of the user. The name must be unique within the directory. The name cannot be changed.
 	//
 	// The name can contain numbers, letters, and the following special characters: `@_-.`
 	//
 	// The name can be up to 64 characters in length.
+	//
+	// example:
+	//
+	// Alice
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -1234,6 +1571,10 @@ func (s *CreateUserRequest) SetUserName(v string) *CreateUserRequest {
 
 type CreateUserResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F6F90F3D-4502-5877-B80B-97476F6AE2CC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the user.
 	User *CreateUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
@@ -1259,32 +1600,78 @@ func (s *CreateUserResponseBody) SetUser(v *CreateUserResponseBodyUser) *CreateU
 
 type CreateUserResponseBodyUser struct {
 	// The time when the user was created.
+	//
+	// example:
+	//
+	// 2021-10-26T03:03:42Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the user.
+	//
+	// example:
+	//
+	// This is a user.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The display name of the user.
+	//
+	// example:
+	//
+	// Alice
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The email address of the user.
+	//
+	// example:
+	//
+	// Alice@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// The first name of the user.
+	//
+	// example:
+	//
+	// Alice
 	FirstName *string `json:"FirstName,omitempty" xml:"FirstName,omitempty"`
 	// The last name of the user.
+	//
+	// example:
+	//
+	// Lee
 	LastName *string `json:"LastName,omitempty" xml:"LastName,omitempty"`
 	// The type of the user. Valid values:
 	//
-	// *   Manual: The user is manually created.
-	// *   Synchronized: The user is synchronized from an external identity provider (IdP).
+	// 	- Manual: The user is manually created.
+	//
+	// 	- Synchronized: The user is synchronized from an external identity provider (IdP).
+	//
+	// example:
+	//
+	// Manual
 	ProvisionType *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
 	// The status of the user. Valid values:
 	//
-	// *   Enabled: The logon of the user is enabled.
-	// *   Disabled: The logon of the user is disabled.
+	// 	- Enabled: The logon of the user is enabled.
+	//
+	// 	- Disabled: The logon of the user is disabled.
+	//
+	// example:
+	//
+	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The time when the user was modified.
+	//
+	// example:
+	//
+	// 2021-10-26T03:03:42Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	// The ID of the user.
+	//
+	// example:
+	//
+	// u-00q8wbq42wiltcrk****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The name of the user.
+	//
+	// example:
+	//
+	// Alice
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -1383,31 +1770,67 @@ func (s *CreateUserResponse) SetBody(v *CreateUserResponseBody) *CreateUserRespo
 type CreateUserProvisioningRequest struct {
 	// The deletion policy. The policy is used to manage synchronized users when you delete the RAM user provisioning. Valid values:
 	//
-	// *   Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
-	// *   Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
+	// 	- Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
+	//
+	// 	- Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
+	//
+	// example:
+	//
+	// Delete
 	DeletionStrategy *string `json:"DeletionStrategy,omitempty" xml:"DeletionStrategy,omitempty"`
 	// The description.
+	//
+	// example:
+	//
+	// This is a user provisioning.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the resource directory.
+	//
+	// example:
+	//
+	// d-003qew84****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The conflict handling policy. The policy is used when a RAM user has the same username as the CloudSSO user who is synchronized to RAM. Valid values:
 	//
-	// *   KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
-	// *   TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
+	// 	- KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
+	//
+	// 	- TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
+	//
+	// example:
+	//
+	// KeepBoth
 	DuplicationStrategy *string `json:"DuplicationStrategy,omitempty" xml:"DuplicationStrategy,omitempty"`
 	// The identity ID of the RAM user provisioning. Valid values:
 	//
-	// *   If you set the `PrincipalType` parameter to `Group`, the value of this parameter is the ID of a CloudSSO user group (g-\*\*\*\*\*\*\*\*).
-	// *   If you set the `PrincipalType` parameter to `User`, the value of this parameter is the ID of a CloudSSO user (u-\*\*\*\*\*\*\*\*).
+	// 	- If you set the `PrincipalType` parameter to `Group`, the value of this parameter is the ID of a CloudSSO user group (g-\\*\\*\\*\\*\\*\\*\\*\\*).
+	//
+	// 	- If you set the `PrincipalType` parameter to `User`, the value of this parameter is the ID of a CloudSSO user (u-\\*\\*\\*\\*\\*\\*\\*\\*).
+	//
+	// example:
+	//
+	// g-02ha881d*****
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
 	// The identity type of the RAM user provisioning. Valid values:
 	//
-	// *   User: The identity of the RAM user provisioning is a CloudSSO user.
-	// *   Group: The identity of the RAM user provisioning is a CloudSSO user group.
+	// 	- User: The identity of the RAM user provisioning is a CloudSSO user.
+	//
+	// 	- Group: The identity of the RAM user provisioning is a CloudSSO user group.
+	//
+	// example:
+	//
+	// Group
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
 	// The ID of the object for which you create the RAM user provisioning. The value is fixed as the ID of the member in the resource directory.
+	//
+	// example:
+	//
+	// 1743382******
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
+	//
+	// example:
+	//
+	// RD-Account
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
@@ -1461,6 +1884,10 @@ func (s *CreateUserProvisioningRequest) SetTargetType(v string) *CreateUserProvi
 
 type CreateUserProvisioningResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// F6F90F3D-4502-5877-B80B-97476F6AE2CC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the RAM user provisioning.
 	UserProvisioning *CreateUserProvisioningResponseBodyUserProvisioning `json:"UserProvisioning,omitempty" xml:"UserProvisioning,omitempty" type:"Struct"`
@@ -1486,54 +1913,124 @@ func (s *CreateUserProvisioningResponseBody) SetUserProvisioning(v *CreateUserPr
 
 type CreateUserProvisioningResponseBodyUserProvisioning struct {
 	// The creation time.
+	//
+	// example:
+	//
+	// 2022-11-28T03:55:42Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The deletion policy. The policy is used to manage synchronized users when you delete the RAM user provisioning. Valid values:
 	//
-	// *   Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
-	// *   Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
+	// 	- Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
+	//
+	// 	- Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
+	//
+	// example:
+	//
+	// Delete
 	DeletionStrategy *string `json:"DeletionStrategy,omitempty" xml:"DeletionStrategy,omitempty"`
 	// The description.
+	//
+	// example:
+	//
+	// this is a user provisioning.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the resource directory.
+	//
+	// example:
+	//
+	// d-003qew84****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The conflict handling policy. The policy is used when a RAM user has the same username as the CloudSSO user who is synchronized to RAM. Valid values:
 	//
-	// *   KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
-	// *   TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
+	// 	- KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
+	//
+	// 	- TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
+	//
+	// example:
+	//
+	// KeepBoth
 	DuplicationStrategy *string `json:"DuplicationStrategy,omitempty" xml:"DuplicationStrategy,omitempty"`
 	// The ID of the Alibaba Cloud account to which the resource directory belongs.
+	//
+	// example:
+	//
+	// 1639738******
 	OwnerPk *string `json:"OwnerPk,omitempty" xml:"OwnerPk,omitempty"`
 	// The identity ID of the RAM user provisioning. Valid values:
 	//
-	// *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\*\*\*\*\*\*\*\*).
-	// *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\*\*\*\*\*\*\*\*).
+	// 	- If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\\*\\*\\*\\*\\*\\*\\*\\*).
+	//
+	// 	- If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\\*\\*\\*\\*\\*\\*\\*\\*).
+	//
+	// example:
+	//
+	// g-02ha881d*****
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
 	// The identity name of the RAM user provisioning. Valid values:
 	//
-	// *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user group.
-	// *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user.
+	// 	- If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user group.
+	//
+	// 	- If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user.
+	//
+	// example:
+	//
+	// testGroupName
 	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
 	// The identity type of the RAM user provisioning. Valid values:
 	//
-	// *   User: The identity of the RAM user provisioning is a CloudSSO user.
-	// *   Group: The identity of the RAM user provisioning is a CloudSSO user group.
+	// 	- User: The identity of the RAM user provisioning is a CloudSSO user.
+	//
+	// 	- Group: The identity of the RAM user provisioning is a CloudSSO user group.
+	//
+	// example:
+	//
+	// Group
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
 	// The status of the RAM user provisioning. Valid values:
 	//
-	// *   Enabled
-	// *   Disabled
+	// 	- Enabled
+	//
+	// 	- Disabled
+	//
+	// example:
+	//
+	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the object for which you create the RAM user provisioning. The value is fixed as the ID of the member in the resource directory.
+	//
+	// example:
+	//
+	// 1743382******
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The name of the object for which you create the RAM user provisioning. The value is fixed as the name of the member in the resource directory.
+	//
+	// example:
+	//
+	// testTargetName
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
 	// The path of the resource directory in which you create the RAM user provisioning for the member.
+	//
+	// example:
+	//
+	// rd-******/root/test**
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	// The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
+	//
+	// example:
+	//
+	// RD-Account
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 	// The modification time.
+	//
+	// example:
+	//
+	// 2022-11-28T03:55:42Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	// The ID of the RAM user provisioning.
+	//
+	// example:
+	//
+	// up-002axzhapcbz6e63****
 	UserProvisioningId *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
 }
 
@@ -1656,27 +2153,58 @@ func (s *CreateUserProvisioningResponse) SetBody(v *CreateUserProvisioningRespon
 
 type DeleteAccessAssignmentRequest struct {
 	// The ID of the access configuration.
+	//
+	// example:
+	//
+	// ac-00jhtfl8thteu6uj****
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
 	// Specifies whether to de-provision the access configuration when you remove the access permissions from the CloudSSO identity. The access configuration is used to assign the access permissions, and the identity is the only one that uses the access configuration and is associated with the account. Valid values:
 	//
-	// *   DeprovisionForLastAccessAssignmentOnAccount: de-provisions the access configuration.
-	// *   None: does not de-provision the access configuration. This is the default value.
+	// 	- DeprovisionForLastAccessAssignmentOnAccount: de-provisions the access configuration.
+	//
+	// 	- None: does not de-provision the access configuration. This is the default value.
+	//
+	// example:
+	//
+	// None
 	DeprovisionStrategy *string `json:"DeprovisionStrategy,omitempty" xml:"DeprovisionStrategy,omitempty"`
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The ID of the CloudSSO identity.
 	//
-	// *   If you set `PrincipalType` to `User`, set `PrincipalId` to the ID of the CloudSSO user.
-	// *   If you set `PrincipalType` to `Group`, set `PrincipalId` to the ID of the CloudSSO group.
+	// 	- If you set `PrincipalType` to `User`, set `PrincipalId` to the ID of the CloudSSO user.
+	//
+	// 	- If you set `PrincipalType` to `Group`, set `PrincipalId` to the ID of the CloudSSO group.
+	//
+	// example:
+	//
+	// u-00q8wbq42wiltcrk****
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
 	// The type of the CloudSSO identity. Valid values:
 	//
-	// *   User
-	// *   Group
+	// 	- User
+	//
+	// 	- Group
+	//
+	// example:
+	//
+	// User
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
 	// The ID of the task object.
+	//
+	// example:
+	//
+	// 114240524784****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The type of the task object. Set the value to RD-Account, which specifies the accounts in the resource directory.
+	//
+	// example:
+	//
+	// RD-Account
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
@@ -1725,6 +2253,10 @@ func (s *DeleteAccessAssignmentRequest) SetTargetType(v string) *DeleteAccessAss
 
 type DeleteAccessAssignmentResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 5C9D0CF4-5CE8-5CE6-932A-826EF4ADD007
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The task information.
 	Task *DeleteAccessAssignmentResponseBodyTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
@@ -1750,37 +2282,92 @@ func (s *DeleteAccessAssignmentResponseBody) SetTask(v *DeleteAccessAssignmentRe
 
 type DeleteAccessAssignmentResponseBodyTask struct {
 	// The ID of the access configuration.
+	//
+	// example:
+	//
+	// ac-00jhtfl8thteu6uj****
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
 	// The name of the access configuration.
+	//
+	// example:
+	//
+	// ECS-Admin
 	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
 	// The ID of the CloudSSO identity.
+	//
+	// example:
+	//
+	// u-00q8wbq42wiltcrk****
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
 	// The name of the CloudSSO identity.
+	//
+	// example:
+	//
+	// Alice
 	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
 	// The type of the CloudSSO identity. Valid values:
 	//
-	// *   User
-	// *   Group
+	// 	- User
+	//
+	// 	- Group
+	//
+	// example:
+	//
+	// User
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
 	// The task status. Valid values:
 	//
-	// *   InProgress: The task is running.
-	// *   Success: The task is successful.
-	// *   Failed: The task failed.
+	// 	- InProgress: The task is running.
+	//
+	// 	- Success: The task is successful.
+	//
+	// 	- Failed: The task failed.
+	//
+	// example:
+	//
+	// InProgress
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the task object.
+	//
+	// example:
+	//
+	// 114240524784****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The name of the task object.
+	//
+	// example:
+	//
+	// dev-test
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
 	// The path ID of the task object in the resource directory.
+	//
+	// example:
+	//
+	// rd-3G****/r-Wm****/114240524784****
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	// The path name of the task object in the resource directory.
+	//
+	// example:
+	//
+	// rd-3G****/root/dev-test
 	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
 	// The type of the task object. The value is fixed as RD-Account, which indicates the accounts in the resource directory.
+	//
+	// example:
+	//
+	// RD-Account
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 	// The task ID.
+	//
+	// example:
+	//
+	// t-shfqw1u1edszvxw5****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The task type. The value is fixed as DeleteAccessAssignment, which indicates that access permissions on an account in your resource directory are removed.
+	//
+	// example:
+	//
+	// DeleteAccessAssignment
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -1888,13 +2475,26 @@ func (s *DeleteAccessAssignmentResponse) SetBody(v *DeleteAccessAssignmentRespon
 
 type DeleteAccessConfigurationRequest struct {
 	// The ID of the access configuration.
+	//
+	// example:
+	//
+	// ac-001j9mcm3k7335bc****
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// Specifies whether to forcibly remove system policies and inline policies. Valid values:
 	//
-	// *   true: When you delete the access configuration, the associated system policies and inline policies are forcibly removed.
-	// *   false: When you delete the access configuration, the associated system policies and inline policies are not forcibly removed. This is the default value. If these policies exist in the access configuration, the deletion fails. Before you delete the access configuration, you must remove the system policies and inline policies. For more information, see [RemovePermissionPolicyFromAccessConfiguration](~~336904~~).
+	// 	- true: When you delete the access configuration, the associated system policies and inline policies are forcibly removed.
+	//
+	// 	- false: When you delete the access configuration, the associated system policies and inline policies are not forcibly removed. This is the default value. If these policies exist in the access configuration, the deletion fails. Before you delete the access configuration, you must remove the system policies and inline policies. For more information, see [RemovePermissionPolicyFromAccessConfiguration](https://help.aliyun.com/document_detail/336904.html).
+	//
+	// example:
+	//
+	// false
 	ForceRemovePermissionPolicies *bool `json:"ForceRemovePermissionPolicies,omitempty" xml:"ForceRemovePermissionPolicies,omitempty"`
 }
 
@@ -1923,6 +2523,10 @@ func (s *DeleteAccessConfigurationRequest) SetForceRemovePermissionPolicies(v bo
 
 type DeleteAccessConfigurationResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 9B13E4EE-3853-5852-9165-597C32AD8FB7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1970,6 +2574,10 @@ func (s *DeleteAccessConfigurationResponse) SetBody(v *DeleteAccessConfiguration
 
 type DeleteDirectoryRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 }
 
@@ -1988,6 +2596,10 @@ func (s *DeleteDirectoryRequest) SetDirectoryId(v string) *DeleteDirectoryReques
 
 type DeleteDirectoryResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// B182C041-8C64-5F2F-A07B-FC67FAF89CF9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2035,8 +2647,16 @@ func (s *DeleteDirectoryResponse) SetBody(v *DeleteDirectoryResponseBody) *Delet
 
 type DeleteGroupRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The ID of the group.
+	//
+	// example:
+	//
+	// g-00jqzghi2n3o5hkh****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 }
 
@@ -2060,6 +2680,10 @@ func (s *DeleteGroupRequest) SetGroupId(v string) *DeleteGroupRequest {
 
 type DeleteGroupResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F723DE01-6276-5DC4-9B1F-9CBE3E1748B2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2107,12 +2731,24 @@ func (s *DeleteGroupResponse) SetBody(v *DeleteGroupResponseBody) *DeleteGroupRe
 
 type DeleteMFADeviceForUserRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The ID of the MFA device.
 	//
-	// You can call the [ListMFADevicesForUser](~~333531~~) operation to query the IDs of MFA devices.
+	// You can call the [ListMFADevicesForUser](https://help.aliyun.com/document_detail/333531.html) operation to query the IDs of MFA devices.
+	//
+	// example:
+	//
+	// mfa-00ujhet8pycljj7j****
 	MFADeviceId *string `json:"MFADeviceId,omitempty" xml:"MFADeviceId,omitempty"`
 	// The ID of the user.
+	//
+	// example:
+	//
+	// u-00q8wbq42wiltcrk****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -2141,6 +2777,10 @@ func (s *DeleteMFADeviceForUserRequest) SetUserId(v string) *DeleteMFADeviceForU
 
 type DeleteMFADeviceForUserResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 8B9982ED-FD0D-5622-8EA0-7B768685DCE7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2188,8 +2828,16 @@ func (s *DeleteMFADeviceForUserResponse) SetBody(v *DeleteMFADeviceForUserRespon
 
 type DeleteSCIMServerCredentialRequest struct {
 	// The ID of the SCIM credential.
+	//
+	// example:
+	//
+	// scimcred-004whl0kvfwcypbi****
 	CredentialId *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 }
 
@@ -2213,6 +2861,10 @@ func (s *DeleteSCIMServerCredentialRequest) SetDirectoryId(v string) *DeleteSCIM
 
 type DeleteSCIMServerCredentialResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 8CE8B990-193D-50CE-A604-69F3E7DCE740
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2260,8 +2912,16 @@ func (s *DeleteSCIMServerCredentialResponse) SetBody(v *DeleteSCIMServerCredenti
 
 type DeleteUserRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The ID of the user.
+	//
+	// example:
+	//
+	// u-00q8wbq42wiltcrk****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -2285,6 +2945,10 @@ func (s *DeleteUserRequest) SetUserId(v string) *DeleteUserRequest {
 
 type DeleteUserResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// E598602-AC67-56EF-B7CC-2927C30AA0A8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2333,14 +2997,27 @@ func (s *DeleteUserResponse) SetBody(v *DeleteUserResponseBody) *DeleteUserRespo
 type DeleteUserProvisioningRequest struct {
 	// The deletion policy. The policy is used to manage synchronized users when you delete the RAM user provisioning. Valid values:
 	//
-	// *   Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
-	// *   Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
+	// 	- Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
+	//
+	// 	- Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
 	//
 	// >  If you do not specify this parameter, the deletion policy that is configured when you create the RAM user provisioning is used.
+	//
+	// example:
+	//
+	// Delete
 	DeletionStrategy *string `json:"DeletionStrategy,omitempty" xml:"DeletionStrategy,omitempty"`
 	// The ID of the resource directory.
+	//
+	// example:
+	//
+	// d-003qew84****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The ID of the RAM user provisioning.
+	//
+	// example:
+	//
+	// up-002axzhapcbz6e63****
 	UserProvisioningId *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
 }
 
@@ -2369,6 +3046,10 @@ func (s *DeleteUserProvisioningRequest) SetUserProvisioningId(v string) *DeleteU
 
 type DeleteUserProvisioningResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// F6F90F3D-4502-5877-B80B-97476F6AE2CC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2416,10 +3097,22 @@ func (s *DeleteUserProvisioningResponse) SetBody(v *DeleteUserProvisioningRespon
 
 type DeleteUserProvisioningEventRequest struct {
 	// The ID of the resource directory.
+	//
+	// example:
+	//
+	// d-003qew84****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The ID of the RAM user provisioning event.
+	//
+	// example:
+	//
+	// upe-wjKyNDmZvyZOiRcJ****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
 	// The ID of the RAM user provisioning.
+	//
+	// example:
+	//
+	// up-002axzhapcbz6e63****
 	UserProvisioningId *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
 }
 
@@ -2448,6 +3141,10 @@ func (s *DeleteUserProvisioningEventRequest) SetUserProvisioningId(v string) *De
 
 type DeleteUserProvisioningEventResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// A9287DA5-FD59-32A0-A810-1962E8B58ABB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2495,12 +3192,28 @@ func (s *DeleteUserProvisioningEventResponse) SetBody(v *DeleteUserProvisioningE
 
 type DeprovisionAccessConfigurationRequest struct {
 	// The ID of the access configuration.
+	//
+	// example:
+	//
+	// ac-00jhtfl8thteu6uj****
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
 	// The directory ID.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The ID of the task object.
+	//
+	// example:
+	//
+	// 114240524784****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The type of the task object. Set the value to RD-Account, which specifies the accounts in the resource directory.
+	//
+	// example:
+	//
+	// RD-Account
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
@@ -2534,6 +3247,10 @@ func (s *DeprovisionAccessConfigurationRequest) SetTargetType(v string) *Deprovi
 
 type DeprovisionAccessConfigurationResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 584FE9D0-D1AC-5B19-A39C-8D244FC0538C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The task information.
 	Tasks []*DeprovisionAccessConfigurationResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
@@ -2559,28 +3276,70 @@ func (s *DeprovisionAccessConfigurationResponseBody) SetTasks(v []*DeprovisionAc
 
 type DeprovisionAccessConfigurationResponseBodyTasks struct {
 	// The ID of the access configuration.
+	//
+	// example:
+	//
+	// ac-00jhtfl8thteu6uj****
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
 	// The name of the access configuration.
+	//
+	// example:
+	//
+	// ECS-Admin
 	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
 	// The task status. Valid values:
 	//
-	// *   InProgress: The task is running.
-	// *   Success: The task is successful.
-	// *   Failed: The task failed.
+	// 	- InProgress: The task is running.
+	//
+	// 	- Success: The task is successful.
+	//
+	// 	- Failed: The task failed.
+	//
+	// example:
+	//
+	// InProgress
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the task object.
+	//
+	// example:
+	//
+	// 114240524784****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The name of the task object.
+	//
+	// example:
+	//
+	// dev-test
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
 	// The path ID of the task object in the resource directory.
+	//
+	// example:
+	//
+	// rd-3G****/r-Wm****/114240524784****
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	// The path name of the task object in the resource directory.
+	//
+	// example:
+	//
+	// rd-3G****/root/dev-test
 	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
 	// The type of the task object. The value is fixed as RD-Account, which indicates the accounts in the resource directory.
+	//
+	// example:
+	//
+	// RD-Account
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 	// The task ID.
+	//
+	// example:
+	//
+	// t-sh0655wnq8pdlrlc****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The task type. The value is fixed as DeprovisionAccessConfiguration, which indicates that the access configuration is de-provisioned.
+	//
+	// example:
+	//
+	// DeprovisionAccessConfiguration
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -2671,8 +3430,81 @@ func (s *DeprovisionAccessConfigurationResponse) SetBody(v *DeprovisionAccessCon
 	return s
 }
 
+type DisableDelegateAccountRequest struct {
+	// example:
+	//
+	// 1200971777065046
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+}
+
+func (s DisableDelegateAccountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableDelegateAccountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DisableDelegateAccountRequest) SetAccountId(v string) *DisableDelegateAccountRequest {
+	s.AccountId = &v
+	return s
+}
+
+type DisableDelegateAccountResponseBody struct {
+	// example:
+	//
+	// 12B3E332-DD16-515B-B695-39BA233AA172
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DisableDelegateAccountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableDelegateAccountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DisableDelegateAccountResponseBody) SetRequestId(v string) *DisableDelegateAccountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DisableDelegateAccountResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisableDelegateAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DisableDelegateAccountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableDelegateAccountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisableDelegateAccountResponse) SetHeaders(v map[string]*string) *DisableDelegateAccountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisableDelegateAccountResponse) SetStatusCode(v int32) *DisableDelegateAccountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DisableDelegateAccountResponse) SetBody(v *DisableDelegateAccountResponseBody) *DisableDelegateAccountResponse {
+	s.Body = v
+	return s
+}
+
 type DisableServiceResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 3257EAD2-8723-1F26-B69C-F8707D8B565D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2718,8 +3550,81 @@ func (s *DisableServiceResponse) SetBody(v *DisableServiceResponseBody) *Disable
 	return s
 }
 
+type EnableDelegateAccountRequest struct {
+	// example:
+	//
+	// 180658567986****
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+}
+
+func (s EnableDelegateAccountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableDelegateAccountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnableDelegateAccountRequest) SetAccountId(v string) *EnableDelegateAccountRequest {
+	s.AccountId = &v
+	return s
+}
+
+type EnableDelegateAccountResponseBody struct {
+	// example:
+	//
+	// 768F908D-A66A-5A5D-816C-20C93CBBFEE3
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s EnableDelegateAccountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableDelegateAccountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnableDelegateAccountResponseBody) SetRequestId(v string) *EnableDelegateAccountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type EnableDelegateAccountResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableDelegateAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s EnableDelegateAccountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableDelegateAccountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableDelegateAccountResponse) SetHeaders(v map[string]*string) *EnableDelegateAccountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableDelegateAccountResponse) SetStatusCode(v int32) *EnableDelegateAccountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EnableDelegateAccountResponse) SetBody(v *EnableDelegateAccountResponseBody) *EnableDelegateAccountResponse {
+	s.Body = v
+	return s
+}
+
 type EnableServiceResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 3D57EAD2-8723-1F26-B69C-F8707D8B565D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2767,8 +3672,16 @@ func (s *EnableServiceResponse) SetBody(v *EnableServiceResponseBody) *EnableSer
 
 type GetAccessConfigurationRequest struct {
 	// The ID of the access configuration.
+	//
+	// example:
+	//
+	// ac-00ccule7tadaijxc****
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 }
 
@@ -2794,6 +3707,10 @@ type GetAccessConfigurationResponseBody struct {
 	// The information about the access configuration.
 	AccessConfiguration *GetAccessConfigurationResponseBodyAccessConfiguration `json:"AccessConfiguration,omitempty" xml:"AccessConfiguration,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D5E40508-483B-52F6-993C-D880B0F87591
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2817,22 +3734,50 @@ func (s *GetAccessConfigurationResponseBody) SetRequestId(v string) *GetAccessCo
 
 type GetAccessConfigurationResponseBodyAccessConfiguration struct {
 	// The ID of the access configuration.
+	//
+	// example:
+	//
+	// ac-00ccule7tadaijxc****
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
 	// The name of the access configuration.
+	//
+	// example:
+	//
+	// VPC-Admin
 	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
 	// The time when the access configuration was created.
+	//
+	// example:
+	//
+	// 2021-06-30T09:39:44Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the access configuration.
+	//
+	// example:
+	//
+	// This is an access configuration.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The initial web page that is displayed after a CloudSSO user accesses an account in your resource directory by using the access configuration.
+	//
+	// example:
+	//
+	// https://cloudsso.console.aliyun.com
 	RelayState *string `json:"RelayState,omitempty" xml:"RelayState,omitempty"`
 	// The duration of a session in which a CloudSSO user accesses an account in your resource directory by using the access configuration.
 	//
 	// Unit: seconds.
+	//
+	// example:
+	//
+	// 3600
 	SessionDuration *int32 `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
 	// The status notification.
 	StatusNotifications []*string `json:"StatusNotifications,omitempty" xml:"StatusNotifications,omitempty" type:"Repeated"`
 	// The time when the information about the access configuration was modified.
+	//
+	// example:
+	//
+	// 2021-07-26T03:02:11Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -2915,6 +3860,10 @@ func (s *GetAccessConfigurationResponse) SetBody(v *GetAccessConfigurationRespon
 
 type GetDirectoryRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 }
 
@@ -2935,6 +3884,10 @@ type GetDirectoryResponseBody struct {
 	// The information about the directory.
 	Directory *GetDirectoryResponseBodyDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// AA6A9E4B-8A61-59E1-AA87-F61CA18258A3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2958,14 +3911,34 @@ func (s *GetDirectoryResponseBody) SetRequestId(v string) *GetDirectoryResponseB
 
 type GetDirectoryResponseBodyDirectory struct {
 	// The time when the directory was created.
+	//
+	// example:
+	//
+	// 2021-06-30T08:35:26Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The name of the directory.
+	//
+	// example:
+	//
+	// example
 	DirectoryName *string `json:"DirectoryName,omitempty" xml:"DirectoryName,omitempty"`
 	// The region ID of the directory.
+	//
+	// example:
+	//
+	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The time when the directory was modified.
+	//
+	// example:
+	//
+	// 2021-10-25T07:18:46Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -3033,6 +4006,10 @@ func (s *GetDirectoryResponse) SetBody(v *GetDirectoryResponseBody) *GetDirector
 
 type GetDirectorySAMLServiceProviderInfoRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 }
 
@@ -3051,6 +4028,10 @@ func (s *GetDirectorySAMLServiceProviderInfoRequest) SetDirectoryId(v string) *G
 
 type GetDirectorySAMLServiceProviderInfoResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 4632107D-BCE1-5A96-B30B-182EE0709625
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the SP.
 	SAMLServiceProvider *GetDirectorySAMLServiceProviderInfoResponseBodySAMLServiceProvider `json:"SAMLServiceProvider,omitempty" xml:"SAMLServiceProvider,omitempty" type:"Struct"`
@@ -3076,14 +4057,30 @@ func (s *GetDirectorySAMLServiceProviderInfoResponseBody) SetSAMLServiceProvider
 
 type GetDirectorySAMLServiceProviderInfoResponseBodySAMLServiceProvider struct {
 	// The Assertion Consumer Service (ACS) URL of the SP.
+	//
+	// example:
+	//
+	// https://signin-cn-shanghai.alibabacloudsso.com/saml/acs/51d298a9-2a3f-4e23-97c7-7ad1cfa9****
 	AcsUrl          *string `json:"AcsUrl,omitempty" xml:"AcsUrl,omitempty"`
 	AuthnSignAlgo   *string `json:"AuthnSignAlgo,omitempty" xml:"AuthnSignAlgo,omitempty"`
 	CertificateType *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The metadata file of the SP. The value of this parameter is Base64-encoded.
+	//
+	// example:
+	//
+	// PD94bWwgdmVyc2lv****
 	EncodedMetadataDocument *string `json:"EncodedMetadataDocument,omitempty" xml:"EncodedMetadataDocument,omitempty"`
 	// The entity ID of the SP.
+	//
+	// example:
+	//
+	// https://signin-cn-shanghai.alibabacloudsso.com/saml/sp/d-00fc2p61****
 	EntityId                  *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	SupportEncryptedAssertion *bool   `json:"SupportEncryptedAssertion,omitempty" xml:"SupportEncryptedAssertion,omitempty"`
 }
@@ -3162,6 +4159,10 @@ func (s *GetDirectorySAMLServiceProviderInfoResponse) SetBody(v *GetDirectorySAM
 
 type GetDirectoryStatisticsRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 }
 
@@ -3182,6 +4183,10 @@ type GetDirectoryStatisticsResponseBody struct {
 	// The statistics of the directory.
 	DirectoryStatistics *GetDirectoryStatisticsResponseBodyDirectoryStatistics `json:"DirectoryStatistics,omitempty" xml:"DirectoryStatistics,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 7B7228B0-A435-5D27-A6B2-ED3571F0654B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3205,41 +4210,103 @@ func (s *GetDirectoryStatisticsResponseBody) SetRequestId(v string) *GetDirector
 
 type GetDirectoryStatisticsResponseBodyDirectoryStatistics struct {
 	// The number of access permissions that are assigned.
+	//
+	// example:
+	//
+	// 5
 	AccessAssignmentCount *int32 `json:"AccessAssignmentCount,omitempty" xml:"AccessAssignmentCount,omitempty"`
 	// The number of access configurations.
+	//
+	// example:
+	//
+	// 6
 	AccessConfigurationCount *int32 `json:"AccessConfigurationCount,omitempty" xml:"AccessConfigurationCount,omitempty"`
 	// The quota for access configurations.
+	//
+	// example:
+	//
+	// 1000
 	AccessConfigurationQuota *int32 `json:"AccessConfigurationQuota,omitempty" xml:"AccessConfigurationQuota,omitempty"`
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The name of the directory.
+	//
+	// example:
+	//
+	// new-example
 	DirectoryName *string `json:"DirectoryName,omitempty" xml:"DirectoryName,omitempty"`
 	// The number of user groups.
+	//
+	// example:
+	//
+	// 4
 	GroupCount *int32 `json:"GroupCount,omitempty" xml:"GroupCount,omitempty"`
 	// The quota for user groups.
+	//
+	// example:
+	//
+	// 500
 	GroupQuota *int32 `json:"GroupQuota,omitempty" xml:"GroupQuota,omitempty"`
 	// The number of tasks that are being performed.
+	//
+	// example:
+	//
+	// 0
 	InProgressTaskCount                     *int32 `json:"InProgressTaskCount,omitempty" xml:"InProgressTaskCount,omitempty"`
 	InlinePolicyPerAccessConfigurationQuota *int32 `json:"InlinePolicyPerAccessConfigurationQuota,omitempty" xml:"InlinePolicyPerAccessConfigurationQuota,omitempty"`
 	// The region ID of the directory.
+	//
+	// example:
+	//
+	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The number of SCIM credentials.
+	//
+	// example:
+	//
+	// 2
 	SCIMServerCredentialCount *int32 `json:"SCIMServerCredentialCount,omitempty" xml:"SCIMServerCredentialCount,omitempty"`
 	// Indicates whether SCIM synchronization is enabled. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	SCIMSyncEnabled *bool `json:"SCIMSyncEnabled,omitempty" xml:"SCIMSyncEnabled,omitempty"`
 	// Indicates whether SSO is enabled. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
 	SSOEnabled *bool `json:"SSOEnabled,omitempty" xml:"SSOEnabled,omitempty"`
 	// The quota for system policies that can be configured for an access configuration.
+	//
+	// example:
+	//
+	// 20
 	SystemPolicyPerAccessConfigurationQuota *int32 `json:"SystemPolicyPerAccessConfigurationQuota,omitempty" xml:"SystemPolicyPerAccessConfigurationQuota,omitempty"`
 	// The number of users.
+	//
+	// example:
+	//
+	// 16
 	UserCount *int32 `json:"UserCount,omitempty" xml:"UserCount,omitempty"`
 	// The quota for users.
+	//
+	// example:
+	//
+	// 1000
 	UserQuota *int32 `json:"UserQuota,omitempty" xml:"UserQuota,omitempty"`
 }
 
@@ -3362,6 +4429,10 @@ func (s *GetDirectoryStatisticsResponse) SetBody(v *GetDirectoryStatisticsRespon
 
 type GetExternalSAMLIdentityProviderRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 }
 
@@ -3380,6 +4451,10 @@ func (s *GetExternalSAMLIdentityProviderRequest) SetDirectoryId(v string) *GetEx
 
 type GetExternalSAMLIdentityProviderResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 96D1E5FF-0301-5636-8D33-071E033CFB82
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The configurations of the IdP.
 	SAMLIdentityProviderConfiguration *GetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfiguration `json:"SAMLIdentityProviderConfiguration,omitempty" xml:"SAMLIdentityProviderConfiguration,omitempty" type:"Struct"`
@@ -3407,26 +4482,60 @@ type GetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfiguratio
 	// The ID of the SAML signing certificate.
 	CertificateIds []*string `json:"CertificateIds,omitempty" xml:"CertificateIds,omitempty" type:"Repeated"`
 	// The time when the IdP was configured for the first time.
+	//
+	// example:
+	//
+	// 2021-11-09T09:30:13Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The metadata file of the IdP. The value of this parameter is Base64-encoded.
+	//
+	// example:
+	//
+	// PD94bWwgdmVyc2lvbj0iMS4****
 	EncodedMetadataDocument *string `json:"EncodedMetadataDocument,omitempty" xml:"EncodedMetadataDocument,omitempty"`
 	// The entity ID of the IdP.
+	//
+	// example:
+	//
+	// http://www.okta.com/exk3qwgtjhetR2Od****
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	// The logon URL of the IdP.
+	//
+	// example:
+	//
+	// https://dev-xxxxxx.okta.com/app/dev-xxxxxx_cloudssodemo_1/exk3qwgtjhetR2Od****/sso/saml
 	LoginUrl *string `json:"LoginUrl,omitempty" xml:"LoginUrl,omitempty"`
 	// The status of SSO logon. Valid values:
 	//
-	// *   Enabled
-	// *   Disabled
+	// 	- Enabled
+	//
+	// 	- Disabled
+	//
+	// example:
+	//
+	// Enabled
 	SSOStatus *string `json:"SSOStatus,omitempty" xml:"SSOStatus,omitempty"`
 	// The time when the IdP configurations were last modified.
+	//
+	// example:
+	//
+	// 2021-11-09T09:30:22Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	// Indicates whether CloudSSO needs to sign SAML requests. The requests are sent when users log on to the CloudSSO user portal to initiate SAML-based SSO. Valid values:
 	//
-	// *   true: yes
-	// *   false: no (default)
+	// 	- true: yes
+	//
+	// 	- false: no (default)
+	//
+	// example:
+	//
+	// false
 	WantRequestSigned *bool `json:"WantRequestSigned,omitempty" xml:"WantRequestSigned,omitempty"`
 }
 
@@ -3514,8 +4623,16 @@ func (s *GetExternalSAMLIdentityProviderResponse) SetBody(v *GetExternalSAMLIden
 
 type GetGroupRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The ID of the group.
+	//
+	// example:
+	//
+	// g-00jqzghi2n3o5hkh****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 }
 
@@ -3541,6 +4658,10 @@ type GetGroupResponseBody struct {
 	// The information about the group.
 	Group *GetGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 768F908D-A66A-5A5D-816C-20C93CBBFEE3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3564,19 +4685,44 @@ func (s *GetGroupResponseBody) SetRequestId(v string) *GetGroupResponseBody {
 
 type GetGroupResponseBodyGroup struct {
 	// The time when the group was created.
+	//
+	// example:
+	//
+	// 2021-11-01T02:38:27Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the group.
+	//
+	// example:
+	//
+	// This is a group.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the group.
+	//
+	// example:
+	//
+	// g-00jqzghi2n3o5hkh****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The name of the group.
+	//
+	// example:
+	//
+	// TestGroup
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The type of the group. Valid values:
 	//
-	// *   Manual: The group is manually created.
-	// *   Synchronized: The group is synchronized from an external identity provider (IdP).
+	// 	- Manual: The group is manually created.
+	//
+	// 	- Synchronized: The group is synchronized from an external identity provider (IdP).
+	//
+	// example:
+	//
+	// Manual
 	ProvisionType *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
 	// The time when the information about the group was modified.
+	//
+	// example:
+	//
+	// 2021-11-01T02:38:27Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -3649,6 +4795,10 @@ func (s *GetGroupResponse) SetBody(v *GetGroupResponseBody) *GetGroupResponse {
 
 type GetLoginPreferenceRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 }
 
@@ -3669,6 +4819,10 @@ type GetLoginPreferenceResponseBody struct {
 	// The logon preference.
 	LoginPreference *GetLoginPreferenceResponseBodyLoginPreference `json:"LoginPreference,omitempty" xml:"LoginPreference,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 8CE8B990-193D-50CE-A604-69F3E7DCE740
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3696,6 +4850,10 @@ type GetLoginPreferenceResponseBodyLoginPreference struct {
 	// The IP address whitelist takes effect only on CloudSSO users who want to log on to the CloudSSO user portal by using the username-password logon or single sign-on (SSO) method. The IP address whitelist does not take effect on CloudSSO users who access accounts in a resource directory from the CloudSSO user portal.
 	//
 	// If the return value of this parameter is empty, no IP address whitelists are configured.
+	//
+	// example:
+	//
+	// 192.168.0.0/16;10.0.0.0/8
 	LoginNetworkMasks *string `json:"LoginNetworkMasks,omitempty" xml:"LoginNetworkMasks,omitempty"`
 }
 
@@ -3743,6 +4901,10 @@ func (s *GetLoginPreferenceResponse) SetBody(v *GetLoginPreferenceResponseBody) 
 
 type GetMFAAuthenticationSettingInfoRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// u-00q8wbq42wiltcrk****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 }
 
@@ -3763,6 +4925,10 @@ type GetMFAAuthenticationSettingInfoResponseBody struct {
 	// The MFA setting of all users.
 	MFAAuthenticationSettingInfo *GetMFAAuthenticationSettingInfoResponseBodyMFAAuthenticationSettingInfo `json:"MFAAuthenticationSettingInfo,omitempty" xml:"MFAAuthenticationSettingInfo,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 95D3B107-DA80-5B34-A3D0-9E82F8F0DA0E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3787,17 +4953,29 @@ func (s *GetMFAAuthenticationSettingInfoResponseBody) SetRequestId(v string) *Ge
 type GetMFAAuthenticationSettingInfoResponseBodyMFAAuthenticationSettingInfo struct {
 	// The MFA policy of all users. Valid values:
 	//
-	// *   Enabled: MFA is enabled for all users.
-	// *   Byuser: User-specific settings are applied. For more information about how to configure MFA for a single user, see [UpdateUserMFAAuthenticationSettings](~~450135~~).
-	// *   Disabled: MFA is disabled for all users.
-	// *   OnlyRiskyLogin: MFA is required only for unusual logons.
+	// 	- Enabled: MFA is enabled for all users.
+	//
+	// 	- Byuser: User-specific settings are applied. For more information about how to configure MFA for a single user, see [UpdateUserMFAAuthenticationSettings](https://help.aliyun.com/document_detail/450135.html).
+	//
+	// 	- Disabled: MFA is disabled for all users.
+	//
+	// 	- OnlyRiskyLogin: MFA is required only for unusual logons.
+	//
+	// example:
+	//
+	// OnlyRiskyLogin
 	MfaAuthenticationAdvanceSettings *string `json:"MfaAuthenticationAdvanceSettings,omitempty" xml:"MfaAuthenticationAdvanceSettings,omitempty"`
 	// The MFA policy for unusual logons. Valid values:
 	//
-	// *   Autonomous: MFA is prompted for users who initiated unusual logons. However, the users are allowed to skip MFA. If an MFA device is bound to a user who initiated an unusual logon, the user must pass MFA.
-	// *   EnforceVerify: MFA is required. If no MFA devices are bound to a user who initiated an unusual logon, the user must bind an MFA device. If an MFA device is already bound to a user who initiated an unusual logon, the user must pass MFA.
+	// 	- Autonomous: MFA is prompted for users who initiated unusual logons. However, the users are allowed to skip MFA. If an MFA device is bound to a user who initiated an unusual logon, the user must pass MFA.
+	//
+	// 	- EnforceVerify: MFA is required. If no MFA devices are bound to a user who initiated an unusual logon, the user must bind an MFA device. If an MFA device is already bound to a user who initiated an unusual logon, the user must pass MFA.
 	//
 	// > This parameter is displayed only when Byuser or OnlyRiskyLogin is returned for the MfaAuthenticationAdvanceSettings parameter.
+	//
+	// example:
+	//
+	// EnforceVerify
 	OperationForRiskLogin *string `json:"OperationForRiskLogin,omitempty" xml:"OperationForRiskLogin,omitempty"`
 }
 
@@ -3850,6 +5028,10 @@ func (s *GetMFAAuthenticationSettingInfoResponse) SetBody(v *GetMFAAuthenticatio
 
 type GetMFAAuthenticationSettingsRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 }
 
@@ -3869,11 +5051,21 @@ func (s *GetMFAAuthenticationSettingsRequest) SetDirectoryId(v string) *GetMFAAu
 type GetMFAAuthenticationSettingsResponseBody struct {
 	// Indicates whether MFA is enabled for all users. Valid values:
 	//
-	// *   Enabled: MFA is enabled for all users.
-	// *   Byuser: User-specific settings are applied.
-	// *   Disabled: MFA is disabled for all users.
+	// 	- Enabled: MFA is enabled for all users.
+	//
+	// 	- Byuser: User-specific settings are applied.
+	//
+	// 	- Disabled: MFA is disabled for all users.
+	//
+	// example:
+	//
+	// Enabled
 	MFAAuthenticationAdvanceSettings *string `json:"MFAAuthenticationAdvanceSettings,omitempty" xml:"MFAAuthenticationAdvanceSettings,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// A2BC00C5-76A2-5FFC-A340-927940A98377
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3926,6 +5118,10 @@ func (s *GetMFAAuthenticationSettingsResponse) SetBody(v *GetMFAAuthenticationSe
 
 type GetMFAAuthenticationStatusRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 }
 
@@ -3945,10 +5141,19 @@ func (s *GetMFAAuthenticationStatusRequest) SetDirectoryId(v string) *GetMFAAuth
 type GetMFAAuthenticationStatusResponseBody struct {
 	// The status of MFA. Valid values:
 	//
-	// *   Enabled
-	// *   Disabled
+	// 	- Enabled
+	//
+	// 	- Disabled
+	//
+	// example:
+	//
+	// Enabled
 	MFAAuthenticationStatus *string `json:"MFAAuthenticationStatus,omitempty" xml:"MFAAuthenticationStatus,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 5E688346-DF1A-5537-9BFC-8A9974D29586
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4001,6 +5206,10 @@ func (s *GetMFAAuthenticationStatusResponse) SetBody(v *GetMFAAuthenticationStat
 
 type GetPasswordPolicyRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 }
 
@@ -4021,6 +5230,10 @@ type GetPasswordPolicyResponseBody struct {
 	// The password policy.
 	PasswordPolicy *GetPasswordPolicyResponseBodyPasswordPolicy `json:"PasswordPolicy,omitempty" xml:"PasswordPolicy,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B7C6E839-FB65-59BE-B753-003AA8AF7DF7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4045,59 +5258,113 @@ func (s *GetPasswordPolicyResponseBody) SetRequestId(v string) *GetPasswordPolic
 type GetPasswordPolicyResponseBodyPasswordPolicy struct {
 	// Indicates whether to disable logon after a password expires. Valid values:
 	//
-	// *   true: disables logon after a password expires.
-	// *   false: does not disable logon after a password expires.
+	// 	- true: disables logon after a password expires.
+	//
+	// 	- false: does not disable logon after a password expires.
+	//
+	// example:
+	//
+	// true
 	HardExpire *bool `json:"HardExpire,omitempty" xml:"HardExpire,omitempty"`
 	// The number of password retries.
 	//
 	// If wrong passwords are entered for the specified consecutive times, the account is locked for 1 hour.
 	//
 	// Valid values: 0 to 32. The value 0 indicates that the number of password retries is not limited.
+	//
+	// example:
+	//
+	// 5
 	MaxLoginAttempts *int32 `json:"MaxLoginAttempts,omitempty" xml:"MaxLoginAttempts,omitempty"`
 	// The validity period of a password.
 	//
 	// Valid values: 1 to 120. Unit: days.
+	//
+	// example:
+	//
+	// 90
 	MaxPasswordAge *int32 `json:"MaxPasswordAge,omitempty" xml:"MaxPasswordAge,omitempty"`
 	// The maximum password length.
+	//
+	// example:
+	//
+	// 32
 	MaxPasswordLength *int32 `json:"MaxPasswordLength,omitempty" xml:"MaxPasswordLength,omitempty"`
 	// The minimum number of different characters in a password.
 	//
 	// The minimum value is 0, which indicates that the minimum number of different characters in a password is not limited. The maximum value is the value of the `MinPasswordLength` parameter.
+	//
+	// example:
+	//
+	// 8
 	MinPasswordDifferentChars *int32 `json:"MinPasswordDifferentChars,omitempty" xml:"MinPasswordDifferentChars,omitempty"`
 	// The minimum password length.
 	//
 	// Valid values: 8 to 32 characters.
+	//
+	// example:
+	//
+	// 8
 	MinPasswordLength *int32 `json:"MinPasswordLength,omitempty" xml:"MinPasswordLength,omitempty"`
 	// Indicates whether to exclude the username from the password. Valid values:
 	//
-	// *   true: A password cannot contain the username.
-	// *   false: A password can contain the username.
+	// 	- true: A password cannot contain the username.
+	//
+	// 	- false: A password can contain the username.
+	//
+	// example:
+	//
+	// true
 	PasswordNotContainUsername *bool `json:"PasswordNotContainUsername,omitempty" xml:"PasswordNotContainUsername,omitempty"`
 	// The policy for password history check.
 	//
 	// The previous N passwords cannot be reused. Valid values of N: 0 to 24. The value 0 indicates that all historical passwords can be reused.
 	//
 	// >  Passwords that are generated before January 5, 2024 are not counted as historical passwords.
+	//
+	// example:
+	//
+	// 1
 	PasswordReusePrevention *int32 `json:"PasswordReusePrevention,omitempty" xml:"PasswordReusePrevention,omitempty"`
 	// Indicates whether lowercase letters are required in a password. Valid values:
 	//
-	// *   true: Lowercase letters are required in a password.
-	// *   false: Lowercase letters are not required in a password.
+	// 	- true: Lowercase letters are required in a password.
+	//
+	// 	- false: Lowercase letters are not required in a password.
+	//
+	// example:
+	//
+	// true
 	RequireLowerCaseChars *bool `json:"RequireLowerCaseChars,omitempty" xml:"RequireLowerCaseChars,omitempty"`
 	// Indicates whether digits are required in a password. Valid values:
 	//
-	// *   true: Digits are required in a password.
-	// *   false: Digits are not required in a password.
+	// 	- true: Digits are required in a password.
+	//
+	// 	- false: Digits are not required in a password.
+	//
+	// example:
+	//
+	// true
 	RequireNumbers *bool `json:"RequireNumbers,omitempty" xml:"RequireNumbers,omitempty"`
 	// Indicates whether special characters are required in a password. Valid values:
 	//
-	// *   true: Special characters are required in a password.
-	// *   false: Special characters are not required in a password.
+	// 	- true: Special characters are required in a password.
+	//
+	// 	- false: Special characters are not required in a password.
+	//
+	// example:
+	//
+	// true
 	RequireSymbols *bool `json:"RequireSymbols,omitempty" xml:"RequireSymbols,omitempty"`
 	// Indicates whether uppercase letters are required in a password. Valid values:
 	//
-	// *   true: Uppercase letters are required in a password.
-	// *   false: Uppercase letters are not required in a password.
+	// 	- true: Uppercase letters are required in a password.
+	//
+	// 	- false: Uppercase letters are not required in a password.
+	//
+	// example:
+	//
+	// true
 	RequireUpperCaseChars *bool `json:"RequireUpperCaseChars,omitempty" xml:"RequireUpperCaseChars,omitempty"`
 }
 
@@ -4200,6 +5467,10 @@ func (s *GetPasswordPolicyResponse) SetBody(v *GetPasswordPolicyResponseBody) *G
 
 type GetSCIMSynchronizationStatusRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 }
 
@@ -4218,11 +5489,20 @@ func (s *GetSCIMSynchronizationStatusRequest) SetDirectoryId(v string) *GetSCIMS
 
 type GetSCIMSynchronizationStatusResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 7C086C2F-1C66-57B3-B14E-2C1DA70727CD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status of SCIM synchronization. Valid values:
 	//
-	// *   Enabled
-	// *   Disabled
+	// 	- Enabled
+	//
+	// 	- Disabled
+	//
+	// example:
+	//
+	// Enabled
 	SCIMSynchronizationStatus *string `json:"SCIMSynchronizationStatus,omitempty" xml:"SCIMSynchronizationStatus,omitempty"`
 }
 
@@ -4275,6 +5555,10 @@ func (s *GetSCIMSynchronizationStatusResponse) SetBody(v *GetSCIMSynchronization
 
 type GetServiceStatusResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// ADADC31D-90EE-5459-99B0-D83DF07769A3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status information of CloudSSO.
 	ServiceStatus *GetServiceStatusResponseBodyServiceStatus `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty" type:"Struct"`
@@ -4300,20 +5584,34 @@ func (s *GetServiceStatusResponseBody) SetServiceStatus(v *GetServiceStatusRespo
 
 type GetServiceStatusResponseBodyServiceStatus struct {
 	// The ID of your Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 151266687691****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// Indicates whether you have permissions to enable CloudSSO. Valid values:
 	//
-	// *   Success: You have permissions to enable CloudSSO.
-	// *   Failed: You do not have permissions to enable CloudSSO.
+	// 	- Success: You have permissions to enable CloudSSO.
+	//
+	// 	- Failed: You do not have permissions to enable CloudSSO.
 	//
 	// >  The value of this parameter is returned only if the value of `Status` is `Disabled`.
+	//
+	// example:
+	//
+	// Success
 	PrerequisiteCheckResult *string `json:"PrerequisiteCheckResult,omitempty" xml:"PrerequisiteCheckResult,omitempty"`
 	// The ID of the region.
 	RegionsInUse []*string `json:"RegionsInUse,omitempty" xml:"RegionsInUse,omitempty" type:"Repeated"`
 	// Indicates whether CloudSSO is enabled. Valid values:
 	//
-	// *   Enabled
-	// *   Disabled
+	// 	- Enabled
+	//
+	// 	- Disabled
+	//
+	// example:
+	//
+	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -4376,8 +5674,16 @@ func (s *GetServiceStatusResponse) SetBody(v *GetServiceStatusResponseBody) *Get
 
 type GetTaskRequest struct {
 	// The directory ID.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The task ID.
+	//
+	// example:
+	//
+	// t-shfqw1u1edszvxw5****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -4401,6 +5707,10 @@ func (s *GetTaskRequest) SetTaskId(v string) *GetTaskRequest {
 
 type GetTaskResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 923CA5E8-57BF-5E15-8BA6-E75A966B7E3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The task information.
 	Task *GetTaskResponseBodyTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
@@ -4426,50 +5736,120 @@ func (s *GetTaskResponseBody) SetTask(v *GetTaskResponseBodyTask) *GetTaskRespon
 
 type GetTaskResponseBodyTask struct {
 	// The ID of the access configuration.
+	//
+	// example:
+	//
+	// ac-00jhtfl8thteu6uj****
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
 	// The name of the access configuration.
+	//
+	// example:
+	//
+	// ECS-Admin
 	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
 	// The end time of the task.
+	//
+	// example:
+	//
+	// 2021-11-05T02:58:08Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The cause of the task failure.
 	//
 	// >  This parameter is returned only when the value of `Status` is `Failed`.
+	//
+	// example:
+	//
+	// No Permission.
 	FailureReason *string `json:"FailureReason,omitempty" xml:"FailureReason,omitempty"`
 	// The ID of the CloudSSO identity.
+	//
+	// example:
+	//
+	// u-00q8wbq42wiltcrk****
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
 	// The name of the CloudSSO identity.
+	//
+	// example:
+	//
+	// Alice
 	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
 	// The type of the CloudSSO identity. Valid values:
 	//
-	// *   User
-	// *   Group
+	// 	- User
+	//
+	// 	- Group
+	//
+	// example:
+	//
+	// User
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
 	// The start time of the task.
+	//
+	// example:
+	//
+	// 2021-11-05T02:58:07Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The task status. Valid values:
 	//
-	// *   InProgress: The task is running.
-	// *   Success: The task is successful.
-	// *   Failed: The task failed.
+	// 	- InProgress: The task is running.
+	//
+	// 	- Success: The task is successful.
+	//
+	// 	- Failed: The task failed.
+	//
+	// example:
+	//
+	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the task object.
+	//
+	// example:
+	//
+	// 114240524784****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The name of the task object.
+	//
+	// example:
+	//
+	// dev-test
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
 	// The path ID of the task object in the resource directory.
+	//
+	// example:
+	//
+	// rd-3G****/r-Wm****/114240524784****
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	// The path name of the task object in the resource directory.
+	//
+	// example:
+	//
+	// rd-3G****/root/dev-test
 	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
 	// The type of the task object. The value is fixed as RD-Account, which indicates the accounts in the resource directory.
+	//
+	// example:
+	//
+	// RD-Account
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 	// The task ID.
+	//
+	// example:
+	//
+	// t-shfqw1u1edszvxw5****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The task type. Valid values:
 	//
-	// *   ProvisionAccessConfiguration: An access configuration is provisioned.
-	// *   DeprovisionAccessConfiguration: An access configuration is de-provisioned.
-	// *   CreateAccessAssignment: Access permissions on an account in the resource directory are assigned.
-	// *   DeleteAccessAssignment: Access permissions on an account in the resource directory are removed.
+	// 	- ProvisionAccessConfiguration: An access configuration is provisioned.
+	//
+	// 	- DeprovisionAccessConfiguration: An access configuration is de-provisioned.
+	//
+	// 	- CreateAccessAssignment: Access permissions on an account in the resource directory are assigned.
+	//
+	// 	- DeleteAccessAssignment: Access permissions on an account in the resource directory are removed.
+	//
+	// example:
+	//
+	// DeleteAccessAssignment
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -4592,8 +5972,16 @@ func (s *GetTaskResponse) SetBody(v *GetTaskResponseBody) *GetTaskResponse {
 
 type GetTaskStatusRequest struct {
 	// The directory ID.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The task ID.
+	//
+	// example:
+	//
+	// t-shfqw1u1edszvxw5****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -4617,6 +6005,10 @@ func (s *GetTaskStatusRequest) SetTaskId(v string) *GetTaskStatusRequest {
 
 type GetTaskStatusResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 005F4623-AE53-504D-830F-44825F7DC211
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status information about the task.
 	TaskStatus *GetTaskStatusResponseBodyTaskStatus `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty" type:"Struct"`
@@ -4642,27 +6034,56 @@ func (s *GetTaskStatusResponseBody) SetTaskStatus(v *GetTaskStatusResponseBodyTa
 
 type GetTaskStatusResponseBodyTaskStatus struct {
 	// The end time of the task.
+	//
+	// example:
+	//
+	// 2021-11-05T02:58:08Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The cause of the task failure.
 	//
 	// >  This parameter is returned only when the value of `Status` is `Failed`.
+	//
+	// example:
+	//
+	// No Permission.
 	FailureReason *string `json:"FailureReason,omitempty" xml:"FailureReason,omitempty"`
 	// The start time of the task.
+	//
+	// example:
+	//
+	// 2021-11-05T02:58:07Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The task status. Valid values:
 	//
-	// *   InProgress: The task is running.
-	// *   Success: The task is successful.
-	// *   Failed: The task failed.
+	// 	- InProgress: The task is running.
+	//
+	// 	- Success: The task is successful.
+	//
+	// 	- Failed: The task failed.
+	//
+	// example:
+	//
+	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The task ID.
+	//
+	// example:
+	//
+	// t-shfqw1u1edszvxw5****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The task type. Valid values:
 	//
-	// *   ProvisionAccessConfiguration: An access configuration is provisioned.
-	// *   DeprovisionAccessConfiguration: An access configuration is de-provisioned.
-	// *   CreateAccessAssignment: Access permissions on an account in the resource directory are assigned.
-	// *   DeleteAccessAssignment: Access permissions on an account in the resource directory are removed.
+	// 	- ProvisionAccessConfiguration: An access configuration is provisioned.
+	//
+	// 	- DeprovisionAccessConfiguration: An access configuration is de-provisioned.
+	//
+	// 	- CreateAccessAssignment: Access permissions on an account in the resource directory are assigned.
+	//
+	// 	- DeleteAccessAssignment: Access permissions on an account in the resource directory are removed.
+	//
+	// example:
+	//
+	// DeleteAccessAssignment
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -4734,9 +6155,17 @@ func (s *GetTaskStatusResponse) SetBody(v *GetTaskStatusResponseBody) *GetTaskSt
 }
 
 type GetUserRequest struct {
-	// The ID of the directory.
+	// The ID of the resource directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The ID of the user.
+	//
+	// example:
+	//
+	// u-00q8wbq42wiltcrk****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -4759,7 +6188,11 @@ func (s *GetUserRequest) SetUserId(v string) *GetUserRequest {
 }
 
 type GetUserResponseBody struct {
-	// The ID of the request.
+	// The request ID.
+	//
+	// example:
+	//
+	// EE42D2C4-A30A-59B7-ACEB-6D22FB44174A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the user.
 	User *GetUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
@@ -4784,34 +6217,81 @@ func (s *GetUserResponseBody) SetUser(v *GetUserResponseBodyUser) *GetUserRespon
 }
 
 type GetUserResponseBodyUser struct {
-	// The time when the user was created.
+	// The time when the user was created. The value is displayed in UTC.
+	//
+	// example:
+	//
+	// 2021-10-26T03:03:42Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the user.
+	//
+	// example:
+	//
+	// This is a user.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The display name of the user.
+	//
+	// example:
+	//
+	// Alice
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The email address of the user.
-	Email      *string                            `json:"Email,omitempty" xml:"Email,omitempty"`
+	//
+	// example:
+	//
+	// Alice@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The identifier information about the user synchronized from an external IdP.
 	ExternalId *GetUserResponseBodyUserExternalId `json:"ExternalId,omitempty" xml:"ExternalId,omitempty" type:"Struct"`
 	// The first name of the user.
+	//
+	// example:
+	//
+	// Alice
 	FirstName *string `json:"FirstName,omitempty" xml:"FirstName,omitempty"`
 	// The last name of the user.
+	//
+	// example:
+	//
+	// Lee
 	LastName *string `json:"LastName,omitempty" xml:"LastName,omitempty"`
 	// The type of the user. Valid values:
 	//
-	// *   Manual: The user is manually created.
-	// *   Synchronized: The user is synchronized from an external identity provider (IdP).
+	// 	- Manual: The user is manually created.
+	//
+	// 	- Synchronized: The user is synchronized from an external identity provider (IdP).
+	//
+	// example:
+	//
+	// Manual
 	ProvisionType *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
 	// The status of the user. Valid values:
 	//
-	// *   Enabled: The logon of the user is enabled.
-	// *   Disabled: The logon of the user is disabled.
+	// 	- Enabled: The logon of the user is enabled.
+	//
+	// 	- Disabled: The logon of the user is disabled.
+	//
+	// example:
+	//
+	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the information about the user was modified.
+	// The time when the information about the user was modified. The value is displayed in UTC.
+	//
+	// example:
+	//
+	// 2021-10-26T06:43:55Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	// The ID of the user.
+	//
+	// example:
+	//
+	// u-00q8wbq42wiltcrk****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The name of the user.
+	//
+	// example:
+	//
+	// Alice
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -4884,7 +6364,17 @@ func (s *GetUserResponseBodyUser) SetUserName(v string) *GetUserResponseBodyUser
 }
 
 type GetUserResponseBodyUserExternalId struct {
-	Id     *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The identifier of the user that is synchronized from an external IdP.
+	//
+	// example:
+	//
+	// c73******a5fdd5
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The method for external identity synchronization. Only System for Cross-domain Identity Management (SCIM) synchronization is supported.
+	//
+	// example:
+	//
+	// SCIM
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
 }
 
@@ -4936,8 +6426,14 @@ func (s *GetUserResponse) SetBody(v *GetUserResponseBody) *GetUserResponse {
 }
 
 type GetUserIdRequest struct {
-	DirectoryId *string                     `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	ExternalId  *GetUserIdRequestExternalId `json:"ExternalId,omitempty" xml:"ExternalId,omitempty" type:"Struct"`
+	// The ID of the resource directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The identifier information about the user that is synchronized from an external identity provider (IdP).
+	ExternalId *GetUserIdRequestExternalId `json:"ExternalId,omitempty" xml:"ExternalId,omitempty" type:"Struct"`
 }
 
 func (s GetUserIdRequest) String() string {
@@ -4959,7 +6455,17 @@ func (s *GetUserIdRequest) SetExternalId(v *GetUserIdRequestExternalId) *GetUser
 }
 
 type GetUserIdRequestExternalId struct {
-	Id     *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The identifier of the user that is synchronized from an external IdP.
+	//
+	// example:
+	//
+	// c73******a5fdd5
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The method for external identity synchronization. Only System for Cross-domain Identity Management (SCIM) synchronization is supported.
+	//
+	// example:
+	//
+	// SCIM
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
 }
 
@@ -4982,7 +6488,13 @@ func (s *GetUserIdRequestExternalId) SetIssuer(v string) *GetUserIdRequestExtern
 }
 
 type GetUserIdShrinkRequest struct {
-	DirectoryId      *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The ID of the resource directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The identifier information about the user that is synchronized from an external identity provider (IdP).
 	ExternalIdShrink *string `json:"ExternalId,omitempty" xml:"ExternalId,omitempty"`
 }
 
@@ -5005,8 +6517,18 @@ func (s *GetUserIdShrinkRequest) SetExternalIdShrink(v string) *GetUserIdShrinkR
 }
 
 type GetUserIdResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// A3A41736-A050-50B6-ABC5-590F376A0044
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	UserId    *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the CloudSSO user.
+	//
+	// example:
+	//
+	// u-d8d1iox****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GetUserIdResponseBody) String() string {
@@ -5058,8 +6580,16 @@ func (s *GetUserIdResponse) SetBody(v *GetUserIdResponseBody) *GetUserIdResponse
 
 type GetUserMFAAuthenticationSettingsRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The ID of the user.
+	//
+	// example:
+	//
+	// u-00q8wbq42wiltcrk****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -5083,11 +6613,20 @@ func (s *GetUserMFAAuthenticationSettingsRequest) SetUserId(v string) *GetUserMF
 
 type GetUserMFAAuthenticationSettingsResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 5B598B62-85E6-5792-9DF1-246D251B07DA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether MFA is enabled for the user. Valid values:
 	//
-	// *   Enabled: MFA is enabled for the user.
-	// *   Disabled: MFA is disabled for the user.
+	// 	- Enabled: MFA is enabled for the user.
+	//
+	// 	- Disabled: MFA is disabled for the user.
+	//
+	// example:
+	//
+	// Enabled
 	UserMFAAuthenticationSettings *string `json:"UserMFAAuthenticationSettings,omitempty" xml:"UserMFAAuthenticationSettings,omitempty"`
 }
 
@@ -5140,8 +6679,16 @@ func (s *GetUserMFAAuthenticationSettingsResponse) SetBody(v *GetUserMFAAuthenti
 
 type GetUserProvisioningRequest struct {
 	// The ID of the resource directory.
+	//
+	// example:
+	//
+	// d-003qew84****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The ID of the RAM user provisioning.
+	//
+	// example:
+	//
+	// up-002axzhapcbz6e63****
 	UserProvisioningId *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
 }
 
@@ -5165,6 +6712,10 @@ func (s *GetUserProvisioningRequest) SetUserProvisioningId(v string) *GetUserPro
 
 type GetUserProvisioningResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// F6F90F3D-4502-5877-B80B-97476F6AE2CC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the RAM user provisioning.
 	UserProvisioning *GetUserProvisioningResponseBodyUserProvisioning `json:"UserProvisioning,omitempty" xml:"UserProvisioning,omitempty" type:"Struct"`
@@ -5190,54 +6741,124 @@ func (s *GetUserProvisioningResponseBody) SetUserProvisioning(v *GetUserProvisio
 
 type GetUserProvisioningResponseBodyUserProvisioning struct {
 	// The creation time.
+	//
+	// example:
+	//
+	// 2022-11-28T03:55:42Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The deletion policy. The policy is used to manage synchronized users when you delete the RAM user provisioning. Valid values:
 	//
-	// *   Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
-	// *   Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
+	// 	- Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
+	//
+	// 	- Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
+	//
+	// example:
+	//
+	// Delete
 	DeletionStrategy *string `json:"DeletionStrategy,omitempty" xml:"DeletionStrategy,omitempty"`
 	// The description.
+	//
+	// example:
+	//
+	// This is a user provisioning.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the resource directory.
+	//
+	// example:
+	//
+	// d-003qew84****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The conflict handling policy. The policy is used when a RAM user has the same username as the CloudSSO user who is synchronized to RAM. Valid values:
 	//
-	// *   KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
-	// *   TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
+	// 	- KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
+	//
+	// 	- TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
+	//
+	// example:
+	//
+	// KeepBoth
 	DuplicationStrategy *string `json:"DuplicationStrategy,omitempty" xml:"DuplicationStrategy,omitempty"`
 	// The ID of the Alibaba Cloud account to which the resource directory belongs.
+	//
+	// example:
+	//
+	// 1639738******
 	OwnerPk *string `json:"OwnerPk,omitempty" xml:"OwnerPk,omitempty"`
 	// The identity ID of the RAM user provisioning. Valid values:
 	//
-	// *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\*\*\*\*\*\*\*\*).
-	// *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\*\*\*\*\*\*\*\*).
+	// 	- If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\\*\\*\\*\\*\\*\\*\\*\\*).
+	//
+	// 	- If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\\*\\*\\*\\*\\*\\*\\*\\*).
+	//
+	// example:
+	//
+	// g-02ha881d*****
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
 	// The identity name of the RAM user provisioning. Valid values:
 	//
-	// *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user group.
-	// *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user.
+	// 	- If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user group.
+	//
+	// 	- If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user.
+	//
+	// example:
+	//
+	// testGroupName
 	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
 	// The identity type of the RAM user provisioning. Valid values:
 	//
-	// *   User: indicates that the identity of the RAM user provisioning is a CloudSSO user.
-	// *   Group: indicates that the identity of the RAM user provisioning is a CloudSSO user group.
+	// 	- User: indicates that the identity of the RAM user provisioning is a CloudSSO user.
+	//
+	// 	- Group: indicates that the identity of the RAM user provisioning is a CloudSSO user group.
+	//
+	// example:
+	//
+	// Group
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
 	// The status of the RAM user provisioning. Valid values:
 	//
-	// *   Enabled
-	// *   Disabled
+	// 	- Enabled
+	//
+	// 	- Disabled
+	//
+	// example:
+	//
+	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the object for which you create the RAM user provisioning. The value is fixed as the ID of the member in the resource directory.
+	//
+	// example:
+	//
+	// 1743382******
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The name of the object for which you create the RAM user provisioning. The value is fixed as the name of the member in the resource directory.
+	//
+	// example:
+	//
+	// testRdMember
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
 	// The path of the resource directory in which you create the RAM user provisioning for the member.
+	//
+	// example:
+	//
+	// rd-******/root/test**
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	// The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
+	//
+	// example:
+	//
+	// RD-Account
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 	// The modification time.
+	//
+	// example:
+	//
+	// 2022-11-28T03:55:42Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	// The ID of the RAM user provisioning.
+	//
+	// example:
+	//
+	// up-002axzhapcbz6e63****
 	UserProvisioningId *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
 }
 
@@ -5360,6 +6981,10 @@ func (s *GetUserProvisioningResponse) SetBody(v *GetUserProvisioningResponseBody
 
 type GetUserProvisioningConfigurationRequest struct {
 	// The ID of the resource directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 }
 
@@ -5378,6 +7003,10 @@ func (s *GetUserProvisioningConfigurationRequest) SetDirectoryId(v string) *GetU
 
 type GetUserProvisioningConfigurationResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 66898413-EB80-556D-9429-06FE3548F672
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The global configurations of the RAM user provisioning.
 	UserProvisioningConfiguration *GetUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration `json:"UserProvisioningConfiguration,omitempty" xml:"UserProvisioningConfiguration,omitempty" type:"Struct"`
@@ -5403,12 +7032,24 @@ func (s *GetUserProvisioningConfigurationResponseBody) SetUserProvisioningConfig
 
 type GetUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration struct {
 	// The creation time.
+	//
+	// example:
+	//
+	// 2022-11-28T03:55:42Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The default URL for a CloudSSO user who logs on to the Alibaba Cloud Management Console.
 	//
 	// Default value: https://homenew.console.aliyun.com.
+	//
+	// example:
+	//
+	// https://homenew.console.aliyun.com
 	DefaultLandingPage *string `json:"DefaultLandingPage,omitempty" xml:"DefaultLandingPage,omitempty"`
 	// The ID of the resource directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The duration of the logon session.
 	//
@@ -5417,8 +7058,16 @@ type GetUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration s
 	// Valid values: 1 to 24.
 	//
 	// Default value: 6.
+	//
+	// example:
+	//
+	// 10
 	SessionDuration *int32 `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
 	// The modification time.
+	//
+	// example:
+	//
+	// 2022-11-28T03:55:42Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -5486,8 +7135,16 @@ func (s *GetUserProvisioningConfigurationResponse) SetBody(v *GetUserProvisionin
 
 type GetUserProvisioningEventRequest struct {
 	// The ID of the resource directory.
+	//
+	// example:
+	//
+	// d-003qew84****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The ID of the RAM user provisioning event.
+	//
+	// example:
+	//
+	// upe-wjKyNDmZvyZOiRcJ****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
 }
 
@@ -5511,6 +7168,10 @@ func (s *GetUserProvisioningEventRequest) SetEventId(v string) *GetUserProvision
 
 type GetUserProvisioningEventResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// B801715C-97EA-3067-AC97-EF1EBECBB39C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The RAM user provisioning event.
 	UserProvisioningEvent *GetUserProvisioningEventResponseBodyUserProvisioningEvent `json:"UserProvisioningEvent,omitempty" xml:"UserProvisioningEvent,omitempty" type:"Struct"`
@@ -5536,65 +7197,146 @@ func (s *GetUserProvisioningEventResponseBody) SetUserProvisioningEvent(v *GetUs
 
 type GetUserProvisioningEventResponseBodyUserProvisioningEvent struct {
 	// The creation time.
+	//
+	// example:
+	//
+	// 2022-11-28T03:55:42Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The deletion policy. The policy is used to manage synchronized users when you delete the RAM user provisioning. Valid values:
 	//
-	// *   Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
-	// *   Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
+	// 	- Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
+	//
+	// 	- Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
+	//
+	// example:
+	//
+	// Delete
 	DeletionStrategy *string `json:"DeletionStrategy,omitempty" xml:"DeletionStrategy,omitempty"`
 	// The ID of the resource directory.
+	//
+	// example:
+	//
+	// d-003qew84****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The conflict handling policy. The policy is used when a RAM user has the same username as the CloudSSO user who is synchronized to RAM. Valid values:
 	//
-	// *   KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
-	// *   TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
+	// 	- KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
+	//
+	// 	- TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
+	//
+	// example:
+	//
+	// KeepBoth
 	DuplicationStrategy *string `json:"DuplicationStrategy,omitempty" xml:"DuplicationStrategy,omitempty"`
 	// The number of execution failures.
+	//
+	// example:
+	//
+	// 3
 	ErrorCount *int64 `json:"ErrorCount,omitempty" xml:"ErrorCount,omitempty"`
 	// The error message that is displayed when the last execution of the RAM user provisioning event failed.
+	//
+	// example:
+	//
+	// OperationConflict.UserProvisioning.Process.fail.ImsUserExists
 	ErrorInfo *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
 	// The ID of the RAM user provisioning event.
+	//
+	// example:
+	//
+	// upe-wjKyNDmZvyZOiRcJ****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
 	// The time at which the RAM user provisioning event was last executed.
+	//
+	// example:
+	//
+	// 2022-11-28T03:55:42Z
 	LatestAsyncTime *string `json:"LatestAsyncTime,omitempty" xml:"LatestAsyncTime,omitempty"`
 	// The identity ID of the RAM user provisioning. Valid values:
 	//
-	// *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\*\*\*\*\*\*\*\*).
-	// *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\*\*\*\*\*\*\*\*).
+	// 	- If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\\*\\*\\*\\*\\*\\*\\*\\*).
+	//
+	// 	- If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\\*\\*\\*\\*\\*\\*\\*\\*).
+	//
+	// example:
+	//
+	// g-02ha881d*****
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
 	// The identity name of the RAM user provisioning. Valid values:
 	//
-	// *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user group.
-	// *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user.
+	// 	- If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user group.
+	//
+	// 	- If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user.
+	//
+	// example:
+	//
+	// exampleGroupName
 	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
 	// The identity type of the RAM user provisioning. Valid values:
 	//
-	// *   User: The identity of the RAM user provisioning is a CloudSSO user.
-	// *   Group: The identity of the RAM user provisioning is a CloudSSO user group.
+	// 	- User: The identity of the RAM user provisioning is a CloudSSO user.
+	//
+	// 	- Group: The identity of the RAM user provisioning is a CloudSSO user group.
+	//
+	// example:
+	//
+	// Group
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
 	// The type of the source operation. Valid values:
 	//
-	// *   StartProvisioning: enables the RAM user provisioning.
-	// *   DeleteProvisioning: deletes the RAM user provisioning.
-	// *   AddUserToGroup: adds a user to a user group.
-	// *   RemoveUserFromGroup: removes a user from a user group.
-	// *   UserProvisioningDeletionClearing: deletes the RAM user provisioning and clears resources in the background.
+	// 	- StartProvisioning: enables the RAM user provisioning.
+	//
+	// 	- DeleteProvisioning: deletes the RAM user provisioning.
+	//
+	// 	- AddUserToGroup: adds a user to a user group.
+	//
+	// 	- RemoveUserFromGroup: removes a user from a user group.
+	//
+	// 	- UserProvisioningDeletionClearing: deletes the RAM user provisioning and clears resources in the background.
+	//
+	// example:
+	//
+	// AddUserToGroup
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// The ID of the object for which you create the RAM user provisioning.
 	//
 	// The value is fixed as the ID of the member in the resource directory.````
+	//
+	// example:
+	//
+	// 1743382******
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The name of the object for which you create the RAM user provisioning.
 	//
 	// The value is fixed as the name of the member in the resource directory.````
+	//
+	// example:
+	//
+	// exampleRdMember
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
 	// The path of the resource directory in which you create the RAM user provisioning for the object.
+	//
+	// example:
+	//
+	// rd-******/root/test**
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	// The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
+	//
+	// example:
+	//
+	// RD-Account
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 	// The modification time.
+	//
+	// example:
+	//
+	// 2022-11-28T03:55:42Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	// The ID of the RAM user provisioning event.
+	//
+	// example:
+	//
+	// up-002axzhapcbz6e63****
 	UserProvisioningId *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
 }
 
@@ -5727,8 +7469,16 @@ func (s *GetUserProvisioningEventResponse) SetBody(v *GetUserProvisioningEventRe
 
 type GetUserProvisioningRdAccountStatisticsRequest struct {
 	// The ID of the resource directory.
+	//
+	// example:
+	//
+	// d-003qew84****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The ID of the member in the resource directory.
+	//
+	// example:
+	//
+	// 1743382******
 	RdMemberId *string `json:"RdMemberId,omitempty" xml:"RdMemberId,omitempty"`
 }
 
@@ -5752,6 +7502,10 @@ func (s *GetUserProvisioningRdAccountStatisticsRequest) SetRdMemberId(v string) 
 
 type GetUserProvisioningRdAccountStatisticsResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// F6F90F3D-4502-5877-B80B-97476F6AE2CC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The statistics of the RAM user provisioning.
 	UserProvisioningStatistics *GetUserProvisioningRdAccountStatisticsResponseBodyUserProvisioningStatistics `json:"UserProvisioningStatistics,omitempty" xml:"UserProvisioningStatistics,omitempty" type:"Struct"`
@@ -5777,16 +7531,40 @@ func (s *GetUserProvisioningRdAccountStatisticsResponseBody) SetUserProvisioning
 
 type GetUserProvisioningRdAccountStatisticsResponseBodyUserProvisioningStatistics struct {
 	// The ID of the resource directory.
+	//
+	// example:
+	//
+	// d-003qew84****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The entity ID, which is the ID of the member in the resource directory.
+	//
+	// example:
+	//
+	// 1743382******
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	// The number of failed RAM user provisioning events.
+	//
+	// example:
+	//
+	// 4
 	FailedEventCount *int64 `json:"FailedEventCount,omitempty" xml:"FailedEventCount,omitempty"`
 	// The time when the RAM user provisioning was last performed.
+	//
+	// example:
+	//
+	// 2022-11-28T03:55:42Z
 	LatestAsyncTime *string `json:"LatestAsyncTime,omitempty" xml:"LatestAsyncTime,omitempty"`
 	// The ID of the Alibaba Cloud account to which the resource directory belongs.
+	//
+	// example:
+	//
+	// 1639738******
 	OwnerPk *string `json:"OwnerPk,omitempty" xml:"OwnerPk,omitempty"`
 	// The entity type. The value is fixed as `RD Account`.
+	//
+	// example:
+	//
+	// RD Account
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -5859,8 +7637,16 @@ func (s *GetUserProvisioningRdAccountStatisticsResponse) SetBody(v *GetUserProvi
 
 type GetUserProvisioningStatisticsRequest struct {
 	// The ID of the resource directory.
+	//
+	// example:
+	//
+	// d-003qew84****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The ID of the RAM user provisioning.
+	//
+	// example:
+	//
+	// up-002axzhapcbz6e63****
 	UserProvisioningId *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
 }
 
@@ -5884,6 +7670,10 @@ func (s *GetUserProvisioningStatisticsRequest) SetUserProvisioningId(v string) *
 
 type GetUserProvisioningStatisticsResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// F6F90F3D-4502-5877-B80B-97476F6AE2CC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The statistics of the RAM user provisioning.
 	UserProvisioningStatistics *GetUserProvisioningStatisticsResponseBodyUserProvisioningStatistics `json:"UserProvisioningStatistics,omitempty" xml:"UserProvisioningStatistics,omitempty" type:"Struct"`
@@ -5909,16 +7699,40 @@ func (s *GetUserProvisioningStatisticsResponseBody) SetUserProvisioningStatistic
 
 type GetUserProvisioningStatisticsResponseBodyUserProvisioningStatistics struct {
 	// The ID of the resource directory.
+	//
+	// example:
+	//
+	// d-003qew84****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The entity ID, which is the ID of the RAM user provisioning.
+	//
+	// example:
+	//
+	// up-002axzhapcbz6e63****
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	// The number of failed RAM user provisioning events that are associated with the RAM user provisioning.
+	//
+	// example:
+	//
+	// 3
 	FailedEventCount *int64 `json:"FailedEventCount,omitempty" xml:"FailedEventCount,omitempty"`
 	// The time when the RAM user provisioning was last performed.
+	//
+	// example:
+	//
+	// 2022-11-28T03:55:42Z
 	LatestAsyncTime *string `json:"LatestAsyncTime,omitempty" xml:"LatestAsyncTime,omitempty"`
 	// The ID of the Alibaba Cloud account to which the resource directory belongs.
+	//
+	// example:
+	//
+	// 139665787317****
 	OwnerPk *string `json:"OwnerPk,omitempty" xml:"OwnerPk,omitempty"`
 	// The entity type. The value is fixed as `User Provisioning`.
+	//
+	// example:
+	//
+	// User Provisioning
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -5991,42 +7805,76 @@ func (s *GetUserProvisioningStatisticsResponse) SetBody(v *GetUserProvisioningSt
 
 type ListAccessAssignmentsRequest struct {
 	// The ID of the access configuration. The ID can be used to filter access permissions.
+	//
+	// example:
+	//
+	// ac-00jhtfl8thteu6uj****
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
 	// The directory ID.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The maximum number of entries per page.
 	//
 	// Valid values: 1 to 20.
 	//
 	// Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. If this is your first time to call this operation, you do not need to specify the `NextToken` parameter.
 	//
 	// When you call this operation for the first time, if the total number of entries to return exceeds the value of `MaxResults`, the entries are truncated. Only the entries that match the value of `MaxResults` are returned, and the excess entries are not returned. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
+	//
+	// example:
+	//
+	// K1c3o9K7pFxoTtxH1Nm7MMLb7zrDGvftYBQBPDVv7AD3a8yhRb3Mk8L9ivmN6bFSjfkZNTAg3h4****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the CloudSSO identity. The ID can be used to filter access permissions.
 	//
-	// *   If you set `PrincipalType` to User, set `PrincipalId` to the ID of the CloudSSO user.
-	// *   If you set `PrincipalType` to Group, set `PrincipalId` to the ID of the CloudSSO group.
+	// 	- If you set `PrincipalType` to User, set `PrincipalId` to the ID of the CloudSSO user.
+	//
+	// 	- If you set `PrincipalType` to Group, set `PrincipalId` to the ID of the CloudSSO group.
 	//
 	// >  You can use the type to filter access permissions only if you specify both PrincipalId and `PrincipalType`.``
+	//
+	// example:
+	//
+	// u-00q8wbq42wiltcrk****
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
 	// The type of the CloudSSO identity. The type can be used to filter access permissions. Valid values:
 	//
-	// *   User
-	// *   Group
+	// 	- User
+	//
+	// 	- Group
 	//
 	// >  You can use the type to filter access permissions only if you specify both PrincipalId and `PrincipalType`.``
+	//
+	// example:
+	//
+	// User
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
 	// The ID of the task object. The ID can be used to filter access permissions.
 	//
 	// >  You can use the type to filter access permissions only if you specify both `TargetId` and `TargetType`.
+	//
+	// example:
+	//
+	// 114240524784****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The type of the task object. The type can be used to filter access permissions.
 	//
 	// Set the value to RD-Account, which specifies the accounts in the resource directory.
 	//
 	// >  You can use the type to filter access permissions only if you specify both `TargetId` and `TargetType`.
+	//
+	// example:
+	//
+	// RD-Account
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
@@ -6083,18 +7931,39 @@ type ListAccessAssignmentsResponseBody struct {
 	AccessAssignments []*ListAccessAssignmentsResponseBodyAccessAssignments `json:"AccessAssignments,omitempty" xml:"AccessAssignments,omitempty" type:"Repeated"`
 	// Indicates whether the queried entries are truncated. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
 	// The maximum number of entries returned per page.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
 	//
 	// >  This parameter is returned only when the value of IsTruncated is `true`.``
+	//
+	// example:
+	//
+	// K1c3o9K7pFxoTtxH1Nm7MMLb7zrDGvftYBQBPDVv7AD3a8yhRb3Mk8L9ivmN6bFSjfkZNTAg3h4****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 66898413-EB80-556D-9429-06FE3548F672
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	TotalCounts *int32 `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
 }
 
@@ -6138,31 +8007,76 @@ func (s *ListAccessAssignmentsResponseBody) SetTotalCounts(v int32) *ListAccessA
 
 type ListAccessAssignmentsResponseBodyAccessAssignments struct {
 	// The ID of the access configuration.
+	//
+	// example:
+	//
+	// ac-00jhtfl8thteu6uj****
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
 	// The name of the access configuration.
+	//
+	// example:
+	//
+	// ECS-Admin
 	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
 	// The time when the access permissions were assigned.
+	//
+	// example:
+	//
+	// 2021-11-04T10:03:08Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The ID of the CloudSSO identity.
+	//
+	// example:
+	//
+	// u-00q8wbq42wiltcrk****
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
 	// The name of the CloudSSO identity.
+	//
+	// example:
+	//
+	// Alice
 	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
 	// The type of the CloudSSO identity. Valid values:
 	//
-	// *   User
-	// *   Group
+	// 	- User
+	//
+	// 	- Group
+	//
+	// example:
+	//
+	// User
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
 	// The ID of the task object.
+	//
+	// example:
+	//
+	// 114240524784****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The name of the task object.
+	//
+	// example:
+	//
+	// dev-test
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
 	// The path ID of the task object in the resource directory.
+	//
+	// example:
+	//
+	// rd-3G****/r-Wm****/114240524784****
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	// The path name of the task object in the resource directory.
+	//
+	// example:
+	//
+	// rd-3G****/root/dev-test
 	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
 	// The type of the task object.
 	//
 	// The value is fixed as RD-Account, which indicates the accounts in the resource directory.
+	//
+	// example:
+	//
+	// RD-Account
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
@@ -6260,34 +8174,64 @@ func (s *ListAccessAssignmentsResponse) SetBody(v *ListAccessAssignmentsResponse
 
 type ListAccessConfigurationProvisioningsRequest struct {
 	// The ID of the access configuration. The ID can be used to filter access permissions.
+	//
+	// example:
+	//
+	// ac-00ccule7tadaijxc****
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The maximum number of entries per page.
 	//
 	// Valid values: 1 to 20.
 	//
 	// Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. If this is your first time to call this operation, you do not need to specify the `NextToken` parameter.
 	//
 	// When you call this operation for the first time, if the total number of entries to return exceeds the value of `MaxResults`, the entries are truncated. Only the entries that match the value of `MaxResults` are returned, and the excess entries are not returned. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
+	//
+	// example:
+	//
+	// K1c3o9K7pFxoTtxH1Nm7MMLb7zrDGvftYBQBPDVv7AD3a8yhRb3Mk8L9ivmN6bFSjfkZNTAg3h4****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The status of the access configuration. The value can be used to filter accounts. Valid values:
 	//
-	// *   Provisioned: The access configuration is provisioned.
-	// *   ReprovisionRequired: The access configuration needs to be re-provisioned.
-	// *   DeprovisionFailed: The access configuration failed to be provisioned.
+	// 	- Provisioned: The access configuration is provisioned.
+	//
+	// 	- ReprovisionRequired: The access configuration needs to be re-provisioned.
+	//
+	// 	- DeprovisionFailed: The access configuration failed to be provisioned.
+	//
+	// example:
+	//
+	// Provisioned
 	ProvisioningStatus *string `json:"ProvisioningStatus,omitempty" xml:"ProvisioningStatus,omitempty"`
 	// The ID of the task object. The ID can be used to filter access permissions.
 	//
 	// >  You can use the type to filter access permissions only if you specify both `TargetId` and `TargetType`.
+	//
+	// example:
+	//
+	// 114240524784****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The type of the task object. The type can be used to filter access permissions.
 	//
 	// Set the value to RD-Account, which specifies the accounts in the resource directory.
 	//
 	// >  You can use the type to filter access permissions only if you specify both `TargetId` and `TargetType`.
+	//
+	// example:
+	//
+	// RD-Account
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
@@ -6339,18 +8283,39 @@ type ListAccessConfigurationProvisioningsResponseBody struct {
 	AccessConfigurationProvisionings []*ListAccessConfigurationProvisioningsResponseBodyAccessConfigurationProvisionings `json:"AccessConfigurationProvisionings,omitempty" xml:"AccessConfigurationProvisionings,omitempty" type:"Repeated"`
 	// Indicates whether the queried entries are truncated. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
 	// The maximum number of entries returned per page.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
 	//
 	// >  This parameter is returned only when the value of `IsTruncated` is `true`.
+	//
+	// example:
+	//
+	// K1c3o9K7pFxoTtxH1Nm7MMLb7zrDGvftYBQBPDVv7AD3a8yhRb3Mk8L9ivmN6bFSjfkZNTAg3h4****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6BA1BDF1-D845-5D2C-B742-74BE2970E4C1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 2
 	TotalCounts *int32 `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
 }
 
@@ -6394,38 +8359,88 @@ func (s *ListAccessConfigurationProvisioningsResponseBody) SetTotalCounts(v int3
 
 type ListAccessConfigurationProvisioningsResponseBodyAccessConfigurationProvisionings struct {
 	// The ID of the access configuration.
+	//
+	// example:
+	//
+	// ac-00ccule7tadaijxc****
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
 	// The name of the access configuration.
+	//
+	// example:
+	//
+	// VPC-Admin
 	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
 	// The first time when the access configuration was provisioned.
+	//
+	// example:
+	//
+	// 2021-07-26T08:54:14Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The name of the custom policy that is created for an account in the resource directory.
 	RAMPolicyNames []*string `json:"RAMPolicyNames,omitempty" xml:"RAMPolicyNames,omitempty" type:"Repeated"`
 	// The name of the RAM role that is created for an account in the resource directory.
+	//
+	// example:
+	//
+	// AliyunReservedSSO-VPC-Admin
 	RAMRoleName *string `json:"RAMRoleName,omitempty" xml:"RAMRoleName,omitempty"`
 	// The name of the Security Assertion Markup Language (SAML) identity provider (IdP) that is created within an account in the resource directory.
+	//
+	// example:
+	//
+	// AliyunReservedSSO-d-00fc2p61****
 	SAMLProviderName *string `json:"SAMLProviderName,omitempty" xml:"SAMLProviderName,omitempty"`
 	// The status of the access configuration. Valid values:
 	//
-	// *   Provisioned: The access configuration is provisioned.
-	// *   ReprovisionRequired: The access configuration needs to be re-provisioned.
-	// *   DeprovisionFailed: The access configuration failed to be provisioned.
+	// 	- Provisioned: The access configuration is provisioned.
+	//
+	// 	- ReprovisionRequired: The access configuration needs to be re-provisioned.
+	//
+	// 	- DeprovisionFailed: The access configuration failed to be provisioned.
+	//
+	// example:
+	//
+	// Provisioned
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the task object.
 	//
 	// If the value of TargetType is `RD-Account`, the value of this parameter is the UID of an account in the resource directory.
+	//
+	// example:
+	//
+	// 101522521960****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The name of the task object.
+	//
+	// example:
+	//
+	// SharedServices_5009****
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
 	// The path ID of the task object in the resource directory.
+	//
+	// example:
+	//
+	// rd-3G****/r-Wm****/fd-pjM8oy****/101522521960****
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	// The path name of the task object in the resource directory.
+	//
+	// example:
+	//
+	// rd-3G****/root/Core/SharedServices_5009****
 	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
 	// The type of the task object.
 	//
 	// Set the value to RD-Account, which specifies the accounts in the resource directory.
+	//
+	// example:
+	//
+	// RD-Account
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 	// The last time when the access configuration was provisioned.
+	//
+	// example:
+	//
+	// 2021-07-26T08:54:18Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -6533,26 +8548,46 @@ func (s *ListAccessConfigurationProvisioningsResponse) SetBody(v *ListAccessConf
 
 type ListAccessConfigurationsRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The filter condition.
 	//
-	// Specify the value in the \<Attribute> \<Operator> \<Value> format. The value is not case sensitive. You can set \<Attribute> only to AccessConfigurationName and \<Operator> only to eq or sw. The value eq indicates Equals. The value sw indicates Starts With.
+	// Specify the value in the \\<Attribute> \\<Operator> \\<Value> format. The value is not case sensitive. You can set \\<Attribute> only to AccessConfigurationName and \\<Operator> only to eq or sw. The value eq indicates Equals. The value sw indicates Starts With.
 	//
 	// For example, if you set Filter to AccessConfigurationName sw test, the operation queries all access configurations whose names start with test. If you set Filter to AccessConfigurationName eq TestAccessConfiguration, the operation queries the access configuration whose name is TestAccessConfiguration.
+	//
+	// example:
+	//
+	// AccessConfigurationName sw test
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	// The number of entries to return on each page.
 	//
 	// Valid values: 1 to 100.
 	//
 	// Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token to return for the next page. If this is your first time to call this operation, you do not need to specify the `NextToken` parameter.
 	//
 	// When you call this operation for the first time, if the total number of entries to return exceeds the value of `MaxResults`, the entries are truncated. Only the entries that match the value of `MaxResults` are returned, and the excess entries are not returned. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
+	//
+	// example:
+	//
+	// K1c3o9K7pFxoTtxH1Nm7MMLb7zrDGvftYBQBPDVv7AD3a8yhRb3Mk8L9ivmN6bFSjfkZNTAg3h4****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The status notification. The status notification can be used to filter access configurations.
 	//
 	// Set the value to ReprovisionRequired, which indicates that the operation queries all access configurations that need to be re-provisioned.
+	//
+	// example:
+	//
+	// ReprovisionRequired
 	StatusNotifications *string `json:"StatusNotifications,omitempty" xml:"StatusNotifications,omitempty"`
 }
 
@@ -6594,18 +8629,39 @@ type ListAccessConfigurationsResponseBody struct {
 	AccessConfigurations []*ListAccessConfigurationsResponseBodyAccessConfigurations `json:"AccessConfigurations,omitempty" xml:"AccessConfigurations,omitempty" type:"Repeated"`
 	// Indicates whether the queried entries are truncated. Valid values:
 	//
-	// *   true: The queried entries are truncated.
-	// *   false: The queried entries are not truncated.
+	// 	- true: The queried entries are truncated.
+	//
+	// 	- false: The queried entries are not truncated.
+	//
+	// example:
+	//
+	// false
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is returned for the next page.
 	//
 	// >  This parameter is returned only when the `IsTruncated` parameter is set to `true`.
+	//
+	// example:
+	//
+	// K1c3o9K7pFxoTtxH1Nm7MMLb7zrDGvftYBQBPDVv7AD3a8yhRb3Mk8L9ivmN6bFSjfkZNTAg3h4****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 2BC0CBAC-45E1-5BD3-BF6E-F69D1D5391C2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 2
 	TotalCounts *int32 `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
 }
 
@@ -6649,22 +8705,50 @@ func (s *ListAccessConfigurationsResponseBody) SetTotalCounts(v int32) *ListAcce
 
 type ListAccessConfigurationsResponseBodyAccessConfigurations struct {
 	// The ID of the access configuration.
+	//
+	// example:
+	//
+	// ac-00jhtfl8thteu6uj****
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
 	// The name of the access configuration.
+	//
+	// example:
+	//
+	// ECS-Admin
 	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
 	// The time when the access configuration was created.
+	//
+	// example:
+	//
+	// 2021-11-02T08:44:23Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the access configuration.
+	//
+	// example:
+	//
+	// This is an access configuration.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The initial web page that is displayed after a CloudSSO user accesses an account in your resource directory by using the access configuration.
+	//
+	// example:
+	//
+	// https://cloudsso.console.aliyun.com
 	RelayState *string `json:"RelayState,omitempty" xml:"RelayState,omitempty"`
 	// The duration of a session in which a CloudSSO user accesses an account in your resource directory by using the access configuration.
 	//
 	// Unit: seconds.
+	//
+	// example:
+	//
+	// 900
 	SessionDuration *int32 `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
 	// The status notification.
 	StatusNotifications []*string `json:"StatusNotifications,omitempty" xml:"StatusNotifications,omitempty" type:"Repeated"`
 	// The time when the information about the access configuration was modified.
+	//
+	// example:
+	//
+	// 2021-11-02T08:44:23Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -6749,8 +8833,16 @@ type ListDirectoriesResponseBody struct {
 	// The directories.
 	Directories []*ListDirectoriesResponseBodyDirectories `json:"Directories,omitempty" xml:"Directories,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 9A504392-F06D-5029-AB64-6654CB9F1DC1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The number of directories.
+	//
+	// example:
+	//
+	// 1
 	TotalCounts *int32 `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
 }
 
@@ -6779,14 +8871,34 @@ func (s *ListDirectoriesResponseBody) SetTotalCounts(v int32) *ListDirectoriesRe
 
 type ListDirectoriesResponseBodyDirectories struct {
 	// The time when the directory was created.
+	//
+	// example:
+	//
+	// 2021-06-30T08:35:26Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The name of the directory.
+	//
+	// example:
+	//
+	// new-example
 	DirectoryName *string `json:"DirectoryName,omitempty" xml:"DirectoryName,omitempty"`
 	// The region ID of the directory.
+	//
+	// example:
+	//
+	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The time when the directory was modified.
+	//
+	// example:
+	//
+	// 2021-10-25T09:13:24Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -6854,6 +8966,10 @@ func (s *ListDirectoriesResponse) SetBody(v *ListDirectoriesResponseBody) *ListD
 
 type ListExternalSAMLIdPCertificatesRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 }
 
@@ -6872,10 +8988,18 @@ func (s *ListExternalSAMLIdPCertificatesRequest) SetDirectoryId(v string) *ListE
 
 type ListExternalSAMLIdPCertificatesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 400979BC-92EC-58B9-B47C-6913BD56A6FD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The SAML signing certificates.
 	SAMLIdPCertificates []*ListExternalSAMLIdPCertificatesResponseBodySAMLIdPCertificates `json:"SAMLIdPCertificates,omitempty" xml:"SAMLIdPCertificates,omitempty" type:"Repeated"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	TotalCounts *int32 `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
 }
 
@@ -6904,24 +9028,64 @@ func (s *ListExternalSAMLIdPCertificatesResponseBody) SetTotalCounts(v int32) *L
 
 type ListExternalSAMLIdPCertificatesResponseBodySAMLIdPCertificates struct {
 	// The ID of the certificate.
+	//
+	// example:
+	//
+	// idp-c-00dt9gnl7fmjaw9c****
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 	// The issuer of the certificate.
+	//
+	// example:
+	//
+	// 1.2.840.113549.1.9.1=#160d696e666f406f6b74612e63****,CN=dev-xxxxxx,OU=SSOProvider,O=Okta,L=San Francisco,ST=California,C=US
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
 	// The time when the certificate expires.
+	//
+	// example:
+	//
+	// 2030-06-23T07:04:37Z
 	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
 	// The time when the certificate was created.
+	//
+	// example:
+	//
+	// 2020-06-23T07:03:37Z
 	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
 	// The public key of the certificate. The value of this parameter is in the PEM format and is Base64-encoded.
+	//
+	// example:
+	//
+	// MIIBIjANBgkqhkiG****
 	PublicKey *string `json:"PublicKey,omitempty" xml:"PublicKey,omitempty"`
 	// The serial number of the certificate.
+	//
+	// example:
+	//
+	// 159289587****
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 	// The signature algorithm of the certificate.
+	//
+	// example:
+	//
+	// SHA256withRSA
 	SignatureAlgorithm *string `json:"SignatureAlgorithm,omitempty" xml:"SignatureAlgorithm,omitempty"`
 	// The subject of the certificate.
+	//
+	// example:
+	//
+	// 1.2.840.113549.1.9.1=#160d696e666f406f6b74612e63****,CN=dev-xxxxxx,OU=SSOProvider,O=Okta,L=San Francisco,ST=California,C=US
 	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
 	// The version of the certificate.
+	//
+	// example:
+	//
+	// 3
 	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
 	// The X.509 certificate in the PEM format.
+	//
+	// example:
+	//
+	// MIIDpDCCAoygAwIBAgIG****
 	X509Certificate *string `json:"X509Certificate,omitempty" xml:"X509Certificate,omitempty"`
 }
 
@@ -7014,18 +9178,34 @@ func (s *ListExternalSAMLIdPCertificatesResponse) SetBody(v *ListExternalSAMLIdP
 
 type ListGroupMembersRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The ID of the group.
+	//
+	// example:
+	//
+	// g-00jqzghi2n3o5hkh****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The number of entries to return on each page.
 	//
 	// Valid values: 1 to 100.
 	//
 	// Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token to return for the next page. If this is your first time to call this operation, you do not need to specify `NextToken` .
 	//
 	// When you call this operation for the first time, if the total number of entries to return exceeds the value of `MaxResults`, the entries are truncated. Only the entries that match the value of `MaxResults` are returned, and the excess entries are not returned. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
+	//
+	// example:
+	//
+	// K1c3o9K7pFxoTtxH1Nm7MMLb7zrDGvftYBQBPDVv7AD3a8yhRb3Mk8L9ivmN6bFSjfkZNTAg3h4****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
@@ -7062,18 +9242,39 @@ type ListGroupMembersResponseBody struct {
 	GroupMembers []*ListGroupMembersResponseBodyGroupMembers `json:"GroupMembers,omitempty" xml:"GroupMembers,omitempty" type:"Repeated"`
 	// Indicates whether the queried entries are truncated. Valid values:
 	//
-	// *   true: The queried entries are truncated.
-	// *   false: The queried entries are not truncated.
+	// 	- true: The queried entries are truncated.
+	//
+	// 	- false: The queried entries are not truncated.
+	//
+	// example:
+	//
+	// false
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is returned for the next page.
 	//
 	// >  This parameter is returned only when the value of `IsTruncated` is `true`.
+	//
+	// example:
+	//
+	// K1c3o9K7pFxoTtxH1Nm7MMLb7zrDGvftYBQBPDVv7AD3a8yhRb3Mk8L9ivmN6bFSjfkZNTAg3h4****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// BB759F84-2C64-5C36-B6C6-253172C5C370
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 2
 	TotalCounts *int32 `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
 }
 
@@ -7117,28 +9318,66 @@ func (s *ListGroupMembersResponseBody) SetTotalCounts(v int32) *ListGroupMembers
 
 type ListGroupMembersResponseBodyGroupMembers struct {
 	// The description of the user.
+	//
+	// example:
+	//
+	// This is a user.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The display name of the user.
+	//
+	// example:
+	//
+	// Alice
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The email address of the user.
+	//
+	// example:
+	//
+	// AliceLee@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// The ID of the group.
+	//
+	// example:
+	//
+	// g-00jqzghi2n3o5hkh****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The time when the user was added to the user group.
+	//
+	// example:
+	//
+	// 2021-11-01T06:58:18Z
 	JoinTime *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
 	// The type of the user. Valid values:
 	//
-	// *   Manual: The user is manually created.
-	// *   Synchronized: The user is synchronized from an external identity provider (IdP).
+	// 	- Manual: The user is manually created.
+	//
+	// 	- Synchronized: The user is synchronized from an external identity provider (IdP).
+	//
+	// example:
+	//
+	// Manual
 	ProvisionType *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
 	// The status of the user. Valid values:
 	//
-	// *   Enabled: The logon of the user is enabled.
-	// *   Disabled: The logon of the user is disabled.
+	// 	- Enabled: The logon of the user is enabled.
+	//
+	// 	- Disabled: The logon of the user is disabled.
+	//
+	// example:
+	//
+	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the user.
+	//
+	// example:
+	//
+	// u-00q8wbq42wiltcrk****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The name of the user.
+	//
+	// example:
+	//
+	// Alice
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -7226,27 +9465,48 @@ func (s *ListGroupMembersResponse) SetBody(v *ListGroupMembersResponseBody) *Lis
 
 type ListGroupsRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The filter condition.
 	//
 	// Specify the value in the `<Attribute> <Operator> <Value>` format. The value is not case sensitive. You can set `<Attribute>` only to `GroupName` and `<Operator>` only to `eq` or `sw`. The value eq indicates Equals. The value sw indicates Starts With.
 	//
 	// For example, if you set Filter to GroupName sw test, the operation queries the groups whose names start with test. If you set Filter to GroupName eq testgroup, the operation queries the group whose name is testgroup.
+	//
+	// example:
+	//
+	// GroupName eq testgroup
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	// The number of entries to return on each page.
 	//
 	// Valid values: 1 to 100.
 	//
 	// Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token to return for the next page. If this is your first time to call this operation, you do not need to specify `NextToken`.
 	//
 	// When you call this operation for the first time, if the total number of entries to return exceeds the value of `MaxResults`, the entries are truncated. Only the entries that match the value of `MaxResults` are returned, and the excess entries are not returned. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
+	//
+	// example:
+	//
+	// K1c3o9K7pFxoTtxH1Nm7MMLb7zrDGvftYBQBPDVv7AD3a8yhRb3Mk8L9ivmN6bFSjfkZNTAg3h4****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The type of the group. The type can be used to filter groups. Valid values:
 	//
-	// *   Manual: The group is manually created.
-	// *   Synchronized: The group is synchronized from an external identity provider (IdP).
+	// 	- Manual: The group is manually created.
+	//
+	// 	- Synchronized: The group is synchronized from an external identity provider (IdP).
+	//
+	// example:
+	//
+	// Manual
 	ProvisionType *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
 }
 
@@ -7288,18 +9548,39 @@ type ListGroupsResponseBody struct {
 	Groups []*ListGroupsResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
 	// Indicates whether the queried entries are truncated. Valid values:
 	//
-	// *   true: The queried entries are truncated.
-	// *   false: The queried entries are not truncated.
+	// 	- true: The queried entries are truncated.
+	//
+	// 	- false: The queried entries are not truncated.
+	//
+	// example:
+	//
+	// false
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is returned for the next page.
 	//
 	// >  This parameter is returned only when the `IsTruncated` parameter is set to `true`.
+	//
+	// example:
+	//
+	// K1c3o9K7pFxoTtxH1Nm7MMLb7zrDGvftYBQBPDVv7AD3a8yhRb3Mk8L9ivmN6bFSjfkZNTAg3h4****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 768F908D-A66A-5A5D-816C-20C93CBBFEE3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 3
 	TotalCounts *int32 `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
 }
 
@@ -7343,19 +9624,44 @@ func (s *ListGroupsResponseBody) SetTotalCounts(v int32) *ListGroupsResponseBody
 
 type ListGroupsResponseBodyGroups struct {
 	// The time when the group was created.
+	//
+	// example:
+	//
+	// 2021-11-01T02:38:27Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the group.
+	//
+	// example:
+	//
+	// This is a group.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the group.
+	//
+	// example:
+	//
+	// g-00jqzghi2n3o5hkh****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The name of the group.
+	//
+	// example:
+	//
+	// TestGroup
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The type of the group. Valid values:
 	//
-	// *   Manual: The group is manually created.
-	// *   Synchronized: The group is synchronized from an external IdP.
+	// 	- Manual: The group is manually created.
+	//
+	// 	- Synchronized: The group is synchronized from an external IdP.
+	//
+	// example:
+	//
+	// Manual
 	ProvisionType *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
 	// The time when the information about the group was modified.
+	//
+	// example:
+	//
+	// 2021-11-01T02:38:27Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -7428,18 +9734,34 @@ func (s *ListGroupsResponse) SetBody(v *ListGroupsResponseBody) *ListGroupsRespo
 
 type ListJoinedGroupsForUserRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The number of entries to return on each page.
 	//
 	// Valid values: 1 to 100.
 	//
 	// Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token to return for the next page. If this is your first time to call this operation, you do not need to specify `NextToken` .
 	//
 	// When you call this operation for the first time, if the total number of entries to return exceeds the value of `MaxResults`, the entries are truncated. Only the entries that match the value of `MaxResults` are returned, and the excess entries are not returned. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
+	//
+	// example:
+	//
+	// K1c3o9K7pFxoTtxH1Nm7MMLb7zrDGvftYBQBPDVv7AD3a8yhRb3Mk8L9ivmN6bFSjfkZNTAg3h4****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the user.
+	//
+	// example:
+	//
+	// u-00q8wbq42wiltcrk****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -7474,20 +9796,41 @@ func (s *ListJoinedGroupsForUserRequest) SetUserId(v string) *ListJoinedGroupsFo
 type ListJoinedGroupsForUserResponseBody struct {
 	// Indicates whether the queried entries are truncated. Valid values:
 	//
-	// *   true: The queried entries are truncated.
-	// *   false: The queried entries are not truncated.
+	// 	- true: The queried entries are truncated.
+	//
+	// 	- false: The queried entries are not truncated.
+	//
+	// example:
+	//
+	// false
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
 	// The groups to which the user is added.
 	JoinedGroups []*ListJoinedGroupsForUserResponseBodyJoinedGroups `json:"JoinedGroups,omitempty" xml:"JoinedGroups,omitempty" type:"Repeated"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is returned for the next page.
 	//
 	// >  This parameter is returned only when the value of `IsTruncated` is `true`.
+	//
+	// example:
+	//
+	// K1c3o9K7pFxoTtxH1Nm7MMLb7zrDGvftYBQBPDVv7AD3a8yhRb3Mk8L9ivmN6bFSjfkZNTAg3h4****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// E9BBB45F-7877-5DE9-96A5-20E6CFA48929
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 2
 	TotalCounts *int32 `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
 }
 
@@ -7531,19 +9874,44 @@ func (s *ListJoinedGroupsForUserResponseBody) SetTotalCounts(v int32) *ListJoine
 
 type ListJoinedGroupsForUserResponseBodyJoinedGroups struct {
 	// The description of the group.
+	//
+	// example:
+	//
+	// This is a group.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the group.
+	//
+	// example:
+	//
+	// g-00jqzghi2n3o5hkh****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The name of the group.
+	//
+	// example:
+	//
+	// TestGroup
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The time when the user was added to the user group.
+	//
+	// example:
+	//
+	// 2021-11-01T06:58:18Z
 	JoinTime *string `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
 	// The type of the group. Valid values:
 	//
-	// *   Manual: The group is manually created.
-	// *   Synchronized: The user is synchronized from an external identity provider (IdP).
+	// 	- Manual: The group is manually created.
+	//
+	// 	- Synchronized: The user is synchronized from an external identity provider (IdP).
+	//
+	// example:
+	//
+	// Manual
 	ProvisionType *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
 	// The ID of the user.
+	//
+	// example:
+	//
+	// u-00q8wbq42wiltcrk****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -7616,8 +9984,16 @@ func (s *ListJoinedGroupsForUserResponse) SetBody(v *ListJoinedGroupsForUserResp
 
 type ListMFADevicesForUserRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The ID of the user.
+	//
+	// example:
+	//
+	// u-00q8wbq42wiltcrk****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -7643,8 +10019,16 @@ type ListMFADevicesForUserResponseBody struct {
 	// The MFA devices.
 	MFADevices []*ListMFADevicesForUserResponseBodyMFADevices `json:"MFADevices,omitempty" xml:"MFADevices,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 8B9982ED-FD0D-5622-8EA0-7B768685DCE7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of MFA devices.
+	//
+	// example:
+	//
+	// 1
 	TotalCounts *int32 `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
 }
 
@@ -7673,14 +10057,34 @@ func (s *ListMFADevicesForUserResponseBody) SetTotalCounts(v int32) *ListMFADevi
 
 type ListMFADevicesForUserResponseBodyMFADevices struct {
 	// The ID of the MFA device.
+	//
+	// example:
+	//
+	// mfa-00ujhet8pycljj7j****
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	// The name of the MFA device.
+	//
+	// example:
+	//
+	// Alice-MFA1
 	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
 	// The type of the MFA device. The value is fixed as TOTP, which indicates a virtual MFA device. Virtual MFA devices are based on the Time-based One-time Password (TOTP) algorithm.
+	//
+	// example:
+	//
+	// TOTP
 	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
 	// The time when the MFA device was enabled.
+	//
+	// example:
+	//
+	// 2021-10-29T09:14:06Z
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
 	// The ID of the user.
+	//
+	// example:
+	//
+	// u-00q8wbq42wiltcrk****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -7748,15 +10152,28 @@ func (s *ListMFADevicesForUserResponse) SetBody(v *ListMFADevicesForUserResponse
 
 type ListPermissionPoliciesInAccessConfigurationRequest struct {
 	// The ID of the access configuration.
+	//
+	// example:
+	//
+	// ac-00jhtfl8thteu6uj****
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The type of the policy. The type can be used to filter policies. Valid values:
 	//
-	// *   System: system policy
-	// *   Inline: inline policy
+	// 	- System: system policy
+	//
+	// 	- Inline: inline policy
 	//
 	// If you do not specify this parameter, all types of policies are queried.
+	//
+	// example:
+	//
+	// System
 	PermissionPolicyType *string `json:"PermissionPolicyType,omitempty" xml:"PermissionPolicyType,omitempty"`
 }
 
@@ -7787,8 +10204,16 @@ type ListPermissionPoliciesInAccessConfigurationResponseBody struct {
 	// The policies.
 	PermissionPolicies []*ListPermissionPoliciesInAccessConfigurationResponseBodyPermissionPolicies `json:"PermissionPolicies,omitempty" xml:"PermissionPolicies,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 3A5E771F-1F5A-5555-A64E-579748AAFD98
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of policies.
+	//
+	// example:
+	//
+	// 2
 	TotalCounts *int32 `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
 }
 
@@ -7817,14 +10242,30 @@ func (s *ListPermissionPoliciesInAccessConfigurationResponseBody) SetTotalCounts
 
 type ListPermissionPoliciesInAccessConfigurationResponseBodyPermissionPolicies struct {
 	// The time when the policy was created for the access configuration.
+	//
+	// example:
+	//
+	// 2021-11-03T06:37:25Z
 	AddTime *string `json:"AddTime,omitempty" xml:"AddTime,omitempty"`
 	// The configurations of the inline policy.
 	//
 	// >  This parameter is returned only when the value of the PermissionPolicyType parameter is Inline.
+	//
+	// example:
+	//
+	// {\\"Statement\\": [{\\"Action\\": \\"*\\",\\"Effect\\": \\"Allow\\",\\"Resource\\": \\"*\\"}],\\"Version\\": \\"1\\"}
 	PermissionPolicyDocument *string `json:"PermissionPolicyDocument,omitempty" xml:"PermissionPolicyDocument,omitempty"`
 	// The name of the policy.
+	//
+	// example:
+	//
+	// AliyunECSFullAccess
 	PermissionPolicyName *string `json:"PermissionPolicyName,omitempty" xml:"PermissionPolicyName,omitempty"`
 	// The type of the policy.
+	//
+	// example:
+	//
+	// System
 	PermissionPolicyType *string `json:"PermissionPolicyType,omitempty" xml:"PermissionPolicyType,omitempty"`
 }
 
@@ -7887,6 +10328,10 @@ func (s *ListPermissionPoliciesInAccessConfigurationResponse) SetBody(v *ListPer
 
 type ListSCIMServerCredentialsRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 }
 
@@ -7905,10 +10350,18 @@ func (s *ListSCIMServerCredentialsRequest) SetDirectoryId(v string) *ListSCIMSer
 
 type ListSCIMServerCredentialsResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// FE4B7037-C315-5DD5-826E-57A87950BCD1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The SCIM credentials.
 	SCIMServerCredentials []*ListSCIMServerCredentialsResponseBodySCIMServerCredentials `json:"SCIMServerCredentials,omitempty" xml:"SCIMServerCredentials,omitempty" type:"Repeated"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	TotalCounts *int32 `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
 }
 
@@ -7937,19 +10390,44 @@ func (s *ListSCIMServerCredentialsResponseBody) SetTotalCounts(v int32) *ListSCI
 
 type ListSCIMServerCredentialsResponseBodySCIMServerCredentials struct {
 	// The time when the SCIM credential was created.
+	//
+	// example:
+	//
+	// 2021-11-09T08:12:52Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The ID of the SCIM credential.
+	//
+	// example:
+	//
+	// scimcred-004whl0kvfwcypbi****
 	CredentialId *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
 	// The type of the SCIM credential.
+	//
+	// example:
+	//
+	// BearerToken
 	CredentialType *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The time when the SCIM credential expires.
+	//
+	// example:
+	//
+	// 2022-11-09T08:12:52Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The status of the SCIM credential. Valid values:
 	//
-	// *   Enabled: The SCIM credential is enabled.
-	// *   Disabled: The SCIM credential is disabled.
+	// 	- Enabled: The SCIM credential is enabled.
+	//
+	// 	- Disabled: The SCIM credential is disabled.
+	//
+	// example:
+	//
+	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -8022,8 +10500,16 @@ func (s *ListSCIMServerCredentialsResponse) SetBody(v *ListSCIMServerCredentials
 
 type ListTasksRequest struct {
 	// The ID of the access configuration. The ID can be used to filter access permissions.
+	//
+	// example:
+	//
+	// ac-00jhtfl8thteu6uj****
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The filter condition.
 	//
@@ -8032,53 +10518,96 @@ type ListTasksRequest struct {
 	// For example, if you set the Filter parameter to StartTime ge 2021-03-15T01:12:23Z, the operation queries the tasks from 2021-03-15T01:12:23 GMT.
 	//
 	// >  If you do not specify this parameter, the operation queries the tasks within the previous 24 hours by default.
+	//
+	// example:
+	//
+	// StartTime ge 2021-03-15T01:12:23Z
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	// The maximum number of entries per page.
 	//
 	// Valid values: 1 to 20.
 	//
 	// Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. If this is your first time to call this operation, you do not need to specify the `NextToken` parameter.
 	//
 	// When you call this operation for the first time, if the total number of entries to return exceeds the value of `MaxResults`, the entries are truncated. Only the entries that match the value of `MaxResults` are returned, and the excess entries are not returned. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
+	//
+	// example:
+	//
+	// K1c3o9K7pFxoTtxH1Nm7MMLb7zrDGvftYBQBPDVv7AD3a8yhRb3Mk8L9ivmN6bFSjfkZNTAg3h4****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the CloudSSO identity. The ID can be used to filter access permissions.
 	//
-	// *   If you set `PrincipalType` to `User`, set `PrincipalId` to the ID of the CloudSSO user.
-	// *   If you set `PrincipalType` to `Group`, set `PrincipalId` to the ID of the CloudSSO group.
+	// 	- If you set `PrincipalType` to `User`, set `PrincipalId` to the ID of the CloudSSO user.
+	//
+	// 	- If you set `PrincipalType` to `Group`, set `PrincipalId` to the ID of the CloudSSO group.
 	//
 	// >  You can use the type to filter access permissions only if you specify both `PrincipalId` and `PrincipalType`.
+	//
+	// example:
+	//
+	// u-00q8wbq42wiltcrk****
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
 	// The type of the CloudSSO identity. The type can be used to filter access permissions. Valid values:
 	//
-	// *   User
-	// *   Group
+	// 	- User
+	//
+	// 	- Group
 	//
 	// >  You can use the type to filter access permissions only if you specify both `PrincipalId` and `PrincipalType`.
+	//
+	// example:
+	//
+	// User
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
 	// The ID of the task. The ID can be used to filter tasks. Valid values:
 	//
-	// *   InProgress: The task is running.
-	// *   Success: The task is successful.
-	// *   Failed: The task failed.
+	// 	- InProgress: The task is running.
+	//
+	// 	- Success: The task is successful.
+	//
+	// 	- Failed: The task failed.
+	//
+	// example:
+	//
+	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the task object. The ID can be used to filter access permissions.
 	//
 	// >  You can use the type to filter access permissions only if you specify both `TargetId` and `TargetType`.
+	//
+	// example:
+	//
+	// 114240524784****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The type of the task object. The type can be used to filter access permissions.
 	//
 	// Set the value to RD-Account, which specifies the accounts in the resource directory.
 	//
 	// >  You can use the type to filter access permissions only if you specify both `TargetId` and `TargetType`.
+	//
+	// example:
+	//
+	// RD-Account
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 	// The type of the task. The type can be used to filter tasks. Valid values:
 	//
-	// *   ProvisionAccessConfiguration: An access configuration is provisioned.
-	// *   DeprovisionAccessConfiguration: An access configuration is de-provisioned.
-	// *   CreateAccessAssignment: Access permissions on an account in the resource directory are assigned.
-	// *   DeleteAccessAssignment: Access permissions on an account in the resource directory are removed.
+	// 	- ProvisionAccessConfiguration: An access configuration is provisioned.
+	//
+	// 	- DeprovisionAccessConfiguration: An access configuration is de-provisioned.
+	//
+	// 	- CreateAccessAssignment: Access permissions on an account in the resource directory are assigned.
+	//
+	// 	- DeleteAccessAssignment: Access permissions on an account in the resource directory are removed.
+	//
+	// example:
+	//
+	// CreateAccessAssignment
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -8148,20 +10677,41 @@ func (s *ListTasksRequest) SetTaskType(v string) *ListTasksRequest {
 type ListTasksResponseBody struct {
 	// Indicates whether the queried entries are truncated. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
 	// The maximum number of entries returned per page.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
 	//
 	// >  This parameter is returned only when the value of `IsTruncated` is `true`.
+	//
+	// example:
+	//
+	// K1c3o9K7pFxoTtxH1Nm7MMLb7zrDGvftYBQBPDVv7AD3a8yhRb3Mk8L9ivmN6bFSjfkZNTAg3h4****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// C0DA2DFC-EB18-59EF-BD82-C30862EBA3A3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The tasks.
 	Tasks []*ListTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	TotalCounts *int32 `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
 }
 
@@ -8205,52 +10755,122 @@ func (s *ListTasksResponseBody) SetTotalCounts(v int32) *ListTasksResponseBody {
 
 type ListTasksResponseBodyTasks struct {
 	// The ID of the access configuration.
+	//
+	// example:
+	//
+	// ac-00jhtfl8thteu6uj****
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
 	// The name of the access configuration.
+	//
+	// example:
+	//
+	// ECS-Admin
 	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
 	// The end time of the task.
+	//
+	// example:
+	//
+	// 2021-11-09T05:50:50Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The cause of the task failure.
 	//
 	// >  This parameter is returned only when the value of `Status` is `Failed`.
+	//
+	// example:
+	//
+	// No Permission.
 	FailureReason *string `json:"FailureReason,omitempty" xml:"FailureReason,omitempty"`
 	// The ID of the CloudSSO identity.
+	//
+	// example:
+	//
+	// u-00q8wbq42wiltcrk****
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
 	// The name of the CloudSSO identity.
+	//
+	// example:
+	//
+	// Alice
 	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
 	// The type of the CloudSSO identity. Valid values:
 	//
-	// *   User
-	// *   Group
+	// 	- User
+	//
+	// 	- Group
+	//
+	// example:
+	//
+	// User
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
 	// The start time of the task.
+	//
+	// example:
+	//
+	// 2021-11-09T05:50:50Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The task status. Valid values:
 	//
-	// *   InProgress: The task is running.
-	// *   Success: The task is successful.
-	// *   Failed: The task failed.
+	// 	- InProgress: The task is running.
+	//
+	// 	- Success: The task is successful.
+	//
+	// 	- Failed: The task failed.
+	//
+	// example:
+	//
+	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the task object.
+	//
+	// example:
+	//
+	// 114240524784****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The name of the task object.
+	//
+	// example:
+	//
+	// dev-test
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
 	// The path ID of the task object in the resource directory.
+	//
+	// example:
+	//
+	// rd-3G****/r-Wm****/114240524784****
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	// The path name of the task object in the resource directory.
+	//
+	// example:
+	//
+	// rd-3G****/root/dev-test
 	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
 	// The type of the task object.
 	//
 	// The value is fixed as RD-Account, which indicates the accounts in the resource directory.
+	//
+	// example:
+	//
+	// RD-Account
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 	// The ID of the job.
+	//
+	// example:
+	//
+	// t-sh5k4gesm6twlrqb****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The task type. Valid values:
 	//
-	// *   ProvisionAccessConfiguration: An access configuration is provisioned.
-	// *   DeprovisionAccessConfiguration: An access configuration is de-provisioned.
-	// *   CreateAccessAssignment: Access permissions on an account in the resource directory are assigned.
-	// *   DeleteAccessAssignment: Access permissions on an account in the resource directory are removed.
+	// 	- ProvisionAccessConfiguration: An access configuration is provisioned.
+	//
+	// 	- DeprovisionAccessConfiguration: An access configuration is de-provisioned.
+	//
+	// 	- CreateAccessAssignment: Access permissions on an account in the resource directory are assigned.
+	//
+	// 	- DeleteAccessAssignment: Access permissions on an account in the resource directory are removed.
+	//
+	// example:
+	//
+	// CreateAccessAssignment
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -8373,18 +10993,34 @@ func (s *ListTasksResponse) SetBody(v *ListTasksResponseBody) *ListTasksResponse
 
 type ListUserProvisioningEventsRequest struct {
 	// The ID of the resource directory.
+	//
+	// example:
+	//
+	// d-00xz91nf****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The maximum number of entries per page.
 	//
 	// Valid values: 1 to 100.
 	//
 	// Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used to initiate the next request. If this is your first time to call this operation, you do not need to specify the `NextToken` parameter.
 	//
 	// When you call this operation for the first time, if the total number of entries to return is larger than the value of `MaxResults`, the entries are truncated. The system returns entries based on the value of `MaxResults`, and does not return the excess entries. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
+	//
+	// example:
+	//
+	// K1c3o9K7pFxoTtxH1Nm7MMLb7zrDGvftYBQBPDVv7AD3a8yhRb3Mk8L9ivmN6bFSjfkZNTAg3h4****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the RAM user provisioning.
+	//
+	// example:
+	//
+	// up-002axzhapcbz6e63****
 	UserProvisioningId *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
 }
 
@@ -8419,22 +11055,43 @@ func (s *ListUserProvisioningEventsRequest) SetUserProvisioningId(v string) *Lis
 type ListUserProvisioningEventsResponseBody struct {
 	// Indicates whether the queried entries are truncated. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
 	// The maximum number of entries per page.
 	//
 	// Valid values: 1 to 100.
 	//
 	// Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used to initiate the next request.
 	//
 	// >  This parameter is returned only when the `IsTruncated` parameter is set to `true`.
+	//
+	// example:
+	//
+	// 2eEMmhmLa1b7Bbj9UzCgZUGj8DpDeG5TbNknuNKNP2h84KjJRnAb7vzzSDkYNmsidnAybyJYBfnPPB6xfgw54B1Wub2KQmC8LofzqBW2Y****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 0D85B43D-EF98-396D-B426-837E428D2D39
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 110
 	TotalCounts *int32 `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
 	// The RAM user provisioning events.
 	UserProvisioningEvents []*ListUserProvisioningEventsResponseBodyUserProvisioningEvents `json:"UserProvisioningEvents,omitempty" xml:"UserProvisioningEvents,omitempty" type:"Repeated"`
@@ -8480,65 +11137,146 @@ func (s *ListUserProvisioningEventsResponseBody) SetUserProvisioningEvents(v []*
 
 type ListUserProvisioningEventsResponseBodyUserProvisioningEvents struct {
 	// The creation time.
+	//
+	// example:
+	//
+	// 2022-11-28T03:55:55Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The deletion policy. The policy is used to manage synchronized users when you delete the RAM user provisioning. Valid values:
 	//
-	// *   Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
-	// *   Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
+	// 	- Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
+	//
+	// 	- Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
+	//
+	// example:
+	//
+	// Keep
 	DeletionStrategy *string `json:"DeletionStrategy,omitempty" xml:"DeletionStrategy,omitempty"`
 	// The ID of the resource directory.
+	//
+	// example:
+	//
+	// d-003qew84****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The conflict handling policy. The policy is used when a RAM user has the same username as the CloudSSO user who is synchronized to RAM. Valid values:
 	//
-	// *   KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
-	// *   TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
+	// 	- KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
+	//
+	// 	- TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
+	//
+	// example:
+	//
+	// KeepBoth
 	DuplicationStrategy *string `json:"DuplicationStrategy,omitempty" xml:"DuplicationStrategy,omitempty"`
 	// The number of execution failures.
+	//
+	// example:
+	//
+	// 1
 	ErrorCount *int64 `json:"ErrorCount,omitempty" xml:"ErrorCount,omitempty"`
 	// The error message that is displayed when the last execution of the RAM user provisioning event failed.
+	//
+	// example:
+	//
+	// OperationConflict.UserProvisioning.Process.fail.ImsUserExists
 	ErrorInfo *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
 	// The ID of the RAM user provisioning event.
+	//
+	// example:
+	//
+	// upe-wjKyNDmZvyZOiRcJ****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
 	// The time at which the RAM user provisioning event was last executed.
+	//
+	// example:
+	//
+	// 2022-11-28T03:55:55Z
 	LatestAsyncTime *string `json:"LatestAsyncTime,omitempty" xml:"LatestAsyncTime,omitempty"`
 	// The identity ID of the RAM user provisioning. Valid values:
 	//
-	// *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\*\*\*\*\*\*\*\*).
-	// *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\*\*\*\*\*\*\*\*).
+	// 	- If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\\*\\*\\*\\*\\*\\*\\*\\*).
+	//
+	// 	- If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\\*\\*\\*\\*\\*\\*\\*\\*).
+	//
+	// example:
+	//
+	// g-02ha881d*****
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
 	// The identity name of the RAM user provisioning. Valid values:
 	//
-	// *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user group.
-	// *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user.
+	// 	- If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user group.
+	//
+	// 	- If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user.
+	//
+	// example:
+	//
+	// exampleGroupName
 	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
 	// The identity type of the RAM user provisioning. Valid values:
 	//
-	// *   User: The identity of the RAM user provisioning is a CloudSSO user.
-	// *   Group: The identity of the RAM user provisioning is a CloudSSO user group.
+	// 	- User: The identity of the RAM user provisioning is a CloudSSO user.
+	//
+	// 	- Group: The identity of the RAM user provisioning is a CloudSSO user group.
+	//
+	// example:
+	//
+	// Group
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
 	// The type of the source operation. Valid values:
 	//
-	// *   StartProvisioning: enables the RAM user provisioning.
-	// *   DeleteProvisioning: deletes the RAM user provisioning.
-	// *   AddUserToGroup: adds a user to a user group.
-	// *   RemoveUserFromGroup: removes a user from a user group.
-	// *   UserProvisioningDeletionClearing: deletes the RAM user provisioning and clears resources in the background.
+	// 	- StartProvisioning: enables the RAM user provisioning.
+	//
+	// 	- DeleteProvisioning: deletes the RAM user provisioning.
+	//
+	// 	- AddUserToGroup: adds a user to a user group.
+	//
+	// 	- RemoveUserFromGroup: removes a user from a user group.
+	//
+	// 	- UserProvisioningDeletionClearing: deletes the RAM user provisioning and clears resources in the background.
+	//
+	// example:
+	//
+	// StartProvisioning
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// The ID of the object for which you create the RAM user provisioning.
 	//
 	// The value is fixed as the ID of the account in the resource directory.````
+	//
+	// example:
+	//
+	// 153218*******
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The name of the object for which you create the RAM user provisioning.
 	//
 	// If `RD-Account` is returned, the value of this parameter is the name of the account that is used to access the instance.``
+	//
+	// example:
+	//
+	// exampleRdMember
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
 	// The path of the resource directory in which you create the RAM user provisioning for the object.
+	//
+	// example:
+	//
+	// rd-******/root/test**
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	// The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
+	//
+	// example:
+	//
+	// RD-Account
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 	// The modification time.
+	//
+	// example:
+	//
+	// 2022-11-28T03:55:55Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	// The ID of the RAM user provisioning.
+	//
+	// example:
+	//
+	// up-002axzhapcbz6e63****
 	UserProvisioningId *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
 }
 
@@ -8671,30 +11409,60 @@ func (s *ListUserProvisioningEventsResponse) SetBody(v *ListUserProvisioningEven
 
 type ListUserProvisioningsRequest struct {
 	// The ID of the resource directory.
+	//
+	// example:
+	//
+	// d-003qew84****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The maximum number of entries per page.
 	//
 	// Valid values: 1 to 100.
 	//
 	// Default value: 10.
+	//
+	// example:
+	//
+	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used to initiate the next request. If this is your first time to call this operation, you do not need to specify the `NextToken` parameter.
 	//
 	// When you call this operation for the first time, if the total number of entries to return is larger than the value of `MaxResults`, the entries are truncated. The system returns entries based on the value of `MaxResults`, and does not return the excess entries. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
+	//
+	// example:
+	//
+	// 27EbL9j4ZgZjsMZFqbZFgbwQ1VXFU1Khcpx9e2vrW1zwzTBmTGWaM7ixHhRin8SCsxaJdazYVCzeKc2UF2QkyGb83cPhr8ZxrzoaiTd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The identity ID of the RAM user provisioning. Valid values:
 	//
-	// *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\*\*\*\*\*\*\*\*).
-	// *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\*\*\*\*\*\*\*\*).
+	// 	- If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\\*\\*\\*\\*\\*\\*\\*\\*).
+	//
+	// 	- If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\\*\\*\\*\\*\\*\\*\\*\\*).
+	//
+	// example:
+	//
+	// u-88d73u*****
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
 	// The identity type of the RAM user provisioning. Valid values:
 	//
-	// *   User: The identity of the RAM user provisioning is a CloudSSO user.
-	// *   Group: The identity of the RAM user provisioning is a CloudSSO user group.
+	// 	- User: The identity of the RAM user provisioning is a CloudSSO user.
+	//
+	// 	- Group: The identity of the RAM user provisioning is a CloudSSO user group.
+	//
+	// example:
+	//
+	// RD-Account
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
 	// The ID of the object for which you create the RAM user provisioning. The value is fixed as the ID of the member in the resource directory.
+	//
+	// example:
+	//
+	// 1743382******
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
+	//
+	// example:
+	//
+	// User
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
@@ -8744,22 +11512,43 @@ func (s *ListUserProvisioningsRequest) SetTargetType(v string) *ListUserProvisio
 type ListUserProvisioningsResponseBody struct {
 	// Indicates whether the queried entries are truncated. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
 	// The maximum number of entries per page.
 	//
 	// Valid values: 1 to 100.
 	//
 	// Default value: 10.
+	//
+	// example:
+	//
+	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used to initiate the next request.
 	//
 	// >  This parameter is returned only when the `IsTruncated` parameter is set to `true`.
+	//
+	// example:
+	//
+	// 27EbL9j4ZgZjsMZFqbZFgbwQ1VXFU1Khcpx9e2vrW1zwzTBmTGWaM7ixHhRin8SCsxaJdazYVCzeKc2UF2QkyGb83cPhr8ZxrzoaiTd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// F76AF4FC-****-****-B7CB-74F3********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 110
 	TotalCounts *int32 `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
 	// The RAM user provisionings.
 	UserProvisionings []*ListUserProvisioningsResponseBodyUserProvisionings `json:"UserProvisionings,omitempty" xml:"UserProvisionings,omitempty" type:"Repeated"`
@@ -8805,54 +11594,124 @@ func (s *ListUserProvisioningsResponseBody) SetUserProvisionings(v []*ListUserPr
 
 type ListUserProvisioningsResponseBodyUserProvisionings struct {
 	// The creation time.
+	//
+	// example:
+	//
+	// 2022-11-28T03:55:42Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The deletion policy. The policy is used to manage synchronized users when you delete the RAM user provisioning. Valid values:
 	//
-	// *   Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
-	// *   Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
+	// 	- Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
+	//
+	// 	- Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
+	//
+	// example:
+	//
+	// Delete
 	DeletionStrategy *string `json:"DeletionStrategy,omitempty" xml:"DeletionStrategy,omitempty"`
 	// The description.
+	//
+	// example:
+	//
+	// this is a user provisioning.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the resource directory.
+	//
+	// example:
+	//
+	// d-003qew84****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The conflict handling policy. The policy is used when a RAM user has the same username as the CloudSSO user who is synchronized to RAM. Valid values:
 	//
-	// *   KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
-	// *   TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
+	// 	- KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
+	//
+	// 	- TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
+	//
+	// example:
+	//
+	// KeepBoth
 	DuplicationStrategy *string `json:"DuplicationStrategy,omitempty" xml:"DuplicationStrategy,omitempty"`
 	// The ID of the Alibaba Cloud account to which the resource directory belongs.
+	//
+	// example:
+	//
+	// 1639738******
 	OwnerPk *string `json:"OwnerPk,omitempty" xml:"OwnerPk,omitempty"`
 	// The identity ID of the RAM user provisioning. Valid values:
 	//
-	// *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\*\*\*\*\*\*\*\*).
-	// *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\*\*\*\*\*\*\*\*).
+	// 	- If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\\*\\*\\*\\*\\*\\*\\*\\*).
+	//
+	// 	- If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\\*\\*\\*\\*\\*\\*\\*\\*).
+	//
+	// example:
+	//
+	// g-02ha881d*****
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
 	// The identity name of the RAM user provisioning. Valid values:
 	//
-	// *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user group.
-	// *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user.
+	// 	- If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user group.
+	//
+	// 	- If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user.
+	//
+	// example:
+	//
+	// testGroupName
 	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
 	// The identity type of the RAM user provisioning. Valid values:
 	//
-	// *   User: The identity of the RAM user provisioning is a CloudSSO user.
-	// *   Group: The identity of the RAM user provisioning is a CloudSSO user group.
+	// 	- User: The identity of the RAM user provisioning is a CloudSSO user.
+	//
+	// 	- Group: The identity of the RAM user provisioning is a CloudSSO user group.
+	//
+	// example:
+	//
+	// Group
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
 	// The status of the RAM user provisioning. Valid values:
 	//
-	// *   Enabled
-	// *   Disabled
+	// 	- Enabled
+	//
+	// 	- Disabled
+	//
+	// example:
+	//
+	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the object for which you create the RAM user provisioning. The value is fixed as the ID of the member in the resource directory.
+	//
+	// example:
+	//
+	// 1743382******
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
+	//
+	// example:
+	//
+	// testRdMember
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
 	// The path of the resource directory in which you create the RAM user provisioning for the object.
+	//
+	// example:
+	//
+	// rd-******/root/test**
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	// The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
+	//
+	// example:
+	//
+	// RD-Account
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 	// The modification time.
+	//
+	// example:
+	//
+	// 2022-11-28T03:55:42Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	// The ID of the RAM user provisioning.
+	//
+	// example:
+	//
+	// up-002axzhapcbz6e63****
 	UserProvisioningId *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
 }
 
@@ -8974,33 +11833,59 @@ func (s *ListUserProvisioningsResponse) SetBody(v *ListUserProvisioningsResponse
 }
 
 type ListUsersRequest struct {
-	// The ID of the directory.
+	// The ID of the resource directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The filter condition.
 	//
-	// Specify the value in the `<Attribute> <Operator> <Value>` format. The value is not case-sensitive. You can set `<Attribute>` only to `UserName` and `Operator` only to `eq` or `sw`. The value eq indicates Equals, and the value sw indicates Starts With.
+	// You must specify the value in the `<Attribute> <Operator> <Value>` format. The value is not case-sensitive. You can set `<Attribute>` only to `UserName` and `Operator` only to `eq` or `sw`. The value eq indicates Equals, and the value sw indicates Start With.
 	//
-	// For example, if you set Filter to UserName sw test, the operation queries the users whose names start with test. If you set Filter to UserName eq testuser, the operation queries the user whose name is `testuser`.
+	// For example, if you set the Filter parameter to UserName sw test, the operation queries the users whose names start with test. If you set the Filter parameter to UserName eq testuser, the operation queries the user whose name is `testuser`.
+	//
+	// example:
+	//
+	// UserName sw test
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// Valid values: 1 to 100.
 	//
 	// Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token to return for the next page. If this is your first time to call this operation, you do not need to specify `NextToken`.
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of the `NextToken` parameter.
 	//
-	// When you call this operation for the first time, if the total number of entries to return exceeds the value of `MaxResults`, the entries are truncated. Only the entries that match the value of `MaxResults` are returned, and the excess entries are not returned. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
+	// When you call this operation for the first time, if the total number of entries to return is larger than the value of the `MaxResults` parameter, the entries are truncated. The system returns entries based on the value of the `MaxResults` parameter, and does not return the excess entries. In this case, the value of the response parameter `IsTruncated` is `true`, and the `NextToken` parameter is returned. In the next call, you can use the value of the `NextToken` parameter and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of the `IsTruncated` parameter becomes `false`. This way, all entries are returned.
+	//
+	// example:
+	//
+	// K1c3o9K7pFxoTtxH1Nm7MMLb7zrDGvftYBQBPDVv7AD3a8yhRb3Mk8L9ivmN6bFSjfkZNTAg3h4****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The type of the user. The type can be used to filter users. Valid values:
+	// The type of the user. The parameter can be used to filter users. Valid values:
 	//
-	// *   Manual: The user is manually created.
-	// *   Synchronized: The user is synchronized from an external IdP.
+	// 	- Manual: The user is manually created.
+	//
+	// 	- Synchronized: The user is synchronized from an external identity provider (IdP).
+	//
+	// example:
+	//
+	// Manual
 	ProvisionType *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
-	// The status of the user. The status can be used to filter users. Valid values:
+	// The status of the user. The parameter can be used to filter users. Valid values:
 	//
-	// *   Enabled: The logon of the user is enabled.
-	// *   Disabled: The logon of the user is disabled.
+	// 	- Enabled: The logon of the user is enabled.
+	//
+	// 	- Disabled: The logon of the user is disabled.
+	//
+	// example:
+	//
+	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -9045,18 +11930,39 @@ func (s *ListUsersRequest) SetStatus(v string) *ListUsersRequest {
 type ListUsersResponseBody struct {
 	// Indicates whether the queried entries are truncated. Valid values:
 	//
-	// *   true: The queried entries are truncated.
-	// *   false: The queried entries are not truncated.
-	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	// The number of entries returned per page.
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is returned for the next page.
+	// 	- true
 	//
-	// >  This parameter is returned only when the value of `IsTruncated` is `true`.
+	// 	- false
+	//
+	// example:
+	//
+	// false
+	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// >  This parameter is returned only when the `IsTruncated` parameter is `true`.
+	//
+	// example:
+	//
+	// K1c3o9K7pFxoTtxH1Nm7MMLb7zrDGvftYBQBPDVv7AD3a8yhRb3Mk8L9ivmN6bFSjfkZNTAg3h4****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
+	//
+	// example:
+	//
+	// 734D9AAC-9A8E-5DF6-A633-ADE70FF2A9B1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 2
 	TotalCounts *int32 `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
 	// The users.
 	Users []*ListUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
@@ -9101,34 +12007,81 @@ func (s *ListUsersResponseBody) SetUsers(v []*ListUsersResponseBodyUsers) *ListU
 }
 
 type ListUsersResponseBodyUsers struct {
-	// The time when the user was created.
+	// The time when the user was created. The value is displayed in UTC.
+	//
+	// example:
+	//
+	// 2021-06-30T09:20:08Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the user.
+	//
+	// example:
+	//
+	// This is a user.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The display name of the user.
+	//
+	// example:
+	//
+	// AliceLee
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The email address of the user.
-	Email      *string                               `json:"Email,omitempty" xml:"Email,omitempty"`
+	//
+	// example:
+	//
+	// AliceLee@example.onmicrosoft.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The identifier information about the user synchronized from an external IdP.
 	ExternalId *ListUsersResponseBodyUsersExternalId `json:"ExternalId,omitempty" xml:"ExternalId,omitempty" type:"Struct"`
 	// The first name of the user.
+	//
+	// example:
+	//
+	// Alice
 	FirstName *string `json:"FirstName,omitempty" xml:"FirstName,omitempty"`
 	// The last name of the user.
+	//
+	// example:
+	//
+	// Lee
 	LastName *string `json:"LastName,omitempty" xml:"LastName,omitempty"`
 	// The type of the user. Valid values:
 	//
-	// *   Manual: The user is manually created.
-	// *   Synchronized: The user is synchronized from an external IdP.
+	// 	- Manual: The user is manually created.
+	//
+	// 	- Synchronized: The user is synchronized from an external IdP.
+	//
+	// example:
+	//
+	// Synchronized
 	ProvisionType *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
 	// The status of the user. Valid values:
 	//
-	// *   Enabled: The logon of the user is enabled.
-	// *   Disabled: The logon of the user is disabled.
+	// 	- Enabled: The logon of the user is enabled.
+	//
+	// 	- Disabled: The logon of the user is disabled.
+	//
+	// example:
+	//
+	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the information about the user was modified.
+	// The time when the information about the user was modified. The value is displayed in UTC.
+	//
+	// example:
+	//
+	// 2021-06-30T09:20:08Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	// The ID of the user.
+	//
+	// example:
+	//
+	// u-00bikzkuzbb58luh****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The name of the user.
+	//
+	// example:
+	//
+	// AliceLee@example.onmicrosoft.com
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -9201,7 +12154,17 @@ func (s *ListUsersResponseBodyUsers) SetUserName(v string) *ListUsersResponseBod
 }
 
 type ListUsersResponseBodyUsersExternalId struct {
-	Id     *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The identifier of the user that is synchronized from an external IdP.
+	//
+	// example:
+	//
+	// c73******a5fdd5
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The method for external identity synchronization. Only System for Cross-domain Identity Management (SCIM) synchronization is supported.
+	//
+	// example:
+	//
+	// SCIM
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
 }
 
@@ -9254,12 +12217,28 @@ func (s *ListUsersResponse) SetBody(v *ListUsersResponseBody) *ListUsersResponse
 
 type ProvisionAccessConfigurationRequest struct {
 	// The ID of the access configuration.
+	//
+	// example:
+	//
+	// ac-00jhtfl8thteu6uj****
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
 	// The directory ID.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The ID of the task object.
+	//
+	// example:
+	//
+	// 114240524784****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The type of the task object. Set the value to RD-Account, which specifies the accounts in the resource directory.
+	//
+	// example:
+	//
+	// RD-Account
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
@@ -9293,6 +12272,10 @@ func (s *ProvisionAccessConfigurationRequest) SetTargetType(v string) *Provision
 
 type ProvisionAccessConfigurationResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// DFDC16B2-4509-5FA6-9FA5-3CD35E4292FB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The task information.
 	Tasks []*ProvisionAccessConfigurationResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
@@ -9318,28 +12301,70 @@ func (s *ProvisionAccessConfigurationResponseBody) SetTasks(v []*ProvisionAccess
 
 type ProvisionAccessConfigurationResponseBodyTasks struct {
 	// The ID of the access configuration.
+	//
+	// example:
+	//
+	// ac-00jhtfl8thteu6uj****
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
 	// The name of the access configuration.
+	//
+	// example:
+	//
+	// ECS-Admin
 	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
 	// The task status. Valid values:
 	//
-	// *   InProgress: The task is running.
-	// *   Success: The task is successful.
-	// *   Failed: The task failed.
+	// 	- InProgress: The task is running.
+	//
+	// 	- Success: The task is successful.
+	//
+	// 	- Failed: The task failed.
+	//
+	// example:
+	//
+	// InProgress
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the task object.
+	//
+	// example:
+	//
+	// 114240524784****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The name of the task object.
+	//
+	// example:
+	//
+	// dev-test
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
 	// The path ID of the task object in the resource directory.
+	//
+	// example:
+	//
+	// rd-3G****/r-Wm****/114240524784****
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	// The path name of the task object in the resource directory.
+	//
+	// example:
+	//
+	// rd-3G****/root/dev-test
 	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
 	// The type of the task object. The value is fixed as RD-Account, which indicates the accounts in the resource directory.
+	//
+	// example:
+	//
+	// RD-Account
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 	// The task ID.
+	//
+	// example:
+	//
+	// t-shqlhd8uvt280rtm****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The task type. The value is fixed as ProvisionAccessConfiguration, which indicates that an access configuration is provisioned.
+	//
+	// example:
+	//
+	// ProvisionAccessConfiguration
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -9433,9 +12458,17 @@ func (s *ProvisionAccessConfigurationResponse) SetBody(v *ProvisionAccessConfigu
 type RemoveExternalSAMLIdPCertificateRequest struct {
 	// The ID of the certificate.
 	//
-	// You can call the [ListExternalSAMLIdPCertificates](~~341629~~) operation to query the IDs of certificates.
+	// You can call the [ListExternalSAMLIdPCertificates](https://help.aliyun.com/document_detail/341629.html) operation to query the IDs of certificates.
+	//
+	// example:
+	//
+	// idp-c-00dt9gnl7fmjaw9c****
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 }
 
@@ -9459,6 +12492,10 @@ func (s *RemoveExternalSAMLIdPCertificateRequest) SetDirectoryId(v string) *Remo
 
 type RemoveExternalSAMLIdPCertificateResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 400979BC-92EC-58B9-B47C-6913BD56A6FD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9506,15 +12543,32 @@ func (s *RemoveExternalSAMLIdPCertificateResponse) SetBody(v *RemoveExternalSAML
 
 type RemovePermissionPolicyFromAccessConfigurationRequest struct {
 	// The ID of the access configuration.
+	//
+	// example:
+	//
+	// ac-00jhtfl8thteu6uj****
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The name of the policy.
+	//
+	// example:
+	//
+	// AliyunECSFullAccess
 	PermissionPolicyName *string `json:"PermissionPolicyName,omitempty" xml:"PermissionPolicyName,omitempty"`
 	// The type of the policy. Valid values:
 	//
-	// *   System: system policy
-	// *   Inline: inline policy
+	// 	- System: system policy
+	//
+	// 	- Inline: inline policy
+	//
+	// example:
+	//
+	// System
 	PermissionPolicyType *string `json:"PermissionPolicyType,omitempty" xml:"PermissionPolicyType,omitempty"`
 }
 
@@ -9548,6 +12602,10 @@ func (s *RemovePermissionPolicyFromAccessConfigurationRequest) SetPermissionPoli
 
 type RemovePermissionPolicyFromAccessConfigurationResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 9B13E4EE-3853-5852-9165-597C32AD8FB7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9595,10 +12653,22 @@ func (s *RemovePermissionPolicyFromAccessConfigurationResponse) SetBody(v *Remov
 
 type RemoveUserFromGroupRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The ID of the group.
+	//
+	// example:
+	//
+	// g-00jqzghi2n3o5hkh****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The ID of the user.
+	//
+	// example:
+	//
+	// u-00q8wbq42wiltcrk****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -9627,6 +12697,10 @@ func (s *RemoveUserFromGroupRequest) SetUserId(v string) *RemoveUserFromGroupReq
 
 type RemoveUserFromGroupResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F723DE01-6276-5DC4-9B1F-9CBE3E1748B2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9674,11 +12748,20 @@ func (s *RemoveUserFromGroupResponse) SetBody(v *RemoveUserFromGroupResponseBody
 
 type ResetUserPasswordRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// Specifies whether to enable the system to automatically generate a new password. Valid values:
 	//
-	// *   True: The new password is automatically generated by the system.
-	// *   False: The new password must be manually specified. This is the default value.
+	// 	- True: The new password is automatically generated by the system.
+	//
+	// 	- False: The new password must be manually specified. This is the default value.
+	//
+	// example:
+	//
+	// True
 	GenerateRandomPassword *bool `json:"GenerateRandomPassword,omitempty" xml:"GenerateRandomPassword,omitempty"`
 	// The new password.
 	//
@@ -9687,13 +12770,26 @@ type ResetUserPasswordRequest struct {
 	// The password must be 8 to 32 characters in length.
 	//
 	// >  If you set `GenerateRandomPassword` to `False`, you must specify `Password` .
+	//
+	// example:
+	//
+	// uc)XK$?ictf72CKFDy9vtWaFmISl****
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// Specifies whether password reset is required upon the next logon. Valid values:
 	//
-	// *   True: Password reset is required upon the next logon.
-	// *   False: Password reset is not required upon the next logon. This is the default value.
+	// 	- True: Password reset is required upon the next logon.
+	//
+	// 	- False: Password reset is not required upon the next logon. This is the default value.
+	//
+	// example:
+	//
+	// False
 	RequirePasswordResetForNextLogin *bool `json:"RequirePasswordResetForNextLogin,omitempty" xml:"RequirePasswordResetForNextLogin,omitempty"`
 	// The ID of the user.
+	//
+	// example:
+	//
+	// u-00q8wbq42wiltcrk****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -9734,8 +12830,16 @@ type ResetUserPasswordResponseBody struct {
 	// The new password.
 	//
 	// >  This parameter is returned only when the new password is automatically generated by the system.
+	//
+	// example:
+	//
+	// W2koInFIm0Wy2wVZ$oB)MzD$nY!G****
 	NewPassword *string `json:"NewPassword,omitempty" xml:"NewPassword,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F44F02EC-70D1-5E51-8E8E-FA9AC4EF952A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9788,13 +12892,26 @@ func (s *ResetUserPasswordResponse) SetBody(v *ResetUserPasswordResponseBody) *R
 
 type RetryUserProvisioningEventRequest struct {
 	// The ID of the resource directory.
+	//
+	// example:
+	//
+	// d-003qew84****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The conflict handling policy. The policy is used when a RAM user has the same username as the CloudSSO user who is synchronized to RAM. Valid values:
 	//
-	// *   KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
-	// *   TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
+	// 	- KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
+	//
+	// 	- TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
+	//
+	// example:
+	//
+	// KeepBoth
 	DuplicationStrategy *string `json:"DuplicationStrategy,omitempty" xml:"DuplicationStrategy,omitempty"`
 	// The ID of the RAM user provisioning event.
+	//
+	// example:
+	//
+	// upe-wjKyNDmZvyZOiRcJ****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
 }
 
@@ -9823,6 +12940,10 @@ func (s *RetryUserProvisioningEventRequest) SetEventId(v string) *RetryUserProvi
 
 type RetryUserProvisioningEventResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// F6F90F3D-4502-5877-B80B-97476F6AE2CC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9870,26 +12991,56 @@ func (s *RetryUserProvisioningEventResponse) SetBody(v *RetryUserProvisioningEve
 
 type SetExternalSAMLIdentityProviderRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The metadata file of the IdP. The value of this parameter is Base64-encoded.
 	//
 	// The file is provided by the IdP that supports SAML 2.0.
+	//
+	// example:
+	//
+	// PD94bWwgdmVyc2lvbj0iMS4****
 	EncodedMetadataDocument *string `json:"EncodedMetadataDocument,omitempty" xml:"EncodedMetadataDocument,omitempty"`
 	// The entity ID of the IdP.
+	//
+	// example:
+	//
+	// http://www.okta.com/exk3qwgtjhetR2Od****
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	// The logon URL of the IdP.
+	//
+	// example:
+	//
+	// https://dev-xxxxxx.okta.com/app/dev-xxxxxx_cloudssodemo_1/exk3qwgtjhetR2Od****/sso/saml
 	LoginUrl *string `json:"LoginUrl,omitempty" xml:"LoginUrl,omitempty"`
 	// The status of SSO logon. Valid values:
 	//
-	// *   Enabled
-	// *   Disabled (default)
+	// 	- Enabled
+	//
+	// 	- Disabled (default)
+	//
+	// example:
+	//
+	// Disabled
 	SSOStatus *string `json:"SSOStatus,omitempty" xml:"SSOStatus,omitempty"`
 	// Specifies whether CloudSSO needs to sign SAML requests. The requests are sent when users log on to the CloudSSO user portal to initiate SAML-based SSO. Valid values:
 	//
-	// *   true: yes
-	// *   false: no (default)
+	// 	- true: yes
+	//
+	// 	- false: no (default)
+	//
+	// example:
+	//
+	// false
 	WantRequestSigned *bool `json:"WantRequestSigned,omitempty" xml:"WantRequestSigned,omitempty"`
 	// The X.509 certificate in the PEM format. If you specify this parameter, all existing certificates are replaced.
+	//
+	// example:
+	//
+	// MIIC8DCCAdigAwIBAgIQP9eomUYGeoND****
 	X509Certificate *string `json:"X509Certificate,omitempty" xml:"X509Certificate,omitempty"`
 }
 
@@ -9938,6 +13089,10 @@ func (s *SetExternalSAMLIdentityProviderRequest) SetX509Certificate(v string) *S
 
 type SetExternalSAMLIdentityProviderResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 63160579-2E1B-57B0-8273-B27427172385
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The configurations of the IdP.
 	SAMLIdentityProviderConfiguration *SetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfiguration `json:"SAMLIdentityProviderConfiguration,omitempty" xml:"SAMLIdentityProviderConfiguration,omitempty" type:"Struct"`
@@ -9965,26 +13120,60 @@ type SetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfiguratio
 	// The ID of the SAML signing certificate.
 	CertificateIds []*string `json:"CertificateIds,omitempty" xml:"CertificateIds,omitempty" type:"Repeated"`
 	// The time when the IdP was configured for the first time.
+	//
+	// example:
+	//
+	// 2021-11-10T02:57:16Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The metadata file of the IdP. The value of this parameter is Base64-encoded.
+	//
+	// example:
+	//
+	// PD94bWwgdmVyc2lvbj0iMS4****
 	EncodedMetadataDocument *string `json:"EncodedMetadataDocument,omitempty" xml:"EncodedMetadataDocument,omitempty"`
 	// The entity ID of the IdP.
+	//
+	// example:
+	//
+	// http://www.okta.com/exk3qwgtjhetR2Od****
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	// The logon URL of the IdP.
+	//
+	// example:
+	//
+	// https://dev-xxxxxx.okta.com/app/dev-xxxxxx_cloudssodemo_1/exk3qwgtjhetR2Od****/sso/saml
 	LoginUrl *string `json:"LoginUrl,omitempty" xml:"LoginUrl,omitempty"`
 	// The status of SSO logon. Valid values:
 	//
-	// *   Enabled
-	// *   Disabled
+	// 	- Enabled
+	//
+	// 	- Disabled
+	//
+	// example:
+	//
+	// Disabled
 	SSOStatus *string `json:"SSOStatus,omitempty" xml:"SSOStatus,omitempty"`
 	// The time when the IdP configurations were last modified.
+	//
+	// example:
+	//
+	// 2021-11-10T02:57:16Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	// Indicates whether CloudSSO needs to sign SAML requests. The requests are sent when users log on to the CloudSSO user portal to initiate SAML-based SSO. Valid values:
 	//
-	// *   true: yes
-	// *   false: no (default)
+	// 	- true: yes
+	//
+	// 	- false: no (default)
+	//
+	// example:
+	//
+	// false
 	WantRequestSigned *bool `json:"WantRequestSigned,omitempty" xml:"WantRequestSigned,omitempty"`
 }
 
@@ -10072,14 +13261,26 @@ func (s *SetExternalSAMLIdentityProviderResponse) SetBody(v *SetExternalSAMLIden
 
 type SetLoginPreferenceRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The IP address whitelist. CloudSSO users can log on to the CloudSSO user portal only by using the IP addresses in the whitelist. Limits:
 	//
-	// *   You can enter IP addresses or CIDR blocks. IPv4 addresses are supported.
-	// *   You can enter up to 100 IP addresses or CIDR blocks. Separate multiple IP addresses or CIDR blocks with semicolons `(;)`.
-	// *   If you do not specify this parameter, the original settings are retained.
-	// *   If you set this parameter to a semicolon (`;`), the value of this parameter is cleared.
-	// *   The IP address whitelist takes effect only on CloudSSO users who want to log on to the CloudSSO user portal by using the username-password logon or single sign-on (SSO) method. The IP address whitelist does not take effect on CloudSSO users who access accounts in a resource directory from the CloudSSO user portal.
+	// 	- You can enter IP addresses or CIDR blocks. IPv4 addresses are supported.
+	//
+	// 	- You can enter up to 100 IP addresses or CIDR blocks. Separate multiple IP addresses or CIDR blocks with semicolons `(;)`.
+	//
+	// 	- If you do not specify this parameter, the original settings are retained.
+	//
+	// 	- If you set this parameter to a semicolon (`;`), the value of this parameter is cleared.
+	//
+	// 	- The IP address whitelist takes effect only on CloudSSO users who want to log on to the CloudSSO user portal by using the username-password logon or single sign-on (SSO) method. The IP address whitelist does not take effect on CloudSSO users who access accounts in a resource directory from the CloudSSO user portal.
+	//
+	// example:
+	//
+	// 192.168.0.0/16;10.0.0.0/8
 	LoginNetworkMasks *string `json:"LoginNetworkMasks,omitempty" xml:"LoginNetworkMasks,omitempty"`
 }
 
@@ -10103,6 +13304,10 @@ func (s *SetLoginPreferenceRequest) SetLoginNetworkMasks(v string) *SetLoginPref
 
 type SetLoginPreferenceResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 9B13E4EE-3853-5852-9165-597C32AD8FB7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10150,11 +13355,20 @@ func (s *SetLoginPreferenceResponse) SetBody(v *SetLoginPreferenceResponseBody) 
 
 type SetMFAAuthenticationStatusRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The status of MFA. Valid values:
 	//
-	// *   Enabled
-	// *   Disabled
+	// 	- Enabled
+	//
+	// 	- Disabled
+	//
+	// example:
+	//
+	// Enabled
 	MFAAuthenticationStatus *string `json:"MFAAuthenticationStatus,omitempty" xml:"MFAAuthenticationStatus,omitempty"`
 }
 
@@ -10178,6 +13392,10 @@ func (s *SetMFAAuthenticationStatusRequest) SetMFAAuthenticationStatus(v string)
 
 type SetMFAAuthenticationStatusResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 14E2B1A9-7713-5E6F-8409-8DE12DF51AF4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10225,35 +13443,64 @@ func (s *SetMFAAuthenticationStatusResponse) SetBody(v *SetMFAAuthenticationStat
 
 type SetPasswordPolicyRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The number of password retries.
 	//
 	// If you enter wrong passwords for the specified consecutive times, the account is locked for 1 hour.
 	//
 	// Valid values: 0 to 32. The value 0 specifies that the number of password retries is not limited.
+	//
+	// example:
+	//
+	// 5
 	MaxLoginAttempts *int32 `json:"MaxLoginAttempts,omitempty" xml:"MaxLoginAttempts,omitempty"`
 	// The validity period of a password.
 	//
 	// Valid values: 1 to 120. Unit: days.
+	//
+	// example:
+	//
+	// 90
 	MaxPasswordAge *int32 `json:"MaxPasswordAge,omitempty" xml:"MaxPasswordAge,omitempty"`
 	// The minimum number of unique characters in a password.
 	//
 	// The minimum value is 0, which specifies that the minimum number of unique characters in a password is not limited. The maximum value is the value of the `MinPasswordLength` parameter.
+	//
+	// example:
+	//
+	// 8
 	MinPasswordDifferentChars *int32 `json:"MinPasswordDifferentChars,omitempty" xml:"MinPasswordDifferentChars,omitempty"`
 	// The minimum password length.
 	//
 	// Valid values: 8 to 32 characters.
+	//
+	// example:
+	//
+	// 8
 	MinPasswordLength *int32 `json:"MinPasswordLength,omitempty" xml:"MinPasswordLength,omitempty"`
 	// Specifies whether a password can contain the username. Valid value:
 	//
-	// *   true: A password cannot contain the username.
-	// *   false: A password can contain the username.
+	// 	- true: A password cannot contain the username.
+	//
+	// 	- false: A password can contain the username.
+	//
+	// example:
+	//
+	// true
 	PasswordNotContainUsername *bool `json:"PasswordNotContainUsername,omitempty" xml:"PasswordNotContainUsername,omitempty"`
 	// The policy for password history check.
 	//
 	// The previous N passwords cannot be reused. Valid values of N: 0 to 24. The value 0 specifies that all historical passwords can be reused.
 	//
 	// >  Passwords that are generated before January 5, 2024 are not counted as historical passwords.
+	//
+	// example:
+	//
+	// 1
 	PasswordReusePrevention *int32 `json:"PasswordReusePrevention,omitempty" xml:"PasswordReusePrevention,omitempty"`
 }
 
@@ -10302,6 +13549,10 @@ func (s *SetPasswordPolicyRequest) SetPasswordReusePrevention(v int32) *SetPassw
 
 type SetPasswordPolicyResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 768F908D-A66A-5A5D-816C-20C93CBBFEE3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10349,11 +13600,20 @@ func (s *SetPasswordPolicyResponse) SetBody(v *SetPasswordPolicyResponseBody) *S
 
 type SetSCIMSynchronizationStatusRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The status of SCIM synchronization. Valid values:
 	//
-	// *   Enabled
-	// *   Disabled
+	// 	- Enabled
+	//
+	// 	- Disabled
+	//
+	// example:
+	//
+	// Enabled
 	SCIMSynchronizationStatus *string `json:"SCIMSynchronizationStatus,omitempty" xml:"SCIMSynchronizationStatus,omitempty"`
 }
 
@@ -10377,6 +13637,10 @@ func (s *SetSCIMSynchronizationStatusRequest) SetSCIMSynchronizationStatus(v str
 
 type SetSCIMSynchronizationStatusResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 3BF1FC78-5D20-54CC-BAEB-8CC33AE21D01
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10424,22 +13688,42 @@ func (s *SetSCIMSynchronizationStatusResponse) SetBody(v *SetSCIMSynchronization
 
 type UpdateAccessConfigurationRequest struct {
 	// The ID of the access configuration.
+	//
+	// example:
+	//
+	// ac-00jhtfl8thteu6uj****
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The new description of the access configuration.
 	//
 	// The description can be up to 1,024 characters in length.
+	//
+	// example:
+	//
+	// This is an access configuration.
 	NewDescription *string `json:"NewDescription,omitempty" xml:"NewDescription,omitempty"`
 	// The new initial web page that is displayed after a CloudSSO user accesses an account in your resource directory by using the access configuration.
 	//
 	// The web page must be a page of the Alibaba Cloud Management Console.
+	//
+	// example:
+	//
+	// https://cloudsso.console.aliyun.com
 	NewRelayState *string `json:"NewRelayState,omitempty" xml:"NewRelayState,omitempty"`
 	// The new duration of a session in which a CloudSSO user accesses an account in your resource directory by using the access configuration.
 	//
 	// Unit: seconds.
 	//
 	// Valid values: 900 to 43200. The value 900 indicates 15 minutes. The value 43200 indicates 12 hours.
+	//
+	// example:
+	//
+	// 3600
 	NewSessionDuration *int32 `json:"NewSessionDuration,omitempty" xml:"NewSessionDuration,omitempty"`
 }
 
@@ -10480,6 +13764,10 @@ type UpdateAccessConfigurationResponseBody struct {
 	// The information about the access configuration.
 	AccessConfiguration *UpdateAccessConfigurationResponseBodyAccessConfiguration `json:"AccessConfiguration,omitempty" xml:"AccessConfiguration,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 9B13E4EE-3853-5852-9165-597C32AD8FB7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10503,22 +13791,50 @@ func (s *UpdateAccessConfigurationResponseBody) SetRequestId(v string) *UpdateAc
 
 type UpdateAccessConfigurationResponseBodyAccessConfiguration struct {
 	// The ID of the access configuration.
+	//
+	// example:
+	//
+	// ac-00jhtfl8thteu6uj****
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
 	// The name of the access configuration.
+	//
+	// example:
+	//
+	// ECS-Admin
 	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
 	// The time when the access configuration was created.
+	//
+	// example:
+	//
+	// 2021-11-02T08:44:23Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the access configuration.
+	//
+	// example:
+	//
+	// This is an access configuration.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The initial web page that is displayed after a CloudSSO user accesses an account in your resource directory by using the access configuration.
+	//
+	// example:
+	//
+	// https://cloudsso.console.aliyun.com
 	RelayState *string `json:"RelayState,omitempty" xml:"RelayState,omitempty"`
 	// The duration of a session in which a CloudSSO user accesses an account in your resource directory by using the access configuration.
 	//
 	// Unit: seconds.
+	//
+	// example:
+	//
+	// 3600
 	SessionDuration *int32 `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
 	// The status notification.
 	StatusNotifications []*string `json:"StatusNotifications,omitempty" xml:"StatusNotifications,omitempty" type:"Repeated"`
 	// The time when the information about the access configuration was modified.
+	//
+	// example:
+	//
+	// 2021-11-02T10:10:01Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -10601,12 +13917,20 @@ func (s *UpdateAccessConfigurationResponse) SetBody(v *UpdateAccessConfiguration
 
 type UpdateDirectoryRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The new name of the directory. The name must be globally unique.
 	//
 	// The name can contain lowercase letters, digits, and hyphens (-). The name cannot start or end with a hyphen (-) and cannot have two consecutive hyphens (-). If you want to start the new name of the directory starts with `d-`, you must set this parameter to the ID of the directory.
 	//
 	// The name must be 2 to 64 characters in length.
+	//
+	// example:
+	//
+	// new-example
 	NewDirectoryName *string `json:"NewDirectoryName,omitempty" xml:"NewDirectoryName,omitempty"`
 }
 
@@ -10632,6 +13956,10 @@ type UpdateDirectoryResponseBody struct {
 	// The information about the directory.
 	Directory *UpdateDirectoryResponseBodyDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// B182C041-8C64-5F2F-A07B-FC67FAF89CF9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10655,14 +13983,34 @@ func (s *UpdateDirectoryResponseBody) SetRequestId(v string) *UpdateDirectoryRes
 
 type UpdateDirectoryResponseBodyDirectory struct {
 	// The time when the directory was created.
+	//
+	// example:
+	//
+	// 2021-06-30T08:35:26Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The name of the directory.
+	//
+	// example:
+	//
+	// new-example
 	DirectoryName *string `json:"DirectoryName,omitempty" xml:"DirectoryName,omitempty"`
 	// The region ID of the directory.
+	//
+	// example:
+	//
+	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The time when the directory was modified.
+	//
+	// example:
+	//
+	// 2021-10-25T09:13:24Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -10730,12 +14078,28 @@ func (s *UpdateDirectoryResponse) SetBody(v *UpdateDirectoryResponseBody) *Updat
 
 type UpdateGroupRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The ID of the group.
+	//
+	// example:
+	//
+	// g-00jqzghi2n3o5hkh****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The new description of the group.
+	//
+	// example:
+	//
+	// This is a group.
 	NewDescription *string `json:"NewDescription,omitempty" xml:"NewDescription,omitempty"`
 	// The new name of the group.
+	//
+	// example:
+	//
+	// NewTestGroup
 	NewGroupName *string `json:"NewGroupName,omitempty" xml:"NewGroupName,omitempty"`
 }
 
@@ -10771,6 +14135,10 @@ type UpdateGroupResponseBody struct {
 	// The information about the group.
 	Group *UpdateGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F723DE01-6276-5DC4-9B1F-9CBE3E1748B2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10794,19 +14162,44 @@ func (s *UpdateGroupResponseBody) SetRequestId(v string) *UpdateGroupResponseBod
 
 type UpdateGroupResponseBodyGroup struct {
 	// The time when the group was created.
+	//
+	// example:
+	//
+	// 2021-11-01T02:38:27Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the group.
+	//
+	// example:
+	//
+	// This is a group.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the group.
+	//
+	// example:
+	//
+	// g-00jqzghi2n3o5hkh****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The name of the group.
+	//
+	// example:
+	//
+	// NewTestGroup
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The type of the group. Valid values:
 	//
-	// *   Manual: The group is manually created.
-	// *   Synchronized: The user is synchronized from an external identity provider (IdP).
+	// 	- Manual: The group is manually created.
+	//
+	// 	- Synchronized: The user is synchronized from an external identity provider (IdP).
+	//
+	// example:
+	//
+	// Manual
 	ProvisionType *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
 	// The time when the information about the group was modified.
+	//
+	// example:
+	//
+	// 2021-11-01T06:06:11Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -10879,16 +14272,32 @@ func (s *UpdateGroupResponse) SetBody(v *UpdateGroupResponseBody) *UpdateGroupRe
 
 type UpdateInlinePolicyForAccessConfigurationRequest struct {
 	// The ID of the access configuration.
+	//
+	// example:
+	//
+	// ac-00jhtfl8thteu6uj****
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The name of the inline policy.
+	//
+	// example:
+	//
+	// InlinePolicy
 	InlinePolicyName *string `json:"InlinePolicyName,omitempty" xml:"InlinePolicyName,omitempty"`
 	// The new configurations of the inline policy.
 	//
 	// The value can be up to 4,096 characters in length.
 	//
-	// For more information about the syntax and structure of RAM policies, see [Policy syntax and structure](~~93739~~).
+	// For more information about the syntax and structure of RAM policies, see [Policy syntax and structure](https://help.aliyun.com/document_detail/93739.html).
+	//
+	// example:
+	//
+	// {"Statement": [{"Action": "*","Effect": "Allow","Resource": "*"}],"Version": "1"}
 	NewInlinePolicyDocument *string `json:"NewInlinePolicyDocument,omitempty" xml:"NewInlinePolicyDocument,omitempty"`
 }
 
@@ -10922,6 +14331,10 @@ func (s *UpdateInlinePolicyForAccessConfigurationRequest) SetNewInlinePolicyDocu
 
 type UpdateInlinePolicyForAccessConfigurationResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 9B13E4EE-3853-5852-9165-597C32AD8FB7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10969,19 +14382,34 @@ func (s *UpdateInlinePolicyForAccessConfigurationResponse) SetBody(v *UpdateInli
 
 type UpdateMFAAuthenticationSettingsRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// Specifies whether to enable MFA for all users. Valid value:
 	//
 	// - Enabled: enables MFA for all users.
-	// - Byuser: uses user-specific settings. For more information about how to configure MFA for a single user, see [UpdateUserMFAAuthenticationSettings](~~450135~~).
+	//
+	// - Byuser: uses user-specific settings. For more information about how to configure MFA for a single user, see [UpdateUserMFAAuthenticationSettings](https://help.aliyun.com/document_detail/450135.html).
+	//
 	// - Disabled: disables MFA for all users.
+	//
 	// - OnlyRiskyLogin: MFA is required only for unusual logons.
+	//
+	// example:
+	//
+	// Enabled
 	MFAAuthenticationSettings *string `json:"MFAAuthenticationSettings,omitempty" xml:"MFAAuthenticationSettings,omitempty"`
 	// Specifies whether MFA is required for users who initiated unusual logons. Valid value:
 	//
 	// - Autonomous: MFA is prompted for users who initiated unusual logons. However, the users are allowed to skip MFA. If an MFA device is bound to a user who initiated an unusual logon, the user must pass MFA.
 	//
 	// - EnforceVerify: MFA is required. If no MFA devices are bound to a user who initiated an unusual logon, the user must bind an MFA device. If an MFA device is already bound to a user who initiated an unusual logon, the user must pass MFA.
+	//
+	// example:
+	//
+	// Autonomous
 	OperationForRiskLogin *string `json:"OperationForRiskLogin,omitempty" xml:"OperationForRiskLogin,omitempty"`
 }
 
@@ -11010,6 +14438,10 @@ func (s *UpdateMFAAuthenticationSettingsRequest) SetOperationForRiskLogin(v stri
 
 type UpdateMFAAuthenticationSettingsResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// A1C748E3-8944-5593-81BC-7D96AE24F77B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11057,13 +14489,26 @@ func (s *UpdateMFAAuthenticationSettingsResponse) SetBody(v *UpdateMFAAuthentica
 
 type UpdateSCIMServerCredentialStatusRequest struct {
 	// The ID of the SCIM credential.
+	//
+	// example:
+	//
+	// scimcred-004whl0kvfwcypbi****
 	CredentialId *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The new status of the SCIM credential. Valid values:
 	//
-	// *   Enabled: The SCIM credential is enabled.
-	// *   Disabled: The SCIM credential is disabled.
+	// 	- Enabled: The SCIM credential is enabled.
+	//
+	// 	- Disabled: The SCIM credential is disabled.
+	//
+	// example:
+	//
+	// Disabled
 	NewStatus *string `json:"NewStatus,omitempty" xml:"NewStatus,omitempty"`
 }
 
@@ -11092,6 +14537,10 @@ func (s *UpdateSCIMServerCredentialStatusRequest) SetNewStatus(v string) *Update
 
 type UpdateSCIMServerCredentialStatusResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 7C086C2F-1C66-57B3-B14E-2C1DA70727CD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the SCIM credential.
 	SCIMServerCredential *UpdateSCIMServerCredentialStatusResponseBodySCIMServerCredential `json:"SCIMServerCredential,omitempty" xml:"SCIMServerCredential,omitempty" type:"Struct"`
@@ -11117,19 +14566,44 @@ func (s *UpdateSCIMServerCredentialStatusResponseBody) SetSCIMServerCredential(v
 
 type UpdateSCIMServerCredentialStatusResponseBodySCIMServerCredential struct {
 	// The time when the SCIM credential was created.
+	//
+	// example:
+	//
+	// 2021-11-09T08:12:52Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The ID of the SCIM credential.
+	//
+	// example:
+	//
+	// scimcred-004whl0kvfwcypbi****
 	CredentialId *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
 	// The type of the SCIM credential.
+	//
+	// example:
+	//
+	// BearerToken
 	CredentialType *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The time when the SCIM credential expires.
+	//
+	// example:
+	//
+	// 2022-11-09T08:12:52Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The status of the SCIM credential. Valid values:
 	//
-	// *   Enabled: The SCIM credential is enabled.
-	// *   Disabled: The SCIM credential is disabled.
+	// 	- Enabled: The SCIM credential is enabled.
+	//
+	// 	- Disabled: The SCIM credential is disabled.
+	//
+	// example:
+	//
+	// Disabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -11202,18 +14676,46 @@ func (s *UpdateSCIMServerCredentialStatusResponse) SetBody(v *UpdateSCIMServerCr
 
 type UpdateUserRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The new description of the user.
+	//
+	// example:
+	//
+	// This is a user.
 	NewDescription *string `json:"NewDescription,omitempty" xml:"NewDescription,omitempty"`
 	// The new display name of the user.
+	//
+	// example:
+	//
+	// AliceLee
 	NewDisplayName *string `json:"NewDisplayName,omitempty" xml:"NewDisplayName,omitempty"`
 	// The new email address of the user.
+	//
+	// example:
+	//
+	// AliceLee@example.com
 	NewEmail *string `json:"NewEmail,omitempty" xml:"NewEmail,omitempty"`
 	// The new first name of the user.
+	//
+	// example:
+	//
+	// Alice
 	NewFirstName *string `json:"NewFirstName,omitempty" xml:"NewFirstName,omitempty"`
 	// The new last name of the user.
+	//
+	// example:
+	//
+	// Lee
 	NewLastName *string `json:"NewLastName,omitempty" xml:"NewLastName,omitempty"`
 	// The ID of the user.
+	//
+	// example:
+	//
+	// u-00q8wbq42wiltcrk****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -11262,6 +14764,10 @@ func (s *UpdateUserRequest) SetUserId(v string) *UpdateUserRequest {
 
 type UpdateUserResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F44F02EC-70D1-5E51-8E8E-FA9AC4EF952A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the user.
 	User *UpdateUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
@@ -11287,32 +14793,78 @@ func (s *UpdateUserResponseBody) SetUser(v *UpdateUserResponseBodyUser) *UpdateU
 
 type UpdateUserResponseBodyUser struct {
 	// The time when the user was created.
+	//
+	// example:
+	//
+	// 2021-10-26T03:03:42Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the user.
+	//
+	// example:
+	//
+	// This is a user.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The display name of the user.
+	//
+	// example:
+	//
+	// Alice
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The email address of the user.
+	//
+	// example:
+	//
+	// AliceLee@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// The first name of the user.
+	//
+	// example:
+	//
+	// Alice
 	FirstName *string `json:"FirstName,omitempty" xml:"FirstName,omitempty"`
 	// The last name of the user.
+	//
+	// example:
+	//
+	// Lee
 	LastName *string `json:"LastName,omitempty" xml:"LastName,omitempty"`
 	// The type of the user. Valid values:
 	//
-	// *   Manual: The user is manually created.
-	// *   Synchronized: The user is synchronized from an external identity provider (IdP).
+	// 	- Manual: The user is manually created.
+	//
+	// 	- Synchronized: The user is synchronized from an external identity provider (IdP).
+	//
+	// example:
+	//
+	// Manual
 	ProvisionType *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
 	// The status of the user. Valid values:
 	//
-	// *   Enabled: The logon of the user is enabled.
-	// *   Disabled: The logon of the user is disabled.
+	// 	- Enabled: The logon of the user is enabled.
+	//
+	// 	- Disabled: The logon of the user is disabled.
+	//
+	// example:
+	//
+	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The time when the information about the user was modified.
+	//
+	// example:
+	//
+	// 2021-10-26T07:32:32Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	// The ID of the user.
+	//
+	// example:
+	//
+	// u-00q8wbq42wiltcrk****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The name of the user.
+	//
+	// example:
+	//
+	// Alice
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -11410,13 +14962,26 @@ func (s *UpdateUserResponse) SetBody(v *UpdateUserResponseBody) *UpdateUserRespo
 
 type UpdateUserMFAAuthenticationSettingsRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The ID of the user.
+	//
+	// example:
+	//
+	// u-00q8wbq42wiltcrk****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// Specifies whether to enable MFA for the user. Valid values:
 	//
-	// *   Enabled: enables MFA for the user.
-	// *   Disabled: disables MFA for the user.
+	// 	- Enabled: enables MFA for the user.
+	//
+	// 	- Disabled: disables MFA for the user.
+	//
+	// example:
+	//
+	// Enabled
 	UserMFAAuthenticationSettings *string `json:"UserMFAAuthenticationSettings,omitempty" xml:"UserMFAAuthenticationSettings,omitempty"`
 }
 
@@ -11445,6 +15010,10 @@ func (s *UpdateUserMFAAuthenticationSettingsRequest) SetUserMFAAuthenticationSet
 
 type UpdateUserMFAAuthenticationSettingsResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 5E6C6049-E9B0-5F6F-A104-6150E3B1F4D7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11492,20 +15061,42 @@ func (s *UpdateUserMFAAuthenticationSettingsResponse) SetBody(v *UpdateUserMFAAu
 
 type UpdateUserProvisioningRequest struct {
 	// The ID of the resource directory.
+	//
+	// example:
+	//
+	// d-003qew84****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The new deletion policy. The policy is used to manage synchronized users when you delete the RAM user provisioning. Valid values:
 	//
-	// *   Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
-	// *   Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
+	// 	- Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
+	//
+	// 	- Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
+	//
+	// example:
+	//
+	// Delete
 	NewDeletionStrategy *string `json:"NewDeletionStrategy,omitempty" xml:"NewDeletionStrategy,omitempty"`
 	// The new description of the RAM user provisioning.
+	//
+	// example:
+	//
+	// description*****
 	NewDescription *string `json:"NewDescription,omitempty" xml:"NewDescription,omitempty"`
 	// The new conflict handling policy. The policy is used when a RAM user has the same username as the CloudSSO user who is synchronized to RAM. Valid values:
 	//
-	// *   KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
-	// *   TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
+	// 	- KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
+	//
+	// 	- TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
+	//
+	// example:
+	//
+	// KeepBoth
 	NewDuplicationStrategy *string `json:"NewDuplicationStrategy,omitempty" xml:"NewDuplicationStrategy,omitempty"`
 	// The ID of the RAM user provisioning.
+	//
+	// example:
+	//
+	// up-002axzhapcbz6e63****
 	UserProvisioningId *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
 }
 
@@ -11544,6 +15135,10 @@ func (s *UpdateUserProvisioningRequest) SetUserProvisioningId(v string) *UpdateU
 
 type UpdateUserProvisioningResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// F6F90F3D-4502-5877-B80B-97476F6AE2CC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the RAM user provisioning.
 	UserProvisioning *UpdateUserProvisioningResponseBodyUserProvisioning `json:"UserProvisioning,omitempty" xml:"UserProvisioning,omitempty" type:"Struct"`
@@ -11569,54 +15164,124 @@ func (s *UpdateUserProvisioningResponseBody) SetUserProvisioning(v *UpdateUserPr
 
 type UpdateUserProvisioningResponseBodyUserProvisioning struct {
 	// The creation time.
+	//
+	// example:
+	//
+	// 2022-11-28T03:55:42Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The deletion policy. The policy is used to manage synchronized users when you delete the RAM user provisioning. Valid values:
 	//
-	// *   Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
-	// *   Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
+	// 	- Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
+	//
+	// 	- Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
+	//
+	// example:
+	//
+	// Delete
 	DeletionStrategy *string `json:"DeletionStrategy,omitempty" xml:"DeletionStrategy,omitempty"`
 	// The description for the RAM user provisioning.
+	//
+	// example:
+	//
+	// This is a user provisioning.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the resource directory.
+	//
+	// example:
+	//
+	// d-003qew84****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The conflict handling policy. The policy is used when a RAM user has the same username as the CloudSSO user who is synchronized to RAM. Valid values:
 	//
-	// *   KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
-	// *   TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
+	// 	- KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
+	//
+	// 	- TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
+	//
+	// example:
+	//
+	// KeepBoth
 	DuplicationStrategy *string `json:"DuplicationStrategy,omitempty" xml:"DuplicationStrategy,omitempty"`
 	// The ID of the Alibaba Cloud account to which the resource directory belongs.
+	//
+	// example:
+	//
+	// 164987310*****
 	OwnerPk *string `json:"OwnerPk,omitempty" xml:"OwnerPk,omitempty"`
 	// The identity ID of the RAM user provisioning. Valid values:
 	//
-	// *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\*\*\*\*\*\*\*\*).
-	// *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\*\*\*\*\*\*\*\*).
+	// 	- If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\\*\\*\\*\\*\\*\\*\\*\\*).
+	//
+	// 	- If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\\*\\*\\*\\*\\*\\*\\*\\*).
+	//
+	// example:
+	//
+	// g-02ha881d*****
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
 	// The identity name of the RAM user provisioning. Valid values:
 	//
-	// *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user group.
-	// *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user.
+	// 	- If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user group.
+	//
+	// 	- If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user.
+	//
+	// example:
+	//
+	// testUserName
 	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
 	// The identity type of the RAM user provisioning. Valid values:
 	//
-	// *   User: indicates that the identity of the RAM user provisioning is a CloudSSO user.
-	// *   Group: indicates that the identity of the RAM user provisioning is a CloudSSO user group.
+	// 	- User: indicates that the identity of the RAM user provisioning is a CloudSSO user.
+	//
+	// 	- Group: indicates that the identity of the RAM user provisioning is a CloudSSO user group.
+	//
+	// example:
+	//
+	// User
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
 	// The status of the RAM user provisioning. Valid values:
 	//
-	// *   Enabled
-	// *   Disabled
+	// 	- Enabled
+	//
+	// 	- Disabled
+	//
+	// example:
+	//
+	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the object for which you create the RAM user provisioning. The value is fixed as the ID of the account in the resource directory.
+	//
+	// example:
+	//
+	// u-02ha881d*****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The name of the object for which you create the RAM user provisioning. The value is fixed as the name of the resource directory.
+	//
+	// example:
+	//
+	// testMemberName
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
 	// The path of the resource directory in which you create the RAM user provisioning for the object.
+	//
+	// example:
+	//
+	// rd-******/root/test**
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	// The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
+	//
+	// example:
+	//
+	// RD-Account
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 	// The modification time.
+	//
+	// example:
+	//
+	// 2022-11-28T03:55:42Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	// The ID of the RAM user provisioning.
+	//
+	// example:
+	//
+	// up-002axzhapcbz6e63****
 	UserProvisioningId *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
 }
 
@@ -11739,10 +15404,18 @@ func (s *UpdateUserProvisioningResponse) SetBody(v *UpdateUserProvisioningRespon
 
 type UpdateUserProvisioningConfigurationRequest struct {
 	// The ID of the resource directory.
+	//
+	// example:
+	//
+	// d-003qew84****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The new default URL for a CloudSSO user who logs on to the Alibaba Cloud Management Console.
 	//
 	// Default value: https://homenew.console.aliyun.com.
+	//
+	// example:
+	//
+	// https://home.console.aliyun.com/home/dashboard/ProductAndService
 	NewDefaultLandingPage *string `json:"NewDefaultLandingPage,omitempty" xml:"NewDefaultLandingPage,omitempty"`
 	// The new duration of the logon session.
 	//
@@ -11751,6 +15424,10 @@ type UpdateUserProvisioningConfigurationRequest struct {
 	// Valid values: 1 to 24.
 	//
 	// Default value: 6.
+	//
+	// example:
+	//
+	// 6
 	NewSessionDuration *int32 `json:"NewSessionDuration,omitempty" xml:"NewSessionDuration,omitempty"`
 }
 
@@ -11779,6 +15456,10 @@ func (s *UpdateUserProvisioningConfigurationRequest) SetNewSessionDuration(v int
 
 type UpdateUserProvisioningConfigurationResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// BBC2ED1D-FAC5-3DF8-B63C-992B85B08DD9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The global configurations of the RAM user provisioning.
 	UserProvisioningConfiguration *UpdateUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration `json:"UserProvisioningConfiguration,omitempty" xml:"UserProvisioningConfiguration,omitempty" type:"Struct"`
@@ -11804,12 +15485,24 @@ func (s *UpdateUserProvisioningConfigurationResponseBody) SetUserProvisioningCon
 
 type UpdateUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration struct {
 	// The creation time.
+	//
+	// example:
+	//
+	// 2022-11-28T03:55:42Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The default URL for a CloudSSO user who logs on to the Alibaba Cloud Management Console.
 	//
 	// Default value: https://homenew.console.aliyun.com.
+	//
+	// example:
+	//
+	// https://homenew.console.aliyun.com
 	DefaultLandingPage *string `json:"DefaultLandingPage,omitempty" xml:"DefaultLandingPage,omitempty"`
 	// The ID of the resource directory.
+	//
+	// example:
+	//
+	// d-003qew84****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The duration of the logon session.
 	//
@@ -11818,8 +15511,16 @@ type UpdateUserProvisioningConfigurationResponseBodyUserProvisioningConfiguratio
 	// Valid values: 1 to 24.
 	//
 	// Default value: 6.
+	//
+	// example:
+	//
+	// 6
 	SessionDuration *int32 `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
 	// The modification time.
+	//
+	// example:
+	//
+	// 2022-11-28T03:55:42Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -11887,13 +15588,26 @@ func (s *UpdateUserProvisioningConfigurationResponse) SetBody(v *UpdateUserProvi
 
 type UpdateUserStatusRequest struct {
 	// The ID of the directory.
+	//
+	// example:
+	//
+	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The new status of the user. Valid values:
 	//
-	// *   Enabled: The logon of the user is enabled.
-	// *   Disabled: The logon of the user is disabled.
+	// 	- Enabled: The logon of the user is enabled.
+	//
+	// 	- Disabled: The logon of the user is disabled.
+	//
+	// example:
+	//
+	// Disabled
 	NewStatus *string `json:"NewStatus,omitempty" xml:"NewStatus,omitempty"`
 	// The ID of the user.
+	//
+	// example:
+	//
+	// u-00q8wbq42wiltcrk****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -11922,6 +15636,10 @@ func (s *UpdateUserStatusRequest) SetUserId(v string) *UpdateUserStatusRequest {
 
 type UpdateUserStatusResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// EE598602-AC67-56EF-B7CC-2927C30AA0A8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12014,14 +15732,21 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-/**
- * You can add up to two SAML signing certificates.
- * This topic provides an example on how to add a SAML signing certificate to the directory `d-00fc2p61****`.
- *
- * @param request AddExternalSAMLIdPCertificateRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return AddExternalSAMLIdPCertificateResponse
- */
+// Summary:
+//
+// Adds a Security Assertion Markup Language (SAML) signing certificate.
+//
+// Description:
+//
+// You can add up to two SAML signing certificates.
+//
+// This topic provides an example on how to add a SAML signing certificate to the directory `d-00fc2p61****`.
+//
+// @param request - AddExternalSAMLIdPCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddExternalSAMLIdPCertificateResponse
 func (client *Client) AddExternalSAMLIdPCertificateWithOptions(request *AddExternalSAMLIdPCertificateRequest, runtime *util.RuntimeOptions) (_result *AddExternalSAMLIdPCertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12059,13 +15784,19 @@ func (client *Client) AddExternalSAMLIdPCertificateWithOptions(request *AddExter
 	return _result, _err
 }
 
-/**
- * You can add up to two SAML signing certificates.
- * This topic provides an example on how to add a SAML signing certificate to the directory `d-00fc2p61****`.
- *
- * @param request AddExternalSAMLIdPCertificateRequest
- * @return AddExternalSAMLIdPCertificateResponse
- */
+// Summary:
+//
+// Adds a Security Assertion Markup Language (SAML) signing certificate.
+//
+// Description:
+//
+// You can add up to two SAML signing certificates.
+//
+// This topic provides an example on how to add a SAML signing certificate to the directory `d-00fc2p61****`.
+//
+// @param request - AddExternalSAMLIdPCertificateRequest
+//
+// @return AddExternalSAMLIdPCertificateResponse
 func (client *Client) AddExternalSAMLIdPCertificate(request *AddExternalSAMLIdPCertificateRequest) (_result *AddExternalSAMLIdPCertificateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddExternalSAMLIdPCertificateResponse{}
@@ -12077,13 +15808,19 @@ func (client *Client) AddExternalSAMLIdPCertificate(request *AddExternalSAMLIdPC
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to add the system policy `AliyunECSFullAccess` to the access configuration `ac-00jhtfl8thteu6uj****`.
- *
- * @param request AddPermissionPolicyToAccessConfigurationRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return AddPermissionPolicyToAccessConfigurationResponse
- */
+// Summary:
+//
+// Adds a policy to an access configuration.
+//
+// Description:
+//
+// This topic provides an example on how to add the system policy `AliyunECSFullAccess` to the access configuration `ac-00jhtfl8thteu6uj****`.
+//
+// @param request - AddPermissionPolicyToAccessConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddPermissionPolicyToAccessConfigurationResponse
 func (client *Client) AddPermissionPolicyToAccessConfigurationWithOptions(request *AddPermissionPolicyToAccessConfigurationRequest, runtime *util.RuntimeOptions) (_result *AddPermissionPolicyToAccessConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12133,12 +15870,17 @@ func (client *Client) AddPermissionPolicyToAccessConfigurationWithOptions(reques
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to add the system policy `AliyunECSFullAccess` to the access configuration `ac-00jhtfl8thteu6uj****`.
- *
- * @param request AddPermissionPolicyToAccessConfigurationRequest
- * @return AddPermissionPolicyToAccessConfigurationResponse
- */
+// Summary:
+//
+// Adds a policy to an access configuration.
+//
+// Description:
+//
+// This topic provides an example on how to add the system policy `AliyunECSFullAccess` to the access configuration `ac-00jhtfl8thteu6uj****`.
+//
+// @param request - AddPermissionPolicyToAccessConfigurationRequest
+//
+// @return AddPermissionPolicyToAccessConfigurationResponse
 func (client *Client) AddPermissionPolicyToAccessConfiguration(request *AddPermissionPolicyToAccessConfigurationRequest) (_result *AddPermissionPolicyToAccessConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddPermissionPolicyToAccessConfigurationResponse{}
@@ -12150,14 +15892,21 @@ func (client *Client) AddPermissionPolicyToAccessConfiguration(request *AddPermi
 	return _result, _err
 }
 
-/**
- * If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot add a user to a group that is synchronized by using SCIM.
- * This topic provides an example of how to add the user `u-00q8wbq42wiltcrk****` to the group `g-00jqzghi2n3o5hkh****`.
- *
- * @param request AddUserToGroupRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return AddUserToGroupResponse
- */
+// Summary:
+//
+// Adds a user to a group.
+//
+// Description:
+//
+// If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot add a user to a group that is synchronized by using SCIM.
+//
+// This topic provides an example of how to add the user `u-00q8wbq42wiltcrk****` to the group `g-00jqzghi2n3o5hkh****`.
+//
+// @param request - AddUserToGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddUserToGroupResponse
 func (client *Client) AddUserToGroupWithOptions(request *AddUserToGroupRequest, runtime *util.RuntimeOptions) (_result *AddUserToGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12199,13 +15948,19 @@ func (client *Client) AddUserToGroupWithOptions(request *AddUserToGroupRequest, 
 	return _result, _err
 }
 
-/**
- * If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot add a user to a group that is synchronized by using SCIM.
- * This topic provides an example of how to add the user `u-00q8wbq42wiltcrk****` to the group `g-00jqzghi2n3o5hkh****`.
- *
- * @param request AddUserToGroupRequest
- * @return AddUserToGroupResponse
- */
+// Summary:
+//
+// Adds a user to a group.
+//
+// Description:
+//
+// If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot add a user to a group that is synchronized by using SCIM.
+//
+// This topic provides an example of how to add the user `u-00q8wbq42wiltcrk****` to the group `g-00jqzghi2n3o5hkh****`.
+//
+// @param request - AddUserToGroupRequest
+//
+// @return AddUserToGroupResponse
 func (client *Client) AddUserToGroup(request *AddUserToGroupRequest) (_result *AddUserToGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddUserToGroupResponse{}
@@ -12217,14 +15972,21 @@ func (client *Client) AddUserToGroup(request *AddUserToGroupRequest) (_result *A
 	return _result, _err
 }
 
-/**
- * If single sign-on (SSO) logon is disabled, you can clear the configurations of a SAML IdP. If SSO logon is enabled, you cannot clear the configurations.
- * This topic provides an example on how to clear the configurations of the SAML IdP within the directory `d-00fc2p61****`.
- *
- * @param request ClearExternalSAMLIdentityProviderRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ClearExternalSAMLIdentityProviderResponse
- */
+// Summary:
+//
+// Clears the configurations of a Security Assertion Markup Language (SAML) identity provider (IdP).
+//
+// Description:
+//
+// If single sign-on (SSO) logon is disabled, you can clear the configurations of a SAML IdP. If SSO logon is enabled, you cannot clear the configurations.
+//
+// This topic provides an example on how to clear the configurations of the SAML IdP within the directory `d-00fc2p61****`.
+//
+// @param request - ClearExternalSAMLIdentityProviderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClearExternalSAMLIdentityProviderResponse
 func (client *Client) ClearExternalSAMLIdentityProviderWithOptions(request *ClearExternalSAMLIdentityProviderRequest, runtime *util.RuntimeOptions) (_result *ClearExternalSAMLIdentityProviderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12258,13 +16020,19 @@ func (client *Client) ClearExternalSAMLIdentityProviderWithOptions(request *Clea
 	return _result, _err
 }
 
-/**
- * If single sign-on (SSO) logon is disabled, you can clear the configurations of a SAML IdP. If SSO logon is enabled, you cannot clear the configurations.
- * This topic provides an example on how to clear the configurations of the SAML IdP within the directory `d-00fc2p61****`.
- *
- * @param request ClearExternalSAMLIdentityProviderRequest
- * @return ClearExternalSAMLIdentityProviderResponse
- */
+// Summary:
+//
+// Clears the configurations of a Security Assertion Markup Language (SAML) identity provider (IdP).
+//
+// Description:
+//
+// If single sign-on (SSO) logon is disabled, you can clear the configurations of a SAML IdP. If SSO logon is enabled, you cannot clear the configurations.
+//
+// This topic provides an example on how to clear the configurations of the SAML IdP within the directory `d-00fc2p61****`.
+//
+// @param request - ClearExternalSAMLIdentityProviderRequest
+//
+// @return ClearExternalSAMLIdentityProviderResponse
 func (client *Client) ClearExternalSAMLIdentityProvider(request *ClearExternalSAMLIdentityProviderRequest) (_result *ClearExternalSAMLIdentityProviderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ClearExternalSAMLIdentityProviderResponse{}
@@ -12276,15 +16044,23 @@ func (client *Client) ClearExternalSAMLIdentityProvider(request *ClearExternalSA
 	return _result, _err
 }
 
-/**
- * When you call this operation, an asynchronous task is created. You can call the [GetTask](~~340670~~) operation to query the progress of the task based on the value of the `TaskId` response parameter.
- * For more information about how to assign permissions on an account in your resource directory, see [Overview of multi-account authorization](~~266726~~).
- * This topic provides an example on how to assign access permissions on the account `114240524784****` in your resource directory to the CloudSSO user `u-00q8wbq42wiltcrk****` by using the access configuration `ac-00jhtfl8thteu6uj****`. After the call is successful, the CloudSSO user can access resources within the account in the resource directory.
- *
- * @param request CreateAccessAssignmentRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateAccessAssignmentResponse
- */
+// Summary:
+//
+// Assigns access permissions on an account in your resource directory to a user or a group by using an access configuration.
+//
+// Description:
+//
+// When you call this operation, an asynchronous task is created. You can call the [GetTask](https://help.aliyun.com/document_detail/340670.html) operation to query the progress of the task based on the value of the `TaskId` response parameter.
+//
+// For more information about how to assign permissions on an account in your resource directory, see [Overview of multi-account authorization](https://help.aliyun.com/document_detail/266726.html).
+//
+// This topic provides an example on how to assign access permissions on the account `114240524784****` in your resource directory to the CloudSSO user `u-00q8wbq42wiltcrk****` by using the access configuration `ac-00jhtfl8thteu6uj****`. After the call is successful, the CloudSSO user can access resources within the account in the resource directory.
+//
+// @param request - CreateAccessAssignmentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAccessAssignmentResponse
 func (client *Client) CreateAccessAssignmentWithOptions(request *CreateAccessAssignmentRequest, runtime *util.RuntimeOptions) (_result *CreateAccessAssignmentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12338,14 +16114,21 @@ func (client *Client) CreateAccessAssignmentWithOptions(request *CreateAccessAss
 	return _result, _err
 }
 
-/**
- * When you call this operation, an asynchronous task is created. You can call the [GetTask](~~340670~~) operation to query the progress of the task based on the value of the `TaskId` response parameter.
- * For more information about how to assign permissions on an account in your resource directory, see [Overview of multi-account authorization](~~266726~~).
- * This topic provides an example on how to assign access permissions on the account `114240524784****` in your resource directory to the CloudSSO user `u-00q8wbq42wiltcrk****` by using the access configuration `ac-00jhtfl8thteu6uj****`. After the call is successful, the CloudSSO user can access resources within the account in the resource directory.
- *
- * @param request CreateAccessAssignmentRequest
- * @return CreateAccessAssignmentResponse
- */
+// Summary:
+//
+// Assigns access permissions on an account in your resource directory to a user or a group by using an access configuration.
+//
+// Description:
+//
+// When you call this operation, an asynchronous task is created. You can call the [GetTask](https://help.aliyun.com/document_detail/340670.html) operation to query the progress of the task based on the value of the `TaskId` response parameter.
+//
+// For more information about how to assign permissions on an account in your resource directory, see [Overview of multi-account authorization](https://help.aliyun.com/document_detail/266726.html).
+//
+// This topic provides an example on how to assign access permissions on the account `114240524784****` in your resource directory to the CloudSSO user `u-00q8wbq42wiltcrk****` by using the access configuration `ac-00jhtfl8thteu6uj****`. After the call is successful, the CloudSSO user can access resources within the account in the resource directory.
+//
+// @param request - CreateAccessAssignmentRequest
+//
+// @return CreateAccessAssignmentResponse
 func (client *Client) CreateAccessAssignment(request *CreateAccessAssignmentRequest) (_result *CreateAccessAssignmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAccessAssignmentResponse{}
@@ -12357,14 +16140,21 @@ func (client *Client) CreateAccessAssignment(request *CreateAccessAssignmentRequ
 	return _result, _err
 }
 
-/**
- * For more information about access configurations, see [Overview of access configurations](~~266737~~).
- * This topic provides an example on how to create an access configuration named `ECS-Admin`.
- *
- * @param request CreateAccessConfigurationRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateAccessConfigurationResponse
- */
+// Summary:
+//
+// Creates an access configuration.
+//
+// Description:
+//
+// For more information about access configurations, see [Overview of access configurations](https://help.aliyun.com/document_detail/266737.html).
+//
+// This topic provides an example on how to create an access configuration named `ECS-Admin`.
+//
+// @param request - CreateAccessConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAccessConfigurationResponse
 func (client *Client) CreateAccessConfigurationWithOptions(request *CreateAccessConfigurationRequest, runtime *util.RuntimeOptions) (_result *CreateAccessConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12414,13 +16204,19 @@ func (client *Client) CreateAccessConfigurationWithOptions(request *CreateAccess
 	return _result, _err
 }
 
-/**
- * For more information about access configurations, see [Overview of access configurations](~~266737~~).
- * This topic provides an example on how to create an access configuration named `ECS-Admin`.
- *
- * @param request CreateAccessConfigurationRequest
- * @return CreateAccessConfigurationResponse
- */
+// Summary:
+//
+// Creates an access configuration.
+//
+// Description:
+//
+// For more information about access configurations, see [Overview of access configurations](https://help.aliyun.com/document_detail/266737.html).
+//
+// This topic provides an example on how to create an access configuration named `ECS-Admin`.
+//
+// @param request - CreateAccessConfigurationRequest
+//
+// @return CreateAccessConfigurationResponse
 func (client *Client) CreateAccessConfiguration(request *CreateAccessConfigurationRequest) (_result *CreateAccessConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAccessConfigurationResponse{}
@@ -12432,18 +16228,29 @@ func (client *Client) CreateAccessConfiguration(request *CreateAccessConfigurati
 	return _result, _err
 }
 
-/**
- * A directory is a CloudSSO instance. Before you can use CloudSSO, you must create a directory. The directory is used to manage all CloudSSO resources.
- * To create a directory, you must select a region. Alibaba Cloud stores data in the directory only in the region that you select. However, you can deploy Alibaba Cloud resources including Elastic Compute Service (ECS) instances and ApsaraDB RDS instances in other regions. You can also use your cloud account for logons and access the Alibaba Cloud resources in other regions. You can select a region to create a directory based on your security compliance requirements and the geographic location of specific users. If you do not have strict security compliance requirements, we recommend that you select a region that is the closest to the geographical location of the specific users. This way, access to cloud resources is accelerated. You can create the CloudSSO directory in the China (Shanghai), China (Hong Kong), US (Silicon Valley), or Germany (Frankfurt) region.
- * This topic provides an example on how to create a directory named `example` in the China (Shanghai) region.
- * ## Limits
- * - You can create only one directory for a management account.
- * - If you want to change the region of a directory, you must delete the directory and then create a directory in a different region.
- *
- * @param request CreateDirectoryRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateDirectoryResponse
- */
+// Summary:
+//
+// Creates a directory.
+//
+// Description:
+//
+// A directory is a CloudSSO instance. Before you can use CloudSSO, you must create a directory. The directory is used to manage all CloudSSO resources.
+//
+// To create a directory, you must select a region. Alibaba Cloud stores data in the directory only in the region that you select. However, you can deploy Alibaba Cloud resources including Elastic Compute Service (ECS) instances and ApsaraDB RDS instances in other regions. You can also use your cloud account for logons and access the Alibaba Cloud resources in other regions. You can select a region to create a directory based on your security compliance requirements and the geographic location of specific users. If you do not have strict security compliance requirements, we recommend that you select a region that is the closest to the geographical location of the specific users. This way, access to cloud resources is accelerated. You can create the CloudSSO directory in the China (Shanghai), China (Hong Kong), US (Silicon Valley), or Germany (Frankfurt) region.
+//
+// This topic provides an example on how to create a directory named `example` in the China (Shanghai) region.
+//
+// ## Limits
+//
+// - You can create only one directory for a management account.
+//
+// - If you want to change the region of a directory, you must delete the directory and then create a directory in a different region.
+//
+// @param request - CreateDirectoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDirectoryResponse
 func (client *Client) CreateDirectoryWithOptions(request *CreateDirectoryRequest, runtime *util.RuntimeOptions) (_result *CreateDirectoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12477,17 +16284,27 @@ func (client *Client) CreateDirectoryWithOptions(request *CreateDirectoryRequest
 	return _result, _err
 }
 
-/**
- * A directory is a CloudSSO instance. Before you can use CloudSSO, you must create a directory. The directory is used to manage all CloudSSO resources.
- * To create a directory, you must select a region. Alibaba Cloud stores data in the directory only in the region that you select. However, you can deploy Alibaba Cloud resources including Elastic Compute Service (ECS) instances and ApsaraDB RDS instances in other regions. You can also use your cloud account for logons and access the Alibaba Cloud resources in other regions. You can select a region to create a directory based on your security compliance requirements and the geographic location of specific users. If you do not have strict security compliance requirements, we recommend that you select a region that is the closest to the geographical location of the specific users. This way, access to cloud resources is accelerated. You can create the CloudSSO directory in the China (Shanghai), China (Hong Kong), US (Silicon Valley), or Germany (Frankfurt) region.
- * This topic provides an example on how to create a directory named `example` in the China (Shanghai) region.
- * ## Limits
- * - You can create only one directory for a management account.
- * - If you want to change the region of a directory, you must delete the directory and then create a directory in a different region.
- *
- * @param request CreateDirectoryRequest
- * @return CreateDirectoryResponse
- */
+// Summary:
+//
+// Creates a directory.
+//
+// Description:
+//
+// A directory is a CloudSSO instance. Before you can use CloudSSO, you must create a directory. The directory is used to manage all CloudSSO resources.
+//
+// To create a directory, you must select a region. Alibaba Cloud stores data in the directory only in the region that you select. However, you can deploy Alibaba Cloud resources including Elastic Compute Service (ECS) instances and ApsaraDB RDS instances in other regions. You can also use your cloud account for logons and access the Alibaba Cloud resources in other regions. You can select a region to create a directory based on your security compliance requirements and the geographic location of specific users. If you do not have strict security compliance requirements, we recommend that you select a region that is the closest to the geographical location of the specific users. This way, access to cloud resources is accelerated. You can create the CloudSSO directory in the China (Shanghai), China (Hong Kong), US (Silicon Valley), or Germany (Frankfurt) region.
+//
+// This topic provides an example on how to create a directory named `example` in the China (Shanghai) region.
+//
+// ## Limits
+//
+// - You can create only one directory for a management account.
+//
+// - If you want to change the region of a directory, you must delete the directory and then create a directory in a different region.
+//
+// @param request - CreateDirectoryRequest
+//
+// @return CreateDirectoryResponse
 func (client *Client) CreateDirectory(request *CreateDirectoryRequest) (_result *CreateDirectoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDirectoryResponse{}
@@ -12499,13 +16316,19 @@ func (client *Client) CreateDirectory(request *CreateDirectoryRequest) (_result 
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to create a group named `TestGroup`.
- *
- * @param request CreateGroupRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateGroupResponse
- */
+// Summary:
+//
+// Creates a group.
+//
+// Description:
+//
+// This topic provides an example on how to create a group named `TestGroup`.
+//
+// @param request - CreateGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGroupResponse
 func (client *Client) CreateGroupWithOptions(request *CreateGroupRequest, runtime *util.RuntimeOptions) (_result *CreateGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12547,12 +16370,17 @@ func (client *Client) CreateGroupWithOptions(request *CreateGroupRequest, runtim
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to create a group named `TestGroup`.
- *
- * @param request CreateGroupRequest
- * @return CreateGroupResponse
- */
+// Summary:
+//
+// Creates a group.
+//
+// Description:
+//
+// This topic provides an example on how to create a group named `TestGroup`.
+//
+// @param request - CreateGroupRequest
+//
+// @return CreateGroupResponse
 func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateGroupResponse{}
@@ -12564,14 +16392,21 @@ func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateG
 	return _result, _err
 }
 
-/**
- * SCIM credentials are required for SCIM synchronization. You can create up to two SCIM credentials.
- * This topic provides an example on how to create a SCIM credential within the directory `d-00fc2p61****`.
- *
- * @param request CreateSCIMServerCredentialRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateSCIMServerCredentialResponse
- */
+// Summary:
+//
+// Creates a Cross-domain Identity Management (SCIM) credential.
+//
+// Description:
+//
+// SCIM credentials are required for SCIM synchronization. You can create up to two SCIM credentials.
+//
+// This topic provides an example on how to create a SCIM credential within the directory `d-00fc2p61****`.
+//
+// @param request - CreateSCIMServerCredentialRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSCIMServerCredentialResponse
 func (client *Client) CreateSCIMServerCredentialWithOptions(request *CreateSCIMServerCredentialRequest, runtime *util.RuntimeOptions) (_result *CreateSCIMServerCredentialResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12605,13 +16440,19 @@ func (client *Client) CreateSCIMServerCredentialWithOptions(request *CreateSCIMS
 	return _result, _err
 }
 
-/**
- * SCIM credentials are required for SCIM synchronization. You can create up to two SCIM credentials.
- * This topic provides an example on how to create a SCIM credential within the directory `d-00fc2p61****`.
- *
- * @param request CreateSCIMServerCredentialRequest
- * @return CreateSCIMServerCredentialResponse
- */
+// Summary:
+//
+// Creates a Cross-domain Identity Management (SCIM) credential.
+//
+// Description:
+//
+// SCIM credentials are required for SCIM synchronization. You can create up to two SCIM credentials.
+//
+// This topic provides an example on how to create a SCIM credential within the directory `d-00fc2p61****`.
+//
+// @param request - CreateSCIMServerCredentialRequest
+//
+// @return CreateSCIMServerCredentialResponse
 func (client *Client) CreateSCIMServerCredential(request *CreateSCIMServerCredentialRequest) (_result *CreateSCIMServerCredentialResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSCIMServerCredentialResponse{}
@@ -12623,13 +16464,19 @@ func (client *Client) CreateSCIMServerCredential(request *CreateSCIMServerCreden
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to create a user named `Alice`.
- *
- * @param request CreateUserRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateUserResponse
- */
+// Summary:
+//
+// Creates a user.
+//
+// Description:
+//
+// This topic provides an example on how to create a user named `Alice`.
+//
+// @param request - CreateUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateUserResponse
 func (client *Client) CreateUserWithOptions(request *CreateUserRequest, runtime *util.RuntimeOptions) (_result *CreateUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12691,12 +16538,17 @@ func (client *Client) CreateUserWithOptions(request *CreateUserRequest, runtime 
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to create a user named `Alice`.
- *
- * @param request CreateUserRequest
- * @return CreateUserResponse
- */
+// Summary:
+//
+// Creates a user.
+//
+// Description:
+//
+// This topic provides an example on how to create a user named `Alice`.
+//
+// @param request - CreateUserRequest
+//
+// @return CreateUserResponse
 func (client *Client) CreateUser(request *CreateUserRequest) (_result *CreateUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateUserResponse{}
@@ -12708,6 +16560,15 @@ func (client *Client) CreateUser(request *CreateUserRequest) (_result *CreateUse
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a Resource Access Management (RAM) user provisioning.
+//
+// @param request - CreateUserProvisioningRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateUserProvisioningResponse
 func (client *Client) CreateUserProvisioningWithOptions(request *CreateUserProvisioningRequest, runtime *util.RuntimeOptions) (_result *CreateUserProvisioningResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12769,6 +16630,13 @@ func (client *Client) CreateUserProvisioningWithOptions(request *CreateUserProvi
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a Resource Access Management (RAM) user provisioning.
+//
+// @param request - CreateUserProvisioningRequest
+//
+// @return CreateUserProvisioningResponse
 func (client *Client) CreateUserProvisioning(request *CreateUserProvisioningRequest) (_result *CreateUserProvisioningResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateUserProvisioningResponse{}
@@ -12780,14 +16648,21 @@ func (client *Client) CreateUserProvisioning(request *CreateUserProvisioningRequ
 	return _result, _err
 }
 
-/**
- * When you call this operation, an asynchronous task is created. You can call the [GetTask](~~340670~~) operation to query the progress of the task based on the value of the `TaskId` response parameter.
- * This topic provides an example on how to remove the access permissions on the account `114240524784****` in the resource directory from the CloudSSO user `u-00q8wbq42wiltcrk****`. The access permissions are assigned by using the access configuration `ac-00jhtfl8thteu6uj****`.
- *
- * @param request DeleteAccessAssignmentRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteAccessAssignmentResponse
- */
+// Summary:
+//
+// Removes the access permissions on an account in a resource directory.
+//
+// Description:
+//
+// When you call this operation, an asynchronous task is created. You can call the [GetTask](https://help.aliyun.com/document_detail/340670.html) operation to query the progress of the task based on the value of the `TaskId` response parameter.
+//
+// This topic provides an example on how to remove the access permissions on the account `114240524784****` in the resource directory from the CloudSSO user `u-00q8wbq42wiltcrk****`. The access permissions are assigned by using the access configuration `ac-00jhtfl8thteu6uj****`.
+//
+// @param request - DeleteAccessAssignmentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAccessAssignmentResponse
 func (client *Client) DeleteAccessAssignmentWithOptions(request *DeleteAccessAssignmentRequest, runtime *util.RuntimeOptions) (_result *DeleteAccessAssignmentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12845,13 +16720,19 @@ func (client *Client) DeleteAccessAssignmentWithOptions(request *DeleteAccessAss
 	return _result, _err
 }
 
-/**
- * When you call this operation, an asynchronous task is created. You can call the [GetTask](~~340670~~) operation to query the progress of the task based on the value of the `TaskId` response parameter.
- * This topic provides an example on how to remove the access permissions on the account `114240524784****` in the resource directory from the CloudSSO user `u-00q8wbq42wiltcrk****`. The access permissions are assigned by using the access configuration `ac-00jhtfl8thteu6uj****`.
- *
- * @param request DeleteAccessAssignmentRequest
- * @return DeleteAccessAssignmentResponse
- */
+// Summary:
+//
+// Removes the access permissions on an account in a resource directory.
+//
+// Description:
+//
+// When you call this operation, an asynchronous task is created. You can call the [GetTask](https://help.aliyun.com/document_detail/340670.html) operation to query the progress of the task based on the value of the `TaskId` response parameter.
+//
+// This topic provides an example on how to remove the access permissions on the account `114240524784****` in the resource directory from the CloudSSO user `u-00q8wbq42wiltcrk****`. The access permissions are assigned by using the access configuration `ac-00jhtfl8thteu6uj****`.
+//
+// @param request - DeleteAccessAssignmentRequest
+//
+// @return DeleteAccessAssignmentResponse
 func (client *Client) DeleteAccessAssignment(request *DeleteAccessAssignmentRequest) (_result *DeleteAccessAssignmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAccessAssignmentResponse{}
@@ -12863,15 +16744,23 @@ func (client *Client) DeleteAccessAssignment(request *DeleteAccessAssignmentRequ
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to delete the access configuration whose ID is `ac-001j9mcm3k7335bc****`.
- * ## Prerequisites
- * The access configuration that you want to delete is de-provisioned from the accounts in your resource directory. For more information, see [DeprovisionAccessConfiguration](~~338352~~).
- *
- * @param request DeleteAccessConfigurationRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteAccessConfigurationResponse
- */
+// Summary:
+//
+// Deletes an access configuration.
+//
+// Description:
+//
+// This topic provides an example on how to delete the access configuration whose ID is `ac-001j9mcm3k7335bc****`.
+//
+// ## Prerequisites
+//
+// The access configuration that you want to delete is de-provisioned from the accounts in your resource directory. For more information, see [DeprovisionAccessConfiguration](https://help.aliyun.com/document_detail/338352.html).
+//
+// @param request - DeleteAccessConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAccessConfigurationResponse
 func (client *Client) DeleteAccessConfigurationWithOptions(request *DeleteAccessConfigurationRequest, runtime *util.RuntimeOptions) (_result *DeleteAccessConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12913,14 +16802,21 @@ func (client *Client) DeleteAccessConfigurationWithOptions(request *DeleteAccess
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to delete the access configuration whose ID is `ac-001j9mcm3k7335bc****`.
- * ## Prerequisites
- * The access configuration that you want to delete is de-provisioned from the accounts in your resource directory. For more information, see [DeprovisionAccessConfiguration](~~338352~~).
- *
- * @param request DeleteAccessConfigurationRequest
- * @return DeleteAccessConfigurationResponse
- */
+// Summary:
+//
+// Deletes an access configuration.
+//
+// Description:
+//
+// This topic provides an example on how to delete the access configuration whose ID is `ac-001j9mcm3k7335bc****`.
+//
+// ## Prerequisites
+//
+// The access configuration that you want to delete is de-provisioned from the accounts in your resource directory. For more information, see [DeprovisionAccessConfiguration](https://help.aliyun.com/document_detail/338352.html).
+//
+// @param request - DeleteAccessConfigurationRequest
+//
+// @return DeleteAccessConfigurationResponse
 func (client *Client) DeleteAccessConfiguration(request *DeleteAccessConfigurationRequest) (_result *DeleteAccessConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAccessConfigurationResponse{}
@@ -12932,21 +16828,35 @@ func (client *Client) DeleteAccessConfiguration(request *DeleteAccessConfigurati
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to delete a directory whose ID is `d-00fc2p61****`.
- * ## Prerequisites
- * No resources are contained in the directory that you want to delete.
- * *   Access permissions on the accounts in your resource directory are removed from all users and groups. For more information, see [DeleteAccessAssignment](~~338350~~).
- * *   Users are deleted. For more information, see [DeleteUser](~~341671~~).
- * *   Groups are deleted. For more information, see [DeleteGroup](~~341821~~).
- * *   Access configurations are deleted. For more information, see [DeleteAccessConfiguration](~~336907~~).
- * *   System for Cross-domain Identity Management (SCIM) credentials are deleted. For more information, see [DeleteSCIMServerCredential](~~341842~~).
- * *   SSO logon configurations are deleted. For more information, see [ClearExternalSAMLIdentityProvider](~~341573~~).
- *
- * @param request DeleteDirectoryRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteDirectoryResponse
- */
+// Summary:
+//
+// Deletes a directory.
+//
+// Description:
+//
+// This topic provides an example on how to delete a directory whose ID is `d-00fc2p61****`.
+//
+// ## Prerequisites
+//
+// No resources are contained in the directory that you want to delete.
+//
+// 	- Access permissions on the accounts in your resource directory are removed from all users and groups. For more information, see [DeleteAccessAssignment](https://help.aliyun.com/document_detail/338350.html).
+//
+// 	- Users are deleted. For more information, see [DeleteUser](https://help.aliyun.com/document_detail/341671.html).
+//
+// 	- Groups are deleted. For more information, see [DeleteGroup](https://help.aliyun.com/document_detail/341821.html).
+//
+// 	- Access configurations are deleted. For more information, see [DeleteAccessConfiguration](https://help.aliyun.com/document_detail/336907.html).
+//
+// 	- System for Cross-domain Identity Management (SCIM) credentials are deleted. For more information, see [DeleteSCIMServerCredential](https://help.aliyun.com/document_detail/341842.html).
+//
+// 	- SSO logon configurations are deleted. For more information, see [ClearExternalSAMLIdentityProvider](https://help.aliyun.com/document_detail/341573.html).
+//
+// @param request - DeleteDirectoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDirectoryResponse
 func (client *Client) DeleteDirectoryWithOptions(request *DeleteDirectoryRequest, runtime *util.RuntimeOptions) (_result *DeleteDirectoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12980,20 +16890,33 @@ func (client *Client) DeleteDirectoryWithOptions(request *DeleteDirectoryRequest
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to delete a directory whose ID is `d-00fc2p61****`.
- * ## Prerequisites
- * No resources are contained in the directory that you want to delete.
- * *   Access permissions on the accounts in your resource directory are removed from all users and groups. For more information, see [DeleteAccessAssignment](~~338350~~).
- * *   Users are deleted. For more information, see [DeleteUser](~~341671~~).
- * *   Groups are deleted. For more information, see [DeleteGroup](~~341821~~).
- * *   Access configurations are deleted. For more information, see [DeleteAccessConfiguration](~~336907~~).
- * *   System for Cross-domain Identity Management (SCIM) credentials are deleted. For more information, see [DeleteSCIMServerCredential](~~341842~~).
- * *   SSO logon configurations are deleted. For more information, see [ClearExternalSAMLIdentityProvider](~~341573~~).
- *
- * @param request DeleteDirectoryRequest
- * @return DeleteDirectoryResponse
- */
+// Summary:
+//
+// Deletes a directory.
+//
+// Description:
+//
+// This topic provides an example on how to delete a directory whose ID is `d-00fc2p61****`.
+//
+// ## Prerequisites
+//
+// No resources are contained in the directory that you want to delete.
+//
+// 	- Access permissions on the accounts in your resource directory are removed from all users and groups. For more information, see [DeleteAccessAssignment](https://help.aliyun.com/document_detail/338350.html).
+//
+// 	- Users are deleted. For more information, see [DeleteUser](https://help.aliyun.com/document_detail/341671.html).
+//
+// 	- Groups are deleted. For more information, see [DeleteGroup](https://help.aliyun.com/document_detail/341821.html).
+//
+// 	- Access configurations are deleted. For more information, see [DeleteAccessConfiguration](https://help.aliyun.com/document_detail/336907.html).
+//
+// 	- System for Cross-domain Identity Management (SCIM) credentials are deleted. For more information, see [DeleteSCIMServerCredential](https://help.aliyun.com/document_detail/341842.html).
+//
+// 	- SSO logon configurations are deleted. For more information, see [ClearExternalSAMLIdentityProvider](https://help.aliyun.com/document_detail/341573.html).
+//
+// @param request - DeleteDirectoryRequest
+//
+// @return DeleteDirectoryResponse
 func (client *Client) DeleteDirectory(request *DeleteDirectoryRequest) (_result *DeleteDirectoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDirectoryResponse{}
@@ -13005,17 +16928,27 @@ func (client *Client) DeleteDirectory(request *DeleteDirectoryRequest) (_result 
 	return _result, _err
 }
 
-/**
- * If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot delete a group that is synchronized by using SCIM.
- * ## Prerequisites
- * The group that you want to delete is not associated with the following resources. If the group is associated with the resources, the deletion fails.
- * *   Users: You must remove users from the group. For more information, see [RemoveUserFromGroup](~~335116~~).
- * *   Access permissions: You must remove the access permissions on the accounts in your resource directory from the group. For more information, see [DeleteAccessAssignment](~~338350~~).
- *
- * @param request DeleteGroupRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteGroupResponse
- */
+// Summary:
+//
+// Deletes a group.
+//
+// Description:
+//
+// If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot delete a group that is synchronized by using SCIM.
+//
+// ## Prerequisites
+//
+// The group that you want to delete is not associated with the following resources. If the group is associated with the resources, the deletion fails.
+//
+// 	- Users: You must remove users from the group. For more information, see [RemoveUserFromGroup](https://help.aliyun.com/document_detail/335116.html).
+//
+// 	- Access permissions: You must remove the access permissions on the accounts in your resource directory from the group. For more information, see [DeleteAccessAssignment](https://help.aliyun.com/document_detail/338350.html).
+//
+// @param request - DeleteGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteGroupResponse
 func (client *Client) DeleteGroupWithOptions(request *DeleteGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13053,16 +16986,25 @@ func (client *Client) DeleteGroupWithOptions(request *DeleteGroupRequest, runtim
 	return _result, _err
 }
 
-/**
- * If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot delete a group that is synchronized by using SCIM.
- * ## Prerequisites
- * The group that you want to delete is not associated with the following resources. If the group is associated with the resources, the deletion fails.
- * *   Users: You must remove users from the group. For more information, see [RemoveUserFromGroup](~~335116~~).
- * *   Access permissions: You must remove the access permissions on the accounts in your resource directory from the group. For more information, see [DeleteAccessAssignment](~~338350~~).
- *
- * @param request DeleteGroupRequest
- * @return DeleteGroupResponse
- */
+// Summary:
+//
+// Deletes a group.
+//
+// Description:
+//
+// If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot delete a group that is synchronized by using SCIM.
+//
+// ## Prerequisites
+//
+// The group that you want to delete is not associated with the following resources. If the group is associated with the resources, the deletion fails.
+//
+// 	- Users: You must remove users from the group. For more information, see [RemoveUserFromGroup](https://help.aliyun.com/document_detail/335116.html).
+//
+// 	- Access permissions: You must remove the access permissions on the accounts in your resource directory from the group. For more information, see [DeleteAccessAssignment](https://help.aliyun.com/document_detail/338350.html).
+//
+// @param request - DeleteGroupRequest
+//
+// @return DeleteGroupResponse
 func (client *Client) DeleteGroup(request *DeleteGroupRequest) (_result *DeleteGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteGroupResponse{}
@@ -13074,13 +17016,19 @@ func (client *Client) DeleteGroup(request *DeleteGroupRequest) (_result *DeleteG
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to unbind the MFA device `mfa-00ujhet8pycljj7j****` from the user `u-00q8wbq42wiltcrk****`.
- *
- * @param request DeleteMFADeviceForUserRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteMFADeviceForUserResponse
- */
+// Summary:
+//
+// Unbinds a multi-factor authentication (MFA) device from a user.
+//
+// Description:
+//
+// This topic provides an example on how to unbind the MFA device `mfa-00ujhet8pycljj7j****` from the user `u-00q8wbq42wiltcrk****`.
+//
+// @param request - DeleteMFADeviceForUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMFADeviceForUserResponse
 func (client *Client) DeleteMFADeviceForUserWithOptions(request *DeleteMFADeviceForUserRequest, runtime *util.RuntimeOptions) (_result *DeleteMFADeviceForUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13122,12 +17070,17 @@ func (client *Client) DeleteMFADeviceForUserWithOptions(request *DeleteMFADevice
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to unbind the MFA device `mfa-00ujhet8pycljj7j****` from the user `u-00q8wbq42wiltcrk****`.
- *
- * @param request DeleteMFADeviceForUserRequest
- * @return DeleteMFADeviceForUserResponse
- */
+// Summary:
+//
+// Unbinds a multi-factor authentication (MFA) device from a user.
+//
+// Description:
+//
+// This topic provides an example on how to unbind the MFA device `mfa-00ujhet8pycljj7j****` from the user `u-00q8wbq42wiltcrk****`.
+//
+// @param request - DeleteMFADeviceForUserRequest
+//
+// @return DeleteMFADeviceForUserResponse
 func (client *Client) DeleteMFADeviceForUser(request *DeleteMFADeviceForUserRequest) (_result *DeleteMFADeviceForUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteMFADeviceForUserResponse{}
@@ -13139,14 +17092,21 @@ func (client *Client) DeleteMFADeviceForUser(request *DeleteMFADeviceForUserRequ
 	return _result, _err
 }
 
-/**
- * After a SCIM credential is deleted, the synchronization task that uses the SCIM credential fails.
- * This topic provides an example on how to delete the SCIM credential whose ID is `scimcred-004whl0kvfwcypbi****`.
- *
- * @param request DeleteSCIMServerCredentialRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteSCIMServerCredentialResponse
- */
+// Summary:
+//
+// Deletes a Cross-domain Identity Management (SCIM) credential.
+//
+// Description:
+//
+// After a SCIM credential is deleted, the synchronization task that uses the SCIM credential fails.
+//
+// This topic provides an example on how to delete the SCIM credential whose ID is `scimcred-004whl0kvfwcypbi****`.
+//
+// @param request - DeleteSCIMServerCredentialRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSCIMServerCredentialResponse
 func (client *Client) DeleteSCIMServerCredentialWithOptions(request *DeleteSCIMServerCredentialRequest, runtime *util.RuntimeOptions) (_result *DeleteSCIMServerCredentialResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13184,13 +17144,19 @@ func (client *Client) DeleteSCIMServerCredentialWithOptions(request *DeleteSCIMS
 	return _result, _err
 }
 
-/**
- * After a SCIM credential is deleted, the synchronization task that uses the SCIM credential fails.
- * This topic provides an example on how to delete the SCIM credential whose ID is `scimcred-004whl0kvfwcypbi****`.
- *
- * @param request DeleteSCIMServerCredentialRequest
- * @return DeleteSCIMServerCredentialResponse
- */
+// Summary:
+//
+// Deletes a Cross-domain Identity Management (SCIM) credential.
+//
+// Description:
+//
+// After a SCIM credential is deleted, the synchronization task that uses the SCIM credential fails.
+//
+// This topic provides an example on how to delete the SCIM credential whose ID is `scimcred-004whl0kvfwcypbi****`.
+//
+// @param request - DeleteSCIMServerCredentialRequest
+//
+// @return DeleteSCIMServerCredentialResponse
 func (client *Client) DeleteSCIMServerCredential(request *DeleteSCIMServerCredentialRequest) (_result *DeleteSCIMServerCredentialResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSCIMServerCredentialResponse{}
@@ -13202,18 +17168,29 @@ func (client *Client) DeleteSCIMServerCredential(request *DeleteSCIMServerCreden
 	return _result, _err
 }
 
-/**
- * If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot delete a user that is synchronized by using SCIM.
- * ## Prerequisites
- * The user that you want to delete is not associated with the following resources. If the user is associated with the resources, the deletion fails.
- * *   Multi-factor authentication (MFA) devices: You must unbind the MFA devices from the user. For more information, see [DeleteMFADeviceForUser](~~341675~~).
- * *   Access permissions: You must remove the access permissions on the accounts in your resource directory from the user. For more information, see [DeleteAccessAssignment](~~338350~~).
- * *   Groups: You must remove the user from groups. For more information, see [RemoveUserFromGroup](~~335116~~).
- *
- * @param request DeleteUserRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteUserResponse
- */
+// Summary:
+//
+// Deletes a user.
+//
+// Description:
+//
+// If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot delete a user that is synchronized by using SCIM.
+//
+// ## Prerequisites
+//
+// The user that you want to delete is not associated with the following resources. If the user is associated with the resources, the deletion fails.
+//
+// 	- Multi-factor authentication (MFA) devices: You must unbind the MFA devices from the user. For more information, see [DeleteMFADeviceForUser](https://help.aliyun.com/document_detail/341675.html).
+//
+// 	- Access permissions: You must remove the access permissions on the accounts in your resource directory from the user. For more information, see [DeleteAccessAssignment](https://help.aliyun.com/document_detail/338350.html).
+//
+// 	- Groups: You must remove the user from groups. For more information, see [RemoveUserFromGroup](https://help.aliyun.com/document_detail/335116.html).
+//
+// @param request - DeleteUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUserResponse
 func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, runtime *util.RuntimeOptions) (_result *DeleteUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13251,17 +17228,27 @@ func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, runtime 
 	return _result, _err
 }
 
-/**
- * If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot delete a user that is synchronized by using SCIM.
- * ## Prerequisites
- * The user that you want to delete is not associated with the following resources. If the user is associated with the resources, the deletion fails.
- * *   Multi-factor authentication (MFA) devices: You must unbind the MFA devices from the user. For more information, see [DeleteMFADeviceForUser](~~341675~~).
- * *   Access permissions: You must remove the access permissions on the accounts in your resource directory from the user. For more information, see [DeleteAccessAssignment](~~338350~~).
- * *   Groups: You must remove the user from groups. For more information, see [RemoveUserFromGroup](~~335116~~).
- *
- * @param request DeleteUserRequest
- * @return DeleteUserResponse
- */
+// Summary:
+//
+// Deletes a user.
+//
+// Description:
+//
+// If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot delete a user that is synchronized by using SCIM.
+//
+// ## Prerequisites
+//
+// The user that you want to delete is not associated with the following resources. If the user is associated with the resources, the deletion fails.
+//
+// 	- Multi-factor authentication (MFA) devices: You must unbind the MFA devices from the user. For more information, see [DeleteMFADeviceForUser](https://help.aliyun.com/document_detail/341675.html).
+//
+// 	- Access permissions: You must remove the access permissions on the accounts in your resource directory from the user. For more information, see [DeleteAccessAssignment](https://help.aliyun.com/document_detail/338350.html).
+//
+// 	- Groups: You must remove the user from groups. For more information, see [RemoveUserFromGroup](https://help.aliyun.com/document_detail/335116.html).
+//
+// @param request - DeleteUserRequest
+//
+// @return DeleteUserResponse
 func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteUserResponse{}
@@ -13273,6 +17260,15 @@ func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUse
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a Resource Access Management (RAM) user provisioning.
+//
+// @param request - DeleteUserProvisioningRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUserProvisioningResponse
 func (client *Client) DeleteUserProvisioningWithOptions(request *DeleteUserProvisioningRequest, runtime *util.RuntimeOptions) (_result *DeleteUserProvisioningResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13314,6 +17310,13 @@ func (client *Client) DeleteUserProvisioningWithOptions(request *DeleteUserProvi
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a Resource Access Management (RAM) user provisioning.
+//
+// @param request - DeleteUserProvisioningRequest
+//
+// @return DeleteUserProvisioningResponse
 func (client *Client) DeleteUserProvisioning(request *DeleteUserProvisioningRequest) (_result *DeleteUserProvisioningResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteUserProvisioningResponse{}
@@ -13325,6 +17328,15 @@ func (client *Client) DeleteUserProvisioning(request *DeleteUserProvisioningRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a Resource Access Management (RAM) user provisioning event.
+//
+// @param request - DeleteUserProvisioningEventRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUserProvisioningEventResponse
 func (client *Client) DeleteUserProvisioningEventWithOptions(request *DeleteUserProvisioningEventRequest, runtime *util.RuntimeOptions) (_result *DeleteUserProvisioningEventResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13366,6 +17378,13 @@ func (client *Client) DeleteUserProvisioningEventWithOptions(request *DeleteUser
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a Resource Access Management (RAM) user provisioning event.
+//
+// @param request - DeleteUserProvisioningEventRequest
+//
+// @return DeleteUserProvisioningEventResponse
 func (client *Client) DeleteUserProvisioningEvent(request *DeleteUserProvisioningEventRequest) (_result *DeleteUserProvisioningEventResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteUserProvisioningEventResponse{}
@@ -13377,14 +17396,21 @@ func (client *Client) DeleteUserProvisioningEvent(request *DeleteUserProvisionin
 	return _result, _err
 }
 
-/**
- * When you call this operation, an asynchronous task is automatically created. You can call the [GetTask](~~340670~~) operation to query the progress of the task based on the value of the `TaskId` response parameter.
- * This topic provides an example on how to de-provision the access configuration `ac-00jhtfl8thteu6uj****` from the account `114240524784****` in your resource directory.
- *
- * @param request DeprovisionAccessConfigurationRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeprovisionAccessConfigurationResponse
- */
+// Summary:
+//
+// De-provisions an access configuration from an account in your resource directory.
+//
+// Description:
+//
+// When you call this operation, an asynchronous task is automatically created. You can call the [GetTask](https://help.aliyun.com/document_detail/340670.html) operation to query the progress of the task based on the value of the `TaskId` response parameter.
+//
+// This topic provides an example on how to de-provision the access configuration `ac-00jhtfl8thteu6uj****` from the account `114240524784****` in your resource directory.
+//
+// @param request - DeprovisionAccessConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeprovisionAccessConfigurationResponse
 func (client *Client) DeprovisionAccessConfigurationWithOptions(request *DeprovisionAccessConfigurationRequest, runtime *util.RuntimeOptions) (_result *DeprovisionAccessConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13430,13 +17456,19 @@ func (client *Client) DeprovisionAccessConfigurationWithOptions(request *Deprovi
 	return _result, _err
 }
 
-/**
- * When you call this operation, an asynchronous task is automatically created. You can call the [GetTask](~~340670~~) operation to query the progress of the task based on the value of the `TaskId` response parameter.
- * This topic provides an example on how to de-provision the access configuration `ac-00jhtfl8thteu6uj****` from the account `114240524784****` in your resource directory.
- *
- * @param request DeprovisionAccessConfigurationRequest
- * @return DeprovisionAccessConfigurationResponse
- */
+// Summary:
+//
+// De-provisions an access configuration from an account in your resource directory.
+//
+// Description:
+//
+// When you call this operation, an asynchronous task is automatically created. You can call the [GetTask](https://help.aliyun.com/document_detail/340670.html) operation to query the progress of the task based on the value of the `TaskId` response parameter.
+//
+// This topic provides an example on how to de-provision the access configuration `ac-00jhtfl8thteu6uj****` from the account `114240524784****` in your resource directory.
+//
+// @param request - DeprovisionAccessConfigurationRequest
+//
+// @return DeprovisionAccessConfigurationResponse
 func (client *Client) DeprovisionAccessConfiguration(request *DeprovisionAccessConfigurationRequest) (_result *DeprovisionAccessConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeprovisionAccessConfigurationResponse{}
@@ -13448,13 +17480,79 @@ func (client *Client) DeprovisionAccessConfiguration(request *DeprovisionAccessC
 	return _result, _err
 }
 
-/**
- * If your CloudSSO has no directory, you can disable CloudSSO based on your business requirements. After you disable CloudSSO, you can enable it at any time.
- *
- * @param request DisableServiceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DisableServiceResponse
- */
+// Summary:
+//
+// DisableDelegateAccount
+//
+// @param request - DisableDelegateAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableDelegateAccountResponse
+func (client *Client) DisableDelegateAccountWithOptions(request *DisableDelegateAccountRequest, runtime *util.RuntimeOptions) (_result *DisableDelegateAccountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableDelegateAccount"),
+		Version:     tea.String("2021-05-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DisableDelegateAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// DisableDelegateAccount
+//
+// @param request - DisableDelegateAccountRequest
+//
+// @return DisableDelegateAccountResponse
+func (client *Client) DisableDelegateAccount(request *DisableDelegateAccountRequest) (_result *DisableDelegateAccountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DisableDelegateAccountResponse{}
+	_body, _err := client.DisableDelegateAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Disables CloudSSO.
+//
+// Description:
+//
+// If your CloudSSO has no directory, you can disable CloudSSO based on your business requirements. After you disable CloudSSO, you can enable it at any time.
+//
+// @param request - DisableServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableServiceResponse
 func (client *Client) DisableServiceWithOptions(runtime *util.RuntimeOptions) (_result *DisableServiceResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -13477,11 +17575,15 @@ func (client *Client) DisableServiceWithOptions(runtime *util.RuntimeOptions) (_
 	return _result, _err
 }
 
-/**
- * If your CloudSSO has no directory, you can disable CloudSSO based on your business requirements. After you disable CloudSSO, you can enable it at any time.
- *
- * @return DisableServiceResponse
- */
+// Summary:
+//
+// Disables CloudSSO.
+//
+// Description:
+//
+// If your CloudSSO has no directory, you can disable CloudSSO based on your business requirements. After you disable CloudSSO, you can enable it at any time.
+//
+// @return DisableServiceResponse
 func (client *Client) DisableService() (_result *DisableServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableServiceResponse{}
@@ -13493,14 +17595,81 @@ func (client *Client) DisableService() (_result *DisableServiceResponse, _err er
 	return _result, _err
 }
 
-/**
- * You can call this operation only if your account belongs to the management account that is used to enable a resource directory and has permissions to enable CloudSSO. For more information, see [Enable CloudSSO](~~262819~~).
- * If you call this operation, you agree to the [Alibaba Cloud International Website Product Terms of Service](https://www.alibabacloud.com/help/doc-detail/42416.htm).
- *
- * @param request EnableServiceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return EnableServiceResponse
- */
+// Summary:
+//
+// EnableDelegateAccount
+//
+// @param request - EnableDelegateAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableDelegateAccountResponse
+func (client *Client) EnableDelegateAccountWithOptions(request *EnableDelegateAccountRequest, runtime *util.RuntimeOptions) (_result *EnableDelegateAccountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableDelegateAccount"),
+		Version:     tea.String("2021-05-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EnableDelegateAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// EnableDelegateAccount
+//
+// @param request - EnableDelegateAccountRequest
+//
+// @return EnableDelegateAccountResponse
+func (client *Client) EnableDelegateAccount(request *EnableDelegateAccountRequest) (_result *EnableDelegateAccountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EnableDelegateAccountResponse{}
+	_body, _err := client.EnableDelegateAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables CloudSSO.
+//
+// Description:
+//
+// You can call this operation only if your account belongs to the management account that is used to enable a resource directory and has permissions to enable CloudSSO. For more information, see [Enable CloudSSO](https://help.aliyun.com/document_detail/262819.html).
+//
+// If you call this operation, you agree to the [Alibaba Cloud International Website Product Terms of Service](https://www.alibabacloud.com/help/doc-detail/42416.htm).
+//
+// @param request - EnableServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableServiceResponse
 func (client *Client) EnableServiceWithOptions(runtime *util.RuntimeOptions) (_result *EnableServiceResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -13523,12 +17692,17 @@ func (client *Client) EnableServiceWithOptions(runtime *util.RuntimeOptions) (_r
 	return _result, _err
 }
 
-/**
- * You can call this operation only if your account belongs to the management account that is used to enable a resource directory and has permissions to enable CloudSSO. For more information, see [Enable CloudSSO](~~262819~~).
- * If you call this operation, you agree to the [Alibaba Cloud International Website Product Terms of Service](https://www.alibabacloud.com/help/doc-detail/42416.htm).
- *
- * @return EnableServiceResponse
- */
+// Summary:
+//
+// Enables CloudSSO.
+//
+// Description:
+//
+// You can call this operation only if your account belongs to the management account that is used to enable a resource directory and has permissions to enable CloudSSO. For more information, see [Enable CloudSSO](https://help.aliyun.com/document_detail/262819.html).
+//
+// If you call this operation, you agree to the [Alibaba Cloud International Website Product Terms of Service](https://www.alibabacloud.com/help/doc-detail/42416.htm).
+//
+// @return EnableServiceResponse
 func (client *Client) EnableService() (_result *EnableServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableServiceResponse{}
@@ -13540,13 +17714,19 @@ func (client *Client) EnableService() (_result *EnableServiceResponse, _err erro
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query the information about the access configuration whose ID is `ac-00ccule7tadaijxc****`.
- *
- * @param request GetAccessConfigurationRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetAccessConfigurationResponse
- */
+// Summary:
+//
+// Queries information about an access configuration.
+//
+// Description:
+//
+// This topic provides an example on how to query the information about the access configuration whose ID is `ac-00ccule7tadaijxc****`.
+//
+// @param request - GetAccessConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAccessConfigurationResponse
 func (client *Client) GetAccessConfigurationWithOptions(request *GetAccessConfigurationRequest, runtime *util.RuntimeOptions) (_result *GetAccessConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13584,12 +17764,17 @@ func (client *Client) GetAccessConfigurationWithOptions(request *GetAccessConfig
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query the information about the access configuration whose ID is `ac-00ccule7tadaijxc****`.
- *
- * @param request GetAccessConfigurationRequest
- * @return GetAccessConfigurationResponse
- */
+// Summary:
+//
+// Queries information about an access configuration.
+//
+// Description:
+//
+// This topic provides an example on how to query the information about the access configuration whose ID is `ac-00ccule7tadaijxc****`.
+//
+// @param request - GetAccessConfigurationRequest
+//
+// @return GetAccessConfigurationResponse
 func (client *Client) GetAccessConfiguration(request *GetAccessConfigurationRequest) (_result *GetAccessConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAccessConfigurationResponse{}
@@ -13601,13 +17786,19 @@ func (client *Client) GetAccessConfiguration(request *GetAccessConfigurationRequ
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query information about the directory whose ID is `d-00fc2p61****`.
- *
- * @param request GetDirectoryRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetDirectoryResponse
- */
+// Summary:
+//
+// Queries information about a directory.
+//
+// Description:
+//
+// This topic provides an example on how to query information about the directory whose ID is `d-00fc2p61****`.
+//
+// @param request - GetDirectoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDirectoryResponse
 func (client *Client) GetDirectoryWithOptions(request *GetDirectoryRequest, runtime *util.RuntimeOptions) (_result *GetDirectoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13641,12 +17832,17 @@ func (client *Client) GetDirectoryWithOptions(request *GetDirectoryRequest, runt
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query information about the directory whose ID is `d-00fc2p61****`.
- *
- * @param request GetDirectoryRequest
- * @return GetDirectoryResponse
- */
+// Summary:
+//
+// Queries information about a directory.
+//
+// Description:
+//
+// This topic provides an example on how to query information about the directory whose ID is `d-00fc2p61****`.
+//
+// @param request - GetDirectoryRequest
+//
+// @return GetDirectoryResponse
 func (client *Client) GetDirectory(request *GetDirectoryRequest) (_result *GetDirectoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDirectoryResponse{}
@@ -13658,14 +17854,21 @@ func (client *Client) GetDirectory(request *GetDirectoryRequest) (_result *GetDi
 	return _result, _err
 }
 
-/**
- * During SAML 2.0-based single sign-on (SSO) logon, CloudSSO is an SP, and the identity management system of an enterprise is an identity provider (IdP).
- * This topic provides an example on how to query the information about the SP within the directory `d-00fc2p61****`.
- *
- * @param request GetDirectorySAMLServiceProviderInfoRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetDirectorySAMLServiceProviderInfoResponse
- */
+// Summary:
+//
+// Queries information about a Security Assertion Markup Language (SAML) service provider (SP).
+//
+// Description:
+//
+// During SAML 2.0-based single sign-on (SSO) logon, CloudSSO is an SP, and the identity management system of an enterprise is an identity provider (IdP).
+//
+// This topic provides an example on how to query the information about the SP within the directory `d-00fc2p61****`.
+//
+// @param request - GetDirectorySAMLServiceProviderInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDirectorySAMLServiceProviderInfoResponse
 func (client *Client) GetDirectorySAMLServiceProviderInfoWithOptions(request *GetDirectorySAMLServiceProviderInfoRequest, runtime *util.RuntimeOptions) (_result *GetDirectorySAMLServiceProviderInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13699,13 +17902,19 @@ func (client *Client) GetDirectorySAMLServiceProviderInfoWithOptions(request *Ge
 	return _result, _err
 }
 
-/**
- * During SAML 2.0-based single sign-on (SSO) logon, CloudSSO is an SP, and the identity management system of an enterprise is an identity provider (IdP).
- * This topic provides an example on how to query the information about the SP within the directory `d-00fc2p61****`.
- *
- * @param request GetDirectorySAMLServiceProviderInfoRequest
- * @return GetDirectorySAMLServiceProviderInfoResponse
- */
+// Summary:
+//
+// Queries information about a Security Assertion Markup Language (SAML) service provider (SP).
+//
+// Description:
+//
+// During SAML 2.0-based single sign-on (SSO) logon, CloudSSO is an SP, and the identity management system of an enterprise is an identity provider (IdP).
+//
+// This topic provides an example on how to query the information about the SP within the directory `d-00fc2p61****`.
+//
+// @param request - GetDirectorySAMLServiceProviderInfoRequest
+//
+// @return GetDirectorySAMLServiceProviderInfoResponse
 func (client *Client) GetDirectorySAMLServiceProviderInfo(request *GetDirectorySAMLServiceProviderInfoRequest) (_result *GetDirectorySAMLServiceProviderInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDirectorySAMLServiceProviderInfoResponse{}
@@ -13717,16 +17926,25 @@ func (client *Client) GetDirectorySAMLServiceProviderInfo(request *GetDirectoryS
 	return _result, _err
 }
 
-/**
- * ### [](#)
- * This topic provides an example on how to query the statistics of a directory whose ID is `d-00fc2p61****`. The statistics include the number of users, quota for users, number of groups, quota for groups, number of access configurations, quota for access configurations, quota for system policies that can be configured for an access configuration, number of access permissions that are assigned, number of System for Cross-domain Identity Management (SCIM) credentials, number of asynchronous tasks, status of single sign-on (SSO), and status of SCIM synchronization.
- * ### [](#qps)Limit
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
- *
- * @param request GetDirectoryStatisticsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetDirectoryStatisticsResponse
- */
+// Summary:
+//
+// Queries the statistics of a directory.
+//
+// Description:
+//
+// ### [](#)
+//
+// This topic provides an example on how to query the statistics of a directory whose ID is `d-00fc2p61****`. The statistics include the number of users, quota for users, number of groups, quota for groups, number of access configurations, quota for access configurations, quota for system policies that can be configured for an access configuration, number of access permissions that are assigned, number of System for Cross-domain Identity Management (SCIM) credentials, number of asynchronous tasks, status of single sign-on (SSO), and status of SCIM synchronization.
+//
+// ### [](#qps)Limit
+//
+// You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+//
+// @param request - GetDirectoryStatisticsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDirectoryStatisticsResponse
 func (client *Client) GetDirectoryStatisticsWithOptions(request *GetDirectoryStatisticsRequest, runtime *util.RuntimeOptions) (_result *GetDirectoryStatisticsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13760,15 +17978,23 @@ func (client *Client) GetDirectoryStatisticsWithOptions(request *GetDirectorySta
 	return _result, _err
 }
 
-/**
- * ### [](#)
- * This topic provides an example on how to query the statistics of a directory whose ID is `d-00fc2p61****`. The statistics include the number of users, quota for users, number of groups, quota for groups, number of access configurations, quota for access configurations, quota for system policies that can be configured for an access configuration, number of access permissions that are assigned, number of System for Cross-domain Identity Management (SCIM) credentials, number of asynchronous tasks, status of single sign-on (SSO), and status of SCIM synchronization.
- * ### [](#qps)Limit
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
- *
- * @param request GetDirectoryStatisticsRequest
- * @return GetDirectoryStatisticsResponse
- */
+// Summary:
+//
+// Queries the statistics of a directory.
+//
+// Description:
+//
+// ### [](#)
+//
+// This topic provides an example on how to query the statistics of a directory whose ID is `d-00fc2p61****`. The statistics include the number of users, quota for users, number of groups, quota for groups, number of access configurations, quota for access configurations, quota for system policies that can be configured for an access configuration, number of access permissions that are assigned, number of System for Cross-domain Identity Management (SCIM) credentials, number of asynchronous tasks, status of single sign-on (SSO), and status of SCIM synchronization.
+//
+// ### [](#qps)Limit
+//
+// You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
+//
+// @param request - GetDirectoryStatisticsRequest
+//
+// @return GetDirectoryStatisticsResponse
 func (client *Client) GetDirectoryStatistics(request *GetDirectoryStatisticsRequest) (_result *GetDirectoryStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDirectoryStatisticsResponse{}
@@ -13780,13 +18006,19 @@ func (client *Client) GetDirectoryStatistics(request *GetDirectoryStatisticsRequ
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query the configurations of the SAML IdP within the directory `d-00fc2p61****`.
- *
- * @param request GetExternalSAMLIdentityProviderRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetExternalSAMLIdentityProviderResponse
- */
+// Summary:
+//
+// Queries the configurations of a Security Assertion Markup Language (SAML) identity provider (IdP).
+//
+// Description:
+//
+// This topic provides an example on how to query the configurations of the SAML IdP within the directory `d-00fc2p61****`.
+//
+// @param request - GetExternalSAMLIdentityProviderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetExternalSAMLIdentityProviderResponse
 func (client *Client) GetExternalSAMLIdentityProviderWithOptions(request *GetExternalSAMLIdentityProviderRequest, runtime *util.RuntimeOptions) (_result *GetExternalSAMLIdentityProviderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13820,12 +18052,17 @@ func (client *Client) GetExternalSAMLIdentityProviderWithOptions(request *GetExt
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query the configurations of the SAML IdP within the directory `d-00fc2p61****`.
- *
- * @param request GetExternalSAMLIdentityProviderRequest
- * @return GetExternalSAMLIdentityProviderResponse
- */
+// Summary:
+//
+// Queries the configurations of a Security Assertion Markup Language (SAML) identity provider (IdP).
+//
+// Description:
+//
+// This topic provides an example on how to query the configurations of the SAML IdP within the directory `d-00fc2p61****`.
+//
+// @param request - GetExternalSAMLIdentityProviderRequest
+//
+// @return GetExternalSAMLIdentityProviderResponse
 func (client *Client) GetExternalSAMLIdentityProvider(request *GetExternalSAMLIdentityProviderRequest) (_result *GetExternalSAMLIdentityProviderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetExternalSAMLIdentityProviderResponse{}
@@ -13837,13 +18074,19 @@ func (client *Client) GetExternalSAMLIdentityProvider(request *GetExternalSAMLId
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query the information about the group `g-00jqzghi2n3o5hkh****` in the directory `d-00fc2p61****`.
- *
- * @param request GetGroupRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetGroupResponse
- */
+// Summary:
+//
+// Queries information about a group.
+//
+// Description:
+//
+// This topic provides an example on how to query the information about the group `g-00jqzghi2n3o5hkh****` in the directory `d-00fc2p61****`.
+//
+// @param request - GetGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetGroupResponse
 func (client *Client) GetGroupWithOptions(request *GetGroupRequest, runtime *util.RuntimeOptions) (_result *GetGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13881,12 +18124,17 @@ func (client *Client) GetGroupWithOptions(request *GetGroupRequest, runtime *uti
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query the information about the group `g-00jqzghi2n3o5hkh****` in the directory `d-00fc2p61****`.
- *
- * @param request GetGroupRequest
- * @return GetGroupResponse
- */
+// Summary:
+//
+// Queries information about a group.
+//
+// Description:
+//
+// This topic provides an example on how to query the information about the group `g-00jqzghi2n3o5hkh****` in the directory `d-00fc2p61****`.
+//
+// @param request - GetGroupRequest
+//
+// @return GetGroupResponse
 func (client *Client) GetGroup(request *GetGroupRequest) (_result *GetGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetGroupResponse{}
@@ -13898,6 +18146,15 @@ func (client *Client) GetGroup(request *GetGroupRequest) (_result *GetGroupRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the logon preference of CloudSSO users.
+//
+// @param request - GetLoginPreferenceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLoginPreferenceResponse
 func (client *Client) GetLoginPreferenceWithOptions(request *GetLoginPreferenceRequest, runtime *util.RuntimeOptions) (_result *GetLoginPreferenceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13931,6 +18188,13 @@ func (client *Client) GetLoginPreferenceWithOptions(request *GetLoginPreferenceR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the logon preference of CloudSSO users.
+//
+// @param request - GetLoginPreferenceRequest
+//
+// @return GetLoginPreferenceResponse
 func (client *Client) GetLoginPreference(request *GetLoginPreferenceRequest) (_result *GetLoginPreferenceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetLoginPreferenceResponse{}
@@ -13942,14 +18206,21 @@ func (client *Client) GetLoginPreference(request *GetLoginPreferenceRequest) (_r
 	return _result, _err
 }
 
-/**
- * If you enable username-password logon for CloudSSO users, you can also configure MFA for the users.
- * This topic provides an example on how to query the MFA setting of all CloudSSO users that belong to the directory named `00q8wbq42wiltcrk****`.
- *
- * @param request GetMFAAuthenticationSettingInfoRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetMFAAuthenticationSettingInfoResponse
- */
+// Summary:
+//
+// Queries the multi-factor authentication (MFA) setting of all users.
+//
+// Description:
+//
+// If you enable username-password logon for CloudSSO users, you can also configure MFA for the users.
+//
+// This topic provides an example on how to query the MFA setting of all CloudSSO users that belong to the directory named `00q8wbq42wiltcrk****`.
+//
+// @param request - GetMFAAuthenticationSettingInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMFAAuthenticationSettingInfoResponse
 func (client *Client) GetMFAAuthenticationSettingInfoWithOptions(request *GetMFAAuthenticationSettingInfoRequest, runtime *util.RuntimeOptions) (_result *GetMFAAuthenticationSettingInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13983,13 +18254,19 @@ func (client *Client) GetMFAAuthenticationSettingInfoWithOptions(request *GetMFA
 	return _result, _err
 }
 
-/**
- * If you enable username-password logon for CloudSSO users, you can also configure MFA for the users.
- * This topic provides an example on how to query the MFA setting of all CloudSSO users that belong to the directory named `00q8wbq42wiltcrk****`.
- *
- * @param request GetMFAAuthenticationSettingInfoRequest
- * @return GetMFAAuthenticationSettingInfoResponse
- */
+// Summary:
+//
+// Queries the multi-factor authentication (MFA) setting of all users.
+//
+// Description:
+//
+// If you enable username-password logon for CloudSSO users, you can also configure MFA for the users.
+//
+// This topic provides an example on how to query the MFA setting of all CloudSSO users that belong to the directory named `00q8wbq42wiltcrk****`.
+//
+// @param request - GetMFAAuthenticationSettingInfoRequest
+//
+// @return GetMFAAuthenticationSettingInfoResponse
 func (client *Client) GetMFAAuthenticationSettingInfo(request *GetMFAAuthenticationSettingInfoRequest) (_result *GetMFAAuthenticationSettingInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMFAAuthenticationSettingInfoResponse{}
@@ -14001,14 +18278,21 @@ func (client *Client) GetMFAAuthenticationSettingInfo(request *GetMFAAuthenticat
 	return _result, _err
 }
 
-/**
- * > This operation is no longer maintained and updated. You can call the [GetMFAAuthenticationSettingInfo](~~611286~~) operation to query more detailed information.
- * This topic provides an example on how to query the MFA setting of the users that belong to the directory named `d-00fc2p61****`. The returned result shows that MFA is enabled for all the users.
- *
- * @param request GetMFAAuthenticationSettingsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetMFAAuthenticationSettingsResponse
- */
+// Summary:
+//
+// Queries the multi-factor authentication (MFA) setting of all users.
+//
+// Description:
+//
+// > This operation is no longer maintained and updated. You can call the [GetMFAAuthenticationSettingInfo](https://help.aliyun.com/document_detail/611286.html) operation to query more detailed information.
+//
+// This topic provides an example on how to query the MFA setting of the users that belong to the directory named `d-00fc2p61****`. The returned result shows that MFA is enabled for all the users.
+//
+// @param request - GetMFAAuthenticationSettingsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMFAAuthenticationSettingsResponse
 func (client *Client) GetMFAAuthenticationSettingsWithOptions(request *GetMFAAuthenticationSettingsRequest, runtime *util.RuntimeOptions) (_result *GetMFAAuthenticationSettingsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14042,13 +18326,19 @@ func (client *Client) GetMFAAuthenticationSettingsWithOptions(request *GetMFAAut
 	return _result, _err
 }
 
-/**
- * > This operation is no longer maintained and updated. You can call the [GetMFAAuthenticationSettingInfo](~~611286~~) operation to query more detailed information.
- * This topic provides an example on how to query the MFA setting of the users that belong to the directory named `d-00fc2p61****`. The returned result shows that MFA is enabled for all the users.
- *
- * @param request GetMFAAuthenticationSettingsRequest
- * @return GetMFAAuthenticationSettingsResponse
- */
+// Summary:
+//
+// Queries the multi-factor authentication (MFA) setting of all users.
+//
+// Description:
+//
+// > This operation is no longer maintained and updated. You can call the [GetMFAAuthenticationSettingInfo](https://help.aliyun.com/document_detail/611286.html) operation to query more detailed information.
+//
+// This topic provides an example on how to query the MFA setting of the users that belong to the directory named `d-00fc2p61****`. The returned result shows that MFA is enabled for all the users.
+//
+// @param request - GetMFAAuthenticationSettingsRequest
+//
+// @return GetMFAAuthenticationSettingsResponse
 func (client *Client) GetMFAAuthenticationSettings(request *GetMFAAuthenticationSettingsRequest) (_result *GetMFAAuthenticationSettingsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMFAAuthenticationSettingsResponse{}
@@ -14060,13 +18350,19 @@ func (client *Client) GetMFAAuthenticationSettings(request *GetMFAAuthentication
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to check whether MFA is enabled for users in the directory whose ID is `00fc2p61****`. The returned result shows that MFA is in the Enabled state.
- *
- * @param request GetMFAAuthenticationStatusRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetMFAAuthenticationStatusResponse
- */
+// Summary:
+//
+// Checks whether multi-factor authentication (MFA) is enabled for users.
+//
+// Description:
+//
+// This topic provides an example on how to check whether MFA is enabled for users in the directory whose ID is `00fc2p61****`. The returned result shows that MFA is in the Enabled state.
+//
+// @param request - GetMFAAuthenticationStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMFAAuthenticationStatusResponse
 func (client *Client) GetMFAAuthenticationStatusWithOptions(request *GetMFAAuthenticationStatusRequest, runtime *util.RuntimeOptions) (_result *GetMFAAuthenticationStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14100,12 +18396,17 @@ func (client *Client) GetMFAAuthenticationStatusWithOptions(request *GetMFAAuthe
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to check whether MFA is enabled for users in the directory whose ID is `00fc2p61****`. The returned result shows that MFA is in the Enabled state.
- *
- * @param request GetMFAAuthenticationStatusRequest
- * @return GetMFAAuthenticationStatusResponse
- */
+// Summary:
+//
+// Checks whether multi-factor authentication (MFA) is enabled for users.
+//
+// Description:
+//
+// This topic provides an example on how to check whether MFA is enabled for users in the directory whose ID is `00fc2p61****`. The returned result shows that MFA is in the Enabled state.
+//
+// @param request - GetMFAAuthenticationStatusRequest
+//
+// @return GetMFAAuthenticationStatusResponse
 func (client *Client) GetMFAAuthenticationStatus(request *GetMFAAuthenticationStatusRequest) (_result *GetMFAAuthenticationStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMFAAuthenticationStatusResponse{}
@@ -14117,6 +18418,15 @@ func (client *Client) GetMFAAuthenticationStatus(request *GetMFAAuthenticationSt
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the password policy of CloudSSO users.
+//
+// @param request - GetPasswordPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPasswordPolicyResponse
 func (client *Client) GetPasswordPolicyWithOptions(request *GetPasswordPolicyRequest, runtime *util.RuntimeOptions) (_result *GetPasswordPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14150,6 +18460,13 @@ func (client *Client) GetPasswordPolicyWithOptions(request *GetPasswordPolicyReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the password policy of CloudSSO users.
+//
+// @param request - GetPasswordPolicyRequest
+//
+// @return GetPasswordPolicyResponse
 func (client *Client) GetPasswordPolicy(request *GetPasswordPolicyRequest) (_result *GetPasswordPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPasswordPolicyResponse{}
@@ -14161,13 +18478,19 @@ func (client *Client) GetPasswordPolicy(request *GetPasswordPolicyRequest) (_res
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query the status of SCIM synchronization within the directory `d-00fc2p61****`. The returned result shows that SCIM synchronization is in the Enabled state.
- *
- * @param request GetSCIMSynchronizationStatusRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetSCIMSynchronizationStatusResponse
- */
+// Summary:
+//
+// Queries the status of System for Cross-domain Identity Management (SCIM) synchronization.
+//
+// Description:
+//
+// This topic provides an example on how to query the status of SCIM synchronization within the directory `d-00fc2p61****`. The returned result shows that SCIM synchronization is in the Enabled state.
+//
+// @param request - GetSCIMSynchronizationStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSCIMSynchronizationStatusResponse
 func (client *Client) GetSCIMSynchronizationStatusWithOptions(request *GetSCIMSynchronizationStatusRequest, runtime *util.RuntimeOptions) (_result *GetSCIMSynchronizationStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14201,12 +18524,17 @@ func (client *Client) GetSCIMSynchronizationStatusWithOptions(request *GetSCIMSy
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query the status of SCIM synchronization within the directory `d-00fc2p61****`. The returned result shows that SCIM synchronization is in the Enabled state.
- *
- * @param request GetSCIMSynchronizationStatusRequest
- * @return GetSCIMSynchronizationStatusResponse
- */
+// Summary:
+//
+// Queries the status of System for Cross-domain Identity Management (SCIM) synchronization.
+//
+// Description:
+//
+// This topic provides an example on how to query the status of SCIM synchronization within the directory `d-00fc2p61****`. The returned result shows that SCIM synchronization is in the Enabled state.
+//
+// @param request - GetSCIMSynchronizationStatusRequest
+//
+// @return GetSCIMSynchronizationStatusResponse
 func (client *Client) GetSCIMSynchronizationStatus(request *GetSCIMSynchronizationStatusRequest) (_result *GetSCIMSynchronizationStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSCIMSynchronizationStatusResponse{}
@@ -14218,6 +18546,15 @@ func (client *Client) GetSCIMSynchronizationStatus(request *GetSCIMSynchronizati
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the status of CloudSSO.
+//
+// @param request - GetServiceStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetServiceStatusResponse
 func (client *Client) GetServiceStatusWithOptions(runtime *util.RuntimeOptions) (_result *GetServiceStatusResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -14240,6 +18577,11 @@ func (client *Client) GetServiceStatusWithOptions(runtime *util.RuntimeOptions) 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the status of CloudSSO.
+//
+// @return GetServiceStatusResponse
 func (client *Client) GetServiceStatus() (_result *GetServiceStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetServiceStatusResponse{}
@@ -14251,13 +18593,19 @@ func (client *Client) GetServiceStatus() (_result *GetServiceStatusResponse, _er
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query the information about the task whose ID is `t-shfqw1u1edszvxw5****`.
- *
- * @param request GetTaskRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetTaskResponse
- */
+// Summary:
+//
+// Queries information about an asynchronous task.
+//
+// Description:
+//
+// This topic provides an example on how to query the information about the task whose ID is `t-shfqw1u1edszvxw5****`.
+//
+// @param request - GetTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTaskResponse
 func (client *Client) GetTaskWithOptions(request *GetTaskRequest, runtime *util.RuntimeOptions) (_result *GetTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14295,12 +18643,17 @@ func (client *Client) GetTaskWithOptions(request *GetTaskRequest, runtime *util.
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query the information about the task whose ID is `t-shfqw1u1edszvxw5****`.
- *
- * @param request GetTaskRequest
- * @return GetTaskResponse
- */
+// Summary:
+//
+// Queries information about an asynchronous task.
+//
+// Description:
+//
+// This topic provides an example on how to query the information about the task whose ID is `t-shfqw1u1edszvxw5****`.
+//
+// @param request - GetTaskRequest
+//
+// @return GetTaskResponse
 func (client *Client) GetTask(request *GetTaskRequest) (_result *GetTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTaskResponse{}
@@ -14312,14 +18665,21 @@ func (client *Client) GetTask(request *GetTaskRequest) (_result *GetTaskResponse
 	return _result, _err
 }
 
-/**
- * You can call the GetTaskStatus operation to query the status of an asynchronous task. If you want to query more information about an asynchronous task, call the [GetTask](~~340670~~) operation.
- * This topic provides an example on how to query the information about the task whose ID is `t-shfqw1u1edszvxw5****`.
- *
- * @param request GetTaskStatusRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetTaskStatusResponse
- */
+// Summary:
+//
+// Queries the status of an asynchronous task.
+//
+// Description:
+//
+// You can call the GetTaskStatus operation to query the status of an asynchronous task. If you want to query more information about an asynchronous task, call the [GetTask](https://help.aliyun.com/document_detail/340670.html) operation.
+//
+// This topic provides an example on how to query the information about the task whose ID is `t-shfqw1u1edszvxw5****`.
+//
+// @param request - GetTaskStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTaskStatusResponse
 func (client *Client) GetTaskStatusWithOptions(request *GetTaskStatusRequest, runtime *util.RuntimeOptions) (_result *GetTaskStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14357,13 +18717,19 @@ func (client *Client) GetTaskStatusWithOptions(request *GetTaskStatusRequest, ru
 	return _result, _err
 }
 
-/**
- * You can call the GetTaskStatus operation to query the status of an asynchronous task. If you want to query more information about an asynchronous task, call the [GetTask](~~340670~~) operation.
- * This topic provides an example on how to query the information about the task whose ID is `t-shfqw1u1edszvxw5****`.
- *
- * @param request GetTaskStatusRequest
- * @return GetTaskStatusResponse
- */
+// Summary:
+//
+// Queries the status of an asynchronous task.
+//
+// Description:
+//
+// You can call the GetTaskStatus operation to query the status of an asynchronous task. If you want to query more information about an asynchronous task, call the [GetTask](https://help.aliyun.com/document_detail/340670.html) operation.
+//
+// This topic provides an example on how to query the information about the task whose ID is `t-shfqw1u1edszvxw5****`.
+//
+// @param request - GetTaskStatusRequest
+//
+// @return GetTaskStatusResponse
 func (client *Client) GetTaskStatus(request *GetTaskStatusRequest) (_result *GetTaskStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTaskStatusResponse{}
@@ -14375,13 +18741,19 @@ func (client *Client) GetTaskStatus(request *GetTaskStatusRequest) (_result *Get
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query information about the user whose ID is `u-00q8wbq42wiltcrk****` in the `d-00fc2p61****` directory.
- *
- * @param request GetUserRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetUserResponse
- */
+// Summary:
+//
+// Queries information about a user.
+//
+// Description:
+//
+// This topic provides an example on how to query information about the user whose ID is `u-00q8wbq42wiltcrk****` in the `d-00fc2p61****` directory.
+//
+// @param request - GetUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserResponse
 func (client *Client) GetUserWithOptions(request *GetUserRequest, runtime *util.RuntimeOptions) (_result *GetUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14419,12 +18791,17 @@ func (client *Client) GetUserWithOptions(request *GetUserRequest, runtime *util.
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query information about the user whose ID is `u-00q8wbq42wiltcrk****` in the `d-00fc2p61****` directory.
- *
- * @param request GetUserRequest
- * @return GetUserResponse
- */
+// Summary:
+//
+// Queries information about a user.
+//
+// Description:
+//
+// This topic provides an example on how to query information about the user whose ID is `u-00q8wbq42wiltcrk****` in the `d-00fc2p61****` directory.
+//
+// @param request - GetUserRequest
+//
+// @return GetUserResponse
 func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetUserResponse{}
@@ -14436,6 +18813,15 @@ func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the ID of a user in a resource directory by using the ExternalId parameter.
+//
+// @param tmpReq - GetUserIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserIdResponse
 func (client *Client) GetUserIdWithOptions(tmpReq *GetUserIdRequest, runtime *util.RuntimeOptions) (_result *GetUserIdResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -14479,6 +18865,13 @@ func (client *Client) GetUserIdWithOptions(tmpReq *GetUserIdRequest, runtime *ut
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the ID of a user in a resource directory by using the ExternalId parameter.
+//
+// @param request - GetUserIdRequest
+//
+// @return GetUserIdResponse
 func (client *Client) GetUserId(request *GetUserIdRequest) (_result *GetUserIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetUserIdResponse{}
@@ -14490,13 +18883,19 @@ func (client *Client) GetUserId(request *GetUserIdRequest) (_result *GetUserIdRe
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query the MFA setting of the user named `u-00q8wbq42wiltcrk****`. The returned result shows that MFA is enabled for the user.
- *
- * @param request GetUserMFAAuthenticationSettingsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetUserMFAAuthenticationSettingsResponse
- */
+// Summary:
+//
+// Queries the multi-factor authentication (MFA) setting of a single user.
+//
+// Description:
+//
+// This topic provides an example on how to query the MFA setting of the user named `u-00q8wbq42wiltcrk****`. The returned result shows that MFA is enabled for the user.
+//
+// @param request - GetUserMFAAuthenticationSettingsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserMFAAuthenticationSettingsResponse
 func (client *Client) GetUserMFAAuthenticationSettingsWithOptions(request *GetUserMFAAuthenticationSettingsRequest, runtime *util.RuntimeOptions) (_result *GetUserMFAAuthenticationSettingsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14534,12 +18933,17 @@ func (client *Client) GetUserMFAAuthenticationSettingsWithOptions(request *GetUs
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query the MFA setting of the user named `u-00q8wbq42wiltcrk****`. The returned result shows that MFA is enabled for the user.
- *
- * @param request GetUserMFAAuthenticationSettingsRequest
- * @return GetUserMFAAuthenticationSettingsResponse
- */
+// Summary:
+//
+// Queries the multi-factor authentication (MFA) setting of a single user.
+//
+// Description:
+//
+// This topic provides an example on how to query the MFA setting of the user named `u-00q8wbq42wiltcrk****`. The returned result shows that MFA is enabled for the user.
+//
+// @param request - GetUserMFAAuthenticationSettingsRequest
+//
+// @return GetUserMFAAuthenticationSettingsResponse
 func (client *Client) GetUserMFAAuthenticationSettings(request *GetUserMFAAuthenticationSettingsRequest) (_result *GetUserMFAAuthenticationSettingsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetUserMFAAuthenticationSettingsResponse{}
@@ -14551,6 +18955,15 @@ func (client *Client) GetUserMFAAuthenticationSettings(request *GetUserMFAAuthen
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a Resource Access Management (RAM) user provisioning.
+//
+// @param request - GetUserProvisioningRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserProvisioningResponse
 func (client *Client) GetUserProvisioningWithOptions(request *GetUserProvisioningRequest, runtime *util.RuntimeOptions) (_result *GetUserProvisioningResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14588,6 +19001,13 @@ func (client *Client) GetUserProvisioningWithOptions(request *GetUserProvisionin
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a Resource Access Management (RAM) user provisioning.
+//
+// @param request - GetUserProvisioningRequest
+//
+// @return GetUserProvisioningResponse
 func (client *Client) GetUserProvisioning(request *GetUserProvisioningRequest) (_result *GetUserProvisioningResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetUserProvisioningResponse{}
@@ -14599,6 +19019,15 @@ func (client *Client) GetUserProvisioning(request *GetUserProvisioningRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the global configurations of a Resource Access Management (RAM) user provisioning.
+//
+// @param request - GetUserProvisioningConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserProvisioningConfigurationResponse
 func (client *Client) GetUserProvisioningConfigurationWithOptions(request *GetUserProvisioningConfigurationRequest, runtime *util.RuntimeOptions) (_result *GetUserProvisioningConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14632,6 +19061,13 @@ func (client *Client) GetUserProvisioningConfigurationWithOptions(request *GetUs
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the global configurations of a Resource Access Management (RAM) user provisioning.
+//
+// @param request - GetUserProvisioningConfigurationRequest
+//
+// @return GetUserProvisioningConfigurationResponse
 func (client *Client) GetUserProvisioningConfiguration(request *GetUserProvisioningConfigurationRequest) (_result *GetUserProvisioningConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetUserProvisioningConfigurationResponse{}
@@ -14643,6 +19079,15 @@ func (client *Client) GetUserProvisioningConfiguration(request *GetUserProvision
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a Resource Access Management (RAM) user provisioning event.
+//
+// @param request - GetUserProvisioningEventRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserProvisioningEventResponse
 func (client *Client) GetUserProvisioningEventWithOptions(request *GetUserProvisioningEventRequest, runtime *util.RuntimeOptions) (_result *GetUserProvisioningEventResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14680,6 +19125,13 @@ func (client *Client) GetUserProvisioningEventWithOptions(request *GetUserProvis
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a Resource Access Management (RAM) user provisioning event.
+//
+// @param request - GetUserProvisioningEventRequest
+//
+// @return GetUserProvisioningEventResponse
 func (client *Client) GetUserProvisioningEvent(request *GetUserProvisioningEventRequest) (_result *GetUserProvisioningEventResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetUserProvisioningEventResponse{}
@@ -14691,6 +19143,15 @@ func (client *Client) GetUserProvisioningEvent(request *GetUserProvisioningEvent
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries statistics of Resource Access Management (RAM) user provisioning events that are created for the member in a resource directory.
+//
+// @param request - GetUserProvisioningRdAccountStatisticsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserProvisioningRdAccountStatisticsResponse
 func (client *Client) GetUserProvisioningRdAccountStatisticsWithOptions(request *GetUserProvisioningRdAccountStatisticsRequest, runtime *util.RuntimeOptions) (_result *GetUserProvisioningRdAccountStatisticsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14728,6 +19189,13 @@ func (client *Client) GetUserProvisioningRdAccountStatisticsWithOptions(request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries statistics of Resource Access Management (RAM) user provisioning events that are created for the member in a resource directory.
+//
+// @param request - GetUserProvisioningRdAccountStatisticsRequest
+//
+// @return GetUserProvisioningRdAccountStatisticsResponse
 func (client *Client) GetUserProvisioningRdAccountStatistics(request *GetUserProvisioningRdAccountStatisticsRequest) (_result *GetUserProvisioningRdAccountStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetUserProvisioningRdAccountStatisticsResponse{}
@@ -14739,6 +19207,15 @@ func (client *Client) GetUserProvisioningRdAccountStatistics(request *GetUserPro
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the statistics of a Resource Access Management (RAM) user provisioning.
+//
+// @param request - GetUserProvisioningStatisticsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserProvisioningStatisticsResponse
 func (client *Client) GetUserProvisioningStatisticsWithOptions(request *GetUserProvisioningStatisticsRequest, runtime *util.RuntimeOptions) (_result *GetUserProvisioningStatisticsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14776,6 +19253,13 @@ func (client *Client) GetUserProvisioningStatisticsWithOptions(request *GetUserP
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the statistics of a Resource Access Management (RAM) user provisioning.
+//
+// @param request - GetUserProvisioningStatisticsRequest
+//
+// @return GetUserProvisioningStatisticsResponse
 func (client *Client) GetUserProvisioningStatistics(request *GetUserProvisioningStatisticsRequest) (_result *GetUserProvisioningStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetUserProvisioningStatisticsResponse{}
@@ -14787,13 +19271,19 @@ func (client *Client) GetUserProvisioningStatistics(request *GetUserProvisioning
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query the assigned access permissions on the account `114240524784****` in your resource directory. The returned result shows that access permissions on the account in your resource directory is assigned to one user.
- *
- * @param request ListAccessAssignmentsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListAccessAssignmentsResponse
- */
+// Summary:
+//
+// Queries the access permissions that are assigned.
+//
+// Description:
+//
+// This topic provides an example on how to query the assigned access permissions on the account `114240524784****` in your resource directory. The returned result shows that access permissions on the account in your resource directory is assigned to one user.
+//
+// @param request - ListAccessAssignmentsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAccessAssignmentsResponse
 func (client *Client) ListAccessAssignmentsWithOptions(request *ListAccessAssignmentsRequest, runtime *util.RuntimeOptions) (_result *ListAccessAssignmentsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14855,12 +19345,17 @@ func (client *Client) ListAccessAssignmentsWithOptions(request *ListAccessAssign
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query the assigned access permissions on the account `114240524784****` in your resource directory. The returned result shows that access permissions on the account in your resource directory is assigned to one user.
- *
- * @param request ListAccessAssignmentsRequest
- * @return ListAccessAssignmentsResponse
- */
+// Summary:
+//
+// Queries the access permissions that are assigned.
+//
+// Description:
+//
+// This topic provides an example on how to query the assigned access permissions on the account `114240524784****` in your resource directory. The returned result shows that access permissions on the account in your resource directory is assigned to one user.
+//
+// @param request - ListAccessAssignmentsRequest
+//
+// @return ListAccessAssignmentsResponse
 func (client *Client) ListAccessAssignments(request *ListAccessAssignmentsRequest) (_result *ListAccessAssignmentsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAccessAssignmentsResponse{}
@@ -14872,13 +19367,19 @@ func (client *Client) ListAccessAssignments(request *ListAccessAssignmentsReques
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query the accounts for which the access permission `ac-00ccule7tadaijxc****` is provisioned. The returned result shows that the access configuration is provisioned for two accounts in your resource directory.
- *
- * @param request ListAccessConfigurationProvisioningsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListAccessConfigurationProvisioningsResponse
- */
+// Summary:
+//
+// Queries the access configurations that are provisioned.
+//
+// Description:
+//
+// This topic provides an example on how to query the accounts for which the access permission `ac-00ccule7tadaijxc****` is provisioned. The returned result shows that the access configuration is provisioned for two accounts in your resource directory.
+//
+// @param request - ListAccessConfigurationProvisioningsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAccessConfigurationProvisioningsResponse
 func (client *Client) ListAccessConfigurationProvisioningsWithOptions(request *ListAccessConfigurationProvisioningsRequest, runtime *util.RuntimeOptions) (_result *ListAccessConfigurationProvisioningsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14936,12 +19437,17 @@ func (client *Client) ListAccessConfigurationProvisioningsWithOptions(request *L
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query the accounts for which the access permission `ac-00ccule7tadaijxc****` is provisioned. The returned result shows that the access configuration is provisioned for two accounts in your resource directory.
- *
- * @param request ListAccessConfigurationProvisioningsRequest
- * @return ListAccessConfigurationProvisioningsResponse
- */
+// Summary:
+//
+// Queries the access configurations that are provisioned.
+//
+// Description:
+//
+// This topic provides an example on how to query the accounts for which the access permission `ac-00ccule7tadaijxc****` is provisioned. The returned result shows that the access configuration is provisioned for two accounts in your resource directory.
+//
+// @param request - ListAccessConfigurationProvisioningsRequest
+//
+// @return ListAccessConfigurationProvisioningsResponse
 func (client *Client) ListAccessConfigurationProvisionings(request *ListAccessConfigurationProvisioningsRequest) (_result *ListAccessConfigurationProvisioningsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAccessConfigurationProvisioningsResponse{}
@@ -14953,13 +19459,19 @@ func (client *Client) ListAccessConfigurationProvisionings(request *ListAccessCo
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query the access configurations within the directory `d-00fc2p61****`. The returned result shows that the directory contains the `VPC-Admin` and `ECS-Admin` access configurations.
- *
- * @param request ListAccessConfigurationsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListAccessConfigurationsResponse
- */
+// Summary:
+//
+// Queries access configurations.
+//
+// Description:
+//
+// This topic provides an example on how to query the access configurations within the directory `d-00fc2p61****`. The returned result shows that the directory contains the `VPC-Admin` and `ECS-Admin` access configurations.
+//
+// @param request - ListAccessConfigurationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAccessConfigurationsResponse
 func (client *Client) ListAccessConfigurationsWithOptions(request *ListAccessConfigurationsRequest, runtime *util.RuntimeOptions) (_result *ListAccessConfigurationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15009,12 +19521,17 @@ func (client *Client) ListAccessConfigurationsWithOptions(request *ListAccessCon
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query the access configurations within the directory `d-00fc2p61****`. The returned result shows that the directory contains the `VPC-Admin` and `ECS-Admin` access configurations.
- *
- * @param request ListAccessConfigurationsRequest
- * @return ListAccessConfigurationsResponse
- */
+// Summary:
+//
+// Queries access configurations.
+//
+// Description:
+//
+// This topic provides an example on how to query the access configurations within the directory `d-00fc2p61****`. The returned result shows that the directory contains the `VPC-Admin` and `ECS-Admin` access configurations.
+//
+// @param request - ListAccessConfigurationsRequest
+//
+// @return ListAccessConfigurationsResponse
 func (client *Client) ListAccessConfigurations(request *ListAccessConfigurationsRequest) (_result *ListAccessConfigurationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAccessConfigurationsResponse{}
@@ -15026,13 +19543,19 @@ func (client *Client) ListAccessConfigurations(request *ListAccessConfigurations
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query the directories within your Alibaba Cloud account. The returned result shows that only one directory with the ID `d-00fc2p61****` is created within your Alibaba Cloud account.
- *
- * @param request ListDirectoriesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListDirectoriesResponse
- */
+// Summary:
+//
+// Queries directories.
+//
+// Description:
+//
+// This topic provides an example on how to query the directories within your Alibaba Cloud account. The returned result shows that only one directory with the ID `d-00fc2p61****` is created within your Alibaba Cloud account.
+//
+// @param request - ListDirectoriesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDirectoriesResponse
 func (client *Client) ListDirectoriesWithOptions(runtime *util.RuntimeOptions) (_result *ListDirectoriesResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -15055,11 +19578,15 @@ func (client *Client) ListDirectoriesWithOptions(runtime *util.RuntimeOptions) (
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query the directories within your Alibaba Cloud account. The returned result shows that only one directory with the ID `d-00fc2p61****` is created within your Alibaba Cloud account.
- *
- * @return ListDirectoriesResponse
- */
+// Summary:
+//
+// Queries directories.
+//
+// Description:
+//
+// This topic provides an example on how to query the directories within your Alibaba Cloud account. The returned result shows that only one directory with the ID `d-00fc2p61****` is created within your Alibaba Cloud account.
+//
+// @return ListDirectoriesResponse
 func (client *Client) ListDirectories() (_result *ListDirectoriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDirectoriesResponse{}
@@ -15071,13 +19598,19 @@ func (client *Client) ListDirectories() (_result *ListDirectoriesResponse, _err 
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query the SAML signing certificates within the directory `d-00fc2p61****`. The returned result shows that the directory contains one SAML signing certificate.
- *
- * @param request ListExternalSAMLIdPCertificatesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListExternalSAMLIdPCertificatesResponse
- */
+// Summary:
+//
+// Queries Security Assertion Markup Language (SAML) signing certificates.
+//
+// Description:
+//
+// This topic provides an example on how to query the SAML signing certificates within the directory `d-00fc2p61****`. The returned result shows that the directory contains one SAML signing certificate.
+//
+// @param request - ListExternalSAMLIdPCertificatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListExternalSAMLIdPCertificatesResponse
 func (client *Client) ListExternalSAMLIdPCertificatesWithOptions(request *ListExternalSAMLIdPCertificatesRequest, runtime *util.RuntimeOptions) (_result *ListExternalSAMLIdPCertificatesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15111,12 +19644,17 @@ func (client *Client) ListExternalSAMLIdPCertificatesWithOptions(request *ListEx
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query the SAML signing certificates within the directory `d-00fc2p61****`. The returned result shows that the directory contains one SAML signing certificate.
- *
- * @param request ListExternalSAMLIdPCertificatesRequest
- * @return ListExternalSAMLIdPCertificatesResponse
- */
+// Summary:
+//
+// Queries Security Assertion Markup Language (SAML) signing certificates.
+//
+// Description:
+//
+// This topic provides an example on how to query the SAML signing certificates within the directory `d-00fc2p61****`. The returned result shows that the directory contains one SAML signing certificate.
+//
+// @param request - ListExternalSAMLIdPCertificatesRequest
+//
+// @return ListExternalSAMLIdPCertificatesResponse
 func (client *Client) ListExternalSAMLIdPCertificates(request *ListExternalSAMLIdPCertificatesRequest) (_result *ListExternalSAMLIdPCertificatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListExternalSAMLIdPCertificatesResponse{}
@@ -15128,13 +19666,19 @@ func (client *Client) ListExternalSAMLIdPCertificates(request *ListExternalSAMLI
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query the users in the group `g-00jqzghi2n3o5hkh****`. The returned result shows that the group contains the user `Alice` and the user `user1`.
- *
- * @param request ListGroupMembersRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListGroupMembersResponse
- */
+// Summary:
+//
+// Queries the users in a group.
+//
+// Description:
+//
+// This topic provides an example on how to query the users in the group `g-00jqzghi2n3o5hkh****`. The returned result shows that the group contains the user `Alice` and the user `user1`.
+//
+// @param request - ListGroupMembersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGroupMembersResponse
 func (client *Client) ListGroupMembersWithOptions(request *ListGroupMembersRequest, runtime *util.RuntimeOptions) (_result *ListGroupMembersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15180,12 +19724,17 @@ func (client *Client) ListGroupMembersWithOptions(request *ListGroupMembersReque
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query the users in the group `g-00jqzghi2n3o5hkh****`. The returned result shows that the group contains the user `Alice` and the user `user1`.
- *
- * @param request ListGroupMembersRequest
- * @return ListGroupMembersResponse
- */
+// Summary:
+//
+// Queries the users in a group.
+//
+// Description:
+//
+// This topic provides an example on how to query the users in the group `g-00jqzghi2n3o5hkh****`. The returned result shows that the group contains the user `Alice` and the user `user1`.
+//
+// @param request - ListGroupMembersRequest
+//
+// @return ListGroupMembersResponse
 func (client *Client) ListGroupMembers(request *ListGroupMembersRequest) (_result *ListGroupMembersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListGroupMembersResponse{}
@@ -15197,13 +19746,19 @@ func (client *Client) ListGroupMembers(request *ListGroupMembersRequest) (_resul
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query the groups in the directory `d-00fc2p61****`. The returned result shows that the directory contains three groups. The groups `group1` and `group2` are synchronized from an external identity provider (IdP). The group `TestGroup` is manually created in CloudSSO.
- *
- * @param request ListGroupsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListGroupsResponse
- */
+// Summary:
+//
+// Queries groups.
+//
+// Description:
+//
+// This topic provides an example on how to query the groups in the directory `d-00fc2p61****`. The returned result shows that the directory contains three groups. The groups `group1` and `group2` are synchronized from an external identity provider (IdP). The group `TestGroup` is manually created in CloudSSO.
+//
+// @param request - ListGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGroupsResponse
 func (client *Client) ListGroupsWithOptions(request *ListGroupsRequest, runtime *util.RuntimeOptions) (_result *ListGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15253,12 +19808,17 @@ func (client *Client) ListGroupsWithOptions(request *ListGroupsRequest, runtime 
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query the groups in the directory `d-00fc2p61****`. The returned result shows that the directory contains three groups. The groups `group1` and `group2` are synchronized from an external identity provider (IdP). The group `TestGroup` is manually created in CloudSSO.
- *
- * @param request ListGroupsRequest
- * @return ListGroupsResponse
- */
+// Summary:
+//
+// Queries groups.
+//
+// Description:
+//
+// This topic provides an example on how to query the groups in the directory `d-00fc2p61****`. The returned result shows that the directory contains three groups. The groups `group1` and `group2` are synchronized from an external identity provider (IdP). The group `TestGroup` is manually created in CloudSSO.
+//
+// @param request - ListGroupsRequest
+//
+// @return ListGroupsResponse
 func (client *Client) ListGroups(request *ListGroupsRequest) (_result *ListGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListGroupsResponse{}
@@ -15270,13 +19830,19 @@ func (client *Client) ListGroups(request *ListGroupsRequest) (_result *ListGroup
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query the groups to which the user `u-00q8wbq42wiltcrk****` is added. The returned result shows that the user is added to both the `TestGroup` and the `group1` groups.
- *
- * @param request ListJoinedGroupsForUserRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListJoinedGroupsForUserResponse
- */
+// Summary:
+//
+// Queries the groups to which a user is added.
+//
+// Description:
+//
+// This topic provides an example on how to query the groups to which the user `u-00q8wbq42wiltcrk****` is added. The returned result shows that the user is added to both the `TestGroup` and the `group1` groups.
+//
+// @param request - ListJoinedGroupsForUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListJoinedGroupsForUserResponse
 func (client *Client) ListJoinedGroupsForUserWithOptions(request *ListJoinedGroupsForUserRequest, runtime *util.RuntimeOptions) (_result *ListJoinedGroupsForUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15322,12 +19888,17 @@ func (client *Client) ListJoinedGroupsForUserWithOptions(request *ListJoinedGrou
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query the groups to which the user `u-00q8wbq42wiltcrk****` is added. The returned result shows that the user is added to both the `TestGroup` and the `group1` groups.
- *
- * @param request ListJoinedGroupsForUserRequest
- * @return ListJoinedGroupsForUserResponse
- */
+// Summary:
+//
+// Queries the groups to which a user is added.
+//
+// Description:
+//
+// This topic provides an example on how to query the groups to which the user `u-00q8wbq42wiltcrk****` is added. The returned result shows that the user is added to both the `TestGroup` and the `group1` groups.
+//
+// @param request - ListJoinedGroupsForUserRequest
+//
+// @return ListJoinedGroupsForUserResponse
 func (client *Client) ListJoinedGroupsForUser(request *ListJoinedGroupsForUserRequest) (_result *ListJoinedGroupsForUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListJoinedGroupsForUserResponse{}
@@ -15339,13 +19910,19 @@ func (client *Client) ListJoinedGroupsForUser(request *ListJoinedGroupsForUserRe
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query the MFA devices that are bound to the user `u-00q8wbq42wiltcrk****`. The returned result shows that the MFA device named `Alice-MFA1` is bound to the user.
- *
- * @param request ListMFADevicesForUserRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListMFADevicesForUserResponse
- */
+// Summary:
+//
+// Queries the multi-factor authentication (MFA) devices that are bound to a user. Up to two MFA devices can be bound to a user.
+//
+// Description:
+//
+// This topic provides an example on how to query the MFA devices that are bound to the user `u-00q8wbq42wiltcrk****`. The returned result shows that the MFA device named `Alice-MFA1` is bound to the user.
+//
+// @param request - ListMFADevicesForUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMFADevicesForUserResponse
 func (client *Client) ListMFADevicesForUserWithOptions(request *ListMFADevicesForUserRequest, runtime *util.RuntimeOptions) (_result *ListMFADevicesForUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15383,12 +19960,17 @@ func (client *Client) ListMFADevicesForUserWithOptions(request *ListMFADevicesFo
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query the MFA devices that are bound to the user `u-00q8wbq42wiltcrk****`. The returned result shows that the MFA device named `Alice-MFA1` is bound to the user.
- *
- * @param request ListMFADevicesForUserRequest
- * @return ListMFADevicesForUserResponse
- */
+// Summary:
+//
+// Queries the multi-factor authentication (MFA) devices that are bound to a user. Up to two MFA devices can be bound to a user.
+//
+// Description:
+//
+// This topic provides an example on how to query the MFA devices that are bound to the user `u-00q8wbq42wiltcrk****`. The returned result shows that the MFA device named `Alice-MFA1` is bound to the user.
+//
+// @param request - ListMFADevicesForUserRequest
+//
+// @return ListMFADevicesForUserResponse
 func (client *Client) ListMFADevicesForUser(request *ListMFADevicesForUserRequest) (_result *ListMFADevicesForUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListMFADevicesForUserResponse{}
@@ -15400,13 +19982,19 @@ func (client *Client) ListMFADevicesForUser(request *ListMFADevicesForUserReques
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query the policies that are created for the access configuration `ac-00jhtfl8thteu6uj****`. The returned result shows that the access configuration contains one system policy and one inline policy.
- *
- * @param request ListPermissionPoliciesInAccessConfigurationRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListPermissionPoliciesInAccessConfigurationResponse
- */
+// Summary:
+//
+// Queries the policies that are created for an access configuration.
+//
+// Description:
+//
+// This topic provides an example on how to query the policies that are created for the access configuration `ac-00jhtfl8thteu6uj****`. The returned result shows that the access configuration contains one system policy and one inline policy.
+//
+// @param request - ListPermissionPoliciesInAccessConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPermissionPoliciesInAccessConfigurationResponse
 func (client *Client) ListPermissionPoliciesInAccessConfigurationWithOptions(request *ListPermissionPoliciesInAccessConfigurationRequest, runtime *util.RuntimeOptions) (_result *ListPermissionPoliciesInAccessConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15448,12 +20036,17 @@ func (client *Client) ListPermissionPoliciesInAccessConfigurationWithOptions(req
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query the policies that are created for the access configuration `ac-00jhtfl8thteu6uj****`. The returned result shows that the access configuration contains one system policy and one inline policy.
- *
- * @param request ListPermissionPoliciesInAccessConfigurationRequest
- * @return ListPermissionPoliciesInAccessConfigurationResponse
- */
+// Summary:
+//
+// Queries the policies that are created for an access configuration.
+//
+// Description:
+//
+// This topic provides an example on how to query the policies that are created for the access configuration `ac-00jhtfl8thteu6uj****`. The returned result shows that the access configuration contains one system policy and one inline policy.
+//
+// @param request - ListPermissionPoliciesInAccessConfigurationRequest
+//
+// @return ListPermissionPoliciesInAccessConfigurationResponse
 func (client *Client) ListPermissionPoliciesInAccessConfiguration(request *ListPermissionPoliciesInAccessConfigurationRequest) (_result *ListPermissionPoliciesInAccessConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPermissionPoliciesInAccessConfigurationResponse{}
@@ -15465,13 +20058,19 @@ func (client *Client) ListPermissionPoliciesInAccessConfiguration(request *ListP
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query the SCIM credentials within the `d-00fc2p61****` directory.
- *
- * @param request ListSCIMServerCredentialsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListSCIMServerCredentialsResponse
- */
+// Summary:
+//
+// Queries Cross-domain Identity Management (SCIM) credentials.
+//
+// Description:
+//
+// This topic provides an example on how to query the SCIM credentials within the `d-00fc2p61****` directory.
+//
+// @param request - ListSCIMServerCredentialsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSCIMServerCredentialsResponse
 func (client *Client) ListSCIMServerCredentialsWithOptions(request *ListSCIMServerCredentialsRequest, runtime *util.RuntimeOptions) (_result *ListSCIMServerCredentialsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15505,12 +20104,17 @@ func (client *Client) ListSCIMServerCredentialsWithOptions(request *ListSCIMServ
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query the SCIM credentials within the `d-00fc2p61****` directory.
- *
- * @param request ListSCIMServerCredentialsRequest
- * @return ListSCIMServerCredentialsResponse
- */
+// Summary:
+//
+// Queries Cross-domain Identity Management (SCIM) credentials.
+//
+// Description:
+//
+// This topic provides an example on how to query the SCIM credentials within the `d-00fc2p61****` directory.
+//
+// @param request - ListSCIMServerCredentialsRequest
+//
+// @return ListSCIMServerCredentialsResponse
 func (client *Client) ListSCIMServerCredentials(request *ListSCIMServerCredentialsRequest) (_result *ListSCIMServerCredentialsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSCIMServerCredentialsResponse{}
@@ -15522,14 +20126,21 @@ func (client *Client) ListSCIMServerCredentials(request *ListSCIMServerCredentia
 	return _result, _err
 }
 
-/**
- * By default, this operation queries the tasks within the previous 24 hours. This operation allows you to query the tasks within a maximum of 7 days. You can specify the start time of the query by using `Filter`.
- * This topic provides an example on how to query the tasks within the previous 24 hours.
- *
- * @param request ListTasksRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListTasksResponse
- */
+// Summary:
+//
+// Queries asynchronous tasks.
+//
+// Description:
+//
+// By default, this operation queries the tasks within the previous 24 hours. This operation allows you to query the tasks within a maximum of 7 days. You can specify the start time of the query by using `Filter`.
+//
+// This topic provides an example on how to query the tasks within the previous 24 hours.
+//
+// @param request - ListTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTasksResponse
 func (client *Client) ListTasksWithOptions(request *ListTasksRequest, runtime *util.RuntimeOptions) (_result *ListTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15603,13 +20214,19 @@ func (client *Client) ListTasksWithOptions(request *ListTasksRequest, runtime *u
 	return _result, _err
 }
 
-/**
- * By default, this operation queries the tasks within the previous 24 hours. This operation allows you to query the tasks within a maximum of 7 days. You can specify the start time of the query by using `Filter`.
- * This topic provides an example on how to query the tasks within the previous 24 hours.
- *
- * @param request ListTasksRequest
- * @return ListTasksResponse
- */
+// Summary:
+//
+// Queries asynchronous tasks.
+//
+// Description:
+//
+// By default, this operation queries the tasks within the previous 24 hours. This operation allows you to query the tasks within a maximum of 7 days. You can specify the start time of the query by using `Filter`.
+//
+// This topic provides an example on how to query the tasks within the previous 24 hours.
+//
+// @param request - ListTasksRequest
+//
+// @return ListTasksResponse
 func (client *Client) ListTasks(request *ListTasksRequest) (_result *ListTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTasksResponse{}
@@ -15621,6 +20238,15 @@ func (client *Client) ListTasks(request *ListTasksRequest) (_result *ListTasksRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries Resource Access Management (RAM) user provisioning events.
+//
+// @param request - ListUserProvisioningEventsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserProvisioningEventsResponse
 func (client *Client) ListUserProvisioningEventsWithOptions(request *ListUserProvisioningEventsRequest, runtime *util.RuntimeOptions) (_result *ListUserProvisioningEventsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15666,6 +20292,13 @@ func (client *Client) ListUserProvisioningEventsWithOptions(request *ListUserPro
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries Resource Access Management (RAM) user provisioning events.
+//
+// @param request - ListUserProvisioningEventsRequest
+//
+// @return ListUserProvisioningEventsResponse
 func (client *Client) ListUserProvisioningEvents(request *ListUserProvisioningEventsRequest) (_result *ListUserProvisioningEventsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUserProvisioningEventsResponse{}
@@ -15677,6 +20310,15 @@ func (client *Client) ListUserProvisioningEvents(request *ListUserProvisioningEv
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries Resource Access Management (RAM) user provisionings.
+//
+// @param request - ListUserProvisioningsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserProvisioningsResponse
 func (client *Client) ListUserProvisioningsWithOptions(request *ListUserProvisioningsRequest, runtime *util.RuntimeOptions) (_result *ListUserProvisioningsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15734,6 +20376,13 @@ func (client *Client) ListUserProvisioningsWithOptions(request *ListUserProvisio
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries Resource Access Management (RAM) user provisionings.
+//
+// @param request - ListUserProvisioningsRequest
+//
+// @return ListUserProvisioningsResponse
 func (client *Client) ListUserProvisionings(request *ListUserProvisioningsRequest) (_result *ListUserProvisioningsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUserProvisioningsResponse{}
@@ -15745,13 +20394,19 @@ func (client *Client) ListUserProvisionings(request *ListUserProvisioningsReques
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query users in the `d-00fc2p61****` directory. The returned result shows that the directory contains two users. The user `AliceLee` is synchronized from an external identity provider (IdP). The user `user1` is manually created within CloudSSO.
- *
- * @param request ListUsersRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListUsersResponse
- */
+// Summary:
+//
+// Queries users.
+//
+// Description:
+//
+// This topic provides an example on how to query users in the `d-00fc2p61****` directory. The returned result shows that the directory contains two users. The user `AliceLee` is synchronized from an external identity provider (IdP). The user `user1` is manually created within CloudSSO.
+//
+// @param request - ListUsersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUsersResponse
 func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *util.RuntimeOptions) (_result *ListUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15805,12 +20460,17 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *u
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to query users in the `d-00fc2p61****` directory. The returned result shows that the directory contains two users. The user `AliceLee` is synchronized from an external identity provider (IdP). The user `user1` is manually created within CloudSSO.
- *
- * @param request ListUsersRequest
- * @return ListUsersResponse
- */
+// Summary:
+//
+// Queries users.
+//
+// Description:
+//
+// This topic provides an example on how to query users in the `d-00fc2p61****` directory. The returned result shows that the directory contains two users. The user `AliceLee` is synchronized from an external identity provider (IdP). The user `user1` is manually created within CloudSSO.
+//
+// @param request - ListUsersRequest
+//
+// @return ListUsersResponse
 func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUsersResponse{}
@@ -15822,14 +20482,21 @@ func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersRe
 	return _result, _err
 }
 
-/**
- * When you call this operation, an asynchronous task is automatically created. You can call the [GetTask](~~340670~~) operation to query the progress of the task based on the value of the `TaskId` response parameter.
- * This topic provides an example on how to provision the access configuration `ac-00jhtfl8thteu6uj****` for the account `114240524784****` in your resource directory.
- *
- * @param request ProvisionAccessConfigurationRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ProvisionAccessConfigurationResponse
- */
+// Summary:
+//
+// Provisions an access configuration for an account in your resource directory.
+//
+// Description:
+//
+// When you call this operation, an asynchronous task is automatically created. You can call the [GetTask](https://help.aliyun.com/document_detail/340670.html) operation to query the progress of the task based on the value of the `TaskId` response parameter.
+//
+// This topic provides an example on how to provision the access configuration `ac-00jhtfl8thteu6uj****` for the account `114240524784****` in your resource directory.
+//
+// @param request - ProvisionAccessConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ProvisionAccessConfigurationResponse
 func (client *Client) ProvisionAccessConfigurationWithOptions(request *ProvisionAccessConfigurationRequest, runtime *util.RuntimeOptions) (_result *ProvisionAccessConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15875,13 +20542,19 @@ func (client *Client) ProvisionAccessConfigurationWithOptions(request *Provision
 	return _result, _err
 }
 
-/**
- * When you call this operation, an asynchronous task is automatically created. You can call the [GetTask](~~340670~~) operation to query the progress of the task based on the value of the `TaskId` response parameter.
- * This topic provides an example on how to provision the access configuration `ac-00jhtfl8thteu6uj****` for the account `114240524784****` in your resource directory.
- *
- * @param request ProvisionAccessConfigurationRequest
- * @return ProvisionAccessConfigurationResponse
- */
+// Summary:
+//
+// Provisions an access configuration for an account in your resource directory.
+//
+// Description:
+//
+// When you call this operation, an asynchronous task is automatically created. You can call the [GetTask](https://help.aliyun.com/document_detail/340670.html) operation to query the progress of the task based on the value of the `TaskId` response parameter.
+//
+// This topic provides an example on how to provision the access configuration `ac-00jhtfl8thteu6uj****` for the account `114240524784****` in your resource directory.
+//
+// @param request - ProvisionAccessConfigurationRequest
+//
+// @return ProvisionAccessConfigurationResponse
 func (client *Client) ProvisionAccessConfiguration(request *ProvisionAccessConfigurationRequest) (_result *ProvisionAccessConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ProvisionAccessConfigurationResponse{}
@@ -15893,13 +20566,19 @@ func (client *Client) ProvisionAccessConfiguration(request *ProvisionAccessConfi
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to remove the SAML signing certificate whose ID is `idp-c-00dt9gnl7fmjaw9c****`.
- *
- * @param request RemoveExternalSAMLIdPCertificateRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return RemoveExternalSAMLIdPCertificateResponse
- */
+// Summary:
+//
+// Removes a Security Assertion Markup Language (SAML) signing certificate.
+//
+// Description:
+//
+// This topic provides an example on how to remove the SAML signing certificate whose ID is `idp-c-00dt9gnl7fmjaw9c****`.
+//
+// @param request - RemoveExternalSAMLIdPCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveExternalSAMLIdPCertificateResponse
 func (client *Client) RemoveExternalSAMLIdPCertificateWithOptions(request *RemoveExternalSAMLIdPCertificateRequest, runtime *util.RuntimeOptions) (_result *RemoveExternalSAMLIdPCertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15937,12 +20616,17 @@ func (client *Client) RemoveExternalSAMLIdPCertificateWithOptions(request *Remov
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to remove the SAML signing certificate whose ID is `idp-c-00dt9gnl7fmjaw9c****`.
- *
- * @param request RemoveExternalSAMLIdPCertificateRequest
- * @return RemoveExternalSAMLIdPCertificateResponse
- */
+// Summary:
+//
+// Removes a Security Assertion Markup Language (SAML) signing certificate.
+//
+// Description:
+//
+// This topic provides an example on how to remove the SAML signing certificate whose ID is `idp-c-00dt9gnl7fmjaw9c****`.
+//
+// @param request - RemoveExternalSAMLIdPCertificateRequest
+//
+// @return RemoveExternalSAMLIdPCertificateResponse
 func (client *Client) RemoveExternalSAMLIdPCertificate(request *RemoveExternalSAMLIdPCertificateRequest) (_result *RemoveExternalSAMLIdPCertificateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveExternalSAMLIdPCertificateResponse{}
@@ -15954,14 +20638,21 @@ func (client *Client) RemoveExternalSAMLIdPCertificate(request *RemoveExternalSA
 	return _result, _err
 }
 
-/**
- * After you remove an inline policy from an access configuration, the policy cannot be restored.
- * This topic provides an example on how to remove the system policy `AliyunECSFullAccess` from the access configuration `ac-00jhtfl8thteu6uj****`.
- *
- * @param request RemovePermissionPolicyFromAccessConfigurationRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return RemovePermissionPolicyFromAccessConfigurationResponse
- */
+// Summary:
+//
+// Removes a policy from an access configuration.
+//
+// Description:
+//
+// After you remove an inline policy from an access configuration, the policy cannot be restored.
+//
+// This topic provides an example on how to remove the system policy `AliyunECSFullAccess` from the access configuration `ac-00jhtfl8thteu6uj****`.
+//
+// @param request - RemovePermissionPolicyFromAccessConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemovePermissionPolicyFromAccessConfigurationResponse
 func (client *Client) RemovePermissionPolicyFromAccessConfigurationWithOptions(request *RemovePermissionPolicyFromAccessConfigurationRequest, runtime *util.RuntimeOptions) (_result *RemovePermissionPolicyFromAccessConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16007,13 +20698,19 @@ func (client *Client) RemovePermissionPolicyFromAccessConfigurationWithOptions(r
 	return _result, _err
 }
 
-/**
- * After you remove an inline policy from an access configuration, the policy cannot be restored.
- * This topic provides an example on how to remove the system policy `AliyunECSFullAccess` from the access configuration `ac-00jhtfl8thteu6uj****`.
- *
- * @param request RemovePermissionPolicyFromAccessConfigurationRequest
- * @return RemovePermissionPolicyFromAccessConfigurationResponse
- */
+// Summary:
+//
+// Removes a policy from an access configuration.
+//
+// Description:
+//
+// After you remove an inline policy from an access configuration, the policy cannot be restored.
+//
+// This topic provides an example on how to remove the system policy `AliyunECSFullAccess` from the access configuration `ac-00jhtfl8thteu6uj****`.
+//
+// @param request - RemovePermissionPolicyFromAccessConfigurationRequest
+//
+// @return RemovePermissionPolicyFromAccessConfigurationResponse
 func (client *Client) RemovePermissionPolicyFromAccessConfiguration(request *RemovePermissionPolicyFromAccessConfigurationRequest) (_result *RemovePermissionPolicyFromAccessConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemovePermissionPolicyFromAccessConfigurationResponse{}
@@ -16025,14 +20722,21 @@ func (client *Client) RemovePermissionPolicyFromAccessConfiguration(request *Rem
 	return _result, _err
 }
 
-/**
- * If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot remove a user from a group that is synchronized by using SCIM.
- * This topic provides an example on how to remove the user `u-00q8wbq42wiltcrk****` from the group `g-00jqzghi2n3o5hkh****`.
- *
- * @param request RemoveUserFromGroupRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return RemoveUserFromGroupResponse
- */
+// Summary:
+//
+// Removes a user from a group.
+//
+// Description:
+//
+// If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot remove a user from a group that is synchronized by using SCIM.
+//
+// This topic provides an example on how to remove the user `u-00q8wbq42wiltcrk****` from the group `g-00jqzghi2n3o5hkh****`.
+//
+// @param request - RemoveUserFromGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveUserFromGroupResponse
 func (client *Client) RemoveUserFromGroupWithOptions(request *RemoveUserFromGroupRequest, runtime *util.RuntimeOptions) (_result *RemoveUserFromGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16074,13 +20778,19 @@ func (client *Client) RemoveUserFromGroupWithOptions(request *RemoveUserFromGrou
 	return _result, _err
 }
 
-/**
- * If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot remove a user from a group that is synchronized by using SCIM.
- * This topic provides an example on how to remove the user `u-00q8wbq42wiltcrk****` from the group `g-00jqzghi2n3o5hkh****`.
- *
- * @param request RemoveUserFromGroupRequest
- * @return RemoveUserFromGroupResponse
- */
+// Summary:
+//
+// Removes a user from a group.
+//
+// Description:
+//
+// If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot remove a user from a group that is synchronized by using SCIM.
+//
+// This topic provides an example on how to remove the user `u-00q8wbq42wiltcrk****` from the group `g-00jqzghi2n3o5hkh****`.
+//
+// @param request - RemoveUserFromGroupRequest
+//
+// @return RemoveUserFromGroupResponse
 func (client *Client) RemoveUserFromGroup(request *RemoveUserFromGroupRequest) (_result *RemoveUserFromGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveUserFromGroupResponse{}
@@ -16092,15 +20802,23 @@ func (client *Client) RemoveUserFromGroup(request *RemoveUserFromGroupRequest) (
 	return _result, _err
 }
 
-/**
- * If you forget your password or your password expires or is at risk, you must contact a CloudSSO administrator to reset your password.
- * >  After you enable SSO logon, your password cannot be reset.
- * This topic provides an example on how to reset the password of the user `u-00q8wbq42wiltcrk****`. The new password is automatically generated by the system.
- *
- * @param request ResetUserPasswordRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ResetUserPasswordResponse
- */
+// Summary:
+//
+// Resets the password of a user.
+//
+// Description:
+//
+// If you forget your password or your password expires or is at risk, you must contact a CloudSSO administrator to reset your password.
+//
+// >  After you enable SSO logon, your password cannot be reset.
+//
+// This topic provides an example on how to reset the password of the user `u-00q8wbq42wiltcrk****`. The new password is automatically generated by the system.
+//
+// @param request - ResetUserPasswordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetUserPasswordResponse
 func (client *Client) ResetUserPasswordWithOptions(request *ResetUserPasswordRequest, runtime *util.RuntimeOptions) (_result *ResetUserPasswordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16150,14 +20868,21 @@ func (client *Client) ResetUserPasswordWithOptions(request *ResetUserPasswordReq
 	return _result, _err
 }
 
-/**
- * If you forget your password or your password expires or is at risk, you must contact a CloudSSO administrator to reset your password.
- * >  After you enable SSO logon, your password cannot be reset.
- * This topic provides an example on how to reset the password of the user `u-00q8wbq42wiltcrk****`. The new password is automatically generated by the system.
- *
- * @param request ResetUserPasswordRequest
- * @return ResetUserPasswordResponse
- */
+// Summary:
+//
+// Resets the password of a user.
+//
+// Description:
+//
+// If you forget your password or your password expires or is at risk, you must contact a CloudSSO administrator to reset your password.
+//
+// >  After you enable SSO logon, your password cannot be reset.
+//
+// This topic provides an example on how to reset the password of the user `u-00q8wbq42wiltcrk****`. The new password is automatically generated by the system.
+//
+// @param request - ResetUserPasswordRequest
+//
+// @return ResetUserPasswordResponse
 func (client *Client) ResetUserPassword(request *ResetUserPasswordRequest) (_result *ResetUserPasswordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResetUserPasswordResponse{}
@@ -16169,6 +20894,15 @@ func (client *Client) ResetUserPassword(request *ResetUserPasswordRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Retries a Resource Access Management (RAM) user provisioning event.
+//
+// @param request - RetryUserProvisioningEventRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RetryUserProvisioningEventResponse
 func (client *Client) RetryUserProvisioningEventWithOptions(request *RetryUserProvisioningEventRequest, runtime *util.RuntimeOptions) (_result *RetryUserProvisioningEventResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16210,6 +20944,13 @@ func (client *Client) RetryUserProvisioningEventWithOptions(request *RetryUserPr
 	return _result, _err
 }
 
+// Summary:
+//
+// Retries a Resource Access Management (RAM) user provisioning event.
+//
+// @param request - RetryUserProvisioningEventRequest
+//
+// @return RetryUserProvisioningEventResponse
 func (client *Client) RetryUserProvisioningEvent(request *RetryUserProvisioningEventRequest) (_result *RetryUserProvisioningEventResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RetryUserProvisioningEventResponse{}
@@ -16221,21 +20962,35 @@ func (client *Client) RetryUserProvisioningEvent(request *RetryUserProvisioningE
 	return _result, _err
 }
 
-/**
- * During SAML 2.0-based single sign-on (SSO) logon, CloudSSO is an SP, and the identity management system of an enterprise is an IdP.
- * You can use one of the following methods to configure a SAML IdP. You can obtain the required metadata file or parameter values from your IdP.
- * *   Use the metadata file. You can specify the `EncodedMetadataDocument` parameter to upload the metadata file.
- * *   Manually configure the IdP. You can manually specify the following parameters for your IdP: `EntityId`, `LoginUrl`, `WantRequestSigned`, and `X509Certificate`.
- * If you have configured a SAML IdP, the existing configurations are replaced after you call this operation.
- * *   If the IdP is configured by using the metadata file, all existing configurations are replaced with new configurations.
- * *   If the IdP is manually configured, the original parameter values that are different from the new parameter values are replaced.
- * >  If SSO logon is enabled, new configurations immediately take effect. Take note of the impacts on the production environment.
- * This topic provides an example on how to configure an IdP by using the metadata file within the directory `d-00fc2p61****`.
- *
- * @param request SetExternalSAMLIdentityProviderRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return SetExternalSAMLIdentityProviderResponse
- */
+// Summary:
+//
+// Configures a Security Assertion Markup Language (SAML) identity provider (IdP).
+//
+// Description:
+//
+// During SAML 2.0-based single sign-on (SSO) logon, CloudSSO is an SP, and the identity management system of an enterprise is an IdP.
+//
+// You can use one of the following methods to configure a SAML IdP. You can obtain the required metadata file or parameter values from your IdP.
+//
+// 	- Use the metadata file. You can specify the `EncodedMetadataDocument` parameter to upload the metadata file.
+//
+// 	- Manually configure the IdP. You can manually specify the following parameters for your IdP: `EntityId`, `LoginUrl`, `WantRequestSigned`, and `X509Certificate`.
+//
+// If you have configured a SAML IdP, the existing configurations are replaced after you call this operation.
+//
+// 	- If the IdP is configured by using the metadata file, all existing configurations are replaced with new configurations.
+//
+// 	- If the IdP is manually configured, the original parameter values that are different from the new parameter values are replaced.
+//
+// >  If SSO logon is enabled, new configurations immediately take effect. Take note of the impacts on the production environment.
+//
+// This topic provides an example on how to configure an IdP by using the metadata file within the directory `d-00fc2p61****`.
+//
+// @param request - SetExternalSAMLIdentityProviderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetExternalSAMLIdentityProviderResponse
 func (client *Client) SetExternalSAMLIdentityProviderWithOptions(request *SetExternalSAMLIdentityProviderRequest, runtime *util.RuntimeOptions) (_result *SetExternalSAMLIdentityProviderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16293,20 +21048,33 @@ func (client *Client) SetExternalSAMLIdentityProviderWithOptions(request *SetExt
 	return _result, _err
 }
 
-/**
- * During SAML 2.0-based single sign-on (SSO) logon, CloudSSO is an SP, and the identity management system of an enterprise is an IdP.
- * You can use one of the following methods to configure a SAML IdP. You can obtain the required metadata file or parameter values from your IdP.
- * *   Use the metadata file. You can specify the `EncodedMetadataDocument` parameter to upload the metadata file.
- * *   Manually configure the IdP. You can manually specify the following parameters for your IdP: `EntityId`, `LoginUrl`, `WantRequestSigned`, and `X509Certificate`.
- * If you have configured a SAML IdP, the existing configurations are replaced after you call this operation.
- * *   If the IdP is configured by using the metadata file, all existing configurations are replaced with new configurations.
- * *   If the IdP is manually configured, the original parameter values that are different from the new parameter values are replaced.
- * >  If SSO logon is enabled, new configurations immediately take effect. Take note of the impacts on the production environment.
- * This topic provides an example on how to configure an IdP by using the metadata file within the directory `d-00fc2p61****`.
- *
- * @param request SetExternalSAMLIdentityProviderRequest
- * @return SetExternalSAMLIdentityProviderResponse
- */
+// Summary:
+//
+// Configures a Security Assertion Markup Language (SAML) identity provider (IdP).
+//
+// Description:
+//
+// During SAML 2.0-based single sign-on (SSO) logon, CloudSSO is an SP, and the identity management system of an enterprise is an IdP.
+//
+// You can use one of the following methods to configure a SAML IdP. You can obtain the required metadata file or parameter values from your IdP.
+//
+// 	- Use the metadata file. You can specify the `EncodedMetadataDocument` parameter to upload the metadata file.
+//
+// 	- Manually configure the IdP. You can manually specify the following parameters for your IdP: `EntityId`, `LoginUrl`, `WantRequestSigned`, and `X509Certificate`.
+//
+// If you have configured a SAML IdP, the existing configurations are replaced after you call this operation.
+//
+// 	- If the IdP is configured by using the metadata file, all existing configurations are replaced with new configurations.
+//
+// 	- If the IdP is manually configured, the original parameter values that are different from the new parameter values are replaced.
+//
+// >  If SSO logon is enabled, new configurations immediately take effect. Take note of the impacts on the production environment.
+//
+// This topic provides an example on how to configure an IdP by using the metadata file within the directory `d-00fc2p61****`.
+//
+// @param request - SetExternalSAMLIdentityProviderRequest
+//
+// @return SetExternalSAMLIdentityProviderResponse
 func (client *Client) SetExternalSAMLIdentityProvider(request *SetExternalSAMLIdentityProviderRequest) (_result *SetExternalSAMLIdentityProviderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetExternalSAMLIdentityProviderResponse{}
@@ -16318,6 +21086,15 @@ func (client *Client) SetExternalSAMLIdentityProvider(request *SetExternalSAMLId
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures the logon preference of CloudSSO users.
+//
+// @param request - SetLoginPreferenceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetLoginPreferenceResponse
 func (client *Client) SetLoginPreferenceWithOptions(request *SetLoginPreferenceRequest, runtime *util.RuntimeOptions) (_result *SetLoginPreferenceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16355,6 +21132,13 @@ func (client *Client) SetLoginPreferenceWithOptions(request *SetLoginPreferenceR
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures the logon preference of CloudSSO users.
+//
+// @param request - SetLoginPreferenceRequest
+//
+// @return SetLoginPreferenceResponse
 func (client *Client) SetLoginPreference(request *SetLoginPreferenceRequest) (_result *SetLoginPreferenceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetLoginPreferenceResponse{}
@@ -16366,14 +21150,21 @@ func (client *Client) SetLoginPreference(request *SetLoginPreferenceRequest) (_r
 	return _result, _err
 }
 
-/**
- * If a CloudSSO administrator enables username-password logon for users, CloudSSO automatically enables MFA to improve security. The administrator can call this operation to enable or disable MFA based on the business requirements.
- * This topic provides an example on how to enable MFA for users.
- *
- * @param request SetMFAAuthenticationStatusRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return SetMFAAuthenticationStatusResponse
- */
+// Summary:
+//
+// Enables or disables multi-factor authentication (MFA) for users in a directory.
+//
+// Description:
+//
+// If a CloudSSO administrator enables username-password logon for users, CloudSSO automatically enables MFA to improve security. The administrator can call this operation to enable or disable MFA based on the business requirements.
+//
+// This topic provides an example on how to enable MFA for users.
+//
+// @param request - SetMFAAuthenticationStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetMFAAuthenticationStatusResponse
 func (client *Client) SetMFAAuthenticationStatusWithOptions(request *SetMFAAuthenticationStatusRequest, runtime *util.RuntimeOptions) (_result *SetMFAAuthenticationStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16411,13 +21202,19 @@ func (client *Client) SetMFAAuthenticationStatusWithOptions(request *SetMFAAuthe
 	return _result, _err
 }
 
-/**
- * If a CloudSSO administrator enables username-password logon for users, CloudSSO automatically enables MFA to improve security. The administrator can call this operation to enable or disable MFA based on the business requirements.
- * This topic provides an example on how to enable MFA for users.
- *
- * @param request SetMFAAuthenticationStatusRequest
- * @return SetMFAAuthenticationStatusResponse
- */
+// Summary:
+//
+// Enables or disables multi-factor authentication (MFA) for users in a directory.
+//
+// Description:
+//
+// If a CloudSSO administrator enables username-password logon for users, CloudSSO automatically enables MFA to improve security. The administrator can call this operation to enable or disable MFA based on the business requirements.
+//
+// This topic provides an example on how to enable MFA for users.
+//
+// @param request - SetMFAAuthenticationStatusRequest
+//
+// @return SetMFAAuthenticationStatusResponse
 func (client *Client) SetMFAAuthenticationStatus(request *SetMFAAuthenticationStatusRequest) (_result *SetMFAAuthenticationStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetMFAAuthenticationStatusResponse{}
@@ -16429,6 +21226,15 @@ func (client *Client) SetMFAAuthenticationStatus(request *SetMFAAuthenticationSt
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures a password policy for CloudSSO users.
+//
+// @param request - SetPasswordPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetPasswordPolicyResponse
 func (client *Client) SetPasswordPolicyWithOptions(request *SetPasswordPolicyRequest, runtime *util.RuntimeOptions) (_result *SetPasswordPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16486,6 +21292,13 @@ func (client *Client) SetPasswordPolicyWithOptions(request *SetPasswordPolicyReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures a password policy for CloudSSO users.
+//
+// @param request - SetPasswordPolicyRequest
+//
+// @return SetPasswordPolicyResponse
 func (client *Client) SetPasswordPolicy(request *SetPasswordPolicyRequest) (_result *SetPasswordPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetPasswordPolicyResponse{}
@@ -16497,16 +21310,25 @@ func (client *Client) SetPasswordPolicy(request *SetPasswordPolicyRequest) (_res
 	return _result, _err
 }
 
-/**
- * You can synchronize users or groups from an external identity provider (IdP) that supports SCIM 2.0 to CloudSSO only after SCIM synchronization is enabled. If you disable SCIM synchronization, you can no longer synchronize users or groups to CloudSSO. The following list describes the impacts after SCIM synchronization is enabled or disabled:
- * *   After you enable SCIM synchronization, you cannot modify or delete the users or groups that are synchronized to CloudSSO by using SCIM. In addition, you cannot add users to or remove users from the groups. However, you can change the passwords of the users and enable or disable the logon of the users.
- * *   After you disable SCIM synchronization, you can modify and delete the users and groups that are synchronized to CloudSSO by using SCIM. You can also add users to or remove users from the groups.
- * This topic provides an example on how to enable SCIM synchronization within the directory `d-00fc2p61****`.
- *
- * @param request SetSCIMSynchronizationStatusRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return SetSCIMSynchronizationStatusResponse
- */
+// Summary:
+//
+// Enables or disables Cross-domain Identity Management (SCIM) synchronization.
+//
+// Description:
+//
+// You can synchronize users or groups from an external identity provider (IdP) that supports SCIM 2.0 to CloudSSO only after SCIM synchronization is enabled. If you disable SCIM synchronization, you can no longer synchronize users or groups to CloudSSO. The following list describes the impacts after SCIM synchronization is enabled or disabled:
+//
+// 	- After you enable SCIM synchronization, you cannot modify or delete the users or groups that are synchronized to CloudSSO by using SCIM. In addition, you cannot add users to or remove users from the groups. However, you can change the passwords of the users and enable or disable the logon of the users.
+//
+// 	- After you disable SCIM synchronization, you can modify and delete the users and groups that are synchronized to CloudSSO by using SCIM. You can also add users to or remove users from the groups.
+//
+// This topic provides an example on how to enable SCIM synchronization within the directory `d-00fc2p61****`.
+//
+// @param request - SetSCIMSynchronizationStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetSCIMSynchronizationStatusResponse
 func (client *Client) SetSCIMSynchronizationStatusWithOptions(request *SetSCIMSynchronizationStatusRequest, runtime *util.RuntimeOptions) (_result *SetSCIMSynchronizationStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16544,15 +21366,23 @@ func (client *Client) SetSCIMSynchronizationStatusWithOptions(request *SetSCIMSy
 	return _result, _err
 }
 
-/**
- * You can synchronize users or groups from an external identity provider (IdP) that supports SCIM 2.0 to CloudSSO only after SCIM synchronization is enabled. If you disable SCIM synchronization, you can no longer synchronize users or groups to CloudSSO. The following list describes the impacts after SCIM synchronization is enabled or disabled:
- * *   After you enable SCIM synchronization, you cannot modify or delete the users or groups that are synchronized to CloudSSO by using SCIM. In addition, you cannot add users to or remove users from the groups. However, you can change the passwords of the users and enable or disable the logon of the users.
- * *   After you disable SCIM synchronization, you can modify and delete the users and groups that are synchronized to CloudSSO by using SCIM. You can also add users to or remove users from the groups.
- * This topic provides an example on how to enable SCIM synchronization within the directory `d-00fc2p61****`.
- *
- * @param request SetSCIMSynchronizationStatusRequest
- * @return SetSCIMSynchronizationStatusResponse
- */
+// Summary:
+//
+// Enables or disables Cross-domain Identity Management (SCIM) synchronization.
+//
+// Description:
+//
+// You can synchronize users or groups from an external identity provider (IdP) that supports SCIM 2.0 to CloudSSO only after SCIM synchronization is enabled. If you disable SCIM synchronization, you can no longer synchronize users or groups to CloudSSO. The following list describes the impacts after SCIM synchronization is enabled or disabled:
+//
+// 	- After you enable SCIM synchronization, you cannot modify or delete the users or groups that are synchronized to CloudSSO by using SCIM. In addition, you cannot add users to or remove users from the groups. However, you can change the passwords of the users and enable or disable the logon of the users.
+//
+// 	- After you disable SCIM synchronization, you can modify and delete the users and groups that are synchronized to CloudSSO by using SCIM. You can also add users to or remove users from the groups.
+//
+// This topic provides an example on how to enable SCIM synchronization within the directory `d-00fc2p61****`.
+//
+// @param request - SetSCIMSynchronizationStatusRequest
+//
+// @return SetSCIMSynchronizationStatusResponse
 func (client *Client) SetSCIMSynchronizationStatus(request *SetSCIMSynchronizationStatusRequest) (_result *SetSCIMSynchronizationStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetSCIMSynchronizationStatusResponse{}
@@ -16564,14 +21394,21 @@ func (client *Client) SetSCIMSynchronizationStatus(request *SetSCIMSynchronizati
 	return _result, _err
 }
 
-/**
- * You can modify the `Description`, `SessionDuration`, and `RelayState` parameters for an access configuration.
- * This topic provides an example on how to change the initial web page in the access configuration `ac-00jhtfl8thteu6uj****` to `https://cloudsso.console.aliyun.com`.
- *
- * @param request UpdateAccessConfigurationRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateAccessConfigurationResponse
- */
+// Summary:
+//
+// Modifies information about an access configuration.
+//
+// Description:
+//
+// You can modify the `Description`, `SessionDuration`, and `RelayState` parameters for an access configuration.
+//
+// This topic provides an example on how to change the initial web page in the access configuration `ac-00jhtfl8thteu6uj****` to `https://cloudsso.console.aliyun.com`.
+//
+// @param request - UpdateAccessConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAccessConfigurationResponse
 func (client *Client) UpdateAccessConfigurationWithOptions(request *UpdateAccessConfigurationRequest, runtime *util.RuntimeOptions) (_result *UpdateAccessConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16621,13 +21458,19 @@ func (client *Client) UpdateAccessConfigurationWithOptions(request *UpdateAccess
 	return _result, _err
 }
 
-/**
- * You can modify the `Description`, `SessionDuration`, and `RelayState` parameters for an access configuration.
- * This topic provides an example on how to change the initial web page in the access configuration `ac-00jhtfl8thteu6uj****` to `https://cloudsso.console.aliyun.com`.
- *
- * @param request UpdateAccessConfigurationRequest
- * @return UpdateAccessConfigurationResponse
- */
+// Summary:
+//
+// Modifies information about an access configuration.
+//
+// Description:
+//
+// You can modify the `Description`, `SessionDuration`, and `RelayState` parameters for an access configuration.
+//
+// This topic provides an example on how to change the initial web page in the access configuration `ac-00jhtfl8thteu6uj****` to `https://cloudsso.console.aliyun.com`.
+//
+// @param request - UpdateAccessConfigurationRequest
+//
+// @return UpdateAccessConfigurationResponse
 func (client *Client) UpdateAccessConfiguration(request *UpdateAccessConfigurationRequest) (_result *UpdateAccessConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAccessConfigurationResponse{}
@@ -16639,14 +21482,21 @@ func (client *Client) UpdateAccessConfiguration(request *UpdateAccessConfigurati
 	return _result, _err
 }
 
-/**
- * After you change the name of a directory, the URL that is used to log on to the Cloud SSO user portal is changed. You must notify the Cloud SSO users of the correct URL.
- * This topic provides an example on how to change the name of a directory to `new-example`.
- *
- * @param request UpdateDirectoryRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateDirectoryResponse
- */
+// Summary:
+//
+// Changes the name of a directory.
+//
+// Description:
+//
+// After you change the name of a directory, the URL that is used to log on to the Cloud SSO user portal is changed. You must notify the Cloud SSO users of the correct URL.
+//
+// This topic provides an example on how to change the name of a directory to `new-example`.
+//
+// @param request - UpdateDirectoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDirectoryResponse
 func (client *Client) UpdateDirectoryWithOptions(request *UpdateDirectoryRequest, runtime *util.RuntimeOptions) (_result *UpdateDirectoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16684,13 +21534,19 @@ func (client *Client) UpdateDirectoryWithOptions(request *UpdateDirectoryRequest
 	return _result, _err
 }
 
-/**
- * After you change the name of a directory, the URL that is used to log on to the Cloud SSO user portal is changed. You must notify the Cloud SSO users of the correct URL.
- * This topic provides an example on how to change the name of a directory to `new-example`.
- *
- * @param request UpdateDirectoryRequest
- * @return UpdateDirectoryResponse
- */
+// Summary:
+//
+// Changes the name of a directory.
+//
+// Description:
+//
+// After you change the name of a directory, the URL that is used to log on to the Cloud SSO user portal is changed. You must notify the Cloud SSO users of the correct URL.
+//
+// This topic provides an example on how to change the name of a directory to `new-example`.
+//
+// @param request - UpdateDirectoryRequest
+//
+// @return UpdateDirectoryResponse
 func (client *Client) UpdateDirectory(request *UpdateDirectoryRequest) (_result *UpdateDirectoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateDirectoryResponse{}
@@ -16702,15 +21558,23 @@ func (client *Client) UpdateDirectory(request *UpdateDirectoryRequest) (_result 
 	return _result, _err
 }
 
-/**
- * You can modify `GroupName` and `Description` for a group.
- * >  If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot modify the information about a group that is synchronized by using SCIM.
- * This topic provides an example on how to change the name of the group `g-00jqzghi2n3o5hkh****` to `NewTestGroup`.
- *
- * @param request UpdateGroupRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateGroupResponse
- */
+// Summary:
+//
+// Modifies information about a group.
+//
+// Description:
+//
+// You can modify `GroupName` and `Description` for a group.
+//
+// >  If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot modify the information about a group that is synchronized by using SCIM.
+//
+// This topic provides an example on how to change the name of the group `g-00jqzghi2n3o5hkh****` to `NewTestGroup`.
+//
+// @param request - UpdateGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateGroupResponse
 func (client *Client) UpdateGroupWithOptions(request *UpdateGroupRequest, runtime *util.RuntimeOptions) (_result *UpdateGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16756,14 +21620,21 @@ func (client *Client) UpdateGroupWithOptions(request *UpdateGroupRequest, runtim
 	return _result, _err
 }
 
-/**
- * You can modify `GroupName` and `Description` for a group.
- * >  If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot modify the information about a group that is synchronized by using SCIM.
- * This topic provides an example on how to change the name of the group `g-00jqzghi2n3o5hkh****` to `NewTestGroup`.
- *
- * @param request UpdateGroupRequest
- * @return UpdateGroupResponse
- */
+// Summary:
+//
+// Modifies information about a group.
+//
+// Description:
+//
+// You can modify `GroupName` and `Description` for a group.
+//
+// >  If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot modify the information about a group that is synchronized by using SCIM.
+//
+// This topic provides an example on how to change the name of the group `g-00jqzghi2n3o5hkh****` to `NewTestGroup`.
+//
+// @param request - UpdateGroupRequest
+//
+// @return UpdateGroupResponse
 func (client *Client) UpdateGroup(request *UpdateGroupRequest) (_result *UpdateGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateGroupResponse{}
@@ -16775,13 +21646,19 @@ func (client *Client) UpdateGroup(request *UpdateGroupRequest) (_result *UpdateG
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to modify an inline policy that is created for the access configuration `ac-00jhtfl8thteu6uj****`.
- *
- * @param request UpdateInlinePolicyForAccessConfigurationRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateInlinePolicyForAccessConfigurationResponse
- */
+// Summary:
+//
+// Modifies an inline policy that is created for an access configuration.
+//
+// Description:
+//
+// This topic provides an example on how to modify an inline policy that is created for the access configuration `ac-00jhtfl8thteu6uj****`.
+//
+// @param request - UpdateInlinePolicyForAccessConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateInlinePolicyForAccessConfigurationResponse
 func (client *Client) UpdateInlinePolicyForAccessConfigurationWithOptions(request *UpdateInlinePolicyForAccessConfigurationRequest, runtime *util.RuntimeOptions) (_result *UpdateInlinePolicyForAccessConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16827,12 +21704,17 @@ func (client *Client) UpdateInlinePolicyForAccessConfigurationWithOptions(reques
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to modify an inline policy that is created for the access configuration `ac-00jhtfl8thteu6uj****`.
- *
- * @param request UpdateInlinePolicyForAccessConfigurationRequest
- * @return UpdateInlinePolicyForAccessConfigurationResponse
- */
+// Summary:
+//
+// Modifies an inline policy that is created for an access configuration.
+//
+// Description:
+//
+// This topic provides an example on how to modify an inline policy that is created for the access configuration `ac-00jhtfl8thteu6uj****`.
+//
+// @param request - UpdateInlinePolicyForAccessConfigurationRequest
+//
+// @return UpdateInlinePolicyForAccessConfigurationResponse
 func (client *Client) UpdateInlinePolicyForAccessConfiguration(request *UpdateInlinePolicyForAccessConfigurationRequest) (_result *UpdateInlinePolicyForAccessConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateInlinePolicyForAccessConfigurationResponse{}
@@ -16844,14 +21726,21 @@ func (client *Client) UpdateInlinePolicyForAccessConfiguration(request *UpdateIn
 	return _result, _err
 }
 
-/**
- * If you enable username-password logon for CloudSSO users, you can also configure MFA for the users.
- * This topic provides an example on how to enable MFA for all CloudSSO users that belong to the directory named `d-00fc2p61****`.
- *
- * @param request UpdateMFAAuthenticationSettingsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateMFAAuthenticationSettingsResponse
- */
+// Summary:
+//
+// Modifies the multi-factor authentication (MFA) setting of all users.
+//
+// Description:
+//
+// If you enable username-password logon for CloudSSO users, you can also configure MFA for the users.
+//
+// This topic provides an example on how to enable MFA for all CloudSSO users that belong to the directory named `d-00fc2p61****`.
+//
+// @param request - UpdateMFAAuthenticationSettingsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMFAAuthenticationSettingsResponse
 func (client *Client) UpdateMFAAuthenticationSettingsWithOptions(request *UpdateMFAAuthenticationSettingsRequest, runtime *util.RuntimeOptions) (_result *UpdateMFAAuthenticationSettingsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16893,13 +21782,19 @@ func (client *Client) UpdateMFAAuthenticationSettingsWithOptions(request *Update
 	return _result, _err
 }
 
-/**
- * If you enable username-password logon for CloudSSO users, you can also configure MFA for the users.
- * This topic provides an example on how to enable MFA for all CloudSSO users that belong to the directory named `d-00fc2p61****`.
- *
- * @param request UpdateMFAAuthenticationSettingsRequest
- * @return UpdateMFAAuthenticationSettingsResponse
- */
+// Summary:
+//
+// Modifies the multi-factor authentication (MFA) setting of all users.
+//
+// Description:
+//
+// If you enable username-password logon for CloudSSO users, you can also configure MFA for the users.
+//
+// This topic provides an example on how to enable MFA for all CloudSSO users that belong to the directory named `d-00fc2p61****`.
+//
+// @param request - UpdateMFAAuthenticationSettingsRequest
+//
+// @return UpdateMFAAuthenticationSettingsResponse
 func (client *Client) UpdateMFAAuthenticationSettings(request *UpdateMFAAuthenticationSettingsRequest) (_result *UpdateMFAAuthenticationSettingsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateMFAAuthenticationSettingsResponse{}
@@ -16911,13 +21806,19 @@ func (client *Client) UpdateMFAAuthenticationSettings(request *UpdateMFAAuthenti
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to disable the SCIM credential whose ID is `scimcred-004whl0kvfwcypbi****`. After the SCIM credential is disabled, the synchronization task that uses the SCIM credential fails. You can call this operation again to enable the SCIM credential.
- *
- * @param request UpdateSCIMServerCredentialStatusRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateSCIMServerCredentialStatusResponse
- */
+// Summary:
+//
+// Enables or disables a Cross-domain Identity Management (SCIM) credential.
+//
+// Description:
+//
+// This topic provides an example on how to disable the SCIM credential whose ID is `scimcred-004whl0kvfwcypbi****`. After the SCIM credential is disabled, the synchronization task that uses the SCIM credential fails. You can call this operation again to enable the SCIM credential.
+//
+// @param request - UpdateSCIMServerCredentialStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSCIMServerCredentialStatusResponse
 func (client *Client) UpdateSCIMServerCredentialStatusWithOptions(request *UpdateSCIMServerCredentialStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateSCIMServerCredentialStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16959,12 +21860,17 @@ func (client *Client) UpdateSCIMServerCredentialStatusWithOptions(request *Updat
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to disable the SCIM credential whose ID is `scimcred-004whl0kvfwcypbi****`. After the SCIM credential is disabled, the synchronization task that uses the SCIM credential fails. You can call this operation again to enable the SCIM credential.
- *
- * @param request UpdateSCIMServerCredentialStatusRequest
- * @return UpdateSCIMServerCredentialStatusResponse
- */
+// Summary:
+//
+// Enables or disables a Cross-domain Identity Management (SCIM) credential.
+//
+// Description:
+//
+// This topic provides an example on how to disable the SCIM credential whose ID is `scimcred-004whl0kvfwcypbi****`. After the SCIM credential is disabled, the synchronization task that uses the SCIM credential fails. You can call this operation again to enable the SCIM credential.
+//
+// @param request - UpdateSCIMServerCredentialStatusRequest
+//
+// @return UpdateSCIMServerCredentialStatusResponse
 func (client *Client) UpdateSCIMServerCredentialStatus(request *UpdateSCIMServerCredentialStatusRequest) (_result *UpdateSCIMServerCredentialStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateSCIMServerCredentialStatusResponse{}
@@ -16976,15 +21882,23 @@ func (client *Client) UpdateSCIMServerCredentialStatus(request *UpdateSCIMServer
 	return _result, _err
 }
 
-/**
- * You can modify `FirstName`, `LastName`, `DisplayName`, `Email`, and `Description` for a user. You cannot modify `UserName` for a user.
- * >  If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot modify the information about a user that is synchronized by using SCIM.
- * This topic provides an example on how to change the email address of the user whose ID is `u-00q8wbq42wiltcrk****` to `AliceLee@example.com`.
- *
- * @param request UpdateUserRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateUserResponse
- */
+// Summary:
+//
+// Modifies information about a user.
+//
+// Description:
+//
+// You can modify `FirstName`, `LastName`, `DisplayName`, `Email`, and `Description` for a user. You cannot modify `UserName` for a user.
+//
+// >  If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot modify the information about a user that is synchronized by using SCIM.
+//
+// This topic provides an example on how to change the email address of the user whose ID is `u-00q8wbq42wiltcrk****` to `AliceLee@example.com`.
+//
+// @param request - UpdateUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUserResponse
 func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime *util.RuntimeOptions) (_result *UpdateUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17042,14 +21956,21 @@ func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime 
 	return _result, _err
 }
 
-/**
- * You can modify `FirstName`, `LastName`, `DisplayName`, `Email`, and `Description` for a user. You cannot modify `UserName` for a user.
- * >  If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot modify the information about a user that is synchronized by using SCIM.
- * This topic provides an example on how to change the email address of the user whose ID is `u-00q8wbq42wiltcrk****` to `AliceLee@example.com`.
- *
- * @param request UpdateUserRequest
- * @return UpdateUserResponse
- */
+// Summary:
+//
+// Modifies information about a user.
+//
+// Description:
+//
+// You can modify `FirstName`, `LastName`, `DisplayName`, `Email`, and `Description` for a user. You cannot modify `UserName` for a user.
+//
+// >  If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot modify the information about a user that is synchronized by using SCIM.
+//
+// This topic provides an example on how to change the email address of the user whose ID is `u-00q8wbq42wiltcrk****` to `AliceLee@example.com`.
+//
+// @param request - UpdateUserRequest
+//
+// @return UpdateUserResponse
 func (client *Client) UpdateUser(request *UpdateUserRequest) (_result *UpdateUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateUserResponse{}
@@ -17061,15 +21982,23 @@ func (client *Client) UpdateUser(request *UpdateUserRequest) (_result *UpdateUse
 	return _result, _err
 }
 
-/**
- * If you call the [UpdateMFAAuthenticationSettings](~~450134~~) operation to set the MFAAuthenticationSettings parameter to `Byuser`, user-specific settings are applied. Then, you must call the UpdateUserMFAAuthenticationSettings operation to configure MFA for each user.
- * By default, the MFAAuthenticationSettings parameter is set to `Enabled` for a new user.
- * This topic provides an example on how to enable MFA for the user named `u-00q8wbq42wiltcrk****`.
- *
- * @param request UpdateUserMFAAuthenticationSettingsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateUserMFAAuthenticationSettingsResponse
- */
+// Summary:
+//
+// Modifies the multi-factor authentication (MFA) setting of a single user.
+//
+// Description:
+//
+// If you call the [UpdateMFAAuthenticationSettings](https://help.aliyun.com/document_detail/450134.html) operation to set the MFAAuthenticationSettings parameter to `Byuser`, user-specific settings are applied. Then, you must call the UpdateUserMFAAuthenticationSettings operation to configure MFA for each user.
+//
+// By default, the MFAAuthenticationSettings parameter is set to `Enabled` for a new user.
+//
+// This topic provides an example on how to enable MFA for the user named `u-00q8wbq42wiltcrk****`.
+//
+// @param request - UpdateUserMFAAuthenticationSettingsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUserMFAAuthenticationSettingsResponse
 func (client *Client) UpdateUserMFAAuthenticationSettingsWithOptions(request *UpdateUserMFAAuthenticationSettingsRequest, runtime *util.RuntimeOptions) (_result *UpdateUserMFAAuthenticationSettingsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17111,14 +22040,21 @@ func (client *Client) UpdateUserMFAAuthenticationSettingsWithOptions(request *Up
 	return _result, _err
 }
 
-/**
- * If you call the [UpdateMFAAuthenticationSettings](~~450134~~) operation to set the MFAAuthenticationSettings parameter to `Byuser`, user-specific settings are applied. Then, you must call the UpdateUserMFAAuthenticationSettings operation to configure MFA for each user.
- * By default, the MFAAuthenticationSettings parameter is set to `Enabled` for a new user.
- * This topic provides an example on how to enable MFA for the user named `u-00q8wbq42wiltcrk****`.
- *
- * @param request UpdateUserMFAAuthenticationSettingsRequest
- * @return UpdateUserMFAAuthenticationSettingsResponse
- */
+// Summary:
+//
+// Modifies the multi-factor authentication (MFA) setting of a single user.
+//
+// Description:
+//
+// If you call the [UpdateMFAAuthenticationSettings](https://help.aliyun.com/document_detail/450134.html) operation to set the MFAAuthenticationSettings parameter to `Byuser`, user-specific settings are applied. Then, you must call the UpdateUserMFAAuthenticationSettings operation to configure MFA for each user.
+//
+// By default, the MFAAuthenticationSettings parameter is set to `Enabled` for a new user.
+//
+// This topic provides an example on how to enable MFA for the user named `u-00q8wbq42wiltcrk****`.
+//
+// @param request - UpdateUserMFAAuthenticationSettingsRequest
+//
+// @return UpdateUserMFAAuthenticationSettingsResponse
 func (client *Client) UpdateUserMFAAuthenticationSettings(request *UpdateUserMFAAuthenticationSettingsRequest) (_result *UpdateUserMFAAuthenticationSettingsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateUserMFAAuthenticationSettingsResponse{}
@@ -17130,6 +22066,15 @@ func (client *Client) UpdateUserMFAAuthenticationSettings(request *UpdateUserMFA
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a Resource Access Management (RAM) user provisioning.
+//
+// @param request - UpdateUserProvisioningRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUserProvisioningResponse
 func (client *Client) UpdateUserProvisioningWithOptions(request *UpdateUserProvisioningRequest, runtime *util.RuntimeOptions) (_result *UpdateUserProvisioningResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17179,6 +22124,13 @@ func (client *Client) UpdateUserProvisioningWithOptions(request *UpdateUserProvi
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a Resource Access Management (RAM) user provisioning.
+//
+// @param request - UpdateUserProvisioningRequest
+//
+// @return UpdateUserProvisioningResponse
 func (client *Client) UpdateUserProvisioning(request *UpdateUserProvisioningRequest) (_result *UpdateUserProvisioningResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateUserProvisioningResponse{}
@@ -17190,6 +22142,15 @@ func (client *Client) UpdateUserProvisioning(request *UpdateUserProvisioningRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the global configurations of a Resource Access Management (RAM) user provisioning.
+//
+// @param request - UpdateUserProvisioningConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUserProvisioningConfigurationResponse
 func (client *Client) UpdateUserProvisioningConfigurationWithOptions(request *UpdateUserProvisioningConfigurationRequest, runtime *util.RuntimeOptions) (_result *UpdateUserProvisioningConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17231,6 +22192,13 @@ func (client *Client) UpdateUserProvisioningConfigurationWithOptions(request *Up
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the global configurations of a Resource Access Management (RAM) user provisioning.
+//
+// @param request - UpdateUserProvisioningConfigurationRequest
+//
+// @return UpdateUserProvisioningConfigurationResponse
 func (client *Client) UpdateUserProvisioningConfiguration(request *UpdateUserProvisioningConfigurationRequest) (_result *UpdateUserProvisioningConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateUserProvisioningConfigurationResponse{}
@@ -17242,13 +22210,19 @@ func (client *Client) UpdateUserProvisioningConfiguration(request *UpdateUserPro
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to change the status of the user whose ID is `u-00q8wbq42wiltcrk****` to Disabled. Users in the Disabled state cannot log on to the CloudSSO user portal.
- *
- * @param request UpdateUserStatusRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateUserStatusResponse
- */
+// Summary:
+//
+// Changes the status of a user.
+//
+// Description:
+//
+// This topic provides an example on how to change the status of the user whose ID is `u-00q8wbq42wiltcrk****` to Disabled. Users in the Disabled state cannot log on to the CloudSSO user portal.
+//
+// @param request - UpdateUserStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUserStatusResponse
 func (client *Client) UpdateUserStatusWithOptions(request *UpdateUserStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateUserStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17290,12 +22264,17 @@ func (client *Client) UpdateUserStatusWithOptions(request *UpdateUserStatusReque
 	return _result, _err
 }
 
-/**
- * This topic provides an example on how to change the status of the user whose ID is `u-00q8wbq42wiltcrk****` to Disabled. Users in the Disabled state cannot log on to the CloudSSO user portal.
- *
- * @param request UpdateUserStatusRequest
- * @return UpdateUserStatusResponse
- */
+// Summary:
+//
+// Changes the status of a user.
+//
+// Description:
+//
+// This topic provides an example on how to change the status of the user whose ID is `u-00q8wbq42wiltcrk****` to Disabled. Users in the Disabled state cannot log on to the CloudSSO user portal.
+//
+// @param request - UpdateUserStatusRequest
+//
+// @return UpdateUserStatusResponse
 func (client *Client) UpdateUserStatus(request *UpdateUserStatusRequest) (_result *UpdateUserStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateUserStatusResponse{}
