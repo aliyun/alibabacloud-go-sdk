@@ -18970,7 +18970,8 @@ type ListInstanceResponseBodyResult struct {
 	// example:
 	//
 	// false
-	AdvancedDedicateMaster *bool `json:"advancedDedicateMaster,omitempty" xml:"advancedDedicateMaster,omitempty"`
+	AdvancedDedicateMaster *bool   `json:"advancedDedicateMaster,omitempty" xml:"advancedDedicateMaster,omitempty"`
+	ArchType               *string `json:"archType,omitempty" xml:"archType,omitempty"`
 	// The instance type of the node. For more information, see [Specifications](https://help.aliyun.com/document_detail/271718.html).
 	ClientNodeConfiguration *ListInstanceResponseBodyResultClientNodeConfiguration `json:"clientNodeConfiguration,omitempty" xml:"clientNodeConfiguration,omitempty" type:"Struct"`
 	// The status of the pay-as-you-go service that is overlaid on a subscription instance. Valid values:
@@ -19092,6 +19093,11 @@ func (s ListInstanceResponseBodyResult) GoString() string {
 
 func (s *ListInstanceResponseBodyResult) SetAdvancedDedicateMaster(v bool) *ListInstanceResponseBodyResult {
 	s.AdvancedDedicateMaster = &v
+	return s
+}
+
+func (s *ListInstanceResponseBodyResult) SetArchType(v string) *ListInstanceResponseBodyResult {
+	s.ArchType = &v
 	return s
 }
 
