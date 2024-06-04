@@ -3093,6 +3093,7 @@ func (s *CreateDIJobRequestJobSettingsRuntimeSettings) SetValue(v string) *Creat
 type CreateDIJobRequestResourceSettings struct {
 	OfflineResourceSettings  *CreateDIJobRequestResourceSettingsOfflineResourceSettings  `json:"OfflineResourceSettings,omitempty" xml:"OfflineResourceSettings,omitempty" type:"Struct"`
 	RealtimeResourceSettings *CreateDIJobRequestResourceSettingsRealtimeResourceSettings `json:"RealtimeResourceSettings,omitempty" xml:"RealtimeResourceSettings,omitempty" type:"Struct"`
+	RequestedCu              *float32                                                    `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
 }
 
 func (s CreateDIJobRequestResourceSettings) String() string {
@@ -3110,6 +3111,11 @@ func (s *CreateDIJobRequestResourceSettings) SetOfflineResourceSettings(v *Creat
 
 func (s *CreateDIJobRequestResourceSettings) SetRealtimeResourceSettings(v *CreateDIJobRequestResourceSettingsRealtimeResourceSettings) *CreateDIJobRequestResourceSettings {
 	s.RealtimeResourceSettings = v
+	return s
+}
+
+func (s *CreateDIJobRequestResourceSettings) SetRequestedCu(v float32) *CreateDIJobRequestResourceSettings {
+	s.RequestedCu = &v
 	return s
 }
 
@@ -22867,6 +22873,7 @@ func (s *GetDIJobResponseBodyDataJobSettingsRuntimeSettings) SetValue(v string) 
 type GetDIJobResponseBodyDataResourceSettings struct {
 	OfflineResourceSettings  *GetDIJobResponseBodyDataResourceSettingsOfflineResourceSettings  `json:"OfflineResourceSettings,omitempty" xml:"OfflineResourceSettings,omitempty" type:"Struct"`
 	RealtimeResourceSettings *GetDIJobResponseBodyDataResourceSettingsRealtimeResourceSettings `json:"RealtimeResourceSettings,omitempty" xml:"RealtimeResourceSettings,omitempty" type:"Struct"`
+	RequestedCu              *float32                                                          `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
 }
 
 func (s GetDIJobResponseBodyDataResourceSettings) String() string {
@@ -22884,6 +22891,11 @@ func (s *GetDIJobResponseBodyDataResourceSettings) SetOfflineResourceSettings(v 
 
 func (s *GetDIJobResponseBodyDataResourceSettings) SetRealtimeResourceSettings(v *GetDIJobResponseBodyDataResourceSettingsRealtimeResourceSettings) *GetDIJobResponseBodyDataResourceSettings {
 	s.RealtimeResourceSettings = v
+	return s
+}
+
+func (s *GetDIJobResponseBodyDataResourceSettings) SetRequestedCu(v float32) *GetDIJobResponseBodyDataResourceSettings {
+	s.RequestedCu = &v
 	return s
 }
 
@@ -37620,7 +37632,7 @@ func (s *GetMigrationProcessResponse) SetBody(v *GetMigrationProcessResponseBody
 }
 
 type GetMigrationSummaryRequest struct {
-	// The ID of the request. You can locate logs and troubleshoot issues based on the ID.
+	// The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the workspace ID.
 	//
 	// This parameter is required.
 	//
@@ -37628,9 +37640,7 @@ type GetMigrationSummaryRequest struct {
 	//
 	// 1234
 	MigrationId *int64 `json:"MigrationId,omitempty" xml:"MigrationId,omitempty"`
-	// The ID of the migration task.
-	//
-	// You can call the [CreateImportMigration](https://help.aliyun.com/document_detail/2809123.html) operation to obtain the ID of the import task and call the [CreateExportMigration](https://help.aliyun.com/document_detail/3241603.html) operation to obtain the ID of the export task.
+	// The operation that you want to perform.
 	//
 	// This parameter is required.
 	//
@@ -37659,19 +37669,21 @@ func (s *GetMigrationSummaryRequest) SetProjectId(v int64) *GetMigrationSummaryR
 }
 
 type GetMigrationSummaryResponseBody struct {
-	// The ID of the migration task.
-	Data *GetMigrationSummaryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Indicates whether the request is successful. Valid values:
 	//
 	// 	- true: The request is successful.
 	//
 	// 	- false: The request fails. You can locate the error based on the request ID.
+	Data *GetMigrationSummaryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the migration task.
+	//
+	// You can call the [CreateImportMigration](~~CreateImportMigration~~) operation to obtain the ID of the import task and call the [CreateExportMigration](~~CreateImportMigration~~) operation to obtain the ID of the export task.
 	//
 	// example:
 	//
-	// 19999A96-71BA-1845-B455-ED620EF4E37F
+	// 19999A96-71BA-2845-B455-ED620EF4E37F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the migration task.
+	// The ID of the request. You can locate logs and troubleshoot issues based on the ID.
 	//
 	// example:
 	//
@@ -37703,40 +37715,48 @@ func (s *GetMigrationSummaryResponseBody) SetSuccess(v bool) *GetMigrationSummar
 }
 
 type GetMigrationSummaryResponseBodyData struct {
-	// The ID of the user who manages the migration task.
+	// The time when the migration task was modified.
 	//
 	// example:
 	//
 	// 982293332403****
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The ID of the DataWorks workspace.
+	//
 	// example:
 	//
 	// https://shanghai-xxx-oss.oss-cn-shanghai.aliyuncs.com/pre/store/f10_bf47_b4fa7df0860f.zip?Expires=1639540903&OSSAccessKeyId=XXXXXXeF4Lv5j&Signature=qxxxxx
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	// The time when the migration task was modified.
+	// The name of the migration task.
 	//
 	// example:
 	//
 	// 1589904000000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The ID of the user who creates the migration task.
+	// The time when the migration task was created.
 	//
 	// example:
 	//
 	// 1589904000000
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The name of the migration task.
+	// The details of the migration task.
 	//
 	// example:
 	//
 	// 1234
 	MigrationId *int64 `json:"MigrationId,omitempty" xml:"MigrationId,omitempty"`
-	// The time when the migration task was created.
+	// The ID of the migration task.
 	//
 	// example:
 	//
 	// test_export_01
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the user who creates the migration task.
+	//
+	// example:
+	//
+	// 982293332403****
+	OpUser *string `json:"OpUser,omitempty" xml:"OpUser,omitempty"`
 	// The status of the migration task. Valid values:
 	//
 	// 	- INIT: The migration task is initiating.
@@ -37761,15 +37781,9 @@ type GetMigrationSummaryResponseBodyData struct {
 	//
 	// example:
 	//
-	// 982293332403****
-	OpUser *string `json:"OpUser,omitempty" xml:"OpUser,omitempty"`
-	// The URL that is used to download the package of the export task.
-	//
-	// example:
-	//
 	// 12345
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The ID of the DataWorks workspace.
+	// The ID of the user who manages the migration task.
 	//
 	// example:
 	//
@@ -75183,6 +75197,7 @@ func (s *UpdateDIJobRequestJobSettingsRuntimeSettings) SetValue(v string) *Updat
 type UpdateDIJobRequestResourceSettings struct {
 	OfflineResourceSettings  *UpdateDIJobRequestResourceSettingsOfflineResourceSettings  `json:"OfflineResourceSettings,omitempty" xml:"OfflineResourceSettings,omitempty" type:"Struct"`
 	RealtimeResourceSettings *UpdateDIJobRequestResourceSettingsRealtimeResourceSettings `json:"RealtimeResourceSettings,omitempty" xml:"RealtimeResourceSettings,omitempty" type:"Struct"`
+	RequestedCu              *float32                                                    `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
 }
 
 func (s UpdateDIJobRequestResourceSettings) String() string {
@@ -75200,6 +75215,11 @@ func (s *UpdateDIJobRequestResourceSettings) SetOfflineResourceSettings(v *Updat
 
 func (s *UpdateDIJobRequestResourceSettings) SetRealtimeResourceSettings(v *UpdateDIJobRequestResourceSettingsRealtimeResourceSettings) *UpdateDIJobRequestResourceSettings {
 	s.RealtimeResourceSettings = v
+	return s
+}
+
+func (s *UpdateDIJobRequestResourceSettings) SetRequestedCu(v float32) *UpdateDIJobRequestResourceSettings {
+	s.RequestedCu = &v
 	return s
 }
 
@@ -91833,7 +91853,7 @@ func (client *Client) GetMigrationProcess(request *GetMigrationProcessRequest) (
 
 // Summary:
 //
-// The operation that you want to perform.
+// Queries the information about a migration task.
 //
 // @param request - GetMigrationSummaryRequest
 //
@@ -91879,7 +91899,7 @@ func (client *Client) GetMigrationSummaryWithOptions(request *GetMigrationSummar
 
 // Summary:
 //
-// The operation that you want to perform.
+// Queries the information about a migration task.
 //
 // @param request - GetMigrationSummaryRequest
 //
