@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -15,18 +12,45 @@ import (
 type ClearMajorProtectionBlackIpRequest struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The ID of the IP address blacklist rule for major event protection.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20012033
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The ID of the IP address blacklist rule template for major event protection.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5132
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -65,6 +89,10 @@ func (s *ClearMajorProtectionBlackIpRequest) SetTemplateId(v int64) *ClearMajorP
 
 type ClearMajorProtectionBlackIpResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 66A98669-CC6E-4F3E-80A6-3014697B11AE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -113,16 +141,37 @@ func (s *ClearMajorProtectionBlackIpResponse) SetBody(v *ClearMajorProtectionBla
 type CopyDefenseTemplateRequest struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v2_public_cn-lbj****x10g
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland.
-	// *   **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The ID of the protection template that you want to copy.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -156,8 +205,16 @@ func (s *CopyDefenseTemplateRequest) SetTemplateId(v int64) *CopyDefenseTemplate
 
 type CopyDefenseTemplateResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19****5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the new protection template.
+	//
+	// example:
+	//
+	// 12346
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -210,21 +267,50 @@ func (s *CopyDefenseTemplateResponse) SetBody(v *CopyDefenseTemplateResponseBody
 
 type CreateDefenseResourceGroupRequest struct {
 	// The protected objects that you want to add to the protected object group. You can add multiple protected objects to a protected object group at the same time. You can specify multiple protected objects. Separate them with commas (,).
+	//
+	// example:
+	//
+	// test1.aliyundoc.com,test2.aliyundoc.com
 	AddList *string `json:"AddList,omitempty" xml:"AddList,omitempty"`
 	// The description of the protected object group.
+	//
+	// example:
+	//
+	// test_domain
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the protected object group that you want to create.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// group221
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
@@ -268,6 +354,10 @@ func (s *CreateDefenseResourceGroupRequest) SetResourceManagerResourceGroupId(v 
 
 type CreateDefenseResourceGroupResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 5D69B341-4F97-58E7-9E16-1B17FE7A9E98
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -316,33 +406,75 @@ func (s *CreateDefenseResourceGroupResponse) SetBody(v *CreateDefenseResourceGro
 type CreateDefenseRuleRequest struct {
 	// The module to which the protection rule that you want to create belongs.
 	//
-	// *   **waf_group:** the basic protection rule module.
-	// *   **antiscan:** the scan protection module.
-	// *   **ip_blacklist:** the IP address blacklist module.
-	// *   **custom_acl:** the custom rule module.
-	// *   **whitelist:** the whitelist module.
-	// *   **region_block:** the region blacklist module.
-	// *   **custom_response:** the custom response module.
-	// *   **cc:** the HTTP flood protection module.
-	// *   **tamperproof:** the website tamper-proofing module.
-	// *   **dlp:** the data leakage prevention module.
+	// 	- **waf_group:*	- the basic protection rule module.
+	//
+	// 	- **antiscan:*	- the scan protection module.
+	//
+	// 	- **ip_blacklist:*	- the IP address blacklist module.
+	//
+	// 	- **custom_acl:*	- the custom rule module.
+	//
+	// 	- **whitelist:*	- the whitelist module.
+	//
+	// 	- **region_block:*	- the region blacklist module.
+	//
+	// 	- **custom_response:*	- the custom response module.
+	//
+	// 	- **cc:*	- the HTTP flood protection module.
+	//
+	// 	- **tamperproof:*	- the website tamper-proofing module.
+	//
+	// 	- **dlp:*	- the data leakage prevention module.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_group
 	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v2_public_cn-****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The configurations of the protection rule. Specify a string that contains multiple parameters in the JSON format.
 	//
-	// >  The parameters vary based on the value of the **DefenseScene** parameter. For more information, see the "**Protection rule parameters**" section in this topic.
+	// >  The parameters vary based on the value of the **DefenseScene*	- parameter. For more information, see the "**Protection rule parameters**" section in this topic.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// For more information, see the following section.
 	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
 	// The ID of the protection rule template for which you want to create a protection rule.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1122
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -386,6 +518,10 @@ func (s *CreateDefenseRuleRequest) SetTemplateId(v int64) *CreateDefenseRuleRequ
 
 type CreateDefenseRuleResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 26E46541-7AAB-5565-801D-F14DBDC5F186
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -432,34 +568,85 @@ func (s *CreateDefenseRuleResponse) SetBody(v *CreateDefenseRuleResponseBody) *C
 }
 
 type CreateDefenseTemplateRequest struct {
-	// The scenario in which you want to use the protection rule template. For more information, see the description of the **DefenseScene** parameter in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
+	// The scenario in which you want to use the protection rule template. For more information, see the description of the **DefenseScene*	- parameter in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_group
 	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
 	// The description of the protection rule template.
+	//
+	// example:
+	//
+	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The name of the protection rule template.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test221
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The origin of the protection rule template that you want to create. Set the value to **custom**. The value specifies that the protection rule template is a custom template.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// custom
 	TemplateOrigin *string `json:"TemplateOrigin,omitempty" xml:"TemplateOrigin,omitempty"`
 	// The status of the protection rule template. Valid values:
 	//
-	// *   **0:** disabled.
-	// *   **1:** enabled.
+	// 	- **0:*	- disabled.
+	//
+	// 	- **1:*	- enabled.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	TemplateStatus *int32 `json:"TemplateStatus,omitempty" xml:"TemplateStatus,omitempty"`
 	// The type of the protection rule template. Valid values:
 	//
-	// *   **user_default:** default template.
-	// *   **user_custom:** custom template.
+	// 	- **user_default:*	- default template.
+	//
+	// 	- **user_custom:*	- custom template.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user_default
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
@@ -518,8 +705,16 @@ func (s *CreateDefenseTemplateRequest) SetTemplateType(v string) *CreateDefenseT
 
 type CreateDefenseTemplateResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F48ABDF7-D777-5F26-892A-57349765D7A9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the protection rule template.
+	//
+	// example:
+	//
+	// 2212
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -573,25 +768,57 @@ func (s *CreateDefenseTemplateResponse) SetBody(v *CreateDefenseTemplateResponse
 type CreateDomainRequest struct {
 	// The mode in which you want to add the domain name to WAF. Valid values:
 	//
-	// *   **share:** adds the domain name to WAF in CNAME record mode. This is the default value.
-	// *   **hybrid_cloud_cname:** adds the domain name to WAF in hybrid cloud reverse proxy mode.
+	// 	- **share:*	- adds the domain name to WAF in CNAME record mode. This is the default value.
+	//
+	// 	- **hybrid_cloud_cname:*	- adds the domain name to WAF in hybrid cloud reverse proxy mode.
+	//
+	// example:
+	//
+	// share
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
 	// The domain name that you want to add to WAF.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// > You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The configurations of the listeners.
+	//
+	// This parameter is required.
 	Listen *CreateDomainRequestListen `json:"Listen,omitempty" xml:"Listen,omitempty" type:"Struct"`
 	// The configurations of the forwarding rule.
+	//
+	// This parameter is required.
 	Redirect *CreateDomainRequestRedirect `json:"Redirect,omitempty" xml:"Redirect,omitempty" type:"Struct"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou**: the Chinese mainland
-	// *   **ap-southeast-1**: outside the Chinese mainland
+	// 	- **cn-hangzhou**: the Chinese mainland
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
@@ -640,34 +867,70 @@ func (s *CreateDomainRequest) SetResourceManagerResourceGroupId(v string) *Creat
 
 type CreateDomainRequestListen struct {
 	// The ID of the certificate that you want to add. This parameter is available only if you specify **HttpsPorts**.
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// 123
 	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
 	// The type of cipher suite that you want to add. This parameter is available only if you specify **HttpsPorts**. Valid values:
 	//
-	// *   **1:** all cipher suites.
-	// *   **2:** strong cipher suites. You can select this value only if you set **TLSVersion** to **tlsv1.2**.
-	// *   **99:** custom cipher suites.
+	// 	- **1:*	- all cipher suites.
+	//
+	// 	- **2:*	- strong cipher suites. You can select this value only if you set **TLSVersion*	- to **tlsv1.2**.
+	//
+	// 	- **99:*	- custom cipher suites.
+	//
+	// example:
+	//
+	// 2
 	CipherSuite *int32 `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
 	// The custom cipher suite that you want to add.
 	CustomCiphers []*string `json:"CustomCiphers,omitempty" xml:"CustomCiphers,omitempty" type:"Repeated"`
 	// Specifies whether to support TLS 1.3. This parameter is available only if you specify **HttpsPorts**. Valid values:
 	//
-	// *   **true**
-	// *   **false**
-	EnableTLSv3 *bool `json:"EnableTLSv3,omitempty" xml:"EnableTLSv3,omitempty"`
-	// Specifies whether to enable an exclusive IP address. This parameter is available only if you set **IPv6Enabled** to **false** and **ProtectionResource** to **share**. Valid values:
+	// 	- **true**
 	//
-	// *   **true**
-	// *   **false** (default)
+	// 	- **false**
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// true
+	EnableTLSv3 *bool `json:"EnableTLSv3,omitempty" xml:"EnableTLSv3,omitempty"`
+	// Specifies whether to enable an exclusive IP address. This parameter is available only if you set **IPv6Enabled*	- to **false*	- and **ProtectionResource*	- to **share**. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
+	// example:
+	//
+	// true
 	ExclusiveIp *bool `json:"ExclusiveIp,omitempty" xml:"ExclusiveIp,omitempty"`
 	// Specifies whether to enable HTTP to HTTPS redirection. This parameter is available only if you specify HttpsPorts and leave HttpPorts empty. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	FocusHttps *bool `json:"FocusHttps,omitempty" xml:"FocusHttps,omitempty"`
 	// Specifies whether to enable HTTP/2. This parameter is available only if you specify **HttpsPorts**. Valid values:
 	//
-	// *   **true**
-	// *   **false** (default)
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
+	// example:
+	//
+	// true
 	Http2Enabled *bool `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
 	// The HTTP listener port.
 	HttpPorts []*int32 `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty" type:"Repeated"`
@@ -675,34 +938,78 @@ type CreateDomainRequestListen struct {
 	HttpsPorts []*int32 `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty" type:"Repeated"`
 	// Specifies whether to enable IPv6. Valid values:
 	//
-	// *   **true**
-	// *   **false** (default)
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
+	// example:
+	//
+	// true
 	IPv6Enabled *bool `json:"IPv6Enabled,omitempty" xml:"IPv6Enabled,omitempty"`
 	// The type of the protection resource. Valid values:
 	//
-	// *   **share:** a shared cluster. This is the default value.
-	// *   **gslb:** shared cluster-based intelligent load balancing.
+	// 	- **share:*	- a shared cluster. This is the default value.
+	//
+	// 	- **gslb:*	- shared cluster-based intelligent load balancing.
+	//
+	// example:
+	//
+	// share
 	ProtectionResource *string `json:"ProtectionResource,omitempty" xml:"ProtectionResource,omitempty"`
 	// Specifies whether to allow access only from SM certificate-based clients. This parameter is available only if you set SM2Enabled to true.
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// true
 	SM2AccessOnly *bool `json:"SM2AccessOnly,omitempty" xml:"SM2AccessOnly,omitempty"`
 	// The ID of the SM certificate that you want to add. This parameter is available only if you set SM2Enabled to true.
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// 123-cn-hangzhou
 	SM2CertId *string `json:"SM2CertId,omitempty" xml:"SM2CertId,omitempty"`
 	// Specifies whether to enable the ShangMi (SM) certificate.
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// true
 	SM2Enabled *bool `json:"SM2Enabled,omitempty" xml:"SM2Enabled,omitempty"`
 	// The version of the Transport Layer Security (TLS) protocol. This parameter is available only if you specify **HttpsPorts**. Valid values:
 	//
-	// *   **tlsv1**
-	// *   **tlsv1.1**
-	// *   **tlsv1.2**
+	// 	- **tlsv1**
+	//
+	// 	- **tlsv1.1**
+	//
+	// 	- **tlsv1.2**
+	//
+	// example:
+	//
+	// tlsv1
 	TLSVersion *string `json:"TLSVersion,omitempty" xml:"TLSVersion,omitempty"`
 	// The method that you want WAF to use to obtain the actual IP address of a client. Valid values:
 	//
-	// *   **0:** No Layer 7 proxies are deployed in front of WAF. This is the default value.
-	// *   **1:** WAF reads the first value of the X-Forwarded-For (XFF) header field as the IP address of the client.
-	// *   **2:** WAF reads the value of a custom header field as the IP address of the client.
+	// 	- **0:*	- No Layer 7 proxies are deployed in front of WAF. This is the default value.
+	//
+	// 	- **1:*	- WAF reads the first value of the X-Forwarded-For (XFF) header field as the IP address of the client.
+	//
+	// 	- **2:*	- WAF reads the value of a custom header field as the IP address of the client.
+	//
+	// example:
+	//
+	// 1
 	XffHeaderMode *int32 `json:"XffHeaderMode,omitempty" xml:"XffHeaderMode,omitempty"`
 	// The custom header field that you want WAF to use to obtain the actual IP address of a client.
 	XffHeaders []*string `json:"XffHeaders,omitempty" xml:"XffHeaders,omitempty" type:"Repeated"`
@@ -806,36 +1113,75 @@ type CreateDomainRequestRedirect struct {
 	Backends []*string `json:"Backends,omitempty" xml:"Backends,omitempty" type:"Repeated"`
 	// Specifies whether to enable the public cloud disaster recovery feature. Valid values:
 	//
-	// *   **true**
-	// *   **false** (default)
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
+	// example:
+	//
+	// true
 	CnameEnabled *bool `json:"CnameEnabled,omitempty" xml:"CnameEnabled,omitempty"`
 	// The timeout period of connections. Unit: seconds. Valid values: 1 to 3600.
+	//
+	// example:
+	//
+	// 120
 	ConnectTimeout *int32 `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
 	// Specifies whether to enable HTTPS to HTTP redirection for back-to-origin requests. This parameter is available only if you specify **HttpsPorts**. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	FocusHttpBackend *bool `json:"FocusHttpBackend,omitempty" xml:"FocusHttpBackend,omitempty"`
 	// Specifies whether to enable the persistent connection feature. Valid values:
 	//
-	// *   **true** (default)
-	// *   **false**
+	// 	- **true*	- (default)
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Keepalive *bool `json:"Keepalive,omitempty" xml:"Keepalive,omitempty"`
 	// The number of reused persistent connections. Valid values: 60 to 1000.
 	//
 	// >  This parameter specifies the number of reused persistent connections after you enable the persistent connection feature.
+	//
+	// example:
+	//
+	// 1000
 	KeepaliveRequests *int32 `json:"KeepaliveRequests,omitempty" xml:"KeepaliveRequests,omitempty"`
 	// The timeout period of idle persistent connections. Valid values: 1 to 60. Default value: 15. Unit: seconds.
 	//
 	// >  This parameter specifies the period of time during which a reused persistent connection is allowed to remain in the Idle state before the persistent connection is released.
+	//
+	// example:
+	//
+	// 15
 	KeepaliveTimeout *int32 `json:"KeepaliveTimeout,omitempty" xml:"KeepaliveTimeout,omitempty"`
 	// The load balancing algorithm that you want to use to forward requests to the origin server. Valid values:
 	//
-	// *   **iphash**
-	// *   **roundRobin**
-	// *   **leastTime** You can set the parameter to this value only if you set **ProtectionResource** to **gslb**.
+	// 	- **iphash**
+	//
+	// 	- **roundRobin**
+	//
+	// 	- **leastTime*	- You can set the parameter to this value only if you set **ProtectionResource*	- to **gslb**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// roundRobin
 	Loadbalance *string `json:"Loadbalance,omitempty" xml:"Loadbalance,omitempty"`
 	// The timeout period of read connections. Unit: seconds. Valid values: 1 to 3600.
+	//
+	// example:
+	//
+	// 200
 	ReadTimeout *int32 `json:"ReadTimeout,omitempty" xml:"ReadTimeout,omitempty"`
 	// The custom header field that you want to use to label requests that are processed by WAF.
 	//
@@ -843,30 +1189,75 @@ type CreateDomainRequestRedirect struct {
 	RequestHeaders []*CreateDomainRequestRedirectRequestHeaders `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
 	// Specifies whether WAF retries forwarding requests to the origin server when the requests fail to be forwarded to the origin server. Valid values:
 	//
-	// *   **true** (default)
-	// *   **false**
+	// 	- **true*	- (default)
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Retry *bool `json:"Retry,omitempty" xml:"Retry,omitempty"`
 	// The forwarding rules that you want to configure for the domain name that you want to add to WAF in hybrid cloud mode. This parameter is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields:
 	//
-	// *   **rs**: the back-to-origin IP addresses or CNAMEs. The value must be of the ARRAY type.
-	// *   **location**: the name of the protection node. The value must be of the STRING type.
-	// *   **locationId**: the ID of the protection node. The value must be of the LONG type.
+	// 	- **rs**: the back-to-origin IP addresses or CNAMEs. The value must be of the ARRAY type.
+	//
+	// 	- **location**: the name of the protection node. The value must be of the STRING type.
+	//
+	// 	- **locationId**: the ID of the protection node. The value must be of the LONG type.
+	//
+	// example:
+	//
+	// [
+	//
+	//       {
+	//
+	//             "rs": [
+	//
+	//                   "1.1.XX.XX"
+	//
+	//             ],
+	//
+	//             "locationId": 535,
+	//
+	//             "location": "test1111"
+	//
+	//       }
+	//
+	// ]
 	RoutingRules *string `json:"RoutingRules,omitempty" xml:"RoutingRules,omitempty"`
 	// Specifies whether to enable origin Server Name Indication (SNI). This parameter is available only if you specify **HttpsPorts**. Valid values:
 	//
-	// *   **true**
-	// *   **false** (default)
-	SniEnabled *bool `json:"SniEnabled,omitempty" xml:"SniEnabled,omitempty"`
-	// The value of the SNI field. If you do not specify this parameter, the value of the **Host** field is automatically used. This parameter is optional. If you want WAF to use an SNI field value that is different from the Host field value in back-to-origin requests, you can specify a custom value for the SNI field.
+	// 	- **true**
 	//
-	// >  This parameter is required only if you set **SniEnalbed** to **true**.
+	// 	- **false*	- (default)
+	//
+	// example:
+	//
+	// true
+	SniEnabled *bool `json:"SniEnabled,omitempty" xml:"SniEnabled,omitempty"`
+	// The value of the SNI field. If you do not specify this parameter, the value of the **Host*	- field is automatically used. This parameter is optional. If you want WAF to use an SNI field value that is different from the Host field value in back-to-origin requests, you can specify a custom value for the SNI field.
+	//
+	// >  This parameter is required only if you set **SniEnalbed*	- to **true**.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
 	SniHost *string `json:"SniHost,omitempty" xml:"SniHost,omitempty"`
 	// The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600.
+	//
+	// example:
+	//
+	// 200
 	WriteTimeout *int32 `json:"WriteTimeout,omitempty" xml:"WriteTimeout,omitempty"`
 	// Indicates whether the X-Forward-For-Proto header is used to identify the protocol used by WAF to forward requests to the origin server. Valid values:
 	//
-	// *   **true** (default)
-	// *   **false**
+	// 	- **true*	- (default)
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	XffProto *bool `json:"XffProto,omitempty" xml:"XffProto,omitempty"`
 }
 
@@ -960,8 +1351,16 @@ func (s *CreateDomainRequestRedirect) SetXffProto(v bool) *CreateDomainRequestRe
 
 type CreateDomainRequestRedirectRequestHeaders struct {
 	// The custom header field.
+	//
+	// example:
+	//
+	// aaa
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the custom header field.
+	//
+	// example:
+	//
+	// bbb
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -986,25 +1385,57 @@ func (s *CreateDomainRequestRedirectRequestHeaders) SetValue(v string) *CreateDo
 type CreateDomainShrinkRequest struct {
 	// The mode in which you want to add the domain name to WAF. Valid values:
 	//
-	// *   **share:** adds the domain name to WAF in CNAME record mode. This is the default value.
-	// *   **hybrid_cloud_cname:** adds the domain name to WAF in hybrid cloud reverse proxy mode.
+	// 	- **share:*	- adds the domain name to WAF in CNAME record mode. This is the default value.
+	//
+	// 	- **hybrid_cloud_cname:*	- adds the domain name to WAF in hybrid cloud reverse proxy mode.
+	//
+	// example:
+	//
+	// share
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
 	// The domain name that you want to add to WAF.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// > You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The configurations of the listeners.
+	//
+	// This parameter is required.
 	ListenShrink *string `json:"Listen,omitempty" xml:"Listen,omitempty"`
 	// The configurations of the forwarding rule.
+	//
+	// This parameter is required.
 	RedirectShrink *string `json:"Redirect,omitempty" xml:"Redirect,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou**: the Chinese mainland
-	// *   **ap-southeast-1**: outside the Chinese mainland
+	// 	- **cn-hangzhou**: the Chinese mainland
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
@@ -1055,6 +1486,10 @@ type CreateDomainResponseBody struct {
 	// The information about the domain name.
 	DomainInfo *CreateDomainResponseBodyDomainInfo `json:"DomainInfo,omitempty" xml:"DomainInfo,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1078,8 +1513,16 @@ func (s *CreateDomainResponseBody) SetRequestId(v string) *CreateDomainResponseB
 
 type CreateDomainResponseBodyDomainInfo struct {
 	// The CNAME that is assigned by WAF to the domain name.
+	//
+	// example:
+	//
+	// xxxxxwww.****.com
 	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
 	// The domain name that you added to WAF.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 }
 
@@ -1132,25 +1575,68 @@ func (s *CreateDomainResponse) SetBody(v *CreateDomainResponseBody) *CreateDomai
 
 type CreateMajorProtectionBlackIpRequest struct {
 	// The description of the IP address blacklist.
+	//
+	// example:
+	//
+	// Protection for major events
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The time after which the IP address blacklist becomes invalid. Unit: seconds.
 	//
 	// >  If you set the value to **0**, the blacklist is permanently valid.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1716528465
 	ExpiredTime *int64 `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-2r42s6y****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The IP addresses that you want to add to the IP address blacklist. CIDR blocks and IP addresses are supported. IPv4 and IPv6 addresses are supported. Separate the CIDR blocks or IP addresses with commas (,). For more information, see [Protection for major events](~~425591~~).
+	// The IP addresses that you want to add to the IP address blacklist. CIDR blocks and IP addresses are supported. IPv4 and IPv6 addresses are supported. Separate the CIDR blocks or IP addresses with commas (,). For more information, see [Protection for major events](https://help.aliyun.com/document_detail/425591.html).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 192.0.XX.XX,192.0.XX.XX/24
 	IpList *string `json:"IpList,omitempty" xml:"IpList,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The ID of the IP address blacklist rule for major event protection.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 232324
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The ID of the IP address blacklist rule template for major event protection.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2221
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -1204,6 +1690,10 @@ func (s *CreateMajorProtectionBlackIpRequest) SetTemplateId(v int64) *CreateMajo
 
 type CreateMajorProtectionBlackIpResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1252,18 +1742,39 @@ func (s *CreateMajorProtectionBlackIpResponse) SetBody(v *CreateMajorProtectionB
 type CreateMemberAccountsRequest struct {
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The Alibaba Cloud account IDs of the members that you want to add. You can add up to 10 members at the same time.
+	//
+	// This parameter is required.
 	MemberAccountIds []*string `json:"MemberAccountIds,omitempty" xml:"MemberAccountIds,omitempty" type:"Repeated"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland.
-	// *   **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The source IP address of the request. The system automatically obtains the value of this parameter.
+	//
+	// example:
+	//
+	// 1.1.X.X
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
@@ -1302,6 +1813,10 @@ func (s *CreateMemberAccountsRequest) SetSourceIp(v string) *CreateMemberAccount
 
 type CreateMemberAccountsResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 66A98669-ER12-WE34-23PO-301469*****E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1350,10 +1865,19 @@ func (s *CreateMemberAccountsResponse) SetBody(v *CreateMemberAccountsResponseBo
 type CreatePostpaidInstanceRequest struct {
 	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland.
-	// *   **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm4gh****wela
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
@@ -1377,8 +1901,16 @@ func (s *CreatePostpaidInstanceRequest) SetResourceManagerResourceGroupId(v stri
 
 type CreatePostpaidInstanceResponseBody struct {
 	// The ID of the WAF instance.
+	//
+	// example:
+	//
+	// waf_v2_public_cn-x0r****gr1i
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 73A4E786-8235-50C0-9631-87C8****4A36
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1429,19 +1961,294 @@ func (s *CreatePostpaidInstanceResponse) SetBody(v *CreatePostpaidInstanceRespon
 	return s
 }
 
+type DeleteApisecAbnormalRequest struct {
+	// example:
+	//
+	// c0a96***4b9cd303467402a63dcc
+	AbnormalId *string `json:"AbnormalId,omitempty" xml:"AbnormalId,omitempty"`
+	// example:
+	//
+	// 428
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-n6w***x52m
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// cn
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfm2th****v6ay
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DeleteApisecAbnormalRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteApisecAbnormalRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteApisecAbnormalRequest) SetAbnormalId(v string) *DeleteApisecAbnormalRequest {
+	s.AbnormalId = &v
+	return s
+}
+
+func (s *DeleteApisecAbnormalRequest) SetClusterId(v string) *DeleteApisecAbnormalRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DeleteApisecAbnormalRequest) SetInstanceId(v string) *DeleteApisecAbnormalRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteApisecAbnormalRequest) SetRegion(v string) *DeleteApisecAbnormalRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *DeleteApisecAbnormalRequest) SetRegionId(v string) *DeleteApisecAbnormalRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteApisecAbnormalRequest) SetResourceManagerResourceGroupId(v string) *DeleteApisecAbnormalRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DeleteApisecAbnormalResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 66A98669-CC6E-4F3E-80A6-7B***11AE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s DeleteApisecAbnormalResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteApisecAbnormalResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteApisecAbnormalResponseBody) SetRequestId(v string) *DeleteApisecAbnormalResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteApisecAbnormalResponseBody) SetResult(v bool) *DeleteApisecAbnormalResponseBody {
+	s.Result = &v
+	return s
+}
+
+type DeleteApisecAbnormalResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteApisecAbnormalResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteApisecAbnormalResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteApisecAbnormalResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteApisecAbnormalResponse) SetHeaders(v map[string]*string) *DeleteApisecAbnormalResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteApisecAbnormalResponse) SetStatusCode(v int32) *DeleteApisecAbnormalResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteApisecAbnormalResponse) SetBody(v *DeleteApisecAbnormalResponseBody) *DeleteApisecAbnormalResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteApisecEventRequest struct {
+	// example:
+	//
+	// 433
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// 0b7ab137a065aab7656986***11db
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-zz11sr5****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// cn
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DeleteApisecEventRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteApisecEventRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteApisecEventRequest) SetClusterId(v string) *DeleteApisecEventRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DeleteApisecEventRequest) SetEventId(v string) *DeleteApisecEventRequest {
+	s.EventId = &v
+	return s
+}
+
+func (s *DeleteApisecEventRequest) SetInstanceId(v string) *DeleteApisecEventRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteApisecEventRequest) SetRegion(v string) *DeleteApisecEventRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *DeleteApisecEventRequest) SetRegionId(v string) *DeleteApisecEventRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteApisecEventRequest) SetResourceManagerResourceGroupId(v string) *DeleteApisecEventRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DeleteApisecEventResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19****5EB0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s DeleteApisecEventResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteApisecEventResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteApisecEventResponseBody) SetRequestId(v string) *DeleteApisecEventResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteApisecEventResponseBody) SetResult(v bool) *DeleteApisecEventResponseBody {
+	s.Result = &v
+	return s
+}
+
+type DeleteApisecEventResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteApisecEventResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteApisecEventResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteApisecEventResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteApisecEventResponse) SetHeaders(v map[string]*string) *DeleteApisecEventResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteApisecEventResponse) SetStatusCode(v int32) *DeleteApisecEventResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteApisecEventResponse) SetBody(v *DeleteApisecEventResponseBody) *DeleteApisecEventResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteDefenseResourceGroupRequest struct {
 	// The name of the protected object group that you want to delete.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// group221
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
@@ -1475,6 +2282,10 @@ func (s *DeleteDefenseResourceGroupRequest) SetResourceManagerResourceGroupId(v 
 
 type DeleteDefenseResourceGroupResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 25BE1169-9AE4-5D7D-8293-C33242ABB549
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1523,18 +2334,45 @@ func (s *DeleteDefenseResourceGroupResponse) SetBody(v *DeleteDefenseResourceGro
 type DeleteDefenseRuleRequest struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The IDs of the protection rules that you want to delete. Separate the IDs with commas (,).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2223455,23354,465565
 	RuleIds *string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty"`
 	// The ID of the protection rule template to which the protection rule that you want to delete belongs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2221
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -1573,6 +2411,10 @@ func (s *DeleteDefenseRuleRequest) SetTemplateId(v int64) *DeleteDefenseRuleRequ
 
 type DeleteDefenseRuleResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 2EC856FE-6D31-5861-8275-E5DEDB539089
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1621,16 +2463,37 @@ func (s *DeleteDefenseRuleResponse) SetBody(v *DeleteDefenseRuleResponseBody) *D
 type DeleteDefenseTemplateRequest struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The ID of the protection rule template that you want to delete.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3155
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -1664,6 +2527,10 @@ func (s *DeleteDefenseTemplateRequest) SetTemplateId(v int64) *DeleteDefenseTemp
 
 type DeleteDefenseTemplateResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// E2DE6F11-6FED-5909-95F2-2520B58C5BC7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1712,21 +2579,49 @@ func (s *DeleteDefenseTemplateResponse) SetBody(v *DeleteDefenseTemplateResponse
 type DeleteDomainRequest struct {
 	// The mode in which the domain name is added to WAF. Valid values:
 	//
-	// *   **share:** CNAME record mode. This is the default value.
-	// *   **hybrid_cloud_cname:** hybrid cloud reverse proxy mode.
+	// 	- **share:*	- CNAME record mode. This is the default value.
+	//
+	// 	- **hybrid_cloud_cname:*	- hybrid cloud reverse proxy mode.
+	//
+	// example:
+	//
+	// share
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
 	// The domain name that you want to delete.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the domain name.
+	//
+	// example:
+	//
+	// www.aliyundoc.com-waf
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -1765,6 +2660,10 @@ func (s *DeleteDomainRequest) SetRegionId(v string) *DeleteDomainRequest {
 
 type DeleteDomainResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1813,20 +2712,53 @@ func (s *DeleteDomainResponse) SetBody(v *DeleteDomainResponseBody) *DeleteDomai
 type DeleteMajorProtectionBlackIpRequest struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The IP address blacklist for major event protection that you want to delete. You can specify multiple CIDR blocks or IP addresses. IPv4 and IPv6 addresses are supported. Separate the CIDR blocks or IP addresses with commas (,). For more information, see [Protection for major events](~~425591~~).
+	// The IP address blacklist for major event protection that you want to delete. You can specify multiple CIDR blocks or IP addresses. IPv4 and IPv6 addresses are supported. Separate the CIDR blocks or IP addresses with commas (,). For more information, see [Protection for major events](https://help.aliyun.com/document_detail/425591.html).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 192.0.XX.XX,192.0.XX.XX/24
 	IpList *string `json:"IpList,omitempty" xml:"IpList,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The ID of the IP address blacklist rule for major event protection.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20013135
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The ID of the IP address blacklist rule template for major event protection.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5332
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -1870,6 +2802,10 @@ func (s *DeleteMajorProtectionBlackIpRequest) SetTemplateId(v int64) *DeleteMajo
 
 type DeleteMajorProtectionBlackIpResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 66A98669-CC6E-4F3E-80A6-3014697B11AE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1918,18 +2854,43 @@ func (s *DeleteMajorProtectionBlackIpResponse) SetBody(v *DeleteMajorProtectionB
 type DeleteMemberAccountRequest struct {
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_esasdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The Alibaba Cloud account ID of the managed member.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 131***********39
 	MemberAccountId *string `json:"MemberAccountId,omitempty" xml:"MemberAccountId,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland.
-	// *   **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The source IP address of the request. The system automatically obtains the value of this parameter.
+	//
+	// example:
+	//
+	// 0.0.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
@@ -1968,6 +2929,10 @@ func (s *DeleteMemberAccountRequest) SetSourceIp(v string) *DeleteMemberAccountR
 
 type DeleteMemberAccountResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 5ABE714C-8890-5D7E-A08B-45CB****5473
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2016,14 +2981,29 @@ func (s *DeleteMemberAccountResponse) SetBody(v *DeleteMemberAccountResponseBody
 type DescribeAccountDelegatedStatusRequest struct {
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland.
-	// *   **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
@@ -2052,15 +3032,32 @@ func (s *DescribeAccountDelegatedStatusRequest) SetResourceManagerResourceGroupI
 
 type DescribeAccountDelegatedStatusResponseBody struct {
 	// The ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 10***********34
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The name of the Alibaba Cloud account. This parameter is returned only if the account is the delegated administrator account.
+	//
+	// example:
+	//
+	// account_test
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// Indicates whether the Alibaba Cloud account is the delegated administrator account of the WAF instance.
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	DelegatedStatus *bool `json:"DelegatedStatus,omitempty" xml:"DelegatedStatus,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 8161375D-5958-5627-BFDE-DF14****3E87
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2121,19 +3118,901 @@ func (s *DescribeAccountDelegatedStatusResponse) SetBody(v *DescribeAccountDeleg
 	return s
 }
 
+type DescribeApisecAbnormalDomainStatisticRequest struct {
+	// example:
+	//
+	// 428
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// 1687313820
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-45919n***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// desc
+	OrderWay *string `json:"OrderWay,omitempty" xml:"OrderWay,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// example:
+	//
+	// 1682571600
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeApisecAbnormalDomainStatisticRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecAbnormalDomainStatisticRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecAbnormalDomainStatisticRequest) SetClusterId(v string) *DescribeApisecAbnormalDomainStatisticRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalDomainStatisticRequest) SetEndTime(v int64) *DescribeApisecAbnormalDomainStatisticRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalDomainStatisticRequest) SetInstanceId(v string) *DescribeApisecAbnormalDomainStatisticRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalDomainStatisticRequest) SetOrderWay(v string) *DescribeApisecAbnormalDomainStatisticRequest {
+	s.OrderWay = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalDomainStatisticRequest) SetPageNumber(v int64) *DescribeApisecAbnormalDomainStatisticRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalDomainStatisticRequest) SetPageSize(v int64) *DescribeApisecAbnormalDomainStatisticRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalDomainStatisticRequest) SetRegion(v string) *DescribeApisecAbnormalDomainStatisticRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalDomainStatisticRequest) SetRegionId(v string) *DescribeApisecAbnormalDomainStatisticRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalDomainStatisticRequest) SetResourceManagerResourceGroupId(v string) *DescribeApisecAbnormalDomainStatisticRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalDomainStatisticRequest) SetStartTime(v int64) *DescribeApisecAbnormalDomainStatisticRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeApisecAbnormalDomainStatisticResponseBody struct {
+	Data []*DescribeApisecAbnormalDomainStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 66A98669-CC6E-4F3E-80A6-3014***B11AE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeApisecAbnormalDomainStatisticResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecAbnormalDomainStatisticResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecAbnormalDomainStatisticResponseBody) SetData(v []*DescribeApisecAbnormalDomainStatisticResponseBodyData) *DescribeApisecAbnormalDomainStatisticResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeApisecAbnormalDomainStatisticResponseBody) SetRequestId(v string) *DescribeApisecAbnormalDomainStatisticResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalDomainStatisticResponseBody) SetTotalCount(v int64) *DescribeApisecAbnormalDomainStatisticResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeApisecAbnormalDomainStatisticResponseBodyData struct {
+	// example:
+	//
+	// 10
+	ApiCount *int64 `json:"ApiCount,omitempty" xml:"ApiCount,omitempty"`
+	// example:
+	//
+	// ba.aliyun.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// 12
+	High *int64 `json:"High,omitempty" xml:"High,omitempty"`
+	// example:
+	//
+	// 4
+	Low *int64 `json:"Low,omitempty" xml:"Low,omitempty"`
+	// example:
+	//
+	// 9
+	Medium *int64 `json:"Medium,omitempty" xml:"Medium,omitempty"`
+}
+
+func (s DescribeApisecAbnormalDomainStatisticResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecAbnormalDomainStatisticResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecAbnormalDomainStatisticResponseBodyData) SetApiCount(v int64) *DescribeApisecAbnormalDomainStatisticResponseBodyData {
+	s.ApiCount = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalDomainStatisticResponseBodyData) SetDomain(v string) *DescribeApisecAbnormalDomainStatisticResponseBodyData {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalDomainStatisticResponseBodyData) SetHigh(v int64) *DescribeApisecAbnormalDomainStatisticResponseBodyData {
+	s.High = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalDomainStatisticResponseBodyData) SetLow(v int64) *DescribeApisecAbnormalDomainStatisticResponseBodyData {
+	s.Low = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalDomainStatisticResponseBodyData) SetMedium(v int64) *DescribeApisecAbnormalDomainStatisticResponseBodyData {
+	s.Medium = &v
+	return s
+}
+
+type DescribeApisecAbnormalDomainStatisticResponse struct {
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeApisecAbnormalDomainStatisticResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeApisecAbnormalDomainStatisticResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecAbnormalDomainStatisticResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecAbnormalDomainStatisticResponse) SetHeaders(v map[string]*string) *DescribeApisecAbnormalDomainStatisticResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeApisecAbnormalDomainStatisticResponse) SetStatusCode(v int32) *DescribeApisecAbnormalDomainStatisticResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeApisecAbnormalDomainStatisticResponse) SetBody(v *DescribeApisecAbnormalDomainStatisticResponseBody) *DescribeApisecAbnormalDomainStatisticResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeApisecAssetTrendRequest struct {
+	// example:
+	//
+	// 590
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// 1683183599
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v2_public_cn-ww**b06
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// cn
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-aek**7uq
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// example:
+	//
+	// 1668496310
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeApisecAssetTrendRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecAssetTrendRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecAssetTrendRequest) SetClusterId(v string) *DescribeApisecAssetTrendRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeApisecAssetTrendRequest) SetEndTime(v int64) *DescribeApisecAssetTrendRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeApisecAssetTrendRequest) SetInstanceId(v string) *DescribeApisecAssetTrendRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeApisecAssetTrendRequest) SetRegion(v string) *DescribeApisecAssetTrendRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeApisecAssetTrendRequest) SetRegionId(v string) *DescribeApisecAssetTrendRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeApisecAssetTrendRequest) SetResourceManagerResourceGroupId(v string) *DescribeApisecAssetTrendRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeApisecAssetTrendRequest) SetStartTime(v int64) *DescribeApisecAssetTrendRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeApisecAssetTrendResponseBody struct {
+	Data []*DescribeApisecAssetTrendResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Id of the request
+	//
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19****5EB0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeApisecAssetTrendResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecAssetTrendResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecAssetTrendResponseBody) SetData(v []*DescribeApisecAssetTrendResponseBodyData) *DescribeApisecAssetTrendResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeApisecAssetTrendResponseBody) SetRequestId(v string) *DescribeApisecAssetTrendResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeApisecAssetTrendResponseBodyData struct {
+	// example:
+	//
+	// 60
+	AssetActive *int64 `json:"AssetActive,omitempty" xml:"AssetActive,omitempty"`
+	// example:
+	//
+	// 80
+	AssetCount *int64 `json:"AssetCount,omitempty" xml:"AssetCount,omitempty"`
+	// example:
+	//
+	// 20
+	AssetOffline *int64 `json:"AssetOffline,omitempty" xml:"AssetOffline,omitempty"`
+	// example:
+	//
+	// 1683600042
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+}
+
+func (s DescribeApisecAssetTrendResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecAssetTrendResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecAssetTrendResponseBodyData) SetAssetActive(v int64) *DescribeApisecAssetTrendResponseBodyData {
+	s.AssetActive = &v
+	return s
+}
+
+func (s *DescribeApisecAssetTrendResponseBodyData) SetAssetCount(v int64) *DescribeApisecAssetTrendResponseBodyData {
+	s.AssetCount = &v
+	return s
+}
+
+func (s *DescribeApisecAssetTrendResponseBodyData) SetAssetOffline(v int64) *DescribeApisecAssetTrendResponseBodyData {
+	s.AssetOffline = &v
+	return s
+}
+
+func (s *DescribeApisecAssetTrendResponseBodyData) SetTimestamp(v int64) *DescribeApisecAssetTrendResponseBodyData {
+	s.Timestamp = &v
+	return s
+}
+
+type DescribeApisecAssetTrendResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeApisecAssetTrendResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeApisecAssetTrendResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecAssetTrendResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecAssetTrendResponse) SetHeaders(v map[string]*string) *DescribeApisecAssetTrendResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeApisecAssetTrendResponse) SetStatusCode(v int32) *DescribeApisecAssetTrendResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeApisecAssetTrendResponse) SetBody(v *DescribeApisecAssetTrendResponseBody) *DescribeApisecAssetTrendResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeApisecEventDomainStatisticRequest struct {
+	// example:
+	//
+	// 428
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// 1686895256
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_elasticity-cn-0xldbqt****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// desc
+	OrderWay *string `json:"OrderWay,omitempty" xml:"OrderWay,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfmvyknl****fa
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// example:
+	//
+	// 1668496310
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeApisecEventDomainStatisticRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecEventDomainStatisticRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecEventDomainStatisticRequest) SetClusterId(v string) *DescribeApisecEventDomainStatisticRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeApisecEventDomainStatisticRequest) SetEndTime(v int64) *DescribeApisecEventDomainStatisticRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeApisecEventDomainStatisticRequest) SetInstanceId(v string) *DescribeApisecEventDomainStatisticRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeApisecEventDomainStatisticRequest) SetOrderWay(v string) *DescribeApisecEventDomainStatisticRequest {
+	s.OrderWay = &v
+	return s
+}
+
+func (s *DescribeApisecEventDomainStatisticRequest) SetPageNumber(v int64) *DescribeApisecEventDomainStatisticRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeApisecEventDomainStatisticRequest) SetPageSize(v int64) *DescribeApisecEventDomainStatisticRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeApisecEventDomainStatisticRequest) SetRegion(v string) *DescribeApisecEventDomainStatisticRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeApisecEventDomainStatisticRequest) SetRegionId(v string) *DescribeApisecEventDomainStatisticRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeApisecEventDomainStatisticRequest) SetResourceManagerResourceGroupId(v string) *DescribeApisecEventDomainStatisticRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeApisecEventDomainStatisticRequest) SetStartTime(v int64) *DescribeApisecEventDomainStatisticRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeApisecEventDomainStatisticResponseBody struct {
+	Data []*DescribeApisecEventDomainStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 66A98669-*******-80A6-3014697B11AE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeApisecEventDomainStatisticResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecEventDomainStatisticResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecEventDomainStatisticResponseBody) SetData(v []*DescribeApisecEventDomainStatisticResponseBodyData) *DescribeApisecEventDomainStatisticResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeApisecEventDomainStatisticResponseBody) SetRequestId(v string) *DescribeApisecEventDomainStatisticResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeApisecEventDomainStatisticResponseBody) SetTotalCount(v int64) *DescribeApisecEventDomainStatisticResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeApisecEventDomainStatisticResponseBodyData struct {
+	// example:
+	//
+	// 10
+	ApiCount *int64 `json:"ApiCount,omitempty" xml:"ApiCount,omitempty"`
+	// example:
+	//
+	// a.aliyun.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// 10
+	High *int64 `json:"High,omitempty" xml:"High,omitempty"`
+	// example:
+	//
+	// 2
+	Low *int64 `json:"Low,omitempty" xml:"Low,omitempty"`
+	// example:
+	//
+	// 6
+	Medium *int64 `json:"Medium,omitempty" xml:"Medium,omitempty"`
+}
+
+func (s DescribeApisecEventDomainStatisticResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecEventDomainStatisticResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecEventDomainStatisticResponseBodyData) SetApiCount(v int64) *DescribeApisecEventDomainStatisticResponseBodyData {
+	s.ApiCount = &v
+	return s
+}
+
+func (s *DescribeApisecEventDomainStatisticResponseBodyData) SetDomain(v string) *DescribeApisecEventDomainStatisticResponseBodyData {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeApisecEventDomainStatisticResponseBodyData) SetHigh(v int64) *DescribeApisecEventDomainStatisticResponseBodyData {
+	s.High = &v
+	return s
+}
+
+func (s *DescribeApisecEventDomainStatisticResponseBodyData) SetLow(v int64) *DescribeApisecEventDomainStatisticResponseBodyData {
+	s.Low = &v
+	return s
+}
+
+func (s *DescribeApisecEventDomainStatisticResponseBodyData) SetMedium(v int64) *DescribeApisecEventDomainStatisticResponseBodyData {
+	s.Medium = &v
+	return s
+}
+
+type DescribeApisecEventDomainStatisticResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeApisecEventDomainStatisticResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeApisecEventDomainStatisticResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecEventDomainStatisticResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecEventDomainStatisticResponse) SetHeaders(v map[string]*string) *DescribeApisecEventDomainStatisticResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeApisecEventDomainStatisticResponse) SetStatusCode(v int32) *DescribeApisecEventDomainStatisticResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeApisecEventDomainStatisticResponse) SetBody(v *DescribeApisecEventDomainStatisticResponseBody) *DescribeApisecEventDomainStatisticResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeApisecSensitiveDomainStatisticRequest struct {
+	// example:
+	//
+	// 428
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// 1686895256
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// desc
+	OrderWay *string `json:"OrderWay,omitempty" xml:"OrderWay,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// example:
+	//
+	// 1668496310
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// request
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeApisecSensitiveDomainStatisticRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecSensitiveDomainStatisticRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecSensitiveDomainStatisticRequest) SetClusterId(v string) *DescribeApisecSensitiveDomainStatisticRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeApisecSensitiveDomainStatisticRequest) SetEndTime(v int64) *DescribeApisecSensitiveDomainStatisticRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeApisecSensitiveDomainStatisticRequest) SetInstanceId(v string) *DescribeApisecSensitiveDomainStatisticRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeApisecSensitiveDomainStatisticRequest) SetOrderWay(v string) *DescribeApisecSensitiveDomainStatisticRequest {
+	s.OrderWay = &v
+	return s
+}
+
+func (s *DescribeApisecSensitiveDomainStatisticRequest) SetPageNumber(v int64) *DescribeApisecSensitiveDomainStatisticRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeApisecSensitiveDomainStatisticRequest) SetPageSize(v int64) *DescribeApisecSensitiveDomainStatisticRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeApisecSensitiveDomainStatisticRequest) SetRegion(v string) *DescribeApisecSensitiveDomainStatisticRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeApisecSensitiveDomainStatisticRequest) SetRegionId(v string) *DescribeApisecSensitiveDomainStatisticRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeApisecSensitiveDomainStatisticRequest) SetResourceManagerResourceGroupId(v string) *DescribeApisecSensitiveDomainStatisticRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeApisecSensitiveDomainStatisticRequest) SetStartTime(v int64) *DescribeApisecSensitiveDomainStatisticRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeApisecSensitiveDomainStatisticRequest) SetType(v string) *DescribeApisecSensitiveDomainStatisticRequest {
+	s.Type = &v
+	return s
+}
+
+type DescribeApisecSensitiveDomainStatisticResponseBody struct {
+	Data []*DescribeApisecSensitiveDomainStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 56B40D30-4960-4F19-B7D5-2B1F***6CB70
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 27
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeApisecSensitiveDomainStatisticResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecSensitiveDomainStatisticResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecSensitiveDomainStatisticResponseBody) SetData(v []*DescribeApisecSensitiveDomainStatisticResponseBodyData) *DescribeApisecSensitiveDomainStatisticResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeApisecSensitiveDomainStatisticResponseBody) SetRequestId(v string) *DescribeApisecSensitiveDomainStatisticResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeApisecSensitiveDomainStatisticResponseBody) SetTotalCount(v int64) *DescribeApisecSensitiveDomainStatisticResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeApisecSensitiveDomainStatisticResponseBodyData struct {
+	// example:
+	//
+	// 10
+	ApiCount *int64 `json:"ApiCount,omitempty" xml:"ApiCount,omitempty"`
+	// example:
+	//
+	// 10
+	DomainCount *int64 `json:"DomainCount,omitempty" xml:"DomainCount,omitempty"`
+	// example:
+	//
+	// 10
+	SensitiveCode *string `json:"SensitiveCode,omitempty" xml:"SensitiveCode,omitempty"`
+	// example:
+	//
+	// L3
+	SensitiveLevel *string `json:"SensitiveLevel,omitempty" xml:"SensitiveLevel,omitempty"`
+	SensitiveName  *string `json:"SensitiveName,omitempty" xml:"SensitiveName,omitempty"`
+}
+
+func (s DescribeApisecSensitiveDomainStatisticResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecSensitiveDomainStatisticResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecSensitiveDomainStatisticResponseBodyData) SetApiCount(v int64) *DescribeApisecSensitiveDomainStatisticResponseBodyData {
+	s.ApiCount = &v
+	return s
+}
+
+func (s *DescribeApisecSensitiveDomainStatisticResponseBodyData) SetDomainCount(v int64) *DescribeApisecSensitiveDomainStatisticResponseBodyData {
+	s.DomainCount = &v
+	return s
+}
+
+func (s *DescribeApisecSensitiveDomainStatisticResponseBodyData) SetSensitiveCode(v string) *DescribeApisecSensitiveDomainStatisticResponseBodyData {
+	s.SensitiveCode = &v
+	return s
+}
+
+func (s *DescribeApisecSensitiveDomainStatisticResponseBodyData) SetSensitiveLevel(v string) *DescribeApisecSensitiveDomainStatisticResponseBodyData {
+	s.SensitiveLevel = &v
+	return s
+}
+
+func (s *DescribeApisecSensitiveDomainStatisticResponseBodyData) SetSensitiveName(v string) *DescribeApisecSensitiveDomainStatisticResponseBodyData {
+	s.SensitiveName = &v
+	return s
+}
+
+type DescribeApisecSensitiveDomainStatisticResponse struct {
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeApisecSensitiveDomainStatisticResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeApisecSensitiveDomainStatisticResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecSensitiveDomainStatisticResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecSensitiveDomainStatisticResponse) SetHeaders(v map[string]*string) *DescribeApisecSensitiveDomainStatisticResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeApisecSensitiveDomainStatisticResponse) SetStatusCode(v int32) *DescribeApisecSensitiveDomainStatisticResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeApisecSensitiveDomainStatisticResponse) SetBody(v *DescribeApisecSensitiveDomainStatisticResponseBody) *DescribeApisecSensitiveDomainStatisticResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeCertDetailRequest struct {
 	// The ID of the certificate.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123-cn-hangzhou
 	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-uax****3k0e
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland.
-	// *   **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
@@ -2169,6 +4048,10 @@ type DescribeCertDetailResponseBody struct {
 	// The details of the certificate.
 	CertDetail *DescribeCertDetailResponseBodyCertDetail `json:"CertDetail,omitempty" xml:"CertDetail,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 3C115DBE-8E53-5A12-9CAF-FD3F****CDF6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2192,16 +4075,40 @@ func (s *DescribeCertDetailResponseBody) SetRequestId(v string) *DescribeCertDet
 
 type DescribeCertDetailResponseBodyCertDetail struct {
 	// The time when the certificate expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1976256736582
 	AfterDate *int64 `json:"AfterDate,omitempty" xml:"AfterDate,omitempty"`
 	// The time when the certificate was issued. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1976256736582
 	BeforeDate *int64 `json:"BeforeDate,omitempty" xml:"BeforeDate,omitempty"`
 	// The ID of the certificate.
+	//
+	// example:
+	//
+	// 123-cn-hangzhou
 	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
 	// The name of the certificate.
+	//
+	// example:
+	//
+	// testCertName
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
 	// The primary domain name, which is a common name.
+	//
+	// example:
+	//
+	// *.xxxaliyun.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
 	// The domain name that is associated with the certificate.
+	//
+	// example:
+	//
+	// demo.xxxaliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The other domain names that are associated with the certificate.
 	Sans []*string `json:"Sans,omitempty" xml:"Sans,omitempty" type:"Repeated"`
@@ -2282,25 +4189,57 @@ func (s *DescribeCertDetailResponse) SetBody(v *DescribeCertDetailResponseBody) 
 type DescribeCertsRequest struct {
 	// The type of the encryption algorithm. Valid values:
 	//
-	// *   **NotSM2**: The encryption algorithm is not the SM2 algorithm. This is the default value.
-	// *   **SM2**: The encryption algorithm is the SM2 algorithm.
+	// 	- **NotSM2**: The encryption algorithm is not the SM2 algorithm. This is the default value.
+	//
+	// 	- **SM2**: The encryption algorithm is the SM2 algorithm.
+	//
+	// example:
+	//
+	// SM2
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
 	// The domain name.
+	//
+	// example:
+	//
+	// example.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-5yd****tb02
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The page number. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values: 1 to 100. Default value: **10**.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland.
-	// *   **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfmoiy****p2oq
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
@@ -2351,8 +4290,16 @@ type DescribeCertsResponseBody struct {
 	// The certificates.
 	Certs []*DescribeCertsResponseBodyCerts `json:"Certs,omitempty" xml:"Certs,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 19511B0D-5AE0-5600-BB8A-DC2C8345****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 8
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -2381,21 +4328,50 @@ func (s *DescribeCertsResponseBody) SetTotalCount(v int64) *DescribeCertsRespons
 
 type DescribeCertsResponseBodyCerts struct {
 	// The time when the certificate becomes valid.
+	//
+	// example:
+	//
+	// 1976256736582
 	AfterDate *int64 `json:"AfterDate,omitempty" xml:"AfterDate,omitempty"`
 	// The time when the certificate expires.
+	//
+	// example:
+	//
+	// 1976256836582
 	BeforeDate *int64 `json:"BeforeDate,omitempty" xml:"BeforeDate,omitempty"`
 	// The globally unique ID of the certificate. The value is in the "Certificate ID-cn-hangzhou" format. For example, if the ID of the certificate is 123, the value of CertIdentifier is 123-cn-hangzhou.
+	//
+	// example:
+	//
+	// 1234567-cn-hangzhou
 	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
 	// The name of the certificate.
+	//
+	// example:
+	//
+	// waf1234
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
 	// The common name.
+	//
+	// example:
+	//
+	// *.example.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
 	// The domain name that is added to WAF.
+	//
+	// example:
+	//
+	// www.example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// Indicates whether the certificate chain is complete. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	IsChainCompleted *bool `json:"IsChainCompleted,omitempty" xml:"IsChainCompleted,omitempty"`
 }
 
@@ -2474,43 +4450,101 @@ func (s *DescribeCertsResponse) SetBody(v *DescribeCertsResponseBody) *DescribeC
 type DescribeCloudResourcesRequest struct {
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-lbj****cn0c
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the Alibaba Cloud account to which the resource belongs.
+	//
+	// example:
+	//
+	// 11769793******
 	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
 	// The page number. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Default value: **10**.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland.
-	// *   **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The domain name. You can use this parameter if you set ResourceProduct to fc or sae.
+	//
+	// example:
+	//
+	// fc-domain-test
 	ResourceDomain *string `json:"ResourceDomain,omitempty" xml:"ResourceDomain,omitempty"`
 	// The function name. You can use this parameter if you set ResourceProduct to fc.
+	//
+	// example:
+	//
+	// fc-test
 	ResourceFunction *string `json:"ResourceFunction,omitempty" xml:"ResourceFunction,omitempty"`
 	// The ID of the resource.
+	//
+	// example:
+	//
+	// alb-43glijk0fr****gths
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm4gh****wela
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The name of the resource.
+	//
+	// example:
+	//
+	// alb-name
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// The cloud service to which the resource belongs. Valid values:
 	//
-	// *   **alb**: Application Load Balancer (ALB).
-	// *   **mse**: Microservices Engine (MSE).
-	// *   **fc**: Function Compute.
-	// *   **sae**: Serverless App Engine (SAE).
+	// 	- **alb**: Application Load Balancer (ALB).
+	//
+	// 	- **mse**: Microservices Engine (MSE).
+	//
+	// 	- **fc**: Function Compute.
+	//
+	// 	- **sae**: Serverless App Engine (SAE).
 	//
 	// >  Different cloud services are available in different regions. The specified cloud service must be available in the specified region.
+	//
+	// example:
+	//
+	// alb
 	ResourceProduct *string `json:"ResourceProduct,omitempty" xml:"ResourceProduct,omitempty"`
 	// The region ID of the resource. For information about region IDs, see the following table.
 	//
 	// >  Different cloud services are available in different regions. The specified cloud service must be available in the specified region.
+	//
+	// example:
+	//
+	// cn-beijing
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
 	// The route name. You can use this parameter if you set ResourceProduct to mse.
+	//
+	// example:
+	//
+	// mse-default-traffic
 	ResourceRouteName *string `json:"ResourceRouteName,omitempty" xml:"ResourceRouteName,omitempty"`
 }
 
@@ -2591,8 +4625,16 @@ type DescribeCloudResourcesResponseBody struct {
 	// The cloud service resources that are added to WAF.
 	CloudResources []*DescribeCloudResourcesResponseBodyCloudResources `json:"CloudResources,omitempty" xml:"CloudResources,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// C327F81A-CCE2-5B21-817C-F93E29C5****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of cloud service resources returned.
+	//
+	// example:
+	//
+	// 121
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -2621,27 +4663,66 @@ func (s *DescribeCloudResourcesResponseBody) SetTotalCount(v int64) *DescribeClo
 
 type DescribeCloudResourcesResponseBodyCloudResources struct {
 	// The ID of the Alibaba Cloud account to which the resource belongs.
+	//
+	// example:
+	//
+	// 11769793******
 	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
 	// The domain name. This parameter has a value only if the value of ResourceProduct is fc or sae.
+	//
+	// example:
+	//
+	// test-resource-domain
 	ResourceDomain *string `json:"ResourceDomain,omitempty" xml:"ResourceDomain,omitempty"`
 	// The function name. This parameter has a value only if the value of ResourceProduct is fc.
+	//
+	// example:
+	//
+	// test-resource-function
 	ResourceFunction *string `json:"ResourceFunction,omitempty" xml:"ResourceFunction,omitempty"`
 	// The ID of the resource.
+	//
+	// example:
+	//
+	// alb-ffff****
 	ResourceInstance *string `json:"ResourceInstance,omitempty" xml:"ResourceInstance,omitempty"`
 	// The name of the resource.
+	//
+	// example:
+	//
+	// test-resource-name
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// The cloud service to which the resource belongs. Valid values:
 	//
-	// *   **alb**: ALB.
-	// *   **mse**: MSE.
-	// *   **fc**: Function Compute.
-	// *   **sae**: SAE.
+	// 	- **alb**: ALB.
+	//
+	// 	- **mse**: MSE.
+	//
+	// 	- **fc**: Function Compute.
+	//
+	// 	- **sae**: SAE.
+	//
+	// example:
+	//
+	// alb
 	ResourceProduct *string `json:"ResourceProduct,omitempty" xml:"ResourceProduct,omitempty"`
 	// The region ID of the resource.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
 	// The route name. This parameter has a value only if the value of ResourceProduct is mse.
+	//
+	// example:
+	//
+	// test-route-name
 	ResourceRouteName *string `json:"ResourceRouteName,omitempty" xml:"ResourceRouteName,omitempty"`
 	// The service name. This parameter has a value only if the value of ResourceProduct is fc.
+	//
+	// example:
+	//
+	// test-resource-service
 	ResourceService *string `json:"ResourceService,omitempty" xml:"ResourceService,omitempty"`
 }
 
@@ -2730,16 +4811,37 @@ func (s *DescribeCloudResourcesResponse) SetBody(v *DescribeCloudResourcesRespon
 type DescribeDefenseResourceRequest struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-4xl****i60i
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland.
-	// *   **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the protected object that you want to query. Only exact queries are supported.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.aliyundoc.com-waf
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
@@ -2773,6 +4875,10 @@ func (s *DescribeDefenseResourceRequest) SetResourceManagerResourceGroupId(v str
 
 type DescribeDefenseResourceResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 439AADF2-368C-5E98-B14E-3086****0573
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the protected object.
 	Resource *DescribeDefenseResourceResponseBodyResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
@@ -2799,52 +4905,123 @@ func (s *DescribeDefenseResourceResponseBody) SetResource(v *DescribeDefenseReso
 type DescribeDefenseResourceResponseBodyResource struct {
 	// The status of the tracking cookie.
 	//
-	// *   **0**: disabled.
-	// *   **1**: enabled.
+	// 	- **0**: disabled.
+	//
+	// 	- **1**: enabled.
+	//
+	// example:
+	//
+	// 0
 	AcwCookieStatus *int32 `json:"AcwCookieStatus,omitempty" xml:"AcwCookieStatus,omitempty"`
 	// The status of the secure attribute of the tracking cookie.
 	//
-	// *   **0**: disabled.
-	// *   **1**: enabled.
+	// 	- **0**: disabled.
+	//
+	// 	- **1**: enabled.
+	//
+	// example:
+	//
+	// 0
 	AcwSecureStatus *int32 `json:"AcwSecureStatus,omitempty" xml:"AcwSecureStatus,omitempty"`
 	// The status of the secure attribute of the slider CAPTCHA cookie.
 	//
-	// *   **0**: disabled.
-	// *   **1**: enabled.
+	// 	- **0**: disabled.
+	//
+	// 	- **1**: enabled.
+	//
+	// example:
+	//
+	// 0
 	AcwV3SecureStatus *int32 `json:"AcwV3SecureStatus,omitempty" xml:"AcwV3SecureStatus,omitempty"`
 	// The custom header fields.
 	//
 	// >  If the value of XffStatus is 1, the first IP address in the specified header field is used as the originating IP address of the client to prevent X-Forwarded-For (XFF) forgery. If you specify multiple header fields, WAF reads the values of the header fields in sequence until the originating IP address is obtained. If the originating IP address cannot be obtained, the first IP address in the XFF header field is used as the originating IP address of the client.
 	CustomHeaders []*string `json:"CustomHeaders,omitempty" xml:"CustomHeaders,omitempty" type:"Repeated"`
 	// The description of the protected object.
+	//
+	// example:
+	//
+	// This is Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The details of the protected object. Different key-value pairs indicate different attributes of the protected object.
+	//
+	// example:
+	//
+	// {
+	//
+	// "product": "waf",
+	//
+	//  "domain": "demo.aliyundoc****.com"
+	//
+	// }
 	Detail map[string]interface{} `json:"Detail,omitempty" xml:"Detail,omitempty"`
 	// The time when the protected object was created. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1607493144000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The time when the protected object was modified. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1691720010000
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The user ID (UID) of the Alibaba Cloud account to which the protected object belongs.
+	//
+	// example:
+	//
+	// 170457******9107
 	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
 	// The pattern used for the protected object.
+	//
+	// example:
+	//
+	// domain
 	Pattern *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
 	// The name of the cloud service.
+	//
+	// example:
+	//
+	// alb
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
 	// The name of the protected object.
+	//
+	// example:
+	//
+	// alb-rencs***
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	// The name of the protected object group to which the protected object belongs.
+	//
+	// example:
+	//
+	// example_resource_group
 	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfmoiy****p2oq
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The origin of the protected object. Valid values:
 	//
-	// *   **custom**
-	// *   **access**
+	// 	- **custom**
+	//
+	// 	- **access**
+	//
+	// example:
+	//
+	// custom
 	ResourceOrigin *string `json:"ResourceOrigin,omitempty" xml:"ResourceOrigin,omitempty"`
 	// Indicates whether a Layer 7 proxy is deployed in front of WAF, such as Anti-DDoS Proxy and Alibaba Cloud CDN. Valid values:
 	//
-	// *   **0**: No Layer 7 proxy is deployed.
-	// *   **1**: A Layer 7 proxy is deployed.
+	// 	- **0**: No Layer 7 proxy is deployed.
+	//
+	// 	- **1**: A Layer 7 proxy is deployed.
+	//
+	// example:
+	//
+	// 0
 	XffStatus *int32 `json:"XffStatus,omitempty" xml:"XffStatus,omitempty"`
 }
 
@@ -2967,17 +5144,38 @@ func (s *DescribeDefenseResourceResponse) SetBody(v *DescribeDefenseResourceResp
 
 type DescribeDefenseResourceGroupRequest struct {
 	// The name of the protected object group whose information you want to query.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// group221
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
@@ -3013,6 +5211,10 @@ type DescribeDefenseResourceGroupResponseBody struct {
 	// The information about the protected object group.
 	Group *DescribeDefenseResourceGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// E67D21C6-5376-5F94-B745-70E08D03E3CB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3036,14 +5238,34 @@ func (s *DescribeDefenseResourceGroupResponseBody) SetRequestId(v string) *Descr
 
 type DescribeDefenseResourceGroupResponseBodyGroup struct {
 	// The description of the protected object group.
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The time when the protected object group was created.
+	//
+	// example:
+	//
+	// 23242312312
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The most recent time when the protected object group was modified.
+	//
+	// example:
+	//
+	// 23242312312
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The name of the protected object group.
+	//
+	// example:
+	//
+	// group1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The protected objects in the protected object group. The protected objects are separated with commas (,).
+	//
+	// example:
+	//
+	// test1.aliyundoc.com,test2.aliyundoc.com
 	ResourceList *string `json:"ResourceList,omitempty" xml:"ResourceList,omitempty"`
 }
 
@@ -3111,21 +5333,48 @@ func (s *DescribeDefenseResourceGroupResponse) SetBody(v *DescribeDefenseResourc
 
 type DescribeDefenseResourceGroupNamesRequest struct {
 	// The name of the protected object group. Fuzzy queries are supported.
+	//
+	// example:
+	//
+	// example-group
 	GroupNameLike *string `json:"GroupNameLike,omitempty" xml:"GroupNameLike,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-lbj****cc03
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The page number. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Default value: **20**.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland.
-	// *   **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-aekzwwk****cv5i
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
@@ -3171,8 +5420,16 @@ type DescribeDefenseResourceGroupNamesResponseBody struct {
 	// The names of the protected object groups.
 	GroupNames []*string `json:"GroupNames,omitempty" xml:"GroupNames,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 59DA4258-2F32-5095-B283-57AC****70B3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 8
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -3230,23 +5487,54 @@ func (s *DescribeDefenseResourceGroupNamesResponse) SetBody(v *DescribeDefenseRe
 
 type DescribeDefenseResourceGroupsRequest struct {
 	// The name of the protected object group that you want to query. Fuzzy queries are supported.
+	//
+	// example:
+	//
+	// demoGroupName
 	GroupNameLike *string `json:"GroupNameLike,omitempty" xml:"GroupNameLike,omitempty"`
 	// The names of the protected object groups that you want to query. Separate multiple names with commas (,).
+	//
+	// example:
+	//
+	// groupName1,groupName2
 	GroupNames *string `json:"GroupNames,omitempty" xml:"GroupNames,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v2_public_cn-wwo36****0i
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The page number. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Default value: **20**.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland.
-	// *   **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfmxc7lf****eq
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
@@ -3297,8 +5585,16 @@ type DescribeDefenseResourceGroupsResponseBody struct {
 	// The list of protected object groups.
 	Groups []*DescribeDefenseResourceGroupsResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// BFEC5C77-049B-5E88-A5B6-CB0C****B66E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 10
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -3327,14 +5623,34 @@ func (s *DescribeDefenseResourceGroupsResponseBody) SetTotalCount(v int64) *Desc
 
 type DescribeDefenseResourceGroupsResponseBodyGroups struct {
 	// The description of the protected object group.
+	//
+	// example:
+	//
+	// This is test description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The time when the protected object group was created. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1624343180000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The most recent time when the protected object group was modified. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1701656305000
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The name of the protected object group.
+	//
+	// example:
+	//
+	// apptest
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The names of the protected objects that are added to the protected object group. Separate multiple protected objects with commas (,).
+	//
+	// example:
+	//
+	// example02.aliyun-waf,example01.aliyun-waf
 	ResourceList *string `json:"ResourceList,omitempty" xml:"ResourceList,omitempty"`
 }
 
@@ -3403,20 +5719,47 @@ func (s *DescribeDefenseResourceGroupsResponse) SetBody(v *DescribeDefenseResour
 type DescribeDefenseResourceNamesRequest struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v2_public_cn-9lb****5s03
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The page number. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Default value: **20**.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland.
-	// *   **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the protected object that you want to query.
+	//
+	// example:
+	//
+	// example.xxxxaliyundoc.com
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-aekzd4c****pdwy
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
@@ -3460,10 +5803,18 @@ func (s *DescribeDefenseResourceNamesRequest) SetResourceManagerResourceGroupId(
 
 type DescribeDefenseResourceNamesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C1823E96-EF4B-5BD2-9E02-1D18****3ED8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The names of the protected objects.
 	Resources []*string `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 75
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -3522,28 +5873,63 @@ func (s *DescribeDefenseResourceNamesResponse) SetBody(v *DescribeDefenseResourc
 type DescribeDefenseResourceTemplatesRequest struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-9lb36****0e
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland.
-	// *   **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the protected object or protected object group that you want to query.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxxhemicals.cn-waf
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-aek2ax2y5****pi
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The type of the protected resource. Valid values:
 	//
-	// *   **single**: protected object. This is the default value.
-	// *   **group**: protected object group.
+	// 	- **single**: protected object. This is the default value.
+	//
+	// 	- **group**: protected object group.
+	//
+	// example:
+	//
+	// single
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The ID of the protection rule.
+	//
+	// example:
+	//
+	// 20111098
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The type of the protection rule. Valid values:
 	//
-	// *   **defense**: defense rule. This is the default value.
-	// *   **whitelist**: whitelist rule.
+	// 	- **defense**: defense rule. This is the default value.
+	//
+	// 	- **whitelist**: whitelist rule.
+	//
+	// example:
+	//
+	// whitelist
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 }
 
@@ -3592,6 +5978,10 @@ func (s *DescribeDefenseResourceTemplatesRequest) SetRuleType(v string) *Describ
 
 type DescribeDefenseResourceTemplatesResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 2305CEB0-BA5A-5543-A1D3-3F1D0891****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The protection templates.
 	Templates []*DescribeDefenseResourceTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
@@ -3618,42 +6008,91 @@ func (s *DescribeDefenseResourceTemplatesResponseBody) SetTemplates(v []*Describ
 type DescribeDefenseResourceTemplatesResponseBodyTemplates struct {
 	// The scenario in which the protection template is used.
 	//
-	// *   **waf_group**: basic protection.
-	// *   **antiscan**: scan protection.
-	// *   **ip_blacklist**: IP address blacklist.
-	// *   **custom_acl**: custom rule.
-	// *   **whitelist**: whitelist.
-	// *   **region_block**: region blacklist.
-	// *   **custom_response**: custom response.
-	// *   **cc**: HTTP flood protection.
-	// *   **tamperproof**: website tamper-proofing.
-	// *   **dlp**: data leakage prevention.
+	// 	- **waf_group**: basic protection.
+	//
+	// 	- **antiscan**: scan protection.
+	//
+	// 	- **ip_blacklist**: IP address blacklist.
+	//
+	// 	- **custom_acl**: custom rule.
+	//
+	// 	- **whitelist**: whitelist.
+	//
+	// 	- **region_block**: region blacklist.
+	//
+	// 	- **custom_response**: custom response.
+	//
+	// 	- **cc**: HTTP flood protection.
+	//
+	// 	- **tamperproof**: website tamper-proofing.
+	//
+	// 	- **dlp**: data leakage prevention.
+	//
+	// example:
+	//
+	// whitelist
 	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
 	// The sub-scenario in which the template is used. Valid values:
 	//
-	// *   **web**: bot management for website protection.
-	// *   **app**: bot management for app protection.
-	// *   **basic**: bot management for basic protection.
+	// 	- **web**: bot management for website protection.
+	//
+	// 	- **app**: bot management for app protection.
+	//
+	// 	- **basic**: bot management for basic protection.
+	//
+	// example:
+	//
+	// basic
 	DefenseSubScene *string `json:"DefenseSubScene,omitempty" xml:"DefenseSubScene,omitempty"`
 	// The description of the protection template.
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The time when the protection template was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1692930539000
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The ID of the protection template.
+	//
+	// example:
+	//
+	// 12345
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The name of the protection template.
+	//
+	// example:
+	//
+	// TestTemplateName
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The origin of the protection template. The value custom indicates that the template is a custom template created by the user.
+	//
+	// example:
+	//
+	// custom
 	TemplateOrigin *string `json:"TemplateOrigin,omitempty" xml:"TemplateOrigin,omitempty"`
 	// The status of the protection template. Valid values:
 	//
-	// *   **0**: disabled.
-	// *   **1**: enabled.
+	// 	- **0**: disabled.
+	//
+	// 	- **1**: enabled.
+	//
+	// example:
+	//
+	// 1
 	TemplateStatus *int32 `json:"TemplateStatus,omitempty" xml:"TemplateStatus,omitempty"`
 	// The type of the protection template. Valid values:
 	//
-	// *   **user_default**: default template.
-	// *   **user_custom**: custom template.
+	// 	- **user_default**: default template.
+	//
+	// 	- **user_custom**: custom template.
+	//
+	// example:
+	//
+	// user_custom
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
@@ -3742,22 +6181,49 @@ func (s *DescribeDefenseResourceTemplatesResponse) SetBody(v *DescribeDefenseRes
 type DescribeDefenseResourcesRequest struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of the page to return. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Default value: **10**.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The query conditions. Specify the value of this parameter as a string in the JSON format.
 	//
 	// >  The results vary based on the query condition. For more information, see the "**Query parameters**" section in this topic.
+	//
+	// example:
+	//
+	// {\\"product\\":\\"waf\\"}
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The tags of the resources that you want to query. You can specify up to 20 tags.
 	Tag []*DescribeDefenseResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -3808,8 +6274,16 @@ func (s *DescribeDefenseResourcesRequest) SetTag(v []*DescribeDefenseResourcesRe
 
 type DescribeDefenseResourcesRequestTag struct {
 	// The key of the tag.
+	//
+	// example:
+	//
+	// Tagkey1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag.
+	//
+	// example:
+	//
+	// TagValue1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3833,10 +6307,18 @@ func (s *DescribeDefenseResourcesRequestTag) SetValue(v string) *DescribeDefense
 
 type DescribeDefenseResourcesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 618F2626-DB27-5187-8C6C-4E61A491DF29
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The protected objects.
 	Resources []*DescribeDefenseResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 	// The total number of entries that are returned.
+	//
+	// example:
+	//
+	// 73
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -3866,44 +6348,103 @@ func (s *DescribeDefenseResourcesResponseBody) SetTotalCount(v int64) *DescribeD
 type DescribeDefenseResourcesResponseBodyResources struct {
 	// The status of the tracking cookie.
 	//
-	// *   **0:** disabled.
-	// *   **1:** enabled.
+	// 	- **0:*	- disabled.
+	//
+	// 	- **1:*	- enabled.
+	//
+	// example:
+	//
+	// 1
 	AcwCookieStatus *int32 `json:"AcwCookieStatus,omitempty" xml:"AcwCookieStatus,omitempty"`
 	// The status of the secure attribute in the tracking cookie.
 	//
-	// *   **0:** disabled.
-	// *   **1:** enabled.
+	// 	- **0:*	- disabled.
+	//
+	// 	- **1:*	- enabled.
+	//
+	// example:
+	//
+	// 0
 	AcwSecureStatus *int32 `json:"AcwSecureStatus,omitempty" xml:"AcwSecureStatus,omitempty"`
 	// The status of the secure attribute in the slider CAPTCHA cookie.
 	//
-	// *   **0:** disabled.
-	// *   **1:** enabled.
+	// 	- **0:*	- disabled.
+	//
+	// 	- **1:*	- enabled.
+	//
+	// example:
+	//
+	// 0
 	AcwV3SecureStatus *int32 `json:"AcwV3SecureStatus,omitempty" xml:"AcwV3SecureStatus,omitempty"`
 	// The custom XFF headers that are used to identify the originating IP addresses of clients. If the value of XffStatus is 1 and CustomHeaders is left empty, the first IP addresses in the XFF headers are used as the originating IP addresses of clients.
 	CustomHeaders []*string `json:"CustomHeaders,omitempty" xml:"CustomHeaders,omitempty" type:"Repeated"`
 	// The description of the protected object.
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The details of the protected object. Different key-value pairs indicate different attributes of the protected object.
 	Detail map[string]interface{} `json:"Detail,omitempty" xml:"Detail,omitempty"`
 	// The time when the protected object was created. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1652149203187
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The time when the protected object was modified. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1665633032000
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The ID of the Alibaba Cloud account to which the resource belongs.
+	//
+	// example:
+	//
+	// 135*********46
 	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
 	// The pattern in which the protected object is protected.
+	//
+	// example:
+	//
+	// domain
 	Pattern *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
 	// The name of the cloud service.
+	//
+	// example:
+	//
+	// alb
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
 	// The name of the protected object.
+	//
+	// example:
+	//
+	// alb-rencs***
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	// The name of the protected object group to which the protected object belongs.
+	//
+	// example:
+	//
+	// test
 	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The origin of the protected object.
+	//
+	// example:
+	//
+	// custom
 	ResourceOrigin *string `json:"ResourceOrigin,omitempty" xml:"ResourceOrigin,omitempty"`
 	// Indicates whether the X-Forwarded-For (XFF) proxy is enabled.
+	//
+	// example:
+	//
+	// 1
 	XffStatus *int32 `json:"XffStatus,omitempty" xml:"XffStatus,omitempty"`
 }
 
@@ -4027,18 +6568,45 @@ func (s *DescribeDefenseResourcesResponse) SetBody(v *DescribeDefenseResourcesRe
 type DescribeDefenseRuleRequest struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The ID of the protection rule that you want to query.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20026192
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The ID of the protection rule template to which the protection rule that you want to query belongs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10318
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -4077,6 +6645,10 @@ func (s *DescribeDefenseRuleRequest) SetTemplateId(v int64) *DescribeDefenseRule
 
 type DescribeDefenseRuleResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The configurations of the protection rule. The value is a JSON string that contains multiple parameters.
 	Rule *DescribeDefenseRuleResponseBodyRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Struct"`
@@ -4102,26 +6674,60 @@ func (s *DescribeDefenseRuleResponseBody) SetRule(v *DescribeDefenseRuleResponse
 
 type DescribeDefenseRuleResponseBodyRule struct {
 	// The details of the protection rule. The value is a JSON string that contains multiple parameters. For more information, see the "**Protection rule parameters**" section of the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
+	//
+	// example:
+	//
+	// {\\"status\\":1,\\"policyId\\":1012,\\"action\\":\\"block\\"}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The origin of the protection rule. Valid values:
 	//
-	// *   **custom:** The protection rule is created by the user.
-	// *   **system:** The protection rule is automatically generated by the system.
+	// 	- **custom:*	- The protection rule is created by the user.
+	//
+	// 	- **system:*	- The protection rule is automatically generated by the system.
+	//
+	// example:
+	//
+	// custom
 	DefenseOrigin *string `json:"DefenseOrigin,omitempty" xml:"DefenseOrigin,omitempty"`
-	// The scenario in which the protection rule is used. For more information, see the description of **DefenseScene** in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
+	// The scenario in which the protection rule is used. For more information, see the description of **DefenseScene*	- in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
+	//
+	// example:
+	//
+	// waf_group
 	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
 	// The most recent time when the protection rule was modified.
+	//
+	// example:
+	//
+	// 1665196746000
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The ID of the protection rule.
+	//
+	// example:
+	//
+	// 2732975
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The name of the protection rule.
+	//
+	// example:
+	//
+	// test1
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The status of the protection rule. Valid values:
 	//
-	// *   **0:** disabled.
-	// *   **1:** enabled.
+	// 	- **0:*	- disabled.
+	//
+	// 	- **1:*	- enabled.
+	//
+	// example:
+	//
+	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the protection rule template.
+	//
+	// example:
+	//
+	// 9114
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -4205,27 +6811,59 @@ func (s *DescribeDefenseRuleResponse) SetBody(v *DescribeDefenseRuleResponseBody
 type DescribeDefenseRulesRequest struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of the page to return. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Default value: **10**.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The query conditions. Specify a string that contains multiple parameters in the JSON format.
 	//
 	// >  The results vary based on the query conditions. For more information, see the "**Query parameters**" section in this topic.
+	//
+	// example:
+	//
+	// {\\\\"name\\\\":\\\\"IP address blocking_20220822_10\\\\",\\\\"scene\\\\":\\\\"custom_acl\\\\",\\\\"templateId\\\\":5327}
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The type of protection rule that you want to query. Valid values:
 	//
-	// *   **whitelist:** whitelist rule.
-	// *   **defense:** defense rule. This is the default value.
+	// 	- **whitelist:*	- whitelist rule.
+	//
+	// 	- **defense:*	- defense rule. This is the default value.
+	//
+	// example:
+	//
+	// whitelist
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 }
 
@@ -4274,10 +6912,18 @@ func (s *DescribeDefenseRulesRequest) SetRuleType(v string) *DescribeDefenseRule
 
 type DescribeDefenseRulesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 80736FA5-FA87-55F6-AA69-C5477C6FE6D0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// An array of protection rules.
 	Rules []*DescribeDefenseRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 2
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -4306,26 +6952,60 @@ func (s *DescribeDefenseRulesResponseBody) SetTotalCount(v int64) *DescribeDefen
 
 type DescribeDefenseRulesResponseBodyRules struct {
 	// The details of the protection rule. The value is a string that contains multiple parameters in the JSON format. For more information, see the "**Rule parameters**" section in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
+	//
+	// example:
+	//
+	// {\\"policyId\\":1012,\\"action\\":\\"block\\"}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The origin of the protection rule. Valid values:
 	//
-	// *   **custom:** The protection rule is created by the user.
-	// *   **system:** The protection rule is automatically generated by the system.
+	// 	- **custom:*	- The protection rule is created by the user.
+	//
+	// 	- **system:*	- The protection rule is automatically generated by the system.
+	//
+	// example:
+	//
+	// custom
 	DefenseOrigin *string `json:"DefenseOrigin,omitempty" xml:"DefenseOrigin,omitempty"`
-	// The scenario in which the protection rule is used. For more information, see the description of the **DefenseScene** parameter in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
+	// The scenario in which the protection rule is used. For more information, see the description of the **DefenseScene*	- parameter in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
+	//
+	// example:
+	//
+	// waf_group
 	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
 	// The most recent time when the protection rule was modified.
+	//
+	// example:
+	//
+	// 1665460629000
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The ID of the protection rule.
+	//
+	// example:
+	//
+	// 42755
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The name of the protection rule.
+	//
+	// example:
+	//
+	// rules_41
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The status of the protection rule. Valid values:
 	//
-	// *   **0:** disabled.
-	// *   **1:** enabled.
+	// 	- **0:*	- disabled.
+	//
+	// 	- **1:*	- enabled.
+	//
+	// example:
+	//
+	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the protection rule template.
+	//
+	// example:
+	//
+	// 5673
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -4409,16 +7089,37 @@ func (s *DescribeDefenseRulesResponse) SetBody(v *DescribeDefenseRulesResponseBo
 type DescribeDefenseTemplateRequest struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The ID of the protection rule template.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1333
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -4452,6 +7153,10 @@ func (s *DescribeDefenseTemplateRequest) SetTemplateId(v int64) *DescribeDefense
 
 type DescribeDefenseTemplateResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the template.
 	Template *DescribeDefenseTemplateResponseBodyTemplate `json:"Template,omitempty" xml:"Template,omitempty" type:"Struct"`
@@ -4476,33 +7181,73 @@ func (s *DescribeDefenseTemplateResponseBody) SetTemplate(v *DescribeDefenseTemp
 }
 
 type DescribeDefenseTemplateResponseBodyTemplate struct {
-	// The scenario in which the template is used. For more information, see the description of the **DefenseScene** parameter in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
+	// The scenario in which the template is used. For more information, see the description of the **DefenseScene*	- parameter in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
+	//
+	// example:
+	//
+	// waf_group
 	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
 	// The sub-scenario in which the template is used. Valid values:
 	//
-	// *   **web**: The template is a bot management template that is used for website protection.
-	// *   **app**: The template is a bot management template that is used for app protection.
-	// *   **basic**: The template is a bot management template that is used for basic protection.
+	// 	- **web**: The template is a bot management template that is used for website protection.
+	//
+	// 	- **app**: The template is a bot management template that is used for app protection.
+	//
+	// 	- **basic**: The template is a bot management template that is used for basic protection.
+	//
+	// example:
+	//
+	// app
 	DefenseSubScene *string `json:"DefenseSubScene,omitempty" xml:"DefenseSubScene,omitempty"`
 	// The description of the protection rule template.
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The most recent time when the protection rule template was modified.
+	//
+	// example:
+	//
+	// 1665283642000
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The ID of the protection rule template.
+	//
+	// example:
+	//
+	// 10097
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The name of the protection rule template.
+	//
+	// example:
+	//
+	// test0621
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The origin of the protection rule template. If the value of this parameter is custom, the protection rule template is created by the user.
+	//
+	// example:
+	//
+	// custom
 	TemplateOrigin *string `json:"TemplateOrigin,omitempty" xml:"TemplateOrigin,omitempty"`
 	// The status of the protection rule template. Valid values:
 	//
-	// *   **0:** disabled.
-	// *   **1:** enabled.
+	// 	- **0:*	- disabled.
+	//
+	// 	- **1:*	- enabled.
+	//
+	// example:
+	//
+	// 1
 	TemplateStatus *int32 `json:"TemplateStatus,omitempty" xml:"TemplateStatus,omitempty"`
 	// The type of the protection rule template. Valid values:
 	//
-	// *   **user_default:** default template.
-	// *   **user_custom:** custom template.
+	// 	- **user_default:*	- default template.
+	//
+	// 	- **user_custom:*	- custom template.
+	//
+	// example:
+	//
+	// user_default
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
@@ -4591,35 +7336,81 @@ func (s *DescribeDefenseTemplateResponse) SetBody(v *DescribeDefenseTemplateResp
 type DescribeDefenseTemplateValidGroupsRequest struct {
 	// The scenario in which the protection template is used.
 	//
-	// *   **waf_group**: basic protection.
-	// *   **antiscan**: scan protection.
-	// *   **ip_blacklist**: IP address blacklist.
-	// *   **custom_acl**: custom rule.
-	// *   **whitelist**: whitelist.
-	// *   **region_block**: region blacklist.
-	// *   **custom_response**: custom response.
-	// *   **cc**: HTTP flood protection.
-	// *   **tamperproof**: website tamper-proofing.
-	// *   **dlp**: data leakage prevention.
+	// 	- **waf_group**: basic protection.
+	//
+	// 	- **antiscan**: scan protection.
+	//
+	// 	- **ip_blacklist**: IP address blacklist.
+	//
+	// 	- **custom_acl**: custom rule.
+	//
+	// 	- **whitelist**: whitelist.
+	//
+	// 	- **region_block**: region blacklist.
+	//
+	// 	- **custom_response**: custom response.
+	//
+	// 	- **cc**: HTTP flood protection.
+	//
+	// 	- **tamperproof**: website tamper-proofing.
+	//
+	// 	- **dlp**: data leakage prevention.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// region_block
 	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
 	// The name of the protected object group that you want to query.
+	//
+	// example:
+	//
+	// group221
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-nwy****pf0e
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The page number. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Default value: **20**.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland.
-	// *   **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm2th****v6ay
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The ID of the protection template.
+	//
+	// example:
+	//
+	// 12345
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -4675,8 +7466,16 @@ type DescribeDefenseTemplateValidGroupsResponseBody struct {
 	// The names of the protected object groups.
 	Groups []*string `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 6EA4B39A-9C0C-5E57-993E-30B6****3AD0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 27
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -4735,55 +7534,115 @@ func (s *DescribeDefenseTemplateValidGroupsResponse) SetBody(v *DescribeDefenseT
 type DescribeDefenseTemplatesRequest struct {
 	// The scenario in which the protection template is used.
 	//
-	// *   **waf_group**: basic protection.
-	// *   **antiscan**: scan protection.
-	// *   **ip_blacklist**: IP address blacklist.
-	// *   **custom_acl**: custom rule.
-	// *   **whitelist**: whitelist.
-	// *   **region_block**: region blacklist.
-	// *   **custom_response**: custom response.
-	// *   **cc**: HTTP flood protection.
-	// *   **tamperproof**: website tamper-proofing.
-	// *   **dlp**: data leakage prevention.
+	// 	- **waf_group**: basic protection.
+	//
+	// 	- **antiscan**: scan protection.
+	//
+	// 	- **ip_blacklist**: IP address blacklist.
+	//
+	// 	- **custom_acl**: custom rule.
+	//
+	// 	- **whitelist**: whitelist.
+	//
+	// 	- **region_block**: region blacklist.
+	//
+	// 	- **custom_response**: custom response.
+	//
+	// 	- **cc**: HTTP flood protection.
+	//
+	// 	- **tamperproof**: website tamper-proofing.
+	//
+	// 	- **dlp**: data leakage prevention.
+	//
+	// example:
+	//
+	// region_block
 	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
 	// The sub-scenario in which the protection template is used. Valid values:
 	//
-	// *   **web**: bot management for website protection.
-	// *   **app**: bot management for app protection.
-	// *   **basic**: bot management for basic protection.
+	// 	- **web**: bot management for website protection.
+	//
+	// 	- **app**: bot management for app protection.
+	//
+	// 	- **basic**: bot management for basic protection.
+	//
+	// example:
+	//
+	// basic
 	DefenseSubScene *string `json:"DefenseSubScene,omitempty" xml:"DefenseSubScene,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// > You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-pe33b****03
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The page number. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Default value: **20**.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland.
-	// *   **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the protected object or protected object group.
 	//
 	// >  If you specify ResourceType, you must specify this parameter.
+	//
+	// example:
+	//
+	// xxxqiu.cc-ecs
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfmvyknl****fa
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The type of the protected resource. Valid values:
 	//
-	// *   **single**: protected object. This is the default value.
-	// *   **group**: protected object group.
+	// 	- **single**: protected object. This is the default value.
+	//
+	// 	- **group**: protected object group.
 	//
 	// >  If you specify Resource, you must specify this parameter.
+	//
+	// example:
+	//
+	// single
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The ID of the protection template.
+	//
+	// example:
+	//
+	// 12345
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The type of the protection template. Valid values:
 	//
-	// *   **user_default**: default template.
-	// *   **user_custom**: custom template.
+	// 	- **user_default**: default template.
+	//
+	// 	- **user_custom**: custom template.
+	//
+	// example:
+	//
+	// user_default
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
@@ -4852,10 +7711,18 @@ func (s *DescribeDefenseTemplatesRequest) SetTemplateType(v string) *DescribeDef
 
 type DescribeDefenseTemplatesResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 4F26D2F1-E288-5104-8518-05E240E3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The protection templates.
 	Templates []*DescribeDefenseTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 100
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -4885,42 +7752,91 @@ func (s *DescribeDefenseTemplatesResponseBody) SetTotalCount(v int64) *DescribeD
 type DescribeDefenseTemplatesResponseBodyTemplates struct {
 	// The scenario in which the protection template is used.
 	//
-	// *   **waf_group**: basic protection.
-	// *   **antiscan**: scan protection.
-	// *   **ip_blacklist**: IP address blacklist.
-	// *   **custom_acl**: custom rule.
-	// *   **whitelist**: whitelist.
-	// *   **region_block**: region blacklist.
-	// *   **custom_response**: custom response.
-	// *   **cc**: HTTP flood protection.
-	// *   **tamperproof**: website tamper-proofing.
-	// *   **dlp**: data leakage prevention.
+	// 	- **waf_group**: basic protection.
+	//
+	// 	- **antiscan**: scan protection.
+	//
+	// 	- **ip_blacklist**: IP address blacklist.
+	//
+	// 	- **custom_acl**: custom rule.
+	//
+	// 	- **whitelist**: whitelist.
+	//
+	// 	- **region_block**: region blacklist.
+	//
+	// 	- **custom_response**: custom response.
+	//
+	// 	- **cc**: HTTP flood protection.
+	//
+	// 	- **tamperproof**: website tamper-proofing.
+	//
+	// 	- **dlp**: data leakage prevention.
+	//
+	// example:
+	//
+	// whitelist
 	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
 	// The sub-scenario in which the protection template is used. Valid values:
 	//
-	// *   **web**: bot management for website protection.
-	// *   **app**: bot management for app protection.
-	// *   **basic**: bot management for basic protection.
+	// 	- **web**: bot management for website protection.
+	//
+	// 	- **app**: bot management for app protection.
+	//
+	// 	- **basic**: bot management for basic protection.
+	//
+	// example:
+	//
+	// basic
 	DefenseSubScene *string `json:"DefenseSubScene,omitempty" xml:"DefenseSubScene,omitempty"`
 	// The description of the protection template.
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The time when the protection template was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1683776070000
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The ID of the protection template.
+	//
+	// example:
+	//
+	// 12345
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The name of the protection template.
+	//
+	// example:
+	//
+	// testTemplateName
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The origin of the protection template. The value custom indicates that the protection template is a custom template created by the user.
+	//
+	// example:
+	//
+	// custom
 	TemplateOrigin *string `json:"TemplateOrigin,omitempty" xml:"TemplateOrigin,omitempty"`
 	// The status of the protection template. Valid values:
 	//
-	// *   **0**: disabled.
-	// *   **1**: enabled.
+	// 	- **0**: disabled.
+	//
+	// 	- **1**: enabled.
+	//
+	// example:
+	//
+	// 1
 	TemplateStatus *int32 `json:"TemplateStatus,omitempty" xml:"TemplateStatus,omitempty"`
 	// The type of the protection template. Valid values:
 	//
-	// *   **user_default**: default template.
-	// *   **user_custom**: custom template.
+	// 	- **user_default**: default template.
+	//
+	// 	- **user_custom**: custom template.
+	//
+	// example:
+	//
+	// user_custom
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
@@ -5008,17 +7924,38 @@ func (s *DescribeDefenseTemplatesResponse) SetBody(v *DescribeDefenseTemplatesRe
 
 type DescribeDomainDNSRecordRequest struct {
 	// The domain name whose DNS settings you want to check.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxx.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-nwy****is02
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland.
-	// *   **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
@@ -5053,14 +7990,27 @@ func (s *DescribeDomainDNSRecordRequest) SetResourceManagerResourceGroupId(v str
 type DescribeDomainDNSRecordResponseBody struct {
 	// The status of the DNS settings. Valid values:
 	//
-	// *   **cnameMatched**: The DNS settings are properly configured.
-	// *   **vipMatched**: An A record maps the domain name to the WAF virtual IP address (VIP).
-	// *   **wafVip**: An A record maps the domain name to another WAF VIP.
-	// *   **unRecord**: The domain name does not have a DNS record.
-	// *   **unUsed**: The domain name is not pointed to WAF.
-	// *   **checkTimeout**: The check times out.
+	// 	- **cnameMatched**: The DNS settings are properly configured.
+	//
+	// 	- **vipMatched**: An A record maps the domain name to the WAF virtual IP address (VIP).
+	//
+	// 	- **wafVip**: An A record maps the domain name to another WAF VIP.
+	//
+	// 	- **unRecord**: The domain name does not have a DNS record.
+	//
+	// 	- **unUsed**: The domain name is not pointed to WAF.
+	//
+	// 	- **checkTimeout**: The check times out.
+	//
+	// example:
+	//
+	// cnameMatched
 	DNSStatus *string `json:"DNSStatus,omitempty" xml:"DNSStatus,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// D827FCFE-90A7-4330-9326-D33C8B4C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5113,15 +8063,32 @@ func (s *DescribeDomainDNSRecordResponse) SetBody(v *DescribeDomainDNSRecordResp
 
 type DescribeDomainDetailRequest struct {
 	// The domain name that you want to query.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -5152,26 +8119,50 @@ type DescribeDomainDetailResponseBody struct {
 	// The details of the SSL certificate.
 	CertDetail *DescribeDomainDetailResponseBodyCertDetail `json:"CertDetail,omitempty" xml:"CertDetail,omitempty" type:"Struct"`
 	// The CNAME that is assigned by WAF to the domain name.
+	//
+	// example:
+	//
+	// xxxxxcvdaf.****.com
 	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
 	// The domain name.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The configurations of the listeners.
 	Listen *DescribeDomainDetailResponseBodyListen `json:"Listen,omitempty" xml:"Listen,omitempty" type:"Struct"`
 	// The configurations of the forwarding rule.
 	Redirect *DescribeDomainDetailResponseBodyRedirect `json:"Redirect,omitempty" xml:"Redirect,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// BAEF9CA9-66A0-533E-BD09-5D5D7AA8****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The information about the SM certificate.
 	SM2CertDetail *DescribeDomainDetailResponseBodySM2CertDetail `json:"SM2CertDetail,omitempty" xml:"SM2CertDetail,omitempty" type:"Struct"`
 	// The status of the domain name. Valid values:
 	//
-	// *   **1:** The domain name is in a normal state.
-	// *   **2:** The domain name is being created.
-	// *   **3:** The domain name is being modified.
-	// *   **4:** The domain name is being released.
-	// *   **5:** WAF no longer forwards traffic of the domain name.
+	// 	- **1:*	- The domain name is in a normal state.
+	//
+	// 	- **2:*	- The domain name is being created.
+	//
+	// 	- **3:*	- The domain name is being modified.
+	//
+	// 	- **4:*	- The domain name is being released.
+	//
+	// 	- **5:*	- WAF no longer forwards traffic of the domain name.
+	//
+	// example:
+	//
+	// 1
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -5230,16 +8221,36 @@ func (s *DescribeDomainDetailResponseBody) SetStatus(v int64) *DescribeDomainDet
 
 type DescribeDomainDetailResponseBodyCertDetail struct {
 	// The domain name of your website.
+	//
+	// example:
+	//
+	// test.aliyundoc.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
 	// The end of the validity period of the SSL certificate. The value is in the UNIX timestamp format. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1685590400000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the SSL certificate.
+	//
+	// example:
+	//
+	// 123-cn-hangzhou
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the SSL certificate.
+	//
+	// example:
+	//
+	// test-cert-name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// All domain names that are bound to the certificate.
 	Sans []*string `json:"Sans,omitempty" xml:"Sans,omitempty" type:"Repeated"`
 	// The beginning of the validity period of the SSL certificate. The value is in the UNIX timestamp format. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1677772800000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -5283,34 +8294,64 @@ func (s *DescribeDomainDetailResponseBodyCertDetail) SetStartTime(v int64) *Desc
 
 type DescribeDomainDetailResponseBodyListen struct {
 	// The ID of the certificate.
+	//
+	// example:
+	//
+	// 123
 	CertId *int64 `json:"CertId,omitempty" xml:"CertId,omitempty"`
 	// The type of the cipher suites. Valid values:
 	//
-	// *   **1:** all cipher suites.
-	// *   **2:** strong cipher suites.
-	// *   **99:** custom cipher suites.
+	// 	- **1:*	- all cipher suites.
+	//
+	// 	- **2:*	- strong cipher suites.
+	//
+	// 	- **99:*	- custom cipher suites.
+	//
+	// example:
+	//
+	// 2
 	CipherSuite *int64 `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
 	// An array of custom cipher suites.
 	CustomCiphers []*string `json:"CustomCiphers,omitempty" xml:"CustomCiphers,omitempty" type:"Repeated"`
 	// Indicates whether TLS 1.3 is supported. Valid values:
 	//
-	// *   **true:** TLS 1.3 is supported.
-	// *   **false:** TLS 1.3 is not supported.
+	// 	- **true:*	- TLS 1.3 is supported.
+	//
+	// 	- **false:*	- TLS 1.3 is not supported.
+	//
+	// example:
+	//
+	// true
 	EnableTLSv3 *bool `json:"EnableTLSv3,omitempty" xml:"EnableTLSv3,omitempty"`
 	// Indicates whether an exclusive IP address is enabled. Valid values:
 	//
-	// *   **true:** An exclusive IP address is enabled for the domain name.
-	// *   **false:** No exclusive IP addresses are enabled for the domain name.
+	// 	- **true:*	- An exclusive IP address is enabled for the domain name.
+	//
+	// 	- **false:*	- No exclusive IP addresses are enabled for the domain name.
+	//
+	// example:
+	//
+	// true
 	ExclusiveIp *bool `json:"ExclusiveIp,omitempty" xml:"ExclusiveIp,omitempty"`
 	// Indicates whether HTTP to HTTPS redirection is enabled for the domain name. Valid values:
 	//
-	// *   **true:** HTTP to HTTPS redirection is enabled.
-	// *   **false:** HTTP to HTTPS redirection is disabled.
+	// 	- **true:*	- HTTP to HTTPS redirection is enabled.
+	//
+	// 	- **false:*	- HTTP to HTTPS redirection is disabled.
+	//
+	// example:
+	//
+	// true
 	FocusHttps *bool `json:"FocusHttps,omitempty" xml:"FocusHttps,omitempty"`
 	// Indicates whether HTTP/2 is enabled. Valid values:
 	//
-	// *   **true:** HTTP/2 is enabled.
-	// *   **false:** HTTP/2 is disabled.
+	// 	- **true:*	- HTTP/2 is enabled.
+	//
+	// 	- **false:*	- HTTP/2 is disabled.
+	//
+	// example:
+	//
+	// true
 	Http2Enabled *bool `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
 	// An array of HTTP listener ports.
 	HttpPorts []*int64 `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty" type:"Repeated"`
@@ -5318,37 +8359,73 @@ type DescribeDomainDetailResponseBodyListen struct {
 	HttpsPorts []*int64 `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty" type:"Repeated"`
 	// Indicates whether IPv6 is enabled. Valid values:
 	//
-	// *   **true:** IPv6 is enabled.
-	// *   **false:** IPv6 is disabled.
+	// 	- **true:*	- IPv6 is enabled.
+	//
+	// 	- **false:*	- IPv6 is disabled.
+	//
+	// example:
+	//
+	// true
 	IPv6Enabled *bool `json:"IPv6Enabled,omitempty" xml:"IPv6Enabled,omitempty"`
 	// The type of protection resource that is used. Valid values:
 	//
-	// *   **share:** shared cluster.
-	// *   **gslb:** shared cluster-based intelligent load balancing.
+	// 	- **share:*	- shared cluster.
+	//
+	// 	- **gslb:*	- shared cluster-based intelligent load balancing.
+	//
+	// example:
+	//
+	// share
 	ProtectionResource *string `json:"ProtectionResource,omitempty" xml:"ProtectionResource,omitempty"`
 	// Indicates whether only SM certificate-based clients can access the domain name. This parameter is returned only if the value of SM2Enabled is true. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	SM2AccessOnly *bool `json:"SM2AccessOnly,omitempty" xml:"SM2AccessOnly,omitempty"`
 	// The ID of the SM certificate that is added. This parameter is returned only if the value of SM2Enabled is true.
+	//
+	// example:
+	//
+	// 123-cn-hangzhou
 	SM2CertId *bool `json:"SM2CertId,omitempty" xml:"SM2CertId,omitempty"`
 	// Indicates whether SM certificate-based verification is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	SM2Enabled *bool `json:"SM2Enabled,omitempty" xml:"SM2Enabled,omitempty"`
 	// The version of the Transport Layer Security (TLS) protocol. Valid values:
 	//
-	// *   **tlsv1**
-	// *   **tlsv1.1**
-	// *   **tlsv1.2**
+	// 	- **tlsv1**
+	//
+	// 	- **tlsv1.1**
+	//
+	// 	- **tlsv1.2**
+	//
+	// example:
+	//
+	// tlsv1.2
 	TLSVersion *string `json:"TLSVersion,omitempty" xml:"TLSVersion,omitempty"`
 	// The method that WAF uses to obtain the actual IP address of a client. Valid values:
 	//
-	// *   **0:** No Layer 7 proxies are deployed in front of WAF.
-	// *   **1:** WAF reads the first value of the X-Forwarded-For (XFF) header field as the actual IP address of the client.
-	// *   **2:** WAF reads the value of a custom header field as the actual IP address of the client.
+	// 	- **0:*	- No Layer 7 proxies are deployed in front of WAF.
+	//
+	// 	- **1:*	- WAF reads the first value of the X-Forwarded-For (XFF) header field as the actual IP address of the client.
+	//
+	// 	- **2:*	- WAF reads the value of a custom header field as the actual IP address of the client.
+	//
+	// example:
+	//
+	// 2
 	XffHeaderMode *int64 `json:"XffHeaderMode,omitempty" xml:"XffHeaderMode,omitempty"`
 	// An array of custom header fields that are used to obtain the actual IP address of a client.
 	XffHeaders []*string `json:"XffHeaders,omitempty" xml:"XffHeaders,omitempty" type:"Repeated"`
@@ -5451,53 +8528,108 @@ type DescribeDomainDetailResponseBodyRedirect struct {
 	// An array of addresses of origin servers.
 	Backends []*DescribeDomainDetailResponseBodyRedirectBackends `json:"Backends,omitempty" xml:"Backends,omitempty" type:"Repeated"`
 	// The timeout period of the connection. Unit: seconds. Valid values: 5 to 120.
+	//
+	// example:
+	//
+	// 120
 	ConnectTimeout *int32 `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
 	// Indicates whether HTTPS to HTTP redirection is enabled for back-to-origin requests of the domain name. Valid values:
 	//
-	// *   **true:** HTTPS to HTTP redirection for back-to-origin requests of the domain name is enabled.
-	// *   **false:** HTTPS to HTTP redirection for back-to-origin requests of the domain name is disabled.
+	// 	- **true:*	- HTTPS to HTTP redirection for back-to-origin requests of the domain name is enabled.
+	//
+	// 	- **false:*	- HTTPS to HTTP redirection for back-to-origin requests of the domain name is disabled.
+	//
+	// example:
+	//
+	// true
 	FocusHttpBackend *bool `json:"FocusHttpBackend,omitempty" xml:"FocusHttpBackend,omitempty"`
 	// Indicates whether the persistent connection feature is enabled. Valid values:
 	//
-	// *   **true:** The persistent connection feature is enabled. This is the default value.
-	// *   **false:** The persistent connection feature is disabled.
+	// 	- **true:*	- The persistent connection feature is enabled. This is the default value.
+	//
+	// 	- **false:*	- The persistent connection feature is disabled.
+	//
+	// example:
+	//
+	// true
 	Keepalive *bool `json:"Keepalive,omitempty" xml:"Keepalive,omitempty"`
 	// The number of reused persistent connections. Valid values: 60 to 1000.
 	//
 	// >  This parameter specifies the number of reused persistent connections when you enable the persistent connection feature.
+	//
+	// example:
+	//
+	// 1000
 	KeepaliveRequests *int32 `json:"KeepaliveRequests,omitempty" xml:"KeepaliveRequests,omitempty"`
 	// The timeout period of persistent connections that are in the Idle state. Valid values: 1 to 60. Default value: 15. Unit: seconds.
 	//
 	// >  This parameter specifies the period of time during which a reused persistent connection is allowed to remain in the Idle state before the persistent connection is released.
+	//
+	// example:
+	//
+	// 15
 	KeepaliveTimeout *int32 `json:"KeepaliveTimeout,omitempty" xml:"KeepaliveTimeout,omitempty"`
 	// The load balancing algorithm that is used when WAF forwards requests to the origin server. Valid values:
 	//
-	// *   **ip_hash:** the IP hash algorithm.
-	// *   **roundRobin:** the round-robin algorithm.
-	// *   **leastTime:** the least response time algorithm.
+	// 	- **ip_hash:*	- the IP hash algorithm.
+	//
+	// 	- **roundRobin:*	- the round-robin algorithm.
+	//
+	// 	- **leastTime:*	- the least response time algorithm.
+	//
+	// example:
+	//
+	// iphash
 	Loadbalance *string `json:"Loadbalance,omitempty" xml:"Loadbalance,omitempty"`
 	// The read timeout period. Unit: seconds. Valid values: 5 to 1800.
+	//
+	// example:
+	//
+	// 200
 	ReadTimeout *int32 `json:"ReadTimeout,omitempty" xml:"ReadTimeout,omitempty"`
 	// An array of key-value pairs that are used to mark the requests that pass through the WAF instance.
 	RequestHeaders []*DescribeDomainDetailResponseBodyRedirectRequestHeaders `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
-	// Indicates whether WAF retries to forward requests when requests fail to be forwarded to the origin server. Valid values:
+	// Indicates whether WAF retries when requests fail to be forwarded to the origin server. Valid values:
 	//
-	// *   **true:** WAF retries to forward requests. This is the default value.
-	// *   **false:** WAF does not retry to forward requests.
+	// 	- **true:*	- WAF retries. This is the default value.
+	//
+	// 	- **false:*	- WAF does not retry.
+	//
+	// example:
+	//
+	// true
 	Retry *bool `json:"Retry,omitempty" xml:"Retry,omitempty"`
 	// Indicates whether origin Server Name Indication (SNI) is enabled. Valid values:
 	//
-	// *   **true:** Origin SNI is enabled.
-	// *   **false:** Origin SNI is disabled. This is the default value.
+	// 	- **true:*	- Origin SNI is enabled.
+	//
+	// 	- **false:*	- Origin SNI is disabled. This is the default value.
+	//
+	// example:
+	//
+	// true
 	SniEnabled *bool `json:"SniEnabled,omitempty" xml:"SniEnabled,omitempty"`
 	// The value of the custom SNI field.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
 	SniHost *string `json:"SniHost,omitempty" xml:"SniHost,omitempty"`
 	// The write timeout period. Unit: seconds. Valid values: 5 to 1800.
+	//
+	// example:
+	//
+	// 200
 	WriteTimeout *int32 `json:"WriteTimeout,omitempty" xml:"WriteTimeout,omitempty"`
 	// Indicates whether the X-Forward-For-Proto header is used to identify the protocol used by WAF to forward requests to the origin server. Valid values:
 	//
-	// *   **true** (default)
-	// *   **false**
+	// 	- **true*	- (default)
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	XffProto *bool `json:"XffProto,omitempty" xml:"XffProto,omitempty"`
 }
 
@@ -5581,6 +8713,10 @@ func (s *DescribeDomainDetailResponseBodyRedirect) SetXffProto(v bool) *Describe
 
 type DescribeDomainDetailResponseBodyRedirectBackends struct {
 	// The IP address or domain name of the origin server.
+	//
+	// example:
+	//
+	// 1.1.XX.XX
 	Backend *string `json:"Backend,omitempty" xml:"Backend,omitempty"`
 }
 
@@ -5599,8 +8735,16 @@ func (s *DescribeDomainDetailResponseBodyRedirectBackends) SetBackend(v string) 
 
 type DescribeDomainDetailResponseBodyRedirectRequestHeaders struct {
 	// The custom header field.
+	//
+	// example:
+	//
+	// aaa
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the custom header field.
+	//
+	// example:
+	//
+	// bbb
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5624,16 +8768,36 @@ func (s *DescribeDomainDetailResponseBodyRedirectRequestHeaders) SetValue(v stri
 
 type DescribeDomainDetailResponseBodySM2CertDetail struct {
 	// The domain name of your website.
+	//
+	// example:
+	//
+	// test.aliyundoc.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
 	// The end of the validity period of the SSL certificate. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1665590400000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the SSL certificate.
+	//
+	// example:
+	//
+	// 123-cn-hangzhou
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the SSL certificate.
+	//
+	// example:
+	//
+	// test-sm2-cert-name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// All domain names that are bound to the certificate.
 	Sans []*string `json:"Sans,omitempty" xml:"Sans,omitempty" type:"Repeated"`
 	// The beginning of the validity period of the SSL certificate. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1657551525000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -5706,21 +8870,52 @@ func (s *DescribeDomainDetailResponse) SetBody(v *DescribeDomainDetailResponseBo
 
 type DescribeDomainsRequest struct {
 	// An array of HTTPS listener ports.
+	//
+	// example:
+	//
+	// 1.1.XX.XX
 	Backend *string `json:"Backend,omitempty" xml:"Backend,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The page number of the page to return. Default value: 1.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The HTTPS address of the origin server.
+	// The page number. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Queries the list of a domain name that is added to Web Application Firewall (WAF).
+	// The number of entries per page. Default value: **10**.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The tag of the resource. You can specify up to 20 tags.
 	Tag []*DescribeDomainsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -5776,8 +8971,16 @@ func (s *DescribeDomainsRequest) SetTag(v []*DescribeDomainsRequestTag) *Describ
 
 type DescribeDomainsRequestTag struct {
 	// The tag key.
+	//
+	// example:
+	//
+	// TagKey1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
+	//
+	// example:
+	//
+	// TagValue1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5803,8 +9006,16 @@ type DescribeDomainsResponseBody struct {
 	// The domain names that are added to WAF in CNAME record mode.
 	Domains []*DescribeDomainsResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// ABF68BB3-2C48-5FA4-9750-D5FE55700E36
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 146
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -5835,20 +9046,40 @@ type DescribeDomainsResponseBodyDomains struct {
 	// The back-to-origin settings.
 	Backeds *DescribeDomainsResponseBodyDomainsBackeds `json:"Backeds,omitempty" xml:"Backeds,omitempty" type:"Struct"`
 	// The CNAME assigned by WAF to the domain name.
+	//
+	// example:
+	//
+	// xxxxxcvdaf.****.com
 	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
 	// The domain name that is added to WAF in CNAME record mode.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The configurations of the listeners.
 	ListenPorts *DescribeDomainsResponseBodyDomainsListenPorts `json:"ListenPorts,omitempty" xml:"ListenPorts,omitempty" type:"Struct"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmvtc5z52****
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The status of the domain name. Valid values:
 	//
-	// *   **1:** The domain name is in a normal state.
-	// *   **2:** The domain name is being created.
-	// *   **3:** The domain name is being modified.
-	// *   **4:** The domain name is being released.
-	// *   **5:** WAF no longer forwards traffic that is sent to the domain name.
+	// 	- **1:*	- The domain name is in a normal state.
+	//
+	// 	- **2:*	- The domain name is being created.
+	//
+	// 	- **3:*	- The domain name is being modified.
+	//
+	// 	- **4:*	- The domain name is being released.
+	//
+	// 	- **5:*	- WAF no longer forwards traffic that is sent to the domain name.
+	//
+	// example:
+	//
+	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -5917,6 +9148,10 @@ func (s *DescribeDomainsResponseBodyDomainsBackeds) SetHttps(v []*DescribeDomain
 
 type DescribeDomainsResponseBodyDomainsBackedsHttp struct {
 	// The HTTP address of the origin server.
+	//
+	// example:
+	//
+	// 1.1.XX.XX
 	Backend *string `json:"Backend,omitempty" xml:"Backend,omitempty"`
 }
 
@@ -5935,6 +9170,10 @@ func (s *DescribeDomainsResponseBodyDomainsBackedsHttp) SetBackend(v string) *De
 
 type DescribeDomainsResponseBodyDomainsBackedsHttps struct {
 	// The HTTPS address of the origin server.
+	//
+	// example:
+	//
+	// 1.1.XX.XX
 	Backend *string `json:"Backend,omitempty" xml:"Backend,omitempty"`
 }
 
@@ -6007,23 +9246,58 @@ func (s *DescribeDomainsResponse) SetBody(v *DescribeDomainsResponseBody) *Descr
 
 type DescribeFlowChartRequest struct {
 	// The end of the time range to query. Unit: seconds. If you do not specify this parameter, the current time is used.
+	//
+	// example:
+	//
+	// 1665386280
 	EndTimestamp *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The time interval. Unit: seconds. The value must be an integral multiple of 60.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 300
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The protected object.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The beginning of the time range to query. Unit: seconds.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1665331200
 	StartTimestamp *string `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 }
 
@@ -6074,6 +9348,10 @@ type DescribeFlowChartResponseBody struct {
 	// The traffic statistics.
 	FlowChart []*DescribeFlowChartResponseBodyFlowChart `json:"FlowChart,omitempty" xml:"FlowChart,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// BFA71416-670E-585D-AAE6-E7BBEE248FAB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6097,52 +9375,148 @@ func (s *DescribeFlowChartResponseBody) SetRequestId(v string) *DescribeFlowChar
 
 type DescribeFlowChartResponseBodyFlowChart struct {
 	// The number of requests that are blocked by custom access control list (ACL) rules.
+	//
+	// example:
+	//
+	// 0
 	AclCustomBlockSum *int64 `json:"AclCustomBlockSum,omitempty" xml:"AclCustomBlockSum,omitempty"`
 	// The number of requests that are monitored by custom ACL rules.
+	//
+	// example:
+	//
+	// 0
 	AclCustomReportsSum *int64 `json:"AclCustomReportsSum,omitempty" xml:"AclCustomReportsSum,omitempty"`
 	// The number of requests that are blocked by scan protection rules.
+	//
+	// example:
+	//
+	// 0
 	AntiScanBlockSum *int64 `json:"AntiScanBlockSum,omitempty" xml:"AntiScanBlockSum,omitempty"`
 	// The number of requests that are blocked by bot management rules.
+	//
+	// example:
+	//
+	// 0
 	AntibotBlockSum *int64 `json:"AntibotBlockSum,omitempty" xml:"AntibotBlockSum,omitempty"`
 	// The number of requests that are monitored by bot management rules.
+	//
+	// example:
+	//
+	// 0
 	AntibotReportSum *string `json:"AntibotReportSum,omitempty" xml:"AntibotReportSum,omitempty"`
 	// The number of requests that are monitored by scan protection rules.
+	//
+	// example:
+	//
+	// 0
 	AntiscanReportsSum *int64 `json:"AntiscanReportsSum,omitempty" xml:"AntiscanReportsSum,omitempty"`
 	// The number of requests that are blocked by the IP address blacklist.
+	//
+	// example:
+	//
+	// 0
 	BlacklistBlockSum *string `json:"BlacklistBlockSum,omitempty" xml:"BlacklistBlockSum,omitempty"`
 	// The number of requests that are monitored by the IP address blacklist.
+	//
+	// example:
+	//
+	// 0
 	BlacklistReportsSum *int64 `json:"BlacklistReportsSum,omitempty" xml:"BlacklistReportsSum,omitempty"`
 	// The number of requests that are blocked by custom HTTP flood protection rules.
+	//
+	// example:
+	//
+	// 0
 	CcCustomBlockSum *int64 `json:"CcCustomBlockSum,omitempty" xml:"CcCustomBlockSum,omitempty"`
 	// The number of requests that are monitored by custom HTTP flood protection rules.
+	//
+	// example:
+	//
+	// 0
 	CcCustomReportsSum *int64 `json:"CcCustomReportsSum,omitempty" xml:"CcCustomReportsSum,omitempty"`
 	// The number of requests that are blocked by HTTP flood protection rules created by the system.
+	//
+	// example:
+	//
+	// 0
 	CcSystemBlocksSum *int64 `json:"CcSystemBlocksSum,omitempty" xml:"CcSystemBlocksSum,omitempty"`
 	// The number of requests that are monitored by HTTP flood protection rules created by the system.
+	//
+	// example:
+	//
+	// 0
 	CcSystemReportsSum *int64 `json:"CcSystemReportsSum,omitempty" xml:"CcSystemReportsSum,omitempty"`
 	// The total number of requests.
+	//
+	// example:
+	//
+	// 2932
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The total number of requests that are redirected to the WAF instance.
+	//
+	// example:
+	//
+	// 121645464
 	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
 	// The serial number of the time interval. The serial numbers are arranged in chronological order.
+	//
+	// example:
+	//
+	// 10
 	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
 	// The peak traffic.
+	//
+	// example:
+	//
+	// 2932
 	MaxPv *int64 `json:"MaxPv,omitempty" xml:"MaxPv,omitempty"`
 	// The total number of requests that are forwarded by the WAF instance.
+	//
+	// example:
+	//
+	// 1200540464
 	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
 	// The number of requests that are blocked by rate limiting rules.
+	//
+	// example:
+	//
+	// 0
 	RatelimitBlockSum *int64 `json:"RatelimitBlockSum,omitempty" xml:"RatelimitBlockSum,omitempty"`
 	// The number of requests that are monitored by rate limiting rules.
+	//
+	// example:
+	//
+	// 0
 	RatelimitReportSum *int64 `json:"RatelimitReportSum,omitempty" xml:"RatelimitReportSum,omitempty"`
 	// The number of requests that are blocked by region blacklist rules.
+	//
+	// example:
+	//
+	// 0
 	RegionBlockBlocksSum *int64 `json:"RegionBlockBlocksSum,omitempty" xml:"RegionBlockBlocksSum,omitempty"`
 	// The number of requests that are monitored by region blacklist rules.
+	//
+	// example:
+	//
+	// 0
 	RegionBlockReportsSum *int64 `json:"RegionBlockReportsSum,omitempty" xml:"RegionBlockReportsSum,omitempty"`
 	// The total number of bot requests.
+	//
+	// example:
+	//
+	// 1110
 	RobotCount *int64 `json:"RobotCount,omitempty" xml:"RobotCount,omitempty"`
 	// The number of requests that are blocked by basic protection rules.
+	//
+	// example:
+	//
+	// 0
 	WafBlockSum *int64 `json:"WafBlockSum,omitempty" xml:"WafBlockSum,omitempty"`
 	// The number of requests that are monitored by basic protection rules.
+	//
+	// example:
+	//
+	// 0
 	WafReportSum *string `json:"WafReportSum,omitempty" xml:"WafReportSum,omitempty"`
 }
 
@@ -6305,19 +9679,44 @@ func (s *DescribeFlowChartResponse) SetBody(v *DescribeFlowChartResponseBody) *D
 
 type DescribeFlowTopResourceRequest struct {
 	// The end of the time range to query. Unit: seconds. If you do not specify this parameter, the current time is used.
+	//
+	// example:
+	//
+	// 1665386340
 	EndTimestamp *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The beginning of the time range to query. Unit: seconds.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1665331200
 	StartTimestamp *string `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 }
 
@@ -6356,6 +9755,10 @@ func (s *DescribeFlowTopResourceRequest) SetStartTimestamp(v string) *DescribeFl
 
 type DescribeFlowTopResourceResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 8F0E0B9A-B518-5C6D-BEFC-A373DDE4F652
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The array of the top 10 protected objects that receive requests.
 	RuleHitsTopResource []*DescribeFlowTopResourceResponseBodyRuleHitsTopResource `json:"RuleHitsTopResource,omitempty" xml:"RuleHitsTopResource,omitempty" type:"Repeated"`
@@ -6381,8 +9784,16 @@ func (s *DescribeFlowTopResourceResponseBody) SetRuleHitsTopResource(v []*Descri
 
 type DescribeFlowTopResourceResponseBodyRuleHitsTopResource struct {
 	// The total number of requests received by the protected object in a specified time range.
+	//
+	// example:
+	//
+	// 181174784
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The protected object.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 }
 
@@ -6435,21 +9846,50 @@ func (s *DescribeFlowTopResourceResponse) SetBody(v *DescribeFlowTopResourceResp
 
 type DescribeFlowTopUrlRequest struct {
 	// The end of the time range to query. Unit: seconds. If you do not specify this parameter, the current time is used.
+	//
+	// example:
+	//
+	// 1665386340
 	EndTimestamp *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The protected object.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The beginning of the time range to query. Unit: seconds.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1665331200
 	StartTimestamp *string `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 }
 
@@ -6493,6 +9933,10 @@ func (s *DescribeFlowTopUrlRequest) SetStartTimestamp(v string) *DescribeFlowTop
 
 type DescribeFlowTopUrlResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 520D4E4C-B8EC-5602-ACB6-4D378ACBA28D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The array of the top 10 URLs that are used to initiate requests.
 	RuleHitsTopUrl []*DescribeFlowTopUrlResponseBodyRuleHitsTopUrl `json:"RuleHitsTopUrl,omitempty" xml:"RuleHitsTopUrl,omitempty" type:"Repeated"`
@@ -6518,8 +9962,16 @@ func (s *DescribeFlowTopUrlResponseBody) SetRuleHitsTopUrl(v []*DescribeFlowTopU
 
 type DescribeFlowTopUrlResponseBodyRuleHitsTopUrl struct {
 	// The total number of requests that are initiated by using the URL.
+	//
+	// example:
+	//
+	// 181174784
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The URL that is used to initiate requests.
+	//
+	// example:
+	//
+	// www.aliyundoc.com/path1
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
@@ -6572,35 +10024,78 @@ func (s *DescribeFlowTopUrlResponse) SetBody(v *DescribeFlowTopUrlResponseBody) 
 
 type DescribeHybridCloudGroupsRequest struct {
 	// The ID of the hybrid cloud cluster.
+	//
+	// example:
+	//
+	// 428
 	ClusterId *int64 `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The type of proxy cluster that is used. Valid values:
 	//
-	// *   **service**: service-based traffic mirroring.
-	// *   **cname**: reverse proxy.
+	// 	- **service**: service-based traffic mirroring.
+	//
+	// 	- **cname**: reverse proxy.
+	//
+	// example:
+	//
+	// cname
 	ClusterProxyType *string `json:"ClusterProxyType,omitempty" xml:"ClusterProxyType,omitempty"`
 	// The name of the node group that you want to query.
+	//
+	// example:
+	//
+	// groupName1
 	GroupName *int32 `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The type of the node group. Valid values:
 	//
-	// *   **protect**
-	// *   **control**
-	// *   **storage**
-	// *   **controlStorage**
+	// 	- **protect**
+	//
+	// 	- **control**
+	//
+	// 	- **storage**
+	//
+	// 	- **controlStorage**
+	//
+	// example:
+	//
+	// protect
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-********w0b
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The page number. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Default value: **10**.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the WAF instance. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
@@ -6661,8 +10156,16 @@ type DescribeHybridCloudGroupsResponseBody struct {
 	// The node groups.
 	Groups []*DescribeHybridCloudGroupsResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 045660E7-C4C6-5CD7-8182-7B337D95****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 146
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -6693,37 +10196,84 @@ type DescribeHybridCloudGroupsResponseBodyGroups struct {
 	// The back-to-origin mark of the protected cluster. The value is in the {ISP name}-{Continent name}-{City name}-{Back-to-origin identifier} format. The back-to-origin identifier is optional.
 	//
 	// >  For more information about ISP names, continent names, city names, and back-to-origin identifiers, see the following sections.
+	//
+	// example:
+	//
+	// aliyun-asiapacific-beijing-12345678
 	BackSourceMark *string `json:"BackSourceMark,omitempty" xml:"BackSourceMark,omitempty"`
 	// The continent code of the protected cluster.
 	//
 	// >  For more information about continent codes, see Continent codes in this topic.
+	//
+	// example:
+	//
+	// 410
 	ContinentsValue *int32 `json:"ContinentsValue,omitempty" xml:"ContinentsValue,omitempty"`
 	// The ID of the node group.
+	//
+	// example:
+	//
+	// 123
 	GroupId *int32 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The name of the node group.
+	//
+	// example:
+	//
+	// StorageGroup
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The type of the node group. Valid values:
 	//
-	// *   **protect**
-	// *   **control**
-	// *   **storage**
-	// *   **controlStorage**
+	// 	- **protect**
+	//
+	// 	- **control**
+	//
+	// 	- **storage**
+	//
+	// 	- **controlStorage**
+	//
+	// example:
+	//
+	// protect
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
 	// The IP address of the server used for load balancing.
+	//
+	// example:
+	//
+	// 1.1.XX.XX
 	LoadBalanceIp *string `json:"LoadBalanceIp,omitempty" xml:"LoadBalanceIp,omitempty"`
 	// The ID of the protection node.
+	//
+	// example:
+	//
+	// 1312
 	LocationId *int64 `json:"LocationId,omitempty" xml:"LocationId,omitempty"`
 	// The ISP code of the protected cluster.
 	//
 	// >  For more information about ISP codes, see ISP codes in this topic.
+	//
+	// example:
+	//
+	// 0
 	OperatorValue *int32 `json:"OperatorValue,omitempty" xml:"OperatorValue,omitempty"`
-	// The port that is used by the hybrid cloud cluster. The value of this parameter is a string. If multiple ports are returned, the value is in the **port1,port2,port3** format.
+	// The port that is used by the hybrid cloud cluster. The value of this parameter is a string. If multiple ports are returned, the value is in the **port1,port2,port3*	- format.
+	//
+	// example:
+	//
+	// 80,9200,20018
 	Ports *string `json:"Ports,omitempty" xml:"Ports,omitempty"`
 	// The city code of the protected cluster.
 	//
 	// >  For more information about city codes, see City codes in this topic.
+	//
+	// example:
+	//
+	// 0
 	RegionCodeValue *int32 `json:"RegionCodeValue,omitempty" xml:"RegionCodeValue,omitempty"`
 	// The description of the node group.
+	//
+	// example:
+	//
+	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
@@ -6821,28 +10371,64 @@ func (s *DescribeHybridCloudGroupsResponse) SetBody(v *DescribeHybridCloudGroups
 
 type DescribeHybridCloudResourcesRequest struct {
 	// The back-to-origin IP address or domain name.
+	//
+	// example:
+	//
+	// 1.1.XX.XX
 	Backend *string `json:"Backend,omitempty" xml:"Backend,omitempty"`
 	// Specifies whether the public cloud disaster recovery feature is enabled for the domain name. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	CnameEnabled *bool `json:"CnameEnabled,omitempty" xml:"CnameEnabled,omitempty"`
 	// The domain name that you want to query.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-***********
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The page number. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Default value: **10**.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the WAF instance. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmvtc5z52****
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
@@ -6898,8 +10484,16 @@ type DescribeHybridCloudResourcesResponseBody struct {
 	// The domain names.
 	Domains []*DescribeHybridCloudResourcesResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 98D2AA9A-5959-5CCD-83E3-B6606232A2BE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries that are returned.
+	//
+	// example:
+	//
+	// 24
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -6929,27 +10523,55 @@ func (s *DescribeHybridCloudResourcesResponseBody) SetTotalCount(v int64) *Descr
 type DescribeHybridCloudResourcesResponseBodyDomains struct {
 	// The CNAME assigned by WAF.
 	//
-	// >  This parameter is returned only if the value of **CnameEnabled** is true.
+	// >  This parameter is returned only if the value of **CnameEnabled*	- is true.
+	//
+	// example:
+	//
+	// 50fqmu1ci7g0xtiyxnrhgx6qdhmn****.yundunwaf5.com
 	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
 	// The domain name.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The access ID.
+	//
+	// example:
+	//
+	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The listeners.
 	Listen *DescribeHybridCloudResourcesResponseBodyDomainsListen `json:"Listen,omitempty" xml:"Listen,omitempty" type:"Struct"`
 	// The configurations of the forwarding rule.
 	Redirect *DescribeHybridCloudResourcesResponseBodyDomainsRedirect `json:"Redirect,omitempty" xml:"Redirect,omitempty" type:"Struct"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfmvtc5z52****
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The status of the domain name. Valid values:
 	//
-	// *   **1:** The domain name is in a normal state.
-	// *   **2:** The domain name is being created.
-	// *   **3:** The domain name is being modified.
-	// *   **4:** The domain name is being released.
-	// *   **5:** WAF no longer forwards the traffic of the domain name.
+	// 	- **1:*	- The domain name is in a normal state.
+	//
+	// 	- **2:*	- The domain name is being created.
+	//
+	// 	- **3:*	- The domain name is being modified.
+	//
+	// 	- **4:*	- The domain name is being released.
+	//
+	// 	- **5:*	- WAF no longer forwards the traffic of the domain name.
+	//
+	// example:
+	//
+	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The user ID.
+	//
+	// example:
+	//
+	// 130715431409****
 	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
@@ -7003,36 +10625,66 @@ func (s *DescribeHybridCloudResourcesResponseBodyDomains) SetUid(v string) *Desc
 
 type DescribeHybridCloudResourcesResponseBodyDomainsListen struct {
 	// The ID of the certificate.
+	//
+	// example:
+	//
+	// 72***76-cn-hangzhou
 	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
 	// The types of cipher suites that are added. Valid values:
 	//
-	// *   **1:** all cipher suites.
-	// *   **2:** strong cipher suites.
-	// *   **99:** custom cipher suites.
+	// 	- **1:*	- all cipher suites.
+	//
+	// 	- **2:*	- strong cipher suites.
+	//
+	// 	- **99:*	- custom cipher suites.
+	//
+	// example:
+	//
+	// 1
 	CipherSuite *int32 `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
 	// The custom cipher suites.
 	//
-	// >  This parameter is returned only if the value of **CipherSuite** is **99**.
+	// >  This parameter is returned only if the value of **CipherSuite*	- is **99**.
 	CustomCiphers []*string `json:"CustomCiphers,omitempty" xml:"CustomCiphers,omitempty" type:"Repeated"`
 	// Indicates whether TLS 1.3 is supported. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	EnableTLSv3 *bool `json:"EnableTLSv3,omitempty" xml:"EnableTLSv3,omitempty"`
 	// Indicates whether exclusive IP addresses are supported. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	ExclusiveIp *bool `json:"ExclusiveIp,omitempty" xml:"ExclusiveIp,omitempty"`
 	// Indicates whether the HTTP to HTTPS redirection feature is enabled for the domain name. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	FocusHttps *bool `json:"FocusHttps,omitempty" xml:"FocusHttps,omitempty"`
 	// Indicates whether HTTP/2 is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	Http2Enabled *bool `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
 	// The HTTP listener ports.
 	HttpPorts []*int64 `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty" type:"Repeated"`
@@ -7040,29 +10692,51 @@ type DescribeHybridCloudResourcesResponseBodyDomainsListen struct {
 	HttpsPorts []*int64 `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty" type:"Repeated"`
 	// Specifies whether to enable IPv6. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	IPv6Enabled *bool `json:"IPv6Enabled,omitempty" xml:"IPv6Enabled,omitempty"`
 	// The type of the protection resource. Valid values:
 	//
-	// *   **share:** shared cluster.
-	// *   **gslb:** shared cluster-based intelligent load balancing.
+	// 	- **share:*	- shared cluster.
+	//
+	// 	- **gslb:*	- shared cluster-based intelligent load balancing.
+	//
+	// example:
+	//
+	// share
 	ProtectionResource *string `json:"ProtectionResource,omitempty" xml:"ProtectionResource,omitempty"`
 	// The version of the Transport Layer Security (TLS) protocol. Valid values:
 	//
-	// *   **tlsv1**
-	// *   **tlsv1.1**
-	// *   **tlsv1.2**
+	// 	- **tlsv1**
+	//
+	// 	- **tlsv1.1**
+	//
+	// 	- **tlsv1.2**
+	//
+	// example:
+	//
+	// tlsv1.2
 	TLSVersion *string `json:"TLSVersion,omitempty" xml:"TLSVersion,omitempty"`
 	// The method that is used to obtain the actual IP address of a client. Valid values:
 	//
-	// *   **0**: No Layer 7 proxies are deployed in front of WAF.
-	// *   **1**: WAF reads the first value of the X-Forwarded-For (XFF) header field as the actual IP address of the client.
-	// *   **2**: WAF reads the value of a custom header field as the actual IP address of the client.
-	XffHeaderMode *int32 `json:"XffHeaderMode,omitempty" xml:"XffHeaderMode,omitempty"`
-	// The custom header fields that are used to obtain the actual IP addresses of clients. The value is in the \["header1","header2",...] format.
+	// 	- **0**: No Layer 7 proxies are deployed in front of WAF.
 	//
-	// >  This parameter is returned only if the value of **XffHeaderMode** is 2.
+	// 	- **1**: WAF reads the first value of the X-Forwarded-For (XFF) header field as the actual IP address of the client.
+	//
+	// 	- **2**: WAF reads the value of a custom header field as the actual IP address of the client.
+	//
+	// example:
+	//
+	// 0
+	XffHeaderMode *int32 `json:"XffHeaderMode,omitempty" xml:"XffHeaderMode,omitempty"`
+	// The custom header fields that are used to obtain the actual IP addresses of clients. The value is in the ["header1","header2",...] format.
+	//
+	// >  This parameter is returned only if the value of **XffHeaderMode*	- is 2.
 	XffHeaders []*string `json:"XffHeaders,omitempty" xml:"XffHeaders,omitempty" type:"Repeated"`
 }
 
@@ -7149,60 +10823,137 @@ type DescribeHybridCloudResourcesResponseBodyDomainsRedirect struct {
 	Backends []*string `json:"Backends,omitempty" xml:"Backends,omitempty" type:"Repeated"`
 	// Indicates whether the public cloud disaster recovery feature is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	CnameEnabled *bool `json:"CnameEnabled,omitempty" xml:"CnameEnabled,omitempty"`
 	// The timeout period for connections. Unit: seconds. Valid values: 5 to 120.
+	//
+	// example:
+	//
+	// 120
 	ConnectTimeout *int64 `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
 	// Indicates whether the HTTPS to HTTP redirection feature is enabled for back-to-origin requests. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	FocusHttpBackend *bool `json:"FocusHttpBackend,omitempty" xml:"FocusHttpBackend,omitempty"`
 	// Indicates whether the persistent connection feature is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Keepalive *bool `json:"Keepalive,omitempty" xml:"Keepalive,omitempty"`
 	// The number of reused persistent connections. Valid values: 60 to 1000.
 	//
 	// >  This parameter indicates the number of reused persistent connections after the persistent connection feature is enabled.
+	//
+	// example:
+	//
+	// 1000
 	KeepaliveRequests *int64 `json:"KeepaliveRequests,omitempty" xml:"KeepaliveRequests,omitempty"`
 	// The timeout period for persistent connections that are in the Idle state. Unit: seconds. Valid values: 1 to 60. Default value: 15.
 	//
 	// >  This parameter indicates the period of time during which a reused persistent connection can remain in the Idle state before the persistent connection is released.
+	//
+	// example:
+	//
+	// 15
 	KeepaliveTimeout *int64 `json:"KeepaliveTimeout,omitempty" xml:"KeepaliveTimeout,omitempty"`
 	// The load balancing algorithm that is used to forward requests to the origin server. Valid values:
 	//
-	// *   **iphash**
-	// *   **roundRobin**
-	// *   **leastTime**
+	// 	- **iphash**
+	//
+	// 	- **roundRobin**
+	//
+	// 	- **leastTime**
+	//
+	// example:
+	//
+	// iphash
 	Loadbalance *string `json:"Loadbalance,omitempty" xml:"Loadbalance,omitempty"`
 	// The timeout period for read connections. Unit: seconds. Valid values: 5 to 1800.
+	//
+	// example:
+	//
+	// 200
 	ReadTimeout *int64 `json:"ReadTimeout,omitempty" xml:"ReadTimeout,omitempty"`
 	// The key-value pair that is used to label requests that pass through WAF.
 	RequestHeaders []*DescribeHybridCloudResourcesResponseBodyDomainsRedirectRequestHeaders `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
 	// Indicates whether WAF retries forwarding requests if requests fail to be forwarded to the origin server. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Retry *bool `json:"Retry,omitempty" xml:"Retry,omitempty"`
 	// The forwarding rules that are configured for the domain name. This parameter is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields:
 	//
-	// *   **rs**: the back-to-origin IP addresses or CNAMEs. The value is of the ARRAY type.
-	// *   **location**: the name of the protection node. The value is of the STRING type.
-	// *   **locationId**: the ID of the protection node. The value is of the LONG type.
+	// 	- **rs**: the back-to-origin IP addresses or CNAMEs. The value is of the ARRAY type.
+	//
+	// 	- **location**: the name of the protection node. The value is of the STRING type.
+	//
+	// 	- **locationId**: the ID of the protection node. The value is of the LONG type.
+	//
+	// example:
+	//
+	// [
+	//
+	//       {
+	//
+	//             "rs": [
+	//
+	//                   "1.1.XX.XX"
+	//
+	//             ],
+	//
+	//             "locationId": 535,
+	//
+	//             "location": "test1111"
+	//
+	//       }
+	//
+	// ]
 	RoutingRules *string `json:"RoutingRules,omitempty" xml:"RoutingRules,omitempty"`
 	// Indicates whether the origin Server Name Indication (SNI) feature is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
-	SniEnabled *bool `json:"SniEnabled,omitempty" xml:"SniEnabled,omitempty"`
-	// The value of the custom SNI field. If the parameter is left empty, the value of the **Host** field in the request header is automatically used as the value of the SNI field.
+	// 	- **true**
 	//
-	// >  This parameter is returned only if the value of **SniEnabled** is **true**.
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	SniEnabled *bool `json:"SniEnabled,omitempty" xml:"SniEnabled,omitempty"`
+	// The value of the custom SNI field. If the parameter is left empty, the value of the **Host*	- field in the request header is automatically used as the value of the SNI field.
+	//
+	// >  This parameter is returned only if the value of **SniEnabled*	- is **true**.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
 	SniHost *string `json:"SniHost,omitempty" xml:"SniHost,omitempty"`
 	// The timeout period for write connections. Unit: seconds. Valid values: 5 to 1800.
+	//
+	// example:
+	//
+	// 200
 	WriteTimeout *int64 `json:"WriteTimeout,omitempty" xml:"WriteTimeout,omitempty"`
 }
 
@@ -7291,8 +11042,16 @@ func (s *DescribeHybridCloudResourcesResponseBodyDomainsRedirect) SetWriteTimeou
 
 type DescribeHybridCloudResourcesResponseBodyDomainsRedirectRequestHeaders struct {
 	// The key of the custom header field.
+	//
+	// example:
+	//
+	// aaa
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the custom header field.
+	//
+	// example:
+	//
+	// bbb
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7346,14 +11105,29 @@ func (s *DescribeHybridCloudResourcesResponse) SetBody(v *DescribeHybridCloudRes
 type DescribeHybridCloudUserRequest struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// > You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-***********
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
@@ -7382,6 +11156,10 @@ func (s *DescribeHybridCloudUserRequest) SetResourceManagerResourceGroupId(v str
 
 type DescribeHybridCloudUserResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 9178CB86-285F-5679-A30A-3B3F007E4206
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the ports that can be used by a hybrid cloud cluster.
 	UserInfo *DescribeHybridCloudUserResponseBodyUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
@@ -7406,9 +11184,17 @@ func (s *DescribeHybridCloudUserResponseBody) SetUserInfo(v *DescribeHybridCloud
 }
 
 type DescribeHybridCloudUserResponseBodyUserInfo struct {
-	// The HTTP ports. The value is a string. If multiple ports are returned, the value is in the **port1,port2,port3** format.
+	// The HTTP ports. The value is a string. If multiple ports are returned, the value is in the **port1,port2,port3*	- format.
+	//
+	// example:
+	//
+	// 80,8080
 	HttpPorts *string `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty"`
-	// The HTTPS ports. The value is a string. If multiple ports are returned, the value is in the **port1,port2,port3** format.
+	// The HTTPS ports. The value is a string. If multiple ports are returned, the value is in the **port1,port2,port3*	- format.
+	//
+	// example:
+	//
+	// 8443,443
 	HttpsPorts *string `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty"`
 }
 
@@ -7462,10 +11248,19 @@ func (s *DescribeHybridCloudUserResponse) SetBody(v *DescribeHybridCloudUserResp
 type DescribeInstanceRequest struct {
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
@@ -7491,35 +11286,76 @@ type DescribeInstanceResponseBody struct {
 	// The details of the WAF instance.
 	Details *DescribeInstanceResponseBodyDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Struct"`
 	// The edition of the WAF instance.
+	//
+	// example:
+	//
+	// default_version
 	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
 	// The expiration time of the WAF instance.
+	//
+	// example:
+	//
+	// 4809859200000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// Indicates whether the WAF instance has overdue payments. Valid values:
 	//
-	// *   **0**: The WAF instance does not have overdue payments.
-	// *   **1**: The WAF instance has overdue payments.
+	// 	- **0**: The WAF instance does not have overdue payments.
+	//
+	// 	- **1**: The WAF instance has overdue payments.
+	//
+	// example:
+	//
+	// 1
 	InDebt *string `json:"InDebt,omitempty" xml:"InDebt,omitempty"`
 	// The ID of the WAF instance.
+	//
+	// example:
+	//
+	// waf-cn-xxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The billing method of the WAF instance. Valid values:
 	//
-	// *   **POSTPAY:** The WAF instance uses the pay-as-you-go billing method.
-	// *   **PREPAY:** The WAF instance uses the subscription billing method.
+	// 	- **POSTPAY:*	- The WAF instance uses the pay-as-you-go billing method.
+	//
+	// 	- **PREPAY:*	- The WAF instance uses the subscription billing method.
+	//
+	// example:
+	//
+	// POSTPAY
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 66A98669-CC6E-4F3E-80A6-3014697B11AE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The purchase time of the WAF instance. The time is in the UNIX timestamp format. The time is displayed in UTC. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1668496310000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the WAF instance. Valid values:
 	//
-	// *   **1:** The WAF instance is in a normal state.
-	// *   **2:** The WAF instance has expired.
-	// *   **3:** The WAF instance has been released.
+	// 	- **1:*	- The WAF instance is in a normal state.
+	//
+	// 	- **2:*	- The WAF instance has expired.
+	//
+	// 	- **3:*	- The WAF instance has been released.
+	//
+	// example:
+	//
+	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -7582,155 +11418,375 @@ func (s *DescribeInstanceResponseBody) SetStatus(v int32) *DescribeInstanceRespo
 }
 
 type DescribeInstanceResponseBodyDetails struct {
-	// The maximum number of IP addresses that can be added to the match content of a match condition. For more information, see [Match conditions](~~374354~~).
+	// The maximum number of IP addresses that can be added to the match content of a match condition. For more information, see [Match conditions](https://help.aliyun.com/document_detail/374354.html).
+	//
+	// example:
+	//
+	// 100
 	AclRuleMaxIpCount *int64 `json:"AclRuleMaxIpCount,omitempty" xml:"AclRuleMaxIpCount,omitempty"`
 	// Indicates whether the scan protection module is supported. Valid values:
 	//
-	// *   **true:** The scan protection module is supported.
-	// *   **false:** The scan protection module is not supported.
+	// 	- **true:*	- The scan protection module is supported.
+	//
+	// 	- **false:*	- The scan protection module is not supported.
+	//
+	// example:
+	//
+	// true
 	AntiScan *bool `json:"AntiScan,omitempty" xml:"AntiScan,omitempty"`
 	// The maximum number of scan protection rule templates that can be configured.
+	//
+	// example:
+	//
+	// 20
 	AntiScanTemplateMaxCount *int64 `json:"AntiScanTemplateMaxCount,omitempty" xml:"AntiScanTemplateMaxCount,omitempty"`
 	// The maximum number of back-to-origin IP addresses that can be configured.
+	//
+	// example:
+	//
+	// 20
 	BackendMaxCount *int64 `json:"BackendMaxCount,omitempty" xml:"BackendMaxCount,omitempty"`
 	// Indicates whether the basic protection rule module is supported. Valid values:
 	//
-	// *   **true:** The basic protection rule module is supported.
-	// *   **false:** The basic protection rule module is not supported.
+	// 	- **true:*	- The basic protection rule module is supported.
+	//
+	// 	- **false:*	- The basic protection rule module is not supported.
+	//
+	// example:
+	//
+	// true
 	BaseWafGroup *bool `json:"BaseWafGroup,omitempty" xml:"BaseWafGroup,omitempty"`
 	// The maximum number of protection rules that can be included in a basic protection rule template.
+	//
+	// example:
+	//
+	// 100
 	BaseWafGroupRuleInTemplateMaxCount *int64 `json:"BaseWafGroupRuleInTemplateMaxCount,omitempty" xml:"BaseWafGroupRuleInTemplateMaxCount,omitempty"`
 	// The maximum number of basic protection rule templates that can be configured.
+	//
+	// example:
+	//
+	// 20
 	BaseWafGroupRuleTemplateMaxCount *int64 `json:"BaseWafGroupRuleTemplateMaxCount,omitempty" xml:"BaseWafGroupRuleTemplateMaxCount,omitempty"`
 	// Indicates whether the bot management module is supported. Valid values:
 	//
-	// *   **true:** The bot management module is supported.
-	// *   **false:** The bot management module is not supported.
+	// 	- **true:*	- The bot management module is supported.
+	//
+	// 	- **false:*	- The bot management module is not supported.
+	//
+	// example:
+	//
+	// true
 	Bot *bool `json:"Bot,omitempty" xml:"Bot,omitempty"`
 	// Indicates whether bot management for app protection is supported. Valid values:
 	//
-	// *   **true:** Bot management for app protection is supported.
-	// *   **false:** Bot management for app protection is not supported.
+	// 	- **true:*	- Bot management for app protection is supported.
+	//
+	// 	- **false:*	- Bot management for app protection is not supported.
+	//
+	// example:
+	//
+	// true
 	BotApp *string `json:"BotApp,omitempty" xml:"BotApp,omitempty"`
 	// The maximum number of bot management rule templates that can be configured.
+	//
+	// example:
+	//
+	// 50
 	BotTemplateMaxCount *int64 `json:"BotTemplateMaxCount,omitempty" xml:"BotTemplateMaxCount,omitempty"`
 	// Indicates whether bot management for website protection is supported. Valid values:
 	//
-	// *   **true:** Bot management for website protection is supported.
-	// *   **false:** Bot management for website protection is not supported.
+	// 	- **true:*	- Bot management for website protection is supported.
+	//
+	// 	- **false:*	- Bot management for website protection is not supported.
+	//
+	// example:
+	//
+	// true
 	BotWeb *string `json:"BotWeb,omitempty" xml:"BotWeb,omitempty"`
 	// The maximum number of CNAMEs that can be added.
+	//
+	// example:
+	//
+	// 1000
 	CnameResourceMaxCount *int64 `json:"CnameResourceMaxCount,omitempty" xml:"CnameResourceMaxCount,omitempty"`
 	// Indicates whether the custom response module is supported. Valid values:
 	//
-	// *   **true:** The custom response module is supported.
-	// *   **false:** The custom response module is not supported.
+	// 	- **true:*	- The custom response module is supported.
+	//
+	// 	- **false:*	- The custom response module is not supported.
+	//
+	// example:
+	//
+	// true
 	CustomResponse *bool `json:"CustomResponse,omitempty" xml:"CustomResponse,omitempty"`
 	// The maximum number of rules that can be included in a custom response rule template.
+	//
+	// example:
+	//
+	// 100
 	CustomResponseRuleInTemplateMaxCount *int64 `json:"CustomResponseRuleInTemplateMaxCount,omitempty" xml:"CustomResponseRuleInTemplateMaxCount,omitempty"`
 	// The maximum number of custom response rule templates that can be configured.
+	//
+	// example:
+	//
+	// 20
 	CustomResponseTemplateMaxCount *int64 `json:"CustomResponseTemplateMaxCount,omitempty" xml:"CustomResponseTemplateMaxCount,omitempty"`
 	// Indicates whether the custom rule module is supported. Valid values:
 	//
-	// *   **true:** The custom rule module is supported.
-	// *   **false:** The custom rule module is not supported.
+	// 	- **true:*	- The custom rule module is supported.
+	//
+	// 	- **false:*	- The custom rule module is not supported.
+	//
+	// example:
+	//
+	// true
 	CustomRule *bool `json:"CustomRule,omitempty" xml:"CustomRule,omitempty"`
 	// The action that can be included in a custom rule.
+	//
+	// example:
+	//
+	// block
 	CustomRuleAction *string `json:"CustomRuleAction,omitempty" xml:"CustomRuleAction,omitempty"`
-	// The match conditions that can be used in a custom rule. For more information, see **Match condition parameters** in the "**Parameters of custom rules (custom_acl)**" section in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
+	// The match conditions that can be used in a custom rule. For more information, see **Match condition parameters*	- in the "**Parameters of custom rules (custom_acl)**" section in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
+	//
+	// example:
+	//
+	// URL
 	CustomRuleCondition *string `json:"CustomRuleCondition,omitempty" xml:"CustomRuleCondition,omitempty"`
 	// The maximum number of rules that can be included in a custom rule template.
+	//
+	// example:
+	//
+	// 100
 	CustomRuleInTemplateMaxCount *int64 `json:"CustomRuleInTemplateMaxCount,omitempty" xml:"CustomRuleInTemplateMaxCount,omitempty"`
 	// The statistical object for rate limiting in a custom rule.
+	//
+	// example:
+	//
+	// header
 	CustomRuleRatelimitor *string `json:"CustomRuleRatelimitor,omitempty" xml:"CustomRuleRatelimitor,omitempty"`
 	// The maximum number of custom rule templates that can be configured.
+	//
+	// example:
+	//
+	// 20
 	CustomRuleTemplateMaxCount *int64 `json:"CustomRuleTemplateMaxCount,omitempty" xml:"CustomRuleTemplateMaxCount,omitempty"`
 	// The maximum number of protected object groups that can be configured.
+	//
+	// example:
+	//
+	// 100
 	DefenseGroupMaxCount *int64 `json:"DefenseGroupMaxCount,omitempty" xml:"DefenseGroupMaxCount,omitempty"`
 	// The maximum number of protected objects that can be included in a protected object group.
+	//
+	// example:
+	//
+	// 100
 	DefenseObjectInGroupMaxCount *int64 `json:"DefenseObjectInGroupMaxCount,omitempty" xml:"DefenseObjectInGroupMaxCount,omitempty"`
 	// The maximum number of protected objects to which a protection rule template can be applied.
+	//
+	// example:
+	//
+	// 100
 	DefenseObjectInTemplateMaxCount *int64 `json:"DefenseObjectInTemplateMaxCount,omitempty" xml:"DefenseObjectInTemplateMaxCount,omitempty"`
 	// The maximum number of protected objects that can be configured.
+	//
+	// example:
+	//
+	// 20,000
 	DefenseObjectMaxCount *int64 `json:"DefenseObjectMaxCount,omitempty" xml:"DefenseObjectMaxCount,omitempty"`
 	// Indicates whether the data leakage prevention module is supported. Valid values:
 	//
-	// *   **true:** The data leakage prevention module is supported.
-	// *   **false:** The data leakage prevention module is not supported.
+	// 	- **true:*	- The data leakage prevention module is supported.
+	//
+	// 	- **false:*	- The data leakage prevention module is not supported.
+	//
+	// example:
+	//
+	// true
 	Dlp *bool `json:"Dlp,omitempty" xml:"Dlp,omitempty"`
 	// The maximum number of rules that can be included in a data leakage prevention rule template.
+	//
+	// example:
+	//
+	// 50
 	DlpRuleInTemplateMaxCount *int64 `json:"DlpRuleInTemplateMaxCount,omitempty" xml:"DlpRuleInTemplateMaxCount,omitempty"`
 	// The maximum number of data leakage prevention rule templates that can be configured.
+	//
+	// example:
+	//
+	// 50
 	DlpTemplateMaxCount *int64 `json:"DlpTemplateMaxCount,omitempty" xml:"DlpTemplateMaxCount,omitempty"`
 	// Indicates whether exclusive IP addresses are supported. Valid values:
 	//
-	// *   **true:** Exclusive IP addresses are supported.
-	// *   **false:** Exclusive IP addresses are not supported.
+	// 	- **true:*	- Exclusive IP addresses are supported.
+	//
+	// 	- **false:*	- Exclusive IP addresses are not supported.
+	//
+	// example:
+	//
+	// true
 	ExclusiveIp *bool `json:"ExclusiveIp,omitempty" xml:"ExclusiveIp,omitempty"`
 	// Indicates whether global server load balancing (GSLB) is supported. Valid values:
 	//
-	// *   **true:** GSLB is supported.
-	// *   **false:** GSLB is not supported.
+	// 	- **true:*	- GSLB is supported.
+	//
+	// 	- **false:*	- GSLB is not supported.
+	//
+	// example:
+	//
+	// true
 	Gslb *bool `json:"Gslb,omitempty" xml:"Gslb,omitempty"`
-	// The HTTP port range that is supported. For more information, see [View supported ports](~~385578~~).
+	// The HTTP port range that is supported. For more information, see [View supported ports](https://help.aliyun.com/document_detail/385578.html).
+	//
+	// example:
+	//
+	// 80
 	HttpPorts *string `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty"`
-	// The HTTPS port range that is supported. For more information, see [View supported ports](~~385578~~).
+	// The HTTPS port range that is supported. For more information, see [View supported ports](https://help.aliyun.com/document_detail/385578.html).
+	//
+	// example:
+	//
+	// 443
 	HttpsPorts *string `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty"`
 	// Indicates whether the IP address blacklist module is supported. Valid values:
 	//
-	// *   **true:** The IP address blacklist module is supported.
-	// *   **false:** The IP address blacklist module is not supported.
+	// 	- **true:*	- The IP address blacklist module is supported.
+	//
+	// 	- **false:*	- The IP address blacklist module is not supported.
+	//
+	// example:
+	//
+	// true
 	IpBlacklist *bool `json:"IpBlacklist,omitempty" xml:"IpBlacklist,omitempty"`
 	// The maximum number of IP addresses that can be added to an IP address blacklist rule.
+	//
+	// example:
+	//
+	// 200
 	IpBlacklistIpInRuleMaxCount *int64 `json:"IpBlacklistIpInRuleMaxCount,omitempty" xml:"IpBlacklistIpInRuleMaxCount,omitempty"`
 	// The maximum number of rules that can be included in an IP address blacklist rule template.
+	//
+	// example:
+	//
+	// 100
 	IpBlacklistRuleInTemplateMaxCount *int64 `json:"IpBlacklistRuleInTemplateMaxCount,omitempty" xml:"IpBlacklistRuleInTemplateMaxCount,omitempty"`
 	// The maximum number of IP address blacklist rule templates that can be configured.
+	//
+	// example:
+	//
+	// 20
 	IpBlacklistTemplateMaxCount *int64 `json:"IpBlacklistTemplateMaxCount,omitempty" xml:"IpBlacklistTemplateMaxCount,omitempty"`
 	// Indicates whether IPv6 is supported. Valid values:
 	//
-	// *   **true:** IPv6 is supported.
-	// *   **false:** IPv6 is not supported.
+	// 	- **true:*	- IPv6 is supported.
+	//
+	// 	- **false:*	- IPv6 is not supported.
+	//
+	// example:
+	//
+	// true
 	Ipv6 *bool `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
 	// Indicates whether the log collection feature is supported. Valid values:
 	//
-	// *   **true:** The log collection feature is supported.
-	// *   **false:** The log collection feature is not supported.
+	// 	- **true:*	- The log collection feature is supported.
+	//
+	// 	- **false:*	- The log collection feature is not supported.
+	//
+	// example:
+	//
+	// true
 	LogService *bool `json:"LogService,omitempty" xml:"LogService,omitempty"`
 	// Indicates whether major event protection is supported. Valid values:
 	//
-	// *   **true:** Major event protection is supported.
-	// *   **false:** Major event protection is not supported.
+	// 	- **true:*	- Major event protection is supported.
+	//
+	// 	- **false:*	- Major event protection is not supported.
+	//
+	// example:
+	//
+	// true
 	MajorProtection *bool `json:"MajorProtection,omitempty" xml:"MajorProtection,omitempty"`
 	// The maximum number of major event protection rule templates that can be configured.
+	//
+	// example:
+	//
+	// 20
 	MajorProtectionTemplateMaxCount *int64 `json:"MajorProtectionTemplateMaxCount,omitempty" xml:"MajorProtectionTemplateMaxCount,omitempty"`
 	// Indicates whether the website tamper-proofing module is supported. Valid values:
 	//
-	// *   **true:** The website tamper-proofing module is supported.
-	// *   **false:** The website tamper-proofing module is not supported.
+	// 	- **true:*	- The website tamper-proofing module is supported.
+	//
+	// 	- **false:*	- The website tamper-proofing module is not supported.
+	//
+	// example:
+	//
+	// true
 	Tamperproof *bool `json:"Tamperproof,omitempty" xml:"Tamperproof,omitempty"`
 	// The maximum number of rules that can be included in a website tamper-proofing rule template.
+	//
+	// example:
+	//
+	// 50
 	TamperproofRuleInTemplateMaxCount *int64 `json:"TamperproofRuleInTemplateMaxCount,omitempty" xml:"TamperproofRuleInTemplateMaxCount,omitempty"`
 	// The maximum number of website tamper-proofing rule templates that can be configured.
+	//
+	// example:
+	//
+	// 50
 	TamperproofTemplateMaxCount *int64 `json:"TamperproofTemplateMaxCount,omitempty" xml:"TamperproofTemplateMaxCount,omitempty"`
 	// The maximum number of IP addresses or CIDR blocks that can be added to an IP address blacklist in a batch.
+	//
+	// example:
+	//
+	// 2,000
 	VastIpBlacklistInFileMaxCount *int64 `json:"VastIpBlacklistInFileMaxCount,omitempty" xml:"VastIpBlacklistInFileMaxCount,omitempty"`
 	// The maximum number of IP addresses or CIDR blocks that can be added to an IP address blacklist on a page.
+	//
+	// example:
+	//
+	// 500
 	VastIpBlacklistInOperationMaxCount *int64 `json:"VastIpBlacklistInOperationMaxCount,omitempty" xml:"VastIpBlacklistInOperationMaxCount,omitempty"`
 	// The maximum number of IP addresses or CIDR blocks that can be added to an IP address blacklist per Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 50,000
 	VastIpBlacklistMaxCount *int64 `json:"VastIpBlacklistMaxCount,omitempty" xml:"VastIpBlacklistMaxCount,omitempty"`
 	// Indicates whether the whitelist module is supported. Valid values:
 	//
-	// *   **true:** The whitelist module is supported.
-	// *   **false:** The whitelist module is not supported.
+	// 	- **true:*	- The whitelist module is supported.
+	//
+	// 	- **false:*	- The whitelist module is not supported.
+	//
+	// example:
+	//
+	// true
 	Whitelist *bool `json:"Whitelist,omitempty" xml:"Whitelist,omitempty"`
-	// The logical operators that can be used in a whitelist rule. For more information, see **Match condition parameters** in the "**Parameters of whitelist rules (whitelist)**" section in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
+	// The logical operators that can be used in a whitelist rule. For more information, see **Match condition parameters*	- in the "**Parameters of whitelist rules (whitelist)**" section in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
+	//
+	// example:
+	//
+	// contain
 	WhitelistLogical *string `json:"WhitelistLogical,omitempty" xml:"WhitelistLogical,omitempty"`
-	// The match fields that can be used in a whitelist rule. For more information, see **Match condition parameters** in the "**Parameters of whitelist rules (whitelist)**" section in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
+	// The match fields that can be used in a whitelist rule. For more information, see **Match condition parameters*	- in the "**Parameters of whitelist rules (whitelist)**" section in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
+	//
+	// example:
+	//
+	// URL
 	WhitelistRuleCondition *string `json:"WhitelistRuleCondition,omitempty" xml:"WhitelistRuleCondition,omitempty"`
 	// The maximum number of rules that can be included in a whitelist rule template.
+	//
+	// example:
+	//
+	// 100
 	WhitelistRuleInTemplateMaxCount *int64 `json:"WhitelistRuleInTemplateMaxCount,omitempty" xml:"WhitelistRuleInTemplateMaxCount,omitempty"`
 	// The maximum number of whitelist rule templates that can be configured.
+	//
+	// example:
+	//
+	// 20
 	WhitelistTemplateMaxCount *int64 `json:"WhitelistTemplateMaxCount,omitempty" xml:"WhitelistTemplateMaxCount,omitempty"`
 }
 
@@ -8029,31 +12085,73 @@ func (s *DescribeInstanceResponse) SetBody(v *DescribeInstanceResponseBody) *Des
 type DescribeMajorProtectionBlackIpsRequest struct {
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The IP address that you want to query. You can specify this parameter to query an IP address in the IP address blacklist for major event protection by using fuzzy matching.
+	//
+	// example:
+	//
+	// 192.0.XX.XX
 	IpLike *string `json:"IpLike,omitempty" xml:"IpLike,omitempty"`
 	// The method that you want to use to sort the IP addresses **in descending order**. Valid values:
 	//
-	// *   **gmtModified:** sorts the IP addresses by most recent modification time.
-	// *   **ip:** sorts the IP addresses by IP address.
-	// *   **templateId:** sorts the IP addresses by template ID.
-	// *   **id:** sorts the IP addresses by primary key.
+	// 	- **gmtModified:*	- sorts the IP addresses by most recent modification time.
+	//
+	// 	- **ip:*	- sorts the IP addresses by IP address.
+	//
+	// 	- **templateId:*	- sorts the IP addresses by template ID.
+	//
+	// 	- **id:*	- sorts the IP addresses by primary key.
+	//
+	// example:
+	//
+	// gmtModified
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	// The number of the page to return. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Default value: **10**.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The ID of the IP address blacklist rule for major event protection.
+	//
+	// example:
+	//
+	// 20013199
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The ID of the rule template for major event protection.
+	//
+	// example:
+	//
+	// 5673
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -8114,8 +12212,16 @@ type DescribeMajorProtectionBlackIpsResponseBody struct {
 	// An array of IP addresses in the IP address blacklist.
 	IpList []*DescribeMajorProtectionBlackIpsResponseBodyIpList `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 41631674-EEB0-5B02-BEB4-40A758E9B841
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of IP addresses in the blacklist.
+	//
+	// example:
+	//
+	// 63
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -8144,18 +12250,42 @@ func (s *DescribeMajorProtectionBlackIpsResponseBody) SetTotalCount(v int64) *De
 
 type DescribeMajorProtectionBlackIpsResponseBodyIpList struct {
 	// The description of the IP address in the blacklist.
+	//
+	// example:
+	//
+	// test0003asdffas
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The time after which the IP address blacklist becomes invalid. Unit: seconds.
 	//
 	// >  If the value of this parameter is **0**, the blacklist is permanently valid.
+	//
+	// example:
+	//
+	// 1662603328
 	ExpiredTime *int64 `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	// The most recent time when the IP address blacklist was modified.
+	//
+	// example:
+	//
+	// 1665456202000
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The IP address in the IP address blacklist.
+	//
+	// example:
+	//
+	// 192.0.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The ID of the IP address blacklist rule for major event protection.
+	//
+	// example:
+	//
+	// 8508970
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The ID of the rule template for major event protection.
+	//
+	// example:
+	//
+	// 9684
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -8229,22 +12359,47 @@ func (s *DescribeMajorProtectionBlackIpsResponse) SetBody(v *DescribeMajorProtec
 type DescribeMemberAccountsRequest struct {
 	// The status of the member that you want to query.
 	//
-	// *   **enabled**: managed.
-	// *   **disabled**: not managed.
-	// *   **disabling**: being deleted.
+	// 	- **enabled**: managed.
+	//
+	// 	- **disabled**: not managed.
+	//
+	// 	- **disabling**: being deleted.
+	//
+	// example:
+	//
+	// enabled
 	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland.
-	// *   **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The source IP address of the request. The system specifies this parameter.
+	//
+	// example:
+	//
+	// 0.0.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
@@ -8285,6 +12440,10 @@ type DescribeMemberAccountsResponseBody struct {
 	// The information about the member.
 	AccountInfos []*DescribeMemberAccountsResponseBodyAccountInfos `json:"AccountInfos,omitempty" xml:"AccountInfos,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 50C4A80D-D46C-57E0-9A7D-03C0****4852
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8308,18 +12467,40 @@ func (s *DescribeMemberAccountsResponseBody) SetRequestId(v string) *DescribeMem
 
 type DescribeMemberAccountsResponseBodyAccountInfos struct {
 	// The ID of the member.
+	//
+	// example:
+	//
+	// 169************21
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The name of the member.
+	//
+	// example:
+	//
+	// ipflgmqqnbjg
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The status of the member.
 	//
-	// *   **enabled**: managed.
-	// *   **disabled**: not managed.
-	// *   **disabling**: being deleted.
+	// 	- **enabled**: managed.
+	//
+	// 	- **disabled**: not managed.
+	//
+	// 	- **disabling**: being deleted.
+	//
+	// example:
+	//
+	// enabled
 	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
 	// The description of the member.
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The time when the member was added.
+	//
+	// example:
+	//
+	// 1683367751000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 }
 
@@ -8387,23 +12568,58 @@ func (s *DescribeMemberAccountsResponse) SetBody(v *DescribeMemberAccountsRespon
 
 type DescribePeakTrendRequest struct {
 	// The end of the time range to query. Unit: seconds. If you do not specify this parameter, the current time is used.
+	//
+	// example:
+	//
+	// 1665386340
 	EndTimestamp *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The time interval. Unit: seconds. The value must be an integral multiple of 60.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 300
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The protected object.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The beginning of the time range to query. Unit: seconds.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1665331200
 	StartTimestamp *string `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 }
 
@@ -8454,6 +12670,10 @@ type DescribePeakTrendResponseBody struct {
 	// An array of the QPS statistics of the WAF instance.
 	FlowChart []*DescribePeakTrendResponseBodyFlowChart `json:"FlowChart,omitempty" xml:"FlowChart,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 9D11AC3A-A10C-56E7-A342-E87EC892BAE2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8477,16 +12697,40 @@ func (s *DescribePeakTrendResponseBody) SetRequestId(v string) *DescribePeakTren
 
 type DescribePeakTrendResponseBodyFlowChart struct {
 	// The number of requests that are monitored or blocked by the custom rule (access control) module.
+	//
+	// example:
+	//
+	// 0
 	AclSum *int64 `json:"AclSum,omitempty" xml:"AclSum,omitempty"`
 	// The number of requests that are monitored or blocked by the scan protection module.
+	//
+	// example:
+	//
+	// 0
 	AntiScanSum *int64 `json:"AntiScanSum,omitempty" xml:"AntiScanSum,omitempty"`
 	// The number of requests that are monitored or blocked by the HTTP flood protection module.
+	//
+	// example:
+	//
+	// 0
 	CcSum *int64 `json:"CcSum,omitempty" xml:"CcSum,omitempty"`
 	// The total number of requests.
+	//
+	// example:
+	//
+	// 2622
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The serial number of the time interval. The serial numbers are arranged in chronological order.
+	//
+	// example:
+	//
+	// 10
 	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
 	// The number of requests that are monitored or blocked by the regular expression protection engine.
+	//
+	// example:
+	//
+	// 0
 	WafSum *int64 `json:"WafSum,omitempty" xml:"WafSum,omitempty"`
 }
 
@@ -8560,45 +12804,103 @@ func (s *DescribePeakTrendResponse) SetBody(v *DescribePeakTrendResponseBody) *D
 type DescribeProductInstancesRequest struct {
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-zxu****9d02
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the Alibaba Cloud account to which the resource belongs.
+	//
+	// example:
+	//
+	// 1704********9107
 	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
 	// The page number. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Default value: **10**.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland.
-	// *   **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// lb-2zeugkfj81jvo****4tqm
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
 	// The public IP address of the instance.
+	//
+	// example:
+	//
+	// 1.X.X.1
 	ResourceIp *string `json:"ResourceIp,omitempty" xml:"ResourceIp,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-aekz6ql****5uzi
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The name of the instance.
+	//
+	// example:
+	//
+	// exampleResourceName
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// The cloud service to which the instance belongs. Valid values:
 	//
-	// *   **clb4**: Layer 4 Classic Load Balancer (CLB).
-	// *   **clb7**: Layer 7 CLB.
-	// *   **ecs**: Elastic Compute Service (ECS).
+	// 	- **clb4**: Layer 4 Classic Load Balancer (CLB).
+	//
+	// 	- **clb7**: Layer 7 CLB.
+	//
+	// 	- **ecs**: Elastic Compute Service (ECS).
+	//
+	// example:
+	//
+	// clb7
 	ResourceProduct *string `json:"ResourceProduct,omitempty" xml:"ResourceProduct,omitempty"`
 	// The region ID of the instance. Valid values:
 	//
-	// *   **cn-chengdu**: China (Chengdu).
-	// *   **cn-beijing**: China (Beijing).
-	// *   **cn-zhangjiakou**: China (Zhangjiakou).
-	// *   **cn-hangzhou**: China (Hangzhou).
-	// *   **cn-shanghai**: China (Shanghai).
-	// *   **cn-shenzhen**: China (Shenzhen).
-	// *   **cn-qingdao**: China (Qingdao).
-	// *   **cn-hongkong**: China (Hong Kong).
-	// *   **ap-southeast-3**: Malaysia (Kuala Lumpur).
-	// *   **ap-southeast-5**: Indonesia (Jakarta).
+	// 	- **cn-chengdu**: China (Chengdu).
+	//
+	// 	- **cn-beijing**: China (Beijing).
+	//
+	// 	- **cn-zhangjiakou**: China (Zhangjiakou).
+	//
+	// 	- **cn-hangzhou**: China (Hangzhou).
+	//
+	// 	- **cn-shanghai**: China (Shanghai).
+	//
+	// 	- **cn-shenzhen**: China (Shenzhen).
+	//
+	// 	- **cn-qingdao**: China (Qingdao).
+	//
+	// 	- **cn-hongkong**: China (Hong Kong).
+	//
+	// 	- **ap-southeast-3**: Malaysia (Kuala Lumpur).
+	//
+	// 	- **ap-southeast-5**: Indonesia (Jakarta).
+	//
+	// example:
+	//
+	// cn-hangzhou
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
 }
 
@@ -8669,8 +12971,16 @@ type DescribeProductInstancesResponseBody struct {
 	// The information about the instances.
 	ProductInstances []*DescribeProductInstancesResponseBodyProductInstances `json:"ProductInstances,omitempty" xml:"ProductInstances,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// FDCBAE1E-2B3F-5C13-AD20-844B9473****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 100
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -8699,33 +13009,68 @@ func (s *DescribeProductInstancesResponseBody) SetTotalCount(v int64) *DescribeP
 
 type DescribeProductInstancesResponseBodyProductInstances struct {
 	// The ID of the Alibaba Cloud account to which the resource belongs.
+	//
+	// example:
+	//
+	// 1704********9107
 	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// i-2ze1tm4pvghp****cluv
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
 	// The public IP address of the instance.
+	//
+	// example:
+	//
+	// 1.X.X.1
 	ResourceIp *string `json:"ResourceIp,omitempty" xml:"ResourceIp,omitempty"`
 	// The name of the instance.
+	//
+	// example:
+	//
+	// ecs-test
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// The information about the ports.
 	ResourcePorts []*DescribeProductInstancesResponseBodyProductInstancesResourcePorts `json:"ResourcePorts,omitempty" xml:"ResourcePorts,omitempty" type:"Repeated"`
 	// The cloud service to which the instance belongs. Valid values:
 	//
-	// *   **clb4**: Layer 4 CLB.
-	// *   **clb7**: Layer 7 CLB.
-	// *   **ecs**: ECS.
+	// 	- **clb4**: Layer 4 CLB.
+	//
+	// 	- **clb7**: Layer 7 CLB.
+	//
+	// 	- **ecs**: ECS.
+	//
+	// example:
+	//
+	// clb4
 	ResourceProduct *string `json:"ResourceProduct,omitempty" xml:"ResourceProduct,omitempty"`
 	// The region ID of the instance. Valid values:
 	//
-	// *   **cn-chengdu**: China (Chengdu).
-	// *   **cn-beijing**: China (Beijing).
-	// *   **cn-zhangjiakou**: China (Zhangjiakou).
-	// *   **cn-hangzhou**: China (Hangzhou).
-	// *   **cn-shanghai**: China (Shanghai).
-	// *   **cn-shenzhen**: China (Shenzhen).
-	// *   **cn-qingdao**: China (Qingdao).
-	// *   **cn-hongkong**: China (Hong Kong).
-	// *   **ap-southeast-3**: Malaysia (Kuala Lumpur).
-	// *   **ap-southeast-5**: Indonesia (Jakarta).
+	// 	- **cn-chengdu**: China (Chengdu).
+	//
+	// 	- **cn-beijing**: China (Beijing).
+	//
+	// 	- **cn-zhangjiakou**: China (Zhangjiakou).
+	//
+	// 	- **cn-hangzhou**: China (Hangzhou).
+	//
+	// 	- **cn-shanghai**: China (Shanghai).
+	//
+	// 	- **cn-shenzhen**: China (Shenzhen).
+	//
+	// 	- **cn-qingdao**: China (Qingdao).
+	//
+	// 	- **cn-hongkong**: China (Hong Kong).
+	//
+	// 	- **ap-southeast-3**: Malaysia (Kuala Lumpur).
+	//
+	// 	- **ap-southeast-5**: Indonesia (Jakarta).
+	//
+	// example:
+	//
+	// cn-beijing
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
 }
 
@@ -8776,11 +13121,20 @@ type DescribeProductInstancesResponseBodyProductInstancesResourcePorts struct {
 	// The information about the certificates.
 	Certificates []*DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
 	// The port number.
+	//
+	// example:
+	//
+	// 443
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The protocol type. Valid values:
 	//
-	// *   **http**
-	// *   **https**
+	// 	- **http**
+	//
+	// 	- **https**
+	//
+	// example:
+	//
+	// https
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 
@@ -8809,8 +13163,16 @@ func (s *DescribeProductInstancesResponseBodyProductInstancesResourcePorts) SetP
 
 type DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertificates struct {
 	// The ID of the certificate.
+	//
+	// example:
+	//
+	// 10106183
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 	// The name of the certificate.
+	//
+	// example:
+	//
+	// trafficxxxx.cn
 	CertificateName *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
 }
 
@@ -8866,14 +13228,29 @@ type DescribePunishedDomainsRequest struct {
 	Domains []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-uqm****qa07
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland.
-	// *   **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-aekz7nc****aata
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
@@ -8909,6 +13286,10 @@ type DescribePunishedDomainsResponseBody struct {
 	// The domain names that are penalized for failing to obtain an ICP filing.
 	PunishedDomains []*string `json:"PunishedDomains,omitempty" xml:"PunishedDomains,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// B1F4D802-55A1-5D53-A247-7E79****85E7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8962,20 +13343,47 @@ func (s *DescribePunishedDomainsResponse) SetBody(v *DescribePunishedDomainsResp
 type DescribeResourceInstanceCertsRequest struct {
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v2_public_cn-*
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The page number. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Default value: **10**.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland.
-	// *   **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// lb-bp1*****jqnnqk5uj2p
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
@@ -9021,8 +13429,16 @@ type DescribeResourceInstanceCertsResponseBody struct {
 	// The certificates.
 	Certs []*DescribeResourceInstanceCertsResponseBodyCerts `json:"Certs,omitempty" xml:"Certs,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// D7861F61-***-6B19160D5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -9051,18 +13467,46 @@ func (s *DescribeResourceInstanceCertsResponseBody) SetTotalCount(v int64) *Desc
 
 type DescribeResourceInstanceCertsResponseBodyCerts struct {
 	// The time when the certificate expires.
+	//
+	// example:
+	//
+	// 1708415521211
 	AfterDate *int64 `json:"AfterDate,omitempty" xml:"AfterDate,omitempty"`
 	// The time when the certificate was issued.
+	//
+	// example:
+	//
+	// 1708415521211
 	BeforeDate *int64 `json:"BeforeDate,omitempty" xml:"BeforeDate,omitempty"`
 	// The globally unique ID of the certificate. The value is in the "Certificate ID-cn-hangzhou" format. For example, if the ID of the certificate is 123, the value of CertIdentifier is 123-cn-hangzhou.
+	//
+	// example:
+	//
+	// 123-cn-hangzhou
 	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
 	// The name of the certificate.
+	//
+	// example:
+	//
+	// demoCertName
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
 	// The common name.
+	//
+	// example:
+	//
+	// *.aliyundemo.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
 	// The domain name for which the certificate is issued.
+	//
+	// example:
+	//
+	// waf.aliyundemo.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// Indicates whether the certificate chain is complete.
+	//
+	// example:
+	//
+	// true
 	IsChainCompleted *bool `json:"IsChainCompleted,omitempty" xml:"IsChainCompleted,omitempty"`
 }
 
@@ -9141,16 +13585,37 @@ func (s *DescribeResourceInstanceCertsResponse) SetBody(v *DescribeResourceInsta
 type DescribeResourceLogStatusRequest struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-zz11zcl****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The protected object that you want to query. You can specify multiple protected objects. Separate the protected objects with commas (,).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alb-wewbb23dfsetetcic1242-0****,alb-wewbb23dfsetetcic1242-1****
 	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
 }
 
@@ -9184,6 +13649,10 @@ func (s *DescribeResourceLogStatusRequest) SetResources(v string) *DescribeResou
 
 type DescribeResourceLogStatusResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0DABF8AB-2321-5F8D-A8D7-922D757FBFFE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The returned result.
 	Result []*DescribeResourceLogStatusResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
@@ -9209,11 +13678,20 @@ func (s *DescribeResourceLogStatusResponseBody) SetResult(v []*DescribeResourceL
 
 type DescribeResourceLogStatusResponseBodyResult struct {
 	// The protected object.
+	//
+	// example:
+	//
+	// alb-wewbb23dfsetetcic****
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	// Indicates whether the log collection feature is enabled for the protected object. Valid values:
 	//
-	// *   **true:** The log collection feature is enabled.
-	// *   **false:** The log collection feature is disabled.
+	// 	- **true:*	- The log collection feature is enabled.
+	//
+	// 	- **false:*	- The log collection feature is disabled.
+	//
+	// example:
+	//
+	// true
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -9267,16 +13745,37 @@ func (s *DescribeResourceLogStatusResponse) SetBody(v *DescribeResourceLogStatus
 type DescribeResourcePortRequest struct {
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the cloud service instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8vb40vj87znu3ai7l5lv4-80****
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
@@ -9310,6 +13809,10 @@ func (s *DescribeResourcePortRequest) SetResourceManagerResourceGroupId(v string
 
 type DescribeResourcePortResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 66A98669-CC6E-4F3E-80A6-3014697B11AE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// An array of HTTP and HTTPS listener ports that are added to the WAF instance.
 	ResourcePorts []*string `json:"ResourcePorts,omitempty" xml:"ResourcePorts,omitempty" type:"Repeated"`
@@ -9365,14 +13868,29 @@ func (s *DescribeResourcePortResponse) SetBody(v *DescribeResourcePortResponseBo
 type DescribeResourceRegionIdRequest struct {
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland.
-	// *   **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-aek2lrm****6pnq
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
@@ -9401,6 +13919,10 @@ func (s *DescribeResourceRegionIdRequest) SetResourceManagerResourceGroupId(v st
 
 type DescribeResourceRegionIdResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F5905D3F-F674-5177-9E48-466DD3B8****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The region IDs.
 	ResourceRegionIds []*string `json:"ResourceRegionIds,omitempty" xml:"ResourceRegionIds,omitempty" type:"Repeated"`
@@ -9456,14 +13978,29 @@ func (s *DescribeResourceRegionIdResponse) SetBody(v *DescribeResourceRegionIdRe
 type DescribeResourceSupportRegionsRequest struct {
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland.
-	// *   **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-aekzpks****kdjq
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
@@ -9492,6 +14029,10 @@ func (s *DescribeResourceSupportRegionsRequest) SetResourceManagerResourceGroupI
 
 type DescribeResourceSupportRegionsResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 58FDF266-3D56-5DE8-91E0-96A26B****DD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The region IDs.
 	SupportRegions []*string `json:"SupportRegions,omitempty" xml:"SupportRegions,omitempty" type:"Repeated"`
@@ -9546,28 +14087,70 @@ func (s *DescribeResourceSupportRegionsResponse) SetBody(v *DescribeResourceSupp
 
 type DescribeResponseCodeTrendGraphRequest struct {
 	// The end of the time range to query. Unit: seconds. If you do not specify this parameter, the current time is used.
+	//
+	// example:
+	//
+	// 1665386280
 	EndTimestamp *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The time interval. Unit: seconds. The value must be an integral multiple of 60.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 300
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The ID of the region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The protected object.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The beginning of the time range to query. Unit: seconds.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1665331200
 	StartTimestamp *string `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 	// The type of the error codes. Valid values:
 	//
-	// *   **waf:** error codes that are returned to clients from WAF.
-	// *   **upstream:** error codes that are returned to WAF from the origin server.
+	// 	- **waf:*	- error codes that are returned to clients from WAF.
+	//
+	// 	- **upstream:*	- error codes that are returned to WAF from the origin server.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -9621,6 +14204,10 @@ func (s *DescribeResponseCodeTrendGraphRequest) SetType(v string) *DescribeRespo
 
 type DescribeResponseCodeTrendGraphResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 7D46493E-84DD-58CE-80A7-8643****9ECC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The array of the statistics of the error codes.
 	ResponseCodes []*DescribeResponseCodeTrendGraphResponseBodyResponseCodes `json:"ResponseCodes,omitempty" xml:"ResponseCodes,omitempty" type:"Repeated"`
@@ -9646,16 +14233,40 @@ func (s *DescribeResponseCodeTrendGraphResponseBody) SetResponseCodes(v []*Descr
 
 type DescribeResponseCodeTrendGraphResponseBodyResponseCodes struct {
 	// The number of 302 error codes that are returned.
+	//
+	// example:
+	//
+	// 0
 	Code302Pv *int64 `json:"302Pv,omitempty" xml:"302Pv,omitempty"`
 	// The number of 405 error codes that are returned.
+	//
+	// example:
+	//
+	// 121645464
 	Code405Pv *int64 `json:"405Pv,omitempty" xml:"405Pv,omitempty"`
 	// The number of 444 error codes that are returned.
+	//
+	// example:
+	//
+	// 0
 	Code444Pv *int64 `json:"444Pv,omitempty" xml:"444Pv,omitempty"`
 	// The number of 499 error codes that are returned.
+	//
+	// example:
+	//
+	// 0
 	Code499Pv *int64 `json:"499Pv,omitempty" xml:"499Pv,omitempty"`
 	// The number of 5xx error codes that are returned.
+	//
+	// example:
+	//
+	// 2932
 	Code5xxPv *int64 `json:"5xxPv,omitempty" xml:"5xxPv,omitempty"`
 	// The serial number of the time interval. The serial numbers are arranged in chronological order.
+	//
+	// example:
+	//
+	// 10
 	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
 }
 
@@ -9729,25 +14340,57 @@ func (s *DescribeResponseCodeTrendGraphResponse) SetBody(v *DescribeResponseCode
 type DescribeRuleGroupsRequest struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of the page to return. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Default value: **10**.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The type of the query condition. Valid values:
 	//
-	// *   **id:** queries regular expression rule groups by ID.
-	// *   **name:** queries regular expression rule groups by name.
+	// 	- **id:*	- queries regular expression rule groups by ID.
+	//
+	// 	- **name:*	- queries regular expression rule groups by name.
+	//
+	// example:
+	//
+	// name
 	SearchType *string `json:"SearchType,omitempty" xml:"SearchType,omitempty"`
 	// The query condition.
+	//
+	// example:
+	//
+	// test
 	SearchValue *string `json:"SearchValue,omitempty" xml:"SearchValue,omitempty"`
 }
 
@@ -9796,10 +14439,18 @@ func (s *DescribeRuleGroupsRequest) SetSearchValue(v string) *DescribeRuleGroups
 
 type DescribeRuleGroupsResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 02E9A4B8-90FB-5F41-A049-C82277EB82FB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// An array of regular expression rule groups.
 	RuleGroups []*DescribeRuleGroupsResponseBodyRuleGroups `json:"RuleGroups,omitempty" xml:"RuleGroups,omitempty" type:"Repeated"`
 	// The total number of entries that are returned.
+	//
+	// example:
+	//
+	// 24
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -9828,24 +14479,52 @@ func (s *DescribeRuleGroupsResponseBody) SetTotalCount(v int64) *DescribeRuleGro
 
 type DescribeRuleGroupsResponseBodyRuleGroups struct {
 	// The most recent time when the rule group was modified.
+	//
+	// example:
+	//
+	// 1664336364000
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// Indicates whether the automatic update feature is enabled for the rule group.
 	//
-	// *   1: The automatic update feature is enabled for the rule group.
-	// *   2: The automatic update feature is disabled for the rule group.
+	// 	- 1: The automatic update feature is enabled for the rule group.
+	//
+	// 	- 2: The automatic update feature is disabled for the rule group.
+	//
+	// example:
+	//
+	// 1
 	IsSubscribe *int32 `json:"IsSubscribe,omitempty" xml:"IsSubscribe,omitempty"`
 	// The ID of the rule group.
 	//
-	// *   0: The rule group is created from scratch.
-	// *   1011: The rule group is a strict rule group.
-	// *   1012: The rule group is a medium rule group.
-	// *   1013: The rue group is a loose rule group.
+	// 	- 0: The rule group is created from scratch.
+	//
+	// 	- 1011: The rule group is a strict rule group.
+	//
+	// 	- 1012: The rule group is a medium rule group.
+	//
+	// 	- 1013: The rue group is a loose rule group.
+	//
+	// example:
+	//
+	// 1012
 	ParentRuleGroupId *int64 `json:"ParentRuleGroupId,omitempty" xml:"ParentRuleGroupId,omitempty"`
 	// The ID of the regular expression rule group.
+	//
+	// example:
+	//
+	// 115361
 	RuleGroupId *int64 `json:"RuleGroupId,omitempty" xml:"RuleGroupId,omitempty"`
 	// The name of the rule group.
+	//
+	// example:
+	//
+	// ssssss
 	RuleGroupName *string `json:"RuleGroupName,omitempty" xml:"RuleGroupName,omitempty"`
 	// The number of built-in rules in the rule group.
+	//
+	// example:
+	//
+	// 4444
 	RuleTotalCount *int32 `json:"RuleTotalCount,omitempty" xml:"RuleTotalCount,omitempty"`
 }
 
@@ -9918,29 +14597,66 @@ func (s *DescribeRuleGroupsResponse) SetBody(v *DescribeRuleGroupsResponseBody) 
 
 type DescribeRuleHitsTopClientIpRequest struct {
 	// The end of the time range to query. Unit: seconds. If you do not specify this parameter, the current time is used.
+	//
+	// example:
+	//
+	// 1665386280
 	EndTimestamp *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The protected object.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The type of rules that are triggered by the protected object. By default, this parameter is not specified and all types of rules are queried.
 	//
-	// *   **blacklist:** IP address blacklist rules.
-	// *   **custom:** custom rules.
-	// *   **antiscan:** scan protection rules.
-	// *   **cc_system:** HTTP flood protection rules.
-	// *   **region_block:** region blacklist rules.
+	// 	- **blacklist:*	- IP address blacklist rules.
+	//
+	// 	- **custom:*	- custom rules.
+	//
+	// 	- **antiscan:*	- scan protection rules.
+	//
+	// 	- **cc_system:*	- HTTP flood protection rules.
+	//
+	// 	- **region_block:*	- region blacklist rules.
+	//
+	// example:
+	//
+	// blacklist
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 	// The beginning of the time range to query. Unit: seconds.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1665331200
 	StartTimestamp *string `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 }
 
@@ -9989,6 +14705,10 @@ func (s *DescribeRuleHitsTopClientIpRequest) SetStartTimestamp(v string) *Descri
 
 type DescribeRuleHitsTopClientIpResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 9F0F9AD6-62E2-50BB-A3E5-30FFB9410262
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The array of the top 10 IP addresses from which attacks are initiated.
 	RuleHitsTopClientIp []*DescribeRuleHitsTopClientIpResponseBodyRuleHitsTopClientIp `json:"RuleHitsTopClientIp,omitempty" xml:"RuleHitsTopClientIp,omitempty" type:"Repeated"`
@@ -10014,8 +14734,16 @@ func (s *DescribeRuleHitsTopClientIpResponseBody) SetRuleHitsTopClientIp(v []*De
 
 type DescribeRuleHitsTopClientIpResponseBodyRuleHitsTopClientIp struct {
 	// The IP address of the service client.
+	//
+	// example:
+	//
+	// 3.3.XX.XX
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
 	// The number of attacks that are initiated from the IP address.
+	//
+	// example:
+	//
+	// 531
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 }
 
@@ -10068,27 +14796,60 @@ func (s *DescribeRuleHitsTopClientIpResponse) SetBody(v *DescribeRuleHitsTopClie
 
 type DescribeRuleHitsTopResourceRequest struct {
 	// The end of the time range to query. Unit: seconds. If you do not specify this parameter, the current time is used.
+	//
+	// example:
+	//
+	// 1665386340
 	EndTimestamp *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The type of rules that are triggered by the protected object. By default, this parameter is not specified and all types of rules are queried.
 	//
-	// *   **blacklist:** IP address blacklist rules.
-	// *   **custom:** custom rules.
-	// *   **antiscan:** scan protection rules.
-	// *   **cc_system:** HTTP flood protection rules.
-	// *   **region_block:** region blacklist rules.
+	// 	- **blacklist:*	- IP address blacklist rules.
+	//
+	// 	- **custom:*	- custom rules.
+	//
+	// 	- **antiscan:*	- scan protection rules.
+	//
+	// 	- **cc_system:*	- HTTP flood protection rules.
+	//
+	// 	- **region_block:*	- region blacklist rules.
+	//
+	// example:
+	//
+	// blacklist
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 	// The beginning of the time range to query. Unit: seconds.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1665331200
 	StartTimestamp *string `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 }
 
@@ -10132,6 +14893,10 @@ func (s *DescribeRuleHitsTopResourceRequest) SetStartTimestamp(v string) *Descri
 
 type DescribeRuleHitsTopResourceResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// ADA11BC7-AA95-5C31-9095-5802C02ED1DC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The array of the top 10 protected objects that trigger protection rules.
 	RuleHitsTopResource []*DescribeRuleHitsTopResourceResponseBodyRuleHitsTopResource `json:"RuleHitsTopResource,omitempty" xml:"RuleHitsTopResource,omitempty" type:"Repeated"`
@@ -10157,8 +14922,16 @@ func (s *DescribeRuleHitsTopResourceResponseBody) SetRuleHitsTopResource(v []*De
 
 type DescribeRuleHitsTopResourceResponseBodyRuleHitsTopResource struct {
 	// The number of requests that match protection rules.
+	//
+	// example:
+	//
+	// 14219
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The protected object.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 }
 
@@ -10211,34 +14984,76 @@ func (s *DescribeRuleHitsTopResourceResponse) SetBody(v *DescribeRuleHitsTopReso
 
 type DescribeRuleHitsTopRuleIdRequest struct {
 	// The end of the time range to query. Unit: seconds. If you do not specify this parameter, the current time is used.
+	//
+	// example:
+	//
+	// 1665386280
 	EndTimestamp *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Specifies whether protected objects that trigger protection rules are returned in the response. Valid values
 	//
 	// - **true**: returns only the number of times each protection rule is triggered. If you set IsGroupResource to true, Resource is left empty.
+	//
 	// - **false**: returns the number of times each protection rule is triggered by each protected object.
+	//
+	// example:
+	//
+	// true
 	IsGroupResource *string `json:"IsGroupResource,omitempty" xml:"IsGroupResource,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The protected object.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The type of rules that are triggered by the protected object. By default, this parameter is not specified and all types of rules are queried.
 	//
-	// *   **blacklist:** IP address blacklist rules.
-	// *   **custom:** custom rules.
-	// *   **antiscan:** scan protection rules.
-	// *   **cc_system:** HTTP flood protection rules.
-	// *   **region_block:** region blacklist rules.
+	// 	- **blacklist:*	- IP address blacklist rules.
+	//
+	// 	- **custom:*	- custom rules.
+	//
+	// 	- **antiscan:*	- scan protection rules.
+	//
+	// 	- **cc_system:*	- HTTP flood protection rules.
+	//
+	// 	- **region_block:*	- region blacklist rules.
+	//
+	// example:
+	//
+	// blacklist
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 	// The beginning of the time range to query. Unit: seconds.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1665331200
 	StartTimestamp *string `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 }
 
@@ -10292,6 +15107,10 @@ func (s *DescribeRuleHitsTopRuleIdRequest) SetStartTimestamp(v string) *Describe
 
 type DescribeRuleHitsTopRuleIdResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F6334274-8870-5D2F-A1AD-D6EF885AC1ED
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The array of the IDs of the top 10 rules that are matched by requests.
 	RuleHitsTopRuleId []*DescribeRuleHitsTopRuleIdResponseBodyRuleHitsTopRuleId `json:"RuleHitsTopRuleId,omitempty" xml:"RuleHitsTopRuleId,omitempty" type:"Repeated"`
@@ -10317,10 +15136,22 @@ func (s *DescribeRuleHitsTopRuleIdResponseBody) SetRuleHitsTopRuleId(v []*Descri
 
 type DescribeRuleHitsTopRuleIdResponseBodyRuleHitsTopRuleId struct {
 	// The number of requests that match the rule.
+	//
+	// example:
+	//
+	// 181174784
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The protected object.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	// The ID of the rule.
+	//
+	// example:
+	//
+	// 5465465
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
@@ -10378,19 +15209,44 @@ func (s *DescribeRuleHitsTopRuleIdResponse) SetBody(v *DescribeRuleHitsTopRuleId
 
 type DescribeRuleHitsTopTuleTypeRequest struct {
 	// The end point of the time period for which to query. Unit: seconds. If you do not specify this parameter, the current time is used.
+	//
+	// example:
+	//
+	// 1665386280
 	EndTimestamp *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou**: the Chinese mainland.
-	// *   **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **cn-hangzhou**: the Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The protected object.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	// The start point of the time period for which to query. Unit: seconds.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1665331200
 	StartTimestamp *string `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 }
 
@@ -10429,6 +15285,10 @@ func (s *DescribeRuleHitsTopTuleTypeRequest) SetStartTimestamp(v string) *Descri
 
 type DescribeRuleHitsTopTuleTypeResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 45E377CE-0B04-578E-B653-EEA63CFE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The top 10 protection modules that are matched.
 	RuleHitsTopTuleType []*DescribeRuleHitsTopTuleTypeResponseBodyRuleHitsTopTuleType `json:"RuleHitsTopTuleType,omitempty" xml:"RuleHitsTopTuleType,omitempty" type:"Repeated"`
@@ -10454,17 +15314,32 @@ func (s *DescribeRuleHitsTopTuleTypeResponseBody) SetRuleHitsTopTuleType(v []*De
 
 type DescribeRuleHitsTopTuleTypeResponseBodyRuleHitsTopTuleType struct {
 	// The number of requests that match protection rules.
+	//
+	// example:
+	//
+	// 698455
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The type of rule that is matched. By default, this parameter is not returned. This indicates that all types of rules that are matched are returned.
 	//
-	// *   **waf:** basic protection rules.
-	// *   **blacklist:** IP address blacklist rules.
-	// *   **custom:** custom rules.
-	// *   **antiscan:** scan protection rules.
-	// *   **cc_system:** HTTP flood protection rules.
-	// *   **region_block:** region blacklist rules.
-	// *   **scene:** bot management rules.
-	// *   **dlp:** data leakage prevention rules.
+	// 	- **waf:*	- basic protection rules.
+	//
+	// 	- **blacklist:*	- IP address blacklist rules.
+	//
+	// 	- **custom:*	- custom rules.
+	//
+	// 	- **antiscan:*	- scan protection rules.
+	//
+	// 	- **cc_system:*	- HTTP flood protection rules.
+	//
+	// 	- **region_block:*	- region blacklist rules.
+	//
+	// 	- **scene:*	- bot management rules.
+	//
+	// 	- **dlp:*	- data leakage prevention rules.
+	//
+	// example:
+	//
+	// cc_system
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 }
 
@@ -10517,21 +15392,50 @@ func (s *DescribeRuleHitsTopTuleTypeResponse) SetBody(v *DescribeRuleHitsTopTule
 
 type DescribeRuleHitsTopUaRequest struct {
 	// The end of the time range to query. Unit: seconds. If you do not specify this parameter, the current time is used.
+	//
+	// example:
+	//
+	// 1665386280
 	EndTimestamp *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The protected object.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The beginning of the time range to query. Unit: seconds.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1665331200
 	StartTimestamp *string `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 }
 
@@ -10575,6 +15479,10 @@ func (s *DescribeRuleHitsTopUaRequest) SetStartTimestamp(v string) *DescribeRule
 
 type DescribeRuleHitsTopUaResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 8E5C7ED7-503A-5986-A005-36F2511EB89F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The array of the top 10 user agents that are used to initiate attacks.
 	RuleHitsTopUa []*DescribeRuleHitsTopUaResponseBodyRuleHitsTopUa `json:"RuleHitsTopUa,omitempty" xml:"RuleHitsTopUa,omitempty" type:"Repeated"`
@@ -10600,8 +15508,16 @@ func (s *DescribeRuleHitsTopUaResponseBody) SetRuleHitsTopUa(v []*DescribeRuleHi
 
 type DescribeRuleHitsTopUaResponseBodyRuleHitsTopUa struct {
 	// The number of attacks that are initiated from the IP address.
+	//
+	// example:
+	//
+	// 531
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The user agent.
+	//
+	// example:
+	//
+	// android
 	Ua *string `json:"Ua,omitempty" xml:"Ua,omitempty"`
 }
 
@@ -10654,29 +15570,68 @@ func (s *DescribeRuleHitsTopUaResponse) SetBody(v *DescribeRuleHitsTopUaResponse
 
 type DescribeRuleHitsTopUrlRequest struct {
 	// The end of the time range to query. Unit: seconds. If you do not specify this parameter, the current time is used.
+	//
+	// example:
+	//
+	// 1665386280
 	EndTimestamp *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The protected object.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The type of rules that are triggered by the protected object. By default, this parameter is not specified and all types of rules are queried.
 	//
-	// *   **blacklist:** IP address blacklist rules.
-	// *   **custom:** custom rules.
-	// *   **antiscan:** scan protection rules.
-	// *   **cc_system:** HTTP flood protection rules.
-	// *   **region_block:** region blacklist rules.
+	// 	- **blacklist:*	- IP address blacklist rules.
+	//
+	// 	- **custom:*	- custom rules.
+	//
+	// 	- **antiscan:*	- scan protection rules.
+	//
+	// 	- **cc_system:*	- HTTP flood protection rules.
+	//
+	// 	- **region_block:*	- region blacklist rules.
+	//
+	// example:
+	//
+	// blacklist
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 	// The beginning of the time range to query. Unit: seconds.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1665331200
 	StartTimestamp *string `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 }
 
@@ -10725,6 +15680,10 @@ func (s *DescribeRuleHitsTopUrlRequest) SetStartTimestamp(v string) *DescribeRul
 
 type DescribeRuleHitsTopUrlResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 3D8AF43B-08EB-51CE-B33A-93AAEF3F9B0C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The array of the top 10 URLs that trigger protection rules.
 	RuleHitsTopUrl []*DescribeRuleHitsTopUrlResponseBodyRuleHitsTopUrl `json:"RuleHitsTopUrl,omitempty" xml:"RuleHitsTopUrl,omitempty" type:"Repeated"`
@@ -10750,8 +15709,16 @@ func (s *DescribeRuleHitsTopUrlResponseBody) SetRuleHitsTopUrl(v []*DescribeRule
 
 type DescribeRuleHitsTopUrlResponseBodyRuleHitsTopUrl struct {
 	// The number of requests from the URL that match protection rules.
+	//
+	// example:
+	//
+	// 21862
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The request URL.
+	//
+	// example:
+	//
+	// www.aliyundoc.com/path3
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
@@ -10805,14 +15772,29 @@ func (s *DescribeRuleHitsTopUrlResponse) SetBody(v *DescribeRuleHitsTopUrlRespon
 type DescribeSlsAuthStatusRequest struct {
 	// The ID of the WAF instance.
 	//
-	// > You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-g4t3g****04
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-aek2okfav****iq
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
@@ -10841,11 +15823,20 @@ func (s *DescribeSlsAuthStatusRequest) SetResourceManagerResourceGroupId(v strin
 
 type DescribeSlsAuthStatusResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 3589D3A3-4A04-51CB-AA89-353ED20A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether WAF is authorized to access Logstores. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -10899,14 +15890,29 @@ func (s *DescribeSlsAuthStatusResponse) SetBody(v *DescribeSlsAuthStatusResponse
 type DescribeSlsLogStoreRequest struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-zpr3d****0o
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland.
-	// *   **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-aek2wf3mn****vq
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
@@ -10935,16 +15941,40 @@ func (s *DescribeSlsLogStoreRequest) SetResourceManagerResourceGroupId(v string)
 
 type DescribeSlsLogStoreResponseBody struct {
 	// The name of the Logstore.
+	//
+	// example:
+	//
+	// wafng-logstore
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
 	// The name of the Simple Log Service project.
+	//
+	// example:
+	//
+	// wafng-project-14316572********-cn-hangzhou
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// The capacity of the Logstore. Unit: bytes.
+	//
+	// example:
+	//
+	// 3298534883328
 	Quota *int64 `json:"Quota,omitempty" xml:"Quota,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// CAC0A24B-486A-5E12-9894-BE860E5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The storage duration of the Logstore. Unit: days.
+	//
+	// example:
+	//
+	// 180
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
 	// The used capacity of the Logstore. Unit: bytes.
+	//
+	// example:
+	//
+	// 35471136
 	Used *int64 `json:"Used,omitempty" xml:"Used,omitempty"`
 }
 
@@ -11018,14 +16048,29 @@ func (s *DescribeSlsLogStoreResponse) SetBody(v *DescribeSlsLogStoreResponseBody
 type DescribeSlsLogStoreStatusRequest struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// > You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v2_public_cn-uqm35****02
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfmzedqv****ma
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
@@ -11055,10 +16100,19 @@ func (s *DescribeSlsLogStoreStatusRequest) SetResourceManagerResourceGroupId(v s
 type DescribeSlsLogStoreStatusResponseBody struct {
 	// Indicates whether a Logstore is created for WAF. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	ExistStatus *bool `json:"ExistStatus,omitempty" xml:"ExistStatus,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 184F538F-C115-5C89-A4EF-C79CD2E29AC7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11112,16 +16166,37 @@ func (s *DescribeSlsLogStoreStatusResponse) SetBody(v *DescribeSlsLogStoreStatus
 type DescribeTemplateResourceCountRequest struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-lbj****gx08
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland.
-	// *   **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-aekzwwkpn****5i
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The IDs of the protection templates that you want to query. Separate multiple template IDs with commas (,).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345,12346
 	TemplateIds *string `json:"TemplateIds,omitempty" xml:"TemplateIds,omitempty"`
 }
 
@@ -11155,6 +16230,10 @@ func (s *DescribeTemplateResourceCountRequest) SetTemplateIds(v string) *Describ
 
 type DescribeTemplateResourceCountResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// B8064433-9781-5E86-806E-C1DD****1D95
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The number of protected objects or protected object groups for which the protection template takes effect.
 	ResourceCount []*DescribeTemplateResourceCountResponseBodyResourceCount `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty" type:"Repeated"`
@@ -11180,10 +16259,22 @@ func (s *DescribeTemplateResourceCountResponseBody) SetResourceCount(v []*Descri
 
 type DescribeTemplateResourceCountResponseBodyResourceCount struct {
 	// The number of protected object groups.
+	//
+	// example:
+	//
+	// 30
 	GroupCount *int32 `json:"GroupCount,omitempty" xml:"GroupCount,omitempty"`
 	// The number of protected objects.
+	//
+	// example:
+	//
+	// 30
 	SingleCount *int32 `json:"SingleCount,omitempty" xml:"SingleCount,omitempty"`
 	// The ID of the protection template.
+	//
+	// example:
+	//
+	// 12345
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -11242,21 +16333,49 @@ func (s *DescribeTemplateResourceCountResponse) SetBody(v *DescribeTemplateResou
 type DescribeTemplateResourcesRequest struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The type of the protected resource. Valid values:
 	//
-	// *   **single:** protected object.
-	// *   **group:** protected object group.
+	// 	- **single:*	- protected object.
+	//
+	// 	- **group:*	- protected object group.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// single
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The ID of the protection rule template.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1020
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -11295,6 +16414,10 @@ func (s *DescribeTemplateResourcesRequest) SetTemplateId(v int64) *DescribeTempl
 
 type DescribeTemplateResourcesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C7BC9373-3960-53B0-8968-2B13454AE18F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// An array of protected objects or protected object groups that are associated to the protection rule template.
 	Resources []*string `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
@@ -11350,14 +16473,29 @@ func (s *DescribeTemplateResourcesResponse) SetBody(v *DescribeTemplateResources
 type DescribeUserSlsLogRegionsRequest struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v2_public_cn-uqm2z****0a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou:** Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
@@ -11388,6 +16526,10 @@ type DescribeUserSlsLogRegionsResponseBody struct {
 	// The region IDs.
 	LogRegions []*string `json:"LogRegions,omitempty" xml:"LogRegions,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9D11AC3A-A10C-56E7-A342-E87EC892****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11441,14 +16583,29 @@ func (s *DescribeUserSlsLogRegionsResponse) SetBody(v *DescribeUserSlsLogRegions
 type DescribeUserWafLogStatusRequest struct {
 	// The ID of the WAF instance.
 	//
-	// > You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-nwy34****0j
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland.
-	// *   **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
@@ -11478,40 +16635,79 @@ func (s *DescribeUserWafLogStatusRequest) SetResourceManagerResourceGroupId(v st
 type DescribeUserWafLogStatusResponseBody struct {
 	// The ID of the region where WAF logs are stored. Valid values:
 	//
-	// *   **cn-hangzhou**: China (Hangzhou).
-	// *   **cn-beijing**: China (Beijing).
-	// *   **cn-hongkong**: China (Hong Kong).
-	// *   **ap-southeast-1**: Singapore.
-	// *   **ap-southeast-2**: Australia (Sydney).
-	// *   **ap-southeast-3**: Malaysia (Kuala Lumpur).
-	// *   **ap-southeast-5**: Indonesia (Jakarta).
-	// *   **ap-southeast-6**: Philippines (Manila).
-	// *   **ap-southeast-7**: Thailand (Bangkok).
-	// *   **me-east-1**: UAE (Dubai).
-	// *   **eu-central-1**: Germany (Frankfurt).
-	// *   **us-east-1**: US (Virginia).
-	// *   **us-west-1**: US (Silicon Valley).
-	// *   **ap-northeast-1**: Japan (Tokyo).
-	// *   **ap-northeast-2**: South Korea (Seoul).
-	// *   **ap-south-1**: India (Mumbai).
-	// *   **eu-west-1**: UK (London).
-	// *   **cn-hangzhou-finance**: China East 1 Finance.
-	// *   **cn-shanghai-finance-1**: China East 2 Finance.
-	// *   **cn-shenzhen-finance**: China South 1 Finance.
+	// 	- **cn-hangzhou**: China (Hangzhou).
+	//
+	// 	- **cn-beijing**: China (Beijing).
+	//
+	// 	- **cn-hongkong**: China (Hong Kong).
+	//
+	// 	- **ap-southeast-1**: Singapore.
+	//
+	// 	- **ap-southeast-2**: Australia (Sydney).
+	//
+	// 	- **ap-southeast-3**: Malaysia (Kuala Lumpur).
+	//
+	// 	- **ap-southeast-5**: Indonesia (Jakarta).
+	//
+	// 	- **ap-southeast-6**: Philippines (Manila).
+	//
+	// 	- **ap-southeast-7**: Thailand (Bangkok).
+	//
+	// 	- **me-east-1**: UAE (Dubai).
+	//
+	// 	- **eu-central-1**: Germany (Frankfurt).
+	//
+	// 	- **us-east-1**: US (Virginia).
+	//
+	// 	- **us-west-1**: US (Silicon Valley).
+	//
+	// 	- **ap-northeast-1**: Japan (Tokyo).
+	//
+	// 	- **ap-northeast-2**: South Korea (Seoul).
+	//
+	// 	- **ap-south-1**: India (Mumbai).
+	//
+	// 	- **eu-west-1**: UK (London).
+	//
+	// 	- **cn-hangzhou-finance**: China East 1 Finance.
+	//
+	// 	- **cn-shanghai-finance-1**: China East 2 Finance.
+	//
+	// 	- **cn-shenzhen-finance**: China South 1 Finance.
 	//
 	// >  The China East 1 Finance, China East 2 Finance, and China South 1 Finance regions are available only for Alibaba Finance Cloud users. Alibaba Finance Cloud users are also limited to storing logs within these specific regions.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	LogRegionId *string `json:"LogRegionId,omitempty" xml:"LogRegionId,omitempty"`
 	// The status of WAF logs.
 	//
-	// *   **initializing**
-	// *   **initialize_failed**
-	// *   **normal**
-	// *   **releasing**
-	// *   **release_failed**
+	// 	- **initializing**
+	//
+	// 	- **initialize_failed**
+	//
+	// 	- **normal**
+	//
+	// 	- **releasing**
+	//
+	// 	- **release_failed**
+	//
+	// example:
+	//
+	// normal
 	LogStatus *string `json:"LogStatus,omitempty" xml:"LogStatus,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The time when the log status was modified. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1706771796859
 	StatusUpdateTime *int64 `json:"StatusUpdateTime,omitempty" xml:"StatusUpdateTime,omitempty"`
 }
 
@@ -11574,21 +16770,50 @@ func (s *DescribeUserWafLogStatusResponse) SetBody(v *DescribeUserWafLogStatusRe
 
 type DescribeVisitTopIpRequest struct {
 	// The end of the time range to query. Unit: seconds. If you do not specify this parameter, the current time is used.
+	//
+	// example:
+	//
+	// 1665386280
 	EndTimestamp *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The protected object.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The beginning of the time range to query. Unit: seconds.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1665331200
 	StartTimestamp *string `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 }
 
@@ -11632,6 +16857,10 @@ func (s *DescribeVisitTopIpRequest) SetStartTimestamp(v string) *DescribeVisitTo
 
 type DescribeVisitTopIpResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 5D2B8DAE-A761-58CB-A68D-74989E4831DA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The array of the top 10 IP addresses from which requests are sent.
 	TopIp []*DescribeVisitTopIpResponseBodyTopIp `json:"TopIp,omitempty" xml:"TopIp,omitempty" type:"Repeated"`
@@ -11657,12 +16886,28 @@ func (s *DescribeVisitTopIpResponseBody) SetTopIp(v []*DescribeVisitTopIpRespons
 
 type DescribeVisitTopIpResponseBodyTopIp struct {
 	// The ordinal number of the area to which the IP address belongs.
+	//
+	// example:
+	//
+	// 310000
 	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
 	// The total number of requests that are sent from the IP address.
+	//
+	// example:
+	//
+	// 2622
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The IP address.
+	//
+	// example:
+	//
+	// 1.1.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The ISP.
+	//
+	// example:
+	//
+	// AAA
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
 }
 
@@ -11725,19 +16970,44 @@ func (s *DescribeVisitTopIpResponse) SetBody(v *DescribeVisitTopIpResponseBody) 
 
 type DescribeVisitUasRequest struct {
 	// The end of the time range to query. Unit: seconds. If you do not specify this parameter, the current time is used.
+	//
+	// example:
+	//
+	// 1665386280
 	EndTimestamp *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The protected object.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	// The beginning of the time range to query. Unit: seconds.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1665331200
 	StartTimestamp *string `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 }
 
@@ -11776,6 +17046,10 @@ func (s *DescribeVisitUasRequest) SetStartTimestamp(v string) *DescribeVisitUasR
 
 type DescribeVisitUasResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 2847CE98-AFAE-5A64-B80E-60461717F9DE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The array of the top 10 user agents that are used to initiate requests.
 	Uas []*DescribeVisitUasResponseBodyUas `json:"Uas,omitempty" xml:"Uas,omitempty" type:"Repeated"`
@@ -11801,8 +17075,16 @@ func (s *DescribeVisitUasResponseBody) SetUas(v []*DescribeVisitUasResponseBodyU
 
 type DescribeVisitUasResponseBodyUas struct {
 	// The number of requests that use the user agent.
+	//
+	// example:
+	//
+	// 698455
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The user agent.
+	//
+	// example:
+	//
+	// chrome
 	Ua *string `json:"Ua,omitempty" xml:"Ua,omitempty"`
 }
 
@@ -11856,14 +17138,29 @@ func (s *DescribeVisitUasResponse) SetBody(v *DescribeVisitUasResponseBody) *Des
 type DescribeWafSourceIpSegmentRequest struct {
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v2_public_cn-*****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
@@ -11892,6 +17189,10 @@ func (s *DescribeWafSourceIpSegmentRequest) SetResourceManagerResourceGroupId(v 
 
 type DescribeWafSourceIpSegmentResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 9087ADDC-9047-4D02-82A7-33021B58083C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The back-to-origin CIDR blocks that are used by the protection cluster.
 	WafSourceIp *DescribeWafSourceIpSegmentResponseBodyWafSourceIp `json:"WafSourceIp,omitempty" xml:"WafSourceIp,omitempty" type:"Struct"`
@@ -11972,16 +17273,37 @@ func (s *DescribeWafSourceIpSegmentResponse) SetBody(v *DescribeWafSourceIpSegme
 type ListTagKeysRequest struct {
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-wwo****iw02
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0*****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland.
-	// *   **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The type of the resource. Set the value to ALIYUN::WAF::DEFENSERESOURCE.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ALIYUN::WAF::DEFENSERESOURCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -12017,8 +17339,16 @@ type ListTagKeysResponseBody struct {
 	// The keys and types of the tags.
 	Keys []*ListTagKeysResponseBodyKeys `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0*****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 8CB8BB88-24C7-5608-BF5E-4DCA****CF1C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12048,10 +17378,19 @@ func (s *ListTagKeysResponseBody) SetRequestId(v string) *ListTagKeysResponseBod
 type ListTagKeysResponseBodyKeys struct {
 	// The type of the tag. Valid values:
 	//
-	// *   custom
-	// *   system
+	// 	- custom
+	//
+	// 	- system
+	//
+	// example:
+	//
+	// custom
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The key of the tag.
+	//
+	// example:
+	//
+	// demoTagKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 }
 
@@ -12104,15 +17443,32 @@ func (s *ListTagKeysResponse) SetBody(v *ListTagKeysResponseBody) *ListTagKeysRe
 
 type ListTagResourcesRequest struct {
 	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0*****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland.
-	// *   **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource IDs. You can specify up to 50 resource IDs.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of the resource. Set the value to ALIYUN::WAF::DEFENSERESOURCE.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ALIYUN::WAF::DEFENSERESOURCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tags that are added to the resource.
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -12153,8 +17509,16 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 
 type ListTagResourcesRequestTag struct {
 	// The key of tag N that is added to the resource. Valid values of N: 1 to 20.
+	//
+	// example:
+	//
+	// Tagkey1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of tag N that is added to the resource. Valid values of N: 1 to 20.
+	//
+	// example:
+	//
+	// TagValue1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -12178,8 +17542,16 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 
 type ListTagResourcesResponseBody struct {
 	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0*****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 716E64DA-044F-51C7-B528-2FBF****AE4F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of resources.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
@@ -12210,12 +17582,28 @@ func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResp
 
 type ListTagResourcesResponseBodyTagResources struct {
 	// The resource ID.
+	//
+	// example:
+	//
+	// c754d2a4-28f1-46df-b557-9586173a****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The type of the resource. ALIYUN::WAF::DEFENSERESOURCE is returned.
+	//
+	// example:
+	//
+	// ALIYUN::WAF::DEFENSERESOURCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The key of tag N that is added to the resource.
+	//
+	// example:
+	//
+	// TagKey1
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// The value of tag N that is added to the resource.
+	//
+	// example:
+	//
+	// TayValue1
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -12278,15 +17666,38 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 
 type ListTagValuesRequest struct {
 	// The tag key.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// demoKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0*****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland.
-	// *   **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The type of the resource. Set the value to ALIYUN::WAF::DEFENSERESOURCE.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ALIYUN::WAF::DEFENSERESOURCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -12320,8 +17731,16 @@ func (s *ListTagValuesRequest) SetResourceType(v string) *ListTagValuesRequest {
 
 type ListTagValuesResponseBody struct {
 	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0*****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 705114BB-EAEF-5CC4-8837-F1D4****BB5B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The tag values.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
@@ -12381,23 +17800,56 @@ func (s *ListTagValuesResponse) SetBody(v *ListTagValuesResponseBody) *ListTagVa
 
 type ModifyDefenseResourceGroupRequest struct {
 	// The protected objects that you want to add to the protected object group. Separate the protected objects with commas (,). If you leave this parameter empty, no protected objects are added to the protected object group.
+	//
+	// example:
+	//
+	// test1.aliyundoc.com,test2.aliyundoc.com
 	AddList *string `json:"AddList,omitempty" xml:"AddList,omitempty"`
 	// The protected objects that you want to remove from the protected object group. Separate the protected objects with commas (,). If you leave this parameter empty, no protected objects are removed from the protected object group.
+	//
+	// example:
+	//
+	// test14.waf.com,test24.waf.com
 	DeleteList *string `json:"DeleteList,omitempty" xml:"DeleteList,omitempty"`
 	// The description of the protected object group.
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the protected object group whose configurations you want to modify.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test01
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
@@ -12446,6 +17898,10 @@ func (s *ModifyDefenseResourceGroupRequest) SetResourceManagerResourceGroupId(v 
 
 type ModifyDefenseResourceGroupResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 2CC1AFDE-BB31-5A2F-906E-92FCBDDE6B75
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12494,18 +17950,33 @@ func (s *ModifyDefenseResourceGroupResponse) SetBody(v *ModifyDefenseResourceGro
 type ModifyDefenseResourceXffRequest struct {
 	// The status of the tracking cookie.
 	//
-	// *   **0**: disabled
-	// *   **1**: enabled. This is the default value.
+	// 	- **0**: disabled
+	//
+	// 	- **1**: enabled. This is the default value.
+	//
+	// example:
+	//
+	// 0
 	AcwCookieStatus *int32 `json:"AcwCookieStatus,omitempty" xml:"AcwCookieStatus,omitempty"`
 	// The status of the secure attribute of the tracking cookie.
 	//
-	// *   **0**: disabled. This is the default value.
-	// *   **1**: enabled.
+	// 	- **0**: disabled. This is the default value.
+	//
+	// 	- **1**: enabled.
+	//
+	// example:
+	//
+	// 0
 	AcwSecureStatus *int32 `json:"AcwSecureStatus,omitempty" xml:"AcwSecureStatus,omitempty"`
 	// The status of the secure attribute of the slider CAPTCHA cookie.
 	//
-	// *   **0**: disabled. This is the default value.
-	// *   **1**: enabled.
+	// 	- **0**: disabled. This is the default value.
+	//
+	// 	- **1**: enabled.
+	//
+	// example:
+	//
+	// 0
 	AcwV3SecureStatus *int32 `json:"AcwV3SecureStatus,omitempty" xml:"AcwV3SecureStatus,omitempty"`
 	// The custom header fields.
 	//
@@ -12513,21 +17984,49 @@ type ModifyDefenseResourceXffRequest struct {
 	CustomHeaders []*string `json:"CustomHeaders,omitempty" xml:"CustomHeaders,omitempty" type:"Repeated"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v2_public_cn-wwo3c****07
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland.
-	// *   **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the protected object.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alb-4pxu81fgagx3****mz-alb
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm2kie2****wq
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// Specifies whether a Layer 7 proxy is deployed in front of WAF. Layer 7 proxies include Anti-DDoS Proxy and Alibaba Cloud CDN. Valid values:
 	//
-	// *   **0**: No Layer 7 proxies are deployed. This is the default value.
-	// *   **1**: A Layer 7 proxy is deployed.
+	// 	- **0**: No Layer 7 proxies are deployed. This is the default value.
+	//
+	// 	- **1**: A Layer 7 proxy is deployed.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
 	XffStatus *int32 `json:"XffStatus,omitempty" xml:"XffStatus,omitempty"`
 }
 
@@ -12586,6 +18085,10 @@ func (s *ModifyDefenseResourceXffRequest) SetXffStatus(v int32) *ModifyDefenseRe
 
 type ModifyDefenseResourceXffResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 6C094583-9B3F-5BD8-8748-DC638E****BF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12632,25 +18135,59 @@ func (s *ModifyDefenseResourceXffResponse) SetBody(v *ModifyDefenseResourceXffRe
 }
 
 type ModifyDefenseRuleRequest struct {
-	// The scenario in which you want to use the protection rule. For more information, see the description of the **DefenseScene** parameter in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
+	// The scenario in which you want to use the protection rule. For more information, see the description of the **DefenseScene*	- parameter in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_group
 	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The details of the protection rule. Specify a string that contains multiple parameters in the JSON format. You must specify the ID and the new configurations of the protection rule.
 	//
-	// *   **id:** The ID of the protection rule. Data type: long. You must specify this parameter.
-	// *   The protection rule configurations: The role of this parameter is the same as that of the **Rules** parameter in the **CreateDefenseRule** topic. For more information, see the "**Protection rule parameters**" section in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
+	// 	- **id:*	- The ID of the protection rule. Data type: long. You must specify this parameter.
+	//
+	// 	- The protection rule configurations: The role of this parameter is the same as that of the **Rules*	- parameter in the **CreateDefenseRule*	- topic. For more information, see the "**Protection rule parameters**" section in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [{"id":2344,"policyId":1012,"action":"block"}]
 	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
 	// The ID of the protection rule template to which the protection rule whose configurations you want to modify belongs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5325
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -12694,6 +18231,10 @@ func (s *ModifyDefenseRuleRequest) SetTemplateId(v int64) *ModifyDefenseRuleRequ
 
 type ModifyDefenseRuleResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 1EEA9C98-F166-54FE-ADE3-08D8****BDFA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12742,18 +18283,45 @@ func (s *ModifyDefenseRuleResponse) SetBody(v *ModifyDefenseRuleResponseBody) *M
 type ModifyDefenseRuleCacheRequest struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-zvp****xm2r
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland.
-	// *   **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The ID of the protection rule.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345678
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The ID of the protection template.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -12792,6 +18360,10 @@ func (s *ModifyDefenseRuleCacheRequest) SetTemplateId(v int64) *ModifyDefenseRul
 
 type ModifyDefenseRuleCacheResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// A0F2B994-8645-5270-A05D-9DAD8C****B6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12840,23 +18412,57 @@ func (s *ModifyDefenseRuleCacheResponse) SetBody(v *ModifyDefenseRuleCacheRespon
 type ModifyDefenseRuleStatusRequest struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The ID of the protection rule whose status you want to change.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20002615
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The new status of the protection rule. Valid values:
 	//
-	// *   **0:** disabled.
-	// *   **1:** enabled.
+	// 	- **0:*	- disabled.
+	//
+	// 	- **1:*	- enabled.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	RuleStatus *int32 `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
 	// The ID of the protection rule template to which the protection rule whose status you want to change belongs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 7239
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -12900,6 +18506,10 @@ func (s *ModifyDefenseRuleStatusRequest) SetTemplateId(v int64) *ModifyDefenseRu
 
 type ModifyDefenseRuleStatusResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// BB305BF3-3C71-57A9-9704-E22F567689B0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12947,21 +18557,52 @@ func (s *ModifyDefenseRuleStatusResponse) SetBody(v *ModifyDefenseRuleStatusResp
 
 type ModifyDefenseTemplateRequest struct {
 	// The description of the protection rule template whose configurations you want to modify.
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The ID of the protection rule template whose configurations you want to modify.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 7392
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The name of the protection rule template whose configurations you want to modify.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
@@ -13005,6 +18646,10 @@ func (s *ModifyDefenseTemplateRequest) SetTemplateName(v string) *ModifyDefenseT
 
 type ModifyDefenseTemplateResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 1A68C85D-7467-5BB1-9A7E-2E8A5D96D88A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13053,21 +18698,49 @@ func (s *ModifyDefenseTemplateResponse) SetBody(v *ModifyDefenseTemplateResponse
 type ModifyDefenseTemplateStatusRequest struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The ID of the protection rule template whose status you want to change.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2249
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The new status of the protection rule template. Valid values:
 	//
-	// *   **0:** disabled.
-	// *   **1:** enabled.
+	// 	- **0:*	- disabled.
+	//
+	// 	- **1:*	- enabled.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	TemplateStatus *int32 `json:"TemplateStatus,omitempty" xml:"TemplateStatus,omitempty"`
 }
 
@@ -13106,6 +18779,10 @@ func (s *ModifyDefenseTemplateStatusRequest) SetTemplateStatus(v int32) *ModifyD
 
 type ModifyDefenseTemplateStatusResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 58007AE3-65D9-57BA-ABB4-1A544015FB50
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13154,22 +18831,49 @@ func (s *ModifyDefenseTemplateStatusResponse) SetBody(v *ModifyDefenseTemplateSt
 type ModifyDomainRequest struct {
 	// The mode in which you want to add the domain name to WAF. Set the value to share.
 	//
-	// *   **share:** adds the domain name to WAF in CNAME record mode. This is the default value.
+	// 	- **share:*	- adds the domain name to WAF in CNAME record mode. This is the default value.
+	//
+	// example:
+	//
+	// share
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
 	// The domain name whose access configurations you want to modify.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The configurations of the listeners.
+	//
+	// This parameter is required.
 	Listen *ModifyDomainRequestListen `json:"Listen,omitempty" xml:"Listen,omitempty" type:"Struct"`
 	// The configurations of the forwarding rule.
+	//
+	// This parameter is required.
 	Redirect *ModifyDomainRequestRedirect `json:"Redirect,omitempty" xml:"Redirect,omitempty" type:"Struct"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -13213,76 +18917,142 @@ func (s *ModifyDomainRequest) SetRegionId(v string) *ModifyDomainRequest {
 
 type ModifyDomainRequestListen struct {
 	// The ID of the certificate that you want to add.
+	//
+	// example:
+	//
+	// 123
 	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	// The type of cipher suite that you want to add. This parameter is available only when you specify the **HttpsPorts** parameter. Valid values:
+	// The type of cipher suite that you want to add. This parameter is available only when you specify the **HttpsPorts*	- parameter. Valid values:
 	//
-	// *   **1:** all cipher suites.
-	// *   **2:** strong cipher suites. You can select this value only when you set the **TLSVersion** parameter to **tlsv1.2**.
-	// *   **99:** custom cipher suites.
+	// 	- **1:*	- all cipher suites.
+	//
+	// 	- **2:*	- strong cipher suites. You can select this value only when you set the **TLSVersion*	- parameter to **tlsv1.2**.
+	//
+	// 	- **99:*	- custom cipher suites.
+	//
+	// example:
+	//
+	// 2
 	CipherSuite *int32 `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
-	// The custom cipher suites that you want to add. This parameter is available only when you set the **CipherSuite** parameter to **99**.
+	// The custom cipher suites that you want to add. This parameter is available only when you set the **CipherSuite*	- parameter to **99**.
 	CustomCiphers []*string `json:"CustomCiphers,omitempty" xml:"CustomCiphers,omitempty" type:"Repeated"`
-	// Specifies whether to support TLS 1.3. This parameter is available only when you specify the **HttpsPorts** parameter. Valid values:
+	// Specifies whether to support TLS 1.3. This parameter is available only when you specify the **HttpsPorts*	- parameter. Valid values:
 	//
-	// *   **true:** supports TLS 1.3.
-	// *   **false:** does not support TLS 1.3.
+	// 	- **true:*	- supports TLS 1.3.
+	//
+	// 	- **false:*	- does not support TLS 1.3.
+	//
+	// example:
+	//
+	// true
 	EnableTLSv3 *bool `json:"EnableTLSv3,omitempty" xml:"EnableTLSv3,omitempty"`
-	// Specifies whether to enable an exclusive IP address for the domain name. This parameter is available only when you set the **IPv6Enabled** parameter to false and the **ProtectionResource** parameter to **share**. Valid values:
+	// Specifies whether to enable an exclusive IP address for the domain name. This parameter is available only when you set the **IPv6Enabled*	- parameter to false and the **ProtectionResource*	- parameter to **share**. Valid values:
 	//
-	// *   **true:** enables an exclusive IP address for the domain name.
-	// *   **false:** does not enable an exclusive IP address for the domain name. This is the default value.
+	// 	- **true:*	- enables an exclusive IP address for the domain name.
+	//
+	// 	- **false:*	- does not enable an exclusive IP address for the domain name. This is the default value.
+	//
+	// example:
+	//
+	// true
 	ExclusiveIp *bool `json:"ExclusiveIp,omitempty" xml:"ExclusiveIp,omitempty"`
-	// Specifies whether to enable HTTP to HTTPS redirection for the domain name. This parameter is available only when you specify the **HttpsPorts** parameter and leave the **HttpPorts** parameter empty. Valid values:
+	// Specifies whether to enable HTTP to HTTPS redirection for the domain name. This parameter is available only when you specify the **HttpsPorts*	- parameter and leave the **HttpPorts*	- parameter empty. Valid values:
 	//
-	// *   **true:** enables HTTP to HTTPS redirection.
-	// *   **false:** disables HTTP to HTTPS redirection.
+	// 	- **true:*	- enables HTTP to HTTPS redirection.
+	//
+	// 	- **false:*	- disables HTTP to HTTPS redirection.
+	//
+	// example:
+	//
+	// true
 	FocusHttps *bool `json:"FocusHttps,omitempty" xml:"FocusHttps,omitempty"`
-	// Specifies whether to enable HTTP/2. This parameter is available only when you specify the **HttpsPorts** parameter. Valid values:
+	// Specifies whether to enable HTTP/2. This parameter is available only when you specify the **HttpsPorts*	- parameter. Valid values:
 	//
-	// *   **true:** enables HTTP/2.
-	// *   **false:** disables HTTP/2. This is the default value.
+	// 	- **true:*	- enables HTTP/2.
+	//
+	// 	- **false:*	- disables HTTP/2. This is the default value.
+	//
+	// example:
+	//
+	// true
 	Http2Enabled *bool `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
-	// An array of HTTP listener ports. Specify the value of this parameter in the \[port1,port2,...] format.
+	// An array of HTTP listener ports. Specify the value of this parameter in the [port1,port2,...] format.
 	HttpPorts []*int32 `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty" type:"Repeated"`
-	// An array of HTTPS listener ports. Specify the value of this parameter in the \[port1,port2,...] format.
+	// An array of HTTPS listener ports. Specify the value of this parameter in the [port1,port2,...] format.
 	HttpsPorts []*int32 `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty" type:"Repeated"`
 	// Specifies whether to enable IPv6. Valid values:
 	//
-	// *   **true:** enables IPv6.
-	// *   **false:** disables IPv6. This is the default value.
+	// 	- **true:*	- enables IPv6.
+	//
+	// 	- **false:*	- disables IPv6. This is the default value.
+	//
+	// example:
+	//
+	// true
 	IPv6Enabled *bool `json:"IPv6Enabled,omitempty" xml:"IPv6Enabled,omitempty"`
 	// The type of the protection resource that you want to use. Valid values:
 	//
-	// *   **share:** shared cluster. This is the default value.
-	// *   **gslb:** shared cluster-based intelligent load balancing.
+	// 	- **share:*	- shared cluster. This is the default value.
+	//
+	// 	- **gslb:*	- shared cluster-based intelligent load balancing.
+	//
+	// example:
+	//
+	// share
 	ProtectionResource *string `json:"ProtectionResource,omitempty" xml:"ProtectionResource,omitempty"`
 	// Specifies whether to allow access only from SM certificate-based clients. This parameter is available only if you set SM2Enabled to true.
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	SM2AccessOnly *bool `json:"SM2AccessOnly,omitempty" xml:"SM2AccessOnly,omitempty"`
 	// The ID of the SM certificate that you want to add. This parameter is available only if you set SM2Enabled to true.
+	//
+	// example:
+	//
+	// 123-cn-hangzhou
 	SM2CertId *string `json:"SM2CertId,omitempty" xml:"SM2CertId,omitempty"`
 	// Indicates whether SM certificate-based verification is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
-	SM2Enabled *bool `json:"SM2Enabled,omitempty" xml:"SM2Enabled,omitempty"`
-	// The version of the Transport Layer Security (TLS) protocol. This parameter is available only when you specify the **HttpsPorts** parameter. Valid values:
+	// 	- **true**
 	//
-	// *   **tlsv1**
-	// *   **tlsv1.1**
-	// *   **tlsv1.2**
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	SM2Enabled *bool `json:"SM2Enabled,omitempty" xml:"SM2Enabled,omitempty"`
+	// The version of the Transport Layer Security (TLS) protocol. This parameter is available only when you specify the **HttpsPorts*	- parameter. Valid values:
+	//
+	// 	- **tlsv1**
+	//
+	// 	- **tlsv1.1**
+	//
+	// 	- **tlsv1.2**
+	//
+	// example:
+	//
+	// tlsv1
 	TLSVersion *string `json:"TLSVersion,omitempty" xml:"TLSVersion,omitempty"`
 	// The method that you want WAF to use to obtain the actual IP address of a client. Valid values:
 	//
-	// *   **0:** No Layer 7 proxies are deployed in front of WAF. This is the default value.
-	// *   **1:** WAF reads the first value of the X-Forwarded-For (XFF) header field as the actual IP address of the client.
-	// *   **2:** WAF reads the value of a custom header field as the actual IP address of the client.
-	XffHeaderMode *int32 `json:"XffHeaderMode,omitempty" xml:"XffHeaderMode,omitempty"`
-	// The custom header fields that you want to use to obtain the actual IP address of a client. Specify the value of this parameter in the \["header1","header2",...] format.
+	// 	- **0:*	- No Layer 7 proxies are deployed in front of WAF. This is the default value.
 	//
-	// >  If you set the **XffHeaderMode** parameter to 2, this parameter is required.
+	// 	- **1:*	- WAF reads the first value of the X-Forwarded-For (XFF) header field as the actual IP address of the client.
+	//
+	// 	- **2:*	- WAF reads the value of a custom header field as the actual IP address of the client.
+	//
+	// example:
+	//
+	// 2
+	XffHeaderMode *int32 `json:"XffHeaderMode,omitempty" xml:"XffHeaderMode,omitempty"`
+	// The custom header fields that you want to use to obtain the actual IP address of a client. Specify the value of this parameter in the ["header1","header2",...] format.
+	//
+	// >  If you set the **XffHeaderMode*	- parameter to 2, this parameter is required.
 	XffHeaders []*string `json:"XffHeaders,omitempty" xml:"XffHeaders,omitempty" type:"Repeated"`
 }
 
@@ -13380,74 +19150,159 @@ func (s *ModifyDomainRequestListen) SetXffHeaders(v []*string) *ModifyDomainRequ
 }
 
 type ModifyDomainRequestRedirect struct {
-	// An array of the IP addresses or domain names of the origin servers. You can specify only one type of address. If you use the domain name type, only IPv4 is supported.
+	// The IP addresses or domain names of the origin server. You can use only one of the address types. If you use the domain name type, the domain name can be resolved only to an IPv4 address.
 	//
-	// *   If you use the IP address type, specify the value of this parameter in the \["ip1","ip2",...] format. You can add up to 20 IP addresses.
-	// *   If you use the domain name type, specify the value of this parameter in the \["domain"] format. You can add up to 20 domain names.
+	// 	- If you use the IP address type, specify the value in the ["ip1","ip2",...] format. You can enter up to 20 IP addresses.
+	//
+	// 	- If you use the domain name type, specify the value in the ["domain"] format. You can enter up to 20 domain names.
 	Backends []*string `json:"Backends,omitempty" xml:"Backends,omitempty" type:"Repeated"`
 	// Specifies whether to enable the public cloud disaster recovery feature. Valid values:
 	//
-	// *   **true**
-	// *   **false** (default)
-	CnameEnabled *bool `json:"CnameEnabled,omitempty" xml:"CnameEnabled,omitempty"`
-	// The connection timeout period. Unit: seconds. Valid values: 1 to 3600.
-	ConnectTimeout *int32 `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
-	// Specifies whether to enable HTTPS to HTTP redirection for back-to-origin requests of the domain name. This parameter is available only when you specify the **HttpsPorts** parameter. Valid values:
+	// 	- **true**
 	//
-	// *   **true:** enables HTTPS to HTTP redirection for back-to-origin requests of the domain name.
-	// *   **false:** disables HTTPS to HTTP redirection for back-to-origin requests of the domain name.
+	// 	- **false*	- (default)
+	//
+	// example:
+	//
+	// true
+	CnameEnabled *bool `json:"CnameEnabled,omitempty" xml:"CnameEnabled,omitempty"`
+	// The timeout period for connections. Unit: seconds. Valid values: 1 to 3600.
+	//
+	// example:
+	//
+	// 120
+	ConnectTimeout *int32 `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
+	// Specifies whether to enable HTTPS to HTTP redirection for back-to-origin requests. This parameter is available only if you specify **HttpsPorts**. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	FocusHttpBackend *bool `json:"FocusHttpBackend,omitempty" xml:"FocusHttpBackend,omitempty"`
 	// Specifies whether to enable the persistent connection feature. Valid values:
 	//
-	// *   **true:** enables the persistent connection feature. This is the default value.
-	// *   **false:** disables the persistent connection feature.
+	// 	- **true*	- (default)
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Keepalive *bool `json:"Keepalive,omitempty" xml:"Keepalive,omitempty"`
 	// The number of reused persistent connections. Valid values: 60 to 1000.
 	//
-	// >  This parameter specifies the number of reused persistent connections when you enable the persistent connection feature.
+	// >  This parameter specifies the number of reused persistent connections after you enable the persistent connection feature.
+	//
+	// example:
+	//
+	// 1000
 	KeepaliveRequests *int32 `json:"KeepaliveRequests,omitempty" xml:"KeepaliveRequests,omitempty"`
-	// The timeout period of persistent connections that are in the Idle state. Valid values: 1 to 60. Default value: 15. Unit: seconds.
+	// The timeout period for idle persistent connections. Valid values: 1 to 60. Default value: 15. Unit: seconds.
 	//
-	// >  This parameter specifies the period of time during which a reused persistent connection is allowed to remain in the Idle state before the persistent connection is released.
+	// >  This parameter specifies the time for which a reused persistent connection can remain in the Idle state before the persistent connection is released.
+	//
+	// example:
+	//
+	// 15
 	KeepaliveTimeout *int32 `json:"KeepaliveTimeout,omitempty" xml:"KeepaliveTimeout,omitempty"`
-	// The load balancing algorithm that you want to use when WAF forwards requests to the origin server. Valid values:
+	// The load balancing algorithm that you want to use to forward requests to the origin server. Valid values:
 	//
-	// *   **ip_hash:** the IP hash algorithm.
-	// *   **roundRobin:** the round-robin algorithm.
-	// *   **leastTime:** the least response time algorithm. You can select this value only when you set the **ProtectionResource** parameter to **gslb**.
+	// 	- **ip_hash**
+	//
+	// 	- **roundRobin**
+	//
+	// 	- **leastTime*	- You can set the parameter to this value only if you set **ProtectionResource*	- to **gslb**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// iphash
 	Loadbalance *string `json:"Loadbalance,omitempty" xml:"Loadbalance,omitempty"`
-	// The read timeout period. Unit: seconds. Valid values: 1 to 3600.
+	// The timeout period for read connections. Unit: seconds. Valid values: 1 to 3600.
+	//
+	// example:
+	//
+	// 200
 	ReadTimeout *int32 `json:"ReadTimeout,omitempty" xml:"ReadTimeout,omitempty"`
-	// The key-value pairs that you want to use to mark the requests that pass through the WAF instance.
+	// The custom header field that you want to use to label requests that are processed by WAF.
 	//
-	// WAF automatically adds the key-value pairs to the request headers to identify the requests that pass through WAF.
+	// When a request passes through WAF, the custom header field is automatically used to label the request. This way, the backend service can identify requests that are processed by WAF.
 	RequestHeaders []*ModifyDomainRequestRedirectRequestHeaders `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
-	// Specifies whether WAF retries to forward requests when requests fail to be forwarded to the origin server. Valid values:
+	// Specifies whether WAF retries forwarding requests to the origin server when the requests fail to be forwarded to the origin server. Valid values:
 	//
-	// *   **true:** WAF retries to forward requests. This is the default value.
-	// *   **false:** WAF does not retry to forward requests.
+	// 	- **true*	- (default)
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Retry *bool `json:"Retry,omitempty" xml:"Retry,omitempty"`
 	// The forwarding rules that you want to configure for the domain name that you want to add to WAF in hybrid cloud mode. This parameter is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields:
 	//
-	// *   **rs**: the back-to-origin IP addresses or CNAMEs. The value must be of the ARRAY type.
-	// *   **location**: the name of the protection node. The value must be of the STRING type.
-	// *   **locationId**: the ID of the protection node. The value must be of the LONG type.
+	// 	- **rs**: the back-to-origin IP addresses or CNAMEs. The value must be of the ARRAY type.
+	//
+	// 	- **location**: the name of the protection node. The value must be of the STRING type.
+	//
+	// 	- **locationId**: the ID of the protection node. The value must be of the LONG type.
+	//
+	// example:
+	//
+	// [
+	//
+	//       {
+	//
+	//             "rs": [
+	//
+	//                   "1.1.XX.XX"
+	//
+	//             ],
+	//
+	//             "locationId": 535,
+	//
+	//             "location": "test1111"
+	//
+	//       }
+	//
+	// ]
 	RoutingRules *string `json:"RoutingRules,omitempty" xml:"RoutingRules,omitempty"`
-	// Specifies whether to enable origin Server Name Indication (SNI). This parameter is available only when you specify the **HttpsPorts** parameter. Valid values:
+	// Specifies whether to enable origin Server Name Indication (SNI). This parameter is available only if you specify **HttpsPorts**. Valid values:
 	//
-	// *   **true:** enables origin SNI.
-	// *   **false:** disables origin SNI. This is the default value.
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
+	// example:
+	//
+	// true
 	SniEnabled *bool `json:"SniEnabled,omitempty" xml:"SniEnabled,omitempty"`
-	// The value of the custom SNI field. If you do not specify this parameter, the value of the **Host** field in the request header is automatically used. If you want WAF to use an SNI field value that is different from the value of the Host field in back-to-origin requests, you can specify a custom value for the SNI field.
+	// The value of the SNI field. If you do not specify this parameter, the value of the **Host*	- field is automatically used. This parameter is optional. If you want WAF to use an SNI field value that is different from the Host field value in back-to-origin requests, you can specify a custom value for the SNI field.
 	//
-	// >  If you set the **SniEnabled** parameter to true, this parameter is required.
+	// >  This parameter is required only if you set **SniEnalbed*	- to xxx.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
 	SniHost *string `json:"SniHost,omitempty" xml:"SniHost,omitempty"`
-	// The write timeout period. Unit: seconds. Valid values: 1 to 3600.
-	WriteTimeout *int32 `json:"WriteTimeout,omitempty" xml:"WriteTimeout,omitempty"`
-	// Indicates whether the X-Forward-For-Proto header is used to identify the protocol used by WAF to forward requests to the origin server. Valid values:
+	// The timeout period for write connections. Unit: seconds. Valid values: 1 to 3600.
 	//
-	// *   **true** (default)
-	// *   **false**
+	// example:
+	//
+	// 200
+	WriteTimeout *int32 `json:"WriteTimeout,omitempty" xml:"WriteTimeout,omitempty"`
+	// Specifies whether to use the X-Forward-For-Proto header to identify the protocol used by WAF to forward requests to the origin server. Valid values:
+	//
+	// 	- **true*	- (default)
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	XffProto *bool `json:"XffProto,omitempty" xml:"XffProto,omitempty"`
 }
 
@@ -13541,8 +19396,16 @@ func (s *ModifyDomainRequestRedirect) SetXffProto(v bool) *ModifyDomainRequestRe
 
 type ModifyDomainRequestRedirectRequestHeaders struct {
 	// The key of the custom header field.
+	//
+	// example:
+	//
+	// aaa
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the custom header field.
+	//
+	// example:
+	//
+	// bbb
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -13567,22 +19430,49 @@ func (s *ModifyDomainRequestRedirectRequestHeaders) SetValue(v string) *ModifyDo
 type ModifyDomainShrinkRequest struct {
 	// The mode in which you want to add the domain name to WAF. Set the value to share.
 	//
-	// *   **share:** adds the domain name to WAF in CNAME record mode. This is the default value.
+	// 	- **share:*	- adds the domain name to WAF in CNAME record mode. This is the default value.
+	//
+	// example:
+	//
+	// share
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
 	// The domain name whose access configurations you want to modify.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The configurations of the listeners.
+	//
+	// This parameter is required.
 	ListenShrink *string `json:"Listen,omitempty" xml:"Listen,omitempty"`
 	// The configurations of the forwarding rule.
+	//
+	// This parameter is required.
 	RedirectShrink *string `json:"Redirect,omitempty" xml:"Redirect,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -13628,6 +19518,10 @@ type ModifyDomainResponseBody struct {
 	// The information about the domain name.
 	DomainInfo *ModifyDomainResponseBodyDomainInfo `json:"DomainInfo,omitempty" xml:"DomainInfo,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13651,10 +19545,22 @@ func (s *ModifyDomainResponseBody) SetRequestId(v string) *ModifyDomainResponseB
 
 type ModifyDomainResponseBodyDomainInfo struct {
 	// The CNAME that is assigned by WAF to the domain name.
+	//
+	// example:
+	//
+	// xxxxxcvdaf.****.com
 	Cname *string `json:"Cname,omitempty" xml:"Cname,omitempty"`
 	// The domain name whose access configurations you modified.
+	//
+	// example:
+	//
+	// www.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the domain name.
+	//
+	// example:
+	//
+	// www.aliyundoc.com-waf
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 }
 
@@ -13712,17 +19618,38 @@ func (s *ModifyDomainResponse) SetBody(v *ModifyDomainResponseBody) *ModifyDomai
 
 type ModifyDomainPunishStatusRequest struct {
 	// The domain name that is penalized for failing to obtain an ICP filing.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// demo.xxxxaliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v2_public_cn-zxu****0g02
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland.
-	// *   **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
@@ -13756,6 +19683,10 @@ func (s *ModifyDomainPunishStatusRequest) SetResourceManagerResourceGroupId(v st
 
 type ModifyDomainPunishStatusResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 70E65A35-22B8-567C-B0A0-A2E9****20AE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13803,17 +19734,36 @@ func (s *ModifyDomainPunishStatusResponse) SetBody(v *ModifyDomainPunishStatusRe
 
 type ModifyHybridCloudClusterBypassStatusRequest struct {
 	// The ID of the hybrid cloud cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hdbc_cluster_****
 	ClusterResourceId *string `json:"ClusterResourceId,omitempty" xml:"ClusterResourceId,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
 	// **
 	//
-	// **You can call the **DescribeInstanceInfo[ operation to obtain the ID of the WAF instance.](~~140857~~)
+	// **You can call the **DescribeInstanceInfo[ operation to obtain the ID of the WAF instance.](https://help.aliyun.com/document_detail/140857.html)
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_elasticity-cn-0xldbqt****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The status of manual bypass. Valid values:
 	//
-	// *   **on**: enabled.
-	// *   **off**: disabled. This is the default value.
+	// 	- **on**: enabled.
+	//
+	// 	- **off**: disabled. This is the default value.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// on
 	RuleStatus *string `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
 }
 
@@ -13842,6 +19792,10 @@ func (s *ModifyHybridCloudClusterBypassStatusRequest) SetRuleStatus(v string) *M
 
 type ModifyHybridCloudClusterBypassStatusResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13889,27 +19843,70 @@ func (s *ModifyHybridCloudClusterBypassStatusResponse) SetBody(v *ModifyHybridCl
 
 type ModifyMajorProtectionBlackIpRequest struct {
 	// The description of the IP address blacklist.
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The time after which the IP address blacklist becomes invalid. Unit: seconds.
 	//
 	// >  If you set this parameter to **0**, the blacklist is permanently valid.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1662603328
 	ExpiredTime *int64 `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The IP addresses that you want to add to the IP address blacklist. You can specify multiple CIDR blocks or IP addresses. IPv4 and IPv6 addresses are supported. Separate the CIDR blocks or IP addresses with commas (,). For more information, see [Protection for major events](~~425591~~).
+	// The IP addresses that you want to add to the IP address blacklist. You can specify multiple CIDR blocks or IP addresses. IPv4 and IPv6 addresses are supported. Separate the CIDR blocks or IP addresses with commas (,). For more information, see [Protection for major events](https://help.aliyun.com/document_detail/425591.html).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12.XX.XX.2,3.XX.XX.3/24
 	IpList *string `json:"IpList,omitempty" xml:"IpList,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The ID of the IP address blacklist rule for major event protection.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20012033
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The ID of the IP address blacklist rule template for major event protection.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5132
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -13963,6 +19960,10 @@ func (s *ModifyMajorProtectionBlackIpRequest) SetTemplateId(v int64) *ModifyMajo
 
 type ModifyMajorProtectionBlackIpResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 66A98669-CC6E-4F3E-80A6-3014697B11AE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14009,22 +20010,53 @@ func (s *ModifyMajorProtectionBlackIpResponse) SetBody(v *ModifyMajorProtectionB
 }
 
 type ModifyMemberAccountRequest struct {
-	// The description of the member. The description must be 1 to 256 characters in length, and can contain letters, digits, periods (.), underscores (\_), hyphens (-), and asterisks (\*).
+	// The description of the member. The description must be 1 to 256 characters in length, and can contain letters, digits, periods (.), underscores (_), hyphens (-), and asterisks (\\*).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// account1
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_elasticity**-*******021
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The Alibaba Cloud account ID of the managed member.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 131**********39
 	MemberAccountId *string `json:"MemberAccountId,omitempty" xml:"MemberAccountId,omitempty"`
 	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland.
-	// *   **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The source IP address of the request. The system automatically obtains the value of this parameter.
+	//
+	// example:
+	//
+	// 0.0.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
@@ -14068,6 +20100,10 @@ func (s *ModifyMemberAccountRequest) SetSourceIp(v string) *ModifyMemberAccountR
 
 type ModifyMemberAccountResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19****5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14116,21 +20152,49 @@ func (s *ModifyMemberAccountResponse) SetBody(v *ModifyMemberAccountResponseBody
 type ModifyResourceLogStatusRequest struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-zz11zcl****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The protected object on which you want to manage the log collection feature.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alb-wewbb23dfsetetcic1242-0****
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// Specifies whether to enable the log collection feature for the protected object. Valid values:
 	//
-	// *   **true:** enables the log collection feature.
-	// *   **false:** disables the log collection feature.
+	// 	- **true:*	- enables the log collection feature.
+	//
+	// 	- **false:*	- disables the log collection feature.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -14169,11 +20233,20 @@ func (s *ModifyResourceLogStatusRequest) SetStatus(v bool) *ModifyResourceLogSta
 
 type ModifyResourceLogStatusResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 7C55A3E5-638A-5D6E-9A2F-C3CE5A677EC5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the log collection feature is enabled for the protected object. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -14225,26 +20298,47 @@ func (s *ModifyResourceLogStatusResponse) SetBody(v *ModifyResourceLogStatusResp
 }
 
 type ModifyTemplateResourcesRequest struct {
-	// The protected object groups that you want to associate with the protection rule template. Specify the value of this parameter in the \["group1","group2",...] format.
+	// The protected object groups that you want to associate with the protection rule template. Specify the value of this parameter in the ["group1","group2",...] format.
 	BindResourceGroups []*string `json:"BindResourceGroups,omitempty" xml:"BindResourceGroups,omitempty" type:"Repeated"`
-	// The protected objects that you want to associate with the protection rule template. Specify the value of this parameter in the \["XX1","XX2",...] format.
+	// The protected objects that you want to associate with the protection rule template. Specify the value of this parameter in the ["XX1","XX2",...] format.
 	BindResources []*string `json:"BindResources,omitempty" xml:"BindResources,omitempty" type:"Repeated"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// *   **cn-hangzhou:** the Chinese mainland.
-	// *   **ap-southeast-1:** outside the Chinese mainland.
+	// 	- **cn-hangzhou:*	- the Chinese mainland.
+	//
+	// 	- **ap-southeast-1:*	- outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The ID of the protection rule template.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2291
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The protected object groups that you want to disassociate from the protection rule template. Specify the value of this parameter in the \["group1","group2",...] format.
+	// The protected object groups that you want to disassociate from the protection rule template. Specify the value of this parameter in the ["group1","group2",...] format.
 	UnbindResourceGroups []*string `json:"UnbindResourceGroups,omitempty" xml:"UnbindResourceGroups,omitempty" type:"Repeated"`
-	// The protected objects that you want to disassociate from the protection rule template. Specify the value of this parameter in the \["XX1","XX2",...] format.
+	// The protected objects that you want to disassociate from the protection rule template. Specify the value of this parameter in the ["XX1","XX2",...] format.
 	UnbindResources []*string `json:"UnbindResources,omitempty" xml:"UnbindResources,omitempty" type:"Repeated"`
 }
 
@@ -14298,6 +20392,10 @@ func (s *ModifyTemplateResourcesRequest) SetUnbindResources(v []*string) *Modify
 
 type ModifyTemplateResourcesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// CF708F2F-FFB0-54D4-B1E0-B84A7CEBFB60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14346,14 +20444,29 @@ func (s *ModifyTemplateResourcesResponse) SetBody(v *ModifyTemplateResourcesResp
 type SyncProductInstanceRequest struct {
 	// The ID of the WAF instance.
 	//
-	// >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-zsk****fb09
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region in which the WAF instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland.
-	// *   **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm4co****f5qa
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 }
 
@@ -14382,6 +20495,10 @@ func (s *SyncProductInstanceRequest) SetResourceManagerResourceGroupId(v string)
 
 type SyncProductInstanceResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 45BA2382-7C3F-5B29-9A83-C3BCE586****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14430,14 +20547,31 @@ func (s *SyncProductInstanceResponse) SetBody(v *SyncProductInstanceResponseBody
 type TagResourcesRequest struct {
 	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland.
-	// *   **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The IDs of the resources. You can specify up to 50 resource IDs.
+	//
+	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of the resource. Set the value to ALIYUN::WAF::DEFENSERESOURCE.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ALIYUN::WAF::DEFENSERESOURCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tags to add to the resource.
+	//
+	// This parameter is required.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -14471,8 +20605,16 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 
 type TagResourcesRequestTag struct {
 	// The key of tag N to add to the resource. Valid values of N: 1 to 20.
+	//
+	// example:
+	//
+	// demoTagKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of tag N to add to the resource. Valid values of N: 1 to 20.
+	//
+	// example:
+	//
+	// demoTagValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -14496,6 +20638,10 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 
 type TagResourcesResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 57F8460F-8A62-5D79-8ED5-653C****0C6B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14544,17 +20690,37 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 type UntagResourcesRequest struct {
 	// Specifies whether to remove all tags from the specified resource groups or members. Valid values:
 	//
-	// *   false (default)
-	// *   true
+	// 	- false (default)
+	//
+	// 	- true
+	//
+	// example:
+	//
+	// false
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
 	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
 	//
-	// *   **cn-hangzhou**: Chinese mainland.
-	// *   **ap-southeast-1**: outside the Chinese mainland.
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource IDs. You can specify up to 50 resource IDs.
+	//
+	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of the resource. Set the value to ALIYUN::WAF::DEFENSERESOURCE.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ALIYUN::WAF::DEFENSERESOURCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tag keys. You can specify up to 20 tag keys.
 	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
@@ -14595,6 +20761,10 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 
 type UntagResourcesResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 7A4B8DB1-A8B0-5362-A65D-6A55****07C5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14713,6 +20883,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Clears an IP address blacklist for major event protection.
+//
+// @param request - ClearMajorProtectionBlackIpRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClearMajorProtectionBlackIpResponse
 func (client *Client) ClearMajorProtectionBlackIpWithOptions(request *ClearMajorProtectionBlackIpRequest, runtime *util.RuntimeOptions) (_result *ClearMajorProtectionBlackIpResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14762,6 +20941,13 @@ func (client *Client) ClearMajorProtectionBlackIpWithOptions(request *ClearMajor
 	return _result, _err
 }
 
+// Summary:
+//
+// Clears an IP address blacklist for major event protection.
+//
+// @param request - ClearMajorProtectionBlackIpRequest
+//
+// @return ClearMajorProtectionBlackIpResponse
 func (client *Client) ClearMajorProtectionBlackIp(request *ClearMajorProtectionBlackIpRequest) (_result *ClearMajorProtectionBlackIpResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ClearMajorProtectionBlackIpResponse{}
@@ -14773,6 +20959,15 @@ func (client *Client) ClearMajorProtectionBlackIp(request *ClearMajorProtectionB
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a new protection template from the copy.
+//
+// @param request - CopyDefenseTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CopyDefenseTemplateResponse
 func (client *Client) CopyDefenseTemplateWithOptions(request *CopyDefenseTemplateRequest, runtime *util.RuntimeOptions) (_result *CopyDefenseTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14818,6 +21013,13 @@ func (client *Client) CopyDefenseTemplateWithOptions(request *CopyDefenseTemplat
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a new protection template from the copy.
+//
+// @param request - CopyDefenseTemplateRequest
+//
+// @return CopyDefenseTemplateResponse
 func (client *Client) CopyDefenseTemplate(request *CopyDefenseTemplateRequest) (_result *CopyDefenseTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CopyDefenseTemplateResponse{}
@@ -14829,6 +21031,15 @@ func (client *Client) CopyDefenseTemplate(request *CopyDefenseTemplateRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a protected object group.
+//
+// @param request - CreateDefenseResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDefenseResourceGroupResponse
 func (client *Client) CreateDefenseResourceGroupWithOptions(request *CreateDefenseResourceGroupRequest, runtime *util.RuntimeOptions) (_result *CreateDefenseResourceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14882,6 +21093,13 @@ func (client *Client) CreateDefenseResourceGroupWithOptions(request *CreateDefen
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a protected object group.
+//
+// @param request - CreateDefenseResourceGroupRequest
+//
+// @return CreateDefenseResourceGroupResponse
 func (client *Client) CreateDefenseResourceGroup(request *CreateDefenseResourceGroupRequest) (_result *CreateDefenseResourceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDefenseResourceGroupResponse{}
@@ -14893,6 +21111,15 @@ func (client *Client) CreateDefenseResourceGroup(request *CreateDefenseResourceG
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a protection rule.
+//
+// @param request - CreateDefenseRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDefenseRuleResponse
 func (client *Client) CreateDefenseRuleWithOptions(request *CreateDefenseRuleRequest, runtime *util.RuntimeOptions) (_result *CreateDefenseRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14946,6 +21173,13 @@ func (client *Client) CreateDefenseRuleWithOptions(request *CreateDefenseRuleReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a protection rule.
+//
+// @param request - CreateDefenseRuleRequest
+//
+// @return CreateDefenseRuleResponse
 func (client *Client) CreateDefenseRule(request *CreateDefenseRuleRequest) (_result *CreateDefenseRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDefenseRuleResponse{}
@@ -14957,6 +21191,15 @@ func (client *Client) CreateDefenseRule(request *CreateDefenseRuleRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a protection rule template.
+//
+// @param request - CreateDefenseTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDefenseTemplateResponse
 func (client *Client) CreateDefenseTemplateWithOptions(request *CreateDefenseTemplateRequest, runtime *util.RuntimeOptions) (_result *CreateDefenseTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15022,6 +21265,13 @@ func (client *Client) CreateDefenseTemplateWithOptions(request *CreateDefenseTem
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a protection rule template.
+//
+// @param request - CreateDefenseTemplateRequest
+//
+// @return CreateDefenseTemplateResponse
 func (client *Client) CreateDefenseTemplate(request *CreateDefenseTemplateRequest) (_result *CreateDefenseTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDefenseTemplateResponse{}
@@ -15033,6 +21283,15 @@ func (client *Client) CreateDefenseTemplate(request *CreateDefenseTemplateReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a domain name to Web Application Firewall (WAF).
+//
+// @param tmpReq - CreateDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDomainResponse
 func (client *Client) CreateDomainWithOptions(tmpReq *CreateDomainRequest, runtime *util.RuntimeOptions) (_result *CreateDomainResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -15100,6 +21359,13 @@ func (client *Client) CreateDomainWithOptions(tmpReq *CreateDomainRequest, runti
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a domain name to Web Application Firewall (WAF).
+//
+// @param request - CreateDomainRequest
+//
+// @return CreateDomainResponse
 func (client *Client) CreateDomain(request *CreateDomainRequest) (_result *CreateDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDomainResponse{}
@@ -15111,13 +21377,19 @@ func (client *Client) CreateDomain(request *CreateDomainRequest) (_result *Creat
 	return _result, _err
 }
 
-/**
- * This operation is available only on the China site (aliyun.com).
- *
- * @param request CreateMajorProtectionBlackIpRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateMajorProtectionBlackIpResponse
- */
+// Summary:
+//
+// Creates an IP address blacklist for major event protection.
+//
+// Description:
+//
+// This operation is available only on the China site (aliyun.com).
+//
+// @param request - CreateMajorProtectionBlackIpRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMajorProtectionBlackIpResponse
 func (client *Client) CreateMajorProtectionBlackIpWithOptions(request *CreateMajorProtectionBlackIpRequest, runtime *util.RuntimeOptions) (_result *CreateMajorProtectionBlackIpResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15179,12 +21451,17 @@ func (client *Client) CreateMajorProtectionBlackIpWithOptions(request *CreateMaj
 	return _result, _err
 }
 
-/**
- * This operation is available only on the China site (aliyun.com).
- *
- * @param request CreateMajorProtectionBlackIpRequest
- * @return CreateMajorProtectionBlackIpResponse
- */
+// Summary:
+//
+// Creates an IP address blacklist for major event protection.
+//
+// Description:
+//
+// This operation is available only on the China site (aliyun.com).
+//
+// @param request - CreateMajorProtectionBlackIpRequest
+//
+// @return CreateMajorProtectionBlackIpResponse
 func (client *Client) CreateMajorProtectionBlackIp(request *CreateMajorProtectionBlackIpRequest) (_result *CreateMajorProtectionBlackIpResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateMajorProtectionBlackIpResponse{}
@@ -15196,6 +21473,15 @@ func (client *Client) CreateMajorProtectionBlackIp(request *CreateMajorProtectio
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds members to use the multi-account management feature of Web Application Firewall (WAF).
+//
+// @param request - CreateMemberAccountsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMemberAccountsResponse
 func (client *Client) CreateMemberAccountsWithOptions(request *CreateMemberAccountsRequest, runtime *util.RuntimeOptions) (_result *CreateMemberAccountsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15245,6 +21531,13 @@ func (client *Client) CreateMemberAccountsWithOptions(request *CreateMemberAccou
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds members to use the multi-account management feature of Web Application Firewall (WAF).
+//
+// @param request - CreateMemberAccountsRequest
+//
+// @return CreateMemberAccountsResponse
 func (client *Client) CreateMemberAccounts(request *CreateMemberAccountsRequest) (_result *CreateMemberAccountsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateMemberAccountsResponse{}
@@ -15256,6 +21549,15 @@ func (client *Client) CreateMemberAccounts(request *CreateMemberAccountsRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a pay-as-you-go Web Application Firewall (WAF) 3.0 instance.
+//
+// @param request - CreatePostpaidInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePostpaidInstanceResponse
 func (client *Client) CreatePostpaidInstanceWithOptions(request *CreatePostpaidInstanceRequest, runtime *util.RuntimeOptions) (_result *CreatePostpaidInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15293,6 +21595,13 @@ func (client *Client) CreatePostpaidInstanceWithOptions(request *CreatePostpaidI
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a pay-as-you-go Web Application Firewall (WAF) 3.0 instance.
+//
+// @param request - CreatePostpaidInstanceRequest
+//
+// @return CreatePostpaidInstanceResponse
 func (client *Client) CreatePostpaidInstance(request *CreatePostpaidInstanceRequest) (_result *CreatePostpaidInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreatePostpaidInstanceResponse{}
@@ -15304,6 +21613,175 @@ func (client *Client) CreatePostpaidInstance(request *CreatePostpaidInstanceRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除API安全风险
+//
+// @param request - DeleteApisecAbnormalRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteApisecAbnormalResponse
+func (client *Client) DeleteApisecAbnormalWithOptions(request *DeleteApisecAbnormalRequest, runtime *util.RuntimeOptions) (_result *DeleteApisecAbnormalResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AbnormalId)) {
+		query["AbnormalId"] = request.AbnormalId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteApisecAbnormal"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteApisecAbnormalResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除API安全风险
+//
+// @param request - DeleteApisecAbnormalRequest
+//
+// @return DeleteApisecAbnormalResponse
+func (client *Client) DeleteApisecAbnormal(request *DeleteApisecAbnormalRequest) (_result *DeleteApisecAbnormalResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteApisecAbnormalResponse{}
+	_body, _err := client.DeleteApisecAbnormalWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除API安全事件
+//
+// @param request - DeleteApisecEventRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteApisecEventResponse
+func (client *Client) DeleteApisecEventWithOptions(request *DeleteApisecEventRequest, runtime *util.RuntimeOptions) (_result *DeleteApisecEventResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventId)) {
+		query["EventId"] = request.EventId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteApisecEvent"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteApisecEventResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除API安全事件
+//
+// @param request - DeleteApisecEventRequest
+//
+// @return DeleteApisecEventResponse
+func (client *Client) DeleteApisecEvent(request *DeleteApisecEventRequest) (_result *DeleteApisecEventResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteApisecEventResponse{}
+	_body, _err := client.DeleteApisecEventWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a protected object group.
+//
+// @param request - DeleteDefenseResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDefenseResourceGroupResponse
 func (client *Client) DeleteDefenseResourceGroupWithOptions(request *DeleteDefenseResourceGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteDefenseResourceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15349,6 +21827,13 @@ func (client *Client) DeleteDefenseResourceGroupWithOptions(request *DeleteDefen
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a protected object group.
+//
+// @param request - DeleteDefenseResourceGroupRequest
+//
+// @return DeleteDefenseResourceGroupResponse
 func (client *Client) DeleteDefenseResourceGroup(request *DeleteDefenseResourceGroupRequest) (_result *DeleteDefenseResourceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDefenseResourceGroupResponse{}
@@ -15360,6 +21845,15 @@ func (client *Client) DeleteDefenseResourceGroup(request *DeleteDefenseResourceG
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a protection rule.
+//
+// @param request - DeleteDefenseRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDefenseRuleResponse
 func (client *Client) DeleteDefenseRuleWithOptions(request *DeleteDefenseRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteDefenseRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15409,6 +21903,13 @@ func (client *Client) DeleteDefenseRuleWithOptions(request *DeleteDefenseRuleReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a protection rule.
+//
+// @param request - DeleteDefenseRuleRequest
+//
+// @return DeleteDefenseRuleResponse
 func (client *Client) DeleteDefenseRule(request *DeleteDefenseRuleRequest) (_result *DeleteDefenseRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDefenseRuleResponse{}
@@ -15420,6 +21921,15 @@ func (client *Client) DeleteDefenseRule(request *DeleteDefenseRuleRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a protection rule template.
+//
+// @param request - DeleteDefenseTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDefenseTemplateResponse
 func (client *Client) DeleteDefenseTemplateWithOptions(request *DeleteDefenseTemplateRequest, runtime *util.RuntimeOptions) (_result *DeleteDefenseTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15465,6 +21975,13 @@ func (client *Client) DeleteDefenseTemplateWithOptions(request *DeleteDefenseTem
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a protection rule template.
+//
+// @param request - DeleteDefenseTemplateRequest
+//
+// @return DeleteDefenseTemplateResponse
 func (client *Client) DeleteDefenseTemplate(request *DeleteDefenseTemplateRequest) (_result *DeleteDefenseTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDefenseTemplateResponse{}
@@ -15476,6 +21993,15 @@ func (client *Client) DeleteDefenseTemplate(request *DeleteDefenseTemplateReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a domain name that is added to Web Application Firewall (WAF).
+//
+// @param request - DeleteDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDomainResponse
 func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runtime *util.RuntimeOptions) (_result *DeleteDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15525,6 +22051,13 @@ func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a domain name that is added to Web Application Firewall (WAF).
+//
+// @param request - DeleteDomainRequest
+//
+// @return DeleteDomainResponse
 func (client *Client) DeleteDomain(request *DeleteDomainRequest) (_result *DeleteDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDomainResponse{}
@@ -15536,6 +22069,15 @@ func (client *Client) DeleteDomain(request *DeleteDomainRequest) (_result *Delet
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an IP address blacklist for major event protection.
+//
+// @param request - DeleteMajorProtectionBlackIpRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMajorProtectionBlackIpResponse
 func (client *Client) DeleteMajorProtectionBlackIpWithOptions(request *DeleteMajorProtectionBlackIpRequest, runtime *util.RuntimeOptions) (_result *DeleteMajorProtectionBlackIpResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15589,6 +22131,13 @@ func (client *Client) DeleteMajorProtectionBlackIpWithOptions(request *DeleteMaj
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an IP address blacklist for major event protection.
+//
+// @param request - DeleteMajorProtectionBlackIpRequest
+//
+// @return DeleteMajorProtectionBlackIpResponse
 func (client *Client) DeleteMajorProtectionBlackIp(request *DeleteMajorProtectionBlackIpRequest) (_result *DeleteMajorProtectionBlackIpResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteMajorProtectionBlackIpResponse{}
@@ -15600,6 +22149,15 @@ func (client *Client) DeleteMajorProtectionBlackIp(request *DeleteMajorProtectio
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes the members that are added for multi-account management in Web Application Firewall (WAF).
+//
+// @param request - DeleteMemberAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMemberAccountResponse
 func (client *Client) DeleteMemberAccountWithOptions(request *DeleteMemberAccountRequest, runtime *util.RuntimeOptions) (_result *DeleteMemberAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15649,6 +22207,13 @@ func (client *Client) DeleteMemberAccountWithOptions(request *DeleteMemberAccoun
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes the members that are added for multi-account management in Web Application Firewall (WAF).
+//
+// @param request - DeleteMemberAccountRequest
+//
+// @return DeleteMemberAccountResponse
 func (client *Client) DeleteMemberAccount(request *DeleteMemberAccountRequest) (_result *DeleteMemberAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteMemberAccountResponse{}
@@ -15660,6 +22225,15 @@ func (client *Client) DeleteMemberAccount(request *DeleteMemberAccountRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether an Alibaba Cloud account is the delegated administrator account of a Web Application Firewall (WAF) instance.
+//
+// @param request - DescribeAccountDelegatedStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAccountDelegatedStatusResponse
 func (client *Client) DescribeAccountDelegatedStatusWithOptions(request *DescribeAccountDelegatedStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeAccountDelegatedStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15701,6 +22275,13 @@ func (client *Client) DescribeAccountDelegatedStatusWithOptions(request *Describ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether an Alibaba Cloud account is the delegated administrator account of a Web Application Firewall (WAF) instance.
+//
+// @param request - DescribeAccountDelegatedStatusRequest
+//
+// @return DescribeAccountDelegatedStatusResponse
 func (client *Client) DescribeAccountDelegatedStatus(request *DescribeAccountDelegatedStatusRequest) (_result *DescribeAccountDelegatedStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAccountDelegatedStatusResponse{}
@@ -15712,6 +22293,391 @@ func (client *Client) DescribeAccountDelegatedStatus(request *DescribeAccountDel
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询API安全风险站点统计
+//
+// @param request - DescribeApisecAbnormalDomainStatisticRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApisecAbnormalDomainStatisticResponse
+func (client *Client) DescribeApisecAbnormalDomainStatisticWithOptions(request *DescribeApisecAbnormalDomainStatisticRequest, runtime *util.RuntimeOptions) (_result *DescribeApisecAbnormalDomainStatisticResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderWay)) {
+		query["OrderWay"] = request.OrderWay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeApisecAbnormalDomainStatistic"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeApisecAbnormalDomainStatisticResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询API安全风险站点统计
+//
+// @param request - DescribeApisecAbnormalDomainStatisticRequest
+//
+// @return DescribeApisecAbnormalDomainStatisticResponse
+func (client *Client) DescribeApisecAbnormalDomainStatistic(request *DescribeApisecAbnormalDomainStatisticRequest) (_result *DescribeApisecAbnormalDomainStatisticResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeApisecAbnormalDomainStatisticResponse{}
+	_body, _err := client.DescribeApisecAbnormalDomainStatisticWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询API安全资产趋势图
+//
+// @param request - DescribeApisecAssetTrendRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApisecAssetTrendResponse
+func (client *Client) DescribeApisecAssetTrendWithOptions(request *DescribeApisecAssetTrendRequest, runtime *util.RuntimeOptions) (_result *DescribeApisecAssetTrendResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeApisecAssetTrend"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeApisecAssetTrendResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询API安全资产趋势图
+//
+// @param request - DescribeApisecAssetTrendRequest
+//
+// @return DescribeApisecAssetTrendResponse
+func (client *Client) DescribeApisecAssetTrend(request *DescribeApisecAssetTrendRequest) (_result *DescribeApisecAssetTrendResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeApisecAssetTrendResponse{}
+	_body, _err := client.DescribeApisecAssetTrendWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询API安全事件站点统计
+//
+// @param request - DescribeApisecEventDomainStatisticRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApisecEventDomainStatisticResponse
+func (client *Client) DescribeApisecEventDomainStatisticWithOptions(request *DescribeApisecEventDomainStatisticRequest, runtime *util.RuntimeOptions) (_result *DescribeApisecEventDomainStatisticResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderWay)) {
+		query["OrderWay"] = request.OrderWay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeApisecEventDomainStatistic"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeApisecEventDomainStatisticResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询API安全事件站点统计
+//
+// @param request - DescribeApisecEventDomainStatisticRequest
+//
+// @return DescribeApisecEventDomainStatisticResponse
+func (client *Client) DescribeApisecEventDomainStatistic(request *DescribeApisecEventDomainStatisticRequest) (_result *DescribeApisecEventDomainStatisticResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeApisecEventDomainStatisticResponse{}
+	_body, _err := client.DescribeApisecEventDomainStatisticWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询API安全敏感数据类型统计
+//
+// @param request - DescribeApisecSensitiveDomainStatisticRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApisecSensitiveDomainStatisticResponse
+func (client *Client) DescribeApisecSensitiveDomainStatisticWithOptions(request *DescribeApisecSensitiveDomainStatisticRequest, runtime *util.RuntimeOptions) (_result *DescribeApisecSensitiveDomainStatisticResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderWay)) {
+		query["OrderWay"] = request.OrderWay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeApisecSensitiveDomainStatistic"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeApisecSensitiveDomainStatisticResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询API安全敏感数据类型统计
+//
+// @param request - DescribeApisecSensitiveDomainStatisticRequest
+//
+// @return DescribeApisecSensitiveDomainStatisticResponse
+func (client *Client) DescribeApisecSensitiveDomainStatistic(request *DescribeApisecSensitiveDomainStatisticRequest) (_result *DescribeApisecSensitiveDomainStatisticResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeApisecSensitiveDomainStatisticResponse{}
+	_body, _err := client.DescribeApisecSensitiveDomainStatisticWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a certificate, such as the certificate name, expiration time, issuance time, and associated domain name.
+//
+// @param request - DescribeCertDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCertDetailResponse
 func (client *Client) DescribeCertDetailWithOptions(request *DescribeCertDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeCertDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15757,6 +22723,13 @@ func (client *Client) DescribeCertDetailWithOptions(request *DescribeCertDetailR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a certificate, such as the certificate name, expiration time, issuance time, and associated domain name.
+//
+// @param request - DescribeCertDetailRequest
+//
+// @return DescribeCertDetailResponse
 func (client *Client) DescribeCertDetail(request *DescribeCertDetailRequest) (_result *DescribeCertDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCertDetailResponse{}
@@ -15768,6 +22741,15 @@ func (client *Client) DescribeCertDetail(request *DescribeCertDetailRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the certificates issued for your domain names that are added to Web Application Firewall (WAF).
+//
+// @param request - DescribeCertsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCertsResponse
 func (client *Client) DescribeCertsWithOptions(request *DescribeCertsRequest, runtime *util.RuntimeOptions) (_result *DescribeCertsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15825,6 +22807,13 @@ func (client *Client) DescribeCertsWithOptions(request *DescribeCertsRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the certificates issued for your domain names that are added to Web Application Firewall (WAF).
+//
+// @param request - DescribeCertsRequest
+//
+// @return DescribeCertsResponse
 func (client *Client) DescribeCerts(request *DescribeCertsRequest) (_result *DescribeCertsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCertsResponse{}
@@ -15836,6 +22825,15 @@ func (client *Client) DescribeCerts(request *DescribeCertsRequest) (_result *Des
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries cloud service resources that are added to Web Application Firewall (WAF).
+//
+// @param request - DescribeCloudResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCloudResourcesResponse
 func (client *Client) DescribeCloudResourcesWithOptions(request *DescribeCloudResourcesRequest, runtime *util.RuntimeOptions) (_result *DescribeCloudResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15917,6 +22915,13 @@ func (client *Client) DescribeCloudResourcesWithOptions(request *DescribeCloudRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries cloud service resources that are added to Web Application Firewall (WAF).
+//
+// @param request - DescribeCloudResourcesRequest
+//
+// @return DescribeCloudResourcesResponse
 func (client *Client) DescribeCloudResources(request *DescribeCloudResourcesRequest) (_result *DescribeCloudResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCloudResourcesResponse{}
@@ -15928,6 +22933,15 @@ func (client *Client) DescribeCloudResources(request *DescribeCloudResourcesRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a protected object.
+//
+// @param request - DescribeDefenseResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDefenseResourceResponse
 func (client *Client) DescribeDefenseResourceWithOptions(request *DescribeDefenseResourceRequest, runtime *util.RuntimeOptions) (_result *DescribeDefenseResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15973,6 +22987,13 @@ func (client *Client) DescribeDefenseResourceWithOptions(request *DescribeDefens
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a protected object.
+//
+// @param request - DescribeDefenseResourceRequest
+//
+// @return DescribeDefenseResourceResponse
 func (client *Client) DescribeDefenseResource(request *DescribeDefenseResourceRequest) (_result *DescribeDefenseResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDefenseResourceResponse{}
@@ -15984,6 +23005,15 @@ func (client *Client) DescribeDefenseResource(request *DescribeDefenseResourceRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a protected object group.
+//
+// @param request - DescribeDefenseResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDefenseResourceGroupResponse
 func (client *Client) DescribeDefenseResourceGroupWithOptions(request *DescribeDefenseResourceGroupRequest, runtime *util.RuntimeOptions) (_result *DescribeDefenseResourceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16029,6 +23059,13 @@ func (client *Client) DescribeDefenseResourceGroupWithOptions(request *DescribeD
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a protected object group.
+//
+// @param request - DescribeDefenseResourceGroupRequest
+//
+// @return DescribeDefenseResourceGroupResponse
 func (client *Client) DescribeDefenseResourceGroup(request *DescribeDefenseResourceGroupRequest) (_result *DescribeDefenseResourceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDefenseResourceGroupResponse{}
@@ -16040,6 +23077,15 @@ func (client *Client) DescribeDefenseResourceGroup(request *DescribeDefenseResou
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the names of protected object groups.
+//
+// @param request - DescribeDefenseResourceGroupNamesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDefenseResourceGroupNamesResponse
 func (client *Client) DescribeDefenseResourceGroupNamesWithOptions(request *DescribeDefenseResourceGroupNamesRequest, runtime *util.RuntimeOptions) (_result *DescribeDefenseResourceGroupNamesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16093,6 +23139,13 @@ func (client *Client) DescribeDefenseResourceGroupNamesWithOptions(request *Desc
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the names of protected object groups.
+//
+// @param request - DescribeDefenseResourceGroupNamesRequest
+//
+// @return DescribeDefenseResourceGroupNamesResponse
 func (client *Client) DescribeDefenseResourceGroupNames(request *DescribeDefenseResourceGroupNamesRequest) (_result *DescribeDefenseResourceGroupNamesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDefenseResourceGroupNamesResponse{}
@@ -16104,6 +23157,15 @@ func (client *Client) DescribeDefenseResourceGroupNames(request *DescribeDefense
 	return _result, _err
 }
 
+// Summary:
+//
+// Performs a pagination query to retrieve the information about protected object groups.
+//
+// @param request - DescribeDefenseResourceGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDefenseResourceGroupsResponse
 func (client *Client) DescribeDefenseResourceGroupsWithOptions(request *DescribeDefenseResourceGroupsRequest, runtime *util.RuntimeOptions) (_result *DescribeDefenseResourceGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16161,6 +23223,13 @@ func (client *Client) DescribeDefenseResourceGroupsWithOptions(request *Describe
 	return _result, _err
 }
 
+// Summary:
+//
+// Performs a pagination query to retrieve the information about protected object groups.
+//
+// @param request - DescribeDefenseResourceGroupsRequest
+//
+// @return DescribeDefenseResourceGroupsResponse
 func (client *Client) DescribeDefenseResourceGroups(request *DescribeDefenseResourceGroupsRequest) (_result *DescribeDefenseResourceGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDefenseResourceGroupsResponse{}
@@ -16172,6 +23241,15 @@ func (client *Client) DescribeDefenseResourceGroups(request *DescribeDefenseReso
 	return _result, _err
 }
 
+// Summary:
+//
+// Performs a pagination query to retrieve the names of protected objects.
+//
+// @param request - DescribeDefenseResourceNamesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDefenseResourceNamesResponse
 func (client *Client) DescribeDefenseResourceNamesWithOptions(request *DescribeDefenseResourceNamesRequest, runtime *util.RuntimeOptions) (_result *DescribeDefenseResourceNamesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16225,6 +23303,13 @@ func (client *Client) DescribeDefenseResourceNamesWithOptions(request *DescribeD
 	return _result, _err
 }
 
+// Summary:
+//
+// Performs a pagination query to retrieve the names of protected objects.
+//
+// @param request - DescribeDefenseResourceNamesRequest
+//
+// @return DescribeDefenseResourceNamesResponse
 func (client *Client) DescribeDefenseResourceNames(request *DescribeDefenseResourceNamesRequest) (_result *DescribeDefenseResourceNamesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDefenseResourceNamesResponse{}
@@ -16236,6 +23321,15 @@ func (client *Client) DescribeDefenseResourceNames(request *DescribeDefenseResou
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the protection templates that are associated with a protected object or protected object group.
+//
+// @param request - DescribeDefenseResourceTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDefenseResourceTemplatesResponse
 func (client *Client) DescribeDefenseResourceTemplatesWithOptions(request *DescribeDefenseResourceTemplatesRequest, runtime *util.RuntimeOptions) (_result *DescribeDefenseResourceTemplatesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16293,6 +23387,13 @@ func (client *Client) DescribeDefenseResourceTemplatesWithOptions(request *Descr
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the protection templates that are associated with a protected object or protected object group.
+//
+// @param request - DescribeDefenseResourceTemplatesRequest
+//
+// @return DescribeDefenseResourceTemplatesResponse
 func (client *Client) DescribeDefenseResourceTemplates(request *DescribeDefenseResourceTemplatesRequest) (_result *DescribeDefenseResourceTemplatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDefenseResourceTemplatesResponse{}
@@ -16304,6 +23405,15 @@ func (client *Client) DescribeDefenseResourceTemplates(request *DescribeDefenseR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries protected objects by page.
+//
+// @param request - DescribeDefenseResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDefenseResourcesResponse
 func (client *Client) DescribeDefenseResourcesWithOptions(request *DescribeDefenseResourcesRequest, runtime *util.RuntimeOptions) (_result *DescribeDefenseResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16361,6 +23471,13 @@ func (client *Client) DescribeDefenseResourcesWithOptions(request *DescribeDefen
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries protected objects by page.
+//
+// @param request - DescribeDefenseResourcesRequest
+//
+// @return DescribeDefenseResourcesResponse
 func (client *Client) DescribeDefenseResources(request *DescribeDefenseResourcesRequest) (_result *DescribeDefenseResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDefenseResourcesResponse{}
@@ -16372,6 +23489,15 @@ func (client *Client) DescribeDefenseResources(request *DescribeDefenseResources
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a protection rule.
+//
+// @param request - DescribeDefenseRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDefenseRuleResponse
 func (client *Client) DescribeDefenseRuleWithOptions(request *DescribeDefenseRuleRequest, runtime *util.RuntimeOptions) (_result *DescribeDefenseRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16421,6 +23547,13 @@ func (client *Client) DescribeDefenseRuleWithOptions(request *DescribeDefenseRul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a protection rule.
+//
+// @param request - DescribeDefenseRuleRequest
+//
+// @return DescribeDefenseRuleResponse
 func (client *Client) DescribeDefenseRule(request *DescribeDefenseRuleRequest) (_result *DescribeDefenseRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDefenseRuleResponse{}
@@ -16432,6 +23565,15 @@ func (client *Client) DescribeDefenseRule(request *DescribeDefenseRuleRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries protection rules by page.
+//
+// @param request - DescribeDefenseRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDefenseRulesResponse
 func (client *Client) DescribeDefenseRulesWithOptions(request *DescribeDefenseRulesRequest, runtime *util.RuntimeOptions) (_result *DescribeDefenseRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16489,6 +23631,13 @@ func (client *Client) DescribeDefenseRulesWithOptions(request *DescribeDefenseRu
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries protection rules by page.
+//
+// @param request - DescribeDefenseRulesRequest
+//
+// @return DescribeDefenseRulesResponse
 func (client *Client) DescribeDefenseRules(request *DescribeDefenseRulesRequest) (_result *DescribeDefenseRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDefenseRulesResponse{}
@@ -16500,6 +23649,15 @@ func (client *Client) DescribeDefenseRules(request *DescribeDefenseRulesRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a protection rule template.
+//
+// @param request - DescribeDefenseTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDefenseTemplateResponse
 func (client *Client) DescribeDefenseTemplateWithOptions(request *DescribeDefenseTemplateRequest, runtime *util.RuntimeOptions) (_result *DescribeDefenseTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16545,6 +23703,13 @@ func (client *Client) DescribeDefenseTemplateWithOptions(request *DescribeDefens
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a protection rule template.
+//
+// @param request - DescribeDefenseTemplateRequest
+//
+// @return DescribeDefenseTemplateResponse
 func (client *Client) DescribeDefenseTemplate(request *DescribeDefenseTemplateRequest) (_result *DescribeDefenseTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDefenseTemplateResponse{}
@@ -16556,6 +23721,15 @@ func (client *Client) DescribeDefenseTemplate(request *DescribeDefenseTemplateRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the names of protected object groups for which a protection template can take effect.
+//
+// @param request - DescribeDefenseTemplateValidGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDefenseTemplateValidGroupsResponse
 func (client *Client) DescribeDefenseTemplateValidGroupsWithOptions(request *DescribeDefenseTemplateValidGroupsRequest, runtime *util.RuntimeOptions) (_result *DescribeDefenseTemplateValidGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16617,6 +23791,13 @@ func (client *Client) DescribeDefenseTemplateValidGroupsWithOptions(request *Des
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the names of protected object groups for which a protection template can take effect.
+//
+// @param request - DescribeDefenseTemplateValidGroupsRequest
+//
+// @return DescribeDefenseTemplateValidGroupsResponse
 func (client *Client) DescribeDefenseTemplateValidGroups(request *DescribeDefenseTemplateValidGroupsRequest) (_result *DescribeDefenseTemplateValidGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDefenseTemplateValidGroupsResponse{}
@@ -16628,6 +23809,15 @@ func (client *Client) DescribeDefenseTemplateValidGroups(request *DescribeDefens
 	return _result, _err
 }
 
+// Summary:
+//
+// Performs a paging query to retrieve protection templates.
+//
+// @param request - DescribeDefenseTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDefenseTemplatesResponse
 func (client *Client) DescribeDefenseTemplatesWithOptions(request *DescribeDefenseTemplatesRequest, runtime *util.RuntimeOptions) (_result *DescribeDefenseTemplatesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16701,6 +23891,13 @@ func (client *Client) DescribeDefenseTemplatesWithOptions(request *DescribeDefen
 	return _result, _err
 }
 
+// Summary:
+//
+// Performs a paging query to retrieve protection templates.
+//
+// @param request - DescribeDefenseTemplatesRequest
+//
+// @return DescribeDefenseTemplatesResponse
 func (client *Client) DescribeDefenseTemplates(request *DescribeDefenseTemplatesRequest) (_result *DescribeDefenseTemplatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDefenseTemplatesResponse{}
@@ -16712,6 +23909,15 @@ func (client *Client) DescribeDefenseTemplates(request *DescribeDefenseTemplates
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether the Domain Name System (DNS) settings of a domain name are properly configured.
+//
+// @param request - DescribeDomainDNSRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainDNSRecordResponse
 func (client *Client) DescribeDomainDNSRecordWithOptions(request *DescribeDomainDNSRecordRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainDNSRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16757,6 +23963,13 @@ func (client *Client) DescribeDomainDNSRecordWithOptions(request *DescribeDomain
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether the Domain Name System (DNS) settings of a domain name are properly configured.
+//
+// @param request - DescribeDomainDNSRecordRequest
+//
+// @return DescribeDomainDNSRecordResponse
 func (client *Client) DescribeDomainDNSRecord(request *DescribeDomainDNSRecordRequest) (_result *DescribeDomainDNSRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainDNSRecordResponse{}
@@ -16768,6 +23981,15 @@ func (client *Client) DescribeDomainDNSRecord(request *DescribeDomainDNSRecordRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a domain name that is added to Web Application Firewall (WAF).
+//
+// @param request - DescribeDomainDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainDetailResponse
 func (client *Client) DescribeDomainDetailWithOptions(request *DescribeDomainDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16809,6 +24031,13 @@ func (client *Client) DescribeDomainDetailWithOptions(request *DescribeDomainDet
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a domain name that is added to Web Application Firewall (WAF).
+//
+// @param request - DescribeDomainDetailRequest
+//
+// @return DescribeDomainDetailResponse
 func (client *Client) DescribeDomainDetail(request *DescribeDomainDetailRequest) (_result *DescribeDomainDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainDetailResponse{}
@@ -16820,6 +24049,15 @@ func (client *Client) DescribeDomainDetail(request *DescribeDomainDetailRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the domain names that are added to Web Application Firewall (WAF).
+//
+// @param request - DescribeDomainsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDomainsResponse
 func (client *Client) DescribeDomainsWithOptions(request *DescribeDomainsRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16881,6 +24119,13 @@ func (client *Client) DescribeDomainsWithOptions(request *DescribeDomainsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the domain names that are added to Web Application Firewall (WAF).
+//
+// @param request - DescribeDomainsRequest
+//
+// @return DescribeDomainsResponse
 func (client *Client) DescribeDomains(request *DescribeDomainsRequest) (_result *DescribeDomainsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainsResponse{}
@@ -16892,6 +24137,15 @@ func (client *Client) DescribeDomains(request *DescribeDomainsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the traffic statistics of requests that are forwarded to Web Application Firewall (WAF).
+//
+// @param request - DescribeFlowChartRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFlowChartResponse
 func (client *Client) DescribeFlowChartWithOptions(request *DescribeFlowChartRequest, runtime *util.RuntimeOptions) (_result *DescribeFlowChartResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16949,6 +24203,13 @@ func (client *Client) DescribeFlowChartWithOptions(request *DescribeFlowChartReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the traffic statistics of requests that are forwarded to Web Application Firewall (WAF).
+//
+// @param request - DescribeFlowChartRequest
+//
+// @return DescribeFlowChartResponse
 func (client *Client) DescribeFlowChart(request *DescribeFlowChartRequest) (_result *DescribeFlowChartResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFlowChartResponse{}
@@ -16960,6 +24221,15 @@ func (client *Client) DescribeFlowChart(request *DescribeFlowChartRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the top 10 protected objects that receive requests.
+//
+// @param request - DescribeFlowTopResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFlowTopResourceResponse
 func (client *Client) DescribeFlowTopResourceWithOptions(request *DescribeFlowTopResourceRequest, runtime *util.RuntimeOptions) (_result *DescribeFlowTopResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17009,6 +24279,13 @@ func (client *Client) DescribeFlowTopResourceWithOptions(request *DescribeFlowTo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the top 10 protected objects that receive requests.
+//
+// @param request - DescribeFlowTopResourceRequest
+//
+// @return DescribeFlowTopResourceResponse
 func (client *Client) DescribeFlowTopResource(request *DescribeFlowTopResourceRequest) (_result *DescribeFlowTopResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFlowTopResourceResponse{}
@@ -17020,6 +24297,15 @@ func (client *Client) DescribeFlowTopResource(request *DescribeFlowTopResourceRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the top 10 URLs that are used to initiate requests.
+//
+// @param request - DescribeFlowTopUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFlowTopUrlResponse
 func (client *Client) DescribeFlowTopUrlWithOptions(request *DescribeFlowTopUrlRequest, runtime *util.RuntimeOptions) (_result *DescribeFlowTopUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17073,6 +24359,13 @@ func (client *Client) DescribeFlowTopUrlWithOptions(request *DescribeFlowTopUrlR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the top 10 URLs that are used to initiate requests.
+//
+// @param request - DescribeFlowTopUrlRequest
+//
+// @return DescribeFlowTopUrlResponse
 func (client *Client) DescribeFlowTopUrl(request *DescribeFlowTopUrlRequest) (_result *DescribeFlowTopUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFlowTopUrlResponse{}
@@ -17084,6 +24377,15 @@ func (client *Client) DescribeFlowTopUrl(request *DescribeFlowTopUrlRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the hybrid cloud node groups that are added to Web Application Firewall (WAF).
+//
+// @param request - DescribeHybridCloudGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHybridCloudGroupsResponse
 func (client *Client) DescribeHybridCloudGroupsWithOptions(request *DescribeHybridCloudGroupsRequest, runtime *util.RuntimeOptions) (_result *DescribeHybridCloudGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17149,6 +24451,13 @@ func (client *Client) DescribeHybridCloudGroupsWithOptions(request *DescribeHybr
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the hybrid cloud node groups that are added to Web Application Firewall (WAF).
+//
+// @param request - DescribeHybridCloudGroupsRequest
+//
+// @return DescribeHybridCloudGroupsResponse
 func (client *Client) DescribeHybridCloudGroups(request *DescribeHybridCloudGroupsRequest) (_result *DescribeHybridCloudGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeHybridCloudGroupsResponse{}
@@ -17160,6 +24469,15 @@ func (client *Client) DescribeHybridCloudGroups(request *DescribeHybridCloudGrou
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the domain names that are added to a Web Application Firewall (WAF) instance in hybrid cloud mode.
+//
+// @param request - DescribeHybridCloudResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHybridCloudResourcesResponse
 func (client *Client) DescribeHybridCloudResourcesWithOptions(request *DescribeHybridCloudResourcesRequest, runtime *util.RuntimeOptions) (_result *DescribeHybridCloudResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17221,6 +24539,13 @@ func (client *Client) DescribeHybridCloudResourcesWithOptions(request *DescribeH
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the domain names that are added to a Web Application Firewall (WAF) instance in hybrid cloud mode.
+//
+// @param request - DescribeHybridCloudResourcesRequest
+//
+// @return DescribeHybridCloudResourcesResponse
 func (client *Client) DescribeHybridCloudResources(request *DescribeHybridCloudResourcesRequest) (_result *DescribeHybridCloudResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeHybridCloudResourcesResponse{}
@@ -17232,6 +24557,15 @@ func (client *Client) DescribeHybridCloudResources(request *DescribeHybridCloudR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the HTTP and HTTPS ports that you can use when you add a domain name to Web Application Firewall (WAF) in hybrid cloud mode.
+//
+// @param request - DescribeHybridCloudUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHybridCloudUserResponse
 func (client *Client) DescribeHybridCloudUserWithOptions(request *DescribeHybridCloudUserRequest, runtime *util.RuntimeOptions) (_result *DescribeHybridCloudUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17273,6 +24607,13 @@ func (client *Client) DescribeHybridCloudUserWithOptions(request *DescribeHybrid
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the HTTP and HTTPS ports that you can use when you add a domain name to Web Application Firewall (WAF) in hybrid cloud mode.
+//
+// @param request - DescribeHybridCloudUserRequest
+//
+// @return DescribeHybridCloudUserResponse
 func (client *Client) DescribeHybridCloudUser(request *DescribeHybridCloudUserRequest) (_result *DescribeHybridCloudUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeHybridCloudUserResponse{}
@@ -17284,6 +24625,15 @@ func (client *Client) DescribeHybridCloudUser(request *DescribeHybridCloudUserRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a Web Application Firewall (WAF) instance within the current Alibaba Cloud account.
+//
+// @param request - DescribeInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceResponse
 func (client *Client) DescribeInstanceWithOptions(request *DescribeInstanceRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17321,6 +24671,13 @@ func (client *Client) DescribeInstanceWithOptions(request *DescribeInstanceReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a Web Application Firewall (WAF) instance within the current Alibaba Cloud account.
+//
+// @param request - DescribeInstanceRequest
+//
+// @return DescribeInstanceResponse
 func (client *Client) DescribeInstance(request *DescribeInstanceRequest) (_result *DescribeInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceResponse{}
@@ -17332,6 +24689,15 @@ func (client *Client) DescribeInstance(request *DescribeInstanceRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries IP addresses in an IP address blacklist for major event protection by page.
+//
+// @param request - DescribeMajorProtectionBlackIpsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeMajorProtectionBlackIpsResponse
 func (client *Client) DescribeMajorProtectionBlackIpsWithOptions(request *DescribeMajorProtectionBlackIpsRequest, runtime *util.RuntimeOptions) (_result *DescribeMajorProtectionBlackIpsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17397,6 +24763,13 @@ func (client *Client) DescribeMajorProtectionBlackIpsWithOptions(request *Descri
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries IP addresses in an IP address blacklist for major event protection by page.
+//
+// @param request - DescribeMajorProtectionBlackIpsRequest
+//
+// @return DescribeMajorProtectionBlackIpsResponse
 func (client *Client) DescribeMajorProtectionBlackIps(request *DescribeMajorProtectionBlackIpsRequest) (_result *DescribeMajorProtectionBlackIpsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeMajorProtectionBlackIpsResponse{}
@@ -17408,6 +24781,15 @@ func (client *Client) DescribeMajorProtectionBlackIps(request *DescribeMajorProt
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about members.
+//
+// @param request - DescribeMemberAccountsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeMemberAccountsResponse
 func (client *Client) DescribeMemberAccountsWithOptions(request *DescribeMemberAccountsRequest, runtime *util.RuntimeOptions) (_result *DescribeMemberAccountsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17457,6 +24839,13 @@ func (client *Client) DescribeMemberAccountsWithOptions(request *DescribeMemberA
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about members.
+//
+// @param request - DescribeMemberAccountsRequest
+//
+// @return DescribeMemberAccountsResponse
 func (client *Client) DescribeMemberAccounts(request *DescribeMemberAccountsRequest) (_result *DescribeMemberAccountsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeMemberAccountsResponse{}
@@ -17468,6 +24857,15 @@ func (client *Client) DescribeMemberAccounts(request *DescribeMemberAccountsRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the queries per second (QPS) statistics of a WAF instance.
+//
+// @param request - DescribePeakTrendRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePeakTrendResponse
 func (client *Client) DescribePeakTrendWithOptions(request *DescribePeakTrendRequest, runtime *util.RuntimeOptions) (_result *DescribePeakTrendResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17525,6 +24923,13 @@ func (client *Client) DescribePeakTrendWithOptions(request *DescribePeakTrendReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the queries per second (QPS) statistics of a WAF instance.
+//
+// @param request - DescribePeakTrendRequest
+//
+// @return DescribePeakTrendResponse
 func (client *Client) DescribePeakTrend(request *DescribePeakTrendRequest) (_result *DescribePeakTrendResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePeakTrendResponse{}
@@ -17536,6 +24941,15 @@ func (client *Client) DescribePeakTrend(request *DescribePeakTrendRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the cloud service instances to be added to Web Application Firewall (WAF) in transparent proxy mode.
+//
+// @param request - DescribeProductInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeProductInstancesResponse
 func (client *Client) DescribeProductInstancesWithOptions(request *DescribeProductInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeProductInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17609,6 +25023,13 @@ func (client *Client) DescribeProductInstancesWithOptions(request *DescribeProdu
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the cloud service instances to be added to Web Application Firewall (WAF) in transparent proxy mode.
+//
+// @param request - DescribeProductInstancesRequest
+//
+// @return DescribeProductInstancesResponse
 func (client *Client) DescribeProductInstances(request *DescribeProductInstancesRequest) (_result *DescribeProductInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeProductInstancesResponse{}
@@ -17620,6 +25041,15 @@ func (client *Client) DescribeProductInstances(request *DescribeProductInstances
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of domain names that are added to Web Application Firewall (WAF) and penalized for failing to obtain an Internet Content Provider (ICP) filing.
+//
+// @param request - DescribePunishedDomainsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePunishedDomainsResponse
 func (client *Client) DescribePunishedDomainsWithOptions(request *DescribePunishedDomainsRequest, runtime *util.RuntimeOptions) (_result *DescribePunishedDomainsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17665,6 +25095,13 @@ func (client *Client) DescribePunishedDomainsWithOptions(request *DescribePunish
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of domain names that are added to Web Application Firewall (WAF) and penalized for failing to obtain an Internet Content Provider (ICP) filing.
+//
+// @param request - DescribePunishedDomainsRequest
+//
+// @return DescribePunishedDomainsResponse
 func (client *Client) DescribePunishedDomains(request *DescribePunishedDomainsRequest) (_result *DescribePunishedDomainsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePunishedDomainsResponse{}
@@ -17676,6 +25113,15 @@ func (client *Client) DescribePunishedDomains(request *DescribePunishedDomainsRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the certificates that are used in cloud service instances. The certificates returned include the certificates within the delegated administrator account and the certificates within members to which specific instances belong. For example, the delegated administrator account has certificate 1, instance lb-xx-1 belongs to member B, and member B has certificate 2. If you specify instance lb-xx-1 in the request, certificate 1 and certificate 2 are returned.
+//
+// @param request - DescribeResourceInstanceCertsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeResourceInstanceCertsResponse
 func (client *Client) DescribeResourceInstanceCertsWithOptions(request *DescribeResourceInstanceCertsRequest, runtime *util.RuntimeOptions) (_result *DescribeResourceInstanceCertsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17729,6 +25175,13 @@ func (client *Client) DescribeResourceInstanceCertsWithOptions(request *Describe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the certificates that are used in cloud service instances. The certificates returned include the certificates within the delegated administrator account and the certificates within members to which specific instances belong. For example, the delegated administrator account has certificate 1, instance lb-xx-1 belongs to member B, and member B has certificate 2. If you specify instance lb-xx-1 in the request, certificate 1 and certificate 2 are returned.
+//
+// @param request - DescribeResourceInstanceCertsRequest
+//
+// @return DescribeResourceInstanceCertsResponse
 func (client *Client) DescribeResourceInstanceCerts(request *DescribeResourceInstanceCertsRequest) (_result *DescribeResourceInstanceCertsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeResourceInstanceCertsResponse{}
@@ -17740,6 +25193,15 @@ func (client *Client) DescribeResourceInstanceCerts(request *DescribeResourceIns
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether the log collection feature is enabled for a protected object.
+//
+// @param request - DescribeResourceLogStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeResourceLogStatusResponse
 func (client *Client) DescribeResourceLogStatusWithOptions(request *DescribeResourceLogStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeResourceLogStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17785,6 +25247,13 @@ func (client *Client) DescribeResourceLogStatusWithOptions(request *DescribeReso
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether the log collection feature is enabled for a protected object.
+//
+// @param request - DescribeResourceLogStatusRequest
+//
+// @return DescribeResourceLogStatusResponse
 func (client *Client) DescribeResourceLogStatus(request *DescribeResourceLogStatusRequest) (_result *DescribeResourceLogStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeResourceLogStatusResponse{}
@@ -17796,6 +25265,15 @@ func (client *Client) DescribeResourceLogStatus(request *DescribeResourceLogStat
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the ports of a cloud service instance that are added to Web Application Firewall (WAF).
+//
+// @param request - DescribeResourcePortRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeResourcePortResponse
 func (client *Client) DescribeResourcePortWithOptions(request *DescribeResourcePortRequest, runtime *util.RuntimeOptions) (_result *DescribeResourcePortResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17841,6 +25319,13 @@ func (client *Client) DescribeResourcePortWithOptions(request *DescribeResourceP
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the ports of a cloud service instance that are added to Web Application Firewall (WAF).
+//
+// @param request - DescribeResourcePortRequest
+//
+// @return DescribeResourcePortResponse
 func (client *Client) DescribeResourcePort(request *DescribeResourcePortRequest) (_result *DescribeResourcePortResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeResourcePortResponse{}
@@ -17852,6 +25337,15 @@ func (client *Client) DescribeResourcePort(request *DescribeResourcePortRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the region IDs of the resources that are added to Web Application Firewall (WAF) in cloud native mode. The resources include Application Load Balancer (ALB) instances, Microservices Engine (MSE) instances, and custom domain names bound to web applications in Function Compute.
+//
+// @param request - DescribeResourceRegionIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeResourceRegionIdResponse
 func (client *Client) DescribeResourceRegionIdWithOptions(request *DescribeResourceRegionIdRequest, runtime *util.RuntimeOptions) (_result *DescribeResourceRegionIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17893,6 +25387,13 @@ func (client *Client) DescribeResourceRegionIdWithOptions(request *DescribeResou
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the region IDs of the resources that are added to Web Application Firewall (WAF) in cloud native mode. The resources include Application Load Balancer (ALB) instances, Microservices Engine (MSE) instances, and custom domain names bound to web applications in Function Compute.
+//
+// @param request - DescribeResourceRegionIdRequest
+//
+// @return DescribeResourceRegionIdResponse
 func (client *Client) DescribeResourceRegionId(request *DescribeResourceRegionIdRequest) (_result *DescribeResourceRegionIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeResourceRegionIdResponse{}
@@ -17904,6 +25405,15 @@ func (client *Client) DescribeResourceRegionId(request *DescribeResourceRegionId
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the region IDs of Classic Load Balancer (CLB) and Elastic Compute Service (ECS) instances that can be added to Web Application Firewall (WAF) in transparent proxy mode.
+//
+// @param request - DescribeResourceSupportRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeResourceSupportRegionsResponse
 func (client *Client) DescribeResourceSupportRegionsWithOptions(request *DescribeResourceSupportRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeResourceSupportRegionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17945,6 +25455,13 @@ func (client *Client) DescribeResourceSupportRegionsWithOptions(request *Describ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the region IDs of Classic Load Balancer (CLB) and Elastic Compute Service (ECS) instances that can be added to Web Application Firewall (WAF) in transparent proxy mode.
+//
+// @param request - DescribeResourceSupportRegionsRequest
+//
+// @return DescribeResourceSupportRegionsResponse
 func (client *Client) DescribeResourceSupportRegions(request *DescribeResourceSupportRegionsRequest) (_result *DescribeResourceSupportRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeResourceSupportRegionsResponse{}
@@ -17956,6 +25473,15 @@ func (client *Client) DescribeResourceSupportRegions(request *DescribeResourceSu
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the trend of the number of error codes that are returned to clients or Web Application Firewall (WAF). The error codes include 302, 405, 444, 499, and 5XX.
+//
+// @param request - DescribeResponseCodeTrendGraphRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeResponseCodeTrendGraphResponse
 func (client *Client) DescribeResponseCodeTrendGraphWithOptions(request *DescribeResponseCodeTrendGraphRequest, runtime *util.RuntimeOptions) (_result *DescribeResponseCodeTrendGraphResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18017,6 +25543,13 @@ func (client *Client) DescribeResponseCodeTrendGraphWithOptions(request *Describ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the trend of the number of error codes that are returned to clients or Web Application Firewall (WAF). The error codes include 302, 405, 444, 499, and 5XX.
+//
+// @param request - DescribeResponseCodeTrendGraphRequest
+//
+// @return DescribeResponseCodeTrendGraphResponse
 func (client *Client) DescribeResponseCodeTrendGraph(request *DescribeResponseCodeTrendGraphRequest) (_result *DescribeResponseCodeTrendGraphResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeResponseCodeTrendGraphResponse{}
@@ -18028,6 +25561,15 @@ func (client *Client) DescribeResponseCodeTrendGraph(request *DescribeResponseCo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries regular expression rule groups by page.
+//
+// @param request - DescribeRuleGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRuleGroupsResponse
 func (client *Client) DescribeRuleGroupsWithOptions(request *DescribeRuleGroupsRequest, runtime *util.RuntimeOptions) (_result *DescribeRuleGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18085,6 +25627,13 @@ func (client *Client) DescribeRuleGroupsWithOptions(request *DescribeRuleGroupsR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries regular expression rule groups by page.
+//
+// @param request - DescribeRuleGroupsRequest
+//
+// @return DescribeRuleGroupsResponse
 func (client *Client) DescribeRuleGroups(request *DescribeRuleGroupsRequest) (_result *DescribeRuleGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRuleGroupsResponse{}
@@ -18096,6 +25645,15 @@ func (client *Client) DescribeRuleGroups(request *DescribeRuleGroupsRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the top 10 IP addresses from which attacks are initiated.
+//
+// @param request - DescribeRuleHitsTopClientIpRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRuleHitsTopClientIpResponse
 func (client *Client) DescribeRuleHitsTopClientIpWithOptions(request *DescribeRuleHitsTopClientIpRequest, runtime *util.RuntimeOptions) (_result *DescribeRuleHitsTopClientIpResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18153,6 +25711,13 @@ func (client *Client) DescribeRuleHitsTopClientIpWithOptions(request *DescribeRu
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the top 10 IP addresses from which attacks are initiated.
+//
+// @param request - DescribeRuleHitsTopClientIpRequest
+//
+// @return DescribeRuleHitsTopClientIpResponse
 func (client *Client) DescribeRuleHitsTopClientIp(request *DescribeRuleHitsTopClientIpRequest) (_result *DescribeRuleHitsTopClientIpResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRuleHitsTopClientIpResponse{}
@@ -18164,6 +25729,15 @@ func (client *Client) DescribeRuleHitsTopClientIp(request *DescribeRuleHitsTopCl
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the top 10 protected objects that trigger protection rules.
+//
+// @param request - DescribeRuleHitsTopResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRuleHitsTopResourceResponse
 func (client *Client) DescribeRuleHitsTopResourceWithOptions(request *DescribeRuleHitsTopResourceRequest, runtime *util.RuntimeOptions) (_result *DescribeRuleHitsTopResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18217,6 +25791,13 @@ func (client *Client) DescribeRuleHitsTopResourceWithOptions(request *DescribeRu
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the top 10 protected objects that trigger protection rules.
+//
+// @param request - DescribeRuleHitsTopResourceRequest
+//
+// @return DescribeRuleHitsTopResourceResponse
 func (client *Client) DescribeRuleHitsTopResource(request *DescribeRuleHitsTopResourceRequest) (_result *DescribeRuleHitsTopResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRuleHitsTopResourceResponse{}
@@ -18228,6 +25809,15 @@ func (client *Client) DescribeRuleHitsTopResource(request *DescribeRuleHitsTopRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the IDs of the top 10 protection rules that are matched by requests.
+//
+// @param request - DescribeRuleHitsTopRuleIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRuleHitsTopRuleIdResponse
 func (client *Client) DescribeRuleHitsTopRuleIdWithOptions(request *DescribeRuleHitsTopRuleIdRequest, runtime *util.RuntimeOptions) (_result *DescribeRuleHitsTopRuleIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18289,6 +25879,13 @@ func (client *Client) DescribeRuleHitsTopRuleIdWithOptions(request *DescribeRule
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the IDs of the top 10 protection rules that are matched by requests.
+//
+// @param request - DescribeRuleHitsTopRuleIdRequest
+//
+// @return DescribeRuleHitsTopRuleIdResponse
 func (client *Client) DescribeRuleHitsTopRuleId(request *DescribeRuleHitsTopRuleIdRequest) (_result *DescribeRuleHitsTopRuleIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRuleHitsTopRuleIdResponse{}
@@ -18300,6 +25897,15 @@ func (client *Client) DescribeRuleHitsTopRuleId(request *DescribeRuleHitsTopRule
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the top 10 protection modules that are matched.
+//
+// @param request - DescribeRuleHitsTopTuleTypeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRuleHitsTopTuleTypeResponse
 func (client *Client) DescribeRuleHitsTopTuleTypeWithOptions(request *DescribeRuleHitsTopTuleTypeRequest, runtime *util.RuntimeOptions) (_result *DescribeRuleHitsTopTuleTypeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18349,6 +25955,13 @@ func (client *Client) DescribeRuleHitsTopTuleTypeWithOptions(request *DescribeRu
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the top 10 protection modules that are matched.
+//
+// @param request - DescribeRuleHitsTopTuleTypeRequest
+//
+// @return DescribeRuleHitsTopTuleTypeResponse
 func (client *Client) DescribeRuleHitsTopTuleType(request *DescribeRuleHitsTopTuleTypeRequest) (_result *DescribeRuleHitsTopTuleTypeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRuleHitsTopTuleTypeResponse{}
@@ -18360,6 +25973,15 @@ func (client *Client) DescribeRuleHitsTopTuleType(request *DescribeRuleHitsTopTu
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the top 10 user agents that are used to initiate attacks.
+//
+// @param request - DescribeRuleHitsTopUaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRuleHitsTopUaResponse
 func (client *Client) DescribeRuleHitsTopUaWithOptions(request *DescribeRuleHitsTopUaRequest, runtime *util.RuntimeOptions) (_result *DescribeRuleHitsTopUaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18413,6 +26035,13 @@ func (client *Client) DescribeRuleHitsTopUaWithOptions(request *DescribeRuleHits
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the top 10 user agents that are used to initiate attacks.
+//
+// @param request - DescribeRuleHitsTopUaRequest
+//
+// @return DescribeRuleHitsTopUaResponse
 func (client *Client) DescribeRuleHitsTopUa(request *DescribeRuleHitsTopUaRequest) (_result *DescribeRuleHitsTopUaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRuleHitsTopUaResponse{}
@@ -18424,6 +26053,15 @@ func (client *Client) DescribeRuleHitsTopUa(request *DescribeRuleHitsTopUaReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the top 10 URLs that trigger protection rules.
+//
+// @param request - DescribeRuleHitsTopUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRuleHitsTopUrlResponse
 func (client *Client) DescribeRuleHitsTopUrlWithOptions(request *DescribeRuleHitsTopUrlRequest, runtime *util.RuntimeOptions) (_result *DescribeRuleHitsTopUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18481,6 +26119,13 @@ func (client *Client) DescribeRuleHitsTopUrlWithOptions(request *DescribeRuleHit
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the top 10 URLs that trigger protection rules.
+//
+// @param request - DescribeRuleHitsTopUrlRequest
+//
+// @return DescribeRuleHitsTopUrlResponse
 func (client *Client) DescribeRuleHitsTopUrl(request *DescribeRuleHitsTopUrlRequest) (_result *DescribeRuleHitsTopUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRuleHitsTopUrlResponse{}
@@ -18492,6 +26137,15 @@ func (client *Client) DescribeRuleHitsTopUrl(request *DescribeRuleHitsTopUrlRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether Web Application Firewall (WAF) is authorized to access Logstores.
+//
+// @param request - DescribeSlsAuthStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSlsAuthStatusResponse
 func (client *Client) DescribeSlsAuthStatusWithOptions(request *DescribeSlsAuthStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeSlsAuthStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18533,6 +26187,13 @@ func (client *Client) DescribeSlsAuthStatusWithOptions(request *DescribeSlsAuthS
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether Web Application Firewall (WAF) is authorized to access Logstores.
+//
+// @param request - DescribeSlsAuthStatusRequest
+//
+// @return DescribeSlsAuthStatusResponse
 func (client *Client) DescribeSlsAuthStatus(request *DescribeSlsAuthStatusRequest) (_result *DescribeSlsAuthStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSlsAuthStatusResponse{}
@@ -18544,6 +26205,15 @@ func (client *Client) DescribeSlsAuthStatus(request *DescribeSlsAuthStatusReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about a Logstore, such as the total capacity, storage duration, and used capacity.
+//
+// @param request - DescribeSlsLogStoreRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSlsLogStoreResponse
 func (client *Client) DescribeSlsLogStoreWithOptions(request *DescribeSlsLogStoreRequest, runtime *util.RuntimeOptions) (_result *DescribeSlsLogStoreResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18585,6 +26255,13 @@ func (client *Client) DescribeSlsLogStoreWithOptions(request *DescribeSlsLogStor
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about a Logstore, such as the total capacity, storage duration, and used capacity.
+//
+// @param request - DescribeSlsLogStoreRequest
+//
+// @return DescribeSlsLogStoreResponse
 func (client *Client) DescribeSlsLogStore(request *DescribeSlsLogStoreRequest) (_result *DescribeSlsLogStoreResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSlsLogStoreResponse{}
@@ -18596,6 +26273,15 @@ func (client *Client) DescribeSlsLogStore(request *DescribeSlsLogStoreRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the status of a Simple Log Service Logstore.
+//
+// @param request - DescribeSlsLogStoreStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSlsLogStoreStatusResponse
 func (client *Client) DescribeSlsLogStoreStatusWithOptions(request *DescribeSlsLogStoreStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeSlsLogStoreStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18637,6 +26323,13 @@ func (client *Client) DescribeSlsLogStoreStatusWithOptions(request *DescribeSlsL
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the status of a Simple Log Service Logstore.
+//
+// @param request - DescribeSlsLogStoreStatusRequest
+//
+// @return DescribeSlsLogStoreStatusResponse
 func (client *Client) DescribeSlsLogStoreStatus(request *DescribeSlsLogStoreStatusRequest) (_result *DescribeSlsLogStoreStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSlsLogStoreStatusResponse{}
@@ -18648,6 +26341,15 @@ func (client *Client) DescribeSlsLogStoreStatus(request *DescribeSlsLogStoreStat
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the number of protected resources for which a protection template takes effect.
+//
+// @param request - DescribeTemplateResourceCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTemplateResourceCountResponse
 func (client *Client) DescribeTemplateResourceCountWithOptions(request *DescribeTemplateResourceCountRequest, runtime *util.RuntimeOptions) (_result *DescribeTemplateResourceCountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18693,6 +26395,13 @@ func (client *Client) DescribeTemplateResourceCountWithOptions(request *Describe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the number of protected resources for which a protection template takes effect.
+//
+// @param request - DescribeTemplateResourceCountRequest
+//
+// @return DescribeTemplateResourceCountResponse
 func (client *Client) DescribeTemplateResourceCount(request *DescribeTemplateResourceCountRequest) (_result *DescribeTemplateResourceCountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTemplateResourceCountResponse{}
@@ -18704,6 +26413,15 @@ func (client *Client) DescribeTemplateResourceCount(request *DescribeTemplateRes
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the resources that are associated to a protection rule template.
+//
+// @param request - DescribeTemplateResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTemplateResourcesResponse
 func (client *Client) DescribeTemplateResourcesWithOptions(request *DescribeTemplateResourcesRequest, runtime *util.RuntimeOptions) (_result *DescribeTemplateResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18753,6 +26471,13 @@ func (client *Client) DescribeTemplateResourcesWithOptions(request *DescribeTemp
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the resources that are associated to a protection rule template.
+//
+// @param request - DescribeTemplateResourcesRequest
+//
+// @return DescribeTemplateResourcesResponse
 func (client *Client) DescribeTemplateResources(request *DescribeTemplateResourcesRequest) (_result *DescribeTemplateResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTemplateResourcesResponse{}
@@ -18764,6 +26489,15 @@ func (client *Client) DescribeTemplateResources(request *DescribeTemplateResourc
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries available regions for log storage.
+//
+// @param request - DescribeUserSlsLogRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUserSlsLogRegionsResponse
 func (client *Client) DescribeUserSlsLogRegionsWithOptions(request *DescribeUserSlsLogRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeUserSlsLogRegionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18805,6 +26539,13 @@ func (client *Client) DescribeUserSlsLogRegionsWithOptions(request *DescribeUser
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries available regions for log storage.
+//
+// @param request - DescribeUserSlsLogRegionsRequest
+//
+// @return DescribeUserSlsLogRegionsResponse
 func (client *Client) DescribeUserSlsLogRegions(request *DescribeUserSlsLogRegionsRequest) (_result *DescribeUserSlsLogRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeUserSlsLogRegionsResponse{}
@@ -18816,6 +26557,15 @@ func (client *Client) DescribeUserSlsLogRegions(request *DescribeUserSlsLogRegio
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the status, region ID, and status modification time of Web Application Firewall (WAF) logs.
+//
+// @param request - DescribeUserWafLogStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUserWafLogStatusResponse
 func (client *Client) DescribeUserWafLogStatusWithOptions(request *DescribeUserWafLogStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeUserWafLogStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18857,6 +26607,13 @@ func (client *Client) DescribeUserWafLogStatusWithOptions(request *DescribeUserW
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the status, region ID, and status modification time of Web Application Firewall (WAF) logs.
+//
+// @param request - DescribeUserWafLogStatusRequest
+//
+// @return DescribeUserWafLogStatusResponse
 func (client *Client) DescribeUserWafLogStatus(request *DescribeUserWafLogStatusRequest) (_result *DescribeUserWafLogStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeUserWafLogStatusResponse{}
@@ -18868,6 +26625,15 @@ func (client *Client) DescribeUserWafLogStatus(request *DescribeUserWafLogStatus
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the top 10 IP addresses from which requests are sent.
+//
+// @param request - DescribeVisitTopIpRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVisitTopIpResponse
 func (client *Client) DescribeVisitTopIpWithOptions(request *DescribeVisitTopIpRequest, runtime *util.RuntimeOptions) (_result *DescribeVisitTopIpResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18921,6 +26687,13 @@ func (client *Client) DescribeVisitTopIpWithOptions(request *DescribeVisitTopIpR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the top 10 IP addresses from which requests are sent.
+//
+// @param request - DescribeVisitTopIpRequest
+//
+// @return DescribeVisitTopIpResponse
 func (client *Client) DescribeVisitTopIp(request *DescribeVisitTopIpRequest) (_result *DescribeVisitTopIpResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeVisitTopIpResponse{}
@@ -18932,6 +26705,15 @@ func (client *Client) DescribeVisitTopIp(request *DescribeVisitTopIpRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the top 10 user agents that are used to initiate requests.
+//
+// @param request - DescribeVisitUasRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVisitUasResponse
 func (client *Client) DescribeVisitUasWithOptions(request *DescribeVisitUasRequest, runtime *util.RuntimeOptions) (_result *DescribeVisitUasResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18981,6 +26763,13 @@ func (client *Client) DescribeVisitUasWithOptions(request *DescribeVisitUasReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the top 10 user agents that are used to initiate requests.
+//
+// @param request - DescribeVisitUasRequest
+//
+// @return DescribeVisitUasResponse
 func (client *Client) DescribeVisitUas(request *DescribeVisitUasRequest) (_result *DescribeVisitUasResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeVisitUasResponse{}
@@ -18992,6 +26781,15 @@ func (client *Client) DescribeVisitUas(request *DescribeVisitUasRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the back-to-origin CIDR blocks of a Web Application Firewall (WAF) instance.
+//
+// @param request - DescribeWafSourceIpSegmentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeWafSourceIpSegmentResponse
 func (client *Client) DescribeWafSourceIpSegmentWithOptions(request *DescribeWafSourceIpSegmentRequest, runtime *util.RuntimeOptions) (_result *DescribeWafSourceIpSegmentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19033,6 +26831,13 @@ func (client *Client) DescribeWafSourceIpSegmentWithOptions(request *DescribeWaf
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the back-to-origin CIDR blocks of a Web Application Firewall (WAF) instance.
+//
+// @param request - DescribeWafSourceIpSegmentRequest
+//
+// @return DescribeWafSourceIpSegmentResponse
 func (client *Client) DescribeWafSourceIpSegment(request *DescribeWafSourceIpSegmentRequest) (_result *DescribeWafSourceIpSegmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeWafSourceIpSegmentResponse{}
@@ -19044,6 +26849,15 @@ func (client *Client) DescribeWafSourceIpSegment(request *DescribeWafSourceIpSeg
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries tag keys.
+//
+// @param request - ListTagKeysRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagKeysResponse
 func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtime *util.RuntimeOptions) (_result *ListTagKeysResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19089,6 +26903,13 @@ func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries tag keys.
+//
+// @param request - ListTagKeysRequest
+//
+// @return ListTagKeysResponse
 func (client *Client) ListTagKeys(request *ListTagKeysRequest) (_result *ListTagKeysResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagKeysResponse{}
@@ -19100,6 +26921,15 @@ func (client *Client) ListTagKeys(request *ListTagKeysRequest) (_result *ListTag
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the tags that are added to a resource.
+//
+// @param request - ListTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19149,6 +26979,13 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the tags that are added to a resource.
+//
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagResourcesResponse{}
@@ -19160,6 +26997,15 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the tag values of a tag key.
+//
+// @param request - ListTagValuesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagValuesResponse
 func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, runtime *util.RuntimeOptions) (_result *ListTagValuesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19205,6 +27051,13 @@ func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the tag values of a tag key.
+//
+// @param request - ListTagValuesRequest
+//
+// @return ListTagValuesResponse
 func (client *Client) ListTagValues(request *ListTagValuesRequest) (_result *ListTagValuesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagValuesResponse{}
@@ -19216,6 +27069,15 @@ func (client *Client) ListTagValues(request *ListTagValuesRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the configurations of a protected object group.
+//
+// @param request - ModifyDefenseResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDefenseResourceGroupResponse
 func (client *Client) ModifyDefenseResourceGroupWithOptions(request *ModifyDefenseResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ModifyDefenseResourceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19273,6 +27135,13 @@ func (client *Client) ModifyDefenseResourceGroupWithOptions(request *ModifyDefen
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the configurations of a protected object group.
+//
+// @param request - ModifyDefenseResourceGroupRequest
+//
+// @return ModifyDefenseResourceGroupResponse
 func (client *Client) ModifyDefenseResourceGroup(request *ModifyDefenseResourceGroupRequest) (_result *ModifyDefenseResourceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDefenseResourceGroupResponse{}
@@ -19284,6 +27153,15 @@ func (client *Client) ModifyDefenseResourceGroup(request *ModifyDefenseResourceG
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the cookie settings of a protected object and the method to identify the originating IP addresses of clients.
+//
+// @param request - ModifyDefenseResourceXffRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDefenseResourceXffResponse
 func (client *Client) ModifyDefenseResourceXffWithOptions(request *ModifyDefenseResourceXffRequest, runtime *util.RuntimeOptions) (_result *ModifyDefenseResourceXffResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19349,6 +27227,13 @@ func (client *Client) ModifyDefenseResourceXffWithOptions(request *ModifyDefense
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the cookie settings of a protected object and the method to identify the originating IP addresses of clients.
+//
+// @param request - ModifyDefenseResourceXffRequest
+//
+// @return ModifyDefenseResourceXffResponse
 func (client *Client) ModifyDefenseResourceXff(request *ModifyDefenseResourceXffRequest) (_result *ModifyDefenseResourceXffResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDefenseResourceXffResponse{}
@@ -19360,6 +27245,15 @@ func (client *Client) ModifyDefenseResourceXff(request *ModifyDefenseResourceXff
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the configurations of a protection rule.
+//
+// @param request - ModifyDefenseRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDefenseRuleResponse
 func (client *Client) ModifyDefenseRuleWithOptions(request *ModifyDefenseRuleRequest, runtime *util.RuntimeOptions) (_result *ModifyDefenseRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19413,6 +27307,13 @@ func (client *Client) ModifyDefenseRuleWithOptions(request *ModifyDefenseRuleReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the configurations of a protection rule.
+//
+// @param request - ModifyDefenseRuleRequest
+//
+// @return ModifyDefenseRuleResponse
 func (client *Client) ModifyDefenseRule(request *ModifyDefenseRuleRequest) (_result *ModifyDefenseRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDefenseRuleResponse{}
@@ -19424,6 +27325,15 @@ func (client *Client) ModifyDefenseRule(request *ModifyDefenseRuleRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the cached page of a website that is protected based on a website tamper-proofing rule.
+//
+// @param request - ModifyDefenseRuleCacheRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDefenseRuleCacheResponse
 func (client *Client) ModifyDefenseRuleCacheWithOptions(request *ModifyDefenseRuleCacheRequest, runtime *util.RuntimeOptions) (_result *ModifyDefenseRuleCacheResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19473,6 +27383,13 @@ func (client *Client) ModifyDefenseRuleCacheWithOptions(request *ModifyDefenseRu
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the cached page of a website that is protected based on a website tamper-proofing rule.
+//
+// @param request - ModifyDefenseRuleCacheRequest
+//
+// @return ModifyDefenseRuleCacheResponse
 func (client *Client) ModifyDefenseRuleCache(request *ModifyDefenseRuleCacheRequest) (_result *ModifyDefenseRuleCacheResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDefenseRuleCacheResponse{}
@@ -19484,6 +27401,15 @@ func (client *Client) ModifyDefenseRuleCache(request *ModifyDefenseRuleCacheRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the status of a protection rule.
+//
+// @param request - ModifyDefenseRuleStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDefenseRuleStatusResponse
 func (client *Client) ModifyDefenseRuleStatusWithOptions(request *ModifyDefenseRuleStatusRequest, runtime *util.RuntimeOptions) (_result *ModifyDefenseRuleStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19537,6 +27463,13 @@ func (client *Client) ModifyDefenseRuleStatusWithOptions(request *ModifyDefenseR
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the status of a protection rule.
+//
+// @param request - ModifyDefenseRuleStatusRequest
+//
+// @return ModifyDefenseRuleStatusResponse
 func (client *Client) ModifyDefenseRuleStatus(request *ModifyDefenseRuleStatusRequest) (_result *ModifyDefenseRuleStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDefenseRuleStatusResponse{}
@@ -19548,6 +27481,15 @@ func (client *Client) ModifyDefenseRuleStatus(request *ModifyDefenseRuleStatusRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the configurations of a protection rule template.
+//
+// @param request - ModifyDefenseTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDefenseTemplateResponse
 func (client *Client) ModifyDefenseTemplateWithOptions(request *ModifyDefenseTemplateRequest, runtime *util.RuntimeOptions) (_result *ModifyDefenseTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19601,6 +27543,13 @@ func (client *Client) ModifyDefenseTemplateWithOptions(request *ModifyDefenseTem
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the configurations of a protection rule template.
+//
+// @param request - ModifyDefenseTemplateRequest
+//
+// @return ModifyDefenseTemplateResponse
 func (client *Client) ModifyDefenseTemplate(request *ModifyDefenseTemplateRequest) (_result *ModifyDefenseTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDefenseTemplateResponse{}
@@ -19612,6 +27561,15 @@ func (client *Client) ModifyDefenseTemplate(request *ModifyDefenseTemplateReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the status of a protection rule template.
+//
+// @param request - ModifyDefenseTemplateStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDefenseTemplateStatusResponse
 func (client *Client) ModifyDefenseTemplateStatusWithOptions(request *ModifyDefenseTemplateStatusRequest, runtime *util.RuntimeOptions) (_result *ModifyDefenseTemplateStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19661,6 +27619,13 @@ func (client *Client) ModifyDefenseTemplateStatusWithOptions(request *ModifyDefe
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the status of a protection rule template.
+//
+// @param request - ModifyDefenseTemplateStatusRequest
+//
+// @return ModifyDefenseTemplateStatusResponse
 func (client *Client) ModifyDefenseTemplateStatus(request *ModifyDefenseTemplateStatusRequest) (_result *ModifyDefenseTemplateStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDefenseTemplateStatusResponse{}
@@ -19672,6 +27637,15 @@ func (client *Client) ModifyDefenseTemplateStatus(request *ModifyDefenseTemplate
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the configurations of a domain name that is added to Web Application Firewall (WAF) in CNAME record mode.
+//
+// @param tmpReq - ModifyDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDomainResponse
 func (client *Client) ModifyDomainWithOptions(tmpReq *ModifyDomainRequest, runtime *util.RuntimeOptions) (_result *ModifyDomainResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -19735,6 +27709,13 @@ func (client *Client) ModifyDomainWithOptions(tmpReq *ModifyDomainRequest, runti
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the configurations of a domain name that is added to Web Application Firewall (WAF) in CNAME record mode.
+//
+// @param request - ModifyDomainRequest
+//
+// @return ModifyDomainResponse
 func (client *Client) ModifyDomain(request *ModifyDomainRequest) (_result *ModifyDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDomainResponse{}
@@ -19746,6 +27727,15 @@ func (client *Client) ModifyDomain(request *ModifyDomainRequest) (_result *Modif
 	return _result, _err
 }
 
+// Summary:
+//
+// Re-adds a domain name that is penalized for failing to obtain an Internet Content Provider (ICP) filing to Web Application Firewall (WAF).
+//
+// @param request - ModifyDomainPunishStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDomainPunishStatusResponse
 func (client *Client) ModifyDomainPunishStatusWithOptions(request *ModifyDomainPunishStatusRequest, runtime *util.RuntimeOptions) (_result *ModifyDomainPunishStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19791,6 +27781,13 @@ func (client *Client) ModifyDomainPunishStatusWithOptions(request *ModifyDomainP
 	return _result, _err
 }
 
+// Summary:
+//
+// Re-adds a domain name that is penalized for failing to obtain an Internet Content Provider (ICP) filing to Web Application Firewall (WAF).
+//
+// @param request - ModifyDomainPunishStatusRequest
+//
+// @return ModifyDomainPunishStatusResponse
 func (client *Client) ModifyDomainPunishStatus(request *ModifyDomainPunishStatusRequest) (_result *ModifyDomainPunishStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDomainPunishStatusResponse{}
@@ -19802,6 +27799,15 @@ func (client *Client) ModifyDomainPunishStatus(request *ModifyDomainPunishStatus
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables manual bypass for a hybrid cloud cluster of the SDK-based traffic mirroring mode.
+//
+// @param request - ModifyHybridCloudClusterBypassStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyHybridCloudClusterBypassStatusResponse
 func (client *Client) ModifyHybridCloudClusterBypassStatusWithOptions(request *ModifyHybridCloudClusterBypassStatusRequest, runtime *util.RuntimeOptions) (_result *ModifyHybridCloudClusterBypassStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19843,6 +27849,13 @@ func (client *Client) ModifyHybridCloudClusterBypassStatusWithOptions(request *M
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables manual bypass for a hybrid cloud cluster of the SDK-based traffic mirroring mode.
+//
+// @param request - ModifyHybridCloudClusterBypassStatusRequest
+//
+// @return ModifyHybridCloudClusterBypassStatusResponse
 func (client *Client) ModifyHybridCloudClusterBypassStatus(request *ModifyHybridCloudClusterBypassStatusRequest) (_result *ModifyHybridCloudClusterBypassStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyHybridCloudClusterBypassStatusResponse{}
@@ -19854,6 +27867,15 @@ func (client *Client) ModifyHybridCloudClusterBypassStatus(request *ModifyHybrid
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies an IP address blacklist for major event protection.
+//
+// @param request - ModifyMajorProtectionBlackIpRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyMajorProtectionBlackIpResponse
 func (client *Client) ModifyMajorProtectionBlackIpWithOptions(request *ModifyMajorProtectionBlackIpRequest, runtime *util.RuntimeOptions) (_result *ModifyMajorProtectionBlackIpResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19915,6 +27937,13 @@ func (client *Client) ModifyMajorProtectionBlackIpWithOptions(request *ModifyMaj
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies an IP address blacklist for major event protection.
+//
+// @param request - ModifyMajorProtectionBlackIpRequest
+//
+// @return ModifyMajorProtectionBlackIpResponse
 func (client *Client) ModifyMajorProtectionBlackIp(request *ModifyMajorProtectionBlackIpRequest) (_result *ModifyMajorProtectionBlackIpResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyMajorProtectionBlackIpResponse{}
@@ -19926,6 +27955,15 @@ func (client *Client) ModifyMajorProtectionBlackIp(request *ModifyMajorProtectio
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the information about members that are added for multi-account management.
+//
+// @param request - ModifyMemberAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyMemberAccountResponse
 func (client *Client) ModifyMemberAccountWithOptions(request *ModifyMemberAccountRequest, runtime *util.RuntimeOptions) (_result *ModifyMemberAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19979,6 +28017,13 @@ func (client *Client) ModifyMemberAccountWithOptions(request *ModifyMemberAccoun
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the information about members that are added for multi-account management.
+//
+// @param request - ModifyMemberAccountRequest
+//
+// @return ModifyMemberAccountResponse
 func (client *Client) ModifyMemberAccount(request *ModifyMemberAccountRequest) (_result *ModifyMemberAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyMemberAccountResponse{}
@@ -19990,6 +28035,15 @@ func (client *Client) ModifyMemberAccount(request *ModifyMemberAccountRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables the log collection feature for a protected object.
+//
+// @param request - ModifyResourceLogStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyResourceLogStatusResponse
 func (client *Client) ModifyResourceLogStatusWithOptions(request *ModifyResourceLogStatusRequest, runtime *util.RuntimeOptions) (_result *ModifyResourceLogStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20039,6 +28093,13 @@ func (client *Client) ModifyResourceLogStatusWithOptions(request *ModifyResource
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables the log collection feature for a protected object.
+//
+// @param request - ModifyResourceLogStatusRequest
+//
+// @return ModifyResourceLogStatusResponse
 func (client *Client) ModifyResourceLogStatus(request *ModifyResourceLogStatusRequest) (_result *ModifyResourceLogStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyResourceLogStatusResponse{}
@@ -20050,6 +28111,15 @@ func (client *Client) ModifyResourceLogStatus(request *ModifyResourceLogStatusRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Associates or disassociates a protected object or protected object group with or from a protection rule template.
+//
+// @param request - ModifyTemplateResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyTemplateResourcesResponse
 func (client *Client) ModifyTemplateResourcesWithOptions(request *ModifyTemplateResourcesRequest, runtime *util.RuntimeOptions) (_result *ModifyTemplateResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20111,6 +28181,13 @@ func (client *Client) ModifyTemplateResourcesWithOptions(request *ModifyTemplate
 	return _result, _err
 }
 
+// Summary:
+//
+// Associates or disassociates a protected object or protected object group with or from a protection rule template.
+//
+// @param request - ModifyTemplateResourcesRequest
+//
+// @return ModifyTemplateResourcesResponse
 func (client *Client) ModifyTemplateResources(request *ModifyTemplateResourcesRequest) (_result *ModifyTemplateResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyTemplateResourcesResponse{}
@@ -20122,13 +28199,19 @@ func (client *Client) ModifyTemplateResources(request *ModifyTemplateResourcesRe
 	return _result, _err
 }
 
-/**
- * SyncProductInstance is an asynchronous operation. You can call the [DescribeProductInstances](~~2743168~~) operation to query the status of the task.
- *
- * @param request SyncProductInstanceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return SyncProductInstanceResponse
- */
+// Summary:
+//
+// Synchronizes Elastic Compute Service (ECS) instances and Classic Load Balancer (CLB) instances to Web Application Firewall (WAF).
+//
+// Description:
+//
+// SyncProductInstance is an asynchronous operation. You can call the [DescribeProductInstances](https://help.aliyun.com/document_detail/2743168.html) operation to query the status of the task.
+//
+// @param request - SyncProductInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SyncProductInstanceResponse
 func (client *Client) SyncProductInstanceWithOptions(request *SyncProductInstanceRequest, runtime *util.RuntimeOptions) (_result *SyncProductInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20170,12 +28253,17 @@ func (client *Client) SyncProductInstanceWithOptions(request *SyncProductInstanc
 	return _result, _err
 }
 
-/**
- * SyncProductInstance is an asynchronous operation. You can call the [DescribeProductInstances](~~2743168~~) operation to query the status of the task.
- *
- * @param request SyncProductInstanceRequest
- * @return SyncProductInstanceResponse
- */
+// Summary:
+//
+// Synchronizes Elastic Compute Service (ECS) instances and Classic Load Balancer (CLB) instances to Web Application Firewall (WAF).
+//
+// Description:
+//
+// SyncProductInstance is an asynchronous operation. You can call the [DescribeProductInstances](https://help.aliyun.com/document_detail/2743168.html) operation to query the status of the task.
+//
+// @param request - SyncProductInstanceRequest
+//
+// @return SyncProductInstanceResponse
 func (client *Client) SyncProductInstance(request *SyncProductInstanceRequest) (_result *SyncProductInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SyncProductInstanceResponse{}
@@ -20187,6 +28275,15 @@ func (client *Client) SyncProductInstance(request *SyncProductInstanceRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds tags to resources.
+//
+// @param request - TagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20232,6 +28329,13 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds tags to resources.
+//
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
 func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TagResourcesResponse{}
@@ -20243,6 +28347,15 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes tags from resources and then deletes the tags.
+//
+// @param request - UntagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20292,6 +28405,13 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes tags from resources and then deletes the tags.
+//
+// @param request - UntagResourcesRequest
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
