@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,8 +10,17 @@ import (
 )
 
 type DemoCategory struct {
-	CategoryCode  *string         `json:"CategoryCode,omitempty" xml:"CategoryCode,omitempty"`
-	CategoryName  *string         `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// example:
+	//
+	// sdk
+	CategoryCode *string `json:"CategoryCode,omitempty" xml:"CategoryCode,omitempty"`
+	// example:
+	//
+	// SDK Usage
+	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// example:
+	//
+	// 12
 	Order         *int64          `json:"Order,omitempty" xml:"Order,omitempty"`
 	SubCategories []*DemoCategory `json:"SubCategories,omitempty" xml:"SubCategories,omitempty" type:"Repeated"`
 }
@@ -48,12 +54,27 @@ func (s *DemoCategory) SetSubCategories(v []*DemoCategory) *DemoCategory {
 }
 
 type ForwardInfo struct {
-	ContainerName   *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
+	// example:
+	//
+	// dsw-notebook
+	ContainerName *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
+	// example:
+	//
+	// eip-25877c70gddh****
 	EipAllocationId *string `json:"EipAllocationId,omitempty" xml:"EipAllocationId,omitempty"`
-	Enable          *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	NatGatewayId    *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	Port            *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	SSHPublicKey    *string `json:"SSHPublicKey,omitempty" xml:"SSHPublicKey,omitempty"`
+	// example:
+	//
+	// true
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// ngw-bp1uewa15k4iy5770****
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// example:
+	//
+	// 22
+	Port         *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	SSHPublicKey *string `json:"SSHPublicKey,omitempty" xml:"SSHPublicKey,omitempty"`
 }
 
 func (s ForwardInfo) String() string {
@@ -95,13 +116,28 @@ func (s *ForwardInfo) SetSSHPublicKey(v string) *ForwardInfo {
 }
 
 type ForwardInfoResponse struct {
-	ConnectInfo     *ForwardInfoResponseConnectInfo `json:"ConnectInfo,omitempty" xml:"ConnectInfo,omitempty" type:"Struct"`
-	ContainerName   *string                         `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
-	EipAllocationId *string                         `json:"EipAllocationId,omitempty" xml:"EipAllocationId,omitempty"`
-	Enable          *bool                           `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	NatGatewayId    *string                         `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	Port            *string                         `json:"Port,omitempty" xml:"Port,omitempty"`
-	SSHPublicKey    *string                         `json:"SSHPublicKey,omitempty" xml:"SSHPublicKey,omitempty"`
+	ConnectInfo *ForwardInfoResponseConnectInfo `json:"ConnectInfo,omitempty" xml:"ConnectInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// dsw-notebook
+	ContainerName *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
+	// example:
+	//
+	// eip-25877c70gddh****
+	EipAllocationId *string `json:"EipAllocationId,omitempty" xml:"EipAllocationId,omitempty"`
+	// example:
+	//
+	// true
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// ngw-bp1uewa15k4iy5770****
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// example:
+	//
+	// 22
+	Port         *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	SSHPublicKey *string `json:"SSHPublicKey,omitempty" xml:"SSHPublicKey,omitempty"`
 }
 
 func (s ForwardInfoResponse) String() string {
@@ -150,8 +186,14 @@ func (s *ForwardInfoResponse) SetSSHPublicKey(v string) *ForwardInfoResponse {
 type ForwardInfoResponseConnectInfo struct {
 	Internet *ForwardInfoResponseConnectInfoInternet `json:"Internet,omitempty" xml:"Internet,omitempty" type:"Struct"`
 	Intranet *ForwardInfoResponseConnectInfoIntranet `json:"Intranet,omitempty" xml:"Intranet,omitempty" type:"Struct"`
-	Message  *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	Phase    *string                                 `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// example:
+	//
+	// DNAT and privateZone are both ready.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// Ready
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
 }
 
 func (s ForwardInfoResponseConnectInfo) String() string {
@@ -183,8 +225,14 @@ func (s *ForwardInfoResponseConnectInfo) SetPhase(v string) *ForwardInfoResponse
 }
 
 type ForwardInfoResponseConnectInfoInternet struct {
+	// example:
+	//
+	// 47.111.119.114
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	Port     *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// 22
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 
 func (s ForwardInfoResponseConnectInfoInternet) String() string {
@@ -206,8 +254,14 @@ func (s *ForwardInfoResponseConnectInfoInternet) SetPort(v string) *ForwardInfoR
 }
 
 type ForwardInfoResponseConnectInfoIntranet struct {
+	// example:
+	//
+	// dsw-notebook-22-urz3u6cnu0uts7ej9r.dsw-5cc6083084818f60.dsw.pai.alibaba.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	Port     *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// 22
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 
 func (s ForwardInfoResponseConnectInfoIntranet) String() string {
@@ -229,8 +283,17 @@ func (s *ForwardInfoResponseConnectInfoIntranet) SetPort(v string) *ForwardInfoR
 }
 
 type CreateIdleInstanceCullerRequest struct {
-	CpuPercentThreshold  *int32 `json:"CpuPercentThreshold,omitempty" xml:"CpuPercentThreshold,omitempty"`
-	GpuPercentThreshold  *int32 `json:"GpuPercentThreshold,omitempty" xml:"GpuPercentThreshold,omitempty"`
+	// example:
+	//
+	// 20
+	CpuPercentThreshold *int32 `json:"CpuPercentThreshold,omitempty" xml:"CpuPercentThreshold,omitempty"`
+	// example:
+	//
+	// 10
+	GpuPercentThreshold *int32 `json:"GpuPercentThreshold,omitempty" xml:"GpuPercentThreshold,omitempty"`
+	// example:
+	//
+	// 60
 	MaxIdleTimeInMinutes *int32 `json:"MaxIdleTimeInMinutes,omitempty" xml:"MaxIdleTimeInMinutes,omitempty"`
 }
 
@@ -258,11 +321,26 @@ func (s *CreateIdleInstanceCullerRequest) SetMaxIdleTimeInMinutes(v int32) *Crea
 }
 
 type CreateIdleInstanceCullerResponseBody struct {
-	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// dsw-730xxxxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// "XXX"
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// E7D55162-4489-1619-AAF5-3F97D5FCA948
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateIdleInstanceCullerResponseBody) String() string {
@@ -328,23 +406,68 @@ func (s *CreateIdleInstanceCullerResponse) SetBody(v *CreateIdleInstanceCullerRe
 }
 
 type CreateInstanceRequest struct {
-	Accessibility        *string                                 `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	CloudDisks           []*CreateInstanceRequestCloudDisks      `json:"CloudDisks,omitempty" xml:"CloudDisks,omitempty" type:"Repeated"`
-	Datasets             []*CreateInstanceRequestDatasets        `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
-	Driver               *string                                 `json:"Driver,omitempty" xml:"Driver,omitempty"`
-	EcsSpec              *string                                 `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
-	EnvironmentVariables map[string]*string                      `json:"EnvironmentVariables,omitempty" xml:"EnvironmentVariables,omitempty"`
-	ImageId              *string                                 `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageUrl             *string                                 `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	InstanceName         *string                                 `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Labels               []*CreateInstanceRequestLabels          `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	Priority             *int64                                  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	RequestedResource    *CreateInstanceRequestRequestedResource `json:"RequestedResource,omitempty" xml:"RequestedResource,omitempty" type:"Struct"`
-	ResourceId           *string                                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	UserId               *string                                 `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserVpc              *CreateInstanceRequestUserVpc           `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
-	WorkspaceId          *string                                 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	WorkspaceSource      *string                                 `json:"WorkspaceSource,omitempty" xml:"WorkspaceSource,omitempty"`
+	// example:
+	//
+	// PRIVATE
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// example:
+	//
+	// []
+	CloudDisks []*CreateInstanceRequestCloudDisks `json:"CloudDisks,omitempty" xml:"CloudDisks,omitempty" type:"Repeated"`
+	Datasets   []*CreateInstanceRequestDatasets   `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 535.54.03
+	Driver *string `json:"Driver,omitempty" xml:"Driver,omitempty"`
+	// example:
+	//
+	// ecs.c6.large
+	EcsSpec *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	// example:
+	//
+	// {userName: "Chris"}
+	EnvironmentVariables map[string]*string `json:"EnvironmentVariables,omitempty" xml:"EnvironmentVariables,omitempty"`
+	// example:
+	//
+	// image-05cefd0be2exxxx
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// registry.cn-shanghai.aliyuncs.com/pai_product/tensorflow:py36_cpu_tf1.12_ubuntu
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// example:
+	//
+	// training_data
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// {\\"foo\\": \\"bar\\"}
+	Labels []*CreateInstanceRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// {"CPU":"4","Memory":"8Gi","SharedMemory":"4Gi","GPU":"1","GPUType":"Tesla-V100-16G"}
+	RequestedResource *CreateInstanceRequestRequestedResource `json:"RequestedResource,omitempty" xml:"RequestedResource,omitempty" type:"Struct"`
+	// example:
+	//
+	// dsw-123456789
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// 1612285282502324
+	UserId  *string                       `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserVpc *CreateInstanceRequestUserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
+	// example:
+	//
+	// 40823
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// d-123456789
+	WorkspaceSource *string `json:"WorkspaceSource,omitempty" xml:"WorkspaceSource,omitempty"`
 }
 
 func (s CreateInstanceRequest) String() string {
@@ -441,11 +564,23 @@ func (s *CreateInstanceRequest) SetWorkspaceSource(v string) *CreateInstanceRequ
 }
 
 type CreateInstanceRequestCloudDisks struct {
-	Capacity  *string                                `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	MountPath *string                                `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	Path      *string                                `json:"Path,omitempty" xml:"Path,omitempty"`
-	Status    *CreateInstanceRequestCloudDisksStatus `json:"Status,omitempty" xml:"Status,omitempty" type:"Struct"`
-	SubType   *string                                `json:"SubType,omitempty" xml:"SubType,omitempty"`
+	// example:
+	//
+	// 30Gi
+	Capacity *string `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// example:
+	//
+	// /mmt/workspace
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// example:
+	//
+	// workspace
+	Path   *string                                `json:"Path,omitempty" xml:"Path,omitempty"`
+	Status *CreateInstanceRequestCloudDisksStatus `json:"Status,omitempty" xml:"Status,omitempty" type:"Struct"`
+	// example:
+	//
+	// rootfs
+	SubType *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
 }
 
 func (s CreateInstanceRequestCloudDisks) String() string {
@@ -511,7 +646,13 @@ func (s *CreateInstanceRequestCloudDisksStatus) SetUsage(v int64) *CreateInstanc
 }
 
 type CreateInstanceRequestDatasets struct {
+	// example:
+	//
+	// d-vsqjvsjp4orp5l206u
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// example:
+	//
+	// /mnt/data
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
 }
 
@@ -534,7 +675,13 @@ func (s *CreateInstanceRequestDatasets) SetMountPath(v string) *CreateInstanceRe
 }
 
 type CreateInstanceRequestLabels struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// stsTokenOwner
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// 123xxxxxxxx
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -557,10 +704,25 @@ func (s *CreateInstanceRequestLabels) SetValue(v string) *CreateInstanceRequestL
 }
 
 type CreateInstanceRequestRequestedResource struct {
-	CPU          *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
-	GPU          *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
-	GPUType      *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
-	Memory       *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// 32
+	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// example:
+	//
+	// 4
+	GPU *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	// example:
+	//
+	// v100
+	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	// example:
+	//
+	// 32
+	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// 32
 	SharedMemory *string `json:"SharedMemory,omitempty" xml:"SharedMemory,omitempty"`
 }
 
@@ -598,12 +760,27 @@ func (s *CreateInstanceRequestRequestedResource) SetSharedMemory(v string) *Crea
 }
 
 type CreateInstanceRequestUserVpc struct {
-	DefaultRoute    *string        `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
-	ExtendedCIDRs   []*string      `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
-	ForwardInfos    []*ForwardInfo `json:"ForwardInfos,omitempty" xml:"ForwardInfos,omitempty" type:"Repeated"`
-	SecurityGroupId *string        `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	VSwitchId       *string        `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId           *string        `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// eth0 | eth1
+	DefaultRoute *string `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
+	// example:
+	//
+	// ["192.168.0.1/24", "192.168.1.1/24"]
+	ExtendedCIDRs []*string      `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
+	ForwardInfos  []*ForwardInfo `json:"ForwardInfos,omitempty" xml:"ForwardInfos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// sg-xxxxxx
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// example:
+	//
+	// vsw-xxxxx
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// example:
+	//
+	// vpc-xxxxx
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s CreateInstanceRequestUserVpc) String() string {
@@ -645,12 +822,30 @@ func (s *CreateInstanceRequestUserVpc) SetVpcId(v string) *CreateInstanceRequest
 }
 
 type CreateInstanceResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// null
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// dsw-730xxxxxxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// "XXX"
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// E7D55162-4489-1619-AAF5-3F97D5FCA948
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateInstanceResponseBody) String() string {
@@ -721,8 +916,14 @@ func (s *CreateInstanceResponse) SetBody(v *CreateInstanceResponseBody) *CreateI
 }
 
 type CreateInstanceShutdownTimerRequest struct {
-	DueTime           *string `json:"DueTime,omitempty" xml:"DueTime,omitempty"`
-	RemainingTimeInMs *int64  `json:"RemainingTimeInMs,omitempty" xml:"RemainingTimeInMs,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:36:01Z
+	DueTime *string `json:"DueTime,omitempty" xml:"DueTime,omitempty"`
+	// example:
+	//
+	// 3600000
+	RemainingTimeInMs *int64 `json:"RemainingTimeInMs,omitempty" xml:"RemainingTimeInMs,omitempty"`
 }
 
 func (s CreateInstanceShutdownTimerRequest) String() string {
@@ -744,12 +945,30 @@ func (s *CreateInstanceShutdownTimerRequest) SetRemainingTimeInMs(v int64) *Crea
 }
 
 type CreateInstanceShutdownTimerResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// null
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// dsw-730xxxxxxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// "XXX"
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// E7D55162-4489-1619-AAF5-3F97D5FCA948
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateInstanceShutdownTimerResponseBody) String() string {
@@ -820,12 +1039,24 @@ func (s *CreateInstanceShutdownTimerResponse) SetBody(v *CreateInstanceShutdownT
 }
 
 type CreateInstanceSnapshotRequest struct {
-	ExcludePaths        []*string                              `json:"ExcludePaths,omitempty" xml:"ExcludePaths,omitempty" type:"Repeated"`
-	ImageUrl            *string                                `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	Labels              []*CreateInstanceSnapshotRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	Overwrite           *bool                                  `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
-	SnapshotDescription *string                                `json:"SnapshotDescription,omitempty" xml:"SnapshotDescription,omitempty"`
-	SnapshotName        *string                                `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
+	ExcludePaths []*string `json:"ExcludePaths,omitempty" xml:"ExcludePaths,omitempty" type:"Repeated"`
+	// example:
+	//
+	// registry.cn-shanghai.aliyuncs.com/pai_product/tensorflow:py36_cpu_tf1.12_ubuntu
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// example:
+	//
+	// {\\"foo\\": \\"bar\\"}
+	Labels    []*CreateInstanceSnapshotRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Overwrite *bool                                  `json:"Overwrite,omitempty" xml:"Overwrite,omitempty"`
+	// example:
+	//
+	// training_data_env
+	SnapshotDescription *string `json:"SnapshotDescription,omitempty" xml:"SnapshotDescription,omitempty"`
+	// example:
+	//
+	// training_data_env
+	SnapshotName *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
 }
 
 func (s CreateInstanceSnapshotRequest) String() string {
@@ -867,7 +1098,13 @@ func (s *CreateInstanceSnapshotRequest) SetSnapshotName(v string) *CreateInstanc
 }
 
 type CreateInstanceSnapshotRequestLabels struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// stsTokenOwner
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// 123xxxxxxxx
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -890,13 +1127,34 @@ func (s *CreateInstanceSnapshotRequestLabels) SetValue(v string) *CreateInstance
 }
 
 type CreateInstanceSnapshotResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SnapshotId     *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// null
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// dsw-730xxxxxxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// "XXX"
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// E7D55162-4489-1619-AAF5-3F97D5FCA948
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// snp-05cexxxxxxxxx
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateInstanceSnapshotResponseBody) String() string {
@@ -972,11 +1230,26 @@ func (s *CreateInstanceSnapshotResponse) SetBody(v *CreateInstanceSnapshotRespon
 }
 
 type DeleteIdleInstanceCullerResponseBody struct {
-	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// ValidationError
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// dsw-730xxxxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// "XXX"
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// E7D55162-4489-1619-AAF5-3F97D5FCA948
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteIdleInstanceCullerResponseBody) String() string {
@@ -1042,12 +1315,30 @@ func (s *DeleteIdleInstanceCullerResponse) SetBody(v *DeleteIdleInstanceCullerRe
 }
 
 type DeleteInstanceResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// null
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// dsw-730xxxxxxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// "XXX"
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// E7D55162-4489-1619-AAF5-3F97D5FCA948
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteInstanceResponseBody) String() string {
@@ -1118,12 +1409,30 @@ func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteI
 }
 
 type DeleteInstanceShutdownTimerResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// null
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// dsw-730xxxxxxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// "XXX"
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// E7D55162-4489-1619-AAF5-3F97D5FCA948
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteInstanceShutdownTimerResponseBody) String() string {
@@ -1194,13 +1503,34 @@ func (s *DeleteInstanceShutdownTimerResponse) SetBody(v *DeleteInstanceShutdownT
 }
 
 type DeleteInstanceSnapshotResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SnapshotId     *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// null
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// dsw-730xxxxxxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// "XXX"
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// E7D55162-4489-1619-AAF5-3F97D5FCA948
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// snp-05cexxxxxxxxx
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteInstanceSnapshotResponseBody) String() string {
@@ -1276,15 +1606,42 @@ func (s *DeleteInstanceSnapshotResponse) SetBody(v *DeleteInstanceSnapshotRespon
 }
 
 type GetIdleInstanceCullerResponseBody struct {
-	Code                 *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	CpuPercentThreshold  *int32  `json:"CpuPercentThreshold,omitempty" xml:"CpuPercentThreshold,omitempty"`
-	GpuPercentThreshold  *int32  `json:"GpuPercentThreshold,omitempty" xml:"GpuPercentThreshold,omitempty"`
-	IdleTimeInMinutes    *int32  `json:"IdleTimeInMinutes,omitempty" xml:"IdleTimeInMinutes,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MaxIdleTimeInMinutes *int32  `json:"MaxIdleTimeInMinutes,omitempty" xml:"MaxIdleTimeInMinutes,omitempty"`
-	Message              *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success              *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// ValidationError
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 20
+	CpuPercentThreshold *int32 `json:"CpuPercentThreshold,omitempty" xml:"CpuPercentThreshold,omitempty"`
+	// example:
+	//
+	// 10
+	GpuPercentThreshold *int32 `json:"GpuPercentThreshold,omitempty" xml:"GpuPercentThreshold,omitempty"`
+	// example:
+	//
+	// 30
+	IdleTimeInMinutes *int32 `json:"IdleTimeInMinutes,omitempty" xml:"IdleTimeInMinutes,omitempty"`
+	// example:
+	//
+	// dsw-730xxxxxxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 60
+	MaxIdleTimeInMinutes *int32 `json:"MaxIdleTimeInMinutes,omitempty" xml:"MaxIdleTimeInMinutes,omitempty"`
+	// example:
+	//
+	// "XXX"
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// E7D55162-4489-1619-AAF5-3F97D5FCA948
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetIdleInstanceCullerResponseBody) String() string {
@@ -1370,51 +1727,170 @@ func (s *GetIdleInstanceCullerResponse) SetBody(v *GetIdleInstanceCullerResponse
 }
 
 type GetInstanceResponseBody struct {
-	AcceleratorType            *string                                        `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
-	Accessibility              *string                                        `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	AccumulatedRunningTimeInMs *int64                                         `json:"AccumulatedRunningTimeInMs,omitempty" xml:"AccumulatedRunningTimeInMs,omitempty"`
-	CloudDisks                 []*GetInstanceResponseBodyCloudDisks           `json:"CloudDisks,omitempty" xml:"CloudDisks,omitempty" type:"Repeated"`
-	Code                       *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Datasets                   []*GetInstanceResponseBodyDatasets             `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
-	Driver                     *string                                        `json:"Driver,omitempty" xml:"Driver,omitempty"`
-	EcsSpec                    *string                                        `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
-	EnvironmentVariables       map[string]*string                             `json:"EnvironmentVariables,omitempty" xml:"EnvironmentVariables,omitempty"`
-	GmtCreateTime              *string                                        `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime            *string                                        `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	HttpStatusCode             *int32                                         `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	IdleInstanceCuller         *GetInstanceResponseBodyIdleInstanceCuller     `json:"IdleInstanceCuller,omitempty" xml:"IdleInstanceCuller,omitempty" type:"Struct"`
-	ImageId                    *string                                        `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageName                  *string                                        `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	ImageUrl                   *string                                        `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	InstanceId                 *string                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName               *string                                        `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceShutdownTimer      *GetInstanceResponseBodyInstanceShutdownTimer  `json:"InstanceShutdownTimer,omitempty" xml:"InstanceShutdownTimer,omitempty" type:"Struct"`
-	InstanceSnapshotList       []*GetInstanceResponseBodyInstanceSnapshotList `json:"InstanceSnapshotList,omitempty" xml:"InstanceSnapshotList,omitempty" type:"Repeated"`
-	InstanceUrl                *string                                        `json:"InstanceUrl,omitempty" xml:"InstanceUrl,omitempty"`
+	// example:
+	//
+	// CPU
+	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	// example:
+	//
+	// PRIVATE
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// example:
+	//
+	// 3600000
+	AccumulatedRunningTimeInMs *int64 `json:"AccumulatedRunningTimeInMs,omitempty" xml:"AccumulatedRunningTimeInMs,omitempty"`
+	// example:
+	//
+	// []
+	CloudDisks []*GetInstanceResponseBodyCloudDisks `json:"CloudDisks,omitempty" xml:"CloudDisks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// null
+	Code     *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Datasets []*GetInstanceResponseBodyDatasets `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 535.54.03
+	Driver *string `json:"Driver,omitempty" xml:"Driver,omitempty"`
+	// example:
+	//
+	// ecs.c6.large
+	EcsSpec *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	// example:
+	//
+	// {userName: "Chris"}
+	EnvironmentVariables map[string]*string `json:"EnvironmentVariables,omitempty" xml:"EnvironmentVariables,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:36:01Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:36:01Z
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// null
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// {"InstanceId":"dsw-05cefd0be2e5a278","CpuPercentThreshold":20,"GpuPercentThreshold":10,"MaxIdleTimeInMinutes":120,"IdleTimeInMinutes":30}
+	IdleInstanceCuller *GetInstanceResponseBodyIdleInstanceCuller `json:"IdleInstanceCuller,omitempty" xml:"IdleInstanceCuller,omitempty" type:"Struct"`
+	// example:
+	//
+	// image-05cefd0be2exxxx
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// py36_cpu_tf1.12_ubuntu
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// example:
+	//
+	// registry.cn-shanghai.aliyuncs.com/pai_product/tensorflow:py36_cpu_tf1.12_ubuntu
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// example:
+	//
+	// dsw-730xxxxxxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// training_data
+	InstanceName          *string                                       `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceShutdownTimer *GetInstanceResponseBodyInstanceShutdownTimer `json:"InstanceShutdownTimer,omitempty" xml:"InstanceShutdownTimer,omitempty" type:"Struct"`
+	// example:
+	//
+	// []
+	InstanceSnapshotList []*GetInstanceResponseBodyInstanceSnapshotList `json:"InstanceSnapshotList,omitempty" xml:"InstanceSnapshotList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// https://dsw-cn-shanghai.data.aliyun.com/notebook.htm?instance=39772#/
+	InstanceUrl *string `json:"InstanceUrl,omitempty" xml:"InstanceUrl,omitempty"`
 	// Jupyterlab Url。
-	JupyterlabUrl     *string                                   `json:"JupyterlabUrl,omitempty" xml:"JupyterlabUrl,omitempty"`
-	Labels            []*GetInstanceResponseBodyLabels          `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	LatestSnapshot    *GetInstanceResponseBodyLatestSnapshot    `json:"LatestSnapshot,omitempty" xml:"LatestSnapshot,omitempty" type:"Struct"`
+	//
+	// example:
+	//
+	// https://dsw-gateway-cn-shanghai.aliyun.com/dsw-39772/lab/
+	JupyterlabUrl *string `json:"JupyterlabUrl,omitempty" xml:"JupyterlabUrl,omitempty"`
+	// example:
+	//
+	// {\\"foo\\": \\"bar\\"}
+	Labels         []*GetInstanceResponseBodyLabels       `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	LatestSnapshot *GetInstanceResponseBodyLatestSnapshot `json:"LatestSnapshot,omitempty" xml:"LatestSnapshot,omitempty" type:"Struct"`
+	// example:
+	//
+	// "XXX"
 	Message           *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
 	NodeErrorRecovery *GetInstanceResponseBodyNodeErrorRecovery `json:"NodeErrorRecovery,omitempty" xml:"NodeErrorRecovery,omitempty" type:"Struct"`
-	PaymentType       *string                                   `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	Priority          *int64                                    `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	ReasonCode        *string                                   `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	ReasonMessage     *string                                   `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
-	RequestId         *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// PayAsYouGo
+	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// Internal Error
+	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// example:
+	//
+	// ImagePullBackOff
+	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	// example:
+	//
+	// E7D55162-4489-1619-AAF5-3F97D5FCA948
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// {"CPU":"4","Memory":"8Gi","SharedMemory":"4Gi","GPU":"1","GPUType":"Tesla-V100-16G"}
 	RequestedResource *GetInstanceResponseBodyRequestedResource `json:"RequestedResource,omitempty" xml:"RequestedResource,omitempty" type:"Struct"`
-	ResourceId        *string                                   `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceName      *string                                   `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	Status            *string                                   `json:"Status,omitempty" xml:"Status,omitempty"`
-	Success           *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
-	TerminalUrl       *string                                   `json:"TerminalUrl,omitempty" xml:"TerminalUrl,omitempty"`
-	UserId            *string                                   `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName          *string                                   `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	UserVpc           *GetInstanceResponseBodyUserVpc           `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
+	// example:
+	//
+	// dsw-123456789
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// ecs.g7.xlarge
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// https://dsw-gateway-cn-shanghai.aliyun.com/dsw-39772/tty/
+	TerminalUrl *string `json:"TerminalUrl,omitempty" xml:"TerminalUrl,omitempty"`
+	// example:
+	//
+	// 1612285282502324
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 测试用户
+	UserName *string                         `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	UserVpc  *GetInstanceResponseBodyUserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
 	// Web IDE url。
-	WebIDEUrl       *string `json:"WebIDEUrl,omitempty" xml:"WebIDEUrl,omitempty"`
-	WorkspaceId     *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	WorkspaceName   *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	//
+	// example:
+	//
+	// https://dsw-gateway-cn-shanghai.aliyun.com/dsw-39772/ide/
+	WebIDEUrl *string `json:"WebIDEUrl,omitempty" xml:"WebIDEUrl,omitempty"`
+	// example:
+	//
+	// 40823
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// training_data
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	// example:
+	//
+	// d-123456789
 	WorkspaceSource *string `json:"WorkspaceSource,omitempty" xml:"WorkspaceSource,omitempty"`
 }
 
@@ -1647,10 +2123,22 @@ func (s *GetInstanceResponseBody) SetWorkspaceSource(v string) *GetInstanceRespo
 }
 
 type GetInstanceResponseBodyCloudDisks struct {
-	Capacity  *string `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// example:
+	//
+	// 30Gi
+	Capacity *string `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// example:
+	//
+	// /mmt/workspace
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	Path      *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	SubType   *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
+	// example:
+	//
+	// /workspace
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// rootfs
+	SubType *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
 }
 
 func (s GetInstanceResponseBodyCloudDisks) String() string {
@@ -1682,7 +2170,13 @@ func (s *GetInstanceResponseBodyCloudDisks) SetSubType(v string) *GetInstanceRes
 }
 
 type GetInstanceResponseBodyDatasets struct {
+	// example:
+	//
+	// d-vsqjvsjp4orp5l206u
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// example:
+	//
+	// /mnt/data
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
 }
 
@@ -1705,11 +2199,26 @@ func (s *GetInstanceResponseBodyDatasets) SetMountPath(v string) *GetInstanceRes
 }
 
 type GetInstanceResponseBodyIdleInstanceCuller struct {
-	CpuPercentThreshold  *int32  `json:"CpuPercentThreshold,omitempty" xml:"CpuPercentThreshold,omitempty"`
-	GpuPercentThreshold  *int32  `json:"GpuPercentThreshold,omitempty" xml:"GpuPercentThreshold,omitempty"`
-	IdleTimeInMinutes    *int32  `json:"IdleTimeInMinutes,omitempty" xml:"IdleTimeInMinutes,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MaxIdleTimeInMinutes *int32  `json:"MaxIdleTimeInMinutes,omitempty" xml:"MaxIdleTimeInMinutes,omitempty"`
+	// example:
+	//
+	// 20
+	CpuPercentThreshold *int32 `json:"CpuPercentThreshold,omitempty" xml:"CpuPercentThreshold,omitempty"`
+	// example:
+	//
+	// 10
+	GpuPercentThreshold *int32 `json:"GpuPercentThreshold,omitempty" xml:"GpuPercentThreshold,omitempty"`
+	// example:
+	//
+	// 30
+	IdleTimeInMinutes *int32 `json:"IdleTimeInMinutes,omitempty" xml:"IdleTimeInMinutes,omitempty"`
+	// example:
+	//
+	// dsw-730xxxxxxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 60
+	MaxIdleTimeInMinutes *int32 `json:"MaxIdleTimeInMinutes,omitempty" xml:"MaxIdleTimeInMinutes,omitempty"`
 }
 
 func (s GetInstanceResponseBodyIdleInstanceCuller) String() string {
@@ -1746,11 +2255,26 @@ func (s *GetInstanceResponseBodyIdleInstanceCuller) SetMaxIdleTimeInMinutes(v in
 }
 
 type GetInstanceResponseBodyInstanceShutdownTimer struct {
-	DueTime           *string `json:"DueTime,omitempty" xml:"DueTime,omitempty"`
-	GmtCreateTime     *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime   *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RemainingTimeInMs *int64  `json:"RemainingTimeInMs,omitempty" xml:"RemainingTimeInMs,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:36:01Z
+	DueTime *string `json:"DueTime,omitempty" xml:"DueTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:36:01Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:36:01Z
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// dsw-730xxxxxxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 3600000
+	RemainingTimeInMs *int64 `json:"RemainingTimeInMs,omitempty" xml:"RemainingTimeInMs,omitempty"`
 }
 
 func (s GetInstanceResponseBodyInstanceShutdownTimer) String() string {
@@ -1788,22 +2312,58 @@ func (s *GetInstanceResponseBodyInstanceShutdownTimer) SetRemainingTimeInMs(v in
 
 type GetInstanceResponseBodyInstanceSnapshotList struct {
 	// 快照创建时间
+	//
+	// example:
+	//
+	// 2021-01-12T14:36:01Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	// 快照修改时间
+	//
+	// example:
+	//
+	// 2021-01-12T14:36:01Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
 	// 镜像Id
+	//
+	// example:
+	//
+	// image-05cefd0be2exxxx
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// 镜像名称
+	//
+	// example:
+	//
+	// py36_cpu_tf1.12_ubuntu
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	// 镜像Url
+	//
+	// example:
+	//
+	// registry.cn-shanghai.aliyuncs.com/pai_product/tensorflow:py36_cpu_tf1.12_ubuntu
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	// 实例快照错误代码
+	//
+	// example:
+	//
+	// Internal Error
 	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
 	// 实例快照错误消息
+	//
+	// example:
+	//
+	// ImagePullBackOff
 	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
 	// 镜像仓库Url
+	//
+	// example:
+	//
+	// https://cr.console.aliyun.com/repository/cn-hangzhou/zouxu/kf/images
 	RepositoryUrl *string `json:"RepositoryUrl,omitempty" xml:"RepositoryUrl,omitempty"`
 	// 实例快照状态
+	//
+	// example:
+	//
+	// Pushing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -1861,7 +2421,13 @@ func (s *GetInstanceResponseBodyInstanceSnapshotList) SetStatus(v string) *GetIn
 }
 
 type GetInstanceResponseBodyLabels struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// stsTokenOwner
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// 123xxxxxxxx
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1884,17 +2450,47 @@ func (s *GetInstanceResponseBodyLabels) SetValue(v string) *GetInstanceResponseB
 }
 
 type GetInstanceResponseBodyLatestSnapshot struct {
-	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:36:01Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:36:01Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	ImageId         *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageName       *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	ImageUrl        *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// example:
+	//
+	// image-05cefd0be2exxxx
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// py36_cpu_tf1.12_ubuntu
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// example:
+	//
+	// registry.cn-shanghai.aliyuncs.com/pai_product/tensorflow:py36_cpu_tf1.12_ubuntu
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	// 实例快照错误代码
+	//
+	// example:
+	//
+	// Internal Error
 	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
 	// 实例快照错误消息
+	//
+	// example:
+	//
+	// ImagePullBackOff
 	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	// example:
+	//
+	// https://cr.console.aliyun.com/repository/cn-hangzhou/zouxu/kf/images
 	RepositoryUrl *string `json:"RepositoryUrl,omitempty" xml:"RepositoryUrl,omitempty"`
 	// 实例快照状态
+	//
+	// example:
+	//
+	// Pushing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -1981,10 +2577,25 @@ func (s *GetInstanceResponseBodyNodeErrorRecovery) SetHasNodeError(v bool) *GetI
 }
 
 type GetInstanceResponseBodyRequestedResource struct {
-	CPU          *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
-	GPU          *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
-	GPUType      *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
-	Memory       *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// 32
+	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// example:
+	//
+	// 4
+	GPU *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	// example:
+	//
+	// v100
+	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	// example:
+	//
+	// 32
+	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// 32
 	SharedMemory *string `json:"SharedMemory,omitempty" xml:"SharedMemory,omitempty"`
 }
 
@@ -2022,12 +2633,28 @@ func (s *GetInstanceResponseBodyRequestedResource) SetSharedMemory(v string) *Ge
 }
 
 type GetInstanceResponseBodyUserVpc struct {
-	DefaultRoute    *string                `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
-	ExtendedCIDRs   []*string              `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
-	ForwardInfos    []*ForwardInfoResponse `json:"ForwardInfos,omitempty" xml:"ForwardInfos,omitempty" type:"Repeated"`
-	SecurityGroupId *string                `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	VSwitchId       *string                `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// example:
+	//
+	// eth0 | eth1
+	DefaultRoute *string `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
+	// example:
+	//
+	// ["192.168.0.1/24", "192.168.1.1/24"]
+	ExtendedCIDRs []*string              `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
+	ForwardInfos  []*ForwardInfoResponse `json:"ForwardInfos,omitempty" xml:"ForwardInfos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// sg-xxxxxx
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// example:
+	//
+	// vsw-xxxxx
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// Vpc Id。
+	//
+	// example:
+	//
+	// vpc-xxxxx
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -2099,9 +2726,18 @@ func (s *GetInstanceResponse) SetBody(v *GetInstanceResponseBody) *GetInstanceRe
 }
 
 type GetInstanceEventsRequest struct {
-	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	MaxEventsNum *int32  `json:"MaxEventsNum,omitempty" xml:"MaxEventsNum,omitempty"`
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 2020-11-08T15:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 2000
+	MaxEventsNum *int32 `json:"MaxEventsNum,omitempty" xml:"MaxEventsNum,omitempty"`
+	// example:
+	//
+	// 2020-11-08T15:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s GetInstanceEventsRequest) String() string {
@@ -2128,13 +2764,31 @@ func (s *GetInstanceEventsRequest) SetStartTime(v string) *GetInstanceEventsRequ
 }
 
 type GetInstanceEventsResponseBody struct {
-	Code           *string   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Events         []*string `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	InstanceId     *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// None
+	Code   *string   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Events []*string `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// dsw-730xxxxxxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// XXX
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// E7D55162-4489-1619-AAF5-3F97D5FCA948
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetInstanceEventsResponseBody) String() string {
@@ -2210,10 +2864,24 @@ func (s *GetInstanceEventsResponse) SetBody(v *GetInstanceEventsResponseBody) *G
 }
 
 type GetInstanceMetricsRequest struct {
-	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 2020-11-08T15:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// GpuCoreUsage
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TimeStep   *string `json:"TimeStep,omitempty" xml:"TimeStep,omitempty"`
+	// example:
+	//
+	// 2020-11-08T15:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 15m
+	TimeStep *string `json:"TimeStep,omitempty" xml:"TimeStep,omitempty"`
 }
 
 func (s GetInstanceMetricsRequest) String() string {
@@ -2245,13 +2913,31 @@ func (s *GetInstanceMetricsRequest) SetTimeStep(v string) *GetInstanceMetricsReq
 }
 
 type GetInstanceMetricsResponseBody struct {
-	Code           *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32                                      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	InstanceId     *string                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Message        *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	PodMetrics     []*GetInstanceMetricsResponseBodyPodMetrics `json:"PodMetrics,omitempty" xml:"PodMetrics,omitempty" type:"Repeated"`
-	RequestId      *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// null
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// dsw-730xxxxxxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// "XXX"
+	Message    *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	PodMetrics []*GetInstanceMetricsResponseBodyPodMetrics `json:"PodMetrics,omitempty" xml:"PodMetrics,omitempty" type:"Repeated"`
+	// example:
+	//
+	// E7D55162-4489-1619-AAF5-3F97D5FCA948
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetInstanceMetricsResponseBody) String() string {
@@ -2299,7 +2985,10 @@ func (s *GetInstanceMetricsResponseBody) SetSuccess(v bool) *GetInstanceMetricsR
 
 type GetInstanceMetricsResponseBodyPodMetrics struct {
 	Metrics []*GetInstanceMetricsResponseBodyPodMetricsMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
-	PodId   *string                                            `json:"PodId,omitempty" xml:"PodId,omitempty"`
+	// example:
+	//
+	// dsw-15870-695f44c5bc-hd6xm
+	PodId *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
 }
 
 func (s GetInstanceMetricsResponseBodyPodMetrics) String() string {
@@ -2321,7 +3010,13 @@ func (s *GetInstanceMetricsResponseBodyPodMetrics) SetPodId(v string) *GetInstan
 }
 
 type GetInstanceMetricsResponseBodyPodMetricsMetrics struct {
-	Time  *int64   `json:"Time,omitempty" xml:"Time,omitempty"`
+	// example:
+	//
+	// 1670890560
+	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
+	// example:
+	//
+	// 25.901031
 	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2373,16 +3068,46 @@ func (s *GetInstanceMetricsResponse) SetBody(v *GetInstanceMetricsResponseBody) 
 }
 
 type GetInstanceShutdownTimerResponseBody struct {
-	Code              *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DueTime           *string `json:"DueTime,omitempty" xml:"DueTime,omitempty"`
-	GmtCreateTime     *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime   *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	HttpStatusCode    *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Message           *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RemainingTimeInMs *int64  `json:"RemainingTimeInMs,omitempty" xml:"RemainingTimeInMs,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success           *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// null
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:36:01Z
+	DueTime *string `json:"DueTime,omitempty" xml:"DueTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:36:01Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:36:01Z
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// null
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// dsw-730xxxxxxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// "XXX"
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 3600000
+	RemainingTimeInMs *int64 `json:"RemainingTimeInMs,omitempty" xml:"RemainingTimeInMs,omitempty"`
+	// example:
+	//
+	// E7D55162-4489-1619-AAF5-3F97D5FCA948
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetInstanceShutdownTimerResponseBody) String() string {
@@ -2473,23 +3198,71 @@ func (s *GetInstanceShutdownTimerResponse) SetBody(v *GetInstanceShutdownTimerRe
 }
 
 type GetInstanceSnapshotResponseBody struct {
-	Code            *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	ExcludePaths    []*string                                `json:"ExcludePaths,omitempty" xml:"ExcludePaths,omitempty" type:"Repeated"`
-	GmtCreateTime   *string                                  `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime *string                                  `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	HttpStatusCode  *int32                                   `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	ImageId         *string                                  `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageUrl        *string                                  `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	InstanceId      *string                                  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Labels          []*GetInstanceSnapshotResponseBodyLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	Message         *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	ReasonCode      *string                                  `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	ReasonMessage   *string                                  `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
-	RequestId       *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SnapshotId      *string                                  `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	SnapshotName    *string                                  `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
-	Status          *string                                  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Success         *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// null
+	Code         *string   `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExcludePaths []*string `json:"ExcludePaths,omitempty" xml:"ExcludePaths,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2021-01-12T14:36:01Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:36:01Z
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// null
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// image-05cefd0be2exxxx
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// registry.cn-shanghai.aliyuncs.com/pai_product/tensorflow:py36_cpu_tf1.12_ubuntu
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// example:
+	//
+	// dsw-730xxxxxxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// {\"foo\": \"bar\"}
+	Labels []*GetInstanceSnapshotResponseBodyLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// example:
+	//
+	// "XXX"
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// Internal Error
+	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// example:
+	//
+	// ImagePullBackOff
+	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	// example:
+	//
+	// E7D55162-4489-1619-AAF5-3F97D5FCA948
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// snp-05cexxxxxxxxx
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	// example:
+	//
+	// training_data_env
+	SnapshotName *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
+	// example:
+	//
+	// Pushing
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetInstanceSnapshotResponseBody) String() string {
@@ -2586,7 +3359,13 @@ func (s *GetInstanceSnapshotResponseBody) SetSuccess(v bool) *GetInstanceSnapsho
 }
 
 type GetInstanceSnapshotResponseBodyLabels struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// stsTokenOwner
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// 123xxxxxxxx
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2638,11 +3417,26 @@ func (s *GetInstanceSnapshotResponse) SetBody(v *GetInstanceSnapshotResponseBody
 }
 
 type GetLifecycleRequest struct {
-	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Limit         *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	Order         *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	SessionNumber *int32  `json:"SessionNumber,omitempty" xml:"SessionNumber,omitempty"`
-	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 2020-11-08T15:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 1
+	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// example:
+	//
+	// DESC
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	SessionNumber *int32 `json:"SessionNumber,omitempty" xml:"SessionNumber,omitempty"`
+	// example:
+	//
+	// 2020-11-08T15:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s GetLifecycleRequest) String() string {
@@ -2679,12 +3473,30 @@ func (s *GetLifecycleRequest) SetStartTime(v string) *GetLifecycleRequest {
 }
 
 type GetLifecycleResponseBody struct {
-	Code       *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Lifecycle  [][]*GetLifecycleResponseBodyLifecycle `json:"Lifecycle,omitempty" xml:"Lifecycle,omitempty" type:"Repeated"`
-	Message    *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId  *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int32                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// null
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// [[{"Status":"Creating","GmtCreateTime":"2022-09-19T22:38:00Z","Reason":"","ReasonCode":""}]]
+	Lifecycle [][]*GetLifecycleResponseBodyLifecycle `json:"Lifecycle,omitempty" xml:"Lifecycle,omitempty" type:"Repeated"`
+	// example:
+	//
+	// "XXX"
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// E7D55162-4489-1619-AAF5-3F97D5FCA948
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 35
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s GetLifecycleResponseBody) String() string {
@@ -2726,9 +3538,21 @@ func (s *GetLifecycleResponseBody) SetTotalCount(v int32) *GetLifecycleResponseB
 }
 
 type GetLifecycleResponseBodyLifecycle struct {
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	ReasonCode    *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// example:
+	//
+	// Starting
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// “”
+	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// example:
+	//
+	// “”
 	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	// example:
+	//
+	// 2022-10-21T07:27:44Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 }
 
@@ -2790,9 +3614,29 @@ func (s *GetLifecycleResponse) SetBody(v *GetLifecycleResponseBody) *GetLifecycl
 }
 
 type GetResourceGroupStatisticsRequest struct {
-	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2020-11-08T15:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rg-123456789
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2020-11-08T15:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 27218,34956
 	WorkspaceIds *string `json:"WorkspaceIds,omitempty" xml:"WorkspaceIds,omitempty"`
 }
 
@@ -2825,12 +3669,27 @@ func (s *GetResourceGroupStatisticsRequest) SetWorkspaceIds(v string) *GetResour
 }
 
 type GetResourceGroupStatisticsResponseBody struct {
-	Code           *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32                            `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Statistics     map[string]map[string]interface{} `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	Success        *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// InternalError
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 400
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// "XXX"
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// E7D55162-4489-1619-AAF5-3F97D5FCA948
+	RequestId  *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Statistics map[string]map[string]interface{} `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetResourceGroupStatisticsResponseBody) String() string {
@@ -2901,7 +3760,15 @@ func (s *GetResourceGroupStatisticsResponse) SetBody(v *GetResourceGroupStatisti
 }
 
 type GetTokenRequest struct {
-	ExpireTime *int32  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// 60
+	ExpireTime *int32 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dsw-730xxxxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -2924,11 +3791,26 @@ func (s *GetTokenRequest) SetInstanceId(v string) *GetTokenRequest {
 }
 
 type GetTokenResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ValidationError
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// "XXX"
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// E7D55162-4489-1619-AAF5-3F97D5FCA948
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	Token     *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// *******
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s GetTokenResponseBody) String() string {
@@ -2994,15 +3876,39 @@ func (s *GetTokenResponse) SetBody(v *GetTokenResponseBody) *GetTokenResponse {
 }
 
 type GetUserConfigResponseBody struct {
-	AccountSufficient     *bool                              `json:"AccountSufficient,omitempty" xml:"AccountSufficient,omitempty"`
-	Code                  *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	EnableEciDisk         *bool                              `json:"EnableEciDisk,omitempty" xml:"EnableEciDisk,omitempty"`
-	FreeTier              *GetUserConfigResponseBodyFreeTier `json:"FreeTier,omitempty" xml:"FreeTier,omitempty" type:"Struct"`
-	FreeTierSpecAvailable *bool                              `json:"FreeTierSpecAvailable,omitempty" xml:"FreeTierSpecAvailable,omitempty"`
-	HttpStatusCode        *int32                             `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message               *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId             *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success               *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// false
+	AccountSufficient *bool `json:"AccountSufficient,omitempty" xml:"AccountSufficient,omitempty"`
+	// example:
+	//
+	// null
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	EnableEciDisk *bool                              `json:"EnableEciDisk,omitempty" xml:"EnableEciDisk,omitempty"`
+	FreeTier      *GetUserConfigResponseBodyFreeTier `json:"FreeTier,omitempty" xml:"FreeTier,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	FreeTierSpecAvailable *bool `json:"FreeTierSpecAvailable,omitempty" xml:"FreeTierSpecAvailable,omitempty"`
+	// example:
+	//
+	// null
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// "Access denied"
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// E7D55162-4489-1619-AAF5-3F97D5FCA948
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetUserConfigResponseBody) String() string {
@@ -3059,18 +3965,54 @@ func (s *GetUserConfigResponseBody) SetSuccess(v bool) *GetUserConfigResponseBod
 }
 
 type GetUserConfigResponseBodyFreeTier struct {
-	EndTime         *string  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	InitBaseUnit    *string  `json:"InitBaseUnit,omitempty" xml:"InitBaseUnit,omitempty"`
-	InitBaseValue   *float64 `json:"InitBaseValue,omitempty" xml:"InitBaseValue,omitempty"`
-	InitShowUnit    *string  `json:"InitShowUnit,omitempty" xml:"InitShowUnit,omitempty"`
-	InitShowValue   *string  `json:"InitShowValue,omitempty" xml:"InitShowValue,omitempty"`
-	IsFreeTierUser  *bool    `json:"IsFreeTierUser,omitempty" xml:"IsFreeTierUser,omitempty"`
-	PeriodBaseUnit  *string  `json:"PeriodBaseUnit,omitempty" xml:"PeriodBaseUnit,omitempty"`
+	// example:
+	//
+	// 2020-11-08T15:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 个
+	InitBaseUnit *string `json:"InitBaseUnit,omitempty" xml:"InitBaseUnit,omitempty"`
+	// example:
+	//
+	// 5000
+	InitBaseValue *float64 `json:"InitBaseValue,omitempty" xml:"InitBaseValue,omitempty"`
+	// example:
+	//
+	// 个
+	InitShowUnit *string `json:"InitShowUnit,omitempty" xml:"InitShowUnit,omitempty"`
+	// example:
+	//
+	// 5000
+	InitShowValue *string `json:"InitShowValue,omitempty" xml:"InitShowValue,omitempty"`
+	// example:
+	//
+	// true
+	IsFreeTierUser *bool `json:"IsFreeTierUser,omitempty" xml:"IsFreeTierUser,omitempty"`
+	// example:
+	//
+	// 个
+	PeriodBaseUnit *string `json:"PeriodBaseUnit,omitempty" xml:"PeriodBaseUnit,omitempty"`
+	// example:
+	//
+	// 3000
 	PeriodBaseValue *float64 `json:"PeriodBaseValue,omitempty" xml:"PeriodBaseValue,omitempty"`
-	PeriodShowUnit  *string  `json:"PeriodShowUnit,omitempty" xml:"PeriodShowUnit,omitempty"`
-	PeriodShowValue *string  `json:"PeriodShowValue,omitempty" xml:"PeriodShowValue,omitempty"`
-	StartTime       *string  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status          *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 个
+	PeriodShowUnit *string `json:"PeriodShowUnit,omitempty" xml:"PeriodShowUnit,omitempty"`
+	// example:
+	//
+	// 3000
+	PeriodShowValue *string `json:"PeriodShowValue,omitempty" xml:"PeriodShowValue,omitempty"`
+	// example:
+	//
+	// 2020-11-08T15:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// valid
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetUserConfigResponseBodyFreeTier) String() string {
@@ -3171,11 +4113,28 @@ func (s *GetUserConfigResponse) SetBody(v *GetUserConfigResponseBody) *GetUserCo
 }
 
 type ListEcsSpecsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PRIVATE
 	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
-	Order           *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	PageNumber      *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SortBy          *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// DESC
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// gmtCreate
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 }
 
 func (s ListEcsSpecsRequest) String() string {
@@ -3212,13 +4171,31 @@ func (s *ListEcsSpecsRequest) SetSortBy(v string) *ListEcsSpecsRequest {
 }
 
 type ListEcsSpecsResponseBody struct {
-	Code           *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	EcsSpecs       []*ListEcsSpecsResponseBodyEcsSpecs `json:"EcsSpecs,omitempty" xml:"EcsSpecs,omitempty" type:"Repeated"`
-	HttpStatusCode *int32                              `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount     *int64                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// null
+	Code     *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	EcsSpecs []*ListEcsSpecsResponseBodyEcsSpecs `json:"EcsSpecs,omitempty" xml:"EcsSpecs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// null
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// "XXX"
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// E7D55162-4489-1619-AAF5-3F97D5FCA948
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 35
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListEcsSpecsResponseBody) String() string {
@@ -3265,18 +4242,54 @@ func (s *ListEcsSpecsResponseBody) SetTotalCount(v int64) *ListEcsSpecsResponseB
 }
 
 type ListEcsSpecsResponseBodyEcsSpecs struct {
-	AcceleratorType     *string                                   `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
-	CPU                 *int64                                    `json:"CPU,omitempty" xml:"CPU,omitempty"`
-	Currency            *string                                   `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	GPU                 *int64                                    `json:"GPU,omitempty" xml:"GPU,omitempty"`
-	GPUType             *string                                   `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
-	InstanceBandwidthRx *int64                                    `json:"InstanceBandwidthRx,omitempty" xml:"InstanceBandwidthRx,omitempty"`
-	InstanceType        *string                                   `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	IsAvailable         *bool                                     `json:"IsAvailable,omitempty" xml:"IsAvailable,omitempty"`
-	Labels              []*ListEcsSpecsResponseBodyEcsSpecsLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	Memory              *float32                                  `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	Price               *float64                                  `json:"Price,omitempty" xml:"Price,omitempty"`
-	SystemDiskCapacity  *int64                                    `json:"SystemDiskCapacity,omitempty" xml:"SystemDiskCapacity,omitempty"`
+	// example:
+	//
+	// CPU
+	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	// example:
+	//
+	// 32
+	CPU *int64 `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// example:
+	//
+	// CNY
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// example:
+	//
+	// 4
+	GPU *int64 `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	// example:
+	//
+	// v100
+	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	// example:
+	//
+	// 5120000
+	InstanceBandwidthRx *int64 `json:"InstanceBandwidthRx,omitempty" xml:"InstanceBandwidthRx,omitempty"`
+	// example:
+	//
+	// ecs.gn5-c28g1.7xlarge
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// True
+	IsAvailable *bool `json:"IsAvailable,omitempty" xml:"IsAvailable,omitempty"`
+	// example:
+	//
+	// {\\"foo\\": \\"bar\\"}
+	Labels []*ListEcsSpecsResponseBodyEcsSpecsLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 32
+	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// 22.8
+	Price *float64 `json:"Price,omitempty" xml:"Price,omitempty"`
+	// example:
+	//
+	// 500
+	SystemDiskCapacity *int64 `json:"SystemDiskCapacity,omitempty" xml:"SystemDiskCapacity,omitempty"`
 }
 
 func (s ListEcsSpecsResponseBodyEcsSpecs) String() string {
@@ -3348,6 +4361,9 @@ func (s *ListEcsSpecsResponseBodyEcsSpecs) SetSystemDiskCapacity(v int64) *ListE
 }
 
 type ListEcsSpecsResponseBodyEcsSpecsLabels struct {
+	// example:
+	//
+	// stsTokenOwner
 	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
@@ -3400,10 +4416,22 @@ func (s *ListEcsSpecsResponse) SetBody(v *ListEcsSpecsResponseBody) *ListEcsSpec
 }
 
 type ListInstanceSnapshotRequest struct {
-	Order      *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SortBy     *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// DESC
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// gmtCreate
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 }
 
 func (s ListInstanceSnapshotRequest) String() string {
@@ -3435,13 +4463,31 @@ func (s *ListInstanceSnapshotRequest) SetSortBy(v string) *ListInstanceSnapshotR
 }
 
 type ListInstanceSnapshotResponseBody struct {
-	Code           *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32                                       `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Snapshots      []*ListInstanceSnapshotResponseBodySnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
-	Success        *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount     *int64                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// null
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// "XXX"
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// E7D55162-4489-1619-AAF5-3F97D5FCA948
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Snapshots []*ListInstanceSnapshotResponseBodySnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 35
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListInstanceSnapshotResponseBody) String() string {
@@ -3488,18 +4534,54 @@ func (s *ListInstanceSnapshotResponseBody) SetTotalCount(v int64) *ListInstanceS
 }
 
 type ListInstanceSnapshotResponseBodySnapshots struct {
-	ExcludePaths    []*string                                          `json:"ExcludePaths,omitempty" xml:"ExcludePaths,omitempty" type:"Repeated"`
-	GmtCreateTime   *string                                            `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime *string                                            `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	ImageId         *string                                            `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageUrl        *string                                            `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	InstanceId      *string                                            `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Labels          []*ListInstanceSnapshotResponseBodySnapshotsLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	ReasonCode      *string                                            `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	ReasonMessage   *string                                            `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
-	SnapshotId      *string                                            `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	SnapshotName    *string                                            `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
-	Status          *string                                            `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// ["/path1","/path2"]
+	ExcludePaths []*string `json:"ExcludePaths,omitempty" xml:"ExcludePaths,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2021-01-12T14:36:01Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:36:01Z
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// image-05cefd0be2exxxx
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// registry.cn-shanghai.aliyuncs.com/pai_product/tensorflow:py36_cpu_tf1.12_ubuntu
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// example:
+	//
+	// dsw-730xxxxxxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// {\\"foo\\": \\"bar\\"}
+	Labels []*ListInstanceSnapshotResponseBodySnapshotsLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Internal Error
+	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// example:
+	//
+	// ImagePullBackOff
+	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	// example:
+	//
+	// snp-05cexxxxxxxxx
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	// example:
+	//
+	// training_data_env
+	SnapshotName *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
+	// example:
+	//
+	// Pushing
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListInstanceSnapshotResponseBodySnapshots) String() string {
@@ -3571,7 +4653,13 @@ func (s *ListInstanceSnapshotResponseBodySnapshots) SetStatus(v string) *ListIns
 }
 
 type ListInstanceSnapshotResponseBodySnapshotsLabels struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// stsTokenOwner
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// 123xxxxxxxx
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3623,6 +4711,11 @@ func (s *ListInstanceSnapshotResponse) SetBody(v *ListInstanceSnapshotResponseBo
 }
 
 type ListInstanceStatisticsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 27218,34956
 	WorkspaceIds *string `json:"WorkspaceIds,omitempty" xml:"WorkspaceIds,omitempty"`
 }
 
@@ -3640,12 +4733,27 @@ func (s *ListInstanceStatisticsRequest) SetWorkspaceIds(v string) *ListInstanceS
 }
 
 type ListInstanceStatisticsResponseBody struct {
-	Code           *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32                            `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Statistics     map[string]map[string]interface{} `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	Success        *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// InternalError
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 400
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// "XXX"
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// E7D55162-4489-1619-AAF5-3F97D5FCA948
+	RequestId  *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Statistics map[string]map[string]interface{} `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListInstanceStatisticsResponseBody) String() string {
@@ -3716,18 +4824,55 @@ func (s *ListInstanceStatisticsResponse) SetBody(v *ListInstanceStatisticsRespon
 }
 
 type ListInstancesRequest struct {
+	// example:
+	//
+	// AcceleratorType
 	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
-	Accessibility   *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName    *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Order           *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	PageNumber      *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PaymentType     *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	ResourceId      *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	SortBy          *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	WorkspaceId     *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// PRIVATE
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// example:
+	//
+	// dsw-730xxxxxxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// training_data
+	InstanceName *string                `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	Labels       map[string]interface{} `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// example:
+	//
+	// DESC
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// PayAsYouGo
+	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// example:
+	//
+	// rg-123456789
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// gmtCreate
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 40823
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListInstancesRequest) String() string {
@@ -3755,6 +4900,11 @@ func (s *ListInstancesRequest) SetInstanceId(v string) *ListInstancesRequest {
 
 func (s *ListInstancesRequest) SetInstanceName(v string) *ListInstancesRequest {
 	s.InstanceName = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetLabels(v map[string]interface{}) *ListInstancesRequest {
+	s.Labels = v
 	return s
 }
 
@@ -3798,14 +4948,157 @@ func (s *ListInstancesRequest) SetWorkspaceId(v string) *ListInstancesRequest {
 	return s
 }
 
+type ListInstancesShrinkRequest struct {
+	// example:
+	//
+	// AcceleratorType
+	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	// example:
+	//
+	// PRIVATE
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// example:
+	//
+	// dsw-730xxxxxxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// training_data
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	LabelsShrink *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// example:
+	//
+	// DESC
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// PayAsYouGo
+	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// example:
+	//
+	// rg-123456789
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// gmtCreate
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 40823
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListInstancesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesShrinkRequest) SetAcceleratorType(v string) *ListInstancesShrinkRequest {
+	s.AcceleratorType = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetAccessibility(v string) *ListInstancesShrinkRequest {
+	s.Accessibility = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetInstanceId(v string) *ListInstancesShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetInstanceName(v string) *ListInstancesShrinkRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetLabelsShrink(v string) *ListInstancesShrinkRequest {
+	s.LabelsShrink = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetOrder(v string) *ListInstancesShrinkRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetPageNumber(v int64) *ListInstancesShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetPageSize(v int64) *ListInstancesShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetPaymentType(v string) *ListInstancesShrinkRequest {
+	s.PaymentType = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetResourceId(v string) *ListInstancesShrinkRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetSortBy(v string) *ListInstancesShrinkRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetStatus(v string) *ListInstancesShrinkRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetWorkspaceId(v string) *ListInstancesShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
 type ListInstancesResponseBody struct {
-	Code           *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
 	HttpStatusCode *int32                                `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	Instances      []*ListInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	Message        *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount     *int64                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// "XXX"
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// E7D55162-4489-1619-AAF5-3F97D5FCA948
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 35
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListInstancesResponseBody) String() string {
@@ -3852,45 +5145,149 @@ func (s *ListInstancesResponseBody) SetTotalCount(v int64) *ListInstancesRespons
 }
 
 type ListInstancesResponseBodyInstances struct {
-	AcceleratorType            *string                                                   `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
-	Accessibility              *string                                                   `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	AccumulatedRunningTimeInMs *int64                                                    `json:"AccumulatedRunningTimeInMs,omitempty" xml:"AccumulatedRunningTimeInMs,omitempty"`
-	CloudDisks                 []*ListInstancesResponseBodyInstancesCloudDisks           `json:"CloudDisks,omitempty" xml:"CloudDisks,omitempty" type:"Repeated"`
-	Datasets                   []*ListInstancesResponseBodyInstancesDatasets             `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
-	Driver                     *string                                                   `json:"Driver,omitempty" xml:"Driver,omitempty"`
-	EcsSpec                    *string                                                   `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
-	EnvironmentVariables       map[string]*string                                        `json:"EnvironmentVariables,omitempty" xml:"EnvironmentVariables,omitempty"`
-	GmtCreateTime              *string                                                   `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime            *string                                                   `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	IdleInstanceCuller         *ListInstancesResponseBodyInstancesIdleInstanceCuller     `json:"IdleInstanceCuller,omitempty" xml:"IdleInstanceCuller,omitempty" type:"Struct"`
-	ImageId                    *string                                                   `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageName                  *string                                                   `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	ImageUrl                   *string                                                   `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	InstanceId                 *string                                                   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName               *string                                                   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceShutdownTimer      *ListInstancesResponseBodyInstancesInstanceShutdownTimer  `json:"InstanceShutdownTimer,omitempty" xml:"InstanceShutdownTimer,omitempty" type:"Struct"`
-	InstanceSnapshotList       []*ListInstancesResponseBodyInstancesInstanceSnapshotList `json:"InstanceSnapshotList,omitempty" xml:"InstanceSnapshotList,omitempty" type:"Repeated"`
-	InstanceUrl                *string                                                   `json:"InstanceUrl,omitempty" xml:"InstanceUrl,omitempty"`
+	// example:
+	//
+	// CPU
+	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	// example:
+	//
+	// PRIVATE
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// example:
+	//
+	// 3600000
+	AccumulatedRunningTimeInMs *int64 `json:"AccumulatedRunningTimeInMs,omitempty" xml:"AccumulatedRunningTimeInMs,omitempty"`
+	// example:
+	//
+	// []
+	CloudDisks []*ListInstancesResponseBodyInstancesCloudDisks `json:"CloudDisks,omitempty" xml:"CloudDisks,omitempty" type:"Repeated"`
+	Datasets   []*ListInstancesResponseBodyInstancesDatasets   `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 535.54.03
+	Driver *string `json:"Driver,omitempty" xml:"Driver,omitempty"`
+	// example:
+	//
+	// ecs.c6.large
+	EcsSpec *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	// example:
+	//
+	// {userName: "Chris"}
+	EnvironmentVariables map[string]*string `json:"EnvironmentVariables,omitempty" xml:"EnvironmentVariables,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:36:01Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:36:01Z
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// {"InstanceId":"dsw-05cefd0be2e5a278","CpuPercentThreshold":20,"GpuPercentThreshold":10,"MaxIdleTimeInMinutes":120,"IdleTimeInMinutes":30}
+	IdleInstanceCuller *ListInstancesResponseBodyInstancesIdleInstanceCuller `json:"IdleInstanceCuller,omitempty" xml:"IdleInstanceCuller,omitempty" type:"Struct"`
+	// example:
+	//
+	// image-05cefd0be2exxxx
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// py36_cpu_tf1.12_ubuntu
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// example:
+	//
+	// registry.cn-shanghai.aliyuncs.com/pai_product/tensorflow:py36_cpu_tf1.12_ubuntu
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// example:
+	//
+	// dsw-730xxxxxxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// training_data
+	InstanceName          *string                                                  `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceShutdownTimer *ListInstancesResponseBodyInstancesInstanceShutdownTimer `json:"InstanceShutdownTimer,omitempty" xml:"InstanceShutdownTimer,omitempty" type:"Struct"`
+	// example:
+	//
+	// []
+	InstanceSnapshotList []*ListInstancesResponseBodyInstancesInstanceSnapshotList `json:"InstanceSnapshotList,omitempty" xml:"InstanceSnapshotList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// https://dsw-cn-shanghai.data.aliyun.com/notebook.htm?instance=39772#/
+	InstanceUrl *string `json:"InstanceUrl,omitempty" xml:"InstanceUrl,omitempty"`
 	// Jupyterlab Url。
-	JupyterlabUrl     *string                                              `json:"JupyterlabUrl,omitempty" xml:"JupyterlabUrl,omitempty"`
-	Labels            []*ListInstancesResponseBodyInstancesLabels          `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	LatestSnapshot    *ListInstancesResponseBodyInstancesLatestSnapshot    `json:"LatestSnapshot,omitempty" xml:"LatestSnapshot,omitempty" type:"Struct"`
-	PaymentType       *string                                              `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	Priority          *int64                                               `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	ReasonCode        *string                                              `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	ReasonMessage     *string                                              `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	//
+	// example:
+	//
+	// https://dsw-gateway-cn-shanghai.aliyun.com/dsw-39772/lab/
+	JupyterlabUrl *string `json:"JupyterlabUrl,omitempty" xml:"JupyterlabUrl,omitempty"`
+	// example:
+	//
+	// {\\"foo\\": \\"bar\\"}
+	Labels         []*ListInstancesResponseBodyInstancesLabels       `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	LatestSnapshot *ListInstancesResponseBodyInstancesLatestSnapshot `json:"LatestSnapshot,omitempty" xml:"LatestSnapshot,omitempty" type:"Struct"`
+	// example:
+	//
+	// PayAsYouGo
+	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// Internal Error
+	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// example:
+	//
+	// ImagePullBackOff
+	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	// example:
+	//
+	// {"CPU":"4","Memory":"8Gi","SharedMemory":"4Gi","GPU":"1","GPUType":"Tesla-V100-16G"}
 	RequestedResource *ListInstancesResponseBodyInstancesRequestedResource `json:"RequestedResource,omitempty" xml:"RequestedResource,omitempty" type:"Struct"`
-	ResourceId        *string                                              `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceName      *string                                              `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	Status            *string                                              `json:"Status,omitempty" xml:"Status,omitempty"`
-	TerminalUrl       *string                                              `json:"TerminalUrl,omitempty" xml:"TerminalUrl,omitempty"`
-	UserId            *string                                              `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName          *string                                              `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	UserVpc           *ListInstancesResponseBodyInstancesUserVpc           `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
+	// example:
+	//
+	// dsw-123456789
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// resource_group
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// https://dsw-gateway-cn-shanghai.aliyun.com/dsw-39772/tty/
+	TerminalUrl *string `json:"TerminalUrl,omitempty" xml:"TerminalUrl,omitempty"`
+	// example:
+	//
+	// 1612285282502324
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 测试用户
+	UserName *string                                    `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	UserVpc  *ListInstancesResponseBodyInstancesUserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
 	// Web IDE url。
-	WebIDEUrl       *string `json:"WebIDEUrl,omitempty" xml:"WebIDEUrl,omitempty"`
-	WorkspaceId     *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	WorkspaceName   *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	//
+	// example:
+	//
+	// https://dsw-gateway-cn-shanghai.aliyun.com/dsw-39772/ide/
+	WebIDEUrl *string `json:"WebIDEUrl,omitempty" xml:"WebIDEUrl,omitempty"`
+	// example:
+	//
+	// 40823
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// training_data
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	// example:
+	//
+	// d-123456789
 	WorkspaceSource *string `json:"WorkspaceSource,omitempty" xml:"WorkspaceSource,omitempty"`
 }
 
@@ -4093,10 +5490,22 @@ func (s *ListInstancesResponseBodyInstances) SetWorkspaceSource(v string) *ListI
 }
 
 type ListInstancesResponseBodyInstancesCloudDisks struct {
-	Capacity  *string `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// example:
+	//
+	// 30Gi
+	Capacity *string `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// example:
+	//
+	// /mmt/workspace
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	Path      *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	SubType   *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
+	// example:
+	//
+	// /workspace
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// rootfs
+	SubType *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
 }
 
 func (s ListInstancesResponseBodyInstancesCloudDisks) String() string {
@@ -4128,8 +5537,17 @@ func (s *ListInstancesResponseBodyInstancesCloudDisks) SetSubType(v string) *Lis
 }
 
 type ListInstancesResponseBodyInstancesDatasets struct {
+	// example:
+	//
+	// d-vsqjvsjp4orp5l206u
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// example:
+	//
+	// /mnt/data
+	MountPath  *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	OptionType *string `json:"OptionType,omitempty" xml:"OptionType,omitempty"`
+	Options    *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	Uri        *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s ListInstancesResponseBodyInstancesDatasets) String() string {
@@ -4150,12 +5568,42 @@ func (s *ListInstancesResponseBodyInstancesDatasets) SetMountPath(v string) *Lis
 	return s
 }
 
+func (s *ListInstancesResponseBodyInstancesDatasets) SetOptionType(v string) *ListInstancesResponseBodyInstancesDatasets {
+	s.OptionType = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesDatasets) SetOptions(v string) *ListInstancesResponseBodyInstancesDatasets {
+	s.Options = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesDatasets) SetUri(v string) *ListInstancesResponseBodyInstancesDatasets {
+	s.Uri = &v
+	return s
+}
+
 type ListInstancesResponseBodyInstancesIdleInstanceCuller struct {
-	CpuPercentThreshold  *int32  `json:"CpuPercentThreshold,omitempty" xml:"CpuPercentThreshold,omitempty"`
-	GpuPercentThreshold  *int32  `json:"GpuPercentThreshold,omitempty" xml:"GpuPercentThreshold,omitempty"`
-	IdleTimeInMinutes    *int32  `json:"IdleTimeInMinutes,omitempty" xml:"IdleTimeInMinutes,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MaxIdleTimeInMinutes *int32  `json:"MaxIdleTimeInMinutes,omitempty" xml:"MaxIdleTimeInMinutes,omitempty"`
+	// example:
+	//
+	// 20
+	CpuPercentThreshold *int32 `json:"CpuPercentThreshold,omitempty" xml:"CpuPercentThreshold,omitempty"`
+	// example:
+	//
+	// 10
+	GpuPercentThreshold *int32 `json:"GpuPercentThreshold,omitempty" xml:"GpuPercentThreshold,omitempty"`
+	// example:
+	//
+	// 30
+	IdleTimeInMinutes *int32 `json:"IdleTimeInMinutes,omitempty" xml:"IdleTimeInMinutes,omitempty"`
+	// example:
+	//
+	// dsw-730xxxxxxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 60
+	MaxIdleTimeInMinutes *int32 `json:"MaxIdleTimeInMinutes,omitempty" xml:"MaxIdleTimeInMinutes,omitempty"`
 }
 
 func (s ListInstancesResponseBodyInstancesIdleInstanceCuller) String() string {
@@ -4192,11 +5640,26 @@ func (s *ListInstancesResponseBodyInstancesIdleInstanceCuller) SetMaxIdleTimeInM
 }
 
 type ListInstancesResponseBodyInstancesInstanceShutdownTimer struct {
-	DueTime           *string `json:"DueTime,omitempty" xml:"DueTime,omitempty"`
-	GmtCreateTime     *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime   *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RemainingTimeInMs *int64  `json:"RemainingTimeInMs,omitempty" xml:"RemainingTimeInMs,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:36:01Z
+	DueTime *string `json:"DueTime,omitempty" xml:"DueTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:36:01Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:36:01Z
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// dsw-730xxxxxxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 3600000
+	RemainingTimeInMs *int64 `json:"RemainingTimeInMs,omitempty" xml:"RemainingTimeInMs,omitempty"`
 }
 
 func (s ListInstancesResponseBodyInstancesInstanceShutdownTimer) String() string {
@@ -4233,15 +5696,42 @@ func (s *ListInstancesResponseBodyInstancesInstanceShutdownTimer) SetRemainingTi
 }
 
 type ListInstancesResponseBodyInstancesInstanceSnapshotList struct {
-	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:36:01Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:36:01Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	ImageId         *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageName       *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	ImageUrl        *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	ReasonCode      *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	ReasonMessage   *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
-	RepositoryUrl   *string `json:"RepositoryUrl,omitempty" xml:"RepositoryUrl,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// image-05cefd0be2exxxx
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// py36_cpu_tf1.12_ubuntu
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// example:
+	//
+	// registry.cn-shanghai.aliyuncs.com/pai_product/tensorflow:py36_cpu_tf1.12_ubuntu
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// example:
+	//
+	// Internal Error
+	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// example:
+	//
+	// ImagePullBackOff
+	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	// example:
+	//
+	// https://cr.console.aliyun.com/repository/cn-hangzhou/zouxu/kf/images
+	RepositoryUrl *string `json:"RepositoryUrl,omitempty" xml:"RepositoryUrl,omitempty"`
+	// example:
+	//
+	// Pushing
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListInstancesResponseBodyInstancesInstanceSnapshotList) String() string {
@@ -4298,7 +5788,13 @@ func (s *ListInstancesResponseBodyInstancesInstanceSnapshotList) SetStatus(v str
 }
 
 type ListInstancesResponseBodyInstancesLabels struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// stsTokenOwner
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// 123xxxxxxxx
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4321,15 +5817,42 @@ func (s *ListInstancesResponseBodyInstancesLabels) SetValue(v string) *ListInsta
 }
 
 type ListInstancesResponseBodyInstancesLatestSnapshot struct {
-	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:36:01Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:36:01Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	ImageId         *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageName       *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	ImageUrl        *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	ReasonCode      *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	ReasonMessage   *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
-	RepositoryUrl   *string `json:"RepositoryUrl,omitempty" xml:"RepositoryUrl,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// image-05cefd0be2exxxx
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// py36_cpu_tf1.12_ubuntu
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// example:
+	//
+	// registry.cn-shanghai.aliyuncs.com/pai_product/tensorflow:py36_cpu_tf1.12_ubuntu
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// example:
+	//
+	// Internal Error
+	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// example:
+	//
+	// ImagePullBackOff
+	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	// example:
+	//
+	// https://cr.console.aliyun.com/repository/cn-hangzhou/zouxu/kf/images
+	RepositoryUrl *string `json:"RepositoryUrl,omitempty" xml:"RepositoryUrl,omitempty"`
+	// example:
+	//
+	// Pushing
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListInstancesResponseBodyInstancesLatestSnapshot) String() string {
@@ -4386,10 +5909,25 @@ func (s *ListInstancesResponseBodyInstancesLatestSnapshot) SetStatus(v string) *
 }
 
 type ListInstancesResponseBodyInstancesRequestedResource struct {
-	CPU          *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
-	GPU          *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
-	GPUType      *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
-	Memory       *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// 32
+	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// example:
+	//
+	// 4
+	GPU *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	// example:
+	//
+	// v100
+	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	// example:
+	//
+	// 32
+	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// 32
 	SharedMemory *string `json:"SharedMemory,omitempty" xml:"SharedMemory,omitempty"`
 }
 
@@ -4427,12 +5965,27 @@ func (s *ListInstancesResponseBodyInstancesRequestedResource) SetSharedMemory(v 
 }
 
 type ListInstancesResponseBodyInstancesUserVpc struct {
-	DefaultRoute    *string                `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
-	ExtendedCIDRs   []*string              `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
-	ForwardInfos    []*ForwardInfoResponse `json:"ForwardInfos,omitempty" xml:"ForwardInfos,omitempty" type:"Repeated"`
-	SecurityGroupId *string                `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	VSwitchId       *string                `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId           *string                `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// eth0 | eth1
+	DefaultRoute *string `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
+	// example:
+	//
+	// ["192.168.0.1/24", "192.168.1.1/24"]
+	ExtendedCIDRs []*string              `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
+	ForwardInfos  []*ForwardInfoResponse `json:"ForwardInfos,omitempty" xml:"ForwardInfos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// sg-xxxxxx
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// example:
+	//
+	// vsw-xxxxx
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// example:
+	//
+	// vpc-xxxxx
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListInstancesResponseBodyInstancesUserVpc) String() string {
@@ -4503,12 +6056,30 @@ func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInsta
 }
 
 type StartInstanceResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// null
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// dsw-730xxxxxxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// "XXX"
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// E7D55162-4489-1619-AAF5-3F97D5FCA948
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s StartInstanceResponseBody) String() string {
@@ -4579,6 +6150,9 @@ func (s *StartInstanceResponse) SetBody(v *StartInstanceResponseBody) *StartInst
 }
 
 type StopInstanceRequest struct {
+	// example:
+	//
+	// false
 	SaveImage *bool `json:"SaveImage,omitempty" xml:"SaveImage,omitempty"`
 }
 
@@ -4596,12 +6170,30 @@ func (s *StopInstanceRequest) SetSaveImage(v bool) *StopInstanceRequest {
 }
 
 type StopInstanceResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// null
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// dsw-730xxxxxxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// "XXX"
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// E7D55162-4489-1619-AAF5-3F97D5FCA948
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s StopInstanceResponseBody) String() string {
@@ -4672,23 +6264,68 @@ func (s *StopInstanceResponse) SetBody(v *StopInstanceResponseBody) *StopInstanc
 }
 
 type UpdateInstanceRequest struct {
-	Accessibility            *string                                 `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	CloudDisks               []*UpdateInstanceRequestCloudDisks      `json:"CloudDisks,omitempty" xml:"CloudDisks,omitempty" type:"Repeated"`
-	Datasets                 []*UpdateInstanceRequestDatasets        `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
-	DisassociateDatasets     *bool                                   `json:"DisassociateDatasets,omitempty" xml:"DisassociateDatasets,omitempty"`
-	DisassociateDriver       *bool                                   `json:"DisassociateDriver,omitempty" xml:"DisassociateDriver,omitempty"`
-	DisassociateForwardInfos *bool                                   `json:"DisassociateForwardInfos,omitempty" xml:"DisassociateForwardInfos,omitempty"`
-	DisassociateVpc          *bool                                   `json:"DisassociateVpc,omitempty" xml:"DisassociateVpc,omitempty"`
-	Driver                   *string                                 `json:"Driver,omitempty" xml:"Driver,omitempty"`
-	EcsSpec                  *string                                 `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
-	ImageId                  *string                                 `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageUrl                 *string                                 `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	InstanceName             *string                                 `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Priority                 *int64                                  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	RequestedResource        *UpdateInstanceRequestRequestedResource `json:"RequestedResource,omitempty" xml:"RequestedResource,omitempty" type:"Struct"`
-	UserId                   *string                                 `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserVpc                  *UpdateInstanceRequestUserVpc           `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
-	WorkspaceSource          *string                                 `json:"WorkspaceSource,omitempty" xml:"WorkspaceSource,omitempty"`
+	// example:
+	//
+	// PRIVATE
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// example:
+	//
+	// []
+	CloudDisks []*UpdateInstanceRequestCloudDisks `json:"CloudDisks,omitempty" xml:"CloudDisks,omitempty" type:"Repeated"`
+	Datasets   []*UpdateInstanceRequestDatasets   `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	// example:
+	//
+	// false
+	DisassociateDatasets *bool `json:"DisassociateDatasets,omitempty" xml:"DisassociateDatasets,omitempty"`
+	// example:
+	//
+	// false
+	DisassociateDriver *bool `json:"DisassociateDriver,omitempty" xml:"DisassociateDriver,omitempty"`
+	// example:
+	//
+	// false
+	DisassociateForwardInfos *bool `json:"DisassociateForwardInfos,omitempty" xml:"DisassociateForwardInfos,omitempty"`
+	// example:
+	//
+	// false
+	DisassociateVpc *bool `json:"DisassociateVpc,omitempty" xml:"DisassociateVpc,omitempty"`
+	// example:
+	//
+	// 535.54.03
+	Driver *string `json:"Driver,omitempty" xml:"Driver,omitempty"`
+	// example:
+	//
+	// ecs.c6.large
+	EcsSpec *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	// example:
+	//
+	// image-05cefd0be2exxxx
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// registry.cn-shanghai.aliyuncs.com/pai_product/tensorflow:py36_cpu_tf1.12_ubuntu
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// example:
+	//
+	// training_data
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// {"CPU":"4","Memory":"8Gi","SharedMemory":"4Gi","GPU":"1","GPUType":"Tesla-V100-16G"}
+	RequestedResource *UpdateInstanceRequestRequestedResource `json:"RequestedResource,omitempty" xml:"RequestedResource,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1612285282502324
+	UserId  *string                       `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserVpc *UpdateInstanceRequestUserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
+	// example:
+	//
+	// d-123456789
+	WorkspaceSource *string `json:"WorkspaceSource,omitempty" xml:"WorkspaceSource,omitempty"`
 }
 
 func (s UpdateInstanceRequest) String() string {
@@ -4785,8 +6422,14 @@ func (s *UpdateInstanceRequest) SetWorkspaceSource(v string) *UpdateInstanceRequ
 }
 
 type UpdateInstanceRequestCloudDisks struct {
+	// example:
+	//
+	// 30Gi
 	Capacity *string `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	SubType  *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
+	// example:
+	//
+	// rootfs
+	SubType *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
 }
 
 func (s UpdateInstanceRequestCloudDisks) String() string {
@@ -4808,7 +6451,13 @@ func (s *UpdateInstanceRequestCloudDisks) SetSubType(v string) *UpdateInstanceRe
 }
 
 type UpdateInstanceRequestDatasets struct {
+	// example:
+	//
+	// d-vsqjvsjp4orp5l206u
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// example:
+	//
+	// /mnt/data
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
 }
 
@@ -4831,10 +6480,25 @@ func (s *UpdateInstanceRequestDatasets) SetMountPath(v string) *UpdateInstanceRe
 }
 
 type UpdateInstanceRequestRequestedResource struct {
-	CPU          *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
-	GPU          *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
-	GPUType      *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
-	Memory       *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// 32
+	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// example:
+	//
+	// 4
+	GPU *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	// example:
+	//
+	// v100
+	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	// example:
+	//
+	// 32
+	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// 32
 	SharedMemory *string `json:"SharedMemory,omitempty" xml:"SharedMemory,omitempty"`
 }
 
@@ -4872,12 +6536,27 @@ func (s *UpdateInstanceRequestRequestedResource) SetSharedMemory(v string) *Upda
 }
 
 type UpdateInstanceRequestUserVpc struct {
-	DefaultRoute    *string        `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
-	ExtendedCIDRs   []*string      `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
-	ForwardInfos    []*ForwardInfo `json:"ForwardInfos,omitempty" xml:"ForwardInfos,omitempty" type:"Repeated"`
-	SecurityGroupId *string        `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	VSwitchId       *string        `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId           *string        `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// eth0 | eth1
+	DefaultRoute *string `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
+	// example:
+	//
+	// ["192.168.0.1/24", "192.168.1.1/24"]
+	ExtendedCIDRs []*string      `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
+	ForwardInfos  []*ForwardInfo `json:"ForwardInfos,omitempty" xml:"ForwardInfos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// sg-xxxxxx
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// example:
+	//
+	// vsw-xxxxx
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// example:
+	//
+	// vpc-xxxxx
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s UpdateInstanceRequestUserVpc) String() string {
@@ -4919,12 +6598,30 @@ func (s *UpdateInstanceRequestUserVpc) SetVpcId(v string) *UpdateInstanceRequest
 }
 
 type UpdateInstanceResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// null
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// dsw-730xxxxxxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// "XXX"
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// E7D55162-4489-1619-AAF5-3F97D5FCA948
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateInstanceResponseBody) String() string {
@@ -5041,6 +6738,13 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// @param request - CreateIdleInstanceCullerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateIdleInstanceCullerResponse
 func (client *Client) CreateIdleInstanceCullerWithOptions(InstanceId *string, request *CreateIdleInstanceCullerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateIdleInstanceCullerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5083,6 +6787,9 @@ func (client *Client) CreateIdleInstanceCullerWithOptions(InstanceId *string, re
 	return _result, _err
 }
 
+// @param request - CreateIdleInstanceCullerRequest
+//
+// @return CreateIdleInstanceCullerResponse
 func (client *Client) CreateIdleInstanceCuller(InstanceId *string, request *CreateIdleInstanceCullerRequest) (_result *CreateIdleInstanceCullerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5095,6 +6802,17 @@ func (client *Client) CreateIdleInstanceCuller(InstanceId *string, request *Crea
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建实例
+//
+// @param request - CreateInstanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInstanceResponse
 func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5193,6 +6911,13 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建实例
+//
+// @param request - CreateInstanceRequest
+//
+// @return CreateInstanceResponse
 func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *CreateInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5205,6 +6930,17 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建定时关机任务
+//
+// @param request - CreateInstanceShutdownTimerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInstanceShutdownTimerResponse
 func (client *Client) CreateInstanceShutdownTimerWithOptions(InstanceId *string, request *CreateInstanceShutdownTimerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateInstanceShutdownTimerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5243,6 +6979,13 @@ func (client *Client) CreateInstanceShutdownTimerWithOptions(InstanceId *string,
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建定时关机任务
+//
+// @param request - CreateInstanceShutdownTimerRequest
+//
+// @return CreateInstanceShutdownTimerResponse
 func (client *Client) CreateInstanceShutdownTimer(InstanceId *string, request *CreateInstanceShutdownTimerRequest) (_result *CreateInstanceShutdownTimerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5255,6 +6998,17 @@ func (client *Client) CreateInstanceShutdownTimer(InstanceId *string, request *C
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建实例快照
+//
+// @param request - CreateInstanceSnapshotRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInstanceSnapshotResponse
 func (client *Client) CreateInstanceSnapshotWithOptions(InstanceId *string, request *CreateInstanceSnapshotRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateInstanceSnapshotResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5309,6 +7063,13 @@ func (client *Client) CreateInstanceSnapshotWithOptions(InstanceId *string, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建实例快照
+//
+// @param request - CreateInstanceSnapshotRequest
+//
+// @return CreateInstanceSnapshotResponse
 func (client *Client) CreateInstanceSnapshot(InstanceId *string, request *CreateInstanceSnapshotRequest) (_result *CreateInstanceSnapshotResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5321,6 +7082,11 @@ func (client *Client) CreateInstanceSnapshot(InstanceId *string, request *Create
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteIdleInstanceCullerResponse
 func (client *Client) DeleteIdleInstanceCullerWithOptions(InstanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteIdleInstanceCullerResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -5345,6 +7111,7 @@ func (client *Client) DeleteIdleInstanceCullerWithOptions(InstanceId *string, he
 	return _result, _err
 }
 
+// @return DeleteIdleInstanceCullerResponse
 func (client *Client) DeleteIdleInstanceCuller(InstanceId *string) (_result *DeleteIdleInstanceCullerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5357,6 +7124,15 @@ func (client *Client) DeleteIdleInstanceCuller(InstanceId *string) (_result *Del
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除实例
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteInstanceResponse
 func (client *Client) DeleteInstanceWithOptions(InstanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteInstanceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -5381,6 +7157,11 @@ func (client *Client) DeleteInstanceWithOptions(InstanceId *string, headers map[
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除实例
+//
+// @return DeleteInstanceResponse
 func (client *Client) DeleteInstance(InstanceId *string) (_result *DeleteInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5393,6 +7174,15 @@ func (client *Client) DeleteInstance(InstanceId *string) (_result *DeleteInstanc
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除定时关机任务
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteInstanceShutdownTimerResponse
 func (client *Client) DeleteInstanceShutdownTimerWithOptions(InstanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteInstanceShutdownTimerResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -5417,6 +7207,11 @@ func (client *Client) DeleteInstanceShutdownTimerWithOptions(InstanceId *string,
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除定时关机任务
+//
+// @return DeleteInstanceShutdownTimerResponse
 func (client *Client) DeleteInstanceShutdownTimer(InstanceId *string) (_result *DeleteInstanceShutdownTimerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5429,6 +7224,15 @@ func (client *Client) DeleteInstanceShutdownTimer(InstanceId *string) (_result *
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取实例快照详情
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteInstanceSnapshotResponse
 func (client *Client) DeleteInstanceSnapshotWithOptions(InstanceId *string, SnapshotId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteInstanceSnapshotResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -5453,6 +7257,11 @@ func (client *Client) DeleteInstanceSnapshotWithOptions(InstanceId *string, Snap
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取实例快照详情
+//
+// @return DeleteInstanceSnapshotResponse
 func (client *Client) DeleteInstanceSnapshot(InstanceId *string, SnapshotId *string) (_result *DeleteInstanceSnapshotResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5465,6 +7274,11 @@ func (client *Client) DeleteInstanceSnapshot(InstanceId *string, SnapshotId *str
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetIdleInstanceCullerResponse
 func (client *Client) GetIdleInstanceCullerWithOptions(InstanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetIdleInstanceCullerResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -5489,6 +7303,7 @@ func (client *Client) GetIdleInstanceCullerWithOptions(InstanceId *string, heade
 	return _result, _err
 }
 
+// @return GetIdleInstanceCullerResponse
 func (client *Client) GetIdleInstanceCuller(InstanceId *string) (_result *GetIdleInstanceCullerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5501,6 +7316,15 @@ func (client *Client) GetIdleInstanceCuller(InstanceId *string) (_result *GetIdl
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取实例详情
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceResponse
 func (client *Client) GetInstanceWithOptions(InstanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInstanceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -5525,6 +7349,11 @@ func (client *Client) GetInstanceWithOptions(InstanceId *string, headers map[str
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取实例详情
+//
+// @return GetInstanceResponse
 func (client *Client) GetInstance(InstanceId *string) (_result *GetInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5537,6 +7366,13 @@ func (client *Client) GetInstance(InstanceId *string) (_result *GetInstanceRespo
 	return _result, _err
 }
 
+// @param request - GetInstanceEventsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceEventsResponse
 func (client *Client) GetInstanceEventsWithOptions(InstanceId *string, request *GetInstanceEventsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInstanceEventsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5579,6 +7415,9 @@ func (client *Client) GetInstanceEventsWithOptions(InstanceId *string, request *
 	return _result, _err
 }
 
+// @param request - GetInstanceEventsRequest
+//
+// @return GetInstanceEventsResponse
 func (client *Client) GetInstanceEvents(InstanceId *string, request *GetInstanceEventsRequest) (_result *GetInstanceEventsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5591,6 +7430,13 @@ func (client *Client) GetInstanceEvents(InstanceId *string, request *GetInstance
 	return _result, _err
 }
 
+// @param request - GetInstanceMetricsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceMetricsResponse
 func (client *Client) GetInstanceMetricsWithOptions(InstanceId *string, request *GetInstanceMetricsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInstanceMetricsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5637,6 +7483,9 @@ func (client *Client) GetInstanceMetricsWithOptions(InstanceId *string, request 
 	return _result, _err
 }
 
+// @param request - GetInstanceMetricsRequest
+//
+// @return GetInstanceMetricsResponse
 func (client *Client) GetInstanceMetrics(InstanceId *string, request *GetInstanceMetricsRequest) (_result *GetInstanceMetricsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5649,6 +7498,15 @@ func (client *Client) GetInstanceMetrics(InstanceId *string, request *GetInstanc
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取定时关机任务
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceShutdownTimerResponse
 func (client *Client) GetInstanceShutdownTimerWithOptions(InstanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInstanceShutdownTimerResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -5673,6 +7531,11 @@ func (client *Client) GetInstanceShutdownTimerWithOptions(InstanceId *string, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取定时关机任务
+//
+// @return GetInstanceShutdownTimerResponse
 func (client *Client) GetInstanceShutdownTimer(InstanceId *string) (_result *GetInstanceShutdownTimerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5685,6 +7548,15 @@ func (client *Client) GetInstanceShutdownTimer(InstanceId *string) (_result *Get
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取实例快照详情
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceSnapshotResponse
 func (client *Client) GetInstanceSnapshotWithOptions(InstanceId *string, SnapshotId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInstanceSnapshotResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -5709,6 +7581,11 @@ func (client *Client) GetInstanceSnapshotWithOptions(InstanceId *string, Snapsho
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取实例快照详情
+//
+// @return GetInstanceSnapshotResponse
 func (client *Client) GetInstanceSnapshot(InstanceId *string, SnapshotId *string) (_result *GetInstanceSnapshotResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5721,6 +7598,13 @@ func (client *Client) GetInstanceSnapshot(InstanceId *string, SnapshotId *string
 	return _result, _err
 }
 
+// @param request - GetLifecycleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLifecycleResponse
 func (client *Client) GetLifecycleWithOptions(InstanceId *string, request *GetLifecycleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetLifecycleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5771,6 +7655,9 @@ func (client *Client) GetLifecycleWithOptions(InstanceId *string, request *GetLi
 	return _result, _err
 }
 
+// @param request - GetLifecycleRequest
+//
+// @return GetLifecycleResponse
 func (client *Client) GetLifecycle(InstanceId *string, request *GetLifecycleRequest) (_result *GetLifecycleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5783,6 +7670,13 @@ func (client *Client) GetLifecycle(InstanceId *string, request *GetLifecycleRequ
 	return _result, _err
 }
 
+// @param request - GetResourceGroupStatisticsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetResourceGroupStatisticsResponse
 func (client *Client) GetResourceGroupStatisticsWithOptions(request *GetResourceGroupStatisticsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetResourceGroupStatisticsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5829,6 +7723,9 @@ func (client *Client) GetResourceGroupStatisticsWithOptions(request *GetResource
 	return _result, _err
 }
 
+// @param request - GetResourceGroupStatisticsRequest
+//
+// @return GetResourceGroupStatisticsResponse
 func (client *Client) GetResourceGroupStatistics(request *GetResourceGroupStatisticsRequest) (_result *GetResourceGroupStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5841,6 +7738,13 @@ func (client *Client) GetResourceGroupStatistics(request *GetResourceGroupStatis
 	return _result, _err
 }
 
+// @param request - GetTokenRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTokenResponse
 func (client *Client) GetTokenWithOptions(request *GetTokenRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5879,6 +7783,9 @@ func (client *Client) GetTokenWithOptions(request *GetTokenRequest, headers map[
 	return _result, _err
 }
 
+// @param request - GetTokenRequest
+//
+// @return GetTokenResponse
 func (client *Client) GetToken(request *GetTokenRequest) (_result *GetTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5891,6 +7798,15 @@ func (client *Client) GetToken(request *GetTokenRequest) (_result *GetTokenRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用户配置
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserConfigResponse
 func (client *Client) GetUserConfigWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetUserConfigResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -5915,6 +7831,11 @@ func (client *Client) GetUserConfigWithOptions(headers map[string]*string, runti
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用户配置
+//
+// @return GetUserConfigResponse
 func (client *Client) GetUserConfig() (_result *GetUserConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5927,6 +7848,17 @@ func (client *Client) GetUserConfig() (_result *GetUserConfigResponse, _err erro
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取ECS规格列表
+//
+// @param request - ListEcsSpecsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEcsSpecsResponse
 func (client *Client) ListEcsSpecsWithOptions(request *ListEcsSpecsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListEcsSpecsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5977,6 +7909,13 @@ func (client *Client) ListEcsSpecsWithOptions(request *ListEcsSpecsRequest, head
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取ECS规格列表
+//
+// @param request - ListEcsSpecsRequest
+//
+// @return ListEcsSpecsResponse
 func (client *Client) ListEcsSpecs(request *ListEcsSpecsRequest) (_result *ListEcsSpecsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5989,6 +7928,17 @@ func (client *Client) ListEcsSpecs(request *ListEcsSpecsRequest) (_result *ListE
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询实例快照列表
+//
+// @param request - ListInstanceSnapshotRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstanceSnapshotResponse
 func (client *Client) ListInstanceSnapshotWithOptions(InstanceId *string, request *ListInstanceSnapshotRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInstanceSnapshotResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6035,6 +7985,13 @@ func (client *Client) ListInstanceSnapshotWithOptions(InstanceId *string, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询实例快照列表
+//
+// @param request - ListInstanceSnapshotRequest
+//
+// @return ListInstanceSnapshotResponse
 func (client *Client) ListInstanceSnapshot(InstanceId *string, request *ListInstanceSnapshotRequest) (_result *ListInstanceSnapshotResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6047,6 +8004,17 @@ func (client *Client) ListInstanceSnapshot(InstanceId *string, request *ListInst
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取实例统计信息
+//
+// @param request - ListInstanceStatisticsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstanceStatisticsResponse
 func (client *Client) ListInstanceStatisticsWithOptions(request *ListInstanceStatisticsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInstanceStatisticsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6081,6 +8049,13 @@ func (client *Client) ListInstanceStatisticsWithOptions(request *ListInstanceSta
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取实例统计信息
+//
+// @param request - ListInstanceStatisticsRequest
+//
+// @return ListInstanceStatisticsResponse
 func (client *Client) ListInstanceStatistics(request *ListInstanceStatisticsRequest) (_result *ListInstanceStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6093,11 +8068,24 @@ func (client *Client) ListInstanceStatistics(request *ListInstanceStatisticsRequ
 	return _result, _err
 }
 
-func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
-	_err = util.ValidateModel(request)
+// @param tmpReq - ListInstancesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstancesResponse
+func (client *Client) ListInstancesWithOptions(tmpReq *ListInstancesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ListInstancesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Labels)) {
+		request.LabelsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Labels, tea.String("Labels"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AcceleratorType)) {
 		query["AcceleratorType"] = request.AcceleratorType
@@ -6113,6 +8101,10 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
 		query["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LabelsShrink)) {
+		query["Labels"] = request.LabelsShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Order)) {
@@ -6171,6 +8163,9 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, he
 	return _result, _err
 }
 
+// @param request - ListInstancesRequest
+//
+// @return ListInstancesResponse
 func (client *Client) ListInstances(request *ListInstancesRequest) (_result *ListInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6183,6 +8178,15 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// 启动实例
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartInstanceResponse
 func (client *Client) StartInstanceWithOptions(InstanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartInstanceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -6207,6 +8211,11 @@ func (client *Client) StartInstanceWithOptions(InstanceId *string, headers map[s
 	return _result, _err
 }
 
+// Summary:
+//
+// 启动实例
+//
+// @return StartInstanceResponse
 func (client *Client) StartInstance(InstanceId *string) (_result *StartInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6219,6 +8228,17 @@ func (client *Client) StartInstance(InstanceId *string) (_result *StartInstanceR
 	return _result, _err
 }
 
+// Summary:
+//
+// 停止实例
+//
+// @param request - StopInstanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopInstanceResponse
 func (client *Client) StopInstanceWithOptions(InstanceId *string, request *StopInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6253,6 +8273,13 @@ func (client *Client) StopInstanceWithOptions(InstanceId *string, request *StopI
 	return _result, _err
 }
 
+// Summary:
+//
+// 停止实例
+//
+// @param request - StopInstanceRequest
+//
+// @return StopInstanceResponse
 func (client *Client) StopInstance(InstanceId *string, request *StopInstanceRequest) (_result *StopInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6265,6 +8292,17 @@ func (client *Client) StopInstance(InstanceId *string, request *StopInstanceRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新实例
+//
+// @param request - UpdateInstanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateInstanceResponse
 func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *UpdateInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6363,6 +8401,13 @@ func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *Upd
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新实例
+//
+// @param request - UpdateInstanceRequest
+//
+// @return UpdateInstanceResponse
 func (client *Client) UpdateInstance(InstanceId *string, request *UpdateInstanceRequest) (_result *UpdateInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
