@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,13 +10,39 @@ import (
 )
 
 type ApproveFotaUpdateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.0.1-D-20220513.14****
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	ClientId   *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	DesktopId  *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// d4452bd7-88df-4b90-a409-806da674****
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// example:
+	//
+	// ecd-138dsptkrt00u****
+	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v18390c954ce59e2915ef16663205371721e0db9a46179ac89249a203320459523cb54ad08efe324784dd0eba25950****
 	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SessionId  *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	Uuid       *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 4771b873-c757-4893-973c-7f5beejh****
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	Uuid      *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s ApproveFotaUpdateRequest) String() string {
@@ -66,6 +89,9 @@ func (s *ApproveFotaUpdateRequest) SetUuid(v string) *ApproveFotaUpdateRequest {
 }
 
 type ApproveFotaUpdateResponseBody struct {
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -112,14 +138,52 @@ func (s *ApproveFotaUpdateResponse) SetBody(v *ApproveFotaUpdateResponseBody) *A
 }
 
 type ChangePasswordRequest struct {
-	ClientId     *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	EndUserId    *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	LoginToken   *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
-	NewPassword  *string `json:"NewPassword,omitempty" xml:"NewPassword,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 42f6645a-9c3c-4772-be2a-cc5f5732****
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// liming
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v18101ac6a9e69c66b04a163031680463660b4b216cd758f34b60b9ad6a7c7f7334b83dd8f75eef4209c68f9f1080b****
+	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 67436290
+	NewPassword *string `json:"NewPassword,omitempty" xml:"NewPassword,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shanghai+dir-227468****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	OldPassword  *string `json:"OldPassword,omitempty" xml:"OldPassword,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SessionId    *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345678
+	OldPassword *string `json:"OldPassword,omitempty" xml:"OldPassword,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 1
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 }
 
 func (s ChangePasswordRequest) String() string {
@@ -171,8 +235,14 @@ func (s *ChangePasswordRequest) SetSessionId(v string) *ChangePasswordRequest {
 }
 
 type ChangePasswordResponseBody struct {
+	// example:
+	//
+	// v18101ac6a9e69c66b04a163031680463660b4b216cd758f34b60b9ad6a7c7f7334b83dd8f75eef4209c68f9f1080b****
 	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 484256DA-D816-44D2-9D86-B6EE4D5B****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ChangePasswordResponseBody) String() string {
@@ -223,12 +293,40 @@ func (s *ChangePasswordResponse) SetBody(v *ChangePasswordResponseBody) *ChangeP
 }
 
 type DeleteFingerPrintTemplateRequest struct {
-	ClientId    *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 59e86b39-ccac-4dfa-93d7-1f724052****
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// example:
+	//
+	// 40401e62-5caf-4508-8de7-bf98af12****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Index       *int32  `json:"Index,omitempty" xml:"Index,omitempty"`
-	LoginToken  *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SessionId   *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v1c0436c721786529914f16516396228454fa6284c9b80f9917f25ebbec2aa30c10343e3f6f9aff64500ce13808aef****
+	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 6df06330-3b75-4768-b334-41a73a64****
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 }
 
 func (s DeleteFingerPrintTemplateRequest) String() string {
@@ -270,6 +368,9 @@ func (s *DeleteFingerPrintTemplateRequest) SetSessionId(v string) *DeleteFingerP
 }
 
 type DeleteFingerPrintTemplateResponseBody struct {
+	// example:
+	//
+	// 134BD0B2-B848-5743-9CE2-C1FD3D5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -316,9 +417,19 @@ func (s *DeleteFingerPrintTemplateResponse) SetBody(v *DeleteFingerPrintTemplate
 }
 
 type DescribeDirectoriesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 54c17e1d-2d72-4b87-aa33-25f3b3f2****
 	ClientId    *string   `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
 	DirectoryId []*string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty" type:"Repeated"`
-	RegionId    *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeDirectoriesRequest) String() string {
@@ -346,7 +457,10 @@ func (s *DescribeDirectoriesRequest) SetRegionId(v string) *DescribeDirectoriesR
 
 type DescribeDirectoriesResponseBody struct {
 	Directories []*DescribeDirectoriesResponseBodyDirectories `json:"Directories,omitempty" xml:"Directories,omitempty" type:"Repeated"`
-	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// F369A091-002F-49C8-AD55-02A77629****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDirectoriesResponseBody) String() string {
@@ -368,11 +482,26 @@ func (s *DescribeDirectoriesResponseBody) SetRequestId(v string) *DescribeDirect
 }
 
 type DescribeDirectoriesResponseBodyDirectories struct {
+	// example:
+	//
+	// INTERNET
 	DesktopAccessType *string `json:"DesktopAccessType,omitempty" xml:"DesktopAccessType,omitempty"`
-	DirectoryId       *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	DirectoryType     *string `json:"DirectoryType,omitempty" xml:"DirectoryType,omitempty"`
-	ProviderId        *string `json:"ProviderId,omitempty" xml:"ProviderId,omitempty"`
-	SsoServiceUrl     *string `json:"SsoServiceUrl,omitempty" xml:"SsoServiceUrl,omitempty"`
+	// example:
+	//
+	// cn-hangzhou+dir-gx2x1dhsmu52rd****
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// example:
+	//
+	// AD_CONNECTOR
+	DirectoryType *string `json:"DirectoryType,omitempty" xml:"DirectoryType,omitempty"`
+	// example:
+	//
+	// 26842
+	ProviderId *string `json:"ProviderId,omitempty" xml:"ProviderId,omitempty"`
+	// example:
+	//
+	// https://eds-cn-shanghai-67726****
+	SsoServiceUrl *string `json:"SsoServiceUrl,omitempty" xml:"SsoServiceUrl,omitempty"`
 }
 
 func (s DescribeDirectoriesResponseBodyDirectories) String() string {
@@ -438,10 +567,30 @@ func (s *DescribeDirectoriesResponse) SetBody(v *DescribeDirectoriesResponseBody
 }
 
 type DescribeFingerPrintTemplatesRequest struct {
-	ClientId   *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 61e39dc6-0450-45f6-a372-2a09e938****
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v189646d6f329e4dfcbf51653542202890570fec26e4f9ee26427c5920fcd93871f017d2190199c4c7d0c0bf00f573****
 	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SessionId  *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a5062d68-e550-4d09-8288-67c8ba9e****
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 }
 
 func (s DescribeFingerPrintTemplatesRequest) String() string {
@@ -474,7 +623,10 @@ func (s *DescribeFingerPrintTemplatesRequest) SetSessionId(v string) *DescribeFi
 
 type DescribeFingerPrintTemplatesResponseBody struct {
 	FingerPrintTemplates []*DescribeFingerPrintTemplatesResponseBodyFingerPrintTemplates `json:"FingerPrintTemplates,omitempty" xml:"FingerPrintTemplates,omitempty" type:"Repeated"`
-	RequestId            *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 9C1D3FBE-84E1-5ABB-AD98-2003AC71****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeFingerPrintTemplatesResponseBody) String() string {
@@ -496,12 +648,33 @@ func (s *DescribeFingerPrintTemplatesResponseBody) SetRequestId(v string) *Descr
 }
 
 type DescribeFingerPrintTemplatesResponseBodyFingerPrintTemplates struct {
-	ClientId     *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// example:
+	//
+	// 2258a3d5-b8f8-4d79-a221-eaecf211****
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// example:
+	//
+	// 2022-03-13T13:26:29Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EndUserId    *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	Index        *int64  `json:"Index,omitempty" xml:"Index,omitempty"`
-	LoginTime    *string `json:"LoginTime,omitempty" xml:"LoginTime,omitempty"`
+	// example:
+	//
+	// Finger 1
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// liming
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// example:
+	//
+	// 1
+	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// example:
+	//
+	// 2022-03-13T13:26:29Z
+	LoginTime *string `json:"LoginTime,omitempty" xml:"LoginTime,omitempty"`
+	// example:
+	//
+	// cn-hangzhou+dir-074949****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
 }
 
@@ -578,26 +751,85 @@ func (s *DescribeFingerPrintTemplatesResponse) SetBody(v *DescribeFingerPrintTem
 }
 
 type DescribeGlobalDesktopsRequest struct {
-	ClientId          *string   `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c213150d-7ac3-432c-b749-6e1e090b****
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// example:
+	//
+	// INTERNET
 	DesktopAccessType *string   `json:"DesktopAccessType,omitempty" xml:"DesktopAccessType,omitempty"`
 	DesktopId         []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
-	DesktopName       *string   `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	DesktopStatus     *string   `json:"DesktopStatus,omitempty" xml:"DesktopStatus,omitempty"`
-	DirectoryId       *string   `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// example:
+	//
+	// DesktopTest
+	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
+	// example:
+	//
+	// Running
+	DesktopStatus *string `json:"DesktopStatus,omitempty" xml:"DesktopStatus,omitempty"`
+	// example:
+	//
+	// cn-hangzhou+dir-880841****
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// 关键字。支持模糊搜索桌面ID、云桌面名称和终端用户自定义的桌面名称。
-	Keyword         *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	LoginRegionId   *string `json:"LoginRegionId,omitempty" xml:"LoginRegionId,omitempty"`
-	LoginToken      *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
-	MaxResults      *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken       *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OfficeSiteId    *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	OrderBy         *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	QueryFotaUpdate *bool   `json:"QueryFotaUpdate,omitempty" xml:"QueryFotaUpdate,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SearchRegionId  *string `json:"SearchRegionId,omitempty" xml:"SearchRegionId,omitempty"`
-	SessionId       *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	SortType        *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
-	WithoutLatency  *bool   `json:"WithoutLatency,omitempty" xml:"WithoutLatency,omitempty"`
+	//
+	// example:
+	//
+	// ecd
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	LoginRegionId *string `json:"LoginRegionId,omitempty" xml:"LoginRegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v147c9114a180489f89691663893169****
+	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// example:
+	//
+	// 500
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// eyJkZWZhdWx0IjpbIjk2MjEy****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// cn-hangzhou+dir-880841****
+	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// example:
+	//
+	// AssignTime
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// example:
+	//
+	// true
+	QueryFotaUpdate *bool `json:"QueryFotaUpdate,omitempty" xml:"QueryFotaUpdate,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	SearchRegionId *string `json:"SearchRegionId,omitempty" xml:"SearchRegionId,omitempty"`
+	// example:
+	//
+	// 5c456a41-1e65-4e72-ab4d-5dcfff52****
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// ASC
+	SortType *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
+	// example:
+	//
+	// true
+	WithoutLatency *bool `json:"WithoutLatency,omitempty" xml:"WithoutLatency,omitempty"`
 }
 
 func (s DescribeGlobalDesktopsRequest) String() string {
@@ -704,9 +936,15 @@ func (s *DescribeGlobalDesktopsRequest) SetWithoutLatency(v bool) *DescribeGloba
 }
 
 type DescribeGlobalDesktopsResponseBody struct {
-	Desktops  []*DescribeGlobalDesktopsResponseBodyDesktops `json:"Desktops,omitempty" xml:"Desktops,omitempty" type:"Repeated"`
-	NextToken *string                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Desktops []*DescribeGlobalDesktopsResponseBodyDesktops `json:"Desktops,omitempty" xml:"Desktops,omitempty" type:"Repeated"`
+	// example:
+	//
+	// eyJkZWZhdWx0IjpbIjIwMjItMDgtMTdUM****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 4686A731-D601-548C-83E2-4CB6371E****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeGlobalDesktopsResponseBody) String() string {
@@ -733,45 +971,123 @@ func (s *DescribeGlobalDesktopsResponseBody) SetRequestId(v string) *DescribeGlo
 }
 
 type DescribeGlobalDesktopsResponseBodyDesktops struct {
+	// example:
+	//
+	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// 支持的客户端信息
-	Clients            []*DescribeGlobalDesktopsResponseBodyDesktopsClients       `json:"Clients,omitempty" xml:"Clients,omitempty" type:"Repeated"`
-	ConnectionStatus   *string                                                    `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
-	Cpu                *int32                                                     `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	CreationTime       *string                                                    `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	DesktopGroupId     *string                                                    `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	DesktopId          *string                                                    `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	DesktopName        *string                                                    `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	DesktopStatus      *string                                                    `json:"DesktopStatus,omitempty" xml:"DesktopStatus,omitempty"`
-	DesktopTimers      []*DescribeGlobalDesktopsResponseBodyDesktopsDesktopTimers `json:"DesktopTimers,omitempty" xml:"DesktopTimers,omitempty" type:"Repeated"`
-	DesktopType        *string                                                    `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
-	DirectoryId        *string                                                    `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	Disks              []*DescribeGlobalDesktopsResponseBodyDesktopsDisks         `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
-	EndUserId          *string                                                    `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	EndUserIds         []*string                                                  `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
-	ExpiredTime        *string                                                    `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	FotaUpdate         *DescribeGlobalDesktopsResponseBodyDesktopsFotaUpdate      `json:"FotaUpdate,omitempty" xml:"FotaUpdate,omitempty" type:"Struct"`
-	GpuMemory          *int32                                                     `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
-	HibernationBeta    *bool                                                      `json:"HibernationBeta,omitempty" xml:"HibernationBeta,omitempty"`
-	HostName           *string                                                    `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	ImageId            *string                                                    `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	LastStartTime      *string                                                    `json:"LastStartTime,omitempty" xml:"LastStartTime,omitempty"`
-	LocalName          *string                                                    `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	ManagementFlags    []*string                                                  `json:"ManagementFlags,omitempty" xml:"ManagementFlags,omitempty" type:"Repeated"`
-	Memory             *int64                                                     `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	NetworkInterfaceIp *string                                                    `json:"NetworkInterfaceIp,omitempty" xml:"NetworkInterfaceIp,omitempty"`
-	OfficeSiteId       *string                                                    `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	Os                 *string                                                    `json:"Os,omitempty" xml:"Os,omitempty"`
-	OsType             *string                                                    `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	Platform           *string                                                    `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	PolicyGroupId      *string                                                    `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	ProtocolType       *string                                                    `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	RealDesktopId      *string                                                    `json:"RealDesktopId,omitempty" xml:"RealDesktopId,omitempty"`
-	RegionId           *string                                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SessionType        *string                                                    `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
-	Sessions           []*DescribeGlobalDesktopsResponseBodyDesktopsSessions      `json:"Sessions,omitempty" xml:"Sessions,omitempty" type:"Repeated"`
-	SupportHibernation *bool                                                      `json:"SupportHibernation,omitempty" xml:"SupportHibernation,omitempty"`
-	UserCustomName     *string                                                    `json:"UserCustomName,omitempty" xml:"UserCustomName,omitempty"`
+	Clients []*DescribeGlobalDesktopsResponseBodyDesktopsClients `json:"Clients,omitempty" xml:"Clients,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Disconnected
+	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
+	// example:
+	//
+	// 2
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// example:
+	//
+	// 2020-11-06T08:28Z
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// example:
+	//
+	// dg-3uiojcc0j4kh7****
+	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
+	// example:
+	//
+	// ecd-gx2x1dhsmucyy****
+	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	// example:
+	//
+	// testDesktopName
+	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
+	// example:
+	//
+	// Running
+	DesktopStatus *string                                                    `json:"DesktopStatus,omitempty" xml:"DesktopStatus,omitempty"`
+	DesktopTimers []*DescribeGlobalDesktopsResponseBodyDesktopsDesktopTimers `json:"DesktopTimers,omitempty" xml:"DesktopTimers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ecd.basic.large
+	DesktopType *string `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
+	// example:
+	//
+	// cn-hangzhou+dir-jedbpr4sl9l37****
+	DirectoryId *string                                            `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	Disks       []*DescribeGlobalDesktopsResponseBodyDesktopsDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// User1
+	EndUserId  *string   `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2021-12-31T15:59Z
+	ExpiredTime *string                                               `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	FotaUpdate  *DescribeGlobalDesktopsResponseBodyDesktopsFotaUpdate `json:"FotaUpdate,omitempty" xml:"FotaUpdate,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2048
+	GpuMemory       *int32 `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
+	HibernationBeta *bool  `json:"HibernationBeta,omitempty" xml:"HibernationBeta,omitempty"`
+	// example:
+	//
+	// testName
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// example:
+	//
+	// m-4zfb6zj728hhr****
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// 2021-07-13T15:59Z
+	LastStartTime   *string   `json:"LastStartTime,omitempty" xml:"LastStartTime,omitempty"`
+	LocalName       *string   `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	ManagementFlags []*string `json:"ManagementFlags,omitempty" xml:"ManagementFlags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 4096
+	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// 192.168.xx.xx
+	NetworkInterfaceIp *string `json:"NetworkInterfaceIp,omitempty" xml:"NetworkInterfaceIp,omitempty"`
+	// example:
+	//
+	// cn-hangzhou+dir-363353****
+	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	Os           *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	// example:
+	//
+	// Windows
+	OsType   *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// example:
+	//
+	// pg-9cktlowtxfl6****
+	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	// example:
+	//
+	// ASP
+	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	// example:
+	//
+	// ecd-gx2x1dhsm****
+	RealDesktopId *string `json:"RealDesktopId,omitempty" xml:"RealDesktopId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId    *string                                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SessionType *string                                               `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
+	Sessions    []*DescribeGlobalDesktopsResponseBodyDesktopsSessions `json:"Sessions,omitempty" xml:"Sessions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	SupportHibernation *bool `json:"SupportHibernation,omitempty" xml:"SupportHibernation,omitempty"`
+	// example:
+	//
+	// testDesktop
+	UserCustomName *string `json:"UserCustomName,omitempty" xml:"UserCustomName,omitempty"`
 }
 
 func (s DescribeGlobalDesktopsResponseBodyDesktops) String() string {
@@ -976,16 +1292,30 @@ type DescribeGlobalDesktopsResponseBodyDesktopsClients struct {
 	// 客户端类型，取值：
 	//
 	// - macos：Mac客户端
+	//
 	// - ios：IOS客户端
+	//
 	// - android：Android客户端
+	//
 	// - html5：Web客户端
+	//
 	// - windows：Windows客户端
+	//
 	// - linux：Linux客户端
+	//
+	// example:
+	//
+	// windows
 	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
 	// 客户端状态，取值：
 	//
 	// - ON：允许登录
+	//
 	// - OFF：不允许登录
+	//
+	// example:
+	//
+	// ON
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -1008,14 +1338,29 @@ func (s *DescribeGlobalDesktopsResponseBodyDesktopsClients) SetStatus(v string) 
 }
 
 type DescribeGlobalDesktopsResponseBodyDesktopsDesktopTimers struct {
-	AllowClientSetting *bool   `json:"AllowClientSetting,omitempty" xml:"AllowClientSetting,omitempty"`
-	CronExpression     *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	Enforce            *bool   `json:"Enforce,omitempty" xml:"Enforce,omitempty"`
-	ExecutionTime      *string `json:"ExecutionTime,omitempty" xml:"ExecutionTime,omitempty"`
-	Interval           *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	OperationType      *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	ResetType          *string `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
-	TimerType          *string `json:"TimerType,omitempty" xml:"TimerType,omitempty"`
+	AllowClientSetting *bool `json:"AllowClientSetting,omitempty" xml:"AllowClientSetting,omitempty"`
+	// example:
+	//
+	// 0 0 0 ? 	- 1
+	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
+	// example:
+	//
+	// false
+	Enforce       *bool   `json:"Enforce,omitempty" xml:"Enforce,omitempty"`
+	ExecutionTime *string `json:"ExecutionTime,omitempty" xml:"ExecutionTime,omitempty"`
+	// example:
+	//
+	// 60
+	Interval      *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	// example:
+	//
+	// RESET_TYPE_BOTH
+	ResetType *string `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
+	// example:
+	//
+	// NoConnectShutdown
+	TimerType *string `json:"TimerType,omitempty" xml:"TimerType,omitempty"`
 }
 
 func (s DescribeGlobalDesktopsResponseBodyDesktopsDesktopTimers) String() string {
@@ -1067,8 +1412,17 @@ func (s *DescribeGlobalDesktopsResponseBodyDesktopsDesktopTimers) SetTimerType(v
 }
 
 type DescribeGlobalDesktopsResponseBodyDesktopsDisks struct {
-	DiskId   *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	DiskSize *int32  `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	// example:
+	//
+	// d-jedbpr4sl9l37****
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// example:
+	//
+	// 80
+	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	// example:
+	//
+	// SYSTEM
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
 }
 
@@ -1096,15 +1450,33 @@ func (s *DescribeGlobalDesktopsResponseBodyDesktopsDisks) SetDiskType(v string) 
 }
 
 type DescribeGlobalDesktopsResponseBodyDesktopsFotaUpdate struct {
-	Channel           *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// example:
+	//
+	// Enterprise
+	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// example:
+	//
+	// 0.0.0-D-20220102.xxxx
 	CurrentAppVersion *string `json:"CurrentAppVersion,omitempty" xml:"CurrentAppVersion,omitempty"`
-	Force             *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
-	NewAppVersion     *string `json:"NewAppVersion,omitempty" xml:"NewAppVersion,omitempty"`
-	Project           *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	ReleaseNote       *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
-	ReleaseNoteEn     *string `json:"ReleaseNoteEn,omitempty" xml:"ReleaseNoteEn,omitempty"`
-	ReleaseNoteJp     *string `json:"ReleaseNoteJp,omitempty" xml:"ReleaseNoteJp,omitempty"`
-	Size              *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// false
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// example:
+	//
+	// 0.0.0-R-20220307.xxxx
+	NewAppVersion *string `json:"NewAppVersion,omitempty" xml:"NewAppVersion,omitempty"`
+	// example:
+	//
+	// testProject
+	Project       *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	ReleaseNote   *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
+	ReleaseNoteEn *string `json:"ReleaseNoteEn,omitempty" xml:"ReleaseNoteEn,omitempty"`
+	ReleaseNoteJp *string `json:"ReleaseNoteJp,omitempty" xml:"ReleaseNoteJp,omitempty"`
+	// example:
+	//
+	// 100
+	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s DescribeGlobalDesktopsResponseBodyDesktopsFotaUpdate) String() string {
@@ -1161,7 +1533,13 @@ func (s *DescribeGlobalDesktopsResponseBodyDesktopsFotaUpdate) SetSize(v string)
 }
 
 type DescribeGlobalDesktopsResponseBodyDesktopsSessions struct {
-	EndUserId         *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// example:
+	//
+	// User1
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// example:
+	//
+	// 2021-03-07T08:23Z
 	EstablishmentTime *string `json:"EstablishmentTime,omitempty" xml:"EstablishmentTime,omitempty"`
 }
 
@@ -1213,9 +1591,19 @@ func (s *DescribeGlobalDesktopsResponse) SetBody(v *DescribeGlobalDesktopsRespon
 }
 
 type DescribeOfficeSitesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 42f6645a-9c3c-4772-be2a-cc5f5732****
 	ClientId     *string   `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
 	OfficeSiteId []*string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty" type:"Repeated"`
-	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeOfficeSitesRequest) String() string {
@@ -1243,7 +1631,10 @@ func (s *DescribeOfficeSitesRequest) SetRegionId(v string) *DescribeOfficeSitesR
 
 type DescribeOfficeSitesResponseBody struct {
 	OfficeSites []*DescribeOfficeSitesResponseBodyOfficeSites `json:"OfficeSites,omitempty" xml:"OfficeSites,omitempty" type:"Repeated"`
-	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeOfficeSitesResponseBody) String() string {
@@ -1265,12 +1656,30 @@ func (s *DescribeOfficeSitesResponseBody) SetRequestId(v string) *DescribeOffice
 }
 
 type DescribeOfficeSitesResponseBodyOfficeSites struct {
-	DesktopAccessType  *string `json:"DesktopAccessType,omitempty" xml:"DesktopAccessType,omitempty"`
+	// example:
+	//
+	// VPC
+	DesktopAccessType *string `json:"DesktopAccessType,omitempty" xml:"DesktopAccessType,omitempty"`
+	// example:
+	//
+	// http://ep-bp1s2vmbj55r5rzc****.epsrv-bp1pcfhpwvlpny01****.cn-hangzhou.privatelink.aliyuncs.com
 	DesktopVpcEndpoint *string `json:"DesktopVpcEndpoint,omitempty" xml:"DesktopVpcEndpoint,omitempty"`
-	OfficeSiteId       *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	OfficeSiteType     *string `json:"OfficeSiteType,omitempty" xml:"OfficeSiteType,omitempty"`
-	ProviderId         *string `json:"ProviderId,omitempty" xml:"ProviderId,omitempty"`
-	SsoServiceUrl      *string `json:"SsoServiceUrl,omitempty" xml:"SsoServiceUrl,omitempty"`
+	// example:
+	//
+	// cn-hangzhou+dir-363353****
+	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// example:
+	//
+	// SIMPLE
+	OfficeSiteType *string `json:"OfficeSiteType,omitempty" xml:"OfficeSiteType,omitempty"`
+	// example:
+	//
+	// 268****
+	ProviderId *string `json:"ProviderId,omitempty" xml:"ProviderId,omitempty"`
+	// example:
+	//
+	// https://eds-cn-shanghai-67****
+	SsoServiceUrl *string `json:"SsoServiceUrl,omitempty" xml:"SsoServiceUrl,omitempty"`
 }
 
 func (s DescribeOfficeSitesResponseBodyOfficeSites) String() string {
@@ -1341,7 +1750,15 @@ func (s *DescribeOfficeSitesResponse) SetBody(v *DescribeOfficeSitesResponseBody
 }
 
 type DescribeRegionsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac4a73ad-789a-449a-a88f-d18571d6****
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -1364,8 +1781,11 @@ func (s *DescribeRegionsRequest) SetRegionId(v string) *DescribeRegionsRequest {
 }
 
 type DescribeRegionsResponseBody struct {
-	Regions   []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBody) String() string {
@@ -1387,8 +1807,14 @@ func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsRes
 }
 
 type DescribeRegionsResponseBodyRegions struct {
+	// example:
+	//
+	// ecd.cn-hangzhou.aliyuncs.com
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyRegions) String() string {
@@ -1439,13 +1865,43 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type DescribeSnapshotsRequest struct {
-	ClientId   *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	DesktopId  *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 16dad2b6-3c6d-4e4c-b057-78ecb13c****
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// example:
+	//
+	// ecd-gx2x1dhsmucyy****
+	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v16abfb945208fc5745061668654680853da4a25202d1a394fcad57bba484e9827ad43ea7d10fb6bf13d44a4adc0e9****
 	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SessionId  *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// AAAAAV3MpHK1AP0pfERHZN5pu6nmB7qrRFJ8vmttjxPL****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// a99b9aca-bac5-4da2-819e-400ce98f****
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// s-2ze81owrnv9pity4****
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 }
 
@@ -1498,7 +1954,13 @@ func (s *DescribeSnapshotsRequest) SetSnapshotId(v string) *DescribeSnapshotsReq
 }
 
 type DescribeSnapshotsResponseBody struct {
-	NextToken *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// AAAAAV3MpHK1AP0pfERHZN5pu6nmB7qrRFJ8vmttjxPL****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 51592A88-0F2C-55E6-AD2C-2AD9C10D****
 	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Snapshots []*DescribeSnapshotsResponseBodySnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
 }
@@ -1527,17 +1989,50 @@ func (s *DescribeSnapshotsResponseBody) SetSnapshots(v []*DescribeSnapshotsRespo
 }
 
 type DescribeSnapshotsResponseBodySnapshots struct {
-	CreationTime   *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DesktopId      *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	Progress       *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	RemainTime     *int32  `json:"RemainTime,omitempty" xml:"RemainTime,omitempty"`
-	SnapshotId     *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	SnapshotName   *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
-	SnapshotType   *string `json:"SnapshotType,omitempty" xml:"SnapshotType,omitempty"`
+	// example:
+	//
+	// 2020-12-20T14:52:28Z
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// example:
+	//
+	// testDescription
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// ecd-g03l3tlm8djoj****
+	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	// example:
+	//
+	// 100%
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// example:
+	//
+	// 30
+	RemainTime *int32 `json:"RemainTime,omitempty" xml:"RemainTime,omitempty"`
+	// example:
+	//
+	// s-2zeipxmnhej803x7****
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	// example:
+	//
+	// testSnapshotName
+	SnapshotName *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
+	// example:
+	//
+	// USER
+	SnapshotType *string `json:"SnapshotType,omitempty" xml:"SnapshotType,omitempty"`
+	// example:
+	//
+	// 150
 	SourceDiskSize *string `json:"SourceDiskSize,omitempty" xml:"SourceDiskSize,omitempty"`
+	// example:
+	//
+	// SYSTEM
 	SourceDiskType *string `json:"SourceDiskType,omitempty" xml:"SourceDiskType,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// ACCOMPLISHED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeSnapshotsResponseBodySnapshots) String() string {
@@ -1633,13 +2128,44 @@ func (s *DescribeSnapshotsResponse) SetBody(v *DescribeSnapshotsResponseBody) *D
 }
 
 type EncryptPasswordRequest struct {
-	ClientId     *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	DirectoryId  *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	LoginToken   *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1d40776f-e9cb-4e2b-a8da-308d10e8****
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// example:
+	//
+	// cn-beijing+dir-131196****
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v1b16dcff3ab21a6c5ec01652238375511cff5a1db59fd4dc49afb37e2ea7a626af6f38109fd0498b6abd9de1af7743****
+	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// example:
+	//
+	// cn-beijing+dir-131196****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	Password     *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SessionId    *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Ab123456
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c78e2e52-23d9-4401-a648-e67ac6ff****
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 }
 
 func (s EncryptPasswordRequest) String() string {
@@ -1686,8 +2212,14 @@ func (s *EncryptPasswordRequest) SetSessionId(v string) *EncryptPasswordRequest 
 }
 
 type EncryptPasswordResponseBody struct {
+	// example:
+	//
+	// d34601bc-e6b1-4433-b0cc-8f6c5e52;n4apvGub3OBoj4Grwg==;thhO4UEomJfdvwnwlA==
 	EncryptedPassword *string `json:"EncryptedPassword,omitempty" xml:"EncryptedPassword,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// AF538DA8-FFC6-52DA-8FF8-7B92579F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s EncryptPasswordResponseBody) String() string {
@@ -1738,11 +2270,26 @@ func (s *EncryptPasswordResponse) SetBody(v *EncryptPasswordResponseBody) *Encry
 }
 
 type GetCloudDriveServiceMountTokenRequest struct {
-	ClientId     *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	LoginToken   *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// example:
+	//
+	// 00e122c3-13fb-4fc3-bc7a-5d9acb89****
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// example:
+	//
+	// v1972cd3446f0e523598916520951742474e6624fcdea6652994d47bc6157d27f7cc900c339db67882j3no4nh5bk3b4****
+	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// example:
+	//
+	// cn-hangzhou+dir-7186763****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SessionId    *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 14e1fe41-ce9b-491d-aa8c-345jk2n4bk****
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 }
 
 func (s GetCloudDriveServiceMountTokenRequest) String() string {
@@ -1779,6 +2326,9 @@ func (s *GetCloudDriveServiceMountTokenRequest) SetSessionId(v string) *GetCloud
 }
 
 type GetCloudDriveServiceMountTokenResponseBody struct {
+	// example:
+	//
+	// DC27288A-F9E1-5092-9B5B-71C27D15****
 	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Token     *GetCloudDriveServiceMountTokenResponseBodyToken `json:"Token,omitempty" xml:"Token,omitempty" type:"Struct"`
 }
@@ -1802,12 +2352,30 @@ func (s *GetCloudDriveServiceMountTokenResponseBody) SetToken(v *GetCloudDriveSe
 }
 
 type GetCloudDriveServiceMountTokenResponseBodyToken struct {
-	DomainId     *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	// example:
+	//
+	// h****
+	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	// example:
+	//
+	// 2022-10-10T04:41:35Z
 	ExpiredAfter *string `json:"ExpiredAfter,omitempty" xml:"ExpiredAfter,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Token        *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	TotalSize    *int64  `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
-	UsedSize     *int64  `json:"UsedSize,omitempty" xml:"UsedSize,omitempty"`
+	// example:
+	//
+	// enabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 7836fa6eced7dc8d54c775k34iu3h4i2kh534f****
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// example:
+	//
+	// 6050416754750
+	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	// example:
+	//
+	// 605089
+	UsedSize *int64 `json:"UsedSize,omitempty" xml:"UsedSize,omitempty"`
 }
 
 func (s GetCloudDriveServiceMountTokenResponseBodyToken) String() string {
@@ -1878,20 +2446,53 @@ func (s *GetCloudDriveServiceMountTokenResponse) SetBody(v *GetCloudDriveService
 }
 
 type GetConnectionTicketRequest struct {
-	ClientId             *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	ClientOS             *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
-	ClientType           *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
-	ClientVersion        *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
-	CommandContent       *string `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
-	DesktopId            *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	LoginToken           *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f4a0dc8e-1702-4728-9a60-95b27a35****
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// example:
+	//
+	// Windows_NT 10.0.18363 x64
+	ClientOS *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
+	// example:
+	//
+	// windows
+	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	// example:
+	//
+	// 2.1.0-R-20210731.151756
+	ClientVersion  *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
+	CommandContent *string `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
+	// example:
+	//
+	// ecd-gx2x1dhsmucyy****
+	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v18101ac6a9e69c66b04a163031680463660b4b216cd758f34b60b9ad6a7c7f7334b83dd8f75eef4209c68f9f1080b****
+	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SessionId            *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	TaskId               *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	Uuid                 *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// example:
+	//
+	// cd45e873-650d-4d70-acb9-f996187a****
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 2afbad19-778a-4fc5-9674-1f19c638****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Uuid   *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s GetConnectionTicketRequest) String() string {
@@ -1973,12 +2574,24 @@ func (s *GetConnectionTicketRequest) SetUuid(v string) *GetConnectionTicketReque
 }
 
 type GetConnectionTicketResponseBody struct {
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskCode    *string `json:"TaskCode,omitempty" xml:"TaskCode,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskCode  *string `json:"TaskCode,omitempty" xml:"TaskCode,omitempty"`
+	// example:
+	//
+	// 2afbad19-778a-4fc5-9674-1f19c63862da
 	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	TaskMessage *string `json:"TaskMessage,omitempty" xml:"TaskMessage,omitempty"`
-	TaskStatus  *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	Ticket      *string `json:"Ticket,omitempty" xml:"Ticket,omitempty"`
+	// example:
+	//
+	// FINISHED
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// example:
+	//
+	// W0VuY29kaW5nXQ0KSW5wdXRFbmNvZGluZz1V********
+	Ticket *string `json:"Ticket,omitempty" xml:"Ticket,omitempty"`
 }
 
 func (s GetConnectionTicketResponseBody) String() string {
@@ -2050,54 +2663,140 @@ func (s *GetConnectionTicketResponse) SetBody(v *GetConnectionTicketResponseBody
 
 type GetLoginTokenRequest struct {
 	// The verification code that is generated by the virtual MFA device. This parameter is required if you set `CurrentStage` to `MFAVerify`.
+	//
+	// example:
+	//
+	// 47****
 	AuthenticationCode *string `json:"AuthenticationCode,omitempty" xml:"AuthenticationCode,omitempty"`
 	// The ID of the Alibaba Cloud Workspace client. The system generates a unique ID for each client.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f4a0dc8e-1702-4728-9a60-95b27a35****
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
 	// The OS that the client runs.
+	//
+	// example:
+	//
+	// Windows_NT 10.0.1***	- x64
 	ClientOS *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
 	// The type of the software client.
+	//
+	// example:
+	//
+	// Windows
 	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
-	// The version of the client. When you use an Alibaba Cloud Workspace client, you can view the client version in the **About** dialog box on the client logon page.
+	// The version of the client. When you use an Alibaba Cloud Workspace client, you can view the client version in the **About*	- dialog box on the client logon page.
+	//
+	// example:
+	//
+	// 2.1.0-R-20210731.1****
 	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
 	// The logon authentication stage. Valid values:
 	//
-	// *   `ADPassword`: the stage to verify the identity of the Active Directory (AD) user. You must specify the value when the system verifies the identity of a convenience account or an AD account.
-	// *   `MFABind`: the stage to bind a virtual multi-factor authentication (MFA) device.
-	// *   `MFAVerify`: the stage to obtain the verification code that is generated by the virtual MFA device.
-	// *   `TokenVerify`: the stage to perform two-factor authentication for the client.
-	// *   `ChangePassword`: the stage to change the password of the user.
-	// *   `VerifyKeepAlive`: the stage to exchange the logon credential. This parameter is valid if KeepAliveToken is valid.
+	// 	- `ADPassword`: the stage to verify the identity of the Active Directory (AD) user. You must specify the value when the system verifies the identity of a convenience account or an AD account.
+	//
+	// 	- `MFABind`: the stage to bind a virtual multi-factor authentication (MFA) device.
+	//
+	// 	- `MFAVerify`: the stage to obtain the verification code that is generated by the virtual MFA device.
+	//
+	// 	- `TokenVerify`: the stage to perform two-factor authentication for the client.
+	//
+	// 	- `ChangePassword`: the stage to change the password of the user.
+	//
+	// 	- `VerifyKeepAlive`: the stage to exchange the logon credential. This parameter is valid if KeepAliveToken is valid.
+	//
+	// example:
+	//
+	// ADPassword
 	CurrentStage *string `json:"CurrentStage,omitempty" xml:"CurrentStage,omitempty"`
 	// The ID of the workspace. The parameter is the same as the `OfficeSiteId` parameter. We recommend that you use `OfficeSiteId` instead of `DirectoryId`. You can specify a value for either the `DirectoryId` parameter or the `OfficeSiteId` parameter, but not both.
+	//
+	// example:
+	//
+	// cn-hangzhou+dir-885351****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The name of the convenience user or the AD user. This parameter is required if you set `CurrentStage` to `ADPassword`.
+	//
+	// example:
+	//
+	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	// Specifies whether to keep the user logged on to the client.
+	//
 	// Valid values:
-	// * null: Default value. Do not keep the user logged on to the client.
-	// * true: Keep the user logged on to the client.
-	// * false:  Do not keep the user logged on to the client.
+	//
+	// 	- null: Default value. Do not keep the user logged on to the client.
+	//
+	// 	- true: Keep the user logged on to the client.
+	//
+	// 	- false:  Do not keep the user logged on to the client.
+	//
+	// example:
+	//
+	// false
 	KeepAlive *bool `json:"KeepAlive,omitempty" xml:"KeepAlive,omitempty"`
 	// The token that is used to keep the user logged on to the client. After the user logs on to the client and KeepAlive is set to true, the `KeepAliveToken` is returned. You can call the `GetLoginToken` operation within the valid duration``, and set `CurrentStage` to `VerifyKeepAlive` to obtain the logon token (LoginToken). This parameter is required if you set `CurrentStage` to `VerifyKeepAlive```.
+	//
+	// example:
+	//
+	// hide
 	KeepAliveToken *string `json:"KeepAliveToken,omitempty" xml:"KeepAliveToken,omitempty"`
 	// The new password. This parameter is required if you set `CurrentStage` to `ChangePassword`.
+	//
+	// example:
+	//
+	// NewPassword
 	NewPassword *string `json:"NewPassword,omitempty" xml:"NewPassword,omitempty"`
 	// The ID of the workspace.
+	//
+	// example:
+	//
+	// cn-hangzhou+dir-885351****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
 	// The current password. This parameter is required if you set `CurrentStage` to `ChangePassword`.
+	//
+	// example:
+	//
+	// OldPassword
 	OldPassword *string `json:"OldPassword,omitempty" xml:"OldPassword,omitempty"`
 	// The password of the convenience user or the AD user. This parameter is required if you set `CurrentStage` to `ADPassword`.
+	//
+	// example:
+	//
+	// Password1234
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The ID of the region. You can call the [DescribeRegions](~~436773~~) operation to query the most recent region list.
+	// The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/436773.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the session.
 	//
-	// *   If the virtual multi-factor authentication (MFA) device is not bound or two-factor authentication is not enabled for the client, you do not need to specify a value for `SessionId`.
-	// *   If the virtual MFA device is not bound or two-factor authentication is enabled for the client, you must specify a value for `SessionId` to verify the user identity after you specify a value for `ADPassword`. The value of the `SessionId` parameter is returned only if the CurrentStage parameter is set to `ADPassword` when you call the `GetLoginToken` operation.
+	// 	- If the virtual multi-factor authentication (MFA) device is not bound or two-factor authentication is not enabled for the client, you do not need to specify a value for `SessionId`.
+	//
+	// 	- If the virtual MFA device is not bound or two-factor authentication is enabled for the client, you must specify a value for `SessionId` to verify the user identity after you specify a value for `ADPassword`. The value of the `SessionId` parameter is returned only if the CurrentStage parameter is set to `ADPassword` when you call the `GetLoginToken` operation.
+	//
+	// example:
+	//
+	// cd45e873-650d-4d70-acb9-f996187a****
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 	// If two-factor authentication is enabled in the Elastic Desktop Service (EDS) console and the system detects that the identity of the logon user may have security risks, the system sends a verification code for two-factor authentication to the email address of the user. This parameter is required if you set `CurrentStage` to `TokenVerify`.
+	//
+	// example:
+	//
+	// 63****
 	TokenCode *string `json:"TokenCode,omitempty" xml:"TokenCode,omitempty"`
-	// The unique identifier of the client. When you use an Alibaba Cloud Workspace client, you can view the client version in the **About** dialog box on the client logon page.
+	// The unique identifier of the client. When you use an Alibaba Cloud Workspace client, you can view the client version in the **About*	- dialog box on the client logon page.
+	//
+	// example:
+	//
+	// C78CA9E99315687575DD2844C1F3****
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
@@ -2202,45 +2901,104 @@ func (s *GetLoginTokenRequest) SetUuid(v string) *GetLoginTokenRequest {
 type GetLoginTokenResponseBody struct {
 	// The email address of the user. The system returns the email address in the return value of the LoginToken parameter after the user logs on to the client.
 	//
-	// *   For a convenience user, the return value is the email address specified when the administrator creates the convenience user.
-	// *   For an AD user, the return value is in the following format: `Username@Name of the AD domain`.
+	// 	- For a convenience user, the return value is the email address specified when the administrator creates the convenience user.
+	//
+	// 	- For an AD user, the return value is in the following format: `Username@Name of the AD domain`.
+	//
+	// example:
+	//
+	// alice
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// The account of the convenience user or the AD user.
+	//
+	// example:
+	//
+	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	// > This is a parameter only for internal use.
+	//
+	// example:
+	//
+	// edu
 	Industry *string `json:"Industry,omitempty" xml:"Industry,omitempty"`
 	// The token used to keep the user logged on. After the user logs on to the client and select the Keep Logon option, `KeepAliveToken` is returned when you call the operation. If the user does not select the Keep Logon option, null is returned.
+	//
+	// example:
+	//
+	// 006YwvYMsesWWsDBZnVB+Wq9AvJDVIqOY3YCktvtb7+KxMb3ClnNlV8+l/knhZYrXUmeP06IzkjF+IgcZ3vZKOyMprDyFHjCy1r27FRE/U7+geWCl8iQ+yF8GaCRHfJEkC2+ROs93HkT4tfHxyY1J8W7O7ZQGUC/cdCvm+cCP6FIy73IUuPuVR6PcKYXIpEZPW
 	KeepAliveToken *string `json:"KeepAliveToken,omitempty" xml:"KeepAliveToken,omitempty"`
 	// The attribute of the convenience user. For an AD user, null is returned.
+	//
+	// example:
+	//
+	// test:wuying
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The logon token.
+	//
+	// example:
+	//
+	// v18101ac6a9e69c66b04a163031680463660b4b216cd758f34b60b9ad6a7c7f7334b83dd8f75eef4209c68f9f1080b****
 	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
 	// The next stage that is expected to enter. For example, if the administrator enables MFA authentication in the EDS console, `MFAVerify` is returned after the username and password pass the authentication (after you set CurrentStage to `ADPassword` stage). This indicates that the MFA authentication is required.
 	//
 	// > For more information about each authentication stage, see the parameter description of the request parameter `CurrentStage`.
-	NextStage *string `json:"NextStage,omitempty" xml:"NextStage,omitempty"`
+	//
+	// example:
+	//
+	// MFAVerify
+	NextStage        *string                                    `json:"NextStage,omitempty" xml:"NextStage,omitempty"`
+	PasswordStrategy *GetLoginTokenResponseBodyPasswordStrategy `json:"PasswordStrategy,omitempty" xml:"PasswordStrategy,omitempty" type:"Struct"`
 	// Enter the mobile number of the convenience user. For an AD user, null is returned.
+	//
+	// example:
+	//
+	// 1381111****
 	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
 	// > This is a parameter only for internal use.
 	Props map[string]*string `json:"Props,omitempty" xml:"Props,omitempty"`
 	// The QR code that is generated when the virtual MFA device is bound. The value is encoded in Base64. This parameter can be empty. This parameter is required only when the CurrentStage parameter is set to `MFABind`.
 	//
 	// > For more information about each authentication stage, see the parameter description of the request parameter `CurrentStage`.
+	//
+	// example:
+	//
+	// 5OCLLKKOJU5HPBX66H3QCTWY******
 	QrCodePng *string `json:"QrCodePng,omitempty" xml:"QrCodePng,omitempty"`
+	Reason    *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId      *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RiskVerifyInfo *GetLoginTokenResponseBodyRiskVerifyInfo `json:"RiskVerifyInfo,omitempty" xml:"RiskVerifyInfo,omitempty" type:"Struct"`
 	// The key that is generated when you bind the virtual MFA device. This parameter is required when the CurrentStage parameter is set to `MFABind`.
 	//
 	// > For more information about each authentication stage, see the parameter description of the request parameter `CurrentStage`.
+	//
+	// example:
+	//
+	// 5OCLLKKOJU5HPBX66H3QCTWYI7MH****
 	Secret *string `json:"Secret,omitempty" xml:"Secret,omitempty"`
 	// The ID of the session. The ID is returned the first time you call the `GetLoginToken` operation in the session. If MFA is required, you must specify this parameter in subsequent stages.
 	//
 	// > For more information about each authentication stage, see the parameter description of the request parameter `CurrentStage`.
+	//
+	// example:
+	//
+	// d6ec166d-ab93-4286-bf7f-a18bb929****
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 	// The ID of the Alibaba Cloud account. The ID is used for hardware client authentication.
+	//
+	// example:
+	//
+	// 166353906220****
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	// > This is a parameter only for internal use.
+	//
+	// example:
+	//
+	// mode
 	WindowDisplayMode *string `json:"WindowDisplayMode,omitempty" xml:"WindowDisplayMode,omitempty"`
 }
 
@@ -2287,6 +3045,11 @@ func (s *GetLoginTokenResponseBody) SetNextStage(v string) *GetLoginTokenRespons
 	return s
 }
 
+func (s *GetLoginTokenResponseBody) SetPasswordStrategy(v *GetLoginTokenResponseBodyPasswordStrategy) *GetLoginTokenResponseBody {
+	s.PasswordStrategy = v
+	return s
+}
+
 func (s *GetLoginTokenResponseBody) SetPhone(v string) *GetLoginTokenResponseBody {
 	s.Phone = &v
 	return s
@@ -2299,6 +3062,11 @@ func (s *GetLoginTokenResponseBody) SetProps(v map[string]*string) *GetLoginToke
 
 func (s *GetLoginTokenResponseBody) SetQrCodePng(v string) *GetLoginTokenResponseBody {
 	s.QrCodePng = &v
+	return s
+}
+
+func (s *GetLoginTokenResponseBody) SetReason(v string) *GetLoginTokenResponseBody {
+	s.Reason = &v
 	return s
 }
 
@@ -2329,6 +3097,29 @@ func (s *GetLoginTokenResponseBody) SetTenantId(v int64) *GetLoginTokenResponseB
 
 func (s *GetLoginTokenResponseBody) SetWindowDisplayMode(v string) *GetLoginTokenResponseBody {
 	s.WindowDisplayMode = &v
+	return s
+}
+
+type GetLoginTokenResponseBodyPasswordStrategy struct {
+	TenantAlternativeChars []*string `json:"TenantAlternativeChars,omitempty" xml:"TenantAlternativeChars,omitempty" type:"Repeated"`
+	TenantPasswordLength   *string   `json:"TenantPasswordLength,omitempty" xml:"TenantPasswordLength,omitempty"`
+}
+
+func (s GetLoginTokenResponseBodyPasswordStrategy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLoginTokenResponseBodyPasswordStrategy) GoString() string {
+	return s.String()
+}
+
+func (s *GetLoginTokenResponseBodyPasswordStrategy) SetTenantAlternativeChars(v []*string) *GetLoginTokenResponseBodyPasswordStrategy {
+	s.TenantAlternativeChars = v
+	return s
+}
+
+func (s *GetLoginTokenResponseBodyPasswordStrategy) SetTenantPasswordLength(v string) *GetLoginTokenResponseBodyPasswordStrategy {
+	s.TenantPasswordLength = &v
 	return s
 }
 
@@ -2397,9 +3188,20 @@ func (s *GetLoginTokenResponse) SetBody(v *GetLoginTokenResponseBody) *GetLoginT
 }
 
 type IsKeepAliveRequest struct {
-	ClientId     *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f4a0dc8e-1702-4728-9a60-95b27a35****
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou+dir-885351****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s IsKeepAliveRequest) String() string {
@@ -2426,10 +3228,22 @@ func (s *IsKeepAliveRequest) SetRegionId(v string) *IsKeepAliveRequest {
 }
 
 type IsKeepAliveResponseBody struct {
-	IsKeepAlive  *bool   `json:"IsKeepAlive,omitempty" xml:"IsKeepAlive,omitempty"`
+	// example:
+	//
+	// True
+	IsKeepAlive *bool `json:"IsKeepAlive,omitempty" xml:"IsKeepAlive,omitempty"`
+	// example:
+	//
+	// cn-hangzhou+dir-885351****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TenantId     *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 141631846826****
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s IsKeepAliveResponseBody) String() string {
@@ -2589,22 +3403,64 @@ func (s *QueryEdsAgentReportConfigResponse) SetBody(v *QueryEdsAgentReportConfig
 
 type RebootDesktopsRequest struct {
 	// The client ID. The system generates a unique ID for each client.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f4a0dc8e-1702-4728-9a60-95b27a35****
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
 	// The operating system (OS) of the device that runs the Alibaba Cloud Workspace client (hereinafter referred to as WUYING client).
+	//
+	// example:
+	//
+	// Windows_NT 10.0.18363 x64
 	ClientOS *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence of a request?](~~25693~~)
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence of a request?](https://help.aliyun.com/document_detail/25693.html)
+	//
+	// example:
+	//
+	// 40401e62-5caf-4508-8de7-bf98af12****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The client version. If you use a WUYING client, you can view the client version in the **About** dialog box on the client logon page.
+	// The client version. If you use a WUYING client, you can view the client version in the **About*	- dialog box on the client logon page.
+	//
+	// example:
+	//
+	// 2.1.0-R-20210731.151756
 	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
 	// The IDs of the cloud computers. You can specify the IDs of 1 to 20 cloud computers.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecd-7w78ozhjcwa3u****
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
 	// The logon token.
+	//
+	// example:
+	//
+	// v18101ac6a9e69c66b04a163031680463660b4b216cd758f34b60b9ad6a7c7f7334b83dd8f75eef4209c68f9f1080b****
 	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
-	// The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the regions supported by WUYING Workspace.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by WUYING Workspace.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The session ID.
+	//
+	// example:
+	//
+	// cd45e873-650d-4d70-acb9-f996187a****
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 	// The logon token.
+	//
+	// example:
+	//
+	// 04b7b80a0b020715c5c1b4175fc4771698****9e2a759557a4624665fd53ae40
 	SessionToken *string `json:"SessionToken,omitempty" xml:"SessionToken,omitempty"`
 	Uuid         *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
@@ -2669,6 +3525,10 @@ func (s *RebootDesktopsRequest) SetUuid(v string) *RebootDesktopsRequest {
 
 type RebootDesktopsResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2715,13 +3575,42 @@ func (s *RebootDesktopsResponse) SetBody(v *RebootDesktopsResponseBody) *RebootD
 }
 
 type RefreshLoginTokenRequest struct {
-	ClientId     *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	DirectoryId  *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	EndUserId    *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	LoginToken   *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f4a0dc8e-1702-4728-9a60-95b27a35****
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou+dir-jedbpr4sl9l37****
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alice
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v18101ac6a9e69c66b04a163031680463660b4b216cd758f34b60b9ad6a7c7f7334b83dd8f75eef4209c68f9f1080b****
+	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// example:
+	//
+	// cn-shanghai+dir-238191****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SessionId    *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cd45e873-650d-4d70-acb9-f996187a****
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 }
 
 func (s RefreshLoginTokenRequest) String() string {
@@ -2768,8 +3657,14 @@ func (s *RefreshLoginTokenRequest) SetSessionId(v string) *RefreshLoginTokenRequ
 }
 
 type RefreshLoginTokenResponseBody struct {
+	// example:
+	//
+	// v1c27bab6c205b2fdfac916434306375722776d6aa89e30b7836d18c95ade9137f0f5ac4325260782184e96ee2b3f0****
 	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RefreshLoginTokenResponseBody) String() string {
@@ -2901,12 +3796,40 @@ func (s *ReportEdsAgentInfoResponse) SetBody(v *ReportEdsAgentInfoResponseBody) 
 }
 
 type ReportSessionStatusRequest struct {
-	EndUserId         *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SessionChangeTime *int64  `json:"SessionChangeTime,omitempty" xml:"SessionChangeTime,omitempty"`
-	SessionId         *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	SessionStatus     *string `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
+	// example:
+	//
+	// liming
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// i-bp167fcodoa90ixn****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1642909143781
+	SessionChangeTime *int64 `json:"SessionChangeTime,omitempty" xml:"SessionChangeTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SessionLogOn
+	SessionStatus *string `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
 }
 
 func (s ReportSessionStatusRequest) String() string {
@@ -2948,6 +3871,9 @@ func (s *ReportSessionStatusRequest) SetSessionStatus(v string) *ReportSessionSt
 }
 
 type ReportSessionStatusResponseBody struct {
+	// example:
+	//
+	// 0EE5DE20-25F4-5870-9D56-C259A45B****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2994,13 +3920,42 @@ func (s *ReportSessionStatusResponse) SetBody(v *ReportSessionStatusResponseBody
 }
 
 type ResetPasswordRequest struct {
-	ClientId     *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Email        *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	EndUserId    *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 95e41934-383e-4c9f-824f-3b93b19b****
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// example:
+	//
+	// 2f00ab32-a473-4c90-9aae-dd8842ae****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// a***@example.edu
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// liming
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou+dir-899235****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Phone        *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 1827912****
+	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
 }
 
 func (s ResetPasswordRequest) String() string {
@@ -3047,6 +4002,9 @@ func (s *ResetPasswordRequest) SetPhone(v string) *ResetPasswordRequest {
 }
 
 type ResetPasswordResponseBody struct {
+	// example:
+	//
+	// A00477A5-167F-56D2-A315-EA77E4BD****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3093,10 +4051,33 @@ func (s *ResetPasswordResponse) SetBody(v *ResetPasswordResponseBody) *ResetPass
 }
 
 type ResetSnapshotRequest struct {
-	ClientId   *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// b9d8ddfd-65d4-4857-9e97-56477d1f****
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v1fdef51b727aa91d6c881658978508114d3f5680fa99a66b2a631d17d5bb4860cccf1173be24d77d5ef1423c83aea****
 	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SessionId  *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 05182b8c-bb0d-49d3-963c-ee63a507****
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// s-2zeipxmnhej803x7****
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 }
 
@@ -3134,6 +4115,9 @@ func (s *ResetSnapshotRequest) SetSnapshotId(v string) *ResetSnapshotRequest {
 }
 
 type ResetSnapshotResponseBody struct {
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3180,14 +4164,40 @@ func (s *ResetSnapshotResponse) SetBody(v *ResetSnapshotResponseBody) *ResetSnap
 }
 
 type SendTokenCodeRequest struct {
-	ClientId      *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	ClientOS      *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f4a0dc8e-1702-4728-9a60-95b27a35****
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// example:
+	//
+	// Windows_NT 10.0.18363 x64
+	ClientOS *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
+	// example:
+	//
+	// 2.1.0-R-20210731.151756
 	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
-	EndUserId     *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	LoginToken    *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
-	OfficeSiteId  *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	SessionId     *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	TokenCode     *string `json:"TokenCode,omitempty" xml:"TokenCode,omitempty"`
+	// example:
+	//
+	// alice
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// example:
+	//
+	// v28101ac6a9e69c66b04a163031680463660b4b216cd758f34b60b9ad6a7c7f7334b83dd8f75eef4209c68f9f1080b****
+	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// example:
+	//
+	// cn-hangzhou+dir-2925105532
+	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// example:
+	//
+	// cd45e873-650d-4d70-acb9-f996187a****
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 63****
+	TokenCode *string `json:"TokenCode,omitempty" xml:"TokenCode,omitempty"`
 }
 
 func (s SendTokenCodeRequest) String() string {
@@ -3239,6 +4249,9 @@ func (s *SendTokenCodeRequest) SetTokenCode(v string) *SendTokenCodeRequest {
 }
 
 type SendTokenCodeResponseBody struct {
+	// example:
+	//
+	// 134BD0B2-B848-5743-9CE2-C1FD3D5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3285,16 +4298,56 @@ func (s *SendTokenCodeResponse) SetBody(v *SendTokenCodeResponseBody) *SendToken
 }
 
 type SetFingerPrintTemplateRequest struct {
-	ClientId                     *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	ClientToken                  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description                  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 347431a9-90f6-448e-82c4-42bc84a9****
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-42665544****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// testDescription
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// AAAAAAAAAAAAAA
 	EncryptedFingerPrintTemplate *string `json:"EncryptedFingerPrintTemplate,omitempty" xml:"EncryptedFingerPrintTemplate,omitempty"`
-	EncryptedKey                 *string `json:"EncryptedKey,omitempty" xml:"EncryptedKey,omitempty"`
-	FingerPrintTemplate          *string `json:"FingerPrintTemplate,omitempty" xml:"FingerPrintTemplate,omitempty"`
-	LoginToken                   *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
-	Password                     *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	RegionId                     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SessionId                    *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// drjfspchj
+	EncryptedKey *string `json:"EncryptedKey,omitempty" xml:"EncryptedKey,omitempty"`
+	// example:
+	//
+	// goG3gG8AAABhujtscn
+	FingerPrintTemplate *string `json:"FingerPrintTemplate,omitempty" xml:"FingerPrintTemplate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v11c73e7af0cb43ff39301651142485099ffb447085d76c4147519dbaa21c3bd90d53045e327c1f525ee6331c52556****
+	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// As53328794
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8b42538a-246e-45a1-95ea-e5c65b09****
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 }
 
 func (s SetFingerPrintTemplateRequest) String() string {
@@ -3356,9 +4409,18 @@ func (s *SetFingerPrintTemplateRequest) SetSessionId(v string) *SetFingerPrintTe
 }
 
 type SetFingerPrintTemplateResponseBody struct {
+	// example:
+	//
+	// 0711abb9-4cf8-41b2-9d0e-b51209468631;da4VFPNxwY3CZegFjOrCNw==;iHp2l9/qGcfD4tWx7jZIZQ==
 	EncryptedPassword *string `json:"EncryptedPassword,omitempty" xml:"EncryptedPassword,omitempty"`
-	Index             *int32  `json:"Index,omitempty" xml:"Index,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// example:
+	//
+	// CDE666EA-4FCD-5024-895C-8698E3D3****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SetFingerPrintTemplateResponseBody) String() string {
@@ -3414,13 +4476,46 @@ func (s *SetFingerPrintTemplateResponse) SetBody(v *SetFingerPrintTemplateRespon
 }
 
 type SetFingerPrintTemplateDescriptionRequest struct {
-	ClientId    *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0764064c-1609-4d3c-8cb7-ab8d3feg****
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// example:
+	//
+	// 40401e62-5caf-4508-8de7-bf98af12****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Finger 1
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Index       *int32  `json:"Index,omitempty" xml:"Index,omitempty"`
-	LoginToken  *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SessionId   *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v14e5a2404c495249f7541646535779667ea0b5d87754b5d2d2a3099bda774f3832e24756ef3e66eb574b1f3e99078****
+	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// d28520d4-da0b-4a97-981d-683db865****
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 }
 
 func (s SetFingerPrintTemplateDescriptionRequest) String() string {
@@ -3467,6 +4562,9 @@ func (s *SetFingerPrintTemplateDescriptionRequest) SetSessionId(v string) *SetFi
 }
 
 type SetFingerPrintTemplateDescriptionResponseBody struct {
+	// example:
+	//
+	// BBD7DFD1-A5DE-51D9-8FD6-3BF54EF4****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3514,20 +4612,60 @@ func (s *SetFingerPrintTemplateDescriptionResponse) SetBody(v *SetFingerPrintTem
 
 type StartDesktopsRequest struct {
 	// The ID of the Alibaba Cloud Workspace client (hereinafter referred to as WUYING client). The system generates a unique ID for each client.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f4a0dc8e-1702-4728-9a60-95b27a35****
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
 	// The operating system (OS) of the device that run the client.
+	//
+	// example:
+	//
+	// Windows_NT 10.0.18363 x64
 	ClientOS *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	//
+	// example:
+	//
+	// 21e7be12-aa4f-4389-b3e1-82f4a1b5****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The client version. If you use a WUYING client, you can click **About** on the client logon page to view the version of the client.
+	// The client version. If you use a WUYING client, you can click **About*	- on the client logon page to view the version of the client.
+	//
+	// example:
+	//
+	// 2.1.0-R-20210731.151756
 	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
 	// The IDs of the cloud computers. You can specify the IDs of 1 to 20 cloud computers.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecd-cg27ufmapab08****
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
 	// The logon token.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v18101ac6a9e69c66b04a163031680463660b4b216cd758f34b60b9ad6a7c7f7334b83dd8f75eef4209c68f9f1080b****
 	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
-	// The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the regions supported by WUYING Workspace.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by WUYING Workspace.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The session ID.
+	//
+	// example:
+	//
+	// cd45e873-650d-4d70-acb9-f996187a****
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 	Uuid      *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
@@ -3587,6 +4725,10 @@ func (s *StartDesktopsRequest) SetUuid(v string) *StartDesktopsRequest {
 
 type StartDesktopsResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3633,14 +4775,19 @@ func (s *StartDesktopsResponse) SetBody(v *StartDesktopsResponseBody) *StartDesk
 }
 
 type StartRecordContentRequest struct {
+	// This parameter is required.
 	ClientId      *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
 	ClientOS      *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
 	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
-	DesktopId     *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	FilePath      *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	LoginToken    *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SessionId     *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// This parameter is required.
+	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	FilePath  *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// This parameter is required.
+	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// This parameter is required.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 }
 
 func (s StartRecordContentRequest) String() string {
@@ -3739,22 +4886,64 @@ func (s *StartRecordContentResponse) SetBody(v *StartRecordContentResponseBody) 
 
 type StopDesktopsRequest struct {
 	// The client ID. The system generates a unique ID for each client.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f4a0dc8e-1702-4728-9a60-95b27a35****
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
 	// The operating system (OS) of the device that runs the Alibaba Cloud Workspace client (hereinafter referred to as WUYING client).
+	//
+	// example:
+	//
+	// Windows_NT 10.0.18363 x64
 	ClientOS *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence of a request?](~~25693~~)
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence of a request?](https://help.aliyun.com/document_detail/25693.html)
+	//
+	// example:
+	//
+	// 6ce412a8-399f-49f9-9518-66ee028a****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The client version. If you use a WUYING client, you can view the client version in the **About** dialog box on the client logon page.
+	// The client version. If you use a WUYING client, you can view the client version in the **About*	- dialog box on the client logon page.
+	//
+	// example:
+	//
+	// 2.1.0-R-20210731.151756
 	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
 	// The IDs of the cloud computers. You can specify the IDs of 1 to 20 cloud computers.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecd-7w78ozhjcwa3u****
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
 	// The logon token.
+	//
+	// example:
+	//
+	// v18101ac6a9e69c66b04a163031680463660b4b216cd758f34b60b9ad6a7c7f7334b83dd8f75eef4209c68f9f1080b****
 	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
-	// The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the regions supported by WUYING Workspace.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by WUYING Workspace.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The session ID.
+	//
+	// example:
+	//
+	// cd45e873-650d-4d70-acb9-f996187a****
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 	// The logon token.
+	//
+	// example:
+	//
+	// 04b7b80a0b020715c5c1b4175fc4771698****9e2a759557a4624665fd53ae40
 	SessionToken *string `json:"SessionToken,omitempty" xml:"SessionToken,omitempty"`
 }
 
@@ -3813,6 +5002,10 @@ func (s *StopDesktopsRequest) SetSessionToken(v string) *StopDesktopsRequest {
 
 type StopDesktopsResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3859,13 +5052,18 @@ func (s *StopDesktopsResponse) SetBody(v *StopDesktopsResponseBody) *StopDesktop
 }
 
 type StopRecordContentRequest struct {
+	// This parameter is required.
 	ClientId      *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
 	ClientOS      *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
 	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
-	DesktopId     *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	LoginToken    *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SessionId     *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// This parameter is required.
+	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	// This parameter is required.
+	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// This parameter is required.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 }
 
 func (s StopRecordContentRequest) String() string {
@@ -3958,12 +5156,43 @@ func (s *StopRecordContentResponse) SetBody(v *StopRecordContentResponseBody) *S
 }
 
 type UnbindUserDesktopRequest struct {
-	ClientId      *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	ClientType    *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
-	Force         *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
-	LoginToken    *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SessionId     *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 58f96f67-7944-4f97-9342-****
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// example:
+	//
+	// windows
+	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	// example:
+	//
+	// true
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v12307f5e0****
+	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3b053331-dc98-43d8-b247-****
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ud-sdfs****
 	UserDesktopId *string `json:"UserDesktopId,omitempty" xml:"UserDesktopId,omitempty"`
 }
 
@@ -4011,6 +5240,9 @@ func (s *UnbindUserDesktopRequest) SetUserDesktopId(v string) *UnbindUserDesktop
 }
 
 type UnbindUserDesktopResponseBody struct {
+	// example:
+	//
+	// D5B7CF35-E078-5EBF-A010-****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4057,14 +5289,48 @@ func (s *UnbindUserDesktopResponse) SetBody(v *UnbindUserDesktopResponseBody) *U
 }
 
 type VerifyCredentialRequest struct {
-	ClientId       *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	Credential     *string `json:"Credential,omitempty" xml:"Credential,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// d0b95762-0541-4b53-a0e4-7ed09f39****
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456789cyG
+	Credential *string `json:"Credential,omitempty" xml:"Credential,omitempty"`
+	// example:
+	//
+	// Password
 	CredentialType *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
-	EncryptedKey   *string `json:"EncryptedKey,omitempty" xml:"EncryptedKey,omitempty"`
-	LoginToken     *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
-	OfficeSiteId   *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SessionId      *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// drjfs****
+	EncryptedKey *string `json:"EncryptedKey,omitempty" xml:"EncryptedKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v1f5772a1c60dbea9fd8e1648567079018086448d234b5bc8e30bec0ba6e80c41c767c4dd0db51e9e5c4e0f111431a****
+	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shanghai+dir-227468****
+	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// eb17af2e-1dd6-4cc4-a3ee-3a14d0d7****
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 }
 
 func (s VerifyCredentialRequest) String() string {
@@ -4116,6 +5382,9 @@ func (s *VerifyCredentialRequest) SetSessionId(v string) *VerifyCredentialReques
 }
 
 type VerifyCredentialResponseBody struct {
+	// example:
+	//
+	// D5F0BDFB-A229-5F1D-B790-33709D43****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4209,6 +5478,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 允许桌面FOTA升级
+//
+// @param request - ApproveFotaUpdateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ApproveFotaUpdateResponse
 func (client *Client) ApproveFotaUpdateWithOptions(request *ApproveFotaUpdateRequest, runtime *util.RuntimeOptions) (_result *ApproveFotaUpdateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4266,6 +5544,13 @@ func (client *Client) ApproveFotaUpdateWithOptions(request *ApproveFotaUpdateReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 允许桌面FOTA升级
+//
+// @param request - ApproveFotaUpdateRequest
+//
+// @return ApproveFotaUpdateResponse
 func (client *Client) ApproveFotaUpdate(request *ApproveFotaUpdateRequest) (_result *ApproveFotaUpdateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ApproveFotaUpdateResponse{}
@@ -4277,6 +5562,11 @@ func (client *Client) ApproveFotaUpdate(request *ApproveFotaUpdateRequest) (_res
 	return _result, _err
 }
 
+// @param request - ChangePasswordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangePasswordResponse
 func (client *Client) ChangePasswordWithOptions(request *ChangePasswordRequest, runtime *util.RuntimeOptions) (_result *ChangePasswordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4338,6 +5628,9 @@ func (client *Client) ChangePasswordWithOptions(request *ChangePasswordRequest, 
 	return _result, _err
 }
 
+// @param request - ChangePasswordRequest
+//
+// @return ChangePasswordResponse
 func (client *Client) ChangePassword(request *ChangePasswordRequest) (_result *ChangePasswordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangePasswordResponse{}
@@ -4349,6 +5642,11 @@ func (client *Client) ChangePassword(request *ChangePasswordRequest) (_result *C
 	return _result, _err
 }
 
+// @param request - DeleteFingerPrintTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFingerPrintTemplateResponse
 func (client *Client) DeleteFingerPrintTemplateWithOptions(request *DeleteFingerPrintTemplateRequest, runtime *util.RuntimeOptions) (_result *DeleteFingerPrintTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4402,6 +5700,9 @@ func (client *Client) DeleteFingerPrintTemplateWithOptions(request *DeleteFinger
 	return _result, _err
 }
 
+// @param request - DeleteFingerPrintTemplateRequest
+//
+// @return DeleteFingerPrintTemplateResponse
 func (client *Client) DeleteFingerPrintTemplate(request *DeleteFingerPrintTemplateRequest) (_result *DeleteFingerPrintTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteFingerPrintTemplateResponse{}
@@ -4413,6 +5714,11 @@ func (client *Client) DeleteFingerPrintTemplate(request *DeleteFingerPrintTempla
 	return _result, _err
 }
 
+// @param request - DescribeDirectoriesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDirectoriesResponse
 func (client *Client) DescribeDirectoriesWithOptions(request *DescribeDirectoriesRequest, runtime *util.RuntimeOptions) (_result *DescribeDirectoriesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4454,6 +5760,9 @@ func (client *Client) DescribeDirectoriesWithOptions(request *DescribeDirectorie
 	return _result, _err
 }
 
+// @param request - DescribeDirectoriesRequest
+//
+// @return DescribeDirectoriesResponse
 func (client *Client) DescribeDirectories(request *DescribeDirectoriesRequest) (_result *DescribeDirectoriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDirectoriesResponse{}
@@ -4465,6 +5774,11 @@ func (client *Client) DescribeDirectories(request *DescribeDirectoriesRequest) (
 	return _result, _err
 }
 
+// @param request - DescribeFingerPrintTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFingerPrintTemplatesResponse
 func (client *Client) DescribeFingerPrintTemplatesWithOptions(request *DescribeFingerPrintTemplatesRequest, runtime *util.RuntimeOptions) (_result *DescribeFingerPrintTemplatesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4510,6 +5824,9 @@ func (client *Client) DescribeFingerPrintTemplatesWithOptions(request *DescribeF
 	return _result, _err
 }
 
+// @param request - DescribeFingerPrintTemplatesRequest
+//
+// @return DescribeFingerPrintTemplatesResponse
 func (client *Client) DescribeFingerPrintTemplates(request *DescribeFingerPrintTemplatesRequest) (_result *DescribeFingerPrintTemplatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFingerPrintTemplatesResponse{}
@@ -4521,6 +5838,11 @@ func (client *Client) DescribeFingerPrintTemplates(request *DescribeFingerPrintT
 	return _result, _err
 }
 
+// @param request - DescribeGlobalDesktopsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeGlobalDesktopsResponse
 func (client *Client) DescribeGlobalDesktopsWithOptions(request *DescribeGlobalDesktopsRequest, runtime *util.RuntimeOptions) (_result *DescribeGlobalDesktopsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4626,6 +5948,9 @@ func (client *Client) DescribeGlobalDesktopsWithOptions(request *DescribeGlobalD
 	return _result, _err
 }
 
+// @param request - DescribeGlobalDesktopsRequest
+//
+// @return DescribeGlobalDesktopsResponse
 func (client *Client) DescribeGlobalDesktops(request *DescribeGlobalDesktopsRequest) (_result *DescribeGlobalDesktopsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeGlobalDesktopsResponse{}
@@ -4637,6 +5962,11 @@ func (client *Client) DescribeGlobalDesktops(request *DescribeGlobalDesktopsRequ
 	return _result, _err
 }
 
+// @param request - DescribeOfficeSitesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOfficeSitesResponse
 func (client *Client) DescribeOfficeSitesWithOptions(request *DescribeOfficeSitesRequest, runtime *util.RuntimeOptions) (_result *DescribeOfficeSitesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4678,6 +6008,9 @@ func (client *Client) DescribeOfficeSitesWithOptions(request *DescribeOfficeSite
 	return _result, _err
 }
 
+// @param request - DescribeOfficeSitesRequest
+//
+// @return DescribeOfficeSitesResponse
 func (client *Client) DescribeOfficeSites(request *DescribeOfficeSitesRequest) (_result *DescribeOfficeSitesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeOfficeSitesResponse{}
@@ -4689,6 +6022,11 @@ func (client *Client) DescribeOfficeSites(request *DescribeOfficeSitesRequest) (
 	return _result, _err
 }
 
+// @param request - DescribeRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4726,6 +6064,9 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 	return _result, _err
 }
 
+// @param request - DescribeRegionsRequest
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRegionsResponse{}
@@ -4737,6 +6078,15 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 列举快照
+//
+// @param request - DescribeSnapshotsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSnapshotsResponse
 func (client *Client) DescribeSnapshotsWithOptions(request *DescribeSnapshotsRequest, runtime *util.RuntimeOptions) (_result *DescribeSnapshotsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4798,6 +6148,13 @@ func (client *Client) DescribeSnapshotsWithOptions(request *DescribeSnapshotsReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 列举快照
+//
+// @param request - DescribeSnapshotsRequest
+//
+// @return DescribeSnapshotsResponse
 func (client *Client) DescribeSnapshots(request *DescribeSnapshotsRequest) (_result *DescribeSnapshotsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSnapshotsResponse{}
@@ -4809,6 +6166,11 @@ func (client *Client) DescribeSnapshots(request *DescribeSnapshotsRequest) (_res
 	return _result, _err
 }
 
+// @param request - EncryptPasswordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EncryptPasswordResponse
 func (client *Client) EncryptPasswordWithOptions(request *EncryptPasswordRequest, runtime *util.RuntimeOptions) (_result *EncryptPasswordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4866,6 +6228,9 @@ func (client *Client) EncryptPasswordWithOptions(request *EncryptPasswordRequest
 	return _result, _err
 }
 
+// @param request - EncryptPasswordRequest
+//
+// @return EncryptPasswordResponse
 func (client *Client) EncryptPassword(request *EncryptPasswordRequest) (_result *EncryptPasswordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EncryptPasswordResponse{}
@@ -4877,6 +6242,15 @@ func (client *Client) EncryptPassword(request *EncryptPasswordRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取无影云盘的免密token
+//
+// @param request - GetCloudDriveServiceMountTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCloudDriveServiceMountTokenResponse
 func (client *Client) GetCloudDriveServiceMountTokenWithOptions(request *GetCloudDriveServiceMountTokenRequest, runtime *util.RuntimeOptions) (_result *GetCloudDriveServiceMountTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4926,6 +6300,13 @@ func (client *Client) GetCloudDriveServiceMountTokenWithOptions(request *GetClou
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取无影云盘的免密token
+//
+// @param request - GetCloudDriveServiceMountTokenRequest
+//
+// @return GetCloudDriveServiceMountTokenResponse
 func (client *Client) GetCloudDriveServiceMountToken(request *GetCloudDriveServiceMountTokenRequest) (_result *GetCloudDriveServiceMountTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetCloudDriveServiceMountTokenResponse{}
@@ -4937,6 +6318,11 @@ func (client *Client) GetCloudDriveServiceMountToken(request *GetCloudDriveServi
 	return _result, _err
 }
 
+// @param request - GetConnectionTicketRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetConnectionTicketResponse
 func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicketRequest, runtime *util.RuntimeOptions) (_result *GetConnectionTicketResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5022,6 +6408,9 @@ func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicke
 	return _result, _err
 }
 
+// @param request - GetConnectionTicketRequest
+//
+// @return GetConnectionTicketResponse
 func (client *Client) GetConnectionTicket(request *GetConnectionTicketRequest) (_result *GetConnectionTicketResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetConnectionTicketResponse{}
@@ -5033,6 +6422,15 @@ func (client *Client) GetConnectionTicket(request *GetConnectionTicketRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains logon credentials.
+//
+// @param request - GetLoginTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLoginTokenResponse
 func (client *Client) GetLoginTokenWithOptions(request *GetLoginTokenRequest, runtime *util.RuntimeOptions) (_result *GetLoginTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5134,6 +6532,13 @@ func (client *Client) GetLoginTokenWithOptions(request *GetLoginTokenRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains logon credentials.
+//
+// @param request - GetLoginTokenRequest
+//
+// @return GetLoginTokenResponse
 func (client *Client) GetLoginToken(request *GetLoginTokenRequest) (_result *GetLoginTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetLoginTokenResponse{}
@@ -5145,6 +6550,15 @@ func (client *Client) GetLoginToken(request *GetLoginTokenRequest) (_result *Get
 	return _result, _err
 }
 
+// Summary:
+//
+// 是否保持登录判断接口
+//
+// @param request - IsKeepAliveRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return IsKeepAliveResponse
 func (client *Client) IsKeepAliveWithOptions(request *IsKeepAliveRequest, runtime *util.RuntimeOptions) (_result *IsKeepAliveResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5186,6 +6600,13 @@ func (client *Client) IsKeepAliveWithOptions(request *IsKeepAliveRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// 是否保持登录判断接口
+//
+// @param request - IsKeepAliveRequest
+//
+// @return IsKeepAliveResponse
 func (client *Client) IsKeepAlive(request *IsKeepAliveRequest) (_result *IsKeepAliveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &IsKeepAliveResponse{}
@@ -5197,6 +6618,15 @@ func (client *Client) IsKeepAlive(request *IsKeepAliveRequest) (_result *IsKeepA
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询Agent需要上报的配置信息
+//
+// @param request - QueryEdsAgentReportConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryEdsAgentReportConfigResponse
 func (client *Client) QueryEdsAgentReportConfigWithOptions(request *QueryEdsAgentReportConfigRequest, runtime *util.RuntimeOptions) (_result *QueryEdsAgentReportConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5238,6 +6668,13 @@ func (client *Client) QueryEdsAgentReportConfigWithOptions(request *QueryEdsAgen
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询Agent需要上报的配置信息
+//
+// @param request - QueryEdsAgentReportConfigRequest
+//
+// @return QueryEdsAgentReportConfigResponse
 func (client *Client) QueryEdsAgentReportConfig(request *QueryEdsAgentReportConfigRequest) (_result *QueryEdsAgentReportConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryEdsAgentReportConfigResponse{}
@@ -5249,6 +6686,15 @@ func (client *Client) QueryEdsAgentReportConfig(request *QueryEdsAgentReportConf
 	return _result, _err
 }
 
+// Summary:
+//
+// Restart cloud computers.
+//
+// @param request - RebootDesktopsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RebootDesktopsResponse
 func (client *Client) RebootDesktopsWithOptions(request *RebootDesktopsRequest, runtime *util.RuntimeOptions) (_result *RebootDesktopsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5318,6 +6764,13 @@ func (client *Client) RebootDesktopsWithOptions(request *RebootDesktopsRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Restart cloud computers.
+//
+// @param request - RebootDesktopsRequest
+//
+// @return RebootDesktopsResponse
 func (client *Client) RebootDesktops(request *RebootDesktopsRequest) (_result *RebootDesktopsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RebootDesktopsResponse{}
@@ -5329,6 +6782,11 @@ func (client *Client) RebootDesktops(request *RebootDesktopsRequest) (_result *R
 	return _result, _err
 }
 
+// @param request - RefreshLoginTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RefreshLoginTokenResponse
 func (client *Client) RefreshLoginTokenWithOptions(request *RefreshLoginTokenRequest, runtime *util.RuntimeOptions) (_result *RefreshLoginTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5386,6 +6844,9 @@ func (client *Client) RefreshLoginTokenWithOptions(request *RefreshLoginTokenReq
 	return _result, _err
 }
 
+// @param request - RefreshLoginTokenRequest
+//
+// @return RefreshLoginTokenResponse
 func (client *Client) RefreshLoginToken(request *RefreshLoginTokenRequest) (_result *RefreshLoginTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RefreshLoginTokenResponse{}
@@ -5397,6 +6858,15 @@ func (client *Client) RefreshLoginToken(request *RefreshLoginTokenRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 上报edsAgent的信息
+//
+// @param request - ReportEdsAgentInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReportEdsAgentInfoResponse
 func (client *Client) ReportEdsAgentInfoWithOptions(request *ReportEdsAgentInfoRequest, runtime *util.RuntimeOptions) (_result *ReportEdsAgentInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5442,6 +6912,13 @@ func (client *Client) ReportEdsAgentInfoWithOptions(request *ReportEdsAgentInfoR
 	return _result, _err
 }
 
+// Summary:
+//
+// 上报edsAgent的信息
+//
+// @param request - ReportEdsAgentInfoRequest
+//
+// @return ReportEdsAgentInfoResponse
 func (client *Client) ReportEdsAgentInfo(request *ReportEdsAgentInfoRequest) (_result *ReportEdsAgentInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReportEdsAgentInfoResponse{}
@@ -5453,6 +6930,11 @@ func (client *Client) ReportEdsAgentInfo(request *ReportEdsAgentInfoRequest) (_r
 	return _result, _err
 }
 
+// @param request - ReportSessionStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReportSessionStatusResponse
 func (client *Client) ReportSessionStatusWithOptions(request *ReportSessionStatusRequest, runtime *util.RuntimeOptions) (_result *ReportSessionStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5506,6 +6988,9 @@ func (client *Client) ReportSessionStatusWithOptions(request *ReportSessionStatu
 	return _result, _err
 }
 
+// @param request - ReportSessionStatusRequest
+//
+// @return ReportSessionStatusResponse
 func (client *Client) ReportSessionStatus(request *ReportSessionStatusRequest) (_result *ReportSessionStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReportSessionStatusResponse{}
@@ -5517,6 +7002,11 @@ func (client *Client) ReportSessionStatus(request *ReportSessionStatusRequest) (
 	return _result, _err
 }
 
+// @param request - ResetPasswordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetPasswordResponse
 func (client *Client) ResetPasswordWithOptions(request *ResetPasswordRequest, runtime *util.RuntimeOptions) (_result *ResetPasswordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5574,6 +7064,9 @@ func (client *Client) ResetPasswordWithOptions(request *ResetPasswordRequest, ru
 	return _result, _err
 }
 
+// @param request - ResetPasswordRequest
+//
+// @return ResetPasswordResponse
 func (client *Client) ResetPassword(request *ResetPasswordRequest) (_result *ResetPasswordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResetPasswordResponse{}
@@ -5585,6 +7078,15 @@ func (client *Client) ResetPassword(request *ResetPasswordRequest) (_result *Res
 	return _result, _err
 }
 
+// Summary:
+//
+// 还原快照
+//
+// @param request - ResetSnapshotRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetSnapshotResponse
 func (client *Client) ResetSnapshotWithOptions(request *ResetSnapshotRequest, runtime *util.RuntimeOptions) (_result *ResetSnapshotResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5634,6 +7136,13 @@ func (client *Client) ResetSnapshotWithOptions(request *ResetSnapshotRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 还原快照
+//
+// @param request - ResetSnapshotRequest
+//
+// @return ResetSnapshotResponse
 func (client *Client) ResetSnapshot(request *ResetSnapshotRequest) (_result *ResetSnapshotResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResetSnapshotResponse{}
@@ -5645,6 +7154,11 @@ func (client *Client) ResetSnapshot(request *ResetSnapshotRequest) (_result *Res
 	return _result, _err
 }
 
+// @param request - SendTokenCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendTokenCodeResponse
 func (client *Client) SendTokenCodeWithOptions(request *SendTokenCodeRequest, runtime *util.RuntimeOptions) (_result *SendTokenCodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5706,6 +7220,9 @@ func (client *Client) SendTokenCodeWithOptions(request *SendTokenCodeRequest, ru
 	return _result, _err
 }
 
+// @param request - SendTokenCodeRequest
+//
+// @return SendTokenCodeResponse
 func (client *Client) SendTokenCode(request *SendTokenCodeRequest) (_result *SendTokenCodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SendTokenCodeResponse{}
@@ -5717,6 +7234,11 @@ func (client *Client) SendTokenCode(request *SendTokenCodeRequest) (_result *Sen
 	return _result, _err
 }
 
+// @param request - SetFingerPrintTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetFingerPrintTemplateResponse
 func (client *Client) SetFingerPrintTemplateWithOptions(request *SetFingerPrintTemplateRequest, runtime *util.RuntimeOptions) (_result *SetFingerPrintTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5786,6 +7308,9 @@ func (client *Client) SetFingerPrintTemplateWithOptions(request *SetFingerPrintT
 	return _result, _err
 }
 
+// @param request - SetFingerPrintTemplateRequest
+//
+// @return SetFingerPrintTemplateResponse
 func (client *Client) SetFingerPrintTemplate(request *SetFingerPrintTemplateRequest) (_result *SetFingerPrintTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetFingerPrintTemplateResponse{}
@@ -5797,6 +7322,11 @@ func (client *Client) SetFingerPrintTemplate(request *SetFingerPrintTemplateRequ
 	return _result, _err
 }
 
+// @param request - SetFingerPrintTemplateDescriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetFingerPrintTemplateDescriptionResponse
 func (client *Client) SetFingerPrintTemplateDescriptionWithOptions(request *SetFingerPrintTemplateDescriptionRequest, runtime *util.RuntimeOptions) (_result *SetFingerPrintTemplateDescriptionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5854,6 +7384,9 @@ func (client *Client) SetFingerPrintTemplateDescriptionWithOptions(request *SetF
 	return _result, _err
 }
 
+// @param request - SetFingerPrintTemplateDescriptionRequest
+//
+// @return SetFingerPrintTemplateDescriptionResponse
 func (client *Client) SetFingerPrintTemplateDescription(request *SetFingerPrintTemplateDescriptionRequest) (_result *SetFingerPrintTemplateDescriptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetFingerPrintTemplateDescriptionResponse{}
@@ -5865,13 +7398,19 @@ func (client *Client) SetFingerPrintTemplateDescription(request *SetFingerPrintT
 	return _result, _err
 }
 
-/**
- * The cloud computers that you want to start must be in the Stopped state. After you call this operation, the cloud computers enter the Running state.
- *
- * @param request StartDesktopsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return StartDesktopsResponse
- */
+// Summary:
+//
+// Start cloud computers.
+//
+// Description:
+//
+// The cloud computers that you want to start must be in the Stopped state. After you call this operation, the cloud computers enter the Running state.
+//
+// @param request - StartDesktopsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartDesktopsResponse
 func (client *Client) StartDesktopsWithOptions(request *StartDesktopsRequest, runtime *util.RuntimeOptions) (_result *StartDesktopsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5937,12 +7476,17 @@ func (client *Client) StartDesktopsWithOptions(request *StartDesktopsRequest, ru
 	return _result, _err
 }
 
-/**
- * The cloud computers that you want to start must be in the Stopped state. After you call this operation, the cloud computers enter the Running state.
- *
- * @param request StartDesktopsRequest
- * @return StartDesktopsResponse
- */
+// Summary:
+//
+// Start cloud computers.
+//
+// Description:
+//
+// The cloud computers that you want to start must be in the Stopped state. After you call this operation, the cloud computers enter the Running state.
+//
+// @param request - StartDesktopsRequest
+//
+// @return StartDesktopsResponse
 func (client *Client) StartDesktops(request *StartDesktopsRequest) (_result *StartDesktopsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartDesktopsResponse{}
@@ -5954,6 +7498,11 @@ func (client *Client) StartDesktops(request *StartDesktopsRequest) (_result *Sta
 	return _result, _err
 }
 
+// @param request - StartRecordContentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartRecordContentResponse
 func (client *Client) StartRecordContentWithOptions(request *StartRecordContentRequest, runtime *util.RuntimeOptions) (_result *StartRecordContentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6015,6 +7564,9 @@ func (client *Client) StartRecordContentWithOptions(request *StartRecordContentR
 	return _result, _err
 }
 
+// @param request - StartRecordContentRequest
+//
+// @return StartRecordContentResponse
 func (client *Client) StartRecordContent(request *StartRecordContentRequest) (_result *StartRecordContentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartRecordContentResponse{}
@@ -6026,13 +7578,19 @@ func (client *Client) StartRecordContent(request *StartRecordContentRequest) (_r
 	return _result, _err
 }
 
-/**
- * The cloud computers that you want to stop must be in the Running state. After you call this operation, the cloud computers enter the Stopped state.
- *
- * @param request StopDesktopsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return StopDesktopsResponse
- */
+// Summary:
+//
+// Stops cloud computers.
+//
+// Description:
+//
+// The cloud computers that you want to stop must be in the Running state. After you call this operation, the cloud computers enter the Stopped state.
+//
+// @param request - StopDesktopsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopDesktopsResponse
 func (client *Client) StopDesktopsWithOptions(request *StopDesktopsRequest, runtime *util.RuntimeOptions) (_result *StopDesktopsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6098,12 +7656,17 @@ func (client *Client) StopDesktopsWithOptions(request *StopDesktopsRequest, runt
 	return _result, _err
 }
 
-/**
- * The cloud computers that you want to stop must be in the Running state. After you call this operation, the cloud computers enter the Stopped state.
- *
- * @param request StopDesktopsRequest
- * @return StopDesktopsResponse
- */
+// Summary:
+//
+// Stops cloud computers.
+//
+// Description:
+//
+// The cloud computers that you want to stop must be in the Running state. After you call this operation, the cloud computers enter the Stopped state.
+//
+// @param request - StopDesktopsRequest
+//
+// @return StopDesktopsResponse
 func (client *Client) StopDesktops(request *StopDesktopsRequest) (_result *StopDesktopsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StopDesktopsResponse{}
@@ -6115,6 +7678,11 @@ func (client *Client) StopDesktops(request *StopDesktopsRequest) (_result *StopD
 	return _result, _err
 }
 
+// @param request - StopRecordContentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopRecordContentResponse
 func (client *Client) StopRecordContentWithOptions(request *StopRecordContentRequest, runtime *util.RuntimeOptions) (_result *StopRecordContentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6172,6 +7740,9 @@ func (client *Client) StopRecordContentWithOptions(request *StopRecordContentReq
 	return _result, _err
 }
 
+// @param request - StopRecordContentRequest
+//
+// @return StopRecordContentResponse
 func (client *Client) StopRecordContent(request *StopRecordContentRequest) (_result *StopRecordContentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StopRecordContentResponse{}
@@ -6183,6 +7754,15 @@ func (client *Client) StopRecordContent(request *StopRecordContentRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 解绑用户桌面
+//
+// @param request - UnbindUserDesktopRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnbindUserDesktopResponse
 func (client *Client) UnbindUserDesktopWithOptions(request *UnbindUserDesktopRequest, runtime *util.RuntimeOptions) (_result *UnbindUserDesktopResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6240,6 +7820,13 @@ func (client *Client) UnbindUserDesktopWithOptions(request *UnbindUserDesktopReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 解绑用户桌面
+//
+// @param request - UnbindUserDesktopRequest
+//
+// @return UnbindUserDesktopResponse
 func (client *Client) UnbindUserDesktop(request *UnbindUserDesktopRequest) (_result *UnbindUserDesktopResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UnbindUserDesktopResponse{}
@@ -6251,6 +7838,11 @@ func (client *Client) UnbindUserDesktop(request *UnbindUserDesktopRequest) (_res
 	return _result, _err
 }
 
+// @param request - VerifyCredentialRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VerifyCredentialResponse
 func (client *Client) VerifyCredentialWithOptions(request *VerifyCredentialRequest, runtime *util.RuntimeOptions) (_result *VerifyCredentialResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6312,6 +7904,9 @@ func (client *Client) VerifyCredentialWithOptions(request *VerifyCredentialReque
 	return _result, _err
 }
 
+// @param request - VerifyCredentialRequest
+//
+// @return VerifyCredentialResponse
 func (client *Client) VerifyCredential(request *VerifyCredentialRequest) (_result *VerifyCredentialResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &VerifyCredentialResponse{}
