@@ -13386,6 +13386,7 @@ type GetMediaInfoResponseBodyMediaInfoMediaBasicInfo struct {
 	//
 	// 123-1234
 	ReferenceId *string `json:"ReferenceId,omitempty" xml:"ReferenceId,omitempty"`
+	Snapshots   *string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty"`
 	// example:
 	//
 	// oss
@@ -13489,6 +13490,11 @@ func (s *GetMediaInfoResponseBodyMediaInfoMediaBasicInfo) SetModifiedTime(v stri
 
 func (s *GetMediaInfoResponseBodyMediaInfoMediaBasicInfo) SetReferenceId(v string) *GetMediaInfoResponseBodyMediaInfoMediaBasicInfo {
 	s.ReferenceId = &v
+	return s
+}
+
+func (s *GetMediaInfoResponseBodyMediaInfoMediaBasicInfo) SetSnapshots(v string) *GetMediaInfoResponseBodyMediaInfoMediaBasicInfo {
+	s.Snapshots = &v
 	return s
 }
 
