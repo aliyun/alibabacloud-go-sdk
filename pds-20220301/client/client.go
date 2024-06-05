@@ -3,7 +3,6 @@ package client
 
 import (
 	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pds/client"
-	spi "github.com/alibabacloud-go/alibabacloud-gateway-spi/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	util "github.com/alibabacloud-go/tea-utils/v2/service"
@@ -2279,19 +2278,29 @@ func (s *CNameStatus) SetRemark(v string) *CNameStatus {
 }
 
 type CdnFileDownloadCallbackInfo struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ccp-bj1-bj-1234
-	Bucket   *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	// This parameter is required.
 	DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
-	DriveId  *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-	Expire   *int64  `json:"expire,omitempty" xml:"expire,omitempty"`
-	FileId   *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
-	Object   *string `json:"object,omitempty" xml:"object,omitempty"`
+	// This parameter is required.
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	// This parameter is required.
+	Expire *int64 `json:"expire,omitempty" xml:"expire,omitempty"`
+	// This parameter is required.
+	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	// This parameter is required.
+	Object *string `json:"object,omitempty" xml:"object,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// md5.Sum([]byte(fmt.Sprintf("%v%v%v%v%v%v...%v", 		req.Object, req.Range, req.DomainID, req.DriveID, req.UserID, req.FileID, req.Expire)))
-	Token  *string `json:"token,omitempty" xml:"token,omitempty"`
+	Token *string `json:"token,omitempty" xml:"token,omitempty"`
+	// This parameter is required.
 	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
@@ -4003,15 +4012,22 @@ func (s *File) SetVideoMediaMetadata(v *VideoMediaMetadata) *File {
 }
 
 type FileDownloadCallbackInfo struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ccp-bj1-bj-1234
-	Bucket   *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	// This parameter is required.
 	DomainId *string `json:"domain_id,omitempty" xml:"domain_id,omitempty"`
-	DriveId  *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-	FileId   *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
-	Object   *string `json:"object,omitempty" xml:"object,omitempty"`
-	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// This parameter is required.
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	// This parameter is required.
+	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	// This parameter is required.
+	Object *string `json:"object,omitempty" xml:"object,omitempty"`
+	// This parameter is required.
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s FileDownloadCallbackInfo) String() string {
@@ -4376,10 +4392,12 @@ func (s *Group) SetUpdatedAt(v int64) *Group {
 }
 
 type IDPermission struct {
-	DisinheritSubGroup *bool       `json:"disinherit_sub_group,omitempty" xml:"disinherit_sub_group,omitempty"`
-	ExpireTime         *int64      `json:"expire_time,omitempty" xml:"expire_time,omitempty"`
-	Permission         *Permission `json:"permission,omitempty" xml:"permission,omitempty"`
-	Roles              []*string   `json:"roles,omitempty" xml:"roles,omitempty" type:"Repeated"`
+	DisinheritSubGroup *bool  `json:"disinherit_sub_group,omitempty" xml:"disinherit_sub_group,omitempty"`
+	ExpireTime         *int64 `json:"expire_time,omitempty" xml:"expire_time,omitempty"`
+	// if can be null:
+	// false
+	Permission *Permission `json:"permission,omitempty" xml:"permission,omitempty"`
+	Roles      []*string   `json:"roles,omitempty" xml:"roles,omitempty" type:"Repeated"`
 }
 
 func (s IDPermission) String() string {
@@ -6659,6 +6677,8 @@ type UploadPartInfo struct {
 	InternalUploadUrl *string                          `json:"internal_upload_url,omitempty" xml:"internal_upload_url,omitempty"`
 	ParallelSha1Ctx   *UploadPartInfoParallelSha1Ctx   `json:"parallel_sha1_ctx,omitempty" xml:"parallel_sha1_ctx,omitempty" type:"Struct"`
 	ParallelSha256Ctx *UploadPartInfoParallelSha256Ctx `json:"parallel_sha256_ctx,omitempty" xml:"parallel_sha256_ctx,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -6666,7 +6686,8 @@ type UploadPartInfo struct {
 	// example:
 	//
 	// 1024
-	PartSize  *int64  `json:"part_size,omitempty" xml:"part_size,omitempty"`
+	PartSize *int64 `json:"part_size,omitempty" xml:"part_size,omitempty"`
+	// This parameter is required.
 	UploadUrl *string `json:"upload_url,omitempty" xml:"upload_url,omitempty"`
 }
 
@@ -6873,7 +6894,9 @@ type UserExtraItem struct {
 	// example:
 	//
 	// system
-	Creator      *string            `json:"creator,omitempty" xml:"creator,omitempty"`
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// if can be null:
+	// true
 	DefaultDrive *BaseDriveResponse `json:"default_drive,omitempty" xml:"default_drive,omitempty"`
 	// example:
 	//
@@ -7167,8 +7190,10 @@ func (s *UserLogDetailUpdateTo) SetRoleId(v string) *UserLogDetailUpdateTo {
 }
 
 type UserTag struct {
+	// This parameter is required.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	// This parameter is required.
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
 }
 
 func (s UserTag) String() string {
@@ -7953,11 +7978,15 @@ func (s *WxTrustedDomainConfig) SetShow(v bool) *WxTrustedDomainConfig {
 type AddGroupMemberRequest struct {
 	// The ID of the destination group to which the member is added.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 3e5***2c2
 	GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
 	// The member ID. If member_type is set to user, set this parameter to a user ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -7968,6 +7997,8 @@ type AddGroupMemberRequest struct {
 	// 	- user
 	//
 	// Note: A group can be added to only one group. A user can be added to multiple groups.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -8022,11 +8053,15 @@ func (s *AddGroupMemberResponse) SetStatusCode(v int32) *AddGroupMemberResponse 
 }
 
 type AddStoryFilesRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	DriveId *string                      `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	Files   []*AddStoryFilesRequestFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 9132e0d8-fe92-4e56-86c3-f5f112308003
@@ -8057,6 +8092,8 @@ func (s *AddStoryFilesRequest) SetStoryId(v string) *AddStoryFilesRequest {
 }
 
 type AddStoryFilesRequestFiles struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 63e5e4340f76cb3ead5f40f68163f0f967c1a7bf
@@ -8145,8 +8182,12 @@ func (s *AddStoryFilesResponse) SetBody(v *AddStoryFilesResponseBody) *AddStoryF
 
 type AssignRoleRequest struct {
 	// The unique identifier of a user. The group administrator role can only be assigned to a user.
+	//
+	// This parameter is required.
 	Identity *Identity `json:"identity,omitempty" xml:"identity,omitempty"`
 	// The ID of the resource that the role can manage. You can only set this parameter to the ID of a group.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -8154,11 +8195,15 @@ type AssignRoleRequest struct {
 	ManageResourceId *string `json:"manage_resource_id,omitempty" xml:"manage_resource_id,omitempty"`
 	// The type of the resource that the role can manage. Valid value: RT_Group.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// RT_Group
 	ManageResourceType *string `json:"manage_resource_type,omitempty" xml:"manage_resource_type,omitempty"`
 	// The ID of the role that is assigned to a user. Valid value: SystemGroupAdmin.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -8220,6 +8265,8 @@ func (s *AssignRoleResponse) SetStatusCode(v int32) *AssignRoleResponse {
 type AuthorizeRequest struct {
 	// The application ID returned when the application was created.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 47eUHhrzgWBvlLWj
@@ -8244,17 +8291,23 @@ type AuthorizeRequest struct {
 	//
 	// 	- wechat_app: logs on without authentication in WeCom.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// default
 	LoginType *string `json:"login_type,omitempty" xml:"login_type,omitempty"`
 	// The callback URL specified when the application was created.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// https://www.aliyunpds.com/sign/callback
 	RedirectUri *string `json:"redirect_uri,omitempty" xml:"redirect_uri,omitempty"`
 	// The format in which to return the response. Set the value to code.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -8316,6 +8369,8 @@ func (s *AuthorizeRequest) SetState(v string) *AuthorizeRequest {
 type AuthorizeShrinkRequest struct {
 	// The application ID returned when the application was created.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 47eUHhrzgWBvlLWj
@@ -8340,17 +8395,23 @@ type AuthorizeShrinkRequest struct {
 	//
 	// 	- wechat_app: logs on without authentication in WeCom.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// default
 	LoginType *string `json:"login_type,omitempty" xml:"login_type,omitempty"`
 	// The callback URL specified when the application was created.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// https://www.aliyunpds.com/sign/callback
 	RedirectUri *string `json:"redirect_uri,omitempty" xml:"redirect_uri,omitempty"`
 	// The format in which to return the response. Set the value to code.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -8436,6 +8497,8 @@ type BatchRequest struct {
 	// The child requests.
 	//
 	// The number of child requests. Valid value: 1 to 100.
+	//
+	// This parameter is required.
 	Requests []*BatchRequestRequests `json:"requests,omitempty" xml:"requests,omitempty" type:"Repeated"`
 	// The type of the resource that you want to manage. Valid values:
 	//
@@ -8497,6 +8560,8 @@ type BatchRequest struct {
 	//
 	//     <!-- -->
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// file
@@ -8530,6 +8595,8 @@ type BatchRequestRequests struct {
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	// The ID of the child request. The ID is used to associate a child request with a response. The ID of a child request must be unique.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 93433894994ad2e1
@@ -8545,6 +8612,8 @@ type BatchRequestRequests struct {
 	// 	- DELETE
 	//
 	// 	- HEAD
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -8595,6 +8664,8 @@ type BatchRequestRequests struct {
 	// 	- /share_link/get_share_token: queries an access token of a share.
 	//
 	// 	- /async_task/get: queries the information about an asynchronous task.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -8724,8 +8795,12 @@ func (s *BatchResponse) SetBody(v *BatchResponseBody) *BatchResponse {
 
 type CancelAssignRoleRequest struct {
 	// The unique identifier. You can cancel only the role assigned to a user.
+	//
+	// This parameter is required.
 	Identity *Identity `json:"identity,omitempty" xml:"identity,omitempty"`
 	// The ID of the resource that the role manages. Set the value to a group ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -8733,11 +8808,15 @@ type CancelAssignRoleRequest struct {
 	ManageResourceId *string `json:"manage_resource_id,omitempty" xml:"manage_resource_id,omitempty"`
 	// The type of the resource that the role manages. Set the value to RT_Group, which specifies group.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// RT_Group
 	ManageResourceType *string `json:"manage_resource_type,omitempty" xml:"manage_resource_type,omitempty"`
 	// The ID of the role to be canceled. Set the value to SystemGroupAdmin, which is the ID of the group administrator role.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -8798,6 +8877,8 @@ func (s *CancelAssignRoleResponse) SetStatusCode(v int32) *CancelAssignRoleRespo
 
 type CancelShareLinkRequest struct {
 	// The share ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -8941,17 +9022,23 @@ func (s *ClearRecyclebinResponse) SetBody(v *ClearRecyclebinResponseBody) *Clear
 type CompleteFileRequest struct {
 	// The drive ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 9520943DC264
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// The upload ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -9026,6 +9113,8 @@ type CopyFileRequest struct {
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID or folder ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 4221bf6e6ab43c255edc4463bf3a6f5f5d317406
@@ -9043,6 +9132,8 @@ type CopyFileRequest struct {
 	// 1
 	ToDriveId *string `json:"to_drive_id,omitempty" xml:"to_drive_id,omitempty"`
 	// The ID of the destination parent folder. If you want to copy the file or folder to a root directory, set this parameter to root.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -9177,20 +9268,30 @@ func (s *CopyFileResponse) SetBody(v *CopyFileResponseBody) *CopyFileResponse {
 type CreateCustomizedStoryRequest struct {
 	// Deprecated
 	CustomLabels map[string]*string `json:"custom_labels,omitempty" xml:"custom_labels,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
-	DriveId    *string                                   `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-	StoryCover *CreateCustomizedStoryRequestStoryCover   `json:"story_cover,omitempty" xml:"story_cover,omitempty" type:"Struct"`
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	// This parameter is required.
+	StoryCover *CreateCustomizedStoryRequestStoryCover `json:"story_cover,omitempty" xml:"story_cover,omitempty" type:"Struct"`
+	// This parameter is required.
 	StoryFiles []*CreateCustomizedStoryRequestStoryFiles `json:"story_files,omitempty" xml:"story_files,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// test_name
 	StoryName *string `json:"story_name,omitempty" xml:"story_name,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// user_created
 	StorySubType *string `json:"story_sub_type,omitempty" xml:"story_sub_type,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// user_created
@@ -9241,6 +9342,8 @@ func (s *CreateCustomizedStoryRequest) SetStoryType(v string) *CreateCustomizedS
 }
 
 type CreateCustomizedStoryRequestStoryCover struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 63e5e4340f76cb3ead5f40f68163f0f967c1a7bf
@@ -9270,6 +9373,8 @@ func (s *CreateCustomizedStoryRequestStoryCover) SetRevisionId(v string) *Create
 }
 
 type CreateCustomizedStoryRequestStoryFiles struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 63e5e4340f76cb3ead5f40f68163f0f967c1a7bf
@@ -9364,6 +9469,8 @@ type CreateDomainRequest struct {
 	// domain for test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The name of the domain.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -9488,6 +9595,8 @@ type CreateDriveRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The name of the drive. The name can be up to 128 characters in length.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// test_drive
@@ -9500,6 +9609,8 @@ type CreateDriveRequest struct {
 	DriveType *string `json:"drive_type,omitempty" xml:"drive_type,omitempty"`
 	// The owner of the drive.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 3b3d7245c159488da17d081ad6c64687
@@ -9507,6 +9618,8 @@ type CreateDriveRequest struct {
 	// The type of the owner. Valid values:
 	//
 	// user and group.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -9579,6 +9692,9 @@ func (s *CreateDriveRequest) SetTotalSize(v int64) *CreateDriveRequest {
 }
 
 type CreateDriveResponseBody struct {
+	CreatedAt   *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	Creator     *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The domain ID.
 	//
 	// example:
@@ -9590,7 +9706,14 @@ type CreateDriveResponseBody struct {
 	// example:
 	//
 	// 1
-	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	DriveId   *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	DriveName *string `json:"drive_name,omitempty" xml:"drive_name,omitempty"`
+	DriveType *string `json:"drive_type,omitempty" xml:"drive_type,omitempty"`
+	Owner     *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	OwnerType *string `json:"owner_type,omitempty" xml:"owner_type,omitempty"`
+	Status    *string `json:"status,omitempty" xml:"status,omitempty"`
+	TotalSize *int64  `json:"total_size,omitempty" xml:"total_size,omitempty"`
+	UsedSize  *int64  `json:"used_size,omitempty" xml:"used_size,omitempty"`
 }
 
 func (s CreateDriveResponseBody) String() string {
@@ -9601,6 +9724,21 @@ func (s CreateDriveResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *CreateDriveResponseBody) SetCreatedAt(v string) *CreateDriveResponseBody {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *CreateDriveResponseBody) SetCreator(v string) *CreateDriveResponseBody {
+	s.Creator = &v
+	return s
+}
+
+func (s *CreateDriveResponseBody) SetDescription(v string) *CreateDriveResponseBody {
+	s.Description = &v
+	return s
+}
+
 func (s *CreateDriveResponseBody) SetDomainId(v string) *CreateDriveResponseBody {
 	s.DomainId = &v
 	return s
@@ -9608,6 +9746,41 @@ func (s *CreateDriveResponseBody) SetDomainId(v string) *CreateDriveResponseBody
 
 func (s *CreateDriveResponseBody) SetDriveId(v string) *CreateDriveResponseBody {
 	s.DriveId = &v
+	return s
+}
+
+func (s *CreateDriveResponseBody) SetDriveName(v string) *CreateDriveResponseBody {
+	s.DriveName = &v
+	return s
+}
+
+func (s *CreateDriveResponseBody) SetDriveType(v string) *CreateDriveResponseBody {
+	s.DriveType = &v
+	return s
+}
+
+func (s *CreateDriveResponseBody) SetOwner(v string) *CreateDriveResponseBody {
+	s.Owner = &v
+	return s
+}
+
+func (s *CreateDriveResponseBody) SetOwnerType(v string) *CreateDriveResponseBody {
+	s.OwnerType = &v
+	return s
+}
+
+func (s *CreateDriveResponseBody) SetStatus(v string) *CreateDriveResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateDriveResponseBody) SetTotalSize(v int64) *CreateDriveResponseBody {
+	s.TotalSize = &v
+	return s
+}
+
+func (s *CreateDriveResponseBody) SetUsedSize(v int64) *CreateDriveResponseBody {
+	s.UsedSize = &v
 	return s
 }
 
@@ -9645,11 +9818,14 @@ type CreateFileRequest struct {
 	//
 	// ignore: allows you to create the file by using the same name as an existing file in the cloud.
 	//
-	// auto_rename: automatically renames the file that you want to create. By default, the current point in time is added to the end of the file name. Example: xxx\_20060102\_150405.
+	// auto_rename: automatically renames the file that you want to create. By default, the current point in time is added to the end of the file name. Example: xxx_20060102_150405.
 	//
 	// refuse: does not create the file that you want to create but returns the information about the file that has the same name in the cloud.
 	//
 	// Default value: ignore.
+	//
+	// if can be null:
+	// true
 	//
 	// example:
 	//
@@ -9657,11 +9833,17 @@ type CreateFileRequest struct {
 	CheckNameMode *string `json:"check_name_mode,omitempty" xml:"check_name_mode,omitempty"`
 	// The hash value of the file content. The value is calculated based on the algorithm specified by content_hash_name.
 	//
+	// if can be null:
+	// true
+	//
 	// example:
 	//
 	// 7C4A8D09CA3762AF61E59520943DC26494F8941B
 	ContentHash *string `json:"content_hash,omitempty" xml:"content_hash,omitempty"`
 	// The name of the algorithm that is used to calculate the hash value of the file content. Only SHA1 is supported.
+	//
+	// if can be null:
+	// true
 	//
 	// example:
 	//
@@ -9669,11 +9851,17 @@ type CreateFileRequest struct {
 	ContentHashName *string `json:"content_hash_name,omitempty" xml:"content_hash_name,omitempty"`
 	// The type of the file content. Default value: application/oct-stream.
 	//
+	// if can be null:
+	// true
+	//
 	// example:
 	//
 	// application/json
 	ContentType *string `json:"content_type,omitempty" xml:"content_type,omitempty"`
 	// The description of the file. The description can be up to 1,024 characters in length. By default, this parameter is left empty.
+	//
+	// if can be null:
+	// true
 	//
 	// example:
 	//
@@ -9687,11 +9875,17 @@ type CreateFileRequest struct {
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID. This parameter is required if check_name_mode is set to ignore.
 	//
+	// if can be null:
+	// true
+	//
 	// example:
 	//
 	// 9520943DC264
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// Specifies whether to hide the file or folder. By default, the file or folder is not hidden.
+	//
+	// if can be null:
+	// true
 	//
 	// example:
 	//
@@ -9700,6 +9894,9 @@ type CreateFileRequest struct {
 	// The information about the image specified by the client.
 	ImageMediaMetadata *ImageMediaMetadata `json:"image_media_metadata,omitempty" xml:"image_media_metadata,omitempty"`
 	// The time when the local file was created. By default, this parameter is left empty. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format based on the UTC+0 time zone.
+	//
+	// if can be null:
+	// true
 	//
 	// example:
 	//
@@ -9713,17 +9910,27 @@ type CreateFileRequest struct {
 	LocalModifiedAt *string `json:"local_modified_at,omitempty" xml:"local_modified_at,omitempty"`
 	// The name of the file. The name can be up to 1,024 bytes in length based on the UTF-8 encoding rule and cannot end with a forward slash (/).
 	//
+	// This parameter is required.
+	//
+	// if can be null:
+	// false
+	//
 	// example:
 	//
 	// a.txt
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// Specifies whether to enable the parallel upload feature.
 	//
+	// if can be null:
+	// true
+	//
 	// example:
 	//
 	// true
 	ParallelUpload *bool `json:"parallel_upload,omitempty" xml:"parallel_upload,omitempty"`
 	// The ID of the parent directory. If you want to create a file or folder in the root directory, set this parameter to root.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -9733,17 +9940,26 @@ type CreateFileRequest struct {
 	PartInfoList []*CreateFileRequestPartInfoList `json:"part_info_list,omitempty" xml:"part_info_list,omitempty" type:"Repeated"`
 	// The SHA-1 hash value of the first 1 KB data of the file. This parameter is required if you perform instant file upload by using the pre-hashing feature. If the SHA-1 hash value is not matched on the cloud, the client does not need to calculate the SHA-1 hash value of the entire file.
 	//
+	// if can be null:
+	// true
+	//
 	// example:
 	//
 	// 7C4A8D09CA3762AF61E59520943DC26494F89411
 	PreHash *string `json:"pre_hash,omitempty" xml:"pre_hash,omitempty"`
 	// The share ID. This parameter is required if the file is uploaded by using the share URL of the file.
 	//
+	// if can be null:
+	// true
+	//
 	// example:
 	//
 	// 7JQX1FswpQ8
 	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
 	// The size of the file. Unit: bytes.
+	//
+	// if can be null:
+	// true
 	//
 	// example:
 	//
@@ -9752,6 +9968,11 @@ type CreateFileRequest struct {
 	// The type of the file. Valid values:
 	//
 	// file folder
+	//
+	// This parameter is required.
+	//
+	// if can be null:
+	// true
 	//
 	// example:
 	//
@@ -10111,6 +10332,8 @@ type CreateGroupRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The name of the group. The name must be 1 to 128 characters in length.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// test group
@@ -10197,6 +10420,8 @@ type CreateIdentityToBenefitPkgMappingRequest struct {
 	Amount *int64 `json:"amount,omitempty" xml:"amount,omitempty"`
 	// The unique identifier of the benefit package.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 40cb7794c9294
@@ -10213,6 +10438,8 @@ type CreateIdentityToBenefitPkgMappingRequest struct {
 	//
 	// If you want to manage the benefits of a user, set this parameter to a user ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// user123
@@ -10220,6 +10447,8 @@ type CreateIdentityToBenefitPkgMappingRequest struct {
 	// The type of the entity.
 	//
 	// If you want to manage the benefits of a user, set this parameter to user.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -10284,16 +10513,24 @@ func (s *CreateIdentityToBenefitPkgMappingResponse) SetStatusCode(v int32) *Crea
 }
 
 type CreateOrderRequest struct {
-	AutoPay    *bool   `json:"auto_pay,omitempty" xml:"auto_pay,omitempty"`
-	AutoRenew  *bool   `json:"auto_renew,omitempty" xml:"auto_renew,omitempty"`
-	Code       *string `json:"code,omitempty" xml:"code,omitempty"`
+	AutoPay   *bool `json:"auto_pay,omitempty" xml:"auto_pay,omitempty"`
+	AutoRenew *bool `json:"auto_renew,omitempty" xml:"auto_renew,omitempty"`
+	// This parameter is required.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// This parameter is required.
 	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty"`
-	OrderType  *string `json:"order_type,omitempty" xml:"order_type,omitempty"`
-	Package    *string `json:"package,omitempty" xml:"package,omitempty"`
-	Period     *int64  `json:"period,omitempty" xml:"period,omitempty"`
+	// This parameter is required.
+	OrderType *string `json:"order_type,omitempty" xml:"order_type,omitempty"`
+	// This parameter is required.
+	Package *string `json:"package,omitempty" xml:"package,omitempty"`
+	// This parameter is required.
+	Period *int64 `json:"period,omitempty" xml:"period,omitempty"`
+	// This parameter is required.
 	PeriodUnit *string `json:"period_unit,omitempty" xml:"period_unit,omitempty"`
-	TotalSize  *int64  `json:"total_size,omitempty" xml:"total_size,omitempty"`
-	UserCount  *int64  `json:"user_count,omitempty" xml:"user_count,omitempty"`
+	// This parameter is required.
+	TotalSize *int64 `json:"total_size,omitempty" xml:"total_size,omitempty"`
+	// This parameter is required.
+	UserCount *int64 `json:"user_count,omitempty" xml:"user_count,omitempty"`
 }
 
 func (s CreateOrderRequest) String() string {
@@ -10407,6 +10644,8 @@ func (s *CreateOrderResponse) SetBody(v *CreateOrderResponseBody) *CreateOrderRe
 }
 
 type CreateShareLinkRequest struct {
+	Creatable           *bool     `json:"creatable,omitempty" xml:"creatable,omitempty"`
+	CreatableFileIdList []*string `json:"creatable_file_id_list,omitempty" xml:"creatable_file_id_list,omitempty" type:"Repeated"`
 	// The description of the share. The description must be 0 to 1,024 characters in length.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Specifies whether to disable the download feature.
@@ -10435,6 +10674,8 @@ type CreateShareLinkRequest struct {
 	DownloadLimit *int64 `json:"download_limit,omitempty" xml:"download_limit,omitempty"`
 	// The drive ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -10450,15 +10691,13 @@ type CreateShareLinkRequest struct {
 	// example:
 	//
 	// ["520b217f13adf4fc24f2191991b1664ce045b393"]
-	FileIdList     []*string `json:"file_id_list,omitempty" xml:"file_id_list,omitempty" type:"Repeated"`
-	OfficeEditable *bool     `json:"office_editable,omitempty" xml:"office_editable,omitempty"`
+	FileIdList []*string `json:"file_id_list,omitempty" xml:"file_id_list,omitempty" type:"Repeated"`
 	// The limit on the number of times that the shared files can be previewed. The value of this parameter must be equal to or greater than 0. A value of 0 indicates no limit.
 	//
 	// example:
 	//
 	// 100
-	PreviewLimit      *int64 `json:"preview_limit,omitempty" xml:"preview_limit,omitempty"`
-	SaveDownloadLimit *int64 `json:"save_download_limit,omitempty" xml:"save_download_limit,omitempty"`
+	PreviewLimit *int64 `json:"preview_limit,omitempty" xml:"preview_limit,omitempty"`
 	// The limit on the number of times that the shared files can be dumped. The value of this parameter must be equal to or greater than 0. A value of 0 indicates no limit.
 	//
 	// example:
@@ -10493,6 +10732,16 @@ func (s CreateShareLinkRequest) String() string {
 
 func (s CreateShareLinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateShareLinkRequest) SetCreatable(v bool) *CreateShareLinkRequest {
+	s.Creatable = &v
+	return s
+}
+
+func (s *CreateShareLinkRequest) SetCreatableFileIdList(v []*string) *CreateShareLinkRequest {
+	s.CreatableFileIdList = v
+	return s
 }
 
 func (s *CreateShareLinkRequest) SetDescription(v string) *CreateShareLinkRequest {
@@ -10535,18 +10784,8 @@ func (s *CreateShareLinkRequest) SetFileIdList(v []*string) *CreateShareLinkRequ
 	return s
 }
 
-func (s *CreateShareLinkRequest) SetOfficeEditable(v bool) *CreateShareLinkRequest {
-	s.OfficeEditable = &v
-	return s
-}
-
 func (s *CreateShareLinkRequest) SetPreviewLimit(v int64) *CreateShareLinkRequest {
 	s.PreviewLimit = &v
-	return s
-}
-
-func (s *CreateShareLinkRequest) SetSaveDownloadLimit(v int64) *CreateShareLinkRequest {
-	s.SaveDownloadLimit = &v
 	return s
 }
 
@@ -10605,6 +10844,8 @@ func (s *CreateShareLinkResponse) SetBody(v *ShareLink) *CreateShareLinkResponse
 }
 
 type CreateSimilarImageClusterTaskRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
@@ -10677,14 +10918,22 @@ type CreateStoryRequest struct {
 	Address *Address `json:"address,omitempty" xml:"address,omitempty"`
 	// Deprecated
 	CustomLabels map[string]*string `json:"custom_labels,omitempty" xml:"custom_labels,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	// if can be null:
+	// true
+	//
 	// example:
 	//
 	// 30
 	MaxImageCount *int64 `json:"max_image_count,omitempty" xml:"max_image_count,omitempty"`
+	// if can be null:
+	// true
+	//
 	// example:
 	//
 	// 1
@@ -10706,6 +10955,8 @@ type CreateStoryRequest struct {
 	//
 	// Food
 	StorySubType *string `json:"story_sub_type,omitempty" xml:"story_sub_type,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// TagMemory
@@ -10934,6 +11185,8 @@ type CreateUserRequest struct {
 	// md
 	UserData map[string]interface{} `json:"user_data,omitempty" xml:"user_data,omitempty"`
 	// The user ID. The ID can be up to 64 characters in length and cannot contain number signs (#).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -11244,10 +11497,14 @@ func (s *CreateUserResponse) SetBody(v *CreateUserResponseBody) *CreateUserRespo
 }
 
 type CsiGetFileInfoRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 9520943DC264
@@ -11384,6 +11641,8 @@ func (s *DeleteDomainResponse) SetStatusCode(v int32) *DeleteDomainResponse {
 type DeleteDriveRequest struct {
 	// The drive ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -11429,11 +11688,15 @@ func (s *DeleteDriveResponse) SetStatusCode(v int32) *DeleteDriveResponse {
 type DeleteFileRequest struct {
 	// The drive ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID or folder ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -11460,7 +11723,7 @@ func (s *DeleteFileRequest) SetFileId(v string) *DeleteFileRequest {
 }
 
 type DeleteFileResponseBody struct {
-	// The ID of the asynchronous task. This parameter is returned only in asynchronous processing scenarios. You can call the [GetAsyncTask](~~440456~~) operation to query the information about the asynchronous task based on the task ID.
+	// The ID of the asynchronous task. This parameter is returned only in asynchronous processing scenarios. You can call the [GetAsyncTask](https://help.aliyun.com/document_detail/440456.html) operation to query the information about the asynchronous task based on the task ID.
 	//
 	// example:
 	//
@@ -11546,6 +11809,8 @@ func (s *DeleteFileResponse) SetBody(v *DeleteFileResponseBody) *DeleteFileRespo
 type DeleteGroupRequest struct {
 	// The group ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// g123
@@ -11591,17 +11856,23 @@ func (s *DeleteGroupResponse) SetStatusCode(v int32) *DeleteGroupResponse {
 type DeleteRevisionRequest struct {
 	// The drive ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 9520943DC264
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// The version ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -11656,10 +11927,14 @@ func (s *DeleteRevisionResponse) SetStatusCode(v int32) *DeleteRevisionResponse 
 }
 
 type DeleteStoryRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 9132e0d8-fe92-4e56-86c3-f5f112308003
@@ -11736,6 +12011,8 @@ func (s *DeleteStoryResponse) SetBody(v *DeleteStoryResponseBody) *DeleteStoryRe
 type DeleteUserRequest struct {
 	// The user ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// c9b7a5aa04d14ae3867fdc886fa01da4
@@ -11780,6 +12057,8 @@ func (s *DeleteUserResponse) SetStatusCode(v int32) *DeleteUserResponse {
 
 type DeltaGetLastCursorRequest struct {
 	// The drive ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -11870,6 +12149,8 @@ type DownloadFileRequest struct {
 	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -11965,17 +12246,23 @@ func (s *DownloadFileResponse) SetStatusCode(v int32) *DownloadFileResponse {
 type FileAddPermissionRequest struct {
 	// The drive ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The ID of the folder. If you want to authorize a user or group to access a team drive, set this parameter to root. If you want to authorize a user or group to access an individual drive, you cannot set this parameter to root.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 4221bf6e6ab43c255edc4463bf3a6f5f5d317406
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// The members that are authorized to access files.
+	//
+	// This parameter is required.
 	MemberList []*FilePermissionMember `json:"member_list,omitempty" xml:"member_list,omitempty" type:"Repeated"`
 }
 
@@ -12028,17 +12315,23 @@ func (s *FileAddPermissionResponse) SetStatusCode(v int32) *FileAddPermissionRes
 type FileDeleteUserTagsRequest struct {
 	// The drive ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 9520943DC264
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// The tags that you want to remove from a file. You cannot leave this parameter empty. You can specify up to 1,000 tags.
+	//
+	// This parameter is required.
 	KeyList []*string `json:"key_list,omitempty" xml:"key_list,omitempty" type:"Repeated"`
 }
 
@@ -12153,17 +12446,23 @@ func (s *FileListPermissionResponse) SetBody(v []*FilePermissionMember) *FileLis
 type FilePutUserTagsRequest struct {
 	// The drive ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 9520943DC264
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// The tags to be added to the file. You cannot leave this parameter empty. You can specify up to 1,000 tags. You cannot specify tags that have the same name.
+	//
+	// This parameter is required.
 	UserTags []*FilePutUserTagsRequestUserTags `json:"user_tags,omitempty" xml:"user_tags,omitempty" type:"Repeated"`
 }
 
@@ -12192,6 +12491,8 @@ func (s *FilePutUserTagsRequest) SetUserTags(v []*FilePutUserTagsRequestUserTags
 
 type FilePutUserTagsRequestUserTags struct {
 	// The name of the tag. The tag name cannot be empty and cannot contain number signs (#).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -12225,6 +12526,8 @@ func (s *FilePutUserTagsRequestUserTags) SetValue(v string) *FilePutUserTagsRequ
 
 type FilePutUserTagsResponseBody struct {
 	// The file ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -12277,17 +12580,23 @@ func (s *FilePutUserTagsResponse) SetBody(v *FilePutUserTagsResponseBody) *FileP
 type FileRemovePermissionRequest struct {
 	// The drive ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 4221bf6e6ab43c255edc4463bf3a6f5f5d317406
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// The identities with whom the file is shared.
+	//
+	// This parameter is required.
 	MemberList []*FileRemovePermissionRequestMemberList `json:"member_list,omitempty" xml:"member_list,omitempty" type:"Repeated"`
 }
 
@@ -12316,6 +12625,8 @@ func (s *FileRemovePermissionRequest) SetMemberList(v []*FileRemovePermissionReq
 
 type FileRemovePermissionRequestMemberList struct {
 	// The identity to whom the permissions are granted, which is a user or a group.
+	//
+	// This parameter is required.
 	Identity *Identity `json:"identity,omitempty" xml:"identity,omitempty"`
 	// The role ID. You can grant permissions by assigning roles to identities, or you can customize the permissions. To grant permissions by assigning roles to identities, specify role_id. role_id and action_list are mutually exclusive. If both parameters are specified, role_id has a higher priority.
 	//
@@ -12344,6 +12655,8 @@ type FileRemovePermissionRequestMemberList struct {
 	// SystemFileUploaderWithShareLink: uploader and sharer.
 	//
 	// SystemFileViewer: viewer.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -12394,6 +12707,8 @@ func (s *FileRemovePermissionResponse) SetStatusCode(v int32) *FileRemovePermiss
 
 type GetAsyncTaskRequest struct {
 	// The ID of the asynchronous task.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -12703,6 +13018,8 @@ func (s *GetDefaultDriveResponse) SetBody(v *Drive) *GetDefaultDriveResponse {
 type GetDomainRequest struct {
 	// The ID of the domain.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// bj1
@@ -12846,6 +13163,8 @@ type GetDownloadUrlRequest struct {
 	// 100
 	ExpireSec *int32 `json:"expire_sec,omitempty" xml:"expire_sec,omitempty"`
 	// The file ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -13029,6 +13348,8 @@ func (s *GetDownloadUrlResponse) SetBody(v *GetDownloadUrlResponseBody) *GetDown
 type GetDriveRequest struct {
 	// The drive ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -13086,7 +13407,7 @@ type GetFileRequest struct {
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The fields to return.
 	//
-	// 1.  If this parameter is set to \*, all fields of the file except the fields that must be specified are returned.
+	// 1.  If this parameter is set to \\*, all fields of the file except the fields that must be specified are returned.
 	//
 	// 2.  If only specific fields are required, you can specify the following fields: url, thumbnail, exif, cropping_suggestion, characteristic_hash, video_metadata, and video_preview_metadata. If multiple fields are required, separate them with commas (,). Example: url,thumbnail.
 	//
@@ -13099,6 +13420,8 @@ type GetFileRequest struct {
 	// *
 	Fields *string `json:"fields,omitempty" xml:"fields,omitempty"`
 	// The file ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -13190,6 +13513,8 @@ func (s *GetFileResponse) SetBody(v *File) *GetFileResponse {
 type GetGroupRequest struct {
 	// The group ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2e43ec8427dd45f19431b7504649a1b1
@@ -13241,6 +13566,8 @@ func (s *GetGroupResponse) SetBody(v *Group) *GetGroupResponse {
 type GetIdentityToBenefitPkgMappingRequest struct {
 	// The unique identifier of the benefit package.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 40cb7794c9294
@@ -13249,11 +13576,15 @@ type GetIdentityToBenefitPkgMappingRequest struct {
 	//
 	// If you want to manage the benefits of a user, set this parameter to a user ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// user123
 	IdentityId *string `json:"identity_id,omitempty" xml:"identity_id,omitempty"`
 	// The type of the entity. If you want to manage the benefits of a user, set this parameter to user.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -13315,10 +13646,14 @@ func (s *GetIdentityToBenefitPkgMappingResponse) SetBody(v *IdentityToBenefitPkg
 
 type GetLinkInfoRequest struct {
 	Extra *string `json:"extra,omitempty" xml:"extra,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 130***
 	Identity *string `json:"identity,omitempty" xml:"identity,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// mobile
@@ -13449,13 +13784,15 @@ func (s *GetLinkInfoByUserIdResponse) SetBody(v *GetLinkInfoByUserIdResponseBody
 type GetRevisionRequest struct {
 	// The drive ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// Specifies the returned fields.
 	//
-	// By default, this parameter is left empty. If you set this parameter to \*, all fields are returned. If you leave this parameter empty, the creator of the file is not returned.
+	// By default, this parameter is left empty. If you set this parameter to \\*, all fields are returned. If you leave this parameter empty, the creator of the file is not returned.
 	//
 	// example:
 	//
@@ -13463,11 +13800,15 @@ type GetRevisionRequest struct {
 	Fields *string `json:"fields,omitempty" xml:"fields,omitempty"`
 	// The file ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 9520943DC264
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// The version ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -13548,6 +13889,8 @@ func (s *GetRevisionResponse) SetBody(v *Revision) *GetRevisionResponse {
 type GetShareLinkRequest struct {
 	// The share ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 7JQX1FswpQ8
@@ -13598,6 +13941,8 @@ func (s *GetShareLinkResponse) SetBody(v *ShareLink) *GetShareLinkResponse {
 
 type GetShareLinkByAnonymousRequest struct {
 	// The share ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -13883,6 +14228,8 @@ type GetShareLinkTokenRequest struct {
 	ExpireSec *int32 `json:"expire_sec,omitempty" xml:"expire_sec,omitempty"`
 	// The share ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 7JQX1FswpQ8
@@ -13993,6 +14340,8 @@ type GetStoryRequest struct {
 	//
 	// video/snapshot,t_1000,f_jpg,w_0,h_0,m_fast,ar_auto
 	CoverVideoThumbnailProcess *string `json:"cover_video_thumbnail_process,omitempty" xml:"cover_video_thumbnail_process,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -14009,6 +14358,8 @@ type GetStoryRequest struct {
 	//
 	// image/resize,m_fill,h_128,w_128,limit_0/format,jpg
 	ImageUrlProcess *string `json:"image_url_process,omitempty" xml:"image_url_process,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 9132e0d8-fe92-4e56-86c3-f5f112308003
@@ -14107,11 +14458,15 @@ func (s *GetStoryResponse) SetBody(v *Story) *GetStoryResponse {
 type GetTaskStatusRequest struct {
 	// The drive ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The ID of the task.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -14235,17 +14590,23 @@ func (s *GetTaskStatusResponse) SetBody(v *GetTaskStatusResponseBody) *GetTaskSt
 type GetUploadUrlRequest struct {
 	// The drive ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 5d5b846942cf94fa72324c14a4bda34e81da635d
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// The information about the file parts.
+	//
+	// This parameter is required.
 	PartInfoList []*GetUploadUrlRequestPartInfoList `json:"part_info_list,omitempty" xml:"part_info_list,omitempty" type:"Repeated"`
 	// The share ID.
 	//
@@ -14254,6 +14615,8 @@ type GetUploadUrlRequest struct {
 	// 7JQX1FswpQ8
 	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
 	// The ID of the upload task.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -14557,6 +14920,8 @@ type GetVideoPreviewPlayInfoRequest struct {
 	//
 	// 	- offline_video: previews a video after the video is transcoded offline.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// live_transcoding
@@ -14568,6 +14933,8 @@ type GetVideoPreviewPlayInfoRequest struct {
 	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -14774,6 +15141,8 @@ type GetVideoPreviewPlayMetaRequest struct {
 	//
 	// 	- offline_video: previews a video after the video is transcoded offline.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// live_transcoding
@@ -14785,6 +15154,8 @@ type GetVideoPreviewPlayMetaRequest struct {
 	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -14918,6 +15289,7 @@ func (s *GetVideoPreviewPlayMetaResponse) SetBody(v *GetVideoPreviewPlayMetaResp
 }
 
 type GroupUpdateNameRequest struct {
+	// This parameter is required.
 	GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
 	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
 }
@@ -14986,6 +15358,8 @@ type ImportUserRequest struct {
 	//
 	// 	- custom: custom account.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// mobile
@@ -15012,11 +15386,15 @@ type ImportUserRequest struct {
 	Extra *string `json:"extra,omitempty" xml:"extra,omitempty"`
 	// The unique identifier.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 130****
 	Identity *string `json:"identity,omitempty" xml:"identity,omitempty"`
 	// The nickname of the user.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -15108,6 +15486,7 @@ func (s *ImportUserResponse) SetBody(v *User) *ImportUserResponse {
 }
 
 type InvestigateFileRequest struct {
+	// This parameter is required.
 	DriveFileIds []*InvestigateFileRequestDriveFileIds `json:"drive_file_ids,omitempty" xml:"drive_file_ids,omitempty" type:"Repeated"`
 	Policy       *InvestigateFileRequestPolicy         `json:"policy,omitempty" xml:"policy,omitempty" type:"Struct"`
 	Recursive    *bool                                 `json:"recursive,omitempty" xml:"recursive,omitempty"`
@@ -15143,10 +15522,14 @@ func (s *InvestigateFileRequest) SetUserData(v string) *InvestigateFileRequest {
 }
 
 type InvestigateFileRequestDriveFileIds struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 9520943DC264
@@ -15232,6 +15615,8 @@ type LinkAccountRequest struct {
 	Extra *string `json:"extra,omitempty" xml:"extra,omitempty"`
 	// The unique identifier of the account, such as a mobile number.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// eyy***
@@ -15252,11 +15637,15 @@ type LinkAccountRequest struct {
 	//
 	// 	- custom: a custom account.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ding
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The ID of the user with which you want to associate an account.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -15323,6 +15712,8 @@ func (s *LinkAccountResponse) SetBody(v *Token) *LinkAccountResponse {
 
 type ListAddressGroupsRequest struct {
 	// The drive ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -15652,6 +16043,8 @@ type ListDeltaRequest struct {
 	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	Cursor *string `json:"cursor,omitempty" xml:"cursor,omitempty"`
 	// The drive ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -16054,6 +16447,8 @@ func (s *ListDriveResponse) SetBody(v *ListDriveResponseBody) *ListDriveResponse
 type ListFacegroupsRequest struct {
 	// The drive ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -16191,7 +16586,7 @@ type ListFileRequest struct {
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The fields to return.
 	//
-	// 1.  If this parameter is set to \*, all fields of the file except the fields that must be specified are returned.
+	// 1.  If this parameter is set to \\*, all fields of the file except the fields that must be specified are returned.
 	//
 	// 2.  If only specific fields are required, you can specify the following fields: url, exif, cropping_suggestion, characteristic_hash, video_metadata, and video_preview_metadata. If multiple fields are required, separate them with commas (,). Example: url,exif.
 	//
@@ -16211,7 +16606,7 @@ type ListFileRequest struct {
 	//
 	// 50
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker.\
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker.\\
 	//
 	// By default, this parameter is empty.
 	//
@@ -16296,6 +16691,8 @@ type ListFileRequest struct {
 	// ASC
 	OrderDirection *string `json:"order_direction,omitempty" xml:"order_direction,omitempty"`
 	// The ID of the parent folder. If the parent folder is a root directory, set this parameter to root.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -16551,6 +16948,8 @@ func (s *ListGroupResponse) SetBody(v *ListGroupResponseBody) *ListGroupResponse
 type ListGroupMemberRequest struct {
 	// The ID of the group of which you want to query members.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 3e5***2c2
@@ -16561,7 +16960,7 @@ type ListGroupMemberRequest struct {
 	//
 	// 50
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker.\
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker.\\
 	//
 	// By default, this parameter is left empty.
 	//
@@ -16677,6 +17076,7 @@ func (s *ListGroupMemberResponse) SetBody(v *ListGroupMemberResponseBody) *ListG
 }
 
 type ListIdentityRoleRequest struct {
+	// This parameter is required.
 	Identity *Identity `json:"identity,omitempty" xml:"identity,omitempty"`
 }
 
@@ -16727,11 +17127,15 @@ type ListIdentityToBenefitPkgMappingRequest struct {
 	//
 	// If you call this operation to manage the benefits of a user, set this parameter to the ID of the user.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// user123
 	IdentityId *string `json:"identity_id,omitempty" xml:"identity_id,omitempty"`
 	// The type of the entity. If you call this operation to manage the benefits of a user, set this parameter to user.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -17097,15 +17501,17 @@ func (s *ListReceivedFileResponse) SetBody(v *ListReceivedFileResponseBody) *Lis
 type ListRecyclebinRequest struct {
 	// The drive ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// Specifies the returned fields.
 	//
-	// 1\. If you set this parameter to \*, all fields of the file are returned.
+	// 1\\. If you set this parameter to \\*, all fields of the file are returned.
 	//
-	// 2\. If you set this parameter to a null value or leave this parameter empty, the fields, such as file creator, file modifier, and custom tags, are not returned.
+	// 2\\. If you set this parameter to a null value or leave this parameter empty, the fields, such as file creator, file modifier, and custom tags, are not returned.
 	//
 	// The default value is a null value, which indicates that only some fields are returned.
 	//
@@ -17218,19 +17624,23 @@ func (s *ListRecyclebinResponse) SetBody(v *ListRecyclebinResponseBody) *ListRec
 type ListRevisionRequest struct {
 	// The drive ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// Specifies the returned fields.
 	//
-	// By default, this parameter is left empty. If you set this parameter to \*, all fields are returned. If you leave this parameter empty, the creator of the file is not returned.
+	// By default, this parameter is left empty. If you set this parameter to \\*, all fields are returned. If you leave this parameter empty, the creator of the file is not returned.
 	//
 	// example:
 	//
 	// *
 	Fields *string `json:"fields,omitempty" xml:"fields,omitempty"`
 	// The file ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -17368,7 +17778,7 @@ type ListShareLinkRequest struct {
 	//
 	// 50
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker.\
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker.\\
 	//
 	// By default, this parameter is left empty.
 	//
@@ -17501,6 +17911,8 @@ func (s *ListShareLinkResponse) SetBody(v *ListShareLinkResponseBody) *ListShare
 type ListTagsRequest struct {
 	// The drive ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -17598,6 +18010,8 @@ type ListUploadedPartsRequest struct {
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 322fb07b975f4b0ae1b543fe8475eee4c19eb2b2
@@ -17621,6 +18035,8 @@ type ListUploadedPartsRequest struct {
 	// 7JQX1FswpQ8
 	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
 	// The ID of the upload task.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -17853,7 +18269,7 @@ type MoveFileRequest struct {
 	//
 	// ignore: allows you to move the file by using the same name as an existing file in the destination directory.
 	//
-	// auto_rename: automatically renames the file that has the same name exists in the destination directory. By default, the current point in time is added to the end of the file name. Example: xxx\_20060102\_150405.
+	// auto_rename: automatically renames the file that has the same name exists in the destination directory. By default, the current point in time is added to the end of the file name. Example: xxx_20060102_150405.
 	//
 	// refuse: does not move the file that you want to move but returns the information about the file that has the same name in the destination directory.
 	//
@@ -17865,17 +18281,23 @@ type MoveFileRequest struct {
 	CheckNameMode *string `json:"check_name_mode,omitempty" xml:"check_name_mode,omitempty"`
 	// The drive ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 9520943DC264
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// The ID of the destination parent directory to which you want to move a file or folder. If you want to move a file or folder to the root directory, set this parameter to root.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -18011,14 +18433,22 @@ func (s *MoveFileResponse) SetBody(v *MoveFileResponseBody) *MoveFileResponse {
 }
 
 type QueryOrderPriceRequest struct {
-	Code       *string `json:"code,omitempty" xml:"code,omitempty"`
+	// This parameter is required.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// This parameter is required.
 	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty"`
-	OrderType  *string `json:"order_type,omitempty" xml:"order_type,omitempty"`
-	Package    *string `json:"package,omitempty" xml:"package,omitempty"`
-	Period     *int64  `json:"period,omitempty" xml:"period,omitempty"`
+	// This parameter is required.
+	OrderType *string `json:"order_type,omitempty" xml:"order_type,omitempty"`
+	// This parameter is required.
+	Package *string `json:"package,omitempty" xml:"package,omitempty"`
+	// This parameter is required.
+	Period *int64 `json:"period,omitempty" xml:"period,omitempty"`
+	// This parameter is required.
 	PeriodUnit *string `json:"period_unit,omitempty" xml:"period_unit,omitempty"`
-	TotalSize  *int64  `json:"total_size,omitempty" xml:"total_size,omitempty"`
-	UserCount  *int64  `json:"user_count,omitempty" xml:"user_count,omitempty"`
+	// This parameter is required.
+	TotalSize *int64 `json:"total_size,omitempty" xml:"total_size,omitempty"`
+	// This parameter is required.
+	UserCount *int64 `json:"user_count,omitempty" xml:"user_count,omitempty"`
 }
 
 func (s QueryOrderPriceRequest) String() string {
@@ -18128,14 +18558,20 @@ func (s *QueryOrderPriceResponse) SetBody(v *QueryOrderPriceResponseBody) *Query
 }
 
 type RemoveFaceGroupFileRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Cluster-abc
 	FaceGroupId *string `json:"face_group_id,omitempty" xml:"face_group_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// abcd
@@ -18191,11 +18627,15 @@ func (s *RemoveFaceGroupFileResponse) SetStatusCode(v int32) *RemoveFaceGroupFil
 type RemoveGroupMemberRequest struct {
 	// The ID of the group from which you want to remove a member.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 3e5***2c2
 	GroupId *string `json:"group_id,omitempty" xml:"group_id,omitempty"`
 	// The ID of the member. If member_type is set to user, set this parameter to the ID of the corresponding user.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -18206,6 +18646,8 @@ type RemoveGroupMemberRequest struct {
 	// 	- user
 	//
 	// Note: A group can be a member of only one group. It cannot be a member of multiple groups. A user can be a member of multiple groups.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -18260,11 +18702,15 @@ func (s *RemoveGroupMemberResponse) SetStatusCode(v int32) *RemoveGroupMemberRes
 }
 
 type RemoveStoryFilesRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	DriveId *string                         `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	Files   []*RemoveStoryFilesRequestFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 9132e0d8-fe92-4e56-86c3-f5f112308003
@@ -18295,6 +18741,8 @@ func (s *RemoveStoryFilesRequest) SetStoryId(v string) *RemoveStoryFilesRequest 
 }
 
 type RemoveStoryFilesRequestFiles struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 63e5e4340f76cb3ead5f40f68163f0f967c1a7bf
@@ -18384,11 +18832,15 @@ func (s *RemoveStoryFilesResponse) SetBody(v *RemoveStoryFilesResponseBody) *Rem
 type RestoreFileRequest struct {
 	// The drive ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The ID of the file or folder.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -18505,17 +18957,23 @@ func (s *RestoreFileResponse) SetBody(v *RestoreFileResponseBody) *RestoreFileRe
 type RestoreRevisionRequest struct {
 	// The drive ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 9520943DC264
 	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 	// The version ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -18578,13 +19036,15 @@ func (s *RestoreRevisionResponse) SetBody(v *Revision) *RestoreRevisionResponse 
 type ScanFileRequest struct {
 	// The drive ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file properties to return.
 	//
-	// 	- If you want to return all file properties, set this parameter to \*.
+	// 	- If you want to return all file properties, set this parameter to \\*.
 	//
 	// 	- By default, if you do not specify this parameter, the following properties of a file are returned: - file_id, - drive_id, - parent_file_id, - type, - created_at, - updated_at, - file_extention, - size, - starred, - status, - category, and - permissions.
 	//
@@ -18602,7 +19062,7 @@ type ScanFileRequest struct {
 	//
 	// 50
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker.\
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker.\\
 	//
 	// By default, this parameter is left empty.
 	//
@@ -18753,6 +19213,8 @@ type SearchAddressGroupsRequest struct {
 	BrGeoPoint *string `json:"br_geo_point,omitempty" xml:"br_geo_point,omitempty"`
 	// The drive ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -18876,7 +19338,7 @@ type SearchDomainsRequest struct {
 	//
 	// 50
 	Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker.\
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker.\\
 	//
 	// By default, this parameter is empty.
 	//
@@ -18989,7 +19451,7 @@ type SearchDriveRequest struct {
 	//
 	// 100
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker.\
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker.\\
 	//
 	// By default, this parameter is left empty.
 	//
@@ -19125,7 +19587,7 @@ type SearchFileRequest struct {
 	//
 	// 50
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker.\
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker.\\
 	//
 	// By default, this parameter is left empty.
 	//
@@ -19149,7 +19611,7 @@ type SearchFileRequest struct {
 	//
 	// 	- DESC: sorts the results in descending order.
 	//
-	// You must specify this parameter in the \<field name> \<ASC or DESC> format. Separate multiple field names with commas (,). A preceding field has a higher priority than a following field. Examples:
+	// You must specify this parameter in the \\<field name> \\<ASC or DESC> format. Separate multiple field names with commas (,). A preceding field has a higher priority than a following field. Examples:
 	//
 	// 	- If you want to sort the results based on the file name in ascending order, set this parameter to "name ASC".
 	//
@@ -19162,6 +19624,8 @@ type SearchFileRequest struct {
 	// name
 	OrderBy *string `json:"order_by,omitempty" xml:"order_by,omitempty"`
 	// The search condition. Fuzzy searches based on the file name or directory name are supported. The search condition can be up to 4,096 characters in length.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -19300,7 +19764,7 @@ type SearchShareLinkRequest struct {
 	//
 	// 50
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker.\
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker.\\
 	//
 	// By default, this parameter is left empty.
 	//
@@ -19336,7 +19800,7 @@ type SearchShareLinkRequest struct {
 	//
 	// example:
 	//
-	// created_at>=\"2022-01-18T02:50:00\" and created_at<\"2022-01-19T09:45:28\" and share_name_for_fuzzy match \"HD.mp4\" and status in [\"enabled\", \"disabled\"] and expired_time=\"1970-01-01T00:00:00\"
+	// created_at>=\\"2022-01-18T02:50:00\\" and created_at<\\"2022-01-19T09:45:28\\" and share_name_for_fuzzy match \\"HD.mp4\\" and status in [\\"enabled\\", \\"disabled\\"] and expired_time=\\"1970-01-01T00:00:00\\"
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
 	// Specifies whether to return the total number of returned results.
 	//
@@ -19459,6 +19923,8 @@ func (s *SearchShareLinkResponse) SetBody(v *SearchShareLinkResponseBody) *Searc
 }
 
 type SearchSimilarImageClustersRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -19600,14 +20066,18 @@ type SearchStoriesRequest struct {
 	// example:
 	//
 	// video/snapshot,t_1000,f_jpg,w_0,h_0,m_fast,ar_auto
-	CoverVideoThumbnailProcess *string                              `json:"cover_video_thumbnail_process,omitempty" xml:"cover_video_thumbnail_process,omitempty"`
-	CreateTimeRange            *SearchStoriesRequestCreateTimeRange `json:"create_time_range,omitempty" xml:"create_time_range,omitempty" type:"Struct"`
+	CoverVideoThumbnailProcess *string `json:"cover_video_thumbnail_process,omitempty" xml:"cover_video_thumbnail_process,omitempty"`
+	// if can be null:
+	// true
+	CreateTimeRange *SearchStoriesRequestCreateTimeRange `json:"create_time_range,omitempty" xml:"create_time_range,omitempty" type:"Struct"`
 	// Deprecated
 	//
 	// example:
 	//
 	// key1=value1,key2!=value2
 	CustomLabels *string `json:"custom_labels,omitempty" xml:"custom_labels,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -19628,13 +20098,17 @@ type SearchStoriesRequest struct {
 	// example:
 	//
 	// CreateTime
-	Sort              *string                                `json:"sort,omitempty" xml:"sort,omitempty"`
+	Sort *string `json:"sort,omitempty" xml:"sort,omitempty"`
+	// if can be null:
+	// true
 	StoryEndTimeRange *SearchStoriesRequestStoryEndTimeRange `json:"story_end_time_range,omitempty" xml:"story_end_time_range,omitempty" type:"Struct"`
 	// example:
 	//
 	// 9132e0d8-fe92-4e56-86c3-f5f112308003
-	StoryId             *string                                  `json:"story_id,omitempty" xml:"story_id,omitempty"`
-	StoryName           *string                                  `json:"story_name,omitempty" xml:"story_name,omitempty"`
+	StoryId   *string `json:"story_id,omitempty" xml:"story_id,omitempty"`
+	StoryName *string `json:"story_name,omitempty" xml:"story_name,omitempty"`
+	// if can be null:
+	// true
 	StoryStartTimeRange *SearchStoriesRequestStoryStartTimeRange `json:"story_start_time_range,omitempty" xml:"story_start_time_range,omitempty" type:"Struct"`
 	// example:
 	//
@@ -19646,6 +20120,9 @@ type SearchStoriesRequest struct {
 	//
 	// 900
 	UrlExpireSec *int64 `json:"url_expire_sec,omitempty" xml:"url_expire_sec,omitempty"`
+	// if can be null:
+	// true
+	//
 	// example:
 	//
 	// false
@@ -19900,7 +20377,7 @@ type SearchUserRequest struct {
 	//
 	// 100
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker.\
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker.\\
 	//
 	// By default, this parameter is left empty.
 	//
@@ -20076,6 +20553,8 @@ type TokenRequest struct {
 	Assertion *string `json:"assertion,omitempty" xml:"assertion,omitempty"`
 	// The AppId of the application that is created in the Drive and Photo Service console.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1Zu***flH
@@ -20099,6 +20578,8 @@ type TokenRequest struct {
 	// refresh_token: generates an access token by using the refresh token that is returned after the authorization process is complete.
 	//
 	// urn:ietf:params:oauth:grant-type:jwt-bearer: generates an access token by using a JWT assertion.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -20193,11 +20674,15 @@ func (s *TokenResponse) SetBody(v *Token) *TokenResponse {
 type TrashFileRequest struct {
 	// The drive ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The ID of the file or folder.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -20316,14 +20801,20 @@ type UnLinkAccountRequest struct {
 	//
 	// 1
 	Extra *string `json:"extra,omitempty" xml:"extra,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 139****
 	Identity *string `json:"identity,omitempty" xml:"identity,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// mobile
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// uid1
@@ -20385,6 +20876,8 @@ type UpdateDomainRequest struct {
 	// The description of the domain.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The domain ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -20502,6 +20995,8 @@ type UpdateDriveRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The drive ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -20604,6 +21099,8 @@ func (s *UpdateDriveResponse) SetBody(v *Drive) *UpdateDriveResponse {
 type UpdateFacegroupRequest struct {
 	// The drive ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -20615,6 +21112,8 @@ type UpdateFacegroupRequest struct {
 	// face1
 	GroupCoverFaceId *string `json:"group_cover_face_id,omitempty" xml:"group_cover_face_id,omitempty"`
 	// The ID of the face-based group. You can call the ListFacegroups operation to query the group ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -20726,7 +21225,7 @@ type UpdateFileRequest struct {
 	//
 	// ignore: allows you to modify the file by using the same name as an existing file on the cloud.
 	//
-	// auto_rename: automatically renames the file that has the same name on the cloud. By default, the current point in time is added to the end of the file name. Example: xxx\_20060102\_150405.
+	// auto_rename: automatically renames the file that has the same name on the cloud. By default, the current point in time is added to the end of the file name. Example: xxx_20060102_150405.
 	//
 	// refuse: does not modify the file that you want to modify but returns the information about the file that has the same name on the cloud.
 	//
@@ -20740,11 +21239,15 @@ type UpdateFileRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The drive ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -20869,6 +21372,8 @@ type UpdateGroupRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The ID of the group that you want to modify.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2e43ec8427dd45f19431b7504649a1b4
@@ -20944,6 +21449,8 @@ type UpdateIdentityToBenefitPkgMappingRequest struct {
 	Amount *int64 `json:"amount,omitempty" xml:"amount,omitempty"`
 	// The unique identifier of the benefit package.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 40cb7794c9294
@@ -20960,11 +21467,15 @@ type UpdateIdentityToBenefitPkgMappingRequest struct {
 	//
 	// If you call this operation to manage the benefits of a user, set this parameter to the ID of the user.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// user123
 	IdentityId *string `json:"identity_id,omitempty" xml:"identity_id,omitempty"`
 	// The type of the entity. If you call this operation to manage the benefits of a user, set this parameter to user.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -21031,11 +21542,15 @@ func (s *UpdateIdentityToBenefitPkgMappingResponse) SetStatusCode(v int32) *Upda
 type UpdateRevisionRequest struct {
 	// The drive ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
 	// The file ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -21058,6 +21573,8 @@ type UpdateRevisionRequest struct {
 	// aaa
 	RevisionDescription *string `json:"revision_description,omitempty" xml:"revision_description,omitempty"`
 	// The version ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -21197,6 +21714,8 @@ type UpdateShareLinkRequest struct {
 	// 100
 	SaveLimit *int64 `json:"save_limit,omitempty" xml:"save_limit,omitempty"`
 	// The share ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -21351,17 +21870,26 @@ func (s *UpdateShareLinkResponse) SetBody(v *ShareLink) *UpdateShareLinkResponse
 }
 
 type UpdateStoryRequest struct {
+	// if can be null:
+	// true
 	Cover *UpdateStoryRequestCover `json:"cover,omitempty" xml:"cover,omitempty" type:"Struct"`
 	// Deprecated
 	CustomLabels map[string]*string `json:"custom_labels,omitempty" xml:"custom_labels,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 9132e0d8-fe92-4e56-86c3-f5f112308003
 	StoryId *string `json:"story_id,omitempty" xml:"story_id,omitempty"`
+	// if can be null:
+	// true
+	//
 	// example:
 	//
 	// name1
@@ -21547,6 +22075,8 @@ type UpdateUserRequest struct {
 	UserData map[string]*string `json:"user_data,omitempty" xml:"user_data,omitempty"`
 	// The user ID. The ID can be up to 64 characters in length and cannot contain a number sign (#).
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// c9b7a5aa04d14ae3867fdc886fa01da4
@@ -21664,7 +22194,6 @@ func (s *UpdateUserResponse) SetBody(v *User) *UpdateUserResponse {
 
 type Client struct {
 	openapi.Client
-	Client_ spi.Client
 }
 
 func NewClient(config *openapi.Config) (*Client, error) {
@@ -21678,18 +22207,29 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	interfaceSPI, _err := gatewayclient.NewClient()
+	gatewayClient, _err := gatewayclient.NewClient()
 	if _err != nil {
 		return _err
 	}
 
-	client.Spi = interfaceSPI
+	client.Spi = gatewayClient
 	client.SignatureAlgorithm = tea.String("v2")
 	
 	client.EndpointRule = tea.String("")
 	return nil
 }
 
+// Summary:
+//
+// Adds a member to a group.
+//
+// @param request - AddGroupMemberRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddGroupMemberResponse
 func (client *Client) AddGroupMemberWithOptions(request *AddGroupMemberRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddGroupMemberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21732,6 +22272,13 @@ func (client *Client) AddGroupMemberWithOptions(request *AddGroupMemberRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a member to a group.
+//
+// @param request - AddGroupMemberRequest
+//
+// @return AddGroupMemberResponse
 func (client *Client) AddGroupMember(request *AddGroupMemberRequest) (_result *AddGroupMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -21744,6 +22291,17 @@ func (client *Client) AddGroupMember(request *AddGroupMemberRequest) (_result *A
 	return _result, _err
 }
 
+// Summary:
+//
+// 故事添加文件
+//
+// @param request - AddStoryFilesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddStoryFilesResponse
 func (client *Client) AddStoryFilesWithOptions(request *AddStoryFilesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddStoryFilesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21786,6 +22344,13 @@ func (client *Client) AddStoryFilesWithOptions(request *AddStoryFilesRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 故事添加文件
+//
+// @param request - AddStoryFilesRequest
+//
+// @return AddStoryFilesResponse
 func (client *Client) AddStoryFiles(request *AddStoryFilesRequest) (_result *AddStoryFilesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -21798,6 +22363,10 @@ func (client *Client) AddStoryFiles(request *AddStoryFilesRequest) (_result *Add
 	return _result, _err
 }
 
+// Summary:
+//
+// Assigns a group administrator role to a user.
+//
 // Description:
 //
 // You can call this operation to assign a group administrator role to a user.
@@ -21855,6 +22424,10 @@ func (client *Client) AssignRoleWithOptions(request *AssignRoleRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// Assigns a group administrator role to a user.
+//
 // Description:
 //
 // You can call this operation to assign a group administrator role to a user.
@@ -21874,6 +22447,10 @@ func (client *Client) AssignRole(request *AssignRoleRequest) (_result *AssignRol
 	return _result, _err
 }
 
+// Summary:
+//
+// Requests permissions by using OAuth 2.0.
+//
 // Description:
 //
 // For more information, see "OAuth 2.0 For Web Server Applications" at [OAuth 2.0 For Web Server Applications](https://www.alibabacloud.com/help/en/pds/drive-and-photo-service-dev/user-guide/oauth-2-0-access-process-for-web-server-applications) in User Guide.
@@ -21949,6 +22526,10 @@ func (client *Client) AuthorizeWithOptions(tmpReq *AuthorizeRequest, headers map
 	return _result, _err
 }
 
+// Summary:
+//
+// Requests permissions by using OAuth 2.0.
+//
 // Description:
 //
 // For more information, see "OAuth 2.0 For Web Server Applications" at [OAuth 2.0 For Web Server Applications](https://www.alibabacloud.com/help/en/pds/drive-and-photo-service-dev/user-guide/oauth-2-0-access-process-for-web-server-applications) in User Guide.
@@ -21968,6 +22549,17 @@ func (client *Client) Authorize(request *AuthorizeRequest) (_result *AuthorizeRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls multiple operations at a time to improve call efficiency.
+//
+// @param request - BatchRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchResponse
 func (client *Client) BatchWithOptions(request *BatchRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BatchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22006,6 +22598,13 @@ func (client *Client) BatchWithOptions(request *BatchRequest, headers map[string
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls multiple operations at a time to improve call efficiency.
+//
+// @param request - BatchRequest
+//
+// @return BatchResponse
 func (client *Client) Batch(request *BatchRequest) (_result *BatchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22018,6 +22617,10 @@ func (client *Client) Batch(request *BatchRequest) (_result *BatchResponse, _err
 	return _result, _err
 }
 
+// Summary:
+//
+// Cancels a role.
+//
 // Description:
 //
 // You can cancel only the group administrator role.
@@ -22075,6 +22678,10 @@ func (client *Client) CancelAssignRoleWithOptions(request *CancelAssignRoleReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Cancels a role.
+//
 // Description:
 //
 // You can cancel only the group administrator role.
@@ -22094,6 +22701,17 @@ func (client *Client) CancelAssignRole(request *CancelAssignRoleRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a share link.
+//
+// @param request - CancelShareLinkRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelShareLinkResponse
 func (client *Client) CancelShareLinkWithOptions(request *CancelShareLinkRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelShareLinkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22128,6 +22746,13 @@ func (client *Client) CancelShareLinkWithOptions(request *CancelShareLinkRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a share link.
+//
+// @param request - CancelShareLinkRequest
+//
+// @return CancelShareLinkResponse
 func (client *Client) CancelShareLink(request *CancelShareLinkRequest) (_result *CancelShareLinkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22140,6 +22765,17 @@ func (client *Client) CancelShareLink(request *CancelShareLinkRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Empties the recycle bin.
+//
+// @param request - ClearRecyclebinRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClearRecyclebinResponse
 func (client *Client) ClearRecyclebinWithOptions(request *ClearRecyclebinRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ClearRecyclebinResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22174,6 +22810,13 @@ func (client *Client) ClearRecyclebinWithOptions(request *ClearRecyclebinRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Empties the recycle bin.
+//
+// @param request - ClearRecyclebinRequest
+//
+// @return ClearRecyclebinResponse
 func (client *Client) ClearRecyclebin(request *ClearRecyclebinRequest) (_result *ClearRecyclebinResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22186,6 +22829,17 @@ func (client *Client) ClearRecyclebin(request *ClearRecyclebinRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Completes the upload of a file.
+//
+// @param request - CompleteFileRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CompleteFileResponse
 func (client *Client) CompleteFileWithOptions(request *CompleteFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CompleteFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22228,6 +22882,13 @@ func (client *Client) CompleteFileWithOptions(request *CompleteFileRequest, head
 	return _result, _err
 }
 
+// Summary:
+//
+// Completes the upload of a file.
+//
+// @param request - CompleteFileRequest
+//
+// @return CompleteFileResponse
 func (client *Client) CompleteFile(request *CompleteFileRequest) (_result *CompleteFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22240,6 +22901,17 @@ func (client *Client) CompleteFile(request *CompleteFileRequest) (_result *Compl
 	return _result, _err
 }
 
+// Summary:
+//
+// Copies a file or folder.
+//
+// @param request - CopyFileRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CopyFileResponse
 func (client *Client) CopyFileWithOptions(request *CopyFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CopyFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22294,6 +22966,13 @@ func (client *Client) CopyFileWithOptions(request *CopyFileRequest, headers map[
 	return _result, _err
 }
 
+// Summary:
+//
+// Copies a file or folder.
+//
+// @param request - CopyFileRequest
+//
+// @return CopyFileResponse
 func (client *Client) CopyFile(request *CopyFileRequest) (_result *CopyFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22306,6 +22985,17 @@ func (client *Client) CopyFile(request *CopyFileRequest) (_result *CopyFileRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建自定义故事
+//
+// @param request - CreateCustomizedStoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCustomizedStoryResponse
 func (client *Client) CreateCustomizedStoryWithOptions(request *CreateCustomizedStoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateCustomizedStoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22364,6 +23054,13 @@ func (client *Client) CreateCustomizedStoryWithOptions(request *CreateCustomized
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建自定义故事
+//
+// @param request - CreateCustomizedStoryRequest
+//
+// @return CreateCustomizedStoryResponse
 func (client *Client) CreateCustomizedStory(request *CreateCustomizedStoryRequest) (_result *CreateCustomizedStoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22376,6 +23073,10 @@ func (client *Client) CreateCustomizedStory(request *CreateCustomizedStoryReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Create domain.
+//
 // Description:
 //
 // If you want to perform secondary operations based on Drive and Photo Service and perform fine-grained control on your tenants, you can use the parent-child domain feature of Drive and Photo Service. For more information, join the DingTalk group whose ID is 23146118.
@@ -22445,6 +23146,10 @@ func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, head
 	return _result, _err
 }
 
+// Summary:
+//
+// Create domain.
+//
 // Description:
 //
 // If you want to perform secondary operations based on Drive and Photo Service and perform fine-grained control on your tenants, you can use the parent-child domain feature of Drive and Photo Service. For more information, join the DingTalk group whose ID is 23146118.
@@ -22464,6 +23169,17 @@ func (client *Client) CreateDomain(request *CreateDomainRequest) (_result *Creat
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a drive.
+//
+// @param request - CreateDriveRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDriveResponse
 func (client *Client) CreateDriveWithOptions(request *CreateDriveRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDriveResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22526,6 +23242,13 @@ func (client *Client) CreateDriveWithOptions(request *CreateDriveRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a drive.
+//
+// @param request - CreateDriveRequest
+//
+// @return CreateDriveResponse
 func (client *Client) CreateDrive(request *CreateDriveRequest) (_result *CreateDriveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22538,6 +23261,17 @@ func (client *Client) CreateDrive(request *CreateDriveRequest) (_result *CreateD
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a file or folder.
+//
+// @param request - CreateFileRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFileResponse
 func (client *Client) CreateFileWithOptions(request *CreateFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22652,6 +23386,13 @@ func (client *Client) CreateFileWithOptions(request *CreateFileRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a file or folder.
+//
+// @param request - CreateFileRequest
+//
+// @return CreateFileResponse
 func (client *Client) CreateFile(request *CreateFileRequest) (_result *CreateFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22664,6 +23405,17 @@ func (client *Client) CreateFile(request *CreateFileRequest) (_result *CreateFil
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a group.
+//
+// @param request - CreateGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGroupResponse
 func (client *Client) CreateGroupWithOptions(request *CreateGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22710,6 +23462,13 @@ func (client *Client) CreateGroupWithOptions(request *CreateGroupRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a group.
+//
+// @param request - CreateGroupRequest
+//
+// @return CreateGroupResponse
 func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22722,6 +23481,10 @@ func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateG
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a mapping between an entity and a benefit package. You can call this operation to associate a benefit package with a user.
+//
 // Description:
 //
 // If you need to manage a large number of users based on Drive and Photo Service, you can control the features and quotas that users can use based on the benefits to which they are entitled. For more information, join the DingTalk group (ID 23146118).
@@ -22783,6 +23546,10 @@ func (client *Client) CreateIdentityToBenefitPkgMappingWithOptions(request *Crea
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a mapping between an entity and a benefit package. You can call this operation to associate a benefit package with a user.
+//
 // Description:
 //
 // If you need to manage a large number of users based on Drive and Photo Service, you can control the features and quotas that users can use based on the benefits to which they are entitled. For more information, join the DingTalk group (ID 23146118).
@@ -22802,6 +23569,17 @@ func (client *Client) CreateIdentityToBenefitPkgMapping(request *CreateIdentityT
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建凌霄订单
+//
+// @param request - CreateOrderRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOrderResponse
 func (client *Client) CreateOrderWithOptions(request *CreateOrderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22872,6 +23650,13 @@ func (client *Client) CreateOrderWithOptions(request *CreateOrderRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建凌霄订单
+//
+// @param request - CreateOrderRequest
+//
+// @return CreateOrderResponse
 func (client *Client) CreateOrder(request *CreateOrderRequest) (_result *CreateOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22884,6 +23669,10 @@ func (client *Client) CreateOrder(request *CreateOrderRequest) (_result *CreateO
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a share URL.
+//
 // Description:
 //
 // A share is a file view container. You can grant anonymous users the permissions to access files in the user drive by using the share URL. Anonymous users can access the files based on the granted permissions.
@@ -22901,6 +23690,14 @@ func (client *Client) CreateShareLinkWithOptions(request *CreateShareLinkRequest
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Creatable)) {
+		body["creatable"] = request.Creatable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreatableFileIdList)) {
+		body["creatable_file_id_list"] = request.CreatableFileIdList
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["description"] = request.Description
 	}
@@ -22933,16 +23730,8 @@ func (client *Client) CreateShareLinkWithOptions(request *CreateShareLinkRequest
 		body["file_id_list"] = request.FileIdList
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OfficeEditable)) {
-		body["office_editable"] = request.OfficeEditable
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.PreviewLimit)) {
 		body["preview_limit"] = request.PreviewLimit
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SaveDownloadLimit)) {
-		body["save_download_limit"] = request.SaveDownloadLimit
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SaveLimit)) {
@@ -22989,6 +23778,10 @@ func (client *Client) CreateShareLinkWithOptions(request *CreateShareLinkRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a share URL.
+//
 // Description:
 //
 // A share is a file view container. You can grant anonymous users the permissions to access files in the user drive by using the share URL. Anonymous users can access the files based on the granted permissions.
@@ -23008,6 +23801,17 @@ func (client *Client) CreateShareLink(request *CreateShareLinkRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建相似图片聚类任务
+//
+// @param request - CreateSimilarImageClusterTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSimilarImageClusterTaskResponse
 func (client *Client) CreateSimilarImageClusterTaskWithOptions(request *CreateSimilarImageClusterTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateSimilarImageClusterTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23042,6 +23846,13 @@ func (client *Client) CreateSimilarImageClusterTaskWithOptions(request *CreateSi
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建相似图片聚类任务
+//
+// @param request - CreateSimilarImageClusterTaskRequest
+//
+// @return CreateSimilarImageClusterTaskResponse
 func (client *Client) CreateSimilarImageClusterTask(request *CreateSimilarImageClusterTaskRequest) (_result *CreateSimilarImageClusterTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -23054,6 +23865,17 @@ func (client *Client) CreateSimilarImageClusterTask(request *CreateSimilarImageC
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建推荐故事
+//
+// @param request - CreateStoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateStoryResponse
 func (client *Client) CreateStoryWithOptions(request *CreateStoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateStoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23128,6 +23950,13 @@ func (client *Client) CreateStoryWithOptions(request *CreateStoryRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建推荐故事
+//
+// @param request - CreateStoryRequest
+//
+// @return CreateStoryResponse
 func (client *Client) CreateStory(request *CreateStoryRequest) (_result *CreateStoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -23140,6 +23969,17 @@ func (client *Client) CreateStory(request *CreateStoryRequest) (_result *CreateS
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a user.
+//
+// @param request - CreateUserRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateUserResponse
 func (client *Client) CreateUserWithOptions(request *CreateUserRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23214,6 +24054,13 @@ func (client *Client) CreateUserWithOptions(request *CreateUserRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a user.
+//
+// @param request - CreateUserRequest
+//
+// @return CreateUserResponse
 func (client *Client) CreateUser(request *CreateUserRequest) (_result *CreateUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -23226,6 +24073,17 @@ func (client *Client) CreateUser(request *CreateUserRequest) (_result *CreateUse
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取文件内容安全信息
+//
+// @param request - CsiGetFileInfoRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CsiGetFileInfoResponse
 func (client *Client) CsiGetFileInfoWithOptions(request *CsiGetFileInfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CsiGetFileInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23268,6 +24126,13 @@ func (client *Client) CsiGetFileInfoWithOptions(request *CsiGetFileInfoRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取文件内容安全信息
+//
+// @param request - CsiGetFileInfoRequest
+//
+// @return CsiGetFileInfoResponse
 func (client *Client) CsiGetFileInfo(request *CsiGetFileInfoRequest) (_result *CsiGetFileInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -23280,6 +24145,17 @@ func (client *Client) CsiGetFileInfo(request *CsiGetFileInfoRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// Delete the domain
+//
+// @param request - DeleteDomainRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDomainResponse
 func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23314,6 +24190,13 @@ func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, head
 	return _result, _err
 }
 
+// Summary:
+//
+// Delete the domain
+//
+// @param request - DeleteDomainRequest
+//
+// @return DeleteDomainResponse
 func (client *Client) DeleteDomain(request *DeleteDomainRequest) (_result *DeleteDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -23326,6 +24209,17 @@ func (client *Client) DeleteDomain(request *DeleteDomainRequest) (_result *Delet
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a drive.
+//
+// @param request - DeleteDriveRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDriveResponse
 func (client *Client) DeleteDriveWithOptions(request *DeleteDriveRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteDriveResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23360,6 +24254,13 @@ func (client *Client) DeleteDriveWithOptions(request *DeleteDriveRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a drive.
+//
+// @param request - DeleteDriveRequest
+//
+// @return DeleteDriveResponse
 func (client *Client) DeleteDrive(request *DeleteDriveRequest) (_result *DeleteDriveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -23372,6 +24273,17 @@ func (client *Client) DeleteDrive(request *DeleteDriveRequest) (_result *DeleteD
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a file or folder.
+//
+// @param request - DeleteFileRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFileResponse
 func (client *Client) DeleteFileWithOptions(request *DeleteFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23410,6 +24322,13 @@ func (client *Client) DeleteFileWithOptions(request *DeleteFileRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a file or folder.
+//
+// @param request - DeleteFileRequest
+//
+// @return DeleteFileResponse
 func (client *Client) DeleteFile(request *DeleteFileRequest) (_result *DeleteFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -23422,6 +24341,17 @@ func (client *Client) DeleteFile(request *DeleteFileRequest) (_result *DeleteFil
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes groups. Before you delete a group, make sure that no other groups or users exist in the group. Otherwise, the group fails to be deleted.
+//
+// @param request - DeleteGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteGroupResponse
 func (client *Client) DeleteGroupWithOptions(request *DeleteGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23456,6 +24386,13 @@ func (client *Client) DeleteGroupWithOptions(request *DeleteGroupRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes groups. Before you delete a group, make sure that no other groups or users exist in the group. Otherwise, the group fails to be deleted.
+//
+// @param request - DeleteGroupRequest
+//
+// @return DeleteGroupResponse
 func (client *Client) DeleteGroup(request *DeleteGroupRequest) (_result *DeleteGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -23468,6 +24405,17 @@ func (client *Client) DeleteGroup(request *DeleteGroupRequest) (_result *DeleteG
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a historical version of a file. You cannot delete the latest version of a file.
+//
+// @param request - DeleteRevisionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRevisionResponse
 func (client *Client) DeleteRevisionWithOptions(request *DeleteRevisionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteRevisionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23510,6 +24458,13 @@ func (client *Client) DeleteRevisionWithOptions(request *DeleteRevisionRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a historical version of a file. You cannot delete the latest version of a file.
+//
+// @param request - DeleteRevisionRequest
+//
+// @return DeleteRevisionResponse
 func (client *Client) DeleteRevision(request *DeleteRevisionRequest) (_result *DeleteRevisionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -23522,6 +24477,17 @@ func (client *Client) DeleteRevision(request *DeleteRevisionRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除故事
+//
+// @param request - DeleteStoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteStoryResponse
 func (client *Client) DeleteStoryWithOptions(request *DeleteStoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteStoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23560,6 +24526,13 @@ func (client *Client) DeleteStoryWithOptions(request *DeleteStoryRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除故事
+//
+// @param request - DeleteStoryRequest
+//
+// @return DeleteStoryResponse
 func (client *Client) DeleteStory(request *DeleteStoryRequest) (_result *DeleteStoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -23572,6 +24545,17 @@ func (client *Client) DeleteStory(request *DeleteStoryRequest) (_result *DeleteS
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a user.
+//
+// @param request - DeleteUserRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUserResponse
 func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23606,6 +24590,13 @@ func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a user.
+//
+// @param request - DeleteUserRequest
+//
+// @return DeleteUserResponse
 func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -23618,6 +24609,17 @@ func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUse
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the cursor of incremental information.
+//
+// @param request - DeltaGetLastCursorRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeltaGetLastCursorResponse
 func (client *Client) DeltaGetLastCursorWithOptions(request *DeltaGetLastCursorRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeltaGetLastCursorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23656,6 +24658,13 @@ func (client *Client) DeltaGetLastCursorWithOptions(request *DeltaGetLastCursorR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the cursor of incremental information.
+//
+// @param request - DeltaGetLastCursorRequest
+//
+// @return DeltaGetLastCursorResponse
 func (client *Client) DeltaGetLastCursor(request *DeltaGetLastCursorRequest) (_result *DeltaGetLastCursorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -23668,6 +24677,10 @@ func (client *Client) DeltaGetLastCursor(request *DeltaGetLastCursorRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Downloads a file.
+//
 // Description:
 //
 // For information about best practices for downloading a file.
@@ -23733,6 +24746,10 @@ func (client *Client) DownloadFileWithOptions(request *DownloadFileRequest, head
 	return _result, _err
 }
 
+// Summary:
+//
+// Downloads a file.
+//
 // Description:
 //
 // For information about best practices for downloading a file.
@@ -23752,6 +24769,17 @@ func (client *Client) DownloadFile(request *DownloadFileRequest) (_result *Downl
 	return _result, _err
 }
 
+// Summary:
+//
+// Grants permissions to access files to a user or group.
+//
+// @param request - FileAddPermissionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FileAddPermissionResponse
 func (client *Client) FileAddPermissionWithOptions(request *FileAddPermissionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *FileAddPermissionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23794,6 +24822,13 @@ func (client *Client) FileAddPermissionWithOptions(request *FileAddPermissionReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Grants permissions to access files to a user or group.
+//
+// @param request - FileAddPermissionRequest
+//
+// @return FileAddPermissionResponse
 func (client *Client) FileAddPermission(request *FileAddPermissionRequest) (_result *FileAddPermissionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -23806,6 +24841,17 @@ func (client *Client) FileAddPermission(request *FileAddPermissionRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes custom tags from a file.
+//
+// @param request - FileDeleteUserTagsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FileDeleteUserTagsResponse
 func (client *Client) FileDeleteUserTagsWithOptions(request *FileDeleteUserTagsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *FileDeleteUserTagsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23848,6 +24894,13 @@ func (client *Client) FileDeleteUserTagsWithOptions(request *FileDeleteUserTagsR
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes custom tags from a file.
+//
+// @param request - FileDeleteUserTagsRequest
+//
+// @return FileDeleteUserTagsResponse
 func (client *Client) FileDeleteUserTags(request *FileDeleteUserTagsRequest) (_result *FileDeleteUserTagsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -23860,6 +24913,17 @@ func (client *Client) FileDeleteUserTags(request *FileDeleteUserTagsRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the sharing authorization records of a file.
+//
+// @param request - FileListPermissionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FileListPermissionResponse
 func (client *Client) FileListPermissionWithOptions(request *FileListPermissionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *FileListPermissionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23898,6 +24962,13 @@ func (client *Client) FileListPermissionWithOptions(request *FileListPermissionR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the sharing authorization records of a file.
+//
+// @param request - FileListPermissionRequest
+//
+// @return FileListPermissionResponse
 func (client *Client) FileListPermission(request *FileListPermissionRequest) (_result *FileListPermissionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -23910,6 +24981,10 @@ func (client *Client) FileListPermission(request *FileListPermissionRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds custom tags to a file.
+//
 // Description:
 //
 // This operation is an incremental update operation. Take note of the following items:
@@ -23969,6 +25044,10 @@ func (client *Client) FilePutUserTagsWithOptions(request *FilePutUserTagsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds custom tags to a file.
+//
 // Description:
 //
 // This operation is an incremental update operation. Take note of the following items:
@@ -23994,6 +25073,17 @@ func (client *Client) FilePutUserTags(request *FilePutUserTagsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Cancels the permissions on a shared file.
+//
+// @param request - FileRemovePermissionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FileRemovePermissionResponse
 func (client *Client) FileRemovePermissionWithOptions(request *FileRemovePermissionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *FileRemovePermissionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24036,6 +25126,13 @@ func (client *Client) FileRemovePermissionWithOptions(request *FileRemovePermiss
 	return _result, _err
 }
 
+// Summary:
+//
+// Cancels the permissions on a shared file.
+//
+// @param request - FileRemovePermissionRequest
+//
+// @return FileRemovePermissionResponse
 func (client *Client) FileRemovePermission(request *FileRemovePermissionRequest) (_result *FileRemovePermissionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24048,6 +25145,17 @@ func (client *Client) FileRemovePermission(request *FileRemovePermissionRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about an asynchronous task.
+//
+// @param request - GetAsyncTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAsyncTaskResponse
 func (client *Client) GetAsyncTaskWithOptions(request *GetAsyncTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAsyncTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24082,6 +25190,13 @@ func (client *Client) GetAsyncTaskWithOptions(request *GetAsyncTaskRequest, head
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about an asynchronous task.
+//
+// @param request - GetAsyncTaskRequest
+//
+// @return GetAsyncTaskResponse
 func (client *Client) GetAsyncTask(request *GetAsyncTaskRequest) (_result *GetAsyncTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24094,6 +25209,17 @@ func (client *Client) GetAsyncTask(request *GetAsyncTaskRequest) (_result *GetAs
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the default drive of a user.
+//
+// @param request - GetDefaultDriveRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDefaultDriveResponse
 func (client *Client) GetDefaultDriveWithOptions(request *GetDefaultDriveRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDefaultDriveResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24128,6 +25254,13 @@ func (client *Client) GetDefaultDriveWithOptions(request *GetDefaultDriveRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the default drive of a user.
+//
+// @param request - GetDefaultDriveRequest
+//
+// @return GetDefaultDriveResponse
 func (client *Client) GetDefaultDrive(request *GetDefaultDriveRequest) (_result *GetDefaultDriveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24140,6 +25273,17 @@ func (client *Client) GetDefaultDrive(request *GetDefaultDriveRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Get domain information.
+//
+// @param request - GetDomainRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDomainResponse
 func (client *Client) GetDomainWithOptions(request *GetDomainRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24182,6 +25326,13 @@ func (client *Client) GetDomainWithOptions(request *GetDomainRequest, headers ma
 	return _result, _err
 }
 
+// Summary:
+//
+// Get domain information.
+//
+// @param request - GetDomainRequest
+//
+// @return GetDomainResponse
 func (client *Client) GetDomain(request *GetDomainRequest) (_result *GetDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24194,6 +25345,15 @@ func (client *Client) GetDomain(request *GetDomainRequest) (_result *GetDomainRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取domain限额
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDomainQuotaResponse
 func (client *Client) GetDomainQuotaWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDomainQuotaResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -24218,6 +25378,11 @@ func (client *Client) GetDomainQuotaWithOptions(headers map[string]*string, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取domain限额
+//
+// @return GetDomainQuotaResponse
 func (client *Client) GetDomainQuota() (_result *GetDomainQuotaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24230,6 +25395,17 @@ func (client *Client) GetDomainQuota() (_result *GetDomainQuotaResponse, _err er
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the download URL of a file. For more information about best practices, visit https://help.aliyun.com/document_detail/175889.html.
+//
+// @param request - GetDownloadUrlRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDownloadUrlResponse
 func (client *Client) GetDownloadUrlWithOptions(request *GetDownloadUrlRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDownloadUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24280,6 +25456,13 @@ func (client *Client) GetDownloadUrlWithOptions(request *GetDownloadUrlRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the download URL of a file. For more information about best practices, visit https://help.aliyun.com/document_detail/175889.html.
+//
+// @param request - GetDownloadUrlRequest
+//
+// @return GetDownloadUrlResponse
 func (client *Client) GetDownloadUrl(request *GetDownloadUrlRequest) (_result *GetDownloadUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24292,6 +25475,17 @@ func (client *Client) GetDownloadUrl(request *GetDownloadUrlRequest) (_result *G
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a drive.
+//
+// @param request - GetDriveRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDriveResponse
 func (client *Client) GetDriveWithOptions(request *GetDriveRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDriveResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24326,6 +25520,13 @@ func (client *Client) GetDriveWithOptions(request *GetDriveRequest, headers map[
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a drive.
+//
+// @param request - GetDriveRequest
+//
+// @return GetDriveResponse
 func (client *Client) GetDrive(request *GetDriveRequest) (_result *GetDriveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24338,6 +25539,17 @@ func (client *Client) GetDrive(request *GetDriveRequest) (_result *GetDriveRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a file.
+//
+// @param request - GetFileRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFileResponse
 func (client *Client) GetFileWithOptions(request *GetFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24392,6 +25604,13 @@ func (client *Client) GetFileWithOptions(request *GetFileRequest, headers map[st
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a file.
+//
+// @param request - GetFileRequest
+//
+// @return GetFileResponse
 func (client *Client) GetFile(request *GetFileRequest) (_result *GetFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24404,6 +25623,17 @@ func (client *Client) GetFile(request *GetFileRequest) (_result *GetFileResponse
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a group.
+//
+// @param request - GetGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetGroupResponse
 func (client *Client) GetGroupWithOptions(request *GetGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24438,6 +25668,13 @@ func (client *Client) GetGroupWithOptions(request *GetGroupRequest, headers map[
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a group.
+//
+// @param request - GetGroupRequest
+//
+// @return GetGroupResponse
 func (client *Client) GetGroup(request *GetGroupRequest) (_result *GetGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24450,6 +25687,17 @@ func (client *Client) GetGroup(request *GetGroupRequest) (_result *GetGroupRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the mapping between an entity and a benefit package. You can call this operation to query the benefit package that is associated with a user.
+//
+// @param request - GetIdentityToBenefitPkgMappingRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetIdentityToBenefitPkgMappingResponse
 func (client *Client) GetIdentityToBenefitPkgMappingWithOptions(request *GetIdentityToBenefitPkgMappingRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetIdentityToBenefitPkgMappingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24492,6 +25740,13 @@ func (client *Client) GetIdentityToBenefitPkgMappingWithOptions(request *GetIden
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the mapping between an entity and a benefit package. You can call this operation to query the benefit package that is associated with a user.
+//
+// @param request - GetIdentityToBenefitPkgMappingRequest
+//
+// @return GetIdentityToBenefitPkgMappingResponse
 func (client *Client) GetIdentityToBenefitPkgMapping(request *GetIdentityToBenefitPkgMappingRequest) (_result *GetIdentityToBenefitPkgMappingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24504,6 +25759,17 @@ func (client *Client) GetIdentityToBenefitPkgMapping(request *GetIdentityToBenef
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用户认证方式详情
+//
+// @param request - GetLinkInfoRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLinkInfoResponse
 func (client *Client) GetLinkInfoWithOptions(request *GetLinkInfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetLinkInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24546,6 +25812,13 @@ func (client *Client) GetLinkInfoWithOptions(request *GetLinkInfoRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用户认证方式详情
+//
+// @param request - GetLinkInfoRequest
+//
+// @return GetLinkInfoResponse
 func (client *Client) GetLinkInfo(request *GetLinkInfoRequest) (_result *GetLinkInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24558,6 +25831,17 @@ func (client *Client) GetLinkInfo(request *GetLinkInfoRequest) (_result *GetLink
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a user based on the user ID.
+//
+// @param request - GetLinkInfoByUserIdRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLinkInfoByUserIdResponse
 func (client *Client) GetLinkInfoByUserIdWithOptions(request *GetLinkInfoByUserIdRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetLinkInfoByUserIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24592,6 +25876,13 @@ func (client *Client) GetLinkInfoByUserIdWithOptions(request *GetLinkInfoByUserI
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a user based on the user ID.
+//
+// @param request - GetLinkInfoByUserIdRequest
+//
+// @return GetLinkInfoByUserIdResponse
 func (client *Client) GetLinkInfoByUserId(request *GetLinkInfoByUserIdRequest) (_result *GetLinkInfoByUserIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24604,6 +25895,17 @@ func (client *Client) GetLinkInfoByUserId(request *GetLinkInfoByUserIdRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a version.
+//
+// @param request - GetRevisionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRevisionResponse
 func (client *Client) GetRevisionWithOptions(request *GetRevisionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetRevisionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24654,6 +25956,13 @@ func (client *Client) GetRevisionWithOptions(request *GetRevisionRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a version.
+//
+// @param request - GetRevisionRequest
+//
+// @return GetRevisionResponse
 func (client *Client) GetRevision(request *GetRevisionRequest) (_result *GetRevisionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24666,6 +25975,17 @@ func (client *Client) GetRevision(request *GetRevisionRequest) (_result *GetRevi
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the share URL of a file.
+//
+// @param request - GetShareLinkRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetShareLinkResponse
 func (client *Client) GetShareLinkWithOptions(request *GetShareLinkRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetShareLinkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24700,6 +26020,13 @@ func (client *Client) GetShareLinkWithOptions(request *GetShareLinkRequest, head
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the share URL of a file.
+//
+// @param request - GetShareLinkRequest
+//
+// @return GetShareLinkResponse
 func (client *Client) GetShareLink(request *GetShareLinkRequest) (_result *GetShareLinkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24712,6 +26039,17 @@ func (client *Client) GetShareLink(request *GetShareLinkRequest) (_result *GetSh
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a share link anonymously.
+//
+// @param request - GetShareLinkByAnonymousRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetShareLinkByAnonymousResponse
 func (client *Client) GetShareLinkByAnonymousWithOptions(request *GetShareLinkByAnonymousRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetShareLinkByAnonymousResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24746,6 +26084,13 @@ func (client *Client) GetShareLinkByAnonymousWithOptions(request *GetShareLinkBy
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a share link anonymously.
+//
+// @param request - GetShareLinkByAnonymousRequest
+//
+// @return GetShareLinkByAnonymousResponse
 func (client *Client) GetShareLinkByAnonymous(request *GetShareLinkByAnonymousRequest) (_result *GetShareLinkByAnonymousResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24758,6 +26103,10 @@ func (client *Client) GetShareLinkByAnonymous(request *GetShareLinkByAnonymousRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a share token anonymously.
+//
 // Description:
 //
 // To access a file by using a share link, you must first obtain a share token, even if the value of share_pwd of this share is an empty string, which specifies that the share is not private.
@@ -24811,6 +26160,10 @@ func (client *Client) GetShareLinkTokenWithOptions(request *GetShareLinkTokenReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a share token anonymously.
+//
 // Description:
 //
 // To access a file by using a share link, you must first obtain a share token, even if the value of share_pwd of this share is an empty string, which specifies that the share is not private.
@@ -24830,6 +26183,17 @@ func (client *Client) GetShareLinkToken(request *GetShareLinkTokenRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取故事详情
+//
+// @param request - GetStoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetStoryResponse
 func (client *Client) GetStoryWithOptions(request *GetStoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetStoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24892,6 +26256,13 @@ func (client *Client) GetStoryWithOptions(request *GetStoryRequest, headers map[
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取故事详情
+//
+// @param request - GetStoryRequest
+//
+// @return GetStoryResponse
 func (client *Client) GetStory(request *GetStoryRequest) (_result *GetStoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -24904,9 +26275,13 @@ func (client *Client) GetStory(request *GetStoryRequest) (_result *GetStoryRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the execution status of a value-added asynchronous task. You can call this operation to query the execution status of an asynchronous task that is created by calling the CreateSimilarImageClusterTask operation.
+//
 // Description:
 //
-// **Before you call this operation, make sure that you are familiar with the [billing](~~425220~~) of Drive and Photo Service**.
+// *Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/425220.html) of Drive and Photo Service**.
 //
 // To call this operation, make sure that the value-added image processing feature is enabled.
 //
@@ -24957,9 +26332,13 @@ func (client *Client) GetTaskStatusWithOptions(request *GetTaskStatusRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the execution status of a value-added asynchronous task. You can call this operation to query the execution status of an asynchronous task that is created by calling the CreateSimilarImageClusterTask operation.
+//
 // Description:
 //
-// **Before you call this operation, make sure that you are familiar with the [billing](~~425220~~) of Drive and Photo Service**.
+// *Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/425220.html) of Drive and Photo Service**.
 //
 // To call this operation, make sure that the value-added image processing feature is enabled.
 //
@@ -24980,6 +26359,17 @@ func (client *Client) GetTaskStatus(request *GetTaskStatusRequest) (_result *Get
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the upload URL of a file.
+//
+// @param request - GetUploadUrlRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUploadUrlResponse
 func (client *Client) GetUploadUrlWithOptions(request *GetUploadUrlRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetUploadUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25030,6 +26420,13 @@ func (client *Client) GetUploadUrlWithOptions(request *GetUploadUrlRequest, head
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the upload URL of a file.
+//
+// @param request - GetUploadUrlRequest
+//
+// @return GetUploadUrlResponse
 func (client *Client) GetUploadUrl(request *GetUploadUrlRequest) (_result *GetUploadUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -25042,6 +26439,17 @@ func (client *Client) GetUploadUrl(request *GetUploadUrlRequest) (_result *GetUp
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a user.
+//
+// @param request - GetUserRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserResponse
 func (client *Client) GetUserWithOptions(request *GetUserRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25076,6 +26484,13 @@ func (client *Client) GetUserWithOptions(request *GetUserRequest, headers map[st
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a user.
+//
+// @param request - GetUserRequest
+//
+// @return GetUserResponse
 func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -25088,9 +26503,13 @@ func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about video playback.
+//
 // Description:
 //
-// For more information about best practices, see [Preview videos online](~~427477~~).
+// For more information about best practices, see [Preview videos online](https://help.aliyun.com/document_detail/427477.html).
 //
 // @param request - GetVideoPreviewPlayInfoRequest
 //
@@ -25161,9 +26580,13 @@ func (client *Client) GetVideoPreviewPlayInfoWithOptions(request *GetVideoPrevie
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about video playback.
+//
 // Description:
 //
-// For more information about best practices, see [Preview videos online](~~427477~~).
+// For more information about best practices, see [Preview videos online](https://help.aliyun.com/document_detail/427477.html).
 //
 // @param request - GetVideoPreviewPlayInfoRequest
 //
@@ -25180,9 +26603,13 @@ func (client *Client) GetVideoPreviewPlayInfo(request *GetVideoPreviewPlayInfoRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the preview metadata of a video.
+//
 // Description:
 //
-// For more information about best practices, see [Preview videos online](~~427477~~).
+// For more information about best practices, see [Preview videos online](https://help.aliyun.com/document_detail/427477.html).
 //
 // @param request - GetVideoPreviewPlayMetaRequest
 //
@@ -25237,9 +26664,13 @@ func (client *Client) GetVideoPreviewPlayMetaWithOptions(request *GetVideoPrevie
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the preview metadata of a video.
+//
 // Description:
 //
-// For more information about best practices, see [Preview videos online](~~427477~~).
+// For more information about best practices, see [Preview videos online](https://help.aliyun.com/document_detail/427477.html).
 //
 // @param request - GetVideoPreviewPlayMetaRequest
 //
@@ -25256,6 +26687,17 @@ func (client *Client) GetVideoPreviewPlayMeta(request *GetVideoPreviewPlayMetaRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新用户组名字
+//
+// @param request - GroupUpdateNameRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GroupUpdateNameResponse
 func (client *Client) GroupUpdateNameWithOptions(request *GroupUpdateNameRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GroupUpdateNameResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25294,6 +26736,13 @@ func (client *Client) GroupUpdateNameWithOptions(request *GroupUpdateNameRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新用户组名字
+//
+// @param request - GroupUpdateNameRequest
+//
+// @return GroupUpdateNameResponse
 func (client *Client) GroupUpdateName(request *GroupUpdateNameRequest) (_result *GroupUpdateNameResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -25306,6 +26755,17 @@ func (client *Client) GroupUpdateName(request *GroupUpdateNameRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Imports a user.
+//
+// @param request - ImportUserRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImportUserResponse
 func (client *Client) ImportUserWithOptions(request *ImportUserRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ImportUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25368,6 +26828,13 @@ func (client *Client) ImportUserWithOptions(request *ImportUserRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// Imports a user.
+//
+// @param request - ImportUserRequest
+//
+// @return ImportUserResponse
 func (client *Client) ImportUser(request *ImportUserRequest) (_result *ImportUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -25380,6 +26847,17 @@ func (client *Client) ImportUser(request *ImportUserRequest) (_result *ImportUse
 	return _result, _err
 }
 
+// Summary:
+//
+// 送审文件
+//
+// @param request - InvestigateFileRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InvestigateFileResponse
 func (client *Client) InvestigateFileWithOptions(request *InvestigateFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *InvestigateFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25426,6 +26904,13 @@ func (client *Client) InvestigateFileWithOptions(request *InvestigateFileRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 送审文件
+//
+// @param request - InvestigateFileRequest
+//
+// @return InvestigateFileResponse
 func (client *Client) InvestigateFile(request *InvestigateFileRequest) (_result *InvestigateFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -25438,6 +26923,17 @@ func (client *Client) InvestigateFile(request *InvestigateFileRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Associates an account with a user.
+//
+// @param request - LinkAccountRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return LinkAccountResponse
 func (client *Client) LinkAccountWithOptions(request *LinkAccountRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *LinkAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25484,6 +26980,13 @@ func (client *Client) LinkAccountWithOptions(request *LinkAccountRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// Associates an account with a user.
+//
+// @param request - LinkAccountRequest
+//
+// @return LinkAccountResponse
 func (client *Client) LinkAccount(request *LinkAccountRequest) (_result *LinkAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -25496,6 +26999,17 @@ func (client *Client) LinkAccount(request *LinkAccountRequest) (_result *LinkAcc
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries location-based groups.
+//
+// @param request - ListAddressGroupsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAddressGroupsResponse
 func (client *Client) ListAddressGroupsWithOptions(request *ListAddressGroupsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAddressGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25546,6 +27060,13 @@ func (client *Client) ListAddressGroupsWithOptions(request *ListAddressGroupsReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries location-based groups.
+//
+// @param request - ListAddressGroupsRequest
+//
+// @return ListAddressGroupsResponse
 func (client *Client) ListAddressGroups(request *ListAddressGroupsRequest) (_result *ListAddressGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -25558,6 +27079,17 @@ func (client *Client) ListAddressGroups(request *ListAddressGroupsRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of assigned roles. For example, you can query the administrators of a group by group ID.
+//
+// @param request - ListAssignmentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAssignmentResponse
 func (client *Client) ListAssignmentWithOptions(request *ListAssignmentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAssignmentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25604,6 +27136,13 @@ func (client *Client) ListAssignmentWithOptions(request *ListAssignmentRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of assigned roles. For example, you can query the administrators of a group by group ID.
+//
+// @param request - ListAssignmentRequest
+//
+// @return ListAssignmentResponse
 func (client *Client) ListAssignment(request *ListAssignmentRequest) (_result *ListAssignmentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -25616,6 +27155,17 @@ func (client *Client) ListAssignment(request *ListAssignmentRequest) (_result *L
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries incremental information.
+//
+// @param request - ListDeltaRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDeltaResponse
 func (client *Client) ListDeltaWithOptions(request *ListDeltaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDeltaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25662,6 +27212,13 @@ func (client *Client) ListDeltaWithOptions(request *ListDeltaRequest, headers ma
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries incremental information.
+//
+// @param request - ListDeltaRequest
+//
+// @return ListDeltaResponse
 func (client *Client) ListDelta(request *ListDeltaRequest) (_result *ListDeltaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -25674,6 +27231,17 @@ func (client *Client) ListDelta(request *ListDeltaRequest) (_result *ListDeltaRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 列举 domain
+//
+// @param request - ListDomainsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDomainsResponse
 func (client *Client) ListDomainsWithOptions(request *ListDomainsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDomainsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25720,6 +27288,13 @@ func (client *Client) ListDomainsWithOptions(request *ListDomainsRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// 列举 domain
+//
+// @param request - ListDomainsRequest
+//
+// @return ListDomainsResponse
 func (client *Client) ListDomains(request *ListDomainsRequest) (_result *ListDomainsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -25732,6 +27307,17 @@ func (client *Client) ListDomains(request *ListDomainsRequest) (_result *ListDom
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of drives.
+//
+// @param request - ListDriveRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDriveResponse
 func (client *Client) ListDriveWithOptions(request *ListDriveRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDriveResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25778,6 +27364,13 @@ func (client *Client) ListDriveWithOptions(request *ListDriveRequest, headers ma
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of drives.
+//
+// @param request - ListDriveRequest
+//
+// @return ListDriveResponse
 func (client *Client) ListDrive(request *ListDriveRequest) (_result *ListDriveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -25790,6 +27383,17 @@ func (client *Client) ListDrive(request *ListDriveRequest) (_result *ListDriveRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries face-based groups.
+//
+// @param request - ListFacegroupsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFacegroupsResponse
 func (client *Client) ListFacegroupsWithOptions(request *ListFacegroupsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFacegroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25840,6 +27444,13 @@ func (client *Client) ListFacegroupsWithOptions(request *ListFacegroupsRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries face-based groups.
+//
+// @param request - ListFacegroupsRequest
+//
+// @return ListFacegroupsResponse
 func (client *Client) ListFacegroups(request *ListFacegroupsRequest) (_result *ListFacegroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -25852,6 +27463,17 @@ func (client *Client) ListFacegroups(request *ListFacegroupsRequest) (_result *L
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of files and folders.
+//
+// @param request - ListFileRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFileResponse
 func (client *Client) ListFileWithOptions(request *ListFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25930,6 +27552,13 @@ func (client *Client) ListFileWithOptions(request *ListFileRequest, headers map[
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of files and folders.
+//
+// @param request - ListFileRequest
+//
+// @return ListFileResponse
 func (client *Client) ListFile(request *ListFileRequest) (_result *ListFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -25942,6 +27571,17 @@ func (client *Client) ListFile(request *ListFileRequest) (_result *ListFileRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries groups.
+//
+// @param request - ListGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGroupResponse
 func (client *Client) ListGroupWithOptions(request *ListGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25980,6 +27620,13 @@ func (client *Client) ListGroupWithOptions(request *ListGroupRequest, headers ma
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries groups.
+//
+// @param request - ListGroupRequest
+//
+// @return ListGroupResponse
 func (client *Client) ListGroup(request *ListGroupRequest) (_result *ListGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -25992,6 +27639,17 @@ func (client *Client) ListGroup(request *ListGroupRequest) (_result *ListGroupRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the members of a group.
+//
+// @param request - ListGroupMemberRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGroupMemberResponse
 func (client *Client) ListGroupMemberWithOptions(request *ListGroupMemberRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListGroupMemberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26038,6 +27696,13 @@ func (client *Client) ListGroupMemberWithOptions(request *ListGroupMemberRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the members of a group.
+//
+// @param request - ListGroupMemberRequest
+//
+// @return ListGroupMemberResponse
 func (client *Client) ListGroupMember(request *ListGroupMemberRequest) (_result *ListGroupMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -26050,6 +27715,17 @@ func (client *Client) ListGroupMember(request *ListGroupMemberRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 列举用户或团队已分配的角色列表
+//
+// @param request - ListIdentityRoleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIdentityRoleResponse
 func (client *Client) ListIdentityRoleWithOptions(request *ListIdentityRoleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListIdentityRoleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26084,6 +27760,13 @@ func (client *Client) ListIdentityRoleWithOptions(request *ListIdentityRoleReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 列举用户或团队已分配的角色列表
+//
+// @param request - ListIdentityRoleRequest
+//
+// @return ListIdentityRoleResponse
 func (client *Client) ListIdentityRole(request *ListIdentityRoleRequest) (_result *ListIdentityRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -26096,6 +27779,17 @@ func (client *Client) ListIdentityRole(request *ListIdentityRoleRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the mappings between entities and benefit packages. You can call this operation to query the benefit packages that are associated with a user.
+//
+// @param request - ListIdentityToBenefitPkgMappingRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIdentityToBenefitPkgMappingResponse
 func (client *Client) ListIdentityToBenefitPkgMappingWithOptions(request *ListIdentityToBenefitPkgMappingRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListIdentityToBenefitPkgMappingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26138,6 +27832,13 @@ func (client *Client) ListIdentityToBenefitPkgMappingWithOptions(request *ListId
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the mappings between entities and benefit packages. You can call this operation to query the benefit packages that are associated with a user.
+//
+// @param request - ListIdentityToBenefitPkgMappingRequest
+//
+// @return ListIdentityToBenefitPkgMappingResponse
 func (client *Client) ListIdentityToBenefitPkgMapping(request *ListIdentityToBenefitPkgMappingRequest) (_result *ListIdentityToBenefitPkgMappingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -26150,6 +27851,17 @@ func (client *Client) ListIdentityToBenefitPkgMapping(request *ListIdentityToBen
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the drives of the current user.
+//
+// @param request - ListMyDrivesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMyDrivesResponse
 func (client *Client) ListMyDrivesWithOptions(request *ListMyDrivesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListMyDrivesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26188,6 +27900,13 @@ func (client *Client) ListMyDrivesWithOptions(request *ListMyDrivesRequest, head
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the drives of the current user.
+//
+// @param request - ListMyDrivesRequest
+//
+// @return ListMyDrivesResponse
 func (client *Client) ListMyDrives(request *ListMyDrivesRequest) (_result *ListMyDrivesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -26200,6 +27919,17 @@ func (client *Client) ListMyDrives(request *ListMyDrivesRequest) (_result *ListM
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the team drives that can be accessed by the authorized users.
+//
+// @param request - ListMyGroupDriveRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMyGroupDriveResponse
 func (client *Client) ListMyGroupDriveWithOptions(request *ListMyGroupDriveRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListMyGroupDriveResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26238,6 +27968,13 @@ func (client *Client) ListMyGroupDriveWithOptions(request *ListMyGroupDriveReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the team drives that can be accessed by the authorized users.
+//
+// @param request - ListMyGroupDriveRequest
+//
+// @return ListMyGroupDriveResponse
 func (client *Client) ListMyGroupDrive(request *ListMyGroupDriveRequest) (_result *ListMyGroupDriveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -26250,6 +27987,17 @@ func (client *Client) ListMyGroupDrive(request *ListMyGroupDriveRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of files that are shared with a user. You can call this operation to query a list of files in a personal drive on which a user is granted permissions.
+//
+// @param request - ListReceivedFileRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListReceivedFileResponse
 func (client *Client) ListReceivedFileWithOptions(request *ListReceivedFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListReceivedFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26288,6 +28036,13 @@ func (client *Client) ListReceivedFileWithOptions(request *ListReceivedFileReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of files that are shared with a user. You can call this operation to query a list of files in a personal drive on which a user is granted permissions.
+//
+// @param request - ListReceivedFileRequest
+//
+// @return ListReceivedFileResponse
 func (client *Client) ListReceivedFile(request *ListReceivedFileRequest) (_result *ListReceivedFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -26300,6 +28055,17 @@ func (client *Client) ListReceivedFile(request *ListReceivedFileRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about files and folders in the recycle bin.
+//
+// @param request - ListRecyclebinRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRecyclebinResponse
 func (client *Client) ListRecyclebinWithOptions(request *ListRecyclebinRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListRecyclebinResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26346,6 +28112,13 @@ func (client *Client) ListRecyclebinWithOptions(request *ListRecyclebinRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about files and folders in the recycle bin.
+//
+// @param request - ListRecyclebinRequest
+//
+// @return ListRecyclebinResponse
 func (client *Client) ListRecyclebin(request *ListRecyclebinRequest) (_result *ListRecyclebinResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -26358,6 +28131,17 @@ func (client *Client) ListRecyclebin(request *ListRecyclebinRequest) (_result *L
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the versions of a file.
+//
+// @param request - ListRevisionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRevisionResponse
 func (client *Client) ListRevisionWithOptions(request *ListRevisionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListRevisionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26408,6 +28192,13 @@ func (client *Client) ListRevisionWithOptions(request *ListRevisionRequest, head
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the versions of a file.
+//
+// @param request - ListRevisionRequest
+//
+// @return ListRevisionResponse
 func (client *Client) ListRevision(request *ListRevisionRequest) (_result *ListRevisionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -26420,6 +28211,10 @@ func (client *Client) ListRevision(request *ListRevisionRequest) (_result *ListR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries shares.
+//
 // Description:
 //
 // This operation is discontinued. To query shares, you can call the SearchShareLink operation.
@@ -26485,6 +28280,10 @@ func (client *Client) ListShareLinkWithOptions(request *ListShareLinkRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries shares.
+//
 // Description:
 //
 // This operation is discontinued. To query shares, you can call the SearchShareLink operation.
@@ -26504,6 +28303,10 @@ func (client *Client) ListShareLink(request *ListShareLinkRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries tags.
+//
 // Description:
 //
 // You can call this operation to query the tags within the specified drive at a time. The top 2,000 tags of the images are returned.
@@ -26557,6 +28360,10 @@ func (client *Client) ListTagsWithOptions(request *ListTagsRequest, headers map[
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries tags.
+//
 // Description:
 //
 // You can call this operation to query the tags within the specified drive at a time. The top 2,000 tags of the images are returned.
@@ -26576,6 +28383,17 @@ func (client *Client) ListTags(request *ListTagsRequest) (_result *ListTagsRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the file parts that are uploaded.
+//
+// @param request - ListUploadedPartsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUploadedPartsResponse
 func (client *Client) ListUploadedPartsWithOptions(request *ListUploadedPartsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListUploadedPartsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26630,6 +28448,13 @@ func (client *Client) ListUploadedPartsWithOptions(request *ListUploadedPartsReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the file parts that are uploaded.
+//
+// @param request - ListUploadedPartsRequest
+//
+// @return ListUploadedPartsResponse
 func (client *Client) ListUploadedParts(request *ListUploadedPartsRequest) (_result *ListUploadedPartsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -26642,6 +28467,17 @@ func (client *Client) ListUploadedParts(request *ListUploadedPartsRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries users.
+//
+// @param request - ListUserRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserResponse
 func (client *Client) ListUserWithOptions(request *ListUserRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26680,6 +28516,13 @@ func (client *Client) ListUserWithOptions(request *ListUserRequest, headers map[
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries users.
+//
+// @param request - ListUserRequest
+//
+// @return ListUserResponse
 func (client *Client) ListUser(request *ListUserRequest) (_result *ListUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -26692,6 +28535,17 @@ func (client *Client) ListUser(request *ListUserRequest) (_result *ListUserRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// Moves files or folders.
+//
+// @param request - MoveFileRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MoveFileResponse
 func (client *Client) MoveFileWithOptions(request *MoveFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *MoveFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26738,6 +28592,13 @@ func (client *Client) MoveFileWithOptions(request *MoveFileRequest, headers map[
 	return _result, _err
 }
 
+// Summary:
+//
+// Moves files or folders.
+//
+// @param request - MoveFileRequest
+//
+// @return MoveFileResponse
 func (client *Client) MoveFile(request *MoveFileRequest) (_result *MoveFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -26750,6 +28611,17 @@ func (client *Client) MoveFile(request *MoveFileRequest) (_result *MoveFileRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询凌霄订单价格
+//
+// @param request - QueryOrderPriceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryOrderPriceResponse
 func (client *Client) QueryOrderPriceWithOptions(request *QueryOrderPriceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryOrderPriceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26812,6 +28684,13 @@ func (client *Client) QueryOrderPriceWithOptions(request *QueryOrderPriceRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询凌霄订单价格
+//
+// @param request - QueryOrderPriceRequest
+//
+// @return QueryOrderPriceResponse
 func (client *Client) QueryOrderPrice(request *QueryOrderPriceRequest) (_result *QueryOrderPriceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -26824,6 +28703,17 @@ func (client *Client) QueryOrderPrice(request *QueryOrderPriceRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 从人脸分组中的移除指定的文件
+//
+// @param request - RemoveFaceGroupFileRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveFaceGroupFileResponse
 func (client *Client) RemoveFaceGroupFileWithOptions(request *RemoveFaceGroupFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveFaceGroupFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26866,6 +28756,13 @@ func (client *Client) RemoveFaceGroupFileWithOptions(request *RemoveFaceGroupFil
 	return _result, _err
 }
 
+// Summary:
+//
+// 从人脸分组中的移除指定的文件
+//
+// @param request - RemoveFaceGroupFileRequest
+//
+// @return RemoveFaceGroupFileResponse
 func (client *Client) RemoveFaceGroupFile(request *RemoveFaceGroupFileRequest) (_result *RemoveFaceGroupFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -26878,6 +28775,17 @@ func (client *Client) RemoveFaceGroupFile(request *RemoveFaceGroupFileRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes a member from a group.
+//
+// @param request - RemoveGroupMemberRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveGroupMemberResponse
 func (client *Client) RemoveGroupMemberWithOptions(request *RemoveGroupMemberRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveGroupMemberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26920,6 +28828,13 @@ func (client *Client) RemoveGroupMemberWithOptions(request *RemoveGroupMemberReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes a member from a group.
+//
+// @param request - RemoveGroupMemberRequest
+//
+// @return RemoveGroupMemberResponse
 func (client *Client) RemoveGroupMember(request *RemoveGroupMemberRequest) (_result *RemoveGroupMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -26932,6 +28847,17 @@ func (client *Client) RemoveGroupMember(request *RemoveGroupMemberRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 故事移除文件
+//
+// @param request - RemoveStoryFilesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveStoryFilesResponse
 func (client *Client) RemoveStoryFilesWithOptions(request *RemoveStoryFilesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveStoryFilesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26974,6 +28900,13 @@ func (client *Client) RemoveStoryFilesWithOptions(request *RemoveStoryFilesReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 故事移除文件
+//
+// @param request - RemoveStoryFilesRequest
+//
+// @return RemoveStoryFilesResponse
 func (client *Client) RemoveStoryFiles(request *RemoveStoryFilesRequest) (_result *RemoveStoryFilesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -26986,6 +28919,17 @@ func (client *Client) RemoveStoryFiles(request *RemoveStoryFilesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Restores a file or folder from the recycle bin.
+//
+// @param request - RestoreFileRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestoreFileResponse
 func (client *Client) RestoreFileWithOptions(request *RestoreFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RestoreFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27024,6 +28968,13 @@ func (client *Client) RestoreFileWithOptions(request *RestoreFileRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// Restores a file or folder from the recycle bin.
+//
+// @param request - RestoreFileRequest
+//
+// @return RestoreFileResponse
 func (client *Client) RestoreFile(request *RestoreFileRequest) (_result *RestoreFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -27036,6 +28987,17 @@ func (client *Client) RestoreFile(request *RestoreFileRequest) (_result *Restore
 	return _result, _err
 }
 
+// Summary:
+//
+// Restores a historical version of a file. You cannot restore the latest version of a file.
+//
+// @param request - RestoreRevisionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestoreRevisionResponse
 func (client *Client) RestoreRevisionWithOptions(request *RestoreRevisionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RestoreRevisionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27078,6 +29040,13 @@ func (client *Client) RestoreRevisionWithOptions(request *RestoreRevisionRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Restores a historical version of a file. You cannot restore the latest version of a file.
+//
+// @param request - RestoreRevisionRequest
+//
+// @return RestoreRevisionResponse
 func (client *Client) RestoreRevision(request *RestoreRevisionRequest) (_result *RestoreRevisionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -27090,6 +29059,17 @@ func (client *Client) RestoreRevision(request *RestoreRevisionRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Scans files.
+//
+// @param request - ScanFileRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ScanFileResponse
 func (client *Client) ScanFileWithOptions(request *ScanFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ScanFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27136,6 +29116,13 @@ func (client *Client) ScanFileWithOptions(request *ScanFileRequest, headers map[
 	return _result, _err
 }
 
+// Summary:
+//
+// Scans files.
+//
+// @param request - ScanFileRequest
+//
+// @return ScanFileResponse
 func (client *Client) ScanFile(request *ScanFileRequest) (_result *ScanFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -27148,6 +29135,17 @@ func (client *Client) ScanFile(request *ScanFileRequest) (_result *ScanFileRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries location-based groups based on specific locations.
+//
+// @param request - SearchAddressGroupsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchAddressGroupsResponse
 func (client *Client) SearchAddressGroupsWithOptions(request *SearchAddressGroupsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SearchAddressGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27206,6 +29204,13 @@ func (client *Client) SearchAddressGroupsWithOptions(request *SearchAddressGroup
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries location-based groups based on specific locations.
+//
+// @param request - SearchAddressGroupsRequest
+//
+// @return SearchAddressGroupsResponse
 func (client *Client) SearchAddressGroups(request *SearchAddressGroupsRequest) (_result *SearchAddressGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -27218,6 +29223,17 @@ func (client *Client) SearchAddressGroups(request *SearchAddressGroupsRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Search domain with specified attributes
+//
+// @param request - SearchDomainsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchDomainsResponse
 func (client *Client) SearchDomainsWithOptions(request *SearchDomainsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SearchDomainsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27264,6 +29280,13 @@ func (client *Client) SearchDomainsWithOptions(request *SearchDomainsRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// Search domain with specified attributes
+//
+// @param request - SearchDomainsRequest
+//
+// @return SearchDomainsResponse
 func (client *Client) SearchDomains(request *SearchDomainsRequest) (_result *SearchDomainsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -27276,6 +29299,17 @@ func (client *Client) SearchDomains(request *SearchDomainsRequest) (_result *Sea
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries drives.
+//
+// @param request - SearchDriveRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchDriveResponse
 func (client *Client) SearchDriveWithOptions(request *SearchDriveRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SearchDriveResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27326,6 +29360,13 @@ func (client *Client) SearchDriveWithOptions(request *SearchDriveRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries drives.
+//
+// @param request - SearchDriveRequest
+//
+// @return SearchDriveResponse
 func (client *Client) SearchDrive(request *SearchDriveRequest) (_result *SearchDriveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -27338,6 +29379,17 @@ func (client *Client) SearchDrive(request *SearchDriveRequest) (_result *SearchD
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries files. For more information about best practices, visit https://help.aliyun.com/document_detail/175890.html.
+//
+// @param request - SearchFileRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchFileResponse
 func (client *Client) SearchFileWithOptions(request *SearchFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SearchFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27396,6 +29448,13 @@ func (client *Client) SearchFileWithOptions(request *SearchFileRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries files. For more information about best practices, visit https://help.aliyun.com/document_detail/175890.html.
+//
+// @param request - SearchFileRequest
+//
+// @return SearchFileResponse
 func (client *Client) SearchFile(request *SearchFileRequest) (_result *SearchFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -27408,6 +29467,17 @@ func (client *Client) SearchFile(request *SearchFileRequest) (_result *SearchFil
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries share URLs.
+//
+// @param request - SearchShareLinkRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchShareLinkResponse
 func (client *Client) SearchShareLinkWithOptions(request *SearchShareLinkRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SearchShareLinkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27466,6 +29536,13 @@ func (client *Client) SearchShareLinkWithOptions(request *SearchShareLinkRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries share URLs.
+//
+// @param request - SearchShareLinkRequest
+//
+// @return SearchShareLinkResponse
 func (client *Client) SearchShareLink(request *SearchShareLinkRequest) (_result *SearchShareLinkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -27478,6 +29555,17 @@ func (client *Client) SearchShareLink(request *SearchShareLinkRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取相似图片聚类结果
+//
+// @param request - SearchSimilarImageClustersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchSimilarImageClustersResponse
 func (client *Client) SearchSimilarImageClustersWithOptions(request *SearchSimilarImageClustersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SearchSimilarImageClustersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27528,6 +29616,13 @@ func (client *Client) SearchSimilarImageClustersWithOptions(request *SearchSimil
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取相似图片聚类结果
+//
+// @param request - SearchSimilarImageClustersRequest
+//
+// @return SearchSimilarImageClustersResponse
 func (client *Client) SearchSimilarImageClusters(request *SearchSimilarImageClustersRequest) (_result *SearchSimilarImageClustersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -27540,6 +29635,17 @@ func (client *Client) SearchSimilarImageClusters(request *SearchSimilarImageClus
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询故事列表
+//
+// @param request - SearchStoriesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchStoriesResponse
 func (client *Client) SearchStoriesWithOptions(request *SearchStoriesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SearchStoriesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27638,6 +29744,13 @@ func (client *Client) SearchStoriesWithOptions(request *SearchStoriesRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询故事列表
+//
+// @param request - SearchStoriesRequest
+//
+// @return SearchStoriesResponse
 func (client *Client) SearchStories(request *SearchStoriesRequest) (_result *SearchStoriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -27650,6 +29763,17 @@ func (client *Client) SearchStories(request *SearchStoriesRequest) (_result *Sea
 	return _result, _err
 }
 
+// Summary:
+//
+// Searches for users.
+//
+// @param request - SearchUserRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchUserResponse
 func (client *Client) SearchUserWithOptions(request *SearchUserRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SearchUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27716,6 +29840,13 @@ func (client *Client) SearchUserWithOptions(request *SearchUserRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// Searches for users.
+//
+// @param request - SearchUserRequest
+//
+// @return SearchUserResponse
 func (client *Client) SearchUser(request *SearchUserRequest) (_result *SearchUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -27728,6 +29859,10 @@ func (client *Client) SearchUser(request *SearchUserRequest) (_result *SearchUse
 	return _result, _err
 }
 
+// Summary:
+//
+// Generates an access token based on Open Authorization (OAuth) 2.0.
+//
 // Description:
 //
 // For more information about how to access Drive and Photo Service from a web server application by using OAuth 2.0, visit [OAuth 2.0 For Web Server Applications](https://www.alibabacloud.com/help/zh/pds/drive-and-photo-service-dev/user-guide/oauth-2-0-access-process-for-web-server-applications).
@@ -27799,6 +29934,10 @@ func (client *Client) TokenWithOptions(request *TokenRequest, headers map[string
 	return _result, _err
 }
 
+// Summary:
+//
+// Generates an access token based on Open Authorization (OAuth) 2.0.
+//
 // Description:
 //
 // For more information about how to access Drive and Photo Service from a web server application by using OAuth 2.0, visit [OAuth 2.0 For Web Server Applications](https://www.alibabacloud.com/help/zh/pds/drive-and-photo-service-dev/user-guide/oauth-2-0-access-process-for-web-server-applications).
@@ -27820,6 +29959,17 @@ func (client *Client) Token(request *TokenRequest) (_result *TokenResponse, _err
 	return _result, _err
 }
 
+// Summary:
+//
+// Moves a file or folder to the recycle bin.
+//
+// @param request - TrashFileRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TrashFileResponse
 func (client *Client) TrashFileWithOptions(request *TrashFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *TrashFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27858,6 +30008,13 @@ func (client *Client) TrashFileWithOptions(request *TrashFileRequest, headers ma
 	return _result, _err
 }
 
+// Summary:
+//
+// Moves a file or folder to the recycle bin.
+//
+// @param request - TrashFileRequest
+//
+// @return TrashFileResponse
 func (client *Client) TrashFile(request *TrashFileRequest) (_result *TrashFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -27870,6 +30027,17 @@ func (client *Client) TrashFile(request *TrashFileRequest) (_result *TrashFileRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消账号绑定
+//
+// @param request - UnLinkAccountRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnLinkAccountResponse
 func (client *Client) UnLinkAccountWithOptions(request *UnLinkAccountRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UnLinkAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27916,6 +30084,13 @@ func (client *Client) UnLinkAccountWithOptions(request *UnLinkAccountRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消账号绑定
+//
+// @param request - UnLinkAccountRequest
+//
+// @return UnLinkAccountResponse
 func (client *Client) UnLinkAccount(request *UnLinkAccountRequest) (_result *UnLinkAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -27928,6 +30103,17 @@ func (client *Client) UnLinkAccount(request *UnLinkAccountRequest) (_result *UnL
 	return _result, _err
 }
 
+// Summary:
+//
+// Update domain information.
+//
+// @param request - UpdateDomainRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDomainResponse
 func (client *Client) UpdateDomainWithOptions(request *UpdateDomainRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27990,6 +30176,13 @@ func (client *Client) UpdateDomainWithOptions(request *UpdateDomainRequest, head
 	return _result, _err
 }
 
+// Summary:
+//
+// Update domain information.
+//
+// @param request - UpdateDomainRequest
+//
+// @return UpdateDomainResponse
 func (client *Client) UpdateDomain(request *UpdateDomainRequest) (_result *UpdateDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -28002,6 +30195,17 @@ func (client *Client) UpdateDomain(request *UpdateDomainRequest) (_result *Updat
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a drive.
+//
+// @param request - UpdateDriveRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDriveResponse
 func (client *Client) UpdateDriveWithOptions(request *UpdateDriveRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateDriveResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28056,6 +30260,13 @@ func (client *Client) UpdateDriveWithOptions(request *UpdateDriveRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a drive.
+//
+// @param request - UpdateDriveRequest
+//
+// @return UpdateDriveResponse
 func (client *Client) UpdateDrive(request *UpdateDriveRequest) (_result *UpdateDriveResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -28068,6 +30279,17 @@ func (client *Client) UpdateDrive(request *UpdateDriveRequest) (_result *UpdateD
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a face-based group.
+//
+// @param request - UpdateFacegroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateFacegroupResponse
 func (client *Client) UpdateFacegroupWithOptions(request *UpdateFacegroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateFacegroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28118,6 +30340,13 @@ func (client *Client) UpdateFacegroupWithOptions(request *UpdateFacegroupRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a face-based group.
+//
+// @param request - UpdateFacegroupRequest
+//
+// @return UpdateFacegroupResponse
 func (client *Client) UpdateFacegroup(request *UpdateFacegroupRequest) (_result *UpdateFacegroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -28130,6 +30359,17 @@ func (client *Client) UpdateFacegroup(request *UpdateFacegroupRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the information about a file instead of the file data.
+//
+// @param request - UpdateFileRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateFileResponse
 func (client *Client) UpdateFileWithOptions(request *UpdateFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28196,6 +30436,13 @@ func (client *Client) UpdateFileWithOptions(request *UpdateFileRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the information about a file instead of the file data.
+//
+// @param request - UpdateFileRequest
+//
+// @return UpdateFileResponse
 func (client *Client) UpdateFile(request *UpdateFileRequest) (_result *UpdateFileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -28208,6 +30455,17 @@ func (client *Client) UpdateFile(request *UpdateFileRequest) (_result *UpdateFil
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the information about a group.
+//
+// @param request - UpdateGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateGroupResponse
 func (client *Client) UpdateGroupWithOptions(request *UpdateGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28250,6 +30508,13 @@ func (client *Client) UpdateGroupWithOptions(request *UpdateGroupRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the information about a group.
+//
+// @param request - UpdateGroupRequest
+//
+// @return UpdateGroupResponse
 func (client *Client) UpdateGroup(request *UpdateGroupRequest) (_result *UpdateGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -28262,6 +30527,17 @@ func (client *Client) UpdateGroup(request *UpdateGroupRequest) (_result *UpdateG
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the mapping between an entity and a benefit package. You can call this operation to associate a benefit package with a user.
+//
+// @param request - UpdateIdentityToBenefitPkgMappingRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateIdentityToBenefitPkgMappingResponse
 func (client *Client) UpdateIdentityToBenefitPkgMappingWithOptions(request *UpdateIdentityToBenefitPkgMappingRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateIdentityToBenefitPkgMappingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28312,6 +30588,13 @@ func (client *Client) UpdateIdentityToBenefitPkgMappingWithOptions(request *Upda
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the mapping between an entity and a benefit package. You can call this operation to associate a benefit package with a user.
+//
+// @param request - UpdateIdentityToBenefitPkgMappingRequest
+//
+// @return UpdateIdentityToBenefitPkgMappingResponse
 func (client *Client) UpdateIdentityToBenefitPkgMapping(request *UpdateIdentityToBenefitPkgMappingRequest) (_result *UpdateIdentityToBenefitPkgMappingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -28324,6 +30607,17 @@ func (client *Client) UpdateIdentityToBenefitPkgMapping(request *UpdateIdentityT
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the version information. You can call this operation to permanently retain a version or modify the description of a version. You can permanently retain up to 50 versions of a file.
+//
+// @param request - UpdateRevisionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRevisionResponse
 func (client *Client) UpdateRevisionWithOptions(request *UpdateRevisionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateRevisionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28374,6 +30668,13 @@ func (client *Client) UpdateRevisionWithOptions(request *UpdateRevisionRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the version information. You can call this operation to permanently retain a version or modify the description of a version. You can permanently retain up to 50 versions of a file.
+//
+// @param request - UpdateRevisionRequest
+//
+// @return UpdateRevisionResponse
 func (client *Client) UpdateRevision(request *UpdateRevisionRequest) (_result *UpdateRevisionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -28386,6 +30687,17 @@ func (client *Client) UpdateRevision(request *UpdateRevisionRequest) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a share link.
+//
+// @param request - UpdateShareLinkRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateShareLinkResponse
 func (client *Client) UpdateShareLinkWithOptions(request *UpdateShareLinkRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateShareLinkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28484,6 +30796,13 @@ func (client *Client) UpdateShareLinkWithOptions(request *UpdateShareLinkRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a share link.
+//
+// @param request - UpdateShareLinkRequest
+//
+// @return UpdateShareLinkResponse
 func (client *Client) UpdateShareLink(request *UpdateShareLinkRequest) (_result *UpdateShareLinkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -28496,6 +30815,17 @@ func (client *Client) UpdateShareLink(request *UpdateShareLinkRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新故事
+//
+// @param request - UpdateStoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateStoryResponse
 func (client *Client) UpdateStoryWithOptions(request *UpdateStoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateStoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28546,6 +30876,13 @@ func (client *Client) UpdateStoryWithOptions(request *UpdateStoryRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新故事
+//
+// @param request - UpdateStoryRequest
+//
+// @return UpdateStoryResponse
 func (client *Client) UpdateStory(request *UpdateStoryRequest) (_result *UpdateStoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -28558,6 +30895,17 @@ func (client *Client) UpdateStory(request *UpdateStoryRequest) (_result *UpdateS
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the information about a user.
+//
+// @param request - UpdateUserRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUserResponse
 func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28628,6 +30976,13 @@ func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the information about a user.
+//
+// @param request - UpdateUserRequest
+//
+// @return UpdateUserResponse
 func (client *Client) UpdateUser(request *UpdateUserRequest) (_result *UpdateUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
