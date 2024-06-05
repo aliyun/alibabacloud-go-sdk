@@ -251,9 +251,31 @@ type CreateLindormInstanceRequest struct {
 	// example:
 	//
 	// 2.0
-	ArchVersion       *string `json:"ArchVersion,omitempty" xml:"ArchVersion,omitempty"`
+	ArchVersion *string `json:"ArchVersion,omitempty" xml:"ArchVersion,omitempty"`
+	// The auto-renewal duration. Unit: month.
+	//
+	// Valid values: **1*	- to **12**.
+	//
+	// >  This parameter is available only when the **AutoRenewal*	- parameter is set to **true**.
+	//
+	// example:
+	//
+	// 1
 	AutoRenewDuration *string `json:"AutoRenewDuration,omitempty" xml:"AutoRenewDuration,omitempty"`
-	AutoRenewal       *bool   `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
+	// Specifies whether to enable auto-renewal for the instance. Valid values:
+	//
+	// 	- **true**: enables auto-renewal.
+	//
+	// 	- **false**: disables auto-renewal.
+	//
+	// Default value: false.
+	//
+	// >  This parameter is available only when the **PayType*	- parameter is set to **PREPAY**.
+	//
+	// example:
+	//
+	// false
+	AutoRenewal *bool `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
 	// The cold storage capacity of the instance. By default, if you leave this parameter unspecified, cold storage is not enabled for the instance. Unit: GB. Valid values: **800*	- to **1000000**.
 	//
 	// example:
@@ -1466,6 +1488,7 @@ func (s *GetInstanceIpWhiteListRequest) SetSecurityToken(v string) *GetInstanceI
 }
 
 type GetInstanceIpWhiteListResponseBody struct {
+	// The details about the IP address whitelists.
 	GroupList []*GetInstanceIpWhiteListResponseBodyGroupList `json:"GroupList,omitempty" xml:"GroupList,omitempty" type:"Repeated"`
 	// The ID of the Lindorm instance.
 	//
@@ -1511,10 +1534,14 @@ func (s *GetInstanceIpWhiteListResponseBody) SetRequestId(v string) *GetInstance
 }
 
 type GetInstanceIpWhiteListResponseBodyGroupList struct {
+	// The name of the IP address whitelist.
+	//
 	// example:
 	//
 	// test
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The IP addresses in the whitelist.
+	//
 	// example:
 	//
 	// 192.168.1.0/24
@@ -2164,11 +2191,11 @@ type GetLindormInstanceResponseBody struct {
 	//
 	// cn-shanghai-g
 	ArbiterZoneId *string `json:"ArbiterZoneId,omitempty" xml:"ArbiterZoneId,omitempty"`
-	// 部署架构，取值：
+	// The architecture of the instance. Valid values:
 	//
-	// - **1.0**：单可用区。
+	// 	- **1.0**: The instance is deployed in a single zone.
 	//
-	// - **2.0**：多可用区。
+	// 	- **2.0**: The instance is deployed across multiple zones.
 	//
 	// example:
 	//
@@ -2252,6 +2279,10 @@ type GetLindormInstanceResponseBody struct {
 	//
 	// 0.0%
 	DiskUsage *string `json:"DiskUsage,omitempty" xml:"DiskUsage,omitempty"`
+	// Indicates whether LBlob is enabled for the instance. Valid values:
+	//
+	// true: LBlob is enabled for the instance. false: LBlob is not enabled for the instance.
+	//
 	// example:
 	//
 	// true
@@ -2267,19 +2298,38 @@ type GetLindormInstanceResponseBody struct {
 	// example:
 	//
 	// false
-	EnableKms *bool `json:"EnableKms,omitempty" xml:"EnableKms,omitempty"`
-	// 实例是否开通LTS引擎，返回值：
+	EnableKms    *bool `json:"EnableKms,omitempty" xml:"EnableKms,omitempty"`
+	EnableLProxy *bool `json:"EnableLProxy,omitempty" xml:"EnableLProxy,omitempty"`
+	// Indicates whether the LTS engine is activated for the instance. Valid values:
 	//
-	// - **true**：开通LTS引擎。
+	// 	- **true**: The LTS engine is activated for the instance.
 	//
-	// - **false**：未开通LTS引擎。
+	// 	- **false**: The LTS engine is not activated for the instance.
 	//
 	// example:
 	//
 	// true
-	EnableLTS           *bool `json:"EnableLTS,omitempty" xml:"EnableLTS,omitempty"`
+	EnableLTS *bool `json:"EnableLTS,omitempty" xml:"EnableLTS,omitempty"`
+	// Indicates whether LindormTable of the instance supports LindormSQL V3 that is compatible with MySQL. By default, LindormTable of instances that are purchased after October 24, 2023 supports LindormSQL V3. If your instance is purchased before this date and want to enable LindormSQL V3, contact the technical support.
+	//
+	// 	- True: LindormTable supports LindormSQL V3.
+	//
+	// 	- False: LindormTable does not support LindormSQL V3.
+	//
+	// example:
+	//
+	// True
 	EnableLsqlVersionV3 *bool `json:"EnableLsqlVersionV3,omitempty" xml:"EnableLsqlVersionV3,omitempty"`
-	EnableMLCtrl        *bool `json:"EnableMLCtrl,omitempty" xml:"EnableMLCtrl,omitempty"`
+	// Indicates whether AI control nodes are enabled for the instance.
+	//
+	// 	- True: AI control nodes are enabled for the instance.
+	//
+	// 	- False: AI control nodes are not enabled for the instance.
+	//
+	// example:
+	//
+	// False
+	EnableMLCtrl *bool `json:"EnableMLCtrl,omitempty" xml:"EnableMLCtrl,omitempty"`
 	// example:
 	//
 	// false
@@ -2564,6 +2614,11 @@ func (s *GetLindormInstanceResponseBody) SetEnableKms(v bool) *GetLindormInstanc
 	return s
 }
 
+func (s *GetLindormInstanceResponseBody) SetEnableLProxy(v bool) *GetLindormInstanceResponseBody {
+	s.EnableLProxy = &v
+	return s
+}
+
 func (s *GetLindormInstanceResponseBody) SetEnableLTS(v bool) *GetLindormInstanceResponseBody {
 	s.EnableLTS = &v
 	return s
@@ -2735,30 +2790,60 @@ func (s *GetLindormInstanceResponseBody) SetZoneId(v string) *GetLindormInstance
 }
 
 type GetLindormInstanceResponseBodyEngineList struct {
+	// The number of engine nodes.
+	//
 	// example:
 	//
 	// 2
 	CoreCount *string `json:"CoreCount,omitempty" xml:"CoreCount,omitempty"`
+	// The number of CPU cores on the engine node.
+	//
 	// example:
 	//
 	// 4
 	CpuCount *string `json:"CpuCount,omitempty" xml:"CpuCount,omitempty"`
+	// The engine type. Valid values:
+	//
+	// 	- **lindorm**: LindormTable.
+	//
+	// 	- **tsdb**: LindormTSDB.
+	//
+	// 	- **solr**: LindormSearch.
+	//
+	// 	- **store**: LindormDFS.
+	//
+	// 	- **bds*	- :Lindorm Tunnel Service (LTS).
+	//
+	// 	- **compute**: Lindorm Distributed Processing System (LDPS).
+	//
 	// example:
 	//
 	// lindorm
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// Indicates whether the version of the engine is the latest. Valid values:
+	//
+	// 	- **true**: The version of the engine is the latest.
+	//
+	// 	- **false**: The version of the engine is not the latest.
+	//
 	// example:
 	//
 	// false
 	IsLastVersion *bool `json:"IsLastVersion,omitempty" xml:"IsLastVersion,omitempty"`
+	// The latest version number of the engine.
+	//
 	// example:
 	//
 	// 2.2.19.2
 	LatestVersion *string `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
+	// The memory size of the engine nodes
+	//
 	// example:
 	//
 	// 8GB
 	MemorySize *string `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
+	// The version of the engine.
+	//
 	// example:
 	//
 	// 2.2.3
@@ -4960,17 +5045,17 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UntagResourcesRequest struct {
-	// Specifies whether to remove all tags from the instance. Valid values:
+	// Specifies whether to remove all tags from the instances. Valid values:
 	//
 	// 	- **true**: Remove all tags from the instances.
 	//
 	// 	- **false**: Do not remove all tags from the instances.
 	//
-	// >
+	// >  The default value of this parameter is false.
 	//
-	// 	- The default value of this parameter is false.
 	//
-	// 	- If you specify the TagKey parameter together with this parameter, this parameter does not take effect.
+	//
+	// 	- If you specify this parameter together with the TagKey parameter, this parameter does not take effect.
 	//
 	// example:
 	//
@@ -5108,6 +5193,8 @@ type UpdateInstanceIpWhiteListRequest struct {
 	//
 	// false
 	Delete *bool `json:"Delete,omitempty" xml:"Delete,omitempty"`
+	// The name of the IP whitelist. Default value: user.
+	//
 	// example:
 	//
 	// test_group
@@ -7029,7 +7116,7 @@ func (client *Client) GetLdpsResourceCost(request *GetLdpsResourceCostRequest) (
 
 // Summary:
 //
-// The storage capacity of the disk of a single core node. This parameter is returned only for multi-zone instances.
+// Obtains the detailed information about a Lindorm instance, including the instance type, billing method, and VPC.
 //
 // @param request - GetLindormInstanceRequest
 //
@@ -7091,7 +7178,7 @@ func (client *Client) GetLindormInstanceWithOptions(request *GetLindormInstanceR
 
 // Summary:
 //
-// The storage capacity of the disk of a single core node. This parameter is returned only for multi-zone instances.
+// Obtains the detailed information about a Lindorm instance, including the instance type, billing method, and VPC.
 //
 // @param request - GetLindormInstanceRequest
 //
@@ -7361,7 +7448,7 @@ func (client *Client) ListLdpsComputeGroups(request *ListLdpsComputeGroupsReques
 
 // Summary:
 //
-// Queries tags associated with the specified Lindorm instances.
+// Queries the tags associated with the specified Lindorm instance.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -7439,7 +7526,7 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 
 // Summary:
 //
-// Queries tags associated with the specified Lindorm instances.
+// Queries the tags associated with the specified Lindorm instance.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -7981,7 +8068,7 @@ func (client *Client) RestartLdpsComputeGroup(request *RestartLdpsComputeGroupRe
 
 // Summary:
 //
-// Enables and disables the MySQL compatibility feature.
+// Enables or disables the MySQL compatibility feature for a Lindorm instance.
 //
 // Description:
 //
@@ -8057,7 +8144,7 @@ func (client *Client) SwitchLSQLV3MySQLServiceWithOptions(request *SwitchLSQLV3M
 
 // Summary:
 //
-// Enables and disables the MySQL compatibility feature.
+// Enables or disables the MySQL compatibility feature for a Lindorm instance.
 //
 // Description:
 //
@@ -8177,7 +8264,11 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// Removes a tag from an instance. If the tag is not associated with another instance, the tag is deleted.
+// Removes tags from a Lindorm instance.
+//
+// Description:
+//
+// If a tag is not added to any Lindorm instance, it is deleted.
 //
 // @param request - UntagResourcesRequest
 //
@@ -8251,7 +8342,11 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 
 // Summary:
 //
-// Removes a tag from an instance. If the tag is not associated with another instance, the tag is deleted.
+// Removes tags from a Lindorm instance.
+//
+// Description:
+//
+// If a tag is not added to any Lindorm instance, it is deleted.
 //
 // @param request - UntagResourcesRequest
 //
