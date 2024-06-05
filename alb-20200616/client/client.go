@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -14,19 +11,36 @@ import (
 
 type AddEntriesToAclRequest struct {
 	// The IP entries that you want to add. You can add up to 20 IP entries in each call.
+	//
+	// This parameter is required.
 	AclEntries []*AddEntriesToAclRequestAclEntries `json:"AclEntries,omitempty" xml:"AclEntries,omitempty" type:"Repeated"`
 	// The ACL ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// nacl-hp34s2h0xx1ht4nwo****
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 }
 
@@ -59,13 +73,23 @@ func (s *AddEntriesToAclRequest) SetDryRun(v bool) *AddEntriesToAclRequest {
 }
 
 type AddEntriesToAclRequestAclEntries struct {
-	// The description of the IP entry. The description must be 2 to 256 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ \_ -.
+	// The description of the IP entry. The description must be 2 to 256 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ _ -.
 	//
 	// You can add up to 20 IP entries in each call.
+	//
+	// example:
+	//
+	// test-entry
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The CIDR block of the IP entry.
 	//
 	// You can add up to 20 IP entries in each call.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10.0.1.0/24
 	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
 }
 
@@ -89,8 +113,16 @@ func (s *AddEntriesToAclRequestAclEntries) SetEntry(v string) *AddEntriesToAclRe
 
 type AddEntriesToAclResponseBody struct {
 	// The asynchronous task ID.
+	//
+	// example:
+	//
+	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 365F4154-92F6-4AE4-92F8-7FF34B540710
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -146,16 +178,33 @@ type AddServersToServerGroupRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 593B0448-D13E-4C56-AC0D-FDF0FDE0E9A3
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: prechecks the request, but does not add a backend server to a server group. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: prechecks the request, but does not add a backend server to a server group. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The server group ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sgp-atstuj3rtop****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 	// The backend servers that you want to add to the server group. You can specify up to 40 backend servers in each call.
+	//
+	// This parameter is required.
 	Servers []*AddServersToServerGroupRequestServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
 }
 
@@ -188,42 +237,81 @@ func (s *AddServersToServerGroupRequest) SetServers(v []*AddServersToServerGroup
 }
 
 type AddServersToServerGroupRequestServers struct {
-	// The description of the backend server. The description must be 2 to 256 characters in length and can contain letters, digits, periods (.), underscores (\_), hyphens (-), commas (,), semicolons (;), forward slashes (/), and at signs (@). You can specify up to 40 servers in each call.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The port used by the backend server. Valid values: **1** to **65535**. You can specify up to 40 server IDs in each call.
+	// The description of the backend server. The description must be 2 to 256 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), commas (,), semicolons (;), forward slashes (/), and at signs (@). You can specify up to 40 servers in each call.
 	//
-	// > This parameter is required if the **ServerType** parameter is set to **Ecs**, **Eni**, **Eci**, or **Ip**. You do not need to set this parameter if **ServerType** is set to **Fc**.
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The port used by the backend server. Valid values: **1*	- to **65535**. You can specify up to 40 server IDs in each call.
+	//
+	// > This parameter is required if the **ServerType*	- parameter is set to **Ecs**, **Eni**, **Eci**, or **Ip**. You do not need to set this parameter if **ServerType*	- is set to **Fc**.
+	//
+	// example:
+	//
+	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// Specifies whether to enable the remote IP address feature. You can specify up to 40 server IDs in each call. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// Regions that support the remote IP address feature: China (Hangzhou), China (Shenzhen), China (Qingdao), China (Beijing), China (Zhangjiakou), China (Ulanqab), China (Shanghai), China (Chengdu), China (Guangzhou), China (Hong Kong), US (Virginia), Japan (Tokyo), UK (London), US (Silicon Valley), Germany (Frankfurt), Indonesia (Jakarta), Singapore, Malaysia (Kuala Lumpur), Australia (Sydney), and India (Mumbai).
 	//
-	// > If **ServerType** is set to **Ip**, this parameter is available.
+	// > If **ServerType*	- is set to **Ip**, this parameter is available.
+	//
+	// example:
+	//
+	// false
 	RemoteIpEnabled *bool `json:"RemoteIpEnabled,omitempty" xml:"RemoteIpEnabled,omitempty"`
 	// The backend server ID. You can specify up to 40 server IDs in each call.
 	//
-	// *   If ServerType is set to **Instance**, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by **Ecs**, **Eni**, or **Eci**.
-	// *   If ServerType is set to **Ip**, set the ServerId parameter to an IP address specified in the server group.
-	// *   If the backend server group is of the **Fc** type, set this parameter to the Alibaba Cloud Resource Name (ARN) of a function.
+	// 	- If ServerType is set to **Instance**, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by **Ecs**, **Eni**, or **Eci**.
+	//
+	// 	- If ServerType is set to **Ip**, set the ServerId parameter to an IP address specified in the server group.
+	//
+	// 	- If the backend server group is of the **Fc*	- type, set this parameter to the Alibaba Cloud Resource Name (ARN) of a function.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecs-bp67acfmxazb4p****
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
 	// The IP address in inclusive ENI mode. You can specify up to 40 server IDs in each call.
 	//
-	// > You do not need to set this parameter if **ServerType** is set to **Fc**.
+	// > You do not need to set this parameter if **ServerType*	- is set to **Fc**.
+	//
+	// example:
+	//
+	// 192.168.1.1
 	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
 	// The type of the backend server that you want to add to the server group. You can specify up to 40 server IDs in each call. Valid values:
 	//
-	// *   **Ecs**
-	// *   **Eni**
-	// *   **Eci**
-	// *   **Ip**
-	// *   **fc**
-	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
-	// The weight of the backend server. Valid values: **0** to **100**. Default value: **100**. If the weight of a backend server is set to **0**, no requests are forwarded to the backend server. You can specify up to 40 server IDs in each call.
+	// 	- **Ecs**
 	//
-	// > You do not need to set this parameter if **ServerType** is set to **Fc**.
+	// 	- **Eni**
+	//
+	// 	- **Eci**
+	//
+	// 	- **Ip**
+	//
+	// 	- **fc**
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Ecs
+	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
+	// The weight of the backend server. Valid values: **0*	- to **100**. Default value: **100**. If the weight of a backend server is set to **0**, no requests are forwarded to the backend server. You can specify up to 40 server IDs in each call.
+	//
+	// > You do not need to set this parameter if **ServerType*	- is set to **Fc**.
+	//
+	// example:
+	//
+	// 100
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
@@ -272,8 +360,16 @@ func (s *AddServersToServerGroupRequestServers) SetWeight(v int32) *AddServersTo
 
 type AddServersToServerGroupResponseBody struct {
 	// The ID of the asynchronous job.
+	//
+	// example:
+	//
+	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 365F4154-92F6-4AE4-92F8-7FF34B540710
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -329,16 +425,37 @@ type ApplyHealthCheckTemplateToServerGroupRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The template ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hct-bp1qjwo61pqz3ahltv****
 	HealthCheckTemplateId *string `json:"HealthCheckTemplateId,omitempty" xml:"HealthCheckTemplateId,omitempty"`
 	// The server group ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sgp-n80wyad08u0tox****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 }
 
@@ -372,8 +489,16 @@ func (s *ApplyHealthCheckTemplateToServerGroupRequest) SetServerGroupId(v string
 
 type ApplyHealthCheckTemplateToServerGroupResponseBody struct {
 	// The asynchronous task ID.
+	//
+	// example:
+	//
+	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 365F4154-92F6-4AE4-92F8-7FF34B540710
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -426,24 +551,48 @@ func (s *ApplyHealthCheckTemplateToServerGroupResponse) SetBody(v *ApplyHealthCh
 
 type AssociateAclsWithListenerRequest struct {
 	// The ACL IDs. You can specify up to three IDs in each call.
+	//
+	// This parameter is required.
 	AclIds []*string `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Repeated"`
 	// The type of the ACL. Valid values:
 	//
-	// *   **White**: a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. The whitelist applies to scenarios in which you want to allow only specific IP addresses to access an application. Your service may be adversely affected if the whitelist is not properly configured. If a whitelist is configured for a listener, only requests from IP addresses that are added to the whitelist are forwarded by the listener. If you enable a whitelist but do not add an IP address to the whitelist, the listener forwards all requests.
-	// *   **Black**: a blacklist. All requests from the IP addresses or CIDR blocks in the ACL are blocked. The blacklist applies to scenarios in which you want to block access from specific IP addresses to an application. If a blacklist is configured for a listener but no IP address is added to the blacklist, the listener forwards all requests.
+	// 	- **White**: a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. The whitelist applies to scenarios in which you want to allow only specific IP addresses to access an application. Your service may be adversely affected if the whitelist is not properly configured. If a whitelist is configured for a listener, only requests from IP addresses that are added to the whitelist are forwarded by the listener. If you enable a whitelist but do not add an IP address to the whitelist, the listener forwards all requests.
+	//
+	// 	- **Black**: a blacklist. All requests from the IP addresses or CIDR blocks in the ACL are blocked. The blacklist applies to scenarios in which you want to block access from specific IP addresses to an application. If a blacklist is configured for a listener but no IP address is added to the blacklist, the listener forwards all requests.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// White
 	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The listener ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lsr-bp1bpn0kn908w4nbw****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 }
 
@@ -482,8 +631,16 @@ func (s *AssociateAclsWithListenerRequest) SetListenerId(v string) *AssociateAcl
 
 type AssociateAclsWithListenerResponseBody struct {
 	// The synchronous task ID.
+	//
+	// example:
+	//
+	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -536,19 +693,36 @@ func (s *AssociateAclsWithListenerResponse) SetBody(v *AssociateAclsWithListener
 
 type AssociateAdditionalCertificatesWithListenerRequest struct {
 	// The additional certificates.
+	//
+	// This parameter is required.
 	Certificates []*AssociateAdditionalCertificatesWithListenerRequestCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The listener ID. You must specify the ID of an HTTPS listener or a QUIC listener.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lsr-bp1bpn0kn908w4nbw****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 }
 
@@ -582,6 +756,12 @@ func (s *AssociateAdditionalCertificatesWithListenerRequest) SetListenerId(v str
 
 type AssociateAdditionalCertificatesWithListenerRequestCertificates struct {
 	// The certificate ID. Only server certificates are supported.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cert-123
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 }
 
@@ -600,8 +780,16 @@ func (s *AssociateAdditionalCertificatesWithListenerRequestCertificates) SetCert
 
 type AssociateAdditionalCertificatesWithListenerResponseBody struct {
 	// The asynchronous task ID.
+	//
+	// example:
+	//
+	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 365F4154-92F6-4AE4-92F8-7FF34B540710
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -654,23 +842,50 @@ func (s *AssociateAdditionalCertificatesWithListenerResponse) SetBody(v *Associa
 
 type AttachCommonBandwidthPackageToLoadBalancerRequest struct {
 	// The EIP bandwidth plan ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cbwp-bp1pzf0ym72pu3y76****
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ALB instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alb-d676fho813rmu3****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	// The region ID of the ALB instance.
 	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -709,8 +924,16 @@ func (s *AttachCommonBandwidthPackageToLoadBalancerRequest) SetRegionId(v string
 
 type AttachCommonBandwidthPackageToLoadBalancerResponseBody struct {
 	// The asynchronous task ID.
+	//
+	// example:
+	//
+	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 2EF39708-974B-5E74-AFF5-3445263035A8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -767,17 +990,34 @@ type CancelShiftLoadBalancerZonesRequest struct {
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
 	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the ALB instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alb-o9ulmq5hgn68jk****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	// The mappings between zones and vSwitches.
 	//
 	// >  You can add only one zone in each call.
+	//
+	// This parameter is required.
 	ZoneMappings []*CancelShiftLoadBalancerZonesRequestZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
 }
 
@@ -811,8 +1051,20 @@ func (s *CancelShiftLoadBalancerZonesRequest) SetZoneMappings(v []*CancelShiftLo
 
 type CancelShiftLoadBalancerZonesRequestZoneMappings struct {
 	// The ID of the vSwitch in the zone. By default, each zone uses one vSwitch and one subnet.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vsw-bp1rmcrwg3erh1fh8****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The zone ID. You can call the [DescribeZones](~~189196~~) operation to query the most recent zone list.
+	// The zone ID. You can call the [DescribeZones](https://help.aliyun.com/document_detail/189196.html) operation to query the most recent zone list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou-a
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -836,6 +1088,10 @@ func (s *CancelShiftLoadBalancerZonesRequestZoneMappings) SetZoneId(v string) *C
 
 type CancelShiftLoadBalancerZonesResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -887,13 +1143,28 @@ type CreateAScriptsRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The listener ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lsn-6hfq3zs0x04ibn****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 }
 
@@ -928,14 +1199,31 @@ func (s *CreateAScriptsRequest) SetListenerId(v string) *CreateAScriptsRequest {
 type CreateAScriptsRequestAScripts struct {
 	// The name of the AScript rule.
 	//
-	// The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+	// The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	AScriptName *string `json:"AScriptName,omitempty" xml:"AScriptName,omitempty"`
 	// Specifies whether to enable the AScript rule. Valid values:
 	//
-	// *   **true**
-	// *   **false** (default)
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
+	// example:
+	//
+	// false
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// The content of the AScript rule.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// if and(match_re($uri, \\"^/1.txt$\\"), $arg_type) {   rewrite(concat(\\"/1.\\", $arg_type), \\"break\\") }
 	ScriptContent *string `json:"ScriptContent,omitempty" xml:"ScriptContent,omitempty"`
 }
 
@@ -966,8 +1254,16 @@ type CreateAScriptsResponseBody struct {
 	// The AScript rule IDs.
 	AScriptIds []*CreateAScriptsResponseBodyAScriptIds `json:"AScriptIds,omitempty" xml:"AScriptIds,omitempty" type:"Repeated"`
 	// The asynchronous task ID.
+	//
+	// example:
+	//
+	// 5c607642-535e-4e06-9d77-df53049b****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// BF0FE763-9603-558F-A55B-0F4B9A3E3C02
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -996,6 +1292,10 @@ func (s *CreateAScriptsResponseBody) SetRequestId(v string) *CreateAScriptsRespo
 
 type CreateAScriptsResponseBodyAScriptIds struct {
 	// The AScript rule ID.
+	//
+	// example:
+	//
+	// as-xvq5igaa7uv6vr****
 	AScriptId *string `json:"AScriptId,omitempty" xml:"AScriptId,omitempty"`
 }
 
@@ -1042,20 +1342,37 @@ func (s *CreateAScriptsResponse) SetBody(v *CreateAScriptsResponseBody) *CreateA
 }
 
 type CreateAclRequest struct {
-	// The name of the ACL. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+	// The name of the ACL. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	//
+	// example:
+	//
+	// test-acl
 	AclName *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** may be different for each API request.
+	// >  If you do not set this parameter, the system uses **RequestId*	- as **ClientToken**. The value of **RequestId*	- may be different for each API request.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to check the request without performing the operation. Valid values:
 	//
-	// *   **true**: checks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-	// *   **false** (default): sends the request. If the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
+	// 	- **true**: checks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): sends the request. If the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-atstuj3rtop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags.
 	Tag []*CreateAclRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -1096,8 +1413,16 @@ func (s *CreateAclRequest) SetTag(v []*CreateAclRequestTag) *CreateAclRequest {
 
 type CreateAclRequestTag struct {
 	// The tag key. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value. The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// product
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1121,10 +1446,22 @@ func (s *CreateAclRequestTag) SetValue(v string) *CreateAclRequestTag {
 
 type CreateAclResponseBody struct {
 	// The ID of the ACL.
+	//
+	// example:
+	//
+	// nacl-hp34s2h0xx1ht4nwo****
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	// The ID of the asynchronous task.
+	//
+	// example:
+	//
+	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1186,68 +1523,122 @@ type CreateHealthCheckTemplateRequest struct {
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
 	// >  If you do not specify this parameter, the system automatically uses the value of RequestId as the value of ClientToken. The request ID may be different for each request.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a **2xx** HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a **2xx*	- HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The HTTP status codes that are used to indicate whether the backend server passes the health check.
+	//
+	// example:
+	//
+	// 5
 	HealthCheckCodes []*string `json:"HealthCheckCodes,omitempty" xml:"HealthCheckCodes,omitempty" type:"Repeated"`
 	// The port that is used for health checks.
 	//
 	// Valid values: **0 to 65535**.
 	//
 	// Default value: **0**. If you set the value to 0, the port of a backend server is used for health checks.
+	//
+	// example:
+	//
+	// 80
 	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
 	// The domain name that you want to use for the health check.
 	//
 	// Default value: **$SERVER_IP**. The domain name must be 1 to 80 characters in length. The domain name must meet the following requirements:
 	//
-	// *   The domain name can contain lowercase letters, digits, hyphens (-), and periods (.).
-	// *   The domain name must contain at least one period (.) but cannot start or end with a period (.).
-	// *   The rightmost domain label can contain only letters but cannot contain digits or hyphens (-).
-	// *   Other fields cannot start or end with a hyphen (-).
+	// 	- The domain name can contain lowercase letters, digits, hyphens (-), and periods (.).
 	//
-	// This parameter is required only if the **HealthCheckProtocol** parameter is set to **HTTP**.
+	// 	- The domain name must contain at least one period (.) but cannot start or end with a period (.).
+	//
+	// 	- The rightmost domain label can contain only letters but cannot contain digits or hyphens (-).
+	//
+	// 	- Other fields cannot start or end with a hyphen (-).
+	//
+	// This parameter is required only if the **HealthCheckProtocol*	- parameter is set to **HTTP**.
+	//
+	// example:
+	//
+	// $_ip
 	HealthCheckHost *string `json:"HealthCheckHost,omitempty" xml:"HealthCheckHost,omitempty"`
 	// The HTTP version that is used for health checks.
 	//
-	// Valid values: **HTTP 1.0** and **HTTP 1.1**.
+	// Valid values: **HTTP 1.0*	- and **HTTP 1.1**.
 	//
 	// Default value: **HTTP 1.1**.
 	//
 	// > This parameter is valid only if the `HealthCheckProtocol` parameter is set to **HTTP**.
+	//
+	// example:
+	//
+	// HTTP 1.0
 	HealthCheckHttpVersion *string `json:"HealthCheckHttpVersion,omitempty" xml:"HealthCheckHttpVersion,omitempty"`
 	// The interval at which health checks are performed.
 	//
 	// Valid values: **1 to 50**.
 	//
 	// Default value: **2**.
+	//
+	// example:
+	//
+	// 2
 	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
 	// The method that you want to use for the health check. Valid values:
 	//
-	// *   **HEAD**: By default, the ALB instance sends HEAD requests to a backend server to perform HTTP health checks.
-	// *   **POST**: gRPC health checks automatically use the POST method.
-	// *   **GET**: If the length of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
+	// 	- **HEAD**: By default, the ALB instance sends HEAD requests to a backend server to perform HTTP health checks.
 	//
-	// > This parameter takes effect only when the **HealthCheckProtocol** parameter is set to **HTTP** or **gRPC**.
+	// 	- **POST**: gRPC health checks automatically use the POST method.
+	//
+	// 	- **GET**: If the length of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
+	//
+	// > This parameter takes effect only when the **HealthCheckProtocol*	- parameter is set to **HTTP*	- or **gRPC**.
+	//
+	// example:
+	//
+	// HEAD
 	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
 	// The URL that is used for health checks.
 	//
-	// It must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : \" , +`. The URL must start with a forward slash (/).
+	// It must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). It can also contain the following extended characters: `_ ; ~ ! ( ) 	- [ ] @ $ ^ : \\" , +`. The URL must start with a forward slash (/).
 	//
 	// > This parameter is valid only if the `HealthCheckProtocol` parameter is set to **HTTP**.
+	//
+	// example:
+	//
+	// /test/index.html
 	HealthCheckPath *string `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
 	// The protocol that you want to use for health checks. Valid values:
 	//
-	// *   **HTTP** (default): To perform HTTP health checks, ALB sends HEAD or GET requests to a backend server to check whether the backend server is healthy.
-	// *   **TCP**: To perform TCP health checks, ALB sends SYN packets to a backend server to check whether the port of the backend server is available to receive requests.
-	// *   **gRPC**: To perform gRPC health checks, ALB sends POST or GET requests to a backend server to check whether the backend server is healthy.
+	// 	- **HTTP*	- (default): To perform HTTP health checks, ALB sends HEAD or GET requests to a backend server to check whether the backend server is healthy.
+	//
+	// 	- **TCP**: To perform TCP health checks, ALB sends SYN packets to a backend server to check whether the port of the backend server is available to receive requests.
+	//
+	// 	- **gRPC**: To perform gRPC health checks, ALB sends POST or GET requests to a backend server to check whether the backend server is healthy.
+	//
+	// example:
+	//
+	// HTTP
 	HealthCheckProtocol *string `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
 	// The name of the health check template.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// HealthCheckTemplate1
 	HealthCheckTemplateName *string `json:"HealthCheckTemplateName,omitempty" xml:"HealthCheckTemplateName,omitempty"`
 	// The timeout period of a health check. If a backend server does not respond within the specified timeout period, the backend server fails the health check.
 	//
@@ -1256,20 +1647,32 @@ type CreateHealthCheckTemplateRequest struct {
 	// Default value: **5**.
 	//
 	// > If the value of the `HealthCheckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the timeout period specified by the `HealthCheckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is used as the timeout period.
+	//
+	// example:
+	//
+	// 5
 	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail** to **success**.
+	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail*	- to **success**.
 	//
 	// Valid values: **2 to 10**.
 	//
 	// Default value: **3**.
+	//
+	// example:
+	//
+	// 4
 	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
 	// The tags.
 	Tag []*CreateHealthCheckTemplateRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**.
+	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success*	- to **fail**.
 	//
 	// Valid values: **2 to 10**.
 	//
 	// Default value: **3**.
+	//
+	// example:
+	//
+	// 4
 	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
@@ -1358,8 +1761,16 @@ func (s *CreateHealthCheckTemplateRequest) SetUnhealthyThreshold(v int32) *Creat
 
 type CreateHealthCheckTemplateRequestTag struct {
 	// The tag key. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value. The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// product
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1383,8 +1794,16 @@ func (s *CreateHealthCheckTemplateRequestTag) SetValue(v string) *CreateHealthCh
 
 type CreateHealthCheckTemplateResponseBody struct {
 	// The ID of the health check template.
+	//
+	// example:
+	//
+	// hct-1224334
 	HealthCheckTemplateId *string `json:"HealthCheckTemplateId,omitempty" xml:"HealthCheckTemplateId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 365F4154-92F6-4AE4-92F8-7FF34B540710
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1439,33 +1858,58 @@ type CreateListenerRequest struct {
 	CaCertificates []*CreateListenerRequestCaCertificates `json:"CaCertificates,omitempty" xml:"CaCertificates,omitempty" type:"Repeated"`
 	// Specifies whether to enable mutual authentication. Valid values:
 	//
-	// *   **true**: enables mutual authentication.
-	// *   **false** (default): disables mutual authentication.
+	// 	- **true**: enables mutual authentication.
+	//
+	// 	- **false*	- (default): disables mutual authentication.
+	//
+	// example:
+	//
+	// false
 	CaEnabled    *bool                                `json:"CaEnabled,omitempty" xml:"CaEnabled,omitempty"`
 	Certificates []*CreateListenerRequestCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the value, but you must make sure that it is unique among all requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. **RequestId** may be different for each API request.
-	ClientToken    *string                                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// >  If you do not set this parameter, the system automatically uses the value of **RequestId*	- as the value of **ClientToken**. **RequestId*	- may be different for each API request.
+	//
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
 	DefaultActions []*CreateListenerRequestDefaultActions `json:"DefaultActions,omitempty" xml:"DefaultActions,omitempty" type:"Repeated"`
 	// Specifies whether to perform only a precheck. Valid values:
 	//
-	// *   **true**: prechecks the request without creating a listener. The system checks the required parameters, request syntax, and limits. If the request fails the precheck, an error code is returned based on the cause of the failure. If the request passes the precheck, the `DryRunOperation` error code is returned.
-	// *   **false** (default): sends the API request. If the request passes the precheck, a 2xx HTTP status code is returned and the system proceeds to create a listener.
+	// 	- **true**: prechecks the request without creating a listener. The system checks the required parameters, request syntax, and limits. If the request fails the precheck, an error code is returned based on the cause of the failure. If the request passes the precheck, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): sends the API request. If the request passes the precheck, a 2xx HTTP status code is returned and the system proceeds to create a listener.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Specifies whether to enable `Gzip` compression to compress specific types of files. Valid values:
 	//
-	// *   **true** (default): enables Gzip compression.
-	// *   **false**: disables Gzip compression.
+	// 	- **true*	- (default): enables Gzip compression.
+	//
+	// 	- **false**: disables Gzip compression.
+	//
+	// example:
+	//
+	// true
 	GzipEnabled *bool `json:"GzipEnabled,omitempty" xml:"GzipEnabled,omitempty"`
 	// Specifies whether to enable `HTTP/2`. Valid values:
 	//
-	// *   **true** (default): enables HTTP/2.
-	// *   **false**: disables HTTP/2.
+	// 	- **true*	- (default): enables HTTP/2.
+	//
+	// 	- **false**: disables HTTP/2.
 	//
 	// >  Only HTTPS listeners support this parameter.
+	//
+	// example:
+	//
+	// true
 	Http2Enabled *bool `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
 	// The timeout period of an idle connection. Unit: seconds.
 	//
@@ -1474,20 +1918,46 @@ type CreateListenerRequest struct {
 	// Default value: **15**.
 	//
 	// If no requests are received within the specified timeout period, ALB closes the current connection. When a new request is received, ALB establishes a new connection.
+	//
+	// example:
+	//
+	// 3
 	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
 	// The name of the listener.
 	//
-	// The description must be 2 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (\_). Regular expressions are supported.
+	// The description must be 2 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_). Regular expressions are supported.
+	//
+	// example:
+	//
+	// HTTP_80
 	ListenerDescription *string `json:"ListenerDescription,omitempty" xml:"ListenerDescription,omitempty"`
 	// The frontend port that is used by the ALB instance.
 	//
 	// Valid values: **1 to 65535**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 80
 	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	// The listener protocol.
 	//
 	// Valid values: **HTTP**, **HTTPS**, and **QUIC**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// HTTP
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
 	// The ID of the ALB instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alb-n5qw04uq8vavfe****
 	LoadBalancerId *string                          `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	QuicConfig     *CreateListenerRequestQuicConfig `json:"QuicConfig,omitempty" xml:"QuicConfig,omitempty" type:"Struct"`
 	// The timeout period of a request. Unit: seconds.
@@ -1497,12 +1967,20 @@ type CreateListenerRequest struct {
 	// Default value: **60**.
 	//
 	// If no response is received from the backend server during the request timeout period, ALB sends an `HTTP 504` error code to the client.
+	//
+	// example:
+	//
+	// 60
 	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
 	// The ID of the security policy. System security policies and custom security policies are supported.
 	//
-	// Default value: **tls_cipher_policy\_1\_0** (system security policy).
+	// Default value: **tls_cipher_policy_1_0*	- (system security policy).
 	//
 	// >  Only HTTPS listeners support this parameter.
+	//
+	// example:
+	//
+	// tls_cipher_policy_1_0
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 	// The tags.
 	Tag                 []*CreateListenerRequestTag               `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -1608,6 +2086,9 @@ func (s *CreateListenerRequest) SetXForwardedForConfig(v *CreateListenerRequestX
 }
 
 type CreateListenerRequestCaCertificates struct {
+	// example:
+	//
+	// 12315790212_166f8204689_1714763408_70998****
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 }
 
@@ -1626,6 +2107,10 @@ func (s *CreateListenerRequestCaCertificates) SetCertificateId(v string) *Create
 
 type CreateListenerRequestCertificates struct {
 	// The ID of the certificate. Only server certificates are supported. You can specify up to 20 certificate IDs.
+	//
+	// example:
+	//
+	// 12315790212_166f8204689_1714763408_70998****
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 }
 
@@ -1643,10 +2128,17 @@ func (s *CreateListenerRequestCertificates) SetCertificateId(v string) *CreateLi
 }
 
 type CreateListenerRequestDefaultActions struct {
+	// This parameter is required.
 	ForwardGroupConfig *CreateListenerRequestDefaultActionsForwardGroupConfig `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
 	// The action type. You can specify only one action type. Valid value:
 	//
 	// **ForwardGroup**: forwards requests to multiple vServer groups.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ForwardGroup
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -1669,6 +2161,7 @@ func (s *CreateListenerRequestDefaultActions) SetType(v string) *CreateListenerR
 }
 
 type CreateListenerRequestDefaultActionsForwardGroupConfig struct {
+	// This parameter is required.
 	ServerGroupTuples []*CreateListenerRequestDefaultActionsForwardGroupConfigServerGroupTuples `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
 }
 
@@ -1687,6 +2180,12 @@ func (s *CreateListenerRequestDefaultActionsForwardGroupConfig) SetServerGroupTu
 
 type CreateListenerRequestDefaultActionsForwardGroupConfigServerGroupTuples struct {
 	// The ID of the server group to which requests are forwarded.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rsp-cige6j****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 }
 
@@ -1704,16 +2203,25 @@ func (s *CreateListenerRequestDefaultActionsForwardGroupConfigServerGroupTuples)
 }
 
 type CreateListenerRequestQuicConfig struct {
-	// The ID of the QUIC listener that you want to associate with the HTTPS listener. Only HTTPS listeners support this parameter. This parameter is required when **QuicUpgradeEnabled** is set to **true**.
+	// The ID of the QUIC listener that you want to associate with the HTTPS listener. Only HTTPS listeners support this parameter. This parameter is required when **QuicUpgradeEnabled*	- is set to **true**.
 	//
 	// >  The HTTPS listener and the QUIC listener must be added to the same ALB instance. Make sure that the QUIC listener is not associated with any other listeners.
+	//
+	// example:
+	//
+	// lsr-bp1bpn0kn908w4nbw****
 	QuicListenerId *string `json:"QuicListenerId,omitempty" xml:"QuicListenerId,omitempty"`
 	// Specifies whether to enable QUIC upgrade. Valid values:
 	//
-	// *   **true**: enables QUIC upgrade.
-	// *   **false** (default): disables QUIC upgrade.
+	// 	- **true**: enables QUIC upgrade.
+	//
+	// 	- **false*	- (default): disables QUIC upgrade.
 	//
 	// >  Only HTTPS listeners support this parameter.
+	//
+	// example:
+	//
+	// false
 	QuicUpgradeEnabled *bool `json:"QuicUpgradeEnabled,omitempty" xml:"QuicUpgradeEnabled,omitempty"`
 }
 
@@ -1737,8 +2245,16 @@ func (s *CreateListenerRequestQuicConfig) SetQuicUpgradeEnabled(v bool) *CreateL
 
 type CreateListenerRequestTag struct {
 	// The tag key. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value. The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// product
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1761,103 +2277,173 @@ func (s *CreateListenerRequestTag) SetValue(v string) *CreateListenerRequestTag 
 }
 
 type CreateListenerRequestXForwardedForConfig struct {
-	// The name of the custom header. This parameter takes effect only when **XForwardedForClientCertClientVerifyEnabled** is set to **true**.
+	// The name of the custom header. This parameter takes effect only when **XForwardedForClientCertClientVerifyEnabled*	- is set to **true**.
 	//
-	// The name must be 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (\_), and digits.
+	// The name must be 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (_), and digits.
 	//
 	// >  Only HTTPS listeners support this parameter.
+	//
+	// example:
+	//
+	// test_client-verify-alias_123456
 	XForwardedForClientCertClientVerifyAlias *string `json:"XForwardedForClientCertClientVerifyAlias,omitempty" xml:"XForwardedForClientCertClientVerifyAlias,omitempty"`
 	// Specifies whether to use the `X-Forwarded-Clientcert-clientverify` header to retrieve the verification result of the client certificate. Valid values:
 	//
-	// *   **true**: uses the X-Forwarded-Clientcert-clientverify header.
-	// *   **false** (default): does not use the X-Forwarded-Clientcert-clientverify header.
+	// 	- **true**: uses the X-Forwarded-Clientcert-clientverify header.
+	//
+	// 	- **false*	- (default): does not use the X-Forwarded-Clientcert-clientverify header.
 	//
 	// >  Only HTTPS listeners support this parameter.
+	//
+	// example:
+	//
+	// true
 	XForwardedForClientCertClientVerifyEnabled *bool `json:"XForwardedForClientCertClientVerifyEnabled,omitempty" xml:"XForwardedForClientCertClientVerifyEnabled,omitempty"`
-	// The name of the custom header. This parameter takes effect only when **XForwardedForClientCertFingerprintEnabled** is set to **true**.
+	// The name of the custom header. This parameter takes effect only when **XForwardedForClientCertFingerprintEnabled*	- is set to **true**.
 	//
-	// The name must be 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (\_), and digits.
+	// The name must be 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (_), and digits.
 	//
 	// >  Only HTTPS listeners support this parameter.
+	//
+	// example:
+	//
+	// test_finger-print-alias_123456
 	XForwardedForClientCertFingerprintAlias *string `json:"XForwardedForClientCertFingerprintAlias,omitempty" xml:"XForwardedForClientCertFingerprintAlias,omitempty"`
 	// Specifies whether to use the `X-Forwarded-Clientcert-fingerprint` header to retrieve the fingerprint of the client certificate. Valid values:
 	//
-	// *   **true**: uses the X-Forwarded-Clientcert-fingerprint header.
-	// *   **false** (default): does not use the X-Forwarded-Clientcert-fingerprint header.
+	// 	- **true**: uses the X-Forwarded-Clientcert-fingerprint header.
+	//
+	// 	- **false*	- (default): does not use the X-Forwarded-Clientcert-fingerprint header.
 	//
 	// >  Only HTTPS listeners support this parameter.
+	//
+	// example:
+	//
+	// true
 	XForwardedForClientCertFingerprintEnabled *bool `json:"XForwardedForClientCertFingerprintEnabled,omitempty" xml:"XForwardedForClientCertFingerprintEnabled,omitempty"`
-	// The name of the custom header. This parameter takes effect only when **XForwardedForClientCertIssuerDNEnabled** is set to **true**.
+	// The name of the custom header. This parameter takes effect only when **XForwardedForClientCertIssuerDNEnabled*	- is set to **true**.
 	//
-	// The name must be 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (\_), and digits.
+	// The name must be 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (_), and digits.
 	//
 	// >  Only HTTPS listeners support this parameter.
+	//
+	// example:
+	//
+	// test_issue-dn-alias_123456
 	XForwardedForClientCertIssuerDNAlias *string `json:"XForwardedForClientCertIssuerDNAlias,omitempty" xml:"XForwardedForClientCertIssuerDNAlias,omitempty"`
 	// Specifies whether to use the `X-Forwarded-Clientcert-issuerdn` header to retrieve information about the authority that issues the client certificate. Valid values:
 	//
-	// *   **true**: uses the X-Forwarded-Clientcert-issuerdn header.
-	// *   **false** (default): does not use the X-Forwarded-Clientcert-issuerdn header.
+	// 	- **true**: uses the X-Forwarded-Clientcert-issuerdn header.
+	//
+	// 	- **false*	- (default): does not use the X-Forwarded-Clientcert-issuerdn header.
 	//
 	// >  Only HTTPS listeners support this parameter.
+	//
+	// example:
+	//
+	// true
 	XForwardedForClientCertIssuerDNEnabled *bool `json:"XForwardedForClientCertIssuerDNEnabled,omitempty" xml:"XForwardedForClientCertIssuerDNEnabled,omitempty"`
-	// The name of the custom header. This parameter takes effect only when **XForwardedForClientCertSubjectDNEnabled** is set to **true**.
+	// The name of the custom header. This parameter takes effect only when **XForwardedForClientCertSubjectDNEnabled*	- is set to **true**.
 	//
-	// The name must be 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (\_), and digits.
+	// The name must be 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (_), and digits.
 	//
 	// >  Only HTTPS listeners support this parameter.
+	//
+	// example:
+	//
+	// test_subject-dn-alias_123456
 	XForwardedForClientCertSubjectDNAlias *string `json:"XForwardedForClientCertSubjectDNAlias,omitempty" xml:"XForwardedForClientCertSubjectDNAlias,omitempty"`
 	// Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header to retrieve information about the owner of the client certificate. Valid values:
 	//
-	// *   **true**: uses the X-Forwarded-Clientcert-subjectdn header.
-	// *   **false** (default): does not use the X-Forwarded-Clientcert-subjectdn header.
+	// 	- **true**: uses the X-Forwarded-Clientcert-subjectdn header.
+	//
+	// 	- **false*	- (default): does not use the X-Forwarded-Clientcert-subjectdn header.
 	//
 	// >  Only HTTPS listeners support this parameter.
+	//
+	// example:
+	//
+	// true
 	XForwardedForClientCertSubjectDNEnabled *bool `json:"XForwardedForClientCertSubjectDNEnabled,omitempty" xml:"XForwardedForClientCertSubjectDNEnabled,omitempty"`
 	// Specifies whether to use the `X-Forwarded-Client-Ip` header to obtain the source IP address of the ALB instance. Valid values:
 	//
-	// *   **true**: uses the X-Forwarded-Client-Ip header.
-	// *   **false** (default): does not use the X-Forwarded-Client-Ip header.
+	// 	- **true**: uses the X-Forwarded-Client-Ip header.
+	//
+	// 	- **false*	- (default): does not use the X-Forwarded-Client-Ip header.
 	//
 	// >  HTTP, HTTPS, and QUIC listeners support this parameter. The feature corresponding to this parameter is not available by default. If you want to use this feature, submit a ticket.
+	//
+	// example:
+	//
+	// false
 	XForwardedForClientSourceIpsEnabled *bool `json:"XForwardedForClientSourceIpsEnabled,omitempty" xml:"XForwardedForClientSourceIpsEnabled,omitempty"`
 	// The trusted proxy IP address.
 	//
 	// ALB traverses `X-Forwarded-For` backwards and selects the first IP address that is not in the trusted IP list as the originating IP address of the client, which will be throttled if source IP address throttling is enabled.
+	//
+	// example:
+	//
+	// 10.1.1.0/24
 	XForwardedForClientSourceIpsTrusted *string `json:"XForwardedForClientSourceIpsTrusted,omitempty" xml:"XForwardedForClientSourceIpsTrusted,omitempty"`
 	// Specifies whether to use the `X-Forwarded-Client-Port` header to retrieve the client port. Valid values:
 	//
-	// *   **true**: uses the X-Forwarded-Client-Port header.
-	// *   **false** (default): does not use the X-Forwarded-Client-Port header.
+	// 	- **true**: uses the X-Forwarded-Client-Port header.
+	//
+	// 	- **false*	- (default): does not use the X-Forwarded-Client-Port header.
 	//
 	// >  HTTP and HTTPS listeners support this parameter.
+	//
+	// example:
+	//
+	// true
 	XForwardedForClientSrcPortEnabled *bool `json:"XForwardedForClientSrcPortEnabled,omitempty" xml:"XForwardedForClientSrcPortEnabled,omitempty"`
 	// Specifies whether to use the `X-Forwarded-For` header to retrieve client IP addresses. Valid values:
 	//
-	// *   **true** (default): uses the X-Forwarded-For header.
-	// *   **false**: does not use the X-Forwarded-For header.
+	// 	- **true*	- (default): uses the X-Forwarded-For header.
+	//
+	// 	- **false**: does not use the X-Forwarded-For header.
 	//
 	// >  HTTP and HTTPS listeners support this parameter.
+	//
+	// example:
+	//
+	// true
 	XForwardedForEnabled *bool `json:"XForwardedForEnabled,omitempty" xml:"XForwardedForEnabled,omitempty"`
 	// Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listening protocol of the ALB instance. Valid values:
 	//
-	// *   **true**: uses the X-Forwarded-Proto header.
-	// *   **false** (default): does not use the X-Forwarded-Proto header.
+	// 	- **true**: uses the X-Forwarded-Proto header.
+	//
+	// 	- **false*	- (default): does not use the X-Forwarded-Proto header.
 	//
 	// >  HTTP, HTTPS, and QUIC listeners support this parameter.
+	//
+	// example:
+	//
+	// false
 	XForwardedForProtoEnabled *bool `json:"XForwardedForProtoEnabled,omitempty" xml:"XForwardedForProtoEnabled,omitempty"`
 	// Specifies whether to use the `SLB-ID` header to retrieve the ID of the ALB instance. Valid values:
 	//
-	// *   **true**: uses the SLB-ID header.
-	// *   **false** (default): does not use the SLB-ID header.
+	// 	- **true**: uses the SLB-ID header.
+	//
+	// 	- **false*	- (default): does not use the SLB-ID header.
 	//
 	// >  HTTP, HTTPS, and QUIC listeners support this parameter.
+	//
+	// example:
+	//
+	// false
 	XForwardedForSLBIdEnabled *bool `json:"XForwardedForSLBIdEnabled,omitempty" xml:"XForwardedForSLBIdEnabled,omitempty"`
 	// Specifies whether to use the `X-Forwarded-Port` header to retrieve the listening port of the ALB instance. Valid values:
 	//
-	// *   **true**: uses the X-Forwarded-Port header.
-	// *   **false** (default): does not use the X-Forwarded-Port header.
+	// 	- **true**: uses the X-Forwarded-Port header.
+	//
+	// 	- **false*	- (default): does not use the X-Forwarded-Port header.
 	//
 	// >  HTTP, HTTPS, and QUIC listeners support this parameter.
+	//
+	// example:
+	//
+	// false
 	XForwardedForSLBPortEnabled *bool `json:"XForwardedForSLBPortEnabled,omitempty" xml:"XForwardedForSLBPortEnabled,omitempty"`
 }
 
@@ -1946,10 +2532,22 @@ func (s *CreateListenerRequestXForwardedForConfig) SetXForwardedForSLBPortEnable
 
 type CreateListenerResponseBody struct {
 	// The ID of the asynchronous task.
+	//
+	// example:
+	//
+	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The ID of the listener.
+	//
+	// example:
+	//
+	// lsr-bp1bpn0kn908w4nbw****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2008,56 +2606,113 @@ func (s *CreateListenerResponse) SetBody(v *CreateListenerResponseBody) *CreateL
 type CreateLoadBalancerRequest struct {
 	// The mode used to assign IP addresses to zones of the ALB instance. Default value: Dynamic. Valid values:
 	//
-	// *   **Fixed:** assigns a static IP address to the ALB instance.
-	// *   **Dynamic:** dynamically assigns an IP address to each zone of the ALB instance.
+	// 	- **Fixed:*	- assigns a static IP address to the ALB instance.
+	//
+	// 	- **Dynamic:*	- dynamically assigns an IP address to each zone of the ALB instance.
+	//
+	// example:
+	//
+	// Dynamic
 	AddressAllocatedMode *string `json:"AddressAllocatedMode,omitempty" xml:"AddressAllocatedMode,omitempty"`
 	// The protocol version. Valid values:
 	//
-	// *   **IPv4:** IPv4.
-	// *   **DualStack:** dual stack.
+	// 	- **IPv4:*	- IPv4.
+	//
+	// 	- **DualStack:*	- dual stack.
+	//
+	// example:
+	//
+	// IPv4
 	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
 	// The type of the address of the ALB instance. Valid values:
 	//
-	// *   **Internet:** The ALB instance uses a public IP address. The domain name of the ALB instance is resolved to the public IP address. In this case, the ALB instance can be accessed over the Internet.
-	// *   **Intranet:** The ALB instance uses a private IP address. The domain name of the ALB instance is resolved to the private IP address. In this case, the ALB instance can be accessed over the VPC in which the ALB instance is deployed.
+	// 	- **Internet:*	- The ALB instance uses a public IP address. The domain name of the ALB instance is resolved to the public IP address. In this case, the ALB instance can be accessed over the Internet.
+	//
+	// 	- **Intranet:*	- The ALB instance uses a private IP address. The domain name of the ALB instance is resolved to the private IP address. In this case, the ALB instance can be accessed over the VPC in which the ALB instance is deployed.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Internet
 	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system uses the value of **RequestId** as the value of **ClientToken**. The value of the **RequestId** parameter may be different for each API request.
+	// >  If you do not specify this parameter, the system uses the value of **RequestId*	- as the value of **ClientToken**. The value of the **RequestId*	- parameter may be different for each API request.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to enable deletion protection. Default value: false. Valid values:
 	//
-	// *   **true:** enables deletion protection.
-	// *   **false:** disables deletion protection.
+	// 	- **true:*	- enables deletion protection.
+	//
+	// 	- **false:*	- disables deletion protection.
+	//
+	// example:
+	//
+	// false
 	DeletionProtectionEnabled *bool `json:"DeletionProtectionEnabled,omitempty" xml:"DeletionProtectionEnabled,omitempty"`
 	// Specifies whether to perform a dry run. Default value: false. Valid values:
 	//
-	// *   **true:** performs a dry run. The system checks the required parameters, request format, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false:** performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true:*	- performs a dry run. The system checks the required parameters, request format, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false:*	- performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The configuration of the billing method of the ALB instance.
+	//
+	// This parameter is required.
 	LoadBalancerBillingConfig *CreateLoadBalancerRequestLoadBalancerBillingConfig `json:"LoadBalancerBillingConfig,omitempty" xml:"LoadBalancerBillingConfig,omitempty" type:"Struct"`
 	// The edition of the ALB instance. The features and billing rules vary based on the edition of the ALB instance. Valid values:
 	//
-	// *   **Basic:** basic.
-	// *   **Standard:** standard.
-	// *   **StandardWithWaf:** WAF-enabled.
+	// 	- **Basic:*	- basic.
+	//
+	// 	- **Standard:*	- standard.
+	//
+	// 	- **StandardWithWaf:*	- WAF-enabled.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Standard
 	LoadBalancerEdition *string `json:"LoadBalancerEdition,omitempty" xml:"LoadBalancerEdition,omitempty"`
 	// The name of the ALB instance.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	//
+	// example:
+	//
+	// alb1
 	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
 	// The configuration of the configuration read-only mode.
 	ModificationProtectionConfig *CreateLoadBalancerRequestModificationProtectionConfig `json:"ModificationProtectionConfig,omitempty" xml:"ModificationProtectionConfig,omitempty" type:"Struct"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-atstuj3rtop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags.
 	Tag []*CreateLoadBalancerRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the virtual private cloud (VPC) in which you want to create the ALB instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpc-bp1b49rqrybk45nio****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The zones and the vSwitches in the zones. You must specify at least two zones.
+	//
+	// This parameter is required.
 	ZoneMappings []*CreateLoadBalancerRequestZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
 }
 
@@ -2141,10 +2796,20 @@ func (s *CreateLoadBalancerRequest) SetZoneMappings(v []*CreateLoadBalancerReque
 
 type CreateLoadBalancerRequestLoadBalancerBillingConfig struct {
 	// The ID of the Elastic IP Address (EIP) bandwidth plan that is associated with the ALB instance if the ALB instance uses a public IP address.
+	//
+	// example:
+	//
+	// cbwp-bp1vevu8h3ieh****
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
 	// The billing method of the ALB instance.
 	//
 	// Set the value to **PostPay**, which specifies the pay-as-you-go billing method.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PostPay
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 }
 
@@ -2167,16 +2832,21 @@ func (s *CreateLoadBalancerRequestLoadBalancerBillingConfig) SetPayType(v string
 }
 
 type CreateLoadBalancerRequestModificationProtectionConfig struct {
-	// The reason for enabling the configuration read-only mode. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
+	// The reason for enabling the configuration read-only mode. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The reason must start with a letter.
 	//
 	// > This parameter takes effect only if `Status` is set to **ConsoleProtection**.
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// Specifies whether to enable the configuration read-only mode. Valid values:
 	//
-	// *   **NonProtection**: disables the configuration read-only mode. In this case, you cannot specify ModificationProtectionReason. If you specify ModificationProtectionReason, the value of the parameter is cleared.
-	// *   **ConsoleProtection**: enables the configuration read-only mode. In this case, you can specify ModificationProtectionReason.
+	// 	- **NonProtection**: disables the configuration read-only mode. In this case, you cannot specify ModificationProtectionReason. If you specify ModificationProtectionReason, the value of the parameter is cleared.
+	//
+	// 	- **ConsoleProtection**: enables the configuration read-only mode. In this case, you can specify ModificationProtectionReason.
 	//
 	// > If you set this parameter to **ConsoleProtection**, you cannot use the ALB console to modify instance configurations. However, you can call API operations to modify instance configurations.
+	//
+	// example:
+	//
+	// ConsoleProtection
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -2200,8 +2870,16 @@ func (s *CreateLoadBalancerRequestModificationProtectionConfig) SetStatus(v stri
 
 type CreateLoadBalancerRequestTag struct {
 	// The tag key can be up to 128 characters in length, and cannot start with acs: or aliyun. It cannot contain http:// or https://.
+	//
+	// example:
+	//
+	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value can be up to 128 characters in length, and cannot start with acs: or aliyun. It cannot contain http:// or https://.
+	//
+	// example:
+	//
+	// product
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2225,14 +2903,34 @@ func (s *CreateLoadBalancerRequestTag) SetValue(v string) *CreateLoadBalancerReq
 
 type CreateLoadBalancerRequestZoneMappings struct {
 	// 公网实例绑定的EIP实例ID。至少需要添加2个可用区，最多支持添加10个可用区。
+	//
+	// example:
+	//
+	// eip-bp1aedxso6u80u0qf****
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
 	// The private IPv4 address. You must add at least two zones. You can add a maximum of 10 zones.
+	//
+	// example:
+	//
+	// 192.168.10.1
 	IntranetAddress *string `json:"IntranetAddress,omitempty" xml:"IntranetAddress,omitempty"`
 	// The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an ALB instance. You can specify up to 10 zones.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vsw-sersdf****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The zone ID of the ALB instance. You can specify up to 10 zones for an ALB instance.
 	//
-	// You can call the [DescribeZones](~~36064~~) operation to query the most recent zone list.
+	// You can call the [DescribeZones](https://help.aliyun.com/document_detail/36064.html) operation to query the most recent zone list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou-a
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -2266,8 +2964,16 @@ func (s *CreateLoadBalancerRequestZoneMappings) SetZoneId(v string) *CreateLoadB
 
 type CreateLoadBalancerResponseBody struct {
 	// The ID of the ALB instance.
+	//
+	// example:
+	//
+	// alb-o9ulmq5hgn68jk****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2323,36 +3029,73 @@ type CreateRuleRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The direction to which the forwarding rule is applied. Valid values:
 	//
-	// *   **Request** (default): The forwarding rule is applied to the requests received by ALB.
-	// *   **Response**: The forwarding rule is applied to the responses returned by backend servers.
+	// 	- **Request*	- (default): The forwarding rule is applied to the requests received by ALB.
 	//
-	// > Basic ALB instances do not support the **Response** value.
+	// 	- **Response**: The forwarding rule is applied to the responses returned by backend servers.
+	//
+	// > Basic ALB instances do not support the **Response*	- value.
+	//
+	// example:
+	//
+	// Request
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	// 	- **true**: performs a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The listener ID of the ALB instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lsr-bp1bpn0kn908w4nbw****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The priority of the forwarding rule. Valid values: **1 to 10000**. A smaller value indicates a higher priority.
 	//
 	// > The priorities of the forwarding rules created for the same listener must be unique.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The maximum cache time of dry run requests in the browser. Unit: seconds.
 	//
-	// Valid values: **-1** to **172800**.
+	// Valid values: **-1*	- to **172800**.
+	//
+	// This parameter is required.
 	RuleActions []*CreateRuleRequestRuleActions `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
 	// The configuration of the source IP-based forwarding rule.
+	//
+	// This parameter is required.
 	RuleConditions []*CreateRuleRequestRuleConditions `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
 	// The name of the forwarding rule.
 	//
-	// *   The name must be 2 to 128 characters in length.
-	// *   It can contain letters, digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
+	// 	- The name must be 2 to 128 characters in length.
+	//
+	// 	- It can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rule-doc
 	RuleName *string                 `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	Tag      []*CreateRuleRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -2420,15 +3163,21 @@ type CreateRuleRequestRuleActions struct {
 	// The configuration of the header to be inserted.
 	InsertHeaderConfig *CreateRuleRequestRuleActionsInsertHeaderConfig `json:"InsertHeaderConfig,omitempty" xml:"InsertHeaderConfig,omitempty" type:"Struct"`
 	// The priority of the action. Valid values: **1 to 50000**. A smaller value indicates a higher priority. The actions of a forwarding rule are applied in descending order of priority. This parameter is required. The priority of each action within a forwarding rule must be unique.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	Order *int32 `json:"Order,omitempty" xml:"Order,omitempty"`
 	// The redirect configuration.
 	//
-	// > When you configure the **RedirectConfig** action, you can use the default value only for the **httpCode** parameter. Do not use the default values for the other parameters.
+	// > When you configure the **RedirectConfig*	- action, you can use the default value only for the **httpCode*	- parameter. Do not use the default values for the other parameters.
 	RedirectConfig     *CreateRuleRequestRuleActionsRedirectConfig     `json:"RedirectConfig,omitempty" xml:"RedirectConfig,omitempty" type:"Struct"`
 	RemoveHeaderConfig *CreateRuleRequestRuleActionsRemoveHeaderConfig `json:"RemoveHeaderConfig,omitempty" xml:"RemoveHeaderConfig,omitempty" type:"Struct"`
 	// The rewrite configuration.
 	//
-	// > If multiple actions are configured within a forwarding rule, you must set **RewriteConfig** to the value of **ForwardGroup**.
+	// > If multiple actions are configured within a forwarding rule, you must set **RewriteConfig*	- to the value of **ForwardGroup**.
 	RewriteConfig *CreateRuleRequestRuleActionsRewriteConfig `json:"RewriteConfig,omitempty" xml:"RewriteConfig,omitempty" type:"Struct"`
 	// The action to throttle traffic.
 	TrafficLimitConfig *CreateRuleRequestRuleActionsTrafficLimitConfig `json:"TrafficLimitConfig,omitempty" xml:"TrafficLimitConfig,omitempty" type:"Struct"`
@@ -2436,20 +3185,35 @@ type CreateRuleRequestRuleActions struct {
 	TrafficMirrorConfig *CreateRuleRequestRuleActionsTrafficMirrorConfig `json:"TrafficMirrorConfig,omitempty" xml:"TrafficMirrorConfig,omitempty" type:"Struct"`
 	// The action type. Valid values:
 	//
-	// *   **ForwardGroup**: forwards a request to multiple vServer groups.
-	// *   **Redirect**: redirects a request.
-	// *   **FixedResponse**: returns a custom response.
-	// *   **Rewrite**: rewrites a request.
-	// *   **InsertHeader**: inserts a header.
-	// *   **RemoveHeaderConfig**: deletes a header.
-	// *   **TrafficLimitConfig**: throttles network traffic.
-	// *   **TrafficMirrorConfig**: mirrors traffic.
-	// *   **CorsConfig**: forwards requests based on CORS.
+	// 	- **ForwardGroup**: forwards a request to multiple vServer groups.
+	//
+	// 	- **Redirect**: redirects a request.
+	//
+	// 	- **FixedResponse**: returns a custom response.
+	//
+	// 	- **Rewrite**: rewrites a request.
+	//
+	// 	- **InsertHeader**: inserts a header.
+	//
+	// 	- **RemoveHeaderConfig**: deletes a header.
+	//
+	// 	- **TrafficLimitConfig**: throttles network traffic.
+	//
+	// 	- **TrafficMirrorConfig**: mirrors traffic.
+	//
+	// 	- **CorsConfig**: forwards requests based on CORS.
 	//
 	// The following action types are supported:
 	//
-	// *   **FinalType**: the last action to be performed in a forwarding rule. Each forwarding rule can contain only one FinalType action. You can specify the **ForwardGroup**, **Redirect**, or **FixedResponse** action as the FinalType action.
-	// *   **ExtType**: the action or the actions to be performed before the **FinalType** action. A forwarding rule can contain one or more **ExtType** actions. To specify this parameter, you must also specify **FinalType**. You can specify multiple **InsertHeader** actions or one **Rewrite** action.
+	// 	- **FinalType**: the last action to be performed in a forwarding rule. Each forwarding rule can contain only one FinalType action. You can specify the **ForwardGroup**, **Redirect**, or **FixedResponse*	- action as the FinalType action.
+	//
+	// 	- **ExtType**: the action or the actions to be performed before the **FinalType*	- action. A forwarding rule can contain one or more **ExtType*	- actions. To specify this parameter, you must also specify **FinalType**. You can specify multiple **InsertHeader*	- actions or one **Rewrite*	- action.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ForwardGroup
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -2519,8 +3283,13 @@ func (s *CreateRuleRequestRuleActions) SetType(v string) *CreateRuleRequestRuleA
 type CreateRuleRequestRuleActionsCorsConfig struct {
 	// Specifies whether credentials can be carried in CORS requests. Valid values:
 	//
-	// *   **on**: yes
-	// *   **off**: no
+	// 	- **on**: yes
+	//
+	// 	- **off**: no
+	//
+	// example:
+	//
+	// on
 	AllowCredentials *string `json:"AllowCredentials,omitempty" xml:"AllowCredentials,omitempty"`
 	// The allowed headers for CORS requests.
 	AllowHeaders []*string `json:"AllowHeaders,omitempty" xml:"AllowHeaders,omitempty" type:"Repeated"`
@@ -2532,7 +3301,11 @@ type CreateRuleRequestRuleActionsCorsConfig struct {
 	ExposeHeaders []*string `json:"ExposeHeaders,omitempty" xml:"ExposeHeaders,omitempty" type:"Repeated"`
 	// The maximum cache time of dry run requests in the browser. Unit: seconds.
 	//
-	// Valid values: **-1** to **172800**.
+	// Valid values: **-1*	- to **172800**.
+	//
+	// example:
+	//
+	// 1000
 	MaxAge *int64 `json:"MaxAge,omitempty" xml:"MaxAge,omitempty"`
 }
 
@@ -2576,12 +3349,24 @@ func (s *CreateRuleRequestRuleActionsCorsConfig) SetMaxAge(v int64) *CreateRuleR
 
 type CreateRuleRequestRuleActionsFixedResponseConfig struct {
 	// The content of the custom response. The content can be up to 1 KB in size and can contain only ASCII characters.
+	//
+	// example:
+	//
+	// dssacav
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The format of the response.
 	//
 	// Valid values: **text/plain**, **text/css**, **text/html**, **application/javascript**, and **application/json**.
+	//
+	// example:
+	//
+	// text/plain
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// The HTTP status code in the response. Valid values: **HTTP\_2xx**, **HTTP\_4xx**, and **HTTP\_5xx**. **x** must be a digit.
+	// The HTTP status code in the response. Valid values: **HTTP_2xx**, **HTTP_4xx**, and **HTTP_5xx**. **x*	- must be a digit.
+	//
+	// example:
+	//
+	// HTTP_200
 	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 }
 
@@ -2636,10 +3421,19 @@ func (s *CreateRuleRequestRuleActionsForwardGroupConfig) SetServerGroupTuples(v 
 type CreateRuleRequestRuleActionsForwardGroupConfigServerGroupStickySession struct {
 	// Specifies whether to enable session persistence. Valid values:
 	//
-	// *   **true**
-	// *   **false** (default)
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
+	// example:
+	//
+	// false
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The timeout period of sessions. Unit: seconds. Valid values: **1** to **86400**. Default value: **1000**.
+	// The timeout period of sessions. Unit: seconds. Valid values: **1*	- to **86400**. Default value: **1000**.
+	//
+	// example:
+	//
+	// 100
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
@@ -2663,11 +3457,20 @@ func (s *CreateRuleRequestRuleActionsForwardGroupConfigServerGroupStickySession)
 
 type CreateRuleRequestRuleActionsForwardGroupConfigServerGroupTuples struct {
 	// The server group to which requests are distributed.
-	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// The weight of the server group. A larger value specifies a higher weight. A server group with a higher weight receives more requests. Valid values: **0** to **100**.
 	//
-	// *   If only one destination server group exists and you do not specify a weight, the default value **100** is used.
-	// *   If more than one destination server group exists, you must specify weights.
+	// example:
+	//
+	// sgp-k86c1ov501id6p****
+	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	// The weight of the server group. A larger value specifies a higher weight. A server group with a higher weight receives more requests. Valid values: **0*	- to **100**.
+	//
+	// 	- If only one destination server group exists and you do not specify a weight, the default value **100*	- is used.
+	//
+	// 	- If more than one destination server group exists, you must specify weights.
+	//
+	// example:
+	//
+	// 100
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
@@ -2690,29 +3493,47 @@ func (s *CreateRuleRequestRuleActionsForwardGroupConfigServerGroupTuples) SetWei
 }
 
 type CreateRuleRequestRuleActionsInsertHeaderConfig struct {
-	// The key of the header. The key must be 1 to 40 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The header key specified by **InsertHeaderConfig** must be unique.
+	// The key of the header. The key must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The header key specified by **InsertHeaderConfig*	- must be unique.
 	//
 	// > You cannot specify the following header keys (case-insensitive): `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, and `authority`.
+	//
+	// example:
+	//
+	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the header to be inserted.
 	//
-	// *   If **ValueType** is set to **SystemDefined**, you can specify one of the following header values:
+	// 	- If **ValueType*	- is set to **SystemDefined**, you can specify one of the following header values:
 	//
-	//     *   **ClientSrcPort**: the client port.
-	//     *   **ClientSrcIp**: the client IP address.
-	//     *   **Protocol**: the request protocol (HTTP or HTTPS).
-	//     *   **SLBId**: the ID of the ALB instance.
-	//     *   **SLBPort**: the listening port.
+	//     	- **ClientSrcPort**: the client port.
 	//
-	// *   If **ValueType** is set to **UserDefined**, you can specify a custom header value. The header value must be 1 to 128 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and lower than 127`. You can use asterisks (\*) and question marks (?) as wildcards. The value cannot start or end with a space character.
+	//     	- **ClientSrcIp**: the client IP address.
 	//
-	// *   If **ValueType** is set to **ReferenceHeader**, you can reference one of the request headers. The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (\_), and hyphens (-).
+	//     	- **Protocol**: the request protocol (HTTP or HTTPS).
+	//
+	//     	- **SLBId**: the ID of the ALB instance.
+	//
+	//     	- **SLBPort**: the listening port.
+	//
+	// 	- If **ValueType*	- is set to **UserDefined**, you can specify a custom header value. The header value must be 1 to 128 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and lower than 127`. You can use asterisks (\\*) and question marks (?) as wildcards. The value cannot start or end with a space character.
+	//
+	// 	- If **ValueType*	- is set to **ReferenceHeader**, you can reference one of the request headers. The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
+	//
+	// example:
+	//
+	// UserDefined
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 	// The type of header. Valid values:
 	//
-	// *   **UserDefined**: a custom header
-	// *   **ReferenceHeader**: a header that references one of the request headers
-	// *   **SystemDefined**: a header predefined by the system
+	// 	- **UserDefined**: a custom header
+	//
+	// 	- **ReferenceHeader**: a header that references one of the request headers
+	//
+	// 	- **SystemDefined**: a header predefined by the system
+	//
+	// example:
+	//
+	// UserDefined
 	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
 }
 
@@ -2742,47 +3563,79 @@ func (s *CreateRuleRequestRuleActionsInsertHeaderConfig) SetValueType(v string) 
 type CreateRuleRequestRuleActionsRedirectConfig struct {
 	// The hostname to which requests are redirected. Valid values:
 	//
-	// *   **${host}** (default): If you set the value to ${host}, you cannot append other characters.
+	// 	- **${host}*	- (default): If you set the value to ${host}, you cannot append other characters.
 	//
-	// *   A custom value. Make sure that the custom value meets the following requirements:
+	// 	- A custom value. Make sure that the custom value meets the following requirements:
 	//
-	//     *   The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, and the following special characters: - . \* = ~ \_ + \ ^ ! $ & | ( ) \[ ] ?.
-	//     *   The hostname must contain at least one period (.) but cannot start or end with a period (.).
-	//     *   The rightmost domain label can contain only letters and wildcards, and cannot contain digits or hyphens (-). The leftmost `domain label` can be an asterisk (\*).
-	//     *   The domain labels cannot start or end with a hyphen (-).
-	//     *   You can use asterisks (\*) and question marks (?) anywhere in a domain label as wildcard characters.
+	//     	- The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, and the following special characters: - . \\	- = ~ _ + \\ ^ ! $ & | ( ) [ ] ?.
+	//
+	//     	- The hostname must contain at least one period (.) but cannot start or end with a period (.).
+	//
+	//     	- The rightmost domain label can contain only letters and wildcards, and cannot contain digits or hyphens (-). The leftmost `domain label` can be an asterisk (\\*).
+	//
+	//     	- The domain labels cannot start or end with a hyphen (-).
+	//
+	//     	- You can use asterisks (\\*) and question marks (?) anywhere in a domain label as wildcard characters.
+	//
+	// example:
+	//
+	// ${host}
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	// The redirect type. Valid values: **301**, **302**, **303**, **307**, and **308**.
+	//
+	// example:
+	//
+	// 301
 	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 	// The path to which requests are redirected. Valid values:
 	//
-	// *   Default value: **${path}**. \*\*${host}**, **${protocol}**, and **${port}\*\* are also supported. Each variable can be specified only once. You can specify one or more of the preceding variables in each request. You can also combine them with a custom value.
+	// 	- Default value: **${path}**. \\*\\*${host}**, **${protocol}**, and **${port}\\*\\	- are also supported. Each variable can be specified only once. You can specify one or more of the preceding variables in each request. You can also combine them with a custom value.
 	//
-	// *   A custom value. You must make sure that the custom value meets the following requirements:
+	// 	- A custom value. You must make sure that the custom value meets the following requirements:
 	//
-	//     *   The value must be 1 to 128 characters in length, and can contain asterisks (\*) and question marks (?) as wildcards. The value is case-sensitive.
-	//     *   It must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ] ^ , "`. You can use asterisks (\*) and question marks (?) as wildcard characters.
+	//     	- The value must be 1 to 128 characters in length, and can contain asterisks (\\*) and question marks (?) as wildcards. The value is case-sensitive.
+	//
+	//     	- It must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ] ^ , "`. You can use asterisks (\\*) and question marks (?) as wildcard characters.
+	//
+	// example:
+	//
+	// /test
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	// The port to which requests are redirected.
 	//
-	// *   **${port}** (default): If you set the value to ${port}, you cannot add other characters to the value.
-	// *   You can also enter a port number. Valid values: **1 to 63335**.
+	// 	- **${port}*	- (default): If you set the value to ${port}, you cannot add other characters to the value.
+	//
+	// 	- You can also enter a port number. Valid values: **1 to 63335**.
+	//
+	// example:
+	//
+	// 10
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The redirect protocol. Valid values:
 	//
-	// *   **${protocol}** (default): If you set the value to ${protocol}, you cannot add other characters to the value.
-	// *   **HTTP** or **HTTPS**.
+	// 	- **${protocol}*	- (default): If you set the value to ${protocol}, you cannot add other characters to the value.
+	//
+	// 	- **HTTP*	- or **HTTPS**.
 	//
 	// > HTTPS listeners support only HTTPS to HTTPS redirects.
+	//
+	// example:
+	//
+	// HTTP
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	// The query string of the URL to which requests are redirected.
 	//
-	// *   Default value: **${query}**. \*\*${host}**, **${protocol}**, and **${port}\*\* are also supported. Each variable can be specified only once. You can specify one or more of the preceding variables in each request. You can also combine them with a custom value.
+	// 	- Default value: **${query}**. \\*\\*${host}**, **${protocol}**, and **${port}\\*\\	- are also supported. Each variable can be specified only once. You can specify one or more of the preceding variables in each request. You can also combine them with a custom value.
 	//
-	// *   A custom value. You must make sure that the custom value meets the following requirements:
+	// 	- A custom value. You must make sure that the custom value meets the following requirements:
 	//
-	//     *   The value must be 1 to 128 characters in length.
-	//     *   It can contain printable characters, except space characters, the special characters `# [ ] { } \ | < > &`, and uppercase letters.
+	//     	- The value must be 1 to 128 characters in length.
+	//
+	//     	- It can contain printable characters, except space characters, the special characters `# [ ] { } \\ | < > &`, and uppercase letters.
+	//
+	// example:
+	//
+	// ${query}
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 }
 
@@ -2844,32 +3697,49 @@ func (s *CreateRuleRequestRuleActionsRemoveHeaderConfig) SetKey(v string) *Creat
 type CreateRuleRequestRuleActionsRewriteConfig struct {
 	// The hostname to which requests are redirected. Valid values:
 	//
-	// *   **${host}** (default): If you set the value to ${host}, you cannot append other characters.
+	// 	- **${host}*	- (default): If you set the value to ${host}, you cannot append other characters.
 	//
-	// *   If you want to specify a custom value, make sure that the following requirements are met:
+	// 	- If you want to specify a custom value, make sure that the following requirements are met:
 	//
-	//     *   The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, and the following special characters: - . \* = ~ \_ + \ ^ ! $ & | ( ) \[ ] ?.
-	//     *   The hostname must contain at least one period (.) but cannot start or end with a period (.).
-	//     *   The rightmost domain label can contain only letters and wildcards, and cannot contain digits or hyphens (-). The leftmost `domain label` can be an asterisk (\*).
-	//     *   The domain labels cannot start or end with a hyphen (-). You can use asterisks (\*) and question marks (?) anywhere in a domain label as wildcard characters.
+	//     	- The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, and the following special characters: - . \\	- = ~ _ + \\ ^ ! $ & | ( ) [ ] ?.
+	//
+	//     	- The hostname must contain at least one period (.) but cannot start or end with a period (.).
+	//
+	//     	- The rightmost domain label can contain only letters and wildcards, and cannot contain digits or hyphens (-). The leftmost `domain label` can be an asterisk (\\*).
+	//
+	//     	- The domain labels cannot start or end with a hyphen (-). You can use asterisks (\\*) and question marks (?) anywhere in a domain label as wildcard characters.
+	//
+	// example:
+	//
+	// www.example.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	// The path to which requests are redirected. Valid values:
 	//
-	// *   Default value: **${path}**. \*\*${host}**, **${protocol}**, and **${port}\*\* are also supported. Each variable can be specified only once. You can specify one or more of the preceding variables in each request. You can also combine them with a custom value.
+	// 	- Default value: **${path}**. \\*\\*${host}**, **${protocol}**, and **${port}\\*\\	- are also supported. Each variable can be specified only once. You can specify one or more of the preceding variables in each request. You can also combine them with a custom value.
 	//
-	// *   A custom value. You must make sure that the custom value meets the following requirements:
+	// 	- A custom value. You must make sure that the custom value meets the following requirements:
 	//
-	//     *   The value must be 1 to 128 characters in length, and can contain asterisks (\*) and question marks (?) as wildcards. The value is case-sensitive.
-	//     *   It must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ] ^ , "`. You can use asterisks (\*) and question marks (?) as wildcard characters.
+	//     	- The value must be 1 to 128 characters in length, and can contain asterisks (\\*) and question marks (?) as wildcards. The value is case-sensitive.
+	//
+	//     	- It must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ] ^ , "`. You can use asterisks (\\*) and question marks (?) as wildcard characters.
+	//
+	// example:
+	//
+	// /tsdf
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	// The query string of the URL to which requests are redirected.
 	//
-	// *   Default value: **${query}**. \*\*${host}**, **${protocol}**, and **${port}\*\* are also supported. Each variable can be specified only once. You can specify one or more of the preceding variables in each request. You can also combine them with a custom value.
+	// 	- Default value: **${query}**. \\*\\*${host}**, **${protocol}**, and **${port}\\*\\	- are also supported. Each variable can be specified only once. You can specify one or more of the preceding variables in each request. You can also combine them with a custom value.
 	//
-	// *   A custom value. You must make sure that the custom value meets the following requirements:
+	// 	- A custom value. You must make sure that the custom value meets the following requirements:
 	//
-	//     *   The value must be 1 to 128 characters in length.
-	//     *   It can contain printable characters, except space characters, the special characters `# [ ] { } \ | < > &`, and uppercase letters.
+	//     	- The value must be 1 to 128 characters in length.
+	//
+	//     	- It can contain printable characters, except space characters, the special characters `# [ ] { } \\ | < > &`, and uppercase letters.
+	//
+	// example:
+	//
+	// ${query}
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 }
 
@@ -2899,9 +3769,17 @@ func (s *CreateRuleRequestRuleActionsRewriteConfig) SetQuery(v string) *CreateRu
 type CreateRuleRequestRuleActionsTrafficLimitConfig struct {
 	// The QPS of each IP address. Valid values: **1 to 100000**.
 	//
-	// > If both the **QPS** and **PerIpQps** properties are specified, make sure that the value of the **QPS** property is smaller than the value of the PerIpQps property.
+	// > If both the **QPS*	- and **PerIpQps*	- properties are specified, make sure that the value of the **QPS*	- property is smaller than the value of the PerIpQps property.
+	//
+	// example:
+	//
+	// 80
 	PerIpQps *int32 `json:"PerIpQps,omitempty" xml:"PerIpQps,omitempty"`
 	// The queries per second (QPS). Valid values: **1 to 100000**.
+	//
+	// example:
+	//
+	// 100
 	QPS *int32 `json:"QPS,omitempty" xml:"QPS,omitempty"`
 }
 
@@ -2928,8 +3806,13 @@ type CreateRuleRequestRuleActionsTrafficMirrorConfig struct {
 	MirrorGroupConfig *CreateRuleRequestRuleActionsTrafficMirrorConfigMirrorGroupConfig `json:"MirrorGroupConfig,omitempty" xml:"MirrorGroupConfig,omitempty" type:"Struct"`
 	// The type of destination to which network traffic is mirrored. Valid values:
 	//
-	// *   **ForwardGroupMirror**: a server group
-	// *   **SlsMirror**: Log Service
+	// 	- **ForwardGroupMirror**: a server group
+	//
+	// 	- **SlsMirror**: Log Service
+	//
+	// example:
+	//
+	// ForwardGroupMirror
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
@@ -2971,6 +3854,10 @@ func (s *CreateRuleRequestRuleActionsTrafficMirrorConfigMirrorGroupConfig) SetSe
 
 type CreateRuleRequestRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples struct {
 	// The ID of the server group.
+	//
+	// example:
+	//
+	// sgp-00mkgijak0w4qgz9****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 }
 
@@ -3002,17 +3889,29 @@ type CreateRuleRequestRuleConditions struct {
 	QueryStringConfig        *CreateRuleRequestRuleConditionsQueryStringConfig        `json:"QueryStringConfig,omitempty" xml:"QueryStringConfig,omitempty" type:"Struct"`
 	ResponseHeaderConfig     *CreateRuleRequestRuleConditionsResponseHeaderConfig     `json:"ResponseHeaderConfig,omitempty" xml:"ResponseHeaderConfig,omitempty" type:"Struct"`
 	ResponseStatusCodeConfig *CreateRuleRequestRuleConditionsResponseStatusCodeConfig `json:"ResponseStatusCodeConfig,omitempty" xml:"ResponseStatusCodeConfig,omitempty" type:"Struct"`
-	// The configuration of the source IP-based forwarding rule. This parameter is required and takes effect only when **Type** is set to **SourceIP**.
+	// The configuration of the source IP-based forwarding rule. This parameter is required and takes effect only when **Type*	- is set to **SourceIP**.
 	SourceIpConfig *CreateRuleRequestRuleConditionsSourceIpConfig `json:"SourceIpConfig,omitempty" xml:"SourceIpConfig,omitempty" type:"Struct"`
 	// The type of forwarding rule. Valid values:
 	//
-	// *   **Host**: Requests are distributed based on hosts.
-	// *   **Path**: Requests are distributed based on paths.
-	// *   **Header**: Requests are distributed based on HTTP headers.
-	// *   **QueryString**: Requests are distributed based on query strings.
-	// *   **Method**: Requests are distributed based on request methods.
-	// *   **Cookie**: Requests are distributed based on cookies.
-	// *   **SourceIp**: Requests are distributed based on source IP addresses.
+	// 	- **Host**: Requests are distributed based on hosts.
+	//
+	// 	- **Path**: Requests are distributed based on paths.
+	//
+	// 	- **Header**: Requests are distributed based on HTTP headers.
+	//
+	// 	- **QueryString**: Requests are distributed based on query strings.
+	//
+	// 	- **Method**: Requests are distributed based on request methods.
+	//
+	// 	- **Cookie**: Requests are distributed based on cookies.
+	//
+	// 	- **SourceIp**: Requests are distributed based on source IP addresses.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Host
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -3095,15 +3994,27 @@ func (s *CreateRuleRequestRuleConditionsCookieConfig) SetValues(v []*CreateRuleR
 type CreateRuleRequestRuleConditionsCookieConfigValues struct {
 	// The key of the cookie.
 	//
-	// *   The key must be 1 to 100 characters in length.
-	// *   You can use asterisks (\*) and question marks (?) as wildcard characters.
-	// *   The key can contain printable characters, except uppercase letters, space characters, and the following special characters: `; # [ ] { } \ | < > &`.
+	// 	- The key must be 1 to 100 characters in length.
+	//
+	// 	- You can use asterisks (\\*) and question marks (?) as wildcard characters.
+	//
+	// 	- The key can contain printable characters, except uppercase letters, space characters, and the following special characters: `; # [ ] { } \\ | < > &`.
+	//
+	// example:
+	//
+	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the cookie.
 	//
-	// *   The value must be 1 to 100 characters in length.
-	// *   You can use asterisks (\*) and question marks (?) as wildcard characters.
-	// *   The value can contain printable characters, except uppercase letters, space characters, and the following special characters: `; # [ ] { } \ | < > &`.
+	// 	- The value must be 1 to 100 characters in length.
+	//
+	// 	- You can use asterisks (\\*) and question marks (?) as wildcard characters.
+	//
+	// 	- The value can contain printable characters, except uppercase letters, space characters, and the following special characters: `; # [ ] { } \\ | < > &`.
+	//
+	// example:
+	//
+	// test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3128,9 +4039,15 @@ func (s *CreateRuleRequestRuleConditionsCookieConfigValues) SetValue(v string) *
 type CreateRuleRequestRuleConditionsHeaderConfig struct {
 	// The key of the header.
 	//
-	// *   The key must be 1 to 40 characters in length.
-	// *   It can contain lowercase letters, digits, hyphens (-), and underscores (\_).
-	// *   Cookie and Host are not supported.
+	// 	- The key must be 1 to 40 characters in length.
+	//
+	// 	- It can contain lowercase letters, digits, hyphens (-), and underscores (_).
+	//
+	// 	- Cookie and Host are not supported.
+	//
+	// example:
+	//
+	// Port
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the header.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
@@ -3229,13 +4146,23 @@ func (s *CreateRuleRequestRuleConditionsQueryStringConfig) SetValues(v []*Create
 type CreateRuleRequestRuleConditionsQueryStringConfigValues struct {
 	// The key of the query string.
 	//
-	// *   The key must be 1 to 100 characters in length.
-	// *   You can use asterisks (\*) and question marks (?) as wildcards. The key can contain printable characters, except uppercase letters, space characters, and the following special characters: `# [ ] { } \ | < > &`.
+	// 	- The key must be 1 to 100 characters in length.
+	//
+	// 	- You can use asterisks (\\*) and question marks (?) as wildcards. The key can contain printable characters, except uppercase letters, space characters, and the following special characters: `# [ ] { } \\ | < > &`.
+	//
+	// example:
+	//
+	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the query string.
 	//
-	// *   The value must be 1 to 128 characters in length.
-	// *   It can contain printable characters, except uppercase letters, space characters, and the following special characters: `# [ ] { } \ | < > &`. You can use asterisks (\*) and question marks (?) as wildcard characters.
+	// 	- The value must be 1 to 128 characters in length.
+	//
+	// 	- It can contain printable characters, except uppercase letters, space characters, and the following special characters: `# [ ] { } \\ | < > &`. You can use asterisks (\\*) and question marks (?) as wildcard characters.
+	//
+	// example:
+	//
+	// test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3340,10 +4267,22 @@ func (s *CreateRuleRequestTag) SetValue(v string) *CreateRuleRequestTag {
 
 type CreateRuleResponseBody struct {
 	// The ID of the asynchronous task.
+	//
+	// example:
+	//
+	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 365F4154-92F6-4AE4-92F8-7FF34B540750
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The forwarding rule ID.
+	//
+	// example:
+	//
+	// rule-a3x3pg1yohq3lq****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
@@ -3404,16 +4343,33 @@ type CreateRulesRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	// 	- **true**: performs a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and sends the request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The listener ID of the ALB instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lsr-bp1bpn0kn908w4nbw****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The forwarding rules. You can specify at most 10 forwarding rules in each call.
+	//
+	// This parameter is required.
 	Rules []*CreateRulesRequestRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -3448,23 +4404,45 @@ func (s *CreateRulesRequest) SetRules(v []*CreateRulesRequestRules) *CreateRules
 type CreateRulesRequestRules struct {
 	// The direction to which the forwarding rule is applied. You can specify only one direction. Valid values:
 	//
-	// *   **Request** (default): The forwarding rule is applied to the client requests received by ALB.
-	// *   **Response**: The forwarding rule is applied to the responses returned by backend servers.
+	// 	- **Request*	- (default): The forwarding rule is applied to the client requests received by ALB.
 	//
-	// >  Basic ALB instances do not support forwarding rules of the **Response** type.
+	// 	- **Response**: The forwarding rule is applied to the responses returned by backend servers.
+	//
+	// >  Basic ALB instances do not support forwarding rules of the **Response*	- type.
+	//
+	// example:
+	//
+	// Request
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The priority of the forwarding rule. Valid values: **1** to **10000**. A lower value specifies a higher priority. You can specify priorities for at most 10 forwarding rules.
+	// The priority of the forwarding rule. Valid values: **1*	- to **10000**. A lower value specifies a higher priority. You can specify priorities for at most 10 forwarding rules.
 	//
 	// >  The priority of each forwarding rule added to a listener must be unique.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The actions of the forwarding rule.
+	//
+	// This parameter is required.
 	RuleActions []*CreateRulesRequestRulesRuleActions `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
 	// The conditions of the forwarding rule.
+	//
+	// This parameter is required.
 	RuleConditions []*CreateRulesRequestRulesRuleConditions `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
 	// The name of the forwarding rule. You can name at most 20 forwarding rules.
 	//
-	// *   The name must be 2 to 128 characters in length.
-	// *   It can contain letters, digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
+	// 	- The name must be 2 to 128 characters in length.
+	//
+	// 	- It can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The tag that you want to add.
 	Tag []*CreateRulesRequestRulesTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -3518,6 +4496,12 @@ type CreateRulesRequestRulesRuleActions struct {
 	// The configuration of the header to be inserted. You can specify at most 20 headers.
 	InsertHeaderConfig *CreateRulesRequestRulesRuleActionsInsertHeaderConfig `json:"InsertHeaderConfig,omitempty" xml:"InsertHeaderConfig,omitempty" type:"Struct"`
 	// The priority of the action. Valid values: **1 to 50000**. A lower value indicates a higher priority. The actions of a forwarding rule are applied in descending order of priority. This parameter is required. The priority of each action within a forwarding rule must be unique. You can specify priorities for at most 20 actions.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	Order *int32 `json:"Order,omitempty" xml:"Order,omitempty"`
 	// The redirect configuration. You can specify at most 20 redirects.
 	RedirectConfig *CreateRulesRequestRulesRuleActionsRedirectConfig `json:"RedirectConfig,omitempty" xml:"RedirectConfig,omitempty" type:"Struct"`
@@ -3531,20 +4515,35 @@ type CreateRulesRequestRulesRuleActions struct {
 	TrafficMirrorConfig *CreateRulesRequestRulesRuleActionsTrafficMirrorConfig `json:"TrafficMirrorConfig,omitempty" xml:"TrafficMirrorConfig,omitempty" type:"Struct"`
 	// The action type. You can specify at most 11 types of actions. Valid values:
 	//
-	// *   **ForwardGroup**: distributes requests to multiple vServer groups.
-	// *   **Redirect**: redirects a request.
-	// *   **FixedResponse**: returns a custom response.
-	// *   **Rewrite**: rewrites a request.
-	// *   **InsertHeader**: inserts a header.
-	// *   **RemoveHeaderConfig:** deletes the header of a request.
-	// *   **TrafficLimit**: throttles traffic.
-	// *   **trafficMirror**: mirrors network traffic.
-	// *   **Cors**: enables cross-origin resource sharing (CORS).
+	// 	- **ForwardGroup**: distributes requests to multiple vServer groups.
+	//
+	// 	- **Redirect**: redirects a request.
+	//
+	// 	- **FixedResponse**: returns a custom response.
+	//
+	// 	- **Rewrite**: rewrites a request.
+	//
+	// 	- **InsertHeader**: inserts a header.
+	//
+	// 	- **RemoveHeaderConfig:*	- deletes the header of a request.
+	//
+	// 	- **TrafficLimit**: throttles traffic.
+	//
+	// 	- **trafficMirror**: mirrors network traffic.
+	//
+	// 	- **Cors**: enables cross-origin resource sharing (CORS).
 	//
 	// The following action types are supported:
 	//
-	// *   **FinalType**: the last action to be performed in a forwarding rule. Each forwarding rule can contain only one FinalType action. You can specify a **ForwardGroup**, **Redirect**, or **FixedResponse** action as the FinalType action.
-	// *   **ExtType**: one or more actions to be performed before the **FinalType** action. A forwarding rule can contain one or more **ExtType** actions. To specify an ExtType action, you must specify a **FinalType** action. You can specify multiple **InsertHeader** actions or one **Rewrite** action.
+	// 	- **FinalType**: the last action to be performed in a forwarding rule. Each forwarding rule can contain only one FinalType action. You can specify a **ForwardGroup**, **Redirect**, or **FixedResponse*	- action as the FinalType action.
+	//
+	// 	- **ExtType**: one or more actions to be performed before the **FinalType*	- action. A forwarding rule can contain one or more **ExtType*	- actions. To specify an ExtType action, you must specify a **FinalType*	- action. You can specify multiple **InsertHeader*	- actions or one **Rewrite*	- action.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ForwardGroup
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -3614,8 +4613,13 @@ func (s *CreateRulesRequestRulesRuleActions) SetType(v string) *CreateRulesReque
 type CreateRulesRequestRulesRuleActionsCorsConfig struct {
 	// Specifies whether to allow credentials to be carried in CORS requests. Valid values:
 	//
-	// *   **on**: allows credentials to be carried in CORS requests.
-	// *   **off**: does not allow credentials to be carried in CORS requests.
+	// 	- **on**: allows credentials to be carried in CORS requests.
+	//
+	// 	- **off**: does not allow credentials to be carried in CORS requests.
+	//
+	// example:
+	//
+	// on
 	AllowCredentials *string `json:"AllowCredentials,omitempty" xml:"AllowCredentials,omitempty"`
 	// The allowed headers for CORS requests.
 	AllowHeaders []*string `json:"AllowHeaders,omitempty" xml:"AllowHeaders,omitempty" type:"Repeated"`
@@ -3627,7 +4631,11 @@ type CreateRulesRequestRulesRuleActionsCorsConfig struct {
 	ExposeHeaders []*string `json:"ExposeHeaders,omitempty" xml:"ExposeHeaders,omitempty" type:"Repeated"`
 	// The maximum cache time of preflight requests in the browser. Unit: seconds.
 	//
-	// Valid values: **-1** to **172800**.
+	// Valid values: **-1*	- to **172800**.
+	//
+	// example:
+	//
+	// 1000
 	MaxAge *int64 `json:"MaxAge,omitempty" xml:"MaxAge,omitempty"`
 }
 
@@ -3671,16 +4679,32 @@ func (s *CreateRulesRequestRulesRuleActionsCorsConfig) SetMaxAge(v int64) *Creat
 
 type CreateRulesRequestRulesRuleActionsFixedResponseConfig struct {
 	// The content of the custom response. The content can be up to 1 KB in size and can contain only ASCII characters.
+	//
+	// example:
+	//
+	// dssacav
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The format of the content. Valid values:
 	//
-	// *   **text/plain**
-	// *   **text/css**
-	// *   **text/html**
-	// *   **application/javascript**
-	// *   **application/json**
+	// 	- **text/plain**
+	//
+	// 	- **text/css**
+	//
+	// 	- **text/html**
+	//
+	// 	- **application/javascript**
+	//
+	// 	- **application/json**
+	//
+	// example:
+	//
+	// text/plain
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// The HTTP status code in the response. Valid values: **HTTP\_2xx**, **HTTP\_4xx**, and **HTTP\_5xx**. **x** must be a digit.
+	// The HTTP status code in the response. Valid values: **HTTP_2xx**, **HTTP_4xx**, and **HTTP_5xx**. **x*	- must be a digit.
+	//
+	// example:
+	//
+	// HTTP_200
 	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 }
 
@@ -3735,10 +4759,19 @@ func (s *CreateRulesRequestRulesRuleActionsForwardGroupConfig) SetServerGroupTup
 type CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession struct {
 	// Specifies whether to enable session persistence. Valid values:
 	//
-	// *   **true**: enables session persistence.
-	// *   **false** (default): disables session persistence.
+	// 	- **true**: enables session persistence.
+	//
+	// 	- **false*	- (default): disables session persistence.
+	//
+	// example:
+	//
+	// false
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// The timeout period of sessions. Unit: seconds. Valid values: **1 to 86400**.
+	//
+	// example:
+	//
+	// 2
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
@@ -3762,11 +4795,20 @@ func (s *CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupStickySe
 
 type CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupTuples struct {
 	// The server group to which requests are distributed.
-	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// The weight of the server group. A larger value specifies a higher weight. A server group with a higher weight receives more requests. Valid values: **0** to **100**.
 	//
-	// *   If only one destination server group exists and you do not specify a weight, the default value **100** is used.
-	// *   If more than one destination server group exists, you must specify weights.
+	// example:
+	//
+	// sgp-k86c1ov501id6p****
+	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	// The weight of the server group. A larger value specifies a higher weight. A server group with a higher weight receives more requests. Valid values: **0*	- to **100**.
+	//
+	// 	- If only one destination server group exists and you do not specify a weight, the default value **100*	- is used.
+	//
+	// 	- If more than one destination server group exists, you must specify weights.
+	//
+	// example:
+	//
+	// 100
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
@@ -3789,29 +4831,47 @@ func (s *CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupTuples) 
 }
 
 type CreateRulesRequestRulesRuleActionsInsertHeaderConfig struct {
-	// The key of the header. The key must be 1 to 40 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The header key specified by **InsertHeaderConfig** must be unique.
+	// The key of the header. The key must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The header key specified by **InsertHeaderConfig*	- must be unique.
 	//
 	// >  You cannot specify the following header keys: `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, and `authority`. The header keys are case-insensitive.
+	//
+	// example:
+	//
+	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the header.
 	//
-	// *   If **ValueType** is set to **SystemDefined**, one of the following values is supported:
+	// 	- If **ValueType*	- is set to **SystemDefined**, one of the following values is supported:
 	//
-	//     *   **ClientSrcPort**: the client port.
-	//     *   **ClientSrcIp**: the client IP address.
-	//     *   **Protocol**: the request protocol (HTTP or HTTPS).
-	//     *   **SLBId**: the ID of the ALB instance.
-	//     *   **SLBPort**: the listener port.
+	//     	- **ClientSrcPort**: the client port.
 	//
-	// *   If **ValueType** is set to **UserDefined**, a custom header value is supported. The header value must be 1 to 128 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and smaller than 127`. You can use asterisks (\*) and question marks (?) as wildcard characters. The header value cannot start or end with a space character.
+	//     	- **ClientSrcIp**: the client IP address.
 	//
-	// *   If **ValueType** is set to **ReferenceHeader**, you can reference one of the request headers. The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (\_), and hyphens (-).
+	//     	- **Protocol**: the request protocol (HTTP or HTTPS).
+	//
+	//     	- **SLBId**: the ID of the ALB instance.
+	//
+	//     	- **SLBPort**: the listener port.
+	//
+	// 	- If **ValueType*	- is set to **UserDefined**, a custom header value is supported. The header value must be 1 to 128 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and smaller than 127`. You can use asterisks (\\*) and question marks (?) as wildcard characters. The header value cannot start or end with a space character.
+	//
+	// 	- If **ValueType*	- is set to **ReferenceHeader**, you can reference one of the request headers. The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
+	//
+	// example:
+	//
+	// UserDefined
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 	// The type of the header. Valid values:
 	//
-	// *   **UserDefined**: a custom header
-	// *   **ReferenceHeader**: a header that references one of the request headers
-	// *   **SystemDefined**: a system-defined header
+	// 	- **UserDefined**: a custom header
+	//
+	// 	- **ReferenceHeader**: a header that references one of the request headers
+	//
+	// 	- **SystemDefined**: a system-defined header
+	//
+	// example:
+	//
+	// UserDefined
 	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
 }
 
@@ -3841,48 +4901,81 @@ func (s *CreateRulesRequestRulesRuleActionsInsertHeaderConfig) SetValueType(v st
 type CreateRulesRequestRulesRuleActionsRedirectConfig struct {
 	// The hostname to which requests are redirected. Valid values:
 	//
-	// *   **${host}** (default): If ${host} is returned, no other character is appended.
+	// 	- **${host}*	- (default): If ${host} is returned, no other character is appended.
 	//
-	// *   Limits on the value:
+	// 	- Limits on the value:
 	//
-	//     *   The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), and periods (.). Asterisks (\*) and question marks (?) can be used as wildcards.
-	//     *   The hostname contains at least one period (.) but does not start or end with a period (.).
-	//     *   The rightmost domain label can contain only letters and wildcard characters. It does not contain digits or hyphens (-).
-	//     *   The domain labels do not start or end with hyphens (-).
-	//     *   You can use asterisks (\*) and question marks (?) as wildcards anywhere in a domain label.
+	//     	- The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), and periods (.). Asterisks (\\*) and question marks (?) can be used as wildcards.
+	//
+	//     	- The hostname contains at least one period (.) but does not start or end with a period (.).
+	//
+	//     	- The rightmost domain label can contain only letters and wildcard characters. It does not contain digits or hyphens (-).
+	//
+	//     	- The domain labels do not start or end with hyphens (-).
+	//
+	//     	- You can use asterisks (\\*) and question marks (?) as wildcards anywhere in a domain label.
+	//
+	// example:
+	//
+	// www.example.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	// The HTTP status code that indicates the redirect type. Valid values: **301**, **302**, **303**, **307**, and **308**.
+	//
+	// example:
+	//
+	// 301
 	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 	// The path to which requests are redirected. Valid values:
 	//
-	// *   Default value: **${path}**. **${host}**, **${protocol}**, and **${port}** are also supported. Each variable can be specified only once. You can specify one or more of the preceding variables in each request. You can also combine them with a custom value.
+	// 	- Default value: **${path}**. **${host}**, **${protocol}**, and **${port}*	- are also supported. Each variable can be specified only once. You can specify one or more of the preceding variables in each request. You can also combine them with a custom value.
 	//
-	// *   Limits on the value:
+	// 	- Limits on the value:
 	//
-	//     *   The path must be 1 to 128 characters in length.
-	//     *   It must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ]^ , "`. You can use asterisks (\*) and question marks (?) as wildcard characters.
-	//     *   The path is case-sensitive.
+	//     	- The path must be 1 to 128 characters in length.
+	//
+	//     	- It must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ]^ , "`. You can use asterisks (\\*) and question marks (?) as wildcard characters.
+	//
+	//     	- The path is case-sensitive.
+	//
+	// example:
+	//
+	// /test
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	// The port to which requests are distributed.
 	//
-	// *   **${port}** (default): If you set the value to ${port}, you cannot add other characters to the value.
-	// *   Other valid values: **1 to 63335**.
+	// 	- **${port}*	- (default): If you set the value to ${port}, you cannot add other characters to the value.
+	//
+	// 	- Other valid values: **1 to 63335**.
+	//
+	// example:
+	//
+	// 10
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The redirect protocol. Valid values:
 	//
-	// *   **${protocol}** (default): If ${protocol} is returned, no other character is appended.
-	// *   **HTTP** or **HTTPS**.
+	// 	- **${protocol}*	- (default): If ${protocol} is returned, no other character is appended.
+	//
+	// 	- **HTTP*	- or **HTTPS**.
 	//
 	// >  HTTPS listeners support only HTTPS to HTTPS redirects.
+	//
+	// example:
+	//
+	// HTTP
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	// The query string of the URL to which requests are redirected.
 	//
-	// *   Default value: **${query}**. **${host}**, **${protocol}**, and **${port}** are also supported. Each variable can be specified only once. The preceding variables can be used at the same time or combined with a custom value.
+	// 	- Default value: **${query}**. **${host}**, **${protocol}**, and **${port}*	- are also supported. Each variable can be specified only once. The preceding variables can be used at the same time or combined with a custom value.
 	//
-	// *   Limits on the value:
+	// 	- Limits on the value:
 	//
-	//     *   The query string must be 1 to 128 characters in length.
-	//     *   It can contain printable characters, except space characters, the special characters `# [ ] { } \ | < > &`, and uppercase letters.
+	//     	- The query string must be 1 to 128 characters in length.
+	//
+	//     	- It can contain printable characters, except space characters, the special characters `# [ ] { } \\ | < > &`, and uppercase letters.
+	//
+	// example:
+	//
+	// quert
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 }
 
@@ -3927,8 +5020,13 @@ func (s *CreateRulesRequestRulesRuleActionsRedirectConfig) SetQuery(v string) *C
 type CreateRulesRequestRulesRuleActionsRemoveHeaderConfig struct {
 	// The key of the header to be removed. The key must be 1 to 40 characters in length and can contain letters, digits, underscores, and hyphens (-). The header key must be unique.
 	//
-	// *   You cannot specify the following header keys for an inbound forwarding rule: `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, and `authority`. The preceding keys are case-insensitive.
-	// *   You cannot specify the following header keys for an outbound forwarding rule: `connection`, `upgrade`, `content-length`, and `transfer-encoding`. The preceding keys are case-insensitive.
+	// 	- You cannot specify the following header keys for an inbound forwarding rule: `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, and `authority`. The preceding keys are case-insensitive.
+	//
+	// 	- You cannot specify the following header keys for an outbound forwarding rule: `connection`, `upgrade`, `content-length`, and `transfer-encoding`. The preceding keys are case-insensitive.
+	//
+	// example:
+	//
+	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 }
 
@@ -3948,33 +5046,51 @@ func (s *CreateRulesRequestRulesRuleActionsRemoveHeaderConfig) SetKey(v string) 
 type CreateRulesRequestRulesRuleActionsRewriteConfig struct {
 	// The hostname to which requests are redirected. Valid values:
 	//
-	// *   **${host}** (default): If you set the value to ${host}, you cannot append other characters.
+	// 	- **${host}*	- (default): If you set the value to ${host}, you cannot append other characters.
 	//
-	// *   A custom value that meets the following requirements:
+	// 	- A custom value that meets the following requirements:
 	//
-	//     *   The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), and periods (.). You can use asterisks (\*) and question marks (?) as wildcard characters.
-	//     *   The hostname contains at least one period (.) but does not start or end with a period (.).
-	//     *   The rightmost domain label can contain only letters and wildcard characters. It does not contain digits or hyphens (-).
-	//     *   The domain labels do not start or end with hyphens (-). You can use asterisks (\*) and question marks (?) anywhere in a domain label as wildcard characters.
+	//     	- The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), and periods (.). You can use asterisks (\\*) and question marks (?) as wildcard characters.
+	//
+	//     	- The hostname contains at least one period (.) but does not start or end with a period (.).
+	//
+	//     	- The rightmost domain label can contain only letters and wildcard characters. It does not contain digits or hyphens (-).
+	//
+	//     	- The domain labels do not start or end with hyphens (-). You can use asterisks (\\*) and question marks (?) anywhere in a domain label as wildcard characters.
+	//
+	// example:
+	//
+	// www.example.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	// The path to which requests are redirected. Valid values:
 	//
-	// *   Default value: **${path}**. **${host}**, **${protocol}**, and **${port}** are also supported. Each variable can be specified only once. You can specify one or more of the preceding variables in each request. You can also combine them with a custom value.
+	// 	- Default value: **${path}**. **${host}**, **${protocol}**, and **${port}*	- are also supported. Each variable can be specified only once. You can specify one or more of the preceding variables in each request. You can also combine them with a custom value.
 	//
-	// *   Limits on the value:
+	// 	- Limits on the value:
 	//
-	//     *   The path must be 1 to 128 characters in length.
-	//     *   It must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ]^ , "`. You can use asterisks (\*) and question marks (?) as wildcard characters.
-	//     *   The path is case-sensitive.
+	//     	- The path must be 1 to 128 characters in length.
+	//
+	//     	- It must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ]^ , "`. You can use asterisks (\\*) and question marks (?) as wildcard characters.
+	//
+	//     	- The path is case-sensitive.
+	//
+	// example:
+	//
+	// /tsdf
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	// The query string of the URL to which requests are redirected.
 	//
-	// *   Default value: **${query}**. **${host}**, **${protocol}**, and **${port}** are also supported. Each variable can be specified only once. The preceding variables can be used at the same time or combined with a custom value.
+	// 	- Default value: **${query}**. **${host}**, **${protocol}**, and **${port}*	- are also supported. Each variable can be specified only once. The preceding variables can be used at the same time or combined with a custom value.
 	//
-	// *   Limits on the value:
+	// 	- Limits on the value:
 	//
-	//     *   The query string must be 1 to 128 characters in length.
-	//     *   It can contain printable characters, except space characters, the special characters `# [ ] { } \ | < > &`, and uppercase letters.
+	//     	- The query string must be 1 to 128 characters in length.
+	//
+	//     	- It can contain printable characters, except space characters, the special characters `# [ ] { } \\ | < > &`, and uppercase letters.
+	//
+	// example:
+	//
+	// quedsa
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 }
 
@@ -4004,9 +5120,17 @@ func (s *CreateRulesRequestRulesRuleActionsRewriteConfig) SetQuery(v string) *Cr
 type CreateRulesRequestRulesRuleActionsTrafficLimitConfig struct {
 	// The QPS of each IP address. Value range: **1 to 1000000**.
 	//
-	// >  If **QPS** and PerIpQps are specified, the value of **PerIpQps** must be smaller than the value of **QPS**.
+	// >  If **QPS*	- and PerIpQps are specified, the value of **PerIpQps*	- must be smaller than the value of **QPS**.
+	//
+	// example:
+	//
+	// 80
 	PerIpQps *int32 `json:"PerIpQps,omitempty" xml:"PerIpQps,omitempty"`
 	// The queries per second (QPS). Value range: **1 to 1000000**.
+	//
+	// example:
+	//
+	// 100
 	QPS *int32 `json:"QPS,omitempty" xml:"QPS,omitempty"`
 }
 
@@ -4033,7 +5157,11 @@ type CreateRulesRequestRulesRuleActionsTrafficMirrorConfig struct {
 	MirrorGroupConfig *CreateRulesRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig `json:"MirrorGroupConfig,omitempty" xml:"MirrorGroupConfig,omitempty" type:"Struct"`
 	// The type of destination to which network traffic is mirrored. Valid values:
 	//
-	// *   **ForwardGroupMirror**: a server group.
+	// 	- **ForwardGroupMirror**: a server group.
+	//
+	// example:
+	//
+	// ForwardGroupMirror
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
@@ -4075,6 +5203,10 @@ func (s *CreateRulesRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig)
 
 type CreateRulesRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples struct {
 	// The ID of the server group.
+	//
+	// example:
+	//
+	// srg-00mkgijak0w4qgz9****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 }
 
@@ -4108,19 +5240,33 @@ type CreateRulesRequestRulesRuleConditions struct {
 	ResponseHeaderConfig *CreateRulesRequestRulesRuleConditionsResponseHeaderConfig `json:"ResponseHeaderConfig,omitempty" xml:"ResponseHeaderConfig,omitempty" type:"Struct"`
 	// The configurations of the response status codes.
 	ResponseStatusCodeConfig *CreateRulesRequestRulesRuleConditionsResponseStatusCodeConfig `json:"ResponseStatusCodeConfig,omitempty" xml:"ResponseStatusCodeConfig,omitempty" type:"Struct"`
-	// The configuration of the source IP addresses based on which user traffic is matched. This parameter is required and takes effect only when **Type** is set to **SourceIP**. You can specify at most five values for **SourceIp**.
+	// The configuration of the source IP addresses based on which user traffic is matched. This parameter is required and takes effect only when **Type*	- is set to **SourceIP**. You can specify at most five values for **SourceIp**.
 	SourceIpConfig *CreateRulesRequestRulesRuleConditionsSourceIpConfig `json:"SourceIpConfig,omitempty" xml:"SourceIpConfig,omitempty" type:"Struct"`
 	// The type of forwarding rule. You can specify at most seven types. Valid values:
 	//
-	// *   **Host**: Responses are forwarded based on hosts.
-	// *   **Path**: Responses are forwarded based on paths.
-	// *   **Header**: Responses are forwarded based on HTTP headers.
-	// *   **QueryString**: Responses are forwarded based on query strings.
-	// *   **Method**: Responses are forwarded based on request methods.
-	// *   **Cookie**: Responses are forwarded based on cookies.
-	// *   **SourceIp:**: Responses are forwarded based on source IP addresses.
-	// *   **ResponseHeader**: Responses are forwarded based on HTTP response headers.
-	// *   **ResponseStatusCode**: Responses are forwarded based on response status codes.
+	// 	- **Host**: Responses are forwarded based on hosts.
+	//
+	// 	- **Path**: Responses are forwarded based on paths.
+	//
+	// 	- **Header**: Responses are forwarded based on HTTP headers.
+	//
+	// 	- **QueryString**: Responses are forwarded based on query strings.
+	//
+	// 	- **Method**: Responses are forwarded based on request methods.
+	//
+	// 	- **Cookie**: Responses are forwarded based on cookies.
+	//
+	// 	- **SourceIp:**: Responses are forwarded based on source IP addresses.
+	//
+	// 	- **ResponseHeader**: Responses are forwarded based on HTTP response headers.
+	//
+	// 	- **ResponseStatusCode**: Responses are forwarded based on response status codes.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Host
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -4203,15 +5349,27 @@ func (s *CreateRulesRequestRulesRuleConditionsCookieConfig) SetValues(v []*Creat
 type CreateRulesRequestRulesRuleConditionsCookieConfigValues struct {
 	// The key of the cookie.
 	//
-	// *   The key must be 1 to 100 characters in length.
-	// *   You can use asterisks (\*) and question marks (?) as wildcard characters.
-	// *   It can contain printable characters, except uppercase letters, space characters, and the following special characters: `; # [ ] { } \ | < > &`.
+	// 	- The key must be 1 to 100 characters in length.
+	//
+	// 	- You can use asterisks (\\*) and question marks (?) as wildcard characters.
+	//
+	// 	- It can contain printable characters, except uppercase letters, space characters, and the following special characters: `; # [ ] { } \\ | < > &`.
+	//
+	// example:
+	//
+	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the cookie.
 	//
-	// *   The value must be 1 to 100 characters in length.
-	// *   You can use asterisks (\*) and question marks (?) as wildcard characters.
-	// *   It can contain printable characters, except uppercase letters, space characters, and the following special characters: `; # [ ] { } \ | < > &`.
+	// 	- The value must be 1 to 100 characters in length.
+	//
+	// 	- You can use asterisks (\\*) and question marks (?) as wildcard characters.
+	//
+	// 	- It can contain printable characters, except uppercase letters, space characters, and the following special characters: `; # [ ] { } \\ | < > &`.
+	//
+	// example:
+	//
+	// test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4236,9 +5394,15 @@ func (s *CreateRulesRequestRulesRuleConditionsCookieConfigValues) SetValue(v str
 type CreateRulesRequestRulesRuleConditionsHeaderConfig struct {
 	// The key of the header.
 	//
-	// *   The key must be 1 to 40 characters in length.
-	// *   It can contain lowercase letters, digits, hyphens (-), and underscores (\_).
-	// *   You cannot specify Cookie or Host.
+	// 	- The key must be 1 to 40 characters in length.
+	//
+	// 	- It can contain lowercase letters, digits, hyphens (-), and underscores (_).
+	//
+	// 	- You cannot specify Cookie or Host.
+	//
+	// example:
+	//
+	// Port
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The values of the header.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
@@ -4337,13 +5501,23 @@ func (s *CreateRulesRequestRulesRuleConditionsQueryStringConfig) SetValues(v []*
 type CreateRulesRequestRulesRuleConditionsQueryStringConfigValues struct {
 	// They key of the query string.
 	//
-	// *   It must be 1 to 100 characters in length.
-	// *   You can use asterisks (\*) and question marks (?) as wildcards. The key can contain printable characters, excluding uppercase letters, space characters, and the following special characters: `# [ ] { } \ | < > &`.
+	// 	- It must be 1 to 100 characters in length.
+	//
+	// 	- You can use asterisks (\\*) and question marks (?) as wildcards. The key can contain printable characters, excluding uppercase letters, space characters, and the following special characters: `# [ ] { } \\ | < > &`.
+	//
+	// example:
+	//
+	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the query string.
 	//
-	// *   The value must be 1 to 128 characters in length.
-	// *   It can contain printable characters, excluding uppercase letters, space characters, and the following special characters: `# [ ] { } \ | < > &`. You can use asterisks (\*) and question marks (?) as wildcards.
+	// 	- The value must be 1 to 128 characters in length.
+	//
+	// 	- It can contain printable characters, excluding uppercase letters, space characters, and the following special characters: `# [ ] { } \\ | < > &`. You can use asterisks (\\*) and question marks (?) as wildcards.
+	//
+	// example:
+	//
+	// test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4368,9 +5542,15 @@ func (s *CreateRulesRequestRulesRuleConditionsQueryStringConfigValues) SetValue(
 type CreateRulesRequestRulesRuleConditionsResponseHeaderConfig struct {
 	// The key of the header.
 	//
-	// *   The key must be 1 to 40 characters in length.
-	// *   It can contain lowercase letters, digits, hyphens (-), and underscores (\_).
-	// *   You cannot specify Cookie or Host.
+	// 	- The key must be 1 to 40 characters in length.
+	//
+	// 	- It can contain lowercase letters, digits, hyphens (-), and underscores (_).
+	//
+	// 	- You cannot specify Cookie or Host.
+	//
+	// example:
+	//
+	// Port
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The values of the header.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
@@ -4432,8 +5612,16 @@ func (s *CreateRulesRequestRulesRuleConditionsSourceIpConfig) SetValues(v []*str
 
 type CreateRulesRequestRulesTag struct {
 	// The key of the tag. The tag key can be up to 128 characters in length, and cannot start with acs: or aliyun. It cannot contain http:// or https://.
+	//
+	// example:
+	//
+	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag. The tag value can be up to 128 characters in length, and cannot start with acs: or aliyun. It cannot contain http:// or https://.
+	//
+	// example:
+	//
+	// product
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4457,8 +5645,16 @@ func (s *CreateRulesRequestRulesTag) SetValue(v string) *CreateRulesRequestRules
 
 type CreateRulesResponseBody struct {
 	// The ID of the asynchronous task.
+	//
+	// example:
+	//
+	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 365F4154-92F6-4AE4-92F8-7FF34B540710
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The priority of the forwarding rule. Valid values: **1 to 10000**. A lower value specifies a higher priority.
 	//
@@ -4493,8 +5689,16 @@ type CreateRulesResponseBodyRuleIds struct {
 	// The priority of the forwarding rule. Valid values: **1 to 10000**. A smaller value indicates a higher priority.
 	//
 	// > The priorities of the forwarding rules created for the same listener must be unique.
+	//
+	// example:
+	//
+	// 10
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The forwarding rule ID.
+	//
+	// example:
+	//
+	// rule-a3x3pg1yohq3lq****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
@@ -4547,23 +5751,46 @@ func (s *CreateRulesResponse) SetBody(v *CreateRulesResponseBody) *CreateRulesRe
 
 type CreateSecurityPolicyRequest struct {
 	// The supported cipher suites.
+	//
+	// This parameter is required.
 	Ciphers []*string `json:"Ciphers,omitempty" xml:"Ciphers,omitempty" type:"Repeated"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// > If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
+	// example:
+	//
+	// 593B0448-D13E-4C56-AC0D-FDF0FDE0E9A3
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-atstuj3rtop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The name of the security policy.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-secrity
 	SecurityPolicyName *string `json:"SecurityPolicyName,omitempty" xml:"SecurityPolicyName,omitempty"`
 	// The supported Transport Layer Security (TLS) protocol versions.
+	//
+	// This parameter is required.
 	TLSVersions []*string `json:"TLSVersions,omitempty" xml:"TLSVersions,omitempty" type:"Repeated"`
 	// The tags.
 	Tag []*CreateSecurityPolicyRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -4614,8 +5841,16 @@ func (s *CreateSecurityPolicyRequest) SetTag(v []*CreateSecurityPolicyRequestTag
 
 type CreateSecurityPolicyRequestTag struct {
 	// The tag key. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value. The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// product
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4639,8 +5874,16 @@ func (s *CreateSecurityPolicyRequestTag) SetValue(v string) *CreateSecurityPolic
 
 type CreateSecurityPolicyResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 593B0448-D13E-4C56-AC0D-FDF0FDE0E9A3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The security policy ID.
+	//
+	// example:
+	//
+	// scp-bp1bpn0kn9****
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 }
 
@@ -4696,48 +5939,91 @@ type CreateServerGroupRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken           *string                                        `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	ConnectionDrainConfig *CreateServerGroupRequestConnectionDrainConfig `json:"ConnectionDrainConfig,omitempty" xml:"ConnectionDrainConfig,omitempty" type:"Struct"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The configuration of health checks.
+	//
+	// This parameter is required.
 	HealthCheckConfig *CreateServerGroupRequestHealthCheckConfig `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty" type:"Struct"`
 	// The backend protocol. Valid values:
 	//
-	// *   **HTTP** (default): The server group can be associated with HTTPS, HTTP, and QUIC listeners.
-	// *   **HTTPS**: The server group can be associated with HTTPS listeners.
-	// *   **gRPC**: The server group can be associated with HTTPS and QUIC listeners.
+	// 	- **HTTP*	- (default): The server group can be associated with HTTPS, HTTP, and QUIC listeners.
 	//
-	// > If the **ServerGroupType** parameter is set to **Fc**, you can set Protocol only to **HTTP**.
+	// 	- **HTTPS**: The server group can be associated with HTTPS listeners.
+	//
+	// 	- **gRPC**: The server group can be associated with HTTPS and QUIC listeners.
+	//
+	// > If the **ServerGroupType*	- parameter is set to **Fc**, you can set Protocol only to **HTTP**.
+	//
+	// example:
+	//
+	// HTTP
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-atstuj3rtop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The scheduling algorithm. Valid values:
 	//
-	// *   **Wrr** (default): The weighted round-robin algorithm is used. Backend servers that have higher weights receive more requests than those that have lower weights.
-	// *   **Wlc**: The weighted least connections algorithm is used. Requests are distributed based on the weights and the number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections is expected to receive more requests.
-	// *   **Sch**: The consistent hashing algorithm is used. Requests from the same source IP address are distributed to the same backend server.
+	// 	- **Wrr*	- (default): The weighted round-robin algorithm is used. Backend servers that have higher weights receive more requests than those that have lower weights.
 	//
-	// > This parameter takes effect when the **ServerGroupType** parameter is set to **Instance** or **Ip**.
+	// 	- **Wlc**: The weighted least connections algorithm is used. Requests are distributed based on the weights and the number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections is expected to receive more requests.
+	//
+	// 	- **Sch**: The consistent hashing algorithm is used. Requests from the same source IP address are distributed to the same backend server.
+	//
+	// > This parameter takes effect when the **ServerGroupType*	- parameter is set to **Instance*	- or **Ip**.
+	//
+	// example:
+	//
+	// Wrr
 	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	// The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+	// The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sg-atstuj3rtoptyui****
 	ServerGroupName *string `json:"ServerGroupName,omitempty" xml:"ServerGroupName,omitempty"`
 	// The type of server group. Valid values:
 	//
-	// *   **Instance** (default): allows you to add servers by specifying **Ecs**, **Eni**, or **Eci**.
-	// *   **Ip**: allows you to add servers by specifying IP addresses.
-	// *   **Fc**: allows you to add servers by specifying functions of Function Compute.
+	// 	- **Instance*	- (default): allows you to add servers by specifying **Ecs**, **Eni**, or **Eci**.
+	//
+	// 	- **Ip**: allows you to add servers by specifying IP addresses.
+	//
+	// 	- **Fc**: allows you to add servers by specifying functions of Function Compute.
+	//
+	// example:
+	//
+	// Instance
 	ServerGroupType *string `json:"ServerGroupType,omitempty" xml:"ServerGroupType,omitempty"`
 	// This parameter is available only if the ALB Ingress controller is used. In this case, set this parameter to the name of the `Kubernetes Service` that is associated with the server group.
+	//
+	// example:
+	//
+	// test
 	ServiceName     *string                                  `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	SlowStartConfig *CreateServerGroupRequestSlowStartConfig `json:"SlowStartConfig,omitempty" xml:"SlowStartConfig,omitempty" type:"Struct"`
 	// The configuration of session persistence.
 	//
-	// > This parameter takes effect when the **ServerGroupType** parameter is set to **Instance** or **Ip**.
+	// > This parameter takes effect when the **ServerGroupType*	- parameter is set to **Instance*	- or **Ip**.
 	StickySessionConfig *CreateServerGroupRequestStickySessionConfig `json:"StickySessionConfig,omitempty" xml:"StickySessionConfig,omitempty" type:"Struct"`
 	// The tag.
 	Tag []*CreateServerGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -4747,7 +6033,11 @@ type CreateServerGroupRequest struct {
 	UpstreamKeepaliveEnabled *bool `json:"UpstreamKeepaliveEnabled,omitempty" xml:"UpstreamKeepaliveEnabled,omitempty"`
 	// The ID of the virtual private cloud (VPC). You can add only backend servers that are deployed in the specified VPC to the server group.
 	//
-	// > This parameter takes effect when the **ServerGroupType** parameter is set to **Instance** or **Ip**.
+	// > This parameter takes effect when the **ServerGroupType*	- parameter is set to **Instance*	- or **Ip**.
+	//
+	// example:
+	//
+	// vpc-bp15zckdt37pq72zv****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -4867,79 +6157,135 @@ type CreateServerGroupRequestHealthCheckConfig struct {
 	HealthCheckCodes []*string `json:"HealthCheckCodes,omitempty" xml:"HealthCheckCodes,omitempty" type:"Repeated"`
 	// The backend port that is used for health checks.
 	//
-	// Valid values: **0** to **65535**.
+	// Valid values: **0*	- to **65535**.
 	//
 	// Default value: **0**. If you set the value to 0, the port of a backend server is used for health checks.
+	//
+	// example:
+	//
+	// 80
 	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
 	// Specifies whether to enable the health check feature. Valid values:
 	//
-	// *   **true**: enables the health check feature.
-	// *   **false**: disables the health check feature.
+	// 	- **true**: enables the health check feature.
 	//
-	// >  If the **ServerGroupType** parameter is set to **Instance** or **Ip**, the health check feature is enabled by default. If the **ServerGroupType** parameter is set to **Fc**, the health check feature is disabled by default.
+	// 	- **false**: disables the health check feature.
+	//
+	// >  If the **ServerGroupType*	- parameter is set to **Instance*	- or **Ip**, the health check feature is enabled by default. If the **ServerGroupType*	- parameter is set to **Fc**, the health check feature is disabled by default.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
 	HealthCheckEnabled *bool `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
 	// The domain name that is used for health checks. The domain name meets the following requirements:
 	//
-	// *   The domain name is 1 to 80 characters in length.
-	// *   The domain name contains lowercase letters, digits, hyphens (-), and periods (.).
-	// *   The domain name contains at least one period (.) but does not start or end with a period (.).
-	// *   The rightmost domain label of the domain name contains only letters, and does not contain digits or hyphens (-).
-	// *   The domain name does not start or end with a hyphen (-).
+	// 	- The domain name is 1 to 80 characters in length.
 	//
-	// >  This parameter takes effect only when **HealthCheckProtocol** is set to **HTTP** or **HTTPS**. HTTPS is unavailable by default. If you want to use HTTPS, log on to the SLB console, go to the Quota Center page, and then apply for the privilege to use HTTPS on the **ALB** tab.
+	// 	- The domain name contains lowercase letters, digits, hyphens (-), and periods (.).
+	//
+	// 	- The domain name contains at least one period (.) but does not start or end with a period (.).
+	//
+	// 	- The rightmost domain label of the domain name contains only letters, and does not contain digits or hyphens (-).
+	//
+	// 	- The domain name does not start or end with a hyphen (-).
+	//
+	// >  This parameter takes effect only when **HealthCheckProtocol*	- is set to **HTTP*	- or **HTTPS**. HTTPS is unavailable by default. If you want to use HTTPS, log on to the SLB console, go to the Quota Center page, and then apply for the privilege to use HTTPS on the **ALB*	- tab.
+	//
+	// example:
+	//
+	// www.example.com
 	HealthCheckHost *string `json:"HealthCheckHost,omitempty" xml:"HealthCheckHost,omitempty"`
-	// The version of the HTTP protocol. Valid values: **HTTP1.0** and **HTTP1.1**. Default value: HTTP1.1.
+	// The version of the HTTP protocol. Valid values: **HTTP1.0*	- and **HTTP1.1**. Default value: HTTP1.1.
 	//
-	// >  This parameter takes effect only when **HealthCheckProtocol** is set to **HTTP** or **HTTPS**. HTTPS is unavailable by default. If you want to use HTTPS, log on to the SLB console, go to the Quota Center page, and then apply for the privilege to use HTTPS on the **ALB** tab.
+	// >  This parameter takes effect only when **HealthCheckProtocol*	- is set to **HTTP*	- or **HTTPS**. HTTPS is unavailable by default. If you want to use HTTPS, log on to the SLB console, go to the Quota Center page, and then apply for the privilege to use HTTPS on the **ALB*	- tab.
+	//
+	// example:
+	//
+	// HTTP1.1
 	HealthCheckHttpVersion *string `json:"HealthCheckHttpVersion,omitempty" xml:"HealthCheckHttpVersion,omitempty"`
 	// The interval at which health checks are performed. Unit: seconds.
 	//
-	// Valid values: **1** to **50**.
+	// Valid values: **1*	- to **50**.
 	//
 	// Default value: **2**.
+	//
+	// example:
+	//
+	// 2
 	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
 	// The HTTP method that is used for health checks. Valid values:
 	//
-	// *   **GET**: If the length of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
-	// *   **POST**: By default, gRPC health checks use the POST method.
-	// *   **HEAD**: HTTP and HTTPS health checks in listeners use the HEAD method by default.
+	// 	- **GET**: If the length of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
 	//
-	// >  This parameter takes effect only when **HealthCheckProtocol** is set to **HTTP**, **HTTPS**, or **gRPC**. HTTPS is unavailable by default. If you want to use HTTPS, log on to the SLB console, go to the Quota Center page, and then apply for the privilege to use HTTPS on the **ALB** tab.
+	// 	- **POST**: By default, gRPC health checks use the POST method.
+	//
+	// 	- **HEAD**: HTTP and HTTPS health checks in listeners use the HEAD method by default.
+	//
+	// >  This parameter takes effect only when **HealthCheckProtocol*	- is set to **HTTP**, **HTTPS**, or **gRPC**. HTTPS is unavailable by default. If you want to use HTTPS, log on to the SLB console, go to the Quota Center page, and then apply for the privilege to use HTTPS on the **ALB*	- tab.
+	//
+	// example:
+	//
+	// HEAD
 	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
 	// The path that is used for health checks.
 	//
-	// The path must be 1 to 80 characters in length and can contain only letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : \" , +`. The URL must start with a forward slash (/).
+	// The path must be 1 to 80 characters in length and can contain only letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) 	- [ ] @ $ ^ : \\" , +`. The URL must start with a forward slash (/).
 	//
-	// >  This parameter takes effect only when **HealthCheckProtocol** is set to **HTTP** or **HTTPS**. HTTPS is unavailable by default. If you want to use HTTPS, log on to the SLB console, go to the Quota Center page, and then apply for the privilege to use HTPS on the **ALB** tab.
+	// >  This parameter takes effect only when **HealthCheckProtocol*	- is set to **HTTP*	- or **HTTPS**. HTTPS is unavailable by default. If you want to use HTTPS, log on to the SLB console, go to the Quota Center page, and then apply for the privilege to use HTPS on the **ALB*	- tab.
+	//
+	// example:
+	//
+	// /test/index.html
 	HealthCheckPath *string `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
 	// The protocol that is used for health checks. Valid values:
 	//
-	// *   **HTTP**: ALB performs HTTP health checks by sending HEAD or GET requests to a backend server to check whether the backend server is healthy.
-	// *   **HTTPS**: ALB performs HTTPS health checks by sending HEAD or GET requests to a backend server to check whether the backend server is healthy. HTTPS supports data encryption and provides higher data security than HTTP.
-	// *   **TCP**: To perform TCP health checks, SLB sends SYN packets to the backend server to check whether the port of the backend server is available to receive requests.
-	// *   **gRPC**: To perform gRPC health checks, SLB sends POST or GET requests to a backend server to check whether the backend server is healthy.
+	// 	- **HTTP**: ALB performs HTTP health checks by sending HEAD or GET requests to a backend server to check whether the backend server is healthy.
 	//
-	// >  HTTPS is unavailable by default. If you want to use HTTPS, log on to the SLB console, go to the Quota Center page, and then apply for the privilege to use HTTPS on the **ALB** tab.
+	// 	- **HTTPS**: ALB performs HTTPS health checks by sending HEAD or GET requests to a backend server to check whether the backend server is healthy. HTTPS supports data encryption and provides higher data security than HTTP.
+	//
+	// 	- **TCP**: To perform TCP health checks, SLB sends SYN packets to the backend server to check whether the port of the backend server is available to receive requests.
+	//
+	// 	- **gRPC**: To perform gRPC health checks, SLB sends POST or GET requests to a backend server to check whether the backend server is healthy.
+	//
+	// >  HTTPS is unavailable by default. If you want to use HTTPS, log on to the SLB console, go to the Quota Center page, and then apply for the privilege to use HTTPS on the **ALB*	- tab.
+	//
+	// example:
+	//
+	// HTTP
 	HealthCheckProtocol *string `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
 	// The timeout period for a health check response. If a backend server, such as an Elastic Compute Service (ECS) instance, does not return a health check response within the specified timeout period, the server fails the health check. Unit: seconds.
 	//
-	// Valid values: **1** to **300**.
+	// Valid values: **1*	- to **300**.
 	//
 	// Default value: **5**.
 	//
-	// >  If the value of **HealthCHeckTimeout** is smaller than the value of **HealthCheckInterval**, the value of **HealthCHeckTimeout** is ignored and the value of **HealthCheckInterval** is used.
+	// >  If the value of **HealthCHeckTimeout*	- is smaller than the value of **HealthCheckInterval**, the value of **HealthCHeckTimeout*	- is ignored and the value of **HealthCheckInterval*	- is used.
+	//
+	// example:
+	//
+	// 5
 	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from **fail** to **success**.
+	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from **fail*	- to **success**.
 	//
-	// Valid values: **2** to **10**.
+	// Valid values: **2*	- to **10**.
 	//
 	// Default value: **3**.
+	//
+	// example:
+	//
+	// 3
 	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from **success** to **fail**.
+	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from **success*	- to **fail**.
 	//
-	// Valid values: **2** to **10**.
+	// Valid values: **2*	- to **10**.
 	//
 	// Default value: **3**.
+	//
+	// example:
+	//
+	// 3
 	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
@@ -5039,34 +6385,51 @@ type CreateServerGroupRequestStickySessionConfig struct {
 	//
 	// The cookie must be 1 to 200 characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($).
 	//
-	// > This parameter takes effect when the **StickySessionEnabled** parameter is set to **true** and the **StickySessionType** parameter is set to **Server**.
+	// > This parameter takes effect when the **StickySessionEnabled*	- parameter is set to **true*	- and the **StickySessionType*	- parameter is set to **Server**.
+	//
+	// example:
+	//
+	// B490B5EBF6F3CD402E515D22BCDA****
 	Cookie *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
 	// The timeout period of a cookie. Unit: seconds.
 	//
-	// Valid values: **1** to **86400**.
+	// Valid values: **1*	- to **86400**.
 	//
 	// Default value: **1000**.
 	//
-	// > This parameter takes effect only when the **StickySessionEnabled** parameter is set to **true** and the **StickySessionType** parameter is set to **Insert**.
+	// > This parameter takes effect only when the **StickySessionEnabled*	- parameter is set to **true*	- and the **StickySessionType*	- parameter is set to **Insert**.
+	//
+	// example:
+	//
+	// 1000
 	CookieTimeout *int32 `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
 	// Specifies whether to enable session persistence. Valid values:
 	//
-	// *   **true**
-	// *   **false** (default)
+	// 	- **true**
 	//
-	// > This parameter takes effect when the **ServerGroupType** parameter is set to **Instance** or **Ip**.
+	// 	- **false*	- (default)
+	//
+	// > This parameter takes effect when the **ServerGroupType*	- parameter is set to **Instance*	- or **Ip**.
+	//
+	// example:
+	//
+	// false
 	StickySessionEnabled *bool `json:"StickySessionEnabled,omitempty" xml:"StickySessionEnabled,omitempty"`
 	// The method that is used to handle a cookie. Valid values:
 	//
-	// *   **Insert** (default): inserts a cookie.
+	// 	- **Insert*	- (default): inserts a cookie.
 	//
 	// ALB inserts a session cookie (SERVERID) into the first HTTP or HTTPS response that is sent to a client. Subsequent requests to ALB carry this cookie, and ALB determines the destination servers of the requests based on the cookies.
 	//
-	// *   **Server**: rewrites a cookie.
+	// 	- **Server**: rewrites a cookie.
 	//
 	// When ALB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. Subsequent requests to ALB carry this user-defined cookie, and ALB determines the destination servers of the requests based on the cookies.
 	//
-	// > This parameter takes effect when the **StickySessionEnabled** parameter is set to **true**.
+	// > This parameter takes effect when the **StickySessionEnabled*	- parameter is set to **true**.
+	//
+	// example:
+	//
+	// Insert
 	StickySessionType *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
 }
 
@@ -5100,8 +6463,16 @@ func (s *CreateServerGroupRequestStickySessionConfig) SetStickySessionType(v str
 
 type CreateServerGroupRequestTag struct {
 	// The tag key. The tag key can be up to 128 characters in length, and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value. The tag value can be up to 128 characters in length, and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// product
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5125,8 +6496,20 @@ func (s *CreateServerGroupRequestTag) SetValue(v string) *CreateServerGroupReque
 
 type CreateServerGroupRequestUchConfig struct {
 	// The type of the parameter.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// QueryString
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The parameter value for consistent hashing.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// abc
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5150,10 +6533,22 @@ func (s *CreateServerGroupRequestUchConfig) SetValue(v string) *CreateServerGrou
 
 type CreateServerGroupResponseBody struct {
 	// The ID of the asynchronous job.
+	//
+	// example:
+	//
+	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 365F4154-92F6-4AE4-92F8-7FF34B540710
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the server group.
+	//
+	// example:
+	//
+	// sg-atstuj3rtoptyui****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 }
 
@@ -5211,15 +6606,26 @@ func (s *CreateServerGroupResponse) SetBody(v *CreateServerGroupResponseBody) *C
 
 type DeleteAScriptsRequest struct {
 	// The AScript rule IDs.
+	//
+	// This parameter is required.
 	AScriptIds []*string `json:"AScriptIds,omitempty" xml:"AScriptIds,omitempty" type:"Repeated"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// example:
+	//
+	// f516e84e-fc0c-4c2d-a461-6cd774a84dbd
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 }
 
@@ -5248,8 +6654,16 @@ func (s *DeleteAScriptsRequest) SetDryRun(v bool) *DeleteAScriptsRequest {
 
 type DeleteAScriptsResponseBody struct {
 	// The asynchronous task ID.
+	//
+	// example:
+	//
+	// 03cf3fe1-ab37-479b-92a6-b481d762****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 1B7B7695-3596-50C8-B739-030C6C685E61
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5302,17 +6716,32 @@ func (s *DeleteAScriptsResponse) SetBody(v *DeleteAScriptsResponseBody) *DeleteA
 
 type DeleteAclRequest struct {
 	// The ACL ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// nacl-hp34s2h0xx1ht4nwo****
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 }
 
@@ -5341,8 +6770,16 @@ func (s *DeleteAclRequest) SetDryRun(v bool) *DeleteAclRequest {
 
 type DeleteAclResponseBody struct {
 	// The asynchronous task ID.
+	//
+	// example:
+	//
+	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5395,13 +6832,28 @@ func (s *DeleteAclResponse) SetBody(v *DeleteAclResponseBody) *DeleteAclResponse
 
 type DeleteHealthCheckTemplatesRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a **2xx HTTP** status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a **2xx HTTP*	- status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the health check template.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// acl-123
 	HealthCheckTemplateIds []*string `json:"HealthCheckTemplateIds,omitempty" xml:"HealthCheckTemplateIds,omitempty" type:"Repeated"`
 }
 
@@ -5430,6 +6882,10 @@ func (s *DeleteHealthCheckTemplatesRequest) SetHealthCheckTemplateIds(v []*strin
 
 type DeleteHealthCheckTemplatesResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 365F4154-92F6-4AE4-92F8-7FF34B540710
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5480,14 +6936,29 @@ type DeleteListenerRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false**: (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false**: (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the Application Load Balancer (ALB) listener.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lsr-bp1bpn0kn908w4nbw****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 }
 
@@ -5516,8 +6987,16 @@ func (s *DeleteListenerRequest) SetListenerId(v string) *DeleteListenerRequest {
 
 type DeleteListenerResponseBody struct {
 	// The asynchronous task ID.
+	//
+	// example:
+	//
+	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 365F4154-92F6-4AE4-92F8-7FF34B540710
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5572,13 +7051,28 @@ type DeleteLoadBalancerRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and sends the request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ALB instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lb-bp1b6c719dfa08ex****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 }
 
@@ -5607,8 +7101,16 @@ func (s *DeleteLoadBalancerRequest) SetLoadBalancerId(v string) *DeleteLoadBalan
 
 type DeleteLoadBalancerResponseBody struct {
 	// The ID of the asynchronous task.
+	//
+	// example:
+	//
+	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5664,14 +7166,29 @@ type DeleteRuleRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: sends the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false**: performs a dry run and sends the request. If the request passes the dry run, the `HTTP_2xx` status code is returned and the operation is performed. This is the default value.
+	// 	- **true**: sends the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false**: performs a dry run and sends the request. If the request passes the dry run, the `HTTP_2xx` status code is returned and the operation is performed. This is the default value.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the forwarding rule.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rule-doc****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
@@ -5700,8 +7217,16 @@ func (s *DeleteRuleRequest) SetRuleId(v string) *DeleteRuleRequest {
 
 type DeleteRuleResponseBody struct {
 	// The asynchronous task ID.
+	//
+	// example:
+	//
+	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 365F4154-92F6-4AE4-92F8-7FF34B540710
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5757,14 +7282,25 @@ type DeleteRulesRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: checks the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	// 	- **true**: checks the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ID of the forwarding rule. Valid values of N: **1** to **5**.
+	// The ID of the forwarding rule. Valid values of N: **1*	- to **5**.
+	//
+	// This parameter is required.
 	RuleIds []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
 }
 
@@ -5793,8 +7329,16 @@ func (s *DeleteRulesRequest) SetRuleIds(v []*string) *DeleteRulesRequest {
 
 type DeleteRulesResponseBody struct {
 	// The asynchronous task ID.
+	//
+	// example:
+	//
+	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 7BED4F62-3E6E-5E4F-8C53-2D8CCE77F2ED
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5849,13 +7393,28 @@ type DeleteSecurityPolicyRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// > If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
+	// example:
+	//
+	// 593B0448-D13E-4C56-AC0D-FDF0FDE0E9A3
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The security policy ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// spy-n0kn923****
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 }
 
@@ -5884,6 +7443,10 @@ func (s *DeleteSecurityPolicyRequest) SetSecurityPolicyId(v string) *DeleteSecur
 
 type DeleteSecurityPolicyResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 593B0448-D13E-4C56-AC0D-FDF0FDE0E9A3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5934,14 +7497,29 @@ type DeleteServerGroupRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the server group.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sgp-cige6j****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 }
 
@@ -5970,8 +7548,16 @@ func (s *DeleteServerGroupRequest) SetServerGroupId(v string) *DeleteServerGroup
 
 type DeleteServerGroupResponseBody struct {
 	// The ID of the asynchronous job.
+	//
+	// example:
+	//
+	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 365F4154-92F6-4AE4-92F8-7FF34B540710
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6025,9 +7611,15 @@ func (s *DeleteServerGroupResponse) SetBody(v *DeleteServerGroupResponseBody) *D
 type DescribeRegionsRequest struct {
 	// The supported natural language. Valid values:
 	//
-	// *   zh-CN: **Chinese**
-	// *   en-US: **English**
-	// *   ja: **Japanese**
+	// 	- zh-CN: **Chinese**
+	//
+	// 	- en-US: **English**
+	//
+	// 	- ja: **Japanese**
+	//
+	// example:
+	//
+	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 }
 
@@ -6048,6 +7640,10 @@ type DescribeRegionsResponseBody struct {
 	// The regions.
 	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 593B0448-D13E-4C56-AC0D-FDF0FDE0E9A3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6071,10 +7667,22 @@ func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsRes
 
 type DescribeRegionsResponseBodyRegions struct {
 	// The name of the region.
+	//
+	// example:
+	//
+	// China (Hangzhou)
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// The endpoint of region service.
+	//
+	// example:
+	//
+	// alb.cn-hangzhou.aliyuncs.com
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -6133,9 +7741,15 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 type DescribeZonesRequest struct {
 	// The language of the response. Valid values:
 	//
-	// *   **zh-CN**: Chinese
-	// *   **en-US**: English
-	// *   **ja**: Japanese
+	// 	- **zh-CN**: Chinese
+	//
+	// 	- **en-US**: English
+	//
+	// 	- **ja**: Japanese
+	//
+	// example:
+	//
+	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 }
 
@@ -6154,8 +7768,16 @@ func (s *DescribeZonesRequest) SetAcceptLanguage(v string) *DescribeZonesRequest
 
 type DescribeZonesResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 593B0448-D13E-4C56-AC0D-FDF0FDE0E9A3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The zones.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPdzTKM4svjIT4VQig7tTMKqiHlxKt2p5Zuz45p+Lxdq
 	Zones []*DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
@@ -6179,8 +7801,16 @@ func (s *DescribeZonesResponseBody) SetZones(v []*DescribeZonesResponseBodyZones
 
 type DescribeZonesResponseBodyZones struct {
 	// The name of the zone.
+	//
+	// example:
+	//
+	// Hangzhou Zone G
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// The zone ID.
+	//
+	// example:
+	//
+	// cn-hangzhou-g
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -6233,23 +7863,50 @@ func (s *DescribeZonesResponse) SetBody(v *DescribeZonesResponseBody) *DescribeZ
 
 type DetachCommonBandwidthPackageFromLoadBalancerRequest struct {
 	// The EIP bandwidth plan ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cbwp-bp1pzf0ym72pu3y76****
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ALB instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alb-d676fho813rmu3****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	// The region ID of the ALB instance.
 	//
-	// You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -6288,8 +7945,16 @@ func (s *DetachCommonBandwidthPackageFromLoadBalancerRequest) SetRegionId(v stri
 
 type DetachCommonBandwidthPackageFromLoadBalancerResponseBody struct {
 	// The asynchronous task ID.
+	//
+	// example:
+	//
+	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 2EF39708-974B-5E74-AFF5-3445263035A8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6342,13 +8007,28 @@ func (s *DetachCommonBandwidthPackageFromLoadBalancerResponse) SetBody(v *Detach
 
 type DisableDeletionProtectionRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false**: (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false**: (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ALB instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// re-atstuj3rtop****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 }
 
@@ -6377,6 +8057,10 @@ func (s *DisableDeletionProtectionRequest) SetResourceId(v string) *DisableDelet
 
 type DisableDeletionProtectionResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6425,14 +8109,29 @@ func (s *DisableDeletionProtectionResponse) SetBody(v *DisableDeletionProtection
 type DisableLoadBalancerAccessLogRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
-	// *   If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	// 	- If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
+	// example:
+	//
+	// 593B0448-D13E-4C56-AC0D-FDF0FDE0E9A3
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The SLB instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lb-bp1b6c719dfa08ex*****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 }
 
@@ -6461,6 +8160,10 @@ func (s *DisableLoadBalancerAccessLogRequest) SetLoadBalancerId(v string) *Disab
 
 type DisableLoadBalancerAccessLogResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 593B0448-D13E-4C56-AC0D-FDF0FDE0E9A3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6511,14 +8214,29 @@ type DisableLoadBalancerIpv6InternetRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 593B0448-D13E-4C56-AC0D-FDF0FDE0E9A3
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ALB instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alb-chugtlrj1iusjh****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 }
 
@@ -6547,8 +8265,16 @@ func (s *DisableLoadBalancerIpv6InternetRequest) SetLoadBalancerId(v string) *Di
 
 type DisableLoadBalancerIpv6InternetResponseBody struct {
 	// The asynchronous task ID.
+	//
+	// example:
+	//
+	// d12871a6-ebb2-41f3-8d74-d9f452bb****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 7D866E37-1123-5160-AFF1-BDAF5EB86A8A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6601,19 +8327,36 @@ func (s *DisableLoadBalancerIpv6InternetResponse) SetBody(v *DisableLoadBalancer
 
 type DissociateAclsFromListenerRequest struct {
 	// The ACL IDs.
+	//
+	// This parameter is required.
 	AclIds []*string `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Repeated"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The listener ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lsr-bp1bpn0kn908w4nbw****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 }
 
@@ -6647,8 +8390,16 @@ func (s *DissociateAclsFromListenerRequest) SetListenerId(v string) *DissociateA
 
 type DissociateAclsFromListenerResponseBody struct {
 	// The asynchronous task ID.
+	//
+	// example:
+	//
+	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6701,19 +8452,36 @@ func (s *DissociateAclsFromListenerResponse) SetBody(v *DissociateAclsFromListen
 
 type DissociateAdditionalCertificatesFromListenerRequest struct {
 	// The additional certificates.
+	//
+	// This parameter is required.
 	Certificates []*DissociateAdditionalCertificatesFromListenerRequestCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a **2xx HTTP** status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a **2xx HTTP*	- status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The listener ID. You must specify the ID of an HTTPS listener or a QUIC listener.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lsr-bp1bpn0kn908w4nbw****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 }
 
@@ -6747,6 +8515,12 @@ func (s *DissociateAdditionalCertificatesFromListenerRequest) SetListenerId(v st
 
 type DissociateAdditionalCertificatesFromListenerRequestCertificates struct {
 	// The certificate ID. Only server certificates are supported. You can specify up to 20 IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12315790343_166f8204689_1714763408_70998****
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 }
 
@@ -6765,8 +8539,16 @@ func (s *DissociateAdditionalCertificatesFromListenerRequestCertificates) SetCer
 
 type DissociateAdditionalCertificatesFromListenerResponseBody struct {
 	// The asynchronous task ID.
+	//
+	// example:
+	//
+	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 365F4154-92F6-4AE4-92F8-7FF34B540710
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6819,13 +8601,28 @@ func (s *DissociateAdditionalCertificatesFromListenerResponse) SetBody(v *Dissoc
 
 type EnableDeletionProtectionRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false**: (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false**: (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The Application Load Balancer (ALB) instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// re-atstuj3rtop****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 }
 
@@ -6854,6 +8651,10 @@ func (s *EnableDeletionProtectionRequest) SetResourceId(v string) *EnableDeletio
 
 type EnableDeletionProtectionResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6903,17 +8704,44 @@ type EnableLoadBalancerAccessLogRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
 	//
 	// > If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
+	// example:
+	//
+	// 593B0448-D13E-4C56-AC0D-FDF0FDE0E9A3
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ALB instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alb-bd6oylbckp6k9x****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	// The project to which the access log is shipped.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sls-setter
 	LogProject *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
 	// The Logstore to which the access log is shipped.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
 }
 
@@ -6952,6 +8780,10 @@ func (s *EnableLoadBalancerAccessLogRequest) SetLogStore(v string) *EnableLoadBa
 
 type EnableLoadBalancerAccessLogResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 593B0448-D13E-4C56-AC0D-FDF0FDE0E9A3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7002,14 +8834,29 @@ type EnableLoadBalancerIpv6InternetRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ALB instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alb-o2cvudgo6rlqz7****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 }
 
@@ -7038,8 +8885,16 @@ func (s *EnableLoadBalancerIpv6InternetRequest) SetLoadBalancerId(v string) *Ena
 
 type EnableLoadBalancerIpv6InternetResponseBody struct {
 	// The asynchronous task ID.
+	//
+	// example:
+	//
+	// 4a6e3ad4-ef08-4ab1-b332-fa621cfe****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// BB920797-D70E-567F-8098-55A861DD7912
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7092,6 +8947,12 @@ func (s *EnableLoadBalancerIpv6InternetResponse) SetBody(v *EnableLoadBalancerIp
 
 type GetHealthCheckTemplateAttributeRequest struct {
 	// The ID of the health check template.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hct-x4jazoyi6tvsq9****
 	HealthCheckTemplateId *string `json:"HealthCheckTemplateId,omitempty" xml:"HealthCheckTemplateId,omitempty"`
 }
 
@@ -7111,73 +8972,131 @@ func (s *GetHealthCheckTemplateAttributeRequest) SetHealthCheckTemplateId(v stri
 type GetHealthCheckTemplateAttributeResponseBody struct {
 	// The HTTP status codes that are used to determine whether the backend server passes the health check.
 	//
-	// *   If **HealthCheckProtocol** is set to **HTTP**, **HealthCheckCodes** can be set to **http\_2xx** (default), **http\_3xx**, **http\_4xx**, and **http\_5xx**. Separate multiple HTTP status codes with a comma (,).
-	// *   If **HealthCheckProtocol** is set to **gRPC**, **HealthCheckCodes** can be set to **0 to 99**. Default value: **0**. Value ranges are supported. You can enter up to 20 value ranges and separate them with a comma (,).
+	// 	- If **HealthCheckProtocol*	- is set to **HTTP**, **HealthCheckCodes*	- can be set to **http_2xx*	- (default), **http_3xx**, **http_4xx**, and **http_5xx**. Separate multiple HTTP status codes with a comma (,).
 	//
-	// > This parameter takes effect only when the **HealthCheckProtocol** parameter is set to **HTTP** or **gRPC**.
+	// 	- If **HealthCheckProtocol*	- is set to **gRPC**, **HealthCheckCodes*	- can be set to **0 to 99**. Default value: **0**. Value ranges are supported. You can enter up to 20 value ranges and separate them with a comma (,).
+	//
+	// > This parameter takes effect only when the **HealthCheckProtocol*	- parameter is set to **HTTP*	- or **gRPC**.
 	HealthCheckCodes []*string `json:"HealthCheckCodes,omitempty" xml:"HealthCheckCodes,omitempty" type:"Repeated"`
 	// The port that is used for health checks.
 	//
-	// Valid values: **0** to **65535**.
+	// Valid values: **0*	- to **65535**.
+	//
+	// example:
+	//
+	// 80
 	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
 	// The domain name that you want to use for health checks. Valid values:
 	//
-	// *   **$SERVER_IP**: the private IP addresses of backend servers. If you do not set the HealthCheckHost parameter or set the parameter to $SERVER_IP, the Application Load Balancer (ALB) instance uses the private IP addresses of backend servers for health checks.
-	// *   **domain**: The domain name must be 1 to 80 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
+	// 	- **$SERVER_IP**: the private IP addresses of backend servers. If you do not set the HealthCheckHost parameter or set the parameter to $SERVER_IP, the Application Load Balancer (ALB) instance uses the private IP addresses of backend servers for health checks.
+	//
+	// 	- **domain**: The domain name must be 1 to 80 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
 	//
 	// > This parameter takes effect only when the `HealthCheckProtocol` parameter is set to **HTTP**.
+	//
+	// example:
+	//
+	// $SERVER_IP
 	HealthCheckHost *string `json:"HealthCheckHost,omitempty" xml:"HealthCheckHost,omitempty"`
 	// The HTTP version that is used for health checks.
 	//
-	// Valid values: **HTTP1.0** and **HTTP1.1**.
+	// Valid values: **HTTP1.0*	- and **HTTP1.1**.
 	//
 	// > This parameter takes effect only when the `HealthCheckProtocol` parameter is set to **HTTP**.
+	//
+	// example:
+	//
+	// HTTP1.0
 	HealthCheckHttpVersion *string `json:"HealthCheckHttpVersion,omitempty" xml:"HealthCheckHttpVersion,omitempty"`
 	// The interval at which health checks are performed. Unit: seconds. Valid values: **1 to 50**.
+	//
+	// example:
+	//
+	// 3
 	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
 	// The method that you want to use for the health check. Valid values:
 	//
-	// *   **HEAD**: By default, the ALB instance sends HEAD requests to a backend server to perform HTTP health checks.
-	// *   **GET**: If the length of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
-	// *   **POST**: gRPC health checks automatically use the POST method.
+	// 	- **HEAD**: By default, the ALB instance sends HEAD requests to a backend server to perform HTTP health checks.
 	//
-	// > This parameter takes effect only when the **HealthCheckProtocol** parameter is set to **HTTP** or **gRPC**.
+	// 	- **GET**: If the length of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
+	//
+	// 	- **POST**: gRPC health checks automatically use the POST method.
+	//
+	// > This parameter takes effect only when the **HealthCheckProtocol*	- parameter is set to **HTTP*	- or **gRPC**.
+	//
+	// example:
+	//
+	// GET
 	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
 	// The URL that is used for health checks.
 	//
-	// The URL must be 1 to 80 characters in length, and can contain only letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : \" , +`. The URL must start with a forward slash (/).
+	// The URL must be 1 to 80 characters in length, and can contain only letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: `_ ; ~ ! ( ) 	- [ ] @ $ ^ : \\" , +`. The URL must start with a forward slash (/).
 	//
-	// > This parameter takes effect only when the **HealthCheckProtocol** parameter is set to **HTTP** or **gRPC**.
+	// > This parameter takes effect only when the **HealthCheckProtocol*	- parameter is set to **HTTP*	- or **gRPC**.
+	//
+	// example:
+	//
+	// /test/index.html
 	HealthCheckPath *string `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
 	// The protocol that you want to use for health checks. Valid values:
 	//
-	// *   **HTTP** (default): To perform HTTP health checks, ALB sends HEAD or GET requests to a backend server to check whether the backend server is healthy.
-	// *   **TCP**: To perform TCP health checks, ALB sends SYN packets to a backend server to check whether the port of the backend server is available to receive requests.
-	// *   **gRPC**: To perform gRPC health checks, ALB sends POST or GET requests to a backend server to check whether the backend server is healthy.
+	// 	- **HTTP*	- (default): To perform HTTP health checks, ALB sends HEAD or GET requests to a backend server to check whether the backend server is healthy.
+	//
+	// 	- **TCP**: To perform TCP health checks, ALB sends SYN packets to a backend server to check whether the port of the backend server is available to receive requests.
+	//
+	// 	- **gRPC**: To perform gRPC health checks, ALB sends POST or GET requests to a backend server to check whether the backend server is healthy.
+	//
+	// example:
+	//
+	// HTTP
 	HealthCheckProtocol *string `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
 	// The ID of the health check template.
+	//
+	// example:
+	//
+	// hct-x4jazoyi6tvsq9****
 	HealthCheckTemplateId *string `json:"HealthCheckTemplateId,omitempty" xml:"HealthCheckTemplateId,omitempty"`
 	// The name of the health check template.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	//
+	// example:
+	//
+	// HealthCheckTemplate1
 	HealthCheckTemplateName *string `json:"HealthCheckTemplateName,omitempty" xml:"HealthCheckTemplateName,omitempty"`
 	// The timeout period of a health check. If a backend server does not respond within the specified timeout period, the backend server fails the health check. Unit: seconds.
 	//
-	// Valid values: **1** to **300**.
+	// Valid values: **1*	- to **300**.
 	//
 	// > If the value of the `HealthCheckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the timeout period specified by the `HealthCheckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is used as the timeout period.
-	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail** to **success**.
 	//
-	// Valid values: **2** to **10**.
+	// example:
+	//
+	// 200
+	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail*	- to **success**.
+	//
+	// Valid values: **2*	- to **10**.
+	//
+	// example:
+	//
+	// 5
 	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// DB1AFC33-DAE8-528E-AA4D-4A6AABE71945
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The tags.
 	Tags []*GetHealthCheckTemplateAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**.
+	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success*	- to **fail**.
 	//
-	// Valid values: **2** to **10**.
+	// Valid values: **2*	- to **10**.
+	//
+	// example:
+	//
+	// 5
 	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
@@ -7266,8 +9185,16 @@ func (s *GetHealthCheckTemplateAttributeResponseBody) SetUnhealthyThreshold(v in
 
 type GetHealthCheckTemplateAttributeResponseBodyTags struct {
 	// The tag key. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value. The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// product
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7320,6 +9247,12 @@ func (s *GetHealthCheckTemplateAttributeResponse) SetBody(v *GetHealthCheckTempl
 
 type GetListenerAttributeRequest struct {
 	// The listener ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lsr-bp1bpn0kn908w4nbw****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 }
 
@@ -7343,8 +9276,13 @@ type GetListenerAttributeResponseBody struct {
 	CaCertificates []*GetListenerAttributeResponseBodyCaCertificates `json:"CaCertificates,omitempty" xml:"CaCertificates,omitempty" type:"Repeated"`
 	// Indicates whether mutual authentication is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	CaEnabled *bool `json:"CaEnabled,omitempty" xml:"CaEnabled,omitempty"`
 	// A list of certificates.
 	Certificates []*GetListenerAttributeResponseBodyCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
@@ -7352,50 +9290,103 @@ type GetListenerAttributeResponseBody struct {
 	DefaultActions []*GetListenerAttributeResponseBodyDefaultActions `json:"DefaultActions,omitempty" xml:"DefaultActions,omitempty" type:"Repeated"`
 	// Indicates whether GZIP compression is enabled to compress specific types of files. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	GzipEnabled *bool `json:"GzipEnabled,omitempty" xml:"GzipEnabled,omitempty"`
 	// Indicates whether HTTP/2 is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// > This parameter is available only when you create an HTTPS listener.
+	//
+	// example:
+	//
+	// true
 	Http2Enabled *bool `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
 	// The timeout period of an idle connection. Unit: seconds.
 	//
 	// If no requests are received within the specified timeout period, Application Load Balancer (ALB) closes the current connection. When a request is received, ALB establishes a new connection.
+	//
+	// example:
+	//
+	// 2
 	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
 	// The name of the listener.
+	//
+	// example:
+	//
+	// test
 	ListenerDescription *string `json:"ListenerDescription,omitempty" xml:"ListenerDescription,omitempty"`
 	// The ID of the listener.
+	//
+	// example:
+	//
+	// lsr-bp1bpn0kn908w4nbw****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The frontend port that is used by the ALB instance.
+	//
+	// example:
+	//
+	// 80
 	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	// The listener protocol. Valid values: **HTTP**, **HTTPS**, and **QUIC**.
+	//
+	// example:
+	//
+	// HTTP
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
 	// The status of the listener. Valid values:
 	//
-	// *   **Provisioning**
-	// *   **Running**
-	// *   **Configuring**
-	// *   **Stopped**
+	// 	- **Provisioning**
+	//
+	// 	- **Running**
+	//
+	// 	- **Configuring**
+	//
+	// 	- **Stopped**
+	//
+	// example:
+	//
+	// Running
 	ListenerStatus *string `json:"ListenerStatus,omitempty" xml:"ListenerStatus,omitempty"`
 	// The ALB instance ID.
+	//
+	// example:
+	//
+	// lb-bp1o94dp5i6ea****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	// The logging configuration.
 	LogConfig *GetListenerAttributeResponseBodyLogConfig `json:"LogConfig,omitempty" xml:"LogConfig,omitempty" type:"Struct"`
 	// The configuration information when the listener is associated with a QUIC listener.
 	QuicConfig *GetListenerAttributeResponseBodyQuicConfig `json:"QuicConfig,omitempty" xml:"QuicConfig,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 365F4154-92F6-4AE4-92F8-7FF34B540710
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The timeout period of a request. Unit: seconds.
 	//
 	// If no responses are received from the backend server within the specified timeout period, ALB returns an `HTTP 504` error code to the client.
+	//
+	// example:
+	//
+	// 34
 	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
 	// The security policy.
 	//
 	// > This parameter is available only when you create an HTTPS listener.
+	//
+	// example:
+	//
+	// tls_cipher_policy_1_1
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 	// The tags.
 	Tags []*GetListenerAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -7521,13 +9512,17 @@ type GetListenerAttributeResponseBodyAclConfig struct {
 	AclRelations []*GetListenerAttributeResponseBodyAclConfigAclRelations `json:"AclRelations,omitempty" xml:"AclRelations,omitempty" type:"Repeated"`
 	// The type of the ACL. Valid values:
 	//
-	// *   **White**: a whitelist. Only requests from the IP addresses or CIDR blocks in the network ACL are forwarded. Whitelists are applicable to scenarios in which you want to allow only specific IP addresses to access an application. Your service may be adversely affected if the whitelist is not properly configured. If a whitelist is configured for a listener, only requests from IP addresses that are on the whitelist are forwarded by the listener.
+	// 	- **White**: a whitelist. Only requests from the IP addresses or CIDR blocks in the network ACL are forwarded. Whitelists are applicable to scenarios in which you want to allow only specific IP addresses to access an application. Your service may be adversely affected if the whitelist is not properly configured. If a whitelist is configured for a listener, only requests from IP addresses that are on the whitelist are forwarded by the listener.
 	//
 	//     If you enable a whitelist but do not add an IP address to the whitelist, the listener forwards all requests.
 	//
-	// *   **Black**: a blacklist. Requests from the IP addresses or CIDR blocks in the network ACL are denied. Blacklists are suitable for scenarios in which you want to deny access from specific IP addresses or CIDR blocks to an application.
+	// 	- **Black**: a blacklist. Requests from the IP addresses or CIDR blocks in the network ACL are denied. Blacklists are suitable for scenarios in which you want to deny access from specific IP addresses or CIDR blocks to an application.
 	//
 	//     If a blacklist is configured for a listener but no IP addresses are added to the blacklist, the listener forwards all requests.
+	//
+	// example:
+	//
+	// White
 	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
 }
 
@@ -7551,12 +9546,22 @@ func (s *GetListenerAttributeResponseBodyAclConfig) SetAclType(v string) *GetLis
 
 type GetListenerAttributeResponseBodyAclConfigAclRelations struct {
 	// The ID of the ACL that is associated with the listener.
+	//
+	// example:
+	//
+	// acl-doc****
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	// Indicates whether the ACL is associated with the listener. Valid values:
 	//
-	// *   **Associating**
-	// *   **Associated**
-	// *   **Dissociating**
+	// 	- **Associating**
+	//
+	// 	- **Associated**
+	//
+	// 	- **Dissociating**
+	//
+	// example:
+	//
+	// Associating
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -7580,13 +9585,26 @@ func (s *GetListenerAttributeResponseBodyAclConfigAclRelations) SetStatus(v stri
 
 type GetListenerAttributeResponseBodyCaCertificates struct {
 	// The ID of the default CA certificate.
+	//
+	// example:
+	//
+	// 139a00604bd-cn-east-hangzho****
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 	// Indicates whether the certificate is a default certificate: Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 	// The status of the certificate.
+	//
+	// example:
+	//
+	// Associated
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -7615,6 +9633,10 @@ func (s *GetListenerAttributeResponseBodyCaCertificates) SetStatus(v string) *Ge
 
 type GetListenerAttributeResponseBodyCertificates struct {
 	// The ID of the certificate. Only server certificates are supported.
+	//
+	// example:
+	//
+	// 12315790212_166f8204689_1714763408_70998****
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 }
 
@@ -7636,7 +9658,11 @@ type GetListenerAttributeResponseBodyDefaultActions struct {
 	ForwardGroupConfig *GetListenerAttributeResponseBodyDefaultActionsForwardGroupConfig `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
 	// The type of the action.
 	//
-	// If **ForwardGroup** is returned, requests are forwarded to multiple vServer groups.
+	// If **ForwardGroup*	- is returned, requests are forwarded to multiple vServer groups.
+	//
+	// example:
+	//
+	// ForwardGroup
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -7678,6 +9704,10 @@ func (s *GetListenerAttributeResponseBodyDefaultActionsForwardGroupConfig) SetSe
 
 type GetListenerAttributeResponseBodyDefaultActionsForwardGroupConfigServerGroupTuples struct {
 	// The ID of the server group to which requests are forwarded.
+	//
+	// example:
+	//
+	// rsp-cige6j****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 }
 
@@ -7697,8 +9727,13 @@ func (s *GetListenerAttributeResponseBodyDefaultActionsForwardGroupConfigServerG
 type GetListenerAttributeResponseBodyLogConfig struct {
 	// Indicates whether custom headers are recorded in the access log. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	AccessLogRecordCustomizedHeadersEnabled *bool `json:"AccessLogRecordCustomizedHeadersEnabled,omitempty" xml:"AccessLogRecordCustomizedHeadersEnabled,omitempty"`
 	// The configuration of Xtrace. Xtrace is used to record requests sent to ALB.
 	AccessLogTracingConfig *GetListenerAttributeResponseBodyLogConfigAccessLogTracingConfig `json:"AccessLogTracingConfig,omitempty" xml:"AccessLogTracingConfig,omitempty" type:"Struct"`
@@ -7725,18 +9760,31 @@ func (s *GetListenerAttributeResponseBodyLogConfig) SetAccessLogTracingConfig(v 
 type GetListenerAttributeResponseBodyLogConfigAccessLogTracingConfig struct {
 	// Indicates whether Xtrace is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
 	//
-	// > You can set this parameter to **true** only if the AccessLogEnabled parameter is set to true.
+	// 	- **false**
+	//
+	// > You can set this parameter to **true*	- only if the AccessLogEnabled parameter is set to true.
+	//
+	// example:
+	//
+	// true
 	TracingEnabled *bool `json:"TracingEnabled,omitempty" xml:"TracingEnabled,omitempty"`
 	// The sampling rate of Xtrace. Valid values: 1 to 10000.
 	//
-	// > If **TracingEnabled** is set to **true**, this parameter is valid.
+	// > If **TracingEnabled*	- is set to **true**, this parameter is valid.
+	//
+	// example:
+	//
+	// 100
 	TracingSample *int32 `json:"TracingSample,omitempty" xml:"TracingSample,omitempty"`
 	// The Xtrace type. Supported Xtrace type: **Zipkin**.
 	//
-	// > If **TracingEnabled** is set to **true**, this parameter is valid.
+	// > If **TracingEnabled*	- is set to **true**, this parameter is valid.
+	//
+	// example:
+	//
+	// Zipkin
 	TracingType *string `json:"TracingType,omitempty" xml:"TracingType,omitempty"`
 }
 
@@ -7764,16 +9812,25 @@ func (s *GetListenerAttributeResponseBodyLogConfigAccessLogTracingConfig) SetTra
 }
 
 type GetListenerAttributeResponseBodyQuicConfig struct {
-	// The ID of the QUIC listener. This parameter is returned when **QuicUpgradeEnabled** is set to **true**. Only HTTPS listeners support this parameter.
+	// The ID of the QUIC listener. This parameter is returned when **QuicUpgradeEnabled*	- is set to **true**. Only HTTPS listeners support this parameter.
 	//
 	// > You must associate the HTTPS listener and the QUIC listener with the same ALB instance. In addition, make sure that the QUIC listener has never been associated with another listener.
+	//
+	// example:
+	//
+	// lsn-333
 	QuicListenerId *string `json:"QuicListenerId,omitempty" xml:"QuicListenerId,omitempty"`
 	// Indicates whether QUIC upgrade is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// > Only HTTPS listeners support this parameter.
+	//
+	// example:
+	//
+	// true
 	QuicUpgradeEnabled *bool `json:"QuicUpgradeEnabled,omitempty" xml:"QuicUpgradeEnabled,omitempty"`
 }
 
@@ -7797,8 +9854,16 @@ func (s *GetListenerAttributeResponseBodyQuicConfig) SetQuicUpgradeEnabled(v boo
 
 type GetListenerAttributeResponseBodyTags struct {
 	// The tag key. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value. The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// product
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7821,103 +9886,173 @@ func (s *GetListenerAttributeResponseBodyTags) SetValue(v string) *GetListenerAt
 }
 
 type GetListenerAttributeResponseBodyXForwardedForConfig struct {
-	// The name of the custom header. This parameter takes effect only when **XForwardedForClientCertClientVerifyEnabled** is set to **true**.
+	// The name of the custom header. This parameter takes effect only when **XForwardedForClientCertClientVerifyEnabled*	- is set to **true**.
 	//
-	// The name is 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (\_), and digits.
+	// The name is 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (_), and digits.
 	//
 	// > This parameter is available only when you create an HTTPS listener.
+	//
+	// example:
+	//
+	// test_client-verify-alias_123456
 	XForwardedForClientCertClientVerifyAlias *string `json:"XForwardedForClientCertClientVerifyAlias,omitempty" xml:"XForwardedForClientCertClientVerifyAlias,omitempty"`
 	// Indicates whether the `X-Forwarded-Clientcert-clientverify` header is used to retrieve the verification result of the client certificate. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// > This parameter is available only when you create an HTTPS listener.
+	//
+	// example:
+	//
+	// true
 	XForwardedForClientCertClientVerifyEnabled *bool `json:"XForwardedForClientCertClientVerifyEnabled,omitempty" xml:"XForwardedForClientCertClientVerifyEnabled,omitempty"`
-	// The name of the custom header. This parameter takes effect only when **XForwardedForClientCertFingerprintEnabled** is set to **true**.
+	// The name of the custom header. This parameter takes effect only when **XForwardedForClientCertFingerprintEnabled*	- is set to **true**.
 	//
-	// The name is 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (\_), and digits.
+	// The name is 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (_), and digits.
 	//
 	// > This parameter is available only when you create an HTTPS listener.
+	//
+	// example:
+	//
+	// test_finger-print-alias_123456
 	XForwardedForClientCertFingerprintAlias *string `json:"XForwardedForClientCertFingerprintAlias,omitempty" xml:"XForwardedForClientCertFingerprintAlias,omitempty"`
 	// Indicates whether the `X-Forwarded-Clientcert-fingerprint` header is used to retrieve the fingerprint of the client certificate. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// > This parameter is available only when you create an HTTPS listener.
+	//
+	// example:
+	//
+	// true
 	XForwardedForClientCertFingerprintEnabled *bool `json:"XForwardedForClientCertFingerprintEnabled,omitempty" xml:"XForwardedForClientCertFingerprintEnabled,omitempty"`
-	// The name of the custom header. This parameter takes effect only when **XForwardedForClientCertIssuerDNEnabled** is set to **true**.
+	// The name of the custom header. This parameter takes effect only when **XForwardedForClientCertIssuerDNEnabled*	- is set to **true**.
 	//
-	// The name is 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (\_), and digits.
+	// The name is 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (_), and digits.
 	//
 	// > This parameter is available only when you create an HTTPS listener.
+	//
+	// example:
+	//
+	// test_issue-dn-alias_123456
 	XForwardedForClientCertIssuerDNAlias *string `json:"XForwardedForClientCertIssuerDNAlias,omitempty" xml:"XForwardedForClientCertIssuerDNAlias,omitempty"`
 	// Indicates whether the `X-Forwarded-Clientcert-issuerdn` header is used to retrieve information about the authority that issues the client certificate. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// > This parameter is available only when you create an HTTPS listener.
+	//
+	// example:
+	//
+	// true
 	XForwardedForClientCertIssuerDNEnabled *bool `json:"XForwardedForClientCertIssuerDNEnabled,omitempty" xml:"XForwardedForClientCertIssuerDNEnabled,omitempty"`
-	// The name of the custom header. This parameter takes effect only when **XForwardedForClientCertSubjectDNEnabled** is set to **true**.
+	// The name of the custom header. This parameter takes effect only when **XForwardedForClientCertSubjectDNEnabled*	- is set to **true**.
 	//
-	// The name is 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (\_), and digits.
+	// The name is 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (_), and digits.
 	//
 	// > This parameter is available only when you create an HTTPS listener.
+	//
+	// example:
+	//
+	// test_subject-dn-alias_123456
 	XForwardedForClientCertSubjectDNAlias *string `json:"XForwardedForClientCertSubjectDNAlias,omitempty" xml:"XForwardedForClientCertSubjectDNAlias,omitempty"`
 	// Indicates whether the `X-Forwarded-Clientcert-subjectdn` header is used to retrieve information about the owner of the client certificate. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// > This parameter is available only when you create an HTTPS listener.
+	//
+	// example:
+	//
+	// true
 	XForwardedForClientCertSubjectDNEnabled *bool `json:"XForwardedForClientCertSubjectDNEnabled,omitempty" xml:"XForwardedForClientCertSubjectDNEnabled,omitempty"`
 	// Indicates whether the `X-Forwarded-Client-Ip` header is used to retrieve the source port of the ALB instance. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// > This parameter is available only when you create an HTTP, HTTPS, or QUIC listener.
+	//
+	// example:
+	//
+	// false
 	XForwardedForClientSourceIpsEnabled *bool `json:"XForwardedForClientSourceIpsEnabled,omitempty" xml:"XForwardedForClientSourceIpsEnabled,omitempty"`
 	// The trusted proxy IP address.
 	//
 	// ALB traverses `X-Forwarded-For` backward and selects the first IP address that is not on the trusted IP address list as the real IP address of the client. The IP address is used in source IP address throttling.
+	//
+	// example:
+	//
+	// 10.1.1.0/24
 	XForwardedForClientSourceIpsTrusted *string `json:"XForwardedForClientSourceIpsTrusted,omitempty" xml:"XForwardedForClientSourceIpsTrusted,omitempty"`
 	// Indicates whether the `X-Forwarded-Client-Port` header is used to retrieve the client port. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// > This parameter is available only when you create an HTTP or HTTPS listener.
+	//
+	// example:
+	//
+	// true
 	XForwardedForClientSrcPortEnabled *bool `json:"XForwardedForClientSrcPortEnabled,omitempty" xml:"XForwardedForClientSrcPortEnabled,omitempty"`
 	// Indicates whether the `X-Forwarded-For` header is used to retrieve the client IP address. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// > This parameter is available only when you create an HTTP or HTTPS listener.
+	//
+	// example:
+	//
+	// true
 	XForwardedForEnabled *bool `json:"XForwardedForEnabled,omitempty" xml:"XForwardedForEnabled,omitempty"`
 	// Indicates whether the `X-Forwarded-Proto` header is used to retrieve the listening protocol. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// > This parameter is available only when you create an HTTP, HTTPS, or QUIC listener.
+	//
+	// example:
+	//
+	// true
 	XForwardedForProtoEnabled *bool `json:"XForwardedForProtoEnabled,omitempty" xml:"XForwardedForProtoEnabled,omitempty"`
 	// Indicates whether the `SLB-ID` header is used to retrieve the ID of the CLB instance. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// > This parameter is available only when you create an HTTP, HTTPS, or QUIC listener.
+	//
+	// example:
+	//
+	// true
 	XForwardedForSLBIdEnabled *bool `json:"XForwardedForSLBIdEnabled,omitempty" xml:"XForwardedForSLBIdEnabled,omitempty"`
 	// Indicates whether the `X-Forwarded-Port` header is used to retrieve the listening port of the ALB instance. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// > This parameter is available only when you create an HTTP, HTTPS, or QUIC listener.
+	//
+	// example:
+	//
+	// true
 	XForwardedForSLBPortEnabled *bool `json:"XForwardedForSLBPortEnabled,omitempty" xml:"XForwardedForSLBPortEnabled,omitempty"`
 }
 
@@ -8036,17 +10171,37 @@ func (s *GetListenerAttributeResponse) SetBody(v *GetListenerAttributeResponseBo
 type GetListenerHealthStatusRequest struct {
 	// Specifies whether to return the health check results of forwarding rules. Valid values:
 	//
-	// *   **true**
-	// *   **false** (default)
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
+	// example:
+	//
+	// true
 	IncludeRule *bool `json:"IncludeRule,omitempty" xml:"IncludeRule,omitempty"`
 	// The listener ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lsr-bp1bpn0kn908w4nbw****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The number of entries to return on each page. Valid values: **1** to **30**. Default value: **20**.
+	// The number of entries to return on each page. Valid values: **1*	- to **30**. Default value: **20**.
+	//
+	// example:
+	//
+	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that determines the start point of the query. Valid values:
 	//
-	// *   If this is your first query or no next queries are to be sent, ignore this parameter.
-	// *   If a next query is to be sent, set the value to the value of **NextToken** that is returned from the last call.
+	// 	- If this is your first query or no next queries are to be sent, ignore this parameter.
+	//
+	// 	- If a next query is to be sent, set the value to the value of **NextToken*	- that is returned from the last call.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
@@ -8083,10 +10238,19 @@ type GetListenerHealthStatusResponseBody struct {
 	ListenerHealthStatus []*GetListenerHealthStatusResponseBodyListenerHealthStatus `json:"ListenerHealthStatus,omitempty" xml:"ListenerHealthStatus,omitempty" type:"Repeated"`
 	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If **NextToken** is empty, no next page exists.
-	// *   If **NextToken** was returned in the previous query, specify the value to obtain the next set of results.
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If **NextToken*	- was returned in the previous query, specify the value to obtain the next set of results.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The health check status of the forwarding rules.
 	RuleHealthStatus []*GetListenerHealthStatusResponseBodyRuleHealthStatus `json:"RuleHealthStatus,omitempty" xml:"RuleHealthStatus,omitempty" type:"Repeated"`
@@ -8122,10 +10286,22 @@ func (s *GetListenerHealthStatusResponseBody) SetRuleHealthStatus(v []*GetListen
 
 type GetListenerHealthStatusResponseBodyListenerHealthStatus struct {
 	// The listener ID.
+	//
+	// example:
+	//
+	// lsr-bp1bpn0kn908w4nbw****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The listener port.
+	//
+	// example:
+	//
+	// 80
 	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	// The listener protocol.
+	//
+	// example:
+	//
+	// http
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
 	// The information about the server groups.
 	ServerGroupInfos []*GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos `json:"ServerGroupInfos,omitempty" xml:"ServerGroupInfos,omitempty" type:"Repeated"`
@@ -8161,12 +10337,24 @@ func (s *GetListenerHealthStatusResponseBodyListenerHealthStatus) SetServerGroup
 
 type GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos struct {
 	// The action specified for the server group.
+	//
+	// example:
+	//
+	// TrafficMirror
 	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
-	// Indicates whether health checks are enabled. If **on** is returned, it indicates that health checks are enabled.
+	// Indicates whether health checks are enabled. If **on*	- is returned, it indicates that health checks are enabled.
+	//
+	// example:
+	//
+	// on
 	HealthCheckEnabled *string `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
 	// A list of unhealthy backend servers.
 	NonNormalServers []*GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers `json:"NonNormalServers,omitempty" xml:"NonNormalServers,omitempty" type:"Repeated"`
 	// The ID of the server group that is associated with the listener.
+	//
+	// example:
+	//
+	// vsp-bp1qjwo61pqz3ahltv****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 }
 
@@ -8200,19 +10388,38 @@ func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos
 
 type GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServers struct {
 	// The backend port.
+	//
+	// example:
+	//
+	// 90
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The cause of the abnormal state.
 	Reason *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonNormalServersReason `json:"Reason,omitempty" xml:"Reason,omitempty" type:"Struct"`
 	// The ID of the backend server.
+	//
+	// example:
+	//
+	// rg-bp1bfa08ex*****
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
 	// The IP address of the backend server.
+	//
+	// example:
+	//
+	// 192.168.8.10
 	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
 	// The status of the health check. Valid values: Valid values:
 	//
-	// *   **Initial**: indicates that health checks are configured for the NLB instance, but no data was found.
-	// *   **Unhealthy**: indicates that the backend server consecutively fails health checks.
-	// *   **Unused**: indicates that the weight of the backend server is 0.
-	// *   **Unavailable**: indicates that health checks are disabled.
+	// 	- **Initial**: indicates that health checks are configured for the NLB instance, but no data was found.
+	//
+	// 	- **Unhealthy**: indicates that the backend server consecutively fails health checks.
+	//
+	// 	- **Unused**: indicates that the weight of the backend server is 0.
+	//
+	// 	- **Unavailable**: indicates that health checks are disabled.
+	//
+	// example:
+	//
+	// Initial
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -8253,23 +10460,42 @@ type GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonN
 	// The HTTP status code returned from the server, for example, **302**.
 	//
 	// > A value is returned only if `ReasonCode` is set to **RESPONSE_MISMATCH**.
+	//
+	// example:
+	//
+	// 302
 	ActualResponse *string `json:"ActualResponse,omitempty" xml:"ActualResponse,omitempty"`
 	// The HTTP status code returned after backend servers pass health checks.
 	//
-	// Valid values: **HTTP\_2xx**, **HTTP\_3xx**, **HTTP\_4xx**, and **HTTP\_5xx**. Multiple status codes are separated by commas (,).
+	// Valid values: **HTTP_2xx**, **HTTP_3xx**, **HTTP_4xx**, and **HTTP_5xx**. Multiple status codes are separated by commas (,).
 	//
-	// > This value is returned only if **ReasonCode** is set to **RESPONSE_MISMATCH**.
+	// > This value is returned only if **ReasonCode*	- is set to **RESPONSE_MISMATCH**.
+	//
+	// example:
+	//
+	// HTTP_2xx
 	ExpectedResponse *string `json:"ExpectedResponse,omitempty" xml:"ExpectedResponse,omitempty"`
-	// The reason why the value of **Status** is Unhealthy. Only HTTP and HTTPS listeners support this parameter.
+	// The reason why the value of **Status*	- is Unhealthy. Only HTTP and HTTPS listeners support this parameter.
 	//
-	// *   **CONNECT_TIMEOUT**: ALB failed to connect to the backend server within the specified period of time.
-	// *   **CONNECT_FAILED**: ALB failed to connect to the backend server.
-	// *   **RECV_RESPONSE_FAILED**: ALB failed to receive a response from the backend server.
-	// *   **RECV_RESPONSE_TIMEOUT**: ALB failed to receive a response from the backend server within the specified period of time.
-	// *   **SEND_REQUEST_FAILED**: ALB failed to send a request to the backend server.
-	// *   **SEND_REQUEST_TIMEOUT**: ALB failed to send a request to the backend server within the specified period of time.
-	// *   **RESPONSE_FORMAT_ERROR**: The format of the response from the backend server is invalid.
-	// *   **RESPONSE_FORMAT_ERROR**: The HTTP status code returned from the backend server is not the expected one.
+	// 	- **CONNECT_TIMEOUT**: ALB failed to connect to the backend server within the specified period of time.
+	//
+	// 	- **CONNECT_FAILED**: ALB failed to connect to the backend server.
+	//
+	// 	- **RECV_RESPONSE_FAILED**: ALB failed to receive a response from the backend server.
+	//
+	// 	- **RECV_RESPONSE_TIMEOUT**: ALB failed to receive a response from the backend server within the specified period of time.
+	//
+	// 	- **SEND_REQUEST_FAILED**: ALB failed to send a request to the backend server.
+	//
+	// 	- **SEND_REQUEST_TIMEOUT**: ALB failed to send a request to the backend server within the specified period of time.
+	//
+	// 	- **RESPONSE_FORMAT_ERROR**: The format of the response from the backend server is invalid.
+	//
+	// 	- **RESPONSE_FORMAT_ERROR**: The HTTP status code returned from the backend server is not the expected one.
+	//
+	// example:
+	//
+	// RESPONSE_MISMATCH
 	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
 }
 
@@ -8298,6 +10524,10 @@ func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos
 
 type GetListenerHealthStatusResponseBodyRuleHealthStatus struct {
 	// The ID of the forwarding rule.
+	//
+	// example:
+	//
+	// rule-hp34s2h0xx1ht4nwo****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The server groups.
 	ServerGroupInfos []*GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfos `json:"ServerGroupInfos,omitempty" xml:"ServerGroupInfos,omitempty" type:"Repeated"`
@@ -8323,12 +10553,24 @@ func (s *GetListenerHealthStatusResponseBodyRuleHealthStatus) SetServerGroupInfo
 
 type GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfos struct {
 	// The action specified for the server group.
+	//
+	// example:
+	//
+	// TrafficMirror
 	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
-	// Indicates whether health checks are enabled. If **on** is returned, it indicates that health checks are enabled.
+	// Indicates whether health checks are enabled. If **on*	- is returned, it indicates that health checks are enabled.
+	//
+	// example:
+	//
+	// on
 	HealthCheckEnabled *string `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
 	// A list of unhealthy backend servers.
 	NonNormalServers []*GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServers `json:"NonNormalServers,omitempty" xml:"NonNormalServers,omitempty" type:"Repeated"`
 	// The ID of the server group that is associated with the listener.
+	//
+	// example:
+	//
+	// vsp-bp1qjwo61pqz3ahlt****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 }
 
@@ -8362,19 +10604,38 @@ func (s *GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfos) Se
 
 type GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServers struct {
 	// The backend port.
+	//
+	// example:
+	//
+	// 90
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The cause of the abnormal state.
 	Reason *GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServersReason `json:"Reason,omitempty" xml:"Reason,omitempty" type:"Struct"`
 	// The ID of the backend server.
+	//
+	// example:
+	//
+	// rg-bp1bfa08ex****
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
 	// The IP address of the server group.
+	//
+	// example:
+	//
+	// 192.168.2.11
 	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
 	// The status of the health check. Valid values: Valid values:
 	//
-	// *   **Initial**: indicates that health checks are configured for the NLB instance, but no data was found.
-	// *   **Unhealthy**: indicates that the backend server consecutively fails health checks.
-	// *   **Unused**: indicates that the weight of the backend server is 0.
-	// *   **Unavailable**: indicates that health checks are disabled.
+	// 	- **Initial**: indicates that health checks are configured for the NLB instance, but no data was found.
+	//
+	// 	- **Unhealthy**: indicates that the backend server consecutively fails health checks.
+	//
+	// 	- **Unused**: indicates that the weight of the backend server is 0.
+	//
+	// 	- **Unavailable**: indicates that health checks are disabled.
+	//
+	// example:
+	//
+	// Initial
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -8414,24 +10675,43 @@ func (s *GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonN
 type GetListenerHealthStatusResponseBodyRuleHealthStatusServerGroupInfosNonNormalServersReason struct {
 	// The HTTP status code returned from the server, for example, **302**.
 	//
-	// > A value is returned only if **ReasonCode** is set to **RESPONSE_MISMATCH**.
+	// > A value is returned only if **ReasonCode*	- is set to **RESPONSE_MISMATCH**.
+	//
+	// example:
+	//
+	// 302
 	ActualResponse *string `json:"ActualResponse,omitempty" xml:"ActualResponse,omitempty"`
 	// The HTTP status code returned after backend servers pass health checks.
 	//
-	// Valid values: **HTTP\_2xx**, **HTTP\_3xx**, **HTTP\_4xx**, and **HTTP\_5xx**. Multiple status codes are separated by commas (,).
+	// Valid values: **HTTP_2xx**, **HTTP_3xx**, **HTTP_4xx**, and **HTTP_5xx**. Multiple status codes are separated by commas (,).
 	//
-	// > A value is returned only if **ReasonCode** is set to **RESPONSE_MISMATCH**.
+	// > A value is returned only if **ReasonCode*	- is set to **RESPONSE_MISMATCH**.
+	//
+	// example:
+	//
+	// HTTP_2xx
 	ExpectedResponse *string `json:"ExpectedResponse,omitempty" xml:"ExpectedResponse,omitempty"`
-	// The reason why the value of **Status** is Unhealthy. Only HTTP and HTTPS listeners support this parameter.
+	// The reason why the value of **Status*	- is Unhealthy. Only HTTP and HTTPS listeners support this parameter.
 	//
-	// *   **CONNECT_TIMEOUT**: ALB failed to connect to the backend server within the specified period of time.
-	// *   **CONNECT_FAILED**: ALB failed to connect to the backend server.
-	// *   **RECV_RESPONSE_FAILED**: ALB failed to receive a response from the backend server.
-	// *   **RECV_RESPONSE_TIMEOUT**: ALB failed to receive a response from the backend server within the specified period of time.
-	// *   **SEND_REQUEST_FAILED**: ALB failed to send a request to the backend server.
-	// *   **SEND_REQUEST_TIMEOUT**: ALB failed to send a request to the backend server within the specified period of time.
-	// *   **RESPONSE_FORMAT_ERROR**: The format of the response from the backend server is invalid.
-	// *   **RESPONSE_FORMAT_ERROR**: The HTTP status code returned from the backend server is not the expected one.
+	// 	- **CONNECT_TIMEOUT**: ALB failed to connect to the backend server within the specified period of time.
+	//
+	// 	- **CONNECT_FAILED**: ALB failed to connect to the backend server.
+	//
+	// 	- **RECV_RESPONSE_FAILED**: ALB failed to receive a response from the backend server.
+	//
+	// 	- **RECV_RESPONSE_TIMEOUT**: ALB failed to receive a response from the backend server within the specified period of time.
+	//
+	// 	- **SEND_REQUEST_FAILED**: ALB failed to send a request to the backend server.
+	//
+	// 	- **SEND_REQUEST_TIMEOUT**: ALB failed to send a request to the backend server within the specified period of time.
+	//
+	// 	- **RESPONSE_FORMAT_ERROR**: The format of the response from the backend server is invalid.
+	//
+	// 	- **RESPONSE_FORMAT_ERROR**: The HTTP status code returned from the backend server is not the expected one.
+	//
+	// example:
+	//
+	// RESPONSE_MISMATCH
 	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
 }
 
@@ -8489,6 +10769,12 @@ func (s *GetListenerHealthStatusResponse) SetBody(v *GetListenerHealthStatusResp
 
 type GetLoadBalancerAttributeRequest struct {
 	// The ALB instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alb-o9ulmq5hgn68jk****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 }
 
@@ -8510,83 +10796,161 @@ type GetLoadBalancerAttributeResponseBody struct {
 	AccessLogConfig *GetLoadBalancerAttributeResponseBodyAccessLogConfig `json:"AccessLogConfig,omitempty" xml:"AccessLogConfig,omitempty" type:"Struct"`
 	// The mode in which IP addresses are allocated. Valid values:
 	//
-	// *   **Fixed**: allocates a static IP address to the ALB instance.
-	// *   **Dynamic**: dynamically allocates an IP address to each zone of the ALB instance.
+	// 	- **Fixed**: allocates a static IP address to the ALB instance.
+	//
+	// 	- **Dynamic**: dynamically allocates an IP address to each zone of the ALB instance.
+	//
+	// example:
+	//
+	// Dynamic
 	AddressAllocatedMode *string `json:"AddressAllocatedMode,omitempty" xml:"AddressAllocatedMode,omitempty"`
 	// The IP version. Valid values:
 	//
-	// *   **IPv4**
-	// *   **DualStack**
+	// 	- **IPv4**
+	//
+	// 	- **DualStack**
+	//
+	// example:
+	//
+	// DualStack
 	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
 	// The network type of the ALB instance. Valid values:
 	//
-	// *   **Internet**: The ALB instance uses a public IP address. The domain name of the ALB instance is resolved to the public IP address. Therefore, the ALB instance can be accessed over the Internet.
-	// *   **Intranet**: The ALB instance uses a private IP address. The domain name of the ALB instance is resolved to the private IP address. In this case, the ALB instance can be accessed over the virtual private cloud (VPC) where the ALB instance is deployed.
+	// 	- **Internet**: The ALB instance uses a public IP address. The domain name of the ALB instance is resolved to the public IP address. Therefore, the ALB instance can be accessed over the Internet.
+	//
+	// 	- **Intranet**: The ALB instance uses a private IP address. The domain name of the ALB instance is resolved to the private IP address. In this case, the ALB instance can be accessed over the virtual private cloud (VPC) where the ALB instance is deployed.
+	//
+	// example:
+	//
+	// Intranet
 	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
 	// The ID of the elastic IP address (EIP) bandwidth plan that is associated with the Internet-facing ALB instance.
+	//
+	// example:
+	//
+	// cbwp-bp1vevu8h3ieh****
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
 	// The time when the resource was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2022-07-02T02:49:05Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The domain name of the ALB instance.
+	//
+	// example:
+	//
+	// alb-95qnr2itwu9orb****.cn-hangzhou.alb.aliyuncs.com
 	DNSName *string `json:"DNSName,omitempty" xml:"DNSName,omitempty"`
 	// The configuration of deletion protection.
 	DeletionProtectionConfig *GetLoadBalancerAttributeResponseBodyDeletionProtectionConfig `json:"DeletionProtectionConfig,omitempty" xml:"DeletionProtectionConfig,omitempty" type:"Struct"`
 	// The type of IPv6 address that is used by the ALB instance. Valid values:
 	//
-	// *   **Internet**: The ALB instance uses a public IP address. The domain name of the ALB instance is resolved to the public IP address. Therefore, the ALB instance can be accessed over the Internet.
-	// *   **Intranet**: The ALB instance uses a private IP address. The domain name of the ALB instance is resolved to the private IP address. Therefore, the ALB instance can be accessed over the VPC in which the ALB instance is deployed.
+	// 	- **Internet**: The ALB instance uses a public IP address. The domain name of the ALB instance is resolved to the public IP address. Therefore, the ALB instance can be accessed over the Internet.
+	//
+	// 	- **Intranet**: The ALB instance uses a private IP address. The domain name of the ALB instance is resolved to the private IP address. Therefore, the ALB instance can be accessed over the VPC in which the ALB instance is deployed.
+	//
+	// example:
+	//
+	// Intranet
 	Ipv6AddressType *string `json:"Ipv6AddressType,omitempty" xml:"Ipv6AddressType,omitempty"`
 	// The configuration of the billing method of the ALB instance.
 	LoadBalancerBillingConfig *GetLoadBalancerAttributeResponseBodyLoadBalancerBillingConfig `json:"LoadBalancerBillingConfig,omitempty" xml:"LoadBalancerBillingConfig,omitempty" type:"Struct"`
 	// The service status of the ALB instance. Valid values:
 	//
-	// *   **Abnormal**
-	// *   **Normal**
+	// 	- **Abnormal**
+	//
+	// 	- **Normal**
+	//
+	// example:
+	//
+	// Normal
 	LoadBalancerBussinessStatus *string `json:"LoadBalancerBussinessStatus,omitempty" xml:"LoadBalancerBussinessStatus,omitempty"`
 	// The edition of the ALB instance. The features and billing rules vary based on the edition of the ALB instance. Valid values:
 	//
-	// *   **Basic**
-	// *   **Standard**
-	// *   **StandardWithWaf**
+	// 	- **Basic**
+	//
+	// 	- **Standard**
+	//
+	// 	- **StandardWithWaf**
+	//
+	// example:
+	//
+	// Standard
 	LoadBalancerEdition *string `json:"LoadBalancerEdition,omitempty" xml:"LoadBalancerEdition,omitempty"`
 	// The ALB instance ID.
+	//
+	// example:
+	//
+	// alb-o9ulmq5hgn68jk****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	// The name of the ALB instance.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	//
+	// example:
+	//
+	// alb1
 	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
 	// The type of the lock. Valid values:
 	//
-	// *   **SecurityLocked**: The ALB instance is locked due to security reasons.
-	// *   **RelatedResourceLocked**: The ALB instance is locked due to association issues.
-	// *   **FinancialLocked**: The ALB instance is locked due to overdue payments.
-	// *   **ResidualLocked**: The ALB instance is locked because the associated resources have overdue payments and the resources are released.
+	// 	- **SecurityLocked**: The ALB instance is locked due to security reasons.
+	//
+	// 	- **RelatedResourceLocked**: The ALB instance is locked due to association issues.
+	//
+	// 	- **FinancialLocked**: The ALB instance is locked due to overdue payments.
+	//
+	// 	- **ResidualLocked**: The ALB instance is locked because the associated resources have overdue payments and the resources are released.
 	LoadBalancerOperationLocks []*GetLoadBalancerAttributeResponseBodyLoadBalancerOperationLocks `json:"LoadBalancerOperationLocks,omitempty" xml:"LoadBalancerOperationLocks,omitempty" type:"Repeated"`
 	// The status of the ALB instance. Valid values:
 	//
-	// *   **Inactive**: The ALB instance is disabled. ALB instances in the Inactive state do not forward traffic.
-	// *   **Active**: The ALB instance is running.
-	// *   **Provisioning**: The ALB instance is being created.
-	// *   **Configuring**: The ALB instance is being modified.
-	// *   **CreateFailed**: The system failed to create the ALB instance. In this case, you are not charged for the ALB instance. You can only delete the ALB instance.
+	// 	- **Inactive**: The ALB instance is disabled. ALB instances in the Inactive state do not forward traffic.
+	//
+	// 	- **Active**: The ALB instance is running.
+	//
+	// 	- **Provisioning**: The ALB instance is being created.
+	//
+	// 	- **Configuring**: The ALB instance is being modified.
+	//
+	// 	- **CreateFailed**: The system failed to create the ALB instance. In this case, you are not charged for the ALB instance. You can only delete the ALB instance.
+	//
+	// example:
+	//
+	// Active
 	LoadBalancerStatus *string `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
 	// The configuration of the configuration read-only mode.
 	ModificationProtectionConfig *GetLoadBalancerAttributeResponseBodyModificationProtectionConfig `json:"ModificationProtectionConfig,omitempty" xml:"ModificationProtectionConfig,omitempty" type:"Struct"`
 	// The region ID of the ALB instance.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 365F4154-92F6-4AE4-92F8-7FF34B540710
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-atstuj3rtop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tag value.
 	//
 	// The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag value cannot contain `http://` or `https://`.
 	Tags []*GetLoadBalancerAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The ID of the VPC in which the ALB instance is deployed.
+	//
+	// example:
+	//
+	// vpc-bp1b49rqrybk45nio****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The zone ID of the ALB instance.
 	//
-	// You can call the [DescribeZones](~~189196~~) operation to query the zones of the ALB instance.
+	// You can call the [DescribeZones](https://help.aliyun.com/document_detail/189196.html) operation to query the zones of the ALB instance.
 	ZoneMappings []*GetLoadBalancerAttributeResponseBodyZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
 }
 
@@ -8715,8 +11079,16 @@ func (s *GetLoadBalancerAttributeResponseBody) SetZoneMappings(v []*GetLoadBalan
 
 type GetLoadBalancerAttributeResponseBodyAccessLogConfig struct {
 	// The Log Service project.
+	//
+	// example:
+	//
+	// sls-setter
 	LogProject *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
 	// The Logstore.
+	//
+	// example:
+	//
+	// test
 	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
 }
 
@@ -8741,10 +11113,19 @@ func (s *GetLoadBalancerAttributeResponseBodyAccessLogConfig) SetLogStore(v stri
 type GetLoadBalancerAttributeResponseBodyDeletionProtectionConfig struct {
 	// Indicates whether the deletion protection feature is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// The time when the deletion protection feature was enabled. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2022-08-02T02:49:05Z
 	EnabledTime *string `json:"EnabledTime,omitempty" xml:"EnabledTime,omitempty"`
 }
 
@@ -8769,7 +11150,11 @@ func (s *GetLoadBalancerAttributeResponseBodyDeletionProtectionConfig) SetEnable
 type GetLoadBalancerAttributeResponseBodyLoadBalancerBillingConfig struct {
 	// The billing method.
 	//
-	// Only **PostPay** may be returned. The value indicates the pay-as-you-go billing method.
+	// Only **PostPay*	- may be returned. The value indicates the pay-as-you-go billing method.
+	//
+	// example:
+	//
+	// PostPay
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 }
 
@@ -8789,9 +11174,13 @@ func (s *GetLoadBalancerAttributeResponseBodyLoadBalancerBillingConfig) SetPayTy
 type GetLoadBalancerAttributeResponseBodyLoadBalancerOperationLocks struct {
 	// The configuration of the configuration read-only mode.
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	// The reason why the configuration read-only mode was enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
+	// The reason why the configuration read-only mode was enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The reason must start with a letter.
 	//
-	// This parameter is valid only if you set the **ModificationProtectionStatus** parameter to **ConsoleProtection**.
+	// This parameter is valid only if you set the **ModificationProtectionStatus*	- parameter to **ConsoleProtection**.
+	//
+	// example:
+	//
+	// FinancialLocked
 	LockType *string `json:"LockType,omitempty" xml:"LockType,omitempty"`
 }
 
@@ -8814,16 +11203,21 @@ func (s *GetLoadBalancerAttributeResponseBodyLoadBalancerOperationLocks) SetLock
 }
 
 type GetLoadBalancerAttributeResponseBodyModificationProtectionConfig struct {
-	// The reason for enabling the configuration read-only mode. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
+	// The reason for enabling the configuration read-only mode. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The reason must start with a letter.
 	//
-	// This parameter is valid only if **ModificationProtectionStatus** is set to **ConsoleProtection**.
+	// This parameter is valid only if **ModificationProtectionStatus*	- is set to **ConsoleProtection**.
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The status of the configuration read-only mode. Valid values:
 	//
-	// *   **NonProtection**: The configuration read-only mode is disabled. In this case, you cannot specify ModificationProtectionReason. If you specify ModificationProtectionReason, the value of the parameter is cleared.
-	// *   **ConsoleProtection**: The configuration read-only mode is enabled. In this case, you can specify ModificationProtectionReason.
+	// 	- **NonProtection**: The configuration read-only mode is disabled. In this case, you cannot specify ModificationProtectionReason. If you specify ModificationProtectionReason, the value of the parameter is cleared.
+	//
+	// 	- **ConsoleProtection**: The configuration read-only mode is enabled. In this case, you can specify ModificationProtectionReason.
 	//
 	// > If you set this parameter to **ConsoleProtection**, you cannot use the ALB console to modify instance configurations. However, you can call API operations to modify instance configurations.
+	//
+	// example:
+	//
+	// ConsoleProtection
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -8847,8 +11241,16 @@ func (s *GetLoadBalancerAttributeResponseBodyModificationProtectionConfig) SetSt
 
 type GetLoadBalancerAttributeResponseBodyTags struct {
 	// The zones and the vSwitches. You must specify at least two zones.
+	//
+	// example:
+	//
+	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The IP addresses that are used by the ALB instance.
+	//
+	// example:
+	//
+	// FinanceJoshua
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -8875,10 +11277,18 @@ type GetLoadBalancerAttributeResponseBodyZoneMappings struct {
 	LoadBalancerAddresses []*GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses `json:"LoadBalancerAddresses,omitempty" xml:"LoadBalancerAddresses,omitempty" type:"Repeated"`
 	// The type of IPv6 address that is used by the ALB instance. Valid values:
 	//
-	// *   **Internet:** The ALB instance uses a public IP address. The domain name of the ALB instance is resolved to the public IP address. Therefore, the ALB instance can be accessed over the Internet.
-	// *   **Intranet:** The ALB instance uses a private IP address. The domain name of the ALB instance is resolved to the private IP address. Therefore, the ALB instance can be accessed over the VPC in which the ALB instance is deployed.
+	// 	- **Internet:*	- The ALB instance uses a public IP address. The domain name of the ALB instance is resolved to the public IP address. Therefore, the ALB instance can be accessed over the Internet.
+	//
+	// 	- **Intranet:*	- The ALB instance uses a private IP address. The domain name of the ALB instance is resolved to the private IP address. Therefore, the ALB instance can be accessed over the VPC in which the ALB instance is deployed.
+	//
+	// example:
+	//
+	// vsw-bp12mw1f8k3jgy****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-a
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s GetLoadBalancerAttributeResponseBodyZoneMappings) String() string {
@@ -8907,15 +11317,30 @@ func (s *GetLoadBalancerAttributeResponseBodyZoneMappings) SetZoneId(v string) *
 type GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses struct {
 	// The ID of the zone where the ALB instance was deployed.
 	//
-	// You can call the [DescribeZones](~~189196~~) operation to query the zones of the ALB instance.
-	Address         *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	AllocationId    *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
+	// You can call the [DescribeZones](https://help.aliyun.com/document_detail/189196.html) operation to query the zones of the ALB instance.
+	//
+	// example:
+	//
+	// 192.168.10.1
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// example:
+	//
+	// eip-uf6wm****1zj9
+	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
+	// example:
+	//
+	// Common
 	EipType         *string `json:"EipType,omitempty" xml:"EipType,omitempty"`
 	IntranetAddress *string `json:"IntranetAddress,omitempty" xml:"IntranetAddress,omitempty"`
 	// The protocol version. Valid values:
 	//
-	// *   **IPv4:** IPv4.
-	// *   **DualStack:** dual stack.
+	// 	- **IPv4:*	- IPv4.
+	//
+	// 	- **DualStack:*	- dual stack.
+	//
+	// example:
+	//
+	// 2408:XXXX:39d:eb00::/56
 	Ipv6Address *string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
 }
 
@@ -8990,14 +11415,23 @@ type ListAScriptsRequest struct {
 	ListenerIds []*string `json:"ListenerIds,omitempty" xml:"ListenerIds,omitempty" type:"Repeated"`
 	// The maximum number of entries to return.
 	//
-	// Valid values: **1** to **100**.
+	// Valid values: **1*	- to **100**.
 	//
 	// Default value: **20**. If you do not specify this parameter, the default value is used.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   You do not need to specify this parameter for the first request.****
-	// *   You must specify the token that is obtained from the previous query as the value of **NextToken**.
+	// 	- You do not need to specify this parameter for the first request.****
+	//
+	// 	- You must specify the token that is obtained from the previous query as the value of **NextToken**.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
@@ -9038,17 +11472,36 @@ type ListAScriptsResponseBody struct {
 	// The AScript rules.
 	AScripts []*ListAScriptsResponseBodyAScripts `json:"AScripts,omitempty" xml:"AScripts,omitempty" type:"Repeated"`
 	// The maximum number of entries returned.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If **NextToken** is empty, no next page exists.
-	// *   If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 2CA81429-F160-593A-8AB5-A2A9617845B9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
 	//
 	// > This parameter is optional. By default, this parameter is not returned.
+	//
+	// example:
+	//
+	// 1000
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -9087,26 +11540,58 @@ func (s *ListAScriptsResponseBody) SetTotalCount(v int32) *ListAScriptsResponseB
 
 type ListAScriptsResponseBodyAScripts struct {
 	// The AScript rule ID.
+	//
+	// example:
+	//
+	// as-aznwocxofkakf7****
 	AScriptId *string `json:"AScriptId,omitempty" xml:"AScriptId,omitempty"`
 	// The name of the AScript rule.
+	//
+	// example:
+	//
+	// test
 	AScriptName *string `json:"AScriptName,omitempty" xml:"AScriptName,omitempty"`
 	// The status of the AScript rule. Valid values:
 	//
-	// *   **Creating**
-	// *   **Available**
-	// *   **Configuring**
-	// *   **Deleting**
+	// 	- **Creating**
+	//
+	// 	- **Available**
+	//
+	// 	- **Configuring**
+	//
+	// 	- **Deleting**
+	//
+	// example:
+	//
+	// Available
 	AScriptStatus *string `json:"AScriptStatus,omitempty" xml:"AScriptStatus,omitempty"`
 	// Indicates whether the AScript rule is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// The listener ID.
+	//
+	// example:
+	//
+	// lsn-t0w1m9r6suiwmc****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The Application Load Balancer (ALB) instance ID.
+	//
+	// example:
+	//
+	// alb-vv9rg2ub31tyec****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	// The content of the AScript rule.
+	//
+	// example:
+	//
+	// {test}
 	ScriptContent *string `json:"ScriptContent,omitempty" xml:"ScriptContent,omitempty"`
 }
 
@@ -9184,13 +11669,28 @@ func (s *ListAScriptsResponse) SetBody(v *ListAScriptsResponseBody) *ListAScript
 
 type ListAclEntriesRequest struct {
 	// The ACL ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// nacl-hp34s2h0xx1ht4nwo****
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The number of entries per page. Valid values: **1** to **100**. Default value: **20**.
+	// The number of entries per page. Valid values: **1*	- to **100**. Default value: **20**.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   You do not need to specify this parameter for the first request.
-	// *   You must specify the token that is obtained from the previous query as the value of **NextToken**.
+	// 	- You do not need to specify this parameter for the first request.
+	//
+	// 	- You must specify the token that is obtained from the previous query as the value of **NextToken**.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
@@ -9221,15 +11721,32 @@ type ListAclEntriesResponseBody struct {
 	// The ACL entries.
 	AclEntries []*ListAclEntriesResponseBodyAclEntries `json:"AclEntries,omitempty" xml:"AclEntries,omitempty" type:"Repeated"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If **NextToken** is empty, no next page exists.
-	// *   If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1000
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -9267,15 +11784,29 @@ func (s *ListAclEntriesResponseBody) SetTotalCount(v int32) *ListAclEntriesRespo
 }
 
 type ListAclEntriesResponseBodyAclEntries struct {
-	// The description of the ACL entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (\_).
+	// The description of the ACL entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
+	//
+	// example:
+	//
+	// test-entry
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The CIDR block of the ACL entry.
+	//
+	// example:
+	//
+	// 10.0.1.1/24
 	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
 	// The status of the ACL entry. Valid values:
 	//
-	// *   **Adding**
-	// *   **Available**
-	// *   **Removing**
+	// 	- **Adding**
+	//
+	// 	- **Available**
+	//
+	// 	- **Removing**
+	//
+	// example:
+	//
+	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -9333,6 +11864,8 @@ func (s *ListAclEntriesResponse) SetBody(v *ListAclEntriesResponseBody) *ListAcl
 
 type ListAclRelationsRequest struct {
 	// The ACL IDs.
+	//
+	// This parameter is required.
 	AclIds []*string `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Repeated"`
 }
 
@@ -9353,6 +11886,10 @@ type ListAclRelationsResponseBody struct {
 	// The ACLs and the associated listeners.
 	AclRelations []*ListAclRelationsResponseBodyAclRelations `json:"AclRelations,omitempty" xml:"AclRelations,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 593B0448-D13E-4C56-AC0D-FDF0FDE0E9A3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9376,6 +11913,10 @@ func (s *ListAclRelationsResponseBody) SetRequestId(v string) *ListAclRelationsR
 
 type ListAclRelationsResponseBodyAclRelations struct {
 	// ACL ID
+	//
+	// example:
+	//
+	// nacl-hp34s2h0xx1ht4nwo****
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	// The listeners that are associated with the ACL.
 	RelatedListeners []*ListAclRelationsResponseBodyAclRelationsRelatedListeners `json:"RelatedListeners,omitempty" xml:"RelatedListeners,omitempty" type:"Repeated"`
@@ -9401,18 +11942,40 @@ func (s *ListAclRelationsResponseBodyAclRelations) SetRelatedListeners(v []*List
 
 type ListAclRelationsResponseBodyAclRelationsRelatedListeners struct {
 	// The listener ID.
+	//
+	// example:
+	//
+	// lsr-bp1bpn0kn908w4nbw****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The listener port.
+	//
+	// example:
+	//
+	// 80
 	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	// The listener protocol.
+	//
+	// example:
+	//
+	// HTTPS
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
 	// The ID of the Server Load Balancer (SLB) instance.
+	//
+	// example:
+	//
+	// lb-bp1b6c719dfa08ex****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	// The association status between the ACL and the listener. Valid values:
 	//
-	// *   **Associating**
-	// *   **Associated**
-	// *   **Dissociating**
+	// 	- **Associating**
+	//
+	// 	- **Associated**
+	//
+	// 	- **Dissociating**
+	//
+	// example:
+	//
+	// Associated
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -9483,14 +12046,27 @@ type ListAclsRequest struct {
 	AclIds []*string `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Repeated"`
 	// The names of the network ACLs. You can specify at most 10 network ACL names in each request.
 	AclNames []*string `json:"AclNames,omitempty" xml:"AclNames,omitempty" type:"Repeated"`
-	// The maximum number of entries to return. This parameter is optional. Valid values: **1** to **100**. Default value: **20**.
+	// The maximum number of entries to return. This parameter is optional. Valid values: **1*	- to **100**. Default value: **20**.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used for the next query. Valid values:
 	//
-	// *   If this is your first query or no next query is to be sent, ignore this parameter.
-	// *   If a next query is to be sent, set the value to the value of NextToken that is returned from the last call.
+	// 	- If this is your first query or no next query is to be sent, ignore this parameter.
+	//
+	// 	- If a next query is to be sent, set the value to the value of NextToken that is returned from the last call.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the resource group. You can filter the query results based on the specified ID.
+	//
+	// example:
+	//
+	// rg-atstuj3rtopty****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags.
 	Tag []*ListAclsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -9536,8 +12112,16 @@ func (s *ListAclsRequest) SetTag(v []*ListAclsRequestTag) *ListAclsRequest {
 
 type ListAclsRequestTag struct {
 	// The tag key. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value. The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// product
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -9562,16 +12146,33 @@ func (s *ListAclsRequestTag) SetValue(v string) *ListAclsRequestTag {
 type ListAclsResponseBody struct {
 	// The network ACLs.
 	Acls []*ListAclsResponseBodyAcls `json:"Acls,omitempty" xml:"Acls,omitempty" type:"Repeated"`
-	// The maximum number of network ACLs returned. This parameter is optional. Valid values: **1** to **100**. If this parameter is not set, the default value **20** is returned.
+	// The maximum number of network ACLs returned. This parameter is optional. Valid values: **1*	- to **100**. If this parameter is not set, the default value **20*	- is returned.
+	//
+	// example:
+	//
+	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used for the next query. Valid values:
 	//
-	// *   If **NextToken** is empty, it indicates that no next query is to be sent.
-	// *   If **NextToken** is returned, the value indicates the token that is used for the next query.
+	// 	- If **NextToken*	- is empty, it indicates that no next query is to be sent.
+	//
+	// 	- If **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	//
+	// example:
+	//
+	// FFmyTO70t****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 593B0448-D13E-4C56-AC0D-FDF0FDE0E9A3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 10
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -9610,25 +12211,56 @@ func (s *ListAclsResponseBody) SetTotalCount(v int32) *ListAclsResponseBody {
 
 type ListAclsResponseBodyAcls struct {
 	// The ID of the network ACL.
+	//
+	// example:
+	//
+	// nacl-hp34s2h0xx1ht4nwo****
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	// The name of the network ACL.
+	//
+	// example:
+	//
+	// test-acl
 	AclName *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
 	// The status of the network ACL. Valid values:
 	//
-	// *   **Creating**: The network ACL is being created.
-	// *   **Available**: The network ACL is available.
-	// *   **Configuring**: The network ACL is being configured.
+	// 	- **Creating**: The network ACL is being created.
+	//
+	// 	- **Available**: The network ACL is available.
+	//
+	// 	- **Configuring**: The network ACL is being configured.
+	//
+	// example:
+	//
+	// Available
 	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	// The IP version. **IPv4** is returned.
+	// The IP version. **IPv4*	- is returned.
+	//
+	// example:
+	//
+	// IPv4
 	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
 	// The status of configuration management. Valid values:
 	//
-	// *   **true**: configuration management is enabled.
-	// *   **false**: configuration management is disabled.
+	// 	- **true**: configuration management is enabled.
+	//
+	// 	- **false**: configuration management is disabled.
+	//
+	// example:
+	//
+	// false
 	ConfigManagedEnabled *bool `json:"ConfigManagedEnabled,omitempty" xml:"ConfigManagedEnabled,omitempty"`
 	// The time when the resource was created.
+	//
+	// example:
+	//
+	// 2023-02-15T07:37:33Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-atstuj3rtopty****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags.
 	Tags []*ListAclsResponseBodyAclsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -9684,8 +12316,16 @@ func (s *ListAclsResponseBodyAcls) SetTags(v []*ListAclsResponseBodyAclsTags) *L
 
 type ListAclsResponseBodyAclsTags struct {
 	// The tag key.
+	//
+	// example:
+	//
+	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
+	//
+	// example:
+	//
+	// product
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -9738,30 +12378,60 @@ func (s *ListAclsResponse) SetBody(v *ListAclsResponseBody) *ListAclsResponse {
 
 type ListAsynJobsRequest struct {
 	// The name of the operation.
+	//
+	// example:
+	//
+	// CreateLoadBalancer
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
 	// The start time of the task. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2021-06-03T17:22Z
 	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
 	// The end time of the task. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2021-06-04T17:22Z
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The asynchronous task IDs.
 	JobIds []*string `json:"JobIds,omitempty" xml:"JobIds,omitempty" type:"Repeated"`
-	// The number of entries per page. Valid values: **1** to **100**. Default value: **20**.
+	// The number of entries per page. Valid values: **1*	- to **100**. Default value: **20**.
+	//
+	// example:
+	//
+	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   You do not need to specify this parameter for the first request.
-	// *   You must specify the token that is obtained from the previous query as the value of **NextToken**.
+	// 	- You do not need to specify this parameter for the first request.
+	//
+	// 	- You must specify the token that is obtained from the previous query as the value of **NextToken**.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The resource IDs.
 	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
 	// The type of the associated resource. Valid values:
 	//
-	// *   **loadbalancer**: an Application Load Balancer (ALB) instance
-	// *   **listener**: a listener
-	// *   **rule**: a forwarding rule
-	// *   **acl**: an access control list (ACL)
-	// *   **securitypolicy**: a security policy
-	// *   **servergroup**: a server group
+	// 	- **loadbalancer**: an Application Load Balancer (ALB) instance
+	//
+	// 	- **listener**: a listener
+	//
+	// 	- **rule**: a forwarding rule
+	//
+	// 	- **acl**: an access control list (ACL)
+	//
+	// 	- **securitypolicy**: a security policy
+	//
+	// 	- **servergroup**: a server group
+	//
+	// example:
+	//
+	// acl
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -9817,15 +12487,32 @@ type ListAsynJobsResponseBody struct {
 	// The tasks.
 	Jobs []*ListAsynJobsResponseBodyJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If **NextToken** is empty, no next page exists.
-	// *   If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 365F4154-92F6-4AE4-92F8-7FF34B540710
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1000
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -9864,43 +12551,92 @@ func (s *ListAsynJobsResponseBody) SetTotalCount(v int64) *ListAsynJobsResponseB
 
 type ListAsynJobsResponseBodyJobs struct {
 	// The name of the operation.
+	//
+	// example:
+	//
+	// CreateLoadBalancer
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
 	// The timestamp that indicates the start time of the task. Unit: milliseconds.
 	//
 	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 2134663231234
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// If the value of **Status** is Failed, an error code is returned.
+	// If the value of **Status*	- is Failed, an error code is returned.
+	//
+	// example:
+	//
+	// 506
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// If the value of **Status** is Failed, an error message is returned.
+	// If the value of **Status*	- is Failed, an error message is returned.
+	//
+	// example:
+	//
+	// AllocateEipAddress Failed
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The task ID.
+	//
+	// example:
+	//
+	// 365F4154-92F6-4AE4-92F8-7FF34B5****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The timestamp that indicates the end time of the task. Unit: milliseconds.
 	//
 	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 2144663233315
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	// The type of the operation. Valid values:
 	//
-	// *   **Create**
-	// *   **Update**
-	// *   **Delete**
+	// 	- **Create**
+	//
+	// 	- **Update**
+	//
+	// 	- **Delete**
+	//
+	// example:
+	//
+	// Create
 	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
 	// The associated resource ID.
+	//
+	// example:
+	//
+	// alb-o8mszt95oamfjy****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The type of the associated resource. Valid values:
 	//
-	// *   **loadbalancer**: an ALB instance
-	// *   **listener**: a listener
-	// *   **rule**: a forwarding rule
-	// *   **acl**: an ACL
-	// *   **securitypolicy**: a security policy
-	// *   **servergroup**: a server group
+	// 	- **loadbalancer**: an ALB instance
+	//
+	// 	- **listener**: a listener
+	//
+	// 	- **rule**: a forwarding rule
+	//
+	// 	- **acl**: an ACL
+	//
+	// 	- **securitypolicy**: a security policy
+	//
+	// 	- **servergroup**: a server group
+	//
+	// example:
+	//
+	// acl
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The status of the task. Valid values:
 	//
-	// *   **Succeeded**
-	// *   **Failed**
-	// *   **Processing**
+	// 	- **Succeeded**
+	//
+	// 	- **Failed**
+	//
+	// 	- **Processing**
+	//
+	// example:
+	//
+	// Succeeded
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -9996,12 +12732,21 @@ type ListHealthCheckTemplatesRequest struct {
 	HealthCheckTemplateIds []*string `json:"HealthCheckTemplateIds,omitempty" xml:"HealthCheckTemplateIds,omitempty" type:"Repeated"`
 	// The health check templates.
 	HealthCheckTemplateNames []*string `json:"HealthCheckTemplateNames,omitempty" xml:"HealthCheckTemplateNames,omitempty" type:"Repeated"`
-	// The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
+	// The number of entries to return on each page. Valid values: **1*	- to **100**. Default value: **20**.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   You do not need to specify this parameter for the first request.
-	// *   You must specify the token that is obtained from the previous query as the value of **NextToken**.
+	// 	- You do not need to specify this parameter for the first request.
+	//
+	// 	- You must specify the token that is obtained from the previous query as the value of **NextToken**.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The tags.
 	Tag []*ListHealthCheckTemplatesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -10042,8 +12787,16 @@ func (s *ListHealthCheckTemplatesRequest) SetTag(v []*ListHealthCheckTemplatesRe
 
 type ListHealthCheckTemplatesRequestTag struct {
 	// The tag key. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value. The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// product
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -10068,16 +12821,33 @@ func (s *ListHealthCheckTemplatesRequestTag) SetValue(v string) *ListHealthCheck
 type ListHealthCheckTemplatesResponseBody struct {
 	// The health check templates.
 	HealthCheckTemplates []*ListHealthCheckTemplatesResponseBodyHealthCheckTemplates `json:"HealthCheckTemplates,omitempty" xml:"HealthCheckTemplates,omitempty" type:"Repeated"`
-	// The number of entries returned per page. Valid values: **1** to **100**. Default value: **20**.
+	// The number of entries returned per page. Valid values: **1*	- to **100**. Default value: **20**.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If **NextToken** is empty, no next page exists.
-	// *   If a value of **NextToken** was returned in the previous query, specify the value to obtain the next set of results.
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If a value of **NextToken*	- was returned in the previous query, specify the value to obtain the next set of results.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 365F4154-92F6-4AE4-92F8-7FF34B540710
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1000
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -10119,51 +12889,91 @@ type ListHealthCheckTemplatesResponseBodyHealthCheckTemplates struct {
 	HealthCheckCodes []*string `json:"HealthCheckCodes,omitempty" xml:"HealthCheckCodes,omitempty" type:"Repeated"`
 	// The port that is used for health checks.
 	//
-	// Valid values: \*\* 0 to 65535\*\*.
+	// Valid values: \\*\\	- 0 to 65535\\*\\*.
 	//
 	// Default value: **0**. This value indicates that the port on a backend server is used for health checks.
+	//
+	// example:
+	//
+	// 80
 	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
 	// The domain name that is used for health checks. Valid values:
 	//
-	// **$SERVER_IP** (default): the private IP addresses of backend servers. If HealthCheckHost is not specified or set to $SERVER_IP, SLB uses the private IP addresses of backend servers for health checks.
+	// **$SERVER_IP*	- (default): the private IP addresses of backend servers. If HealthCheckHost is not specified or set to $SERVER_IP, SLB uses the private IP addresses of backend servers for health checks.
 	//
 	// **domain**: The domain name must be 1 to 80 characters in length and can contain letters, digits, periods (.), and hyphens (-).
 	//
 	// >  This parameter takes effect only if `HealthCheckProtocol` is set to **HTTP**.
+	//
+	// example:
+	//
+	// $_ip
 	HealthCheckHost *string `json:"HealthCheckHost,omitempty" xml:"HealthCheckHost,omitempty"`
 	// The HTTP version that is used for health checks.
 	//
-	// Valid values: **HTTP 1.0** and **HTTP 1.1**.
+	// Valid values: **HTTP 1.0*	- and **HTTP 1.1**.
 	//
 	// Default value: **HTTP 1.1**.
 	//
 	// >  This parameter takes effect only if `HealthCheckProtocol` is set to **HTTP**.
+	//
+	// example:
+	//
+	// HTTP 1.0
 	HealthCheckHttpVersion *string `json:"HealthCheckHttpVersion,omitempty" xml:"HealthCheckHttpVersion,omitempty"`
 	// The interval at which health checks are performed. Unit: seconds. Valid values: **1 to 50**. Default value: **2**.
+	//
+	// example:
+	//
+	// 5
 	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
 	// The HTTP method that is used for health checks. Valid values:
 	//
-	// *   **HEAD** (default): By default, HTTP health checks use the HEAD method.
-	// *   **GET**: If the length of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
-	// *   **POST**: By default, gRPC health checks use the POST method.
+	// 	- **HEAD*	- (default): By default, HTTP health checks use the HEAD method.
 	//
-	// >  This parameter takes effect only if **HealthCheckProtocol** is set to **HTTP** or **gRPC**.
+	// 	- **GET**: If the length of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
+	//
+	// 	- **POST**: By default, gRPC health checks use the POST method.
+	//
+	// >  This parameter takes effect only if **HealthCheckProtocol*	- is set to **HTTP*	- or **gRPC**.
+	//
+	// example:
+	//
+	// HEAD
 	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
 	// The URL that is used for health checks.
 	//
-	// The URL must be 1 to 80 characters in length and can contain only letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : \" , +`. The URL must start with a forward slash (/).
+	// The URL must be 1 to 80 characters in length and can contain only letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: `_ ; ~ ! ( ) 	- [ ] @ $ ^ : \\" , +`. The URL must start with a forward slash (/).
+	//
+	// example:
+	//
+	// /test/index.html
 	HealthCheckPath *string `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
 	// The protocol that is used for health checks. Valid values:
 	//
-	// *   **HTTP** (default): The SLB instance sends HEAD or GET requests to a backend server to simulate access from a browser and check whether the backend server is healthy.
-	// *   **TCP**: To perform TCP health checks, SLB sends SYN packets to the backend server to check whether the port of the backend server is available to receive requests.
-	// *   **gRPC**: To perform gRPC health checks, SLB sends POST or GET requests to a backend server to check whether the backend server is healthy.
+	// 	- **HTTP*	- (default): The SLB instance sends HEAD or GET requests to a backend server to simulate access from a browser and check whether the backend server is healthy.
+	//
+	// 	- **TCP**: To perform TCP health checks, SLB sends SYN packets to the backend server to check whether the port of the backend server is available to receive requests.
+	//
+	// 	- **gRPC**: To perform gRPC health checks, SLB sends POST or GET requests to a backend server to check whether the backend server is healthy.
+	//
+	// example:
+	//
+	// HTTP
 	HealthCheckProtocol *string `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
 	// The ID of the health check template.
+	//
+	// example:
+	//
+	// hct-bp1qjwo61pqz3ahltv****
 	HealthCheckTemplateId *string `json:"HealthCheckTemplateId,omitempty" xml:"HealthCheckTemplateId,omitempty"`
 	// The name of the health check template.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	//
+	// example:
+	//
+	// HealthCheckTemplate1
 	HealthCheckTemplateName *string `json:"HealthCheckTemplateName,omitempty" xml:"HealthCheckTemplateName,omitempty"`
 	// The timeout period for a health check response. If a backend Elastic Compute Service (ECS) instance does not return a health check response within the specified timeout period, the backend server fails the health check.
 	//
@@ -10171,21 +12981,33 @@ type ListHealthCheckTemplatesResponseBodyHealthCheckTemplates struct {
 	//
 	// Default value: **5**.
 	//
-	// >  If the value of **HealthCHeckTimeout** is smaller than the value of **HealthCheckInterval**, the value of **HealthCHeckTimeout** is ignored and the value of **HealthCheckInterval** is used.
+	// >  If the value of **HealthCHeckTimeout*	- is smaller than the value of **HealthCheckInterval**, the value of **HealthCHeckTimeout*	- is ignored and the value of **HealthCheckInterval*	- is used.
+	//
+	// example:
+	//
+	// 3
 	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from **fail** to **success**.
+	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from **fail*	- to **success**.
 	//
 	// Valid values: **2 to 10**.
 	//
 	// Default value: **3**.
+	//
+	// example:
+	//
+	// 4
 	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
 	// The tags.
 	Tags []*ListHealthCheckTemplatesResponseBodyHealthCheckTemplatesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from **success** to **fail**.
+	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from **success*	- to **fail**.
 	//
 	// Valid values: **2 to 10**.
 	//
 	// Default value: **3**.
+	//
+	// example:
+	//
+	// 4
 	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
@@ -10269,8 +13091,16 @@ func (s *ListHealthCheckTemplatesResponseBodyHealthCheckTemplates) SetUnhealthyT
 
 type ListHealthCheckTemplatesResponseBodyHealthCheckTemplatesTags struct {
 	// The tag key.
+	//
+	// example:
+	//
+	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
+	//
+	// example:
+	//
+	// product
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -10322,16 +13152,36 @@ func (s *ListHealthCheckTemplatesResponse) SetBody(v *ListHealthCheckTemplatesRe
 }
 
 type ListListenerCertificatesRequest struct {
-	// The type of the certificate. Valid values: **Ca** and **Server**.
+	CertificateIds []*string `json:"CertificateIds,omitempty" xml:"CertificateIds,omitempty" type:"Repeated"`
+	// The type of the certificate. Valid values: **Ca*	- and **Server**.
+	//
+	// example:
+	//
+	// Server
 	CertificateType *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
 	// The listener ID. You must specify the ID of an HTTPS listener or a QUIC listener.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lsr-bp1bpn0kn908w4nbw****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The maximum number of entries to return. Valid values: **1 to 100**. If you do not specify this parameter, the default value **20** is used.
+	// The maximum number of entries to return. Valid values: **1 to 100**. If you do not specify this parameter, the default value **20*	- is used.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   You do not need to specify this parameter for the first request.
-	// *   You must specify the token that is obtained from the previous query as the value of **NextToken**.
+	// 	- You do not need to specify this parameter for the first request.
+	//
+	// 	- You must specify the token that is obtained from the previous query as the value of **NextToken**.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
@@ -10341,6 +13191,11 @@ func (s ListListenerCertificatesRequest) String() string {
 
 func (s ListListenerCertificatesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListListenerCertificatesRequest) SetCertificateIds(v []*string) *ListListenerCertificatesRequest {
+	s.CertificateIds = v
+	return s
 }
 
 func (s *ListListenerCertificatesRequest) SetCertificateType(v string) *ListListenerCertificatesRequest {
@@ -10367,15 +13222,32 @@ type ListListenerCertificatesResponseBody struct {
 	// The certificates.
 	Certificates []*ListListenerCertificatesResponseBodyCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
 	// The maximum number of entries returned.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If **NextToken** is empty, no next page exists.
-	// *   If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 365F4154-92F6-4AE4-92F8-7FF34B540710
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1000
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -10414,19 +13286,38 @@ func (s *ListListenerCertificatesResponseBody) SetTotalCount(v int32) *ListListe
 
 type ListListenerCertificatesResponseBodyCertificates struct {
 	// The certificate ID. Only server certificates are supported.
+	//
+	// example:
+	//
+	// 12315790343_166f8204689_1714763408_70998****
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 	// The type of the certificate.
+	//
+	// example:
+	//
+	// Server
 	CertificateType *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
 	// Indicates whether the certificate is the default certificate of the listener. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 	// Indicates whether the certificate is associated with the listener. Valid values:
 	//
-	// *   **Associating**
-	// *   **Associated**
-	// *   **Diassociating**
+	// 	- **Associating**
+	//
+	// 	- **Associated**
+	//
+	// 	- **Diassociating**
+	//
+	// example:
+	//
+	// Associating
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -10492,18 +13383,33 @@ type ListListenersRequest struct {
 	ListenerIds []*string `json:"ListenerIds,omitempty" xml:"ListenerIds,omitempty" type:"Repeated"`
 	// The listener protocol. Valid values:
 	//
-	// *   **HTTP**
-	// *   **HTTPS**
-	// *   **QUIC**
+	// 	- **HTTP**
+	//
+	// 	- **HTTPS**
+	//
+	// 	- **QUIC**
+	//
+	// example:
+	//
+	// HTTP
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
 	// The ID of the Application Load Balancer (ALB) instance. You can specify at most 20 IDs.
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" xml:"LoadBalancerIds,omitempty" type:"Repeated"`
-	// The maximum number of entries to return. This parameter is optional. Valid values: **1 to 100**. If you do not specify this parameter, the default value **20** is used.
+	// The maximum number of entries to return. This parameter is optional. Valid values: **1 to 100**. If you do not specify this parameter, the default value **20*	- is used.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   You do not need to specify this parameter for the first request.
-	// *   You must specify the token that is obtained from the previous query as the value of **NextToken**.
+	// 	- You do not need to specify this parameter for the first request.
+	//
+	// 	- You must specify the token that is obtained from the previous query as the value of **NextToken**.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The tags.
 	Tag []*ListListenersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -10549,8 +13455,16 @@ func (s *ListListenersRequest) SetTag(v []*ListListenersRequestTag) *ListListene
 
 type ListListenersRequestTag struct {
 	// The tag key. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value. The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// product
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -10576,12 +13490,28 @@ type ListListenersResponseBody struct {
 	// The listeners.
 	Listeners []*ListListenersResponseBodyListeners `json:"Listeners,omitempty" xml:"Listeners,omitempty" type:"Repeated"`
 	// The maximum number of entries returned.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The position where the query stopped. If this parameter is not returned, all data is queried.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 365F4154-92F6-4AE4-92F8-7FF34B540710
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1000
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -10623,40 +13553,83 @@ type ListListenersResponseBodyListeners struct {
 	DefaultActions []*ListListenersResponseBodyListenersDefaultActions `json:"DefaultActions,omitempty" xml:"DefaultActions,omitempty" type:"Repeated"`
 	// Indicates whether GZIP compression is enabled to compress specific types of files. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	GzipEnabled *bool `json:"GzipEnabled,omitempty" xml:"GzipEnabled,omitempty"`
 	// Indicates whether HTTP/2 is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// >  This parameter is returned only for HTTPS listeners.
+	//
+	// example:
+	//
+	// false
 	Http2Enabled *bool `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
 	// The timeout period of an idle connection. Unit: seconds. Valid values: **1 to 60**.
 	//
 	// If no request is received within the specified timeout period, ALB closes the connection. ALB re-establishes the connection when a new connection request is received.
+	//
+	// example:
+	//
+	// 3
 	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
 	// The name of the listener.
+	//
+	// example:
+	//
+	// test
 	ListenerDescription *string `json:"ListenerDescription,omitempty" xml:"ListenerDescription,omitempty"`
 	// The ID of the listener.
+	//
+	// example:
+	//
+	// lsr-bp1bpn0kn908w4nbw****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The frontend port that is used by the ALB instance. Valid values: **1 to 65535**.
+	//
+	// example:
+	//
+	// 80
 	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	// The listener protocol. Valid values:
 	//
-	// *   **HTTP**
-	// *   **HTTPS**
-	// *   **QUIC**
+	// 	- **HTTP**
+	//
+	// 	- **HTTPS**
+	//
+	// 	- **QUIC**
+	//
+	// example:
+	//
+	// HTTP
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
 	// The status of the listener. Valid values:
 	//
-	// *   **Provisioning**
-	// *   **Running**
-	// *   **Configuring**
-	// *   **Stopped**
+	// 	- **Provisioning**
+	//
+	// 	- **Running**
+	//
+	// 	- **Configuring**
+	//
+	// 	- **Stopped**
+	//
+	// example:
+	//
+	// Running
 	ListenerStatus *string `json:"ListenerStatus,omitempty" xml:"ListenerStatus,omitempty"`
 	// The ID of the ALB instance.
+	//
+	// example:
+	//
+	// lb-bp1b6c719dfa08ex*****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	// The configuration of logs.
 	LogConfig *ListListenersResponseBodyListenersLogConfig `json:"LogConfig,omitempty" xml:"LogConfig,omitempty" type:"Struct"`
@@ -10665,10 +13638,18 @@ type ListListenersResponseBodyListeners struct {
 	// The timeout period of a request. Unit: seconds. Valid values: **1 to 180**.
 	//
 	// If no responses are received from the backend server within the specified timeout period, ALB returns an `HTTP 504` error code to the client.
+	//
+	// example:
+	//
+	// 34
 	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
 	// The security policy.
 	//
 	// >  This parameter is returned only for HTTPS listeners.
+	//
+	// example:
+	//
+	// tls_cipher_policy_1_1
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 	// The tags.
 	Tags []*ListListenersResponseBodyListenersTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -10767,7 +13748,11 @@ func (s *ListListenersResponseBodyListeners) SetXForwardedForConfig(v *ListListe
 type ListListenersResponseBodyListenersDefaultActions struct {
 	// The configuration of the forwarding rule action. This parameter is required and takes effect only if the type of the action is **ForwardGroup**.
 	ForwardGroupConfig *ListListenersResponseBodyListenersDefaultActionsForwardGroupConfig `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
-	// The type of the action. If **ForwardGroup** is returned, requests are forwarded to multiple vServer groups.
+	// The type of the action. If **ForwardGroup*	- is returned, requests are forwarded to multiple vServer groups.
+	//
+	// example:
+	//
+	// ForwardGroup
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -10809,6 +13794,10 @@ func (s *ListListenersResponseBodyListenersDefaultActionsForwardGroupConfig) Set
 
 type ListListenersResponseBodyListenersDefaultActionsForwardGroupConfigServerGroupTuples struct {
 	// The ID of the server group to which requests are forwarded.
+	//
+	// example:
+	//
+	// rsp-cige6j****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 }
 
@@ -10828,8 +13817,13 @@ func (s *ListListenersResponseBodyListenersDefaultActionsForwardGroupConfigServe
 type ListListenersResponseBodyListenersLogConfig struct {
 	// Indicates whether custom headers are carried in the access log. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	AccessLogRecordCustomizedHeadersEnabled *bool `json:"AccessLogRecordCustomizedHeadersEnabled,omitempty" xml:"AccessLogRecordCustomizedHeadersEnabled,omitempty"`
 	// The configuration of Xtrace. Xtrace is used to record the requests that are sent to ALB.
 	AccessLogTracingConfig *ListListenersResponseBodyListenersLogConfigAccessLogTracingConfig `json:"AccessLogTracingConfig,omitempty" xml:"AccessLogTracingConfig,omitempty" type:"Struct"`
@@ -10856,18 +13850,31 @@ func (s *ListListenersResponseBodyListenersLogConfig) SetAccessLogTracingConfig(
 type ListListenersResponseBodyListenersLogConfigAccessLogTracingConfig struct {
 	// Indicates whether Xtrace is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
 	//
-	// >  This parameter can be set to **true** only if **AccessLogEnabled** is set to true.
+	// 	- **false**
+	//
+	// >  This parameter can be set to **true*	- only if **AccessLogEnabled*	- is set to true.
+	//
+	// example:
+	//
+	// true
 	TracingEnabled *bool `json:"TracingEnabled,omitempty" xml:"TracingEnabled,omitempty"`
 	// The sampling rate of Xtrace. Valid values: **1 to 10000**.
 	//
-	// >  This parameter takes effect only if **TracingEnabled** is set to **true**.
-	TracingSample *int32 `json:"TracingSample,omitempty" xml:"TracingSample,omitempty"`
-	// The Xtrace type. Only **Zipkin** may be returned.
+	// >  This parameter takes effect only if **TracingEnabled*	- is set to **true**.
 	//
-	// >  This parameter takes effect only if **TracingEnabled** is set to **true**.
+	// example:
+	//
+	// 100
+	TracingSample *int32 `json:"TracingSample,omitempty" xml:"TracingSample,omitempty"`
+	// The Xtrace type. Only **Zipkin*	- may be returned.
+	//
+	// >  This parameter takes effect only if **TracingEnabled*	- is set to **true**.
+	//
+	// example:
+	//
+	// Zipkin
 	TracingType *string `json:"TracingType,omitempty" xml:"TracingType,omitempty"`
 }
 
@@ -10895,16 +13902,25 @@ func (s *ListListenersResponseBodyListenersLogConfigAccessLogTracingConfig) SetT
 }
 
 type ListListenersResponseBodyListenersQuicConfig struct {
-	// The ID of the QUIC listener. This parameter is required when **QuicUpgradeEnabled** is set to **true**. Only HTTPS listeners support this parameter.
+	// The ID of the QUIC listener. This parameter is required when **QuicUpgradeEnabled*	- is set to **true**. Only HTTPS listeners support this parameter.
 	//
 	// >  The HTTPS listener and the associated QUIC listener must belong to the same ALB instance. The QUIC listener cannot be associated with another listener.
+	//
+	// example:
+	//
+	// lsr-bp1bpn908w4nbw****
 	QuicListenerId *string `json:"QuicListenerId,omitempty" xml:"QuicListenerId,omitempty"`
 	// Indicates whether QUIC upgrade is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// >  This parameter takes effect only for HTTPS listeners.
+	//
+	// example:
+	//
+	// true
 	QuicUpgradeEnabled *bool `json:"QuicUpgradeEnabled,omitempty" xml:"QuicUpgradeEnabled,omitempty"`
 }
 
@@ -10928,8 +13944,16 @@ func (s *ListListenersResponseBodyListenersQuicConfig) SetQuicUpgradeEnabled(v b
 
 type ListListenersResponseBodyListenersTags struct {
 	// The tag key.
+	//
+	// example:
+	//
+	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
+	//
+	// example:
+	//
+	// product
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -10952,103 +13976,173 @@ func (s *ListListenersResponseBodyListenersTags) SetValue(v string) *ListListene
 }
 
 type ListListenersResponseBodyListenersXForwardedForConfig struct {
-	// The name of the custom header. This parameter takes effect only if **XForwardedForClientCertClientVerifyEnabled** is set to **true**.
+	// The name of the custom header. This parameter takes effect only if **XForwardedForClientCertClientVerifyEnabled*	- is set to **true**.
 	//
-	// The name is 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+	// The name is 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (_).
 	//
 	// >  This parameter is returned only for HTTPS listeners.
+	//
+	// example:
+	//
+	// test_client-verify-alias_123456
 	XForwardedForClientCertClientVerifyAlias *string `json:"XForwardedForClientCertClientVerifyAlias,omitempty" xml:"XForwardedForClientCertClientVerifyAlias,omitempty"`
 	// Indicates whether the `X-Forwarded-Clientcert-clientverify` header is used to obtain the verification result of the client certificate. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// >  This parameter is returned only for HTTPS listeners.
+	//
+	// example:
+	//
+	// true
 	XForwardedForClientCertClientVerifyEnabled *bool `json:"XForwardedForClientCertClientVerifyEnabled,omitempty" xml:"XForwardedForClientCertClientVerifyEnabled,omitempty"`
-	// The name of the custom header. This parameter takes effect only if **XForwardedForClientCertFingerprintEnabled** is set to **true**.
+	// The name of the custom header. This parameter takes effect only if **XForwardedForClientCertFingerprintEnabled*	- is set to **true**.
 	//
-	// The name is 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+	// The name is 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (_).
 	//
 	// >  This parameter is returned only for HTTPS listeners.
+	//
+	// example:
+	//
+	// test_finger-print-alias_123456
 	XForwardedForClientCertFingerprintAlias *string `json:"XForwardedForClientCertFingerprintAlias,omitempty" xml:"XForwardedForClientCertFingerprintAlias,omitempty"`
 	// Indicates whether the `X-Forwarded-Clientcert-fingerprint` header is used to retrieve the fingerprint of the client certificate. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// >  This parameter is returned only for HTTPS listeners.
+	//
+	// example:
+	//
+	// true
 	XForwardedForClientCertFingerprintEnabled *bool `json:"XForwardedForClientCertFingerprintEnabled,omitempty" xml:"XForwardedForClientCertFingerprintEnabled,omitempty"`
-	// The name of the custom header. This parameter takes effect only if **XForwardedForClientCertIssuerDNEnabled** is set to **true**.
+	// The name of the custom header. This parameter takes effect only if **XForwardedForClientCertIssuerDNEnabled*	- is set to **true**.
 	//
-	// The name is 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+	// The name is 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (_).
 	//
 	// >  This parameter is returned only for HTTPS listeners.
+	//
+	// example:
+	//
+	// test_issue-dn-alias_123456
 	XForwardedForClientCertIssuerDNAlias *string `json:"XForwardedForClientCertIssuerDNAlias,omitempty" xml:"XForwardedForClientCertIssuerDNAlias,omitempty"`
 	// Indicates whether the `X-Forwarded-Clientcert-issuerdn` header is used to retrieve information about the authority that issues the client certificate. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// >  This parameter is returned only for HTTPS listeners.
+	//
+	// example:
+	//
+	// true
 	XForwardedForClientCertIssuerDNEnabled *bool `json:"XForwardedForClientCertIssuerDNEnabled,omitempty" xml:"XForwardedForClientCertIssuerDNEnabled,omitempty"`
-	// The name of the custom header. This parameter takes effect only if **XForwardedForClientCertSubjectDNEnabled** is set to **true**.
+	// The name of the custom header. This parameter takes effect only if **XForwardedForClientCertSubjectDNEnabled*	- is set to **true**.
 	//
-	// The name is 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+	// The name is 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (_).
 	//
 	// >  This parameter is returned only for HTTPS listeners.
+	//
+	// example:
+	//
+	// test_subject-dn-alias_123456
 	XForwardedForClientCertSubjectDNAlias *string `json:"XForwardedForClientCertSubjectDNAlias,omitempty" xml:"XForwardedForClientCertSubjectDNAlias,omitempty"`
 	// Indicates whether the `X-Forwarded-Clientcert-subjectdn` header is used to retrieve information about the owner of the client certificate. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// >  This parameter is returned only for HTTPS listeners.
+	//
+	// example:
+	//
+	// true
 	XForwardedForClientCertSubjectDNEnabled *bool `json:"XForwardedForClientCertSubjectDNEnabled,omitempty" xml:"XForwardedForClientCertSubjectDNEnabled,omitempty"`
 	// Indicates whether the `X-Forwarded-Client-Ip` header is used to retrieve the source port of the ALB instance. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// >  HTTP, HTTPS, and QUIC listeners support this parameter.
+	//
+	// example:
+	//
+	// false
 	XForwardedForClientSourceIpsEnabled *bool `json:"XForwardedForClientSourceIpsEnabled,omitempty" xml:"XForwardedForClientSourceIpsEnabled,omitempty"`
 	// The trusted proxy IP address.
 	//
 	// ALB traverses `X-Forwarded-For` backward and selects the first IP address that is not in the trusted IP address list as the real IP address of the client. The IP address is used in source IP address throttling.
+	//
+	// example:
+	//
+	// 10.1.1.0/24
 	XForwardedForClientSourceIpsTrusted *string `json:"XForwardedForClientSourceIpsTrusted,omitempty" xml:"XForwardedForClientSourceIpsTrusted,omitempty"`
 	// Indicates whether the `X-Forwarded-Client-Port` header is used to retrieve the client port. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// >  This parameter is returned only for HTTP and HTTPS listeners.
+	//
+	// example:
+	//
+	// true
 	XForwardedForClientSrcPortEnabled *bool `json:"XForwardedForClientSrcPortEnabled,omitempty" xml:"XForwardedForClientSrcPortEnabled,omitempty"`
 	// Indicates whether the `X-Forwarded-For` header is used to retrieve the client IP address. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// >  This parameter is returned only for HTTP and HTTPS listeners.
+	//
+	// example:
+	//
+	// true
 	XForwardedForEnabled *bool `json:"XForwardedForEnabled,omitempty" xml:"XForwardedForEnabled,omitempty"`
 	// Indicates whether the `X-Forwarded-Proto` header is used to retrieve the listener protocol. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// >  HTTP, HTTPS, and QUIC listeners support this parameter.
+	//
+	// example:
+	//
+	// true
 	XForwardedForProtoEnabled *bool `json:"XForwardedForProtoEnabled,omitempty" xml:"XForwardedForProtoEnabled,omitempty"`
 	// Indicates whether the `SLB-ID` header is used to retrieve the ID of the ALB instance. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// >  HTTP, HTTPS, and QUIC listeners support this parameter.
+	//
+	// example:
+	//
+	// true
 	XForwardedForSLBIdEnabled *bool `json:"XForwardedForSLBIdEnabled,omitempty" xml:"XForwardedForSLBIdEnabled,omitempty"`
 	// Indicates whether the `X-Forwarded-Port` header is used to retrieve the listener port of the ALB instance. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// >  HTTP, HTTPS, and QUIC listeners support this parameter.
+	//
+	// example:
+	//
+	// true
 	XForwardedForSLBPortEnabled *bool `json:"XForwardedForSLBPortEnabled,omitempty" xml:"XForwardedForSLBPortEnabled,omitempty"`
 }
 
@@ -11168,15 +14262,25 @@ type ListLoadBalancersRequest struct {
 	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
 	// The network type. Valid values:
 	//
-	// *   **Internet**: The ALB instance uses a public IP address. The domain name of the ALB instance is resolved to the public IP address. Therefore, the ALB instance can be accessed over the Internet.
-	// *   **Intranet**: The ALB instance uses a private IP address. The domain name of the ALB instance is resolved to the private IP address. In this case, the ALB instance can be accessed over the VPC where the ALB instance is deployed.
+	// 	- **Internet**: The ALB instance uses a public IP address. The domain name of the ALB instance is resolved to the public IP address. Therefore, the ALB instance can be accessed over the Internet.
+	//
+	// 	- **Intranet**: The ALB instance uses a private IP address. The domain name of the ALB instance is resolved to the private IP address. In this case, the ALB instance can be accessed over the VPC where the ALB instance is deployed.
+	//
+	// example:
+	//
+	// Intranet
 	AddressType     *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
 	DNSName         *string `json:"DNSName,omitempty" xml:"DNSName,omitempty"`
 	Ipv6AddressType *string `json:"Ipv6AddressType,omitempty" xml:"Ipv6AddressType,omitempty"`
 	// The service status of the ALB instance. Valid values:
 	//
-	// *   **Abnormal**
-	// *   **Normal**
+	// 	- **Abnormal**
+	//
+	// 	- **Normal**
+	//
+	// example:
+	//
+	// Normal
 	LoadBalancerBussinessStatus *string `json:"LoadBalancerBussinessStatus,omitempty" xml:"LoadBalancerBussinessStatus,omitempty"`
 	// The instance IDs. You can specify at most 20 ALB instance IDs.
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" xml:"LoadBalancerIds,omitempty" type:"Repeated"`
@@ -11184,24 +14288,49 @@ type ListLoadBalancersRequest struct {
 	LoadBalancerNames []*string `json:"LoadBalancerNames,omitempty" xml:"LoadBalancerNames,omitempty" type:"Repeated"`
 	// The status of the ALB instance. Valid values:
 	//
-	// *   **Inactive**: The ALB instance is disabled. The listeners do not forward traffic.
-	// *   **Active**: The ALB instance is running.
-	// *   **Provisioning**: The ALB instance is being created.
-	// *   **Configuring**: The ALB instance is being modified.
-	// *   **CreateFailed**: The system failed to create the ALB instance. In this case, you are not charged for the ALB instance. You can only delete the ALB instance. By default, the system deletes the ALB instances that are in the CreateFailed state within the last day.
+	// 	- **Inactive**: The ALB instance is disabled. The listeners do not forward traffic.
+	//
+	// 	- **Active**: The ALB instance is running.
+	//
+	// 	- **Provisioning**: The ALB instance is being created.
+	//
+	// 	- **Configuring**: The ALB instance is being modified.
+	//
+	// 	- **CreateFailed**: The system failed to create the ALB instance. In this case, you are not charged for the ALB instance. You can only delete the ALB instance. By default, the system deletes the ALB instances that are in the CreateFailed state within the last day.
+	//
+	// example:
+	//
+	// Active
 	LoadBalancerStatus *string `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
-	// The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
+	// The number of entries to return on each page. Valid values: **1*	- to **100**. Default value: **20**.
+	//
+	// example:
+	//
+	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   You do not need to specify this parameter for the first request.
-	// *   You must specify the token that is obtained from the previous query as the value of **NextToken**.
+	// 	- You do not need to specify this parameter for the first request.
+	//
+	// 	- You must specify the token that is obtained from the previous query as the value of **NextToken**.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The billing method of the ALB instance. Set the value to
 	//
 	// **PostPay**, which specifies the pay-as-you-go billing method. This is the default value.
+	//
+	// example:
+	//
+	// PostPay
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmxazb4ph****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags added to the ALB instance.
 	Tag []*ListLoadBalancersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -11209,7 +14338,11 @@ type ListLoadBalancersRequest struct {
 	VpcIds []*string `json:"VpcIds,omitempty" xml:"VpcIds,omitempty" type:"Repeated"`
 	// The ID of the zone where the ALB instance is deployed.
 	//
-	// You can call the [DescribeZones](~~189196~~) operation to query zones.
+	// You can call the [DescribeZones](https://help.aliyun.com/document_detail/189196.html) operation to query zones.
+	//
+	// example:
+	//
+	// cn-hangzhou-a
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -11300,10 +14433,18 @@ type ListLoadBalancersRequestTag struct {
 	// The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
 	//
 	// The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+	//
+	// example:
+	//
+	// KeyTest
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
 	//
 	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+	//
+	// example:
+	//
+	// alueTest
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -11329,15 +14470,32 @@ type ListLoadBalancersResponseBody struct {
 	// The list of ALB instances.
 	LoadBalancers []*ListLoadBalancersResponseBodyLoadBalancers `json:"LoadBalancers,omitempty" xml:"LoadBalancers,omitempty" type:"Repeated"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If **NextToken** is empty, no next page exists.
-	// *   If a value is returned for **NextToken**, the value is used to retrieve a new page of results.
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If a value is returned for **NextToken**, the value is used to retrieve a new page of results.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 365F4154-92F6-4AE4-92F8-7FF34B540710
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 100
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -11379,66 +14537,133 @@ type ListLoadBalancersResponseBodyLoadBalancers struct {
 	AccessLogConfig *ListLoadBalancersResponseBodyLoadBalancersAccessLogConfig `json:"AccessLogConfig,omitempty" xml:"AccessLogConfig,omitempty" type:"Struct"`
 	// The mode in which IP addresses are allocated. Valid values:
 	//
-	// *   **Fixed**: allocates a static IP address to the ALB instance.
-	// *   **Dynamic**: dynamically allocates an IP address to each zone of the ALB instance.
+	// 	- **Fixed**: allocates a static IP address to the ALB instance.
+	//
+	// 	- **Dynamic**: dynamically allocates an IP address to each zone of the ALB instance.
+	//
+	// example:
+	//
+	// Fixed
 	AddressAllocatedMode *string `json:"AddressAllocatedMode,omitempty" xml:"AddressAllocatedMode,omitempty"`
 	// The IP version. Valid values:
 	//
-	// *   **IPv4**
-	// *   **DualStack**
+	// 	- **IPv4**
+	//
+	// 	- **DualStack**
+	//
+	// example:
+	//
+	// DualStack
 	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
 	// The type of IP address that the ALB instance uses to provide services. Valid values:
 	//
-	// *   **Internet**: The ALB instance uses a public IP address. The domain name of the ALB instance is resolved to the public IP address. Therefore, the ALB instance can be accessed over the Internet.
-	// *   **Intranet**: The ALB instance uses a private IP address. The domain name of the ALB instance is resolved to the private IP address. In this case, the ALB instance can be accessed over the VPC where the ALB instance is deployed.
+	// 	- **Internet**: The ALB instance uses a public IP address. The domain name of the ALB instance is resolved to the public IP address. Therefore, the ALB instance can be accessed over the Internet.
+	//
+	// 	- **Intranet**: The ALB instance uses a private IP address. The domain name of the ALB instance is resolved to the private IP address. In this case, the ALB instance can be accessed over the VPC where the ALB instance is deployed.
+	//
+	// example:
+	//
+	// Intranet
 	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
 	// The ID of the EIP bandwidth plan that is associated with the NLB instance if the NLB instance uses a public IP address.
+	//
+	// example:
+	//
+	// cbwp-bp1vevu8h3ieh****
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
 	// The time when the resource was created.
+	//
+	// example:
+	//
+	// 2022-07-02T02:49:05Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The domain name of the ALB instance.
+	//
+	// example:
+	//
+	// alb-95qnr2itwu9orb****.cn-hangzhou.alb.aliyuncs.com
 	DNSName *string `json:"DNSName,omitempty" xml:"DNSName,omitempty"`
 	// The configuration of deletion protection.
 	DeletionProtectionConfig *ListLoadBalancersResponseBodyLoadBalancersDeletionProtectionConfig `json:"DeletionProtectionConfig,omitempty" xml:"DeletionProtectionConfig,omitempty" type:"Struct"`
 	// The type of IPv6 address that is used by the ALB instance. Valid values:
 	//
-	// *   **Internet**: The ALB instance uses a public IP address. The domain name of the ALB instance is resolved to the public IP address. Therefore, the ALB instance can be accessed over the Internet.
-	// *   **Intranet**: The ALB instance uses a private IP address. The domain name of the ALB instance is resolved to the private IP address. Therefore, the ALB instance can be accessed over the VPC in which the ALB instance is deployed.
+	// 	- **Internet**: The ALB instance uses a public IP address. The domain name of the ALB instance is resolved to the public IP address. Therefore, the ALB instance can be accessed over the Internet.
+	//
+	// 	- **Intranet**: The ALB instance uses a private IP address. The domain name of the ALB instance is resolved to the private IP address. Therefore, the ALB instance can be accessed over the VPC in which the ALB instance is deployed.
+	//
+	// example:
+	//
+	// Intranet
 	Ipv6AddressType *string `json:"Ipv6AddressType,omitempty" xml:"Ipv6AddressType,omitempty"`
 	// The configuration of the billing method.
 	LoadBalancerBillingConfig *ListLoadBalancersResponseBodyLoadBalancersLoadBalancerBillingConfig `json:"LoadBalancerBillingConfig,omitempty" xml:"LoadBalancerBillingConfig,omitempty" type:"Struct"`
 	// The business status of the ALB instance. Valid values:
 	//
-	// *   **Abnormal**
-	// *   **Normal**
+	// 	- **Abnormal**
+	//
+	// 	- **Normal**
+	//
+	// example:
+	//
+	// Normal
 	LoadBalancerBussinessStatus *string `json:"LoadBalancerBussinessStatus,omitempty" xml:"LoadBalancerBussinessStatus,omitempty"`
 	// The edition of the ALB instance. Different editions have different limits and support different billing methods. Valid values:
 	//
-	// *   **Basic**: basic
-	// *   **Standard**: standard
-	// *   **StandardWithWaf**: WAF-enabled
+	// 	- **Basic**: basic
+	//
+	// 	- **Standard**: standard
+	//
+	// 	- **StandardWithWaf**: WAF-enabled
+	//
+	// example:
+	//
+	// Standard
 	LoadBalancerEdition *string `json:"LoadBalancerEdition,omitempty" xml:"LoadBalancerEdition,omitempty"`
 	// The ID of the ALB instance.
+	//
+	// example:
+	//
+	// alb-o9ulmq5hgn68jk****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	// The name of the NLB instance.
+	//
+	// example:
+	//
+	// alb-instance-test
 	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
 	// The configuration of the operation lock.
 	LoadBalancerOperationLocks []*ListLoadBalancersResponseBodyLoadBalancersLoadBalancerOperationLocks `json:"LoadBalancerOperationLocks,omitempty" xml:"LoadBalancerOperationLocks,omitempty" type:"Repeated"`
 	// The status of the ALB instance. Valid values:
 	//
-	// *   **Inactive**: The ALB instance is disabled. The listeners do not forward traffic.
-	// *   **Active**: The ALB instance is running.
-	// *   **Provisioning**: The ALB instance is being created.
-	// *   **Configuring**: The ALB instance is being modified.
-	// *   **CreateFailed**: The system failed to create the ALB instance.
+	// 	- **Inactive**: The ALB instance is disabled. The listeners do not forward traffic.
+	//
+	// 	- **Active**: The ALB instance is running.
+	//
+	// 	- **Provisioning**: The ALB instance is being created.
+	//
+	// 	- **Configuring**: The ALB instance is being modified.
+	//
+	// 	- **CreateFailed**: The system failed to create the ALB instance.
+	//
+	// example:
+	//
+	// Active
 	LoadBalancerStatus *string `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
 	// The configuration read-only mode.
 	ModificationProtectionConfig *ListLoadBalancersResponseBodyLoadBalancersModificationProtectionConfig `json:"ModificationProtectionConfig,omitempty" xml:"ModificationProtectionConfig,omitempty" type:"Struct"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-atstuj3rtop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags that are added to the instance.
 	Tags []*ListLoadBalancersResponseBodyLoadBalancersTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The ID of the VPC to which the ALB instance belongs.
+	//
+	// example:
+	//
+	// vpc-bp1b49rqrybk45nio****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -11552,8 +14777,16 @@ func (s *ListLoadBalancersResponseBodyLoadBalancers) SetVpcId(v string) *ListLoa
 
 type ListLoadBalancersResponseBodyLoadBalancersAccessLogConfig struct {
 	// The log project.
+	//
+	// example:
+	//
+	// sls-setter
 	LogProject *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
 	// The Logstore.
+	//
+	// example:
+	//
+	// test
 	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
 }
 
@@ -11578,10 +14811,19 @@ func (s *ListLoadBalancersResponseBodyLoadBalancersAccessLogConfig) SetLogStore(
 type ListLoadBalancersResponseBodyLoadBalancersDeletionProtectionConfig struct {
 	// Indicates whether deletion protection is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// The time when deletion protection is enabled.
+	//
+	// example:
+	//
+	// 2022-08-02T02:49:05Z
 	EnabledTime *string `json:"EnabledTime,omitempty" xml:"EnabledTime,omitempty"`
 }
 
@@ -11606,7 +14848,11 @@ func (s *ListLoadBalancersResponseBodyLoadBalancersDeletionProtectionConfig) Set
 type ListLoadBalancersResponseBodyLoadBalancersLoadBalancerBillingConfig struct {
 	// The billing method. Valid values:
 	//
-	// Only **PostPay** may be returned, which indicates the pay-as-you-go billing method.
+	// Only **PostPay*	- may be returned, which indicates the pay-as-you-go billing method.
+	//
+	// example:
+	//
+	// PostPay
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 }
 
@@ -11624,14 +14870,21 @@ func (s *ListLoadBalancersResponseBodyLoadBalancersLoadBalancerBillingConfig) Se
 }
 
 type ListLoadBalancersResponseBodyLoadBalancersLoadBalancerOperationLocks struct {
-	// The reason why the ALB instance is locked. This parameter is available only when **LoadBalancerBussinessStatus** is set to **Abnormal**.
+	// The reason why the ALB instance is locked. This parameter is available only when **LoadBalancerBussinessStatus*	- is set to **Abnormal**.
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
 	// The lock type. Valid values:
 	//
-	// *   **SecurityLocked**: The ALB instance is locked due to security reasons.
-	// *   **RelatedResourceLocked**: The ALB instance is locked due to association issues.
-	// *   **FinancialLocked**: The ALB instance is locked due to overdue payments.
-	// *   **ResidualLocked**: The ALB instance is locked because the associated resources have overdue payments and the resources are released.
+	// 	- **SecurityLocked**: The ALB instance is locked due to security reasons.
+	//
+	// 	- **RelatedResourceLocked**: The ALB instance is locked due to association issues.
+	//
+	// 	- **FinancialLocked**: The ALB instance is locked due to overdue payments.
+	//
+	// 	- **ResidualLocked**: The ALB instance is locked because the associated resources have overdue payments and the resources are released.
+	//
+	// example:
+	//
+	// FinancialLocked
 	LockType *string `json:"LockType,omitempty" xml:"LockType,omitempty"`
 }
 
@@ -11656,16 +14909,21 @@ func (s *ListLoadBalancersResponseBodyLoadBalancersLoadBalancerOperationLocks) S
 type ListLoadBalancersResponseBodyLoadBalancersModificationProtectionConfig struct {
 	// The reason why deletion protection is enabled.
 	//
-	// It must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
+	// It must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
 	//
-	// This parameter takes effect only when **ModificationProtectionStatus** is set to **ConsoleProtection**.
+	// This parameter takes effect only when **ModificationProtectionStatus*	- is set to **ConsoleProtection**.
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// Indicates whether the configuration read-only mode is enabled for the ALB instance. Valid values:
 	//
-	// *   **NonProtection**: The configuration read-only mode is disabled. In this case, you cannot specify ModificationProtectionReason. If you specify ModificationProtectionReason, the value of the parameter is cleared.
-	// *   **ConsoleProtection**: The configuration read-only mode is enabled. In this case, you can specify ModificationProtectionReason.
+	// 	- **NonProtection**: The configuration read-only mode is disabled. In this case, you cannot specify ModificationProtectionReason. If you specify ModificationProtectionReason, the value of the parameter is cleared.
+	//
+	// 	- **ConsoleProtection**: The configuration read-only mode is enabled. In this case, you can specify ModificationProtectionReason.
 	//
 	// > If you set this parameter to **ConsoleProtection**, you cannot use the ALB console to modify instance configurations. However, you can call API operations to modify instance configurations.
+	//
+	// example:
+	//
+	// ConsoleProtection
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -11689,8 +14947,16 @@ func (s *ListLoadBalancersResponseBodyLoadBalancersModificationProtectionConfig)
 
 type ListLoadBalancersResponseBodyLoadBalancersTags struct {
 	// The tag key.
+	//
+	// example:
+	//
+	// KeyTest
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
+	//
+	// example:
+	//
+	// alueTest
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -11744,10 +15010,15 @@ func (s *ListLoadBalancersResponse) SetBody(v *ListLoadBalancersResponseBody) *L
 type ListRulesRequest struct {
 	// The direction to which the forwarding rule is applied. Valid values:
 	//
-	// *   **Request** (default): The forwarding rule is applied to the client requests received by ALB.
-	// *   **Response**: The forwarding rule is applied to the responses returned by backend servers.
+	// 	- **Request*	- (default): The forwarding rule is applied to the client requests received by ALB.
+	//
+	// 	- **Response**: The forwarding rule is applied to the responses returned by backend servers.
 	//
 	// > You cannot set this parameter to Response if you use basic ALB instances.
+	//
+	// example:
+	//
+	// Request
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
 	// The listener IDs.
 	ListenerIds []*string `json:"ListenerIds,omitempty" xml:"ListenerIds,omitempty" type:"Repeated"`
@@ -11760,8 +15031,16 @@ type ListRulesRequest struct {
 	// Default value: **20**. If you do not specify this parameter, the default value is used.
 	//
 	// > This parameter is optional.
+	//
+	// example:
+	//
+	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The starting point of the current query. If you do not specify this parameter, the query starts from the beginning.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The forwarding rules.
 	RuleIds []*string              `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
@@ -11836,17 +15115,34 @@ func (s *ListRulesRequestTag) SetValue(v string) *ListRulesRequestTag {
 
 type ListRulesResponseBody struct {
 	// The maximum number of entries returned.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If **NextToken** is empty, no next page exists.
-	// *   If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The forwarding rules.
 	Rules []*ListRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1000
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -11886,32 +15182,59 @@ func (s *ListRulesResponseBody) SetTotalCount(v int32) *ListRulesResponseBody {
 type ListRulesResponseBodyRules struct {
 	// The direction to which the forwarding rule is applied. Valid values:
 	//
-	// *   Request (default): The rule applies to client requests.
-	// *   Response: The rule applies to responses from backend servers.
+	// 	- Request (default): The rule applies to client requests.
+	//
+	// 	- Response: The rule applies to responses from backend servers.
 	//
 	// > Response is not supported by basic ALB instances.
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
 	// The ID of the listener to which the forwarding rule belongs.
+	//
+	// example:
+	//
+	// lsn-i35udpz3pxsmnf****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The ID of the ALB instance to which the forwarding rule belongs.
+	//
+	// example:
+	//
+	// alb-x30o38azsuj0sx****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	// The priority of the forwarding rule. Valid values: **1 to 10000**. A smaller value indicates a higher priority.
 	//
 	// > The priority of each forwarding rule added to a listener must be unique.
+	//
+	// example:
+	//
+	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The action of the forwarding rule.
 	RuleActions []*ListRulesResponseBodyRulesRuleActions `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
 	// The conditions of the forwarding rule.
 	RuleConditions []*ListRulesResponseBodyRulesRuleConditions `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
 	// The forwarding rule ID.
+	//
+	// example:
+	//
+	// rule-bpn0kn908w4nbw****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+	// The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	//
+	// example:
+	//
+	// rule-instance-test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The status of the forwarding rule. Valid values:
 	//
-	// *   **Provisioning**
-	// *   **Configuring**
-	// *   **Available**
+	// 	- **Provisioning**
+	//
+	// 	- **Configuring**
+	//
+	// 	- **Available**
+	//
+	// example:
+	//
+	// Available
 	RuleStatus *string                           `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
 	Tags       []*ListRulesResponseBodyRulesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
@@ -11984,6 +15307,10 @@ type ListRulesResponseBodyRulesRuleActions struct {
 	// The configuration of the header to be inserted.
 	InsertHeaderConfig *ListRulesResponseBodyRulesRuleActionsInsertHeaderConfig `json:"InsertHeaderConfig,omitempty" xml:"InsertHeaderConfig,omitempty" type:"Struct"`
 	// The priority of the action. Valid values: **1 to 50000**. A smaller value indicates a higher priority. The actions of a forwarding rule are applied in descending order of priority. This parameter is not empty. The priority of each action within a forwarding rule is unique.
+	//
+	// example:
+	//
+	// 1
 	Order *int32 `json:"Order,omitempty" xml:"Order,omitempty"`
 	// The configuration of the redirect action.
 	RedirectConfig *ListRulesResponseBodyRulesRuleActionsRedirectConfig `json:"RedirectConfig,omitempty" xml:"RedirectConfig,omitempty" type:"Struct"`
@@ -11997,20 +15324,33 @@ type ListRulesResponseBodyRulesRuleActions struct {
 	TrafficMirrorConfig *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig `json:"TrafficMirrorConfig,omitempty" xml:"TrafficMirrorConfig,omitempty" type:"Struct"`
 	// The action. Valid values:
 	//
-	// *   **ForwardGroup**: distributes requests to multiple vServer groups.
-	// *   **Redirect**: redirects a request.
-	// *   **FixedResponse**: returns a custom response.
-	// *   **Rewrite**: rewrites a request.
-	// *   **InsertHeader**: inserts a header.
-	// *   **RemoveHeaderConfig**: deletes a header.
-	// *   **TrafficLimitConfig**: throttles network traffic.
-	// *   **TrafficMirrorConfig**: mirrors traffic.
-	// *   **CorsConfig**: forwards requests based on CORS.
+	// 	- **ForwardGroup**: distributes requests to multiple vServer groups.
+	//
+	// 	- **Redirect**: redirects a request.
+	//
+	// 	- **FixedResponse**: returns a custom response.
+	//
+	// 	- **Rewrite**: rewrites a request.
+	//
+	// 	- **InsertHeader**: inserts a header.
+	//
+	// 	- **RemoveHeaderConfig**: deletes a header.
+	//
+	// 	- **TrafficLimitConfig**: throttles network traffic.
+	//
+	// 	- **TrafficMirrorConfig**: mirrors traffic.
+	//
+	// 	- **CorsConfig**: forwards requests based on CORS.
 	//
 	// The preceding actions can be classified into two broad types:
 	//
-	// *   **FinalType**: the last action to be performed in a forwarding rule. Each forwarding rule can contain only one FinalType action. You can specify a **ForwardGroup**, **Redirect**, or **FixedResponse** action as the FinalType action.
-	// *   **ExtType**: one or more actions to be performed before the **FinalType** action. A forwarding rule can contain one or more **ExtType** actions. To specify an ExtType action, you must specify a **FinalType** action. You can specify multiple **InsertHeader** actions or one **Rewrite** action.
+	// 	- **FinalType**: the last action to be performed in a forwarding rule. Each forwarding rule can contain only one FinalType action. You can specify a **ForwardGroup**, **Redirect**, or **FixedResponse*	- action as the FinalType action.
+	//
+	// 	- **ExtType**: one or more actions to be performed before the **FinalType*	- action. A forwarding rule can contain one or more **ExtType*	- actions. To specify an ExtType action, you must specify a **FinalType*	- action. You can specify multiple **InsertHeader*	- actions or one **Rewrite*	- action.
+	//
+	// example:
+	//
+	// ForwardGroup
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -12080,8 +15420,13 @@ func (s *ListRulesResponseBodyRulesRuleActions) SetType(v string) *ListRulesResp
 type ListRulesResponseBodyRulesRuleActionsCorsConfig struct {
 	// Indicates whether credentials can be carried in CORS requests. Valid values:
 	//
-	// *   **on**
-	// *   **off**
+	// 	- **on**
+	//
+	// 	- **off**
+	//
+	// example:
+	//
+	// on
 	AllowCredentials *string `json:"AllowCredentials,omitempty" xml:"AllowCredentials,omitempty"`
 	// The allowed headers for CORS requests.
 	AllowHeaders []*string `json:"AllowHeaders,omitempty" xml:"AllowHeaders,omitempty" type:"Repeated"`
@@ -12093,7 +15438,11 @@ type ListRulesResponseBodyRulesRuleActionsCorsConfig struct {
 	ExposeHeaders []*string `json:"ExposeHeaders,omitempty" xml:"ExposeHeaders,omitempty" type:"Repeated"`
 	// The maximum cache time of dry run requests in the browser. Unit: seconds.
 	//
-	// Valid values: **-1** to **172800**.
+	// Valid values: **-1*	- to **172800**.
+	//
+	// example:
+	//
+	// 1000
 	MaxAge *int64 `json:"MaxAge,omitempty" xml:"MaxAge,omitempty"`
 }
 
@@ -12137,12 +15486,24 @@ func (s *ListRulesResponseBodyRulesRuleActionsCorsConfig) SetMaxAge(v int64) *Li
 
 type ListRulesResponseBodyRulesRuleActionsFixedResponseConfig struct {
 	// The content of the custom response. The content is up to 1 KB in size, and can contain only ASCII characters.
+	//
+	// example:
+	//
+	// dssacav
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The content type.
 	//
 	// Valid values: **text/plain**, **text/css**, **text/html**, **application/javascript**, and **application/json**.
+	//
+	// example:
+	//
+	// text/plain
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// The HTTP status code in the response. Valid values: **HTTP\_2xx**, **HTTP\_4xx**, and **HTTP\_5xx**. **x** must be a digit.
+	// The HTTP status code in the response. Valid values: **HTTP_2xx**, **HTTP_4xx**, and **HTTP_5xx**. **x*	- must be a digit.
+	//
+	// example:
+	//
+	// HTTP_2xx
 	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 }
 
@@ -12218,8 +15579,16 @@ func (s *ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupStick
 
 type ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupTuples struct {
 	// The server group to which requests are forwarded.
+	//
+	// example:
+	//
+	// sg-atstuj3rtoptyui****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// The weight. Valid values: **0** to **100**.
+	// The weight. Valid values: **0*	- to **100**.
+	//
+	// example:
+	//
+	// 2
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
@@ -12242,29 +15611,47 @@ func (s *ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupTuple
 }
 
 type ListRulesResponseBodyRulesRuleActionsInsertHeaderConfig struct {
-	// The key of the header. The key must be 1 to 40 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The key specified in `InsertHeader` must be unique.
+	// The key of the header. The key must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The key specified in `InsertHeader` must be unique.
 	//
-	// > **Cookie** and **Host** are not supported.
+	// > **Cookie*	- and **Host*	- are not supported.
+	//
+	// example:
+	//
+	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the header.
 	//
-	// *   If **ValueType** is set to **SystemDefined**, one of the following values is supported:
+	// 	- If **ValueType*	- is set to **SystemDefined**, one of the following values is supported:
 	//
-	//     *   **ClientSrcPort**: the client port.
-	//     *   **ClientSrcIp**: the client IP address.
-	//     *   **Protocol**: the request protocol (HTTP or HTTPS).
-	//     *   **SLBId**: the ID of the ALB instance.
-	//     *   **SLBPort**: the listener port.
+	//     	- **ClientSrcPort**: the client port.
 	//
-	// *   If **ValueType** is set to **UserDefined**, a custom header value is supported. The header value must be 1 to 128 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and lower than 127`. You can use asterisks (\*) and question marks (?) as wildcard characters. The header value cannot start or end with a space character.
+	//     	- **ClientSrcIp**: the client IP address.
 	//
-	// *   If **ValueType** is set to **ReferenceHeader**, one of the request headers is referenced. The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (\_), and hyphens (-).
+	//     	- **Protocol**: the request protocol (HTTP or HTTPS).
+	//
+	//     	- **SLBId**: the ID of the ALB instance.
+	//
+	//     	- **SLBPort**: the listener port.
+	//
+	// 	- If **ValueType*	- is set to **UserDefined**, a custom header value is supported. The header value must be 1 to 128 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and lower than 127`. You can use asterisks (\\*) and question marks (?) as wildcard characters. The header value cannot start or end with a space character.
+	//
+	// 	- If **ValueType*	- is set to **ReferenceHeader**, one of the request headers is referenced. The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
+	//
+	// example:
+	//
+	// ClientSrcPort
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 	// The type of the header. Valid values:
 	//
-	// *   **UserDefined**: a user-defined header.
-	// *   **ReferenceHeader**: a header that is referenced from a request header.
-	// *   **SystemDefined**: a system-defined header.
+	// 	- **UserDefined**: a user-defined header.
+	//
+	// 	- **ReferenceHeader**: a header that is referenced from a request header.
+	//
+	// 	- **SystemDefined**: a system-defined header.
+	//
+	// example:
+	//
+	// SystemDefined
 	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
 }
 
@@ -12294,40 +15681,71 @@ func (s *ListRulesResponseBodyRulesRuleActionsInsertHeaderConfig) SetValueType(v
 type ListRulesResponseBodyRulesRuleActionsRedirectConfig struct {
 	// The hostname to which requests are redirected. Valid values:
 	//
-	// *   **${host}** (default): If ${host} is returned, no other character is appended.
+	// 	- **${host}*	- (default): If ${host} is returned, no other character is appended.
 	//
-	// *   Limits on a custom value:
+	// 	- Limits on a custom value:
 	//
-	//     *   The hostname is 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), and periods (.). Asterisks (\*) and question marks (?) can be used as wildcard characters.
-	//     *   The hostname contains at least one period (.) but does not start or end with a period (.).
-	//     *   The rightmost domain label contains only letters and wildcard characters. It does not contain digits or hyphens (-).
-	//     *   The domain labels do not start or end with hyphens (-).
-	//     *   You can use asterisks (\*) and question marks (?) anywhere in a domain label as wildcard characters.
+	//     	- The hostname is 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), and periods (.). Asterisks (\\*) and question marks (?) can be used as wildcard characters.
+	//
+	//     	- The hostname contains at least one period (.) but does not start or end with a period (.).
+	//
+	//     	- The rightmost domain label contains only letters and wildcard characters. It does not contain digits or hyphens (-).
+	//
+	//     	- The domain labels do not start or end with hyphens (-).
+	//
+	//     	- You can use asterisks (\\*) and question marks (?) anywhere in a domain label as wildcard characters.
+	//
+	// example:
+	//
+	// www.example.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	// The redirect type. Valid values: **301**, **302**, **303**, **307**, and **308**.
+	//
+	// example:
+	//
+	// 301
 	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 	// The path to which requests are redirected. Valid values:
 	//
-	// *   **${path}** (default): You can reference \*\*${host}**, **${protocol}**, and**${port}**. The path can consist of **${host}**,**${protocol}**, and **${port}\*\*. Each variable can be used only once. The preceding variables can be used at the same time or combined with a custom value.
+	// 	- **${path}*	- (default): You can reference \\*\\*${host}**, **${protocol}**, and**${port}**. The path can consist of **${host}**,**${protocol}**, and **${port}\\*\\*. Each variable can be used only once. The preceding variables can be used at the same time or combined with a custom value.
 	//
-	// *   Limits on a custom value:
+	// 	- Limits on a custom value:
 	//
-	//     *   The value is 1 to 128 characters in length.
-	//     *   It starts with a forward slash (/) and contains letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It does not contain the following special characters: `" % # ; ! ( ) [ ] ^ , "`. You can use asterisks (\*) and question marks (?) as wildcard characters.
+	//     	- The value is 1 to 128 characters in length.
+	//
+	//     	- It starts with a forward slash (/) and contains letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It does not contain the following special characters: `" % # ; ! ( ) [ ] ^ , "`. You can use asterisks (\\*) and question marks (?) as wildcard characters.
+	//
+	// example:
+	//
+	// /test
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	// The port to which requests are redirected. Valid values:
 	//
-	// *   **${port}** (default): If ${port} is returned, no other character is appended.
-	// *   Other valid values: **1 to 63335**.
+	// 	- **${port}*	- (default): If ${port} is returned, no other character is appended.
+	//
+	// 	- Other valid values: **1 to 63335**.
+	//
+	// example:
+	//
+	// 10
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The redirect protocol. Valid values:
 	//
-	// *   **${protocol}** (default): If ${protocol} is returned, no other character is appended.
-	// *   **HTTP** or **HTTPS**.
+	// 	- **${protocol}*	- (default): If ${protocol} is returned, no other character is appended.
+	//
+	// 	- **HTTP*	- or **HTTPS**.
 	//
 	// > HTTPS listeners support only HTTP to HTTPS redirection.
+	//
+	// example:
+	//
+	// HTTP
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The query string to which requests are redirected. The query string must be 1 to 128 characters in length, and can contain printable characters, excluding uppercase letters and the following special characters: `# [ ] { } \ | < > &`.
+	// The query string to which requests are redirected. The query string must be 1 to 128 characters in length, and can contain printable characters, excluding uppercase letters and the following special characters: `# [ ] { } \\ | < > &`.
+	//
+	// example:
+	//
+	// quert
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 }
 
@@ -12372,8 +15790,9 @@ func (s *ListRulesResponseBodyRulesRuleActionsRedirectConfig) SetQuery(v string)
 type ListRulesResponseBodyRulesRuleActionsRemoveHeaderConfig struct {
 	// The key of the header to be removed. The key must be 1 to 40 characters in length and can contain letters, digits, underscores, and hyphens (-). The header key must be unique.
 	//
-	// *   You cannot specify the following header keys for an inbound forwarding rule: `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, and `authority`. The preceding keys are case-insensitive.
-	// *   You cannot specify the following header keys for an outbound forwarding rule: `connection`, `upgrade`, `content-length`, and `transfer-encoding`. The preceding keys are case-insensitive.
+	// 	- You cannot specify the following header keys for an inbound forwarding rule: `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, and `authority`. The preceding keys are case-insensitive.
+	//
+	// 	- You cannot specify the following header keys for an outbound forwarding rule: `connection`, `upgrade`, `content-length`, and `transfer-encoding`. The preceding keys are case-insensitive.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 }
 
@@ -12393,19 +15812,35 @@ func (s *ListRulesResponseBodyRulesRuleActionsRemoveHeaderConfig) SetKey(v strin
 type ListRulesResponseBodyRulesRuleActionsRewriteConfig struct {
 	// The hostname to which requests are forwarded. Valid values:
 	//
-	// *   **${host}** (default): If ${host} is returned, no other character is appended.
+	// 	- **${host}*	- (default): If ${host} is returned, no other character is appended.
 	//
-	// *   Limits on a custom value:
+	// 	- Limits on a custom value:
 	//
-	//     *   The hostname is 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), and periods (.). Asterisks (\*) and question marks (?) can be used as wildcard characters.
-	//     *   The hostname contains at least one period (.) but does not start or end with a period (.).
-	//     *   The rightmost domain label contains only letters and wildcard characters. It does not contain digits or hyphens (-).
-	//     *   The domain labels do not start or end with hyphens (-).
-	//     *   You can use asterisks (\*) and question marks (?) anywhere in a domain label as wildcard characters.
+	//     	- The hostname is 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), and periods (.). Asterisks (\\*) and question marks (?) can be used as wildcard characters.
+	//
+	//     	- The hostname contains at least one period (.) but does not start or end with a period (.).
+	//
+	//     	- The rightmost domain label contains only letters and wildcard characters. It does not contain digits or hyphens (-).
+	//
+	//     	- The domain labels do not start or end with hyphens (-).
+	//
+	//     	- You can use asterisks (\\*) and question marks (?) anywhere in a domain label as wildcard characters.
+	//
+	// example:
+	//
+	// www.example.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The path to which requests are forwarded. The path is 1 to 128 characters in length and starts with a forward slash (/). The path can contain letters, digits, asterisks (\*), question marks (?), and the following special characters: `$ - _ . + / & ~ @ :`. The path does not contain the following special characters: `" % # ; ! ( ) [ ] ^ , "`.
+	// The path to which requests are forwarded. The path is 1 to 128 characters in length and starts with a forward slash (/). The path can contain letters, digits, asterisks (\\*), question marks (?), and the following special characters: `$ - _ . + / & ~ @ :`. The path does not contain the following special characters: `" % # ; ! ( ) [ ] ^ , "`.
+	//
+	// example:
+	//
+	// /tsdf
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The query string of the URL to which requests are forwarded. The query string is 1 to 128 characters in length, and can contain printable characters, excluding uppercase letters and the following special characters: `# [ ] { } \ | < > &`.
+	// The query string of the URL to which requests are forwarded. The query string is 1 to 128 characters in length, and can contain printable characters, excluding uppercase letters and the following special characters: `# [ ] { } \\ | < > &`.
+	//
+	// example:
+	//
+	// quedsa
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 }
 
@@ -12435,9 +15870,17 @@ func (s *ListRulesResponseBodyRulesRuleActionsRewriteConfig) SetQuery(v string) 
 type ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig struct {
 	// The QPS of each IP address. Valid values: **1 to 100000**.
 	//
-	// > If you specify this parameter and **QPS**, the value of **PerIpQps** must be smaller than the value of **QPS**.
+	// > If you specify this parameter and **QPS**, the value of **PerIpQps*	- must be smaller than the value of **QPS**.
+	//
+	// example:
+	//
+	// 80
 	PerIpQps *int32 `json:"PerIpQps,omitempty" xml:"PerIpQps,omitempty"`
-	// The number of queries per second (QPS). Valid values: **1** to **100000**.
+	// The number of queries per second (QPS). Valid values: **1*	- to **100000**.
+	//
+	// example:
+	//
+	// 4
 	QPS *int32 `json:"QPS,omitempty" xml:"QPS,omitempty"`
 }
 
@@ -12503,8 +15946,16 @@ func (s *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConf
 
 type ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples struct {
 	// The server group ID.
+	//
+	// example:
+	//
+	// srg-00mkgijak0w4qgz9****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// The weight. Valid values: **0** to **100**.
+	// The weight. Valid values: **0*	- to **100**.
+	//
+	// example:
+	//
+	// 2
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
@@ -12547,13 +15998,23 @@ type ListRulesResponseBodyRulesRuleConditions struct {
 	SourceIpConfig *ListRulesResponseBodyRulesRuleConditionsSourceIpConfig `json:"SourceIpConfig,omitempty" xml:"SourceIpConfig,omitempty" type:"Struct"`
 	// The type of forwarding rule. Valid values:
 	//
-	// *   **Host**: Requests are forwarded based on hosts.
-	// *   **Path**: Requests are forwarded based on paths.
-	// *   **Header**: Requests are forwarded based on HTTP headers.
-	// *   **QueryString**: Requests are forwarded based on query strings.
-	// *   **Method**: Requests are forwarded based on request methods.
-	// *   **Cookie**: Requests are forwarded based on cookies.
-	// *   **SourceIp**: Requests are distributed based on source IP addresses.
+	// 	- **Host**: Requests are forwarded based on hosts.
+	//
+	// 	- **Path**: Requests are forwarded based on paths.
+	//
+	// 	- **Header**: Requests are forwarded based on HTTP headers.
+	//
+	// 	- **QueryString**: Requests are forwarded based on query strings.
+	//
+	// 	- **Method**: Requests are forwarded based on request methods.
+	//
+	// 	- **Cookie**: Requests are forwarded based on cookies.
+	//
+	// 	- **SourceIp**: Requests are distributed based on source IP addresses.
+	//
+	// example:
+	//
+	// Host
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -12634,9 +16095,17 @@ func (s *ListRulesResponseBodyRulesRuleConditionsCookieConfig) SetValues(v []*Li
 }
 
 type ListRulesResponseBodyRulesRuleConditionsCookieConfigValues struct {
-	// The key of the cookie. The key is 1 to 100 characters in length, and can contain printable characters such as lowercase letters, asterisks (\*), and question marks (?). The key cannot contain uppercase letters, space characters, or the following special characters: `# [ ] { } \ | < > &`.
+	// The key of the cookie. The key is 1 to 100 characters in length, and can contain printable characters such as lowercase letters, asterisks (\\*), and question marks (?). The key cannot contain uppercase letters, space characters, or the following special characters: `# [ ] { } \\ | < > &`.
+	//
+	// example:
+	//
+	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the cookie. The value is 1 to 128 characters in length, and can contain printable characters such as lowercase letters, asterisks (\*), and question marks (?). Uppercase letters, space characters, and the following special characters are not supported: `# [ ] { } \ | < > &`.
+	// The value of the cookie. The value is 1 to 128 characters in length, and can contain printable characters such as lowercase letters, asterisks (\\*), and question marks (?). Uppercase letters, space characters, and the following special characters are not supported: `# [ ] { } \\ | < > &`.
+	//
+	// example:
+	//
+	// test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -12659,7 +16128,11 @@ func (s *ListRulesResponseBodyRulesRuleConditionsCookieConfigValues) SetValue(v 
 }
 
 type ListRulesResponseBodyRulesRuleConditionsHeaderConfig struct {
-	// The key of the header. The key must be 1 to 40 characters in length, and can contain lowercase letters, digits, hyphens (-), and underscores (\_). Cookie and Host are not supported.
+	// The key of the header. The key must be 1 to 40 characters in length, and can contain lowercase letters, digits, hyphens (-), and underscores (_). Cookie and Host are not supported.
+	//
+	// example:
+	//
+	// Port
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The values of the header.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
@@ -12756,9 +16229,17 @@ func (s *ListRulesResponseBodyRulesRuleConditionsQueryStringConfig) SetValues(v 
 }
 
 type ListRulesResponseBodyRulesRuleConditionsQueryStringConfigValues struct {
-	// They key of the query string. The key must be 1 to 100 characters in length, and can contain printable characters such as lowercase letters, asterisks (\*), and question marks (?). The key cannot contain uppercase letters, space characters, or the following special characters: `# [ ] { } \ | < > &`.
+	// They key of the query string. The key must be 1 to 100 characters in length, and can contain printable characters such as lowercase letters, asterisks (\\*), and question marks (?). The key cannot contain uppercase letters, space characters, or the following special characters: `# [ ] { } \\ | < > &`.
+	//
+	// example:
+	//
+	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the query string. The value must be 1 to 128 characters in length, and can contain printable characters such as lowercase letters, asterisks (\*), and question marks (?). However, uppercase letters, space characters, and the following special characters are not supported: `# [ ] { } \ | < > &`.
+	// The value of the query string. The value must be 1 to 128 characters in length, and can contain printable characters such as lowercase letters, asterisks (\\*), and question marks (?). However, uppercase letters, space characters, and the following special characters are not supported: `# [ ] { } \\ | < > &`.
+	//
+	// example:
+	//
+	// test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -12781,7 +16262,7 @@ func (s *ListRulesResponseBodyRulesRuleConditionsQueryStringConfigValues) SetVal
 }
 
 type ListRulesResponseBodyRulesRuleConditionsResponseHeaderConfig struct {
-	// The header key. The key must be 1 to 40 characters in length, and can contain lowercase letters, digits, hyphens (-), and underscores (\_). Cookie and Host are not supported.
+	// The header key. The key must be 1 to 40 characters in length, and can contain lowercase letters, digits, hyphens (-), and underscores (_). Cookie and Host are not supported.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The header values.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
@@ -12894,14 +16375,27 @@ func (s *ListRulesResponse) SetBody(v *ListRulesResponseBody) *ListRulesResponse
 }
 
 type ListSecurityPoliciesRequest struct {
-	// The number of entries per page. Valid values: **1** to **100**. Default value: **20**.
+	// The number of entries per page. Valid values: **1*	- to **100**. Default value: **20**.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   You do not need to specify this parameter for the first request.
-	// *   You must specify the token that is obtained from the previous query as the value of **NextToken**.
+	// 	- You do not need to specify this parameter for the first request.
+	//
+	// 	- You must specify the token that is obtained from the previous query as the value of **NextToken**.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-atstuj3rtop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The security policy IDs. You can specify up to 20 IDs.
 	SecurityPolicyIds []*string `json:"SecurityPolicyIds,omitempty" xml:"SecurityPolicyIds,omitempty" type:"Repeated"`
@@ -12951,8 +16445,16 @@ func (s *ListSecurityPoliciesRequest) SetTag(v []*ListSecurityPoliciesRequestTag
 
 type ListSecurityPoliciesRequestTag struct {
 	// The tag key. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value. The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// product
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -12976,17 +16478,34 @@ func (s *ListSecurityPoliciesRequestTag) SetValue(v string) *ListSecurityPolicie
 
 type ListSecurityPoliciesResponseBody struct {
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If **NextToken** is empty, no next page exists.
-	// *   If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 593B0448-D13E-4C56-AC0D-FDF0FDE0E9A3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The supported security policies.
 	SecurityPolicies []*ListSecurityPoliciesResponseBodySecurityPolicies `json:"SecurityPolicies,omitempty" xml:"SecurityPolicies,omitempty" type:"Repeated"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1000
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -13027,17 +16546,38 @@ type ListSecurityPoliciesResponseBodySecurityPolicies struct {
 	// The supported cipher suites.
 	Ciphers []*string `json:"Ciphers,omitempty" xml:"Ciphers,omitempty" type:"Repeated"`
 	// The time when the resource was created.
+	//
+	// example:
+	//
+	// 2023-02-15T07:37:33Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-atstuj3rtop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the security policy.
+	//
+	// example:
+	//
+	// rg-atstuj3rtop****
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 	// The name of the security policy.
+	//
+	// example:
+	//
+	// test-secrity
 	SecurityPolicyName *string `json:"SecurityPolicyName,omitempty" xml:"SecurityPolicyName,omitempty"`
 	// The status of the security policy. Valid values:
 	//
-	// *   **Configuring**
-	// *   **Available**
+	// 	- **Configuring**
+	//
+	// 	- **Available**
+	//
+	// example:
+	//
+	// Available
 	SecurityPolicyStatus *string `json:"SecurityPolicyStatus,omitempty" xml:"SecurityPolicyStatus,omitempty"`
 	// The supported TLS protocol versions.
 	TLSVersions []*string `json:"TLSVersions,omitempty" xml:"TLSVersions,omitempty" type:"Repeated"`
@@ -13095,8 +16635,16 @@ func (s *ListSecurityPoliciesResponseBodySecurityPolicies) SetTags(v []*ListSecu
 
 type ListSecurityPoliciesResponseBodySecurityPoliciesTags struct {
 	// The tag key.
+	//
+	// example:
+	//
+	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
+	//
+	// example:
+	//
+	// product
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -13149,6 +16697,8 @@ func (s *ListSecurityPoliciesResponse) SetBody(v *ListSecurityPoliciesResponseBo
 
 type ListSecurityPolicyRelationsRequest struct {
 	// The security policy IDs. You can specify up to five IDs.
+	//
+	// This parameter is required.
 	SecurityPolicyIds []*string `json:"SecurityPolicyIds,omitempty" xml:"SecurityPolicyIds,omitempty" type:"Repeated"`
 }
 
@@ -13167,6 +16717,10 @@ func (s *ListSecurityPolicyRelationsRequest) SetSecurityPolicyIds(v []*string) *
 
 type ListSecurityPolicyRelationsResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 593B0448-D13E-4C56-AC0D-FDF0FDE0E9A3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The security policies and the listeners that are associated with the security policies.
 	SecrityPolicyRelations []*ListSecurityPolicyRelationsResponseBodySecrityPolicyRelations `json:"SecrityPolicyRelations,omitempty" xml:"SecrityPolicyRelations,omitempty" type:"Repeated"`
@@ -13194,6 +16748,10 @@ type ListSecurityPolicyRelationsResponseBodySecrityPolicyRelations struct {
 	// The listeners that are associated with the security policy.
 	RelatedListeners []*ListSecurityPolicyRelationsResponseBodySecrityPolicyRelationsRelatedListeners `json:"RelatedListeners,omitempty" xml:"RelatedListeners,omitempty" type:"Repeated"`
 	// The security policy ID.
+	//
+	// example:
+	//
+	// scp-bp1bpn0kn9****
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 }
 
@@ -13217,12 +16775,28 @@ func (s *ListSecurityPolicyRelationsResponseBodySecrityPolicyRelations) SetSecur
 
 type ListSecurityPolicyRelationsResponseBodySecrityPolicyRelationsRelatedListeners struct {
 	// The listener ID.
+	//
+	// example:
+	//
+	// lsn-0bfuc****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The listener port.
+	//
+	// example:
+	//
+	// 80
 	ListenerPort *int64 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	// The listener protocol.
+	//
+	// example:
+	//
+	// HTTPS
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
 	// The Server Load Balancer (SLB) instance ID.
+	//
+	// example:
+	//
+	// lb-bp1o94dp5i6ea****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 }
 
@@ -13284,14 +16858,27 @@ func (s *ListSecurityPolicyRelationsResponse) SetBody(v *ListSecurityPolicyRelat
 }
 
 type ListServerGroupServersRequest struct {
-	// The maximum number of entries to return. Valid values: **1** to **100**. If you do not specify a value, the default value **20** is used.
+	// The maximum number of entries to return. Valid values: **1*	- to **100**. If you do not specify a value, the default value **20*	- is used.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   You do not need to specify this parameter for the first request.
-	// *   You must specify the token that is obtained from the previous query as the value of **NextToken**.
+	// 	- You do not need to specify this parameter for the first request.
+	//
+	// 	- You must specify the token that is obtained from the previous query as the value of **NextToken**.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXG****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The server group ID.
+	//
+	// example:
+	//
+	// rg-atstuj3rtop****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 	// The IDs of the servers.
 	ServerIds []*string `json:"ServerIds,omitempty" xml:"ServerIds,omitempty" type:"Repeated"`
@@ -13336,10 +16923,18 @@ type ListServerGroupServersRequestTag struct {
 	// The tag key. You can specify up to 10 tag keys.
 	//
 	// The tag key can be up to 64 characters in length, and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+	//
+	// example:
+	//
+	// Test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value. You can specify up to 10 tag values.
 	//
 	// The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+	//
+	// example:
+	//
+	// Test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -13363,17 +16958,34 @@ func (s *ListServerGroupServersRequestTag) SetValue(v string) *ListServerGroupSe
 
 type ListServerGroupServersResponseBody struct {
 	// The maximum number of entries returned.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If **NextToken** is empty, no next page exists.
-	// *   If **NextToken** is not empty, the value of NextToken can be used in the next request to retrieve a new page of results.
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If **NextToken*	- is not empty, the value of NextToken can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f8****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// A list of backend servers.
 	Servers []*ListServerGroupServersResponseBodyServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 3
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -13412,32 +17024,72 @@ func (s *ListServerGroupServersResponseBody) SetTotalCount(v int32) *ListServerG
 
 type ListServerGroupServersResponseBodyServers struct {
 	// The description of the backend server.
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The port used by the backend server. Valid values: **1** to **65535**.
+	// The port used by the backend server. Valid values: **1*	- to **65535**.
+	//
+	// example:
+	//
+	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// Indicates whether the remote IP address feature is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	RemoteIpEnabled *bool `json:"RemoteIpEnabled,omitempty" xml:"RemoteIpEnabled,omitempty"`
 	// The ID of the server group.
+	//
+	// example:
+	//
+	// sgp-qy042e1jabmprh****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 	// The ID of the backend server.
 	//
-	// > If **ServerType** is set to **Fc**, **ServerId** is the ARN of a function.
+	// > If **ServerType*	- is set to **Fc**, **ServerId*	- is the ARN of a function.
+	//
+	// example:
+	//
+	// i-bp1f9kdprbgy9uiu****
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
 	// The IP address in inclusive ENI mode.
+	//
+	// example:
+	//
+	// 192.168.XX.XX
 	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
 	// The type of the backend server.
+	//
+	// example:
+	//
+	// Ecs
 	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
 	// The status of the backend server. Valid values:
 	//
-	// *   **Adding**
-	// *   **Available**
-	// *   **Configuring**
-	// *   **Removing**
+	// 	- **Adding**
+	//
+	// 	- **Available**
+	//
+	// 	- **Configuring**
+	//
+	// 	- **Removing**
+	//
+	// example:
+	//
+	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The weight of the backend server. An ECS instance with a higher weight receives more requests.
+	//
+	// example:
+	//
+	// 100
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
@@ -13524,23 +17176,43 @@ func (s *ListServerGroupServersResponse) SetBody(v *ListServerGroupServersRespon
 }
 
 type ListServerGroupsRequest struct {
-	// The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
+	// The number of entries to return on each page. Valid values: **1*	- to **100**. Default value: **20**.
+	//
+	// example:
+	//
+	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   You do not need to specify this parameter for the first request.
-	// *   You must specify the token that is obtained from the previous query as the value of **NextToken**.
+	// 	- You do not need to specify this parameter for the first request.
+	//
+	// 	- You must specify the token that is obtained from the previous query as the value of **NextToken**.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXG****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the resource group to which the server group belongs.
+	//
+	// example:
+	//
+	// rg-atstuj3rtop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The server group IDs.
 	ServerGroupIds []*string `json:"ServerGroupIds,omitempty" xml:"ServerGroupIds,omitempty" type:"Repeated"`
 	// The names of the server groups to be queried. You can specify at most 10 server group names.
 	ServerGroupNames []*string `json:"ServerGroupNames,omitempty" xml:"ServerGroupNames,omitempty" type:"Repeated"`
-	ServerGroupType  *string   `json:"ServerGroupType,omitempty" xml:"ServerGroupType,omitempty"`
+	// example:
+	//
+	// Instance
+	ServerGroupType *string `json:"ServerGroupType,omitempty" xml:"ServerGroupType,omitempty"`
 	// The tags that are added to the server group. You can specify up to 10 tags in each call.
 	Tag []*ListServerGroupsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the virtual private cloud (VPC).
+	//
+	// example:
+	//
+	// vpc-bp15zckdt37pq72zv****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -13596,10 +17268,18 @@ type ListServerGroupsRequestTag struct {
 	// The tag key. You can specify up to 10 tag keys.
 	//
 	// The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+	//
+	// example:
+	//
+	// Test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value. You can specify up to 10 tag values.
 	//
 	// The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+	//
+	// example:
+	//
+	// Test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -13623,17 +17303,34 @@ func (s *ListServerGroupsRequestTag) SetValue(v string) *ListServerGroupsRequest
 
 type ListServerGroupsResponseBody struct {
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If **NextToken** is empty, no next page exists.
-	// *   If **NextToken** is not empty, the value of NextToken can be used in the next request to retrieve a new page of results.
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If **NextToken*	- is not empty, the value of NextToken can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f8****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// A list of server groups.
 	ServerGroups []*ListServerGroupsResponseBodyServerGroups `json:"ServerGroups,omitempty" xml:"ServerGroups,omitempty" type:"Repeated"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1000
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -13673,53 +17370,111 @@ func (s *ListServerGroupsResponseBody) SetTotalCount(v int32) *ListServerGroupsR
 type ListServerGroupsResponseBodyServerGroups struct {
 	// Indicates whether configuration management is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	ConfigManagedEnabled  *bool                                                          `json:"ConfigManagedEnabled,omitempty" xml:"ConfigManagedEnabled,omitempty"`
 	ConnectionDrainConfig *ListServerGroupsResponseBodyServerGroupsConnectionDrainConfig `json:"ConnectionDrainConfig,omitempty" xml:"ConnectionDrainConfig,omitempty" type:"Struct"`
 	// The time when the resource was created.
+	//
+	// example:
+	//
+	// 2022-07-02T02:49:05Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The health check configuration.
 	HealthCheckConfig *ListServerGroupsResponseBodyServerGroupsHealthCheckConfig `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty" type:"Struct"`
 	// Indicates whether IPv6 is supported. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	Ipv6Enabled *bool `json:"Ipv6Enabled,omitempty" xml:"Ipv6Enabled,omitempty"`
 	// The backend protocol. Valid values:
 	//
-	// *   **HTTP**: allows you to associate HTTPS, HTTP, or QUIC listeners with backend servers.
-	// *   **HTTPS**: allows you to associate an HTTPS listener with the server group.
-	// *   **GRPC**: allows you to associate an HTTPS or QUIC listener with the server group.
+	// 	- **HTTP**: allows you to associate HTTPS, HTTP, or QUIC listeners with backend servers.
+	//
+	// 	- **HTTPS**: allows you to associate an HTTPS listener with the server group.
+	//
+	// 	- **GRPC**: allows you to associate an HTTPS or QUIC listener with the server group.
+	//
+	// example:
+	//
+	// HTTP
 	Protocol               *string   `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	RelatedLoadBalancerIds []*string `json:"RelatedLoadBalancerIds,omitempty" xml:"RelatedLoadBalancerIds,omitempty" type:"Repeated"`
 	// The resource group ID to which the GA instance belongs.
+	//
+	// example:
+	//
+	// rg-atstuj3rtop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The scheduling algorithm. Valid values:
 	//
-	// *   **Wrr**: Backend servers with higher weights receive more requests than backend servers with lower weights.
-	// *   **Wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections on a backend server. If multiple backend servers have the same weight, requests are forwarded to the backend server with the least number of connections.
-	// *   **Sch**: The consistent hashing algorithm is used. Requests from the same source IP address are distributed to the same backend server.
+	// 	- **Wrr**: Backend servers with higher weights receive more requests than backend servers with lower weights.
+	//
+	// 	- **Wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections on a backend server. If multiple backend servers have the same weight, requests are forwarded to the backend server with the least number of connections.
+	//
+	// 	- **Sch**: The consistent hashing algorithm is used. Requests from the same source IP address are distributed to the same backend server.
+	//
+	// example:
+	//
+	// Wrr
 	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
 	// The number of backend servers in the server group.
+	//
+	// example:
+	//
+	// 1
 	ServerCount *int32 `json:"ServerCount,omitempty" xml:"ServerCount,omitempty"`
 	// The ID of the server group.
+	//
+	// example:
+	//
+	// sgp-cige6j****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 	// The name of the server group.
+	//
+	// example:
+	//
+	// Group3
 	ServerGroupName *string `json:"ServerGroupName,omitempty" xml:"ServerGroupName,omitempty"`
 	// The status of the server group. Valid values:
 	//
-	// *   **Creating**
-	// *   **Available**
-	// *   **Configuring**
+	// 	- **Creating**
+	//
+	// 	- **Available**
+	//
+	// 	- **Configuring**
+	//
+	// example:
+	//
+	// Available
 	ServerGroupStatus *string `json:"ServerGroupStatus,omitempty" xml:"ServerGroupStatus,omitempty"`
 	// The type of server group. Valid values:
 	//
-	// *   **Instance**
-	// *   **Ip**
-	// *   **Fc**
+	// 	- **Instance**
+	//
+	// 	- **Ip**
+	//
+	// 	- **Fc**
+	//
+	// example:
+	//
+	// Instance
 	ServerGroupType *string `json:"ServerGroupType,omitempty" xml:"ServerGroupType,omitempty"`
 	// The service name.
+	//
+	// example:
+	//
+	// test
 	ServiceName     *string                                                  `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	SlowStartConfig *ListServerGroupsResponseBodyServerGroupsSlowStartConfig `json:"SlowStartConfig,omitempty" xml:"SlowStartConfig,omitempty" type:"Struct"`
 	// The configuration of session persistence.
@@ -13730,10 +17485,19 @@ type ListServerGroupsResponseBodyServerGroups struct {
 	UchConfig *ListServerGroupsResponseBodyServerGroupsUchConfig `json:"UchConfig,omitempty" xml:"UchConfig,omitempty" type:"Struct"`
 	// Indicates whether long-lived TCP connections are enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	UpstreamKeepaliveEnabled *bool `json:"UpstreamKeepaliveEnabled,omitempty" xml:"UpstreamKeepaliveEnabled,omitempty"`
 	// The VPC ID.
+	//
+	// example:
+	//
+	// vpc-bp15zckdt37pq72zv****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -13876,59 +17640,113 @@ func (s *ListServerGroupsResponseBodyServerGroupsConnectionDrainConfig) SetConne
 type ListServerGroupsResponseBodyServerGroupsHealthCheckConfig struct {
 	// The HTTP status codes that indicate whether the backend server passes the health check.
 	HealthCheckCodes []*string `json:"HealthCheckCodes,omitempty" xml:"HealthCheckCodes,omitempty" type:"Repeated"`
-	// The port that you want to use for health checks on backend servers. Valid values: **0** to **65535**.
+	// The port that you want to use for health checks on backend servers. Valid values: **0*	- to **65535**.
 	//
-	// A value of **0** indicates that the port on a backend server is used for health checks.
+	// A value of **0*	- indicates that the port on a backend server is used for health checks.
+	//
+	// example:
+	//
+	// 80
 	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
 	// Indicates whether the health check feature is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	HealthCheckEnabled *bool `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
 	// The domain name that is used for health checks. The domain name meets the following requirements:
 	//
-	// *   The domain name is 1 to 80 characters in length.
-	// *   The domain name contains lowercase letters, digits, hyphens (-), and periods (.).
-	// *   The domain name contains at least one period (.) but does not start or end with a period (.).
-	// *   The rightmost domain label of the domain name contains only letters, and does not contain digits or hyphens (-).
-	// *   The domain name does not start or end with a hyphen (-).
+	// 	- The domain name is 1 to 80 characters in length.
 	//
-	// >  This parameter takes effect only when **HealthCheckProtocol** is set to **HTTP** or **HTTPS**. HTTPS is unavailable by default. If you want to use HTTPS, log on to the SLB console, go to the Quota Center page, and then apply for the privilege to use HTPS on the **ALB** tab.
+	// 	- The domain name contains lowercase letters, digits, hyphens (-), and periods (.).
+	//
+	// 	- The domain name contains at least one period (.) but does not start or end with a period (.).
+	//
+	// 	- The rightmost domain label of the domain name contains only letters, and does not contain digits or hyphens (-).
+	//
+	// 	- The domain name does not start or end with a hyphen (-).
+	//
+	// >  This parameter takes effect only when **HealthCheckProtocol*	- is set to **HTTP*	- or **HTTPS**. HTTPS is unavailable by default. If you want to use HTTPS, log on to the SLB console, go to the Quota Center page, and then apply for the privilege to use HTPS on the **ALB*	- tab.
+	//
+	// example:
+	//
+	// www.example.com
 	HealthCheckHost *string `json:"HealthCheckHost,omitempty" xml:"HealthCheckHost,omitempty"`
 	// The HTTP version that is used for health checks.
 	//
-	// Valid values: **HTTP1.0** and **HTTP1.1**.
+	// Valid values: **HTTP1.0*	- and **HTTP1.1**.
 	//
-	// >  This parameter takes effect when **HealthCheckProtocol** is set to **HTTP** or **HTTPS**. HTTPS is unavailable by default. If you want to use HTTPS, log on to the SLB console, go to the Quota Center page, and then apply for the privilege to use HTPS on the **ALB** tab.
+	// >  This parameter takes effect when **HealthCheckProtocol*	- is set to **HTTP*	- or **HTTPS**. HTTPS is unavailable by default. If you want to use HTTPS, log on to the SLB console, go to the Quota Center page, and then apply for the privilege to use HTPS on the **ALB*	- tab.
+	//
+	// example:
+	//
+	// HTTP1.1
 	HealthCheckHttpVersion *string `json:"HealthCheckHttpVersion,omitempty" xml:"HealthCheckHttpVersion,omitempty"`
-	// The interval between two consecutive health checks. Unit: seconds. Valid values: **1** to **50**.
+	// The interval between two consecutive health checks. Unit: seconds. Valid values: **1*	- to **50**.
+	//
+	// example:
+	//
+	// 5
 	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
 	// The HTTP method that is used for health checks. Valid values:
 	//
-	// *   **GET**: If the length of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
-	// *   **POST**: gRPC health checks on listeners use the POST method by default.
-	// *   **HEAD**: HTTP and HTTPS health checks on listeners use the HEAD method by default.
+	// 	- **GET**: If the length of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
 	//
-	// >  This parameter takes effect when **HealthCheckProtocol** is set to **HTTP**, **HTTPS**, or **gRPC**. HTTPS is unavailable by default. If you want to use HTTPS, log on to the SLB console, go to the Quota Center page, and then apply for the privilege to use HTTPS on the **ALB** tab.
+	// 	- **POST**: gRPC health checks on listeners use the POST method by default.
+	//
+	// 	- **HEAD**: HTTP and HTTPS health checks on listeners use the HEAD method by default.
+	//
+	// >  This parameter takes effect when **HealthCheckProtocol*	- is set to **HTTP**, **HTTPS**, or **gRPC**. HTTPS is unavailable by default. If you want to use HTTPS, log on to the SLB console, go to the Quota Center page, and then apply for the privilege to use HTTPS on the **ALB*	- tab.
+	//
+	// example:
+	//
+	// HEAD
 	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
 	// The path that is used for health checks.
 	//
-	// >  This parameter takes effect only when **HealthCheckProtocol** is set to **HTTP** or **HTTPS**. HTTPS is unavailable by default. If you want to use HTTPS, log on to the SLB console, go to the Quota Center page, and then apply for the privilege to use HTPS on the **ALB** tab.
+	// >  This parameter takes effect only when **HealthCheckProtocol*	- is set to **HTTP*	- or **HTTPS**. HTTPS is unavailable by default. If you want to use HTTPS, log on to the SLB console, go to the Quota Center page, and then apply for the privilege to use HTPS on the **ALB*	- tab.
+	//
+	// example:
+	//
+	// /test/index.html
 	HealthCheckPath *string `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
 	// The protocol that you want to use for health checks. Valid values:
 	//
-	// *   **HTTP**: ALB performs HTTP health checks by sending HEAD or GET requests to a backend server to check whether the backend server is healthy.
-	// *   **HTTPS**: ALB performs HTTPS health checks by sending HEAD or GET requests to a backend server to check whether the backend server is healthy. HTTPS supports data encryption and provides higher data security than HTTP.
-	// *   **TCP**: To perform TCP health checks, ALB sends SYN packets to the backend server to check whether the port of the backend server is available to receive requests.
-	// *   **gRPC**: ALB performs gRPC health checks by sending POST or GET requests to a backend server to check whether the backend server is healthy.
+	// 	- **HTTP**: ALB performs HTTP health checks by sending HEAD or GET requests to a backend server to check whether the backend server is healthy.
 	//
-	// >  HTTPS is unavailable by default. If you want to use HTTPS, log on to the SLB console, go to the Quota Center page, and then apply for the privilege to use HTTPS on the **ALB** tab.
+	// 	- **HTTPS**: ALB performs HTTPS health checks by sending HEAD or GET requests to a backend server to check whether the backend server is healthy. HTTPS supports data encryption and provides higher data security than HTTP.
+	//
+	// 	- **TCP**: To perform TCP health checks, ALB sends SYN packets to the backend server to check whether the port of the backend server is available to receive requests.
+	//
+	// 	- **gRPC**: ALB performs gRPC health checks by sending POST or GET requests to a backend server to check whether the backend server is healthy.
+	//
+	// >  HTTPS is unavailable by default. If you want to use HTTPS, log on to the SLB console, go to the Quota Center page, and then apply for the privilege to use HTTPS on the **ALB*	- tab.
+	//
+	// example:
+	//
+	// HTTP
 	HealthCheckProtocol *string `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
 	// The timeout period for a health check response. If a backend server does not respond within the specified timeout period, the backend server fails the health check. Unit: seconds.
+	//
+	// example:
+	//
+	// 3
 	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail** to **success**.
+	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail*	- to **success**.
+	//
+	// example:
+	//
+	// 4
 	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**.
+	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success*	- to **fail**.
+	//
+	// example:
+	//
+	// 4
 	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
@@ -14025,20 +17843,38 @@ func (s *ListServerGroupsResponseBodyServerGroupsSlowStartConfig) SetSlowStartEn
 
 type ListServerGroupsResponseBodyServerGroupsStickySessionConfig struct {
 	// The cookie that is configured on the server.
-	Cookie *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
-	// The timeout period of a cookie. Unit: seconds. Valid values: **1** to **86400**.
 	//
-	// >  This parameter takes effect only when **StickySessionEnabled** is set to **true** and **StickySessionType** is set to **Insert**.
+	// example:
+	//
+	// B490B5EBF6F3CD402E515D22BCDA****
+	Cookie *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
+	// The timeout period of a cookie. Unit: seconds. Valid values: **1*	- to **86400**.
+	//
+	// >  This parameter takes effect only when **StickySessionEnabled*	- is set to **true*	- and **StickySessionType*	- is set to **Insert**.
+	//
+	// example:
+	//
+	// 1000
 	CookieTimeout *int32 `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
 	// Indicates whether session persistence is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	StickySessionEnabled *bool `json:"StickySessionEnabled,omitempty" xml:"StickySessionEnabled,omitempty"`
 	// The method that is used to handle a cookie. Valid values:
 	//
-	// *   **Insert**: inserts a cookie. ALB inserts a cookie (SERVERID) into the first HTTP or HTTPS response packet that is sent to a client. The next request from the client contains this cookie and the listener distributes this request to the recorded backend server.
-	// *   **Server**: rewrites a cookie. When ALB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. Subsequent requests to ALB carry this user-defined cookie, and ALB determines the destination servers of the requests based on the cookies.
+	// 	- **Insert**: inserts a cookie. ALB inserts a cookie (SERVERID) into the first HTTP or HTTPS response packet that is sent to a client. The next request from the client contains this cookie and the listener distributes this request to the recorded backend server.
+	//
+	// 	- **Server**: rewrites a cookie. When ALB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. Subsequent requests to ALB carry this user-defined cookie, and ALB determines the destination servers of the requests based on the cookies.
+	//
+	// example:
+	//
+	// Insert
 	StickySessionType *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
 }
 
@@ -14072,8 +17908,16 @@ func (s *ListServerGroupsResponseBodyServerGroupsStickySessionConfig) SetStickyS
 
 type ListServerGroupsResponseBodyServerGroupsTags struct {
 	// The tag key.
+	//
+	// example:
+	//
+	// Test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
+	//
+	// example:
+	//
+	// Test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -14097,8 +17941,16 @@ func (s *ListServerGroupsResponseBodyServerGroupsTags) SetValue(v string) *ListS
 
 type ListServerGroupsResponseBodyServerGroupsUchConfig struct {
 	// The data type of the common parameter.
+	//
+	// example:
+	//
+	// QueryString
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The parameter value for consistent hashing.
+	//
+	// example:
+	//
+	// abc
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -14151,6 +18003,10 @@ func (s *ListServerGroupsResponse) SetBody(v *ListServerGroupsResponseBody) *Lis
 
 type ListSystemSecurityPoliciesResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 593B0448-D13E-4C56-AC0D-FDF0FDE0E9A3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The security policies.
 	SecurityPolicies []*ListSystemSecurityPoliciesResponseBodySecurityPolicies `json:"SecurityPolicies,omitempty" xml:"SecurityPolicies,omitempty" type:"Repeated"`
@@ -14178,6 +18034,10 @@ type ListSystemSecurityPoliciesResponseBodySecurityPolicies struct {
 	// The supported encryption algorithms.
 	Ciphers []*string `json:"Ciphers,omitempty" xml:"Ciphers,omitempty" type:"Repeated"`
 	// The ID of the security policy.
+	//
+	// example:
+	//
+	// spy-n0kn923****
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 	// The TLS versions that are supported.
 	TLSVersions []*string `json:"TLSVersions,omitempty" xml:"TLSVersions,omitempty" type:"Repeated"`
@@ -14241,22 +18101,48 @@ type ListTagKeysRequest struct {
 	// Valid values: **Custom**, **System**, and **All**.
 	//
 	// Default value: **All**.
+	//
+	// example:
+	//
+	// System
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The tag key. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The number of entries per page. Valid values: **1** to **100**. Default value: **20**.
+	// The number of entries per page. Valid values: **1*	- to **100**. Default value: **20**.
+	//
+	// example:
+	//
+	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   You do not need to specify this parameter for the first request.
-	// *   You must specify the token that is obtained from the previous query as the value of **NextToken**.
+	// 	- You do not need to specify this parameter for the first request.
+	//
+	// 	- You must specify the token that is obtained from the previous query as the value of **NextToken**.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The type of the resource. Valid values:
 	//
-	// *   **acl**: an access control list (ACL)
-	// *   **loadbalancer**: an Application Load Balancer (ALB) instance
-	// *   **securitypolicy**: a security policy
-	// *   **servergroup**: a server group
+	// 	- **acl**: an access control list (ACL)
+	//
+	// 	- **loadbalancer**: an Application Load Balancer (ALB) instance
+	//
+	// 	- **securitypolicy**: a security policy
+	//
+	// 	- **servergroup**: a server group
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// loadbalancer
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -14295,17 +18181,34 @@ func (s *ListTagKeysRequest) SetResourceType(v string) *ListTagKeysRequest {
 
 type ListTagKeysResponseBody struct {
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If **NextToken** is empty, no next page exists.
-	// *   If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 593B0448-D13E-4C56-AC0D-FDF0FDE0E9A3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The tag keys.
 	TagKeys []*ListTagKeysResponseBodyTagKeys `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 10
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -14348,8 +18251,16 @@ type ListTagKeysResponseBodyTagKeys struct {
 	// Valid values: **Custom**, **System**, and **All**.
 	//
 	// Default value: **All**.
+	//
+	// example:
+	//
+	// System
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The tag that matches all filter conditions.
+	//
+	// example:
+	//
+	// test
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 }
 
@@ -14401,23 +18312,49 @@ func (s *ListTagKeysResponse) SetBody(v *ListTagKeysResponseBody) *ListTagKeysRe
 }
 
 type ListTagResourcesRequest struct {
-	// The number of entries per page. Valid values: **1** to **100**. Default value: **20**.
+	// The number of entries per page. Valid values: **1*	- to **100**. Default value: **20**.
+	//
+	// example:
+	//
+	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   You do not need to specify this parameter for the first request.
-	// *   You must specify the token that is obtained from the previous query as the value of **NextToken**.
+	// 	- You do not need to specify this parameter for the first request.
+	//
+	// 	- You must specify the token that is obtained from the previous query as the value of **NextToken**.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The resource IDs.
+	//
+	// example:
+	//
+	// acl-123
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of the resource. Valid values:
 	//
-	// *   **acl**: an access control list (ACL)
-	// *   **loadbalancer**: an Application Load Balancer (ALB) instance
-	// *   **securitypolicy**: a security policy
-	// *   **servergroup**: a server group
+	// 	- **acl**: an access control list (ACL)
+	//
+	// 	- **loadbalancer**: an Application Load Balancer (ALB) instance
+	//
+	// 	- **securitypolicy**: a security policy
+	//
+	// 	- **servergroup**: a server group
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// loadbalancer
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tags.
+	//
+	// example:
+	//
+	// test
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -14456,8 +18393,16 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 
 type ListTagResourcesRequestTag struct {
 	// The tag key. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value. The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// product
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -14481,13 +18426,26 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 
 type ListTagResourcesResponseBody struct {
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If **NextToken** is empty, no next page exists.
-	// *   If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 593B0448-D13E-4C56-AC0D-FDF0FDE0E9A3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The tags that match the specified keys and values.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
@@ -14523,17 +18481,36 @@ func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResp
 
 type ListTagResourcesResponseBodyTagResources struct {
 	// The resource ID.
+	//
+	// example:
+	//
+	// d-2ze1ot4ah7xjyv0d****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The type of the resource. Valid values:
 	//
-	// *   **acl**: an ACL
-	// *   **loadbalancer**: an ALB instance
-	// *   **securitypolicy**: a security policy
-	// *   **servergroup**: a server group
+	// 	- **acl**: an ACL
+	//
+	// 	- **loadbalancer**: an ALB instance
+	//
+	// 	- **securitypolicy**: a security policy
+	//
+	// 	- **servergroup**: a server group
+	//
+	// example:
+	//
+	// loadbalancer
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tag key.
+	//
+	// example:
+	//
+	// env
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// The tag value.
+	//
+	// example:
+	//
+	// product
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -14595,23 +18572,49 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ListTagValuesRequest struct {
-	// The number of entries per page. Valid values: **1** to **100**. Default value: **20**.
+	// The number of entries per page. Valid values: **1*	- to **100**. Default value: **20**.
+	//
+	// example:
+	//
+	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   You do not need to specify this parameter for the first request.
-	// *   You must specify the token that is obtained from the previous query as the value of **NextToken**.
+	// 	- You do not need to specify this parameter for the first request.
+	//
+	// 	- You must specify the token that is obtained from the previous query as the value of **NextToken**.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The resource ID.
+	//
+	// example:
+	//
+	// eip-resource-test
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The type of the resource. Valid values:
 	//
-	// *   **loadbalancer**: an Application Load Balancer (ALB) instance
-	// *   **acl**: an access control list (ACL)
-	// *   **securitypolicy**: a security policy
-	// *   **servergroup**: a server group
+	// 	- **loadbalancer**: an Application Load Balancer (ALB) instance
+	//
+	// 	- **acl**: an access control list (ACL)
+	//
+	// 	- **securitypolicy**: a security policy
+	//
+	// 	- **servergroup**: a server group
+	//
+	// example:
+	//
+	// loadbalancer
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tag key. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 }
 
@@ -14650,17 +18653,34 @@ func (s *ListTagValuesRequest) SetTagKey(v string) *ListTagValuesRequest {
 
 type ListTagValuesResponseBody struct {
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If **NextToken** is empty, no next page exists.
-	// *   If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 593B0448-D13E-4C56-AC0D-FDF0FDE0E9A3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The tag values.
 	TagValues []*string `json:"TagValues,omitempty" xml:"TagValues,omitempty" type:"Repeated"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 10
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -14729,16 +18749,37 @@ func (s *ListTagValuesResponse) SetBody(v *ListTagValuesResponseBody) *ListTagVa
 type MoveResourceGroupRequest struct {
 	// The ID of the resource group to which you want to move the resource.
 	//
-	// > You can use resource groups to manage resources owned by your Alibaba Cloud account. Resource groups simplify resource and permission management in your Alibaba Cloud account. For more information, see [What is resource management?](~~94475~~)
+	// > You can use resource groups to manage resources owned by your Alibaba Cloud account. Resource groups simplify resource and permission management in your Alibaba Cloud account. For more information, see [What is resource management?](https://help.aliyun.com/document_detail/94475.html)
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rg-9gLOoK****
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
 	// The resource ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// acl-hp34s2h0xx1ht4nwo****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The type of the resource. Valid values:
 	//
-	// *   **loadbalancer**: Application Load Balancer (ALB) instance
-	// *   **acl**: access control list (ACL)
-	// *   **securitypolicy**: security policy
-	// *   **servergroup**: server group
+	// 	- **loadbalancer**: Application Load Balancer (ALB) instance
+	//
+	// 	- **acl**: access control list (ACL)
+	//
+	// 	- **securitypolicy**: security policy
+	//
+	// 	- **servergroup**: server group
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ACL
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -14767,6 +18808,10 @@ func (s *MoveResourceGroupRequest) SetResourceType(v string) *MoveResourceGroupR
 
 type MoveResourceGroupResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 593B0448-D13E-4C56-AC0D-FDF0FDE0E9A3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14814,19 +18859,36 @@ func (s *MoveResourceGroupResponse) SetBody(v *MoveResourceGroupResponseBody) *M
 
 type RemoveEntriesFromAclRequest struct {
 	// The ACL ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// nacl-hp34s2h0xx1ht4nwo****
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 593B0448-D13E-4C56-AC0D-FDF0FDE0E9A3
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The entries that you want to remove. You can remove up to 20 entries in each call.
+	//
+	// This parameter is required.
 	Entries []*string `json:"Entries,omitempty" xml:"Entries,omitempty" type:"Repeated"`
 }
 
@@ -14860,8 +18922,16 @@ func (s *RemoveEntriesFromAclRequest) SetEntries(v []*string) *RemoveEntriesFrom
 
 type RemoveEntriesFromAclResponseBody struct {
 	// The asynchronous task ID.
+	//
+	// example:
+	//
+	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 593B0448-D13E-4C56-AC0D-FDF0FDE0E9A3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14917,16 +18987,33 @@ type RemoveServersFromServerGroupRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 593B0448-D13E-4C56-AC0D-FDF0FDE0E9A3
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The server group ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sgp-atstuj3rtop****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 	// The backend servers that you want to remove from the server group. You can specify up to 40 backend servers in each call.
+	//
+	// This parameter is required.
 	Servers []*RemoveServersFromServerGroupRequestServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
 }
 
@@ -14959,27 +19046,53 @@ func (s *RemoveServersFromServerGroupRequest) SetServers(v []*RemoveServersFromS
 }
 
 type RemoveServersFromServerGroupRequestServers struct {
-	// The port that is used by the backend server. Valid values: **1** to **65535**. You can specify at most 40 servers in each call.
+	// The port that is used by the backend server. Valid values: **1*	- to **65535**. You can specify at most 40 servers in each call.
 	//
-	// > This parameter is required if the **ServerType** parameter is set to **Ecs**, **Eni**, **Eci**, or **Ip**.
+	// > This parameter is required if the **ServerType*	- parameter is set to **Ecs**, **Eni**, **Eci**, or **Ip**.
+	//
+	// example:
+	//
+	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The backend server ID. You can specify up to 40 server IDs in each call.
 	//
-	// *   If the server group type is **Instance**, set the ServerId parameter to the ID of an ECS instance, an ENI, or an elastic container instance. These backend servers are specified by **Ecs**, **Eni**, or **Eci**.
-	// *   If the server group type is **Ip**, set the ServerId parameter to an IP address specified in the server group.
-	// *   If the server group type is **Fc**, set the ServerId parameter to the ARN of a function specified in the server group.
+	// 	- If the server group type is **Instance**, set the ServerId parameter to the ID of an ECS instance, an ENI, or an elastic container instance. These backend servers are specified by **Ecs**, **Eni**, or **Eci**.
 	//
-	// > You can call the [ListServerGroups](~~213627~~) operation to query information about the server group type so that you can set ServerId to a proper value.
+	// 	- If the server group type is **Ip**, set the ServerId parameter to an IP address specified in the server group.
+	//
+	// 	- If the server group type is **Fc**, set the ServerId parameter to the ARN of a function specified in the server group.
+	//
+	// > You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query information about the server group type so that you can set ServerId to a proper value.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// i-bp1f9kdprbgy9uiu****
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
 	// The IP address in inclusive ENI mode. You can specify at most 40 servers in each call.
+	//
+	// example:
+	//
+	// 192.168.1.1
 	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
 	// The type of the backend server. You can specify at most 40 servers in each call. Valid values:
 	//
-	// *   **Ecs**
-	// *   **Eni**
-	// *   **Eci**
-	// *   **Ip**
-	// *   **Fc**
+	// 	- **Ecs**
+	//
+	// 	- **Eni**
+	//
+	// 	- **Eci**
+	//
+	// 	- **Ip**
+	//
+	// 	- **Fc**
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Ecs
 	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
 }
 
@@ -15013,8 +19126,16 @@ func (s *RemoveServersFromServerGroupRequestServers) SetServerType(v string) *Re
 
 type RemoveServersFromServerGroupResponseBody struct {
 	// The asynchronous task ID.
+	//
+	// example:
+	//
+	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 365F4154-92F6-4AE4-92F8-7FF34B540710
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15067,23 +19188,42 @@ func (s *RemoveServersFromServerGroupResponse) SetBody(v *RemoveServersFromServe
 
 type ReplaceServersInServerGroupRequest struct {
 	// The backend servers that you want to add to the server group. You can specify up to 40 backend servers in each call.
+	//
+	// This parameter is required.
 	AddedServers []*ReplaceServersInServerGroupRequestAddedServers `json:"AddedServers,omitempty" xml:"AddedServers,omitempty" type:"Repeated"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 593B0448-D13E-4C56-AC0D-FDF0FDE0E9A3
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx` HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx` HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The backend servers that you want to remove.
+	//
+	// This parameter is required.
 	RemovedServers []*ReplaceServersInServerGroupRequestRemovedServers `json:"RemovedServers,omitempty" xml:"RemovedServers,omitempty" type:"Repeated"`
 	// The ID of the server group.
 	//
 	// > You cannot perform this operation on a server group of the Function type.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sgp-5114d593o96qxy****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 }
 
@@ -15121,28 +19261,57 @@ func (s *ReplaceServersInServerGroupRequest) SetServerGroupId(v string) *Replace
 }
 
 type ReplaceServersInServerGroupRequestAddedServers struct {
-	// The description of the backend server. The description must be 2 to 256 characters in length, and can contain letters, digits, periods (.), underscores (\_), hyphens (-), commas (,), semicolons (;), forward slashes (/), and at signs (@). You can specify at most 40 servers in each call.
+	// The description of the backend server. The description must be 2 to 256 characters in length, and can contain letters, digits, periods (.), underscores (_), hyphens (-), commas (,), semicolons (;), forward slashes (/), and at signs (@). You can specify at most 40 servers in each call.
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The port used by the server group. Valid values: **1** to **65535**. You can specify at most 40 servers in each call.
+	// The port used by the server group. Valid values: **1*	- to **65535**. You can specify at most 40 servers in each call.
+	//
+	// example:
+	//
+	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The ID of the backend server. You can specify up to 40 server IDs in each call.
 	//
-	// *   If the server group type is **Instance**, set the ServerId parameter to the ID of an ECS instance, an ENI, or an elastic container instance. These backend servers are specified by **Ecs**, **Eni**, or **Eci**.
-	// *   If the server group type is **Ip**, set the ServerId parameter to an IP address specified in the server group.
+	// 	- If the server group type is **Instance**, set the ServerId parameter to the ID of an ECS instance, an ENI, or an elastic container instance. These backend servers are specified by **Ecs**, **Eni**, or **Eci**.
 	//
-	// > You cannot perform this operation on a server group of the Function type. You can call the [ListServerGroups](~~213627~~) operation to query information about the server group type so that you can set ServerId to a proper value.
+	// 	- If the server group type is **Ip**, set the ServerId parameter to an IP address specified in the server group.
+	//
+	// > You cannot perform this operation on a server group of the Function type. You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query information about the server group type so that you can set ServerId to a proper value.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// i-bp1f9kdprbgy9uiu****
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
 	// The IP address in inclusive ENI mode. You can specify at most 40 servers in each call.
+	//
+	// example:
+	//
+	// 192.168.1.1
 	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
 	// The type of the backend server that you want to remove from the server group. You can specify up to 40 backend servers in each call. Valid values:
 	//
-	// *   **Ecs**
-	// *   **Eni**
-	// *   **Eci**
+	// 	- **Ecs**
+	//
+	// 	- **Eni**
+	//
+	// 	- **Eci**
+	//
+	// example:
+	//
+	// Ecs
 	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
 	// The weight of the backend server that you want to add to the server group. You can specify up to 40 backend servers in each call.
 	//
-	// Valid values: **0** to **100**. Default value: **100**. If the weight of a backend server is set to **0**, no requests are forwarded to the backend server.
+	// Valid values: **0*	- to **100**. Default value: **100**. If the weight of a backend server is set to **0**, no requests are forwarded to the backend server.
+	//
+	// example:
+	//
+	// 100
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
@@ -15185,22 +19354,43 @@ func (s *ReplaceServersInServerGroupRequestAddedServers) SetWeight(v int32) *Rep
 }
 
 type ReplaceServersInServerGroupRequestRemovedServers struct {
-	// The port that is used by the backend server. Valid values: **1** to **65535**. You can specify at most 40 servers in each call.
+	// The port that is used by the backend server. Valid values: **1*	- to **65535**. You can specify at most 40 servers in each call.
+	//
+	// example:
+	//
+	// 81
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The ID of the backend server. You can specify up to 40 server IDs in each call.
 	//
-	// *   If the server group type is **Instance**, set the ServerId parameter to the ID of an ECS instance, an ENI, or an elastic container instance. These backend servers are specified by **Ecs**, **Eni**, or **Eci**.
-	// *   If the server group type is **Ip**, set the ServerId parameter to an IP address specified in the server group.
+	// 	- If the server group type is **Instance**, set the ServerId parameter to the ID of an ECS instance, an ENI, or an elastic container instance. These backend servers are specified by **Ecs**, **Eni**, or **Eci**.
 	//
-	// > You cannot perform this operation on a server group of the Function type. You can call the [ListServerGroups](~~213627~~) operation to query information about the server group type so that you can set ServerId to a proper value.
+	// 	- If the server group type is **Ip**, set the ServerId parameter to an IP address specified in the server group.
+	//
+	// > You cannot perform this operation on a server group of the Function type. You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query information about the server group type so that you can set ServerId to a proper value.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecs-bp1ac9uozods2uc****
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
 	// The IP address in inclusive ENI mode. You can specify at most 40 servers in each call.
+	//
+	// example:
+	//
+	// 192.168.1.12
 	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
 	// The type of the backend server that you want to remove from the server group. You can specify up to 40 backend servers in each call. Valid values:
 	//
-	// *   **Ecs**
-	// *   **Eni**
-	// *   **Eci**
+	// 	- **Ecs**
+	//
+	// 	- **Eni**
+	//
+	// 	- **Eci**
+	//
+	// example:
+	//
+	// ecs
 	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
 }
 
@@ -15234,8 +19424,16 @@ func (s *ReplaceServersInServerGroupRequestRemovedServers) SetServerType(v strin
 
 type ReplaceServersInServerGroupResponseBody struct {
 	// The asynchronous task ID.
+	//
+	// example:
+	//
+	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 365F4154-92F6-4AE4-92F8-7FF34B540710
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15291,14 +19489,29 @@ type StartListenerRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the **DryRunOperation** error code is returned.
-	// *   **false**: (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the **DryRunOperation*	- error code is returned.
+	//
+	// 	- **false**: (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the Application Load Balancer (ALB) listener.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lsr-bp1bpn0kn908w4nbw****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 }
 
@@ -15327,8 +19540,16 @@ func (s *StartListenerRequest) SetListenerId(v string) *StartListenerRequest {
 
 type StartListenerResponseBody struct {
 	// The asynchronous task ID.
+	//
+	// example:
+	//
+	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 365F4154-92F6-4AE4-92F8-7FF34B540710
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15384,18 +19605,35 @@ type StartShiftLoadBalancerZonesRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ALB instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alb-o9ulmq5hgn68jk****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	// The mappings between zones and vSwitches.
 	//
 	// >  You can remove only one zone in each call.
+	//
+	// This parameter is required.
 	ZoneMappings []*StartShiftLoadBalancerZonesRequestZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
 }
 
@@ -15429,8 +19667,20 @@ func (s *StartShiftLoadBalancerZonesRequest) SetZoneMappings(v []*StartShiftLoad
 
 type StartShiftLoadBalancerZonesRequestZoneMappings struct {
 	// The ID of the vSwitch in the zone. By default, each zone uses one vSwitch and one subnet.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vsw-bp1rmcrwg3erh1fh8****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The zone ID. You can call the [DescribeZones](~~189196~~) operation to query the most recent zone list.
+	// The zone ID. You can call the [DescribeZones](https://help.aliyun.com/document_detail/189196.html) operation to query the most recent zone list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou-a
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -15454,6 +19704,10 @@ func (s *StartShiftLoadBalancerZonesRequestZoneMappings) SetZoneId(v string) *St
 
 type StartShiftLoadBalancerZonesResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15504,14 +19758,29 @@ type StopListenerRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the Application Load Balancer (ALB) listener.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lsr-bp1bpn0kn908w4nbw****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 }
 
@@ -15540,8 +19809,16 @@ func (s *StopListenerRequest) SetListenerId(v string) *StopListenerRequest {
 
 type StopListenerResponseBody struct {
 	// The asynchronous task ID.
+	//
+	// example:
+	//
+	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 365F4154-92F6-4AE4-92F8-7FF34B540710
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15594,15 +19871,36 @@ func (s *StopListenerResponse) SetBody(v *StopListenerResponseBody) *StopListene
 
 type TagResourcesRequest struct {
 	// The resource IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// acl-123
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of the resource. Valid values:
 	//
-	// *   **acl**: an access control list (ACL)
-	// *   **loadbalancer**: an Application Load Balancer (ALB) instance
-	// *   **securitypolicy**: a security policy
-	// *   **servergroup**: a server group
+	// 	- **acl**: an access control list (ACL)
+	//
+	// 	- **loadbalancer**: an Application Load Balancer (ALB) instance
+	//
+	// 	- **securitypolicy**: a security policy
+	//
+	// 	- **servergroup**: a server group
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// loadbalancer
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tags.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -15631,8 +19929,16 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 
 type TagResourcesRequestTag struct {
 	// The tag key. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value. The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// product
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -15656,6 +19962,10 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 
 type TagResourcesResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 593B0448-D13E-4C56-AC0D-FDF0FDE0E9A3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15704,19 +20014,43 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 type UnTagResourcesRequest struct {
 	// Specifies whether to remove all tags from the specified resource. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
 	// The IDs of the resources from which you want to remove tags.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// acl-123
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of the resource. Valid values:
 	//
-	// *   **acl**: an access control list (ACL)
-	// *   **loadbalancer**: an Application Load Balancer (ALB) instance
-	// *   **securitypolicy**: a security policy
-	// *   **servergroup**: a server group
+	// 	- **acl**: an access control list (ACL)
+	//
+	// 	- **loadbalancer**: an Application Load Balancer (ALB) instance
+	//
+	// 	- **securitypolicy**: a security policy
+	//
+	// 	- **servergroup**: a server group
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// loadbalancer
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tags that you want to remove.
+	//
+	// example:
+	//
+	// test
 	Tag []*UnTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The keys of the tags that you want to remove.
 	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
@@ -15757,8 +20091,16 @@ func (s *UnTagResourcesRequest) SetTagKey(v []*string) *UnTagResourcesRequest {
 
 type UnTagResourcesRequestTag struct {
 	// The key of the tag that you want to remove. The key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The key cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag that you want to remove. The value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The value cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// product
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -15782,6 +20124,10 @@ func (s *UnTagResourcesRequestTag) SetValue(v string) *UnTagResourcesRequestTag 
 
 type UnTagResourcesResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 593B0448-D13E-4C56-AC0D-FDF0FDE0E9A3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15834,12 +20180,21 @@ type UpdateAScriptsRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// b1f642ac-5558-4a36-b7d9-cf53f40ea5c8
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 }
 
@@ -15868,17 +20223,36 @@ func (s *UpdateAScriptsRequest) SetDryRun(v bool) *UpdateAScriptsRequest {
 
 type UpdateAScriptsRequestAScripts struct {
 	// The AScript rule ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// as-mhqxcanmivn4g5****
 	AScriptId *string `json:"AScriptId,omitempty" xml:"AScriptId,omitempty"`
 	// The name of the AScript rule.
 	//
-	// The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+	// The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	//
+	// example:
+	//
+	// Group1
 	AScriptName *string `json:"AScriptName,omitempty" xml:"AScriptName,omitempty"`
 	// Specifies whether to enable the AScript rule. Valid values:
 	//
-	// *   **true**
-	// *   **false** (default)
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
+	// example:
+	//
+	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// The content of the AScript rule.
+	//
+	// example:
+	//
+	// if and(match_re($uri, \\"^/1.txt$\\"), $arg_type) { rewrite(concat(\\"/1.\\", $arg_type), \\"break\\") }
 	ScriptContent *string `json:"ScriptContent,omitempty" xml:"ScriptContent,omitempty"`
 }
 
@@ -15912,8 +20286,16 @@ func (s *UpdateAScriptsRequestAScripts) SetScriptContent(v string) *UpdateAScrip
 
 type UpdateAScriptsResponseBody struct {
 	// The asynchronous task ID.
+	//
+	// example:
+	//
+	// 2e82b5f4-1ba9-4d20-89c8-1082ebaa****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// ACA19FE1-C09E-53C7-8FDA-560F49D71891
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15966,17 +20348,38 @@ func (s *UpdateAScriptsResponse) SetBody(v *UpdateAScriptsResponseBody) *UpdateA
 
 type UpdateAclAttributeRequest struct {
 	// The ACL ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// nacl-hp34s2h0xx1ht4nwo****
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The ACL name. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+	// The ACL name. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-acl
 	AclName *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// > If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx` HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx` HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 }
 
@@ -16010,6 +20413,10 @@ func (s *UpdateAclAttributeRequest) SetDryRun(v bool) *UpdateAclAttributeRequest
 
 type UpdateAclAttributeResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16061,83 +20468,152 @@ type UpdateHealthCheckTemplateAttributeRequest struct {
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
 	// > If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a **2xx** HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a **2xx*	- HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The HTTP status codes that are used to determine whether the backend server passes the health check.
 	//
-	// *   If **HealthCheckProtocol** is set to **HTTP**, **HealthCheckCodes** can be set to **http\_2xx** (default), **http\_3xx**, **http\_4xx**, and **http\_5xx**. Separate multiple HTTP status codes with a comma (,).
-	// *   If **HealthCheckProtocol** is set to **gRPC**, **HealthCheckCodes** can be set to **0 to 99**. Default value: **0**. Value ranges are supported. You can enter up to 20 value ranges and separate them with a comma (,).
+	// 	- If **HealthCheckProtocol*	- is set to **HTTP**, **HealthCheckCodes*	- can be set to **http_2xx*	- (default), **http_3xx**, **http_4xx**, and **http_5xx**. Separate multiple HTTP status codes with a comma (,).
 	//
-	// > This parameter takes effect only when the **HealthCheckProtocol** parameter is set to **HTTP** or **gRPC**.
+	// 	- If **HealthCheckProtocol*	- is set to **gRPC**, **HealthCheckCodes*	- can be set to **0 to 99**. Default value: **0**. Value ranges are supported. You can enter up to 20 value ranges and separate them with a comma (,).
+	//
+	// > This parameter takes effect only when the **HealthCheckProtocol*	- parameter is set to **HTTP*	- or **gRPC**.
+	//
+	// example:
+	//
+	// 5
 	HealthCheckCodes []*string `json:"HealthCheckCodes,omitempty" xml:"HealthCheckCodes,omitempty" type:"Repeated"`
 	// The port that is used for health checks. Valid values: **0 to 65535**. Default value: **0**. This value indicates that the port of a backend server is used for health checks.
+	//
+	// example:
+	//
+	// 80
 	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
 	// The domain name that you want to use for the health check. Valid values:
 	//
-	// *   **$SERVER_IP** (default): the private IP addresses of backend servers. If you do not set the HealthCheckHost parameter or set the parameter to $SERVER_IP, the Application Load Balancer (ALB) uses the private IP addresses of backend servers for health checks.
-	// *   **domain**: The domain name must be 1 to 80 characters in length and can contain letters, digits, periods (.), and hyphens (-).
+	// 	- **$SERVER_IP*	- (default): the private IP addresses of backend servers. If you do not set the HealthCheckHost parameter or set the parameter to $SERVER_IP, the Application Load Balancer (ALB) uses the private IP addresses of backend servers for health checks.
+	//
+	// 	- **domain**: The domain name must be 1 to 80 characters in length and can contain letters, digits, periods (.), and hyphens (-).
 	//
 	// > This parameter is valid only if the `HealthCheckProtocol` parameter is set to **HTTP**.
+	//
+	// example:
+	//
+	// $_ip
 	HealthCheckHost *string `json:"HealthCheckHost,omitempty" xml:"HealthCheckHost,omitempty"`
 	// The HTTP version that is used for health checks.
 	//
-	// Valid values: **HTTP1.0** and **HTTP1.1**.
+	// Valid values: **HTTP1.0*	- and **HTTP1.1**.
 	//
 	// Default value: **HTTP1.1**.
 	//
 	// > This parameter is valid only if the `HealthCheckProtocol` parameter is set to **HTTP**.
+	//
+	// example:
+	//
+	// HTTP1.0
 	HealthCheckHttpVersion *string `json:"HealthCheckHttpVersion,omitempty" xml:"HealthCheckHttpVersion,omitempty"`
 	// The interval at which health checks are performed. Unit: seconds. Valid values: **1 to 50**. Default value: **2**.
+	//
+	// example:
+	//
+	// 5
 	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
 	// The method that you want to use for the health check. Valid values:
 	//
-	// *   **HEAD**: By default, the ALB instance sends HEAD requests to a backend server to perform HTTP health checks.
-	// *   **GET**: If the length of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
-	// *   **POST**: gRPC health checks automatically use the POST method.
+	// 	- **HEAD**: By default, the ALB instance sends HEAD requests to a backend server to perform HTTP health checks.
 	//
-	// > This parameter takes effect only when the **HealthCheckProtocol** parameter is set to **HTTP** or **gRPC**.
+	// 	- **GET**: If the length of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
+	//
+	// 	- **POST**: gRPC health checks automatically use the POST method.
+	//
+	// > This parameter takes effect only when the **HealthCheckProtocol*	- parameter is set to **HTTP*	- or **gRPC**.
+	//
+	// example:
+	//
+	// HEAD
 	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
 	// The URL path that is used for health checks.
 	//
-	// The URL must be 1 to 80 characters in length and can contain only letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : \" , +`.
+	// The URL must be 1 to 80 characters in length and can contain only letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: `_ ; ~ ! ( ) 	- [ ] @ $ ^ : \\" , +`.
 	//
 	// The URL must start with a forward slash (/).
 	//
-	// > This parameter takes effect only when the **HealthCheckProtocol** parameter is set to **HTTP** or **gRPC**.
+	// > This parameter takes effect only when the **HealthCheckProtocol*	- parameter is set to **HTTP*	- or **gRPC**.
+	//
+	// example:
+	//
+	// /test/index.html
 	HealthCheckPath *string `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
 	// The protocol that you want to use for health checks. Valid values:
 	//
-	// *   **HTTP** (default): To perform HTTP health checks, ALB sends HEAD or GET requests to a backend server to check whether the backend server is healthy.
-	// *   **TCP**: To perform TCP health checks, ALB sends SYN packets to a backend server to check whether the port of the backend server is available to receive requests.
-	// *   **gRPC**: To perform gRPC health checks, ALB sends POST or GET requests to a backend server to check whether the backend server is healthy.
+	// 	- **HTTP*	- (default): To perform HTTP health checks, ALB sends HEAD or GET requests to a backend server to check whether the backend server is healthy.
+	//
+	// 	- **TCP**: To perform TCP health checks, ALB sends SYN packets to a backend server to check whether the port of the backend server is available to receive requests.
+	//
+	// 	- **gRPC**: To perform gRPC health checks, ALB sends POST or GET requests to a backend server to check whether the backend server is healthy.
+	//
+	// example:
+	//
+	// HTTP
 	HealthCheckProtocol *string `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
 	// The template ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hct-bp1qjwo61pqz3ahltv0mw
 	HealthCheckTemplateId *string `json:"HealthCheckTemplateId,omitempty" xml:"HealthCheckTemplateId,omitempty"`
 	// The name of the health check template.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	//
+	// example:
+	//
+	// HealthCheckTemplate1
 	HealthCheckTemplateName *string `json:"HealthCheckTemplateName,omitempty" xml:"HealthCheckTemplateName,omitempty"`
 	// The timeout period of a health check. If a backend server does not respond within the specified timeout period, the backend server fails the health check.
 	//
 	// Unit: seconds. Valid values: **1 to 300**. Default value: **5**.
 	//
 	// > If the value of the `HealthCheckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the timeout period specified by the `HealthCheckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is used as the timeout period.
+	//
+	// example:
+	//
+	// 3
 	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail** to **success**.
+	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from **fail*	- to **success**.
 	//
 	// Valid values: **2 to 10**.
 	//
 	// Default value: **3**.
+	//
+	// example:
+	//
+	// 4
 	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**.
+	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success*	- to **fail**.
 	//
 	// Valid values: **2 to 10**.
 	//
 	// Default value: **3**.
+	//
+	// example:
+	//
+	// 4
 	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
@@ -16226,6 +20702,10 @@ func (s *UpdateHealthCheckTemplateAttributeRequest) SetUnhealthyThreshold(v int3
 
 type UpdateHealthCheckTemplateAttributeResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 365F4154-92F6-4AE4-92F8-7FF34B540710
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16276,8 +20756,13 @@ type UpdateListenerAttributeRequest struct {
 	CaCertificates []*UpdateListenerAttributeRequestCaCertificates `json:"CaCertificates,omitempty" xml:"CaCertificates,omitempty" type:"Repeated"`
 	// Specifies whether to enable mutual authentication. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	CaEnabled *bool `json:"CaEnabled,omitempty" xml:"CaEnabled,omitempty"`
 	// The certificates.
 	Certificates []*UpdateListenerAttributeRequestCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
@@ -16285,46 +20770,87 @@ type UpdateListenerAttributeRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The default actions in the forwarding rules.
 	DefaultActions []*UpdateListenerAttributeRequestDefaultActions `json:"DefaultActions,omitempty" xml:"DefaultActions,omitempty" type:"Repeated"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Specifies whether to enable GZIP compression for specific types of files. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	GzipEnabled *bool `json:"GzipEnabled,omitempty" xml:"GzipEnabled,omitempty"`
 	// Specifies whether to enable HTTP/2. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// > This parameter is available only when you create an HTTPS listener.
+	//
+	// example:
+	//
+	// true
 	Http2Enabled *bool `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
 	// The timeout period of an idle connection. Unit: seconds. Valid values: **1 to 60**.
 	//
 	// If no request is received within the specified timeout period, ALB closes the current connection. When another request is received, ALB establishes a new connection.
+	//
+	// example:
+	//
+	// 15
 	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
 	// The name of the listener.
 	//
-	// The name must be 2 to 256 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ \_ -.
+	// The name must be 2 to 256 characters in length, and can contain letters, digits, and the following special characters: , . ; / @ _ -.
+	//
+	// example:
+	//
+	// HTTP_80
 	ListenerDescription *string `json:"ListenerDescription,omitempty" xml:"ListenerDescription,omitempty"`
 	// The ID of the Application Load Balancer (ALB) listener.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lsr-bp1bpn0kn908w4nbw****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The configuration information when the listener is associated with a QUIC listener.
 	QuicConfig *UpdateListenerAttributeRequestQuicConfig `json:"QuicConfig,omitempty" xml:"QuicConfig,omitempty" type:"Struct"`
 	// The timeout period of a request. Unit: seconds. Valid values: **1 to 180**.
 	//
 	// If no response is received from the backend server within the specified timeout period, ALB returns an `HTTP 504` error code to the client.
+	//
+	// example:
+	//
+	// 3
 	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
 	// The security policy ID. System security policies and custom security policies are supported.
 	//
 	// > This parameter is available only when you create an HTTPS listener.
+	//
+	// example:
+	//
+	// tls_cipher_policy_1_0
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 	// The configuration of the XForwardFor headers.
 	XForwardedForConfig *UpdateListenerAttributeRequestXForwardedForConfig `json:"XForwardedForConfig,omitempty" xml:"XForwardedForConfig,omitempty" type:"Struct"`
@@ -16432,6 +20958,10 @@ func (s *UpdateListenerAttributeRequestCaCertificates) SetCertificateId(v string
 
 type UpdateListenerAttributeRequestCertificates struct {
 	// The certificate ID. Only server certificates are supported. You can specify up to 20 certificate IDs.
+	//
+	// example:
+	//
+	// 12315790212_166f8204689_1714763408_70998****
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 }
 
@@ -16449,11 +20979,17 @@ func (s *UpdateListenerAttributeRequestCertificates) SetCertificateId(v string) 
 }
 
 type UpdateListenerAttributeRequestDefaultActions struct {
-	// The configuration of the action. This parameter is required and takes effect when the **Type** parameter is set to **FowardGroup**. You can specify configurations for up to 20 forwarding actions.
+	// The configuration of the action. This parameter is required and takes effect when the **Type*	- parameter is set to **FowardGroup**. You can specify configurations for up to 20 forwarding actions.
 	ForwardGroupConfig *UpdateListenerAttributeRequestDefaultActionsForwardGroupConfig `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
 	// The type of the action. You can specify only one action type.
 	//
-	// Set the value to **ForwardGroup** to forward requests to multiple vServer groups.
+	// Set the value to **ForwardGroup*	- to forward requests to multiple vServer groups.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ForwardGroup
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -16477,6 +21013,8 @@ func (s *UpdateListenerAttributeRequestDefaultActions) SetType(v string) *Update
 
 type UpdateListenerAttributeRequestDefaultActionsForwardGroupConfig struct {
 	// The server groups to which requests are forwarded.
+	//
+	// This parameter is required.
 	ServerGroupTuples []*UpdateListenerAttributeRequestDefaultActionsForwardGroupConfigServerGroupTuples `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
 }
 
@@ -16495,6 +21033,12 @@ func (s *UpdateListenerAttributeRequestDefaultActionsForwardGroupConfig) SetServ
 
 type UpdateListenerAttributeRequestDefaultActionsForwardGroupConfigServerGroupTuples struct {
 	// The server group to which requests are forwarded.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rsp-cige6j5e7p****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 }
 
@@ -16512,16 +21056,25 @@ func (s *UpdateListenerAttributeRequestDefaultActionsForwardGroupConfigServerGro
 }
 
 type UpdateListenerAttributeRequestQuicConfig struct {
-	// The QUIC listener ID. This parameter is required if **QuicUpgradeEnabled** is set to **true**. Only HTTPS listeners support this parameter.
+	// The QUIC listener ID. This parameter is required if **QuicUpgradeEnabled*	- is set to **true**. Only HTTPS listeners support this parameter.
 	//
 	// > You must add the HTTPS listener and the QUIC listener to the same ALB instance. In addition, make sure that the QUIC listener has never been associated with another listener.
+	//
+	// example:
+	//
+	// lsn-333
 	QuicListenerId *string `json:"QuicListenerId,omitempty" xml:"QuicListenerId,omitempty"`
 	// Specifies whether to enable QUIC upgrade. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// > Only HTTPS listeners support this parameter.
+	//
+	// example:
+	//
+	// false
 	QuicUpgradeEnabled *bool `json:"QuicUpgradeEnabled,omitempty" xml:"QuicUpgradeEnabled,omitempty"`
 }
 
@@ -16544,103 +21097,173 @@ func (s *UpdateListenerAttributeRequestQuicConfig) SetQuicUpgradeEnabled(v bool)
 }
 
 type UpdateListenerAttributeRequestXForwardedForConfig struct {
-	// The name of the custom header. This parameter takes effect only when the **XForwardedForClientCertClientVerifyEnabled** parameter is set to **true**.
+	// The name of the custom header. This parameter takes effect only when the **XForwardedForClientCertClientVerifyEnabled*	- parameter is set to **true**.
 	//
-	// The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (\_), and digits.
+	// The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
 	//
 	// > This parameter is available only when you create an HTTPS listener.
+	//
+	// example:
+	//
+	// test_client-verify-alias_123456
 	XForwardedForClientCertClientVerifyAlias *string `json:"XForwardedForClientCertClientVerifyAlias,omitempty" xml:"XForwardedForClientCertClientVerifyAlias,omitempty"`
 	// Specifies whether to use the `X-Forwarded-Clientcert-clientverify` header to retrieve the verification result of the client certificate. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// > This parameter is available only when you create an HTTPS listener.
+	//
+	// example:
+	//
+	// false
 	XForwardedForClientCertClientVerifyEnabled *bool `json:"XForwardedForClientCertClientVerifyEnabled,omitempty" xml:"XForwardedForClientCertClientVerifyEnabled,omitempty"`
-	// The name of the custom header. This parameter takes effect only when the **XForwardedForClientCertFingerprintEnabled** parameter is set to **true**.
+	// The name of the custom header. This parameter takes effect only when the **XForwardedForClientCertFingerprintEnabled*	- parameter is set to **true**.
 	//
-	// The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (\_), and digits.
+	// The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
 	//
 	// > This parameter is available only when you create an HTTPS listener.
+	//
+	// example:
+	//
+	// test_finger-print-alias_123456
 	XForwardedForClientCertFingerprintAlias *string `json:"XForwardedForClientCertFingerprintAlias,omitempty" xml:"XForwardedForClientCertFingerprintAlias,omitempty"`
 	// Indicates whether the `X-Forwarded-Clientcert-fingerprint` header is used to retrieve the fingerprint of the client certificate. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// > This parameter is available only when you create an HTTPS listener.
+	//
+	// example:
+	//
+	// false
 	XForwardedForClientCertFingerprintEnabled *bool `json:"XForwardedForClientCertFingerprintEnabled,omitempty" xml:"XForwardedForClientCertFingerprintEnabled,omitempty"`
-	// The name of the custom header. This parameter takes effect only when **XForwardedForClientCertIssuerDNEnabled** is set to **true**.
+	// The name of the custom header. This parameter takes effect only when **XForwardedForClientCertIssuerDNEnabled*	- is set to **true**.
 	//
-	// The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (\_), and digits.
+	// The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
 	//
 	// > This parameter is available only when you create an HTTPS listener.
+	//
+	// example:
+	//
+	// test_issue-dn-alias_123456
 	XForwardedForClientCertIssuerDNAlias *string `json:"XForwardedForClientCertIssuerDNAlias,omitempty" xml:"XForwardedForClientCertIssuerDNAlias,omitempty"`
 	// Indicates whether the `X-Forwarded-Clientcert-issuerdn` header is used to retrieve information about the authority that issues the client certificate. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// > This parameter is available only when you create an HTTPS listener.
+	//
+	// example:
+	//
+	// false
 	XForwardedForClientCertIssuerDNEnabled *bool `json:"XForwardedForClientCertIssuerDNEnabled,omitempty" xml:"XForwardedForClientCertIssuerDNEnabled,omitempty"`
-	// The name of the custom header. This parameter takes effect only when **XForwardedForClientCertSubjectDNEnabled** is set to **true**.
+	// The name of the custom header. This parameter takes effect only when **XForwardedForClientCertSubjectDNEnabled*	- is set to **true**.
 	//
-	// The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (\_), and digits.
+	// The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
 	//
 	// > This parameter is available only when you create an HTTPS listener.
+	//
+	// example:
+	//
+	// test_subject-dn-alias_123456
 	XForwardedForClientCertSubjectDNAlias *string `json:"XForwardedForClientCertSubjectDNAlias,omitempty" xml:"XForwardedForClientCertSubjectDNAlias,omitempty"`
 	// Indicates whether the `X-Forwarded-Clientcert-subjectdn` header is used to retrieve information about the owner of the client certificate. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// > This parameter is available only when you create an HTTPS listener.
+	//
+	// example:
+	//
+	// false
 	XForwardedForClientCertSubjectDNEnabled *bool `json:"XForwardedForClientCertSubjectDNEnabled,omitempty" xml:"XForwardedForClientCertSubjectDNEnabled,omitempty"`
 	// Specifies whether to use the `X-Forwarded-Client-Ip` header to retrieve the source IP addresses. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// > HTTP, HTTPS, and QUIC listeners support this parameter. By default, the feature that corresponds to this parameter is unavailable. If you want to use this feature, contact your account manager.
+	//
+	// example:
+	//
+	// false
 	XForwardedForClientSourceIpsEnabled *bool `json:"XForwardedForClientSourceIpsEnabled,omitempty" xml:"XForwardedForClientSourceIpsEnabled,omitempty"`
 	// The trusted proxy IP address.
 	//
 	// ALB traverses `X-Forwarded-For` backward and selects the first IP address that is not in the trusted IP address list as the real IP address of the client. The IP address is used in source IP address throttling.
+	//
+	// example:
+	//
+	// 10.1.1.0/24
 	XForwardedForClientSourceIpsTrusted *string `json:"XForwardedForClientSourceIpsTrusted,omitempty" xml:"XForwardedForClientSourceIpsTrusted,omitempty"`
 	// Indicates whether the `X-Forwarded-Client-Port` header is used to retrieve the client port. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// > This parameter is available only when you create an HTTP or HTTPS listener.
+	//
+	// example:
+	//
+	// false
 	XForwardedForClientSrcPortEnabled *bool `json:"XForwardedForClientSrcPortEnabled,omitempty" xml:"XForwardedForClientSrcPortEnabled,omitempty"`
 	// Indicates whether the `X-Forwarded-For` header is used to retrieve the client IP address. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// > This parameter is available only when you create an HTTP or HTTPS listener.
+	//
+	// example:
+	//
+	// true
 	XForwardedForEnabled *bool `json:"XForwardedForEnabled,omitempty" xml:"XForwardedForEnabled,omitempty"`
 	// Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listener protocol of the ALB instance. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// > HTTP, HTTPS, and QUIC listeners support this parameter.
+	//
+	// example:
+	//
+	// false
 	XForwardedForProtoEnabled *bool `json:"XForwardedForProtoEnabled,omitempty" xml:"XForwardedForProtoEnabled,omitempty"`
 	// Specifies whether to use the `SLB-ID` header to retrieve the ID of the ALB instance. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// > HTTP, HTTPS, and QUIC listeners support this parameter.
+	//
+	// example:
+	//
+	// false
 	XForwardedForSLBIdEnabled *bool `json:"XForwardedForSLBIdEnabled,omitempty" xml:"XForwardedForSLBIdEnabled,omitempty"`
 	// Specifies whether to use the `X-Forwarded-Port` header to retrieve the listening port. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// > HTTP, HTTPS, and QUIC listeners support this parameter.
+	//
+	// example:
+	//
+	// false
 	XForwardedForSLBPortEnabled *bool `json:"XForwardedForSLBPortEnabled,omitempty" xml:"XForwardedForSLBPortEnabled,omitempty"`
 }
 
@@ -16729,8 +21352,16 @@ func (s *UpdateListenerAttributeRequestXForwardedForConfig) SetXForwardedForSLBP
 
 type UpdateListenerAttributeResponseBody struct {
 	// The asynchronous task ID.
+	//
+	// example:
+	//
+	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 365F4154-92F6-4AE4-92F8-7FF34B540710
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16784,10 +21415,15 @@ func (s *UpdateListenerAttributeResponse) SetBody(v *UpdateListenerAttributeResp
 type UpdateListenerLogConfigRequest struct {
 	// Specifies whether to record custom headers in the access log. Valid values:
 	//
-	// *   **true**
-	// *   **false** (default)
+	// 	- **true**
 	//
-	// > You can set this parameter to **true** only if the access log feature is enabled by specifying **AccessLogEnabled**.
+	// 	- **false*	- (default)
+	//
+	// > You can set this parameter to **true*	- only if the access log feature is enabled by specifying **AccessLogEnabled**.
+	//
+	// example:
+	//
+	// true
 	AccessLogRecordCustomizedHeadersEnabled *bool `json:"AccessLogRecordCustomizedHeadersEnabled,omitempty" xml:"AccessLogRecordCustomizedHeadersEnabled,omitempty"`
 	// The configuration information about the Xtrace feature.
 	AccessLogTracingConfig *UpdateListenerLogConfigRequestAccessLogTracingConfig `json:"AccessLogTracingConfig,omitempty" xml:"AccessLogTracingConfig,omitempty" type:"Struct"`
@@ -16795,14 +21431,29 @@ type UpdateListenerLogConfigRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false**: (default): performs a dry run and performs the actual request. If the request passes the dry run, a **2xx HTTP** status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false**: (default): performs a dry run and performs the actual request. If the request passes the dry run, a **2xx HTTP*	- status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the Application Load Balancer (ALB) listener.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lsr-bp1bpn0kn908w4nbw****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 }
 
@@ -16842,20 +21493,35 @@ func (s *UpdateListenerLogConfigRequest) SetListenerId(v string) *UpdateListener
 type UpdateListenerLogConfigRequestAccessLogTracingConfig struct {
 	// Specifies whether to enable the Xtrace feature. Valid values:
 	//
-	// *   **true**
-	// *   **false** (default)
+	// 	- **true**
 	//
-	// > You can set this parameter to **true** only if the access log feature is enabled by specifying **AccessLogEnabled**.
+	// 	- **false*	- (default)
+	//
+	// > You can set this parameter to **true*	- only if the access log feature is enabled by specifying **AccessLogEnabled**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
 	TracingEnabled *bool `json:"TracingEnabled,omitempty" xml:"TracingEnabled,omitempty"`
 	// The sampling rate of the Xtrace feature.
 	//
 	// Valid values: **1 to 10000**.
 	//
-	// > This parameter takes effect only if you set **TracingEnabled** to **true**.
+	// > This parameter takes effect only if you set **TracingEnabled*	- to **true**.
+	//
+	// example:
+	//
+	// 100
 	TracingSample *int32 `json:"TracingSample,omitempty" xml:"TracingSample,omitempty"`
 	// The type of Xtrace. Set the value to **Zipkin**.
 	//
-	// > This parameter takes effect only if you set **TracingEnabled** to **true**.
+	// > This parameter takes effect only if you set **TracingEnabled*	- to **true**.
+	//
+	// example:
+	//
+	// Zipkin
 	TracingType *string `json:"TracingType,omitempty" xml:"TracingType,omitempty"`
 }
 
@@ -16884,8 +21550,16 @@ func (s *UpdateListenerLogConfigRequestAccessLogTracingConfig) SetTracingType(v 
 
 type UpdateListenerLogConfigResponseBody struct {
 	// The asynchronous task ID.
+	//
+	// example:
+	//
+	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 365F4154-92F6-4AE4-92F8-7FF34B540710
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16939,21 +21613,43 @@ func (s *UpdateListenerLogConfigResponse) SetBody(v *UpdateListenerLogConfigResp
 type UpdateLoadBalancerAddressTypeConfigRequest struct {
 	// The new network type. Valid values:
 	//
-	// *   **Internet**: The ALB instance uses a public IP address. The domain name of the ALB instance is resolved to the public IP address. Therefore, the ALB instance can be accessed over the Internet.
-	// *   **Intranet**: The ALB instance uses a private IP address. The domain name of the ALB instance is resolved to the private IP address. In this case, the ALB instance can be accessed over the virtual private cloud (VPC) where the ALB instance is deployed.
+	// 	- **Internet**: The ALB instance uses a public IP address. The domain name of the ALB instance is resolved to the public IP address. Therefore, the ALB instance can be accessed over the Internet.
+	//
+	// 	- **Intranet**: The ALB instance uses a private IP address. The domain name of the ALB instance is resolved to the private IP address. In this case, the ALB instance can be accessed over the virtual private cloud (VPC) where the ALB instance is deployed.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Internet
 	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ALB instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lb-bp1o94dp5i6ea****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	// The zones and the vSwitches. You must specify at least two zones.
 	ZoneMappings []*UpdateLoadBalancerAddressTypeConfigRequestZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
@@ -16996,12 +21692,24 @@ type UpdateLoadBalancerAddressTypeConfigRequestZoneMappings struct {
 	// The ID of an EIP instance. You can specify up to 10 zone IDs.
 	//
 	// > This parameter is required if you want to change the network type from internal-facing to Internet-facing.
+	//
+	// example:
+	//
+	// eip-bp1aedxso6u80u0qf****
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
 	// The ID of the vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an ALB instance. You can specify up to 10 vSwitch IDs.
+	//
+	// example:
+	//
+	// vsw-bp10ttov87felojcn****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The ID of the zone where the ALB instance is deployed. You can specify up to 10 zone IDs.
 	//
-	// You can call the [DescribeZones](~~189196~~) operation to query the most recent zone list.
+	// You can call the [DescribeZones](https://help.aliyun.com/document_detail/189196.html) operation to query the most recent zone list.
+	//
+	// example:
+	//
+	// cn-hangzhou-a
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -17030,8 +21738,16 @@ func (s *UpdateLoadBalancerAddressTypeConfigRequestZoneMappings) SetZoneId(v str
 
 type UpdateLoadBalancerAddressTypeConfigResponseBody struct {
 	// The ID of the asynchronous job.
+	//
+	// example:
+	//
+	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 593B0448-D13E-4C56-AC0D-FDF0FDE0E9A3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17087,16 +21803,35 @@ type UpdateLoadBalancerAttributeRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false**: performs a dry run and sends the request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed. This is the default value.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false**: performs a dry run and sends the request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed. This is the default value.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the ALB instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alb-o9ulmq5hgn68jk****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The name of the ALB instance. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+	// The name of the ALB instance. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	//
+	// example:
+	//
+	// lb-instance-test
 	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
 	// The configuration read-only mode.
 	ModificationProtectionConfig *UpdateLoadBalancerAttributeRequestModificationProtectionConfig `json:"ModificationProtectionConfig,omitempty" xml:"ModificationProtectionConfig,omitempty" type:"Struct"`
@@ -17136,16 +21871,25 @@ func (s *UpdateLoadBalancerAttributeRequest) SetModificationProtectionConfig(v *
 }
 
 type UpdateLoadBalancerAttributeRequestModificationProtectionConfig struct {
-	// It must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
+	// It must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
 	//
-	// This parameter takes effect only when **ModificationProtectionStatus** is set to **ConsoleProtection**.
+	// This parameter takes effect only when **ModificationProtectionStatus*	- is set to **ConsoleProtection**.
+	//
+	// example:
+	//
+	// test
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The status of the configuration read-only mode. Valid values:
 	//
-	// *   **NonProtection**: disables the configuration read-only mode. In this case, you cannot specify **ModificationProtectionReason**. If you specify **ModificationProtectionReason**, the value of the parameter is cleared.
-	// *   **ConsoleProtection**: enables the configuration read-only mode. In this case, you can specify **ModificationProtectionReason**.
+	// 	- **NonProtection**: disables the configuration read-only mode. In this case, you cannot specify **ModificationProtectionReason**. If you specify **ModificationProtectionReason**, the value of the parameter is cleared.
+	//
+	// 	- **ConsoleProtection**: enables the configuration read-only mode. In this case, you can specify **ModificationProtectionReason**.
 	//
 	// > If you set this parameter to **ConsoleProtection**, you cannot use the ALB console to modify instance configurations. However, you can call API operations to modify instance configurations.
+	//
+	// example:
+	//
+	// ConsoleProtection
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -17169,8 +21913,16 @@ func (s *UpdateLoadBalancerAttributeRequestModificationProtectionConfig) SetStat
 
 type UpdateLoadBalancerAttributeResponseBody struct {
 	// The ID of the synchronous task.
+	//
+	// example:
+	//
+	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17226,20 +21978,43 @@ type UpdateLoadBalancerEditionRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The edition of the ALB instance. Different editions have different limits and support different billing methods.
 	//
-	// *   **Basic**: basic
-	// *   **Standard**: standard
-	// *   **StandardWithWaf**: WAF-enabled
+	// 	- **Basic**: basic
+	//
+	// 	- **Standard**: standard
+	//
+	// 	- **StandardWithWaf**: WAF-enabled
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Standard
 	LoadBalancerEdition *string `json:"LoadBalancerEdition,omitempty" xml:"LoadBalancerEdition,omitempty"`
 	// The ID of the ALB instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lb-bp1b6c719dfa08ex****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 }
 
@@ -17273,6 +22048,10 @@ func (s *UpdateLoadBalancerEditionRequest) SetLoadBalancerId(v string) *UpdateLo
 
 type UpdateLoadBalancerEditionResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 593B0448-D13E-4C56-AC0D-FDF0FDE0E9A3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17323,16 +22102,33 @@ type UpdateLoadBalancerZonesRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and sends the request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the ALB instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lb-bp1b6c719dfa08ex****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	// The zones and the vSwitches. You must specify at least two zones. The specified zones overwrite the existing configurations.
+	//
+	// This parameter is required.
 	ZoneMappings []*UpdateLoadBalancerZonesRequestZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
 }
 
@@ -17367,8 +22163,20 @@ func (s *UpdateLoadBalancerZonesRequest) SetZoneMappings(v []*UpdateLoadBalancer
 type UpdateLoadBalancerZonesRequestZoneMappings struct {
 	IntranetAddress *string `json:"IntranetAddress,omitempty" xml:"IntranetAddress,omitempty"`
 	// The ID of the vSwitch in the zone. By default, you can specify only one vSwitch (subnet) for each zone of an ALB instance. You can specify up to 10 zone IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vsw-bp1rmcrwg3erh1fh8****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The name of the zone. You can call the [DescribeZones](~~189196~~) operation to query the zones. You can specify up to 10 zone IDs.
+	// The name of the zone. You can call the [DescribeZones](https://help.aliyun.com/document_detail/189196.html) operation to query the zones. You can specify up to 10 zone IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou-a
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -17397,8 +22205,16 @@ func (s *UpdateLoadBalancerZonesRequestZoneMappings) SetZoneId(v string) *Update
 
 type UpdateLoadBalancerZonesResponseBody struct {
 	// The ID of the asynchronous task.
+	//
+	// example:
+	//
+	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17454,24 +22270,47 @@ type UpdateRuleAttributeRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	// 	- **true**: performs a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The priority of the forwarding rule. Valid values: **1 to 10000**. A lower value specifies a higher priority.
 	//
 	// > The priorities of the forwarding rules created for the same listener must be unique.
+	//
+	// example:
+	//
+	// 10
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The actions of the forwarding rule.
 	RuleActions []*UpdateRuleAttributeRequestRuleActions `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
 	// The match condition of the forwarding rule.
 	RuleConditions []*UpdateRuleAttributeRequestRuleConditions `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
 	// The ID of the forwarding rule.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rule-4dp5i6ea****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+	// The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	//
+	// example:
+	//
+	// rule-instance-test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
@@ -17528,6 +22367,10 @@ type UpdateRuleAttributeRequestRuleActions struct {
 	// The configuration of the header to be inserted.
 	InsertHeaderConfig *UpdateRuleAttributeRequestRuleActionsInsertHeaderConfig `json:"InsertHeaderConfig,omitempty" xml:"InsertHeaderConfig,omitempty" type:"Struct"`
 	// The priority of the action. Valid values: **1 to 50000**. A lower value indicates a higher priority. The actions of a forwarding rule are applied in descending order of priority. This parameter is required. The priority of each action within a forwarding rule must be unique. You can specify priorities for at most 20 actions.
+	//
+	// example:
+	//
+	// 1
 	Order *int32 `json:"Order,omitempty" xml:"Order,omitempty"`
 	// The configuration of the redirection. You can specify at most 20 rewrites.
 	RedirectConfig     *UpdateRuleAttributeRequestRuleActionsRedirectConfig     `json:"RedirectConfig,omitempty" xml:"RedirectConfig,omitempty" type:"Struct"`
@@ -17540,20 +22383,33 @@ type UpdateRuleAttributeRequestRuleActions struct {
 	TrafficMirrorConfig *UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfig `json:"TrafficMirrorConfig,omitempty" xml:"TrafficMirrorConfig,omitempty" type:"Struct"`
 	// The action type. You can specify at most 11 types of actions. Valid values:
 	//
-	// *   **ForwardGroup**: forwards a request to multiple vServer groups.
-	// *   **Redirect**: redirects a request.
-	// *   **FixedResponse**: returns a custom response.
-	// *   **Rewrite**: rewrites a request.
-	// *   **InsertHeader**: inserts a header.
-	// *   **RemoveHeaderConfig**: deletes a header.
-	// *   **TrafficLimitConfig**: throttles network traffic.
-	// *   **TrafficMirrorConfig**: mirrors traffic.
-	// *   **CorsConfig**: forwards requests based on CORS.
+	// 	- **ForwardGroup**: forwards a request to multiple vServer groups.
+	//
+	// 	- **Redirect**: redirects a request.
+	//
+	// 	- **FixedResponse**: returns a custom response.
+	//
+	// 	- **Rewrite**: rewrites a request.
+	//
+	// 	- **InsertHeader**: inserts a header.
+	//
+	// 	- **RemoveHeaderConfig**: deletes a header.
+	//
+	// 	- **TrafficLimitConfig**: throttles network traffic.
+	//
+	// 	- **TrafficMirrorConfig**: mirrors traffic.
+	//
+	// 	- **CorsConfig**: forwards requests based on CORS.
 	//
 	// The following action types are supported:
 	//
-	// *   **FinalType**: the last action to be performed in a forwarding rule. Each forwarding rule can contain only one FinalType action. You can specify a **ForwardGroup**, **Redirect**, or **FixedResponse** action as the FinalType action.
-	// *   **ExtType**: the action or the actions to be performed before the **FinalType** action. A forwarding rule can contain one or more **ExtType** actions. To specify this parameter, you must also specify **FinalType**. You can specify multiple **InsertHeader** actions or one **Rewrite** action.
+	// 	- **FinalType**: the last action to be performed in a forwarding rule. Each forwarding rule can contain only one FinalType action. You can specify a **ForwardGroup**, **Redirect**, or **FixedResponse*	- action as the FinalType action.
+	//
+	// 	- **ExtType**: the action or the actions to be performed before the **FinalType*	- action. A forwarding rule can contain one or more **ExtType*	- actions. To specify this parameter, you must also specify **FinalType**. You can specify multiple **InsertHeader*	- actions or one **Rewrite*	- action.
+	//
+	// example:
+	//
+	// ForwardGroup
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -17623,8 +22479,13 @@ func (s *UpdateRuleAttributeRequestRuleActions) SetType(v string) *UpdateRuleAtt
 type UpdateRuleAttributeRequestRuleActionsCorsConfig struct {
 	// Specifies whether credentials can be carried in CORS requests. Valid values:
 	//
-	// *   **on**: yes
-	// *   **off**: no
+	// 	- **on**: yes
+	//
+	// 	- **off**: no
+	//
+	// example:
+	//
+	// on
 	AllowCredentials *string `json:"AllowCredentials,omitempty" xml:"AllowCredentials,omitempty"`
 	// The allowed headers for CORS requests.
 	AllowHeaders []*string `json:"AllowHeaders,omitempty" xml:"AllowHeaders,omitempty" type:"Repeated"`
@@ -17636,7 +22497,11 @@ type UpdateRuleAttributeRequestRuleActionsCorsConfig struct {
 	ExposeHeaders []*string `json:"ExposeHeaders,omitempty" xml:"ExposeHeaders,omitempty" type:"Repeated"`
 	// The maximum cache time of preflight requests in the browser. Unit: seconds.
 	//
-	// Valid values: **-1** to **172800**.
+	// Valid values: **-1*	- to **172800**.
+	//
+	// example:
+	//
+	// 1000
 	MaxAge *int64 `json:"MaxAge,omitempty" xml:"MaxAge,omitempty"`
 }
 
@@ -17680,12 +22545,24 @@ func (s *UpdateRuleAttributeRequestRuleActionsCorsConfig) SetMaxAge(v int64) *Up
 
 type UpdateRuleAttributeRequestRuleActionsFixedResponseConfig struct {
 	// The content of the custom response. The content can be up to 1 KB in size, and can contain only ASCII characters.
+	//
+	// example:
+	//
+	// dssacav
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The format of the response.
 	//
 	// Valid values: **text/plain**, **text/css**, **text/html**, **application/javascript**, and **application/json**.
+	//
+	// example:
+	//
+	// text/plain
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// The HTTP status code in the response. Valid values: **HTTP\_2xx**, **HTTP\_4xx**, and **HTTP\_5xx**. **x** must be a digit.
+	// The HTTP status code in the response. Valid values: **HTTP_2xx**, **HTTP_4xx**, and **HTTP_5xx**. **x*	- must be a digit.
+	//
+	// example:
+	//
+	// HTTP_200
 	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 }
 
@@ -17740,10 +22617,19 @@ func (s *UpdateRuleAttributeRequestRuleActionsForwardGroupConfig) SetServerGroup
 type UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupStickySession struct {
 	// Specifies whether to enable session persistence. Valid values:
 	//
-	// *   **true**
-	// *   **false** (default)
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
+	// example:
+	//
+	// false
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// The timeout period of sessions. Unit: seconds. Valid values: 1 to 86400.
+	//
+	// example:
+	//
+	// 2
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
@@ -17767,11 +22653,20 @@ func (s *UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupStick
 
 type UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupTuples struct {
 	// The ID of the server group to which the request is forwarded.
-	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// The weight of the server group. A larger value specifies a higher weight. A server group with a higher weight receives more requests. Valid values: **0** to **100**.
 	//
-	// *   If only one destination server group exists and you do not specify a weight, the default value **100** is used.
-	// *   If more than one destination server group exists, you must specify weights.
+	// example:
+	//
+	// sg--atstuj3rtoptyui****
+	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	// The weight of the server group. A larger value specifies a higher weight. A server group with a higher weight receives more requests. Valid values: **0*	- to **100**.
+	//
+	// 	- If only one destination server group exists and you do not specify a weight, the default value **100*	- is used.
+	//
+	// 	- If more than one destination server group exists, you must specify weights.
+	//
+	// example:
+	//
+	// 30
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
@@ -17794,30 +22689,51 @@ func (s *UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupTuple
 }
 
 type UpdateRuleAttributeRequestRuleActionsInsertHeaderConfig struct {
+	// example:
+	//
+	// false
 	CoverEnabled *bool `json:"CoverEnabled,omitempty" xml:"CoverEnabled,omitempty"`
-	// The key of the header. The key must be 1 to 40 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The header key specified by **InsertHeaderConfig** must be unique.
+	// The key of the header. The key must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The header key specified by **InsertHeaderConfig*	- must be unique.
 	//
 	// > You cannot specify the following header keys (case-insensitive): `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, and `authority`.
+	//
+	// example:
+	//
+	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the header to be inserted.
 	//
-	// *   If **ValueType** is set to **SystemDefined**, you can specify one of the following header values:
+	// 	- If **ValueType*	- is set to **SystemDefined**, you can specify one of the following header values:
 	//
-	//     *   **ClientSrcPort**: the client port.
-	//     *   **ClientSrcIp**: the client IP address.
-	//     *   **Protocol**: the request protocol (HTTP or HTTPS).
-	//     *   **SLBId**: the ID of the ALB instance.
-	//     *   **SLBPort**: the listening port.
+	//     	- **ClientSrcPort**: the client port.
 	//
-	// *   If **ValueType** is set to **UserDefined**, you can specify a custom header value. The header value must be 1 to 128 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and lower than 127`. You can use asterisks (\*) and question marks (?) as wildcards. The value cannot start or end with a space character.
+	//     	- **ClientSrcIp**: the client IP address.
 	//
-	// *   If **ValueType** is set to **ReferenceHeader**, you can reference one of the request headers. The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (\_), and hyphens (-).
+	//     	- **Protocol**: the request protocol (HTTP or HTTPS).
+	//
+	//     	- **SLBId**: the ID of the ALB instance.
+	//
+	//     	- **SLBPort**: the listening port.
+	//
+	// 	- If **ValueType*	- is set to **UserDefined**, you can specify a custom header value. The header value must be 1 to 128 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and lower than 127`. You can use asterisks (\\*) and question marks (?) as wildcards. The value cannot start or end with a space character.
+	//
+	// 	- If **ValueType*	- is set to **ReferenceHeader**, you can reference one of the request headers. The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
+	//
+	// example:
+	//
+	// UserDefined
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 	// The type of header. Valid values:
 	//
-	// *   **UserDefined**: a custom header
-	// *   **ReferenceHeader**: a header that references one of the request headers
-	// *   **SystemDefined**: a header predefined by the system
+	// 	- **UserDefined**: a custom header
+	//
+	// 	- **ReferenceHeader**: a header that references one of the request headers
+	//
+	// 	- **SystemDefined**: a header predefined by the system
+	//
+	// example:
+	//
+	// UserDefined
 	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
 }
 
@@ -17852,47 +22768,79 @@ func (s *UpdateRuleAttributeRequestRuleActionsInsertHeaderConfig) SetValueType(v
 type UpdateRuleAttributeRequestRuleActionsRedirectConfig struct {
 	// The hostname to which requests are redirected. Valid values:
 	//
-	// *   **${host}** (default): If you set the value to ${host}, you cannot append other characters.
+	// 	- **${host}*	- (default): If you set the value to ${host}, you cannot append other characters.
 	//
-	// *   Limits on the value:
+	// 	- Limits on the value:
 	//
-	//     *   The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), and periods (.). Asterisks (\*) and question marks (?) can be used as wildcards.
-	//     *   The hostname must contain at least one period (.) but cannot start or end with a period (.).
-	//     *   The rightmost domain label can contain only letters and wildcard characters. It does not contain digits or hyphens (-).
-	//     *   The domain labels cannot start or end with a hyphen (-).
-	//     *   You can use asterisks (\*) and question marks (?) anywhere in a domain label as wildcard characters.
+	//     	- The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), and periods (.). Asterisks (\\*) and question marks (?) can be used as wildcards.
+	//
+	//     	- The hostname must contain at least one period (.) but cannot start or end with a period (.).
+	//
+	//     	- The rightmost domain label can contain only letters and wildcard characters. It does not contain digits or hyphens (-).
+	//
+	//     	- The domain labels cannot start or end with a hyphen (-).
+	//
+	//     	- You can use asterisks (\\*) and question marks (?) anywhere in a domain label as wildcard characters.
+	//
+	// example:
+	//
+	// www.example.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	// The redirect type. Valid values: **301**, **302**, **303**, **307**, and **308**.
+	//
+	// example:
+	//
+	// 301
 	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 	// The path to which requests are redirected. Valid values:
 	//
-	// *   Default value: **${path}**. \*\*${host}**, **${protocol}**, and **${port}\*\* are also supported. Each variable can be specified only once. You can specify one or more of the preceding variables in each request. You can also combine them with a custom value.
+	// 	- Default value: **${path}**. \\*\\*${host}**, **${protocol}**, and **${port}\\*\\	- are also supported. Each variable can be specified only once. You can specify one or more of the preceding variables in each request. You can also combine them with a custom value.
 	//
-	// *   A custom value. You must make sure that the custom value meets the following requirements:
+	// 	- A custom value. You must make sure that the custom value meets the following requirements:
 	//
-	//     *   The value is 1 to 128 characters in length.
-	//     *   It must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ] ^ , "`. You can use asterisks (\*) and question marks (?) as wildcards.
+	//     	- The value is 1 to 128 characters in length.
+	//
+	//     	- It must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ] ^ , "`. You can use asterisks (\\*) and question marks (?) as wildcards.
+	//
+	// example:
+	//
+	// /test
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	// The port to which requests are redirected. Valid values:
 	//
-	// *   **${port}** (default): If you set the value to ${port}, you cannot append other characters.
-	// *   You can also enter a port number. Valid values: **1 to 63335**.
+	// 	- **${port}*	- (default): If you set the value to ${port}, you cannot append other characters.
+	//
+	// 	- You can also enter a port number. Valid values: **1 to 63335**.
+	//
+	// example:
+	//
+	// 10
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The redirect protocol. Valid values:
 	//
-	// *   **${protocol}** (default): If you set the value to ${protocol}, you cannot append other characters.
-	// *   **HTTP** or **HTTPS**.
+	// 	- **${protocol}*	- (default): If you set the value to ${protocol}, you cannot append other characters.
+	//
+	// 	- **HTTP*	- or **HTTPS**.
 	//
 	// > HTTPS listeners support only HTTPS to HTTPS redirects.
+	//
+	// example:
+	//
+	// HTTP
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	// The query string of the URL to which requests are redirected. Valid values:
 	//
-	// *   Default value: **${query}**. \*\*${host}**, **${protocol}**, and **${port}\*\* are also supported. Each variable can be specified only once. You can specify one or more of the preceding variables in each request. You can also combine them with a custom value.
+	// 	- Default value: **${query}**. \\*\\*${host}**, **${protocol}**, and **${port}\\*\\	- are also supported. Each variable can be specified only once. You can specify one or more of the preceding variables in each request. You can also combine them with a custom value.
 	//
-	// *   A custom value. You must make sure that the custom value meets the following requirements:
+	// 	- A custom value. You must make sure that the custom value meets the following requirements:
 	//
-	//     *   The value must be 1 to 128 characters in length.
-	//     *   It can contain printable characters, except space characters, the special characters `# [ ] { } \ | < > &`, and uppercase letters.
+	//     	- The value must be 1 to 128 characters in length.
+	//
+	//     	- It can contain printable characters, except space characters, the special characters `# [ ] { } \\ | < > &`, and uppercase letters.
+	//
+	// example:
+	//
+	// quert
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 }
 
@@ -17935,6 +22883,9 @@ func (s *UpdateRuleAttributeRequestRuleActionsRedirectConfig) SetQuery(v string)
 }
 
 type UpdateRuleAttributeRequestRuleActionsRemoveHeaderConfig struct {
+	// example:
+	//
+	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 }
 
@@ -17954,32 +22905,49 @@ func (s *UpdateRuleAttributeRequestRuleActionsRemoveHeaderConfig) SetKey(v strin
 type UpdateRuleAttributeRequestRuleActionsRewriteConfig struct {
 	// The hostname to which requests are redirected. Valid values:
 	//
-	// *   **${host}** (default): If you set the value to ${host}, you cannot append other characters.
+	// 	- **${host}*	- (default): If you set the value to ${host}, you cannot append other characters.
 	//
-	// *   If you want to specify a custom value, make sure that the following requirements are met:
+	// 	- If you want to specify a custom value, make sure that the following requirements are met:
 	//
-	//     *   The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), and periods (.). You can use asterisks (\*) and question marks (?) as wildcard characters.
-	//     *   The hostname must contain at least one period (.) but cannot start or end with a period (.).
-	//     *   The rightmost domain label can contain only letters and wildcard characters. It does not contain digits or hyphens (-).
-	//     *   The domain labels cannot start or end with a hyphen (-). You can use asterisks (\*) and question marks (?) anywhere in a domain label as wildcard characters.
+	//     	- The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), and periods (.). You can use asterisks (\\*) and question marks (?) as wildcard characters.
+	//
+	//     	- The hostname must contain at least one period (.) but cannot start or end with a period (.).
+	//
+	//     	- The rightmost domain label can contain only letters and wildcard characters. It does not contain digits or hyphens (-).
+	//
+	//     	- The domain labels cannot start or end with a hyphen (-). You can use asterisks (\\*) and question marks (?) anywhere in a domain label as wildcard characters.
+	//
+	// example:
+	//
+	// www.example.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	// The path to which requests are redirected. Valid values:
 	//
-	// *   Default value: **${path}**. \*\*${host}**, **${protocol}**, and **${port}\*\* are also supported. Each variable can be specified only once. You can specify one or more of the preceding variables in each request. You can also combine them with a custom value.
+	// 	- Default value: **${path}**. \\*\\*${host}**, **${protocol}**, and **${port}\\*\\	- are also supported. Each variable can be specified only once. You can specify one or more of the preceding variables in each request. You can also combine them with a custom value.
 	//
-	// *   A custom value. You must make sure that the custom value meets the following requirements:
+	// 	- A custom value. You must make sure that the custom value meets the following requirements:
 	//
-	//     *   The value is 1 to 128 characters in length.
-	//     *   It must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ] ^ , "`. You can use asterisks (\*) and question marks (?) as wildcards.
+	//     	- The value is 1 to 128 characters in length.
+	//
+	//     	- It must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ] ^ , "`. You can use asterisks (\\*) and question marks (?) as wildcards.
+	//
+	// example:
+	//
+	// /tsdf
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	// The query string of the URL to which requests are distributed. Valid values:
 	//
-	// *   Default value: **${query}**. \*\*${host}**, **${protocol}**, and **${port}\*\* are also supported. Each variable can be specified only once. You can specify one or more of the preceding variables in each request. You can also combine them with a custom value.
+	// 	- Default value: **${query}**. \\*\\*${host}**, **${protocol}**, and **${port}\\*\\	- are also supported. Each variable can be specified only once. You can specify one or more of the preceding variables in each request. You can also combine them with a custom value.
 	//
-	// *   A custom value. You must make sure that the custom value meets the following requirements:
+	// 	- A custom value. You must make sure that the custom value meets the following requirements:
 	//
-	//     *   The value must be 1 to 128 characters in length.
-	//     *   It can contain printable characters, except space characters, the special characters `# [ ] { } \ | < > &`, and uppercase letters.
+	//     	- The value must be 1 to 128 characters in length.
+	//
+	//     	- It can contain printable characters, except space characters, the special characters `# [ ] { } \\ | < > &`, and uppercase letters.
+	//
+	// example:
+	//
+	// quedsa
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 }
 
@@ -18009,9 +22977,17 @@ func (s *UpdateRuleAttributeRequestRuleActionsRewriteConfig) SetQuery(v string) 
 type UpdateRuleAttributeRequestRuleActionsTrafficLimitConfig struct {
 	// The QPS of each IP address. Valid values: **1 to 100000**.
 	//
-	// > If both the **QPS** and **PerIpQps** properties are specified, make sure that the value of the **QPS** property is smaller than the value of the PerIpQps property.
+	// > If both the **QPS*	- and **PerIpQps*	- properties are specified, make sure that the value of the **QPS*	- property is smaller than the value of the PerIpQps property.
+	//
+	// example:
+	//
+	// 80
 	PerIpQps *int32 `json:"PerIpQps,omitempty" xml:"PerIpQps,omitempty"`
 	// The queries per second (QPS). Valid values: **1 to 100000**.
+	//
+	// example:
+	//
+	// 100
 	QPS *int32 `json:"QPS,omitempty" xml:"QPS,omitempty"`
 }
 
@@ -18038,8 +23014,13 @@ type UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfig struct {
 	MirrorGroupConfig *UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfigMirrorGroupConfig `json:"MirrorGroupConfig,omitempty" xml:"MirrorGroupConfig,omitempty" type:"Struct"`
 	// The type of destination to which network traffic is mirrored. Valid values:
 	//
-	// *   **ForwardGroupMirror**: a server group
-	// *   **SlsMirror**: Log Service
+	// 	- **ForwardGroupMirror**: a server group
+	//
+	// 	- **SlsMirror**: Log Service
+	//
+	// example:
+	//
+	// ForwardGroupMirror
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
@@ -18081,6 +23062,10 @@ func (s *UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfigMirrorGroupConf
 
 type UpdateRuleAttributeRequestRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples struct {
 	// The server group ID.
+	//
+	// example:
+	//
+	// srg-00mkgijak0w4qgz9****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 }
 
@@ -18118,15 +23103,27 @@ type UpdateRuleAttributeRequestRuleConditions struct {
 	SourceIpConfig *UpdateRuleAttributeRequestRuleConditionsSourceIpConfig `json:"SourceIpConfig,omitempty" xml:"SourceIpConfig,omitempty" type:"Struct"`
 	// The type of the forwarding rule. You can specify up to seven types. Valid values:
 	//
-	// *   **Host**: Requests are forwarded based on hosts.
-	// *   **Path**: Requests are forwarded based on paths.
-	// *   **Header**: Requests are forwarded based on HTTP headers.
-	// *   **QueryString**: Requests are forwarded based on query strings.
-	// *   **Method**: Requests are forwarded based on request methods.
-	// *   **Cookie**: Requests are forwarded based on cookies.
-	// *   **SourceIp**: Requests are distributed based on source IP addresses.
-	// *   **ResponseHeader**: Requests are forwarded based on HTTP response headers.
-	// *   **ResponseStatusCode**: Requests are forwarded based on response status codes.
+	// 	- **Host**: Requests are forwarded based on hosts.
+	//
+	// 	- **Path**: Requests are forwarded based on paths.
+	//
+	// 	- **Header**: Requests are forwarded based on HTTP headers.
+	//
+	// 	- **QueryString**: Requests are forwarded based on query strings.
+	//
+	// 	- **Method**: Requests are forwarded based on request methods.
+	//
+	// 	- **Cookie**: Requests are forwarded based on cookies.
+	//
+	// 	- **SourceIp**: Requests are distributed based on source IP addresses.
+	//
+	// 	- **ResponseHeader**: Requests are forwarded based on HTTP response headers.
+	//
+	// 	- **ResponseStatusCode**: Requests are forwarded based on response status codes.
+	//
+	// example:
+	//
+	// Host
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -18207,9 +23204,17 @@ func (s *UpdateRuleAttributeRequestRuleConditionsCookieConfig) SetValues(v []*Up
 }
 
 type UpdateRuleAttributeRequestRuleConditionsCookieConfigValues struct {
-	// The key of the cookie. The key must be 1 to 100 characters in length, and can contain printable characters such as lowercase letters, asterisks (\*), and question marks (?). However, uppercase letters, space characters, and the following special characters are not supported: `# [ ] { } \ | < > &`.
+	// The key of the cookie. The key must be 1 to 100 characters in length, and can contain printable characters such as lowercase letters, asterisks (\\*), and question marks (?). However, uppercase letters, space characters, and the following special characters are not supported: `# [ ] { } \\ | < > &`.
+	//
+	// example:
+	//
+	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the cookie. The value must be 1 to 128 characters in length, and can contain printable characters such as lowercase letters, asterisks (\*), and question marks (?). However, uppercase letters, space characters, and the following special characters are not supported: `# [ ] { } \ | < > &`.
+	// The value of the cookie. The value must be 1 to 128 characters in length, and can contain printable characters such as lowercase letters, asterisks (\\*), and question marks (?). However, uppercase letters, space characters, and the following special characters are not supported: `# [ ] { } \\ | < > &`.
+	//
+	// example:
+	//
+	// test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -18232,7 +23237,11 @@ func (s *UpdateRuleAttributeRequestRuleConditionsCookieConfigValues) SetValue(v 
 }
 
 type UpdateRuleAttributeRequestRuleConditionsHeaderConfig struct {
-	// The key of the header. The key must be 1 to 40 characters in length and can contain letters, digits, hyphens (-), and underscores (\_). You cannot specify Cookie or Host.
+	// The key of the header. The key must be 1 to 40 characters in length and can contain letters, digits, hyphens (-), and underscores (_). You cannot specify Cookie or Host.
+	//
+	// example:
+	//
+	// Port
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The values of the header.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
@@ -18329,9 +23338,17 @@ func (s *UpdateRuleAttributeRequestRuleConditionsQueryStringConfig) SetValues(v 
 }
 
 type UpdateRuleAttributeRequestRuleConditionsQueryStringConfigValues struct {
-	// They key of the query string. The key must be 1 to 100 characters in length, and can contain printable characters such as lowercase letters, asterisks (\*), and question marks (?). However, the key cannot contain uppercase letters, space characters, or the following special characters: `# [ ] { } \ | < > &`.
+	// They key of the query string. The key must be 1 to 100 characters in length, and can contain printable characters such as lowercase letters, asterisks (\\*), and question marks (?). However, the key cannot contain uppercase letters, space characters, or the following special characters: `# [ ] { } \\ | < > &`.
+	//
+	// example:
+	//
+	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the query string. The value must be 1 to 128 characters in length, and can contain printable characters such as lowercase letters, asterisks (\*), and question marks (?). However, uppercase letters, space characters, and the following special characters are not supported: `# [ ] { } \ | < > &`.
+	// The value of the query string. The value must be 1 to 128 characters in length, and can contain printable characters such as lowercase letters, asterisks (\\*), and question marks (?). However, uppercase letters, space characters, and the following special characters are not supported: `# [ ] { } \\ | < > &`.
+	//
+	// example:
+	//
+	// test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -18356,9 +23373,15 @@ func (s *UpdateRuleAttributeRequestRuleConditionsQueryStringConfigValues) SetVal
 type UpdateRuleAttributeRequestRuleConditionsResponseHeaderConfig struct {
 	// The key of the header.
 	//
-	// *   The key must be 1 to 40 characters in length.
-	// *   It can contain lowercase letters, digits, hyphens (-), and underscores (\_).
-	// *   Cookie and Host are not supported.
+	// 	- The key must be 1 to 40 characters in length.
+	//
+	// 	- It can contain lowercase letters, digits, hyphens (-), and underscores (_).
+	//
+	// 	- Cookie and Host are not supported.
+	//
+	// example:
+	//
+	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The values of the header.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
@@ -18420,8 +23443,16 @@ func (s *UpdateRuleAttributeRequestRuleConditionsSourceIpConfig) SetValues(v []*
 
 type UpdateRuleAttributeResponseBody struct {
 	// The asynchronous task ID.
+	//
+	// example:
+	//
+	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 365F5378-41F6-4AE4-92F8-7FF34B540710
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18477,14 +23508,25 @@ type UpdateRulesAttributeRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The forwarding rules. You can specify up to 10 forwarding rules in each request.
+	//
+	// This parameter is required.
 	Rules []*UpdateRulesAttributeRequestRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -18515,14 +23557,28 @@ type UpdateRulesAttributeRequestRules struct {
 	// The priority of the forwarding rule. Valid values: **1 to 10000**. A lower value specifies a higher priority. You can specify priorities for up to 20 forwarding rules.
 	//
 	// > The priority of each forwarding rule added to a listener must be unique.
+	//
+	// example:
+	//
+	// 10
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The actions of the forwarding rule.
 	RuleActions []*UpdateRulesAttributeRequestRulesRuleActions `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
 	// The match conditions of the forwarding rule.
 	RuleConditions []*UpdateRulesAttributeRequestRulesRuleConditions `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
 	// The forwarding rule ID. You can specify up to 20 IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rule-cxjh7vazn2jpnl****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter. You can specify names for up to 20 forwarding rules.
+	// The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter. You can specify names for up to 20 forwarding rules.
+	//
+	// example:
+	//
+	// rule-instance-test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
@@ -18568,7 +23624,13 @@ type UpdateRulesAttributeRequestRulesRuleActions struct {
 	ForwardGroupConfig *UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfig `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
 	// The configuration of the action to insert a header. You can specify the configurations of up to 20 actions to insert a header.
 	InsertHeaderConfig *UpdateRulesAttributeRequestRulesRuleActionsInsertHeaderConfig `json:"InsertHeaderConfig,omitempty" xml:"InsertHeaderConfig,omitempty" type:"Struct"`
-	// The priority of the action. Valid values: **1** to **50000**. A lower value specifies a higher priority. The actions of a forwarding rule are applied in descending order of priority. This parameter cannot be left empty. The priority of each action within a forwarding rule must be unique. You can specify priorities for up to 20 actions.
+	// The priority of the action. Valid values: **1*	- to **50000**. A lower value specifies a higher priority. The actions of a forwarding rule are applied in descending order of priority. This parameter cannot be left empty. The priority of each action within a forwarding rule must be unique. You can specify priorities for up to 20 actions.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	Order *int32 `json:"Order,omitempty" xml:"Order,omitempty"`
 	// The configuration of the redirect action. You can specify the configurations of up to 20 redirect actions.
 	RedirectConfig *UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig `json:"RedirectConfig,omitempty" xml:"RedirectConfig,omitempty" type:"Struct"`
@@ -18582,13 +23644,25 @@ type UpdateRulesAttributeRequestRulesRuleActions struct {
 	TrafficMirrorConfig *UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfig `json:"TrafficMirrorConfig,omitempty" xml:"TrafficMirrorConfig,omitempty" type:"Struct"`
 	// The type of the forwarding rule. You can specify up to seven types. Valid values:
 	//
-	// *   **Host**: Requests are distributed based on hosts.
-	// *   **Path**: Requests are distributed based on paths.
-	// *   **Header**: Requests are distributed based on HTTP headers.
-	// *   **QueryString**: Requests are distributed based on query strings.
-	// *   **Method**: Requests are distributed based on request methods.
-	// *   **Cookie**: Requests are distributed based on cookies.
-	// *   **SourceIp**: Requests are distributed based on source IP addresses.
+	// 	- **Host**: Requests are distributed based on hosts.
+	//
+	// 	- **Path**: Requests are distributed based on paths.
+	//
+	// 	- **Header**: Requests are distributed based on HTTP headers.
+	//
+	// 	- **QueryString**: Requests are distributed based on query strings.
+	//
+	// 	- **Method**: Requests are distributed based on request methods.
+	//
+	// 	- **Cookie**: Requests are distributed based on cookies.
+	//
+	// 	- **SourceIp**: Requests are distributed based on source IP addresses.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Host
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -18658,8 +23732,13 @@ func (s *UpdateRulesAttributeRequestRulesRuleActions) SetType(v string) *UpdateR
 type UpdateRulesAttributeRequestRulesRuleActionsCorsConfig struct {
 	// Specifies whether credentials can be carried in CORS requests. Valid values:
 	//
-	// *   **on**
-	// *   **off**
+	// 	- **on**
+	//
+	// 	- **off**
+	//
+	// example:
+	//
+	// on
 	AllowCredentials *string `json:"AllowCredentials,omitempty" xml:"AllowCredentials,omitempty"`
 	// The allowed headers for CORS requests.
 	AllowHeaders []*string `json:"AllowHeaders,omitempty" xml:"AllowHeaders,omitempty" type:"Repeated"`
@@ -18671,7 +23750,11 @@ type UpdateRulesAttributeRequestRulesRuleActionsCorsConfig struct {
 	ExposeHeaders []*string `json:"ExposeHeaders,omitempty" xml:"ExposeHeaders,omitempty" type:"Repeated"`
 	// The maximum cache time of preflight requests in the browser. Unit: seconds.
 	//
-	// Valid values: **-1** to **172800**.
+	// Valid values: **-1*	- to **172800**.
+	//
+	// example:
+	//
+	// 1000
 	MaxAge *int64 `json:"MaxAge,omitempty" xml:"MaxAge,omitempty"`
 }
 
@@ -18715,12 +23798,24 @@ func (s *UpdateRulesAttributeRequestRulesRuleActionsCorsConfig) SetMaxAge(v int6
 
 type UpdateRulesAttributeRequestRulesRuleActionsFixedResponseConfig struct {
 	// The content of the custom response. The content can be up to 1 KB in size, and can contain only ASCII characters.
+	//
+	// example:
+	//
+	// dssacav
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The format of the response.
 	//
 	// Valid values: **text/plain**, **text/css**, **text/html**, **application/javascript**, and **application/json**.
+	//
+	// example:
+	//
+	// text/plain
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// The HTTP status code in the response. Valid values: **HTTP\_2xx**, **HTTP\_4xx**, and **HTTP\_5xx**. **x** must be a digit.
+	// The HTTP status code in the response. Valid values: **HTTP_2xx**, **HTTP_4xx**, and **HTTP_5xx**. **x*	- must be a digit.
+	//
+	// example:
+	//
+	// 200
 	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 }
 
@@ -18775,10 +23870,19 @@ func (s *UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfig) SetServe
 type UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession struct {
 	// Specifies whether to enable session persistence. Valid values:
 	//
-	// *   **true**
-	// *   **false** (default)
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
+	// example:
+	//
+	// false
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The timeout period of sessions. Unit: seconds. Valid values: **1** to **86400**.
+	// The timeout period of sessions. Unit: seconds. Valid values: **1*	- to **86400**.
+	//
+	// example:
+	//
+	// 2
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
@@ -18802,11 +23906,20 @@ func (s *UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGrou
 
 type UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupTuples struct {
 	// The server group to which requests are forwarded.
-	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// The weight of the server group. A larger value specifies a higher weight. A server group with a higher weight receives more requests. Valid values: **0** to **100**.
 	//
-	// *   If only one destination server group exists and you do not specify a weight, the default value **100** is used.
-	// *   If more than one destination server group exists, you must specify weights.
+	// example:
+	//
+	// sg-atstuj3rtoptyui****
+	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	// The weight of the server group. A larger value specifies a higher weight. A server group with a higher weight receives more requests. Valid values: **0*	- to **100**.
+	//
+	// 	- If only one destination server group exists and you do not specify a weight, the default value **100*	- is used.
+	//
+	// 	- If more than one destination server group exists, you must specify weights.
+	//
+	// example:
+	//
+	// 30
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
@@ -18831,32 +23944,55 @@ func (s *UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGrou
 type UpdateRulesAttributeRequestRulesRuleActionsInsertHeaderConfig struct {
 	// Specifies whether to overwrite the request header. Valid values:
 	//
-	// *   **true**
-	// *   **false** (default)
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
+	// example:
+	//
+	// false
 	CoverEnabled *bool `json:"CoverEnabled,omitempty" xml:"CoverEnabled,omitempty"`
-	// The key of the header to be inserted. The key must be 1 to 40 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The key specified in `InsertHeader` must be unique.
+	// The key of the header to be inserted. The key must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The key specified in `InsertHeader` must be unique.
 	//
 	// > You cannot use the following header keys (case-insensitive): `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te, host`, `cookie`, `remoteip`, and `authority`.
+	//
+	// example:
+	//
+	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the header to be inserted.
 	//
-	// *   If **ValueType** is set to **SystemDefined**, you can specify one of the following header values:
+	// 	- If **ValueType*	- is set to **SystemDefined**, you can specify one of the following header values:
 	//
-	//     *   **ClientSrcPort**: the client port.
-	//     *   **ClientSrcIp**: the client IP address.
-	//     *   **Protocol**: the request protocol (HTTP or HTTPS).
-	//     *   **SLBId**: the ALB instance ID.
-	//     *   **SLBPort**: the listener port.
+	//     	- **ClientSrcPort**: the client port.
 	//
-	// *   If **ValueType** is set to **UserDefined**, you can specify a custom header value. The header value must be 1 to 128 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and lower than 127`. You can use asterisks (\*) and question marks (?) as wildcards. The value cannot start or end with a space character.
+	//     	- **ClientSrcIp**: the client IP address.
 	//
-	// *   If **ValueType** is set to **ReferenceHeader**, you can reference one of the request headers. The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (\_), and hyphens (-).
+	//     	- **Protocol**: the request protocol (HTTP or HTTPS).
+	//
+	//     	- **SLBId**: the ALB instance ID.
+	//
+	//     	- **SLBPort**: the listener port.
+	//
+	// 	- If **ValueType*	- is set to **UserDefined**, you can specify a custom header value. The header value must be 1 to 128 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and lower than 127`. You can use asterisks (\\*) and question marks (?) as wildcards. The value cannot start or end with a space character.
+	//
+	// 	- If **ValueType*	- is set to **ReferenceHeader**, you can reference one of the request headers. The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
+	//
+	// example:
+	//
+	// UserDefined
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 	// The type of the header. Valid values:
 	//
-	// *   **UserDefined**: a user-defined header
-	// *   **ReferenceHeader**: a header that is referenced from a request header.
-	// *   **SystemDefined**: a system-defined header.
+	// 	- **UserDefined**: a user-defined header
+	//
+	// 	- **ReferenceHeader**: a header that is referenced from a request header.
+	//
+	// 	- **SystemDefined**: a system-defined header.
+	//
+	// example:
+	//
+	// UserDefined
 	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
 }
 
@@ -18893,35 +24029,63 @@ type UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig struct {
 	//
 	// Take note of the following rules when you specify a hostname:
 	//
-	// *   The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, and the following special characters: - . \* = ~ \_ + \ ^ ! $ & | ( ) \[ ] ?.
-	// *   The hostname must contain at least one period (.) but cannot start or end with a period (.).
-	// *   The rightmost domain label can contain only letters, asterisks (*), and question marks (?), and cannot contain digits or hyphens (-). The leftmost `domain label` can contain asterisks (*).
-	// *   The domain labels cannot start or end with a hyphen (-). You can specify asterisks (∗) and question marks (?) anywhere in a domain label.
+	// 	- The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, and the following special characters: - . \\	- = ~ _ + \\ ^ ! $ & | ( ) [ ] ?.
+	//
+	// 	- The hostname must contain at least one period (.) but cannot start or end with a period (.).
+	//
+	// 	- The rightmost domain label can contain only letters, asterisks (*), and question marks (?), and cannot contain digits or hyphens (-). The leftmost `domain label` can contain asterisks (*).
+	//
+	// 	- The domain labels cannot start or end with a hyphen (-). You can specify asterisks (∗) and question marks (?) anywhere in a domain label.
+	//
+	// example:
+	//
+	// www.example.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	// The redirect type. Valid values: **301**, **302**, **303**, **307**, and **308**.
+	//
+	// example:
+	//
+	// 301
 	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 	// The path to which requests are redirected.
 	//
-	// *   **${path}** (default): You can reference \*\*${host}**, **${protocol}** and **${port}\*\*. Each variable can be used only once. You can specify one or more of the preceding variables in each request. You can also combine them with a custom value.
+	// 	- **${path}*	- (default): You can reference \\*\\*${host}**, **${protocol}*	- and **${port}\\*\\*. Each variable can be used only once. You can specify one or more of the preceding variables in each request. You can also combine them with a custom value.
 	//
-	// *   A custom value that meets the following requirements:
+	// 	- A custom value that meets the following requirements:
 	//
-	//     *   The custom value must be 1 to 128 characters in length. You can use asterisks (\*) and question marks (?) as wildcards.
-	//     *   The custom value can contain letters, digits, and the following special characters: `$ - _ . + / & ~ @ : \" * ?`. The custom value must start with a forward slash (/) and cannot contain the following characters: `" % # ; ! ( ) [ ] ^ , "`.
+	//     	- The custom value must be 1 to 128 characters in length. You can use asterisks (\\*) and question marks (?) as wildcards.
+	//
+	//     	- The custom value can contain letters, digits, and the following special characters: `$ - _ . + / & ~ @ : \\" 	- ?`. The custom value must start with a forward slash (/) and cannot contain the following characters: `" % # ; ! ( ) [ ] ^ , "`.
+	//
+	// example:
+	//
+	// /test
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	// The port to which requests are forwarded.
 	//
-	// Valid values: **1** to **63335**.
+	// Valid values: **1*	- to **63335**.
+	//
+	// example:
+	//
+	// 10
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The redirect protocol.
 	//
-	// Valid values: **HTTP** and **HTTPS**.
+	// Valid values: **HTTP*	- and **HTTPS**.
 	//
 	// > HTTPS listeners support only HTTP to HTTPS redirection.
+	//
+	// example:
+	//
+	// HTTP
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	// The query string to which requests are forwarded.
 	//
-	// The query string must be 1 to 128 characters in length, and can contain printable characters, excluding uppercase letters and the following special characters: `# [ ] { } \ | < > &`.
+	// The query string must be 1 to 128 characters in length, and can contain printable characters, excluding uppercase letters and the following special characters: `# [ ] { } \\ | < > &`.
+	//
+	// example:
+	//
+	// quert
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 }
 
@@ -18966,9 +24130,15 @@ func (s *UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig) SetQuery(v s
 type UpdateRulesAttributeRequestRulesRuleActionsRemoveHeaderConfig struct {
 	// The key of the header.
 	//
-	// *   The key must be 1 to 40 characters in length.
-	// *   It can contain letters, digits, hyphens (-), and underscores (\_).
-	// *   Cookie and Host are not supported.
+	// 	- The key must be 1 to 40 characters in length.
+	//
+	// 	- It can contain letters, digits, hyphens (-), and underscores (_).
+	//
+	// 	- Cookie and Host are not supported.
+	//
+	// example:
+	//
+	// Port
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 }
 
@@ -18990,23 +24160,39 @@ type UpdateRulesAttributeRequestRulesRuleActionsRewriteConfig struct {
 	//
 	// Take note of the following rules when you specify a hostname:
 	//
-	// *   The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, and the following special characters: - . \* = ~ \_ + \ ^ ! $ & | ( ) \[ ] ?.
-	// *   The hostname must contain at least one period (.) but cannot start or end with a period (.).
-	// *   The rightmost domain label can contain only letters, asterisks (*), and question marks (?), and cannot contain digits or hyphens (-). The leftmost `domain label` can contain asterisks (*).
-	// *   The domain labels cannot start or end with a hyphen (-). You can specify asterisks (∗) and question marks (?) anywhere in a domain label.
+	// 	- The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, and the following special characters: - . \\	- = ~ _ + \\ ^ ! $ & | ( ) [ ] ?.
+	//
+	// 	- The hostname must contain at least one period (.) but cannot start or end with a period (.).
+	//
+	// 	- The rightmost domain label can contain only letters, asterisks (*), and question marks (?), and cannot contain digits or hyphens (-). The leftmost `domain label` can contain asterisks (*).
+	//
+	// 	- The domain labels cannot start or end with a hyphen (-). You can specify asterisks (∗) and question marks (?) anywhere in a domain label.
+	//
+	// example:
+	//
+	// www.example.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	// The path to which requests are forwarded.
 	//
-	// *   **${path}** (default): You can reference \*\*${host}**, **${protocol}** and **${port}\*\*. Each variable can be used only once. You can specify one or more of the preceding variables in each request. You can also combine them with a custom value.
+	// 	- **${path}*	- (default): You can reference \\*\\*${host}**, **${protocol}*	- and **${port}\\*\\*. Each variable can be used only once. You can specify one or more of the preceding variables in each request. You can also combine them with a custom value.
 	//
-	// *   A custom value that meets the following requirements:
+	// 	- A custom value that meets the following requirements:
 	//
-	//     *   The custom value must be 1 to 128 characters in length. You can use asterisks (\*) and question marks (?) as wildcards.
-	//     *   The custom value can contain letters, digits, and the following special characters: `$ - _ . + / & ~ @ : \" * ?`. The custom value must start with a forward slash (/) and cannot contain the following characters: `" % # ; ! ( ) [ ] ^ , "`.
+	//     	- The custom value must be 1 to 128 characters in length. You can use asterisks (\\*) and question marks (?) as wildcards.
+	//
+	//     	- The custom value can contain letters, digits, and the following special characters: `$ - _ . + / & ~ @ : \\" 	- ?`. The custom value must start with a forward slash (/) and cannot contain the following characters: `" % # ; ! ( ) [ ] ^ , "`.
+	//
+	// example:
+	//
+	// /tsdf
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	// The query string to which requests are forwarded.
 	//
-	// The query string must be 1 to 128 characters in length, and can contain printable characters, excluding uppercase letters and the following special characters: `# [ ] { } \ | < > &`.
+	// The query string must be 1 to 128 characters in length, and can contain printable characters, excluding uppercase letters and the following special characters: `# [ ] { } \\ | < > &`.
+	//
+	// example:
+	//
+	// quedsa
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 }
 
@@ -19034,11 +24220,19 @@ func (s *UpdateRulesAttributeRequestRulesRuleActionsRewriteConfig) SetQuery(v st
 }
 
 type UpdateRulesAttributeRequestRulesRuleActionsTrafficLimitConfig struct {
-	// The QPS per IP address. Valid values: **1** to **100000**.
+	// The QPS per IP address. Valid values: **1*	- to **100000**.
 	//
 	// > If you specify this parameter and QPS, the value of PerIpQps must be smaller than the value of QPS.
+	//
+	// example:
+	//
+	// 80
 	PerIpQps *int32 `json:"PerIpQps,omitempty" xml:"PerIpQps,omitempty"`
-	// The number of queries per second (QPS). Valid values: **1** to **100000**.
+	// The number of queries per second (QPS). Valid values: **1*	- to **100000**.
+	//
+	// example:
+	//
+	// 2
 	QPS *int32 `json:"QPS,omitempty" xml:"QPS,omitempty"`
 }
 
@@ -19065,8 +24259,13 @@ type UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfig struct {
 	MirrorGroupConfig *UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig `json:"MirrorGroupConfig,omitempty" xml:"MirrorGroupConfig,omitempty" type:"Struct"`
 	// The type of destination to which network traffic is mirrored. Valid values:
 	//
-	// *   **ForwardGroupMirror**: a server group
-	// *   **SlsMirror**: Log Service
+	// 	- **ForwardGroupMirror**: a server group
+	//
+	// 	- **SlsMirror**: Log Service
+	//
+	// example:
+	//
+	// ForwardGroupMirror
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
@@ -19108,6 +24307,10 @@ func (s *UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfigMirrorGro
 
 type UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples struct {
 	// The server group ID.
+	//
+	// example:
+	//
+	// srg-00mkgijak0w4qgz9****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 }
 
@@ -19131,7 +24334,7 @@ type UpdateRulesAttributeRequestRulesRuleConditions struct {
 	HeaderConfig *UpdateRulesAttributeRequestRulesRuleConditionsHeaderConfig `json:"HeaderConfig,omitempty" xml:"HeaderConfig,omitempty" type:"Struct"`
 	// The match conditions for hostnames. You can specify up to 20 match conditions.
 	HostConfig *UpdateRulesAttributeRequestRulesRuleConditionsHostConfig `json:"HostConfig,omitempty" xml:"HostConfig,omitempty" type:"Struct"`
-	// The match conditions for HTTP request methods. Valid values of N: **1** to **20**.
+	// The match conditions for HTTP request methods. Valid values of N: **1*	- to **20**.
 	MethodConfig *UpdateRulesAttributeRequestRulesRuleConditionsMethodConfig `json:"MethodConfig,omitempty" xml:"MethodConfig,omitempty" type:"Struct"`
 	// The match conditions for query strings. You can specify up to 20 match conditions.
 	PathConfig *UpdateRulesAttributeRequestRulesRuleConditionsPathConfig `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
@@ -19139,26 +24342,39 @@ type UpdateRulesAttributeRequestRulesRuleConditions struct {
 	QueryStringConfig *UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfig `json:"QueryStringConfig,omitempty" xml:"QueryStringConfig,omitempty" type:"Struct"`
 	// The configuration of the HTTP response header. You can specify the configurations of up to 20 HTTP response header.
 	ResponseHeaderConfig *UpdateRulesAttributeRequestRulesRuleConditionsResponseHeaderConfig `json:"ResponseHeaderConfig,omitempty" xml:"ResponseHeaderConfig,omitempty" type:"Struct"`
-	// The match conditions for response status codes. This parameter is required and takes effect when **Type** is set to **ResponseStatusCode**. You can specify up to 20 match conditions.
+	// The match conditions for response status codes. This parameter is required and takes effect when **Type*	- is set to **ResponseStatusCode**. You can specify up to 20 match conditions.
 	ResponseStatusCodeConfig *UpdateRulesAttributeRequestRulesRuleConditionsResponseStatusCodeConfig `json:"ResponseStatusCodeConfig,omitempty" xml:"ResponseStatusCodeConfig,omitempty" type:"Struct"`
 	// The configuration of the source IP addresses based on which user traffic is matched. You can specify up to 20 configuration records.
 	SourceIpConfig *UpdateRulesAttributeRequestRulesRuleConditionsSourceIpConfig `json:"SourceIpConfig,omitempty" xml:"SourceIpConfig,omitempty" type:"Struct"`
 	// The type of action specified in the forwarding rule. You can specify up to 11 types of actions. Valid values:
 	//
-	// *   **ForwardGroup**: forwards a request to multiple vServer groups.
-	// *   **Redirect**: redirects a request.
-	// *   **FixedResponse**: returns a custom response.
-	// *   **Rewrite**: rewrites a request.
-	// *   **InsertHeader**: inserts a header.
-	// *   **RemoveHeaderConfig**: deletes a header.
-	// *   **TrafficLimitConfig**: throttles network traffic.
-	// *   **TrafficMirrorConfig**: mirrors traffic.
-	// *   **CorsConfig**: forwards requests based on CORS.
+	// 	- **ForwardGroup**: forwards a request to multiple vServer groups.
+	//
+	// 	- **Redirect**: redirects a request.
+	//
+	// 	- **FixedResponse**: returns a custom response.
+	//
+	// 	- **Rewrite**: rewrites a request.
+	//
+	// 	- **InsertHeader**: inserts a header.
+	//
+	// 	- **RemoveHeaderConfig**: deletes a header.
+	//
+	// 	- **TrafficLimitConfig**: throttles network traffic.
+	//
+	// 	- **TrafficMirrorConfig**: mirrors traffic.
+	//
+	// 	- **CorsConfig**: forwards requests based on CORS.
 	//
 	// The following action types are supported:
 	//
-	// *   **FinalType**: the last action to be performed in a forwarding rule. Each forwarding rule can contain only one FinalType action. You can specify a **ForwardGroup**, **Redirect**, or **FixedResponse** action as the FinalType action.
-	// *   **ExtType**: the action or the actions to be performed before the **FinalType** action. A forwarding rule can contain one or more **ExtType** actions. To specify an ExtType action, you must specify a **FinalType** action. You can specify multiple **InsertHeader** actions or one **Rewrite** action.
+	// 	- **FinalType**: the last action to be performed in a forwarding rule. Each forwarding rule can contain only one FinalType action. You can specify a **ForwardGroup**, **Redirect**, or **FixedResponse*	- action as the FinalType action.
+	//
+	// 	- **ExtType**: the action or the actions to be performed before the **FinalType*	- action. A forwarding rule can contain one or more **ExtType*	- actions. To specify an ExtType action, you must specify a **FinalType*	- action. You can specify multiple **InsertHeader*	- actions or one **Rewrite*	- action.
+	//
+	// example:
+	//
+	// ForwardGroup
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -19239,9 +24455,17 @@ func (s *UpdateRulesAttributeRequestRulesRuleConditionsCookieConfig) SetValues(v
 }
 
 type UpdateRulesAttributeRequestRulesRuleConditionsCookieConfigValues struct {
-	// The key of the cookie. The key must be 1 to 100 characters in length, and can contain printable characters such as lowercase letters, asterisks (\*), and question marks (?). However, the key cannot contain uppercase letters, space characters, or the following special characters: `# [ ] { } \ | < > &`.
+	// The key of the cookie. The key must be 1 to 100 characters in length, and can contain printable characters such as lowercase letters, asterisks (\\*), and question marks (?). However, the key cannot contain uppercase letters, space characters, or the following special characters: `# [ ] { } \\ | < > &`.
+	//
+	// example:
+	//
+	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the cookie. The value must be 1 to 128 characters in length, and can contain printable characters such as lowercase letters, asterisks (\*), and question marks (?). However, the value cannot contain uppercase letters, space characters, or the following special characters: `# [ ] { } \ | < > &`.
+	// The value of the cookie. The value must be 1 to 128 characters in length, and can contain printable characters such as lowercase letters, asterisks (\\*), and question marks (?). However, the value cannot contain uppercase letters, space characters, or the following special characters: `# [ ] { } \\ | < > &`.
+	//
+	// example:
+	//
+	// test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -19264,7 +24488,11 @@ func (s *UpdateRulesAttributeRequestRulesRuleConditionsCookieConfigValues) SetVa
 }
 
 type UpdateRulesAttributeRequestRulesRuleConditionsHeaderConfig struct {
-	// The key of the header. The key must be 1 to 40 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). Cookie and Host are not supported.
+	// The key of the header. The key must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). Cookie and Host are not supported.
+	//
+	// example:
+	//
+	// Port
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The values of the header.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
@@ -19363,11 +24591,19 @@ func (s *UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfig) SetVal
 type UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfigValues struct {
 	// They key of the query string.
 	//
-	// The key must be 1 to 100 characters in length, and can contain printable characters such as lowercase letters, asterisks (\*), and question marks (?). The key cannot contain uppercase letters, space characters, or the following special characters: `# [ ] { } \ | < > &`.
+	// The key must be 1 to 100 characters in length, and can contain printable characters such as lowercase letters, asterisks (\\*), and question marks (?). The key cannot contain uppercase letters, space characters, or the following special characters: `# [ ] { } \\ | < > &`.
+	//
+	// example:
+	//
+	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the query string.
 	//
-	// The value must be 1 to 128 characters in length, and can contain printable characters such as lowercase letters, asterisks (\*), and question marks (?). However, uppercase letters, space characters, and the following special characters are not supported: `# [ ] { } \ | < > &`.
+	// The value must be 1 to 128 characters in length, and can contain printable characters such as lowercase letters, asterisks (\\*), and question marks (?). However, uppercase letters, space characters, and the following special characters are not supported: `# [ ] { } \\ | < > &`.
+	//
+	// example:
+	//
+	// test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -19392,9 +24628,15 @@ func (s *UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfigValues) 
 type UpdateRulesAttributeRequestRulesRuleConditionsResponseHeaderConfig struct {
 	// The key of the header.
 	//
-	// *   The key must be 1 to 40 characters in length.
-	// *   It can contain letters, digits, hyphens (-), and underscores (\_).
-	// *   Cookie and Host are not supported.
+	// 	- The key must be 1 to 40 characters in length.
+	//
+	// 	- It can contain letters, digits, hyphens (-), and underscores (_).
+	//
+	// 	- Cookie and Host are not supported.
+	//
+	// example:
+	//
+	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The values of the header.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
@@ -19456,8 +24698,16 @@ func (s *UpdateRulesAttributeRequestRulesRuleConditionsSourceIpConfig) SetValues
 
 type UpdateRulesAttributeResponseBody struct {
 	// The asynchronous task ID.
+	//
+	// example:
+	//
+	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 365F4154-92F6-4AE4-92F8-7FF34B540710
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19515,18 +24765,37 @@ type UpdateSecurityPolicyAttributeRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
+	// example:
+	//
+	// 593B0448-D13E-4C56-AC0D-FDF0FDE0E9A3
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The security policy ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// spy-n0kn923****
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 	// The name of the security policy.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	//
+	// example:
+	//
+	// test-secrity
 	SecurityPolicyName *string `json:"SecurityPolicyName,omitempty" xml:"SecurityPolicyName,omitempty"`
 	// The supported TLS protocol versions.
 	TLSVersions []*string `json:"TLSVersions,omitempty" xml:"TLSVersions,omitempty" type:"Repeated"`
@@ -19572,8 +24841,16 @@ func (s *UpdateSecurityPolicyAttributeRequest) SetTLSVersions(v []*string) *Upda
 
 type UpdateSecurityPolicyAttributeResponseBody struct {
 	// The asynchronous task ID.
+	//
+	// example:
+	//
+	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 593B0448-D13E-4C56-AC0D-FDF0FDE0E9A3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19630,28 +24907,57 @@ type UpdateServerGroupAttributeRequest struct {
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
 	// > If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
+	// example:
+	//
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken           *string                                                 `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	ConnectionDrainConfig *UpdateServerGroupAttributeRequestConnectionDrainConfig `json:"ConnectionDrainConfig,omitempty" xml:"ConnectionDrainConfig,omitempty" type:"Struct"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: checks the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx` HTTP status code is returned and the operation is performed.
+	// 	- **true**: checks the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx` HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The configuration of health checks.
 	HealthCheckConfig *UpdateServerGroupAttributeRequestHealthCheckConfig `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty" type:"Struct"`
 	// The scheduling algorithm. Valid values:
 	//
-	// *   **Wrr**: the weighted round robin algorithm. Backend servers that have higher weights receive more requests than those that have lower weights.
-	// *   **Wlc**: the weighted least connections algorithm. Requests are distributed based on the weights and the number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections is expected to receive more requests.
-	// *   **Sch**: the consistent hashing algorithm. Requests from the same source IP address are distributed to the same backend server.
+	// 	- **Wrr**: the weighted round robin algorithm. Backend servers that have higher weights receive more requests than those that have lower weights.
+	//
+	// 	- **Wlc**: the weighted least connections algorithm. Requests are distributed based on the weights and the number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections is expected to receive more requests.
+	//
+	// 	- **Sch**: the consistent hashing algorithm. Requests from the same source IP address are distributed to the same backend server.
+	//
+	// example:
+	//
+	// Wrr
 	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
 	// The server group ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sgp-atstuj3rtop****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 	// The server group name.
 	//
-	// The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+	// The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	//
+	// example:
+	//
+	// test
 	ServerGroupName *string `json:"ServerGroupName,omitempty" xml:"ServerGroupName,omitempty"`
 	// This parameter is available only if the ALB Ingress controller is used. In this case, set this parameter to the name of the `Kubernetes Service` that is associated with the server group.
+	//
+	// example:
+	//
+	// test2
 	ServiceName     *string                                           `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	SlowStartConfig *UpdateServerGroupAttributeRequestSlowStartConfig `json:"SlowStartConfig,omitempty" xml:"SlowStartConfig,omitempty" type:"Struct"`
 	// The configuration of session persistence.
@@ -19758,77 +25064,131 @@ type UpdateServerGroupAttributeRequestHealthCheckConfig struct {
 	HealthCheckCodes []*string `json:"HealthCheckCodes,omitempty" xml:"HealthCheckCodes,omitempty" type:"Repeated"`
 	// The port that you want to use for health checks on backend servers.
 	//
-	// Valid values: **0** to **65535**.
+	// Valid values: **0*	- to **65535**.
 	//
 	// If you set the value to **0**, the ports of backend servers are used for health checks.
 	//
-	// > This parameter takes effect when the **HealthCheckEnabled** parameter is set to **true**.
+	// > This parameter takes effect when the **HealthCheckEnabled*	- parameter is set to **true**.
+	//
+	// example:
+	//
+	// 80
 	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
 	// Specifies whether to enable the health check feature. Valid values:
 	//
-	// *   **true** (default)
-	// *   **false**
+	// 	- **true*	- (default)
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	HealthCheckEnabled *bool `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
 	// The domain name that is used for health checks. The domain name must meet the following requirements:
 	//
-	// *   The domain name must be 1 to 80 characters in length.
-	// *   The domain name can contain lowercase letters, digits, hyphens (-), and periods (.).
-	// *   It must contain at least one period (.) but cannot start or end with a period (.).
-	// *   The rightmost field of the domain name can contain only letters and cannot contain digits or hyphens (-).
-	// *   Other fields cannot start or end with a hyphen (-).
+	// 	- The domain name must be 1 to 80 characters in length.
 	//
-	// > This parameter takes effect when the **HealthCheckEnabled** parameter is set to true and the **HealthCheckProtocol** parameter is set to **HTTP**.
+	// 	- The domain name can contain lowercase letters, digits, hyphens (-), and periods (.).
+	//
+	// 	- It must contain at least one period (.) but cannot start or end with a period (.).
+	//
+	// 	- The rightmost field of the domain name can contain only letters and cannot contain digits or hyphens (-).
+	//
+	// 	- Other fields cannot start or end with a hyphen (-).
+	//
+	// > This parameter takes effect when the **HealthCheckEnabled*	- parameter is set to true and the **HealthCheckProtocol*	- parameter is set to **HTTP**.
+	//
+	// example:
+	//
+	// example.com
 	HealthCheckHost *string `json:"HealthCheckHost,omitempty" xml:"HealthCheckHost,omitempty"`
 	// The version of HTTP that is used for health checks. Valid values:
 	//
-	// *   **HTTP1.0**
-	// *   **HTTP1.1**
+	// 	- **HTTP1.0**
 	//
-	// > This parameter takes effect when the **HealthCheckEnabled** parameter is set to true and the **HealthCheckProtocol** parameter is set to **HTTP**.
+	// 	- **HTTP1.1**
+	//
+	// > This parameter takes effect when the **HealthCheckEnabled*	- parameter is set to true and the **HealthCheckProtocol*	- parameter is set to **HTTP**.
+	//
+	// example:
+	//
+	// HTTP1.1
 	HealthCheckHttpVersion *string `json:"HealthCheckHttpVersion,omitempty" xml:"HealthCheckHttpVersion,omitempty"`
 	// The interval at which health checks are performed. Unit: seconds.
 	//
-	// Valid values: **1** to **50**.
+	// Valid values: **1*	- to **50**.
 	//
-	// > This parameter takes effect when the **HealthCheckEnabled** parameter is set to **true**.
+	// > This parameter takes effect when the **HealthCheckEnabled*	- parameter is set to **true**.
+	//
+	// example:
+	//
+	// 5
 	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
 	// The method that you want to use for the health check. Valid values:
 	//
-	// *   **GET**: If the length of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
-	// *   **POST**: gRPC health checks automatically use the POST method.
-	// *   **HEAD**: HTTP health checks automatically use the HEAD method.
+	// 	- **GET**: If the length of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
 	//
-	// > This parameter takes effect when the **HealthCheckEnabled** parameter is set to true and the **HealthCheckProtocol** parameter is set to **HTTP** or **gRPC**.
+	// 	- **POST**: gRPC health checks automatically use the POST method.
+	//
+	// 	- **HEAD**: HTTP health checks automatically use the HEAD method.
+	//
+	// > This parameter takes effect when the **HealthCheckEnabled*	- parameter is set to true and the **HealthCheckProtocol*	- parameter is set to **HTTP*	- or **gRPC**.
+	//
+	// example:
+	//
+	// HEAD
 	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
 	// The path that is used for health checks.
 	//
-	// The path must be 1 to 80 characters in length and can contain only letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : \" , +`. The path must start with a forward slash (`/`).
+	// The path must be 1 to 80 characters in length and can contain only letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) 	- [ ] @ $ ^ : \\" , +`. The path must start with a forward slash (`/`).
 	//
-	// > This parameter takes effect when the **HealthCheckEnabled** parameter is set to **true** and the **HealthCheckProtocol** parameter is set to **HTTP**.
+	// > This parameter takes effect when the **HealthCheckEnabled*	- parameter is set to **true*	- and the **HealthCheckProtocol*	- parameter is set to **HTTP**.
+	//
+	// example:
+	//
+	// /test/index.html
 	HealthCheckPath *string `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
 	// The protocol that you want to use for health checks. Valid values:
 	//
-	// *   **HTTP**: To perform HTTP health checks, ALB sends HEAD or GET requests to a backend server to check whether the backend server is healthy.
-	// *   **TCP**: To perform TCP health checks, ALB sends SYN packets to a backend server to check whether the port of the backend server is available to receive requests.
-	// *   **gRPC**: To perform gRPC health checks, ALB sends POST or GET requests to a backend server to check whether the backend server is healthy.
+	// 	- **HTTP**: To perform HTTP health checks, ALB sends HEAD or GET requests to a backend server to check whether the backend server is healthy.
+	//
+	// 	- **TCP**: To perform TCP health checks, ALB sends SYN packets to a backend server to check whether the port of the backend server is available to receive requests.
+	//
+	// 	- **gRPC**: To perform gRPC health checks, ALB sends POST or GET requests to a backend server to check whether the backend server is healthy.
+	//
+	// example:
+	//
+	// HTTP
 	HealthCheckProtocol *string `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
 	// Specify the timeout period of a health check response. If a backend server, such as an Elastic Compute Service (ECS) instance, does not return a health check response within the specified timeout period, the server fails the health check. Unit: seconds.
 	//
-	// Valid values: **1** to **300**.
+	// Valid values: **1*	- to **300**.
 	//
 	// >
 	//
-	// *   If the value of the **HealthCheckTimeout** parameter is smaller than that of the **HealthCheckInterval** parameter, the timeout period specified by the **HealthCheckTimeout** parameter is ignored and the value of the **HealthCheckInterval** parameter is used as the timeout period.
+	// 	- If the value of the **HealthCheckTimeout*	- parameter is smaller than that of the **HealthCheckInterval*	- parameter, the timeout period specified by the **HealthCheckTimeout*	- parameter is ignored and the value of the **HealthCheckInterval*	- parameter is used as the timeout period.
 	//
-	// *   This parameter takes effect when the **HealthCheckEnabled** parameter is set to **true**.
+	// 	- This parameter takes effect when the **HealthCheckEnabled*	- parameter is set to **true**.
+	//
+	// example:
+	//
+	// 3
 	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	// The number of times that an unhealthy backend server must consecutively pass health checks before it can be declared healthy (from **fail** to **success**).
+	// The number of times that an unhealthy backend server must consecutively pass health checks before it can be declared healthy (from **fail*	- to **success**).
 	//
-	// Valid values: **2** to **10**.
+	// Valid values: **2*	- to **10**.
+	//
+	// example:
+	//
+	// 4
 	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**.
+	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success*	- to **fail**.
 	//
-	// Valid values: **2** to **10**.
+	// Valid values: **2*	- to **10**.
+	//
+	// example:
+	//
+	// 4
 	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
@@ -19928,30 +25288,47 @@ type UpdateServerGroupAttributeRequestStickySessionConfig struct {
 	//
 	// The cookie must be 1 to 200 characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($).
 	//
-	// > This parameter takes effect when the **StickySessionEnabled** parameter is set to **true** and the **StickySessionType** parameter is set to **Server**.
+	// > This parameter takes effect when the **StickySessionEnabled*	- parameter is set to **true*	- and the **StickySessionType*	- parameter is set to **Server**.
+	//
+	// example:
+	//
+	// B490B5EBF6F3CD402E515D22BCDA1598
 	Cookie *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
 	// The timeout period of a cookie. Unit: seconds.
 	//
-	// Valid values: **1** to **86400**.
+	// Valid values: **1*	- to **86400**.
 	//
-	// > This parameter takes effect when the **StickySessionEnabled** parameter is set to **true** and the **StickySessionType** parameter is set to **Insert**.
+	// > This parameter takes effect when the **StickySessionEnabled*	- parameter is set to **true*	- and the **StickySessionType*	- parameter is set to **Insert**.
+	//
+	// example:
+	//
+	// 1000
 	CookieTimeout *int32 `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
 	// Specifies whether to enable session persistence. Valid values:
 	//
-	// *   **true**
-	// *   **false** (default)
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
+	// example:
+	//
+	// false
 	StickySessionEnabled *bool `json:"StickySessionEnabled,omitempty" xml:"StickySessionEnabled,omitempty"`
 	// The method that is used to handle a cookie. Valid values:
 	//
-	// *   **Insert**: inserts a cookie.
+	// 	- **Insert**: inserts a cookie.
 	//
 	// ALB inserts a cookie (SERVERID) into the first HTTP or HTTPS response packet that is sent to a client. The next request from the client contains this cookie and the listener forwards this request to the recorded backend server.
 	//
-	// *   **Server**: rewrites a cookie.
+	// 	- **Server**: rewrites a cookie.
 	//
 	// When ALB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. Subsequent requests to ALB carry this user-defined cookie, and ALB determines the destination servers of the requests based on the cookies.
 	//
-	// > This parameter takes effect when the **StickySessionEnabled** parameter is set to **true** for the server group.
+	// > This parameter takes effect when the **StickySessionEnabled*	- parameter is set to **true*	- for the server group.
+	//
+	// example:
+	//
+	// Insert
 	StickySessionType *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
 }
 
@@ -19985,8 +25362,20 @@ func (s *UpdateServerGroupAttributeRequestStickySessionConfig) SetStickySessionT
 
 type UpdateServerGroupAttributeRequestUchConfig struct {
 	// The type of the parameter.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// QueryString
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The setting of consistent hashing.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// abc
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -20010,8 +25399,16 @@ func (s *UpdateServerGroupAttributeRequestUchConfig) SetValue(v string) *UpdateS
 
 type UpdateServerGroupAttributeResponseBody struct {
 	// The ID of the asynchronous job.
+	//
+	// example:
+	//
+	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 365F4154-92F6-4AE4-92F8-7FF34B540710
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20067,16 +25464,33 @@ type UpdateServerGroupServersAttributeRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The value of **RequestId** for each API request is different.
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The value of **RequestId*	- for each API request is different.
+	//
+	// example:
+	//
+	// 593B0448-D13E-4C56-AC0D-FDF0FDE0E9A3
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The server group ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sgp-atstuj3rtop****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 	// The backend servers that you want to add to the server group. You can specify up to 40 servers in each call.
+	//
+	// This parameter is required.
 	Servers []*UpdateServerGroupServersAttributeRequestServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
 }
 
@@ -20109,31 +25523,65 @@ func (s *UpdateServerGroupServersAttributeRequest) SetServers(v []*UpdateServerG
 }
 
 type UpdateServerGroupServersAttributeRequestServers struct {
-	// The description of the backend server. The description must be 2 to 256 characters in length and can contain letters, digits, periods (.), underscores (\_), hyphens (-), commas (,), semicolons (;), forward slashes (/), and at signs (@). You can specify at most 40 servers in each call.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The port used by the backend server. Valid values: **1** to **65535**. You can specify at most 40 servers in each call.
+	// The description of the backend server. The description must be 2 to 256 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), commas (,), semicolons (;), forward slashes (/), and at signs (@). You can specify at most 40 servers in each call.
 	//
-	// > You do not need to set this parameter if **ServerType** is set to **Fc**.
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The port used by the backend server. Valid values: **1*	- to **65535**. You can specify at most 40 servers in each call.
+	//
+	// > You do not need to set this parameter if **ServerType*	- is set to **Fc**.
+	//
+	// example:
+	//
+	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The ID of the backend server. You can specify up to 40 server IDs in each call.
 	//
-	// *   If **ServerType** is set to **Ecs**, **Eni**, or **Eci**, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance.
-	// *   If **ServerType** is set to **Ip**, set the ServerId parameter to an IP address.
-	// *   If **ServerType** is set to **Fc**, set the ServerId parameter to the Alibaba Cloud Resource Name (ARN) of a function.
+	// 	- If **ServerType*	- is set to **Ecs**, **Eni**, or **Eci**, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance.
+	//
+	// 	- If **ServerType*	- is set to **Ip**, set the ServerId parameter to an IP address.
+	//
+	// 	- If **ServerType*	- is set to **Fc**, set the ServerId parameter to the Alibaba Cloud Resource Name (ARN) of a function.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// i-bp1f9kdprbgy9uiu****
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
 	// The IP address in inclusive ENI mode. You can specify at most 40 servers in each call.
+	//
+	// example:
+	//
+	// 192.168.1.1
 	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
 	// The type of the backend server. You can specify at most 40 servers in each call. Valid values:
 	//
-	// *   **Ecs**
-	// *   **Eni**
-	// *   **Eci**
-	// *   **Ip**
-	// *   **Fc**
-	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
-	// The weight of the backend server. Valid values: **0** to **100**. Default value: **100**. If the weight of a backend server is set to **0**, no requests are forwarded to the backend server. You can specify at most 40 servers in each call.
+	// 	- **Ecs**
 	//
-	// > You do not need to set this parameter if **ServerType** is set to **Fc**.
+	// 	- **Eni**
+	//
+	// 	- **Eci**
+	//
+	// 	- **Ip**
+	//
+	// 	- **Fc**
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Ecs
+	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
+	// The weight of the backend server. Valid values: **0*	- to **100**. Default value: **100**. If the weight of a backend server is set to **0**, no requests are forwarded to the backend server. You can specify at most 40 servers in each call.
+	//
+	// > You do not need to set this parameter if **ServerType*	- is set to **Fc**.
+	//
+	// example:
+	//
+	// 100
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
@@ -20177,8 +25625,16 @@ func (s *UpdateServerGroupServersAttributeRequestServers) SetWeight(v int32) *Up
 
 type UpdateServerGroupServersAttributeResponseBody struct {
 	// The ID of the asynchronous job.
+	//
+	// example:
+	//
+	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 365F4154-92F6-4AE4-92F8-7FF34B540710
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20276,18 +25732,29 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-/**
- * *   Each ACL can contain IP addresses or CIDR blocks. Take note of the following limits on ACLs:
- *     *   The maximum number of IP entries that can be added to an ACL with each Alibaba Cloud account at a time: 20
- *     *   The maximum number of IP entries that each ACL can contain: 1,000
- * *   **AddEntriesToAcl** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclEntries](~~213616~~) operation to query the status of the task.
- *     *   If the ACL is in the **Adding** state, the IP entries are being added.
- *     *   If the ACL is in the **Available** state, the IP entries are added.
- *
- * @param request AddEntriesToAclRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return AddEntriesToAclResponse
- */
+// Summary:
+//
+// Adds IP entries to an access control list (ACL).
+//
+// Description:
+//
+//   Each ACL can contain IP addresses or CIDR blocks. Take note of the following limits on ACLs:
+//
+//     	- The maximum number of IP entries that can be added to an ACL with each Alibaba Cloud account at a time: 20
+//
+//     	- The maximum number of IP entries that each ACL can contain: 1,000
+//
+// 	- **AddEntriesToAcl*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclEntries](https://help.aliyun.com/document_detail/213616.html) operation to query the status of the task.
+//
+//     	- If the ACL is in the **Adding*	- state, the IP entries are being added.
+//
+//     	- If the ACL is in the **Available*	- state, the IP entries are added.
+//
+// @param request - AddEntriesToAclRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddEntriesToAclResponse
 func (client *Client) AddEntriesToAclWithOptions(request *AddEntriesToAclRequest, runtime *util.RuntimeOptions) (_result *AddEntriesToAclResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20333,17 +25800,27 @@ func (client *Client) AddEntriesToAclWithOptions(request *AddEntriesToAclRequest
 	return _result, _err
 }
 
-/**
- * *   Each ACL can contain IP addresses or CIDR blocks. Take note of the following limits on ACLs:
- *     *   The maximum number of IP entries that can be added to an ACL with each Alibaba Cloud account at a time: 20
- *     *   The maximum number of IP entries that each ACL can contain: 1,000
- * *   **AddEntriesToAcl** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclEntries](~~213616~~) operation to query the status of the task.
- *     *   If the ACL is in the **Adding** state, the IP entries are being added.
- *     *   If the ACL is in the **Available** state, the IP entries are added.
- *
- * @param request AddEntriesToAclRequest
- * @return AddEntriesToAclResponse
- */
+// Summary:
+//
+// Adds IP entries to an access control list (ACL).
+//
+// Description:
+//
+//   Each ACL can contain IP addresses or CIDR blocks. Take note of the following limits on ACLs:
+//
+//     	- The maximum number of IP entries that can be added to an ACL with each Alibaba Cloud account at a time: 20
+//
+//     	- The maximum number of IP entries that each ACL can contain: 1,000
+//
+// 	- **AddEntriesToAcl*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclEntries](https://help.aliyun.com/document_detail/213616.html) operation to query the status of the task.
+//
+//     	- If the ACL is in the **Adding*	- state, the IP entries are being added.
+//
+//     	- If the ACL is in the **Available*	- state, the IP entries are added.
+//
+// @param request - AddEntriesToAclRequest
+//
+// @return AddEntriesToAclResponse
 func (client *Client) AddEntriesToAcl(request *AddEntriesToAclRequest) (_result *AddEntriesToAclResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddEntriesToAclResponse{}
@@ -20355,19 +25832,31 @@ func (client *Client) AddEntriesToAcl(request *AddEntriesToAclRequest) (_result 
 	return _result, _err
 }
 
-/**
- * **AddServersToServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
- * 1.  You can call the [ListServerGroups](~~213627~~) operation to query the status of a server group.
- * *   If a server group is in the **Configuring** state, it indicates that the server group is being modified.
- * *   If a server group is in the **Available** state, it indicates that the server group is running.
- * 2.  You can call the [ListServerGroupServers](~~213628~~) operation to query the status of a backend server.
- * *   If a backend server is in the **Adding** state, it indicates that the backend server is being added to a server group.
- * *   If a backend server is in the **Available** state, it indicates that the server is running.
- *
- * @param request AddServersToServerGroupRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return AddServersToServerGroupResponse
- */
+// Summary:
+//
+// Adds backend servers to a server group.
+//
+// Description:
+//
+// *AddServersToServerGroup*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
+//
+// 1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group.
+//
+// 	- If a server group is in the **Configuring*	- state, it indicates that the server group is being modified.
+//
+// 	- If a server group is in the **Available*	- state, it indicates that the server group is running.
+//
+// 2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/213628.html) operation to query the status of a backend server.
+//
+// 	- If a backend server is in the **Adding*	- state, it indicates that the backend server is being added to a server group.
+//
+// 	- If a backend server is in the **Available*	- state, it indicates that the server is running.
+//
+// @param request - AddServersToServerGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddServersToServerGroupResponse
 func (client *Client) AddServersToServerGroupWithOptions(request *AddServersToServerGroupRequest, runtime *util.RuntimeOptions) (_result *AddServersToServerGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20413,18 +25902,29 @@ func (client *Client) AddServersToServerGroupWithOptions(request *AddServersToSe
 	return _result, _err
 }
 
-/**
- * **AddServersToServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
- * 1.  You can call the [ListServerGroups](~~213627~~) operation to query the status of a server group.
- * *   If a server group is in the **Configuring** state, it indicates that the server group is being modified.
- * *   If a server group is in the **Available** state, it indicates that the server group is running.
- * 2.  You can call the [ListServerGroupServers](~~213628~~) operation to query the status of a backend server.
- * *   If a backend server is in the **Adding** state, it indicates that the backend server is being added to a server group.
- * *   If a backend server is in the **Available** state, it indicates that the server is running.
- *
- * @param request AddServersToServerGroupRequest
- * @return AddServersToServerGroupResponse
- */
+// Summary:
+//
+// Adds backend servers to a server group.
+//
+// Description:
+//
+// *AddServersToServerGroup*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
+//
+// 1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group.
+//
+// 	- If a server group is in the **Configuring*	- state, it indicates that the server group is being modified.
+//
+// 	- If a server group is in the **Available*	- state, it indicates that the server group is running.
+//
+// 2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/213628.html) operation to query the status of a backend server.
+//
+// 	- If a backend server is in the **Adding*	- state, it indicates that the backend server is being added to a server group.
+//
+// 	- If a backend server is in the **Available*	- state, it indicates that the server is running.
+//
+// @param request - AddServersToServerGroupRequest
+//
+// @return AddServersToServerGroupResponse
 func (client *Client) AddServersToServerGroup(request *AddServersToServerGroupRequest) (_result *AddServersToServerGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddServersToServerGroupResponse{}
@@ -20436,6 +25936,15 @@ func (client *Client) AddServersToServerGroup(request *AddServersToServerGroupRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Applies a health check template to a server group.
+//
+// @param request - ApplyHealthCheckTemplateToServerGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ApplyHealthCheckTemplateToServerGroupResponse
 func (client *Client) ApplyHealthCheckTemplateToServerGroupWithOptions(request *ApplyHealthCheckTemplateToServerGroupRequest, runtime *util.RuntimeOptions) (_result *ApplyHealthCheckTemplateToServerGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20481,6 +25990,13 @@ func (client *Client) ApplyHealthCheckTemplateToServerGroupWithOptions(request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Applies a health check template to a server group.
+//
+// @param request - ApplyHealthCheckTemplateToServerGroupRequest
+//
+// @return ApplyHealthCheckTemplateToServerGroupResponse
 func (client *Client) ApplyHealthCheckTemplateToServerGroup(request *ApplyHealthCheckTemplateToServerGroupRequest) (_result *ApplyHealthCheckTemplateToServerGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ApplyHealthCheckTemplateToServerGroupResponse{}
@@ -20492,15 +26008,23 @@ func (client *Client) ApplyHealthCheckTemplateToServerGroup(request *ApplyHealth
 	return _result, _err
 }
 
-/**
- * **DeleteDhcpOptionsSet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclRelations](~~213618~~) operation to query the status of the task.
- * *   If an ACL is in the **Associating** state, the ACL is being associated with a listener.
- * *   If an ACL is in the **Associated** state, the ACL is associated with a listener.
- *
- * @param request AssociateAclsWithListenerRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return AssociateAclsWithListenerResponse
- */
+// Summary:
+//
+// Associates access control lists (ACLs) with a listener.
+//
+// Description:
+//
+// *DeleteDhcpOptionsSet*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclRelations](https://help.aliyun.com/document_detail/213618.html) operation to query the status of the task.
+//
+// 	- If an ACL is in the **Associating*	- state, the ACL is being associated with a listener.
+//
+// 	- If an ACL is in the **Associated*	- state, the ACL is associated with a listener.
+//
+// @param request - AssociateAclsWithListenerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AssociateAclsWithListenerResponse
 func (client *Client) AssociateAclsWithListenerWithOptions(request *AssociateAclsWithListenerRequest, runtime *util.RuntimeOptions) (_result *AssociateAclsWithListenerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20550,14 +26074,21 @@ func (client *Client) AssociateAclsWithListenerWithOptions(request *AssociateAcl
 	return _result, _err
 }
 
-/**
- * **DeleteDhcpOptionsSet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclRelations](~~213618~~) operation to query the status of the task.
- * *   If an ACL is in the **Associating** state, the ACL is being associated with a listener.
- * *   If an ACL is in the **Associated** state, the ACL is associated with a listener.
- *
- * @param request AssociateAclsWithListenerRequest
- * @return AssociateAclsWithListenerResponse
- */
+// Summary:
+//
+// Associates access control lists (ACLs) with a listener.
+//
+// Description:
+//
+// *DeleteDhcpOptionsSet*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclRelations](https://help.aliyun.com/document_detail/213618.html) operation to query the status of the task.
+//
+// 	- If an ACL is in the **Associating*	- state, the ACL is being associated with a listener.
+//
+// 	- If an ACL is in the **Associated*	- state, the ACL is associated with a listener.
+//
+// @param request - AssociateAclsWithListenerRequest
+//
+// @return AssociateAclsWithListenerResponse
 func (client *Client) AssociateAclsWithListener(request *AssociateAclsWithListenerRequest) (_result *AssociateAclsWithListenerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AssociateAclsWithListenerResponse{}
@@ -20569,15 +26100,23 @@ func (client *Client) AssociateAclsWithListener(request *AssociateAclsWithListen
 	return _result, _err
 }
 
-/**
- * **AssociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](~~2254865~~) operation to query the status of the task:
- * *   If the HTTPS or QUIC listener is in the **Associating** state, the additional certificates are being associated.
- * *   If the HTTPS or QUIC listener is in the **Associated** state, the additional certificates are associated.
- *
- * @param request AssociateAdditionalCertificatesWithListenerRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return AssociateAdditionalCertificatesWithListenerResponse
- */
+// Summary:
+//
+// Associates additional certificates with a listener.
+//
+// Description:
+//
+// *AssociateAdditionalCertificatesWithListener*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) operation to query the status of the task:
+//
+// 	- If the HTTPS or QUIC listener is in the **Associating*	- state, the additional certificates are being associated.
+//
+// 	- If the HTTPS or QUIC listener is in the **Associated*	- state, the additional certificates are associated.
+//
+// @param request - AssociateAdditionalCertificatesWithListenerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AssociateAdditionalCertificatesWithListenerResponse
 func (client *Client) AssociateAdditionalCertificatesWithListenerWithOptions(request *AssociateAdditionalCertificatesWithListenerRequest, runtime *util.RuntimeOptions) (_result *AssociateAdditionalCertificatesWithListenerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20623,14 +26162,21 @@ func (client *Client) AssociateAdditionalCertificatesWithListenerWithOptions(req
 	return _result, _err
 }
 
-/**
- * **AssociateAdditionalCertificatesWithListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](~~2254865~~) operation to query the status of the task:
- * *   If the HTTPS or QUIC listener is in the **Associating** state, the additional certificates are being associated.
- * *   If the HTTPS or QUIC listener is in the **Associated** state, the additional certificates are associated.
- *
- * @param request AssociateAdditionalCertificatesWithListenerRequest
- * @return AssociateAdditionalCertificatesWithListenerResponse
- */
+// Summary:
+//
+// Associates additional certificates with a listener.
+//
+// Description:
+//
+// *AssociateAdditionalCertificatesWithListener*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) operation to query the status of the task:
+//
+// 	- If the HTTPS or QUIC listener is in the **Associating*	- state, the additional certificates are being associated.
+//
+// 	- If the HTTPS or QUIC listener is in the **Associated*	- state, the additional certificates are associated.
+//
+// @param request - AssociateAdditionalCertificatesWithListenerRequest
+//
+// @return AssociateAdditionalCertificatesWithListenerResponse
 func (client *Client) AssociateAdditionalCertificatesWithListener(request *AssociateAdditionalCertificatesWithListenerRequest) (_result *AssociateAdditionalCertificatesWithListenerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AssociateAdditionalCertificatesWithListenerResponse{}
@@ -20642,15 +26188,23 @@ func (client *Client) AssociateAdditionalCertificatesWithListener(request *Assoc
 	return _result, _err
 }
 
-/**
- * **AttachCommonBandwidthPackageToLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~214362~~) to query the status of the task.
- * *   If the ALB instance is in the **Configuring** state, the EIP bandwidth plan is being associated with the ALB instance.
- * *   If the ALB instance is in the **Active** state, the EIP bandwidth plan is associated with the ALB instance.
- *
- * @param request AttachCommonBandwidthPackageToLoadBalancerRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return AttachCommonBandwidthPackageToLoadBalancerResponse
- */
+// Summary:
+//
+// Associates an EIP bandwidth plan with an Application Load Balancer (ALB) instance.
+//
+// Description:
+//
+// *AttachCommonBandwidthPackageToLoadBalancer*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
+//
+// 	- If the ALB instance is in the **Configuring*	- state, the EIP bandwidth plan is being associated with the ALB instance.
+//
+// 	- If the ALB instance is in the **Active*	- state, the EIP bandwidth plan is associated with the ALB instance.
+//
+// @param request - AttachCommonBandwidthPackageToLoadBalancerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachCommonBandwidthPackageToLoadBalancerResponse
 func (client *Client) AttachCommonBandwidthPackageToLoadBalancerWithOptions(request *AttachCommonBandwidthPackageToLoadBalancerRequest, runtime *util.RuntimeOptions) (_result *AttachCommonBandwidthPackageToLoadBalancerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20700,14 +26254,21 @@ func (client *Client) AttachCommonBandwidthPackageToLoadBalancerWithOptions(requ
 	return _result, _err
 }
 
-/**
- * **AttachCommonBandwidthPackageToLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~214362~~) to query the status of the task.
- * *   If the ALB instance is in the **Configuring** state, the EIP bandwidth plan is being associated with the ALB instance.
- * *   If the ALB instance is in the **Active** state, the EIP bandwidth plan is associated with the ALB instance.
- *
- * @param request AttachCommonBandwidthPackageToLoadBalancerRequest
- * @return AttachCommonBandwidthPackageToLoadBalancerResponse
- */
+// Summary:
+//
+// Associates an EIP bandwidth plan with an Application Load Balancer (ALB) instance.
+//
+// Description:
+//
+// *AttachCommonBandwidthPackageToLoadBalancer*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
+//
+// 	- If the ALB instance is in the **Configuring*	- state, the EIP bandwidth plan is being associated with the ALB instance.
+//
+// 	- If the ALB instance is in the **Active*	- state, the EIP bandwidth plan is associated with the ALB instance.
+//
+// @param request - AttachCommonBandwidthPackageToLoadBalancerRequest
+//
+// @return AttachCommonBandwidthPackageToLoadBalancerResponse
 func (client *Client) AttachCommonBandwidthPackageToLoadBalancer(request *AttachCommonBandwidthPackageToLoadBalancerRequest) (_result *AttachCommonBandwidthPackageToLoadBalancerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AttachCommonBandwidthPackageToLoadBalancerResponse{}
@@ -20719,13 +26280,19 @@ func (client *Client) AttachCommonBandwidthPackageToLoadBalancer(request *Attach
 	return _result, _err
 }
 
-/**
- * This operation is supported only by Application Load Balancer (ALB) instances that use static IP addresses. Before you call this operation, you must call the StartShiftLoadBalancerZones operation to remove the zone from the ALB instance.
- *
- * @param request CancelShiftLoadBalancerZonesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CancelShiftLoadBalancerZonesResponse
- */
+// Summary:
+//
+// Adds the elastic IP address (EIP) and virtual IP address (VIP) of a zone to a DNS record.
+//
+// Description:
+//
+// This operation is supported only by Application Load Balancer (ALB) instances that use static IP addresses. Before you call this operation, you must call the StartShiftLoadBalancerZones operation to remove the zone from the ALB instance.
+//
+// @param request - CancelShiftLoadBalancerZonesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelShiftLoadBalancerZonesResponse
 func (client *Client) CancelShiftLoadBalancerZonesWithOptions(request *CancelShiftLoadBalancerZonesRequest, runtime *util.RuntimeOptions) (_result *CancelShiftLoadBalancerZonesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20771,12 +26338,17 @@ func (client *Client) CancelShiftLoadBalancerZonesWithOptions(request *CancelShi
 	return _result, _err
 }
 
-/**
- * This operation is supported only by Application Load Balancer (ALB) instances that use static IP addresses. Before you call this operation, you must call the StartShiftLoadBalancerZones operation to remove the zone from the ALB instance.
- *
- * @param request CancelShiftLoadBalancerZonesRequest
- * @return CancelShiftLoadBalancerZonesResponse
- */
+// Summary:
+//
+// Adds the elastic IP address (EIP) and virtual IP address (VIP) of a zone to a DNS record.
+//
+// Description:
+//
+// This operation is supported only by Application Load Balancer (ALB) instances that use static IP addresses. Before you call this operation, you must call the StartShiftLoadBalancerZones operation to remove the zone from the ALB instance.
+//
+// @param request - CancelShiftLoadBalancerZonesRequest
+//
+// @return CancelShiftLoadBalancerZonesResponse
 func (client *Client) CancelShiftLoadBalancerZones(request *CancelShiftLoadBalancerZonesRequest) (_result *CancelShiftLoadBalancerZonesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelShiftLoadBalancerZonesResponse{}
@@ -20788,20 +26360,33 @@ func (client *Client) CancelShiftLoadBalancerZones(request *CancelShiftLoadBalan
 	return _result, _err
 }
 
-/**
- * ### Prerequisites
- * *   A standard or WAF-enabled Application Load Balancer (ALB) instance is created. For more information, see [CreateLoadBalancer](~~214358~~).
- * *   By default, the feature to create and manage AScript rules is unavailable. Log on to the [Quota Center console](https://quotas.console.aliyun.com/white-list-products/alb/quotas?spm=a2c4g.11186623.0.0.6e8834f6IFiF2I). On the **Privileges** page, enter the quota ID `slb_user_visible_gray_label/ascript` and apply for the quota.
- * ### Usage notes
- * *   **CreateAScripts** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](~~472574~~) operation to query the status of the task:
- *     *   If an AScript rule is in the **Creating** state, the AScript rule is being created.
- *     *   If an AScript rule is in the **Available** state, the AScript rule is created.
- * *   In the following table, the value of **N** is **1**.
- *
- * @param request CreateAScriptsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateAScriptsResponse
- */
+// Summary:
+//
+// Creates AScript rules.
+//
+// Description:
+//
+// ### Prerequisites
+//
+// 	- A standard or WAF-enabled Application Load Balancer (ALB) instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/214358.html).
+//
+// 	- By default, the feature to create and manage AScript rules is unavailable. Log on to the [Quota Center console](https://quotas.console.aliyun.com/white-list-products/alb/quotas?spm=a2c4g.11186623.0.0.6e8834f6IFiF2I). On the **Privileges*	- page, enter the quota ID `slb_user_visible_gray_label/ascript` and apply for the quota.
+//
+// ### Usage notes
+//
+// 	- **CreateAScripts*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](https://help.aliyun.com/document_detail/472574.html) operation to query the status of the task:
+//
+//     	- If an AScript rule is in the **Creating*	- state, the AScript rule is being created.
+//
+//     	- If an AScript rule is in the **Available*	- state, the AScript rule is created.
+//
+// 	- In the following table, the value of **N*	- is **1**.
+//
+// @param request - CreateAScriptsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAScriptsResponse
 func (client *Client) CreateAScriptsWithOptions(request *CreateAScriptsRequest, runtime *util.RuntimeOptions) (_result *CreateAScriptsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20847,19 +26432,31 @@ func (client *Client) CreateAScriptsWithOptions(request *CreateAScriptsRequest, 
 	return _result, _err
 }
 
-/**
- * ### Prerequisites
- * *   A standard or WAF-enabled Application Load Balancer (ALB) instance is created. For more information, see [CreateLoadBalancer](~~214358~~).
- * *   By default, the feature to create and manage AScript rules is unavailable. Log on to the [Quota Center console](https://quotas.console.aliyun.com/white-list-products/alb/quotas?spm=a2c4g.11186623.0.0.6e8834f6IFiF2I). On the **Privileges** page, enter the quota ID `slb_user_visible_gray_label/ascript` and apply for the quota.
- * ### Usage notes
- * *   **CreateAScripts** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](~~472574~~) operation to query the status of the task:
- *     *   If an AScript rule is in the **Creating** state, the AScript rule is being created.
- *     *   If an AScript rule is in the **Available** state, the AScript rule is created.
- * *   In the following table, the value of **N** is **1**.
- *
- * @param request CreateAScriptsRequest
- * @return CreateAScriptsResponse
- */
+// Summary:
+//
+// Creates AScript rules.
+//
+// Description:
+//
+// ### Prerequisites
+//
+// 	- A standard or WAF-enabled Application Load Balancer (ALB) instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/214358.html).
+//
+// 	- By default, the feature to create and manage AScript rules is unavailable. Log on to the [Quota Center console](https://quotas.console.aliyun.com/white-list-products/alb/quotas?spm=a2c4g.11186623.0.0.6e8834f6IFiF2I). On the **Privileges*	- page, enter the quota ID `slb_user_visible_gray_label/ascript` and apply for the quota.
+//
+// ### Usage notes
+//
+// 	- **CreateAScripts*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](https://help.aliyun.com/document_detail/472574.html) operation to query the status of the task:
+//
+//     	- If an AScript rule is in the **Creating*	- state, the AScript rule is being created.
+//
+//     	- If an AScript rule is in the **Available*	- state, the AScript rule is created.
+//
+// 	- In the following table, the value of **N*	- is **1**.
+//
+// @param request - CreateAScriptsRequest
+//
+// @return CreateAScriptsResponse
 func (client *Client) CreateAScripts(request *CreateAScriptsRequest) (_result *CreateAScriptsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAScriptsResponse{}
@@ -20871,16 +26468,25 @@ func (client *Client) CreateAScripts(request *CreateAScriptsRequest) (_result *C
 	return _result, _err
 }
 
-/**
- * ## Usage notes
- * The **CreateAcl** operation is asynchronous. After you send a request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListAcls](~~213617~~) operation to query the status of an ACL:
- * *   If an ACL is in the **Creating** state, the ACL is being created.
- * *   If an ACL is in the **Available** state, the ACL is created.
- *
- * @param request CreateAclRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateAclResponse
- */
+// Summary:
+//
+// Creates an access control list (ACL) in a region.
+//
+// Description:
+//
+// ## Usage notes
+//
+// The **CreateAcl*	- operation is asynchronous. After you send a request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListAcls](https://help.aliyun.com/document_detail/213617.html) operation to query the status of an ACL:
+//
+// 	- If an ACL is in the **Creating*	- state, the ACL is being created.
+//
+// 	- If an ACL is in the **Available*	- state, the ACL is created.
+//
+// @param request - CreateAclRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAclResponse
 func (client *Client) CreateAclWithOptions(request *CreateAclRequest, runtime *util.RuntimeOptions) (_result *CreateAclResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20930,15 +26536,23 @@ func (client *Client) CreateAclWithOptions(request *CreateAclRequest, runtime *u
 	return _result, _err
 }
 
-/**
- * ## Usage notes
- * The **CreateAcl** operation is asynchronous. After you send a request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListAcls](~~213617~~) operation to query the status of an ACL:
- * *   If an ACL is in the **Creating** state, the ACL is being created.
- * *   If an ACL is in the **Available** state, the ACL is created.
- *
- * @param request CreateAclRequest
- * @return CreateAclResponse
- */
+// Summary:
+//
+// Creates an access control list (ACL) in a region.
+//
+// Description:
+//
+// ## Usage notes
+//
+// The **CreateAcl*	- operation is asynchronous. After you send a request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListAcls](https://help.aliyun.com/document_detail/213617.html) operation to query the status of an ACL:
+//
+// 	- If an ACL is in the **Creating*	- state, the ACL is being created.
+//
+// 	- If an ACL is in the **Available*	- state, the ACL is created.
+//
+// @param request - CreateAclRequest
+//
+// @return CreateAclResponse
 func (client *Client) CreateAcl(request *CreateAclRequest) (_result *CreateAclResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAclResponse{}
@@ -20950,6 +26564,15 @@ func (client *Client) CreateAcl(request *CreateAclRequest) (_result *CreateAclRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a health check template in a region.
+//
+// @param request - CreateHealthCheckTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateHealthCheckTemplateResponse
 func (client *Client) CreateHealthCheckTemplateWithOptions(request *CreateHealthCheckTemplateRequest, runtime *util.RuntimeOptions) (_result *CreateHealthCheckTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21039,6 +26662,13 @@ func (client *Client) CreateHealthCheckTemplateWithOptions(request *CreateHealth
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a health check template in a region.
+//
+// @param request - CreateHealthCheckTemplateRequest
+//
+// @return CreateHealthCheckTemplateResponse
 func (client *Client) CreateHealthCheckTemplate(request *CreateHealthCheckTemplateRequest) (_result *CreateHealthCheckTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateHealthCheckTemplateResponse{}
@@ -21050,16 +26680,25 @@ func (client *Client) CreateHealthCheckTemplate(request *CreateHealthCheckTempla
 	return _result, _err
 }
 
-/**
- * ## Usage notes
- * **CreateListener** is an asynchronous operation. After you call this operation, the system returns a request ID. However, the operation is still being performed in the background. You can call the [GetListenerAttribute](~~214353~~) operation to query the status of the HTTP, HTTPS, or QUIC listener.
- * *   If the HTTP, HTTPS, or QUIC listener is in the **Provisioning** state, it indicates that the listener is being created.
- * *   If the HTTP, HTTPS, or QUIC listener is in the **Running** state, it indicates that the listener has been created successfully.
- *
- * @param request CreateListenerRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateListenerResponse
- */
+// Summary:
+//
+// Creates an HTTP, HTTPS, or QUIC listener in a region.
+//
+// Description:
+//
+// ## Usage notes
+//
+// **CreateListener*	- is an asynchronous operation. After you call this operation, the system returns a request ID. However, the operation is still being performed in the background. You can call the [GetListenerAttribute](https://help.aliyun.com/document_detail/214353.html) operation to query the status of the HTTP, HTTPS, or QUIC listener.
+//
+// 	- If the HTTP, HTTPS, or QUIC listener is in the **Provisioning*	- state, it indicates that the listener is being created.
+//
+// 	- If the HTTP, HTTPS, or QUIC listener is in the **Running*	- state, it indicates that the listener has been created successfully.
+//
+// @param request - CreateListenerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateListenerResponse
 func (client *Client) CreateListenerWithOptions(request *CreateListenerRequest, runtime *util.RuntimeOptions) (_result *CreateListenerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21161,15 +26800,23 @@ func (client *Client) CreateListenerWithOptions(request *CreateListenerRequest, 
 	return _result, _err
 }
 
-/**
- * ## Usage notes
- * **CreateListener** is an asynchronous operation. After you call this operation, the system returns a request ID. However, the operation is still being performed in the background. You can call the [GetListenerAttribute](~~214353~~) operation to query the status of the HTTP, HTTPS, or QUIC listener.
- * *   If the HTTP, HTTPS, or QUIC listener is in the **Provisioning** state, it indicates that the listener is being created.
- * *   If the HTTP, HTTPS, or QUIC listener is in the **Running** state, it indicates that the listener has been created successfully.
- *
- * @param request CreateListenerRequest
- * @return CreateListenerResponse
- */
+// Summary:
+//
+// Creates an HTTP, HTTPS, or QUIC listener in a region.
+//
+// Description:
+//
+// ## Usage notes
+//
+// **CreateListener*	- is an asynchronous operation. After you call this operation, the system returns a request ID. However, the operation is still being performed in the background. You can call the [GetListenerAttribute](https://help.aliyun.com/document_detail/214353.html) operation to query the status of the HTTP, HTTPS, or QUIC listener.
+//
+// 	- If the HTTP, HTTPS, or QUIC listener is in the **Provisioning*	- state, it indicates that the listener is being created.
+//
+// 	- If the HTTP, HTTPS, or QUIC listener is in the **Running*	- state, it indicates that the listener has been created successfully.
+//
+// @param request - CreateListenerRequest
+//
+// @return CreateListenerResponse
 func (client *Client) CreateListener(request *CreateListenerRequest) (_result *CreateListenerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateListenerResponse{}
@@ -21181,15 +26828,23 @@ func (client *Client) CreateListener(request *CreateListenerRequest) (_result *C
 	return _result, _err
 }
 
-/**
- * **CreateLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](~~214362~~) operation to query the status of an ALB instance.
- * *   If an ALB instance is in the **Provisioning** state, it indicates that the ALB instance is being created.
- * *   If an ALB instance is in the **Active** state, it indicates that the ALB instance is created.
- *
- * @param request CreateLoadBalancerRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateLoadBalancerResponse
- */
+// Summary:
+//
+// Creates an Application Load Balancer (ALB) instance in a region.
+//
+// Description:
+//
+// *CreateLoadBalancer*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of an ALB instance.
+//
+// 	- If an ALB instance is in the **Provisioning*	- state, it indicates that the ALB instance is being created.
+//
+// 	- If an ALB instance is in the **Active*	- state, it indicates that the ALB instance is created.
+//
+// @param request - CreateLoadBalancerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLoadBalancerResponse
 func (client *Client) CreateLoadBalancerWithOptions(request *CreateLoadBalancerRequest, runtime *util.RuntimeOptions) (_result *CreateLoadBalancerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21275,14 +26930,21 @@ func (client *Client) CreateLoadBalancerWithOptions(request *CreateLoadBalancerR
 	return _result, _err
 }
 
-/**
- * **CreateLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](~~214362~~) operation to query the status of an ALB instance.
- * *   If an ALB instance is in the **Provisioning** state, it indicates that the ALB instance is being created.
- * *   If an ALB instance is in the **Active** state, it indicates that the ALB instance is created.
- *
- * @param request CreateLoadBalancerRequest
- * @return CreateLoadBalancerResponse
- */
+// Summary:
+//
+// Creates an Application Load Balancer (ALB) instance in a region.
+//
+// Description:
+//
+// *CreateLoadBalancer*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of an ALB instance.
+//
+// 	- If an ALB instance is in the **Provisioning*	- state, it indicates that the ALB instance is being created.
+//
+// 	- If an ALB instance is in the **Active*	- state, it indicates that the ALB instance is created.
+//
+// @param request - CreateLoadBalancerRequest
+//
+// @return CreateLoadBalancerResponse
 func (client *Client) CreateLoadBalancer(request *CreateLoadBalancerRequest) (_result *CreateLoadBalancerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateLoadBalancerResponse{}
@@ -21294,21 +26956,35 @@ func (client *Client) CreateLoadBalancer(request *CreateLoadBalancerRequest) (_r
 	return _result, _err
 }
 
-/**
- * Take note of the following limits:
- * *   When you configure the **Redirect** action, you can use the default value only for the **HttpCode** parameter. Do not use the default values for the other parameters.
- * *   If you specify the **Rewrite** action together with other actions in a forwarding rule, make sure that the **ForwardGroup** action is specified.
- * *   **CreateRule** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of a forwarding rule.
- *     *   If a forwarding rule is in the **Provisioning** state, the forwarding rule is being created.
- *     *   If a forwarding rule is in the **Available** state, the forwarding rule is created.
- * *   You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. The limits on conditions and actions are:
- *     *   Limits on conditions: 5 for a basic Application Load Balancer (ALB) instance, 10 for a standard ALB instance, and 10 for a WAF-enabled ALB instance.
- *     *   Limits on actions: 3 for a basic ALB instance, 5 for a standard ALB instance, and 5 for a WAF-enabled ALB instance.
- *
- * @param request CreateRuleRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateRuleResponse
- */
+// Summary:
+//
+// Creates a forwarding rule for a listener.
+//
+// Description:
+//
+// Take note of the following limits:
+//
+// 	- When you configure the **Redirect*	- action, you can use the default value only for the **HttpCode*	- parameter. Do not use the default values for the other parameters.
+//
+// 	- If you specify the **Rewrite*	- action together with other actions in a forwarding rule, make sure that the **ForwardGroup*	- action is specified.
+//
+// 	- **CreateRule*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of a forwarding rule.
+//
+//     	- If a forwarding rule is in the **Provisioning*	- state, the forwarding rule is being created.
+//
+//     	- If a forwarding rule is in the **Available*	- state, the forwarding rule is created.
+//
+// 	- You can set **RuleConditions*	- and **RuleActions*	- to add conditions and actions to a forwarding rule. The limits on conditions and actions are:
+//
+//     	- Limits on conditions: 5 for a basic Application Load Balancer (ALB) instance, 10 for a standard ALB instance, and 10 for a WAF-enabled ALB instance.
+//
+//     	- Limits on actions: 3 for a basic ALB instance, 5 for a standard ALB instance, and 5 for a WAF-enabled ALB instance.
+//
+// @param request - CreateRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRuleResponse
 func (client *Client) CreateRuleWithOptions(request *CreateRuleRequest, runtime *util.RuntimeOptions) (_result *CreateRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21374,20 +27050,33 @@ func (client *Client) CreateRuleWithOptions(request *CreateRuleRequest, runtime 
 	return _result, _err
 }
 
-/**
- * Take note of the following limits:
- * *   When you configure the **Redirect** action, you can use the default value only for the **HttpCode** parameter. Do not use the default values for the other parameters.
- * *   If you specify the **Rewrite** action together with other actions in a forwarding rule, make sure that the **ForwardGroup** action is specified.
- * *   **CreateRule** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of a forwarding rule.
- *     *   If a forwarding rule is in the **Provisioning** state, the forwarding rule is being created.
- *     *   If a forwarding rule is in the **Available** state, the forwarding rule is created.
- * *   You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. The limits on conditions and actions are:
- *     *   Limits on conditions: 5 for a basic Application Load Balancer (ALB) instance, 10 for a standard ALB instance, and 10 for a WAF-enabled ALB instance.
- *     *   Limits on actions: 3 for a basic ALB instance, 5 for a standard ALB instance, and 5 for a WAF-enabled ALB instance.
- *
- * @param request CreateRuleRequest
- * @return CreateRuleResponse
- */
+// Summary:
+//
+// Creates a forwarding rule for a listener.
+//
+// Description:
+//
+// Take note of the following limits:
+//
+// 	- When you configure the **Redirect*	- action, you can use the default value only for the **HttpCode*	- parameter. Do not use the default values for the other parameters.
+//
+// 	- If you specify the **Rewrite*	- action together with other actions in a forwarding rule, make sure that the **ForwardGroup*	- action is specified.
+//
+// 	- **CreateRule*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of a forwarding rule.
+//
+//     	- If a forwarding rule is in the **Provisioning*	- state, the forwarding rule is being created.
+//
+//     	- If a forwarding rule is in the **Available*	- state, the forwarding rule is created.
+//
+// 	- You can set **RuleConditions*	- and **RuleActions*	- to add conditions and actions to a forwarding rule. The limits on conditions and actions are:
+//
+//     	- Limits on conditions: 5 for a basic Application Load Balancer (ALB) instance, 10 for a standard ALB instance, and 10 for a WAF-enabled ALB instance.
+//
+//     	- Limits on actions: 3 for a basic ALB instance, 5 for a standard ALB instance, and 5 for a WAF-enabled ALB instance.
+//
+// @param request - CreateRuleRequest
+//
+// @return CreateRuleResponse
 func (client *Client) CreateRule(request *CreateRuleRequest) (_result *CreateRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateRuleResponse{}
@@ -21399,21 +27088,35 @@ func (client *Client) CreateRule(request *CreateRuleRequest) (_result *CreateRul
 	return _result, _err
 }
 
-/**
- * When you call this operation, take note of the following limits:
- * *   When you configure the **Redirect** action, you can use the default value for the **HttpCode** parameter but you cannot use the default values for all of the other parameters.
- * *   If you specify the **Rewrite** action and other actions in a forwarding rule, make sure that one of the actions is **ForwardGroup**.
- * *   **CreateRules** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of forwarding rules.
- *     *   If forwarding rules are in the **Provisioning** state, the forwarding rules are being created.
- *     *   If forwarding rules are in the **Available** state, the forwarding rules have been created.
- * *   You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. Take note of the following limits on the number of conditions and the number of actions in each forwarding rule:
- *     *   Limits on conditions: You can specify at most 5 conditions if you use a basic Application Load Balancer (ALB) instance, at most 10 conditions if you use a standard ALB instance, and at most 10 conditions if you use a WAF-enabled ALB instance.
- *     *   Limits on actions: You can specify at most 3 actions if you use a basic ALB instance, at most 5 actions if you use a standard ALB instance, and at most 10 actions if you use a WAF-enabled ALB instance.
- *
- * @param request CreateRulesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateRulesResponse
- */
+// Summary:
+//
+// Creates one or more forwarding rules at a time.
+//
+// Description:
+//
+// When you call this operation, take note of the following limits:
+//
+// 	- When you configure the **Redirect*	- action, you can use the default value for the **HttpCode*	- parameter but you cannot use the default values for all of the other parameters.
+//
+// 	- If you specify the **Rewrite*	- action and other actions in a forwarding rule, make sure that one of the actions is **ForwardGroup**.
+//
+// 	- **CreateRules*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of forwarding rules.
+//
+//     	- If forwarding rules are in the **Provisioning*	- state, the forwarding rules are being created.
+//
+//     	- If forwarding rules are in the **Available*	- state, the forwarding rules have been created.
+//
+// 	- You can set **RuleConditions*	- and **RuleActions*	- to add conditions and actions to a forwarding rule. Take note of the following limits on the number of conditions and the number of actions in each forwarding rule:
+//
+//     	- Limits on conditions: You can specify at most 5 conditions if you use a basic Application Load Balancer (ALB) instance, at most 10 conditions if you use a standard ALB instance, and at most 10 conditions if you use a WAF-enabled ALB instance.
+//
+//     	- Limits on actions: You can specify at most 3 actions if you use a basic ALB instance, at most 5 actions if you use a standard ALB instance, and at most 10 actions if you use a WAF-enabled ALB instance.
+//
+// @param request - CreateRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRulesResponse
 func (client *Client) CreateRulesWithOptions(request *CreateRulesRequest, runtime *util.RuntimeOptions) (_result *CreateRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21459,20 +27162,33 @@ func (client *Client) CreateRulesWithOptions(request *CreateRulesRequest, runtim
 	return _result, _err
 }
 
-/**
- * When you call this operation, take note of the following limits:
- * *   When you configure the **Redirect** action, you can use the default value for the **HttpCode** parameter but you cannot use the default values for all of the other parameters.
- * *   If you specify the **Rewrite** action and other actions in a forwarding rule, make sure that one of the actions is **ForwardGroup**.
- * *   **CreateRules** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of forwarding rules.
- *     *   If forwarding rules are in the **Provisioning** state, the forwarding rules are being created.
- *     *   If forwarding rules are in the **Available** state, the forwarding rules have been created.
- * *   You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. Take note of the following limits on the number of conditions and the number of actions in each forwarding rule:
- *     *   Limits on conditions: You can specify at most 5 conditions if you use a basic Application Load Balancer (ALB) instance, at most 10 conditions if you use a standard ALB instance, and at most 10 conditions if you use a WAF-enabled ALB instance.
- *     *   Limits on actions: You can specify at most 3 actions if you use a basic ALB instance, at most 5 actions if you use a standard ALB instance, and at most 10 actions if you use a WAF-enabled ALB instance.
- *
- * @param request CreateRulesRequest
- * @return CreateRulesResponse
- */
+// Summary:
+//
+// Creates one or more forwarding rules at a time.
+//
+// Description:
+//
+// When you call this operation, take note of the following limits:
+//
+// 	- When you configure the **Redirect*	- action, you can use the default value for the **HttpCode*	- parameter but you cannot use the default values for all of the other parameters.
+//
+// 	- If you specify the **Rewrite*	- action and other actions in a forwarding rule, make sure that one of the actions is **ForwardGroup**.
+//
+// 	- **CreateRules*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of forwarding rules.
+//
+//     	- If forwarding rules are in the **Provisioning*	- state, the forwarding rules are being created.
+//
+//     	- If forwarding rules are in the **Available*	- state, the forwarding rules have been created.
+//
+// 	- You can set **RuleConditions*	- and **RuleActions*	- to add conditions and actions to a forwarding rule. Take note of the following limits on the number of conditions and the number of actions in each forwarding rule:
+//
+//     	- Limits on conditions: You can specify at most 5 conditions if you use a basic Application Load Balancer (ALB) instance, at most 10 conditions if you use a standard ALB instance, and at most 10 conditions if you use a WAF-enabled ALB instance.
+//
+//     	- Limits on actions: You can specify at most 3 actions if you use a basic ALB instance, at most 5 actions if you use a standard ALB instance, and at most 10 actions if you use a WAF-enabled ALB instance.
+//
+// @param request - CreateRulesRequest
+//
+// @return CreateRulesResponse
 func (client *Client) CreateRules(request *CreateRulesRequest) (_result *CreateRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateRulesResponse{}
@@ -21484,6 +27200,15 @@ func (client *Client) CreateRules(request *CreateRulesRequest) (_result *CreateR
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a custom security policy in a region.
+//
+// @param request - CreateSecurityPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSecurityPolicyResponse
 func (client *Client) CreateSecurityPolicyWithOptions(request *CreateSecurityPolicyRequest, runtime *util.RuntimeOptions) (_result *CreateSecurityPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21541,6 +27266,13 @@ func (client *Client) CreateSecurityPolicyWithOptions(request *CreateSecurityPol
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a custom security policy in a region.
+//
+// @param request - CreateSecurityPolicyRequest
+//
+// @return CreateSecurityPolicyResponse
 func (client *Client) CreateSecurityPolicy(request *CreateSecurityPolicyRequest) (_result *CreateSecurityPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSecurityPolicyResponse{}
@@ -21552,15 +27284,23 @@ func (client *Client) CreateSecurityPolicy(request *CreateSecurityPolicyRequest)
 	return _result, _err
 }
 
-/**
- * **CreateServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListServerGroups](~~213627~~) to query the status of a server group.
- * *   If a server group is in the **Creating** state, it indicates that the server group is being created.
- * *   If a server group is in the **Available** state, it indicates that the server group is created.
- *
- * @param request CreateServerGroupRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateServerGroupResponse
- */
+// Summary:
+//
+// Creates a server group in a region.
+//
+// Description:
+//
+// *CreateServerGroup*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) to query the status of a server group.
+//
+// 	- If a server group is in the **Creating*	- state, it indicates that the server group is being created.
+//
+// 	- If a server group is in the **Available*	- state, it indicates that the server group is created.
+//
+// @param request - CreateServerGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateServerGroupResponse
 func (client *Client) CreateServerGroupWithOptions(request *CreateServerGroupRequest, runtime *util.RuntimeOptions) (_result *CreateServerGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21654,14 +27394,21 @@ func (client *Client) CreateServerGroupWithOptions(request *CreateServerGroupReq
 	return _result, _err
 }
 
-/**
- * **CreateServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListServerGroups](~~213627~~) to query the status of a server group.
- * *   If a server group is in the **Creating** state, it indicates that the server group is being created.
- * *   If a server group is in the **Available** state, it indicates that the server group is created.
- *
- * @param request CreateServerGroupRequest
- * @return CreateServerGroupResponse
- */
+// Summary:
+//
+// Creates a server group in a region.
+//
+// Description:
+//
+// *CreateServerGroup*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) to query the status of a server group.
+//
+// 	- If a server group is in the **Creating*	- state, it indicates that the server group is being created.
+//
+// 	- If a server group is in the **Available*	- state, it indicates that the server group is created.
+//
+// @param request - CreateServerGroupRequest
+//
+// @return CreateServerGroupResponse
 func (client *Client) CreateServerGroup(request *CreateServerGroupRequest) (_result *CreateServerGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateServerGroupResponse{}
@@ -21673,15 +27420,23 @@ func (client *Client) CreateServerGroup(request *CreateServerGroupRequest) (_res
 	return _result, _err
 }
 
-/**
- * **DeleteAScripts** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](~~472574~~) operation to query the status of the task:
- * *   If an AScript rule is in the **Deleting** state, the AScript rule is being deleted.
- * *   If an AScript rule cannot be found, the AScript rule is deleted.
- *
- * @param request DeleteAScriptsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteAScriptsResponse
- */
+// Summary:
+//
+// Deletes AScript rules.
+//
+// Description:
+//
+// *DeleteAScripts*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](https://help.aliyun.com/document_detail/472574.html) operation to query the status of the task:
+//
+// 	- If an AScript rule is in the **Deleting*	- state, the AScript rule is being deleted.
+//
+// 	- If an AScript rule cannot be found, the AScript rule is deleted.
+//
+// @param request - DeleteAScriptsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAScriptsResponse
 func (client *Client) DeleteAScriptsWithOptions(request *DeleteAScriptsRequest, runtime *util.RuntimeOptions) (_result *DeleteAScriptsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21723,14 +27478,21 @@ func (client *Client) DeleteAScriptsWithOptions(request *DeleteAScriptsRequest, 
 	return _result, _err
 }
 
-/**
- * **DeleteAScripts** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](~~472574~~) operation to query the status of the task:
- * *   If an AScript rule is in the **Deleting** state, the AScript rule is being deleted.
- * *   If an AScript rule cannot be found, the AScript rule is deleted.
- *
- * @param request DeleteAScriptsRequest
- * @return DeleteAScriptsResponse
- */
+// Summary:
+//
+// Deletes AScript rules.
+//
+// Description:
+//
+// *DeleteAScripts*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](https://help.aliyun.com/document_detail/472574.html) operation to query the status of the task:
+//
+// 	- If an AScript rule is in the **Deleting*	- state, the AScript rule is being deleted.
+//
+// 	- If an AScript rule cannot be found, the AScript rule is deleted.
+//
+// @param request - DeleteAScriptsRequest
+//
+// @return DeleteAScriptsResponse
 func (client *Client) DeleteAScripts(request *DeleteAScriptsRequest) (_result *DeleteAScriptsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAScriptsResponse{}
@@ -21742,15 +27504,23 @@ func (client *Client) DeleteAScripts(request *DeleteAScriptsRequest) (_result *D
 	return _result, _err
 }
 
-/**
- * **DeleteAcl** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAcls](~~213617~~) operation to query the status of the task.
- * *   If the ACL is in the **Deleting** state, the ACL is being deleted.
- * *   If the ACL cannot be found, the ACL is deleted.
- *
- * @param request DeleteAclRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteAclResponse
- */
+// Summary:
+//
+// Deletes an access control list (ACL).
+//
+// Description:
+//
+// *DeleteAcl*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAcls](https://help.aliyun.com/document_detail/213617.html) operation to query the status of the task.
+//
+// 	- If the ACL is in the **Deleting*	- state, the ACL is being deleted.
+//
+// 	- If the ACL cannot be found, the ACL is deleted.
+//
+// @param request - DeleteAclRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAclResponse
 func (client *Client) DeleteAclWithOptions(request *DeleteAclRequest, runtime *util.RuntimeOptions) (_result *DeleteAclResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21792,14 +27562,21 @@ func (client *Client) DeleteAclWithOptions(request *DeleteAclRequest, runtime *u
 	return _result, _err
 }
 
-/**
- * **DeleteAcl** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAcls](~~213617~~) operation to query the status of the task.
- * *   If the ACL is in the **Deleting** state, the ACL is being deleted.
- * *   If the ACL cannot be found, the ACL is deleted.
- *
- * @param request DeleteAclRequest
- * @return DeleteAclResponse
- */
+// Summary:
+//
+// Deletes an access control list (ACL).
+//
+// Description:
+//
+// *DeleteAcl*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAcls](https://help.aliyun.com/document_detail/213617.html) operation to query the status of the task.
+//
+// 	- If the ACL is in the **Deleting*	- state, the ACL is being deleted.
+//
+// 	- If the ACL cannot be found, the ACL is deleted.
+//
+// @param request - DeleteAclRequest
+//
+// @return DeleteAclResponse
 func (client *Client) DeleteAcl(request *DeleteAclRequest) (_result *DeleteAclResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAclResponse{}
@@ -21811,6 +27588,15 @@ func (client *Client) DeleteAcl(request *DeleteAclRequest) (_result *DeleteAclRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes health check templates.
+//
+// @param request - DeleteHealthCheckTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteHealthCheckTemplatesResponse
 func (client *Client) DeleteHealthCheckTemplatesWithOptions(request *DeleteHealthCheckTemplatesRequest, runtime *util.RuntimeOptions) (_result *DeleteHealthCheckTemplatesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21852,6 +27638,13 @@ func (client *Client) DeleteHealthCheckTemplatesWithOptions(request *DeleteHealt
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes health check templates.
+//
+// @param request - DeleteHealthCheckTemplatesRequest
+//
+// @return DeleteHealthCheckTemplatesResponse
 func (client *Client) DeleteHealthCheckTemplates(request *DeleteHealthCheckTemplatesRequest) (_result *DeleteHealthCheckTemplatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteHealthCheckTemplatesResponse{}
@@ -21863,15 +27656,23 @@ func (client *Client) DeleteHealthCheckTemplates(request *DeleteHealthCheckTempl
 	return _result, _err
 }
 
-/**
- * **DeleteListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](~~2254865~~) to query the status of the task.
- * *   If the listener is in the **Deleting** state, the listener is being deleted.
- * *   If the listener cannot be found, the listener is deleted.
- *
- * @param request DeleteListenerRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteListenerResponse
- */
+// Summary:
+//
+// Deletes a listener.
+//
+// Description:
+//
+// *DeleteListener*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) to query the status of the task.
+//
+// 	- If the listener is in the **Deleting*	- state, the listener is being deleted.
+//
+// 	- If the listener cannot be found, the listener is deleted.
+//
+// @param request - DeleteListenerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteListenerResponse
 func (client *Client) DeleteListenerWithOptions(request *DeleteListenerRequest, runtime *util.RuntimeOptions) (_result *DeleteListenerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21913,14 +27714,21 @@ func (client *Client) DeleteListenerWithOptions(request *DeleteListenerRequest, 
 	return _result, _err
 }
 
-/**
- * **DeleteListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](~~2254865~~) to query the status of the task.
- * *   If the listener is in the **Deleting** state, the listener is being deleted.
- * *   If the listener cannot be found, the listener is deleted.
- *
- * @param request DeleteListenerRequest
- * @return DeleteListenerResponse
- */
+// Summary:
+//
+// Deletes a listener.
+//
+// Description:
+//
+// *DeleteListener*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) to query the status of the task.
+//
+// 	- If the listener is in the **Deleting*	- state, the listener is being deleted.
+//
+// 	- If the listener cannot be found, the listener is deleted.
+//
+// @param request - DeleteListenerRequest
+//
+// @return DeleteListenerResponse
 func (client *Client) DeleteListener(request *DeleteListenerRequest) (_result *DeleteListenerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteListenerResponse{}
@@ -21932,15 +27740,23 @@ func (client *Client) DeleteListener(request *DeleteListenerRequest) (_result *D
 	return _result, _err
 }
 
-/**
- * **DeleteLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~214362~~) to query the status of the task.
- * *   If an ALB instance is in the **Deleting** state, the ALB instance is being deleted.
- * *   If an ALB instance cannot be found, the ALB instance is deleted.
- *
- * @param request DeleteLoadBalancerRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteLoadBalancerResponse
- */
+// Summary:
+//
+// Deletes an Application Load Balancer (ALB) instance.
+//
+// Description:
+//
+// *DeleteLoadBalancer*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
+//
+// 	- If an ALB instance is in the **Deleting*	- state, the ALB instance is being deleted.
+//
+// 	- If an ALB instance cannot be found, the ALB instance is deleted.
+//
+// @param request - DeleteLoadBalancerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteLoadBalancerResponse
 func (client *Client) DeleteLoadBalancerWithOptions(request *DeleteLoadBalancerRequest, runtime *util.RuntimeOptions) (_result *DeleteLoadBalancerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21982,14 +27798,21 @@ func (client *Client) DeleteLoadBalancerWithOptions(request *DeleteLoadBalancerR
 	return _result, _err
 }
 
-/**
- * **DeleteLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~214362~~) to query the status of the task.
- * *   If an ALB instance is in the **Deleting** state, the ALB instance is being deleted.
- * *   If an ALB instance cannot be found, the ALB instance is deleted.
- *
- * @param request DeleteLoadBalancerRequest
- * @return DeleteLoadBalancerResponse
- */
+// Summary:
+//
+// Deletes an Application Load Balancer (ALB) instance.
+//
+// Description:
+//
+// *DeleteLoadBalancer*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
+//
+// 	- If an ALB instance is in the **Deleting*	- state, the ALB instance is being deleted.
+//
+// 	- If an ALB instance cannot be found, the ALB instance is deleted.
+//
+// @param request - DeleteLoadBalancerRequest
+//
+// @return DeleteLoadBalancerResponse
 func (client *Client) DeleteLoadBalancer(request *DeleteLoadBalancerRequest) (_result *DeleteLoadBalancerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteLoadBalancerResponse{}
@@ -22001,15 +27824,23 @@ func (client *Client) DeleteLoadBalancer(request *DeleteLoadBalancerRequest) (_r
 	return _result, _err
 }
 
-/**
- * **DeleteRule** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of a forwarding rule:
- * *   If the forwarding rule is in the **Deleting** state, the forwarding rule is being deleted.
- * *   If the forwarding rule cannot be found, the forwarding rule is deleted.
- *
- * @param request DeleteRuleRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteRuleResponse
- */
+// Summary:
+//
+// Deletes a forwarding rule.
+//
+// Description:
+//
+// *DeleteRule*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of a forwarding rule:
+//
+// 	- If the forwarding rule is in the **Deleting*	- state, the forwarding rule is being deleted.
+//
+// 	- If the forwarding rule cannot be found, the forwarding rule is deleted.
+//
+// @param request - DeleteRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRuleResponse
 func (client *Client) DeleteRuleWithOptions(request *DeleteRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22051,14 +27882,21 @@ func (client *Client) DeleteRuleWithOptions(request *DeleteRuleRequest, runtime 
 	return _result, _err
 }
 
-/**
- * **DeleteRule** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of a forwarding rule:
- * *   If the forwarding rule is in the **Deleting** state, the forwarding rule is being deleted.
- * *   If the forwarding rule cannot be found, the forwarding rule is deleted.
- *
- * @param request DeleteRuleRequest
- * @return DeleteRuleResponse
- */
+// Summary:
+//
+// Deletes a forwarding rule.
+//
+// Description:
+//
+// *DeleteRule*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of a forwarding rule:
+//
+// 	- If the forwarding rule is in the **Deleting*	- state, the forwarding rule is being deleted.
+//
+// 	- If the forwarding rule cannot be found, the forwarding rule is deleted.
+//
+// @param request - DeleteRuleRequest
+//
+// @return DeleteRuleResponse
 func (client *Client) DeleteRule(request *DeleteRuleRequest) (_result *DeleteRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteRuleResponse{}
@@ -22070,15 +27908,23 @@ func (client *Client) DeleteRule(request *DeleteRuleRequest) (_result *DeleteRul
 	return _result, _err
 }
 
-/**
- * **DeleteRules** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of forwarding rules.
- * *   If the forwarding rules are in the **Deleting** state, the forwarding rules are being deleted.
- * *   If the forwarding rules cannot be found, the forwarding rules are deleted.
- *
- * @param request DeleteRulesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteRulesResponse
- */
+// Summary:
+//
+// Deletes one or more forwarding rules from a listener at a time.
+//
+// Description:
+//
+// *DeleteRules*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of forwarding rules.
+//
+// 	- If the forwarding rules are in the **Deleting*	- state, the forwarding rules are being deleted.
+//
+// 	- If the forwarding rules cannot be found, the forwarding rules are deleted.
+//
+// @param request - DeleteRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRulesResponse
 func (client *Client) DeleteRulesWithOptions(request *DeleteRulesRequest, runtime *util.RuntimeOptions) (_result *DeleteRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22120,14 +27966,21 @@ func (client *Client) DeleteRulesWithOptions(request *DeleteRulesRequest, runtim
 	return _result, _err
 }
 
-/**
- * **DeleteRules** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of forwarding rules.
- * *   If the forwarding rules are in the **Deleting** state, the forwarding rules are being deleted.
- * *   If the forwarding rules cannot be found, the forwarding rules are deleted.
- *
- * @param request DeleteRulesRequest
- * @return DeleteRulesResponse
- */
+// Summary:
+//
+// Deletes one or more forwarding rules from a listener at a time.
+//
+// Description:
+//
+// *DeleteRules*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of forwarding rules.
+//
+// 	- If the forwarding rules are in the **Deleting*	- state, the forwarding rules are being deleted.
+//
+// 	- If the forwarding rules cannot be found, the forwarding rules are deleted.
+//
+// @param request - DeleteRulesRequest
+//
+// @return DeleteRulesResponse
 func (client *Client) DeleteRules(request *DeleteRulesRequest) (_result *DeleteRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteRulesResponse{}
@@ -22139,6 +27992,15 @@ func (client *Client) DeleteRules(request *DeleteRulesRequest) (_result *DeleteR
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a custom security policy.
+//
+// @param request - DeleteSecurityPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSecurityPolicyResponse
 func (client *Client) DeleteSecurityPolicyWithOptions(request *DeleteSecurityPolicyRequest, runtime *util.RuntimeOptions) (_result *DeleteSecurityPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22180,6 +28042,13 @@ func (client *Client) DeleteSecurityPolicyWithOptions(request *DeleteSecurityPol
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a custom security policy.
+//
+// @param request - DeleteSecurityPolicyRequest
+//
+// @return DeleteSecurityPolicyResponse
 func (client *Client) DeleteSecurityPolicy(request *DeleteSecurityPolicyRequest) (_result *DeleteSecurityPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSecurityPolicyResponse{}
@@ -22191,15 +28060,23 @@ func (client *Client) DeleteSecurityPolicy(request *DeleteSecurityPolicyRequest)
 	return _result, _err
 }
 
-/**
- * **DeleteServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListServerGroups](~~213627~~) operation to query the status of the task.
- * *   If a server group is in the **Deleting** state, it indicates that the server group is being deleted.
- * *   If a specified server group cannot be found, it indicates that the server group has been deleted.
- *
- * @param request DeleteServerGroupRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteServerGroupResponse
- */
+// Summary:
+//
+// Deletes a server group.
+//
+// Description:
+//
+// *DeleteServerGroup*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of the task.
+//
+// 	- If a server group is in the **Deleting*	- state, it indicates that the server group is being deleted.
+//
+// 	- If a specified server group cannot be found, it indicates that the server group has been deleted.
+//
+// @param request - DeleteServerGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteServerGroupResponse
 func (client *Client) DeleteServerGroupWithOptions(request *DeleteServerGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteServerGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22241,14 +28118,21 @@ func (client *Client) DeleteServerGroupWithOptions(request *DeleteServerGroupReq
 	return _result, _err
 }
 
-/**
- * **DeleteServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListServerGroups](~~213627~~) operation to query the status of the task.
- * *   If a server group is in the **Deleting** state, it indicates that the server group is being deleted.
- * *   If a specified server group cannot be found, it indicates that the server group has been deleted.
- *
- * @param request DeleteServerGroupRequest
- * @return DeleteServerGroupResponse
- */
+// Summary:
+//
+// Deletes a server group.
+//
+// Description:
+//
+// *DeleteServerGroup*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of the task.
+//
+// 	- If a server group is in the **Deleting*	- state, it indicates that the server group is being deleted.
+//
+// 	- If a specified server group cannot be found, it indicates that the server group has been deleted.
+//
+// @param request - DeleteServerGroupRequest
+//
+// @return DeleteServerGroupResponse
 func (client *Client) DeleteServerGroup(request *DeleteServerGroupRequest) (_result *DeleteServerGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteServerGroupResponse{}
@@ -22260,6 +28144,15 @@ func (client *Client) DeleteServerGroup(request *DeleteServerGroupRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries available regions.
+//
+// @param request - DescribeRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22293,6 +28186,13 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries available regions.
+//
+// @param request - DescribeRegionsRequest
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRegionsResponse{}
@@ -22304,6 +28204,15 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries zones in a region.
+//
+// @param request - DescribeZonesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeZonesResponse
 func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, runtime *util.RuntimeOptions) (_result *DescribeZonesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22337,6 +28246,13 @@ func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries zones in a region.
+//
+// @param request - DescribeZonesRequest
+//
+// @return DescribeZonesResponse
 func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *DescribeZonesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeZonesResponse{}
@@ -22348,15 +28264,23 @@ func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *Des
 	return _result, _err
 }
 
-/**
- * **DetachCommonBandwidthPackageFromLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](~~214359~~) operation to query the status of the task.
- * *   If an ALB instance is in the **Configuring** state, the EIP bandwidth plan is being disassociated from the ALB instance.
- * *   If an ALB instance is in the **Active** state, the EIP bandwidth plan is disassociated from the ALB instance.
- *
- * @param request DetachCommonBandwidthPackageFromLoadBalancerRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DetachCommonBandwidthPackageFromLoadBalancerResponse
- */
+// Summary:
+//
+// Disassociates an elastic IP address (EIP) bandwidth plan from an Application Load Balancer (ALB) instance.
+//
+// Description:
+//
+// *DetachCommonBandwidthPackageFromLoadBalancer*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214359.html) operation to query the status of the task.
+//
+// 	- If an ALB instance is in the **Configuring*	- state, the EIP bandwidth plan is being disassociated from the ALB instance.
+//
+// 	- If an ALB instance is in the **Active*	- state, the EIP bandwidth plan is disassociated from the ALB instance.
+//
+// @param request - DetachCommonBandwidthPackageFromLoadBalancerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachCommonBandwidthPackageFromLoadBalancerResponse
 func (client *Client) DetachCommonBandwidthPackageFromLoadBalancerWithOptions(request *DetachCommonBandwidthPackageFromLoadBalancerRequest, runtime *util.RuntimeOptions) (_result *DetachCommonBandwidthPackageFromLoadBalancerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22406,14 +28330,21 @@ func (client *Client) DetachCommonBandwidthPackageFromLoadBalancerWithOptions(re
 	return _result, _err
 }
 
-/**
- * **DetachCommonBandwidthPackageFromLoadBalancer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](~~214359~~) operation to query the status of the task.
- * *   If an ALB instance is in the **Configuring** state, the EIP bandwidth plan is being disassociated from the ALB instance.
- * *   If an ALB instance is in the **Active** state, the EIP bandwidth plan is disassociated from the ALB instance.
- *
- * @param request DetachCommonBandwidthPackageFromLoadBalancerRequest
- * @return DetachCommonBandwidthPackageFromLoadBalancerResponse
- */
+// Summary:
+//
+// Disassociates an elastic IP address (EIP) bandwidth plan from an Application Load Balancer (ALB) instance.
+//
+// Description:
+//
+// *DetachCommonBandwidthPackageFromLoadBalancer*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214359.html) operation to query the status of the task.
+//
+// 	- If an ALB instance is in the **Configuring*	- state, the EIP bandwidth plan is being disassociated from the ALB instance.
+//
+// 	- If an ALB instance is in the **Active*	- state, the EIP bandwidth plan is disassociated from the ALB instance.
+//
+// @param request - DetachCommonBandwidthPackageFromLoadBalancerRequest
+//
+// @return DetachCommonBandwidthPackageFromLoadBalancerResponse
 func (client *Client) DetachCommonBandwidthPackageFromLoadBalancer(request *DetachCommonBandwidthPackageFromLoadBalancerRequest) (_result *DetachCommonBandwidthPackageFromLoadBalancerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DetachCommonBandwidthPackageFromLoadBalancerResponse{}
@@ -22425,6 +28356,15 @@ func (client *Client) DetachCommonBandwidthPackageFromLoadBalancer(request *Deta
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables deletion protection for an Application Load Balancer (ALB) instance.
+//
+// @param request - DisableDeletionProtectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableDeletionProtectionResponse
 func (client *Client) DisableDeletionProtectionWithOptions(request *DisableDeletionProtectionRequest, runtime *util.RuntimeOptions) (_result *DisableDeletionProtectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22466,6 +28406,13 @@ func (client *Client) DisableDeletionProtectionWithOptions(request *DisableDelet
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables deletion protection for an Application Load Balancer (ALB) instance.
+//
+// @param request - DisableDeletionProtectionRequest
+//
+// @return DisableDeletionProtectionResponse
 func (client *Client) DisableDeletionProtection(request *DisableDeletionProtectionRequest) (_result *DisableDeletionProtectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableDeletionProtectionResponse{}
@@ -22477,6 +28424,15 @@ func (client *Client) DisableDeletionProtection(request *DisableDeletionProtecti
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables the access log feature for a Server Load Balancer (SLB) instance.
+//
+// @param request - DisableLoadBalancerAccessLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableLoadBalancerAccessLogResponse
 func (client *Client) DisableLoadBalancerAccessLogWithOptions(request *DisableLoadBalancerAccessLogRequest, runtime *util.RuntimeOptions) (_result *DisableLoadBalancerAccessLogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22518,6 +28474,13 @@ func (client *Client) DisableLoadBalancerAccessLogWithOptions(request *DisableLo
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables the access log feature for a Server Load Balancer (SLB) instance.
+//
+// @param request - DisableLoadBalancerAccessLogRequest
+//
+// @return DisableLoadBalancerAccessLogResponse
 func (client *Client) DisableLoadBalancerAccessLog(request *DisableLoadBalancerAccessLogRequest) (_result *DisableLoadBalancerAccessLogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableLoadBalancerAccessLogResponse{}
@@ -22529,22 +28492,37 @@ func (client *Client) DisableLoadBalancerAccessLog(request *DisableLoadBalancerA
 	return _result, _err
 }
 
-/**
- * ### Prerequisites
- * An ALB instance is created and IPv4/IPv6 dual stack is enabled for the instance. You can call the [CreateLoadBalancer](~~214358~~) operation and set **AddressIpVersion** to **DualStack** to create a dual-stack ALB instance.
- * > If you set **AddressIpVersion** to **DualStack**:
- * *   If you set **AddressType** to **Internet**, the ALB instance uses a public IPv4 IP address and a private IPv6 address.
- * *   If you set **AddressType** to **Intranet**, the ALB instance uses a private IPv4 IP address and a private IPv6 address.
- * ### Description
- * *   After the DisableLoadBalancerIpv6Internet operation is called, the value of **Ipv6AddressType** is changed to **Intranet** and the type of the IPv6 address of the ALB instance is changed from public to private. If you upgrade the instance or the instance scales elastic network interfaces (ENIs) along with workloads, private IPv6 addresses are automatically enabled for the instance and the new ENIs. You can call the [GetLoadBalancerAttribute](~~214362~~) operation to query the value of **Ipv6AddressType**.
- * *   **DisableLoadBalancerIpv6Internet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](~~214362~~) operation to query the status of the task.
- *     *   If the ALB instance is in the **Configuring** state, the network type of the IPv6 address that is used by the ALB instance is being changed.
- *     *   If the ALB instance is in the **Active** state, the network type of the IPv6 address that is used by the ALB instance is changed.
- *
- * @param request DisableLoadBalancerIpv6InternetRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DisableLoadBalancerIpv6InternetResponse
- */
+// Summary:
+//
+// Changes the type of the IPv6 address that is used by a dual-stack Application Load Balancer (ALB) instance from public to private.
+//
+// Description:
+//
+// ### Prerequisites
+//
+// An ALB instance is created and IPv4/IPv6 dual stack is enabled for the instance. You can call the [CreateLoadBalancer](https://help.aliyun.com/document_detail/214358.html) operation and set **AddressIpVersion*	- to **DualStack*	- to create a dual-stack ALB instance.
+//
+// > If you set **AddressIpVersion*	- to **DualStack**:
+//
+// 	- If you set **AddressType*	- to **Internet**, the ALB instance uses a public IPv4 IP address and a private IPv6 address.
+//
+// 	- If you set **AddressType*	- to **Intranet**, the ALB instance uses a private IPv4 IP address and a private IPv6 address.
+//
+// ### Description
+//
+// 	- After the DisableLoadBalancerIpv6Internet operation is called, the value of **Ipv6AddressType*	- is changed to **Intranet*	- and the type of the IPv6 address of the ALB instance is changed from public to private. If you upgrade the instance or the instance scales elastic network interfaces (ENIs) along with workloads, private IPv6 addresses are automatically enabled for the instance and the new ENIs. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the value of **Ipv6AddressType**.
+//
+// 	- **DisableLoadBalancerIpv6Internet*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of the task.
+//
+//     	- If the ALB instance is in the **Configuring*	- state, the network type of the IPv6 address that is used by the ALB instance is being changed.
+//
+//     	- If the ALB instance is in the **Active*	- state, the network type of the IPv6 address that is used by the ALB instance is changed.
+//
+// @param request - DisableLoadBalancerIpv6InternetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableLoadBalancerIpv6InternetResponse
 func (client *Client) DisableLoadBalancerIpv6InternetWithOptions(request *DisableLoadBalancerIpv6InternetRequest, runtime *util.RuntimeOptions) (_result *DisableLoadBalancerIpv6InternetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22586,21 +28564,35 @@ func (client *Client) DisableLoadBalancerIpv6InternetWithOptions(request *Disabl
 	return _result, _err
 }
 
-/**
- * ### Prerequisites
- * An ALB instance is created and IPv4/IPv6 dual stack is enabled for the instance. You can call the [CreateLoadBalancer](~~214358~~) operation and set **AddressIpVersion** to **DualStack** to create a dual-stack ALB instance.
- * > If you set **AddressIpVersion** to **DualStack**:
- * *   If you set **AddressType** to **Internet**, the ALB instance uses a public IPv4 IP address and a private IPv6 address.
- * *   If you set **AddressType** to **Intranet**, the ALB instance uses a private IPv4 IP address and a private IPv6 address.
- * ### Description
- * *   After the DisableLoadBalancerIpv6Internet operation is called, the value of **Ipv6AddressType** is changed to **Intranet** and the type of the IPv6 address of the ALB instance is changed from public to private. If you upgrade the instance or the instance scales elastic network interfaces (ENIs) along with workloads, private IPv6 addresses are automatically enabled for the instance and the new ENIs. You can call the [GetLoadBalancerAttribute](~~214362~~) operation to query the value of **Ipv6AddressType**.
- * *   **DisableLoadBalancerIpv6Internet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](~~214362~~) operation to query the status of the task.
- *     *   If the ALB instance is in the **Configuring** state, the network type of the IPv6 address that is used by the ALB instance is being changed.
- *     *   If the ALB instance is in the **Active** state, the network type of the IPv6 address that is used by the ALB instance is changed.
- *
- * @param request DisableLoadBalancerIpv6InternetRequest
- * @return DisableLoadBalancerIpv6InternetResponse
- */
+// Summary:
+//
+// Changes the type of the IPv6 address that is used by a dual-stack Application Load Balancer (ALB) instance from public to private.
+//
+// Description:
+//
+// ### Prerequisites
+//
+// An ALB instance is created and IPv4/IPv6 dual stack is enabled for the instance. You can call the [CreateLoadBalancer](https://help.aliyun.com/document_detail/214358.html) operation and set **AddressIpVersion*	- to **DualStack*	- to create a dual-stack ALB instance.
+//
+// > If you set **AddressIpVersion*	- to **DualStack**:
+//
+// 	- If you set **AddressType*	- to **Internet**, the ALB instance uses a public IPv4 IP address and a private IPv6 address.
+//
+// 	- If you set **AddressType*	- to **Intranet**, the ALB instance uses a private IPv4 IP address and a private IPv6 address.
+//
+// ### Description
+//
+// 	- After the DisableLoadBalancerIpv6Internet operation is called, the value of **Ipv6AddressType*	- is changed to **Intranet*	- and the type of the IPv6 address of the ALB instance is changed from public to private. If you upgrade the instance or the instance scales elastic network interfaces (ENIs) along with workloads, private IPv6 addresses are automatically enabled for the instance and the new ENIs. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the value of **Ipv6AddressType**.
+//
+// 	- **DisableLoadBalancerIpv6Internet*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of the task.
+//
+//     	- If the ALB instance is in the **Configuring*	- state, the network type of the IPv6 address that is used by the ALB instance is being changed.
+//
+//     	- If the ALB instance is in the **Active*	- state, the network type of the IPv6 address that is used by the ALB instance is changed.
+//
+// @param request - DisableLoadBalancerIpv6InternetRequest
+//
+// @return DisableLoadBalancerIpv6InternetResponse
 func (client *Client) DisableLoadBalancerIpv6Internet(request *DisableLoadBalancerIpv6InternetRequest) (_result *DisableLoadBalancerIpv6InternetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableLoadBalancerIpv6InternetResponse{}
@@ -22612,15 +28604,23 @@ func (client *Client) DisableLoadBalancerIpv6Internet(request *DisableLoadBalanc
 	return _result, _err
 }
 
-/**
- * **DeleteDhcpOptionsSet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclRelations](~~213618~~) operation to query the status of the task.
- * *   If an ACL is in the **Dissociating** state, the ACL is being disassociated from the listener.
- * *   If an ACL is in the **Dissociated** state, the ACL is disassociated from the listener.
- *
- * @param request DissociateAclsFromListenerRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DissociateAclsFromListenerResponse
- */
+// Summary:
+//
+// Disassociates access control lists (ACLs) from a listener.
+//
+// Description:
+//
+// *DeleteDhcpOptionsSet*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclRelations](https://help.aliyun.com/document_detail/213618.html) operation to query the status of the task.
+//
+// 	- If an ACL is in the **Dissociating*	- state, the ACL is being disassociated from the listener.
+//
+// 	- If an ACL is in the **Dissociated*	- state, the ACL is disassociated from the listener.
+//
+// @param request - DissociateAclsFromListenerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DissociateAclsFromListenerResponse
 func (client *Client) DissociateAclsFromListenerWithOptions(request *DissociateAclsFromListenerRequest, runtime *util.RuntimeOptions) (_result *DissociateAclsFromListenerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22666,14 +28666,21 @@ func (client *Client) DissociateAclsFromListenerWithOptions(request *DissociateA
 	return _result, _err
 }
 
-/**
- * **DeleteDhcpOptionsSet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclRelations](~~213618~~) operation to query the status of the task.
- * *   If an ACL is in the **Dissociating** state, the ACL is being disassociated from the listener.
- * *   If an ACL is in the **Dissociated** state, the ACL is disassociated from the listener.
- *
- * @param request DissociateAclsFromListenerRequest
- * @return DissociateAclsFromListenerResponse
- */
+// Summary:
+//
+// Disassociates access control lists (ACLs) from a listener.
+//
+// Description:
+//
+// *DeleteDhcpOptionsSet*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclRelations](https://help.aliyun.com/document_detail/213618.html) operation to query the status of the task.
+//
+// 	- If an ACL is in the **Dissociating*	- state, the ACL is being disassociated from the listener.
+//
+// 	- If an ACL is in the **Dissociated*	- state, the ACL is disassociated from the listener.
+//
+// @param request - DissociateAclsFromListenerRequest
+//
+// @return DissociateAclsFromListenerResponse
 func (client *Client) DissociateAclsFromListener(request *DissociateAclsFromListenerRequest) (_result *DissociateAclsFromListenerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DissociateAclsFromListenerResponse{}
@@ -22685,13 +28692,19 @@ func (client *Client) DissociateAclsFromListener(request *DissociateAclsFromList
 	return _result, _err
 }
 
-/**
- * **DissociateAdditionalCertificatesFromListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](~~214354~~) operation to query the status of the task. - If an additional certificate is in the **Dissociating** state, the additional certificate is being disassociated. - If an additional certificate is in the **Dissociated** state, the additional certificate is disassociated.
- *
- * @param request DissociateAdditionalCertificatesFromListenerRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DissociateAdditionalCertificatesFromListenerResponse
- */
+// Summary:
+//
+// Disassociates additional certificates from a listener.
+//
+// Description:
+//
+// *DissociateAdditionalCertificatesFromListener*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](https://help.aliyun.com/document_detail/214354.html) operation to query the status of the task. - If an additional certificate is in the **Dissociating*	- state, the additional certificate is being disassociated. - If an additional certificate is in the **Dissociated*	- state, the additional certificate is disassociated.
+//
+// @param request - DissociateAdditionalCertificatesFromListenerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DissociateAdditionalCertificatesFromListenerResponse
 func (client *Client) DissociateAdditionalCertificatesFromListenerWithOptions(request *DissociateAdditionalCertificatesFromListenerRequest, runtime *util.RuntimeOptions) (_result *DissociateAdditionalCertificatesFromListenerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22737,12 +28750,17 @@ func (client *Client) DissociateAdditionalCertificatesFromListenerWithOptions(re
 	return _result, _err
 }
 
-/**
- * **DissociateAdditionalCertificatesFromListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](~~214354~~) operation to query the status of the task. - If an additional certificate is in the **Dissociating** state, the additional certificate is being disassociated. - If an additional certificate is in the **Dissociated** state, the additional certificate is disassociated.
- *
- * @param request DissociateAdditionalCertificatesFromListenerRequest
- * @return DissociateAdditionalCertificatesFromListenerResponse
- */
+// Summary:
+//
+// Disassociates additional certificates from a listener.
+//
+// Description:
+//
+// *DissociateAdditionalCertificatesFromListener*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](https://help.aliyun.com/document_detail/214354.html) operation to query the status of the task. - If an additional certificate is in the **Dissociating*	- state, the additional certificate is being disassociated. - If an additional certificate is in the **Dissociated*	- state, the additional certificate is disassociated.
+//
+// @param request - DissociateAdditionalCertificatesFromListenerRequest
+//
+// @return DissociateAdditionalCertificatesFromListenerResponse
 func (client *Client) DissociateAdditionalCertificatesFromListener(request *DissociateAdditionalCertificatesFromListenerRequest) (_result *DissociateAdditionalCertificatesFromListenerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DissociateAdditionalCertificatesFromListenerResponse{}
@@ -22754,6 +28772,15 @@ func (client *Client) DissociateAdditionalCertificatesFromListener(request *Diss
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables deletion protection for a resource.
+//
+// @param request - EnableDeletionProtectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableDeletionProtectionResponse
 func (client *Client) EnableDeletionProtectionWithOptions(request *EnableDeletionProtectionRequest, runtime *util.RuntimeOptions) (_result *EnableDeletionProtectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22795,6 +28822,13 @@ func (client *Client) EnableDeletionProtectionWithOptions(request *EnableDeletio
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables deletion protection for a resource.
+//
+// @param request - EnableDeletionProtectionRequest
+//
+// @return EnableDeletionProtectionResponse
 func (client *Client) EnableDeletionProtection(request *EnableDeletionProtectionRequest) (_result *EnableDeletionProtectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableDeletionProtectionResponse{}
@@ -22806,6 +28840,15 @@ func (client *Client) EnableDeletionProtection(request *EnableDeletionProtection
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables the access log feature for an Application Load Balancer (ALB) instance.
+//
+// @param request - EnableLoadBalancerAccessLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableLoadBalancerAccessLogResponse
 func (client *Client) EnableLoadBalancerAccessLogWithOptions(request *EnableLoadBalancerAccessLogRequest, runtime *util.RuntimeOptions) (_result *EnableLoadBalancerAccessLogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22855,6 +28898,13 @@ func (client *Client) EnableLoadBalancerAccessLogWithOptions(request *EnableLoad
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables the access log feature for an Application Load Balancer (ALB) instance.
+//
+// @param request - EnableLoadBalancerAccessLogRequest
+//
+// @return EnableLoadBalancerAccessLogResponse
 func (client *Client) EnableLoadBalancerAccessLog(request *EnableLoadBalancerAccessLogRequest) (_result *EnableLoadBalancerAccessLogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableLoadBalancerAccessLogResponse{}
@@ -22866,22 +28916,37 @@ func (client *Client) EnableLoadBalancerAccessLog(request *EnableLoadBalancerAcc
 	return _result, _err
 }
 
-/**
- * ### Prerequisites
- * An ALB instance is created and IPv4/IPv6 dual stack is enabled for the instance. You can call the [CreateLoadBalancer](~~214358~~) operation and set **AddressIpVersion** to **DualStack** to create a dual-stack ALB instance.
- * > If you set **AddressIpVersion** to **DualStack**:
- * *   If you set **AddressType** to **Internet**, the ALB instance uses a public IPv4 IP address and a private IPv6 address.
- * *   If you set **AddressType** to **Intranet**, the ALB instance uses a private IPv4 IP address and a private IPv6 address.
- * ### Description
- * *   After the EnableLoadBalancerIpv6Internet operation is called, the value of **Ipv6AddressType** is changed to **Internet** and the type of the IPv6 address of the ALB instance is changed from private to public. If you upgrade the instance or the instance scales elastic network interfaces (ENIs) along with workloads, public IPv6 addresses are automatically enabled for the instance and the new ENIs. You can call the [GetLoadBalancerAttribute](~~214362~~) operation to query the value of **Ipv6AddressType**.
- * *   **EnableLoadBalancerIpv6Internet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](~~214362~~) operation to query the status of the task.
- *     *   If the ALB instance is in the **Configuring** state, the network type of the IPv6 address that is used by the ALB instance is being changed.
- *     *   If the ALB instance is in the **Active** state, the network type of the IPv6 address that is used by the ALB instance is changed.
- *
- * @param request EnableLoadBalancerIpv6InternetRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return EnableLoadBalancerIpv6InternetResponse
- */
+// Summary:
+//
+// Changes the type of the IPv6 address that is used by a dual-stack Application Load Balancer (ALB) instance from private to public.
+//
+// Description:
+//
+// ### Prerequisites
+//
+// An ALB instance is created and IPv4/IPv6 dual stack is enabled for the instance. You can call the [CreateLoadBalancer](https://help.aliyun.com/document_detail/214358.html) operation and set **AddressIpVersion*	- to **DualStack*	- to create a dual-stack ALB instance.
+//
+// > If you set **AddressIpVersion*	- to **DualStack**:
+//
+// 	- If you set **AddressType*	- to **Internet**, the ALB instance uses a public IPv4 IP address and a private IPv6 address.
+//
+// 	- If you set **AddressType*	- to **Intranet**, the ALB instance uses a private IPv4 IP address and a private IPv6 address.
+//
+// ### Description
+//
+// 	- After the EnableLoadBalancerIpv6Internet operation is called, the value of **Ipv6AddressType*	- is changed to **Internet*	- and the type of the IPv6 address of the ALB instance is changed from private to public. If you upgrade the instance or the instance scales elastic network interfaces (ENIs) along with workloads, public IPv6 addresses are automatically enabled for the instance and the new ENIs. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the value of **Ipv6AddressType**.
+//
+// 	- **EnableLoadBalancerIpv6Internet*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of the task.
+//
+//     	- If the ALB instance is in the **Configuring*	- state, the network type of the IPv6 address that is used by the ALB instance is being changed.
+//
+//     	- If the ALB instance is in the **Active*	- state, the network type of the IPv6 address that is used by the ALB instance is changed.
+//
+// @param request - EnableLoadBalancerIpv6InternetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableLoadBalancerIpv6InternetResponse
 func (client *Client) EnableLoadBalancerIpv6InternetWithOptions(request *EnableLoadBalancerIpv6InternetRequest, runtime *util.RuntimeOptions) (_result *EnableLoadBalancerIpv6InternetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22923,21 +28988,35 @@ func (client *Client) EnableLoadBalancerIpv6InternetWithOptions(request *EnableL
 	return _result, _err
 }
 
-/**
- * ### Prerequisites
- * An ALB instance is created and IPv4/IPv6 dual stack is enabled for the instance. You can call the [CreateLoadBalancer](~~214358~~) operation and set **AddressIpVersion** to **DualStack** to create a dual-stack ALB instance.
- * > If you set **AddressIpVersion** to **DualStack**:
- * *   If you set **AddressType** to **Internet**, the ALB instance uses a public IPv4 IP address and a private IPv6 address.
- * *   If you set **AddressType** to **Intranet**, the ALB instance uses a private IPv4 IP address and a private IPv6 address.
- * ### Description
- * *   After the EnableLoadBalancerIpv6Internet operation is called, the value of **Ipv6AddressType** is changed to **Internet** and the type of the IPv6 address of the ALB instance is changed from private to public. If you upgrade the instance or the instance scales elastic network interfaces (ENIs) along with workloads, public IPv6 addresses are automatically enabled for the instance and the new ENIs. You can call the [GetLoadBalancerAttribute](~~214362~~) operation to query the value of **Ipv6AddressType**.
- * *   **EnableLoadBalancerIpv6Internet** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](~~214362~~) operation to query the status of the task.
- *     *   If the ALB instance is in the **Configuring** state, the network type of the IPv6 address that is used by the ALB instance is being changed.
- *     *   If the ALB instance is in the **Active** state, the network type of the IPv6 address that is used by the ALB instance is changed.
- *
- * @param request EnableLoadBalancerIpv6InternetRequest
- * @return EnableLoadBalancerIpv6InternetResponse
- */
+// Summary:
+//
+// Changes the type of the IPv6 address that is used by a dual-stack Application Load Balancer (ALB) instance from private to public.
+//
+// Description:
+//
+// ### Prerequisites
+//
+// An ALB instance is created and IPv4/IPv6 dual stack is enabled for the instance. You can call the [CreateLoadBalancer](https://help.aliyun.com/document_detail/214358.html) operation and set **AddressIpVersion*	- to **DualStack*	- to create a dual-stack ALB instance.
+//
+// > If you set **AddressIpVersion*	- to **DualStack**:
+//
+// 	- If you set **AddressType*	- to **Internet**, the ALB instance uses a public IPv4 IP address and a private IPv6 address.
+//
+// 	- If you set **AddressType*	- to **Intranet**, the ALB instance uses a private IPv4 IP address and a private IPv6 address.
+//
+// ### Description
+//
+// 	- After the EnableLoadBalancerIpv6Internet operation is called, the value of **Ipv6AddressType*	- is changed to **Internet*	- and the type of the IPv6 address of the ALB instance is changed from private to public. If you upgrade the instance or the instance scales elastic network interfaces (ENIs) along with workloads, public IPv6 addresses are automatically enabled for the instance and the new ENIs. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the value of **Ipv6AddressType**.
+//
+// 	- **EnableLoadBalancerIpv6Internet*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of the task.
+//
+//     	- If the ALB instance is in the **Configuring*	- state, the network type of the IPv6 address that is used by the ALB instance is being changed.
+//
+//     	- If the ALB instance is in the **Active*	- state, the network type of the IPv6 address that is used by the ALB instance is changed.
+//
+// @param request - EnableLoadBalancerIpv6InternetRequest
+//
+// @return EnableLoadBalancerIpv6InternetResponse
 func (client *Client) EnableLoadBalancerIpv6Internet(request *EnableLoadBalancerIpv6InternetRequest) (_result *EnableLoadBalancerIpv6InternetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableLoadBalancerIpv6InternetResponse{}
@@ -22949,6 +29028,15 @@ func (client *Client) EnableLoadBalancerIpv6Internet(request *EnableLoadBalancer
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details about a health check template.
+//
+// @param request - GetHealthCheckTemplateAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHealthCheckTemplateAttributeResponse
 func (client *Client) GetHealthCheckTemplateAttributeWithOptions(request *GetHealthCheckTemplateAttributeRequest, runtime *util.RuntimeOptions) (_result *GetHealthCheckTemplateAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22982,6 +29070,13 @@ func (client *Client) GetHealthCheckTemplateAttributeWithOptions(request *GetHea
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details about a health check template.
+//
+// @param request - GetHealthCheckTemplateAttributeRequest
+//
+// @return GetHealthCheckTemplateAttributeResponse
 func (client *Client) GetHealthCheckTemplateAttribute(request *GetHealthCheckTemplateAttributeRequest) (_result *GetHealthCheckTemplateAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetHealthCheckTemplateAttributeResponse{}
@@ -22993,6 +29088,15 @@ func (client *Client) GetHealthCheckTemplateAttribute(request *GetHealthCheckTem
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details about a listener.
+//
+// @param request - GetListenerAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetListenerAttributeResponse
 func (client *Client) GetListenerAttributeWithOptions(request *GetListenerAttributeRequest, runtime *util.RuntimeOptions) (_result *GetListenerAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23026,6 +29130,13 @@ func (client *Client) GetListenerAttributeWithOptions(request *GetListenerAttrib
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details about a listener.
+//
+// @param request - GetListenerAttributeRequest
+//
+// @return GetListenerAttributeResponse
 func (client *Client) GetListenerAttribute(request *GetListenerAttributeRequest) (_result *GetListenerAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetListenerAttributeResponse{}
@@ -23037,6 +29148,15 @@ func (client *Client) GetListenerAttribute(request *GetListenerAttributeRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the health check status of a listener and its forwarding rules.
+//
+// @param request - GetListenerHealthStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetListenerHealthStatusResponse
 func (client *Client) GetListenerHealthStatusWithOptions(request *GetListenerHealthStatusRequest, runtime *util.RuntimeOptions) (_result *GetListenerHealthStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23082,6 +29202,13 @@ func (client *Client) GetListenerHealthStatusWithOptions(request *GetListenerHea
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the health check status of a listener and its forwarding rules.
+//
+// @param request - GetListenerHealthStatusRequest
+//
+// @return GetListenerHealthStatusResponse
 func (client *Client) GetListenerHealthStatus(request *GetListenerHealthStatusRequest) (_result *GetListenerHealthStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetListenerHealthStatusResponse{}
@@ -23093,6 +29220,15 @@ func (client *Client) GetListenerHealthStatus(request *GetListenerHealthStatusRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an Application Load Balancer (ALB) instance.
+//
+// @param request - GetLoadBalancerAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLoadBalancerAttributeResponse
 func (client *Client) GetLoadBalancerAttributeWithOptions(request *GetLoadBalancerAttributeRequest, runtime *util.RuntimeOptions) (_result *GetLoadBalancerAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23126,6 +29262,13 @@ func (client *Client) GetLoadBalancerAttributeWithOptions(request *GetLoadBalanc
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an Application Load Balancer (ALB) instance.
+//
+// @param request - GetLoadBalancerAttributeRequest
+//
+// @return GetLoadBalancerAttributeResponse
 func (client *Client) GetLoadBalancerAttribute(request *GetLoadBalancerAttributeRequest) (_result *GetLoadBalancerAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetLoadBalancerAttributeResponse{}
@@ -23137,6 +29280,15 @@ func (client *Client) GetLoadBalancerAttribute(request *GetLoadBalancerAttribute
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries AScript rules.
+//
+// @param request - ListAScriptsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAScriptsResponse
 func (client *Client) ListAScriptsWithOptions(request *ListAScriptsRequest, runtime *util.RuntimeOptions) (_result *ListAScriptsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23186,6 +29338,13 @@ func (client *Client) ListAScriptsWithOptions(request *ListAScriptsRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries AScript rules.
+//
+// @param request - ListAScriptsRequest
+//
+// @return ListAScriptsResponse
 func (client *Client) ListAScripts(request *ListAScriptsRequest) (_result *ListAScriptsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAScriptsResponse{}
@@ -23197,6 +29356,15 @@ func (client *Client) ListAScripts(request *ListAScriptsRequest) (_result *ListA
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the entries of an access control list (ACL).
+//
+// @param request - ListAclEntriesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAclEntriesResponse
 func (client *Client) ListAclEntriesWithOptions(request *ListAclEntriesRequest, runtime *util.RuntimeOptions) (_result *ListAclEntriesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23238,6 +29406,13 @@ func (client *Client) ListAclEntriesWithOptions(request *ListAclEntriesRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the entries of an access control list (ACL).
+//
+// @param request - ListAclEntriesRequest
+//
+// @return ListAclEntriesResponse
 func (client *Client) ListAclEntries(request *ListAclEntriesRequest) (_result *ListAclEntriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAclEntriesResponse{}
@@ -23249,6 +29424,15 @@ func (client *Client) ListAclEntries(request *ListAclEntriesRequest) (_result *L
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the listeners that are associated with access control lists (ACLs).
+//
+// @param request - ListAclRelationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAclRelationsResponse
 func (client *Client) ListAclRelationsWithOptions(request *ListAclRelationsRequest, runtime *util.RuntimeOptions) (_result *ListAclRelationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23282,6 +29466,13 @@ func (client *Client) ListAclRelationsWithOptions(request *ListAclRelationsReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the listeners that are associated with access control lists (ACLs).
+//
+// @param request - ListAclRelationsRequest
+//
+// @return ListAclRelationsResponse
 func (client *Client) ListAclRelations(request *ListAclRelationsRequest) (_result *ListAclRelationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAclRelationsResponse{}
@@ -23293,6 +29484,15 @@ func (client *Client) ListAclRelations(request *ListAclRelationsRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the access control lists (ACLs) in a region.
+//
+// @param request - ListAclsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAclsResponse
 func (client *Client) ListAclsWithOptions(request *ListAclsRequest, runtime *util.RuntimeOptions) (_result *ListAclsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23346,6 +29546,13 @@ func (client *Client) ListAclsWithOptions(request *ListAclsRequest, runtime *uti
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the access control lists (ACLs) in a region.
+//
+// @param request - ListAclsRequest
+//
+// @return ListAclsResponse
 func (client *Client) ListAcls(request *ListAclsRequest) (_result *ListAclsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAclsResponse{}
@@ -23357,6 +29564,15 @@ func (client *Client) ListAcls(request *ListAclsRequest) (_result *ListAclsRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries asynchronous tasks in a region.
+//
+// @param request - ListAsynJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAsynJobsResponse
 func (client *Client) ListAsynJobsWithOptions(request *ListAsynJobsRequest, runtime *util.RuntimeOptions) (_result *ListAsynJobsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23418,6 +29634,13 @@ func (client *Client) ListAsynJobsWithOptions(request *ListAsynJobsRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries asynchronous tasks in a region.
+//
+// @param request - ListAsynJobsRequest
+//
+// @return ListAsynJobsResponse
 func (client *Client) ListAsynJobs(request *ListAsynJobsRequest) (_result *ListAsynJobsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAsynJobsResponse{}
@@ -23429,6 +29652,15 @@ func (client *Client) ListAsynJobs(request *ListAsynJobsRequest) (_result *ListA
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries health check templates in a region.
+//
+// @param request - ListHealthCheckTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListHealthCheckTemplatesResponse
 func (client *Client) ListHealthCheckTemplatesWithOptions(request *ListHealthCheckTemplatesRequest, runtime *util.RuntimeOptions) (_result *ListHealthCheckTemplatesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23478,6 +29710,13 @@ func (client *Client) ListHealthCheckTemplatesWithOptions(request *ListHealthChe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries health check templates in a region.
+//
+// @param request - ListHealthCheckTemplatesRequest
+//
+// @return ListHealthCheckTemplatesResponse
 func (client *Client) ListHealthCheckTemplates(request *ListHealthCheckTemplatesRequest) (_result *ListHealthCheckTemplatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListHealthCheckTemplatesResponse{}
@@ -23489,12 +29728,25 @@ func (client *Client) ListHealthCheckTemplates(request *ListHealthCheckTemplates
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the certificates that are associated with a listener, including additional certificates and the default certificate.
+//
+// @param request - ListListenerCertificatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListListenerCertificatesResponse
 func (client *Client) ListListenerCertificatesWithOptions(request *ListListenerCertificatesRequest, runtime *util.RuntimeOptions) (_result *ListListenerCertificatesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CertificateIds)) {
+		query["CertificateIds"] = request.CertificateIds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CertificateType)) {
 		query["CertificateType"] = request.CertificateType
 	}
@@ -23534,6 +29786,13 @@ func (client *Client) ListListenerCertificatesWithOptions(request *ListListenerC
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the certificates that are associated with a listener, including additional certificates and the default certificate.
+//
+// @param request - ListListenerCertificatesRequest
+//
+// @return ListListenerCertificatesResponse
 func (client *Client) ListListenerCertificates(request *ListListenerCertificatesRequest) (_result *ListListenerCertificatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListListenerCertificatesResponse{}
@@ -23545,6 +29804,15 @@ func (client *Client) ListListenerCertificates(request *ListListenerCertificates
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the listeners in a region.
+//
+// @param request - ListListenersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListListenersResponse
 func (client *Client) ListListenersWithOptions(request *ListListenersRequest, runtime *util.RuntimeOptions) (_result *ListListenersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23598,6 +29866,13 @@ func (client *Client) ListListenersWithOptions(request *ListListenersRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the listeners in a region.
+//
+// @param request - ListListenersRequest
+//
+// @return ListListenersResponse
 func (client *Client) ListListeners(request *ListListenersRequest) (_result *ListListenersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListListenersResponse{}
@@ -23609,6 +29884,15 @@ func (client *Client) ListListeners(request *ListListenersRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries Application Load Balancer (ALB) instances in a region based on filter conditions.
+//
+// @param request - ListLoadBalancersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListLoadBalancersResponse
 func (client *Client) ListLoadBalancersWithOptions(request *ListLoadBalancersRequest, runtime *util.RuntimeOptions) (_result *ListLoadBalancersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23698,6 +29982,13 @@ func (client *Client) ListLoadBalancersWithOptions(request *ListLoadBalancersReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries Application Load Balancer (ALB) instances in a region based on filter conditions.
+//
+// @param request - ListLoadBalancersRequest
+//
+// @return ListLoadBalancersResponse
 func (client *Client) ListLoadBalancers(request *ListLoadBalancersRequest) (_result *ListLoadBalancersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListLoadBalancersResponse{}
@@ -23709,6 +30000,15 @@ func (client *Client) ListLoadBalancers(request *ListLoadBalancersRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the forwarding rules in a region.
+//
+// @param request - ListRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRulesResponse
 func (client *Client) ListRulesWithOptions(request *ListRulesRequest, runtime *util.RuntimeOptions) (_result *ListRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23766,6 +30066,13 @@ func (client *Client) ListRulesWithOptions(request *ListRulesRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the forwarding rules in a region.
+//
+// @param request - ListRulesRequest
+//
+// @return ListRulesResponse
 func (client *Client) ListRules(request *ListRulesRequest) (_result *ListRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRulesResponse{}
@@ -23777,6 +30084,15 @@ func (client *Client) ListRules(request *ListRulesRequest) (_result *ListRulesRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries custom security policies in a region.
+//
+// @param request - ListSecurityPoliciesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSecurityPoliciesResponse
 func (client *Client) ListSecurityPoliciesWithOptions(request *ListSecurityPoliciesRequest, runtime *util.RuntimeOptions) (_result *ListSecurityPoliciesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23830,6 +30146,13 @@ func (client *Client) ListSecurityPoliciesWithOptions(request *ListSecurityPolic
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries custom security policies in a region.
+//
+// @param request - ListSecurityPoliciesRequest
+//
+// @return ListSecurityPoliciesResponse
 func (client *Client) ListSecurityPolicies(request *ListSecurityPoliciesRequest) (_result *ListSecurityPoliciesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSecurityPoliciesResponse{}
@@ -23841,6 +30164,15 @@ func (client *Client) ListSecurityPolicies(request *ListSecurityPoliciesRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the listeners that are associated with security policies.
+//
+// @param request - ListSecurityPolicyRelationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSecurityPolicyRelationsResponse
 func (client *Client) ListSecurityPolicyRelationsWithOptions(request *ListSecurityPolicyRelationsRequest, runtime *util.RuntimeOptions) (_result *ListSecurityPolicyRelationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23874,6 +30206,13 @@ func (client *Client) ListSecurityPolicyRelationsWithOptions(request *ListSecuri
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the listeners that are associated with security policies.
+//
+// @param request - ListSecurityPolicyRelationsRequest
+//
+// @return ListSecurityPolicyRelationsResponse
 func (client *Client) ListSecurityPolicyRelations(request *ListSecurityPolicyRelationsRequest) (_result *ListSecurityPolicyRelationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSecurityPolicyRelationsResponse{}
@@ -23885,6 +30224,15 @@ func (client *Client) ListSecurityPolicyRelations(request *ListSecurityPolicyRel
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries servers in a server group.
+//
+// @param request - ListServerGroupServersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListServerGroupServersResponse
 func (client *Client) ListServerGroupServersWithOptions(request *ListServerGroupServersRequest, runtime *util.RuntimeOptions) (_result *ListServerGroupServersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23934,6 +30282,13 @@ func (client *Client) ListServerGroupServersWithOptions(request *ListServerGroup
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries servers in a server group.
+//
+// @param request - ListServerGroupServersRequest
+//
+// @return ListServerGroupServersResponse
 func (client *Client) ListServerGroupServers(request *ListServerGroupServersRequest) (_result *ListServerGroupServersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListServerGroupServersResponse{}
@@ -23945,6 +30300,15 @@ func (client *Client) ListServerGroupServers(request *ListServerGroupServersRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries server groups in a region.
+//
+// @param request - ListServerGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListServerGroupsResponse
 func (client *Client) ListServerGroupsWithOptions(request *ListServerGroupsRequest, runtime *util.RuntimeOptions) (_result *ListServerGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24006,6 +30370,13 @@ func (client *Client) ListServerGroupsWithOptions(request *ListServerGroupsReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries server groups in a region.
+//
+// @param request - ListServerGroupsRequest
+//
+// @return ListServerGroupsResponse
 func (client *Client) ListServerGroups(request *ListServerGroupsRequest) (_result *ListServerGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListServerGroupsResponse{}
@@ -24017,6 +30388,15 @@ func (client *Client) ListServerGroups(request *ListServerGroupsRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries system security policies in a region.
+//
+// @param request - ListSystemSecurityPoliciesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSystemSecurityPoliciesResponse
 func (client *Client) ListSystemSecurityPoliciesWithOptions(runtime *util.RuntimeOptions) (_result *ListSystemSecurityPoliciesResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -24039,6 +30419,11 @@ func (client *Client) ListSystemSecurityPoliciesWithOptions(runtime *util.Runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries system security policies in a region.
+//
+// @return ListSystemSecurityPoliciesResponse
 func (client *Client) ListSystemSecurityPolicies() (_result *ListSystemSecurityPoliciesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSystemSecurityPoliciesResponse{}
@@ -24050,6 +30435,15 @@ func (client *Client) ListSystemSecurityPolicies() (_result *ListSystemSecurityP
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries tag keys.
+//
+// @param request - ListTagKeysRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagKeysResponse
 func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtime *util.RuntimeOptions) (_result *ListTagKeysResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24099,6 +30493,13 @@ func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries tag keys.
+//
+// @param request - ListTagKeysRequest
+//
+// @return ListTagKeysResponse
 func (client *Client) ListTagKeys(request *ListTagKeysRequest) (_result *ListTagKeysResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagKeysResponse{}
@@ -24110,6 +30511,15 @@ func (client *Client) ListTagKeys(request *ListTagKeysRequest) (_result *ListTag
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the tags of resources.
+//
+// @param request - ListTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24159,6 +30569,13 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the tags of resources.
+//
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagResourcesResponse{}
@@ -24170,6 +30587,15 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries tag values.
+//
+// @param request - ListTagValuesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagValuesResponse
 func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, runtime *util.RuntimeOptions) (_result *ListTagValuesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24219,6 +30645,13 @@ func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries tag values.
+//
+// @param request - ListTagValuesRequest
+//
+// @return ListTagValuesResponse
 func (client *Client) ListTagValues(request *ListTagValuesRequest) (_result *ListTagValuesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagValuesResponse{}
@@ -24230,6 +30663,15 @@ func (client *Client) ListTagValues(request *ListTagValuesRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// Moves a resource to another resource group.
+//
+// @param request - MoveResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MoveResourceGroupResponse
 func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupRequest, runtime *util.RuntimeOptions) (_result *MoveResourceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24271,6 +30713,13 @@ func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Moves a resource to another resource group.
+//
+// @param request - MoveResourceGroupRequest
+//
+// @return MoveResourceGroupResponse
 func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_result *MoveResourceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &MoveResourceGroupResponse{}
@@ -24282,15 +30731,23 @@ func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_res
 	return _result, _err
 }
 
-/**
- * **RemoveEntriesFromAcl** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclEntries](~~213616~~) operation to query the status of the task.
- * *   If an ACL is in the **Removing** state, the entries are being removed.
- * *   If an ACL cannot be found, the entries are removed.
- *
- * @param request RemoveEntriesFromAclRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return RemoveEntriesFromAclResponse
- */
+// Summary:
+//
+// Removes entries from an access control list (ACL).
+//
+// Description:
+//
+// *RemoveEntriesFromAcl*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclEntries](https://help.aliyun.com/document_detail/213616.html) operation to query the status of the task.
+//
+// 	- If an ACL is in the **Removing*	- state, the entries are being removed.
+//
+// 	- If an ACL cannot be found, the entries are removed.
+//
+// @param request - RemoveEntriesFromAclRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveEntriesFromAclResponse
 func (client *Client) RemoveEntriesFromAclWithOptions(request *RemoveEntriesFromAclRequest, runtime *util.RuntimeOptions) (_result *RemoveEntriesFromAclResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24336,14 +30793,21 @@ func (client *Client) RemoveEntriesFromAclWithOptions(request *RemoveEntriesFrom
 	return _result, _err
 }
 
-/**
- * **RemoveEntriesFromAcl** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclEntries](~~213616~~) operation to query the status of the task.
- * *   If an ACL is in the **Removing** state, the entries are being removed.
- * *   If an ACL cannot be found, the entries are removed.
- *
- * @param request RemoveEntriesFromAclRequest
- * @return RemoveEntriesFromAclResponse
- */
+// Summary:
+//
+// Removes entries from an access control list (ACL).
+//
+// Description:
+//
+// *RemoveEntriesFromAcl*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAclEntries](https://help.aliyun.com/document_detail/213616.html) operation to query the status of the task.
+//
+// 	- If an ACL is in the **Removing*	- state, the entries are being removed.
+//
+// 	- If an ACL cannot be found, the entries are removed.
+//
+// @param request - RemoveEntriesFromAclRequest
+//
+// @return RemoveEntriesFromAclResponse
 func (client *Client) RemoveEntriesFromAcl(request *RemoveEntriesFromAclRequest) (_result *RemoveEntriesFromAclResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveEntriesFromAclResponse{}
@@ -24355,19 +30819,31 @@ func (client *Client) RemoveEntriesFromAcl(request *RemoveEntriesFromAclRequest)
 	return _result, _err
 }
 
-/**
- * **RemoveServersFromServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
- * 1.  You can call the [ListServerGroups](~~213627~~) operation to query the status of a server group.
- *     *   If a server group is in the **Configuring** state, it indicates that the server group is being modified.
- *     *   If a server group is in the **Available** state, it indicates that the server group is running.
- * 2.  You can call the [ListServerGroupServers](~~213628~~) operation to query the status of a backend server.
- *     *   If a backend server is in the **Removing** state, the server is being removed from the server group.
- *     *   If a backend server cannot be found, the server is no longer in the server group.
- *
- * @param request RemoveServersFromServerGroupRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return RemoveServersFromServerGroupResponse
- */
+// Summary:
+//
+// Removes backend servers from a server group.
+//
+// Description:
+//
+// *RemoveServersFromServerGroup*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
+//
+// 1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group.
+//
+//     	- If a server group is in the **Configuring*	- state, it indicates that the server group is being modified.
+//
+//     	- If a server group is in the **Available*	- state, it indicates that the server group is running.
+//
+// 2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/213628.html) operation to query the status of a backend server.
+//
+//     	- If a backend server is in the **Removing*	- state, the server is being removed from the server group.
+//
+//     	- If a backend server cannot be found, the server is no longer in the server group.
+//
+// @param request - RemoveServersFromServerGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveServersFromServerGroupResponse
 func (client *Client) RemoveServersFromServerGroupWithOptions(request *RemoveServersFromServerGroupRequest, runtime *util.RuntimeOptions) (_result *RemoveServersFromServerGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24413,18 +30889,29 @@ func (client *Client) RemoveServersFromServerGroupWithOptions(request *RemoveSer
 	return _result, _err
 }
 
-/**
- * **RemoveServersFromServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
- * 1.  You can call the [ListServerGroups](~~213627~~) operation to query the status of a server group.
- *     *   If a server group is in the **Configuring** state, it indicates that the server group is being modified.
- *     *   If a server group is in the **Available** state, it indicates that the server group is running.
- * 2.  You can call the [ListServerGroupServers](~~213628~~) operation to query the status of a backend server.
- *     *   If a backend server is in the **Removing** state, the server is being removed from the server group.
- *     *   If a backend server cannot be found, the server is no longer in the server group.
- *
- * @param request RemoveServersFromServerGroupRequest
- * @return RemoveServersFromServerGroupResponse
- */
+// Summary:
+//
+// Removes backend servers from a server group.
+//
+// Description:
+//
+// *RemoveServersFromServerGroup*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
+//
+// 1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group.
+//
+//     	- If a server group is in the **Configuring*	- state, it indicates that the server group is being modified.
+//
+//     	- If a server group is in the **Available*	- state, it indicates that the server group is running.
+//
+// 2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/213628.html) operation to query the status of a backend server.
+//
+//     	- If a backend server is in the **Removing*	- state, the server is being removed from the server group.
+//
+//     	- If a backend server cannot be found, the server is no longer in the server group.
+//
+// @param request - RemoveServersFromServerGroupRequest
+//
+// @return RemoveServersFromServerGroupResponse
 func (client *Client) RemoveServersFromServerGroup(request *RemoveServersFromServerGroupRequest) (_result *RemoveServersFromServerGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveServersFromServerGroupResponse{}
@@ -24436,19 +30923,31 @@ func (client *Client) RemoveServersFromServerGroup(request *RemoveServersFromSer
 	return _result, _err
 }
 
-/**
- * **ReplaceServersInServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
- * 1.  You can call the [ListServerGroups](~~213627~~) operation to query the status of a server group.
- *     *   If a server group is in the **Configuring** state, it indicates that the server group is being modified.
- *     *   If a server group is in the **Available** state, it indicates that the server group is running.
- * 2.  You can call the [ListServerGroupServers](~~213628~~) operation to query the status of a backend server.
- *     *   If a backend server is in the **Replacing** state, it indicates that the server is being removed from the server group and a new server is added to the server group.
- *     *   If a backend server is in the \\*\\*Available\\*\\* state, it indicates that the server is running.
- *
- * @param request ReplaceServersInServerGroupRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ReplaceServersInServerGroupResponse
- */
+// Summary:
+//
+// Replaces backend servers in a server group.
+//
+// Description:
+//
+// *ReplaceServersInServerGroup*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
+//
+// 1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group.
+//
+//     	- If a server group is in the **Configuring*	- state, it indicates that the server group is being modified.
+//
+//     	- If a server group is in the **Available*	- state, it indicates that the server group is running.
+//
+// 2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/213628.html) operation to query the status of a backend server.
+//
+//     	- If a backend server is in the **Replacing*	- state, it indicates that the server is being removed from the server group and a new server is added to the server group.
+//
+//     	- If a backend server is in the \\*\\*Available\\*\\	- state, it indicates that the server is running.
+//
+// @param request - ReplaceServersInServerGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReplaceServersInServerGroupResponse
 func (client *Client) ReplaceServersInServerGroupWithOptions(request *ReplaceServersInServerGroupRequest, runtime *util.RuntimeOptions) (_result *ReplaceServersInServerGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24498,18 +30997,29 @@ func (client *Client) ReplaceServersInServerGroupWithOptions(request *ReplaceSer
 	return _result, _err
 }
 
-/**
- * **ReplaceServersInServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
- * 1.  You can call the [ListServerGroups](~~213627~~) operation to query the status of a server group.
- *     *   If a server group is in the **Configuring** state, it indicates that the server group is being modified.
- *     *   If a server group is in the **Available** state, it indicates that the server group is running.
- * 2.  You can call the [ListServerGroupServers](~~213628~~) operation to query the status of a backend server.
- *     *   If a backend server is in the **Replacing** state, it indicates that the server is being removed from the server group and a new server is added to the server group.
- *     *   If a backend server is in the \\*\\*Available\\*\\* state, it indicates that the server is running.
- *
- * @param request ReplaceServersInServerGroupRequest
- * @return ReplaceServersInServerGroupResponse
- */
+// Summary:
+//
+// Replaces backend servers in a server group.
+//
+// Description:
+//
+// *ReplaceServersInServerGroup*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
+//
+// 1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group.
+//
+//     	- If a server group is in the **Configuring*	- state, it indicates that the server group is being modified.
+//
+//     	- If a server group is in the **Available*	- state, it indicates that the server group is running.
+//
+// 2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/213628.html) operation to query the status of a backend server.
+//
+//     	- If a backend server is in the **Replacing*	- state, it indicates that the server is being removed from the server group and a new server is added to the server group.
+//
+//     	- If a backend server is in the \\*\\*Available\\*\\	- state, it indicates that the server is running.
+//
+// @param request - ReplaceServersInServerGroupRequest
+//
+// @return ReplaceServersInServerGroupResponse
 func (client *Client) ReplaceServersInServerGroup(request *ReplaceServersInServerGroupRequest) (_result *ReplaceServersInServerGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReplaceServersInServerGroupResponse{}
@@ -24521,15 +31031,23 @@ func (client *Client) ReplaceServersInServerGroup(request *ReplaceServersInServe
 	return _result, _err
 }
 
-/**
- * **StartListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](~~2254865~~) to query the status of the task.
- * *   If a listener is in the **Configuring** state, the listener is being enabled.
- * *   If a listener is in the **Running** state, the listener is enabled.
- *
- * @param request StartListenerRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return StartListenerResponse
- */
+// Summary:
+//
+// Enables a listener.
+//
+// Description:
+//
+// *StartListener*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) to query the status of the task.
+//
+// 	- If a listener is in the **Configuring*	- state, the listener is being enabled.
+//
+// 	- If a listener is in the **Running*	- state, the listener is enabled.
+//
+// @param request - StartListenerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartListenerResponse
 func (client *Client) StartListenerWithOptions(request *StartListenerRequest, runtime *util.RuntimeOptions) (_result *StartListenerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24571,14 +31089,21 @@ func (client *Client) StartListenerWithOptions(request *StartListenerRequest, ru
 	return _result, _err
 }
 
-/**
- * **StartListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](~~2254865~~) to query the status of the task.
- * *   If a listener is in the **Configuring** state, the listener is being enabled.
- * *   If a listener is in the **Running** state, the listener is enabled.
- *
- * @param request StartListenerRequest
- * @return StartListenerResponse
- */
+// Summary:
+//
+// Enables a listener.
+//
+// Description:
+//
+// *StartListener*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) to query the status of the task.
+//
+// 	- If a listener is in the **Configuring*	- state, the listener is being enabled.
+//
+// 	- If a listener is in the **Running*	- state, the listener is enabled.
+//
+// @param request - StartListenerRequest
+//
+// @return StartListenerResponse
 func (client *Client) StartListener(request *StartListenerRequest) (_result *StartListenerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartListenerResponse{}
@@ -24590,13 +31115,19 @@ func (client *Client) StartListener(request *StartListenerRequest) (_result *Sta
 	return _result, _err
 }
 
-/**
- * This operation is supported by Application Load Balancer (ALB) instances that use static IP addresses. The zone cannot be removed if the ALB instance has only one available zone.
- *
- * @param request StartShiftLoadBalancerZonesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return StartShiftLoadBalancerZonesResponse
- */
+// Summary:
+//
+// Removes an elastic IP address (EIP) or a virtual IP address (VIP) of a zone from a DNS record.
+//
+// Description:
+//
+// This operation is supported by Application Load Balancer (ALB) instances that use static IP addresses. The zone cannot be removed if the ALB instance has only one available zone.
+//
+// @param request - StartShiftLoadBalancerZonesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartShiftLoadBalancerZonesResponse
 func (client *Client) StartShiftLoadBalancerZonesWithOptions(request *StartShiftLoadBalancerZonesRequest, runtime *util.RuntimeOptions) (_result *StartShiftLoadBalancerZonesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24642,12 +31173,17 @@ func (client *Client) StartShiftLoadBalancerZonesWithOptions(request *StartShift
 	return _result, _err
 }
 
-/**
- * This operation is supported by Application Load Balancer (ALB) instances that use static IP addresses. The zone cannot be removed if the ALB instance has only one available zone.
- *
- * @param request StartShiftLoadBalancerZonesRequest
- * @return StartShiftLoadBalancerZonesResponse
- */
+// Summary:
+//
+// Removes an elastic IP address (EIP) or a virtual IP address (VIP) of a zone from a DNS record.
+//
+// Description:
+//
+// This operation is supported by Application Load Balancer (ALB) instances that use static IP addresses. The zone cannot be removed if the ALB instance has only one available zone.
+//
+// @param request - StartShiftLoadBalancerZonesRequest
+//
+// @return StartShiftLoadBalancerZonesResponse
 func (client *Client) StartShiftLoadBalancerZones(request *StartShiftLoadBalancerZonesRequest) (_result *StartShiftLoadBalancerZonesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartShiftLoadBalancerZonesResponse{}
@@ -24659,15 +31195,23 @@ func (client *Client) StartShiftLoadBalancerZones(request *StartShiftLoadBalance
 	return _result, _err
 }
 
-/**
- * **StopListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](~~2254865~~) operation to query the status of the task:
- * *   If a listener is in the **Configuring** state, the listener is being disabled.
- * *   If a listener is in the **Stopped** state, the listener is disabled.
- *
- * @param request StopListenerRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return StopListenerResponse
- */
+// Summary:
+//
+// Disables a listener.
+//
+// Description:
+//
+// *StopListener*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) operation to query the status of the task:
+//
+// 	- If a listener is in the **Configuring*	- state, the listener is being disabled.
+//
+// 	- If a listener is in the **Stopped*	- state, the listener is disabled.
+//
+// @param request - StopListenerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopListenerResponse
 func (client *Client) StopListenerWithOptions(request *StopListenerRequest, runtime *util.RuntimeOptions) (_result *StopListenerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24709,14 +31253,21 @@ func (client *Client) StopListenerWithOptions(request *StopListenerRequest, runt
 	return _result, _err
 }
 
-/**
- * **StopListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](~~2254865~~) operation to query the status of the task:
- * *   If a listener is in the **Configuring** state, the listener is being disabled.
- * *   If a listener is in the **Stopped** state, the listener is disabled.
- *
- * @param request StopListenerRequest
- * @return StopListenerResponse
- */
+// Summary:
+//
+// Disables a listener.
+//
+// Description:
+//
+// *StopListener*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) operation to query the status of the task:
+//
+// 	- If a listener is in the **Configuring*	- state, the listener is being disabled.
+//
+// 	- If a listener is in the **Stopped*	- state, the listener is disabled.
+//
+// @param request - StopListenerRequest
+//
+// @return StopListenerResponse
 func (client *Client) StopListener(request *StopListenerRequest) (_result *StopListenerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StopListenerResponse{}
@@ -24728,6 +31279,15 @@ func (client *Client) StopListener(request *StopListenerRequest) (_result *StopL
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds tags to resources.
+//
+// @param request - TagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24769,6 +31329,13 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds tags to resources.
+//
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
 func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TagResourcesResponse{}
@@ -24780,6 +31347,15 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes tags from resources.
+//
+// @param request - UnTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnTagResourcesResponse
 func (client *Client) UnTagResourcesWithOptions(request *UnTagResourcesRequest, runtime *util.RuntimeOptions) (_result *UnTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24829,6 +31405,13 @@ func (client *Client) UnTagResourcesWithOptions(request *UnTagResourcesRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes tags from resources.
+//
+// @param request - UnTagResourcesRequest
+//
+// @return UnTagResourcesResponse
 func (client *Client) UnTagResources(request *UnTagResourcesRequest) (_result *UnTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UnTagResourcesResponse{}
@@ -24840,16 +31423,25 @@ func (client *Client) UnTagResources(request *UnTagResourcesRequest) (_result *U
 	return _result, _err
 }
 
-/**
- * *   **UpdateAScripts** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](~~472574~~) operation to query the status of the task.
- *     *   If an AScript rule is in the **Configuring** state, the AScript rule is being updated.
- *     *   If an AScript rule is in the **Available** state, the AScript rule is updated.
- * *   In the following table, the maximum value of **N** is **4**.
- *
- * @param request UpdateAScriptsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateAScriptsResponse
- */
+// Summary:
+//
+// Updates AScript rules.
+//
+// Description:
+//
+//   **UpdateAScripts*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](https://help.aliyun.com/document_detail/472574.html) operation to query the status of the task.
+//
+//     	- If an AScript rule is in the **Configuring*	- state, the AScript rule is being updated.
+//
+//     	- If an AScript rule is in the **Available*	- state, the AScript rule is updated.
+//
+// 	- In the following table, the maximum value of **N*	- is **4**.
+//
+// @param request - UpdateAScriptsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAScriptsResponse
 func (client *Client) UpdateAScriptsWithOptions(request *UpdateAScriptsRequest, runtime *util.RuntimeOptions) (_result *UpdateAScriptsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24891,15 +31483,23 @@ func (client *Client) UpdateAScriptsWithOptions(request *UpdateAScriptsRequest, 
 	return _result, _err
 }
 
-/**
- * *   **UpdateAScripts** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](~~472574~~) operation to query the status of the task.
- *     *   If an AScript rule is in the **Configuring** state, the AScript rule is being updated.
- *     *   If an AScript rule is in the **Available** state, the AScript rule is updated.
- * *   In the following table, the maximum value of **N** is **4**.
- *
- * @param request UpdateAScriptsRequest
- * @return UpdateAScriptsResponse
- */
+// Summary:
+//
+// Updates AScript rules.
+//
+// Description:
+//
+//   **UpdateAScripts*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAScripts](https://help.aliyun.com/document_detail/472574.html) operation to query the status of the task.
+//
+//     	- If an AScript rule is in the **Configuring*	- state, the AScript rule is being updated.
+//
+//     	- If an AScript rule is in the **Available*	- state, the AScript rule is updated.
+//
+// 	- In the following table, the maximum value of **N*	- is **4**.
+//
+// @param request - UpdateAScriptsRequest
+//
+// @return UpdateAScriptsResponse
 func (client *Client) UpdateAScripts(request *UpdateAScriptsRequest) (_result *UpdateAScriptsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAScriptsResponse{}
@@ -24911,6 +31511,15 @@ func (client *Client) UpdateAScripts(request *UpdateAScriptsRequest) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the attributes of an access control list (ACL), such as the name.
+//
+// @param request - UpdateAclAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAclAttributeResponse
 func (client *Client) UpdateAclAttributeWithOptions(request *UpdateAclAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateAclAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24956,6 +31565,13 @@ func (client *Client) UpdateAclAttributeWithOptions(request *UpdateAclAttributeR
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the attributes of an access control list (ACL), such as the name.
+//
+// @param request - UpdateAclAttributeRequest
+//
+// @return UpdateAclAttributeResponse
 func (client *Client) UpdateAclAttribute(request *UpdateAclAttributeRequest) (_result *UpdateAclAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAclAttributeResponse{}
@@ -24967,6 +31583,15 @@ func (client *Client) UpdateAclAttribute(request *UpdateAclAttributeRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the attributes, such as the name and protocol, of a health check template.
+//
+// @param request - UpdateHealthCheckTemplateAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateHealthCheckTemplateAttributeResponse
 func (client *Client) UpdateHealthCheckTemplateAttributeWithOptions(request *UpdateHealthCheckTemplateAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateHealthCheckTemplateAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25056,6 +31681,13 @@ func (client *Client) UpdateHealthCheckTemplateAttributeWithOptions(request *Upd
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the attributes, such as the name and protocol, of a health check template.
+//
+// @param request - UpdateHealthCheckTemplateAttributeRequest
+//
+// @return UpdateHealthCheckTemplateAttributeResponse
 func (client *Client) UpdateHealthCheckTemplateAttribute(request *UpdateHealthCheckTemplateAttributeRequest) (_result *UpdateHealthCheckTemplateAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateHealthCheckTemplateAttributeResponse{}
@@ -25067,15 +31699,23 @@ func (client *Client) UpdateHealthCheckTemplateAttribute(request *UpdateHealthCh
 	return _result, _err
 }
 
-/**
- * **UpdateListenerAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](~~2254865~~) operation to query the status of the task.
- * *   If a listener is in the **Configuring** state, the configuration of the listener is being modified.
- * *   If a listener is in the **Running** state, the configuration of the listener is modified.
- *
- * @param request UpdateListenerAttributeRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateListenerAttributeResponse
- */
+// Summary:
+//
+// Updates the attributes of a listener, such as the name and the default action.
+//
+// Description:
+//
+// *UpdateListenerAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) operation to query the status of the task.
+//
+// 	- If a listener is in the **Configuring*	- state, the configuration of the listener is being modified.
+//
+// 	- If a listener is in the **Running*	- state, the configuration of the listener is modified.
+//
+// @param request - UpdateListenerAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateListenerAttributeResponse
 func (client *Client) UpdateListenerAttributeWithOptions(request *UpdateListenerAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateListenerAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25165,14 +31805,21 @@ func (client *Client) UpdateListenerAttributeWithOptions(request *UpdateListener
 	return _result, _err
 }
 
-/**
- * **UpdateListenerAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](~~2254865~~) operation to query the status of the task.
- * *   If a listener is in the **Configuring** state, the configuration of the listener is being modified.
- * *   If a listener is in the **Running** state, the configuration of the listener is modified.
- *
- * @param request UpdateListenerAttributeRequest
- * @return UpdateListenerAttributeResponse
- */
+// Summary:
+//
+// Updates the attributes of a listener, such as the name and the default action.
+//
+// Description:
+//
+// *UpdateListenerAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) operation to query the status of the task.
+//
+// 	- If a listener is in the **Configuring*	- state, the configuration of the listener is being modified.
+//
+// 	- If a listener is in the **Running*	- state, the configuration of the listener is modified.
+//
+// @param request - UpdateListenerAttributeRequest
+//
+// @return UpdateListenerAttributeResponse
 func (client *Client) UpdateListenerAttribute(request *UpdateListenerAttributeRequest) (_result *UpdateListenerAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateListenerAttributeResponse{}
@@ -25184,16 +31831,25 @@ func (client *Client) UpdateListenerAttribute(request *UpdateListenerAttributeRe
 	return _result, _err
 }
 
-/**
- * **UpdateListenerLogConfig** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](~~2254865~~) to query the status of the task:
- * *   If a listener is in the **Configuring** state, the log configuration of the listener is being modified.
- * *   If a listener is in the **Running** state, the log configuration of the listener is modified.
- * > You can update the log configuration of a listener only after you enable the access log feature.
- *
- * @param request UpdateListenerLogConfigRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateListenerLogConfigResponse
- */
+// Summary:
+//
+// Updates the log configuration of a listener, such as the access log configuration.
+//
+// Description:
+//
+// *UpdateListenerLogConfig*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) to query the status of the task:
+//
+// 	- If a listener is in the **Configuring*	- state, the log configuration of the listener is being modified.
+//
+// 	- If a listener is in the **Running*	- state, the log configuration of the listener is modified.
+//
+// > You can update the log configuration of a listener only after you enable the access log feature.
+//
+// @param request - UpdateListenerLogConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateListenerLogConfigResponse
 func (client *Client) UpdateListenerLogConfigWithOptions(request *UpdateListenerLogConfigRequest, runtime *util.RuntimeOptions) (_result *UpdateListenerLogConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25243,15 +31899,23 @@ func (client *Client) UpdateListenerLogConfigWithOptions(request *UpdateListener
 	return _result, _err
 }
 
-/**
- * **UpdateListenerLogConfig** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](~~2254865~~) to query the status of the task:
- * *   If a listener is in the **Configuring** state, the log configuration of the listener is being modified.
- * *   If a listener is in the **Running** state, the log configuration of the listener is modified.
- * > You can update the log configuration of a listener only after you enable the access log feature.
- *
- * @param request UpdateListenerLogConfigRequest
- * @return UpdateListenerLogConfigResponse
- */
+// Summary:
+//
+// Updates the log configuration of a listener, such as the access log configuration.
+//
+// Description:
+//
+// *UpdateListenerLogConfig*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetListenerAttribute](https://help.aliyun.com/document_detail/2254865.html) to query the status of the task:
+//
+// 	- If a listener is in the **Configuring*	- state, the log configuration of the listener is being modified.
+//
+// 	- If a listener is in the **Running*	- state, the log configuration of the listener is modified.
+//
+// > You can update the log configuration of a listener only after you enable the access log feature.
+//
+// @param request - UpdateListenerLogConfigRequest
+//
+// @return UpdateListenerLogConfigResponse
 func (client *Client) UpdateListenerLogConfig(request *UpdateListenerLogConfigRequest) (_result *UpdateListenerLogConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateListenerLogConfigResponse{}
@@ -25263,19 +31927,31 @@ func (client *Client) UpdateListenerLogConfig(request *UpdateListenerLogConfigRe
 	return _result, _err
 }
 
-/**
- * ## Prerequisites
- * *   An ALB instance is created. For more information about how to create an ALB instance, see [CreateLoadBalancer](~~214358~~).
- * *   If you want to change the network type from internal-facing to Internet-facing, you must first create an elastic IP address (EIP). For more information, see [AllocateEipAddress](~~120192~~).
- * ## Usage notes
- * **UpdateLoadBalancerAddressTypeConfig** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](~~214362~~) operation to query the status of the task.
- * *   If an ALB instance is in the **Configuring** state, the network type is being changed.
- * *   If an ALB instance is in the **Active** state, the network type has been changed.
- *
- * @param request UpdateLoadBalancerAddressTypeConfigRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateLoadBalancerAddressTypeConfigResponse
- */
+// Summary:
+//
+// Modifies the network type of an Application Load Balancer (ALB) instance.
+//
+// Description:
+//
+// ## Prerequisites
+//
+// 	- An ALB instance is created. For more information about how to create an ALB instance, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/214358.html).
+//
+// 	- If you want to change the network type from internal-facing to Internet-facing, you must first create an elastic IP address (EIP). For more information, see [AllocateEipAddress](https://help.aliyun.com/document_detail/120192.html).
+//
+// ## Usage notes
+//
+// **UpdateLoadBalancerAddressTypeConfig*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of the task.
+//
+// 	- If an ALB instance is in the **Configuring*	- state, the network type is being changed.
+//
+// 	- If an ALB instance is in the **Active*	- state, the network type has been changed.
+//
+// @param request - UpdateLoadBalancerAddressTypeConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateLoadBalancerAddressTypeConfigResponse
 func (client *Client) UpdateLoadBalancerAddressTypeConfigWithOptions(request *UpdateLoadBalancerAddressTypeConfigRequest, runtime *util.RuntimeOptions) (_result *UpdateLoadBalancerAddressTypeConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25325,18 +32001,29 @@ func (client *Client) UpdateLoadBalancerAddressTypeConfigWithOptions(request *Up
 	return _result, _err
 }
 
-/**
- * ## Prerequisites
- * *   An ALB instance is created. For more information about how to create an ALB instance, see [CreateLoadBalancer](~~214358~~).
- * *   If you want to change the network type from internal-facing to Internet-facing, you must first create an elastic IP address (EIP). For more information, see [AllocateEipAddress](~~120192~~).
- * ## Usage notes
- * **UpdateLoadBalancerAddressTypeConfig** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](~~214362~~) operation to query the status of the task.
- * *   If an ALB instance is in the **Configuring** state, the network type is being changed.
- * *   If an ALB instance is in the **Active** state, the network type has been changed.
- *
- * @param request UpdateLoadBalancerAddressTypeConfigRequest
- * @return UpdateLoadBalancerAddressTypeConfigResponse
- */
+// Summary:
+//
+// Modifies the network type of an Application Load Balancer (ALB) instance.
+//
+// Description:
+//
+// ## Prerequisites
+//
+// 	- An ALB instance is created. For more information about how to create an ALB instance, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/214358.html).
+//
+// 	- If you want to change the network type from internal-facing to Internet-facing, you must first create an elastic IP address (EIP). For more information, see [AllocateEipAddress](https://help.aliyun.com/document_detail/120192.html).
+//
+// ## Usage notes
+//
+// **UpdateLoadBalancerAddressTypeConfig*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation to query the status of the task.
+//
+// 	- If an ALB instance is in the **Configuring*	- state, the network type is being changed.
+//
+// 	- If an ALB instance is in the **Active*	- state, the network type has been changed.
+//
+// @param request - UpdateLoadBalancerAddressTypeConfigRequest
+//
+// @return UpdateLoadBalancerAddressTypeConfigResponse
 func (client *Client) UpdateLoadBalancerAddressTypeConfig(request *UpdateLoadBalancerAddressTypeConfigRequest) (_result *UpdateLoadBalancerAddressTypeConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateLoadBalancerAddressTypeConfigResponse{}
@@ -25348,15 +32035,23 @@ func (client *Client) UpdateLoadBalancerAddressTypeConfig(request *UpdateLoadBal
 	return _result, _err
 }
 
-/**
- * **UpdateLoadBalancerAttribute** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~214362~~) to query the status of the task.
- * *   If the ALB instance is in the **Configuring** state, the ALB instance is being modified.
- * *   If the ALB instance is in the **Active** state, the ALB instance is modified.
- *
- * @param request UpdateLoadBalancerAttributeRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateLoadBalancerAttributeResponse
- */
+// Summary:
+//
+// Modifies the attributes of an Application Load Balancer (ALB) instance, such as the name and the configuration read-only mode.
+//
+// Description:
+//
+// *UpdateLoadBalancerAttribute*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
+//
+// 	- If the ALB instance is in the **Configuring*	- state, the ALB instance is being modified.
+//
+// 	- If the ALB instance is in the **Active*	- state, the ALB instance is modified.
+//
+// @param request - UpdateLoadBalancerAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateLoadBalancerAttributeResponse
 func (client *Client) UpdateLoadBalancerAttributeWithOptions(request *UpdateLoadBalancerAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateLoadBalancerAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25406,14 +32101,21 @@ func (client *Client) UpdateLoadBalancerAttributeWithOptions(request *UpdateLoad
 	return _result, _err
 }
 
-/**
- * **UpdateLoadBalancerAttribute** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~214362~~) to query the status of the task.
- * *   If the ALB instance is in the **Configuring** state, the ALB instance is being modified.
- * *   If the ALB instance is in the **Active** state, the ALB instance is modified.
- *
- * @param request UpdateLoadBalancerAttributeRequest
- * @return UpdateLoadBalancerAttributeResponse
- */
+// Summary:
+//
+// Modifies the attributes of an Application Load Balancer (ALB) instance, such as the name and the configuration read-only mode.
+//
+// Description:
+//
+// *UpdateLoadBalancerAttribute*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
+//
+// 	- If the ALB instance is in the **Configuring*	- state, the ALB instance is being modified.
+//
+// 	- If the ALB instance is in the **Active*	- state, the ALB instance is modified.
+//
+// @param request - UpdateLoadBalancerAttributeRequest
+//
+// @return UpdateLoadBalancerAttributeResponse
 func (client *Client) UpdateLoadBalancerAttribute(request *UpdateLoadBalancerAttributeRequest) (_result *UpdateLoadBalancerAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateLoadBalancerAttributeResponse{}
@@ -25425,17 +32127,27 @@ func (client *Client) UpdateLoadBalancerAttribute(request *UpdateLoadBalancerAtt
 	return _result, _err
 }
 
-/**
- * ##
- * *   You can upgrade a basic ALB instance to a standard ALB instance or a WAF-enabled ALB instance but you cannot downgrade a standard ALB instance or a WAF-enabled ALB instance to a basic ALB instance. For more information, see [Upgrade an ALB instance](~~214654~~).
- * *   **UpdateLoadBalancerEdition** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~214362~~) to query the status of the task.
- *     *   If the ALB instance is in the **Configuring** state, the edition of the ALB instance is being modified.
- *     *   If the ALB instance is in the **Active** state, the edition of the ALB instance has been modified.
- *
- * @param request UpdateLoadBalancerEditionRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateLoadBalancerEditionResponse
- */
+// Summary:
+//
+// Changes the edition of an Application Load Balancer (ALB) instance.
+//
+// Description:
+//
+// ##
+//
+// 	- You can upgrade a basic ALB instance to a standard ALB instance or a WAF-enabled ALB instance but you cannot downgrade a standard ALB instance or a WAF-enabled ALB instance to a basic ALB instance. For more information, see [Upgrade an ALB instance](https://help.aliyun.com/document_detail/214654.html).
+//
+// 	- **UpdateLoadBalancerEdition*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
+//
+//     	- If the ALB instance is in the **Configuring*	- state, the edition of the ALB instance is being modified.
+//
+//     	- If the ALB instance is in the **Active*	- state, the edition of the ALB instance has been modified.
+//
+// @param request - UpdateLoadBalancerEditionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateLoadBalancerEditionResponse
 func (client *Client) UpdateLoadBalancerEditionWithOptions(request *UpdateLoadBalancerEditionRequest, runtime *util.RuntimeOptions) (_result *UpdateLoadBalancerEditionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25481,16 +32193,25 @@ func (client *Client) UpdateLoadBalancerEditionWithOptions(request *UpdateLoadBa
 	return _result, _err
 }
 
-/**
- * ##
- * *   You can upgrade a basic ALB instance to a standard ALB instance or a WAF-enabled ALB instance but you cannot downgrade a standard ALB instance or a WAF-enabled ALB instance to a basic ALB instance. For more information, see [Upgrade an ALB instance](~~214654~~).
- * *   **UpdateLoadBalancerEdition** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~214362~~) to query the status of the task.
- *     *   If the ALB instance is in the **Configuring** state, the edition of the ALB instance is being modified.
- *     *   If the ALB instance is in the **Active** state, the edition of the ALB instance has been modified.
- *
- * @param request UpdateLoadBalancerEditionRequest
- * @return UpdateLoadBalancerEditionResponse
- */
+// Summary:
+//
+// Changes the edition of an Application Load Balancer (ALB) instance.
+//
+// Description:
+//
+// ##
+//
+// 	- You can upgrade a basic ALB instance to a standard ALB instance or a WAF-enabled ALB instance but you cannot downgrade a standard ALB instance or a WAF-enabled ALB instance to a basic ALB instance. For more information, see [Upgrade an ALB instance](https://help.aliyun.com/document_detail/214654.html).
+//
+// 	- **UpdateLoadBalancerEdition*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
+//
+//     	- If the ALB instance is in the **Configuring*	- state, the edition of the ALB instance is being modified.
+//
+//     	- If the ALB instance is in the **Active*	- state, the edition of the ALB instance has been modified.
+//
+// @param request - UpdateLoadBalancerEditionRequest
+//
+// @return UpdateLoadBalancerEditionResponse
 func (client *Client) UpdateLoadBalancerEdition(request *UpdateLoadBalancerEditionRequest) (_result *UpdateLoadBalancerEditionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateLoadBalancerEditionResponse{}
@@ -25502,16 +32223,25 @@ func (client *Client) UpdateLoadBalancerEdition(request *UpdateLoadBalancerEditi
 	return _result, _err
 }
 
-/**
- * **UpdateLoadBalancerZones** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~214362~~) to query the status of the task.
- * *   If an ALB instance is in the **Configuring** state, the zones are being modified.
- * *   If an ALB instance is in the **Active** state, the zones are modified.
- * > You may be charged after you call UpdateLoadBalancerZones.
- *
- * @param request UpdateLoadBalancerZonesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateLoadBalancerZonesResponse
- */
+// Summary:
+//
+// Modifies the zones of an Application Load Balancer (ALB) instance.
+//
+// Description:
+//
+// *UpdateLoadBalancerZones*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
+//
+// 	- If an ALB instance is in the **Configuring*	- state, the zones are being modified.
+//
+// 	- If an ALB instance is in the **Active*	- state, the zones are modified.
+//
+// > You may be charged after you call UpdateLoadBalancerZones.
+//
+// @param request - UpdateLoadBalancerZonesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateLoadBalancerZonesResponse
 func (client *Client) UpdateLoadBalancerZonesWithOptions(request *UpdateLoadBalancerZonesRequest, runtime *util.RuntimeOptions) (_result *UpdateLoadBalancerZonesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25557,15 +32287,23 @@ func (client *Client) UpdateLoadBalancerZonesWithOptions(request *UpdateLoadBala
 	return _result, _err
 }
 
-/**
- * **UpdateLoadBalancerZones** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](~~214362~~) to query the status of the task.
- * *   If an ALB instance is in the **Configuring** state, the zones are being modified.
- * *   If an ALB instance is in the **Active** state, the zones are modified.
- * > You may be charged after you call UpdateLoadBalancerZones.
- *
- * @param request UpdateLoadBalancerZonesRequest
- * @return UpdateLoadBalancerZonesResponse
- */
+// Summary:
+//
+// Modifies the zones of an Application Load Balancer (ALB) instance.
+//
+// Description:
+//
+// *UpdateLoadBalancerZones*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) to query the status of the task.
+//
+// 	- If an ALB instance is in the **Configuring*	- state, the zones are being modified.
+//
+// 	- If an ALB instance is in the **Active*	- state, the zones are modified.
+//
+// > You may be charged after you call UpdateLoadBalancerZones.
+//
+// @param request - UpdateLoadBalancerZonesRequest
+//
+// @return UpdateLoadBalancerZonesResponse
 func (client *Client) UpdateLoadBalancerZones(request *UpdateLoadBalancerZonesRequest) (_result *UpdateLoadBalancerZonesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateLoadBalancerZonesResponse{}
@@ -25577,18 +32315,29 @@ func (client *Client) UpdateLoadBalancerZones(request *UpdateLoadBalancerZonesRe
 	return _result, _err
 }
 
-/**
- * *   **UpdateRuleAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of a forwarding rule:
- *     *   If a forwarding rule is in the **Configuring** state, the forwarding rule is being updated.
- *     *   If a forwarding rule is in the **Available** state, the forwarding rule is updated.
- * *   You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. Take note of the following limits on the number of conditions and the number of actions in each forwarding rule:
- *     *   Number of conditions: You can specify at most 5 for a basic Application Load Balancer (ALB) instance, at most 10 for a standard ALB instance, and at most 10 for a WAF-enabled ALB instance.
- *     *   Number of actions: You can specify at most 3 for a basic ALB instance, at most 5 for a standard ALB instance, and at most 5 for a WAF-enabled ALB instance.
- *
- * @param request UpdateRuleAttributeRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateRuleAttributeResponse
- */
+// Summary:
+//
+// Updates a forwarding rule, such as the match condition, action, and name.
+//
+// Description:
+//
+//   **UpdateRuleAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of a forwarding rule:
+//
+//     	- If a forwarding rule is in the **Configuring*	- state, the forwarding rule is being updated.
+//
+//     	- If a forwarding rule is in the **Available*	- state, the forwarding rule is updated.
+//
+// 	- You can set **RuleConditions*	- and **RuleActions*	- to add conditions and actions to a forwarding rule. Take note of the following limits on the number of conditions and the number of actions in each forwarding rule:
+//
+//     	- Number of conditions: You can specify at most 5 for a basic Application Load Balancer (ALB) instance, at most 10 for a standard ALB instance, and at most 10 for a WAF-enabled ALB instance.
+//
+//     	- Number of actions: You can specify at most 3 for a basic ALB instance, at most 5 for a standard ALB instance, and at most 5 for a WAF-enabled ALB instance.
+//
+// @param request - UpdateRuleAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRuleAttributeResponse
 func (client *Client) UpdateRuleAttributeWithOptions(request *UpdateRuleAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateRuleAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25646,17 +32395,27 @@ func (client *Client) UpdateRuleAttributeWithOptions(request *UpdateRuleAttribut
 	return _result, _err
 }
 
-/**
- * *   **UpdateRuleAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of a forwarding rule:
- *     *   If a forwarding rule is in the **Configuring** state, the forwarding rule is being updated.
- *     *   If a forwarding rule is in the **Available** state, the forwarding rule is updated.
- * *   You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. Take note of the following limits on the number of conditions and the number of actions in each forwarding rule:
- *     *   Number of conditions: You can specify at most 5 for a basic Application Load Balancer (ALB) instance, at most 10 for a standard ALB instance, and at most 10 for a WAF-enabled ALB instance.
- *     *   Number of actions: You can specify at most 3 for a basic ALB instance, at most 5 for a standard ALB instance, and at most 5 for a WAF-enabled ALB instance.
- *
- * @param request UpdateRuleAttributeRequest
- * @return UpdateRuleAttributeResponse
- */
+// Summary:
+//
+// Updates a forwarding rule, such as the match condition, action, and name.
+//
+// Description:
+//
+//   **UpdateRuleAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of a forwarding rule:
+//
+//     	- If a forwarding rule is in the **Configuring*	- state, the forwarding rule is being updated.
+//
+//     	- If a forwarding rule is in the **Available*	- state, the forwarding rule is updated.
+//
+// 	- You can set **RuleConditions*	- and **RuleActions*	- to add conditions and actions to a forwarding rule. Take note of the following limits on the number of conditions and the number of actions in each forwarding rule:
+//
+//     	- Number of conditions: You can specify at most 5 for a basic Application Load Balancer (ALB) instance, at most 10 for a standard ALB instance, and at most 10 for a WAF-enabled ALB instance.
+//
+//     	- Number of actions: You can specify at most 3 for a basic ALB instance, at most 5 for a standard ALB instance, and at most 5 for a WAF-enabled ALB instance.
+//
+// @param request - UpdateRuleAttributeRequest
+//
+// @return UpdateRuleAttributeResponse
 func (client *Client) UpdateRuleAttribute(request *UpdateRuleAttributeRequest) (_result *UpdateRuleAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateRuleAttributeResponse{}
@@ -25668,18 +32427,29 @@ func (client *Client) UpdateRuleAttribute(request *UpdateRuleAttributeRequest) (
 	return _result, _err
 }
 
-/**
- * **UpdateRulesAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of the task.
- * *   If a forwarding rule is in the **Configuring** state, the forwarding rule is being updated.
- * *   If a forwarding rule is in the **Available** state, the forwarding rule is updated.
- * *   You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. Take note of the following limits on the maximum number of conditions and the maximum number of actions in each forwarding rule:
- *     *   Limits on conditions: 5 for a basic Application Load Balancer (ALB) instance, 10 for a standard ALB instance, and 10 for a WAF-enabled ALB instance.
- *     *   Limits on actions: 3 for a basic ALB instance, 5 for a standard ALB instance, and 5 for a WAF-enabled ALB instance.
- *
- * @param request UpdateRulesAttributeRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateRulesAttributeResponse
- */
+// Summary:
+//
+// Modifies the attributes of forwarding rules.
+//
+// Description:
+//
+// *UpdateRulesAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of the task.
+//
+// 	- If a forwarding rule is in the **Configuring*	- state, the forwarding rule is being updated.
+//
+// 	- If a forwarding rule is in the **Available*	- state, the forwarding rule is updated.
+//
+// 	- You can set **RuleConditions*	- and **RuleActions*	- to add conditions and actions to a forwarding rule. Take note of the following limits on the maximum number of conditions and the maximum number of actions in each forwarding rule:
+//
+//     	- Limits on conditions: 5 for a basic Application Load Balancer (ALB) instance, 10 for a standard ALB instance, and 10 for a WAF-enabled ALB instance.
+//
+//     	- Limits on actions: 3 for a basic ALB instance, 5 for a standard ALB instance, and 5 for a WAF-enabled ALB instance.
+//
+// @param request - UpdateRulesAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRulesAttributeResponse
 func (client *Client) UpdateRulesAttributeWithOptions(request *UpdateRulesAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateRulesAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25721,17 +32491,27 @@ func (client *Client) UpdateRulesAttributeWithOptions(request *UpdateRulesAttrib
 	return _result, _err
 }
 
-/**
- * **UpdateRulesAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of the task.
- * *   If a forwarding rule is in the **Configuring** state, the forwarding rule is being updated.
- * *   If a forwarding rule is in the **Available** state, the forwarding rule is updated.
- * *   You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. Take note of the following limits on the maximum number of conditions and the maximum number of actions in each forwarding rule:
- *     *   Limits on conditions: 5 for a basic Application Load Balancer (ALB) instance, 10 for a standard ALB instance, and 10 for a WAF-enabled ALB instance.
- *     *   Limits on actions: 3 for a basic ALB instance, 5 for a standard ALB instance, and 5 for a WAF-enabled ALB instance.
- *
- * @param request UpdateRulesAttributeRequest
- * @return UpdateRulesAttributeResponse
- */
+// Summary:
+//
+// Modifies the attributes of forwarding rules.
+//
+// Description:
+//
+// *UpdateRulesAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](https://help.aliyun.com/document_detail/214379.html) operation to query the status of the task.
+//
+// 	- If a forwarding rule is in the **Configuring*	- state, the forwarding rule is being updated.
+//
+// 	- If a forwarding rule is in the **Available*	- state, the forwarding rule is updated.
+//
+// 	- You can set **RuleConditions*	- and **RuleActions*	- to add conditions and actions to a forwarding rule. Take note of the following limits on the maximum number of conditions and the maximum number of actions in each forwarding rule:
+//
+//     	- Limits on conditions: 5 for a basic Application Load Balancer (ALB) instance, 10 for a standard ALB instance, and 10 for a WAF-enabled ALB instance.
+//
+//     	- Limits on actions: 3 for a basic ALB instance, 5 for a standard ALB instance, and 5 for a WAF-enabled ALB instance.
+//
+// @param request - UpdateRulesAttributeRequest
+//
+// @return UpdateRulesAttributeResponse
 func (client *Client) UpdateRulesAttribute(request *UpdateRulesAttributeRequest) (_result *UpdateRulesAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateRulesAttributeResponse{}
@@ -25743,16 +32523,25 @@ func (client *Client) UpdateRulesAttribute(request *UpdateRulesAttributeRequest)
 	return _result, _err
 }
 
-/**
- * ##
- * **UpdateSecurityPolicyAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListSecurityPolicies](~~213609~~) to query the status of the task.
- * *   If a security policy is in the **Configuring** state, the security policy is being updated.
- * *   If a security policy is in the **Available** state, the security policy is updated.
- *
- * @param request UpdateSecurityPolicyAttributeRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateSecurityPolicyAttributeResponse
- */
+// Summary:
+//
+// Updates the attributes of a security policy, such as the TLS protocol version and the supported cipher suites.
+//
+// Description:
+//
+// ##
+//
+// **UpdateSecurityPolicyAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListSecurityPolicies](https://help.aliyun.com/document_detail/213609.html) to query the status of the task.
+//
+// 	- If a security policy is in the **Configuring*	- state, the security policy is being updated.
+//
+// 	- If a security policy is in the **Available*	- state, the security policy is updated.
+//
+// @param request - UpdateSecurityPolicyAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSecurityPolicyAttributeResponse
 func (client *Client) UpdateSecurityPolicyAttributeWithOptions(request *UpdateSecurityPolicyAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateSecurityPolicyAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25806,15 +32595,23 @@ func (client *Client) UpdateSecurityPolicyAttributeWithOptions(request *UpdateSe
 	return _result, _err
 }
 
-/**
- * ##
- * **UpdateSecurityPolicyAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListSecurityPolicies](~~213609~~) to query the status of the task.
- * *   If a security policy is in the **Configuring** state, the security policy is being updated.
- * *   If a security policy is in the **Available** state, the security policy is updated.
- *
- * @param request UpdateSecurityPolicyAttributeRequest
- * @return UpdateSecurityPolicyAttributeResponse
- */
+// Summary:
+//
+// Updates the attributes of a security policy, such as the TLS protocol version and the supported cipher suites.
+//
+// Description:
+//
+// ##
+//
+// **UpdateSecurityPolicyAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListSecurityPolicies](https://help.aliyun.com/document_detail/213609.html) to query the status of the task.
+//
+// 	- If a security policy is in the **Configuring*	- state, the security policy is being updated.
+//
+// 	- If a security policy is in the **Available*	- state, the security policy is updated.
+//
+// @param request - UpdateSecurityPolicyAttributeRequest
+//
+// @return UpdateSecurityPolicyAttributeResponse
 func (client *Client) UpdateSecurityPolicyAttribute(request *UpdateSecurityPolicyAttributeRequest) (_result *UpdateSecurityPolicyAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateSecurityPolicyAttributeResponse{}
@@ -25826,16 +32623,25 @@ func (client *Client) UpdateSecurityPolicyAttribute(request *UpdateSecurityPolic
 	return _result, _err
 }
 
-/**
- * ## Description
- * **UpdateServerGroupAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListServerGroups](~~213627~~) operation to query the status of a server group:
- * *   If a server group is in the **Configuring** state, the configuration of the server group is being modified.
- * *   If a server group is in the **Available** state, the configuration of the server group is modified.
- *
- * @param request UpdateServerGroupAttributeRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateServerGroupAttributeResponse
- */
+// Summary:
+//
+// Modifies the configurations of a server group, such as health checks, session persistence, server group names, routing algorithms, and protocols.
+//
+// Description:
+//
+// ## Description
+//
+// **UpdateServerGroupAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group:
+//
+// 	- If a server group is in the **Configuring*	- state, the configuration of the server group is being modified.
+//
+// 	- If a server group is in the **Available*	- state, the configuration of the server group is modified.
+//
+// @param request - UpdateServerGroupAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateServerGroupAttributeResponse
 func (client *Client) UpdateServerGroupAttributeWithOptions(request *UpdateServerGroupAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateServerGroupAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25913,15 +32719,23 @@ func (client *Client) UpdateServerGroupAttributeWithOptions(request *UpdateServe
 	return _result, _err
 }
 
-/**
- * ## Description
- * **UpdateServerGroupAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListServerGroups](~~213627~~) operation to query the status of a server group:
- * *   If a server group is in the **Configuring** state, the configuration of the server group is being modified.
- * *   If a server group is in the **Available** state, the configuration of the server group is modified.
- *
- * @param request UpdateServerGroupAttributeRequest
- * @return UpdateServerGroupAttributeResponse
- */
+// Summary:
+//
+// Modifies the configurations of a server group, such as health checks, session persistence, server group names, routing algorithms, and protocols.
+//
+// Description:
+//
+// ## Description
+//
+// **UpdateServerGroupAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group:
+//
+// 	- If a server group is in the **Configuring*	- state, the configuration of the server group is being modified.
+//
+// 	- If a server group is in the **Available*	- state, the configuration of the server group is modified.
+//
+// @param request - UpdateServerGroupAttributeRequest
+//
+// @return UpdateServerGroupAttributeResponse
 func (client *Client) UpdateServerGroupAttribute(request *UpdateServerGroupAttributeRequest) (_result *UpdateServerGroupAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateServerGroupAttributeResponse{}
@@ -25933,19 +32747,31 @@ func (client *Client) UpdateServerGroupAttribute(request *UpdateServerGroupAttri
 	return _result, _err
 }
 
-/**
- * **UpdateServerGroupServersAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
- * 1.  You can call the [ListServerGroups](~~213627~~) operation to query the status of a server group.
- *     *   If a server group is in the **Configuring** state, it indicates that the server group is being modified.
- *     *   If a server group is in the **Available** state, it indicates that the server group is running.
- * 2.  You can call the [ListServerGroupServers](~~213628~~) operation to query the status of a backend server.
- *     *   If a backend server is in the **Configuring** state, it indicates that the backend server is being modified.
- *     *   If a backend server is in the **Available** state, it indicates that the backend server is running.
- *
- * @param request UpdateServerGroupServersAttributeRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateServerGroupServersAttributeResponse
- */
+// Summary:
+//
+// Modifies the configurations, such as the backend server weight and description, of a server group.
+//
+// Description:
+//
+// *UpdateServerGroupServersAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
+//
+// 1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group.
+//
+//     	- If a server group is in the **Configuring*	- state, it indicates that the server group is being modified.
+//
+//     	- If a server group is in the **Available*	- state, it indicates that the server group is running.
+//
+// 2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/213628.html) operation to query the status of a backend server.
+//
+//     	- If a backend server is in the **Configuring*	- state, it indicates that the backend server is being modified.
+//
+//     	- If a backend server is in the **Available*	- state, it indicates that the backend server is running.
+//
+// @param request - UpdateServerGroupServersAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateServerGroupServersAttributeResponse
 func (client *Client) UpdateServerGroupServersAttributeWithOptions(request *UpdateServerGroupServersAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateServerGroupServersAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25991,18 +32817,29 @@ func (client *Client) UpdateServerGroupServersAttributeWithOptions(request *Upda
 	return _result, _err
 }
 
-/**
- * **UpdateServerGroupServersAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
- * 1.  You can call the [ListServerGroups](~~213627~~) operation to query the status of a server group.
- *     *   If a server group is in the **Configuring** state, it indicates that the server group is being modified.
- *     *   If a server group is in the **Available** state, it indicates that the server group is running.
- * 2.  You can call the [ListServerGroupServers](~~213628~~) operation to query the status of a backend server.
- *     *   If a backend server is in the **Configuring** state, it indicates that the backend server is being modified.
- *     *   If a backend server is in the **Available** state, it indicates that the backend server is running.
- *
- * @param request UpdateServerGroupServersAttributeRequest
- * @return UpdateServerGroupServersAttributeResponse
- */
+// Summary:
+//
+// Modifies the configurations, such as the backend server weight and description, of a server group.
+//
+// Description:
+//
+// *UpdateServerGroupServersAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
+//
+// 1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the status of a server group.
+//
+//     	- If a server group is in the **Configuring*	- state, it indicates that the server group is being modified.
+//
+//     	- If a server group is in the **Available*	- state, it indicates that the server group is running.
+//
+// 2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/213628.html) operation to query the status of a backend server.
+//
+//     	- If a backend server is in the **Configuring*	- state, it indicates that the backend server is being modified.
+//
+//     	- If a backend server is in the **Available*	- state, it indicates that the backend server is running.
+//
+// @param request - UpdateServerGroupServersAttributeRequest
+//
+// @return UpdateServerGroupServersAttributeResponse
 func (client *Client) UpdateServerGroupServersAttribute(request *UpdateServerGroupServersAttributeRequest) (_result *UpdateServerGroupServersAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateServerGroupServersAttributeResponse{}
