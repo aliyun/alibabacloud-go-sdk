@@ -150,6 +150,10 @@ type GrafanaWorkspace struct {
 	GrafanaWorkspaceDomain *string  `json:"grafanaWorkspaceDomain,omitempty" xml:"grafanaWorkspaceDomain,omitempty"`
 	// example:
 	//
+	// on
+	GrafanaWorkspaceDomainStatus *string `json:"grafanaWorkspaceDomainStatus,omitempty" xml:"grafanaWorkspaceDomainStatus,omitempty"`
+	// example:
+	//
 	// experts_edition/advanced_edition/standard
 	GrafanaWorkspaceEdition *string `json:"grafanaWorkspaceEdition,omitempty" xml:"grafanaWorkspaceEdition,omitempty"`
 	// example:
@@ -236,6 +240,11 @@ func (s *GrafanaWorkspace) SetGrafanaVersion(v string) *GrafanaWorkspace {
 
 func (s *GrafanaWorkspace) SetGrafanaWorkspaceDomain(v string) *GrafanaWorkspace {
 	s.GrafanaWorkspaceDomain = &v
+	return s
+}
+
+func (s *GrafanaWorkspace) SetGrafanaWorkspaceDomainStatus(v string) *GrafanaWorkspace {
+	s.GrafanaWorkspaceDomainStatus = &v
 	return s
 }
 
