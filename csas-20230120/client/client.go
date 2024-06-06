@@ -10442,6 +10442,88 @@ func (s *ListUsersResponse) SetBody(v *ListUsersResponseBody) *ListUsersResponse
 	return s
 }
 
+type RevokeUserSessionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345678
+	ExternalIds *string `json:"ExternalIds,omitempty" xml:"ExternalIds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idp-cfg9vcrqylo39c39uxnw
+	IdpId *string `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
+}
+
+func (s RevokeUserSessionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeUserSessionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeUserSessionRequest) SetExternalIds(v string) *RevokeUserSessionRequest {
+	s.ExternalIds = &v
+	return s
+}
+
+func (s *RevokeUserSessionRequest) SetIdpId(v string) *RevokeUserSessionRequest {
+	s.IdpId = &v
+	return s
+}
+
+type RevokeUserSessionResponseBody struct {
+	// example:
+	//
+	// D6707286-A50E-57B1-B2CF-EFAC59E850D8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RevokeUserSessionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeUserSessionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeUserSessionResponseBody) SetRequestId(v string) *RevokeUserSessionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RevokeUserSessionResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RevokeUserSessionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RevokeUserSessionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeUserSessionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeUserSessionResponse) SetHeaders(v map[string]*string) *RevokeUserSessionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RevokeUserSessionResponse) SetStatusCode(v int32) *RevokeUserSessionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RevokeUserSessionResponse) SetBody(v *RevokeUserSessionResponseBody) *RevokeUserSessionResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateClientUserRequest struct {
 	// example:
 	//
@@ -16288,6 +16370,70 @@ func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUsersResponse{}
 	_body, _err := client.ListUsersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 吊销用户登录会话
+//
+// @param request - RevokeUserSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeUserSessionResponse
+func (client *Client) RevokeUserSessionWithOptions(request *RevokeUserSessionRequest, runtime *util.RuntimeOptions) (_result *RevokeUserSessionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExternalIds)) {
+		query["ExternalIds"] = request.ExternalIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdpId)) {
+		query["IdpId"] = request.IdpId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RevokeUserSession"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RevokeUserSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 吊销用户登录会话
+//
+// @param request - RevokeUserSessionRequest
+//
+// @return RevokeUserSessionResponse
+func (client *Client) RevokeUserSession(request *RevokeUserSessionRequest) (_result *RevokeUserSessionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RevokeUserSessionResponse{}
+	_body, _err := client.RevokeUserSessionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
