@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,15 +10,48 @@ import (
 )
 
 type CreateAuthenticatorRegistrationRequest struct {
-	ApplicationExternalId      *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
-	AuthenticatorType          *string `json:"AuthenticatorType,omitempty" xml:"AuthenticatorType,omitempty"`
-	ClientExtendParamsJson     *string `json:"ClientExtendParamsJson,omitempty" xml:"ClientExtendParamsJson,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 11122223333
+	ApplicationExternalId *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// webauthn
+	AuthenticatorType *string `json:"AuthenticatorType,omitempty" xml:"AuthenticatorType,omitempty"`
+	// example:
+	//
+	// 由具体认证方式决定
+	ClientExtendParamsJson *string `json:"ClientExtendParamsJson,omitempty" xml:"ClientExtendParamsJson,omitempty"`
+	// example:
+	//
+	// 由具体认证方式决定
 	ClientExtendParamsJsonSign *string `json:"ClientExtendParamsJsonSign,omitempty" xml:"ClientExtendParamsJsonSign,omitempty"`
-	RegistrationContext        *string `json:"RegistrationContext,omitempty" xml:"RegistrationContext,omitempty"`
-	ServerExtendParamsJson     *string `json:"ServerExtendParamsJson,omitempty" xml:"ServerExtendParamsJson,omitempty"`
-	UserDisplayName            *string `json:"UserDisplayName,omitempty" xml:"UserDisplayName,omitempty"`
-	UserId                     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName                   *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// example:
+	//
+	// 注册上下文
+	RegistrationContext *string `json:"RegistrationContext,omitempty" xml:"RegistrationContext,omitempty"`
+	// example:
+	//
+	// 由具体认证方式决定
+	ServerExtendParamsJson *string `json:"ServerExtendParamsJson,omitempty" xml:"ServerExtendParamsJson,omitempty"`
+	// example:
+	//
+	// 张三
+	UserDisplayName *string `json:"UserDisplayName,omitempty" xml:"UserDisplayName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user-11122223333
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// ZhangSan
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s CreateAuthenticatorRegistrationRequest) String() string {
@@ -80,7 +110,10 @@ func (s *CreateAuthenticatorRegistrationRequest) SetUserName(v string) *CreateAu
 type CreateAuthenticatorRegistrationResponseBody struct {
 	ChallengeBase64 *string `json:"ChallengeBase64,omitempty" xml:"ChallengeBase64,omitempty"`
 	Options         *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// DA0A9BF3-029D-5968-B876-0DF49777B22D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateAuthenticatorRegistrationResponseBody) String() string {
@@ -136,13 +169,40 @@ func (s *CreateAuthenticatorRegistrationResponse) SetBody(v *CreateAuthenticator
 }
 
 type CreateUserAuthenticateOptionsRequest struct {
-	ApplicationExternalId      *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
-	AuthenticatorType          *string `json:"AuthenticatorType,omitempty" xml:"AuthenticatorType,omitempty"`
-	BindHashBase64             *string `json:"BindHashBase64,omitempty" xml:"BindHashBase64,omitempty"`
-	ClientExtendParamsJson     *string `json:"ClientExtendParamsJson,omitempty" xml:"ClientExtendParamsJson,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 11122223333
+	ApplicationExternalId *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// webauthn
+	AuthenticatorType *string `json:"AuthenticatorType,omitempty" xml:"AuthenticatorType,omitempty"`
+	// example:
+	//
+	// 1111222
+	BindHashBase64 *string `json:"BindHashBase64,omitempty" xml:"BindHashBase64,omitempty"`
+	// example:
+	//
+	// 由具体认证方式决定
+	ClientExtendParamsJson *string `json:"ClientExtendParamsJson,omitempty" xml:"ClientExtendParamsJson,omitempty"`
+	// example:
+	//
+	// 由具体认证方式决定
 	ClientExtendParamsJsonSign *string `json:"ClientExtendParamsJsonSign,omitempty" xml:"ClientExtendParamsJsonSign,omitempty"`
-	ServerExtendParamsJson     *string `json:"ServerExtendParamsJson,omitempty" xml:"ServerExtendParamsJson,omitempty"`
-	UserId                     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 由具体认证方式决定
+	ServerExtendParamsJson *string `json:"ServerExtendParamsJson,omitempty" xml:"ServerExtendParamsJson,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user-11122223333
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s CreateUserAuthenticateOptionsRequest) String() string {
@@ -189,9 +249,18 @@ func (s *CreateUserAuthenticateOptionsRequest) SetUserId(v string) *CreateUserAu
 }
 
 type CreateUserAuthenticateOptionsResponseBody struct {
+	// example:
+	//
+	// 2343246776
 	ChallengeBase64 *string `json:"ChallengeBase64,omitempty" xml:"ChallengeBase64,omitempty"`
-	Options         *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// {\\"subscribeEvent\\":false,\\"installAgent\\":false}
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// example:
+	//
+	// D0F570B0-89CE-07F2-B41E-F97E089E13C6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateUserAuthenticateOptionsResponseBody) String() string {
@@ -247,9 +316,24 @@ func (s *CreateUserAuthenticateOptionsResponse) SetBody(v *CreateUserAuthenticat
 }
 
 type DeregisterAuthenticatorRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 11122223333
 	ApplicationExternalId *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
-	AuthenticatorUuid     *string `json:"AuthenticatorUuid,omitempty" xml:"AuthenticatorUuid,omitempty"`
-	UserId                *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a00712a4e56196755059356c290793031xHdUrCPXUS
+	AuthenticatorUuid *string `json:"AuthenticatorUuid,omitempty" xml:"AuthenticatorUuid,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user-11122223333
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DeregisterAuthenticatorRequest) String() string {
@@ -276,6 +360,9 @@ func (s *DeregisterAuthenticatorRequest) SetUserId(v string) *DeregisterAuthenti
 }
 
 type DeregisterAuthenticatorResponseBody struct {
+	// example:
+	//
+	// D0F570B0-89CE-07F2-B41E-F97E089E13C6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -322,12 +409,36 @@ func (s *DeregisterAuthenticatorResponse) SetBody(v *DeregisterAuthenticatorResp
 }
 
 type FetchAccessTokenRequest struct {
-	ApplicationExternalId      *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
-	MobileExtendParamsJson     *string `json:"MobileExtendParamsJson,omitempty" xml:"MobileExtendParamsJson,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// secAuthApp
+	ApplicationExternalId *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eyJhdHRhY2htZW50IjoicGxhdGZvcm0iLCJ1c2VyVmVyaWZpY2F0aW9uIjoicmVxdWlyZWQifQ==
+	MobileExtendParamsJson *string `json:"MobileExtendParamsJson,omitempty" xml:"MobileExtendParamsJson,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a3984bc27776bb6f65f82276f75d6a12d56e1b41e98ed6975d852b14309b8a20
 	MobileExtendParamsJsonSign *string `json:"MobileExtendParamsJsonSign,omitempty" xml:"MobileExtendParamsJsonSign,omitempty"`
-	ServerExtendParamsJson     *string `json:"ServerExtendParamsJson,omitempty" xml:"ServerExtendParamsJson,omitempty"`
-	UserId                     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	XClientIp                  *string `json:"XClientIp,omitempty" xml:"XClientIp,omitempty"`
+	// example:
+	//
+	// eyJhdHRhY2htZW50IjoicGxhdGZvcm0iLCJ1c2VyVmVyaWZpY2F0aW9uIjoicmVxdWlyZWQifQ==
+	ServerExtendParamsJson *string `json:"ServerExtendParamsJson,omitempty" xml:"ServerExtendParamsJson,omitempty"`
+	// example:
+	//
+	// 6ba923abf6749536b7fd31c6a31360fboOFZQ8WbzmG
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 124.127.214.94
+	XClientIp *string `json:"XClientIp,omitempty" xml:"XClientIp,omitempty"`
 }
 
 func (s FetchAccessTokenRequest) String() string {
@@ -369,11 +480,23 @@ func (s *FetchAccessTokenRequest) SetXClientIp(v string) *FetchAccessTokenReques
 }
 
 type FetchAccessTokenResponseBody struct {
-	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *FetchAccessTokenResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Operation.Success
+	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *FetchAccessTokenResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// BD908DED-849D-5FDB-9C9B-52B1D3F9DC41
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s FetchAccessTokenResponseBody) String() string {
@@ -410,12 +533,30 @@ func (s *FetchAccessTokenResponseBody) SetSuccess(v bool) *FetchAccessTokenRespo
 }
 
 type FetchAccessTokenResponseBodyData struct {
-	AccessToken  *string `json:"Access_token,omitempty" xml:"Access_token,omitempty"`
-	ExpiresIn    *string `json:"Expires_in,omitempty" xml:"Expires_in,omitempty"`
-	IdToken      *string `json:"Id_token,omitempty" xml:"Id_token,omitempty"`
+	// example:
+	//
+	// eyciOi...jV_PTsxgaNA
+	AccessToken *string `json:"Access_token,omitempty" xml:"Access_token,omitempty"`
+	// example:
+	//
+	// 7200
+	ExpiresIn *string `json:"Expires_in,omitempty" xml:"Expires_in,omitempty"`
+	// example:
+	//
+	// NiwiZW...wcmlzZUlk
+	IdToken *string `json:"Id_token,omitempty" xml:"Id_token,omitempty"`
+	// example:
+	//
+	// 7200
 	RefreshToken *string `json:"Refresh_token,omitempty" xml:"Refresh_token,omitempty"`
-	Scope        *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	TokenType    *string `json:"Token_type,omitempty" xml:"Token_type,omitempty"`
+	// example:
+	//
+	// openid
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// example:
+	//
+	// Bearer
+	TokenType *string `json:"Token_type,omitempty" xml:"Token_type,omitempty"`
 }
 
 func (s FetchAccessTokenResponseBodyData) String() string {
@@ -486,9 +627,24 @@ func (s *FetchAccessTokenResponse) SetBody(v *FetchAccessTokenResponseBody) *Fet
 }
 
 type GetAuthenticatorRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 11122223333
 	ApplicationExternalId *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
-	AuthenticatorUuid     *string `json:"AuthenticatorUuid,omitempty" xml:"AuthenticatorUuid,omitempty"`
-	UserId                *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1331311
+	AuthenticatorUuid *string `json:"AuthenticatorUuid,omitempty" xml:"AuthenticatorUuid,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GetAuthenticatorRequest) String() string {
@@ -516,7 +672,10 @@ func (s *GetAuthenticatorRequest) SetUserId(v string) *GetAuthenticatorRequest {
 
 type GetAuthenticatorResponseBody struct {
 	Authenticator *GetAuthenticatorResponseBodyAuthenticator `json:"Authenticator,omitempty" xml:"Authenticator,omitempty" type:"Struct"`
-	RequestId     *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 123131312313
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAuthenticatorResponseBody) String() string {
@@ -538,16 +697,43 @@ func (s *GetAuthenticatorResponseBody) SetRequestId(v string) *GetAuthenticatorR
 }
 
 type GetAuthenticatorResponseBodyAuthenticator struct {
-	AuthenticatorName   *string `json:"AuthenticatorName,omitempty" xml:"AuthenticatorName,omitempty"`
-	AuthenticatorUuid   *string `json:"AuthenticatorUuid,omitempty" xml:"AuthenticatorUuid,omitempty"`
-	CredentialId        *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
+	// example:
+	//
+	// ceshi
+	AuthenticatorName *string `json:"AuthenticatorName,omitempty" xml:"AuthenticatorName,omitempty"`
+	AuthenticatorUuid *string `json:"AuthenticatorUuid,omitempty" xml:"AuthenticatorUuid,omitempty"`
+	// example:
+	//
+	// 1313
+	CredentialId *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
+	// example:
+	//
+	// 123123
 	CustomAuthenticator *string `json:"CustomAuthenticator,omitempty" xml:"CustomAuthenticator,omitempty"`
-	LastVerifySourceIp  *string `json:"LastVerifySourceIp,omitempty" xml:"LastVerifySourceIp,omitempty"`
-	LastVerifyTime      *int64  `json:"LastVerifyTime,omitempty" xml:"LastVerifyTime,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	LastVerifySourceIp *string `json:"LastVerifySourceIp,omitempty" xml:"LastVerifySourceIp,omitempty"`
+	// example:
+	//
+	// 123123
+	LastVerifyTime *int64 `json:"LastVerifyTime,omitempty" xml:"LastVerifyTime,omitempty"`
+	// example:
+	//
+	// 123123
 	LastVerifyUserAgent *string `json:"LastVerifyUserAgent,omitempty" xml:"LastVerifyUserAgent,omitempty"`
-	RegisterSourceIp    *string `json:"RegisterSourceIp,omitempty" xml:"RegisterSourceIp,omitempty"`
-	RegisterTime        *int64  `json:"RegisterTime,omitempty" xml:"RegisterTime,omitempty"`
-	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	RegisterSourceIp *string `json:"RegisterSourceIp,omitempty" xml:"RegisterSourceIp,omitempty"`
+	// example:
+	//
+	// 1231313123
+	RegisterTime *int64 `json:"RegisterTime,omitempty" xml:"RegisterTime,omitempty"`
+	// example:
+	//
+	// TOTP
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetAuthenticatorResponseBodyAuthenticator) String() string {
@@ -638,16 +824,48 @@ func (s *GetAuthenticatorResponse) SetBody(v *GetAuthenticatorResponseBody) *Get
 }
 
 type ListAuthenticationLogsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// webauth_demo
 	ApplicationExternalId *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
-	AuthenticatorType     *string `json:"AuthenticatorType,omitempty" xml:"AuthenticatorType,omitempty"`
-	AuthenticatorUuid     *string `json:"AuthenticatorUuid,omitempty" xml:"AuthenticatorUuid,omitempty"`
-	CredentialId          *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
-	FromTime              *int64  `json:"FromTime,omitempty" xml:"FromTime,omitempty"`
-	LogTag                *string `json:"LogTag,omitempty" xml:"LogTag,omitempty"`
-	PageNumber            *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize              *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ToTime                *int64  `json:"ToTime,omitempty" xml:"ToTime,omitempty"`
-	UserId                *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// TOTP
+	AuthenticatorType *string `json:"AuthenticatorType,omitempty" xml:"AuthenticatorType,omitempty"`
+	// example:
+	//
+	// 0fcd5fce3fdc42052633a65eb242f10aZ8nzoQMpV3m
+	AuthenticatorUuid *string `json:"AuthenticatorUuid,omitempty" xml:"AuthenticatorUuid,omitempty"`
+	// example:
+	//
+	// scimcred-003o4e2wqxlaxjmjyz96
+	CredentialId *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
+	// example:
+	//
+	// 1640144294
+	FromTime *int64 `json:"FromTime,omitempty" xml:"FromTime,omitempty"`
+	// example:
+	//
+	// login
+	LogTag *string `json:"LogTag,omitempty" xml:"LogTag,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1640144694
+	ToTime *int64 `json:"ToTime,omitempty" xml:"ToTime,omitempty"`
+	// example:
+	//
+	// 10e8c224
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ListAuthenticationLogsRequest) String() string {
@@ -710,10 +928,22 @@ func (s *ListAuthenticationLogsRequest) SetUserId(v string) *ListAuthenticationL
 
 type ListAuthenticationLogsResponseBody struct {
 	AuthenticationLogContent []*ListAuthenticationLogsResponseBodyAuthenticationLogContent `json:"AuthenticationLogContent,omitempty" xml:"AuthenticationLogContent,omitempty" type:"Repeated"`
-	PageNumber               *int64                                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize                 *int64                                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId                *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount               *int64                                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// F620E712-F325-520D-BE1A-E2421B062F57
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 3
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAuthenticationLogsResponseBody) String() string {
@@ -750,26 +980,86 @@ func (s *ListAuthenticationLogsResponseBody) SetTotalCount(v int64) *ListAuthent
 }
 
 type ListAuthenticationLogsResponseBodyAuthenticationLogContent struct {
-	AliUid                   *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	ApplicationExternalId    *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
-	ApplicationUuid          *string `json:"ApplicationUuid,omitempty" xml:"ApplicationUuid,omitempty"`
-	AuthenticationAction     *string `json:"AuthenticationAction,omitempty" xml:"AuthenticationAction,omitempty"`
-	AuthenticationTime       *int64  `json:"AuthenticationTime,omitempty" xml:"AuthenticationTime,omitempty"`
-	AuthenticatorName        *string `json:"AuthenticatorName,omitempty" xml:"AuthenticatorName,omitempty"`
-	AuthenticatorType        *string `json:"AuthenticatorType,omitempty" xml:"AuthenticatorType,omitempty"`
-	AuthenticatorUuid        *string `json:"AuthenticatorUuid,omitempty" xml:"AuthenticatorUuid,omitempty"`
-	ChallengeBase64          *string `json:"ChallengeBase64,omitempty" xml:"ChallengeBase64,omitempty"`
-	CredentialId             *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
-	ErrorCode                *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage             *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	LogParams                *string `json:"LogParams,omitempty" xml:"LogParams,omitempty"`
-	LogTag                   *string `json:"LogTag,omitempty" xml:"LogTag,omitempty"`
+	// example:
+	//
+	// 1588301417442737
+	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// example:
+	//
+	// sms_auth
+	ApplicationExternalId *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
+	// example:
+	//
+	// 0b6ba5da7bd4cef233ae7b48b5e5dcc1yx9aipQp0hD
+	ApplicationUuid *string `json:"ApplicationUuid,omitempty" xml:"ApplicationUuid,omitempty"`
+	// example:
+	//
+	// send
+	AuthenticationAction *string `json:"AuthenticationAction,omitempty" xml:"AuthenticationAction,omitempty"`
+	// example:
+	//
+	// 1647233491138
+	AuthenticationTime *int64 `json:"AuthenticationTime,omitempty" xml:"AuthenticationTime,omitempty"`
+	// example:
+	//
+	// TOTP-DefaultName
+	AuthenticatorName *string `json:"AuthenticatorName,omitempty" xml:"AuthenticatorName,omitempty"`
+	// example:
+	//
+	// TOTP
+	AuthenticatorType *string `json:"AuthenticatorType,omitempty" xml:"AuthenticatorType,omitempty"`
+	// example:
+	//
+	// c810731ad3af06e45171395abf19cf9cb00E7i97PhE
+	AuthenticatorUuid *string `json:"AuthenticatorUuid,omitempty" xml:"AuthenticatorUuid,omitempty"`
+	// example:
+	//
+	// 3519
+	ChallengeBase64 *string `json:"ChallengeBase64,omitempty" xml:"ChallengeBase64,omitempty"`
+	// example:
+	//
+	// scimcred-00w9gcvpwueg7geg1a87
+	CredentialId *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// Request was denied due to business check permission
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// khj
+	LogParams *string `json:"LogParams,omitempty" xml:"LogParams,omitempty"`
+	// example:
+	//
+	// login
+	LogTag *string `json:"LogTag,omitempty" xml:"LogTag,omitempty"`
+	// example:
+	//
+	// {"name":"lili"}
 	RawAuthenticationContext *string `json:"RawAuthenticationContext,omitempty" xml:"RawAuthenticationContext,omitempty"`
-	TenantId                 *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	UserAgent                *string `json:"UserAgent,omitempty" xml:"UserAgent,omitempty"`
-	UserId                   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserSourceIp             *string `json:"UserSourceIp,omitempty" xml:"UserSourceIp,omitempty"`
-	VerifyResult             *bool   `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
+	// example:
+	//
+	// 8cefc5fe5d10dffffdcff011a6b34a863hHmgm0SIrh
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// example:
+	//
+	// aoxis
+	UserAgent *string `json:"UserAgent,omitempty" xml:"UserAgent,omitempty"`
+	// example:
+	//
+	// xhtseqml
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 10.23.11.56
+	UserSourceIp *string `json:"UserSourceIp,omitempty" xml:"UserSourceIp,omitempty"`
+	// example:
+	//
+	// true
+	VerifyResult *bool `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
 }
 
 func (s ListAuthenticationLogsResponseBodyAuthenticationLogContent) String() string {
@@ -910,14 +1200,40 @@ func (s *ListAuthenticationLogsResponse) SetBody(v *ListAuthenticationLogsRespon
 }
 
 type ListAuthenticatorOpsLogsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// webauth_demo
 	ApplicationExternalId *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
-	AuthenticatorType     *string `json:"AuthenticatorType,omitempty" xml:"AuthenticatorType,omitempty"`
-	AuthenticatorUuid     *string `json:"AuthenticatorUuid,omitempty" xml:"AuthenticatorUuid,omitempty"`
-	FromTime              *int64  `json:"FromTime,omitempty" xml:"FromTime,omitempty"`
-	PageNumber            *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize              *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ToTime                *int64  `json:"ToTime,omitempty" xml:"ToTime,omitempty"`
-	UserId                *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// webauthn
+	AuthenticatorType *string `json:"AuthenticatorType,omitempty" xml:"AuthenticatorType,omitempty"`
+	// example:
+	//
+	// c810731ad3af06e45171395abf19cf9cb00E7i97PhE
+	AuthenticatorUuid *string `json:"AuthenticatorUuid,omitempty" xml:"AuthenticatorUuid,omitempty"`
+	// example:
+	//
+	// 1647232996712
+	FromTime *int64 `json:"FromTime,omitempty" xml:"FromTime,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1647232996812
+	ToTime *int64 `json:"ToTime,omitempty" xml:"ToTime,omitempty"`
+	// example:
+	//
+	// wsnidfr
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ListAuthenticatorOpsLogsRequest) String() string {
@@ -970,10 +1286,22 @@ func (s *ListAuthenticatorOpsLogsRequest) SetUserId(v string) *ListAuthenticator
 
 type ListAuthenticatorOpsLogsResponseBody struct {
 	AuthenticationLogContent []*ListAuthenticatorOpsLogsResponseBodyAuthenticationLogContent `json:"AuthenticationLogContent,omitempty" xml:"AuthenticationLogContent,omitempty" type:"Repeated"`
-	PageNumber               *int64                                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize                 *int64                                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId                *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount               *int64                                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 39FF2C8B-73E7-5BA5-AC25-20EEAC37BAB0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 3
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAuthenticatorOpsLogsResponseBody) String() string {
@@ -1010,25 +1338,79 @@ func (s *ListAuthenticatorOpsLogsResponseBody) SetTotalCount(v int64) *ListAuthe
 }
 
 type ListAuthenticatorOpsLogsResponseBodyAuthenticationLogContent struct {
-	AliUid                *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// example:
+	//
+	// 1218758215717204
+	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// example:
+	//
+	// webauth_demo
 	ApplicationExternalId *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
-	ApplicationUuid       *string `json:"ApplicationUuid,omitempty" xml:"ApplicationUuid,omitempty"`
-	AuthenticatorName     *string `json:"AuthenticatorName,omitempty" xml:"AuthenticatorName,omitempty"`
-	AuthenticatorType     *string `json:"AuthenticatorType,omitempty" xml:"AuthenticatorType,omitempty"`
-	AuthenticatorUuid     *string `json:"AuthenticatorUuid,omitempty" xml:"AuthenticatorUuid,omitempty"`
-	ChallengeBase64       *string `json:"ChallengeBase64,omitempty" xml:"ChallengeBase64,omitempty"`
-	CredentialId          *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
-	ErrorCode             *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage          *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	LogParams             *string `json:"LogParams,omitempty" xml:"LogParams,omitempty"`
-	OperationAction       *string `json:"OperationAction,omitempty" xml:"OperationAction,omitempty"`
-	OperationResult       *bool   `json:"OperationResult,omitempty" xml:"OperationResult,omitempty"`
-	OperationTime         *int64  `json:"OperationTime,omitempty" xml:"OperationTime,omitempty"`
-	RawContext            *string `json:"RawContext,omitempty" xml:"RawContext,omitempty"`
-	TenantId              *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	UserAgent             *string `json:"UserAgent,omitempty" xml:"UserAgent,omitempty"`
-	UserId                *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserSourceIp          *string `json:"UserSourceIp,omitempty" xml:"UserSourceIp,omitempty"`
+	// example:
+	//
+	// 2bba0564edce2ff90c544dc623d1c1f5iPpCGAqTioA
+	ApplicationUuid *string `json:"ApplicationUuid,omitempty" xml:"ApplicationUuid,omitempty"`
+	// example:
+	//
+	// TOTP-DefaultName
+	AuthenticatorName *string `json:"AuthenticatorName,omitempty" xml:"AuthenticatorName,omitempty"`
+	// example:
+	//
+	// TOTP
+	AuthenticatorType *string `json:"AuthenticatorType,omitempty" xml:"AuthenticatorType,omitempty"`
+	// example:
+	//
+	// 0fcd5fce3fdc42052633a65eb242f10aZ8nzoQMpV3m
+	AuthenticatorUuid *string `json:"AuthenticatorUuid,omitempty" xml:"AuthenticatorUuid,omitempty"`
+	// example:
+	//
+	// exfa
+	ChallengeBase64 *string `json:"ChallengeBase64,omitempty" xml:"ChallengeBase64,omitempty"`
+	// example:
+	//
+	// scimcred-00t3zfhiy2ylzvm2i287
+	CredentialId *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
+	// example:
+	//
+	// Failed
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// user not exist, alipayId=2088022534411015
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 1
+	LogParams *string `json:"LogParams,omitempty" xml:"LogParams,omitempty"`
+	// example:
+	//
+	// ListTagResources
+	OperationAction *string `json:"OperationAction,omitempty" xml:"OperationAction,omitempty"`
+	// example:
+	//
+	// True
+	OperationResult *bool `json:"OperationResult,omitempty" xml:"OperationResult,omitempty"`
+	// example:
+	//
+	// 1647309893086
+	OperationTime *int64  `json:"OperationTime,omitempty" xml:"OperationTime,omitempty"`
+	RawContext    *string `json:"RawContext,omitempty" xml:"RawContext,omitempty"`
+	// example:
+	//
+	// ed0222867189ad2bacfa746843d4b9692mlWC9sU3zl
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// example:
+	//
+	// 10.13.1.56
+	UserAgent *string `json:"UserAgent,omitempty" xml:"UserAgent,omitempty"`
+	// example:
+	//
+	// 3b323
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 10.13.1.56
+	UserSourceIp *string `json:"UserSourceIp,omitempty" xml:"UserSourceIp,omitempty"`
 }
 
 func (s ListAuthenticatorOpsLogsResponseBodyAuthenticationLogContent) String() string {
@@ -1164,11 +1546,30 @@ func (s *ListAuthenticatorOpsLogsResponse) SetBody(v *ListAuthenticatorOpsLogsRe
 }
 
 type ListAuthenticatorsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 11122223333
 	ApplicationExternalId *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
-	AuthenticatorType     *string `json:"AuthenticatorType,omitempty" xml:"AuthenticatorType,omitempty"`
-	PageNumber            *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize              *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	UserId                *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// TOTP
+	AuthenticatorType *string `json:"AuthenticatorType,omitempty" xml:"AuthenticatorType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 5
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user-11122223333
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ListAuthenticatorsRequest) String() string {
@@ -1206,10 +1607,22 @@ func (s *ListAuthenticatorsRequest) SetUserId(v string) *ListAuthenticatorsReque
 
 type ListAuthenticatorsResponseBody struct {
 	Authenticator []*ListAuthenticatorsResponseBodyAuthenticator `json:"Authenticator,omitempty" xml:"Authenticator,omitempty" type:"Repeated"`
-	PageNumber    *int64                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int64                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId     *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount    *int64                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 5
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 531FA210-6F3D-5368-9AE2-AD7B9D1D5CAA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 13
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAuthenticatorsResponseBody) String() string {
@@ -1246,13 +1659,34 @@ func (s *ListAuthenticatorsResponseBody) SetTotalCount(v int64) *ListAuthenticat
 }
 
 type ListAuthenticatorsResponseBodyAuthenticator struct {
+	// example:
+	//
+	// webauth_demo
 	ApplicationExternalId *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
-	AuthenticatorName     *string `json:"AuthenticatorName,omitempty" xml:"AuthenticatorName,omitempty"`
-	AuthenticatorUuid     *string `json:"AuthenticatorUuid,omitempty" xml:"AuthenticatorUuid,omitempty"`
-	CredentialId          *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
-	LastVerifyTime        *int64  `json:"LastVerifyTime,omitempty" xml:"LastVerifyTime,omitempty"`
-	RegisterTime          *int64  `json:"RegisterTime,omitempty" xml:"RegisterTime,omitempty"`
-	Type                  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// TOTP-DefaultName
+	AuthenticatorName *string `json:"AuthenticatorName,omitempty" xml:"AuthenticatorName,omitempty"`
+	// example:
+	//
+	// 0fcd5fce3fdc42052633a65eb242f10aZ8nzoQMpV3m
+	AuthenticatorUuid *string `json:"AuthenticatorUuid,omitempty" xml:"AuthenticatorUuid,omitempty"`
+	// example:
+	//
+	// scimcred-00skzv5noh34r5aoci76
+	CredentialId *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
+	// example:
+	//
+	// 123123
+	LastVerifyTime *int64 `json:"LastVerifyTime,omitempty" xml:"LastVerifyTime,omitempty"`
+	// example:
+	//
+	// 1342800000000
+	RegisterTime *int64 `json:"RegisterTime,omitempty" xml:"RegisterTime,omitempty"`
+	// example:
+	//
+	// TOTP
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListAuthenticatorsResponseBodyAuthenticator) String() string {
@@ -1328,10 +1762,22 @@ func (s *ListAuthenticatorsResponse) SetBody(v *ListAuthenticatorsResponseBody) 
 }
 
 type ListCostUnitOrdersRequest struct {
-	BeginDate  *string `json:"BeginDate,omitempty" xml:"BeginDate,omitempty"`
-	FinalDate  *string `json:"FinalDate,omitempty" xml:"FinalDate,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 2021-11-16
+	BeginDate *string `json:"BeginDate,omitempty" xml:"BeginDate,omitempty"`
+	// example:
+	//
+	// 2021-12-04 00
+	FinalDate *string `json:"FinalDate,omitempty" xml:"FinalDate,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListCostUnitOrdersRequest) String() string {
@@ -1363,11 +1809,23 @@ func (s *ListCostUnitOrdersRequest) SetPageSize(v int32) *ListCostUnitOrdersRequ
 }
 
 type ListCostUnitOrdersResponseBody struct {
-	Items         []*ListCostUnitOrdersResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageSize      *int64                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId     *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalElements *int64                                 `json:"TotalElements,omitempty" xml:"TotalElements,omitempty"`
-	TotalPages    *int64                                 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	Items []*ListCostUnitOrdersResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// A82621A5-715C-5486-80E9-9262EE43BA55
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 12
+	TotalElements *int64 `json:"TotalElements,omitempty" xml:"TotalElements,omitempty"`
+	// example:
+	//
+	// 2
+	TotalPages *int64 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s ListCostUnitOrdersResponseBody) String() string {
@@ -1404,15 +1862,39 @@ func (s *ListCostUnitOrdersResponseBody) SetTotalPages(v int64) *ListCostUnitOrd
 }
 
 type ListCostUnitOrdersResponseBodyItems struct {
-	AliOrderCode       *string `json:"AliOrderCode,omitempty" xml:"AliOrderCode,omitempty"`
+	// example:
+	//
+	// 215222637610732
+	AliOrderCode *string `json:"AliOrderCode,omitempty" xml:"AliOrderCode,omitempty"`
+	// example:
+	//
+	// idaas_auth_public_cn-pl32pciy101
 	AliOrderInstanceId *string `json:"AliOrderInstanceId,omitempty" xml:"AliOrderInstanceId,omitempty"`
-	CreateTime         *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Exhausted          *bool   `json:"Exhausted,omitempty" xml:"Exhausted,omitempty"`
-	ExpiredTime        *int64  `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	OrderStatus        *string `json:"OrderStatus,omitempty" xml:"OrderStatus,omitempty"`
-	RefundTime         *int64  `json:"RefundTime,omitempty" xml:"RefundTime,omitempty"`
-	TotalCostUnit      *int64  `json:"TotalCostUnit,omitempty" xml:"TotalCostUnit,omitempty"`
-	UsedCostUnit       *int64  `json:"UsedCostUnit,omitempty" xml:"UsedCostUnit,omitempty"`
+	// example:
+	//
+	// 1646028448000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Exhausted  *bool  `json:"Exhausted,omitempty" xml:"Exhausted,omitempty"`
+	// example:
+	//
+	// 1923321600000
+	ExpiredTime *int64 `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// example:
+	//
+	// VALID
+	OrderStatus *string `json:"OrderStatus,omitempty" xml:"OrderStatus,omitempty"`
+	// example:
+	//
+	// 1923321600000
+	RefundTime *int64 `json:"RefundTime,omitempty" xml:"RefundTime,omitempty"`
+	// example:
+	//
+	// 100000
+	TotalCostUnit *int64 `json:"TotalCostUnit,omitempty" xml:"TotalCostUnit,omitempty"`
+	// example:
+	//
+	// 100
+	UsedCostUnit *int64 `json:"UsedCostUnit,omitempty" xml:"UsedCostUnit,omitempty"`
 }
 
 func (s ListCostUnitOrdersResponseBodyItems) String() string {
@@ -1498,13 +1980,28 @@ func (s *ListCostUnitOrdersResponse) SetBody(v *ListCostUnitOrdersResponseBody) 
 }
 
 type ListOrderConsumeStatisticRecordsRequest struct {
+	// example:
+	//
+	// 211283925690732
 	AliOrderCode          *string `json:"AliOrderCode,omitempty" xml:"AliOrderCode,omitempty"`
 	ApplicationExternalId *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
-	PageNumber            *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize              *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ServiceCode           *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	StatisticTimeMax      *string `json:"StatisticTimeMax,omitempty" xml:"StatisticTimeMax,omitempty"`
-	StatisticTimeMin      *string `json:"StatisticTimeMin,omitempty" xml:"StatisticTimeMin,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// example:
+	//
+	// 2022-05-31
+	StatisticTimeMax *string `json:"StatisticTimeMax,omitempty" xml:"StatisticTimeMax,omitempty"`
+	// example:
+	//
+	// 2022-05-31
+	StatisticTimeMin *string `json:"StatisticTimeMin,omitempty" xml:"StatisticTimeMin,omitempty"`
 }
 
 func (s ListOrderConsumeStatisticRecordsRequest) String() string {
@@ -1551,11 +2048,23 @@ func (s *ListOrderConsumeStatisticRecordsRequest) SetStatisticTimeMin(v string) 
 }
 
 type ListOrderConsumeStatisticRecordsResponseBody struct {
-	Items         []*ListOrderConsumeStatisticRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageSize      *int64                                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId     *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalElements *int64                                               `json:"TotalElements,omitempty" xml:"TotalElements,omitempty"`
-	TotalPages    *int64                                               `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	Items []*ListOrderConsumeStatisticRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1655384783875
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 100
+	TotalElements *int64 `json:"TotalElements,omitempty" xml:"TotalElements,omitempty"`
+	// example:
+	//
+	// 10
+	TotalPages *int64 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s ListOrderConsumeStatisticRecordsResponseBody) String() string {
@@ -1592,13 +2101,34 @@ func (s *ListOrderConsumeStatisticRecordsResponseBody) SetTotalPages(v int64) *L
 }
 
 type ListOrderConsumeStatisticRecordsResponseBodyItems struct {
-	AliOrderCode          *string `json:"AliOrderCode,omitempty" xml:"AliOrderCode,omitempty"`
+	// example:
+	//
+	// 23567876823
+	AliOrderCode *string `json:"AliOrderCode,omitempty" xml:"AliOrderCode,omitempty"`
+	// example:
+	//
+	// sms_auth
 	ApplicationExternalId *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
-	ChargedCount          *int64  `json:"ChargedCount,omitempty" xml:"ChargedCount,omitempty"`
-	ServiceCode           *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	StatisticTime         *int64  `json:"StatisticTime,omitempty" xml:"StatisticTime,omitempty"`
-	TotalPrice            *int64  `json:"TotalPrice,omitempty" xml:"TotalPrice,omitempty"`
-	UnitPrice             *int64  `json:"UnitPrice,omitempty" xml:"UnitPrice,omitempty"`
+	// example:
+	//
+	// 1
+	ChargedCount *int64 `json:"ChargedCount,omitempty" xml:"ChargedCount,omitempty"`
+	// example:
+	//
+	// SMS
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// example:
+	//
+	// 1655388050
+	StatisticTime *int64 `json:"StatisticTime,omitempty" xml:"StatisticTime,omitempty"`
+	// example:
+	//
+	// 10
+	TotalPrice *int64 `json:"TotalPrice,omitempty" xml:"TotalPrice,omitempty"`
+	// example:
+	//
+	// 10
+	UnitPrice *int64 `json:"UnitPrice,omitempty" xml:"UnitPrice,omitempty"`
 }
 
 func (s ListOrderConsumeStatisticRecordsResponseBodyItems) String() string {
@@ -1674,6 +2204,11 @@ func (s *ListOrderConsumeStatisticRecordsResponse) SetBody(v *ListOrderConsumeSt
 }
 
 type ListPwnedPasswordsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 000000
 	PrefixHexPasswordSha1Hash *string `json:"PrefixHexPasswordSha1Hash,omitempty" xml:"PrefixHexPasswordSha1Hash,omitempty"`
 }
 
@@ -1691,12 +2226,25 @@ func (s *ListPwnedPasswordsRequest) SetPrefixHexPasswordSha1Hash(v string) *List
 }
 
 type ListPwnedPasswordsResponseBody struct {
-	PageNumber         *int64                                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 2
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
 	PageSize           *int64                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PwnedPasswordInfos []*ListPwnedPasswordsResponseBodyPwnedPasswordInfos `json:"PwnedPasswordInfos,omitempty" xml:"PwnedPasswordInfos,omitempty" type:"Repeated"`
 	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	//
+	// example:
+	//
+	// D0F570B0-89CE-07F2-B41E-F97E089E13C6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 80
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListPwnedPasswordsResponseBody) String() string {
@@ -1733,8 +2281,14 @@ func (s *ListPwnedPasswordsResponseBody) SetTotalCount(v int64) *ListPwnedPasswo
 }
 
 type ListPwnedPasswordsResponseBodyPwnedPasswordInfos struct {
+	// example:
+	//
+	// 0000
 	HexPasswordSha1Hash *string `json:"HexPasswordSha1Hash,omitempty" xml:"HexPasswordSha1Hash,omitempty"`
-	PwnedCount          *int64  `json:"PwnedCount,omitempty" xml:"PwnedCount,omitempty"`
+	// example:
+	//
+	// 84
+	PwnedCount *int64 `json:"PwnedCount,omitempty" xml:"PwnedCount,omitempty"`
 }
 
 func (s ListPwnedPasswordsResponseBodyPwnedPasswordInfos) String() string {
@@ -1785,8 +2339,16 @@ func (s *ListPwnedPasswordsResponse) SetBody(v *ListPwnedPasswordsResponseBody) 
 }
 
 type ListUsersRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 11122223333
 	ApplicationExternalId *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
-	UserId                *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// user-11122223333
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ListUsersRequest) String() string {
@@ -1808,7 +2370,13 @@ func (s *ListUsersRequest) SetUserId(v string) *ListUsersRequest {
 }
 
 type ListUsersResponseBody struct {
-	RequestId  *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// D0F570B0-89CE-07F2-B41E-F97E089E13C6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 13
 	TotalCount *int64                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	Users      []*ListUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
@@ -1838,8 +2406,14 @@ func (s *ListUsersResponseBody) SetUsers(v []*ListUsersResponseBodyUsers) *ListU
 
 type ListUsersResponseBodyUsers struct {
 	UserDisplayName *string `json:"UserDisplayName,omitempty" xml:"UserDisplayName,omitempty"`
-	UserId          *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// example:
+	//
+	// 2323232676856745
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// lili
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s ListUsersResponseBodyUsers) String() string {
@@ -1895,7 +2469,13 @@ func (s *ListUsersResponse) SetBody(v *ListUsersResponseBody) *ListUsersResponse
 }
 
 type QuerySmsReportsRequest struct {
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// doraemon_xxxxx
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// eventId_xxxxxx
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
 }
 
@@ -1918,9 +2498,15 @@ func (s *QuerySmsReportsRequest) SetEventId(v string) *QuerySmsReportsRequest {
 }
 
 type QuerySmsReportsResponseBody struct {
-	RequestId     *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SmsReports    []*QuerySmsReportsResponseBodySmsReports `json:"SmsReports,omitempty" xml:"SmsReports,omitempty" type:"Repeated"`
-	TotalElements *int64                                   `json:"TotalElements,omitempty" xml:"TotalElements,omitempty"`
+	// example:
+	//
+	// 4581B16-xxxxx
+	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SmsReports []*QuerySmsReportsResponseBodySmsReports `json:"SmsReports,omitempty" xml:"SmsReports,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 15
+	TotalElements *int64 `json:"TotalElements,omitempty" xml:"TotalElements,omitempty"`
 }
 
 func (s QuerySmsReportsResponseBody) String() string {
@@ -1947,16 +2533,43 @@ func (s *QuerySmsReportsResponseBody) SetTotalElements(v int64) *QuerySmsReports
 }
 
 type QuerySmsReportsResponseBodySmsReports struct {
+	// example:
+	//
+	// appid
 	AppId        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	ChargedCount *int32  `json:"ChargedCount,omitempty" xml:"ChargedCount,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	EventId      *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	Mobile       *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	Sn           *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
-	Stat         *string `json:"Stat,omitempty" xml:"Stat,omitempty"`
-	TenantId     *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	Tid          *string `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	Time         *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	// example:
+	//
+	// 0
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// event_xxxx
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// 156xxxxxxxx
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// example:
+	//
+	// "d36xxxxx3573772f159f616ebJ8KGPBg7Hr::appId::123456::Bird"
+	Sn *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	// example:
+	//
+	// DELIVRD
+	Stat *string `json:"Stat,omitempty" xml:"Stat,omitempty"`
+	// example:
+	//
+	// d36a370f33f037233573772f15xxxxxx
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// example:
+	//
+	// 3514
+	Tid *string `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	// example:
+	//
+	// 20220823171446
+	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s QuerySmsReportsResponseBodySmsReports) String() string {
@@ -2152,17 +2765,58 @@ func (s *QuerySmsUpsResponse) SetBody(v *QuerySmsUpsResponseBody) *QuerySmsUpsRe
 }
 
 type RegisterAuthenticatorRequest struct {
-	ApplicationExternalId      *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
-	AuthenticatorName          *string `json:"AuthenticatorName,omitempty" xml:"AuthenticatorName,omitempty"`
-	AuthenticatorType          *string `json:"AuthenticatorType,omitempty" xml:"AuthenticatorType,omitempty"`
-	ClientExtendParamsJson     *string `json:"ClientExtendParamsJson,omitempty" xml:"ClientExtendParamsJson,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 11122223333
+	ApplicationExternalId *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
+	// example:
+	//
+	// ZhangSan\\"s authenticator
+	AuthenticatorName *string `json:"AuthenticatorName,omitempty" xml:"AuthenticatorName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// webauthn
+	AuthenticatorType *string `json:"AuthenticatorType,omitempty" xml:"AuthenticatorType,omitempty"`
+	// example:
+	//
+	// 由具体认证方式决定
+	ClientExtendParamsJson *string `json:"ClientExtendParamsJson,omitempty" xml:"ClientExtendParamsJson,omitempty"`
+	// example:
+	//
+	// 由具体认证方式决定
 	ClientExtendParamsJsonSign *string `json:"ClientExtendParamsJsonSign,omitempty" xml:"ClientExtendParamsJsonSign,omitempty"`
-	LogParams                  *string `json:"LogParams,omitempty" xml:"LogParams,omitempty"`
-	RegistrationContext        *string `json:"RegistrationContext,omitempty" xml:"RegistrationContext,omitempty"`
-	RequireChallengeBase64     *string `json:"RequireChallengeBase64,omitempty" xml:"RequireChallengeBase64,omitempty"`
-	ServerExtendParamsJson     *string `json:"ServerExtendParamsJson,omitempty" xml:"ServerExtendParamsJson,omitempty"`
-	UserId                     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserSourceIp               *string `json:"UserSourceIp,omitempty" xml:"UserSourceIp,omitempty"`
+	// example:
+	//
+	// 123123
+	LogParams *string `json:"LogParams,omitempty" xml:"LogParams,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {}
+	RegistrationContext *string `json:"RegistrationContext,omitempty" xml:"RegistrationContext,omitempty"`
+	// example:
+	//
+	// AAAAdda
+	RequireChallengeBase64 *string `json:"RequireChallengeBase64,omitempty" xml:"RequireChallengeBase64,omitempty"`
+	// example:
+	//
+	// 由具体认证方式决定
+	ServerExtendParamsJson *string `json:"ServerExtendParamsJson,omitempty" xml:"ServerExtendParamsJson,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user-11122223333
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserSourceIp *string `json:"UserSourceIp,omitempty" xml:"UserSourceIp,omitempty"`
 }
 
 func (s RegisterAuthenticatorRequest) String() string {
@@ -2229,9 +2883,15 @@ func (s *RegisterAuthenticatorRequest) SetUserSourceIp(v string) *RegisterAuthen
 }
 
 type RegisterAuthenticatorResponseBody struct {
+	// example:
+	//
+	// 123123123
 	AuthenticatorUuid *string `json:"AuthenticatorUuid,omitempty" xml:"AuthenticatorUuid,omitempty"`
 	EtasResponseSting *string `json:"EtasResponseSting,omitempty" xml:"EtasResponseSting,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 23123
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RegisterAuthenticatorResponseBody) String() string {
@@ -2287,14 +2947,44 @@ func (s *RegisterAuthenticatorResponse) SetBody(v *RegisterAuthenticatorResponse
 }
 
 type ServiceInvokeRequest struct {
-	ApplicationExternalId      *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
-	DoraemonAction             *string `json:"DoraemonAction,omitempty" xml:"DoraemonAction,omitempty"`
-	MobileExtendParamsJson     *string `json:"MobileExtendParamsJson,omitempty" xml:"MobileExtendParamsJson,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// A0000003
+	ApplicationExternalId *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SimpleAuthInit
+	DoraemonAction *string `json:"DoraemonAction,omitempty" xml:"DoraemonAction,omitempty"`
+	// example:
+	//
+	// eyJhdHRhY2htZW50IjoicGxhdGZvcm0iLCJ1c2VyVmVyaWZpY2F0aW9uIjoicmVxdWlyZWQifQ==
+	MobileExtendParamsJson *string `json:"MobileExtendParamsJson,omitempty" xml:"MobileExtendParamsJson,omitempty"`
+	// example:
+	//
+	// ba6f5596f00102cb1a7d971f8390b7ccb28e6bc4e8694d051f9299ccc69e1186
 	MobileExtendParamsJsonSign *string `json:"MobileExtendParamsJsonSign,omitempty" xml:"MobileExtendParamsJsonSign,omitempty"`
-	ServerExtendParamsJson     *string `json:"ServerExtendParamsJson,omitempty" xml:"ServerExtendParamsJson,omitempty"`
-	ServiceCode                *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	TestModel                  *bool   `json:"TestModel,omitempty" xml:"TestModel,omitempty"`
-	XClientIp                  *string `json:"XClientIp,omitempty" xml:"XClientIp,omitempty"`
+	// example:
+	//
+	// eyJhdHRhY2htZW50IjoicGxhdGZvcm0iLCJ1c2VyVmVyaWZpY2F0aW9uIjoicmVxdWlyZWQifQ==
+	ServerExtendParamsJson *string `json:"ServerExtendParamsJson,omitempty" xml:"ServerExtendParamsJson,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// IFAA
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// example:
+	//
+	// false
+	TestModel *bool `json:"TestModel,omitempty" xml:"TestModel,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	XClientIp *string `json:"XClientIp,omitempty" xml:"XClientIp,omitempty"`
 }
 
 func (s ServiceInvokeRequest) String() string {
@@ -2346,13 +3036,31 @@ func (s *ServiceInvokeRequest) SetXClientIp(v string) *ServiceInvokeRequest {
 }
 
 type ServiceInvokeResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	EventId   *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	IdToken   *string `json:"IdToken,omitempty" xml:"IdToken,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// Operation.Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// "{\\"ifaa\\"{\\"code\\":0,\\"message\\":\\"eyJo....BWUFBQUFBIn19\\"},\\"version\\":\\"1.0.0\\",\\"transaction\\":{\\"id\\":\\"sIFAA-ios\\",\\"type\\":\\"sIFAA-ios\\",\\"payload\\":\\"\\"},\\"action\\":\\"request/auth\\"}" }
+	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// qacdfhigvbcvb
+	IdToken *string `json:"IdToken,omitempty" xml:"IdToken,omitempty"`
+	// example:
+	//
+	// Operation.Failure.ApiInvoke.ServiceInArrears
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// F8F63CAB-A96C-5017-AFB0-324593223817
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ServiceInvokeResponseBody) String() string {
@@ -2428,10 +3136,30 @@ func (s *ServiceInvokeResponse) SetBody(v *ServiceInvokeResponseBody) *ServiceIn
 }
 
 type UpdateAuthenticatorAttributeRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 11122223333
 	ApplicationExternalId *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
-	AuthenticatorName     *string `json:"AuthenticatorName,omitempty" xml:"AuthenticatorName,omitempty"`
-	AuthenticatorUuid     *string `json:"AuthenticatorUuid,omitempty" xml:"AuthenticatorUuid,omitempty"`
-	UserId                *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// TOTP-DefaultName
+	AuthenticatorName *string `json:"AuthenticatorName,omitempty" xml:"AuthenticatorName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c810731ad3af06e45171395abf19cf9cb00E7i97PhE
+	AuthenticatorUuid *string `json:"AuthenticatorUuid,omitempty" xml:"AuthenticatorUuid,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user-11122223333
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s UpdateAuthenticatorAttributeRequest) String() string {
@@ -2463,6 +3191,9 @@ func (s *UpdateAuthenticatorAttributeRequest) SetUserId(v string) *UpdateAuthent
 }
 
 type UpdateAuthenticatorAttributeResponseBody struct {
+	// example:
+	//
+	// D0F570B0-89CE-07F2-B41E-F97E089E13C6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2509,8 +3240,15 @@ func (s *UpdateAuthenticatorAttributeResponse) SetBody(v *UpdateAuthenticatorAtt
 }
 
 type VerifyIdTokenRequest struct {
+	// example:
+	//
+	// webauth_demo
 	ApplicationExternalId *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
 	// jwtIdToken
+	//
+	// example:
+	//
+	// eyJraWQiOiIzNj
 	JwtIdToken *string `json:"JwtIdToken,omitempty" xml:"JwtIdToken,omitempty"`
 }
 
@@ -2533,8 +3271,14 @@ func (s *VerifyIdTokenRequest) SetJwtIdToken(v string) *VerifyIdTokenRequest {
 }
 
 type VerifyIdTokenResponseBody struct {
+	// example:
+	//
+	// F620E712-F325-520D-BE1A-E2421B062F57
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	UserId    *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 123456
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s VerifyIdTokenResponseBody) String() string {
@@ -2585,18 +3329,62 @@ func (s *VerifyIdTokenResponse) SetBody(v *VerifyIdTokenResponseBody) *VerifyIdT
 }
 
 type VerifyUserAuthenticationRequest struct {
-	ApplicationExternalId      *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
-	AuthenticationContext      *string `json:"AuthenticationContext,omitempty" xml:"AuthenticationContext,omitempty"`
-	AuthenticatorType          *string `json:"AuthenticatorType,omitempty" xml:"AuthenticatorType,omitempty"`
-	ClientExtendParamsJson     *string `json:"ClientExtendParamsJson,omitempty" xml:"ClientExtendParamsJson,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 11122223333
+	ApplicationExternalId *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {}
+	AuthenticationContext *string `json:"AuthenticationContext,omitempty" xml:"AuthenticationContext,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// webauthn
+	AuthenticatorType *string `json:"AuthenticatorType,omitempty" xml:"AuthenticatorType,omitempty"`
+	// example:
+	//
+	// 由具体认证方式决定
+	ClientExtendParamsJson *string `json:"ClientExtendParamsJson,omitempty" xml:"ClientExtendParamsJson,omitempty"`
+	// example:
+	//
+	// 由具体认证方式决定
 	ClientExtendParamsJsonSign *string `json:"ClientExtendParamsJsonSign,omitempty" xml:"ClientExtendParamsJsonSign,omitempty"`
-	LogParams                  *string `json:"LogParams,omitempty" xml:"LogParams,omitempty"`
-	LogTag                     *string `json:"LogTag,omitempty" xml:"LogTag,omitempty"`
-	RequireBindHashBase64      *string `json:"RequireBindHashBase64,omitempty" xml:"RequireBindHashBase64,omitempty"`
-	RequireChallengeBase64     *string `json:"RequireChallengeBase64,omitempty" xml:"RequireChallengeBase64,omitempty"`
-	ServerExtendParamsJson     *string `json:"ServerExtendParamsJson,omitempty" xml:"ServerExtendParamsJson,omitempty"`
-	UserId                     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserSourceIp               *string `json:"UserSourceIp,omitempty" xml:"UserSourceIp,omitempty"`
+	// example:
+	//
+	// 123123
+	LogParams *string `json:"LogParams,omitempty" xml:"LogParams,omitempty"`
+	// example:
+	//
+	// login
+	LogTag *string `json:"LogTag,omitempty" xml:"LogTag,omitempty"`
+	// example:
+	//
+	// AAAAdda
+	RequireBindHashBase64 *string `json:"RequireBindHashBase64,omitempty" xml:"RequireBindHashBase64,omitempty"`
+	// example:
+	//
+	// AAAAdda
+	RequireChallengeBase64 *string `json:"RequireChallengeBase64,omitempty" xml:"RequireChallengeBase64,omitempty"`
+	// example:
+	//
+	// 由具体认证方式决定
+	ServerExtendParamsJson *string `json:"ServerExtendParamsJson,omitempty" xml:"ServerExtendParamsJson,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user-11122223333
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserSourceIp *string `json:"UserSourceIp,omitempty" xml:"UserSourceIp,omitempty"`
 }
 
 func (s VerifyUserAuthenticationRequest) String() string {
@@ -2669,10 +3457,22 @@ func (s *VerifyUserAuthenticationRequest) SetUserSourceIp(v string) *VerifyUserA
 
 type VerifyUserAuthenticationResponseBody struct {
 	AuthenticateResultInfo *VerifyUserAuthenticationResponseBodyAuthenticateResultInfo `json:"AuthenticateResultInfo,omitempty" xml:"AuthenticateResultInfo,omitempty" type:"Struct"`
-	EtasSDKString          *string                                                     `json:"EtasSDKString,omitempty" xml:"EtasSDKString,omitempty"`
-	IdToken                *string                                                     `json:"IdToken,omitempty" xml:"IdToken,omitempty"`
-	RequestId              *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	VerifyResult           *bool                                                       `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
+	// example:
+	//
+	// zmtdjb
+	EtasSDKString *string `json:"EtasSDKString,omitempty" xml:"EtasSDKString,omitempty"`
+	// example:
+	//
+	// qacdfhigvbcvb
+	IdToken *string `json:"IdToken,omitempty" xml:"IdToken,omitempty"`
+	// example:
+	//
+	// 83ED3BC7-B36E-53B5-83D4-152CF2088DB9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	VerifyResult *bool `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
 }
 
 func (s VerifyUserAuthenticationResponseBody) String() string {
@@ -2709,9 +3509,18 @@ func (s *VerifyUserAuthenticationResponseBody) SetVerifyResult(v bool) *VerifyUs
 }
 
 type VerifyUserAuthenticationResponseBodyAuthenticateResultInfo struct {
+	// example:
+	//
+	// 10e8c224555bba8bfb780badebc4a08cc1Z6LmC6Hp9
 	BindHashBase64 *string `json:"BindHashBase64,omitempty" xml:"BindHashBase64,omitempty"`
-	CredentialId   *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
-	UserId         *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// scimcred-000vfaknfwlp8kesl520
+	CredentialId *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
+	// example:
+	//
+	// 3b32
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s VerifyUserAuthenticationResponseBodyAuthenticateResultInfo) String() string {
@@ -2816,6 +3625,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建认证器请求
+//
+// @param request - CreateAuthenticatorRegistrationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAuthenticatorRegistrationResponse
 func (client *Client) CreateAuthenticatorRegistrationWithOptions(request *CreateAuthenticatorRegistrationRequest, runtime *util.RuntimeOptions) (_result *CreateAuthenticatorRegistrationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2881,6 +3699,13 @@ func (client *Client) CreateAuthenticatorRegistrationWithOptions(request *Create
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建认证器请求
+//
+// @param request - CreateAuthenticatorRegistrationRequest
+//
+// @return CreateAuthenticatorRegistrationResponse
 func (client *Client) CreateAuthenticatorRegistration(request *CreateAuthenticatorRegistrationRequest) (_result *CreateAuthenticatorRegistrationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAuthenticatorRegistrationResponse{}
@@ -2892,6 +3717,15 @@ func (client *Client) CreateAuthenticatorRegistration(request *CreateAuthenticat
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建用户认证请求
+//
+// @param request - CreateUserAuthenticateOptionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateUserAuthenticateOptionsResponse
 func (client *Client) CreateUserAuthenticateOptionsWithOptions(request *CreateUserAuthenticateOptionsRequest, runtime *util.RuntimeOptions) (_result *CreateUserAuthenticateOptionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2949,6 +3783,13 @@ func (client *Client) CreateUserAuthenticateOptionsWithOptions(request *CreateUs
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建用户认证请求
+//
+// @param request - CreateUserAuthenticateOptionsRequest
+//
+// @return CreateUserAuthenticateOptionsResponse
 func (client *Client) CreateUserAuthenticateOptions(request *CreateUserAuthenticateOptionsRequest) (_result *CreateUserAuthenticateOptionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateUserAuthenticateOptionsResponse{}
@@ -2960,6 +3801,15 @@ func (client *Client) CreateUserAuthenticateOptions(request *CreateUserAuthentic
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除认证器
+//
+// @param request - DeregisterAuthenticatorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeregisterAuthenticatorResponse
 func (client *Client) DeregisterAuthenticatorWithOptions(request *DeregisterAuthenticatorRequest, runtime *util.RuntimeOptions) (_result *DeregisterAuthenticatorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3001,6 +3851,13 @@ func (client *Client) DeregisterAuthenticatorWithOptions(request *DeregisterAuth
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除认证器
+//
+// @param request - DeregisterAuthenticatorRequest
+//
+// @return DeregisterAuthenticatorResponse
 func (client *Client) DeregisterAuthenticator(request *DeregisterAuthenticatorRequest) (_result *DeregisterAuthenticatorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeregisterAuthenticatorResponse{}
@@ -3012,6 +3869,15 @@ func (client *Client) DeregisterAuthenticator(request *DeregisterAuthenticatorRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取access_token
+//
+// @param request - FetchAccessTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FetchAccessTokenResponse
 func (client *Client) FetchAccessTokenWithOptions(request *FetchAccessTokenRequest, runtime *util.RuntimeOptions) (_result *FetchAccessTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3065,6 +3931,13 @@ func (client *Client) FetchAccessTokenWithOptions(request *FetchAccessTokenReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取access_token
+//
+// @param request - FetchAccessTokenRequest
+//
+// @return FetchAccessTokenResponse
 func (client *Client) FetchAccessToken(request *FetchAccessTokenRequest) (_result *FetchAccessTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &FetchAccessTokenResponse{}
@@ -3076,6 +3949,15 @@ func (client *Client) FetchAccessToken(request *FetchAccessTokenRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询单个认证器
+//
+// @param request - GetAuthenticatorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAuthenticatorResponse
 func (client *Client) GetAuthenticatorWithOptions(request *GetAuthenticatorRequest, runtime *util.RuntimeOptions) (_result *GetAuthenticatorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3117,6 +3999,13 @@ func (client *Client) GetAuthenticatorWithOptions(request *GetAuthenticatorReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询单个认证器
+//
+// @param request - GetAuthenticatorRequest
+//
+// @return GetAuthenticatorResponse
 func (client *Client) GetAuthenticator(request *GetAuthenticatorRequest) (_result *GetAuthenticatorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAuthenticatorResponse{}
@@ -3128,6 +4017,15 @@ func (client *Client) GetAuthenticator(request *GetAuthenticatorRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询认证事件日志
+//
+// @param request - ListAuthenticationLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAuthenticationLogsResponse
 func (client *Client) ListAuthenticationLogsWithOptions(request *ListAuthenticationLogsRequest, runtime *util.RuntimeOptions) (_result *ListAuthenticationLogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3197,6 +4095,13 @@ func (client *Client) ListAuthenticationLogsWithOptions(request *ListAuthenticat
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询认证事件日志
+//
+// @param request - ListAuthenticationLogsRequest
+//
+// @return ListAuthenticationLogsResponse
 func (client *Client) ListAuthenticationLogs(request *ListAuthenticationLogsRequest) (_result *ListAuthenticationLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAuthenticationLogsResponse{}
@@ -3208,6 +4113,15 @@ func (client *Client) ListAuthenticationLogs(request *ListAuthenticationLogsRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询认证器操作日志
+//
+// @param request - ListAuthenticatorOpsLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAuthenticatorOpsLogsResponse
 func (client *Client) ListAuthenticatorOpsLogsWithOptions(request *ListAuthenticatorOpsLogsRequest, runtime *util.RuntimeOptions) (_result *ListAuthenticatorOpsLogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3269,6 +4183,13 @@ func (client *Client) ListAuthenticatorOpsLogsWithOptions(request *ListAuthentic
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询认证器操作日志
+//
+// @param request - ListAuthenticatorOpsLogsRequest
+//
+// @return ListAuthenticatorOpsLogsResponse
 func (client *Client) ListAuthenticatorOpsLogs(request *ListAuthenticatorOpsLogsRequest) (_result *ListAuthenticatorOpsLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAuthenticatorOpsLogsResponse{}
@@ -3280,6 +4201,15 @@ func (client *Client) ListAuthenticatorOpsLogs(request *ListAuthenticatorOpsLogs
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询认证器
+//
+// @param request - ListAuthenticatorsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAuthenticatorsResponse
 func (client *Client) ListAuthenticatorsWithOptions(request *ListAuthenticatorsRequest, runtime *util.RuntimeOptions) (_result *ListAuthenticatorsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3329,6 +4259,13 @@ func (client *Client) ListAuthenticatorsWithOptions(request *ListAuthenticatorsR
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表查询认证器
+//
+// @param request - ListAuthenticatorsRequest
+//
+// @return ListAuthenticatorsResponse
 func (client *Client) ListAuthenticators(request *ListAuthenticatorsRequest) (_result *ListAuthenticatorsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAuthenticatorsResponse{}
@@ -3340,6 +4277,15 @@ func (client *Client) ListAuthenticators(request *ListAuthenticatorsRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询按量计费订单列表
+//
+// @param request - ListCostUnitOrdersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCostUnitOrdersResponse
 func (client *Client) ListCostUnitOrdersWithOptions(request *ListCostUnitOrdersRequest, runtime *util.RuntimeOptions) (_result *ListCostUnitOrdersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3385,6 +4331,13 @@ func (client *Client) ListCostUnitOrdersWithOptions(request *ListCostUnitOrdersR
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询按量计费订单列表
+//
+// @param request - ListCostUnitOrdersRequest
+//
+// @return ListCostUnitOrdersResponse
 func (client *Client) ListCostUnitOrders(request *ListCostUnitOrdersRequest) (_result *ListCostUnitOrdersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCostUnitOrdersResponse{}
@@ -3396,6 +4349,15 @@ func (client *Client) ListCostUnitOrders(request *ListCostUnitOrdersRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用量消费统计记录列表
+//
+// @param request - ListOrderConsumeStatisticRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListOrderConsumeStatisticRecordsResponse
 func (client *Client) ListOrderConsumeStatisticRecordsWithOptions(request *ListOrderConsumeStatisticRecordsRequest, runtime *util.RuntimeOptions) (_result *ListOrderConsumeStatisticRecordsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3453,6 +4415,13 @@ func (client *Client) ListOrderConsumeStatisticRecordsWithOptions(request *ListO
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用量消费统计记录列表
+//
+// @param request - ListOrderConsumeStatisticRecordsRequest
+//
+// @return ListOrderConsumeStatisticRecordsResponse
 func (client *Client) ListOrderConsumeStatisticRecords(request *ListOrderConsumeStatisticRecordsRequest) (_result *ListOrderConsumeStatisticRecordsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListOrderConsumeStatisticRecordsResponse{}
@@ -3464,6 +4433,15 @@ func (client *Client) ListOrderConsumeStatisticRecords(request *ListOrderConsume
 	return _result, _err
 }
 
+// Summary:
+//
+// 弱密码检测
+//
+// @param request - ListPwnedPasswordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPwnedPasswordsResponse
 func (client *Client) ListPwnedPasswordsWithOptions(request *ListPwnedPasswordsRequest, runtime *util.RuntimeOptions) (_result *ListPwnedPasswordsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3497,6 +4475,13 @@ func (client *Client) ListPwnedPasswordsWithOptions(request *ListPwnedPasswordsR
 	return _result, _err
 }
 
+// Summary:
+//
+// 弱密码检测
+//
+// @param request - ListPwnedPasswordsRequest
+//
+// @return ListPwnedPasswordsResponse
 func (client *Client) ListPwnedPasswords(request *ListPwnedPasswordsRequest) (_result *ListPwnedPasswordsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPwnedPasswordsResponse{}
@@ -3508,6 +4493,15 @@ func (client *Client) ListPwnedPasswords(request *ListPwnedPasswordsRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询应用用户
+//
+// @param request - ListUsersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUsersResponse
 func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *util.RuntimeOptions) (_result *ListUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3545,6 +4539,13 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询应用用户
+//
+// @param request - ListUsersRequest
+//
+// @return ListUsersResponse
 func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUsersResponse{}
@@ -3556,6 +4557,15 @@ func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 短信回执查询
+//
+// @param request - QuerySmsReportsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySmsReportsResponse
 func (client *Client) QuerySmsReportsWithOptions(request *QuerySmsReportsRequest, runtime *util.RuntimeOptions) (_result *QuerySmsReportsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3585,6 +4595,13 @@ func (client *Client) QuerySmsReportsWithOptions(request *QuerySmsReportsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 短信回执查询
+//
+// @param request - QuerySmsReportsRequest
+//
+// @return QuerySmsReportsResponse
 func (client *Client) QuerySmsReports(request *QuerySmsReportsRequest) (_result *QuerySmsReportsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QuerySmsReportsResponse{}
@@ -3596,6 +4613,15 @@ func (client *Client) QuerySmsReports(request *QuerySmsReportsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 短信上行查询
+//
+// @param request - QuerySmsUpsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySmsUpsResponse
 func (client *Client) QuerySmsUpsWithOptions(runtime *util.RuntimeOptions) (_result *QuerySmsUpsResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -3618,6 +4644,11 @@ func (client *Client) QuerySmsUpsWithOptions(runtime *util.RuntimeOptions) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 短信上行查询
+//
+// @return QuerySmsUpsResponse
 func (client *Client) QuerySmsUps() (_result *QuerySmsUpsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QuerySmsUpsResponse{}
@@ -3629,6 +4660,15 @@ func (client *Client) QuerySmsUps() (_result *QuerySmsUpsResponse, _err error) {
 	return _result, _err
 }
 
+// Summary:
+//
+// 注册认证器
+//
+// @param request - RegisterAuthenticatorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RegisterAuthenticatorResponse
 func (client *Client) RegisterAuthenticatorWithOptions(request *RegisterAuthenticatorRequest, runtime *util.RuntimeOptions) (_result *RegisterAuthenticatorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3702,6 +4742,13 @@ func (client *Client) RegisterAuthenticatorWithOptions(request *RegisterAuthenti
 	return _result, _err
 }
 
+// Summary:
+//
+// 注册认证器
+//
+// @param request - RegisterAuthenticatorRequest
+//
+// @return RegisterAuthenticatorResponse
 func (client *Client) RegisterAuthenticator(request *RegisterAuthenticatorRequest) (_result *RegisterAuthenticatorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RegisterAuthenticatorResponse{}
@@ -3713,6 +4760,15 @@ func (client *Client) RegisterAuthenticator(request *RegisterAuthenticatorReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 认证接口
+//
+// @param request - ServiceInvokeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ServiceInvokeResponse
 func (client *Client) ServiceInvokeWithOptions(request *ServiceInvokeRequest, runtime *util.RuntimeOptions) (_result *ServiceInvokeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3774,6 +4830,13 @@ func (client *Client) ServiceInvokeWithOptions(request *ServiceInvokeRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 认证接口
+//
+// @param request - ServiceInvokeRequest
+//
+// @return ServiceInvokeResponse
 func (client *Client) ServiceInvoke(request *ServiceInvokeRequest) (_result *ServiceInvokeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ServiceInvokeResponse{}
@@ -3785,6 +4848,15 @@ func (client *Client) ServiceInvoke(request *ServiceInvokeRequest) (_result *Ser
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新认证器名字
+//
+// @param request - UpdateAuthenticatorAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAuthenticatorAttributeResponse
 func (client *Client) UpdateAuthenticatorAttributeWithOptions(request *UpdateAuthenticatorAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateAuthenticatorAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3830,6 +4902,13 @@ func (client *Client) UpdateAuthenticatorAttributeWithOptions(request *UpdateAut
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新认证器名字
+//
+// @param request - UpdateAuthenticatorAttributeRequest
+//
+// @return UpdateAuthenticatorAttributeResponse
 func (client *Client) UpdateAuthenticatorAttribute(request *UpdateAuthenticatorAttributeRequest) (_result *UpdateAuthenticatorAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAuthenticatorAttributeResponse{}
@@ -3841,6 +4920,15 @@ func (client *Client) UpdateAuthenticatorAttribute(request *UpdateAuthenticatorA
 	return _result, _err
 }
 
+// Summary:
+//
+// 验证id_token
+//
+// @param request - VerifyIdTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VerifyIdTokenResponse
 func (client *Client) VerifyIdTokenWithOptions(request *VerifyIdTokenRequest, runtime *util.RuntimeOptions) (_result *VerifyIdTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3878,6 +4966,13 @@ func (client *Client) VerifyIdTokenWithOptions(request *VerifyIdTokenRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 验证id_token
+//
+// @param request - VerifyIdTokenRequest
+//
+// @return VerifyIdTokenResponse
 func (client *Client) VerifyIdToken(request *VerifyIdTokenRequest) (_result *VerifyIdTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &VerifyIdTokenResponse{}
@@ -3889,6 +4984,15 @@ func (client *Client) VerifyIdToken(request *VerifyIdTokenRequest) (_result *Ver
 	return _result, _err
 }
 
+// Summary:
+//
+// 认证用户
+//
+// @param request - VerifyUserAuthenticationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VerifyUserAuthenticationResponse
 func (client *Client) VerifyUserAuthenticationWithOptions(request *VerifyUserAuthenticationRequest, runtime *util.RuntimeOptions) (_result *VerifyUserAuthenticationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3966,6 +5070,13 @@ func (client *Client) VerifyUserAuthenticationWithOptions(request *VerifyUserAut
 	return _result, _err
 }
 
+// Summary:
+//
+// 认证用户
+//
+// @param request - VerifyUserAuthenticationRequest
+//
+// @return VerifyUserAuthenticationResponse
 func (client *Client) VerifyUserAuthentication(request *VerifyUserAuthenticationRequest) (_result *VerifyUserAuthenticationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &VerifyUserAuthenticationResponse{}
