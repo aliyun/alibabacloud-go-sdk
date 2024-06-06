@@ -853,6 +853,154 @@ func (s *GetBatchTranslateResponse) SetBody(v *GetBatchTranslateResponseBody) *G
 	return s
 }
 
+type GetBatchTranslateByVPCRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// translate_standard
+	ApiType *string `json:"ApiType,omitempty" xml:"ApiType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// text
+	FormatType *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// general
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// zh
+	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
+	// This parameter is required.
+	SourceText *string `json:"SourceText,omitempty" xml:"SourceText,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// en
+	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
+}
+
+func (s GetBatchTranslateByVPCRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBatchTranslateByVPCRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetBatchTranslateByVPCRequest) SetApiType(v string) *GetBatchTranslateByVPCRequest {
+	s.ApiType = &v
+	return s
+}
+
+func (s *GetBatchTranslateByVPCRequest) SetFormatType(v string) *GetBatchTranslateByVPCRequest {
+	s.FormatType = &v
+	return s
+}
+
+func (s *GetBatchTranslateByVPCRequest) SetScene(v string) *GetBatchTranslateByVPCRequest {
+	s.Scene = &v
+	return s
+}
+
+func (s *GetBatchTranslateByVPCRequest) SetSourceLanguage(v string) *GetBatchTranslateByVPCRequest {
+	s.SourceLanguage = &v
+	return s
+}
+
+func (s *GetBatchTranslateByVPCRequest) SetSourceText(v string) *GetBatchTranslateByVPCRequest {
+	s.SourceText = &v
+	return s
+}
+
+func (s *GetBatchTranslateByVPCRequest) SetTargetLanguage(v string) *GetBatchTranslateByVPCRequest {
+	s.TargetLanguage = &v
+	return s
+}
+
+type GetBatchTranslateByVPCResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// Param checker failed! param:[sourceText]. reason: stringChecker not pass. Param length not less [0] and not greater[10000]
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// DC2DCCC9-C3DF-4F59-8D8E-78185729F16D
+	RequestId      *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TranslatedList []map[string]interface{} `json:"TranslatedList,omitempty" xml:"TranslatedList,omitempty" type:"Repeated"`
+}
+
+func (s GetBatchTranslateByVPCResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBatchTranslateByVPCResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetBatchTranslateByVPCResponseBody) SetCode(v int32) *GetBatchTranslateByVPCResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetBatchTranslateByVPCResponseBody) SetMessage(v string) *GetBatchTranslateByVPCResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetBatchTranslateByVPCResponseBody) SetRequestId(v string) *GetBatchTranslateByVPCResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetBatchTranslateByVPCResponseBody) SetTranslatedList(v []map[string]interface{}) *GetBatchTranslateByVPCResponseBody {
+	s.TranslatedList = v
+	return s
+}
+
+type GetBatchTranslateByVPCResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetBatchTranslateByVPCResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetBatchTranslateByVPCResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBatchTranslateByVPCResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetBatchTranslateByVPCResponse) SetHeaders(v map[string]*string) *GetBatchTranslateByVPCResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetBatchTranslateByVPCResponse) SetStatusCode(v int32) *GetBatchTranslateByVPCResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetBatchTranslateByVPCResponse) SetBody(v *GetBatchTranslateByVPCResponseBody) *GetBatchTranslateByVPCResponse {
+	s.Body = v
+	return s
+}
+
 type GetDetectLanguageRequest struct {
 	// This parameter is required.
 	SourceText *string `json:"SourceText,omitempty" xml:"SourceText,omitempty"`
@@ -3204,6 +3352,189 @@ func (s *TranslateGeneralResponse) SetBody(v *TranslateGeneralResponseBody) *Tra
 	return s
 }
 
+type TranslateGeneralVpcRequest struct {
+	Context *string `json:"Context,omitempty" xml:"Context,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// text
+	FormatType *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// general
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// zh
+	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
+	// This parameter is required.
+	SourceText *string `json:"SourceText,omitempty" xml:"SourceText,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// en
+	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
+}
+
+func (s TranslateGeneralVpcRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TranslateGeneralVpcRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TranslateGeneralVpcRequest) SetContext(v string) *TranslateGeneralVpcRequest {
+	s.Context = &v
+	return s
+}
+
+func (s *TranslateGeneralVpcRequest) SetFormatType(v string) *TranslateGeneralVpcRequest {
+	s.FormatType = &v
+	return s
+}
+
+func (s *TranslateGeneralVpcRequest) SetScene(v string) *TranslateGeneralVpcRequest {
+	s.Scene = &v
+	return s
+}
+
+func (s *TranslateGeneralVpcRequest) SetSourceLanguage(v string) *TranslateGeneralVpcRequest {
+	s.SourceLanguage = &v
+	return s
+}
+
+func (s *TranslateGeneralVpcRequest) SetSourceText(v string) *TranslateGeneralVpcRequest {
+	s.SourceText = &v
+	return s
+}
+
+func (s *TranslateGeneralVpcRequest) SetTargetLanguage(v string) *TranslateGeneralVpcRequest {
+	s.TargetLanguage = &v
+	return s
+}
+
+type TranslateGeneralVpcResponseBody struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 200
+	Code *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *TranslateGeneralVpcResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// translate from source to target not support
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// DC2DCCC9-C3DF-4F59-8D8E-78185729F16D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s TranslateGeneralVpcResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TranslateGeneralVpcResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TranslateGeneralVpcResponseBody) SetCode(v int32) *TranslateGeneralVpcResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *TranslateGeneralVpcResponseBody) SetData(v *TranslateGeneralVpcResponseBodyData) *TranslateGeneralVpcResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *TranslateGeneralVpcResponseBody) SetMessage(v string) *TranslateGeneralVpcResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *TranslateGeneralVpcResponseBody) SetRequestId(v string) *TranslateGeneralVpcResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type TranslateGeneralVpcResponseBodyData struct {
+	// example:
+	//
+	// zh
+	DetectedLanguage *string `json:"DetectedLanguage,omitempty" xml:"DetectedLanguage,omitempty"`
+	// example:
+	//
+	// Hello
+	Translated *string `json:"Translated,omitempty" xml:"Translated,omitempty"`
+	// example:
+	//
+	// 10
+	WordCount *string `json:"WordCount,omitempty" xml:"WordCount,omitempty"`
+}
+
+func (s TranslateGeneralVpcResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TranslateGeneralVpcResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *TranslateGeneralVpcResponseBodyData) SetDetectedLanguage(v string) *TranslateGeneralVpcResponseBodyData {
+	s.DetectedLanguage = &v
+	return s
+}
+
+func (s *TranslateGeneralVpcResponseBodyData) SetTranslated(v string) *TranslateGeneralVpcResponseBodyData {
+	s.Translated = &v
+	return s
+}
+
+func (s *TranslateGeneralVpcResponseBodyData) SetWordCount(v string) *TranslateGeneralVpcResponseBodyData {
+	s.WordCount = &v
+	return s
+}
+
+type TranslateGeneralVpcResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TranslateGeneralVpcResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s TranslateGeneralVpcResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TranslateGeneralVpcResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TranslateGeneralVpcResponse) SetHeaders(v map[string]*string) *TranslateGeneralVpcResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TranslateGeneralVpcResponse) SetStatusCode(v int32) *TranslateGeneralVpcResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TranslateGeneralVpcResponse) SetBody(v *TranslateGeneralVpcResponseBody) *TranslateGeneralVpcResponse {
+	s.Body = v
+	return s
+}
+
 type TranslateImageRequest struct {
 	// example:
 	//
@@ -4104,6 +4435,86 @@ func (client *Client) GetBatchTranslate(request *GetBatchTranslateRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &GetBatchTranslateResponse{}
 	_body, _err := client.GetBatchTranslateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// GetBatchTranslateByVPC
+//
+// @param request - GetBatchTranslateByVPCRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetBatchTranslateByVPCResponse
+func (client *Client) GetBatchTranslateByVPCWithOptions(request *GetBatchTranslateByVPCRequest, runtime *util.RuntimeOptions) (_result *GetBatchTranslateByVPCResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiType)) {
+		body["ApiType"] = request.ApiType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormatType)) {
+		body["FormatType"] = request.FormatType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scene)) {
+		body["Scene"] = request.Scene
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceLanguage)) {
+		body["SourceLanguage"] = request.SourceLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceText)) {
+		body["SourceText"] = request.SourceText
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetLanguage)) {
+		body["TargetLanguage"] = request.TargetLanguage
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetBatchTranslateByVPC"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetBatchTranslateByVPCResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// GetBatchTranslateByVPC
+//
+// @param request - GetBatchTranslateByVPCRequest
+//
+// @return GetBatchTranslateByVPCResponse
+func (client *Client) GetBatchTranslateByVPC(request *GetBatchTranslateByVPCRequest) (_result *GetBatchTranslateByVPCResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetBatchTranslateByVPCResponse{}
+	_body, _err := client.GetBatchTranslateByVPCWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5191,6 +5602,88 @@ func (client *Client) TranslateGeneral(request *TranslateGeneralRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &TranslateGeneralResponse{}
 	_body, _err := client.TranslateGeneralWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// TranslateGeneralVpc
+//
+// @param request - TranslateGeneralVpcRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TranslateGeneralVpcResponse
+func (client *Client) TranslateGeneralVpcWithOptions(request *TranslateGeneralVpcRequest, runtime *util.RuntimeOptions) (_result *TranslateGeneralVpcResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Context)) {
+		query["Context"] = request.Context
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FormatType)) {
+		body["FormatType"] = request.FormatType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scene)) {
+		body["Scene"] = request.Scene
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceLanguage)) {
+		body["SourceLanguage"] = request.SourceLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceText)) {
+		body["SourceText"] = request.SourceText
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetLanguage)) {
+		body["TargetLanguage"] = request.TargetLanguage
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TranslateGeneralVpc"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TranslateGeneralVpcResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// TranslateGeneralVpc
+//
+// @param request - TranslateGeneralVpcRequest
+//
+// @return TranslateGeneralVpcResponse
+func (client *Client) TranslateGeneralVpc(request *TranslateGeneralVpcRequest) (_result *TranslateGeneralVpcResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TranslateGeneralVpcResponse{}
+	_body, _err := client.TranslateGeneralVpcWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
