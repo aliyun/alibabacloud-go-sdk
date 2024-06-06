@@ -301,6 +301,57 @@ func (s *CooperationShop) SetShopId(v string) *CooperationShop {
 	return s
 }
 
+type CreateAliPayUrlRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	ShopId *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
+}
+
+func (s CreateAliPayUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAliPayUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAliPayUrlRequest) SetShopId(v string) *CreateAliPayUrlRequest {
+	s.ShopId = &v
+	return s
+}
+
+type CreateAliPayUrlResult struct {
+	AccountId          *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	MemberId           *string `json:"memberId,omitempty" xml:"memberId,omitempty"`
+	ZftWithholdSignUrl *string `json:"zftWithholdSignUrl,omitempty" xml:"zftWithholdSignUrl,omitempty"`
+}
+
+func (s CreateAliPayUrlResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAliPayUrlResult) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAliPayUrlResult) SetAccountId(v string) *CreateAliPayUrlResult {
+	s.AccountId = &v
+	return s
+}
+
+func (s *CreateAliPayUrlResult) SetMemberId(v string) *CreateAliPayUrlResult {
+	s.MemberId = &v
+	return s
+}
+
+func (s *CreateAliPayUrlResult) SetZftWithholdSignUrl(v string) *CreateAliPayUrlResult {
+	s.ZftWithholdSignUrl = &v
+	return s
+}
+
 type DeliveryInfo struct {
 	// example:
 	//
@@ -933,6 +984,57 @@ func (s *LogisticsOrderResult) SetMailNo(v string) *LogisticsOrderResult {
 	return s
 }
 
+type MemberAccountRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	ShopId *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
+}
+
+func (s MemberAccountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MemberAccountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MemberAccountRequest) SetShopId(v string) *MemberAccountRequest {
+	s.ShopId = &v
+	return s
+}
+
+type MemberAccountResult struct {
+	// example:
+	//
+	// "yue***@newburn.cn"
+	AccountNo []*string `json:"accountNo,omitempty" xml:"accountNo,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 123
+	ShopId *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
+}
+
+func (s MemberAccountResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MemberAccountResult) GoString() string {
+	return s.String()
+}
+
+func (s *MemberAccountResult) SetAccountNo(v []*string) *MemberAccountResult {
+	s.AccountNo = v
+	return s
+}
+
+func (s *MemberAccountResult) SetShopId(v string) *MemberAccountResult {
+	s.ShopId = &v
+	return s
+}
+
 type Money struct {
 	Amount         *int64         `json:"amount,omitempty" xml:"amount,omitempty"`
 	AmountAsString *string        `json:"amountAsString,omitempty" xml:"amountAsString,omitempty"`
@@ -1539,6 +1641,10 @@ type Product struct {
 	Images        []*string `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
 	// example:
 	//
+	// 21000017-4580902812
+	LmItemId *string `json:"lmItemId,omitempty" xml:"lmItemId,omitempty"`
+	// example:
+	//
 	// https://img.alicdn.com/imgextra/i3/2214281521988/O1CN01w4vomR1QYYEx6nyr5_!!2214281521988.jpg
 	PicUrl *string `json:"picUrl,omitempty" xml:"picUrl,omitempty"`
 	// example:
@@ -1636,6 +1742,11 @@ func (s *Product) SetFuzzyQuantity(v string) *Product {
 
 func (s *Product) SetImages(v []*string) *Product {
 	s.Images = v
+	return s
+}
+
+func (s *Product) SetLmItemId(v string) *Product {
+	s.LmItemId = &v
 	return s
 }
 
@@ -1953,6 +2064,10 @@ type ProductSaleInfo struct {
 	FuzzyQuantity *string `json:"fuzzyQuantity,omitempty" xml:"fuzzyQuantity,omitempty"`
 	// example:
 	//
+	// 21000017-4580902812
+	LmItemId *string `json:"lmItemId,omitempty" xml:"lmItemId,omitempty"`
+	// example:
+	//
 	// 660460842235822080
 	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
 	// example:
@@ -1998,6 +2113,11 @@ func (s *ProductSaleInfo) SetDivisionCode(v string) *ProductSaleInfo {
 
 func (s *ProductSaleInfo) SetFuzzyQuantity(v string) *ProductSaleInfo {
 	s.FuzzyQuantity = &v
+	return s
+}
+
+func (s *ProductSaleInfo) SetLmItemId(v string) *ProductSaleInfo {
+	s.LmItemId = &v
 	return s
 }
 
@@ -3035,6 +3155,97 @@ func (s *Shop) SetStatus(v string) *Shop {
 	return s
 }
 
+type ShopCreateRequest struct {
+	// example:
+	//
+	// 12344335
+	AfterSaleDingTalkId *string `json:"afterSaleDingTalkId,omitempty" xml:"afterSaleDingTalkId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 店铺描述
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12344335
+	OperatorDingTalkId *string `json:"operatorDingTalkId,omitempty" xml:"operatorDingTalkId,omitempty"`
+	// example:
+	//
+	// 12344335
+	PreSaleDingTalkId *string `json:"preSaleDingTalkId,omitempty" xml:"preSaleDingTalkId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 店铺名称
+	ShopName *string `json:"shopName,omitempty" xml:"shopName,omitempty"`
+}
+
+func (s ShopCreateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ShopCreateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ShopCreateRequest) SetAfterSaleDingTalkId(v string) *ShopCreateRequest {
+	s.AfterSaleDingTalkId = &v
+	return s
+}
+
+func (s *ShopCreateRequest) SetDescription(v string) *ShopCreateRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *ShopCreateRequest) SetOperatorDingTalkId(v string) *ShopCreateRequest {
+	s.OperatorDingTalkId = &v
+	return s
+}
+
+func (s *ShopCreateRequest) SetPreSaleDingTalkId(v string) *ShopCreateRequest {
+	s.PreSaleDingTalkId = &v
+	return s
+}
+
+func (s *ShopCreateRequest) SetShopName(v string) *ShopCreateRequest {
+	s.ShopName = &v
+	return s
+}
+
+type ShopCreateResult struct {
+	// example:
+	//
+	// 123
+	ShopId *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
+	// example:
+	//
+	// WORKING
+	ShopStatus *string `json:"shopStatus,omitempty" xml:"shopStatus,omitempty"`
+}
+
+func (s ShopCreateResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ShopCreateResult) GoString() string {
+	return s.String()
+}
+
+func (s *ShopCreateResult) SetShopId(v string) *ShopCreateResult {
+	s.ShopId = &v
+	return s
+}
+
+func (s *ShopCreateResult) SetShopStatus(v string) *ShopCreateResult {
+	s.ShopStatus = &v
+	return s
+}
+
 type ShopPageDataResult struct {
 	// example:
 	//
@@ -3150,6 +3361,59 @@ func (s *ShopPageResult) SetShopList(v []*ShopPageDataResult) *ShopPageResult {
 
 func (s *ShopPageResult) SetTotal(v int32) *ShopPageResult {
 	s.Total = &v
+	return s
+}
+
+type ShopStatusChangeRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	ShopId *string `json:"shopId,omitempty" xml:"shopId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// WORKING
+	ShopStatus *string `json:"shopStatus,omitempty" xml:"shopStatus,omitempty"`
+}
+
+func (s ShopStatusChangeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ShopStatusChangeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ShopStatusChangeRequest) SetShopId(v string) *ShopStatusChangeRequest {
+	s.ShopId = &v
+	return s
+}
+
+func (s *ShopStatusChangeRequest) SetShopStatus(v string) *ShopStatusChangeRequest {
+	s.ShopStatus = &v
+	return s
+}
+
+type ShopStatusChangeResult struct {
+	// example:
+	//
+	// true
+	Operate *bool `json:"operate,omitempty" xml:"operate,omitempty"`
+}
+
+func (s ShopStatusChangeResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ShopStatusChangeResult) GoString() string {
+	return s.String()
+}
+
+func (s *ShopStatusChangeResult) SetOperate(v bool) *ShopStatusChangeResult {
+	s.Operate = &v
 	return s
 }
 
