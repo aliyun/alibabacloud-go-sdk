@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -95,17 +92,47 @@ func (s *AliyunAccounts) SetGmtModifyTime(v string) *AliyunAccounts {
 }
 
 type CodeSourceItem struct {
-	CodeBranch          *string `json:"CodeBranch,omitempty" xml:"CodeBranch,omitempty"`
-	CodeCommit          *string `json:"CodeCommit,omitempty" xml:"CodeCommit,omitempty"`
+	// example:
+	//
+	// master
+	CodeBranch *string `json:"CodeBranch,omitempty" xml:"CodeBranch,omitempty"`
+	// example:
+	//
+	// 44da1*******
+	CodeCommit *string `json:"CodeCommit,omitempty" xml:"CodeCommit,omitempty"`
+	// example:
+	//
+	// https://code.aliyun.com/pai-dlc/examples.git
 	CodeRepo            *string `json:"CodeRepo,omitempty" xml:"CodeRepo,omitempty"`
 	CodeRepoAccessToken *string `json:"CodeRepoAccessToken,omitempty" xml:"CodeRepoAccessToken,omitempty"`
-	CodeRepoUserName    *string `json:"CodeRepoUserName,omitempty" xml:"CodeRepoUserName,omitempty"`
-	CodeSourceId        *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
-	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DisplayName         *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	GmtCreateTime       *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifyTime       *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
-	UserId              *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// user
+	CodeRepoUserName *string `json:"CodeRepoUserName,omitempty" xml:"CodeRepoUserName,omitempty"`
+	// example:
+	//
+	// code-20210111103721-85qz*****
+	CodeSourceId *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
+	// example:
+	//
+	// code source of dlc examples
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// MyCodeSourceName1
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// 2021-01-18T12:52:15Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-18T12:52:15Z
+	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
+	// example:
+	//
+	// 115**********
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s CodeSourceItem) String() string {
@@ -172,13 +199,22 @@ func (s *CodeSourceItem) SetUserId(v string) *CodeSourceItem {
 }
 
 type ContainerSpec struct {
-	Args       []*string             `json:"Args,omitempty" xml:"Args,omitempty" type:"Repeated"`
-	Command    []*string             `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
-	Env        []*EnvVar             `json:"Env,omitempty" xml:"Env,omitempty" type:"Repeated"`
-	Image      *string               `json:"Image,omitempty" xml:"Image,omitempty"`
-	Name       *string               `json:"Name,omitempty" xml:"Name,omitempty"`
-	Resources  *ResourceRequirements `json:"Resources,omitempty" xml:"Resources,omitempty"`
-	WorkingDir *string               `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
+	Args    []*string `json:"Args,omitempty" xml:"Args,omitempty" type:"Repeated"`
+	Command []*string `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
+	Env     []*EnvVar `json:"Env,omitempty" xml:"Env,omitempty" type:"Repeated"`
+	// example:
+	//
+	// registry.cn-hangzhou.aliyuncs.com/pai-dlc/curl:v1.0.0
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// example:
+	//
+	// data-init
+	Name      *string               `json:"Name,omitempty" xml:"Name,omitempty"`
+	Resources *ResourceRequirements `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	// example:
+	//
+	// /root
+	WorkingDir *string `json:"WorkingDir,omitempty" xml:"WorkingDir,omitempty"`
 }
 
 func (s ContainerSpec) String() string {
@@ -225,18 +261,54 @@ func (s *ContainerSpec) SetWorkingDir(v string) *ContainerSpec {
 }
 
 type DataSourceItem struct {
-	DataSourceId   *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// example:
+	//
+	// data-20210114104214-vf9lowjt3pso
+	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// example:
+	//
+	// nas
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DisplayName    *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Endpoint       *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	FileSystemId   *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	GmtCreateTime  *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifyTime  *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
-	MountPath      *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	Options        *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	Path           *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	UserId         *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// data source of dlc examples
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// nas-data
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// oss-cn-beijing-internal.aliyuncs.com
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// example:
+	//
+	// 1ca404****
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:35:00Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:36:00Z
+	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
+	// example:
+	//
+	// /root/data/
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// example:
+	//
+	// {"key": "value"}
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// example:
+	//
+	// oss://mybucket/path/to/dir
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// 123456789
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DataSourceItem) String() string {
@@ -308,12 +380,30 @@ func (s *DataSourceItem) SetUserId(v string) *DataSourceItem {
 }
 
 type DebuggerConfig struct {
-	Content          *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// {\"description\":\"这是一个新的pytorchjob模板\"}
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// dc-vf9lowjt3pso
 	DebuggerConfigId *string `json:"DebuggerConfigId,omitempty" xml:"DebuggerConfigId,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DisplayName      *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	GmtCreateTime    *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifyTime    *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
+	// example:
+	//
+	// 这是一个Pytorch的基础配置模板
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// Pytorch Experiment Config
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:35:00Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:36:00Z
+	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
 }
 
 func (s DebuggerConfig) String() string {
@@ -355,9 +445,21 @@ func (s *DebuggerConfig) SetGmtModifyTime(v string) *DebuggerConfig {
 }
 
 type DebuggerJob struct {
-	DebuggerJobId    *string `json:"DebuggerJobId,omitempty" xml:"DebuggerJobId,omitempty"`
-	DisplayName      *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Duration         *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// dlc20210126170216-mtl37ge7gkvdz
+	DebuggerJobId *string `json:"DebuggerJobId,omitempty" xml:"DebuggerJobId,omitempty"`
+	// example:
+	//
+	// dlc debugger test
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// 2932
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:35:00Z
 	GmtCreateTime    *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	GmtFailedTime    *string `json:"GmtFailedTime,omitempty" xml:"GmtFailedTime,omitempty"`
 	GmtFinishTime    *string `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
@@ -365,10 +467,22 @@ type DebuggerJob struct {
 	GmtStoppedTime   *string `json:"GmtStoppedTime,omitempty" xml:"GmtStoppedTime,omitempty"`
 	GmtSubmittedTime *string `json:"GmtSubmittedTime,omitempty" xml:"GmtSubmittedTime,omitempty"`
 	GmtSucceedTime   *string `json:"GmtSucceedTime,omitempty" xml:"GmtSucceedTime,omitempty"`
-	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UserId           *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	WorkspaceId      *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	WorkspaceName    *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 12344556
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// workspace01
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// public
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
 func (s DebuggerJob) String() string {
@@ -450,13 +564,34 @@ func (s *DebuggerJob) SetWorkspaceName(v string) *DebuggerJob {
 }
 
 type DebuggerJobIssue struct {
-	DebuggerJobIssue   *string `json:"DebuggerJobIssue,omitempty" xml:"DebuggerJobIssue,omitempty"`
-	GmtCreateTime      *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// {"Name": "CPUBottleneck",  "Triggered": 10, "Violations": 2,  "Details": "{}"}
+	DebuggerJobIssue *string `json:"DebuggerJobIssue,omitempty" xml:"DebuggerJobIssue,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:35:00Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// de-826ca1bcfba30
 	JobDebuggerIssueId *string `json:"JobDebuggerIssueId,omitempty" xml:"JobDebuggerIssueId,omitempty"`
-	JobId              *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	ReasonCode         *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	ReasonMessage      *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
-	RuleName           *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// dlc-20210126170216-mtl37ge7gkvdz
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// 1002300
+	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// example:
+	//
+	// GPU利用率低
+	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	// example:
+	//
+	// ProfileReport
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 
 func (s DebuggerJobIssue) String() string {
@@ -503,13 +638,34 @@ func (s *DebuggerJobIssue) SetRuleName(v string) *DebuggerJobIssue {
 }
 
 type DebuggerResult struct {
+	// example:
+	//
+	// {\"description\":\"这是一个新的pytorchjob模板\"}
 	DebuggerConfigContent *string `json:"DebuggerConfigContent,omitempty" xml:"DebuggerConfigContent,omitempty"`
-	DebuggerJobIssues     *string `json:"DebuggerJobIssues,omitempty" xml:"DebuggerJobIssues,omitempty"`
-	DebuggerJobStatus     *string `json:"DebuggerJobStatus,omitempty" xml:"DebuggerJobStatus,omitempty"`
-	DebuggerReportURL     *string `json:"DebuggerReportURL,omitempty" xml:"DebuggerReportURL,omitempty"`
-	JobDisplayName        *string `json:"JobDisplayName,omitempty" xml:"JobDisplayName,omitempty"`
-	JobId                 *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	JobUserId             *string `json:"JobUserId,omitempty" xml:"JobUserId,omitempty"`
+	// example:
+	//
+	// { "ProfileReport": { "Name": "CPUBottleneck","Triggered": 10,"Violations": 2,"Details": "{}"}, "LowCPU": { "Name": "CPUBottleneck","Triggered": 10,"Violations": 2,"Details": "{}"}}
+	DebuggerJobIssues *string `json:"DebuggerJobIssues,omitempty" xml:"DebuggerJobIssues,omitempty"`
+	// example:
+	//
+	// {"Running": 1, "Failed": 1, "Succeeded": 2}
+	DebuggerJobStatus *string `json:"DebuggerJobStatus,omitempty" xml:"DebuggerJobStatus,omitempty"`
+	// example:
+	//
+	// http://xxx.com/debug/report/download/new_xxxx.html
+	DebuggerReportURL *string `json:"DebuggerReportURL,omitempty" xml:"DebuggerReportURL,omitempty"`
+	// example:
+	//
+	// dlc debugger test
+	JobDisplayName *string `json:"JobDisplayName,omitempty" xml:"JobDisplayName,omitempty"`
+	// example:
+	//
+	// dlc-20210126170216-mtl37ge7gkvdz
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// 12344556
+	JobUserId *string `json:"JobUserId,omitempty" xml:"JobUserId,omitempty"`
 }
 
 func (s DebuggerResult) String() string {
@@ -556,19 +712,52 @@ func (s *DebuggerResult) SetJobUserId(v string) *DebuggerResult {
 }
 
 type EcsSpec struct {
-	AcceleratorType        *string   `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
-	Cpu                    *int32    `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	DefaultGPUDriver       *string   `json:"DefaultGPUDriver,omitempty" xml:"DefaultGPUDriver,omitempty"`
-	Gpu                    *int32    `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
-	GpuType                *string   `json:"GpuType,omitempty" xml:"GpuType,omitempty"`
-	InstanceType           *string   `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	IsAvailable            *bool     `json:"IsAvailable,omitempty" xml:"IsAvailable,omitempty"`
-	Memory                 *int32    `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// GPU
+	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	// example:
+	//
+	// 12
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// example:
+	//
+	// 470.199.02
+	DefaultGPUDriver *string `json:"DefaultGPUDriver,omitempty" xml:"DefaultGPUDriver,omitempty"`
+	// example:
+	//
+	// 1
+	Gpu *int32 `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
+	// example:
+	//
+	// NVIDIA v100
+	GpuType *string `json:"GpuType,omitempty" xml:"GpuType,omitempty"`
+	// example:
+	//
+	// ecs.gn6e-c12g1.3xlarge
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// true
+	IsAvailable *bool `json:"IsAvailable,omitempty" xml:"IsAvailable,omitempty"`
+	// example:
+	//
+	// 92
+	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// 0.1
 	NonProtectSpotDiscount *float32  `json:"NonProtectSpotDiscount,omitempty" xml:"NonProtectSpotDiscount,omitempty"`
 	PaymentTypes           []*string `json:"PaymentTypes,omitempty" xml:"PaymentTypes,omitempty" type:"Repeated"`
-	ResourceType           *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	SpotStockStatus        *string   `json:"SpotStockStatus,omitempty" xml:"SpotStockStatus,omitempty"`
-	SupportedGPUDrivers    []*string `json:"SupportedGPUDrivers,omitempty" xml:"SupportedGPUDrivers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ECS
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// WithStock
+	SpotStockStatus     *string   `json:"SpotStockStatus,omitempty" xml:"SpotStockStatus,omitempty"`
+	SupportedGPUDrivers []*string `json:"SupportedGPUDrivers,omitempty" xml:"SupportedGPUDrivers,omitempty" type:"Repeated"`
 }
 
 func (s EcsSpec) String() string {
@@ -645,7 +834,13 @@ func (s *EcsSpec) SetSupportedGPUDrivers(v []*string) *EcsSpec {
 }
 
 type EnvVar struct {
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// ENABLE_DEBUG
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// true
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -750,10 +945,13 @@ func (s *ExtraPodSpec) SetSideCarContainers(v []*ContainerSpec) *ExtraPodSpec {
 }
 
 type FreeResourceClusterControlItem struct {
-	ClusterID                    *string `json:"ClusterID,omitempty" xml:"ClusterID,omitempty"`
-	ClusterName                  *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	CrossClusters                *bool   `json:"CrossClusters,omitempty" xml:"CrossClusters,omitempty"`
-	EnableFreeResource           *bool   `json:"EnableFreeResource,omitempty" xml:"EnableFreeResource,omitempty"`
+	ClusterID          *string `json:"ClusterID,omitempty" xml:"ClusterID,omitempty"`
+	ClusterName        *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	CrossClusters      *bool   `json:"CrossClusters,omitempty" xml:"CrossClusters,omitempty"`
+	EnableFreeResource *bool   `json:"EnableFreeResource,omitempty" xml:"EnableFreeResource,omitempty"`
+	// example:
+	//
+	// frcc-whateversth
 	FreeResourceClusterControlId *string `json:"FreeResourceClusterControlId,omitempty" xml:"FreeResourceClusterControlId,omitempty"`
 	GmtCreateTime                *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	GmtModifyTime                *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
@@ -809,7 +1007,13 @@ func (s *FreeResourceClusterControlItem) SetRegionID(v string) *FreeResourceClus
 }
 
 type FreeResourceDetail struct {
-	Amount       *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// example:
+	//
+	// 2
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// example:
+	//
+	// CPU
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -832,14 +1036,32 @@ func (s *FreeResourceDetail) SetResourceType(v string) *FreeResourceDetail {
 }
 
 type FreeResourceItem struct {
+	// example:
+	//
+	// 2
 	AvailableNumber *int64  `json:"AvailableNumber,omitempty" xml:"AvailableNumber,omitempty"`
 	ClusterID       *string `json:"ClusterID,omitempty" xml:"ClusterID,omitempty"`
 	ClusterName     *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	FreeResourceId  *string `json:"FreeResourceId,omitempty" xml:"FreeResourceId,omitempty"`
-	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifyTime   *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
-	RegionID        *string `json:"RegionID,omitempty" xml:"RegionID,omitempty"`
-	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// freeres-whateversth
+	FreeResourceId *string `json:"FreeResourceId,omitempty" xml:"FreeResourceId,omitempty"`
+	// example:
+	//
+	// 2021-01-18T12:52:15Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-18T12:52:15Z
+	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
+	// example:
+	//
+	// inner
+	RegionID *string `json:"RegionID,omitempty" xml:"RegionID,omitempty"`
+	// example:
+	//
+	// cpu
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s FreeResourceItem) String() string {
@@ -891,8 +1113,14 @@ func (s *FreeResourceItem) SetResourceType(v string) *FreeResourceItem {
 }
 
 type GPUDetail struct {
-	GPU             *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
-	GPUType         *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	GPU *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	// example:
+	//
+	// Tesla-V100-32G
+	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	// example:
+	//
+	// nvidia.com/gpu-tesla-v100-sxm2-16gb
 	GPUTypeFullName *string `json:"GPUTypeFullName,omitempty" xml:"GPUTypeFullName,omitempty"`
 }
 
@@ -920,7 +1148,10 @@ func (s *GPUDetail) SetGPUTypeFullName(v string) *GPUDetail {
 }
 
 type ImageConfig struct {
-	Auth           *string `json:"Auth,omitempty" xml:"Auth,omitempty"`
+	Auth *string `json:"Auth,omitempty" xml:"Auth,omitempty"`
+	// example:
+	//
+	// registry.cn-hangzhou.aliyuncs.com
 	DockerRegistry *string `json:"DockerRegistry,omitempty" xml:"DockerRegistry,omitempty"`
 	Password       *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	Username       *string `json:"Username,omitempty" xml:"Username,omitempty"`
@@ -955,13 +1186,34 @@ func (s *ImageConfig) SetUsername(v string) *ImageConfig {
 }
 
 type ImageItem struct {
-	AcceleratorType   *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
-	AuthorId          *string `json:"AuthorId,omitempty" xml:"AuthorId,omitempty"`
-	Framework         *string `json:"Framework,omitempty" xml:"Framework,omitempty"`
+	// example:
+	//
+	// gpu
+	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	// example:
+	//
+	// ken
+	AuthorId *string `json:"AuthorId,omitempty" xml:"AuthorId,omitempty"`
+	// example:
+	//
+	// PyTorchJob
+	Framework *string `json:"Framework,omitempty" xml:"Framework,omitempty"`
+	// example:
+	//
+	// Community
 	ImageProviderType *string `json:"ImageProviderType,omitempty" xml:"ImageProviderType,omitempty"`
-	ImageTag          *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	ImageUrl          *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	ImageUrlVpc       *string `json:"ImageUrlVpc,omitempty" xml:"ImageUrlVpc,omitempty"`
+	// example:
+	//
+	// tensorflow-training:2.3-cpu-py36-ubuntu18.04
+	ImageTag *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
+	// example:
+	//
+	// registry.cn-beijing.aliyuncs.com/pai-dlc/tensorflow-training:2.3-cpu-py36-ubuntu18.04
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// example:
+	//
+	// registry-vpc.cn-beijing.aliyuncs.com/pai-dlc/tensorflow-training:2.3-cpu-py36-ubuntu18.04
+	ImageUrlVpc *string `json:"ImageUrlVpc,omitempty" xml:"ImageUrlVpc,omitempty"`
 }
 
 func (s ImageItem) String() string {
@@ -1043,21 +1295,51 @@ func (s *JobDebuggerConfig) SetJobId(v string) *JobDebuggerConfig {
 }
 
 type JobElasticSpec struct {
-	AIMasterDockerImage      *string `json:"AIMasterDockerImage,omitempty" xml:"AIMasterDockerImage,omitempty"`
-	AIMasterType             *string `json:"AIMasterType,omitempty" xml:"AIMasterType,omitempty"`
-	EDPMaxParallelism        *int32  `json:"EDPMaxParallelism,omitempty" xml:"EDPMaxParallelism,omitempty"`
-	EDPMinParallelism        *int32  `json:"EDPMinParallelism,omitempty" xml:"EDPMinParallelism,omitempty"`
-	ElasticStrategy          *string `json:"ElasticStrategy,omitempty" xml:"ElasticStrategy,omitempty"`
-	EnableAIMaster           *bool   `json:"EnableAIMaster,omitempty" xml:"EnableAIMaster,omitempty"`
-	EnableEDP                *bool   `json:"EnableEDP,omitempty" xml:"EnableEDP,omitempty"`
-	EnableElasticTraining    *bool   `json:"EnableElasticTraining,omitempty" xml:"EnableElasticTraining,omitempty"`
-	EnablePsJobElasticPS     *bool   `json:"EnablePsJobElasticPS,omitempty" xml:"EnablePsJobElasticPS,omitempty"`
-	EnablePsJobElasticWorker *bool   `json:"EnablePsJobElasticWorker,omitempty" xml:"EnablePsJobElasticWorker,omitempty"`
-	EnablePsResourceEstimate *bool   `json:"EnablePsResourceEstimate,omitempty" xml:"EnablePsResourceEstimate,omitempty"`
-	MaxParallelism           *int32  `json:"MaxParallelism,omitempty" xml:"MaxParallelism,omitempty"`
-	MinParallelism           *int32  `json:"MinParallelism,omitempty" xml:"MinParallelism,omitempty"`
-	PSMaxParallelism         *int32  `json:"PSMaxParallelism,omitempty" xml:"PSMaxParallelism,omitempty"`
-	PSMinParallelism         *int32  `json:"PSMinParallelism,omitempty" xml:"PSMinParallelism,omitempty"`
+	AIMasterDockerImage *string `json:"AIMasterDockerImage,omitempty" xml:"AIMasterDockerImage,omitempty"`
+	AIMasterType        *string `json:"AIMasterType,omitempty" xml:"AIMasterType,omitempty"`
+	// example:
+	//
+	// 16
+	EDPMaxParallelism *int32 `json:"EDPMaxParallelism,omitempty" xml:"EDPMaxParallelism,omitempty"`
+	// example:
+	//
+	// 8
+	EDPMinParallelism *int32  `json:"EDPMinParallelism,omitempty" xml:"EDPMinParallelism,omitempty"`
+	ElasticStrategy   *string `json:"ElasticStrategy,omitempty" xml:"ElasticStrategy,omitempty"`
+	EnableAIMaster    *bool   `json:"EnableAIMaster,omitempty" xml:"EnableAIMaster,omitempty"`
+	// example:
+	//
+	// true
+	EnableEDP *bool `json:"EnableEDP,omitempty" xml:"EnableEDP,omitempty"`
+	// example:
+	//
+	// true
+	EnableElasticTraining *bool `json:"EnableElasticTraining,omitempty" xml:"EnableElasticTraining,omitempty"`
+	// example:
+	//
+	// true
+	EnablePsJobElasticPS     *bool `json:"EnablePsJobElasticPS,omitempty" xml:"EnablePsJobElasticPS,omitempty"`
+	EnablePsJobElasticWorker *bool `json:"EnablePsJobElasticWorker,omitempty" xml:"EnablePsJobElasticWorker,omitempty"`
+	// example:
+	//
+	// true
+	EnablePsResourceEstimate *bool `json:"EnablePsResourceEstimate,omitempty" xml:"EnablePsResourceEstimate,omitempty"`
+	// example:
+	//
+	// 8
+	MaxParallelism *int32 `json:"MaxParallelism,omitempty" xml:"MaxParallelism,omitempty"`
+	// example:
+	//
+	// 1
+	MinParallelism *int32 `json:"MinParallelism,omitempty" xml:"MinParallelism,omitempty"`
+	// example:
+	//
+	// 10
+	PSMaxParallelism *int32 `json:"PSMaxParallelism,omitempty" xml:"PSMaxParallelism,omitempty"`
+	// example:
+	//
+	// 4
+	PSMinParallelism *int32 `json:"PSMinParallelism,omitempty" xml:"PSMinParallelism,omitempty"`
 }
 
 func (s JobElasticSpec) String() string {
@@ -1144,40 +1426,124 @@ func (s *JobElasticSpec) SetPSMinParallelism(v int32) *JobElasticSpec {
 }
 
 type JobItem struct {
-	CodeSource          *JobItemCodeSource    `json:"CodeSource,omitempty" xml:"CodeSource,omitempty" type:"Struct"`
-	DataSources         []*JobItemDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
-	DisplayName         *string               `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Duration            *int64                `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	EnabledDebugger     *bool                 `json:"EnabledDebugger,omitempty" xml:"EnabledDebugger,omitempty"`
-	Envs                map[string]*string    `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	GmtCreateTime       *string               `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtFailedTime       *string               `json:"GmtFailedTime,omitempty" xml:"GmtFailedTime,omitempty"`
-	GmtFinishTime       *string               `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
-	GmtRunningTime      *string               `json:"GmtRunningTime,omitempty" xml:"GmtRunningTime,omitempty"`
-	GmtStoppedTime      *string               `json:"GmtStoppedTime,omitempty" xml:"GmtStoppedTime,omitempty"`
-	GmtSubmittedTime    *string               `json:"GmtSubmittedTime,omitempty" xml:"GmtSubmittedTime,omitempty"`
-	GmtSuccessedTime    *string               `json:"GmtSuccessedTime,omitempty" xml:"GmtSuccessedTime,omitempty"`
-	JobId               *string               `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	JobSpecs            []*JobSpec            `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
-	JobType             *string               `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	Priority            *int32                `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	ReasonCode          *string               `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	ReasonMessage       *string               `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
-	ResourceId          *string               `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceLevel       *string               `json:"ResourceLevel,omitempty" xml:"ResourceLevel,omitempty"`
-	ResourceName        *string               `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	ResourceType        *string               `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Settings            *JobSettings          `json:"Settings,omitempty" xml:"Settings,omitempty"`
-	Status              *string               `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubStatus           *string               `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
-	ThirdpartyLibDir    *string               `json:"ThirdpartyLibDir,omitempty" xml:"ThirdpartyLibDir,omitempty"`
-	ThirdpartyLibs      []*string             `json:"ThirdpartyLibs,omitempty" xml:"ThirdpartyLibs,omitempty" type:"Repeated"`
-	UseOversoldResource *bool                 `json:"UseOversoldResource,omitempty" xml:"UseOversoldResource,omitempty"`
-	UserCommand         *string               `json:"UserCommand,omitempty" xml:"UserCommand,omitempty"`
-	UserId              *string               `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	Username            *string               `json:"Username,omitempty" xml:"Username,omitempty"`
-	WorkspaceId         *string               `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	WorkspaceName       *string               `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	CodeSource  *JobItemCodeSource    `json:"CodeSource,omitempty" xml:"CodeSource,omitempty" type:"Struct"`
+	DataSources []*JobItemDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
+	// example:
+	//
+	// tf-mnist-test
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// 3602
+	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// false
+	EnabledDebugger *bool              `json:"EnabledDebugger,omitempty" xml:"EnabledDebugger,omitempty"`
+	Envs            map[string]*string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:35:01Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:35:01Z
+	GmtFailedTime *string `json:"GmtFailedTime,omitempty" xml:"GmtFailedTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T15:36:08Z
+	GmtFinishTime *string `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:35:01Z
+	GmtRunningTime *string `json:"GmtRunningTime,omitempty" xml:"GmtRunningTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:35:01Z
+	GmtStoppedTime *string `json:"GmtStoppedTime,omitempty" xml:"GmtStoppedTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:35:01Z
+	GmtSubmittedTime *string `json:"GmtSubmittedTime,omitempty" xml:"GmtSubmittedTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:35:01Z
+	GmtSuccessedTime *string `json:"GmtSuccessedTime,omitempty" xml:"GmtSuccessedTime,omitempty"`
+	// example:
+	//
+	// dlc-20210126170216-mtl37ge7gkvdz
+	JobId    *string    `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobSpecs []*JobSpec `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// TFJob
+	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// JobStoppedByUser
+	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// example:
+	//
+	// Job is stopped by user.
+	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	// example:
+	//
+	// dlc-quota
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// L0
+	ResourceLevel *string `json:"ResourceLevel,omitempty" xml:"ResourceLevel,omitempty"`
+	// example:
+	//
+	// my_resource_group
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// example:
+	//
+	// ECS
+	ResourceType *string      `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Settings     *JobSettings `json:"Settings,omitempty" xml:"Settings,omitempty"`
+	// example:
+	//
+	// Stopped
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// Restarting
+	SubStatus *string `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
+	// example:
+	//
+	// /root/code/
+	ThirdpartyLibDir *string   `json:"ThirdpartyLibDir,omitempty" xml:"ThirdpartyLibDir,omitempty"`
+	ThirdpartyLibs   []*string `json:"ThirdpartyLibs,omitempty" xml:"ThirdpartyLibs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// false
+	UseOversoldResource *bool `json:"UseOversoldResource,omitempty" xml:"UseOversoldResource,omitempty"`
+	// example:
+	//
+	// python /root/code/mnist.py
+	UserCommand *string `json:"UserCommand,omitempty" xml:"UserCommand,omitempty"`
+	// example:
+	//
+	// 123456789
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// pai-dlc-role
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// example:
+	//
+	// 268
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// dlc-workspace
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
 func (s JobItem) String() string {
@@ -1359,10 +1725,22 @@ func (s *JobItem) SetWorkspaceName(v string) *JobItem {
 }
 
 type JobItemCodeSource struct {
-	Branch       *string `json:"Branch,omitempty" xml:"Branch,omitempty"`
+	// example:
+	//
+	// master
+	Branch *string `json:"Branch,omitempty" xml:"Branch,omitempty"`
+	// example:
+	//
+	// code-20210111103721-85qz78ia96lu
 	CodeSourceId *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
-	Commit       *string `json:"Commit,omitempty" xml:"Commit,omitempty"`
-	MountPath    *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// example:
+	//
+	// 44da109b59f8596152987eaa8f3b2487bb72ea63
+	Commit *string `json:"Commit,omitempty" xml:"Commit,omitempty"`
+	// example:
+	//
+	// /mnt/data
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
 }
 
 func (s JobItemCodeSource) String() string {
@@ -1394,8 +1772,14 @@ func (s *JobItemCodeSource) SetMountPath(v string) *JobItemCodeSource {
 }
 
 type JobItemDataSources struct {
+	// example:
+	//
+	// data-20210114104214-vf9lowjt3pso
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	MountPath    *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// example:
+	//
+	// /mnt/data
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
 }
 
 func (s JobItemDataSources) String() string {
@@ -1417,22 +1801,64 @@ func (s *JobItemDataSources) SetMountPath(v string) *JobItemDataSources {
 }
 
 type JobSettings struct {
-	AdvancedSettings                map[string]interface{} `json:"AdvancedSettings,omitempty" xml:"AdvancedSettings,omitempty"`
-	BusinessUserId                  *string                `json:"BusinessUserId,omitempty" xml:"BusinessUserId,omitempty"`
-	Caller                          *string                `json:"Caller,omitempty" xml:"Caller,omitempty"`
-	Driver                          *string                `json:"Driver,omitempty" xml:"Driver,omitempty"`
-	EnableErrorMonitoringInAIMaster *bool                  `json:"EnableErrorMonitoringInAIMaster,omitempty" xml:"EnableErrorMonitoringInAIMaster,omitempty"`
-	EnableOssAppend                 *bool                  `json:"EnableOssAppend,omitempty" xml:"EnableOssAppend,omitempty"`
-	EnableRDMA                      *bool                  `json:"EnableRDMA,omitempty" xml:"EnableRDMA,omitempty"`
-	EnableSanityCheck               *bool                  `json:"EnableSanityCheck,omitempty" xml:"EnableSanityCheck,omitempty"`
-	EnableTideResource              *bool                  `json:"EnableTideResource,omitempty" xml:"EnableTideResource,omitempty"`
-	ErrorMonitoringArgs             *string                `json:"ErrorMonitoringArgs,omitempty" xml:"ErrorMonitoringArgs,omitempty"`
-	JobReservedMinutes              *int32                 `json:"JobReservedMinutes,omitempty" xml:"JobReservedMinutes,omitempty"`
-	JobReservedPolicy               *string                `json:"JobReservedPolicy,omitempty" xml:"JobReservedPolicy,omitempty"`
-	OversoldType                    *string                `json:"OversoldType,omitempty" xml:"OversoldType,omitempty"`
-	PipelineId                      *string                `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	SanityCheckArgs                 *string                `json:"SanityCheckArgs,omitempty" xml:"SanityCheckArgs,omitempty"`
-	Tags                            map[string]*string     `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	AdvancedSettings map[string]interface{} `json:"AdvancedSettings,omitempty" xml:"AdvancedSettings,omitempty"`
+	// example:
+	//
+	// 166924
+	BusinessUserId *string `json:"BusinessUserId,omitempty" xml:"BusinessUserId,omitempty"`
+	// example:
+	//
+	// SilkFlow
+	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	// example:
+	//
+	// 535.54.03
+	Driver *string `json:"Driver,omitempty" xml:"Driver,omitempty"`
+	// example:
+	//
+	// false
+	EnableErrorMonitoringInAIMaster *bool `json:"EnableErrorMonitoringInAIMaster,omitempty" xml:"EnableErrorMonitoringInAIMaster,omitempty"`
+	// example:
+	//
+	// true
+	EnableOssAppend *bool `json:"EnableOssAppend,omitempty" xml:"EnableOssAppend,omitempty"`
+	// example:
+	//
+	// true
+	EnableRDMA *bool `json:"EnableRDMA,omitempty" xml:"EnableRDMA,omitempty"`
+	// example:
+	//
+	// true
+	EnableSanityCheck *bool `json:"EnableSanityCheck,omitempty" xml:"EnableSanityCheck,omitempty"`
+	// example:
+	//
+	// true
+	EnableTideResource *bool `json:"EnableTideResource,omitempty" xml:"EnableTideResource,omitempty"`
+	// example:
+	//
+	// --enable-log-hang-detection true
+	ErrorMonitoringArgs *string `json:"ErrorMonitoringArgs,omitempty" xml:"ErrorMonitoringArgs,omitempty"`
+	// example:
+	//
+	// 30
+	JobReservedMinutes *int32 `json:"JobReservedMinutes,omitempty" xml:"JobReservedMinutes,omitempty"`
+	// example:
+	//
+	// Always
+	JobReservedPolicy *string `json:"JobReservedPolicy,omitempty" xml:"JobReservedPolicy,omitempty"`
+	// example:
+	//
+	// AcceptQuotaOverSold
+	OversoldType *string `json:"OversoldType,omitempty" xml:"OversoldType,omitempty"`
+	// example:
+	//
+	// pid-123456
+	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// example:
+	//
+	// --sanity-check-timing=AfterJobFaultTolerant --sanity-check-timeout-ops=MarkJobFai
+	SanityCheckArgs *string            `json:"SanityCheckArgs,omitempty" xml:"SanityCheckArgs,omitempty"`
+	Tags            map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s JobSettings) String() string {
@@ -1524,15 +1950,30 @@ func (s *JobSettings) SetTags(v map[string]*string) *JobSettings {
 }
 
 type JobSpec struct {
-	EcsSpec         *string         `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
-	ExtraPodSpec    *ExtraPodSpec   `json:"ExtraPodSpec,omitempty" xml:"ExtraPodSpec,omitempty"`
-	Image           *string         `json:"Image,omitempty" xml:"Image,omitempty"`
-	ImageConfig     *ImageConfig    `json:"ImageConfig,omitempty" xml:"ImageConfig,omitempty"`
-	PodCount        *int64          `json:"PodCount,omitempty" xml:"PodCount,omitempty"`
-	ResourceConfig  *ResourceConfig `json:"ResourceConfig,omitempty" xml:"ResourceConfig,omitempty"`
-	SpotSpec        *SpotSpec       `json:"SpotSpec,omitempty" xml:"SpotSpec,omitempty"`
-	Type            *string         `json:"Type,omitempty" xml:"Type,omitempty"`
-	UseSpotInstance *bool           `json:"UseSpotInstance,omitempty" xml:"UseSpotInstance,omitempty"`
+	// example:
+	//
+	// ecs.c6.large
+	EcsSpec      *string       `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	ExtraPodSpec *ExtraPodSpec `json:"ExtraPodSpec,omitempty" xml:"ExtraPodSpec,omitempty"`
+	// example:
+	//
+	// registry.cn-hangzhou.aliyuncs.com/pai-dlc/tensorflow-training:1.12.2PAI-cpu-py27-ubuntu16.04
+	Image       *string      `json:"Image,omitempty" xml:"Image,omitempty"`
+	ImageConfig *ImageConfig `json:"ImageConfig,omitempty" xml:"ImageConfig,omitempty"`
+	// example:
+	//
+	// 1
+	PodCount       *int64          `json:"PodCount,omitempty" xml:"PodCount,omitempty"`
+	ResourceConfig *ResourceConfig `json:"ResourceConfig,omitempty" xml:"ResourceConfig,omitempty"`
+	SpotSpec       *SpotSpec       `json:"SpotSpec,omitempty" xml:"SpotSpec,omitempty"`
+	// example:
+	//
+	// Worker
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// false
+	UseSpotInstance *bool `json:"UseSpotInstance,omitempty" xml:"UseSpotInstance,omitempty"`
 }
 
 func (s JobSpec) String() string {
@@ -1593,8 +2034,11 @@ type LogInfo struct {
 	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	PodId   *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
 	PodUid  *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
-	Source  *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Time    *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	// example:
+	//
+	// stderr, stdout
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Time   *string `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s LogInfo) String() string {
@@ -1636,7 +2080,13 @@ func (s *LogInfo) SetTime(v string) *LogInfo {
 }
 
 type Member struct {
-	MemberId   *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	// example:
+	//
+	// ken_12345
+	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	// example:
+	//
+	// WorkspaceAdmin
 	MemberType *string `json:"MemberType,omitempty" xml:"MemberType,omitempty"`
 }
 
@@ -1659,7 +2109,13 @@ func (s *Member) SetMemberType(v string) *Member {
 }
 
 type Metric struct {
-	Time  *int64   `json:"Time,omitempty" xml:"Time,omitempty"`
+	// example:
+	//
+	// 1616987726587
+	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
+	// example:
+	//
+	// 23.45
 	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1682,8 +2138,11 @@ func (s *Metric) SetValue(v float32) *Metric {
 }
 
 type NodeMetric struct {
-	Metrics  []*Metric `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
-	NodeName *string   `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	Metrics []*Metric `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	// example:
+	//
+	// asi_xxx
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 }
 
 func (s NodeMetric) String() string {
@@ -1705,15 +2164,39 @@ func (s *NodeMetric) SetNodeName(v string) *NodeMetric {
 }
 
 type PodItem struct {
-	GmtCreateTime *string    `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtFinishTime *string    `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
-	GmtStartTime  *string    `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
-	HistoryPods   []*PodItem `json:"HistoryPods,omitempty" xml:"HistoryPods,omitempty" type:"Repeated"`
-	Ip            *string    `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	PodId         *string    `json:"PodId,omitempty" xml:"PodId,omitempty"`
-	PodUid        *string    `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
-	Status        *string    `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type          *string    `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:36:01Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T15:36:05Z
+	GmtFinishTime *string `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:36:05Z
+	GmtStartTime *string    `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
+	HistoryPods  []*PodItem `json:"HistoryPods,omitempty" xml:"HistoryPods,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10.0.1.2
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// example:
+	//
+	// dlc-20210126170216-mtl37ge7gkvdz-worker-0
+	PodId *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
+	// example:
+	//
+	// fe846462-af2c-4521-bd6f-96787a57591d
+	PodUid *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
+	// example:
+	//
+	// Stopped
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// Worker
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s PodItem) String() string {
@@ -1771,7 +2254,10 @@ func (s *PodItem) SetType(v string) *PodItem {
 
 type PodMetric struct {
 	Metrics []*Metric `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
-	PodId   *string   `json:"PodId,omitempty" xml:"PodId,omitempty"`
+	// example:
+	//
+	// dlc-20210329110128-746bf7cl47pr8-worker-0
+	PodId *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
 }
 
 func (s PodMetric) String() string {
@@ -1793,11 +2279,20 @@ func (s *PodMetric) SetPodId(v string) *PodMetric {
 }
 
 type Quota struct {
-	ClusterId      *string      `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterName    *string      `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	QuotaConfig    *QuotaConfig `json:"QuotaConfig,omitempty" xml:"QuotaConfig,omitempty"`
-	QuotaId        *string      `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
-	QuotaName      *string      `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
+	ClusterId   *string      `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterName *string      `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	QuotaConfig *QuotaConfig `json:"QuotaConfig,omitempty" xml:"QuotaConfig,omitempty"`
+	// example:
+	//
+	// quotamtl37ge7gkvdz
+	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	// example:
+	//
+	// dlc-quota
+	QuotaName *string `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
+	// example:
+	//
+	// asiquota
 	QuotaType      *string      `json:"QuotaType,omitempty" xml:"QuotaType,omitempty"`
 	TotalQuota     *QuotaDetail `json:"TotalQuota,omitempty" xml:"TotalQuota,omitempty"`
 	TotalTideQuota *QuotaDetail `json:"TotalTideQuota,omitempty" xml:"TotalTideQuota,omitempty"`
@@ -1905,12 +2400,27 @@ func (s *QuotaConfig) SetResourceLevel(v string) *QuotaConfig {
 }
 
 type QuotaDetail struct {
-	CPU             *string      `json:"CPU,omitempty" xml:"CPU,omitempty"`
-	GPU             *string      `json:"GPU,omitempty" xml:"GPU,omitempty"`
-	GPUDetails      []*GPUDetail `json:"GPUDetails,omitempty" xml:"GPUDetails,omitempty" type:"Repeated"`
-	GPUType         *string      `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
-	GPUTypeFullName *string      `json:"GPUTypeFullName,omitempty" xml:"GPUTypeFullName,omitempty"`
-	Memory          *string      `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// 2
+	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// example:
+	//
+	// 5
+	GPU        *string      `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	GPUDetails []*GPUDetail `json:"GPUDetails,omitempty" xml:"GPUDetails,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Tesla-V100
+	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	// example:
+	//
+	// nvidia.com/gpu
+	GPUTypeFullName *string `json:"GPUTypeFullName,omitempty" xml:"GPUTypeFullName,omitempty"`
+	// example:
+	//
+	// 10Gi
+	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
 }
 
 func (s QuotaDetail) String() string {
@@ -1952,10 +2462,25 @@ func (s *QuotaDetail) SetMemory(v string) *QuotaDetail {
 }
 
 type ResourceConfig struct {
-	CPU          *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
-	GPU          *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
-	GPUType      *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
-	Memory       *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// 10
+	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// example:
+	//
+	// 3
+	GPU *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	// example:
+	//
+	// Tesla-V100-16G
+	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	// example:
+	//
+	// 10Gi
+	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// 5Gi
 	SharedMemory *string `json:"SharedMemory,omitempty" xml:"SharedMemory,omitempty"`
 }
 
@@ -2016,8 +2541,17 @@ func (s *ResourceRequirements) SetRequests(v map[string]*string) *ResourceRequir
 }
 
 type Resources struct {
-	CPU    *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
-	GPU    *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	// example:
+	//
+	// 10
+	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// example:
+	//
+	// 8
+	GPU *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	// example:
+	//
+	// 1024（单位GB）
 	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
 }
 
@@ -2045,12 +2579,27 @@ func (s *Resources) SetMemory(v string) *Resources {
 }
 
 type SanityCheckResultItem struct {
-	CheckNumber *int32  `json:"CheckNumber,omitempty" xml:"CheckNumber,omitempty"`
-	FinishedAt  *string `json:"FinishedAt,omitempty" xml:"FinishedAt,omitempty"`
-	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Phase       *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	StartedAt   *string `json:"StartedAt,omitempty" xml:"StartedAt,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1
+	CheckNumber *int32 `json:"CheckNumber,omitempty" xml:"CheckNumber,omitempty"`
+	// example:
+	//
+	// ”2023-11-30T16:47:30.378817+08:00"
+	FinishedAt *string `json:"FinishedAt,omitempty" xml:"FinishedAt,omitempty"`
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// CheckInit
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// example:
+	//
+	// ”2023-11-30T16:47:30.343005+08:00“
+	StartedAt *string `json:"StartedAt,omitempty" xml:"StartedAt,omitempty"`
+	// example:
+	//
+	// Succeeded
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s SanityCheckResultItem) String() string {
@@ -2092,22 +2641,70 @@ func (s *SanityCheckResultItem) SetStatus(v string) *SanityCheckResultItem {
 }
 
 type SmartCache struct {
-	CacheWorkerNum  *int64  `json:"CacheWorkerNum,omitempty" xml:"CacheWorkerNum,omitempty"`
-	CacheWorkerSize *int64  `json:"CacheWorkerSize,omitempty" xml:"CacheWorkerSize,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DisplayName     *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Duration        *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Endpoint        *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	FileSystemId    *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifyTime   *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
-	MountPath       *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	Options         *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	Path            *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	SmartCacheId    *string `json:"SmartCacheId,omitempty" xml:"SmartCacheId,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UserId          *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 10
+	CacheWorkerNum *int64 `json:"CacheWorkerNum,omitempty" xml:"CacheWorkerNum,omitempty"`
+	// example:
+	//
+	// 100
+	CacheWorkerSize *int64 `json:"CacheWorkerSize,omitempty" xml:"CacheWorkerSize,omitempty"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// test
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// 123456
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// oss-cn-beijing-internal.aliyuncs.com
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// example:
+	//
+	// 1ca404****
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:36:01Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T23:36:01Z
+	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
+	// example:
+	//
+	// /root/data/
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// example:
+	//
+	// {"num_threads": 32}
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// example:
+	//
+	// oss://buc/path/to/dir
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// smartcache-20210114104214-vf9lowjt3pso
+	SmartCacheId *string `json:"SmartCacheId,omitempty" xml:"SmartCacheId,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// oss
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 189xxx
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s SmartCache) String() string {
@@ -2263,22 +2860,72 @@ func (s *StatusTransitionItem) SetStatus(v string) *StatusTransitionItem {
 }
 
 type Tensorboard struct {
-	DataSourceId           *string                      `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	DisplayName            *string                      `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Duration               *string                      `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	GmtCreateTime          *string                      `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifyTime          *string                      `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
-	JobId                  *string                      `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	ReasonCode             *string                      `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	ReasonMessage          *string                      `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
-	RequestId              *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status                 *string                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// datasource-test
+	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// example:
+	//
+	// test
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// 1234567
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:35:00Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:36:00Z
+	GmtFinishTime *string `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:36:00Z
+	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
+	// example:
+	//
+	// dlc-20210114104214-vf9lowjt3pso
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// Delete by user
+	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// example:
+	//
+	// Tensorboard is deleted
+	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// /root/data
 	SummaryPath            *string                      `json:"SummaryPath,omitempty" xml:"SummaryPath,omitempty"`
 	TensorboardDataSources []*TensorboardDataSourceSpec `json:"TensorboardDataSources,omitempty" xml:"TensorboardDataSources,omitempty" type:"Repeated"`
-	TensorboardId          *string                      `json:"TensorboardId,omitempty" xml:"TensorboardId,omitempty"`
-	TensorboardSpec        *TensorboardSpec             `json:"TensorboardSpec,omitempty" xml:"TensorboardSpec,omitempty"`
-	TensorboardUrl         *string                      `json:"TensorboardUrl,omitempty" xml:"TensorboardUrl,omitempty"`
-	UserId                 *string                      `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// tensorboard-xxx
+	TensorboardId   *string          `json:"TensorboardId,omitempty" xml:"TensorboardId,omitempty"`
+	TensorboardSpec *TensorboardSpec `json:"TensorboardSpec,omitempty" xml:"TensorboardSpec,omitempty"`
+	// example:
+	//
+	// http://xxxxxx
+	TensorboardUrl *string `json:"TensorboardUrl,omitempty" xml:"TensorboardUrl,omitempty"`
+	// example:
+	//
+	// lycxxxxx
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// tensorboard.pai
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s Tensorboard) String() string {
@@ -2306,6 +2953,11 @@ func (s *Tensorboard) SetDuration(v string) *Tensorboard {
 
 func (s *Tensorboard) SetGmtCreateTime(v string) *Tensorboard {
 	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *Tensorboard) SetGmtFinishTime(v string) *Tensorboard {
+	s.GmtFinishTime = &v
 	return s
 }
 
@@ -2369,15 +3021,44 @@ func (s *Tensorboard) SetUserId(v string) *Tensorboard {
 	return s
 }
 
+func (s *Tensorboard) SetUsername(v string) *Tensorboard {
+	s.Username = &v
+	return s
+}
+
 type TensorboardDataSourceSpec struct {
-	DataSourceType  *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	DirectoryName   *string `json:"DirectoryName,omitempty" xml:"DirectoryName,omitempty"`
+	// example:
+	//
+	// OSS
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// example:
+	//
+	// dlcJobName
+	DirectoryName *string `json:"DirectoryName,omitempty" xml:"DirectoryName,omitempty"`
+	// example:
+	//
+	// oss://xxxxx/tensorboard/run1
 	FullSummaryPath *string `json:"FullSummaryPath,omitempty" xml:"FullSummaryPath,omitempty"`
-	Id              *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	SourceType      *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	SummaryPath     *string `json:"SummaryPath,omitempty" xml:"SummaryPath,omitempty"`
-	Uri             *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// example:
+	//
+	// d-vf2fdhxxxxxx
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// dlcJobName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// datasource
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// example:
+	//
+	// /tensorboard/run1
+	SummaryPath *string `json:"SummaryPath,omitempty" xml:"SummaryPath,omitempty"`
+	// example:
+	//
+	// oss://.oss-cn-shanghai-finance-1.aliyuncs.com/
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s TensorboardDataSourceSpec) String() string {
@@ -2429,10 +3110,22 @@ func (s *TensorboardDataSourceSpec) SetUri(v string) *TensorboardDataSourceSpec 
 }
 
 type TensorboardSpec struct {
-	EcsType         *string `json:"EcsType,omitempty" xml:"EcsType,omitempty"`
+	// example:
+	//
+	// ecs.g6.large
+	EcsType *string `json:"EcsType,omitempty" xml:"EcsType,omitempty"`
+	// example:
+	//
+	// sg-xxxxx
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	SwitchId        *string `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
-	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// vsw-xxxx
+	SwitchId *string `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
+	// example:
+	//
+	// vpc-xxxx
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s TensorboardSpec) String() string {
@@ -2464,15 +3157,30 @@ func (s *TensorboardSpec) SetVpcId(v string) *TensorboardSpec {
 }
 
 type Workspace struct {
-	Creator         *string    `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	GmtCreateTime   *string    `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// ken
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:36:01Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:36:01Z
 	GmtModifyTime   *string    `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
 	Members         []*Member  `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
 	Quotas          []*Quota   `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
 	TotalResources  *Resources `json:"TotalResources,omitempty" xml:"TotalResources,omitempty"`
 	WorkspaceAdmins []*Member  `json:"WorkspaceAdmins,omitempty" xml:"WorkspaceAdmins,omitempty" type:"Repeated"`
-	WorkspaceId     *string    `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	WorkspaceName   *string    `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	// example:
+	//
+	// ws-20210126170216-mtl37ge7gkvdz
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// dlc-workspace
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
 func (s Workspace) String() string {
@@ -2529,25 +3237,65 @@ func (s *Workspace) SetWorkspaceName(v string) *Workspace {
 }
 
 type CreateJobRequest struct {
-	CodeSource               *CreateJobRequestCodeSource    `json:"CodeSource,omitempty" xml:"CodeSource,omitempty" type:"Struct"`
-	DataSources              []*CreateJobRequestDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
-	DebuggerConfigContent    *string                        `json:"DebuggerConfigContent,omitempty" xml:"DebuggerConfigContent,omitempty"`
-	DisplayName              *string                        `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	ElasticSpec              *JobElasticSpec                `json:"ElasticSpec,omitempty" xml:"ElasticSpec,omitempty"`
-	Envs                     map[string]*string             `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	JobMaxRunningTimeMinutes *int64                         `json:"JobMaxRunningTimeMinutes,omitempty" xml:"JobMaxRunningTimeMinutes,omitempty"`
-	JobSpecs                 []*JobSpec                     `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
-	JobType                  *string                        `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	Options                  *string                        `json:"Options,omitempty" xml:"Options,omitempty"`
-	Priority                 *int32                         `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	ResourceId               *string                        `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	Settings                 *JobSettings                   `json:"Settings,omitempty" xml:"Settings,omitempty"`
-	SuccessPolicy            *string                        `json:"SuccessPolicy,omitempty" xml:"SuccessPolicy,omitempty"`
-	ThirdpartyLibDir         *string                        `json:"ThirdpartyLibDir,omitempty" xml:"ThirdpartyLibDir,omitempty"`
-	ThirdpartyLibs           []*string                      `json:"ThirdpartyLibs,omitempty" xml:"ThirdpartyLibs,omitempty" type:"Repeated"`
-	UserCommand              *string                        `json:"UserCommand,omitempty" xml:"UserCommand,omitempty"`
-	UserVpc                  *CreateJobRequestUserVpc       `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
-	WorkspaceId              *string                        `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	CodeSource  *CreateJobRequestCodeSource    `json:"CodeSource,omitempty" xml:"CodeSource,omitempty" type:"Struct"`
+	DataSources []*CreateJobRequestDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
+	// example:
+	//
+	// “”
+	DebuggerConfigContent *string `json:"DebuggerConfigContent,omitempty" xml:"DebuggerConfigContent,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tf-mnist-test
+	DisplayName *string            `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	ElasticSpec *JobElasticSpec    `json:"ElasticSpec,omitempty" xml:"ElasticSpec,omitempty"`
+	Envs        map[string]*string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	// example:
+	//
+	// 1024
+	JobMaxRunningTimeMinutes *int64 `json:"JobMaxRunningTimeMinutes,omitempty" xml:"JobMaxRunningTimeMinutes,omitempty"`
+	// This parameter is required.
+	JobSpecs []*JobSpec `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// TFJob
+	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// example:
+	//
+	// key1=value1,key2=value2
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// example:
+	//
+	// 8
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// rs-xxx
+	ResourceId *string      `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	Settings   *JobSettings `json:"Settings,omitempty" xml:"Settings,omitempty"`
+	// example:
+	//
+	// AllWorkers
+	SuccessPolicy *string `json:"SuccessPolicy,omitempty" xml:"SuccessPolicy,omitempty"`
+	// example:
+	//
+	// /root/code/
+	ThirdpartyLibDir *string   `json:"ThirdpartyLibDir,omitempty" xml:"ThirdpartyLibDir,omitempty"`
+	ThirdpartyLibs   []*string `json:"ThirdpartyLibs,omitempty" xml:"ThirdpartyLibs,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// python /root/code/mnist.py
+	UserCommand *string                  `json:"UserCommand,omitempty" xml:"UserCommand,omitempty"`
+	UserVpc     *CreateJobRequestUserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
+	// example:
+	//
+	// ws-20210126170216-xxxxxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateJobRequest) String() string {
@@ -2654,10 +3402,22 @@ func (s *CreateJobRequest) SetWorkspaceId(v string) *CreateJobRequest {
 }
 
 type CreateJobRequestCodeSource struct {
-	Branch       *string `json:"Branch,omitempty" xml:"Branch,omitempty"`
+	// example:
+	//
+	// master
+	Branch *string `json:"Branch,omitempty" xml:"Branch,omitempty"`
+	// example:
+	//
+	// code-20210111103721-xxxxxxx
 	CodeSourceId *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
-	Commit       *string `json:"Commit,omitempty" xml:"Commit,omitempty"`
-	MountPath    *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// example:
+	//
+	// 44da109b5******
+	Commit *string `json:"Commit,omitempty" xml:"Commit,omitempty"`
+	// example:
+	//
+	// /root/data
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
 }
 
 func (s CreateJobRequestCodeSource) String() string {
@@ -2689,9 +3449,18 @@ func (s *CreateJobRequestCodeSource) SetMountPath(v string) *CreateJobRequestCod
 }
 
 type CreateJobRequestDataSources struct {
+	// example:
+	//
+	// d-cn9dl*******
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	MountPath    *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	Uri          *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// example:
+	//
+	// /root/data
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// example:
+	//
+	// oss://bucket.oss-cn-hangzhou-internal.aliyuncs.com/path/
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s CreateJobRequestDataSources) String() string {
@@ -2718,11 +3487,20 @@ func (s *CreateJobRequestDataSources) SetUri(v string) *CreateJobRequestDataSour
 }
 
 type CreateJobRequestUserVpc struct {
-	DefaultRoute    *string   `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
-	ExtendedCIDRs   []*string `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
-	SecurityGroupId *string   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	SwitchId        *string   `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
-	VpcId           *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	DefaultRoute  *string   `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
+	ExtendedCIDRs []*string `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// sg-abcdef****
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// example:
+	//
+	// vs-abcdef****
+	SwitchId *string `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
+	// example:
+	//
+	// vpc-abcdef****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s CreateJobRequestUserVpc) String() string {
@@ -2759,7 +3537,13 @@ func (s *CreateJobRequestUserVpc) SetVpcId(v string) *CreateJobRequestUserVpc {
 }
 
 type CreateJobResponseBody struct {
-	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// dlc7*******
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-xxxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2811,23 +3595,62 @@ func (s *CreateJobResponse) SetBody(v *CreateJobResponseBody) *CreateJobResponse
 }
 
 type CreateTensorboardRequest struct {
-	Cpu                    *int64                       `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	DataSourceId           *string                      `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	DataSourceType         *string                      `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	DataSources            []*DataSourceItem            `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
-	DisplayName            *string                      `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	JobId                  *string                      `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	MaxRunningTimeMinutes  *int64                       `json:"MaxRunningTimeMinutes,omitempty" xml:"MaxRunningTimeMinutes,omitempty"`
-	Memory                 *int64                       `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	Options                *string                      `json:"Options,omitempty" xml:"Options,omitempty"`
-	SourceId               *string                      `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	SourceType             *string                      `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	SummaryPath            *string                      `json:"SummaryPath,omitempty" xml:"SummaryPath,omitempty"`
+	// example:
+	//
+	// 1
+	Cpu *int64 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// example:
+	//
+	// d-xxxxxxxx
+	DataSourceId   *string           `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	DataSourceType *string           `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	DataSources    []*DataSourceItem `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
+	// example:
+	//
+	// tensorboard
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// dlc-20210126170216-mtl37ge7gkvdz
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// 240
+	MaxRunningTimeMinutes *int64 `json:"MaxRunningTimeMinutes,omitempty" xml:"MaxRunningTimeMinutes,omitempty"`
+	// example:
+	//
+	// 1000
+	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// {"mountpath":"/root/data/"}
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// example:
+	//
+	// dlc-xxxxxx
+	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// example:
+	//
+	// job
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// example:
+	//
+	// /root/data/
+	SummaryPath *string `json:"SummaryPath,omitempty" xml:"SummaryPath,omitempty"`
+	// example:
+	//
+	// /summary/
 	SummaryRelativePath    *string                      `json:"SummaryRelativePath,omitempty" xml:"SummaryRelativePath,omitempty"`
 	TensorboardDataSources []*TensorboardDataSourceSpec `json:"TensorboardDataSources,omitempty" xml:"TensorboardDataSources,omitempty" type:"Repeated"`
 	TensorboardSpec        *TensorboardSpec             `json:"TensorboardSpec,omitempty" xml:"TensorboardSpec,omitempty"`
-	Uri                    *string                      `json:"Uri,omitempty" xml:"Uri,omitempty"`
-	WorkspaceId            *string                      `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// oss://.oss-cn-shanghai-finance-1.aliyuncs.com/
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// example:
+	//
+	// 123***
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateTensorboardRequest) String() string {
@@ -2924,9 +3747,21 @@ func (s *CreateTensorboardRequest) SetWorkspaceId(v string) *CreateTensorboardRe
 }
 
 type CreateTensorboardResponseBody struct {
-	DataSourceId  *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	JobId         *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// ds-20210126170216-xxxxxxxx
+	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// example:
+	//
+	// dlc-20210126170216-xxxxxxxx
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// tbxxxxxxxx
 	TensorboardId *string `json:"TensorboardId,omitempty" xml:"TensorboardId,omitempty"`
 }
 
@@ -2988,7 +3823,13 @@ func (s *CreateTensorboardResponse) SetBody(v *CreateTensorboardResponseBody) *C
 }
 
 type DeleteJobResponseBody struct {
-	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// dlc*************
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3040,6 +3881,9 @@ func (s *DeleteJobResponse) SetBody(v *DeleteJobResponseBody) *DeleteJobResponse
 }
 
 type DeleteTensorboardRequest struct {
+	// example:
+	//
+	// 46099
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -3057,7 +3901,13 @@ func (s *DeleteTensorboardRequest) SetWorkspaceId(v string) *DeleteTensorboardRe
 }
 
 type DeleteTensorboardResponseBody struct {
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// tensorboard-20210114104214-vf9lowjt3pso
 	TensorboardId *string `json:"TensorboardId,omitempty" xml:"TensorboardId,omitempty"`
 }
 
@@ -3109,6 +3959,9 @@ func (s *DeleteTensorboardResponse) SetBody(v *DeleteTensorboardResponseBody) *D
 }
 
 type GetJobRequest struct {
+	// example:
+	//
+	// true
 	NeedDetail *bool `json:"NeedDetail,omitempty" xml:"NeedDetail,omitempty"`
 }
 
@@ -3126,44 +3979,128 @@ func (s *GetJobRequest) SetNeedDetail(v bool) *GetJobRequest {
 }
 
 type GetJobResponseBody struct {
-	ClusterId        *string                          `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	CodeSource       *GetJobResponseBodyCodeSource    `json:"CodeSource,omitempty" xml:"CodeSource,omitempty" type:"Struct"`
-	DataSources      []*GetJobResponseBodyDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
-	DisplayName      *string                          `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Duration         *int64                           `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	ElasticSpec      *JobElasticSpec                  `json:"ElasticSpec,omitempty" xml:"ElasticSpec,omitempty"`
-	EnabledDebugger  *bool                            `json:"EnabledDebugger,omitempty" xml:"EnabledDebugger,omitempty"`
-	Envs             map[string]*string               `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	GmtCreateTime    *string                          `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtFailedTime    *string                          `json:"GmtFailedTime,omitempty" xml:"GmtFailedTime,omitempty"`
-	GmtFinishTime    *string                          `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
-	GmtRunningTime   *string                          `json:"GmtRunningTime,omitempty" xml:"GmtRunningTime,omitempty"`
-	GmtStoppedTime   *string                          `json:"GmtStoppedTime,omitempty" xml:"GmtStoppedTime,omitempty"`
-	GmtSubmittedTime *string                          `json:"GmtSubmittedTime,omitempty" xml:"GmtSubmittedTime,omitempty"`
-	GmtSuccessedTime *string                          `json:"GmtSuccessedTime,omitempty" xml:"GmtSuccessedTime,omitempty"`
-	JobId            *string                          `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	JobSpecs         []*JobSpec                       `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
-	JobType          *string                          `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	Pods             []*GetJobResponseBodyPods        `json:"Pods,omitempty" xml:"Pods,omitempty" type:"Repeated"`
-	Priority         *int32                           `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	ReasonCode       *string                          `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	ReasonMessage    *string                          `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
-	RequestId        *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceId       *string                          `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceLevel    *string                          `json:"ResourceLevel,omitempty" xml:"ResourceLevel,omitempty"`
-	ResourceType     *string                          `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	RestartTimes     *string                          `json:"RestartTimes,omitempty" xml:"RestartTimes,omitempty"`
-	Settings         *JobSettings                     `json:"Settings,omitempty" xml:"Settings,omitempty"`
-	Status           *string                          `json:"Status,omitempty" xml:"Status,omitempty"`
-	StatusHistory    []*StatusTransitionItem          `json:"StatusHistory,omitempty" xml:"StatusHistory,omitempty" type:"Repeated"`
-	SubStatus        *string                          `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
-	TenantId         *string                          `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	ThirdpartyLibDir *string                          `json:"ThirdpartyLibDir,omitempty" xml:"ThirdpartyLibDir,omitempty"`
-	ThirdpartyLibs   []*string                        `json:"ThirdpartyLibs,omitempty" xml:"ThirdpartyLibs,omitempty" type:"Repeated"`
-	UserCommand      *string                          `json:"UserCommand,omitempty" xml:"UserCommand,omitempty"`
-	UserId           *string                          `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	WorkspaceId      *string                          `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	WorkspaceName    *string                          `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	// example:
+	//
+	// a*****
+	ClusterId   *string                          `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CodeSource  *GetJobResponseBodyCodeSource    `json:"CodeSource,omitempty" xml:"CodeSource,omitempty" type:"Struct"`
+	DataSources []*GetJobResponseBodyDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
+	// example:
+	//
+	// tf-mnist-test
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// 3602
+	Duration    *int64          `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	ElasticSpec *JobElasticSpec `json:"ElasticSpec,omitempty" xml:"ElasticSpec,omitempty"`
+	// example:
+	//
+	// false
+	EnabledDebugger *bool              `json:"EnabledDebugger,omitempty" xml:"EnabledDebugger,omitempty"`
+	Envs            map[string]*string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:35:01Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T15:36:08Z
+	GmtFailedTime *string `json:"GmtFailedTime,omitempty" xml:"GmtFailedTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T15:36:08Z
+	GmtFinishTime *string `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:36:21Z
+	GmtRunningTime *string `json:"GmtRunningTime,omitempty" xml:"GmtRunningTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T15:36:08Z
+	GmtStoppedTime *string `json:"GmtStoppedTime,omitempty" xml:"GmtStoppedTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:36:01Z
+	GmtSubmittedTime *string `json:"GmtSubmittedTime,omitempty" xml:"GmtSubmittedTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T15:36:08Z
+	GmtSuccessedTime *string `json:"GmtSuccessedTime,omitempty" xml:"GmtSuccessedTime,omitempty"`
+	// example:
+	//
+	// dlc*******
+	JobId    *string    `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobSpecs []*JobSpec `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// TFJob
+	JobType *string                   `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	Pods    []*GetJobResponseBodyPods `json:"Pods,omitempty" xml:"Pods,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// JobStoppedByUser
+	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// example:
+	//
+	// Job is stopped by user.
+	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-xxxxxxxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// r******
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// L0
+	ResourceLevel *string `json:"ResourceLevel,omitempty" xml:"ResourceLevel,omitempty"`
+	// example:
+	//
+	// ECS
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// 0/10
+	RestartTimes *string      `json:"RestartTimes,omitempty" xml:"RestartTimes,omitempty"`
+	Settings     *JobSettings `json:"Settings,omitempty" xml:"Settings,omitempty"`
+	// example:
+	//
+	// Stopped
+	Status        *string                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusHistory []*StatusTransitionItem `json:"StatusHistory,omitempty" xml:"StatusHistory,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Restarting
+	SubStatus *string `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
+	TenantId  *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// example:
+	//
+	// /root/code/
+	ThirdpartyLibDir *string   `json:"ThirdpartyLibDir,omitempty" xml:"ThirdpartyLibDir,omitempty"`
+	ThirdpartyLibs   []*string `json:"ThirdpartyLibs,omitempty" xml:"ThirdpartyLibs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// python /root/code/mnist.py
+	UserCommand *string `json:"UserCommand,omitempty" xml:"UserCommand,omitempty"`
+	// example:
+	//
+	// 12*********
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 268
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// dlc-workspace
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
 func (s GetJobResponseBody) String() string {
@@ -3365,10 +4302,22 @@ func (s *GetJobResponseBody) SetWorkspaceName(v string) *GetJobResponseBody {
 }
 
 type GetJobResponseBodyCodeSource struct {
-	Branch       *string `json:"Branch,omitempty" xml:"Branch,omitempty"`
+	// example:
+	//
+	// master
+	Branch *string `json:"Branch,omitempty" xml:"Branch,omitempty"`
+	// example:
+	//
+	// code******
 	CodeSourceId *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
-	Commit       *string `json:"Commit,omitempty" xml:"Commit,omitempty"`
-	MountPath    *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// example:
+	//
+	// 44da109b59f8596152987eaa8f3b2487xxxxxx
+	Commit *string `json:"Commit,omitempty" xml:"Commit,omitempty"`
+	// example:
+	//
+	// /mnt/data
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
 }
 
 func (s GetJobResponseBodyCodeSource) String() string {
@@ -3400,9 +4349,18 @@ func (s *GetJobResponseBodyCodeSource) SetMountPath(v string) *GetJobResponseBod
 }
 
 type GetJobResponseBodyDataSources struct {
+	// example:
+	//
+	// d*******
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	MountPath    *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	Uri          *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// example:
+	//
+	// /mnt/data/
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// example:
+	//
+	// oss://bucket.oss-cn-hangzhou-internal.aliyuncs.com/path/
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s GetJobResponseBodyDataSources) String() string {
@@ -3429,17 +4387,47 @@ func (s *GetJobResponseBodyDataSources) SetUri(v string) *GetJobResponseBodyData
 }
 
 type GetJobResponseBodyPods struct {
-	GmtCreateTime *string                              `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtFinishTime *string                              `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
-	GmtStartTime  *string                              `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
-	HistoryPods   []*GetJobResponseBodyPodsHistoryPods `json:"HistoryPods,omitempty" xml:"HistoryPods,omitempty" type:"Repeated"`
-	Ip            *string                              `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	PodId         *string                              `json:"PodId,omitempty" xml:"PodId,omitempty"`
-	PodUid        *string                              `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
-	ResourceType  *string                              `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Status        *string                              `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubStatus     *string                              `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
-	Type          *string                              `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:36:01Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T15:36:05Z
+	GmtFinishTime *string `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:36:01Z
+	GmtStartTime *string                              `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
+	HistoryPods  []*GetJobResponseBodyPodsHistoryPods `json:"HistoryPods,omitempty" xml:"HistoryPods,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10.0.1.2
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// example:
+	//
+	// Worker
+	PodId *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
+	// example:
+	//
+	// fe846462-af2c-4521-bd6f-96787a57591d
+	PodUid *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
+	// example:
+	//
+	// Normal
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// Normal
+	SubStatus *string `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
+	// example:
+	//
+	// Worker
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetJobResponseBodyPods) String() string {
@@ -3506,16 +4494,46 @@ func (s *GetJobResponseBodyPods) SetType(v string) *GetJobResponseBodyPods {
 }
 
 type GetJobResponseBodyPodsHistoryPods struct {
+	// example:
+	//
+	// 2021-01-12T14:36:01Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:36:01Z
 	GmtFinishTime *string `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
-	GmtStartTime  *string `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
-	Ip            *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	PodId         *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
-	PodUid        *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
-	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubStatus     *string `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
-	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 2021-01-12T14:36:01Z
+	GmtStartTime *string `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
+	// example:
+	//
+	// 10.0.1.3
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// example:
+	//
+	// Worker
+	PodId *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
+	// example:
+	//
+	// fe846462-af2c-4521-bd6f-96787a57591d
+	PodUid *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
+	// example:
+	//
+	// Normal
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// Failed
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// Normal
+	SubStatus *string `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
+	// example:
+	//
+	// Worker
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetJobResponseBodyPodsHistoryPods) String() string {
@@ -3606,9 +4624,18 @@ func (s *GetJobResponse) SetBody(v *GetJobResponseBody) *GetJobResponse {
 }
 
 type GetJobEventsRequest struct {
-	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	MaxEventsNum *int32  `json:"MaxEventsNum,omitempty" xml:"MaxEventsNum,omitempty"`
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 2020-11-08T18:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 100
+	MaxEventsNum *int32 `json:"MaxEventsNum,omitempty" xml:"MaxEventsNum,omitempty"`
+	// example:
+	//
+	// 2020-11-08T16:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s GetJobEventsRequest) String() string {
@@ -3635,9 +4662,15 @@ func (s *GetJobEventsRequest) SetStartTime(v string) *GetJobEventsRequest {
 }
 
 type GetJobEventsResponseBody struct {
-	Events    []*string `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
-	JobId     *string   `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Events []*string `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	// example:
+	//
+	// dlc-20210126170216-******
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// 78F6FCE2-278F-4C4A-A6B7-DD8ECEA9C456
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetJobEventsResponseBody) String() string {
@@ -3693,11 +4726,28 @@ func (s *GetJobEventsResponse) SetBody(v *GetJobEventsResponseBody) *GetJobEvent
 }
 
 type GetJobMetricsRequest struct {
-	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 2020-11-09T16:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// GpuMemoryUsage
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TimeStep   *string `json:"TimeStep,omitempty" xml:"TimeStep,omitempty"`
-	Token      *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// example:
+	//
+	// 2020-11-08T16:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 5m
+	TimeStep *string `json:"TimeStep,omitempty" xml:"TimeStep,omitempty"`
+	// example:
+	//
+	// eyXXXX-XXXX.XXXXX
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s GetJobMetricsRequest) String() string {
@@ -3734,9 +4784,15 @@ func (s *GetJobMetricsRequest) SetToken(v string) *GetJobMetricsRequest {
 }
 
 type GetJobMetricsResponseBody struct {
+	// example:
+	//
+	// dlc-20210126170216-*******
 	JobId      *string      `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	PodMetrics []*PodMetric `json:"PodMetrics,omitempty" xml:"PodMetrics,omitempty" type:"Repeated"`
-	RequestId  *string      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetJobMetricsResponseBody) String() string {
@@ -3792,9 +4848,17 @@ func (s *GetJobMetricsResponse) SetBody(v *GetJobMetricsResponseBody) *GetJobMet
 }
 
 type GetJobSanityCheckResultRequest struct {
-	SanityCheckNumber *int32  `json:"SanityCheckNumber,omitempty" xml:"SanityCheckNumber,omitempty"`
-	SanityCheckPhase  *string `json:"SanityCheckPhase,omitempty" xml:"SanityCheckPhase,omitempty"`
-	Token             *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	SanityCheckNumber *int32 `json:"SanityCheckNumber,omitempty" xml:"SanityCheckNumber,omitempty"`
+	// example:
+	//
+	// DeviceCheck
+	SanityCheckPhase *string `json:"SanityCheckPhase,omitempty" xml:"SanityCheckPhase,omitempty"`
+	Token            *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s GetJobSanityCheckResultRequest) String() string {
@@ -3821,7 +4885,13 @@ func (s *GetJobSanityCheckResultRequest) SetToken(v string) *GetJobSanityCheckRe
 }
 
 type GetJobSanityCheckResultResponseBody struct {
-	JobId             *string                  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// dlc-20210126170216-xxxxxx
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// B3789344-F1xxxBE-5xx2-A04D-xxxxx
 	RequestID         *string                  `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
 	SanityCheckResult []*SanityCheckResultItem `json:"SanityCheckResult,omitempty" xml:"SanityCheckResult,omitempty" type:"Repeated"`
 }
@@ -3879,10 +4949,22 @@ func (s *GetJobSanityCheckResultResponse) SetBody(v *GetJobSanityCheckResultResp
 }
 
 type GetPodEventsRequest struct {
-	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	MaxEventsNum *int32  `json:"MaxEventsNum,omitempty" xml:"MaxEventsNum,omitempty"`
-	PodUid       *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 2020-11-09T16:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 100
+	MaxEventsNum *int32 `json:"MaxEventsNum,omitempty" xml:"MaxEventsNum,omitempty"`
+	// example:
+	//
+	// dlc-20210126170216-*****-chief-0
+	PodUid *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
+	// example:
+	//
+	// 2020-11-08T16:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s GetPodEventsRequest) String() string {
@@ -3914,11 +4996,25 @@ func (s *GetPodEventsRequest) SetStartTime(v string) *GetPodEventsRequest {
 }
 
 type GetPodEventsResponseBody struct {
-	Events    []*string `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
-	JobId     *string   `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	PodId     *string   `json:"PodId,omitempty" xml:"PodId,omitempty"`
-	PodUid    *string   `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Events []*string `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	// example:
+	//
+	// dlc-20210126170216-*****
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dlc-20210126170216-*****-chief-0
+	PodId *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
+	// example:
+	//
+	// 94a7cc7c-0033-48b5-85bd-71c63592c268
+	PodUid *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetPodEventsResponseBody) String() string {
@@ -3984,11 +5080,26 @@ func (s *GetPodEventsResponse) SetBody(v *GetPodEventsResponseBody) *GetPodEvent
 }
 
 type GetPodLogsRequest struct {
-	DownloadToFile *bool   `json:"DownloadToFile,omitempty" xml:"DownloadToFile,omitempty"`
-	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	MaxLines       *int32  `json:"MaxLines,omitempty" xml:"MaxLines,omitempty"`
-	PodUid         *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
-	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// true
+	DownloadToFile *bool `json:"DownloadToFile,omitempty" xml:"DownloadToFile,omitempty"`
+	// example:
+	//
+	// 2020-11-08T17:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 100
+	MaxLines *int32 `json:"MaxLines,omitempty" xml:"MaxLines,omitempty"`
+	// example:
+	//
+	// fe846462-af2c-4521-bd6f-96787a57****
+	PodUid *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
+	// example:
+	//
+	// 2020-11-08T16:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s GetPodLogsRequest) String() string {
@@ -4025,11 +5136,23 @@ func (s *GetPodLogsRequest) SetStartTime(v string) *GetPodLogsRequest {
 }
 
 type GetPodLogsResponseBody struct {
-	JobId     *string   `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Logs      []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
-	PodId     *string   `json:"PodId,omitempty" xml:"PodId,omitempty"`
-	PodUid    *string   `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// dlc-20210126170216-******
+	JobId *string   `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Logs  []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// dlc-20210126170216-****-chief-0
+	PodId *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
+	// example:
+	//
+	// 94a7cc7c-0033-48b5-85bd-71c63592c268
+	PodUid *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetPodLogsResponseBody) String() string {
@@ -4095,8 +5218,14 @@ func (s *GetPodLogsResponse) SetBody(v *GetPodLogsResponseBody) *GetPodLogsRespo
 }
 
 type GetTensorboardRequest struct {
-	JodId       *string `json:"JodId,omitempty" xml:"JodId,omitempty"`
-	Token       *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// example:
+	//
+	// dlc-xxxxxxxx
+	JodId *string `json:"JodId,omitempty" xml:"JodId,omitempty"`
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// example:
+	//
+	// 46099
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -4153,6 +5282,9 @@ func (s *GetTensorboardResponse) SetBody(v *Tensorboard) *GetTensorboardResponse
 }
 
 type GetTensorboardSharedUrlRequest struct {
+	// example:
+	//
+	// 86400
 	ExpireTimeSeconds *string `json:"ExpireTimeSeconds,omitempty" xml:"ExpireTimeSeconds,omitempty"`
 }
 
@@ -4170,7 +5302,13 @@ func (s *GetTensorboardSharedUrlRequest) SetExpireTimeSeconds(v string) *GetTens
 }
 
 type GetTensorboardSharedUrlResponseBody struct {
-	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// http://pai-dlc-proxy-xxx.alicyuncs.com/xxx/xxx/token/
 	TensorboardSharedUrl *string `json:"TensorboardSharedUrl,omitempty" xml:"TensorboardSharedUrl,omitempty"`
 }
 
@@ -4222,8 +5360,17 @@ func (s *GetTensorboardSharedUrlResponse) SetBody(v *GetTensorboardSharedUrlResp
 }
 
 type GetTokenRequest struct {
-	ExpireTime *int64  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	TargetId   *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// example:
+	//
+	// 60
+	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// dlc*******
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// example:
+	//
+	// job
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
@@ -4251,8 +5398,14 @@ func (s *GetTokenRequest) SetTargetType(v string) *GetTokenRequest {
 }
 
 type GetTokenResponseBody struct {
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-xxxxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Token     *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// example:
+	//
+	// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9*****
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s GetTokenResponseBody) String() string {
@@ -4305,6 +5458,10 @@ func (s *GetTokenResponse) SetBody(v *GetTokenResponseBody) *GetTokenResponse {
 type GetWebTerminalRequest struct {
 	IsShared *bool `json:"IsShared,omitempty" xml:"IsShared,omitempty"`
 	// Pod UID。
+	//
+	// example:
+	//
+	// 94a7cc7c-0033-48b5-85bd-71c63592c268
 	PodUid *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
 }
 
@@ -4379,13 +5536,34 @@ func (s *GetWebTerminalResponse) SetBody(v *GetWebTerminalResponseBody) *GetWebT
 }
 
 type ListEcsSpecsRequest struct {
+	// example:
+	//
+	// GPU
 	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
-	InstanceTypes   *string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty"`
-	Order           *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	SortBy          *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// ecs.g6.large,ecs.g6.xlarge
+	InstanceTypes *string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty"`
+	// example:
+	//
+	// desc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// ECS
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// Gpu
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 }
 
 func (s ListEcsSpecsRequest) String() string {
@@ -4432,9 +5610,15 @@ func (s *ListEcsSpecsRequest) SetSortBy(v string) *ListEcsSpecsRequest {
 }
 
 type ListEcsSpecsResponseBody struct {
-	EcsSpecs   []*EcsSpec `json:"EcsSpecs,omitempty" xml:"EcsSpecs,omitempty" type:"Repeated"`
-	RequestId  *string    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	EcsSpecs []*EcsSpec `json:"EcsSpecs,omitempty" xml:"EcsSpecs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListEcsSpecsResponseBody) String() string {
@@ -4490,6 +5674,9 @@ func (s *ListEcsSpecsResponse) SetBody(v *ListEcsSpecsResponseBody) *ListEcsSpec
 }
 
 type ListJobSanityCheckResultsRequest struct {
+	// example:
+	//
+	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
 }
 
@@ -4507,9 +5694,15 @@ func (s *ListJobSanityCheckResultsRequest) SetOrder(v string) *ListJobSanityChec
 }
 
 type ListJobSanityCheckResultsResponseBody struct {
+	// example:
+	//
+	// 1AC9xxx-3xxx-5xxx2-xxxx-FA5
 	RequestID          *string                    `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
 	SanityCheckResults [][]*SanityCheckResultItem `json:"SanityCheckResults,omitempty" xml:"SanityCheckResults,omitempty" type:"Repeated"`
-	TotalCount         *int32                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListJobSanityCheckResultsResponseBody) String() string {
@@ -4565,27 +5758,78 @@ func (s *ListJobSanityCheckResultsResponse) SetBody(v *ListJobSanityCheckResults
 }
 
 type ListJobsRequest struct {
-	BusinessUserId    *string            `json:"BusinessUserId,omitempty" xml:"BusinessUserId,omitempty"`
-	Caller            *string            `json:"Caller,omitempty" xml:"Caller,omitempty"`
-	DisplayName       *string            `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	EndTime           *string            `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	FromAllWorkspaces *bool              `json:"FromAllWorkspaces,omitempty" xml:"FromAllWorkspaces,omitempty"`
-	JobId             *string            `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	JobType           *string            `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	Order             *string            `json:"Order,omitempty" xml:"Order,omitempty"`
-	PageNumber        *int32             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize          *int32             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PipelineId        *string            `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	ResourceId        *string            `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceQuotaName *string            `json:"ResourceQuotaName,omitempty" xml:"ResourceQuotaName,omitempty"`
-	ShowOwn           *bool              `json:"ShowOwn,omitempty" xml:"ShowOwn,omitempty"`
-	SortBy            *string            `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	StartTime         *string            `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status            *string            `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags              map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	UserIdForFilter   *string            `json:"UserIdForFilter,omitempty" xml:"UserIdForFilter,omitempty"`
-	Username          *string            `json:"Username,omitempty" xml:"Username,omitempty"`
-	WorkspaceId       *string            `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// 16****
+	BusinessUserId *string `json:"BusinessUserId,omitempty" xml:"BusinessUserId,omitempty"`
+	// example:
+	//
+	// local
+	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	// example:
+	//
+	// tf-mnist-test
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// 2020-11-09T14:45:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// false
+	FromAllWorkspaces *bool `json:"FromAllWorkspaces,omitempty" xml:"FromAllWorkspaces,omitempty"`
+	// example:
+	//
+	// dlc********
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// TFJob
+	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// example:
+	//
+	// desc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 50
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// flow-*******
+	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// example:
+	//
+	// r*****
+	ResourceId        *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceQuotaName *string `json:"ResourceQuotaName,omitempty" xml:"ResourceQuotaName,omitempty"`
+	// example:
+	//
+	// true
+	ShowOwn *bool `json:"ShowOwn,omitempty" xml:"ShowOwn,omitempty"`
+	// example:
+	//
+	// GmtCreateTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// 2020-11-08T16:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Running
+	Status          *string            `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags            map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UserIdForFilter *string            `json:"UserIdForFilter,omitempty" xml:"UserIdForFilter,omitempty"`
+	Username        *string            `json:"Username,omitempty" xml:"Username,omitempty"`
+	// example:
+	//
+	// 1****
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListJobsRequest) String() string {
@@ -4702,27 +5946,78 @@ func (s *ListJobsRequest) SetWorkspaceId(v string) *ListJobsRequest {
 }
 
 type ListJobsShrinkRequest struct {
-	BusinessUserId    *string `json:"BusinessUserId,omitempty" xml:"BusinessUserId,omitempty"`
-	Caller            *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
-	DisplayName       *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	EndTime           *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	FromAllWorkspaces *bool   `json:"FromAllWorkspaces,omitempty" xml:"FromAllWorkspaces,omitempty"`
-	JobId             *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	JobType           *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	Order             *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	PageNumber        *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PipelineId        *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// example:
+	//
+	// 16****
+	BusinessUserId *string `json:"BusinessUserId,omitempty" xml:"BusinessUserId,omitempty"`
+	// example:
+	//
+	// local
+	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	// example:
+	//
+	// tf-mnist-test
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// 2020-11-09T14:45:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// false
+	FromAllWorkspaces *bool `json:"FromAllWorkspaces,omitempty" xml:"FromAllWorkspaces,omitempty"`
+	// example:
+	//
+	// dlc********
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// TFJob
+	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// example:
+	//
+	// desc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 50
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// flow-*******
+	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// example:
+	//
+	// r*****
 	ResourceId        *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceQuotaName *string `json:"ResourceQuotaName,omitempty" xml:"ResourceQuotaName,omitempty"`
-	ShowOwn           *bool   `json:"ShowOwn,omitempty" xml:"ShowOwn,omitempty"`
-	SortBy            *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	StartTime         *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TagsShrink        *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	UserIdForFilter   *string `json:"UserIdForFilter,omitempty" xml:"UserIdForFilter,omitempty"`
-	Username          *string `json:"Username,omitempty" xml:"Username,omitempty"`
-	WorkspaceId       *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// true
+	ShowOwn *bool `json:"ShowOwn,omitempty" xml:"ShowOwn,omitempty"`
+	// example:
+	//
+	// GmtCreateTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// 2020-11-08T16:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Running
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TagsShrink      *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UserIdForFilter *string `json:"UserIdForFilter,omitempty" xml:"UserIdForFilter,omitempty"`
+	Username        *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// example:
+	//
+	// 1****
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListJobsShrinkRequest) String() string {
@@ -4839,9 +6134,15 @@ func (s *ListJobsShrinkRequest) SetWorkspaceId(v string) *ListJobsShrinkRequest 
 }
 
 type ListJobsResponseBody struct {
-	Jobs       []*JobItem `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
-	RequestId  *string    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Jobs []*JobItem `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListJobsResponseBody) String() string {
@@ -4897,22 +6198,66 @@ func (s *ListJobsResponse) SetBody(v *ListJobsResponseBody) *ListJobsResponse {
 }
 
 type ListTensorboardsRequest struct {
-	DisplayName   *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	JobId         *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Order         *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PaymentType   *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	ShowOwn       *bool   `json:"ShowOwn,omitempty" xml:"ShowOwn,omitempty"`
-	SortBy        *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	SourceId      *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	SourceType    *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// TestTensorboard
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// 2020-11-09T14:45:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// dlc-xxx
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// desc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 50
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	ShowOwn     *bool   `json:"ShowOwn,omitempty" xml:"ShowOwn,omitempty"`
+	// example:
+	//
+	// GmtCreateTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// dlc-xxxxxx
+	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// example:
+	//
+	// job
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// example:
+	//
+	// 2020-11-08T16:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// tensorboard-xxx
 	TensorboardId *string `json:"TensorboardId,omitempty" xml:"TensorboardId,omitempty"`
-	Verbose       *bool   `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
-	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Username      *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// example:
+	//
+	// true
+	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+	// example:
+	//
+	// 380
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListTensorboardsRequest) String() string {
@@ -4993,6 +6338,16 @@ func (s *ListTensorboardsRequest) SetTensorboardId(v string) *ListTensorboardsRe
 	return s
 }
 
+func (s *ListTensorboardsRequest) SetUserId(v string) *ListTensorboardsRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *ListTensorboardsRequest) SetUsername(v string) *ListTensorboardsRequest {
+	s.Username = &v
+	return s
+}
+
 func (s *ListTensorboardsRequest) SetVerbose(v bool) *ListTensorboardsRequest {
 	s.Verbose = &v
 	return s
@@ -5004,9 +6359,15 @@ func (s *ListTensorboardsRequest) SetWorkspaceId(v string) *ListTensorboardsRequ
 }
 
 type ListTensorboardsResponseBody struct {
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId    *string        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Tensorboards []*Tensorboard `json:"Tensorboards,omitempty" xml:"Tensorboards,omitempty" type:"Repeated"`
-	TotalCount   *int64         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListTensorboardsResponseBody) String() string {
@@ -5062,6 +6423,9 @@ func (s *ListTensorboardsResponse) SetBody(v *ListTensorboardsResponseBody) *Lis
 }
 
 type StartTensorboardRequest struct {
+	// example:
+	//
+	// 380
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -5079,7 +6443,13 @@ func (s *StartTensorboardRequest) SetWorkspaceId(v string) *StartTensorboardRequ
 }
 
 type StartTensorboardResponseBody struct {
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// tensorboard-20210114104214-vf9lowjt3pso
 	TensorboardId *string `json:"TensorboardId,omitempty" xml:"TensorboardId,omitempty"`
 }
 
@@ -5131,7 +6501,13 @@ func (s *StartTensorboardResponse) SetBody(v *StartTensorboardResponseBody) *Sta
 }
 
 type StopJobResponseBody struct {
-	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// dlc-20210126170216-xxxxxxx
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-xxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5183,6 +6559,9 @@ func (s *StopJobResponse) SetBody(v *StopJobResponseBody) *StopJobResponse {
 }
 
 type StopTensorboardRequest struct {
+	// example:
+	//
+	// 380
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -5200,7 +6579,13 @@ func (s *StopTensorboardRequest) SetWorkspaceId(v string) *StopTensorboardReques
 }
 
 type StopTensorboardResponseBody struct {
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// tensorboard-20210114104214-xxxxxxxx
 	TensorboardId *string `json:"TensorboardId,omitempty" xml:"TensorboardId,omitempty"`
 }
 
@@ -5252,6 +6637,9 @@ func (s *StopTensorboardResponse) SetBody(v *StopTensorboardResponseBody) *StopT
 }
 
 type UpdateJobRequest struct {
+	// example:
+	//
+	// 5
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 }
 
@@ -5269,7 +6657,13 @@ func (s *UpdateJobRequest) SetPriority(v int32) *UpdateJobRequest {
 }
 
 type UpdateJobResponseBody struct {
-	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// dlc*************
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5321,8 +6715,14 @@ func (s *UpdateJobResponse) SetBody(v *UpdateJobResponseBody) *UpdateJobResponse
 }
 
 type UpdateTensorboardRequest struct {
-	MaxRunningTimeMinutes *int64  `json:"MaxRunningTimeMinutes,omitempty" xml:"MaxRunningTimeMinutes,omitempty"`
-	WorkspaceId           *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// MaxRunningTimeMinutes
+	MaxRunningTimeMinutes *int64 `json:"MaxRunningTimeMinutes,omitempty" xml:"MaxRunningTimeMinutes,omitempty"`
+	// example:
+	//
+	// 380
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s UpdateTensorboardRequest) String() string {
@@ -5344,7 +6744,13 @@ func (s *UpdateTensorboardRequest) SetWorkspaceId(v string) *UpdateTensorboardRe
 }
 
 type UpdateTensorboardResponseBody struct {
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// tensorboard-20210114104214-xxxxxxxx
 	TensorboardId *string `json:"TensorboardId,omitempty" xml:"TensorboardId,omitempty"`
 }
 
@@ -5494,6 +6900,17 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建一个DLC作业
+//
+// @param request - CreateJobRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateJobResponse
 func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5600,6 +7017,13 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers ma
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建一个DLC作业
+//
+// @param request - CreateJobRequest
+//
+// @return CreateJobResponse
 func (client *Client) CreateJob(request *CreateJobRequest) (_result *CreateJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5612,6 +7036,17 @@ func (client *Client) CreateJob(request *CreateJobRequest) (_result *CreateJobRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建一个Tensorboard
+//
+// @param request - CreateTensorboardRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTensorboardResponse
 func (client *Client) CreateTensorboardWithOptions(request *CreateTensorboardRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateTensorboardResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5710,6 +7145,13 @@ func (client *Client) CreateTensorboardWithOptions(request *CreateTensorboardReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建一个Tensorboard
+//
+// @param request - CreateTensorboardRequest
+//
+// @return CreateTensorboardResponse
 func (client *Client) CreateTensorboard(request *CreateTensorboardRequest) (_result *CreateTensorboardResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5722,6 +7164,15 @@ func (client *Client) CreateTensorboard(request *CreateTensorboardRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除一个DLC作业
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteJobResponse
 func (client *Client) DeleteJobWithOptions(JobId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteJobResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -5746,6 +7197,11 @@ func (client *Client) DeleteJobWithOptions(JobId *string, headers map[string]*st
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除一个DLC作业
+//
+// @return DeleteJobResponse
 func (client *Client) DeleteJob(JobId *string) (_result *DeleteJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5758,6 +7214,17 @@ func (client *Client) DeleteJob(JobId *string) (_result *DeleteJobResponse, _err
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除一个数据源配置
+//
+// @param request - DeleteTensorboardRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTensorboardResponse
 func (client *Client) DeleteTensorboardWithOptions(TensorboardId *string, request *DeleteTensorboardRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteTensorboardResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5792,6 +7259,13 @@ func (client *Client) DeleteTensorboardWithOptions(TensorboardId *string, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除一个数据源配置
+//
+// @param request - DeleteTensorboardRequest
+//
+// @return DeleteTensorboardResponse
 func (client *Client) DeleteTensorboard(TensorboardId *string, request *DeleteTensorboardRequest) (_result *DeleteTensorboardResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5804,6 +7278,17 @@ func (client *Client) DeleteTensorboard(TensorboardId *string, request *DeleteTe
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取一个DLC作业详情
+//
+// @param request - GetJobRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetJobResponse
 func (client *Client) GetJobWithOptions(JobId *string, request *GetJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5838,6 +7323,13 @@ func (client *Client) GetJobWithOptions(JobId *string, request *GetJobRequest, h
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取一个DLC作业详情
+//
+// @param request - GetJobRequest
+//
+// @return GetJobResponse
 func (client *Client) GetJob(JobId *string, request *GetJobRequest) (_result *GetJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5850,6 +7342,17 @@ func (client *Client) GetJob(JobId *string, request *GetJobRequest) (_result *Ge
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取作业的事件
+//
+// @param request - GetJobEventsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetJobEventsResponse
 func (client *Client) GetJobEventsWithOptions(JobId *string, request *GetJobEventsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetJobEventsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5892,6 +7395,13 @@ func (client *Client) GetJobEventsWithOptions(JobId *string, request *GetJobEven
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取作业的事件
+//
+// @param request - GetJobEventsRequest
+//
+// @return GetJobEventsResponse
 func (client *Client) GetJobEvents(JobId *string, request *GetJobEventsRequest) (_result *GetJobEventsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5904,6 +7414,17 @@ func (client *Client) GetJobEvents(JobId *string, request *GetJobEventsRequest) 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取一个作业的资源监控指标
+//
+// @param request - GetJobMetricsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetJobMetricsResponse
 func (client *Client) GetJobMetricsWithOptions(JobId *string, request *GetJobMetricsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetJobMetricsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5954,6 +7475,13 @@ func (client *Client) GetJobMetricsWithOptions(JobId *string, request *GetJobMet
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取一个作业的资源监控指标
+//
+// @param request - GetJobMetricsRequest
+//
+// @return GetJobMetricsResponse
 func (client *Client) GetJobMetrics(JobId *string, request *GetJobMetricsRequest) (_result *GetJobMetricsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5966,6 +7494,17 @@ func (client *Client) GetJobMetrics(JobId *string, request *GetJobMetricsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取DLC作业某次算力健康检测结果
+//
+// @param request - GetJobSanityCheckResultRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetJobSanityCheckResultResponse
 func (client *Client) GetJobSanityCheckResultWithOptions(JobId *string, request *GetJobSanityCheckResultRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetJobSanityCheckResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6008,6 +7547,13 @@ func (client *Client) GetJobSanityCheckResultWithOptions(JobId *string, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取DLC作业某次算力健康检测结果
+//
+// @param request - GetJobSanityCheckResultRequest
+//
+// @return GetJobSanityCheckResultResponse
 func (client *Client) GetJobSanityCheckResult(JobId *string, request *GetJobSanityCheckResultRequest) (_result *GetJobSanityCheckResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6020,6 +7566,17 @@ func (client *Client) GetJobSanityCheckResult(JobId *string, request *GetJobSani
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取作业中一个运行实例的系统事件
+//
+// @param request - GetPodEventsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPodEventsResponse
 func (client *Client) GetPodEventsWithOptions(JobId *string, PodId *string, request *GetPodEventsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPodEventsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6066,6 +7623,13 @@ func (client *Client) GetPodEventsWithOptions(JobId *string, PodId *string, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取作业中一个运行实例的系统事件
+//
+// @param request - GetPodEventsRequest
+//
+// @return GetPodEventsResponse
 func (client *Client) GetPodEvents(JobId *string, PodId *string, request *GetPodEventsRequest) (_result *GetPodEventsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6078,6 +7642,17 @@ func (client *Client) GetPodEvents(JobId *string, PodId *string, request *GetPod
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取作业中一个运行实例的日志
+//
+// @param request - GetPodLogsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPodLogsResponse
 func (client *Client) GetPodLogsWithOptions(JobId *string, PodId *string, request *GetPodLogsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPodLogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6128,6 +7703,13 @@ func (client *Client) GetPodLogsWithOptions(JobId *string, PodId *string, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取作业中一个运行实例的日志
+//
+// @param request - GetPodLogsRequest
+//
+// @return GetPodLogsResponse
 func (client *Client) GetPodLogs(JobId *string, PodId *string, request *GetPodLogsRequest) (_result *GetPodLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6140,6 +7722,17 @@ func (client *Client) GetPodLogs(JobId *string, PodId *string, request *GetPodLo
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取一个Tensorboard
+//
+// @param request - GetTensorboardRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTensorboardResponse
 func (client *Client) GetTensorboardWithOptions(TensorboardId *string, request *GetTensorboardRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTensorboardResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6182,6 +7775,13 @@ func (client *Client) GetTensorboardWithOptions(TensorboardId *string, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取一个Tensorboard
+//
+// @param request - GetTensorboardRequest
+//
+// @return GetTensorboardResponse
 func (client *Client) GetTensorboard(TensorboardId *string, request *GetTensorboardRequest) (_result *GetTensorboardResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6194,6 +7794,17 @@ func (client *Client) GetTensorboard(TensorboardId *string, request *GetTensorbo
 	return _result, _err
 }
 
+// Summary:
+//
+// Get the shared url for tensorboard
+//
+// @param request - GetTensorboardSharedUrlRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTensorboardSharedUrlResponse
 func (client *Client) GetTensorboardSharedUrlWithOptions(TensorboardId *string, request *GetTensorboardSharedUrlRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTensorboardSharedUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6228,6 +7839,13 @@ func (client *Client) GetTensorboardSharedUrlWithOptions(TensorboardId *string, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Get the shared url for tensorboard
+//
+// @param request - GetTensorboardSharedUrlRequest
+//
+// @return GetTensorboardSharedUrlResponse
 func (client *Client) GetTensorboardSharedUrl(TensorboardId *string, request *GetTensorboardSharedUrlRequest) (_result *GetTensorboardSharedUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6240,6 +7858,17 @@ func (client *Client) GetTensorboardSharedUrl(TensorboardId *string, request *Ge
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用户Token
+//
+// @param request - GetTokenRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTokenResponse
 func (client *Client) GetTokenWithOptions(request *GetTokenRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6282,6 +7911,13 @@ func (client *Client) GetTokenWithOptions(request *GetTokenRequest, headers map[
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取用户Token
+//
+// @param request - GetTokenRequest
+//
+// @return GetTokenResponse
 func (client *Client) GetToken(request *GetTokenRequest) (_result *GetTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6294,6 +7930,17 @@ func (client *Client) GetToken(request *GetTokenRequest) (_result *GetTokenRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// Get the url for accessing pod's terminal in k8s
+//
+// @param request - GetWebTerminalRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWebTerminalResponse
 func (client *Client) GetWebTerminalWithOptions(JobId *string, PodId *string, request *GetWebTerminalRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetWebTerminalResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6332,6 +7979,13 @@ func (client *Client) GetWebTerminalWithOptions(JobId *string, PodId *string, re
 	return _result, _err
 }
 
+// Summary:
+//
+// Get the url for accessing pod's terminal in k8s
+//
+// @param request - GetWebTerminalRequest
+//
+// @return GetWebTerminalResponse
 func (client *Client) GetWebTerminal(JobId *string, PodId *string, request *GetWebTerminalRequest) (_result *GetWebTerminalResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6344,6 +7998,17 @@ func (client *Client) GetWebTerminal(JobId *string, PodId *string, request *GetW
 	return _result, _err
 }
 
+// Summary:
+//
+// ListEcsSpecs
+//
+// @param request - ListEcsSpecsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEcsSpecsResponse
 func (client *Client) ListEcsSpecsWithOptions(request *ListEcsSpecsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListEcsSpecsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6402,6 +8067,13 @@ func (client *Client) ListEcsSpecsWithOptions(request *ListEcsSpecsRequest, head
 	return _result, _err
 }
 
+// Summary:
+//
+// ListEcsSpecs
+//
+// @param request - ListEcsSpecsRequest
+//
+// @return ListEcsSpecsResponse
 func (client *Client) ListEcsSpecs(request *ListEcsSpecsRequest) (_result *ListEcsSpecsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6414,6 +8086,17 @@ func (client *Client) ListEcsSpecs(request *ListEcsSpecsRequest) (_result *ListE
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取某个DLC作业的多次算力健康检测结果
+//
+// @param request - ListJobSanityCheckResultsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListJobSanityCheckResultsResponse
 func (client *Client) ListJobSanityCheckResultsWithOptions(JobId *string, request *ListJobSanityCheckResultsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListJobSanityCheckResultsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6448,6 +8131,13 @@ func (client *Client) ListJobSanityCheckResultsWithOptions(JobId *string, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取某个DLC作业的多次算力健康检测结果
+//
+// @param request - ListJobSanityCheckResultsRequest
+//
+// @return ListJobSanityCheckResultsResponse
 func (client *Client) ListJobSanityCheckResults(JobId *string, request *ListJobSanityCheckResultsRequest) (_result *ListJobSanityCheckResultsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6460,6 +8150,17 @@ func (client *Client) ListJobSanityCheckResults(JobId *string, request *ListJobS
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据过滤条件获取DLC作业列表
+//
+// @param tmpReq - ListJobsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListJobsResponse
 func (client *Client) ListJobsWithOptions(tmpReq *ListJobsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListJobsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -6580,6 +8281,13 @@ func (client *Client) ListJobsWithOptions(tmpReq *ListJobsRequest, headers map[s
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据过滤条件获取DLC作业列表
+//
+// @param request - ListJobsRequest
+//
+// @return ListJobsResponse
 func (client *Client) ListJobs(request *ListJobsRequest) (_result *ListJobsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6592,6 +8300,17 @@ func (client *Client) ListJobs(request *ListJobsRequest) (_result *ListJobsRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取Tensorboard
+//
+// @param request - ListTensorboardsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTensorboardsResponse
 func (client *Client) ListTensorboardsWithOptions(request *ListTensorboardsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTensorboardsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6654,6 +8373,14 @@ func (client *Client) ListTensorboardsWithOptions(request *ListTensorboardsReque
 		query["TensorboardId"] = request.TensorboardId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Username)) {
+		query["Username"] = request.Username
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Verbose)) {
 		query["Verbose"] = request.Verbose
 	}
@@ -6686,6 +8413,13 @@ func (client *Client) ListTensorboardsWithOptions(request *ListTensorboardsReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取Tensorboard
+//
+// @param request - ListTensorboardsRequest
+//
+// @return ListTensorboardsResponse
 func (client *Client) ListTensorboards(request *ListTensorboardsRequest) (_result *ListTensorboardsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6698,6 +8432,17 @@ func (client *Client) ListTensorboards(request *ListTensorboardsRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 开始运行tensorboard
+//
+// @param request - StartTensorboardRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartTensorboardResponse
 func (client *Client) StartTensorboardWithOptions(TensorboardId *string, request *StartTensorboardRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartTensorboardResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6732,6 +8477,13 @@ func (client *Client) StartTensorboardWithOptions(TensorboardId *string, request
 	return _result, _err
 }
 
+// Summary:
+//
+// 开始运行tensorboard
+//
+// @param request - StartTensorboardRequest
+//
+// @return StartTensorboardResponse
 func (client *Client) StartTensorboard(TensorboardId *string, request *StartTensorboardRequest) (_result *StartTensorboardResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6744,6 +8496,15 @@ func (client *Client) StartTensorboard(TensorboardId *string, request *StartTens
 	return _result, _err
 }
 
+// Summary:
+//
+// 停止一个DLC作业
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopJobResponse
 func (client *Client) StopJobWithOptions(JobId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopJobResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -6768,6 +8529,11 @@ func (client *Client) StopJobWithOptions(JobId *string, headers map[string]*stri
 	return _result, _err
 }
 
+// Summary:
+//
+// 停止一个DLC作业
+//
+// @return StopJobResponse
 func (client *Client) StopJob(JobId *string) (_result *StopJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6780,6 +8546,17 @@ func (client *Client) StopJob(JobId *string) (_result *StopJobResponse, _err err
 	return _result, _err
 }
 
+// Summary:
+//
+// 停止运行tensorboard
+//
+// @param request - StopTensorboardRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopTensorboardResponse
 func (client *Client) StopTensorboardWithOptions(TensorboardId *string, request *StopTensorboardRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopTensorboardResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6814,6 +8591,13 @@ func (client *Client) StopTensorboardWithOptions(TensorboardId *string, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// 停止运行tensorboard
+//
+// @param request - StopTensorboardRequest
+//
+// @return StopTensorboardResponse
 func (client *Client) StopTensorboard(TensorboardId *string, request *StopTensorboardRequest) (_result *StopTensorboardResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6826,6 +8610,17 @@ func (client *Client) StopTensorboard(TensorboardId *string, request *StopTensor
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新一个Job
+//
+// @param request - UpdateJobRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateJobResponse
 func (client *Client) UpdateJobWithOptions(JobId *string, request *UpdateJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6860,6 +8655,13 @@ func (client *Client) UpdateJobWithOptions(JobId *string, request *UpdateJobRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新一个Job
+//
+// @param request - UpdateJobRequest
+//
+// @return UpdateJobResponse
 func (client *Client) UpdateJob(JobId *string, request *UpdateJobRequest) (_result *UpdateJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6872,6 +8674,17 @@ func (client *Client) UpdateJob(JobId *string, request *UpdateJobRequest) (_resu
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新tensorboard
+//
+// @param request - UpdateTensorboardRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTensorboardResponse
 func (client *Client) UpdateTensorboardWithOptions(TensorboardId *string, request *UpdateTensorboardRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateTensorboardResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6910,6 +8723,13 @@ func (client *Client) UpdateTensorboardWithOptions(TensorboardId *string, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新tensorboard
+//
+// @param request - UpdateTensorboardRequest
+//
+// @return UpdateTensorboardResponse
 func (client *Client) UpdateTensorboard(TensorboardId *string, request *UpdateTensorboardRequest) (_result *UpdateTensorboardResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
