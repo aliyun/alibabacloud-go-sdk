@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -18,11 +15,41 @@ import (
 )
 
 type CreateAsyncTranslateRequest struct {
-	ApiType        *string `json:"ApiType,omitempty" xml:"ApiType,omitempty"`
-	FormatType     *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
-	Scene          *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// translate_standard
+	ApiType *string `json:"ApiType,omitempty" xml:"ApiType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// text
+	FormatType *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// general
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// en
 	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
-	SourceText     *string `json:"SourceText,omitempty" xml:"SourceText,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Opinion: We have finally gotten some relief at the pump. But it may not last long
+	SourceText *string `json:"SourceText,omitempty" xml:"SourceText,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// zh
 	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
 }
 
@@ -65,10 +92,19 @@ func (s *CreateAsyncTranslateRequest) SetTargetLanguage(v string) *CreateAsyncTr
 }
 
 type CreateAsyncTranslateResponseBody struct {
-	Code      *int32                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *CreateAsyncTranslateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *CreateAsyncTranslateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// DC2DCCC9-C3DF-4F59-8D8E-78185729F16D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateAsyncTranslateResponseBody) String() string {
@@ -100,7 +136,17 @@ func (s *CreateAsyncTranslateResponseBody) SetRequestId(v string) *CreateAsyncTr
 }
 
 type CreateAsyncTranslateResponseBodyData struct {
-	JobId  *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 98bbb007-71bb-448b-bab0-2695ce8f8599
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ready
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -123,9 +169,9 @@ func (s *CreateAsyncTranslateResponseBodyData) SetStatus(v string) *CreateAsyncT
 }
 
 type CreateAsyncTranslateResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAsyncTranslateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAsyncTranslateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAsyncTranslateResponse) String() string {
@@ -152,11 +198,35 @@ func (s *CreateAsyncTranslateResponse) SetBody(v *CreateAsyncTranslateResponseBo
 }
 
 type CreateDocTranslateTaskRequest struct {
-	CallbackUrl    *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
-	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	FileUrl        *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	Scene          *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// example:
+	//
+	// http://callbackUrl
+	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	// example:
+	//
+	// token
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://fileUrl
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// general
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// en
 	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// zh
 	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
 }
 
@@ -199,12 +269,36 @@ func (s *CreateDocTranslateTaskRequest) SetTargetLanguage(v string) *CreateDocTr
 }
 
 type CreateDocTranslateTaskAdvanceRequest struct {
-	CallbackUrl    *string   `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
-	ClientToken    *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	FileUrlObject  io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	Scene          *string   `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	SourceLanguage *string   `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
-	TargetLanguage *string   `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
+	// example:
+	//
+	// http://callbackUrl
+	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	// example:
+	//
+	// token
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://fileUrl
+	FileUrlObject io.Reader `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// general
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// en
+	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// zh
+	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
 }
 
 func (s CreateDocTranslateTaskAdvanceRequest) String() string {
@@ -246,9 +340,18 @@ func (s *CreateDocTranslateTaskAdvanceRequest) SetTargetLanguage(v string) *Crea
 }
 
 type CreateDocTranslateTaskResponseBody struct {
+	// example:
+	//
+	// D3920BC3-A395-4CAD-9E84-7C39EB07507B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// ready
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 0586df512c8b4bb382d7d9a6a01b5854
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateDocTranslateTaskResponseBody) String() string {
@@ -275,9 +378,9 @@ func (s *CreateDocTranslateTaskResponseBody) SetTaskId(v string) *CreateDocTrans
 }
 
 type CreateDocTranslateTaskResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateDocTranslateTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDocTranslateTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateDocTranslateTaskResponse) String() string {
@@ -304,11 +407,32 @@ func (s *CreateDocTranslateTaskResponse) SetBody(v *CreateDocTranslateTaskRespon
 }
 
 type CreateImageTranslateTaskRequest struct {
-	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Extra          *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// example:
+	//
+	// 1
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// {"have_ocr":"false","without_text":"false","have_psd":"true","ignore_entity":"false"}
+	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// zh
 	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// en
 	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
-	UrlList        *string `json:"UrlList,omitempty" xml:"UrlList,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://xxx,http://yyy
+	UrlList *string `json:"UrlList,omitempty" xml:"UrlList,omitempty"`
 }
 
 func (s CreateImageTranslateTaskRequest) String() string {
@@ -345,10 +469,19 @@ func (s *CreateImageTranslateTaskRequest) SetUrlList(v string) *CreateImageTrans
 }
 
 type CreateImageTranslateTaskResponseBody struct {
-	Code      *int32                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *CreateImageTranslateTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *CreateImageTranslateTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// ok
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// A41F6E25-8520-4AF0-90EF-AF7E32840108
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateImageTranslateTaskResponseBody) String() string {
@@ -380,6 +513,9 @@ func (s *CreateImageTranslateTaskResponseBody) SetRequestId(v string) *CreateIma
 }
 
 type CreateImageTranslateTaskResponseBodyData struct {
+	// example:
+	//
+	// A41F6E25-8520-4AF0-90EF-111111
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -397,9 +533,9 @@ func (s *CreateImageTranslateTaskResponseBodyData) SetTaskId(v string) *CreateIm
 }
 
 type CreateImageTranslateTaskResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateImageTranslateTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateImageTranslateTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateImageTranslateTaskResponse) String() string {
@@ -426,6 +562,11 @@ func (s *CreateImageTranslateTaskResponse) SetBody(v *CreateImageTranslateTaskRe
 }
 
 type GetAsyncTranslateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 77056ab7-7be1-4c2a-91a1-f20f63894048
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
@@ -443,10 +584,19 @@ func (s *GetAsyncTranslateRequest) SetJobId(v string) *GetAsyncTranslateRequest 
 }
 
 type GetAsyncTranslateResponseBody struct {
-	Code      *int32                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetAsyncTranslateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetAsyncTranslateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// ok
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// DC2DCCC9-C3DF-4F59-8D8E-78185729F16D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAsyncTranslateResponseBody) String() string {
@@ -478,10 +628,22 @@ func (s *GetAsyncTranslateResponseBody) SetRequestId(v string) *GetAsyncTranslat
 }
 
 type GetAsyncTranslateResponseBodyData struct {
+	// example:
+	//
+	// zh
 	DetectedLanguage *string `json:"DetectedLanguage,omitempty" xml:"DetectedLanguage,omitempty"`
-	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TranslatedText   *string `json:"TranslatedText,omitempty" xml:"TranslatedText,omitempty"`
-	WordCount        *string `json:"WordCount,omitempty" xml:"WordCount,omitempty"`
+	// example:
+	//
+	// ready
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// hello
+	TranslatedText *string `json:"TranslatedText,omitempty" xml:"TranslatedText,omitempty"`
+	// example:
+	//
+	// 2
+	WordCount *string `json:"WordCount,omitempty" xml:"WordCount,omitempty"`
 }
 
 func (s GetAsyncTranslateResponseBodyData) String() string {
@@ -513,9 +675,9 @@ func (s *GetAsyncTranslateResponseBodyData) SetWordCount(v string) *GetAsyncTran
 }
 
 type GetAsyncTranslateResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAsyncTranslateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAsyncTranslateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAsyncTranslateResponse) String() string {
@@ -542,11 +704,41 @@ func (s *GetAsyncTranslateResponse) SetBody(v *GetAsyncTranslateResponseBody) *G
 }
 
 type GetBatchTranslateRequest struct {
-	ApiType        *string `json:"ApiType,omitempty" xml:"ApiType,omitempty"`
-	FormatType     *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
-	Scene          *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// translate_standard
+	ApiType *string `json:"ApiType,omitempty" xml:"ApiType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// text
+	FormatType *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// general
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// en
 	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
-	SourceText     *string `json:"SourceText,omitempty" xml:"SourceText,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"11":"hello boy","12":"go home","13":"we can"}
+	SourceText *string `json:"SourceText,omitempty" xml:"SourceText,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// zh
 	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
 }
 
@@ -589,8 +781,17 @@ func (s *GetBatchTranslateRequest) SetTargetLanguage(v string) *GetBatchTranslat
 }
 
 type GetBatchTranslateResponseBody struct {
-	Code           *int32                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message        *string                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 86D18195-D89C-4C8C-9DC4-5FCE789CE6D5
 	RequestId      *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TranslatedList []map[string]interface{} `json:"TranslatedList,omitempty" xml:"TranslatedList,omitempty" type:"Repeated"`
 }
@@ -624,9 +825,9 @@ func (s *GetBatchTranslateResponseBody) SetTranslatedList(v []map[string]interfa
 }
 
 type GetBatchTranslateResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetBatchTranslateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetBatchTranslateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetBatchTranslateResponse) String() string {
@@ -653,6 +854,7 @@ func (s *GetBatchTranslateResponse) SetBody(v *GetBatchTranslateResponseBody) *G
 }
 
 type GetDetectLanguageRequest struct {
+	// This parameter is required.
 	SourceText *string `json:"SourceText,omitempty" xml:"SourceText,omitempty"`
 }
 
@@ -670,8 +872,15 @@ func (s *GetDetectLanguageRequest) SetSourceText(v string) *GetDetectLanguageReq
 }
 
 type GetDetectLanguageResponseBody struct {
-	DetectedLanguage *string `json:"DetectedLanguage,omitempty" xml:"DetectedLanguage,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// zh
+	DetectedLanguage      *string `json:"DetectedLanguage,omitempty" xml:"DetectedLanguage,omitempty"`
+	LanguageProbabilities *string `json:"LanguageProbabilities,omitempty" xml:"LanguageProbabilities,omitempty"`
+	// example:
+	//
+	// 0C5EC1EC-1A06-4D60-97E6-4D41350945E4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetDetectLanguageResponseBody) String() string {
@@ -687,15 +896,20 @@ func (s *GetDetectLanguageResponseBody) SetDetectedLanguage(v string) *GetDetect
 	return s
 }
 
+func (s *GetDetectLanguageResponseBody) SetLanguageProbabilities(v string) *GetDetectLanguageResponseBody {
+	s.LanguageProbabilities = &v
+	return s
+}
+
 func (s *GetDetectLanguageResponseBody) SetRequestId(v string) *GetDetectLanguageResponseBody {
 	s.RequestId = &v
 	return s
 }
 
 type GetDetectLanguageResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDetectLanguageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDetectLanguageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDetectLanguageResponse) String() string {
@@ -722,6 +936,11 @@ func (s *GetDetectLanguageResponse) SetBody(v *GetDetectLanguageResponseBody) *G
 }
 
 type GetDocTranslateTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0586df512c8b4bb382d7d9a6a01b5854
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -739,13 +958,34 @@ func (s *GetDocTranslateTaskRequest) SetTaskId(v string) *GetDocTranslateTaskReq
 }
 
 type GetDocTranslateTaskResponseBody struct {
-	PageCount             *int32  `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
-	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId                *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TranslateErrorCode    *string `json:"TranslateErrorCode,omitempty" xml:"TranslateErrorCode,omitempty"`
+	// example:
+	//
+	// 20
+	PageCount *int32 `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
+	// example:
+	//
+	// 12952E92-FDF3-4D3C-88E3-242D72BA7150
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// translated
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 0586df512c8b4bb382d7d9a6a01b5854
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// Error
+	TranslateErrorCode *string `json:"TranslateErrorCode,omitempty" xml:"TranslateErrorCode,omitempty"`
+	// example:
+	//
+	// Fail to get the page number of document.
 	TranslateErrorMessage *string `json:"TranslateErrorMessage,omitempty" xml:"TranslateErrorMessage,omitempty"`
-	TranslateFileUrl      *string `json:"TranslateFileUrl,omitempty" xml:"TranslateFileUrl,omitempty"`
+	// example:
+	//
+	// http://translateFileUrl
+	TranslateFileUrl *string `json:"TranslateFileUrl,omitempty" xml:"TranslateFileUrl,omitempty"`
 }
 
 func (s GetDocTranslateTaskResponseBody) String() string {
@@ -792,9 +1032,9 @@ func (s *GetDocTranslateTaskResponseBody) SetTranslateFileUrl(v string) *GetDocT
 }
 
 type GetDocTranslateTaskResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDocTranslateTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDocTranslateTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDocTranslateTaskResponse) String() string {
@@ -821,8 +1061,16 @@ func (s *GetDocTranslateTaskResponse) SetBody(v *GetDocTranslateTaskResponseBody
 }
 
 type GetImageDiagnoseRequest struct {
+	// example:
+	//
+	// {   "product_id": "1",   "platform": "ae" }
 	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	Url   *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://xxxxx.oss-cn-shenzhen.aliyuncs.com/jd/41209/xxxxx.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s GetImageDiagnoseRequest) String() string {
@@ -844,10 +1092,19 @@ func (s *GetImageDiagnoseRequest) SetUrl(v string) *GetImageDiagnoseRequest {
 }
 
 type GetImageDiagnoseResponseBody struct {
-	Code      *int32                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetImageDiagnoseResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetImageDiagnoseResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// ok
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// DC2DCCC9-C3DF-4F59-8D8E-78185729F16D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetImageDiagnoseResponseBody) String() string {
@@ -879,6 +1136,9 @@ func (s *GetImageDiagnoseResponseBody) SetRequestId(v string) *GetImageDiagnoseR
 }
 
 type GetImageDiagnoseResponseBodyData struct {
+	// example:
+	//
+	// zh
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 }
 
@@ -896,9 +1156,9 @@ func (s *GetImageDiagnoseResponseBodyData) SetLanguage(v string) *GetImageDiagno
 }
 
 type GetImageDiagnoseResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetImageDiagnoseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetImageDiagnoseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetImageDiagnoseResponse) String() string {
@@ -925,10 +1185,28 @@ func (s *GetImageDiagnoseResponse) SetBody(v *GetImageDiagnoseResponseBody) *Get
 }
 
 type GetImageTranslateRequest struct {
-	Extra          *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// example:
+	//
+	// {"have_ocr": "false", "without_text":"true", "have_psd": "false", "ignore_entity": "false"}
+	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// zh
 	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// en
 	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
-	Url            *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://xxxxxxx.oss-cn-shenzhen.aliyuncs.com/xxxxxx.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s GetImageTranslateRequest) String() string {
@@ -960,10 +1238,19 @@ func (s *GetImageTranslateRequest) SetUrl(v string) *GetImageTranslateRequest {
 }
 
 type GetImageTranslateResponseBody struct {
-	Code      *int32                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetImageTranslateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetImageTranslateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// ok
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// A41F6E25-8520-4AF0-90EF-AF7E32840108
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetImageTranslateResponseBody) String() string {
@@ -997,7 +1284,10 @@ func (s *GetImageTranslateResponseBody) SetRequestId(v string) *GetImageTranslat
 type GetImageTranslateResponseBodyData struct {
 	Orc           *string `json:"Orc,omitempty" xml:"Orc,omitempty"`
 	PictureEditor *string `json:"PictureEditor,omitempty" xml:"PictureEditor,omitempty"`
-	Url           *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// https://ae01.alicdn.com/kf/xxxxx.jpeg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s GetImageTranslateResponseBodyData) String() string {
@@ -1024,9 +1314,9 @@ func (s *GetImageTranslateResponseBodyData) SetUrl(v string) *GetImageTranslateR
 }
 
 type GetImageTranslateResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetImageTranslateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetImageTranslateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetImageTranslateResponse) String() string {
@@ -1053,6 +1343,11 @@ func (s *GetImageTranslateResponse) SetBody(v *GetImageTranslateResponseBody) *G
 }
 
 type GetImageTranslateTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxxx
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -1070,10 +1365,19 @@ func (s *GetImageTranslateTaskRequest) SetTaskId(v string) *GetImageTranslateTas
 }
 
 type GetImageTranslateTaskResponseBody struct {
-	Code      *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetImageTranslateTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetImageTranslateTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// ok
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// xxxxxxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetImageTranslateTaskResponseBody) String() string {
@@ -1105,6 +1409,9 @@ func (s *GetImageTranslateTaskResponseBody) SetRequestId(v string) *GetImageTran
 }
 
 type GetImageTranslateTaskResponseBodyData struct {
+	// example:
+	//
+	// [{xxxxxx}]
 	ImageData *string `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
 }
 
@@ -1122,9 +1429,9 @@ func (s *GetImageTranslateTaskResponseBodyData) SetImageData(v string) *GetImage
 }
 
 type GetImageTranslateTaskResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetImageTranslateTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetImageTranslateTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetImageTranslateTaskResponse) String() string {
@@ -1151,11 +1458,34 @@ func (s *GetImageTranslateTaskResponse) SetBody(v *GetImageTranslateTaskResponse
 }
 
 type GetTitleDiagnoseRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	Extra      *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	Language   *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	Platform   *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	Title      *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// {   "product_id": "1",   "platform": "ae" }
+	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// zh
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ae
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Amroe Japan Comic Theme Uzumaki Naruto Namikaze Minato 3D Visual Cartoon 7 Color USB Touch
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s GetTitleDiagnoseRequest) String() string {
@@ -1192,10 +1522,19 @@ func (s *GetTitleDiagnoseRequest) SetTitle(v string) *GetTitleDiagnoseRequest {
 }
 
 type GetTitleDiagnoseResponseBody struct {
-	Code      *int32                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetTitleDiagnoseResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetTitleDiagnoseResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// ok
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// DC2DCCC9-C3DF-4F59-8D8E-78185729F16D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetTitleDiagnoseResponseBody) String() string {
@@ -1227,15 +1566,45 @@ func (s *GetTitleDiagnoseResponseBody) SetRequestId(v string) *GetTitleDiagnoseR
 }
 
 type GetTitleDiagnoseResponseBodyData struct {
-	AllUppercaseWords       *string `json:"AllUppercaseWords,omitempty" xml:"AllUppercaseWords,omitempty"`
-	ContainCoreClasses      *string `json:"ContainCoreClasses,omitempty" xml:"ContainCoreClasses,omitempty"`
-	DisableWords            *string `json:"DisableWords,omitempty" xml:"DisableWords,omitempty"`
-	DuplicateWords          *string `json:"DuplicateWords,omitempty" xml:"DuplicateWords,omitempty"`
-	LanguageQualityScore    *string `json:"LanguageQualityScore,omitempty" xml:"LanguageQualityScore,omitempty"`
-	NoFirstUppercaseList    *string `json:"NoFirstUppercaseList,omitempty" xml:"NoFirstUppercaseList,omitempty"`
-	OverLengthLimit         *string `json:"OverLengthLimit,omitempty" xml:"OverLengthLimit,omitempty"`
-	TotalScore              *string `json:"TotalScore,omitempty" xml:"TotalScore,omitempty"`
-	WordCount               *string `json:"WordCount,omitempty" xml:"WordCount,omitempty"`
+	// example:
+	//
+	// Boy
+	AllUppercaseWords *string `json:"AllUppercaseWords,omitempty" xml:"AllUppercaseWords,omitempty"`
+	// example:
+	//
+	// true
+	ContainCoreClasses *string `json:"ContainCoreClasses,omitempty" xml:"ContainCoreClasses,omitempty"`
+	// example:
+	//
+	// baba
+	DisableWords *string `json:"DisableWords,omitempty" xml:"DisableWords,omitempty"`
+	// example:
+	//
+	// hi
+	DuplicateWords *string `json:"DuplicateWords,omitempty" xml:"DuplicateWords,omitempty"`
+	// example:
+	//
+	// 2
+	LanguageQualityScore *string `json:"LanguageQualityScore,omitempty" xml:"LanguageQualityScore,omitempty"`
+	// example:
+	//
+	// no
+	NoFirstUppercaseList *string `json:"NoFirstUppercaseList,omitempty" xml:"NoFirstUppercaseList,omitempty"`
+	// example:
+	//
+	// 100
+	OverLengthLimit *string `json:"OverLengthLimit,omitempty" xml:"OverLengthLimit,omitempty"`
+	// example:
+	//
+	// 3
+	TotalScore *string `json:"TotalScore,omitempty" xml:"TotalScore,omitempty"`
+	// example:
+	//
+	// 10
+	WordCount *string `json:"WordCount,omitempty" xml:"WordCount,omitempty"`
+	// example:
+	//
+	// ahk
 	WordSpelledCorrectError *string `json:"WordSpelledCorrectError,omitempty" xml:"WordSpelledCorrectError,omitempty"`
 }
 
@@ -1298,9 +1667,9 @@ func (s *GetTitleDiagnoseResponseBodyData) SetWordSpelledCorrectError(v string) 
 }
 
 type GetTitleDiagnoseResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTitleDiagnoseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTitleDiagnoseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTitleDiagnoseResponse) String() string {
@@ -1327,13 +1696,42 @@ func (s *GetTitleDiagnoseResponse) SetBody(v *GetTitleDiagnoseResponseBody) *Get
 }
 
 type GetTitleGenerateRequest struct {
+	// example:
+	//
+	// {2:"None",10:"Plastic"}
 	Attributes *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 127896018
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	Extra      *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	HotWords   *string `json:"HotWords,omitempty" xml:"HotWords,omitempty"`
-	Language   *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	Platform   *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	Title      *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// {   "product_id": "1",   "platform": "ae" }
+	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// example:
+	//
+	// None,Plastic
+	HotWords *string `json:"HotWords,omitempty" xml:"HotWords,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// en
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ae
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10pcs 80ml Kitchen Disposable
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s GetTitleGenerateRequest) String() string {
@@ -1380,10 +1778,19 @@ func (s *GetTitleGenerateRequest) SetTitle(v string) *GetTitleGenerateRequest {
 }
 
 type GetTitleGenerateResponseBody struct {
-	Code      *int32                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetTitleGenerateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetTitleGenerateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// ok
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// DC2DCCC9-C3DF-4F59-8D8E-78185729F16D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetTitleGenerateResponseBody) String() string {
@@ -1415,6 +1822,9 @@ func (s *GetTitleGenerateResponseBody) SetRequestId(v string) *GetTitleGenerateR
 }
 
 type GetTitleGenerateResponseBodyData struct {
+	// example:
+	//
+	// 10pcs 80ml Kitchen Disposable Plastic Sauce Cup Pot Chutney Container
 	Titles *string `json:"Titles,omitempty" xml:"Titles,omitempty"`
 }
 
@@ -1432,9 +1842,9 @@ func (s *GetTitleGenerateResponseBodyData) SetTitles(v string) *GetTitleGenerate
 }
 
 type GetTitleGenerateResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTitleGenerateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTitleGenerateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTitleGenerateResponse) String() string {
@@ -1461,11 +1871,32 @@ func (s *GetTitleGenerateResponse) SetBody(v *GetTitleGenerateResponseBody) *Get
 }
 
 type GetTitleIntelligenceRequest struct {
-	CatLevelThreeId *int64  `json:"CatLevelThreeId,omitempty" xml:"CatLevelThreeId,omitempty"`
-	CatLevelTwoId   *int64  `json:"CatLevelTwoId,omitempty" xml:"CatLevelTwoId,omitempty"`
-	Extra           *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	Keywords        *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
-	Platform        *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 111
+	CatLevelThreeId *int64 `json:"CatLevelThreeId,omitempty" xml:"CatLevelThreeId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 222
+	CatLevelTwoId *int64 `json:"CatLevelTwoId,omitempty" xml:"CatLevelTwoId,omitempty"`
+	// example:
+	//
+	// {"product_id":"1212"}
+	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// example:
+	//
+	// hello,apple
+	Keywords *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ae
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
 }
 
 func (s GetTitleIntelligenceRequest) String() string {
@@ -1502,10 +1933,19 @@ func (s *GetTitleIntelligenceRequest) SetPlatform(v string) *GetTitleIntelligenc
 }
 
 type GetTitleIntelligenceResponseBody struct {
-	Code      *int32                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetTitleIntelligenceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetTitleIntelligenceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D70487B4-8891-4D24-BB64-8788E53671FB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetTitleIntelligenceResponseBody) String() string {
@@ -1537,6 +1977,9 @@ func (s *GetTitleIntelligenceResponseBody) SetRequestId(v string) *GetTitleIntel
 }
 
 type GetTitleIntelligenceResponseBodyData struct {
+	// example:
+	//
+	// Custom Hello Kitty PVC Cartoon Apple for Home Garden Complete Apple Bath Shower
 	Titles *string `json:"Titles,omitempty" xml:"Titles,omitempty"`
 }
 
@@ -1554,9 +1997,9 @@ func (s *GetTitleIntelligenceResponseBodyData) SetTitles(v string) *GetTitleInte
 }
 
 type GetTitleIntelligenceResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTitleIntelligenceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTitleIntelligenceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTitleIntelligenceResponse) String() string {
@@ -1583,6 +2026,11 @@ func (s *GetTitleIntelligenceResponse) SetBody(v *GetTitleIntelligenceResponseBo
 }
 
 type GetTranslateImageBatchResultRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// EEA28E6D-4828-5031-BD8C-8FF1B3216842
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -1600,10 +2048,19 @@ func (s *GetTranslateImageBatchResultRequest) SetTaskId(v string) *GetTranslateI
 }
 
 type GetTranslateImageBatchResultResponseBody struct {
-	Code      *int32                                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetTranslateImageBatchResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetTranslateImageBatchResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// DACD263C-C068-5116-83EC-117245AA35CF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetTranslateImageBatchResultResponseBody) String() string {
@@ -1636,7 +2093,10 @@ func (s *GetTranslateImageBatchResultResponseBody) SetRequestId(v string) *GetTr
 
 type GetTranslateImageBatchResultResponseBodyData struct {
 	Result []*GetTranslateImageBatchResultResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Status *string                                               `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// finished
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetTranslateImageBatchResultResponseBodyData) String() string {
@@ -1658,13 +2118,34 @@ func (s *GetTranslateImageBatchResultResponseBodyData) SetStatus(v string) *GetT
 }
 
 type GetTranslateImageBatchResultResponseBodyDataResult struct {
-	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	FinalImageUrl  *string `json:"FinalImageUrl,omitempty" xml:"FinalImageUrl,omitempty"`
-	InPaintingUrl  *string `json:"InPaintingUrl,omitempty" xml:"InPaintingUrl,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// https://example.com/example.jpg
+	FinalImageUrl *string `json:"FinalImageUrl,omitempty" xml:"FinalImageUrl,omitempty"`
+	// example:
+	//
+	// https://example.com/example.jpg
+	InPaintingUrl *string `json:"InPaintingUrl,omitempty" xml:"InPaintingUrl,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// https://example.com/example.jpg
 	SourceImageUrl *string `json:"SourceImageUrl,omitempty" xml:"SourceImageUrl,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TemplateJson   *string `json:"TemplateJson,omitempty" xml:"TemplateJson,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// {"TemplateJson": "Editor Template Json String	"}
+	TemplateJson *string `json:"TemplateJson,omitempty" xml:"TemplateJson,omitempty"`
 }
 
 func (s GetTranslateImageBatchResultResponseBodyDataResult) String() string {
@@ -1711,9 +2192,9 @@ func (s *GetTranslateImageBatchResultResponseBodyDataResult) SetTemplateJson(v s
 }
 
 type GetTranslateImageBatchResultResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTranslateImageBatchResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTranslateImageBatchResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTranslateImageBatchResultResponse) String() string {
@@ -1740,10 +2221,22 @@ func (s *GetTranslateImageBatchResultResponse) SetBody(v *GetTranslateImageBatch
 }
 
 type GetTranslateReportRequest struct {
-	ApiName   *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// This parameter is required.
+	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2021-03-01 00:00:00
 	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Group     *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2021-03-01 23:59:59
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
 }
 
 func (s GetTranslateReportRequest) String() string {
@@ -1775,9 +2268,21 @@ func (s *GetTranslateReportRequest) SetGroup(v string) *GetTranslateReportReques
 }
 
 type GetTranslateReportResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {"result":[{"time":"2021-10-21 00:00:00","total":100}]}
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 86D18195-D89C-4C8C-9DC4-5FCE789CE6D5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1810,9 +2315,9 @@ func (s *GetTranslateReportResponseBody) SetRequestId(v string) *GetTranslateRep
 }
 
 type GetTranslateReportResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTranslateReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTranslateReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTranslateReportResponse) String() string {
@@ -1839,8 +2344,11 @@ func (s *GetTranslateReportResponse) SetBody(v *GetTranslateReportResponseBody) 
 }
 
 type OpenAlimtServiceRequest struct {
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// id
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s OpenAlimtServiceRequest) String() string {
@@ -1862,7 +2370,13 @@ func (s *OpenAlimtServiceRequest) SetType(v string) *OpenAlimtServiceRequest {
 }
 
 type OpenAlimtServiceResponseBody struct {
-	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 123456
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// xxxx-xxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1885,9 +2399,9 @@ func (s *OpenAlimtServiceResponseBody) SetRequestId(v string) *OpenAlimtServiceR
 }
 
 type OpenAlimtServiceResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *OpenAlimtServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *OpenAlimtServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s OpenAlimtServiceResponse) String() string {
@@ -1914,11 +2428,35 @@ func (s *OpenAlimtServiceResponse) SetBody(v *OpenAlimtServiceResponseBody) *Ope
 }
 
 type TranslateRequest struct {
-	Context        *string `json:"Context,omitempty" xml:"Context,omitempty"`
-	FormatType     *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
-	Scene          *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// example:
+	//
+	// {\\"appName\\":\\"alynx\\"}
+	Context *string `json:"Context,omitempty" xml:"Context,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// text
+	FormatType *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// title
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// zh
 	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
-	SourceText     *string `json:"SourceText,omitempty" xml:"SourceText,omitempty"`
+	// This parameter is required.
+	SourceText *string `json:"SourceText,omitempty" xml:"SourceText,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// en
 	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
 }
 
@@ -1961,10 +2499,19 @@ func (s *TranslateRequest) SetTargetLanguage(v string) *TranslateRequest {
 }
 
 type TranslateResponseBody struct {
-	Code      *int32                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *TranslateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *TranslateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 86D18195-D89C-4C8C-9DC4-5FCE789CE6D5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s TranslateResponseBody) String() string {
@@ -1997,8 +2544,14 @@ func (s *TranslateResponseBody) SetRequestId(v string) *TranslateResponseBody {
 
 type TranslateResponseBodyData struct {
 	DetectedLanguage *string `json:"DetectedLanguage,omitempty" xml:"DetectedLanguage,omitempty"`
-	Translated       *string `json:"Translated,omitempty" xml:"Translated,omitempty"`
-	WordCount        *string `json:"WordCount,omitempty" xml:"WordCount,omitempty"`
+	// example:
+	//
+	// Hello
+	Translated *string `json:"Translated,omitempty" xml:"Translated,omitempty"`
+	// example:
+	//
+	// 10
+	WordCount *string `json:"WordCount,omitempty" xml:"WordCount,omitempty"`
 }
 
 func (s TranslateResponseBodyData) String() string {
@@ -2025,9 +2578,9 @@ func (s *TranslateResponseBodyData) SetWordCount(v string) *TranslateResponseBod
 }
 
 type TranslateResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TranslateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TranslateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TranslateResponse) String() string {
@@ -2054,11 +2607,34 @@ func (s *TranslateResponse) SetBody(v *TranslateResponseBody) *TranslateResponse
 }
 
 type TranslateCertificateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// driving_license
 	CertificateType *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
-	ImageUrl        *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	ResultType      *string `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
-	SourceLanguage  *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
-	TargetLanguage  *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://imageurl
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// example:
+	//
+	// text
+	ResultType *string `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// zh
+	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// en
+	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
 }
 
 func (s TranslateCertificateRequest) String() string {
@@ -2095,11 +2671,34 @@ func (s *TranslateCertificateRequest) SetTargetLanguage(v string) *TranslateCert
 }
 
 type TranslateCertificateAdvanceRequest struct {
-	CertificateType *string   `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
-	ImageUrlObject  io.Reader `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	ResultType      *string   `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
-	SourceLanguage  *string   `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
-	TargetLanguage  *string   `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// driving_license
+	CertificateType *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://imageurl
+	ImageUrlObject io.Reader `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// example:
+	//
+	// text
+	ResultType *string `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// zh
+	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// en
+	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
 }
 
 func (s TranslateCertificateAdvanceRequest) String() string {
@@ -2136,8 +2735,11 @@ func (s *TranslateCertificateAdvanceRequest) SetTargetLanguage(v string) *Transl
 }
 
 type TranslateCertificateResponseBody struct {
-	Data      *TranslateCertificateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *TranslateCertificateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 6640DE48-201C-4110-AE87-FB8FA34412B9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s TranslateCertificateResponseBody) String() string {
@@ -2176,9 +2778,15 @@ func (s *TranslateCertificateResponseBodyData) SetTranslatedValues(v []*Translat
 }
 
 type TranslateCertificateResponseBodyDataTranslatedValues struct {
-	Key              *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	KeyTranslation   *string `json:"KeyTranslation,omitempty" xml:"KeyTranslation,omitempty"`
-	Value            *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// name
+	KeyTranslation *string `json:"KeyTranslation,omitempty" xml:"KeyTranslation,omitempty"`
+	Value          *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// Solemn
 	ValueTranslation *string `json:"ValueTranslation,omitempty" xml:"ValueTranslation,omitempty"`
 }
 
@@ -2211,9 +2819,9 @@ func (s *TranslateCertificateResponseBodyDataTranslatedValues) SetValueTranslati
 }
 
 type TranslateCertificateResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TranslateCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TranslateCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TranslateCertificateResponse) String() string {
@@ -2240,11 +2848,39 @@ func (s *TranslateCertificateResponse) SetBody(v *TranslateCertificateResponseBo
 }
 
 type TranslateECommerceRequest struct {
-	Context        *string `json:"Context,omitempty" xml:"Context,omitempty"`
-	FormatType     *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
-	Scene          *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// example:
+	//
+	// context信息
+	Context *string `json:"Context,omitempty" xml:"Context,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// text
+	FormatType *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// social
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// en
 	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
-	SourceText     *string `json:"SourceText,omitempty" xml:"SourceText,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Hello
+	SourceText *string `json:"SourceText,omitempty" xml:"SourceText,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// zh
 	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
 }
 
@@ -2287,10 +2923,19 @@ func (s *TranslateECommerceRequest) SetTargetLanguage(v string) *TranslateEComme
 }
 
 type TranslateECommerceResponseBody struct {
-	Code      *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *TranslateECommerceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *TranslateECommerceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// An error occurred while translating.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// CC93BB5C-EAB5-579B-AA44-F61528F48FF8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s TranslateECommerceResponseBody) String() string {
@@ -2322,8 +2967,12 @@ func (s *TranslateECommerceResponseBody) SetRequestId(v string) *TranslateEComme
 }
 
 type TranslateECommerceResponseBodyData struct {
-	Translated *string `json:"Translated,omitempty" xml:"Translated,omitempty"`
-	WordCount  *string `json:"WordCount,omitempty" xml:"WordCount,omitempty"`
+	DetectedLanguage *string `json:"DetectedLanguage,omitempty" xml:"DetectedLanguage,omitempty"`
+	Translated       *string `json:"Translated,omitempty" xml:"Translated,omitempty"`
+	// example:
+	//
+	// 10
+	WordCount *string `json:"WordCount,omitempty" xml:"WordCount,omitempty"`
 }
 
 func (s TranslateECommerceResponseBodyData) String() string {
@@ -2332,6 +2981,11 @@ func (s TranslateECommerceResponseBodyData) String() string {
 
 func (s TranslateECommerceResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *TranslateECommerceResponseBodyData) SetDetectedLanguage(v string) *TranslateECommerceResponseBodyData {
+	s.DetectedLanguage = &v
+	return s
 }
 
 func (s *TranslateECommerceResponseBodyData) SetTranslated(v string) *TranslateECommerceResponseBodyData {
@@ -2345,9 +2999,9 @@ func (s *TranslateECommerceResponseBodyData) SetWordCount(v string) *TranslateEC
 }
 
 type TranslateECommerceResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TranslateECommerceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TranslateECommerceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TranslateECommerceResponse) String() string {
@@ -2374,11 +3028,33 @@ func (s *TranslateECommerceResponse) SetBody(v *TranslateECommerceResponseBody) 
 }
 
 type TranslateGeneralRequest struct {
-	Context        *string `json:"Context,omitempty" xml:"Context,omitempty"`
-	FormatType     *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
-	Scene          *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// example:
+	//
+	// {\\"appName\\":\\"alynx\\"}
+	Context *string `json:"Context,omitempty" xml:"Context,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// text
+	FormatType *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
+	// example:
+	//
+	// general
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// zh
 	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
-	SourceText     *string `json:"SourceText,omitempty" xml:"SourceText,omitempty"`
+	// This parameter is required.
+	SourceText *string `json:"SourceText,omitempty" xml:"SourceText,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// en
 	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
 }
 
@@ -2421,10 +3097,19 @@ func (s *TranslateGeneralRequest) SetTargetLanguage(v string) *TranslateGeneralR
 }
 
 type TranslateGeneralResponseBody struct {
-	Code      *int32                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *TranslateGeneralResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *TranslateGeneralResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 86D18195-D89C-4C8C-9DC4-5FCE789CE6D5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s TranslateGeneralResponseBody) String() string {
@@ -2457,8 +3142,14 @@ func (s *TranslateGeneralResponseBody) SetRequestId(v string) *TranslateGeneralR
 
 type TranslateGeneralResponseBodyData struct {
 	DetectedLanguage *string `json:"DetectedLanguage,omitempty" xml:"DetectedLanguage,omitempty"`
-	Translated       *string `json:"Translated,omitempty" xml:"Translated,omitempty"`
-	WordCount        *string `json:"WordCount,omitempty" xml:"WordCount,omitempty"`
+	// example:
+	//
+	// Hello
+	Translated *string `json:"Translated,omitempty" xml:"Translated,omitempty"`
+	// example:
+	//
+	// 10
+	WordCount *string `json:"WordCount,omitempty" xml:"WordCount,omitempty"`
 }
 
 func (s TranslateGeneralResponseBodyData) String() string {
@@ -2485,9 +3176,9 @@ func (s *TranslateGeneralResponseBodyData) SetWordCount(v string) *TranslateGene
 }
 
 type TranslateGeneralResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TranslateGeneralResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TranslateGeneralResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TranslateGeneralResponse) String() string {
@@ -2514,11 +3205,29 @@ func (s *TranslateGeneralResponse) SetBody(v *TranslateGeneralResponseBody) *Tra
 }
 
 type TranslateImageRequest struct {
-	Ext            *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
-	Field          *string `json:"Field,omitempty" xml:"Field,omitempty"`
-	ImageBase64    *string `json:"ImageBase64,omitempty" xml:"ImageBase64,omitempty"`
-	ImageUrl       *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// example:
+	//
+	// {"needEditorData": "false", "ignoreEntityRecognize": "true"}
+	Ext *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	// example:
+	//
+	// general
+	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	// example:
+	//
+	// /9j/4...H/9k=
+	ImageBase64 *string `json:"ImageBase64,omitempty" xml:"ImageBase64,omitempty"`
+	// example:
+	//
+	// https://example.com/example.jpg
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// example:
+	//
+	// zh
 	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
+	// example:
+	//
+	// en
 	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
 }
 
@@ -2561,10 +3270,19 @@ func (s *TranslateImageRequest) SetTargetLanguage(v string) *TranslateImageReque
 }
 
 type TranslateImageResponseBody struct {
-	Code      *int32                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *TranslateImageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *TranslateImageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Error Message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D774D33D-F1CB-5A2C-A787-E0A2179239CE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s TranslateImageResponseBody) String() string {
@@ -2596,9 +3314,18 @@ func (s *TranslateImageResponseBody) SetRequestId(v string) *TranslateImageRespo
 }
 
 type TranslateImageResponseBodyData struct {
+	// example:
+	//
+	// https://example.com/example.jpg
 	FinalImageUrl *string `json:"FinalImageUrl,omitempty" xml:"FinalImageUrl,omitempty"`
+	// example:
+	//
+	// https://example.com/example.jpg
 	InPaintingUrl *string `json:"InPaintingUrl,omitempty" xml:"InPaintingUrl,omitempty"`
-	TemplateJson  *string `json:"TemplateJson,omitempty" xml:"TemplateJson,omitempty"`
+	// example:
+	//
+	// Editor Template Json String
+	TemplateJson *string `json:"TemplateJson,omitempty" xml:"TemplateJson,omitempty"`
 }
 
 func (s TranslateImageResponseBodyData) String() string {
@@ -2625,9 +3352,9 @@ func (s *TranslateImageResponseBodyData) SetTemplateJson(v string) *TranslateIma
 }
 
 type TranslateImageResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TranslateImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TranslateImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TranslateImageResponse) String() string {
@@ -2654,11 +3381,35 @@ func (s *TranslateImageResponse) SetBody(v *TranslateImageResponseBody) *Transla
 }
 
 type TranslateImageBatchRequest struct {
-	CustomTaskId   *string `json:"CustomTaskId,omitempty" xml:"CustomTaskId,omitempty"`
-	Ext            *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
-	Field          *string `json:"Field,omitempty" xml:"Field,omitempty"`
-	ImageUrls      *string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty"`
+	// example:
+	//
+	// my_awesome_task_1
+	CustomTaskId *string `json:"CustomTaskId,omitempty" xml:"CustomTaskId,omitempty"`
+	// example:
+	//
+	// {"needEditorData": "false", "ignoreEntityRecognize": "true"}
+	Ext *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	// example:
+	//
+	// general
+	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://example.com/1.jpg,https://example.com/2.jpg,https://example.com/3.jpg
+	ImageUrls *string `json:"ImageUrls,omitempty" xml:"ImageUrls,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// zh
 	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// en
 	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
 }
 
@@ -2701,10 +3452,19 @@ func (s *TranslateImageBatchRequest) SetTargetLanguage(v string) *TranslateImage
 }
 
 type TranslateImageBatchResponseBody struct {
-	Code      *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *TranslateImageBatchResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *TranslateImageBatchResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D774D33D-F1CB-5A2C-A787-E0A2179239CE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s TranslateImageBatchResponseBody) String() string {
@@ -2736,6 +3496,9 @@ func (s *TranslateImageBatchResponseBody) SetRequestId(v string) *TranslateImage
 }
 
 type TranslateImageBatchResponseBodyData struct {
+	// example:
+	//
+	// EEA28E6D-4828-5031-BD8C-8FF1B3216842
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -2753,9 +3516,9 @@ func (s *TranslateImageBatchResponseBodyData) SetTaskId(v string) *TranslateImag
 }
 
 type TranslateImageBatchResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TranslateImageBatchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TranslateImageBatchResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TranslateImageBatchResponse) String() string {
@@ -2885,6 +3648,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 大文本异步翻译，支持5000-50000字翻译
+//
+// @param request - CreateAsyncTranslateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAsyncTranslateResponse
 func (client *Client) CreateAsyncTranslateWithOptions(request *CreateAsyncTranslateRequest, runtime *util.RuntimeOptions) (_result *CreateAsyncTranslateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2938,6 +3710,13 @@ func (client *Client) CreateAsyncTranslateWithOptions(request *CreateAsyncTransl
 	return _result, _err
 }
 
+// Summary:
+//
+// 大文本异步翻译，支持5000-50000字翻译
+//
+// @param request - CreateAsyncTranslateRequest
+//
+// @return CreateAsyncTranslateResponse
 func (client *Client) CreateAsyncTranslate(request *CreateAsyncTranslateRequest) (_result *CreateAsyncTranslateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAsyncTranslateResponse{}
@@ -2949,6 +3728,11 @@ func (client *Client) CreateAsyncTranslate(request *CreateAsyncTranslateRequest)
 	return _result, _err
 }
 
+// @param request - CreateDocTranslateTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDocTranslateTaskResponse
 func (client *Client) CreateDocTranslateTaskWithOptions(request *CreateDocTranslateTaskRequest, runtime *util.RuntimeOptions) (_result *CreateDocTranslateTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3002,6 +3786,9 @@ func (client *Client) CreateDocTranslateTaskWithOptions(request *CreateDocTransl
 	return _result, _err
 }
 
+// @param request - CreateDocTranslateTaskRequest
+//
+// @return CreateDocTranslateTaskResponse
 func (client *Client) CreateDocTranslateTask(request *CreateDocTranslateTaskRequest) (_result *CreateDocTranslateTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDocTranslateTaskResponse{}
@@ -3032,7 +3819,7 @@ func (client *Client) CreateDocTranslateTaskAdvance(request *CreateDocTranslateT
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -3060,12 +3847,17 @@ func (client *Client) CreateDocTranslateTaskAdvance(request *CreateDocTranslateT
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -3119,6 +3911,11 @@ func (client *Client) CreateDocTranslateTaskAdvance(request *CreateDocTranslateT
 	return _result, _err
 }
 
+// @param request - CreateImageTranslateTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateImageTranslateTaskResponse
 func (client *Client) CreateImageTranslateTaskWithOptions(request *CreateImageTranslateTaskRequest, runtime *util.RuntimeOptions) (_result *CreateImageTranslateTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3168,6 +3965,9 @@ func (client *Client) CreateImageTranslateTaskWithOptions(request *CreateImageTr
 	return _result, _err
 }
 
+// @param request - CreateImageTranslateTaskRequest
+//
+// @return CreateImageTranslateTaskResponse
 func (client *Client) CreateImageTranslateTask(request *CreateImageTranslateTaskRequest) (_result *CreateImageTranslateTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateImageTranslateTaskResponse{}
@@ -3179,6 +3979,15 @@ func (client *Client) CreateImageTranslateTask(request *CreateImageTranslateTask
 	return _result, _err
 }
 
+// Summary:
+//
+// 大文本异步翻译，支持5000-50000字翻译
+//
+// @param request - GetAsyncTranslateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAsyncTranslateResponse
 func (client *Client) GetAsyncTranslateWithOptions(request *GetAsyncTranslateRequest, runtime *util.RuntimeOptions) (_result *GetAsyncTranslateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3212,6 +4021,13 @@ func (client *Client) GetAsyncTranslateWithOptions(request *GetAsyncTranslateReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 大文本异步翻译，支持5000-50000字翻译
+//
+// @param request - GetAsyncTranslateRequest
+//
+// @return GetAsyncTranslateResponse
 func (client *Client) GetAsyncTranslate(request *GetAsyncTranslateRequest) (_result *GetAsyncTranslateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAsyncTranslateResponse{}
@@ -3223,6 +4039,11 @@ func (client *Client) GetAsyncTranslate(request *GetAsyncTranslateRequest) (_res
 	return _result, _err
 }
 
+// @param request - GetBatchTranslateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetBatchTranslateResponse
 func (client *Client) GetBatchTranslateWithOptions(request *GetBatchTranslateRequest, runtime *util.RuntimeOptions) (_result *GetBatchTranslateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3276,6 +4097,9 @@ func (client *Client) GetBatchTranslateWithOptions(request *GetBatchTranslateReq
 	return _result, _err
 }
 
+// @param request - GetBatchTranslateRequest
+//
+// @return GetBatchTranslateResponse
 func (client *Client) GetBatchTranslate(request *GetBatchTranslateRequest) (_result *GetBatchTranslateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetBatchTranslateResponse{}
@@ -3287,6 +4111,15 @@ func (client *Client) GetBatchTranslate(request *GetBatchTranslateRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 语种识别
+//
+// @param request - GetDetectLanguageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDetectLanguageResponse
 func (client *Client) GetDetectLanguageWithOptions(request *GetDetectLanguageRequest, runtime *util.RuntimeOptions) (_result *GetDetectLanguageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3320,6 +4153,13 @@ func (client *Client) GetDetectLanguageWithOptions(request *GetDetectLanguageReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 语种识别
+//
+// @param request - GetDetectLanguageRequest
+//
+// @return GetDetectLanguageResponse
 func (client *Client) GetDetectLanguage(request *GetDetectLanguageRequest) (_result *GetDetectLanguageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDetectLanguageResponse{}
@@ -3331,6 +4171,11 @@ func (client *Client) GetDetectLanguage(request *GetDetectLanguageRequest) (_res
 	return _result, _err
 }
 
+// @param request - GetDocTranslateTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDocTranslateTaskResponse
 func (client *Client) GetDocTranslateTaskWithOptions(request *GetDocTranslateTaskRequest, runtime *util.RuntimeOptions) (_result *GetDocTranslateTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3360,6 +4205,9 @@ func (client *Client) GetDocTranslateTaskWithOptions(request *GetDocTranslateTas
 	return _result, _err
 }
 
+// @param request - GetDocTranslateTaskRequest
+//
+// @return GetDocTranslateTaskResponse
 func (client *Client) GetDocTranslateTask(request *GetDocTranslateTaskRequest) (_result *GetDocTranslateTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDocTranslateTaskResponse{}
@@ -3371,6 +4219,11 @@ func (client *Client) GetDocTranslateTask(request *GetDocTranslateTaskRequest) (
 	return _result, _err
 }
 
+// @param request - GetImageDiagnoseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetImageDiagnoseResponse
 func (client *Client) GetImageDiagnoseWithOptions(request *GetImageDiagnoseRequest, runtime *util.RuntimeOptions) (_result *GetImageDiagnoseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3408,6 +4261,9 @@ func (client *Client) GetImageDiagnoseWithOptions(request *GetImageDiagnoseReque
 	return _result, _err
 }
 
+// @param request - GetImageDiagnoseRequest
+//
+// @return GetImageDiagnoseResponse
 func (client *Client) GetImageDiagnose(request *GetImageDiagnoseRequest) (_result *GetImageDiagnoseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetImageDiagnoseResponse{}
@@ -3419,6 +4275,11 @@ func (client *Client) GetImageDiagnose(request *GetImageDiagnoseRequest) (_resul
 	return _result, _err
 }
 
+// @param request - GetImageTranslateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetImageTranslateResponse
 func (client *Client) GetImageTranslateWithOptions(request *GetImageTranslateRequest, runtime *util.RuntimeOptions) (_result *GetImageTranslateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3464,6 +4325,9 @@ func (client *Client) GetImageTranslateWithOptions(request *GetImageTranslateReq
 	return _result, _err
 }
 
+// @param request - GetImageTranslateRequest
+//
+// @return GetImageTranslateResponse
 func (client *Client) GetImageTranslate(request *GetImageTranslateRequest) (_result *GetImageTranslateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetImageTranslateResponse{}
@@ -3475,6 +4339,11 @@ func (client *Client) GetImageTranslate(request *GetImageTranslateRequest) (_res
 	return _result, _err
 }
 
+// @param request - GetImageTranslateTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetImageTranslateTaskResponse
 func (client *Client) GetImageTranslateTaskWithOptions(request *GetImageTranslateTaskRequest, runtime *util.RuntimeOptions) (_result *GetImageTranslateTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3508,6 +4377,9 @@ func (client *Client) GetImageTranslateTaskWithOptions(request *GetImageTranslat
 	return _result, _err
 }
 
+// @param request - GetImageTranslateTaskRequest
+//
+// @return GetImageTranslateTaskResponse
 func (client *Client) GetImageTranslateTask(request *GetImageTranslateTaskRequest) (_result *GetImageTranslateTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetImageTranslateTaskResponse{}
@@ -3519,6 +4391,11 @@ func (client *Client) GetImageTranslateTask(request *GetImageTranslateTaskReques
 	return _result, _err
 }
 
+// @param request - GetTitleDiagnoseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTitleDiagnoseResponse
 func (client *Client) GetTitleDiagnoseWithOptions(request *GetTitleDiagnoseRequest, runtime *util.RuntimeOptions) (_result *GetTitleDiagnoseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3568,6 +4445,9 @@ func (client *Client) GetTitleDiagnoseWithOptions(request *GetTitleDiagnoseReque
 	return _result, _err
 }
 
+// @param request - GetTitleDiagnoseRequest
+//
+// @return GetTitleDiagnoseResponse
 func (client *Client) GetTitleDiagnose(request *GetTitleDiagnoseRequest) (_result *GetTitleDiagnoseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTitleDiagnoseResponse{}
@@ -3579,6 +4459,11 @@ func (client *Client) GetTitleDiagnose(request *GetTitleDiagnoseRequest) (_resul
 	return _result, _err
 }
 
+// @param request - GetTitleGenerateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTitleGenerateResponse
 func (client *Client) GetTitleGenerateWithOptions(request *GetTitleGenerateRequest, runtime *util.RuntimeOptions) (_result *GetTitleGenerateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3636,6 +4521,9 @@ func (client *Client) GetTitleGenerateWithOptions(request *GetTitleGenerateReque
 	return _result, _err
 }
 
+// @param request - GetTitleGenerateRequest
+//
+// @return GetTitleGenerateResponse
 func (client *Client) GetTitleGenerate(request *GetTitleGenerateRequest) (_result *GetTitleGenerateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTitleGenerateResponse{}
@@ -3647,6 +4535,11 @@ func (client *Client) GetTitleGenerate(request *GetTitleGenerateRequest) (_resul
 	return _result, _err
 }
 
+// @param request - GetTitleIntelligenceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTitleIntelligenceResponse
 func (client *Client) GetTitleIntelligenceWithOptions(request *GetTitleIntelligenceRequest, runtime *util.RuntimeOptions) (_result *GetTitleIntelligenceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3696,6 +4589,9 @@ func (client *Client) GetTitleIntelligenceWithOptions(request *GetTitleIntellige
 	return _result, _err
 }
 
+// @param request - GetTitleIntelligenceRequest
+//
+// @return GetTitleIntelligenceResponse
 func (client *Client) GetTitleIntelligence(request *GetTitleIntelligenceRequest) (_result *GetTitleIntelligenceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTitleIntelligenceResponse{}
@@ -3707,6 +4603,15 @@ func (client *Client) GetTitleIntelligence(request *GetTitleIntelligenceRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取图片批量翻译结果
+//
+// @param request - GetTranslateImageBatchResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTranslateImageBatchResultResponse
 func (client *Client) GetTranslateImageBatchResultWithOptions(request *GetTranslateImageBatchResultRequest, runtime *util.RuntimeOptions) (_result *GetTranslateImageBatchResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3740,6 +4645,13 @@ func (client *Client) GetTranslateImageBatchResultWithOptions(request *GetTransl
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取图片批量翻译结果
+//
+// @param request - GetTranslateImageBatchResultRequest
+//
+// @return GetTranslateImageBatchResultResponse
 func (client *Client) GetTranslateImageBatchResult(request *GetTranslateImageBatchResultRequest) (_result *GetTranslateImageBatchResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTranslateImageBatchResultResponse{}
@@ -3751,6 +4663,11 @@ func (client *Client) GetTranslateImageBatchResult(request *GetTranslateImageBat
 	return _result, _err
 }
 
+// @param request - GetTranslateReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTranslateReportResponse
 func (client *Client) GetTranslateReportWithOptions(request *GetTranslateReportRequest, runtime *util.RuntimeOptions) (_result *GetTranslateReportResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3796,6 +4713,9 @@ func (client *Client) GetTranslateReportWithOptions(request *GetTranslateReportR
 	return _result, _err
 }
 
+// @param request - GetTranslateReportRequest
+//
+// @return GetTranslateReportResponse
 func (client *Client) GetTranslateReport(request *GetTranslateReportRequest) (_result *GetTranslateReportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTranslateReportResponse{}
@@ -3807,6 +4727,15 @@ func (client *Client) GetTranslateReport(request *GetTranslateReportRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 开通服务
+//
+// @param request - OpenAlimtServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OpenAlimtServiceResponse
 func (client *Client) OpenAlimtServiceWithOptions(request *OpenAlimtServiceRequest, runtime *util.RuntimeOptions) (_result *OpenAlimtServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3844,6 +4773,13 @@ func (client *Client) OpenAlimtServiceWithOptions(request *OpenAlimtServiceReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 开通服务
+//
+// @param request - OpenAlimtServiceRequest
+//
+// @return OpenAlimtServiceResponse
 func (client *Client) OpenAlimtService(request *OpenAlimtServiceRequest) (_result *OpenAlimtServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenAlimtServiceResponse{}
@@ -3855,6 +4791,11 @@ func (client *Client) OpenAlimtService(request *OpenAlimtServiceRequest) (_resul
 	return _result, _err
 }
 
+// @param request - TranslateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TranslateResponse
 func (client *Client) TranslateWithOptions(request *TranslateRequest, runtime *util.RuntimeOptions) (_result *TranslateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3910,6 +4851,9 @@ func (client *Client) TranslateWithOptions(request *TranslateRequest, runtime *u
 	return _result, _err
 }
 
+// @param request - TranslateRequest
+//
+// @return TranslateResponse
 func (client *Client) Translate(request *TranslateRequest) (_result *TranslateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TranslateResponse{}
@@ -3921,6 +4865,11 @@ func (client *Client) Translate(request *TranslateRequest) (_result *TranslateRe
 	return _result, _err
 }
 
+// @param request - TranslateCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TranslateCertificateResponse
 func (client *Client) TranslateCertificateWithOptions(request *TranslateCertificateRequest, runtime *util.RuntimeOptions) (_result *TranslateCertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3970,6 +4919,9 @@ func (client *Client) TranslateCertificateWithOptions(request *TranslateCertific
 	return _result, _err
 }
 
+// @param request - TranslateCertificateRequest
+//
+// @return TranslateCertificateResponse
 func (client *Client) TranslateCertificate(request *TranslateCertificateRequest) (_result *TranslateCertificateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TranslateCertificateResponse{}
@@ -4000,7 +4952,7 @@ func (client *Client) TranslateCertificateAdvance(request *TranslateCertificateA
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -4028,12 +4980,17 @@ func (client *Client) TranslateCertificateAdvance(request *TranslateCertificateA
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -4087,13 +5044,13 @@ func (client *Client) TranslateCertificateAdvance(request *TranslateCertificateA
 	return _result, _err
 }
 
-/**
- * @deprecated : TranslateECommerce is deprecated, please use alimt::2018-10-12::Translate instead.
- *
- * @param request TranslateECommerceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return TranslateECommerceResponse
- */
+// Deprecated: OpenAPI TranslateECommerce is deprecated, please use alimt::2018-10-12::Translate instead.
+//
+// @param request - TranslateECommerceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TranslateECommerceResponse
 // Deprecated
 func (client *Client) TranslateECommerceWithOptions(request *TranslateECommerceRequest, runtime *util.RuntimeOptions) (_result *TranslateECommerceResponse, _err error) {
 	_err = util.ValidateModel(request)
@@ -4150,12 +5107,11 @@ func (client *Client) TranslateECommerceWithOptions(request *TranslateECommerceR
 	return _result, _err
 }
 
-/**
- * @deprecated : TranslateECommerce is deprecated, please use alimt::2018-10-12::Translate instead.
- *
- * @param request TranslateECommerceRequest
- * @return TranslateECommerceResponse
- */
+// Deprecated: OpenAPI TranslateECommerce is deprecated, please use alimt::2018-10-12::Translate instead.
+//
+// @param request - TranslateECommerceRequest
+//
+// @return TranslateECommerceResponse
 // Deprecated
 func (client *Client) TranslateECommerce(request *TranslateECommerceRequest) (_result *TranslateECommerceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
@@ -4168,6 +5124,11 @@ func (client *Client) TranslateECommerce(request *TranslateECommerceRequest) (_r
 	return _result, _err
 }
 
+// @param request - TranslateGeneralRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TranslateGeneralResponse
 func (client *Client) TranslateGeneralWithOptions(request *TranslateGeneralRequest, runtime *util.RuntimeOptions) (_result *TranslateGeneralResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4223,6 +5184,9 @@ func (client *Client) TranslateGeneralWithOptions(request *TranslateGeneralReque
 	return _result, _err
 }
 
+// @param request - TranslateGeneralRequest
+//
+// @return TranslateGeneralResponse
 func (client *Client) TranslateGeneral(request *TranslateGeneralRequest) (_result *TranslateGeneralResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TranslateGeneralResponse{}
@@ -4234,6 +5198,15 @@ func (client *Client) TranslateGeneral(request *TranslateGeneralRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 公有云图片翻译产品API
+//
+// @param request - TranslateImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TranslateImageResponse
 func (client *Client) TranslateImageWithOptions(request *TranslateImageRequest, runtime *util.RuntimeOptions) (_result *TranslateImageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4287,6 +5260,13 @@ func (client *Client) TranslateImageWithOptions(request *TranslateImageRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 公有云图片翻译产品API
+//
+// @param request - TranslateImageRequest
+//
+// @return TranslateImageResponse
 func (client *Client) TranslateImage(request *TranslateImageRequest) (_result *TranslateImageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TranslateImageResponse{}
@@ -4298,6 +5278,15 @@ func (client *Client) TranslateImage(request *TranslateImageRequest) (_result *T
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量图片翻译接口
+//
+// @param request - TranslateImageBatchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TranslateImageBatchResponse
 func (client *Client) TranslateImageBatchWithOptions(request *TranslateImageBatchRequest, runtime *util.RuntimeOptions) (_result *TranslateImageBatchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4351,6 +5340,13 @@ func (client *Client) TranslateImageBatchWithOptions(request *TranslateImageBatc
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量图片翻译接口
+//
+// @param request - TranslateImageBatchRequest
+//
+// @return TranslateImageBatchResponse
 func (client *Client) TranslateImageBatch(request *TranslateImageBatchRequest) (_result *TranslateImageBatchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TranslateImageBatchResponse{}
