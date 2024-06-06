@@ -11481,6 +11481,7 @@ type GetCampaignResponseBodyData struct {
 	// 1
 	CasesUncompletedAfterAttempted *int64   `json:"CasesUncompletedAfterAttempted,omitempty" xml:"CasesUncompletedAfterAttempted,omitempty"`
 	CompletionRate                 *float32 `json:"CompletionRate,omitempty" xml:"CompletionRate,omitempty"`
+	ContactFlowId                  *string  `json:"ContactFlowId,omitempty" xml:"ContactFlowId,omitempty"`
 	// example:
 	//
 	// 1
@@ -11579,6 +11580,11 @@ func (s *GetCampaignResponseBodyData) SetCasesUncompletedAfterAttempted(v int64)
 
 func (s *GetCampaignResponseBodyData) SetCompletionRate(v float32) *GetCampaignResponseBodyData {
 	s.CompletionRate = &v
+	return s
+}
+
+func (s *GetCampaignResponseBodyData) SetContactFlowId(v string) *GetCampaignResponseBodyData {
+	s.ContactFlowId = &v
 	return s
 }
 
@@ -24450,6 +24456,7 @@ type ListCampaignsResponseBodyDataList struct {
 	// 0
 	CasesUncompleted *int64   `json:"CasesUncompleted,omitempty" xml:"CasesUncompleted,omitempty"`
 	CompletionRate   *float32 `json:"CompletionRate,omitempty" xml:"CompletionRate,omitempty"`
+	ContactFlowId    *string  `json:"ContactFlowId,omitempty" xml:"ContactFlowId,omitempty"`
 	// example:
 	//
 	// 1
@@ -24537,6 +24544,11 @@ func (s *ListCampaignsResponseBodyDataList) SetCasesUncompleted(v int64) *ListCa
 
 func (s *ListCampaignsResponseBodyDataList) SetCompletionRate(v float32) *ListCampaignsResponseBodyDataList {
 	s.CompletionRate = &v
+	return s
+}
+
+func (s *ListCampaignsResponseBodyDataList) SetContactFlowId(v string) *ListCampaignsResponseBodyDataList {
+	s.ContactFlowId = &v
 	return s
 }
 
@@ -41766,6 +41778,7 @@ type ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummary
 	//
 	// 0
 	AverageWorkTime *int64 `json:"AverageWorkTime,omitempty" xml:"AverageWorkTime,omitempty"`
+	CallsAbandoned  *int64 `json:"CallsAbandoned,omitempty" xml:"CallsAbandoned,omitempty"`
 	// example:
 	//
 	// 0
@@ -41782,6 +41795,7 @@ type ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummary
 	//
 	// 0
 	CallsOffered         *int64  `json:"CallsOffered,omitempty" xml:"CallsOffered,omitempty"`
+	CallsOverflow        *string `json:"CallsOverflow,omitempty" xml:"CallsOverflow,omitempty"`
 	CallsQueuingCanceled *string `json:"CallsQueuingCanceled,omitempty" xml:"CallsQueuingCanceled,omitempty"`
 	CallsQueuingFailure  *string `json:"CallsQueuingFailure,omitempty" xml:"CallsQueuingFailure,omitempty"`
 	CallsQueuingRerouted *string `json:"CallsQueuingRerouted,omitempty" xml:"CallsQueuingRerouted,omitempty"`
@@ -41908,6 +41922,11 @@ func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSum
 	return s
 }
 
+func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListInbound) SetCallsAbandoned(v int64) *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListInbound {
+	s.CallsAbandoned = &v
+	return s
+}
+
 func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListInbound) SetCallsAttendedTransferOut(v int64) *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListInbound {
 	s.CallsAttendedTransferOut = &v
 	return s
@@ -41925,6 +41944,11 @@ func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSum
 
 func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListInbound) SetCallsOffered(v int64) *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListInbound {
 	s.CallsOffered = &v
+	return s
+}
+
+func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListInbound) SetCallsOverflow(v string) *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListInbound {
+	s.CallsOverflow = &v
 	return s
 }
 
@@ -58848,6 +58872,8 @@ func (client *Client) CreateContactFlow(request *CreateContactFlowRequest) (_res
 	return _result, _err
 }
 
+// Deprecated: OpenAPI CreateCustomCallTagging is deprecated, please use CCC::2020-07-01::CreateCustomCallTaggings instead.
+//
 // Summary:
 //
 // 创建呼入控制号码
@@ -58857,6 +58883,7 @@ func (client *Client) CreateContactFlow(request *CreateContactFlowRequest) (_res
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateCustomCallTaggingResponse
+// Deprecated
 func (client *Client) CreateCustomCallTaggingWithOptions(request *CreateCustomCallTaggingRequest, runtime *util.RuntimeOptions) (_result *CreateCustomCallTaggingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -58894,6 +58921,8 @@ func (client *Client) CreateCustomCallTaggingWithOptions(request *CreateCustomCa
 	return _result, _err
 }
 
+// Deprecated: OpenAPI CreateCustomCallTagging is deprecated, please use CCC::2020-07-01::CreateCustomCallTaggings instead.
+//
 // Summary:
 //
 // 创建呼入控制号码
@@ -58901,6 +58930,7 @@ func (client *Client) CreateCustomCallTaggingWithOptions(request *CreateCustomCa
 // @param request - CreateCustomCallTaggingRequest
 //
 // @return CreateCustomCallTaggingResponse
+// Deprecated
 func (client *Client) CreateCustomCallTagging(request *CreateCustomCallTaggingRequest) (_result *CreateCustomCallTaggingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateCustomCallTaggingResponse{}
@@ -64806,6 +64836,8 @@ func (client *Client) ListIvrTrackingDetails(request *ListIvrTrackingDetailsRequ
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ListLegacyAgentEventLogs is deprecated, please use CCC::2020-07-01::ListAgentStateLogs instead.
+//
 // Summary:
 //
 // ListLegacyAgentEventLogs
@@ -64815,6 +64847,7 @@ func (client *Client) ListIvrTrackingDetails(request *ListIvrTrackingDetailsRequ
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListLegacyAgentEventLogsResponse
+// Deprecated
 func (client *Client) ListLegacyAgentEventLogsWithOptions(request *ListLegacyAgentEventLogsRequest, runtime *util.RuntimeOptions) (_result *ListLegacyAgentEventLogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -64868,6 +64901,8 @@ func (client *Client) ListLegacyAgentEventLogsWithOptions(request *ListLegacyAge
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ListLegacyAgentEventLogs is deprecated, please use CCC::2020-07-01::ListAgentStateLogs instead.
+//
 // Summary:
 //
 // ListLegacyAgentEventLogs
@@ -64875,6 +64910,7 @@ func (client *Client) ListLegacyAgentEventLogsWithOptions(request *ListLegacyAge
 // @param request - ListLegacyAgentEventLogsRequest
 //
 // @return ListLegacyAgentEventLogsResponse
+// Deprecated
 func (client *Client) ListLegacyAgentEventLogs(request *ListLegacyAgentEventLogsRequest) (_result *ListLegacyAgentEventLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListLegacyAgentEventLogsResponse{}
@@ -64886,6 +64922,8 @@ func (client *Client) ListLegacyAgentEventLogs(request *ListLegacyAgentEventLogs
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ListLegacyAgentStatusLogs is deprecated, please use CCC::2020-07-01::ListAgentStateLogs instead.
+//
 // Summary:
 //
 // ListLegacyAgentStatusLogs
@@ -64895,6 +64933,7 @@ func (client *Client) ListLegacyAgentEventLogs(request *ListLegacyAgentEventLogs
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListLegacyAgentStatusLogsResponse
+// Deprecated
 func (client *Client) ListLegacyAgentStatusLogsWithOptions(request *ListLegacyAgentStatusLogsRequest, runtime *util.RuntimeOptions) (_result *ListLegacyAgentStatusLogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -64948,6 +64987,8 @@ func (client *Client) ListLegacyAgentStatusLogsWithOptions(request *ListLegacyAg
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ListLegacyAgentStatusLogs is deprecated, please use CCC::2020-07-01::ListAgentStateLogs instead.
+//
 // Summary:
 //
 // ListLegacyAgentStatusLogs
@@ -64955,6 +64996,7 @@ func (client *Client) ListLegacyAgentStatusLogsWithOptions(request *ListLegacyAg
 // @param request - ListLegacyAgentStatusLogsRequest
 //
 // @return ListLegacyAgentStatusLogsResponse
+// Deprecated
 func (client *Client) ListLegacyAgentStatusLogs(request *ListLegacyAgentStatusLogsRequest) (_result *ListLegacyAgentStatusLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListLegacyAgentStatusLogsResponse{}
