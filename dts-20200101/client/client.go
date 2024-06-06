@@ -93,6 +93,9 @@ type ConfigureDtsJobRequest struct {
 	DelayRuleTime             *int64  `json:"DelayRuleTime,omitempty" xml:"DelayRuleTime,omitempty"`
 	DestCaCertificateOssUrl   *string `json:"DestCaCertificateOssUrl,omitempty" xml:"DestCaCertificateOssUrl,omitempty"`
 	DestCaCertificatePassword *string `json:"DestCaCertificatePassword,omitempty" xml:"DestCaCertificatePassword,omitempty"`
+	DestClientCertOssUrl      *string `json:"DestClientCertOssUrl,omitempty" xml:"DestClientCertOssUrl,omitempty"`
+	DestClientKeyOssUrl       *string `json:"DestClientKeyOssUrl,omitempty" xml:"DestClientKeyOssUrl,omitempty"`
+	DestClientPassword        *string `json:"DestClientPassword,omitempty" xml:"DestClientPassword,omitempty"`
 	// The password of the destination database account.
 	//
 	// >  If the destination database is a MaxCompute project, you must specify the AccessKey secret of your Alibaba Cloud account. For information about how to obtain your AccessKey pair, see [Create an AccessKey pair](https://help.aliyun.com/document_detail/116401.html).
@@ -542,6 +545,9 @@ type ConfigureDtsJobRequest struct {
 	SourceEndpointVSwitchID  *string `json:"SourceEndpointVSwitchID,omitempty" xml:"SourceEndpointVSwitchID,omitempty"`
 	SrcCaCertificateOssUrl   *string `json:"SrcCaCertificateOssUrl,omitempty" xml:"SrcCaCertificateOssUrl,omitempty"`
 	SrcCaCertificatePassword *string `json:"SrcCaCertificatePassword,omitempty" xml:"SrcCaCertificatePassword,omitempty"`
+	SrcClientCertOssUrl      *string `json:"SrcClientCertOssUrl,omitempty" xml:"SrcClientCertOssUrl,omitempty"`
+	SrcClientKeyOssUrl       *string `json:"SrcClientKeyOssUrl,omitempty" xml:"SrcClientKeyOssUrl,omitempty"`
+	SrcClientPassword        *string `json:"SrcClientPassword,omitempty" xml:"SrcClientPassword,omitempty"`
 	// Specifies whether to perform incremental data migration or synchronization. Default value: false. Valid values:
 	//
 	// 	- **false**: does not perform incremental data migration or synchronization.
@@ -624,6 +630,21 @@ func (s *ConfigureDtsJobRequest) SetDestCaCertificateOssUrl(v string) *Configure
 
 func (s *ConfigureDtsJobRequest) SetDestCaCertificatePassword(v string) *ConfigureDtsJobRequest {
 	s.DestCaCertificatePassword = &v
+	return s
+}
+
+func (s *ConfigureDtsJobRequest) SetDestClientCertOssUrl(v string) *ConfigureDtsJobRequest {
+	s.DestClientCertOssUrl = &v
+	return s
+}
+
+func (s *ConfigureDtsJobRequest) SetDestClientKeyOssUrl(v string) *ConfigureDtsJobRequest {
+	s.DestClientKeyOssUrl = &v
+	return s
+}
+
+func (s *ConfigureDtsJobRequest) SetDestClientPassword(v string) *ConfigureDtsJobRequest {
+	s.DestClientPassword = &v
 	return s
 }
 
@@ -837,6 +858,21 @@ func (s *ConfigureDtsJobRequest) SetSrcCaCertificatePassword(v string) *Configur
 	return s
 }
 
+func (s *ConfigureDtsJobRequest) SetSrcClientCertOssUrl(v string) *ConfigureDtsJobRequest {
+	s.SrcClientCertOssUrl = &v
+	return s
+}
+
+func (s *ConfigureDtsJobRequest) SetSrcClientKeyOssUrl(v string) *ConfigureDtsJobRequest {
+	s.SrcClientKeyOssUrl = &v
+	return s
+}
+
+func (s *ConfigureDtsJobRequest) SetSrcClientPassword(v string) *ConfigureDtsJobRequest {
+	s.SrcClientPassword = &v
+	return s
+}
+
 func (s *ConfigureDtsJobRequest) SetStructureInitialization(v bool) *ConfigureDtsJobRequest {
 	s.StructureInitialization = &v
 	return s
@@ -926,6 +962,9 @@ type ConfigureDtsJobAdvanceRequest struct {
 	DelayRuleTime             *int64  `json:"DelayRuleTime,omitempty" xml:"DelayRuleTime,omitempty"`
 	DestCaCertificateOssUrl   *string `json:"DestCaCertificateOssUrl,omitempty" xml:"DestCaCertificateOssUrl,omitempty"`
 	DestCaCertificatePassword *string `json:"DestCaCertificatePassword,omitempty" xml:"DestCaCertificatePassword,omitempty"`
+	DestClientCertOssUrl      *string `json:"DestClientCertOssUrl,omitempty" xml:"DestClientCertOssUrl,omitempty"`
+	DestClientKeyOssUrl       *string `json:"DestClientKeyOssUrl,omitempty" xml:"DestClientKeyOssUrl,omitempty"`
+	DestClientPassword        *string `json:"DestClientPassword,omitempty" xml:"DestClientPassword,omitempty"`
 	// The password of the destination database account.
 	//
 	// >  If the destination database is a MaxCompute project, you must specify the AccessKey secret of your Alibaba Cloud account. For information about how to obtain your AccessKey pair, see [Create an AccessKey pair](https://help.aliyun.com/document_detail/116401.html).
@@ -1375,6 +1414,9 @@ type ConfigureDtsJobAdvanceRequest struct {
 	SourceEndpointVSwitchID  *string `json:"SourceEndpointVSwitchID,omitempty" xml:"SourceEndpointVSwitchID,omitempty"`
 	SrcCaCertificateOssUrl   *string `json:"SrcCaCertificateOssUrl,omitempty" xml:"SrcCaCertificateOssUrl,omitempty"`
 	SrcCaCertificatePassword *string `json:"SrcCaCertificatePassword,omitempty" xml:"SrcCaCertificatePassword,omitempty"`
+	SrcClientCertOssUrl      *string `json:"SrcClientCertOssUrl,omitempty" xml:"SrcClientCertOssUrl,omitempty"`
+	SrcClientKeyOssUrl       *string `json:"SrcClientKeyOssUrl,omitempty" xml:"SrcClientKeyOssUrl,omitempty"`
+	SrcClientPassword        *string `json:"SrcClientPassword,omitempty" xml:"SrcClientPassword,omitempty"`
 	// Specifies whether to perform incremental data migration or synchronization. Default value: false. Valid values:
 	//
 	// 	- **false**: does not perform incremental data migration or synchronization.
@@ -1457,6 +1499,21 @@ func (s *ConfigureDtsJobAdvanceRequest) SetDestCaCertificateOssUrl(v string) *Co
 
 func (s *ConfigureDtsJobAdvanceRequest) SetDestCaCertificatePassword(v string) *ConfigureDtsJobAdvanceRequest {
 	s.DestCaCertificatePassword = &v
+	return s
+}
+
+func (s *ConfigureDtsJobAdvanceRequest) SetDestClientCertOssUrl(v string) *ConfigureDtsJobAdvanceRequest {
+	s.DestClientCertOssUrl = &v
+	return s
+}
+
+func (s *ConfigureDtsJobAdvanceRequest) SetDestClientKeyOssUrl(v string) *ConfigureDtsJobAdvanceRequest {
+	s.DestClientKeyOssUrl = &v
+	return s
+}
+
+func (s *ConfigureDtsJobAdvanceRequest) SetDestClientPassword(v string) *ConfigureDtsJobAdvanceRequest {
+	s.DestClientPassword = &v
 	return s
 }
 
@@ -1667,6 +1724,21 @@ func (s *ConfigureDtsJobAdvanceRequest) SetSrcCaCertificateOssUrl(v string) *Con
 
 func (s *ConfigureDtsJobAdvanceRequest) SetSrcCaCertificatePassword(v string) *ConfigureDtsJobAdvanceRequest {
 	s.SrcCaCertificatePassword = &v
+	return s
+}
+
+func (s *ConfigureDtsJobAdvanceRequest) SetSrcClientCertOssUrl(v string) *ConfigureDtsJobAdvanceRequest {
+	s.SrcClientCertOssUrl = &v
+	return s
+}
+
+func (s *ConfigureDtsJobAdvanceRequest) SetSrcClientKeyOssUrl(v string) *ConfigureDtsJobAdvanceRequest {
+	s.SrcClientKeyOssUrl = &v
+	return s
+}
+
+func (s *ConfigureDtsJobAdvanceRequest) SetSrcClientPassword(v string) *ConfigureDtsJobAdvanceRequest {
+	s.SrcClientPassword = &v
 	return s
 }
 
@@ -46148,6 +46220,18 @@ func (client *Client) ConfigureDtsJobWithOptions(request *ConfigureDtsJobRequest
 		query["DestCaCertificatePassword"] = request.DestCaCertificatePassword
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DestClientCertOssUrl)) {
+		query["DestClientCertOssUrl"] = request.DestClientCertOssUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestClientKeyOssUrl)) {
+		query["DestClientKeyOssUrl"] = request.DestClientKeyOssUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestClientPassword)) {
+		query["DestClientPassword"] = request.DestClientPassword
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DestinationEndpointDataBaseName)) {
 		query["DestinationEndpointDataBaseName"] = request.DestinationEndpointDataBaseName
 	}
@@ -46310,6 +46394,18 @@ func (client *Client) ConfigureDtsJobWithOptions(request *ConfigureDtsJobRequest
 
 	if !tea.BoolValue(util.IsUnset(request.SrcCaCertificatePassword)) {
 		query["SrcCaCertificatePassword"] = request.SrcCaCertificatePassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SrcClientCertOssUrl)) {
+		query["SrcClientCertOssUrl"] = request.SrcClientCertOssUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SrcClientKeyOssUrl)) {
+		query["SrcClientKeyOssUrl"] = request.SrcClientKeyOssUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SrcClientPassword)) {
+		query["SrcClientPassword"] = request.SrcClientPassword
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StructureInitialization)) {
