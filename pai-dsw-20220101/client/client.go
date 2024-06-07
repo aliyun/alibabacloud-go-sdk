@@ -3613,6 +3613,192 @@ func (s *GetLifecycleResponse) SetBody(v *GetLifecycleResponseBody) *GetLifecycl
 	return s
 }
 
+type GetMetricsRequest struct {
+	// example:
+	//
+	// {"userId":"16122852825*****","jobId":"dsw-328d2bbf605*****","regionId":"cn-wulanchabu","pod":"dsw-45680-76766f8778-95gxh"}
+	Dimensions *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
+	// example:
+	//
+	// 2020-11-08T16:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 10
+	Length *string `json:"Length,omitempty" xml:"Length,omitempty"`
+	// example:
+	//
+	// INSTANCE_SPEC_MEMORY_SWAP
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// example:
+	//
+	// acs_pai_dsw
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// 15761485350009dd70bb64cff1f0fff750b08ffff073be5fb1e785e2b020f1a949d5ea14aea7fed82f01dd8****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 60
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// example:
+	//
+	// 2020-11-08T15:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s GetMetricsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMetricsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMetricsRequest) SetDimensions(v string) *GetMetricsRequest {
+	s.Dimensions = &v
+	return s
+}
+
+func (s *GetMetricsRequest) SetEndTime(v string) *GetMetricsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetMetricsRequest) SetLength(v string) *GetMetricsRequest {
+	s.Length = &v
+	return s
+}
+
+func (s *GetMetricsRequest) SetMetricName(v string) *GetMetricsRequest {
+	s.MetricName = &v
+	return s
+}
+
+func (s *GetMetricsRequest) SetNamespace(v string) *GetMetricsRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *GetMetricsRequest) SetNextToken(v string) *GetMetricsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *GetMetricsRequest) SetPeriod(v string) *GetMetricsRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *GetMetricsRequest) SetStartTime(v string) *GetMetricsRequest {
+	s.StartTime = &v
+	return s
+}
+
+type GetMetricsResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// [{"timestamp":1548777660000,"userId":"120886317861****","instanceId":"i-abc****","Minimum":9.92,"Average":9.92,"Maximum":9.92}]
+	DataPoints *string `json:"DataPoints,omitempty" xml:"DataPoints,omitempty"`
+	// example:
+	//
+	// Succeed
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 15761485350009dd70bb64cff1f0fff750b08ffff073be5fb1e785e2b020f1a949d5ea14aea7fed82f01dd8****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 60
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetMetricsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMetricsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMetricsResponseBody) SetCode(v string) *GetMetricsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetMetricsResponseBody) SetDataPoints(v string) *GetMetricsResponseBody {
+	s.DataPoints = &v
+	return s
+}
+
+func (s *GetMetricsResponseBody) SetMessage(v string) *GetMetricsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetMetricsResponseBody) SetNextToken(v string) *GetMetricsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *GetMetricsResponseBody) SetPeriod(v string) *GetMetricsResponseBody {
+	s.Period = &v
+	return s
+}
+
+func (s *GetMetricsResponseBody) SetRequestId(v string) *GetMetricsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetMetricsResponseBody) SetSuccess(v bool) *GetMetricsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetMetricsResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMetricsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetMetricsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMetricsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMetricsResponse) SetHeaders(v map[string]*string) *GetMetricsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMetricsResponse) SetStatusCode(v int32) *GetMetricsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMetricsResponse) SetBody(v *GetMetricsResponseBody) *GetMetricsResponse {
+	s.Body = v
+	return s
+}
+
 type GetResourceGroupStatisticsRequest struct {
 	// This parameter is required.
 	//
@@ -7663,6 +7849,98 @@ func (client *Client) GetLifecycle(InstanceId *string, request *GetLifecycleRequ
 	headers := make(map[string]*string)
 	_result = &GetLifecycleResponse{}
 	_body, _err := client.GetLifecycleWithOptions(InstanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取metrics数据
+//
+// @param request - GetMetricsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMetricsResponse
+func (client *Client) GetMetricsWithOptions(InstanceId *string, request *GetMetricsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetMetricsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Dimensions)) {
+		query["Dimensions"] = request.Dimensions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Length)) {
+		query["Length"] = request.Length
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetricName)) {
+		query["MetricName"] = request.MetricName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMetrics"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/instance/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/cms/metrics"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetMetricsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取metrics数据
+//
+// @param request - GetMetricsRequest
+//
+// @return GetMetricsResponse
+func (client *Client) GetMetrics(InstanceId *string, request *GetMetricsRequest) (_result *GetMetricsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetMetricsResponse{}
+	_body, _err := client.GetMetricsWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
