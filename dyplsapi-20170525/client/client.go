@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,13 +10,45 @@ import (
 )
 
 type AddAxnTrackNoRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PhoneNoX             *string `json:"PhoneNoX,omitempty" xml:"PhoneNoX,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The private number in the AXN binding, that is, phone number X.
+	//
+	// You can call the [BindAxn](https://help.aliyun.com/document_detail/110258.html) operation to obtain the value of PhoneNoX.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1700000****
+	PhoneNoX *string `json:"PhoneNoX,omitempty" xml:"PhoneNoX,omitempty"`
+	// The key of the phone number pool. Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management*	- page.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FC2235****
 	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SubsId               *string `json:"SubsId,omitempty" xml:"SubsId,omitempty"`
-	TrackNo              *string `json:"trackNo,omitempty" xml:"trackNo,omitempty"`
+	// The binding ID.
+	//
+	// You can call the [BindAxn](https://help.aliyun.com/document_detail/110258.html) operation to obtain the value of SubsId.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 15678890****
+	SubsId *string `json:"SubsId,omitempty" xml:"SubsId,omitempty"`
+	// The tracking number.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// abcde*****
+	TrackNo *string `json:"trackNo,omitempty" xml:"trackNo,omitempty"`
 }
 
 func (s AddAxnTrackNoRequest) String() string {
@@ -66,8 +95,27 @@ func (s *AddAxnTrackNoRequest) SetTrackNo(v string) *AddAxnTrackNoRequest {
 }
 
 type AddAxnTrackNoResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 1A4CADEF-8516-5890-9177-A1A4D97F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -95,9 +143,9 @@ func (s *AddAxnTrackNoResponseBody) SetRequestId(v string) *AddAxnTrackNoRespons
 }
 
 type AddAxnTrackNoResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddAxnTrackNoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddAxnTrackNoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddAxnTrackNoResponse) String() string {
@@ -124,10 +172,65 @@ func (s *AddAxnTrackNoResponse) SetBody(v *AddAxnTrackNoResponseBody) *AddAxnTra
 }
 
 type AddSecretBlacklistRequest struct {
-	BlackNo    *string `json:"BlackNo,omitempty" xml:"BlackNo,omitempty"`
-	BlackType  *string `json:"BlackType,omitempty" xml:"BlackType,omitempty"`
-	PoolKey    *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
-	Remark     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The numbers in the blacklist. A point-to-point blacklist has a pair of numbers separated by a colon (:). A number pool blacklist has only one single number.
+	//
+	// >  The asterisks (\\*) in the sample value are not wildcards.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1825638****:1825248****
+	BlackNo *string `json:"BlackNo,omitempty" xml:"BlackNo,omitempty"`
+	// The blacklist type. Valid values:
+	//
+	// 	- **POINT_TO_POINT_BLACK**: point-to-point blacklist.
+	//
+	// 	- **PARTNER_GLOBAL_NUMBER_BLACK**: number pool blacklist.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// POINT_TO_POINT_BLACK
+	BlackType *string `json:"BlackType,omitempty" xml:"BlackType,omitempty"`
+	// The key of the phone number pool.
+	//
+	// Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the Number Pool Management page.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FC2235****
+	PoolKey *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
+	// The blacklist remarks.
+	//
+	// example:
+	//
+	// Customer service feedback
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The control on the call direction.
+	//
+	// 	- **PHONEA_REJECT**: The first number in the blacklist can be used to call the second number, but the second number cannot be used to call the first number.
+	//
+	// 	- **PHONEB_REJECT**: The first number in the blacklist cannot be used to call the second number, but the second number can be used to call the first number.
+	//
+	// 	- If this parameter is left empty, the two numbers in the blacklist cannot be used to call each other.
+	//
+	// >  This parameter is available only for a point-to-point blacklist.
+	//
+	// Valid values:
+	//
+	// 	- DUPLEX_REJECT
+	//
+	// 	- PHONEA_REJECT
+	//
+	// 	- PHONEB_REJECT
+	//
+	// example:
+	//
+	// PHONEA_REJECT
 	WayControl *string `json:"WayControl,omitempty" xml:"WayControl,omitempty"`
 }
 
@@ -165,8 +268,27 @@ func (s *AddSecretBlacklistRequest) SetWayControl(v string) *AddSecretBlacklistR
 }
 
 type AddSecretBlacklistResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- Other status codes indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// F655A8D5-B967-440B-8683-DAD6FF8DE990
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -194,9 +316,9 @@ func (s *AddSecretBlacklistResponseBody) SetRequestId(v string) *AddSecretBlackl
 }
 
 type AddSecretBlacklistResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddSecretBlacklistResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddSecretBlacklistResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddSecretBlacklistResponse) String() string {
@@ -223,25 +345,177 @@ func (s *AddSecretBlacklistResponse) SetBody(v *AddSecretBlacklistResponseBody) 
 }
 
 type BindAxbRequest struct {
-	ASRModelId           *string `json:"ASRModelId,omitempty" xml:"ASRModelId,omitempty"`
-	ASRStatus            *bool   `json:"ASRStatus,omitempty" xml:"ASRStatus,omitempty"`
-	CallDisplayType      *int32  `json:"CallDisplayType,omitempty" xml:"CallDisplayType,omitempty"`
-	CallRestrict         *string `json:"CallRestrict,omitempty" xml:"CallRestrict,omitempty"`
-	CallTimeout          *int32  `json:"CallTimeout,omitempty" xml:"CallTimeout,omitempty"`
-	DtmfConfig           *string `json:"DtmfConfig,omitempty" xml:"DtmfConfig,omitempty"`
-	ExpectCity           *string `json:"ExpectCity,omitempty" xml:"ExpectCity,omitempty"`
-	Expiration           *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
-	IsRecordingEnabled   *bool   `json:"IsRecordingEnabled,omitempty" xml:"IsRecordingEnabled,omitempty"`
-	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	OutOrderId           *string `json:"OutOrderId,omitempty" xml:"OutOrderId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PhoneNoA             *string `json:"PhoneNoA,omitempty" xml:"PhoneNoA,omitempty"`
-	PhoneNoB             *string `json:"PhoneNoB,omitempty" xml:"PhoneNoB,omitempty"`
-	PhoneNoX             *string `json:"PhoneNoX,omitempty" xml:"PhoneNoX,omitempty"`
+	// The ID of the ASR model. On the [Automatic Speech Recognition (ASR) Model Management](https://dyplsnext.console.aliyun.com/?spm=5176.12818093.categories-n-products.ddypls.22e616d0a0tEFC#/asr) page, you can view the ID of the ASR model.
+	//
+	// example:
+	//
+	// 7ee372834d2f4cc7ac0d0ab2d0ae1aac
+	ASRModelId *string `json:"ASRModelId,omitempty" xml:"ASRModelId,omitempty"`
+	// Specifies whether to enable automatic speech recognition (ASR). Valid values:
+	//
+	// 	- **false*	- (default): disables ASR.
+	//
+	// 	- **true**: enables ASR.
+	//
+	// example:
+	//
+	// false
+	ASRStatus *bool `json:"ASRStatus,omitempty" xml:"ASRStatus,omitempty"`
+	// Re-sets the phone number display logic in the AXB binding. Fixed value: **1**, indicating that phone number X is displayed on both the calling phone and the called phone.
+	//
+	// >  Due to the regulatory restrictions imposed by carriers, the setting to display real phone numbers during calls does not take effect.
+	//
+	// example:
+	//
+	// 1
+	CallDisplayType *int32 `json:"CallDisplayType,omitempty" xml:"CallDisplayType,omitempty"`
+	// The status of the one-way call restriction. Valid values:
+	//
+	// 	- **CONTROL_AX_DISABLE**: Phone number A cannot be used to call phone number X.
+	//
+	// 	- **CONTROL_BX_DISABLE**: Phone number B cannot be used to call phone number X.
+	//
+	// example:
+	//
+	// CONTROL_AX_DISABLE
+	CallRestrict *string `json:"CallRestrict,omitempty" xml:"CallRestrict,omitempty"`
+	// The maximum ringing duration for each number in sequential ringing. Unit: seconds. The value ranges from 5 to 20.
+	//
+	// example:
+	//
+	// 10
+	CallTimeout *int32 `json:"CallTimeout,omitempty" xml:"CallTimeout,omitempty"`
+	// Specifies the dual tone multiple frequency (DTMF) key configuration in the AXB binding. The following content can be configured:
+	//
+	// 	- endCallIvrPhoneNo: for whom the audio is played, user A or user B.
+	//
+	// 	- waitingDtmfTime: the maximum waiting time after the first audio is played. The maximum waiting time is 30 seconds.
+	//
+	// 	- maxLoop: the maximum number of loop playback times of the first audio if the DTMF key is not matched. The maximum number of loop playback times is 5.
+	//
+	// 	- step1File: the name of the first audio.
+	//
+	// 	- step2File: the name of the second audio.
+	//
+	// 	- validKey: the valid key values, such as 1,2. Only two valid key values can be set, and the key values are separated by a comma (,).
+	//
+	// 	- waitingEndCall: The waiting duration to hang up a call. The waiting duration is allowed by a carrier. The maximum waiting duration is 10 seconds.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "endCallIvrPhoneNo":"A",
+	//
+	//     "waitingDtmfTime":10,
+	//
+	//     "maxLoop":3,
+	//
+	//     "step1File":"62ab72f8-4750-4234-859e-e8d678c0cad3-flow_tts_test_1.wav",
+	//
+	//     "step2File":"62ab72f8-4750-4234-859e-e8d678c0cad3-flow_tts_test_2.wav",
+	//
+	//     "validKey":"1,2",
+	//
+	//     "waitingEndCall":2
+	//
+	// }
+	DtmfConfig *string `json:"DtmfConfig,omitempty" xml:"DtmfConfig,omitempty"`
+	// Specifies the city to which phone number X to be selected belongs.
+	//
+	// 	- If no phone number for the specified city is available in the current phone number pool or this parameter is not specified, a phone number that belongs to another city is randomly selected from the current phone number pool and assigned as phone number X.
+	//
+	// 	- If**Number X Assignment Mode*	- is set to **Strict Matching Mode*	- and no phone number meets the requirement, the system displays an allocation error.
+	//
+	// example:
+	//
+	// hangzhou
+	ExpectCity *string `json:"ExpectCity,omitempty" xml:"ExpectCity,omitempty"`
+	// The expiration time of the AXB binding.
+	//
+	// >  The expiration time must be more than 1 minute later than the time when you call this API operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2021-09-05 12:00:00
+	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	// Specifies whether to record all calls made by the bound phone numbers. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
+	// example:
+	//
+	// true
+	IsRecordingEnabled *bool `json:"IsRecordingEnabled,omitempty" xml:"IsRecordingEnabled,omitempty"`
+	// The extension field for the external business. This parameter is returned in a call record receipt.
+	//
+	// example:
+	//
+	// abcdef
+	OutId *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	// The ID of the external business.
+	//
+	// example:
+	//
+	// 34553330****
+	OutOrderId *string `json:"OutOrderId,omitempty" xml:"OutOrderId,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Phone number A in the AXB binding.
+	//
+	// Phone number A can be set to a mobile phone number or a landline phone number. The landline phone number must be added with an area code, and no hyphen is required between the area code and the landline phone number.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 139****0000
+	PhoneNoA *string `json:"PhoneNoA,omitempty" xml:"PhoneNoA,omitempty"`
+	// Phone number B in the AXB binding. If phone number A is used to call phone number X, the call is forwarded to phone number B. Phone number B can be set to a mobile phone number or a landline phone number. The landline phone number must be added with an area code, and no hyphen is required between the area code and the landline phone number.
+	//
+	// >  If you need to update phone number B, call the [UpdateSubscription](https://help.aliyun.com/document_detail/110253.html) operation.
+	//
+	// example:
+	//
+	// 139****0000
+	PhoneNoB *string `json:"PhoneNoB,omitempty" xml:"PhoneNoB,omitempty"`
+	// Phone number X in the AXB binding.
+	//
+	// Phone number X is the phone number that you purchased in the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) or by using the [BuySecretNo](https://help.aliyun.com/document_detail/110266.html) operation before you bind a phone number. Phone number X is used to forward calls.
+	//
+	// If you do not specify this parameter, a random phone number is selected from the phone number pool based on the value of the ExpectCity parameter and is used as phone number X.
+	//
+	// example:
+	//
+	// 139****0000
+	PhoneNoX *string `json:"PhoneNoX,omitempty" xml:"PhoneNoX,omitempty"`
+	// The key of the phone number pool.
+	//
+	// Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management*	- page.
+	//
+	// example:
+	//
+	// FC5526*****
 	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RingConfig           *string `json:"RingConfig,omitempty" xml:"RingConfig,omitempty"`
+	// Sets the ringtone code for enterprise Color Ring Back Tone (CRBT) in the AXB binding.
+	//
+	// 	- Ringtone setting when phone number A is used to call phone number X in the AXB binding: AXBRing_A
+	//
+	// 	- Ringtone setting when phone number B is used to call phone number X in the AXB binding: AXBRing_B
+	//
+	// Enterprise CRBT codes: Enterprise CRBT codes can be queried in the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account). You can choose **Number Pool Management*	- > **Enterprise CRBT Management*	- to view enterprise CRBT codes. You can also upload, delete, or perform other operations on enterprise CRBT codes.
+	//
+	// >  The bound enterprise CRBTs are preferentially used. If no enterprise CRBT is set or the setting does not take effect, the enterprise CRBTs at the phone number pool level are used.
+	//
+	// example:
+	//
+	// {"AXBRing_B":"1000****1","AXBRing_A":"1000****1"}
+	RingConfig *string `json:"RingConfig,omitempty" xml:"RingConfig,omitempty"`
 }
 
 func (s BindAxbRequest) String() string {
@@ -348,9 +622,29 @@ func (s *BindAxbRequest) SetRingConfig(v string) *BindAxbRequest {
 }
 
 type BindAxbResponseBody struct {
-	Code          *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- Other status codes indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 9297B722-A016-43FB-B51A-E54050D9369D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information returned after the phone numbers were bound.
 	SecretBindDTO *BindAxbResponseBodySecretBindDTO `json:"SecretBindDTO,omitempty" xml:"SecretBindDTO,omitempty" type:"Struct"`
 }
 
@@ -383,9 +677,26 @@ func (s *BindAxbResponseBody) SetSecretBindDTO(v *BindAxbResponseBodySecretBindD
 }
 
 type BindAxbResponseBodySecretBindDTO struct {
+	// The extension of the phone number.
+	//
+	// >  The BindAxb operation does not involve an extension. Ignore this parameter.
+	//
+	// example:
+	//
+	// 130
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	SecretNo  *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
-	SubsId    *string `json:"SubsId,omitempty" xml:"SubsId,omitempty"`
+	// The private number, that is, phone number X.
+	//
+	// example:
+	//
+	// 139****0000
+	SecretNo *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
+	// The binding ID.
+	//
+	// example:
+	//
+	// 1**************3
+	SubsId *string `json:"SubsId,omitempty" xml:"SubsId,omitempty"`
 }
 
 func (s BindAxbResponseBodySecretBindDTO) String() string {
@@ -412,9 +723,9 @@ func (s *BindAxbResponseBodySecretBindDTO) SetSubsId(v string) *BindAxbResponseB
 }
 
 type BindAxbResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BindAxbResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BindAxbResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BindAxbResponse) String() string {
@@ -441,24 +752,141 @@ func (s *BindAxbResponse) SetBody(v *BindAxbResponseBody) *BindAxbResponse {
 }
 
 type BindAxgRequest struct {
-	ASRModelId           *string `json:"ASRModelId,omitempty" xml:"ASRModelId,omitempty"`
-	ASRStatus            *bool   `json:"ASRStatus,omitempty" xml:"ASRStatus,omitempty"`
-	CallDisplayType      *int32  `json:"CallDisplayType,omitempty" xml:"CallDisplayType,omitempty"`
-	CallRestrict         *string `json:"CallRestrict,omitempty" xml:"CallRestrict,omitempty"`
-	ExpectCity           *string `json:"ExpectCity,omitempty" xml:"ExpectCity,omitempty"`
-	Expiration           *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
-	GroupId              *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	IsRecordingEnabled   *bool   `json:"IsRecordingEnabled,omitempty" xml:"IsRecordingEnabled,omitempty"`
-	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	OutOrderId           *string `json:"OutOrderId,omitempty" xml:"OutOrderId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PhoneNoA             *string `json:"PhoneNoA,omitempty" xml:"PhoneNoA,omitempty"`
-	PhoneNoB             *string `json:"PhoneNoB,omitempty" xml:"PhoneNoB,omitempty"`
-	PhoneNoX             *string `json:"PhoneNoX,omitempty" xml:"PhoneNoX,omitempty"`
+	// The ID of the ASR model.
+	//
+	// example:
+	//
+	// 980abddb908f48e8b987cb2cd303****
+	ASRModelId *string `json:"ASRModelId,omitempty" xml:"ASRModelId,omitempty"`
+	// Specifies whether to enable automatic speech recognition (ASR). Valid values:
+	//
+	// 	- **False*	- (default): disables ASR.
+	//
+	// 	- **True**: enables ASR.
+	//
+	// example:
+	//
+	// False
+	ASRStatus *bool `json:"ASRStatus,omitempty" xml:"ASRStatus,omitempty"`
+	// Re-sets the phone number display logic in the AXG binding. Fixed value: **1**, indicating that phone number X is displayed on both the calling phone and the called phone.
+	//
+	// >  Due to the regulatory restrictions imposed by carriers, the setting to display real phone numbers during calls does not take effect.
+	//
+	// example:
+	//
+	// 1
+	CallDisplayType *int32 `json:"CallDisplayType,omitempty" xml:"CallDisplayType,omitempty"`
+	// The status of call restrictions. Valid values:
+	//
+	// 	- **CONTROL_AX_DISABLE**: Phone number A cannot be used to call phone number X.
+	//
+	// 	- **CONTROL_BX_DISABLE**: Phone number B cannot be used to call phone number X.
+	//
+	// example:
+	//
+	// CONTROL_AX_DISABLE
+	CallRestrict *string `json:"CallRestrict,omitempty" xml:"CallRestrict,omitempty"`
+	// Specifies the city to which phone number X to be selected belongs.
+	//
+	// 	- If no phone number for the specified city is available in the current phone number pool or this parameter is not specified, a phone number that belongs to another city is randomly selected from the current phone number pool and assigned as phone number X.
+	//
+	// 	- If Number X Assignment Mode is set to Strict Matching Mode and no phone number meets the requirement, the system displays an allocation error.
+	//
+	// example:
+	//
+	// hangzhou
+	ExpectCity *string `json:"ExpectCity,omitempty" xml:"ExpectCity,omitempty"`
+	// The expiration time of the AXG binding. The value is accurate to seconds.
+	//
+	// >  The expiration time must be more than 1 minute later than the time when you call this API operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2019-09-05 12:00:00
+	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	// The group ID in the AXG binding. You can view the group ID by using either of the following methods:
+	//
+	// 	- On the **Number Pool Management*	- page in the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account), filter AXG privacy numbers and click **Number Group G Management*	- to view the group IDs of number groups G.****
+	//
+	// 	- If the [CreateAxgGroup](https://help.aliyun.com/document_detail/110250.html) operation is called to create number group G, the value of **GroupId*	- in the response of the CreateAxgGroup operation is specified as the value of the request parameter **GroupId*	- of the BindAxg operation.
+	//
+	// >  Number group G must have one or more phone numbers.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Specifies whether to record all calls made by the bound phone numbers.
+	//
+	// example:
+	//
+	// true
+	IsRecordingEnabled *bool `json:"IsRecordingEnabled,omitempty" xml:"IsRecordingEnabled,omitempty"`
+	// The extension field for the external business. This parameter is returned in a call record receipt.
+	//
+	// example:
+	//
+	// abcdef
+	OutId *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	// The ID of the external business.
+	//
+	// example:
+	//
+	// abcdef
+	OutOrderId *string `json:"OutOrderId,omitempty" xml:"OutOrderId,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Phone number A in the AXG binding. Phone number A can be set to a mobile phone number or a landline phone number. The landline phone number must be added with an area code, and no hyphen is required between the area code and the landline phone number.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 139****0000
+	PhoneNoA *string `json:"PhoneNoA,omitempty" xml:"PhoneNoA,omitempty"`
+	// Phone number B in the AXG binding. If phone number A is used to call phone number X, the call is forwarded to phone number B. If you need to update phone number B, call the [UpdateSubscription](https://help.aliyun.com/document_detail/110253.html) operation.
+	//
+	// Phone number B can be set to a mobile phone number or a landline phone number. The landline phone number must be added with an area code, and no hyphen is required between the area code and the landline phone number.
+	//
+	// example:
+	//
+	// 139****0000
+	PhoneNoB *string `json:"PhoneNoB,omitempty" xml:"PhoneNoB,omitempty"`
+	// Phone number X in the AXG binding. If you do not specify this parameter, a random phone number is selected from the phone number pool based on the value of the **ExpectCity*	- parameter and is used as phone number X.
+	//
+	// >  Phone number X is the phone number that you purchased in the Phone Number Protection console or by using the [BuySecretNo](https://help.aliyun.com/document_detail/110266.html) operation before you bind a phone number. Phone number X is used to forward calls.
+	//
+	// example:
+	//
+	// 139****0000
+	PhoneNoX *string `json:"PhoneNoX,omitempty" xml:"PhoneNoX,omitempty"`
+	// The key of the phone number pool. Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management*	- page.
+	//
+	// example:
+	//
+	// FC123456
 	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RingConfig           *string `json:"RingConfig,omitempty" xml:"RingConfig,omitempty"`
+	// Sets the ringtone for enterprise Color Ring Back Tone (CRBT) in the AXG binding.
+	//
+	// 	- Ringtone setting (with a callback number) when phone number A is used to call phone number X in the AXG binding: AXGRing_AB
+	//
+	// 	- Ringtone setting (without a callback number) when phone number A is used to call phone number X in the AXG binding: AXGRing_A
+	//
+	// 	- Ringtone setting when a phone number in number group G is used to call phone number X in the AXG binding: AXGRing_G
+	//
+	// 	- Enterprise CRBT codes: Enterprise CRBT codes can be queried in the Phone Number Protection console. You can choose **Number Pool Management > Enterprise CRBT Management*	- to view and manage enterprise CRBT codes. You can also upload, delete, or perform other operations on enterprise CRBT codes.
+	//
+	// >  The bound enterprise CRBTs are preferentially used. If no enterprise CRBT is set or the setting does not take effect, the enterprise CRBTs at the phone number pool level are used.
+	//
+	// example:
+	//
+	// {"AXGRing_AB":"100000001","AXGRing_A":"100000002","AXGRing_G":"100000003"}
+	RingConfig *string `json:"RingConfig,omitempty" xml:"RingConfig,omitempty"`
 }
 
 func (s BindAxgRequest) String() string {
@@ -560,9 +988,29 @@ func (s *BindAxgRequest) SetRingConfig(v string) *BindAxgRequest {
 }
 
 type BindAxgResponseBody struct {
-	Code          *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// F655A8D5-B967-440B-8683-DAD6FF8DE990
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information returned after the phone numbers were bound.
 	SecretBindDTO *BindAxgResponseBodySecretBindDTO `json:"SecretBindDTO,omitempty" xml:"SecretBindDTO,omitempty" type:"Struct"`
 }
 
@@ -595,9 +1043,26 @@ func (s *BindAxgResponseBody) SetSecretBindDTO(v *BindAxgResponseBodySecretBindD
 }
 
 type BindAxgResponseBodySecretBindDTO struct {
+	// The extension of the phone number.
+	//
+	// >  The BindAxg operation does not involve an extension. Ignore this parameter.
+	//
+	// example:
+	//
+	// 139****0000
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	SecretNo  *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
-	SubsId    *string `json:"SubsId,omitempty" xml:"SubsId,omitempty"`
+	// The private number, that is, phone number X.
+	//
+	// example:
+	//
+	// 139****0000
+	SecretNo *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
+	// The binding ID.
+	//
+	// example:
+	//
+	// 1************3
+	SubsId *string `json:"SubsId,omitempty" xml:"SubsId,omitempty"`
 }
 
 func (s BindAxgResponseBodySecretBindDTO) String() string {
@@ -624,9 +1089,9 @@ func (s *BindAxgResponseBodySecretBindDTO) SetSubsId(v string) *BindAxgResponseB
 }
 
 type BindAxgResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BindAxgResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BindAxgResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BindAxgResponse) String() string {
@@ -653,25 +1118,145 @@ func (s *BindAxgResponse) SetBody(v *BindAxgResponseBody) *BindAxgResponse {
 }
 
 type BindAxnRequest struct {
-	ASRModelId           *string `json:"ASRModelId,omitempty" xml:"ASRModelId,omitempty"`
-	ASRStatus            *bool   `json:"ASRStatus,omitempty" xml:"ASRStatus,omitempty"`
-	CallDisplayType      *int32  `json:"CallDisplayType,omitempty" xml:"CallDisplayType,omitempty"`
-	CallRestrict         *string `json:"CallRestrict,omitempty" xml:"CallRestrict,omitempty"`
-	CallTimeout          *int32  `json:"CallTimeout,omitempty" xml:"CallTimeout,omitempty"`
-	ExpectCity           *string `json:"ExpectCity,omitempty" xml:"ExpectCity,omitempty"`
-	Expiration           *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
-	IsRecordingEnabled   *bool   `json:"IsRecordingEnabled,omitempty" xml:"IsRecordingEnabled,omitempty"`
-	NoType               *string `json:"NoType,omitempty" xml:"NoType,omitempty"`
-	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	OutOrderId           *string `json:"OutOrderId,omitempty" xml:"OutOrderId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PhoneNoA             *string `json:"PhoneNoA,omitempty" xml:"PhoneNoA,omitempty"`
-	PhoneNoB             *string `json:"PhoneNoB,omitempty" xml:"PhoneNoB,omitempty"`
-	PhoneNoX             *string `json:"PhoneNoX,omitempty" xml:"PhoneNoX,omitempty"`
+	// The ID of the ASR model. On the [Automatic Speech Recognition (ASR) Model Management](https://dyplsnext.console.aliyun.com/?spm=5176.12818093.categories-n-products.ddypls.22e616d0a0tEFC#/asr) page, you can view the ID of the ASR model.
+	//
+	// example:
+	//
+	// 7ee372834d2f4cc7ac0d0ab2d0ae1aac
+	ASRModelId *string `json:"ASRModelId,omitempty" xml:"ASRModelId,omitempty"`
+	// Specifies whether to enable automatic speech recognition (ASR). Valid values:
+	//
+	// 	- **false*	- (default): disables ASR.
+	//
+	// 	- **true**: enables ASR.
+	//
+	// example:
+	//
+	// true
+	ASRStatus *bool `json:"ASRStatus,omitempty" xml:"ASRStatus,omitempty"`
+	// Re-sets the phone number display logic in the AXN binding. Fixed value: **1**, indicating that phone number X is displayed on both the calling phone and the called phone.
+	//
+	// >  Due to the regulatory restrictions imposed by carriers, the setting to display real phone numbers during calls does not take effect.
+	//
+	// example:
+	//
+	// 1
+	CallDisplayType *int32 `json:"CallDisplayType,omitempty" xml:"CallDisplayType,omitempty"`
+	// The status of one-way call restrictions. Valid values:
+	//
+	// 	- **CONTROL_AX_DISABLE**: Phone number A cannot be used to call phone number X.
+	//
+	// 	- **CONTROL_BX_DISABLE**: Phone number B cannot be used to call phone number X.
+	//
+	// example:
+	//
+	// CONTROL_AX_DISABLE
+	CallRestrict *string `json:"CallRestrict,omitempty" xml:"CallRestrict,omitempty"`
+	// The maximum ringing duration for each number in sequential ringing. Unit: seconds.
+	//
+	// example:
+	//
+	// 10
+	CallTimeout *int32 `json:"CallTimeout,omitempty" xml:"CallTimeout,omitempty"`
+	// Specifies the city to which phone number X to be selected belongs.
+	//
+	// 	- If no phone number for the specified city is available in the current phone number pool or this parameter is not specified, a phone number that belongs to another city is randomly selected from the current phone number pool and assigned as phone number X.
+	//
+	// 	- If **Number X Assignment Mode*	- is set to **Strict Matching Mode*	- and no phone number meets the requirement, the system displays an allocation error.
+	//
+	// example:
+	//
+	// hangzhou
+	ExpectCity *string `json:"ExpectCity,omitempty" xml:"ExpectCity,omitempty"`
+	// The expiration time of the AXN binding. Unit: seconds.
+	//
+	// >  The expiration time must be more than 60 seconds later than the time when you call this API operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2021-09-05 12:00:00
+	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	// Specifies whether to record all calls made by the bound phone numbers. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
+	// example:
+	//
+	// true
+	IsRecordingEnabled *bool `json:"IsRecordingEnabled,omitempty" xml:"IsRecordingEnabled,omitempty"`
+	// The type of the phone number.
+	//
+	// >  This parameter is applicable to the key accounts of Alibaba Cloud. This parameter can be ignored for Alibaba Cloud users.
+	//
+	// example:
+	//
+	// AXB_170
+	NoType *string `json:"NoType,omitempty" xml:"NoType,omitempty"`
+	// The extension field for the external business. This parameter is returned in a call record receipt.
+	//
+	// example:
+	//
+	// abcdef
+	OutId *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	// The ID of the external business.
+	//
+	// example:
+	//
+	// 34553330****
+	OutOrderId *string `json:"OutOrderId,omitempty" xml:"OutOrderId,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Phone number A in the AXN binding. Phone number A can be set to a mobile phone number or a landline phone number. The landline phone number must be added with an area code, and no hyphen is required between the area code and the landline phone number.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 139****0000
+	PhoneNoA *string `json:"PhoneNoA,omitempty" xml:"PhoneNoA,omitempty"`
+	// Phone number B in the AXN binding. If phone number A is used to call phone number X, the call is forwarded to phone number B. Phone number B can be set to a mobile phone number or a landline phone number. The landline phone number must be added with an area code, and no hyphen is required between the area code and the landline phone number.
+	//
+	// >  If phone number B is not specified in the AXN binding, the system automatically generates a nonexistent number. If phone number A is used to call phone number X, the nonexistent number is returned. If you need to update phone number B, call the [UpdateSubscription](https://help.aliyun.com/document_detail/110253.html) operation.
+	//
+	// example:
+	//
+	// 138****0000
+	PhoneNoB *string `json:"PhoneNoB,omitempty" xml:"PhoneNoB,omitempty"`
+	// Phone number X in the AXN binding. Phone number X is the phone number that you purchased in the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) or by using the [BuySecretNo](https://help.aliyun.com/document_detail/110266.html) operation before you bind a phone number. Phone number X is used to forward calls.
+	//
+	// >  If you do not specify this parameter, a random phone number is selected from the phone number pool based on the value of the ExpectCity parameter and is used as phone number X.
+	//
+	// example:
+	//
+	// 139****0000
+	PhoneNoX *string `json:"PhoneNoX,omitempty" xml:"PhoneNoX,omitempty"`
+	// The key of the phone number pool. Log on to the [Phone Number Protection console ](https://dypls.console.aliyun.com/dypls.htm#/account)and view the key of the phone number pool on the **Number Pool Management*	- page.
+	//
+	// example:
+	//
+	// FC2256****
 	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RingConfig           *string `json:"RingConfig,omitempty" xml:"RingConfig,omitempty"`
+	// Sets the ringtone code for enterprise Color Ring Back Tone (CRBT) in the AXN extension binding.
+	//
+	// 	- Ringtone setting (with a callback number) when phone number A is used to call phone number X in the AXN extension binding: AXNRing_AB
+	//
+	// 	- Ringtone setting (without a callback number) when phone number A is used to call phone number X in the AXN extension binding: AXNRing_A
+	//
+	// 	- Ringtone setting when an N-side number is used to call phone number X in the AXN extension binding: AXNRing_N
+	//
+	// Enterprise CRBT codes: Enterprise CRBT codes can be queried in the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account). You can choose **Number Pool Management > Enterprise CRBT Management*	- to view enterprise CRBT codes. You can also upload, delete, or perform other operations on enterprise CRBT codes.
+	//
+	// >  The bound enterprise CRBTs are preferentially used. If no enterprise CRBT is set or the setting does not take effect, the enterprise CRBTs at the phone number pool level are used.
+	//
+	// example:
+	//
+	// {"AXNRing_N":"100000001","AXNRing_A":"100000001"}
+	RingConfig *string `json:"RingConfig,omitempty" xml:"RingConfig,omitempty"`
 }
 
 func (s BindAxnRequest) String() string {
@@ -778,9 +1363,29 @@ func (s *BindAxnRequest) SetRingConfig(v string) *BindAxnRequest {
 }
 
 type BindAxnResponseBody struct {
-	Code          *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// F655A8D5-B967-440B-8683-DAD6FF8DE990
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information returned after the phone numbers were bound.
 	SecretBindDTO *BindAxnResponseBodySecretBindDTO `json:"SecretBindDTO,omitempty" xml:"SecretBindDTO,omitempty" type:"Struct"`
 }
 
@@ -813,9 +1418,26 @@ func (s *BindAxnResponseBody) SetSecretBindDTO(v *BindAxnResponseBodySecretBindD
 }
 
 type BindAxnResponseBodySecretBindDTO struct {
+	// The extension of the phone number.
+	//
+	// >  The BindAxn operation does not involve an extension. Ignore this parameter.
+	//
+	// example:
+	//
+	// 130
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	SecretNo  *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
-	SubsId    *string `json:"SubsId,omitempty" xml:"SubsId,omitempty"`
+	// The private number, that is, phone number X.
+	//
+	// example:
+	//
+	// 139****0000
+	SecretNo *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
+	// The binding ID.
+	//
+	// example:
+	//
+	// 1***************3
+	SubsId *string `json:"SubsId,omitempty" xml:"SubsId,omitempty"`
 }
 
 func (s BindAxnResponseBodySecretBindDTO) String() string {
@@ -842,9 +1464,9 @@ func (s *BindAxnResponseBodySecretBindDTO) SetSubsId(v string) *BindAxnResponseB
 }
 
 type BindAxnResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BindAxnResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BindAxnResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BindAxnResponse) String() string {
@@ -871,24 +1493,140 @@ func (s *BindAxnResponse) SetBody(v *BindAxnResponseBody) *BindAxnResponse {
 }
 
 type BindAxnExtensionRequest struct {
-	ASRModelId           *string `json:"ASRModelId,omitempty" xml:"ASRModelId,omitempty"`
-	ASRStatus            *bool   `json:"ASRStatus,omitempty" xml:"ASRStatus,omitempty"`
-	CallDisplayType      *int32  `json:"CallDisplayType,omitempty" xml:"CallDisplayType,omitempty"`
-	CallRestrict         *string `json:"CallRestrict,omitempty" xml:"CallRestrict,omitempty"`
-	ExpectCity           *string `json:"ExpectCity,omitempty" xml:"ExpectCity,omitempty"`
-	Expiration           *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
-	Extension            *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	IsRecordingEnabled   *bool   `json:"IsRecordingEnabled,omitempty" xml:"IsRecordingEnabled,omitempty"`
-	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	OutOrderId           *string `json:"OutOrderId,omitempty" xml:"OutOrderId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PhoneNoA             *string `json:"PhoneNoA,omitempty" xml:"PhoneNoA,omitempty"`
-	PhoneNoB             *string `json:"PhoneNoB,omitempty" xml:"PhoneNoB,omitempty"`
-	PhoneNoX             *string `json:"PhoneNoX,omitempty" xml:"PhoneNoX,omitempty"`
+	// The ID of the ASR model. On the [Automatic Speech Recognition (ASR) Model Management](https://dyplsnext.console.aliyun.com/?spm=5176.12818093.categories-n-products.ddypls.22e616d0a0tEFC#/asr) page, you can view the ID of the ASR model.
+	//
+	// example:
+	//
+	// 980abddb908f48e8b987cb2cd303****
+	ASRModelId *string `json:"ASRModelId,omitempty" xml:"ASRModelId,omitempty"`
+	// Specifies whether to enable automatic speech recognition (ASR). Valid values:
+	//
+	// 	- **false*	- (default): disables ASR.
+	//
+	// 	- **true**: enables ASR.
+	//
+	// example:
+	//
+	// True
+	ASRStatus *bool `json:"ASRStatus,omitempty" xml:"ASRStatus,omitempty"`
+	// Re-sets the phone number display logic in the AXN extension binding. Fixed value: **1**, indicating that phone number X is displayed on both the calling phone and the called phone.
+	//
+	// >  Due to the regulatory restrictions imposed by carriers, the setting to display real phone numbers during calls does not take effect.
+	//
+	// example:
+	//
+	// 1
+	CallDisplayType *int32 `json:"CallDisplayType,omitempty" xml:"CallDisplayType,omitempty"`
+	// The status of call restrictions. Valid values:
+	//
+	// 	- **CONTROL_AX_DISABLE**: Phone number A cannot be used to call phone number X.
+	//
+	// 	- **CONTROL_BX_DISABLE**: Phone number B cannot be used to call phone number X.
+	//
+	// example:
+	//
+	// CONTROL_AX_DISABLE
+	CallRestrict *string `json:"CallRestrict,omitempty" xml:"CallRestrict,omitempty"`
+	// Specifies the city to which phone number X to be selected belongs.
+	//
+	// 	- If no phone number for the specified city is available in the current phone number pool or this parameter is not specified, a phone number that belongs to another city is randomly selected from the current phone number pool and assigned as phone number X.
+	//
+	// 	- If Number X Assignment Mode is set to Strict Matching Mode and no phone number meets the requirement, the system displays an allocation error.
+	//
+	// example:
+	//
+	// hangzhou
+	ExpectCity *string `json:"ExpectCity,omitempty" xml:"ExpectCity,omitempty"`
+	// The expiration time of the AXN extension binding. The value is accurate to seconds.
+	//
+	// >  The expiration time must be more than 1 minute later than the time when you call this API operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2019-09-05 12:00:00
+	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	Extend     *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	// The extension of phone number X. The extension is 1 to 3 digits in length.
+	//
+	// >  If you specify Extension, you must also specify PhoneNoX.
+	//
+	// example:
+	//
+	// 130
+	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// Specifies whether to record all calls made by the bound phone numbers. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
+	// example:
+	//
+	// true
+	IsRecordingEnabled *bool `json:"IsRecordingEnabled,omitempty" xml:"IsRecordingEnabled,omitempty"`
+	// The extension field for the external business. This parameter is returned in a call record receipt.
+	//
+	// example:
+	//
+	// abcdef
+	OutId *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	// The ID of the external business.
+	//
+	// example:
+	//
+	// abcdef
+	OutOrderId *string `json:"OutOrderId,omitempty" xml:"OutOrderId,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Phone number A in the AXN extension binding. Phone number A can be set to a mobile phone number or a landline phone number. The landline phone number must be added with an area code, and no hyphen is required between the area code and the landline phone number.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 139****0000
+	PhoneNoA *string `json:"PhoneNoA,omitempty" xml:"PhoneNoA,omitempty"`
+	// Phone number B in the AXN extension binding. When phone number A is used to call phone number X, the call is forwarded to phone number B. If you need to update phone number B, call the [UpdateSubscription](https://help.aliyun.com/document_detail/110253.html) operation.
+	//
+	// Phone number B can be set to a mobile phone number or a landline phone number. The landline phone number must be added with an area code, and no hyphen is required between the area code and the landline phone number.
+	//
+	// example:
+	//
+	// 139****0000
+	PhoneNoB *string `json:"PhoneNoB,omitempty" xml:"PhoneNoB,omitempty"`
+	// Phone number X in the AXN extension binding. If you do not specify this parameter, a random phone number is selected from the phone number pool based on the value of the **ExpectCity*	- parameter and is used as phone number X.
+	//
+	// >  Phone number X is the phone number that you purchased in the Phone Number Protection console or by using the [BuySecretNo](https://help.aliyun.com/document_detail/110266.html) operation before you bind a phone number. Phone number X is used to forward calls.
+	//
+	// example:
+	//
+	// 139****0000
+	PhoneNoX *string `json:"PhoneNoX,omitempty" xml:"PhoneNoX,omitempty"`
+	// The key of the phone number pool. Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management*	- page.
+	//
+	// example:
+	//
+	// FC123456
 	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RingConfig           *string `json:"RingConfig,omitempty" xml:"RingConfig,omitempty"`
+	// Sets the ringtone for enterprise Color Ring Back Tone (CRBT) in the AXN extension binding.
+	//
+	// 	- Ringtone setting (with a callback number) when phone number A is used to call phone number X in the AXN extension binding: AXNRing_AB
+	//
+	// 	- Ringtone setting (without a callback number) when phone number A is used to call phone number X in the AXN extension binding: AXNRing_A
+	//
+	// 	- Ringtone setting when an N-side number is used to call phone number X in the AXN extension binding: AXNRing_N
+	//
+	// Enterprise CRBT codes: Enterprise CRBT codes can be queried in the Phone Number Protection console. You can choose **Number Pool Management > Enterprise CRBT Management*	- to view and manage enterprise CRBT codes. You can also upload, delete, or perform other operations on enterprise CRBT codes.
+	//
+	// >  The bound enterprise CRBTs are preferentially used. If no enterprise CRBT is set or the setting does not take effect, the enterprise CRBTs at the phone number pool level are used.
+	//
+	// example:
+	//
+	// {"AXNRing_N":"100000001","AXNRing_A":"100000001"}
+	RingConfig *string `json:"RingConfig,omitempty" xml:"RingConfig,omitempty"`
 }
 
 func (s BindAxnExtensionRequest) String() string {
@@ -926,6 +1664,11 @@ func (s *BindAxnExtensionRequest) SetExpectCity(v string) *BindAxnExtensionReque
 
 func (s *BindAxnExtensionRequest) SetExpiration(v string) *BindAxnExtensionRequest {
 	s.Expiration = &v
+	return s
+}
+
+func (s *BindAxnExtensionRequest) SetExtend(v string) *BindAxnExtensionRequest {
+	s.Extend = &v
 	return s
 }
 
@@ -990,9 +1733,29 @@ func (s *BindAxnExtensionRequest) SetRingConfig(v string) *BindAxnExtensionReque
 }
 
 type BindAxnExtensionResponseBody struct {
-	Code          *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 9297B722-A016-43FB-B51A-E54050D9369D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information returned after the phone numbers were bound.
 	SecretBindDTO *BindAxnExtensionResponseBodySecretBindDTO `json:"SecretBindDTO,omitempty" xml:"SecretBindDTO,omitempty" type:"Struct"`
 }
 
@@ -1025,9 +1788,24 @@ func (s *BindAxnExtensionResponseBody) SetSecretBindDTO(v *BindAxnExtensionRespo
 }
 
 type BindAxnExtensionResponseBodySecretBindDTO struct {
+	// The extension of the phone number.
+	//
+	// example:
+	//
+	// 130
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	SecretNo  *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
-	SubsId    *string `json:"SubsId,omitempty" xml:"SubsId,omitempty"`
+	// The private number, that is, phone number X.
+	//
+	// example:
+	//
+	// 139*****0000
+	SecretNo *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
+	// The binding ID.
+	//
+	// example:
+	//
+	// 1***************3
+	SubsId *string `json:"SubsId,omitempty" xml:"SubsId,omitempty"`
 }
 
 func (s BindAxnExtensionResponseBodySecretBindDTO) String() string {
@@ -1054,9 +1832,9 @@ func (s *BindAxnExtensionResponseBodySecretBindDTO) SetSubsId(v string) *BindAxn
 }
 
 type BindAxnExtensionResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BindAxnExtensionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BindAxnExtensionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BindAxnExtensionResponse) String() string {
@@ -1083,11 +1861,15 @@ func (s *BindAxnExtensionResponse) SetBody(v *BindAxnExtensionResponseBody) *Bin
 }
 
 type BindBatchAxgRequest struct {
-	AxgBindList          []*BindBatchAxgRequestAxgBindList `json:"AxgBindList,omitempty" xml:"AxgBindList,omitempty" type:"Repeated"`
-	OwnerId              *int64                            `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PoolKey              *string                           `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
-	ResourceOwnerAccount *string                           `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                            `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	AxgBindList []*BindBatchAxgRequestAxgBindList `json:"AxgBindList,omitempty" xml:"AxgBindList,omitempty" type:"Repeated"`
+	OwnerId     *int64                            `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// FC2235****
+	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s BindBatchAxgRequest) String() string {
@@ -1124,20 +1906,63 @@ func (s *BindBatchAxgRequest) SetResourceOwnerId(v int64) *BindBatchAxgRequest {
 }
 
 type BindBatchAxgRequestAxgBindList struct {
-	ASRModelId         *string `json:"ASRModelId,omitempty" xml:"ASRModelId,omitempty"`
-	ASRStatus          *bool   `json:"ASRStatus,omitempty" xml:"ASRStatus,omitempty"`
-	CallDisplayType    *int32  `json:"CallDisplayType,omitempty" xml:"CallDisplayType,omitempty"`
-	CallRestrict       *string `json:"CallRestrict,omitempty" xml:"CallRestrict,omitempty"`
-	ExpectCity         *string `json:"ExpectCity,omitempty" xml:"ExpectCity,omitempty"`
-	Expiration         *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
-	GroupId            *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	IsRecordingEnabled *bool   `json:"IsRecordingEnabled,omitempty" xml:"IsRecordingEnabled,omitempty"`
-	OutId              *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	OutOrderId         *string `json:"OutOrderId,omitempty" xml:"OutOrderId,omitempty"`
-	PhoneNoA           *string `json:"PhoneNoA,omitempty" xml:"PhoneNoA,omitempty"`
-	PhoneNoB           *string `json:"PhoneNoB,omitempty" xml:"PhoneNoB,omitempty"`
-	PhoneNoX           *string `json:"PhoneNoX,omitempty" xml:"PhoneNoX,omitempty"`
-	RingConfig         *string `json:"RingConfig,omitempty" xml:"RingConfig,omitempty"`
+	// example:
+	//
+	// 7ee372834d2f4cc7ac0d0ab2d0ae1aac
+	ASRModelId *string `json:"ASRModelId,omitempty" xml:"ASRModelId,omitempty"`
+	// example:
+	//
+	// true
+	ASRStatus *bool `json:"ASRStatus,omitempty" xml:"ASRStatus,omitempty"`
+	// example:
+	//
+	// 1
+	CallDisplayType *int32 `json:"CallDisplayType,omitempty" xml:"CallDisplayType,omitempty"`
+	// example:
+	//
+	// CONTROL_AX_DISABLE
+	CallRestrict *string `json:"CallRestrict,omitempty" xml:"CallRestrict,omitempty"`
+	ExpectCity   *string `json:"ExpectCity,omitempty" xml:"ExpectCity,omitempty"`
+	// example:
+	//
+	// 2022-07-11 01:05:15
+	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// example:
+	//
+	// False
+	IsRecordingEnabled *bool `json:"IsRecordingEnabled,omitempty" xml:"IsRecordingEnabled,omitempty"`
+	// example:
+	//
+	// 18223ad447910fd
+	OutId *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	// example:
+	//
+	// 20220824021816883677
+	OutOrderId *string `json:"OutOrderId,omitempty" xml:"OutOrderId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 13333333333
+	PhoneNoA *string `json:"PhoneNoA,omitempty" xml:"PhoneNoA,omitempty"`
+	// example:
+	//
+	// 13333333333
+	PhoneNoB *string `json:"PhoneNoB,omitempty" xml:"PhoneNoB,omitempty"`
+	// example:
+	//
+	// 13333333333
+	PhoneNoX *string `json:"PhoneNoX,omitempty" xml:"PhoneNoX,omitempty"`
+	// example:
+	//
+	// {\\"AXBRing_B\\":\\"100000002\\",\\"AXBRing_A\\":\\"100000001\\"}
+	RingConfig *string `json:"RingConfig,omitempty" xml:"RingConfig,omitempty"`
 }
 
 func (s BindBatchAxgRequestAxgBindList) String() string {
@@ -1219,8 +2044,12 @@ func (s *BindBatchAxgRequestAxgBindList) SetRingConfig(v string) *BindBatchAxgRe
 }
 
 type BindBatchAxgShrinkRequest struct {
-	AxgBindListShrink    *string `json:"AxgBindList,omitempty" xml:"AxgBindList,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	AxgBindListShrink *string `json:"AxgBindList,omitempty" xml:"AxgBindList,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// FC2235****
 	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -1260,8 +2089,17 @@ func (s *BindBatchAxgShrinkRequest) SetResourceOwnerId(v int64) *BindBatchAxgShr
 }
 
 type BindBatchAxgResponseBody struct {
-	Code           *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message        *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 5DCCA8CD-6C0A-50B4-A496-B1D2AB48A1C3
 	RequestId      *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SecretBindList *BindBatchAxgResponseBodySecretBindList `json:"SecretBindList,omitempty" xml:"SecretBindList,omitempty" type:"Struct"`
 }
@@ -1312,13 +2150,34 @@ func (s *BindBatchAxgResponseBodySecretBindList) SetSecretBind(v []*BindBatchAxg
 }
 
 type BindBatchAxgResponseBodySecretBindListSecretBind struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// isv.INVALID_PARAMETERS
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 257
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	PhoneNoA  *string `json:"PhoneNoA,omitempty" xml:"PhoneNoA,omitempty"`
-	SecretNo  *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
-	SubsId    *string `json:"SubsId,omitempty" xml:"SubsId,omitempty"`
+	// example:
+	//
+	// 1234
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// example:
+	//
+	// ringConfig invalid
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 13333333333
+	PhoneNoA *string `json:"PhoneNoA,omitempty" xml:"PhoneNoA,omitempty"`
+	// example:
+	//
+	// 13333333333
+	SecretNo *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
+	// example:
+	//
+	// 1000085060515673
+	SubsId *string `json:"SubsId,omitempty" xml:"SubsId,omitempty"`
 }
 
 func (s BindBatchAxgResponseBodySecretBindListSecretBind) String() string {
@@ -1365,9 +2224,9 @@ func (s *BindBatchAxgResponseBodySecretBindListSecretBind) SetSubsId(v string) *
 }
 
 type BindBatchAxgResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BindBatchAxgResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BindBatchAxgResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BindBatchAxgResponse) String() string {
@@ -1394,14 +2253,61 @@ func (s *BindBatchAxgResponse) SetBody(v *BindBatchAxgResponseBody) *BindBatchAx
 }
 
 type BuySecretNoRequest struct {
-	City                 *string `json:"City,omitempty" xml:"City,omitempty"`
-	DisplayPool          *bool   `json:"DisplayPool,omitempty" xml:"DisplayPool,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Specifies the home location of the phone number.
+	//
+	// >
+	//
+	// 	- The home location can be set only to a location in the Chinese mainland.
+	//
+	// 	- A phone number that starts with 95 does not have a home location. If you purchase a phone number that starts with 95, set this parameter to **Nationwide**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hangzhou
+	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// Specifies whether to add the phone number to the pool of numbers that will be displayed during calls.
+	//
+	// >  This parameter takes effect only for customers who have enabled the number display feature.
+	//
+	// example:
+	//
+	// true
+	DisplayPool *bool  `json:"DisplayPool,omitempty" xml:"DisplayPool,omitempty"`
+	OwnerId     *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The key of the phone number pool. Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management*	- page.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FC123456
 	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecretNo             *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
-	SpecId               *int64  `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
+	// The prefix of the phone number. If you specify the value of **SecretNo*	- when you purchase a phone number, a phone number starting with the specified prefix is selected.
+	//
+	// >  You can specify up to 18 digits of the phone number prefix.
+	//
+	// example:
+	//
+	// 130
+	SecretNo *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
+	// The type of the phone number. Valid values:
+	//
+	// 	- **1**: a phone number assigned by a virtual network operator, that is, a phone number that belongs to the 170 or 171 number segment.
+	//
+	// 	- **2**: a phone number provided by a carrier.
+	//
+	// 	- **3**: a phone number that starts with 95.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	SpecId *int64 `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
 }
 
 func (s BuySecretNoRequest) String() string {
@@ -1453,9 +2359,29 @@ func (s *BuySecretNoRequest) SetSpecId(v int64) *BuySecretNoRequest {
 }
 
 type BuySecretNoResponseBody struct {
-	Code             *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message          *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId        *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 2D1AEB96-96D0-454E-B0DC-AE2A8DF08020
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information returned after the operation was called.
 	SecretBuyInfoDTO *BuySecretNoResponseBodySecretBuyInfoDTO `json:"SecretBuyInfoDTO,omitempty" xml:"SecretBuyInfoDTO,omitempty" type:"Struct"`
 }
 
@@ -1488,6 +2414,11 @@ func (s *BuySecretNoResponseBody) SetSecretBuyInfoDTO(v *BuySecretNoResponseBody
 }
 
 type BuySecretNoResponseBodySecretBuyInfoDTO struct {
+	// The private number, that is, phone number X.
+	//
+	// example:
+	//
+	// 1390000****
 	SecretNo *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
 }
 
@@ -1505,9 +2436,9 @@ func (s *BuySecretNoResponseBodySecretBuyInfoDTO) SetSecretNo(v string) *BuySecr
 }
 
 type BuySecretNoResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BuySecretNoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BuySecretNoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BuySecretNoResponse) String() string {
@@ -1534,7 +2465,21 @@ func (s *BuySecretNoResponse) SetBody(v *BuySecretNoResponseBody) *BuySecretNoRe
 }
 
 type CancelPickUpWaybillRequest struct {
-	CancelDesc           *string `json:"CancelDesc,omitempty" xml:"CancelDesc,omitempty"`
+	// The cancellation reason.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {\\"action\\":\\"UPDATE_DESC\\",\\"value\\":\\"The courier is unable to pick up the package.\\"}
+	CancelDesc *string `json:"CancelDesc,omitempty" xml:"CancelDesc,omitempty"`
+	// The ID of the external order.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1145678823****
 	OuterOrderCode       *string `json:"OuterOrderCode,omitempty" xml:"OuterOrderCode,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -1575,10 +2520,30 @@ func (s *CancelPickUpWaybillRequest) SetResourceOwnerId(v int64) *CancelPickUpWa
 }
 
 type CancelPickUpWaybillResponseBody struct {
-	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *CancelPickUpWaybillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- Other status codes indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *CancelPickUpWaybillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 9FC30594-3841-43AD-9008-03393BCB5CD2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CancelPickUpWaybillResponseBody) String() string {
@@ -1610,10 +2575,30 @@ func (s *CancelPickUpWaybillResponseBody) SetRequestId(v string) *CancelPickUpWa
 }
 
 type CancelPickUpWaybillResponseBodyData struct {
+	// The error code.
+	//
+	// example:
+	//
+	// none
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// none
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// The cancellation result.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the cancellation was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CancelPickUpWaybillResponseBodyData) String() string {
@@ -1645,9 +2630,9 @@ func (s *CancelPickUpWaybillResponseBodyData) SetSuccess(v bool) *CancelPickUpWa
 }
 
 type CancelPickUpWaybillResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CancelPickUpWaybillResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelPickUpWaybillResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CancelPickUpWaybillResponse) String() string {
@@ -1674,10 +2659,34 @@ func (s *CancelPickUpWaybillResponse) SetBody(v *CancelPickUpWaybillResponseBody
 }
 
 type CreateAxgGroupRequest struct {
-	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Numbers              *string `json:"Numbers,omitempty" xml:"Numbers,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
+	// The name of number group G. If the name of number group G is not specified, the ID of number group G is used as the name of number group G.
+	//
+	// >  The value must be 1 to 128 characters in length.
+	//
+	// example:
+	//
+	// Aliyun
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The phone numbers that you add to number group G. Separate multiple phone numbers with commas (,). A maximum of 200 phone numbers can be added to number group G.
+	//
+	// example:
+	//
+	// 1390000****,1380000****
+	Numbers *string `json:"Numbers,omitempty" xml:"Numbers,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The key of the phone number pool. Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management*	- page.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FC123456
+	PoolKey *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
+	// The remarks of number group G. The value must be 0 to 256 characters in length.
+	//
+	// example:
+	//
+	// test
 	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -1727,9 +2736,33 @@ func (s *CreateAxgGroupRequest) SetResourceOwnerId(v int64) *CreateAxgGroupReque
 }
 
 type CreateAxgGroupResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	GroupId   *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of number group G. The value of this parameter is required when the [BindAxg](https://help.aliyun.com/document_detail/110249.html) operation is called to add an AXG binding.
+	//
+	// example:
+	//
+	// 2000000000001
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 635C0FDA-9EBC-43D7-B368-9F583C08A126
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1762,9 +2795,9 @@ func (s *CreateAxgGroupResponseBody) SetRequestId(v string) *CreateAxgGroupRespo
 }
 
 type CreateAxgGroupResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAxgGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAxgGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAxgGroupResponse) String() string {
@@ -1791,22 +2824,118 @@ func (s *CreateAxgGroupResponse) SetBody(v *CreateAxgGroupResponseBody) *CreateA
 }
 
 type CreatePickUpWaybillRequest struct {
-	AppointGotEndTime   *string                                     `json:"AppointGotEndTime,omitempty" xml:"AppointGotEndTime,omitempty"`
-	AppointGotStartTime *string                                     `json:"AppointGotStartTime,omitempty" xml:"AppointGotStartTime,omitempty"`
-	BizType             *int32                                      `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	ConsigneeAddress    *CreatePickUpWaybillRequestConsigneeAddress `json:"ConsigneeAddress,omitempty" xml:"ConsigneeAddress,omitempty" type:"Struct"`
-	ConsigneeMobile     *string                                     `json:"ConsigneeMobile,omitempty" xml:"ConsigneeMobile,omitempty"`
-	ConsigneeName       *string                                     `json:"ConsigneeName,omitempty" xml:"ConsigneeName,omitempty"`
-	ConsigneePhone      *string                                     `json:"ConsigneePhone,omitempty" xml:"ConsigneePhone,omitempty"`
-	CpCode              *string                                     `json:"CpCode,omitempty" xml:"CpCode,omitempty"`
-	GoodsInfos          []*CreatePickUpWaybillRequestGoodsInfos     `json:"GoodsInfos,omitempty" xml:"GoodsInfos,omitempty" type:"Repeated"`
-	OrderChannels       *string                                     `json:"OrderChannels,omitempty" xml:"OrderChannels,omitempty"`
-	OuterOrderCode      *string                                     `json:"OuterOrderCode,omitempty" xml:"OuterOrderCode,omitempty"`
-	Remark              *string                                     `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	SendAddress         *CreatePickUpWaybillRequestSendAddress      `json:"SendAddress,omitempty" xml:"SendAddress,omitempty" type:"Struct"`
-	SendMobile          *string                                     `json:"SendMobile,omitempty" xml:"SendMobile,omitempty"`
-	SendName            *string                                     `json:"SendName,omitempty" xml:"SendName,omitempty"`
-	SendPhone           *string                                     `json:"SendPhone,omitempty" xml:"SendPhone,omitempty"`
+	// The end time of the door-to-door pickup in the appointment. The value of **AppointGotEndTime*	- is the value of **EndTime*	- of **AppointTimes*	- in **CpTimeSelectList*	- returned by the [CreatePickUpWaybillPreQuery](~~CreatePickUpWaybillPreQuery~~#resultMapping) operation.
+	//
+	// >  This parameter is required when **BizType*	- is set to **1**.
+	//
+	// example:
+	//
+	// 2021-01-01 12:00:00
+	AppointGotEndTime *string `json:"AppointGotEndTime,omitempty" xml:"AppointGotEndTime,omitempty"`
+	// The start time of the door-to-door pickup in the appointment. The value of **AppointGotStartTime*	- is the value of **StartTime*	- of **AppointTimes*	- in **CpTimeSelectList*	- returned by the [CreatePickUpWaybillPreQuery](~~CreatePickUpWaybillPreQuery~~#resultMapping) operation.
+	//
+	// >  This parameter is required when **BizType*	- is set to **1**.
+	//
+	// example:
+	//
+	// 2021-01-01 10:00:00
+	AppointGotStartTime *string `json:"AppointGotStartTime,omitempty" xml:"AppointGotStartTime,omitempty"`
+	// The pickup mode. Valid values:
+	//
+	// 	- **0*	- (default): real-time order.
+	//
+	// 	- **1**: appointment order.
+	//
+	// example:
+	//
+	// 0
+	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// The address of the consignee.
+	//
+	// This parameter is required.
+	ConsigneeAddress *CreatePickUpWaybillRequestConsigneeAddress `json:"ConsigneeAddress,omitempty" xml:"ConsigneeAddress,omitempty" type:"Struct"`
+	// The mobile phone number of the consignee.
+	//
+	// >  Either ConsigneeMobile or ConsigneePhone must be set.
+	//
+	// example:
+	//
+	// 1580000****
+	ConsigneeMobile *string `json:"ConsigneeMobile,omitempty" xml:"ConsigneeMobile,omitempty"`
+	// The name of the consignee.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Li
+	ConsigneeName *string `json:"ConsigneeName,omitempty" xml:"ConsigneeName,omitempty"`
+	// The landline phone number of the consignee.
+	//
+	// >  Either ConsigneeMobile or ConsigneePhone must be set.
+	//
+	// example:
+	//
+	// 0570000****
+	ConsigneePhone *string `json:"ConsigneePhone,omitempty" xml:"ConsigneePhone,omitempty"`
+	// The code of the courier company.
+	//
+	// example:
+	//
+	// YTO
+	CpCode *string `json:"CpCode,omitempty" xml:"CpCode,omitempty"`
+	// The items.
+	GoodsInfos []*CreatePickUpWaybillRequestGoodsInfos `json:"GoodsInfos,omitempty" xml:"GoodsInfos,omitempty" type:"Repeated"`
+	// The external channel sources.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// YUN_DIAN_SHANG
+	OrderChannels *string `json:"OrderChannels,omitempty" xml:"OrderChannels,omitempty"`
+	// The ID of the external order.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 143234234266****
+	OuterOrderCode *string `json:"OuterOrderCode,omitempty" xml:"OuterOrderCode,omitempty"`
+	// The additional information about the order. The additional information will be printed on the order.
+	//
+	// example:
+	//
+	// fragile
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The address of the sender.
+	//
+	// This parameter is required.
+	SendAddress *CreatePickUpWaybillRequestSendAddress `json:"SendAddress,omitempty" xml:"SendAddress,omitempty" type:"Struct"`
+	// The mobile phone number of the sender.
+	//
+	// >  Either SendMobile or SendPhone must be set.
+	//
+	// example:
+	//
+	// 1596714****
+	SendMobile *string `json:"SendMobile,omitempty" xml:"SendMobile,omitempty"`
+	// The name of the sender.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Wang
+	SendName *string `json:"SendName,omitempty" xml:"SendName,omitempty"`
+	// The landline phone number of the sender.
+	//
+	// >  Either SendMobile or SendPhone must be set.
+	//
+	// example:
+	//
+	// 05718845****
+	SendPhone *string `json:"SendPhone,omitempty" xml:"SendPhone,omitempty"`
 }
 
 func (s CreatePickUpWaybillRequest) String() string {
@@ -1898,11 +3027,44 @@ func (s *CreatePickUpWaybillRequest) SetSendPhone(v string) *CreatePickUpWaybill
 }
 
 type CreatePickUpWaybillRequestConsigneeAddress struct {
+	// The detailed address of the consignee.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// XX community
 	AddressDetail *string `json:"AddressDetail,omitempty" xml:"AddressDetail,omitempty"`
-	AreaName      *string `json:"AreaName,omitempty" xml:"AreaName,omitempty"`
-	CityName      *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
-	ProvinceName  *string `json:"ProvinceName,omitempty" xml:"ProvinceName,omitempty"`
-	TownName      *string `json:"TownName,omitempty" xml:"TownName,omitempty"`
+	// The district where the consignee is located.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xihu
+	AreaName *string `json:"AreaName,omitempty" xml:"AreaName,omitempty"`
+	// The city where the consignee is located.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hangzhou
+	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	// The province where the consignee is located.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// zhejiang
+	ProvinceName *string `json:"ProvinceName,omitempty" xml:"ProvinceName,omitempty"`
+	// The street where the consignee is located.
+	//
+	// example:
+	//
+	// XX Street
+	TownName *string `json:"TownName,omitempty" xml:"TownName,omitempty"`
 }
 
 func (s CreatePickUpWaybillRequestConsigneeAddress) String() string {
@@ -1939,9 +3101,24 @@ func (s *CreatePickUpWaybillRequestConsigneeAddress) SetTownName(v string) *Crea
 }
 
 type CreatePickUpWaybillRequestGoodsInfos struct {
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The item name.
+	//
+	// example:
+	//
+	// zhang
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The item quantity.
+	//
+	// example:
+	//
+	// 1
 	Quantity *string `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	Weight   *string `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// The item weight. Unit: gram.
+	//
+	// example:
+	//
+	// 1000
+	Weight *string `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s CreatePickUpWaybillRequestGoodsInfos) String() string {
@@ -1968,11 +3145,44 @@ func (s *CreatePickUpWaybillRequestGoodsInfos) SetWeight(v string) *CreatePickUp
 }
 
 type CreatePickUpWaybillRequestSendAddress struct {
+	// The detailed address of the sender.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// XX community
 	AddressDetail *string `json:"AddressDetail,omitempty" xml:"AddressDetail,omitempty"`
-	AreaName      *string `json:"AreaName,omitempty" xml:"AreaName,omitempty"`
-	CityName      *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
-	ProvinceName  *string `json:"ProvinceName,omitempty" xml:"ProvinceName,omitempty"`
-	TownName      *string `json:"TownName,omitempty" xml:"TownName,omitempty"`
+	// The district where the sender is located.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// wenjiang
+	AreaName *string `json:"AreaName,omitempty" xml:"AreaName,omitempty"`
+	// The city where the sender is located.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chengdu
+	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	// The province where the sender is located.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Sichuan
+	ProvinceName *string `json:"ProvinceName,omitempty" xml:"ProvinceName,omitempty"`
+	// The street where the sender is located.
+	//
+	// example:
+	//
+	// XX Street
+	TownName *string `json:"TownName,omitempty" xml:"TownName,omitempty"`
 }
 
 func (s CreatePickUpWaybillRequestSendAddress) String() string {
@@ -2009,22 +3219,118 @@ func (s *CreatePickUpWaybillRequestSendAddress) SetTownName(v string) *CreatePic
 }
 
 type CreatePickUpWaybillShrinkRequest struct {
-	AppointGotEndTime      *string `json:"AppointGotEndTime,omitempty" xml:"AppointGotEndTime,omitempty"`
-	AppointGotStartTime    *string `json:"AppointGotStartTime,omitempty" xml:"AppointGotStartTime,omitempty"`
-	BizType                *int32  `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// The end time of the door-to-door pickup in the appointment. The value of **AppointGotEndTime*	- is the value of **EndTime*	- of **AppointTimes*	- in **CpTimeSelectList*	- returned by the [CreatePickUpWaybillPreQuery](~~CreatePickUpWaybillPreQuery~~#resultMapping) operation.
+	//
+	// >  This parameter is required when **BizType*	- is set to **1**.
+	//
+	// example:
+	//
+	// 2021-01-01 12:00:00
+	AppointGotEndTime *string `json:"AppointGotEndTime,omitempty" xml:"AppointGotEndTime,omitempty"`
+	// The start time of the door-to-door pickup in the appointment. The value of **AppointGotStartTime*	- is the value of **StartTime*	- of **AppointTimes*	- in **CpTimeSelectList*	- returned by the [CreatePickUpWaybillPreQuery](~~CreatePickUpWaybillPreQuery~~#resultMapping) operation.
+	//
+	// >  This parameter is required when **BizType*	- is set to **1**.
+	//
+	// example:
+	//
+	// 2021-01-01 10:00:00
+	AppointGotStartTime *string `json:"AppointGotStartTime,omitempty" xml:"AppointGotStartTime,omitempty"`
+	// The pickup mode. Valid values:
+	//
+	// 	- **0*	- (default): real-time order.
+	//
+	// 	- **1**: appointment order.
+	//
+	// example:
+	//
+	// 0
+	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// The address of the consignee.
+	//
+	// This parameter is required.
 	ConsigneeAddressShrink *string `json:"ConsigneeAddress,omitempty" xml:"ConsigneeAddress,omitempty"`
-	ConsigneeMobile        *string `json:"ConsigneeMobile,omitempty" xml:"ConsigneeMobile,omitempty"`
-	ConsigneeName          *string `json:"ConsigneeName,omitempty" xml:"ConsigneeName,omitempty"`
-	ConsigneePhone         *string `json:"ConsigneePhone,omitempty" xml:"ConsigneePhone,omitempty"`
-	CpCode                 *string `json:"CpCode,omitempty" xml:"CpCode,omitempty"`
-	GoodsInfosShrink       *string `json:"GoodsInfos,omitempty" xml:"GoodsInfos,omitempty"`
-	OrderChannels          *string `json:"OrderChannels,omitempty" xml:"OrderChannels,omitempty"`
-	OuterOrderCode         *string `json:"OuterOrderCode,omitempty" xml:"OuterOrderCode,omitempty"`
-	Remark                 *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	SendAddressShrink      *string `json:"SendAddress,omitempty" xml:"SendAddress,omitempty"`
-	SendMobile             *string `json:"SendMobile,omitempty" xml:"SendMobile,omitempty"`
-	SendName               *string `json:"SendName,omitempty" xml:"SendName,omitempty"`
-	SendPhone              *string `json:"SendPhone,omitempty" xml:"SendPhone,omitempty"`
+	// The mobile phone number of the consignee.
+	//
+	// >  Either ConsigneeMobile or ConsigneePhone must be set.
+	//
+	// example:
+	//
+	// 1580000****
+	ConsigneeMobile *string `json:"ConsigneeMobile,omitempty" xml:"ConsigneeMobile,omitempty"`
+	// The name of the consignee.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Li
+	ConsigneeName *string `json:"ConsigneeName,omitempty" xml:"ConsigneeName,omitempty"`
+	// The landline phone number of the consignee.
+	//
+	// >  Either ConsigneeMobile or ConsigneePhone must be set.
+	//
+	// example:
+	//
+	// 0570000****
+	ConsigneePhone *string `json:"ConsigneePhone,omitempty" xml:"ConsigneePhone,omitempty"`
+	// The code of the courier company.
+	//
+	// example:
+	//
+	// YTO
+	CpCode *string `json:"CpCode,omitempty" xml:"CpCode,omitempty"`
+	// The items.
+	GoodsInfosShrink *string `json:"GoodsInfos,omitempty" xml:"GoodsInfos,omitempty"`
+	// The external channel sources.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// YUN_DIAN_SHANG
+	OrderChannels *string `json:"OrderChannels,omitempty" xml:"OrderChannels,omitempty"`
+	// The ID of the external order.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 143234234266****
+	OuterOrderCode *string `json:"OuterOrderCode,omitempty" xml:"OuterOrderCode,omitempty"`
+	// The additional information about the order. The additional information will be printed on the order.
+	//
+	// example:
+	//
+	// fragile
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The address of the sender.
+	//
+	// This parameter is required.
+	SendAddressShrink *string `json:"SendAddress,omitempty" xml:"SendAddress,omitempty"`
+	// The mobile phone number of the sender.
+	//
+	// >  Either SendMobile or SendPhone must be set.
+	//
+	// example:
+	//
+	// 1596714****
+	SendMobile *string `json:"SendMobile,omitempty" xml:"SendMobile,omitempty"`
+	// The name of the sender.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Wang
+	SendName *string `json:"SendName,omitempty" xml:"SendName,omitempty"`
+	// The landline phone number of the sender.
+	//
+	// >  Either SendMobile or SendPhone must be set.
+	//
+	// example:
+	//
+	// 05718845****
+	SendPhone *string `json:"SendPhone,omitempty" xml:"SendPhone,omitempty"`
 }
 
 func (s CreatePickUpWaybillShrinkRequest) String() string {
@@ -2116,10 +3422,26 @@ func (s *CreatePickUpWaybillShrinkRequest) SetSendPhone(v string) *CreatePickUpW
 }
 
 type CreatePickUpWaybillResponseBody struct {
-	Data           *CreatePickUpWaybillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode *int32                               `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned data.
+	Data *CreatePickUpWaybillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 9FC30594-3841-43AD-9008-03393BCB5CD2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreatePickUpWaybillResponseBody) String() string {
@@ -2151,12 +3473,42 @@ func (s *CreatePickUpWaybillResponseBody) SetRequestId(v string) *CreatePickUpWa
 }
 
 type CreatePickUpWaybillResponseBodyData struct {
-	CpCode    *string `json:"CpCode,omitempty" xml:"CpCode,omitempty"`
+	// The code of the courier company.
+	//
+	// example:
+	//
+	// YTO
+	CpCode *string `json:"CpCode,omitempty" xml:"CpCode,omitempty"`
+	// The error code.
+	//
+	// example:
+	//
+	// 200
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	GotCode   *string `json:"GotCode,omitempty" xml:"GotCode,omitempty"`
-	MailNo    *string `json:"MailNo,omitempty" xml:"MailNo,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// none
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// The pickup code.
+	//
+	// example:
+	//
+	// 3524
+	GotCode *string `json:"GotCode,omitempty" xml:"GotCode,omitempty"`
+	// The order ID.
+	//
+	// example:
+	//
+	// 77312345629****
+	MailNo *string `json:"MailNo,omitempty" xml:"MailNo,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreatePickUpWaybillResponseBodyData) String() string {
@@ -2198,9 +3550,9 @@ func (s *CreatePickUpWaybillResponseBodyData) SetSuccess(v string) *CreatePickUp
 }
 
 type CreatePickUpWaybillResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreatePickUpWaybillResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreatePickUpWaybillResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreatePickUpWaybillResponse) String() string {
@@ -2227,12 +3579,42 @@ func (s *CreatePickUpWaybillResponse) SetBody(v *CreatePickUpWaybillResponseBody
 }
 
 type CreatePickUpWaybillPreQueryRequest struct {
-	ConsigneeInfo  *CreatePickUpWaybillPreQueryRequestConsigneeInfo `json:"ConsigneeInfo,omitempty" xml:"ConsigneeInfo,omitempty" type:"Struct"`
-	CpCode         *string                                          `json:"CpCode,omitempty" xml:"CpCode,omitempty"`
-	OrderChannels  *string                                          `json:"OrderChannels,omitempty" xml:"OrderChannels,omitempty"`
-	OuterOrderCode *string                                          `json:"OuterOrderCode,omitempty" xml:"OuterOrderCode,omitempty"`
-	PreWeight      *string                                          `json:"PreWeight,omitempty" xml:"PreWeight,omitempty"`
-	SenderInfo     *CreatePickUpWaybillPreQueryRequestSenderInfo    `json:"SenderInfo,omitempty" xml:"SenderInfo,omitempty" type:"Struct"`
+	// The consignee information.
+	//
+	// This parameter is required.
+	ConsigneeInfo *CreatePickUpWaybillPreQueryRequestConsigneeInfo `json:"ConsigneeInfo,omitempty" xml:"ConsigneeInfo,omitempty" type:"Struct"`
+	// The code of the courier company. If no courier company is specified, the system allocates a courier company.
+	//
+	// example:
+	//
+	// YTO
+	CpCode *string `json:"CpCode,omitempty" xml:"CpCode,omitempty"`
+	// The identifier of the external channel source. It cannot contain underscores.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Test
+	OrderChannels *string `json:"OrderChannels,omitempty" xml:"OrderChannels,omitempty"`
+	// The order number of the access system.
+	//
+	// example:
+	//
+	// 787DFHHDS989****
+	OuterOrderCode *string `json:"OuterOrderCode,omitempty" xml:"OuterOrderCode,omitempty"`
+	// The estimated weight. Unit: gram.
+	//
+	// >  If you need to query the estimated price, this parameter is required.
+	//
+	// example:
+	//
+	// 2000
+	PreWeight *string `json:"PreWeight,omitempty" xml:"PreWeight,omitempty"`
+	// The sender information.
+	//
+	// This parameter is required.
+	SenderInfo *CreatePickUpWaybillPreQueryRequestSenderInfo `json:"SenderInfo,omitempty" xml:"SenderInfo,omitempty" type:"Struct"`
 }
 
 func (s CreatePickUpWaybillPreQueryRequest) String() string {
@@ -2274,9 +3656,24 @@ func (s *CreatePickUpWaybillPreQueryRequest) SetSenderInfo(v *CreatePickUpWaybil
 }
 
 type CreatePickUpWaybillPreQueryRequestConsigneeInfo struct {
+	// The address of the consignee.
 	AddressInfo *CreatePickUpWaybillPreQueryRequestConsigneeInfoAddressInfo `json:"AddressInfo,omitempty" xml:"AddressInfo,omitempty" type:"Struct"`
-	Mobile      *string                                                     `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	Name        *string                                                     `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The mobile phone number of the consignee.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1390000****
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// The name of the consignee.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Li
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s CreatePickUpWaybillPreQueryRequestConsigneeInfo) String() string {
@@ -2303,11 +3700,36 @@ func (s *CreatePickUpWaybillPreQueryRequestConsigneeInfo) SetName(v string) *Cre
 }
 
 type CreatePickUpWaybillPreQueryRequestConsigneeInfoAddressInfo struct {
+	// The detailed address of the consignee.
+	//
+	// example:
+	//
+	// XX community
 	AddressDetail *string `json:"AddressDetail,omitempty" xml:"AddressDetail,omitempty"`
-	AreaName      *string `json:"AreaName,omitempty" xml:"AreaName,omitempty"`
-	CityName      *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
-	ProvinceName  *string `json:"ProvinceName,omitempty" xml:"ProvinceName,omitempty"`
-	TownName      *string `json:"TownName,omitempty" xml:"TownName,omitempty"`
+	// The district where the consignee is located.
+	//
+	// example:
+	//
+	// chang,an
+	AreaName *string `json:"AreaName,omitempty" xml:"AreaName,omitempty"`
+	// The city where the consignee is located.
+	//
+	// example:
+	//
+	// Xi,an
+	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	// The province where the consignee is located.
+	//
+	// example:
+	//
+	// Shanxi
+	ProvinceName *string `json:"ProvinceName,omitempty" xml:"ProvinceName,omitempty"`
+	// The street where the consignee is located.
+	//
+	// example:
+	//
+	// XX Street
+	TownName *string `json:"TownName,omitempty" xml:"TownName,omitempty"`
 }
 
 func (s CreatePickUpWaybillPreQueryRequestConsigneeInfoAddressInfo) String() string {
@@ -2344,9 +3766,24 @@ func (s *CreatePickUpWaybillPreQueryRequestConsigneeInfoAddressInfo) SetTownName
 }
 
 type CreatePickUpWaybillPreQueryRequestSenderInfo struct {
+	// The address of the sender.
 	AddressInfo *CreatePickUpWaybillPreQueryRequestSenderInfoAddressInfo `json:"AddressInfo,omitempty" xml:"AddressInfo,omitempty" type:"Struct"`
-	Mobile      *string                                                  `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	Name        *string                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The mobile phone number of the sender.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1390000****
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// The name of the sender.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Wang
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s CreatePickUpWaybillPreQueryRequestSenderInfo) String() string {
@@ -2373,11 +3810,36 @@ func (s *CreatePickUpWaybillPreQueryRequestSenderInfo) SetName(v string) *Create
 }
 
 type CreatePickUpWaybillPreQueryRequestSenderInfoAddressInfo struct {
+	// The detailed address of the sender.
+	//
+	// example:
+	//
+	// XX community
 	AddressDetail *string `json:"AddressDetail,omitempty" xml:"AddressDetail,omitempty"`
-	AreaName      *string `json:"AreaName,omitempty" xml:"AreaName,omitempty"`
-	CityName      *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
-	ProvinceName  *string `json:"ProvinceName,omitempty" xml:"ProvinceName,omitempty"`
-	TownName      *string `json:"TownName,omitempty" xml:"TownName,omitempty"`
+	// The district where the sender is located.
+	//
+	// example:
+	//
+	// xihu
+	AreaName *string `json:"AreaName,omitempty" xml:"AreaName,omitempty"`
+	// The city where the sender is located.
+	//
+	// example:
+	//
+	// hangzhou
+	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
+	// The province where the sender is located.
+	//
+	// example:
+	//
+	// zhejiang
+	ProvinceName *string `json:"ProvinceName,omitempty" xml:"ProvinceName,omitempty"`
+	// The street where the sender is located.
+	//
+	// example:
+	//
+	// XX Street
+	TownName *string `json:"TownName,omitempty" xml:"TownName,omitempty"`
 }
 
 func (s CreatePickUpWaybillPreQueryRequestSenderInfoAddressInfo) String() string {
@@ -2414,12 +3876,42 @@ func (s *CreatePickUpWaybillPreQueryRequestSenderInfoAddressInfo) SetTownName(v 
 }
 
 type CreatePickUpWaybillPreQueryShrinkRequest struct {
+	// The consignee information.
+	//
+	// This parameter is required.
 	ConsigneeInfoShrink *string `json:"ConsigneeInfo,omitempty" xml:"ConsigneeInfo,omitempty"`
-	CpCode              *string `json:"CpCode,omitempty" xml:"CpCode,omitempty"`
-	OrderChannels       *string `json:"OrderChannels,omitempty" xml:"OrderChannels,omitempty"`
-	OuterOrderCode      *string `json:"OuterOrderCode,omitempty" xml:"OuterOrderCode,omitempty"`
-	PreWeight           *string `json:"PreWeight,omitempty" xml:"PreWeight,omitempty"`
-	SenderInfoShrink    *string `json:"SenderInfo,omitempty" xml:"SenderInfo,omitempty"`
+	// The code of the courier company. If no courier company is specified, the system allocates a courier company.
+	//
+	// example:
+	//
+	// YTO
+	CpCode *string `json:"CpCode,omitempty" xml:"CpCode,omitempty"`
+	// The identifier of the external channel source. It cannot contain underscores.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Test
+	OrderChannels *string `json:"OrderChannels,omitempty" xml:"OrderChannels,omitempty"`
+	// The order number of the access system.
+	//
+	// example:
+	//
+	// 787DFHHDS989****
+	OuterOrderCode *string `json:"OuterOrderCode,omitempty" xml:"OuterOrderCode,omitempty"`
+	// The estimated weight. Unit: gram.
+	//
+	// >  If you need to query the estimated price, this parameter is required.
+	//
+	// example:
+	//
+	// 2000
+	PreWeight *string `json:"PreWeight,omitempty" xml:"PreWeight,omitempty"`
+	// The sender information.
+	//
+	// This parameter is required.
+	SenderInfoShrink *string `json:"SenderInfo,omitempty" xml:"SenderInfo,omitempty"`
 }
 
 func (s CreatePickUpWaybillPreQueryShrinkRequest) String() string {
@@ -2461,10 +3953,26 @@ func (s *CreatePickUpWaybillPreQueryShrinkRequest) SetSenderInfoShrink(v string)
 }
 
 type CreatePickUpWaybillPreQueryResponseBody struct {
-	Data           *CreatePickUpWaybillPreQueryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode *int32                                       `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result set.
+	Data *CreatePickUpWaybillPreQueryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 9FC30594-3841-43AD-9008-03393BCB5CD2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreatePickUpWaybillPreQueryResponseBody) String() string {
@@ -2496,12 +4004,38 @@ func (s *CreatePickUpWaybillPreQueryResponseBody) SetRequestId(v string) *Create
 }
 
 type CreatePickUpWaybillPreQueryResponseBodyData struct {
-	Code             *string                                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response code.
+	//
+	// example:
+	//
+	// 0
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about whether the courier company can accept the order.
 	CpTimeSelectList []*CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectList `json:"CpTimeSelectList,omitempty" xml:"CpTimeSelectList,omitempty" type:"Repeated"`
-	ErrorCode        *string                                                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMsg         *string                                                        `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	Message          *string                                                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	Success          *bool                                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code.
+	//
+	// example:
+	//
+	// Success
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// none
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// The response content.
+	//
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreatePickUpWaybillPreQueryResponseBodyData) String() string {
@@ -2543,9 +4077,16 @@ func (s *CreatePickUpWaybillPreQueryResponseBodyData) SetSuccess(v bool) *Create
 }
 
 type CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectList struct {
+	// The available time for the scheduled pickup. If the current courier company cannot accept the scheduled pickup, this field is left empty.
 	AppointTimes []*CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListAppointTimes `json:"AppointTimes,omitempty" xml:"AppointTimes,omitempty" type:"Repeated"`
-	PrePrice     *string                                                                    `json:"PrePrice,omitempty" xml:"PrePrice,omitempty"`
-	RealTime     *CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListRealTime       `json:"RealTime,omitempty" xml:"RealTime,omitempty" type:"Struct"`
+	// The estimated price. Unit: CNY. The value is accurate to two decimal places. The value of this parameter is displayed if an estimated weight is specified.
+	//
+	// example:
+	//
+	// 12.50
+	PrePrice *string `json:"PrePrice,omitempty" xml:"PrePrice,omitempty"`
+	// The information about whether the real-time order can be selected.
+	RealTime *CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListRealTime `json:"RealTime,omitempty" xml:"RealTime,omitempty" type:"Struct"`
 }
 
 func (s CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectList) String() string {
@@ -2572,9 +4113,20 @@ func (s *CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectList) SetRealTim
 }
 
 type CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListAppointTimes struct {
-	Date           *string                                                                            `json:"Date,omitempty" xml:"Date,omitempty"`
-	DateSelectable *bool                                                                              `json:"DateSelectable,omitempty" xml:"DateSelectable,omitempty"`
-	TimeList       []*CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListAppointTimesTimeList `json:"TimeList,omitempty" xml:"TimeList,omitempty" type:"Repeated"`
+	// The date in the YYYY-MM-DD format.
+	//
+	// example:
+	//
+	// 2022-04-28
+	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	// Indicates whether the date is selectable.
+	//
+	// example:
+	//
+	// true
+	DateSelectable *bool `json:"DateSelectable,omitempty" xml:"DateSelectable,omitempty"`
+	// The time range for the scheduled pickup for this date.
+	TimeList []*CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListAppointTimesTimeList `json:"TimeList,omitempty" xml:"TimeList,omitempty" type:"Repeated"`
 }
 
 func (s CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListAppointTimes) String() string {
@@ -2601,10 +4153,30 @@ func (s *CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListAppointTimes
 }
 
 type CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListAppointTimesTimeList struct {
-	EndTime          *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The end of the time range.
+	//
+	// example:
+	//
+	// 12:00:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The tip displayed when the scheduled pickup is not available.
+	//
+	// example:
+	//
+	// Appointment Full
 	SelectDisableTip *string `json:"SelectDisableTip,omitempty" xml:"SelectDisableTip,omitempty"`
-	Selectable       *bool   `json:"Selectable,omitempty" xml:"Selectable,omitempty"`
-	StartTime        *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Indicates whether the time range can be selected for the scheduled pickup.
+	//
+	// example:
+	//
+	// true
+	Selectable *bool `json:"Selectable,omitempty" xml:"Selectable,omitempty"`
+	// The beginning of the time range.
+	//
+	// example:
+	//
+	// 10:00:00
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListAppointTimesTimeList) String() string {
@@ -2636,9 +4208,24 @@ func (s *CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListAppointTimes
 }
 
 type CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListRealTime struct {
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the real-time order type.
+	//
+	// example:
+	//
+	// Aliyun
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The tip displayed when the real-time order cannot be placed.
+	//
+	// example:
+	//
+	// Exceeding the real-time ordering time range.
 	SelectDisableTip *string `json:"SelectDisableTip,omitempty" xml:"SelectDisableTip,omitempty"`
-	Selectable       *bool   `json:"Selectable,omitempty" xml:"Selectable,omitempty"`
+	// Indicates whether the real-time order can be placed after the deadline for placing a real-time order is reached.
+	//
+	// example:
+	//
+	// false
+	Selectable *bool `json:"Selectable,omitempty" xml:"Selectable,omitempty"`
 }
 
 func (s CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListRealTime) String() string {
@@ -2665,9 +4252,9 @@ func (s *CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListRealTime) Se
 }
 
 type CreatePickUpWaybillPreQueryResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreatePickUpWaybillPreQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreatePickUpWaybillPreQueryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreatePickUpWaybillPreQueryResponse) String() string {
@@ -2694,8 +4281,18 @@ func (s *CreatePickUpWaybillPreQueryResponse) SetBody(v *CreatePickUpWaybillPreQ
 }
 
 type DeleteAxgGroupRequest struct {
-	GroupId              *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FC2235****
 	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -2735,8 +4332,17 @@ func (s *DeleteAxgGroupRequest) SetResourceOwnerId(v int64) *DeleteAxgGroupReque
 }
 
 type DeleteAxgGroupResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 9297B722-A016-43FB-B51A-E54050D9369D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2764,9 +4370,9 @@ func (s *DeleteAxgGroupResponseBody) SetRequestId(v string) *DeleteAxgGroupRespo
 }
 
 type DeleteAxgGroupResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAxgGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAxgGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteAxgGroupResponse) String() string {
@@ -2793,10 +4399,59 @@ func (s *DeleteAxgGroupResponse) SetBody(v *DeleteAxgGroupResponseBody) *DeleteA
 }
 
 type DeleteSecretBlacklistRequest struct {
-	BlackNo    *string `json:"BlackNo,omitempty" xml:"BlackNo,omitempty"`
-	BlackType  *string `json:"BlackType,omitempty" xml:"BlackType,omitempty"`
-	PoolKey    *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
-	Remark     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The phone numbers in the blacklist. A point-to-point blacklist has a pair of numbers separated by a colon (":"). A number pool blacklist or a platform blacklist has only one single number.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 18252***383:18252***483
+	BlackNo *string `json:"BlackNo,omitempty" xml:"BlackNo,omitempty"`
+	// The blacklist type. Valid values:
+	//
+	// 	- **POINT_TO_POINT_BLACK**: point-to-point blacklist
+	//
+	// 	- **PARTNER_GLOBAL_NUMBER_BLACK**: number pool blacklist
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// POINT_TO_POINT_BLACK
+	BlackType *string `json:"BlackType,omitempty" xml:"BlackType,omitempty"`
+	// The key of the phone number pool. Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management*	- page.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FC1232****
+	PoolKey *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
+	// The remarks for the blacklist.
+	//
+	// example:
+	//
+	// fragile
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The control on the call direction.
+	//
+	// 	- **PHONEA_REJECT**: The first phone number in the blacklist can be used to call the second phone number, but the second phone number in the blacklist cannot be used to call the first phone number.
+	//
+	// 	- **PHONEB_REJECT**: The first phone number in the blacklist cannot be used to call the second phone number, but the second phone number in the blacklist can be used to call the first phone number.
+	//
+	// 	- If this parameter is not specified, the two phone numbers in the blacklist cannot be used to call each other.
+	//
+	// Valid values:
+	//
+	// 	- DUPLEX_REJECT
+	//
+	// 	- PHONEA_REJECT
+	//
+	// 	- PHONEB_REJECT
+	//
+	// example:
+	//
+	// PHONEA_REJECT
 	WayControl *string `json:"WayControl,omitempty" xml:"WayControl,omitempty"`
 }
 
@@ -2834,8 +4489,27 @@ func (s *DeleteSecretBlacklistRequest) SetWayControl(v string) *DeleteSecretBlac
 }
 
 type DeleteSecretBlacklistResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- Other status codes indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// F655A8D5-B967-440B-8683-DAD6FF8DE990
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2863,9 +4537,9 @@ func (s *DeleteSecretBlacklistResponseBody) SetRequestId(v string) *DeleteSecret
 }
 
 type DeleteSecretBlacklistResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteSecretBlacklistResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteSecretBlacklistResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteSecretBlacklistResponse) String() string {
@@ -2892,9 +4566,36 @@ func (s *DeleteSecretBlacklistResponse) SetBody(v *DeleteSecretBlacklistResponse
 }
 
 type GetSecretAsrDetailRequest struct {
-	CallId   *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// The ID of the call record.
+	//
+	// You can log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view **Call Record ID*	- on the **Call Record Query*	- page.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 225625****
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// The call initiation time in the call record.
+	//
+	// You can log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account). View **Call Initiated At*	- on the **Call Record Query*	- page, or view the call_time field in the Call Detail Record (CDR) receipt.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2019-03-05 12:00:00
 	CallTime *string `json:"CallTime,omitempty" xml:"CallTime,omitempty"`
-	PoolKey  *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
+	// The key of the phone number pool.
+	//
+	// You can log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management*	- page.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FC2267****
+	PoolKey *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
 }
 
 func (s GetSecretAsrDetailRequest) String() string {
@@ -2921,10 +4622,26 @@ func (s *GetSecretAsrDetailRequest) SetPoolKey(v string) *GetSecretAsrDetailRequ
 }
 
 type GetSecretAsrDetailResponseBody struct {
-	Code      *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetSecretAsrDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code.
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ASR details.
+	Data *GetSecretAsrDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// F655A8D5-B967-440B-8683-DAD6FF8DE990
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetSecretAsrDetailResponseBody) String() string {
@@ -2956,14 +4673,50 @@ func (s *GetSecretAsrDetailResponseBody) SetRequestId(v string) *GetSecretAsrDet
 }
 
 type GetSecretAsrDetailResponseBodyData struct {
-	BizDuration *int64                                         `json:"BizDuration,omitempty" xml:"BizDuration,omitempty"`
-	BusinessId  *string                                        `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
-	BusinessKey *string                                        `json:"BusinessKey,omitempty" xml:"BusinessKey,omitempty"`
-	Code        *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Msg         *string                                        `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	RequestId   *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Sentences   []*GetSecretAsrDetailResponseBodyDataSentences `json:"Sentences,omitempty" xml:"Sentences,omitempty" type:"Repeated"`
-	Type        *string                                        `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The total duration of the audio file that was recognized. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 10944
+	BizDuration *int64 `json:"BizDuration,omitempty" xml:"BizDuration,omitempty"`
+	// The ID of the business process.
+	//
+	// example:
+	//
+	// 435ee78c7a019650@!FC100000074672458@!2020061522****
+	BusinessId *string `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
+	// The business keyword.
+	//
+	// example:
+	//
+	// JCGTncltuNao****
+	BusinessKey *string `json:"BusinessKey,omitempty" xml:"BusinessKey,omitempty"`
+	// The status code. The status code 21050000 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 21050000
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// SUCCESS
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 8d2329d407a83447a83be441681f4872ac74nE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ASR result.
+	Sentences []*GetSecretAsrDetailResponseBodyDataSentences `json:"Sentences,omitempty" xml:"Sentences,omitempty" type:"Repeated"`
+	// The type.
+	//
+	// example:
+	//
+	// asrResult
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetSecretAsrDetailResponseBodyData) String() string {
@@ -3015,13 +4768,48 @@ func (s *GetSecretAsrDetailResponseBodyData) SetType(v string) *GetSecretAsrDeta
 }
 
 type GetSecretAsrDetailResponseBodyDataSentences struct {
-	BeginTime       *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	ChannelId       *int32  `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	EmotionValue    *string `json:"EmotionValue,omitempty" xml:"EmotionValue,omitempty"`
-	EndTime         *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	SilenceDuration *int64  `json:"SilenceDuration,omitempty" xml:"SilenceDuration,omitempty"`
-	SpeechRate      *int32  `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
-	Text            *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The start time offset of the sentence. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1020
+	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// The ID of the audio track to which the sentence belongs.
+	//
+	// example:
+	//
+	// 0
+	ChannelId *int32 `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The emotion value. Value range: 1 to 10. The higher the value, the stronger the emotion.
+	//
+	// example:
+	//
+	// 5.7
+	EmotionValue *string `json:"EmotionValue,omitempty" xml:"EmotionValue,omitempty"`
+	// The end time offset of the sentence. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1770
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The silence duration between the current sentence and the previous sentence. Unit: seconds.
+	//
+	// example:
+	//
+	// 0
+	SilenceDuration *int64 `json:"SilenceDuration,omitempty" xml:"SilenceDuration,omitempty"`
+	// The average speech rate of the sentence. Unit: number of words per minute.
+	//
+	// example:
+	//
+	// 80
+	SpeechRate *int32 `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	// The recognition result of the sentence.
+	//
+	// example:
+	//
+	// Hello
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
 func (s GetSecretAsrDetailResponseBodyDataSentences) String() string {
@@ -3068,9 +4856,9 @@ func (s *GetSecretAsrDetailResponseBodyDataSentences) SetText(v string) *GetSecr
 }
 
 type GetSecretAsrDetailResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetSecretAsrDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSecretAsrDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSecretAsrDetailResponse) String() string {
@@ -3097,10 +4885,42 @@ func (s *GetSecretAsrDetailResponse) SetBody(v *GetSecretAsrDetailResponseBody) 
 }
 
 type GetTotalPublicUrlRequest struct {
-	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	CallTime             *string `json:"CallTime,omitempty" xml:"CallTime,omitempty"`
-	CheckSubs            *bool   `json:"CheckSubs,omitempty" xml:"CheckSubs,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the call record.
+	//
+	// Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view **Call Record ID*	- on the **Call Record Query*	- page.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2568900****
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// The call initiation time in the call record.
+	//
+	// Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account). View **Call Initiated At*	- on the **Call Record Query*	- page, or view the call_time field in the Call Detail Record (CDR) receipt.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2019-03-05 12:00:00
+	CallTime *string `json:"CallTime,omitempty" xml:"CallTime,omitempty"`
+	// Specifies whether the verification on the binding ID is required.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	CheckSubs *bool  `json:"CheckSubs,omitempty" xml:"CheckSubs,omitempty"`
+	OwnerId   *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The key of the phone number pool. Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management*	- page.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FC12256****
 	PartnerKey           *string `json:"PartnerKey,omitempty" xml:"PartnerKey,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -3150,10 +4970,30 @@ func (s *GetTotalPublicUrlRequest) SetResourceOwnerId(v int64) *GetTotalPublicUr
 }
 
 type GetTotalPublicUrlResponseBody struct {
-	Code      *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetTotalPublicUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- Other status codes indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The download URLs of the recording files.
+	Data *GetTotalPublicUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 1AB3CEF7-DCBE-488C-9C33-D180982CE031
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetTotalPublicUrlResponseBody) String() string {
@@ -3185,8 +5025,22 @@ func (s *GetTotalPublicUrlResponseBody) SetRequestId(v string) *GetTotalPublicUr
 }
 
 type GetTotalPublicUrlResponseBodyData struct {
+	// The download URL of the recorded call.
+	//
+	// >  The download URL of the recorded call is valid for 30 days.
+	//
+	// example:
+	//
+	// http://secret-axb-reco****cn-shanghai.aliyuncs.com/1000000820257625_66647243838006067251551752068865.mp3?Expires=1551****07&OSSAccessKeyId=LTAIP00vvvv****v&Signature=tK6Yq9KusU4n%2BZQWX****4/WmEA%3D
 	PhonePublicUrl *string `json:"PhonePublicUrl,omitempty" xml:"PhonePublicUrl,omitempty"`
-	RingPublicUrl  *string `json:"RingPublicUrl,omitempty" xml:"RingPublicUrl,omitempty"`
+	// The download URL of the recorded ringing tone.
+	//
+	// >  The download URL of the recorded ringing tone is valid for 30 days.
+	//
+	// example:
+	//
+	// http://secret-ab-reco****cn-shanghai.aliyuncs.com/1000000820257625_66647243838006067251551752068865.mp3?Expires=155175****&OSSAccessKeyId=LTAIP00vvv****vv&Signature=tK6Yq9KusU4n%2BZQW****g4/WmEA%3D
+	RingPublicUrl *string `json:"RingPublicUrl,omitempty" xml:"RingPublicUrl,omitempty"`
 }
 
 func (s GetTotalPublicUrlResponseBodyData) String() string {
@@ -3208,9 +5062,9 @@ func (s *GetTotalPublicUrlResponseBodyData) SetRingPublicUrl(v string) *GetTotal
 }
 
 type GetTotalPublicUrlResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTotalPublicUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTotalPublicUrlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTotalPublicUrlResponse) String() string {
@@ -3237,11 +5091,27 @@ func (s *GetTotalPublicUrlResponse) SetBody(v *GetTotalPublicUrlResponseBody) *G
 }
 
 type LockSecretNoRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The key of the phone number pool.
+	//
+	// Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management*	- page.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FC123****
 	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecretNo             *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
+	// The private number that you want to lock. You must enter a complete mobile phone number.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1300000****
+	SecretNo *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
 }
 
 func (s LockSecretNoRequest) String() string {
@@ -3278,8 +5148,27 @@ func (s *LockSecretNoRequest) SetSecretNo(v string) *LockSecretNoRequest {
 }
 
 type LockSecretNoResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- Other status codes indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 2D1AEB96-96D0-454E-B0DC-AE2A8DF08020
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3307,9 +5196,9 @@ func (s *LockSecretNoResponseBody) SetRequestId(v string) *LockSecretNoResponseB
 }
 
 type LockSecretNoResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *LockSecretNoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *LockSecretNoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s LockSecretNoResponse) String() string {
@@ -3336,10 +5225,58 @@ func (s *LockSecretNoResponse) SetBody(v *LockSecretNoResponseBody) *LockSecretN
 }
 
 type OperateAxgGroupRequest struct {
-	GroupId              *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Numbers              *string `json:"Numbers,omitempty" xml:"Numbers,omitempty"`
-	OperateType          *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The group ID in the AXG binding.
+	//
+	// You can view the group ID by using either of the following methods:
+	//
+	// 	- On the **Number Pool Management*	- page in the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account), filter AXG private numbers and click **Number Group G Management*	- to view the group IDs of number groups G.****
+	//
+	// 	- If the [CreateAxgGroup](https://help.aliyun.com/document_detail/110250.html) operation is called to create number group G, the value of **GroupId*	- in the response of the CreateAxgGroup operation is specified as the value of the request parameter **GroupId*	- of the OperateAxgGroup operation.
+	//
+	// >  Number group G must have one or more phone numbers.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The phone numbers that you add to number group G. Separate the phone numbers with commas (,). You can add up to 200 phone numbers at a time.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1390000****,1380000****
+	Numbers *string `json:"Numbers,omitempty" xml:"Numbers,omitempty"`
+	// The type of the operation on number group G. Valid values:
+	//
+	// 	- **addNumbers**: adds phone numbers to number group G.
+	//
+	// 	- **deleteNumbers**: deletes phone numbers from number group G.
+	//
+	// 	- **overwriteNumbers**: replaces all phone numbers in number group G. All the original phone numbers are deleted from number group G, and new phone numbers are added to number group G.
+	//
+	// >
+	//
+	// 	- When you replace all phone numbers in number group G, the quantity of original phone numbers in number group G cannot exceed 200.
+	//
+	// 	- You can add up to 200 phone numbers to number group G at a time.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// addNumbers
+	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The key of the phone number pool. Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management*	- page.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FC123456
 	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -3389,8 +5326,27 @@ func (s *OperateAxgGroupRequest) SetResourceOwnerId(v int64) *OperateAxgGroupReq
 }
 
 type OperateAxgGroupResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 986BCB6D-C9BF-42F9-91CE-3A9901233D36
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3418,9 +5374,9 @@ func (s *OperateAxgGroupResponseBody) SetRequestId(v string) *OperateAxgGroupRes
 }
 
 type OperateAxgGroupResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *OperateAxgGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *OperateAxgGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s OperateAxgGroupResponse) String() string {
@@ -3447,13 +5403,43 @@ func (s *OperateAxgGroupResponse) SetBody(v *OperateAxgGroupResponseBody) *Opera
 }
 
 type OperateBlackNoRequest struct {
-	BlackNo              *string `json:"BlackNo,omitempty" xml:"BlackNo,omitempty"`
-	OperateType          *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The phone number to be added to or deleted from the blacklist.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 150****0000
+	BlackNo *string `json:"BlackNo,omitempty" xml:"BlackNo,omitempty"`
+	// The type of the operation on the phone number. Valid values:
+	//
+	// 	- **AddBlack**: adds the phone number to the blacklist.
+	//
+	// 	- **DeleteBlack**: deletes the phone number from the blacklist.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AddBlack
+	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The key of the phone number pool. Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management*	- page.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FC123456****
 	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Tips                 *string `json:"Tips,omitempty" xml:"Tips,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// abcdef
+	Tips *string `json:"Tips,omitempty" xml:"Tips,omitempty"`
 }
 
 func (s OperateBlackNoRequest) String() string {
@@ -3500,8 +5486,27 @@ func (s *OperateBlackNoRequest) SetTips(v string) *OperateBlackNoRequest {
 }
 
 type OperateBlackNoResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- Other status codes indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 2D1AEB96-96D0-454E-B0DC-AE2A8DF08020
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3529,9 +5534,9 @@ func (s *OperateBlackNoResponseBody) SetRequestId(v string) *OperateBlackNoRespo
 }
 
 type OperateBlackNoResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *OperateBlackNoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *OperateBlackNoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s OperateBlackNoResponse) String() string {
@@ -3558,12 +5563,29 @@ func (s *OperateBlackNoResponse) SetBody(v *OperateBlackNoResponseBody) *Operate
 }
 
 type QueryPhoneNoAByTrackNoRequest struct {
-	CabinetNo            *string `json:"CabinetNo,omitempty" xml:"CabinetNo,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The cabinet number.
+	//
+	// example:
+	//
+	// 25689****
+	CabinetNo *string `json:"CabinetNo,omitempty" xml:"CabinetNo,omitempty"`
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Phone number X returned by the API operation for creating a binding.
+	//
+	// example:
+	//
+	// 1710000****
 	PhoneNoX             *string `json:"PhoneNoX,omitempty" xml:"PhoneNoX,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TrackNo              *string `json:"trackNo,omitempty" xml:"trackNo,omitempty"`
+	// The tracking number.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 22573****
+	TrackNo *string `json:"trackNo,omitempty" xml:"trackNo,omitempty"`
 }
 
 func (s QueryPhoneNoAByTrackNoRequest) String() string {
@@ -3605,10 +5627,30 @@ func (s *QueryPhoneNoAByTrackNoRequest) SetTrackNo(v string) *QueryPhoneNoAByTra
 }
 
 type QueryPhoneNoAByTrackNoResponseBody struct {
-	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	Module    []*QueryPhoneNoAByTrackNoResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Repeated"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- Other status codes indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The information returned after the phone numbers were bound.
+	Module []*QueryPhoneNoAByTrackNoResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 8906582E-6722
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryPhoneNoAByTrackNoResponseBody) String() string {
@@ -3640,9 +5682,24 @@ func (s *QueryPhoneNoAByTrackNoResponseBody) SetRequestId(v string) *QueryPhoneN
 }
 
 type QueryPhoneNoAByTrackNoResponseBodyModule struct {
+	// The extension of phone number X.
+	//
+	// example:
+	//
+	// 130
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	PhoneNoA  *string `json:"PhoneNoA,omitempty" xml:"PhoneNoA,omitempty"`
-	PhoneNoX  *string `json:"PhoneNoX,omitempty" xml:"PhoneNoX,omitempty"`
+	// Phone number A.
+	//
+	// example:
+	//
+	// 1310000****
+	PhoneNoA *string `json:"PhoneNoA,omitempty" xml:"PhoneNoA,omitempty"`
+	// The private number, that is, phone number X.
+	//
+	// example:
+	//
+	// 1710000****
+	PhoneNoX *string `json:"PhoneNoX,omitempty" xml:"PhoneNoX,omitempty"`
 }
 
 func (s QueryPhoneNoAByTrackNoResponseBodyModule) String() string {
@@ -3669,9 +5726,9 @@ func (s *QueryPhoneNoAByTrackNoResponseBodyModule) SetPhoneNoX(v string) *QueryP
 }
 
 type QueryPhoneNoAByTrackNoResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryPhoneNoAByTrackNoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryPhoneNoAByTrackNoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryPhoneNoAByTrackNoResponse) String() string {
@@ -3698,10 +5755,48 @@ func (s *QueryPhoneNoAByTrackNoResponse) SetBody(v *QueryPhoneNoAByTrackNoRespon
 }
 
 type QueryRecordFileDownloadUrlRequest struct {
-	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	CallTime             *string `json:"CallTime,omitempty" xml:"CallTime,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
+	// The ID of the call record. Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view **Call Record ID*	- on the **Call Record Query*	- page.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// abcedf1234
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// The call initiation time in the call record. Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account). View **Call Initiated At*	- on the **Call Record Query*	- page, or view the call_time field in the Call Detail Record (CDR) receipt.
+	//
+	// example:
+	//
+	// 2019-03-05 12:00:00
+	CallTime *string `json:"CallTime,omitempty" xml:"CallTime,omitempty"`
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The key of the phone number pool. Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management*	- page.
+	//
+	// >  This parameter is required when **ProductType*	- is left empty.
+	//
+	// example:
+	//
+	// FC123456
+	PoolKey *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
+	// The product type. Valid values:
+	//
+	// 	- **AXB_170**.
+	//
+	// 	- **AXN_170**.
+	//
+	// 	- **AXN_95**.
+	//
+	// 	- **AXN_EXTENSION_REUSE**
+	//
+	// >
+	//
+	// 	- This parameter is applicable to the original key accounts of Alibaba Cloud. This parameter can be ignored for Alibaba Cloud users.
+	//
+	// 	- This parameter is required when **PoolKey*	- is left empty.
+	//
+	// example:
+	//
+	// AXB_170
 	ProductType          *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -3751,10 +5846,34 @@ func (s *QueryRecordFileDownloadUrlRequest) SetResourceOwnerId(v int64) *QueryRe
 }
 
 type QueryRecordFileDownloadUrlResponseBody struct {
-	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- Other status codes indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The download URL of the recording file. The download URL is valid for 2 hours.
+	//
+	// example:
+	//
+	// http://secret-axb-reco****cn-shanghai.aliyuncs.com/1000000820257625_66647243838006067251551752068865.mp3?Expires=155175****&OSSAccessKeyId=LTAIP00vvvv****v&Signature=tK6Yq9KusU4n%2BZ****7lg4/WmEA%3D
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 1AB3CEF7-DCBE-488C-9C33-D180982CE031
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryRecordFileDownloadUrlResponseBody) String() string {
@@ -3786,9 +5905,9 @@ func (s *QueryRecordFileDownloadUrlResponseBody) SetRequestId(v string) *QueryRe
 }
 
 type QueryRecordFileDownloadUrlResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryRecordFileDownloadUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryRecordFileDownloadUrlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryRecordFileDownloadUrlResponse) String() string {
@@ -3815,11 +5934,27 @@ func (s *QueryRecordFileDownloadUrlResponse) SetBody(v *QueryRecordFileDownloadU
 }
 
 type QuerySecretNoDetailRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The key of the phone number pool.
+	//
+	// Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management*	- page.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FC2258****
 	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecretNo             *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
+	// The private number.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1390000****
+	SecretNo *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
 }
 
 func (s QuerySecretNoDetailRequest) String() string {
@@ -3856,9 +5991,29 @@ func (s *QuerySecretNoDetailRequest) SetSecretNo(v string) *QuerySecretNoDetailR
 }
 
 type QuerySecretNoDetailResponseBody struct {
-	Code            *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message         *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId       *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- Other status codes indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 066E6E47-04CB-4774-A976-4F73CB76D4A3
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The attributes of the phone number.
 	SecretNoInfoDTO *QuerySecretNoDetailResponseBodySecretNoInfoDTO `json:"SecretNoInfoDTO,omitempty" xml:"SecretNoInfoDTO,omitempty" type:"Struct"`
 }
 
@@ -3891,12 +6046,60 @@ func (s *QuerySecretNoDetailResponseBody) SetSecretNoInfoDTO(v *QuerySecretNoDet
 }
 
 type QuerySecretNoDetailResponseBodySecretNoInfoDTO struct {
-	CertifyStatus *int32  `json:"CertifyStatus,omitempty" xml:"CertifyStatus,omitempty"`
-	City          *string `json:"City,omitempty" xml:"City,omitempty"`
-	Province      *string `json:"Province,omitempty" xml:"Province,omitempty"`
-	PurchaseTime  *string `json:"PurchaseTime,omitempty" xml:"PurchaseTime,omitempty"`
-	SecretStatus  *int64  `json:"SecretStatus,omitempty" xml:"SecretStatus,omitempty"`
-	Vendor        *int64  `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	// The verification status of the phone number. Valid values:
+	//
+	// 	- **0**: The phone number is not verified.
+	//
+	// 	- **1**: The phone number is verified.
+	//
+	// example:
+	//
+	// 0
+	CertifyStatus *int32 `json:"CertifyStatus,omitempty" xml:"CertifyStatus,omitempty"`
+	// The city.
+	//
+	// example:
+	//
+	// chengdu
+	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// The province.
+	//
+	// example:
+	//
+	// sichuan
+	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	// The time when the phone number was purchased.
+	//
+	// example:
+	//
+	// 2021-12-03 15:19:27
+	PurchaseTime *string `json:"PurchaseTime,omitempty" xml:"PurchaseTime,omitempty"`
+	// The status of the phone number. Valid values:
+	//
+	// 	- **0**: The phone number is not bound to other phone numbers.
+	//
+	// 	- **1**: The phone number is bound to other phone numbers.
+	//
+	// 	- **2**: The phone number is locked.
+	//
+	// 	- **3**: The phone number is frozen.
+	//
+	// example:
+	//
+	// 0
+	SecretStatus *int64 `json:"SecretStatus,omitempty" xml:"SecretStatus,omitempty"`
+	// The carrier to which the phone number belongs. Valid values:
+	//
+	// 	- **1**: China Mobile
+	//
+	// 	- **2**: China Unicom
+	//
+	// 	- **3**: China Telecom
+	//
+	// example:
+	//
+	// 1
+	Vendor *int64 `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s QuerySecretNoDetailResponseBodySecretNoInfoDTO) String() string {
@@ -3938,9 +6141,9 @@ func (s *QuerySecretNoDetailResponseBodySecretNoInfoDTO) SetVendor(v int64) *Que
 }
 
 type QuerySecretNoDetailResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QuerySecretNoDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QuerySecretNoDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QuerySecretNoDetailResponse) String() string {
@@ -3967,12 +6170,51 @@ func (s *QuerySecretNoDetailResponse) SetBody(v *QuerySecretNoDetailResponseBody
 }
 
 type QuerySecretNoRemainRequest struct {
+	// The home location of the phone number.
+	//
+	// 	- If **SpecId*	- is set to 1 or 2, you can specify the **City*	- parameter to query the quantity of available phone numbers.
+	//
+	// 1.  You can enter a single city name to perform a query.
+	//
+	// 2.  You can enter National to query the quantity of remaining phone numbers available in the Chinese mainland for online purchase.
+	//
+	// 3.  You can enter National List to query the cities with available phone numbers and the quantities of remaining phone numbers in the Chinese mainland. Cities without available phone numbers will not be returned.
+	//
+	// 	- If **SpecId*	- is set to 3, home locations are not distinguished for phone numbers that start with 95 and only the quantity of all the remaining phone numbers that start with 95 and are available for online purchase can be queried. If SpecId is set to 3, **City*	- must be set to **Nationwide**.
+	//
+	// >  Home locations can be set to only locations in the Chinese mainland.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hangzhou
 	City                 *string `json:"City,omitempty" xml:"City,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecretNo             *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
-	SpecId               *int64  `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
+	// The prefix of the phone number. When you call the QuerySecretNoRemain operation with **SecretNo*	- specified, the quantity of remaining phone numbers with the specified prefix that are available for online purchase is queried.
+	//
+	// Up to 18 digits of a phone number prefix can be specified.
+	//
+	// example:
+	//
+	// 130
+	SecretNo *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
+	// The type of the phone number. Valid values:
+	//
+	// 	- **1**: a phone number assigned by a virtual network operator, that is, a phone number that belongs to the 170 or 171 number segment.
+	//
+	// 	- **2**: a phone number provided by a carrier.
+	//
+	// 	- **3**: a phone number that starts with 95.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	SpecId *int64 `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
 }
 
 func (s QuerySecretNoRemainRequest) String() string {
@@ -4014,9 +6256,29 @@ func (s *QuerySecretNoRemainRequest) SetSpecId(v int64) *QuerySecretNoRemainRequ
 }
 
 type QuerySecretNoRemainResponseBody struct {
-	Code            *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message         *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId       *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- Other status codes indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 9FC30594-3841-43AD-9008-03393BCB5CD2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information returned after the operation was called.
 	SecretRemainDTO *QuerySecretNoRemainResponseBodySecretRemainDTO `json:"SecretRemainDTO,omitempty" xml:"SecretRemainDTO,omitempty" type:"Struct"`
 }
 
@@ -4049,8 +6311,19 @@ func (s *QuerySecretNoRemainResponseBody) SetSecretRemainDTO(v *QuerySecretNoRem
 }
 
 type QuerySecretNoRemainResponseBodySecretRemainDTO struct {
-	Amount        *int64                                                       `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	City          *string                                                      `json:"City,omitempty" xml:"City,omitempty"`
+	// The quantity of remaining phone numbers available for online purchase.
+	//
+	// example:
+	//
+	// 0
+	Amount *int64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The home location of the phone numbers.
+	//
+	// example:
+	//
+	// hangzhou
+	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// The information about remaining phone numbers available for online purchase.
 	RemainDTOList *QuerySecretNoRemainResponseBodySecretRemainDTORemainDTOList `json:"RemainDTOList,omitempty" xml:"RemainDTOList,omitempty" type:"Struct"`
 }
 
@@ -4095,8 +6368,18 @@ func (s *QuerySecretNoRemainResponseBodySecretRemainDTORemainDTOList) SetRemainD
 }
 
 type QuerySecretNoRemainResponseBodySecretRemainDTORemainDTOListRemainDTO struct {
-	Amount *int64  `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	City   *string `json:"City,omitempty" xml:"City,omitempty"`
+	// The quantity of remaining phone numbers available for online purchase for the city.
+	//
+	// example:
+	//
+	// 120
+	Amount *int64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// The home location of the phone numbers.
+	//
+	// example:
+	//
+	// Wuhan
+	City *string `json:"City,omitempty" xml:"City,omitempty"`
 }
 
 func (s QuerySecretNoRemainResponseBodySecretRemainDTORemainDTOListRemainDTO) String() string {
@@ -4118,9 +6401,9 @@ func (s *QuerySecretNoRemainResponseBodySecretRemainDTORemainDTOListRemainDTO) S
 }
 
 type QuerySecretNoRemainResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QuerySecretNoRemainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QuerySecretNoRemainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QuerySecretNoRemainResponse) String() string {
@@ -4147,8 +6430,22 @@ func (s *QuerySecretNoRemainResponse) SetBody(v *QuerySecretNoRemainResponseBody
 }
 
 type QuerySubsIdRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PhoneNoX             *string `json:"PhoneNoX,omitempty" xml:"PhoneNoX,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The private number in the binding, that is, phone number X.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1390000****
+	PhoneNoX *string `json:"PhoneNoX,omitempty" xml:"PhoneNoX,omitempty"`
+	// The key of the phone number pool.
+	//
+	// Log on to the [Phone Number Protection console](https://dyplsnext.console.aliyun.com/overview) and view the key of the phone number pool on the Number Pool Management page.
+	//
+	// example:
+	//
+	// FC123456
 	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -4188,10 +6485,30 @@ func (s *QuerySubsIdRequest) SetResourceOwnerId(v int64) *QuerySubsIdRequest {
 }
 
 type QuerySubsIdResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code. The value OK indicates that the request was successful.
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// E7F99446-8191-43C0-99B5-F58A6AEAD779
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SubsId    *string `json:"SubsId,omitempty" xml:"SubsId,omitempty"`
+	// The binding ID.
+	//
+	// example:
+	//
+	// 11111111****
+	SubsId *string `json:"SubsId,omitempty" xml:"SubsId,omitempty"`
 }
 
 func (s QuerySubsIdResponseBody) String() string {
@@ -4223,9 +6540,9 @@ func (s *QuerySubsIdResponseBody) SetSubsId(v string) *QuerySubsIdResponseBody {
 }
 
 type QuerySubsIdResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QuerySubsIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QuerySubsIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QuerySubsIdResponse) String() string {
@@ -4252,13 +6569,55 @@ func (s *QuerySubsIdResponse) SetBody(v *QuerySubsIdResponseBody) *QuerySubsIdRe
 }
 
 type QuerySubscriptionDetailRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PhoneNoX             *string `json:"PhoneNoX,omitempty" xml:"PhoneNoX,omitempty"`
-	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The private number in the binding, that is, phone number X.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 13900001234
+	PhoneNoX *string `json:"PhoneNoX,omitempty" xml:"PhoneNoX,omitempty"`
+	// The key of the phone number pool. Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management*	- page.
+	//
+	// >  This parameter is required when **ProductType*	- is left empty.
+	//
+	// example:
+	//
+	// FC123456
+	PoolKey *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
+	// The product type. Valid values:
+	//
+	// 	- **AXB_170**
+	//
+	// 	- **AXN_170**
+	//
+	// 	- **AXN_95**
+	//
+	// 	- **AXN_EXTENSION_REUSE**
+	//
+	// >
+	//
+	// 	- This parameter is applicable to the original key accounts of Alibaba Cloud. This parameter can be ignored for Alibaba Cloud users.
+	//
+	// 	- This parameter is required when **PoolKey*	- is left empty.
+	//
+	// example:
+	//
+	// AXB_170
 	ProductType          *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SubsId               *string `json:"SubsId,omitempty" xml:"SubsId,omitempty"`
+	// The binding ID.
+	//
+	// Log on to the Phone Number Protection console, choose **Number and Number Pool*	- > **Number Management**. On the Number Management page, select the desired record and click Details to view the binding ID. Alternatively, you can view the value of the **SubsId*	- parameter returned by an API operation for a phone number binding such as [BindAxb](https://help.aliyun.com/document_detail/110248.html). The value of this parameter indicates a binding ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100000076879****
+	SubsId *string `json:"SubsId,omitempty" xml:"SubsId,omitempty"`
 }
 
 func (s QuerySubscriptionDetailRequest) String() string {
@@ -4305,9 +6664,29 @@ func (s *QuerySubscriptionDetailRequest) SetSubsId(v string) *QuerySubscriptionD
 }
 
 type QuerySubscriptionDetailResponseBody struct {
-	Code                *string                                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message             *string                                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId           *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- Other status codes indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 066E6E47-04CB-4774-A976-4F73CB76D4A3
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information returned after the QuerySubscriptionDetail operation was called.
 	SecretBindDetailDTO *QuerySubscriptionDetailResponseBodySecretBindDetailDTO `json:"SecretBindDetailDTO,omitempty" xml:"SecretBindDetailDTO,omitempty" type:"Struct"`
 }
 
@@ -4340,19 +6719,100 @@ func (s *QuerySubscriptionDetailResponseBody) SetSecretBindDetailDTO(v *QuerySub
 }
 
 type QuerySubscriptionDetailResponseBodySecretBindDetailDTO struct {
-	ASRModelId   *string `json:"ASRModelId,omitempty" xml:"ASRModelId,omitempty"`
-	ASRStatus    *bool   `json:"ASRStatus,omitempty" xml:"ASRStatus,omitempty"`
+	// The ID of the ASR model.
+	//
+	// example:
+	//
+	// 123456
+	ASRModelId *string `json:"ASRModelId,omitempty" xml:"ASRModelId,omitempty"`
+	// Indicates whether automatic speech recognition (ASR) is enabled. Valid values:
+	//
+	// 	- **false**: ASR is disabled.
+	//
+	// 	- **true**: ASR is enabled.
+	//
+	// example:
+	//
+	// true
+	ASRStatus *bool `json:"ASRStatus,omitempty" xml:"ASRStatus,omitempty"`
+	// The status of one-way call restrictions. No value is returned for this parameter if one-way call restrictions are not set. Valid values:
+	//
+	// 	- **CONTROL_AX_DISABLE**: Phone number A cannot be used to call phone number X.
+	//
+	// 	- **CONTROL_BX_DISABLE**: Phone number B cannot be used to call phone number X.
+	//
+	// example:
+	//
+	// CONTROL_BX_DISABLE
 	CallRestrict *string `json:"CallRestrict,omitempty" xml:"CallRestrict,omitempty"`
-	ExpireDate   *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
-	Extension    *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	GmtCreate    *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GroupId      *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	NeedRecord   *bool   `json:"NeedRecord,omitempty" xml:"NeedRecord,omitempty"`
-	PhoneNoA     *string `json:"PhoneNoA,omitempty" xml:"PhoneNoA,omitempty"`
-	PhoneNoB     *string `json:"PhoneNoB,omitempty" xml:"PhoneNoB,omitempty"`
-	PhoneNoX     *string `json:"PhoneNoX,omitempty" xml:"PhoneNoX,omitempty"`
-	Status       *int64  `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubsId       *string `json:"SubsId,omitempty" xml:"SubsId,omitempty"`
+	// The expiration time of the binding.
+	//
+	// example:
+	//
+	// 2019-09-05 12:00:00
+	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	// The extension in the AXG extension binding.
+	//
+	// example:
+	//
+	// 130
+	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// The creation time of the binding.
+	//
+	// example:
+	//
+	// 2019-03-05 12:00:00
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The ID of number group G in the binding.
+	//
+	// example:
+	//
+	// 2000000130001
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Indicates whether all calls made by the bound phone numbers are recorded. Valid values:
+	//
+	// 	- **false**
+	//
+	// 	- **true**
+	//
+	// example:
+	//
+	// true
+	NeedRecord *bool `json:"NeedRecord,omitempty" xml:"NeedRecord,omitempty"`
+	// Phone number A in the binding.
+	//
+	// example:
+	//
+	// 13900001111
+	PhoneNoA *string `json:"PhoneNoA,omitempty" xml:"PhoneNoA,omitempty"`
+	// Phone number B in the binding.
+	//
+	// example:
+	//
+	// 13900002222
+	PhoneNoB *string `json:"PhoneNoB,omitempty" xml:"PhoneNoB,omitempty"`
+	// The private number in the binding, that is, phone number X.
+	//
+	// example:
+	//
+	// 13900001234
+	PhoneNoX *string `json:"PhoneNoX,omitempty" xml:"PhoneNoX,omitempty"`
+	// The binding status. Valid values:
+	//
+	// 	- **0**: The binding expired.
+	//
+	// 	- **1**: The binding is in effect.
+	//
+	// example:
+	//
+	// 1
+	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The binding ID.
+	//
+	// example:
+	//
+	// 100000076879****
+	SubsId *string `json:"SubsId,omitempty" xml:"SubsId,omitempty"`
 }
 
 func (s QuerySubscriptionDetailResponseBodySecretBindDetailDTO) String() string {
@@ -4429,9 +6889,9 @@ func (s *QuerySubscriptionDetailResponseBodySecretBindDetailDTO) SetSubsId(v str
 }
 
 type QuerySubscriptionDetailResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QuerySubscriptionDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QuerySubscriptionDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QuerySubscriptionDetailResponse) String() string {
@@ -4458,11 +6918,27 @@ func (s *QuerySubscriptionDetailResponse) SetBody(v *QuerySubscriptionDetailResp
 }
 
 type ReleaseSecretNoRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The key of the phone number pool. Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management*	- page.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FC123456
 	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecretNo             *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
+	// The prefix of phone numbers. When you call the ReleaseSecretNo operation with **SecretNo*	- specified, the system performs fuzzy matching against phone numbers based on the prefix.
+	//
+	// >  Up to 18 digits of a phone number prefix can be specified.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 130
+	SecretNo *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
 }
 
 func (s ReleaseSecretNoRequest) String() string {
@@ -4499,8 +6975,27 @@ func (s *ReleaseSecretNoRequest) SetSecretNo(v string) *ReleaseSecretNoRequest {
 }
 
 type ReleaseSecretNoResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 986BCB6D-C9BF-42F9-91CE-3A990121232
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4528,9 +7023,9 @@ func (s *ReleaseSecretNoResponseBody) SetRequestId(v string) *ReleaseSecretNoRes
 }
 
 type ReleaseSecretNoResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ReleaseSecretNoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReleaseSecretNoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ReleaseSecretNoResponse) String() string {
@@ -4557,13 +7052,47 @@ func (s *ReleaseSecretNoResponse) SetBody(v *ReleaseSecretNoResponseBody) *Relea
 }
 
 type UnbindSubscriptionRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The key of the phone number pool. Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management*	- page.
+	//
+	// >  This parameter is required when **ProductType*	- is left empty.
+	//
+	// example:
+	//
+	// FC123456
+	PoolKey *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
+	// The product type. Fixed value: **AXB_170**.
+	//
+	// >
+	//
+	// 	- This parameter is applicable to the original key accounts of Alibaba Cloud. This parameter can be ignored for Alibaba Cloud users.
+	//
+	// 	- This parameter is required when **PoolKey*	- is left empty.
+	//
+	// example:
+	//
+	// AXB_170
 	ProductType          *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecretNo             *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
-	SubsId               *string `json:"SubsId,omitempty" xml:"SubsId,omitempty"`
+	// The private number, that is, phone number X specified in an API operation for a phone number binding such as [BindAXG](https://help.aliyun.com/document_detail/110249.html) or automatically assigned after such an operation is called.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1390000****
+	SecretNo *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
+	// The binding ID.
+	//
+	// Log on to the Phone Number Protection console, choose **Number and Number Pool*	- > **Number Management**. On the Number Management page, select the desired record and click Details to view the binding ID. Alternatively, you can view the value of the **SubsId*	- parameter returned by an API operation for a phone number binding such as BindAxb. The value of this parameter indicates a binding ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1************2
+	SubsId *string `json:"SubsId,omitempty" xml:"SubsId,omitempty"`
 }
 
 func (s UnbindSubscriptionRequest) String() string {
@@ -4610,9 +7139,33 @@ func (s *UnbindSubscriptionRequest) SetSubsId(v string) *UnbindSubscriptionReque
 }
 
 type UnbindSubscriptionResponseBody struct {
-	ChargeId  *string `json:"ChargeId,omitempty" xml:"ChargeId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A deprecated parameter.
+	//
+	// example:
+	//
+	// true
+	ChargeId *string `json:"ChargeId,omitempty" xml:"ChargeId,omitempty"`
+	// The response code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 986BCB6D-C9BF-42F9-91CE-3A9901233D36
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4645,9 +7198,9 @@ func (s *UnbindSubscriptionResponseBody) SetRequestId(v string) *UnbindSubscript
 }
 
 type UnbindSubscriptionResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UnbindSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnbindSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UnbindSubscriptionResponse) String() string {
@@ -4674,11 +7227,27 @@ func (s *UnbindSubscriptionResponse) SetBody(v *UnbindSubscriptionResponseBody) 
 }
 
 type UnlockSecretNoRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The key of the phone number pool.
+	//
+	// Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management*	- page.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FC2256****
 	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecretNo             *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
+	// The private number that you want to unlock. You must enter a complete mobile phone number.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1300000****
+	SecretNo *string `json:"SecretNo,omitempty" xml:"SecretNo,omitempty"`
 }
 
 func (s UnlockSecretNoRequest) String() string {
@@ -4715,8 +7284,27 @@ func (s *UnlockSecretNoRequest) SetSecretNo(v string) *UnlockSecretNoRequest {
 }
 
 type UnlockSecretNoResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- Other status codes indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 2D1AEB96-96D0-454E-B0DC-AE2A8DF08020
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4744,9 +7332,9 @@ func (s *UnlockSecretNoResponseBody) SetRequestId(v string) *UnlockSecretNoRespo
 }
 
 type UnlockSecretNoResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UnlockSecretNoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnlockSecretNoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UnlockSecretNoResponse) String() string {
@@ -4773,25 +7361,201 @@ func (s *UnlockSecretNoResponse) SetBody(v *UnlockSecretNoResponseBody) *UnlockS
 }
 
 type UpdateSubscriptionRequest struct {
-	ASRModelId           *string `json:"ASRModelId,omitempty" xml:"ASRModelId,omitempty"`
-	ASRStatus            *bool   `json:"ASRStatus,omitempty" xml:"ASRStatus,omitempty"`
-	CallDisplayType      *int32  `json:"CallDisplayType,omitempty" xml:"CallDisplayType,omitempty"`
-	CallRestrict         *string `json:"CallRestrict,omitempty" xml:"CallRestrict,omitempty"`
-	Expiration           *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
-	GroupId              *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	IsRecordingEnabled   *bool   `json:"IsRecordingEnabled,omitempty" xml:"IsRecordingEnabled,omitempty"`
-	OperateType          *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
-	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PhoneNoA             *string `json:"PhoneNoA,omitempty" xml:"PhoneNoA,omitempty"`
-	PhoneNoB             *string `json:"PhoneNoB,omitempty" xml:"PhoneNoB,omitempty"`
-	PhoneNoX             *string `json:"PhoneNoX,omitempty" xml:"PhoneNoX,omitempty"`
-	PoolKey              *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
+	// The ID of the ASR model.
+	//
+	// example:
+	//
+	// 980abddb908f48e8b987cb2cd303****
+	ASRModelId *string `json:"ASRModelId,omitempty" xml:"ASRModelId,omitempty"`
+	// Specifies whether to enable automatic speech recognition (ASR). Valid values:
+	//
+	// 	- **false*	- (default): disables ASR.
+	//
+	// 	- **true**: enables ASR.
+	//
+	// example:
+	//
+	// false
+	ASRStatus *bool `json:"ASRStatus,omitempty" xml:"ASRStatus,omitempty"`
+	// Re-sets the phone number display logic in the phone number binding. Fixed value: **1**, indicating that phone number X is displayed on both the calling phone and the called phone.
+	//
+	// >  Due to the regulatory restrictions imposed by carriers, the setting to display real phone numbers during calls does not take effect.
+	//
+	// example:
+	//
+	// 1
+	CallDisplayType *int32 `json:"CallDisplayType,omitempty" xml:"CallDisplayType,omitempty"`
+	// One-way call restrictions. Valid values:
+	//
+	// 	- **CONTROL_AX_DISABLE**: Phone number A cannot be used to call phone number X.
+	//
+	// 	- **CONTROL_BX_DISABLE**: Phone number B cannot be used to call phone number X.
+	//
+	// 	- **CONTROL_CLEAR_DISABLE**: The call restrictions are cleared.
+	//
+	// >  This parameter is required when **OperateType*	- is set to **updateCallRestrict**.
+	//
+	// example:
+	//
+	// CONTROL_BX_DISABLE
+	CallRestrict *string `json:"CallRestrict,omitempty" xml:"CallRestrict,omitempty"`
+	// Re-sets the expiration time of the phone number binding.
+	//
+	// >
+	//
+	// 	- This parameter is required when **OperateType*	- is set to **updateExpire**.
+	//
+	// 	- The expiration time must be more than 1 minute later than the time when you call this API operation.
+	//
+	// example:
+	//
+	// 2019-09-05 12:00:00
+	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	// The ID of number group G in the phone number binding.
+	//
+	// >  This parameter is required when **OperateType*	- is set to **updateAxgGroup**.
+	//
+	// example:
+	//
+	// 1234
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// Re-sets the recording status in the phone number binding.
+	//
+	// >  This parameter does not have a default value. If you do not specify this parameter, the value of the corresponding field is not updated.
+	//
+	// example:
+	//
+	// true
+	IsRecordingEnabled *bool `json:"IsRecordingEnabled,omitempty" xml:"IsRecordingEnabled,omitempty"`
+	// The operation to modify the phone number binding. Valid values:
+	//
+	// 	- **updateNoA**: modifies phone number A.
+	//
+	// 	- **updateNoB**: modifies phone number B.
+	//
+	// 	- **updateExpire**: modifies the validity period of the binding.
+	//
+	// 	- **updateAxgGroup**: modifies number group G.
+	//
+	// 	- **updateCallRestrict**: modifies one-way call restrictions.
+	//
+	// 	- **updateCallDisplayType**: updates the number display logic for calls.
+	//
+	// 	- **updateOutId**: updates the value of the OutId parameter.
+	//
+	// 	- **updateIsRecordingEnabled**: updates the status of the recording feature in the binding.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// updateNoA
+	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
+	// Re-sets the value of the OutId parameter in the phone number binding.
+	//
+	// example:
+	//
+	// abcdef
+	OutId   *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Phone number A in the phone number binding.
+	//
+	// >  This parameter is required when **OperateType*	- is set to **updateNoA**.
+	//
+	// example:
+	//
+	// 1390000****
+	PhoneNoA *string `json:"PhoneNoA,omitempty" xml:"PhoneNoA,omitempty"`
+	// Phone number B in the phone number binding.
+	//
+	// >  This parameter is required when **OperateType*	- is set to **updateNoB**.
+	//
+	// example:
+	//
+	// 1390000****
+	PhoneNoB *string `json:"PhoneNoB,omitempty" xml:"PhoneNoB,omitempty"`
+	// Phone number X in the phone number binding.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1390000****
+	PhoneNoX *string `json:"PhoneNoX,omitempty" xml:"PhoneNoX,omitempty"`
+	// The key of the phone number pool.
+	//
+	// Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) and view the key of the phone number pool on the **Number Pool Management*	- page.
+	//
+	// >  This parameter is required when **ProductType*	- is left empty.
+	//
+	// example:
+	//
+	// FC122356****
+	PoolKey *string `json:"PoolKey,omitempty" xml:"PoolKey,omitempty"`
+	// The product type. Valid values:
+	//
+	// 	- **AXB_170**
+	//
+	// 	- **AXN_170**
+	//
+	// 	- **AXN_95**
+	//
+	// 	- **AXN_EXTENSION_REUSE**
+	//
+	// >
+	//
+	// 	- This parameter is applicable to the original key accounts of Alibaba Cloud. This parameter can be ignored for Alibaba Cloud users.
+	//
+	// 	- This parameter is required when **PoolKey*	- is left empty.
+	//
+	// example:
+	//
+	// AXB_170
 	ProductType          *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RingConfig           *string `json:"RingConfig,omitempty" xml:"RingConfig,omitempty"`
-	SubsId               *string `json:"SubsId,omitempty" xml:"SubsId,omitempty"`
+	// Updates the ringtone code for enterprise Color Ring Back Tone (CRBT) in the phone number binding.
+	//
+	// AXB product:
+	//
+	// 	- Ringtone setting when phone number A is used to call phone number X in the AXB binding: AXBRing_A
+	//
+	// 	- Ringtone setting when phone number B is used to call phone number X in the AXB binding: AXBRing_B
+	//
+	// AXN product:
+	//
+	// 	- Ringtone setting (with a callback number) when phone number A is used to call phone number X in the AXN extension binding: AXNRing_AB
+	//
+	// 	- Ringtone setting (without a callback number) when phone number A is used to call phone number X in the AXN extension binding: AXNRing_A
+	//
+	// 	- Ringtone setting when phone number N is used to call phone number X in the AXN extension binding: AXNRing_N
+	//
+	// AXG product:
+	//
+	// 	- Ringtone setting (with a callback number) when phone number A is used to call phone number X in the AXG binding: AXGRing_AB
+	//
+	// 	- Ringtone setting (without a callback number) when phone number A is used to call phone number X in the AXG binding: AXGRing_A
+	//
+	// 	- Ringtone setting when a phone number in number group G is used to call phone number X in the AXG binding: AXGRing_G
+	//
+	// Enterprise CRBT codes: Enterprise CRBT codes can be queried in the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account). You can choose **Number Pool Management*	- > **Enterprise CRBT Management*	- to view and manage enterprise CRBT codes. You can also upload, delete, or perform other operations on enterprise CRBT codes.
+	//
+	// >  The bound enterprise CRBTs are preferentially used. If no enterprise CRBT is set or the setting does not take effect, the enterprise CRBTs at the phone number pool level are used.
+	//
+	// example:
+	//
+	// {"AXBRing_B":"100000001","AXBRing_A":"100000001"}
+	RingConfig *string `json:"RingConfig,omitempty" xml:"RingConfig,omitempty"`
+	// The binding ID.
+	//
+	// Log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account), choose **Number and Number Pool*	- > **Number Management**. On the Number Management page, select the desired record and click Details to view the binding ID. Alternatively, you can view the value of the **SubsId*	- parameter returned by an API operation for a phone number binding such as BindAxb. The value of this parameter indicates a binding ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100000076879****
+	SubsId *string `json:"SubsId,omitempty" xml:"SubsId,omitempty"`
 }
 
 func (s UpdateSubscriptionRequest) String() string {
@@ -4898,8 +7662,27 @@ func (s *UpdateSubscriptionRequest) SetSubsId(v string) *UpdateSubscriptionReque
 }
 
 type UpdateSubscriptionResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 986BCB6D-C9BF-42F9-91CE-3A9901233D36
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4927,9 +7710,9 @@ func (s *UpdateSubscriptionResponseBody) SetRequestId(v string) *UpdateSubscript
 }
 
 type UpdateSubscriptionResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateSubscriptionResponse) String() string {
@@ -5003,6 +7786,21 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a tracking number for a private number in the AXN binding.
+//
+// Description:
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - AddAxnTrackNoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddAxnTrackNoResponse
 func (client *Client) AddAxnTrackNoWithOptions(request *AddAxnTrackNoRequest, runtime *util.RuntimeOptions) (_result *AddAxnTrackNoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5060,6 +7858,19 @@ func (client *Client) AddAxnTrackNoWithOptions(request *AddAxnTrackNoRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a tracking number for a private number in the AXN binding.
+//
+// Description:
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - AddAxnTrackNoRequest
+//
+// @return AddAxnTrackNoResponse
 func (client *Client) AddAxnTrackNo(request *AddAxnTrackNoRequest) (_result *AddAxnTrackNoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddAxnTrackNoResponse{}
@@ -5071,6 +7882,21 @@ func (client *Client) AddAxnTrackNo(request *AddAxnTrackNoRequest) (_result *Add
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a blacklist.
+//
+// Description:
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - AddSecretBlacklistRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddSecretBlacklistResponse
 func (client *Client) AddSecretBlacklistWithOptions(request *AddSecretBlacklistRequest, runtime *util.RuntimeOptions) (_result *AddSecretBlacklistResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5120,6 +7946,19 @@ func (client *Client) AddSecretBlacklistWithOptions(request *AddSecretBlacklistR
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a blacklist.
+//
+// Description:
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - AddSecretBlacklistRequest
+//
+// @return AddSecretBlacklistResponse
 func (client *Client) AddSecretBlacklist(request *AddSecretBlacklistRequest) (_result *AddSecretBlacklistResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddSecretBlacklistResponse{}
@@ -5131,6 +7970,23 @@ func (client *Client) AddSecretBlacklist(request *AddSecretBlacklistRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds an AXB binding.
+//
+// Description:
+//
+// Before you add an AXB binding, we recommend that you specify role A and role B in the AXB device certificate (ProductKey, DeviceName, and DeviceSecret) in your business scenario. For example, in a taxi-hailing scenario, role A is the passenger and role B is the driver.
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - BindAxbRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BindAxbResponse
 func (client *Client) BindAxbWithOptions(request *BindAxbRequest, runtime *util.RuntimeOptions) (_result *BindAxbResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5236,6 +8092,21 @@ func (client *Client) BindAxbWithOptions(request *BindAxbRequest, runtime *util.
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds an AXB binding.
+//
+// Description:
+//
+// Before you add an AXB binding, we recommend that you specify role A and role B in the AXB device certificate (ProductKey, DeviceName, and DeviceSecret) in your business scenario. For example, in a taxi-hailing scenario, role A is the passenger and role B is the driver.
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - BindAxbRequest
+//
+// @return BindAxbResponse
 func (client *Client) BindAxb(request *BindAxbRequest) (_result *BindAxbResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BindAxbResponse{}
@@ -5247,6 +8118,23 @@ func (client *Client) BindAxb(request *BindAxbRequest) (_result *BindAxbResponse
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds an AXG binding.
+//
+// Description:
+//
+// An AXG protection solution can be configured to meet the requirements for grading users, limiting the scope of calls, and restricting order snatching. The letter G represents a phone number group to which you can add phone numbers as needed.
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - BindAxgRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BindAxgResponse
 func (client *Client) BindAxgWithOptions(request *BindAxgRequest, runtime *util.RuntimeOptions) (_result *BindAxgResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5348,6 +8236,21 @@ func (client *Client) BindAxgWithOptions(request *BindAxgRequest, runtime *util.
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds an AXG binding.
+//
+// Description:
+//
+// An AXG protection solution can be configured to meet the requirements for grading users, limiting the scope of calls, and restricting order snatching. The letter G represents a phone number group to which you can add phone numbers as needed.
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - BindAxgRequest
+//
+// @return BindAxgResponse
 func (client *Client) BindAxg(request *BindAxgRequest) (_result *BindAxgResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BindAxgResponse{}
@@ -5359,6 +8262,19 @@ func (client *Client) BindAxg(request *BindAxgRequest) (_result *BindAxgResponse
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds an AXN binding.
+//
+// Description:
+//
+// >  An AXN private number is a dedicated private number assigned to phone number A. When an N-side number is used to call phone number X, the call is forwarded to phone number A.
+//
+// @param request - BindAxnRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BindAxnResponse
 func (client *Client) BindAxnWithOptions(request *BindAxnRequest, runtime *util.RuntimeOptions) (_result *BindAxnResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5464,6 +8380,17 @@ func (client *Client) BindAxnWithOptions(request *BindAxnRequest, runtime *util.
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds an AXN binding.
+//
+// Description:
+//
+// >  An AXN private number is a dedicated private number assigned to phone number A. When an N-side number is used to call phone number X, the call is forwarded to phone number A.
+//
+// @param request - BindAxnRequest
+//
+// @return BindAxnResponse
 func (client *Client) BindAxn(request *BindAxnRequest) (_result *BindAxnResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BindAxnResponse{}
@@ -5475,6 +8402,23 @@ func (client *Client) BindAxn(request *BindAxnRequest) (_result *BindAxnResponse
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds an AXN extension binding.
+//
+// Description:
+//
+// Before you add an AXN extension binding, confirm phone number A and phone number N in the business scenario. Phone number A belongs to a customer, and phone number X is the private number assigned to the customer. When any other phone number is used to call phone number X and the extension, the call is transferred to phone number A. When phone number A is used to call phone number X, the call is transferred to the default phone number B that is specified during the phone number binding.
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - BindAxnExtensionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BindAxnExtensionResponse
 func (client *Client) BindAxnExtensionWithOptions(request *BindAxnExtensionRequest, runtime *util.RuntimeOptions) (_result *BindAxnExtensionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5503,6 +8447,10 @@ func (client *Client) BindAxnExtensionWithOptions(request *BindAxnExtensionReque
 
 	if !tea.BoolValue(util.IsUnset(request.Expiration)) {
 		query["Expiration"] = request.Expiration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Extend)) {
+		query["Extend"] = request.Extend
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Extension)) {
@@ -5576,6 +8524,21 @@ func (client *Client) BindAxnExtensionWithOptions(request *BindAxnExtensionReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds an AXN extension binding.
+//
+// Description:
+//
+// Before you add an AXN extension binding, confirm phone number A and phone number N in the business scenario. Phone number A belongs to a customer, and phone number X is the private number assigned to the customer. When any other phone number is used to call phone number X and the extension, the call is transferred to phone number A. When phone number A is used to call phone number X, the call is transferred to the default phone number B that is specified during the phone number binding.
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - BindAxnExtensionRequest
+//
+// @return BindAxnExtensionResponse
 func (client *Client) BindAxnExtension(request *BindAxnExtensionRequest) (_result *BindAxnExtensionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BindAxnExtensionResponse{}
@@ -5587,6 +8550,11 @@ func (client *Client) BindAxnExtension(request *BindAxnExtensionRequest) (_resul
 	return _result, _err
 }
 
+// @param tmpReq - BindBatchAxgRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BindBatchAxgResponse
 func (client *Client) BindBatchAxgWithOptions(tmpReq *BindBatchAxgRequest, runtime *util.RuntimeOptions) (_result *BindBatchAxgResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5642,6 +8610,9 @@ func (client *Client) BindBatchAxgWithOptions(tmpReq *BindBatchAxgRequest, runti
 	return _result, _err
 }
 
+// @param request - BindBatchAxgRequest
+//
+// @return BindBatchAxgResponse
 func (client *Client) BindBatchAxg(request *BindBatchAxgRequest) (_result *BindBatchAxgResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BindBatchAxgResponse{}
@@ -5653,6 +8624,25 @@ func (client *Client) BindBatchAxg(request *BindBatchAxgRequest) (_result *BindB
 	return _result, _err
 }
 
+// Summary:
+//
+// Purchases a phone number.
+//
+// Description:
+//
+//   After you create a phone number pool in the Phone Number Protection console, the phone number pool is empty by default. You must purchase phone numbers and add them to the phone number pool.
+//
+// 	- Before you call this operation, make sure that you are familiar with the [pricing](https://help.aliyun.com/document_detail/59825.html) of Phone Number Protection.
+//
+// 	- When purchasing a phone number, specify the home location. If no sufficient phone numbers are available for purchase in the home location, the purchase of the phone number fails. Before you call this operation to purchase a phone number, check the quantity of phone numbers available for purchase by using the [QuerySecretNoRemain](https://help.aliyun.com/document_detail/111699.html) operation.
+//
+// 	- The account used to purchase a phone number must be an enterprise account that has passed real-name verification. For more information about how to perform real-name verification, see [Enterprise verification FAQs](https://help.aliyun.com/document_detail/37172.html).
+//
+// @param request - BuySecretNoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BuySecretNoResponse
 func (client *Client) BuySecretNoWithOptions(request *BuySecretNoRequest, runtime *util.RuntimeOptions) (_result *BuySecretNoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5714,6 +8704,23 @@ func (client *Client) BuySecretNoWithOptions(request *BuySecretNoRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Purchases a phone number.
+//
+// Description:
+//
+//   After you create a phone number pool in the Phone Number Protection console, the phone number pool is empty by default. You must purchase phone numbers and add them to the phone number pool.
+//
+// 	- Before you call this operation, make sure that you are familiar with the [pricing](https://help.aliyun.com/document_detail/59825.html) of Phone Number Protection.
+//
+// 	- When purchasing a phone number, specify the home location. If no sufficient phone numbers are available for purchase in the home location, the purchase of the phone number fails. Before you call this operation to purchase a phone number, check the quantity of phone numbers available for purchase by using the [QuerySecretNoRemain](https://help.aliyun.com/document_detail/111699.html) operation.
+//
+// 	- The account used to purchase a phone number must be an enterprise account that has passed real-name verification. For more information about how to perform real-name verification, see [Enterprise verification FAQs](https://help.aliyun.com/document_detail/37172.html).
+//
+// @param request - BuySecretNoRequest
+//
+// @return BuySecretNoResponse
 func (client *Client) BuySecretNo(request *BuySecretNoRequest) (_result *BuySecretNoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BuySecretNoResponse{}
@@ -5725,6 +8732,21 @@ func (client *Client) BuySecretNo(request *BuySecretNoRequest) (_result *BuySecr
 	return _result, _err
 }
 
+// Summary:
+//
+// Cancels a door-to-door delivery order.
+//
+// Description:
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - CancelPickUpWaybillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelPickUpWaybillResponse
 func (client *Client) CancelPickUpWaybillWithOptions(request *CancelPickUpWaybillRequest, runtime *util.RuntimeOptions) (_result *CancelPickUpWaybillResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5774,6 +8796,19 @@ func (client *Client) CancelPickUpWaybillWithOptions(request *CancelPickUpWaybil
 	return _result, _err
 }
 
+// Summary:
+//
+// Cancels a door-to-door delivery order.
+//
+// Description:
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - CancelPickUpWaybillRequest
+//
+// @return CancelPickUpWaybillResponse
 func (client *Client) CancelPickUpWaybill(request *CancelPickUpWaybillRequest) (_result *CancelPickUpWaybillResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelPickUpWaybillResponse{}
@@ -5785,6 +8820,21 @@ func (client *Client) CancelPickUpWaybill(request *CancelPickUpWaybillRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates number group G.
+//
+// Description:
+//
+// Before you add an AXG binding, you must purchase phone number X, create number group G, and then add phone numbers to number group G. If you do not add phone numbers to number group G after you create number group G, you can call the [OperateAxgGroup](https://help.aliyun.com/document_detail/110252.htm) operation to add phone numbers to number group G.
+//
+// >  Up to 2,000 number groups G can be added for a single phone number pool.
+//
+// @param request - CreateAxgGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAxgGroupResponse
 func (client *Client) CreateAxgGroupWithOptions(request *CreateAxgGroupRequest, runtime *util.RuntimeOptions) (_result *CreateAxgGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5842,6 +8892,19 @@ func (client *Client) CreateAxgGroupWithOptions(request *CreateAxgGroupRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates number group G.
+//
+// Description:
+//
+// Before you add an AXG binding, you must purchase phone number X, create number group G, and then add phone numbers to number group G. If you do not add phone numbers to number group G after you create number group G, you can call the [OperateAxgGroup](https://help.aliyun.com/document_detail/110252.htm) operation to add phone numbers to number group G.
+//
+// >  Up to 2,000 number groups G can be added for a single phone number pool.
+//
+// @param request - CreateAxgGroupRequest
+//
+// @return CreateAxgGroupResponse
 func (client *Client) CreateAxgGroup(request *CreateAxgGroupRequest) (_result *CreateAxgGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAxgGroupResponse{}
@@ -5853,6 +8916,21 @@ func (client *Client) CreateAxgGroup(request *CreateAxgGroupRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a door-to-door delivery order.
+//
+// Description:
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param tmpReq - CreatePickUpWaybillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePickUpWaybillResponse
 func (client *Client) CreatePickUpWaybillWithOptions(tmpReq *CreatePickUpWaybillRequest, runtime *util.RuntimeOptions) (_result *CreatePickUpWaybillResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5960,6 +9038,19 @@ func (client *Client) CreatePickUpWaybillWithOptions(tmpReq *CreatePickUpWaybill
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a door-to-door delivery order.
+//
+// Description:
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - CreatePickUpWaybillRequest
+//
+// @return CreatePickUpWaybillResponse
 func (client *Client) CreatePickUpWaybill(request *CreatePickUpWaybillRequest) (_result *CreatePickUpWaybillResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreatePickUpWaybillResponse{}
@@ -5971,6 +9062,21 @@ func (client *Client) CreatePickUpWaybill(request *CreatePickUpWaybillRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a pickup order.
+//
+// Description:
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param tmpReq - CreatePickUpWaybillPreQueryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePickUpWaybillPreQueryResponse
 func (client *Client) CreatePickUpWaybillPreQueryWithOptions(tmpReq *CreatePickUpWaybillPreQueryRequest, runtime *util.RuntimeOptions) (_result *CreatePickUpWaybillPreQueryResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -6034,6 +9140,19 @@ func (client *Client) CreatePickUpWaybillPreQueryWithOptions(tmpReq *CreatePickU
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a pickup order.
+//
+// Description:
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - CreatePickUpWaybillPreQueryRequest
+//
+// @return CreatePickUpWaybillPreQueryResponse
 func (client *Client) CreatePickUpWaybillPreQuery(request *CreatePickUpWaybillPreQueryRequest) (_result *CreatePickUpWaybillPreQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreatePickUpWaybillPreQueryResponse{}
@@ -6045,6 +9164,11 @@ func (client *Client) CreatePickUpWaybillPreQuery(request *CreatePickUpWaybillPr
 	return _result, _err
 }
 
+// @param request - DeleteAxgGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAxgGroupResponse
 func (client *Client) DeleteAxgGroupWithOptions(request *DeleteAxgGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteAxgGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6094,6 +9218,9 @@ func (client *Client) DeleteAxgGroupWithOptions(request *DeleteAxgGroupRequest, 
 	return _result, _err
 }
 
+// @param request - DeleteAxgGroupRequest
+//
+// @return DeleteAxgGroupResponse
 func (client *Client) DeleteAxgGroup(request *DeleteAxgGroupRequest) (_result *DeleteAxgGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAxgGroupResponse{}
@@ -6105,6 +9232,21 @@ func (client *Client) DeleteAxgGroup(request *DeleteAxgGroupRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a blacklist.
+//
+// Description:
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DeleteSecretBlacklistRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSecretBlacklistResponse
 func (client *Client) DeleteSecretBlacklistWithOptions(request *DeleteSecretBlacklistRequest, runtime *util.RuntimeOptions) (_result *DeleteSecretBlacklistResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6154,6 +9296,19 @@ func (client *Client) DeleteSecretBlacklistWithOptions(request *DeleteSecretBlac
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a blacklist.
+//
+// Description:
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DeleteSecretBlacklistRequest
+//
+// @return DeleteSecretBlacklistResponse
 func (client *Client) DeleteSecretBlacklist(request *DeleteSecretBlacklistRequest) (_result *DeleteSecretBlacklistResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSecretBlacklistResponse{}
@@ -6165,6 +9320,23 @@ func (client *Client) DeleteSecretBlacklist(request *DeleteSecretBlacklistReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the details of the automatic speech recognition (ASR) result.
+//
+// Description:
+//
+// Before you call the GetSecretAsrDetail operation, set the ASRStatus parameter to true in the [BindAxn operation](https://help.aliyun.com/document_detail/400483.html). This ensures that you can obtain the ASR result properly.
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - GetSecretAsrDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSecretAsrDetailResponse
 func (client *Client) GetSecretAsrDetailWithOptions(request *GetSecretAsrDetailRequest, runtime *util.RuntimeOptions) (_result *GetSecretAsrDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6206,6 +9378,21 @@ func (client *Client) GetSecretAsrDetailWithOptions(request *GetSecretAsrDetailR
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the details of the automatic speech recognition (ASR) result.
+//
+// Description:
+//
+// Before you call the GetSecretAsrDetail operation, set the ASRStatus parameter to true in the [BindAxn operation](https://help.aliyun.com/document_detail/400483.html). This ensures that you can obtain the ASR result properly.
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - GetSecretAsrDetailRequest
+//
+// @return GetSecretAsrDetailResponse
 func (client *Client) GetSecretAsrDetail(request *GetSecretAsrDetailRequest) (_result *GetSecretAsrDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSecretAsrDetailResponse{}
@@ -6217,6 +9404,21 @@ func (client *Client) GetSecretAsrDetail(request *GetSecretAsrDetailRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the download URL of a recorded ringing tone.
+//
+// Description:
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - GetTotalPublicUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTotalPublicUrlResponse
 func (client *Client) GetTotalPublicUrlWithOptions(request *GetTotalPublicUrlRequest, runtime *util.RuntimeOptions) (_result *GetTotalPublicUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6274,6 +9476,19 @@ func (client *Client) GetTotalPublicUrlWithOptions(request *GetTotalPublicUrlReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the download URL of a recorded ringing tone.
+//
+// Description:
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - GetTotalPublicUrlRequest
+//
+// @return GetTotalPublicUrlResponse
 func (client *Client) GetTotalPublicUrl(request *GetTotalPublicUrlRequest) (_result *GetTotalPublicUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTotalPublicUrlResponse{}
@@ -6285,6 +9500,23 @@ func (client *Client) GetTotalPublicUrl(request *GetTotalPublicUrlRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Locks a phone number.
+//
+// Description:
+//
+// After a phone number is locked, the locked phone number cannot be selected when you call an operation to create a binding.
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - LockSecretNoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return LockSecretNoResponse
 func (client *Client) LockSecretNoWithOptions(request *LockSecretNoRequest, runtime *util.RuntimeOptions) (_result *LockSecretNoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6334,6 +9566,21 @@ func (client *Client) LockSecretNoWithOptions(request *LockSecretNoRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Locks a phone number.
+//
+// Description:
+//
+// After a phone number is locked, the locked phone number cannot be selected when you call an operation to create a binding.
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - LockSecretNoRequest
+//
+// @return LockSecretNoResponse
 func (client *Client) LockSecretNo(request *LockSecretNoRequest) (_result *LockSecretNoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &LockSecretNoResponse{}
@@ -6345,6 +9592,23 @@ func (client *Client) LockSecretNo(request *LockSecretNoRequest) (_result *LockS
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies number group G.
+//
+// Description:
+//
+// After you create number group G, you can call the OperateAxgGroup operation to modify number group G. For example, you can add phone numbers to number group G, delete phone numbers from number group G, and replace all phone numbers in number group G.
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - OperateAxgGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OperateAxgGroupResponse
 func (client *Client) OperateAxgGroupWithOptions(request *OperateAxgGroupRequest, runtime *util.RuntimeOptions) (_result *OperateAxgGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6402,6 +9666,21 @@ func (client *Client) OperateAxgGroupWithOptions(request *OperateAxgGroupRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies number group G.
+//
+// Description:
+//
+// After you create number group G, you can call the OperateAxgGroup operation to modify number group G. For example, you can add phone numbers to number group G, delete phone numbers from number group G, and replace all phone numbers in number group G.
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - OperateAxgGroupRequest
+//
+// @return OperateAxgGroupResponse
 func (client *Client) OperateAxgGroup(request *OperateAxgGroupRequest) (_result *OperateAxgGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OperateAxgGroupResponse{}
@@ -6413,6 +9692,23 @@ func (client *Client) OperateAxgGroup(request *OperateAxgGroupRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a phone number to a blacklist or deletes a phone number from a blacklist.
+//
+// Description:
+//
+// The OperateBlackNo operation supports the following number pool types: AXN, AXN extension, and 95AXN.
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - OperateBlackNoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OperateBlackNoResponse
 func (client *Client) OperateBlackNoWithOptions(request *OperateBlackNoRequest, runtime *util.RuntimeOptions) (_result *OperateBlackNoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6470,6 +9766,21 @@ func (client *Client) OperateBlackNoWithOptions(request *OperateBlackNoRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a phone number to a blacklist or deletes a phone number from a blacklist.
+//
+// Description:
+//
+// The OperateBlackNo operation supports the following number pool types: AXN, AXN extension, and 95AXN.
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - OperateBlackNoRequest
+//
+// @return OperateBlackNoResponse
 func (client *Client) OperateBlackNo(request *OperateBlackNoRequest) (_result *OperateBlackNoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OperateBlackNoResponse{}
@@ -6481,6 +9792,21 @@ func (client *Client) OperateBlackNo(request *OperateBlackNoRequest) (_result *O
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details about a tracking number.
+//
+// Description:
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - QueryPhoneNoAByTrackNoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryPhoneNoAByTrackNoResponse
 func (client *Client) QueryPhoneNoAByTrackNoWithOptions(request *QueryPhoneNoAByTrackNoRequest, runtime *util.RuntimeOptions) (_result *QueryPhoneNoAByTrackNoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6534,6 +9860,19 @@ func (client *Client) QueryPhoneNoAByTrackNoWithOptions(request *QueryPhoneNoABy
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details about a tracking number.
+//
+// Description:
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - QueryPhoneNoAByTrackNoRequest
+//
+// @return QueryPhoneNoAByTrackNoResponse
 func (client *Client) QueryPhoneNoAByTrackNo(request *QueryPhoneNoAByTrackNoRequest) (_result *QueryPhoneNoAByTrackNoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryPhoneNoAByTrackNoResponse{}
@@ -6545,6 +9884,35 @@ func (client *Client) QueryPhoneNoAByTrackNo(request *QueryPhoneNoAByTrackNoRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the download URL of a recording file.
+//
+// Description:
+//
+// If the recording feature is enabled for a binding, all calls made by the bound phone numbers are recorded. You can obtain the download URL of a recording file by calling the QueryRecordFileDownloadUrl operation and download the recording file.
+//
+// >  We recommend that you subscribe to [the recording status report SecretRecording](https://help.aliyun.com/document_detail/109198.html). The values of the response parameters in SecretRecording can be used as the values of the request parameters for downloading a recording file.
+//
+// ### [](#)Procedure for obtaining a recording file
+//
+// 1.  Specify the request parameter in an update or binding operation to enable the recording feature.
+//
+// 2.  Subscribe to recording message receipts in the Phone Number Protection console.
+//
+// 3.  After a recording message receipt is returned, call the QueryRecordFileDownloadUrl operation to obtain the download URL of the recording file, and download the recording file.
+//
+// >
+//
+// 	- A download URL is valid for 2 hours. Download the recording file as soon as possible after obtaining a download URL.
+//
+// 	- The storage period of recording files is 30 days. You can download only the recording files of calls recorded in the last 30 days.
+//
+// @param request - QueryRecordFileDownloadUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryRecordFileDownloadUrlResponse
 func (client *Client) QueryRecordFileDownloadUrlWithOptions(request *QueryRecordFileDownloadUrlRequest, runtime *util.RuntimeOptions) (_result *QueryRecordFileDownloadUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6602,6 +9970,33 @@ func (client *Client) QueryRecordFileDownloadUrlWithOptions(request *QueryRecord
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the download URL of a recording file.
+//
+// Description:
+//
+// If the recording feature is enabled for a binding, all calls made by the bound phone numbers are recorded. You can obtain the download URL of a recording file by calling the QueryRecordFileDownloadUrl operation and download the recording file.
+//
+// >  We recommend that you subscribe to [the recording status report SecretRecording](https://help.aliyun.com/document_detail/109198.html). The values of the response parameters in SecretRecording can be used as the values of the request parameters for downloading a recording file.
+//
+// ### [](#)Procedure for obtaining a recording file
+//
+// 1.  Specify the request parameter in an update or binding operation to enable the recording feature.
+//
+// 2.  Subscribe to recording message receipts in the Phone Number Protection console.
+//
+// 3.  After a recording message receipt is returned, call the QueryRecordFileDownloadUrl operation to obtain the download URL of the recording file, and download the recording file.
+//
+// >
+//
+// 	- A download URL is valid for 2 hours. Download the recording file as soon as possible after obtaining a download URL.
+//
+// 	- The storage period of recording files is 30 days. You can download only the recording files of calls recorded in the last 30 days.
+//
+// @param request - QueryRecordFileDownloadUrlRequest
+//
+// @return QueryRecordFileDownloadUrlResponse
 func (client *Client) QueryRecordFileDownloadUrl(request *QueryRecordFileDownloadUrlRequest) (_result *QueryRecordFileDownloadUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryRecordFileDownloadUrlResponse{}
@@ -6613,6 +10008,21 @@ func (client *Client) QueryRecordFileDownloadUrl(request *QueryRecordFileDownloa
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the attributes of a private number.
+//
+// Description:
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - QuerySecretNoDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySecretNoDetailResponse
 func (client *Client) QuerySecretNoDetailWithOptions(request *QuerySecretNoDetailRequest, runtime *util.RuntimeOptions) (_result *QuerySecretNoDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6662,6 +10072,19 @@ func (client *Client) QuerySecretNoDetailWithOptions(request *QuerySecretNoDetai
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the attributes of a private number.
+//
+// Description:
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - QuerySecretNoDetailRequest
+//
+// @return QuerySecretNoDetailResponse
 func (client *Client) QuerySecretNoDetail(request *QuerySecretNoDetailRequest) (_result *QuerySecretNoDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QuerySecretNoDetailResponse{}
@@ -6673,6 +10096,19 @@ func (client *Client) QuerySecretNoDetail(request *QuerySecretNoDetailRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the quantity of remaining phone numbers available for online purchase.
+//
+// Description:
+//
+// When purchasing a phone number, specify the home location. If no sufficient phone numbers are available for purchase in the home location, the purchase of the phone number fails. Before calling the [BuySecretNo](~~BuySecretNo~~) operation to purchase a phone number, call the [QuerySecretNoRemain](~~QuerySecretNoRemain~~) operation to query the quantity of remaining phone numbers available for online purchase.
+//
+// @param request - QuerySecretNoRemainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySecretNoRemainResponse
 func (client *Client) QuerySecretNoRemainWithOptions(request *QuerySecretNoRemainRequest, runtime *util.RuntimeOptions) (_result *QuerySecretNoRemainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6726,6 +10162,17 @@ func (client *Client) QuerySecretNoRemainWithOptions(request *QuerySecretNoRemai
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the quantity of remaining phone numbers available for online purchase.
+//
+// Description:
+//
+// When purchasing a phone number, specify the home location. If no sufficient phone numbers are available for purchase in the home location, the purchase of the phone number fails. Before calling the [BuySecretNo](~~BuySecretNo~~) operation to purchase a phone number, call the [QuerySecretNoRemain](~~QuerySecretNoRemain~~) operation to query the quantity of remaining phone numbers available for online purchase.
+//
+// @param request - QuerySecretNoRemainRequest
+//
+// @return QuerySecretNoRemainResponse
 func (client *Client) QuerySecretNoRemain(request *QuerySecretNoRemainRequest) (_result *QuerySecretNoRemainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QuerySecretNoRemainResponse{}
@@ -6737,6 +10184,19 @@ func (client *Client) QuerySecretNoRemain(request *QuerySecretNoRemainRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries binding IDs.
+//
+// Description:
+//
+// You can query binding IDs by phone number X. In the AXB product, multiple bindings may exist for the same phone number X. In this case, multiple binding IDs may be obtained for the same phone number X.
+//
+// @param request - QuerySubsIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySubsIdResponse
 func (client *Client) QuerySubsIdWithOptions(request *QuerySubsIdRequest, runtime *util.RuntimeOptions) (_result *QuerySubsIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6786,6 +10246,17 @@ func (client *Client) QuerySubsIdWithOptions(request *QuerySubsIdRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries binding IDs.
+//
+// Description:
+//
+// You can query binding IDs by phone number X. In the AXB product, multiple bindings may exist for the same phone number X. In this case, multiple binding IDs may be obtained for the same phone number X.
+//
+// @param request - QuerySubsIdRequest
+//
+// @return QuerySubsIdResponse
 func (client *Client) QuerySubsId(request *QuerySubsIdRequest) (_result *QuerySubsIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QuerySubsIdResponse{}
@@ -6797,6 +10268,25 @@ func (client *Client) QuerySubsId(request *QuerySubsIdRequest) (_result *QuerySu
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details about a phone number binding.
+//
+// Description:
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// ### [](#poolkeyproducttype)Limits on PoolKey and ProductType
+//
+// You must specify either PoolKey or ProductType. If both parameters are not specified, an error is reported when you call the QuerySubscriptionDetail operation. We recommend that you specify the ProductType parameter for the original key accounts of Alibaba Cloud and the PoolKey parameter for Alibaba Cloud users.
+//
+// @param request - QuerySubscriptionDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySubscriptionDetailResponse
 func (client *Client) QuerySubscriptionDetailWithOptions(request *QuerySubscriptionDetailRequest, runtime *util.RuntimeOptions) (_result *QuerySubscriptionDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6854,6 +10344,23 @@ func (client *Client) QuerySubscriptionDetailWithOptions(request *QuerySubscript
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details about a phone number binding.
+//
+// Description:
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// ### [](#poolkeyproducttype)Limits on PoolKey and ProductType
+//
+// You must specify either PoolKey or ProductType. If both parameters are not specified, an error is reported when you call the QuerySubscriptionDetail operation. We recommend that you specify the ProductType parameter for the original key accounts of Alibaba Cloud and the PoolKey parameter for Alibaba Cloud users.
+//
+// @param request - QuerySubscriptionDetailRequest
+//
+// @return QuerySubscriptionDetailResponse
 func (client *Client) QuerySubscriptionDetail(request *QuerySubscriptionDetailRequest) (_result *QuerySubscriptionDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QuerySubscriptionDetailResponse{}
@@ -6865,6 +10372,21 @@ func (client *Client) QuerySubscriptionDetail(request *QuerySubscriptionDetailRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Releases a phone number.
+//
+// Description:
+//
+//   After a phone number is released, it will no longer be charged from the following month.
+//
+// 	- Before you release a phone number, log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) to check whether the phone number is bound to other phone numbers. The phone number can be released only if it is not bound to other phone numbers.
+//
+// @param request - ReleaseSecretNoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReleaseSecretNoResponse
 func (client *Client) ReleaseSecretNoWithOptions(request *ReleaseSecretNoRequest, runtime *util.RuntimeOptions) (_result *ReleaseSecretNoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6914,6 +10436,19 @@ func (client *Client) ReleaseSecretNoWithOptions(request *ReleaseSecretNoRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Releases a phone number.
+//
+// Description:
+//
+//   After a phone number is released, it will no longer be charged from the following month.
+//
+// 	- Before you release a phone number, log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) to check whether the phone number is bound to other phone numbers. The phone number can be released only if it is not bound to other phone numbers.
+//
+// @param request - ReleaseSecretNoRequest
+//
+// @return ReleaseSecretNoResponse
 func (client *Client) ReleaseSecretNo(request *ReleaseSecretNoRequest) (_result *ReleaseSecretNoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleaseSecretNoResponse{}
@@ -6925,6 +10460,19 @@ func (client *Client) ReleaseSecretNo(request *ReleaseSecretNoRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Unbinds a phone number.
+//
+// Description:
+//
+// Before releasing a phone number, you must call the UnbindSubscription operation to unbind the phone number.
+//
+// @param request - UnbindSubscriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnbindSubscriptionResponse
 func (client *Client) UnbindSubscriptionWithOptions(request *UnbindSubscriptionRequest, runtime *util.RuntimeOptions) (_result *UnbindSubscriptionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6982,6 +10530,17 @@ func (client *Client) UnbindSubscriptionWithOptions(request *UnbindSubscriptionR
 	return _result, _err
 }
 
+// Summary:
+//
+// Unbinds a phone number.
+//
+// Description:
+//
+// Before releasing a phone number, you must call the UnbindSubscription operation to unbind the phone number.
+//
+// @param request - UnbindSubscriptionRequest
+//
+// @return UnbindSubscriptionResponse
 func (client *Client) UnbindSubscription(request *UnbindSubscriptionRequest) (_result *UnbindSubscriptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UnbindSubscriptionResponse{}
@@ -6993,6 +10552,23 @@ func (client *Client) UnbindSubscription(request *UnbindSubscriptionRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Unlocks a phone number.
+//
+// Description:
+//
+// After a phone number is unlocked, you can reselect the unlocked phone number when you call an operation to create a binding.
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - UnlockSecretNoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnlockSecretNoResponse
 func (client *Client) UnlockSecretNoWithOptions(request *UnlockSecretNoRequest, runtime *util.RuntimeOptions) (_result *UnlockSecretNoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7042,6 +10618,21 @@ func (client *Client) UnlockSecretNoWithOptions(request *UnlockSecretNoRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Unlocks a phone number.
+//
+// Description:
+//
+// After a phone number is unlocked, you can reselect the unlocked phone number when you call an operation to create a binding.
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - UnlockSecretNoRequest
+//
+// @return UnlockSecretNoResponse
 func (client *Client) UnlockSecretNo(request *UnlockSecretNoRequest) (_result *UnlockSecretNoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UnlockSecretNoResponse{}
@@ -7053,6 +10644,21 @@ func (client *Client) UnlockSecretNo(request *UnlockSecretNoRequest) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a phone number binding.
+//
+// Description:
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 10,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - UpdateSubscriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSubscriptionResponse
 func (client *Client) UpdateSubscriptionWithOptions(request *UpdateSubscriptionRequest, runtime *util.RuntimeOptions) (_result *UpdateSubscriptionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7158,6 +10764,19 @@ func (client *Client) UpdateSubscriptionWithOptions(request *UpdateSubscriptionR
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a phone number binding.
+//
+// Description:
+//
+// ### [](#qps)QPS limits
+//
+// You can call this operation up to 10,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - UpdateSubscriptionRequest
+//
+// @return UpdateSubscriptionResponse
 func (client *Client) UpdateSubscription(request *UpdateSubscriptionRequest) (_result *UpdateSubscriptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateSubscriptionResponse{}
