@@ -57873,6 +57873,205 @@ func (s *ListManualDagInstancesResponse) SetBody(v *ListManualDagInstancesRespon
 	return s
 }
 
+type ListMeasureDataRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Count
+	ComponentCode *string `json:"ComponentCode,omitempty" xml:"ComponentCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DideAlarmPhone
+	DomainCode *string `json:"DomainCode,omitempty" xml:"DomainCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1717430400000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1717344000000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s ListMeasureDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMeasureDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMeasureDataRequest) SetComponentCode(v string) *ListMeasureDataRequest {
+	s.ComponentCode = &v
+	return s
+}
+
+func (s *ListMeasureDataRequest) SetDomainCode(v string) *ListMeasureDataRequest {
+	s.DomainCode = &v
+	return s
+}
+
+func (s *ListMeasureDataRequest) SetEndTime(v int64) *ListMeasureDataRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListMeasureDataRequest) SetStartTime(v int64) *ListMeasureDataRequest {
+	s.StartTime = &v
+	return s
+}
+
+type ListMeasureDataResponseBody struct {
+	// example:
+	//
+	// 100001001
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// The user is not in tenant.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32                                     `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	MeasureDatas   []*ListMeasureDataResponseBodyMeasureDatas `json:"MeasureDatas,omitempty" xml:"MeasureDatas,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1AFAE64E-D1BE-432B-A9****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListMeasureDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMeasureDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMeasureDataResponseBody) SetErrorCode(v string) *ListMeasureDataResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListMeasureDataResponseBody) SetErrorMessage(v string) *ListMeasureDataResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListMeasureDataResponseBody) SetHttpStatusCode(v int32) *ListMeasureDataResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListMeasureDataResponseBody) SetMeasureDatas(v []*ListMeasureDataResponseBodyMeasureDatas) *ListMeasureDataResponseBody {
+	s.MeasureDatas = v
+	return s
+}
+
+func (s *ListMeasureDataResponseBody) SetRequestId(v string) *ListMeasureDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListMeasureDataResponseBody) SetSuccess(v bool) *ListMeasureDataResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListMeasureDataResponseBodyMeasureDatas struct {
+	// example:
+	//
+	// Count
+	ComponentCode *string `json:"ComponentCode,omitempty" xml:"ComponentCode,omitempty"`
+	// example:
+	//
+	// DideAlarmPhone
+	DomainCode *string `json:"DomainCode,omitempty" xml:"DomainCode,omitempty"`
+	// example:
+	//
+	// 1717430400000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 1717344000000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 10
+	Usage *int64 `json:"Usage,omitempty" xml:"Usage,omitempty"`
+}
+
+func (s ListMeasureDataResponseBodyMeasureDatas) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMeasureDataResponseBodyMeasureDatas) GoString() string {
+	return s.String()
+}
+
+func (s *ListMeasureDataResponseBodyMeasureDatas) SetComponentCode(v string) *ListMeasureDataResponseBodyMeasureDatas {
+	s.ComponentCode = &v
+	return s
+}
+
+func (s *ListMeasureDataResponseBodyMeasureDatas) SetDomainCode(v string) *ListMeasureDataResponseBodyMeasureDatas {
+	s.DomainCode = &v
+	return s
+}
+
+func (s *ListMeasureDataResponseBodyMeasureDatas) SetEndTime(v int64) *ListMeasureDataResponseBodyMeasureDatas {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListMeasureDataResponseBodyMeasureDatas) SetStartTime(v int64) *ListMeasureDataResponseBodyMeasureDatas {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListMeasureDataResponseBodyMeasureDatas) SetUsage(v int64) *ListMeasureDataResponseBodyMeasureDatas {
+	s.Usage = &v
+	return s
+}
+
+type ListMeasureDataResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListMeasureDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListMeasureDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMeasureDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMeasureDataResponse) SetHeaders(v map[string]*string) *ListMeasureDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMeasureDataResponse) SetStatusCode(v int32) *ListMeasureDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListMeasureDataResponse) SetBody(v *ListMeasureDataResponseBody) *ListMeasureDataResponse {
+	s.Body = v
+	return s
+}
+
 type ListMetaCollectionEntitiesRequest struct {
 	// The unique identifier of the collection.
 	//
@@ -95972,6 +96171,78 @@ func (client *Client) ListManualDagInstances(request *ListManualDagInstancesRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &ListManualDagInstancesResponse{}
 	_body, _err := client.ListManualDagInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询DataWorks计量数据
+//
+// @param request - ListMeasureDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMeasureDataResponse
+func (client *Client) ListMeasureDataWithOptions(request *ListMeasureDataRequest, runtime *util.RuntimeOptions) (_result *ListMeasureDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ComponentCode)) {
+		query["ComponentCode"] = request.ComponentCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainCode)) {
+		query["DomainCode"] = request.DomainCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMeasureData"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListMeasureDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询DataWorks计量数据
+//
+// @param request - ListMeasureDataRequest
+//
+// @return ListMeasureDataResponse
+func (client *Client) ListMeasureData(request *ListMeasureDataRequest) (_result *ListMeasureDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListMeasureDataResponse{}
+	_body, _err := client.ListMeasureDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

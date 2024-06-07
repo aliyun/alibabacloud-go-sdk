@@ -1,3 +1,7 @@
+2024-06-07 Version: v6.6.0
+- Support API ListMeasureData.
+
+
 2024-06-07 Version: v6.5.3
 - Generated golang 2020-05-18 for dataworks-public.
 
