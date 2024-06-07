@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,6 +10,9 @@ import (
 )
 
 type ExperimentReportValue struct {
+	// example:
+	//
+	// true
 	Baseline      *bool                             `json:"Baseline,omitempty" xml:"Baseline,omitempty"`
 	MetricResults map[string]map[string]interface{} `json:"MetricResults,omitempty" xml:"MetricResults,omitempty"`
 }
@@ -36,16 +36,66 @@ func (s *ExperimentReportValue) SetMetricResults(v map[string]map[string]interfa
 }
 
 type BackflowFeatureConsistencyCheckJobDataRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4
 	FeatureConsistencyCheckJobConfigId *string `json:"FeatureConsistencyCheckJobConfigId,omitempty" xml:"FeatureConsistencyCheckJobConfigId,omitempty"`
-	InstanceId                         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ItemFeatures                       *string `json:"ItemFeatures,omitempty" xml:"ItemFeatures,omitempty"`
-	LogItemId                          *string `json:"LogItemId,omitempty" xml:"LogItemId,omitempty"`
-	LogRequestId                       *string `json:"LogRequestId,omitempty" xml:"LogRequestId,omitempty"`
-	LogRequestTime                     *int64  `json:"LogRequestTime,omitempty" xml:"LogRequestTime,omitempty"`
-	LogUserId                          *string `json:"LogUserId,omitempty" xml:"LogUserId,omitempty"`
-	SceneName                          *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
-	Scores                             *string `json:"Scores,omitempty" xml:"Scores,omitempty"`
-	UserFeatures                       *string `json:"UserFeatures,omitempty" xml:"UserFeatures,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-********
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [\\"{\\\\\\"itemid\\\\\\":{\\\\\\"value\\\\\\":1010,\\\\\\"type\\\\\\":\\\\\\"string\\\\\\"}}\\"]
+	ItemFeatures *string `json:"ItemFeatures,omitempty" xml:"ItemFeatures,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 9010
+	LogItemId *string `json:"LogItemId,omitempty" xml:"LogItemId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
+	LogRequestId *string `json:"LogRequestId,omitempty" xml:"LogRequestId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1693900981465
+	LogRequestTime *int64 `json:"LogRequestTime,omitempty" xml:"LogRequestTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1010
+	LogUserId *string `json:"LogUserId,omitempty" xml:"LogUserId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// video-feed
+	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [\\"{\\\\\\"dbmtl_probs_is_valid_play\\\\\\":0.00032182207107543945,\\\\\\"dbmtl_y_play_time\\\\\\":0.0043269748210906982}\\"]
+	Scores *string `json:"Scores,omitempty" xml:"Scores,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {\\"userid\\":{\\"value\\":1010,\\"type\\":\\"string\\"},\\"click_5_seq\\":{\\"value\\":\\"9001;9002;9003;9004;9005\\",\\"type\\":\\"string\\"}}
+	UserFeatures *string `json:"UserFeatures,omitempty" xml:"UserFeatures,omitempty"`
 }
 
 func (s BackflowFeatureConsistencyCheckJobDataRequest) String() string {
@@ -107,6 +157,9 @@ func (s *BackflowFeatureConsistencyCheckJobDataRequest) SetUserFeatures(v string
 }
 
 type BackflowFeatureConsistencyCheckJobDataResponseBody struct {
+	// example:
+	//
+	// BDB621CB-A81E-5D39-8793-39A365CBCC74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -153,8 +206,16 @@ func (s *BackflowFeatureConsistencyCheckJobDataResponse) SetBody(v *BackflowFeat
 }
 
 type CheckInstanceResourcesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// OSS
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Uri  *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// example:
+	//
+	// bucket-test-123
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s CheckInstanceResourcesRequest) String() string {
@@ -176,6 +237,9 @@ func (s *CheckInstanceResourcesRequest) SetUri(v string) *CheckInstanceResources
 }
 
 type CheckInstanceResourcesResponseBody struct {
+	// example:
+	//
+	// 9763624B-5FBB-5E3A-9193-B1ADB554CEAE
 	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Resources []*CheckInstanceResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 }
@@ -199,9 +263,18 @@ func (s *CheckInstanceResourcesResponseBody) SetResources(v []*CheckInstanceReso
 }
 
 type CheckInstanceResourcesResponseBodyResources struct {
+	// example:
+	//
+	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Uri    *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// example:
+	//
+	// OSS
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// bucket-test-123
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s CheckInstanceResourcesResponseBodyResources) String() string {
@@ -257,6 +330,11 @@ func (s *CheckInstanceResourcesResponse) SetBody(v *CheckInstanceResourcesRespon
 }
 
 type CloneExperimentRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -274,8 +352,15 @@ func (s *CloneExperimentRequest) SetInstanceId(v string) *CloneExperimentRequest
 }
 
 type CloneExperimentResponseBody struct {
+	// example:
+	//
+	// 3
 	ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// F8F613A9-DF1C-551A-88E1-397A3981A785
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -327,9 +412,24 @@ func (s *CloneExperimentResponse) SetBody(v *CloneExperimentResponseBody) *Clone
 }
 
 type CloneExperimentGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Daily
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	LayerId     *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-abcdefg1234
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
+	LayerId *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
 }
 
 func (s CloneExperimentGroupRequest) String() string {
@@ -356,8 +456,15 @@ func (s *CloneExperimentGroupRequest) SetLayerId(v string) *CloneExperimentGroup
 }
 
 type CloneExperimentGroupResponseBody struct {
+	// example:
+	//
+	// 3
 	ExperimentGroupId *string `json:"ExperimentGroupId,omitempty" xml:"ExperimentGroupId,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 12A65C6C-AFA1-59B2-9A66-A9E0BB73F0E5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -409,6 +516,11 @@ func (s *CloneExperimentGroupResponse) SetBody(v *CloneExperimentGroupResponseBo
 }
 
 type CloneFeatureConsistencyCheckJobConfigRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-********
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -426,8 +538,14 @@ func (s *CloneFeatureConsistencyCheckJobConfigRequest) SetInstanceId(v string) *
 }
 
 type CloneFeatureConsistencyCheckJobConfigResponseBody struct {
+	// example:
+	//
+	// 4
 	FeatureConsistencyCheckId *string `json:"FeatureConsistencyCheckId,omitempty" xml:"FeatureConsistencyCheckId,omitempty"`
-	RequestId                 *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 74D958EF-3598-56FA-8296-FF1575CE43DF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CloneFeatureConsistencyCheckJobConfigResponseBody) String() string {
@@ -478,9 +596,24 @@ func (s *CloneFeatureConsistencyCheckJobConfigResponse) SetBody(v *CloneFeatureC
 }
 
 type CloneLaboratoryRequest struct {
-	CloneExperimentGroup *bool   `json:"CloneExperimentGroup,omitempty" xml:"CloneExperimentGroup,omitempty"`
-	Environment          *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	CloneExperimentGroup *bool `json:"CloneExperimentGroup,omitempty" xml:"CloneExperimentGroup,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Daily
+	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-abcdefg1234
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s CloneLaboratoryRequest) String() string {
@@ -507,8 +640,15 @@ func (s *CloneLaboratoryRequest) SetInstanceId(v string) *CloneLaboratoryRequest
 }
 
 type CloneLaboratoryResponseBody struct {
+	// example:
+	//
+	// 3
 	LaboratoryId *string `json:"LaboratoryId,omitempty" xml:"LaboratoryId,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 01D22D08-BA20-5F35-8302-99115F288220
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -559,20 +699,140 @@ func (s *CloneLaboratoryResponse) SetBody(v *CloneLaboratoryResponseBody) *Clone
 	return s
 }
 
+type CloneTrafficControlTaskRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s CloneTrafficControlTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloneTrafficControlTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CloneTrafficControlTaskRequest) SetInstanceId(v string) *CloneTrafficControlTaskRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type CloneTrafficControlTaskResponseBody struct {
+	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TrafficControlTaskId *string `json:"TrafficControlTaskId,omitempty" xml:"TrafficControlTaskId,omitempty"`
+}
+
+func (s CloneTrafficControlTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloneTrafficControlTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CloneTrafficControlTaskResponseBody) SetRequestId(v string) *CloneTrafficControlTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CloneTrafficControlTaskResponseBody) SetTrafficControlTaskId(v string) *CloneTrafficControlTaskResponseBody {
+	s.TrafficControlTaskId = &v
+	return s
+}
+
+type CloneTrafficControlTaskResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CloneTrafficControlTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CloneTrafficControlTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloneTrafficControlTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CloneTrafficControlTaskResponse) SetHeaders(v map[string]*string) *CloneTrafficControlTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CloneTrafficControlTaskResponse) SetStatusCode(v int32) *CloneTrafficControlTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CloneTrafficControlTaskResponse) SetBody(v *CloneTrafficControlTaskResponseBody) *CloneTrafficControlTaskResponse {
+	s.Body = v
+	return s
+}
+
 type CreateABMetricRequest struct {
-	Definition       *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	LeftMetricId     *string `json:"LeftMetricId,omitempty" xml:"LeftMetricId,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Operator         *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	Realtime         *bool   `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sum(click_cnt)
+	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	// This parameter is required.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-test1
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 2
+	LeftMetricId *string `json:"LeftMetricId,omitempty" xml:"LeftMetricId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pv
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Division
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	Realtime *bool `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
+	// example:
+	//
+	// 3
 	ResultResourceId *string `json:"ResultResourceId,omitempty" xml:"ResultResourceId,omitempty"`
-	RightMetricId    *string `json:"RightMetricId,omitempty" xml:"RightMetricId,omitempty"`
-	SceneId          *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	StatisticsCycle  *int32  `json:"StatisticsCycle,omitempty" xml:"StatisticsCycle,omitempty"`
-	TableMetaId      *string `json:"TableMetaId,omitempty" xml:"TableMetaId,omitempty"`
-	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 3
+	RightMetricId *string `json:"RightMetricId,omitempty" xml:"RightMetricId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// example:
+	//
+	// 1
+	StatisticsCycle *int32 `json:"StatisticsCycle,omitempty" xml:"StatisticsCycle,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	TableMetaId *string `json:"TableMetaId,omitempty" xml:"TableMetaId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Single
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateABMetricRequest) String() string {
@@ -649,8 +909,14 @@ func (s *CreateABMetricRequest) SetType(v string) *CreateABMetricRequest {
 }
 
 type CreateABMetricResponseBody struct {
+	// example:
+	//
+	// 1
 	ABMetricId *string `json:"ABMetricId,omitempty" xml:"ABMetricId,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// F7AC05FF-EDE7-5C2B-B9AE-33D6DF4178BA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateABMetricResponseBody) String() string {
@@ -701,12 +967,38 @@ func (s *CreateABMetricResponse) SetBody(v *CreateABMetricResponseBody) *CreateA
 }
 
 type CreateABMetricGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1,2
 	ABMetricIds *string `json:"ABMetricIds,omitempty" xml:"ABMetricIds,omitempty"`
+	// This parameter is required.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Realtime    *bool   `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
-	SceneId     *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-test1
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// visits
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	Realtime *bool `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
 func (s CreateABMetricGroupRequest) String() string {
@@ -748,8 +1040,14 @@ func (s *CreateABMetricGroupRequest) SetSceneId(v string) *CreateABMetricGroupRe
 }
 
 type CreateABMetricGroupResponseBody struct {
+	// example:
+	//
+	// 1
 	ABMetricGroupId *string `json:"ABMetricGroupId,omitempty" xml:"ABMetricGroupId,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// E15A1443-7917-5BE0-AE70-25538ECF398D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateABMetricGroupResponseBody) String() string {
@@ -800,10 +1098,30 @@ func (s *CreateABMetricGroupResponse) SetBody(v *CreateABMetricGroupResponseBody
 }
 
 type CreateCalculationJobsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2,3,4
 	ABMetricIds *string `json:"ABMetricIds,omitempty" xml:"ABMetricIds,omitempty"`
-	EndDate     *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	StartDate   *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-01-03
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-test1
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-01-01
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s CreateCalculationJobsRequest) String() string {
@@ -836,7 +1154,10 @@ func (s *CreateCalculationJobsRequest) SetStartDate(v string) *CreateCalculation
 
 type CreateCalculationJobsResponseBody struct {
 	CalculationJobIds []*string `json:"CalculationJobIds,omitempty" xml:"CalculationJobIds,omitempty" type:"Repeated"`
-	RequestId         *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 8C27790E-CCA5-56BB-BA17-646295DEC0A2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateCalculationJobsResponseBody) String() string {
@@ -887,12 +1208,36 @@ func (s *CreateCalculationJobsResponse) SetBody(v *CreateCalculationJobsResponse
 }
 
 type CreateCrowdRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// This is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Label       *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Source      *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Users       *string `json:"Users,omitempty" xml:"Users,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-abcdefg1234
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// os=android
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xx人群
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// ManualInput
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// user1,user2,user3
+	Users *string `json:"Users,omitempty" xml:"Users,omitempty"`
 }
 
 func (s CreateCrowdRequest) String() string {
@@ -934,8 +1279,15 @@ func (s *CreateCrowdRequest) SetUsers(v string) *CreateCrowdRequest {
 }
 
 type CreateCrowdResponseBody struct {
+	// example:
+	//
+	// 3
 	CrowdId *string `json:"CrowdId,omitempty" xml:"CrowdId,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 59CE7EC6-F268-5D71-9215-32922CC50D72
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -987,15 +1339,52 @@ func (s *CreateCrowdResponse) SetBody(v *CreateCrowdResponseBody) *CreateCrowdRe
 }
 
 type CreateExperimentRequest struct {
-	Config            *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	DebugCrowdId      *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
-	DebugUsers        *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
-	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// {"RankBy": "Score"}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// example:
+	//
+	// 3
+	DebugCrowdId *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
+	// example:
+	//
+	// 1124512470******,1124512471******,1124512472******
+	DebugUsers *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// This is a test.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
 	ExperimentGroupId *string `json:"ExperimentGroupId,omitempty" xml:"ExperimentGroupId,omitempty"`
-	FlowPercent       *int32  `json:"FlowPercent,omitempty" xml:"FlowPercent,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type              *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 100
+	FlowPercent *int32 `json:"FlowPercent,omitempty" xml:"FlowPercent,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-test1
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// experiment_test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Baseline
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateExperimentRequest) String() string {
@@ -1052,8 +1441,15 @@ func (s *CreateExperimentRequest) SetType(v string) *CreateExperimentRequest {
 }
 
 type CreateExperimentResponseBody struct {
+	// example:
+	//
+	// 3
 	ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 3AAA45F6-0798-5461-9360-81D133823CE7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1105,21 +1501,68 @@ func (s *CreateExperimentResponse) SetBody(v *CreateExperimentResponseBody) *Cre
 }
 
 type CreateExperimentGroupRequest struct {
-	Config                   *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	CrowdId                  *string `json:"CrowdId,omitempty" xml:"CrowdId,omitempty"`
-	CrowdTargetType          *string `json:"CrowdTargetType,omitempty" xml:"CrowdTargetType,omitempty"`
-	DebugCrowdId             *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
-	DebugUsers               *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
-	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DistributionTimeDuration *int32  `json:"DistributionTimeDuration,omitempty" xml:"DistributionTimeDuration,omitempty"`
-	DistributionType         *string `json:"DistributionType,omitempty" xml:"DistributionType,omitempty"`
-	Filter                   *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	InstanceId               *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	LayerId                  *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
-	Name                     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NeedAA                   *bool   `json:"NeedAA,omitempty" xml:"NeedAA,omitempty"`
-	RandomFlow               *int64  `json:"RandomFlow,omitempty" xml:"RandomFlow,omitempty"`
-	ReservedBuckets          *string `json:"ReservedBuckets,omitempty" xml:"ReservedBuckets,omitempty"`
+	// example:
+	//
+	// {"RankBy": "Score"}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// example:
+	//
+	// 1
+	CrowdId         *string `json:"CrowdId,omitempty" xml:"CrowdId,omitempty"`
+	CrowdTargetType *string `json:"CrowdTargetType,omitempty" xml:"CrowdTargetType,omitempty"`
+	// example:
+	//
+	// 3
+	DebugCrowdId *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
+	// example:
+	//
+	// 1124512470******,1124512471******,1124512472******
+	DebugUsers *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
+	// example:
+	//
+	// This is a test.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 3
+	DistributionTimeDuration *int32 `json:"DistributionTimeDuration,omitempty" xml:"DistributionTimeDuration,omitempty"`
+	// example:
+	//
+	// UserId
+	DistributionType *string `json:"DistributionType,omitempty" xml:"DistributionType,omitempty"`
+	// example:
+	//
+	// gender=male
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-test1
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
+	LayerId *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// experiment_group_test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	NeedAA     *bool  `json:"NeedAA,omitempty" xml:"NeedAA,omitempty"`
+	RandomFlow *int64 `json:"RandomFlow,omitempty" xml:"RandomFlow,omitempty"`
+	// example:
+	//
+	// 1,2,3
+	ReservedBuckets *string `json:"ReservedBuckets,omitempty" xml:"ReservedBuckets,omitempty"`
 }
 
 func (s CreateExperimentGroupRequest) String() string {
@@ -1206,8 +1649,15 @@ func (s *CreateExperimentGroupRequest) SetReservedBuckets(v string) *CreateExper
 }
 
 type CreateExperimentGroupResponseBody struct {
+	// example:
+	//
+	// 3
 	ExperimentGroupId *string `json:"ExperimentGroupId,omitempty" xml:"ExperimentGroupId,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// A04CB8C0-E74A-5E83-BC61-64D153574EC7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1259,10 +1709,30 @@ func (s *CreateExperimentGroupResponse) SetBody(v *CreateExperimentGroupResponse
 }
 
 type CreateFeatureConsistencyCheckJobRequest struct {
-	Environment                        *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Pre
+	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
 	FeatureConsistencyCheckJobConfigId *string `json:"FeatureConsistencyCheckJobConfigId,omitempty" xml:"FeatureConsistencyCheckJobConfigId,omitempty"`
-	InstanceId                         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	SamplingDuration                   *int32  `json:"SamplingDuration,omitempty" xml:"SamplingDuration,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-********
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	SamplingDuration *int32 `json:"SamplingDuration,omitempty" xml:"SamplingDuration,omitempty"`
 }
 
 func (s CreateFeatureConsistencyCheckJobRequest) String() string {
@@ -1294,8 +1764,14 @@ func (s *CreateFeatureConsistencyCheckJobRequest) SetSamplingDuration(v int32) *
 }
 
 type CreateFeatureConsistencyCheckJobResponseBody struct {
+	// example:
+	//
+	// 4
 	FeatureConsistencyCheckJobId *string `json:"FeatureConsistencyCheckJobId,omitempty" xml:"FeatureConsistencyCheckJobId,omitempty"`
-	RequestId                    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 7D59453C-48AA-5FC5-8848-2D373BD1A17F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateFeatureConsistencyCheckJobResponseBody) String() string {
@@ -1346,38 +1822,134 @@ func (s *CreateFeatureConsistencyCheckJobResponse) SetBody(v *CreateFeatureConsi
 }
 
 type CreateFeatureConsistencyCheckJobConfigRequest struct {
-	CompareFeature                *bool    `json:"CompareFeature,omitempty" xml:"CompareFeature,omitempty"`
-	EasServiceName                *string  `json:"EasServiceName,omitempty" xml:"EasServiceName,omitempty"`
-	EasyRecPackagePath            *string  `json:"EasyRecPackagePath,omitempty" xml:"EasyRecPackagePath,omitempty"`
-	EasyRecVersion                *string  `json:"EasyRecVersion,omitempty" xml:"EasyRecVersion,omitempty"`
-	FeatureDisplayExclude         *string  `json:"FeatureDisplayExclude,omitempty" xml:"FeatureDisplayExclude,omitempty"`
-	FeatureLandingResourceId      *string  `json:"FeatureLandingResourceId,omitempty" xml:"FeatureLandingResourceId,omitempty"`
-	FeaturePriority               *string  `json:"FeaturePriority,omitempty" xml:"FeaturePriority,omitempty"`
-	FeatureStoreItemId            *string  `json:"FeatureStoreItemId,omitempty" xml:"FeatureStoreItemId,omitempty"`
-	FeatureStoreModelId           *string  `json:"FeatureStoreModelId,omitempty" xml:"FeatureStoreModelId,omitempty"`
-	FeatureStoreProjectId         *string  `json:"FeatureStoreProjectId,omitempty" xml:"FeatureStoreProjectId,omitempty"`
-	FeatureStoreProjectName       *string  `json:"FeatureStoreProjectName,omitempty" xml:"FeatureStoreProjectName,omitempty"`
-	FeatureStoreSeqFeatureView    *string  `json:"FeatureStoreSeqFeatureView,omitempty" xml:"FeatureStoreSeqFeatureView,omitempty"`
-	FeatureStoreUserId            *string  `json:"FeatureStoreUserId,omitempty" xml:"FeatureStoreUserId,omitempty"`
-	FgJarVersion                  *string  `json:"FgJarVersion,omitempty" xml:"FgJarVersion,omitempty"`
-	FgJsonFileName                *string  `json:"FgJsonFileName,omitempty" xml:"FgJsonFileName,omitempty"`
-	GenerateZip                   *bool    `json:"GenerateZip,omitempty" xml:"GenerateZip,omitempty"`
-	InstanceId                    *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ItemIdField                   *string  `json:"ItemIdField,omitempty" xml:"ItemIdField,omitempty"`
-	ItemTable                     *string  `json:"ItemTable,omitempty" xml:"ItemTable,omitempty"`
-	ItemTablePartitionField       *string  `json:"ItemTablePartitionField,omitempty" xml:"ItemTablePartitionField,omitempty"`
-	ItemTablePartitionFieldFormat *string  `json:"ItemTablePartitionFieldFormat,omitempty" xml:"ItemTablePartitionFieldFormat,omitempty"`
-	Name                          *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	OssResourceId                 *string  `json:"OssResourceId,omitempty" xml:"OssResourceId,omitempty"`
-	SampleRate                    *float64 `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
-	SceneId                       *string  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	ServiceId                     *string  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	UseFeatureStore               *bool    `json:"UseFeatureStore,omitempty" xml:"UseFeatureStore,omitempty"`
-	UserIdField                   *string  `json:"UserIdField,omitempty" xml:"UserIdField,omitempty"`
-	UserTable                     *string  `json:"UserTable,omitempty" xml:"UserTable,omitempty"`
-	UserTablePartitionField       *string  `json:"UserTablePartitionField,omitempty" xml:"UserTablePartitionField,omitempty"`
-	UserTablePartitionFieldFormat *string  `json:"UserTablePartitionFieldFormat,omitempty" xml:"UserTablePartitionFieldFormat,omitempty"`
-	WorkflowName                  *string  `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	CompareFeature *bool `json:"CompareFeature,omitempty" xml:"CompareFeature,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// service_123
+	EasServiceName *string `json:"EasServiceName,omitempty" xml:"EasServiceName,omitempty"`
+	// example:
+	//
+	// oss://*******
+	EasyRecPackagePath *string `json:"EasyRecPackagePath,omitempty" xml:"EasyRecPackagePath,omitempty"`
+	// example:
+	//
+	// 1.3.60
+	EasyRecVersion *string `json:"EasyRecVersion,omitempty" xml:"EasyRecVersion,omitempty"`
+	// example:
+	//
+	// feature1,feature2
+	FeatureDisplayExclude *string `json:"FeatureDisplayExclude,omitempty" xml:"FeatureDisplayExclude,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// reso-********
+	FeatureLandingResourceId *string `json:"FeatureLandingResourceId,omitempty" xml:"FeatureLandingResourceId,omitempty"`
+	// example:
+	//
+	// feature1,feature2,feature3
+	FeaturePriority            *string `json:"FeaturePriority,omitempty" xml:"FeaturePriority,omitempty"`
+	FeatureStoreItemId         *string `json:"FeatureStoreItemId,omitempty" xml:"FeatureStoreItemId,omitempty"`
+	FeatureStoreModelId        *string `json:"FeatureStoreModelId,omitempty" xml:"FeatureStoreModelId,omitempty"`
+	FeatureStoreProjectId      *string `json:"FeatureStoreProjectId,omitempty" xml:"FeatureStoreProjectId,omitempty"`
+	FeatureStoreProjectName    *string `json:"FeatureStoreProjectName,omitempty" xml:"FeatureStoreProjectName,omitempty"`
+	FeatureStoreSeqFeatureView *string `json:"FeatureStoreSeqFeatureView,omitempty" xml:"FeatureStoreSeqFeatureView,omitempty"`
+	FeatureStoreUserId         *string `json:"FeatureStoreUserId,omitempty" xml:"FeatureStoreUserId,omitempty"`
+	// example:
+	//
+	// 1.0.0
+	FgJarVersion *string `json:"FgJarVersion,omitempty" xml:"FgJarVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// file.json
+	FgJsonFileName *string `json:"FgJsonFileName,omitempty" xml:"FgJsonFileName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	GenerateZip *bool `json:"GenerateZip,omitempty" xml:"GenerateZip,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-********
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// item_id
+	ItemIdField *string `json:"ItemIdField,omitempty" xml:"ItemIdField,omitempty"`
+	// example:
+	//
+	// item_table
+	ItemTable *string `json:"ItemTable,omitempty" xml:"ItemTable,omitempty"`
+	// example:
+	//
+	// ds
+	ItemTablePartitionField *string `json:"ItemTablePartitionField,omitempty" xml:"ItemTablePartitionField,omitempty"`
+	// example:
+	//
+	// yyyymmdd
+	ItemTablePartitionFieldFormat *string `json:"ItemTablePartitionFieldFormat,omitempty" xml:"ItemTablePartitionFieldFormat,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// feature_consistency_check1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// reso-********
+	OssResourceId *string `json:"OssResourceId,omitempty" xml:"OssResourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.89
+	SampleRate *float64 `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// This parameter is required.
+	UseFeatureStore *bool `json:"UseFeatureStore,omitempty" xml:"UseFeatureStore,omitempty"`
+	// example:
+	//
+	// user_id
+	UserIdField *string `json:"UserIdField,omitempty" xml:"UserIdField,omitempty"`
+	// example:
+	//
+	// user_table
+	UserTable *string `json:"UserTable,omitempty" xml:"UserTable,omitempty"`
+	// example:
+	//
+	// ds
+	UserTablePartitionField *string `json:"UserTablePartitionField,omitempty" xml:"UserTablePartitionField,omitempty"`
+	// example:
+	//
+	// yyyymmdd
+	UserTablePartitionFieldFormat *string `json:"UserTablePartitionFieldFormat,omitempty" xml:"UserTablePartitionFieldFormat,omitempty"`
+	// example:
+	//
+	// work_flow_1
+	WorkflowName *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
 }
 
 func (s CreateFeatureConsistencyCheckJobConfigRequest) String() string {
@@ -1549,8 +2121,14 @@ func (s *CreateFeatureConsistencyCheckJobConfigRequest) SetWorkflowName(v string
 }
 
 type CreateFeatureConsistencyCheckJobConfigResponseBody struct {
+	// example:
+	//
+	// 4
 	FeatureConsistencyCheckJobConfigId *string `json:"FeatureConsistencyCheckJobConfigId,omitempty" xml:"FeatureConsistencyCheckJobConfigId,omitempty"`
-	RequestId                          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// E15A1443-7917-5BE0-AE70-25538ECF398D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateFeatureConsistencyCheckJobConfigResponseBody) String() string {
@@ -1601,10 +2179,30 @@ func (s *CreateFeatureConsistencyCheckJobConfigResponse) SetBody(v *CreateFeatur
 }
 
 type CreateInstanceResourceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DataManagement
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	Group    *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Uri      *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// storage
+	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// OSS
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// bucket-test-123
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s CreateInstanceResourceRequest) String() string {
@@ -1636,7 +2234,13 @@ func (s *CreateInstanceResourceRequest) SetUri(v string) *CreateInstanceResource
 }
 
 type CreateInstanceResourceResponseBody struct {
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 6CF1E160-3F36-5E73-A170-C75504F05BBC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// reso-2s416t***
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 }
 
@@ -1688,18 +2292,66 @@ func (s *CreateInstanceResourceResponse) SetBody(v *CreateInstanceResourceRespon
 }
 
 type CreateLaboratoryRequest struct {
-	BucketCount  *int32  `json:"BucketCount,omitempty" xml:"BucketCount,omitempty"`
-	BucketType   *string `json:"BucketType,omitempty" xml:"BucketType,omitempty"`
-	Buckets      *string `json:"Buckets,omitempty" xml:"Buckets,omitempty"`
+	// example:
+	//
+	// 24
+	BucketCount *int32 `json:"BucketCount,omitempty" xml:"BucketCount,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// UidHash
+	BucketType *string `json:"BucketType,omitempty" xml:"BucketType,omitempty"`
+	// example:
+	//
+	// 1,2,3,10-20
+	Buckets *string `json:"Buckets,omitempty" xml:"Buckets,omitempty"`
+	// example:
+	//
+	// 3
 	DebugCrowdId *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
-	DebugUsers   *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Environment  *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
-	Filter       *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	SceneId      *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 1124512470******,1124512471******,1124512472******
+	DebugUsers *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
+	// example:
+	//
+	// This is a test.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Daily
+	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// example:
+	//
+	// filter=xxx
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-abcdefg1234
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// laboratory1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Base
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateLaboratoryRequest) String() string {
@@ -1771,8 +2423,15 @@ func (s *CreateLaboratoryRequest) SetType(v string) *CreateLaboratoryRequest {
 }
 
 type CreateLaboratoryResponseBody struct {
+	// example:
+	//
+	// 3
 	LaboratoryId *string `json:"LaboratoryId,omitempty" xml:"LaboratoryId,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 42391E6D-822C-58F8-9F7E-D991BB86D6AD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1824,10 +2483,30 @@ func (s *CreateLaboratoryResponse) SetBody(v *CreateLaboratoryResponseBody) *Cre
 }
 
 type CreateLayerRequest struct {
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// This is a test.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-abcdefg1234
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
 	LaboratoryId *string `json:"LaboratoryId,omitempty" xml:"LaboratoryId,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// layer1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s CreateLayerRequest) String() string {
@@ -1859,8 +2538,15 @@ func (s *CreateLayerRequest) SetName(v string) *CreateLayerRequest {
 }
 
 type CreateLayerResponseBody struct {
+	// example:
+	//
+	// 3
 	LayerId *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 59CE7EC6-F268-5D71-9215-32922CC50D72
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1912,11 +2598,26 @@ func (s *CreateLayerResponse) SetBody(v *CreateLayerResponseBody) *CreateLayerRe
 }
 
 type CreateParamRequest struct {
+	// example:
+	//
+	// Daily
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	SceneId     *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// pairec-cn-abcdefg1234
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// home
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 4
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// example:
+	//
+	// house
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s CreateParamRequest) String() string {
@@ -1953,8 +2654,15 @@ func (s *CreateParamRequest) SetValue(v string) *CreateParamRequest {
 }
 
 type CreateParamResponseBody struct {
+	// example:
+	//
+	// 4
 	ParamId *int64 `json:"ParamId,omitempty" xml:"ParamId,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// F8F613A9-DF1C-551A-88E1-397A3981A785
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2006,14 +2714,19 @@ func (s *CreateParamResponse) SetBody(v *CreateParamResponseBody) *CreateParamRe
 }
 
 type CreateResourceRuleRequest struct {
-	Description             *string                               `json:"Description,omitempty" xml:"Description,omitempty"`
-	InstanceId              *string                               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MetricOperationType     *string                               `json:"MetricOperationType,omitempty" xml:"MetricOperationType,omitempty"`
-	MetricPullInfo          *string                               `json:"MetricPullInfo,omitempty" xml:"MetricPullInfo,omitempty"`
-	MetricPullPeriod        *string                               `json:"MetricPullPeriod,omitempty" xml:"MetricPullPeriod,omitempty"`
-	Name                    *string                               `json:"Name,omitempty" xml:"Name,omitempty"`
-	RuleComputingDefinition *string                               `json:"RuleComputingDefinition,omitempty" xml:"RuleComputingDefinition,omitempty"`
-	RuleItems               []*CreateResourceRuleRequestRuleItems `json:"RuleItems,omitempty" xml:"RuleItems,omitempty" type:"Repeated"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	MetricOperationType *string `json:"MetricOperationType,omitempty" xml:"MetricOperationType,omitempty"`
+	MetricPullInfo      *string `json:"MetricPullInfo,omitempty" xml:"MetricPullInfo,omitempty"`
+	MetricPullPeriod    *string `json:"MetricPullPeriod,omitempty" xml:"MetricPullPeriod,omitempty"`
+	// This parameter is required.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	RuleComputingDefinition *string `json:"RuleComputingDefinition,omitempty" xml:"RuleComputingDefinition,omitempty"`
+	// This parameter is required.
+	RuleItems []*CreateResourceRuleRequestRuleItems `json:"RuleItems,omitempty" xml:"RuleItems,omitempty" type:"Repeated"`
 }
 
 func (s CreateResourceRuleRequest) String() string {
@@ -2065,11 +2778,15 @@ func (s *CreateResourceRuleRequest) SetRuleItems(v []*CreateResourceRuleRequestR
 }
 
 type CreateResourceRuleRequestRuleItems struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	MaxValue    *float64 `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
-	MinValue    *float64 `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Value       *float64 `json:"Value,omitempty" xml:"Value,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	MaxValue *float64 `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
+	// This parameter is required.
+	MinValue *float64 `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
+	// This parameter is required.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	Value *float64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s CreateResourceRuleRequestRuleItems) String() string {
@@ -2158,12 +2875,17 @@ func (s *CreateResourceRuleResponse) SetBody(v *CreateResourceRuleResponseBody) 
 }
 
 type CreateResourceRuleItemRequest struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	InstanceId  *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MaxValue    *float64 `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
-	MinValue    *float64 `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Value       *float64 `json:"Value,omitempty" xml:"Value,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	MaxValue *float64 `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
+	// This parameter is required.
+	MinValue *float64 `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
+	// This parameter is required.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	Value *float64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s CreateResourceRuleItemRequest) String() string {
@@ -2257,10 +2979,19 @@ func (s *CreateResourceRuleItemResponse) SetBody(v *CreateResourceRuleItemRespon
 }
 
 type CreateSceneRequest struct {
+	// example:
+	//
+	// This is a test.
 	Description *string                    `json:"Description,omitempty" xml:"Description,omitempty"`
 	Flows       []*CreateSceneRequestFlows `json:"Flows,omitempty" xml:"Flows,omitempty" type:"Repeated"`
-	InstanceId  *string                    `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name        *string                    `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// pairec-cn-abcdefg1234
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// scene1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s CreateSceneRequest) String() string {
@@ -2292,7 +3023,13 @@ func (s *CreateSceneRequest) SetName(v string) *CreateSceneRequest {
 }
 
 type CreateSceneRequestFlows struct {
+	// example:
+	//
+	// liuliang1
 	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// example:
+	//
+	// 流量1
 	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
 }
 
@@ -2316,8 +3053,15 @@ func (s *CreateSceneRequestFlows) SetFlowName(v string) *CreateSceneRequestFlows
 
 type CreateSceneResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// FCF741D8-9C30-578E-807F-B935487DB34A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SceneId   *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// example:
+	//
+	// 3
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
 func (s CreateSceneResponseBody) String() string {
@@ -2368,9 +3112,24 @@ func (s *CreateSceneResponse) SetBody(v *CreateSceneResponseBody) *CreateSceneRe
 }
 
 type CreateSubCrowdRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Source     *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Users      *string `json:"Users,omitempty" xml:"Users,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ManualInput
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user1,user2,user3
+	Users *string `json:"Users,omitempty" xml:"Users,omitempty"`
 }
 
 func (s CreateSubCrowdRequest) String() string {
@@ -2398,7 +3157,14 @@ func (s *CreateSubCrowdRequest) SetUsers(v string) *CreateSubCrowdRequest {
 
 type CreateSubCrowdResponseBody struct {
 	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	//
+	// example:
+	//
+	// 9763624B-5FBB-5E3A-9193-B1ADB554CEAE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 3
 	SubCrowdId *string `json:"SubCrowdId,omitempty" xml:"SubCrowdId,omitempty"`
 }
 
@@ -2450,13 +3216,44 @@ func (s *CreateSubCrowdResponse) SetBody(v *CreateSubCrowdResponseBody) *CreateS
 }
 
 type CreateTableMetaRequest struct {
-	Description *string                         `json:"Description,omitempty" xml:"Description,omitempty"`
-	Fields      []*CreateTableMetaRequestFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
-	InstanceId  *string                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Module      *string                         `json:"Module,omitempty" xml:"Module,omitempty"`
-	Name        *string                         `json:"Name,omitempty" xml:"Name,omitempty"`
-	ResourceId  *string                         `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	TableName   *string                         `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// this is a test table
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	Fields []*CreateTableMetaRequestFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-test123
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ABTest
+	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// table_test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// reso-2s416t146ffjc3yefx
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// table_mysql
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s CreateTableMetaRequest) String() string {
@@ -2503,12 +3300,33 @@ func (s *CreateTableMetaRequest) SetTableName(v string) *CreateTableMetaRequest 
 }
 
 type CreateTableMetaRequestFields struct {
-	DataType         *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	IsDimensionField *bool   `json:"IsDimensionField,omitempty" xml:"IsDimensionField,omitempty"`
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	IsDimensionField *bool `json:"IsDimensionField,omitempty" xml:"IsDimensionField,omitempty"`
+	// This parameter is required.
 	IsPartitionField *string `json:"IsPartitionField,omitempty" xml:"IsPartitionField,omitempty"`
-	Meaning          *string `json:"Meaning,omitempty" xml:"Meaning,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// this is gender of people
+	Meaning *string `json:"Meaning,omitempty" xml:"Meaning,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gender
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// BIGINT
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateTableMetaRequestFields) String() string {
@@ -2550,7 +3368,13 @@ func (s *CreateTableMetaRequestFields) SetType(v string) *CreateTableMetaRequest
 }
 
 type CreateTableMetaResponseBody struct {
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2
 	TableMetaId *string `json:"TableMetaId,omitempty" xml:"TableMetaId,omitempty"`
 }
 
@@ -2601,8 +3425,447 @@ func (s *CreateTableMetaResponse) SetBody(v *CreateTableMetaResponseBody) *Creat
 	return s
 }
 
+type CreateTrafficControlTargetRequest struct {
+	EndTime              *string  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Event                *string  `json:"Event,omitempty" xml:"Event,omitempty"`
+	ItemConditionArray   *string  `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
+	ItemConditionExpress *string  `json:"ItemConditionExpress,omitempty" xml:"ItemConditionExpress,omitempty"`
+	ItemConditionType    *string  `json:"ItemConditionType,omitempty" xml:"ItemConditionType,omitempty"`
+	Name                 *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	NewProductRegulation *bool    `json:"NewProductRegulation,omitempty" xml:"NewProductRegulation,omitempty"`
+	RecallName           *string  `json:"RecallName,omitempty" xml:"RecallName,omitempty"`
+	StartTime            *string  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StatisPeriod         *string  `json:"StatisPeriod,omitempty" xml:"StatisPeriod,omitempty"`
+	Status               *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	ToleranceValue       *int64   `json:"ToleranceValue,omitempty" xml:"ToleranceValue,omitempty"`
+	TrafficControlTaskId *string  `json:"TrafficControlTaskId,omitempty" xml:"TrafficControlTaskId,omitempty"`
+	Value                *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateTrafficControlTargetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTrafficControlTargetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTrafficControlTargetRequest) SetEndTime(v string) *CreateTrafficControlTargetRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *CreateTrafficControlTargetRequest) SetEvent(v string) *CreateTrafficControlTargetRequest {
+	s.Event = &v
+	return s
+}
+
+func (s *CreateTrafficControlTargetRequest) SetItemConditionArray(v string) *CreateTrafficControlTargetRequest {
+	s.ItemConditionArray = &v
+	return s
+}
+
+func (s *CreateTrafficControlTargetRequest) SetItemConditionExpress(v string) *CreateTrafficControlTargetRequest {
+	s.ItemConditionExpress = &v
+	return s
+}
+
+func (s *CreateTrafficControlTargetRequest) SetItemConditionType(v string) *CreateTrafficControlTargetRequest {
+	s.ItemConditionType = &v
+	return s
+}
+
+func (s *CreateTrafficControlTargetRequest) SetName(v string) *CreateTrafficControlTargetRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateTrafficControlTargetRequest) SetNewProductRegulation(v bool) *CreateTrafficControlTargetRequest {
+	s.NewProductRegulation = &v
+	return s
+}
+
+func (s *CreateTrafficControlTargetRequest) SetRecallName(v string) *CreateTrafficControlTargetRequest {
+	s.RecallName = &v
+	return s
+}
+
+func (s *CreateTrafficControlTargetRequest) SetStartTime(v string) *CreateTrafficControlTargetRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *CreateTrafficControlTargetRequest) SetStatisPeriod(v string) *CreateTrafficControlTargetRequest {
+	s.StatisPeriod = &v
+	return s
+}
+
+func (s *CreateTrafficControlTargetRequest) SetStatus(v string) *CreateTrafficControlTargetRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateTrafficControlTargetRequest) SetToleranceValue(v int64) *CreateTrafficControlTargetRequest {
+	s.ToleranceValue = &v
+	return s
+}
+
+func (s *CreateTrafficControlTargetRequest) SetTrafficControlTaskId(v string) *CreateTrafficControlTargetRequest {
+	s.TrafficControlTaskId = &v
+	return s
+}
+
+func (s *CreateTrafficControlTargetRequest) SetValue(v float32) *CreateTrafficControlTargetRequest {
+	s.Value = &v
+	return s
+}
+
+type CreateTrafficControlTargetResponseBody struct {
+	RequestId              *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TrafficControlTargetId *string `json:"TrafficControlTargetId,omitempty" xml:"TrafficControlTargetId,omitempty"`
+}
+
+func (s CreateTrafficControlTargetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTrafficControlTargetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTrafficControlTargetResponseBody) SetRequestId(v string) *CreateTrafficControlTargetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateTrafficControlTargetResponseBody) SetTrafficControlTargetId(v string) *CreateTrafficControlTargetResponseBody {
+	s.TrafficControlTargetId = &v
+	return s
+}
+
+type CreateTrafficControlTargetResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTrafficControlTargetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateTrafficControlTargetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTrafficControlTargetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTrafficControlTargetResponse) SetHeaders(v map[string]*string) *CreateTrafficControlTargetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateTrafficControlTargetResponse) SetStatusCode(v int32) *CreateTrafficControlTargetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateTrafficControlTargetResponse) SetBody(v *CreateTrafficControlTargetResponseBody) *CreateTrafficControlTargetResponse {
+	s.Body = v
+	return s
+}
+
+type CreateTrafficControlTaskRequest struct {
+	BehaviorTableMetaId            *string                                                 `json:"BehaviorTableMetaId,omitempty" xml:"BehaviorTableMetaId,omitempty"`
+	ControlGranularity             *string                                                 `json:"ControlGranularity,omitempty" xml:"ControlGranularity,omitempty"`
+	ControlLogic                   *string                                                 `json:"ControlLogic,omitempty" xml:"ControlLogic,omitempty"`
+	ControlType                    *string                                                 `json:"ControlType,omitempty" xml:"ControlType,omitempty"`
+	Description                    *string                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndTime                        *string                                                 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ExecutionTime                  *string                                                 `json:"ExecutionTime,omitempty" xml:"ExecutionTime,omitempty"`
+	InstanceId                     *string                                                 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ItemConditionArray             *string                                                 `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
+	ItemConditionExpress           *string                                                 `json:"ItemConditionExpress,omitempty" xml:"ItemConditionExpress,omitempty"`
+	ItemConditionType              *string                                                 `json:"ItemConditionType,omitempty" xml:"ItemConditionType,omitempty"`
+	ItemTableMetaId                *string                                                 `json:"ItemTableMetaId,omitempty" xml:"ItemTableMetaId,omitempty"`
+	Name                           *string                                                 `json:"Name,omitempty" xml:"Name,omitempty"`
+	SceneId                        *string                                                 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	StartTime                      *string                                                 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StatisBehaviorConditionArray   *string                                                 `json:"StatisBehaviorConditionArray,omitempty" xml:"StatisBehaviorConditionArray,omitempty"`
+	StatisBehaviorConditionExpress *string                                                 `json:"StatisBehaviorConditionExpress,omitempty" xml:"StatisBehaviorConditionExpress,omitempty"`
+	StatisBehaviorConditionType    *string                                                 `json:"StatisBehaviorConditionType,omitempty" xml:"StatisBehaviorConditionType,omitempty"`
+	TrafficControlTargets          []*CreateTrafficControlTaskRequestTrafficControlTargets `json:"TrafficControlTargets,omitempty" xml:"TrafficControlTargets,omitempty" type:"Repeated"`
+	UserConditionArray             *string                                                 `json:"UserConditionArray,omitempty" xml:"UserConditionArray,omitempty"`
+	UserConditionExpress           *string                                                 `json:"UserConditionExpress,omitempty" xml:"UserConditionExpress,omitempty"`
+	UserConditionType              *string                                                 `json:"UserConditionType,omitempty" xml:"UserConditionType,omitempty"`
+	UserTableMetaId                *string                                                 `json:"UserTableMetaId,omitempty" xml:"UserTableMetaId,omitempty"`
+}
+
+func (s CreateTrafficControlTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTrafficControlTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTrafficControlTaskRequest) SetBehaviorTableMetaId(v string) *CreateTrafficControlTaskRequest {
+	s.BehaviorTableMetaId = &v
+	return s
+}
+
+func (s *CreateTrafficControlTaskRequest) SetControlGranularity(v string) *CreateTrafficControlTaskRequest {
+	s.ControlGranularity = &v
+	return s
+}
+
+func (s *CreateTrafficControlTaskRequest) SetControlLogic(v string) *CreateTrafficControlTaskRequest {
+	s.ControlLogic = &v
+	return s
+}
+
+func (s *CreateTrafficControlTaskRequest) SetControlType(v string) *CreateTrafficControlTaskRequest {
+	s.ControlType = &v
+	return s
+}
+
+func (s *CreateTrafficControlTaskRequest) SetDescription(v string) *CreateTrafficControlTaskRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateTrafficControlTaskRequest) SetEndTime(v string) *CreateTrafficControlTaskRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *CreateTrafficControlTaskRequest) SetExecutionTime(v string) *CreateTrafficControlTaskRequest {
+	s.ExecutionTime = &v
+	return s
+}
+
+func (s *CreateTrafficControlTaskRequest) SetInstanceId(v string) *CreateTrafficControlTaskRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateTrafficControlTaskRequest) SetItemConditionArray(v string) *CreateTrafficControlTaskRequest {
+	s.ItemConditionArray = &v
+	return s
+}
+
+func (s *CreateTrafficControlTaskRequest) SetItemConditionExpress(v string) *CreateTrafficControlTaskRequest {
+	s.ItemConditionExpress = &v
+	return s
+}
+
+func (s *CreateTrafficControlTaskRequest) SetItemConditionType(v string) *CreateTrafficControlTaskRequest {
+	s.ItemConditionType = &v
+	return s
+}
+
+func (s *CreateTrafficControlTaskRequest) SetItemTableMetaId(v string) *CreateTrafficControlTaskRequest {
+	s.ItemTableMetaId = &v
+	return s
+}
+
+func (s *CreateTrafficControlTaskRequest) SetName(v string) *CreateTrafficControlTaskRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateTrafficControlTaskRequest) SetSceneId(v string) *CreateTrafficControlTaskRequest {
+	s.SceneId = &v
+	return s
+}
+
+func (s *CreateTrafficControlTaskRequest) SetStartTime(v string) *CreateTrafficControlTaskRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *CreateTrafficControlTaskRequest) SetStatisBehaviorConditionArray(v string) *CreateTrafficControlTaskRequest {
+	s.StatisBehaviorConditionArray = &v
+	return s
+}
+
+func (s *CreateTrafficControlTaskRequest) SetStatisBehaviorConditionExpress(v string) *CreateTrafficControlTaskRequest {
+	s.StatisBehaviorConditionExpress = &v
+	return s
+}
+
+func (s *CreateTrafficControlTaskRequest) SetStatisBehaviorConditionType(v string) *CreateTrafficControlTaskRequest {
+	s.StatisBehaviorConditionType = &v
+	return s
+}
+
+func (s *CreateTrafficControlTaskRequest) SetTrafficControlTargets(v []*CreateTrafficControlTaskRequestTrafficControlTargets) *CreateTrafficControlTaskRequest {
+	s.TrafficControlTargets = v
+	return s
+}
+
+func (s *CreateTrafficControlTaskRequest) SetUserConditionArray(v string) *CreateTrafficControlTaskRequest {
+	s.UserConditionArray = &v
+	return s
+}
+
+func (s *CreateTrafficControlTaskRequest) SetUserConditionExpress(v string) *CreateTrafficControlTaskRequest {
+	s.UserConditionExpress = &v
+	return s
+}
+
+func (s *CreateTrafficControlTaskRequest) SetUserConditionType(v string) *CreateTrafficControlTaskRequest {
+	s.UserConditionType = &v
+	return s
+}
+
+func (s *CreateTrafficControlTaskRequest) SetUserTableMetaId(v string) *CreateTrafficControlTaskRequest {
+	s.UserTableMetaId = &v
+	return s
+}
+
+type CreateTrafficControlTaskRequestTrafficControlTargets struct {
+	EndTime              *string  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Event                *string  `json:"Event,omitempty" xml:"Event,omitempty"`
+	ItemConditionArray   *string  `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
+	ItemConditionExpress *string  `json:"ItemConditionExpress,omitempty" xml:"ItemConditionExpress,omitempty"`
+	ItemConditionType    *string  `json:"ItemConditionType,omitempty" xml:"ItemConditionType,omitempty"`
+	Name                 *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	NewProductRegulation *bool    `json:"NewProductRegulation,omitempty" xml:"NewProductRegulation,omitempty"`
+	RecallName           *string  `json:"RecallName,omitempty" xml:"RecallName,omitempty"`
+	StartTime            *string  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StatisPeriod         *string  `json:"StatisPeriod,omitempty" xml:"StatisPeriod,omitempty"`
+	Status               *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	ToleranceValue       *int64   `json:"ToleranceValue,omitempty" xml:"ToleranceValue,omitempty"`
+	Value                *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateTrafficControlTaskRequestTrafficControlTargets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTrafficControlTaskRequestTrafficControlTargets) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTrafficControlTaskRequestTrafficControlTargets) SetEndTime(v string) *CreateTrafficControlTaskRequestTrafficControlTargets {
+	s.EndTime = &v
+	return s
+}
+
+func (s *CreateTrafficControlTaskRequestTrafficControlTargets) SetEvent(v string) *CreateTrafficControlTaskRequestTrafficControlTargets {
+	s.Event = &v
+	return s
+}
+
+func (s *CreateTrafficControlTaskRequestTrafficControlTargets) SetItemConditionArray(v string) *CreateTrafficControlTaskRequestTrafficControlTargets {
+	s.ItemConditionArray = &v
+	return s
+}
+
+func (s *CreateTrafficControlTaskRequestTrafficControlTargets) SetItemConditionExpress(v string) *CreateTrafficControlTaskRequestTrafficControlTargets {
+	s.ItemConditionExpress = &v
+	return s
+}
+
+func (s *CreateTrafficControlTaskRequestTrafficControlTargets) SetItemConditionType(v string) *CreateTrafficControlTaskRequestTrafficControlTargets {
+	s.ItemConditionType = &v
+	return s
+}
+
+func (s *CreateTrafficControlTaskRequestTrafficControlTargets) SetName(v string) *CreateTrafficControlTaskRequestTrafficControlTargets {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateTrafficControlTaskRequestTrafficControlTargets) SetNewProductRegulation(v bool) *CreateTrafficControlTaskRequestTrafficControlTargets {
+	s.NewProductRegulation = &v
+	return s
+}
+
+func (s *CreateTrafficControlTaskRequestTrafficControlTargets) SetRecallName(v string) *CreateTrafficControlTaskRequestTrafficControlTargets {
+	s.RecallName = &v
+	return s
+}
+
+func (s *CreateTrafficControlTaskRequestTrafficControlTargets) SetStartTime(v string) *CreateTrafficControlTaskRequestTrafficControlTargets {
+	s.StartTime = &v
+	return s
+}
+
+func (s *CreateTrafficControlTaskRequestTrafficControlTargets) SetStatisPeriod(v string) *CreateTrafficControlTaskRequestTrafficControlTargets {
+	s.StatisPeriod = &v
+	return s
+}
+
+func (s *CreateTrafficControlTaskRequestTrafficControlTargets) SetStatus(v string) *CreateTrafficControlTaskRequestTrafficControlTargets {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateTrafficControlTaskRequestTrafficControlTargets) SetToleranceValue(v int64) *CreateTrafficControlTaskRequestTrafficControlTargets {
+	s.ToleranceValue = &v
+	return s
+}
+
+func (s *CreateTrafficControlTaskRequestTrafficControlTargets) SetValue(v float32) *CreateTrafficControlTaskRequestTrafficControlTargets {
+	s.Value = &v
+	return s
+}
+
+type CreateTrafficControlTaskResponseBody struct {
+	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TrafficControlTaskId *string `json:"TrafficControlTaskId,omitempty" xml:"TrafficControlTaskId,omitempty"`
+}
+
+func (s CreateTrafficControlTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTrafficControlTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTrafficControlTaskResponseBody) SetRequestId(v string) *CreateTrafficControlTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateTrafficControlTaskResponseBody) SetTrafficControlTaskId(v string) *CreateTrafficControlTaskResponseBody {
+	s.TrafficControlTaskId = &v
+	return s
+}
+
+type CreateTrafficControlTaskResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTrafficControlTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateTrafficControlTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTrafficControlTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTrafficControlTaskResponse) SetHeaders(v map[string]*string) *CreateTrafficControlTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateTrafficControlTaskResponse) SetStatusCode(v int32) *CreateTrafficControlTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateTrafficControlTaskResponse) SetBody(v *CreateTrafficControlTaskResponseBody) *CreateTrafficControlTaskResponse {
+	s.Body = v
+	return s
+}
+
 type DebugResourceRuleRequest struct {
-	InstanceId *string                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
 	MetricInfo map[string]interface{} `json:"MetricInfo,omitempty" xml:"MetricInfo,omitempty"`
 	RegionId   *string                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -2631,7 +3894,9 @@ func (s *DebugResourceRuleRequest) SetRegionId(v string) *DebugResourceRuleReque
 }
 
 type DebugResourceRuleShrinkRequest struct {
-	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
 	MetricInfoShrink *string `json:"MetricInfo,omitempty" xml:"MetricInfo,omitempty"`
 	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -2718,6 +3983,11 @@ func (s *DebugResourceRuleResponse) SetBody(v *DebugResourceRuleResponseBody) *D
 }
 
 type DeleteABMetricRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -2735,6 +4005,9 @@ func (s *DeleteABMetricRequest) SetInstanceId(v string) *DeleteABMetricRequest {
 }
 
 type DeleteABMetricResponseBody struct {
+	// example:
+	//
+	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2781,6 +4054,11 @@ func (s *DeleteABMetricResponse) SetBody(v *DeleteABMetricResponseBody) *DeleteA
 }
 
 type DeleteABMetricGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -2798,6 +4076,9 @@ func (s *DeleteABMetricGroupRequest) SetInstanceId(v string) *DeleteABMetricGrou
 }
 
 type DeleteABMetricGroupResponseBody struct {
+	// example:
+	//
+	// BDB621CB-A81E-5D39-8793-39A365CBCC74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2844,6 +4125,11 @@ func (s *DeleteABMetricGroupResponse) SetBody(v *DeleteABMetricGroupResponseBody
 }
 
 type DeleteCrowdRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -2862,6 +4148,10 @@ func (s *DeleteCrowdRequest) SetInstanceId(v string) *DeleteCrowdRequest {
 
 type DeleteCrowdResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// A04CB8C0-E74A-5E83-BC61-64D153574EC7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2908,6 +4198,11 @@ func (s *DeleteCrowdResponse) SetBody(v *DeleteCrowdResponseBody) *DeleteCrowdRe
 }
 
 type DeleteExperimentRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -2926,6 +4221,10 @@ func (s *DeleteExperimentRequest) SetInstanceId(v string) *DeleteExperimentReque
 
 type DeleteExperimentResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// 2A734D87-2212-5C84-B63A-1AC87CA843D4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2972,6 +4271,11 @@ func (s *DeleteExperimentResponse) SetBody(v *DeleteExperimentResponseBody) *Del
 }
 
 type DeleteExperimentGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -2990,6 +4294,10 @@ func (s *DeleteExperimentGroupRequest) SetInstanceId(v string) *DeleteExperiment
 
 type DeleteExperimentGroupResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// A009D9BE-C85E-57B2-AE05-BD78BB6EBF50
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3036,6 +4344,9 @@ func (s *DeleteExperimentGroupResponse) SetBody(v *DeleteExperimentGroupResponse
 }
 
 type DeleteInstanceResourceResponseBody struct {
+	// example:
+	//
+	// 7D59453C-48AA-5FC5-8848-2D373BD1A17F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3082,6 +4393,11 @@ func (s *DeleteInstanceResourceResponse) SetBody(v *DeleteInstanceResourceRespon
 }
 
 type DeleteLaboratoryRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -3100,6 +4416,10 @@ func (s *DeleteLaboratoryRequest) SetInstanceId(v string) *DeleteLaboratoryReque
 
 type DeleteLaboratoryResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// 1C0898E5-9220-5443-B2D9-445FF0688215
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3146,6 +4466,9 @@ func (s *DeleteLaboratoryResponse) SetBody(v *DeleteLaboratoryResponseBody) *Del
 }
 
 type DeleteLayerRequest struct {
+	// example:
+	//
+	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -3164,6 +4487,10 @@ func (s *DeleteLayerRequest) SetInstanceId(v string) *DeleteLayerRequest {
 
 type DeleteLayerResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// 8F457D79-C4A2-5E8C-83E4-0D089456E2AC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3210,6 +4537,9 @@ func (s *DeleteLayerResponse) SetBody(v *DeleteLayerResponseBody) *DeleteLayerRe
 }
 
 type DeleteParamRequest struct {
+	// example:
+	//
+	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -3228,6 +4558,10 @@ func (s *DeleteParamRequest) SetInstanceId(v string) *DeleteParamRequest {
 
 type DeleteParamResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// F0AB6527-093F-5C44-B3BD-42C8C210C619
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3274,6 +4608,7 @@ func (s *DeleteParamResponse) SetBody(v *DeleteParamResponseBody) *DeleteParamRe
 }
 
 type DeleteResourceRuleRequest struct {
+	// This parameter is required.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -3337,6 +4672,7 @@ func (s *DeleteResourceRuleResponse) SetBody(v *DeleteResourceRuleResponseBody) 
 }
 
 type DeleteResourceRuleItemRequest struct {
+	// This parameter is required.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -3400,6 +4736,9 @@ func (s *DeleteResourceRuleItemResponse) SetBody(v *DeleteResourceRuleItemRespon
 }
 
 type DeleteSceneRequest struct {
+	// example:
+	//
+	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -3418,6 +4757,10 @@ func (s *DeleteSceneRequest) SetInstanceId(v string) *DeleteSceneRequest {
 
 type DeleteSceneResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// D75C43DC-3D3A-5CC8-9AAC-8C77306C433B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3464,6 +4807,11 @@ func (s *DeleteSceneResponse) SetBody(v *DeleteSceneResponseBody) *DeleteSceneRe
 }
 
 type DeleteSubCrowdRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -3482,6 +4830,10 @@ func (s *DeleteSubCrowdRequest) SetInstanceId(v string) *DeleteSubCrowdRequest {
 
 type DeleteSubCrowdResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// EE97D06A-2AA0-5AD9-B6CF-8A267924D691
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3528,6 +4880,7 @@ func (s *DeleteSubCrowdResponse) SetBody(v *DeleteSubCrowdResponseBody) *DeleteS
 }
 
 type DeleteTableMetaRequest struct {
+	// This parameter is required.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -3545,6 +4898,9 @@ func (s *DeleteTableMetaRequest) SetInstanceId(v string) *DeleteTableMetaRequest
 }
 
 type DeleteTableMetaResponseBody struct {
+	// example:
+	//
+	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3590,7 +4946,276 @@ func (s *DeleteTableMetaResponse) SetBody(v *DeleteTableMetaResponseBody) *Delet
 	return s
 }
 
+type DeleteTrafficControlTargetRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DeleteTrafficControlTargetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTrafficControlTargetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTrafficControlTargetRequest) SetInstanceId(v string) *DeleteTrafficControlTargetRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DeleteTrafficControlTargetResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteTrafficControlTargetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTrafficControlTargetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTrafficControlTargetResponseBody) SetRequestId(v string) *DeleteTrafficControlTargetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteTrafficControlTargetResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteTrafficControlTargetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteTrafficControlTargetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTrafficControlTargetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTrafficControlTargetResponse) SetHeaders(v map[string]*string) *DeleteTrafficControlTargetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteTrafficControlTargetResponse) SetStatusCode(v int32) *DeleteTrafficControlTargetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteTrafficControlTargetResponse) SetBody(v *DeleteTrafficControlTargetResponseBody) *DeleteTrafficControlTargetResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteTrafficControlTaskRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DeleteTrafficControlTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTrafficControlTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTrafficControlTaskRequest) SetInstanceId(v string) *DeleteTrafficControlTaskRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DeleteTrafficControlTaskResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteTrafficControlTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTrafficControlTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTrafficControlTaskResponseBody) SetRequestId(v string) *DeleteTrafficControlTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteTrafficControlTaskResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteTrafficControlTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteTrafficControlTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTrafficControlTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTrafficControlTaskResponse) SetHeaders(v map[string]*string) *DeleteTrafficControlTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteTrafficControlTaskResponse) SetStatusCode(v int32) *DeleteTrafficControlTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteTrafficControlTaskResponse) SetBody(v *DeleteTrafficControlTaskResponseBody) *DeleteTrafficControlTaskResponse {
+	s.Body = v
+	return s
+}
+
+type GenerateTrafficControlTaskCodeRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s GenerateTrafficControlTaskCodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateTrafficControlTaskCodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateTrafficControlTaskCodeRequest) SetInstanceId(v string) *GenerateTrafficControlTaskCodeRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type GenerateTrafficControlTaskCodeResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GenerateTrafficControlTaskCodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateTrafficControlTaskCodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateTrafficControlTaskCodeResponseBody) SetCode(v string) *GenerateTrafficControlTaskCodeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GenerateTrafficControlTaskCodeResponseBody) SetRequestId(v string) *GenerateTrafficControlTaskCodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GenerateTrafficControlTaskCodeResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateTrafficControlTaskCodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GenerateTrafficControlTaskCodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateTrafficControlTaskCodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateTrafficControlTaskCodeResponse) SetHeaders(v map[string]*string) *GenerateTrafficControlTaskCodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenerateTrafficControlTaskCodeResponse) SetStatusCode(v int32) *GenerateTrafficControlTaskCodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GenerateTrafficControlTaskCodeResponse) SetBody(v *GenerateTrafficControlTaskCodeResponseBody) *GenerateTrafficControlTaskCodeResponse {
+	s.Body = v
+	return s
+}
+
+type GenerateTrafficControlTaskConfigRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s GenerateTrafficControlTaskConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateTrafficControlTaskConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateTrafficControlTaskConfigRequest) SetInstanceId(v string) *GenerateTrafficControlTaskConfigRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type GenerateTrafficControlTaskConfigResponseBody struct {
+	Config    *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GenerateTrafficControlTaskConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateTrafficControlTaskConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateTrafficControlTaskConfigResponseBody) SetConfig(v string) *GenerateTrafficControlTaskConfigResponseBody {
+	s.Config = &v
+	return s
+}
+
+func (s *GenerateTrafficControlTaskConfigResponseBody) SetRequestId(v string) *GenerateTrafficControlTaskConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GenerateTrafficControlTaskConfigResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateTrafficControlTaskConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GenerateTrafficControlTaskConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateTrafficControlTaskConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateTrafficControlTaskConfigResponse) SetHeaders(v map[string]*string) *GenerateTrafficControlTaskConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenerateTrafficControlTaskConfigResponse) SetStatusCode(v int32) *GenerateTrafficControlTaskConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GenerateTrafficControlTaskConfigResponse) SetBody(v *GenerateTrafficControlTaskConfigResponseBody) *GenerateTrafficControlTaskConfigResponse {
+	s.Body = v
+	return s
+}
+
 type GetABMetricRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -3608,21 +5233,63 @@ func (s *GetABMetricRequest) SetInstanceId(v string) *GetABMetricRequest {
 }
 
 type GetABMetricResponseBody struct {
-	Definition        *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	LeftMetricId      *string `json:"LeftMetricId,omitempty" xml:"LeftMetricId,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Operator          *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	Realtime          *string `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResultResourceId  *string `json:"ResultResourceId,omitempty" xml:"ResultResourceId,omitempty"`
+	// example:
+	//
+	// sum(click_cnt)
+	Definition  *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 3
+	LeftMetricId *string `json:"LeftMetricId,omitempty" xml:"LeftMetricId,omitempty"`
+	// example:
+	//
+	// pv
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Division
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// example:
+	//
+	// false
+	Realtime *string `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
+	// example:
+	//
+	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 5
+	ResultResourceId *string `json:"ResultResourceId,omitempty" xml:"ResultResourceId,omitempty"`
+	// example:
+	//
+	// 3
 	ResultTableMetaId *string `json:"ResultTableMetaId,omitempty" xml:"ResultTableMetaId,omitempty"`
-	RightMetricId     *string `json:"RightMetricId,omitempty" xml:"RightMetricId,omitempty"`
-	SceneId           *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	SceneName         *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
-	StatisticsCycle   *int32  `json:"StatisticsCycle,omitempty" xml:"StatisticsCycle,omitempty"`
-	TableMetaId       *string `json:"TableMetaId,omitempty" xml:"TableMetaId,omitempty"`
-	Type              *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 2
+	RightMetricId *string `json:"RightMetricId,omitempty" xml:"RightMetricId,omitempty"`
+	// example:
+	//
+	// 1
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// example:
+	//
+	// home_feed
+	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	// example:
+	//
+	// 1
+	StatisticsCycle *int32 `json:"StatisticsCycle,omitempty" xml:"StatisticsCycle,omitempty"`
+	// example:
+	//
+	// 2
+	TableMetaId *string `json:"TableMetaId,omitempty" xml:"TableMetaId,omitempty"`
+	// example:
+	//
+	// Single
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetABMetricResponseBody) String() string {
@@ -3738,6 +5405,11 @@ func (s *GetABMetricResponse) SetBody(v *GetABMetricResponseBody) *GetABMetricRe
 }
 
 type GetABMetricGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -3755,14 +5427,35 @@ func (s *GetABMetricGroupRequest) SetInstanceId(v string) *GetABMetricGroupReque
 }
 
 type GetABMetricGroupResponseBody struct {
-	ABMetricIds   *string `json:"ABMetricIds,omitempty" xml:"ABMetricIds,omitempty"`
+	// example:
+	//
+	// 1,2
+	ABMetricIds *string `json:"ABMetricIds,omitempty" xml:"ABMetricIds,omitempty"`
+	// example:
+	//
+	// pv,uv
 	ABMetricNames *string `json:"ABMetricNames,omitempty" xml:"ABMetricNames,omitempty"`
 	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Owner         *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	Realtime      *bool   `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SceneId       *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// example:
+	//
+	// visits
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 2799614***
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// false
+	Realtime *bool `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
+	// example:
+	//
+	// 01D22D08-BA20-5F35-8302-99115F288220
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
 func (s GetABMetricGroupResponseBody) String() string {
@@ -3843,6 +5536,11 @@ func (s *GetABMetricGroupResponse) SetBody(v *GetABMetricGroupResponseBody) *Get
 }
 
 type GetCalculationJobRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -3860,15 +5558,39 @@ func (s *GetCalculationJobRequest) SetInstanceId(v string) *GetCalculationJobReq
 }
 
 type GetCalculationJobResponseBody struct {
-	ABMetricId   *string   `json:"ABMetricId,omitempty" xml:"ABMetricId,omitempty"`
-	ABMetricName *string   `json:"ABMetricName,omitempty" xml:"ABMetricName,omitempty"`
-	BizDate      *string   `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
-	Config       *string   `json:"Config,omitempty" xml:"Config,omitempty"`
-	GmtRanTime   *string   `json:"GmtRanTime,omitempty" xml:"GmtRanTime,omitempty"`
-	JobMessage   []*string `json:"JobMessage,omitempty" xml:"JobMessage,omitempty" type:"Repeated"`
-	JobSource    *string   `json:"JobSource,omitempty" xml:"JobSource,omitempty"`
-	RequestId    *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status       *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1
+	ABMetricId *string `json:"ABMetricId,omitempty" xml:"ABMetricId,omitempty"`
+	// example:
+	//
+	// pv
+	ABMetricName *string `json:"ABMetricName,omitempty" xml:"ABMetricName,omitempty"`
+	// example:
+	//
+	// 2021-12-15
+	BizDate *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
+	// example:
+	//
+	// {}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
+	GmtRanTime *string   `json:"GmtRanTime,omitempty" xml:"GmtRanTime,omitempty"`
+	JobMessage []*string `json:"JobMessage,omitempty" xml:"JobMessage,omitempty" type:"Repeated"`
+	// example:
+	//
+	// CronOffline
+	JobSource *string `json:"JobSource,omitempty" xml:"JobSource,omitempty"`
+	// example:
+	//
+	// 7D59453C-48AA-5FC5-8848-2D373BD1A17F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetCalculationJobResponseBody) String() string {
@@ -3954,6 +5676,11 @@ func (s *GetCalculationJobResponse) SetBody(v *GetCalculationJobResponseBody) *G
 }
 
 type GetExperimentRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -3971,24 +5698,76 @@ func (s *GetExperimentRequest) SetInstanceId(v string) *GetExperimentRequest {
 }
 
 type GetExperimentResponseBody struct {
+	// example:
+	//
+	// L1#EG1#E1
 	AliasExperimentId *string `json:"AliasExperimentId,omitempty" xml:"AliasExperimentId,omitempty"`
-	Buckets           *string `json:"Buckets,omitempty" xml:"Buckets,omitempty"`
-	Config            *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	DebugCrowdId      *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
-	DebugUsers        *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
-	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 1,2,3
+	Buckets *string `json:"Buckets,omitempty" xml:"Buckets,omitempty"`
+	// example:
+	//
+	// {}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// example:
+	//
+	// 3
+	DebugCrowdId *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
+	// example:
+	//
+	// uid1,uid2,uid3
+	DebugUsers *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
+	// example:
+	//
+	// This is a test.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 3
 	ExperimentGroupId *string `json:"ExperimentGroupId,omitempty" xml:"ExperimentGroupId,omitempty"`
-	FlowPercent       *int32  `json:"FlowPercent,omitempty" xml:"FlowPercent,omitempty"`
-	GmtCreateTime     *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime   *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	LaboratoryId      *string `json:"LaboratoryId,omitempty" xml:"LaboratoryId,omitempty"`
-	LayerId           *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 100
+	FlowPercent *int32 `json:"FlowPercent,omitempty" xml:"FlowPercent,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// 3
+	LaboratoryId *string `json:"LaboratoryId,omitempty" xml:"LaboratoryId,omitempty"`
+	// example:
+	//
+	// 3
+	LayerId *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
+	// example:
+	//
+	// experiment_test1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 74D958EF-3598-56FA-8296-FF1575CE43DF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SceneId   *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 3
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// example:
+	//
+	// Offline
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// Baseline
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetExperimentResponseBody) String() string {
@@ -4114,6 +5893,11 @@ func (s *GetExperimentResponse) SetBody(v *GetExperimentResponseBody) *GetExperi
 }
 
 type GetExperimentGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -4131,27 +5915,79 @@ func (s *GetExperimentGroupRequest) SetInstanceId(v string) *GetExperimentGroupR
 }
 
 type GetExperimentGroupResponseBody struct {
-	Config                   *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	CrowdId                  *string `json:"CrowdId,omitempty" xml:"CrowdId,omitempty"`
-	CrowdTargetType          *string `json:"CrowdTargetType,omitempty" xml:"CrowdTargetType,omitempty"`
-	DebugCrowdId             *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
-	DebugUsers               *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
-	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DistributionTimeDuration *int32  `json:"DistributionTimeDuration,omitempty" xml:"DistributionTimeDuration,omitempty"`
-	DistributionType         *string `json:"DistributionType,omitempty" xml:"DistributionType,omitempty"`
-	Filter                   *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	HoldingBuckets           *string `json:"HoldingBuckets,omitempty" xml:"HoldingBuckets,omitempty"`
-	LaboratoryId             *string `json:"LaboratoryId,omitempty" xml:"LaboratoryId,omitempty"`
-	LayerId                  *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
-	Name                     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NeedAA                   *bool   `json:"NeedAA,omitempty" xml:"NeedAA,omitempty"`
-	Owner                    *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	RandomFlow               *int64  `json:"RandomFlow,omitempty" xml:"RandomFlow,omitempty"`
+	// example:
+	//
+	// {"RankBy": "Score"}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// example:
+	//
+	// 3
+	CrowdId         *string `json:"CrowdId,omitempty" xml:"CrowdId,omitempty"`
+	CrowdTargetType *string `json:"CrowdTargetType,omitempty" xml:"CrowdTargetType,omitempty"`
+	// example:
+	//
+	// 4
+	DebugCrowdId *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
+	// example:
+	//
+	// 1124512470******,1124512471******,1124512472******
+	DebugUsers *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
+	// example:
+	//
+	// This is a test.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 5
+	DistributionTimeDuration *int32 `json:"DistributionTimeDuration,omitempty" xml:"DistributionTimeDuration,omitempty"`
+	// example:
+	//
+	// UserId
+	DistributionType *string `json:"DistributionType,omitempty" xml:"DistributionType,omitempty"`
+	// example:
+	//
+	// gender=female
+	Filter         *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	HoldingBuckets *string `json:"HoldingBuckets,omitempty" xml:"HoldingBuckets,omitempty"`
+	// example:
+	//
+	// 4
+	LaboratoryId *string `json:"LaboratoryId,omitempty" xml:"LaboratoryId,omitempty"`
+	// example:
+	//
+	// 3
+	LayerId *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
+	// example:
+	//
+	// experiment_group1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// true
+	NeedAA *bool `json:"NeedAA,omitempty" xml:"NeedAA,omitempty"`
+	// example:
+	//
+	// 1124512470******
+	Owner      *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	RandomFlow *int64  `json:"RandomFlow,omitempty" xml:"RandomFlow,omitempty"`
 	// Id of the request
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	//
+	// example:
+	//
+	// BDB621CB-A81E-5D39-8793-39A365CBCC74
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1,2,3,4
 	ReservedBuckets *string `json:"ReservedBuckets,omitempty" xml:"ReservedBuckets,omitempty"`
-	SceneId         *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// example:
+	//
+	// Offline
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetExperimentGroupResponseBody) String() string {
@@ -4292,6 +6128,9 @@ func (s *GetExperimentGroupResponse) SetBody(v *GetExperimentGroupResponseBody) 
 }
 
 type GetFeatureConsistencyCheckJobRequest struct {
+	// example:
+	//
+	// pairec-cn-********
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -4309,14 +6148,35 @@ func (s *GetFeatureConsistencyCheckJobRequest) SetInstanceId(v string) *GetFeatu
 }
 
 type GetFeatureConsistencyCheckJobResponseBody struct {
-	Config                               *string   `json:"Config,omitempty" xml:"Config,omitempty"`
-	FeatureConsistencyCheckJobConfigId   *string   `json:"FeatureConsistencyCheckJobConfigId,omitempty" xml:"FeatureConsistencyCheckJobConfigId,omitempty"`
-	FeatureConsistencyCheckJobConfigName *string   `json:"FeatureConsistencyCheckJobConfigName,omitempty" xml:"FeatureConsistencyCheckJobConfigName,omitempty"`
-	GmtEndTime                           *string   `json:"GmtEndTime,omitempty" xml:"GmtEndTime,omitempty"`
-	GmtStartTime                         *string   `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
-	Logs                                 []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
-	RequestId                            *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status                               *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// {}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// example:
+	//
+	// 5
+	FeatureConsistencyCheckJobConfigId *string `json:"FeatureConsistencyCheckJobConfigId,omitempty" xml:"FeatureConsistencyCheckJobConfigId,omitempty"`
+	// example:
+	//
+	// feature_consistency_check_1
+	FeatureConsistencyCheckJobConfigName *string `json:"FeatureConsistencyCheckJobConfigName,omitempty" xml:"FeatureConsistencyCheckJobConfigName,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
+	GmtEndTime *string `json:"GmtEndTime,omitempty" xml:"GmtEndTime,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
+	GmtStartTime *string   `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
+	Logs         []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// A04CB8C0-E74A-5E83-BC61-64D153574EC7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetFeatureConsistencyCheckJobResponseBody) String() string {
@@ -4397,6 +6257,11 @@ func (s *GetFeatureConsistencyCheckJobResponse) SetBody(v *GetFeatureConsistency
 }
 
 type GetFeatureConsistencyCheckJobConfigRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-********
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -4414,48 +6279,153 @@ func (s *GetFeatureConsistencyCheckJobConfigRequest) SetInstanceId(v string) *Ge
 }
 
 type GetFeatureConsistencyCheckJobConfigResponseBody struct {
-	CompareFeature                *bool   `json:"CompareFeature,omitempty" xml:"CompareFeature,omitempty"`
-	EasServiceName                *string `json:"EasServiceName,omitempty" xml:"EasServiceName,omitempty"`
-	EasyRecPackagePath            *string `json:"EasyRecPackagePath,omitempty" xml:"EasyRecPackagePath,omitempty"`
-	EasyRecVersion                *string `json:"EasyRecVersion,omitempty" xml:"EasyRecVersion,omitempty"`
-	FeatureDisplayExclude         *string `json:"FeatureDisplayExclude,omitempty" xml:"FeatureDisplayExclude,omitempty"`
-	FeatureLandingResourceId      *string `json:"FeatureLandingResourceId,omitempty" xml:"FeatureLandingResourceId,omitempty"`
-	FeatureLandingResourceUri     *string `json:"FeatureLandingResourceUri,omitempty" xml:"FeatureLandingResourceUri,omitempty"`
-	FeaturePriority               *string `json:"FeaturePriority,omitempty" xml:"FeaturePriority,omitempty"`
-	FeatureStoreItemId            *string `json:"FeatureStoreItemId,omitempty" xml:"FeatureStoreItemId,omitempty"`
-	FeatureStoreModelId           *string `json:"FeatureStoreModelId,omitempty" xml:"FeatureStoreModelId,omitempty"`
-	FeatureStoreProjectId         *string `json:"FeatureStoreProjectId,omitempty" xml:"FeatureStoreProjectId,omitempty"`
-	FeatureStoreProjectName       *string `json:"FeatureStoreProjectName,omitempty" xml:"FeatureStoreProjectName,omitempty"`
-	FeatureStoreSeqFeatureView    *string `json:"FeatureStoreSeqFeatureView,omitempty" xml:"FeatureStoreSeqFeatureView,omitempty"`
-	FeatureStoreUserId            *string `json:"FeatureStoreUserId,omitempty" xml:"FeatureStoreUserId,omitempty"`
-	FgJarVersion                  *string `json:"FgJarVersion,omitempty" xml:"FgJarVersion,omitempty"`
-	FgJsonFileName                *string `json:"FgJsonFileName,omitempty" xml:"FgJsonFileName,omitempty"`
-	GenerateZip                   *bool   `json:"GenerateZip,omitempty" xml:"GenerateZip,omitempty"`
-	GmtCreateTime                 *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime               *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	ItemIdField                   *string `json:"ItemIdField,omitempty" xml:"ItemIdField,omitempty"`
-	ItemTable                     *string `json:"ItemTable,omitempty" xml:"ItemTable,omitempty"`
-	ItemTablePartitionField       *string `json:"ItemTablePartitionField,omitempty" xml:"ItemTablePartitionField,omitempty"`
+	// example:
+	//
+	// true
+	CompareFeature *bool `json:"CompareFeature,omitempty" xml:"CompareFeature,omitempty"`
+	// example:
+	//
+	// eas_service_1
+	EasServiceName *string `json:"EasServiceName,omitempty" xml:"EasServiceName,omitempty"`
+	// example:
+	//
+	// oss://*******
+	EasyRecPackagePath *string `json:"EasyRecPackagePath,omitempty" xml:"EasyRecPackagePath,omitempty"`
+	// example:
+	//
+	// 1.3.60
+	EasyRecVersion *string `json:"EasyRecVersion,omitempty" xml:"EasyRecVersion,omitempty"`
+	// example:
+	//
+	// feature1,feature2
+	FeatureDisplayExclude *string `json:"FeatureDisplayExclude,omitempty" xml:"FeatureDisplayExclude,omitempty"`
+	// example:
+	//
+	// reso-********
+	FeatureLandingResourceId *string `json:"FeatureLandingResourceId,omitempty" xml:"FeatureLandingResourceId,omitempty"`
+	// example:
+	//
+	// mc_project_1
+	FeatureLandingResourceUri *string `json:"FeatureLandingResourceUri,omitempty" xml:"FeatureLandingResourceUri,omitempty"`
+	// example:
+	//
+	// feature1,feature2,feature3
+	FeaturePriority            *string `json:"FeaturePriority,omitempty" xml:"FeaturePriority,omitempty"`
+	FeatureStoreItemId         *string `json:"FeatureStoreItemId,omitempty" xml:"FeatureStoreItemId,omitempty"`
+	FeatureStoreModelId        *string `json:"FeatureStoreModelId,omitempty" xml:"FeatureStoreModelId,omitempty"`
+	FeatureStoreProjectId      *string `json:"FeatureStoreProjectId,omitempty" xml:"FeatureStoreProjectId,omitempty"`
+	FeatureStoreProjectName    *string `json:"FeatureStoreProjectName,omitempty" xml:"FeatureStoreProjectName,omitempty"`
+	FeatureStoreSeqFeatureView *string `json:"FeatureStoreSeqFeatureView,omitempty" xml:"FeatureStoreSeqFeatureView,omitempty"`
+	FeatureStoreUserId         *string `json:"FeatureStoreUserId,omitempty" xml:"FeatureStoreUserId,omitempty"`
+	// example:
+	//
+	// 1.0.0
+	FgJarVersion *string `json:"FgJarVersion,omitempty" xml:"FgJarVersion,omitempty"`
+	// example:
+	//
+	// file.json
+	FgJsonFileName *string `json:"FgJsonFileName,omitempty" xml:"FgJsonFileName,omitempty"`
+	// example:
+	//
+	// true
+	GenerateZip *bool `json:"GenerateZip,omitempty" xml:"GenerateZip,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// item_id
+	ItemIdField *string `json:"ItemIdField,omitempty" xml:"ItemIdField,omitempty"`
+	// example:
+	//
+	// item_table
+	ItemTable *string `json:"ItemTable,omitempty" xml:"ItemTable,omitempty"`
+	// example:
+	//
+	// ds
+	ItemTablePartitionField *string `json:"ItemTablePartitionField,omitempty" xml:"ItemTablePartitionField,omitempty"`
+	// example:
+	//
+	// yyyymmdd
 	ItemTablePartitionFieldFormat *string `json:"ItemTablePartitionFieldFormat,omitempty" xml:"ItemTablePartitionFieldFormat,omitempty"`
-	LatestJobGmtSamplingEndTime   *string `json:"LatestJobGmtSamplingEndTime,omitempty" xml:"LatestJobGmtSamplingEndTime,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
+	LatestJobGmtSamplingEndTime *string `json:"LatestJobGmtSamplingEndTime,omitempty" xml:"LatestJobGmtSamplingEndTime,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
 	LatestJobGmtSamplingStartTime *string `json:"LatestJobGmtSamplingStartTime,omitempty" xml:"LatestJobGmtSamplingStartTime,omitempty"`
-	LatestJobId                   *string `json:"LatestJobId,omitempty" xml:"LatestJobId,omitempty"`
-	Name                          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OssBucket                     *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssResourceId                 *string `json:"OssResourceId,omitempty" xml:"OssResourceId,omitempty"`
-	RequestId                     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SampleRate                    *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
-	SceneId                       *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	SceneName                     *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
-	ServiceId                     *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	ServiceName                   *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	Status                        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UseFeatureStore               *bool   `json:"UseFeatureStore,omitempty" xml:"UseFeatureStore,omitempty"`
-	UserIdField                   *string `json:"UserIdField,omitempty" xml:"UserIdField,omitempty"`
-	UserTable                     *string `json:"UserTable,omitempty" xml:"UserTable,omitempty"`
-	UserTablePartitionField       *string `json:"UserTablePartitionField,omitempty" xml:"UserTablePartitionField,omitempty"`
+	// example:
+	//
+	// 3
+	LatestJobId *string `json:"LatestJobId,omitempty" xml:"LatestJobId,omitempty"`
+	// example:
+	//
+	// feature_consistency_check1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// oss_bucket_1
+	OssBucket *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	// example:
+	//
+	// reso-********
+	OssResourceId *string `json:"OssResourceId,omitempty" xml:"OssResourceId,omitempty"`
+	// example:
+	//
+	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 0.89
+	SampleRate *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+	// example:
+	//
+	// 3
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// example:
+	//
+	// scene1
+	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	// example:
+	//
+	// 4
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// example:
+	//
+	// service1
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// example:
+	//
+	// Editable
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UseFeatureStore *bool   `json:"UseFeatureStore,omitempty" xml:"UseFeatureStore,omitempty"`
+	// example:
+	//
+	// user_id
+	UserIdField *string `json:"UserIdField,omitempty" xml:"UserIdField,omitempty"`
+	// example:
+	//
+	// user_table
+	UserTable *string `json:"UserTable,omitempty" xml:"UserTable,omitempty"`
+	// example:
+	//
+	// ds
+	UserTablePartitionField *string `json:"UserTablePartitionField,omitempty" xml:"UserTablePartitionField,omitempty"`
+	// example:
+	//
+	// yyyymmdd
 	UserTablePartitionFieldFormat *string `json:"UserTablePartitionFieldFormat,omitempty" xml:"UserTablePartitionFieldFormat,omitempty"`
-	WorkflowName                  *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
+	// example:
+	//
+	// work_flow_1
+	WorkflowName *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
 }
 
 func (s GetFeatureConsistencyCheckJobConfigResponseBody) String() string {
@@ -4706,17 +6676,47 @@ func (s *GetFeatureConsistencyCheckJobConfigResponse) SetBody(v *GetFeatureConsi
 }
 
 type GetInstanceResponseBody struct {
-	ChargeType      *string                        `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	CommodityCode   *string                        `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	Config          *GetInstanceResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-	ExpiredTime     *string                        `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	GmtCreateTime   *string                        `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime *string                        `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	InstanceId      *string                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId        *string                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId       *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status          *string                        `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type            *string                        `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// Subscription
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// airec_developers_public_cn
+	CommodityCode *string                        `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	Config        *GetInstanceResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2022-12-14 00:00:00.0
+	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// example:
+	//
+	// 2022-10-13 17:34:52.0
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2022-11-05 09:02:30.0
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// pairec-test1
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// cn-shenzhen
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Initializing
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// basic
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetInstanceResponseBody) String() string {
@@ -4812,9 +6812,15 @@ func (s *GetInstanceResponseBodyConfig) SetMonitors(v []*GetInstanceResponseBody
 }
 
 type GetInstanceResponseBodyConfigDataManagements struct {
+	// example:
+	//
+	// storage
 	ComponentCode *string                `json:"ComponentCode,omitempty" xml:"ComponentCode,omitempty"`
 	Meta          map[string]interface{} `json:"Meta,omitempty" xml:"Meta,omitempty"`
-	Type          *string                `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// OSS
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetInstanceResponseBodyConfigDataManagements) String() string {
@@ -4841,9 +6847,15 @@ func (s *GetInstanceResponseBodyConfigDataManagements) SetType(v string) *GetIns
 }
 
 type GetInstanceResponseBodyConfigEngines struct {
+	// example:
+	//
+	// feature
 	ComponentCode *string                `json:"ComponentCode,omitempty" xml:"ComponentCode,omitempty"`
 	Meta          map[string]interface{} `json:"Meta,omitempty" xml:"Meta,omitempty"`
-	Type          *string                `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// Hologres
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetInstanceResponseBodyConfigEngines) String() string {
@@ -4870,9 +6882,15 @@ func (s *GetInstanceResponseBodyConfigEngines) SetType(v string) *GetInstanceRes
 }
 
 type GetInstanceResponseBodyConfigMonitors struct {
+	// example:
+	//
+	// featuresets
 	ComponentCode *string                `json:"ComponentCode,omitempty" xml:"ComponentCode,omitempty"`
 	Meta          map[string]interface{} `json:"Meta,omitempty" xml:"Meta,omitempty"`
-	Type          *string                `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// Platform
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetInstanceResponseBodyConfigMonitors) String() string {
@@ -4928,15 +6946,42 @@ func (s *GetInstanceResponse) SetBody(v *GetInstanceResponseBody) *GetInstanceRe
 }
 
 type GetInstanceResourceResponseBody struct {
-	Category        *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	Config          *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// DataManagement
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// example:
+	//
+	// {}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// example:
+	//
+	// 2020-10-13 17:34:52
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2020-10-13 17:34:52
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	Group           *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceId      *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Uri             *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// example:
+	//
+	// storage
+	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// example:
+	//
+	// D75C43DC-3D3A-5CC8-9AAC-8C77306C433B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// reso-2s416t***
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// OSS
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// bucket-test-123
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s GetInstanceResourceResponseBody) String() string {
@@ -5022,9 +7067,15 @@ func (s *GetInstanceResourceResponse) SetBody(v *GetInstanceResourceResponseBody
 }
 
 type GetInstanceResourceTableResponseBody struct {
-	Fields    []*GetInstanceResourceTableResponseBodyFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TableName *string                                       `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	Fields []*GetInstanceResourceTableResponseBodyFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 74D958EF-3598-56FA-8296-FF1575CE43DF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// test_table
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s GetInstanceResourceTableResponseBody) String() string {
@@ -5051,11 +7102,23 @@ func (s *GetInstanceResourceTableResponseBody) SetTableName(v string) *GetInstan
 }
 
 type GetInstanceResourceTableResponseBodyFields struct {
-	IsDimensionField *bool   `json:"IsDimensionField,omitempty" xml:"IsDimensionField,omitempty"`
-	IsPartitionField *bool   `json:"IsPartitionField,omitempty" xml:"IsPartitionField,omitempty"`
-	Meaning          *string `json:"Meaning,omitempty" xml:"Meaning,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// false
+	IsDimensionField *bool `json:"IsDimensionField,omitempty" xml:"IsDimensionField,omitempty"`
+	IsPartitionField *bool `json:"IsPartitionField,omitempty" xml:"IsPartitionField,omitempty"`
+	// example:
+	//
+	// ""
+	Meaning *string `json:"Meaning,omitempty" xml:"Meaning,omitempty"`
+	// example:
+	//
+	// age
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// BIGINT
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetInstanceResourceTableResponseBodyFields) String() string {
@@ -5121,6 +7184,11 @@ func (s *GetInstanceResourceTableResponse) SetBody(v *GetInstanceResourceTableRe
 }
 
 type GetLaboratoryRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -5138,21 +7206,64 @@ func (s *GetLaboratoryRequest) SetInstanceId(v string) *GetLaboratoryRequest {
 }
 
 type GetLaboratoryResponseBody struct {
-	BucketCount  *int32  `json:"BucketCount,omitempty" xml:"BucketCount,omitempty"`
-	BucketType   *string `json:"BucketType,omitempty" xml:"BucketType,omitempty"`
-	Buckets      *string `json:"Buckets,omitempty" xml:"Buckets,omitempty"`
-	CrowdId      *string `json:"CrowdId,omitempty" xml:"CrowdId,omitempty"`
+	// example:
+	//
+	// 100
+	BucketCount *int32 `json:"BucketCount,omitempty" xml:"BucketCount,omitempty"`
+	// example:
+	//
+	// Filter
+	BucketType *string `json:"BucketType,omitempty" xml:"BucketType,omitempty"`
+	// example:
+	//
+	// 1,2,3,10-20
+	Buckets *string `json:"Buckets,omitempty" xml:"Buckets,omitempty"`
+	// example:
+	//
+	// 3
+	CrowdId *string `json:"CrowdId,omitempty" xml:"CrowdId,omitempty"`
+	// example:
+	//
+	// 3
 	DebugCrowdId *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
-	DebugUsers   *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Environment  *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
-	Filter       *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// user1,user2,user3
+	DebugUsers *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
+	// example:
+	//
+	// This is a test.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// Daily
+	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// example:
+	//
+	// filter=xxx
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// example:
+	//
+	// laboratory1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 1C0898E5-9220-5443-B2D9-445FF0688215
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SceneId   *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 3
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// example:
+	//
+	// Offline
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// Base
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetLaboratoryResponseBody) String() string {
@@ -5263,6 +7374,11 @@ func (s *GetLaboratoryResponse) SetBody(v *GetLaboratoryResponseBody) *GetLabora
 }
 
 type GetLayerRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -5280,14 +7396,30 @@ func (s *GetLayerRequest) SetInstanceId(v string) *GetLayerRequest {
 }
 
 type GetLayerResponseBody struct {
+	// example:
+	//
+	// This is a test.
 	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	LaboratoryId  *string `json:"LaboratoryId,omitempty" xml:"LaboratoryId,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 3
+	LaboratoryId *string `json:"LaboratoryId,omitempty" xml:"LaboratoryId,omitempty"`
+	// example:
+	//
+	// layer1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// EE97D06A-2AA0-5AD9-B6CF-8A267924D691
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResidualFlow *int64  `json:"ResidualFlow,omitempty" xml:"ResidualFlow,omitempty"`
-	SceneId      *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// example:
+	//
+	// 4
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
 func (s GetLayerResponseBody) String() string {
@@ -5363,6 +7495,7 @@ func (s *GetLayerResponse) SetBody(v *GetLayerResponseBody) *GetLayerResponse {
 }
 
 type GetResourceRuleRequest struct {
+	// This parameter is required.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -5515,6 +7648,9 @@ func (s *GetResourceRuleResponse) SetBody(v *GetResourceRuleResponseBody) *GetRe
 }
 
 type GetSceneRequest struct {
+	// example:
+	//
+	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -5532,10 +7668,20 @@ func (s *GetSceneRequest) SetInstanceId(v string) *GetSceneRequest {
 }
 
 type GetSceneResponseBody struct {
+	// example:
+	//
+	// This is a test.
 	Description *string                      `json:"Description,omitempty" xml:"Description,omitempty"`
 	Flows       []*GetSceneResponseBodyFlows `json:"Flows,omitempty" xml:"Flows,omitempty" type:"Repeated"`
-	Name        *string                      `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// scene1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// B8987BF7-6028-5B17-80E0-251B7BD67BBA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5568,7 +7714,13 @@ func (s *GetSceneResponseBody) SetRequestId(v string) *GetSceneResponseBody {
 }
 
 type GetSceneResponseBodyFlows struct {
+	// example:
+	//
+	// liuliang1
 	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// example:
+	//
+	// 流量1
 	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
 }
 
@@ -5620,6 +7772,11 @@ func (s *GetSceneResponse) SetBody(v *GetSceneResponseBody) *GetSceneResponse {
 }
 
 type GetSubCrowdRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -5637,12 +7794,28 @@ func (s *GetSubCrowdRequest) SetInstanceId(v string) *GetSubCrowdRequest {
 }
 
 type GetSubCrowdResponseBody struct {
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	Quantity      *string `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	// example:
+	//
+	// 3
+	Quantity *string `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 01D22D08-BA20-5F35-8302-99115F288220
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Source    *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Users     *string `json:"Users,omitempty" xml:"Users,omitempty"`
+	// example:
+	//
+	// ManualInput
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// user1,user2
+	Users *string `json:"Users,omitempty" xml:"Users,omitempty"`
 }
 
 func (s GetSubCrowdResponseBody) String() string {
@@ -5708,6 +7881,7 @@ func (s *GetSubCrowdResponse) SetBody(v *GetSubCrowdResponseBody) *GetSubCrowdRe
 }
 
 type GetTableMetaRequest struct {
+	// This parameter is required.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -5725,21 +7899,54 @@ func (s *GetTableMetaRequest) SetInstanceId(v string) *GetTableMetaRequest {
 }
 
 type GetTableMetaResponseBody struct {
-	CanDelete       *bool                             `json:"CanDelete,omitempty" xml:"CanDelete,omitempty"`
-	Config          *string                           `json:"Config,omitempty" xml:"Config,omitempty"`
-	Description     *string                           `json:"Description,omitempty" xml:"Description,omitempty"`
-	Fields          []*GetTableMetaResponseBodyFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
-	GmtCreateTime   *string                           `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtImportedTime *string                           `json:"GmtImportedTime,omitempty" xml:"GmtImportedTime,omitempty"`
-	GmtModifiedTime *string                           `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	Module          *string                           `json:"Module,omitempty" xml:"Module,omitempty"`
-	Name            *string                           `json:"Name,omitempty" xml:"Name,omitempty"`
-	RequestId       *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceId      *string                           `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	TableMetaId     *string                           `json:"TableMetaId,omitempty" xml:"TableMetaId,omitempty"`
-	TableName       *string                           `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	Type            *string                           `json:"Type,omitempty" xml:"Type,omitempty"`
-	Url             *string                           `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// false
+	CanDelete *bool   `json:"CanDelete,omitempty" xml:"CanDelete,omitempty"`
+	Config    *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// example:
+	//
+	// this is a test table
+	Description *string                           `json:"Description,omitempty" xml:"Description,omitempty"`
+	Fields      []*GetTableMetaResponseBodyFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2021-12-15:24:33
+	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtImportedTime *string `json:"GmtImportedTime,omitempty" xml:"GmtImportedTime,omitempty"`
+	// example:
+	//
+	// 2021-12-15:24:33
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// ABTest
+	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	// example:
+	//
+	// test_table
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 28C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// reso-wkgo***
+	ResourceId  *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	TableMetaId *string `json:"TableMetaId,omitempty" xml:"TableMetaId,omitempty"`
+	// example:
+	//
+	// table_mysql
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// MaxCompute
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// https://dmc-xxx.com/dm/table/xxx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s GetTableMetaResponseBody) String() string {
@@ -5826,10 +8033,22 @@ func (s *GetTableMetaResponseBody) SetUrl(v string) *GetTableMetaResponseBody {
 }
 
 type GetTableMetaResponseBodyFields struct {
-	IsDimensionField *bool   `json:"IsDimensionField,omitempty" xml:"IsDimensionField,omitempty"`
-	Meaning          *string `json:"Meaning,omitempty" xml:"Meaning,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// false
+	IsDimensionField *bool `json:"IsDimensionField,omitempty" xml:"IsDimensionField,omitempty"`
+	// example:
+	//
+	// the gender of people
+	Meaning *string `json:"Meaning,omitempty" xml:"Meaning,omitempty"`
+	// example:
+	//
+	// gender
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// BIGINT
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetTableMetaResponseBodyFields) String() string {
@@ -5889,14 +8108,732 @@ func (s *GetTableMetaResponse) SetBody(v *GetTableMetaResponseBody) *GetTableMet
 	return s
 }
 
+type GetTrafficControlTargetRequest struct {
+	// This parameter is required.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s GetTrafficControlTargetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTrafficControlTargetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTrafficControlTargetRequest) SetInstanceId(v string) *GetTrafficControlTargetRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type GetTrafficControlTargetResponseBody struct {
+	EndTime                *string                                        `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Event                  *string                                        `json:"Event,omitempty" xml:"Event,omitempty"`
+	GmtCreateTime          *string                                        `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	ItemConditionArray     *string                                        `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
+	ItemConditionExpress   *string                                        `json:"ItemConditionExpress,omitempty" xml:"ItemConditionExpress,omitempty"`
+	ItemConditionType      *string                                        `json:"ItemConditionType,omitempty" xml:"ItemConditionType,omitempty"`
+	Name                   *string                                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	NewProductRegulation   *bool                                          `json:"NewProductRegulation,omitempty" xml:"NewProductRegulation,omitempty"`
+	RecallName             *string                                        `json:"RecallName,omitempty" xml:"RecallName,omitempty"`
+	RequestId              *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SplitParts             *GetTrafficControlTargetResponseBodySplitParts `json:"SplitParts,omitempty" xml:"SplitParts,omitempty" type:"Struct"`
+	StartTime              *string                                        `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StatisPeriod           *string                                        `json:"StatisPeriod,omitempty" xml:"StatisPeriod,omitempty"`
+	Status                 *string                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	ToleranceValue         *int64                                         `json:"ToleranceValue,omitempty" xml:"ToleranceValue,omitempty"`
+	TrafficControlTargetId *string                                        `json:"TrafficControlTargetId,omitempty" xml:"TrafficControlTargetId,omitempty"`
+	Value                  *float32                                       `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetTrafficControlTargetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTrafficControlTargetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTrafficControlTargetResponseBody) SetEndTime(v string) *GetTrafficControlTargetResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetTrafficControlTargetResponseBody) SetEvent(v string) *GetTrafficControlTargetResponseBody {
+	s.Event = &v
+	return s
+}
+
+func (s *GetTrafficControlTargetResponseBody) SetGmtCreateTime(v string) *GetTrafficControlTargetResponseBody {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *GetTrafficControlTargetResponseBody) SetItemConditionArray(v string) *GetTrafficControlTargetResponseBody {
+	s.ItemConditionArray = &v
+	return s
+}
+
+func (s *GetTrafficControlTargetResponseBody) SetItemConditionExpress(v string) *GetTrafficControlTargetResponseBody {
+	s.ItemConditionExpress = &v
+	return s
+}
+
+func (s *GetTrafficControlTargetResponseBody) SetItemConditionType(v string) *GetTrafficControlTargetResponseBody {
+	s.ItemConditionType = &v
+	return s
+}
+
+func (s *GetTrafficControlTargetResponseBody) SetName(v string) *GetTrafficControlTargetResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *GetTrafficControlTargetResponseBody) SetNewProductRegulation(v bool) *GetTrafficControlTargetResponseBody {
+	s.NewProductRegulation = &v
+	return s
+}
+
+func (s *GetTrafficControlTargetResponseBody) SetRecallName(v string) *GetTrafficControlTargetResponseBody {
+	s.RecallName = &v
+	return s
+}
+
+func (s *GetTrafficControlTargetResponseBody) SetRequestId(v string) *GetTrafficControlTargetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTrafficControlTargetResponseBody) SetSplitParts(v *GetTrafficControlTargetResponseBodySplitParts) *GetTrafficControlTargetResponseBody {
+	s.SplitParts = v
+	return s
+}
+
+func (s *GetTrafficControlTargetResponseBody) SetStartTime(v string) *GetTrafficControlTargetResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetTrafficControlTargetResponseBody) SetStatisPeriod(v string) *GetTrafficControlTargetResponseBody {
+	s.StatisPeriod = &v
+	return s
+}
+
+func (s *GetTrafficControlTargetResponseBody) SetStatus(v string) *GetTrafficControlTargetResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *GetTrafficControlTargetResponseBody) SetToleranceValue(v int64) *GetTrafficControlTargetResponseBody {
+	s.ToleranceValue = &v
+	return s
+}
+
+func (s *GetTrafficControlTargetResponseBody) SetTrafficControlTargetId(v string) *GetTrafficControlTargetResponseBody {
+	s.TrafficControlTargetId = &v
+	return s
+}
+
+func (s *GetTrafficControlTargetResponseBody) SetValue(v float32) *GetTrafficControlTargetResponseBody {
+	s.Value = &v
+	return s
+}
+
+type GetTrafficControlTargetResponseBodySplitParts struct {
+	SetValues  []*int64 `json:"SetValues,omitempty" xml:"SetValues,omitempty" type:"Repeated"`
+	TimePoints []*int64 `json:"TimePoints,omitempty" xml:"TimePoints,omitempty" type:"Repeated"`
+}
+
+func (s GetTrafficControlTargetResponseBodySplitParts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTrafficControlTargetResponseBodySplitParts) GoString() string {
+	return s.String()
+}
+
+func (s *GetTrafficControlTargetResponseBodySplitParts) SetSetValues(v []*int64) *GetTrafficControlTargetResponseBodySplitParts {
+	s.SetValues = v
+	return s
+}
+
+func (s *GetTrafficControlTargetResponseBodySplitParts) SetTimePoints(v []*int64) *GetTrafficControlTargetResponseBodySplitParts {
+	s.TimePoints = v
+	return s
+}
+
+type GetTrafficControlTargetResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTrafficControlTargetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetTrafficControlTargetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTrafficControlTargetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTrafficControlTargetResponse) SetHeaders(v map[string]*string) *GetTrafficControlTargetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTrafficControlTargetResponse) SetStatusCode(v int32) *GetTrafficControlTargetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTrafficControlTargetResponse) SetBody(v *GetTrafficControlTargetResponseBody) *GetTrafficControlTargetResponse {
+	s.Body = v
+	return s
+}
+
+type GetTrafficControlTaskRequest struct {
+	ControlTargetFilter *string `json:"ControlTargetFilter,omitempty" xml:"ControlTargetFilter,omitempty"`
+	Environment         *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Version             *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s GetTrafficControlTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTrafficControlTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTrafficControlTaskRequest) SetControlTargetFilter(v string) *GetTrafficControlTaskRequest {
+	s.ControlTargetFilter = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskRequest) SetEnvironment(v string) *GetTrafficControlTaskRequest {
+	s.Environment = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskRequest) SetInstanceId(v string) *GetTrafficControlTaskRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskRequest) SetRegionId(v string) *GetTrafficControlTaskRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskRequest) SetVersion(v string) *GetTrafficControlTaskRequest {
+	s.Version = &v
+	return s
+}
+
+type GetTrafficControlTaskResponseBody struct {
+	BehaviorTableMetaId            *string                                                   `json:"BehaviorTableMetaId,omitempty" xml:"BehaviorTableMetaId,omitempty"`
+	ControlGranularity             *string                                                   `json:"ControlGranularity,omitempty" xml:"ControlGranularity,omitempty"`
+	ControlLogic                   *string                                                   `json:"ControlLogic,omitempty" xml:"ControlLogic,omitempty"`
+	ControlType                    *string                                                   `json:"ControlType,omitempty" xml:"ControlType,omitempty"`
+	Description                    *string                                                   `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndTime                        *string                                                   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EverPublished                  *bool                                                     `json:"EverPublished,omitempty" xml:"EverPublished,omitempty"`
+	ExecutionTime                  *string                                                   `json:"ExecutionTime,omitempty" xml:"ExecutionTime,omitempty"`
+	GmtCreateTime                  *string                                                   `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifiedTime                *string                                                   `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	ItemConditionArray             *string                                                   `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
+	ItemConditionExpress           *string                                                   `json:"ItemConditionExpress,omitempty" xml:"ItemConditionExpress,omitempty"`
+	ItemConditionType              *string                                                   `json:"ItemConditionType,omitempty" xml:"ItemConditionType,omitempty"`
+	ItemTableMetaId                *string                                                   `json:"ItemTableMetaId,omitempty" xml:"ItemTableMetaId,omitempty"`
+	Name                           *string                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	PrepubStatus                   *string                                                   `json:"PrepubStatus,omitempty" xml:"PrepubStatus,omitempty"`
+	ProductStatus                  *string                                                   `json:"ProductStatus,omitempty" xml:"ProductStatus,omitempty"`
+	RequestId                      *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SceneId                        *string                                                   `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SceneName                      *string                                                   `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	StartTime                      *string                                                   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StatisBehaviorConditionArray   *string                                                   `json:"StatisBehaviorConditionArray,omitempty" xml:"StatisBehaviorConditionArray,omitempty"`
+	StatisBehaviorConditionExpress *string                                                   `json:"StatisBehaviorConditionExpress,omitempty" xml:"StatisBehaviorConditionExpress,omitempty"`
+	StatisBehaviorConditionType    *string                                                   `json:"StatisBehaviorConditionType,omitempty" xml:"StatisBehaviorConditionType,omitempty"`
+	TrafficControlTargets          []*GetTrafficControlTaskResponseBodyTrafficControlTargets `json:"TrafficControlTargets,omitempty" xml:"TrafficControlTargets,omitempty" type:"Repeated"`
+	TrafficControlTaskId           *string                                                   `json:"TrafficControlTaskId,omitempty" xml:"TrafficControlTaskId,omitempty"`
+	UserConditionArray             *string                                                   `json:"UserConditionArray,omitempty" xml:"UserConditionArray,omitempty"`
+	UserConditionExpress           *string                                                   `json:"UserConditionExpress,omitempty" xml:"UserConditionExpress,omitempty"`
+	UserConditionType              *string                                                   `json:"UserConditionType,omitempty" xml:"UserConditionType,omitempty"`
+	UserTableMetaId                *string                                                   `json:"UserTableMetaId,omitempty" xml:"UserTableMetaId,omitempty"`
+}
+
+func (s GetTrafficControlTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTrafficControlTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTrafficControlTaskResponseBody) SetBehaviorTableMetaId(v string) *GetTrafficControlTaskResponseBody {
+	s.BehaviorTableMetaId = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBody) SetControlGranularity(v string) *GetTrafficControlTaskResponseBody {
+	s.ControlGranularity = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBody) SetControlLogic(v string) *GetTrafficControlTaskResponseBody {
+	s.ControlLogic = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBody) SetControlType(v string) *GetTrafficControlTaskResponseBody {
+	s.ControlType = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBody) SetDescription(v string) *GetTrafficControlTaskResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBody) SetEndTime(v string) *GetTrafficControlTaskResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBody) SetEverPublished(v bool) *GetTrafficControlTaskResponseBody {
+	s.EverPublished = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBody) SetExecutionTime(v string) *GetTrafficControlTaskResponseBody {
+	s.ExecutionTime = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBody) SetGmtCreateTime(v string) *GetTrafficControlTaskResponseBody {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBody) SetGmtModifiedTime(v string) *GetTrafficControlTaskResponseBody {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBody) SetItemConditionArray(v string) *GetTrafficControlTaskResponseBody {
+	s.ItemConditionArray = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBody) SetItemConditionExpress(v string) *GetTrafficControlTaskResponseBody {
+	s.ItemConditionExpress = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBody) SetItemConditionType(v string) *GetTrafficControlTaskResponseBody {
+	s.ItemConditionType = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBody) SetItemTableMetaId(v string) *GetTrafficControlTaskResponseBody {
+	s.ItemTableMetaId = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBody) SetName(v string) *GetTrafficControlTaskResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBody) SetPrepubStatus(v string) *GetTrafficControlTaskResponseBody {
+	s.PrepubStatus = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBody) SetProductStatus(v string) *GetTrafficControlTaskResponseBody {
+	s.ProductStatus = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBody) SetRequestId(v string) *GetTrafficControlTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBody) SetSceneId(v string) *GetTrafficControlTaskResponseBody {
+	s.SceneId = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBody) SetSceneName(v string) *GetTrafficControlTaskResponseBody {
+	s.SceneName = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBody) SetStartTime(v string) *GetTrafficControlTaskResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBody) SetStatisBehaviorConditionArray(v string) *GetTrafficControlTaskResponseBody {
+	s.StatisBehaviorConditionArray = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBody) SetStatisBehaviorConditionExpress(v string) *GetTrafficControlTaskResponseBody {
+	s.StatisBehaviorConditionExpress = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBody) SetStatisBehaviorConditionType(v string) *GetTrafficControlTaskResponseBody {
+	s.StatisBehaviorConditionType = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBody) SetTrafficControlTargets(v []*GetTrafficControlTaskResponseBodyTrafficControlTargets) *GetTrafficControlTaskResponseBody {
+	s.TrafficControlTargets = v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBody) SetTrafficControlTaskId(v string) *GetTrafficControlTaskResponseBody {
+	s.TrafficControlTaskId = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBody) SetUserConditionArray(v string) *GetTrafficControlTaskResponseBody {
+	s.UserConditionArray = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBody) SetUserConditionExpress(v string) *GetTrafficControlTaskResponseBody {
+	s.UserConditionExpress = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBody) SetUserConditionType(v string) *GetTrafficControlTaskResponseBody {
+	s.UserConditionType = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBody) SetUserTableMetaId(v string) *GetTrafficControlTaskResponseBody {
+	s.UserTableMetaId = &v
+	return s
+}
+
+type GetTrafficControlTaskResponseBodyTrafficControlTargets struct {
+	EndTime                *string                                                           `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Event                  *string                                                           `json:"Event,omitempty" xml:"Event,omitempty"`
+	GmtCreateTime          *string                                                           `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifiedTime        *string                                                           `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	ItemConditionArray     *string                                                           `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
+	ItemConditionExpress   *string                                                           `json:"ItemConditionExpress,omitempty" xml:"ItemConditionExpress,omitempty"`
+	ItemConditionType      *string                                                           `json:"ItemConditionType,omitempty" xml:"ItemConditionType,omitempty"`
+	Name                   *string                                                           `json:"Name,omitempty" xml:"Name,omitempty"`
+	NewProductRegulation   *bool                                                             `json:"NewProductRegulation,omitempty" xml:"NewProductRegulation,omitempty"`
+	RecallName             *string                                                           `json:"RecallName,omitempty" xml:"RecallName,omitempty"`
+	SplitParts             *GetTrafficControlTaskResponseBodyTrafficControlTargetsSplitParts `json:"SplitParts,omitempty" xml:"SplitParts,omitempty" type:"Struct"`
+	StartTime              *string                                                           `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StatisPeriod           *string                                                           `json:"StatisPeriod,omitempty" xml:"StatisPeriod,omitempty"`
+	Status                 *string                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	ToleranceValue         *int64                                                            `json:"ToleranceValue,omitempty" xml:"ToleranceValue,omitempty"`
+	TrafficControlTargetId *string                                                           `json:"TrafficControlTargetId,omitempty" xml:"TrafficControlTargetId,omitempty"`
+	Value                  *float32                                                          `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetTrafficControlTaskResponseBodyTrafficControlTargets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTrafficControlTaskResponseBodyTrafficControlTargets) GoString() string {
+	return s.String()
+}
+
+func (s *GetTrafficControlTaskResponseBodyTrafficControlTargets) SetEndTime(v string) *GetTrafficControlTaskResponseBodyTrafficControlTargets {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBodyTrafficControlTargets) SetEvent(v string) *GetTrafficControlTaskResponseBodyTrafficControlTargets {
+	s.Event = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBodyTrafficControlTargets) SetGmtCreateTime(v string) *GetTrafficControlTaskResponseBodyTrafficControlTargets {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBodyTrafficControlTargets) SetGmtModifiedTime(v string) *GetTrafficControlTaskResponseBodyTrafficControlTargets {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBodyTrafficControlTargets) SetItemConditionArray(v string) *GetTrafficControlTaskResponseBodyTrafficControlTargets {
+	s.ItemConditionArray = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBodyTrafficControlTargets) SetItemConditionExpress(v string) *GetTrafficControlTaskResponseBodyTrafficControlTargets {
+	s.ItemConditionExpress = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBodyTrafficControlTargets) SetItemConditionType(v string) *GetTrafficControlTaskResponseBodyTrafficControlTargets {
+	s.ItemConditionType = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBodyTrafficControlTargets) SetName(v string) *GetTrafficControlTaskResponseBodyTrafficControlTargets {
+	s.Name = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBodyTrafficControlTargets) SetNewProductRegulation(v bool) *GetTrafficControlTaskResponseBodyTrafficControlTargets {
+	s.NewProductRegulation = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBodyTrafficControlTargets) SetRecallName(v string) *GetTrafficControlTaskResponseBodyTrafficControlTargets {
+	s.RecallName = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBodyTrafficControlTargets) SetSplitParts(v *GetTrafficControlTaskResponseBodyTrafficControlTargetsSplitParts) *GetTrafficControlTaskResponseBodyTrafficControlTargets {
+	s.SplitParts = v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBodyTrafficControlTargets) SetStartTime(v string) *GetTrafficControlTaskResponseBodyTrafficControlTargets {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBodyTrafficControlTargets) SetStatisPeriod(v string) *GetTrafficControlTaskResponseBodyTrafficControlTargets {
+	s.StatisPeriod = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBodyTrafficControlTargets) SetStatus(v string) *GetTrafficControlTaskResponseBodyTrafficControlTargets {
+	s.Status = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBodyTrafficControlTargets) SetToleranceValue(v int64) *GetTrafficControlTaskResponseBodyTrafficControlTargets {
+	s.ToleranceValue = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBodyTrafficControlTargets) SetTrafficControlTargetId(v string) *GetTrafficControlTaskResponseBodyTrafficControlTargets {
+	s.TrafficControlTargetId = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBodyTrafficControlTargets) SetValue(v float32) *GetTrafficControlTaskResponseBodyTrafficControlTargets {
+	s.Value = &v
+	return s
+}
+
+type GetTrafficControlTaskResponseBodyTrafficControlTargetsSplitParts struct {
+	SetPoints  []*int32 `json:"SetPoints,omitempty" xml:"SetPoints,omitempty" type:"Repeated"`
+	TimePoints []*int32 `json:"TimePoints,omitempty" xml:"TimePoints,omitempty" type:"Repeated"`
+}
+
+func (s GetTrafficControlTaskResponseBodyTrafficControlTargetsSplitParts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTrafficControlTaskResponseBodyTrafficControlTargetsSplitParts) GoString() string {
+	return s.String()
+}
+
+func (s *GetTrafficControlTaskResponseBodyTrafficControlTargetsSplitParts) SetSetPoints(v []*int32) *GetTrafficControlTaskResponseBodyTrafficControlTargetsSplitParts {
+	s.SetPoints = v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBodyTrafficControlTargetsSplitParts) SetTimePoints(v []*int32) *GetTrafficControlTaskResponseBodyTrafficControlTargetsSplitParts {
+	s.TimePoints = v
+	return s
+}
+
+type GetTrafficControlTaskResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTrafficControlTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetTrafficControlTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTrafficControlTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTrafficControlTaskResponse) SetHeaders(v map[string]*string) *GetTrafficControlTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponse) SetStatusCode(v int32) *GetTrafficControlTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponse) SetBody(v *GetTrafficControlTaskResponseBody) *GetTrafficControlTaskResponse {
+	s.Body = v
+	return s
+}
+
+type GetTrafficControlTaskTrafficRequest struct {
+	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s GetTrafficControlTaskTrafficRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTrafficControlTaskTrafficRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTrafficControlTaskTrafficRequest) SetEnvironment(v string) *GetTrafficControlTaskTrafficRequest {
+	s.Environment = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskTrafficRequest) SetInstanceId(v string) *GetTrafficControlTaskTrafficRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type GetTrafficControlTaskTrafficResponseBody struct {
+	RequestId                 *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TrafficControlTaskTraffic *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTraffic `json:"TrafficControlTaskTraffic,omitempty" xml:"TrafficControlTaskTraffic,omitempty" type:"Struct"`
+}
+
+func (s GetTrafficControlTaskTrafficResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTrafficControlTaskTrafficResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTrafficControlTaskTrafficResponseBody) SetRequestId(v string) *GetTrafficControlTaskTrafficResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskTrafficResponseBody) SetTrafficControlTaskTraffic(v *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTraffic) *GetTrafficControlTaskTrafficResponseBody {
+	s.TrafficControlTaskTraffic = v
+	return s
+}
+
+type GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTraffic struct {
+	TargetTraffics []*GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficTargetTraffics `json:"TargetTraffics,omitempty" xml:"TargetTraffics,omitempty" type:"Repeated"`
+	TaskTraffics   map[string]interface{}                                                             `json:"TaskTraffics,omitempty" xml:"TaskTraffics,omitempty"`
+}
+
+func (s GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTraffic) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTraffic) GoString() string {
+	return s.String()
+}
+
+func (s *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTraffic) SetTargetTraffics(v []*GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficTargetTraffics) *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTraffic {
+	s.TargetTraffics = v
+	return s
+}
+
+func (s *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTraffic) SetTaskTraffics(v map[string]interface{}) *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTraffic {
+	s.TaskTraffics = v
+	return s
+}
+
+type GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficTargetTraffics struct {
+	Data                   []map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	TrafficContorlTargetId *string                  `json:"TrafficContorlTargetId,omitempty" xml:"TrafficContorlTargetId,omitempty"`
+}
+
+func (s GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficTargetTraffics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficTargetTraffics) GoString() string {
+	return s.String()
+}
+
+func (s *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficTargetTraffics) SetData(v []map[string]interface{}) *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficTargetTraffics {
+	s.Data = v
+	return s
+}
+
+func (s *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficTargetTraffics) SetTrafficContorlTargetId(v string) *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficTargetTraffics {
+	s.TrafficContorlTargetId = &v
+	return s
+}
+
+type GetTrafficControlTaskTrafficResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTrafficControlTaskTrafficResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetTrafficControlTaskTrafficResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTrafficControlTaskTrafficResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTrafficControlTaskTrafficResponse) SetHeaders(v map[string]*string) *GetTrafficControlTaskTrafficResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTrafficControlTaskTrafficResponse) SetStatusCode(v int32) *GetTrafficControlTaskTrafficResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskTrafficResponse) SetBody(v *GetTrafficControlTaskTrafficResponseBody) *GetTrafficControlTaskTrafficResponse {
+	s.Body = v
+	return s
+}
+
 type ListABMetricGroupsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Order      *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Realtime   *bool   `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
-	SceneId    *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	SortBy     *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// false
+	Realtime *bool `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
+	// example:
+	//
+	// 1
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SortBy  *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 }
 
 func (s ListABMetricGroupsRequest) String() string {
@@ -5944,8 +8881,14 @@ func (s *ListABMetricGroupsRequest) SetSortBy(v string) *ListABMetricGroupsReque
 
 type ListABMetricGroupsResponseBody struct {
 	ABMetricGroups []*ListABMetricGroupsResponseBodyABMetricGroups `json:"ABMetricGroups,omitempty" xml:"ABMetricGroups,omitempty" type:"Repeated"`
-	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount     *int64                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// E15A1443-7917-5BE0-AE70-25538ECF398D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListABMetricGroupsResponseBody) String() string {
@@ -5972,14 +8915,35 @@ func (s *ListABMetricGroupsResponseBody) SetTotalCount(v int64) *ListABMetricGro
 }
 
 type ListABMetricGroupsResponseBodyABMetricGroups struct {
+	// example:
+	//
+	// 1
 	ABMetricGroupId *string `json:"ABMetricGroupId,omitempty" xml:"ABMetricGroupId,omitempty"`
-	ABMetricIds     *string `json:"ABMetricIds,omitempty" xml:"ABMetricIds,omitempty"`
-	ABMetricNames   *string `json:"ABMetricNames,omitempty" xml:"ABMetricNames,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Owner           *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	Realtime        *bool   `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
-	SceneId         *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// example:
+	//
+	// 1,2
+	ABMetricIds *string `json:"ABMetricIds,omitempty" xml:"ABMetricIds,omitempty"`
+	// example:
+	//
+	// pv,uv
+	ABMetricNames *string `json:"ABMetricNames,omitempty" xml:"ABMetricNames,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// visits
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 2799614***
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// false
+	Realtime *bool `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
+	// example:
+	//
+	// 1
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
 func (s ListABMetricGroupsResponseBodyABMetricGroups) String() string {
@@ -6060,14 +9024,40 @@ func (s *ListABMetricGroupsResponse) SetBody(v *ListABMetricGroupsResponseBody) 
 }
 
 type ListABMetricsRequest struct {
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Realtime    *bool   `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
-	SceneId     *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-test1
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// home
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// false
+	Realtime *bool `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
+	// example:
+	//
+	// 1
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// example:
+	//
+	// 1
 	TableMetaId *string `json:"TableMetaId,omitempty" xml:"TableMetaId,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// Single
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListABMetricsRequest) String() string {
@@ -6119,9 +9109,15 @@ func (s *ListABMetricsRequest) SetType(v string) *ListABMetricsRequest {
 }
 
 type ListABMetricsResponseBody struct {
-	ABMetrics  []*ListABMetricsResponseBodyABMetrics `json:"ABMetrics,omitempty" xml:"ABMetrics,omitempty" type:"Repeated"`
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	ABMetrics []*ListABMetricsResponseBodyABMetrics `json:"ABMetrics,omitempty" xml:"ABMetrics,omitempty" type:"Repeated"`
+	// example:
+	//
+	// F7AC05FF-EDE7-5C2B-B9AE-33D6DF4178BA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListABMetricsResponseBody) String() string {
@@ -6148,21 +9144,63 @@ func (s *ListABMetricsResponseBody) SetTotalCount(v int64) *ListABMetricsRespons
 }
 
 type ListABMetricsResponseBodyABMetrics struct {
-	ABMetricId        *string `json:"ABMetricId,omitempty" xml:"ABMetricId,omitempty"`
-	Definition        *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	LeftMetricId      *string `json:"LeftMetricId,omitempty" xml:"LeftMetricId,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Operator          *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	Realtime          *string `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
-	ResultResourceId  *string `json:"ResultResourceId,omitempty" xml:"ResultResourceId,omitempty"`
+	// example:
+	//
+	// 1
+	ABMetricId *string `json:"ABMetricId,omitempty" xml:"ABMetricId,omitempty"`
+	// example:
+	//
+	// sum(click_cnt)
+	Definition  *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 3
+	LeftMetricId *string `json:"LeftMetricId,omitempty" xml:"LeftMetricId,omitempty"`
+	// example:
+	//
+	// pv
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Division
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// example:
+	//
+	// false
+	Realtime *string `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
+	// example:
+	//
+	// 3
+	ResultResourceId *string `json:"ResultResourceId,omitempty" xml:"ResultResourceId,omitempty"`
+	// example:
+	//
+	// 2
 	ResultTableMetaId *string `json:"ResultTableMetaId,omitempty" xml:"ResultTableMetaId,omitempty"`
-	RightMetricId     *string `json:"RightMetricId,omitempty" xml:"RightMetricId,omitempty"`
-	SceneId           *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	SceneName         *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
-	StatisticsCycle   *int32  `json:"StatisticsCycle,omitempty" xml:"StatisticsCycle,omitempty"`
-	TableMetaId       *string `json:"TableMetaId,omitempty" xml:"TableMetaId,omitempty"`
-	Type              *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 2
+	RightMetricId *string `json:"RightMetricId,omitempty" xml:"RightMetricId,omitempty"`
+	// example:
+	//
+	// 1
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// example:
+	//
+	// home_feed
+	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	// example:
+	//
+	// 1
+	StatisticsCycle *int32 `json:"StatisticsCycle,omitempty" xml:"StatisticsCycle,omitempty"`
+	// example:
+	//
+	// 1
+	TableMetaId *string `json:"TableMetaId,omitempty" xml:"TableMetaId,omitempty"`
+	// example:
+	//
+	// Single
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListABMetricsResponseBodyABMetrics) String() string {
@@ -6278,11 +9316,30 @@ func (s *ListABMetricsResponse) SetBody(v *ListABMetricsResponseBody) *ListABMet
 }
 
 type ListCalculationJobsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SceneId    *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListCalculationJobsRequest) String() string {
@@ -6320,8 +9377,14 @@ func (s *ListCalculationJobsRequest) SetStatus(v string) *ListCalculationJobsReq
 
 type ListCalculationJobsResponseBody struct {
 	CalculationJobs []*ListCalculationJobsResponseBodyCalculationJobs `json:"CalculationJobs,omitempty" xml:"CalculationJobs,omitempty" type:"Repeated"`
-	RequestId       *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount      *int64                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// F7AC05FF-EDE7-5C2B-B9AE-33D6DF4178BA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListCalculationJobsResponseBody) String() string {
@@ -6348,14 +9411,35 @@ func (s *ListCalculationJobsResponseBody) SetTotalCount(v int64) *ListCalculatio
 }
 
 type ListCalculationJobsResponseBodyCalculationJobs struct {
-	ABMetricName     *string   `json:"ABMetricName,omitempty" xml:"ABMetricName,omitempty"`
-	BizDate          *string   `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
-	CalculationJobId *string   `json:"CalculationJobId,omitempty" xml:"CalculationJobId,omitempty"`
-	Config           *string   `json:"Config,omitempty" xml:"Config,omitempty"`
-	GmtRanTime       *string   `json:"GmtRanTime,omitempty" xml:"GmtRanTime,omitempty"`
-	JobMessage       []*string `json:"JobMessage,omitempty" xml:"JobMessage,omitempty" type:"Repeated"`
-	JobSource        *string   `json:"JobSource,omitempty" xml:"JobSource,omitempty"`
-	Status           *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// pv
+	ABMetricName *string `json:"ABMetricName,omitempty" xml:"ABMetricName,omitempty"`
+	// example:
+	//
+	// 2021-12-15
+	BizDate *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
+	// example:
+	//
+	// 2
+	CalculationJobId *string `json:"CalculationJobId,omitempty" xml:"CalculationJobId,omitempty"`
+	// example:
+	//
+	// {}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
+	GmtRanTime *string   `json:"GmtRanTime,omitempty" xml:"GmtRanTime,omitempty"`
+	JobMessage []*string `json:"JobMessage,omitempty" xml:"JobMessage,omitempty" type:"Repeated"`
+	// example:
+	//
+	// CronOffline
+	JobSource *string `json:"JobSource,omitempty" xml:"JobSource,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListCalculationJobsResponseBodyCalculationJobs) String() string {
@@ -6436,6 +9520,11 @@ func (s *ListCalculationJobsResponse) SetBody(v *ListCalculationJobsResponseBody
 }
 
 type ListCrowdUsersRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -6454,7 +9543,14 @@ func (s *ListCrowdUsersRequest) SetInstanceId(v string) *ListCrowdUsersRequest {
 
 type ListCrowdUsersResponseBody struct {
 	// Id of the request
-	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	//
+	// example:
+	//
+	// F0AB6527-093F-5C44-B3BD-42C8C210C619
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 3
 	TotalCount *int64    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	Users      []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
@@ -6512,6 +9608,11 @@ func (s *ListCrowdUsersResponse) SetBody(v *ListCrowdUsersResponseBody) *ListCro
 }
 
 type ListCrowdsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -6531,8 +9632,15 @@ func (s *ListCrowdsRequest) SetInstanceId(v string) *ListCrowdsRequest {
 type ListCrowdsResponseBody struct {
 	Crowds []*ListCrowdsResponseBodyCrowds `json:"Crowds,omitempty" xml:"Crowds,omitempty" type:"Repeated"`
 	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	//
+	// example:
+	//
+	// 9763624B-5FBB-5E3A-9193-B1ADB554CEAE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListCrowdsResponseBody) String() string {
@@ -6559,14 +9667,38 @@ func (s *ListCrowdsResponseBody) SetTotalCount(v int64) *ListCrowdsResponseBody 
 }
 
 type ListCrowdsResponseBodyCrowds struct {
-	CrowdId       *string `json:"CrowdId,omitempty" xml:"CrowdId,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 3
+	CrowdId *string `json:"CrowdId,omitempty" xml:"CrowdId,omitempty"`
+	// example:
+	//
+	// This is a test.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	Label         *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Quantity      *string `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	Source        *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Users         *string `json:"Users,omitempty" xml:"Users,omitempty"`
+	// example:
+	//
+	// os=android
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// example:
+	//
+	// crowd1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 10
+	Quantity *string `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	// example:
+	//
+	// ManualInput
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// user1,user2
+	Users *string `json:"Users,omitempty" xml:"Users,omitempty"`
 }
 
 func (s ListCrowdsResponseBodyCrowds) String() string {
@@ -6647,10 +9779,21 @@ func (s *ListCrowdsResponse) SetBody(v *ListCrowdsResponseBody) *ListCrowdsRespo
 }
 
 type ListExperimentGroupsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	LayerId    *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 3
+	LayerId  *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// Online
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListExperimentGroupsRequest) String() string {
@@ -6684,8 +9827,15 @@ func (s *ListExperimentGroupsRequest) SetStatus(v string) *ListExperimentGroupsR
 type ListExperimentGroupsResponseBody struct {
 	ExperimentGroups []*ListExperimentGroupsResponseBodyExperimentGroups `json:"ExperimentGroups,omitempty" xml:"ExperimentGroups,omitempty" type:"Repeated"`
 	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	//
+	// example:
+	//
+	// 59CE7EC6-F268-5D71-9215-32922CC50D72
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListExperimentGroupsResponseBody) String() string {
@@ -6712,26 +9862,77 @@ func (s *ListExperimentGroupsResponseBody) SetTotalCount(v int64) *ListExperimen
 }
 
 type ListExperimentGroupsResponseBodyExperimentGroups struct {
-	Config                   *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	CrowdId                  *string `json:"CrowdId,omitempty" xml:"CrowdId,omitempty"`
-	CrowdTargetType          *string `json:"CrowdTargetType,omitempty" xml:"CrowdTargetType,omitempty"`
-	DebugCrowdId             *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
-	DebugUsers               *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
-	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DistributionTimeDuration *int32  `json:"DistributionTimeDuration,omitempty" xml:"DistributionTimeDuration,omitempty"`
-	DistributionType         *string `json:"DistributionType,omitempty" xml:"DistributionType,omitempty"`
-	ExperimentGroupId        *string `json:"ExperimentGroupId,omitempty" xml:"ExperimentGroupId,omitempty"`
-	Filter                   *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	HoldingBuckets           *string `json:"HoldingBuckets,omitempty" xml:"HoldingBuckets,omitempty"`
-	LaboratoryId             *string `json:"LaboratoryId,omitempty" xml:"LaboratoryId,omitempty"`
-	LayerId                  *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
-	Name                     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NeedAA                   *bool   `json:"NeedAA,omitempty" xml:"NeedAA,omitempty"`
-	Owner                    *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	RandomFlow               *int64  `json:"RandomFlow,omitempty" xml:"RandomFlow,omitempty"`
-	ReservedBuckets          *string `json:"ReservedBuckets,omitempty" xml:"ReservedBuckets,omitempty"`
-	SceneId                  *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	Status                   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// {}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// example:
+	//
+	// 3
+	CrowdId         *string `json:"CrowdId,omitempty" xml:"CrowdId,omitempty"`
+	CrowdTargetType *string `json:"CrowdTargetType,omitempty" xml:"CrowdTargetType,omitempty"`
+	// example:
+	//
+	// 4
+	DebugCrowdId *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
+	// example:
+	//
+	// 1124512470******,1124512471******,1124512472******
+	DebugUsers *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
+	// example:
+	//
+	// This is a test.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 5
+	DistributionTimeDuration *int32 `json:"DistributionTimeDuration,omitempty" xml:"DistributionTimeDuration,omitempty"`
+	// example:
+	//
+	// UserId
+	DistributionType *string `json:"DistributionType,omitempty" xml:"DistributionType,omitempty"`
+	// example:
+	//
+	// 3
+	ExperimentGroupId *string `json:"ExperimentGroupId,omitempty" xml:"ExperimentGroupId,omitempty"`
+	// example:
+	//
+	// gender=female
+	Filter         *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	HoldingBuckets *string `json:"HoldingBuckets,omitempty" xml:"HoldingBuckets,omitempty"`
+	// example:
+	//
+	// 4
+	LaboratoryId *string `json:"LaboratoryId,omitempty" xml:"LaboratoryId,omitempty"`
+	// example:
+	//
+	// 3
+	LayerId *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
+	// example:
+	//
+	// experiment_group1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// true
+	NeedAA *bool `json:"NeedAA,omitempty" xml:"NeedAA,omitempty"`
+	// example:
+	//
+	// 1124512470******
+	Owner      *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	RandomFlow *int64  `json:"RandomFlow,omitempty" xml:"RandomFlow,omitempty"`
+	// example:
+	//
+	// 1,2,3,4
+	ReservedBuckets *string `json:"ReservedBuckets,omitempty" xml:"ReservedBuckets,omitempty"`
+	// example:
+	//
+	// 1
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// example:
+	//
+	// Offline
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListExperimentGroupsResponseBodyExperimentGroups) String() string {
@@ -6872,10 +10073,24 @@ func (s *ListExperimentGroupsResponse) SetBody(v *ListExperimentGroupsResponseBo
 }
 
 type ListExperimentsRequest struct {
+	// example:
+	//
+	// 3
 	ExperimentGroupId *string `json:"ExperimentGroupId,omitempty" xml:"ExperimentGroupId,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Query             *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-test1
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// experiment_test1
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// example:
+	//
+	// Offline
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListExperimentsRequest) String() string {
@@ -6909,8 +10124,15 @@ func (s *ListExperimentsRequest) SetStatus(v string) *ListExperimentsRequest {
 type ListExperimentsResponseBody struct {
 	Experiments []*ListExperimentsResponseBodyExperiments `json:"Experiments,omitempty" xml:"Experiments,omitempty" type:"Repeated"`
 	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	//
+	// example:
+	//
+	// 68075085-1A7D-55C2-B51D-7AD9B02A6DD6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListExperimentsResponseBody) String() string {
@@ -6937,23 +10159,74 @@ func (s *ListExperimentsResponseBody) SetTotalCount(v int64) *ListExperimentsRes
 }
 
 type ListExperimentsResponseBodyExperiments struct {
+	// example:
+	//
+	// L1#EG1#E1
 	AliasExperimentId *string `json:"AliasExperimentId,omitempty" xml:"AliasExperimentId,omitempty"`
-	Buckets           *string `json:"Buckets,omitempty" xml:"Buckets,omitempty"`
-	Config            *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	DebugCrowdId      *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
-	DebugUsers        *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
-	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 1,2,3
+	Buckets *string `json:"Buckets,omitempty" xml:"Buckets,omitempty"`
+	// example:
+	//
+	// {}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// example:
+	//
+	// 3
+	DebugCrowdId *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
+	// example:
+	//
+	// uid1,uid2,uid3
+	DebugUsers *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
+	// example:
+	//
+	// This is a test.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 3
 	ExperimentGroupId *string `json:"ExperimentGroupId,omitempty" xml:"ExperimentGroupId,omitempty"`
-	ExperimentId      *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
-	FlowPercent       *int32  `json:"FlowPercent,omitempty" xml:"FlowPercent,omitempty"`
-	GmtCreateTime     *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime   *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	LaboratoryId      *string `json:"LaboratoryId,omitempty" xml:"LaboratoryId,omitempty"`
-	LayerId           *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	SceneId           *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type              *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 3
+	ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	// example:
+	//
+	// 100
+	FlowPercent *int32 `json:"FlowPercent,omitempty" xml:"FlowPercent,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// 3
+	LaboratoryId *string `json:"LaboratoryId,omitempty" xml:"LaboratoryId,omitempty"`
+	// example:
+	//
+	// 3
+	LayerId *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
+	// example:
+	//
+	// experiment_test1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 3
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// example:
+	//
+	// Offline
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// Baseline
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListExperimentsResponseBodyExperiments) String() string {
@@ -7079,11 +10352,28 @@ func (s *ListExperimentsResponse) SetBody(v *ListExperimentsResponseBody) *ListE
 }
 
 type ListFeatureConsistencyCheckJobConfigsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-********
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Order      *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// ASC
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SortBy     *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// GmtCreateTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 }
 
 func (s ListFeatureConsistencyCheckJobConfigsRequest) String() string {
@@ -7121,8 +10411,14 @@ func (s *ListFeatureConsistencyCheckJobConfigsRequest) SetSortBy(v string) *List
 
 type ListFeatureConsistencyCheckJobConfigsResponseBody struct {
 	FeatureConsistencyCheckConfigs []*ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs `json:"FeatureConsistencyCheckConfigs,omitempty" xml:"FeatureConsistencyCheckConfigs,omitempty" type:"Repeated"`
-	RequestId                      *string                                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount                     *int64                                                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// FCF741D8-9C30-578E-807F-B935487DB34A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListFeatureConsistencyCheckJobConfigsResponseBody) String() string {
@@ -7149,48 +10445,153 @@ func (s *ListFeatureConsistencyCheckJobConfigsResponseBody) SetTotalCount(v int6
 }
 
 type ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs struct {
-	CompareFeature                     *bool   `json:"CompareFeature,omitempty" xml:"CompareFeature,omitempty"`
-	EasServiceName                     *string `json:"EasServiceName,omitempty" xml:"EasServiceName,omitempty"`
-	EasyRecPackagePath                 *string `json:"EasyRecPackagePath,omitempty" xml:"EasyRecPackagePath,omitempty"`
-	EasyRecVersion                     *string `json:"EasyRecVersion,omitempty" xml:"EasyRecVersion,omitempty"`
+	// example:
+	//
+	// true
+	CompareFeature *bool `json:"CompareFeature,omitempty" xml:"CompareFeature,omitempty"`
+	// example:
+	//
+	// eas_service_1
+	EasServiceName *string `json:"EasServiceName,omitempty" xml:"EasServiceName,omitempty"`
+	// example:
+	//
+	// oss://*******
+	EasyRecPackagePath *string `json:"EasyRecPackagePath,omitempty" xml:"EasyRecPackagePath,omitempty"`
+	// example:
+	//
+	// 1.3.60
+	EasyRecVersion *string `json:"EasyRecVersion,omitempty" xml:"EasyRecVersion,omitempty"`
+	// example:
+	//
+	// 3
 	FeatureConsistencyCheckJobConfigId *string `json:"FeatureConsistencyCheckJobConfigId,omitempty" xml:"FeatureConsistencyCheckJobConfigId,omitempty"`
-	FeatureDisplayExclude              *string `json:"FeatureDisplayExclude,omitempty" xml:"FeatureDisplayExclude,omitempty"`
-	FeatureLandingResourceId           *string `json:"FeatureLandingResourceId,omitempty" xml:"FeatureLandingResourceId,omitempty"`
-	FeatureLandingResourceUri          *string `json:"FeatureLandingResourceUri,omitempty" xml:"FeatureLandingResourceUri,omitempty"`
-	FeaturePriority                    *string `json:"FeaturePriority,omitempty" xml:"FeaturePriority,omitempty"`
-	FeatureStoreItemId                 *string `json:"FeatureStoreItemId,omitempty" xml:"FeatureStoreItemId,omitempty"`
-	FeatureStoreModelId                *string `json:"FeatureStoreModelId,omitempty" xml:"FeatureStoreModelId,omitempty"`
-	FeatureStoreProjectId              *string `json:"FeatureStoreProjectId,omitempty" xml:"FeatureStoreProjectId,omitempty"`
-	FeatureStoreProjectName            *string `json:"FeatureStoreProjectName,omitempty" xml:"FeatureStoreProjectName,omitempty"`
-	FeatureStoreSeqFeatureView         *string `json:"FeatureStoreSeqFeatureView,omitempty" xml:"FeatureStoreSeqFeatureView,omitempty"`
-	FeatureStoreUserId                 *string `json:"FeatureStoreUserId,omitempty" xml:"FeatureStoreUserId,omitempty"`
-	FgJarVersion                       *string `json:"FgJarVersion,omitempty" xml:"FgJarVersion,omitempty"`
-	FgJsonFileName                     *string `json:"FgJsonFileName,omitempty" xml:"FgJsonFileName,omitempty"`
-	GenerateZip                        *bool   `json:"GenerateZip,omitempty" xml:"GenerateZip,omitempty"`
-	GmtCreateTime                      *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime                    *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	ItemIdField                        *string `json:"ItemIdField,omitempty" xml:"ItemIdField,omitempty"`
-	ItemTable                          *string `json:"ItemTable,omitempty" xml:"ItemTable,omitempty"`
-	ItemTablePartitionField            *string `json:"ItemTablePartitionField,omitempty" xml:"ItemTablePartitionField,omitempty"`
-	ItemTablePartitionFieldFormat      *string `json:"ItemTablePartitionFieldFormat,omitempty" xml:"ItemTablePartitionFieldFormat,omitempty"`
-	LatestJobGmtSamplingEndTime        *string `json:"LatestJobGmtSamplingEndTime,omitempty" xml:"LatestJobGmtSamplingEndTime,omitempty"`
-	LatestJobGmtSamplingStartTime      *string `json:"LatestJobGmtSamplingStartTime,omitempty" xml:"LatestJobGmtSamplingStartTime,omitempty"`
-	LatestJobId                        *string `json:"LatestJobId,omitempty" xml:"LatestJobId,omitempty"`
-	Name                               *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OssBucket                          *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssResourceId                      *string `json:"OssResourceId,omitempty" xml:"OssResourceId,omitempty"`
-	SampleRate                         *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
-	SceneId                            *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	SceneName                          *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
-	ServiceId                          *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	ServiceName                        *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	Status                             *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UseFeatureStore                    *string `json:"UseFeatureStore,omitempty" xml:"UseFeatureStore,omitempty"`
-	UserIdField                        *string `json:"UserIdField,omitempty" xml:"UserIdField,omitempty"`
-	UserTable                          *string `json:"UserTable,omitempty" xml:"UserTable,omitempty"`
-	UserTablePartitionField            *string `json:"UserTablePartitionField,omitempty" xml:"UserTablePartitionField,omitempty"`
-	UserTablePartitionFieldFormat      *string `json:"UserTablePartitionFieldFormat,omitempty" xml:"UserTablePartitionFieldFormat,omitempty"`
-	WorkflowName                       *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
+	// example:
+	//
+	// feature1,feature2
+	FeatureDisplayExclude *string `json:"FeatureDisplayExclude,omitempty" xml:"FeatureDisplayExclude,omitempty"`
+	// example:
+	//
+	// reso-********
+	FeatureLandingResourceId *string `json:"FeatureLandingResourceId,omitempty" xml:"FeatureLandingResourceId,omitempty"`
+	// example:
+	//
+	// mc_project_1
+	FeatureLandingResourceUri *string `json:"FeatureLandingResourceUri,omitempty" xml:"FeatureLandingResourceUri,omitempty"`
+	// example:
+	//
+	// feature1,feature2,feature3
+	FeaturePriority            *string `json:"FeaturePriority,omitempty" xml:"FeaturePriority,omitempty"`
+	FeatureStoreItemId         *string `json:"FeatureStoreItemId,omitempty" xml:"FeatureStoreItemId,omitempty"`
+	FeatureStoreModelId        *string `json:"FeatureStoreModelId,omitempty" xml:"FeatureStoreModelId,omitempty"`
+	FeatureStoreProjectId      *string `json:"FeatureStoreProjectId,omitempty" xml:"FeatureStoreProjectId,omitempty"`
+	FeatureStoreProjectName    *string `json:"FeatureStoreProjectName,omitempty" xml:"FeatureStoreProjectName,omitempty"`
+	FeatureStoreSeqFeatureView *string `json:"FeatureStoreSeqFeatureView,omitempty" xml:"FeatureStoreSeqFeatureView,omitempty"`
+	FeatureStoreUserId         *string `json:"FeatureStoreUserId,omitempty" xml:"FeatureStoreUserId,omitempty"`
+	// example:
+	//
+	// 1.0.0
+	FgJarVersion *string `json:"FgJarVersion,omitempty" xml:"FgJarVersion,omitempty"`
+	// example:
+	//
+	// file.json
+	FgJsonFileName *string `json:"FgJsonFileName,omitempty" xml:"FgJsonFileName,omitempty"`
+	// example:
+	//
+	// true
+	GenerateZip *bool `json:"GenerateZip,omitempty" xml:"GenerateZip,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// item_id
+	ItemIdField *string `json:"ItemIdField,omitempty" xml:"ItemIdField,omitempty"`
+	// example:
+	//
+	// item_table
+	ItemTable *string `json:"ItemTable,omitempty" xml:"ItemTable,omitempty"`
+	// example:
+	//
+	// ds
+	ItemTablePartitionField *string `json:"ItemTablePartitionField,omitempty" xml:"ItemTablePartitionField,omitempty"`
+	// example:
+	//
+	// yyyymmdd
+	ItemTablePartitionFieldFormat *string `json:"ItemTablePartitionFieldFormat,omitempty" xml:"ItemTablePartitionFieldFormat,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
+	LatestJobGmtSamplingEndTime *string `json:"LatestJobGmtSamplingEndTime,omitempty" xml:"LatestJobGmtSamplingEndTime,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
+	LatestJobGmtSamplingStartTime *string `json:"LatestJobGmtSamplingStartTime,omitempty" xml:"LatestJobGmtSamplingStartTime,omitempty"`
+	// example:
+	//
+	// 3
+	LatestJobId *string `json:"LatestJobId,omitempty" xml:"LatestJobId,omitempty"`
+	// example:
+	//
+	// feature_consistency_check1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// oss_bucket_1
+	OssBucket *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	// example:
+	//
+	// reso-********
+	OssResourceId *string `json:"OssResourceId,omitempty" xml:"OssResourceId,omitempty"`
+	// example:
+	//
+	// 0.89
+	SampleRate *string `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+	// example:
+	//
+	// 3
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// example:
+	//
+	// scene1
+	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	// example:
+	//
+	// 4
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// example:
+	//
+	// service1
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// example:
+	//
+	// Editable
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UseFeatureStore *string `json:"UseFeatureStore,omitempty" xml:"UseFeatureStore,omitempty"`
+	// example:
+	//
+	// user_id
+	UserIdField *string `json:"UserIdField,omitempty" xml:"UserIdField,omitempty"`
+	// example:
+	//
+	// user_table
+	UserTable *string `json:"UserTable,omitempty" xml:"UserTable,omitempty"`
+	// example:
+	//
+	// ds
+	UserTablePartitionField *string `json:"UserTablePartitionField,omitempty" xml:"UserTablePartitionField,omitempty"`
+	// example:
+	//
+	// yyyymmdd
+	UserTablePartitionFieldFormat *string `json:"UserTablePartitionFieldFormat,omitempty" xml:"UserTablePartitionFieldFormat,omitempty"`
+	// example:
+	//
+	// work_flow_1
+	WorkflowName *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
 }
 
 func (s ListFeatureConsistencyCheckJobConfigsResponseBodyFeatureConsistencyCheckConfigs) String() string {
@@ -7441,10 +10842,30 @@ func (s *ListFeatureConsistencyCheckJobConfigsResponse) SetBody(v *ListFeatureCo
 }
 
 type ListFeatureConsistencyCheckJobFeatureReportsRequest struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	LogItemId    *string `json:"LogItemId,omitempty" xml:"LogItemId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-********
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 9010
+	LogItemId *string `json:"LogItemId,omitempty" xml:"LogItemId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// F7AC05FF-EDE7-5C2B-B9AE-33D6DF4178BA
 	LogRequestId *string `json:"LogRequestId,omitempty" xml:"LogRequestId,omitempty"`
-	LogUserId    *string `json:"LogUserId,omitempty" xml:"LogUserId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1010
+	LogUserId *string `json:"LogUserId,omitempty" xml:"LogUserId,omitempty"`
 }
 
 func (s ListFeatureConsistencyCheckJobFeatureReportsRequest) String() string {
@@ -7476,10 +10897,19 @@ func (s *ListFeatureConsistencyCheckJobFeatureReportsRequest) SetLogUserId(v str
 }
 
 type ListFeatureConsistencyCheckJobFeatureReportsResponseBody struct {
-	DataPath             *string                                                                         `json:"DataPath,omitempty" xml:"DataPath,omitempty"`
+	// example:
+	//
+	// https://********
+	DataPath *string `json:"DataPath,omitempty" xml:"DataPath,omitempty"`
+	// example:
+	//
+	// oss://********
 	OssPath              *string                                                                         `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
 	ReportsOfFeatureDiff []*ListFeatureConsistencyCheckJobFeatureReportsResponseBodyReportsOfFeatureDiff `json:"ReportsOfFeatureDiff,omitempty" xml:"ReportsOfFeatureDiff,omitempty" type:"Repeated"`
-	RequestId            *string                                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// BBD41FBF-E75C-551A-92FA-CAD654AA006F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListFeatureConsistencyCheckJobFeatureReportsResponseBody) String() string {
@@ -7511,12 +10941,30 @@ func (s *ListFeatureConsistencyCheckJobFeatureReportsResponseBody) SetRequestId(
 }
 
 type ListFeatureConsistencyCheckJobFeatureReportsResponseBodyReportsOfFeatureDiff struct {
-	FeatureName  *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
-	LogItemId    *string `json:"LogItemId,omitempty" xml:"LogItemId,omitempty"`
+	// example:
+	//
+	// gender
+	FeatureName *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	// example:
+	//
+	// 9010
+	LogItemId *string `json:"LogItemId,omitempty" xml:"LogItemId,omitempty"`
+	// example:
+	//
+	// F7AC05FF-EDE7-5C2B-B9AE-33D6DF4178BA
 	LogRequestId *string `json:"LogRequestId,omitempty" xml:"LogRequestId,omitempty"`
-	LogUserId    *string `json:"LogUserId,omitempty" xml:"LogUserId,omitempty"`
+	// example:
+	//
+	// 1010
+	LogUserId *string `json:"LogUserId,omitempty" xml:"LogUserId,omitempty"`
+	// example:
+	//
+	// male
 	OfflineValue *string `json:"OfflineValue,omitempty" xml:"OfflineValue,omitempty"`
-	OnlineValue  *string `json:"OnlineValue,omitempty" xml:"OnlineValue,omitempty"`
+	// example:
+	//
+	// male
+	OnlineValue *string `json:"OnlineValue,omitempty" xml:"OnlineValue,omitempty"`
 }
 
 func (s ListFeatureConsistencyCheckJobFeatureReportsResponseBodyReportsOfFeatureDiff) String() string {
@@ -7588,7 +11036,10 @@ func (s *ListFeatureConsistencyCheckJobFeatureReportsResponse) SetBody(v *ListFe
 
 type ListFeatureConsistencyCheckJobScoreReportsRequest struct {
 	ExcludeRequestIds []*string `json:"ExcludeRequestIds,omitempty" xml:"ExcludeRequestIds,omitempty" type:"Repeated"`
-	InstanceId        *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// pairec-cn-********
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s ListFeatureConsistencyCheckJobScoreReportsRequest) String() string {
@@ -7611,7 +11062,10 @@ func (s *ListFeatureConsistencyCheckJobScoreReportsRequest) SetInstanceId(v stri
 
 type ListFeatureConsistencyCheckJobScoreReportsShrinkRequest struct {
 	ExcludeRequestIdsShrink *string `json:"ExcludeRequestIds,omitempty" xml:"ExcludeRequestIds,omitempty"`
-	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// pairec-cn-********
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s ListFeatureConsistencyCheckJobScoreReportsShrinkRequest) String() string {
@@ -7633,10 +11087,19 @@ func (s *ListFeatureConsistencyCheckJobScoreReportsShrinkRequest) SetInstanceId(
 }
 
 type ListFeatureConsistencyCheckJobScoreReportsResponseBody struct {
-	DataPath           *string                                                                     `json:"DataPath,omitempty" xml:"DataPath,omitempty"`
+	// example:
+	//
+	// http://*******
+	DataPath *string `json:"DataPath,omitempty" xml:"DataPath,omitempty"`
+	// example:
+	//
+	// oss://********
 	OssPath            *string                                                                     `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
 	ReportsOfScoreDiff []*ListFeatureConsistencyCheckJobScoreReportsResponseBodyReportsOfScoreDiff `json:"ReportsOfScoreDiff,omitempty" xml:"ReportsOfScoreDiff,omitempty" type:"Repeated"`
-	RequestId          *string                                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// F0AB6527-093F-5C44-B3BD-42C8C210C619
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListFeatureConsistencyCheckJobScoreReportsResponseBody) String() string {
@@ -7668,10 +11131,25 @@ func (s *ListFeatureConsistencyCheckJobScoreReportsResponseBody) SetRequestId(v 
 }
 
 type ListFeatureConsistencyCheckJobScoreReportsResponseBodyReportsOfScoreDiff struct {
-	LogItemId       *string `json:"LogItemId,omitempty" xml:"LogItemId,omitempty"`
-	LogRequestId    *string `json:"LogRequestId,omitempty" xml:"LogRequestId,omitempty"`
-	LogUserId       *string `json:"LogUserId,omitempty" xml:"LogUserId,omitempty"`
-	ScoreDiff       *string `json:"ScoreDiff,omitempty" xml:"ScoreDiff,omitempty"`
+	// example:
+	//
+	// 4
+	LogItemId *string `json:"LogItemId,omitempty" xml:"LogItemId,omitempty"`
+	// example:
+	//
+	// 323
+	LogRequestId *string `json:"LogRequestId,omitempty" xml:"LogRequestId,omitempty"`
+	// example:
+	//
+	// 3
+	LogUserId *string `json:"LogUserId,omitempty" xml:"LogUserId,omitempty"`
+	// example:
+	//
+	// 0.00000234
+	ScoreDiff *string `json:"ScoreDiff,omitempty" xml:"ScoreDiff,omitempty"`
+	// example:
+	//
+	// {}
 	ScoreDiffDetail *string `json:"ScoreDiffDetail,omitempty" xml:"ScoreDiffDetail,omitempty"`
 }
 
@@ -7738,12 +11216,32 @@ func (s *ListFeatureConsistencyCheckJobScoreReportsResponse) SetBody(v *ListFeat
 }
 
 type ListFeatureConsistencyCheckJobsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-********
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Order      *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// ASC
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SortBy     *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// GmtCreateTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListFeatureConsistencyCheckJobsRequest) String() string {
@@ -7786,8 +11284,14 @@ func (s *ListFeatureConsistencyCheckJobsRequest) SetStatus(v string) *ListFeatur
 
 type ListFeatureConsistencyCheckJobsResponseBody struct {
 	FeatureConsistencyCheckJobs []*ListFeatureConsistencyCheckJobsResponseBodyFeatureConsistencyCheckJobs `json:"FeatureConsistencyCheckJobs,omitempty" xml:"FeatureConsistencyCheckJobs,omitempty" type:"Repeated"`
-	RequestId                   *string                                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount                  *string                                                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// A04CB8C0-E74A-5E83-BC61-64D153574EC7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListFeatureConsistencyCheckJobsResponseBody) String() string {
@@ -7814,14 +11318,35 @@ func (s *ListFeatureConsistencyCheckJobsResponseBody) SetTotalCount(v string) *L
 }
 
 type ListFeatureConsistencyCheckJobsResponseBodyFeatureConsistencyCheckJobs struct {
-	Config                               *string   `json:"Config,omitempty" xml:"Config,omitempty"`
-	FeatureConsistencyCheckJobConfigId   *string   `json:"FeatureConsistencyCheckJobConfigId,omitempty" xml:"FeatureConsistencyCheckJobConfigId,omitempty"`
-	FeatureConsistencyCheckJobConfigName *string   `json:"FeatureConsistencyCheckJobConfigName,omitempty" xml:"FeatureConsistencyCheckJobConfigName,omitempty"`
-	FeatureConsistencyCheckJobId         *string   `json:"FeatureConsistencyCheckJobId,omitempty" xml:"FeatureConsistencyCheckJobId,omitempty"`
-	GmtEndTime                           *string   `json:"GmtEndTime,omitempty" xml:"GmtEndTime,omitempty"`
-	GmtStartTime                         *string   `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
-	Logs                                 []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
-	Status                               *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// {}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// example:
+	//
+	// 5
+	FeatureConsistencyCheckJobConfigId *string `json:"FeatureConsistencyCheckJobConfigId,omitempty" xml:"FeatureConsistencyCheckJobConfigId,omitempty"`
+	// example:
+	//
+	// feature_consistency_check_1
+	FeatureConsistencyCheckJobConfigName *string `json:"FeatureConsistencyCheckJobConfigName,omitempty" xml:"FeatureConsistencyCheckJobConfigName,omitempty"`
+	// example:
+	//
+	// 4
+	FeatureConsistencyCheckJobId *string `json:"FeatureConsistencyCheckJobId,omitempty" xml:"FeatureConsistencyCheckJobId,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
+	GmtEndTime *string `json:"GmtEndTime,omitempty" xml:"GmtEndTime,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
+	GmtStartTime *string   `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
+	Logs         []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListFeatureConsistencyCheckJobsResponseBodyFeatureConsistencyCheckJobs) String() string {
@@ -7902,9 +11427,18 @@ func (s *ListFeatureConsistencyCheckJobsResponse) SetBody(v *ListFeatureConsiste
 }
 
 type ListInstanceResourcesRequest struct {
+	// example:
+	//
+	// DataManagement
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	Group    *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// storage
+	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// example:
+	//
+	// OSS
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListInstanceResourcesRequest) String() string {
@@ -7931,9 +11465,15 @@ func (s *ListInstanceResourcesRequest) SetType(v string) *ListInstanceResourcesR
 }
 
 type ListInstanceResourcesResponseBody struct {
-	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Resources  []*ListInstanceResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
-	TotalCount *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 9763624B-5FBB-5E3A-9193-B1ADB554CEAE
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Resources []*ListInstanceResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListInstanceResourcesResponseBody) String() string {
@@ -7960,14 +11500,38 @@ func (s *ListInstanceResourcesResponseBody) SetTotalCount(v int64) *ListInstance
 }
 
 type ListInstanceResourcesResponseBodyResources struct {
-	Category      *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	Config        *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	GmtCreateAt   *string `json:"GmtCreateAt,omitempty" xml:"GmtCreateAt,omitempty"`
+	// example:
+	//
+	// DataManagement
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// example:
+	//
+	// {}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// example:
+	//
+	// 2020-10-13 17:34:52
+	GmtCreateAt *string `json:"GmtCreateAt,omitempty" xml:"GmtCreateAt,omitempty"`
+	// example:
+	//
+	// 2020-10-13 17:34:52
 	GmtModifiedAt *string `json:"GmtModifiedAt,omitempty" xml:"GmtModifiedAt,omitempty"`
-	Group         *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	ResourceId    *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Uri           *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// example:
+	//
+	// storage
+	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// example:
+	//
+	// reso-2s416t***
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// OSS
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// bucket-test-123
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s ListInstanceResourcesResponseBodyResources) String() string {
@@ -8048,12 +11612,30 @@ func (s *ListInstanceResourcesResponse) SetBody(v *ListInstanceResourcesResponse
 }
 
 type ListInstancesRequest struct {
+	// example:
+	//
+	// pairec-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Order      *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SortBy     *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// Desc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 50
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// Type
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// basic
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListInstancesRequest) String() string {
@@ -8095,9 +11677,15 @@ func (s *ListInstancesRequest) SetType(v string) *ListInstancesRequest {
 }
 
 type ListInstancesResponseBody struct {
-	Instances  []*ListInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Instances []*ListInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	// example:
+	//
+	// BDB621CB-A81E-5D39-8793-39A365CBCC74
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 7
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListInstancesResponseBody) String() string {
@@ -8124,16 +11712,43 @@ func (s *ListInstancesResponseBody) SetTotalCount(v int32) *ListInstancesRespons
 }
 
 type ListInstancesResponseBodyInstances struct {
-	ChargeType      *string                                   `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	CommodityCode   *string                                   `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	Config          *ListInstancesResponseBodyInstancesConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-	ExpiredTime     *string                                   `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	GmtCreateTime   *string                                   `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime *string                                   `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	InstanceId      *string                                   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId        *string                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status          *string                                   `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type            *string                                   `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// Subscription
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// airec_developers_public_cn
+	CommodityCode *string                                   `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	Config        *ListInstancesResponseBodyInstancesConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2022-12-14 00:00:00.0
+	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// example:
+	//
+	// 2022-10-13 17:34:52.0
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2022-11-05 09:02:30.0
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// pairec-test1
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// cn-shenzhen
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// Initializing
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// basic
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListInstancesResponseBodyInstances) String() string {
@@ -8224,9 +11839,15 @@ func (s *ListInstancesResponseBodyInstancesConfig) SetMonitors(v []*ListInstance
 }
 
 type ListInstancesResponseBodyInstancesConfigDataManagements struct {
+	// example:
+	//
+	// storage
 	ComponentCode *string                `json:"ComponentCode,omitempty" xml:"ComponentCode,omitempty"`
 	Meta          map[string]interface{} `json:"Meta,omitempty" xml:"Meta,omitempty"`
-	Type          *string                `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// OSS
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListInstancesResponseBodyInstancesConfigDataManagements) String() string {
@@ -8253,9 +11874,15 @@ func (s *ListInstancesResponseBodyInstancesConfigDataManagements) SetType(v stri
 }
 
 type ListInstancesResponseBodyInstancesConfigEngines struct {
+	// example:
+	//
+	// feature
 	ComponentCode *string                `json:"ComponentCode,omitempty" xml:"ComponentCode,omitempty"`
 	Meta          map[string]interface{} `json:"Meta,omitempty" xml:"Meta,omitempty"`
-	Type          *string                `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// Hologres
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListInstancesResponseBodyInstancesConfigEngines) String() string {
@@ -8282,9 +11909,15 @@ func (s *ListInstancesResponseBodyInstancesConfigEngines) SetType(v string) *Lis
 }
 
 type ListInstancesResponseBodyInstancesConfigMonitors struct {
+	// example:
+	//
+	// featuresets
 	ComponentCode *string                `json:"ComponentCode,omitempty" xml:"ComponentCode,omitempty"`
 	Meta          map[string]interface{} `json:"Meta,omitempty" xml:"Meta,omitempty"`
-	Type          *string                `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// Platform
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListInstancesResponseBodyInstancesConfigMonitors) String() string {
@@ -8340,10 +11973,26 @@ func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInsta
 }
 
 type ListLaboratoriesRequest struct {
+	// example:
+	//
+	// Daily
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	SceneId     *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-test1
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// example:
+	//
+	// Offline
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListLaboratoriesRequest) String() string {
@@ -8377,8 +12026,15 @@ func (s *ListLaboratoriesRequest) SetStatus(v string) *ListLaboratoriesRequest {
 type ListLaboratoriesResponseBody struct {
 	Laboratories []*ListLaboratoriesResponseBodyLaboratories `json:"Laboratories,omitempty" xml:"Laboratories,omitempty" type:"Repeated"`
 	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	//
+	// example:
+	//
+	// 1C0898E5-9220-5443-B2D9-445FF0688215
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListLaboratoriesResponseBody) String() string {
@@ -8405,20 +12061,62 @@ func (s *ListLaboratoriesResponseBody) SetTotalCount(v int64) *ListLaboratoriesR
 }
 
 type ListLaboratoriesResponseBodyLaboratories struct {
-	BucketCount  *int32  `json:"BucketCount,omitempty" xml:"BucketCount,omitempty"`
-	BucketType   *string `json:"BucketType,omitempty" xml:"BucketType,omitempty"`
-	Buckets      *string `json:"Buckets,omitempty" xml:"Buckets,omitempty"`
-	CrowdId      *string `json:"CrowdId,omitempty" xml:"CrowdId,omitempty"`
+	// example:
+	//
+	// 100
+	BucketCount *int32 `json:"BucketCount,omitempty" xml:"BucketCount,omitempty"`
+	// example:
+	//
+	// Filter
+	BucketType *string `json:"BucketType,omitempty" xml:"BucketType,omitempty"`
+	// example:
+	//
+	// 1,2,3,10-20
+	Buckets *string `json:"Buckets,omitempty" xml:"Buckets,omitempty"`
+	// example:
+	//
+	// 3
+	CrowdId *string `json:"CrowdId,omitempty" xml:"CrowdId,omitempty"`
+	// example:
+	//
+	// 3
 	DebugCrowdId *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
-	DebugUsers   *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Environment  *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
-	Filter       *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// example:
+	//
+	// user1,user2,user3
+	DebugUsers *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
+	// example:
+	//
+	// This is a test.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// Daily
+	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// example:
+	//
+	// filter=xxx
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// example:
+	//
+	// 3
 	LaboratoryId *string `json:"LaboratoryId,omitempty" xml:"LaboratoryId,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	SceneId      *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// laboratory1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 3
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// example:
+	//
+	// Offline
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// Base
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListLaboratoriesResponseBodyLaboratories) String() string {
@@ -8529,7 +12227,17 @@ func (s *ListLaboratoriesResponse) SetBody(v *ListLaboratoriesResponseBody) *Lis
 }
 
 type ListLayersRequest struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-abcdefg1234
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
 	LaboratoryId *string `json:"LaboratoryId,omitempty" xml:"LaboratoryId,omitempty"`
 }
 
@@ -8554,8 +12262,15 @@ func (s *ListLayersRequest) SetLaboratoryId(v string) *ListLayersRequest {
 type ListLayersResponseBody struct {
 	Layers []*ListLayersResponseBodyLayers `json:"Layers,omitempty" xml:"Layers,omitempty" type:"Repeated"`
 	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	//
+	// example:
+	//
+	// 518C64F6-DFF7-11ED-85B0-00163E14B3D1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListLayersResponseBody) String() string {
@@ -8582,13 +12297,28 @@ func (s *ListLayersResponseBody) SetTotalCount(v int64) *ListLayersResponseBody 
 }
 
 type ListLayersResponseBodyLayers struct {
+	// example:
+	//
+	// This is a test.
 	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	LaboratoryId  *string `json:"LaboratoryId,omitempty" xml:"LaboratoryId,omitempty"`
-	LayerId       *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ResidualFlow  *int64  `json:"ResidualFlow,omitempty" xml:"ResidualFlow,omitempty"`
-	SceneId       *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// example:
+	//
+	// 3
+	LaboratoryId *string `json:"LaboratoryId,omitempty" xml:"LaboratoryId,omitempty"`
+	// example:
+	//
+	// 3
+	LayerId *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
+	// example:
+	//
+	// layer1
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ResidualFlow *int64  `json:"ResidualFlow,omitempty" xml:"ResidualFlow,omitempty"`
+	// example:
+	//
+	// 3
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
 func (s ListLayersResponseBodyLayers) String() string {
@@ -8664,12 +12394,34 @@ func (s *ListLayersResponse) SetBody(v *ListLayersResponseBody) *ListLayersRespo
 }
 
 type ListParamsRequest struct {
+	// example:
+	//
+	// Daily
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SceneId     *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-abcdefg1234
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// home
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 50
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
 func (s ListParamsRequest) String() string {
@@ -8713,8 +12465,15 @@ func (s *ListParamsRequest) SetSceneId(v string) *ListParamsRequest {
 type ListParamsResponseBody struct {
 	Params []*ListParamsResponseBodyParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
 	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	//
+	// example:
+	//
+	// A2D07551-38DA-531E-9B22-877D1D86A579
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListParamsResponseBody) String() string {
@@ -8741,11 +12500,26 @@ func (s *ListParamsResponseBody) SetTotalCount(v int64) *ListParamsResponseBody 
 }
 
 type ListParamsResponseBodyParams struct {
-	Environment     *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// example:
+	//
+	// Daily
+	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ParamId         *string `json:"ParamId,omitempty" xml:"ParamId,omitempty"`
-	Value           *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// home
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 4
+	ParamId *string `json:"ParamId,omitempty" xml:"ParamId,omitempty"`
+	// example:
+	//
+	// house
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListParamsResponseBodyParams) String() string {
@@ -8811,7 +12585,8 @@ func (s *ListParamsResponse) SetBody(v *ListParamsResponseBody) *ListParamsRespo
 }
 
 type ListResourceRulesRequest struct {
-	All              *bool   `json:"All,omitempty" xml:"All,omitempty"`
+	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// This parameter is required.
 	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Order            *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	PageNumber       *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -9028,8 +12803,14 @@ func (s *ListResourceRulesResponse) SetBody(v *ListResourceRulesResponseBody) *L
 }
 
 type ListScenesRequest struct {
+	// example:
+	//
+	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// scene1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s ListScenesRequest) String() string {
@@ -9052,9 +12833,16 @@ func (s *ListScenesRequest) SetName(v string) *ListScenesRequest {
 
 type ListScenesResponseBody struct {
 	// Id of the request
-	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Scenes     []*ListScenesResponseBodyScenes `json:"Scenes,omitempty" xml:"Scenes,omitempty" type:"Repeated"`
-	TotalCount *int64                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	//
+	// example:
+	//
+	// B8987BF7-6028-5B17-80E0-251B7BD67BBA
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Scenes    []*ListScenesResponseBodyScenes `json:"Scenes,omitempty" xml:"Scenes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListScenesResponseBody) String() string {
@@ -9081,10 +12869,19 @@ func (s *ListScenesResponseBody) SetTotalCount(v int64) *ListScenesResponseBody 
 }
 
 type ListScenesResponseBodyScenes struct {
+	// example:
+	//
+	// This is a test.
 	Description *string                              `json:"Description,omitempty" xml:"Description,omitempty"`
 	Flows       []*ListScenesResponseBodyScenesFlows `json:"Flows,omitempty" xml:"Flows,omitempty" type:"Repeated"`
-	Name        *string                              `json:"Name,omitempty" xml:"Name,omitempty"`
-	SceneId     *string                              `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// example:
+	//
+	// scene1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 3
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
 func (s ListScenesResponseBodyScenes) String() string {
@@ -9116,7 +12913,13 @@ func (s *ListScenesResponseBodyScenes) SetSceneId(v string) *ListScenesResponseB
 }
 
 type ListScenesResponseBodyScenesFlows struct {
+	// example:
+	//
+	// liuliang1
 	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// example:
+	//
+	// 流量1
 	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
 }
 
@@ -9168,6 +12971,11 @@ func (s *ListScenesResponse) SetBody(v *ListScenesResponseBody) *ListScenesRespo
 }
 
 type ListSubCrowdsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -9186,9 +12994,16 @@ func (s *ListSubCrowdsRequest) SetInstanceId(v string) *ListSubCrowdsRequest {
 
 type ListSubCrowdsResponseBody struct {
 	// Id of the request
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SubCrowds  []*ListSubCrowdsResponseBodySubCrowds `json:"SubCrowds,omitempty" xml:"SubCrowds,omitempty" type:"Repeated"`
-	TotalCount *int64                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	//
+	// example:
+	//
+	// C5AEB79E-FAA4-5DCE-8CD7-1CAF549ECC3E
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubCrowds []*ListSubCrowdsResponseBodySubCrowds `json:"SubCrowds,omitempty" xml:"SubCrowds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListSubCrowdsResponseBody) String() string {
@@ -9215,11 +13030,26 @@ func (s *ListSubCrowdsResponseBody) SetTotalCount(v int64) *ListSubCrowdsRespons
 }
 
 type ListSubCrowdsResponseBodySubCrowds struct {
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	Quantity      *int32  `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	Source        *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	SubCrowdId    *string `json:"SubCrowdId,omitempty" xml:"SubCrowdId,omitempty"`
-	Users         *string `json:"Users,omitempty" xml:"Users,omitempty"`
+	// example:
+	//
+	// 2
+	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	// example:
+	//
+	// ManualInput
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// 3
+	SubCrowdId *string `json:"SubCrowdId,omitempty" xml:"SubCrowdId,omitempty"`
+	// example:
+	//
+	// user1,user2
+	Users *string `json:"Users,omitempty" xml:"Users,omitempty"`
 }
 
 func (s ListSubCrowdsResponseBodySubCrowds) String() string {
@@ -9285,12 +13115,34 @@ func (s *ListSubCrowdsResponse) SetBody(v *ListSubCrowdsResponseBody) *ListSubCr
 }
 
 type ListTableMetasRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Module     *string `json:"Module,omitempty" xml:"Module,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ABTest
+	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	// example:
+	//
+	// test1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// MaxCompute
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListTableMetasRequest) String() string {
@@ -9332,9 +13184,15 @@ func (s *ListTableMetasRequest) SetType(v string) *ListTableMetasRequest {
 }
 
 type ListTableMetasResponseBody struct {
+	// example:
+	//
+	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TableMetas []*ListTableMetasResponseBodyTableMetas `json:"TableMetas,omitempty" xml:"TableMetas,omitempty" type:"Repeated"`
-	TotalCount *int64                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 20
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListTableMetasResponseBody) String() string {
@@ -9361,20 +13219,56 @@ func (s *ListTableMetasResponseBody) SetTotalCount(v int64) *ListTableMetasRespo
 }
 
 type ListTableMetasResponseBodyTableMetas struct {
-	CanDelete       *bool                                         `json:"CanDelete,omitempty" xml:"CanDelete,omitempty"`
-	Config          *string                                       `json:"Config,omitempty" xml:"Config,omitempty"`
-	Description     *string                                       `json:"Description,omitempty" xml:"Description,omitempty"`
-	Fields          []*ListTableMetasResponseBodyTableMetasFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
-	GmtCreateTime   *string                                       `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtImportedTime *string                                       `json:"GmtImportedTime,omitempty" xml:"GmtImportedTime,omitempty"`
-	GmtModifiedTime *string                                       `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	Module          *string                                       `json:"Module,omitempty" xml:"Module,omitempty"`
-	Name            *string                                       `json:"Name,omitempty" xml:"Name,omitempty"`
-	ResourceId      *string                                       `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	TableMetaId     *string                                       `json:"TableMetaId,omitempty" xml:"TableMetaId,omitempty"`
-	TableName       *string                                       `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	Type            *string                                       `json:"Type,omitempty" xml:"Type,omitempty"`
-	Url             *string                                       `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// true
+	CanDelete *bool   `json:"CanDelete,omitempty" xml:"CanDelete,omitempty"`
+	Config    *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// example:
+	//
+	// this is a test table
+	Description *string                                       `json:"Description,omitempty" xml:"Description,omitempty"`
+	Fields      []*ListTableMetasResponseBodyTableMetasFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2021-12-12 12:24:33
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// imprecation
+	GmtImportedTime *string `json:"GmtImportedTime,omitempty" xml:"GmtImportedTime,omitempty"`
+	// example:
+	//
+	// 2021-12-12 12:24:33
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// ABTest
+	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	// example:
+	//
+	// test_table
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// reso-2s416t***
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// 3
+	TableMetaId *string `json:"TableMetaId,omitempty" xml:"TableMetaId,omitempty"`
+	// example:
+	//
+	// table_mysql
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// MaxCompute
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// https://dmc-xxx.com/dm/table/xxx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s ListTableMetasResponseBodyTableMetas) String() string {
@@ -9456,10 +13350,22 @@ func (s *ListTableMetasResponseBodyTableMetas) SetUrl(v string) *ListTableMetasR
 }
 
 type ListTableMetasResponseBodyTableMetasFields struct {
-	IsDimensionField *bool   `json:"IsDimensionField,omitempty" xml:"IsDimensionField,omitempty"`
-	Meaning          *string `json:"Meaning,omitempty" xml:"Meaning,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// false
+	IsDimensionField *bool `json:"IsDimensionField,omitempty" xml:"IsDimensionField,omitempty"`
+	// example:
+	//
+	// the gender of people
+	Meaning *string `json:"Meaning,omitempty" xml:"Meaning,omitempty"`
+	// example:
+	//
+	// gender
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// BIGINT
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListTableMetasResponseBodyTableMetasFields) String() string {
@@ -9519,7 +13425,644 @@ func (s *ListTableMetasResponse) SetBody(v *ListTableMetasResponseBody) *ListTab
 	return s
 }
 
+type ListTrafficControlTargetTrafficHistoryRequest struct {
+	EndTime           *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Environment       *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	ExperimentGroupId *string `json:"ExperimentGroupId,omitempty" xml:"ExperimentGroupId,omitempty"`
+	ExperimentId      *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ItemId            *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	StartTime         *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Threshold         *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+}
+
+func (s ListTrafficControlTargetTrafficHistoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrafficControlTargetTrafficHistoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrafficControlTargetTrafficHistoryRequest) SetEndTime(v string) *ListTrafficControlTargetTrafficHistoryRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListTrafficControlTargetTrafficHistoryRequest) SetEnvironment(v string) *ListTrafficControlTargetTrafficHistoryRequest {
+	s.Environment = &v
+	return s
+}
+
+func (s *ListTrafficControlTargetTrafficHistoryRequest) SetExperimentGroupId(v string) *ListTrafficControlTargetTrafficHistoryRequest {
+	s.ExperimentGroupId = &v
+	return s
+}
+
+func (s *ListTrafficControlTargetTrafficHistoryRequest) SetExperimentId(v string) *ListTrafficControlTargetTrafficHistoryRequest {
+	s.ExperimentId = &v
+	return s
+}
+
+func (s *ListTrafficControlTargetTrafficHistoryRequest) SetInstanceId(v string) *ListTrafficControlTargetTrafficHistoryRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListTrafficControlTargetTrafficHistoryRequest) SetItemId(v string) *ListTrafficControlTargetTrafficHistoryRequest {
+	s.ItemId = &v
+	return s
+}
+
+func (s *ListTrafficControlTargetTrafficHistoryRequest) SetStartTime(v string) *ListTrafficControlTargetTrafficHistoryRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListTrafficControlTargetTrafficHistoryRequest) SetThreshold(v string) *ListTrafficControlTargetTrafficHistoryRequest {
+	s.Threshold = &v
+	return s
+}
+
+type ListTrafficControlTargetTrafficHistoryResponseBody struct {
+	RequestId                          *string                                                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount                         *string                                                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TrafficControlTaskTrafficHistories []*ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories `json:"TrafficControlTaskTrafficHistories,omitempty" xml:"TrafficControlTaskTrafficHistories,omitempty" type:"Repeated"`
+}
+
+func (s ListTrafficControlTargetTrafficHistoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrafficControlTargetTrafficHistoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrafficControlTargetTrafficHistoryResponseBody) SetRequestId(v string) *ListTrafficControlTargetTrafficHistoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTrafficControlTargetTrafficHistoryResponseBody) SetTotalCount(v string) *ListTrafficControlTargetTrafficHistoryResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListTrafficControlTargetTrafficHistoryResponseBody) SetTrafficControlTaskTrafficHistories(v []*ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories) *ListTrafficControlTargetTrafficHistoryResponseBody {
+	s.TrafficControlTaskTrafficHistories = v
+	return s
+}
+
+type ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories struct {
+	ExperimentId                   *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	ItemId                         *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	RecordTime                     *string `json:"RecordTime,omitempty" xml:"RecordTime,omitempty"`
+	TrafficControlTargetAimTraffic *string `json:"TrafficControlTargetAimTraffic,omitempty" xml:"TrafficControlTargetAimTraffic,omitempty"`
+	TrafficControlTargetTraffic    *string `json:"TrafficControlTargetTraffic,omitempty" xml:"TrafficControlTargetTraffic,omitempty"`
+	TrafficControlTaskTraffic      *string `json:"TrafficControlTaskTraffic,omitempty" xml:"TrafficControlTaskTraffic,omitempty"`
+}
+
+func (s ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories) SetExperimentId(v string) *ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories {
+	s.ExperimentId = &v
+	return s
+}
+
+func (s *ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories) SetItemId(v string) *ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories {
+	s.ItemId = &v
+	return s
+}
+
+func (s *ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories) SetRecordTime(v string) *ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories {
+	s.RecordTime = &v
+	return s
+}
+
+func (s *ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories) SetTrafficControlTargetAimTraffic(v string) *ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories {
+	s.TrafficControlTargetAimTraffic = &v
+	return s
+}
+
+func (s *ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories) SetTrafficControlTargetTraffic(v string) *ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories {
+	s.TrafficControlTargetTraffic = &v
+	return s
+}
+
+func (s *ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories) SetTrafficControlTaskTraffic(v string) *ListTrafficControlTargetTrafficHistoryResponseBodyTrafficControlTaskTrafficHistories {
+	s.TrafficControlTaskTraffic = &v
+	return s
+}
+
+type ListTrafficControlTargetTrafficHistoryResponse struct {
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTrafficControlTargetTrafficHistoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTrafficControlTargetTrafficHistoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrafficControlTargetTrafficHistoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrafficControlTargetTrafficHistoryResponse) SetHeaders(v map[string]*string) *ListTrafficControlTargetTrafficHistoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTrafficControlTargetTrafficHistoryResponse) SetStatusCode(v int32) *ListTrafficControlTargetTrafficHistoryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTrafficControlTargetTrafficHistoryResponse) SetBody(v *ListTrafficControlTargetTrafficHistoryResponseBody) *ListTrafficControlTargetTrafficHistoryResponse {
+	s.Body = v
+	return s
+}
+
+type ListTrafficControlTasksRequest struct {
+	All                  *bool   `json:"All,omitempty" xml:"All,omitempty"`
+	ControlTargetFilter  *string `json:"ControlTargetFilter,omitempty" xml:"ControlTargetFilter,omitempty"`
+	Environment          *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Order                *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber           *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SceneId              *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SortBy               *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TrafficControlTaskId *string `json:"TrafficControlTaskId,omitempty" xml:"TrafficControlTaskId,omitempty"`
+	Version              *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s ListTrafficControlTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrafficControlTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrafficControlTasksRequest) SetAll(v bool) *ListTrafficControlTasksRequest {
+	s.All = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksRequest) SetControlTargetFilter(v string) *ListTrafficControlTasksRequest {
+	s.ControlTargetFilter = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksRequest) SetEnvironment(v string) *ListTrafficControlTasksRequest {
+	s.Environment = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksRequest) SetInstanceId(v string) *ListTrafficControlTasksRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksRequest) SetName(v string) *ListTrafficControlTasksRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksRequest) SetOrder(v string) *ListTrafficControlTasksRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksRequest) SetPageNumber(v string) *ListTrafficControlTasksRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksRequest) SetPageSize(v string) *ListTrafficControlTasksRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksRequest) SetSceneId(v string) *ListTrafficControlTasksRequest {
+	s.SceneId = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksRequest) SetSortBy(v string) *ListTrafficControlTasksRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksRequest) SetStatus(v string) *ListTrafficControlTasksRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksRequest) SetTrafficControlTaskId(v string) *ListTrafficControlTasksRequest {
+	s.TrafficControlTaskId = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksRequest) SetVersion(v string) *ListTrafficControlTasksRequest {
+	s.Version = &v
+	return s
+}
+
+type ListTrafficControlTasksResponseBody struct {
+	RequestId           *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount          *string                                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TrafficControlTasks []*ListTrafficControlTasksResponseBodyTrafficControlTasks `json:"TrafficControlTasks,omitempty" xml:"TrafficControlTasks,omitempty" type:"Repeated"`
+}
+
+func (s ListTrafficControlTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrafficControlTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrafficControlTasksResponseBody) SetRequestId(v string) *ListTrafficControlTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBody) SetTotalCount(v string) *ListTrafficControlTasksResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBody) SetTrafficControlTasks(v []*ListTrafficControlTasksResponseBodyTrafficControlTasks) *ListTrafficControlTasksResponseBody {
+	s.TrafficControlTasks = v
+	return s
+}
+
+type ListTrafficControlTasksResponseBodyTrafficControlTasks struct {
+	BehaviorTableMetaId            *string                                                                        `json:"BehaviorTableMetaId,omitempty" xml:"BehaviorTableMetaId,omitempty"`
+	ControlGranularity             *string                                                                        `json:"ControlGranularity,omitempty" xml:"ControlGranularity,omitempty"`
+	ControlLogic                   *string                                                                        `json:"ControlLogic,omitempty" xml:"ControlLogic,omitempty"`
+	ControlType                    *string                                                                        `json:"ControlType,omitempty" xml:"ControlType,omitempty"`
+	Description                    *string                                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndTime                        *string                                                                        `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EverPublished                  *bool                                                                          `json:"EverPublished,omitempty" xml:"EverPublished,omitempty"`
+	ExecutionTime                  *string                                                                        `json:"ExecutionTime,omitempty" xml:"ExecutionTime,omitempty"`
+	GmtCreateTime                  *string                                                                        `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifiedTime                *string                                                                        `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	ItemConditionArray             *string                                                                        `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
+	ItemConditionExpress           *string                                                                        `json:"ItemConditionExpress,omitempty" xml:"ItemConditionExpress,omitempty"`
+	ItemConditionType              *string                                                                        `json:"ItemConditionType,omitempty" xml:"ItemConditionType,omitempty"`
+	ItemTableMetaId                *string                                                                        `json:"ItemTableMetaId,omitempty" xml:"ItemTableMetaId,omitempty"`
+	Name                           *string                                                                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	PrepubStatus                   *string                                                                        `json:"PrepubStatus,omitempty" xml:"PrepubStatus,omitempty"`
+	ProductStatus                  *string                                                                        `json:"ProductStatus,omitempty" xml:"ProductStatus,omitempty"`
+	SceneId                        *string                                                                        `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SceneName                      *string                                                                        `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	StartTime                      *string                                                                        `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StatisBahaviorConditionExpress *string                                                                        `json:"StatisBahaviorConditionExpress,omitempty" xml:"StatisBahaviorConditionExpress,omitempty"`
+	StatisBehaviorConditionArray   *string                                                                        `json:"StatisBehaviorConditionArray,omitempty" xml:"StatisBehaviorConditionArray,omitempty"`
+	StatisBehaviorConditionType    *string                                                                        `json:"StatisBehaviorConditionType,omitempty" xml:"StatisBehaviorConditionType,omitempty"`
+	TrafficControlTargets          []*ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets `json:"TrafficControlTargets,omitempty" xml:"TrafficControlTargets,omitempty" type:"Repeated"`
+	TrafficControlTaskId           *string                                                                        `json:"TrafficControlTaskId,omitempty" xml:"TrafficControlTaskId,omitempty"`
+	UserConditionArray             *string                                                                        `json:"UserConditionArray,omitempty" xml:"UserConditionArray,omitempty"`
+	UserConditionExpress           *string                                                                        `json:"UserConditionExpress,omitempty" xml:"UserConditionExpress,omitempty"`
+	UserConditionType              *string                                                                        `json:"UserConditionType,omitempty" xml:"UserConditionType,omitempty"`
+	UserTableMetaId                *string                                                                        `json:"UserTableMetaId,omitempty" xml:"UserTableMetaId,omitempty"`
+}
+
+func (s ListTrafficControlTasksResponseBodyTrafficControlTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrafficControlTasksResponseBodyTrafficControlTasks) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetBehaviorTableMetaId(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
+	s.BehaviorTableMetaId = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetControlGranularity(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
+	s.ControlGranularity = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetControlLogic(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
+	s.ControlLogic = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetControlType(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
+	s.ControlType = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetDescription(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
+	s.Description = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetEndTime(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetEverPublished(v bool) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
+	s.EverPublished = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetExecutionTime(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
+	s.ExecutionTime = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetGmtCreateTime(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetGmtModifiedTime(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetItemConditionArray(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
+	s.ItemConditionArray = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetItemConditionExpress(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
+	s.ItemConditionExpress = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetItemConditionType(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
+	s.ItemConditionType = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetItemTableMetaId(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
+	s.ItemTableMetaId = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetName(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
+	s.Name = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetPrepubStatus(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
+	s.PrepubStatus = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetProductStatus(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
+	s.ProductStatus = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetSceneId(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
+	s.SceneId = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetSceneName(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
+	s.SceneName = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetStartTime(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetStatisBahaviorConditionExpress(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
+	s.StatisBahaviorConditionExpress = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetStatisBehaviorConditionArray(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
+	s.StatisBehaviorConditionArray = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetStatisBehaviorConditionType(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
+	s.StatisBehaviorConditionType = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetTrafficControlTargets(v []*ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
+	s.TrafficControlTargets = v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetTrafficControlTaskId(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
+	s.TrafficControlTaskId = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetUserConditionArray(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
+	s.UserConditionArray = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetUserConditionExpress(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
+	s.UserConditionExpress = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetUserConditionType(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
+	s.UserConditionType = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetUserTableMetaId(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
+	s.UserTableMetaId = &v
+	return s
+}
+
+type ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets struct {
+	EndTime                *string                                                                                `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Event                  *string                                                                                `json:"Event,omitempty" xml:"Event,omitempty"`
+	GmtCreateTime          *string                                                                                `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifiedTime        *string                                                                                `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	ItemConditionArray     *string                                                                                `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
+	ItemConditionExpress   *string                                                                                `json:"ItemConditionExpress,omitempty" xml:"ItemConditionExpress,omitempty"`
+	ItemConditionType      *string                                                                                `json:"ItemConditionType,omitempty" xml:"ItemConditionType,omitempty"`
+	Name                   *string                                                                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	NewProductRegulation   *bool                                                                                  `json:"NewProductRegulation,omitempty" xml:"NewProductRegulation,omitempty"`
+	RecallName             *string                                                                                `json:"RecallName,omitempty" xml:"RecallName,omitempty"`
+	SplitParts             *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargetsSplitParts `json:"SplitParts,omitempty" xml:"SplitParts,omitempty" type:"Struct"`
+	StartTime              *string                                                                                `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StatisPeriod           *string                                                                                `json:"StatisPeriod,omitempty" xml:"StatisPeriod,omitempty"`
+	Status                 *string                                                                                `json:"Status,omitempty" xml:"Status,omitempty"`
+	ToleranceValue         *int64                                                                                 `json:"ToleranceValue,omitempty" xml:"ToleranceValue,omitempty"`
+	TrafficControlTargetId *string                                                                                `json:"TrafficControlTargetId,omitempty" xml:"TrafficControlTargetId,omitempty"`
+	Value                  *float32                                                                               `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets) SetEndTime(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets) SetEvent(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets {
+	s.Event = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets) SetGmtCreateTime(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets) SetGmtModifiedTime(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets) SetItemConditionArray(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets {
+	s.ItemConditionArray = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets) SetItemConditionExpress(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets {
+	s.ItemConditionExpress = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets) SetItemConditionType(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets {
+	s.ItemConditionType = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets) SetName(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets {
+	s.Name = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets) SetNewProductRegulation(v bool) *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets {
+	s.NewProductRegulation = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets) SetRecallName(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets {
+	s.RecallName = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets) SetSplitParts(v *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargetsSplitParts) *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets {
+	s.SplitParts = v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets) SetStartTime(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets) SetStatisPeriod(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets {
+	s.StatisPeriod = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets) SetStatus(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets {
+	s.Status = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets) SetToleranceValue(v int64) *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets {
+	s.ToleranceValue = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets) SetTrafficControlTargetId(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets {
+	s.TrafficControlTargetId = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets) SetValue(v float32) *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets {
+	s.Value = &v
+	return s
+}
+
+type ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargetsSplitParts struct {
+	SetValues  []*int64 `json:"SetValues,omitempty" xml:"SetValues,omitempty" type:"Repeated"`
+	TimePoints []*int64 `json:"TimePoints,omitempty" xml:"TimePoints,omitempty" type:"Repeated"`
+}
+
+func (s ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargetsSplitParts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargetsSplitParts) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargetsSplitParts) SetSetValues(v []*int64) *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargetsSplitParts {
+	s.SetValues = v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargetsSplitParts) SetTimePoints(v []*int64) *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargetsSplitParts {
+	s.TimePoints = v
+	return s
+}
+
+type ListTrafficControlTasksResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTrafficControlTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTrafficControlTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrafficControlTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrafficControlTasksResponse) SetHeaders(v map[string]*string) *ListTrafficControlTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponse) SetStatusCode(v int32) *ListTrafficControlTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponse) SetBody(v *ListTrafficControlTasksResponseBody) *ListTrafficControlTasksResponse {
+	s.Body = v
+	return s
+}
+
 type OfflineExperimentRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -9538,6 +14081,10 @@ func (s *OfflineExperimentRequest) SetInstanceId(v string) *OfflineExperimentReq
 
 type OfflineExperimentResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// 872951C9-7755-5FA1-AACD-7F9375A6D27A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9584,6 +14131,11 @@ func (s *OfflineExperimentResponse) SetBody(v *OfflineExperimentResponseBody) *O
 }
 
 type OfflineExperimentGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -9602,6 +14154,10 @@ func (s *OfflineExperimentGroupRequest) SetInstanceId(v string) *OfflineExperime
 
 type OfflineExperimentGroupResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// 518C64F6-DFF7-11ED-85B0-00163E14B3D1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9648,6 +14204,11 @@ func (s *OfflineExperimentGroupResponse) SetBody(v *OfflineExperimentGroupRespon
 }
 
 type OfflineLaboratoryRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -9666,6 +14227,10 @@ func (s *OfflineLaboratoryRequest) SetInstanceId(v string) *OfflineLaboratoryReq
 
 type OfflineLaboratoryResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// 59CE7EC6-F268-5D71-9215-32922CC50D72
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9712,6 +14277,9 @@ func (s *OfflineLaboratoryResponse) SetBody(v *OfflineLaboratoryResponseBody) *O
 }
 
 type OnlineExperimentRequest struct {
+	// example:
+	//
+	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -9730,6 +14298,10 @@ func (s *OnlineExperimentRequest) SetInstanceId(v string) *OnlineExperimentReque
 
 type OnlineExperimentResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// 6CF1E160-3F36-5E73-A170-C75504F05BBC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9776,6 +14348,11 @@ func (s *OnlineExperimentResponse) SetBody(v *OnlineExperimentResponseBody) *Onl
 }
 
 type OnlineExperimentGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -9794,6 +14371,10 @@ func (s *OnlineExperimentGroupRequest) SetInstanceId(v string) *OnlineExperiment
 
 type OnlineExperimentGroupResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// 47F761ED-BE4E-51A6-B678-78E1490DF313
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9840,6 +14421,11 @@ func (s *OnlineExperimentGroupResponse) SetBody(v *OnlineExperimentGroupResponse
 }
 
 type OnlineLaboratoryRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-test1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -9858,6 +14444,10 @@ func (s *OnlineLaboratoryRequest) SetInstanceId(v string) *OnlineLaboratoryReque
 
 type OnlineLaboratoryResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// 8C27790E-CCA5-56BB-BA17-646295DEC0A2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9904,6 +14494,9 @@ func (s *OnlineLaboratoryResponse) SetBody(v *OnlineLaboratoryResponseBody) *Onl
 }
 
 type PushAllExperimentRequest struct {
+	// example:
+	//
+	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -9922,6 +14515,10 @@ func (s *PushAllExperimentRequest) SetInstanceId(v string) *PushAllExperimentReq
 
 type PushAllExperimentResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// 74D958EF-3598-56FA-8296-FF1575CE43DF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9968,7 +14565,9 @@ func (s *PushAllExperimentResponse) SetBody(v *PushAllExperimentResponseBody) *P
 }
 
 type PushResourceRuleRequest struct {
-	InstanceId *string                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
 	MetricInfo map[string]interface{} `json:"MetricInfo,omitempty" xml:"MetricInfo,omitempty"`
 }
 
@@ -9991,7 +14590,9 @@ func (s *PushResourceRuleRequest) SetMetricInfo(v map[string]interface{}) *PushR
 }
 
 type PushResourceRuleShrinkRequest struct {
-	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
 	MetricInfoShrink *string `json:"MetricInfo,omitempty" xml:"MetricInfo,omitempty"`
 }
 
@@ -10148,16 +14749,123 @@ func (s *PushResourceRuleResponse) SetBody(v *PushResourceRuleResponseBody) *Pus
 	return s
 }
 
+type ReleaseTrafficControlTaskRequest struct {
+	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s ReleaseTrafficControlTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseTrafficControlTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseTrafficControlTaskRequest) SetEnvironment(v string) *ReleaseTrafficControlTaskRequest {
+	s.Environment = &v
+	return s
+}
+
+func (s *ReleaseTrafficControlTaskRequest) SetInstanceId(v string) *ReleaseTrafficControlTaskRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type ReleaseTrafficControlTaskResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ReleaseTrafficControlTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseTrafficControlTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseTrafficControlTaskResponseBody) SetRequestId(v string) *ReleaseTrafficControlTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ReleaseTrafficControlTaskResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReleaseTrafficControlTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ReleaseTrafficControlTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseTrafficControlTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseTrafficControlTaskResponse) SetHeaders(v map[string]*string) *ReleaseTrafficControlTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReleaseTrafficControlTaskResponse) SetStatusCode(v int32) *ReleaseTrafficControlTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReleaseTrafficControlTaskResponse) SetBody(v *ReleaseTrafficControlTaskResponseBody) *ReleaseTrafficControlTaskResponse {
+	s.Body = v
+	return s
+}
+
 type ReportABMetricGroupRequest struct {
-	BaseExperimentId     *string `json:"BaseExperimentId,omitempty" xml:"BaseExperimentId,omitempty"`
-	DimensionFields      *string `json:"DimensionFields,omitempty" xml:"DimensionFields,omitempty"`
-	EndDate              *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	ExperimentGroupId    *string `json:"ExperimentGroupId,omitempty" xml:"ExperimentGroupId,omitempty"`
-	ExperimentIds        *string `json:"ExperimentIds,omitempty" xml:"ExperimentIds,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ReportType           *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
-	SceneId              *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	StartDate            *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
+	BaseExperimentId *string `json:"BaseExperimentId,omitempty" xml:"BaseExperimentId,omitempty"`
+	// example:
+	//
+	// {"gender":"man"}
+	DimensionFields *string `json:"DimensionFields,omitempty" xml:"DimensionFields,omitempty"`
+	// example:
+	//
+	// 2021-07-01
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// 3
+	ExperimentGroupId *string `json:"ExperimentGroupId,omitempty" xml:"ExperimentGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3,4,5
+	ExperimentIds *string `json:"ExperimentIds,omitempty" xml:"ExperimentIds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-test1
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Offline
+	ReportType *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
+	// example:
+	//
+	// 1
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// example:
+	//
+	// 2021-07-01
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// example:
+	//
+	// Hour
 	TimeStatisticsMethod *string `json:"TimeStatisticsMethod,omitempty" xml:"TimeStatisticsMethod,omitempty"`
 }
 
@@ -10222,7 +14930,10 @@ func (s *ReportABMetricGroupRequest) SetTimeStatisticsMethod(v string) *ReportAB
 type ReportABMetricGroupResponseBody struct {
 	ExperimentReport map[string]*ExperimentReportValue `json:"ExperimentReport,omitempty" xml:"ExperimentReport,omitempty"`
 	GroupDimension   []*string                         `json:"GroupDimension,omitempty" xml:"GroupDimension,omitempty" type:"Repeated"`
-	RequestId        *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 59CE7EC6-F268-5D71-9215-32922CC50D72
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ReportABMetricGroupResponseBody) String() string {
@@ -10277,17 +14988,414 @@ func (s *ReportABMetricGroupResponse) SetBody(v *ReportABMetricGroupResponseBody
 	return s
 }
 
+type SplitTrafficControlTargetRequest struct {
+	Environment *string  `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	InstanceId  *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SetValues   []*int64 `json:"SetValues,omitempty" xml:"SetValues,omitempty" type:"Repeated"`
+	TimePoints  []*int64 `json:"TimePoints,omitempty" xml:"TimePoints,omitempty" type:"Repeated"`
+}
+
+func (s SplitTrafficControlTargetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SplitTrafficControlTargetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SplitTrafficControlTargetRequest) SetEnvironment(v string) *SplitTrafficControlTargetRequest {
+	s.Environment = &v
+	return s
+}
+
+func (s *SplitTrafficControlTargetRequest) SetInstanceId(v string) *SplitTrafficControlTargetRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SplitTrafficControlTargetRequest) SetSetValues(v []*int64) *SplitTrafficControlTargetRequest {
+	s.SetValues = v
+	return s
+}
+
+func (s *SplitTrafficControlTargetRequest) SetTimePoints(v []*int64) *SplitTrafficControlTargetRequest {
+	s.TimePoints = v
+	return s
+}
+
+type SplitTrafficControlTargetResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SplitTrafficControlTargetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SplitTrafficControlTargetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SplitTrafficControlTargetResponseBody) SetRequestId(v string) *SplitTrafficControlTargetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SplitTrafficControlTargetResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SplitTrafficControlTargetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SplitTrafficControlTargetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SplitTrafficControlTargetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SplitTrafficControlTargetResponse) SetHeaders(v map[string]*string) *SplitTrafficControlTargetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SplitTrafficControlTargetResponse) SetStatusCode(v int32) *SplitTrafficControlTargetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SplitTrafficControlTargetResponse) SetBody(v *SplitTrafficControlTargetResponseBody) *SplitTrafficControlTargetResponse {
+	s.Body = v
+	return s
+}
+
+type StartTrafficControlTargetRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s StartTrafficControlTargetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartTrafficControlTargetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartTrafficControlTargetRequest) SetInstanceId(v string) *StartTrafficControlTargetRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type StartTrafficControlTargetResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StartTrafficControlTargetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartTrafficControlTargetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartTrafficControlTargetResponseBody) SetRequestId(v string) *StartTrafficControlTargetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StartTrafficControlTargetResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartTrafficControlTargetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StartTrafficControlTargetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartTrafficControlTargetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartTrafficControlTargetResponse) SetHeaders(v map[string]*string) *StartTrafficControlTargetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartTrafficControlTargetResponse) SetStatusCode(v int32) *StartTrafficControlTargetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartTrafficControlTargetResponse) SetBody(v *StartTrafficControlTargetResponseBody) *StartTrafficControlTargetResponse {
+	s.Body = v
+	return s
+}
+
+type StartTrafficControlTaskRequest struct {
+	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s StartTrafficControlTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartTrafficControlTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartTrafficControlTaskRequest) SetEnvironment(v string) *StartTrafficControlTaskRequest {
+	s.Environment = &v
+	return s
+}
+
+func (s *StartTrafficControlTaskRequest) SetInstanceId(v string) *StartTrafficControlTaskRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type StartTrafficControlTaskResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StartTrafficControlTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartTrafficControlTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartTrafficControlTaskResponseBody) SetRequestId(v string) *StartTrafficControlTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StartTrafficControlTaskResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartTrafficControlTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StartTrafficControlTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartTrafficControlTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartTrafficControlTaskResponse) SetHeaders(v map[string]*string) *StartTrafficControlTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartTrafficControlTaskResponse) SetStatusCode(v int32) *StartTrafficControlTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartTrafficControlTaskResponse) SetBody(v *StartTrafficControlTaskResponseBody) *StartTrafficControlTaskResponse {
+	s.Body = v
+	return s
+}
+
+type StopTrafficControlTargetRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s StopTrafficControlTargetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopTrafficControlTargetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopTrafficControlTargetRequest) SetInstanceId(v string) *StopTrafficControlTargetRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type StopTrafficControlTargetResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StopTrafficControlTargetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopTrafficControlTargetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopTrafficControlTargetResponseBody) SetRequestId(v string) *StopTrafficControlTargetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StopTrafficControlTargetResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopTrafficControlTargetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StopTrafficControlTargetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopTrafficControlTargetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopTrafficControlTargetResponse) SetHeaders(v map[string]*string) *StopTrafficControlTargetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopTrafficControlTargetResponse) SetStatusCode(v int32) *StopTrafficControlTargetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopTrafficControlTargetResponse) SetBody(v *StopTrafficControlTargetResponseBody) *StopTrafficControlTargetResponse {
+	s.Body = v
+	return s
+}
+
+type StopTrafficControlTaskRequest struct {
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s StopTrafficControlTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopTrafficControlTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopTrafficControlTaskRequest) SetRegionId(v string) *StopTrafficControlTaskRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *StopTrafficControlTaskRequest) SetEnvironment(v string) *StopTrafficControlTaskRequest {
+	s.Environment = &v
+	return s
+}
+
+func (s *StopTrafficControlTaskRequest) SetInstanceId(v string) *StopTrafficControlTaskRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type StopTrafficControlTaskResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StopTrafficControlTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopTrafficControlTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopTrafficControlTaskResponseBody) SetRequestId(v string) *StopTrafficControlTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StopTrafficControlTaskResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopTrafficControlTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StopTrafficControlTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopTrafficControlTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopTrafficControlTaskResponse) SetHeaders(v map[string]*string) *StopTrafficControlTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopTrafficControlTaskResponse) SetStatusCode(v int32) *StopTrafficControlTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopTrafficControlTaskResponse) SetBody(v *StopTrafficControlTaskResponseBody) *StopTrafficControlTaskResponse {
+	s.Body = v
+	return s
+}
+
 type SyncFeatureConsistencyCheckJobReplayLogRequest struct {
-	ContextFeatures                    *string `json:"ContextFeatures,omitempty" xml:"ContextFeatures,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [{\\"Value\\":{\\"FloatFeature\\":0.1}}]
+	ContextFeatures *string `json:"ContextFeatures,omitempty" xml:"ContextFeatures,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
 	FeatureConsistencyCheckJobConfigId *string `json:"FeatureConsistencyCheckJobConfigId,omitempty" xml:"FeatureConsistencyCheckJobConfigId,omitempty"`
-	GeneratedFeatures                  *string `json:"GeneratedFeatures,omitempty" xml:"GeneratedFeatures,omitempty"`
-	InstanceId                         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	LogItemId                          *string `json:"LogItemId,omitempty" xml:"LogItemId,omitempty"`
-	LogRequestId                       *string `json:"LogRequestId,omitempty" xml:"LogRequestId,omitempty"`
-	LogRequestTime                     *int64  `json:"LogRequestTime,omitempty" xml:"LogRequestTime,omitempty"`
-	LogUserId                          *string `json:"LogUserId,omitempty" xml:"LogUserId,omitempty"`
-	RawFeatures                        *string `json:"RawFeatures,omitempty" xml:"RawFeatures,omitempty"`
-	SceneName                          *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// week_day:1 | userid:3 | itemid:9001 | cate:cat1 | click_5_seq__cate:cat1
+	GeneratedFeatures *string `json:"GeneratedFeatures,omitempty" xml:"GeneratedFeatures,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-********
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 9010
+	LogItemId *string `json:"LogItemId,omitempty" xml:"LogItemId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
+	LogRequestId *string `json:"LogRequestId,omitempty" xml:"LogRequestId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1693900981465
+	LogRequestTime *int64 `json:"LogRequestTime,omitempty" xml:"LogRequestTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1010
+	LogUserId *string `json:"LogUserId,omitempty" xml:"LogUserId,omitempty"`
+	// This parameter is required.
+	RawFeatures *string `json:"RawFeatures,omitempty" xml:"RawFeatures,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// video-feed
+	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
 }
 
 func (s SyncFeatureConsistencyCheckJobReplayLogRequest) String() string {
@@ -10349,6 +15457,9 @@ func (s *SyncFeatureConsistencyCheckJobReplayLogRequest) SetSceneName(v string) 
 }
 
 type SyncFeatureConsistencyCheckJobReplayLogResponseBody struct {
+	// example:
+	//
+	// C7D0B48F-0105-52B9-B60A-FA7606E2234D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10395,6 +15506,11 @@ func (s *SyncFeatureConsistencyCheckJobReplayLogResponse) SetBody(v *SyncFeature
 }
 
 type TerminateFeatureConsistencyCheckJobRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-********
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -10412,6 +15528,9 @@ func (s *TerminateFeatureConsistencyCheckJobRequest) SetInstanceId(v string) *Te
 }
 
 type TerminateFeatureConsistencyCheckJobResponseBody struct {
+	// example:
+	//
+	// A6C01890-54CA-5C49-BC91-AD85A98E4A98
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10458,19 +15577,70 @@ func (s *TerminateFeatureConsistencyCheckJobResponse) SetBody(v *TerminateFeatur
 }
 
 type UpdateABMetricRequest struct {
-	Definition       *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	LeftMetricId     *string `json:"LeftMetricId,omitempty" xml:"LeftMetricId,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Operator         *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	Realtime         *bool   `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sum(click_cnt)
+	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	// This parameter is required.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-test123
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 2
+	LeftMetricId *string `json:"LeftMetricId,omitempty" xml:"LeftMetricId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pv
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Division
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	Realtime *bool `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
+	// example:
+	//
+	// 3
 	ResultResourceId *string `json:"ResultResourceId,omitempty" xml:"ResultResourceId,omitempty"`
-	RightMetricId    *string `json:"RightMetricId,omitempty" xml:"RightMetricId,omitempty"`
-	SceneId          *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	StatisticsCycle  *int32  `json:"StatisticsCycle,omitempty" xml:"StatisticsCycle,omitempty"`
-	TableMetaId      *string `json:"TableMetaId,omitempty" xml:"TableMetaId,omitempty"`
-	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 3
+	RightMetricId *string `json:"RightMetricId,omitempty" xml:"RightMetricId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// example:
+	//
+	// 1
+	StatisticsCycle *int32 `json:"StatisticsCycle,omitempty" xml:"StatisticsCycle,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	TableMetaId *string `json:"TableMetaId,omitempty" xml:"TableMetaId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Single
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpdateABMetricRequest) String() string {
@@ -10547,6 +15717,9 @@ func (s *UpdateABMetricRequest) SetType(v string) *UpdateABMetricRequest {
 }
 
 type UpdateABMetricResponseBody struct {
+	// example:
+	//
+	// 6CF1E160-3F36-5E73-A170-C75504F05BBC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10593,12 +15766,38 @@ func (s *UpdateABMetricResponse) SetBody(v *UpdateABMetricResponseBody) *UpdateA
 }
 
 type UpdateABMetricGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1,2
 	ABMetricIds *string `json:"ABMetricIds,omitempty" xml:"ABMetricIds,omitempty"`
+	// This parameter is required.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Realtime    *bool   `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
-	SceneId     *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-test1
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// visits
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	Realtime *bool `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
 func (s UpdateABMetricGroupRequest) String() string {
@@ -10640,6 +15839,9 @@ func (s *UpdateABMetricGroupRequest) SetSceneId(v string) *UpdateABMetricGroupRe
 }
 
 type UpdateABMetricGroupResponseBody struct {
+	// example:
+	//
+	// 74D958EF-3598-56FA-8296-FF1575CE43DF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10686,9 +15888,24 @@ func (s *UpdateABMetricGroupResponse) SetBody(v *UpdateABMetricGroupResponseBody
 }
 
 type UpdateCrowdRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// This is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-test1
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xx人群
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s UpdateCrowdRequest) String() string {
@@ -10716,6 +15933,10 @@ func (s *UpdateCrowdRequest) SetName(v string) *UpdateCrowdRequest {
 
 type UpdateCrowdResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// 8C27790E-CCA5-56BB-BA17-646295DEC0A2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10762,14 +15983,46 @@ func (s *UpdateCrowdResponse) SetBody(v *UpdateCrowdResponseBody) *UpdateCrowdRe
 }
 
 type UpdateExperimentRequest struct {
-	Config       *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// example:
+	//
+	// {"RankBy": "Score"}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// example:
+	//
+	// 3
 	DebugCrowdId *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
-	DebugUsers   *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	FlowPercent  *int32  `json:"FlowPercent,omitempty" xml:"FlowPercent,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 1124512470******,1124512471******,1124512472******
+	DebugUsers *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// This is a test.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 100
+	FlowPercent *int32 `json:"FlowPercent,omitempty" xml:"FlowPercent,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-abcdefg1234
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// experiment_test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Baseline
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpdateExperimentRequest) String() string {
@@ -10822,6 +16075,10 @@ func (s *UpdateExperimentRequest) SetType(v string) *UpdateExperimentRequest {
 
 type UpdateExperimentResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// A760D972-1475-58C0-BBB3-92B5FB08904F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10868,21 +16125,68 @@ func (s *UpdateExperimentResponse) SetBody(v *UpdateExperimentResponseBody) *Upd
 }
 
 type UpdateExperimentGroupRequest struct {
-	Config                   *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	CrowdId                  *string `json:"CrowdId,omitempty" xml:"CrowdId,omitempty"`
-	CrowdTargetType          *string `json:"CrowdTargetType,omitempty" xml:"CrowdTargetType,omitempty"`
-	DebugCrowdId             *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
-	DebugUsers               *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
-	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DistributionTimeDuration *int32  `json:"DistributionTimeDuration,omitempty" xml:"DistributionTimeDuration,omitempty"`
-	DistributionType         *string `json:"DistributionType,omitempty" xml:"DistributionType,omitempty"`
-	Filter                   *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	InstanceId               *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	LayerId                  *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
-	Name                     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NeedAA                   *bool   `json:"NeedAA,omitempty" xml:"NeedAA,omitempty"`
-	RandomFlow               *int64  `json:"RandomFlow,omitempty" xml:"RandomFlow,omitempty"`
-	ReservcedBuckets         *string `json:"ReservcedBuckets,omitempty" xml:"ReservcedBuckets,omitempty"`
+	// example:
+	//
+	// {"RankBy": "Score"}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// example:
+	//
+	// 3
+	CrowdId         *string `json:"CrowdId,omitempty" xml:"CrowdId,omitempty"`
+	CrowdTargetType *string `json:"CrowdTargetType,omitempty" xml:"CrowdTargetType,omitempty"`
+	// example:
+	//
+	// 3
+	DebugCrowdId *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
+	// example:
+	//
+	// user1,user2,user3
+	DebugUsers *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// This is a test.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 3
+	DistributionTimeDuration *int32 `json:"DistributionTimeDuration,omitempty" xml:"DistributionTimeDuration,omitempty"`
+	// example:
+	//
+	// UserId
+	DistributionType *string `json:"DistributionType,omitempty" xml:"DistributionType,omitempty"`
+	// example:
+	//
+	// gender=male
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-abcdefg1234
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
+	LayerId *string `json:"LayerId,omitempty" xml:"LayerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// experiment_group1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// true
+	NeedAA     *bool  `json:"NeedAA,omitempty" xml:"NeedAA,omitempty"`
+	RandomFlow *int64 `json:"RandomFlow,omitempty" xml:"RandomFlow,omitempty"`
+	// example:
+	//
+	// 1,2,3
+	ReservcedBuckets *string `json:"ReservcedBuckets,omitempty" xml:"ReservcedBuckets,omitempty"`
 }
 
 func (s UpdateExperimentGroupRequest) String() string {
@@ -10970,6 +16274,10 @@ func (s *UpdateExperimentGroupRequest) SetReservcedBuckets(v string) *UpdateExpe
 
 type UpdateExperimentGroupResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// F7AC05FF-EDE7-5C2B-B9AE-33D6DF4178BA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11016,38 +16324,147 @@ func (s *UpdateExperimentGroupResponse) SetBody(v *UpdateExperimentGroupResponse
 }
 
 type UpdateFeatureConsistencyCheckJobConfigRequest struct {
-	CompareFeature                *bool    `json:"CompareFeature,omitempty" xml:"CompareFeature,omitempty"`
-	EasServiceName                *string  `json:"EasServiceName,omitempty" xml:"EasServiceName,omitempty"`
-	EasyRecPackagePath            *string  `json:"EasyRecPackagePath,omitempty" xml:"EasyRecPackagePath,omitempty"`
-	EasyRecVersion                *string  `json:"EasyRecVersion,omitempty" xml:"EasyRecVersion,omitempty"`
-	FeatureDisplayExclude         *string  `json:"FeatureDisplayExclude,omitempty" xml:"FeatureDisplayExclude,omitempty"`
-	FeatureLandingResourceId      *string  `json:"FeatureLandingResourceId,omitempty" xml:"FeatureLandingResourceId,omitempty"`
-	FeaturePriority               *string  `json:"FeaturePriority,omitempty" xml:"FeaturePriority,omitempty"`
-	FeatureStoreItemId            *string  `json:"FeatureStoreItemId,omitempty" xml:"FeatureStoreItemId,omitempty"`
-	FeatureStoreModelId           *string  `json:"FeatureStoreModelId,omitempty" xml:"FeatureStoreModelId,omitempty"`
-	FeatureStoreProjectId         *string  `json:"FeatureStoreProjectId,omitempty" xml:"FeatureStoreProjectId,omitempty"`
-	FeatureStoreProjectName       *string  `json:"FeatureStoreProjectName,omitempty" xml:"FeatureStoreProjectName,omitempty"`
-	FeatureStoreSeqFeatureView    *string  `json:"FeatureStoreSeqFeatureView,omitempty" xml:"FeatureStoreSeqFeatureView,omitempty"`
-	FeatureStoreUserId            *string  `json:"FeatureStoreUserId,omitempty" xml:"FeatureStoreUserId,omitempty"`
-	FgJarVersion                  *string  `json:"FgJarVersion,omitempty" xml:"FgJarVersion,omitempty"`
-	FgJsonFileName                *string  `json:"FgJsonFileName,omitempty" xml:"FgJsonFileName,omitempty"`
-	GenerateZip                   *bool    `json:"GenerateZip,omitempty" xml:"GenerateZip,omitempty"`
-	InstanceId                    *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IsUseFeatureStore             *bool    `json:"IsUseFeatureStore,omitempty" xml:"IsUseFeatureStore,omitempty"`
-	ItemIdField                   *string  `json:"ItemIdField,omitempty" xml:"ItemIdField,omitempty"`
-	ItemTable                     *string  `json:"ItemTable,omitempty" xml:"ItemTable,omitempty"`
-	ItemTablePartitionField       *string  `json:"ItemTablePartitionField,omitempty" xml:"ItemTablePartitionField,omitempty"`
-	ItemTablePartitionFieldFormat *string  `json:"ItemTablePartitionFieldFormat,omitempty" xml:"ItemTablePartitionFieldFormat,omitempty"`
-	Name                          *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	OssResourceId                 *string  `json:"OssResourceId,omitempty" xml:"OssResourceId,omitempty"`
-	SampleRate                    *float64 `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
-	SceneId                       *string  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	ServiceId                     *string  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	UserIdField                   *string  `json:"UserIdField,omitempty" xml:"UserIdField,omitempty"`
-	UserTable                     *string  `json:"UserTable,omitempty" xml:"UserTable,omitempty"`
-	UserTablePartitionField       *string  `json:"UserTablePartitionField,omitempty" xml:"UserTablePartitionField,omitempty"`
-	UserTablePartitionFieldFormat *string  `json:"UserTablePartitionFieldFormat,omitempty" xml:"UserTablePartitionFieldFormat,omitempty"`
-	WorkflowName                  *string  `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	CompareFeature *bool `json:"CompareFeature,omitempty" xml:"CompareFeature,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// service_123
+	EasServiceName *string `json:"EasServiceName,omitempty" xml:"EasServiceName,omitempty"`
+	// example:
+	//
+	// oss://********
+	EasyRecPackagePath *string `json:"EasyRecPackagePath,omitempty" xml:"EasyRecPackagePath,omitempty"`
+	// example:
+	//
+	// 1.3.60
+	EasyRecVersion *string `json:"EasyRecVersion,omitempty" xml:"EasyRecVersion,omitempty"`
+	// example:
+	//
+	// feature1,feature2
+	FeatureDisplayExclude *string `json:"FeatureDisplayExclude,omitempty" xml:"FeatureDisplayExclude,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// reso-********
+	FeatureLandingResourceId *string `json:"FeatureLandingResourceId,omitempty" xml:"FeatureLandingResourceId,omitempty"`
+	// example:
+	//
+	// feature1,feature2,feature3
+	FeaturePriority            *string `json:"FeaturePriority,omitempty" xml:"FeaturePriority,omitempty"`
+	FeatureStoreItemId         *string `json:"FeatureStoreItemId,omitempty" xml:"FeatureStoreItemId,omitempty"`
+	FeatureStoreModelId        *string `json:"FeatureStoreModelId,omitempty" xml:"FeatureStoreModelId,omitempty"`
+	FeatureStoreProjectId      *string `json:"FeatureStoreProjectId,omitempty" xml:"FeatureStoreProjectId,omitempty"`
+	FeatureStoreProjectName    *string `json:"FeatureStoreProjectName,omitempty" xml:"FeatureStoreProjectName,omitempty"`
+	FeatureStoreSeqFeatureView *string `json:"FeatureStoreSeqFeatureView,omitempty" xml:"FeatureStoreSeqFeatureView,omitempty"`
+	FeatureStoreUserId         *string `json:"FeatureStoreUserId,omitempty" xml:"FeatureStoreUserId,omitempty"`
+	// example:
+	//
+	// 1.0.0
+	FgJarVersion *string `json:"FgJarVersion,omitempty" xml:"FgJarVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// file.json
+	FgJsonFileName *string `json:"FgJsonFileName,omitempty" xml:"FgJsonFileName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	GenerateZip *bool `json:"GenerateZip,omitempty" xml:"GenerateZip,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-********
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IsUseFeatureStore *bool   `json:"IsUseFeatureStore,omitempty" xml:"IsUseFeatureStore,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// item_id
+	ItemIdField *string `json:"ItemIdField,omitempty" xml:"ItemIdField,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// item_table
+	ItemTable *string `json:"ItemTable,omitempty" xml:"ItemTable,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ds
+	ItemTablePartitionField *string `json:"ItemTablePartitionField,omitempty" xml:"ItemTablePartitionField,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yyyymmdd
+	ItemTablePartitionFieldFormat *string `json:"ItemTablePartitionFieldFormat,omitempty" xml:"ItemTablePartitionFieldFormat,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// feature_consistency_check1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// reso-********
+	OssResourceId *string `json:"OssResourceId,omitempty" xml:"OssResourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.89
+	SampleRate *float64 `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// example:
+	//
+	// 4
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user_id
+	UserIdField *string `json:"UserIdField,omitempty" xml:"UserIdField,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user_table
+	UserTable *string `json:"UserTable,omitempty" xml:"UserTable,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ds
+	UserTablePartitionField *string `json:"UserTablePartitionField,omitempty" xml:"UserTablePartitionField,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// yyyymmdd
+	UserTablePartitionFieldFormat *string `json:"UserTablePartitionFieldFormat,omitempty" xml:"UserTablePartitionFieldFormat,omitempty"`
+	// example:
+	//
+	// work_flow_1
+	WorkflowName *string `json:"WorkflowName,omitempty" xml:"WorkflowName,omitempty"`
 }
 
 func (s UpdateFeatureConsistencyCheckJobConfigRequest) String() string {
@@ -11219,6 +16636,9 @@ func (s *UpdateFeatureConsistencyCheckJobConfigRequest) SetWorkflowName(v string
 }
 
 type UpdateFeatureConsistencyCheckJobConfigResponseBody struct {
+	// example:
+	//
+	// A04CB8C0-E74A-5E83-BC61-64D153574EC7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11265,8 +16685,14 @@ func (s *UpdateFeatureConsistencyCheckJobConfigResponse) SetBody(v *UpdateFeatur
 }
 
 type UpdateInstanceResourceRequest struct {
+	// example:
+	//
+	// {}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	Uri    *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// example:
+	//
+	// bucket-test-123
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s UpdateInstanceResourceRequest) String() string {
@@ -11288,6 +16714,9 @@ func (s *UpdateInstanceResourceRequest) SetUri(v string) *UpdateInstanceResource
 }
 
 type UpdateInstanceResourceResponseBody struct {
+	// example:
+	//
+	// 3AAA45F6-0798-5461-9360-81D133823CE7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11334,17 +16763,58 @@ func (s *UpdateInstanceResourceResponse) SetBody(v *UpdateInstanceResourceRespon
 }
 
 type UpdateLaboratoryRequest struct {
-	BucketCount  *int32  `json:"BucketCount,omitempty" xml:"BucketCount,omitempty"`
-	BucketType   *string `json:"BucketType,omitempty" xml:"BucketType,omitempty"`
-	Buckets      *string `json:"Buckets,omitempty" xml:"Buckets,omitempty"`
+	// example:
+	//
+	// 24
+	BucketCount *int32 `json:"BucketCount,omitempty" xml:"BucketCount,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Filter
+	BucketType *string `json:"BucketType,omitempty" xml:"BucketType,omitempty"`
+	// example:
+	//
+	// 1,2,3,10-20
+	Buckets *string `json:"Buckets,omitempty" xml:"Buckets,omitempty"`
+	// example:
+	//
+	// 3
 	DebugCrowdId *string `json:"DebugCrowdId,omitempty" xml:"DebugCrowdId,omitempty"`
-	DebugUsers   *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Environment  *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
-	Filter       *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 1124512470******,1124512471******,1124512472******
+	DebugUsers *string `json:"DebugUsers,omitempty" xml:"DebugUsers,omitempty"`
+	// example:
+	//
+	// This is a test.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// Daily
+	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// example:
+	//
+	// filter=xxx
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-test1
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// laboratory1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Base
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpdateLaboratoryRequest) String() string {
@@ -11412,6 +16882,10 @@ func (s *UpdateLaboratoryRequest) SetType(v string) *UpdateLaboratoryRequest {
 
 type UpdateLaboratoryResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// A04CB8C0-E74A-5E83-BC61-64D153574EC7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11458,9 +16932,24 @@ func (s *UpdateLaboratoryResponse) SetBody(v *UpdateLaboratoryResponseBody) *Upd
 }
 
 type UpdateLayerRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// This is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-test1
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// layer1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s UpdateLayerRequest) String() string {
@@ -11488,6 +16977,10 @@ func (s *UpdateLayerRequest) SetName(v string) *UpdateLayerRequest {
 
 type UpdateLayerResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// 0EA9215E-EC21-53AB-B8D9-D3DEA90D040A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11534,8 +17027,14 @@ func (s *UpdateLayerResponse) SetBody(v *UpdateLayerResponseBody) *UpdateLayerRe
 }
 
 type UpdateParamRequest struct {
+	// example:
+	//
+	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// house
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s UpdateParamRequest) String() string {
@@ -11558,6 +17057,10 @@ func (s *UpdateParamRequest) SetValue(v string) *UpdateParamRequest {
 
 type UpdateParamResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// BBD41FBF-E75C-551A-92FA-CAD654AA006F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11604,12 +17107,16 @@ func (s *UpdateParamResponse) SetBody(v *UpdateParamResponseBody) *UpdateParamRe
 }
 
 type UpdateResourceRuleRequest struct {
-	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MetricOperationType     *string `json:"MetricOperationType,omitempty" xml:"MetricOperationType,omitempty"`
-	MetricPullInfo          *string `json:"MetricPullInfo,omitempty" xml:"MetricPullInfo,omitempty"`
-	MetricPullPeriod        *string `json:"MetricPullPeriod,omitempty" xml:"MetricPullPeriod,omitempty"`
-	Name                    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	MetricOperationType *string `json:"MetricOperationType,omitempty" xml:"MetricOperationType,omitempty"`
+	MetricPullInfo      *string `json:"MetricPullInfo,omitempty" xml:"MetricPullInfo,omitempty"`
+	MetricPullPeriod    *string `json:"MetricPullPeriod,omitempty" xml:"MetricPullPeriod,omitempty"`
+	// This parameter is required.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
 	RuleComputingDefinition *string `json:"RuleComputingDefinition,omitempty" xml:"RuleComputingDefinition,omitempty"`
 }
 
@@ -11703,12 +17210,14 @@ func (s *UpdateResourceRuleResponse) SetBody(v *UpdateResourceRuleResponseBody) 
 }
 
 type UpdateResourceRuleItemRequest struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	InstanceId  *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MaxValue    *float64 `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
-	MinValue    *float64 `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Value       *float64 `json:"Value,omitempty" xml:"Value,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	InstanceId *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxValue   *float64 `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
+	MinValue   *float64 `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
+	// This parameter is required.
+	Name  *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value *float64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s UpdateResourceRuleItemRequest) String() string {
@@ -11796,10 +17305,19 @@ func (s *UpdateResourceRuleItemResponse) SetBody(v *UpdateResourceRuleItemRespon
 }
 
 type UpdateSceneRequest struct {
+	// example:
+	//
+	// This is a test.
 	Description *string                    `json:"Description,omitempty" xml:"Description,omitempty"`
 	Flows       []*UpdateSceneRequestFlows `json:"Flows,omitempty" xml:"Flows,omitempty" type:"Repeated"`
-	InstanceId  *string                    `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name        *string                    `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// pairec-cn-abcdefg1234
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// scene1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s UpdateSceneRequest) String() string {
@@ -11831,7 +17349,13 @@ func (s *UpdateSceneRequest) SetName(v string) *UpdateSceneRequest {
 }
 
 type UpdateSceneRequestFlows struct {
+	// example:
+	//
+	// liuliang1
 	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// example:
+	//
+	// 流量1
 	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
 }
 
@@ -11855,6 +17379,10 @@ func (s *UpdateSceneRequestFlows) SetFlowName(v string) *UpdateSceneRequestFlows
 
 type UpdateSceneResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// FC17887E-3C82-5096-8AA6-F4C2E7417245
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11901,13 +17429,42 @@ func (s *UpdateSceneResponse) SetBody(v *UpdateSceneResponseBody) *UpdateSceneRe
 }
 
 type UpdateTableMetaRequest struct {
-	Description *string                         `json:"Description,omitempty" xml:"Description,omitempty"`
-	Fields      []*UpdateTableMetaRequestFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
-	InstanceId  *string                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Module      *string                         `json:"Module,omitempty" xml:"Module,omitempty"`
-	Name        *string                         `json:"Name,omitempty" xml:"Name,omitempty"`
-	ResourceId  *string                         `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	TableName   *string                         `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// this is a test table
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	Fields []*UpdateTableMetaRequestFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-test1
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ABTest
+	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// table_test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// reso-2s416t***
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// table_mysql
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s UpdateTableMetaRequest) String() string {
@@ -11954,12 +17511,29 @@ func (s *UpdateTableMetaRequest) SetTableName(v string) *UpdateTableMetaRequest 
 }
 
 type UpdateTableMetaRequestFields struct {
-	DataType         *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	IsDimensionField *bool   `json:"IsDimensionField,omitempty" xml:"IsDimensionField,omitempty"`
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	IsDimensionField *bool `json:"IsDimensionField,omitempty" xml:"IsDimensionField,omitempty"`
+	// This parameter is required.
 	IsPartitionField *string `json:"IsPartitionField,omitempty" xml:"IsPartitionField,omitempty"`
-	Meaning          *string `json:"Meaning,omitempty" xml:"Meaning,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	Meaning *string `json:"Meaning,omitempty" xml:"Meaning,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// BIGINT
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpdateTableMetaRequestFields) String() string {
@@ -12001,6 +17575,9 @@ func (s *UpdateTableMetaRequestFields) SetType(v string) *UpdateTableMetaRequest
 }
 
 type UpdateTableMetaResponseBody struct {
+	// example:
+	//
+	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12042,6 +17619,559 @@ func (s *UpdateTableMetaResponse) SetStatusCode(v int32) *UpdateTableMetaRespons
 }
 
 func (s *UpdateTableMetaResponse) SetBody(v *UpdateTableMetaResponseBody) *UpdateTableMetaResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateTrafficControlTargetRequest struct {
+	EndTime              *string  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Event                *string  `json:"Event,omitempty" xml:"Event,omitempty"`
+	ItemConditionArray   *string  `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
+	ItemConditionExpress *string  `json:"ItemConditionExpress,omitempty" xml:"ItemConditionExpress,omitempty"`
+	ItemConditionType    *string  `json:"ItemConditionType,omitempty" xml:"ItemConditionType,omitempty"`
+	Name                 *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	NewProductRegulation *bool    `json:"NewProductRegulation,omitempty" xml:"NewProductRegulation,omitempty"`
+	RecallName           *string  `json:"RecallName,omitempty" xml:"RecallName,omitempty"`
+	StartTime            *string  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StatisPeriod         *string  `json:"StatisPeriod,omitempty" xml:"StatisPeriod,omitempty"`
+	Status               *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	ToleranceValue       *int64   `json:"ToleranceValue,omitempty" xml:"ToleranceValue,omitempty"`
+	Value                *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	NewParam3            *string  `json:"new-param-3,omitempty" xml:"new-param-3,omitempty"`
+}
+
+func (s UpdateTrafficControlTargetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTrafficControlTargetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTrafficControlTargetRequest) SetEndTime(v string) *UpdateTrafficControlTargetRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTargetRequest) SetEvent(v string) *UpdateTrafficControlTargetRequest {
+	s.Event = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTargetRequest) SetItemConditionArray(v string) *UpdateTrafficControlTargetRequest {
+	s.ItemConditionArray = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTargetRequest) SetItemConditionExpress(v string) *UpdateTrafficControlTargetRequest {
+	s.ItemConditionExpress = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTargetRequest) SetItemConditionType(v string) *UpdateTrafficControlTargetRequest {
+	s.ItemConditionType = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTargetRequest) SetName(v string) *UpdateTrafficControlTargetRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTargetRequest) SetNewProductRegulation(v bool) *UpdateTrafficControlTargetRequest {
+	s.NewProductRegulation = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTargetRequest) SetRecallName(v string) *UpdateTrafficControlTargetRequest {
+	s.RecallName = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTargetRequest) SetStartTime(v string) *UpdateTrafficControlTargetRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTargetRequest) SetStatisPeriod(v string) *UpdateTrafficControlTargetRequest {
+	s.StatisPeriod = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTargetRequest) SetStatus(v string) *UpdateTrafficControlTargetRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTargetRequest) SetToleranceValue(v int64) *UpdateTrafficControlTargetRequest {
+	s.ToleranceValue = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTargetRequest) SetValue(v float32) *UpdateTrafficControlTargetRequest {
+	s.Value = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTargetRequest) SetNewParam3(v string) *UpdateTrafficControlTargetRequest {
+	s.NewParam3 = &v
+	return s
+}
+
+type UpdateTrafficControlTargetResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateTrafficControlTargetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTrafficControlTargetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTrafficControlTargetResponseBody) SetRequestId(v string) *UpdateTrafficControlTargetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateTrafficControlTargetResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateTrafficControlTargetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateTrafficControlTargetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTrafficControlTargetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTrafficControlTargetResponse) SetHeaders(v map[string]*string) *UpdateTrafficControlTargetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTrafficControlTargetResponse) SetStatusCode(v int32) *UpdateTrafficControlTargetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTargetResponse) SetBody(v *UpdateTrafficControlTargetResponseBody) *UpdateTrafficControlTargetResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateTrafficControlTaskRequest struct {
+	BehaviorTableMetaId            *string                                                 `json:"BehaviorTableMetaId,omitempty" xml:"BehaviorTableMetaId,omitempty"`
+	ControlGranularity             *string                                                 `json:"ControlGranularity,omitempty" xml:"ControlGranularity,omitempty"`
+	ControlLogic                   *string                                                 `json:"ControlLogic,omitempty" xml:"ControlLogic,omitempty"`
+	ControlType                    *string                                                 `json:"ControlType,omitempty" xml:"ControlType,omitempty"`
+	Description                    *string                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndTime                        *string                                                 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ExecutionTime                  *string                                                 `json:"ExecutionTime,omitempty" xml:"ExecutionTime,omitempty"`
+	InstanceId                     *string                                                 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ItemConditionArray             *string                                                 `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
+	ItemConditionExpress           *string                                                 `json:"ItemConditionExpress,omitempty" xml:"ItemConditionExpress,omitempty"`
+	ItemConditionType              *string                                                 `json:"ItemConditionType,omitempty" xml:"ItemConditionType,omitempty"`
+	ItemTableMetaId                *string                                                 `json:"ItemTableMetaId,omitempty" xml:"ItemTableMetaId,omitempty"`
+	Name                           *string                                                 `json:"Name,omitempty" xml:"Name,omitempty"`
+	SceneId                        *string                                                 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	StartTime                      *string                                                 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StatisBaeaviorConditionArray   *string                                                 `json:"StatisBaeaviorConditionArray,omitempty" xml:"StatisBaeaviorConditionArray,omitempty"`
+	StatisBehaviorConditionExpress *string                                                 `json:"StatisBehaviorConditionExpress,omitempty" xml:"StatisBehaviorConditionExpress,omitempty"`
+	StatisBehaviorConditionType    *string                                                 `json:"StatisBehaviorConditionType,omitempty" xml:"StatisBehaviorConditionType,omitempty"`
+	TrafficControlTargets          []*UpdateTrafficControlTaskRequestTrafficControlTargets `json:"TrafficControlTargets,omitempty" xml:"TrafficControlTargets,omitempty" type:"Repeated"`
+	UserConditionArray             *string                                                 `json:"UserConditionArray,omitempty" xml:"UserConditionArray,omitempty"`
+	UserConditionExpress           *string                                                 `json:"UserConditionExpress,omitempty" xml:"UserConditionExpress,omitempty"`
+	UserConditionType              *string                                                 `json:"UserConditionType,omitempty" xml:"UserConditionType,omitempty"`
+	UserTableMetaId                *string                                                 `json:"UserTableMetaId,omitempty" xml:"UserTableMetaId,omitempty"`
+}
+
+func (s UpdateTrafficControlTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTrafficControlTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTrafficControlTaskRequest) SetBehaviorTableMetaId(v string) *UpdateTrafficControlTaskRequest {
+	s.BehaviorTableMetaId = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskRequest) SetControlGranularity(v string) *UpdateTrafficControlTaskRequest {
+	s.ControlGranularity = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskRequest) SetControlLogic(v string) *UpdateTrafficControlTaskRequest {
+	s.ControlLogic = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskRequest) SetControlType(v string) *UpdateTrafficControlTaskRequest {
+	s.ControlType = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskRequest) SetDescription(v string) *UpdateTrafficControlTaskRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskRequest) SetEndTime(v string) *UpdateTrafficControlTaskRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskRequest) SetExecutionTime(v string) *UpdateTrafficControlTaskRequest {
+	s.ExecutionTime = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskRequest) SetInstanceId(v string) *UpdateTrafficControlTaskRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskRequest) SetItemConditionArray(v string) *UpdateTrafficControlTaskRequest {
+	s.ItemConditionArray = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskRequest) SetItemConditionExpress(v string) *UpdateTrafficControlTaskRequest {
+	s.ItemConditionExpress = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskRequest) SetItemConditionType(v string) *UpdateTrafficControlTaskRequest {
+	s.ItemConditionType = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskRequest) SetItemTableMetaId(v string) *UpdateTrafficControlTaskRequest {
+	s.ItemTableMetaId = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskRequest) SetName(v string) *UpdateTrafficControlTaskRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskRequest) SetSceneId(v string) *UpdateTrafficControlTaskRequest {
+	s.SceneId = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskRequest) SetStartTime(v string) *UpdateTrafficControlTaskRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskRequest) SetStatisBaeaviorConditionArray(v string) *UpdateTrafficControlTaskRequest {
+	s.StatisBaeaviorConditionArray = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskRequest) SetStatisBehaviorConditionExpress(v string) *UpdateTrafficControlTaskRequest {
+	s.StatisBehaviorConditionExpress = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskRequest) SetStatisBehaviorConditionType(v string) *UpdateTrafficControlTaskRequest {
+	s.StatisBehaviorConditionType = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskRequest) SetTrafficControlTargets(v []*UpdateTrafficControlTaskRequestTrafficControlTargets) *UpdateTrafficControlTaskRequest {
+	s.TrafficControlTargets = v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskRequest) SetUserConditionArray(v string) *UpdateTrafficControlTaskRequest {
+	s.UserConditionArray = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskRequest) SetUserConditionExpress(v string) *UpdateTrafficControlTaskRequest {
+	s.UserConditionExpress = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskRequest) SetUserConditionType(v string) *UpdateTrafficControlTaskRequest {
+	s.UserConditionType = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskRequest) SetUserTableMetaId(v string) *UpdateTrafficControlTaskRequest {
+	s.UserTableMetaId = &v
+	return s
+}
+
+type UpdateTrafficControlTaskRequestTrafficControlTargets struct {
+	EndTime              *string  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Event                *string  `json:"Event,omitempty" xml:"Event,omitempty"`
+	ItemConditionArray   *string  `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
+	ItemConditionExpress *string  `json:"ItemConditionExpress,omitempty" xml:"ItemConditionExpress,omitempty"`
+	ItemConditionType    *string  `json:"ItemConditionType,omitempty" xml:"ItemConditionType,omitempty"`
+	Name                 *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	NewProductRegulation *bool    `json:"NewProductRegulation,omitempty" xml:"NewProductRegulation,omitempty"`
+	RecallName           *string  `json:"RecallName,omitempty" xml:"RecallName,omitempty"`
+	StartTime            *string  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StatisPeriod         *string  `json:"StatisPeriod,omitempty" xml:"StatisPeriod,omitempty"`
+	Status               *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	ToleranceValue       *int64   `json:"ToleranceValue,omitempty" xml:"ToleranceValue,omitempty"`
+	Value                *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateTrafficControlTaskRequestTrafficControlTargets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTrafficControlTaskRequestTrafficControlTargets) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTrafficControlTaskRequestTrafficControlTargets) SetEndTime(v string) *UpdateTrafficControlTaskRequestTrafficControlTargets {
+	s.EndTime = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskRequestTrafficControlTargets) SetEvent(v string) *UpdateTrafficControlTaskRequestTrafficControlTargets {
+	s.Event = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskRequestTrafficControlTargets) SetItemConditionArray(v string) *UpdateTrafficControlTaskRequestTrafficControlTargets {
+	s.ItemConditionArray = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskRequestTrafficControlTargets) SetItemConditionExpress(v string) *UpdateTrafficControlTaskRequestTrafficControlTargets {
+	s.ItemConditionExpress = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskRequestTrafficControlTargets) SetItemConditionType(v string) *UpdateTrafficControlTaskRequestTrafficControlTargets {
+	s.ItemConditionType = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskRequestTrafficControlTargets) SetName(v string) *UpdateTrafficControlTaskRequestTrafficControlTargets {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskRequestTrafficControlTargets) SetNewProductRegulation(v bool) *UpdateTrafficControlTaskRequestTrafficControlTargets {
+	s.NewProductRegulation = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskRequestTrafficControlTargets) SetRecallName(v string) *UpdateTrafficControlTaskRequestTrafficControlTargets {
+	s.RecallName = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskRequestTrafficControlTargets) SetStartTime(v string) *UpdateTrafficControlTaskRequestTrafficControlTargets {
+	s.StartTime = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskRequestTrafficControlTargets) SetStatisPeriod(v string) *UpdateTrafficControlTaskRequestTrafficControlTargets {
+	s.StatisPeriod = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskRequestTrafficControlTargets) SetStatus(v string) *UpdateTrafficControlTaskRequestTrafficControlTargets {
+	s.Status = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskRequestTrafficControlTargets) SetToleranceValue(v int64) *UpdateTrafficControlTaskRequestTrafficControlTargets {
+	s.ToleranceValue = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskRequestTrafficControlTargets) SetValue(v float32) *UpdateTrafficControlTaskRequestTrafficControlTargets {
+	s.Value = &v
+	return s
+}
+
+type UpdateTrafficControlTaskResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateTrafficControlTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTrafficControlTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTrafficControlTaskResponseBody) SetRequestId(v string) *UpdateTrafficControlTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateTrafficControlTaskResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateTrafficControlTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateTrafficControlTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTrafficControlTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTrafficControlTaskResponse) SetHeaders(v map[string]*string) *UpdateTrafficControlTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskResponse) SetStatusCode(v int32) *UpdateTrafficControlTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskResponse) SetBody(v *UpdateTrafficControlTaskResponseBody) *UpdateTrafficControlTaskResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateTrafficControlTaskTrafficRequest struct {
+	Environment *string                                           `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	InstanceId  *string                                           `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Traffics    []*UpdateTrafficControlTaskTrafficRequestTraffics `json:"Traffics,omitempty" xml:"Traffics,omitempty" type:"Repeated"`
+	NewParam3   *string                                           `json:"new-param-3,omitempty" xml:"new-param-3,omitempty"`
+}
+
+func (s UpdateTrafficControlTaskTrafficRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTrafficControlTaskTrafficRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTrafficControlTaskTrafficRequest) SetEnvironment(v string) *UpdateTrafficControlTaskTrafficRequest {
+	s.Environment = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskTrafficRequest) SetInstanceId(v string) *UpdateTrafficControlTaskTrafficRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskTrafficRequest) SetTraffics(v []*UpdateTrafficControlTaskTrafficRequestTraffics) *UpdateTrafficControlTaskTrafficRequest {
+	s.Traffics = v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskTrafficRequest) SetNewParam3(v string) *UpdateTrafficControlTaskTrafficRequest {
+	s.NewParam3 = &v
+	return s
+}
+
+type UpdateTrafficControlTaskTrafficRequestTraffics struct {
+	ItemOrExperimentId             *string  `json:"ItemOrExperimentId,omitempty" xml:"ItemOrExperimentId,omitempty"`
+	RecordTime                     *string  `json:"RecordTime,omitempty" xml:"RecordTime,omitempty"`
+	TrafficControlTargetAimTraffic *float64 `json:"TrafficControlTargetAimTraffic,omitempty" xml:"TrafficControlTargetAimTraffic,omitempty"`
+	TrafficControlTargetId         *string  `json:"TrafficControlTargetId,omitempty" xml:"TrafficControlTargetId,omitempty"`
+	TrafficControlTargetTraffic    *int64   `json:"TrafficControlTargetTraffic,omitempty" xml:"TrafficControlTargetTraffic,omitempty"`
+	TrafficControlTaskTraffic      *int64   `json:"TrafficControlTaskTraffic,omitempty" xml:"TrafficControlTaskTraffic,omitempty"`
+}
+
+func (s UpdateTrafficControlTaskTrafficRequestTraffics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTrafficControlTaskTrafficRequestTraffics) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTrafficControlTaskTrafficRequestTraffics) SetItemOrExperimentId(v string) *UpdateTrafficControlTaskTrafficRequestTraffics {
+	s.ItemOrExperimentId = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskTrafficRequestTraffics) SetRecordTime(v string) *UpdateTrafficControlTaskTrafficRequestTraffics {
+	s.RecordTime = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskTrafficRequestTraffics) SetTrafficControlTargetAimTraffic(v float64) *UpdateTrafficControlTaskTrafficRequestTraffics {
+	s.TrafficControlTargetAimTraffic = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskTrafficRequestTraffics) SetTrafficControlTargetId(v string) *UpdateTrafficControlTaskTrafficRequestTraffics {
+	s.TrafficControlTargetId = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskTrafficRequestTraffics) SetTrafficControlTargetTraffic(v int64) *UpdateTrafficControlTaskTrafficRequestTraffics {
+	s.TrafficControlTargetTraffic = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskTrafficRequestTraffics) SetTrafficControlTaskTraffic(v int64) *UpdateTrafficControlTaskTrafficRequestTraffics {
+	s.TrafficControlTaskTraffic = &v
+	return s
+}
+
+type UpdateTrafficControlTaskTrafficResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateTrafficControlTaskTrafficResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTrafficControlTaskTrafficResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTrafficControlTaskTrafficResponseBody) SetRequestId(v string) *UpdateTrafficControlTaskTrafficResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateTrafficControlTaskTrafficResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateTrafficControlTaskTrafficResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateTrafficControlTaskTrafficResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTrafficControlTaskTrafficResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTrafficControlTaskTrafficResponse) SetHeaders(v map[string]*string) *UpdateTrafficControlTaskTrafficResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskTrafficResponse) SetStatusCode(v int32) *UpdateTrafficControlTaskTrafficResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTrafficControlTaskTrafficResponse) SetBody(v *UpdateTrafficControlTaskTrafficResponseBody) *UpdateTrafficControlTaskTrafficResponse {
 	s.Body = v
 	return s
 }
@@ -12197,6 +18327,17 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 特征一致性检查数据回流。
+//
+// @param request - BackflowFeatureConsistencyCheckJobDataRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BackflowFeatureConsistencyCheckJobDataResponse
 func (client *Client) BackflowFeatureConsistencyCheckJobDataWithOptions(request *BackflowFeatureConsistencyCheckJobDataRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BackflowFeatureConsistencyCheckJobDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12267,6 +18408,13 @@ func (client *Client) BackflowFeatureConsistencyCheckJobDataWithOptions(request 
 	return _result, _err
 }
 
+// Summary:
+//
+// 特征一致性检查数据回流。
+//
+// @param request - BackflowFeatureConsistencyCheckJobDataRequest
+//
+// @return BackflowFeatureConsistencyCheckJobDataResponse
 func (client *Client) BackflowFeatureConsistencyCheckJobData(request *BackflowFeatureConsistencyCheckJobDataRequest) (_result *BackflowFeatureConsistencyCheckJobDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12279,6 +18427,17 @@ func (client *Client) BackflowFeatureConsistencyCheckJobData(request *BackflowFe
 	return _result, _err
 }
 
+// Summary:
+//
+// 检测实例下配置的资源的连接状态。
+//
+// @param request - CheckInstanceResourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckInstanceResourcesResponse
 func (client *Client) CheckInstanceResourcesWithOptions(InstanceId *string, request *CheckInstanceResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CheckInstanceResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12317,6 +18476,13 @@ func (client *Client) CheckInstanceResourcesWithOptions(InstanceId *string, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// 检测实例下配置的资源的连接状态。
+//
+// @param request - CheckInstanceResourcesRequest
+//
+// @return CheckInstanceResourcesResponse
 func (client *Client) CheckInstanceResources(InstanceId *string, request *CheckInstanceResourcesRequest) (_result *CheckInstanceResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12329,6 +18495,17 @@ func (client *Client) CheckInstanceResources(InstanceId *string, request *CheckI
 	return _result, _err
 }
 
+// Summary:
+//
+// 克隆实验。
+//
+// @param request - CloneExperimentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloneExperimentResponse
 func (client *Client) CloneExperimentWithOptions(ExperimentId *string, request *CloneExperimentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CloneExperimentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12363,6 +18540,13 @@ func (client *Client) CloneExperimentWithOptions(ExperimentId *string, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 克隆实验。
+//
+// @param request - CloneExperimentRequest
+//
+// @return CloneExperimentResponse
 func (client *Client) CloneExperiment(ExperimentId *string, request *CloneExperimentRequest) (_result *CloneExperimentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12375,6 +18559,17 @@ func (client *Client) CloneExperiment(ExperimentId *string, request *CloneExperi
 	return _result, _err
 }
 
+// Summary:
+//
+// 克隆实验组，并克隆实验组下的所有实验至新的实验组中。
+//
+// @param request - CloneExperimentGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloneExperimentGroupResponse
 func (client *Client) CloneExperimentGroupWithOptions(ExperimentGroupId *string, request *CloneExperimentGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CloneExperimentGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12417,6 +18612,13 @@ func (client *Client) CloneExperimentGroupWithOptions(ExperimentGroupId *string,
 	return _result, _err
 }
 
+// Summary:
+//
+// 克隆实验组，并克隆实验组下的所有实验至新的实验组中。
+//
+// @param request - CloneExperimentGroupRequest
+//
+// @return CloneExperimentGroupResponse
 func (client *Client) CloneExperimentGroup(ExperimentGroupId *string, request *CloneExperimentGroupRequest) (_result *CloneExperimentGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12429,6 +18631,17 @@ func (client *Client) CloneExperimentGroup(ExperimentGroupId *string, request *C
 	return _result, _err
 }
 
+// Summary:
+//
+// 克隆特征一致性检查配置。
+//
+// @param request - CloneFeatureConsistencyCheckJobConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloneFeatureConsistencyCheckJobConfigResponse
 func (client *Client) CloneFeatureConsistencyCheckJobConfigWithOptions(SourceFeatureConsistencyCheckJobConfigId *string, request *CloneFeatureConsistencyCheckJobConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CloneFeatureConsistencyCheckJobConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12463,6 +18676,13 @@ func (client *Client) CloneFeatureConsistencyCheckJobConfigWithOptions(SourceFea
 	return _result, _err
 }
 
+// Summary:
+//
+// 克隆特征一致性检查配置。
+//
+// @param request - CloneFeatureConsistencyCheckJobConfigRequest
+//
+// @return CloneFeatureConsistencyCheckJobConfigResponse
 func (client *Client) CloneFeatureConsistencyCheckJobConfig(SourceFeatureConsistencyCheckJobConfigId *string, request *CloneFeatureConsistencyCheckJobConfigRequest) (_result *CloneFeatureConsistencyCheckJobConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12475,6 +18695,17 @@ func (client *Client) CloneFeatureConsistencyCheckJobConfig(SourceFeatureConsist
 	return _result, _err
 }
 
+// Summary:
+//
+// 克隆实验室。
+//
+// @param request - CloneLaboratoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloneLaboratoryResponse
 func (client *Client) CloneLaboratoryWithOptions(LaboratoryId *string, request *CloneLaboratoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CloneLaboratoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12517,6 +18748,13 @@ func (client *Client) CloneLaboratoryWithOptions(LaboratoryId *string, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 克隆实验室。
+//
+// @param request - CloneLaboratoryRequest
+//
+// @return CloneLaboratoryResponse
 func (client *Client) CloneLaboratory(LaboratoryId *string, request *CloneLaboratoryRequest) (_result *CloneLaboratoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12529,6 +18767,81 @@ func (client *Client) CloneLaboratory(LaboratoryId *string, request *CloneLabora
 	return _result, _err
 }
 
+// Summary:
+//
+// 克隆流量调控任务
+//
+// @param request - CloneTrafficControlTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloneTrafficControlTaskResponse
+func (client *Client) CloneTrafficControlTaskWithOptions(TrafficControlTaskId *string, request *CloneTrafficControlTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CloneTrafficControlTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CloneTrafficControlTask"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/trafficcontroltasks/" + tea.StringValue(openapiutil.GetEncodeParam(TrafficControlTaskId)) + "/action/clone"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CloneTrafficControlTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 克隆流量调控任务
+//
+// @param request - CloneTrafficControlTaskRequest
+//
+// @return CloneTrafficControlTaskResponse
+func (client *Client) CloneTrafficControlTask(TrafficControlTaskId *string, request *CloneTrafficControlTaskRequest) (_result *CloneTrafficControlTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CloneTrafficControlTaskResponse{}
+	_body, _err := client.CloneTrafficControlTaskWithOptions(TrafficControlTaskId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建AB test实验指标
+//
+// @param request - CreateABMetricRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateABMetricResponse
 func (client *Client) CreateABMetricWithOptions(request *CreateABMetricRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateABMetricResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12611,6 +18924,13 @@ func (client *Client) CreateABMetricWithOptions(request *CreateABMetricRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建AB test实验指标
+//
+// @param request - CreateABMetricRequest
+//
+// @return CreateABMetricResponse
 func (client *Client) CreateABMetric(request *CreateABMetricRequest) (_result *CreateABMetricResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12623,6 +18943,17 @@ func (client *Client) CreateABMetric(request *CreateABMetricRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建指标组
+//
+// @param request - CreateABMetricGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateABMetricGroupResponse
 func (client *Client) CreateABMetricGroupWithOptions(request *CreateABMetricGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateABMetricGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12677,6 +19008,13 @@ func (client *Client) CreateABMetricGroupWithOptions(request *CreateABMetricGrou
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建指标组
+//
+// @param request - CreateABMetricGroupRequest
+//
+// @return CreateABMetricGroupResponse
 func (client *Client) CreateABMetricGroup(request *CreateABMetricGroupRequest) (_result *CreateABMetricGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12689,6 +19027,17 @@ func (client *Client) CreateABMetricGroup(request *CreateABMetricGroupRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建AB指标的计算任务。
+//
+// @param request - CreateCalculationJobsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCalculationJobsResponse
 func (client *Client) CreateCalculationJobsWithOptions(request *CreateCalculationJobsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateCalculationJobsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12735,6 +19084,13 @@ func (client *Client) CreateCalculationJobsWithOptions(request *CreateCalculatio
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建AB指标的计算任务。
+//
+// @param request - CreateCalculationJobsRequest
+//
+// @return CreateCalculationJobsResponse
 func (client *Client) CreateCalculationJobs(request *CreateCalculationJobsRequest) (_result *CreateCalculationJobsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12747,6 +19103,17 @@ func (client *Client) CreateCalculationJobs(request *CreateCalculationJobsReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建人群。
+//
+// @param request - CreateCrowdRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCrowdResponse
 func (client *Client) CreateCrowdWithOptions(request *CreateCrowdRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateCrowdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12801,6 +19168,13 @@ func (client *Client) CreateCrowdWithOptions(request *CreateCrowdRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建人群。
+//
+// @param request - CreateCrowdRequest
+//
+// @return CreateCrowdResponse
 func (client *Client) CreateCrowd(request *CreateCrowdRequest) (_result *CreateCrowdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12813,6 +19187,17 @@ func (client *Client) CreateCrowd(request *CreateCrowdRequest) (_result *CreateC
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建实验。
+//
+// @param request - CreateExperimentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateExperimentResponse
 func (client *Client) CreateExperimentWithOptions(request *CreateExperimentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateExperimentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12879,6 +19264,13 @@ func (client *Client) CreateExperimentWithOptions(request *CreateExperimentReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建实验。
+//
+// @param request - CreateExperimentRequest
+//
+// @return CreateExperimentResponse
 func (client *Client) CreateExperiment(request *CreateExperimentRequest) (_result *CreateExperimentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12891,6 +19283,17 @@ func (client *Client) CreateExperiment(request *CreateExperimentRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建实验组。
+//
+// @param request - CreateExperimentGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateExperimentGroupResponse
 func (client *Client) CreateExperimentGroupWithOptions(request *CreateExperimentGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateExperimentGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12981,6 +19384,13 @@ func (client *Client) CreateExperimentGroupWithOptions(request *CreateExperiment
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建实验组。
+//
+// @param request - CreateExperimentGroupRequest
+//
+// @return CreateExperimentGroupResponse
 func (client *Client) CreateExperimentGroup(request *CreateExperimentGroupRequest) (_result *CreateExperimentGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12993,6 +19403,17 @@ func (client *Client) CreateExperimentGroup(request *CreateExperimentGroupReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建特征一致性检查任务。
+//
+// @param request - CreateFeatureConsistencyCheckJobRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFeatureConsistencyCheckJobResponse
 func (client *Client) CreateFeatureConsistencyCheckJobWithOptions(request *CreateFeatureConsistencyCheckJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateFeatureConsistencyCheckJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13039,6 +19460,13 @@ func (client *Client) CreateFeatureConsistencyCheckJobWithOptions(request *Creat
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建特征一致性检查任务。
+//
+// @param request - CreateFeatureConsistencyCheckJobRequest
+//
+// @return CreateFeatureConsistencyCheckJobResponse
 func (client *Client) CreateFeatureConsistencyCheckJob(request *CreateFeatureConsistencyCheckJobRequest) (_result *CreateFeatureConsistencyCheckJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13051,6 +19479,17 @@ func (client *Client) CreateFeatureConsistencyCheckJob(request *CreateFeatureCon
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建特征一致性检查配置。
+//
+// @param request - CreateFeatureConsistencyCheckJobConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFeatureConsistencyCheckJobConfigResponse
 func (client *Client) CreateFeatureConsistencyCheckJobConfigWithOptions(request *CreateFeatureConsistencyCheckJobConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateFeatureConsistencyCheckJobConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13209,6 +19648,13 @@ func (client *Client) CreateFeatureConsistencyCheckJobConfigWithOptions(request 
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建特征一致性检查配置。
+//
+// @param request - CreateFeatureConsistencyCheckJobConfigRequest
+//
+// @return CreateFeatureConsistencyCheckJobConfigResponse
 func (client *Client) CreateFeatureConsistencyCheckJobConfig(request *CreateFeatureConsistencyCheckJobConfigRequest) (_result *CreateFeatureConsistencyCheckJobConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13221,6 +19667,17 @@ func (client *Client) CreateFeatureConsistencyCheckJobConfig(request *CreateFeat
 	return _result, _err
 }
 
+// Summary:
+//
+// 为指定实例配置创建新的配置资源
+//
+// @param request - CreateInstanceResourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInstanceResourceResponse
 func (client *Client) CreateInstanceResourceWithOptions(InstanceId *string, request *CreateInstanceResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateInstanceResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13267,6 +19724,13 @@ func (client *Client) CreateInstanceResourceWithOptions(InstanceId *string, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// 为指定实例配置创建新的配置资源
+//
+// @param request - CreateInstanceResourceRequest
+//
+// @return CreateInstanceResourceResponse
 func (client *Client) CreateInstanceResource(InstanceId *string, request *CreateInstanceResourceRequest) (_result *CreateInstanceResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13279,6 +19743,17 @@ func (client *Client) CreateInstanceResource(InstanceId *string, request *Create
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建实验室
+//
+// @param request - CreateLaboratoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLaboratoryResponse
 func (client *Client) CreateLaboratoryWithOptions(request *CreateLaboratoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLaboratoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13357,6 +19832,13 @@ func (client *Client) CreateLaboratoryWithOptions(request *CreateLaboratoryReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建实验室
+//
+// @param request - CreateLaboratoryRequest
+//
+// @return CreateLaboratoryResponse
 func (client *Client) CreateLaboratory(request *CreateLaboratoryRequest) (_result *CreateLaboratoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13369,6 +19851,17 @@ func (client *Client) CreateLaboratory(request *CreateLaboratoryRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建层。
+//
+// @param request - CreateLayerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLayerResponse
 func (client *Client) CreateLayerWithOptions(request *CreateLayerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLayerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13415,6 +19908,13 @@ func (client *Client) CreateLayerWithOptions(request *CreateLayerRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建层。
+//
+// @param request - CreateLayerRequest
+//
+// @return CreateLayerResponse
 func (client *Client) CreateLayer(request *CreateLayerRequest) (_result *CreateLayerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13427,6 +19927,17 @@ func (client *Client) CreateLayer(request *CreateLayerRequest) (_result *CreateL
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建参数。
+//
+// @param request - CreateParamRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateParamResponse
 func (client *Client) CreateParamWithOptions(request *CreateParamRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateParamResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13477,6 +19988,13 @@ func (client *Client) CreateParamWithOptions(request *CreateParamRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建参数。
+//
+// @param request - CreateParamRequest
+//
+// @return CreateParamResponse
 func (client *Client) CreateParam(request *CreateParamRequest) (_result *CreateParamResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13489,6 +20007,17 @@ func (client *Client) CreateParam(request *CreateParamRequest) (_result *CreateP
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建资源规则
+//
+// @param request - CreateResourceRuleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateResourceRuleResponse
 func (client *Client) CreateResourceRuleWithOptions(request *CreateResourceRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateResourceRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13551,6 +20080,13 @@ func (client *Client) CreateResourceRuleWithOptions(request *CreateResourceRuleR
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建资源规则
+//
+// @param request - CreateResourceRuleRequest
+//
+// @return CreateResourceRuleResponse
 func (client *Client) CreateResourceRule(request *CreateResourceRuleRequest) (_result *CreateResourceRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13563,6 +20099,17 @@ func (client *Client) CreateResourceRule(request *CreateResourceRuleRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建资源规则条目
+//
+// @param request - CreateResourceRuleItemRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateResourceRuleItemResponse
 func (client *Client) CreateResourceRuleItemWithOptions(ResourceRuleId *string, request *CreateResourceRuleItemRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateResourceRuleItemResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13617,6 +20164,13 @@ func (client *Client) CreateResourceRuleItemWithOptions(ResourceRuleId *string, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建资源规则条目
+//
+// @param request - CreateResourceRuleItemRequest
+//
+// @return CreateResourceRuleItemResponse
 func (client *Client) CreateResourceRuleItem(ResourceRuleId *string, request *CreateResourceRuleItemRequest) (_result *CreateResourceRuleItemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13629,6 +20183,17 @@ func (client *Client) CreateResourceRuleItem(ResourceRuleId *string, request *Cr
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建场景
+//
+// @param request - CreateSceneRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSceneResponse
 func (client *Client) CreateSceneWithOptions(request *CreateSceneRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateSceneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13675,6 +20240,13 @@ func (client *Client) CreateSceneWithOptions(request *CreateSceneRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建场景
+//
+// @param request - CreateSceneRequest
+//
+// @return CreateSceneResponse
 func (client *Client) CreateScene(request *CreateSceneRequest) (_result *CreateSceneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13687,6 +20259,17 @@ func (client *Client) CreateScene(request *CreateSceneRequest) (_result *CreateS
 	return _result, _err
 }
 
+// Summary:
+//
+// 在指定人群下创建子人群。
+//
+// @param request - CreateSubCrowdRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSubCrowdResponse
 func (client *Client) CreateSubCrowdWithOptions(CrowdId *string, request *CreateSubCrowdRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateSubCrowdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13729,6 +20312,13 @@ func (client *Client) CreateSubCrowdWithOptions(CrowdId *string, request *Create
 	return _result, _err
 }
 
+// Summary:
+//
+// 在指定人群下创建子人群。
+//
+// @param request - CreateSubCrowdRequest
+//
+// @return CreateSubCrowdResponse
 func (client *Client) CreateSubCrowd(CrowdId *string, request *CreateSubCrowdRequest) (_result *CreateSubCrowdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13741,6 +20331,17 @@ func (client *Client) CreateSubCrowd(CrowdId *string, request *CreateSubCrowdReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建数据表。
+//
+// @param request - CreateTableMetaRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTableMetaResponse
 func (client *Client) CreateTableMetaWithOptions(request *CreateTableMetaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateTableMetaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13799,6 +20400,13 @@ func (client *Client) CreateTableMetaWithOptions(request *CreateTableMetaRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建数据表。
+//
+// @param request - CreateTableMetaRequest
+//
+// @return CreateTableMetaResponse
 func (client *Client) CreateTableMeta(request *CreateTableMetaRequest) (_result *CreateTableMetaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13811,6 +20419,285 @@ func (client *Client) CreateTableMeta(request *CreateTableMetaRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建流量调控目标
+//
+// @param request - CreateTrafficControlTargetRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTrafficControlTargetResponse
+func (client *Client) CreateTrafficControlTargetWithOptions(request *CreateTrafficControlTargetRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateTrafficControlTargetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Event)) {
+		body["Event"] = request.Event
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ItemConditionArray)) {
+		body["ItemConditionArray"] = request.ItemConditionArray
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ItemConditionExpress)) {
+		body["ItemConditionExpress"] = request.ItemConditionExpress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ItemConditionType)) {
+		body["ItemConditionType"] = request.ItemConditionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewProductRegulation)) {
+		body["NewProductRegulation"] = request.NewProductRegulation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecallName)) {
+		body["RecallName"] = request.RecallName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatisPeriod)) {
+		body["StatisPeriod"] = request.StatisPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ToleranceValue)) {
+		body["ToleranceValue"] = request.ToleranceValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficControlTaskId)) {
+		body["TrafficControlTaskId"] = request.TrafficControlTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Value)) {
+		body["Value"] = request.Value
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTrafficControlTarget"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/trafficcontroltargets"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateTrafficControlTargetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建流量调控目标
+//
+// @param request - CreateTrafficControlTargetRequest
+//
+// @return CreateTrafficControlTargetResponse
+func (client *Client) CreateTrafficControlTarget(request *CreateTrafficControlTargetRequest) (_result *CreateTrafficControlTargetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateTrafficControlTargetResponse{}
+	_body, _err := client.CreateTrafficControlTargetWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建流量调控任务
+//
+// @param request - CreateTrafficControlTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTrafficControlTaskResponse
+func (client *Client) CreateTrafficControlTaskWithOptions(request *CreateTrafficControlTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateTrafficControlTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BehaviorTableMetaId)) {
+		body["BehaviorTableMetaId"] = request.BehaviorTableMetaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ControlGranularity)) {
+		body["ControlGranularity"] = request.ControlGranularity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ControlLogic)) {
+		body["ControlLogic"] = request.ControlLogic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ControlType)) {
+		body["ControlType"] = request.ControlType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExecutionTime)) {
+		body["ExecutionTime"] = request.ExecutionTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ItemConditionArray)) {
+		body["ItemConditionArray"] = request.ItemConditionArray
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ItemConditionExpress)) {
+		body["ItemConditionExpress"] = request.ItemConditionExpress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ItemConditionType)) {
+		body["ItemConditionType"] = request.ItemConditionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ItemTableMetaId)) {
+		body["ItemTableMetaId"] = request.ItemTableMetaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		body["SceneId"] = request.SceneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatisBehaviorConditionArray)) {
+		body["StatisBehaviorConditionArray"] = request.StatisBehaviorConditionArray
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatisBehaviorConditionExpress)) {
+		body["StatisBehaviorConditionExpress"] = request.StatisBehaviorConditionExpress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatisBehaviorConditionType)) {
+		body["StatisBehaviorConditionType"] = request.StatisBehaviorConditionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficControlTargets)) {
+		body["TrafficControlTargets"] = request.TrafficControlTargets
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserConditionArray)) {
+		body["UserConditionArray"] = request.UserConditionArray
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserConditionExpress)) {
+		body["UserConditionExpress"] = request.UserConditionExpress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserConditionType)) {
+		body["UserConditionType"] = request.UserConditionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserTableMetaId)) {
+		body["UserTableMetaId"] = request.UserTableMetaId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTrafficControlTask"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/trafficcontroltasks"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateTrafficControlTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建流量调控任务
+//
+// @param request - CreateTrafficControlTaskRequest
+//
+// @return CreateTrafficControlTaskResponse
+func (client *Client) CreateTrafficControlTask(request *CreateTrafficControlTaskRequest) (_result *CreateTrafficControlTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateTrafficControlTaskResponse{}
+	_body, _err := client.CreateTrafficControlTaskWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 对指定资源规则中的计算公式进行调试
+//
+// @param tmpReq - DebugResourceRuleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DebugResourceRuleResponse
 func (client *Client) DebugResourceRuleWithOptions(ResourceRuleId *string, tmpReq *DebugResourceRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DebugResourceRuleResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -13859,6 +20746,13 @@ func (client *Client) DebugResourceRuleWithOptions(ResourceRuleId *string, tmpRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 对指定资源规则中的计算公式进行调试
+//
+// @param request - DebugResourceRuleRequest
+//
+// @return DebugResourceRuleResponse
 func (client *Client) DebugResourceRule(ResourceRuleId *string, request *DebugResourceRuleRequest) (_result *DebugResourceRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13871,6 +20765,17 @@ func (client *Client) DebugResourceRule(ResourceRuleId *string, request *DebugRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除指定AB实验指标。
+//
+// @param request - DeleteABMetricRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteABMetricResponse
 func (client *Client) DeleteABMetricWithOptions(ABMetricId *string, request *DeleteABMetricRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteABMetricResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13905,6 +20810,13 @@ func (client *Client) DeleteABMetricWithOptions(ABMetricId *string, request *Del
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除指定AB实验指标。
+//
+// @param request - DeleteABMetricRequest
+//
+// @return DeleteABMetricResponse
 func (client *Client) DeleteABMetric(ABMetricId *string, request *DeleteABMetricRequest) (_result *DeleteABMetricResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13917,6 +20829,17 @@ func (client *Client) DeleteABMetric(ABMetricId *string, request *DeleteABMetric
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除AB实验指标组。
+//
+// @param request - DeleteABMetricGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteABMetricGroupResponse
 func (client *Client) DeleteABMetricGroupWithOptions(ABMetricGroupId *string, request *DeleteABMetricGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteABMetricGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13951,6 +20874,13 @@ func (client *Client) DeleteABMetricGroupWithOptions(ABMetricGroupId *string, re
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除AB实验指标组。
+//
+// @param request - DeleteABMetricGroupRequest
+//
+// @return DeleteABMetricGroupResponse
 func (client *Client) DeleteABMetricGroup(ABMetricGroupId *string, request *DeleteABMetricGroupRequest) (_result *DeleteABMetricGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13963,6 +20893,17 @@ func (client *Client) DeleteABMetricGroup(ABMetricGroupId *string, request *Dele
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除指定人群。
+//
+// @param request - DeleteCrowdRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCrowdResponse
 func (client *Client) DeleteCrowdWithOptions(CrowdId *string, request *DeleteCrowdRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteCrowdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13997,6 +20938,13 @@ func (client *Client) DeleteCrowdWithOptions(CrowdId *string, request *DeleteCro
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除指定人群。
+//
+// @param request - DeleteCrowdRequest
+//
+// @return DeleteCrowdResponse
 func (client *Client) DeleteCrowd(CrowdId *string, request *DeleteCrowdRequest) (_result *DeleteCrowdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14009,6 +20957,17 @@ func (client *Client) DeleteCrowd(CrowdId *string, request *DeleteCrowdRequest) 
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除实验。
+//
+// @param request - DeleteExperimentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteExperimentResponse
 func (client *Client) DeleteExperimentWithOptions(ExperimentId *string, request *DeleteExperimentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteExperimentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14043,6 +21002,13 @@ func (client *Client) DeleteExperimentWithOptions(ExperimentId *string, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除实验。
+//
+// @param request - DeleteExperimentRequest
+//
+// @return DeleteExperimentResponse
 func (client *Client) DeleteExperiment(ExperimentId *string, request *DeleteExperimentRequest) (_result *DeleteExperimentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14055,6 +21021,17 @@ func (client *Client) DeleteExperiment(ExperimentId *string, request *DeleteExpe
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除指定实验组。
+//
+// @param request - DeleteExperimentGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteExperimentGroupResponse
 func (client *Client) DeleteExperimentGroupWithOptions(ExperimentGroupId *string, request *DeleteExperimentGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteExperimentGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14089,6 +21066,13 @@ func (client *Client) DeleteExperimentGroupWithOptions(ExperimentGroupId *string
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除指定实验组。
+//
+// @param request - DeleteExperimentGroupRequest
+//
+// @return DeleteExperimentGroupResponse
 func (client *Client) DeleteExperimentGroup(ExperimentGroupId *string, request *DeleteExperimentGroupRequest) (_result *DeleteExperimentGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14101,6 +21085,15 @@ func (client *Client) DeleteExperimentGroup(ExperimentGroupId *string, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除指定实例下的指定配置资源。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteInstanceResourceResponse
 func (client *Client) DeleteInstanceResourceWithOptions(InstanceId *string, ResourceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteInstanceResourceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -14125,6 +21118,11 @@ func (client *Client) DeleteInstanceResourceWithOptions(InstanceId *string, Reso
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除指定实例下的指定配置资源。
+//
+// @return DeleteInstanceResourceResponse
 func (client *Client) DeleteInstanceResource(InstanceId *string, ResourceId *string) (_result *DeleteInstanceResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14137,6 +21135,17 @@ func (client *Client) DeleteInstanceResource(InstanceId *string, ResourceId *str
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除实验室。
+//
+// @param request - DeleteLaboratoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteLaboratoryResponse
 func (client *Client) DeleteLaboratoryWithOptions(LaboratoryId *string, request *DeleteLaboratoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteLaboratoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14171,6 +21180,13 @@ func (client *Client) DeleteLaboratoryWithOptions(LaboratoryId *string, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除实验室。
+//
+// @param request - DeleteLaboratoryRequest
+//
+// @return DeleteLaboratoryResponse
 func (client *Client) DeleteLaboratory(LaboratoryId *string, request *DeleteLaboratoryRequest) (_result *DeleteLaboratoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14183,6 +21199,17 @@ func (client *Client) DeleteLaboratory(LaboratoryId *string, request *DeleteLabo
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除层。
+//
+// @param request - DeleteLayerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteLayerResponse
 func (client *Client) DeleteLayerWithOptions(LayerId *string, request *DeleteLayerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteLayerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14217,6 +21244,13 @@ func (client *Client) DeleteLayerWithOptions(LayerId *string, request *DeleteLay
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除层。
+//
+// @param request - DeleteLayerRequest
+//
+// @return DeleteLayerResponse
 func (client *Client) DeleteLayer(LayerId *string, request *DeleteLayerRequest) (_result *DeleteLayerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14229,6 +21263,17 @@ func (client *Client) DeleteLayer(LayerId *string, request *DeleteLayerRequest) 
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除指定参数。
+//
+// @param request - DeleteParamRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteParamResponse
 func (client *Client) DeleteParamWithOptions(ParamId *string, request *DeleteParamRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteParamResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14263,6 +21308,13 @@ func (client *Client) DeleteParamWithOptions(ParamId *string, request *DeletePar
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除指定参数。
+//
+// @param request - DeleteParamRequest
+//
+// @return DeleteParamResponse
 func (client *Client) DeleteParam(ParamId *string, request *DeleteParamRequest) (_result *DeleteParamResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14275,6 +21327,17 @@ func (client *Client) DeleteParam(ParamId *string, request *DeleteParamRequest) 
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除资源规则
+//
+// @param request - DeleteResourceRuleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteResourceRuleResponse
 func (client *Client) DeleteResourceRuleWithOptions(ResourceRuleId *string, request *DeleteResourceRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteResourceRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14309,6 +21372,13 @@ func (client *Client) DeleteResourceRuleWithOptions(ResourceRuleId *string, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除资源规则
+//
+// @param request - DeleteResourceRuleRequest
+//
+// @return DeleteResourceRuleResponse
 func (client *Client) DeleteResourceRule(ResourceRuleId *string, request *DeleteResourceRuleRequest) (_result *DeleteResourceRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14321,6 +21391,17 @@ func (client *Client) DeleteResourceRule(ResourceRuleId *string, request *Delete
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除资源规则条目
+//
+// @param request - DeleteResourceRuleItemRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteResourceRuleItemResponse
 func (client *Client) DeleteResourceRuleItemWithOptions(ResourceRuleId *string, ResourceRuleItemId *string, request *DeleteResourceRuleItemRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteResourceRuleItemResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14355,6 +21436,13 @@ func (client *Client) DeleteResourceRuleItemWithOptions(ResourceRuleId *string, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除资源规则条目
+//
+// @param request - DeleteResourceRuleItemRequest
+//
+// @return DeleteResourceRuleItemResponse
 func (client *Client) DeleteResourceRuleItem(ResourceRuleId *string, ResourceRuleItemId *string, request *DeleteResourceRuleItemRequest) (_result *DeleteResourceRuleItemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14367,6 +21455,17 @@ func (client *Client) DeleteResourceRuleItem(ResourceRuleId *string, ResourceRul
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除场景
+//
+// @param request - DeleteSceneRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSceneResponse
 func (client *Client) DeleteSceneWithOptions(SceneId *string, request *DeleteSceneRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteSceneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14401,6 +21500,13 @@ func (client *Client) DeleteSceneWithOptions(SceneId *string, request *DeleteSce
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除场景
+//
+// @param request - DeleteSceneRequest
+//
+// @return DeleteSceneResponse
 func (client *Client) DeleteScene(SceneId *string, request *DeleteSceneRequest) (_result *DeleteSceneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14413,6 +21519,17 @@ func (client *Client) DeleteScene(SceneId *string, request *DeleteSceneRequest) 
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除指定人群下的指定子人群。
+//
+// @param request - DeleteSubCrowdRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSubCrowdResponse
 func (client *Client) DeleteSubCrowdWithOptions(CrowdId *string, SubCrowdId *string, request *DeleteSubCrowdRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteSubCrowdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14447,6 +21564,13 @@ func (client *Client) DeleteSubCrowdWithOptions(CrowdId *string, SubCrowdId *str
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除指定人群下的指定子人群。
+//
+// @param request - DeleteSubCrowdRequest
+//
+// @return DeleteSubCrowdResponse
 func (client *Client) DeleteSubCrowd(CrowdId *string, SubCrowdId *string, request *DeleteSubCrowdRequest) (_result *DeleteSubCrowdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14459,6 +21583,17 @@ func (client *Client) DeleteSubCrowd(CrowdId *string, SubCrowdId *string, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除数据表。
+//
+// @param request - DeleteTableMetaRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTableMetaResponse
 func (client *Client) DeleteTableMetaWithOptions(TableMetaId *string, request *DeleteTableMetaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteTableMetaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14493,6 +21628,13 @@ func (client *Client) DeleteTableMetaWithOptions(TableMetaId *string, request *D
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除数据表。
+//
+// @param request - DeleteTableMetaRequest
+//
+// @return DeleteTableMetaResponse
 func (client *Client) DeleteTableMeta(TableMetaId *string, request *DeleteTableMetaRequest) (_result *DeleteTableMetaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14505,6 +21647,273 @@ func (client *Client) DeleteTableMeta(TableMetaId *string, request *DeleteTableM
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新流量调控目标
+//
+// @param request - DeleteTrafficControlTargetRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTrafficControlTargetResponse
+func (client *Client) DeleteTrafficControlTargetWithOptions(TrafficControlTargetId *string, request *DeleteTrafficControlTargetRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteTrafficControlTargetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTrafficControlTarget"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/trafficcontroltargets/" + tea.StringValue(openapiutil.GetEncodeParam(TrafficControlTargetId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteTrafficControlTargetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新流量调控目标
+//
+// @param request - DeleteTrafficControlTargetRequest
+//
+// @return DeleteTrafficControlTargetResponse
+func (client *Client) DeleteTrafficControlTarget(TrafficControlTargetId *string, request *DeleteTrafficControlTargetRequest) (_result *DeleteTrafficControlTargetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteTrafficControlTargetResponse{}
+	_body, _err := client.DeleteTrafficControlTargetWithOptions(TrafficControlTargetId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除指定的流量调控任务
+//
+// @param request - DeleteTrafficControlTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTrafficControlTaskResponse
+func (client *Client) DeleteTrafficControlTaskWithOptions(TrafficControlTaskId *string, request *DeleteTrafficControlTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteTrafficControlTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTrafficControlTask"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/trafficcontroltasks/" + tea.StringValue(openapiutil.GetEncodeParam(TrafficControlTaskId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteTrafficControlTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除指定的流量调控任务
+//
+// @param request - DeleteTrafficControlTaskRequest
+//
+// @return DeleteTrafficControlTaskResponse
+func (client *Client) DeleteTrafficControlTask(TrafficControlTaskId *string, request *DeleteTrafficControlTaskRequest) (_result *DeleteTrafficControlTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteTrafficControlTaskResponse{}
+	_body, _err := client.DeleteTrafficControlTaskWithOptions(TrafficControlTaskId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 产生流量调控的相关代码
+//
+// @param request - GenerateTrafficControlTaskCodeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateTrafficControlTaskCodeResponse
+func (client *Client) GenerateTrafficControlTaskCodeWithOptions(TrafficControlTaskId *string, request *GenerateTrafficControlTaskCodeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GenerateTrafficControlTaskCodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateTrafficControlTaskCode"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/trafficcontroltasks/" + tea.StringValue(openapiutil.GetEncodeParam(TrafficControlTaskId)) + "/action/code"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GenerateTrafficControlTaskCodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 产生流量调控的相关代码
+//
+// @param request - GenerateTrafficControlTaskCodeRequest
+//
+// @return GenerateTrafficControlTaskCodeResponse
+func (client *Client) GenerateTrafficControlTaskCode(TrafficControlTaskId *string, request *GenerateTrafficControlTaskCodeRequest) (_result *GenerateTrafficControlTaskCodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GenerateTrafficControlTaskCodeResponse{}
+	_body, _err := client.GenerateTrafficControlTaskCodeWithOptions(TrafficControlTaskId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 产生流量调控的相关召回配置
+//
+// @param request - GenerateTrafficControlTaskConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateTrafficControlTaskConfigResponse
+func (client *Client) GenerateTrafficControlTaskConfigWithOptions(TrafficControlTaskId *string, request *GenerateTrafficControlTaskConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GenerateTrafficControlTaskConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateTrafficControlTaskConfig"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/trafficcontroltasks/" + tea.StringValue(openapiutil.GetEncodeParam(TrafficControlTaskId)) + "/action/config"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GenerateTrafficControlTaskConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 产生流量调控的相关召回配置
+//
+// @param request - GenerateTrafficControlTaskConfigRequest
+//
+// @return GenerateTrafficControlTaskConfigResponse
+func (client *Client) GenerateTrafficControlTaskConfig(TrafficControlTaskId *string, request *GenerateTrafficControlTaskConfigRequest) (_result *GenerateTrafficControlTaskConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GenerateTrafficControlTaskConfigResponse{}
+	_body, _err := client.GenerateTrafficControlTaskConfigWithOptions(TrafficControlTaskId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取AB Test实验指标详细信息。
+//
+// @param request - GetABMetricRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetABMetricResponse
 func (client *Client) GetABMetricWithOptions(ABMetricId *string, request *GetABMetricRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetABMetricResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14539,6 +21948,13 @@ func (client *Client) GetABMetricWithOptions(ABMetricId *string, request *GetABM
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取AB Test实验指标详细信息。
+//
+// @param request - GetABMetricRequest
+//
+// @return GetABMetricResponse
 func (client *Client) GetABMetric(ABMetricId *string, request *GetABMetricRequest) (_result *GetABMetricResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14551,6 +21967,17 @@ func (client *Client) GetABMetric(ABMetricId *string, request *GetABMetricReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取AB实验指标组详细信息。
+//
+// @param request - GetABMetricGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetABMetricGroupResponse
 func (client *Client) GetABMetricGroupWithOptions(ABMetricGroupId *string, request *GetABMetricGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetABMetricGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14585,6 +22012,13 @@ func (client *Client) GetABMetricGroupWithOptions(ABMetricGroupId *string, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取AB实验指标组详细信息。
+//
+// @param request - GetABMetricGroupRequest
+//
+// @return GetABMetricGroupResponse
 func (client *Client) GetABMetricGroup(ABMetricGroupId *string, request *GetABMetricGroupRequest) (_result *GetABMetricGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14597,6 +22031,17 @@ func (client *Client) GetABMetricGroup(ABMetricGroupId *string, request *GetABMe
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取指定计算任务详细信息。
+//
+// @param request - GetCalculationJobRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCalculationJobResponse
 func (client *Client) GetCalculationJobWithOptions(CalculationJobId *string, request *GetCalculationJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetCalculationJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14631,6 +22076,13 @@ func (client *Client) GetCalculationJobWithOptions(CalculationJobId *string, req
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取指定计算任务详细信息。
+//
+// @param request - GetCalculationJobRequest
+//
+// @return GetCalculationJobResponse
 func (client *Client) GetCalculationJob(CalculationJobId *string, request *GetCalculationJobRequest) (_result *GetCalculationJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14643,6 +22095,17 @@ func (client *Client) GetCalculationJob(CalculationJobId *string, request *GetCa
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取实验详细信息。
+//
+// @param request - GetExperimentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetExperimentResponse
 func (client *Client) GetExperimentWithOptions(ExperimentId *string, request *GetExperimentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetExperimentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14677,6 +22140,13 @@ func (client *Client) GetExperimentWithOptions(ExperimentId *string, request *Ge
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取实验详细信息。
+//
+// @param request - GetExperimentRequest
+//
+// @return GetExperimentResponse
 func (client *Client) GetExperiment(ExperimentId *string, request *GetExperimentRequest) (_result *GetExperimentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14689,6 +22159,17 @@ func (client *Client) GetExperiment(ExperimentId *string, request *GetExperiment
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取指定实验组详细信息。
+//
+// @param request - GetExperimentGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetExperimentGroupResponse
 func (client *Client) GetExperimentGroupWithOptions(ExperimentGroupId *string, request *GetExperimentGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetExperimentGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14723,6 +22204,13 @@ func (client *Client) GetExperimentGroupWithOptions(ExperimentGroupId *string, r
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取指定实验组详细信息。
+//
+// @param request - GetExperimentGroupRequest
+//
+// @return GetExperimentGroupResponse
 func (client *Client) GetExperimentGroup(ExperimentGroupId *string, request *GetExperimentGroupRequest) (_result *GetExperimentGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14735,6 +22223,17 @@ func (client *Client) GetExperimentGroup(ExperimentGroupId *string, request *Get
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取特征一致性检查任务详细信息。
+//
+// @param request - GetFeatureConsistencyCheckJobRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFeatureConsistencyCheckJobResponse
 func (client *Client) GetFeatureConsistencyCheckJobWithOptions(FeatureConsistencyCheckJobId *string, request *GetFeatureConsistencyCheckJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFeatureConsistencyCheckJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14769,6 +22268,13 @@ func (client *Client) GetFeatureConsistencyCheckJobWithOptions(FeatureConsistenc
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取特征一致性检查任务详细信息。
+//
+// @param request - GetFeatureConsistencyCheckJobRequest
+//
+// @return GetFeatureConsistencyCheckJobResponse
 func (client *Client) GetFeatureConsistencyCheckJob(FeatureConsistencyCheckJobId *string, request *GetFeatureConsistencyCheckJobRequest) (_result *GetFeatureConsistencyCheckJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14781,6 +22287,17 @@ func (client *Client) GetFeatureConsistencyCheckJob(FeatureConsistencyCheckJobId
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取特征一致性检测配置详情。
+//
+// @param request - GetFeatureConsistencyCheckJobConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFeatureConsistencyCheckJobConfigResponse
 func (client *Client) GetFeatureConsistencyCheckJobConfigWithOptions(FeatureConsistencyCheckJobConfigId *string, request *GetFeatureConsistencyCheckJobConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFeatureConsistencyCheckJobConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14815,6 +22332,13 @@ func (client *Client) GetFeatureConsistencyCheckJobConfigWithOptions(FeatureCons
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取特征一致性检测配置详情。
+//
+// @param request - GetFeatureConsistencyCheckJobConfigRequest
+//
+// @return GetFeatureConsistencyCheckJobConfigResponse
 func (client *Client) GetFeatureConsistencyCheckJobConfig(FeatureConsistencyCheckJobConfigId *string, request *GetFeatureConsistencyCheckJobConfigRequest) (_result *GetFeatureConsistencyCheckJobConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14827,6 +22351,15 @@ func (client *Client) GetFeatureConsistencyCheckJobConfig(FeatureConsistencyChec
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取指定推荐全链路深度定制开发平台实例信息。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceResponse
 func (client *Client) GetInstanceWithOptions(InstanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInstanceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -14851,6 +22384,11 @@ func (client *Client) GetInstanceWithOptions(InstanceId *string, headers map[str
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取指定推荐全链路深度定制开发平台实例信息。
+//
+// @return GetInstanceResponse
 func (client *Client) GetInstance(InstanceId *string) (_result *GetInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14863,6 +22401,15 @@ func (client *Client) GetInstance(InstanceId *string) (_result *GetInstanceRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取指定实例下指定资源的详细信息。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceResourceResponse
 func (client *Client) GetInstanceResourceWithOptions(InstanceId *string, ResourceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInstanceResourceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -14887,6 +22434,11 @@ func (client *Client) GetInstanceResourceWithOptions(InstanceId *string, Resourc
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取指定实例下指定资源的详细信息。
+//
+// @return GetInstanceResourceResponse
 func (client *Client) GetInstanceResource(InstanceId *string, ResourceId *string) (_result *GetInstanceResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14899,6 +22451,15 @@ func (client *Client) GetInstanceResource(InstanceId *string, ResourceId *string
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取数据源下指定表的详细信息。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceResourceTableResponse
 func (client *Client) GetInstanceResourceTableWithOptions(InstanceId *string, ResourceId *string, TableName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInstanceResourceTableResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -14923,6 +22484,11 @@ func (client *Client) GetInstanceResourceTableWithOptions(InstanceId *string, Re
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取数据源下指定表的详细信息。
+//
+// @return GetInstanceResourceTableResponse
 func (client *Client) GetInstanceResourceTable(InstanceId *string, ResourceId *string, TableName *string) (_result *GetInstanceResourceTableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14935,6 +22501,17 @@ func (client *Client) GetInstanceResourceTable(InstanceId *string, ResourceId *s
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取实验室详细信息。
+//
+// @param request - GetLaboratoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLaboratoryResponse
 func (client *Client) GetLaboratoryWithOptions(LaboratoryId *string, request *GetLaboratoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetLaboratoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14969,6 +22546,13 @@ func (client *Client) GetLaboratoryWithOptions(LaboratoryId *string, request *Ge
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取实验室详细信息。
+//
+// @param request - GetLaboratoryRequest
+//
+// @return GetLaboratoryResponse
 func (client *Client) GetLaboratory(LaboratoryId *string, request *GetLaboratoryRequest) (_result *GetLaboratoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14981,6 +22565,17 @@ func (client *Client) GetLaboratory(LaboratoryId *string, request *GetLaboratory
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取层详细信息。
+//
+// @param request - GetLayerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLayerResponse
 func (client *Client) GetLayerWithOptions(LayerId *string, request *GetLayerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetLayerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15015,6 +22610,13 @@ func (client *Client) GetLayerWithOptions(LayerId *string, request *GetLayerRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取层详细信息。
+//
+// @param request - GetLayerRequest
+//
+// @return GetLayerResponse
 func (client *Client) GetLayer(LayerId *string, request *GetLayerRequest) (_result *GetLayerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15027,6 +22629,17 @@ func (client *Client) GetLayer(LayerId *string, request *GetLayerRequest) (_resu
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取资源规则详细信息
+//
+// @param request - GetResourceRuleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetResourceRuleResponse
 func (client *Client) GetResourceRuleWithOptions(ResourceRuleId *string, request *GetResourceRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetResourceRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15061,6 +22674,13 @@ func (client *Client) GetResourceRuleWithOptions(ResourceRuleId *string, request
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取资源规则详细信息
+//
+// @param request - GetResourceRuleRequest
+//
+// @return GetResourceRuleResponse
 func (client *Client) GetResourceRule(ResourceRuleId *string, request *GetResourceRuleRequest) (_result *GetResourceRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15073,6 +22693,17 @@ func (client *Client) GetResourceRule(ResourceRuleId *string, request *GetResour
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取场景详细信息
+//
+// @param request - GetSceneRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSceneResponse
 func (client *Client) GetSceneWithOptions(SceneId *string, request *GetSceneRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSceneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15107,6 +22738,13 @@ func (client *Client) GetSceneWithOptions(SceneId *string, request *GetSceneRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取场景详细信息
+//
+// @param request - GetSceneRequest
+//
+// @return GetSceneResponse
 func (client *Client) GetScene(SceneId *string, request *GetSceneRequest) (_result *GetSceneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15119,6 +22757,17 @@ func (client *Client) GetScene(SceneId *string, request *GetSceneRequest) (_resu
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取指定人群下的指定子人群的详细信息。
+//
+// @param request - GetSubCrowdRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSubCrowdResponse
 func (client *Client) GetSubCrowdWithOptions(CrowdId *string, SubCrowdId *string, request *GetSubCrowdRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSubCrowdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15153,6 +22802,13 @@ func (client *Client) GetSubCrowdWithOptions(CrowdId *string, SubCrowdId *string
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取指定人群下的指定子人群的详细信息。
+//
+// @param request - GetSubCrowdRequest
+//
+// @return GetSubCrowdResponse
 func (client *Client) GetSubCrowd(CrowdId *string, SubCrowdId *string, request *GetSubCrowdRequest) (_result *GetSubCrowdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15165,6 +22821,17 @@ func (client *Client) GetSubCrowd(CrowdId *string, SubCrowdId *string, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取数据表详细信息。
+//
+// @param request - GetTableMetaRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTableMetaResponse
 func (client *Client) GetTableMetaWithOptions(TableMetaId *string, request *GetTableMetaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTableMetaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15199,6 +22866,13 @@ func (client *Client) GetTableMetaWithOptions(TableMetaId *string, request *GetT
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取数据表详细信息。
+//
+// @param request - GetTableMetaRequest
+//
+// @return GetTableMetaResponse
 func (client *Client) GetTableMeta(TableMetaId *string, request *GetTableMetaRequest) (_result *GetTableMetaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15211,6 +22885,229 @@ func (client *Client) GetTableMeta(TableMetaId *string, request *GetTableMetaReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取流量调控目标详情
+//
+// @param request - GetTrafficControlTargetRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTrafficControlTargetResponse
+func (client *Client) GetTrafficControlTargetWithOptions(TrafficControlTargetId *string, request *GetTrafficControlTargetRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTrafficControlTargetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTrafficControlTarget"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/trafficcontroltargets/" + tea.StringValue(openapiutil.GetEncodeParam(TrafficControlTargetId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTrafficControlTargetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取流量调控目标详情
+//
+// @param request - GetTrafficControlTargetRequest
+//
+// @return GetTrafficControlTargetResponse
+func (client *Client) GetTrafficControlTarget(TrafficControlTargetId *string, request *GetTrafficControlTargetRequest) (_result *GetTrafficControlTargetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetTrafficControlTargetResponse{}
+	_body, _err := client.GetTrafficControlTargetWithOptions(TrafficControlTargetId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取流量调控任务详情
+//
+// @param request - GetTrafficControlTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTrafficControlTaskResponse
+func (client *Client) GetTrafficControlTaskWithOptions(TrafficControlTaskId *string, request *GetTrafficControlTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTrafficControlTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ControlTargetFilter)) {
+		query["ControlTargetFilter"] = request.ControlTargetFilter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Environment)) {
+		query["Environment"] = request.Environment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTrafficControlTask"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/trafficcontroltasks/" + tea.StringValue(openapiutil.GetEncodeParam(TrafficControlTaskId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTrafficControlTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取流量调控任务详情
+//
+// @param request - GetTrafficControlTaskRequest
+//
+// @return GetTrafficControlTaskResponse
+func (client *Client) GetTrafficControlTask(TrafficControlTaskId *string, request *GetTrafficControlTaskRequest) (_result *GetTrafficControlTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetTrafficControlTaskResponse{}
+	_body, _err := client.GetTrafficControlTaskWithOptions(TrafficControlTaskId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取流量调控任务的流量详情
+//
+// @param request - GetTrafficControlTaskTrafficRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTrafficControlTaskTrafficResponse
+func (client *Client) GetTrafficControlTaskTrafficWithOptions(TrafficControlTaskId *string, request *GetTrafficControlTaskTrafficRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTrafficControlTaskTrafficResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Environment)) {
+		query["Environment"] = request.Environment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTrafficControlTaskTraffic"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/trafficcontroltasks/" + tea.StringValue(openapiutil.GetEncodeParam(TrafficControlTaskId)) + "/action/traffic"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTrafficControlTaskTrafficResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取流量调控任务的流量详情
+//
+// @param request - GetTrafficControlTaskTrafficRequest
+//
+// @return GetTrafficControlTaskTrafficResponse
+func (client *Client) GetTrafficControlTaskTraffic(TrafficControlTaskId *string, request *GetTrafficControlTaskTrafficRequest) (_result *GetTrafficControlTaskTrafficResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetTrafficControlTaskTrafficResponse{}
+	_body, _err := client.GetTrafficControlTaskTrafficWithOptions(TrafficControlTaskId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取AB Test实验指标组列表。
+//
+// @param request - ListABMetricGroupsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListABMetricGroupsResponse
 func (client *Client) ListABMetricGroupsWithOptions(request *ListABMetricGroupsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListABMetricGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15269,6 +23166,13 @@ func (client *Client) ListABMetricGroupsWithOptions(request *ListABMetricGroupsR
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取AB Test实验指标组列表。
+//
+// @param request - ListABMetricGroupsRequest
+//
+// @return ListABMetricGroupsResponse
 func (client *Client) ListABMetricGroups(request *ListABMetricGroupsRequest) (_result *ListABMetricGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15281,6 +23185,17 @@ func (client *Client) ListABMetricGroups(request *ListABMetricGroupsRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取AB Test实验指标列表。
+//
+// @param request - ListABMetricsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListABMetricsResponse
 func (client *Client) ListABMetricsWithOptions(request *ListABMetricsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListABMetricsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15343,6 +23258,13 @@ func (client *Client) ListABMetricsWithOptions(request *ListABMetricsRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取AB Test实验指标列表。
+//
+// @param request - ListABMetricsRequest
+//
+// @return ListABMetricsResponse
 func (client *Client) ListABMetrics(request *ListABMetricsRequest) (_result *ListABMetricsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15355,6 +23277,17 @@ func (client *Client) ListABMetrics(request *ListABMetricsRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取计算任务列表。
+//
+// @param request - ListCalculationJobsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCalculationJobsResponse
 func (client *Client) ListCalculationJobsWithOptions(request *ListCalculationJobsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListCalculationJobsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15405,6 +23338,13 @@ func (client *Client) ListCalculationJobsWithOptions(request *ListCalculationJob
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取计算任务列表。
+//
+// @param request - ListCalculationJobsRequest
+//
+// @return ListCalculationJobsResponse
 func (client *Client) ListCalculationJobs(request *ListCalculationJobsRequest) (_result *ListCalculationJobsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15417,6 +23357,17 @@ func (client *Client) ListCalculationJobs(request *ListCalculationJobsRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取人群下的所有用户。
+//
+// @param request - ListCrowdUsersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCrowdUsersResponse
 func (client *Client) ListCrowdUsersWithOptions(CrowdId *string, request *ListCrowdUsersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListCrowdUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15451,6 +23402,13 @@ func (client *Client) ListCrowdUsersWithOptions(CrowdId *string, request *ListCr
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取人群下的所有用户。
+//
+// @param request - ListCrowdUsersRequest
+//
+// @return ListCrowdUsersResponse
 func (client *Client) ListCrowdUsers(CrowdId *string, request *ListCrowdUsersRequest) (_result *ListCrowdUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15463,6 +23421,17 @@ func (client *Client) ListCrowdUsers(CrowdId *string, request *ListCrowdUsersReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取人群列表。
+//
+// @param request - ListCrowdsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCrowdsResponse
 func (client *Client) ListCrowdsWithOptions(request *ListCrowdsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListCrowdsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15497,6 +23466,13 @@ func (client *Client) ListCrowdsWithOptions(request *ListCrowdsRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取人群列表。
+//
+// @param request - ListCrowdsRequest
+//
+// @return ListCrowdsResponse
 func (client *Client) ListCrowds(request *ListCrowdsRequest) (_result *ListCrowdsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15509,6 +23485,17 @@ func (client *Client) ListCrowds(request *ListCrowdsRequest) (_result *ListCrowd
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取实验组列表。
+//
+// @param request - ListExperimentGroupsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListExperimentGroupsResponse
 func (client *Client) ListExperimentGroupsWithOptions(request *ListExperimentGroupsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListExperimentGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15555,6 +23542,13 @@ func (client *Client) ListExperimentGroupsWithOptions(request *ListExperimentGro
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取实验组列表。
+//
+// @param request - ListExperimentGroupsRequest
+//
+// @return ListExperimentGroupsResponse
 func (client *Client) ListExperimentGroups(request *ListExperimentGroupsRequest) (_result *ListExperimentGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15567,6 +23561,17 @@ func (client *Client) ListExperimentGroups(request *ListExperimentGroupsRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取实验列表。
+//
+// @param request - ListExperimentsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListExperimentsResponse
 func (client *Client) ListExperimentsWithOptions(request *ListExperimentsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListExperimentsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15613,6 +23618,13 @@ func (client *Client) ListExperimentsWithOptions(request *ListExperimentsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取实验列表。
+//
+// @param request - ListExperimentsRequest
+//
+// @return ListExperimentsResponse
 func (client *Client) ListExperiments(request *ListExperimentsRequest) (_result *ListExperimentsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15625,6 +23637,17 @@ func (client *Client) ListExperiments(request *ListExperimentsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取特征一致性检查配置列表。
+//
+// @param request - ListFeatureConsistencyCheckJobConfigsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFeatureConsistencyCheckJobConfigsResponse
 func (client *Client) ListFeatureConsistencyCheckJobConfigsWithOptions(request *ListFeatureConsistencyCheckJobConfigsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFeatureConsistencyCheckJobConfigsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15675,6 +23698,13 @@ func (client *Client) ListFeatureConsistencyCheckJobConfigsWithOptions(request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取特征一致性检查配置列表。
+//
+// @param request - ListFeatureConsistencyCheckJobConfigsRequest
+//
+// @return ListFeatureConsistencyCheckJobConfigsResponse
 func (client *Client) ListFeatureConsistencyCheckJobConfigs(request *ListFeatureConsistencyCheckJobConfigsRequest) (_result *ListFeatureConsistencyCheckJobConfigsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15687,6 +23717,17 @@ func (client *Client) ListFeatureConsistencyCheckJobConfigs(request *ListFeature
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取特征一致性检查任务的特征报表/比对结果。
+//
+// @param request - ListFeatureConsistencyCheckJobFeatureReportsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFeatureConsistencyCheckJobFeatureReportsResponse
 func (client *Client) ListFeatureConsistencyCheckJobFeatureReportsWithOptions(FeatureConsistencyCheckJobId *string, request *ListFeatureConsistencyCheckJobFeatureReportsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFeatureConsistencyCheckJobFeatureReportsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15733,6 +23774,13 @@ func (client *Client) ListFeatureConsistencyCheckJobFeatureReportsWithOptions(Fe
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取特征一致性检查任务的特征报表/比对结果。
+//
+// @param request - ListFeatureConsistencyCheckJobFeatureReportsRequest
+//
+// @return ListFeatureConsistencyCheckJobFeatureReportsResponse
 func (client *Client) ListFeatureConsistencyCheckJobFeatureReports(FeatureConsistencyCheckJobId *string, request *ListFeatureConsistencyCheckJobFeatureReportsRequest) (_result *ListFeatureConsistencyCheckJobFeatureReportsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15745,6 +23793,17 @@ func (client *Client) ListFeatureConsistencyCheckJobFeatureReports(FeatureConsis
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取特征一致性检查任务分数报表/比对结果。
+//
+// @param tmpReq - ListFeatureConsistencyCheckJobScoreReportsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFeatureConsistencyCheckJobScoreReportsResponse
 func (client *Client) ListFeatureConsistencyCheckJobScoreReportsWithOptions(FeatureConsistencyCheckJobId *string, tmpReq *ListFeatureConsistencyCheckJobScoreReportsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFeatureConsistencyCheckJobScoreReportsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -15789,6 +23848,13 @@ func (client *Client) ListFeatureConsistencyCheckJobScoreReportsWithOptions(Feat
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取特征一致性检查任务分数报表/比对结果。
+//
+// @param request - ListFeatureConsistencyCheckJobScoreReportsRequest
+//
+// @return ListFeatureConsistencyCheckJobScoreReportsResponse
 func (client *Client) ListFeatureConsistencyCheckJobScoreReports(FeatureConsistencyCheckJobId *string, request *ListFeatureConsistencyCheckJobScoreReportsRequest) (_result *ListFeatureConsistencyCheckJobScoreReportsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15801,6 +23867,17 @@ func (client *Client) ListFeatureConsistencyCheckJobScoreReports(FeatureConsiste
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取特征一致性检查任务列表。
+//
+// @param request - ListFeatureConsistencyCheckJobsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFeatureConsistencyCheckJobsResponse
 func (client *Client) ListFeatureConsistencyCheckJobsWithOptions(request *ListFeatureConsistencyCheckJobsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFeatureConsistencyCheckJobsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15855,6 +23932,13 @@ func (client *Client) ListFeatureConsistencyCheckJobsWithOptions(request *ListFe
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取特征一致性检查任务列表。
+//
+// @param request - ListFeatureConsistencyCheckJobsRequest
+//
+// @return ListFeatureConsistencyCheckJobsResponse
 func (client *Client) ListFeatureConsistencyCheckJobs(request *ListFeatureConsistencyCheckJobsRequest) (_result *ListFeatureConsistencyCheckJobsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15867,6 +23951,17 @@ func (client *Client) ListFeatureConsistencyCheckJobs(request *ListFeatureConsis
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取实例下配置的资源列表。
+//
+// @param request - ListInstanceResourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstanceResourcesResponse
 func (client *Client) ListInstanceResourcesWithOptions(InstanceId *string, request *ListInstanceResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInstanceResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15909,6 +24004,13 @@ func (client *Client) ListInstanceResourcesWithOptions(InstanceId *string, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取实例下配置的资源列表。
+//
+// @param request - ListInstanceResourcesRequest
+//
+// @return ListInstanceResourcesResponse
 func (client *Client) ListInstanceResources(InstanceId *string, request *ListInstanceResourcesRequest) (_result *ListInstanceResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15921,6 +24023,17 @@ func (client *Client) ListInstanceResources(InstanceId *string, request *ListIns
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取推荐全链路深度定制开发平台实例信息列表。
+//
+// @param request - ListInstancesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstancesResponse
 func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15975,6 +24088,13 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取推荐全链路深度定制开发平台实例信息列表。
+//
+// @param request - ListInstancesRequest
+//
+// @return ListInstancesResponse
 func (client *Client) ListInstances(request *ListInstancesRequest) (_result *ListInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15987,6 +24107,17 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取实验室列表。
+//
+// @param request - ListLaboratoriesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListLaboratoriesResponse
 func (client *Client) ListLaboratoriesWithOptions(request *ListLaboratoriesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListLaboratoriesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16033,6 +24164,13 @@ func (client *Client) ListLaboratoriesWithOptions(request *ListLaboratoriesReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取实验室列表。
+//
+// @param request - ListLaboratoriesRequest
+//
+// @return ListLaboratoriesResponse
 func (client *Client) ListLaboratories(request *ListLaboratoriesRequest) (_result *ListLaboratoriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16045,6 +24183,17 @@ func (client *Client) ListLaboratories(request *ListLaboratoriesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取层列表。
+//
+// @param request - ListLayersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListLayersResponse
 func (client *Client) ListLayersWithOptions(request *ListLayersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListLayersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16083,6 +24232,13 @@ func (client *Client) ListLayersWithOptions(request *ListLayersRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取层列表。
+//
+// @param request - ListLayersRequest
+//
+// @return ListLayersResponse
 func (client *Client) ListLayers(request *ListLayersRequest) (_result *ListLayersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16095,6 +24251,17 @@ func (client *Client) ListLayers(request *ListLayersRequest) (_result *ListLayer
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取参数列表。
+//
+// @param request - ListParamsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListParamsResponse
 func (client *Client) ListParamsWithOptions(request *ListParamsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListParamsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16149,6 +24316,13 @@ func (client *Client) ListParamsWithOptions(request *ListParamsRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取参数列表。
+//
+// @param request - ListParamsRequest
+//
+// @return ListParamsResponse
 func (client *Client) ListParams(request *ListParamsRequest) (_result *ListParamsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16161,6 +24335,17 @@ func (client *Client) ListParams(request *ListParamsRequest) (_result *ListParam
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取资源规则列表
+//
+// @param request - ListResourceRulesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListResourceRulesResponse
 func (client *Client) ListResourceRulesWithOptions(request *ListResourceRulesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListResourceRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16223,6 +24408,13 @@ func (client *Client) ListResourceRulesWithOptions(request *ListResourceRulesReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取资源规则列表
+//
+// @param request - ListResourceRulesRequest
+//
+// @return ListResourceRulesResponse
 func (client *Client) ListResourceRules(request *ListResourceRulesRequest) (_result *ListResourceRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16235,6 +24427,17 @@ func (client *Client) ListResourceRules(request *ListResourceRulesRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取场景列表
+//
+// @param request - ListScenesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListScenesResponse
 func (client *Client) ListScenesWithOptions(request *ListScenesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListScenesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16273,6 +24476,13 @@ func (client *Client) ListScenesWithOptions(request *ListScenesRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取场景列表
+//
+// @param request - ListScenesRequest
+//
+// @return ListScenesResponse
 func (client *Client) ListScenes(request *ListScenesRequest) (_result *ListScenesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16285,6 +24495,17 @@ func (client *Client) ListScenes(request *ListScenesRequest) (_result *ListScene
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取人群下的所有子人群。
+//
+// @param request - ListSubCrowdsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSubCrowdsResponse
 func (client *Client) ListSubCrowdsWithOptions(CrowdId *string, request *ListSubCrowdsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSubCrowdsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16319,6 +24540,13 @@ func (client *Client) ListSubCrowdsWithOptions(CrowdId *string, request *ListSub
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取人群下的所有子人群。
+//
+// @param request - ListSubCrowdsRequest
+//
+// @return ListSubCrowdsResponse
 func (client *Client) ListSubCrowds(CrowdId *string, request *ListSubCrowdsRequest) (_result *ListSubCrowdsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16331,6 +24559,17 @@ func (client *Client) ListSubCrowds(CrowdId *string, request *ListSubCrowdsReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取数据表列表。
+//
+// @param request - ListTableMetasRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTableMetasResponse
 func (client *Client) ListTableMetasWithOptions(request *ListTableMetasRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTableMetasResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16385,6 +24624,13 @@ func (client *Client) ListTableMetasWithOptions(request *ListTableMetasRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取数据表列表。
+//
+// @param request - ListTableMetasRequest
+//
+// @return ListTableMetasResponse
 func (client *Client) ListTableMetas(request *ListTableMetasRequest) (_result *ListTableMetasResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16397,6 +24643,221 @@ func (client *Client) ListTableMetas(request *ListTableMetasRequest) (_result *L
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取流量调控任务流量变更的历史列表
+//
+// @param request - ListTrafficControlTargetTrafficHistoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTrafficControlTargetTrafficHistoryResponse
+func (client *Client) ListTrafficControlTargetTrafficHistoryWithOptions(TrafficControlTargetId *string, request *ListTrafficControlTargetTrafficHistoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTrafficControlTargetTrafficHistoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Environment)) {
+		query["Environment"] = request.Environment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExperimentGroupId)) {
+		query["ExperimentGroupId"] = request.ExperimentGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExperimentId)) {
+		query["ExperimentId"] = request.ExperimentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ItemId)) {
+		query["ItemId"] = request.ItemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Threshold)) {
+		query["Threshold"] = request.Threshold
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTrafficControlTargetTrafficHistory"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/trafficcontroltargets/" + tea.StringValue(openapiutil.GetEncodeParam(TrafficControlTargetId)) + "/action/traffichistory"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTrafficControlTargetTrafficHistoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取流量调控任务流量变更的历史列表
+//
+// @param request - ListTrafficControlTargetTrafficHistoryRequest
+//
+// @return ListTrafficControlTargetTrafficHistoryResponse
+func (client *Client) ListTrafficControlTargetTrafficHistory(TrafficControlTargetId *string, request *ListTrafficControlTargetTrafficHistoryRequest) (_result *ListTrafficControlTargetTrafficHistoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListTrafficControlTargetTrafficHistoryResponse{}
+	_body, _err := client.ListTrafficControlTargetTrafficHistoryWithOptions(TrafficControlTargetId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取流量调控列表
+//
+// @param request - ListTrafficControlTasksRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTrafficControlTasksResponse
+func (client *Client) ListTrafficControlTasksWithOptions(request *ListTrafficControlTasksRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTrafficControlTasksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.All)) {
+		query["All"] = request.All
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ControlTargetFilter)) {
+		query["ControlTargetFilter"] = request.ControlTargetFilter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Environment)) {
+		query["Environment"] = request.Environment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		query["SceneId"] = request.SceneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficControlTaskId)) {
+		query["TrafficControlTaskId"] = request.TrafficControlTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTrafficControlTasks"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/trafficcontroltasks"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTrafficControlTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取流量调控列表
+//
+// @param request - ListTrafficControlTasksRequest
+//
+// @return ListTrafficControlTasksResponse
+func (client *Client) ListTrafficControlTasks(request *ListTrafficControlTasksRequest) (_result *ListTrafficControlTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListTrafficControlTasksResponse{}
+	_body, _err := client.ListTrafficControlTasksWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 上线实验。
+//
+// @param request - OfflineExperimentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OfflineExperimentResponse
 func (client *Client) OfflineExperimentWithOptions(ExperimentId *string, request *OfflineExperimentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OfflineExperimentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16431,6 +24892,13 @@ func (client *Client) OfflineExperimentWithOptions(ExperimentId *string, request
 	return _result, _err
 }
 
+// Summary:
+//
+// 上线实验。
+//
+// @param request - OfflineExperimentRequest
+//
+// @return OfflineExperimentResponse
 func (client *Client) OfflineExperiment(ExperimentId *string, request *OfflineExperimentRequest) (_result *OfflineExperimentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16443,6 +24911,17 @@ func (client *Client) OfflineExperiment(ExperimentId *string, request *OfflineEx
 	return _result, _err
 }
 
+// Summary:
+//
+// 下线实验组。
+//
+// @param request - OfflineExperimentGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OfflineExperimentGroupResponse
 func (client *Client) OfflineExperimentGroupWithOptions(ExperimentGroupId *string, request *OfflineExperimentGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OfflineExperimentGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16477,6 +24956,13 @@ func (client *Client) OfflineExperimentGroupWithOptions(ExperimentGroupId *strin
 	return _result, _err
 }
 
+// Summary:
+//
+// 下线实验组。
+//
+// @param request - OfflineExperimentGroupRequest
+//
+// @return OfflineExperimentGroupResponse
 func (client *Client) OfflineExperimentGroup(ExperimentGroupId *string, request *OfflineExperimentGroupRequest) (_result *OfflineExperimentGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16489,6 +24975,17 @@ func (client *Client) OfflineExperimentGroup(ExperimentGroupId *string, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// 下线实验室。
+//
+// @param request - OfflineLaboratoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OfflineLaboratoryResponse
 func (client *Client) OfflineLaboratoryWithOptions(LaboratoryId *string, request *OfflineLaboratoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OfflineLaboratoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16523,6 +25020,13 @@ func (client *Client) OfflineLaboratoryWithOptions(LaboratoryId *string, request
 	return _result, _err
 }
 
+// Summary:
+//
+// 下线实验室。
+//
+// @param request - OfflineLaboratoryRequest
+//
+// @return OfflineLaboratoryResponse
 func (client *Client) OfflineLaboratory(LaboratoryId *string, request *OfflineLaboratoryRequest) (_result *OfflineLaboratoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16535,6 +25039,17 @@ func (client *Client) OfflineLaboratory(LaboratoryId *string, request *OfflineLa
 	return _result, _err
 }
 
+// Summary:
+//
+// 上线实验
+//
+// @param request - OnlineExperimentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OnlineExperimentResponse
 func (client *Client) OnlineExperimentWithOptions(ExperimentId *string, request *OnlineExperimentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OnlineExperimentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16569,6 +25084,13 @@ func (client *Client) OnlineExperimentWithOptions(ExperimentId *string, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// 上线实验
+//
+// @param request - OnlineExperimentRequest
+//
+// @return OnlineExperimentResponse
 func (client *Client) OnlineExperiment(ExperimentId *string, request *OnlineExperimentRequest) (_result *OnlineExperimentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16581,6 +25103,17 @@ func (client *Client) OnlineExperiment(ExperimentId *string, request *OnlineExpe
 	return _result, _err
 }
 
+// Summary:
+//
+// 上线实验组。
+//
+// @param request - OnlineExperimentGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OnlineExperimentGroupResponse
 func (client *Client) OnlineExperimentGroupWithOptions(ExperimentGroupId *string, request *OnlineExperimentGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OnlineExperimentGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16615,6 +25148,13 @@ func (client *Client) OnlineExperimentGroupWithOptions(ExperimentGroupId *string
 	return _result, _err
 }
 
+// Summary:
+//
+// 上线实验组。
+//
+// @param request - OnlineExperimentGroupRequest
+//
+// @return OnlineExperimentGroupResponse
 func (client *Client) OnlineExperimentGroup(ExperimentGroupId *string, request *OnlineExperimentGroupRequest) (_result *OnlineExperimentGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16627,6 +25167,17 @@ func (client *Client) OnlineExperimentGroup(ExperimentGroupId *string, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 上线实验室。
+//
+// @param request - OnlineLaboratoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OnlineLaboratoryResponse
 func (client *Client) OnlineLaboratoryWithOptions(LaboratoryId *string, request *OnlineLaboratoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OnlineLaboratoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16661,6 +25212,13 @@ func (client *Client) OnlineLaboratoryWithOptions(LaboratoryId *string, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// 上线实验室。
+//
+// @param request - OnlineLaboratoryRequest
+//
+// @return OnlineLaboratoryResponse
 func (client *Client) OnlineLaboratory(LaboratoryId *string, request *OnlineLaboratoryRequest) (_result *OnlineLaboratoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16673,6 +25231,17 @@ func (client *Client) OnlineLaboratory(LaboratoryId *string, request *OnlineLabo
 	return _result, _err
 }
 
+// Summary:
+//
+// 推全。
+//
+// @param request - PushAllExperimentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PushAllExperimentResponse
 func (client *Client) PushAllExperimentWithOptions(ExperimentId *string, request *PushAllExperimentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PushAllExperimentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16707,6 +25276,13 @@ func (client *Client) PushAllExperimentWithOptions(ExperimentId *string, request
 	return _result, _err
 }
 
+// Summary:
+//
+// 推全。
+//
+// @param request - PushAllExperimentRequest
+//
+// @return PushAllExperimentResponse
 func (client *Client) PushAllExperiment(ExperimentId *string, request *PushAllExperimentRequest) (_result *PushAllExperimentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16719,6 +25295,17 @@ func (client *Client) PushAllExperiment(ExperimentId *string, request *PushAllEx
 	return _result, _err
 }
 
+// Summary:
+//
+// 推送指标到指定资源规则
+//
+// @param tmpReq - PushResourceRuleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PushResourceRuleResponse
 func (client *Client) PushResourceRuleWithOptions(ResourceRuleId *string, tmpReq *PushResourceRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PushResourceRuleResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -16763,6 +25350,13 @@ func (client *Client) PushResourceRuleWithOptions(ResourceRuleId *string, tmpReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 推送指标到指定资源规则
+//
+// @param request - PushResourceRuleRequest
+//
+// @return PushResourceRuleResponse
 func (client *Client) PushResourceRule(ResourceRuleId *string, request *PushResourceRuleRequest) (_result *PushResourceRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16775,6 +25369,85 @@ func (client *Client) PushResourceRule(ResourceRuleId *string, request *PushReso
 	return _result, _err
 }
 
+// Summary:
+//
+// 发布流量调控任务
+//
+// @param request - ReleaseTrafficControlTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReleaseTrafficControlTaskResponse
+func (client *Client) ReleaseTrafficControlTaskWithOptions(TrafficControlTaskId *string, request *ReleaseTrafficControlTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ReleaseTrafficControlTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Environment)) {
+		body["Environment"] = request.Environment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReleaseTrafficControlTask"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/trafficcontroltasks/" + tea.StringValue(openapiutil.GetEncodeParam(TrafficControlTaskId)) + "/action/release"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReleaseTrafficControlTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 发布流量调控任务
+//
+// @param request - ReleaseTrafficControlTaskRequest
+//
+// @return ReleaseTrafficControlTaskResponse
+func (client *Client) ReleaseTrafficControlTask(TrafficControlTaskId *string, request *ReleaseTrafficControlTaskRequest) (_result *ReleaseTrafficControlTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ReleaseTrafficControlTaskResponse{}
+	_body, _err := client.ReleaseTrafficControlTaskWithOptions(TrafficControlTaskId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 对指标组进行报表。
+//
+// @param request - ReportABMetricGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReportABMetricGroupResponse
 func (client *Client) ReportABMetricGroupWithOptions(ABMetricGroupId *string, request *ReportABMetricGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ReportABMetricGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16845,6 +25518,13 @@ func (client *Client) ReportABMetricGroupWithOptions(ABMetricGroupId *string, re
 	return _result, _err
 }
 
+// Summary:
+//
+// 对指标组进行报表。
+//
+// @param request - ReportABMetricGroupRequest
+//
+// @return ReportABMetricGroupResponse
 func (client *Client) ReportABMetricGroup(ABMetricGroupId *string, request *ReportABMetricGroupRequest) (_result *ReportABMetricGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16857,6 +25537,363 @@ func (client *Client) ReportABMetricGroup(ABMetricGroupId *string, request *Repo
 	return _result, _err
 }
 
+// Summary:
+//
+// 拆分流量调控目标
+//
+// @param request - SplitTrafficControlTargetRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SplitTrafficControlTargetResponse
+func (client *Client) SplitTrafficControlTargetWithOptions(TrafficControlTargetId *string, request *SplitTrafficControlTargetRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SplitTrafficControlTargetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Environment)) {
+		body["Environment"] = request.Environment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SetValues)) {
+		body["SetValues"] = request.SetValues
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimePoints)) {
+		body["TimePoints"] = request.TimePoints
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SplitTrafficControlTarget"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/trafficcontroltargets/" + tea.StringValue(openapiutil.GetEncodeParam(TrafficControlTargetId)) + "/action/split"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SplitTrafficControlTargetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 拆分流量调控目标
+//
+// @param request - SplitTrafficControlTargetRequest
+//
+// @return SplitTrafficControlTargetResponse
+func (client *Client) SplitTrafficControlTarget(TrafficControlTargetId *string, request *SplitTrafficControlTargetRequest) (_result *SplitTrafficControlTargetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SplitTrafficControlTargetResponse{}
+	_body, _err := client.SplitTrafficControlTargetWithOptions(TrafficControlTargetId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 开启流量调控目标
+//
+// @param request - StartTrafficControlTargetRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartTrafficControlTargetResponse
+func (client *Client) StartTrafficControlTargetWithOptions(TrafficControlTargetId *string, request *StartTrafficControlTargetRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartTrafficControlTargetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartTrafficControlTarget"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/trafficcontroltargets/" + tea.StringValue(openapiutil.GetEncodeParam(TrafficControlTargetId)) + "/action/start"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartTrafficControlTargetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 开启流量调控目标
+//
+// @param request - StartTrafficControlTargetRequest
+//
+// @return StartTrafficControlTargetResponse
+func (client *Client) StartTrafficControlTarget(TrafficControlTargetId *string, request *StartTrafficControlTargetRequest) (_result *StartTrafficControlTargetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StartTrafficControlTargetResponse{}
+	_body, _err := client.StartTrafficControlTargetWithOptions(TrafficControlTargetId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 开启流量调控任务
+//
+// @param request - StartTrafficControlTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartTrafficControlTaskResponse
+func (client *Client) StartTrafficControlTaskWithOptions(TrafficControlTaskId *string, request *StartTrafficControlTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartTrafficControlTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Environment)) {
+		body["Environment"] = request.Environment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartTrafficControlTask"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/trafficcontroltasks/" + tea.StringValue(openapiutil.GetEncodeParam(TrafficControlTaskId)) + "/action/start"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartTrafficControlTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 开启流量调控任务
+//
+// @param request - StartTrafficControlTaskRequest
+//
+// @return StartTrafficControlTaskResponse
+func (client *Client) StartTrafficControlTask(TrafficControlTaskId *string, request *StartTrafficControlTaskRequest) (_result *StartTrafficControlTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StartTrafficControlTaskResponse{}
+	_body, _err := client.StartTrafficControlTaskWithOptions(TrafficControlTaskId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止流量调控目标
+//
+// @param request - StopTrafficControlTargetRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopTrafficControlTargetResponse
+func (client *Client) StopTrafficControlTargetWithOptions(TrafficControlTargetId *string, request *StopTrafficControlTargetRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopTrafficControlTargetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopTrafficControlTarget"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/trafficcontroltargets/" + tea.StringValue(openapiutil.GetEncodeParam(TrafficControlTargetId)) + "/action/stop"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopTrafficControlTargetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止流量调控目标
+//
+// @param request - StopTrafficControlTargetRequest
+//
+// @return StopTrafficControlTargetResponse
+func (client *Client) StopTrafficControlTarget(TrafficControlTargetId *string, request *StopTrafficControlTargetRequest) (_result *StopTrafficControlTargetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StopTrafficControlTargetResponse{}
+	_body, _err := client.StopTrafficControlTargetWithOptions(TrafficControlTargetId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止流量调控任务
+//
+// @param request - StopTrafficControlTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopTrafficControlTaskResponse
+func (client *Client) StopTrafficControlTaskWithOptions(TrafficControlTaskId *string, request *StopTrafficControlTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopTrafficControlTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Environment)) {
+		body["Environment"] = request.Environment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopTrafficControlTask"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/trafficcontroltasks/" + tea.StringValue(openapiutil.GetEncodeParam(TrafficControlTaskId)) + "/action/stop"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopTrafficControlTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止流量调控任务
+//
+// @param request - StopTrafficControlTaskRequest
+//
+// @return StopTrafficControlTaskResponse
+func (client *Client) StopTrafficControlTask(TrafficControlTaskId *string, request *StopTrafficControlTaskRequest) (_result *StopTrafficControlTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StopTrafficControlTaskResponse{}
+	_body, _err := client.StopTrafficControlTaskWithOptions(TrafficControlTaskId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 同步特征一致性检测任务重放日志。
+//
+// @param request - SyncFeatureConsistencyCheckJobReplayLogRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SyncFeatureConsistencyCheckJobReplayLogResponse
 func (client *Client) SyncFeatureConsistencyCheckJobReplayLogWithOptions(request *SyncFeatureConsistencyCheckJobReplayLogRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SyncFeatureConsistencyCheckJobReplayLogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16927,6 +25964,13 @@ func (client *Client) SyncFeatureConsistencyCheckJobReplayLogWithOptions(request
 	return _result, _err
 }
 
+// Summary:
+//
+// 同步特征一致性检测任务重放日志。
+//
+// @param request - SyncFeatureConsistencyCheckJobReplayLogRequest
+//
+// @return SyncFeatureConsistencyCheckJobReplayLogResponse
 func (client *Client) SyncFeatureConsistencyCheckJobReplayLog(request *SyncFeatureConsistencyCheckJobReplayLogRequest) (_result *SyncFeatureConsistencyCheckJobReplayLogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16939,6 +25983,17 @@ func (client *Client) SyncFeatureConsistencyCheckJobReplayLog(request *SyncFeatu
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消指定特征一致性检查正在运行中的任务。
+//
+// @param request - TerminateFeatureConsistencyCheckJobRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TerminateFeatureConsistencyCheckJobResponse
 func (client *Client) TerminateFeatureConsistencyCheckJobWithOptions(FeatureConsistencyCheckJobId *string, request *TerminateFeatureConsistencyCheckJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *TerminateFeatureConsistencyCheckJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16973,6 +26028,13 @@ func (client *Client) TerminateFeatureConsistencyCheckJobWithOptions(FeatureCons
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消指定特征一致性检查正在运行中的任务。
+//
+// @param request - TerminateFeatureConsistencyCheckJobRequest
+//
+// @return TerminateFeatureConsistencyCheckJobResponse
 func (client *Client) TerminateFeatureConsistencyCheckJob(FeatureConsistencyCheckJobId *string, request *TerminateFeatureConsistencyCheckJobRequest) (_result *TerminateFeatureConsistencyCheckJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16985,6 +26047,17 @@ func (client *Client) TerminateFeatureConsistencyCheckJob(FeatureConsistencyChec
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新AB Test实验指标。
+//
+// @param request - UpdateABMetricRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateABMetricResponse
 func (client *Client) UpdateABMetricWithOptions(ABMetricId *string, request *UpdateABMetricRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateABMetricResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17067,6 +26140,13 @@ func (client *Client) UpdateABMetricWithOptions(ABMetricId *string, request *Upd
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新AB Test实验指标。
+//
+// @param request - UpdateABMetricRequest
+//
+// @return UpdateABMetricResponse
 func (client *Client) UpdateABMetric(ABMetricId *string, request *UpdateABMetricRequest) (_result *UpdateABMetricResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17079,6 +26159,17 @@ func (client *Client) UpdateABMetric(ABMetricId *string, request *UpdateABMetric
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新AB test实验指标组。
+//
+// @param request - UpdateABMetricGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateABMetricGroupResponse
 func (client *Client) UpdateABMetricGroupWithOptions(ABMetricGroupId *string, request *UpdateABMetricGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateABMetricGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17133,6 +26224,13 @@ func (client *Client) UpdateABMetricGroupWithOptions(ABMetricGroupId *string, re
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新AB test实验指标组。
+//
+// @param request - UpdateABMetricGroupRequest
+//
+// @return UpdateABMetricGroupResponse
 func (client *Client) UpdateABMetricGroup(ABMetricGroupId *string, request *UpdateABMetricGroupRequest) (_result *UpdateABMetricGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17145,6 +26243,17 @@ func (client *Client) UpdateABMetricGroup(ABMetricGroupId *string, request *Upda
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新指定人群。
+//
+// @param request - UpdateCrowdRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCrowdResponse
 func (client *Client) UpdateCrowdWithOptions(CrowdId *string, request *UpdateCrowdRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateCrowdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17187,6 +26296,13 @@ func (client *Client) UpdateCrowdWithOptions(CrowdId *string, request *UpdateCro
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新指定人群。
+//
+// @param request - UpdateCrowdRequest
+//
+// @return UpdateCrowdResponse
 func (client *Client) UpdateCrowd(CrowdId *string, request *UpdateCrowdRequest) (_result *UpdateCrowdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17199,6 +26315,17 @@ func (client *Client) UpdateCrowd(CrowdId *string, request *UpdateCrowdRequest) 
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新实验。
+//
+// @param request - UpdateExperimentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateExperimentResponse
 func (client *Client) UpdateExperimentWithOptions(ExperimentId *string, request *UpdateExperimentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateExperimentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17261,6 +26388,13 @@ func (client *Client) UpdateExperimentWithOptions(ExperimentId *string, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新实验。
+//
+// @param request - UpdateExperimentRequest
+//
+// @return UpdateExperimentResponse
 func (client *Client) UpdateExperiment(ExperimentId *string, request *UpdateExperimentRequest) (_result *UpdateExperimentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17273,6 +26407,17 @@ func (client *Client) UpdateExperiment(ExperimentId *string, request *UpdateExpe
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新指定实验组。
+//
+// @param request - UpdateExperimentGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateExperimentGroupResponse
 func (client *Client) UpdateExperimentGroupWithOptions(ExperimentGroupId *string, request *UpdateExperimentGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateExperimentGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17363,6 +26508,13 @@ func (client *Client) UpdateExperimentGroupWithOptions(ExperimentGroupId *string
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新指定实验组。
+//
+// @param request - UpdateExperimentGroupRequest
+//
+// @return UpdateExperimentGroupResponse
 func (client *Client) UpdateExperimentGroup(ExperimentGroupId *string, request *UpdateExperimentGroupRequest) (_result *UpdateExperimentGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17375,6 +26527,17 @@ func (client *Client) UpdateExperimentGroup(ExperimentGroupId *string, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新特征一致性检查配置信息。
+//
+// @param request - UpdateFeatureConsistencyCheckJobConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateFeatureConsistencyCheckJobConfigResponse
 func (client *Client) UpdateFeatureConsistencyCheckJobConfigWithOptions(FeatureConsistencyCheckJobConfigId *string, request *UpdateFeatureConsistencyCheckJobConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateFeatureConsistencyCheckJobConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17533,6 +26696,13 @@ func (client *Client) UpdateFeatureConsistencyCheckJobConfigWithOptions(FeatureC
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新特征一致性检查配置信息。
+//
+// @param request - UpdateFeatureConsistencyCheckJobConfigRequest
+//
+// @return UpdateFeatureConsistencyCheckJobConfigResponse
 func (client *Client) UpdateFeatureConsistencyCheckJobConfig(FeatureConsistencyCheckJobConfigId *string, request *UpdateFeatureConsistencyCheckJobConfigRequest) (_result *UpdateFeatureConsistencyCheckJobConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17545,6 +26715,17 @@ func (client *Client) UpdateFeatureConsistencyCheckJobConfig(FeatureConsistencyC
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新指定实例下指定资源的信息。
+//
+// @param request - UpdateInstanceResourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateInstanceResourceResponse
 func (client *Client) UpdateInstanceResourceWithOptions(InstanceId *string, ResourceId *string, request *UpdateInstanceResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateInstanceResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17583,6 +26764,13 @@ func (client *Client) UpdateInstanceResourceWithOptions(InstanceId *string, Reso
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新指定实例下指定资源的信息。
+//
+// @param request - UpdateInstanceResourceRequest
+//
+// @return UpdateInstanceResourceResponse
 func (client *Client) UpdateInstanceResource(InstanceId *string, ResourceId *string, request *UpdateInstanceResourceRequest) (_result *UpdateInstanceResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17595,6 +26783,17 @@ func (client *Client) UpdateInstanceResource(InstanceId *string, ResourceId *str
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新实验室。
+//
+// @param request - UpdateLaboratoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateLaboratoryResponse
 func (client *Client) UpdateLaboratoryWithOptions(LaboratoryId *string, request *UpdateLaboratoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateLaboratoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17669,6 +26868,13 @@ func (client *Client) UpdateLaboratoryWithOptions(LaboratoryId *string, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新实验室。
+//
+// @param request - UpdateLaboratoryRequest
+//
+// @return UpdateLaboratoryResponse
 func (client *Client) UpdateLaboratory(LaboratoryId *string, request *UpdateLaboratoryRequest) (_result *UpdateLaboratoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17681,6 +26887,17 @@ func (client *Client) UpdateLaboratory(LaboratoryId *string, request *UpdateLabo
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新层。
+//
+// @param request - UpdateLayerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateLayerResponse
 func (client *Client) UpdateLayerWithOptions(LayerId *string, request *UpdateLayerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateLayerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17723,6 +26940,13 @@ func (client *Client) UpdateLayerWithOptions(LayerId *string, request *UpdateLay
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新层。
+//
+// @param request - UpdateLayerRequest
+//
+// @return UpdateLayerResponse
 func (client *Client) UpdateLayer(LayerId *string, request *UpdateLayerRequest) (_result *UpdateLayerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17735,6 +26959,17 @@ func (client *Client) UpdateLayer(LayerId *string, request *UpdateLayerRequest) 
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新参数。
+//
+// @param request - UpdateParamRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateParamResponse
 func (client *Client) UpdateParamWithOptions(ParamId *string, request *UpdateParamRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateParamResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17773,6 +27008,13 @@ func (client *Client) UpdateParamWithOptions(ParamId *string, request *UpdatePar
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新参数。
+//
+// @param request - UpdateParamRequest
+//
+// @return UpdateParamResponse
 func (client *Client) UpdateParam(ParamId *string, request *UpdateParamRequest) (_result *UpdateParamResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17785,6 +27027,17 @@ func (client *Client) UpdateParam(ParamId *string, request *UpdateParamRequest) 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取资源规则列表
+//
+// @param request - UpdateResourceRuleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateResourceRuleResponse
 func (client *Client) UpdateResourceRuleWithOptions(ResourceRuleId *string, request *UpdateResourceRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateResourceRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17843,6 +27096,13 @@ func (client *Client) UpdateResourceRuleWithOptions(ResourceRuleId *string, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取资源规则列表
+//
+// @param request - UpdateResourceRuleRequest
+//
+// @return UpdateResourceRuleResponse
 func (client *Client) UpdateResourceRule(ResourceRuleId *string, request *UpdateResourceRuleRequest) (_result *UpdateResourceRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17855,6 +27115,17 @@ func (client *Client) UpdateResourceRule(ResourceRuleId *string, request *Update
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新资源规则条目
+//
+// @param request - UpdateResourceRuleItemRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateResourceRuleItemResponse
 func (client *Client) UpdateResourceRuleItemWithOptions(ResourceRuleId *string, ResourceRuleItemId *string, request *UpdateResourceRuleItemRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateResourceRuleItemResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17909,6 +27180,13 @@ func (client *Client) UpdateResourceRuleItemWithOptions(ResourceRuleId *string, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新资源规则条目
+//
+// @param request - UpdateResourceRuleItemRequest
+//
+// @return UpdateResourceRuleItemResponse
 func (client *Client) UpdateResourceRuleItem(ResourceRuleId *string, ResourceRuleItemId *string, request *UpdateResourceRuleItemRequest) (_result *UpdateResourceRuleItemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17921,6 +27199,17 @@ func (client *Client) UpdateResourceRuleItem(ResourceRuleId *string, ResourceRul
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新场景
+//
+// @param request - UpdateSceneRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSceneResponse
 func (client *Client) UpdateSceneWithOptions(SceneId *string, request *UpdateSceneRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateSceneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17967,6 +27256,13 @@ func (client *Client) UpdateSceneWithOptions(SceneId *string, request *UpdateSce
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新场景
+//
+// @param request - UpdateSceneRequest
+//
+// @return UpdateSceneResponse
 func (client *Client) UpdateScene(SceneId *string, request *UpdateSceneRequest) (_result *UpdateSceneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17979,6 +27275,17 @@ func (client *Client) UpdateScene(SceneId *string, request *UpdateSceneRequest) 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取数据表详细信息。
+//
+// @param request - UpdateTableMetaRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTableMetaResponse
 func (client *Client) UpdateTableMetaWithOptions(TableMetaId *string, request *UpdateTableMetaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateTableMetaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18037,6 +27344,13 @@ func (client *Client) UpdateTableMetaWithOptions(TableMetaId *string, request *U
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取数据表详细信息。
+//
+// @param request - UpdateTableMetaRequest
+//
+// @return UpdateTableMetaResponse
 func (client *Client) UpdateTableMeta(TableMetaId *string, request *UpdateTableMetaRequest) (_result *UpdateTableMetaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18049,6 +27363,365 @@ func (client *Client) UpdateTableMeta(TableMetaId *string, request *UpdateTableM
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新流量调控目标
+//
+// @param request - UpdateTrafficControlTargetRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTrafficControlTargetResponse
+func (client *Client) UpdateTrafficControlTargetWithOptions(TrafficControlTargetId *string, request *UpdateTrafficControlTargetRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateTrafficControlTargetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NewParam3)) {
+		query["new-param-3"] = request.NewParam3
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Event)) {
+		body["Event"] = request.Event
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ItemConditionArray)) {
+		body["ItemConditionArray"] = request.ItemConditionArray
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ItemConditionExpress)) {
+		body["ItemConditionExpress"] = request.ItemConditionExpress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ItemConditionType)) {
+		body["ItemConditionType"] = request.ItemConditionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewProductRegulation)) {
+		body["NewProductRegulation"] = request.NewProductRegulation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecallName)) {
+		body["RecallName"] = request.RecallName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatisPeriod)) {
+		body["StatisPeriod"] = request.StatisPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ToleranceValue)) {
+		body["ToleranceValue"] = request.ToleranceValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Value)) {
+		body["Value"] = request.Value
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTrafficControlTarget"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/trafficcontroltargets/" + tea.StringValue(openapiutil.GetEncodeParam(TrafficControlTargetId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateTrafficControlTargetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新流量调控目标
+//
+// @param request - UpdateTrafficControlTargetRequest
+//
+// @return UpdateTrafficControlTargetResponse
+func (client *Client) UpdateTrafficControlTarget(TrafficControlTargetId *string, request *UpdateTrafficControlTargetRequest) (_result *UpdateTrafficControlTargetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateTrafficControlTargetResponse{}
+	_body, _err := client.UpdateTrafficControlTargetWithOptions(TrafficControlTargetId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新流量调控任务
+//
+// @param request - UpdateTrafficControlTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTrafficControlTaskResponse
+func (client *Client) UpdateTrafficControlTaskWithOptions(TrafficControlTaskId *string, request *UpdateTrafficControlTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateTrafficControlTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BehaviorTableMetaId)) {
+		body["BehaviorTableMetaId"] = request.BehaviorTableMetaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ControlGranularity)) {
+		body["ControlGranularity"] = request.ControlGranularity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ControlLogic)) {
+		body["ControlLogic"] = request.ControlLogic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ControlType)) {
+		body["ControlType"] = request.ControlType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExecutionTime)) {
+		body["ExecutionTime"] = request.ExecutionTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ItemConditionArray)) {
+		body["ItemConditionArray"] = request.ItemConditionArray
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ItemConditionExpress)) {
+		body["ItemConditionExpress"] = request.ItemConditionExpress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ItemConditionType)) {
+		body["ItemConditionType"] = request.ItemConditionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ItemTableMetaId)) {
+		body["ItemTableMetaId"] = request.ItemTableMetaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		body["SceneId"] = request.SceneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatisBaeaviorConditionArray)) {
+		body["StatisBaeaviorConditionArray"] = request.StatisBaeaviorConditionArray
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatisBehaviorConditionExpress)) {
+		body["StatisBehaviorConditionExpress"] = request.StatisBehaviorConditionExpress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatisBehaviorConditionType)) {
+		body["StatisBehaviorConditionType"] = request.StatisBehaviorConditionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrafficControlTargets)) {
+		body["TrafficControlTargets"] = request.TrafficControlTargets
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserConditionArray)) {
+		body["UserConditionArray"] = request.UserConditionArray
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserConditionExpress)) {
+		body["UserConditionExpress"] = request.UserConditionExpress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserConditionType)) {
+		body["UserConditionType"] = request.UserConditionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserTableMetaId)) {
+		body["UserTableMetaId"] = request.UserTableMetaId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTrafficControlTask"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/trafficcontroltasks/" + tea.StringValue(openapiutil.GetEncodeParam(TrafficControlTaskId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateTrafficControlTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新流量调控任务
+//
+// @param request - UpdateTrafficControlTaskRequest
+//
+// @return UpdateTrafficControlTaskResponse
+func (client *Client) UpdateTrafficControlTask(TrafficControlTaskId *string, request *UpdateTrafficControlTaskRequest) (_result *UpdateTrafficControlTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateTrafficControlTaskResponse{}
+	_body, _err := client.UpdateTrafficControlTaskWithOptions(TrafficControlTaskId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新流量调控任务的流量参数
+//
+// @param request - UpdateTrafficControlTaskTrafficRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTrafficControlTaskTrafficResponse
+func (client *Client) UpdateTrafficControlTaskTrafficWithOptions(TrafficControlTaskId *string, request *UpdateTrafficControlTaskTrafficRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateTrafficControlTaskTrafficResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NewParam3)) {
+		query["new-param-3"] = request.NewParam3
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Environment)) {
+		body["Environment"] = request.Environment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Traffics)) {
+		body["Traffics"] = request.Traffics
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTrafficControlTaskTraffic"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/trafficcontroltasks/" + tea.StringValue(openapiutil.GetEncodeParam(TrafficControlTaskId)) + "/action/traffic"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateTrafficControlTaskTrafficResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新流量调控任务的流量参数
+//
+// @param request - UpdateTrafficControlTaskTrafficRequest
+//
+// @return UpdateTrafficControlTaskTrafficResponse
+func (client *Client) UpdateTrafficControlTaskTraffic(TrafficControlTaskId *string, request *UpdateTrafficControlTaskTrafficRequest) (_result *UpdateTrafficControlTaskTrafficResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateTrafficControlTaskTrafficResponse{}
+	_body, _err := client.UpdateTrafficControlTaskTrafficWithOptions(TrafficControlTaskId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 上传数据
+//
+// @param request - UploadRecommendationDataRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UploadRecommendationDataResponse
 func (client *Client) UploadRecommendationDataWithOptions(request *UploadRecommendationDataRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UploadRecommendationDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18093,6 +27766,13 @@ func (client *Client) UploadRecommendationDataWithOptions(request *UploadRecomme
 	return _result, _err
 }
 
+// Summary:
+//
+// 上传数据
+//
+// @param request - UploadRecommendationDataRequest
+//
+// @return UploadRecommendationDataResponse
 func (client *Client) UploadRecommendationData(request *UploadRecommendationDataRequest) (_result *UploadRecommendationDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
