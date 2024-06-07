@@ -6497,7 +6497,7 @@ type CreateEnvironmentRequest struct {
 	EnvironmentName *string `json:"EnvironmentName,omitempty" xml:"EnvironmentName,omitempty"`
 	// The subtype of the environment. Valid values:
 	//
-	// 	- CS: ACK, One
+	// 	- CS: ACK
 	//
 	// 	- ECS: ECS
 	//
@@ -6533,6 +6533,8 @@ type CreateEnvironmentRequest struct {
 	//
 	// CS_Basic
 	FeePackage *string `json:"FeePackage,omitempty" xml:"FeePackage,omitempty"`
+	// 环境绑定的grafana工作区id。传空时，表示使用默认的共享grafana。
+	//
 	// if can be null:
 	// true
 	GrafanaWorkspaceId *string `json:"GrafanaWorkspaceId,omitempty" xml:"GrafanaWorkspaceId,omitempty"`
@@ -6542,13 +6544,13 @@ type CreateEnvironmentRequest struct {
 	//
 	// 	- agent: Agents are managed. By default, managed agents are provided for ASK clusters, ACS clusters, and ACK One clusters.
 	//
-	// 	- agent-exproter: Agents and exporters are managed. By default, managed agents and exporters are provided for cloud services.
+	// 	- agent-exporter: Agents and exporters are managed. By default, managed agents and exporters are provided for cloud services.
 	//
 	// example:
 	//
 	// none
 	ManagedType *string `json:"ManagedType,omitempty" xml:"ManagedType,omitempty"`
-	// The ID of the Prometheus instance. If no Prometheus instance is created, call the InitEnvironment operation to initialize a storage instance.
+	// The ID of the Prometheus instance. If no Prometheus instance is created, call the InitEnvironment operation.
 	//
 	// example:
 	//
@@ -15721,6 +15723,7 @@ func (s *DelAuthTokenResponse) SetBody(v *DelAuthTokenResponseBody) *DelAuthToke
 }
 
 type DeleteAddonReleaseRequest struct {
+	AddonName *string `json:"AddonName,omitempty" xml:"AddonName,omitempty"`
 	// Environment ID.
 	//
 	// This parameter is required.
@@ -15757,6 +15760,11 @@ func (s DeleteAddonReleaseRequest) String() string {
 
 func (s DeleteAddonReleaseRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteAddonReleaseRequest) SetAddonName(v string) *DeleteAddonReleaseRequest {
+	s.AddonName = &v
+	return s
 }
 
 func (s *DeleteAddonReleaseRequest) SetEnvironmentId(v string) *DeleteAddonReleaseRequest {
@@ -39645,6 +39653,7 @@ func (s *ListAddonsResponseBodyDataEnvironments) SetPolicies(v *ListAddonsRespon
 }
 
 type ListAddonsResponseBodyDataEnvironmentsDependencies struct {
+	ClusterTypes []*string `json:"ClusterTypes,omitempty" xml:"ClusterTypes,omitempty" type:"Repeated"`
 	// Name of the Feature.
 	Features map[string]*bool `json:"Features,omitempty" xml:"Features,omitempty"`
 	// Service list.
@@ -39657,6 +39666,11 @@ func (s ListAddonsResponseBodyDataEnvironmentsDependencies) String() string {
 
 func (s ListAddonsResponseBodyDataEnvironmentsDependencies) GoString() string {
 	return s.String()
+}
+
+func (s *ListAddonsResponseBodyDataEnvironmentsDependencies) SetClusterTypes(v []*string) *ListAddonsResponseBodyDataEnvironmentsDependencies {
+	s.ClusterTypes = v
+	return s
 }
 
 func (s *ListAddonsResponseBodyDataEnvironmentsDependencies) SetFeatures(v map[string]*bool) *ListAddonsResponseBodyDataEnvironmentsDependencies {
@@ -70875,6 +70889,10 @@ func (client *Client) DeleteAddonReleaseWithOptions(request *DeleteAddonReleaseR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddonName)) {
+		query["AddonName"] = request.AddonName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
 		query["EnvironmentId"] = request.EnvironmentId
 	}

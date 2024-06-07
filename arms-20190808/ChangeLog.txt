@@ -1,3 +1,8 @@
+2024-06-07 Version: v5.10.6
+- Update API DeleteAddonRelease: add param AddonName.
+- Update API ListAddons: update response param.
+
+
 2024-06-05 Version: v5.10.5
 - Generated golang 2019-08-08 for ARMS.
 
