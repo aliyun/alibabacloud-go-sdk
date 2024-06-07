@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -14,6 +11,9 @@ import (
 )
 
 type DataSubImagesFigureInfoValue struct {
+	// example:
+	//
+	// 3
 	FigureCount   *int32                                       `json:"FigureCount,omitempty" xml:"FigureCount,omitempty"`
 	FigureDetails []*DataSubImagesFigureInfoValueFigureDetails `json:"FigureDetails,omitempty" xml:"FigureDetails,omitempty" type:"Repeated"`
 }
@@ -37,11 +37,20 @@ func (s *DataSubImagesFigureInfoValue) SetFigureDetails(v []*DataSubImagesFigure
 }
 
 type DataSubImagesFigureInfoValueFigureDetails struct {
-	Type         *string                                                  `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// face
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// “”
 	Data         interface{}                                              `json:"Data,omitempty" xml:"Data,omitempty"`
 	FigurePoints []*DataSubImagesFigureInfoValueFigureDetailsFigurePoints `json:"FigurePoints,omitempty" xml:"FigurePoints,omitempty" type:"Repeated"`
 	FigureRect   *DataSubImagesFigureInfoValueFigureDetailsFigureRect     `json:"FigureRect,omitempty" xml:"FigureRect,omitempty" type:"Struct"`
-	FigureAngle  *int32                                                   `json:"FigureAngle,omitempty" xml:"FigureAngle,omitempty"`
+	// example:
+	//
+	// 0
+	FigureAngle *int32 `json:"FigureAngle,omitempty" xml:"FigureAngle,omitempty"`
 }
 
 func (s DataSubImagesFigureInfoValueFigureDetails) String() string {
@@ -78,7 +87,13 @@ func (s *DataSubImagesFigureInfoValueFigureDetails) SetFigureAngle(v int32) *Dat
 }
 
 type DataSubImagesFigureInfoValueFigureDetailsFigurePoints struct {
+	// example:
+	//
+	// 100
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 200
 	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
@@ -101,10 +116,22 @@ func (s *DataSubImagesFigureInfoValueFigureDetailsFigurePoints) SetY(v int32) *D
 }
 
 type DataSubImagesFigureInfoValueFigureDetailsFigureRect struct {
+	// example:
+	//
+	// 100
 	CenterX *int32 `json:"CenterX,omitempty" xml:"CenterX,omitempty"`
+	// example:
+	//
+	// 200
 	CenterY *int32 `json:"CenterY,omitempty" xml:"CenterY,omitempty"`
-	Width   *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
-	Height  *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 50
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 50
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
 }
 
 func (s DataSubImagesFigureInfoValueFigureDetailsFigureRect) String() string {
@@ -136,13 +163,25 @@ func (s *DataSubImagesFigureInfoValueFigureDetailsFigureRect) SetHeight(v int32)
 }
 
 type DataSubImagesKvInfoKvDetailsValue struct {
-	KeyName         *string                                         `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
-	KeyConfidence   *int32                                          `json:"KeyConfidence,omitempty" xml:"KeyConfidence,omitempty"`
-	Value           *string                                         `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// "address"
+	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
+	// example:
+	//
+	// 100
+	KeyConfidence *int32  `json:"KeyConfidence,omitempty" xml:"KeyConfidence,omitempty"`
+	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// 98
 	ValueConfidence *int32                                          `json:"ValueConfidence,omitempty" xml:"ValueConfidence,omitempty"`
 	ValuePoints     []*DataSubImagesKvInfoKvDetailsValueValuePoints `json:"ValuePoints,omitempty" xml:"ValuePoints,omitempty" type:"Repeated"`
 	ValueRect       *DataSubImagesKvInfoKvDetailsValueValueRect     `json:"ValueRect,omitempty" xml:"ValueRect,omitempty" type:"Struct"`
-	ValueAngle      *int32                                          `json:"ValueAngle,omitempty" xml:"ValueAngle,omitempty"`
+	// example:
+	//
+	// 0
+	ValueAngle *int32 `json:"ValueAngle,omitempty" xml:"ValueAngle,omitempty"`
 }
 
 func (s DataSubImagesKvInfoKvDetailsValue) String() string {
@@ -189,7 +228,13 @@ func (s *DataSubImagesKvInfoKvDetailsValue) SetValueAngle(v int32) *DataSubImage
 }
 
 type DataSubImagesKvInfoKvDetailsValueValuePoints struct {
+	// example:
+	//
+	// 100
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 200
 	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
@@ -212,10 +257,22 @@ func (s *DataSubImagesKvInfoKvDetailsValueValuePoints) SetY(v int32) *DataSubIma
 }
 
 type DataSubImagesKvInfoKvDetailsValueValueRect struct {
+	// example:
+	//
+	// 100
 	CenterX *int32 `json:"CenterX,omitempty" xml:"CenterX,omitempty"`
+	// example:
+	//
+	// 200
 	CenterY *int32 `json:"CenterY,omitempty" xml:"CenterY,omitempty"`
-	Width   *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
-	Height  *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 50
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 50
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
 }
 
 func (s DataSubImagesKvInfoKvDetailsValueValueRect) String() string {
@@ -247,16 +304,43 @@ func (s *DataSubImagesKvInfoKvDetailsValueValueRect) SetHeight(v int32) *DataSub
 }
 
 type RecognizeAdvancedRequest struct {
-	NeedRotate     *bool     `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
-	NeedSortPage   *bool     `json:"NeedSortPage,omitempty" xml:"NeedSortPage,omitempty"`
-	NoStamp        *bool     `json:"NoStamp,omitempty" xml:"NoStamp,omitempty"`
-	OutputCharInfo *bool     `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
-	OutputFigure   *bool     `json:"OutputFigure,omitempty" xml:"OutputFigure,omitempty"`
-	OutputTable    *bool     `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
-	Paragraph      *bool     `json:"Paragraph,omitempty" xml:"Paragraph,omitempty"`
-	Row            *bool     `json:"Row,omitempty" xml:"Row,omitempty"`
-	Url            *string   `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body           io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	// example:
+	//
+	// false
+	NeedRotate *bool `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
+	// example:
+	//
+	// false
+	NeedSortPage *bool `json:"NeedSortPage,omitempty" xml:"NeedSortPage,omitempty"`
+	// example:
+	//
+	// false
+	NoStamp *bool `json:"NoStamp,omitempty" xml:"NoStamp,omitempty"`
+	// example:
+	//
+	// false
+	OutputCharInfo *bool `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
+	// example:
+	//
+	// false
+	OutputFigure *bool `json:"OutputFigure,omitempty" xml:"OutputFigure,omitempty"`
+	// example:
+	//
+	// false
+	OutputTable *bool `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
+	// example:
+	//
+	// false
+	Paragraph *bool `json:"Paragraph,omitempty" xml:"Paragraph,omitempty"`
+	// example:
+	//
+	// false
+	Row *bool `json:"Row,omitempty" xml:"Row,omitempty"`
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1Wo7eXAvoK1RjSZFDXXXY3pXa-2512-3509.jpg
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeAdvancedRequest) String() string {
@@ -318,9 +402,21 @@ func (s *RecognizeAdvancedRequest) SetBody(v io.Reader) *RecognizeAdvancedReques
 }
 
 type RecognizeAdvancedResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// { 	"content": "2017年河北区实验小学", 	"height": 3509, 	"orgHeight": 3509, 	"orgWidth": 2512, 	"prism_version": "1.0.9", 	"prism_wnum": 126, 	"prism_wordsInfo": [{ 		"angle": -89, 		"direction": 0, 		"height": 541, 		"pos": [{ 			"x": 982, 			"y": 223 		}, { 			"x": 1522, 			"y": 223 		}, { 			"x": 1522, 			"y": 266 		}, { 			"x": 982, 			"y": 266 		}], 		"prob": 99, 		"width": 43, 		"word": "2017年河北区实验小学", 		"x": 1230, 		"y": -26 	}], 	"width": 2512 }
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -382,6 +478,9 @@ func (s *RecognizeAdvancedResponse) SetBody(v *RecognizeAdvancedResponseBody) *R
 }
 
 type RecognizeAirItineraryRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1hBCIcBr0gK0jSZFnXXbRRXXa-1833-785.png
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -405,9 +504,18 @@ func (s *RecognizeAirItineraryRequest) SetBody(v io.Reader) *RecognizeAirItinera
 }
 
 type RecognizeAirItineraryResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -474,18 +582,59 @@ type RecognizeAllTextRequest struct {
 	InternationalBusinessLicenseConfig *RecognizeAllTextRequestInternationalBusinessLicenseConfig `json:"InternationalBusinessLicenseConfig,omitempty" xml:"InternationalBusinessLicenseConfig,omitempty" type:"Struct"`
 	InternationalIdCardConfig          *RecognizeAllTextRequestInternationalIdCardConfig          `json:"InternationalIdCardConfig,omitempty" xml:"InternationalIdCardConfig,omitempty" type:"Struct"`
 	MultiLanConfig                     *RecognizeAllTextRequestMultiLanConfig                     `json:"MultiLanConfig,omitempty" xml:"MultiLanConfig,omitempty" type:"Struct"`
-	OutputBarCode                      *bool                                                      `json:"OutputBarCode,omitempty" xml:"OutputBarCode,omitempty"`
-	OutputCoordinate                   []byte                                                     `json:"OutputCoordinate,omitempty" xml:"OutputCoordinate,omitempty"`
-	OutputFigure                       *bool                                                      `json:"OutputFigure,omitempty" xml:"OutputFigure,omitempty"`
-	OutputKVExcel                      *bool                                                      `json:"OutputKVExcel,omitempty" xml:"OutputKVExcel,omitempty"`
-	OutputOricoord                     *bool                                                      `json:"OutputOricoord,omitempty" xml:"OutputOricoord,omitempty"`
-	OutputQrcode                       *bool                                                      `json:"OutputQrcode,omitempty" xml:"OutputQrcode,omitempty"`
-	OutputStamp                        *bool                                                      `json:"OutputStamp,omitempty" xml:"OutputStamp,omitempty"`
-	PageNo                             *int32                                                     `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	TableConfig                        *RecognizeAllTextRequestTableConfig                        `json:"TableConfig,omitempty" xml:"TableConfig,omitempty" type:"Struct"`
-	Type                               *string                                                    `json:"Type,omitempty" xml:"Type,omitempty"`
-	Url                                *string                                                    `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body                               io.Reader                                                  `json:"body,omitempty" xml:"body,omitempty"`
+	// example:
+	//
+	// false
+	OutputBarCode *bool `json:"OutputBarCode,omitempty" xml:"OutputBarCode,omitempty"`
+	// example:
+	//
+	// false
+	OutputCoordinate *string `json:"OutputCoordinate,omitempty" xml:"OutputCoordinate,omitempty"`
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// false
+	OutputFigure *bool `json:"OutputFigure,omitempty" xml:"OutputFigure,omitempty"`
+	// example:
+	//
+	// false
+	OutputKVExcel *bool `json:"OutputKVExcel,omitempty" xml:"OutputKVExcel,omitempty"`
+	// example:
+	//
+	// false
+	OutputOricoord *bool `json:"OutputOricoord,omitempty" xml:"OutputOricoord,omitempty"`
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// false
+	OutputQrcode *bool `json:"OutputQrcode,omitempty" xml:"OutputQrcode,omitempty"`
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// false
+	OutputStamp *bool `json:"OutputStamp,omitempty" xml:"OutputStamp,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo      *int32                              `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	TableConfig *RecognizeAllTextRequestTableConfig `json:"TableConfig,omitempty" xml:"TableConfig,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Advanced
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// https://example.png
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeAllTextRequest) String() string {
@@ -526,8 +675,8 @@ func (s *RecognizeAllTextRequest) SetOutputBarCode(v bool) *RecognizeAllTextRequ
 	return s
 }
 
-func (s *RecognizeAllTextRequest) SetOutputCoordinate(v []byte) *RecognizeAllTextRequest {
-	s.OutputCoordinate = v
+func (s *RecognizeAllTextRequest) SetOutputCoordinate(v string) *RecognizeAllTextRequest {
+	s.OutputCoordinate = &v
 	return s
 }
 
@@ -582,14 +731,38 @@ func (s *RecognizeAllTextRequest) SetBody(v io.Reader) *RecognizeAllTextRequest 
 }
 
 type RecognizeAllTextRequestAdvancedConfig struct {
+	// example:
+	//
+	// false
 	IsHandWritingTable *bool `json:"IsHandWritingTable,omitempty" xml:"IsHandWritingTable,omitempty"`
-	IsLineLessTable    *bool `json:"IsLineLessTable,omitempty" xml:"IsLineLessTable,omitempty"`
-	OutputCharInfo     *bool `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
-	OutputParagraph    *bool `json:"OutputParagraph,omitempty" xml:"OutputParagraph,omitempty"`
-	OutputRow          *bool `json:"OutputRow,omitempty" xml:"OutputRow,omitempty"`
-	OutputTable        *bool `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
-	OutputTableExcel   *bool `json:"OutputTableExcel,omitempty" xml:"OutputTableExcel,omitempty"`
-	OutputTableHtml    *bool `json:"OutputTableHtml,omitempty" xml:"OutputTableHtml,omitempty"`
+	// example:
+	//
+	// false
+	IsLineLessTable *bool `json:"IsLineLessTable,omitempty" xml:"IsLineLessTable,omitempty"`
+	// example:
+	//
+	// false
+	OutputCharInfo *bool `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
+	// example:
+	//
+	// false
+	OutputParagraph *bool `json:"OutputParagraph,omitempty" xml:"OutputParagraph,omitempty"`
+	// example:
+	//
+	// false
+	OutputRow *bool `json:"OutputRow,omitempty" xml:"OutputRow,omitempty"`
+	// example:
+	//
+	// false
+	OutputTable *bool `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
+	// example:
+	//
+	// false
+	OutputTableExcel *bool `json:"OutputTableExcel,omitempty" xml:"OutputTableExcel,omitempty"`
+	// example:
+	//
+	// false
+	OutputTableHtml *bool `json:"OutputTableHtml,omitempty" xml:"OutputTableHtml,omitempty"`
 }
 
 func (s RecognizeAllTextRequestAdvancedConfig) String() string {
@@ -641,6 +814,9 @@ func (s *RecognizeAllTextRequestAdvancedConfig) SetOutputTableHtml(v bool) *Reco
 }
 
 type RecognizeAllTextRequestIdCardConfig struct {
+	// example:
+	//
+	// false
 	OutputIdCardQuality *bool `json:"OutputIdCardQuality,omitempty" xml:"OutputIdCardQuality,omitempty"`
 }
 
@@ -675,6 +851,9 @@ func (s *RecognizeAllTextRequestInternationalBusinessLicenseConfig) SetCountry(v
 }
 
 type RecognizeAllTextRequestInternationalIdCardConfig struct {
+	// example:
+	//
+	// India
 	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
 }
 
@@ -692,6 +871,9 @@ func (s *RecognizeAllTextRequestInternationalIdCardConfig) SetCountry(v string) 
 }
 
 type RecognizeAllTextRequestMultiLanConfig struct {
+	// example:
+	//
+	// eng,chn
 	Languages *string `json:"Languages,omitempty" xml:"Languages,omitempty"`
 }
 
@@ -744,23 +926,64 @@ func (s *RecognizeAllTextRequestTableConfig) SetOutputTableHtml(v bool) *Recogni
 }
 
 type RecognizeAllTextShrinkRequest struct {
-	AdvancedConfigShrink                     *string   `json:"AdvancedConfig,omitempty" xml:"AdvancedConfig,omitempty"`
-	IdCardConfigShrink                       *string   `json:"IdCardConfig,omitempty" xml:"IdCardConfig,omitempty"`
-	InternationalBusinessLicenseConfigShrink *string   `json:"InternationalBusinessLicenseConfig,omitempty" xml:"InternationalBusinessLicenseConfig,omitempty"`
-	InternationalIdCardConfigShrink          *string   `json:"InternationalIdCardConfig,omitempty" xml:"InternationalIdCardConfig,omitempty"`
-	MultiLanConfigShrink                     *string   `json:"MultiLanConfig,omitempty" xml:"MultiLanConfig,omitempty"`
-	OutputBarCode                            *bool     `json:"OutputBarCode,omitempty" xml:"OutputBarCode,omitempty"`
-	OutputCoordinate                         []byte    `json:"OutputCoordinate,omitempty" xml:"OutputCoordinate,omitempty"`
-	OutputFigure                             *bool     `json:"OutputFigure,omitempty" xml:"OutputFigure,omitempty"`
-	OutputKVExcel                            *bool     `json:"OutputKVExcel,omitempty" xml:"OutputKVExcel,omitempty"`
-	OutputOricoord                           *bool     `json:"OutputOricoord,omitempty" xml:"OutputOricoord,omitempty"`
-	OutputQrcode                             *bool     `json:"OutputQrcode,omitempty" xml:"OutputQrcode,omitempty"`
-	OutputStamp                              *bool     `json:"OutputStamp,omitempty" xml:"OutputStamp,omitempty"`
-	PageNo                                   *int32    `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	TableConfigShrink                        *string   `json:"TableConfig,omitempty" xml:"TableConfig,omitempty"`
-	Type                                     *string   `json:"Type,omitempty" xml:"Type,omitempty"`
-	Url                                      *string   `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body                                     io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	AdvancedConfigShrink                     *string `json:"AdvancedConfig,omitempty" xml:"AdvancedConfig,omitempty"`
+	IdCardConfigShrink                       *string `json:"IdCardConfig,omitempty" xml:"IdCardConfig,omitempty"`
+	InternationalBusinessLicenseConfigShrink *string `json:"InternationalBusinessLicenseConfig,omitempty" xml:"InternationalBusinessLicenseConfig,omitempty"`
+	InternationalIdCardConfigShrink          *string `json:"InternationalIdCardConfig,omitempty" xml:"InternationalIdCardConfig,omitempty"`
+	MultiLanConfigShrink                     *string `json:"MultiLanConfig,omitempty" xml:"MultiLanConfig,omitempty"`
+	// example:
+	//
+	// false
+	OutputBarCode *bool `json:"OutputBarCode,omitempty" xml:"OutputBarCode,omitempty"`
+	// example:
+	//
+	// false
+	OutputCoordinate *string `json:"OutputCoordinate,omitempty" xml:"OutputCoordinate,omitempty"`
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// false
+	OutputFigure *bool `json:"OutputFigure,omitempty" xml:"OutputFigure,omitempty"`
+	// example:
+	//
+	// false
+	OutputKVExcel *bool `json:"OutputKVExcel,omitempty" xml:"OutputKVExcel,omitempty"`
+	// example:
+	//
+	// false
+	OutputOricoord *bool `json:"OutputOricoord,omitempty" xml:"OutputOricoord,omitempty"`
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// false
+	OutputQrcode *bool `json:"OutputQrcode,omitempty" xml:"OutputQrcode,omitempty"`
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// false
+	OutputStamp *bool `json:"OutputStamp,omitempty" xml:"OutputStamp,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo            *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	TableConfigShrink *string `json:"TableConfig,omitempty" xml:"TableConfig,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Advanced
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// https://example.png
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeAllTextShrinkRequest) String() string {
@@ -801,8 +1024,8 @@ func (s *RecognizeAllTextShrinkRequest) SetOutputBarCode(v bool) *RecognizeAllTe
 	return s
 }
 
-func (s *RecognizeAllTextShrinkRequest) SetOutputCoordinate(v []byte) *RecognizeAllTextShrinkRequest {
-	s.OutputCoordinate = v
+func (s *RecognizeAllTextShrinkRequest) SetOutputCoordinate(v string) *RecognizeAllTextShrinkRequest {
+	s.OutputCoordinate = &v
 	return s
 }
 
@@ -857,10 +1080,19 @@ func (s *RecognizeAllTextShrinkRequest) SetBody(v io.Reader) *RecognizeAllTextSh
 }
 
 type RecognizeAllTextResponseBody struct {
-	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *RecognizeAllTextResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 400
+	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *RecognizeAllTextResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// illegalImageUrl
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// E2A98925-DC2C-18FB-995F-BAF507XXXXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RecognizeAllTextResponseBody) String() string {
@@ -892,18 +1124,45 @@ func (s *RecognizeAllTextResponseBody) SetRequestId(v string) *RecognizeAllTextR
 }
 
 type RecognizeAllTextResponseBodyData struct {
-	AlgoServer    []*string                                    `json:"AlgoServer,omitempty" xml:"AlgoServer,omitempty" type:"Repeated"`
-	AlgoVersion   *string                                      `json:"AlgoVersion,omitempty" xml:"AlgoVersion,omitempty"`
-	Content       *string                                      `json:"Content,omitempty" xml:"Content,omitempty"`
-	DebugInfo     interface{}                                  `json:"DebugInfo,omitempty" xml:"DebugInfo,omitempty"`
-	Height        *int32                                       `json:"Height,omitempty" xml:"Height,omitempty"`
-	IsMixedMode   *bool                                        `json:"IsMixedMode,omitempty" xml:"IsMixedMode,omitempty"`
-	KvExcelUrl    *string                                      `json:"KvExcelUrl,omitempty" xml:"KvExcelUrl,omitempty"`
-	PageNo        *int32                                       `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	AlgoServer []*string `json:"AlgoServer,omitempty" xml:"AlgoServer,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ""
+	AlgoVersion *string `json:"AlgoVersion,omitempty" xml:"AlgoVersion,omitempty"`
+	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// ""
+	DebugInfo interface{} `json:"DebugInfo,omitempty" xml:"DebugInfo,omitempty"`
+	// example:
+	//
+	// 2000
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// false
+	IsMixedMode *bool `json:"IsMixedMode,omitempty" xml:"IsMixedMode,omitempty"`
+	// example:
+	//
+	// https://example.xlsx
+	KvExcelUrl *string `json:"KvExcelUrl,omitempty" xml:"KvExcelUrl,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 2
 	SubImageCount *int32                                       `json:"SubImageCount,omitempty" xml:"SubImageCount,omitempty"`
 	SubImages     []*RecognizeAllTextResponseBodyDataSubImages `json:"SubImages,omitempty" xml:"SubImages,omitempty" type:"Repeated"`
-	Width         *int32                                       `json:"Width,omitempty" xml:"Width,omitempty"`
-	XmlResult     *string                                      `json:"XmlResult,omitempty" xml:"XmlResult,omitempty"`
+	// example:
+	//
+	// 1000
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// ""
+	XmlResult *string `json:"XmlResult,omitempty" xml:"XmlResult,omitempty"`
 }
 
 func (s RecognizeAllTextResponseBodyData) String() string {
@@ -975,16 +1234,22 @@ func (s *RecognizeAllTextResponseBodyData) SetXmlResult(v string) *RecognizeAllT
 }
 
 type RecognizeAllTextResponseBodyDataSubImages struct {
-	Angle          *int32                                                     `json:"Angle,omitempty" xml:"Angle,omitempty"`
-	BarCodeInfo    *RecognizeAllTextResponseBodyDataSubImagesBarCodeInfo      `json:"BarCodeInfo,omitempty" xml:"BarCodeInfo,omitempty" type:"Struct"`
-	BlockInfo      *RecognizeAllTextResponseBodyDataSubImagesBlockInfo        `json:"BlockInfo,omitempty" xml:"BlockInfo,omitempty" type:"Struct"`
-	FigureInfo     map[string]*DataSubImagesFigureInfoValue                   `json:"FigureInfo,omitempty" xml:"FigureInfo,omitempty"`
-	KvInfo         *RecognizeAllTextResponseBodyDataSubImagesKvInfo           `json:"KvInfo,omitempty" xml:"KvInfo,omitempty" type:"Struct"`
-	ParagraphInfo  *RecognizeAllTextResponseBodyDataSubImagesParagraphInfo    `json:"ParagraphInfo,omitempty" xml:"ParagraphInfo,omitempty" type:"Struct"`
-	QrCodeInfo     *RecognizeAllTextResponseBodyDataSubImagesQrCodeInfo       `json:"QrCodeInfo,omitempty" xml:"QrCodeInfo,omitempty" type:"Struct"`
-	QualityInfo    *RecognizeAllTextResponseBodyDataSubImagesQualityInfo      `json:"QualityInfo,omitempty" xml:"QualityInfo,omitempty" type:"Struct"`
-	RowInfo        *RecognizeAllTextResponseBodyDataSubImagesRowInfo          `json:"RowInfo,omitempty" xml:"RowInfo,omitempty" type:"Struct"`
-	StampInfo      *RecognizeAllTextResponseBodyDataSubImagesStampInfo        `json:"StampInfo,omitempty" xml:"StampInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	Angle         *int32                                                  `json:"Angle,omitempty" xml:"Angle,omitempty"`
+	BarCodeInfo   *RecognizeAllTextResponseBodyDataSubImagesBarCodeInfo   `json:"BarCodeInfo,omitempty" xml:"BarCodeInfo,omitempty" type:"Struct"`
+	BlockInfo     *RecognizeAllTextResponseBodyDataSubImagesBlockInfo     `json:"BlockInfo,omitempty" xml:"BlockInfo,omitempty" type:"Struct"`
+	FigureInfo    map[string]*DataSubImagesFigureInfoValue                `json:"FigureInfo,omitempty" xml:"FigureInfo,omitempty"`
+	KvInfo        *RecognizeAllTextResponseBodyDataSubImagesKvInfo        `json:"KvInfo,omitempty" xml:"KvInfo,omitempty" type:"Struct"`
+	ParagraphInfo *RecognizeAllTextResponseBodyDataSubImagesParagraphInfo `json:"ParagraphInfo,omitempty" xml:"ParagraphInfo,omitempty" type:"Struct"`
+	QrCodeInfo    *RecognizeAllTextResponseBodyDataSubImagesQrCodeInfo    `json:"QrCodeInfo,omitempty" xml:"QrCodeInfo,omitempty" type:"Struct"`
+	QualityInfo   *RecognizeAllTextResponseBodyDataSubImagesQualityInfo   `json:"QualityInfo,omitempty" xml:"QualityInfo,omitempty" type:"Struct"`
+	RowInfo       *RecognizeAllTextResponseBodyDataSubImagesRowInfo       `json:"RowInfo,omitempty" xml:"RowInfo,omitempty" type:"Struct"`
+	StampInfo     *RecognizeAllTextResponseBodyDataSubImagesStampInfo     `json:"StampInfo,omitempty" xml:"StampInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
 	SubImageId     *int32                                                     `json:"SubImageId,omitempty" xml:"SubImageId,omitempty"`
 	SubImagePoints []*RecognizeAllTextResponseBodyDataSubImagesSubImagePoints `json:"SubImagePoints,omitempty" xml:"SubImagePoints,omitempty" type:"Repeated"`
 	SubImageRect   *RecognizeAllTextResponseBodyDataSubImagesSubImageRect     `json:"SubImageRect,omitempty" xml:"SubImageRect,omitempty" type:"Struct"`
@@ -1076,6 +1341,9 @@ func (s *RecognizeAllTextResponseBodyDataSubImages) SetType(v string) *Recognize
 }
 
 type RecognizeAllTextResponseBodyDataSubImagesBarCodeInfo struct {
+	// example:
+	//
+	// 2
 	BarCodeCount   *int32                                                                `json:"BarCodeCount,omitempty" xml:"BarCodeCount,omitempty"`
 	BarCodeDetails []*RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetails `json:"BarCodeDetails,omitempty" xml:"BarCodeDetails,omitempty" type:"Repeated"`
 }
@@ -1099,11 +1367,20 @@ func (s *RecognizeAllTextResponseBodyDataSubImagesBarCodeInfo) SetBarCodeDetails
 }
 
 type RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetails struct {
+	// example:
+	//
+	// 0
 	BarCodeAngle  *int32                                                                             `json:"BarCodeAngle,omitempty" xml:"BarCodeAngle,omitempty"`
 	BarCodePoints []*RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetailsBarCodePoints `json:"BarCodePoints,omitempty" xml:"BarCodePoints,omitempty" type:"Repeated"`
 	BarCodeRect   *RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetailsBarCodeRect     `json:"BarCodeRect,omitempty" xml:"BarCodeRect,omitempty" type:"Struct"`
-	Data          interface{}                                                                        `json:"Data,omitempty" xml:"Data,omitempty"`
-	Type          *string                                                                            `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// "1100011XXXXXX"
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// Code128
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetails) String() string {
@@ -1140,7 +1417,13 @@ func (s *RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetails) Set
 }
 
 type RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetailsBarCodePoints struct {
+	// example:
+	//
+	// 100
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 200
 	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
@@ -1163,10 +1446,22 @@ func (s *RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetailsBarCo
 }
 
 type RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetailsBarCodeRect struct {
+	// example:
+	//
+	// 100
 	CenterX *int32 `json:"CenterX,omitempty" xml:"CenterX,omitempty"`
+	// example:
+	//
+	// 200
 	CenterY *int32 `json:"CenterY,omitempty" xml:"CenterY,omitempty"`
-	Height  *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Width   *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 10
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 100
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetailsBarCodeRect) String() string {
@@ -1198,6 +1493,9 @@ func (s *RecognizeAllTextResponseBodyDataSubImagesBarCodeInfoBarCodeDetailsBarCo
 }
 
 type RecognizeAllTextResponseBodyDataSubImagesBlockInfo struct {
+	// example:
+	//
+	// 12
 	BlockCount   *int32                                                            `json:"BlockCount,omitempty" xml:"BlockCount,omitempty"`
 	BlockDetails []*RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetails `json:"BlockDetails,omitempty" xml:"BlockDetails,omitempty" type:"Repeated"`
 }
@@ -1221,13 +1519,22 @@ func (s *RecognizeAllTextResponseBodyDataSubImagesBlockInfo) SetBlockDetails(v [
 }
 
 type RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetails struct {
-	BlockAngle      *int32                                                                       `json:"BlockAngle,omitempty" xml:"BlockAngle,omitempty"`
-	BlockConfidence *int32                                                                       `json:"BlockConfidence,omitempty" xml:"BlockConfidence,omitempty"`
-	BlockContent    *string                                                                      `json:"BlockContent,omitempty" xml:"BlockContent,omitempty"`
-	BlockId         *int32                                                                       `json:"BlockId,omitempty" xml:"BlockId,omitempty"`
-	BlockPoints     []*RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsBlockPoints `json:"BlockPoints,omitempty" xml:"BlockPoints,omitempty" type:"Repeated"`
-	BlockRect       *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsBlockRect     `json:"BlockRect,omitempty" xml:"BlockRect,omitempty" type:"Struct"`
-	CharInfos       []*RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfos   `json:"CharInfos,omitempty" xml:"CharInfos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
+	BlockAngle *int32 `json:"BlockAngle,omitempty" xml:"BlockAngle,omitempty"`
+	// example:
+	//
+	// 98
+	BlockConfidence *int32  `json:"BlockConfidence,omitempty" xml:"BlockConfidence,omitempty"`
+	BlockContent    *string `json:"BlockContent,omitempty" xml:"BlockContent,omitempty"`
+	// example:
+	//
+	// 0
+	BlockId     *int32                                                                       `json:"BlockId,omitempty" xml:"BlockId,omitempty"`
+	BlockPoints []*RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsBlockPoints `json:"BlockPoints,omitempty" xml:"BlockPoints,omitempty" type:"Repeated"`
+	BlockRect   *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsBlockRect     `json:"BlockRect,omitempty" xml:"BlockRect,omitempty" type:"Struct"`
+	CharInfos   []*RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfos   `json:"CharInfos,omitempty" xml:"CharInfos,omitempty" type:"Repeated"`
 }
 
 func (s RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetails) String() string {
@@ -1274,7 +1581,13 @@ func (s *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetails) SetChar
 }
 
 type RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsBlockPoints struct {
+	// example:
+	//
+	// 100
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 200
 	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
@@ -1297,10 +1610,22 @@ func (s *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsBlockPoin
 }
 
 type RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsBlockRect struct {
+	// example:
+	//
+	// 100
 	CenterX *int32 `json:"CenterX,omitempty" xml:"CenterX,omitempty"`
+	// example:
+	//
+	// 200
 	CenterY *int32 `json:"CenterY,omitempty" xml:"CenterY,omitempty"`
-	Height  *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Width   *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 10
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 50
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsBlockRect) String() string {
@@ -1332,11 +1657,17 @@ func (s *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsBlockRect
 }
 
 type RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfos struct {
-	CharConfidence *int32                                                                               `json:"CharConfidence,omitempty" xml:"CharConfidence,omitempty"`
-	CharContent    *string                                                                              `json:"CharContent,omitempty" xml:"CharContent,omitempty"`
-	CharId         *int32                                                                               `json:"CharId,omitempty" xml:"CharId,omitempty"`
-	CharPoints     []*RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfosCharPoints `json:"CharPoints,omitempty" xml:"CharPoints,omitempty" type:"Repeated"`
-	CharRect       *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfosCharRect     `json:"CharRect,omitempty" xml:"CharRect,omitempty" type:"Struct"`
+	// example:
+	//
+	// 95
+	CharConfidence *int32  `json:"CharConfidence,omitempty" xml:"CharConfidence,omitempty"`
+	CharContent    *string `json:"CharContent,omitempty" xml:"CharContent,omitempty"`
+	// example:
+	//
+	// 0
+	CharId     *int32                                                                               `json:"CharId,omitempty" xml:"CharId,omitempty"`
+	CharPoints []*RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfosCharPoints `json:"CharPoints,omitempty" xml:"CharPoints,omitempty" type:"Repeated"`
+	CharRect   *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfosCharRect     `json:"CharRect,omitempty" xml:"CharRect,omitempty" type:"Struct"`
 }
 
 func (s RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfos) String() string {
@@ -1373,7 +1704,13 @@ func (s *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfos
 }
 
 type RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfosCharPoints struct {
+	// example:
+	//
+	// 100
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 200
 	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
@@ -1396,10 +1733,22 @@ func (s *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfos
 }
 
 type RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfosCharRect struct {
+	// example:
+	//
+	// 100
 	CenterX *int32 `json:"CenterX,omitempty" xml:"CenterX,omitempty"`
+	// example:
+	//
+	// 200
 	CenterY *int32 `json:"CenterY,omitempty" xml:"CenterY,omitempty"`
-	Height  *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Width   *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 10
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 10
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfosCharRect) String() string {
@@ -1431,7 +1780,10 @@ func (s *RecognizeAllTextResponseBodyDataSubImagesBlockInfoBlockDetailsCharInfos
 }
 
 type RecognizeAllTextResponseBodyDataSubImagesKvInfo struct {
-	Data      interface{}                                   `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 6
 	KvCount   *int32                                        `json:"KvCount,omitempty" xml:"KvCount,omitempty"`
 	KvDetails map[string]*DataSubImagesKvInfoKvDetailsValue `json:"KvDetails,omitempty" xml:"KvDetails,omitempty"`
 }
@@ -1460,6 +1812,9 @@ func (s *RecognizeAllTextResponseBodyDataSubImagesKvInfo) SetKvDetails(v map[str
 }
 
 type RecognizeAllTextResponseBodyDataSubImagesParagraphInfo struct {
+	// example:
+	//
+	// 11
 	ParagraphCount   *int32                                                                    `json:"ParagraphCount,omitempty" xml:"ParagraphCount,omitempty"`
 	ParagraphDetails []*RecognizeAllTextResponseBodyDataSubImagesParagraphInfoParagraphDetails `json:"ParagraphDetails,omitempty" xml:"ParagraphDetails,omitempty" type:"Repeated"`
 }
@@ -1485,7 +1840,10 @@ func (s *RecognizeAllTextResponseBodyDataSubImagesParagraphInfo) SetParagraphDet
 type RecognizeAllTextResponseBodyDataSubImagesParagraphInfoParagraphDetails struct {
 	BlockList        []*int32 `json:"BlockList,omitempty" xml:"BlockList,omitempty" type:"Repeated"`
 	ParagraphContent *string  `json:"ParagraphContent,omitempty" xml:"ParagraphContent,omitempty"`
-	ParagraphId      *int32   `json:"ParagraphId,omitempty" xml:"ParagraphId,omitempty"`
+	// example:
+	//
+	// 0
+	ParagraphId *int32 `json:"ParagraphId,omitempty" xml:"ParagraphId,omitempty"`
 }
 
 func (s RecognizeAllTextResponseBodyDataSubImagesParagraphInfoParagraphDetails) String() string {
@@ -1512,6 +1870,9 @@ func (s *RecognizeAllTextResponseBodyDataSubImagesParagraphInfoParagraphDetails)
 }
 
 type RecognizeAllTextResponseBodyDataSubImagesQrCodeInfo struct {
+	// example:
+	//
+	// 1
 	QrCodeCount   *int32                                                              `json:"QrCodeCount,omitempty" xml:"QrCodeCount,omitempty"`
 	QrCodeDetails []*RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetails `json:"QrCodeDetails,omitempty" xml:"QrCodeDetails,omitempty" type:"Repeated"`
 }
@@ -1535,7 +1896,13 @@ func (s *RecognizeAllTextResponseBodyDataSubImagesQrCodeInfo) SetQrCodeDetails(v
 }
 
 type RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetails struct {
-	Data         interface{}                                                                     `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// “http://www.gsxt.gov.cn/indeXXX”
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 0
 	QrCodeAngle  *int32                                                                          `json:"QrCodeAngle,omitempty" xml:"QrCodeAngle,omitempty"`
 	QrCodePoints []*RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetailsQrCodePoints `json:"QrCodePoints,omitempty" xml:"QrCodePoints,omitempty" type:"Repeated"`
 	QrCodeRect   *RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetailsQrCodeRect     `json:"QrCodeRect,omitempty" xml:"QrCodeRect,omitempty" type:"Struct"`
@@ -1570,7 +1937,13 @@ func (s *RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetails) SetQr
 }
 
 type RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetailsQrCodePoints struct {
+	// example:
+	//
+	// 100
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 200
 	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
@@ -1593,10 +1966,22 @@ func (s *RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetailsQrCodeP
 }
 
 type RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetailsQrCodeRect struct {
+	// example:
+	//
+	// 100
 	CenterX *int32 `json:"CenterX,omitempty" xml:"CenterX,omitempty"`
+	// example:
+	//
+	// 200
 	CenterY *int32 `json:"CenterY,omitempty" xml:"CenterY,omitempty"`
-	Height  *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Width   *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 100
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 100
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetailsQrCodeRect) String() string {
@@ -1628,11 +2013,26 @@ func (s *RecognizeAllTextResponseBodyDataSubImagesQrCodeInfoQrCodeDetailsQrCodeR
 }
 
 type RecognizeAllTextResponseBodyDataSubImagesQualityInfo struct {
+	// example:
+	//
+	// 90.5
 	CompletenessScore *float32 `json:"CompletenessScore,omitempty" xml:"CompletenessScore,omitempty"`
-	IsCopy            *bool    `json:"IsCopy,omitempty" xml:"IsCopy,omitempty"`
-	IsReshoot         *bool    `json:"IsReshoot,omitempty" xml:"IsReshoot,omitempty"`
-	QualityScore      *float32 `json:"QualityScore,omitempty" xml:"QualityScore,omitempty"`
-	TamperScore       *float32 `json:"TamperScore,omitempty" xml:"TamperScore,omitempty"`
+	// example:
+	//
+	// false
+	IsCopy *bool `json:"IsCopy,omitempty" xml:"IsCopy,omitempty"`
+	// example:
+	//
+	// false
+	IsReshoot *bool `json:"IsReshoot,omitempty" xml:"IsReshoot,omitempty"`
+	// example:
+	//
+	// 80.5
+	QualityScore *float32 `json:"QualityScore,omitempty" xml:"QualityScore,omitempty"`
+	// example:
+	//
+	// 10.5
+	TamperScore *float32 `json:"TamperScore,omitempty" xml:"TamperScore,omitempty"`
 }
 
 func (s RecognizeAllTextResponseBodyDataSubImagesQualityInfo) String() string {
@@ -1669,6 +2069,9 @@ func (s *RecognizeAllTextResponseBodyDataSubImagesQualityInfo) SetTamperScore(v 
 }
 
 type RecognizeAllTextResponseBodyDataSubImagesRowInfo struct {
+	// example:
+	//
+	// 9
 	RowCount   *int32                                                        `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
 	RowDetails []*RecognizeAllTextResponseBodyDataSubImagesRowInfoRowDetails `json:"RowDetails,omitempty" xml:"RowDetails,omitempty" type:"Repeated"`
 }
@@ -1694,7 +2097,10 @@ func (s *RecognizeAllTextResponseBodyDataSubImagesRowInfo) SetRowDetails(v []*Re
 type RecognizeAllTextResponseBodyDataSubImagesRowInfoRowDetails struct {
 	BlockList  []*int32 `json:"BlockList,omitempty" xml:"BlockList,omitempty" type:"Repeated"`
 	RowContent *string  `json:"RowContent,omitempty" xml:"RowContent,omitempty"`
-	RowId      *int32   `json:"RowId,omitempty" xml:"RowId,omitempty"`
+	// example:
+	//
+	// 0
+	RowId *int32 `json:"RowId,omitempty" xml:"RowId,omitempty"`
 }
 
 func (s RecognizeAllTextResponseBodyDataSubImagesRowInfoRowDetails) String() string {
@@ -1721,6 +2127,9 @@ func (s *RecognizeAllTextResponseBodyDataSubImagesRowInfoRowDetails) SetRowId(v 
 }
 
 type RecognizeAllTextResponseBodyDataSubImagesStampInfo struct {
+	// example:
+	//
+	// 2
 	StampCount   *int32                                                            `json:"StampCount,omitempty" xml:"StampCount,omitempty"`
 	StampDetails []*RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetails `json:"StampDetails,omitempty" xml:"StampDetails,omitempty" type:"Repeated"`
 }
@@ -1744,7 +2153,10 @@ func (s *RecognizeAllTextResponseBodyDataSubImagesStampInfo) SetStampDetails(v [
 }
 
 type RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetails struct {
-	Data        *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsData          `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Data *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
 	StampAngle  *int32                                                                       `json:"StampAngle,omitempty" xml:"StampAngle,omitempty"`
 	StampPoints []*RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsStampPoints `json:"StampPoints,omitempty" xml:"StampPoints,omitempty" type:"Repeated"`
 	StampRect   *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsStampRect     `json:"StampRect,omitempty" xml:"StampRect,omitempty" type:"Struct"`
@@ -1779,13 +2191,28 @@ func (s *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetails) SetStam
 }
 
 type RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsData struct {
-	AntiFakeCode        *string `json:"AntiFakeCode,omitempty" xml:"AntiFakeCode,omitempty"`
-	CompanyId           *string `json:"CompanyId,omitempty" xml:"CompanyId,omitempty"`
-	OrganizationName    *string `json:"OrganizationName,omitempty" xml:"OrganizationName,omitempty"`
+	// example:
+	//
+	// "3205823XXXXXX"
+	AntiFakeCode *string `json:"AntiFakeCode,omitempty" xml:"AntiFakeCode,omitempty"`
+	// example:
+	//
+	// "XXX"
+	CompanyId        *string `json:"CompanyId,omitempty" xml:"CompanyId,omitempty"`
+	OrganizationName *string `json:"OrganizationName,omitempty" xml:"OrganizationName,omitempty"`
+	// example:
+	//
+	// ""
 	OrganizationNameEng *string `json:"OrganizationNameEng,omitempty" xml:"OrganizationNameEng,omitempty"`
-	OtherText           *string `json:"OtherText,omitempty" xml:"OtherText,omitempty"`
-	TaxpayerId          *string `json:"TaxpayerId,omitempty" xml:"TaxpayerId,omitempty"`
-	TopText             *string `json:"TopText,omitempty" xml:"TopText,omitempty"`
+	// example:
+	//
+	// "3205823XXXXXX"
+	OtherText *string `json:"OtherText,omitempty" xml:"OtherText,omitempty"`
+	// example:
+	//
+	// ""
+	TaxpayerId *string `json:"TaxpayerId,omitempty" xml:"TaxpayerId,omitempty"`
+	TopText    *string `json:"TopText,omitempty" xml:"TopText,omitempty"`
 }
 
 func (s RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsData) String() string {
@@ -1832,7 +2259,13 @@ func (s *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsData) Set
 }
 
 type RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsStampPoints struct {
+	// example:
+	//
+	// 100
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 200
 	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
@@ -1855,10 +2288,22 @@ func (s *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsStampPoin
 }
 
 type RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsStampRect struct {
+	// example:
+	//
+	// 100
 	CenterX *int32 `json:"CenterX,omitempty" xml:"CenterX,omitempty"`
+	// example:
+	//
+	// 200
 	CenterY *int32 `json:"CenterY,omitempty" xml:"CenterY,omitempty"`
-	Height  *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Width   *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 50
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 50
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsStampRect) String() string {
@@ -1890,7 +2335,13 @@ func (s *RecognizeAllTextResponseBodyDataSubImagesStampInfoStampDetailsStampRect
 }
 
 type RecognizeAllTextResponseBodyDataSubImagesSubImagePoints struct {
+	// example:
+	//
+	// 100
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 200
 	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
@@ -1913,10 +2364,22 @@ func (s *RecognizeAllTextResponseBodyDataSubImagesSubImagePoints) SetY(v int32) 
 }
 
 type RecognizeAllTextResponseBodyDataSubImagesSubImageRect struct {
+	// example:
+	//
+	// 100
 	CenterX *int32 `json:"CenterX,omitempty" xml:"CenterX,omitempty"`
+	// example:
+	//
+	// 200
 	CenterY *int32 `json:"CenterY,omitempty" xml:"CenterY,omitempty"`
-	Height  *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Width   *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 2000
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 1000
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s RecognizeAllTextResponseBodyDataSubImagesSubImageRect) String() string {
@@ -1948,10 +2411,19 @@ func (s *RecognizeAllTextResponseBodyDataSubImagesSubImageRect) SetWidth(v int32
 }
 
 type RecognizeAllTextResponseBodyDataSubImagesTableInfo struct {
+	// example:
+	//
+	// 2
 	TableCount   *int32                                                            `json:"TableCount,omitempty" xml:"TableCount,omitempty"`
 	TableDetails []*RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetails `json:"TableDetails,omitempty" xml:"TableDetails,omitempty" type:"Repeated"`
-	TableExcel   *string                                                           `json:"TableExcel,omitempty" xml:"TableExcel,omitempty"`
-	TableHtml    *string                                                           `json:"TableHtml,omitempty" xml:"TableHtml,omitempty"`
+	// example:
+	//
+	// https://example.xlsx
+	TableExcel *string `json:"TableExcel,omitempty" xml:"TableExcel,omitempty"`
+	// example:
+	//
+	// https://example.html
+	TableHtml *string `json:"TableHtml,omitempty" xml:"TableHtml,omitempty"`
 }
 
 func (s RecognizeAllTextResponseBodyDataSubImagesTableInfo) String() string {
@@ -1983,12 +2455,24 @@ func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfo) SetTableHtml(v stri
 }
 
 type RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetails struct {
+	// example:
+	//
+	// 29
 	CellCount   *int32                                                                       `json:"CellCount,omitempty" xml:"CellCount,omitempty"`
 	CellDetails []*RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetails `json:"CellDetails,omitempty" xml:"CellDetails,omitempty" type:"Repeated"`
-	ColumnCount *int32                                                                       `json:"ColumnCount,omitempty" xml:"ColumnCount,omitempty"`
-	Footer      *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsFooter        `json:"Footer,omitempty" xml:"Footer,omitempty" type:"Struct"`
-	Header      *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsHeader        `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
-	RowCount    *int32                                                                       `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
+	// example:
+	//
+	// 3
+	ColumnCount *int32                                                                `json:"ColumnCount,omitempty" xml:"ColumnCount,omitempty"`
+	Footer      *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsFooter `json:"Footer,omitempty" xml:"Footer,omitempty" type:"Struct"`
+	Header      *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsHeader `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	// example:
+	//
+	// 10
+	RowCount *int32 `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
+	// example:
+	//
+	// 0
 	TableId     *int32                                                                       `json:"TableId,omitempty" xml:"TableId,omitempty"`
 	TablePoints []*RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsTablePoints `json:"TablePoints,omitempty" xml:"TablePoints,omitempty" type:"Repeated"`
 	TableRect   *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsTableRect     `json:"TableRect,omitempty" xml:"TableRect,omitempty" type:"Struct"`
@@ -2048,16 +2532,34 @@ func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetails) SetTabl
 }
 
 type RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetails struct {
-	BlockList   []*int32                                                                               `json:"BlockList,omitempty" xml:"BlockList,omitempty" type:"Repeated"`
-	CellAngle   *int32                                                                                 `json:"CellAngle,omitempty" xml:"CellAngle,omitempty"`
-	CellContent *string                                                                                `json:"CellContent,omitempty" xml:"CellContent,omitempty"`
-	CellId      *int32                                                                                 `json:"CellId,omitempty" xml:"CellId,omitempty"`
-	CellPoints  []*RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetailsCellPoints `json:"CellPoints,omitempty" xml:"CellPoints,omitempty" type:"Repeated"`
-	CellRect    *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetailsCellRect     `json:"CellRect,omitempty" xml:"CellRect,omitempty" type:"Struct"`
-	ColumnEnd   *int32                                                                                 `json:"ColumnEnd,omitempty" xml:"ColumnEnd,omitempty"`
-	ColumnStart *int32                                                                                 `json:"ColumnStart,omitempty" xml:"ColumnStart,omitempty"`
-	RowEnd      *int32                                                                                 `json:"RowEnd,omitempty" xml:"RowEnd,omitempty"`
-	RowStart    *int32                                                                                 `json:"RowStart,omitempty" xml:"RowStart,omitempty"`
+	BlockList []*int32 `json:"BlockList,omitempty" xml:"BlockList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
+	CellAngle   *int32  `json:"CellAngle,omitempty" xml:"CellAngle,omitempty"`
+	CellContent *string `json:"CellContent,omitempty" xml:"CellContent,omitempty"`
+	// example:
+	//
+	// 0
+	CellId     *int32                                                                                 `json:"CellId,omitempty" xml:"CellId,omitempty"`
+	CellPoints []*RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetailsCellPoints `json:"CellPoints,omitempty" xml:"CellPoints,omitempty" type:"Repeated"`
+	CellRect   *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetailsCellRect     `json:"CellRect,omitempty" xml:"CellRect,omitempty" type:"Struct"`
+	// example:
+	//
+	// 5
+	ColumnEnd *int32 `json:"ColumnEnd,omitempty" xml:"ColumnEnd,omitempty"`
+	// example:
+	//
+	// 2
+	ColumnStart *int32 `json:"ColumnStart,omitempty" xml:"ColumnStart,omitempty"`
+	// example:
+	//
+	// 0
+	RowEnd *int32 `json:"RowEnd,omitempty" xml:"RowEnd,omitempty"`
+	// example:
+	//
+	// 0
+	RowStart *int32 `json:"RowStart,omitempty" xml:"RowStart,omitempty"`
 }
 
 func (s RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetails) String() string {
@@ -2119,7 +2621,13 @@ func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetai
 }
 
 type RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetailsCellPoints struct {
+	// example:
+	//
+	// 100
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 200
 	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
@@ -2142,10 +2650,22 @@ func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetai
 }
 
 type RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetailsCellRect struct {
+	// example:
+	//
+	// 100
 	CenterX *int32 `json:"CenterX,omitempty" xml:"CenterX,omitempty"`
+	// example:
+	//
+	// 200
 	CenterY *int32 `json:"CenterY,omitempty" xml:"CenterY,omitempty"`
-	Height  *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Width   *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 20
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 20
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetailsCellRect) String() string {
@@ -2177,6 +2697,9 @@ func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsCellDetai
 }
 
 type RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsFooter struct {
+	// example:
+	//
+	// 0
 	BlockId  *int32    `json:"BlockId,omitempty" xml:"BlockId,omitempty"`
 	Contents []*string `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
 }
@@ -2200,6 +2723,9 @@ func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsFooter) S
 }
 
 type RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsHeader struct {
+	// example:
+	//
+	// 0
 	BlockId  *int32    `json:"BlockId,omitempty" xml:"BlockId,omitempty"`
 	Contents []*string `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
 }
@@ -2223,7 +2749,13 @@ func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsHeader) S
 }
 
 type RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsTablePoints struct {
+	// example:
+	//
+	// 100
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 200
 	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
@@ -2246,10 +2778,22 @@ func (s *RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsTablePoin
 }
 
 type RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsTableRect struct {
+	// example:
+	//
+	// 100
 	CenterX *int32 `json:"CenterX,omitempty" xml:"CenterX,omitempty"`
+	// example:
+	//
+	// 200
 	CenterY *int32 `json:"CenterY,omitempty" xml:"CenterY,omitempty"`
-	Height  *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	Width   *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 100
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 100
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s RecognizeAllTextResponseBodyDataSubImagesTableInfoTableDetailsTableRect) String() string {
@@ -2310,6 +2854,9 @@ func (s *RecognizeAllTextResponse) SetBody(v *RecognizeAllTextResponseBody) *Rec
 }
 
 type RecognizeBankAcceptanceRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/imgextra/i1/O1CN016eNk0d1ubhKP4y6gK_!!6000000006056-2-tps-631-570.png
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -2333,9 +2880,21 @@ func (s *RecognizeBankAcceptanceRequest) SetBody(v io.Reader) *RecognizeBankAcce
 }
 
 type RecognizeBankAcceptanceResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// noPermission
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {"data": {"出票日期": "2021-03-31", "到期日期": "2021-06-30", "票据状态": "提示收票已签收", "票据号码": "1306595000098202103", "出票人全称": "广东格林精密部件股份有限公司", "出票人账号": "9550880016631800646", "出票人开户银行": "广发银行股份有限公司惠州江北支行", "收票人全称": "限公司", "收票人账号": "2008022009200267322", "收票人开户银行": "中国工商银行惠州仲恺高新区支行", "票据金额大写": "贰拾万捌仟捌佰肆拾伍元整", "票据金额小写": "208845.00", "承兑人全称": "广发银行股份有限公司惠州江北支行", "承兑人账号": "", "承兑人开户行行号": "306595000098", "承兑人开户行名称": "广发银行股份有限公司惠州江北支行", "交易合同号": "", "能否转让": "可转让", "承兑日期": "2021-03-31"}, "ftype": 0, "height": 570, "orgHeight": 570, "orgWidth": 631, "prism_keyValueInfo": [{"key": "出票日期", "keyProb": 100, "value": "2021-03-31", "valuePos": [{"x": 148, "y": 37}, {"x": 148, "y": 48}, {"x": 86, "y": 48}, {"x": 86, "y": 37}], "valueProb": 100}, {"key": "到期日期", "keyProb": 100, "value": "2021-06-30", "valuePos": [{"x": 150, "y": 54}, {"x": 150, "y": 66}, {"x": 86, "y": 66}, {"x": 86, "y": 54}], "valueProb": 100}, {"key": "票据状态", "keyProb": 100, "value": "提示收票已签收", "valuePos": [{"x": 466, "y": 35}, {"x": 466, "y": 50}, {"x": 379, "y": 50}, {"x": 379, "y": 35}], "valueProb": 100}, {"key": "票据号码", "keyProb": 96, "value": "1306595000098202103", "valuePos": [{"x": 509, "y": 55}, {"x": 509, "y": 66}, {"x": 379, "y": 66}, {"x": 379, "y": 54}], "valueProb": 96}, {"key": "出票人全称", "keyProb": 100, "value": "广东格林精密部件股份有限公司", "valuePos": [{"x": 274, "y": 73}, {"x": 274, "y": 88}, {"x": 102, "y": 88}, {"x": 102, "y": 73}], "valueProb": 100}, {"key": "出票人账号", "keyProb": 97, "value": "9550880016631800646", "valuePos": [{"x": 220, "y": 94}, {"x": 220, "y": 106}, {"x": 104, "y": 106}, {"x": 104, "y": 94}], "valueProb": 97}, {"key": "出票人开户银行", "keyProb": 100, "value": "广发银行股份有限公司惠州江北支行", "valuePos": [{"x": 297, "y": 119}, {"x": 297, "y": 134}, {"x": 105, "y": 134}, {"x": 105, "y": 118}], "valueProb": 100}, {"key": "收票人全称", "keyProb": 100, "value": "限公司", "valuePos": [{"x": 548, "y": 75}, {"x": 588, "y": 74}, {"x": 589, "y": 86}, {"x": 548, "y": 88}], "valueProb": 100}, {"key": "收票人账号", "keyProb": 99, "value": "2008022009200267322", "valuePos": [{"x": 536, "y": 96}, {"x": 536, "y": 106}, {"x": 418, "y": 106}, {"x": 418, "y": 96}], "valueProb": 99}, {"key": "收票人开户银行", "keyProb": 100, "value": "中国工商银行惠州仲恺高新区支行", "valuePos": [{"x": 585, "y": 111}, {"x": 586, "y": 136}, {"x": 420, "y": 137}, {"x": 419, "y": 113}], "valueProb": 100}, {"key": "票据金额大写", "keyProb": 100, "value": "贰拾万捌仟捌佰肆拾伍元整", "valuePos": [{"x": 299, "y": 162}, {"x": 299, "y": 178}, {"x": 152, "y": 178}, {"x": 152, "y": 162}], "valueProb": 100}, {"key": "票据金额小写", "keyProb": 100, "value": "208845.00", "valuePos": [{"x": 299, "y": 162}, {"x": 299, "y": 178}, {"x": 152, "y": 178}, {"x": 152, "y": 162}], "valueProb": 100}, {"key": "承兑人全称", "keyProb": 100, "value": "广发银行股份有限公司惠州江北支行", "valuePos": [{"x": 309, "y": 208}, {"x": 309, "y": 234}, {"x": 178, "y": 234}, {"x": 178, "y": 208}], "valueProb": 100}, {"key": "承兑人账号", "keyProb": 98, "value": "", "valuePos": [{"x": 187, "y": 247}, {"x": 187, "y": 258}, {"x": 180, "y": 258}, {"x": 180, "y": 247}], "valueProb": 98}, {"key": "承兑人开户行行号", "keyProb": 100, "value": "306595000098", "valuePos": [{"x": 493, "y": 216}, {"x": 493, "y": 227}, {"x": 420, "y": 227}, {"x": 420, "y": 216}], "valueProb": 100}, {"key": "承兑人开户行名称", "keyProb": 100, "value": "广发银行股份有限公司惠州江北支行", "valuePos": [{"x": 419, "y": 239}, {"x": 586, "y": 239}, {"x": 586, "y": 264}, {"x": 419, "y": 264}], "valueProb": 100}, {"key": "交易合同号", "keyProb": 100, "value": "", "valueProb": 100}, {"key": "能否转让", "keyProb": 100, "value": "可转让", "valuePos": [{"x": 143, "y": 307}, {"x": 143, "y": 322}, {"x": 105, "y": 322}, {"x": 105, "y": 307}], "valueProb": 100}, {"key": "承兑日期", "keyProb": 100, "value": "2021-03-31", "valuePos": [{"x": 404, "y": 314}, {"x": 465, "y": 314}, {"x": 465, "y": 326}, {"x": 404, "y": 326}], "valueProb": 100}], "sliceRect": {"x0": 11, "y0": 90, "x1": 614, "y1": 93, "x2": 614, "y2": 490, "x3": 10, "y3": 489}, "width": 631}
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2397,6 +2956,9 @@ func (s *RecognizeBankAcceptanceResponse) SetBody(v *RecognizeBankAcceptanceResp
 }
 
 type RecognizeBankAccountLicenseRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB17liGda67gK0jSZFHXXa9jVXa-1375-1000.png
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -2420,9 +2982,18 @@ func (s *RecognizeBankAccountLicenseRequest) SetBody(v io.Reader) *RecognizeBank
 }
 
 type RecognizeBankAccountLicenseResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2484,6 +3055,9 @@ func (s *RecognizeBankAccountLicenseResponse) SetBody(v *RecognizeBankAccountLic
 }
 
 type RecognizeBankCardRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1fL.fiCzqK1RjSZPcXXbTepXa-3116-2139.jpg
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -2507,9 +3081,18 @@ func (s *RecognizeBankCardRequest) SetBody(v io.Reader) *RecognizeBankCardReques
 }
 
 type RecognizeBankCardResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2571,9 +3154,12 @@ func (s *RecognizeBankCardResponse) SetBody(v *RecognizeBankCardResponseBody) *R
 }
 
 type RecognizeBasicRequest struct {
-	NeedRotate *bool     `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
-	Url        *string   `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body       io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	NeedRotate *bool `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1Wo7eXAvoK1RjSZFDXXXY3pXa-2512-3509.jpg
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeBasicRequest) String() string {
@@ -2600,9 +3186,18 @@ func (s *RecognizeBasicRequest) SetBody(v io.Reader) *RecognizeBasicRequest {
 }
 
 type RecognizeBasicResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2664,6 +3259,9 @@ func (s *RecognizeBasicResponse) SetBody(v *RecognizeBasicResponseBody) *Recogni
 }
 
 type RecognizeBirthCertificationRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1P6Yll8Bh1e4jSZFhXXcC9VXa-1381-962.png
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -2687,9 +3285,18 @@ func (s *RecognizeBirthCertificationRequest) SetBody(v io.Reader) *RecognizeBirt
 }
 
 type RecognizeBirthCertificationResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2751,6 +3358,9 @@ func (s *RecognizeBirthCertificationResponse) SetBody(v *RecognizeBirthCertifica
 }
 
 type RecognizeBusShipTicketRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/imgextra/i2/O1CN010iDcM7218ZQJtJyGX_!!6000000006940-0-tps-936-541.jpg
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -2774,9 +3384,21 @@ func (s *RecognizeBusShipTicketRequest) SetBody(v io.Reader) *RecognizeBusShipTi
 }
 
 type RecognizeBusShipTicketResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// noPermission
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {"angle":0,"data":{"title":"南通汽运实业集团有限公司旅客运输专用发票","formType":"发票联","invoiceCode":"132061981313","invoiceNumber":"05591493","date":"2020-01-20","time":"12:30","departureStation":"南通东站","arrivalStation":"上海总站","totalAmount":"56.00","passengerName":"颜跃第","idcardNo":"3210****2218"},"ftype":0,"height":541,"orgHeight":541,"orgWidth":936,"prism_keyValueInfo":[{"key":"title","keyProb":97,"value":"南通汽运实业集团有限公司旅客运输专用发票","valuePos":[{"x":508,"y":16},{"x":509,"y":94},{"x":91,"y":95},{"x":90,"y":18}],"valueProb":98},{"key":"formType","keyProb":100,"value":"发票联","valuePos":[{"x":388,"y":119},{"x":388,"y":157},{"x":209,"y":157},{"x":209,"y":118}],"valueProb":100},{"key":"invoiceCode","keyProb":100,"value":"132061981313","valuePos":[{"x":929,"y":127},{"x":929,"y":161},{"x":699,"y":162},{"x":698,"y":128}],"valueProb":100},{"key":"invoiceNumber","keyProb":100,"value":"05591493","valuePos":[{"x":851,"y":167},{"x":851,"y":199},{"x":696,"y":201},{"x":695,"y":168}],"valueProb":100},{"key":"date","keyProb":100,"value":"2020-01-20","valuePos":[{"x":185,"y":356},{"x":186,"y":384},{"x":62,"y":385},{"x":62,"y":358}],"valueProb":100},{"key":"time","keyProb":100,"value":"12:30","valuePos":[{"x":186,"y":385},{"x":186,"y":358},{"x":264,"y":359},{"x":264,"y":386}],"valueProb":100},{"key":"departureStation","keyProb":100,"value":"南通东站","valuePos":[{"x":66,"y":304},{"x":66,"y":271},{"x":187,"y":274},{"x":186,"y":308}],"valueProb":100},{"key":"arrivalStation","keyProb":100,"value":"上海总站","valuePos":[{"x":205,"y":306},{"x":205,"y":273},{"x":326,"y":276},{"x":325,"y":308}],"valueProb":100},{"key":"totalAmount","keyProb":100,"value":"56.00","valuePos":[{"x":402,"y":278},{"x":402,"y":306},{"x":366,"y":306},{"x":366,"y":278}],"valueProb":100},{"key":"passengerName","keyProb":97,"value":"颜跃第","valuePos":[{"x":426,"y":466},{"x":427,"y":434},{"x":516,"y":435},{"x":516,"y":468}],"valueProb":97},{"key":"idcardNo","keyProb":100,"value":"3210****2218","valuePos":[{"x":729,"y":441},{"x":729,"y":468},{"x":548,"y":468},{"x":548,"y":441}],"valueProb":100}],"sliceRect":{"x0":0,"y0":14,"x1":934,"y1":18,"x2":936,"y2":541,"x3":0,"y3":541},"width":936}
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2838,6 +3460,9 @@ func (s *RecognizeBusShipTicketResponse) SetBody(v *RecognizeBusShipTicketRespon
 }
 
 type RecognizeBusinessLicenseRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1nnHJNSrqK1RjSZK9XXXyypXa-564-829.png
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -2861,9 +3486,18 @@ func (s *RecognizeBusinessLicenseRequest) SetBody(v io.Reader) *RecognizeBusines
 }
 
 type RecognizeBusinessLicenseResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2925,6 +3559,9 @@ func (s *RecognizeBusinessLicenseResponse) SetBody(v *RecognizeBusinessLicenseRe
 }
 
 type RecognizeCarInvoiceRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1hC7bXCzqK1RjSZPcXXbTepXa-832-616.jpg
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -2948,9 +3585,18 @@ func (s *RecognizeCarInvoiceRequest) SetBody(v io.Reader) *RecognizeCarInvoiceRe
 }
 
 type RecognizeCarInvoiceResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3012,6 +3658,9 @@ func (s *RecognizeCarInvoiceResponse) SetBody(v *RecognizeCarInvoiceResponseBody
 }
 
 type RecognizeCarNumberRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1Wo7eXAvoK1RjSZFDXXXY3pXa-2512-3509.jpg
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -3035,8 +3684,14 @@ func (s *RecognizeCarNumberRequest) SetBody(v io.Reader) *RecognizeCarNumberRequ
 }
 
 type RecognizeCarNumberResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -3099,6 +3754,9 @@ func (s *RecognizeCarNumberResponse) SetBody(v *RecognizeCarNumberResponseBody) 
 }
 
 type RecognizeCarVinCodeRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1Wo7eXAvoK1RjSZFDXXXY3pXa-2512-3509.jpg
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -3122,9 +3780,18 @@ func (s *RecognizeCarVinCodeRequest) SetBody(v io.Reader) *RecognizeCarVinCodeRe
 }
 
 type RecognizeCarVinCodeResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3186,9 +3853,15 @@ func (s *RecognizeCarVinCodeResponse) SetBody(v *RecognizeCarVinCodeResponseBody
 }
 
 type RecognizeChinesePassportRequest struct {
-	OutputFigure *bool     `json:"OutputFigure,omitempty" xml:"OutputFigure,omitempty"`
-	Url          *string   `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body         io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	// example:
+	//
+	// true
+	OutputFigure *bool `json:"OutputFigure,omitempty" xml:"OutputFigure,omitempty"`
+	// example:
+	//
+	// https://img.alicdn.com/imgextra/i2/O1CN01yaQKCT1PrUsTWqgSK_!!6000000001894-0-tps-271-186.jpg
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeChinesePassportRequest) String() string {
@@ -3215,9 +3888,21 @@ func (s *RecognizeChinesePassportRequest) SetBody(v io.Reader) *RecognizeChinese
 }
 
 type RecognizeChinesePassportResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// noPermission
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {"data":{"passportType":"P","countryCode":"CHN","passportNumber":"E90000082","nameEn":",ZHENGJIANGANGUX","name":"","sex":"3.7F","birthPlace":"北京/BEIJIHG","nationality":"","issuePlace":"山东/SHANDON","issueAuthority":"公安部出入境管理局","mrzLine1":"POCHNZHENGJIAN<<YANGBEN<<<<<<<<<<<<<<<<<<<<<","mrzLine2":"E900000821CHN8108038F2110189NGKELMPONBPJB978","validToDate":"2921.DCF.3B","birthDate":"08.1981","issueDate":"91.1010.19"},"ftype":0,"height":186,"orgHeight":186,"orgWidth":271,"prism_keyValueInfo":[{"key":"passportType","keyProb":100,"value":"P","valuePos":[{"x":93,"y":26},{"x":93,"y":33},{"x":87,"y":33},{"x":87,"y":26}],"valueProb":100},{"key":"countryCode","keyProb":92,"value":"CHN","valuePos":[{"x":143,"y":26},{"x":143,"y":33},{"x":126,"y":33},{"x":126,"y":26}],"valueProb":92},{"key":"passportNumber","keyProb":100,"value":"E90000082","valuePos":[{"x":173,"y":29},{"x":230,"y":28},{"x":230,"y":35},{"x":174,"y":37}],"valueProb":100},{"key":"nameEn","keyProb":87,"value":",ZHENGJIANGANGUX","valuePos":[{"x":88,"y":55},{"x":89,"y":48},{"x":166,"y":49},{"x":166,"y":57}],"valueProb":87},{"key":"name","keyProb":100,"value":"","valueProb":100},{"key":"sex","keyProb":99,"value":"3.7F","valuePos":[{"x":103,"y":67},{"x":103,"y":74},{"x":87,"y":74},{"x":87,"y":67}],"valueProb":99},{"key":"birthPlace","keyProb":98,"value":"北京/BEIJIHG","valuePos":[{"x":133,"y":83},{"x":133,"y":91},{"x":87,"y":91},{"x":87,"y":83}],"valueProb":98},{"key":"nationality","keyProb":100,"value":"","valueProb":100},{"key":"issuePlace","keyProb":99,"value":"山东/SHANDON","valuePos":[{"x":136,"y":100},{"x":136,"y":108},{"x":88,"y":108},{"x":88,"y":100}],"valueProb":99},{"key":"issueAuthority","keyProb":79,"value":"公安部出入境管理局","valuePos":[{"x":87,"y":118},{"x":142,"y":118},{"x":142,"y":125},{"x":87,"y":125}],"valueProb":79},{"key":"mrzLine1","keyProb":100,"value":"POCHNZHENGJIAN<<YANGBEN<<<<<<<<<<<<<<<<<<<<<","valuePos":[{"x":12,"y":153},{"x":252,"y":152},{"x":252,"y":159},{"x":12,"y":161}],"valueProb":100},{"key":"mrzLine2","keyProb":99,"value":"E900000821CHN8108038F2110189NGKELMPONBPJB978","valuePos":[{"x":11,"y":166},{"x":253,"y":165},{"x":253,"y":173},{"x":12,"y":175}],"valueProb":99},{"key":"validToDate","keyProb":60,"value":"2921.DCF.3B","valuePos":[{"x":170,"y":107},{"x":171,"y":99},{"x":226,"y":101},{"x":225,"y":108}],"valueProb":86},{"key":"birthDate","keyProb":100,"value":"08.1981","valuePos":[{"x":209,"y":67},{"x":209,"y":74},{"x":181,"y":74},{"x":181,"y":67}],"valueProb":99},{"key":"issueDate","keyProb":82,"value":"91.1010.19","valuePos":[{"x":226,"y":83},{"x":226,"y":90},{"x":170,"y":90},{"x":170,"y":83}],"valueProb":84}],"sliceRect":{"x0":1,"y0":1,"x1":269,"y1":1,"x2":269,"y2":184,"x3":1,"y3":183},"width":271}
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3279,6 +3964,9 @@ func (s *RecognizeChinesePassportResponse) SetBody(v *RecognizeChinesePassportRe
 }
 
 type RecognizeCommonPrintedInvoiceRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/imgextra/i2/O1CN01XU9dTh1O4CdHxXhMw_!!6000000001651-0-tps-1437-909.jpg
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -3302,9 +3990,21 @@ func (s *RecognizeCommonPrintedInvoiceRequest) SetBody(v io.Reader) *RecognizeCo
 }
 
 type RecognizeCommonPrintedInvoiceResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// noPermission
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {"angle":0,"data":{"title":"浙江通用机打发票","formType":"发票联","invoiceCode":"133041930432","invoiceNumber":"01488558","printedInvoiceCode":"","printedInvoiceNumber":"","invoiceDate":"2019-11-19","totalAmount":"170.00","sellerName":"嘉兴市南湖区余新镇瘦汁味餐饮店","sellerTaxNumber":"92330402MA28B4LL4B","purchaserName":"阿里巴巴俪人购(上海)电子商务有限公司","purchaserTaxNumber":"91310114312356647G","drawer":"高伟","recipient":"","remarks":"","invoiceDetails":[{"itemName":"餐饮费","unit":"","quantity":"1","unitPrice":"170.00","amount":"170.00"}]},"ftype":0,"height":909,"orgHeight":909,"orgWidth":1437,"prism_keyValueInfo":[{"key":"title","keyProb":100,"value":"浙江通用机打发票","valuePos":[{"x":431,"y":68},{"x":843,"y":62},{"x":843,"y":125},{"x":431,"y":130}],"valueProb":100},{"key":"formType","keyProb":100,"value":"发票联","valuePos":[{"x":507,"y":154},{"x":767,"y":152},{"x":768,"y":214},{"x":508,"y":215}],"valueProb":100},{"key":"invoiceCode","keyProb":100,"value":"133041930432","valuePos":[{"x":990,"y":134},{"x":1283,"y":131},{"x":1283,"y":167},{"x":991,"y":171}],"valueProb":100},{"key":"invoiceNumber","keyProb":100,"value":"01488558","valuePos":[{"x":999,"y":195},{"x":1197,"y":193},{"x":1198,"y":234},{"x":999,"y":235}],"valueProb":100},{"key":"printedInvoiceCode","keyProb":100,"value":"","valueProb":100},{"key":"printedInvoiceNumber","keyProb":100,"value":"","valueProb":100},{"key":"invoiceDate","keyProb":100,"value":"2019-11-19","valuePos":[{"x":153,"y":280},{"x":351,"y":278},{"x":351,"y":309},{"x":154,"y":312}],"valueProb":100},{"key":"totalAmount","keyProb":100,"value":"170.00","valuePos":[{"x":300,"y":752},{"x":461,"y":749},{"x":462,"y":786},{"x":300,"y":788}],"valueProb":100},{"key":"sellerName","keyProb":100,"value":"嘉兴市南湖区余新镇瘦汁味餐饮店","valuePos":[{"x":220,"y":455},{"x":612,"y":450},{"x":612,"y":482},{"x":221,"y":488}],"valueProb":100},{"key":"sellerTaxNumber","keyProb":97,"value":"92330402MA28B4LL4B","valuePos":[{"x":224,"y":511},{"x":476,"y":509},{"x":477,"y":537},{"x":225,"y":539}],"valueProb":97},{"key":"purchaserName","keyProb":98,"value":"阿里巴巴俪人购(上海)电子商务有限公司","valuePos":[{"x":213,"y":327},{"x":714,"y":324},{"x":715,"y":359},{"x":214,"y":363}],"valueProb":98},{"key":"purchaserTaxNumber","keyProb":100,"value":"91310114312356647G","valuePos":[{"x":221,"y":406},{"x":480,"y":402},{"x":481,"y":432},{"x":221,"y":435}],"valueProb":100},{"key":"drawer","keyProb":100,"value":"高伟","valuePos":[{"x":680,"y":819},{"x":680,"y":850},{"x":627,"y":850},{"x":627,"y":819}],"valueProb":100},{"key":"recipient","keyProb":100,"value":"","valueProb":100},{"key":"remarks","keyProb":100,"value":"","valueProb":100},{"key":"invoiceDetails","keyProb":100,"value":"[{\"itemName\":\"餐饮费\",\"unit\":\"\",\"quantity\":\"1\",\"unitPrice\":\"170.00\",\"amount\":\"170.00\"}]","valueProb":100}],"sliceRect":{"x0":0,"y0":7,"x1":1416,"y1":0,"x2":1421,"y2":907,"x3":0,"y3":904},"width":1437}
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3366,6 +4066,9 @@ func (s *RecognizeCommonPrintedInvoiceResponse) SetBody(v *RecognizeCommonPrinte
 }
 
 type RecognizeCosmeticProduceLicenseRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1Wo7eXAvoK1RjSZFDXXXY3pXa-2512-3509.jpg
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -3389,9 +4092,18 @@ func (s *RecognizeCosmeticProduceLicenseRequest) SetBody(v io.Reader) *Recognize
 }
 
 type RecognizeCosmeticProduceLicenseResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// AA91C84E-7DB9-1951-B8FE-D830076A0473
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3453,9 +4165,15 @@ func (s *RecognizeCosmeticProduceLicenseResponse) SetBody(v *RecognizeCosmeticPr
 }
 
 type RecognizeCovidTestReportRequest struct {
-	MultipleResult *bool     `json:"MultipleResult,omitempty" xml:"MultipleResult,omitempty"`
-	Url            *string   `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body           io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	// example:
+	//
+	// false
+	MultipleResult *bool `json:"MultipleResult,omitempty" xml:"MultipleResult,omitempty"`
+	// example:
+	//
+	// http://duguang-database-public.oss-cn-hangzhou.aliyuncs.com/covid_init_covid_test_report/test_report__data_pool_15a4f85478cb1bd69a5d631b182aba69.jpg_item_0_cls_covid_test_report.jpg
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeCovidTestReportRequest) String() string {
@@ -3482,9 +4200,21 @@ func (s *RecognizeCovidTestReportRequest) SetBody(v io.Reader) *RecognizeCovidTe
 }
 
 type RecognizeCovidTestReportResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// noPermission
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {"data": {"name": "张德周", "idNumber": "612401********22010", "samplingDate": "2022-03-30", "samplingTime": "330", "testOrganization": "", "testItem": "", "testResult": ""}, "ftype": 0, "height": 991, "orgHeight": 998, "orgWidth": 1076, "prism_keyValueInfo": [{"key": "name", "keyProb": 100, "value": "张德周", "valuePos": [{"x": 291, "y": 465}, {"x": 473, "y": 463}, {"x": 474, "y": 526}, {"x": 291, "y": 527}], "valueProb": 100}, {"key": "idNumber", "keyProb": 91, "value": "612401********22010", "valuePos": [{"x": 791, "y": 180}, {"x": 791, "y": 227}, {"x": 300, "y": 226}, {"x": 300, "y": 179}], "valueProb": 91}, {"key": "samplingDate", "keyProb": 100, "value": "2022-03-30", "valuePos": [{"x": 597, "y": 775}, {"x": 597, "y": 826}, {"x": 296, "y": 826}, {"x": 296, "y": 775}], "valueProb": 100}, {"key": "samplingTime", "keyProb": 100, "value": "330", "valuePos": [{"x": 412, "y": 684}, {"x": 413, "y": 741}, {"x": 268, "y": 742}, {"x": 268, "y": 686}], "valueProb": 100}, {"key": "testOrganization", "keyProb": 100, "value": "", "valueProb": 100}, {"key": "testItem", "keyProb": 100, "value": "", "valueProb": 100}, {"key": "testResult", "keyProb": 28, "value": "", "valuePos": [{"x": 417, "y": 873}, {"x": 417, "y": 941}, {"x": 298, "y": 941}, {"x": 298, "y": 873}], "valueProb": 28}], "sliceRect": {"x0": 0, "y0": 10, "x1": 1076, "y1": 6, "x2": 1076, "y2": 995, "x3": 0, "y3": 996}, "width": 1076}
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3546,6 +4276,9 @@ func (s *RecognizeCovidTestReportResponse) SetBody(v *RecognizeCovidTestReportRe
 }
 
 type RecognizeCtwoMedicalDeviceManageLicenseRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1Hyx0MEH1gK0jSZSyXXXtlpXa-750-1000.png
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -3569,9 +4302,18 @@ func (s *RecognizeCtwoMedicalDeviceManageLicenseRequest) SetBody(v io.Reader) *R
 }
 
 type RecognizeCtwoMedicalDeviceManageLicenseResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3633,15 +4375,45 @@ func (s *RecognizeCtwoMedicalDeviceManageLicenseResponse) SetBody(v *RecognizeCt
 }
 
 type RecognizeDocumentStructureRequest struct {
-	NeedRotate        *bool     `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
-	NeedSortPage      *bool     `json:"NeedSortPage,omitempty" xml:"NeedSortPage,omitempty"`
-	NoStamp           *bool     `json:"NoStamp,omitempty" xml:"NoStamp,omitempty"`
-	OutputCharInfo    *bool     `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
-	OutputTable       *bool     `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
-	Page              *bool     `json:"Page,omitempty" xml:"Page,omitempty"`
-	Paragraph         *bool     `json:"Paragraph,omitempty" xml:"Paragraph,omitempty"`
-	Row               *bool     `json:"Row,omitempty" xml:"Row,omitempty"`
-	Url               *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// false
+	NeedRotate *bool `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
+	// example:
+	//
+	// false
+	NeedSortPage *bool `json:"NeedSortPage,omitempty" xml:"NeedSortPage,omitempty"`
+	// example:
+	//
+	// false
+	NoStamp *bool `json:"NoStamp,omitempty" xml:"NoStamp,omitempty"`
+	// example:
+	//
+	// false
+	OutputCharInfo *bool `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
+	// example:
+	//
+	// false
+	OutputTable *bool `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
+	// example:
+	//
+	// false
+	Page *bool `json:"Page,omitempty" xml:"Page,omitempty"`
+	// example:
+	//
+	// false
+	Paragraph *bool `json:"Paragraph,omitempty" xml:"Paragraph,omitempty"`
+	// example:
+	//
+	// false
+	Row *bool `json:"Row,omitempty" xml:"Row,omitempty"`
+	// example:
+	//
+	// https://img.alicdn.com/imgextra/i4/O1CN01amMFBF1GUki3NHNzI_!!6000000000626-2-tps-978-1346.png
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// false
 	UseNewStyleOutput *bool     `json:"UseNewStyleOutput,omitempty" xml:"UseNewStyleOutput,omitempty"`
 	Body              io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -3710,9 +4482,21 @@ func (s *RecognizeDocumentStructureRequest) SetBody(v io.Reader) *RecognizeDocum
 }
 
 type RecognizeDocumentStructureResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// noPermission
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// { 	"content": "2017年河北区实验小学", 	"height": 3509, 	"orgHeight": 3509, 	"orgWidth": 2512, 	"prism_version": "1.0.9", 	"prism_wnum": 126, 	"prism_wordsInfo": [{ 		"angle": -89, 		"direction": 0, 		"height": 541, 		"pos": [{ 			"x": 982, 			"y": 223 		}, { 			"x": 1522, 			"y": 223 		}, { 			"x": 1522, 			"y": 266 		}, { 			"x": 982, 			"y": 266 		}], 		"prob": 99, 		"width": 43, 		"word": "2017年河北区实验小学", 		"x": 1230, 		"y": -26 	}], 	"width": 2512 }
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3774,6 +4558,9 @@ func (s *RecognizeDocumentStructureResponse) SetBody(v *RecognizeDocumentStructu
 }
 
 type RecognizeDrivingLicenseRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB18sTuNSzqK1RjSZPxXXc4tVXa-629-416.png
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -3797,9 +4584,18 @@ func (s *RecognizeDrivingLicenseRequest) SetBody(v io.Reader) *RecognizeDrivingL
 }
 
 type RecognizeDrivingLicenseResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// unmatchedImageType
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// The type of image didn\\"t match the api.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3861,6 +4657,9 @@ func (s *RecognizeDrivingLicenseResponse) SetBody(v *RecognizeDrivingLicenseResp
 }
 
 type RecognizeEduFormulaRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1Wo7eXAvoK1RjSZFDXXXY3pXa-2512-3509.jpg
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -3884,9 +4683,18 @@ func (s *RecognizeEduFormulaRequest) SetBody(v io.Reader) *RecognizeEduFormulaRe
 }
 
 type RecognizeEduFormulaResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3948,6 +4756,9 @@ func (s *RecognizeEduFormulaResponse) SetBody(v *RecognizeEduFormulaResponseBody
 }
 
 type RecognizeEduOralCalculationRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/imgextra/i4/O1CN01diDxZe21hNSkCBf5n_!!6000000007016-0-tps-2268-3024.jpg
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -3971,9 +4782,21 @@ func (s *RecognizeEduOralCalculationRequest) SetBody(v io.Reader) *RecognizeEduO
 }
 
 type RecognizeEduOralCalculationResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {"height":3024,"mathsInfo":[{"pos":[{"x":128,"y":456},{"x":481,"y":425},{"x":479,"y":526},{"x":127,"y":523}],"result":"right","title":"5 9 - 2 5 = 3 4"}],"orgHeight":3024,"orgWidth":2268,"prism_version":"1.0.9","prism_wnum":0,"prism_wordsInfo":[],"width":2268}
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4035,11 +4858,27 @@ func (s *RecognizeEduOralCalculationResponse) SetBody(v *RecognizeEduOralCalcula
 }
 
 type RecognizeEduPaperCutRequest struct {
-	CutType   *string   `json:"CutType,omitempty" xml:"CutType,omitempty"`
-	ImageType *string   `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	Subject   *string   `json:"Subject,omitempty" xml:"Subject,omitempty"`
-	Url       *string   `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body      io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// question：题目， answer：答案
+	CutType *string `json:"CutType,omitempty" xml:"CutType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// scan：扫描图， photo：实拍图
+	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	// example:
+	//
+	// default:默认, Math:数学, PrimarySchool_Math:小学数学, JHighSchool_Math: 初中数学, Chinese:语文, PrimarySchool_Chinese:小学语文, JHighSchool_Chinese:初中语文, English:英语, PrimarySchool_English:小学英语, JHighSchool_English:初中英语, Physics:物理, JHighSchool_Physics:初中物理, Chemistry: 化学, JHighSchool_Chemistry:初中化学, Biology:生物, JHighSchool_Biology:初中生物, History:历史, JHighSchool_History:初中历史, Geography:地理, JHighSchool_Geography:初中地理, Politics:政治, JHighSchool_Politics:初中政治
+	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1Wo7eXAvoK1RjSZFDXXXY3pXa-2512-3509.jpg
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeEduPaperCutRequest) String() string {
@@ -4076,9 +4915,12 @@ func (s *RecognizeEduPaperCutRequest) SetBody(v io.Reader) *RecognizeEduPaperCut
 }
 
 type RecognizeEduPaperCutResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4140,11 +4982,25 @@ func (s *RecognizeEduPaperCutResponse) SetBody(v *RecognizeEduPaperCutResponseBo
 }
 
 type RecognizeEduPaperOcrRequest struct {
-	ImageType      *string   `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	OutputOricoord *bool     `json:"OutputOricoord,omitempty" xml:"OutputOricoord,omitempty"`
-	Subject        *string   `json:"Subject,omitempty" xml:"Subject,omitempty"`
-	Url            *string   `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body           io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// scan：扫描图， photo：实拍图
+	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	// example:
+	//
+	// false
+	OutputOricoord *bool `json:"OutputOricoord,omitempty" xml:"OutputOricoord,omitempty"`
+	// example:
+	//
+	// default:默认, Math:数学, PrimarySchool_Math:小学数学, JHighSchool_Math: 初中数学, Chinese:语文, PrimarySchool_Chinese:小学语文, JHighSchool_Chinese:初中语文, English:英语, PrimarySchool_English:小学英语, JHighSchool_English:初中英语, Physics:物理, JHighSchool_Physics:初中物理, Chemistry: 化学, JHighSchool_Chemistry:初中化学, Biology:生物, JHighSchool_Biology:初中生物, History:历史, JHighSchool_History:初中历史, Geography:地理, JHighSchool_Geography:初中地理, Politics:政治, JHighSchool_Politics:初中政治
+	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1Wo7eXAvoK1RjSZFDXXXY3pXa-2512-3509.jpg
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeEduPaperOcrRequest) String() string {
@@ -4181,9 +5037,18 @@ func (s *RecognizeEduPaperOcrRequest) SetBody(v io.Reader) *RecognizeEduPaperOcr
 }
 
 type RecognizeEduPaperOcrResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4245,10 +5110,19 @@ func (s *RecognizeEduPaperOcrResponse) SetBody(v *RecognizeEduPaperOcrResponseBo
 }
 
 type RecognizeEduPaperStructedRequest struct {
-	NeedRotate *bool     `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
-	Subject    *string   `json:"Subject,omitempty" xml:"Subject,omitempty"`
-	Url        *string   `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body       io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	// example:
+	//
+	// false
+	NeedRotate *bool `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
+	// example:
+	//
+	// default:默认, Math:数学, PrimarySchool_Math:小学数学, JHighSchool_Math: 初中数学, Chinese:语文, PrimarySchool_Chinese:小学语文, //JHighSchool_Chinese:初中语文, English:英语, PrimarySchool_English:小学英语, JHighSchool_English:初中英语, Physics:物理, JHighSchool_Physics:初中物理   //Chemistry: 化学, JHighSchool_Chemistry:初中化学, Biology:生物, JHighSchool_Biology:初中生物, History:历史, JHighSchool_History:初中历史, Geography:地理,   //JHighSchool_Geography:初中地理, Politics:政治, JHighSchool_Politics:初中政治   "templateType": "Math"
+	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1Wo7eXAvoK1RjSZFDXXXY3pXa-2512-3509.jpg
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeEduPaperStructedRequest) String() string {
@@ -4280,9 +5154,18 @@ func (s *RecognizeEduPaperStructedRequest) SetBody(v io.Reader) *RecognizeEduPap
 }
 
 type RecognizeEduPaperStructedResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4344,9 +5227,15 @@ func (s *RecognizeEduPaperStructedResponse) SetBody(v *RecognizeEduPaperStructed
 }
 
 type RecognizeEduQuestionOcrRequest struct {
-	NeedRotate *bool     `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
-	Url        *string   `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body       io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	// example:
+	//
+	// false
+	NeedRotate *bool `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1Wo7eXAvoK1RjSZFDXXXY3pXa-2512-3509.jpg
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeEduQuestionOcrRequest) String() string {
@@ -4373,9 +5262,18 @@ func (s *RecognizeEduQuestionOcrRequest) SetBody(v io.Reader) *RecognizeEduQuest
 }
 
 type RecognizeEduQuestionOcrResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4437,10 +5335,19 @@ func (s *RecognizeEduQuestionOcrResponse) SetBody(v *RecognizeEduQuestionOcrResp
 }
 
 type RecognizeEnglishRequest struct {
-	NeedRotate  *bool     `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
-	OutputTable *bool     `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
-	Url         *string   `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body        io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	// example:
+	//
+	// false
+	NeedRotate *bool `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
+	// example:
+	//
+	// false
+	OutputTable *bool `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1Wo7eXAvoK1RjSZFDXXXY3pXa-2512-3509.jpg
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeEnglishRequest) String() string {
@@ -4472,9 +5379,18 @@ func (s *RecognizeEnglishRequest) SetBody(v io.Reader) *RecognizeEnglishRequest 
 }
 
 type RecognizeEnglishResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4536,6 +5452,9 @@ func (s *RecognizeEnglishResponse) SetBody(v *RecognizeEnglishResponseBody) *Rec
 }
 
 type RecognizeEstateCertificationRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1idy2XDZmx1VjSZFGXXax2XXa-713-1133.png
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -4559,9 +5478,18 @@ func (s *RecognizeEstateCertificationRequest) SetBody(v io.Reader) *RecognizeEst
 }
 
 type RecognizeEstateCertificationResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4623,9 +5551,15 @@ func (s *RecognizeEstateCertificationResponse) SetBody(v *RecognizeEstateCertifi
 }
 
 type RecognizeExitEntryPermitToHKRequest struct {
-	OutputFigure *bool     `json:"OutputFigure,omitempty" xml:"OutputFigure,omitempty"`
-	Url          *string   `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body         io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	// example:
+	//
+	// true/false
+	OutputFigure *bool `json:"OutputFigure,omitempty" xml:"OutputFigure,omitempty"`
+	// example:
+	//
+	// https://img.alicdn.com/imgextra/i2/O1CN01Rs4C321G2oTD7Dg1U_!!6000000000565-0-tps-1024-692.jpg
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeExitEntryPermitToHKRequest) String() string {
@@ -4652,9 +5586,21 @@ func (s *RecognizeExitEntryPermitToHKRequest) SetBody(v io.Reader) *RecognizeExi
 }
 
 type RecognizeExitEntryPermitToHKResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// noPermission
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {"data":{"permitType":"往来港澳通行证","nameCn":"朱伟","nameEn":"ZHU,WEI","birthDate":"2021.01.01","sex":"男","validPeriod":"2018.06.11-2028.06.10","issueAuthority":"公安部出入境管理局","issuePlace":"江苏","permitNumber":"C88600000","mrzCode":"CSC886084772<2800800<8200000<6"},"figure":[{"type":"face","x":160,"y":271,"w":190,"h":248,"box":{"x":254,"y":394,"w":186,"h":244,"angle":0},"points":[{"x":160,"y":272},{"x":347,"y":271},{"x":348,"y":516},{"x":161,"y":517}]},{"type":"face","x":711,"y":355,"w":80,"h":103,"box":{"x":750,"y":405,"w":75,"h":99,"angle":-1},"points":[{"x":711,"y":357},{"x":787,"y":355},{"x":789,"y":454},{"x":713,"y":456}]}],"ftype":0,"height":692,"orgHeight":692,"orgWidth":1024,"prism_keyValueInfo":[{"key":"permitType","keyProb":100,"value":"往来港澳通行证","valuePos":[{"x":142,"y":39},{"x":476,"y":35},{"x":477,"y":75},{"x":142,"y":79}],"valueProb":100},{"key":"nameCn","keyProb":100,"value":"朱伟","valuePos":[{"x":272,"y":126},{"x":346,"y":124},{"x":347,"y":160},{"x":272,"y":161}],"valueProb":100},{"key":"nameEn","keyProb":100,"value":"ZHU,WEI","valuePos":[{"x":273,"y":168},{"x":403,"y":167},{"x":403,"y":194},{"x":274,"y":196}],"valueProb":100},{"key":"birthDate","keyProb":100,"value":"2021.01.01","valuePos":[{"x":421,"y":240},{"x":421,"y":269},{"x":281,"y":269},{"x":281,"y":240}],"valueProb":100},{"key":"sex","keyProb":100,"value":"男","valuePos":[{"x":502,"y":240},{"x":502,"y":270},{"x":474,"y":270},{"x":474,"y":240}],"valueProb":100},{"key":"validPeriod","keyProb":100,"value":"2018.06.11-2028.06.10","valuePos":[{"x":579,"y":301},{"x":579,"y":328},{"x":275,"y":328},{"x":275,"y":301}],"valueProb":100},{"key":"issueAuthority","keyProb":100,"value":"公安部出入境管理局","valuePos":[{"x":278,"y":361},{"x":524,"y":361},{"x":524,"y":391},{"x":278,"y":391}],"valueProb":100},{"key":"issuePlace","keyProb":100,"value":"江苏","valuePos":[{"x":619,"y":361},{"x":619,"y":391},{"x":561,"y":391},{"x":561,"y":361}],"valueProb":100},{"key":"permitNumber","keyProb":100,"value":"C88600000","valuePos":[{"x":524,"y":61},{"x":727,"y":60},{"x":728,"y":92},{"x":524,"y":94}],"valueProb":100},{"key":"mrzCode","keyProb":98,"value":"CSC886084772<2800800<8200000<6","valuePos":[{"x":714,"y":421},{"x":714,"y":449},{"x":65,"y":449},{"x":65,"y":421}],"valueProb":98}],"sliceRect":{"x0":107,"y0":135,"x1":880,"y1":134,"x2":874,"y2":616,"x3":117,"y3":624},"width":1024}
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// C99EABB8-9FCB-5E5E-B4D9-AFCFA6C8B3FD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4716,9 +5662,15 @@ func (s *RecognizeExitEntryPermitToHKResponse) SetBody(v *RecognizeExitEntryPerm
 }
 
 type RecognizeExitEntryPermitToMainlandRequest struct {
-	OutputFigure *bool     `json:"OutputFigure,omitempty" xml:"OutputFigure,omitempty"`
-	Url          *string   `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body         io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	// example:
+	//
+	// true/false
+	OutputFigure *bool `json:"OutputFigure,omitempty" xml:"OutputFigure,omitempty"`
+	// example:
+	//
+	// https://img.alicdn.com/imgextra/i2/O1CN01VpucoK1PtmovU859J_!!6000000001899-0-tps-928-626.jpg
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeExitEntryPermitToMainlandRequest) String() string {
@@ -4745,9 +5697,21 @@ func (s *RecognizeExitEntryPermitToMainlandRequest) SetBody(v io.Reader) *Recogn
 }
 
 type RecognizeExitEntryPermitToMainlandResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// noPermission
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {"data":{"permitType":"港澳居民来往内地通行证","nameCn":"何郑","nameEn":"HE,CHENG","birthDate":"2000.01.01","sex":"男","validPeriod":"2014.04.10-2019.04.09","issueAuthority":"公安部出入境管理局","issuePlace":"","permitNumber":"H10387877","issueCount":"01"},"figure":[{"type":"face","x":80,"y":164,"w":192,"h":273,"box":{"x":175,"y":300,"w":187,"h":269,"angle":0},"points":[{"x":80,"y":166},{"x":268,"y":164},{"x":270,"y":433},{"x":82,"y":435}]}],"ftype":0,"height":626,"orgHeight":626,"orgWidth":928,"prism_keyValueInfo":[{"key":"permitType","keyProb":100,"value":"港澳居民来往内地通行证","valuePos":[{"x":680,"y":41},{"x":681,"y":83},{"x":177,"y":86},{"x":176,"y":44}],"valueProb":100},{"key":"nameCn","keyProb":100,"value":"何郑","valuePos":[{"x":346,"y":119},{"x":346,"y":153},{"x":269,"y":153},{"x":269,"y":119}],"valueProb":100},{"key":"nameEn","keyProb":100,"value":"HE,CHENG","valuePos":[{"x":452,"y":166},{"x":452,"y":195},{"x":270,"y":195},{"x":270,"y":166}],"valueProb":100},{"key":"birthDate","keyProb":100,"value":"2000.01.01","valuePos":[{"x":273,"y":226},{"x":414,"y":226},{"x":414,"y":254},{"x":273,"y":254}],"valueProb":100},{"key":"sex","keyProb":100,"value":"男","valuePos":[{"x":594,"y":234},{"x":594,"y":268},{"x":562,"y":268},{"x":562,"y":234}],"valueProb":100},{"key":"validPeriod","keyProb":100,"value":"2014.04.10-2019.04.09","valuePos":[{"x":700,"y":295},{"x":700,"y":323},{"x":267,"y":324},{"x":267,"y":296}],"valueProb":100},{"key":"issueAuthority","keyProb":100,"value":"公安部出入境管理局","valuePos":[{"x":264,"y":386},{"x":265,"y":353},{"x":536,"y":357},{"x":536,"y":390}],"valueProb":100},{"key":"issuePlace","keyProb":100,"value":"","valueProb":100},{"key":"permitNumber","keyProb":100,"value":"H10387877","valuePos":[{"x":489,"y":424},{"x":489,"y":457},{"x":268,"y":457},{"x":268,"y":424}],"valueProb":100},{"key":"issueCount","keyProb":100,"value":"01","valuePos":[{"x":601,"y":425},{"x":601,"y":456},{"x":555,"y":456},{"x":555,"y":425}],"valueProb":100}],"sliceRect":{"x0":46,"y0":30,"x1":887,"y1":38,"x2":892,"y2":564,"x3":39,"y3":567},"width":928}
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4809,6 +5773,9 @@ func (s *RecognizeExitEntryPermitToMainlandResponse) SetBody(v *RecognizeExitEnt
 }
 
 type RecognizeFoodManageLicenseRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1Wo7eXAvoK1RjSZFDXXXY3pXa-2512-3509.jpg
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -4832,9 +5799,18 @@ func (s *RecognizeFoodManageLicenseRequest) SetBody(v io.Reader) *RecognizeFoodM
 }
 
 type RecognizeFoodManageLicenseResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4896,6 +5872,9 @@ func (s *RecognizeFoodManageLicenseResponse) SetBody(v *RecognizeFoodManageLicen
 }
 
 type RecognizeFoodProduceLicenseRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1YaMhXKT2gK0jSZFvXXXnFXXa-1414-1000.png
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -4919,9 +5898,18 @@ func (s *RecognizeFoodProduceLicenseRequest) SetBody(v io.Reader) *RecognizeFood
 }
 
 type RecognizeFoodProduceLicenseResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4983,6 +5971,9 @@ func (s *RecognizeFoodProduceLicenseResponse) SetBody(v *RecognizeFoodProduceLic
 }
 
 type RecognizeGeneralRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1Wo7eXAvoK1RjSZFDXXXY3pXa-2512-3509.jpg
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -5006,9 +5997,18 @@ func (s *RecognizeGeneralRequest) SetBody(v io.Reader) *RecognizeGeneralRequest 
 }
 
 type RecognizeGeneralResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5070,6 +6070,9 @@ func (s *RecognizeGeneralResponse) SetBody(v *RecognizeGeneralResponseBody) *Rec
 }
 
 type RecognizeHKIdcardRequest struct {
+	// example:
+	//
+	// https://example.png
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -5093,9 +6096,12 @@ func (s *RecognizeHKIdcardRequest) SetBody(v io.Reader) *RecognizeHKIdcardReques
 }
 
 type RecognizeHKIdcardResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5157,13 +6163,28 @@ func (s *RecognizeHKIdcardResponse) SetBody(v *RecognizeHKIdcardResponseBody) *R
 }
 
 type RecognizeHandwritingRequest struct {
-	NeedRotate     *bool     `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
-	NeedSortPage   *bool     `json:"NeedSortPage,omitempty" xml:"NeedSortPage,omitempty"`
-	OutputCharInfo *bool     `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
-	OutputTable    *bool     `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
-	Paragraph      *bool     `json:"Paragraph,omitempty" xml:"Paragraph,omitempty"`
-	Url            *string   `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body           io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	// example:
+	//
+	// false
+	NeedRotate *bool `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
+	// example:
+	//
+	// false
+	NeedSortPage *bool `json:"NeedSortPage,omitempty" xml:"NeedSortPage,omitempty"`
+	// example:
+	//
+	// false
+	OutputCharInfo *bool `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
+	// example:
+	//
+	// false
+	OutputTable *bool `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
+	Paragraph   *bool `json:"Paragraph,omitempty" xml:"Paragraph,omitempty"`
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1Wo7eXAvoK1RjSZFDXXXY3pXa-2512-3509.jpg
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeHandwritingRequest) String() string {
@@ -5210,9 +6231,18 @@ func (s *RecognizeHandwritingRequest) SetBody(v io.Reader) *RecognizeHandwriting
 }
 
 type RecognizeHandwritingResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5274,6 +6304,9 @@ func (s *RecognizeHandwritingResponse) SetBody(v *RecognizeHandwritingResponseBo
 }
 
 type RecognizeHealthCodeRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/imgextra/i3/O1CN01ME0L7j29f6VRZKo5e_!!6000000008094-0-tps-1237-1981.jpg
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -5297,9 +6330,21 @@ func (s *RecognizeHealthCodeRequest) SetBody(v io.Reader) *RecognizeHealthCodeRe
 }
 
 type RecognizeHealthCodeResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// noPermission
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {"data":{"permitType":"往来港澳通行证","nameCn":"朱伟","nameEn":"ZHU,WEI","birthDate":"2021.01.01","sex":"男","validPeriod":"2018.06.11-2028.06.10","issueAuthority":"公安部出入境管理局","issuePlace":"江苏","permitNumber":"C88600000","mrzCode":"CSC886084772<2800800<8200000<6"},"figure":[{"type":"face","x":160,"y":271,"w":190,"h":248,"box":{"x":254,"y":394,"w":186,"h":244,"angle":0},"points":[{"x":160,"y":272},{"x":347,"y":271},{"x":348,"y":516},{"x":161,"y":517}]},{"type":"face","x":711,"y":355,"w":80,"h":103,"box":{"x":750,"y":405,"w":75,"h":99,"angle":-1},"points":[{"x":711,"y":357},{"x":787,"y":355},{"x":789,"y":454},{"x":713,"y":456}]}],"ftype":0,"height":692,"orgHeight":692,"orgWidth":1024,"prism_keyValueInfo":[{"key":"permitType","keyProb":100,"value":"往来港澳通行证","valuePos":[{"x":142,"y":39},{"x":476,"y":35},{"x":477,"y":75},{"x":142,"y":79}],"valueProb":100},{"key":"nameCn","keyProb":100,"value":"朱伟","valuePos":[{"x":272,"y":126},{"x":346,"y":124},{"x":347,"y":160},{"x":272,"y":161}],"valueProb":100},{"key":"nameEn","keyProb":100,"value":"ZHU,WEI","valuePos":[{"x":273,"y":168},{"x":403,"y":167},{"x":403,"y":194},{"x":274,"y":196}],"valueProb":100},{"key":"birthDate","keyProb":100,"value":"2021.01.01","valuePos":[{"x":421,"y":240},{"x":421,"y":269},{"x":281,"y":269},{"x":281,"y":240}],"valueProb":100},{"key":"sex","keyProb":100,"value":"男","valuePos":[{"x":502,"y":240},{"x":502,"y":270},{"x":474,"y":270},{"x":474,"y":240}],"valueProb":100},{"key":"validPeriod","keyProb":100,"value":"2018.06.11-2028.06.10","valuePos":[{"x":579,"y":301},{"x":579,"y":328},{"x":275,"y":328},{"x":275,"y":301}],"valueProb":100},{"key":"issueAuthority","keyProb":100,"value":"公安部出入境管理局","valuePos":[{"x":278,"y":361},{"x":524,"y":361},{"x":524,"y":391},{"x":278,"y":391}],"valueProb":100},{"key":"issuePlace","keyProb":100,"value":"江苏","valuePos":[{"x":619,"y":361},{"x":619,"y":391},{"x":561,"y":391},{"x":561,"y":361}],"valueProb":100},{"key":"permitNumber","keyProb":100,"value":"C88600000","valuePos":[{"x":524,"y":61},{"x":727,"y":60},{"x":728,"y":92},{"x":524,"y":94}],"valueProb":100},{"key":"mrzCode","keyProb":98,"value":"CSC886084772<2800800<8200000<6","valuePos":[{"x":714,"y":421},{"x":714,"y":449},{"x":65,"y":449},{"x":65,"y":421}],"valueProb":98}],"sliceRect":{"x0":107,"y0":135,"x1":880,"y1":134,"x2":874,"y2":616,"x3":117,"y3":624},"width":1024}
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5361,6 +6406,9 @@ func (s *RecognizeHealthCodeResponse) SetBody(v *RecognizeHealthCodeResponseBody
 }
 
 type RecognizeHotelConsumeRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1Wo7eXAvoK1RjSZFDXXXY3pXa-2512-3509.jpg
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -5384,9 +6432,18 @@ func (s *RecognizeHotelConsumeRequest) SetBody(v io.Reader) *RecognizeHotelConsu
 }
 
 type RecognizeHotelConsumeResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5448,9 +6505,15 @@ func (s *RecognizeHotelConsumeResponse) SetBody(v *RecognizeHotelConsumeResponse
 }
 
 type RecognizeHouseholdRequest struct {
-	IsResidentPage *bool     `json:"IsResidentPage,omitempty" xml:"IsResidentPage,omitempty"`
-	Url            *string   `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body           io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	// example:
+	//
+	// false
+	IsResidentPage *bool `json:"IsResidentPage,omitempty" xml:"IsResidentPage,omitempty"`
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB11ZxTMxD1gK0jSZFsXXbldVXa-920-606.png
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeHouseholdRequest) String() string {
@@ -5477,9 +6540,18 @@ func (s *RecognizeHouseholdRequest) SetBody(v io.Reader) *RecognizeHouseholdRequ
 }
 
 type RecognizeHouseholdResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5541,10 +6613,19 @@ func (s *RecognizeHouseholdResponse) SetBody(v *RecognizeHouseholdResponseBody) 
 }
 
 type RecognizeIdcardRequest struct {
-	OutputFigure      *bool     `json:"OutputFigure,omitempty" xml:"OutputFigure,omitempty"`
-	OutputQualityInfo *bool     `json:"OutputQualityInfo,omitempty" xml:"OutputQualityInfo,omitempty"`
-	Url               *string   `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body              io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	// example:
+	//
+	// false
+	OutputFigure *bool `json:"OutputFigure,omitempty" xml:"OutputFigure,omitempty"`
+	// example:
+	//
+	// false
+	OutputQualityInfo *bool `json:"OutputQualityInfo,omitempty" xml:"OutputQualityInfo,omitempty"`
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1q5IeXAvoK1RjSZFNXXcxMVXa-483-307.jpg
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeIdcardRequest) String() string {
@@ -5576,9 +6657,12 @@ func (s *RecognizeIdcardRequest) SetBody(v io.Reader) *RecognizeIdcardRequest {
 }
 
 type RecognizeIdcardResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 86B83935-DD36-195B-B6E4-D07BE370C8B6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5640,9 +6724,17 @@ func (s *RecognizeIdcardResponse) SetBody(v *RecognizeIdcardResponseBody) *Recog
 }
 
 type RecognizeInternationalBusinessLicenseRequest struct {
-	Country *string   `json:"Country,omitempty" xml:"Country,omitempty"`
-	Url     *string   `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body    io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// India
+	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// example:
+	//
+	// https://www.example.com
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeInternationalBusinessLicenseRequest) String() string {
@@ -5669,9 +6761,21 @@ func (s *RecognizeInternationalBusinessLicenseRequest) SetBody(v io.Reader) *Rec
 }
 
 type RecognizeInternationalBusinessLicenseResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// unmatchedImageType
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {"algo_version": "b16f86189b72c2d726865272c98e8e58156a41c7;b16f86189b72c2d726865272c98e8e58156a41c7", "data": {"certificateType": "간이과세자", "issuanceNo": "", "processingTime": "", "companyNameEn": "", "companyName": "", "registrationNo": "135-31-78773", "nameOfRepresentativeEn": "", "nameOfRepresentative": "테라", "residentRegistrationNo": "", "businessAddressEn": "", "businessAddress": "경기도 수원시 영통구 영통로 498, 143동 1806흐(영통동, 황골마을 주공아파트)", "businessCommencementDate": "1972-01-10", "businessRegistrationDate": "", "businessTypeEn": "", "businessType": "", "businessItemEn": "", "businessItem": "스매업 전자상거래업(의류)", "jointCompanyName": "", "jointCompanyRegistrationNo": "", "issueDate": "2015-10-28", "issuer": "동수원세무서장"}, "ftype": 0, "height": 2988, "orgHeight": 2988, "orgWidth": 5312, "prism_keyValueInfo": [{"key": "certificateType", "keyProb": 100, "value": "간이과세자", "valuePos": [{"x": 621, "y": 1768}, {"x": 615, "y": 1221}, {"x": 720, "y": 1220}, {"x": 726, "y": 1767}], "valueProb": 100}, {"key": "issuanceNo", "keyProb": 100, "value": "", "valueProb": 100}, {"key": "processingTime", "keyProb": 100, "value": "", "valueProb": 100}, {"key": "companyNameEn", "keyProb": 100, "value": "", "valueProb": 100}, {"key": "companyName", "keyProb": 100, "value": "", "valueProb": 100}, {"key": "registrationNo", "keyProb": 100, "value": "135-31-78773", "valuePos": [{"x": 773, "y": 1517}, {"x": 763, "y": 881}, {"x": 861, "y": 880}, {"x": 870, "y": 1515}], "valueProb": 100}, {"key": "nameOfRepresentativeEn", "keyProb": 100, "value": "", "valueProb": 100}, {"key": "nameOfRepresentative", "keyProb": 90, "value": "테라", "valuePos": [{"x": 946, "y": 2201}, {"x": 946, "y": 2047}, {"x": 1022, "y": 2047}, {"x": 1022, "y": 2201}], "valueProb": 90}, {"key": "residentRegistrationNo", "keyProb": 100, "value": "", "valueProb": 100}, {"key": "businessAddressEn", "keyProb": 100, "value": "", "valueProb": 100}, {"key": "businessAddress", "keyProb": 96, "value": "경기도 수원시 영통구 영통로 498, 143동 1806흐(영통동, 황골마을 주공아파트)", "valuePos": [{"x": 1346, "y": 2200}, {"x": 1321, "y": 736}, {"x": 1499, "y": 733}, {"x": 1523, "y": 2197}], "valueProb": 96}, {"key": "businessCommencementDate", "keyProb": 100, "value": "1972-01-10", "valuePos": [{"x": 1055, "y": 788}, {"x": 1046, "y": 62}, {"x": 1127, "y": 62}, {"x": 1135, "y": 787}], "valueProb": 100}, {"key": "businessRegistrationDate", "keyProb": 100, "value": "", "valueProb": 100}, {"key": "businessTypeEn", "keyProb": 100, "value": "", "valueProb": 100}, {"key": "businessType", "keyProb": 100, "value": "", "valueProb": 100}, {"key": "businessItemEn", "keyProb": 100, "value": "", "valueProb": 100}, {"key": "businessItem", "keyProb": 100, "value": "스매업 전자상거래업(의류)", "valuePos": [{"x": 1590, "y": 1982}, {"x": 1561, "y": 293}, {"x": 1659, "y": 291}, {"x": 1688, "y": 1980}], "valueProb": 100}, {"key": "jointCompanyName", "keyProb": 100, "value": "", "valueProb": 100}, {"key": "jointCompanyRegistrationNo", "keyProb": 100, "value": "", "valueProb": 100}, {"key": "issueDate", "keyProb": 100, "value": "2015-10-28", "valuePos": [{"x": 3755, "y": 1938}, {"x": 3749, "y": 1057}, {"x": 3842, "y": 1056}, {"x": 3848, "y": 1937}], "valueProb": 100}, {"key": "issuer", "keyProb": 100, "value": "동수원세무서장", "valuePos": [{"x": 3978, "y": 1997}, {"x": 3970, "y": 982}, {"x": 4099, "y": 980}, {"x": 4107, "y": 1996}], "valueProb": 100}], "sliceRect": {"x0": 8, "y0": 0, "x1": 4695, "y1": 0, "x2": 4737, "y2": 2976, "x3": 12, "y3": 2988}, "width": 5312}
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// The type of image didn\\"t match the api.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5733,9 +6837,17 @@ func (s *RecognizeInternationalBusinessLicenseResponse) SetBody(v *RecognizeInte
 }
 
 type RecognizeInternationalIdcardRequest struct {
-	Country *string   `json:"Country,omitempty" xml:"Country,omitempty"`
-	Url     *string   `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body    io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Vietnam
+	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// example:
+	//
+	// http://example.jpg
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeInternationalIdcardRequest) String() string {
@@ -5762,9 +6874,18 @@ func (s *RecognizeInternationalIdcardRequest) SetBody(v io.Reader) *RecognizeInt
 }
 
 type RecognizeInternationalIdcardResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5826,9 +6947,12 @@ func (s *RecognizeInternationalIdcardResponse) SetBody(v *RecognizeInternational
 }
 
 type RecognizeInvoiceRequest struct {
-	PageNo *int32    `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	Url    *string   `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body   io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1qIIfXAPoK1RjSZKbXXX1IXXa-808-523.jpg
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeInvoiceRequest) String() string {
@@ -5855,9 +6979,18 @@ func (s *RecognizeInvoiceRequest) SetBody(v io.Reader) *RecognizeInvoiceRequest 
 }
 
 type RecognizeInvoiceResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5919,11 +7052,23 @@ func (s *RecognizeInvoiceResponse) SetBody(v *RecognizeInvoiceResponseBody) *Rec
 }
 
 type RecognizeJanpaneseRequest struct {
-	NeedRotate     *bool     `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
-	OutputCharInfo *bool     `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
-	OutputTable    *bool     `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
-	Url            *string   `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body           io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	// example:
+	//
+	// false
+	NeedRotate *bool `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
+	// example:
+	//
+	// false
+	OutputCharInfo *bool `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
+	// example:
+	//
+	// false
+	OutputTable *bool `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1Wo7eXAvoK1RjSZFDXXXY3pXa-2512-3509.jpg
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeJanpaneseRequest) String() string {
@@ -5960,9 +7105,18 @@ func (s *RecognizeJanpaneseRequest) SetBody(v io.Reader) *RecognizeJanpaneseRequ
 }
 
 type RecognizeJanpaneseResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6024,11 +7178,23 @@ func (s *RecognizeJanpaneseResponse) SetBody(v *RecognizeJanpaneseResponseBody) 
 }
 
 type RecognizeKoreanRequest struct {
-	NeedRotate     *bool     `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
-	OutputCharInfo *bool     `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
-	OutputTable    *bool     `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
-	Url            *string   `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body           io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	// example:
+	//
+	// false
+	NeedRotate *bool `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
+	// example:
+	//
+	// false
+	OutputCharInfo *bool `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
+	// example:
+	//
+	// false
+	OutputTable *bool `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1Wo7eXAvoK1RjSZFDXXXY3pXa-2512-3509.jpg
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeKoreanRequest) String() string {
@@ -6065,9 +7231,21 @@ func (s *RecognizeKoreanRequest) SetBody(v io.Reader) *RecognizeKoreanRequest {
 }
 
 type RecognizeKoreanResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {"content":"위 기자재는 [전파법] 제58조의2 제3항에 따라 등록되었음을 증명합니다.  Itis verified thatforegoing equipment has bee en registered underthe Clause 3, Article 58-2 of Radio Waves Act.  y0 13년(Year)_08월(Month) 16일(Date) 국립전 파연구 국립전파연7 구원장 인 Dlrector General ofNatlonal Radio Research Agency    적합등록 방송통신기자재는 반드시\\"적합성평가표: .시\\"를 부착하여 유통하여야 합니다.  위반시 과태료 처분 및등록이 취소될 수 있습니다.  ","height":499,"orgHeight":499,"orgWidth":1153,"prism_version":"1.0.9","prism_wnum":19,"prism_wordsInfo":[{"angle":-90,"direction":0,"height":587,"pos":[{"x":61,"y":18},{"x":647,"y":16},{"x":647,"y":43},{"x":61,"y":45}],"prob":98,"width":27,"word":"위 기자재는 [전파법] 제58조의2 제3항에 따라","x":341,"y":-263}],"width":1153}
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6129,11 +7307,23 @@ func (s *RecognizeKoreanResponse) SetBody(v *RecognizeKoreanResponseBody) *Recog
 }
 
 type RecognizeLatinRequest struct {
-	NeedRotate     *bool     `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
-	OutputCharInfo *bool     `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
-	OutputTable    *bool     `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
-	Url            *string   `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body           io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	// example:
+	//
+	// false
+	NeedRotate *bool `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
+	// example:
+	//
+	// false
+	OutputCharInfo *bool `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
+	// example:
+	//
+	// false
+	OutputTable *bool `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1Wo7eXAvoK1RjSZFDXXXY3pXa-2512-3509.jpg
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeLatinRequest) String() string {
@@ -6170,9 +7360,21 @@ func (s *RecognizeLatinRequest) SetBody(v io.Reader) *RecognizeLatinRequest {
 }
 
 type RecognizeLatinResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {"angle":1,"content":"Đậm Phong Cách Khác Biêt  Trên tay chế tác nguyên khối dẫn đầu xu hướng với thiết kế thần máy liền mạch, độ mông ấn tượng 8.5mm cùng   kiểu dáng mặt kinh bóng mượt, sang trọng từ Galaxy M30. Vừa vặn hoền hẩo trong lông bần tay, tho thích thể hiện   phong cách thời thượng với hai phiên bản màu Đen hoặc Xanh cắ tính.  xanh Ngân Hà   Đen Ngả Khói  OC S   ","height":821,"orgHeight":803,"orgWidth":1075,"prism_version":"1.0.9","prism_wnum":9,"prism_wordsInfo":[{"angle":0,"direction":0,"height":37,"pos":[{"x":293,"y":37},{"x":776,"y":29},{"x":777,"y":66},{"x":294,"y":74}],"prob":99,"width":484,"word":"Đậm Phong Cách","x":292,"y":24}],"width":1088}
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6234,6 +7436,9 @@ func (s *RecognizeLatinResponse) SetBody(v *RecognizeLatinResponseBody) *Recogni
 }
 
 type RecognizeMedicalDeviceManageLicenseRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1ZrF.MuL2gK0jSZFmXXc7iXXa-1417-995.png
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -6257,9 +7462,18 @@ func (s *RecognizeMedicalDeviceManageLicenseRequest) SetBody(v io.Reader) *Recog
 }
 
 type RecognizeMedicalDeviceManageLicenseResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6321,6 +7535,9 @@ func (s *RecognizeMedicalDeviceManageLicenseResponse) SetBody(v *RecognizeMedica
 }
 
 type RecognizeMedicalDeviceProduceLicenseRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB13MJ.MuT2gK0jSZFvXXXnFXXa-1417-994.png
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -6344,9 +7561,18 @@ func (s *RecognizeMedicalDeviceProduceLicenseRequest) SetBody(v io.Reader) *Reco
 }
 
 type RecognizeMedicalDeviceProduceLicenseResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6408,10 +7634,13 @@ func (s *RecognizeMedicalDeviceProduceLicenseResponse) SetBody(v *RecognizeMedic
 }
 
 type RecognizeMixedInvoicesRequest struct {
-	MergePdfPages *bool     `json:"MergePdfPages,omitempty" xml:"MergePdfPages,omitempty"`
-	PageNo        *int32    `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	Url           *string   `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body          io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	MergePdfPages *bool  `json:"MergePdfPages,omitempty" xml:"MergePdfPages,omitempty"`
+	PageNo        *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1.bnGbRWD3KVjSZFsXXcqkpXa-1654-2341.jpg
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeMixedInvoicesRequest) String() string {
@@ -6443,9 +7672,18 @@ func (s *RecognizeMixedInvoicesRequest) SetBody(v io.Reader) *RecognizeMixedInvo
 }
 
 type RecognizeMixedInvoicesResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6507,13 +7745,29 @@ func (s *RecognizeMixedInvoicesResponse) SetBody(v *RecognizeMixedInvoicesRespon
 }
 
 type RecognizeMultiLanguageRequest struct {
-	Languages      []*string `json:"Languages,omitempty" xml:"Languages,omitempty" type:"Repeated"`
-	NeedRotate     *bool     `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
-	NeedSortPage   *bool     `json:"NeedSortPage,omitempty" xml:"NeedSortPage,omitempty"`
-	OutputCharInfo *bool     `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
-	OutputTable    *bool     `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
-	Url            *string   `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body           io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	// This parameter is required.
+	Languages []*string `json:"Languages,omitempty" xml:"Languages,omitempty" type:"Repeated"`
+	// example:
+	//
+	// false
+	NeedRotate *bool `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
+	// example:
+	//
+	// false
+	NeedSortPage *bool `json:"NeedSortPage,omitempty" xml:"NeedSortPage,omitempty"`
+	// example:
+	//
+	// false
+	OutputCharInfo *bool `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
+	// example:
+	//
+	// false
+	OutputTable *bool `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1Wo7eXAvoK1RjSZFDXXXY3pXa-2512-3509.jpg
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeMultiLanguageRequest) String() string {
@@ -6560,13 +7814,29 @@ func (s *RecognizeMultiLanguageRequest) SetBody(v io.Reader) *RecognizeMultiLang
 }
 
 type RecognizeMultiLanguageShrinkRequest struct {
-	LanguagesShrink *string   `json:"Languages,omitempty" xml:"Languages,omitempty"`
-	NeedRotate      *bool     `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
-	NeedSortPage    *bool     `json:"NeedSortPage,omitempty" xml:"NeedSortPage,omitempty"`
-	OutputCharInfo  *bool     `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
-	OutputTable     *bool     `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
-	Url             *string   `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body            io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	// This parameter is required.
+	LanguagesShrink *string `json:"Languages,omitempty" xml:"Languages,omitempty"`
+	// example:
+	//
+	// false
+	NeedRotate *bool `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
+	// example:
+	//
+	// false
+	NeedSortPage *bool `json:"NeedSortPage,omitempty" xml:"NeedSortPage,omitempty"`
+	// example:
+	//
+	// false
+	OutputCharInfo *bool `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
+	// example:
+	//
+	// false
+	OutputTable *bool `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1Wo7eXAvoK1RjSZFDXXXY3pXa-2512-3509.jpg
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeMultiLanguageShrinkRequest) String() string {
@@ -6613,9 +7883,21 @@ func (s *RecognizeMultiLanguageShrinkRequest) SetBody(v io.Reader) *RecognizeMul
 }
 
 type RecognizeMultiLanguageResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {"content":"PACKING  Shipper/Export   Invoice No & Date  STM TECHNOLOGY INC. 20140730- ST44 ","height":1753,"orgHeight":1753,"orgWidth":1240,"prism_version":"1.0.9","prism_wnum":71,"prism_wordsInfo":[{"angle":0,"direction":0,"height":33,"pos":[{"x":348,"y":137},{"x":531,"y":135},{"x":532,"y":168},{"x":348,"y":170}],"prob":99,"recClassify":1,"width":184,"word":"PACKING","x":348,"y":135}],"width":1240}
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6677,6 +7959,9 @@ func (s *RecognizeMultiLanguageResponse) SetBody(v *RecognizeMultiLanguageRespon
 }
 
 type RecognizeNonTaxInvoiceRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1Wo7eXAvoK1RjSZFDXXXY3pXa-2512-3509.jpg
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -6700,9 +7985,18 @@ func (s *RecognizeNonTaxInvoiceRequest) SetBody(v io.Reader) *RecognizeNonTaxInv
 }
 
 type RecognizeNonTaxInvoiceResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6764,6 +8058,9 @@ func (s *RecognizeNonTaxInvoiceResponse) SetBody(v *RecognizeNonTaxInvoiceRespon
 }
 
 type RecognizePassportRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1uHglUgHqK1RjSZFEXXcGMXXa-800-502.png
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -6787,9 +8084,18 @@ func (s *RecognizePassportRequest) SetBody(v io.Reader) *RecognizePassportReques
 }
 
 type RecognizePassportResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6851,6 +8157,9 @@ func (s *RecognizePassportResponse) SetBody(v *RecognizePassportResponseBody) *R
 }
 
 type RecognizePaymentRecordRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1Wo7eXAvoK1RjSZFDXXXY3pXa-2512-3509.jpg
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -6874,9 +8183,18 @@ func (s *RecognizePaymentRecordRequest) SetBody(v io.Reader) *RecognizePaymentRe
 }
 
 type RecognizePaymentRecordResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6938,9 +8256,15 @@ func (s *RecognizePaymentRecordResponse) SetBody(v *RecognizePaymentRecordRespon
 }
 
 type RecognizePurchaseRecordRequest struct {
-	OutputMultiOrders *bool     `json:"OutputMultiOrders,omitempty" xml:"OutputMultiOrders,omitempty"`
-	Url               *string   `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body              io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	// example:
+	//
+	// false
+	OutputMultiOrders *bool `json:"OutputMultiOrders,omitempty" xml:"OutputMultiOrders,omitempty"`
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1Wo7eXAvoK1RjSZFDXXXY3pXa-2512-3509.jpg
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizePurchaseRecordRequest) String() string {
@@ -6967,9 +8291,18 @@ func (s *RecognizePurchaseRecordRequest) SetBody(v io.Reader) *RecognizePurchase
 }
 
 type RecognizePurchaseRecordResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7031,6 +8364,9 @@ func (s *RecognizePurchaseRecordResponse) SetBody(v *RecognizePurchaseRecordResp
 }
 
 type RecognizeQuotaInvoiceRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1SwAeXHr1gK0jSZR0XXbP8XXa-870-604.jpg
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -7054,9 +8390,18 @@ func (s *RecognizeQuotaInvoiceRequest) SetBody(v io.Reader) *RecognizeQuotaInvoi
 }
 
 type RecognizeQuotaInvoiceResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7118,6 +8463,9 @@ func (s *RecognizeQuotaInvoiceResponse) SetBody(v *RecognizeQuotaInvoiceResponse
 }
 
 type RecognizeRideHailingItineraryRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/imgextra/i1/O1CN01ePLJiZ1n8CTylKsn3_!!6000000005044-2-tps-194-260.png
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -7141,9 +8489,21 @@ func (s *RecognizeRideHailingItineraryRequest) SetBody(v io.Reader) *RecognizeRi
 }
 
 type RecognizeRideHailingItineraryResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// noPermission
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {"data":{"serviceProvider":"滴滴出行","applicationDate":"","startTime":"","endTime":"","phoneNumber":"","totalAmount":"","rideDetails":[{"Number":"","carType":"","pickUpTime":"","city":"","startPlace":"","endPlace":"","mileage":"","amount":"","remarks":""}]},"ftype":0,"height":260,"orgHeight":260,"orgWidth":194,"prism_keyValueInfo":[{"key":"serviceProvider","keyProb":99,"value":"滴滴出行","valuePos":[{"x":120,"y":11},{"x":120,"y":21},{"x":57,"y":20},{"x":57,"y":10}],"valueProb":99},{"key":"applicationDate","keyProb":100,"value":"","valueProb":100},{"key":"startTime","keyProb":91,"value":"","valuePos":[{"x":94,"y":46},{"x":94,"y":50},{"x":75,"y":50},{"x":75,"y":46}],"valueProb":91},{"key":"endTime","keyProb":65,"value":"","valuePos":[{"x":112,"y":46},{"x":112,"y":50},{"x":95,"y":50},{"x":95,"y":46}],"valueProb":65},{"key":"phoneNumber","keyProb":100,"value":"","valueProb":100},{"key":"totalAmount","keyProb":100,"value":"","valueProb":100},{"key":"rideDetails","keyProb":100,"value":"[{\"Number\":\"\",\"carType\":\"\",\"pickUpTime\":\"\",\"city\":\"\",\"startPlace\":\"\",\"endPlace\":\"\",\"mileage\":\"\",\"amount\":\"\",\"remarks\":\"\"}]","valueProb":100}],"sliceRect":{"x0":6,"y0":72,"x1":186,"y1":72,"x2":186,"y2":156,"x3":6,"y3":156},"width":194}
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7205,6 +8565,9 @@ func (s *RecognizeRideHailingItineraryResponse) SetBody(v *RecognizeRideHailingI
 }
 
 type RecognizeRollTicketRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1Y2ryJKT2gK0jSZFvXXXnFXXa-438-934.png
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -7228,9 +8591,18 @@ func (s *RecognizeRollTicketRequest) SetBody(v io.Reader) *RecognizeRollTicketRe
 }
 
 type RecognizeRollTicketResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7292,11 +8664,23 @@ func (s *RecognizeRollTicketResponse) SetBody(v *RecognizeRollTicketResponseBody
 }
 
 type RecognizeRussianRequest struct {
-	NeedRotate     *bool     `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
-	OutputCharInfo *bool     `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
-	OutputTable    *bool     `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
-	Url            *string   `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body           io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	// example:
+	//
+	// false
+	NeedRotate *bool `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
+	// example:
+	//
+	// false
+	OutputCharInfo *bool `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
+	// example:
+	//
+	// false
+	OutputTable *bool `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1Wo7eXAvoK1RjSZFDXXXY3pXa-2512-3509.jpg
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeRussianRequest) String() string {
@@ -7333,9 +8717,21 @@ func (s *RecognizeRussianRequest) SetBody(v io.Reader) *RecognizeRussianRequest 
 }
 
 type RecognizeRussianResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {"content":"Тэбако (коробочка для косметики) с рисунком в виде колес повозки","height":199,"orgHeight":199,"orgWidth":766,"prism_version":"1.0.9","prism_wnum":6,"prism_wordsInfo":[{"angle":-89,"direction":0,"height":722,"pos":[{"x":6,"y":23},{"x":728,"y":26},{"x":727,"y":43},{"x":5,"y":41}],"prob":99,"width":17,"word":"Тэбако (коробочка для косметики) с рисунком в виде колес повозки， покрытая","x":358,"y":-327}],"width":766}
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7397,6 +8793,9 @@ func (s *RecognizeRussianResponse) SetBody(v *RecognizeRussianResponseBody) *Rec
 }
 
 type RecognizeShoppingReceiptRequest struct {
+	// example:
+	//
+	// http://duguang-database-public.oss-cn-hangzhou.aliyuncs.com/multi_receipt_shopping_receipt/shop_receipt__ticket_2020-05-14-11-59-30.540668_01_List.jpg
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -7420,9 +8819,21 @@ func (s *RecognizeShoppingReceiptRequest) SetBody(v io.Reader) *RecognizeShoppin
 }
 
 type RecognizeShoppingReceiptResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// noPermission
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {"data": {"shopName": "世纪联华椒江市府大道店", "receiptDate": "2020-04-23", "receiptTime": "20:26:00", "contactNumber": "88068111", "shopAddress": "", "totalAmount": "566.67"}, "ftype": 0, "height": 1047, "orgHeight": 1055, "orgWidth": 690, "prism_keyValueInfo": [{"key": "shopName", "keyProb": 98, "value": "世纪联华椒江市府大道店", "valuePos": [{"x": 51, "y": 239}, {"x": 53, "y": 208}, {"x": 438, "y": 231}, {"x": 436, "y": 262}], "valueProb": 98}, {"key": "receiptDate", "keyProb": 100, "value": "2020-04-23", "valuePos": [{"x": 292, "y": 677}, {"x": 293, "y": 649}, {"x": 428, "y": 651}, {"x": 428, "y": 680}], "valueProb": 100}, {"key": "receiptTime", "keyProb": 100, "value": "20:26:00", "valuePos": [{"x": 435, "y": 681}, {"x": 435, "y": 652}, {"x": 548, "y": 656}, {"x": 547, "y": 684}], "valueProb": 100}, {"key": "contactNumber", "keyProb": 100, "value": "88068111", "valuePos": [{"x": 52, "y": 271}, {"x": 52, "y": 242}, {"x": 160, "y": 246}, {"x": 159, "y": 274}], "valueProb": 100}, {"key": "shopAddress", "keyProb": 100, "value": "", "valueProb": 100}, {"key": "totalAmount", "keyProb": 100, "value": "566.67", "valuePos": [{"x": 206, "y": 522}, {"x": 206, "y": 493}, {"x": 313, "y": 495}, {"x": 313, "y": 524}], "valueProb": 100}], "sliceRect": {"x0": 17, "y0": 8, "x1": 690, "y1": 42, "x2": 690, "y2": 1054, "x3": 6, "y3": 1053}, "width": 684}
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7484,6 +8895,9 @@ func (s *RecognizeShoppingReceiptResponse) SetBody(v *RecognizeShoppingReceiptRe
 }
 
 type RecognizeSocialSecurityCardRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/imgextra/i4/O1CN01zpM9bJ1Pa5pCwJat7_!!6000000001856-0-tps-282-179.jpg
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -7507,9 +8921,21 @@ func (s *RecognizeSocialSecurityCardRequest) SetBody(v io.Reader) *RecognizeSoci
 }
 
 type RecognizeSocialSecurityCardResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// noPermission
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {"angle":0,"data":{"issueDate":"20168月4日","certificateNumber":"2014100285","taxAuthorityName":"格","formType":"第一联","taxNumbe":"","name":"","totalAmountInWords":"肆佰陆拾陆元叁角玖分","totalAmount":"466.39","drawer":"","remarks":"(20141)鄂国证00285001正常申报一般申报滞纳金自行申报松滋市街河市镇现:主管税务所(科、分局):松滋市国家税务局办税服票价格:4615.38、车辆厂牌:铃木牌/SUZUKIHJ125K-车辆型号:铃木牌/SUZUKIHJ125K-2A、车辆识别代号:LC6PCJ2Y5F1014537","taxClearanceDetails":[{"voucherNumber":"320160804000005082","taxType":"车辆购置税","itemName":"车辆购置税","taxPeriod":"2016-08-04至2016-08-04","date":"2016-08-04461.54","amount":""},{"voucherNumber":"320160804000005082","taxType":"车辆购置税","itemName":"滞纳金","taxPeriod":"2016-08-04至2016-08-04","date":"2016-08-044.85","amount":""}]},"ftype":0,"height":712,"orgHeight":712,"orgWidth":1080,"prism_keyValueInfo":[{"key":"issueDate","keyProb":100,"value":"20168月4日","valuePos":[{"x":458,"y":129},{"x":458,"y":110},{"x":639,"y":113},{"x":638,"y":131}],"valueProb":100},{"key":"certificateNumber","keyProb":99,"value":"2014100285","valuePos":[{"x":810,"y":87},{"x":997,"y":83},{"x":997,"y":103},{"x":810,"y":106}],"valueProb":99},{"key":"taxAuthorityName","keyProb":87,"value":"格","valuePos":[{"x":840,"y":103},{"x":840,"y":128},{"x":825,"y":128},{"x":825,"y":103}],"valueProb":87},{"key":"formType","keyProb":100,"value":"第一联","valuePos":[{"x":1036,"y":247},{"x":1051,"y":247},{"x":1051,"y":289},{"x":1036,"y":289}],"valueProb":100},{"key":"taxNumbe","keyProb":100,"value":"","valueProb":100},{"key":"name","keyProb":100,"value":"","valueProb":100},{"key":"totalAmountInWords","keyProb":100,"value":"肆佰陆拾陆元叁角玖分","valuePos":[{"x":239,"y":498},{"x":395,"y":496},{"x":395,"y":514},{"x":239,"y":515}],"valueProb":100},{"key":"totalAmount","keyProb":100,"value":"466.39","valuePos":[{"x":892,"y":494},{"x":957,"y":493},{"x":957,"y":508},{"x":893,"y":510}],"valueProb":100},{"key":"drawer","keyProb":100,"value":"","valueProb":100},{"key":"remarks","keyProb":100,"value":"(20141)鄂国证00285001正常申报一般申报滞纳金自行申报松滋市街河市镇现:主管税务所(科、分局):松滋市国家税务局办税服票价格:4615.38、车辆厂牌:铃木牌/SUZUKIHJ125K-车辆型号:铃木牌/SUZUKIHJ125K-2A、车辆识别代号:LC6PCJ2Y5F1014537","valuePos":[{"x":966,"y":538},{"x":966,"y":663},{"x":610,"y":663},{"x":610,"y":538}],"valueProb":100},{"key":"taxClearanceDetails","keyProb":100,"value":"[{\"voucherNumber\":\"320160804000005082\",\"taxType\":\"车辆购置税\",\"itemName\":\"车辆购置税\",\"taxPeriod\":\"2016-08-04至2016-08-04\",\"date\":\"2016-08-04461.54\",\"amount\":\"\"},{\"voucherNumber\":\"320160804000005082\",\"taxType\":\"车辆购置税\",\"itemName\":\"滞纳金\",\"taxPeriod\":\"2016-08-04至2016-08-04\",\"date\":\"2016-08-044.85\",\"amount\":\"\"}]","valueProb":100}],"sliceRect":{"x0":0,"y0":0,"x1":1077,"y1":0,"x2":1078,"y2":709,"x3":0,"y3":704},"width":1080}
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7571,6 +8997,9 @@ func (s *RecognizeSocialSecurityCardResponse) SetBody(v *RecognizeSocialSecurity
 }
 
 type RecognizeSocialSecurityCardVersionIIRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/imgextra/i4/O1CN01zpM9bJ1Pa5pCwJat7_!!6000000001856-0-tps-282-179.jpg
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -7594,9 +9023,21 @@ func (s *RecognizeSocialSecurityCardVersionIIRequest) SetBody(v io.Reader) *Reco
 }
 
 type RecognizeSocialSecurityCardVersionIIResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// noPermission
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {"angle":0,"data":{"issueDate":"20168月4日","certificateNumber":"2014100285","taxAuthorityName":"格","formType":"第一联","taxNumbe":"","name":"","totalAmountInWords":"肆佰陆拾陆元叁角玖分","totalAmount":"466.39","drawer":"","remarks":"(20141)鄂国证00285001正常申报一般申报滞纳金自行申报松滋市街河市镇现:主管税务所(科、分局):松滋市国家税务局办税服票价格:4615.38、车辆厂牌:铃木牌/SUZUKIHJ125K-车辆型号:铃木牌/SUZUKIHJ125K-2A、车辆识别代号:LC6PCJ2Y5F1014537","taxClearanceDetails":[{"voucherNumber":"320160804000005082","taxType":"车辆购置税","itemName":"车辆购置税","taxPeriod":"2016-08-04至2016-08-04","date":"2016-08-04461.54","amount":""},{"voucherNumber":"320160804000005082","taxType":"车辆购置税","itemName":"滞纳金","taxPeriod":"2016-08-04至2016-08-04","date":"2016-08-044.85","amount":""}]},"ftype":0,"height":712,"orgHeight":712,"orgWidth":1080,"prism_keyValueInfo":[{"key":"issueDate","keyProb":100,"value":"20168月4日","valuePos":[{"x":458,"y":129},{"x":458,"y":110},{"x":639,"y":113},{"x":638,"y":131}],"valueProb":100},{"key":"certificateNumber","keyProb":99,"value":"2014100285","valuePos":[{"x":810,"y":87},{"x":997,"y":83},{"x":997,"y":103},{"x":810,"y":106}],"valueProb":99},{"key":"taxAuthorityName","keyProb":87,"value":"格","valuePos":[{"x":840,"y":103},{"x":840,"y":128},{"x":825,"y":128},{"x":825,"y":103}],"valueProb":87},{"key":"formType","keyProb":100,"value":"第一联","valuePos":[{"x":1036,"y":247},{"x":1051,"y":247},{"x":1051,"y":289},{"x":1036,"y":289}],"valueProb":100},{"key":"taxNumbe","keyProb":100,"value":"","valueProb":100},{"key":"name","keyProb":100,"value":"","valueProb":100},{"key":"totalAmountInWords","keyProb":100,"value":"肆佰陆拾陆元叁角玖分","valuePos":[{"x":239,"y":498},{"x":395,"y":496},{"x":395,"y":514},{"x":239,"y":515}],"valueProb":100},{"key":"totalAmount","keyProb":100,"value":"466.39","valuePos":[{"x":892,"y":494},{"x":957,"y":493},{"x":957,"y":508},{"x":893,"y":510}],"valueProb":100},{"key":"drawer","keyProb":100,"value":"","valueProb":100},{"key":"remarks","keyProb":100,"value":"(20141)鄂国证00285001正常申报一般申报滞纳金自行申报松滋市街河市镇现:主管税务所(科、分局):松滋市国家税务局办税服票价格:4615.38、车辆厂牌:铃木牌/SUZUKIHJ125K-车辆型号:铃木牌/SUZUKIHJ125K-2A、车辆识别代号:LC6PCJ2Y5F1014537","valuePos":[{"x":966,"y":538},{"x":966,"y":663},{"x":610,"y":663},{"x":610,"y":538}],"valueProb":100},{"key":"taxClearanceDetails","keyProb":100,"value":"[{\"voucherNumber\":\"320160804000005082\",\"taxType\":\"车辆购置税\",\"itemName\":\"车辆购置税\",\"taxPeriod\":\"2016-08-04至2016-08-04\",\"date\":\"2016-08-04461.54\",\"amount\":\"\"},{\"voucherNumber\":\"320160804000005082\",\"taxType\":\"车辆购置税\",\"itemName\":\"滞纳金\",\"taxPeriod\":\"2016-08-04至2016-08-04\",\"date\":\"2016-08-044.85\",\"amount\":\"\"}]","valueProb":100}],"sliceRect":{"x0":0,"y0":0,"x1":1077,"y1":0,"x2":1078,"y2":709,"x3":0,"y3":704},"width":1080}
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7658,12 +9099,27 @@ func (s *RecognizeSocialSecurityCardVersionIIResponse) SetBody(v *RecognizeSocia
 }
 
 type RecognizeTableOcrRequest struct {
-	IsHandWriting *string   `json:"IsHandWriting,omitempty" xml:"IsHandWriting,omitempty"`
-	LineLess      *bool     `json:"LineLess,omitempty" xml:"LineLess,omitempty"`
-	NeedRotate    *bool     `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
-	SkipDetection *bool     `json:"SkipDetection,omitempty" xml:"SkipDetection,omitempty"`
-	Url           *string   `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body          io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	// example:
+	//
+	// "false"
+	IsHandWriting *string `json:"IsHandWriting,omitempty" xml:"IsHandWriting,omitempty"`
+	// example:
+	//
+	// false
+	LineLess *bool `json:"LineLess,omitempty" xml:"LineLess,omitempty"`
+	// example:
+	//
+	// true
+	NeedRotate *bool `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
+	// example:
+	//
+	// false
+	SkipDetection *bool `json:"SkipDetection,omitempty" xml:"SkipDetection,omitempty"`
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1Wo7eXAvoK1RjSZFDXXXY3pXa-2512-3509.jpg
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeTableOcrRequest) String() string {
@@ -7705,9 +9161,12 @@ func (s *RecognizeTableOcrRequest) SetBody(v io.Reader) *RecognizeTableOcrReques
 }
 
 type RecognizeTableOcrResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7769,6 +9228,9 @@ func (s *RecognizeTableOcrResponse) SetBody(v *RecognizeTableOcrResponseBody) *R
 }
 
 type RecognizeTaxClearanceCertificateRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/imgextra/i1/O1CN0131X3Xs1d1CHG8oypS_!!6000000003675-0-tps-1080-712.jpg
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -7792,9 +9254,21 @@ func (s *RecognizeTaxClearanceCertificateRequest) SetBody(v io.Reader) *Recogniz
 }
 
 type RecognizeTaxClearanceCertificateResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// noPermission
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {"angle":0,"data":{"issueDate":"20168月4日","certificateNumber":"2014100285","taxAuthorityName":"格","formType":"第一联","taxNumbe":"","name":"","totalAmountInWords":"肆佰陆拾陆元叁角玖分","totalAmount":"466.39","drawer":"","remarks":"(20141)鄂国证00285001正常申报一般申报滞纳金自行申报松滋市街河市镇现:主管税务所(科、分局):松滋市国家税务局办税服票价格:4615.38、车辆厂牌:铃木牌/SUZUKIHJ125K-车辆型号:铃木牌/SUZUKIHJ125K-2A、车辆识别代号:LC6PCJ2Y5F1014537","taxClearanceDetails":[{"voucherNumber":"320160804000005082","taxType":"车辆购置税","itemName":"车辆购置税","taxPeriod":"2016-08-04至2016-08-04","date":"2016-08-04461.54","amount":""},{"voucherNumber":"320160804000005082","taxType":"车辆购置税","itemName":"滞纳金","taxPeriod":"2016-08-04至2016-08-04","date":"2016-08-044.85","amount":""}]},"ftype":0,"height":712,"orgHeight":712,"orgWidth":1080,"prism_keyValueInfo":[{"key":"issueDate","keyProb":100,"value":"20168月4日","valuePos":[{"x":458,"y":129},{"x":458,"y":110},{"x":639,"y":113},{"x":638,"y":131}],"valueProb":100},{"key":"certificateNumber","keyProb":99,"value":"2014100285","valuePos":[{"x":810,"y":87},{"x":997,"y":83},{"x":997,"y":103},{"x":810,"y":106}],"valueProb":99},{"key":"taxAuthorityName","keyProb":87,"value":"格","valuePos":[{"x":840,"y":103},{"x":840,"y":128},{"x":825,"y":128},{"x":825,"y":103}],"valueProb":87},{"key":"formType","keyProb":100,"value":"第一联","valuePos":[{"x":1036,"y":247},{"x":1051,"y":247},{"x":1051,"y":289},{"x":1036,"y":289}],"valueProb":100},{"key":"taxNumbe","keyProb":100,"value":"","valueProb":100},{"key":"name","keyProb":100,"value":"","valueProb":100},{"key":"totalAmountInWords","keyProb":100,"value":"肆佰陆拾陆元叁角玖分","valuePos":[{"x":239,"y":498},{"x":395,"y":496},{"x":395,"y":514},{"x":239,"y":515}],"valueProb":100},{"key":"totalAmount","keyProb":100,"value":"466.39","valuePos":[{"x":892,"y":494},{"x":957,"y":493},{"x":957,"y":508},{"x":893,"y":510}],"valueProb":100},{"key":"drawer","keyProb":100,"value":"","valueProb":100},{"key":"remarks","keyProb":100,"value":"(20141)鄂国证00285001正常申报一般申报滞纳金自行申报松滋市街河市镇现:主管税务所(科、分局):松滋市国家税务局办税服票价格:4615.38、车辆厂牌:铃木牌/SUZUKIHJ125K-车辆型号:铃木牌/SUZUKIHJ125K-2A、车辆识别代号:LC6PCJ2Y5F1014537","valuePos":[{"x":966,"y":538},{"x":966,"y":663},{"x":610,"y":663},{"x":610,"y":538}],"valueProb":100},{"key":"taxClearanceDetails","keyProb":100,"value":"[{\"voucherNumber\":\"320160804000005082\",\"taxType\":\"车辆购置税\",\"itemName\":\"车辆购置税\",\"taxPeriod\":\"2016-08-04至2016-08-04\",\"date\":\"2016-08-04461.54\",\"amount\":\"\"},{\"voucherNumber\":\"320160804000005082\",\"taxType\":\"车辆购置税\",\"itemName\":\"滞纳金\",\"taxPeriod\":\"2016-08-04至2016-08-04\",\"date\":\"2016-08-044.85\",\"amount\":\"\"}]","valueProb":100}],"sliceRect":{"x0":0,"y0":0,"x1":1077,"y1":0,"x2":1078,"y2":709,"x3":0,"y3":704},"width":1080}
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7856,6 +9330,9 @@ func (s *RecognizeTaxClearanceCertificateResponse) SetBody(v *RecognizeTaxCleara
 }
 
 type RecognizeTaxiInvoiceRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1.OicXebviK0jSZFNXXaApXXa-364-982.jpg
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -7879,9 +9356,21 @@ func (s *RecognizeTaxiInvoiceRequest) SetBody(v io.Reader) *RecognizeTaxiInvoice
 }
 
 type RecognizeTaxiInvoiceResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// { 	"data": { 		"licensePlateNumber": "B-30T76", 		"date": "2018-09-28", 		"invoiceCode": "150001583910", 		"invoiceNumber": "22566685", 		"mileage": "22.8", 		"fare": "¥57.00", 		"dropOffTime": "01：40", 		"pickUpTime": "01：19" 	}, 	"ftype": 0, 	"height": 982, 	"orgHeight": 982, 	"orgWidth": 364,  	"width": 364 }
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7943,11 +9432,23 @@ func (s *RecognizeTaxiInvoiceResponse) SetBody(v *RecognizeTaxiInvoiceResponseBo
 }
 
 type RecognizeThaiRequest struct {
-	NeedRotate     *bool     `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
-	OutputCharInfo *bool     `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
-	OutputTable    *bool     `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
-	Url            *string   `json:"Url,omitempty" xml:"Url,omitempty"`
-	Body           io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+	// example:
+	//
+	// false
+	NeedRotate *bool `json:"NeedRotate,omitempty" xml:"NeedRotate,omitempty"`
+	// example:
+	//
+	// false
+	OutputCharInfo *bool `json:"OutputCharInfo,omitempty" xml:"OutputCharInfo,omitempty"`
+	// example:
+	//
+	// false
+	OutputTable *bool `json:"OutputTable,omitempty" xml:"OutputTable,omitempty"`
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1Wo7eXAvoK1RjSZFDXXXY3pXa-2512-3509.jpg
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeThaiRequest) String() string {
@@ -7984,9 +9485,21 @@ func (s *RecognizeThaiRequest) SetBody(v io.Reader) *RecognizeThaiRequest {
 }
 
 type RecognizeThaiResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {"angle":0,"content":"4สัป าR  ๗  เริมเห็นผิวที่เรียบเบียน  วิรีการใช้ LEshop uA","height":887,"orgHeight":887,"orgWidth":790,"prism_version":"1.0.9","prism_wnum":26,"prism_wordsInfo":[{"angle":-89,"direction":0,"height":210,"pos":[{"x":285,"y":14},{"x":495,"y":14},{"x":495,"y":63},{"x":285,"y":63}],"prob":85,"width":48,"word":"4สัป าR ","x":365,"y":-66}],"width":790}
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8048,6 +9561,9 @@ func (s *RecognizeThaiResponse) SetBody(v *RecognizeThaiResponseBody) *Recognize
 }
 
 type RecognizeTollInvoiceRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/imgextra/i3/O1CN01uUHo411DCwPsBWDMJ_!!6000000000181-0-tps-199-254.jpg
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -8071,9 +9587,21 @@ func (s *RecognizeTollInvoiceRequest) SetBody(v io.Reader) *RecognizeTollInvoice
 }
 
 type RecognizeTollInvoiceResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// noPermission
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {"angle":0,"data":{"title":"苏宁用打发","formType":"发票联","invoiceCode":"132001681414","invoiceNumber":"53184969","date":"","time":"","vehicleType":"客1","entranceName":"江","exitName":"","totalAmount":"0.00"},"ftype":0,"height":254,"orgHeight":254,"orgWidth":199,"prism_keyValueInfo":[{"key":"title","keyProb":98,"value":"苏宁用打发","valuePos":[{"x":174,"y":20},{"x":174,"y":35},{"x":24,"y":34},{"x":24,"y":19}],"valueProb":98},{"key":"formType","keyProb":89,"value":"发票联","valuePos":[{"x":50,"y":41},{"x":131,"y":37},{"x":131,"y":52},{"x":50,"y":56}],"valueProb":89},{"key":"invoiceCode","keyProb":100,"value":"132001681414","valuePos":[{"x":150,"y":94},{"x":150,"y":105},{"x":63,"y":105},{"x":63,"y":94}],"valueProb":100},{"key":"invoiceNumber","keyProb":100,"value":"53184969","valuePos":[{"x":119,"y":109},{"x":119,"y":120},{"x":63,"y":120},{"x":63,"y":109}],"valueProb":100},{"key":"date","keyProb":100,"value":"","valueProb":100},{"key":"time","keyProb":100,"value":"","valueProb":100},{"key":"vehicleType","keyProb":95,"value":"客1","valuePos":[{"x":40,"y":180},{"x":40,"y":192},{"x":28,"y":192},{"x":28,"y":180}],"valueProb":95},{"key":"entranceName","keyProb":98,"value":"江","valuePos":[{"x":96,"y":128},{"x":96,"y":140},{"x":39,"y":140},{"x":39,"y":128}],"valueProb":98},{"key":"exitName","keyProb":100,"value":"","valueProb":100},{"key":"totalAmount","keyProb":85,"value":"0.00","valuePos":[{"x":70,"y":181},{"x":70,"y":190},{"x":55,"y":190},{"x":55,"y":181}],"valueProb":85}],"sliceRect":{"x0":0,"y0":2,"x1":196,"y1":1,"x2":198,"y2":251,"x3":0,"y3":252},"width":199}
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8135,6 +9663,9 @@ func (s *RecognizeTollInvoiceResponse) SetBody(v *RecognizeTollInvoiceResponseBo
 }
 
 type RecognizeTradeMarkCertificationRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1SZiGdfb2gK0jSZK9XXaEgFXa-1654-2340.png
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -8158,9 +9689,18 @@ func (s *RecognizeTradeMarkCertificationRequest) SetBody(v io.Reader) *Recognize
 }
 
 type RecognizeTradeMarkCertificationResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8222,6 +9762,9 @@ func (s *RecognizeTradeMarkCertificationResponse) SetBody(v *RecognizeTradeMarkC
 }
 
 type RecognizeTrainInvoiceRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1u1HrUmzqK1RjSZFpXXakSXXa-1200-900.jpg
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -8245,9 +9788,18 @@ func (s *RecognizeTrainInvoiceRequest) SetBody(v io.Reader) *RecognizeTrainInvoi
 }
 
 type RecognizeTrainInvoiceResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8309,6 +9861,9 @@ func (s *RecognizeTrainInvoiceResponse) SetBody(v *RecognizeTrainInvoiceResponse
 }
 
 type RecognizeUsedCarInvoiceRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/imgextra/i4/O1CN01NiY6e220zrtvT6dFJ_!!6000000006921-0-tps-3468-4624.jpg
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -8332,9 +9887,21 @@ func (s *RecognizeUsedCarInvoiceRequest) SetBody(v io.Reader) *RecognizeUsedCarI
 }
 
 type RecognizeUsedCarInvoiceResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// noPermission
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {"angle":270,"data":{"title":"二手车销售统一发票","formType":"发票联","invoiceDate":"2021-03-19","invoiceCode":"021002000117","invoiceNumber":"00713899","printedInvoiceCode":"021002000117","printedInvoiceNumber":"00713899","taxCode":"03300173880207579449","purchaserName":"李壮","purchaserCode":"210105198712104354","purchaserAddress":"沈阳市皇姑区泰山路69-50号3-1-3","purchaserPhoneNumber":"18947857689","sellerName":"张鹏","sellerCode":"210105197807263716","sellerAddress":"沈阳市皇姑区宁山东路甲2号3-5-2","sellerPhoneNumber":"17641587456","licensePlateNumber":"辽A6L136","certificateNumber":"210008639051","vehicleType":"小型轿车","vinCode":"WAUYGB4H3FN031973","brandMode":"奥迪WAUYGB4H","vehicleAdministrationName":"沈阳市车管所","totalAmountInWords":"壹万圆整","totalAmount":"10000.00","marketName":"沈阳车顶尚二手车交易市场有限公司","marketTaxNumber":"91210106MA0TURHE35","marketAddress":"沈阳市铁西区北二西路29甲4号(9门)","marketBankAccountInfo":"葫芦岛银行股份有限公司沈阳分行20008411159000000025","marketPhoneNumber":"15940287043","remarks":"","drawer":"张丽"},"ftype":0,"height":4624,"orgHeight":4624,"orgWidth":3468,"prism_keyValueInfo":[{"key":"title","keyProb":100,"value":"二手车销售统一发票","valuePos":[{"x":2715,"y":228},{"x":2715,"y":347},{"x":1283,"y":352},{"x":1282,"y":233}],"valueProb":100},{"key":"formType","keyProb":85,"value":"发票联","valuePos":[{"x":2289,"y":401},{"x":2290,"y":510},{"x":1701,"y":512},{"x":1701,"y":403}],"valueProb":85},{"key":"invoiceDate","keyProb":100,"value":"2021-03-19","valuePos":[{"x":728,"y":568},{"x":729,"y":504},{"x":1142,"y":509},{"x":1141,"y":573}],"valueProb":100},{"key":"invoiceCode","keyProb":100,"value":"021002000117","valuePos":[{"x":3090,"y":376},{"x":3676,"y":359},{"x":3678,"y":432},{"x":3093,"y":450}],"valueProb":100},{"key":"invoiceNumber","keyProb":100,"value":"00713899","valuePos":[{"x":3099,"y":457},{"x":3470,"y":449},{"x":3472,"y":523},{"x":3100,"y":530}],"valueProb":100},{"key":"printedInvoiceCode","keyProb":100,"value":"021002000117","valuePos":[{"x":1307,"y":621},{"x":1308,"y":683},{"x":812,"y":688},{"x":812,"y":626}],"valueProb":100},{"key":"printedInvoiceNumber","keyProb":100,"value":"00713899","valuePos":[{"x":811,"y":797},{"x":812,"y":731},{"x":1155,"y":738},{"x":1153,"y":803}],"valueProb":100},{"key":"taxCode","keyProb":100,"value":"03300173880207579449","valuePos":[{"x":3005,"y":755},{"x":3005,"y":818},{"x":2184,"y":825},{"x":2183,"y":761}],"valueProb":100},{"key":"purchaserName","keyProb":100,"value":"李壮","valuePos":[{"x":1139,"y":977},{"x":1260,"y":977},{"x":1260,"y":1044},{"x":1139,"y":1044}],"valueProb":100},{"key":"purchaserCode","keyProb":100,"value":"210105198712104354","valuePos":[{"x":3502,"y":992},{"x":3502,"y":1054},{"x":2802,"y":1054},{"x":2802,"y":992}],"valueProb":100},{"key":"purchaserAddress","keyProb":100,"value":"沈阳市皇姑区泰山路69-50号3-1-3","valuePos":[{"x":1138,"y":1105},{"x":1988,"y":1105},{"x":1988,"y":1176},{"x":1138,"y":1176}],"valueProb":100},{"key":"purchaserPhoneNumber","keyProb":100,"value":"18947857689","valuePos":[{"x":2996,"y":1115},{"x":3466,"y":1115},{"x":3466,"y":1181},{"x":2996,"y":1181}],"valueProb":100},{"key":"sellerName","keyProb":100,"value":"张鹏","valuePos":[{"x":1137,"y":1227},{"x":1259,"y":1227},{"x":1259,"y":1296},{"x":1137,"y":1296}],"valueProb":100},{"key":"sellerCode","keyProb":100,"value":"210105197807263716","valuePos":[{"x":3501,"y":1245},{"x":3501,"y":1305},{"x":2807,"y":1307},{"x":2806,"y":1247}],"valueProb":100},{"key":"sellerAddress","keyProb":100,"value":"沈阳市皇姑区宁山东路甲2号3-5-2","valuePos":[{"x":1991,"y":1353},{"x":1991,"y":1422},{"x":1137,"y":1426},{"x":1136,"y":1356}],"valueProb":100},{"key":"sellerPhoneNumber","keyProb":100,"value":"17641587456","valuePos":[{"x":3460,"y":1372},{"x":3461,"y":1433},{"x":2996,"y":1435},{"x":2996,"y":1373}],"valueProb":100},{"key":"licensePlateNumber","keyProb":100,"value":"辽A6L136","valuePos":[{"x":1470,"y":1471},{"x":1471,"y":1541},{"x":1140,"y":1544},{"x":1139,"y":1474}],"valueProb":100},{"key":"certificateNumber","keyProb":100,"value":"210008639051","valuePos":[{"x":2433,"y":1489},{"x":2433,"y":1549},{"x":1981,"y":1553},{"x":1981,"y":1493}],"valueProb":100},{"key":"vehicleType","keyProb":100,"value":"小型轿车","valuePos":[{"x":2994,"y":1498},{"x":3229,"y":1498},{"x":3229,"y":1562},{"x":2994,"y":1562}],"valueProb":100},{"key":"vinCode","keyProb":100,"value":"WAUYGB4H3FN031973","valuePos":[{"x":1601,"y":1587},{"x":1601,"y":1633},{"x":1138,"y":1638},{"x":1137,"y":1591}],"valueProb":100},{"key":"brandMode","keyProb":100,"value":"奥迪WAUYGB4H","valuePos":[{"x":2330,"y":1616},{"x":2330,"y":1677},{"x":1986,"y":1677},{"x":1986,"y":1616}],"valueProb":100},{"key":"vehicleAdministrationName","keyProb":100,"value":"沈阳市车管所","valuePos":[{"x":3347,"y":1621},{"x":3347,"y":1690},{"x":2989,"y":1693},{"x":2989,"y":1624}],"valueProb":100},{"key":"totalAmountInWords","keyProb":100,"value":"壹万圆整","valuePos":[{"x":1528,"y":1730},{"x":1529,"y":1799},{"x":1292,"y":1801},{"x":1291,"y":1732}],"valueProb":100},{"key":"totalAmount","keyProb":100,"value":"10000.00","valuePos":[{"x":3479,"y":1746},{"x":3479,"y":1816},{"x":3048,"y":1820},{"x":3047,"y":1749}],"valueProb":100},{"key":"marketName","keyProb":100,"value":"沈阳车顶尚二手车交易市场有限公司","valuePos":[{"x":2037,"y":2282},{"x":2037,"y":2354},{"x":1124,"y":2362},{"x":1124,"y":2290}],"valueProb":100},{"key":"marketTaxNumber","keyProb":96,"value":"91210106MA0TURHE35","valuePos":[{"x":3079,"y":2255},{"x":3079,"y":2314},{"x":2397,"y":2321},{"x":2396,"y":2261}],"valueProb":96},{"key":"marketAddress","keyProb":100,"value":"沈阳市铁西区北二西路29甲4号(9门)","valuePos":[{"x":3306,"y":2378},{"x":3307,"y":2445},{"x":2399,"y":2453},{"x":2399,"y":2387}],"valueProb":100},{"key":"marketBankAccountInfo","keyProb":100,"value":"葫芦岛银行股份有限公司沈阳分行20008411159000000025","valuePos":[{"x":2522,"y":2480},{"x":2523,"y":2554},{"x":1109,"y":2567},{"x":1109,"y":2494}],"valueProb":100},{"key":"marketPhoneNumber","keyProb":100,"value":"15940287043","valuePos":[{"x":3172,"y":2579},{"x":3173,"y":2518},{"x":3603,"y":2530},{"x":3601,"y":2590}],"valueProb":100},{"key":"remarks","keyProb":100,"value":"","valueProb":100},{"key":"drawer","keyProb":100,"value":"张丽","valuePos":[{"x":2787,"y":2819},{"x":2789,"y":2756},{"x":2914,"y":2761},{"x":2911,"y":2823}],"valueProb":100}],"sliceRect":{"x0":103,"y0":372,"x1":3174,"y1":428,"x2":3041,"y2":4364,"x3":161,"y3":4360},"width":3468}
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8396,6 +9963,9 @@ func (s *RecognizeUsedCarInvoiceResponse) SetBody(v *RecognizeUsedCarInvoiceResp
 }
 
 type RecognizeVehicleCertificationRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/imgextra/i1/O1CN0196uE7i1FXD9TpYqLy_!!6000000000496-0-tps-3024-4032.jpg
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -8419,9 +9989,21 @@ func (s *RecognizeVehicleCertificationRequest) SetBody(v io.Reader) *RecognizeVe
 }
 
 type RecognizeVehicleCertificationResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// noPermission
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {"data":{"certificateNumber":"YG170ZLM1234567","issueDate":"2021年01月01日","manufactureName":"中国重汽集团济南卡车股份有限公司","vehicleBrand":"豪沃牌","vehicleName":"自卸汽车","vehicleModel":"ZZ3257N414GE1","vinCode":"LZZ1ELSEXLW644557","vehicleColor":"水晶红","chassisModel":"ZZ3257N384GE1","chassisId":"2578516","chassisCertificateNumber":"","engineModel":"WP10H400E50","engineNumber":"7520K064819","fuelType":"柴油","displacement":"9500","power":"294","emissionStandard":"GB17691-2005国V","fuelConsumption":"","overallDimension":"8920×2550×3450","containerDimension":"6000×2350×1500","springNumber":"11/12","tireNumber":"10","tireSize":"12.00R2016PR","frontWheelTrack":"2022","rearWheelTrack":"1850/1850","wheelbase":"4125+1350","axleLoad":"7000/18000(二轴组)","axleNumber":"3","steeringForm":"方向盘","totalWeight":"25000","equipmentWeight":"12500","maximumLadenMass":"12370","massUtilizationCoefficient":"1.00","tractionWeight":"","MaximumLoadMass":"","cabPassengerCapacity":"2","passengerCapacity":"","maxDesignSpeed":"80","manufactureDate":"2020年12月03日","remarks":"备注:货厢自卸方式为后卸。"},"ftype":1,"height":4032,"orgHeight":4032,"orgWidth":3024,"prism_keyValueInfo":[{"key":"certificateNumber","keyProb":100,"value":"YG170ZLM1234567","valuePos":[{"x":554,"y":85},{"x":932,"y":84},{"x":932,"y":133},{"x":554,"y":135}],"valueProb":100},{"key":"issueDate","keyProb":100,"value":"2021年01月01日","valuePos":[{"x":1637,"y":132},{"x":1639,"y":82},{"x":2002,"y":91},{"x":2001,"y":142}],"valueProb":100},{"key":"manufactureName","keyProb":100,"value":"中国重汽集团济南卡车股份有限公司","valuePos":[{"x":552,"y":212},{"x":554,"y":164},{"x":1265,"y":180},{"x":1264,"y":229}],"valueProb":100},{"key":"vehicleBrand","keyProb":100,"value":"豪沃牌","valuePos":[{"x":554,"y":292},{"x":556,"y":240},{"x":693,"y":243},{"x":692,"y":296}],"valueProb":100},{"key":"vehicleName","keyProb":100,"value":"自卸汽车","valuePos":[{"x":1338,"y":257},{"x":1338,"y":307},{"x":1161,"y":307},{"x":1161,"y":257}],"valueProb":100},{"key":"vehicleModel","keyProb":100,"value":"ZZ3257N414GE1","valuePos":[{"x":550,"y":366},{"x":551,"y":319},{"x":846,"y":325},{"x":845,"y":372}],"valueProb":100},{"key":"vinCode","keyProb":100,"value":"LZZ1ELSEXLW644557","valuePos":[{"x":1636,"y":373},{"x":1638,"y":328},{"x":2016,"y":352},{"x":2013,"y":397}],"valueProb":100},{"key":"vehicleColor","keyProb":100,"value":"水晶红","valuePos":[{"x":554,"y":447},{"x":554,"y":395},{"x":690,"y":398},{"x":689,"y":449}],"valueProb":100},{"key":"chassisModel","keyProb":100,"value":"ZZ3257N384GE1","valuePos":[{"x":550,"y":521},{"x":550,"y":474},{"x":848,"y":480},{"x":847,"y":526}],"valueProb":100},{"key":"chassisId","keyProb":100,"value":"2578516","valuePos":[{"x":1635,"y":529},{"x":1637,"y":485},{"x":1801,"y":489},{"x":1800,"y":534}],"valueProb":100},{"key":"chassisCertificateNumber","keyProb":100,"value":"","valueProb":100},{"key":"engineModel","keyProb":100,"value":"WP10H400E50","valuePos":[{"x":1634,"y":607},{"x":1635,"y":562},{"x":1886,"y":570},{"x":1884,"y":614}],"valueProb":100},{"key":"engineNumber","keyProb":100,"value":"7520K064819","valuePos":[{"x":548,"y":672},{"x":549,"y":631},{"x":804,"y":635},{"x":804,"y":676}],"valueProb":100},{"key":"fuelType","keyProb":100,"value":"柴油","valuePos":[{"x":641,"y":705},{"x":641,"y":755},{"x":550,"y":755},{"x":550,"y":705}],"valueProb":100},{"key":"displacement","keyProb":100,"value":"9500","valuePos":[{"x":1631,"y":760},{"x":1631,"y":719},{"x":1728,"y":722},{"x":1727,"y":762}],"valueProb":100},{"key":"power","keyProb":100,"value":"294","valuePos":[{"x":2002,"y":729},{"x":2002,"y":769},{"x":1930,"y":769},{"x":1930,"y":729}],"valueProb":100},{"key":"emissionStandard","keyProb":100,"value":"GB17691-2005国V","valuePos":[{"x":545,"y":828},{"x":545,"y":782},{"x":904,"y":789},{"x":903,"y":835}],"valueProb":100},{"key":"fuelConsumption","keyProb":100,"value":"","valueProb":100},{"key":"overallDimension","keyProb":100,"value":"8920×2550×3450","valuePos":[{"x":547,"y":979},{"x":548,"y":939},{"x":1042,"y":950},{"x":1041,"y":989}],"valueProb":100},{"key":"containerDimension","keyProb":100,"value":"6000×2350×1500","valuePos":[{"x":1628,"y":992},{"x":1629,"y":949},{"x":2119,"y":962},{"x":2117,"y":1005}],"valueProb":100},{"key":"springNumber","keyProb":100,"value":"11/12","valuePos":[{"x":662,"y":1017},{"x":663,"y":1059},{"x":549,"y":1060},{"x":548,"y":1018}],"valueProb":100},{"key":"tireNumber","keyProb":100,"value":"10","valuePos":[{"x":1676,"y":1032},{"x":1676,"y":1073},{"x":1628,"y":1073},{"x":1628,"y":1032}],"valueProb":100},{"key":"tireSize","keyProb":100,"value":"12.00R2016PR","valuePos":[{"x":545,"y":1133},{"x":546,"y":1094},{"x":839,"y":1099},{"x":839,"y":1139}],"valueProb":100},{"key":"frontWheelTrack","keyProb":100,"value":"2022","valuePos":[{"x":640,"y":1169},{"x":640,"y":1208},{"x":545,"y":1210},{"x":544,"y":1170}],"valueProb":100},{"key":"rearWheelTrack","keyProb":100,"value":"1850/1850","valuePos":[{"x":1148,"y":1223},{"x":1149,"y":1183},{"x":1349,"y":1186},{"x":1349,"y":1227}],"valueProb":100},{"key":"wheelbase","keyProb":100,"value":"4125+1350","valuePos":[{"x":546,"y":1286},{"x":547,"y":1244},{"x":752,"y":1248},{"x":751,"y":1290}],"valueProb":100},{"key":"axleLoad","keyProb":100,"value":"7000/18000(二轴组)","valuePos":[{"x":539,"y":1364},{"x":539,"y":1316},{"x":946,"y":1325},{"x":945,"y":1372}],"valueProb":100},{"key":"axleNumber","keyProb":100,"value":"3","valuePos":[{"x":567,"y":1398},{"x":567,"y":1438},{"x":541,"y":1438},{"x":541,"y":1398}],"valueProb":100},{"key":"steeringForm","keyProb":100,"value":"方向盘","valuePos":[{"x":1757,"y":1412},{"x":1757,"y":1463},{"x":1622,"y":1464},{"x":1622,"y":1413}],"valueProb":100},{"key":"totalWeight","keyProb":100,"value":"25000","valuePos":[{"x":536,"y":1512},{"x":538,"y":1471},{"x":658,"y":1475},{"x":657,"y":1515}],"valueProb":100},{"key":"equipmentWeight","keyProb":100,"value":"12500","valuePos":[{"x":1735,"y":1491},{"x":1736,"y":1532},{"x":1620,"y":1534},{"x":1620,"y":1492}],"valueProb":100},{"key":"maximumLadenMass","keyProb":100,"value":"12370","valuePos":[{"x":539,"y":1590},{"x":539,"y":1547},{"x":656,"y":1549},{"x":656,"y":1592}],"valueProb":100},{"key":"massUtilizationCoefficient","keyProb":100,"value":"1.00","valuePos":[{"x":1712,"y":1568},{"x":1712,"y":1608},{"x":1617,"y":1610},{"x":1616,"y":1569}],"valueProb":100},{"key":"tractionWeight","keyProb":100,"value":"","valueProb":100},{"key":"MaximumLoadMass","keyProb":100,"value":"","valueProb":100},{"key":"cabPassengerCapacity","keyProb":100,"value":"2","valuePos":[{"x":560,"y":1777},{"x":560,"y":1817},{"x":532,"y":1817},{"x":532,"y":1777}],"valueProb":100},{"key":"passengerCapacity","keyProb":100,"value":"","valueProb":100},{"key":"maxDesignSpeed","keyProb":100,"value":"80","valuePos":[{"x":581,"y":1931},{"x":581,"y":1971},{"x":530,"y":1971},{"x":530,"y":1931}],"valueProb":100},{"key":"manufactureDate","keyProb":100,"value":"2020年12月03日","valuePos":[{"x":840,"y":2003},{"x":841,"y":2048},{"x":523,"y":2052},{"x":522,"y":2006}],"valueProb":100},{"key":"remarks","keyProb":100,"value":"备注:货厢自卸方式为后卸。","valuePos":[{"x":620,"y":2080},{"x":620,"y":2130},{"x":54,"y":2134},{"x":53,"y":2083}],"valueProb":100}],"sliceRect":{"x0":330,"y0":466,"x1":2530,"y1":420,"x2":2544,"y2":3811,"x3":229,"y3":3746},"width":3024}
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8483,6 +10065,9 @@ func (s *RecognizeVehicleCertificationResponse) SetBody(v *RecognizeVehicleCerti
 }
 
 type RecognizeVehicleLicenseRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1Wo7eXAvoK1RjSZFDXXXY3pXa-2512-3509.jpg
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -8506,9 +10091,18 @@ func (s *RecognizeVehicleLicenseRequest) SetBody(v io.Reader) *RecognizeVehicleL
 }
 
 type RecognizeVehicleLicenseResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8570,6 +10164,9 @@ func (s *RecognizeVehicleLicenseResponse) SetBody(v *RecognizeVehicleLicenseResp
 }
 
 type RecognizeVehicleRegistrationRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/imgextra/i1/O1CN01NA1F7A1cSO8cnFQ7m_!!6000000003599-0-tps-844-1125.jpg
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -8593,9 +10190,21 @@ func (s *RecognizeVehicleRegistrationRequest) SetBody(v io.Reader) *RecognizeVeh
 }
 
 type RecognizeVehicleRegistrationResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// noPermission
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {"codes":[{"data":"310007798232","points":[{"x":502,"y":6},{"x":768,"y":6},{"x":768,"y":52},{"x":502,"y":52}],"type":"Codabar"}],"data":{"barCode":"310007798232","vehicleOwnerInfo":"某某某限有限公司/统一社会信用代码/12345678682296194","registrationAuthority":"上海市公安局交通警察总队车辆管理所","registrationDate":"2021-04-28","registrationNumber":"沪AG12345","vehicleType":"小型轿车","vehicleBrand":"大众汽车牌","vehicleModel":"SVW7142BPV","vehicleColor":"","vinCode":"LSVCY6C49MN027789","isDomestic":"国产","engineNumber":"035154","engineType":"DUK","fuelType":"混合动力","displacement":"1395","power":"110","manufactureName":"上汽大众汽车有限公司","steeringForm":"方向盘","frontWheelTrack":"1584","rearWheelTrack":"1570","tireNumber":"4","tireSize":"215/60R1695V","springNumber":"","wheelbase":"2871","axleNumber":"2","overallDimension":"4948×1836×1469","containerDimension":"","totalWeight":"2190","permittedWeight":"","passengerCapacity":"","tractionWeight":"","cabPassengerCapacity":"","useNature":"租赁","acquisitionMethod":"购买","manufactureDate":"2021-03-16","issueAuthority":"上海市公安局交通警察总队","issueDate":"2021-04-28"},"ftype":0,"height":1125,"orgHeight":1125,"orgWidth":844,"prism_keyValueInfo":[{"key":"barCode","keyProb":96,"value":"310007798232","valuePos":[{"x":545,"y":45},{"x":735,"y":42},{"x":736,"y":53},{"x":545,"y":55}],"valueProb":96},{"key":"vehicleOwnerInfo","keyProb":100,"value":"某某某限有限公司/统一社会信用代码/12345678682296194","valuePos":[{"x":317,"y":70},{"x":723,"y":68},{"x":723,"y":84},{"x":318,"y":87}],"valueProb":100},{"key":"registrationAuthority","keyProb":100,"value":"上海市公安局交通警察总队车辆管理所","valuePos":[{"x":165,"y":89},{"x":369,"y":87},{"x":370,"y":112},{"x":166,"y":114}],"valueProb":100},{"key":"registrationDate","keyProb":100,"value":"2021-04-28","valuePos":[{"x":463,"y":93},{"x":538,"y":92},{"x":538,"y":104},{"x":464,"y":106}],"valueProb":100},{"key":"registrationNumber","keyProb":100,"value":"沪AG12345","valuePos":[{"x":733,"y":93},{"x":733,"y":107},{"x":669,"y":107},{"x":669,"y":93}],"valueProb":100},{"key":"vehicleType","keyProb":84,"value":"小型轿车","valuePos":[{"x":262,"y":588},{"x":262,"y":603},{"x":205,"y":603},{"x":205,"y":588}],"valueProb":84},{"key":"vehicleBrand","keyProb":100,"value":"大众汽车牌","valuePos":[{"x":569,"y":606},{"x":570,"y":592},{"x":643,"y":594},{"x":642,"y":608}],"valueProb":100},{"key":"vehicleModel","keyProb":99,"value":"SVW7142BPV","valuePos":[{"x":277,"y":616},{"x":277,"y":630},{"x":206,"y":630},{"x":206,"y":616}],"valueProb":99},{"key":"vehicleColor","keyProb":77,"value":"","valuePos":[{"x":585,"y":620},{"x":585,"y":635},{"x":569,"y":635},{"x":569,"y":620}],"valueProb":77},{"key":"vinCode","keyProb":100,"value":"LSVCY6C49MN027789","valuePos":[{"x":324,"y":645},{"x":324,"y":659},{"x":204,"y":659},{"x":204,"y":645}],"valueProb":100},{"key":"isDomestic","keyProb":96,"value":"国产","valuePos":[{"x":568,"y":662},{"x":569,"y":649},{"x":599,"y":650},{"x":599,"y":664}],"valueProb":96},{"key":"engineNumber","keyProb":100,"value":"035154","valuePos":[{"x":203,"y":686},{"x":204,"y":671},{"x":250,"y":672},{"x":250,"y":688}],"valueProb":100},{"key":"engineType","keyProb":100,"value":"DUK","valuePos":[{"x":594,"y":678},{"x":594,"y":692},{"x":568,"y":692},{"x":568,"y":678}],"valueProb":100},{"key":"fuelType","keyProb":100,"value":"混合动力","valuePos":[{"x":260,"y":702},{"x":260,"y":717},{"x":204,"y":717},{"x":204,"y":702}],"valueProb":100},{"key":"displacement","keyProb":100,"value":"1395","valuePos":[{"x":600,"y":707},{"x":600,"y":722},{"x":569,"y":722},{"x":569,"y":707}],"valueProb":100},{"key":"power","keyProb":100,"value":"110","valuePos":[{"x":687,"y":708},{"x":687,"y":723},{"x":663,"y":723},{"x":663,"y":708}],"valueProb":100},{"key":"manufactureName","keyProb":100,"value":"上汽大众汽车有限公司","valuePos":[{"x":342,"y":731},{"x":342,"y":746},{"x":205,"y":746},{"x":205,"y":731}],"valueProb":100},{"key":"steeringForm","keyProb":100,"value":"方向盘","valueProb":100},{"key":"frontWheelTrack","keyProb":100,"value":"1584","valuePos":[{"x":252,"y":760},{"x":252,"y":774},{"x":222,"y":774},{"x":222,"y":760}],"valueProb":100},{"key":"rearWheelTrack","keyProb":100,"value":"1570","valuePos":[{"x":370,"y":761},{"x":370,"y":775},{"x":340,"y":775},{"x":340,"y":761}],"valueProb":100},{"key":"tireNumber","keyProb":100,"value":"4","valuePos":[{"x":580,"y":766},{"x":580,"y":781},{"x":568,"y":781},{"x":568,"y":766}],"valueProb":100},{"key":"tireSize","keyProb":100,"value":"215/60R1695V","valuePos":[{"x":302,"y":788},{"x":302,"y":803},{"x":203,"y":803},{"x":203,"y":788}],"valueProb":100},{"key":"springNumber","keyProb":100,"value":"","valueProb":100},{"key":"wheelbase","keyProb":100,"value":"2871","valuePos":[{"x":232,"y":817},{"x":232,"y":831},{"x":202,"y":831},{"x":202,"y":817}],"valueProb":100},{"key":"axleNumber","keyProb":92,"value":"2","valuePos":[{"x":578,"y":825},{"x":578,"y":839},{"x":569,"y":839},{"x":569,"y":825}],"valueProb":92},{"key":"overallDimension","keyProb":100,"value":"4948×1836×1469","valuePos":[{"x":221,"y":857},{"x":222,"y":845},{"x":475,"y":850},{"x":474,"y":862}],"valueProb":100},{"key":"containerDimension","keyProb":100,"value":"","valueProb":100},{"key":"totalWeight","keyProb":100,"value":"2190","valuePos":[{"x":232,"y":904},{"x":232,"y":918},{"x":203,"y":918},{"x":203,"y":904}],"valueProb":100},{"key":"permittedWeight","keyProb":100,"value":"","valueProb":100},{"key":"passengerCapacity","keyProb":100,"value":"","valueProb":100},{"key":"tractionWeight","keyProb":100,"value":"","valueProb":100},{"key":"cabPassengerCapacity","keyProb":100,"value":"","valueProb":100},{"key":"useNature","keyProb":97,"value":"租赁","valuePos":[{"x":487,"y":968},{"x":487,"y":984},{"x":457,"y":984},{"x":457,"y":968}],"valueProb":97},{"key":"acquisitionMethod","keyProb":100,"value":"购买","valuePos":[{"x":230,"y":992},{"x":230,"y":1008},{"x":200,"y":1008},{"x":200,"y":992}],"valueProb":100},{"key":"manufactureDate","keyProb":100,"value":"2021-03-16","valuePos":[{"x":455,"y":1012},{"x":456,"y":999},{"x":529,"y":1000},{"x":529,"y":1013}],"valueProb":100},{"key":"issueAuthority","keyProb":100,"value":"上海市公安局交通警察总队","valuePos":[{"x":684,"y":895},{"x":684,"y":980},{"x":599,"y":980},{"x":599,"y":895}],"valueProb":100},{"key":"issueDate","keyProb":100,"value":"2021-04-28","valuePos":[{"x":642,"y":1018},{"x":642,"y":1002},{"x":719,"y":1007},{"x":718,"y":1022}],"valueProb":100}],"sliceRect":{"x0":23,"y0":44,"x1":795,"y1":38,"x2":793,"y2":1124,"x3":12,"y3":1106},"width":844}
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// You are not authorized to perform this operation.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8657,6 +10266,9 @@ func (s *RecognizeVehicleRegistrationResponse) SetBody(v *RecognizeVehicleRegist
 }
 
 type RecognizeWaybillRequest struct {
+	// example:
+	//
+	// https://img.alicdn.com/tfs/TB1lOe6VqL7gK0jSZFBXXXZZpXa-480-640.png
 	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -8680,9 +10292,18 @@ func (s *RecognizeWaybillRequest) SetBody(v io.Reader) *RecognizeWaybillRequest 
 }
 
 type RecognizeWaybillResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8744,8 +10365,11 @@ func (s *RecognizeWaybillResponse) SetBody(v *RecognizeWaybillResponseBody) *Rec
 }
 
 type VerifyBusinessLicenseRequest struct {
+	// This parameter is required.
 	CompanyName *string `json:"CompanyName,omitempty" xml:"CompanyName,omitempty"`
-	CreditCode  *string `json:"CreditCode,omitempty" xml:"CreditCode,omitempty"`
+	// This parameter is required.
+	CreditCode *string `json:"CreditCode,omitempty" xml:"CreditCode,omitempty"`
+	// This parameter is required.
 	LegalPerson *string `json:"LegalPerson,omitempty" xml:"LegalPerson,omitempty"`
 }
 
@@ -8773,7 +10397,10 @@ func (s *VerifyBusinessLicenseRequest) SetLegalPerson(v string) *VerifyBusinessL
 }
 
 type VerifyBusinessLicenseResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8826,11 +10453,13 @@ func (s *VerifyBusinessLicenseResponse) SetBody(v *VerifyBusinessLicenseResponse
 
 type VerifyVATInvoiceRequest struct {
 	InvoiceCode *string `json:"InvoiceCode,omitempty" xml:"InvoiceCode,omitempty"`
+	// This parameter is required.
 	InvoiceDate *string `json:"InvoiceDate,omitempty" xml:"InvoiceDate,omitempty"`
 	InvoiceKind *int32  `json:"InvoiceKind,omitempty" xml:"InvoiceKind,omitempty"`
-	InvoiceNo   *string `json:"InvoiceNo,omitempty" xml:"InvoiceNo,omitempty"`
-	InvoiceSum  *string `json:"InvoiceSum,omitempty" xml:"InvoiceSum,omitempty"`
-	VerifyCode  *string `json:"VerifyCode,omitempty" xml:"VerifyCode,omitempty"`
+	// This parameter is required.
+	InvoiceNo  *string `json:"InvoiceNo,omitempty" xml:"InvoiceNo,omitempty"`
+	InvoiceSum *string `json:"InvoiceSum,omitempty" xml:"InvoiceSum,omitempty"`
+	VerifyCode *string `json:"VerifyCode,omitempty" xml:"VerifyCode,omitempty"`
 }
 
 func (s VerifyVATInvoiceRequest) String() string {
@@ -8872,7 +10501,10 @@ func (s *VerifyVATInvoiceRequest) SetVerifyCode(v string) *VerifyVATInvoiceReque
 }
 
 type VerifyVATInvoiceResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8970,6 +10602,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 全文识别高精版
+//
+// @param request - RecognizeAdvancedRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeAdvancedResponse
 func (client *Client) RecognizeAdvancedWithOptions(request *RecognizeAdvancedRequest, runtime *util.RuntimeOptions) (_result *RecognizeAdvancedResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9037,6 +10678,13 @@ func (client *Client) RecognizeAdvancedWithOptions(request *RecognizeAdvancedReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 全文识别高精版
+//
+// @param request - RecognizeAdvancedRequest
+//
+// @return RecognizeAdvancedResponse
 func (client *Client) RecognizeAdvanced(request *RecognizeAdvancedRequest) (_result *RecognizeAdvancedResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeAdvancedResponse{}
@@ -9048,6 +10696,15 @@ func (client *Client) RecognizeAdvanced(request *RecognizeAdvancedRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 航空行程单
+//
+// @param request - RecognizeAirItineraryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeAirItineraryResponse
 func (client *Client) RecognizeAirItineraryWithOptions(request *RecognizeAirItineraryRequest, runtime *util.RuntimeOptions) (_result *RecognizeAirItineraryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9083,6 +10740,13 @@ func (client *Client) RecognizeAirItineraryWithOptions(request *RecognizeAirItin
 	return _result, _err
 }
 
+// Summary:
+//
+// 航空行程单
+//
+// @param request - RecognizeAirItineraryRequest
+//
+// @return RecognizeAirItineraryResponse
 func (client *Client) RecognizeAirItinerary(request *RecognizeAirItineraryRequest) (_result *RecognizeAirItineraryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeAirItineraryResponse{}
@@ -9094,6 +10758,15 @@ func (client *Client) RecognizeAirItinerary(request *RecognizeAirItineraryReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 统一Api
+//
+// @param tmpReq - RecognizeAllTextRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeAllTextResponse
 func (client *Client) RecognizeAllTextWithOptions(tmpReq *RecognizeAllTextRequest, runtime *util.RuntimeOptions) (_result *RecognizeAllTextResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -9215,6 +10888,13 @@ func (client *Client) RecognizeAllTextWithOptions(tmpReq *RecognizeAllTextReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 统一Api
+//
+// @param request - RecognizeAllTextRequest
+//
+// @return RecognizeAllTextResponse
 func (client *Client) RecognizeAllText(request *RecognizeAllTextRequest) (_result *RecognizeAllTextResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeAllTextResponse{}
@@ -9226,6 +10906,15 @@ func (client *Client) RecognizeAllText(request *RecognizeAllTextRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 银承汇票识别
+//
+// @param request - RecognizeBankAcceptanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeBankAcceptanceResponse
 func (client *Client) RecognizeBankAcceptanceWithOptions(request *RecognizeBankAcceptanceRequest, runtime *util.RuntimeOptions) (_result *RecognizeBankAcceptanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9261,6 +10950,13 @@ func (client *Client) RecognizeBankAcceptanceWithOptions(request *RecognizeBankA
 	return _result, _err
 }
 
+// Summary:
+//
+// 银承汇票识别
+//
+// @param request - RecognizeBankAcceptanceRequest
+//
+// @return RecognizeBankAcceptanceResponse
 func (client *Client) RecognizeBankAcceptance(request *RecognizeBankAcceptanceRequest) (_result *RecognizeBankAcceptanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeBankAcceptanceResponse{}
@@ -9272,6 +10968,15 @@ func (client *Client) RecognizeBankAcceptance(request *RecognizeBankAcceptanceRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 银行开户许可证识别
+//
+// @param request - RecognizeBankAccountLicenseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeBankAccountLicenseResponse
 func (client *Client) RecognizeBankAccountLicenseWithOptions(request *RecognizeBankAccountLicenseRequest, runtime *util.RuntimeOptions) (_result *RecognizeBankAccountLicenseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9307,6 +11012,13 @@ func (client *Client) RecognizeBankAccountLicenseWithOptions(request *RecognizeB
 	return _result, _err
 }
 
+// Summary:
+//
+// 银行开户许可证识别
+//
+// @param request - RecognizeBankAccountLicenseRequest
+//
+// @return RecognizeBankAccountLicenseResponse
 func (client *Client) RecognizeBankAccountLicense(request *RecognizeBankAccountLicenseRequest) (_result *RecognizeBankAccountLicenseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeBankAccountLicenseResponse{}
@@ -9318,6 +11030,15 @@ func (client *Client) RecognizeBankAccountLicense(request *RecognizeBankAccountL
 	return _result, _err
 }
 
+// Summary:
+//
+// 银行卡识别
+//
+// @param request - RecognizeBankCardRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeBankCardResponse
 func (client *Client) RecognizeBankCardWithOptions(request *RecognizeBankCardRequest, runtime *util.RuntimeOptions) (_result *RecognizeBankCardResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9353,6 +11074,13 @@ func (client *Client) RecognizeBankCardWithOptions(request *RecognizeBankCardReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 银行卡识别
+//
+// @param request - RecognizeBankCardRequest
+//
+// @return RecognizeBankCardResponse
 func (client *Client) RecognizeBankCard(request *RecognizeBankCardRequest) (_result *RecognizeBankCardResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeBankCardResponse{}
@@ -9364,6 +11092,15 @@ func (client *Client) RecognizeBankCard(request *RecognizeBankCardRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 电商图片文字识别
+//
+// @param request - RecognizeBasicRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeBasicResponse
 func (client *Client) RecognizeBasicWithOptions(request *RecognizeBasicRequest, runtime *util.RuntimeOptions) (_result *RecognizeBasicResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9403,6 +11140,13 @@ func (client *Client) RecognizeBasicWithOptions(request *RecognizeBasicRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 电商图片文字识别
+//
+// @param request - RecognizeBasicRequest
+//
+// @return RecognizeBasicResponse
 func (client *Client) RecognizeBasic(request *RecognizeBasicRequest) (_result *RecognizeBasicResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeBasicResponse{}
@@ -9414,6 +11158,15 @@ func (client *Client) RecognizeBasic(request *RecognizeBasicRequest) (_result *R
 	return _result, _err
 }
 
+// Summary:
+//
+// 出生证明
+//
+// @param request - RecognizeBirthCertificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeBirthCertificationResponse
 func (client *Client) RecognizeBirthCertificationWithOptions(request *RecognizeBirthCertificationRequest, runtime *util.RuntimeOptions) (_result *RecognizeBirthCertificationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9449,6 +11202,13 @@ func (client *Client) RecognizeBirthCertificationWithOptions(request *RecognizeB
 	return _result, _err
 }
 
+// Summary:
+//
+// 出生证明
+//
+// @param request - RecognizeBirthCertificationRequest
+//
+// @return RecognizeBirthCertificationResponse
 func (client *Client) RecognizeBirthCertification(request *RecognizeBirthCertificationRequest) (_result *RecognizeBirthCertificationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeBirthCertificationResponse{}
@@ -9460,6 +11220,15 @@ func (client *Client) RecognizeBirthCertification(request *RecognizeBirthCertifi
 	return _result, _err
 }
 
+// Summary:
+//
+// 客运车船票识别
+//
+// @param request - RecognizeBusShipTicketRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeBusShipTicketResponse
 func (client *Client) RecognizeBusShipTicketWithOptions(request *RecognizeBusShipTicketRequest, runtime *util.RuntimeOptions) (_result *RecognizeBusShipTicketResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9495,6 +11264,13 @@ func (client *Client) RecognizeBusShipTicketWithOptions(request *RecognizeBusShi
 	return _result, _err
 }
 
+// Summary:
+//
+// 客运车船票识别
+//
+// @param request - RecognizeBusShipTicketRequest
+//
+// @return RecognizeBusShipTicketResponse
 func (client *Client) RecognizeBusShipTicket(request *RecognizeBusShipTicketRequest) (_result *RecognizeBusShipTicketResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeBusShipTicketResponse{}
@@ -9506,6 +11282,15 @@ func (client *Client) RecognizeBusShipTicket(request *RecognizeBusShipTicketRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 营业执照识别
+//
+// @param request - RecognizeBusinessLicenseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeBusinessLicenseResponse
 func (client *Client) RecognizeBusinessLicenseWithOptions(request *RecognizeBusinessLicenseRequest, runtime *util.RuntimeOptions) (_result *RecognizeBusinessLicenseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9541,6 +11326,13 @@ func (client *Client) RecognizeBusinessLicenseWithOptions(request *RecognizeBusi
 	return _result, _err
 }
 
+// Summary:
+//
+// 营业执照识别
+//
+// @param request - RecognizeBusinessLicenseRequest
+//
+// @return RecognizeBusinessLicenseResponse
 func (client *Client) RecognizeBusinessLicense(request *RecognizeBusinessLicenseRequest) (_result *RecognizeBusinessLicenseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeBusinessLicenseResponse{}
@@ -9552,6 +11344,15 @@ func (client *Client) RecognizeBusinessLicense(request *RecognizeBusinessLicense
 	return _result, _err
 }
 
+// Summary:
+//
+// 机动车销售发票
+//
+// @param request - RecognizeCarInvoiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeCarInvoiceResponse
 func (client *Client) RecognizeCarInvoiceWithOptions(request *RecognizeCarInvoiceRequest, runtime *util.RuntimeOptions) (_result *RecognizeCarInvoiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9587,6 +11388,13 @@ func (client *Client) RecognizeCarInvoiceWithOptions(request *RecognizeCarInvoic
 	return _result, _err
 }
 
+// Summary:
+//
+// 机动车销售发票
+//
+// @param request - RecognizeCarInvoiceRequest
+//
+// @return RecognizeCarInvoiceResponse
 func (client *Client) RecognizeCarInvoice(request *RecognizeCarInvoiceRequest) (_result *RecognizeCarInvoiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeCarInvoiceResponse{}
@@ -9598,6 +11406,15 @@ func (client *Client) RecognizeCarInvoice(request *RecognizeCarInvoiceRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 车牌识别
+//
+// @param request - RecognizeCarNumberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeCarNumberResponse
 func (client *Client) RecognizeCarNumberWithOptions(request *RecognizeCarNumberRequest, runtime *util.RuntimeOptions) (_result *RecognizeCarNumberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9633,6 +11450,13 @@ func (client *Client) RecognizeCarNumberWithOptions(request *RecognizeCarNumberR
 	return _result, _err
 }
 
+// Summary:
+//
+// 车牌识别
+//
+// @param request - RecognizeCarNumberRequest
+//
+// @return RecognizeCarNumberResponse
 func (client *Client) RecognizeCarNumber(request *RecognizeCarNumberRequest) (_result *RecognizeCarNumberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeCarNumberResponse{}
@@ -9644,6 +11468,15 @@ func (client *Client) RecognizeCarNumber(request *RecognizeCarNumberRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 车辆vin码识别
+//
+// @param request - RecognizeCarVinCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeCarVinCodeResponse
 func (client *Client) RecognizeCarVinCodeWithOptions(request *RecognizeCarVinCodeRequest, runtime *util.RuntimeOptions) (_result *RecognizeCarVinCodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9679,6 +11512,13 @@ func (client *Client) RecognizeCarVinCodeWithOptions(request *RecognizeCarVinCod
 	return _result, _err
 }
 
+// Summary:
+//
+// 车辆vin码识别
+//
+// @param request - RecognizeCarVinCodeRequest
+//
+// @return RecognizeCarVinCodeResponse
 func (client *Client) RecognizeCarVinCode(request *RecognizeCarVinCodeRequest) (_result *RecognizeCarVinCodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeCarVinCodeResponse{}
@@ -9690,6 +11530,15 @@ func (client *Client) RecognizeCarVinCode(request *RecognizeCarVinCodeRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 中国护照识别
+//
+// @param request - RecognizeChinesePassportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeChinesePassportResponse
 func (client *Client) RecognizeChinesePassportWithOptions(request *RecognizeChinesePassportRequest, runtime *util.RuntimeOptions) (_result *RecognizeChinesePassportResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9729,6 +11578,13 @@ func (client *Client) RecognizeChinesePassportWithOptions(request *RecognizeChin
 	return _result, _err
 }
 
+// Summary:
+//
+// 中国护照识别
+//
+// @param request - RecognizeChinesePassportRequest
+//
+// @return RecognizeChinesePassportResponse
 func (client *Client) RecognizeChinesePassport(request *RecognizeChinesePassportRequest) (_result *RecognizeChinesePassportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeChinesePassportResponse{}
@@ -9740,6 +11596,15 @@ func (client *Client) RecognizeChinesePassport(request *RecognizeChinesePassport
 	return _result, _err
 }
 
+// Summary:
+//
+// 通用机打发票识别
+//
+// @param request - RecognizeCommonPrintedInvoiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeCommonPrintedInvoiceResponse
 func (client *Client) RecognizeCommonPrintedInvoiceWithOptions(request *RecognizeCommonPrintedInvoiceRequest, runtime *util.RuntimeOptions) (_result *RecognizeCommonPrintedInvoiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9775,6 +11640,13 @@ func (client *Client) RecognizeCommonPrintedInvoiceWithOptions(request *Recogniz
 	return _result, _err
 }
 
+// Summary:
+//
+// 通用机打发票识别
+//
+// @param request - RecognizeCommonPrintedInvoiceRequest
+//
+// @return RecognizeCommonPrintedInvoiceResponse
 func (client *Client) RecognizeCommonPrintedInvoice(request *RecognizeCommonPrintedInvoiceRequest) (_result *RecognizeCommonPrintedInvoiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeCommonPrintedInvoiceResponse{}
@@ -9786,6 +11658,15 @@ func (client *Client) RecognizeCommonPrintedInvoice(request *RecognizeCommonPrin
 	return _result, _err
 }
 
+// Summary:
+//
+// 化妆品生产许可证识别
+//
+// @param request - RecognizeCosmeticProduceLicenseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeCosmeticProduceLicenseResponse
 func (client *Client) RecognizeCosmeticProduceLicenseWithOptions(request *RecognizeCosmeticProduceLicenseRequest, runtime *util.RuntimeOptions) (_result *RecognizeCosmeticProduceLicenseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9821,6 +11702,13 @@ func (client *Client) RecognizeCosmeticProduceLicenseWithOptions(request *Recogn
 	return _result, _err
 }
 
+// Summary:
+//
+// 化妆品生产许可证识别
+//
+// @param request - RecognizeCosmeticProduceLicenseRequest
+//
+// @return RecognizeCosmeticProduceLicenseResponse
 func (client *Client) RecognizeCosmeticProduceLicense(request *RecognizeCosmeticProduceLicenseRequest) (_result *RecognizeCosmeticProduceLicenseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeCosmeticProduceLicenseResponse{}
@@ -9832,6 +11720,15 @@ func (client *Client) RecognizeCosmeticProduceLicense(request *RecognizeCosmetic
 	return _result, _err
 }
 
+// Summary:
+//
+// 核算检测报告识别
+//
+// @param request - RecognizeCovidTestReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeCovidTestReportResponse
 func (client *Client) RecognizeCovidTestReportWithOptions(request *RecognizeCovidTestReportRequest, runtime *util.RuntimeOptions) (_result *RecognizeCovidTestReportResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9871,6 +11768,13 @@ func (client *Client) RecognizeCovidTestReportWithOptions(request *RecognizeCovi
 	return _result, _err
 }
 
+// Summary:
+//
+// 核算检测报告识别
+//
+// @param request - RecognizeCovidTestReportRequest
+//
+// @return RecognizeCovidTestReportResponse
 func (client *Client) RecognizeCovidTestReport(request *RecognizeCovidTestReportRequest) (_result *RecognizeCovidTestReportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeCovidTestReportResponse{}
@@ -9882,6 +11786,15 @@ func (client *Client) RecognizeCovidTestReport(request *RecognizeCovidTestReport
 	return _result, _err
 }
 
+// Summary:
+//
+// 第二类医疗器械经营备案凭证
+//
+// @param request - RecognizeCtwoMedicalDeviceManageLicenseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeCtwoMedicalDeviceManageLicenseResponse
 func (client *Client) RecognizeCtwoMedicalDeviceManageLicenseWithOptions(request *RecognizeCtwoMedicalDeviceManageLicenseRequest, runtime *util.RuntimeOptions) (_result *RecognizeCtwoMedicalDeviceManageLicenseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9917,6 +11830,13 @@ func (client *Client) RecognizeCtwoMedicalDeviceManageLicenseWithOptions(request
 	return _result, _err
 }
 
+// Summary:
+//
+// 第二类医疗器械经营备案凭证
+//
+// @param request - RecognizeCtwoMedicalDeviceManageLicenseRequest
+//
+// @return RecognizeCtwoMedicalDeviceManageLicenseResponse
 func (client *Client) RecognizeCtwoMedicalDeviceManageLicense(request *RecognizeCtwoMedicalDeviceManageLicenseRequest) (_result *RecognizeCtwoMedicalDeviceManageLicenseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeCtwoMedicalDeviceManageLicenseResponse{}
@@ -9928,6 +11848,15 @@ func (client *Client) RecognizeCtwoMedicalDeviceManageLicense(request *Recognize
 	return _result, _err
 }
 
+// Summary:
+//
+// 文档结构化识别
+//
+// @param request - RecognizeDocumentStructureRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeDocumentStructureResponse
 func (client *Client) RecognizeDocumentStructureWithOptions(request *RecognizeDocumentStructureRequest, runtime *util.RuntimeOptions) (_result *RecognizeDocumentStructureResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9999,6 +11928,13 @@ func (client *Client) RecognizeDocumentStructureWithOptions(request *RecognizeDo
 	return _result, _err
 }
 
+// Summary:
+//
+// 文档结构化识别
+//
+// @param request - RecognizeDocumentStructureRequest
+//
+// @return RecognizeDocumentStructureResponse
 func (client *Client) RecognizeDocumentStructure(request *RecognizeDocumentStructureRequest) (_result *RecognizeDocumentStructureResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeDocumentStructureResponse{}
@@ -10010,6 +11946,15 @@ func (client *Client) RecognizeDocumentStructure(request *RecognizeDocumentStruc
 	return _result, _err
 }
 
+// Summary:
+//
+// 驾驶证识别
+//
+// @param request - RecognizeDrivingLicenseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeDrivingLicenseResponse
 func (client *Client) RecognizeDrivingLicenseWithOptions(request *RecognizeDrivingLicenseRequest, runtime *util.RuntimeOptions) (_result *RecognizeDrivingLicenseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10045,6 +11990,13 @@ func (client *Client) RecognizeDrivingLicenseWithOptions(request *RecognizeDrivi
 	return _result, _err
 }
 
+// Summary:
+//
+// 驾驶证识别
+//
+// @param request - RecognizeDrivingLicenseRequest
+//
+// @return RecognizeDrivingLicenseResponse
 func (client *Client) RecognizeDrivingLicense(request *RecognizeDrivingLicenseRequest) (_result *RecognizeDrivingLicenseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeDrivingLicenseResponse{}
@@ -10056,6 +12008,15 @@ func (client *Client) RecognizeDrivingLicense(request *RecognizeDrivingLicenseRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 印刷体数学公式识别
+//
+// @param request - RecognizeEduFormulaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeEduFormulaResponse
 func (client *Client) RecognizeEduFormulaWithOptions(request *RecognizeEduFormulaRequest, runtime *util.RuntimeOptions) (_result *RecognizeEduFormulaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10091,6 +12052,13 @@ func (client *Client) RecognizeEduFormulaWithOptions(request *RecognizeEduFormul
 	return _result, _err
 }
 
+// Summary:
+//
+// 印刷体数学公式识别
+//
+// @param request - RecognizeEduFormulaRequest
+//
+// @return RecognizeEduFormulaResponse
 func (client *Client) RecognizeEduFormula(request *RecognizeEduFormulaRequest) (_result *RecognizeEduFormulaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeEduFormulaResponse{}
@@ -10102,6 +12070,15 @@ func (client *Client) RecognizeEduFormula(request *RecognizeEduFormulaRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 口算判题
+//
+// @param request - RecognizeEduOralCalculationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeEduOralCalculationResponse
 func (client *Client) RecognizeEduOralCalculationWithOptions(request *RecognizeEduOralCalculationRequest, runtime *util.RuntimeOptions) (_result *RecognizeEduOralCalculationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10137,6 +12114,13 @@ func (client *Client) RecognizeEduOralCalculationWithOptions(request *RecognizeE
 	return _result, _err
 }
 
+// Summary:
+//
+// 口算判题
+//
+// @param request - RecognizeEduOralCalculationRequest
+//
+// @return RecognizeEduOralCalculationResponse
 func (client *Client) RecognizeEduOralCalculation(request *RecognizeEduOralCalculationRequest) (_result *RecognizeEduOralCalculationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeEduOralCalculationResponse{}
@@ -10148,6 +12132,15 @@ func (client *Client) RecognizeEduOralCalculation(request *RecognizeEduOralCalcu
 	return _result, _err
 }
 
+// Summary:
+//
+// 试卷切题识别
+//
+// @param request - RecognizeEduPaperCutRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeEduPaperCutResponse
 func (client *Client) RecognizeEduPaperCutWithOptions(request *RecognizeEduPaperCutRequest, runtime *util.RuntimeOptions) (_result *RecognizeEduPaperCutResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10195,6 +12188,13 @@ func (client *Client) RecognizeEduPaperCutWithOptions(request *RecognizeEduPaper
 	return _result, _err
 }
 
+// Summary:
+//
+// 试卷切题识别
+//
+// @param request - RecognizeEduPaperCutRequest
+//
+// @return RecognizeEduPaperCutResponse
 func (client *Client) RecognizeEduPaperCut(request *RecognizeEduPaperCutRequest) (_result *RecognizeEduPaperCutResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeEduPaperCutResponse{}
@@ -10206,6 +12206,15 @@ func (client *Client) RecognizeEduPaperCut(request *RecognizeEduPaperCutRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 整页试卷识别
+//
+// @param request - RecognizeEduPaperOcrRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeEduPaperOcrResponse
 func (client *Client) RecognizeEduPaperOcrWithOptions(request *RecognizeEduPaperOcrRequest, runtime *util.RuntimeOptions) (_result *RecognizeEduPaperOcrResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10253,6 +12262,13 @@ func (client *Client) RecognizeEduPaperOcrWithOptions(request *RecognizeEduPaper
 	return _result, _err
 }
 
+// Summary:
+//
+// 整页试卷识别
+//
+// @param request - RecognizeEduPaperOcrRequest
+//
+// @return RecognizeEduPaperOcrResponse
 func (client *Client) RecognizeEduPaperOcr(request *RecognizeEduPaperOcrRequest) (_result *RecognizeEduPaperOcrResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeEduPaperOcrResponse{}
@@ -10264,6 +12280,15 @@ func (client *Client) RecognizeEduPaperOcr(request *RecognizeEduPaperOcrRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 精细版结构化切题
+//
+// @param request - RecognizeEduPaperStructedRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeEduPaperStructedResponse
 func (client *Client) RecognizeEduPaperStructedWithOptions(request *RecognizeEduPaperStructedRequest, runtime *util.RuntimeOptions) (_result *RecognizeEduPaperStructedResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10307,6 +12332,13 @@ func (client *Client) RecognizeEduPaperStructedWithOptions(request *RecognizeEdu
 	return _result, _err
 }
 
+// Summary:
+//
+// 精细版结构化切题
+//
+// @param request - RecognizeEduPaperStructedRequest
+//
+// @return RecognizeEduPaperStructedResponse
 func (client *Client) RecognizeEduPaperStructed(request *RecognizeEduPaperStructedRequest) (_result *RecognizeEduPaperStructedResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeEduPaperStructedResponse{}
@@ -10318,6 +12350,15 @@ func (client *Client) RecognizeEduPaperStructed(request *RecognizeEduPaperStruct
 	return _result, _err
 }
 
+// Summary:
+//
+// 题目识别
+//
+// @param request - RecognizeEduQuestionOcrRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeEduQuestionOcrResponse
 func (client *Client) RecognizeEduQuestionOcrWithOptions(request *RecognizeEduQuestionOcrRequest, runtime *util.RuntimeOptions) (_result *RecognizeEduQuestionOcrResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10357,6 +12398,13 @@ func (client *Client) RecognizeEduQuestionOcrWithOptions(request *RecognizeEduQu
 	return _result, _err
 }
 
+// Summary:
+//
+// 题目识别
+//
+// @param request - RecognizeEduQuestionOcrRequest
+//
+// @return RecognizeEduQuestionOcrResponse
 func (client *Client) RecognizeEduQuestionOcr(request *RecognizeEduQuestionOcrRequest) (_result *RecognizeEduQuestionOcrResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeEduQuestionOcrResponse{}
@@ -10368,6 +12416,15 @@ func (client *Client) RecognizeEduQuestionOcr(request *RecognizeEduQuestionOcrRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 英语专项识别
+//
+// @param request - RecognizeEnglishRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeEnglishResponse
 func (client *Client) RecognizeEnglishWithOptions(request *RecognizeEnglishRequest, runtime *util.RuntimeOptions) (_result *RecognizeEnglishResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10411,6 +12468,13 @@ func (client *Client) RecognizeEnglishWithOptions(request *RecognizeEnglishReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 英语专项识别
+//
+// @param request - RecognizeEnglishRequest
+//
+// @return RecognizeEnglishResponse
 func (client *Client) RecognizeEnglish(request *RecognizeEnglishRequest) (_result *RecognizeEnglishResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeEnglishResponse{}
@@ -10422,6 +12486,15 @@ func (client *Client) RecognizeEnglish(request *RecognizeEnglishRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 不动产权证
+//
+// @param request - RecognizeEstateCertificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeEstateCertificationResponse
 func (client *Client) RecognizeEstateCertificationWithOptions(request *RecognizeEstateCertificationRequest, runtime *util.RuntimeOptions) (_result *RecognizeEstateCertificationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10457,6 +12530,13 @@ func (client *Client) RecognizeEstateCertificationWithOptions(request *Recognize
 	return _result, _err
 }
 
+// Summary:
+//
+// 不动产权证
+//
+// @param request - RecognizeEstateCertificationRequest
+//
+// @return RecognizeEstateCertificationResponse
 func (client *Client) RecognizeEstateCertification(request *RecognizeEstateCertificationRequest) (_result *RecognizeEstateCertificationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeEstateCertificationResponse{}
@@ -10468,6 +12548,15 @@ func (client *Client) RecognizeEstateCertification(request *RecognizeEstateCerti
 	return _result, _err
 }
 
+// Summary:
+//
+// 来往港澳台通行证识别
+//
+// @param request - RecognizeExitEntryPermitToHKRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeExitEntryPermitToHKResponse
 func (client *Client) RecognizeExitEntryPermitToHKWithOptions(request *RecognizeExitEntryPermitToHKRequest, runtime *util.RuntimeOptions) (_result *RecognizeExitEntryPermitToHKResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10507,6 +12596,13 @@ func (client *Client) RecognizeExitEntryPermitToHKWithOptions(request *Recognize
 	return _result, _err
 }
 
+// Summary:
+//
+// 来往港澳台通行证识别
+//
+// @param request - RecognizeExitEntryPermitToHKRequest
+//
+// @return RecognizeExitEntryPermitToHKResponse
 func (client *Client) RecognizeExitEntryPermitToHK(request *RecognizeExitEntryPermitToHKRequest) (_result *RecognizeExitEntryPermitToHKResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeExitEntryPermitToHKResponse{}
@@ -10518,6 +12614,15 @@ func (client *Client) RecognizeExitEntryPermitToHK(request *RecognizeExitEntryPe
 	return _result, _err
 }
 
+// Summary:
+//
+// 来往大陆(内地)通行证识别
+//
+// @param request - RecognizeExitEntryPermitToMainlandRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeExitEntryPermitToMainlandResponse
 func (client *Client) RecognizeExitEntryPermitToMainlandWithOptions(request *RecognizeExitEntryPermitToMainlandRequest, runtime *util.RuntimeOptions) (_result *RecognizeExitEntryPermitToMainlandResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10557,6 +12662,13 @@ func (client *Client) RecognizeExitEntryPermitToMainlandWithOptions(request *Rec
 	return _result, _err
 }
 
+// Summary:
+//
+// 来往大陆(内地)通行证识别
+//
+// @param request - RecognizeExitEntryPermitToMainlandRequest
+//
+// @return RecognizeExitEntryPermitToMainlandResponse
 func (client *Client) RecognizeExitEntryPermitToMainland(request *RecognizeExitEntryPermitToMainlandRequest) (_result *RecognizeExitEntryPermitToMainlandResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeExitEntryPermitToMainlandResponse{}
@@ -10568,6 +12680,15 @@ func (client *Client) RecognizeExitEntryPermitToMainland(request *RecognizeExitE
 	return _result, _err
 }
 
+// Summary:
+//
+// 食品经营许可证
+//
+// @param request - RecognizeFoodManageLicenseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeFoodManageLicenseResponse
 func (client *Client) RecognizeFoodManageLicenseWithOptions(request *RecognizeFoodManageLicenseRequest, runtime *util.RuntimeOptions) (_result *RecognizeFoodManageLicenseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10603,6 +12724,13 @@ func (client *Client) RecognizeFoodManageLicenseWithOptions(request *RecognizeFo
 	return _result, _err
 }
 
+// Summary:
+//
+// 食品经营许可证
+//
+// @param request - RecognizeFoodManageLicenseRequest
+//
+// @return RecognizeFoodManageLicenseResponse
 func (client *Client) RecognizeFoodManageLicense(request *RecognizeFoodManageLicenseRequest) (_result *RecognizeFoodManageLicenseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeFoodManageLicenseResponse{}
@@ -10614,6 +12742,15 @@ func (client *Client) RecognizeFoodManageLicense(request *RecognizeFoodManageLic
 	return _result, _err
 }
 
+// Summary:
+//
+// 食品生产许可证
+//
+// @param request - RecognizeFoodProduceLicenseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeFoodProduceLicenseResponse
 func (client *Client) RecognizeFoodProduceLicenseWithOptions(request *RecognizeFoodProduceLicenseRequest, runtime *util.RuntimeOptions) (_result *RecognizeFoodProduceLicenseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10649,6 +12786,13 @@ func (client *Client) RecognizeFoodProduceLicenseWithOptions(request *RecognizeF
 	return _result, _err
 }
 
+// Summary:
+//
+// 食品生产许可证
+//
+// @param request - RecognizeFoodProduceLicenseRequest
+//
+// @return RecognizeFoodProduceLicenseResponse
 func (client *Client) RecognizeFoodProduceLicense(request *RecognizeFoodProduceLicenseRequest) (_result *RecognizeFoodProduceLicenseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeFoodProduceLicenseResponse{}
@@ -10660,6 +12804,15 @@ func (client *Client) RecognizeFoodProduceLicense(request *RecognizeFoodProduceL
 	return _result, _err
 }
 
+// Summary:
+//
+// 通用文字识别
+//
+// @param request - RecognizeGeneralRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeGeneralResponse
 func (client *Client) RecognizeGeneralWithOptions(request *RecognizeGeneralRequest, runtime *util.RuntimeOptions) (_result *RecognizeGeneralResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10695,6 +12848,13 @@ func (client *Client) RecognizeGeneralWithOptions(request *RecognizeGeneralReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 通用文字识别
+//
+// @param request - RecognizeGeneralRequest
+//
+// @return RecognizeGeneralResponse
 func (client *Client) RecognizeGeneral(request *RecognizeGeneralRequest) (_result *RecognizeGeneralResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeGeneralResponse{}
@@ -10706,6 +12866,15 @@ func (client *Client) RecognizeGeneral(request *RecognizeGeneralRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 香港身份证识别
+//
+// @param request - RecognizeHKIdcardRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeHKIdcardResponse
 func (client *Client) RecognizeHKIdcardWithOptions(request *RecognizeHKIdcardRequest, runtime *util.RuntimeOptions) (_result *RecognizeHKIdcardResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10741,6 +12910,13 @@ func (client *Client) RecognizeHKIdcardWithOptions(request *RecognizeHKIdcardReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 香港身份证识别
+//
+// @param request - RecognizeHKIdcardRequest
+//
+// @return RecognizeHKIdcardResponse
 func (client *Client) RecognizeHKIdcard(request *RecognizeHKIdcardRequest) (_result *RecognizeHKIdcardResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeHKIdcardResponse{}
@@ -10752,6 +12928,15 @@ func (client *Client) RecognizeHKIdcard(request *RecognizeHKIdcardRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 通用手写体识别
+//
+// @param request - RecognizeHandwritingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeHandwritingResponse
 func (client *Client) RecognizeHandwritingWithOptions(request *RecognizeHandwritingRequest, runtime *util.RuntimeOptions) (_result *RecognizeHandwritingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10807,6 +12992,13 @@ func (client *Client) RecognizeHandwritingWithOptions(request *RecognizeHandwrit
 	return _result, _err
 }
 
+// Summary:
+//
+// 通用手写体识别
+//
+// @param request - RecognizeHandwritingRequest
+//
+// @return RecognizeHandwritingResponse
 func (client *Client) RecognizeHandwriting(request *RecognizeHandwritingRequest) (_result *RecognizeHandwritingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeHandwritingResponse{}
@@ -10818,6 +13010,15 @@ func (client *Client) RecognizeHandwriting(request *RecognizeHandwritingRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 防疫健康码识别
+//
+// @param request - RecognizeHealthCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeHealthCodeResponse
 func (client *Client) RecognizeHealthCodeWithOptions(request *RecognizeHealthCodeRequest, runtime *util.RuntimeOptions) (_result *RecognizeHealthCodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10853,6 +13054,13 @@ func (client *Client) RecognizeHealthCodeWithOptions(request *RecognizeHealthCod
 	return _result, _err
 }
 
+// Summary:
+//
+// 防疫健康码识别
+//
+// @param request - RecognizeHealthCodeRequest
+//
+// @return RecognizeHealthCodeResponse
 func (client *Client) RecognizeHealthCode(request *RecognizeHealthCodeRequest) (_result *RecognizeHealthCodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeHealthCodeResponse{}
@@ -10864,6 +13072,15 @@ func (client *Client) RecognizeHealthCode(request *RecognizeHealthCodeRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店流水识别
+//
+// @param request - RecognizeHotelConsumeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeHotelConsumeResponse
 func (client *Client) RecognizeHotelConsumeWithOptions(request *RecognizeHotelConsumeRequest, runtime *util.RuntimeOptions) (_result *RecognizeHotelConsumeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10899,6 +13116,13 @@ func (client *Client) RecognizeHotelConsumeWithOptions(request *RecognizeHotelCo
 	return _result, _err
 }
 
+// Summary:
+//
+// 酒店流水识别
+//
+// @param request - RecognizeHotelConsumeRequest
+//
+// @return RecognizeHotelConsumeResponse
 func (client *Client) RecognizeHotelConsume(request *RecognizeHotelConsumeRequest) (_result *RecognizeHotelConsumeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeHotelConsumeResponse{}
@@ -10910,6 +13134,15 @@ func (client *Client) RecognizeHotelConsume(request *RecognizeHotelConsumeReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 户口本识别
+//
+// @param request - RecognizeHouseholdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeHouseholdResponse
 func (client *Client) RecognizeHouseholdWithOptions(request *RecognizeHouseholdRequest, runtime *util.RuntimeOptions) (_result *RecognizeHouseholdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10949,6 +13182,13 @@ func (client *Client) RecognizeHouseholdWithOptions(request *RecognizeHouseholdR
 	return _result, _err
 }
 
+// Summary:
+//
+// 户口本识别
+//
+// @param request - RecognizeHouseholdRequest
+//
+// @return RecognizeHouseholdResponse
 func (client *Client) RecognizeHousehold(request *RecognizeHouseholdRequest) (_result *RecognizeHouseholdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeHouseholdResponse{}
@@ -10960,6 +13200,15 @@ func (client *Client) RecognizeHousehold(request *RecognizeHouseholdRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 身份证识别
+//
+// @param request - RecognizeIdcardRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeIdcardResponse
 func (client *Client) RecognizeIdcardWithOptions(request *RecognizeIdcardRequest, runtime *util.RuntimeOptions) (_result *RecognizeIdcardResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11003,6 +13252,13 @@ func (client *Client) RecognizeIdcardWithOptions(request *RecognizeIdcardRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 身份证识别
+//
+// @param request - RecognizeIdcardRequest
+//
+// @return RecognizeIdcardResponse
 func (client *Client) RecognizeIdcard(request *RecognizeIdcardRequest) (_result *RecognizeIdcardResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeIdcardResponse{}
@@ -11014,6 +13270,15 @@ func (client *Client) RecognizeIdcard(request *RecognizeIdcardRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 国际营业执照识别
+//
+// @param request - RecognizeInternationalBusinessLicenseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeInternationalBusinessLicenseResponse
 func (client *Client) RecognizeInternationalBusinessLicenseWithOptions(request *RecognizeInternationalBusinessLicenseRequest, runtime *util.RuntimeOptions) (_result *RecognizeInternationalBusinessLicenseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11053,6 +13318,13 @@ func (client *Client) RecognizeInternationalBusinessLicenseWithOptions(request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 国际营业执照识别
+//
+// @param request - RecognizeInternationalBusinessLicenseRequest
+//
+// @return RecognizeInternationalBusinessLicenseResponse
 func (client *Client) RecognizeInternationalBusinessLicense(request *RecognizeInternationalBusinessLicenseRequest) (_result *RecognizeInternationalBusinessLicenseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeInternationalBusinessLicenseResponse{}
@@ -11064,6 +13336,15 @@ func (client *Client) RecognizeInternationalBusinessLicense(request *RecognizeIn
 	return _result, _err
 }
 
+// Summary:
+//
+// 国际身份证识别
+//
+// @param request - RecognizeInternationalIdcardRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeInternationalIdcardResponse
 func (client *Client) RecognizeInternationalIdcardWithOptions(request *RecognizeInternationalIdcardRequest, runtime *util.RuntimeOptions) (_result *RecognizeInternationalIdcardResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11103,6 +13384,13 @@ func (client *Client) RecognizeInternationalIdcardWithOptions(request *Recognize
 	return _result, _err
 }
 
+// Summary:
+//
+// 国际身份证识别
+//
+// @param request - RecognizeInternationalIdcardRequest
+//
+// @return RecognizeInternationalIdcardResponse
 func (client *Client) RecognizeInternationalIdcard(request *RecognizeInternationalIdcardRequest) (_result *RecognizeInternationalIdcardResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeInternationalIdcardResponse{}
@@ -11114,6 +13402,15 @@ func (client *Client) RecognizeInternationalIdcard(request *RecognizeInternation
 	return _result, _err
 }
 
+// Summary:
+//
+// 增值税发票识别
+//
+// @param request - RecognizeInvoiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeInvoiceResponse
 func (client *Client) RecognizeInvoiceWithOptions(request *RecognizeInvoiceRequest, runtime *util.RuntimeOptions) (_result *RecognizeInvoiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11153,6 +13450,13 @@ func (client *Client) RecognizeInvoiceWithOptions(request *RecognizeInvoiceReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 增值税发票识别
+//
+// @param request - RecognizeInvoiceRequest
+//
+// @return RecognizeInvoiceResponse
 func (client *Client) RecognizeInvoice(request *RecognizeInvoiceRequest) (_result *RecognizeInvoiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeInvoiceResponse{}
@@ -11164,6 +13468,15 @@ func (client *Client) RecognizeInvoice(request *RecognizeInvoiceRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 日语识别
+//
+// @param request - RecognizeJanpaneseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeJanpaneseResponse
 func (client *Client) RecognizeJanpaneseWithOptions(request *RecognizeJanpaneseRequest, runtime *util.RuntimeOptions) (_result *RecognizeJanpaneseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11211,6 +13524,13 @@ func (client *Client) RecognizeJanpaneseWithOptions(request *RecognizeJanpaneseR
 	return _result, _err
 }
 
+// Summary:
+//
+// 日语识别
+//
+// @param request - RecognizeJanpaneseRequest
+//
+// @return RecognizeJanpaneseResponse
 func (client *Client) RecognizeJanpanese(request *RecognizeJanpaneseRequest) (_result *RecognizeJanpaneseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeJanpaneseResponse{}
@@ -11222,6 +13542,15 @@ func (client *Client) RecognizeJanpanese(request *RecognizeJanpaneseRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 韩语识别
+//
+// @param request - RecognizeKoreanRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeKoreanResponse
 func (client *Client) RecognizeKoreanWithOptions(request *RecognizeKoreanRequest, runtime *util.RuntimeOptions) (_result *RecognizeKoreanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11269,6 +13598,13 @@ func (client *Client) RecognizeKoreanWithOptions(request *RecognizeKoreanRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 韩语识别
+//
+// @param request - RecognizeKoreanRequest
+//
+// @return RecognizeKoreanResponse
 func (client *Client) RecognizeKorean(request *RecognizeKoreanRequest) (_result *RecognizeKoreanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeKoreanResponse{}
@@ -11280,6 +13616,15 @@ func (client *Client) RecognizeKorean(request *RecognizeKoreanRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 拉丁语识别
+//
+// @param request - RecognizeLatinRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeLatinResponse
 func (client *Client) RecognizeLatinWithOptions(request *RecognizeLatinRequest, runtime *util.RuntimeOptions) (_result *RecognizeLatinResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11327,6 +13672,13 @@ func (client *Client) RecognizeLatinWithOptions(request *RecognizeLatinRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 拉丁语识别
+//
+// @param request - RecognizeLatinRequest
+//
+// @return RecognizeLatinResponse
 func (client *Client) RecognizeLatin(request *RecognizeLatinRequest) (_result *RecognizeLatinResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeLatinResponse{}
@@ -11338,6 +13690,15 @@ func (client *Client) RecognizeLatin(request *RecognizeLatinRequest) (_result *R
 	return _result, _err
 }
 
+// Summary:
+//
+// 医疗器械经营许可证
+//
+// @param request - RecognizeMedicalDeviceManageLicenseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeMedicalDeviceManageLicenseResponse
 func (client *Client) RecognizeMedicalDeviceManageLicenseWithOptions(request *RecognizeMedicalDeviceManageLicenseRequest, runtime *util.RuntimeOptions) (_result *RecognizeMedicalDeviceManageLicenseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11373,6 +13734,13 @@ func (client *Client) RecognizeMedicalDeviceManageLicenseWithOptions(request *Re
 	return _result, _err
 }
 
+// Summary:
+//
+// 医疗器械经营许可证
+//
+// @param request - RecognizeMedicalDeviceManageLicenseRequest
+//
+// @return RecognizeMedicalDeviceManageLicenseResponse
 func (client *Client) RecognizeMedicalDeviceManageLicense(request *RecognizeMedicalDeviceManageLicenseRequest) (_result *RecognizeMedicalDeviceManageLicenseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeMedicalDeviceManageLicenseResponse{}
@@ -11384,6 +13752,15 @@ func (client *Client) RecognizeMedicalDeviceManageLicense(request *RecognizeMedi
 	return _result, _err
 }
 
+// Summary:
+//
+// 医疗器械生产许可证
+//
+// @param request - RecognizeMedicalDeviceProduceLicenseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeMedicalDeviceProduceLicenseResponse
 func (client *Client) RecognizeMedicalDeviceProduceLicenseWithOptions(request *RecognizeMedicalDeviceProduceLicenseRequest, runtime *util.RuntimeOptions) (_result *RecognizeMedicalDeviceProduceLicenseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11419,6 +13796,13 @@ func (client *Client) RecognizeMedicalDeviceProduceLicenseWithOptions(request *R
 	return _result, _err
 }
 
+// Summary:
+//
+// 医疗器械生产许可证
+//
+// @param request - RecognizeMedicalDeviceProduceLicenseRequest
+//
+// @return RecognizeMedicalDeviceProduceLicenseResponse
 func (client *Client) RecognizeMedicalDeviceProduceLicense(request *RecognizeMedicalDeviceProduceLicenseRequest) (_result *RecognizeMedicalDeviceProduceLicenseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeMedicalDeviceProduceLicenseResponse{}
@@ -11430,6 +13814,15 @@ func (client *Client) RecognizeMedicalDeviceProduceLicense(request *RecognizeMed
 	return _result, _err
 }
 
+// Summary:
+//
+// 混贴发票识别
+//
+// @param request - RecognizeMixedInvoicesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeMixedInvoicesResponse
 func (client *Client) RecognizeMixedInvoicesWithOptions(request *RecognizeMixedInvoicesRequest, runtime *util.RuntimeOptions) (_result *RecognizeMixedInvoicesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11473,6 +13866,13 @@ func (client *Client) RecognizeMixedInvoicesWithOptions(request *RecognizeMixedI
 	return _result, _err
 }
 
+// Summary:
+//
+// 混贴发票识别
+//
+// @param request - RecognizeMixedInvoicesRequest
+//
+// @return RecognizeMixedInvoicesResponse
 func (client *Client) RecognizeMixedInvoices(request *RecognizeMixedInvoicesRequest) (_result *RecognizeMixedInvoicesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeMixedInvoicesResponse{}
@@ -11484,6 +13884,15 @@ func (client *Client) RecognizeMixedInvoices(request *RecognizeMixedInvoicesRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 通用多语言识别
+//
+// @param tmpReq - RecognizeMultiLanguageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeMultiLanguageResponse
 func (client *Client) RecognizeMultiLanguageWithOptions(tmpReq *RecognizeMultiLanguageRequest, runtime *util.RuntimeOptions) (_result *RecognizeMultiLanguageResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -11545,6 +13954,13 @@ func (client *Client) RecognizeMultiLanguageWithOptions(tmpReq *RecognizeMultiLa
 	return _result, _err
 }
 
+// Summary:
+//
+// 通用多语言识别
+//
+// @param request - RecognizeMultiLanguageRequest
+//
+// @return RecognizeMultiLanguageResponse
 func (client *Client) RecognizeMultiLanguage(request *RecognizeMultiLanguageRequest) (_result *RecognizeMultiLanguageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeMultiLanguageResponse{}
@@ -11556,6 +13972,15 @@ func (client *Client) RecognizeMultiLanguage(request *RecognizeMultiLanguageRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 非税收入票据识别
+//
+// @param request - RecognizeNonTaxInvoiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeNonTaxInvoiceResponse
 func (client *Client) RecognizeNonTaxInvoiceWithOptions(request *RecognizeNonTaxInvoiceRequest, runtime *util.RuntimeOptions) (_result *RecognizeNonTaxInvoiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11591,6 +14016,13 @@ func (client *Client) RecognizeNonTaxInvoiceWithOptions(request *RecognizeNonTax
 	return _result, _err
 }
 
+// Summary:
+//
+// 非税收入票据识别
+//
+// @param request - RecognizeNonTaxInvoiceRequest
+//
+// @return RecognizeNonTaxInvoiceResponse
 func (client *Client) RecognizeNonTaxInvoice(request *RecognizeNonTaxInvoiceRequest) (_result *RecognizeNonTaxInvoiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeNonTaxInvoiceResponse{}
@@ -11602,6 +14034,15 @@ func (client *Client) RecognizeNonTaxInvoice(request *RecognizeNonTaxInvoiceRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 护照识别
+//
+// @param request - RecognizePassportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizePassportResponse
 func (client *Client) RecognizePassportWithOptions(request *RecognizePassportRequest, runtime *util.RuntimeOptions) (_result *RecognizePassportResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11637,6 +14078,13 @@ func (client *Client) RecognizePassportWithOptions(request *RecognizePassportReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 护照识别
+//
+// @param request - RecognizePassportRequest
+//
+// @return RecognizePassportResponse
 func (client *Client) RecognizePassport(request *RecognizePassportRequest) (_result *RecognizePassportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizePassportResponse{}
@@ -11648,6 +14096,15 @@ func (client *Client) RecognizePassport(request *RecognizePassportRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 支付详情页识别
+//
+// @param request - RecognizePaymentRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizePaymentRecordResponse
 func (client *Client) RecognizePaymentRecordWithOptions(request *RecognizePaymentRecordRequest, runtime *util.RuntimeOptions) (_result *RecognizePaymentRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11683,6 +14140,13 @@ func (client *Client) RecognizePaymentRecordWithOptions(request *RecognizePaymen
 	return _result, _err
 }
 
+// Summary:
+//
+// 支付详情页识别
+//
+// @param request - RecognizePaymentRecordRequest
+//
+// @return RecognizePaymentRecordResponse
 func (client *Client) RecognizePaymentRecord(request *RecognizePaymentRecordRequest) (_result *RecognizePaymentRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizePaymentRecordResponse{}
@@ -11694,6 +14158,15 @@ func (client *Client) RecognizePaymentRecord(request *RecognizePaymentRecordRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 电商订单页识别
+//
+// @param request - RecognizePurchaseRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizePurchaseRecordResponse
 func (client *Client) RecognizePurchaseRecordWithOptions(request *RecognizePurchaseRecordRequest, runtime *util.RuntimeOptions) (_result *RecognizePurchaseRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11733,6 +14206,13 @@ func (client *Client) RecognizePurchaseRecordWithOptions(request *RecognizePurch
 	return _result, _err
 }
 
+// Summary:
+//
+// 电商订单页识别
+//
+// @param request - RecognizePurchaseRecordRequest
+//
+// @return RecognizePurchaseRecordResponse
 func (client *Client) RecognizePurchaseRecord(request *RecognizePurchaseRecordRequest) (_result *RecognizePurchaseRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizePurchaseRecordResponse{}
@@ -11744,6 +14224,15 @@ func (client *Client) RecognizePurchaseRecord(request *RecognizePurchaseRecordRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 定额发票
+//
+// @param request - RecognizeQuotaInvoiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeQuotaInvoiceResponse
 func (client *Client) RecognizeQuotaInvoiceWithOptions(request *RecognizeQuotaInvoiceRequest, runtime *util.RuntimeOptions) (_result *RecognizeQuotaInvoiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11779,6 +14268,13 @@ func (client *Client) RecognizeQuotaInvoiceWithOptions(request *RecognizeQuotaIn
 	return _result, _err
 }
 
+// Summary:
+//
+// 定额发票
+//
+// @param request - RecognizeQuotaInvoiceRequest
+//
+// @return RecognizeQuotaInvoiceResponse
 func (client *Client) RecognizeQuotaInvoice(request *RecognizeQuotaInvoiceRequest) (_result *RecognizeQuotaInvoiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeQuotaInvoiceResponse{}
@@ -11790,6 +14286,15 @@ func (client *Client) RecognizeQuotaInvoice(request *RecognizeQuotaInvoiceReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 网约车行程单识别
+//
+// @param request - RecognizeRideHailingItineraryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeRideHailingItineraryResponse
 func (client *Client) RecognizeRideHailingItineraryWithOptions(request *RecognizeRideHailingItineraryRequest, runtime *util.RuntimeOptions) (_result *RecognizeRideHailingItineraryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11825,6 +14330,13 @@ func (client *Client) RecognizeRideHailingItineraryWithOptions(request *Recogniz
 	return _result, _err
 }
 
+// Summary:
+//
+// 网约车行程单识别
+//
+// @param request - RecognizeRideHailingItineraryRequest
+//
+// @return RecognizeRideHailingItineraryResponse
 func (client *Client) RecognizeRideHailingItinerary(request *RecognizeRideHailingItineraryRequest) (_result *RecognizeRideHailingItineraryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeRideHailingItineraryResponse{}
@@ -11836,6 +14348,15 @@ func (client *Client) RecognizeRideHailingItinerary(request *RecognizeRideHailin
 	return _result, _err
 }
 
+// Summary:
+//
+// 增值税发票卷票
+//
+// @param request - RecognizeRollTicketRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeRollTicketResponse
 func (client *Client) RecognizeRollTicketWithOptions(request *RecognizeRollTicketRequest, runtime *util.RuntimeOptions) (_result *RecognizeRollTicketResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11871,6 +14392,13 @@ func (client *Client) RecognizeRollTicketWithOptions(request *RecognizeRollTicke
 	return _result, _err
 }
 
+// Summary:
+//
+// 增值税发票卷票
+//
+// @param request - RecognizeRollTicketRequest
+//
+// @return RecognizeRollTicketResponse
 func (client *Client) RecognizeRollTicket(request *RecognizeRollTicketRequest) (_result *RecognizeRollTicketResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeRollTicketResponse{}
@@ -11882,6 +14410,15 @@ func (client *Client) RecognizeRollTicket(request *RecognizeRollTicketRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 俄语识别
+//
+// @param request - RecognizeRussianRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeRussianResponse
 func (client *Client) RecognizeRussianWithOptions(request *RecognizeRussianRequest, runtime *util.RuntimeOptions) (_result *RecognizeRussianResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11929,6 +14466,13 @@ func (client *Client) RecognizeRussianWithOptions(request *RecognizeRussianReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 俄语识别
+//
+// @param request - RecognizeRussianRequest
+//
+// @return RecognizeRussianResponse
 func (client *Client) RecognizeRussian(request *RecognizeRussianRequest) (_result *RecognizeRussianResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeRussianResponse{}
@@ -11940,6 +14484,15 @@ func (client *Client) RecognizeRussian(request *RecognizeRussianRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 购物小票识别
+//
+// @param request - RecognizeShoppingReceiptRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeShoppingReceiptResponse
 func (client *Client) RecognizeShoppingReceiptWithOptions(request *RecognizeShoppingReceiptRequest, runtime *util.RuntimeOptions) (_result *RecognizeShoppingReceiptResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11975,6 +14528,13 @@ func (client *Client) RecognizeShoppingReceiptWithOptions(request *RecognizeShop
 	return _result, _err
 }
 
+// Summary:
+//
+// 购物小票识别
+//
+// @param request - RecognizeShoppingReceiptRequest
+//
+// @return RecognizeShoppingReceiptResponse
 func (client *Client) RecognizeShoppingReceipt(request *RecognizeShoppingReceiptRequest) (_result *RecognizeShoppingReceiptResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeShoppingReceiptResponse{}
@@ -11986,6 +14546,15 @@ func (client *Client) RecognizeShoppingReceipt(request *RecognizeShoppingReceipt
 	return _result, _err
 }
 
+// Summary:
+//
+// 社会保障卡识别
+//
+// @param request - RecognizeSocialSecurityCardRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeSocialSecurityCardResponse
 func (client *Client) RecognizeSocialSecurityCardWithOptions(request *RecognizeSocialSecurityCardRequest, runtime *util.RuntimeOptions) (_result *RecognizeSocialSecurityCardResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12021,6 +14590,13 @@ func (client *Client) RecognizeSocialSecurityCardWithOptions(request *RecognizeS
 	return _result, _err
 }
 
+// Summary:
+//
+// 社会保障卡识别
+//
+// @param request - RecognizeSocialSecurityCardRequest
+//
+// @return RecognizeSocialSecurityCardResponse
 func (client *Client) RecognizeSocialSecurityCard(request *RecognizeSocialSecurityCardRequest) (_result *RecognizeSocialSecurityCardResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeSocialSecurityCardResponse{}
@@ -12032,6 +14608,15 @@ func (client *Client) RecognizeSocialSecurityCard(request *RecognizeSocialSecuri
 	return _result, _err
 }
 
+// Summary:
+//
+// 社保卡识别
+//
+// @param request - RecognizeSocialSecurityCardVersionIIRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeSocialSecurityCardVersionIIResponse
 func (client *Client) RecognizeSocialSecurityCardVersionIIWithOptions(request *RecognizeSocialSecurityCardVersionIIRequest, runtime *util.RuntimeOptions) (_result *RecognizeSocialSecurityCardVersionIIResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12067,6 +14652,13 @@ func (client *Client) RecognizeSocialSecurityCardVersionIIWithOptions(request *R
 	return _result, _err
 }
 
+// Summary:
+//
+// 社保卡识别
+//
+// @param request - RecognizeSocialSecurityCardVersionIIRequest
+//
+// @return RecognizeSocialSecurityCardVersionIIResponse
 func (client *Client) RecognizeSocialSecurityCardVersionII(request *RecognizeSocialSecurityCardVersionIIRequest) (_result *RecognizeSocialSecurityCardVersionIIResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeSocialSecurityCardVersionIIResponse{}
@@ -12078,6 +14670,15 @@ func (client *Client) RecognizeSocialSecurityCardVersionII(request *RecognizeSoc
 	return _result, _err
 }
 
+// Summary:
+//
+// 表格识别
+//
+// @param request - RecognizeTableOcrRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeTableOcrResponse
 func (client *Client) RecognizeTableOcrWithOptions(request *RecognizeTableOcrRequest, runtime *util.RuntimeOptions) (_result *RecognizeTableOcrResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12129,6 +14730,13 @@ func (client *Client) RecognizeTableOcrWithOptions(request *RecognizeTableOcrReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 表格识别
+//
+// @param request - RecognizeTableOcrRequest
+//
+// @return RecognizeTableOcrResponse
 func (client *Client) RecognizeTableOcr(request *RecognizeTableOcrRequest) (_result *RecognizeTableOcrResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeTableOcrResponse{}
@@ -12140,6 +14748,15 @@ func (client *Client) RecognizeTableOcr(request *RecognizeTableOcrRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 税收完税证明识别
+//
+// @param request - RecognizeTaxClearanceCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeTaxClearanceCertificateResponse
 func (client *Client) RecognizeTaxClearanceCertificateWithOptions(request *RecognizeTaxClearanceCertificateRequest, runtime *util.RuntimeOptions) (_result *RecognizeTaxClearanceCertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12175,6 +14792,13 @@ func (client *Client) RecognizeTaxClearanceCertificateWithOptions(request *Recog
 	return _result, _err
 }
 
+// Summary:
+//
+// 税收完税证明识别
+//
+// @param request - RecognizeTaxClearanceCertificateRequest
+//
+// @return RecognizeTaxClearanceCertificateResponse
 func (client *Client) RecognizeTaxClearanceCertificate(request *RecognizeTaxClearanceCertificateRequest) (_result *RecognizeTaxClearanceCertificateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeTaxClearanceCertificateResponse{}
@@ -12186,6 +14810,15 @@ func (client *Client) RecognizeTaxClearanceCertificate(request *RecognizeTaxClea
 	return _result, _err
 }
 
+// Summary:
+//
+// 出租车发票
+//
+// @param request - RecognizeTaxiInvoiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeTaxiInvoiceResponse
 func (client *Client) RecognizeTaxiInvoiceWithOptions(request *RecognizeTaxiInvoiceRequest, runtime *util.RuntimeOptions) (_result *RecognizeTaxiInvoiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12221,6 +14854,13 @@ func (client *Client) RecognizeTaxiInvoiceWithOptions(request *RecognizeTaxiInvo
 	return _result, _err
 }
 
+// Summary:
+//
+// 出租车发票
+//
+// @param request - RecognizeTaxiInvoiceRequest
+//
+// @return RecognizeTaxiInvoiceResponse
 func (client *Client) RecognizeTaxiInvoice(request *RecognizeTaxiInvoiceRequest) (_result *RecognizeTaxiInvoiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeTaxiInvoiceResponse{}
@@ -12232,6 +14872,15 @@ func (client *Client) RecognizeTaxiInvoice(request *RecognizeTaxiInvoiceRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 泰语识别
+//
+// @param request - RecognizeThaiRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeThaiResponse
 func (client *Client) RecognizeThaiWithOptions(request *RecognizeThaiRequest, runtime *util.RuntimeOptions) (_result *RecognizeThaiResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12279,6 +14928,13 @@ func (client *Client) RecognizeThaiWithOptions(request *RecognizeThaiRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 泰语识别
+//
+// @param request - RecognizeThaiRequest
+//
+// @return RecognizeThaiResponse
 func (client *Client) RecognizeThai(request *RecognizeThaiRequest) (_result *RecognizeThaiResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeThaiResponse{}
@@ -12290,6 +14946,15 @@ func (client *Client) RecognizeThai(request *RecognizeThaiRequest) (_result *Rec
 	return _result, _err
 }
 
+// Summary:
+//
+// 过路过桥费发票识别
+//
+// @param request - RecognizeTollInvoiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeTollInvoiceResponse
 func (client *Client) RecognizeTollInvoiceWithOptions(request *RecognizeTollInvoiceRequest, runtime *util.RuntimeOptions) (_result *RecognizeTollInvoiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12325,6 +14990,13 @@ func (client *Client) RecognizeTollInvoiceWithOptions(request *RecognizeTollInvo
 	return _result, _err
 }
 
+// Summary:
+//
+// 过路过桥费发票识别
+//
+// @param request - RecognizeTollInvoiceRequest
+//
+// @return RecognizeTollInvoiceResponse
 func (client *Client) RecognizeTollInvoice(request *RecognizeTollInvoiceRequest) (_result *RecognizeTollInvoiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeTollInvoiceResponse{}
@@ -12336,6 +15008,15 @@ func (client *Client) RecognizeTollInvoice(request *RecognizeTollInvoiceRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 商标注册证
+//
+// @param request - RecognizeTradeMarkCertificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeTradeMarkCertificationResponse
 func (client *Client) RecognizeTradeMarkCertificationWithOptions(request *RecognizeTradeMarkCertificationRequest, runtime *util.RuntimeOptions) (_result *RecognizeTradeMarkCertificationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12371,6 +15052,13 @@ func (client *Client) RecognizeTradeMarkCertificationWithOptions(request *Recogn
 	return _result, _err
 }
 
+// Summary:
+//
+// 商标注册证
+//
+// @param request - RecognizeTradeMarkCertificationRequest
+//
+// @return RecognizeTradeMarkCertificationResponse
 func (client *Client) RecognizeTradeMarkCertification(request *RecognizeTradeMarkCertificationRequest) (_result *RecognizeTradeMarkCertificationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeTradeMarkCertificationResponse{}
@@ -12382,6 +15070,15 @@ func (client *Client) RecognizeTradeMarkCertification(request *RecognizeTradeMar
 	return _result, _err
 }
 
+// Summary:
+//
+// 火车票
+//
+// @param request - RecognizeTrainInvoiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeTrainInvoiceResponse
 func (client *Client) RecognizeTrainInvoiceWithOptions(request *RecognizeTrainInvoiceRequest, runtime *util.RuntimeOptions) (_result *RecognizeTrainInvoiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12417,6 +15114,13 @@ func (client *Client) RecognizeTrainInvoiceWithOptions(request *RecognizeTrainIn
 	return _result, _err
 }
 
+// Summary:
+//
+// 火车票
+//
+// @param request - RecognizeTrainInvoiceRequest
+//
+// @return RecognizeTrainInvoiceResponse
 func (client *Client) RecognizeTrainInvoice(request *RecognizeTrainInvoiceRequest) (_result *RecognizeTrainInvoiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeTrainInvoiceResponse{}
@@ -12428,6 +15132,15 @@ func (client *Client) RecognizeTrainInvoice(request *RecognizeTrainInvoiceReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 二手车统一销售发票识别
+//
+// @param request - RecognizeUsedCarInvoiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeUsedCarInvoiceResponse
 func (client *Client) RecognizeUsedCarInvoiceWithOptions(request *RecognizeUsedCarInvoiceRequest, runtime *util.RuntimeOptions) (_result *RecognizeUsedCarInvoiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12463,6 +15176,13 @@ func (client *Client) RecognizeUsedCarInvoiceWithOptions(request *RecognizeUsedC
 	return _result, _err
 }
 
+// Summary:
+//
+// 二手车统一销售发票识别
+//
+// @param request - RecognizeUsedCarInvoiceRequest
+//
+// @return RecognizeUsedCarInvoiceResponse
 func (client *Client) RecognizeUsedCarInvoice(request *RecognizeUsedCarInvoiceRequest) (_result *RecognizeUsedCarInvoiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeUsedCarInvoiceResponse{}
@@ -12474,6 +15194,15 @@ func (client *Client) RecognizeUsedCarInvoice(request *RecognizeUsedCarInvoiceRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 车辆合格证识别
+//
+// @param request - RecognizeVehicleCertificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeVehicleCertificationResponse
 func (client *Client) RecognizeVehicleCertificationWithOptions(request *RecognizeVehicleCertificationRequest, runtime *util.RuntimeOptions) (_result *RecognizeVehicleCertificationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12509,6 +15238,13 @@ func (client *Client) RecognizeVehicleCertificationWithOptions(request *Recogniz
 	return _result, _err
 }
 
+// Summary:
+//
+// 车辆合格证识别
+//
+// @param request - RecognizeVehicleCertificationRequest
+//
+// @return RecognizeVehicleCertificationResponse
 func (client *Client) RecognizeVehicleCertification(request *RecognizeVehicleCertificationRequest) (_result *RecognizeVehicleCertificationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeVehicleCertificationResponse{}
@@ -12520,6 +15256,15 @@ func (client *Client) RecognizeVehicleCertification(request *RecognizeVehicleCer
 	return _result, _err
 }
 
+// Summary:
+//
+// 行驶证识别
+//
+// @param request - RecognizeVehicleLicenseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeVehicleLicenseResponse
 func (client *Client) RecognizeVehicleLicenseWithOptions(request *RecognizeVehicleLicenseRequest, runtime *util.RuntimeOptions) (_result *RecognizeVehicleLicenseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12555,6 +15300,13 @@ func (client *Client) RecognizeVehicleLicenseWithOptions(request *RecognizeVehic
 	return _result, _err
 }
 
+// Summary:
+//
+// 行驶证识别
+//
+// @param request - RecognizeVehicleLicenseRequest
+//
+// @return RecognizeVehicleLicenseResponse
 func (client *Client) RecognizeVehicleLicense(request *RecognizeVehicleLicenseRequest) (_result *RecognizeVehicleLicenseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeVehicleLicenseResponse{}
@@ -12566,6 +15318,15 @@ func (client *Client) RecognizeVehicleLicense(request *RecognizeVehicleLicenseRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 机动车注册登记证识别
+//
+// @param request - RecognizeVehicleRegistrationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeVehicleRegistrationResponse
 func (client *Client) RecognizeVehicleRegistrationWithOptions(request *RecognizeVehicleRegistrationRequest, runtime *util.RuntimeOptions) (_result *RecognizeVehicleRegistrationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12601,6 +15362,13 @@ func (client *Client) RecognizeVehicleRegistrationWithOptions(request *Recognize
 	return _result, _err
 }
 
+// Summary:
+//
+// 机动车注册登记证识别
+//
+// @param request - RecognizeVehicleRegistrationRequest
+//
+// @return RecognizeVehicleRegistrationResponse
 func (client *Client) RecognizeVehicleRegistration(request *RecognizeVehicleRegistrationRequest) (_result *RecognizeVehicleRegistrationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeVehicleRegistrationResponse{}
@@ -12612,6 +15380,15 @@ func (client *Client) RecognizeVehicleRegistration(request *RecognizeVehicleRegi
 	return _result, _err
 }
 
+// Summary:
+//
+// 电子面单识别
+//
+// @param request - RecognizeWaybillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeWaybillResponse
 func (client *Client) RecognizeWaybillWithOptions(request *RecognizeWaybillRequest, runtime *util.RuntimeOptions) (_result *RecognizeWaybillResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12647,6 +15424,13 @@ func (client *Client) RecognizeWaybillWithOptions(request *RecognizeWaybillReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 电子面单识别
+//
+// @param request - RecognizeWaybillRequest
+//
+// @return RecognizeWaybillResponse
 func (client *Client) RecognizeWaybill(request *RecognizeWaybillRequest) (_result *RecognizeWaybillResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeWaybillResponse{}
@@ -12658,6 +15442,15 @@ func (client *Client) RecognizeWaybill(request *RecognizeWaybillRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 营业执照核验
+//
+// @param request - VerifyBusinessLicenseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VerifyBusinessLicenseResponse
 func (client *Client) VerifyBusinessLicenseWithOptions(request *VerifyBusinessLicenseRequest, runtime *util.RuntimeOptions) (_result *VerifyBusinessLicenseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12699,6 +15492,13 @@ func (client *Client) VerifyBusinessLicenseWithOptions(request *VerifyBusinessLi
 	return _result, _err
 }
 
+// Summary:
+//
+// 营业执照核验
+//
+// @param request - VerifyBusinessLicenseRequest
+//
+// @return VerifyBusinessLicenseResponse
 func (client *Client) VerifyBusinessLicense(request *VerifyBusinessLicenseRequest) (_result *VerifyBusinessLicenseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &VerifyBusinessLicenseResponse{}
@@ -12710,6 +15510,15 @@ func (client *Client) VerifyBusinessLicense(request *VerifyBusinessLicenseReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 增值税发票核验
+//
+// @param request - VerifyVATInvoiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VerifyVATInvoiceResponse
 func (client *Client) VerifyVATInvoiceWithOptions(request *VerifyVATInvoiceRequest, runtime *util.RuntimeOptions) (_result *VerifyVATInvoiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12763,6 +15572,13 @@ func (client *Client) VerifyVATInvoiceWithOptions(request *VerifyVATInvoiceReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 增值税发票核验
+//
+// @param request - VerifyVATInvoiceRequest
+//
+// @return VerifyVATInvoiceResponse
 func (client *Client) VerifyVATInvoice(request *VerifyVATInvoiceRequest) (_result *VerifyVATInvoiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &VerifyVATInvoiceResponse{}
