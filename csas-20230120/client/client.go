@@ -2116,6 +2116,72 @@ func (s *DeleteRegistrationPoliciesResponse) SetBody(v *DeleteRegistrationPolici
 	return s
 }
 
+type DeleteUserDevicesRequest struct {
+	DeviceTags []*string `json:"DeviceTags,omitempty" xml:"DeviceTags,omitempty" type:"Repeated"`
+}
+
+func (s DeleteUserDevicesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUserDevicesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUserDevicesRequest) SetDeviceTags(v []*string) *DeleteUserDevicesRequest {
+	s.DeviceTags = v
+	return s
+}
+
+type DeleteUserDevicesResponseBody struct {
+	// example:
+	//
+	// 5FEF5CFA-14CC-5DE5-BD1F-AFFE0996E71D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteUserDevicesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUserDevicesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUserDevicesResponseBody) SetRequestId(v string) *DeleteUserDevicesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteUserDevicesResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteUserDevicesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteUserDevicesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUserDevicesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUserDevicesResponse) SetHeaders(v map[string]*string) *DeleteUserDevicesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteUserDevicesResponse) SetStatusCode(v int32) *DeleteUserDevicesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteUserDevicesResponse) SetBody(v *DeleteUserDevicesResponseBody) *DeleteUserDevicesResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteUserGroupRequest struct {
 	// This parameter is required.
 	//
@@ -2294,6 +2360,180 @@ func (s *DetachApplication2ConnectorResponse) SetStatusCode(v int32) *DetachAppl
 }
 
 func (s *DetachApplication2ConnectorResponse) SetBody(v *DetachApplication2ConnectorResponseBody) *DetachApplication2ConnectorResponse {
+	s.Body = v
+	return s
+}
+
+type ExportUserDevicesRequest struct {
+	AppStatuses []*string `json:"AppStatuses,omitempty" xml:"AppStatuses,omitempty" type:"Repeated"`
+	Department  *string   `json:"Department,omitempty" xml:"Department,omitempty"`
+	// example:
+	//
+	// Company
+	DeviceBelong   *string   `json:"DeviceBelong,omitempty" xml:"DeviceBelong,omitempty"`
+	DeviceStatuses []*string `json:"DeviceStatuses,omitempty" xml:"DeviceStatuses,omitempty" type:"Repeated"`
+	DeviceTags     []*string `json:"DeviceTags,omitempty" xml:"DeviceTags,omitempty" type:"Repeated"`
+	DeviceTypes    []*string `json:"DeviceTypes,omitempty" xml:"DeviceTypes,omitempty" type:"Repeated"`
+	DlpStatuses    []*string `json:"DlpStatuses,omitempty" xml:"DlpStatuses,omitempty" type:"Repeated"`
+	// example:
+	//
+	// win10-64bit
+	Hostname   *string   `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	IaStatuses []*string `json:"IaStatuses,omitempty" xml:"IaStatuses,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 00:16:XX:XX:7c:46
+	Mac         *string   `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	NacStatuses []*string `json:"NacStatuses,omitempty" xml:"NacStatuses,omitempty" type:"Repeated"`
+	PaStatuses  []*string `json:"PaStatuses,omitempty" xml:"PaStatuses,omitempty" type:"Repeated"`
+	// example:
+	//
+	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
+	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
+	// example:
+	//
+	// true
+	SharingStatus *bool   `json:"SharingStatus,omitempty" xml:"SharingStatus,omitempty"`
+	Username      *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s ExportUserDevicesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportUserDevicesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExportUserDevicesRequest) SetAppStatuses(v []*string) *ExportUserDevicesRequest {
+	s.AppStatuses = v
+	return s
+}
+
+func (s *ExportUserDevicesRequest) SetDepartment(v string) *ExportUserDevicesRequest {
+	s.Department = &v
+	return s
+}
+
+func (s *ExportUserDevicesRequest) SetDeviceBelong(v string) *ExportUserDevicesRequest {
+	s.DeviceBelong = &v
+	return s
+}
+
+func (s *ExportUserDevicesRequest) SetDeviceStatuses(v []*string) *ExportUserDevicesRequest {
+	s.DeviceStatuses = v
+	return s
+}
+
+func (s *ExportUserDevicesRequest) SetDeviceTags(v []*string) *ExportUserDevicesRequest {
+	s.DeviceTags = v
+	return s
+}
+
+func (s *ExportUserDevicesRequest) SetDeviceTypes(v []*string) *ExportUserDevicesRequest {
+	s.DeviceTypes = v
+	return s
+}
+
+func (s *ExportUserDevicesRequest) SetDlpStatuses(v []*string) *ExportUserDevicesRequest {
+	s.DlpStatuses = v
+	return s
+}
+
+func (s *ExportUserDevicesRequest) SetHostname(v string) *ExportUserDevicesRequest {
+	s.Hostname = &v
+	return s
+}
+
+func (s *ExportUserDevicesRequest) SetIaStatuses(v []*string) *ExportUserDevicesRequest {
+	s.IaStatuses = v
+	return s
+}
+
+func (s *ExportUserDevicesRequest) SetMac(v string) *ExportUserDevicesRequest {
+	s.Mac = &v
+	return s
+}
+
+func (s *ExportUserDevicesRequest) SetNacStatuses(v []*string) *ExportUserDevicesRequest {
+	s.NacStatuses = v
+	return s
+}
+
+func (s *ExportUserDevicesRequest) SetPaStatuses(v []*string) *ExportUserDevicesRequest {
+	s.PaStatuses = v
+	return s
+}
+
+func (s *ExportUserDevicesRequest) SetSaseUserId(v string) *ExportUserDevicesRequest {
+	s.SaseUserId = &v
+	return s
+}
+
+func (s *ExportUserDevicesRequest) SetSharingStatus(v bool) *ExportUserDevicesRequest {
+	s.SharingStatus = &v
+	return s
+}
+
+func (s *ExportUserDevicesRequest) SetUsername(v string) *ExportUserDevicesRequest {
+	s.Username = &v
+	return s
+}
+
+type ExportUserDevicesResponseBody struct {
+	// example:
+	//
+	// 748CFDC7-1EB6-5B8B-9405-DA76ED5BB60D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// https://sase-export.oss-cn-hangzhou.aliyuncs.com/export%2Fapp-device%2F20240607154831.xlsx?Expires=1717746571&OSSAccessKeyId=********************
+	SignedUrl *string `json:"SignedUrl,omitempty" xml:"SignedUrl,omitempty"`
+}
+
+func (s ExportUserDevicesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportUserDevicesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExportUserDevicesResponseBody) SetRequestId(v string) *ExportUserDevicesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExportUserDevicesResponseBody) SetSignedUrl(v string) *ExportUserDevicesResponseBody {
+	s.SignedUrl = &v
+	return s
+}
+
+type ExportUserDevicesResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExportUserDevicesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExportUserDevicesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportUserDevicesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExportUserDevicesResponse) SetHeaders(v map[string]*string) *ExportUserDevicesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExportUserDevicesResponse) SetStatusCode(v int32) *ExportUserDevicesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExportUserDevicesResponse) SetBody(v *ExportUserDevicesResponseBody) *ExportUserDevicesResponse {
 	s.Body = v
 	return s
 }
@@ -14195,6 +14435,69 @@ func (client *Client) DeleteRegistrationPolicies(request *DeleteRegistrationPoli
 
 // Summary:
 //
+// 批量删除用户非在线设备
+//
+// @param request - DeleteUserDevicesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUserDevicesResponse
+func (client *Client) DeleteUserDevicesWithOptions(request *DeleteUserDevicesRequest, runtime *util.RuntimeOptions) (_result *DeleteUserDevicesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeviceTags)) {
+		bodyFlat["DeviceTags"] = request.DeviceTags
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteUserDevices"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteUserDevicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量删除用户非在线设备
+//
+// @param request - DeleteUserDevicesRequest
+//
+// @return DeleteUserDevicesResponse
+func (client *Client) DeleteUserDevices(request *DeleteUserDevicesRequest) (_result *DeleteUserDevicesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteUserDevicesResponse{}
+	_body, _err := client.DeleteUserDevicesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除用户组
 //
 // @param request - DeleteUserGroupRequest
@@ -14316,6 +14619,125 @@ func (client *Client) DetachApplication2Connector(request *DetachApplication2Con
 	runtime := &util.RuntimeOptions{}
 	_result = &DetachApplication2ConnectorResponse{}
 	_body, _err := client.DetachApplication2ConnectorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量查询用户设备列表
+//
+// @param request - ExportUserDevicesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExportUserDevicesResponse
+func (client *Client) ExportUserDevicesWithOptions(request *ExportUserDevicesRequest, runtime *util.RuntimeOptions) (_result *ExportUserDevicesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppStatuses)) {
+		bodyFlat["AppStatuses"] = request.AppStatuses
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Department)) {
+		body["Department"] = request.Department
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceBelong)) {
+		body["DeviceBelong"] = request.DeviceBelong
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceStatuses)) {
+		bodyFlat["DeviceStatuses"] = request.DeviceStatuses
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceTags)) {
+		bodyFlat["DeviceTags"] = request.DeviceTags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceTypes)) {
+		bodyFlat["DeviceTypes"] = request.DeviceTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DlpStatuses)) {
+		bodyFlat["DlpStatuses"] = request.DlpStatuses
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Hostname)) {
+		body["Hostname"] = request.Hostname
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IaStatuses)) {
+		bodyFlat["IaStatuses"] = request.IaStatuses
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mac)) {
+		body["Mac"] = request.Mac
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NacStatuses)) {
+		bodyFlat["NacStatuses"] = request.NacStatuses
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PaStatuses)) {
+		bodyFlat["PaStatuses"] = request.PaStatuses
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SaseUserId)) {
+		body["SaseUserId"] = request.SaseUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SharingStatus)) {
+		body["SharingStatus"] = request.SharingStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Username)) {
+		body["Username"] = request.Username
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExportUserDevices"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExportUserDevicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量查询用户设备列表
+//
+// @param request - ExportUserDevicesRequest
+//
+// @return ExportUserDevicesResponse
+func (client *Client) ExportUserDevices(request *ExportUserDevicesRequest) (_result *ExportUserDevicesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ExportUserDevicesResponse{}
+	_body, _err := client.ExportUserDevicesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
