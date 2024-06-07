@@ -1372,7 +1372,11 @@ func (s *CallbackExtensionResponse) SetBody(v *CallbackExtensionResponseBody) *C
 }
 
 type ChangeResourceManagerResourceGroupRequest struct {
-	// The ID of the new resource group.
+	// The ID of the resource type. Valid values:
+	//
+	// 	- If you set the ResourceType parameter to project, set this parameter to the value of ProjectIdentifier. You can call the [ListProjects](https://help.aliyun.com/document_detail/178393.html) operation to obtain the value of ProjectIdentifier.
+	//
+	// 	- If you set the ResourceType parameter to tenantresourcegroup, set this parameter to the value of ResourceGroupType. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/173913.html) operation to obtain the value of ResourceGroupType. Only the values 7, 8, and 9 are valid.
 	//
 	// This parameter is required.
 	//
@@ -1380,7 +1384,7 @@ type ChangeResourceManagerResourceGroupRequest struct {
 	//
 	// test_project
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// Indicates whether the resource group was successfully modified.
+	// The ID of the new resource group.
 	//
 	// This parameter is required.
 	//
@@ -1388,11 +1392,11 @@ type ChangeResourceManagerResourceGroupRequest struct {
 	//
 	// rg-bp67acfmxazb4p****
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The ID of the resource type. Valid values:
+	// The resource type. Valid values:
 	//
-	// 	- If you set the ResourceType parameter to project, set this parameter to the value of ProjectIdentifier. You can call the [ListProjects](https://help.aliyun.com/document_detail/178393.html) operation to obtain the value of ProjectIdentifier.
+	// 	- project: workspace. If you want to modify the resource group that you specify when you activate DataWorks, set the value to project.
 	//
-	// 	- If you set the ResourceType parameter to tenantresourcegroup, set this parameter to the value of ResourceGroupType. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/173913.html) operation to obtain the value of ResourceGroupType. Only the values 7, 8, and 9 are valid.
+	// 	- tenantresourcegroup: exclusive resource group. If you want to modify the resource group that you specify when you purchase a DataWorks exclusive resource group, set the value to tenantresourcegroup.
 	//
 	// This parameter is required.
 	//
@@ -1426,28 +1430,30 @@ func (s *ChangeResourceManagerResourceGroupRequest) SetResourceType(v string) *C
 }
 
 type ChangeResourceManagerResourceGroupResponseBody struct {
-	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
+	// Indicates whether the resource group was successfully modified.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
+	//
+	// example:
+	//
+	// 1AFAE64E-D1BE-432B-A9****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
 	// 	- true: The request was successful.
 	//
 	// 	- false: The request failed.
 	//
-	// example:
-	//
-	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The HTTP status code returned.
-	//
-	// example:
-	//
-	// 1AFAE64E-D1BE-432B-A9****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// example:
 	//
 	// true
@@ -6936,7 +6942,7 @@ func (s *CreateMetaCategoryResponse) SetBody(v *CreateMetaCategoryResponseBody) 
 }
 
 type CreateMetaCollectionRequest struct {
-	// The ID of the request.
+	// The type of the collection.
 	//
 	// This parameter is required.
 	//
@@ -6944,15 +6950,17 @@ type CreateMetaCollectionRequest struct {
 	//
 	// ALBUM
 	CollectionType *string `json:"CollectionType,omitempty" xml:"CollectionType,omitempty"`
-	// The unique identifier of the parent collection.
+	// The comment of the collection.
+	//
+	// The comment must be 1 to 64 characters in length.
 	//
 	// example:
 	//
 	// this is a comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The comment of the collection.
+	// The name of the collection.
 	//
-	// The comment must be 1 to 64 characters in length.
+	// The name must be 1 to 32 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -6960,7 +6968,7 @@ type CreateMetaCollectionRequest struct {
 	//
 	// collection_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the collection.
+	// The unique identifier of the parent collection.
 	//
 	// example:
 	//
@@ -6997,39 +7005,41 @@ func (s *CreateMetaCollectionRequest) SetParentQualifiedName(v string) *CreateMe
 }
 
 type CreateMetaCollectionResponseBody struct {
-	// The error message returned.
+	// The error code returned.
 	//
 	// example:
 	//
 	// NoPermission
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The HTTP status code returned.
+	// The error message returned.
 	//
 	// example:
 	//
 	// The specified parameters are invalid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The HTTP status code returned.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// 	- true: The request was successful.
-	//
-	// 	- false: The request failed.
+	// The unique identifier of the collection.
 	//
 	// example:
 	//
 	// album.11111
 	QualifiedName *string `json:"QualifiedName,omitempty" xml:"QualifiedName,omitempty"`
-	// The unique identifier of the collection.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// E6F0DBDD-5AD****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The error code returned.
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
 	//
 	// example:
 	//
@@ -12203,7 +12213,7 @@ func (s *DeleteMetaCategoryResponse) SetBody(v *DeleteMetaCategoryResponseBody) 
 }
 
 type DeleteMetaCollectionRequest struct {
-	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
+	// The unique identifier of the collection.
 	//
 	// This parameter is required.
 	//
@@ -12227,28 +12237,30 @@ func (s *DeleteMetaCollectionRequest) SetQualifiedName(v string) *DeleteMetaColl
 }
 
 type DeleteMetaCollectionResponseBody struct {
-	// Indicates whether the request was successful. Valid values:
-	//
-	// true: The request was successful.
-	//
-	// false: The request failed.
+	// The error code returned.
 	//
 	// example:
 	//
 	// 999999
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error code returned.
+	// The error message returned.
 	//
 	// example:
 	//
 	// The specified product does not exist.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The error message returned.
+	// The HTTP status code returned.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
+	//
+	// example:
+	//
+	// 0000-ABCD-E****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The result of the operation. Valid values:
 	//
 	// true: succeeded
@@ -12257,14 +12269,14 @@ type DeleteMetaCollectionResponseBody struct {
 	//
 	// example:
 	//
-	// 0000-ABCD-E****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The HTTP status code returned.
-	//
-	// example:
-	//
 	// true
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// true: The request was successful.
+	//
+	// false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -12339,7 +12351,7 @@ func (s *DeleteMetaCollectionResponse) SetBody(v *DeleteMetaCollectionResponseBo
 }
 
 type DeleteMetaCollectionEntityRequest struct {
-	// The unique identifier of the entity.
+	// The unique identifier of the collection.
 	//
 	// This parameter is required.
 	//
@@ -12347,7 +12359,7 @@ type DeleteMetaCollectionEntityRequest struct {
 	//
 	// album.12345
 	CollectionQualifiedName *string `json:"CollectionQualifiedName,omitempty" xml:"CollectionQualifiedName,omitempty"`
-	// The ID of the request.
+	// The unique identifier of the entity.
 	//
 	// This parameter is required.
 	//
@@ -12376,28 +12388,30 @@ func (s *DeleteMetaCollectionEntityRequest) SetEntityQualifiedName(v string) *De
 }
 
 type DeleteMetaCollectionEntityResponseBody struct {
-	// Indicates whether the request was successful. Valid values:
-	//
-	// true: The request was successful.
-	//
-	// false: The request failed.
+	// The error code returned.
 	//
 	// example:
 	//
 	// 999999
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error code returned.
+	// The error message returned.
 	//
 	// example:
 	//
 	// entity not exist
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The error message returned.
+	// The HTTP status code returned.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 0000-ABCD-E****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The result of the operation. Valid values:
 	//
 	// true: succeeded
@@ -12406,14 +12420,14 @@ type DeleteMetaCollectionEntityResponseBody struct {
 	//
 	// example:
 	//
-	// 0000-ABCD-E****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The HTTP status code returned.
-	//
-	// example:
-	//
 	// true
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// true: The request was successful.
+	//
+	// false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -32706,27 +32720,27 @@ func (s *GetMetaCollectionDetailRequest) SetQualifiedName(v string) *GetMetaColl
 }
 
 type GetMetaCollectionDetailResponseBody struct {
-	// The collection.
+	// The details of the collection.
 	Collection *Collection `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	// The error code returned.
+	// The error code.
 	//
 	// example:
 	//
 	// 9999
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// album.xxxx does not exist.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
@@ -32734,9 +32748,9 @@ type GetMetaCollectionDetailResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// true: The request was successful.
+	// true
 	//
-	// false: The request failed.
+	// false
 	//
 	// example:
 	//
@@ -37677,7 +37691,7 @@ type GetMigrationSummaryResponseBody struct {
 	Data *GetMigrationSummaryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The ID of the migration task.
 	//
-	// You can call the [CreateImportMigration](~~CreateImportMigration~~) operation to obtain the ID of the import task and call the [CreateExportMigration](~~CreateImportMigration~~) operation to obtain the ID of the export task.
+	// You can call the [CreateImportMigration](https://help.aliyun.com/document_detail/2780280.html) operation to obtain the ID of the import task and call the [CreateExportMigration](https://help.aliyun.com/document_detail/2780281.html) operation to obtain the ID of the export task.
 	//
 	// example:
 	//
@@ -48442,33 +48456,33 @@ func (s *ListDataServiceApiTestResponse) SetBody(v *ListDataServiceApiTestRespon
 }
 
 type ListDataServiceApisRequest struct {
-	// The ID of the tenant.
+	// The keyword in API names. The keyword is used to search for the APIs whose names contain the keyword.
 	ApiNameKeyword *string `json:"ApiNameKeyword,omitempty" xml:"ApiNameKeyword,omitempty"`
-	// The keyword in the name of the API. The keyword can be used to search for the API whose name contains the keyword.
+	// The keyword in API paths. The keyword is used to search for the APIs whose paths contain the keyword.
 	//
 	// example:
 	//
 	// /test/
 	ApiPathKeyword *string `json:"ApiPathKeyword,omitempty" xml:"ApiPathKeyword,omitempty"`
-	// The keyword in the path of the API. The keyword can be used to search for the API whose path contains the keyword.
+	// The ID of the Alibaba Cloud account used by the creator of the APIs. The ID is used to search for the APIs created by the creator.
 	//
 	// example:
 	//
 	// 12345
 	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	// The operation that you want to perform. Set the value to **ListDataServiceApis**.
+	// The page number. Pages start from page 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of the page to return. Pages start from page 1. Default value: 1.
+	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The number of entries to return on each page. Default value: 10. A maximum of 100 entries can be returned on each page.
+	// The workspace ID.
 	//
 	// This parameter is required.
 	//
@@ -48476,7 +48490,7 @@ type ListDataServiceApisRequest struct {
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The ID of the workspace.
+	// The tenant ID. To obtain the tenant ID, perform the following steps: Log on to the [DataWorks console](https://workbench.data.aliyun.com/console). Find your workspace and go to the DataStudio page. On the DataStudio page, click the logon username in the upper-right corner and click User Info in the Menu section.
 	//
 	// example:
 	//
@@ -48528,33 +48542,33 @@ func (s *ListDataServiceApisRequest) SetTenantId(v int64) *ListDataServiceApisRe
 }
 
 type ListDataServiceApisResponseBody struct {
-	// The error code.
+	// The data returned.
 	Data *ListDataServiceApisResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Indicates whether the request is successful.
+	// The error code.
 	//
 	// example:
 	//
 	// Invalid.Tenant.ConnectionNotExists
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The ID of the request.
+	// The error message.
 	//
 	// example:
 	//
 	// The connection does not exist.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The ID of the Alibaba Cloud account used by the creator of the API. The ID can be used to search for the API created by the creator.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The HTTP status code.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0000-ABCD-EFG****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The error message.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -48601,21 +48615,21 @@ func (s *ListDataServiceApisResponseBody) SetSuccess(v bool) *ListDataServiceApi
 }
 
 type ListDataServiceApisResponseBodyData struct {
-	// The total number of entries.
+	// The list of APIs in the development state.
 	Apis []*ListDataServiceApisResponseBodyDataApis `json:"Apis,omitempty" xml:"Apis,omitempty" type:"Repeated"`
-	// The information about the APIs in the development state.
+	// The page number. The value of this parameter is the same as that of the PageNumber parameter in the request.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page number of the returned page. The value of this parameter is the same as that of the PageNumber parameter in the request.
+	// The number of entries per page. Valid values: 1 to 50. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The number of entries returned per page. Default value: 10. A maximum of 100 entries can be returned on each page.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -48652,81 +48666,81 @@ func (s *ListDataServiceApisResponseBodyData) SetTotalCount(v int32) *ListDataSe
 }
 
 type ListDataServiceApisResponseBodyDataApis struct {
-	// The status of the API. Valid values: 0 and 1. A value of 0 indicates that the API is not published. A value of 1 indicates that the API is published.
+	// The API ID.
 	//
 	// example:
 	//
 	// 10002
 	ApiId *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The ID of the API.
+	// The type of the API. Valid values: 0, 1, and 2. The value 0 indicates that the API is generated in wizard mode. The value 1 indicates that the API is generated in script mode. The value 2 indicates that the API is generated by registration.
 	//
 	// example:
 	//
 	// 0
 	ApiMode *int32 `json:"ApiMode,omitempty" xml:"ApiMode,omitempty"`
-	// The time when the API was created.
+	// The name of the API.
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The ID of the tenant.
+	// The path of the API.
 	//
 	// example:
 	//
 	// /test/1
 	ApiPath *string `json:"ApiPath,omitempty" xml:"ApiPath,omitempty"`
-	// The request method of the API. Valid values: 0, 1, 2, and 3. A value of 0 indicates the GET method. A value of 1 indicates the POST method. A value of 2 indicates the PUT method. A value of 3 indicates the DELETE method. APIs generated in wizard or script mode support the GET and POST methods. APIs generated by registration support the GET, POST, PUT, and DELETE methods.
+	// The time when the API was created.
 	//
 	// example:
 	//
 	// 2020-06-23T00:21:01+0800
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The format in which the response of the API request is returned. Valid values: 0 and 1. A value of 0 indicates the JSON format. A value of 1 indicates the XML format. APIs generated in wizard or script mode support the JSON format. APIs generated by registration support the JSON and XML formats.
+	// The ID of the Alibaba Cloud account used by the creator of the API.
 	//
 	// example:
 	//
 	// 1234567
 	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	// The ID of the API group.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The description of the API.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The folder ID.
 	//
 	// example:
 	//
 	// 0
 	FolderId *int64 `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// The ID of the Alibaba Cloud account used by the user who last modified the API.
+	// The group ID.
 	//
 	// example:
 	//
 	// abcde123456789
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The scope in which the API is visible. Valid values: 0 and 1. A value of 0 indicates that the API is visible within the workspace. A value of 1 indicates that the API is visible only to the API creator.
+	// The time when the API was last modified.
 	//
 	// example:
 	//
 	// 2020-06-23T00:21:01+0800
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The time when the API was last modified.
+	// The ID of the Alibaba Cloud account used by the user who last modified the API.
 	//
 	// example:
 	//
 	// 2345678
 	OperatorId *string `json:"OperatorId,omitempty" xml:"OperatorId,omitempty"`
-	// The type of the API. Valid values: 0, 1, and 2. A value of 0 indicates that the API is generated in wizard mode. A value of 1 indicates that the API is generated in script mode. A value of 2 indicates that the API is generated by registration.
+	// The workspace ID.
 	//
 	// example:
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The path of the API.
+	// The list of fields.
 	Protocols []*int32 `json:"Protocols,omitempty" xml:"Protocols,omitempty" type:"Repeated"`
-	// The protocols used by the API. Valid values: 0 and 1. A value of 0 indicates that the API uses HTTP. A value of 1 indicates that the API uses HTTPS. Multiple protocols are presented in a list.
+	// The details of the API generated by registration. This parameter is returned only if the API is generated by registration.
 	RegistrationDetails *ListDataServiceApisResponseBodyDataApisRegistrationDetails `json:"RegistrationDetails,omitempty" xml:"RegistrationDetails,omitempty" type:"Struct"`
-	// The ID of the folder in which the API is stored.
+	// The request method of the API. Valid values: 0, 1, 2, and 3. The value 0 indicates the GET method. The value 1 indicates the POST method. The value 2 indicates the PUT method. The value 3 indicates the DELETE method. APIs generated in wizard or script mode support the GET and POST methods. APIs generated by registration support the GET, POST, PUT, and DELETE methods.
 	//
 	// example:
 	//
 	// 0
 	RequestMethod *int32 `json:"RequestMethod,omitempty" xml:"RequestMethod,omitempty"`
-	// The ID of the workspace.
+	// The format in which the response of the API request is returned. Valid values: 0 and 1. The value 0 indicates the JSON format. The value 1 indicates the XML format. APIs generated in wizard or script mode support the JSON format. APIs generated by registration support the JSON and XML formats.
 	//
 	// example:
 	//
@@ -48734,25 +48748,25 @@ type ListDataServiceApisResponseBodyDataApis struct {
 	ResponseContentType *int32 `json:"ResponseContentType,omitempty" xml:"ResponseContentType,omitempty"`
 	// The details of the API generated in script mode. This parameter is returned only if the API is generated in script mode.
 	ScriptDetails *ListDataServiceApisResponseBodyDataApisScriptDetails `json:"ScriptDetails,omitempty" xml:"ScriptDetails,omitempty" type:"Struct"`
-	// The timeout period of the API request. Unit: milliseconds.
+	// The status of the API. Valid values: 0 and 1. The value 0 indicates that the API is not published. The value 1 indicates that the API is published.
 	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The name of the API.
+	// The tenant ID.
 	//
 	// example:
 	//
 	// 10000
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The APIs in the development state.
+	// The timeout period of the API request. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 10000
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// The ID of the Alibaba Cloud account used by the creator of the API.
+	// The scope in which the API is visible. Valid values: 0 and 1. The value 0 indicates that the API is visible within the workspace. The value 1 indicates that the API is visible only to its owner.
 	//
 	// example:
 	//
@@ -48881,41 +48895,41 @@ func (s *ListDataServiceApisResponseBodyDataApis) SetWizardDetails(v *ListDataSe
 }
 
 type ListDataServiceApisResponseBodyDataApisRegistrationDetails struct {
-	// The sample success response of the API.
+	// The sample error response of the API.
 	//
 	// example:
 	//
 	// {"success": false}
 	FailedResultSample *string `json:"FailedResultSample,omitempty" xml:"FailedResultSample,omitempty"`
-	// The body of the request initiated to call the backend service.
+	// The error codes returned for the API generated by registration.
 	RegistrationErrorCodes []*ListDataServiceApisResponseBodyDataApisRegistrationDetailsRegistrationErrorCodes `json:"RegistrationErrorCodes,omitempty" xml:"RegistrationErrorCodes,omitempty" type:"Repeated"`
-	// The solution used to resolve the issue.
+	// The request parameters of the API generated by registration.
 	RegistrationRequestParameters []*ListDataServiceApisResponseBodyDataApisRegistrationDetailsRegistrationRequestParameters `json:"RegistrationRequestParameters,omitempty" xml:"RegistrationRequestParameters,omitempty" type:"Repeated"`
-	// The URL of the backend service.
+	// The format in which the response of the API request is returned. Valid values: 0 and 1. The value 0 indicates the JSON format. The value 1 indicates the XML format. APIs generated in wizard or script mode support the JSON format. APIs generated by registration support the JSON and XML formats.
 	//
 	// example:
 	//
 	// 0
 	ServiceContentType *int32 `json:"ServiceContentType,omitempty" xml:"ServiceContentType,omitempty"`
-	// The details of the API generated by registration. This parameter is returned only if the API is generated by registration.
+	// The URL of the backend service.
 	//
 	// example:
 	//
 	// http://example.aliyundoc.com
 	ServiceHost *string `json:"ServiceHost,omitempty" xml:"ServiceHost,omitempty"`
-	// The format in which the response of the API request is returned. Valid values: 0 and 1. A value of 0 indicates the JSON format. A value of 1 indicates the XML format. APIs generated in wizard or script mode support the JSON format. APIs generated by registration support the JSON and XML formats.
+	// The path of the backend service.
 	//
 	// example:
 	//
 	// /index
 	ServicePath *string `json:"ServicePath,omitempty" xml:"ServicePath,omitempty"`
-	// The sample error response of the API.
+	// The description of the request body initiated to call the backend service.
 	//
 	// example:
 	//
 	// {"abc":1}
 	ServiceRequestBodyDescription *string `json:"ServiceRequestBodyDescription,omitempty" xml:"ServiceRequestBodyDescription,omitempty"`
-	// The path of the backend service.
+	// The sample success response of the API.
 	//
 	// example:
 	//
@@ -48972,19 +48986,19 @@ func (s *ListDataServiceApisResponseBodyDataApisRegistrationDetails) SetSuccessf
 }
 
 type ListDataServiceApisResponseBodyDataApisRegistrationDetailsRegistrationErrorCodes struct {
-	// The error message.
+	// The error code.
 	//
 	// example:
 	//
 	// 1001
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error codes returned for the API generated by registration.
+	// The error message.
 	//
 	// example:
 	//
 	// fail to call
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The error code.
+	// The solution used to fix the error.
 	//
 	// example:
 	//
@@ -49016,55 +49030,79 @@ func (s *ListDataServiceApisResponseBodyDataApisRegistrationDetailsRegistrationE
 }
 
 type ListDataServiceApisResponseBodyDataApisRegistrationDetailsRegistrationRequestParameters struct {
-	// The request parameters of the API generated by registration.
+	// The name of the associated field. This parameter is supported only if the API is generated in wizard mode.
 	//
 	// example:
 	//
 	// column1
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	// The description of the parameter.
+	// The default value.
 	//
 	// example:
 	//
 	// default1
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	// The data type of the parameter. Valid values: 0, 1, 2, 3, 4, and 5. A value of 0 indicates the STRING data type. A value of 1 indicates the INT data type. A value of 2 indicates the LONG data type. A value of 3 indicates the FLOAT data type. A value of 4 indicates the DOUBLE data type. A value of 5 indicates the BOOLEAN data type.
+	// The sample value.
 	//
 	// example:
 	//
 	// example1
 	ExampleValue *string `json:"ExampleValue,omitempty" xml:"ExampleValue,omitempty"`
-	// The sample value of the parameter.
+	// Indicates whether the parameter is required.
 	//
 	// example:
 	//
 	// true
 	IsRequiredParameter *bool `json:"IsRequiredParameter,omitempty" xml:"IsRequiredParameter,omitempty"`
-	// The operator used for the value of the parameter. Valid values: 0, 1, 2, and 3. A value of 0 indicates that the operator is Equal. A value of 1 indicates that the operator is Like. A value of 2 indicates that the operator is Const. A value of 3 indicates that the operator is In. APIs generated in wizard mode support the Equal, Like, and In operators. APIs generated in script mode support the Equal operator. APIs generated by registration support the Equal and Const operators.
+	// The data type of the parameter. Valid values:
+	//
+	// 	- 0: String
+	//
+	// 	- 1: Int
+	//
+	// 	- 2: Long
+	//
+	// 	- 3: Float
+	//
+	// 	- 4: Double
+	//
+	// 	- 5: Boolean
+	//
+	// 	- 6: StringList
+	//
+	// 	- 7: IntList
+	//
+	// 	- 8: LongList
+	//
+	// 	- 9: FloatList
+	//
+	// 	- 10: DoubleList
+	//
+	// 	- 11: BooleanList
 	//
 	// example:
 	//
 	// 0
 	ParameterDataType *int32 `json:"ParameterDataType,omitempty" xml:"ParameterDataType,omitempty"`
-	// The position of the parameter. Valid values: 0, 1, 2, and 3. A value of 0 indicates that the parameter is in the URL path of the request. A value of 1 indicates that the parameter is in the Query parameter of the request URL. A value of 2 indicates that the parameter is in the request header. A value of 3 indicates that the parameter is in the request body. APIs generated in wizard or script mode support only the Query position. APIs generated by registration whose request method is GET or DELETE support the Query and Head positions. APIs generated by registration whose request method is PUT or POST support the Query, Head, and Body positions.
+	// The description.
 	//
 	// example:
 	//
 	// description1
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
-	// The name of the associated field. This parameter is supported only if the API is generated in wizard mode.
+	// The name of the parameter.
 	//
 	// example:
 	//
 	// name1
 	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	// The default value of the parameter.
+	// The operator used for the value of the parameter. Valid values: 0, 1, 2, and 3. The value 0 indicates the Equal operator. The value 1 indicates the Like operator. The value 2 indicates the Const operator. The value 3 indicates the In operator. APIs generated in wizard mode support the Equal, Like, and In operators. APIs generated in script mode support the Equal operator. APIs generated by registration support the Equal and Const operators.
 	//
 	// example:
 	//
 	// 0
 	ParameterOperator *int32 `json:"ParameterOperator,omitempty" xml:"ParameterOperator,omitempty"`
-	// The name of the parameter.
+	// The position of the parameter. Valid values: 0, 1, 2, and 3. The value 0 indicates that the parameter is in the URL path of the request. The value 1 indicates that the parameter is in the Query parameter of the request URL. The value 2 indicates that the parameter is in the request header. The value 3 indicates that the parameter is in the request body. APIs generated in wizard or script mode support only the Query position. APIs generated by registration whose request method is GET or DELETE support the Query and Head positions. APIs generated by registration whose request method is PUT or POST support the Query, Head, and Body positions.
 	//
 	// example:
 	//
@@ -49138,7 +49176,7 @@ type ListDataServiceApisResponseBodyDataApisScriptDetails struct {
 	//
 	// select a from t
 	Script *string `json:"Script,omitempty" xml:"Script,omitempty"`
-	// The data source information of the API generated in script mode.
+	// The data source information about the API generated in script mode.
 	ScriptConnection *ListDataServiceApisResponseBodyDataApisScriptDetailsScriptConnection `json:"ScriptConnection,omitempty" xml:"ScriptConnection,omitempty" type:"Struct"`
 	// The request parameters of the API generated in script mode.
 	ScriptRequestParameters []*ListDataServiceApisResponseBodyDataApisScriptDetailsScriptRequestParameters `json:"ScriptRequestParameters,omitempty" xml:"ScriptRequestParameters,omitempty" type:"Repeated"`
@@ -49180,7 +49218,7 @@ func (s *ListDataServiceApisResponseBodyDataApisScriptDetails) SetScriptResponse
 }
 
 type ListDataServiceApisResponseBodyDataApisScriptDetailsScriptConnection struct {
-	// The ID of the data source.
+	// The data source ID.
 	//
 	// example:
 	//
@@ -49219,19 +49257,19 @@ type ListDataServiceApisResponseBodyDataApisScriptDetailsScriptRequestParameters
 	//
 	// column1
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	// The default value of the parameter.
+	// The default value.
 	//
 	// example:
 	//
 	// default1
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	// The sample value of the parameter.
+	// The sample value.
 	//
 	// example:
 	//
 	// example1
 	ExampleValue *string `json:"ExampleValue,omitempty" xml:"ExampleValue,omitempty"`
-	// Indicates whether the request parameter is required.
+	// Indicates whether the parameter is required.
 	//
 	// example:
 	//
@@ -49239,23 +49277,35 @@ type ListDataServiceApisResponseBodyDataApisScriptDetailsScriptRequestParameters
 	IsRequiredParameter *bool `json:"IsRequiredParameter,omitempty" xml:"IsRequiredParameter,omitempty"`
 	// The data type of the parameter. Valid values:
 	//
-	// - 0: STRING
+	// 	- 0: String
 	//
-	// - 1: INT
+	// 	- 1: Int
 	//
-	// - 2: LONG
+	// 	- 2: Long
 	//
-	// - 3: FLOAT
+	// 	- 3: Float
 	//
-	// - 4: DOUBLE
+	// 	- 4: Double
 	//
-	// - 5: BOOLEAN
+	// 	- 5: Boolean
+	//
+	// 	- 6: StringList
+	//
+	// 	- 7: IntList
+	//
+	// 	- 8: LongList
+	//
+	// 	- 9: FloatList
+	//
+	// 	- 10: DoubleList
+	//
+	// 	- 11: BooleanList
 	//
 	// example:
 	//
 	// 0
 	ParameterDataType *int32 `json:"ParameterDataType,omitempty" xml:"ParameterDataType,omitempty"`
-	// The description of the parameter.
+	// The description.
 	//
 	// example:
 	//
@@ -49269,13 +49319,13 @@ type ListDataServiceApisResponseBodyDataApisScriptDetailsScriptRequestParameters
 	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
 	// The operator used for the value of the parameter. Valid values:
 	//
-	// - 0: Equal
+	// 	- 0: Equal
 	//
-	// - 1: Like
+	// 	- 1: Like
 	//
-	// - 2: Const
+	// 	- 2: Const
 	//
-	// - 3: In
+	// 	- 3: In
 	//
 	// APIs generated in wizard mode support the Equal, Like, and In operators. APIs generated in script mode support the Equal operator. APIs generated by registration support the Equal and Const operators.
 	//
@@ -49285,13 +49335,13 @@ type ListDataServiceApisResponseBodyDataApisScriptDetailsScriptRequestParameters
 	ParameterOperator *int32 `json:"ParameterOperator,omitempty" xml:"ParameterOperator,omitempty"`
 	// The position of the parameter. Valid values:
 	//
-	// - 0: Path
+	// 	- 0: indicates that the parameter is in the URL path of the request.
 	//
-	// - 1: Query
+	// 	- 1: indicates that the parameter is in the Query parameter of the request URL.
 	//
-	// - 2: Head
+	// 	- 2: indicates that the parameter is in the request header.
 	//
-	// - 3: Body
+	// 	- 3: indicates that the parameter is in the request body.
 	//
 	// APIs generated in wizard or script mode support only the Query position. APIs generated by registration whose request method is GET or DELETE support the Query and Head positions. APIs generated by registration whose request method is PUT or POST support the Query, Head, and Body positions.
 	//
@@ -49361,7 +49411,7 @@ type ListDataServiceApisResponseBodyDataApisScriptDetailsScriptResponseParameter
 	//
 	// column2
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	// The sample value of the parameter.
+	// The sample value.
 	//
 	// example:
 	//
@@ -49369,23 +49419,35 @@ type ListDataServiceApisResponseBodyDataApisScriptDetailsScriptResponseParameter
 	ExampleValue *string `json:"ExampleValue,omitempty" xml:"ExampleValue,omitempty"`
 	// The data type of the parameter. Valid values:
 	//
-	// - 0: STRING
+	// 	- 0: String
 	//
-	// - 1: INT
+	// 	- 1: Int
 	//
-	// - 2: LONG
+	// 	- 2: Long
 	//
-	// - 3: FLOAT
+	// 	- 3: Float
 	//
-	// - 4: DOUBLE
+	// 	- 4: Double
 	//
-	// - 5: BOOLEAN
+	// 	- 5: Boolean
+	//
+	// 	- 6: StringList
+	//
+	// 	- 7: IntList
+	//
+	// 	- 8: LongList
+	//
+	// 	- 9: FloatList
+	//
+	// 	- 10: DoubleList
+	//
+	// 	- 11: BooleanList
 	//
 	// example:
 	//
 	// 0
 	ParameterDataType *int32 `json:"ParameterDataType,omitempty" xml:"ParameterDataType,omitempty"`
-	// The description of the parameter.
+	// The description.
 	//
 	// example:
 	//
@@ -49439,7 +49501,7 @@ type ListDataServiceApisResponseBodyDataApisWizardDetails struct {
 	//
 	// true
 	IsPagedResponse *bool `json:"IsPagedResponse,omitempty" xml:"IsPagedResponse,omitempty"`
-	// The data source information of the API generated in wizard mode.
+	// The data source information about the API generated in wizard mode.
 	WizardConnection *ListDataServiceApisResponseBodyDataApisWizardDetailsWizardConnection `json:"WizardConnection,omitempty" xml:"WizardConnection,omitempty" type:"Struct"`
 	// The request parameters of the API generated in wizard mode.
 	WizardRequestParameters []*ListDataServiceApisResponseBodyDataApisWizardDetailsWizardRequestParameters `json:"WizardRequestParameters,omitempty" xml:"WizardRequestParameters,omitempty" type:"Repeated"`
@@ -49476,7 +49538,7 @@ func (s *ListDataServiceApisResponseBodyDataApisWizardDetails) SetWizardResponse
 }
 
 type ListDataServiceApisResponseBodyDataApisWizardDetailsWizardConnection struct {
-	// The ID of the data source.
+	// The data source ID.
 	//
 	// example:
 	//
@@ -49515,31 +49577,55 @@ type ListDataServiceApisResponseBodyDataApisWizardDetailsWizardRequestParameters
 	//
 	// column1
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	// The default value of the parameter.
+	// The default value.
 	//
 	// example:
 	//
 	// default1
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	// The sample value of the parameter.
+	// The sample value.
 	//
 	// example:
 	//
 	// example1
 	ExampleValue *string `json:"ExampleValue,omitempty" xml:"ExampleValue,omitempty"`
-	// Indicates whether the request parameter is required.
+	// Indicates whether the parameter is required.
 	//
 	// example:
 	//
 	// true
 	IsRequiredParameter *bool `json:"IsRequiredParameter,omitempty" xml:"IsRequiredParameter,omitempty"`
-	// The data type of the parameter. Valid values: 0, 1, 2, 3, 4, and 5. A value of 0 indicates the STRING data type. A value of 1 indicates the INT data type. A value of 2 indicates the LONG data type. A value of 3 indicates the FLOAT data type. A value of 4 indicates the DOUBLE data type. A value of 5 indicates the BOOLEAN data type.
+	// The data type of the parameter. Valid values:
+	//
+	// 	- 0: String
+	//
+	// 	- 1: Int
+	//
+	// 	- 2: Long
+	//
+	// 	- 3: Float
+	//
+	// 	- 4: Double
+	//
+	// 	- 5: Boolean
+	//
+	// 	- 6: StringList
+	//
+	// 	- 7: IntList
+	//
+	// 	- 8: LongList
+	//
+	// 	- 9: FloatList
+	//
+	// 	- 10: DoubleList
+	//
+	// 	- 11: BooleanList
 	//
 	// example:
 	//
 	// 0
 	ParameterDataType *int32 `json:"ParameterDataType,omitempty" xml:"ParameterDataType,omitempty"`
-	// The description of the parameter.
+	// The description.
 	//
 	// example:
 	//
@@ -49551,13 +49637,13 @@ type ListDataServiceApisResponseBodyDataApisWizardDetailsWizardRequestParameters
 	//
 	// param1
 	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	// The operator used for the value of the parameter. Valid values: 0, 1, 2, and 3. A value of 0 indicates that the operator is Equal. A value of 1 indicates that the operator is Like. A value of 2 indicates that the operator is Const. A value of 3 indicates that the operator is In. APIs generated in wizard mode support the Equal, Like, and In operators. APIs generated in script mode support the Equal operator. APIs generated by registration support the Equal and Const operators.
+	// The operator used for the value of the parameter. Valid values: 0, 1, 2, and 3. The value 0 indicates the Equal operator. The value 1 indicates the Like operator. The value 2 indicates the Const operator. The value 3 indicates the In operator. APIs generated in wizard mode support the Equal, Like, and In operators. APIs generated in script mode support the Equal operator. APIs generated by registration support the Equal and Const operators.
 	//
 	// example:
 	//
 	// 0
 	ParameterOperator *int32 `json:"ParameterOperator,omitempty" xml:"ParameterOperator,omitempty"`
-	// The position of the parameter. Valid values: 0, 1, 2, and 3. A value of 0 indicates that the parameter is in the URL path of the request. A value of 1 indicates that the parameter is in the Query parameter of the request URL. A value of 2 indicates that the parameter is in the request header. A value of 3 indicates that the parameter is in the request body. APIs generated in wizard or script mode support only the Query position. APIs generated by registration whose request method is GET or DELETE support the Query and Head positions. APIs generated by registration whose request method is PUT or POST support the Query, Head, and Body positions.
+	// The position of the parameter. Valid values: 0, 1, 2, and 3. The value 0 indicates that the parameter is in the URL path of the request. The value 1 indicates that the parameter is in the Query parameter of the request URL. The value 2 indicates that the parameter is in the request header. The value 3 indicates that the parameter is in the request body. APIs generated in wizard or script mode support only the Query position. APIs generated by registration whose request method is GET or DELETE support the Query and Head positions. APIs generated by registration whose request method is PUT or POST support the Query, Head, and Body positions.
 	//
 	// example:
 	//
@@ -49625,19 +49711,43 @@ type ListDataServiceApisResponseBodyDataApisWizardDetailsWizardResponseParameter
 	//
 	// column2
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	// The sample value of the parameter.
+	// The sample value.
 	//
 	// example:
 	//
 	// example2
 	ExampleValue *string `json:"ExampleValue,omitempty" xml:"ExampleValue,omitempty"`
-	// The data type of the parameter. Valid values: 0, 1, 2, 3, 4, and 5. A value of 0 indicates the STRING data type. A value of 1 indicates the INT data type. A value of 2 indicates the LONG data type. A value of 3 indicates the FLOAT data type. A value of 4 indicates the DOUBLE data type. A value of 5 indicates the BOOLEAN data type.
+	// The data type of the parameter. Valid values:
+	//
+	// 	- 0: String
+	//
+	// 	- 1: Int
+	//
+	// 	- 2: Long
+	//
+	// 	- 3: Float
+	//
+	// 	- 4: Double
+	//
+	// 	- 5: Boolean
+	//
+	// 	- 6: StringList
+	//
+	// 	- 7: IntList
+	//
+	// 	- 8: LongList
+	//
+	// 	- 9: FloatList
+	//
+	// 	- 10: DoubleList
+	//
+	// 	- 11: BooleanList
 	//
 	// example:
 	//
 	// 0
 	ParameterDataType *int32 `json:"ParameterDataType,omitempty" xml:"ParameterDataType,omitempty"`
-	// The description of the parameter.
+	// The description.
 	//
 	// example:
 	//
@@ -77589,21 +77699,21 @@ func (s *UpdateMetaCategoryResponse) SetBody(v *UpdateMetaCategoryResponseBody) 
 }
 
 type UpdateMetaCollectionRequest struct {
-	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
-	//
-	// example:
-	//
-	// this is a comment
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The comment of the collection.
 	//
 	// The comment must be 1 to 64 characters in length.
 	//
 	// example:
 	//
+	// this is a comment
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The name of the collection.
+	//
+	// example:
+	//
 	// myCollectionName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The name of the collection.
+	// The unique identifier of the collection.
 	//
 	// This parameter is required.
 	//
@@ -77637,28 +77747,30 @@ func (s *UpdateMetaCollectionRequest) SetQualifiedName(v string) *UpdateMetaColl
 }
 
 type UpdateMetaCollectionResponseBody struct {
-	// Indicates whether the request was successful. Valid values:
-	//
-	// 	- true: The request was successful.
-	//
-	// 	- false: The request failed.
+	// The error code returned.
 	//
 	// example:
 	//
 	// 9999
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error code returned.
+	// The error message returned.
 	//
 	// example:
 	//
 	// The specified product does not exist.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The error message returned.
+	// The HTTP status code returned.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
+	//
+	// example:
+	//
+	// 0000-ABCD-E****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The result of the operation. Valid values:
 	//
 	// true: succeeded
@@ -77667,14 +77779,14 @@ type UpdateMetaCollectionResponseBody struct {
 	//
 	// example:
 	//
-	// 0000-ABCD-E****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The HTTP status code returned.
-	//
-	// example:
-	//
 	// true
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -81340,7 +81452,7 @@ func (client *Client) CallbackExtension(request *CallbackExtensionRequest) (_res
 
 // Summary:
 //
-// The operation that you want to perform. Set the value to **ChangeResourceManagerResourceGroup**.
+// Modifies the resource group that you specify when you activate DataWorks or purchase a DataWorks exclusive resource group.
 //
 // @param request - ChangeResourceManagerResourceGroupRequest
 //
@@ -81390,7 +81502,7 @@ func (client *Client) ChangeResourceManagerResourceGroupWithOptions(request *Cha
 
 // Summary:
 //
-// The operation that you want to perform. Set the value to **ChangeResourceManagerResourceGroup**.
+// Modifies the resource group that you specify when you activate DataWorks or purchase a DataWorks exclusive resource group.
 //
 // @param request - ChangeResourceManagerResourceGroupRequest
 //
@@ -83529,13 +83641,11 @@ func (client *Client) CreateMetaCategory(request *CreateMetaCategoryRequest) (_r
 
 // Summary:
 //
-// Collections are classified into various types. The names of collections of the same type must be different.
+// Creates a collection.
 //
 // Description:
 //
-// A category must belong to a data album.
-//
-// You can create a category in a data album only after you create the data album. You can set the value of the parentQualifiedName parameter to the unique identifier of the data album to create the category.
+// Collections are classified into various types. The names of collections of the same type must be different.
 //
 // @param request - CreateMetaCollectionRequest
 //
@@ -83589,13 +83699,11 @@ func (client *Client) CreateMetaCollectionWithOptions(request *CreateMetaCollect
 
 // Summary:
 //
-// Collections are classified into various types. The names of collections of the same type must be different.
+// Creates a collection.
 //
 // Description:
 //
-// A category must belong to a data album.
-//
-// You can create a category in a data album only after you create the data album. You can set the value of the parentQualifiedName parameter to the unique identifier of the data album to create the category.
+// Collections are classified into various types. The names of collections of the same type must be different.
 //
 // @param request - CreateMetaCollectionRequest
 //
@@ -85790,7 +85898,7 @@ func (client *Client) DeleteMetaCategory(request *DeleteMetaCategoryRequest) (_r
 
 // Summary:
 //
-// The operation that you want to perform. Set the value to **DeleteMetaCollection**.
+// Deletes a collection.
 //
 // @param request - DeleteMetaCollectionRequest
 //
@@ -85832,7 +85940,7 @@ func (client *Client) DeleteMetaCollectionWithOptions(request *DeleteMetaCollect
 
 // Summary:
 //
-// The operation that you want to perform. Set the value to **DeleteMetaCollection**.
+// Deletes a collection.
 //
 // @param request - DeleteMetaCollectionRequest
 //
@@ -85850,7 +85958,7 @@ func (client *Client) DeleteMetaCollection(request *DeleteMetaCollectionRequest)
 
 // Summary:
 //
-// The operation that you want to perform. Set the value to **DeleteMetaCollectionEntity**.
+// Deletes an entity from a collection.
 //
 // @param request - DeleteMetaCollectionEntityRequest
 //
@@ -85896,7 +86004,7 @@ func (client *Client) DeleteMetaCollectionEntityWithOptions(request *DeleteMetaC
 
 // Summary:
 //
-// The operation that you want to perform. Set the value to **DeleteMetaCollectionEntity**.
+// Deletes an entity from a collection.
 //
 // @param request - DeleteMetaCollectionEntityRequest
 //
@@ -94225,7 +94333,7 @@ func (client *Client) ListDataServiceApiTest(request *ListDataServiceApiTestRequ
 
 // Summary:
 //
-// Queries the information about APIs in the development state.
+// Queries a list of APIs in the development state.
 //
 // @param request - ListDataServiceApisRequest
 //
@@ -94291,7 +94399,7 @@ func (client *Client) ListDataServiceApisWithOptions(request *ListDataServiceApi
 
 // Summary:
 //
-// Queries the information about APIs in the development state.
+// Queries a list of APIs in the development state.
 //
 // @param request - ListDataServiceApisRequest
 //
@@ -102062,11 +102170,11 @@ func (client *Client) UpdateMetaCategory(request *UpdateMetaCategoryRequest) (_r
 
 // Summary:
 //
-// Only the name and comment of a collection can be updated.
+// Updates a collection.
 //
 // Description:
 //
-// You must configure at least one of the Name and Comment parameters when you update a collection.
+// Only the name and comment of a collection can be updated.
 //
 // @param request - UpdateMetaCollectionRequest
 //
@@ -102116,11 +102224,11 @@ func (client *Client) UpdateMetaCollectionWithOptions(request *UpdateMetaCollect
 
 // Summary:
 //
-// Only the name and comment of a collection can be updated.
+// Updates a collection.
 //
 // Description:
 //
-// You must configure at least one of the Name and Comment parameters when you update a collection.
+// Only the name and comment of a collection can be updated.
 //
 // @param request - UpdateMetaCollectionRequest
 //
