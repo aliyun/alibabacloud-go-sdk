@@ -14,6 +14,175 @@ import (
 	"io"
 )
 
+type DeleteSymRecordsRequest struct {
+	// This parameter is required.
+	AppVersions []*string `json:"appVersions,omitempty" xml:"appVersions,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5fb6001a73749c24fd9cb356
+	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	FileType *int32 `json:"fileType,omitempty" xml:"fileType,omitempty"`
+}
+
+func (s DeleteSymRecordsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSymRecordsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSymRecordsRequest) SetAppVersions(v []*string) *DeleteSymRecordsRequest {
+	s.AppVersions = v
+	return s
+}
+
+func (s *DeleteSymRecordsRequest) SetDataSourceId(v string) *DeleteSymRecordsRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *DeleteSymRecordsRequest) SetFileType(v int32) *DeleteSymRecordsRequest {
+	s.FileType = &v
+	return s
+}
+
+type DeleteSymRecordsShrinkRequest struct {
+	// This parameter is required.
+	AppVersionsShrink *string `json:"appVersions,omitempty" xml:"appVersions,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5fb6001a73749c24fd9cb356
+	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	FileType *int32 `json:"fileType,omitempty" xml:"fileType,omitempty"`
+}
+
+func (s DeleteSymRecordsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSymRecordsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSymRecordsShrinkRequest) SetAppVersionsShrink(v string) *DeleteSymRecordsShrinkRequest {
+	s.AppVersionsShrink = &v
+	return s
+}
+
+func (s *DeleteSymRecordsShrinkRequest) SetDataSourceId(v string) *DeleteSymRecordsShrinkRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *DeleteSymRecordsShrinkRequest) SetFileType(v int32) *DeleteSymRecordsShrinkRequest {
+	s.FileType = &v
+	return s
+}
+
+type DeleteSymRecordsResponseBody struct {
+	// code
+	//
+	// example:
+	//
+	// 200
+	Code *int64 `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// succeed in handling request
+	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	// example:
+	//
+	// 1
+	Num *int32 `json:"num,omitempty" xml:"num,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	//
+	// example:
+	//
+	// 210f07c516457690916816858d94ea
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s DeleteSymRecordsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSymRecordsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSymRecordsResponseBody) SetCode(v int64) *DeleteSymRecordsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteSymRecordsResponseBody) SetMsg(v string) *DeleteSymRecordsResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *DeleteSymRecordsResponseBody) SetNum(v int32) *DeleteSymRecordsResponseBody {
+	s.Num = &v
+	return s
+}
+
+func (s *DeleteSymRecordsResponseBody) SetSuccess(v bool) *DeleteSymRecordsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DeleteSymRecordsResponseBody) SetTraceId(v string) *DeleteSymRecordsResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type DeleteSymRecordsResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteSymRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteSymRecordsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSymRecordsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSymRecordsResponse) SetHeaders(v map[string]*string) *DeleteSymRecordsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteSymRecordsResponse) SetStatusCode(v int32) *DeleteSymRecordsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteSymRecordsResponse) SetBody(v *DeleteSymRecordsResponseBody) *DeleteSymRecordsResponse {
+	s.Body = v
+	return s
+}
+
 type GetH5PageTrendRequest struct {
 	// example:
 	//
@@ -1917,6 +2086,84 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除符号表记录
+//
+// @param tmpReq - DeleteSymRecordsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSymRecordsResponse
+func (client *Client) DeleteSymRecordsWithOptions(tmpReq *DeleteSymRecordsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteSymRecordsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteSymRecordsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AppVersions)) {
+		request.AppVersionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AppVersions, tea.String("appVersions"), tea.String("simple"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppVersionsShrink)) {
+		body["appVersions"] = request.AppVersionsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		body["dataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileType)) {
+		body["fileType"] = request.FileType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSymRecords"),
+		Version:     tea.String("2022-02-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/deleteSymRecords"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteSymRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除符号表记录
+//
+// @param request - DeleteSymRecordsRequest
+//
+// @return DeleteSymRecordsResponse
+func (client *Client) DeleteSymRecords(request *DeleteSymRecordsRequest) (_result *DeleteSymRecordsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteSymRecordsResponse{}
+	_body, _err := client.DeleteSymRecordsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
