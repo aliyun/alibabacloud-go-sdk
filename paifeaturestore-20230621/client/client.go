@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -77,6 +74,11 @@ func (s *FeatureViewConfigValuePartitionsValue) SetEndValue(v string) *FeatureVi
 }
 
 type ChangeProjectFeatureEntityHotIdVersionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20221213
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -94,6 +96,9 @@ func (s *ChangeProjectFeatureEntityHotIdVersionRequest) SetVersion(v string) *Ch
 }
 
 type ChangeProjectFeatureEntityHotIdVersionResponseBody struct {
+	// example:
+	//
+	// CD377C31-372F-5CCD-ADB9-A31D6E118CA1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -140,9 +145,22 @@ func (s *ChangeProjectFeatureEntityHotIdVersionResponse) SetBody(v *ChangeProjec
 }
 
 type CheckInstanceDatasourceRequest struct {
+	// example:
+	//
+	// {"address": ""}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Uri    *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Hologres
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// igraph1
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s CheckInstanceDatasourceRequest) String() string {
@@ -169,8 +187,14 @@ func (s *CheckInstanceDatasourceRequest) SetUri(v string) *CheckInstanceDatasour
 }
 
 type CheckInstanceDatasourceResponseBody struct {
+	// example:
+	//
+	// C03B2680-AC9C-59CD-93C5-8142B92537FA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CheckInstanceDatasourceResponseBody) String() string {
@@ -221,10 +245,33 @@ func (s *CheckInstanceDatasourceResponse) SetBody(v *CheckInstanceDatasourceResp
 }
 
 type CreateDatasourceRequest struct {
-	Config      *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Uri         *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// example:
+	//
+	// {"address": ""}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// datasource1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Hologres
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// igraph_instance1
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 234
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -262,8 +309,14 @@ func (s *CreateDatasourceRequest) SetWorkspaceId(v string) *CreateDatasourceRequ
 }
 
 type CreateDatasourceResponseBody struct {
+	// example:
+	//
+	// 3
 	DatasourceId *string `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1C5B1511-8A5B-59C3-90AF-513F9210E882
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateDatasourceResponseBody) String() string {
@@ -314,8 +367,23 @@ func (s *CreateDatasourceResponse) SetBody(v *CreateDatasourceResponseBody) *Cre
 }
 
 type CreateFeatureEntityRequest struct {
-	JoinId    *string `json:"JoinId,omitempty" xml:"JoinId,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user_id
+	JoinId *string `json:"JoinId,omitempty" xml:"JoinId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// feature_entity_1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
@@ -343,8 +411,14 @@ func (s *CreateFeatureEntityRequest) SetProjectId(v string) *CreateFeatureEntity
 }
 
 type CreateFeatureEntityResponseBody struct {
+	// example:
+	//
+	// 3
 	FeatureEntityId *string `json:"FeatureEntityId,omitempty" xml:"FeatureEntityId,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 0C89F5E1-7F24-5EEC-9F05-508A39278CC8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateFeatureEntityResponseBody) String() string {
@@ -395,19 +469,59 @@ func (s *CreateFeatureEntityResponse) SetBody(v *CreateFeatureEntityResponseBody
 }
 
 type CreateFeatureViewRequest struct {
-	Config               *string                           `json:"Config,omitempty" xml:"Config,omitempty"`
-	FeatureEntityId      *string                           `json:"FeatureEntityId,omitempty" xml:"FeatureEntityId,omitempty"`
-	Fields               []*CreateFeatureViewRequestFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
-	Name                 *string                           `json:"Name,omitempty" xml:"Name,omitempty"`
-	ProjectId            *string                           `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	RegisterDatasourceId *string                           `json:"RegisterDatasourceId,omitempty" xml:"RegisterDatasourceId,omitempty"`
-	RegisterTable        *string                           `json:"RegisterTable,omitempty" xml:"RegisterTable,omitempty"`
-	SyncOnlineTable      *bool                             `json:"SyncOnlineTable,omitempty" xml:"SyncOnlineTable,omitempty"`
-	TTL                  *int32                            `json:"TTL,omitempty" xml:"TTL,omitempty"`
-	Tags                 []*string                         `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	Type                 *string                           `json:"Type,omitempty" xml:"Type,omitempty"`
-	WriteMethod          *string                           `json:"WriteMethod,omitempty" xml:"WriteMethod,omitempty"`
-	WriteToFeatureDB     *bool                             `json:"WriteToFeatureDB,omitempty" xml:"WriteToFeatureDB,omitempty"`
+	// example:
+	//
+	// {"save_original_field":true}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// example:
+	//
+	// 4
+	FeatureEntityId *string                           `json:"FeatureEntityId,omitempty" xml:"FeatureEntityId,omitempty"`
+	Fields          []*CreateFeatureViewRequestFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FeatureView1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// 5
+	RegisterDatasourceId *string `json:"RegisterDatasourceId,omitempty" xml:"RegisterDatasourceId,omitempty"`
+	// example:
+	//
+	// table1
+	RegisterTable *string `json:"RegisterTable,omitempty" xml:"RegisterTable,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	SyncOnlineTable *bool `json:"SyncOnlineTable,omitempty" xml:"SyncOnlineTable,omitempty"`
+	// example:
+	//
+	// 90
+	TTL  *int32    `json:"TTL,omitempty" xml:"TTL,omitempty"`
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Batch
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Custom
+	WriteMethod      *string `json:"WriteMethod,omitempty" xml:"WriteMethod,omitempty"`
+	WriteToFeatureDB *bool   `json:"WriteToFeatureDB,omitempty" xml:"WriteToFeatureDB,omitempty"`
 }
 
 func (s CreateFeatureViewRequest) String() string {
@@ -485,8 +599,14 @@ func (s *CreateFeatureViewRequest) SetWriteToFeatureDB(v bool) *CreateFeatureVie
 
 type CreateFeatureViewRequestFields struct {
 	Attributes []*string `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
-	Name       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type       *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// age
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// INT32
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateFeatureViewRequestFields) String() string {
@@ -513,8 +633,14 @@ func (s *CreateFeatureViewRequestFields) SetType(v string) *CreateFeatureViewReq
 }
 
 type CreateFeatureViewResponseBody struct {
+	// example:
+	//
+	// 3
 	FeatureViewId *string `json:"FeatureViewId,omitempty" xml:"FeatureViewId,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 0C89F5E1-7F24-5EEC-9F05-508A39278CC8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateFeatureViewResponseBody) String() string {
@@ -565,6 +691,9 @@ func (s *CreateFeatureViewResponse) SetBody(v *CreateFeatureViewResponseBody) *C
 }
 
 type CreateInstanceRequest struct {
+	// example:
+	//
+	// Basic
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -582,9 +711,18 @@ func (s *CreateInstanceRequest) SetType(v string) *CreateInstanceRequest {
 }
 
 type CreateInstanceResponseBody struct {
-	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// InstanceAlreadyExistsErrorProblem
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// featureStore-cn-7mz2xfu****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// C33E160C-BFCA-5719-B958-942850E949F6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateInstanceResponseBody) String() string {
@@ -640,10 +778,26 @@ func (s *CreateInstanceResponse) SetBody(v *CreateInstanceResponseBody) *CreateI
 }
 
 type CreateLabelTableRequest struct {
-	DatasourceId *string                          `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
-	Fields       []*CreateLabelTableRequestFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
-	Name         *string                          `json:"Name,omitempty" xml:"Name,omitempty"`
-	ProjectId    *string                          `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
+	DatasourceId *string `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	// This parameter is required.
+	Fields []*CreateLabelTableRequestFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rec_test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s CreateLabelTableRequest) String() string {
@@ -675,9 +829,20 @@ func (s *CreateLabelTableRequest) SetProjectId(v string) *CreateLabelTableReques
 }
 
 type CreateLabelTableRequestFields struct {
+	// This parameter is required.
 	Attributes []*string `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
-	Name       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type       *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lat
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// INT32
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateLabelTableRequestFields) String() string {
@@ -704,8 +869,14 @@ func (s *CreateLabelTableRequestFields) SetType(v string) *CreateLabelTableReque
 }
 
 type CreateLabelTableResponseBody struct {
+	// example:
+	//
+	// 1
 	LabelTableId *string `json:"LabelTableId,omitempty" xml:"LabelTableId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 0FA90B3B-F30A-5C9D-A9FD-8114F8868062
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateLabelTableResponseBody) String() string {
@@ -756,11 +927,27 @@ func (s *CreateLabelTableResponse) SetBody(v *CreateLabelTableResponseBody) *Cre
 }
 
 type CreateModelFeatureRequest struct {
-	Features               []*CreateModelFeatureRequestFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
-	LabelTableId           *string                              `json:"LabelTableId,omitempty" xml:"LabelTableId,omitempty"`
-	Name                   *string                              `json:"Name,omitempty" xml:"Name,omitempty"`
-	ProjectId              *string                              `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	SequenceFeatureViewIds []*string                            `json:"SequenceFeatureViewIds,omitempty" xml:"SequenceFeatureViewIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	Features []*CreateModelFeatureRequestFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4
+	LabelTableId *string `json:"LabelTableId,omitempty" xml:"LabelTableId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// model_feature_1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
+	ProjectId              *string   `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	SequenceFeatureViewIds []*string `json:"SequenceFeatureViewIds,omitempty" xml:"SequenceFeatureViewIds,omitempty" type:"Repeated"`
 }
 
 func (s CreateModelFeatureRequest) String() string {
@@ -797,10 +984,28 @@ func (s *CreateModelFeatureRequest) SetSequenceFeatureViewIds(v []*string) *Crea
 }
 
 type CreateModelFeatureRequestFeatures struct {
-	AliasName     *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// example:
+	//
+	// userid
+	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5
 	FeatureViewId *string `json:"FeatureViewId,omitempty" xml:"FeatureViewId,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user_id
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// STRING
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateModelFeatureRequestFeatures) String() string {
@@ -832,8 +1037,14 @@ func (s *CreateModelFeatureRequestFeatures) SetType(v string) *CreateModelFeatur
 }
 
 type CreateModelFeatureResponseBody struct {
+	// example:
+	//
+	// 3
 	ModelFeatureId *string `json:"ModelFeatureId,omitempty" xml:"ModelFeatureId,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 37D19490-AB69-567D-A852-407C94E510E9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateModelFeatureResponseBody) String() string {
@@ -884,8 +1095,14 @@ func (s *CreateModelFeatureResponse) SetBody(v *CreateModelFeatureResponseBody) 
 }
 
 type CreateModelFeatureTrainingSetFGTableResponseBody struct {
+	// example:
+	//
+	// project_model_training_set_fg
 	TrainingSetFGTableName *string `json:"TrainingSetFGTableName,omitempty" xml:"TrainingSetFGTableName,omitempty"`
-	RequestId              *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 93FF6A91-5326-5FA1-9D89-DB46DAA99E55
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s CreateModelFeatureTrainingSetFGTableResponseBody) String() string {
@@ -936,12 +1153,38 @@ func (s *CreateModelFeatureTrainingSetFGTableResponse) SetBody(v *CreateModelFea
 }
 
 type CreateProjectRequest struct {
-	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// This is a test.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// project1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4
 	OfflineDatasourceId *string `json:"OfflineDatasourceId,omitempty" xml:"OfflineDatasourceId,omitempty"`
-	OfflineLifeCycle    *int32  `json:"OfflineLifeCycle,omitempty" xml:"OfflineLifeCycle,omitempty"`
-	OnlineDatasourceId  *string `json:"OnlineDatasourceId,omitempty" xml:"OnlineDatasourceId,omitempty"`
-	WorkspaceId         *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// 90
+	OfflineLifeCycle *int32 `json:"OfflineLifeCycle,omitempty" xml:"OfflineLifeCycle,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
+	OnlineDatasourceId *string `json:"OnlineDatasourceId,omitempty" xml:"OnlineDatasourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 324
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateProjectRequest) String() string {
@@ -983,7 +1226,13 @@ func (s *CreateProjectRequest) SetWorkspaceId(v string) *CreateProjectRequest {
 }
 
 type CreateProjectResponseBody struct {
+	// example:
+	//
+	// 3
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// 977ADE3A-D69D-58AD-8323-96E2FB898E99
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1035,6 +1284,11 @@ func (s *CreateProjectResponse) SetBody(v *CreateProjectResponseBody) *CreatePro
 }
 
 type CreateServiceIdentityRoleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AliyunServiceRoleForFeatureStore
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
@@ -1052,9 +1306,18 @@ func (s *CreateServiceIdentityRoleRequest) SetRoleName(v string) *CreateServiceI
 }
 
 type CreateServiceIdentityRoleResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// ServiceLinkedRoleAlreadyExistsErrorProblem
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// C03B2680-AC9C-59CD-93C5-8142B92537FA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RoleName  *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// example:
+	//
+	// AliyunServiceRoleForFeatureStore
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
 func (s CreateServiceIdentityRoleResponseBody) String() string {
@@ -1110,6 +1373,9 @@ func (s *CreateServiceIdentityRoleResponse) SetBody(v *CreateServiceIdentityRole
 }
 
 type DeleteDatasourceResponseBody struct {
+	// example:
+	//
+	// E2E1575F-29D1-5579-B649-B7883A793562
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1156,6 +1422,9 @@ func (s *DeleteDatasourceResponse) SetBody(v *DeleteDatasourceResponseBody) *Del
 }
 
 type DeleteFeatureEntityResponseBody struct {
+	// example:
+	//
+	// E23EFF09-58AA-5420-934F-8453AE01548D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1202,6 +1471,9 @@ func (s *DeleteFeatureEntityResponse) SetBody(v *DeleteFeatureEntityResponseBody
 }
 
 type DeleteFeatureViewResponseBody struct {
+	// example:
+	//
+	// BF349686-C932-55B5-9B31-DAFA395C0E06
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1248,6 +1520,9 @@ func (s *DeleteFeatureViewResponse) SetBody(v *DeleteFeatureViewResponseBody) *D
 }
 
 type DeleteLabelTableResponseBody struct {
+	// example:
+	//
+	// FFD39C0F-DD8D-51B2-864E-2842206DB0E8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1294,6 +1569,9 @@ func (s *DeleteLabelTableResponse) SetBody(v *DeleteLabelTableResponseBody) *Del
 }
 
 type DeleteModelFeatureResponseBody struct {
+	// example:
+	//
+	// 6B662A64-E4BF-56F8-BF5F-4C63F34EC0A8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1340,6 +1618,9 @@ func (s *DeleteModelFeatureResponse) SetBody(v *DeleteModelFeatureResponseBody) 
 }
 
 type DeleteProjectResponseBody struct {
+	// example:
+	//
+	// 0DA35264-0877-5852-8971-7735B547C969
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1386,6 +1667,7 @@ func (s *DeleteProjectResponse) SetBody(v *DeleteProjectResponseBody) *DeletePro
 }
 
 type ExportModelFeatureTrainingSetFGTableRequest struct {
+	// This parameter is required.
 	TrainingSetFgConfig *ExportModelFeatureTrainingSetFGTableRequestTrainingSetFgConfig `json:"TrainingSetFgConfig,omitempty" xml:"TrainingSetFgConfig,omitempty" type:"Struct"`
 }
 
@@ -1403,8 +1685,15 @@ func (s *ExportModelFeatureTrainingSetFGTableRequest) SetTrainingSetFgConfig(v *
 }
 
 type ExportModelFeatureTrainingSetFGTableRequestTrainingSetFgConfig struct {
-	FgJsonName *string                           `json:"FgJsonName,omitempty" xml:"FgJsonName,omitempty"`
-	JarName    *string                           `json:"JarName,omitempty" xml:"JarName,omitempty"`
+	// example:
+	//
+	// rank_v1_fg.json
+	FgJsonName *string `json:"FgJsonName,omitempty" xml:"FgJsonName,omitempty"`
+	// example:
+	//
+	// fg_on_odps-1.3.60-jar-with-dependencies.jar
+	JarName *string `json:"JarName,omitempty" xml:"JarName,omitempty"`
+	// This parameter is required.
 	Partitions map[string]map[string]interface{} `json:"Partitions,omitempty" xml:"Partitions,omitempty"`
 }
 
@@ -1432,7 +1721,13 @@ func (s *ExportModelFeatureTrainingSetFGTableRequestTrainingSetFgConfig) SetPart
 }
 
 type ExportModelFeatureTrainingSetFGTableResponseBody struct {
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 3
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 514F82AF-3C04-5C3D-8F38-A11261BF37B0
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -1513,6 +1808,9 @@ func (s *ExportModelFeatureTrainingSetTableRequest) SetTrainingSetConfig(v *Expo
 }
 
 type ExportModelFeatureTrainingSetTableRequestLabelInputConfig struct {
+	// example:
+	//
+	// 2022-07-02 00:00:00
 	EventTime  *string                           `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
 	Partitions map[string]map[string]interface{} `json:"Partitions,omitempty" xml:"Partitions,omitempty"`
 }
@@ -1553,6 +1851,9 @@ func (s *ExportModelFeatureTrainingSetTableRequestTrainingSetConfig) SetPartitio
 }
 
 type ExportModelFeatureTrainingSetTableResponseBody struct {
+	// example:
+	//
+	// 0FBBE454-9BD1-5D8F-9129-D14DB7FAFE0B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
@@ -1605,15 +1906,42 @@ func (s *ExportModelFeatureTrainingSetTableResponse) SetBody(v *ExportModelFeatu
 }
 
 type GetDatasourceResponseBody struct {
-	Config          *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	DatasourceId    *string `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
-	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// {"address": ""}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// example:
+	//
+	// 3
+	DatasourceId *string `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	// example:
+	//
+	// 2023-07-04T11:26:09.036+08:00
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2023-07-04T11:26:09.036+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Uri             *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
-	WorkspaceId     *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// datasource1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// AD7D9E95-BD31-53F2-B710-6C01866FCB05
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Hologres
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// igraph_instance1
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// example:
+	//
+	// 32244
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s GetDatasourceResponseBody) String() string {
@@ -1699,9 +2027,15 @@ func (s *GetDatasourceResponse) SetBody(v *GetDatasourceResponseBody) *GetDataso
 }
 
 type GetDatasourceTableResponseBody struct {
-	Fields    []*GetDatasourceTableResponseBodyFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TableName *string                                 `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	Fields []*GetDatasourceTableResponseBodyFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// example:
+	//
+	// D7B2F8C4-49C7-5CFA-8075-9D715A114873
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// table1
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s GetDatasourceTableResponseBody) String() string {
@@ -1729,8 +2063,14 @@ func (s *GetDatasourceTableResponseBody) SetTableName(v string) *GetDatasourceTa
 
 type GetDatasourceTableResponseBodyFields struct {
 	Attributes []*string `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
-	Name       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type       *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// field1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// INT32
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetDatasourceTableResponseBodyFields) String() string {
@@ -1786,13 +2126,34 @@ func (s *GetDatasourceTableResponse) SetBody(v *GetDatasourceTableResponseBody) 
 }
 
 type GetFeatureEntityResponseBody struct {
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	JoinId        *string `json:"JoinId,omitempty" xml:"JoinId,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Owner         *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	ProjectId     *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectName   *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// user_id
+	JoinId *string `json:"JoinId,omitempty" xml:"JoinId,omitempty"`
+	// example:
+	//
+	// feature_entity_1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 123456789*****
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 3
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// project_1
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// E23EFF09-58AA-5420-934F-8453AE01548D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetFeatureEntityResponseBody) String() string {
@@ -1868,30 +2229,113 @@ func (s *GetFeatureEntityResponse) SetBody(v *GetFeatureEntityResponseBody) *Get
 }
 
 type GetFeatureViewResponseBody struct {
-	Config                 *string                             `json:"Config,omitempty" xml:"Config,omitempty"`
-	FeatureEntityId        *string                             `json:"FeatureEntityId,omitempty" xml:"FeatureEntityId,omitempty"`
-	FeatureEntityName      *string                             `json:"FeatureEntityName,omitempty" xml:"FeatureEntityName,omitempty"`
-	Fields                 []*GetFeatureViewResponseBodyFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
-	GmtCreateTime          *string                             `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime        *string                             `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	GmtSyncTime            *string                             `json:"GmtSyncTime,omitempty" xml:"GmtSyncTime,omitempty"`
-	JoinId                 *string                             `json:"JoinId,omitempty" xml:"JoinId,omitempty"`
-	LastSyncConfig         *string                             `json:"LastSyncConfig,omitempty" xml:"LastSyncConfig,omitempty"`
-	Name                   *string                             `json:"Name,omitempty" xml:"Name,omitempty"`
-	Owner                  *string                             `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	ProjectId              *string                             `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectName            *string                             `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	PublishTableScript     *string                             `json:"PublishTableScript,omitempty" xml:"PublishTableScript,omitempty"`
-	RegisterDatasourceId   *string                             `json:"RegisterDatasourceId,omitempty" xml:"RegisterDatasourceId,omitempty"`
-	RegisterDatasourceName *string                             `json:"RegisterDatasourceName,omitempty" xml:"RegisterDatasourceName,omitempty"`
-	RegisterTable          *string                             `json:"RegisterTable,omitempty" xml:"RegisterTable,omitempty"`
-	RequestId              *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SyncOnlineTable        *bool                               `json:"SyncOnlineTable,omitempty" xml:"SyncOnlineTable,omitempty"`
-	TTL                    *int32                              `json:"TTL,omitempty" xml:"TTL,omitempty"`
-	Tags                   []*string                           `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	Type                   *string                             `json:"Type,omitempty" xml:"Type,omitempty"`
-	WriteMethod            *string                             `json:"WriteMethod,omitempty" xml:"WriteMethod,omitempty"`
-	WriteToFeatureDB       *bool                               `json:"WriteToFeatureDB,omitempty" xml:"WriteToFeatureDB,omitempty"`
+	// example:
+	//
+	// {"save_original_field":true}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// example:
+	//
+	// 3
+	FeatureEntityId *string `json:"FeatureEntityId,omitempty" xml:"FeatureEntityId,omitempty"`
+	// example:
+	//
+	// featureEntity1
+	FeatureEntityName *string                             `json:"FeatureEntityName,omitempty" xml:"FeatureEntityName,omitempty"`
+	Fields            []*GetFeatureViewResponseBodyFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
+	GmtSyncTime *string `json:"GmtSyncTime,omitempty" xml:"GmtSyncTime,omitempty"`
+	// example:
+	//
+	// user_id
+	JoinId *string `json:"JoinId,omitempty" xml:"JoinId,omitempty"`
+	// example:
+	//
+	// {
+	//
+	// 	"mode": "overwrite",
+	//
+	// 	"partitions": {
+	//
+	// 		"ds": {
+	//
+	// 			"value": "20230820"
+	//
+	// 		}
+	//
+	// 	},
+	//
+	// 	"event_time": "",
+	//
+	// 	"config": {},
+	//
+	// 	"offline_to_online": true
+	//
+	// }
+	LastSyncConfig *string `json:"LastSyncConfig,omitempty" xml:"LastSyncConfig,omitempty"`
+	// example:
+	//
+	// featureView1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 12321421412****
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 3
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// project1
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// from feature_store_py.fs_client import FeatureStoreClient\nimport datetime\nfrom feature_store_py.fs_datasource import MaxComputeDataSource\nimport sys\n\ncur_day = args[\"dt\"]\nprint(\"cur_day = \", cur_day)\n\naccess_key_id = o.account.access_id\naccess_key_secret = o.account.secret_access_key\nfs = FeatureStoreClient(access_key_id=access_key_id, access_key_secret=access_key_secret, region=\"cn-beijing\")\ncur_project_name = \"p1\"\nproject = fs.get_project(cur_project_name)\n\nfeature_view_name = \"user_fea\"\nbatch_feature_view = project.get_feature_view(feature_view_name)\ntask = batch_feature_view.publish_table(partitions={\"ds\":cur_day}, mode=\"Overwrite\")\ntask.wait()\ntask.print_summary()\n
+	PublishTableScript *string `json:"PublishTableScript,omitempty" xml:"PublishTableScript,omitempty"`
+	// example:
+	//
+	// 4
+	RegisterDatasourceId *string `json:"RegisterDatasourceId,omitempty" xml:"RegisterDatasourceId,omitempty"`
+	// example:
+	//
+	// datasource1
+	RegisterDatasourceName *string `json:"RegisterDatasourceName,omitempty" xml:"RegisterDatasourceName,omitempty"`
+	// example:
+	//
+	// table1
+	RegisterTable *string `json:"RegisterTable,omitempty" xml:"RegisterTable,omitempty"`
+	// example:
+	//
+	// 72F15A8A-5A28-5B18-A0DE-0EABD7D3245A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	SyncOnlineTable *bool `json:"SyncOnlineTable,omitempty" xml:"SyncOnlineTable,omitempty"`
+	// example:
+	//
+	// 90
+	TTL  *int32    `json:"TTL,omitempty" xml:"TTL,omitempty"`
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Batch
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// custom
+	WriteMethod      *string `json:"WriteMethod,omitempty" xml:"WriteMethod,omitempty"`
+	WriteToFeatureDB *bool   `json:"WriteToFeatureDB,omitempty" xml:"WriteToFeatureDB,omitempty"`
 }
 
 func (s GetFeatureViewResponseBody) String() string {
@@ -2024,8 +2468,14 @@ func (s *GetFeatureViewResponseBody) SetWriteToFeatureDB(v bool) *GetFeatureView
 
 type GetFeatureViewResponseBodyFields struct {
 	Attributes []*string `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
-	Name       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type       *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// user
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// int
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetFeatureViewResponseBodyFields) String() string {
@@ -2081,14 +2531,38 @@ func (s *GetFeatureViewResponse) SetBody(v *GetFeatureViewResponseBody) *GetFeat
 }
 
 type GetInstanceResponseBody struct {
-	GmtCreateTime   *string  `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime *string  `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	Message         *string  `json:"Message,omitempty" xml:"Message,omitempty"`
-	Progress        *float64 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	RegionId        *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId       *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status          *string  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type            *string  `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 2023-07-04T11:26:09.036+08:00
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2023-07-04T11:26:09.036+08:00
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0.8
+	Progress *float64 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 1C5B1511-8A5B-59C3-90AF-513F9210E882
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// Basic
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetInstanceResponseBody) String() string {
@@ -2169,17 +2643,44 @@ func (s *GetInstanceResponse) SetBody(v *GetInstanceResponseBody) *GetInstanceRe
 }
 
 type GetLabelTableResponseBody struct {
-	DatasourceId         *string                            `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
-	DatasourceName       *string                            `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
-	Fields               []*GetLabelTableResponseBodyFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
-	GmtCreateTime        *string                            `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime      *string                            `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	Name                 *string                            `json:"Name,omitempty" xml:"Name,omitempty"`
-	Owner                *string                            `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	ProjectId            *string                            `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectName          *string                            `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	RelatedModelFeatures []*string                          `json:"RelatedModelFeatures,omitempty" xml:"RelatedModelFeatures,omitempty" type:"Repeated"`
-	RequestId            *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	DatasourceId *string `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	// example:
+	//
+	// datasource1
+	DatasourceName *string                            `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
+	Fields         []*GetLabelTableResponseBodyFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// label_table1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 12321312*****
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// project1
+	ProjectName          *string   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	RelatedModelFeatures []*string `json:"RelatedModelFeatures,omitempty" xml:"RelatedModelFeatures,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetLabelTableResponseBody) String() string {
@@ -2247,8 +2748,14 @@ func (s *GetLabelTableResponseBody) SetRequestId(v string) *GetLabelTableRespons
 
 type GetLabelTableResponseBodyFields struct {
 	Attributes []*string `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
-	Name       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type       *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// field1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// INT32
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetLabelTableResponseBodyFields) String() string {
@@ -2304,20 +2811,56 @@ func (s *GetLabelTableResponse) SetBody(v *GetLabelTableResponseBody) *GetLabelT
 }
 
 type GetModelFeatureResponseBody struct {
+	// example:
+	//
+	// from feature_store_py.fs_client import FeatureStoreClient\nfrom feature_store_py.fs_project import FeatureStoreProject\nfrom feature_store_py.fs_datasource import LabelInput, MaxComputeDataSource, TrainingSetOutput\nfrom feature_store_py.fs_features import FeatureSelector\nfrom feature_store_py.fs_config import LabelInputConfig, PartitionConfig, FeatureViewConfig\nfrom feature_store_py.fs_config import TrainSetOutputConfig, EASDeployConfig\nimport datetime\nimport sys\n\ncur_day = args[\"dt\"]\nprint(\"cur_day = \", cur_day)\noffset = datetime.timedelta(days=-1)\npre_day = (datetime.datetime.strptime(cur_day, \"%Y%m%d\") + offset).strftime(\"%Y%m%d\")\nprint(\"pre_day = \", pre_day)\n\n\naccess_key_id = o.account.access_id\naccess_key_secret = o.account.secret_access_key\nfs = FeatureStoreClient(access_key_id=access_key_id, access_key_secret=access_key_secret, region=\"cn-beijing\")\ncur_project_name = \"p1\"\nproject = fs.get_project(cur_project_name)\n\nlabel_partitions = PartitionConfig(name = \"ds\", value = cur_day)\nlabel_input_config = LabelInputConfig(partition_config=label_partitions)\n\nfeature_view_1_partitions = PartitionConfig(name = \"ds\", value = pre_day)\nfeature_view_1_config = FeatureViewConfig(name = \"user_fea\",\npartition_config=feature_view_1_partitions)\n\nfeature_view_2_partitions = PartitionConfig(name = \"ds\", value = pre_day)\nfeature_view_2_config = FeatureViewConfig(name = \"seq_fea\",\npartition_config=feature_view_2_partitions)\n\nfeature_view_3_partitions = PartitionConfig(name = \"ds\", value = pre_day)\nfeature_view_3_config = FeatureViewConfig(name = \"item_fea\",\npartition_config=feature_view_3_partitions)\n\nfeature_view_config_list = [feature_view_1_config,feature_view_2_config,feature_view_3_config]\ntrain_set_partitions = PartitionConfig(name = \"ds\", value = cur_day)\ntrain_set_output_config = TrainSetOutputConfig(partition_config=train_set_partitions)\n\n\nmodel_name = \"rank_v1\"\ncur_model = project.get_model(model_name)\ntask = cur_model.export_train_set(label_input_config, feature_view_config_list, train_set_output_config)\ntask.wait()\nprint(\"task_summary = \", task.task_summary)\n
 	ExportTrainingSetTableScript *string                                `json:"ExportTrainingSetTableScript,omitempty" xml:"ExportTrainingSetTableScript,omitempty"`
 	Features                     []*GetModelFeatureResponseBodyFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
-	GmtCreateTime                *string                                `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime              *string                                `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	LabelTableId                 *string                                `json:"LabelTableId,omitempty" xml:"LabelTableId,omitempty"`
-	LabelTableName               *string                                `json:"LabelTableName,omitempty" xml:"LabelTableName,omitempty"`
-	Name                         *string                                `json:"Name,omitempty" xml:"Name,omitempty"`
-	Owner                        *string                                `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	ProjectId                    *string                                `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectName                  *string                                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Relations                    *GetModelFeatureResponseBodyRelations  `json:"Relations,omitempty" xml:"Relations,omitempty" type:"Struct"`
-	RequestId                    *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TrainingSetFGTable           *string                                `json:"TrainingSetFGTable,omitempty" xml:"TrainingSetFGTable,omitempty"`
-	TrainingSetTable             *string                                `json:"TrainingSetTable,omitempty" xml:"TrainingSetTable,omitempty"`
+	// example:
+	//
+	// 2023-07-04T14:46:22.227+08:00
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2023-07-04T14:46:22.227+08:00
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// 3
+	LabelTableId *string `json:"LabelTableId,omitempty" xml:"LabelTableId,omitempty"`
+	// example:
+	//
+	// label_table1
+	LabelTableName *string `json:"LabelTableName,omitempty" xml:"LabelTableName,omitempty"`
+	// example:
+	//
+	// model_feature1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1231243253****
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 5
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// project1
+	ProjectName *string                               `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Relations   *GetModelFeatureResponseBodyRelations `json:"Relations,omitempty" xml:"Relations,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0C89F5E1-7F24-5EEC-9F05-508A39278CC8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// table2
+	TrainingSetFGTable *string `json:"TrainingSetFGTable,omitempty" xml:"TrainingSetFGTable,omitempty"`
+	// example:
+	//
+	// table1
+	TrainingSetTable *string `json:"TrainingSetTable,omitempty" xml:"TrainingSetTable,omitempty"`
 }
 
 func (s GetModelFeatureResponseBody) String() string {
@@ -2399,11 +2942,26 @@ func (s *GetModelFeatureResponseBody) SetTrainingSetTable(v string) *GetModelFea
 }
 
 type GetModelFeatureResponseBodyFeatures struct {
-	AliasName       *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	FeatureViewId   *string `json:"FeatureViewId,omitempty" xml:"FeatureViewId,omitempty"`
+	// example:
+	//
+	// feature2
+	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// example:
+	//
+	// 3
+	FeatureViewId *string `json:"FeatureViewId,omitempty" xml:"FeatureViewId,omitempty"`
+	// example:
+	//
+	// feature_view_1
 	FeatureViewName *string `json:"FeatureViewName,omitempty" xml:"FeatureViewName,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// feature1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// INT32
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetModelFeatureResponseBodyFeatures) String() string {
@@ -2463,9 +3021,19 @@ func (s *GetModelFeatureResponseBodyRelations) SetLinks(v []*GetModelFeatureResp
 }
 
 type GetModelFeatureResponseBodyRelationsDomains struct {
+	// example:
+	//
+	// FeatureEntity
 	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
 	// Domain ID。
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	//
+	// example:
+	//
+	// 3
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// feature_entity_1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -2493,9 +3061,18 @@ func (s *GetModelFeatureResponseBodyRelationsDomains) SetName(v string) *GetMode
 }
 
 type GetModelFeatureResponseBodyRelationsLinks struct {
+	// example:
+	//
+	// model_feature_2
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	// example:
+	//
+	// user_id
 	Link *string `json:"Link,omitempty" xml:"Link,omitempty"`
-	To   *string `json:"To,omitempty" xml:"To,omitempty"`
+	// example:
+	//
+	// feature_entity_3
+	To *string `json:"To,omitempty" xml:"To,omitempty"`
 }
 
 func (s GetModelFeatureResponseBodyRelationsLinks) String() string {
@@ -2551,8 +3128,11 @@ func (s *GetModelFeatureResponse) SetBody(v *GetModelFeatureResponseBody) *GetMo
 }
 
 type GetModelFeatureFGFeatureResponseBody struct {
-	LookupFeatures   []*GetModelFeatureFGFeatureResponseBodyLookupFeatures   `json:"LookupFeatures,omitempty" xml:"LookupFeatures,omitempty" type:"Repeated"`
-	RawFeatures      []*GetModelFeatureFGFeatureResponseBodyRawFeatures      `json:"RawFeatures,omitempty" xml:"RawFeatures,omitempty" type:"Repeated"`
+	LookupFeatures []*GetModelFeatureFGFeatureResponseBodyLookupFeatures `json:"LookupFeatures,omitempty" xml:"LookupFeatures,omitempty" type:"Repeated"`
+	RawFeatures    []*GetModelFeatureFGFeatureResponseBodyRawFeatures    `json:"RawFeatures,omitempty" xml:"RawFeatures,omitempty" type:"Repeated"`
+	// example:
+	//
+	// E23EFF09-58AA-5420-934F-8453AE01548D
 	RequestId        *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Reserves         []*string                                               `json:"Reserves,omitempty" xml:"Reserves,omitempty" type:"Repeated"`
 	SequenceFeatures []*GetModelFeatureFGFeatureResponseBodySequenceFeatures `json:"SequenceFeatures,omitempty" xml:"SequenceFeatures,omitempty" type:"Repeated"`
@@ -2592,13 +3172,34 @@ func (s *GetModelFeatureFGFeatureResponseBody) SetSequenceFeatures(v []*GetModel
 }
 
 type GetModelFeatureFGFeatureResponseBodyLookupFeatures struct {
-	DefaultValue     *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	FeatureName      *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	// example:
+	//
+	// -1024
+	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// example:
+	//
+	// item_id
+	FeatureName *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	// example:
+	//
+	// Item
 	KeyFeatureDomain *string `json:"KeyFeatureDomain,omitempty" xml:"KeyFeatureDomain,omitempty"`
-	KeyFeatureName   *string `json:"KeyFeatureName,omitempty" xml:"KeyFeatureName,omitempty"`
+	// example:
+	//
+	// 1
+	KeyFeatureName *string `json:"KeyFeatureName,omitempty" xml:"KeyFeatureName,omitempty"`
+	// example:
+	//
+	// User
 	MapFeatureDomain *string `json:"MapFeatureDomain,omitempty" xml:"MapFeatureDomain,omitempty"`
-	MapFeatureName   *string `json:"MapFeatureName,omitempty" xml:"MapFeatureName,omitempty"`
-	ValueType        *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
+	// example:
+	//
+	// item_id
+	MapFeatureName *string `json:"MapFeatureName,omitempty" xml:"MapFeatureName,omitempty"`
+	// example:
+	//
+	// STRING
+	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
 }
 
 func (s GetModelFeatureFGFeatureResponseBodyLookupFeatures) String() string {
@@ -2645,12 +3246,30 @@ func (s *GetModelFeatureFGFeatureResponseBodyLookupFeatures) SetValueType(v stri
 }
 
 type GetModelFeatureFGFeatureResponseBodyRawFeatures struct {
-	DefaultValue     *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	FeatureDomain    *string `json:"FeatureDomain,omitempty" xml:"FeatureDomain,omitempty"`
-	FeatureName      *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
-	FeatureType      *string `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
+	// example:
+	//
+	// -1024
+	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// example:
+	//
+	// User
+	FeatureDomain *string `json:"FeatureDomain,omitempty" xml:"FeatureDomain,omitempty"`
+	// example:
+	//
+	// item_id
+	FeatureName *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	// example:
+	//
+	// IdFeature
+	FeatureType *string `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
+	// example:
+	//
+	// item_id
 	InputFeatureName *string `json:"InputFeatureName,omitempty" xml:"InputFeatureName,omitempty"`
-	ValueType        *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
+	// example:
+	//
+	// STRING
+	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
 }
 
 func (s GetModelFeatureFGFeatureResponseBodyRawFeatures) String() string {
@@ -2692,9 +3311,21 @@ func (s *GetModelFeatureFGFeatureResponseBodyRawFeatures) SetValueType(v string)
 }
 
 type GetModelFeatureFGFeatureResponseBodySequenceFeatures struct {
-	AttributeDelim *string                                                            `json:"AttributeDelim,omitempty" xml:"AttributeDelim,omitempty"`
-	FeatureName    *string                                                            `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
-	SequenceDelim  *string                                                            `json:"SequenceDelim,omitempty" xml:"SequenceDelim,omitempty"`
+	// example:
+	//
+	// #
+	AttributeDelim *string `json:"AttributeDelim,omitempty" xml:"AttributeDelim,omitempty"`
+	// example:
+	//
+	// item_id
+	FeatureName *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	// example:
+	//
+	// ;
+	SequenceDelim *string `json:"SequenceDelim,omitempty" xml:"SequenceDelim,omitempty"`
+	// example:
+	//
+	// 50
 	SequenceLength *int64                                                             `json:"SequenceLength,omitempty" xml:"SequenceLength,omitempty"`
 	SubFeatures    []*GetModelFeatureFGFeatureResponseBodySequenceFeaturesSubFeatures `json:"SubFeatures,omitempty" xml:"SubFeatures,omitempty" type:"Repeated"`
 }
@@ -2733,12 +3364,30 @@ func (s *GetModelFeatureFGFeatureResponseBodySequenceFeatures) SetSubFeatures(v 
 }
 
 type GetModelFeatureFGFeatureResponseBodySequenceFeaturesSubFeatures struct {
-	DefaultValue     *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	FeatureDomain    *string `json:"FeatureDomain,omitempty" xml:"FeatureDomain,omitempty"`
-	FeatureName      *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
-	FeatureType      *string `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
+	// example:
+	//
+	// -1024
+	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// example:
+	//
+	// User
+	FeatureDomain *string `json:"FeatureDomain,omitempty" xml:"FeatureDomain,omitempty"`
+	// example:
+	//
+	// item_id
+	FeatureName *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	// example:
+	//
+	// IdFeature
+	FeatureType *string `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
+	// example:
+	//
+	// item_id
 	InputFeatureName *string `json:"InputFeatureName,omitempty" xml:"InputFeatureName,omitempty"`
-	ValueType        *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
+	// example:
+	//
+	// STRING
+	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
 }
 
 func (s GetModelFeatureFGFeatureResponseBodySequenceFeaturesSubFeatures) String() string {
@@ -2809,7 +3458,13 @@ func (s *GetModelFeatureFGFeatureResponse) SetBody(v *GetModelFeatureFGFeatureRe
 }
 
 type GetModelFeatureFGInfoResponseBody struct {
-	Content   *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// {"features": [{"feature_name": "item_id","feature_type": "id_feature","value_type": "String","expression": "item:item_id","default_value": "-1024","combiner": "mean","need_prefix": false},{"feature_name": "f1","feature_type": "lookup_feature","value_type": "Integer","map": "item:f1","key": "user:1","default_value": "0","combiner": "mean","need_prefix": false,"needDiscrete": false,"needWeighting": false,"needKey": false}],"reserves": ["f1"]}
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 6B662A64-E4BF-56F8-BF5F-4C63F34EC0A8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2861,22 +3516,70 @@ func (s *GetModelFeatureFGInfoResponse) SetBody(v *GetModelFeatureFGInfoResponse
 }
 
 type GetProjectResponseBody struct {
-	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	FeatureEntityCount    *int32  `json:"FeatureEntityCount,omitempty" xml:"FeatureEntityCount,omitempty"`
-	FeatureViewCount      *int32  `json:"FeatureViewCount,omitempty" xml:"FeatureViewCount,omitempty"`
-	GmtCreateTime         *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime       *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	ModelCount            *int32  `json:"ModelCount,omitempty" xml:"ModelCount,omitempty"`
-	Name                  *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OfflineDatasourceId   *string `json:"OfflineDatasourceId,omitempty" xml:"OfflineDatasourceId,omitempty"`
+	// example:
+	//
+	// This is a test.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 10
+	FeatureEntityCount *int32 `json:"FeatureEntityCount,omitempty" xml:"FeatureEntityCount,omitempty"`
+	// example:
+	//
+	// 10
+	FeatureViewCount *int32 `json:"FeatureViewCount,omitempty" xml:"FeatureViewCount,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// 5
+	ModelCount *int32 `json:"ModelCount,omitempty" xml:"ModelCount,omitempty"`
+	// example:
+	//
+	// project1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 4
+	OfflineDatasourceId *string `json:"OfflineDatasourceId,omitempty" xml:"OfflineDatasourceId,omitempty"`
+	// example:
+	//
+	// datasource1
 	OfflineDatasourceName *string `json:"OfflineDatasourceName,omitempty" xml:"OfflineDatasourceName,omitempty"`
+	// example:
+	//
+	// MaxCompute
 	OfflineDatasourceType *string `json:"OfflineDatasourceType,omitempty" xml:"OfflineDatasourceType,omitempty"`
-	OfflineLifecycle      *int32  `json:"OfflineLifecycle,omitempty" xml:"OfflineLifecycle,omitempty"`
-	OnlineDatasourceId    *string `json:"OnlineDatasourceId,omitempty" xml:"OnlineDatasourceId,omitempty"`
-	OnlineDatasourceName  *string `json:"OnlineDatasourceName,omitempty" xml:"OnlineDatasourceName,omitempty"`
-	OnlineDatasourceType  *string `json:"OnlineDatasourceType,omitempty" xml:"OnlineDatasourceType,omitempty"`
-	Owner                 *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 90
+	OfflineLifecycle *int32 `json:"OfflineLifecycle,omitempty" xml:"OfflineLifecycle,omitempty"`
+	// example:
+	//
+	// 5
+	OnlineDatasourceId *string `json:"OnlineDatasourceId,omitempty" xml:"OnlineDatasourceId,omitempty"`
+	// example:
+	//
+	// datasource2
+	OnlineDatasourceName *string `json:"OnlineDatasourceName,omitempty" xml:"OnlineDatasourceName,omitempty"`
+	// example:
+	//
+	// Hologres
+	OnlineDatasourceType *string `json:"OnlineDatasourceType,omitempty" xml:"OnlineDatasourceType,omitempty"`
+	// example:
+	//
+	// 1232132543543****
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// C33E160C-BFCA-5719-B958-942850E949F6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetProjectResponseBody) String() string {
@@ -2997,12 +3700,30 @@ func (s *GetProjectResponse) SetBody(v *GetProjectResponseBody) *GetProjectRespo
 }
 
 type GetProjectFeatureEntityResponseBody struct {
+	// example:
+	//
+	// 3
 	FeatureEntityId *string `json:"FeatureEntityId,omitempty" xml:"FeatureEntityId,omitempty"`
-	JoinId          *string `json:"JoinId,omitempty" xml:"JoinId,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ProjectName     *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	WorkspaceId     *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// user_id
+	JoinId *string `json:"JoinId,omitempty" xml:"JoinId,omitempty"`
+	// example:
+	//
+	// feature_entity_1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// project_1
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// 37D19490-AB69-567D-A852-407C94E510E9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 34245
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s GetProjectFeatureEntityResponseBody) String() string {
@@ -3073,10 +3794,22 @@ func (s *GetProjectFeatureEntityResponse) SetBody(v *GetProjectFeatureEntityResp
 }
 
 type GetProjectFeatureEntityHotIdsResponseBody struct {
-	Count         *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
-	HotIds        *string `json:"HotIds,omitempty" xml:"HotIds,omitempty"`
+	// example:
+	//
+	// 3
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// 1,2,3
+	HotIds *string `json:"HotIds,omitempty" xml:"HotIds,omitempty"`
+	// example:
+	//
+	// 5
 	NextSeqNumber *string `json:"NextSeqNumber,omitempty" xml:"NextSeqNumber,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// FFD39C0F-DD8D-51B2-864E-2842206DB0E8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetProjectFeatureEntityHotIdsResponseBody) String() string {
@@ -3137,26 +3870,80 @@ func (s *GetProjectFeatureEntityHotIdsResponse) SetBody(v *GetProjectFeatureEnti
 }
 
 type GetProjectFeatureViewResponseBody struct {
-	Config               *string                                    `json:"Config,omitempty" xml:"Config,omitempty"`
-	FeatureEntityId      *string                                    `json:"FeatureEntityId,omitempty" xml:"FeatureEntityId,omitempty"`
-	FeatureEntityName    *string                                    `json:"FeatureEntityName,omitempty" xml:"FeatureEntityName,omitempty"`
-	FeatureViewId        *string                                    `json:"FeatureViewId,omitempty" xml:"FeatureViewId,omitempty"`
-	Fields               []*GetProjectFeatureViewResponseBodyFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
-	GmtSyncTime          *string                                    `json:"GmtSyncTime,omitempty" xml:"GmtSyncTime,omitempty"`
-	JoinId               *string                                    `json:"JoinId,omitempty" xml:"JoinId,omitempty"`
-	LastSyncConfig       *string                                    `json:"LastSyncConfig,omitempty" xml:"LastSyncConfig,omitempty"`
-	Name                 *string                                    `json:"Name,omitempty" xml:"Name,omitempty"`
-	Owner                *string                                    `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	ProjectId            *string                                    `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectName          *string                                    `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	RegisterDatasourceId *string                                    `json:"RegisterDatasourceId,omitempty" xml:"RegisterDatasourceId,omitempty"`
-	RegisterTable        *string                                    `json:"RegisterTable,omitempty" xml:"RegisterTable,omitempty"`
-	RequestId            *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SyncOnlineTable      *bool                                      `json:"SyncOnlineTable,omitempty" xml:"SyncOnlineTable,omitempty"`
-	TTL                  *int32                                     `json:"TTL,omitempty" xml:"TTL,omitempty"`
-	Tags                 []*string                                  `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	Type                 *string                                    `json:"Type,omitempty" xml:"Type,omitempty"`
-	WriteMethod          *string                                    `json:"WriteMethod,omitempty" xml:"WriteMethod,omitempty"`
+	// example:
+	//
+	// {}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// example:
+	//
+	// 4
+	FeatureEntityId *string `json:"FeatureEntityId,omitempty" xml:"FeatureEntityId,omitempty"`
+	// example:
+	//
+	// entity1
+	FeatureEntityName *string `json:"FeatureEntityName,omitempty" xml:"FeatureEntityName,omitempty"`
+	// example:
+	//
+	// 3
+	FeatureViewId *string                                    `json:"FeatureViewId,omitempty" xml:"FeatureViewId,omitempty"`
+	Fields        []*GetProjectFeatureViewResponseBodyFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
+	GmtSyncTime *string `json:"GmtSyncTime,omitempty" xml:"GmtSyncTime,omitempty"`
+	// example:
+	//
+	// user_id
+	JoinId *string `json:"JoinId,omitempty" xml:"JoinId,omitempty"`
+	// example:
+	//
+	// {}
+	LastSyncConfig *string `json:"LastSyncConfig,omitempty" xml:"LastSyncConfig,omitempty"`
+	// example:
+	//
+	// feature_view1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1231421342****
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 3
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// project1
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// 4
+	RegisterDatasourceId *string `json:"RegisterDatasourceId,omitempty" xml:"RegisterDatasourceId,omitempty"`
+	// example:
+	//
+	// table1
+	RegisterTable *string `json:"RegisterTable,omitempty" xml:"RegisterTable,omitempty"`
+	// example:
+	//
+	// BFD68AD5-398C-5AC4-A357-C7EA8DF33C26
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	SyncOnlineTable *bool `json:"SyncOnlineTable,omitempty" xml:"SyncOnlineTable,omitempty"`
+	// example:
+	//
+	// 90
+	TTL  *int32    `json:"TTL,omitempty" xml:"TTL,omitempty"`
+	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Batch
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// Custom
+	WriteMethod *string `json:"WriteMethod,omitempty" xml:"WriteMethod,omitempty"`
 }
 
 func (s GetProjectFeatureViewResponseBody) String() string {
@@ -3269,8 +4056,14 @@ func (s *GetProjectFeatureViewResponseBody) SetWriteMethod(v string) *GetProject
 
 type GetProjectFeatureViewResponseBodyFields struct {
 	Attributes []*string `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
-	Name       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type       *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// field1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// INT32
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetProjectFeatureViewResponseBodyFields) String() string {
@@ -3326,21 +4119,63 @@ func (s *GetProjectFeatureViewResponse) SetBody(v *GetProjectFeatureViewResponse
 }
 
 type GetProjectModelFeatureResponseBody struct {
-	Features             []*GetProjectModelFeatureResponseBodyFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
-	GmtCreateTime        *string                                       `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime      *string                                       `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	LabelDatasourceId    *string                                       `json:"LabelDatasourceId,omitempty" xml:"LabelDatasourceId,omitempty"`
-	LabelDatasourceTable *string                                       `json:"LabelDatasourceTable,omitempty" xml:"LabelDatasourceTable,omitempty"`
-	LabelEventTime       *string                                       `json:"LabelEventTime,omitempty" xml:"LabelEventTime,omitempty"`
-	LabelTableId         *string                                       `json:"LabelTableId,omitempty" xml:"LabelTableId,omitempty"`
-	ModelFeatureId       *string                                       `json:"ModelFeatureId,omitempty" xml:"ModelFeatureId,omitempty"`
-	Name                 *string                                       `json:"Name,omitempty" xml:"Name,omitempty"`
-	Owner                *string                                       `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	ProjectId            *string                                       `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectName          *string                                       `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	RequestId            *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TrainingSetFGTable   *string                                       `json:"TrainingSetFGTable,omitempty" xml:"TrainingSetFGTable,omitempty"`
-	TrainingSetTable     *string                                       `json:"TrainingSetTable,omitempty" xml:"TrainingSetTable,omitempty"`
+	Features []*GetProjectModelFeatureResponseBodyFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2023-07-04T14:46:22.227+08:00
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2023-07-04T14:46:22.227+08:00
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// 3
+	LabelDatasourceId *string `json:"LabelDatasourceId,omitempty" xml:"LabelDatasourceId,omitempty"`
+	// example:
+	//
+	// table1
+	LabelDatasourceTable *string `json:"LabelDatasourceTable,omitempty" xml:"LabelDatasourceTable,omitempty"`
+	// example:
+	//
+	// dt
+	LabelEventTime *string `json:"LabelEventTime,omitempty" xml:"LabelEventTime,omitempty"`
+	// example:
+	//
+	// 3
+	LabelTableId *string `json:"LabelTableId,omitempty" xml:"LabelTableId,omitempty"`
+	// example:
+	//
+	// 3
+	ModelFeatureId *string `json:"ModelFeatureId,omitempty" xml:"ModelFeatureId,omitempty"`
+	// example:
+	//
+	// model_feature_1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 12324325324****
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 3
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// project1
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// 6B662A64-E4BF-56F8-BF5F-4C63F34EC0A8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// table2
+	TrainingSetFGTable *string `json:"TrainingSetFGTable,omitempty" xml:"TrainingSetFGTable,omitempty"`
+	// example:
+	//
+	// model_feature_xxx_training_set
+	TrainingSetTable *string `json:"TrainingSetTable,omitempty" xml:"TrainingSetTable,omitempty"`
 }
 
 func (s GetProjectModelFeatureResponseBody) String() string {
@@ -3427,11 +4262,26 @@ func (s *GetProjectModelFeatureResponseBody) SetTrainingSetTable(v string) *GetP
 }
 
 type GetProjectModelFeatureResponseBodyFeatures struct {
-	AliasName       *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	FeatureViewId   *string `json:"FeatureViewId,omitempty" xml:"FeatureViewId,omitempty"`
+	// example:
+	//
+	// feature2
+	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// example:
+	//
+	// 3
+	FeatureViewId *string `json:"FeatureViewId,omitempty" xml:"FeatureViewId,omitempty"`
+	// example:
+	//
+	// feature_view1
 	FeatureViewName *string `json:"FeatureViewName,omitempty" xml:"FeatureViewName,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// feature1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// INT32
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetProjectModelFeatureResponseBodyFeatures) String() string {
@@ -3497,9 +4347,24 @@ func (s *GetProjectModelFeatureResponse) SetBody(v *GetProjectModelFeatureRespon
 }
 
 type GetServiceIdentityRoleResponseBody struct {
-	Policy    *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// example:
+	//
+	// {
+	//
+	// "Version": "1",
+	//
+	// "Statement":[]
+	//
+	// }
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// example:
+	//
+	// 6F629E92-F64D-502D-85AA-A9C54894CA3D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RoleName  *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// example:
+	//
+	// AliyunServiceRoleForPaiFeatureStore
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
 func (s GetServiceIdentityRoleResponseBody) String() string {
@@ -3555,19 +4420,74 @@ func (s *GetServiceIdentityRoleResponse) SetBody(v *GetServiceIdentityRoleRespon
 }
 
 type GetTaskResponseBody struct {
-	Config          *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// {
+	//
+	// 	"mode": "overwrite",
+	//
+	// 	"partitions": {
+	//
+	// 		"dt": "20230820"
+	//
+	// 	},
+	//
+	// 	"event_time": "",
+	//
+	// 	"config": {},
+	//
+	// 	"offline_to_online": true
+	//
+	// }
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// example:
+	//
+	// 2023-07-04T11:26:09.036+08:00
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2023-07-04T11:26:09.036+08:00
 	GmtExecutedTime *string `json:"GmtExecutedTime,omitempty" xml:"GmtExecutedTime,omitempty"`
+	// example:
+	//
+	// 2023-07-04T11:26:09.036+08:00
 	GmtFinishedTime *string `json:"GmtFinishedTime,omitempty" xml:"GmtFinishedTime,omitempty"`
+	// example:
+	//
+	// 2023-07-04T11:26:09.036+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	ObjectId        *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	ObjectType      *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
-	ProjectId       *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectName     *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RunningConfig   *string `json:"RunningConfig,omitempty" xml:"RunningConfig,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 3
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// example:
+	//
+	// ModelFeature
+	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	// example:
+	//
+	// 3
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// project_1
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// 37D19490-AB69-567D-A852-407C94E510E9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// DROP TABLE IF EXISTS public.fsxxx
+	RunningConfig *string `json:"RunningConfig,omitempty" xml:"RunningConfig,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// OfflineToOnline
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetTaskResponseBody) String() string {
@@ -3673,6 +4593,9 @@ func (s *GetTaskResponse) SetBody(v *GetTaskResponseBody) *GetTaskResponse {
 }
 
 type ListDatasourceTablesRequest struct {
+	// example:
+	//
+	// table1
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
@@ -3690,9 +4613,15 @@ func (s *ListDatasourceTablesRequest) SetTableName(v string) *ListDatasourceTabl
 }
 
 type ListDatasourceTablesResponseBody struct {
-	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tables     []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
-	TotalCount *int64    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// C03B2680-AC9C-59CD-93C5-8142B92537FA
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Tables    []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListDatasourceTablesResponseBody) String() string {
@@ -3748,12 +4677,33 @@ func (s *ListDatasourceTablesResponse) SetBody(v *ListDatasourceTablesResponseBo
 }
 
 type ListDatasourcesRequest struct {
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Order       *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SortBy      *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// datasource1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Asc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// GmtModifiedTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// MaxCompute
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 234
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -3802,8 +4752,14 @@ func (s *ListDatasourcesRequest) SetWorkspaceId(v string) *ListDatasourcesReques
 
 type ListDatasourcesResponseBody struct {
 	Datasources []*ListDatasourcesResponseBodyDatasources `json:"Datasources,omitempty" xml:"Datasources,omitempty" type:"Repeated"`
-	RequestId   *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int64                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 44933189-493B-5C43-A5C6-11EEC2A43520
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListDatasourcesResponseBody) String() string {
@@ -3830,14 +4786,38 @@ func (s *ListDatasourcesResponseBody) SetTotalCount(v int64) *ListDatasourcesRes
 }
 
 type ListDatasourcesResponseBodyDatasources struct {
-	Config          *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	DatasourceId    *string `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
-	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// {"address": ""}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// example:
+	//
+	// 3
+	DatasourceId *string `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Uri             *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
-	WorkspaceId     *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// datasource1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Hologres
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// igraph_instance1
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// example:
+	//
+	// 32324
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListDatasourcesResponseBodyDatasources) String() string {
@@ -3919,13 +4899,36 @@ func (s *ListDatasourcesResponse) SetBody(v *ListDatasourcesResponseBody) *ListD
 
 type ListFeatureEntitiesRequest struct {
 	FeatureEntityIds []*string `json:"FeatureEntityIds,omitempty" xml:"FeatureEntityIds,omitempty" type:"Repeated"`
-	Name             *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Order            *string   `json:"Order,omitempty" xml:"Order,omitempty"`
-	Owner            *string   `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	PageNumber       *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize         *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProjectId        *string   `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	SortBy           *string   `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// feature_entity_1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Desc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1231432*****
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// GmtModifiedTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 }
 
 func (s ListFeatureEntitiesRequest) String() string {
@@ -3978,13 +4981,36 @@ func (s *ListFeatureEntitiesRequest) SetSortBy(v string) *ListFeatureEntitiesReq
 
 type ListFeatureEntitiesShrinkRequest struct {
 	FeatureEntityIdsShrink *string `json:"FeatureEntityIds,omitempty" xml:"FeatureEntityIds,omitempty"`
-	Name                   *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Order                  *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	Owner                  *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	PageNumber             *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize               *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProjectId              *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	SortBy                 *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// feature_entity_1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Desc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1231432*****
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// GmtModifiedTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 }
 
 func (s ListFeatureEntitiesShrinkRequest) String() string {
@@ -4037,8 +5063,14 @@ func (s *ListFeatureEntitiesShrinkRequest) SetSortBy(v string) *ListFeatureEntit
 
 type ListFeatureEntitiesResponseBody struct {
 	FeatureEntities []*ListFeatureEntitiesResponseBodyFeatureEntities `json:"FeatureEntities,omitempty" xml:"FeatureEntities,omitempty" type:"Repeated"`
-	RequestId       *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount      *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 37D19490-AB69-567D-A852-407C94E510E9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListFeatureEntitiesResponseBody) String() string {
@@ -4065,13 +5097,34 @@ func (s *ListFeatureEntitiesResponseBody) SetTotalCount(v int32) *ListFeatureEnt
 }
 
 type ListFeatureEntitiesResponseBodyFeatureEntities struct {
+	// example:
+	//
+	// 3
 	FeatureEntityId *string `json:"FeatureEntityId,omitempty" xml:"FeatureEntityId,omitempty"`
-	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	JoinId          *string `json:"JoinId,omitempty" xml:"JoinId,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Owner           *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	ProjectId       *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectName     *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// user_id
+	JoinId *string `json:"JoinId,omitempty" xml:"JoinId,omitempty"`
+	// example:
+	//
+	// feature_entity_1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 123456789****
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 3
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// project_1
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
 func (s ListFeatureEntitiesResponseBodyFeatureEntities) String() string {
@@ -4148,7 +5201,10 @@ func (s *ListFeatureEntitiesResponse) SetBody(v *ListFeatureEntitiesResponseBody
 
 type ListFeatureViewFieldRelationshipsResponseBody struct {
 	Relationships []*ListFeatureViewFieldRelationshipsResponseBodyRelationships `json:"Relationships,omitempty" xml:"Relationships,omitempty" type:"Repeated"`
-	RequestId     *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// BF349686-C932-55B5-9B31-DAFA395C0E06
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListFeatureViewFieldRelationshipsResponseBody) String() string {
@@ -4170,10 +5226,19 @@ func (s *ListFeatureViewFieldRelationshipsResponseBody) SetRequestId(v string) *
 }
 
 type ListFeatureViewFieldRelationshipsResponseBodyRelationships struct {
-	FeatureName      *string                                                             `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
-	Models           []*ListFeatureViewFieldRelationshipsResponseBodyRelationshipsModels `json:"Models,omitempty" xml:"Models,omitempty" type:"Repeated"`
-	OfflineTableName *string                                                             `json:"OfflineTableName,omitempty" xml:"OfflineTableName,omitempty"`
-	OnlineTableName  *string                                                             `json:"OnlineTableName,omitempty" xml:"OnlineTableName,omitempty"`
+	// example:
+	//
+	// featureView1
+	FeatureName *string                                                             `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	Models      []*ListFeatureViewFieldRelationshipsResponseBodyRelationshipsModels `json:"Models,omitempty" xml:"Models,omitempty" type:"Repeated"`
+	// example:
+	//
+	// table2
+	OfflineTableName *string `json:"OfflineTableName,omitempty" xml:"OfflineTableName,omitempty"`
+	// example:
+	//
+	// table1
+	OnlineTableName *string `json:"OnlineTableName,omitempty" xml:"OnlineTableName,omitempty"`
 }
 
 func (s ListFeatureViewFieldRelationshipsResponseBodyRelationships) String() string {
@@ -4205,7 +5270,13 @@ func (s *ListFeatureViewFieldRelationshipsResponseBodyRelationships) SetOnlineTa
 }
 
 type ListFeatureViewFieldRelationshipsResponseBodyRelationshipsModels struct {
-	ModelId   *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	// example:
+	//
+	// 3
+	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	// example:
+	//
+	// dbmtl
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 }
 
@@ -4256,9 +5327,103 @@ func (s *ListFeatureViewFieldRelationshipsResponse) SetBody(v *ListFeatureViewFi
 	return s
 }
 
+type ListFeatureViewOnlineFeaturesRequest struct {
+	// This parameter is required.
+	JoinIds []*string `json:"JoinIds,omitempty" xml:"JoinIds,omitempty" type:"Repeated"`
+}
+
+func (s ListFeatureViewOnlineFeaturesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFeatureViewOnlineFeaturesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListFeatureViewOnlineFeaturesRequest) SetJoinIds(v []*string) *ListFeatureViewOnlineFeaturesRequest {
+	s.JoinIds = v
+	return s
+}
+
+type ListFeatureViewOnlineFeaturesShrinkRequest struct {
+	// This parameter is required.
+	JoinIdsShrink *string `json:"JoinIds,omitempty" xml:"JoinIds,omitempty"`
+}
+
+func (s ListFeatureViewOnlineFeaturesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFeatureViewOnlineFeaturesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListFeatureViewOnlineFeaturesShrinkRequest) SetJoinIdsShrink(v string) *ListFeatureViewOnlineFeaturesShrinkRequest {
+	s.JoinIdsShrink = &v
+	return s
+}
+
+type ListFeatureViewOnlineFeaturesResponseBody struct {
+	OnlineFeatures []*string `json:"OnlineFeatures,omitempty" xml:"OnlineFeatures,omitempty" type:"Repeated"`
+	// example:
+	//
+	// BF349686-C932-55B5-9B31-DAFA395C0E06
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListFeatureViewOnlineFeaturesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFeatureViewOnlineFeaturesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListFeatureViewOnlineFeaturesResponseBody) SetOnlineFeatures(v []*string) *ListFeatureViewOnlineFeaturesResponseBody {
+	s.OnlineFeatures = v
+	return s
+}
+
+func (s *ListFeatureViewOnlineFeaturesResponseBody) SetRequestId(v string) *ListFeatureViewOnlineFeaturesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListFeatureViewOnlineFeaturesResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListFeatureViewOnlineFeaturesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListFeatureViewOnlineFeaturesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFeatureViewOnlineFeaturesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListFeatureViewOnlineFeaturesResponse) SetHeaders(v map[string]*string) *ListFeatureViewOnlineFeaturesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListFeatureViewOnlineFeaturesResponse) SetStatusCode(v int32) *ListFeatureViewOnlineFeaturesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListFeatureViewOnlineFeaturesResponse) SetBody(v *ListFeatureViewOnlineFeaturesResponseBody) *ListFeatureViewOnlineFeaturesResponse {
+	s.Body = v
+	return s
+}
+
 type ListFeatureViewRelationshipsResponseBody struct {
 	Relationships []*ListFeatureViewRelationshipsResponseBodyRelationships `json:"Relationships,omitempty" xml:"Relationships,omitempty" type:"Repeated"`
-	RequestId     *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 0FBBE454-9BD1-5D8F-9129-D14DB7FAFE0B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListFeatureViewRelationshipsResponseBody) String() string {
@@ -4280,9 +5445,15 @@ func (s *ListFeatureViewRelationshipsResponseBody) SetRequestId(v string) *ListF
 }
 
 type ListFeatureViewRelationshipsResponseBodyRelationships struct {
+	// example:
+	//
+	// fv1
 	FeatureViewName *string                                                        `json:"FeatureViewName,omitempty" xml:"FeatureViewName,omitempty"`
 	Models          []*ListFeatureViewRelationshipsResponseBodyRelationshipsModels `json:"Models,omitempty" xml:"Models,omitempty" type:"Repeated"`
-	ProjectName     *string                                                        `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// project1
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
 func (s ListFeatureViewRelationshipsResponseBodyRelationships) String() string {
@@ -4309,7 +5480,13 @@ func (s *ListFeatureViewRelationshipsResponseBodyRelationships) SetProjectName(v
 }
 
 type ListFeatureViewRelationshipsResponseBodyRelationshipsModels struct {
-	ModelId   *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	// example:
+	//
+	// 3
+	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	// example:
+	//
+	// dbmtl
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 }
 
@@ -4361,17 +5538,49 @@ func (s *ListFeatureViewRelationshipsResponse) SetBody(v *ListFeatureViewRelatio
 }
 
 type ListFeatureViewsRequest struct {
+	// example:
+	//
+	// feature1
 	FeatureName    *string   `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
 	FeatureViewIds []*string `json:"FeatureViewIds,omitempty" xml:"FeatureViewIds,omitempty" type:"Repeated"`
-	Name           *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Order          *string   `json:"Order,omitempty" xml:"Order,omitempty"`
-	Owner          *string   `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	PageNumber     *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProjectId      *string   `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	SortBy         *string   `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	Tag            *string   `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	Type           *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// fv1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Desc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1232143243242****
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// GmtCreateTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// tag1
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// example:
+	//
+	// Batch
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListFeatureViewsRequest) String() string {
@@ -4438,17 +5647,49 @@ func (s *ListFeatureViewsRequest) SetType(v string) *ListFeatureViewsRequest {
 }
 
 type ListFeatureViewsShrinkRequest struct {
+	// example:
+	//
+	// feature1
 	FeatureName          *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
 	FeatureViewIdsShrink *string `json:"FeatureViewIds,omitempty" xml:"FeatureViewIds,omitempty"`
-	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Order                *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	Owner                *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProjectId            *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	SortBy               *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	Tag                  *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	Type                 *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// fv1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Desc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1232143243242****
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// GmtCreateTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// tag1
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// example:
+	//
+	// Batch
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListFeatureViewsShrinkRequest) String() string {
@@ -4516,8 +5757,14 @@ func (s *ListFeatureViewsShrinkRequest) SetType(v string) *ListFeatureViewsShrin
 
 type ListFeatureViewsResponseBody struct {
 	FeatureViews []*ListFeatureViewsResponseBodyFeatureViews `json:"FeatureViews,omitempty" xml:"FeatureViews,omitempty" type:"Repeated"`
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount   *int64                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// C03B2680-AC9C-59CD-93C5-8142B92537FA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListFeatureViewsResponseBody) String() string {
@@ -4544,20 +5791,59 @@ func (s *ListFeatureViewsResponseBody) SetTotalCount(v int64) *ListFeatureViewsR
 }
 
 type ListFeatureViewsResponseBodyFeatureViews struct {
-	FeatureEntityName      *string `json:"FeatureEntityName,omitempty" xml:"FeatureEntityName,omitempty"`
-	FeatureViewId          *string `json:"FeatureViewId,omitempty" xml:"FeatureViewId,omitempty"`
-	GmtCreateTime          *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime        *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	Name                   *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Owner                  *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	ProjectId              *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectName            *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	RegisterDatasourceId   *string `json:"RegisterDatasourceId,omitempty" xml:"RegisterDatasourceId,omitempty"`
+	// example:
+	//
+	// featureEntity1
+	FeatureEntityName *string `json:"FeatureEntityName,omitempty" xml:"FeatureEntityName,omitempty"`
+	// example:
+	//
+	// 3
+	FeatureViewId *string `json:"FeatureViewId,omitempty" xml:"FeatureViewId,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// featureView1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 12321421412****
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 3
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// project1
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// 4
+	RegisterDatasourceId *string `json:"RegisterDatasourceId,omitempty" xml:"RegisterDatasourceId,omitempty"`
+	// example:
+	//
+	// datasource1
 	RegisterDatasourceName *string `json:"RegisterDatasourceName,omitempty" xml:"RegisterDatasourceName,omitempty"`
-	RegisterTable          *string `json:"RegisterTable,omitempty" xml:"RegisterTable,omitempty"`
-	TTL                    *int32  `json:"TTL,omitempty" xml:"TTL,omitempty"`
-	Type                   *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	WriteToFeatureDB       *bool   `json:"WriteToFeatureDB,omitempty" xml:"WriteToFeatureDB,omitempty"`
+	// example:
+	//
+	// table1
+	RegisterTable *string `json:"RegisterTable,omitempty" xml:"RegisterTable,omitempty"`
+	// example:
+	//
+	// 90
+	TTL *int32 `json:"TTL,omitempty" xml:"TTL,omitempty"`
+	// example:
+	//
+	// Batch
+	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	WriteToFeatureDB *bool   `json:"WriteToFeatureDB,omitempty" xml:"WriteToFeatureDB,omitempty"`
 }
 
 func (s ListFeatureViewsResponseBodyFeatureViews) String() string {
@@ -4668,11 +5954,26 @@ func (s *ListFeatureViewsResponse) SetBody(v *ListFeatureViewsResponseBody) *Lis
 }
 
 type ListInstancesRequest struct {
-	Order      *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SortBy     *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// DESC
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// GmtCreateTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListInstancesRequest) String() string {
@@ -4709,9 +6010,15 @@ func (s *ListInstancesRequest) SetStatus(v string) *ListInstancesRequest {
 }
 
 type ListInstancesResponseBody struct {
-	Instances  []*ListInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Instances []*ListInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2CA11923-2A3D-5E5A-8314-E699D2DD15DE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListInstancesResponseBody) String() string {
@@ -4738,12 +6045,30 @@ func (s *ListInstancesResponseBody) SetTotalCount(v int64) *ListInstancesRespons
 }
 
 type ListInstancesResponseBodyInstances struct {
-	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2023-07-04T11:26:09.036+08:00
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2023-07-04T11:26:09.036+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// featureStore-cn-7mz2xfu****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// Initializing
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// Basic
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListInstancesResponseBodyInstances) String() string {
@@ -4815,13 +6140,36 @@ func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInsta
 
 type ListLabelTablesRequest struct {
 	LabelTableIds []*string `json:"LabelTableIds,omitempty" xml:"LabelTableIds,omitempty" type:"Repeated"`
-	Name          *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Order         *string   `json:"Order,omitempty" xml:"Order,omitempty"`
-	Owner         *string   `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	PageNumber    *int64    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int64    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProjectId     *string   `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	SortBy        *string   `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// label_table1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Asc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1231432432****
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 10
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 1
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// project1
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// GmtModifiedTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 }
 
 func (s ListLabelTablesRequest) String() string {
@@ -4874,13 +6222,36 @@ func (s *ListLabelTablesRequest) SetSortBy(v string) *ListLabelTablesRequest {
 
 type ListLabelTablesShrinkRequest struct {
 	LabelTableIdsShrink *string `json:"LabelTableIds,omitempty" xml:"LabelTableIds,omitempty"`
-	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Order               *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	Owner               *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	PageNumber          *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize            *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProjectId           *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	SortBy              *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// label_table1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Asc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1231432432****
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 10
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 1
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// project1
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// GmtModifiedTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 }
 
 func (s ListLabelTablesShrinkRequest) String() string {
@@ -4933,8 +6304,14 @@ func (s *ListLabelTablesShrinkRequest) SetSortBy(v string) *ListLabelTablesShrin
 
 type ListLabelTablesResponseBody struct {
 	LabelTables []*ListLabelTablesResponseBodyLabelTables `json:"LabelTables,omitempty" xml:"LabelTables,omitempty" type:"Repeated"`
-	RequestId   *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int64                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 21
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListLabelTablesResponseBody) String() string {
@@ -4961,15 +6338,42 @@ func (s *ListLabelTablesResponseBody) SetTotalCount(v int64) *ListLabelTablesRes
 }
 
 type ListLabelTablesResponseBodyLabelTables struct {
-	DatasourceId    *string `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
-	DatasourceName  *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
-	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 3
+	DatasourceId *string `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	// example:
+	//
+	// datasource1
+	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	LabelTableId    *string `json:"LabelTableId,omitempty" xml:"LabelTableId,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Owner           *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	ProjectId       *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectName     *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// 3
+	LabelTableId *string `json:"LabelTableId,omitempty" xml:"LabelTableId,omitempty"`
+	// example:
+	//
+	// label_table1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 123214213214
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// project1
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
 func (s ListLabelTablesResponseBodyLabelTables) String() string {
@@ -5055,6 +6459,9 @@ func (s *ListLabelTablesResponse) SetBody(v *ListLabelTablesResponseBody) *ListL
 }
 
 type ListModelFeatureAvailableFeaturesRequest struct {
+	// example:
+	//
+	// f1
 	FeatureName *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
 }
 
@@ -5073,8 +6480,14 @@ func (s *ListModelFeatureAvailableFeaturesRequest) SetFeatureName(v string) *Lis
 
 type ListModelFeatureAvailableFeaturesResponseBody struct {
 	AvaliableFeatures []*ListModelFeatureAvailableFeaturesResponseBodyAvaliableFeatures `json:"AvaliableFeatures,omitempty" xml:"AvaliableFeatures,omitempty" type:"Repeated"`
-	TotalCount        *int64                                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	RequestId         *string                                                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// ED4DEA2F-F216-57F0-AE28-08D791233280
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s ListModelFeatureAvailableFeaturesResponseBody) String() string {
@@ -5101,10 +6514,22 @@ func (s *ListModelFeatureAvailableFeaturesResponseBody) SetRequestId(v string) *
 }
 
 type ListModelFeatureAvailableFeaturesResponseBodyAvaliableFeatures struct {
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// age
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// user_fea
 	SourceName *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
+	// example:
+	//
+	// FeatureView
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// STRING
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListModelFeatureAvailableFeaturesResponseBodyAvaliableFeatures) String() string {
@@ -5166,13 +6591,36 @@ func (s *ListModelFeatureAvailableFeaturesResponse) SetBody(v *ListModelFeatureA
 
 type ListModelFeaturesRequest struct {
 	ModelFeatureIds []*string `json:"ModelFeatureIds,omitempty" xml:"ModelFeatureIds,omitempty" type:"Repeated"`
-	Name            *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Order           *string   `json:"Order,omitempty" xml:"Order,omitempty"`
-	Owner           *string   `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	PageNumber      *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProjectId       *string   `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	SortBy          *string   `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// model_feature1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// ASC
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 12323143****
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// DESC
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 }
 
 func (s ListModelFeaturesRequest) String() string {
@@ -5225,13 +6673,36 @@ func (s *ListModelFeaturesRequest) SetSortBy(v string) *ListModelFeaturesRequest
 
 type ListModelFeaturesShrinkRequest struct {
 	ModelFeatureIdsShrink *string `json:"ModelFeatureIds,omitempty" xml:"ModelFeatureIds,omitempty"`
-	Name                  *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Order                 *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	Owner                 *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	PageNumber            *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize              *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProjectId             *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	SortBy                *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// model_feature1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// ASC
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 12323143****
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// DESC
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 }
 
 func (s ListModelFeaturesShrinkRequest) String() string {
@@ -5284,8 +6755,14 @@ func (s *ListModelFeaturesShrinkRequest) SetSortBy(v string) *ListModelFeaturesS
 
 type ListModelFeaturesResponseBody struct {
 	ModelFeatures []*ListModelFeaturesResponseBodyModelFeatures `json:"ModelFeatures,omitempty" xml:"ModelFeatures,omitempty" type:"Repeated"`
-	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount    *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 2CA11923-2A3D-5E5A-8314-E699D2DD15DE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 4
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListModelFeaturesResponseBody) String() string {
@@ -5312,14 +6789,38 @@ func (s *ListModelFeaturesResponseBody) SetTotalCount(v int64) *ListModelFeature
 }
 
 type ListModelFeaturesResponseBodyModelFeatures struct {
-	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2023-07-04T14:46:22.227+08:00
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2023-07-04T14:46:22.227+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	LabelTableName  *string `json:"LabelTableName,omitempty" xml:"LabelTableName,omitempty"`
-	ModelFeatureId  *string `json:"ModelFeatureId,omitempty" xml:"ModelFeatureId,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Owner           *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	ProjectId       *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectName     *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// label_table_1
+	LabelTableName *string `json:"LabelTableName,omitempty" xml:"LabelTableName,omitempty"`
+	// example:
+	//
+	// 3
+	ModelFeatureId *string `json:"ModelFeatureId,omitempty" xml:"ModelFeatureId,omitempty"`
+	// example:
+	//
+	// model_feature1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1231243253****
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 5
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// project1
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
 func (s ListModelFeaturesResponseBodyModelFeatures) String() string {
@@ -5400,8 +6901,11 @@ func (s *ListModelFeaturesResponse) SetBody(v *ListModelFeaturesResponseBody) *L
 }
 
 type ListProjectFeatureViewOwnersResponseBody struct {
-	Owners    []*string `json:"Owners,omitempty" xml:"Owners,omitempty" type:"Repeated"`
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Owners []*string `json:"Owners,omitempty" xml:"Owners,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0FBBE454-9BD1-5D8F-9129-D14DB7FAFE0B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListProjectFeatureViewOwnersResponseBody) String() string {
@@ -5452,6 +6956,9 @@ func (s *ListProjectFeatureViewOwnersResponse) SetBody(v *ListProjectFeatureView
 }
 
 type ListProjectFeatureViewTagsResponseBody struct {
+	// example:
+	//
+	// D3DB6C44-2EFD-5575-A58D-BED4BD07BE46
 	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Tags      []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
@@ -5505,8 +7012,14 @@ func (s *ListProjectFeatureViewTagsResponse) SetBody(v *ListProjectFeatureViewTa
 
 type ListProjectFeatureViewsResponseBody struct {
 	FeatureViews []*ListProjectFeatureViewsResponseBodyFeatureViews `json:"FeatureViews,omitempty" xml:"FeatureViews,omitempty" type:"Repeated"`
-	RequestId    *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount   *int64                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// AE2AF33E-0C0D-51A8-B89B-C5F1DF261D92
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListProjectFeatureViewsResponseBody) String() string {
@@ -5533,10 +7046,16 @@ func (s *ListProjectFeatureViewsResponseBody) SetTotalCount(v int64) *ListProjec
 }
 
 type ListProjectFeatureViewsResponseBodyFeatureViews struct {
+	// example:
+	//
+	// 3
 	FeatureViewId *string                                                    `json:"FeatureViewId,omitempty" xml:"FeatureViewId,omitempty"`
 	Features      []*ListProjectFeatureViewsResponseBodyFeatureViewsFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
-	Name          *string                                                    `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type          *string                                                    `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// feature_view1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListProjectFeatureViewsResponseBodyFeatureViews) String() string {
@@ -5569,8 +7088,14 @@ func (s *ListProjectFeatureViewsResponseBodyFeatureViews) SetType(v string) *Lis
 
 type ListProjectFeatureViewsResponseBodyFeatureViewsFeatures struct {
 	Attributes []*string `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
-	Name       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type       *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// f1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// INT32
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListProjectFeatureViewsResponseBodyFeatureViewsFeatures) String() string {
@@ -5626,14 +7151,35 @@ func (s *ListProjectFeatureViewsResponse) SetBody(v *ListProjectFeatureViewsResp
 }
 
 type ListProjectsRequest struct {
-	Name        *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Order       *string   `json:"Order,omitempty" xml:"Order,omitempty"`
-	Owner       *string   `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	PageNumber  *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProjectIds  []*string `json:"ProjectIds,omitempty" xml:"ProjectIds,omitempty" type:"Repeated"`
-	SortBy      *string   `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	WorkspaceId *string   `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// fs1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Asc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 134324352****
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize   *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProjectIds []*string `json:"ProjectIds,omitempty" xml:"ProjectIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// GmtModifiedTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// 234
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListProjectsRequest) String() string {
@@ -5685,14 +7231,35 @@ func (s *ListProjectsRequest) SetWorkspaceId(v string) *ListProjectsRequest {
 }
 
 type ListProjectsShrinkRequest struct {
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Order            *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	Owner            *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	PageNumber       *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// fs1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Asc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 134324352****
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
 	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ProjectIdsShrink *string `json:"ProjectIds,omitempty" xml:"ProjectIds,omitempty"`
-	SortBy           *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	WorkspaceId      *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// GmtModifiedTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// 234
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListProjectsShrinkRequest) String() string {
@@ -5744,9 +7311,15 @@ func (s *ListProjectsShrinkRequest) SetWorkspaceId(v string) *ListProjectsShrink
 }
 
 type ListProjectsResponseBody struct {
-	Projects   []*ListProjectsResponseBodyProjects `json:"Projects,omitempty" xml:"Projects,omitempty" type:"Repeated"`
-	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Projects []*ListProjectsResponseBodyProjects `json:"Projects,omitempty" xml:"Projects,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 44933189-493B-5C43-A5C6-11EEC2A43520
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListProjectsResponseBody) String() string {
@@ -5773,22 +7346,70 @@ func (s *ListProjectsResponseBody) SetTotalCount(v int64) *ListProjectsResponseB
 }
 
 type ListProjectsResponseBodyProjects struct {
-	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	FeatureEntityCount    *int32  `json:"FeatureEntityCount,omitempty" xml:"FeatureEntityCount,omitempty"`
-	FeatureViewCount      *int32  `json:"FeatureViewCount,omitempty" xml:"FeatureViewCount,omitempty"`
-	GmtCreateTime         *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime       *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	ModelCount            *int32  `json:"ModelCount,omitempty" xml:"ModelCount,omitempty"`
-	Name                  *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OfflineDatasourceId   *string `json:"OfflineDatasourceId,omitempty" xml:"OfflineDatasourceId,omitempty"`
+	// example:
+	//
+	// This is a test.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 10
+	FeatureEntityCount *int32 `json:"FeatureEntityCount,omitempty" xml:"FeatureEntityCount,omitempty"`
+	// example:
+	//
+	// 10
+	FeatureViewCount *int32 `json:"FeatureViewCount,omitempty" xml:"FeatureViewCount,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// 5
+	ModelCount *int32 `json:"ModelCount,omitempty" xml:"ModelCount,omitempty"`
+	// example:
+	//
+	// project1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 4
+	OfflineDatasourceId *string `json:"OfflineDatasourceId,omitempty" xml:"OfflineDatasourceId,omitempty"`
+	// example:
+	//
+	// datasource1
 	OfflineDatasourceName *string `json:"OfflineDatasourceName,omitempty" xml:"OfflineDatasourceName,omitempty"`
+	// example:
+	//
+	// MaxCompute
 	OfflineDatasourceType *string `json:"OfflineDatasourceType,omitempty" xml:"OfflineDatasourceType,omitempty"`
-	OfflineLifecycle      *int32  `json:"OfflineLifecycle,omitempty" xml:"OfflineLifecycle,omitempty"`
-	OnlineDatasourceId    *string `json:"OnlineDatasourceId,omitempty" xml:"OnlineDatasourceId,omitempty"`
-	OnlineDatasourceName  *string `json:"OnlineDatasourceName,omitempty" xml:"OnlineDatasourceName,omitempty"`
-	OnlineDatasourceType  *string `json:"OnlineDatasourceType,omitempty" xml:"OnlineDatasourceType,omitempty"`
-	Owner                 *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	ProjectId             *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// 10
+	OfflineLifecycle *int32 `json:"OfflineLifecycle,omitempty" xml:"OfflineLifecycle,omitempty"`
+	// example:
+	//
+	// 5
+	OnlineDatasourceId *string `json:"OnlineDatasourceId,omitempty" xml:"OnlineDatasourceId,omitempty"`
+	// example:
+	//
+	// datasource2
+	OnlineDatasourceName *string `json:"OnlineDatasourceName,omitempty" xml:"OnlineDatasourceName,omitempty"`
+	// example:
+	//
+	// Hologres
+	OnlineDatasourceType *string `json:"OnlineDatasourceType,omitempty" xml:"OnlineDatasourceType,omitempty"`
+	// example:
+	//
+	// 1232132543543****
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 3
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s ListProjectsResponseBodyProjects) String() string {
@@ -5909,8 +7530,14 @@ func (s *ListProjectsResponse) SetBody(v *ListProjectsResponseBody) *ListProject
 }
 
 type ListTaskLogsRequest struct {
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListTaskLogsRequest) String() string {
@@ -5932,9 +7559,15 @@ func (s *ListTaskLogsRequest) SetPageSize(v int32) *ListTaskLogsRequest {
 }
 
 type ListTaskLogsResponseBody struct {
-	Logs       []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
-	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Logs []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 72F15A8A-5A28-5B18-A0DE-0EABD7D3245A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListTaskLogsResponseBody) String() string {
@@ -5990,14 +7623,37 @@ func (s *ListTaskLogsResponse) SetBody(v *ListTaskLogsResponseBody) *ListTaskLog
 }
 
 type ListTasksRequest struct {
-	ObjectId   *string   `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	ObjectType *string   `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
-	PageNumber *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProjectId  *string   `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	Status     *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskIds    []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
-	Type       *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 4
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// example:
+	//
+	// ModelFeature
+	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// Running
+	Status  *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskIds []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// OfflineToOnline
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListTasksRequest) String() string {
@@ -6049,14 +7705,37 @@ func (s *ListTasksRequest) SetType(v string) *ListTasksRequest {
 }
 
 type ListTasksShrinkRequest struct {
-	ObjectId      *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	ObjectType    *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
-	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProjectId     *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// 4
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// example:
+	//
+	// ModelFeature
+	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// Running
 	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	TaskIdsShrink *string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty"`
-	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// OfflineToOnline
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListTasksShrinkRequest) String() string {
@@ -6108,9 +7787,15 @@ func (s *ListTasksShrinkRequest) SetType(v string) *ListTasksShrinkRequest {
 }
 
 type ListTasksResponseBody struct {
-	RequestId  *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tasks      []*ListTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
-	TotalCount *int32                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// C33E160C-BFCA-5719-B958-942850E949F6
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Tasks     []*ListTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListTasksResponseBody) String() string {
@@ -6137,16 +7822,46 @@ func (s *ListTasksResponseBody) SetTotalCount(v int32) *ListTasksResponseBody {
 }
 
 type ListTasksResponseBodyTasks struct {
-	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2023-07-04T11:26:09.036+08:00
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2023-07-04T11:26:09.036+08:00
 	GmtExecutedTime *string `json:"GmtExecutedTime,omitempty" xml:"GmtExecutedTime,omitempty"`
+	// example:
+	//
+	// 2023-07-04T11:26:09.036+08:00
 	GmtFinishedTime *string `json:"GmtFinishedTime,omitempty" xml:"GmtFinishedTime,omitempty"`
-	ObjectId        *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	ObjectType      *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
-	ProjectId       *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectName     *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId          *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 5
+	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// example:
+	//
+	// ModelFeature
+	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	// example:
+	//
+	// 4
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// project_1
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 4
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// OfflineToOnline
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListTasksResponseBodyTasks) String() string {
@@ -6237,9 +7952,25 @@ func (s *ListTasksResponse) SetBody(v *ListTasksResponseBody) *ListTasksResponse
 }
 
 type PublishFeatureViewTableRequest struct {
-	Config          *string                           `json:"Config,omitempty" xml:"Config,omitempty"`
-	EventTime       *string                           `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
-	Mode            *string                           `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// example:
+	//
+	// {}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
+	EventTime *string `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Overwrite
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
 	OfflineToOnline *bool                             `json:"OfflineToOnline,omitempty" xml:"OfflineToOnline,omitempty"`
 	Partitions      map[string]map[string]interface{} `json:"Partitions,omitempty" xml:"Partitions,omitempty"`
 }
@@ -6278,6 +8009,9 @@ func (s *PublishFeatureViewTableRequest) SetPartitions(v map[string]map[string]i
 }
 
 type PublishFeatureViewTableResponseBody struct {
+	// example:
+	//
+	// 627B5776-4D06-5A49-8A04-508AA39653F4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
@@ -6330,9 +8064,22 @@ func (s *PublishFeatureViewTableResponse) SetBody(v *PublishFeatureViewTableResp
 }
 
 type UpdateDatasourceRequest struct {
+	// example:
+	//
+	// {"address": ""}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Uri    *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// datasource1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// igraph_instance1
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s UpdateDatasourceRequest) String() string {
@@ -6359,6 +8106,9 @@ func (s *UpdateDatasourceRequest) SetUri(v string) *UpdateDatasourceRequest {
 }
 
 type UpdateDatasourceResponseBody struct {
+	// example:
+	//
+	// C33E160C-BFCA-5719-B958-942850E949F6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6405,9 +8155,16 @@ func (s *UpdateDatasourceResponse) SetBody(v *UpdateDatasourceResponseBody) *Upd
 }
 
 type UpdateLabelTableRequest struct {
-	DatasourceId *string                          `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
-	Fields       []*UpdateLabelTableRequestFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
-	Name         *string                          `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 3
+	DatasourceId *string `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	// This parameter is required.
+	Fields []*UpdateLabelTableRequestFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// example:
+	//
+	// rec_test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s UpdateLabelTableRequest) String() string {
@@ -6434,9 +8191,20 @@ func (s *UpdateLabelTableRequest) SetName(v string) *UpdateLabelTableRequest {
 }
 
 type UpdateLabelTableRequestFields struct {
+	// This parameter is required.
 	Attributes []*string `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
-	Name       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type       *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lat
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DOUBLE
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpdateLabelTableRequestFields) String() string {
@@ -6463,6 +8231,9 @@ func (s *UpdateLabelTableRequestFields) SetType(v string) *UpdateLabelTableReque
 }
 
 type UpdateLabelTableResponseBody struct {
+	// example:
+	//
+	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6509,9 +8280,12 @@ func (s *UpdateLabelTableResponse) SetBody(v *UpdateLabelTableResponseBody) *Upd
 }
 
 type UpdateModelFeatureRequest struct {
-	Features               []*UpdateModelFeatureRequestFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
-	LabelTableId           *string                              `json:"LabelTableId,omitempty" xml:"LabelTableId,omitempty"`
-	SequenceFeatureViewIds []*string                            `json:"SequenceFeatureViewIds,omitempty" xml:"SequenceFeatureViewIds,omitempty" type:"Repeated"`
+	Features []*UpdateModelFeatureRequestFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 4
+	LabelTableId           *string   `json:"LabelTableId,omitempty" xml:"LabelTableId,omitempty"`
+	SequenceFeatureViewIds []*string `json:"SequenceFeatureViewIds,omitempty" xml:"SequenceFeatureViewIds,omitempty" type:"Repeated"`
 }
 
 func (s UpdateModelFeatureRequest) String() string {
@@ -6538,10 +8312,28 @@ func (s *UpdateModelFeatureRequest) SetSequenceFeatureViewIds(v []*string) *Upda
 }
 
 type UpdateModelFeatureRequestFeatures struct {
-	AliasName     *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// example:
+	//
+	// sex
+	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5
 	FeatureViewId *string `json:"FeatureViewId,omitempty" xml:"FeatureViewId,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gender
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// STRING
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpdateModelFeatureRequestFeatures) String() string {
@@ -6573,6 +8365,9 @@ func (s *UpdateModelFeatureRequestFeatures) SetType(v string) *UpdateModelFeatur
 }
 
 type UpdateModelFeatureResponseBody struct {
+	// example:
+	//
+	// C33E160C-BFCA-5719-B958-942850E949F6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6619,8 +8414,9 @@ func (s *UpdateModelFeatureResponse) SetBody(v *UpdateModelFeatureResponseBody) 
 }
 
 type UpdateModelFeatureFGFeatureRequest struct {
-	LookupFeatures   []*UpdateModelFeatureFGFeatureRequestLookupFeatures   `json:"LookupFeatures,omitempty" xml:"LookupFeatures,omitempty" type:"Repeated"`
-	RawFeatures      []*UpdateModelFeatureFGFeatureRequestRawFeatures      `json:"RawFeatures,omitempty" xml:"RawFeatures,omitempty" type:"Repeated"`
+	LookupFeatures []*UpdateModelFeatureFGFeatureRequestLookupFeatures `json:"LookupFeatures,omitempty" xml:"LookupFeatures,omitempty" type:"Repeated"`
+	RawFeatures    []*UpdateModelFeatureFGFeatureRequestRawFeatures    `json:"RawFeatures,omitempty" xml:"RawFeatures,omitempty" type:"Repeated"`
+	// This parameter is required.
 	Reserves         []*string                                             `json:"Reserves,omitempty" xml:"Reserves,omitempty" type:"Repeated"`
 	SequenceFeatures []*UpdateModelFeatureFGFeatureRequestSequenceFeatures `json:"SequenceFeatures,omitempty" xml:"SequenceFeatures,omitempty" type:"Repeated"`
 }
@@ -6654,13 +8450,48 @@ func (s *UpdateModelFeatureFGFeatureRequest) SetSequenceFeatures(v []*UpdateMode
 }
 
 type UpdateModelFeatureFGFeatureRequestLookupFeatures struct {
-	DefaultValue     *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	FeatureName      *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// -1024
+	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// item_id
+	FeatureName *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Item
 	KeyFeatureDomain *string `json:"KeyFeatureDomain,omitempty" xml:"KeyFeatureDomain,omitempty"`
-	KeyFeatureName   *string `json:"KeyFeatureName,omitempty" xml:"KeyFeatureName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	KeyFeatureName *string `json:"KeyFeatureName,omitempty" xml:"KeyFeatureName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// User
 	MapFeatureDomain *string `json:"MapFeatureDomain,omitempty" xml:"MapFeatureDomain,omitempty"`
-	MapFeatureName   *string `json:"MapFeatureName,omitempty" xml:"MapFeatureName,omitempty"`
-	ValueType        *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// item_id
+	MapFeatureName *string `json:"MapFeatureName,omitempty" xml:"MapFeatureName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// STRING
+	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
 }
 
 func (s UpdateModelFeatureFGFeatureRequestLookupFeatures) String() string {
@@ -6707,12 +8538,42 @@ func (s *UpdateModelFeatureFGFeatureRequestLookupFeatures) SetValueType(v string
 }
 
 type UpdateModelFeatureFGFeatureRequestRawFeatures struct {
-	DefaultValue     *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	FeatureDomain    *string `json:"FeatureDomain,omitempty" xml:"FeatureDomain,omitempty"`
-	FeatureName      *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
-	FeatureType      *string `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// -1024
+	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// User
+	FeatureDomain *string `json:"FeatureDomain,omitempty" xml:"FeatureDomain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// item_id
+	FeatureName *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// IdFeature
+	FeatureType *string `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// item_id
 	InputFeatureName *string `json:"InputFeatureName,omitempty" xml:"InputFeatureName,omitempty"`
-	ValueType        *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// STRING
+	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
 }
 
 func (s UpdateModelFeatureFGFeatureRequestRawFeatures) String() string {
@@ -6754,9 +8615,29 @@ func (s *UpdateModelFeatureFGFeatureRequestRawFeatures) SetValueType(v string) *
 }
 
 type UpdateModelFeatureFGFeatureRequestSequenceFeatures struct {
-	AttributeDelim *string                                                          `json:"AttributeDelim,omitempty" xml:"AttributeDelim,omitempty"`
-	FeatureName    *string                                                          `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
-	SequenceDelim  *string                                                          `json:"SequenceDelim,omitempty" xml:"SequenceDelim,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// #
+	AttributeDelim *string `json:"AttributeDelim,omitempty" xml:"AttributeDelim,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// item_id
+	FeatureName *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ;
+	SequenceDelim *string `json:"SequenceDelim,omitempty" xml:"SequenceDelim,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 50
 	SequenceLength *int64                                                           `json:"SequenceLength,omitempty" xml:"SequenceLength,omitempty"`
 	SubFeatures    []*UpdateModelFeatureFGFeatureRequestSequenceFeaturesSubFeatures `json:"SubFeatures,omitempty" xml:"SubFeatures,omitempty" type:"Repeated"`
 }
@@ -6795,12 +8676,42 @@ func (s *UpdateModelFeatureFGFeatureRequestSequenceFeatures) SetSubFeatures(v []
 }
 
 type UpdateModelFeatureFGFeatureRequestSequenceFeaturesSubFeatures struct {
-	DefaultValue     *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	FeatureDomain    *string `json:"FeatureDomain,omitempty" xml:"FeatureDomain,omitempty"`
-	FeatureName      *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
-	FeatureType      *string `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// -1024
+	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// User
+	FeatureDomain *string `json:"FeatureDomain,omitempty" xml:"FeatureDomain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// item_id
+	FeatureName *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// RawFeature
+	FeatureType *string `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// item_id
 	InputFeatureName *string `json:"InputFeatureName,omitempty" xml:"InputFeatureName,omitempty"`
-	ValueType        *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// STRING
+	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
 }
 
 func (s UpdateModelFeatureFGFeatureRequestSequenceFeaturesSubFeatures) String() string {
@@ -6842,6 +8753,9 @@ func (s *UpdateModelFeatureFGFeatureRequestSequenceFeaturesSubFeatures) SetValue
 }
 
 type UpdateModelFeatureFGFeatureResponseBody struct {
+	// example:
+	//
+	// 7D497816-607C-5B67-97B1-61354B6ACB2B
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -6888,6 +8802,11 @@ func (s *UpdateModelFeatureFGFeatureResponse) SetBody(v *UpdateModelFeatureFGFea
 }
 
 type UpdateModelFeatureFGInfoRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"features": [{"feature_name": "item_id","feature_type": "id_feature","value_type": "String","expression": "item:item_id","default_value": "-1024","combiner": "mean","need_prefix": false},{"feature_name": "f1","feature_type": "lookup_feature","value_type": "Integer","map": "item:f1","key": "user:1","default_value": "0","combiner": "mean","need_prefix": false,"needDiscrete": false,"needWeighting": false,"needKey": false}],"reserves": ["f1"]}
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 }
 
@@ -6905,6 +8824,9 @@ func (s *UpdateModelFeatureFGInfoRequest) SetContent(v string) *UpdateModelFeatu
 }
 
 type UpdateModelFeatureFGInfoResponseBody struct {
+	// example:
+	//
+	// E8CA47C5-B3E8-5BD7-9910-245432A365EB
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -6951,8 +8873,14 @@ func (s *UpdateModelFeatureFGInfoResponse) SetBody(v *UpdateModelFeatureFGInfoRe
 }
 
 type UpdateProjectRequest struct {
+	// example:
+	//
+	// This is a test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// project1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s UpdateProjectRequest) String() string {
@@ -6974,6 +8902,9 @@ func (s *UpdateProjectRequest) SetName(v string) *UpdateProjectRequest {
 }
 
 type UpdateProjectResponseBody struct {
+	// example:
+	//
+	// 2150233F-A1F7-54D2-B5B5-8A70567549BD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7020,6 +8951,11 @@ func (s *UpdateProjectResponse) SetBody(v *UpdateProjectResponseBody) *UpdatePro
 }
 
 type WriteFeatureViewTableRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Merge
 	Mode          *string                                    `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	Partitions    map[string]map[string]interface{}          `json:"Partitions,omitempty" xml:"Partitions,omitempty"`
 	UrlDatasource *WriteFeatureViewTableRequestUrlDatasource `json:"UrlDatasource,omitempty" xml:"UrlDatasource,omitempty" type:"Struct"`
@@ -7049,9 +8985,18 @@ func (s *WriteFeatureViewTableRequest) SetUrlDatasource(v *WriteFeatureViewTable
 }
 
 type WriteFeatureViewTableRequestUrlDatasource struct {
-	Delimiter  *string `json:"Delimiter,omitempty" xml:"Delimiter,omitempty"`
-	OmitHeader *bool   `json:"OmitHeader,omitempty" xml:"OmitHeader,omitempty"`
-	Path       *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// ,
+	Delimiter *string `json:"Delimiter,omitempty" xml:"Delimiter,omitempty"`
+	// example:
+	//
+	// true
+	OmitHeader *bool `json:"OmitHeader,omitempty" xml:"OmitHeader,omitempty"`
+	// example:
+	//
+	// xxx.xxx.com/file.csv
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
 func (s WriteFeatureViewTableRequestUrlDatasource) String() string {
@@ -7078,6 +9023,9 @@ func (s *WriteFeatureViewTableRequestUrlDatasource) SetPath(v string) *WriteFeat
 }
 
 type WriteFeatureViewTableResponseBody struct {
+	// example:
+	//
+	// 0C89F5E1-7F24-5EEC-9F05-508A39278CC8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
@@ -7130,7 +9078,17 @@ func (s *WriteFeatureViewTableResponse) SetBody(v *WriteFeatureViewTableResponse
 }
 
 type WriteProjectFeatureEntityHotIdsRequest struct {
-	HotIds  *string `json:"HotIds,omitempty" xml:"HotIds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1,2,3
+	HotIds *string `json:"HotIds,omitempty" xml:"HotIds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20221213
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -7153,6 +9111,9 @@ func (s *WriteProjectFeatureEntityHotIdsRequest) SetVersion(v string) *WriteProj
 }
 
 type WriteProjectFeatureEntityHotIdsResponseBody struct {
+	// example:
+	//
+	// 6B662A64-E4BF-56F8-BF5F-4C63F34EC0A8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7245,6 +9206,17 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 切换生效的热点数据的版本。
+//
+// @param request - ChangeProjectFeatureEntityHotIdVersionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeProjectFeatureEntityHotIdVersionResponse
 func (client *Client) ChangeProjectFeatureEntityHotIdVersionWithOptions(InstanceId *string, ProjectId *string, FeatureEntityName *string, request *ChangeProjectFeatureEntityHotIdVersionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ChangeProjectFeatureEntityHotIdVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7279,6 +9251,13 @@ func (client *Client) ChangeProjectFeatureEntityHotIdVersionWithOptions(Instance
 	return _result, _err
 }
 
+// Summary:
+//
+// 切换生效的热点数据的版本。
+//
+// @param request - ChangeProjectFeatureEntityHotIdVersionRequest
+//
+// @return ChangeProjectFeatureEntityHotIdVersionResponse
 func (client *Client) ChangeProjectFeatureEntityHotIdVersion(InstanceId *string, ProjectId *string, FeatureEntityName *string, request *ChangeProjectFeatureEntityHotIdVersionRequest) (_result *ChangeProjectFeatureEntityHotIdVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7291,6 +9270,17 @@ func (client *Client) ChangeProjectFeatureEntityHotIdVersion(InstanceId *string,
 	return _result, _err
 }
 
+// Summary:
+//
+// 检测资源连接状态。
+//
+// @param request - CheckInstanceDatasourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckInstanceDatasourceResponse
 func (client *Client) CheckInstanceDatasourceWithOptions(InstanceId *string, request *CheckInstanceDatasourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CheckInstanceDatasourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7333,6 +9323,13 @@ func (client *Client) CheckInstanceDatasourceWithOptions(InstanceId *string, req
 	return _result, _err
 }
 
+// Summary:
+//
+// 检测资源连接状态。
+//
+// @param request - CheckInstanceDatasourceRequest
+//
+// @return CheckInstanceDatasourceResponse
 func (client *Client) CheckInstanceDatasource(InstanceId *string, request *CheckInstanceDatasourceRequest) (_result *CheckInstanceDatasourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7345,6 +9342,17 @@ func (client *Client) CheckInstanceDatasource(InstanceId *string, request *Check
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建数据源。
+//
+// @param request - CreateDatasourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDatasourceResponse
 func (client *Client) CreateDatasourceWithOptions(InstanceId *string, request *CreateDatasourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDatasourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7395,6 +9403,13 @@ func (client *Client) CreateDatasourceWithOptions(InstanceId *string, request *C
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建数据源。
+//
+// @param request - CreateDatasourceRequest
+//
+// @return CreateDatasourceResponse
 func (client *Client) CreateDatasource(InstanceId *string, request *CreateDatasourceRequest) (_result *CreateDatasourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7407,6 +9422,17 @@ func (client *Client) CreateDatasource(InstanceId *string, request *CreateDataso
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建特征实体
+//
+// @param request - CreateFeatureEntityRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFeatureEntityResponse
 func (client *Client) CreateFeatureEntityWithOptions(InstanceId *string, request *CreateFeatureEntityRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateFeatureEntityResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7449,6 +9475,13 @@ func (client *Client) CreateFeatureEntityWithOptions(InstanceId *string, request
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建特征实体
+//
+// @param request - CreateFeatureEntityRequest
+//
+// @return CreateFeatureEntityResponse
 func (client *Client) CreateFeatureEntity(InstanceId *string, request *CreateFeatureEntityRequest) (_result *CreateFeatureEntityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7461,6 +9494,17 @@ func (client *Client) CreateFeatureEntity(InstanceId *string, request *CreateFea
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建特征视图。
+//
+// @param request - CreateFeatureViewRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFeatureViewResponse
 func (client *Client) CreateFeatureViewWithOptions(InstanceId *string, request *CreateFeatureViewRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateFeatureViewResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7543,6 +9587,13 @@ func (client *Client) CreateFeatureViewWithOptions(InstanceId *string, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建特征视图。
+//
+// @param request - CreateFeatureViewRequest
+//
+// @return CreateFeatureViewResponse
 func (client *Client) CreateFeatureView(InstanceId *string, request *CreateFeatureViewRequest) (_result *CreateFeatureViewResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7555,6 +9606,17 @@ func (client *Client) CreateFeatureView(InstanceId *string, request *CreateFeatu
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建Feature Store实例。
+//
+// @param request - CreateInstanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInstanceResponse
 func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7589,6 +9651,13 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建Feature Store实例。
+//
+// @param request - CreateInstanceRequest
+//
+// @return CreateInstanceResponse
 func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *CreateInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7601,6 +9670,17 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建label表
+//
+// @param request - CreateLabelTableRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLabelTableResponse
 func (client *Client) CreateLabelTableWithOptions(InstanceId *string, request *CreateLabelTableRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLabelTableResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7647,6 +9727,13 @@ func (client *Client) CreateLabelTableWithOptions(InstanceId *string, request *C
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建label表
+//
+// @param request - CreateLabelTableRequest
+//
+// @return CreateLabelTableResponse
 func (client *Client) CreateLabelTable(InstanceId *string, request *CreateLabelTableRequest) (_result *CreateLabelTableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7659,6 +9746,17 @@ func (client *Client) CreateLabelTable(InstanceId *string, request *CreateLabelT
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建模型特征。
+//
+// @param request - CreateModelFeatureRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateModelFeatureResponse
 func (client *Client) CreateModelFeatureWithOptions(InstanceId *string, request *CreateModelFeatureRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateModelFeatureResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7709,6 +9807,13 @@ func (client *Client) CreateModelFeatureWithOptions(InstanceId *string, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建模型特征。
+//
+// @param request - CreateModelFeatureRequest
+//
+// @return CreateModelFeatureResponse
 func (client *Client) CreateModelFeature(InstanceId *string, request *CreateModelFeatureRequest) (_result *CreateModelFeatureResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7721,6 +9826,15 @@ func (client *Client) CreateModelFeature(InstanceId *string, request *CreateMode
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建训练样本FG表。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateModelFeatureTrainingSetFGTableResponse
 func (client *Client) CreateModelFeatureTrainingSetFGTableWithOptions(InstanceId *string, ModelFeatureId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateModelFeatureTrainingSetFGTableResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -7745,6 +9859,11 @@ func (client *Client) CreateModelFeatureTrainingSetFGTableWithOptions(InstanceId
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建训练样本FG表。
+//
+// @return CreateModelFeatureTrainingSetFGTableResponse
 func (client *Client) CreateModelFeatureTrainingSetFGTable(InstanceId *string, ModelFeatureId *string) (_result *CreateModelFeatureTrainingSetFGTableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7757,6 +9876,17 @@ func (client *Client) CreateModelFeatureTrainingSetFGTable(InstanceId *string, M
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建FeatureStore项目
+//
+// @param request - CreateProjectRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateProjectResponse
 func (client *Client) CreateProjectWithOptions(InstanceId *string, request *CreateProjectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7811,6 +9941,13 @@ func (client *Client) CreateProjectWithOptions(InstanceId *string, request *Crea
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建FeatureStore项目
+//
+// @param request - CreateProjectRequest
+//
+// @return CreateProjectResponse
 func (client *Client) CreateProject(InstanceId *string, request *CreateProjectRequest) (_result *CreateProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7823,6 +9960,17 @@ func (client *Client) CreateProject(InstanceId *string, request *CreateProjectRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建feature store服务账户角色
+//
+// @param request - CreateServiceIdentityRoleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateServiceIdentityRoleResponse
 func (client *Client) CreateServiceIdentityRoleWithOptions(request *CreateServiceIdentityRoleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateServiceIdentityRoleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7857,6 +10005,13 @@ func (client *Client) CreateServiceIdentityRoleWithOptions(request *CreateServic
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建feature store服务账户角色
+//
+// @param request - CreateServiceIdentityRoleRequest
+//
+// @return CreateServiceIdentityRoleResponse
 func (client *Client) CreateServiceIdentityRole(request *CreateServiceIdentityRoleRequest) (_result *CreateServiceIdentityRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7869,6 +10024,15 @@ func (client *Client) CreateServiceIdentityRole(request *CreateServiceIdentityRo
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除指定数据源。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDatasourceResponse
 func (client *Client) DeleteDatasourceWithOptions(InstanceId *string, DatasourceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteDatasourceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -7893,6 +10057,11 @@ func (client *Client) DeleteDatasourceWithOptions(InstanceId *string, Datasource
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除指定数据源。
+//
+// @return DeleteDatasourceResponse
 func (client *Client) DeleteDatasource(InstanceId *string, DatasourceId *string) (_result *DeleteDatasourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7905,6 +10074,15 @@ func (client *Client) DeleteDatasource(InstanceId *string, DatasourceId *string)
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除指定特征实体
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFeatureEntityResponse
 func (client *Client) DeleteFeatureEntityWithOptions(InstanceId *string, FeatureEntityId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteFeatureEntityResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -7929,6 +10107,11 @@ func (client *Client) DeleteFeatureEntityWithOptions(InstanceId *string, Feature
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除指定特征实体
+//
+// @return DeleteFeatureEntityResponse
 func (client *Client) DeleteFeatureEntity(InstanceId *string, FeatureEntityId *string) (_result *DeleteFeatureEntityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7941,6 +10124,15 @@ func (client *Client) DeleteFeatureEntity(InstanceId *string, FeatureEntityId *s
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除指定特征视图。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFeatureViewResponse
 func (client *Client) DeleteFeatureViewWithOptions(InstanceId *string, FeatureViewId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteFeatureViewResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -7965,6 +10157,11 @@ func (client *Client) DeleteFeatureViewWithOptions(InstanceId *string, FeatureVi
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除指定特征视图。
+//
+// @return DeleteFeatureViewResponse
 func (client *Client) DeleteFeatureView(InstanceId *string, FeatureViewId *string) (_result *DeleteFeatureViewResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7977,6 +10174,15 @@ func (client *Client) DeleteFeatureView(InstanceId *string, FeatureViewId *strin
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除label表
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteLabelTableResponse
 func (client *Client) DeleteLabelTableWithOptions(InstanceId *string, LabelTableId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteLabelTableResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -8001,6 +10207,11 @@ func (client *Client) DeleteLabelTableWithOptions(InstanceId *string, LabelTable
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除label表
+//
+// @return DeleteLabelTableResponse
 func (client *Client) DeleteLabelTable(InstanceId *string, LabelTableId *string) (_result *DeleteLabelTableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8013,6 +10224,15 @@ func (client *Client) DeleteLabelTable(InstanceId *string, LabelTableId *string)
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除指定模型特征。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteModelFeatureResponse
 func (client *Client) DeleteModelFeatureWithOptions(InstanceId *string, ModelFeatureId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteModelFeatureResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -8037,6 +10257,11 @@ func (client *Client) DeleteModelFeatureWithOptions(InstanceId *string, ModelFea
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除指定模型特征。
+//
+// @return DeleteModelFeatureResponse
 func (client *Client) DeleteModelFeature(InstanceId *string, ModelFeatureId *string) (_result *DeleteModelFeatureResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8049,6 +10274,15 @@ func (client *Client) DeleteModelFeature(InstanceId *string, ModelFeatureId *str
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除指定Feature Store项目。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteProjectResponse
 func (client *Client) DeleteProjectWithOptions(InstanceId *string, ProjectId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteProjectResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -8073,6 +10307,11 @@ func (client *Client) DeleteProjectWithOptions(InstanceId *string, ProjectId *st
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除指定Feature Store项目。
+//
+// @return DeleteProjectResponse
 func (client *Client) DeleteProject(InstanceId *string, ProjectId *string) (_result *DeleteProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8085,6 +10324,17 @@ func (client *Client) DeleteProject(InstanceId *string, ProjectId *string) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 导出训练样本FG表。
+//
+// @param request - ExportModelFeatureTrainingSetFGTableRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExportModelFeatureTrainingSetFGTableResponse
 func (client *Client) ExportModelFeatureTrainingSetFGTableWithOptions(InstanceId *string, ModelFeatureId *string, request *ExportModelFeatureTrainingSetFGTableRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExportModelFeatureTrainingSetFGTableResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8119,6 +10369,13 @@ func (client *Client) ExportModelFeatureTrainingSetFGTableWithOptions(InstanceId
 	return _result, _err
 }
 
+// Summary:
+//
+// 导出训练样本FG表。
+//
+// @param request - ExportModelFeatureTrainingSetFGTableRequest
+//
+// @return ExportModelFeatureTrainingSetFGTableResponse
 func (client *Client) ExportModelFeatureTrainingSetFGTable(InstanceId *string, ModelFeatureId *string, request *ExportModelFeatureTrainingSetFGTableRequest) (_result *ExportModelFeatureTrainingSetFGTableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8131,6 +10388,17 @@ func (client *Client) ExportModelFeatureTrainingSetFGTable(InstanceId *string, M
 	return _result, _err
 }
 
+// Summary:
+//
+// 导出训练集表。
+//
+// @param request - ExportModelFeatureTrainingSetTableRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExportModelFeatureTrainingSetTableResponse
 func (client *Client) ExportModelFeatureTrainingSetTableWithOptions(InstanceId *string, ModelFeatureId *string, request *ExportModelFeatureTrainingSetTableRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExportModelFeatureTrainingSetTableResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8173,6 +10441,13 @@ func (client *Client) ExportModelFeatureTrainingSetTableWithOptions(InstanceId *
 	return _result, _err
 }
 
+// Summary:
+//
+// 导出训练集表。
+//
+// @param request - ExportModelFeatureTrainingSetTableRequest
+//
+// @return ExportModelFeatureTrainingSetTableResponse
 func (client *Client) ExportModelFeatureTrainingSetTable(InstanceId *string, ModelFeatureId *string, request *ExportModelFeatureTrainingSetTableRequest) (_result *ExportModelFeatureTrainingSetTableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8185,6 +10460,15 @@ func (client *Client) ExportModelFeatureTrainingSetTable(InstanceId *string, Mod
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取数据源详细信息。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDatasourceResponse
 func (client *Client) GetDatasourceWithOptions(InstanceId *string, DatasourceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDatasourceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -8209,6 +10493,11 @@ func (client *Client) GetDatasourceWithOptions(InstanceId *string, DatasourceId 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取数据源详细信息。
+//
+// @return GetDatasourceResponse
 func (client *Client) GetDatasource(InstanceId *string, DatasourceId *string) (_result *GetDatasourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8221,6 +10510,15 @@ func (client *Client) GetDatasource(InstanceId *string, DatasourceId *string) (_
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取数据源下指定表的详细信息。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDatasourceTableResponse
 func (client *Client) GetDatasourceTableWithOptions(InstanceId *string, DatasourceId *string, TableName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDatasourceTableResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -8245,6 +10543,11 @@ func (client *Client) GetDatasourceTableWithOptions(InstanceId *string, Datasour
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取数据源下指定表的详细信息。
+//
+// @return GetDatasourceTableResponse
 func (client *Client) GetDatasourceTable(InstanceId *string, DatasourceId *string, TableName *string) (_result *GetDatasourceTableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8257,6 +10560,15 @@ func (client *Client) GetDatasourceTable(InstanceId *string, DatasourceId *strin
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取特征实体详细信息
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFeatureEntityResponse
 func (client *Client) GetFeatureEntityWithOptions(InstanceId *string, FeatureEntityId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFeatureEntityResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -8281,6 +10593,11 @@ func (client *Client) GetFeatureEntityWithOptions(InstanceId *string, FeatureEnt
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取特征实体详细信息
+//
+// @return GetFeatureEntityResponse
 func (client *Client) GetFeatureEntity(InstanceId *string, FeatureEntityId *string) (_result *GetFeatureEntityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8293,6 +10610,15 @@ func (client *Client) GetFeatureEntity(InstanceId *string, FeatureEntityId *stri
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取特征视图详细信息。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFeatureViewResponse
 func (client *Client) GetFeatureViewWithOptions(InstanceId *string, FeatureViewId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFeatureViewResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -8317,6 +10643,11 @@ func (client *Client) GetFeatureViewWithOptions(InstanceId *string, FeatureViewI
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取特征视图详细信息。
+//
+// @return GetFeatureViewResponse
 func (client *Client) GetFeatureView(InstanceId *string, FeatureViewId *string) (_result *GetFeatureViewResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8329,6 +10660,15 @@ func (client *Client) GetFeatureView(InstanceId *string, FeatureViewId *string) 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取实例详细信息
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceResponse
 func (client *Client) GetInstanceWithOptions(InstanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInstanceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -8353,6 +10693,11 @@ func (client *Client) GetInstanceWithOptions(InstanceId *string, headers map[str
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取实例详细信息
+//
+// @return GetInstanceResponse
 func (client *Client) GetInstance(InstanceId *string) (_result *GetInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8365,6 +10710,15 @@ func (client *Client) GetInstance(InstanceId *string) (_result *GetInstanceRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取Label表详细信息。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLabelTableResponse
 func (client *Client) GetLabelTableWithOptions(InstanceId *string, LabelTableId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetLabelTableResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -8389,6 +10743,11 @@ func (client *Client) GetLabelTableWithOptions(InstanceId *string, LabelTableId 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取Label表详细信息。
+//
+// @return GetLabelTableResponse
 func (client *Client) GetLabelTable(InstanceId *string, LabelTableId *string) (_result *GetLabelTableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8401,6 +10760,15 @@ func (client *Client) GetLabelTable(InstanceId *string, LabelTableId *string) (_
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取模型特征详情。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetModelFeatureResponse
 func (client *Client) GetModelFeatureWithOptions(InstanceId *string, ModelFeatureId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetModelFeatureResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -8425,6 +10793,11 @@ func (client *Client) GetModelFeatureWithOptions(InstanceId *string, ModelFeatur
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取模型特征详情。
+//
+// @return GetModelFeatureResponse
 func (client *Client) GetModelFeature(InstanceId *string, ModelFeatureId *string) (_result *GetModelFeatureResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8437,6 +10810,15 @@ func (client *Client) GetModelFeature(InstanceId *string, ModelFeatureId *string
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取模型特征的FG特征配置信息。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetModelFeatureFGFeatureResponse
 func (client *Client) GetModelFeatureFGFeatureWithOptions(InstanceId *string, ModelFeatureId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetModelFeatureFGFeatureResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -8461,6 +10843,11 @@ func (client *Client) GetModelFeatureFGFeatureWithOptions(InstanceId *string, Mo
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取模型特征的FG特征配置信息。
+//
+// @return GetModelFeatureFGFeatureResponse
 func (client *Client) GetModelFeatureFGFeature(InstanceId *string, ModelFeatureId *string) (_result *GetModelFeatureFGFeatureResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8473,6 +10860,15 @@ func (client *Client) GetModelFeatureFGFeature(InstanceId *string, ModelFeatureI
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取模型特征的fg.json文件配置信息。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetModelFeatureFGInfoResponse
 func (client *Client) GetModelFeatureFGInfoWithOptions(InstanceId *string, ModelFeatureId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetModelFeatureFGInfoResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -8497,6 +10893,11 @@ func (client *Client) GetModelFeatureFGInfoWithOptions(InstanceId *string, Model
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取模型特征的fg.json文件配置信息。
+//
+// @return GetModelFeatureFGInfoResponse
 func (client *Client) GetModelFeatureFGInfo(InstanceId *string, ModelFeatureId *string) (_result *GetModelFeatureFGInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8509,6 +10910,15 @@ func (client *Client) GetModelFeatureFGInfo(InstanceId *string, ModelFeatureId *
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取指定Feature Store项目详细信息。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetProjectResponse
 func (client *Client) GetProjectWithOptions(InstanceId *string, ProjectId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProjectResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -8533,6 +10943,11 @@ func (client *Client) GetProjectWithOptions(InstanceId *string, ProjectId *strin
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取指定Feature Store项目详细信息。
+//
+// @return GetProjectResponse
 func (client *Client) GetProject(InstanceId *string, ProjectId *string) (_result *GetProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8545,6 +10960,15 @@ func (client *Client) GetProject(InstanceId *string, ProjectId *string) (_result
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取项目下特征实体详细信息
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetProjectFeatureEntityResponse
 func (client *Client) GetProjectFeatureEntityWithOptions(InstanceId *string, ProjectId *string, FeatureEntityName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProjectFeatureEntityResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -8569,6 +10993,11 @@ func (client *Client) GetProjectFeatureEntityWithOptions(InstanceId *string, Pro
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取项目下特征实体详细信息
+//
+// @return GetProjectFeatureEntityResponse
 func (client *Client) GetProjectFeatureEntity(InstanceId *string, ProjectId *string, FeatureEntityName *string) (_result *GetProjectFeatureEntityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8581,6 +11010,15 @@ func (client *Client) GetProjectFeatureEntity(InstanceId *string, ProjectId *str
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取项目下，指定特征实体指定的热点数据。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetProjectFeatureEntityHotIdsResponse
 func (client *Client) GetProjectFeatureEntityHotIdsWithOptions(InstanceId *string, ProjectId *string, NextSeqNumber *string, FeatureEntityName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProjectFeatureEntityHotIdsResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -8605,6 +11043,11 @@ func (client *Client) GetProjectFeatureEntityHotIdsWithOptions(InstanceId *strin
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取项目下，指定特征实体指定的热点数据。
+//
+// @return GetProjectFeatureEntityHotIdsResponse
 func (client *Client) GetProjectFeatureEntityHotIds(InstanceId *string, ProjectId *string, NextSeqNumber *string, FeatureEntityName *string) (_result *GetProjectFeatureEntityHotIdsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8617,6 +11060,15 @@ func (client *Client) GetProjectFeatureEntityHotIds(InstanceId *string, ProjectI
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取项目下特征视图详细信息。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetProjectFeatureViewResponse
 func (client *Client) GetProjectFeatureViewWithOptions(InstanceId *string, ProjectId *string, FeatureViewName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProjectFeatureViewResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -8641,6 +11093,11 @@ func (client *Client) GetProjectFeatureViewWithOptions(InstanceId *string, Proje
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取项目下特征视图详细信息。
+//
+// @return GetProjectFeatureViewResponse
 func (client *Client) GetProjectFeatureView(InstanceId *string, ProjectId *string, FeatureViewName *string) (_result *GetProjectFeatureViewResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8653,6 +11110,15 @@ func (client *Client) GetProjectFeatureView(InstanceId *string, ProjectId *strin
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取项目下指定模型特征的详细信息。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetProjectModelFeatureResponse
 func (client *Client) GetProjectModelFeatureWithOptions(InstanceId *string, ProjectId *string, ModelFeatureName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProjectModelFeatureResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -8677,6 +11143,11 @@ func (client *Client) GetProjectModelFeatureWithOptions(InstanceId *string, Proj
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取项目下指定模型特征的详细信息。
+//
+// @return GetProjectModelFeatureResponse
 func (client *Client) GetProjectModelFeature(InstanceId *string, ProjectId *string, ModelFeatureName *string) (_result *GetProjectModelFeatureResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8689,6 +11160,15 @@ func (client *Client) GetProjectModelFeature(InstanceId *string, ProjectId *stri
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取feature store服务账户角色。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetServiceIdentityRoleResponse
 func (client *Client) GetServiceIdentityRoleWithOptions(RoleName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetServiceIdentityRoleResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -8713,6 +11193,11 @@ func (client *Client) GetServiceIdentityRoleWithOptions(RoleName *string, header
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取feature store服务账户角色。
+//
+// @return GetServiceIdentityRoleResponse
 func (client *Client) GetServiceIdentityRole(RoleName *string) (_result *GetServiceIdentityRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8725,6 +11210,15 @@ func (client *Client) GetServiceIdentityRole(RoleName *string) (_result *GetServ
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务详情
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTaskResponse
 func (client *Client) GetTaskWithOptions(InstanceId *string, TaskId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTaskResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -8749,6 +11243,11 @@ func (client *Client) GetTaskWithOptions(InstanceId *string, TaskId *string, hea
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务详情
+//
+// @return GetTaskResponse
 func (client *Client) GetTask(InstanceId *string, TaskId *string) (_result *GetTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8761,6 +11260,17 @@ func (client *Client) GetTask(InstanceId *string, TaskId *string) (_result *GetT
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取数据源下所有表。
+//
+// @param request - ListDatasourceTablesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDatasourceTablesResponse
 func (client *Client) ListDatasourceTablesWithOptions(InstanceId *string, DatasourceId *string, request *ListDatasourceTablesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDatasourceTablesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8795,6 +11305,13 @@ func (client *Client) ListDatasourceTablesWithOptions(InstanceId *string, Dataso
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取数据源下所有表。
+//
+// @param request - ListDatasourceTablesRequest
+//
+// @return ListDatasourceTablesResponse
 func (client *Client) ListDatasourceTables(InstanceId *string, DatasourceId *string, request *ListDatasourceTablesRequest) (_result *ListDatasourceTablesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8807,6 +11324,17 @@ func (client *Client) ListDatasourceTables(InstanceId *string, DatasourceId *str
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取数据源列表。
+//
+// @param request - ListDatasourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDatasourcesResponse
 func (client *Client) ListDatasourcesWithOptions(InstanceId *string, request *ListDatasourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDatasourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8865,6 +11393,13 @@ func (client *Client) ListDatasourcesWithOptions(InstanceId *string, request *Li
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取数据源列表。
+//
+// @param request - ListDatasourcesRequest
+//
+// @return ListDatasourcesResponse
 func (client *Client) ListDatasources(InstanceId *string, request *ListDatasourcesRequest) (_result *ListDatasourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8877,6 +11412,17 @@ func (client *Client) ListDatasources(InstanceId *string, request *ListDatasourc
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建特征实体列表
+//
+// @param tmpReq - ListFeatureEntitiesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFeatureEntitiesResponse
 func (client *Client) ListFeatureEntitiesWithOptions(InstanceId *string, tmpReq *ListFeatureEntitiesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFeatureEntitiesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -8945,6 +11491,13 @@ func (client *Client) ListFeatureEntitiesWithOptions(InstanceId *string, tmpReq 
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建特征实体列表
+//
+// @param request - ListFeatureEntitiesRequest
+//
+// @return ListFeatureEntitiesResponse
 func (client *Client) ListFeatureEntities(InstanceId *string, request *ListFeatureEntitiesRequest) (_result *ListFeatureEntitiesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8957,6 +11510,15 @@ func (client *Client) ListFeatureEntities(InstanceId *string, request *ListFeatu
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取特征字段血缘关系。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFeatureViewFieldRelationshipsResponse
 func (client *Client) ListFeatureViewFieldRelationshipsWithOptions(InstanceId *string, FeatureViewId *string, FieldName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFeatureViewFieldRelationshipsResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -8981,6 +11543,11 @@ func (client *Client) ListFeatureViewFieldRelationshipsWithOptions(InstanceId *s
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取特征字段血缘关系。
+//
+// @return ListFeatureViewFieldRelationshipsResponse
 func (client *Client) ListFeatureViewFieldRelationships(InstanceId *string, FeatureViewId *string, FieldName *string) (_result *ListFeatureViewFieldRelationshipsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8993,6 +11560,85 @@ func (client *Client) ListFeatureViewFieldRelationships(InstanceId *string, Feat
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取特征视图下的在线特征数据。
+//
+// @param tmpReq - ListFeatureViewOnlineFeaturesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFeatureViewOnlineFeaturesResponse
+func (client *Client) ListFeatureViewOnlineFeaturesWithOptions(InstanceId *string, FeatureViewId *string, tmpReq *ListFeatureViewOnlineFeaturesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFeatureViewOnlineFeaturesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListFeatureViewOnlineFeaturesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.JoinIds)) {
+		request.JoinIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.JoinIds, tea.String("JoinIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JoinIdsShrink)) {
+		query["JoinIds"] = request.JoinIdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListFeatureViewOnlineFeatures"),
+		Version:     tea.String("2023-06-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/featureviews/" + tea.StringValue(openapiutil.GetEncodeParam(FeatureViewId)) + "/onlinefeatures"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListFeatureViewOnlineFeaturesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取特征视图下的在线特征数据。
+//
+// @param request - ListFeatureViewOnlineFeaturesRequest
+//
+// @return ListFeatureViewOnlineFeaturesResponse
+func (client *Client) ListFeatureViewOnlineFeatures(InstanceId *string, FeatureViewId *string, request *ListFeatureViewOnlineFeaturesRequest) (_result *ListFeatureViewOnlineFeaturesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListFeatureViewOnlineFeaturesResponse{}
+	_body, _err := client.ListFeatureViewOnlineFeaturesWithOptions(InstanceId, FeatureViewId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取特征视图血缘关系。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFeatureViewRelationshipsResponse
 func (client *Client) ListFeatureViewRelationshipsWithOptions(InstanceId *string, FeatureViewId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFeatureViewRelationshipsResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -9017,6 +11663,11 @@ func (client *Client) ListFeatureViewRelationshipsWithOptions(InstanceId *string
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取特征视图血缘关系。
+//
+// @return ListFeatureViewRelationshipsResponse
 func (client *Client) ListFeatureViewRelationships(InstanceId *string, FeatureViewId *string) (_result *ListFeatureViewRelationshipsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9029,6 +11680,17 @@ func (client *Client) ListFeatureViewRelationships(InstanceId *string, FeatureVi
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取特征视图列表。
+//
+// @param tmpReq - ListFeatureViewsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFeatureViewsResponse
 func (client *Client) ListFeatureViewsWithOptions(InstanceId *string, tmpReq *ListFeatureViewsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFeatureViewsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -9109,6 +11771,13 @@ func (client *Client) ListFeatureViewsWithOptions(InstanceId *string, tmpReq *Li
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取特征视图列表。
+//
+// @param request - ListFeatureViewsRequest
+//
+// @return ListFeatureViewsResponse
 func (client *Client) ListFeatureViews(InstanceId *string, request *ListFeatureViewsRequest) (_result *ListFeatureViewsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9121,6 +11790,17 @@ func (client *Client) ListFeatureViews(InstanceId *string, request *ListFeatureV
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取Feature Store实例列表。
+//
+// @param request - ListInstancesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstancesResponse
 func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9171,6 +11851,13 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取Feature Store实例列表。
+//
+// @param request - ListInstancesRequest
+//
+// @return ListInstancesResponse
 func (client *Client) ListInstances(request *ListInstancesRequest) (_result *ListInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9183,6 +11870,17 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取Label表列表。
+//
+// @param tmpReq - ListLabelTablesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListLabelTablesResponse
 func (client *Client) ListLabelTablesWithOptions(InstanceId *string, tmpReq *ListLabelTablesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListLabelTablesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -9251,6 +11949,13 @@ func (client *Client) ListLabelTablesWithOptions(InstanceId *string, tmpReq *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取Label表列表。
+//
+// @param request - ListLabelTablesRequest
+//
+// @return ListLabelTablesResponse
 func (client *Client) ListLabelTables(InstanceId *string, request *ListLabelTablesRequest) (_result *ListLabelTablesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9263,6 +11968,17 @@ func (client *Client) ListLabelTables(InstanceId *string, request *ListLabelTabl
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取注册FG特征时模型特征下可选的所有特征。
+//
+// @param request - ListModelFeatureAvailableFeaturesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListModelFeatureAvailableFeaturesResponse
 func (client *Client) ListModelFeatureAvailableFeaturesWithOptions(InstanceId *string, ModelFeatureId *string, request *ListModelFeatureAvailableFeaturesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListModelFeatureAvailableFeaturesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9297,6 +12013,13 @@ func (client *Client) ListModelFeatureAvailableFeaturesWithOptions(InstanceId *s
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取注册FG特征时模型特征下可选的所有特征。
+//
+// @param request - ListModelFeatureAvailableFeaturesRequest
+//
+// @return ListModelFeatureAvailableFeaturesResponse
 func (client *Client) ListModelFeatureAvailableFeatures(InstanceId *string, ModelFeatureId *string, request *ListModelFeatureAvailableFeaturesRequest) (_result *ListModelFeatureAvailableFeaturesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9309,6 +12032,17 @@ func (client *Client) ListModelFeatureAvailableFeatures(InstanceId *string, Mode
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取模型特征列表。
+//
+// @param tmpReq - ListModelFeaturesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListModelFeaturesResponse
 func (client *Client) ListModelFeaturesWithOptions(InstanceId *string, tmpReq *ListModelFeaturesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListModelFeaturesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -9377,6 +12111,13 @@ func (client *Client) ListModelFeaturesWithOptions(InstanceId *string, tmpReq *L
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取模型特征列表。
+//
+// @param request - ListModelFeaturesRequest
+//
+// @return ListModelFeaturesResponse
 func (client *Client) ListModelFeatures(InstanceId *string, request *ListModelFeaturesRequest) (_result *ListModelFeaturesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9389,6 +12130,15 @@ func (client *Client) ListModelFeatures(InstanceId *string, request *ListModelFe
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取项目下特征视图的所有创建人。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProjectFeatureViewOwnersResponse
 func (client *Client) ListProjectFeatureViewOwnersWithOptions(InstanceId *string, ProjectId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProjectFeatureViewOwnersResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -9413,6 +12163,11 @@ func (client *Client) ListProjectFeatureViewOwnersWithOptions(InstanceId *string
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取项目下特征视图的所有创建人。
+//
+// @return ListProjectFeatureViewOwnersResponse
 func (client *Client) ListProjectFeatureViewOwners(InstanceId *string, ProjectId *string) (_result *ListProjectFeatureViewOwnersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9425,6 +12180,15 @@ func (client *Client) ListProjectFeatureViewOwners(InstanceId *string, ProjectId
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取项目下特征视图的所有标签。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProjectFeatureViewTagsResponse
 func (client *Client) ListProjectFeatureViewTagsWithOptions(InstanceId *string, ProjectId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProjectFeatureViewTagsResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -9449,6 +12213,11 @@ func (client *Client) ListProjectFeatureViewTagsWithOptions(InstanceId *string, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取项目下特征视图的所有标签。
+//
+// @return ListProjectFeatureViewTagsResponse
 func (client *Client) ListProjectFeatureViewTags(InstanceId *string, ProjectId *string) (_result *ListProjectFeatureViewTagsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9461,6 +12230,15 @@ func (client *Client) ListProjectFeatureViewTags(InstanceId *string, ProjectId *
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取项目下的所有特征视图、特征信息。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProjectFeatureViewsResponse
 func (client *Client) ListProjectFeatureViewsWithOptions(InstanceId *string, ProjectId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProjectFeatureViewsResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -9485,6 +12263,11 @@ func (client *Client) ListProjectFeatureViewsWithOptions(InstanceId *string, Pro
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取项目下的所有特征视图、特征信息。
+//
+// @return ListProjectFeatureViewsResponse
 func (client *Client) ListProjectFeatureViews(InstanceId *string, ProjectId *string) (_result *ListProjectFeatureViewsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9497,6 +12280,17 @@ func (client *Client) ListProjectFeatureViews(InstanceId *string, ProjectId *str
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取Feature Store项目列表。
+//
+// @param tmpReq - ListProjectsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProjectsResponse
 func (client *Client) ListProjectsWithOptions(InstanceId *string, tmpReq *ListProjectsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProjectsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -9565,6 +12359,13 @@ func (client *Client) ListProjectsWithOptions(InstanceId *string, tmpReq *ListPr
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取Feature Store项目列表。
+//
+// @param request - ListProjectsRequest
+//
+// @return ListProjectsResponse
 func (client *Client) ListProjects(InstanceId *string, request *ListProjectsRequest) (_result *ListProjectsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9577,6 +12378,17 @@ func (client *Client) ListProjects(InstanceId *string, request *ListProjectsRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务日志列表
+//
+// @param request - ListTaskLogsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTaskLogsResponse
 func (client *Client) ListTaskLogsWithOptions(InstanceId *string, TaskId *string, request *ListTaskLogsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTaskLogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9615,6 +12427,13 @@ func (client *Client) ListTaskLogsWithOptions(InstanceId *string, TaskId *string
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务日志列表
+//
+// @param request - ListTaskLogsRequest
+//
+// @return ListTaskLogsResponse
 func (client *Client) ListTaskLogs(InstanceId *string, TaskId *string, request *ListTaskLogsRequest) (_result *ListTaskLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9627,6 +12446,17 @@ func (client *Client) ListTaskLogs(InstanceId *string, TaskId *string, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务列表
+//
+// @param tmpReq - ListTasksRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTasksResponse
 func (client *Client) ListTasksWithOptions(InstanceId *string, tmpReq *ListTasksRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTasksResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -9695,6 +12525,13 @@ func (client *Client) ListTasksWithOptions(InstanceId *string, tmpReq *ListTasks
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务列表
+//
+// @param request - ListTasksRequest
+//
+// @return ListTasksResponse
 func (client *Client) ListTasks(InstanceId *string, request *ListTasksRequest) (_result *ListTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9707,6 +12544,17 @@ func (client *Client) ListTasks(InstanceId *string, request *ListTasksRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 将特征视图的离线数据发布/同步到线上。
+//
+// @param request - PublishFeatureViewTableRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PublishFeatureViewTableResponse
 func (client *Client) PublishFeatureViewTableWithOptions(InstanceId *string, FeatureViewId *string, request *PublishFeatureViewTableRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PublishFeatureViewTableResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9757,6 +12605,13 @@ func (client *Client) PublishFeatureViewTableWithOptions(InstanceId *string, Fea
 	return _result, _err
 }
 
+// Summary:
+//
+// 将特征视图的离线数据发布/同步到线上。
+//
+// @param request - PublishFeatureViewTableRequest
+//
+// @return PublishFeatureViewTableResponse
 func (client *Client) PublishFeatureViewTable(InstanceId *string, FeatureViewId *string, request *PublishFeatureViewTableRequest) (_result *PublishFeatureViewTableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9769,6 +12624,17 @@ func (client *Client) PublishFeatureViewTable(InstanceId *string, FeatureViewId 
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新数据源信息。
+//
+// @param request - UpdateDatasourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDatasourceResponse
 func (client *Client) UpdateDatasourceWithOptions(InstanceId *string, DatasourceId *string, request *UpdateDatasourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateDatasourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9811,6 +12677,13 @@ func (client *Client) UpdateDatasourceWithOptions(InstanceId *string, Datasource
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新数据源信息。
+//
+// @param request - UpdateDatasourceRequest
+//
+// @return UpdateDatasourceResponse
 func (client *Client) UpdateDatasource(InstanceId *string, DatasourceId *string, request *UpdateDatasourceRequest) (_result *UpdateDatasourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9823,6 +12696,17 @@ func (client *Client) UpdateDatasource(InstanceId *string, DatasourceId *string,
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新label表。
+//
+// @param request - UpdateLabelTableRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateLabelTableResponse
 func (client *Client) UpdateLabelTableWithOptions(InstanceId *string, LabelTableId *string, request *UpdateLabelTableRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateLabelTableResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9865,6 +12749,13 @@ func (client *Client) UpdateLabelTableWithOptions(InstanceId *string, LabelTable
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新label表。
+//
+// @param request - UpdateLabelTableRequest
+//
+// @return UpdateLabelTableResponse
 func (client *Client) UpdateLabelTable(InstanceId *string, LabelTableId *string, request *UpdateLabelTableRequest) (_result *UpdateLabelTableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9877,6 +12768,17 @@ func (client *Client) UpdateLabelTable(InstanceId *string, LabelTableId *string,
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新模型特征。
+//
+// @param request - UpdateModelFeatureRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateModelFeatureResponse
 func (client *Client) UpdateModelFeatureWithOptions(InstanceId *string, ModelFeatureId *string, request *UpdateModelFeatureRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateModelFeatureResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9919,6 +12821,13 @@ func (client *Client) UpdateModelFeatureWithOptions(InstanceId *string, ModelFea
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新模型特征。
+//
+// @param request - UpdateModelFeatureRequest
+//
+// @return UpdateModelFeatureResponse
 func (client *Client) UpdateModelFeature(InstanceId *string, ModelFeatureId *string, request *UpdateModelFeatureRequest) (_result *UpdateModelFeatureResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9931,6 +12840,17 @@ func (client *Client) UpdateModelFeature(InstanceId *string, ModelFeatureId *str
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新模型特征的FG特征配置信息。
+//
+// @param request - UpdateModelFeatureFGFeatureRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateModelFeatureFGFeatureResponse
 func (client *Client) UpdateModelFeatureFGFeatureWithOptions(InstanceId *string, ModelFeatureId *string, request *UpdateModelFeatureFGFeatureRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateModelFeatureFGFeatureResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9977,6 +12897,13 @@ func (client *Client) UpdateModelFeatureFGFeatureWithOptions(InstanceId *string,
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新模型特征的FG特征配置信息。
+//
+// @param request - UpdateModelFeatureFGFeatureRequest
+//
+// @return UpdateModelFeatureFGFeatureResponse
 func (client *Client) UpdateModelFeatureFGFeature(InstanceId *string, ModelFeatureId *string, request *UpdateModelFeatureFGFeatureRequest) (_result *UpdateModelFeatureFGFeatureResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9989,6 +12916,17 @@ func (client *Client) UpdateModelFeatureFGFeature(InstanceId *string, ModelFeatu
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新模型特征的fg.json文件配置信息。
+//
+// @param request - UpdateModelFeatureFGInfoRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateModelFeatureFGInfoResponse
 func (client *Client) UpdateModelFeatureFGInfoWithOptions(InstanceId *string, ModelFeatureId *string, request *UpdateModelFeatureFGInfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateModelFeatureFGInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10023,6 +12961,13 @@ func (client *Client) UpdateModelFeatureFGInfoWithOptions(InstanceId *string, Mo
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新模型特征的fg.json文件配置信息。
+//
+// @param request - UpdateModelFeatureFGInfoRequest
+//
+// @return UpdateModelFeatureFGInfoResponse
 func (client *Client) UpdateModelFeatureFGInfo(InstanceId *string, ModelFeatureId *string, request *UpdateModelFeatureFGInfoRequest) (_result *UpdateModelFeatureFGInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10035,6 +12980,17 @@ func (client *Client) UpdateModelFeatureFGInfo(InstanceId *string, ModelFeatureI
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新指定Feature Store项目信息。
+//
+// @param request - UpdateProjectRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateProjectResponse
 func (client *Client) UpdateProjectWithOptions(InstanceId *string, ProjectId *string, request *UpdateProjectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10073,6 +13029,13 @@ func (client *Client) UpdateProjectWithOptions(InstanceId *string, ProjectId *st
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新指定Feature Store项目信息。
+//
+// @param request - UpdateProjectRequest
+//
+// @return UpdateProjectResponse
 func (client *Client) UpdateProject(InstanceId *string, ProjectId *string, request *UpdateProjectRequest) (_result *UpdateProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10085,6 +13048,17 @@ func (client *Client) UpdateProject(InstanceId *string, ProjectId *string, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取特征视图血缘关系。
+//
+// @param request - WriteFeatureViewTableRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return WriteFeatureViewTableResponse
 func (client *Client) WriteFeatureViewTableWithOptions(InstanceId *string, FeatureViewId *string, request *WriteFeatureViewTableRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *WriteFeatureViewTableResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10127,6 +13101,13 @@ func (client *Client) WriteFeatureViewTableWithOptions(InstanceId *string, Featu
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取特征视图血缘关系。
+//
+// @param request - WriteFeatureViewTableRequest
+//
+// @return WriteFeatureViewTableResponse
 func (client *Client) WriteFeatureViewTable(InstanceId *string, FeatureViewId *string, request *WriteFeatureViewTableRequest) (_result *WriteFeatureViewTableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10139,6 +13120,17 @@ func (client *Client) WriteFeatureViewTable(InstanceId *string, FeatureViewId *s
 	return _result, _err
 }
 
+// Summary:
+//
+// 向指定项目下的特征实体写入热点数据。
+//
+// @param request - WriteProjectFeatureEntityHotIdsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return WriteProjectFeatureEntityHotIdsResponse
 func (client *Client) WriteProjectFeatureEntityHotIdsWithOptions(InstanceId *string, ProjectId *string, FeatureEntityName *string, request *WriteProjectFeatureEntityHotIdsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *WriteProjectFeatureEntityHotIdsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10177,6 +13169,13 @@ func (client *Client) WriteProjectFeatureEntityHotIdsWithOptions(InstanceId *str
 	return _result, _err
 }
 
+// Summary:
+//
+// 向指定项目下的特征实体写入热点数据。
+//
+// @param request - WriteProjectFeatureEntityHotIdsRequest
+//
+// @return WriteProjectFeatureEntityHotIdsResponse
 func (client *Client) WriteProjectFeatureEntityHotIds(InstanceId *string, ProjectId *string, FeatureEntityName *string, request *WriteProjectFeatureEntityHotIdsRequest) (_result *WriteProjectFeatureEntityHotIdsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
