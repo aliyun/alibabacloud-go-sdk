@@ -1217,6 +1217,11 @@ type CreateAScriptsRequestAScripts struct {
 	//
 	// false
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// example:
+	//
+	// true
+	ExtAttributeEnabled *bool                                         `json:"ExtAttributeEnabled,omitempty" xml:"ExtAttributeEnabled,omitempty"`
+	ExtAttributes       []*CreateAScriptsRequestAScriptsExtAttributes `json:"ExtAttributes,omitempty" xml:"ExtAttributes,omitempty" type:"Repeated"`
 	// The content of the AScript rule.
 	//
 	// This parameter is required.
@@ -1245,8 +1250,41 @@ func (s *CreateAScriptsRequestAScripts) SetEnabled(v bool) *CreateAScriptsReques
 	return s
 }
 
+func (s *CreateAScriptsRequestAScripts) SetExtAttributeEnabled(v bool) *CreateAScriptsRequestAScripts {
+	s.ExtAttributeEnabled = &v
+	return s
+}
+
+func (s *CreateAScriptsRequestAScripts) SetExtAttributes(v []*CreateAScriptsRequestAScriptsExtAttributes) *CreateAScriptsRequestAScripts {
+	s.ExtAttributes = v
+	return s
+}
+
 func (s *CreateAScriptsRequestAScripts) SetScriptContent(v string) *CreateAScriptsRequestAScripts {
 	s.ScriptContent = &v
+	return s
+}
+
+type CreateAScriptsRequestAScriptsExtAttributes struct {
+	AttributeKey   *string `json:"AttributeKey,omitempty" xml:"AttributeKey,omitempty"`
+	AttributeValue *string `json:"AttributeValue,omitempty" xml:"AttributeValue,omitempty"`
+}
+
+func (s CreateAScriptsRequestAScriptsExtAttributes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAScriptsRequestAScriptsExtAttributes) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAScriptsRequestAScriptsExtAttributes) SetAttributeKey(v string) *CreateAScriptsRequestAScriptsExtAttributes {
+	s.AttributeKey = &v
+	return s
+}
+
+func (s *CreateAScriptsRequestAScriptsExtAttributes) SetAttributeValue(v string) *CreateAScriptsRequestAScriptsExtAttributes {
+	s.AttributeValue = &v
 	return s
 }
 
@@ -20247,7 +20285,9 @@ type UpdateAScriptsRequestAScripts struct {
 	// example:
 	//
 	// true
-	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Enabled             *bool                                         `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	ExtAttributeEnabled *bool                                         `json:"ExtAttributeEnabled,omitempty" xml:"ExtAttributeEnabled,omitempty"`
+	ExtAttributes       []*UpdateAScriptsRequestAScriptsExtAttributes `json:"ExtAttributes,omitempty" xml:"ExtAttributes,omitempty" type:"Repeated"`
 	// The content of the AScript rule.
 	//
 	// example:
@@ -20279,8 +20319,43 @@ func (s *UpdateAScriptsRequestAScripts) SetEnabled(v bool) *UpdateAScriptsReques
 	return s
 }
 
+func (s *UpdateAScriptsRequestAScripts) SetExtAttributeEnabled(v bool) *UpdateAScriptsRequestAScripts {
+	s.ExtAttributeEnabled = &v
+	return s
+}
+
+func (s *UpdateAScriptsRequestAScripts) SetExtAttributes(v []*UpdateAScriptsRequestAScriptsExtAttributes) *UpdateAScriptsRequestAScripts {
+	s.ExtAttributes = v
+	return s
+}
+
 func (s *UpdateAScriptsRequestAScripts) SetScriptContent(v string) *UpdateAScriptsRequestAScripts {
 	s.ScriptContent = &v
+	return s
+}
+
+type UpdateAScriptsRequestAScriptsExtAttributes struct {
+	// This parameter is required.
+	AttributeKey *string `json:"AttributeKey,omitempty" xml:"AttributeKey,omitempty"`
+	// This parameter is required.
+	AttributeValue *string `json:"AttributeValue,omitempty" xml:"AttributeValue,omitempty"`
+}
+
+func (s UpdateAScriptsRequestAScriptsExtAttributes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAScriptsRequestAScriptsExtAttributes) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAScriptsRequestAScriptsExtAttributes) SetAttributeKey(v string) *UpdateAScriptsRequestAScriptsExtAttributes {
+	s.AttributeKey = &v
+	return s
+}
+
+func (s *UpdateAScriptsRequestAScriptsExtAttributes) SetAttributeValue(v string) *UpdateAScriptsRequestAScriptsExtAttributes {
+	s.AttributeValue = &v
 	return s
 }
 
