@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,8 +10,18 @@ import (
 )
 
 type AddUserToGroupRequest struct {
+	// The name of the RAM user group.
+	//
+	// example:
+	//
+	// Dev-Team
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	UserName  *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The name of the RAM user.
+	//
+	// example:
+	//
+	// zhangq****
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s AddUserToGroupRequest) String() string {
@@ -36,6 +43,11 @@ func (s *AddUserToGroupRequest) SetUserName(v string) *AddUserToGroupRequest {
 }
 
 type AddUserToGroupResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 1B968853-B423-63A6-FE1F-45E81BC2AD61
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -53,9 +65,9 @@ func (s *AddUserToGroupResponseBody) SetRequestId(v string) *AddUserToGroupRespo
 }
 
 type AddUserToGroupResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddUserToGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddUserToGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddUserToGroupResponse) String() string {
@@ -82,8 +94,23 @@ func (s *AddUserToGroupResponse) SetBody(v *AddUserToGroupResponseBody) *AddUser
 }
 
 type AttachPolicyToGroupRequest struct {
-	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The name of the RAM user group.
+	//
+	// example:
+	//
+	// dev
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The name of the policy.
+	//
+	// example:
+	//
+	// OSS-Administrator
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The type of the policy. Valid values: `System` and `Custom`.
+	//
+	// example:
+	//
+	// Custom
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 }
 
@@ -111,6 +138,11 @@ func (s *AttachPolicyToGroupRequest) SetPolicyType(v string) *AttachPolicyToGrou
 }
 
 type AttachPolicyToGroupResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 697852FB-50D7-44D9-9774-530C31EAC572
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -128,9 +160,9 @@ func (s *AttachPolicyToGroupResponseBody) SetRequestId(v string) *AttachPolicyTo
 }
 
 type AttachPolicyToGroupResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AttachPolicyToGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachPolicyToGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AttachPolicyToGroupResponse) String() string {
@@ -157,9 +189,24 @@ func (s *AttachPolicyToGroupResponse) SetBody(v *AttachPolicyToGroupResponseBody
 }
 
 type AttachPolicyToRoleRequest struct {
+	// The name of the policy.
+	//
+	// example:
+	//
+	// OSS-Administrator
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The type of the policy. Valid values: `System` and `Custom`.
+	//
+	// example:
+	//
+	// Custom
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	RoleName   *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The name of the RAM role.
+	//
+	// example:
+	//
+	// OSSAdminRole
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
 func (s AttachPolicyToRoleRequest) String() string {
@@ -186,6 +233,11 @@ func (s *AttachPolicyToRoleRequest) SetRoleName(v string) *AttachPolicyToRoleReq
 }
 
 type AttachPolicyToRoleResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 697852FB-50D7-44D9-9774-530C31EAC572
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -203,9 +255,9 @@ func (s *AttachPolicyToRoleResponseBody) SetRequestId(v string) *AttachPolicyToR
 }
 
 type AttachPolicyToRoleResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AttachPolicyToRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachPolicyToRoleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AttachPolicyToRoleResponse) String() string {
@@ -232,9 +284,24 @@ func (s *AttachPolicyToRoleResponse) SetBody(v *AttachPolicyToRoleResponseBody) 
 }
 
 type AttachPolicyToUserRequest struct {
+	// The name of the policy.
+	//
+	// example:
+	//
+	// OSS-Administrator
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The type of the policy. Valid values: `System` and `Custom`.
+	//
+	// example:
+	//
+	// Custom
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	UserName   *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The name of the RAM user.
+	//
+	// example:
+	//
+	// zhangq****
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s AttachPolicyToUserRequest) String() string {
@@ -261,6 +328,11 @@ func (s *AttachPolicyToUserRequest) SetUserName(v string) *AttachPolicyToUserReq
 }
 
 type AttachPolicyToUserResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 697852FB-50D7-44D9-9774-530C31EAC572
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -278,9 +350,9 @@ func (s *AttachPolicyToUserResponseBody) SetRequestId(v string) *AttachPolicyToU
 }
 
 type AttachPolicyToUserResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AttachPolicyToUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachPolicyToUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AttachPolicyToUserResponse) String() string {
@@ -307,10 +379,30 @@ func (s *AttachPolicyToUserResponse) SetBody(v *AttachPolicyToUserResponseBody) 
 }
 
 type BindMFADeviceRequest struct {
+	// The first authentication code.
+	//
+	// example:
+	//
+	// 11****
 	AuthenticationCode1 *string `json:"AuthenticationCode1,omitempty" xml:"AuthenticationCode1,omitempty"`
+	// The second authentication code.
+	//
+	// example:
+	//
+	// 33****
 	AuthenticationCode2 *string `json:"AuthenticationCode2,omitempty" xml:"AuthenticationCode2,omitempty"`
-	SerialNumber        *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	UserName            *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The serial number of the MFA device.
+	//
+	// example:
+	//
+	// acs:ram::123456789012****:mfa/device002
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The name of the RAM user.
+	//
+	// example:
+	//
+	// zhangq****
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s BindMFADeviceRequest) String() string {
@@ -342,6 +434,11 @@ func (s *BindMFADeviceRequest) SetUserName(v string) *BindMFADeviceRequest {
 }
 
 type BindMFADeviceResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -359,9 +456,9 @@ func (s *BindMFADeviceResponseBody) SetRequestId(v string) *BindMFADeviceRespons
 }
 
 type BindMFADeviceResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BindMFADeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BindMFADeviceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BindMFADeviceResponse) String() string {
@@ -388,7 +485,19 @@ func (s *BindMFADeviceResponse) SetBody(v *BindMFADeviceResponseBody) *BindMFADe
 }
 
 type ChangePasswordRequest struct {
+	// The new password that is used to log on to the Alibaba Cloud Management Console.
+	//
+	// The password must meet the complexity requirements. For more information, see [SetPasswordPolicy](https://help.aliyun.com/document_detail/28739.html).
+	//
+	// example:
+	//
+	// aw$2****
 	NewPassword *string `json:"NewPassword,omitempty" xml:"NewPassword,omitempty"`
+	// The old password that is used to log on to the Alibaba Cloud Management Console.
+	//
+	// example:
+	//
+	// 12****
 	OldPassword *string `json:"OldPassword,omitempty" xml:"OldPassword,omitempty"`
 }
 
@@ -411,6 +520,11 @@ func (s *ChangePasswordRequest) SetOldPassword(v string) *ChangePasswordRequest 
 }
 
 type ChangePasswordResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -428,9 +542,9 @@ func (s *ChangePasswordResponseBody) SetRequestId(v string) *ChangePasswordRespo
 }
 
 type ChangePasswordResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ChangePasswordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChangePasswordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ChangePasswordResponse) String() string {
@@ -457,6 +571,11 @@ func (s *ChangePasswordResponse) SetBody(v *ChangePasswordResponseBody) *ChangeP
 }
 
 type ClearAccountAliasResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -474,9 +593,9 @@ func (s *ClearAccountAliasResponseBody) SetRequestId(v string) *ClearAccountAlia
 }
 
 type ClearAccountAliasResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ClearAccountAliasResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ClearAccountAliasResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ClearAccountAliasResponse) String() string {
@@ -503,6 +622,11 @@ func (s *ClearAccountAliasResponse) SetBody(v *ClearAccountAliasResponseBody) *C
 }
 
 type CreateAccessKeyRequest struct {
+	// The name of the RAM user. If a RAM user calls this operation and does not specify this parameter, an AccessKey pair is created for the RAM user.
+	//
+	// example:
+	//
+	// zhangq****
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -520,8 +644,14 @@ func (s *CreateAccessKeyRequest) SetUserName(v string) *CreateAccessKeyRequest {
 }
 
 type CreateAccessKeyResponseBody struct {
+	// The information of the AccessKey pair.
 	AccessKey *CreateAccessKeyResponseBodyAccessKey `json:"AccessKey,omitempty" xml:"AccessKey,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateAccessKeyResponseBody) String() string {
@@ -543,10 +673,30 @@ func (s *CreateAccessKeyResponseBody) SetRequestId(v string) *CreateAccessKeyRes
 }
 
 type CreateAccessKeyResponseBodyAccessKey struct {
-	AccessKeyId     *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	// The AccessKey ID.
+	//
+	// example:
+	//
+	// 0wNEpMMlzy7s****
+	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	// The AccessKey secret.
+	//
+	// example:
+	//
+	// PupkTg8jdmau1cXxYacgE736PJ****
 	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
-	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the AccessKey pair was created.
+	//
+	// example:
+	//
+	// 2015-01-23T12:33:18Z
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The status of the AccessKey pair. Valid values: Active and Inactive.
+	//
+	// example:
+	//
+	// Active
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateAccessKeyResponseBodyAccessKey) String() string {
@@ -578,9 +728,9 @@ func (s *CreateAccessKeyResponseBodyAccessKey) SetStatus(v string) *CreateAccess
 }
 
 type CreateAccessKeyResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAccessKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAccessKeyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAccessKeyResponse) String() string {
@@ -607,7 +757,21 @@ func (s *CreateAccessKeyResponse) SetBody(v *CreateAccessKeyResponseBody) *Creat
 }
 
 type CreateGroupRequest struct {
-	Comments  *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The description.
+	//
+	// The value can be up to 128 characters in length.
+	//
+	// example:
+	//
+	// Dev-Team
+	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The name of the user group.
+	//
+	// The name must be 1 to 64 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_).
+	//
+	// example:
+	//
+	// Dev-Team
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 
@@ -630,8 +794,14 @@ func (s *CreateGroupRequest) SetGroupName(v string) *CreateGroupRequest {
 }
 
 type CreateGroupResponseBody struct {
-	Group     *CreateGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the group.
+	Group *CreateGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// D3F0679E-9757-95DB-AF2D-04D5188C69C5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateGroupResponseBody) String() string {
@@ -653,10 +823,30 @@ func (s *CreateGroupResponseBody) SetRequestId(v string) *CreateGroupResponseBod
 }
 
 type CreateGroupResponseBodyGroup struct {
-	Comments   *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// Dev-Team
+	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 2015-01-23T12:33:18Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The ID of the user group.
+	//
+	// example:
+	//
+	// g-FpMEHiMysofp****
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the user group.
+	//
+	// example:
+	//
+	// Dev-Team
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 
 func (s CreateGroupResponseBodyGroup) String() string {
@@ -688,9 +878,9 @@ func (s *CreateGroupResponseBodyGroup) SetGroupName(v string) *CreateGroupRespon
 }
 
 type CreateGroupResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateGroupResponse) String() string {
@@ -717,10 +907,30 @@ func (s *CreateGroupResponse) SetBody(v *CreateGroupResponseBody) *CreateGroupRe
 }
 
 type CreateLoginProfileRequest struct {
-	MFABindRequired       *bool   `json:"MFABindRequired,omitempty" xml:"MFABindRequired,omitempty"`
-	Password              *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	PasswordResetRequired *bool   `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
-	UserName              *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`.
+	//
+	// example:
+	//
+	// false
+	MFABindRequired *bool `json:"MFABindRequired,omitempty" xml:"MFABindRequired,omitempty"`
+	// The logon password of the RAM user. The password must meet the password strength requirements. For more information, see [GetPasswordPolicy](https://help.aliyun.com/document_detail/2337691.html).
+	//
+	// example:
+	//
+	// mypassword
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// Specifies whether the RAM user must change the password upon logon. Default value: `false`.
+	//
+	// example:
+	//
+	// false
+	PasswordResetRequired *bool `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
+	// The name of the RAM user.
+	//
+	// example:
+	//
+	// zhangq****
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s CreateLoginProfileRequest) String() string {
@@ -752,8 +962,14 @@ func (s *CreateLoginProfileRequest) SetUserName(v string) *CreateLoginProfileReq
 }
 
 type CreateLoginProfileResponseBody struct {
+	// The logon configurations of the RAM user.
 	LoginProfile *CreateLoginProfileResponseBodyLoginProfile `json:"LoginProfile,omitempty" xml:"LoginProfile,omitempty" type:"Struct"`
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateLoginProfileResponseBody) String() string {
@@ -775,10 +991,30 @@ func (s *CreateLoginProfileResponseBody) SetRequestId(v string) *CreateLoginProf
 }
 
 type CreateLoginProfileResponseBodyLoginProfile struct {
-	CreateDate            *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	MFABindRequired       *bool   `json:"MFABindRequired,omitempty" xml:"MFABindRequired,omitempty"`
-	PasswordResetRequired *bool   `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
-	UserName              *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The time when the logon configurations were created.
+	//
+	// example:
+	//
+	// 2015-01-23T12:33:18Z
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// Indicates whether an MFA device must be attached to the RAM user upon logon.
+	//
+	// example:
+	//
+	// false
+	MFABindRequired *bool `json:"MFABindRequired,omitempty" xml:"MFABindRequired,omitempty"`
+	// Indicates whether the RAM user must change the password upon logon.
+	//
+	// example:
+	//
+	// false
+	PasswordResetRequired *bool `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
+	// The name of the RAM user.
+	//
+	// example:
+	//
+	// zhangq****
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s CreateLoginProfileResponseBodyLoginProfile) String() string {
@@ -810,9 +1046,9 @@ func (s *CreateLoginProfileResponseBodyLoginProfile) SetUserName(v string) *Crea
 }
 
 type CreateLoginProfileResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateLoginProfileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateLoginProfileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateLoginProfileResponse) String() string {
@@ -839,9 +1075,32 @@ func (s *CreateLoginProfileResponse) SetBody(v *CreateLoginProfileResponseBody) 
 }
 
 type CreatePolicyRequest struct {
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the policy.
+	//
+	// The description must be 1 to 1,024 characters in length.
+	//
+	// example:
+	//
+	// Query ECS instances in a specific region
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The document of the policy.
+	//
+	// The document must be 1 to 6,144 characters in length.
+	//
+	// For more information about policy elements and sample policies, see [Policy elements](https://help.aliyun.com/document_detail/93738.html) and [Overview of sample policies](https://help.aliyun.com/document_detail/210969.html).
+	//
+	// example:
+	//
+	// {"Statement": [{"Effect": "Allow","Action": "ecs:Describe*","Resource": "acs:ecs:cn-qingdao:*:instance/*"}],"Version": "1"}
 	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
-	PolicyName     *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The name of the policy.
+	//
+	// The name must be 1 to 128 characters in length, and can contain letters, digits, and hyphens (-).
+	//
+	// example:
+	//
+	// View-ECS-instances-in-a-specific-region
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 }
 
 func (s CreatePolicyRequest) String() string {
@@ -868,8 +1127,14 @@ func (s *CreatePolicyRequest) SetPolicyName(v string) *CreatePolicyRequest {
 }
 
 type CreatePolicyResponseBody struct {
-	Policy    *CreatePolicyResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the policy.
+	Policy *CreatePolicyResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// BA34C54A-C2B1-5A65-B6B0-B5842C1DB4DA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreatePolicyResponseBody) String() string {
@@ -891,11 +1156,40 @@ func (s *CreatePolicyResponseBody) SetRequestId(v string) *CreatePolicyResponseB
 }
 
 type CreatePolicyResponseBodyPolicy struct {
-	CreateDate     *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The time when the policy was created.
+	//
+	// example:
+	//
+	// 2021-10-13T02:46:57Z
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The version of the policy. Default value: v1.
+	//
+	// example:
+	//
+	// v1
 	DefaultVersion *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	PolicyName     *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	PolicyType     *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// The description of the policy.
+	//
+	// example:
+	//
+	// Query ECS instances in a specific region
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the policy.
+	//
+	// example:
+	//
+	// View-ECS-instances-in-a-specific-region
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The type of the policy. Valid values:
+	//
+	// 	- Custom: custom policy
+	//
+	// 	- System: system policy
+	//
+	// example:
+	//
+	// Custom
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 }
 
 func (s CreatePolicyResponseBodyPolicy) String() string {
@@ -932,9 +1226,9 @@ func (s *CreatePolicyResponseBodyPolicy) SetPolicyType(v string) *CreatePolicyRe
 }
 
 type CreatePolicyResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreatePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreatePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreatePolicyResponse) String() string {
@@ -961,10 +1255,38 @@ func (s *CreatePolicyResponse) SetBody(v *CreatePolicyResponseBody) *CreatePolic
 }
 
 type CreatePolicyVersionRequest struct {
+	// The document of the policy. The document can be up to 6,144 bytes in length.
+	//
+	// example:
+	//
+	// {"Statement":[{"Action":["oss:*"],"Effect":"Allow","Resource":["acs:oss:*:*:*"]}],"Version":"1"}
 	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
-	PolicyName     *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The name of the policy.
+	//
+	// example:
+	//
+	// OSS-Administrator
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The rotation strategy of the policy. The rotation strategy can be used to delete an early policy version.
+	//
+	// Valid values:
+	//
+	// 	- `None`: disables the rotation strategy.
+	//
+	// 	- `DeleteOldestNonDefaultVersionWhenLimitExceeded`: deletes the earliest non-active version if the number of versions exceeds the limit.
+	//
+	// Default value: `None`.
+	//
+	// example:
+	//
+	// None
 	RotateStrategy *string `json:"RotateStrategy,omitempty" xml:"RotateStrategy,omitempty"`
-	SetAsDefault   *bool   `json:"SetAsDefault,omitempty" xml:"SetAsDefault,omitempty"`
+	// Specifies whether to set this policy as the default policy. Default value: `false`.
+	//
+	// example:
+	//
+	// false
+	SetAsDefault *bool `json:"SetAsDefault,omitempty" xml:"SetAsDefault,omitempty"`
 }
 
 func (s CreatePolicyVersionRequest) String() string {
@@ -996,8 +1318,14 @@ func (s *CreatePolicyVersionRequest) SetSetAsDefault(v bool) *CreatePolicyVersio
 }
 
 type CreatePolicyVersionResponseBody struct {
+	// The information about the policy version.
 	PolicyVersion *CreatePolicyVersionResponseBodyPolicyVersion `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty" type:"Struct"`
-	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 9B34724D-54B0-4A51-B34D-4512372FE1BE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreatePolicyVersionResponseBody) String() string {
@@ -1019,10 +1347,30 @@ func (s *CreatePolicyVersionResponseBody) SetRequestId(v string) *CreatePolicyVe
 }
 
 type CreatePolicyVersionResponseBodyPolicyVersion struct {
-	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	IsDefaultVersion *bool   `json:"IsDefaultVersion,omitempty" xml:"IsDefaultVersion,omitempty"`
-	PolicyDocument   *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
-	VersionId        *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	// The time when the policy version was created.
+	//
+	// example:
+	//
+	// 2015-01-23T12:33:18Z
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// Indicates whether the policy version is the default version.
+	//
+	// example:
+	//
+	// false
+	IsDefaultVersion *bool `json:"IsDefaultVersion,omitempty" xml:"IsDefaultVersion,omitempty"`
+	// The document of the policy.
+	//
+	// example:
+	//
+	// { "Statement": [{ "Action": ["oss:*"], "Effect": "Allow", "Resource": ["acs:oss:*:*:*"]}], "Version": "1"}
+	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
+	// The ID of the policy version.
+	//
+	// example:
+	//
+	// v3
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s CreatePolicyVersionResponseBodyPolicyVersion) String() string {
@@ -1054,9 +1402,9 @@ func (s *CreatePolicyVersionResponseBodyPolicyVersion) SetVersionId(v string) *C
 }
 
 type CreatePolicyVersionResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreatePolicyVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreatePolicyVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreatePolicyVersionResponse) String() string {
@@ -1083,10 +1431,40 @@ func (s *CreatePolicyVersionResponse) SetBody(v *CreatePolicyVersionResponseBody
 }
 
 type CreateRoleRequest struct {
+	// The trust policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
+	//
+	// >  RAM users cannot assume the RAM roles of trusted Alibaba Cloud services.
+	//
+	// example:
+	//
+	// {"Statement":[{"Action":"sts:AssumeRole","Effect":"Allow","Principal":{"RAM":"acs:ram::123456789012****:root"}}],"Version":"1"}
 	AssumeRolePolicyDocument *string `json:"AssumeRolePolicyDocument,omitempty" xml:"AssumeRolePolicyDocument,omitempty"`
-	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	MaxSessionDuration       *int64  `json:"MaxSessionDuration,omitempty" xml:"MaxSessionDuration,omitempty"`
-	RoleName                 *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The description of the RAM role.
+	//
+	// The description must be 1 to 1,024 characters in length.
+	//
+	// example:
+	//
+	// ECS administrator
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The maximum session duration of the RAM role.
+	//
+	// Valid values: 3600 to 43200. Unit: seconds. Default value: 3600.
+	//
+	// If you do not specify this parameter, the default value is used.
+	//
+	// example:
+	//
+	// 3600
+	MaxSessionDuration *int64 `json:"MaxSessionDuration,omitempty" xml:"MaxSessionDuration,omitempty"`
+	// The name of the RAM role.
+	//
+	// The name must be 1 to 64 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
+	//
+	// example:
+	//
+	// ECSAdmin
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
 func (s CreateRoleRequest) String() string {
@@ -1118,8 +1496,14 @@ func (s *CreateRoleRequest) SetRoleName(v string) *CreateRoleRequest {
 }
 
 type CreateRoleResponseBody struct {
-	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Role      *CreateRoleResponseBodyRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information of the RAM role.
+	Role *CreateRoleResponseBodyRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
 }
 
 func (s CreateRoleResponseBody) String() string {
@@ -1141,13 +1525,48 @@ func (s *CreateRoleResponseBody) SetRole(v *CreateRoleResponseBodyRole) *CreateR
 }
 
 type CreateRoleResponseBodyRole struct {
-	Arn                      *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the role.
+	//
+	// example:
+	//
+	// acs:ram::123456789012****:role/ECSAdmin
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The trust policy that specifies the trusted entity to assume the RAM role.
+	//
+	// example:
+	//
+	// { "Statement": [ { "Action": "sts:AssumeRole", "Effect": "Allow", "Principal": { "RAM": "acs:ram::123456789012****:root" } } ], "Version": "1" }
 	AssumeRolePolicyDocument *string `json:"AssumeRolePolicyDocument,omitempty" xml:"AssumeRolePolicyDocument,omitempty"`
-	CreateDate               *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	MaxSessionDuration       *int64  `json:"MaxSessionDuration,omitempty" xml:"MaxSessionDuration,omitempty"`
-	RoleId                   *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	RoleName                 *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The time when the RAM user was created.
+	//
+	// example:
+	//
+	// 2015-01-23T12:33:18Z
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The description of the RAM role.
+	//
+	// example:
+	//
+	// ECS administrator
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The maximum session duration of the RAM role.
+	//
+	// example:
+	//
+	// 3600
+	MaxSessionDuration *int64 `json:"MaxSessionDuration,omitempty" xml:"MaxSessionDuration,omitempty"`
+	// The ID of the RAM role.
+	//
+	// example:
+	//
+	// 901234567890****
+	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// The name of the RAM role.
+	//
+	// example:
+	//
+	// ECSAdmin
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
 func (s CreateRoleResponseBodyRole) String() string {
@@ -1194,9 +1613,9 @@ func (s *CreateRoleResponseBodyRole) SetRoleName(v string) *CreateRoleResponseBo
 }
 
 type CreateRoleResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateRoleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateRoleResponse) String() string {
@@ -1223,11 +1642,48 @@ func (s *CreateRoleResponse) SetBody(v *CreateRoleResponseBody) *CreateRoleRespo
 }
 
 type CreateUserRequest struct {
-	Comments    *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The description of the RAM user.
+	//
+	// The description must be 1 to 128 characters in length.
+	//
+	// example:
+	//
+	// This is a cloud computing engineer.
+	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The display name of the RAM user.
+	//
+	// The display name must be 1 to 128 characters in length.
+	//
+	// example:
+	//
+	// alice
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Email       *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The email address of the RAM user.
+	//
+	// >  This parameter applies only to the China site (aliyun.com).
+	//
+	// example:
+	//
+	// alice@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The mobile phone number of the RAM user.
+	//
+	// Format: Country code-Mobile phone number.
+	//
+	// >  This parameter applies only to the China site (aliyun.com).
+	//
+	// example:
+	//
+	// 86-1868888****
 	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
-	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The username of the RAM user.
+	//
+	// The username must be 1 to 64 characters in length, and can contain letters, digits, periods (.), hyphens (-), and underscores (_).
+	//
+	// example:
+	//
+	// alice
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s CreateUserRequest) String() string {
@@ -1264,8 +1720,14 @@ func (s *CreateUserRequest) SetUserName(v string) *CreateUserRequest {
 }
 
 type CreateUserResponseBody struct {
-	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	User      *CreateUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the RAM user.
+	User *CreateUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 }
 
 func (s CreateUserResponseBody) String() string {
@@ -1287,13 +1749,52 @@ func (s *CreateUserResponseBody) SetUser(v *CreateUserResponseBodyUser) *CreateU
 }
 
 type CreateUserResponseBodyUser struct {
-	Comments    *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	CreateDate  *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The description of the RAM user.
+	//
+	// example:
+	//
+	// This is a cloud computing engineer.
+	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The point in time when the RAM user was created. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2015-01-23T12:33:18Z
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The display name of the RAM user.
+	//
+	// example:
+	//
+	// alice
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Email       *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The email address of the RAM user.
+	//
+	// >  This parameter can be returned only on the China site (aliyun.com).
+	//
+	// example:
+	//
+	// alice@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The mobile phone number of the RAM user.
+	//
+	// >  This parameter can be returned only on the China site (aliyun.com).
+	//
+	// example:
+	//
+	// 86-1868888****
 	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The ID of the RAM user.
+	//
+	// example:
+	//
+	// 122748924538****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The username of the RAM user.
+	//
+	// example:
+	//
+	// alice
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s CreateUserResponseBodyUser) String() string {
@@ -1340,9 +1841,9 @@ func (s *CreateUserResponseBodyUser) SetUserName(v string) *CreateUserResponseBo
 }
 
 type CreateUserResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateUserResponse) String() string {
@@ -1369,6 +1870,13 @@ func (s *CreateUserResponse) SetBody(v *CreateUserResponseBody) *CreateUserRespo
 }
 
 type CreateVirtualMFADeviceRequest struct {
+	// The name of the MFA device.
+	//
+	// The name must be 1 to 64 characters in length and can contain letters, digits, periods (.), and hyphens (-).
+	//
+	// example:
+	//
+	// device001
 	VirtualMFADeviceName *string `json:"VirtualMFADeviceName,omitempty" xml:"VirtualMFADeviceName,omitempty"`
 }
 
@@ -1386,7 +1894,13 @@ func (s *CreateVirtualMFADeviceRequest) SetVirtualMFADeviceName(v string) *Creat
 }
 
 type CreateVirtualMFADeviceResponseBody struct {
-	RequestId        *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information of the MFA device.
 	VirtualMFADevice *CreateVirtualMFADeviceResponseBodyVirtualMFADevice `json:"VirtualMFADevice,omitempty" xml:"VirtualMFADevice,omitempty" type:"Struct"`
 }
 
@@ -1409,9 +1923,24 @@ func (s *CreateVirtualMFADeviceResponseBody) SetVirtualMFADevice(v *CreateVirtua
 }
 
 type CreateVirtualMFADeviceResponseBodyVirtualMFADevice struct {
+	// The key of the MFA device.
+	//
+	// example:
+	//
+	// DSF98HAD982KJA9SDFNAS9D8FU839B8ADHBGS****
 	Base32StringSeed *string `json:"Base32StringSeed,omitempty" xml:"Base32StringSeed,omitempty"`
-	QRCodePNG        *string `json:"QRCodePNG,omitempty" xml:"QRCodePNG,omitempty"`
-	SerialNumber     *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The Base64-encoded QR code, in the PNG format.
+	//
+	// example:
+	//
+	// YXNkZmFzZDlmeW5hc2Q5OGZoODd4bXJmcThhaGU5aSBmYXNkZiBzYWRmIGFGIDRxd2VjIGEgdHEz****
+	QRCodePNG *string `json:"QRCodePNG,omitempty" xml:"QRCodePNG,omitempty"`
+	// The serial number of the MFA device.
+	//
+	// example:
+	//
+	// acs:ram::123456789012****:mfa/device001
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 }
 
 func (s CreateVirtualMFADeviceResponseBodyVirtualMFADevice) String() string {
@@ -1438,9 +1967,9 @@ func (s *CreateVirtualMFADeviceResponseBodyVirtualMFADevice) SetSerialNumber(v s
 }
 
 type CreateVirtualMFADeviceResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateVirtualMFADeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateVirtualMFADeviceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateVirtualMFADeviceResponse) String() string {
@@ -1466,9 +1995,417 @@ func (s *CreateVirtualMFADeviceResponse) SetBody(v *CreateVirtualMFADeviceRespon
 	return s
 }
 
+type DecodeDiagnosticMessageRequest struct {
+	// The encoded diagnostic information in the response that contains an access denied error. The error is caused by no RAM permissions.
+	//
+	// example:
+	//
+	// AQEAAAAAZBgxr0U1MjA1NTM1LUM4BBktMzE5RS1CODgxLUU1QTI0RDNFQTM1****
+	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
+}
+
+func (s DecodeDiagnosticMessageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DecodeDiagnosticMessageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DecodeDiagnosticMessageRequest) SetEncodedDiagnosticMessage(v string) *DecodeDiagnosticMessageRequest {
+	s.EncodedDiagnosticMessage = &v
+	return s
+}
+
+type DecodeDiagnosticMessageResponseBody struct {
+	// The decoded diagnostic information.
+	DecodedDiagnosticMessage *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessage `json:"DecodedDiagnosticMessage,omitempty" xml:"DecodedDiagnosticMessage,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// D2331703-AADF-5564-BA9B-26CD51A33BA0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DecodeDiagnosticMessageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DecodeDiagnosticMessageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DecodeDiagnosticMessageResponseBody) SetDecodedDiagnosticMessage(v *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessage) *DecodeDiagnosticMessageResponseBody {
+	s.DecodedDiagnosticMessage = v
+	return s
+}
+
+func (s *DecodeDiagnosticMessageResponseBody) SetRequestId(v string) *DecodeDiagnosticMessageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessage struct {
+	// The operation that is used for authentication in the request.
+	//
+	// example:
+	//
+	// ram:DecodeDiagnosticMessage
+	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
+	// The conditions that are used for authentication in the request.
+	AuthConditions []*DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageAuthConditions `json:"AuthConditions,omitempty" xml:"AuthConditions,omitempty" type:"Repeated"`
+	// The operator that is used for authentication in the request.
+	AuthPrincipal *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageAuthPrincipal `json:"AuthPrincipal,omitempty" xml:"AuthPrincipal,omitempty" type:"Struct"`
+	// The resource that is used for authentication in the request.
+	//
+	// example:
+	//
+	// *
+	AuthResource *string `json:"AuthResource,omitempty" xml:"AuthResource,omitempty"`
+	// Indicates whether the access denied error is caused by an explicit deny.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// example:
+	//
+	// true
+	ExplicitDeny *bool `json:"ExplicitDeny,omitempty" xml:"ExplicitDeny,omitempty"`
+	// The policies that are matched.
+	MatchedPolicies []*DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageMatchedPolicies `json:"MatchedPolicies,omitempty" xml:"MatchedPolicies,omitempty" type:"Repeated"`
+	// The type of the policy that causes the access denied error.
+	//
+	// Valid values:
+	//
+	// 	- AssumeRolePolicy: role-specific trust policy
+	//
+	// 	- ControlPolicy: control policy
+	//
+	// 	- AccountLevelIdentityBasedPolicy: identity-based policy at the account level
+	//
+	// 	- ResourceGroupLevelIdentityBasedPolicy: identity-based policy at the resource group level
+	//
+	// 	- SessionPolicy: session policy
+	//
+	// example:
+	//
+	// AccountLevelIdentityBasedPolicy
+	NoPermissionPolicyType *string `json:"NoPermissionPolicyType,omitempty" xml:"NoPermissionPolicyType,omitempty"`
+}
+
+func (s DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessage) GoString() string {
+	return s.String()
+}
+
+func (s *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessage) SetAuthAction(v string) *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessage {
+	s.AuthAction = &v
+	return s
+}
+
+func (s *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessage) SetAuthConditions(v []*DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageAuthConditions) *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessage {
+	s.AuthConditions = v
+	return s
+}
+
+func (s *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessage) SetAuthPrincipal(v *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageAuthPrincipal) *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessage {
+	s.AuthPrincipal = v
+	return s
+}
+
+func (s *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessage) SetAuthResource(v string) *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessage {
+	s.AuthResource = &v
+	return s
+}
+
+func (s *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessage) SetExplicitDeny(v bool) *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessage {
+	s.ExplicitDeny = &v
+	return s
+}
+
+func (s *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessage) SetMatchedPolicies(v []*DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageMatchedPolicies) *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessage {
+	s.MatchedPolicies = v
+	return s
+}
+
+func (s *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessage) SetNoPermissionPolicyType(v string) *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessage {
+	s.NoPermissionPolicyType = &v
+	return s
+}
+
+type DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageAuthConditions struct {
+	// The key of the condition.
+	//
+	// example:
+	//
+	// acs:SourceIp
+	ConditionKey *string `json:"ConditionKey,omitempty" xml:"ConditionKey,omitempty"`
+	// The values that correspond to the key.
+	ConditionValues []*string `json:"ConditionValues,omitempty" xml:"ConditionValues,omitempty" type:"Repeated"`
+}
+
+func (s DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageAuthConditions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageAuthConditions) GoString() string {
+	return s.String()
+}
+
+func (s *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageAuthConditions) SetConditionKey(v string) *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageAuthConditions {
+	s.ConditionKey = &v
+	return s
+}
+
+func (s *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageAuthConditions) SetConditionValues(v []*string) *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageAuthConditions {
+	s.ConditionValues = v
+	return s
+}
+
+type DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageAuthPrincipal struct {
+	// The identity.
+	//
+	// 	- If the operator is a RAM user, the ID of the user is displayed.
+	//
+	// 	- If the operator is a RAM role, the name and session name of the role are displayed. Example: RoleName:RoleSessionName.
+	//
+	// 	- If the operator is an SSO federated identity, the type and name of the identity provider (IdP) are displayed. Example: saml-provider/AzureAD.
+	//
+	// example:
+	//
+	// 28877424437521****
+	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
+	// The ID of the Alibaba Cloud account to which the identity belongs.
+	//
+	// example:
+	//
+	// 196813200012****
+	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
+	// The identity type that is used for authentication in the request.
+	//
+	// Valid values:
+	//
+	// 	- SubUser: RAM user
+	//
+	// 	- AssumedRoleUser: RAM role
+	//
+	// 	- Federated: SSO federated identity
+	//
+	// example:
+	//
+	// SubUser
+	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
+}
+
+func (s DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageAuthPrincipal) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageAuthPrincipal) GoString() string {
+	return s.String()
+}
+
+func (s *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageAuthPrincipal) SetAuthPrincipalDisplayName(v string) *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageAuthPrincipal {
+	s.AuthPrincipalDisplayName = &v
+	return s
+}
+
+func (s *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageAuthPrincipal) SetAuthPrincipalOwnerId(v string) *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageAuthPrincipal {
+	s.AuthPrincipalOwnerId = &v
+	return s
+}
+
+func (s *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageAuthPrincipal) SetAuthPrincipalType(v string) *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageAuthPrincipal {
+	s.AuthPrincipalType = &v
+	return s
+}
+
+type DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageMatchedPolicies struct {
+	// The type of the entity to which the policy is attached.
+	//
+	// Valid values:
+	//
+	// 	- RamUser: RAM user
+	//
+	// 	- RamRole: RAM role
+	//
+	// 	- ResourceDirectoryTarget: entity in a resource directory
+	//
+	// 	- RamGroup: RAM user group
+	//
+	// example:
+	//
+	// RamUser
+	AttachedEntityType *string `json:"AttachedEntityType,omitempty" xml:"AttachedEntityType,omitempty"`
+	// The authorization scope of the policy.
+	//
+	// Valid values:
+	//
+	// 	- Account: Alibaba Cloud account
+	//
+	// 	- Folder: folder in the resource directory
+	//
+	// 	- ResourceGroup: resource group
+	//
+	// example:
+	//
+	// Account
+	AttachedScope *string `json:"AttachedScope,omitempty" xml:"AttachedScope,omitempty"`
+	// The effect of the policy.
+	//
+	// Valid values:
+	//
+	// 	- Deny
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Allow
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// example:
+	//
+	// Deny
+	Effect *string `json:"Effect,omitempty" xml:"Effect,omitempty"`
+	// The identifier of the policy.
+	//
+	// 	- Control policy: the ID of the control policy
+	//
+	// 	- RAM policy: the name of the policy
+	//
+	// example:
+	//
+	// MyPolicyName
+	PolicyIdentifier *string `json:"PolicyIdentifier,omitempty" xml:"PolicyIdentifier,omitempty"`
+	// The type of the policy.
+	//
+	// Valid values:
+	//
+	// 	- Custom: custom policy
+	//
+	// 	- System: system policy
+	//
+	// example:
+	//
+	// Custom
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// The version number of the policy.
+	//
+	// > Only custom policies have version numbers.
+	//
+	// example:
+	//
+	// v1
+	PolicyVersion *string `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
+}
+
+func (s DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageMatchedPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageMatchedPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageMatchedPolicies) SetAttachedEntityType(v string) *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageMatchedPolicies {
+	s.AttachedEntityType = &v
+	return s
+}
+
+func (s *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageMatchedPolicies) SetAttachedScope(v string) *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageMatchedPolicies {
+	s.AttachedScope = &v
+	return s
+}
+
+func (s *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageMatchedPolicies) SetEffect(v string) *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageMatchedPolicies {
+	s.Effect = &v
+	return s
+}
+
+func (s *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageMatchedPolicies) SetPolicyIdentifier(v string) *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageMatchedPolicies {
+	s.PolicyIdentifier = &v
+	return s
+}
+
+func (s *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageMatchedPolicies) SetPolicyType(v string) *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageMatchedPolicies {
+	s.PolicyType = &v
+	return s
+}
+
+func (s *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageMatchedPolicies) SetPolicyVersion(v string) *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageMatchedPolicies {
+	s.PolicyVersion = &v
+	return s
+}
+
+type DecodeDiagnosticMessageResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DecodeDiagnosticMessageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DecodeDiagnosticMessageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DecodeDiagnosticMessageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DecodeDiagnosticMessageResponse) SetHeaders(v map[string]*string) *DecodeDiagnosticMessageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DecodeDiagnosticMessageResponse) SetStatusCode(v int32) *DecodeDiagnosticMessageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DecodeDiagnosticMessageResponse) SetBody(v *DecodeDiagnosticMessageResponseBody) *DecodeDiagnosticMessageResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteAccessKeyRequest struct {
+	// The AccessKey ID in the AccessKey pair that you want to delete.
+	//
+	// example:
+	//
+	// 0wNEpMMlzy7s****
 	UserAccessKeyId *string `json:"UserAccessKeyId,omitempty" xml:"UserAccessKeyId,omitempty"`
-	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The name of the RAM user.
+	//
+	// example:
+	//
+	// zhangq****
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s DeleteAccessKeyRequest) String() string {
@@ -1490,6 +2427,11 @@ func (s *DeleteAccessKeyRequest) SetUserName(v string) *DeleteAccessKeyRequest {
 }
 
 type DeleteAccessKeyResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1507,9 +2449,9 @@ func (s *DeleteAccessKeyResponseBody) SetRequestId(v string) *DeleteAccessKeyRes
 }
 
 type DeleteAccessKeyResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAccessKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAccessKeyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteAccessKeyResponse) String() string {
@@ -1536,6 +2478,13 @@ func (s *DeleteAccessKeyResponse) SetBody(v *DeleteAccessKeyResponseBody) *Delet
 }
 
 type DeleteGroupRequest struct {
+	// The name of the RAM user group.
+	//
+	// If you want to query the name of a RAM user group, call the [ListGroups](https://help.aliyun.com/document_detail/28703.html) operation.
+	//
+	// example:
+	//
+	// Dev-Team
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 
@@ -1553,6 +2502,11 @@ func (s *DeleteGroupRequest) SetGroupName(v string) *DeleteGroupRequest {
 }
 
 type DeleteGroupResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// FCF40AB5-881C-A0F9-334C-B0AD423AA69D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1570,9 +2524,9 @@ func (s *DeleteGroupResponseBody) SetRequestId(v string) *DeleteGroupResponseBod
 }
 
 type DeleteGroupResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteGroupResponse) String() string {
@@ -1599,6 +2553,11 @@ func (s *DeleteGroupResponse) SetBody(v *DeleteGroupResponseBody) *DeleteGroupRe
 }
 
 type DeleteLoginProfileRequest struct {
+	// The name of the RAM user.
+	//
+	// example:
+	//
+	// zhangq****
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -1616,6 +2575,11 @@ func (s *DeleteLoginProfileRequest) SetUserName(v string) *DeleteLoginProfileReq
 }
 
 type DeleteLoginProfileResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 1C488B66-B819-4D14-8711-C4EAAA13AC01
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1633,9 +2597,9 @@ func (s *DeleteLoginProfileResponseBody) SetRequestId(v string) *DeleteLoginProf
 }
 
 type DeleteLoginProfileResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteLoginProfileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteLoginProfileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteLoginProfileResponse) String() string {
@@ -1662,6 +2626,11 @@ func (s *DeleteLoginProfileResponse) SetBody(v *DeleteLoginProfileResponseBody) 
 }
 
 type DeletePolicyRequest struct {
+	// The name of the policy.
+	//
+	// example:
+	//
+	// OSS-Administrator
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 }
 
@@ -1679,6 +2648,11 @@ func (s *DeletePolicyRequest) SetPolicyName(v string) *DeletePolicyRequest {
 }
 
 type DeletePolicyResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 898FAB24-7509-43EE-A287-086FE4C44394
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1696,9 +2670,9 @@ func (s *DeletePolicyResponseBody) SetRequestId(v string) *DeletePolicyResponseB
 }
 
 type DeletePolicyResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeletePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeletePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeletePolicyResponse) String() string {
@@ -1725,8 +2699,18 @@ func (s *DeletePolicyResponse) SetBody(v *DeletePolicyResponseBody) *DeletePolic
 }
 
 type DeletePolicyVersionRequest struct {
+	// The name of the policy.
+	//
+	// example:
+	//
+	// OSS-Administrator
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	VersionId  *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	// The ID of the policy version.
+	//
+	// example:
+	//
+	// v3
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s DeletePolicyVersionRequest) String() string {
@@ -1748,6 +2732,11 @@ func (s *DeletePolicyVersionRequest) SetVersionId(v string) *DeletePolicyVersion
 }
 
 type DeletePolicyVersionResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 9B34724D-54B0-4A51-B34D-4512372FE1BE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1765,9 +2754,9 @@ func (s *DeletePolicyVersionResponseBody) SetRequestId(v string) *DeletePolicyVe
 }
 
 type DeletePolicyVersionResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeletePolicyVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeletePolicyVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeletePolicyVersionResponse) String() string {
@@ -1794,6 +2783,11 @@ func (s *DeletePolicyVersionResponse) SetBody(v *DeletePolicyVersionResponseBody
 }
 
 type DeleteRoleRequest struct {
+	// The name of the RAM role.
+	//
+	// example:
+	//
+	// ECSAdmin
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
@@ -1811,6 +2805,11 @@ func (s *DeleteRoleRequest) SetRoleName(v string) *DeleteRoleRequest {
 }
 
 type DeleteRoleResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 898FAB24-7509-43EE-A287-086FE4C44394
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1828,9 +2827,9 @@ func (s *DeleteRoleResponseBody) SetRequestId(v string) *DeleteRoleResponseBody 
 }
 
 type DeleteRoleResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteRoleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteRoleResponse) String() string {
@@ -1857,6 +2856,13 @@ func (s *DeleteRoleResponse) SetBody(v *DeleteRoleResponseBody) *DeleteRoleRespo
 }
 
 type DeleteUserRequest struct {
+	// The name of the RAM user.
+	//
+	// The name must be 1 to 64 characters in length, and can contain letters, digits, periods (.), hyphens (-), and underscores (_).
+	//
+	// example:
+	//
+	// zhangq****
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -1874,6 +2880,11 @@ func (s *DeleteUserRequest) SetUserName(v string) *DeleteUserRequest {
 }
 
 type DeleteUserResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 1C488B66-B819-4D14-8711-C4EAAA13AC01
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1891,9 +2902,9 @@ func (s *DeleteUserResponseBody) SetRequestId(v string) *DeleteUserResponseBody 
 }
 
 type DeleteUserResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteUserResponse) String() string {
@@ -1920,6 +2931,11 @@ func (s *DeleteUserResponse) SetBody(v *DeleteUserResponseBody) *DeleteUserRespo
 }
 
 type DeleteVirtualMFADeviceRequest struct {
+	// The serial number of the MFA device.
+	//
+	// example:
+	//
+	// acs:ram::123456789012****:mfa/device002
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 }
 
@@ -1937,6 +2953,11 @@ func (s *DeleteVirtualMFADeviceRequest) SetSerialNumber(v string) *DeleteVirtual
 }
 
 type DeleteVirtualMFADeviceResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1954,9 +2975,9 @@ func (s *DeleteVirtualMFADeviceResponseBody) SetRequestId(v string) *DeleteVirtu
 }
 
 type DeleteVirtualMFADeviceResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteVirtualMFADeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteVirtualMFADeviceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteVirtualMFADeviceResponse) String() string {
@@ -1983,8 +3004,23 @@ func (s *DeleteVirtualMFADeviceResponse) SetBody(v *DeleteVirtualMFADeviceRespon
 }
 
 type DetachPolicyFromGroupRequest struct {
-	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The name of the RAM user group.
+	//
+	// example:
+	//
+	// dev
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The name of the policy.
+	//
+	// example:
+	//
+	// OSS-Administrator
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The type of the policy. Valid values: `System` and `Custom`.
+	//
+	// example:
+	//
+	// Custom
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 }
 
@@ -2012,6 +3048,11 @@ func (s *DetachPolicyFromGroupRequest) SetPolicyType(v string) *DetachPolicyFrom
 }
 
 type DetachPolicyFromGroupResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 697852FB-50D7-44D9-9774-530C31EAC572
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2029,9 +3070,9 @@ func (s *DetachPolicyFromGroupResponseBody) SetRequestId(v string) *DetachPolicy
 }
 
 type DetachPolicyFromGroupResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DetachPolicyFromGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetachPolicyFromGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DetachPolicyFromGroupResponse) String() string {
@@ -2058,9 +3099,24 @@ func (s *DetachPolicyFromGroupResponse) SetBody(v *DetachPolicyFromGroupResponse
 }
 
 type DetachPolicyFromRoleRequest struct {
+	// The name of the policy.
+	//
+	// example:
+	//
+	// OSS-Administrator
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The type of the policy. Valid values: `System` and `Custom`.
+	//
+	// example:
+	//
+	// Custom
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	RoleName   *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The name of the RAM role.
+	//
+	// example:
+	//
+	// OSSAdminRole
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
 func (s DetachPolicyFromRoleRequest) String() string {
@@ -2087,6 +3143,11 @@ func (s *DetachPolicyFromRoleRequest) SetRoleName(v string) *DetachPolicyFromRol
 }
 
 type DetachPolicyFromRoleResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 697852FB-50D7-44D9-9774-530C31EAC572
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2104,9 +3165,9 @@ func (s *DetachPolicyFromRoleResponseBody) SetRequestId(v string) *DetachPolicyF
 }
 
 type DetachPolicyFromRoleResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DetachPolicyFromRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetachPolicyFromRoleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DetachPolicyFromRoleResponse) String() string {
@@ -2133,9 +3194,24 @@ func (s *DetachPolicyFromRoleResponse) SetBody(v *DetachPolicyFromRoleResponseBo
 }
 
 type DetachPolicyFromUserRequest struct {
+	// The name of the policy.
+	//
+	// example:
+	//
+	// OSS-Administrator
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The type of the policy. Valid values: `System` and `Custom`.
+	//
+	// example:
+	//
+	// Custom
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	UserName   *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The name of the RAM user.
+	//
+	// example:
+	//
+	// zhangq****
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s DetachPolicyFromUserRequest) String() string {
@@ -2162,6 +3238,11 @@ func (s *DetachPolicyFromUserRequest) SetUserName(v string) *DetachPolicyFromUse
 }
 
 type DetachPolicyFromUserResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 697852FB-50D7-44D9-9774-530C31EAC572
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2179,9 +3260,9 @@ func (s *DetachPolicyFromUserResponseBody) SetRequestId(v string) *DetachPolicyF
 }
 
 type DetachPolicyFromUserResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DetachPolicyFromUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetachPolicyFromUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DetachPolicyFromUserResponse) String() string {
@@ -2208,8 +3289,14 @@ func (s *DetachPolicyFromUserResponse) SetBody(v *DetachPolicyFromUserResponseBo
 }
 
 type GetAccessKeyLastUsedRequest struct {
+	// example:
+	//
+	// LTAI4GFTgcR8m8cZQDTH****
 	UserAccessKeyId *string `json:"UserAccessKeyId,omitempty" xml:"UserAccessKeyId,omitempty"`
-	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// example:
+	//
+	// test
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s GetAccessKeyLastUsedRequest) String() string {
@@ -2232,7 +3319,10 @@ func (s *GetAccessKeyLastUsedRequest) SetUserName(v string) *GetAccessKeyLastUse
 
 type GetAccessKeyLastUsedResponseBody struct {
 	AccessKeyLastUsed *GetAccessKeyLastUsedResponseBodyAccessKeyLastUsed `json:"AccessKeyLastUsed,omitempty" xml:"AccessKeyLastUsed,omitempty" type:"Struct"`
-	RequestId         *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 5CCE804C-6450-49A7-B1DB-2460F7A97416
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAccessKeyLastUsedResponseBody) String() string {
@@ -2254,6 +3344,9 @@ func (s *GetAccessKeyLastUsedResponseBody) SetRequestId(v string) *GetAccessKeyL
 }
 
 type GetAccessKeyLastUsedResponseBodyAccessKeyLastUsed struct {
+	// example:
+	//
+	// 2020-10-21T06:37:40Z
 	LastUsedDate *string `json:"LastUsedDate,omitempty" xml:"LastUsedDate,omitempty"`
 }
 
@@ -2271,9 +3364,9 @@ func (s *GetAccessKeyLastUsedResponseBodyAccessKeyLastUsed) SetLastUsedDate(v st
 }
 
 type GetAccessKeyLastUsedResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAccessKeyLastUsedResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAccessKeyLastUsedResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAccessKeyLastUsedResponse) String() string {
@@ -2300,8 +3393,18 @@ func (s *GetAccessKeyLastUsedResponse) SetBody(v *GetAccessKeyLastUsedResponseBo
 }
 
 type GetAccountAliasResponseBody struct {
+	// The alias of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// myalias
 	AccountAlias *string `json:"AccountAlias,omitempty" xml:"AccountAlias,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAccountAliasResponseBody) String() string {
@@ -2323,9 +3426,9 @@ func (s *GetAccountAliasResponseBody) SetRequestId(v string) *GetAccountAliasRes
 }
 
 type GetAccountAliasResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAccountAliasResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAccountAliasResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAccountAliasResponse) String() string {
@@ -2352,6 +3455,11 @@ func (s *GetAccountAliasResponse) SetBody(v *GetAccountAliasResponseBody) *GetAc
 }
 
 type GetGroupRequest struct {
+	// The name of the RAM user group.
+	//
+	// example:
+	//
+	// Dev-Team
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 
@@ -2369,8 +3477,14 @@ func (s *GetGroupRequest) SetGroupName(v string) *GetGroupRequest {
 }
 
 type GetGroupResponseBody struct {
-	Group     *GetGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
-	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information of the RAM user group.
+	Group *GetGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// D4065824-E422-3ED6-68B1-1AF7D5C7804C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetGroupResponseBody) String() string {
@@ -2392,10 +3506,35 @@ func (s *GetGroupResponseBody) SetRequestId(v string) *GetGroupResponseBody {
 }
 
 type GetGroupResponseBodyGroup struct {
-	Comments   *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The description of the RAM user group.
+	//
+	// example:
+	//
+	// Dev-Team
+	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The time when the RAM user group was created.
+	//
+	// example:
+	//
+	// 2015-01-23T12:33:18Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The ID of the RAM user group.
+	//
+	// example:
+	//
+	// g-FpMEHiMysofp****
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the RAM user group.
+	//
+	// example:
+	//
+	// Dev-Team
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The time when the information of the RAM user group was updated.
+	//
+	// example:
+	//
+	// 2015-02-11T03:15:21Z
 	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
@@ -2433,9 +3572,9 @@ func (s *GetGroupResponseBodyGroup) SetUpdateDate(v string) *GetGroupResponseBod
 }
 
 type GetGroupResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetGroupResponse) String() string {
@@ -2462,6 +3601,11 @@ func (s *GetGroupResponse) SetBody(v *GetGroupResponseBody) *GetGroupResponse {
 }
 
 type GetLoginProfileRequest struct {
+	// The name of the RAM user.
+	//
+	// example:
+	//
+	// zhangq****
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -2479,8 +3623,14 @@ func (s *GetLoginProfileRequest) SetUserName(v string) *GetLoginProfileRequest {
 }
 
 type GetLoginProfileResponseBody struct {
+	// The logon configurations of the RAM user.
 	LoginProfile *GetLoginProfileResponseBodyLoginProfile `json:"LoginProfile,omitempty" xml:"LoginProfile,omitempty" type:"Struct"`
-	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetLoginProfileResponseBody) String() string {
@@ -2502,10 +3652,30 @@ func (s *GetLoginProfileResponseBody) SetRequestId(v string) *GetLoginProfileRes
 }
 
 type GetLoginProfileResponseBodyLoginProfile struct {
-	CreateDate            *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	MFABindRequired       *bool   `json:"MFABindRequired,omitempty" xml:"MFABindRequired,omitempty"`
-	PasswordResetRequired *bool   `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
-	UserName              *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The time when the logon configurations were created.
+	//
+	// example:
+	//
+	// 2015-01-23T12:33:18Z
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// Indicates whether an MFA device must be attached to the RAM user upon logon.
+	//
+	// example:
+	//
+	// true
+	MFABindRequired *bool `json:"MFABindRequired,omitempty" xml:"MFABindRequired,omitempty"`
+	// Indicates whether the RAM user must change the password upon logon.
+	//
+	// example:
+	//
+	// true
+	PasswordResetRequired *bool `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
+	// The name of the RAM user.
+	//
+	// example:
+	//
+	// zhangq****
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s GetLoginProfileResponseBodyLoginProfile) String() string {
@@ -2537,9 +3707,9 @@ func (s *GetLoginProfileResponseBodyLoginProfile) SetUserName(v string) *GetLogi
 }
 
 type GetLoginProfileResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetLoginProfileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetLoginProfileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetLoginProfileResponse) String() string {
@@ -2566,8 +3736,14 @@ func (s *GetLoginProfileResponse) SetBody(v *GetLoginProfileResponseBody) *GetLo
 }
 
 type GetPasswordPolicyResponseBody struct {
+	// The policy to manage passwords.
 	PasswordPolicy *GetPasswordPolicyResponseBodyPasswordPolicy `json:"PasswordPolicy,omitempty" xml:"PasswordPolicy,omitempty" type:"Struct"`
-	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetPasswordPolicyResponseBody) String() string {
@@ -2589,15 +3765,66 @@ func (s *GetPasswordPolicyResponseBody) SetRequestId(v string) *GetPasswordPolic
 }
 
 type GetPasswordPolicyResponseBodyPasswordPolicy struct {
-	HardExpiry                 *bool  `json:"HardExpiry,omitempty" xml:"HardExpiry,omitempty"`
-	MaxLoginAttemps            *int32 `json:"MaxLoginAttemps,omitempty" xml:"MaxLoginAttemps,omitempty"`
-	MaxPasswordAge             *int32 `json:"MaxPasswordAge,omitempty" xml:"MaxPasswordAge,omitempty"`
-	MinimumPasswordLength      *int32 `json:"MinimumPasswordLength,omitempty" xml:"MinimumPasswordLength,omitempty"`
-	PasswordReusePrevention    *int32 `json:"PasswordReusePrevention,omitempty" xml:"PasswordReusePrevention,omitempty"`
-	RequireLowercaseCharacters *bool  `json:"RequireLowercaseCharacters,omitempty" xml:"RequireLowercaseCharacters,omitempty"`
-	RequireNumbers             *bool  `json:"RequireNumbers,omitempty" xml:"RequireNumbers,omitempty"`
-	RequireSymbols             *bool  `json:"RequireSymbols,omitempty" xml:"RequireSymbols,omitempty"`
-	RequireUppercaseCharacters *bool  `json:"RequireUppercaseCharacters,omitempty" xml:"RequireUppercaseCharacters,omitempty"`
+	// Indicates whether the password has expired.
+	//
+	// Valid values: `true` and `false`. Default value: `false`.
+	//
+	// 	- If the value of this parameter is `true`, the parent Alibaba Cloud account must reset the password before the RAM user can log on to the console.
+	//
+	// 	- If the value of this parameter is `false`, the RAM user can change the password and then log on to the console.
+	//
+	// example:
+	//
+	// false
+	HardExpiry *bool `json:"HardExpiry,omitempty" xml:"HardExpiry,omitempty"`
+	// The maximum number of permitted logon attempts within one hour. The number of logon attempts is reset to zero if a RAM user changes the password.
+	//
+	// example:
+	//
+	// 5
+	MaxLoginAttemps *int32 `json:"MaxLoginAttemps,omitempty" xml:"MaxLoginAttemps,omitempty"`
+	// The number of days for which a password is valid. Default value: 0. The default value indicates that the password never expires.
+	//
+	// example:
+	//
+	// 0
+	MaxPasswordAge *int32 `json:"MaxPasswordAge,omitempty" xml:"MaxPasswordAge,omitempty"`
+	// The minimum required number of characters in a password.
+	//
+	// example:
+	//
+	// 12
+	MinimumPasswordLength *int32 `json:"MinimumPasswordLength,omitempty" xml:"MinimumPasswordLength,omitempty"`
+	// The number of previous passwords that the user is prevented from reusing. Default value: 0. The default value indicates that the RAM user is not prevented from reusing previous passwords
+	//
+	// example:
+	//
+	// 0
+	PasswordReusePrevention *int32 `json:"PasswordReusePrevention,omitempty" xml:"PasswordReusePrevention,omitempty"`
+	// Indicates whether a password must contain one or more lowercase letters.
+	//
+	// example:
+	//
+	// true
+	RequireLowercaseCharacters *bool `json:"RequireLowercaseCharacters,omitempty" xml:"RequireLowercaseCharacters,omitempty"`
+	// Indicates whether a password must contain one or more digits.
+	//
+	// example:
+	//
+	// true
+	RequireNumbers *bool `json:"RequireNumbers,omitempty" xml:"RequireNumbers,omitempty"`
+	// Indicates whether a password must contain one or more special characters.
+	//
+	// example:
+	//
+	// true
+	RequireSymbols *bool `json:"RequireSymbols,omitempty" xml:"RequireSymbols,omitempty"`
+	// Indicates whether a password must contain one or more uppercase letters.
+	//
+	// example:
+	//
+	// true
+	RequireUppercaseCharacters *bool `json:"RequireUppercaseCharacters,omitempty" xml:"RequireUppercaseCharacters,omitempty"`
 }
 
 func (s GetPasswordPolicyResponseBodyPasswordPolicy) String() string {
@@ -2654,9 +3881,9 @@ func (s *GetPasswordPolicyResponseBodyPasswordPolicy) SetRequireUppercaseCharact
 }
 
 type GetPasswordPolicyResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPasswordPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPasswordPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPasswordPolicyResponse) String() string {
@@ -2683,7 +3910,17 @@ func (s *GetPasswordPolicyResponse) SetBody(v *GetPasswordPolicyResponseBody) *G
 }
 
 type GetPolicyRequest struct {
+	// The name of the policy.
+	//
+	// example:
+	//
+	// OSS-Administrator
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The type of the policy. Valid values: `System` and `Custom`.
+	//
+	// example:
+	//
+	// Custom
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 }
 
@@ -2706,9 +3943,16 @@ func (s *GetPolicyRequest) SetPolicyType(v string) *GetPolicyRequest {
 }
 
 type GetPolicyResponseBody struct {
+	// The information of the default policy version.
 	DefaultPolicyVersion *GetPolicyResponseBodyDefaultPolicyVersion `json:"DefaultPolicyVersion,omitempty" xml:"DefaultPolicyVersion,omitempty" type:"Struct"`
-	Policy               *GetPolicyResponseBodyPolicy               `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
-	RequestId            *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The basic information of the policy.
+	Policy *GetPolicyResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 697852FB-50D7-44D9-9774-530C31EAC572
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetPolicyResponseBody) String() string {
@@ -2735,10 +3979,30 @@ func (s *GetPolicyResponseBody) SetRequestId(v string) *GetPolicyResponseBody {
 }
 
 type GetPolicyResponseBodyDefaultPolicyVersion struct {
-	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	IsDefaultVersion *bool   `json:"IsDefaultVersion,omitempty" xml:"IsDefaultVersion,omitempty"`
-	PolicyDocument   *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
-	VersionId        *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	// The time when the default policy version was created.
+	//
+	// example:
+	//
+	// 2015-01-23T12:33:18Z
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// An attribute in the `DefaultPolicyVersion` parameter. The value of the `IsDefaultVersion` parameter is `true`.
+	//
+	// example:
+	//
+	// true
+	IsDefaultVersion *bool `json:"IsDefaultVersion,omitempty" xml:"IsDefaultVersion,omitempty"`
+	// The script of the default policy version.
+	//
+	// example:
+	//
+	// { "Statement": [{ "Action": ["oss:*"], "Effect": "Allow", "Resource": ["acs:oss:*:*:*"]}], "Version": "1"}
+	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
+	// The ID of the default policy version.
+	//
+	// example:
+	//
+	// v1
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s GetPolicyResponseBodyDefaultPolicyVersion) String() string {
@@ -2770,14 +4034,54 @@ func (s *GetPolicyResponseBodyDefaultPolicyVersion) SetVersionId(v string) *GetP
 }
 
 type GetPolicyResponseBodyPolicy struct {
-	AttachmentCount *int32  `json:"AttachmentCount,omitempty" xml:"AttachmentCount,omitempty"`
-	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	DefaultVersion  *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	PolicyDocument  *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
-	PolicyName      *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	PolicyType      *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	UpdateDate      *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The number of references to the policy.
+	//
+	// example:
+	//
+	// 0
+	AttachmentCount *int32 `json:"AttachmentCount,omitempty" xml:"AttachmentCount,omitempty"`
+	// The time when the policy was created.
+	//
+	// example:
+	//
+	// 2015-01-23T12:33:18Z
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The default version ID of the policy.
+	//
+	// example:
+	//
+	// v1
+	DefaultVersion *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
+	// The description of the policy.
+	//
+	// example:
+	//
+	// OSS administrator
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is deprecated.
+	//
+	// example:
+	//
+	// N/A
+	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
+	// The name of the policy.
+	//
+	// example:
+	//
+	// OSS-Administrator
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The type of the policy.
+	//
+	// example:
+	//
+	// Custom
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// The time when the policy was modified.
+	//
+	// example:
+	//
+	// 2015-01-23T12:33:18Z
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s GetPolicyResponseBodyPolicy) String() string {
@@ -2829,9 +4133,9 @@ func (s *GetPolicyResponseBodyPolicy) SetUpdateDate(v string) *GetPolicyResponse
 }
 
 type GetPolicyResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPolicyResponse) String() string {
@@ -2858,9 +4162,24 @@ func (s *GetPolicyResponse) SetBody(v *GetPolicyResponseBody) *GetPolicyResponse
 }
 
 type GetPolicyVersionRequest struct {
+	// The name of the policy.
+	//
+	// example:
+	//
+	// OSS-Administrator
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The type of the policy. Valid values: `System` and `Custom`.
+	//
+	// example:
+	//
+	// Custom
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	VersionId  *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	// The ID of the policy version.
+	//
+	// example:
+	//
+	// v3
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s GetPolicyVersionRequest) String() string {
@@ -2887,8 +4206,14 @@ func (s *GetPolicyVersionRequest) SetVersionId(v string) *GetPolicyVersionReques
 }
 
 type GetPolicyVersionResponseBody struct {
+	// The information of the policy version.
 	PolicyVersion *GetPolicyVersionResponseBodyPolicyVersion `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty" type:"Struct"`
-	RequestId     *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 9B34724D-54B0-4A51-B34D-4512372FE1BE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetPolicyVersionResponseBody) String() string {
@@ -2910,10 +4235,30 @@ func (s *GetPolicyVersionResponseBody) SetRequestId(v string) *GetPolicyVersionR
 }
 
 type GetPolicyVersionResponseBodyPolicyVersion struct {
-	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	IsDefaultVersion *bool   `json:"IsDefaultVersion,omitempty" xml:"IsDefaultVersion,omitempty"`
-	PolicyDocument   *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
-	VersionId        *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	// The time when the version was created.
+	//
+	// example:
+	//
+	// 2015-01-23T12:33:18Z
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// Indicates whether the version is the default version.
+	//
+	// example:
+	//
+	// false
+	IsDefaultVersion *bool `json:"IsDefaultVersion,omitempty" xml:"IsDefaultVersion,omitempty"`
+	// The script of the policy.
+	//
+	// example:
+	//
+	// { "Statement": [{ "Action": ["oss:*"], "Effect": "Allow", "Resource": ["acs:oss:*:*:*"]}], "Version": "1"}
+	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
+	// The ID of the version.
+	//
+	// example:
+	//
+	// v3
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s GetPolicyVersionResponseBodyPolicyVersion) String() string {
@@ -2945,9 +4290,9 @@ func (s *GetPolicyVersionResponseBodyPolicyVersion) SetVersionId(v string) *GetP
 }
 
 type GetPolicyVersionResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPolicyVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPolicyVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPolicyVersionResponse) String() string {
@@ -2974,6 +4319,13 @@ func (s *GetPolicyVersionResponse) SetBody(v *GetPolicyVersionResponseBody) *Get
 }
 
 type GetRoleRequest struct {
+	// The name of the RAM role.
+	//
+	// The name must be 1 to 64 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
+	//
+	// example:
+	//
+	// ECSAdmin
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
@@ -2991,8 +4343,14 @@ func (s *GetRoleRequest) SetRoleName(v string) *GetRoleRequest {
 }
 
 type GetRoleResponseBody struct {
-	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Role      *GetRoleResponseBodyRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information of the RAM role.
+	Role *GetRoleResponseBodyRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
 }
 
 func (s GetRoleResponseBody) String() string {
@@ -3014,14 +4372,54 @@ func (s *GetRoleResponseBody) SetRole(v *GetRoleResponseBodyRole) *GetRoleRespon
 }
 
 type GetRoleResponseBodyRole struct {
-	Arn                      *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role.
+	//
+	// example:
+	//
+	// acs:ram::123456789012****:role/ECSAdmin
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The content of the policy that specifies one or more entities entrusted to assume the RAM role.
+	//
+	// example:
+	//
+	// { "Statement": [ { "Action": "sts:AssumeRole", "Effect": "Allow", "Principal": { "RAM": "acs:ram::123456789012****:root" } } ], "Version": "1" }
 	AssumeRolePolicyDocument *string `json:"AssumeRolePolicyDocument,omitempty" xml:"AssumeRolePolicyDocument,omitempty"`
-	CreateDate               *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	MaxSessionDuration       *int64  `json:"MaxSessionDuration,omitempty" xml:"MaxSessionDuration,omitempty"`
-	RoleId                   *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	RoleName                 *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	UpdateDate               *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The time when the RAM role was created.
+	//
+	// example:
+	//
+	// 2015-01-23T12:33:18Z
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The description of the RAM role.
+	//
+	// example:
+	//
+	// ECS administrator
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The maximum session duration of the RAM role.
+	//
+	// example:
+	//
+	// 3600
+	MaxSessionDuration *int64 `json:"MaxSessionDuration,omitempty" xml:"MaxSessionDuration,omitempty"`
+	// The ID of the RAM role.
+	//
+	// example:
+	//
+	// 901234567890****
+	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// The name of the RAM role.
+	//
+	// example:
+	//
+	// ECSAdmin
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The time when the RAM role was modified.
+	//
+	// example:
+	//
+	// 2015-01-23T12:33:18Z
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s GetRoleResponseBodyRole) String() string {
@@ -3073,9 +4471,9 @@ func (s *GetRoleResponseBodyRole) SetUpdateDate(v string) *GetRoleResponseBodyRo
 }
 
 type GetRoleResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRoleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetRoleResponse) String() string {
@@ -3102,7 +4500,13 @@ func (s *GetRoleResponse) SetBody(v *GetRoleResponseBody) *GetRoleResponse {
 }
 
 type GetSecurityPreferenceResponseBody struct {
-	RequestId          *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// DC1213F1-A9D5-4A01-A996-44983689126C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The security preferences.
 	SecurityPreference *GetSecurityPreferenceResponseBodySecurityPreference `json:"SecurityPreference,omitempty" xml:"SecurityPreference,omitempty" type:"Struct"`
 }
 
@@ -3125,10 +4529,16 @@ func (s *GetSecurityPreferenceResponseBody) SetSecurityPreference(v *GetSecurity
 }
 
 type GetSecurityPreferenceResponseBodySecurityPreference struct {
-	AccessKeyPreference    *GetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference    `json:"AccessKeyPreference,omitempty" xml:"AccessKeyPreference,omitempty" type:"Struct"`
+	// The AccessKey pair preference.
+	AccessKeyPreference *GetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference `json:"AccessKeyPreference,omitempty" xml:"AccessKeyPreference,omitempty" type:"Struct"`
+	// The logon preferences.
 	LoginProfilePreference *GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference `json:"LoginProfilePreference,omitempty" xml:"LoginProfilePreference,omitempty" type:"Struct"`
-	MFAPreference          *GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference          `json:"MFAPreference,omitempty" xml:"MFAPreference,omitempty" type:"Struct"`
-	PublicKeyPreference    *GetSecurityPreferenceResponseBodySecurityPreferencePublicKeyPreference    `json:"PublicKeyPreference,omitempty" xml:"PublicKeyPreference,omitempty" type:"Struct"`
+	// The MFA preference.
+	MFAPreference *GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference `json:"MFAPreference,omitempty" xml:"MFAPreference,omitempty" type:"Struct"`
+	// The public key preference.
+	//
+	// >  The public key preference is valid only for the Japan site.
+	PublicKeyPreference *GetSecurityPreferenceResponseBodySecurityPreferencePublicKeyPreference `json:"PublicKeyPreference,omitempty" xml:"PublicKeyPreference,omitempty" type:"Struct"`
 }
 
 func (s GetSecurityPreferenceResponseBodySecurityPreference) String() string {
@@ -3160,6 +4570,15 @@ func (s *GetSecurityPreferenceResponseBodySecurityPreference) SetPublicKeyPrefer
 }
 
 type GetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference struct {
+	// Indicates whether RAM users can manage their AccessKey pairs. Valid values:
+	//
+	// 	- true: RAM users can manage their AccessKey pairs.
+	//
+	// 	- false: RAM users cannot manage their AccessKey pairs.
+	//
+	// example:
+	//
+	// false
 	AllowUserToManageAccessKeys *bool `json:"AllowUserToManageAccessKeys,omitempty" xml:"AllowUserToManageAccessKeys,omitempty"`
 }
 
@@ -3177,10 +4596,44 @@ func (s *GetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference)
 }
 
 type GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference struct {
-	AllowUserToChangePassword *bool   `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
-	EnableSaveMFATicket       *bool   `json:"EnableSaveMFATicket,omitempty" xml:"EnableSaveMFATicket,omitempty"`
-	LoginNetworkMasks         *string `json:"LoginNetworkMasks,omitempty" xml:"LoginNetworkMasks,omitempty"`
-	LoginSessionDuration      *int32  `json:"LoginSessionDuration,omitempty" xml:"LoginSessionDuration,omitempty"`
+	// Indicates whether RAM users can change their passwords. Valid values:
+	//
+	// 	- true: RAM users can change their passwords.
+	//
+	// 	- false: RAM users cannot change their passwords.
+	//
+	// example:
+	//
+	// true
+	AllowUserToChangePassword *bool `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
+	// Indicates whether RAM users can save security codes for multi-factor authentication (MFA) during logon. Each security code is valid for seven days. Valid values:
+	//
+	// 	- true: RAM users can save MFA security codes during logon.
+	//
+	// 	- false: RAM users cannot save MFA security codes during logon.
+	//
+	// example:
+	//
+	// false
+	EnableSaveMFATicket *bool `json:"EnableSaveMFATicket,omitempty" xml:"EnableSaveMFATicket,omitempty"`
+	// The subnet mask that indicates the IP addresses from which logon to the Alibaba Cloud Management Console is allowed. This parameter applies to password-based logon and single sign-on (SSO). However, this parameter does not apply to API calls that are authenticated based on AccessKey pairs.
+	//
+	// 	- If a subnet mask is specified, RAM users can log on to the Alibaba Cloud Management Console only by using the IP addresses in the subnetwork.
+	//
+	// 	- If no subnet mask is specified, RAM users can log on to the Alibaba Cloud Management Console by using all IP addresses.
+	//
+	// If more than one subnet mask is specified, the masks are separated with semicolons (;), for example, 192.168.0.0/16;10.0.0.0/8.
+	//
+	// example:
+	//
+	// 10.0.0.0/8
+	LoginNetworkMasks *string `json:"LoginNetworkMasks,omitempty" xml:"LoginNetworkMasks,omitempty"`
+	// The validity period of a logon session of a RAM user. Unit: hours.
+	//
+	// example:
+	//
+	// 6
+	LoginSessionDuration *int32 `json:"LoginSessionDuration,omitempty" xml:"LoginSessionDuration,omitempty"`
 }
 
 func (s GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference) String() string {
@@ -3212,6 +4665,15 @@ func (s *GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreferen
 }
 
 type GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference struct {
+	// Indicates whether RAM users can manage their MFA devices. Valid values:
+	//
+	// 	- true: RAM users can manage their MFA devices.
+	//
+	// 	- false: RAM users cannot manage their MFA devices.
+	//
+	// example:
+	//
+	// true
 	AllowUserToManageMFADevices *bool `json:"AllowUserToManageMFADevices,omitempty" xml:"AllowUserToManageMFADevices,omitempty"`
 }
 
@@ -3229,6 +4691,15 @@ func (s *GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference) SetAl
 }
 
 type GetSecurityPreferenceResponseBodySecurityPreferencePublicKeyPreference struct {
+	// Indicates whether RAM users can manage their public keys. Valid values:
+	//
+	// 	- true: RAM users can manage their public keys.
+	//
+	// 	- false: RAM users cannot manage their public keys.
+	//
+	// example:
+	//
+	// false
 	AllowUserToManagePublicKeys *bool `json:"AllowUserToManagePublicKeys,omitempty" xml:"AllowUserToManagePublicKeys,omitempty"`
 }
 
@@ -3246,9 +4717,9 @@ func (s *GetSecurityPreferenceResponseBodySecurityPreferencePublicKeyPreference)
 }
 
 type GetSecurityPreferenceResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetSecurityPreferenceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSecurityPreferenceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetSecurityPreferenceResponse) String() string {
@@ -3275,6 +4746,13 @@ func (s *GetSecurityPreferenceResponse) SetBody(v *GetSecurityPreferenceResponse
 }
 
 type GetUserRequest struct {
+	// The username of the RAM user.
+	//
+	// The username must be 1 to 64 characters in length, and can contain letters, digits, periods (.), hyphens (-), and underscores (_).
+	//
+	// example:
+	//
+	// alice
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -3292,8 +4770,14 @@ func (s *GetUserRequest) SetUserName(v string) *GetUserRequest {
 }
 
 type GetUserResponseBody struct {
-	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	User      *GetUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 2D69A58F-345C-4FDE-88E4-BF5189484043
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the RAM user.
+	User *GetUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 }
 
 func (s GetUserResponseBody) String() string {
@@ -3315,15 +4799,64 @@ func (s *GetUserResponseBody) SetUser(v *GetUserResponseBodyUser) *GetUserRespon
 }
 
 type GetUserResponseBodyUser struct {
-	Comments      *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	CreateDate    *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	DisplayName   *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Email         *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The description of the RAM user.
+	//
+	// example:
+	//
+	// Cloud computing engineer
+	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The point in time when the RAM user was created. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2015-01-23T12:33:18Z
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The display name of the RAM user.
+	//
+	// example:
+	//
+	// alice
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The email address of the RAM user.
+	//
+	// >  This parameter can be returned only on the China site (aliyun.com).
+	//
+	// example:
+	//
+	// alice@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The point in time when the RAM user last logged on to the Alibaba Cloud Management Console by using the password. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2015-01-23T12:33:18Z
 	LastLoginDate *string `json:"LastLoginDate,omitempty" xml:"LastLoginDate,omitempty"`
-	MobilePhone   *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
-	UpdateDate    *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
-	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName      *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The mobile phone number of the RAM user.
+	//
+	// >  This parameter can be returned only on the China site (aliyun.com).
+	//
+	// example:
+	//
+	// 86-1860000****
+	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
+	// The point in time when the information about the RAM user was last modified. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2015-02-11T03:15:21Z
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The ID of the RAM user.
+	//
+	// example:
+	//
+	// 222748924538****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The username of the RAM user.
+	//
+	// example:
+	//
+	// alice
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s GetUserResponseBodyUser) String() string {
@@ -3380,9 +4913,9 @@ func (s *GetUserResponseBodyUser) SetUserName(v string) *GetUserResponseBodyUser
 }
 
 type GetUserResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUserResponse) String() string {
@@ -3409,6 +4942,11 @@ func (s *GetUserResponse) SetBody(v *GetUserResponseBody) *GetUserResponse {
 }
 
 type GetUserMFAInfoRequest struct {
+	// The username of the RAM user.
+	//
+	// example:
+	//
+	// test
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -3426,8 +4964,14 @@ func (s *GetUserMFAInfoRequest) SetUserName(v string) *GetUserMFAInfoRequest {
 }
 
 type GetUserMFAInfoResponseBody struct {
+	// The information about the MFA device that is attached to the RAM user.
 	MFADevice *GetUserMFAInfoResponseBodyMFADevice `json:"MFADevice,omitempty" xml:"MFADevice,omitempty" type:"Struct"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetUserMFAInfoResponseBody) String() string {
@@ -3449,8 +4993,22 @@ func (s *GetUserMFAInfoResponseBody) SetRequestId(v string) *GetUserMFAInfoRespo
 }
 
 type GetUserMFAInfoResponseBodyMFADevice struct {
+	// The serial number of the MFA device.
+	//
+	// example:
+	//
+	// acs:ram::177242285274****:mfa/test
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type of the MFA device. Valid values:
+	//
+	// 	- VMFA: virtual MFA device
+	//
+	// 	- U2F: Universal 2nd Factor (U2F) security key
+	//
+	// example:
+	//
+	// VMFA
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetUserMFAInfoResponseBodyMFADevice) String() string {
@@ -3472,9 +5030,9 @@ func (s *GetUserMFAInfoResponseBodyMFADevice) SetType(v string) *GetUserMFAInfoR
 }
 
 type GetUserMFAInfoResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUserMFAInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserMFAInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUserMFAInfoResponse) String() string {
@@ -3501,6 +5059,11 @@ func (s *GetUserMFAInfoResponse) SetBody(v *GetUserMFAInfoResponseBody) *GetUser
 }
 
 type ListAccessKeysRequest struct {
+	// The name of the RAM user. If a RAM user calls this operation and does not specify this parameter, the AccessKey pairs of the RAM user are returned.
+	//
+	// example:
+	//
+	// zhangq****
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -3518,8 +5081,14 @@ func (s *ListAccessKeysRequest) SetUserName(v string) *ListAccessKeysRequest {
 }
 
 type ListAccessKeysResponseBody struct {
+	// The list of AccessKey pairs that belong to the RAM user.
 	AccessKeys *ListAccessKeysResponseBodyAccessKeys `json:"AccessKeys,omitempty" xml:"AccessKeys,omitempty" type:"Struct"`
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 4B450CA1-36E8-4AA2-8461-86B42BF4CC4E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListAccessKeysResponseBody) String() string {
@@ -3558,9 +5127,24 @@ func (s *ListAccessKeysResponseBodyAccessKeys) SetAccessKey(v []*ListAccessKeysR
 }
 
 type ListAccessKeysResponseBodyAccessKeysAccessKey struct {
+	// The AccessKey ID.
+	//
+	// example:
+	//
+	// 0wNEpMMlzy7s****
 	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
-	CreateDate  *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the AccessKey pair was created.
+	//
+	// example:
+	//
+	// 2015-01-23T12:33:18Z
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The status of the AccessKey pair. Valid values: Active and Inactive.
+	//
+	// example:
+	//
+	// Active
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListAccessKeysResponseBodyAccessKeysAccessKey) String() string {
@@ -3587,9 +5171,9 @@ func (s *ListAccessKeysResponseBodyAccessKeysAccessKey) SetStatus(v string) *Lis
 }
 
 type ListAccessKeysResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAccessKeysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAccessKeysResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAccessKeysResponse) String() string {
@@ -3616,7 +5200,17 @@ func (s *ListAccessKeysResponse) SetBody(v *ListAccessKeysResponseBody) *ListAcc
 }
 
 type ListEntitiesForPolicyRequest struct {
+	// The name of the policy.
+	//
+	// example:
+	//
+	// OSS-Administrator
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The type of the policy. Valid values: `System` and `Custom`.
+	//
+	// example:
+	//
+	// Custom
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 }
 
@@ -3639,10 +5233,18 @@ func (s *ListEntitiesForPolicyRequest) SetPolicyType(v string) *ListEntitiesForP
 }
 
 type ListEntitiesForPolicyResponseBody struct {
-	Groups    *ListEntitiesForPolicyResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Roles     *ListEntitiesForPolicyResponseBodyRoles  `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Struct"`
-	Users     *ListEntitiesForPolicyResponseBodyUsers  `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
+	// The list of the RAM user groups.
+	Groups *ListEntitiesForPolicyResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 7B8A4E7D-6CFF-471D-84DF-195A7A241ECB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information of RAM roles.
+	Roles *ListEntitiesForPolicyResponseBodyRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Struct"`
+	// The list of the RAM users to which the policy is attached.
+	Users *ListEntitiesForPolicyResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
 }
 
 func (s ListEntitiesForPolicyResponseBody) String() string {
@@ -3691,9 +5293,24 @@ func (s *ListEntitiesForPolicyResponseBodyGroups) SetGroup(v []*ListEntitiesForP
 }
 
 type ListEntitiesForPolicyResponseBodyGroupsGroup struct {
+	// The time when the policy was attached to the RAM user group.
+	//
+	// example:
+	//
+	// 2015-02-18T17:22:08Z
 	AttachDate *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
-	Comments   *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The description of the RAM user group.
+	//
+	// example:
+	//
+	// Test team
+	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The name of the RAM user group.
+	//
+	// example:
+	//
+	// QA-Team
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 
 func (s ListEntitiesForPolicyResponseBodyGroupsGroup) String() string {
@@ -3737,11 +5354,36 @@ func (s *ListEntitiesForPolicyResponseBodyRoles) SetRole(v []*ListEntitiesForPol
 }
 
 type ListEntitiesForPolicyResponseBodyRolesRole struct {
-	Arn         *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	AttachDate  *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role.
+	//
+	// example:
+	//
+	// acs:ram::123456789012****:role/ECSAdmin
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The time when the policy was attached to the RAM user.
+	//
+	// example:
+	//
+	// 2015-01-23T12:33:18Z
+	AttachDate *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
+	// The description of the RAM role.
+	//
+	// example:
+	//
+	// ECS administrator
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	RoleId      *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	RoleName    *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The ID of the RAM role.
+	//
+	// example:
+	//
+	// 122748924538****
+	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// The name of the RAM role.
+	//
+	// example:
+	//
+	// ECSAdmin
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
 func (s ListEntitiesForPolicyResponseBodyRolesRole) String() string {
@@ -3795,10 +5437,30 @@ func (s *ListEntitiesForPolicyResponseBodyUsers) SetUser(v []*ListEntitiesForPol
 }
 
 type ListEntitiesForPolicyResponseBodyUsersUser struct {
-	AttachDate  *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
+	// The time when the policy was attached to the RAM user.
+	//
+	// example:
+	//
+	// 2015-01-23T12:33:18Z
+	AttachDate *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
+	// The display name of the RAM user.
+	//
+	// example:
+	//
+	// Zhang*
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The unique ID of the RAM user.
+	//
+	// example:
+	//
+	// 122748924538****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The name of the RAM user.
+	//
+	// example:
+	//
+	// zhangq****
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s ListEntitiesForPolicyResponseBodyUsersUser) String() string {
@@ -3830,9 +5492,9 @@ func (s *ListEntitiesForPolicyResponseBodyUsersUser) SetUserName(v string) *List
 }
 
 type ListEntitiesForPolicyResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListEntitiesForPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListEntitiesForPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListEntitiesForPolicyResponse) String() string {
@@ -3859,8 +5521,20 @@ func (s *ListEntitiesForPolicyResponse) SetBody(v *ListEntitiesForPolicyResponse
 }
 
 type ListGroupsRequest struct {
-	Marker   *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	MaxItems *int32  `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
+	// The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
+	//
+	// example:
+	//
+	// EXAMPLE
+	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The number of entries to return. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` is `true`.
+	//
+	// Valid values: 1 to 1000. Default value: 100.
+	//
+	// example:
+	//
+	// 100
+	MaxItems *int32 `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
 }
 
 func (s ListGroupsRequest) String() string {
@@ -3882,10 +5556,26 @@ func (s *ListGroupsRequest) SetMaxItems(v int32) *ListGroupsRequest {
 }
 
 type ListGroupsResponseBody struct {
-	Groups      *ListGroupsResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
-	IsTruncated *bool                         `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	Marker      *string                       `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	RequestId   *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of the RAM user groups.
+	Groups *ListGroupsResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
+	// Indicates whether the response is truncated.
+	//
+	// example:
+	//
+	// true
+	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	// The marker. This parameter is returned only if the value of `IsTruncated` is `true`. If `true` is returned, you can call this operation again and set the `Marker` parameter to obtain the truncated part.
+	//
+	// example:
+	//
+	// EXAMPLE
+	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 065527AA-2F2E-AD7C-7484-F2626CFE4934
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListGroupsResponseBody) String() string {
@@ -3934,10 +5624,35 @@ func (s *ListGroupsResponseBodyGroups) SetGroup(v []*ListGroupsResponseBodyGroup
 }
 
 type ListGroupsResponseBodyGroupsGroup struct {
-	Comments   *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The description of the RAM user group.
+	//
+	// example:
+	//
+	// Dev-Team
+	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The time when the RAM user group was created.
+	//
+	// example:
+	//
+	// 2015-01-23T12:33:18Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The ID of the RAM user group.
+	//
+	// example:
+	//
+	// g-FpMEHiMysofp****
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the RAM user group.
+	//
+	// example:
+	//
+	// Dev-Team
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The time when the information of the RAM user group was updated.
+	//
+	// example:
+	//
+	// 2015-01-23T12:33:18Z
 	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
@@ -3975,9 +5690,9 @@ func (s *ListGroupsResponseBodyGroupsGroup) SetUpdateDate(v string) *ListGroupsR
 }
 
 type ListGroupsResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListGroupsResponse) String() string {
@@ -4004,6 +5719,11 @@ func (s *ListGroupsResponse) SetBody(v *ListGroupsResponseBody) *ListGroupsRespo
 }
 
 type ListGroupsForUserRequest struct {
+	// The username of the RAM user.
+	//
+	// example:
+	//
+	// Alice
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -4021,8 +5741,14 @@ func (s *ListGroupsForUserRequest) SetUserName(v string) *ListGroupsForUserReque
 }
 
 type ListGroupsForUserResponseBody struct {
-	Groups    *ListGroupsForUserResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of the RAM user groups.
+	Groups *ListGroupsForUserResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// DA772B52-BF9F-54CA-AC77-AA7A2DA89D46
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListGroupsForUserResponseBody) String() string {
@@ -4061,10 +5787,30 @@ func (s *ListGroupsForUserResponseBodyGroups) SetGroup(v []*ListGroupsForUserRes
 }
 
 type ListGroupsForUserResponseBodyGroupsGroup struct {
-	Comments  *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The description of the RAM user group.
+	//
+	// example:
+	//
+	// Dev-Team
+	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The ID of the RAM user group.
+	//
+	// example:
+	//
+	// g-zYtroLrgbZR1****
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The name of the RAM user group.
+	//
+	// example:
+	//
+	// Dev-Team
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	JoinDate  *string `json:"JoinDate,omitempty" xml:"JoinDate,omitempty"`
+	// The time when the RAM user joined the RAM user group.
+	//
+	// example:
+	//
+	// 2015-01-23T12:33:18Z
+	JoinDate *string `json:"JoinDate,omitempty" xml:"JoinDate,omitempty"`
 }
 
 func (s ListGroupsForUserResponseBodyGroupsGroup) String() string {
@@ -4096,9 +5842,9 @@ func (s *ListGroupsForUserResponseBodyGroupsGroup) SetJoinDate(v string) *ListGr
 }
 
 type ListGroupsForUserResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListGroupsForUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListGroupsForUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListGroupsForUserResponse) String() string {
@@ -4125,8 +5871,25 @@ func (s *ListGroupsForUserResponse) SetBody(v *ListGroupsForUserResponseBody) *L
 }
 
 type ListPoliciesRequest struct {
-	Marker     *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	MaxItems   *int32  `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
+	// The `Marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
+	//
+	// example:
+	//
+	// EXAMPLE
+	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The number of entries to return. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` will be `true`.
+	//
+	// Valid values: 1 to 1000. Default value: 100.
+	//
+	// example:
+	//
+	// 100
+	MaxItems *int32 `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
+	// The type of the `Policy`. Valid values: `System` and `Custom`. If you do not specify the parameter, all policies are returned.
+	//
+	// example:
+	//
+	// System
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 }
 
@@ -4154,10 +5917,26 @@ func (s *ListPoliciesRequest) SetPolicyType(v string) *ListPoliciesRequest {
 }
 
 type ListPoliciesResponseBody struct {
-	IsTruncated *bool                             `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	Marker      *string                           `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	Policies    *ListPoliciesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Struct"`
-	RequestId   *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the response is truncated.
+	//
+	// example:
+	//
+	// true
+	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	// The marker. This parameter is returned only if the value of `IsTruncated` is `true`. If the value of IsTruncated is `true`, you can call this operation again and set `Marker` to obtain the truncated part.
+	//
+	// example:
+	//
+	// EXAMPLE
+	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The list of policies.
+	Policies *ListPoliciesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 7B8A4E7D-6CFF-471D-84DF-195A7A241ECB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListPoliciesResponseBody) String() string {
@@ -4206,13 +5985,48 @@ func (s *ListPoliciesResponseBodyPolicies) SetPolicy(v []*ListPoliciesResponseBo
 }
 
 type ListPoliciesResponseBodyPoliciesPolicy struct {
-	AttachmentCount *int32  `json:"AttachmentCount,omitempty" xml:"AttachmentCount,omitempty"`
-	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	DefaultVersion  *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	PolicyName      *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	PolicyType      *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	UpdateDate      *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The number of references to the policy.
+	//
+	// example:
+	//
+	// 3
+	AttachmentCount *int32 `json:"AttachmentCount,omitempty" xml:"AttachmentCount,omitempty"`
+	// The time when the policy was created.
+	//
+	// example:
+	//
+	// 2015-01-23T12:33:18Z
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The default version of the policy.
+	//
+	// example:
+	//
+	// v1
+	DefaultVersion *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
+	// The description of the policy.
+	//
+	// example:
+	//
+	// OSS administrator
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the policy.
+	//
+	// example:
+	//
+	// OSS-Administrator
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The type of the policy.
+	//
+	// example:
+	//
+	// System
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// The time when the policy was modified.
+	//
+	// example:
+	//
+	// 2015-01-23T12:33:18Z
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s ListPoliciesResponseBodyPoliciesPolicy) String() string {
@@ -4259,9 +6073,9 @@ func (s *ListPoliciesResponseBodyPoliciesPolicy) SetUpdateDate(v string) *ListPo
 }
 
 type ListPoliciesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListPoliciesResponse) String() string {
@@ -4288,6 +6102,11 @@ func (s *ListPoliciesResponse) SetBody(v *ListPoliciesResponseBody) *ListPolicie
 }
 
 type ListPoliciesForGroupRequest struct {
+	// The name of the RAM user group.
+	//
+	// example:
+	//
+	// dev
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 
@@ -4305,8 +6124,14 @@ func (s *ListPoliciesForGroupRequest) SetGroupName(v string) *ListPoliciesForGro
 }
 
 type ListPoliciesForGroupResponseBody struct {
-	Policies  *ListPoliciesForGroupResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Struct"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of the policies that are attached to the RAM user group.
+	Policies *ListPoliciesForGroupResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 7B8A4E7D-6CFF-471D-84DF-195A7A241ECB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListPoliciesForGroupResponseBody) String() string {
@@ -4345,11 +6170,36 @@ func (s *ListPoliciesForGroupResponseBodyPolicies) SetPolicy(v []*ListPoliciesFo
 }
 
 type ListPoliciesForGroupResponseBodyPoliciesPolicy struct {
-	AttachDate     *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
+	// The time when the policy was attached to the RAM user group.
+	//
+	// example:
+	//
+	// 2015-01-23T12:33:18Z
+	AttachDate *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
+	// The default version of the policy.
+	//
+	// example:
+	//
+	// v1
 	DefaultVersion *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	PolicyName     *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	PolicyType     *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// The description of the policy.
+	//
+	// example:
+	//
+	// OSS administrator
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the policy.
+	//
+	// example:
+	//
+	// OSS-Administrator
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The type of the policy.
+	//
+	// example:
+	//
+	// Custom
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 }
 
 func (s ListPoliciesForGroupResponseBodyPoliciesPolicy) String() string {
@@ -4386,9 +6236,9 @@ func (s *ListPoliciesForGroupResponseBodyPoliciesPolicy) SetPolicyType(v string)
 }
 
 type ListPoliciesForGroupResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListPoliciesForGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPoliciesForGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListPoliciesForGroupResponse) String() string {
@@ -4415,6 +6265,11 @@ func (s *ListPoliciesForGroupResponse) SetBody(v *ListPoliciesForGroupResponseBo
 }
 
 type ListPoliciesForRoleRequest struct {
+	// The name of the RAM role.
+	//
+	// example:
+	//
+	// AdminRole
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
@@ -4432,8 +6287,14 @@ func (s *ListPoliciesForRoleRequest) SetRoleName(v string) *ListPoliciesForRoleR
 }
 
 type ListPoliciesForRoleResponseBody struct {
-	Policies  *ListPoliciesForRoleResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Struct"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of the policies that are attached to the RAM role.
+	Policies *ListPoliciesForRoleResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 7B8A4E7D-6CFF-471D-84DF-195A7A241ECB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListPoliciesForRoleResponseBody) String() string {
@@ -4472,11 +6333,36 @@ func (s *ListPoliciesForRoleResponseBodyPolicies) SetPolicy(v []*ListPoliciesFor
 }
 
 type ListPoliciesForRoleResponseBodyPoliciesPolicy struct {
-	AttachDate     *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
+	// The time when the policy was attached to the RAM role.
+	//
+	// example:
+	//
+	// 2015-01-23T12:33:18Z
+	AttachDate *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
+	// The default version of the policy.
+	//
+	// example:
+	//
+	// v1
 	DefaultVersion *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	PolicyName     *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	PolicyType     *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// The description of the policy.
+	//
+	// example:
+	//
+	// OSS administrator
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the policy.
+	//
+	// example:
+	//
+	// OSS-Administrator
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The type of the policy.
+	//
+	// example:
+	//
+	// Custom
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 }
 
 func (s ListPoliciesForRoleResponseBodyPoliciesPolicy) String() string {
@@ -4513,9 +6399,9 @@ func (s *ListPoliciesForRoleResponseBodyPoliciesPolicy) SetPolicyType(v string) 
 }
 
 type ListPoliciesForRoleResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListPoliciesForRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPoliciesForRoleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListPoliciesForRoleResponse) String() string {
@@ -4542,6 +6428,11 @@ func (s *ListPoliciesForRoleResponse) SetBody(v *ListPoliciesForRoleResponseBody
 }
 
 type ListPoliciesForUserRequest struct {
+	// The name of the RAM user.
+	//
+	// example:
+	//
+	// zhangq****
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -4559,8 +6450,14 @@ func (s *ListPoliciesForUserRequest) SetUserName(v string) *ListPoliciesForUserR
 }
 
 type ListPoliciesForUserResponseBody struct {
-	Policies  *ListPoliciesForUserResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Struct"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the policy.
+	Policies *ListPoliciesForUserResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 7B8A4E7D-6CFF-471D-84DF-195A7A241ECB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListPoliciesForUserResponseBody) String() string {
@@ -4599,11 +6496,40 @@ func (s *ListPoliciesForUserResponseBodyPolicies) SetPolicy(v []*ListPoliciesFor
 }
 
 type ListPoliciesForUserResponseBodyPoliciesPolicy struct {
-	AttachDate     *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
+	// The time at which the policy is attached to the RAM user. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2015-01-23T12:33:18Z
+	AttachDate *string `json:"AttachDate,omitempty" xml:"AttachDate,omitempty"`
+	// The current version.
+	//
+	// example:
+	//
+	// v1
 	DefaultVersion *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	PolicyName     *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	PolicyType     *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// The description of the policy.
+	//
+	// example:
+	//
+	// OSS administrator
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the policy.
+	//
+	// example:
+	//
+	// OSS-Administrator
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The type of the policy. Valid values:
+	//
+	// 	- System: system policy
+	//
+	// 	- Custom: custom policy
+	//
+	// example:
+	//
+	// Custom
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 }
 
 func (s ListPoliciesForUserResponseBodyPoliciesPolicy) String() string {
@@ -4640,9 +6566,9 @@ func (s *ListPoliciesForUserResponseBodyPoliciesPolicy) SetPolicyType(v string) 
 }
 
 type ListPoliciesForUserResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListPoliciesForUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPoliciesForUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListPoliciesForUserResponse) String() string {
@@ -4669,7 +6595,17 @@ func (s *ListPoliciesForUserResponse) SetBody(v *ListPoliciesForUserResponseBody
 }
 
 type ListPolicyVersionsRequest struct {
+	// The name of the policy.
+	//
+	// example:
+	//
+	// OSS-Administrator
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The type of the policy. Valid values: `System` and `Custom`.
+	//
+	// example:
+	//
+	// Custom
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 }
 
@@ -4692,8 +6628,14 @@ func (s *ListPolicyVersionsRequest) SetPolicyType(v string) *ListPolicyVersionsR
 }
 
 type ListPolicyVersionsResponseBody struct {
+	// The list of the policy versions.
 	PolicyVersions *ListPolicyVersionsResponseBodyPolicyVersions `json:"PolicyVersions,omitempty" xml:"PolicyVersions,omitempty" type:"Struct"`
-	RequestId      *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 7B8A4E7D-6CFF-471D-84DF-195A7A241ECB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListPolicyVersionsResponseBody) String() string {
@@ -4732,10 +6674,30 @@ func (s *ListPolicyVersionsResponseBodyPolicyVersions) SetPolicyVersion(v []*Lis
 }
 
 type ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion struct {
-	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	IsDefaultVersion *bool   `json:"IsDefaultVersion,omitempty" xml:"IsDefaultVersion,omitempty"`
-	PolicyDocument   *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
-	VersionId        *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	// The time when the version was created.
+	//
+	// example:
+	//
+	// 2015-02-26T01:25:52Z
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// Indicates whether the version is the default version.
+	//
+	// example:
+	//
+	// false
+	IsDefaultVersion *bool `json:"IsDefaultVersion,omitempty" xml:"IsDefaultVersion,omitempty"`
+	// The script of the policy.
+	//
+	// example:
+	//
+	// { "Statement": [{ "Action": ["oss:*"], "Effect": "Allow", "Resource": ["acs:oss:*:*:*"]}], "Version": "1"}
+	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
+	// The ID of the version.
+	//
+	// example:
+	//
+	// v3
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion) String() string {
@@ -4767,9 +6729,9 @@ func (s *ListPolicyVersionsResponseBodyPolicyVersionsPolicyVersion) SetVersionId
 }
 
 type ListPolicyVersionsResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListPolicyVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPolicyVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListPolicyVersionsResponse) String() string {
@@ -4796,8 +6758,20 @@ func (s *ListPolicyVersionsResponse) SetBody(v *ListPolicyVersionsResponseBody) 
 }
 
 type ListRolesRequest struct {
-	Marker   *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	MaxItems *int32  `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
+	// The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
+	//
+	// example:
+	//
+	// EXAMPLE
+	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The number of entries to return. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` will be `true`.
+	//
+	// Valid values: 1 to 1000. Default value: 100.
+	//
+	// example:
+	//
+	// 100
+	MaxItems *int32 `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
 }
 
 func (s ListRolesRequest) String() string {
@@ -4819,10 +6793,26 @@ func (s *ListRolesRequest) SetMaxItems(v int32) *ListRolesRequest {
 }
 
 type ListRolesResponseBody struct {
-	IsTruncated *bool                       `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	Marker      *string                     `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	RequestId   *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Roles       *ListRolesResponseBodyRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Struct"`
+	// Indicates whether the response is truncated.
+	//
+	// example:
+	//
+	// true
+	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	// The marker. This parameter is returned only if the value of `IsTruncated` is `true`. If the value is `true`, you can call this operation again and set the `Marker` parameter to obtain the truncated part.
+	//
+	// example:
+	//
+	// EXAMPLE
+	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 7B8A4E7D-6CFF-471D-84DF-195A7A241ECB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information of RAM roles.
+	Roles *ListRolesResponseBodyRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Struct"`
 }
 
 func (s ListRolesResponseBody) String() string {
@@ -4871,13 +6861,48 @@ func (s *ListRolesResponseBodyRoles) SetRole(v []*ListRolesResponseBodyRolesRole
 }
 
 type ListRolesResponseBodyRolesRole struct {
-	Arn                *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	CreateDate         *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	MaxSessionDuration *int64  `json:"MaxSessionDuration,omitempty" xml:"MaxSessionDuration,omitempty"`
-	RoleId             *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	RoleName           *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	UpdateDate         *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role.
+	//
+	// example:
+	//
+	// acs:ram::123456789012****:role/ECSAdmin
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The time when the RAM role was created.
+	//
+	// example:
+	//
+	// 2015-01-23T12:33:18Z
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The description of the RAM role.
+	//
+	// example:
+	//
+	// ECS administrator
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The maximum session duration of the RAM role.
+	//
+	// example:
+	//
+	// 3600
+	MaxSessionDuration *int64 `json:"MaxSessionDuration,omitempty" xml:"MaxSessionDuration,omitempty"`
+	// The ID of the RAM role.
+	//
+	// example:
+	//
+	// 901234567890****
+	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// The name of the RAM role.
+	//
+	// example:
+	//
+	// ECSAdmin
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The time when the RAM role was modified.
+	//
+	// example:
+	//
+	// 2015-01-23T12:33:18Z
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s ListRolesResponseBodyRolesRole) String() string {
@@ -4924,9 +6949,9 @@ func (s *ListRolesResponseBodyRolesRole) SetUpdateDate(v string) *ListRolesRespo
 }
 
 type ListRolesResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListRolesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRolesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListRolesResponse) String() string {
@@ -4953,8 +6978,20 @@ func (s *ListRolesResponse) SetBody(v *ListRolesResponseBody) *ListRolesResponse
 }
 
 type ListUsersRequest struct {
-	Marker   *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	MaxItems *int32  `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
+	// The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
+	//
+	// example:
+	//
+	// EXAMPLE
+	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The number of entries per page. If a response is truncated because it reaches the value of MaxItems, the value of `IsTruncatedg` will be `true`.
+	//
+	// Valid values: 1 to 1000. Default value: 100.
+	//
+	// example:
+	//
+	// 100
+	MaxItems *int32 `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
 }
 
 func (s ListUsersRequest) String() string {
@@ -4976,10 +7013,26 @@ func (s *ListUsersRequest) SetMaxItems(v int32) *ListUsersRequest {
 }
 
 type ListUsersResponseBody struct {
-	IsTruncated *bool                       `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	Marker      *string                     `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	RequestId   *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Users       *ListUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
+	// Indicates whether the response is truncated.
+	//
+	// example:
+	//
+	// true
+	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	// The marker. This parameter is returned only if the value of `IsTruncated` is `true`. If the parameter is returned, you can call this operation again and set `Marker` to obtain the truncated part.``
+	//
+	// example:
+	//
+	// EXAMPLE
+	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 4B450CA1-36E8-4AA2-8461-86B42BF4CC4E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The RAM users.
+	Users *ListUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
 }
 
 func (s ListUsersResponseBody) String() string {
@@ -5028,14 +7081,58 @@ func (s *ListUsersResponseBodyUsers) SetUser(v []*ListUsersResponseBodyUsersUser
 }
 
 type ListUsersResponseBodyUsersUser struct {
-	Comments    *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	CreateDate  *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// Cloud computing engineer
+	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The time when the RAM user was created. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2015-01-23T12:33:18Z
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The display name of the RAM user.
+	//
+	// example:
+	//
+	// Zhangq****
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Email       *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The email address of the RAM user.
+	//
+	// > This parameter is unavailable.
+	//
+	// example:
+	//
+	// zhangq****@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The mobile phone number of the RAM user.
+	//
+	// > This parameter is unavailable.
+	//
+	// example:
+	//
+	// 86-1860000****
 	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
-	UpdateDate  *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The point in time when the information about the RAM user was last modified. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2015-01-23T12:33:18Z
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The ID of the RAM user.
+	//
+	// example:
+	//
+	// 122748924538****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The logon name of the RAM user.
+	//
+	// example:
+	//
+	// zhangq****
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s ListUsersResponseBodyUsersUser) String() string {
@@ -5087,9 +7184,9 @@ func (s *ListUsersResponseBodyUsersUser) SetUserName(v string) *ListUsersRespons
 }
 
 type ListUsersResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUsersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListUsersResponse) String() string {
@@ -5116,9 +7213,26 @@ func (s *ListUsersResponse) SetBody(v *ListUsersResponseBody) *ListUsersResponse
 }
 
 type ListUsersForGroupRequest struct {
+	// The name of the RAM user group.
+	//
+	// example:
+	//
+	// Dev-Team
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	Marker    *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	MaxItems  *int32  `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
+	// The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
+	//
+	// example:
+	//
+	// EXAMPLE
+	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The number of entries to return. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` will be `true`.
+	//
+	// Valid values: 1 to 1000. Default value: 100.
+	//
+	// example:
+	//
+	// 100
+	MaxItems *int32 `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
 }
 
 func (s ListUsersForGroupRequest) String() string {
@@ -5145,10 +7259,26 @@ func (s *ListUsersForGroupRequest) SetMaxItems(v int32) *ListUsersForGroupReques
 }
 
 type ListUsersForGroupResponseBody struct {
-	IsTruncated *bool                               `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	Marker      *string                             `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	RequestId   *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Users       *ListUsersForGroupResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
+	// Indicates whether the response is truncated.
+	//
+	// example:
+	//
+	// true
+	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	// The marker. This parameter is returned only if the value of `IsTruncated` is `true`. If the value of IsTruncated is `true`, you can call this operation again and set `marker` to obtain the truncated part.
+	//
+	// example:
+	//
+	// EXAMPLE
+	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 4B450CA1-36E8-4AA2-8461-86B42BF4CC4E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of the RAM users.
+	Users *ListUsersForGroupResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
 }
 
 func (s ListUsersForGroupResponseBody) String() string {
@@ -5197,9 +7327,24 @@ func (s *ListUsersForGroupResponseBodyUsers) SetUser(v []*ListUsersForGroupRespo
 }
 
 type ListUsersForGroupResponseBodyUsersUser struct {
+	// The display name of the RAM user.
+	//
+	// example:
+	//
+	// Alice
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	JoinDate    *string `json:"JoinDate,omitempty" xml:"JoinDate,omitempty"`
-	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The time when the RAM user joined the RAM user group.
+	//
+	// example:
+	//
+	// 2015-01-23T12:33:18Z
+	JoinDate *string `json:"JoinDate,omitempty" xml:"JoinDate,omitempty"`
+	// The name of the RAM user.
+	//
+	// example:
+	//
+	// zhangqiang
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s ListUsersForGroupResponseBodyUsersUser) String() string {
@@ -5226,9 +7371,9 @@ func (s *ListUsersForGroupResponseBodyUsersUser) SetUserName(v string) *ListUser
 }
 
 type ListUsersForGroupResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListUsersForGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUsersForGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListUsersForGroupResponse) String() string {
@@ -5255,7 +7400,13 @@ func (s *ListUsersForGroupResponse) SetBody(v *ListUsersForGroupResponseBody) *L
 }
 
 type ListVirtualMFADevicesResponseBody struct {
-	RequestId         *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of MFA devices.
 	VirtualMFADevices *ListVirtualMFADevicesResponseBodyVirtualMFADevices `json:"VirtualMFADevices,omitempty" xml:"VirtualMFADevices,omitempty" type:"Struct"`
 }
 
@@ -5295,9 +7446,20 @@ func (s *ListVirtualMFADevicesResponseBodyVirtualMFADevices) SetVirtualMFADevice
 }
 
 type ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice struct {
-	ActivateDate *string                                                                 `json:"ActivateDate,omitempty" xml:"ActivateDate,omitempty"`
-	SerialNumber *string                                                                 `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	User         *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADeviceUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
+	// The time when the MFA device was enabled.
+	//
+	// example:
+	//
+	// 2015-02-18T17:22:08Z
+	ActivateDate *string `json:"ActivateDate,omitempty" xml:"ActivateDate,omitempty"`
+	// The serial number of the MFA device.
+	//
+	// example:
+	//
+	// acs:ram::123456789012****:mfa/device002
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The basic information of the RAM user to which the MFA device is attached.
+	User *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADeviceUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 }
 
 func (s ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice) String() string {
@@ -5324,9 +7486,24 @@ func (s *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADevice) Set
 }
 
 type ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADeviceUser struct {
+	// The display name of the RAM user.
+	//
+	// example:
+	//
+	// zhangq****
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The unique ID of the RAM user.
+	//
+	// example:
+	//
+	// 122748924538****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The name of the RAM user.
+	//
+	// example:
+	//
+	// zhangq****
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADeviceUser) String() string {
@@ -5353,9 +7530,9 @@ func (s *ListVirtualMFADevicesResponseBodyVirtualMFADevicesVirtualMFADeviceUser)
 }
 
 type ListVirtualMFADevicesResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListVirtualMFADevicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListVirtualMFADevicesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListVirtualMFADevicesResponse) String() string {
@@ -5382,8 +7559,18 @@ func (s *ListVirtualMFADevicesResponse) SetBody(v *ListVirtualMFADevicesResponse
 }
 
 type RemoveUserFromGroupRequest struct {
+	// The name of the RAM user group.
+	//
+	// example:
+	//
+	// Dev-Team
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	UserName  *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The name of the RAM user.
+	//
+	// example:
+	//
+	// zhangq****
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s RemoveUserFromGroupRequest) String() string {
@@ -5405,6 +7592,11 @@ func (s *RemoveUserFromGroupRequest) SetUserName(v string) *RemoveUserFromGroupR
 }
 
 type RemoveUserFromGroupResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// A07EF215-B9B3-8CB2-2899-3F9575C6E320
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5422,9 +7614,9 @@ func (s *RemoveUserFromGroupResponseBody) SetRequestId(v string) *RemoveUserFrom
 }
 
 type RemoveUserFromGroupResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RemoveUserFromGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveUserFromGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RemoveUserFromGroupResponse) String() string {
@@ -5451,6 +7643,15 @@ func (s *RemoveUserFromGroupResponse) SetBody(v *RemoveUserFromGroupResponseBody
 }
 
 type SetAccountAliasRequest struct {
+	// The alias of the Alibaba Cloud account.
+	//
+	// The alias must be 3 to 32 characters in length, and can contain lowercase letters, digits, and hyphens (-).
+	//
+	// > It cannot start or end with a hyphen (-), and cannot contain consecutive hyphens (-).
+	//
+	// example:
+	//
+	// myalias
 	AccountAlias *string `json:"AccountAlias,omitempty" xml:"AccountAlias,omitempty"`
 }
 
@@ -5468,6 +7669,11 @@ func (s *SetAccountAliasRequest) SetAccountAlias(v string) *SetAccountAliasReque
 }
 
 type SetAccountAliasResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5485,9 +7691,9 @@ func (s *SetAccountAliasResponseBody) SetRequestId(v string) *SetAccountAliasRes
 }
 
 type SetAccountAliasResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetAccountAliasResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetAccountAliasResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetAccountAliasResponse) String() string {
@@ -5514,8 +7720,18 @@ func (s *SetAccountAliasResponse) SetBody(v *SetAccountAliasResponseBody) *SetAc
 }
 
 type SetDefaultPolicyVersionRequest struct {
+	// The name of the policy.
+	//
+	// example:
+	//
+	// OSS-Administrator
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	VersionId  *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	// The ID of the policy version that you want to set as the default version.
+	//
+	// example:
+	//
+	// v2
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s SetDefaultPolicyVersionRequest) String() string {
@@ -5537,6 +7753,11 @@ func (s *SetDefaultPolicyVersionRequest) SetVersionId(v string) *SetDefaultPolic
 }
 
 type SetDefaultPolicyVersionResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 9B34724D-54B0-4A51-B34D-4512372FE1BE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5554,9 +7775,9 @@ func (s *SetDefaultPolicyVersionResponseBody) SetRequestId(v string) *SetDefault
 }
 
 type SetDefaultPolicyVersionResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetDefaultPolicyVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetDefaultPolicyVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetDefaultPolicyVersionResponse) String() string {
@@ -5583,15 +7804,68 @@ func (s *SetDefaultPolicyVersionResponse) SetBody(v *SetDefaultPolicyVersionResp
 }
 
 type SetPasswordPolicyRequest struct {
-	HardExpiry                 *bool  `json:"HardExpiry,omitempty" xml:"HardExpiry,omitempty"`
-	MaxLoginAttemps            *int32 `json:"MaxLoginAttemps,omitempty" xml:"MaxLoginAttemps,omitempty"`
-	MaxPasswordAge             *int32 `json:"MaxPasswordAge,omitempty" xml:"MaxPasswordAge,omitempty"`
-	MinimumPasswordLength      *int32 `json:"MinimumPasswordLength,omitempty" xml:"MinimumPasswordLength,omitempty"`
-	PasswordReusePrevention    *int32 `json:"PasswordReusePrevention,omitempty" xml:"PasswordReusePrevention,omitempty"`
-	RequireLowercaseCharacters *bool  `json:"RequireLowercaseCharacters,omitempty" xml:"RequireLowercaseCharacters,omitempty"`
-	RequireNumbers             *bool  `json:"RequireNumbers,omitempty" xml:"RequireNumbers,omitempty"`
-	RequireSymbols             *bool  `json:"RequireSymbols,omitempty" xml:"RequireSymbols,omitempty"`
-	RequireUppercaseCharacters *bool  `json:"RequireUppercaseCharacters,omitempty" xml:"RequireUppercaseCharacters,omitempty"`
+	// Specifies whether a password will expire.
+	//
+	// Valid values: `true` and `false`. Default value: `false`. If you leave this parameter unspecified, the default value false is used.
+	//
+	// 	- If you set this parameter to `true`, the Alibaba Cloud account to which the RAM users belong must reset the passwords before the RAM users can log on to the Alibaba Cloud Management Console.
+	//
+	// 	- If you set this parameter to `false`, the RAM users can change the passwords after the passwords expire and then log on to the Alibaba Cloud Management Console.
+	//
+	// example:
+	//
+	// false
+	HardExpiry *bool `json:"HardExpiry,omitempty" xml:"HardExpiry,omitempty"`
+	// The maximum number of permitted logon attempts within one hour. The number of logon attempts is reset to zero if a RAM user changes the password.
+	//
+	// example:
+	//
+	// 5
+	MaxLoginAttemps *int32 `json:"MaxLoginAttemps,omitempty" xml:"MaxLoginAttemps,omitempty"`
+	// The number of days for which a password is valid. Default value: 0. The default value indicates that the password never expires.
+	//
+	// example:
+	//
+	// 0
+	MaxPasswordAge *int32 `json:"MaxPasswordAge,omitempty" xml:"MaxPasswordAge,omitempty"`
+	// The minimum required number of characters in a password.
+	//
+	// Valid values: 8 to 32. Default value: 8.
+	//
+	// example:
+	//
+	// 12
+	MinimumPasswordLength *int32 `json:"MinimumPasswordLength,omitempty" xml:"MinimumPasswordLength,omitempty"`
+	// The number of previous passwords that a RAM user is prevented from reusing. Default value: 0. The default value indicates that the RAM user can reuse previous passwords.
+	//
+	// example:
+	//
+	// 0
+	PasswordReusePrevention *int32 `json:"PasswordReusePrevention,omitempty" xml:"PasswordReusePrevention,omitempty"`
+	// Specifies whether a password must contain one or more lowercase letters.
+	//
+	// example:
+	//
+	// true
+	RequireLowercaseCharacters *bool `json:"RequireLowercaseCharacters,omitempty" xml:"RequireLowercaseCharacters,omitempty"`
+	// Specifies whether a password must contain one or more digits.
+	//
+	// example:
+	//
+	// true
+	RequireNumbers *bool `json:"RequireNumbers,omitempty" xml:"RequireNumbers,omitempty"`
+	// Specifies whether a password must contain one or more special characters.
+	//
+	// example:
+	//
+	// true
+	RequireSymbols *bool `json:"RequireSymbols,omitempty" xml:"RequireSymbols,omitempty"`
+	// Specifies whether a password must contain one or more uppercase letters.
+	//
+	// example:
+	//
+	// true
+	RequireUppercaseCharacters *bool `json:"RequireUppercaseCharacters,omitempty" xml:"RequireUppercaseCharacters,omitempty"`
 }
 
 func (s SetPasswordPolicyRequest) String() string {
@@ -5648,8 +7922,14 @@ func (s *SetPasswordPolicyRequest) SetRequireUppercaseCharacters(v bool) *SetPas
 }
 
 type SetPasswordPolicyResponseBody struct {
+	// The password policy.
 	PasswordPolicy *SetPasswordPolicyResponseBodyPasswordPolicy `json:"PasswordPolicy,omitempty" xml:"PasswordPolicy,omitempty" type:"Struct"`
-	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SetPasswordPolicyResponseBody) String() string {
@@ -5671,15 +7951,66 @@ func (s *SetPasswordPolicyResponseBody) SetRequestId(v string) *SetPasswordPolic
 }
 
 type SetPasswordPolicyResponseBodyPasswordPolicy struct {
-	HardExpiry                 *bool  `json:"HardExpiry,omitempty" xml:"HardExpiry,omitempty"`
-	MaxLoginAttemps            *int32 `json:"MaxLoginAttemps,omitempty" xml:"MaxLoginAttemps,omitempty"`
-	MaxPasswordAge             *int32 `json:"MaxPasswordAge,omitempty" xml:"MaxPasswordAge,omitempty"`
-	MinimumPasswordLength      *int32 `json:"MinimumPasswordLength,omitempty" xml:"MinimumPasswordLength,omitempty"`
-	PasswordReusePrevention    *int32 `json:"PasswordReusePrevention,omitempty" xml:"PasswordReusePrevention,omitempty"`
-	RequireLowercaseCharacters *bool  `json:"RequireLowercaseCharacters,omitempty" xml:"RequireLowercaseCharacters,omitempty"`
-	RequireNumbers             *bool  `json:"RequireNumbers,omitempty" xml:"RequireNumbers,omitempty"`
-	RequireSymbols             *bool  `json:"RequireSymbols,omitempty" xml:"RequireSymbols,omitempty"`
-	RequireUppercaseCharacters *bool  `json:"RequireUppercaseCharacters,omitempty" xml:"RequireUppercaseCharacters,omitempty"`
+	// Indicates whether a password expires.
+	//
+	// Valid values: `true` and `false`. Default value: `false`. If the parameter is unspecified, the default value false is returned.
+	//
+	// 	- If this parameter is set to `true`, the Alibaba Cloud account to which the RAM users belong must reset the password before the RAM users can log on to the Alibaba Cloud Management Console.
+	//
+	// 	- If this parameter is set to `false`, the RAM users can change the passwords after the passwords expire and then log on to the Alibaba Cloud Management Console.
+	//
+	// example:
+	//
+	// false
+	HardExpiry *bool `json:"HardExpiry,omitempty" xml:"HardExpiry,omitempty"`
+	// The maximum number of permitted logon attempts within one hour. The number of logon attempts is reset to zero if a RAM user changes the password.
+	//
+	// example:
+	//
+	// 5
+	MaxLoginAttemps *int32 `json:"MaxLoginAttemps,omitempty" xml:"MaxLoginAttemps,omitempty"`
+	// The number of days for which a password is valid. Default value: 0. The default value indicates that the password never expires.
+	//
+	// example:
+	//
+	// 0
+	MaxPasswordAge *int32 `json:"MaxPasswordAge,omitempty" xml:"MaxPasswordAge,omitempty"`
+	// The minimum required number of characters in a password.
+	//
+	// example:
+	//
+	// 12
+	MinimumPasswordLength *int32 `json:"MinimumPasswordLength,omitempty" xml:"MinimumPasswordLength,omitempty"`
+	// The number of previous passwords that a RAM user is prevented from reusing. Default value: 0. The default value indicates that the RAM user can reuse previous passwords.
+	//
+	// example:
+	//
+	// 0
+	PasswordReusePrevention *int32 `json:"PasswordReusePrevention,omitempty" xml:"PasswordReusePrevention,omitempty"`
+	// Indicates whether a password must contain one or more lowercase letters.
+	//
+	// example:
+	//
+	// true
+	RequireLowercaseCharacters *bool `json:"RequireLowercaseCharacters,omitempty" xml:"RequireLowercaseCharacters,omitempty"`
+	// Indicates whether a password must contain one or more digits.
+	//
+	// example:
+	//
+	// true
+	RequireNumbers *bool `json:"RequireNumbers,omitempty" xml:"RequireNumbers,omitempty"`
+	// Indicates whether a password must contain one or more special characters.
+	//
+	// example:
+	//
+	// true
+	RequireSymbols *bool `json:"RequireSymbols,omitempty" xml:"RequireSymbols,omitempty"`
+	// Indicates whether a password must contain one or more uppercase letters.
+	//
+	// example:
+	//
+	// true
+	RequireUppercaseCharacters *bool `json:"RequireUppercaseCharacters,omitempty" xml:"RequireUppercaseCharacters,omitempty"`
 }
 
 func (s SetPasswordPolicyResponseBodyPasswordPolicy) String() string {
@@ -5736,9 +8067,9 @@ func (s *SetPasswordPolicyResponseBodyPasswordPolicy) SetRequireUppercaseCharact
 }
 
 type SetPasswordPolicyResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetPasswordPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetPasswordPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetPasswordPolicyResponse) String() string {
@@ -5765,13 +8096,80 @@ func (s *SetPasswordPolicyResponse) SetBody(v *SetPasswordPolicyResponseBody) *S
 }
 
 type SetSecurityPreferenceRequest struct {
-	AllowUserToChangePassword   *bool   `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
-	AllowUserToManageAccessKeys *bool   `json:"AllowUserToManageAccessKeys,omitempty" xml:"AllowUserToManageAccessKeys,omitempty"`
-	AllowUserToManageMFADevices *bool   `json:"AllowUserToManageMFADevices,omitempty" xml:"AllowUserToManageMFADevices,omitempty"`
-	AllowUserToManagePublicKeys *bool   `json:"AllowUserToManagePublicKeys,omitempty" xml:"AllowUserToManagePublicKeys,omitempty"`
-	EnableSaveMFATicket         *bool   `json:"EnableSaveMFATicket,omitempty" xml:"EnableSaveMFATicket,omitempty"`
-	LoginNetworkMasks           *string `json:"LoginNetworkMasks,omitempty" xml:"LoginNetworkMasks,omitempty"`
-	LoginSessionDuration        *int32  `json:"LoginSessionDuration,omitempty" xml:"LoginSessionDuration,omitempty"`
+	// Specifies whether RAM users can change their passwords. Valid values:
+	//
+	// 	- true: RAM users can change their passwords. This is the default value.
+	//
+	// 	- false: RAM users cannot change their passwords.
+	//
+	// example:
+	//
+	// true
+	AllowUserToChangePassword *bool `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
+	// Specifies whether RAM users can manage their AccessKey pairs. Valid values:
+	//
+	// 	- true: RAM users can manage their AccessKey pairs.
+	//
+	// 	- false: RAM users cannot manage their AccessKey pairs. This is the default value.
+	//
+	// example:
+	//
+	// false
+	AllowUserToManageAccessKeys *bool `json:"AllowUserToManageAccessKeys,omitempty" xml:"AllowUserToManageAccessKeys,omitempty"`
+	// Specifies whether RAM users can manage their MFA devices. Valid values:
+	//
+	// 	- true: RAM users can manage their MFA devices. This is the default value.
+	//
+	// 	- false: RAM users cannot manage their MFA devices.
+	//
+	// example:
+	//
+	// true
+	AllowUserToManageMFADevices *bool `json:"AllowUserToManageMFADevices,omitempty" xml:"AllowUserToManageMFADevices,omitempty"`
+	// Specifies whether RAM users can manage their public keys. Valid values:
+	//
+	// 	- true: RAM users can manage their public keys.
+	//
+	// 	- false: RAM users cannot manage their public keys. This is the default value.
+	//
+	// >  This parameter is valid only for the Japan site.
+	//
+	// example:
+	//
+	// false
+	AllowUserToManagePublicKeys *bool `json:"AllowUserToManagePublicKeys,omitempty" xml:"AllowUserToManagePublicKeys,omitempty"`
+	// Specifies whether to remember the multi-factor authentication (MFA) devices of Resource Access Management (RAM) users for seven days. Valid values:
+	//
+	// 	- true: remembers the MFA devices of RAM users for seven days.
+	//
+	// 	- false: does not remember the MFA devices of RAM users for seven days.
+	//
+	// example:
+	//
+	// true
+	EnableSaveMFATicket *bool `json:"EnableSaveMFATicket,omitempty" xml:"EnableSaveMFATicket,omitempty"`
+	// The subnet mask that specifies the IP addresses from which you can log on to the Alibaba Cloud Management Console. This parameter takes effect on password-based logon and single sign-on (SSO). However, this parameter does not take effect on API calls that are authenticated by using AccessKey pairs.
+	//
+	// 	- If you specify a subnet mask, RAM users can use only the IP addresses in the subnet mask to log on to the Alibaba Cloud Management Console.
+	//
+	// 	- If you do not specify a subnet mask, RAM users can use all IP addresses to log on to the Alibaba Cloud Management Console.
+	//
+	// If you need to specify multiple subnet masks, separate the subnet masks with semicolons (;). Example: 192.168.0.0/16;10.0.0.0/8.
+	//
+	// You can specify up to 25 subnet masks. The total length of the subnet masks can be a maximum of 512 characters.
+	//
+	// example:
+	//
+	// 10.0.0.0/8
+	LoginNetworkMasks *string `json:"LoginNetworkMasks,omitempty" xml:"LoginNetworkMasks,omitempty"`
+	// The validity period of the logon session of RAM users.
+	//
+	// Valid values: 1 to 24. Default value: 6. Unit: hours.
+	//
+	// example:
+	//
+	// 6
+	LoginSessionDuration *int32 `json:"LoginSessionDuration,omitempty" xml:"LoginSessionDuration,omitempty"`
 }
 
 func (s SetSecurityPreferenceRequest) String() string {
@@ -5818,7 +8216,13 @@ func (s *SetSecurityPreferenceRequest) SetLoginSessionDuration(v int32) *SetSecu
 }
 
 type SetSecurityPreferenceResponseBody struct {
-	RequestId          *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// A978915D-F279-4CA0-A89B-9A71219FFB3E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The security preferences.
 	SecurityPreference *SetSecurityPreferenceResponseBodySecurityPreference `json:"SecurityPreference,omitempty" xml:"SecurityPreference,omitempty" type:"Struct"`
 }
 
@@ -5841,10 +8245,16 @@ func (s *SetSecurityPreferenceResponseBody) SetSecurityPreference(v *SetSecurity
 }
 
 type SetSecurityPreferenceResponseBodySecurityPreference struct {
-	AccessKeyPreference    *SetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference    `json:"AccessKeyPreference,omitempty" xml:"AccessKeyPreference,omitempty" type:"Struct"`
+	// The AccessKey pair preference.
+	AccessKeyPreference *SetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference `json:"AccessKeyPreference,omitempty" xml:"AccessKeyPreference,omitempty" type:"Struct"`
+	// The logon preference.
 	LoginProfilePreference *SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference `json:"LoginProfilePreference,omitempty" xml:"LoginProfilePreference,omitempty" type:"Struct"`
-	MFAPreference          *SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference          `json:"MFAPreference,omitempty" xml:"MFAPreference,omitempty" type:"Struct"`
-	PublicKeyPreference    *SetSecurityPreferenceResponseBodySecurityPreferencePublicKeyPreference    `json:"PublicKeyPreference,omitempty" xml:"PublicKeyPreference,omitempty" type:"Struct"`
+	// The MFA preference.
+	MFAPreference *SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference `json:"MFAPreference,omitempty" xml:"MFAPreference,omitempty" type:"Struct"`
+	// The public key preference.
+	//
+	// >  This parameter is valid only for the Japan site.
+	PublicKeyPreference *SetSecurityPreferenceResponseBodySecurityPreferencePublicKeyPreference `json:"PublicKeyPreference,omitempty" xml:"PublicKeyPreference,omitempty" type:"Struct"`
 }
 
 func (s SetSecurityPreferenceResponseBodySecurityPreference) String() string {
@@ -5876,6 +8286,11 @@ func (s *SetSecurityPreferenceResponseBodySecurityPreference) SetPublicKeyPrefer
 }
 
 type SetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference struct {
+	// Indicates whether RAM users can manage their AccessKey pairs.
+	//
+	// example:
+	//
+	// false
 	AllowUserToManageAccessKeys *bool `json:"AllowUserToManageAccessKeys,omitempty" xml:"AllowUserToManageAccessKeys,omitempty"`
 }
 
@@ -5893,10 +8308,30 @@ func (s *SetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference)
 }
 
 type SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference struct {
-	AllowUserToChangePassword *bool   `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
-	EnableSaveMFATicket       *bool   `json:"EnableSaveMFATicket,omitempty" xml:"EnableSaveMFATicket,omitempty"`
-	LoginNetworkMasks         *string `json:"LoginNetworkMasks,omitempty" xml:"LoginNetworkMasks,omitempty"`
-	LoginSessionDuration      *int32  `json:"LoginSessionDuration,omitempty" xml:"LoginSessionDuration,omitempty"`
+	// Indicates whether RAM users can change their passwords.
+	//
+	// example:
+	//
+	// true
+	AllowUserToChangePassword *bool `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
+	// Indicates whether the MFA devices of RAM users are remembered.
+	//
+	// example:
+	//
+	// false
+	EnableSaveMFATicket *bool `json:"EnableSaveMFATicket,omitempty" xml:"EnableSaveMFATicket,omitempty"`
+	// The subnet mask.
+	//
+	// example:
+	//
+	// 10.0.0.0/8
+	LoginNetworkMasks *string `json:"LoginNetworkMasks,omitempty" xml:"LoginNetworkMasks,omitempty"`
+	// The validity period of the logon session of RAM users.
+	//
+	// example:
+	//
+	// 6
+	LoginSessionDuration *int32 `json:"LoginSessionDuration,omitempty" xml:"LoginSessionDuration,omitempty"`
 }
 
 func (s SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference) String() string {
@@ -5928,6 +8363,11 @@ func (s *SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreferen
 }
 
 type SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference struct {
+	// Indicates whether RAM users can manage their MFA devices.
+	//
+	// example:
+	//
+	// false
 	AllowUserToManageMFADevices *bool `json:"AllowUserToManageMFADevices,omitempty" xml:"AllowUserToManageMFADevices,omitempty"`
 }
 
@@ -5945,6 +8385,11 @@ func (s *SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference) SetAl
 }
 
 type SetSecurityPreferenceResponseBodySecurityPreferencePublicKeyPreference struct {
+	// Indicates whether RAM users can manage their public keys.
+	//
+	// example:
+	//
+	// false
 	AllowUserToManagePublicKeys *bool `json:"AllowUserToManagePublicKeys,omitempty" xml:"AllowUserToManagePublicKeys,omitempty"`
 }
 
@@ -5962,9 +8407,9 @@ func (s *SetSecurityPreferenceResponseBodySecurityPreferencePublicKeyPreference)
 }
 
 type SetSecurityPreferenceResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetSecurityPreferenceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetSecurityPreferenceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetSecurityPreferenceResponse) String() string {
@@ -5991,6 +8436,11 @@ func (s *SetSecurityPreferenceResponse) SetBody(v *SetSecurityPreferenceResponse
 }
 
 type UnbindMFADeviceRequest struct {
+	// The name of the RAM user.
+	//
+	// example:
+	//
+	// zhangq****
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -6008,8 +8458,14 @@ func (s *UnbindMFADeviceRequest) SetUserName(v string) *UnbindMFADeviceRequest {
 }
 
 type UnbindMFADeviceResponseBody struct {
+	// The information of the MFA device.
 	MFADevice *UnbindMFADeviceResponseBodyMFADevice `json:"MFADevice,omitempty" xml:"MFADevice,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UnbindMFADeviceResponseBody) String() string {
@@ -6031,6 +8487,11 @@ func (s *UnbindMFADeviceResponseBody) SetRequestId(v string) *UnbindMFADeviceRes
 }
 
 type UnbindMFADeviceResponseBodyMFADevice struct {
+	// The serial number of the MFA device.
+	//
+	// example:
+	//
+	// acs:ram::123456789012****:mfa/device002
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 }
 
@@ -6048,9 +8509,9 @@ func (s *UnbindMFADeviceResponseBodyMFADevice) SetSerialNumber(v string) *Unbind
 }
 
 type UnbindMFADeviceResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UnbindMFADeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnbindMFADeviceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UnbindMFADeviceResponse) String() string {
@@ -6077,9 +8538,24 @@ func (s *UnbindMFADeviceResponse) SetBody(v *UnbindMFADeviceResponseBody) *Unbin
 }
 
 type UpdateAccessKeyRequest struct {
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the AccessKey pair. Valid values: `Active` and `Inactive`.
+	//
+	// example:
+	//
+	// Inactive
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The AccessKey ID in the AccessKey pair whose status you want to change.
+	//
+	// example:
+	//
+	// 0wNEpMMlzy7s****
 	UserAccessKeyId *string `json:"UserAccessKeyId,omitempty" xml:"UserAccessKeyId,omitempty"`
-	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The name of the RAM user.
+	//
+	// example:
+	//
+	// zhangq****
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s UpdateAccessKeyRequest) String() string {
@@ -6106,6 +8582,11 @@ func (s *UpdateAccessKeyRequest) SetUserName(v string) *UpdateAccessKeyRequest {
 }
 
 type UpdateAccessKeyResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6123,9 +8604,9 @@ func (s *UpdateAccessKeyResponseBody) SetRequestId(v string) *UpdateAccessKeyRes
 }
 
 type UpdateAccessKeyResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateAccessKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAccessKeyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateAccessKeyResponse) String() string {
@@ -6152,8 +8633,27 @@ func (s *UpdateAccessKeyResponse) SetBody(v *UpdateAccessKeyResponseBody) *Updat
 }
 
 type UpdateGroupRequest struct {
-	GroupName    *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	NewComments  *string `json:"NewComments,omitempty" xml:"NewComments,omitempty"`
+	// The name of the RAM user group.
+	//
+	// example:
+	//
+	// Dev-Team
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The new description of the RAM user group.
+	//
+	// The comments must be 1 to 128 characters in length.
+	//
+	// example:
+	//
+	// NewDev-Team
+	NewComments *string `json:"NewComments,omitempty" xml:"NewComments,omitempty"`
+	// The new name of the RAM user group.
+	//
+	// The name must be 1 to 64 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_).
+	//
+	// example:
+	//
+	// NewDev-Team
 	NewGroupName *string `json:"NewGroupName,omitempty" xml:"NewGroupName,omitempty"`
 }
 
@@ -6181,8 +8681,14 @@ func (s *UpdateGroupRequest) SetNewGroupName(v string) *UpdateGroupRequest {
 }
 
 type UpdateGroupResponseBody struct {
-	Group     *UpdateGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information of the RAM user group.
+	Group *UpdateGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// EC6647CC-0A36-EC7A-BA72-CC81BF3DE182
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateGroupResponseBody) String() string {
@@ -6204,10 +8710,35 @@ func (s *UpdateGroupResponseBody) SetRequestId(v string) *UpdateGroupResponseBod
 }
 
 type UpdateGroupResponseBodyGroup struct {
-	Comments   *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The description of the RAM user group.
+	//
+	// example:
+	//
+	// NewDev-Team
+	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The time when the RAM user group was created.
+	//
+	// example:
+	//
+	// 2015-01-23T12:33:18Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName  *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The ID of the RAM user group.
+	//
+	// example:
+	//
+	// g-FpMEHiMysofp****
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The new name of the RAM user group.
+	//
+	// example:
+	//
+	// NewDev-Team
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The time when the information of the RAM user group was updated.
+	//
+	// example:
+	//
+	// 2015-01-23T12:33:18Z
 	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
@@ -6245,9 +8776,9 @@ func (s *UpdateGroupResponseBodyGroup) SetUpdateDate(v string) *UpdateGroupRespo
 }
 
 type UpdateGroupResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateGroupResponse) String() string {
@@ -6274,10 +8805,30 @@ func (s *UpdateGroupResponse) SetBody(v *UpdateGroupResponseBody) *UpdateGroupRe
 }
 
 type UpdateLoginProfileRequest struct {
-	MFABindRequired       *bool   `json:"MFABindRequired,omitempty" xml:"MFABindRequired,omitempty"`
-	Password              *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	PasswordResetRequired *bool   `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
-	UserName              *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// Specifies whether an MFA device must be attached to the RAM user upon logon.
+	//
+	// example:
+	//
+	// true
+	MFABindRequired *bool `json:"MFABindRequired,omitempty" xml:"MFABindRequired,omitempty"`
+	// The logon password of the RAM user. The password must meet the password strength requirements.
+	//
+	// example:
+	//
+	// mypassword
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// Specifies whether the RAM user must change the password upon logon.
+	//
+	// example:
+	//
+	// true
+	PasswordResetRequired *bool `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
+	// The name of the RAM user.
+	//
+	// example:
+	//
+	// zhangq****
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s UpdateLoginProfileRequest) String() string {
@@ -6309,6 +8860,11 @@ func (s *UpdateLoginProfileRequest) SetUserName(v string) *UpdateLoginProfileReq
 }
 
 type UpdateLoginProfileResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6326,9 +8882,9 @@ func (s *UpdateLoginProfileResponseBody) SetRequestId(v string) *UpdateLoginProf
 }
 
 type UpdateLoginProfileResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateLoginProfileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateLoginProfileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateLoginProfileResponse) String() string {
@@ -6355,8 +8911,20 @@ func (s *UpdateLoginProfileResponse) SetBody(v *UpdateLoginProfileResponseBody) 
 }
 
 type UpdatePolicyDescriptionRequest struct {
+	// The description of the policy.
+	//
+	// The value of the parameter must be 1 to 1,024 characters in length.
+	//
+	// example:
+	//
+	// This is a test policy.
 	NewDescription *string `json:"NewDescription,omitempty" xml:"NewDescription,omitempty"`
-	PolicyName     *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The name of the policy.
+	//
+	// example:
+	//
+	// TestPolicy
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 }
 
 func (s UpdatePolicyDescriptionRequest) String() string {
@@ -6378,8 +8946,14 @@ func (s *UpdatePolicyDescriptionRequest) SetPolicyName(v string) *UpdatePolicyDe
 }
 
 type UpdatePolicyDescriptionResponseBody struct {
-	Policy    *UpdatePolicyDescriptionResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the policy.
+	Policy *UpdatePolicyDescriptionResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 7572DEBD-0ECE-518E-8682-D8CB82F8FE8E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdatePolicyDescriptionResponseBody) String() string {
@@ -6401,12 +8975,46 @@ func (s *UpdatePolicyDescriptionResponseBody) SetRequestId(v string) *UpdatePoli
 }
 
 type UpdatePolicyDescriptionResponseBodyPolicy struct {
-	CreateDate     *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The time when the policy was created.
+	//
+	// example:
+	//
+	// 2022-02-28T07:04:15Z
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The version of the policy. Default value: v1.
+	//
+	// example:
+	//
+	// v1
 	DefaultVersion *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	PolicyName     *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	PolicyType     *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	UpdateDate     *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The description of the policy.
+	//
+	// example:
+	//
+	// This is a test policy.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the policy.
+	//
+	// example:
+	//
+	// TestPolicy
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The type of the policy. Valid values:
+	//
+	// 	- Custom: custom policy
+	//
+	// 	- System: system policy
+	//
+	// example:
+	//
+	// Custom
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// The time when the policy was modified.
+	//
+	// example:
+	//
+	// 2022-02-28T07:05:37Z
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s UpdatePolicyDescriptionResponseBodyPolicy) String() string {
@@ -6448,9 +9056,9 @@ func (s *UpdatePolicyDescriptionResponseBodyPolicy) SetUpdateDate(v string) *Upd
 }
 
 type UpdatePolicyDescriptionResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdatePolicyDescriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdatePolicyDescriptionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdatePolicyDescriptionResponse) String() string {
@@ -6477,10 +9085,38 @@ func (s *UpdatePolicyDescriptionResponse) SetBody(v *UpdatePolicyDescriptionResp
 }
 
 type UpdateRoleRequest struct {
+	// The policy that specifies the trusted entity to assume the RAM role.
+	//
+	// example:
+	//
+	// { "Statement": [ { "Action": "sts:AssumeRole", "Effect": "Allow", "Principal": { "RAM": "acs:ram::12345678901234****:root" } } ], "Version": "1" }
 	NewAssumeRolePolicyDocument *string `json:"NewAssumeRolePolicyDocument,omitempty" xml:"NewAssumeRolePolicyDocument,omitempty"`
-	NewDescription              *string `json:"NewDescription,omitempty" xml:"NewDescription,omitempty"`
-	NewMaxSessionDuration       *int64  `json:"NewMaxSessionDuration,omitempty" xml:"NewMaxSessionDuration,omitempty"`
-	RoleName                    *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The new description of the RAM role.
+	//
+	// The value must be 1 to 1,024 characters in length.
+	//
+	// example:
+	//
+	// ECS administrator
+	NewDescription *string `json:"NewDescription,omitempty" xml:"NewDescription,omitempty"`
+	// The maximum session duration of the RAM role.
+	//
+	// Valid values: 3600 to 43200. Unit: seconds.Default value: 3600.
+	//
+	// If you do not specify this parameter, the default value is used.
+	//
+	// example:
+	//
+	// 3600
+	NewMaxSessionDuration *int64 `json:"NewMaxSessionDuration,omitempty" xml:"NewMaxSessionDuration,omitempty"`
+	// The name of the RAM role.
+	//
+	// The name must be 1 to 64 characters in length and can contain letters, digits, periods (.),and hyphens (-).
+	//
+	// example:
+	//
+	// ECSAdmin
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
 func (s UpdateRoleRequest) String() string {
@@ -6512,8 +9148,14 @@ func (s *UpdateRoleRequest) SetRoleName(v string) *UpdateRoleRequest {
 }
 
 type UpdateRoleResponseBody struct {
-	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Role      *UpdateRoleResponseBodyRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information of the RAM role.
+	Role *UpdateRoleResponseBodyRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
 }
 
 func (s UpdateRoleResponseBody) String() string {
@@ -6535,14 +9177,54 @@ func (s *UpdateRoleResponseBody) SetRole(v *UpdateRoleResponseBodyRole) *UpdateR
 }
 
 type UpdateRoleResponseBodyRole struct {
-	Arn                      *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the role.
+	//
+	// example:
+	//
+	// acs:ram::123456789012****:role/ECSAdmin
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The policy that specifies the trusted entity to assume the RAM role.
+	//
+	// example:
+	//
+	// { "Statement": [ { "Action": "sts:AssumeRole", "Effect": "Allow", "Principal": { "RAM": "acs:ram::123456789012****:root" } } ], "Version": "1" }
 	AssumeRolePolicyDocument *string `json:"AssumeRolePolicyDocument,omitempty" xml:"AssumeRolePolicyDocument,omitempty"`
-	CreateDate               *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	MaxSessionDuration       *int64  `json:"MaxSessionDuration,omitempty" xml:"MaxSessionDuration,omitempty"`
-	RoleId                   *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	RoleName                 *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	UpdateDate               *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The time when the RAM role was created.
+	//
+	// example:
+	//
+	// 2015-01-23T12:33:18Z
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The description of the RAM role.
+	//
+	// example:
+	//
+	// ECS administrator
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The maximum session duration of the RAM role.
+	//
+	// example:
+	//
+	// 3600
+	MaxSessionDuration *int64 `json:"MaxSessionDuration,omitempty" xml:"MaxSessionDuration,omitempty"`
+	// The ID of the RAM role.
+	//
+	// example:
+	//
+	// 901234567890****
+	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// The name of the RAM role.
+	//
+	// example:
+	//
+	// ECSAdmin
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The time when the description of the RAM role was changed.
+	//
+	// example:
+	//
+	// 2015-01-23T12:33:18Z
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s UpdateRoleResponseBodyRole) String() string {
@@ -6594,9 +9276,9 @@ func (s *UpdateRoleResponseBodyRole) SetUpdateDate(v string) *UpdateRoleResponse
 }
 
 type UpdateRoleResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateRoleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateRoleResponse) String() string {
@@ -6623,12 +9305,54 @@ func (s *UpdateRoleResponse) SetBody(v *UpdateRoleResponseBody) *UpdateRoleRespo
 }
 
 type UpdateUserRequest struct {
-	NewComments    *string `json:"NewComments,omitempty" xml:"NewComments,omitempty"`
+	// The new description of the RAM user.
+	//
+	// The description must be 1 to 128 characters in length.
+	//
+	// example:
+	//
+	// This is a cloud computing engineer.
+	NewComments *string `json:"NewComments,omitempty" xml:"NewComments,omitempty"`
+	// The new display name of the RAM user.
+	//
+	// The name must be 1 to 128 characters in length.
+	//
+	// example:
+	//
+	// xiaoq****
 	NewDisplayName *string `json:"NewDisplayName,omitempty" xml:"NewDisplayName,omitempty"`
-	NewEmail       *string `json:"NewEmail,omitempty" xml:"NewEmail,omitempty"`
+	// The new email address of the RAM user.
+	//
+	// >  This parameter can be returned only on the China site (aliyun.com).
+	//
+	// example:
+	//
+	// xiaoq****@example.com
+	NewEmail *string `json:"NewEmail,omitempty" xml:"NewEmail,omitempty"`
+	// The new mobile phone number of the RAM user.
+	//
+	// Format: \\<Country code>-\\<Mobile phone number>.
+	//
+	// >  This parameter can be returned only on the China site (aliyun.com).
+	//
+	// example:
+	//
+	// 86-1860000****
 	NewMobilePhone *string `json:"NewMobilePhone,omitempty" xml:"NewMobilePhone,omitempty"`
-	NewUserName    *string `json:"NewUserName,omitempty" xml:"NewUserName,omitempty"`
-	UserName       *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The new username of the RAM user.
+	//
+	// The username must be 1 to 64 characters in length, and can contain letters, digits, periods (.), hyphens (-), and underscores (_).
+	//
+	// example:
+	//
+	// xiaoq****
+	NewUserName *string `json:"NewUserName,omitempty" xml:"NewUserName,omitempty"`
+	// The username of the RAM user.
+	//
+	// example:
+	//
+	// zhangq****
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s UpdateUserRequest) String() string {
@@ -6670,8 +9394,14 @@ func (s *UpdateUserRequest) SetUserName(v string) *UpdateUserRequest {
 }
 
 type UpdateUserResponseBody struct {
-	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	User      *UpdateUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the RAM user.
+	User *UpdateUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 }
 
 func (s UpdateUserResponseBody) String() string {
@@ -6693,14 +9423,58 @@ func (s *UpdateUserResponseBody) SetUser(v *UpdateUserResponseBodyUser) *UpdateU
 }
 
 type UpdateUserResponseBodyUser struct {
-	Comments    *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	CreateDate  *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The description of the RAM user.
+	//
+	// example:
+	//
+	// This is a cloud computing engineer.
+	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The point in time when the RAM user was created. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2015-01-23T12:33:18Z
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The display name of the RAM user.
+	//
+	// example:
+	//
+	// xiaoq****
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Email       *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The email address of the RAM user.
+	//
+	// >  This parameter can be returned only on the China site (aliyun.com).
+	//
+	// example:
+	//
+	// xiaoq****@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The mobile phone number of the RAM user.
+	//
+	// >  This parameter can be returned only on the China site (aliyun.com).
+	//
+	// example:
+	//
+	// 86-1860000****
 	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
-	UpdateDate  *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The point in time when the information about the RAM user was last modified. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2015-02-11T03:15:21Z
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+	// The ID of the RAM user.
+	//
+	// example:
+	//
+	// 122748924538****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The username of the RAM user.
+	//
+	// example:
+	//
+	// xiaoq****
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s UpdateUserResponseBodyUser) String() string {
@@ -6752,9 +9526,9 @@ func (s *UpdateUserResponseBodyUser) SetUserName(v string) *UpdateUserResponseBo
 }
 
 type UpdateUserResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateUserResponse) String() string {
@@ -6827,6 +9601,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a RAM user to a RAM user group.
+//
+// @param request - AddUserToGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddUserToGroupResponse
 func (client *Client) AddUserToGroupWithOptions(request *AddUserToGroupRequest, runtime *util.RuntimeOptions) (_result *AddUserToGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6864,6 +9647,13 @@ func (client *Client) AddUserToGroupWithOptions(request *AddUserToGroupRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a RAM user to a RAM user group.
+//
+// @param request - AddUserToGroupRequest
+//
+// @return AddUserToGroupResponse
 func (client *Client) AddUserToGroup(request *AddUserToGroupRequest) (_result *AddUserToGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddUserToGroupResponse{}
@@ -6875,6 +9665,15 @@ func (client *Client) AddUserToGroup(request *AddUserToGroupRequest) (_result *A
 	return _result, _err
 }
 
+// Summary:
+//
+// Attaches a policy to a RAM user group.
+//
+// @param request - AttachPolicyToGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachPolicyToGroupResponse
 func (client *Client) AttachPolicyToGroupWithOptions(request *AttachPolicyToGroupRequest, runtime *util.RuntimeOptions) (_result *AttachPolicyToGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6916,6 +9715,13 @@ func (client *Client) AttachPolicyToGroupWithOptions(request *AttachPolicyToGrou
 	return _result, _err
 }
 
+// Summary:
+//
+// Attaches a policy to a RAM user group.
+//
+// @param request - AttachPolicyToGroupRequest
+//
+// @return AttachPolicyToGroupResponse
 func (client *Client) AttachPolicyToGroup(request *AttachPolicyToGroupRequest) (_result *AttachPolicyToGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AttachPolicyToGroupResponse{}
@@ -6927,6 +9733,15 @@ func (client *Client) AttachPolicyToGroup(request *AttachPolicyToGroupRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Attaches a policy to a RAM role.
+//
+// @param request - AttachPolicyToRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachPolicyToRoleResponse
 func (client *Client) AttachPolicyToRoleWithOptions(request *AttachPolicyToRoleRequest, runtime *util.RuntimeOptions) (_result *AttachPolicyToRoleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6968,6 +9783,13 @@ func (client *Client) AttachPolicyToRoleWithOptions(request *AttachPolicyToRoleR
 	return _result, _err
 }
 
+// Summary:
+//
+// Attaches a policy to a RAM role.
+//
+// @param request - AttachPolicyToRoleRequest
+//
+// @return AttachPolicyToRoleResponse
 func (client *Client) AttachPolicyToRole(request *AttachPolicyToRoleRequest) (_result *AttachPolicyToRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AttachPolicyToRoleResponse{}
@@ -6979,6 +9801,15 @@ func (client *Client) AttachPolicyToRole(request *AttachPolicyToRoleRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Attaches a policy to a RAM user.
+//
+// @param request - AttachPolicyToUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachPolicyToUserResponse
 func (client *Client) AttachPolicyToUserWithOptions(request *AttachPolicyToUserRequest, runtime *util.RuntimeOptions) (_result *AttachPolicyToUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7020,6 +9851,13 @@ func (client *Client) AttachPolicyToUserWithOptions(request *AttachPolicyToUserR
 	return _result, _err
 }
 
+// Summary:
+//
+// Attaches a policy to a RAM user.
+//
+// @param request - AttachPolicyToUserRequest
+//
+// @return AttachPolicyToUserResponse
 func (client *Client) AttachPolicyToUser(request *AttachPolicyToUserRequest) (_result *AttachPolicyToUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AttachPolicyToUserResponse{}
@@ -7031,6 +9869,11 @@ func (client *Client) AttachPolicyToUser(request *AttachPolicyToUserRequest) (_r
 	return _result, _err
 }
 
+// @param request - BindMFADeviceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BindMFADeviceResponse
 func (client *Client) BindMFADeviceWithOptions(request *BindMFADeviceRequest, runtime *util.RuntimeOptions) (_result *BindMFADeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7076,6 +9919,9 @@ func (client *Client) BindMFADeviceWithOptions(request *BindMFADeviceRequest, ru
 	return _result, _err
 }
 
+// @param request - BindMFADeviceRequest
+//
+// @return BindMFADeviceResponse
 func (client *Client) BindMFADevice(request *BindMFADeviceRequest) (_result *BindMFADeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BindMFADeviceResponse{}
@@ -7087,6 +9933,15 @@ func (client *Client) BindMFADevice(request *BindMFADeviceRequest) (_result *Bin
 	return _result, _err
 }
 
+// Description:
+//
+// >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can change their passwords.
+//
+// @param request - ChangePasswordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangePasswordResponse
 func (client *Client) ChangePasswordWithOptions(request *ChangePasswordRequest, runtime *util.RuntimeOptions) (_result *ChangePasswordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7124,6 +9979,13 @@ func (client *Client) ChangePasswordWithOptions(request *ChangePasswordRequest, 
 	return _result, _err
 }
 
+// Description:
+//
+// >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can change their passwords.
+//
+// @param request - ChangePasswordRequest
+//
+// @return ChangePasswordResponse
 func (client *Client) ChangePassword(request *ChangePasswordRequest) (_result *ChangePasswordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangePasswordResponse{}
@@ -7135,6 +9997,11 @@ func (client *Client) ChangePassword(request *ChangePasswordRequest) (_result *C
 	return _result, _err
 }
 
+// @param request - ClearAccountAliasRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClearAccountAliasResponse
 func (client *Client) ClearAccountAliasWithOptions(runtime *util.RuntimeOptions) (_result *ClearAccountAliasResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -7157,6 +10024,7 @@ func (client *Client) ClearAccountAliasWithOptions(runtime *util.RuntimeOptions)
 	return _result, _err
 }
 
+// @return ClearAccountAliasResponse
 func (client *Client) ClearAccountAlias() (_result *ClearAccountAliasResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ClearAccountAliasResponse{}
@@ -7168,6 +10036,11 @@ func (client *Client) ClearAccountAlias() (_result *ClearAccountAliasResponse, _
 	return _result, _err
 }
 
+// @param request - CreateAccessKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAccessKeyResponse
 func (client *Client) CreateAccessKeyWithOptions(request *CreateAccessKeyRequest, runtime *util.RuntimeOptions) (_result *CreateAccessKeyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7201,6 +10074,9 @@ func (client *Client) CreateAccessKeyWithOptions(request *CreateAccessKeyRequest
 	return _result, _err
 }
 
+// @param request - CreateAccessKeyRequest
+//
+// @return CreateAccessKeyResponse
 func (client *Client) CreateAccessKey(request *CreateAccessKeyRequest) (_result *CreateAccessKeyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAccessKeyResponse{}
@@ -7212,6 +10088,15 @@ func (client *Client) CreateAccessKey(request *CreateAccessKeyRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a RAM user group.
+//
+// @param request - CreateGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGroupResponse
 func (client *Client) CreateGroupWithOptions(request *CreateGroupRequest, runtime *util.RuntimeOptions) (_result *CreateGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7249,6 +10134,13 @@ func (client *Client) CreateGroupWithOptions(request *CreateGroupRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a RAM user group.
+//
+// @param request - CreateGroupRequest
+//
+// @return CreateGroupResponse
 func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateGroupResponse{}
@@ -7260,6 +10152,15 @@ func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateG
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables console logon for a RAM user.
+//
+// @param request - CreateLoginProfileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLoginProfileResponse
 func (client *Client) CreateLoginProfileWithOptions(request *CreateLoginProfileRequest, runtime *util.RuntimeOptions) (_result *CreateLoginProfileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7305,6 +10206,13 @@ func (client *Client) CreateLoginProfileWithOptions(request *CreateLoginProfileR
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables console logon for a RAM user.
+//
+// @param request - CreateLoginProfileRequest
+//
+// @return CreateLoginProfileResponse
 func (client *Client) CreateLoginProfile(request *CreateLoginProfileRequest) (_result *CreateLoginProfileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateLoginProfileResponse{}
@@ -7316,6 +10224,21 @@ func (client *Client) CreateLoginProfile(request *CreateLoginProfileRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a custom policy.
+//
+// Description:
+//
+// For more information about policies, see [Policy overview](https://help.aliyun.com/document_detail/93732.html).
+//
+// This topic provides an example on how to create a custom policy to query Elastic Compute Service (ECS) instances in a specific region.
+//
+// @param request - CreatePolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePolicyResponse
 func (client *Client) CreatePolicyWithOptions(request *CreatePolicyRequest, runtime *util.RuntimeOptions) (_result *CreatePolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7357,6 +10280,19 @@ func (client *Client) CreatePolicyWithOptions(request *CreatePolicyRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a custom policy.
+//
+// Description:
+//
+// For more information about policies, see [Policy overview](https://help.aliyun.com/document_detail/93732.html).
+//
+// This topic provides an example on how to create a custom policy to query Elastic Compute Service (ECS) instances in a specific region.
+//
+// @param request - CreatePolicyRequest
+//
+// @return CreatePolicyResponse
 func (client *Client) CreatePolicy(request *CreatePolicyRequest) (_result *CreatePolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreatePolicyResponse{}
@@ -7368,6 +10304,11 @@ func (client *Client) CreatePolicy(request *CreatePolicyRequest) (_result *Creat
 	return _result, _err
 }
 
+// @param request - CreatePolicyVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePolicyVersionResponse
 func (client *Client) CreatePolicyVersionWithOptions(request *CreatePolicyVersionRequest, runtime *util.RuntimeOptions) (_result *CreatePolicyVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7413,6 +10354,9 @@ func (client *Client) CreatePolicyVersionWithOptions(request *CreatePolicyVersio
 	return _result, _err
 }
 
+// @param request - CreatePolicyVersionRequest
+//
+// @return CreatePolicyVersionResponse
 func (client *Client) CreatePolicyVersion(request *CreatePolicyVersionRequest) (_result *CreatePolicyVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreatePolicyVersionResponse{}
@@ -7424,6 +10368,21 @@ func (client *Client) CreatePolicyVersion(request *CreatePolicyVersionRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a RAM role.
+//
+// Description:
+//
+// ## Description
+//
+// For more information about RAM roles, see [Overview of RAM roles](https://help.aliyun.com/document_detail/93689.html).
+//
+// @param request - CreateRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRoleResponse
 func (client *Client) CreateRoleWithOptions(request *CreateRoleRequest, runtime *util.RuntimeOptions) (_result *CreateRoleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7469,6 +10428,19 @@ func (client *Client) CreateRoleWithOptions(request *CreateRoleRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a RAM role.
+//
+// Description:
+//
+// ## Description
+//
+// For more information about RAM roles, see [Overview of RAM roles](https://help.aliyun.com/document_detail/93689.html).
+//
+// @param request - CreateRoleRequest
+//
+// @return CreateRoleResponse
 func (client *Client) CreateRole(request *CreateRoleRequest) (_result *CreateRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateRoleResponse{}
@@ -7480,6 +10452,19 @@ func (client *Client) CreateRole(request *CreateRoleRequest) (_result *CreateRol
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a Resource Access Management (RAM) user.
+//
+// Description:
+//
+// This topic provides an example on how to create a RAM user named `alice`.
+//
+// @param request - CreateUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateUserResponse
 func (client *Client) CreateUserWithOptions(request *CreateUserRequest, runtime *util.RuntimeOptions) (_result *CreateUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7529,6 +10514,17 @@ func (client *Client) CreateUserWithOptions(request *CreateUserRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a Resource Access Management (RAM) user.
+//
+// Description:
+//
+// This topic provides an example on how to create a RAM user named `alice`.
+//
+// @param request - CreateUserRequest
+//
+// @return CreateUserResponse
 func (client *Client) CreateUser(request *CreateUserRequest) (_result *CreateUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateUserResponse{}
@@ -7540,6 +10536,11 @@ func (client *Client) CreateUser(request *CreateUserRequest) (_result *CreateUse
 	return _result, _err
 }
 
+// @param request - CreateVirtualMFADeviceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVirtualMFADeviceResponse
 func (client *Client) CreateVirtualMFADeviceWithOptions(request *CreateVirtualMFADeviceRequest, runtime *util.RuntimeOptions) (_result *CreateVirtualMFADeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7573,6 +10574,9 @@ func (client *Client) CreateVirtualMFADeviceWithOptions(request *CreateVirtualMF
 	return _result, _err
 }
 
+// @param request - CreateVirtualMFADeviceRequest
+//
+// @return CreateVirtualMFADeviceResponse
 func (client *Client) CreateVirtualMFADevice(request *CreateVirtualMFADeviceRequest) (_result *CreateVirtualMFADeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateVirtualMFADeviceResponse{}
@@ -7584,6 +10588,71 @@ func (client *Client) CreateVirtualMFADevice(request *CreateVirtualMFADeviceRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Decodes the diagnostic information in the response that contains an access denied error. The error is caused by no RAM permissions.
+//
+// @param request - DecodeDiagnosticMessageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DecodeDiagnosticMessageResponse
+func (client *Client) DecodeDiagnosticMessageWithOptions(request *DecodeDiagnosticMessageRequest, runtime *util.RuntimeOptions) (_result *DecodeDiagnosticMessageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EncodedDiagnosticMessage)) {
+		query["EncodedDiagnosticMessage"] = request.EncodedDiagnosticMessage
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DecodeDiagnosticMessage"),
+		Version:     tea.String("2015-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DecodeDiagnosticMessageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Decodes the diagnostic information in the response that contains an access denied error. The error is caused by no RAM permissions.
+//
+// @param request - DecodeDiagnosticMessageRequest
+//
+// @return DecodeDiagnosticMessageResponse
+func (client *Client) DecodeDiagnosticMessage(request *DecodeDiagnosticMessageRequest) (_result *DecodeDiagnosticMessageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DecodeDiagnosticMessageResponse{}
+	_body, _err := client.DecodeDiagnosticMessageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DeleteAccessKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAccessKeyResponse
 func (client *Client) DeleteAccessKeyWithOptions(request *DeleteAccessKeyRequest, runtime *util.RuntimeOptions) (_result *DeleteAccessKeyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7621,6 +10690,9 @@ func (client *Client) DeleteAccessKeyWithOptions(request *DeleteAccessKeyRequest
 	return _result, _err
 }
 
+// @param request - DeleteAccessKeyRequest
+//
+// @return DeleteAccessKeyResponse
 func (client *Client) DeleteAccessKey(request *DeleteAccessKeyRequest) (_result *DeleteAccessKeyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAccessKeyResponse{}
@@ -7632,6 +10704,15 @@ func (client *Client) DeleteAccessKey(request *DeleteAccessKeyRequest) (_result 
 	return _result, _err
 }
 
+// Description:
+//
+// Before you delete a RAM user group, make sure that no policies are attached to the group and no RAM users are included in the group.
+//
+// @param request - DeleteGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteGroupResponse
 func (client *Client) DeleteGroupWithOptions(request *DeleteGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7665,6 +10746,13 @@ func (client *Client) DeleteGroupWithOptions(request *DeleteGroupRequest, runtim
 	return _result, _err
 }
 
+// Description:
+//
+// Before you delete a RAM user group, make sure that no policies are attached to the group and no RAM users are included in the group.
+//
+// @param request - DeleteGroupRequest
+//
+// @return DeleteGroupResponse
 func (client *Client) DeleteGroup(request *DeleteGroupRequest) (_result *DeleteGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteGroupResponse{}
@@ -7676,6 +10764,11 @@ func (client *Client) DeleteGroup(request *DeleteGroupRequest) (_result *DeleteG
 	return _result, _err
 }
 
+// @param request - DeleteLoginProfileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteLoginProfileResponse
 func (client *Client) DeleteLoginProfileWithOptions(request *DeleteLoginProfileRequest, runtime *util.RuntimeOptions) (_result *DeleteLoginProfileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7709,6 +10802,9 @@ func (client *Client) DeleteLoginProfileWithOptions(request *DeleteLoginProfileR
 	return _result, _err
 }
 
+// @param request - DeleteLoginProfileRequest
+//
+// @return DeleteLoginProfileResponse
 func (client *Client) DeleteLoginProfile(request *DeleteLoginProfileRequest) (_result *DeleteLoginProfileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteLoginProfileResponse{}
@@ -7720,6 +10816,11 @@ func (client *Client) DeleteLoginProfile(request *DeleteLoginProfileRequest) (_r
 	return _result, _err
 }
 
+// @param request - DeletePolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePolicyResponse
 func (client *Client) DeletePolicyWithOptions(request *DeletePolicyRequest, runtime *util.RuntimeOptions) (_result *DeletePolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7753,6 +10854,9 @@ func (client *Client) DeletePolicyWithOptions(request *DeletePolicyRequest, runt
 	return _result, _err
 }
 
+// @param request - DeletePolicyRequest
+//
+// @return DeletePolicyResponse
 func (client *Client) DeletePolicy(request *DeletePolicyRequest) (_result *DeletePolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeletePolicyResponse{}
@@ -7764,6 +10868,11 @@ func (client *Client) DeletePolicy(request *DeletePolicyRequest) (_result *Delet
 	return _result, _err
 }
 
+// @param request - DeletePolicyVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePolicyVersionResponse
 func (client *Client) DeletePolicyVersionWithOptions(request *DeletePolicyVersionRequest, runtime *util.RuntimeOptions) (_result *DeletePolicyVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7801,6 +10910,9 @@ func (client *Client) DeletePolicyVersionWithOptions(request *DeletePolicyVersio
 	return _result, _err
 }
 
+// @param request - DeletePolicyVersionRequest
+//
+// @return DeletePolicyVersionResponse
 func (client *Client) DeletePolicyVersion(request *DeletePolicyVersionRequest) (_result *DeletePolicyVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeletePolicyVersionResponse{}
@@ -7812,6 +10924,11 @@ func (client *Client) DeletePolicyVersion(request *DeletePolicyVersionRequest) (
 	return _result, _err
 }
 
+// @param request - DeleteRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRoleResponse
 func (client *Client) DeleteRoleWithOptions(request *DeleteRoleRequest, runtime *util.RuntimeOptions) (_result *DeleteRoleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7845,6 +10962,9 @@ func (client *Client) DeleteRoleWithOptions(request *DeleteRoleRequest, runtime 
 	return _result, _err
 }
 
+// @param request - DeleteRoleRequest
+//
+// @return DeleteRoleResponse
 func (client *Client) DeleteRole(request *DeleteRoleRequest) (_result *DeleteRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteRoleResponse{}
@@ -7856,6 +10976,15 @@ func (client *Client) DeleteRole(request *DeleteRoleRequest) (_result *DeleteRol
 	return _result, _err
 }
 
+// Description:
+//
+// Before you delete a RAM user, make sure that no policies are attached to the RAM user and that the RAM user does not belong to any groups.
+//
+// @param request - DeleteUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUserResponse
 func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, runtime *util.RuntimeOptions) (_result *DeleteUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7889,6 +11018,13 @@ func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, runtime 
 	return _result, _err
 }
 
+// Description:
+//
+// Before you delete a RAM user, make sure that no policies are attached to the RAM user and that the RAM user does not belong to any groups.
+//
+// @param request - DeleteUserRequest
+//
+// @return DeleteUserResponse
 func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteUserResponse{}
@@ -7900,6 +11036,11 @@ func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUse
 	return _result, _err
 }
 
+// @param request - DeleteVirtualMFADeviceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteVirtualMFADeviceResponse
 func (client *Client) DeleteVirtualMFADeviceWithOptions(request *DeleteVirtualMFADeviceRequest, runtime *util.RuntimeOptions) (_result *DeleteVirtualMFADeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7933,6 +11074,9 @@ func (client *Client) DeleteVirtualMFADeviceWithOptions(request *DeleteVirtualMF
 	return _result, _err
 }
 
+// @param request - DeleteVirtualMFADeviceRequest
+//
+// @return DeleteVirtualMFADeviceResponse
 func (client *Client) DeleteVirtualMFADevice(request *DeleteVirtualMFADeviceRequest) (_result *DeleteVirtualMFADeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteVirtualMFADeviceResponse{}
@@ -7944,6 +11088,15 @@ func (client *Client) DeleteVirtualMFADevice(request *DeleteVirtualMFADeviceRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Detaches a policy from a RAM user group.
+//
+// @param request - DetachPolicyFromGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachPolicyFromGroupResponse
 func (client *Client) DetachPolicyFromGroupWithOptions(request *DetachPolicyFromGroupRequest, runtime *util.RuntimeOptions) (_result *DetachPolicyFromGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7985,6 +11138,13 @@ func (client *Client) DetachPolicyFromGroupWithOptions(request *DetachPolicyFrom
 	return _result, _err
 }
 
+// Summary:
+//
+// Detaches a policy from a RAM user group.
+//
+// @param request - DetachPolicyFromGroupRequest
+//
+// @return DetachPolicyFromGroupResponse
 func (client *Client) DetachPolicyFromGroup(request *DetachPolicyFromGroupRequest) (_result *DetachPolicyFromGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DetachPolicyFromGroupResponse{}
@@ -7996,6 +11156,15 @@ func (client *Client) DetachPolicyFromGroup(request *DetachPolicyFromGroupReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Detaches a policy from a RAM role.
+//
+// @param request - DetachPolicyFromRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachPolicyFromRoleResponse
 func (client *Client) DetachPolicyFromRoleWithOptions(request *DetachPolicyFromRoleRequest, runtime *util.RuntimeOptions) (_result *DetachPolicyFromRoleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8037,6 +11206,13 @@ func (client *Client) DetachPolicyFromRoleWithOptions(request *DetachPolicyFromR
 	return _result, _err
 }
 
+// Summary:
+//
+// Detaches a policy from a RAM role.
+//
+// @param request - DetachPolicyFromRoleRequest
+//
+// @return DetachPolicyFromRoleResponse
 func (client *Client) DetachPolicyFromRole(request *DetachPolicyFromRoleRequest) (_result *DetachPolicyFromRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DetachPolicyFromRoleResponse{}
@@ -8048,6 +11224,15 @@ func (client *Client) DetachPolicyFromRole(request *DetachPolicyFromRoleRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Detaches a policy from a RAM user.
+//
+// @param request - DetachPolicyFromUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachPolicyFromUserResponse
 func (client *Client) DetachPolicyFromUserWithOptions(request *DetachPolicyFromUserRequest, runtime *util.RuntimeOptions) (_result *DetachPolicyFromUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8089,6 +11274,13 @@ func (client *Client) DetachPolicyFromUserWithOptions(request *DetachPolicyFromU
 	return _result, _err
 }
 
+// Summary:
+//
+// Detaches a policy from a RAM user.
+//
+// @param request - DetachPolicyFromUserRequest
+//
+// @return DetachPolicyFromUserResponse
 func (client *Client) DetachPolicyFromUser(request *DetachPolicyFromUserRequest) (_result *DetachPolicyFromUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DetachPolicyFromUserResponse{}
@@ -8100,6 +11292,11 @@ func (client *Client) DetachPolicyFromUser(request *DetachPolicyFromUserRequest)
 	return _result, _err
 }
 
+// @param request - GetAccessKeyLastUsedRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAccessKeyLastUsedResponse
 func (client *Client) GetAccessKeyLastUsedWithOptions(request *GetAccessKeyLastUsedRequest, runtime *util.RuntimeOptions) (_result *GetAccessKeyLastUsedResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8137,6 +11334,9 @@ func (client *Client) GetAccessKeyLastUsedWithOptions(request *GetAccessKeyLastU
 	return _result, _err
 }
 
+// @param request - GetAccessKeyLastUsedRequest
+//
+// @return GetAccessKeyLastUsedResponse
 func (client *Client) GetAccessKeyLastUsed(request *GetAccessKeyLastUsedRequest) (_result *GetAccessKeyLastUsedResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAccessKeyLastUsedResponse{}
@@ -8148,6 +11348,11 @@ func (client *Client) GetAccessKeyLastUsed(request *GetAccessKeyLastUsedRequest)
 	return _result, _err
 }
 
+// @param request - GetAccountAliasRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAccountAliasResponse
 func (client *Client) GetAccountAliasWithOptions(runtime *util.RuntimeOptions) (_result *GetAccountAliasResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -8170,6 +11375,7 @@ func (client *Client) GetAccountAliasWithOptions(runtime *util.RuntimeOptions) (
 	return _result, _err
 }
 
+// @return GetAccountAliasResponse
 func (client *Client) GetAccountAlias() (_result *GetAccountAliasResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAccountAliasResponse{}
@@ -8181,6 +11387,15 @@ func (client *Client) GetAccountAlias() (_result *GetAccountAliasResponse, _err 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of a RAM user group.
+//
+// @param request - GetGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetGroupResponse
 func (client *Client) GetGroupWithOptions(request *GetGroupRequest, runtime *util.RuntimeOptions) (_result *GetGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8214,6 +11429,13 @@ func (client *Client) GetGroupWithOptions(request *GetGroupRequest, runtime *uti
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of a RAM user group.
+//
+// @param request - GetGroupRequest
+//
+// @return GetGroupResponse
 func (client *Client) GetGroup(request *GetGroupRequest) (_result *GetGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetGroupResponse{}
@@ -8225,6 +11447,11 @@ func (client *Client) GetGroup(request *GetGroupRequest) (_result *GetGroupRespo
 	return _result, _err
 }
 
+// @param request - GetLoginProfileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLoginProfileResponse
 func (client *Client) GetLoginProfileWithOptions(request *GetLoginProfileRequest, runtime *util.RuntimeOptions) (_result *GetLoginProfileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8258,6 +11485,9 @@ func (client *Client) GetLoginProfileWithOptions(request *GetLoginProfileRequest
 	return _result, _err
 }
 
+// @param request - GetLoginProfileRequest
+//
+// @return GetLoginProfileResponse
 func (client *Client) GetLoginProfile(request *GetLoginProfileRequest) (_result *GetLoginProfileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetLoginProfileResponse{}
@@ -8269,6 +11499,11 @@ func (client *Client) GetLoginProfile(request *GetLoginProfileRequest) (_result 
 	return _result, _err
 }
 
+// @param request - GetPasswordPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPasswordPolicyResponse
 func (client *Client) GetPasswordPolicyWithOptions(runtime *util.RuntimeOptions) (_result *GetPasswordPolicyResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -8291,6 +11526,7 @@ func (client *Client) GetPasswordPolicyWithOptions(runtime *util.RuntimeOptions)
 	return _result, _err
 }
 
+// @return GetPasswordPolicyResponse
 func (client *Client) GetPasswordPolicy() (_result *GetPasswordPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPasswordPolicyResponse{}
@@ -8302,6 +11538,15 @@ func (client *Client) GetPasswordPolicy() (_result *GetPasswordPolicyResponse, _
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of a policy.
+//
+// @param request - GetPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPolicyResponse
 func (client *Client) GetPolicyWithOptions(request *GetPolicyRequest, runtime *util.RuntimeOptions) (_result *GetPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8339,6 +11584,13 @@ func (client *Client) GetPolicyWithOptions(request *GetPolicyRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of a policy.
+//
+// @param request - GetPolicyRequest
+//
+// @return GetPolicyResponse
 func (client *Client) GetPolicy(request *GetPolicyRequest) (_result *GetPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPolicyResponse{}
@@ -8350,6 +11602,15 @@ func (client *Client) GetPolicy(request *GetPolicyRequest) (_result *GetPolicyRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of a policy version.
+//
+// @param request - GetPolicyVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPolicyVersionResponse
 func (client *Client) GetPolicyVersionWithOptions(request *GetPolicyVersionRequest, runtime *util.RuntimeOptions) (_result *GetPolicyVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8391,6 +11652,13 @@ func (client *Client) GetPolicyVersionWithOptions(request *GetPolicyVersionReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of a policy version.
+//
+// @param request - GetPolicyVersionRequest
+//
+// @return GetPolicyVersionResponse
 func (client *Client) GetPolicyVersion(request *GetPolicyVersionRequest) (_result *GetPolicyVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPolicyVersionResponse{}
@@ -8402,6 +11670,15 @@ func (client *Client) GetPolicyVersion(request *GetPolicyVersionRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information of a RAM role.
+//
+// @param request - GetRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRoleResponse
 func (client *Client) GetRoleWithOptions(request *GetRoleRequest, runtime *util.RuntimeOptions) (_result *GetRoleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8435,6 +11712,13 @@ func (client *Client) GetRoleWithOptions(request *GetRoleRequest, runtime *util.
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information of a RAM role.
+//
+// @param request - GetRoleRequest
+//
+// @return GetRoleResponse
 func (client *Client) GetRole(request *GetRoleRequest) (_result *GetRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRoleResponse{}
@@ -8446,6 +11730,11 @@ func (client *Client) GetRole(request *GetRoleRequest) (_result *GetRoleResponse
 	return _result, _err
 }
 
+// @param request - GetSecurityPreferenceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSecurityPreferenceResponse
 func (client *Client) GetSecurityPreferenceWithOptions(runtime *util.RuntimeOptions) (_result *GetSecurityPreferenceResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -8468,6 +11757,7 @@ func (client *Client) GetSecurityPreferenceWithOptions(runtime *util.RuntimeOpti
 	return _result, _err
 }
 
+// @return GetSecurityPreferenceResponse
 func (client *Client) GetSecurityPreference() (_result *GetSecurityPreferenceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSecurityPreferenceResponse{}
@@ -8479,6 +11769,19 @@ func (client *Client) GetSecurityPreference() (_result *GetSecurityPreferenceRes
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a RAM user.
+//
+// Description:
+//
+// This topic provides an example on how to query the information about the RAM user `alice`.
+//
+// @param request - GetUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserResponse
 func (client *Client) GetUserWithOptions(request *GetUserRequest, runtime *util.RuntimeOptions) (_result *GetUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8512,6 +11815,17 @@ func (client *Client) GetUserWithOptions(request *GetUserRequest, runtime *util.
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a RAM user.
+//
+// Description:
+//
+// This topic provides an example on how to query the information about the RAM user `alice`.
+//
+// @param request - GetUserRequest
+//
+// @return GetUserResponse
 func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetUserResponse{}
@@ -8523,6 +11837,11 @@ func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse
 	return _result, _err
 }
 
+// @param request - GetUserMFAInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserMFAInfoResponse
 func (client *Client) GetUserMFAInfoWithOptions(request *GetUserMFAInfoRequest, runtime *util.RuntimeOptions) (_result *GetUserMFAInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8556,6 +11875,9 @@ func (client *Client) GetUserMFAInfoWithOptions(request *GetUserMFAInfoRequest, 
 	return _result, _err
 }
 
+// @param request - GetUserMFAInfoRequest
+//
+// @return GetUserMFAInfoResponse
 func (client *Client) GetUserMFAInfo(request *GetUserMFAInfoRequest) (_result *GetUserMFAInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetUserMFAInfoResponse{}
@@ -8567,6 +11889,15 @@ func (client *Client) GetUserMFAInfo(request *GetUserMFAInfoRequest) (_result *G
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of all AccessKey pairs that belong to a RAM user.
+//
+// @param request - ListAccessKeysRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAccessKeysResponse
 func (client *Client) ListAccessKeysWithOptions(request *ListAccessKeysRequest, runtime *util.RuntimeOptions) (_result *ListAccessKeysResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8600,6 +11931,13 @@ func (client *Client) ListAccessKeysWithOptions(request *ListAccessKeysRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of all AccessKey pairs that belong to a RAM user.
+//
+// @param request - ListAccessKeysRequest
+//
+// @return ListAccessKeysResponse
 func (client *Client) ListAccessKeys(request *ListAccessKeysRequest) (_result *ListAccessKeysResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAccessKeysResponse{}
@@ -8611,6 +11949,15 @@ func (client *Client) ListAccessKeys(request *ListAccessKeysRequest) (_result *L
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the entities to which a policy is attached.
+//
+// @param request - ListEntitiesForPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEntitiesForPolicyResponse
 func (client *Client) ListEntitiesForPolicyWithOptions(request *ListEntitiesForPolicyRequest, runtime *util.RuntimeOptions) (_result *ListEntitiesForPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8648,6 +11995,13 @@ func (client *Client) ListEntitiesForPolicyWithOptions(request *ListEntitiesForP
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the entities to which a policy is attached.
+//
+// @param request - ListEntitiesForPolicyRequest
+//
+// @return ListEntitiesForPolicyResponse
 func (client *Client) ListEntitiesForPolicy(request *ListEntitiesForPolicyRequest) (_result *ListEntitiesForPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListEntitiesForPolicyResponse{}
@@ -8659,6 +12013,15 @@ func (client *Client) ListEntitiesForPolicy(request *ListEntitiesForPolicyReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries RAM user groups.
+//
+// @param request - ListGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGroupsResponse
 func (client *Client) ListGroupsWithOptions(request *ListGroupsRequest, runtime *util.RuntimeOptions) (_result *ListGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8696,6 +12059,13 @@ func (client *Client) ListGroupsWithOptions(request *ListGroupsRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries RAM user groups.
+//
+// @param request - ListGroupsRequest
+//
+// @return ListGroupsResponse
 func (client *Client) ListGroups(request *ListGroupsRequest) (_result *ListGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListGroupsResponse{}
@@ -8707,6 +12077,19 @@ func (client *Client) ListGroups(request *ListGroupsRequest) (_result *ListGroup
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Resource Access Management (RAM) user groups to which a RAM user belongs.
+//
+// Description:
+//
+// This topic provides an example on how to query the RAM user groups to which the RAM user `Alice` belongs. The response shows that `Alice` belongs to the RAM user group named `Dev-Team`.
+//
+// @param request - ListGroupsForUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGroupsForUserResponse
 func (client *Client) ListGroupsForUserWithOptions(request *ListGroupsForUserRequest, runtime *util.RuntimeOptions) (_result *ListGroupsForUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8740,6 +12123,17 @@ func (client *Client) ListGroupsForUserWithOptions(request *ListGroupsForUserReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Resource Access Management (RAM) user groups to which a RAM user belongs.
+//
+// Description:
+//
+// This topic provides an example on how to query the RAM user groups to which the RAM user `Alice` belongs. The response shows that `Alice` belongs to the RAM user group named `Dev-Team`.
+//
+// @param request - ListGroupsForUserRequest
+//
+// @return ListGroupsForUserResponse
 func (client *Client) ListGroupsForUser(request *ListGroupsForUserRequest) (_result *ListGroupsForUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListGroupsForUserResponse{}
@@ -8751,6 +12145,15 @@ func (client *Client) ListGroupsForUser(request *ListGroupsForUserRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of policies.
+//
+// @param request - ListPoliciesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPoliciesResponse
 func (client *Client) ListPoliciesWithOptions(request *ListPoliciesRequest, runtime *util.RuntimeOptions) (_result *ListPoliciesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8792,6 +12195,13 @@ func (client *Client) ListPoliciesWithOptions(request *ListPoliciesRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of policies.
+//
+// @param request - ListPoliciesRequest
+//
+// @return ListPoliciesResponse
 func (client *Client) ListPolicies(request *ListPoliciesRequest) (_result *ListPoliciesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPoliciesResponse{}
@@ -8803,6 +12213,15 @@ func (client *Client) ListPolicies(request *ListPoliciesRequest) (_result *ListP
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the policies that are attached to a RAM user group.
+//
+// @param request - ListPoliciesForGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPoliciesForGroupResponse
 func (client *Client) ListPoliciesForGroupWithOptions(request *ListPoliciesForGroupRequest, runtime *util.RuntimeOptions) (_result *ListPoliciesForGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8836,6 +12255,13 @@ func (client *Client) ListPoliciesForGroupWithOptions(request *ListPoliciesForGr
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the policies that are attached to a RAM user group.
+//
+// @param request - ListPoliciesForGroupRequest
+//
+// @return ListPoliciesForGroupResponse
 func (client *Client) ListPoliciesForGroup(request *ListPoliciesForGroupRequest) (_result *ListPoliciesForGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPoliciesForGroupResponse{}
@@ -8847,6 +12273,15 @@ func (client *Client) ListPoliciesForGroup(request *ListPoliciesForGroupRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the policies that are attached to a RAM role.
+//
+// @param request - ListPoliciesForRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPoliciesForRoleResponse
 func (client *Client) ListPoliciesForRoleWithOptions(request *ListPoliciesForRoleRequest, runtime *util.RuntimeOptions) (_result *ListPoliciesForRoleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8880,6 +12315,13 @@ func (client *Client) ListPoliciesForRoleWithOptions(request *ListPoliciesForRol
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the policies that are attached to a RAM role.
+//
+// @param request - ListPoliciesForRoleRequest
+//
+// @return ListPoliciesForRoleResponse
 func (client *Client) ListPoliciesForRole(request *ListPoliciesForRoleRequest) (_result *ListPoliciesForRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPoliciesForRoleResponse{}
@@ -8891,6 +12333,19 @@ func (client *Client) ListPoliciesForRole(request *ListPoliciesForRoleRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the policies that are attached to a RAM user.
+//
+// Description:
+//
+// > You can call this operation to query only the policies that are attached to Alibaba Cloud accounts. You cannot query the policies that are attached to resource groups.
+//
+// @param request - ListPoliciesForUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPoliciesForUserResponse
 func (client *Client) ListPoliciesForUserWithOptions(request *ListPoliciesForUserRequest, runtime *util.RuntimeOptions) (_result *ListPoliciesForUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8924,6 +12379,17 @@ func (client *Client) ListPoliciesForUserWithOptions(request *ListPoliciesForUse
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the policies that are attached to a RAM user.
+//
+// Description:
+//
+// > You can call this operation to query only the policies that are attached to Alibaba Cloud accounts. You cannot query the policies that are attached to resource groups.
+//
+// @param request - ListPoliciesForUserRequest
+//
+// @return ListPoliciesForUserResponse
 func (client *Client) ListPoliciesForUser(request *ListPoliciesForUserRequest) (_result *ListPoliciesForUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPoliciesForUserResponse{}
@@ -8935,6 +12401,15 @@ func (client *Client) ListPoliciesForUser(request *ListPoliciesForUserRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the versions of a policy.
+//
+// @param request - ListPolicyVersionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPolicyVersionsResponse
 func (client *Client) ListPolicyVersionsWithOptions(request *ListPolicyVersionsRequest, runtime *util.RuntimeOptions) (_result *ListPolicyVersionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8972,6 +12447,13 @@ func (client *Client) ListPolicyVersionsWithOptions(request *ListPolicyVersionsR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the versions of a policy.
+//
+// @param request - ListPolicyVersionsRequest
+//
+// @return ListPolicyVersionsResponse
 func (client *Client) ListPolicyVersions(request *ListPolicyVersionsRequest) (_result *ListPolicyVersionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPolicyVersionsResponse{}
@@ -8983,6 +12465,15 @@ func (client *Client) ListPolicyVersions(request *ListPolicyVersionsRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of all RAM roles.
+//
+// @param request - ListRolesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRolesResponse
 func (client *Client) ListRolesWithOptions(request *ListRolesRequest, runtime *util.RuntimeOptions) (_result *ListRolesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9020,6 +12511,13 @@ func (client *Client) ListRolesWithOptions(request *ListRolesRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of all RAM roles.
+//
+// @param request - ListRolesRequest
+//
+// @return ListRolesResponse
 func (client *Client) ListRoles(request *ListRolesRequest) (_result *ListRolesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRolesResponse{}
@@ -9031,6 +12529,15 @@ func (client *Client) ListRoles(request *ListRolesRequest) (_result *ListRolesRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about all RAM users.
+//
+// @param request - ListUsersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUsersResponse
 func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *util.RuntimeOptions) (_result *ListUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9068,6 +12575,13 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about all RAM users.
+//
+// @param request - ListUsersRequest
+//
+// @return ListUsersResponse
 func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUsersResponse{}
@@ -9079,6 +12593,11 @@ func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersRe
 	return _result, _err
 }
 
+// @param request - ListUsersForGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUsersForGroupResponse
 func (client *Client) ListUsersForGroupWithOptions(request *ListUsersForGroupRequest, runtime *util.RuntimeOptions) (_result *ListUsersForGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9120,6 +12639,9 @@ func (client *Client) ListUsersForGroupWithOptions(request *ListUsersForGroupReq
 	return _result, _err
 }
 
+// @param request - ListUsersForGroupRequest
+//
+// @return ListUsersForGroupResponse
 func (client *Client) ListUsersForGroup(request *ListUsersForGroupRequest) (_result *ListUsersForGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUsersForGroupResponse{}
@@ -9131,6 +12653,15 @@ func (client *Client) ListUsersForGroup(request *ListUsersForGroupRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of all multi-factor authentication (MFA) devices.
+//
+// @param request - ListVirtualMFADevicesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVirtualMFADevicesResponse
 func (client *Client) ListVirtualMFADevicesWithOptions(runtime *util.RuntimeOptions) (_result *ListVirtualMFADevicesResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -9153,6 +12684,11 @@ func (client *Client) ListVirtualMFADevicesWithOptions(runtime *util.RuntimeOpti
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of all multi-factor authentication (MFA) devices.
+//
+// @return ListVirtualMFADevicesResponse
 func (client *Client) ListVirtualMFADevices() (_result *ListVirtualMFADevicesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListVirtualMFADevicesResponse{}
@@ -9164,6 +12700,11 @@ func (client *Client) ListVirtualMFADevices() (_result *ListVirtualMFADevicesRes
 	return _result, _err
 }
 
+// @param request - RemoveUserFromGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveUserFromGroupResponse
 func (client *Client) RemoveUserFromGroupWithOptions(request *RemoveUserFromGroupRequest, runtime *util.RuntimeOptions) (_result *RemoveUserFromGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9201,6 +12742,9 @@ func (client *Client) RemoveUserFromGroupWithOptions(request *RemoveUserFromGrou
 	return _result, _err
 }
 
+// @param request - RemoveUserFromGroupRequest
+//
+// @return RemoveUserFromGroupResponse
 func (client *Client) RemoveUserFromGroup(request *RemoveUserFromGroupRequest) (_result *RemoveUserFromGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveUserFromGroupResponse{}
@@ -9212,6 +12756,15 @@ func (client *Client) RemoveUserFromGroup(request *RemoveUserFromGroupRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// You can call this operation to specify an alias for an Alibaba Cloud account.
+//
+// @param request - SetAccountAliasRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetAccountAliasResponse
 func (client *Client) SetAccountAliasWithOptions(request *SetAccountAliasRequest, runtime *util.RuntimeOptions) (_result *SetAccountAliasResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9245,6 +12798,13 @@ func (client *Client) SetAccountAliasWithOptions(request *SetAccountAliasRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// You can call this operation to specify an alias for an Alibaba Cloud account.
+//
+// @param request - SetAccountAliasRequest
+//
+// @return SetAccountAliasResponse
 func (client *Client) SetAccountAlias(request *SetAccountAliasRequest) (_result *SetAccountAliasResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetAccountAliasResponse{}
@@ -9256,6 +12816,15 @@ func (client *Client) SetAccountAlias(request *SetAccountAliasRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Sets the default version of a policy.
+//
+// @param request - SetDefaultPolicyVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetDefaultPolicyVersionResponse
 func (client *Client) SetDefaultPolicyVersionWithOptions(request *SetDefaultPolicyVersionRequest, runtime *util.RuntimeOptions) (_result *SetDefaultPolicyVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9293,6 +12862,13 @@ func (client *Client) SetDefaultPolicyVersionWithOptions(request *SetDefaultPoli
 	return _result, _err
 }
 
+// Summary:
+//
+// Sets the default version of a policy.
+//
+// @param request - SetDefaultPolicyVersionRequest
+//
+// @return SetDefaultPolicyVersionResponse
 func (client *Client) SetDefaultPolicyVersion(request *SetDefaultPolicyVersionRequest) (_result *SetDefaultPolicyVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetDefaultPolicyVersionResponse{}
@@ -9304,6 +12880,11 @@ func (client *Client) SetDefaultPolicyVersion(request *SetDefaultPolicyVersionRe
 	return _result, _err
 }
 
+// @param request - SetPasswordPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetPasswordPolicyResponse
 func (client *Client) SetPasswordPolicyWithOptions(request *SetPasswordPolicyRequest, runtime *util.RuntimeOptions) (_result *SetPasswordPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9369,6 +12950,9 @@ func (client *Client) SetPasswordPolicyWithOptions(request *SetPasswordPolicyReq
 	return _result, _err
 }
 
+// @param request - SetPasswordPolicyRequest
+//
+// @return SetPasswordPolicyResponse
 func (client *Client) SetPasswordPolicy(request *SetPasswordPolicyRequest) (_result *SetPasswordPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetPasswordPolicyResponse{}
@@ -9380,6 +12964,11 @@ func (client *Client) SetPasswordPolicy(request *SetPasswordPolicyRequest) (_res
 	return _result, _err
 }
 
+// @param request - SetSecurityPreferenceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetSecurityPreferenceResponse
 func (client *Client) SetSecurityPreferenceWithOptions(request *SetSecurityPreferenceRequest, runtime *util.RuntimeOptions) (_result *SetSecurityPreferenceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9437,6 +13026,9 @@ func (client *Client) SetSecurityPreferenceWithOptions(request *SetSecurityPrefe
 	return _result, _err
 }
 
+// @param request - SetSecurityPreferenceRequest
+//
+// @return SetSecurityPreferenceResponse
 func (client *Client) SetSecurityPreference(request *SetSecurityPreferenceRequest) (_result *SetSecurityPreferenceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetSecurityPreferenceResponse{}
@@ -9448,6 +13040,11 @@ func (client *Client) SetSecurityPreference(request *SetSecurityPreferenceReques
 	return _result, _err
 }
 
+// @param request - UnbindMFADeviceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnbindMFADeviceResponse
 func (client *Client) UnbindMFADeviceWithOptions(request *UnbindMFADeviceRequest, runtime *util.RuntimeOptions) (_result *UnbindMFADeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9481,6 +13078,9 @@ func (client *Client) UnbindMFADeviceWithOptions(request *UnbindMFADeviceRequest
 	return _result, _err
 }
 
+// @param request - UnbindMFADeviceRequest
+//
+// @return UnbindMFADeviceResponse
 func (client *Client) UnbindMFADevice(request *UnbindMFADeviceRequest) (_result *UnbindMFADeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UnbindMFADeviceResponse{}
@@ -9492,6 +13092,11 @@ func (client *Client) UnbindMFADevice(request *UnbindMFADeviceRequest) (_result 
 	return _result, _err
 }
 
+// @param request - UpdateAccessKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAccessKeyResponse
 func (client *Client) UpdateAccessKeyWithOptions(request *UpdateAccessKeyRequest, runtime *util.RuntimeOptions) (_result *UpdateAccessKeyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9533,6 +13138,9 @@ func (client *Client) UpdateAccessKeyWithOptions(request *UpdateAccessKeyRequest
 	return _result, _err
 }
 
+// @param request - UpdateAccessKeyRequest
+//
+// @return UpdateAccessKeyResponse
 func (client *Client) UpdateAccessKey(request *UpdateAccessKeyRequest) (_result *UpdateAccessKeyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAccessKeyResponse{}
@@ -9544,6 +13152,15 @@ func (client *Client) UpdateAccessKey(request *UpdateAccessKeyRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a RAM user group.
+//
+// @param request - UpdateGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateGroupResponse
 func (client *Client) UpdateGroupWithOptions(request *UpdateGroupRequest, runtime *util.RuntimeOptions) (_result *UpdateGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9585,6 +13202,13 @@ func (client *Client) UpdateGroupWithOptions(request *UpdateGroupRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a RAM user group.
+//
+// @param request - UpdateGroupRequest
+//
+// @return UpdateGroupResponse
 func (client *Client) UpdateGroup(request *UpdateGroupRequest) (_result *UpdateGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateGroupResponse{}
@@ -9596,6 +13220,11 @@ func (client *Client) UpdateGroup(request *UpdateGroupRequest) (_result *UpdateG
 	return _result, _err
 }
 
+// @param request - UpdateLoginProfileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateLoginProfileResponse
 func (client *Client) UpdateLoginProfileWithOptions(request *UpdateLoginProfileRequest, runtime *util.RuntimeOptions) (_result *UpdateLoginProfileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9641,6 +13270,9 @@ func (client *Client) UpdateLoginProfileWithOptions(request *UpdateLoginProfileR
 	return _result, _err
 }
 
+// @param request - UpdateLoginProfileRequest
+//
+// @return UpdateLoginProfileResponse
 func (client *Client) UpdateLoginProfile(request *UpdateLoginProfileRequest) (_result *UpdateLoginProfileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateLoginProfileResponse{}
@@ -9652,6 +13284,19 @@ func (client *Client) UpdateLoginProfile(request *UpdateLoginProfileRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the description of a custom policy.
+//
+// Description:
+//
+// You can call this operation to modify only the description of a custom policy. You cannot modify the description of a system policy.
+//
+// @param request - UpdatePolicyDescriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePolicyDescriptionResponse
 func (client *Client) UpdatePolicyDescriptionWithOptions(request *UpdatePolicyDescriptionRequest, runtime *util.RuntimeOptions) (_result *UpdatePolicyDescriptionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9689,6 +13334,17 @@ func (client *Client) UpdatePolicyDescriptionWithOptions(request *UpdatePolicyDe
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the description of a custom policy.
+//
+// Description:
+//
+// You can call this operation to modify only the description of a custom policy. You cannot modify the description of a system policy.
+//
+// @param request - UpdatePolicyDescriptionRequest
+//
+// @return UpdatePolicyDescriptionResponse
 func (client *Client) UpdatePolicyDescription(request *UpdatePolicyDescriptionRequest) (_result *UpdatePolicyDescriptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdatePolicyDescriptionResponse{}
@@ -9700,6 +13356,19 @@ func (client *Client) UpdatePolicyDescription(request *UpdatePolicyDescriptionRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the description of a RAM role.
+//
+// Description:
+//
+// This topic provides an example to show how to change the description of ECSAdmin to ECS administrator.
+//
+// @param request - UpdateRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRoleResponse
 func (client *Client) UpdateRoleWithOptions(request *UpdateRoleRequest, runtime *util.RuntimeOptions) (_result *UpdateRoleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9745,6 +13414,17 @@ func (client *Client) UpdateRoleWithOptions(request *UpdateRoleRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the description of a RAM role.
+//
+// Description:
+//
+// This topic provides an example to show how to change the description of ECSAdmin to ECS administrator.
+//
+// @param request - UpdateRoleRequest
+//
+// @return UpdateRoleResponse
 func (client *Client) UpdateRole(request *UpdateRoleRequest) (_result *UpdateRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateRoleResponse{}
@@ -9756,6 +13436,15 @@ func (client *Client) UpdateRole(request *UpdateRoleRequest) (_result *UpdateRol
 	return _result, _err
 }
 
+// Description:
+//
+// This topic provides an example on how to change the name of a RAM user from `zhangq****` to `xiaoq****`.
+//
+// @param request - UpdateUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUserResponse
 func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime *util.RuntimeOptions) (_result *UpdateUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9809,6 +13498,13 @@ func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime 
 	return _result, _err
 }
 
+// Description:
+//
+// This topic provides an example on how to change the name of a RAM user from `zhangq****` to `xiaoq****`.
+//
+// @param request - UpdateUserRequest
+//
+// @return UpdateUserResponse
 func (client *Client) UpdateUser(request *UpdateUserRequest) (_result *UpdateUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateUserResponse{}
