@@ -13145,6 +13145,192 @@ func (s *ApplyQueryResponse) SetBody(v *ApplyQueryResponseBody) *ApplyQueryRespo
 	return s
 }
 
+type ApplyTripTaskExecuteHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// feth00jqwls
+	XAcsBtripSoCorpToken *string `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s ApplyTripTaskExecuteHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyTripTaskExecuteHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyTripTaskExecuteHeaders) SetCommonHeaders(v map[string]*string) *ApplyTripTaskExecuteHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ApplyTripTaskExecuteHeaders) SetXAcsBtripSoCorpToken(v string) *ApplyTripTaskExecuteHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
+type ApplyTripTaskExecuteRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// open
+	ActionFrom *string `json:"action_from,omitempty" xml:"action_from,omitempty"`
+	Comment    *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// agree
+	TaskAction *string `json:"task_action,omitempty" xml:"task_action,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345
+	TaskId *int64 `json:"task_id,omitempty" xml:"task_id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// thirdpart12138
+	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+}
+
+func (s ApplyTripTaskExecuteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyTripTaskExecuteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyTripTaskExecuteRequest) SetActionFrom(v string) *ApplyTripTaskExecuteRequest {
+	s.ActionFrom = &v
+	return s
+}
+
+func (s *ApplyTripTaskExecuteRequest) SetComment(v string) *ApplyTripTaskExecuteRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *ApplyTripTaskExecuteRequest) SetTaskAction(v string) *ApplyTripTaskExecuteRequest {
+	s.TaskAction = &v
+	return s
+}
+
+func (s *ApplyTripTaskExecuteRequest) SetTaskId(v int64) *ApplyTripTaskExecuteRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ApplyTripTaskExecuteRequest) SetUserId(v string) *ApplyTripTaskExecuteRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *ApplyTripTaskExecuteRequest) SetUserName(v string) *ApplyTripTaskExecuteRequest {
+	s.UserName = &v
+	return s
+}
+
+type ApplyTripTaskExecuteResponseBody struct {
+	// example:
+	//
+	// SUCCESS
+	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// true
+	Module *bool `json:"module,omitempty" xml:"module,omitempty"`
+	// example:
+	//
+	// 2FB0D7A8-BA41-5D04-BEFC-CADA5481AC53
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	//
+	// example:
+	//
+	// 210bc56016876728084104176d2c35
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s ApplyTripTaskExecuteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyTripTaskExecuteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyTripTaskExecuteResponseBody) SetCode(v string) *ApplyTripTaskExecuteResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ApplyTripTaskExecuteResponseBody) SetMessage(v string) *ApplyTripTaskExecuteResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ApplyTripTaskExecuteResponseBody) SetModule(v bool) *ApplyTripTaskExecuteResponseBody {
+	s.Module = &v
+	return s
+}
+
+func (s *ApplyTripTaskExecuteResponseBody) SetRequestId(v string) *ApplyTripTaskExecuteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ApplyTripTaskExecuteResponseBody) SetSuccess(v bool) *ApplyTripTaskExecuteResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ApplyTripTaskExecuteResponseBody) SetTraceId(v string) *ApplyTripTaskExecuteResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type ApplyTripTaskExecuteResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ApplyTripTaskExecuteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ApplyTripTaskExecuteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyTripTaskExecuteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyTripTaskExecuteResponse) SetHeaders(v map[string]*string) *ApplyTripTaskExecuteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ApplyTripTaskExecuteResponse) SetStatusCode(v int32) *ApplyTripTaskExecuteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ApplyTripTaskExecuteResponse) SetBody(v *ApplyTripTaskExecuteResponseBody) *ApplyTripTaskExecuteResponse {
+	s.Body = v
+	return s
+}
+
 type BaseCityInfoSearchHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// example:
@@ -17430,8 +17616,6 @@ func (s *CommonApplyQueryHeaders) SetXAcsBtripSoCorpToken(v string) *CommonApply
 }
 
 type CommonApplyQueryRequest struct {
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 1003366164
@@ -17441,8 +17625,9 @@ type CommonApplyQueryRequest struct {
 	// example:
 	//
 	// 3
-	BizCategory *int32  `json:"biz_category,omitempty" xml:"biz_category,omitempty"`
-	UserId      *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	BizCategory        *int32  `json:"biz_category,omitempty" xml:"biz_category,omitempty"`
+	BusinessInstanceId *string `json:"business_instance_id,omitempty" xml:"business_instance_id,omitempty"`
+	UserId             *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s CommonApplyQueryRequest) String() string {
@@ -17460,6 +17645,11 @@ func (s *CommonApplyQueryRequest) SetApplyId(v int64) *CommonApplyQueryRequest {
 
 func (s *CommonApplyQueryRequest) SetBizCategory(v int32) *CommonApplyQueryRequest {
 	s.BizCategory = &v
+	return s
+}
+
+func (s *CommonApplyQueryRequest) SetBusinessInstanceId(v string) *CommonApplyQueryRequest {
+	s.BusinessInstanceId = &v
 	return s
 }
 
@@ -17562,7 +17752,8 @@ type CommonApplyQueryResponseBodyModule struct {
 	// example:
 	//
 	// user1
-	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
 func (s CommonApplyQueryResponseBodyModule) String() string {
@@ -17625,6 +17816,11 @@ func (s *CommonApplyQueryResponseBodyModule) SetTripCause(v string) *CommonApply
 
 func (s *CommonApplyQueryResponseBodyModule) SetUserId(v string) *CommonApplyQueryResponseBodyModule {
 	s.UserId = &v
+	return s
+}
+
+func (s *CommonApplyQueryResponseBodyModule) SetUserName(v string) *CommonApplyQueryResponseBodyModule {
+	s.UserName = &v
 	return s
 }
 
@@ -26255,12 +26451,11 @@ func (s *FlightExceedApplyQueryHeaders) SetXAcsBtripSoCorpToken(v string) *Fligh
 }
 
 type FlightExceedApplyQueryRequest struct {
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 175634
-	ApplyId *int64 `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	ApplyId            *int64  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	BusinessInstanceId *string `json:"business_instance_id,omitempty" xml:"business_instance_id,omitempty"`
 }
 
 func (s FlightExceedApplyQueryRequest) String() string {
@@ -26273,6 +26468,11 @@ func (s FlightExceedApplyQueryRequest) GoString() string {
 
 func (s *FlightExceedApplyQueryRequest) SetApplyId(v int64) *FlightExceedApplyQueryRequest {
 	s.ApplyId = &v
+	return s
+}
+
+func (s *FlightExceedApplyQueryRequest) SetBusinessInstanceId(v string) *FlightExceedApplyQueryRequest {
+	s.BusinessInstanceId = &v
 	return s
 }
 
@@ -26373,7 +26573,8 @@ type FlightExceedApplyQueryResponseBodyModule struct {
 	// example:
 	//
 	// user1
-	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
 func (s FlightExceedApplyQueryResponseBodyModule) String() string {
@@ -26451,6 +26652,11 @@ func (s *FlightExceedApplyQueryResponseBodyModule) SetThirdpartCorpId(v string) 
 
 func (s *FlightExceedApplyQueryResponseBodyModule) SetUserId(v string) *FlightExceedApplyQueryResponseBodyModule {
 	s.UserId = &v
+	return s
+}
+
+func (s *FlightExceedApplyQueryResponseBodyModule) SetUserName(v string) *FlightExceedApplyQueryResponseBodyModule {
+	s.UserName = &v
 	return s
 }
 
@@ -54320,12 +54526,11 @@ func (s *HotelExceedApplyQueryHeaders) SetXAcsBtripSoCorpToken(v string) *HotelE
 }
 
 type HotelExceedApplyQueryRequest struct {
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 1287123
-	ApplyId *int64 `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	ApplyId            *int64  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	BusinessInstanceId *string `json:"business_instance_id,omitempty" xml:"business_instance_id,omitempty"`
 }
 
 func (s HotelExceedApplyQueryRequest) String() string {
@@ -54338,6 +54543,11 @@ func (s HotelExceedApplyQueryRequest) GoString() string {
 
 func (s *HotelExceedApplyQueryRequest) SetApplyId(v int64) *HotelExceedApplyQueryRequest {
 	s.ApplyId = &v
+	return s
+}
+
+func (s *HotelExceedApplyQueryRequest) SetBusinessInstanceId(v string) *HotelExceedApplyQueryRequest {
+	s.BusinessInstanceId = &v
 	return s
 }
 
@@ -54439,7 +54649,8 @@ type HotelExceedApplyQueryResponseBodyModule struct {
 	// example:
 	//
 	// user1
-	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
 func (s HotelExceedApplyQueryResponseBodyModule) String() string {
@@ -54507,6 +54718,11 @@ func (s *HotelExceedApplyQueryResponseBodyModule) SetThirdpartCorpId(v string) *
 
 func (s *HotelExceedApplyQueryResponseBodyModule) SetUserId(v string) *HotelExceedApplyQueryResponseBodyModule {
 	s.UserId = &v
+	return s
+}
+
+func (s *HotelExceedApplyQueryResponseBodyModule) SetUserName(v string) *HotelExceedApplyQueryResponseBodyModule {
+	s.UserName = &v
 	return s
 }
 
@@ -88599,12 +88815,11 @@ func (s *TrainExceedApplyQueryHeaders) SetXAcsBtripSoCorpToken(v string) *TrainE
 }
 
 type TrainExceedApplyQueryRequest struct {
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 349720
-	ApplyId *int64 `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	ApplyId            *int64  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	BusinessInstanceId *string `json:"business_instance_id,omitempty" xml:"business_instance_id,omitempty"`
 }
 
 func (s TrainExceedApplyQueryRequest) String() string {
@@ -88617,6 +88832,11 @@ func (s TrainExceedApplyQueryRequest) GoString() string {
 
 func (s *TrainExceedApplyQueryRequest) SetApplyId(v int64) *TrainExceedApplyQueryRequest {
 	s.ApplyId = &v
+	return s
+}
+
+func (s *TrainExceedApplyQueryRequest) SetBusinessInstanceId(v string) *TrainExceedApplyQueryRequest {
+	s.BusinessInstanceId = &v
 	return s
 }
 
@@ -88718,7 +88938,8 @@ type TrainExceedApplyQueryResponseBodyModule struct {
 	// example:
 	//
 	// user1
-	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
 func (s TrainExceedApplyQueryResponseBodyModule) String() string {
@@ -88786,6 +89007,11 @@ func (s *TrainExceedApplyQueryResponseBodyModule) SetThirdpartCorpId(v string) *
 
 func (s *TrainExceedApplyQueryResponseBodyModule) SetUserId(v string) *TrainExceedApplyQueryResponseBodyModule {
 	s.UserId = &v
+	return s
+}
+
+func (s *TrainExceedApplyQueryResponseBodyModule) SetUserName(v string) *TrainExceedApplyQueryResponseBodyModule {
+	s.UserName = &v
 	return s
 }
 
@@ -98292,6 +98518,766 @@ func (s *TravelStandardQueryResponse) SetBody(v *TravelStandardQueryResponseBody
 	return s
 }
 
+type TripBusinessInstanceQueryHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// feth00jqwls
+	XAcsBtripSoCorpToken *string `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s TripBusinessInstanceQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TripBusinessInstanceQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *TripBusinessInstanceQueryHeaders) SetCommonHeaders(v map[string]*string) *TripBusinessInstanceQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *TripBusinessInstanceQueryHeaders) SetXAcsBtripSoCorpToken(v string) *TripBusinessInstanceQueryHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
+type TripBusinessInstanceQueryRequest struct {
+	// example:
+	//
+	// 12345
+	BusinessInstanceId *string `json:"business_instance_id,omitempty" xml:"business_instance_id,omitempty"`
+	// example:
+	//
+	// 12345
+	ThirdBusinessId *string `json:"third_business_id,omitempty" xml:"third_business_id,omitempty"`
+	// example:
+	//
+	// thirdpart12138
+	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+}
+
+func (s TripBusinessInstanceQueryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TripBusinessInstanceQueryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TripBusinessInstanceQueryRequest) SetBusinessInstanceId(v string) *TripBusinessInstanceQueryRequest {
+	s.BusinessInstanceId = &v
+	return s
+}
+
+func (s *TripBusinessInstanceQueryRequest) SetThirdBusinessId(v string) *TripBusinessInstanceQueryRequest {
+	s.ThirdBusinessId = &v
+	return s
+}
+
+func (s *TripBusinessInstanceQueryRequest) SetUserId(v string) *TripBusinessInstanceQueryRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *TripBusinessInstanceQueryRequest) SetUserName(v string) *TripBusinessInstanceQueryRequest {
+	s.UserName = &v
+	return s
+}
+
+type TripBusinessInstanceQueryResponseBody struct {
+	// example:
+	//
+	// SUCCESS
+	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// module。
+	Module *TripBusinessInstanceQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// C61ECFF6-606B-5F66-B81D-D77369043A5F
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	//
+	// example:
+	//
+	// 210bc44416869853114684533da3c2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s TripBusinessInstanceQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TripBusinessInstanceQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TripBusinessInstanceQueryResponseBody) SetCode(v string) *TripBusinessInstanceQueryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *TripBusinessInstanceQueryResponseBody) SetMessage(v string) *TripBusinessInstanceQueryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *TripBusinessInstanceQueryResponseBody) SetModule(v *TripBusinessInstanceQueryResponseBodyModule) *TripBusinessInstanceQueryResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *TripBusinessInstanceQueryResponseBody) SetRequestId(v string) *TripBusinessInstanceQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *TripBusinessInstanceQueryResponseBody) SetSuccess(v bool) *TripBusinessInstanceQueryResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *TripBusinessInstanceQueryResponseBody) SetTraceId(v string) *TripBusinessInstanceQueryResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type TripBusinessInstanceQueryResponseBodyModule struct {
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// example:
+	//
+	// 1525104000
+	GmtCreate *int64 `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	// example:
+	//
+	// 1525104000
+	GmtModified *int64 `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty"`
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s TripBusinessInstanceQueryResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TripBusinessInstanceQueryResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *TripBusinessInstanceQueryResponseBodyModule) SetCreator(v string) *TripBusinessInstanceQueryResponseBodyModule {
+	s.Creator = &v
+	return s
+}
+
+func (s *TripBusinessInstanceQueryResponseBodyModule) SetGmtCreate(v int64) *TripBusinessInstanceQueryResponseBodyModule {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *TripBusinessInstanceQueryResponseBodyModule) SetGmtModified(v int64) *TripBusinessInstanceQueryResponseBodyModule {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *TripBusinessInstanceQueryResponseBodyModule) SetStatus(v string) *TripBusinessInstanceQueryResponseBodyModule {
+	s.Status = &v
+	return s
+}
+
+type TripBusinessInstanceQueryResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TripBusinessInstanceQueryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s TripBusinessInstanceQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TripBusinessInstanceQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TripBusinessInstanceQueryResponse) SetHeaders(v map[string]*string) *TripBusinessInstanceQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TripBusinessInstanceQueryResponse) SetStatusCode(v int32) *TripBusinessInstanceQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TripBusinessInstanceQueryResponse) SetBody(v *TripBusinessInstanceQueryResponseBody) *TripBusinessInstanceQueryResponse {
+	s.Body = v
+	return s
+}
+
+type TripCCInfoQueryHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// feth00jqwls
+	XAcsBtripCorpToken *string `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s TripCCInfoQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TripCCInfoQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *TripCCInfoQueryHeaders) SetCommonHeaders(v map[string]*string) *TripCCInfoQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *TripCCInfoQueryHeaders) SetXAcsBtripCorpToken(v string) *TripCCInfoQueryHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type TripCCInfoQueryRequest struct {
+	// example:
+	//
+	// 2024060710160003300008684
+	BusinessInstanceId *string `json:"business_instance_id,omitempty" xml:"business_instance_id,omitempty"`
+	// example:
+	//
+	// 458003
+	NodeId *string `json:"node_id,omitempty" xml:"node_id,omitempty"`
+	// example:
+	//
+	// 2024060710160003300008684
+	ThirdBusinessId *string `json:"third_business_id,omitempty" xml:"third_business_id,omitempty"`
+}
+
+func (s TripCCInfoQueryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TripCCInfoQueryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TripCCInfoQueryRequest) SetBusinessInstanceId(v string) *TripCCInfoQueryRequest {
+	s.BusinessInstanceId = &v
+	return s
+}
+
+func (s *TripCCInfoQueryRequest) SetNodeId(v string) *TripCCInfoQueryRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *TripCCInfoQueryRequest) SetThirdBusinessId(v string) *TripCCInfoQueryRequest {
+	s.ThirdBusinessId = &v
+	return s
+}
+
+type TripCCInfoQueryResponseBody struct {
+	// example:
+	//
+	// SUCCESS
+	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// module。
+	Module []*TripCCInfoQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
+	// example:
+	//
+	// A5009956-1077-52FB-B520-EA8C7E91D722
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	//
+	// example:
+	//
+	// 21041ce316577904808056433edbb2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s TripCCInfoQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TripCCInfoQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TripCCInfoQueryResponseBody) SetCode(v string) *TripCCInfoQueryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *TripCCInfoQueryResponseBody) SetMessage(v string) *TripCCInfoQueryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *TripCCInfoQueryResponseBody) SetModule(v []*TripCCInfoQueryResponseBodyModule) *TripCCInfoQueryResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *TripCCInfoQueryResponseBody) SetRequestId(v string) *TripCCInfoQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *TripCCInfoQueryResponseBody) SetSuccess(v bool) *TripCCInfoQueryResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *TripCCInfoQueryResponseBody) SetTraceId(v string) *TripCCInfoQueryResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type TripCCInfoQueryResponseBodyModule struct {
+	// example:
+	//
+	// user_12138
+	Notifier *string `json:"notifier,omitempty" xml:"notifier,omitempty"`
+	// example:
+	//
+	// 1525104000
+	NotifyStartTime *int64 `json:"notify_start_time,omitempty" xml:"notify_start_time,omitempty"`
+}
+
+func (s TripCCInfoQueryResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TripCCInfoQueryResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *TripCCInfoQueryResponseBodyModule) SetNotifier(v string) *TripCCInfoQueryResponseBodyModule {
+	s.Notifier = &v
+	return s
+}
+
+func (s *TripCCInfoQueryResponseBodyModule) SetNotifyStartTime(v int64) *TripCCInfoQueryResponseBodyModule {
+	s.NotifyStartTime = &v
+	return s
+}
+
+type TripCCInfoQueryResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TripCCInfoQueryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s TripCCInfoQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TripCCInfoQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TripCCInfoQueryResponse) SetHeaders(v map[string]*string) *TripCCInfoQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TripCCInfoQueryResponse) SetStatusCode(v int32) *TripCCInfoQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TripCCInfoQueryResponse) SetBody(v *TripCCInfoQueryResponseBody) *TripCCInfoQueryResponse {
+	s.Body = v
+	return s
+}
+
+type TripTaskQueryHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// feth00jqwls
+	XAcsBtripCorpToken *string `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s TripTaskQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TripTaskQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *TripTaskQueryHeaders) SetCommonHeaders(v map[string]*string) *TripTaskQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *TripTaskQueryHeaders) SetXAcsBtripCorpToken(v string) *TripTaskQueryHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type TripTaskQueryRequest struct {
+	// example:
+	//
+	// 12345
+	BusinessInstanceId *string `json:"business_instance_id,omitempty" xml:"business_instance_id,omitempty"`
+	// example:
+	//
+	// 12345
+	ThirdBusinessId *string `json:"third_business_id,omitempty" xml:"third_business_id,omitempty"`
+	// example:
+	//
+	// thirdpart12138
+	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+}
+
+func (s TripTaskQueryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TripTaskQueryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TripTaskQueryRequest) SetBusinessInstanceId(v string) *TripTaskQueryRequest {
+	s.BusinessInstanceId = &v
+	return s
+}
+
+func (s *TripTaskQueryRequest) SetThirdBusinessId(v string) *TripTaskQueryRequest {
+	s.ThirdBusinessId = &v
+	return s
+}
+
+func (s *TripTaskQueryRequest) SetUserId(v string) *TripTaskQueryRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *TripTaskQueryRequest) SetUserName(v string) *TripTaskQueryRequest {
+	s.UserName = &v
+	return s
+}
+
+type TripTaskQueryResponseBody struct {
+	// example:
+	//
+	// SUCCESS
+	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// module。
+	Module *TripTaskQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2FB0D7A8-BA41-5D04-BEFC-CADA5481AC53
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	//
+	// example:
+	//
+	// 21041ce316577904808056433edbb2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s TripTaskQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TripTaskQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TripTaskQueryResponseBody) SetCode(v string) *TripTaskQueryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *TripTaskQueryResponseBody) SetMessage(v string) *TripTaskQueryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *TripTaskQueryResponseBody) SetModule(v *TripTaskQueryResponseBodyModule) *TripTaskQueryResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *TripTaskQueryResponseBody) SetRequestId(v string) *TripTaskQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *TripTaskQueryResponseBody) SetSuccess(v bool) *TripTaskQueryResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *TripTaskQueryResponseBody) SetTraceId(v string) *TripTaskQueryResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type TripTaskQueryResponseBodyModule struct {
+	// example:
+	//
+	// true
+	NeedRefresh  *bool                                          `json:"needRefresh,omitempty" xml:"needRefresh,omitempty"`
+	RecordTasks  []*TripTaskQueryResponseBodyModuleRecordTasks  `json:"record_tasks,omitempty" xml:"record_tasks,omitempty" type:"Repeated"`
+	RunningTasks []*TripTaskQueryResponseBodyModuleRunningTasks `json:"running_tasks,omitempty" xml:"running_tasks,omitempty" type:"Repeated"`
+}
+
+func (s TripTaskQueryResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TripTaskQueryResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *TripTaskQueryResponseBodyModule) SetNeedRefresh(v bool) *TripTaskQueryResponseBodyModule {
+	s.NeedRefresh = &v
+	return s
+}
+
+func (s *TripTaskQueryResponseBodyModule) SetRecordTasks(v []*TripTaskQueryResponseBodyModuleRecordTasks) *TripTaskQueryResponseBodyModule {
+	s.RecordTasks = v
+	return s
+}
+
+func (s *TripTaskQueryResponseBodyModule) SetRunningTasks(v []*TripTaskQueryResponseBodyModuleRunningTasks) *TripTaskQueryResponseBodyModule {
+	s.RunningTasks = v
+	return s
+}
+
+type TripTaskQueryResponseBodyModuleRecordTasks struct {
+	// example:
+	//
+	// 123
+	Actioner   *string `json:"actioner,omitempty" xml:"actioner,omitempty"`
+	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	// example:
+	//
+	// 1525104000
+	GmtCreate *int64 `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	// example:
+	//
+	// 1525104000
+	GmtFinished *int64 `json:"gmt_finished,omitempty" xml:"gmt_finished,omitempty"`
+	// example:
+	//
+	// 34360
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 575003
+	NodeId *string `json:"node_id,omitempty" xml:"node_id,omitempty"`
+	// example:
+	//
+	// agree
+	OutResult *string `json:"out_result,omitempty" xml:"out_result,omitempty"`
+	// example:
+	//
+	// 123
+	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s TripTaskQueryResponseBodyModuleRecordTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TripTaskQueryResponseBodyModuleRecordTasks) GoString() string {
+	return s.String()
+}
+
+func (s *TripTaskQueryResponseBodyModuleRecordTasks) SetActioner(v string) *TripTaskQueryResponseBodyModuleRecordTasks {
+	s.Actioner = &v
+	return s
+}
+
+func (s *TripTaskQueryResponseBodyModuleRecordTasks) SetAttributes(v string) *TripTaskQueryResponseBodyModuleRecordTasks {
+	s.Attributes = &v
+	return s
+}
+
+func (s *TripTaskQueryResponseBodyModuleRecordTasks) SetGmtCreate(v int64) *TripTaskQueryResponseBodyModuleRecordTasks {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *TripTaskQueryResponseBodyModuleRecordTasks) SetGmtFinished(v int64) *TripTaskQueryResponseBodyModuleRecordTasks {
+	s.GmtFinished = &v
+	return s
+}
+
+func (s *TripTaskQueryResponseBodyModuleRecordTasks) SetId(v int64) *TripTaskQueryResponseBodyModuleRecordTasks {
+	s.Id = &v
+	return s
+}
+
+func (s *TripTaskQueryResponseBodyModuleRecordTasks) SetNodeId(v string) *TripTaskQueryResponseBodyModuleRecordTasks {
+	s.NodeId = &v
+	return s
+}
+
+func (s *TripTaskQueryResponseBodyModuleRecordTasks) SetOutResult(v string) *TripTaskQueryResponseBodyModuleRecordTasks {
+	s.OutResult = &v
+	return s
+}
+
+func (s *TripTaskQueryResponseBodyModuleRecordTasks) SetOwner(v string) *TripTaskQueryResponseBodyModuleRecordTasks {
+	s.Owner = &v
+	return s
+}
+
+func (s *TripTaskQueryResponseBodyModuleRecordTasks) SetStatus(v string) *TripTaskQueryResponseBodyModuleRecordTasks {
+	s.Status = &v
+	return s
+}
+
+type TripTaskQueryResponseBodyModuleRunningTasks struct {
+	// example:
+	//
+	// 123
+	Actioner   *string `json:"actioner,omitempty" xml:"actioner,omitempty"`
+	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
+	// example:
+	//
+	// 1525104000
+	GmtCreate *int64 `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	// example:
+	//
+	// 1525104000
+	GmtFinished *int64 `json:"gmt_finished,omitempty" xml:"gmt_finished,omitempty"`
+	// example:
+	//
+	// 34360
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 575003
+	NodeId *string `json:"node_id,omitempty" xml:"node_id,omitempty"`
+	// example:
+	//
+	// agree
+	OutResult *string `json:"out_result,omitempty" xml:"out_result,omitempty"`
+	// example:
+	//
+	// 123
+	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s TripTaskQueryResponseBodyModuleRunningTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TripTaskQueryResponseBodyModuleRunningTasks) GoString() string {
+	return s.String()
+}
+
+func (s *TripTaskQueryResponseBodyModuleRunningTasks) SetActioner(v string) *TripTaskQueryResponseBodyModuleRunningTasks {
+	s.Actioner = &v
+	return s
+}
+
+func (s *TripTaskQueryResponseBodyModuleRunningTasks) SetAttributes(v string) *TripTaskQueryResponseBodyModuleRunningTasks {
+	s.Attributes = &v
+	return s
+}
+
+func (s *TripTaskQueryResponseBodyModuleRunningTasks) SetGmtCreate(v int64) *TripTaskQueryResponseBodyModuleRunningTasks {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *TripTaskQueryResponseBodyModuleRunningTasks) SetGmtFinished(v int64) *TripTaskQueryResponseBodyModuleRunningTasks {
+	s.GmtFinished = &v
+	return s
+}
+
+func (s *TripTaskQueryResponseBodyModuleRunningTasks) SetId(v int64) *TripTaskQueryResponseBodyModuleRunningTasks {
+	s.Id = &v
+	return s
+}
+
+func (s *TripTaskQueryResponseBodyModuleRunningTasks) SetNodeId(v string) *TripTaskQueryResponseBodyModuleRunningTasks {
+	s.NodeId = &v
+	return s
+}
+
+func (s *TripTaskQueryResponseBodyModuleRunningTasks) SetOutResult(v string) *TripTaskQueryResponseBodyModuleRunningTasks {
+	s.OutResult = &v
+	return s
+}
+
+func (s *TripTaskQueryResponseBodyModuleRunningTasks) SetOwner(v string) *TripTaskQueryResponseBodyModuleRunningTasks {
+	s.Owner = &v
+	return s
+}
+
+func (s *TripTaskQueryResponseBodyModuleRunningTasks) SetStatus(v string) *TripTaskQueryResponseBodyModuleRunningTasks {
+	s.Status = &v
+	return s
+}
+
+type TripTaskQueryResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TripTaskQueryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s TripTaskQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TripTaskQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TripTaskQueryResponse) SetHeaders(v map[string]*string) *TripTaskQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TripTaskQueryResponse) SetStatusCode(v int32) *TripTaskQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TripTaskQueryResponse) SetBody(v *TripTaskQueryResponseBody) *TripTaskQueryResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateCustomRoleHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// example:
@@ -101102,6 +102088,99 @@ func (client *Client) ApplyQuery(request *ApplyQueryRequest) (_result *ApplyQuer
 
 // Summary:
 //
+// 执行审批任务
+//
+// @param request - ApplyTripTaskExecuteRequest
+//
+// @param headers - ApplyTripTaskExecuteHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ApplyTripTaskExecuteResponse
+func (client *Client) ApplyTripTaskExecuteWithOptions(request *ApplyTripTaskExecuteRequest, headers *ApplyTripTaskExecuteHeaders, runtime *util.RuntimeOptions) (_result *ApplyTripTaskExecuteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ActionFrom)) {
+		body["action_from"] = request.ActionFrom
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		body["comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskAction)) {
+		body["task_action"] = request.TaskAction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["task_id"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["user_id"] = request.UserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		body["user_name"] = request.UserName
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ApplyTripTaskExecute"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apply/v1/trip-task/action/execute"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ApplyTripTaskExecuteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 执行审批任务
+//
+// @param request - ApplyTripTaskExecuteRequest
+//
+// @return ApplyTripTaskExecuteResponse
+func (client *Client) ApplyTripTaskExecute(request *ApplyTripTaskExecuteRequest) (_result *ApplyTripTaskExecuteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ApplyTripTaskExecuteHeaders{}
+	_result = &ApplyTripTaskExecuteResponse{}
+	_body, _err := client.ApplyTripTaskExecuteWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 搜索国内/国际（港澳台）城市基础行政区划数据
 //
 // @param request - BaseCityInfoSearchRequest
@@ -102025,6 +103104,10 @@ func (client *Client) CommonApplyQueryWithOptions(request *CommonApplyQueryReque
 
 	if !tea.BoolValue(util.IsUnset(request.BizCategory)) {
 		query["biz_category"] = request.BizCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BusinessInstanceId)) {
+		query["business_instance_id"] = request.BusinessInstanceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserId)) {
@@ -104298,6 +105381,10 @@ func (client *Client) FlightExceedApplyQueryWithOptions(request *FlightExceedApp
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ApplyId)) {
 		query["apply_id"] = request.ApplyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BusinessInstanceId)) {
+		query["business_instance_id"] = request.BusinessInstanceId
 	}
 
 	realHeaders := make(map[string]*string)
@@ -107470,6 +108557,10 @@ func (client *Client) HotelExceedApplyQueryWithOptions(request *HotelExceedApply
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ApplyId)) {
 		query["apply_id"] = request.ApplyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BusinessInstanceId)) {
+		query["business_instance_id"] = request.BusinessInstanceId
 	}
 
 	realHeaders := make(map[string]*string)
@@ -113687,6 +114778,10 @@ func (client *Client) TrainExceedApplyQueryWithOptions(request *TrainExceedApply
 		query["apply_id"] = request.ApplyId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.BusinessInstanceId)) {
+		query["business_instance_id"] = request.BusinessInstanceId
+	}
+
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
 		realHeaders = headers.CommonHeaders
@@ -115255,6 +116350,257 @@ func (client *Client) TravelStandardQuery(request *TravelStandardQueryRequest) (
 	headers := &TravelStandardQueryHeaders{}
 	_result = &TravelStandardQueryResponse{}
 	_body, _err := client.TravelStandardQueryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询业务流程
+//
+// @param request - TripBusinessInstanceQueryRequest
+//
+// @param headers - TripBusinessInstanceQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TripBusinessInstanceQueryResponse
+func (client *Client) TripBusinessInstanceQueryWithOptions(request *TripBusinessInstanceQueryRequest, headers *TripBusinessInstanceQueryHeaders, runtime *util.RuntimeOptions) (_result *TripBusinessInstanceQueryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BusinessInstanceId)) {
+		query["business_instance_id"] = request.BusinessInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdBusinessId)) {
+		query["third_business_id"] = request.ThirdBusinessId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["user_id"] = request.UserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["user_name"] = request.UserName
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TripBusinessInstanceQuery"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apply/v1/business"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TripBusinessInstanceQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询业务流程
+//
+// @param request - TripBusinessInstanceQueryRequest
+//
+// @return TripBusinessInstanceQueryResponse
+func (client *Client) TripBusinessInstanceQuery(request *TripBusinessInstanceQueryRequest) (_result *TripBusinessInstanceQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &TripBusinessInstanceQueryHeaders{}
+	_result = &TripBusinessInstanceQueryResponse{}
+	_body, _err := client.TripBusinessInstanceQueryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询抄送信息
+//
+// @param request - TripCCInfoQueryRequest
+//
+// @param headers - TripCCInfoQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TripCCInfoQueryResponse
+func (client *Client) TripCCInfoQueryWithOptions(request *TripCCInfoQueryRequest, headers *TripCCInfoQueryHeaders, runtime *util.RuntimeOptions) (_result *TripCCInfoQueryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BusinessInstanceId)) {
+		query["business_instance_id"] = request.BusinessInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		query["node_id"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdBusinessId)) {
+		query["third_business_id"] = request.ThirdBusinessId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TripCCInfoQuery"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apply/v1/cc"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TripCCInfoQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询抄送信息
+//
+// @param request - TripCCInfoQueryRequest
+//
+// @return TripCCInfoQueryResponse
+func (client *Client) TripCCInfoQuery(request *TripCCInfoQueryRequest) (_result *TripCCInfoQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &TripCCInfoQueryHeaders{}
+	_result = &TripCCInfoQueryResponse{}
+	_body, _err := client.TripCCInfoQueryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询审批任务列表
+//
+// @param request - TripTaskQueryRequest
+//
+// @param headers - TripTaskQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TripTaskQueryResponse
+func (client *Client) TripTaskQueryWithOptions(request *TripTaskQueryRequest, headers *TripTaskQueryHeaders, runtime *util.RuntimeOptions) (_result *TripTaskQueryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BusinessInstanceId)) {
+		query["business_instance_id"] = request.BusinessInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdBusinessId)) {
+		query["third_business_id"] = request.ThirdBusinessId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["user_id"] = request.UserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["user_name"] = request.UserName
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TripTaskQuery"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apply/v1/tasks"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TripTaskQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询审批任务列表
+//
+// @param request - TripTaskQueryRequest
+//
+// @return TripTaskQueryResponse
+func (client *Client) TripTaskQuery(request *TripTaskQueryRequest) (_result *TripTaskQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &TripTaskQueryHeaders{}
+	_result = &TripTaskQueryResponse{}
+	_body, _err := client.TripTaskQueryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
