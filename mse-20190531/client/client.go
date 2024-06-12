@@ -57399,6 +57399,7 @@ func (s *QueryConfigResponseBody) SetSuccess(v bool) *QueryConfigResponseBody {
 }
 
 type QueryConfigResponseBodyData struct {
+	AuthEnabled *bool `json:"AuthEnabled,omitempty" xml:"AuthEnabled,omitempty"`
 	// A reserved parameter.
 	//
 	// example:
@@ -57469,6 +57470,7 @@ type QueryConfigResponseBodyData struct {
 	//
 	// true
 	ConsoleUIEnabled *bool `json:"ConsoleUIEnabled,omitempty" xml:"ConsoleUIEnabled,omitempty"`
+	Enable4lw        *bool `json:"Enable4lw,omitempty" xml:"Enable4lw,omitempty"`
 	// Indicates whether access port 8761 was enabled for Eureka. If this port is disabled, applications cannot use the Eureka protocol for service registration and discovery.
 	//
 	// example:
@@ -57637,6 +57639,11 @@ func (s QueryConfigResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *QueryConfigResponseBodyData) SetAuthEnabled(v bool) *QueryConfigResponseBodyData {
+	s.AuthEnabled = &v
+	return s
+}
+
 func (s *QueryConfigResponseBodyData) SetAutopurgePurgeInterval(v string) *QueryConfigResponseBodyData {
 	s.AutopurgePurgeInterval = &v
 	return s
@@ -57679,6 +57686,11 @@ func (s *QueryConfigResponseBodyData) SetConfigSecretSupported(v bool) *QueryCon
 
 func (s *QueryConfigResponseBodyData) SetConsoleUIEnabled(v bool) *QueryConfigResponseBodyData {
 	s.ConsoleUIEnabled = &v
+	return s
+}
+
+func (s *QueryConfigResponseBodyData) SetEnable4lw(v bool) *QueryConfigResponseBodyData {
+	s.Enable4lw = &v
 	return s
 }
 
@@ -62598,6 +62610,7 @@ type UpdateConfigRequest struct {
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AuthEnabled    *bool   `json:"AuthEnabled,omitempty" xml:"AuthEnabled,omitempty"`
 	// A reserved parameter.
 	//
 	// example:
@@ -62647,6 +62660,7 @@ type UpdateConfigRequest struct {
 	// TEXT
 	ConfigType       *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
 	ConsoleUIEnabled *bool   `json:"ConsoleUIEnabled,omitempty" xml:"ConsoleUIEnabled,omitempty"`
+	Enable4lw        *bool   `json:"Enable4lw,omitempty" xml:"Enable4lw,omitempty"`
 	// example:
 	//
 	// true
@@ -62788,6 +62802,11 @@ func (s *UpdateConfigRequest) SetAcceptLanguage(v string) *UpdateConfigRequest {
 	return s
 }
 
+func (s *UpdateConfigRequest) SetAuthEnabled(v bool) *UpdateConfigRequest {
+	s.AuthEnabled = &v
+	return s
+}
+
 func (s *UpdateConfigRequest) SetAutopurgePurgeInterval(v string) *UpdateConfigRequest {
 	s.AutopurgePurgeInterval = &v
 	return s
@@ -62820,6 +62839,11 @@ func (s *UpdateConfigRequest) SetConfigType(v string) *UpdateConfigRequest {
 
 func (s *UpdateConfigRequest) SetConsoleUIEnabled(v bool) *UpdateConfigRequest {
 	s.ConsoleUIEnabled = &v
+	return s
+}
+
+func (s *UpdateConfigRequest) SetEnable4lw(v bool) *UpdateConfigRequest {
+	s.Enable4lw = &v
 	return s
 }
 
@@ -89733,6 +89757,10 @@ func (client *Client) UpdateConfigWithOptions(request *UpdateConfigRequest, runt
 		query["AcceptLanguage"] = request.AcceptLanguage
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AuthEnabled)) {
+		query["AuthEnabled"] = request.AuthEnabled
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AutopurgePurgeInterval)) {
 		query["AutopurgePurgeInterval"] = request.AutopurgePurgeInterval
 	}
@@ -89759,6 +89787,10 @@ func (client *Client) UpdateConfigWithOptions(request *UpdateConfigRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.ConsoleUIEnabled)) {
 		query["ConsoleUIEnabled"] = request.ConsoleUIEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable4lw)) {
+		query["Enable4lw"] = request.Enable4lw
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EurekaSupported)) {
