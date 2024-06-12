@@ -29573,9 +29573,18 @@ type GetPluginConfigResponseBodyData struct {
 	// example:
 	//
 	// \\# The configuration includes the fields required for checking, such as name, age, and friends. Sample configuration: name: John age: 18 friends: - David - Anne
-	ConfigCheck *string `json:"ConfigCheck,omitempty" xml:"ConfigCheck,omitempty"`
+	ConfigCheck   *string `json:"ConfigCheck,omitempty" xml:"ConfigCheck,omitempty"`
+	ConfigExample *string `json:"ConfigExample,omitempty" xml:"ConfigExample,omitempty"`
+	// example:
+	//
+	// 5
+	DomainConfigStartIndex *int32 `json:"DomainConfigStartIndex,omitempty" xml:"DomainConfigStartIndex,omitempty"`
 	// The list of gateway plug-in configurations.
 	GatewayConfigList []*GetPluginConfigResponseBodyDataGatewayConfigList `json:"GatewayConfigList,omitempty" xml:"GatewayConfigList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 7
+	GatewayConfigStartIndex *int32 `json:"GatewayConfigStartIndex,omitempty" xml:"GatewayConfigStartIndex,omitempty"`
 	// The ID of the plug-in.
 	//
 	// example:
@@ -29644,6 +29653,10 @@ type GetPluginConfigResponseBodyData struct {
 	//
 	// read me
 	ReadmeEn *string `json:"ReadmeEn,omitempty" xml:"ReadmeEn,omitempty"`
+	// example:
+	//
+	// 0
+	RouteConfigStartIndex *int32 `json:"RouteConfigStartIndex,omitempty" xml:"RouteConfigStartIndex,omitempty"`
 	// Indicates whether the plug-in is enabled. Valid values:
 	//
 	// 0: disabled
@@ -29709,8 +29722,23 @@ func (s *GetPluginConfigResponseBodyData) SetConfigCheck(v string) *GetPluginCon
 	return s
 }
 
+func (s *GetPluginConfigResponseBodyData) SetConfigExample(v string) *GetPluginConfigResponseBodyData {
+	s.ConfigExample = &v
+	return s
+}
+
+func (s *GetPluginConfigResponseBodyData) SetDomainConfigStartIndex(v int32) *GetPluginConfigResponseBodyData {
+	s.DomainConfigStartIndex = &v
+	return s
+}
+
 func (s *GetPluginConfigResponseBodyData) SetGatewayConfigList(v []*GetPluginConfigResponseBodyDataGatewayConfigList) *GetPluginConfigResponseBodyData {
 	s.GatewayConfigList = v
+	return s
+}
+
+func (s *GetPluginConfigResponseBodyData) SetGatewayConfigStartIndex(v int32) *GetPluginConfigResponseBodyData {
+	s.GatewayConfigStartIndex = &v
 	return s
 }
 
@@ -29761,6 +29789,11 @@ func (s *GetPluginConfigResponseBodyData) SetReadme(v string) *GetPluginConfigRe
 
 func (s *GetPluginConfigResponseBodyData) SetReadmeEn(v string) *GetPluginConfigResponseBodyData {
 	s.ReadmeEn = &v
+	return s
+}
+
+func (s *GetPluginConfigResponseBodyData) SetRouteConfigStartIndex(v int32) *GetPluginConfigResponseBodyData {
+	s.RouteConfigStartIndex = &v
 	return s
 }
 
@@ -29854,7 +29887,8 @@ type GetPluginConfigResponseBodyDataGatewayConfigList struct {
 	// example:
 	//
 	// 1
-	PluginId *int64 `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	PluginId     *int64                                                          `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	ResourceList []*GetPluginConfigResponseBodyDataGatewayConfigListResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`
 }
 
 func (s GetPluginConfigResponseBodyDataGatewayConfigList) String() string {
@@ -29907,6 +29941,37 @@ func (s *GetPluginConfigResponseBodyDataGatewayConfigList) SetId(v int64) *GetPl
 
 func (s *GetPluginConfigResponseBodyDataGatewayConfigList) SetPluginId(v int64) *GetPluginConfigResponseBodyDataGatewayConfigList {
 	s.PluginId = &v
+	return s
+}
+
+func (s *GetPluginConfigResponseBodyDataGatewayConfigList) SetResourceList(v []*GetPluginConfigResponseBodyDataGatewayConfigListResourceList) *GetPluginConfigResponseBodyDataGatewayConfigList {
+	s.ResourceList = v
+	return s
+}
+
+type GetPluginConfigResponseBodyDataGatewayConfigListResourceList struct {
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// test-route
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetPluginConfigResponseBodyDataGatewayConfigListResourceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPluginConfigResponseBodyDataGatewayConfigListResourceList) GoString() string {
+	return s.String()
+}
+
+func (s *GetPluginConfigResponseBodyDataGatewayConfigListResourceList) SetId(v int64) *GetPluginConfigResponseBodyDataGatewayConfigListResourceList {
+	s.Id = &v
+	return s
+}
+
+func (s *GetPluginConfigResponseBodyDataGatewayConfigListResourceList) SetName(v string) *GetPluginConfigResponseBodyDataGatewayConfigListResourceList {
+	s.Name = &v
 	return s
 }
 
@@ -47741,6 +47806,173 @@ func (s *ListGatewaySlbResponse) SetStatusCode(v int32) *ListGatewaySlbResponse 
 }
 
 func (s *ListGatewaySlbResponse) SetBody(v *ListGatewaySlbResponseBody) *ListGatewaySlbResponse {
+	s.Body = v
+	return s
+}
+
+type ListGatewayZoneRequest struct {
+	// example:
+	//
+	// zh
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+}
+
+func (s ListGatewayZoneRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayZoneRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayZoneRequest) SetAcceptLanguage(v string) *ListGatewayZoneRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+type ListGatewayZoneResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListGatewayZoneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// code
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// The specified parameter is invalid.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// NO_PERMISSION
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE5C32A1-BC0E-4B79-817C-103E4EDF****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListGatewayZoneResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayZoneResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayZoneResponseBody) SetCode(v int32) *ListGatewayZoneResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListGatewayZoneResponseBody) SetData(v []*ListGatewayZoneResponseBodyData) *ListGatewayZoneResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListGatewayZoneResponseBody) SetDynamicCode(v string) *ListGatewayZoneResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *ListGatewayZoneResponseBody) SetDynamicMessage(v string) *ListGatewayZoneResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *ListGatewayZoneResponseBody) SetErrorCode(v string) *ListGatewayZoneResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListGatewayZoneResponseBody) SetHttpStatusCode(v int32) *ListGatewayZoneResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListGatewayZoneResponseBody) SetMessage(v string) *ListGatewayZoneResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListGatewayZoneResponseBody) SetRequestId(v string) *ListGatewayZoneResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListGatewayZoneResponseBody) SetSuccess(v bool) *ListGatewayZoneResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListGatewayZoneResponseBodyData struct {
+	// example:
+	//
+	// I
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-i
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s ListGatewayZoneResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayZoneResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayZoneResponseBodyData) SetLocalName(v string) *ListGatewayZoneResponseBodyData {
+	s.LocalName = &v
+	return s
+}
+
+func (s *ListGatewayZoneResponseBodyData) SetZoneId(v string) *ListGatewayZoneResponseBodyData {
+	s.ZoneId = &v
+	return s
+}
+
+type ListGatewayZoneResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListGatewayZoneResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListGatewayZoneResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayZoneResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayZoneResponse) SetHeaders(v map[string]*string) *ListGatewayZoneResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListGatewayZoneResponse) SetStatusCode(v int32) *ListGatewayZoneResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListGatewayZoneResponse) SetBody(v *ListGatewayZoneResponseBody) *ListGatewayZoneResponse {
 	s.Body = v
 	return s
 }
@@ -73235,6 +73467,8 @@ type UpdatePluginConfigRequest struct {
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Deprecated
+	//
 	// The ID of the gateway.
 	//
 	// example:
@@ -73243,18 +73477,20 @@ type UpdatePluginConfigRequest struct {
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	// The unique ID of the gateway.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// gw-ubuwqygbq4783gqb2y3f87q****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// Deprecated
+	//
 	// The creation time.
 	//
 	// example:
 	//
 	// 1667309705000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// Deprecated
+	//
 	// The update time.
 	//
 	// example:
@@ -73269,12 +73505,11 @@ type UpdatePluginConfigRequest struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The ID of the gateway plug-in.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 2
-	PluginId *int64 `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	PluginId       *int64   `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	ResourceIdList []*int64 `json:"ResourceIdList,omitempty" xml:"ResourceIdList,omitempty" type:"Repeated"`
 }
 
 func (s UpdatePluginConfigRequest) String() string {
@@ -73332,6 +73567,152 @@ func (s *UpdatePluginConfigRequest) SetId(v int64) *UpdatePluginConfigRequest {
 
 func (s *UpdatePluginConfigRequest) SetPluginId(v int64) *UpdatePluginConfigRequest {
 	s.PluginId = &v
+	return s
+}
+
+func (s *UpdatePluginConfigRequest) SetResourceIdList(v []*int64) *UpdatePluginConfigRequest {
+	s.ResourceIdList = v
+	return s
+}
+
+type UpdatePluginConfigShrinkRequest struct {
+	// The language of the response. Valid values:
+	//
+	// zh: Chinese en: English
+	//
+	// example:
+	//
+	// zh
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The plug-in configuration. Configurations of WebAssembly plug-ins are in the YAML format, and configurations of Lua plug-ins are in the Lua code.
+	//
+	// example:
+	//
+	// \\# Configure a check for the required fields of the plug-in, such as name, age, and friends. Sample configuration: name: John age: 18 friends: - David - Anne
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The application scope of the plug-in.
+	//
+	// 	- 0: global
+	//
+	// 	- 1: route
+	//
+	// 	- 2: domain name
+	//
+	// example:
+	//
+	// 0
+	ConfigLevel *int32 `json:"ConfigLevel,omitempty" xml:"ConfigLevel,omitempty"`
+	// Specifies whether to enable the plug-in.
+	//
+	// example:
+	//
+	// true
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Deprecated
+	//
+	// The ID of the gateway.
+	//
+	// example:
+	//
+	// 1
+	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The unique ID of the gateway.
+	//
+	// example:
+	//
+	// gw-ubuwqygbq4783gqb2y3f87q****
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// Deprecated
+	//
+	// The creation time.
+	//
+	// example:
+	//
+	// 1667309705000
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// Deprecated
+	//
+	// The update time.
+	//
+	// example:
+	//
+	// 1667309705000
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the plug-in configuration.
+	//
+	// example:
+	//
+	// 1
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the gateway plug-in.
+	//
+	// example:
+	//
+	// 2
+	PluginId             *int64  `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	ResourceIdListShrink *string `json:"ResourceIdList,omitempty" xml:"ResourceIdList,omitempty"`
+}
+
+func (s UpdatePluginConfigShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePluginConfigShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePluginConfigShrinkRequest) SetAcceptLanguage(v string) *UpdatePluginConfigShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdatePluginConfigShrinkRequest) SetConfig(v string) *UpdatePluginConfigShrinkRequest {
+	s.Config = &v
+	return s
+}
+
+func (s *UpdatePluginConfigShrinkRequest) SetConfigLevel(v int32) *UpdatePluginConfigShrinkRequest {
+	s.ConfigLevel = &v
+	return s
+}
+
+func (s *UpdatePluginConfigShrinkRequest) SetEnable(v bool) *UpdatePluginConfigShrinkRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdatePluginConfigShrinkRequest) SetGatewayId(v int64) *UpdatePluginConfigShrinkRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *UpdatePluginConfigShrinkRequest) SetGatewayUniqueId(v string) *UpdatePluginConfigShrinkRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *UpdatePluginConfigShrinkRequest) SetGmtCreate(v string) *UpdatePluginConfigShrinkRequest {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *UpdatePluginConfigShrinkRequest) SetGmtModified(v string) *UpdatePluginConfigShrinkRequest {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *UpdatePluginConfigShrinkRequest) SetId(v int64) *UpdatePluginConfigShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdatePluginConfigShrinkRequest) SetPluginId(v int64) *UpdatePluginConfigShrinkRequest {
+	s.PluginId = &v
+	return s
+}
+
+func (s *UpdatePluginConfigShrinkRequest) SetResourceIdListShrink(v string) *UpdatePluginConfigShrinkRequest {
+	s.ResourceIdListShrink = &v
 	return s
 }
 
@@ -85337,6 +85718,66 @@ func (client *Client) ListGatewaySlb(request *ListGatewaySlbRequest) (_result *L
 
 // Summary:
 //
+// 获取网关可用区列表
+//
+// @param request - ListGatewayZoneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGatewayZoneResponse
+func (client *Client) ListGatewayZoneWithOptions(request *ListGatewayZoneRequest, runtime *util.RuntimeOptions) (_result *ListGatewayZoneResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListGatewayZone"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListGatewayZoneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取网关可用区列表
+//
+// @param request - ListGatewayZoneRequest
+//
+// @return ListGatewayZoneResponse
+func (client *Client) ListGatewayZone(request *ListGatewayZoneRequest) (_result *ListGatewayZoneResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListGatewayZoneResponse{}
+	_body, _err := client.ListGatewayZoneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Displays the number of nodes that can be deployed for an instance.
 //
 // @param request - ListInstanceCountRequest
@@ -92325,16 +92766,22 @@ func (client *Client) UpdateNacosService(request *UpdateNacosServiceRequest) (_r
 //
 // Updates the configuration of a plug-in.
 //
-// @param request - UpdatePluginConfigRequest
+// @param tmpReq - UpdatePluginConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdatePluginConfigResponse
-func (client *Client) UpdatePluginConfigWithOptions(request *UpdatePluginConfigRequest, runtime *util.RuntimeOptions) (_result *UpdatePluginConfigResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) UpdatePluginConfigWithOptions(tmpReq *UpdatePluginConfigRequest, runtime *util.RuntimeOptions) (_result *UpdatePluginConfigResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &UpdatePluginConfigShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ResourceIdList)) {
+		request.ResourceIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceIdList, tea.String("ResourceIdList"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
 		query["AcceptLanguage"] = request.AcceptLanguage
@@ -92374,6 +92821,10 @@ func (client *Client) UpdatePluginConfigWithOptions(request *UpdatePluginConfigR
 
 	if !tea.BoolValue(util.IsUnset(request.PluginId)) {
 		query["PluginId"] = request.PluginId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIdListShrink)) {
+		query["ResourceIdList"] = request.ResourceIdListShrink
 	}
 
 	req := &openapi.OpenApiRequest{
