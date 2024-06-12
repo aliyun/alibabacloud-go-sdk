@@ -471,6 +471,330 @@ func (s *CheckResourceStockResponse) SetBody(v *CheckResourceStockResponseBody) 
 	return s
 }
 
+type CreateAndroidInstanceGroupRequest struct {
+	// example:
+	//
+	// false
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// example:
+	//
+	// false
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// example:
+	//
+	// PostPaid
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// imgc-06zyt9m93zwax****
+	ImageId           *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	InstanceGroupName *string `json:"InstanceGroupName,omitempty" xml:"InstanceGroupName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// acp.basic.small
+	InstanceGroupSpec *string `json:"InstanceGroupSpec,omitempty" xml:"InstanceGroupSpec,omitempty"`
+	// example:
+	//
+	// 1
+	NumberOfInstances *int32 `json:"NumberOfInstances,omitempty" xml:"NumberOfInstances,omitempty"`
+	// example:
+	//
+	// cn-hangzhou+dir-745976****
+	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// example:
+	//
+	// 1
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// example:
+	//
+	// Month
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pg-b7bxrrwxkijjh****
+	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	// example:
+	//
+	// vsw-uf61uvzhz8ejaw776****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+}
+
+func (s CreateAndroidInstanceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAndroidInstanceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAndroidInstanceGroupRequest) SetAutoPay(v bool) *CreateAndroidInstanceGroupRequest {
+	s.AutoPay = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupRequest) SetAutoRenew(v bool) *CreateAndroidInstanceGroupRequest {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupRequest) SetBizRegionId(v string) *CreateAndroidInstanceGroupRequest {
+	s.BizRegionId = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupRequest) SetChargeType(v string) *CreateAndroidInstanceGroupRequest {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupRequest) SetImageId(v string) *CreateAndroidInstanceGroupRequest {
+	s.ImageId = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupRequest) SetInstanceGroupName(v string) *CreateAndroidInstanceGroupRequest {
+	s.InstanceGroupName = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupRequest) SetInstanceGroupSpec(v string) *CreateAndroidInstanceGroupRequest {
+	s.InstanceGroupSpec = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupRequest) SetNumberOfInstances(v int32) *CreateAndroidInstanceGroupRequest {
+	s.NumberOfInstances = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupRequest) SetOfficeSiteId(v string) *CreateAndroidInstanceGroupRequest {
+	s.OfficeSiteId = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupRequest) SetPeriod(v int32) *CreateAndroidInstanceGroupRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupRequest) SetPeriodUnit(v string) *CreateAndroidInstanceGroupRequest {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupRequest) SetPolicyGroupId(v string) *CreateAndroidInstanceGroupRequest {
+	s.PolicyGroupId = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupRequest) SetVSwitchId(v string) *CreateAndroidInstanceGroupRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+type CreateAndroidInstanceGroupResponseBody struct {
+	InstanceGroupIds []*string `json:"InstanceGroupIds,omitempty" xml:"InstanceGroupIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 22365781890****
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 1A923337-44D9-5CAD-9A53-95084BD4****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateAndroidInstanceGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAndroidInstanceGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAndroidInstanceGroupResponseBody) SetInstanceGroupIds(v []*string) *CreateAndroidInstanceGroupResponseBody {
+	s.InstanceGroupIds = v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupResponseBody) SetOrderId(v string) *CreateAndroidInstanceGroupResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupResponseBody) SetRequestId(v string) *CreateAndroidInstanceGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateAndroidInstanceGroupResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAndroidInstanceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateAndroidInstanceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAndroidInstanceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAndroidInstanceGroupResponse) SetHeaders(v map[string]*string) *CreateAndroidInstanceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupResponse) SetStatusCode(v int32) *CreateAndroidInstanceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupResponse) SetBody(v *CreateAndroidInstanceGroupResponseBody) *CreateAndroidInstanceGroupResponse {
+	s.Body = v
+	return s
+}
+
+type CreateAppRequest struct {
+	// This parameter is required.
+	AppName     *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// testApp.apk
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// tenant/1642150****/
+	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// example:
+	//
+	// https://test.png
+	IconUrl *string `json:"IconUrl,omitempty" xml:"IconUrl,omitempty"`
+	// example:
+	//
+	// -d
+	InstallParam *string `json:"InstallParam,omitempty" xml:"InstallParam,omitempty"`
+	// example:
+	//
+	// http://testApp.apk
+	OssAppUrl *string `json:"OssAppUrl,omitempty" xml:"OssAppUrl,omitempty"`
+}
+
+func (s CreateAppRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppRequest) SetAppName(v string) *CreateAppRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *CreateAppRequest) SetDescription(v string) *CreateAppRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateAppRequest) SetFileName(v string) *CreateAppRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *CreateAppRequest) SetFilePath(v string) *CreateAppRequest {
+	s.FilePath = &v
+	return s
+}
+
+func (s *CreateAppRequest) SetIconUrl(v string) *CreateAppRequest {
+	s.IconUrl = &v
+	return s
+}
+
+func (s *CreateAppRequest) SetInstallParam(v string) *CreateAppRequest {
+	s.InstallParam = &v
+	return s
+}
+
+func (s *CreateAppRequest) SetOssAppUrl(v string) *CreateAppRequest {
+	s.OssAppUrl = &v
+	return s
+}
+
+type CreateAppResponseBody struct {
+	// example:
+	//
+	// 1234
+	AppId *int32 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// E5138F7E-46B5-526A-8C99-82DEAE6B****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateAppResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppResponseBody) SetAppId(v int32) *CreateAppResponseBody {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateAppResponseBody) SetRequestId(v string) *CreateAppResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateAppResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAppResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateAppResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppResponse) SetHeaders(v map[string]*string) *CreateAppResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAppResponse) SetStatusCode(v int32) *CreateAppResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAppResponse) SetBody(v *CreateAppResponseBody) *CreateAppResponse {
+	s.Body = v
+	return s
+}
+
 type CreateCustomImageRequest struct {
 	// example:
 	//
@@ -1922,6 +2246,233 @@ func (s *DescribeAndroidInstancesResponse) SetStatusCode(v int32) *DescribeAndro
 }
 
 func (s *DescribeAndroidInstancesResponse) SetBody(v *DescribeAndroidInstancesResponseBody) *DescribeAndroidInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAppsRequest struct {
+	AppIdList []*string `json:"AppIdList,omitempty" xml:"AppIdList,omitempty" type:"Repeated"`
+	AppName   *string   `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// INSTALLING
+	InstallationStatus *string `json:"InstallationStatus,omitempty" xml:"InstallationStatus,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// AAAAAV3MpHK1AP0pfERHZN5pu6kU+SQXzm0H9mu/FiSc****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// NORMAL
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeAppsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppsRequest) SetAppIdList(v []*string) *DescribeAppsRequest {
+	s.AppIdList = v
+	return s
+}
+
+func (s *DescribeAppsRequest) SetAppName(v string) *DescribeAppsRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *DescribeAppsRequest) SetInstallationStatus(v string) *DescribeAppsRequest {
+	s.InstallationStatus = &v
+	return s
+}
+
+func (s *DescribeAppsRequest) SetMaxResults(v int32) *DescribeAppsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeAppsRequest) SetNextToken(v string) *DescribeAppsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeAppsRequest) SetStatus(v string) *DescribeAppsRequest {
+	s.Status = &v
+	return s
+}
+
+type DescribeAppsResponseBody struct {
+	Data []*DescribeAppsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// AAAAAV3MpHK1AP0pfERHZN5pu6l5V9uON****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// CB95E410-FD1D-53C5-9F7D-93CC44D7****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeAppsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppsResponseBody) SetData(v []*DescribeAppsResponseBodyData) *DescribeAppsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeAppsResponseBody) SetNextToken(v string) *DescribeAppsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBody) SetRequestId(v string) *DescribeAppsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBody) SetTotalCount(v string) *DescribeAppsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeAppsResponseBodyData struct {
+	// example:
+	//
+	// 1.0.0
+	AndroidAppVersion *string `json:"AndroidAppVersion,omitempty" xml:"AndroidAppVersion,omitempty"`
+	// example:
+	//
+	// 10404
+	AppId *int32 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// testapp
+	AppName     *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 2022-08-11 17:45:03
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2022-08-11 17:45:03
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// https://test.png
+	IconUrl *string `json:"IconUrl,omitempty" xml:"IconUrl,omitempty"`
+	// example:
+	//
+	// INSTALLING
+	InstallationStatus *string   `json:"InstallationStatus,omitempty" xml:"InstallationStatus,omitempty"`
+	InstanceGroupList  []*string `json:"InstanceGroupList,omitempty" xml:"InstanceGroupList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// NORMAL
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeAppsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppsResponseBodyData) SetAndroidAppVersion(v string) *DescribeAppsResponseBodyData {
+	s.AndroidAppVersion = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyData) SetAppId(v int32) *DescribeAppsResponseBodyData {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyData) SetAppName(v string) *DescribeAppsResponseBodyData {
+	s.AppName = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyData) SetDescription(v string) *DescribeAppsResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyData) SetGmtCreate(v string) *DescribeAppsResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyData) SetGmtModified(v string) *DescribeAppsResponseBodyData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyData) SetIconUrl(v string) *DescribeAppsResponseBodyData {
+	s.IconUrl = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyData) SetInstallationStatus(v string) *DescribeAppsResponseBodyData {
+	s.InstallationStatus = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyData) SetInstanceGroupList(v []*string) *DescribeAppsResponseBodyData {
+	s.InstanceGroupList = v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyData) SetStatus(v string) *DescribeAppsResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type DescribeAppsResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAppsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeAppsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppsResponse) SetHeaders(v map[string]*string) *DescribeAppsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAppsResponse) SetStatusCode(v int32) *DescribeAppsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAppsResponse) SetBody(v *DescribeAppsResponseBody) *DescribeAppsResponse {
 	s.Body = v
 	return s
 }
@@ -5560,6 +6111,190 @@ func (client *Client) CheckResourceStock(request *CheckResourceStockRequest) (_r
 
 // Summary:
 //
+// 创建安卓实例组
+//
+// @param request - CreateAndroidInstanceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAndroidInstanceGroupResponse
+func (client *Client) CreateAndroidInstanceGroupWithOptions(request *CreateAndroidInstanceGroupRequest, runtime *util.RuntimeOptions) (_result *CreateAndroidInstanceGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
+		query["AutoPay"] = request.AutoPay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizRegionId)) {
+		query["BizRegionId"] = request.BizRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
+		query["ChargeType"] = request.ChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		query["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceGroupName)) {
+		query["InstanceGroupName"] = request.InstanceGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceGroupSpec)) {
+		query["InstanceGroupSpec"] = request.InstanceGroupSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NumberOfInstances)) {
+		query["NumberOfInstances"] = request.NumberOfInstances
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OfficeSiteId)) {
+		query["OfficeSiteId"] = request.OfficeSiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodUnit)) {
+		query["PeriodUnit"] = request.PeriodUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyGroupId)) {
+		query["PolicyGroupId"] = request.PolicyGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAndroidInstanceGroup"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAndroidInstanceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建安卓实例组
+//
+// @param request - CreateAndroidInstanceGroupRequest
+//
+// @return CreateAndroidInstanceGroupResponse
+func (client *Client) CreateAndroidInstanceGroup(request *CreateAndroidInstanceGroupRequest) (_result *CreateAndroidInstanceGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAndroidInstanceGroupResponse{}
+	_body, _err := client.CreateAndroidInstanceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - CreateAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAppResponse
+func (client *Client) CreateAppWithOptions(request *CreateAppRequest, runtime *util.RuntimeOptions) (_result *CreateAppResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		query["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilePath)) {
+		query["FilePath"] = request.FilePath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IconUrl)) {
+		query["IconUrl"] = request.IconUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstallParam)) {
+		query["InstallParam"] = request.InstallParam
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssAppUrl)) {
+		query["OssAppUrl"] = request.OssAppUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateApp"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAppResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - CreateAppRequest
+//
+// @return CreateAppResponse
+func (client *Client) CreateApp(request *CreateAppRequest) (_result *CreateAppResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAppResponse{}
+	_body, _err := client.CreateAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建自定义镜像
 //
 // @param request - CreateCustomImageRequest
@@ -6245,6 +6980,86 @@ func (client *Client) DescribeAndroidInstances(request *DescribeAndroidInstances
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAndroidInstancesResponse{}
 	_body, _err := client.DescribeAndroidInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询app
+//
+// @param request - DescribeAppsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAppsResponse
+func (client *Client) DescribeAppsWithOptions(request *DescribeAppsRequest, runtime *util.RuntimeOptions) (_result *DescribeAppsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppIdList)) {
+		query["AppIdList"] = request.AppIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstallationStatus)) {
+		query["InstallationStatus"] = request.InstallationStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeApps"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAppsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询app
+//
+// @param request - DescribeAppsRequest
+//
+// @return DescribeAppsResponse
+func (client *Client) DescribeApps(request *DescribeAppsRequest) (_result *DescribeAppsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAppsResponse{}
+	_body, _err := client.DescribeAppsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
