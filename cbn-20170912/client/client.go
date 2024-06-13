@@ -29339,6 +29339,7 @@ type ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments struct 
 	//
 	// 2022-07-08T08:45Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	OrderType    *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	// The type of resource attached to the transit router.
 	//
 	// Only **VPN*	- may be returned, which indicates that an IPsec-VPN connection is attached to the transit router.
@@ -29434,6 +29435,11 @@ func (s *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments) Se
 
 func (s *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments) SetCreationTime(v string) *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments {
 	s.CreationTime = &v
+	return s
+}
+
+func (s *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments) SetOrderType(v string) *ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments {
+	s.OrderType = &v
 	return s
 }
 
