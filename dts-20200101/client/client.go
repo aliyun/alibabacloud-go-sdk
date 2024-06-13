@@ -2945,7 +2945,12 @@ type ConfigureSubscriptionRequest struct {
 	// example:
 	//
 	// dtstest
-	SourceEndpointUserName *string `json:"SourceEndpointUserName,omitempty" xml:"SourceEndpointUserName,omitempty"`
+	SourceEndpointUserName   *string `json:"SourceEndpointUserName,omitempty" xml:"SourceEndpointUserName,omitempty"`
+	SrcCaCertificateOssUrl   *string `json:"SrcCaCertificateOssUrl,omitempty" xml:"SrcCaCertificateOssUrl,omitempty"`
+	SrcCaCertificatePassword *string `json:"SrcCaCertificatePassword,omitempty" xml:"SrcCaCertificatePassword,omitempty"`
+	SrcClientCertOssUrl      *string `json:"SrcClientCertOssUrl,omitempty" xml:"SrcClientCertOssUrl,omitempty"`
+	SrcClientKeyOssUrl       *string `json:"SrcClientKeyOssUrl,omitempty" xml:"SrcClientKeyOssUrl,omitempty"`
+	SrcClientPassword        *string `json:"SrcClientPassword,omitempty" xml:"SrcClientPassword,omitempty"`
 	// Specifies whether to track DDL statements. Default value: true. Valid values:
 	//
 	// 	- **true**: tracks DDL statements.
@@ -3148,6 +3153,31 @@ func (s *ConfigureSubscriptionRequest) SetSourceEndpointRole(v string) *Configur
 
 func (s *ConfigureSubscriptionRequest) SetSourceEndpointUserName(v string) *ConfigureSubscriptionRequest {
 	s.SourceEndpointUserName = &v
+	return s
+}
+
+func (s *ConfigureSubscriptionRequest) SetSrcCaCertificateOssUrl(v string) *ConfigureSubscriptionRequest {
+	s.SrcCaCertificateOssUrl = &v
+	return s
+}
+
+func (s *ConfigureSubscriptionRequest) SetSrcCaCertificatePassword(v string) *ConfigureSubscriptionRequest {
+	s.SrcCaCertificatePassword = &v
+	return s
+}
+
+func (s *ConfigureSubscriptionRequest) SetSrcClientCertOssUrl(v string) *ConfigureSubscriptionRequest {
+	s.SrcClientCertOssUrl = &v
+	return s
+}
+
+func (s *ConfigureSubscriptionRequest) SetSrcClientKeyOssUrl(v string) *ConfigureSubscriptionRequest {
+	s.SrcClientKeyOssUrl = &v
+	return s
+}
+
+func (s *ConfigureSubscriptionRequest) SetSrcClientPassword(v string) *ConfigureSubscriptionRequest {
+	s.SrcClientPassword = &v
 	return s
 }
 
@@ -46913,6 +46943,26 @@ func (client *Client) ConfigureSubscriptionWithOptions(request *ConfigureSubscri
 
 	if !tea.BoolValue(util.IsUnset(request.SourceEndpointUserName)) {
 		query["SourceEndpointUserName"] = request.SourceEndpointUserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SrcCaCertificateOssUrl)) {
+		query["SrcCaCertificateOssUrl"] = request.SrcCaCertificateOssUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SrcCaCertificatePassword)) {
+		query["SrcCaCertificatePassword"] = request.SrcCaCertificatePassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SrcClientCertOssUrl)) {
+		query["SrcClientCertOssUrl"] = request.SrcClientCertOssUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SrcClientKeyOssUrl)) {
+		query["SrcClientKeyOssUrl"] = request.SrcClientKeyOssUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SrcClientPassword)) {
+		query["SrcClientPassword"] = request.SrcClientPassword
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SubscriptionDataTypeDDL)) {
