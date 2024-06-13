@@ -5227,8 +5227,8 @@ type CreateClusterNodePoolRequestScalingGroup struct {
 	// example:
 	//
 	// PrePaid
-	InstanceChargeType *string           `json:"instance_charge_type,omitempty" xml:"instance_charge_type,omitempty"`
-	InstancePatterns   *InstancePatterns `json:"instance_patterns,omitempty" xml:"instance_patterns,omitempty"`
+	InstanceChargeType *string             `json:"instance_charge_type,omitempty" xml:"instance_charge_type,omitempty"`
+	InstancePatterns   []*InstancePatterns `json:"instance_patterns,omitempty" xml:"instance_patterns,omitempty" type:"Repeated"`
 	// The instance types of nodes in the node pool. A node that is added to the node pool is assigned one of the specified instance types that is the most appropriate. You can specify 1 to 10 instance types.
 	//
 	// >  To ensure high availability, we recommend that you specify multiple instance types.
@@ -5561,7 +5561,7 @@ func (s *CreateClusterNodePoolRequestScalingGroup) SetInstanceChargeType(v strin
 	return s
 }
 
-func (s *CreateClusterNodePoolRequestScalingGroup) SetInstancePatterns(v *InstancePatterns) *CreateClusterNodePoolRequestScalingGroup {
+func (s *CreateClusterNodePoolRequestScalingGroup) SetInstancePatterns(v []*InstancePatterns) *CreateClusterNodePoolRequestScalingGroup {
 	s.InstancePatterns = v
 	return s
 }
@@ -10126,8 +10126,8 @@ type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
 	// example:
 	//
 	// PostPaid
-	InstanceChargeType *string           `json:"instance_charge_type,omitempty" xml:"instance_charge_type,omitempty"`
-	InstancePatterns   *InstancePatterns `json:"instance_patterns,omitempty" xml:"instance_patterns,omitempty"`
+	InstanceChargeType *string             `json:"instance_charge_type,omitempty" xml:"instance_charge_type,omitempty"`
+	InstancePatterns   []*InstancePatterns `json:"instance_patterns,omitempty" xml:"instance_patterns,omitempty" type:"Repeated"`
 	// A list of instance types. You can select multiple instance types. When the system needs to create a node, it starts from the first instance type until the node is created. The instance type that is used to create the node varies based on the actual instance stock.
 	InstanceTypes []*string `json:"instance_types,omitempty" xml:"instance_types,omitempty" type:"Repeated"`
 	// The billing method of the public IP address of the node.
@@ -10448,7 +10448,7 @@ func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetInstanceCharg
 	return s
 }
 
-func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetInstancePatterns(v *InstancePatterns) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetInstancePatterns(v []*InstancePatterns) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
 	s.InstancePatterns = v
 	return s
 }
@@ -11743,8 +11743,8 @@ type DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup struct {
 	// example:
 	//
 	// PostPaid
-	InstanceChargeType *string           `json:"instance_charge_type,omitempty" xml:"instance_charge_type,omitempty"`
-	InstancePatterns   *InstancePatterns `json:"instance_patterns,omitempty" xml:"instance_patterns,omitempty"`
+	InstanceChargeType *string             `json:"instance_charge_type,omitempty" xml:"instance_charge_type,omitempty"`
+	InstancePatterns   []*InstancePatterns `json:"instance_patterns,omitempty" xml:"instance_patterns,omitempty" type:"Repeated"`
 	// The list of instance types. You can select multiple instance types. When the system needs to create a node, it starts from the first instance type until the node is created. The instance type that is used to create the node varies based on the inventory.
 	//
 	// example:
@@ -12051,7 +12051,7 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetInstanceC
 	return s
 }
 
-func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetInstancePatterns(v *InstancePatterns) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetInstancePatterns(v []*InstancePatterns) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
 	s.InstancePatterns = v
 	return s
 }
@@ -17247,6 +17247,107 @@ func (s *DescribePolicyInstancesStatusResponse) SetStatusCode(v int32) *Describe
 
 func (s *DescribePolicyInstancesStatusResponse) SetBody(v *DescribePolicyInstancesStatusResponseBody) *DescribePolicyInstancesStatusResponse {
 	s.Body = v
+	return s
+}
+
+type DescribeResourcesDeleteProtectionRequest struct {
+	// example:
+	//
+	// default
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// example:
+	//
+	// test1,test2
+	Resources *string `json:"resources,omitempty" xml:"resources,omitempty"`
+}
+
+func (s DescribeResourcesDeleteProtectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeResourcesDeleteProtectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeResourcesDeleteProtectionRequest) SetNamespace(v string) *DescribeResourcesDeleteProtectionRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeResourcesDeleteProtectionRequest) SetResources(v string) *DescribeResourcesDeleteProtectionRequest {
+	s.Resources = &v
+	return s
+}
+
+type DescribeResourcesDeleteProtectionResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       []*DescribeResourcesDeleteProtectionResponseBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+}
+
+func (s DescribeResourcesDeleteProtectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeResourcesDeleteProtectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeResourcesDeleteProtectionResponse) SetHeaders(v map[string]*string) *DescribeResourcesDeleteProtectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeResourcesDeleteProtectionResponse) SetStatusCode(v int32) *DescribeResourcesDeleteProtectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeResourcesDeleteProtectionResponse) SetBody(v []*DescribeResourcesDeleteProtectionResponseBody) *DescribeResourcesDeleteProtectionResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeResourcesDeleteProtectionResponseBody struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// default
+	Namespace  *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	Resource   *string `json:"resource,omitempty" xml:"resource,omitempty"`
+	Protection *bool   `json:"protection,omitempty" xml:"protection,omitempty"`
+}
+
+func (s DescribeResourcesDeleteProtectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeResourcesDeleteProtectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeResourcesDeleteProtectionResponseBody) SetName(v string) *DescribeResourcesDeleteProtectionResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeResourcesDeleteProtectionResponseBody) SetNamespace(v string) *DescribeResourcesDeleteProtectionResponseBody {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeResourcesDeleteProtectionResponseBody) SetResource(v string) *DescribeResourcesDeleteProtectionResponseBody {
+	s.Resource = &v
+	return s
+}
+
+func (s *DescribeResourcesDeleteProtectionResponseBody) SetProtection(v bool) *DescribeResourcesDeleteProtectionResponseBody {
+	s.Protection = &v
 	return s
 }
 
@@ -22467,8 +22568,8 @@ type ModifyClusterNodePoolRequestScalingGroup struct {
 	// example:
 	//
 	// PostPaid
-	InstanceChargeType *string           `json:"instance_charge_type,omitempty" xml:"instance_charge_type,omitempty"`
-	InstancePatterns   *InstancePatterns `json:"instance_patterns,omitempty" xml:"instance_patterns,omitempty"`
+	InstanceChargeType *string             `json:"instance_charge_type,omitempty" xml:"instance_charge_type,omitempty"`
+	InstancePatterns   []*InstancePatterns `json:"instance_patterns,omitempty" xml:"instance_patterns,omitempty" type:"Repeated"`
 	// A list of instance types. You can select multiple instance types. When the system needs to create a node, it starts from the first instance type until the node is created. The instance type that is used to create the node varies based on the actual instance stock.
 	InstanceTypes []*string `json:"instance_types,omitempty" xml:"instance_types,omitempty" type:"Repeated"`
 	// The metering method of the public IP address. Valid values:
@@ -22729,7 +22830,7 @@ func (s *ModifyClusterNodePoolRequestScalingGroup) SetInstanceChargeType(v strin
 	return s
 }
 
-func (s *ModifyClusterNodePoolRequestScalingGroup) SetInstancePatterns(v *InstancePatterns) *ModifyClusterNodePoolRequestScalingGroup {
+func (s *ModifyClusterNodePoolRequestScalingGroup) SetInstancePatterns(v []*InstancePatterns) *ModifyClusterNodePoolRequestScalingGroup {
 	s.InstancePatterns = v
 	return s
 }
@@ -25975,6 +26076,131 @@ func (s *UpdateK8sClusterUserConfigExpireResponse) SetHeaders(v map[string]*stri
 
 func (s *UpdateK8sClusterUserConfigExpireResponse) SetStatusCode(v int32) *UpdateK8sClusterUserConfigExpireResponse {
 	s.StatusCode = &v
+	return s
+}
+
+type UpdateResourcesDeleteProtectionRequest struct {
+	// example:
+	//
+	// true
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// default
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// example:
+	//
+	// services
+	ResourceType *string   `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
+	Resources    []*string `json:"resources,omitempty" xml:"resources,omitempty" type:"Repeated"`
+}
+
+func (s UpdateResourcesDeleteProtectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateResourcesDeleteProtectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateResourcesDeleteProtectionRequest) SetEnable(v bool) *UpdateResourcesDeleteProtectionRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdateResourcesDeleteProtectionRequest) SetNamespace(v string) *UpdateResourcesDeleteProtectionRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UpdateResourcesDeleteProtectionRequest) SetResourceType(v string) *UpdateResourcesDeleteProtectionRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *UpdateResourcesDeleteProtectionRequest) SetResources(v []*string) *UpdateResourcesDeleteProtectionRequest {
+	s.Resources = v
+	return s
+}
+
+type UpdateResourcesDeleteProtectionResponseBody struct {
+	// example:
+	//
+	// default
+	Namespace  *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	Protection *string `json:"protection,omitempty" xml:"protection,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 0527ac9a-c899-4341-a21a-xxxxxxxxx
+	RequestId    *string   `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	ResourceType *string   `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
+	Resources    []*string `json:"resources,omitempty" xml:"resources,omitempty" type:"Repeated"`
+}
+
+func (s UpdateResourcesDeleteProtectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateResourcesDeleteProtectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateResourcesDeleteProtectionResponseBody) SetNamespace(v string) *UpdateResourcesDeleteProtectionResponseBody {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UpdateResourcesDeleteProtectionResponseBody) SetProtection(v string) *UpdateResourcesDeleteProtectionResponseBody {
+	s.Protection = &v
+	return s
+}
+
+func (s *UpdateResourcesDeleteProtectionResponseBody) SetRequestId(v string) *UpdateResourcesDeleteProtectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateResourcesDeleteProtectionResponseBody) SetResourceType(v string) *UpdateResourcesDeleteProtectionResponseBody {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *UpdateResourcesDeleteProtectionResponseBody) SetResources(v []*string) *UpdateResourcesDeleteProtectionResponseBody {
+	s.Resources = v
+	return s
+}
+
+type UpdateResourcesDeleteProtectionResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateResourcesDeleteProtectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateResourcesDeleteProtectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateResourcesDeleteProtectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateResourcesDeleteProtectionResponse) SetHeaders(v map[string]*string) *UpdateResourcesDeleteProtectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateResourcesDeleteProtectionResponse) SetStatusCode(v int32) *UpdateResourcesDeleteProtectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateResourcesDeleteProtectionResponse) SetBody(v *UpdateResourcesDeleteProtectionResponseBody) *UpdateResourcesDeleteProtectionResponse {
+	s.Body = v
 	return s
 }
 
@@ -31355,6 +31581,74 @@ func (client *Client) DescribePolicyInstancesStatus(clusterId *string) (_result 
 
 // Summary:
 //
+// 修改资源删除保护配置
+//
+// @param request - DescribeResourcesDeleteProtectionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeResourcesDeleteProtectionResponse
+func (client *Client) DescribeResourcesDeleteProtectionWithOptions(ClusterId *string, ResourceType *string, request *DescribeResourcesDeleteProtectionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeResourcesDeleteProtectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resources)) {
+		query["resources"] = request.Resources
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeResourcesDeleteProtection"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/resources/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceType)) + "/protection"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("array"),
+	}
+	_result = &DescribeResourcesDeleteProtectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改资源删除保护配置
+//
+// @param request - DescribeResourcesDeleteProtectionRequest
+//
+// @return DescribeResourcesDeleteProtectionResponse
+func (client *Client) DescribeResourcesDeleteProtection(ClusterId *string, ResourceType *string, request *DescribeResourcesDeleteProtectionRequest) (_result *DescribeResourcesDeleteProtectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeResourcesDeleteProtectionResponse{}
+	_body, _err := client.DescribeResourcesDeleteProtectionWithOptions(ClusterId, ResourceType, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries or issues the kubeconfig credentials of a Resource Access Management (RAM) user or RAM role of the account. If you are the permission manager of a Container Service for Kubernetes (ACK) cluster, you can issue the kubeconfig credentials to a specific RAM user or RAM role of the account by using the Alibaba Cloud account. The kubeconfig credentials, which are used to connect to the ACK cluster, contain the identity information about the RAM user or RAM role.
 //
 // Description:
@@ -35476,6 +35770,82 @@ func (client *Client) UpdateK8sClusterUserConfigExpire(ClusterId *string, reques
 	headers := make(map[string]*string)
 	_result = &UpdateK8sClusterUserConfigExpireResponse{}
 	_body, _err := client.UpdateK8sClusterUserConfigExpireWithOptions(ClusterId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改资源删除保护配置
+//
+// @param request - UpdateResourcesDeleteProtectionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateResourcesDeleteProtectionResponse
+func (client *Client) UpdateResourcesDeleteProtectionWithOptions(ClusterId *string, request *UpdateResourcesDeleteProtectionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateResourcesDeleteProtectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		body["enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		body["namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		body["resource_type"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resources)) {
+		body["resources"] = request.Resources
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateResourcesDeleteProtection"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/resources/protection"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateResourcesDeleteProtectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改资源删除保护配置
+//
+// @param request - UpdateResourcesDeleteProtectionRequest
+//
+// @return UpdateResourcesDeleteProtectionResponse
+func (client *Client) UpdateResourcesDeleteProtection(ClusterId *string, request *UpdateResourcesDeleteProtectionRequest) (_result *UpdateResourcesDeleteProtectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateResourcesDeleteProtectionResponse{}
+	_body, _err := client.UpdateResourcesDeleteProtectionWithOptions(ClusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
