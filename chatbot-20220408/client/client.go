@@ -7172,6 +7172,123 @@ func (s *GetAsyncResultResponse) SetBody(v *GetAsyncResultResponseBody) *GetAsyn
 	return s
 }
 
+type GetBotSessionDataRequest struct {
+	// example:
+	//
+	// ac627989eb4f8a98ed05fd098bbae5_p_beebot_public
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20240605
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chatbot-cn-7QuUfaqMQe
+	RobotInstanceId *string `json:"RobotInstanceId,omitempty" xml:"RobotInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20240505
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s GetBotSessionDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBotSessionDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetBotSessionDataRequest) SetAgentKey(v string) *GetBotSessionDataRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *GetBotSessionDataRequest) SetEndTime(v string) *GetBotSessionDataRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetBotSessionDataRequest) SetRobotInstanceId(v string) *GetBotSessionDataRequest {
+	s.RobotInstanceId = &v
+	return s
+}
+
+func (s *GetBotSessionDataRequest) SetStartTime(v string) *GetBotSessionDataRequest {
+	s.StartTime = &v
+	return s
+}
+
+type GetBotSessionDataResponseBody struct {
+	// example:
+	//
+	// 116
+	CostTime *string                  `json:"CostTime,omitempty" xml:"CostTime,omitempty"`
+	Datas    []map[string]interface{} `json:"Datas,omitempty" xml:"Datas,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 15CD94CC-CBEB-4189-806C-A132D1F45D51
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetBotSessionDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBotSessionDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetBotSessionDataResponseBody) SetCostTime(v string) *GetBotSessionDataResponseBody {
+	s.CostTime = &v
+	return s
+}
+
+func (s *GetBotSessionDataResponseBody) SetDatas(v []map[string]interface{}) *GetBotSessionDataResponseBody {
+	s.Datas = v
+	return s
+}
+
+func (s *GetBotSessionDataResponseBody) SetRequestId(v string) *GetBotSessionDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetBotSessionDataResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetBotSessionDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetBotSessionDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBotSessionDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetBotSessionDataResponse) SetHeaders(v map[string]*string) *GetBotSessionDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetBotSessionDataResponse) SetStatusCode(v int32) *GetBotSessionDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetBotSessionDataResponse) SetBody(v *GetBotSessionDataResponseBody) *GetBotSessionDataResponse {
+	s.Body = v
+	return s
+}
+
 type GetInstancePublishTaskStateRequest struct {
 	// example:
 	//
@@ -17287,6 +17404,78 @@ func (client *Client) GetAsyncResult(request *GetAsyncResultRequest) (_result *G
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAsyncResultResponse{}
 	_body, _err := client.GetAsyncResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询机器人接待人次和对话轮次
+//
+// @param request - GetBotSessionDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetBotSessionDataResponse
+func (client *Client) GetBotSessionDataWithOptions(request *GetBotSessionDataRequest, runtime *util.RuntimeOptions) (_result *GetBotSessionDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RobotInstanceId)) {
+		query["RobotInstanceId"] = request.RobotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetBotSessionData"),
+		Version:     tea.String("2022-04-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetBotSessionDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询机器人接待人次和对话轮次
+//
+// @param request - GetBotSessionDataRequest
+//
+// @return GetBotSessionDataResponse
+func (client *Client) GetBotSessionData(request *GetBotSessionDataRequest) (_result *GetBotSessionDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetBotSessionDataResponse{}
+	_body, _err := client.GetBotSessionDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
