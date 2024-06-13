@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -12,13 +9,166 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type RdAccountDTO struct {
+	AccountType *string             `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	Checked     *bool               `json:"Checked,omitempty" xml:"Checked,omitempty"`
+	DisplayName *string             `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Id          *int64              `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name        *string             `json:"Name,omitempty" xml:"Name,omitempty"`
+	Tags        []*RdAccountDTOTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s RdAccountDTO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RdAccountDTO) GoString() string {
+	return s.String()
+}
+
+func (s *RdAccountDTO) SetAccountType(v string) *RdAccountDTO {
+	s.AccountType = &v
+	return s
+}
+
+func (s *RdAccountDTO) SetChecked(v bool) *RdAccountDTO {
+	s.Checked = &v
+	return s
+}
+
+func (s *RdAccountDTO) SetDisplayName(v string) *RdAccountDTO {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *RdAccountDTO) SetId(v int64) *RdAccountDTO {
+	s.Id = &v
+	return s
+}
+
+func (s *RdAccountDTO) SetName(v string) *RdAccountDTO {
+	s.Name = &v
+	return s
+}
+
+func (s *RdAccountDTO) SetTags(v []*RdAccountDTOTags) *RdAccountDTO {
+	s.Tags = v
+	return s
+}
+
+type RdAccountDTOTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s RdAccountDTOTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RdAccountDTOTags) GoString() string {
+	return s.String()
+}
+
+func (s *RdAccountDTOTags) SetTagKey(v string) *RdAccountDTOTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *RdAccountDTOTags) SetTagValue(v string) *RdAccountDTOTags {
+	s.TagValue = &v
+	return s
+}
+
+type RdAccountFolderDTO struct {
+	AccountCount              *int32                `json:"AccountCount,omitempty" xml:"AccountCount,omitempty"`
+	AccountList               []*RdAccountDTO       `json:"AccountList,omitempty" xml:"AccountList,omitempty" type:"Repeated"`
+	FolderId                  *string               `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	FolderList                []*RdAccountFolderDTO `json:"FolderList,omitempty" xml:"FolderList,omitempty" type:"Repeated"`
+	FolderName                *string               `json:"FolderName,omitempty" xml:"FolderName,omitempty"`
+	ResourceDirectoryId       *string               `json:"ResourceDirectoryId,omitempty" xml:"ResourceDirectoryId,omitempty"`
+	ResourceDirectoryPath     *string               `json:"ResourceDirectoryPath,omitempty" xml:"ResourceDirectoryPath,omitempty"`
+	ResourceDirectoryPathName *string               `json:"ResourceDirectoryPathName,omitempty" xml:"ResourceDirectoryPathName,omitempty"`
+	SelectedCount             *int32                `json:"SelectedCount,omitempty" xml:"SelectedCount,omitempty"`
+}
+
+func (s RdAccountFolderDTO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RdAccountFolderDTO) GoString() string {
+	return s.String()
+}
+
+func (s *RdAccountFolderDTO) SetAccountCount(v int32) *RdAccountFolderDTO {
+	s.AccountCount = &v
+	return s
+}
+
+func (s *RdAccountFolderDTO) SetAccountList(v []*RdAccountDTO) *RdAccountFolderDTO {
+	s.AccountList = v
+	return s
+}
+
+func (s *RdAccountFolderDTO) SetFolderId(v string) *RdAccountFolderDTO {
+	s.FolderId = &v
+	return s
+}
+
+func (s *RdAccountFolderDTO) SetFolderList(v []*RdAccountFolderDTO) *RdAccountFolderDTO {
+	s.FolderList = v
+	return s
+}
+
+func (s *RdAccountFolderDTO) SetFolderName(v string) *RdAccountFolderDTO {
+	s.FolderName = &v
+	return s
+}
+
+func (s *RdAccountFolderDTO) SetResourceDirectoryId(v string) *RdAccountFolderDTO {
+	s.ResourceDirectoryId = &v
+	return s
+}
+
+func (s *RdAccountFolderDTO) SetResourceDirectoryPath(v string) *RdAccountFolderDTO {
+	s.ResourceDirectoryPath = &v
+	return s
+}
+
+func (s *RdAccountFolderDTO) SetResourceDirectoryPathName(v string) *RdAccountFolderDTO {
+	s.ResourceDirectoryPathName = &v
+	return s
+}
+
+func (s *RdAccountFolderDTO) SetSelectedCount(v int32) *RdAccountFolderDTO {
+	s.SelectedCount = &v
+	return s
+}
+
 type DescribeAdvicesRequest struct {
-	AdviceId        *int64  `json:"AdviceId,omitempty" xml:"AdviceId,omitempty"`
-	CheckId         *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	ExcludeAdviceId *int64  `json:"ExcludeAdviceId,omitempty" xml:"ExcludeAdviceId,omitempty"`
-	Language        *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	Product         *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	ResourceId      *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// 12345678
+	AdviceId *int64 `json:"AdviceId,omitempty" xml:"AdviceId,omitempty"`
+	// example:
+	//
+	// EcsHighCpuUtilization
+	CheckId *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	// example:
+	//
+	// 12345678
+	ExcludeAdviceId *int64 `json:"ExcludeAdviceId,omitempty" xml:"ExcludeAdviceId,omitempty"`
+	// example:
+	//
+	// zh
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// example:
+	//
+	// ecs
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// example:
+	//
+	// i-bp67acfmxazb4p****
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 }
 
 func (s DescribeAdvicesRequest) String() string {
@@ -60,8 +210,11 @@ func (s *DescribeAdvicesRequest) SetResourceId(v string) *DescribeAdvicesRequest
 }
 
 type DescribeAdvicesResponseBody struct {
-	Data      *DescribeAdvicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *DescribeAdvicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 566331F9-5AB3-550F-B745-A730331F97A9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeAdvicesResponseBody) String() string {
@@ -100,20 +253,90 @@ func (s *DescribeAdvicesResponseBodyData) SetAdvice(v []*DescribeAdvicesResponse
 }
 
 type DescribeAdvicesResponseBodyDataAdvice struct {
-	AliyunId    *int64  `json:"AliyunId,omitempty" xml:"AliyunId,omitempty"`
-	CheckId     *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	CheckName   *string `json:"CheckName,omitempty" xml:"CheckName,omitempty"`
+	// example:
+	//
+	// 1234567891234567
+	AliyunId *int64 `json:"AliyunId,omitempty" xml:"AliyunId,omitempty"`
+	// example:
+	//
+	// EcsHighCpuUtilization
+	CheckId   *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	CheckName *string `json:"CheckName,omitempty" xml:"CheckName,omitempty"`
+	// example:
+	//
+	// [
+	//
+	// 	{
+	//
+	// 		"key":"EcsHighCpuUtilization_xxxx",
+	//
+	// 		"value":xxx
+	//
+	// 	},
+	//
+	// 	{
+	//
+	// 		"key":"EcsHighCpuUtilization_xxxx",
+	//
+	// 		"value":xxx
+	//
+	// 	},
+	//
+	// 	{
+	//
+	// 		"key":"EcsHighCpuUtilization_xxxx",
+	//
+	// 		"value":xxx
+	//
+	// 	},
+	//
+	// ]
 	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GmtCreated  *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// example:
+	//
+	// 2023-07-01 00:00:00
+	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// example:
+	//
+	// 2023-07-01 00:00:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// ID
-	Id         *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	IsExpired  *bool   `json:"IsExpired,omitempty" xml:"IsExpired,omitempty"`
-	Product    *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	Resource   *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	//
+	// example:
+	//
+	// 123
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// false
+	IsExpired *bool `json:"IsExpired,omitempty" xml:"IsExpired,omitempty"`
+	// example:
+	//
+	// ecs
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// example:
+	//
+	// {
+	//
+	// 	"resourceId": xxxx,
+	//
+	// 	"resourceName": xxxxxx,
+	//
+	// 	"regionId": xxxx,
+	//
+	// 	...
+	//
+	// }
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// example:
+	//
+	// i-bp67acfmxazb4p****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	Severity   *int32  `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// example:
+	//
+	// 1
+	Severity *int32 `json:"Severity,omitempty" xml:"Severity,omitempty"`
 }
 
 func (s DescribeAdvicesResponseBodyDataAdvice) String() string {
@@ -219,12 +442,33 @@ func (s *DescribeAdvicesResponse) SetBody(v *DescribeAdvicesResponseBody) *Descr
 }
 
 type DescribeAdvicesFlatPageRequest struct {
-	AdviceId   *int64  `json:"AdviceId,omitempty" xml:"AdviceId,omitempty"`
-	CheckId    *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	Language   *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Product    *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// example:
+	//
+	// 12345678
+	AdviceId *int64 `json:"AdviceId,omitempty" xml:"AdviceId,omitempty"`
+	// example:
+	//
+	// EcsHighCpuUtilization
+	CheckId *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	// example:
+	//
+	// zh
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// ecs
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// example:
+	//
+	// i-2zecnwitr2s7aca6****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 }
 
@@ -272,8 +516,11 @@ func (s *DescribeAdvicesFlatPageRequest) SetResourceId(v string) *DescribeAdvice
 }
 
 type DescribeAdvicesFlatPageResponseBody struct {
-	Data      *DescribeAdvicesFlatPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *DescribeAdvicesFlatPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 566331F9-5AB3-550F-B745-A730331F97A9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeAdvicesFlatPageResponseBody) String() string {
@@ -295,10 +542,19 @@ func (s *DescribeAdvicesFlatPageResponseBody) SetRequestId(v string) *DescribeAd
 }
 
 type DescribeAdvicesFlatPageResponseBodyData struct {
-	PageNo   *int64                                           `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
 	PageSize *int64                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Result   []*DescribeAdvicesFlatPageResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Total    *int64                                           `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 100
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeAdvicesFlatPageResponseBodyData) String() string {
@@ -330,19 +586,52 @@ func (s *DescribeAdvicesFlatPageResponseBodyData) SetTotal(v int64) *DescribeAdv
 }
 
 type DescribeAdvicesFlatPageResponseBodyDataResult struct {
-	AliyunId    *int64  `json:"AliyunId,omitempty" xml:"AliyunId,omitempty"`
-	CheckId     *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	CheckName   *string `json:"CheckName,omitempty" xml:"CheckName,omitempty"`
+	// example:
+	//
+	// 192895059480****
+	AliyunId *int64 `json:"AliyunId,omitempty" xml:"AliyunId,omitempty"`
+	// example:
+	//
+	// EcsHighCpuUtilization
+	CheckId   *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	CheckName *string `json:"CheckName,omitempty" xml:"CheckName,omitempty"`
+	// example:
+	//
+	// [{"key":"EcsHighCpuUtilization_xxxx", "value":"xxx"}, {"key":"EcsHighCpuUtilization_xxxx", "value":"xxx"}, {"key":"EcsHighCpuUtilization_xxxx", "value":"xxx"}, ]
 	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GmtCreated  *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// example:
+	//
+	// 2023-07-01 00:00:00
+	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// example:
+	//
+	// 2023-07-01 00:00:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	IsExpired   *bool   `json:"IsExpired,omitempty" xml:"IsExpired,omitempty"`
-	Product     *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	Resource    *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	ResourceId  *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	Severity    *int64  `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// example:
+	//
+	// 40200899
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// false
+	IsExpired *bool `json:"IsExpired,omitempty" xml:"IsExpired,omitempty"`
+	// example:
+	//
+	// ecs
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// example:
+	//
+	// {"resourceId": "i-2zecnwitr2s7aca6****","resourceName": "ecs-20230701","regionId": "cn-hangzhou",...}
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// example:
+	//
+	// i-bp67acfmxazb4p****
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// 1
+	Severity *int64 `json:"Severity,omitempty" xml:"Severity,omitempty"`
 }
 
 func (s DescribeAdvicesFlatPageResponseBodyDataResult) String() string {
@@ -448,12 +737,33 @@ func (s *DescribeAdvicesFlatPageResponse) SetBody(v *DescribeAdvicesFlatPageResp
 }
 
 type DescribeAdvicesPageRequest struct {
-	AdviceId   *int64  `json:"AdviceId,omitempty" xml:"AdviceId,omitempty"`
-	CheckId    *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	Language   *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Product    *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// example:
+	//
+	// 12345678
+	AdviceId *int64 `json:"AdviceId,omitempty" xml:"AdviceId,omitempty"`
+	// example:
+	//
+	// EcsHighCpuUtilization
+	CheckId *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	// example:
+	//
+	// zh
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// ecs
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// example:
+	//
+	// i-bp67acfmxazb4p****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 }
 
@@ -501,8 +811,11 @@ func (s *DescribeAdvicesPageRequest) SetResourceId(v string) *DescribeAdvicesPag
 }
 
 type DescribeAdvicesPageResponseBody struct {
-	Data      *DescribeAdvicesPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *DescribeAdvicesPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 566331F9-5AB3-550F-B745-A730331F97A9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeAdvicesPageResponseBody) String() string {
@@ -524,10 +837,19 @@ func (s *DescribeAdvicesPageResponseBody) SetRequestId(v string) *DescribeAdvice
 }
 
 type DescribeAdvicesPageResponseBodyData struct {
-	PageNo   *int64                                       `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
 	PageSize *int64                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Result   []*DescribeAdvicesPageResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Total    *int64                                       `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 100
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeAdvicesPageResponseBodyData) String() string {
@@ -559,20 +881,90 @@ func (s *DescribeAdvicesPageResponseBodyData) SetTotal(v int64) *DescribeAdvices
 }
 
 type DescribeAdvicesPageResponseBodyDataResult struct {
-	AliyunId    *int64  `json:"AliyunId,omitempty" xml:"AliyunId,omitempty"`
-	CheckId     *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	CheckName   *string `json:"CheckName,omitempty" xml:"CheckName,omitempty"`
+	// example:
+	//
+	// 1234567891234567
+	AliyunId *int64 `json:"AliyunId,omitempty" xml:"AliyunId,omitempty"`
+	// example:
+	//
+	// EcsHighCpuUtilization
+	CheckId   *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	CheckName *string `json:"CheckName,omitempty" xml:"CheckName,omitempty"`
+	// example:
+	//
+	// [
+	//
+	// 	{
+	//
+	// 		"key":"EcsHighCpuUtilization_xxxx",
+	//
+	// 		"value":xxx
+	//
+	// 	},
+	//
+	// 	{
+	//
+	// 		"key":"EcsHighCpuUtilization_xxxx",
+	//
+	// 		"value":xxx
+	//
+	// 	},
+	//
+	// 	{
+	//
+	// 		"key":"EcsHighCpuUtilization_xxxx",
+	//
+	// 		"value":xxx
+	//
+	// 	},
+	//
+	// ]
 	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GmtCreated  *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// example:
+	//
+	// 2023-07-01 00:00:00
+	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// example:
+	//
+	// 2023-07-01 00:00:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// ID
-	Id         *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	IsExpired  *bool   `json:"IsExpired,omitempty" xml:"IsExpired,omitempty"`
-	Product    *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	Resource   *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	//
+	// example:
+	//
+	// 123
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// false
+	IsExpired *bool `json:"IsExpired,omitempty" xml:"IsExpired,omitempty"`
+	// example:
+	//
+	// ecs
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// example:
+	//
+	// {
+	//
+	// 	"resourceId": xxxx,
+	//
+	// 	"resourceName": xxxxxx,
+	//
+	// 	"regionId": xxxx,
+	//
+	// 	...
+	//
+	// }
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// example:
+	//
+	// i-bp67acfmxazb4p****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	Severity   *int64  `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// example:
+	//
+	// 1
+	Severity *int64 `json:"Severity,omitempty" xml:"Severity,omitempty"`
 }
 
 func (s DescribeAdvicesPageResponseBodyDataResult) String() string {
@@ -678,8 +1070,14 @@ func (s *DescribeAdvicesPageResponse) SetBody(v *DescribeAdvicesPageResponseBody
 }
 
 type DescribeAdvisorChecksRequest struct {
+	// example:
+	//
+	// zh
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	Product  *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// example:
+	//
+	// ecs
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
 }
 
 func (s DescribeAdvisorChecksRequest) String() string {
@@ -701,9 +1099,15 @@ func (s *DescribeAdvisorChecksRequest) SetProduct(v string) *DescribeAdvisorChec
 }
 
 type DescribeAdvisorChecksResponseBody struct {
-	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeAdvisorChecksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *DescribeAdvisorChecksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 566331F9-5AB3-550F-B745-A730331F97A9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeAdvisorChecksResponseBody) String() string {
@@ -747,17 +1151,64 @@ func (s *DescribeAdvisorChecksResponseBodyData) SetAdvisorCheck(v []*DescribeAdv
 }
 
 type DescribeAdvisorChecksResponseBodyDataAdvisorCheck struct {
-	Category      *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	Code          *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GmtCreated    *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// example:
+	//
+	// 1
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// example:
+	//
+	// EcsHighCpuUtilization
+	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 2023-07-01 00:00:00
+	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// example:
+	//
+	// 2023-07-01 00:00:00
 	GmtModified   *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OperateColumn *string `json:"OperateColumn,omitempty" xml:"OperateColumn,omitempty"`
-	Product       *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tips          *string `json:"Tips,omitempty" xml:"Tips,omitempty"`
-	ViewColumn    *string `json:"ViewColumn,omitempty" xml:"ViewColumn,omitempty"`
+	// example:
+	//
+	// ecs
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// example:
+	//
+	// enabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tips   *string `json:"Tips,omitempty" xml:"Tips,omitempty"`
+	// example:
+	//
+	// [
+	//
+	// 	{
+	//
+	// 		"key":"EcsHighCpuUtilization_xxxx",
+	//
+	// 		"type":"DEFAULT"
+	//
+	// 	},
+	//
+	// 	{
+	//
+	// 		"key":"EcsHighCpuUtilization_xxxx",
+	//
+	// 		"type":"DEFAULT"
+	//
+	// 	},
+	//
+	// 	{
+	//
+	// 		"key":"EcsHighCpuUtilization_xxxx",
+	//
+	// 		"type":"DEFAULT"
+	//
+	// 	},
+	//
+	// ]
+	ViewColumn *string `json:"ViewColumn,omitempty" xml:"ViewColumn,omitempty"`
 }
 
 func (s DescribeAdvisorChecksResponseBodyDataAdvisorCheck) String() string {
@@ -853,11 +1304,29 @@ func (s *DescribeAdvisorChecksResponse) SetBody(v *DescribeAdvisorChecksResponse
 }
 
 type DescribeAdvisorResourcesRequest struct {
-	Keyword    *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	Language   *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Product    *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// example:
+	//
+	// abcd
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// example:
+	//
+	// zh
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// ecs
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// example:
+	//
+	// i-bp67acfmxazb4p****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 }
 
@@ -900,8 +1369,11 @@ func (s *DescribeAdvisorResourcesRequest) SetResourceId(v string) *DescribeAdvis
 }
 
 type DescribeAdvisorResourcesResponseBody struct {
-	Data      *DescribeAdvisorResourcesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *DescribeAdvisorResourcesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 566331F9-5AB3-550F-B745-A730331F97A9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeAdvisorResourcesResponseBody) String() string {
@@ -923,10 +1395,19 @@ func (s *DescribeAdvisorResourcesResponseBody) SetRequestId(v string) *DescribeA
 }
 
 type DescribeAdvisorResourcesResponseBodyData struct {
-	PageNo   *int32                                          `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
 	PageSize *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Result   *DescribeAdvisorResourcesResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Total    *int32                                          `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 100
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeAdvisorResourcesResponseBodyData) String() string {
@@ -975,10 +1456,33 @@ func (s *DescribeAdvisorResourcesResponseBodyDataResult) SetResource(v []*Descri
 }
 
 type DescribeAdvisorResourcesResponseBodyDataResultResource struct {
-	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Product      *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//     "resourceId": "xxxxx",
+	//
+	//     "deviceAvailable": true,
+	//
+	//     ...
+	//
+	// }
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// ecs
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// i-bp67acfmxazb4p****
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// ecs-20230701
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 }
 
@@ -1045,14 +1549,17 @@ func (s *DescribeAdvisorResourcesResponse) SetBody(v *DescribeAdvisorResourcesRe
 }
 
 type DescribeCostCheckAdvicesRequest struct {
-	CheckId      *string   `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	Language     *string   `json:"Language,omitempty" xml:"Language,omitempty"`
-	PageNumber   *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionIds    []*string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
-	ResourceIds  []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
-	ResourceName *string   `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	Severity     *string   `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	AssumeAliyunIdList []*int64  `json:"AssumeAliyunIdList,omitempty" xml:"AssumeAliyunIdList,omitempty" type:"Repeated"`
+	CheckId            *string   `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	Language           *string   `json:"Language,omitempty" xml:"Language,omitempty"`
+	PageNumber         *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize           *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionIds          []*string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
+	ResourceIds        []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	ResourceName       *string   `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	Severity           *string   `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	TagKeys            []*string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
+	TagValues          []*string `json:"TagValues,omitempty" xml:"TagValues,omitempty" type:"Repeated"`
 }
 
 func (s DescribeCostCheckAdvicesRequest) String() string {
@@ -1061,6 +1568,11 @@ func (s DescribeCostCheckAdvicesRequest) String() string {
 
 func (s DescribeCostCheckAdvicesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCostCheckAdvicesRequest) SetAssumeAliyunIdList(v []*int64) *DescribeCostCheckAdvicesRequest {
+	s.AssumeAliyunIdList = v
+	return s
 }
 
 func (s *DescribeCostCheckAdvicesRequest) SetCheckId(v string) *DescribeCostCheckAdvicesRequest {
@@ -1103,15 +1615,28 @@ func (s *DescribeCostCheckAdvicesRequest) SetSeverity(v string) *DescribeCostChe
 	return s
 }
 
+func (s *DescribeCostCheckAdvicesRequest) SetTagKeys(v []*string) *DescribeCostCheckAdvicesRequest {
+	s.TagKeys = v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesRequest) SetTagValues(v []*string) *DescribeCostCheckAdvicesRequest {
+	s.TagValues = v
+	return s
+}
+
 type DescribeCostCheckAdvicesShrinkRequest struct {
-	CheckId           *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	Language          *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	PageNumber        *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionIdsShrink   *string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty"`
-	ResourceIdsShrink *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
-	ResourceName      *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	Severity          *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	AssumeAliyunIdListShrink *string `json:"AssumeAliyunIdList,omitempty" xml:"AssumeAliyunIdList,omitempty"`
+	CheckId                  *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	Language                 *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	PageNumber               *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize                 *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionIdsShrink          *string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty"`
+	ResourceIdsShrink        *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
+	ResourceName             *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	Severity                 *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	TagKeysShrink            *string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty"`
+	TagValuesShrink          *string `json:"TagValues,omitempty" xml:"TagValues,omitempty"`
 }
 
 func (s DescribeCostCheckAdvicesShrinkRequest) String() string {
@@ -1120,6 +1645,11 @@ func (s DescribeCostCheckAdvicesShrinkRequest) String() string {
 
 func (s DescribeCostCheckAdvicesShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCostCheckAdvicesShrinkRequest) SetAssumeAliyunIdListShrink(v string) *DescribeCostCheckAdvicesShrinkRequest {
+	s.AssumeAliyunIdListShrink = &v
+	return s
 }
 
 func (s *DescribeCostCheckAdvicesShrinkRequest) SetCheckId(v string) *DescribeCostCheckAdvicesShrinkRequest {
@@ -1159,6 +1689,16 @@ func (s *DescribeCostCheckAdvicesShrinkRequest) SetResourceName(v string) *Descr
 
 func (s *DescribeCostCheckAdvicesShrinkRequest) SetSeverity(v string) *DescribeCostCheckAdvicesShrinkRequest {
 	s.Severity = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesShrinkRequest) SetTagKeysShrink(v string) *DescribeCostCheckAdvicesShrinkRequest {
+	s.TagKeysShrink = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesShrinkRequest) SetTagValuesShrink(v string) *DescribeCostCheckAdvicesShrinkRequest {
+	s.TagValuesShrink = &v
 	return s
 }
 
@@ -1245,20 +1785,23 @@ func (s *DescribeCostCheckAdvicesResponseBodyData) SetTotalCount(v int32) *Descr
 }
 
 type DescribeCostCheckAdvicesResponseBodyDataAdviceList struct {
-	AliyunId     *int64                                                    `json:"AliyunId,omitempty" xml:"AliyunId,omitempty"`
-	Content      *string                                                   `json:"Content,omitempty" xml:"Content,omitempty"`
-	EndTime      *int64                                                    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	GmtDeleted   *int64                                                    `json:"GmtDeleted,omitempty" xml:"GmtDeleted,omitempty"`
-	Product      *string                                                   `json:"Product,omitempty" xml:"Product,omitempty"`
-	RegionId     *string                                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId   *string                                                   `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceName *string                                                   `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	Severity     *string                                                   `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	StartTime    *int64                                                    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Tags         []*DescribeCostCheckAdvicesResponseBodyDataAdviceListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	Url          *string                                                   `json:"Url,omitempty" xml:"Url,omitempty"`
-	UserName     *string                                                   `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	ZoneId       *string                                                   `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	AccountFolderId   *string                                                   `json:"AccountFolderId,omitempty" xml:"AccountFolderId,omitempty"`
+	AccountFolderName *string                                                   `json:"AccountFolderName,omitempty" xml:"AccountFolderName,omitempty"`
+	AliyunId          *int64                                                    `json:"AliyunId,omitempty" xml:"AliyunId,omitempty"`
+	Content           *string                                                   `json:"Content,omitempty" xml:"Content,omitempty"`
+	Email             *string                                                   `json:"Email,omitempty" xml:"Email,omitempty"`
+	EndTime           *int64                                                    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	GmtDeleted        *int64                                                    `json:"GmtDeleted,omitempty" xml:"GmtDeleted,omitempty"`
+	Product           *string                                                   `json:"Product,omitempty" xml:"Product,omitempty"`
+	RegionId          *string                                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId        *string                                                   `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceName      *string                                                   `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	Severity          *string                                                   `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	StartTime         *int64                                                    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Tags              []*DescribeCostCheckAdvicesResponseBodyDataAdviceListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Url               *string                                                   `json:"Url,omitempty" xml:"Url,omitempty"`
+	UserName          *string                                                   `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	ZoneId            *string                                                   `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeCostCheckAdvicesResponseBodyDataAdviceList) String() string {
@@ -1269,6 +1812,16 @@ func (s DescribeCostCheckAdvicesResponseBodyDataAdviceList) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeCostCheckAdvicesResponseBodyDataAdviceList) SetAccountFolderId(v string) *DescribeCostCheckAdvicesResponseBodyDataAdviceList {
+	s.AccountFolderId = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesResponseBodyDataAdviceList) SetAccountFolderName(v string) *DescribeCostCheckAdvicesResponseBodyDataAdviceList {
+	s.AccountFolderName = &v
+	return s
+}
+
 func (s *DescribeCostCheckAdvicesResponseBodyDataAdviceList) SetAliyunId(v int64) *DescribeCostCheckAdvicesResponseBodyDataAdviceList {
 	s.AliyunId = &v
 	return s
@@ -1276,6 +1829,11 @@ func (s *DescribeCostCheckAdvicesResponseBodyDataAdviceList) SetAliyunId(v int64
 
 func (s *DescribeCostCheckAdvicesResponseBodyDataAdviceList) SetContent(v string) *DescribeCostCheckAdvicesResponseBodyDataAdviceList {
 	s.Content = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesResponseBodyDataAdviceList) SetEmail(v string) *DescribeCostCheckAdvicesResponseBodyDataAdviceList {
+	s.Email = &v
 	return s
 }
 
@@ -1392,13 +1950,16 @@ func (s *DescribeCostCheckAdvicesResponse) SetBody(v *DescribeCostCheckAdvicesRe
 }
 
 type DescribeCostCheckResultsRequest struct {
-	CheckIds     []*string `json:"CheckIds,omitempty" xml:"CheckIds,omitempty" type:"Repeated"`
-	GroupBy      *string   `json:"GroupBy,omitempty" xml:"GroupBy,omitempty"`
-	Product      *string   `json:"Product,omitempty" xml:"Product,omitempty"`
-	RegionIds    []*string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
-	ResourceIds  []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
-	ResourceName *string   `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	Severity     *int32    `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	AssumeAliyunIdList []*int64  `json:"AssumeAliyunIdList,omitempty" xml:"AssumeAliyunIdList,omitempty" type:"Repeated"`
+	CheckIds           []*string `json:"CheckIds,omitempty" xml:"CheckIds,omitempty" type:"Repeated"`
+	GroupBy            *string   `json:"GroupBy,omitempty" xml:"GroupBy,omitempty"`
+	Product            *string   `json:"Product,omitempty" xml:"Product,omitempty"`
+	RegionIds          []*string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
+	ResourceIds        []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	ResourceName       *string   `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	Severity           *int32    `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	TagKeys            []*string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
+	TagValues          []*string `json:"TagValues,omitempty" xml:"TagValues,omitempty" type:"Repeated"`
 }
 
 func (s DescribeCostCheckResultsRequest) String() string {
@@ -1407,6 +1968,11 @@ func (s DescribeCostCheckResultsRequest) String() string {
 
 func (s DescribeCostCheckResultsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCostCheckResultsRequest) SetAssumeAliyunIdList(v []*int64) *DescribeCostCheckResultsRequest {
+	s.AssumeAliyunIdList = v
+	return s
 }
 
 func (s *DescribeCostCheckResultsRequest) SetCheckIds(v []*string) *DescribeCostCheckResultsRequest {
@@ -1444,14 +2010,27 @@ func (s *DescribeCostCheckResultsRequest) SetSeverity(v int32) *DescribeCostChec
 	return s
 }
 
+func (s *DescribeCostCheckResultsRequest) SetTagKeys(v []*string) *DescribeCostCheckResultsRequest {
+	s.TagKeys = v
+	return s
+}
+
+func (s *DescribeCostCheckResultsRequest) SetTagValues(v []*string) *DescribeCostCheckResultsRequest {
+	s.TagValues = v
+	return s
+}
+
 type DescribeCostCheckResultsShrinkRequest struct {
-	CheckIdsShrink    *string `json:"CheckIds,omitempty" xml:"CheckIds,omitempty"`
-	GroupBy           *string `json:"GroupBy,omitempty" xml:"GroupBy,omitempty"`
-	Product           *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	RegionIdsShrink   *string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty"`
-	ResourceIdsShrink *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
-	ResourceName      *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	Severity          *int32  `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	AssumeAliyunIdListShrink *string `json:"AssumeAliyunIdList,omitempty" xml:"AssumeAliyunIdList,omitempty"`
+	CheckIdsShrink           *string `json:"CheckIds,omitempty" xml:"CheckIds,omitempty"`
+	GroupBy                  *string `json:"GroupBy,omitempty" xml:"GroupBy,omitempty"`
+	Product                  *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	RegionIdsShrink          *string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty"`
+	ResourceIdsShrink        *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
+	ResourceName             *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	Severity                 *int32  `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	TagKeysShrink            *string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty"`
+	TagValuesShrink          *string `json:"TagValues,omitempty" xml:"TagValues,omitempty"`
 }
 
 func (s DescribeCostCheckResultsShrinkRequest) String() string {
@@ -1460,6 +2039,11 @@ func (s DescribeCostCheckResultsShrinkRequest) String() string {
 
 func (s DescribeCostCheckResultsShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCostCheckResultsShrinkRequest) SetAssumeAliyunIdListShrink(v string) *DescribeCostCheckResultsShrinkRequest {
+	s.AssumeAliyunIdListShrink = &v
+	return s
 }
 
 func (s *DescribeCostCheckResultsShrinkRequest) SetCheckIdsShrink(v string) *DescribeCostCheckResultsShrinkRequest {
@@ -1494,6 +2078,16 @@ func (s *DescribeCostCheckResultsShrinkRequest) SetResourceName(v string) *Descr
 
 func (s *DescribeCostCheckResultsShrinkRequest) SetSeverity(v int32) *DescribeCostCheckResultsShrinkRequest {
 	s.Severity = &v
+	return s
+}
+
+func (s *DescribeCostCheckResultsShrinkRequest) SetTagKeysShrink(v string) *DescribeCostCheckResultsShrinkRequest {
+	s.TagKeysShrink = &v
+	return s
+}
+
+func (s *DescribeCostCheckResultsShrinkRequest) SetTagValuesShrink(v string) *DescribeCostCheckResultsShrinkRequest {
+	s.TagValuesShrink = &v
 	return s
 }
 
@@ -1751,13 +2345,37 @@ func (s *DescribeCostCheckResultsResponse) SetBody(v *DescribeCostCheckResultsRe
 }
 
 type GetHistoryAdvicesRequest struct {
-	EndDate   *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	Language  *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	PageNum   *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Product   *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	Reverse   *bool   `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
-	Severity  *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// example:
+	//
+	// 2023-07-01
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// zh
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// ecs
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// example:
+	//
+	// true
+	Reverse *bool `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
+	// example:
+	//
+	// 1
+	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// example:
+	//
+	// 2023-07-01
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
@@ -1810,8 +2428,11 @@ func (s *GetHistoryAdvicesRequest) SetStartDate(v string) *GetHistoryAdvicesRequ
 }
 
 type GetHistoryAdvicesResponseBody struct {
-	Data      *GetHistoryAdvicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *GetHistoryAdvicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 566331F9-5AB3-550F-B745-A730331F97A9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetHistoryAdvicesResponseBody) String() string {
@@ -1833,9 +2454,15 @@ func (s *GetHistoryAdvicesResponseBody) SetRequestId(v string) *GetHistoryAdvice
 }
 
 type GetHistoryAdvicesResponseBodyData struct {
+	// example:
+	//
+	// 1
 	PageNo *int32                                     `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	Result []*GetHistoryAdvicesResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Total  *int32                                     `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 100
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s GetHistoryAdvicesResponseBodyData) String() string {
@@ -1862,14 +2489,32 @@ func (s *GetHistoryAdvicesResponseBodyData) SetTotal(v int32) *GetHistoryAdvices
 }
 
 type GetHistoryAdvicesResponseBodyDataResult struct {
+	// example:
+	//
+	// EcsHighCpuUtilization
 	CheckId     *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
 	CheckName   *string `json:"CheckName,omitempty" xml:"CheckName,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GmtCreated  *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	Product     *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	ResourceId  *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	Severity    *int32  `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	Url         *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// 2023-07-01 00:00:00
+	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// example:
+	//
+	// ecs
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// example:
+	//
+	// i-bp67acfmxazb4p****
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// 1
+	Severity *int32 `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	// example:
+	//
+	// https://ecs.console.aliyun.com/#/server/i-bp67acfmxazb4p****/detail?regionId=cn-hangzhou
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s GetHistoryAdvicesResponseBodyDataResult) String() string {
@@ -1950,6 +2595,11 @@ func (s *GetHistoryAdvicesResponse) SetBody(v *GetHistoryAdvicesResponseBody) *G
 }
 
 type GetTaskStatusByIdRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 95906135
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -1967,8 +2617,11 @@ func (s *GetTaskStatusByIdRequest) SetTaskId(v string) *GetTaskStatusByIdRequest
 }
 
 type GetTaskStatusByIdResponseBody struct {
-	Data      *GetTaskStatusByIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *GetTaskStatusByIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 566331F9-5AB3-550F-B745-A730331F97A9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetTaskStatusByIdResponseBody) String() string {
@@ -1990,7 +2643,13 @@ func (s *GetTaskStatusByIdResponseBody) SetRequestId(v string) *GetTaskStatusByI
 }
 
 type GetTaskStatusByIdResponseBodyData struct {
-	TaskId     *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 95906135
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 1
 	TaskStatus *int32 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 }
 
@@ -2042,9 +2701,21 @@ func (s *GetTaskStatusByIdResponse) SetBody(v *GetTaskStatusByIdResponseBody) *G
 }
 
 type RefreshAdvisorCheckRequest struct {
-	CheckId    *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	Language   *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	Product    *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// example:
+	//
+	// EcsHighCpuUtilization
+	CheckId *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	// example:
+	//
+	// zh
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// example:
+	//
+	// ecs
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// example:
+	//
+	// i-bp67acfmxazb4p****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 }
 
@@ -2077,8 +2748,11 @@ func (s *RefreshAdvisorCheckRequest) SetResourceId(v string) *RefreshAdvisorChec
 }
 
 type RefreshAdvisorCheckResponseBody struct {
-	Data      *RefreshAdvisorCheckResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *RefreshAdvisorCheckResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 566331F9-5AB3-550F-B745-A730331F97A9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RefreshAdvisorCheckResponseBody) String() string {
@@ -2100,8 +2774,17 @@ func (s *RefreshAdvisorCheckResponseBody) SetRequestId(v string) *RefreshAdvisor
 }
 
 type RefreshAdvisorCheckResponseBodyData struct {
-	Success *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TaskId  *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 12345678
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// manual-1be17af1121b4974822e69daee4f2481
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
@@ -2157,8 +2840,203 @@ func (s *RefreshAdvisorCheckResponse) SetBody(v *RefreshAdvisorCheckResponseBody
 	return s
 }
 
+type RefreshAdvisorCostCheckRequest struct {
+	AssumeAliyunIdList []*int64  `json:"AssumeAliyunIdList,omitempty" xml:"AssumeAliyunIdList,omitempty" type:"Repeated"`
+	CheckIds           []*string `json:"CheckIds,omitempty" xml:"CheckIds,omitempty" type:"Repeated"`
+	Product            *string   `json:"Product,omitempty" xml:"Product,omitempty"`
+	RefreshResource    *bool     `json:"RefreshResource,omitempty" xml:"RefreshResource,omitempty"`
+	ResourceIds        []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+}
+
+func (s RefreshAdvisorCostCheckRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshAdvisorCostCheckRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshAdvisorCostCheckRequest) SetAssumeAliyunIdList(v []*int64) *RefreshAdvisorCostCheckRequest {
+	s.AssumeAliyunIdList = v
+	return s
+}
+
+func (s *RefreshAdvisorCostCheckRequest) SetCheckIds(v []*string) *RefreshAdvisorCostCheckRequest {
+	s.CheckIds = v
+	return s
+}
+
+func (s *RefreshAdvisorCostCheckRequest) SetProduct(v string) *RefreshAdvisorCostCheckRequest {
+	s.Product = &v
+	return s
+}
+
+func (s *RefreshAdvisorCostCheckRequest) SetRefreshResource(v bool) *RefreshAdvisorCostCheckRequest {
+	s.RefreshResource = &v
+	return s
+}
+
+func (s *RefreshAdvisorCostCheckRequest) SetResourceIds(v []*string) *RefreshAdvisorCostCheckRequest {
+	s.ResourceIds = v
+	return s
+}
+
+type RefreshAdvisorCostCheckShrinkRequest struct {
+	AssumeAliyunIdListShrink *string `json:"AssumeAliyunIdList,omitempty" xml:"AssumeAliyunIdList,omitempty"`
+	CheckIdsShrink           *string `json:"CheckIds,omitempty" xml:"CheckIds,omitempty"`
+	Product                  *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	RefreshResource          *bool   `json:"RefreshResource,omitempty" xml:"RefreshResource,omitempty"`
+	ResourceIdsShrink        *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
+}
+
+func (s RefreshAdvisorCostCheckShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshAdvisorCostCheckShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshAdvisorCostCheckShrinkRequest) SetAssumeAliyunIdListShrink(v string) *RefreshAdvisorCostCheckShrinkRequest {
+	s.AssumeAliyunIdListShrink = &v
+	return s
+}
+
+func (s *RefreshAdvisorCostCheckShrinkRequest) SetCheckIdsShrink(v string) *RefreshAdvisorCostCheckShrinkRequest {
+	s.CheckIdsShrink = &v
+	return s
+}
+
+func (s *RefreshAdvisorCostCheckShrinkRequest) SetProduct(v string) *RefreshAdvisorCostCheckShrinkRequest {
+	s.Product = &v
+	return s
+}
+
+func (s *RefreshAdvisorCostCheckShrinkRequest) SetRefreshResource(v bool) *RefreshAdvisorCostCheckShrinkRequest {
+	s.RefreshResource = &v
+	return s
+}
+
+func (s *RefreshAdvisorCostCheckShrinkRequest) SetResourceIdsShrink(v string) *RefreshAdvisorCostCheckShrinkRequest {
+	s.ResourceIdsShrink = &v
+	return s
+}
+
+type RefreshAdvisorCostCheckResponseBody struct {
+	Code      *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *RefreshAdvisorCostCheckResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s RefreshAdvisorCostCheckResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshAdvisorCostCheckResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshAdvisorCostCheckResponseBody) SetCode(v string) *RefreshAdvisorCostCheckResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RefreshAdvisorCostCheckResponseBody) SetData(v *RefreshAdvisorCostCheckResponseBodyData) *RefreshAdvisorCostCheckResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *RefreshAdvisorCostCheckResponseBody) SetMessage(v string) *RefreshAdvisorCostCheckResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RefreshAdvisorCostCheckResponseBody) SetRequestId(v string) *RefreshAdvisorCostCheckResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RefreshAdvisorCostCheckResponseBody) SetSuccess(v bool) *RefreshAdvisorCostCheckResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RefreshAdvisorCostCheckResponseBodyData struct {
+	CommandId     *string `json:"CommandId,omitempty" xml:"CommandId,omitempty"`
+	ManagerTaskId *int64  `json:"ManagerTaskId,omitempty" xml:"ManagerTaskId,omitempty"`
+	Success       *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TaskId        *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s RefreshAdvisorCostCheckResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshAdvisorCostCheckResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshAdvisorCostCheckResponseBodyData) SetCommandId(v string) *RefreshAdvisorCostCheckResponseBodyData {
+	s.CommandId = &v
+	return s
+}
+
+func (s *RefreshAdvisorCostCheckResponseBodyData) SetManagerTaskId(v int64) *RefreshAdvisorCostCheckResponseBodyData {
+	s.ManagerTaskId = &v
+	return s
+}
+
+func (s *RefreshAdvisorCostCheckResponseBodyData) SetSuccess(v bool) *RefreshAdvisorCostCheckResponseBodyData {
+	s.Success = &v
+	return s
+}
+
+func (s *RefreshAdvisorCostCheckResponseBodyData) SetTaskId(v int64) *RefreshAdvisorCostCheckResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type RefreshAdvisorCostCheckResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RefreshAdvisorCostCheckResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RefreshAdvisorCostCheckResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshAdvisorCostCheckResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshAdvisorCostCheckResponse) SetHeaders(v map[string]*string) *RefreshAdvisorCostCheckResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RefreshAdvisorCostCheckResponse) SetStatusCode(v int32) *RefreshAdvisorCostCheckResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RefreshAdvisorCostCheckResponse) SetBody(v *RefreshAdvisorCostCheckResponseBody) *RefreshAdvisorCostCheckResponse {
+	s.Body = v
+	return s
+}
+
 type RefreshAdvisorResourceRequest struct {
-	Product    *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecs
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// example:
+	//
+	// i-bp67acfmxazb4p****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 }
 
@@ -2181,7 +3059,13 @@ func (s *RefreshAdvisorResourceRequest) SetResourceId(v string) *RefreshAdvisorR
 }
 
 type RefreshAdvisorResourceResponseBody struct {
-	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 12345678
+	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 566331F9-5AB3-550F-B745-A730331F97A9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2233,14 +3117,17 @@ func (s *RefreshAdvisorResourceResponse) SetBody(v *RefreshAdvisorResourceRespon
 }
 
 type ReportBizAlertInfoRequest struct {
-	AlertDescription *string  `json:"AlertDescription,omitempty" xml:"AlertDescription,omitempty"`
-	AlertDetail      *string  `json:"AlertDetail,omitempty" xml:"AlertDetail,omitempty"`
-	AlertGrade       *string  `json:"AlertGrade,omitempty" xml:"AlertGrade,omitempty"`
-	AlertLabels      *string  `json:"AlertLabels,omitempty" xml:"AlertLabels,omitempty"`
-	AlertScene       *string  `json:"AlertScene,omitempty" xml:"AlertScene,omitempty"`
-	AlertToken       *string  `json:"AlertToken,omitempty" xml:"AlertToken,omitempty"`
-	AlertUid         []*int64 `json:"AlertUid,omitempty" xml:"AlertUid,omitempty" type:"Repeated"`
-	Language         *string  `json:"Language,omitempty" xml:"Language,omitempty"`
+	AlertDescription *string `json:"AlertDescription,omitempty" xml:"AlertDescription,omitempty"`
+	// This parameter is required.
+	AlertDetail *string `json:"AlertDetail,omitempty" xml:"AlertDetail,omitempty"`
+	AlertGrade  *string `json:"AlertGrade,omitempty" xml:"AlertGrade,omitempty"`
+	AlertLabels *string `json:"AlertLabels,omitempty" xml:"AlertLabels,omitempty"`
+	// This parameter is required.
+	AlertScene *string `json:"AlertScene,omitempty" xml:"AlertScene,omitempty"`
+	// This parameter is required.
+	AlertToken *string  `json:"AlertToken,omitempty" xml:"AlertToken,omitempty"`
+	AlertUid   []*int64 `json:"AlertUid,omitempty" xml:"AlertUid,omitempty" type:"Repeated"`
+	Language   *string  `json:"Language,omitempty" xml:"Language,omitempty"`
 }
 
 func (s ReportBizAlertInfoRequest) String() string {
@@ -2293,13 +3180,16 @@ func (s *ReportBizAlertInfoRequest) SetLanguage(v string) *ReportBizAlertInfoReq
 
 type ReportBizAlertInfoShrinkRequest struct {
 	AlertDescription *string `json:"AlertDescription,omitempty" xml:"AlertDescription,omitempty"`
-	AlertDetail      *string `json:"AlertDetail,omitempty" xml:"AlertDetail,omitempty"`
-	AlertGrade       *string `json:"AlertGrade,omitempty" xml:"AlertGrade,omitempty"`
-	AlertLabels      *string `json:"AlertLabels,omitempty" xml:"AlertLabels,omitempty"`
-	AlertScene       *string `json:"AlertScene,omitempty" xml:"AlertScene,omitempty"`
-	AlertToken       *string `json:"AlertToken,omitempty" xml:"AlertToken,omitempty"`
-	AlertUidShrink   *string `json:"AlertUid,omitempty" xml:"AlertUid,omitempty"`
-	Language         *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// This parameter is required.
+	AlertDetail *string `json:"AlertDetail,omitempty" xml:"AlertDetail,omitempty"`
+	AlertGrade  *string `json:"AlertGrade,omitempty" xml:"AlertGrade,omitempty"`
+	AlertLabels *string `json:"AlertLabels,omitempty" xml:"AlertLabels,omitempty"`
+	// This parameter is required.
+	AlertScene *string `json:"AlertScene,omitempty" xml:"AlertScene,omitempty"`
+	// This parameter is required.
+	AlertToken     *string `json:"AlertToken,omitempty" xml:"AlertToken,omitempty"`
+	AlertUidShrink *string `json:"AlertUid,omitempty" xml:"AlertUid,omitempty"`
+	Language       *string `json:"Language,omitempty" xml:"Language,omitempty"`
 }
 
 func (s ReportBizAlertInfoShrinkRequest) String() string {
@@ -2484,6 +3374,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// @param request - DescribeAdvicesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAdvicesResponse
 func (client *Client) DescribeAdvicesWithOptions(request *DescribeAdvicesRequest, runtime *util.RuntimeOptions) (_result *DescribeAdvicesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2537,6 +3432,9 @@ func (client *Client) DescribeAdvicesWithOptions(request *DescribeAdvicesRequest
 	return _result, _err
 }
 
+// @param request - DescribeAdvicesRequest
+//
+// @return DescribeAdvicesResponse
 func (client *Client) DescribeAdvices(request *DescribeAdvicesRequest) (_result *DescribeAdvicesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAdvicesResponse{}
@@ -2548,6 +3446,15 @@ func (client *Client) DescribeAdvices(request *DescribeAdvicesRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// DescribeAdvicesFlat分页
+//
+// @param request - DescribeAdvicesFlatPageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAdvicesFlatPageResponse
 func (client *Client) DescribeAdvicesFlatPageWithOptions(request *DescribeAdvicesFlatPageRequest, runtime *util.RuntimeOptions) (_result *DescribeAdvicesFlatPageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2605,6 +3512,13 @@ func (client *Client) DescribeAdvicesFlatPageWithOptions(request *DescribeAdvice
 	return _result, _err
 }
 
+// Summary:
+//
+// DescribeAdvicesFlat分页
+//
+// @param request - DescribeAdvicesFlatPageRequest
+//
+// @return DescribeAdvicesFlatPageResponse
 func (client *Client) DescribeAdvicesFlatPage(request *DescribeAdvicesFlatPageRequest) (_result *DescribeAdvicesFlatPageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAdvicesFlatPageResponse{}
@@ -2616,6 +3530,15 @@ func (client *Client) DescribeAdvicesFlatPage(request *DescribeAdvicesFlatPageRe
 	return _result, _err
 }
 
+// Summary:
+//
+// DescribeAdvices分页
+//
+// @param request - DescribeAdvicesPageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAdvicesPageResponse
 func (client *Client) DescribeAdvicesPageWithOptions(request *DescribeAdvicesPageRequest, runtime *util.RuntimeOptions) (_result *DescribeAdvicesPageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2673,6 +3596,13 @@ func (client *Client) DescribeAdvicesPageWithOptions(request *DescribeAdvicesPag
 	return _result, _err
 }
 
+// Summary:
+//
+// DescribeAdvices分页
+//
+// @param request - DescribeAdvicesPageRequest
+//
+// @return DescribeAdvicesPageResponse
 func (client *Client) DescribeAdvicesPage(request *DescribeAdvicesPageRequest) (_result *DescribeAdvicesPageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAdvicesPageResponse{}
@@ -2684,6 +3614,11 @@ func (client *Client) DescribeAdvicesPage(request *DescribeAdvicesPageRequest) (
 	return _result, _err
 }
 
+// @param request - DescribeAdvisorChecksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAdvisorChecksResponse
 func (client *Client) DescribeAdvisorChecksWithOptions(request *DescribeAdvisorChecksRequest, runtime *util.RuntimeOptions) (_result *DescribeAdvisorChecksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2721,6 +3656,9 @@ func (client *Client) DescribeAdvisorChecksWithOptions(request *DescribeAdvisorC
 	return _result, _err
 }
 
+// @param request - DescribeAdvisorChecksRequest
+//
+// @return DescribeAdvisorChecksResponse
 func (client *Client) DescribeAdvisorChecks(request *DescribeAdvisorChecksRequest) (_result *DescribeAdvisorChecksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAdvisorChecksResponse{}
@@ -2732,6 +3670,11 @@ func (client *Client) DescribeAdvisorChecks(request *DescribeAdvisorChecksReques
 	return _result, _err
 }
 
+// @param request - DescribeAdvisorResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAdvisorResourcesResponse
 func (client *Client) DescribeAdvisorResourcesWithOptions(request *DescribeAdvisorResourcesRequest, runtime *util.RuntimeOptions) (_result *DescribeAdvisorResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2785,6 +3728,9 @@ func (client *Client) DescribeAdvisorResourcesWithOptions(request *DescribeAdvis
 	return _result, _err
 }
 
+// @param request - DescribeAdvisorResourcesRequest
+//
+// @return DescribeAdvisorResourcesResponse
 func (client *Client) DescribeAdvisorResources(request *DescribeAdvisorResourcesRequest) (_result *DescribeAdvisorResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAdvisorResourcesResponse{}
@@ -2796,6 +3742,15 @@ func (client *Client) DescribeAdvisorResources(request *DescribeAdvisorResources
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询成本优化结果详情
+//
+// @param tmpReq - DescribeCostCheckAdvicesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCostCheckAdvicesResponse
 func (client *Client) DescribeCostCheckAdvicesWithOptions(tmpReq *DescribeCostCheckAdvicesRequest, runtime *util.RuntimeOptions) (_result *DescribeCostCheckAdvicesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -2803,6 +3758,10 @@ func (client *Client) DescribeCostCheckAdvicesWithOptions(tmpReq *DescribeCostCh
 	}
 	request := &DescribeCostCheckAdvicesShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AssumeAliyunIdList)) {
+		request.AssumeAliyunIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AssumeAliyunIdList, tea.String("AssumeAliyunIdList"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.RegionIds)) {
 		request.RegionIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RegionIds, tea.String("RegionIds"), tea.String("json"))
 	}
@@ -2811,7 +3770,19 @@ func (client *Client) DescribeCostCheckAdvicesWithOptions(tmpReq *DescribeCostCh
 		request.ResourceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceIds, tea.String("ResourceIds"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.TagKeys)) {
+		request.TagKeysShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagKeys, tea.String("TagKeys"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TagValues)) {
+		request.TagValuesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagValues, tea.String("TagValues"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssumeAliyunIdListShrink)) {
+		query["AssumeAliyunIdList"] = request.AssumeAliyunIdListShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CheckId)) {
 		query["CheckId"] = request.CheckId
 	}
@@ -2844,6 +3815,14 @@ func (client *Client) DescribeCostCheckAdvicesWithOptions(tmpReq *DescribeCostCh
 		query["Severity"] = request.Severity
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TagKeysShrink)) {
+		query["TagKeys"] = request.TagKeysShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagValuesShrink)) {
+		query["TagValues"] = request.TagValuesShrink
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2867,6 +3846,13 @@ func (client *Client) DescribeCostCheckAdvicesWithOptions(tmpReq *DescribeCostCh
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询成本优化结果详情
+//
+// @param request - DescribeCostCheckAdvicesRequest
+//
+// @return DescribeCostCheckAdvicesResponse
 func (client *Client) DescribeCostCheckAdvices(request *DescribeCostCheckAdvicesRequest) (_result *DescribeCostCheckAdvicesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCostCheckAdvicesResponse{}
@@ -2878,6 +3864,15 @@ func (client *Client) DescribeCostCheckAdvices(request *DescribeCostCheckAdvices
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询巡检项聚合成本优化结果概览
+//
+// @param tmpReq - DescribeCostCheckResultsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCostCheckResultsResponse
 func (client *Client) DescribeCostCheckResultsWithOptions(tmpReq *DescribeCostCheckResultsRequest, runtime *util.RuntimeOptions) (_result *DescribeCostCheckResultsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -2885,6 +3880,10 @@ func (client *Client) DescribeCostCheckResultsWithOptions(tmpReq *DescribeCostCh
 	}
 	request := &DescribeCostCheckResultsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AssumeAliyunIdList)) {
+		request.AssumeAliyunIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AssumeAliyunIdList, tea.String("AssumeAliyunIdList"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.CheckIds)) {
 		request.CheckIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CheckIds, tea.String("CheckIds"), tea.String("json"))
 	}
@@ -2897,7 +3896,19 @@ func (client *Client) DescribeCostCheckResultsWithOptions(tmpReq *DescribeCostCh
 		request.ResourceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceIds, tea.String("ResourceIds"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.TagKeys)) {
+		request.TagKeysShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagKeys, tea.String("TagKeys"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TagValues)) {
+		request.TagValuesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagValues, tea.String("TagValues"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssumeAliyunIdListShrink)) {
+		query["AssumeAliyunIdList"] = request.AssumeAliyunIdListShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CheckIdsShrink)) {
 		query["CheckIds"] = request.CheckIdsShrink
 	}
@@ -2926,6 +3937,14 @@ func (client *Client) DescribeCostCheckResultsWithOptions(tmpReq *DescribeCostCh
 		query["Severity"] = request.Severity
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TagKeysShrink)) {
+		query["TagKeys"] = request.TagKeysShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagValuesShrink)) {
+		query["TagValues"] = request.TagValuesShrink
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2949,6 +3968,13 @@ func (client *Client) DescribeCostCheckResultsWithOptions(tmpReq *DescribeCostCh
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询巡检项聚合成本优化结果概览
+//
+// @param request - DescribeCostCheckResultsRequest
+//
+// @return DescribeCostCheckResultsResponse
 func (client *Client) DescribeCostCheckResults(request *DescribeCostCheckResultsRequest) (_result *DescribeCostCheckResultsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCostCheckResultsResponse{}
@@ -2960,6 +3986,11 @@ func (client *Client) DescribeCostCheckResults(request *DescribeCostCheckResults
 	return _result, _err
 }
 
+// @param request - GetHistoryAdvicesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetHistoryAdvicesResponse
 func (client *Client) GetHistoryAdvicesWithOptions(request *GetHistoryAdvicesRequest, runtime *util.RuntimeOptions) (_result *GetHistoryAdvicesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3021,6 +4052,9 @@ func (client *Client) GetHistoryAdvicesWithOptions(request *GetHistoryAdvicesReq
 	return _result, _err
 }
 
+// @param request - GetHistoryAdvicesRequest
+//
+// @return GetHistoryAdvicesResponse
 func (client *Client) GetHistoryAdvices(request *GetHistoryAdvicesRequest) (_result *GetHistoryAdvicesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetHistoryAdvicesResponse{}
@@ -3032,6 +4066,15 @@ func (client *Client) GetHistoryAdvices(request *GetHistoryAdvicesRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据id获取任务状态
+//
+// @param request - GetTaskStatusByIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTaskStatusByIdResponse
 func (client *Client) GetTaskStatusByIdWithOptions(request *GetTaskStatusByIdRequest, runtime *util.RuntimeOptions) (_result *GetTaskStatusByIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3061,6 +4104,13 @@ func (client *Client) GetTaskStatusByIdWithOptions(request *GetTaskStatusByIdReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据id获取任务状态
+//
+// @param request - GetTaskStatusByIdRequest
+//
+// @return GetTaskStatusByIdResponse
 func (client *Client) GetTaskStatusById(request *GetTaskStatusByIdRequest) (_result *GetTaskStatusByIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTaskStatusByIdResponse{}
@@ -3072,6 +4122,11 @@ func (client *Client) GetTaskStatusById(request *GetTaskStatusByIdRequest) (_res
 	return _result, _err
 }
 
+// @param request - RefreshAdvisorCheckRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RefreshAdvisorCheckResponse
 func (client *Client) RefreshAdvisorCheckWithOptions(request *RefreshAdvisorCheckRequest, runtime *util.RuntimeOptions) (_result *RefreshAdvisorCheckResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3117,6 +4172,9 @@ func (client *Client) RefreshAdvisorCheckWithOptions(request *RefreshAdvisorChec
 	return _result, _err
 }
 
+// @param request - RefreshAdvisorCheckRequest
+//
+// @return RefreshAdvisorCheckResponse
 func (client *Client) RefreshAdvisorCheck(request *RefreshAdvisorCheckRequest) (_result *RefreshAdvisorCheckResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RefreshAdvisorCheckResponse{}
@@ -3128,6 +4186,101 @@ func (client *Client) RefreshAdvisorCheck(request *RefreshAdvisorCheckRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 发起成本优化巡检
+//
+// @param tmpReq - RefreshAdvisorCostCheckRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RefreshAdvisorCostCheckResponse
+func (client *Client) RefreshAdvisorCostCheckWithOptions(tmpReq *RefreshAdvisorCostCheckRequest, runtime *util.RuntimeOptions) (_result *RefreshAdvisorCostCheckResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RefreshAdvisorCostCheckShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AssumeAliyunIdList)) {
+		request.AssumeAliyunIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AssumeAliyunIdList, tea.String("AssumeAliyunIdList"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.CheckIds)) {
+		request.CheckIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CheckIds, tea.String("CheckIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ResourceIds)) {
+		request.ResourceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceIds, tea.String("ResourceIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssumeAliyunIdListShrink)) {
+		query["AssumeAliyunIdList"] = request.AssumeAliyunIdListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CheckIdsShrink)) {
+		query["CheckIds"] = request.CheckIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Product)) {
+		query["Product"] = request.Product
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RefreshResource)) {
+		query["RefreshResource"] = request.RefreshResource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIdsShrink)) {
+		query["ResourceIds"] = request.ResourceIdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RefreshAdvisorCostCheck"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RefreshAdvisorCostCheckResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 发起成本优化巡检
+//
+// @param request - RefreshAdvisorCostCheckRequest
+//
+// @return RefreshAdvisorCostCheckResponse
+func (client *Client) RefreshAdvisorCostCheck(request *RefreshAdvisorCostCheckRequest) (_result *RefreshAdvisorCostCheckResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RefreshAdvisorCostCheckResponse{}
+	_body, _err := client.RefreshAdvisorCostCheckWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - RefreshAdvisorResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RefreshAdvisorResourceResponse
 func (client *Client) RefreshAdvisorResourceWithOptions(request *RefreshAdvisorResourceRequest, runtime *util.RuntimeOptions) (_result *RefreshAdvisorResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3165,6 +4318,9 @@ func (client *Client) RefreshAdvisorResourceWithOptions(request *RefreshAdvisorR
 	return _result, _err
 }
 
+// @param request - RefreshAdvisorResourceRequest
+//
+// @return RefreshAdvisorResourceResponse
 func (client *Client) RefreshAdvisorResource(request *RefreshAdvisorResourceRequest) (_result *RefreshAdvisorResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RefreshAdvisorResourceResponse{}
@@ -3176,6 +4332,15 @@ func (client *Client) RefreshAdvisorResource(request *RefreshAdvisorResourceRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 上报用户业务报警信息
+//
+// @param tmpReq - ReportBizAlertInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReportBizAlertInfoResponse
 func (client *Client) ReportBizAlertInfoWithOptions(tmpReq *ReportBizAlertInfoRequest, runtime *util.RuntimeOptions) (_result *ReportBizAlertInfoResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -3243,6 +4408,13 @@ func (client *Client) ReportBizAlertInfoWithOptions(tmpReq *ReportBizAlertInfoRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 上报用户业务报警信息
+//
+// @param request - ReportBizAlertInfoRequest
+//
+// @return ReportBizAlertInfoResponse
 func (client *Client) ReportBizAlertInfo(request *ReportBizAlertInfoRequest) (_result *ReportBizAlertInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReportBizAlertInfoResponse{}
