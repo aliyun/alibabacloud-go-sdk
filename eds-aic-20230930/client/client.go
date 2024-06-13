@@ -9,6 +9,35 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type DataImageRegionDistributeMapValue struct {
+	// example:
+	//
+	// AVAILABLE
+	DistributeStatus *string `json:"DistributeStatus,omitempty" xml:"DistributeStatus,omitempty"`
+	// example:
+	//
+	// 100%
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+}
+
+func (s DataImageRegionDistributeMapValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataImageRegionDistributeMapValue) GoString() string {
+	return s.String()
+}
+
+func (s *DataImageRegionDistributeMapValue) SetDistributeStatus(v string) *DataImageRegionDistributeMapValue {
+	s.DistributeStatus = &v
+	return s
+}
+
+func (s *DataImageRegionDistributeMapValue) SetProgress(v string) *DataImageRegionDistributeMapValue {
+	s.Progress = &v
+	return s
+}
+
 type AttachKeyPairRequest struct {
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// This parameter is required.
@@ -2800,6 +2829,259 @@ func (s *DescribeBackupFilesResponse) SetBody(v *DescribeBackupFilesResponseBody
 	return s
 }
 
+type DescribeImageListRequest struct {
+	// example:
+	//
+	// imgc-075cllfeuazh0****
+	ImageId   *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// System
+	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// AAAAAV3MpHK1AP0pfERHZN5pu6kw9dGL5jves2FS9RLq****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// AVAILABLE
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeImageListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageListRequest) SetImageId(v string) *DescribeImageListRequest {
+	s.ImageId = &v
+	return s
+}
+
+func (s *DescribeImageListRequest) SetImageName(v string) *DescribeImageListRequest {
+	s.ImageName = &v
+	return s
+}
+
+func (s *DescribeImageListRequest) SetImageType(v string) *DescribeImageListRequest {
+	s.ImageType = &v
+	return s
+}
+
+func (s *DescribeImageListRequest) SetMaxResults(v int32) *DescribeImageListRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeImageListRequest) SetNextToken(v string) *DescribeImageListRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeImageListRequest) SetStatus(v string) *DescribeImageListRequest {
+	s.Status = &v
+	return s
+}
+
+type DescribeImageListResponseBody struct {
+	Data []*DescribeImageListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// AAAAAV3MpHK1AP0pfERHZN5pu6l5V9uON****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 620740FF-492F-5956-B1BA-361E966C0269
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 30
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeImageListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageListResponseBody) SetData(v []*DescribeImageListResponseBodyData) *DescribeImageListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeImageListResponseBody) SetNextToken(v string) *DescribeImageListResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeImageListResponseBody) SetRequestId(v string) *DescribeImageListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeImageListResponseBody) SetTotalCount(v int32) *DescribeImageListResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeImageListResponseBodyData struct {
+	// example:
+	//
+	// 117819727354****
+	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// example:
+	//
+	// description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 2024-02-01 10:56:36
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2024-02-01 10:56:36
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// imgc-075cllfeuazh****
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// IMAGE
+	ImageName                *string                                       `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	ImageRegionDistributeMap map[string]*DataImageRegionDistributeMapValue `json:"ImageRegionDistributeMap,omitempty" xml:"ImageRegionDistributeMap,omitempty"`
+	ImageRegionList          []*string                                     `json:"ImageRegionList,omitempty" xml:"ImageRegionList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// System
+	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	// example:
+	//
+	// zh
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// example:
+	//
+	// AVAILABLE
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// Android 12
+	SystemType *string `json:"SystemType,omitempty" xml:"SystemType,omitempty"`
+}
+
+func (s DescribeImageListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageListResponseBodyData) SetAliUid(v int64) *DescribeImageListResponseBodyData {
+	s.AliUid = &v
+	return s
+}
+
+func (s *DescribeImageListResponseBodyData) SetDescription(v string) *DescribeImageListResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeImageListResponseBodyData) SetGmtCreate(v string) *DescribeImageListResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeImageListResponseBodyData) SetGmtModified(v string) *DescribeImageListResponseBodyData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeImageListResponseBodyData) SetImageId(v string) *DescribeImageListResponseBodyData {
+	s.ImageId = &v
+	return s
+}
+
+func (s *DescribeImageListResponseBodyData) SetImageName(v string) *DescribeImageListResponseBodyData {
+	s.ImageName = &v
+	return s
+}
+
+func (s *DescribeImageListResponseBodyData) SetImageRegionDistributeMap(v map[string]*DataImageRegionDistributeMapValue) *DescribeImageListResponseBodyData {
+	s.ImageRegionDistributeMap = v
+	return s
+}
+
+func (s *DescribeImageListResponseBodyData) SetImageRegionList(v []*string) *DescribeImageListResponseBodyData {
+	s.ImageRegionList = v
+	return s
+}
+
+func (s *DescribeImageListResponseBodyData) SetImageType(v string) *DescribeImageListResponseBodyData {
+	s.ImageType = &v
+	return s
+}
+
+func (s *DescribeImageListResponseBodyData) SetLanguage(v string) *DescribeImageListResponseBodyData {
+	s.Language = &v
+	return s
+}
+
+func (s *DescribeImageListResponseBodyData) SetStatus(v string) *DescribeImageListResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeImageListResponseBodyData) SetSystemType(v string) *DescribeImageListResponseBodyData {
+	s.SystemType = &v
+	return s
+}
+
+type DescribeImageListResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeImageListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeImageListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageListResponse) SetHeaders(v map[string]*string) *DescribeImageListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeImageListResponse) SetStatusCode(v int32) *DescribeImageListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeImageListResponse) SetBody(v *DescribeImageListResponseBody) *DescribeImageListResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeInvocationsRequest struct {
 	// This parameter is required.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
@@ -4784,6 +5066,72 @@ func (s *ModifyPolicyGroupResponse) SetBody(v *ModifyPolicyGroupResponseBody) *M
 	return s
 }
 
+type RebootAndroidInstancesInGroupRequest struct {
+	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
+}
+
+func (s RebootAndroidInstancesInGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebootAndroidInstancesInGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RebootAndroidInstancesInGroupRequest) SetAndroidInstanceIds(v []*string) *RebootAndroidInstancesInGroupRequest {
+	s.AndroidInstanceIds = v
+	return s
+}
+
+type RebootAndroidInstancesInGroupResponseBody struct {
+	// example:
+	//
+	// 227CBB4C-F5DC-589D-A667-C5CA3D52****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RebootAndroidInstancesInGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebootAndroidInstancesInGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RebootAndroidInstancesInGroupResponseBody) SetRequestId(v string) *RebootAndroidInstancesInGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RebootAndroidInstancesInGroupResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RebootAndroidInstancesInGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RebootAndroidInstancesInGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebootAndroidInstancesInGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RebootAndroidInstancesInGroupResponse) SetHeaders(v map[string]*string) *RebootAndroidInstancesInGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RebootAndroidInstancesInGroupResponse) SetStatusCode(v int32) *RebootAndroidInstancesInGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RebootAndroidInstancesInGroupResponse) SetBody(v *RebootAndroidInstancesInGroupResponseBody) *RebootAndroidInstancesInGroupResponse {
+	s.Body = v
+	return s
+}
+
 type RecoveryFileRequest struct {
 	// This parameter is required.
 	AndroidInstanceIdList []*string `json:"AndroidInstanceIdList,omitempty" xml:"AndroidInstanceIdList,omitempty" type:"Repeated"`
@@ -5461,6 +5809,72 @@ func (s *StartAndroidInstanceResponse) SetStatusCode(v int32) *StartAndroidInsta
 }
 
 func (s *StartAndroidInstanceResponse) SetBody(v *StartAndroidInstanceResponseBody) *StartAndroidInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type StopAndroidInstanceRequest struct {
+	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
+}
+
+func (s StopAndroidInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopAndroidInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopAndroidInstanceRequest) SetAndroidInstanceIds(v []*string) *StopAndroidInstanceRequest {
+	s.AndroidInstanceIds = v
+	return s
+}
+
+type StopAndroidInstanceResponseBody struct {
+	// example:
+	//
+	// E38B41A8-8E00-5AE4-A957-6636ACB8****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StopAndroidInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopAndroidInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopAndroidInstanceResponseBody) SetRequestId(v string) *StopAndroidInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StopAndroidInstanceResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopAndroidInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StopAndroidInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopAndroidInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopAndroidInstanceResponse) SetHeaders(v map[string]*string) *StopAndroidInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopAndroidInstanceResponse) SetStatusCode(v int32) *StopAndroidInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopAndroidInstanceResponse) SetBody(v *StopAndroidInstanceResponseBody) *StopAndroidInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -7159,6 +7573,78 @@ func (client *Client) DescribeBackupFiles(request *DescribeBackupFilesRequest) (
 	return _result, _err
 }
 
+// @param request - DescribeImageListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeImageListResponse
+func (client *Client) DescribeImageListWithOptions(request *DescribeImageListRequest, runtime *util.RuntimeOptions) (_result *DescribeImageListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		body["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageName)) {
+		body["ImageName"] = request.ImageName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageType)) {
+		body["ImageType"] = request.ImageType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeImageList"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeImageListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeImageListRequest
+//
+// @return DescribeImageListResponse
+func (client *Client) DescribeImageList(request *DescribeImageListRequest) (_result *DescribeImageListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeImageListResponse{}
+	_body, _err := client.DescribeImageListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // 查询命令结果
@@ -8290,6 +8776,66 @@ func (client *Client) ModifyPolicyGroup(request *ModifyPolicyGroupRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 重启安卓实例
+//
+// @param request - RebootAndroidInstancesInGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RebootAndroidInstancesInGroupResponse
+func (client *Client) RebootAndroidInstancesInGroupWithOptions(request *RebootAndroidInstancesInGroupRequest, runtime *util.RuntimeOptions) (_result *RebootAndroidInstancesInGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AndroidInstanceIds)) {
+		query["AndroidInstanceIds"] = request.AndroidInstanceIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RebootAndroidInstancesInGroup"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RebootAndroidInstancesInGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 重启安卓实例
+//
+// @param request - RebootAndroidInstancesInGroupRequest
+//
+// @return RebootAndroidInstancesInGroupResponse
+func (client *Client) RebootAndroidInstancesInGroup(request *RebootAndroidInstancesInGroupRequest) (_result *RebootAndroidInstancesInGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RebootAndroidInstancesInGroupResponse{}
+	_body, _err := client.RebootAndroidInstancesInGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - RecoveryFileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8743,6 +9289,66 @@ func (client *Client) StartAndroidInstance(request *StartAndroidInstanceRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &StartAndroidInstanceResponse{}
 	_body, _err := client.StartAndroidInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 实例关机
+//
+// @param request - StopAndroidInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopAndroidInstanceResponse
+func (client *Client) StopAndroidInstanceWithOptions(request *StopAndroidInstanceRequest, runtime *util.RuntimeOptions) (_result *StopAndroidInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AndroidInstanceIds)) {
+		query["AndroidInstanceIds"] = request.AndroidInstanceIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopAndroidInstance"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopAndroidInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 实例关机
+//
+// @param request - StopAndroidInstanceRequest
+//
+// @return StopAndroidInstanceResponse
+func (client *Client) StopAndroidInstance(request *StopAndroidInstanceRequest) (_result *StopAndroidInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopAndroidInstanceResponse{}
+	_body, _err := client.StopAndroidInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
