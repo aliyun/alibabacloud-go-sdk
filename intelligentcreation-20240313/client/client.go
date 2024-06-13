@@ -253,6 +253,8 @@ func (s *ReferenceTag) SetReferenceTitle(v string) *ReferenceTag {
 }
 
 type Text struct {
+	AgentId   *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
+	AgentName *string `json:"agentName,omitempty" xml:"agentName,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -313,6 +315,16 @@ func (s Text) String() string {
 
 func (s Text) GoString() string {
 	return s.String()
+}
+
+func (s *Text) SetAgentId(v string) *Text {
+	s.AgentId = &v
+	return s
+}
+
+func (s *Text) SetAgentName(v string) *Text {
+	s.AgentName = &v
+	return s
 }
 
 func (s *Text) SetDesc(v string) *Text {
@@ -455,6 +467,8 @@ func (s *TextResult) SetText(v *Text) *TextResult {
 }
 
 type TextTask struct {
+	AgentId   *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
+	AgentName *string `json:"agentName,omitempty" xml:"agentName,omitempty"`
 	// example:
 	//
 	// 九寨沟三日游攻略
@@ -482,6 +496,7 @@ type TextTask struct {
 	TextModeType   *string `json:"textModeType,omitempty" xml:"textModeType,omitempty"`
 	TextTaskId     *int64  `json:"textTaskId,omitempty" xml:"textTaskId,omitempty"`
 	TextTaskStatus *string `json:"textTaskStatus,omitempty" xml:"textTaskStatus,omitempty"`
+	Texts          *Text   `json:"texts,omitempty" xml:"texts,omitempty"`
 	// example:
 	//
 	// 旅游路线
@@ -495,6 +510,16 @@ func (s TextTask) String() string {
 
 func (s TextTask) GoString() string {
 	return s.String()
+}
+
+func (s *TextTask) SetAgentId(v string) *TextTask {
+	s.AgentId = &v
+	return s
+}
+
+func (s *TextTask) SetAgentName(v string) *TextTask {
+	s.AgentName = &v
+	return s
 }
 
 func (s *TextTask) SetContentRequirement(v string) *TextTask {
@@ -567,6 +592,11 @@ func (s *TextTask) SetTextTaskStatus(v string) *TextTask {
 	return s
 }
 
+func (s *TextTask) SetTexts(v *Text) *TextTask {
+	s.Texts = v
+	return s
+}
+
 func (s *TextTask) SetTheme(v string) *TextTask {
 	s.Theme = &v
 	return s
@@ -578,6 +608,7 @@ func (s *TextTask) SetThemeDesc(v string) *TextTask {
 }
 
 type TextTaskCreateCmd struct {
+	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
 	// example:
 	//
 	// 极氪007新车上市
@@ -624,6 +655,11 @@ func (s TextTaskCreateCmd) String() string {
 
 func (s TextTaskCreateCmd) GoString() string {
 	return s.String()
+}
+
+func (s *TextTaskCreateCmd) SetAgentId(v string) *TextTaskCreateCmd {
+	s.AgentId = &v
+	return s
 }
 
 func (s *TextTaskCreateCmd) SetContentRequirement(v string) *TextTaskCreateCmd {
