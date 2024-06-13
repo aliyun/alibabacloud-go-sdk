@@ -3979,6 +3979,7 @@ type InitFaceVerifyRequest struct {
 	// 1000000006
 	SceneId      *int64  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	SuitableType *string `json:"SuitableType,omitempty" xml:"SuitableType,omitempty"`
+	UiCustomUrl  *string `json:"UiCustomUrl,omitempty" xml:"UiCustomUrl,omitempty"`
 	// example:
 	//
 	// 123456789
@@ -4142,6 +4143,11 @@ func (s *InitFaceVerifyRequest) SetSceneId(v int64) *InitFaceVerifyRequest {
 
 func (s *InitFaceVerifyRequest) SetSuitableType(v string) *InitFaceVerifyRequest {
 	s.SuitableType = &v
+	return s
+}
+
+func (s *InitFaceVerifyRequest) SetUiCustomUrl(v string) *InitFaceVerifyRequest {
+	s.UiCustomUrl = &v
 	return s
 }
 
@@ -7340,6 +7346,10 @@ func (client *Client) InitFaceVerifyWithOptions(request *InitFaceVerifyRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.SuitableType)) {
 		query["SuitableType"] = request.SuitableType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UiCustomUrl)) {
+		query["UiCustomUrl"] = request.UiCustomUrl
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserId)) {
