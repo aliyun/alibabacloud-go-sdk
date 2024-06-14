@@ -305,8 +305,10 @@ func (s *CreateTaskRequestParametersCustomPromptContents) SetTransType(v string)
 }
 
 type CreateTaskRequestParametersExtraParams struct {
-	MaxKeywords *int32 `json:"MaxKeywords,omitempty" xml:"MaxKeywords,omitempty"`
-	NfixEnabled *bool  `json:"NfixEnabled,omitempty" xml:"NfixEnabled,omitempty"`
+	DomainEducationEnabled *bool  `json:"DomainEducationEnabled,omitempty" xml:"DomainEducationEnabled,omitempty"`
+	MaxKeywords            *int32 `json:"MaxKeywords,omitempty" xml:"MaxKeywords,omitempty"`
+	NfixEnabled            *bool  `json:"NfixEnabled,omitempty" xml:"NfixEnabled,omitempty"`
+	OcrAuxiliaryEnabled    *bool  `json:"OcrAuxiliaryEnabled,omitempty" xml:"OcrAuxiliaryEnabled,omitempty"`
 }
 
 func (s CreateTaskRequestParametersExtraParams) String() string {
@@ -317,6 +319,11 @@ func (s CreateTaskRequestParametersExtraParams) GoString() string {
 	return s.String()
 }
 
+func (s *CreateTaskRequestParametersExtraParams) SetDomainEducationEnabled(v bool) *CreateTaskRequestParametersExtraParams {
+	s.DomainEducationEnabled = &v
+	return s
+}
+
 func (s *CreateTaskRequestParametersExtraParams) SetMaxKeywords(v int32) *CreateTaskRequestParametersExtraParams {
 	s.MaxKeywords = &v
 	return s
@@ -324,6 +331,11 @@ func (s *CreateTaskRequestParametersExtraParams) SetMaxKeywords(v int32) *Create
 
 func (s *CreateTaskRequestParametersExtraParams) SetNfixEnabled(v bool) *CreateTaskRequestParametersExtraParams {
 	s.NfixEnabled = &v
+	return s
+}
+
+func (s *CreateTaskRequestParametersExtraParams) SetOcrAuxiliaryEnabled(v bool) *CreateTaskRequestParametersExtraParams {
+	s.OcrAuxiliaryEnabled = &v
 	return s
 }
 
