@@ -1,0 +1,3 @@
+2024-06-14 Version: v1.0.0
+- Generated golang 2024-06-03 for ContactCenterAI.
+
