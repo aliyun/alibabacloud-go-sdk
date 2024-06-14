@@ -11757,6 +11757,106 @@ func (s *DescribeAlarmsResponse) SetBody(v *DescribeAlarmsResponseBody) *Describ
 	return s
 }
 
+type DescribeAlertConfigurationRequest struct {
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// asg-bp18p2yfxow2dloq****
+	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+}
+
+func (s DescribeAlertConfigurationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlertConfigurationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlertConfigurationRequest) SetOwnerId(v int64) *DescribeAlertConfigurationRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeAlertConfigurationRequest) SetRegionId(v string) *DescribeAlertConfigurationRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAlertConfigurationRequest) SetResourceOwnerAccount(v string) *DescribeAlertConfigurationRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeAlertConfigurationRequest) SetScalingGroupId(v string) *DescribeAlertConfigurationRequest {
+	s.ScalingGroupId = &v
+	return s
+}
+
+type DescribeAlertConfigurationResponseBody struct {
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
+	RequestId     *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ScaleStatuses []*string `json:"ScaleStatuses,omitempty" xml:"ScaleStatuses,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAlertConfigurationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlertConfigurationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlertConfigurationResponseBody) SetRequestId(v string) *DescribeAlertConfigurationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAlertConfigurationResponseBody) SetScaleStatuses(v []*string) *DescribeAlertConfigurationResponseBody {
+	s.ScaleStatuses = v
+	return s
+}
+
+type DescribeAlertConfigurationResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAlertConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeAlertConfigurationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlertConfigurationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlertConfigurationResponse) SetHeaders(v map[string]*string) *DescribeAlertConfigurationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAlertConfigurationResponse) SetStatusCode(v int32) *DescribeAlertConfigurationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAlertConfigurationResponse) SetBody(v *DescribeAlertConfigurationResponseBody) *DescribeAlertConfigurationResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeEciScalingConfigurationDetailRequest struct {
 	// The output format. Set the value to yaml.
 	//
@@ -27482,6 +27582,106 @@ func (s *ModifyAlarmResponse) SetBody(v *ModifyAlarmResponseBody) *ModifyAlarmRe
 	return s
 }
 
+type ModifyAlertConfigurationRequest struct {
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ScaleStatuses        []*string `json:"ScaleStatuses,omitempty" xml:"ScaleStatuses,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// asg-bp1eyv4qn8ssgv43****
+	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+}
+
+func (s ModifyAlertConfigurationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAlertConfigurationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAlertConfigurationRequest) SetOwnerId(v int64) *ModifyAlertConfigurationRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyAlertConfigurationRequest) SetRegionId(v string) *ModifyAlertConfigurationRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyAlertConfigurationRequest) SetResourceOwnerAccount(v string) *ModifyAlertConfigurationRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyAlertConfigurationRequest) SetScaleStatuses(v []*string) *ModifyAlertConfigurationRequest {
+	s.ScaleStatuses = v
+	return s
+}
+
+func (s *ModifyAlertConfigurationRequest) SetScalingGroupId(v string) *ModifyAlertConfigurationRequest {
+	s.ScalingGroupId = &v
+	return s
+}
+
+type ModifyAlertConfigurationResponseBody struct {
+	// example:
+	//
+	// 73469C7-AA6F-4DC5-B3DB-A3DC0DE3****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyAlertConfigurationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAlertConfigurationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAlertConfigurationResponseBody) SetRequestId(v string) *ModifyAlertConfigurationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyAlertConfigurationResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyAlertConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyAlertConfigurationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAlertConfigurationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAlertConfigurationResponse) SetHeaders(v map[string]*string) *ModifyAlertConfigurationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyAlertConfigurationResponse) SetStatusCode(v int32) *ModifyAlertConfigurationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyAlertConfigurationResponse) SetBody(v *ModifyAlertConfigurationResponseBody) *ModifyAlertConfigurationResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyEciScalingConfigurationRequest struct {
 	// Information about the Container Registry Enterprise Edition instance.
 	AcrRegistryInfos []*ModifyEciScalingConfigurationRequestAcrRegistryInfos `json:"AcrRegistryInfos,omitempty" xml:"AcrRegistryInfos,omitempty" type:"Repeated"`
@@ -40289,6 +40489,70 @@ func (client *Client) DescribeAlarms(request *DescribeAlarmsRequest) (_result *D
 	return _result, _err
 }
 
+// @param request - DescribeAlertConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAlertConfigurationResponse
+func (client *Client) DescribeAlertConfigurationWithOptions(request *DescribeAlertConfigurationRequest, runtime *util.RuntimeOptions) (_result *DescribeAlertConfigurationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScalingGroupId)) {
+		query["ScalingGroupId"] = request.ScalingGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAlertConfiguration"),
+		Version:     tea.String("2022-02-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAlertConfigurationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeAlertConfigurationRequest
+//
+// @return DescribeAlertConfigurationResponse
+func (client *Client) DescribeAlertConfiguration(request *DescribeAlertConfigurationRequest) (_result *DescribeAlertConfigurationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAlertConfigurationResponse{}
+	_body, _err := client.DescribeAlertConfigurationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Queries scaling configurations of the Elastic Container Instance type to learn the scaling configuration details. This allows you to select an appropriate template when you create elastic container instances. If you set OutputFormat to yaml, the output is a Kubernetes Deployment file in the YAML format.
@@ -43514,6 +43778,74 @@ func (client *Client) ModifyAlarm(request *ModifyAlarmRequest) (_result *ModifyA
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyAlarmResponse{}
 	_body, _err := client.ModifyAlarmWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ModifyAlertConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAlertConfigurationResponse
+func (client *Client) ModifyAlertConfigurationWithOptions(request *ModifyAlertConfigurationRequest, runtime *util.RuntimeOptions) (_result *ModifyAlertConfigurationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScaleStatuses)) {
+		query["ScaleStatuses"] = request.ScaleStatuses
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScalingGroupId)) {
+		query["ScalingGroupId"] = request.ScalingGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyAlertConfiguration"),
+		Version:     tea.String("2022-02-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyAlertConfigurationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ModifyAlertConfigurationRequest
+//
+// @return ModifyAlertConfigurationResponse
+func (client *Client) ModifyAlertConfiguration(request *ModifyAlertConfigurationRequest) (_result *ModifyAlertConfigurationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyAlertConfigurationResponse{}
+	_body, _err := client.ModifyAlertConfigurationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
