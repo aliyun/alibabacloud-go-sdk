@@ -5563,6 +5563,185 @@ func (s *PostISConvRewriterResponse) SetBody(v *PostISConvRewriterResponseBody) 
 	return s
 }
 
+type PostISRerankRequest struct {
+	// example:
+	//
+	// rerank
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// example:
+	//
+	// false
+	Debug *bool                  `json:"Debug,omitempty" xml:"Debug,omitempty"`
+	Input map[string]interface{} `json:"Input,omitempty" xml:"Input,omitempty"`
+	// example:
+	//
+	// gte-rerank
+	Model      *string                `json:"Model,omitempty" xml:"Model,omitempty"`
+	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+}
+
+func (s PostISRerankRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PostISRerankRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PostISRerankRequest) SetAlgorithm(v string) *PostISRerankRequest {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *PostISRerankRequest) SetDebug(v bool) *PostISRerankRequest {
+	s.Debug = &v
+	return s
+}
+
+func (s *PostISRerankRequest) SetInput(v map[string]interface{}) *PostISRerankRequest {
+	s.Input = v
+	return s
+}
+
+func (s *PostISRerankRequest) SetModel(v string) *PostISRerankRequest {
+	s.Model = &v
+	return s
+}
+
+func (s *PostISRerankRequest) SetParameters(v map[string]interface{}) *PostISRerankRequest {
+	s.Parameters = v
+	return s
+}
+
+type PostISRerankShrinkRequest struct {
+	// example:
+	//
+	// rerank
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// example:
+	//
+	// false
+	Debug       *bool   `json:"Debug,omitempty" xml:"Debug,omitempty"`
+	InputShrink *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// example:
+	//
+	// gte-rerank
+	Model            *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+}
+
+func (s PostISRerankShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PostISRerankShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PostISRerankShrinkRequest) SetAlgorithm(v string) *PostISRerankShrinkRequest {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *PostISRerankShrinkRequest) SetDebug(v bool) *PostISRerankShrinkRequest {
+	s.Debug = &v
+	return s
+}
+
+func (s *PostISRerankShrinkRequest) SetInputShrink(v string) *PostISRerankShrinkRequest {
+	s.InputShrink = &v
+	return s
+}
+
+func (s *PostISRerankShrinkRequest) SetModel(v string) *PostISRerankShrinkRequest {
+	s.Model = &v
+	return s
+}
+
+func (s *PostISRerankShrinkRequest) SetParametersShrink(v string) *PostISRerankShrinkRequest {
+	s.ParametersShrink = &v
+	return s
+}
+
+type PostISRerankResponseBody struct {
+	Data      map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	DebugInfo map[string]interface{} `json:"DebugInfo,omitempty" xml:"DebugInfo,omitempty"`
+	// example:
+	//
+	// null
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// xxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 0
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s PostISRerankResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PostISRerankResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PostISRerankResponseBody) SetData(v map[string]interface{}) *PostISRerankResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *PostISRerankResponseBody) SetDebugInfo(v map[string]interface{}) *PostISRerankResponseBody {
+	s.DebugInfo = v
+	return s
+}
+
+func (s *PostISRerankResponseBody) SetMessage(v string) *PostISRerankResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *PostISRerankResponseBody) SetRequestId(v string) *PostISRerankResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PostISRerankResponseBody) SetStatus(v int32) *PostISRerankResponseBody {
+	s.Status = &v
+	return s
+}
+
+type PostISRerankResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PostISRerankResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s PostISRerankResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PostISRerankResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PostISRerankResponse) SetHeaders(v map[string]*string) *PostISRerankResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PostISRerankResponse) SetStatusCode(v int32) *PostISRerankResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PostISRerankResponse) SetBody(v *PostISRerankResponseBody) *PostISRerankResponse {
+	s.Body = v
+	return s
+}
+
 type PostISRetrieveRouterRequest struct {
 	// example:
 	//
@@ -10840,6 +11019,92 @@ func (client *Client) PostISConvRewriter(request *PostISConvRewriterRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &PostISConvRewriterResponse{}
 	_body, _err := client.PostISConvRewriterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 通用排序模型
+//
+// @param tmpReq - PostISRerankRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PostISRerankResponse
+func (client *Client) PostISRerankWithOptions(tmpReq *PostISRerankRequest, runtime *util.RuntimeOptions) (_result *PostISRerankResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &PostISRerankShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Input)) {
+		request.InputShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Input, tea.String("Input"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Parameters)) {
+		request.ParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Parameters, tea.String("Parameters"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Algorithm)) {
+		body["Algorithm"] = request.Algorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Debug)) {
+		body["Debug"] = request.Debug
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputShrink)) {
+		body["Input"] = request.InputShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Model)) {
+		body["Model"] = request.Model
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParametersShrink)) {
+		body["Parameters"] = request.ParametersShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PostISRerank"),
+		Version:     tea.String("2020-06-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PostISRerankResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 通用排序模型
+//
+// @param request - PostISRerankRequest
+//
+// @return PostISRerankResponse
+func (client *Client) PostISRerank(request *PostISRerankRequest) (_result *PostISRerankResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PostISRerankResponse{}
+	_body, _err := client.PostISRerankWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
