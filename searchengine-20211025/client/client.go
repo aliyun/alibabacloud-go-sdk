@@ -47,6 +47,29 @@ func (s *ErrorResponse) SetRequestId(v string) *ErrorResponse {
 	return s
 }
 
+type ResultClusterValue struct {
+	BuildParallelNum *int32 `json:"buildParallelNum,omitempty" xml:"buildParallelNum,omitempty"`
+	MergeParallelNum *int32 `json:"mergeParallelNum,omitempty" xml:"mergeParallelNum,omitempty"`
+}
+
+func (s ResultClusterValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResultClusterValue) GoString() string {
+	return s.String()
+}
+
+func (s *ResultClusterValue) SetBuildParallelNum(v int32) *ResultClusterValue {
+	s.BuildParallelNum = &v
+	return s
+}
+
+func (s *ResultClusterValue) SetMergeParallelNum(v int32) *ResultClusterValue {
+	s.MergeParallelNum = &v
+	return s
+}
+
 type VariablesValue struct {
 	// Specifies whether the variable cannot be modified.
 	//
@@ -168,6 +191,47 @@ func (s *VariablesValueFuncValue) SetTemplate(v string) *VariablesValueFuncValue
 	return s
 }
 
+type FilesConfigVariablesValue struct {
+	Description   *string `json:"description,omitempty" xml:"description,omitempty"`
+	DisableModify *bool   `json:"disableModify,omitempty" xml:"disableModify,omitempty"`
+	IsModify      *bool   `json:"isModify,omitempty" xml:"isModify,omitempty"`
+	Type          *string `json:"type,omitempty" xml:"type,omitempty"`
+	Value         *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s FilesConfigVariablesValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FilesConfigVariablesValue) GoString() string {
+	return s.String()
+}
+
+func (s *FilesConfigVariablesValue) SetDescription(v string) *FilesConfigVariablesValue {
+	s.Description = &v
+	return s
+}
+
+func (s *FilesConfigVariablesValue) SetDisableModify(v bool) *FilesConfigVariablesValue {
+	s.DisableModify = &v
+	return s
+}
+
+func (s *FilesConfigVariablesValue) SetIsModify(v bool) *FilesConfigVariablesValue {
+	s.IsModify = &v
+	return s
+}
+
+func (s *FilesConfigVariablesValue) SetType(v string) *FilesConfigVariablesValue {
+	s.Type = &v
+	return s
+}
+
+func (s *FilesConfigVariablesValue) SetValue(v string) *FilesConfigVariablesValue {
+	s.Value = &v
+	return s
+}
+
 type BuildIndexRequest struct {
 	// The reindexing mode.
 	//
@@ -187,13 +251,13 @@ type BuildIndexRequest struct {
 	//
 	// swift
 	DataSourceType *string `json:"dataSourceType,omitempty" xml:"dataSourceType,omitempty"`
-	// The timestamp in seconds. It is of the INT type. This parameter is required for the API-pushed data source.
+	// The timestamp in seconds. The value must be of the INTEGER type. This parameter is required if you specify an API data source.
 	//
 	// example:
 	//
 	// 1640867288
 	DataTimeSec *int32 `json:"dataTimeSec,omitempty" xml:"dataTimeSec,omitempty"`
-	// The data center where the data source is deployed.
+	// The data center in which the data source resides.
 	//
 	// example:
 	//
@@ -205,7 +269,7 @@ type BuildIndexRequest struct {
 	//
 	// 160131146
 	Generation *int64 `json:"generation,omitempty" xml:"generation,omitempty"`
-	// This parameter is required for the odps data source.
+	// The data partition. This parameter is required if dataSourceType is set to odps.
 	//
 	// example:
 	//
@@ -382,7 +446,8 @@ type CreateClusterRequestDataNode struct {
 	// example:
 	//
 	// 2
-	Number *int32 `json:"number,omitempty" xml:"number,omitempty"`
+	Number    *int32  `json:"number,omitempty" xml:"number,omitempty"`
+	Partition *string `json:"partition,omitempty" xml:"partition,omitempty"`
 }
 
 func (s CreateClusterRequestDataNode) String() string {
@@ -395,6 +460,11 @@ func (s CreateClusterRequestDataNode) GoString() string {
 
 func (s *CreateClusterRequestDataNode) SetNumber(v int32) *CreateClusterRequestDataNode {
 	s.Number = &v
+	return s
+}
+
+func (s *CreateClusterRequestDataNode) SetPartition(v string) *CreateClusterRequestDataNode {
+	s.Partition = &v
 	return s
 }
 
@@ -697,11 +767,12 @@ func (s *CreateDataSourceResponse) SetBody(v *CreateDataSourceResponseBody) *Cre
 }
 
 type CreateIndexRequest struct {
+	BuildParallelNum *int32 `json:"buildParallelNum,omitempty" xml:"buildParallelNum,omitempty"`
 	// The content of the index.
 	//
 	// example:
 	//
-	// {\"summarys\":{\"summary_fields\":[\"id\"]},\"indexs\":[{\"index_name\":\"index_id\",\"index_type\":\"PRIMARYKEY64\",\"index_fields\":\"id\",\"has_primary_key_attribute\":true,\"is_primary_key_sorted\":false}],\"attributes\":[\"id\"],\"fields\":[{\"field_name\":\"id\",\"field_type\":\"UINT16\"}],\"table_name\":\"index_2\"}
+	// {\\"summarys\\":{\\"summary_fields\\":[\\"id\\"]},\\"indexs\\":[{\\"index_name\\":\\"index_id\\",\\"index_type\\":\\"PRIMARYKEY64\\",\\"index_fields\\":\\"id\\",\\"has_primary_key_attribute\\":true,\\"is_primary_key_sorted\\":false}],\\"attributes\\":[\\"id\\"],\\"fields\\":[{\\"field_name\\":\\"id\\",\\"field_type\\":\\"UINT16\\"}],\\"table_name\\":\\"index_2\\"}
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
 	// Optional. The data source, which can be MaxCompute, Message Service (MNS), Realtime Compute for Apache Flink, or StreamCompute.
 	//
@@ -744,7 +815,8 @@ type CreateIndexRequest struct {
 	//         []
 	//
 	//     }
-	Extend map[string]interface{} `json:"extend,omitempty" xml:"extend,omitempty"`
+	Extend           map[string]interface{} `json:"extend,omitempty" xml:"extend,omitempty"`
+	MergeParallelNum *int32                 `json:"mergeParallelNum,omitempty" xml:"mergeParallelNum,omitempty"`
 	// The name of the index.
 	//
 	// example:
@@ -771,6 +843,11 @@ func (s CreateIndexRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateIndexRequest) SetBuildParallelNum(v int32) *CreateIndexRequest {
+	s.BuildParallelNum = &v
+	return s
+}
+
 func (s *CreateIndexRequest) SetContent(v string) *CreateIndexRequest {
 	s.Content = &v
 	return s
@@ -793,6 +870,11 @@ func (s *CreateIndexRequest) SetDomain(v string) *CreateIndexRequest {
 
 func (s *CreateIndexRequest) SetExtend(v map[string]interface{}) *CreateIndexRequest {
 	s.Extend = v
+	return s
+}
+
+func (s *CreateIndexRequest) SetMergeParallelNum(v int32) *CreateIndexRequest {
+	s.MergeParallelNum = &v
 	return s
 }
 
@@ -835,7 +917,8 @@ type CreateIndexRequestDataSourceInfo struct {
 	// example:
 	//
 	// ha-cn-35t3n1yuj0d_index_1
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name               *string `json:"name,omitempty" xml:"name,omitempty"`
+	ProcessParallelNum *int32  `json:"processParallelNum,omitempty" xml:"processParallelNum,omitempty"`
 	// The number of resources used for data update.
 	//
 	// example:
@@ -881,6 +964,11 @@ func (s *CreateIndexRequestDataSourceInfo) SetDomain(v string) *CreateIndexReque
 
 func (s *CreateIndexRequestDataSourceInfo) SetName(v string) *CreateIndexRequestDataSourceInfo {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateIndexRequestDataSourceInfo) SetProcessParallelNum(v int32) *CreateIndexRequestDataSourceInfo {
+	s.ProcessParallelNum = &v
 	return s
 }
 
@@ -1954,6 +2042,8 @@ func (s *DeleteDataSourceResponse) SetBody(v *DeleteDataSourceResponseBody) *Del
 type DeleteIndexRequest struct {
 	// The data source
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ha-cn-pl32rf0js04_test
@@ -2611,6 +2701,8 @@ func (s *GetAdvanceConfigResponse) SetBody(v *GetAdvanceConfigResponseBody) *Get
 type GetAdvanceConfigFileRequest struct {
 	// The name of the file
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// /intervene_dict/chn_ecommerce_general.dict
@@ -2740,12 +2832,14 @@ func (s *GetClusterResponseBody) SetResult(v *GetClusterResponseBodyResult) *Get
 }
 
 type GetClusterResponseBodyResult struct {
+	Config map[string]map[string]interface{} `json:"config,omitempty" xml:"config,omitempty"`
 	// The time when the cluster was updated.
 	//
 	// example:
 	//
 	// 2021-08-09 00:01:02
 	ConfigUpdateTime *string `json:"configUpdateTime,omitempty" xml:"configUpdateTime,omitempty"`
+	CreateTime       *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The effective advanced configuration version.
 	//
 	// example:
@@ -2802,8 +2896,18 @@ func (s GetClusterResponseBodyResult) GoString() string {
 	return s.String()
 }
 
+func (s *GetClusterResponseBodyResult) SetConfig(v map[string]map[string]interface{}) *GetClusterResponseBodyResult {
+	s.Config = v
+	return s
+}
+
 func (s *GetClusterResponseBodyResult) SetConfigUpdateTime(v string) *GetClusterResponseBodyResult {
 	s.ConfigUpdateTime = &v
+	return s
+}
+
+func (s *GetClusterResponseBodyResult) SetCreateTime(v string) *GetClusterResponseBodyResult {
+	s.CreateTime = &v
 	return s
 }
 
@@ -4421,6 +4525,8 @@ func (s *GetDeployGraphResponse) SetBody(v *GetDeployGraphResponseBody) *GetDepl
 type GetFileRequest struct {
 	// The name of the file in full path
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// /schemas/automobile_vector_schema.json
@@ -4605,6 +4711,9 @@ func (s *GetIndexResponseBody) SetResult(v *GetIndexResponseBodyResult) *GetInde
 }
 
 type GetIndexResponseBodyResult struct {
+	Cluster         map[string]*ResultClusterValue    `json:"cluster,omitempty" xml:"cluster,omitempty"`
+	Config          map[string]map[string]interface{} `json:"config,omitempty" xml:"config,omitempty"`
+	ConfigWhenBuild map[string]map[string]interface{} `json:"configWhenBuild,omitempty" xml:"configWhenBuild,omitempty"`
 	// The content of the index.
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
 	// example:
@@ -4642,6 +4751,21 @@ func (s GetIndexResponseBodyResult) String() string {
 
 func (s GetIndexResponseBodyResult) GoString() string {
 	return s.String()
+}
+
+func (s *GetIndexResponseBodyResult) SetCluster(v map[string]*ResultClusterValue) *GetIndexResponseBodyResult {
+	s.Cluster = v
+	return s
+}
+
+func (s *GetIndexResponseBodyResult) SetConfig(v map[string]map[string]interface{}) *GetIndexResponseBodyResult {
+	s.Config = v
+	return s
+}
+
+func (s *GetIndexResponseBodyResult) SetConfigWhenBuild(v map[string]map[string]interface{}) *GetIndexResponseBodyResult {
+	s.ConfigWhenBuild = v
+	return s
 }
 
 func (s *GetIndexResponseBodyResult) SetContent(v string) *GetIndexResponseBodyResult {
@@ -4717,7 +4841,8 @@ type GetIndexResponseBodyResultDataSourceInfo struct {
 	// The offline deployment name of the data source.
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
 	// The name of the data source.
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name               *string `json:"name,omitempty" xml:"name,omitempty"`
+	ProcessParallelNum *int32  `json:"processParallelNum,omitempty" xml:"processParallelNum,omitempty"`
 	// The number of resources used for data update.
 	ProcessPartitionCount *int32 `json:"processPartitionCount,omitempty" xml:"processPartitionCount,omitempty"`
 	// The configuration of SARO data sources.
@@ -4751,6 +4876,11 @@ func (s *GetIndexResponseBodyResultDataSourceInfo) SetDomain(v string) *GetIndex
 
 func (s *GetIndexResponseBodyResultDataSourceInfo) SetName(v string) *GetIndexResponseBodyResultDataSourceInfo {
 	s.Name = &v
+	return s
+}
+
+func (s *GetIndexResponseBodyResultDataSourceInfo) SetProcessParallelNum(v int32) *GetIndexResponseBodyResultDataSourceInfo {
+	s.ProcessParallelNum = &v
 	return s
 }
 
@@ -5442,7 +5572,7 @@ type GetNodeConfigResponseBody struct {
 	//
 	// 2AE63638-5420-56DC-BF59-37D8174039A0
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The result set.
+	// The configurations of the node.
 	Result *GetNodeConfigResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -5483,7 +5613,12 @@ type GetNodeConfigResponseBodyResult struct {
 	//
 	// 2
 	DataFragmentNumber *int32 `json:"dataFragmentNumber,omitempty" xml:"dataFragmentNumber,omitempty"`
-	FlowRatio          *int32 `json:"flowRatio,omitempty" xml:"flowRatio,omitempty"`
+	// The traffic percentage.
+	//
+	// example:
+	//
+	// 0
+	FlowRatio *int32 `json:"flowRatio,omitempty" xml:"flowRatio,omitempty"`
 	// The minimum service ratio.
 	//
 	// example:
@@ -6205,6 +6340,8 @@ func (s *GetTableGenerationResponse) SetBody(v *GetTableGenerationResponseBody) 
 type ListAdvanceConfigDirRequest struct {
 	// The name of the directory
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// /zones/general
@@ -6340,6 +6477,7 @@ func (s *ListAdvanceConfigDirResponse) SetBody(v *ListAdvanceConfigDirResponseBo
 type ListAdvanceConfigsRequest struct {
 	DataSourceName *string `json:"dataSourceName,omitempty" xml:"dataSourceName,omitempty"`
 	IndexName      *string `json:"indexName,omitempty" xml:"indexName,omitempty"`
+	NewMode        *bool   `json:"newMode,omitempty" xml:"newMode,omitempty"`
 	// The type of the advanced configurations. Valid values: online and offline. - online The default value is offline.
 	//
 	// example:
@@ -6363,6 +6501,11 @@ func (s *ListAdvanceConfigsRequest) SetDataSourceName(v string) *ListAdvanceConf
 
 func (s *ListAdvanceConfigsRequest) SetIndexName(v string) *ListAdvanceConfigsRequest {
 	s.IndexName = &v
+	return s
+}
+
+func (s *ListAdvanceConfigsRequest) SetNewMode(v bool) *ListAdvanceConfigsRequest {
+	s.NewMode = &v
 	return s
 }
 
@@ -6401,8 +6544,10 @@ func (s *ListAdvanceConfigsResponseBody) SetResult(v []*ListAdvanceConfigsRespon
 }
 
 type ListAdvanceConfigsResponseBodyResult struct {
-	Content     *string `json:"content,omitempty" xml:"content,omitempty"`
-	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
+	AdvanceConfigType *string `json:"advanceConfigType,omitempty" xml:"advanceConfigType,omitempty"`
+	Content           *string `json:"content,omitempty" xml:"content,omitempty"`
+	ContentType       *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
+	Creator           *string `json:"creator,omitempty" xml:"creator,omitempty"`
 	// The description.
 	//
 	// example:
@@ -6439,6 +6584,11 @@ func (s ListAdvanceConfigsResponseBodyResult) GoString() string {
 	return s.String()
 }
 
+func (s *ListAdvanceConfigsResponseBodyResult) SetAdvanceConfigType(v string) *ListAdvanceConfigsResponseBodyResult {
+	s.AdvanceConfigType = &v
+	return s
+}
+
 func (s *ListAdvanceConfigsResponseBodyResult) SetContent(v string) *ListAdvanceConfigsResponseBodyResult {
 	s.Content = &v
 	return s
@@ -6446,6 +6596,11 @@ func (s *ListAdvanceConfigsResponseBodyResult) SetContent(v string) *ListAdvance
 
 func (s *ListAdvanceConfigsResponseBodyResult) SetContentType(v string) *ListAdvanceConfigsResponseBodyResult {
 	s.ContentType = &v
+	return s
+}
+
+func (s *ListAdvanceConfigsResponseBodyResult) SetCreator(v string) *ListAdvanceConfigsResponseBodyResult {
+	s.Creator = &v
 	return s
 }
 
@@ -6960,12 +7115,14 @@ func (s *ListClustersResponseBody) SetResult(v []*ListClustersResponseBodyResult
 }
 
 type ListClustersResponseBodyResult struct {
+	Config map[string]map[string]interface{} `json:"config,omitempty" xml:"config,omitempty"`
 	// The time when the configuration was updated.
 	//
 	// example:
 	//
 	// " "
 	ConfigUpdateTime *string `json:"configUpdateTime,omitempty" xml:"configUpdateTime,omitempty"`
+	CreateTime       *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The effective advanced version.
 	//
 	// example:
@@ -7030,8 +7187,18 @@ func (s ListClustersResponseBodyResult) GoString() string {
 	return s.String()
 }
 
+func (s *ListClustersResponseBodyResult) SetConfig(v map[string]map[string]interface{}) *ListClustersResponseBodyResult {
+	s.Config = v
+	return s
+}
+
 func (s *ListClustersResponseBodyResult) SetConfigUpdateTime(v string) *ListClustersResponseBodyResult {
 	s.ConfigUpdateTime = &v
+	return s
+}
+
+func (s *ListClustersResponseBodyResult) SetCreateTime(v string) *ListClustersResponseBodyResult {
+	s.CreateTime = &v
 	return s
 }
 
@@ -7803,6 +7970,8 @@ func (s *ListDataSourcesResponse) SetBody(v *ListDataSourcesResponseBody) *ListD
 type ListDateSourceGenerationsRequest struct {
 	// The data center where the data source is deployed.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// bj_vpc_domain_1
@@ -8570,6 +8739,8 @@ func (s *ListIndexesResponse) SetBody(v *ListIndexesResponseBody) *ListIndexesRe
 type ListInstanceSpecsRequest struct {
 	// The node type. Valid values: qrs, search, index, and cluster. qrs indicates a query node, search indicates a data node, index indicates an index node, and cluster indicates a cluster.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// search
@@ -9190,6 +9361,8 @@ func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInsta
 type ListOnlineConfigsRequest struct {
 	// The name of the domain
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// sz_vpc_domain_1
@@ -9243,7 +9416,7 @@ type ListOnlineConfigsResponseBodyResult struct {
 	//
 	// example:
 	//
-	// {\"specItems\":[{\"specKey\":\"YQ_KEYWORD_NUMBER_PLUS\",\"value\":\"1\"}]}
+	// {\\"specItems\\":[{\\"specKey\\":\\"YQ_KEYWORD_NUMBER_PLUS\\",\\"value\\":\\"1\\"}]}
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
 	// The name of the index
 	//
@@ -9587,6 +9760,8 @@ type ModifyAdvanceConfigFileRequest struct {
 	// The variable.
 	Variables map[string]*VariablesValue `json:"variables,omitempty" xml:"variables,omitempty"`
 	// The name of the file.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -10115,13 +10290,15 @@ type ModifyFileRequest struct {
 	//
 	// ""
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// The data partition. This parameter is required if the dataSourceType parameter is set to odps.
+	// This parameter is required when index building for full data in a MaxCompute data source is triggered.
 	//
 	// example:
 	//
-	// 1
+	// ds=20220713
 	Partition *int32 `json:"partition,omitempty" xml:"partition,omitempty"`
 	// The name of the file in the full path
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -10500,12 +10677,42 @@ func (s *ModifyIndexVersionResponse) SetBody(v *ModifyIndexVersionResponseBody) 
 }
 
 type ModifyNodeConfigRequest struct {
-	Active              *bool  `json:"active,omitempty" xml:"active,omitempty"`
+	// Specifies whether to enable the index.
+	//
+	// example:
+	//
+	// true
+	Active *bool `json:"active,omitempty" xml:"active,omitempty"`
+	// The number of data replicas.
+	//
+	// example:
+	//
+	// 1
 	DataDuplicateNumber *int32 `json:"dataDuplicateNumber,omitempty" xml:"dataDuplicateNumber,omitempty"`
-	DataFragmentNumber  *int32 `json:"dataFragmentNumber,omitempty" xml:"dataFragmentNumber,omitempty"`
-	FlowRatio           *int32 `json:"flowRatio,omitempty" xml:"flowRatio,omitempty"`
-	MinServicePercent   *int32 `json:"minServicePercent,omitempty" xml:"minServicePercent,omitempty"`
-	Published           *bool  `json:"published,omitempty" xml:"published,omitempty"`
+	// The number of data shards.
+	//
+	// example:
+	//
+	// 1
+	DataFragmentNumber *int32 `json:"dataFragmentNumber,omitempty" xml:"dataFragmentNumber,omitempty"`
+	// The traffic percentage.
+	//
+	// example:
+	//
+	// -100
+	FlowRatio *int32 `json:"flowRatio,omitempty" xml:"flowRatio,omitempty"`
+	// The minimum service ratio.
+	//
+	// example:
+	//
+	// 10
+	MinServicePercent *int32 `json:"minServicePercent,omitempty" xml:"minServicePercent,omitempty"`
+	// Specifies whether to mount the cluster.
+	//
+	// example:
+	//
+	// true
+	Published *bool `json:"published,omitempty" xml:"published,omitempty"`
 	// The name of the cluster.
 	//
 	// example:
@@ -10519,6 +10726,8 @@ type ModifyNodeConfigRequest struct {
 	// ha-cn-2r42ostoc01_0704
 	DataSourceName *string `json:"dataSourceName,omitempty" xml:"dataSourceName,omitempty"`
 	// The original name of the node.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -10535,6 +10744,8 @@ type ModifyNodeConfigRequest struct {
 	// 	- hint indicates the hint model.
 	//
 	// 	- suggest indicates the drop-down suggestion model.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -11348,12 +11559,8 @@ func (s *ModifyTableResponse) SetBody(v *ModifyTableResponseBody) *ModifyTableRe
 }
 
 type PublishAdvanceConfigRequest struct {
-	// The structure of the request
-	//
-	// example:
-	//
-	// {\"desc\":\"new version\"}
-	Body map[string]interface{} `json:"body,omitempty" xml:"body,omitempty"`
+	Desc  *string                             `json:"desc,omitempty" xml:"desc,omitempty"`
+	Files []*PublishAdvanceConfigRequestFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
 }
 
 func (s PublishAdvanceConfigRequest) String() string {
@@ -11364,8 +11571,83 @@ func (s PublishAdvanceConfigRequest) GoString() string {
 	return s.String()
 }
 
-func (s *PublishAdvanceConfigRequest) SetBody(v map[string]interface{}) *PublishAdvanceConfigRequest {
-	s.Body = v
+func (s *PublishAdvanceConfigRequest) SetDesc(v string) *PublishAdvanceConfigRequest {
+	s.Desc = &v
+	return s
+}
+
+func (s *PublishAdvanceConfigRequest) SetFiles(v []*PublishAdvanceConfigRequestFiles) *PublishAdvanceConfigRequest {
+	s.Files = v
+	return s
+}
+
+type PublishAdvanceConfigRequestFiles struct {
+	Config         *PublishAdvanceConfigRequestFilesConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
+	DirName        *string                                 `json:"dirName,omitempty" xml:"dirName,omitempty"`
+	FileName       *string                                 `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	OperateType    *string                                 `json:"operateType,omitempty" xml:"operateType,omitempty"`
+	OssPath        *string                                 `json:"ossPath,omitempty" xml:"ossPath,omitempty"`
+	ParentFullPath *string                                 `json:"parentFullPath,omitempty" xml:"parentFullPath,omitempty"`
+}
+
+func (s PublishAdvanceConfigRequestFiles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishAdvanceConfigRequestFiles) GoString() string {
+	return s.String()
+}
+
+func (s *PublishAdvanceConfigRequestFiles) SetConfig(v *PublishAdvanceConfigRequestFilesConfig) *PublishAdvanceConfigRequestFiles {
+	s.Config = v
+	return s
+}
+
+func (s *PublishAdvanceConfigRequestFiles) SetDirName(v string) *PublishAdvanceConfigRequestFiles {
+	s.DirName = &v
+	return s
+}
+
+func (s *PublishAdvanceConfigRequestFiles) SetFileName(v string) *PublishAdvanceConfigRequestFiles {
+	s.FileName = &v
+	return s
+}
+
+func (s *PublishAdvanceConfigRequestFiles) SetOperateType(v string) *PublishAdvanceConfigRequestFiles {
+	s.OperateType = &v
+	return s
+}
+
+func (s *PublishAdvanceConfigRequestFiles) SetOssPath(v string) *PublishAdvanceConfigRequestFiles {
+	s.OssPath = &v
+	return s
+}
+
+func (s *PublishAdvanceConfigRequestFiles) SetParentFullPath(v string) *PublishAdvanceConfigRequestFiles {
+	s.ParentFullPath = &v
+	return s
+}
+
+type PublishAdvanceConfigRequestFilesConfig struct {
+	Content   *string                               `json:"content,omitempty" xml:"content,omitempty"`
+	Variables map[string]*FilesConfigVariablesValue `json:"variables,omitempty" xml:"variables,omitempty"`
+}
+
+func (s PublishAdvanceConfigRequestFilesConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishAdvanceConfigRequestFilesConfig) GoString() string {
+	return s.String()
+}
+
+func (s *PublishAdvanceConfigRequestFilesConfig) SetContent(v string) *PublishAdvanceConfigRequestFilesConfig {
+	s.Content = &v
+	return s
+}
+
+func (s *PublishAdvanceConfigRequestFilesConfig) SetVariables(v map[string]*FilesConfigVariablesValue) *PublishAdvanceConfigRequestFilesConfig {
+	s.Variables = v
 	return s
 }
 
@@ -11794,6 +12076,130 @@ func (s *RemoveClusterResponse) SetBody(v *RemoveClusterResponseBody) *RemoveClu
 	return s
 }
 
+type StartIndexResponseBody struct {
+	// id of request
+	//
+	// example:
+	//
+	// D39EE0F1-D7EF-5F46-B781-6BF4185308B0
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Map
+	//
+	// example:
+	//
+	// {}
+	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
+}
+
+func (s StartIndexResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartIndexResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartIndexResponseBody) SetRequestId(v string) *StartIndexResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StartIndexResponseBody) SetResult(v map[string]interface{}) *StartIndexResponseBody {
+	s.Result = v
+	return s
+}
+
+type StartIndexResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartIndexResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StartIndexResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartIndexResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartIndexResponse) SetHeaders(v map[string]*string) *StartIndexResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartIndexResponse) SetStatusCode(v int32) *StartIndexResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartIndexResponse) SetBody(v *StartIndexResponseBody) *StartIndexResponse {
+	s.Body = v
+	return s
+}
+
+type StopIndexResponseBody struct {
+	// id of request
+	//
+	// example:
+	//
+	// E7B7D598-B080-5C8E-AA35-D43EC0D5F886
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Map
+	//
+	// example:
+	//
+	// {}
+	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
+}
+
+func (s StopIndexResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopIndexResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopIndexResponseBody) SetRequestId(v string) *StopIndexResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StopIndexResponseBody) SetResult(v map[string]interface{}) *StopIndexResponseBody {
+	s.Result = v
+	return s
+}
+
+type StopIndexResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopIndexResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StopIndexResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopIndexResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopIndexResponse) SetHeaders(v map[string]*string) *StopIndexResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopIndexResponse) SetStatusCode(v int32) *StopIndexResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopIndexResponse) SetBody(v *StopIndexResponseBody) *StopIndexResponse {
+	s.Body = v
+	return s
+}
+
 type StopTaskResponseBody struct {
 	// id of request
 	//
@@ -12164,6 +12570,10 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Triggers reindexing.
+//
 // Description:
 //
 // ## Method
@@ -12239,6 +12649,10 @@ func (client *Client) BuildIndexWithOptions(instanceId *string, request *BuildIn
 	return _result, _err
 }
 
+// Summary:
+//
+// Triggers reindexing.
+//
 // Description:
 //
 // ## Method
@@ -12264,6 +12678,10 @@ func (client *Client) BuildIndex(instanceId *string, request *BuildIndexRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a cluster.
+//
 // Description:
 //
 // ### Method
@@ -12331,6 +12749,10 @@ func (client *Client) CreateClusterWithOptions(instanceId *string, request *Crea
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a cluster.
+//
 // Description:
 //
 // ### Method
@@ -12356,6 +12778,17 @@ func (client *Client) CreateCluster(instanceId *string, request *CreateClusterRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates data sources.
+//
+// @param request - CreateDataSourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDataSourceResponse
 func (client *Client) CreateDataSourceWithOptions(instanceId *string, request *CreateDataSourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDataSourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12416,6 +12849,13 @@ func (client *Client) CreateDataSourceWithOptions(instanceId *string, request *C
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates data sources.
+//
+// @param request - CreateDataSourceRequest
+//
+// @return CreateDataSourceResponse
 func (client *Client) CreateDataSource(instanceId *string, request *CreateDataSourceRequest) (_result *CreateDataSourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12428,6 +12868,10 @@ func (client *Client) CreateDataSource(instanceId *string, request *CreateDataSo
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an index.
+//
 // Description:
 //
 // ### Method
@@ -12464,6 +12908,10 @@ func (client *Client) CreateIndexWithOptions(instanceId *string, request *Create
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BuildParallelNum)) {
+		body["buildParallelNum"] = request.BuildParallelNum
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Content)) {
 		body["content"] = request.Content
 	}
@@ -12482,6 +12930,10 @@ func (client *Client) CreateIndexWithOptions(instanceId *string, request *Create
 
 	if !tea.BoolValue(util.IsUnset(request.Extend)) {
 		body["extend"] = request.Extend
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MergeParallelNum)) {
+		body["mergeParallelNum"] = request.MergeParallelNum
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
@@ -12517,6 +12969,10 @@ func (client *Client) CreateIndexWithOptions(instanceId *string, request *Create
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an index.
+//
 // Description:
 //
 // ### Method
@@ -12550,6 +13006,10 @@ func (client *Client) CreateIndex(instanceId *string, request *CreateIndexReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a Havenask instance.
+//
 // Description:
 //
 // ### Method
@@ -12609,6 +13069,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a Havenask instance.
+//
 // Description:
 //
 // ### Method
@@ -12634,6 +13098,17 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建索引V2
+//
+// @param request - CreateTableRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTableResponse
 func (client *Client) CreateTableWithOptions(instanceId *string, request *CreateTableRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateTableResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12706,6 +13181,13 @@ func (client *Client) CreateTableWithOptions(instanceId *string, request *Create
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建索引V2
+//
+// @param request - CreateTableRequest
+//
+// @return CreateTableResponse
 func (client *Client) CreateTable(instanceId *string, request *CreateTableRequest) (_result *CreateTableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12718,6 +13200,10 @@ func (client *Client) CreateTable(instanceId *string, request *CreateTableReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the details about advanced configurations.
+//
 // Description:
 //
 // ## Method
@@ -12757,6 +13243,10 @@ func (client *Client) DeleteAdvanceConfigWithOptions(instanceId *string, configN
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the details about advanced configurations.
+//
 // Description:
 //
 // ## Method
@@ -12780,6 +13270,10 @@ func (client *Client) DeleteAdvanceConfig(instanceId *string, configName *string
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a specified data source.
+//
 // Description:
 //
 // ## Method
@@ -12819,6 +13313,10 @@ func (client *Client) DeleteDataSourceWithOptions(instanceId *string, dataSource
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a specified data source.
+//
 // Description:
 //
 // ## Method
@@ -12842,6 +13340,10 @@ func (client *Client) DeleteDataSource(instanceId *string, dataSourceName *strin
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an index.
+//
 // Description:
 //
 // ## Method
@@ -12897,6 +13399,10 @@ func (client *Client) DeleteIndexWithOptions(instanceId *string, indexName *stri
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an index.
+//
 // Description:
 //
 // ## Method
@@ -12922,6 +13428,10 @@ func (client *Client) DeleteIndex(instanceId *string, indexName *string, request
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the version of an index.
+//
 // Description:
 //
 // ## Method
@@ -12961,6 +13471,10 @@ func (client *Client) DeleteIndexVersionWithOptions(instanceId *string, indexNam
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the version of an index.
+//
 // Description:
 //
 // ## Method
@@ -12984,6 +13498,10 @@ func (client *Client) DeleteIndexVersion(instanceId *string, indexName *string, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a specified instance.
+//
 // Description:
 //
 // ### Method
@@ -13023,6 +13541,10 @@ func (client *Client) DeleteInstanceWithOptions(instanceId *string, headers map[
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a specified instance.
+//
 // Description:
 //
 // ### Method
@@ -13046,6 +13568,15 @@ func (client *Client) DeleteInstance(instanceId *string) (_result *DeleteInstanc
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除索引表V2
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTableResponse
 func (client *Client) DeleteTableWithOptions(instanceId *string, tableName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteTableResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -13070,6 +13601,11 @@ func (client *Client) DeleteTableWithOptions(instanceId *string, tableName *stri
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除索引表V2
+//
+// @return DeleteTableResponse
 func (client *Client) DeleteTable(instanceId *string, tableName *string) (_result *DeleteTableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13082,6 +13618,13 @@ func (client *Client) DeleteTable(instanceId *string, tableName *string) (_resul
 	return _result, _err
 }
 
+// @param request - DescribeRegionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13116,6 +13659,9 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 	return _result, _err
 }
 
+// @param request - DescribeRegionsRequest
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13128,6 +13674,10 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Performs a forced switchover.
+//
 // Description:
 //
 // \\### Method
@@ -13175,6 +13725,10 @@ func (client *Client) ForceSwitchWithOptions(instanceId *string, fsmId *string, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Performs a forced switchover.
+//
 // Description:
 //
 // \\### Method
@@ -13206,6 +13760,10 @@ func (client *Client) ForceSwitch(instanceId *string, fsmId *string) (_result *F
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a dictionary.
+//
 // Description:
 //
 // ## Method
@@ -13257,6 +13815,10 @@ func (client *Client) GetAdvanceConfigWithOptions(instanceId *string, configName
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a dictionary.
+//
 // Description:
 //
 // ## Method
@@ -13282,6 +13844,10 @@ func (client *Client) GetAdvanceConfig(instanceId *string, configName *string, r
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the information in a specified advanced configuration file.
+//
 // Description:
 //
 // ## Method
@@ -13333,6 +13899,10 @@ func (client *Client) GetAdvanceConfigFileWithOptions(instanceId *string, config
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the information in a specified advanced configuration file.
+//
 // Description:
 //
 // ## Method
@@ -13358,6 +13928,10 @@ func (client *Client) GetAdvanceConfigFile(instanceId *string, configName *strin
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a cluster.
+//
 // Description:
 //
 // ### Method
@@ -13397,6 +13971,10 @@ func (client *Client) GetClusterWithOptions(instanceId *string, clusterName *str
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a cluster.
+//
 // Description:
 //
 // ### Method
@@ -13420,6 +13998,10 @@ func (client *Client) GetCluster(instanceId *string, clusterName *string) (_resu
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the runtime information about a specified cluster.
+//
 // Description:
 //
 // ### Method
@@ -13459,6 +14041,10 @@ func (client *Client) GetClusterRunTimeInfoWithOptions(instanceId *string, heade
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the runtime information about a specified cluster.
+//
 // Description:
 //
 // ### Method
@@ -13482,6 +14068,10 @@ func (client *Client) GetClusterRunTimeInfo(instanceId *string) (_result *GetClu
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains a data source.
+//
 // Description:
 //
 // ### Method
@@ -13521,6 +14111,10 @@ func (client *Client) GetDataSourceWithOptions(instanceId *string, dataSourceNam
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains a data source.
+//
 // Description:
 //
 // ### Method
@@ -13544,6 +14138,15 @@ func (client *Client) GetDataSource(instanceId *string, dataSourceName *string) 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取数据源部署信息
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDataSourceDeployResponse
 func (client *Client) GetDataSourceDeployWithOptions(instanceId *string, deployName *string, dataSourceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDataSourceDeployResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -13568,6 +14171,11 @@ func (client *Client) GetDataSourceDeployWithOptions(instanceId *string, deployN
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取数据源部署信息
+//
+// @return GetDataSourceDeployResponse
 func (client *Client) GetDataSourceDeploy(instanceId *string, deployName *string, dataSourceName *string) (_result *GetDataSourceDeployResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13580,6 +14188,10 @@ func (client *Client) GetDataSourceDeploy(instanceId *string, deployName *string
 	return _result, _err
 }
 
+// Summary:
+//
+// Displays the overview of the deployment.
+//
 // Description:
 //
 // ## Method
@@ -13623,6 +14235,10 @@ func (client *Client) GetDeployGraphWithOptions(instanceId *string, headers map[
 	return _result, _err
 }
 
+// Summary:
+//
+// Displays the overview of the deployment.
+//
 // Description:
 //
 // ## Method
@@ -13650,6 +14266,10 @@ func (client *Client) GetDeployGraph(instanceId *string) (_result *GetDeployGrap
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries details about the version information of an index table.
+//
 // Description:
 //
 // ## Method
@@ -13701,6 +14321,10 @@ func (client *Client) GetFileWithOptions(instanceId *string, indexName *string, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries details about the version information of an index table.
+//
 // Description:
 //
 // ## Method
@@ -13726,6 +14350,15 @@ func (client *Client) GetFile(instanceId *string, indexName *string, versionName
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about an index version.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetIndexResponse
 func (client *Client) GetIndexWithOptions(instanceId *string, indexName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetIndexResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -13750,6 +14383,11 @@ func (client *Client) GetIndexWithOptions(instanceId *string, indexName *string,
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about an index version.
+//
+// @return GetIndexResponse
 func (client *Client) GetIndex(instanceId *string, indexName *string) (_result *GetIndexResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13762,6 +14400,10 @@ func (client *Client) GetIndex(instanceId *string, indexName *string) (_result *
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the information about index versions that the current index version can be rolled back to.
+//
 // Description:
 //
 // ## Method
@@ -13801,6 +14443,10 @@ func (client *Client) GetIndexVersionWithOptions(instanceId *string, clusterName
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the information about index versions that the current index version can be rolled back to.
+//
 // Description:
 //
 // ## Method
@@ -13824,6 +14470,10 @@ func (client *Client) GetIndexVersion(instanceId *string, clusterName *string) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an instance based on a specified instance ID.
+//
 // Description:
 //
 // ### Method
@@ -13863,6 +14513,10 @@ func (client *Client) GetInstanceWithOptions(instanceId *string, headers map[str
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an instance based on a specified instance ID.
+//
 // Description:
 //
 // ### Method
@@ -13886,6 +14540,17 @@ func (client *Client) GetInstance(instanceId *string) (_result *GetInstanceRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// Gets the configuration information of a node.
+//
+// @param request - GetNodeConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetNodeConfigResponse
 func (client *Client) GetNodeConfigWithOptions(instanceId *string, request *GetNodeConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetNodeConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13928,6 +14593,13 @@ func (client *Client) GetNodeConfigWithOptions(instanceId *string, request *GetN
 	return _result, _err
 }
 
+// Summary:
+//
+// Gets the configuration information of a node.
+//
+// @param request - GetNodeConfigRequest
+//
+// @return GetNodeConfigResponse
 func (client *Client) GetNodeConfig(instanceId *string, request *GetNodeConfigRequest) (_result *GetNodeConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13940,6 +14612,15 @@ func (client *Client) GetNodeConfig(instanceId *string, request *GetNodeConfigRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取索引表信息V2
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTableResponse
 func (client *Client) GetTableWithOptions(instanceId *string, tableName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTableResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -13964,6 +14645,11 @@ func (client *Client) GetTableWithOptions(instanceId *string, tableName *string,
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取索引表信息V2
+//
+// @return GetTableResponse
 func (client *Client) GetTable(instanceId *string, tableName *string) (_result *GetTableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13976,6 +14662,15 @@ func (client *Client) GetTable(instanceId *string, tableName *string) (_result *
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据generationId获取某个索引版本状态V2
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTableGenerationResponse
 func (client *Client) GetTableGenerationWithOptions(instanceId *string, tableName *string, generationId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTableGenerationResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -14000,6 +14695,11 @@ func (client *Client) GetTableGenerationWithOptions(instanceId *string, tableNam
 	return _result, _err
 }
 
+// Summary:
+//
+// 根据generationId获取某个索引版本状态V2
+//
+// @return GetTableGenerationResponse
 func (client *Client) GetTableGeneration(instanceId *string, tableName *string, generationId *string) (_result *GetTableGenerationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14012,6 +14712,10 @@ func (client *Client) GetTableGeneration(instanceId *string, tableName *string, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the file list in an advanced configuration directory.
+//
 // Description:
 //
 // ## Method
@@ -14063,6 +14767,10 @@ func (client *Client) ListAdvanceConfigDirWithOptions(instanceId *string, config
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the file list in an advanced configuration directory.
+//
 // Description:
 //
 // ## Method
@@ -14088,6 +14796,10 @@ func (client *Client) ListAdvanceConfigDir(instanceId *string, configName *strin
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains a list of advanced configurations.
+//
 // Description:
 //
 // ## Sample requests
@@ -14113,6 +14825,10 @@ func (client *Client) ListAdvanceConfigsWithOptions(instanceId *string, request 
 
 	if !tea.BoolValue(util.IsUnset(request.IndexName)) {
 		query["indexName"] = request.IndexName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewMode)) {
+		query["newMode"] = request.NewMode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
@@ -14143,6 +14859,10 @@ func (client *Client) ListAdvanceConfigsWithOptions(instanceId *string, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains a list of advanced configurations.
+//
 // Description:
 //
 // ## Sample requests
@@ -14164,6 +14884,10 @@ func (client *Client) ListAdvanceConfigs(instanceId *string, request *ListAdvanc
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries cluster names.
+//
 // Description:
 //
 // ### Method
@@ -14203,6 +14927,10 @@ func (client *Client) ListClusterNamesWithOptions(headers map[string]*string, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries cluster names.
+//
 // Description:
 //
 // ### Method
@@ -14226,6 +14954,10 @@ func (client *Client) ListClusterNames() (_result *ListClusterNamesResponse, _er
 	return _result, _err
 }
 
+// Summary:
+//
+// Displays cluster tasks .
+//
 // Description:
 //
 // ### Method
@@ -14273,6 +15005,10 @@ func (client *Client) ListClusterTasksWithOptions(instanceId *string, headers ma
 	return _result, _err
 }
 
+// Summary:
+//
+// Displays cluster tasks .
+//
 // Description:
 //
 // ### Method
@@ -14304,6 +15040,10 @@ func (client *Client) ListClusterTasks(instanceId *string) (_result *ListCluster
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of clusters.
+//
 // Description:
 //
 // ### Method
@@ -14351,6 +15091,10 @@ func (client *Client) ListClustersWithOptions(instanceId *string, headers map[st
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of clusters.
+//
 // Description:
 //
 // ### Method
@@ -14382,6 +15126,10 @@ func (client *Client) ListClusters(instanceId *string) (_result *ListClustersRes
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the schema information of a specified data source.
+//
 // Description:
 //
 // ## Method
@@ -14421,6 +15169,10 @@ func (client *Client) ListDataSourceSchemasWithOptions(instanceId *string, dataS
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the schema information of a specified data source.
+//
 // Description:
 //
 // ## Method
@@ -14444,6 +15196,10 @@ func (client *Client) ListDataSourceSchemas(instanceId *string, dataSourceName *
 	return _result, _err
 }
 
+// Summary:
+//
+// Displays data source tasks.
+//
 // Description:
 //
 // ### Method
@@ -14491,6 +15247,10 @@ func (client *Client) ListDataSourceTasksWithOptions(instanceId *string, headers
 	return _result, _err
 }
 
+// Summary:
+//
+// Displays data source tasks.
+//
 // Description:
 //
 // ### Method
@@ -14522,6 +15282,10 @@ func (client *Client) ListDataSourceTasks(instanceId *string) (_result *ListData
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the list of data sources.
+//
 // Description:
 //
 // ## Method
@@ -14561,6 +15325,10 @@ func (client *Client) ListDataSourcesWithOptions(instanceId *string, headers map
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the list of data sources.
+//
 // Description:
 //
 // ## Method
@@ -14584,6 +15352,10 @@ func (client *Client) ListDataSources(instanceId *string) (_result *ListDataSour
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the data restoration version of a data source.
+//
 // Description:
 //
 // ### Method
@@ -14639,6 +15411,10 @@ func (client *Client) ListDateSourceGenerationsWithOptions(instanceId *string, d
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the data restoration version of a data source.
+//
 // Description:
 //
 // ### Method
@@ -14664,6 +15440,10 @@ func (client *Client) ListDateSourceGenerations(instanceId *string, dataSourceNa
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the index list.
+//
 // Description:
 //
 // ## Method
@@ -14715,6 +15495,10 @@ func (client *Client) ListIndexesWithOptions(instanceId *string, request *ListIn
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the index list.
+//
 // Description:
 //
 // ## Method
@@ -14740,6 +15524,10 @@ func (client *Client) ListIndexes(instanceId *string, request *ListIndexesReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries instances.
+//
 // Description:
 //
 // ### Method
@@ -14791,6 +15579,10 @@ func (client *Client) ListInstanceSpecsWithOptions(instanceId *string, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries instances.
+//
 // Description:
 //
 // ### Method
@@ -14816,6 +15608,10 @@ func (client *Client) ListInstanceSpecs(instanceId *string, request *ListInstanc
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries instances.
+//
 // Description:
 //
 // ### Method
@@ -14897,6 +15693,10 @@ func (client *Client) ListInstancesWithOptions(tmpReq *ListInstancesRequest, hea
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries instances.
+//
 // Description:
 //
 // ### Method
@@ -14922,6 +15722,10 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the details of online configurations.
+//
 // Description:
 //
 // ### Method
@@ -14981,6 +15785,10 @@ func (client *Client) ListOnlineConfigsWithOptions(instanceId *string, nodeName 
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the details of online configurations.
+//
 // Description:
 //
 // ### Method
@@ -15014,6 +15822,10 @@ func (client *Client) ListOnlineConfigs(instanceId *string, nodeName *string, re
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the query result.
+//
 // Description:
 //
 // ### Method
@@ -15069,6 +15881,10 @@ func (client *Client) ListQueryResultWithOptions(instanceId *string, request *Li
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the query result.
+//
 // Description:
 //
 // ### Method
@@ -15094,6 +15910,15 @@ func (client *Client) ListQueryResult(instanceId *string, request *ListQueryResu
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取索引generation列表V2
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTableGenerationsResponse
 func (client *Client) ListTableGenerationsWithOptions(instanceId *string, tableName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTableGenerationsResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -15118,6 +15943,11 @@ func (client *Client) ListTableGenerationsWithOptions(instanceId *string, tableN
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取索引generation列表V2
+//
+// @return ListTableGenerationsResponse
 func (client *Client) ListTableGenerations(instanceId *string, tableName *string) (_result *ListTableGenerationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15130,6 +15960,17 @@ func (client *Client) ListTableGenerations(instanceId *string, tableName *string
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取索引列表V2
+//
+// @param request - ListTablesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTablesResponse
 func (client *Client) ListTablesWithOptions(instanceId *string, request *ListTablesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTablesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15164,6 +16005,13 @@ func (client *Client) ListTablesWithOptions(instanceId *string, request *ListTab
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取索引列表V2
+//
+// @param request - ListTablesRequest
+//
+// @return ListTablesResponse
 func (client *Client) ListTables(instanceId *string, request *ListTablesRequest) (_result *ListTablesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15176,6 +16024,10 @@ func (client *Client) ListTables(instanceId *string, request *ListTablesRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the advanced configurations.
+//
 // Description:
 //
 // ## Method
@@ -15237,6 +16089,10 @@ func (client *Client) ModifyAdvanceConfigFileWithOptions(instanceId *string, con
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the advanced configurations.
+//
 // Description:
 //
 // ## Method
@@ -15262,6 +16118,10 @@ func (client *Client) ModifyAdvanceConfigFile(instanceId *string, configName *st
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the description of a specified cluster.
+//
 // Description:
 //
 // ### Method
@@ -15313,6 +16173,10 @@ func (client *Client) ModifyClusterDescWithOptions(instanceId *string, clusterNa
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the description of a specified cluster.
+//
 // Description:
 //
 // ### Method
@@ -15338,6 +16202,10 @@ func (client *Client) ModifyClusterDesc(instanceId *string, clusterName *string,
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the configuration information of a cluster.
+//
 // Description:
 //
 // ## Request syntax
@@ -15417,6 +16285,10 @@ func (client *Client) ModifyClusterOfflineConfigWithOptions(instanceId *string, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the configuration information of a cluster.
+//
 // Description:
 //
 // ## Request syntax
@@ -15438,6 +16310,10 @@ func (client *Client) ModifyClusterOfflineConfig(instanceId *string, request *Mo
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the online configurations of a cluster.
+//
 // Description:
 //
 // ### Method
@@ -15493,6 +16369,10 @@ func (client *Client) ModifyClusterOnlineConfigWithOptions(instanceId *string, r
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the online configurations of a cluster.
+//
 // Description:
 //
 // ### Method
@@ -15518,6 +16398,10 @@ func (client *Client) ModifyClusterOnlineConfig(instanceId *string, request *Mod
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a data source.
+//
 // Description:
 //
 // ## Method
@@ -15575,6 +16459,10 @@ func (client *Client) ModifyDataSourceWithOptions(instanceId *string, dataSource
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a data source.
+//
 // Description:
 //
 // ## Method
@@ -15600,6 +16488,10 @@ func (client *Client) ModifyDataSource(instanceId *string, dataSourceName *strin
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a file.
+//
 // Description:
 //
 // ## Method
@@ -15661,6 +16553,10 @@ func (client *Client) ModifyFileWithOptions(instanceId *string, indexName *strin
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a file.
+//
 // Description:
 //
 // ## Method
@@ -15686,6 +16582,10 @@ func (client *Client) ModifyFile(instanceId *string, indexName *string, versionN
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the information about index partitions.
+//
 // Description:
 //
 // ### Method
@@ -15749,6 +16649,10 @@ func (client *Client) ModifyIndexPartitionWithOptions(instanceId *string, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the information about index partitions.
+//
 // Description:
 //
 // ### Method
@@ -15774,6 +16678,10 @@ func (client *Client) ModifyIndexPartition(instanceId *string, request *ModifyIn
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the index version of a cluster (an index version rollback).
+//
 // Description:
 //
 // ## Method
@@ -15820,6 +16728,10 @@ func (client *Client) ModifyIndexVersionWithOptions(instanceId *string, clusterN
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the index version of a cluster (an index version rollback).
+//
 // Description:
 //
 // ## Method
@@ -15845,6 +16757,10 @@ func (client *Client) ModifyIndexVersion(instanceId *string, clusterName *string
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the configurations of a node.
+//
 // Description:
 //
 // ### Method
@@ -15942,6 +16858,10 @@ func (client *Client) ModifyNodeConfigWithOptions(instanceId *string, request *M
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the configurations of a node.
+//
 // Description:
 //
 // ### Method
@@ -15975,6 +16895,10 @@ func (client *Client) ModifyNodeConfig(instanceId *string, request *ModifyNodeCo
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies online configurations.
+//
 // Description:
 //
 // ### Method
@@ -16034,6 +16958,10 @@ func (client *Client) ModifyOnlineConfigWithOptions(instanceId *string, nodeName
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies online configurations.
+//
 // Description:
 //
 // ### Method
@@ -16067,6 +16995,10 @@ func (client *Client) ModifyOnlineConfig(instanceId *string, nodeName *string, i
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改实例的密码
+//
 // Description:
 //
 // ### Method
@@ -16122,6 +17054,10 @@ func (client *Client) ModifyPasswordWithOptions(instanceId *string, request *Mod
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改实例的密码
+//
 // Description:
 //
 // ### Method
@@ -16147,6 +17083,17 @@ func (client *Client) ModifyPassword(instanceId *string, request *ModifyPassword
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改索引V2
+//
+// @param request - ModifyTableRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyTableResponse
 func (client *Client) ModifyTableWithOptions(instanceId *string, tableName *string, request *ModifyTableRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ModifyTableResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16211,6 +17158,13 @@ func (client *Client) ModifyTableWithOptions(instanceId *string, tableName *stri
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改索引V2
+//
+// @param request - ModifyTableRequest
+//
+// @return ModifyTableResponse
 func (client *Client) ModifyTable(instanceId *string, tableName *string, request *ModifyTableRequest) (_result *ModifyTableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16223,6 +17177,10 @@ func (client *Client) ModifyTable(instanceId *string, tableName *string, request
 	return _result, _err
 }
 
+// Summary:
+//
+// Publishes a version of advanced configurations.
+//
 // Description:
 //
 // ## Method
@@ -16254,8 +17212,12 @@ func (client *Client) PublishAdvanceConfigWithOptions(instanceId *string, config
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Body)) {
-		body["body"] = request.Body
+	if !tea.BoolValue(util.IsUnset(request.Desc)) {
+		body["desc"] = request.Desc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Files)) {
+		body["files"] = request.Files
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -16282,6 +17244,10 @@ func (client *Client) PublishAdvanceConfigWithOptions(instanceId *string, config
 	return _result, _err
 }
 
+// Summary:
+//
+// Publishes a version of advanced configurations.
+//
 // Description:
 //
 // ## Method
@@ -16315,6 +17281,10 @@ func (client *Client) PublishAdvanceConfig(instanceId *string, configName *strin
 	return _result, _err
 }
 
+// Summary:
+//
+// Publishes a specified index version.
+//
 // Description:
 //
 // ## Method
@@ -16366,6 +17336,10 @@ func (client *Client) PublishIndexVersionWithOptions(instanceId *string, indexNa
 	return _result, _err
 }
 
+// Summary:
+//
+// Publishes a specified index version.
+//
 // Description:
 //
 // ## Method
@@ -16391,6 +17365,10 @@ func (client *Client) PublishIndexVersion(instanceId *string, indexName *string,
 	return _result, _err
 }
 
+// Summary:
+//
+// Restores data from an index.
+//
 // Description:
 //
 // ### Method
@@ -16454,6 +17432,10 @@ func (client *Client) RecoverIndexWithOptions(instanceId *string, request *Recov
 	return _result, _err
 }
 
+// Summary:
+//
+// Restores data from an index.
+//
 // Description:
 //
 // ### Method
@@ -16479,6 +17461,17 @@ func (client *Client) RecoverIndex(instanceId *string, request *RecoverIndexRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 索引重建V2
+//
+// @param request - ReindexRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReindexResponse
 func (client *Client) ReindexWithOptions(instanceId *string, tableName *string, request *ReindexRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ReindexResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16521,6 +17514,13 @@ func (client *Client) ReindexWithOptions(instanceId *string, tableName *string, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 索引重建V2
+//
+// @param request - ReindexRequest
+//
+// @return ReindexResponse
 func (client *Client) Reindex(instanceId *string, tableName *string, request *ReindexRequest) (_result *ReindexResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16533,6 +17533,10 @@ func (client *Client) Reindex(instanceId *string, tableName *string, request *Re
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a cluster.
+//
 // Description:
 //
 // ### Method
@@ -16580,6 +17584,10 @@ func (client *Client) RemoveClusterWithOptions(instanceId *string, clusterName *
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a cluster.
+//
 // Description:
 //
 // ### Method
@@ -16611,6 +17619,94 @@ func (client *Client) RemoveCluster(instanceId *string, clusterName *string) (_r
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartIndexResponse
+func (client *Client) StartIndexWithOptions(instanceId *string, indexName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartIndexResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartIndex"),
+		Version:     tea.String("2021-10-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/ha3/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/indexes/" + tea.StringValue(openapiutil.GetEncodeParam(indexName)) + "/startIndex"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartIndexResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @return StartIndexResponse
+func (client *Client) StartIndex(instanceId *string, indexName *string) (_result *StartIndexResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StartIndexResponse{}
+	_body, _err := client.StartIndexWithOptions(instanceId, indexName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopIndexResponse
+func (client *Client) StopIndexWithOptions(instanceId *string, indexName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopIndexResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopIndex"),
+		Version:     tea.String("2021-10-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/ha3/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/indexes/" + tea.StringValue(openapiutil.GetEncodeParam(indexName)) + "/stopIndex"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopIndexResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @return StopIndexResponse
+func (client *Client) StopIndex(instanceId *string, indexName *string) (_result *StopIndexResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StopIndexResponse{}
+	_body, _err := client.StopIndexWithOptions(instanceId, indexName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Stops an FSM task.
+//
 // Description:
 //
 // ### Method
@@ -16658,6 +17754,10 @@ func (client *Client) StopTaskWithOptions(instanceId *string, fsmId *string, hea
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops an FSM task.
+//
 // Description:
 //
 // ### Method
@@ -16689,6 +17789,10 @@ func (client *Client) StopTask(instanceId *string, fsmId *string) (_result *Stop
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the configuration of a specified instance.
+//
 // Description:
 //
 // ### Method
@@ -16748,6 +17852,10 @@ func (client *Client) UpdateInstanceWithOptions(instanceId *string, request *Upd
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the configuration of a specified instance.
+//
 // Description:
 //
 // ### Method
