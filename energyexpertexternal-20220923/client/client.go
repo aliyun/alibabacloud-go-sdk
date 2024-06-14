@@ -7656,6 +7656,7 @@ func (s *SendDocumentAskQuestionResponse) SetBody(v *SendDocumentAskQuestionResp
 }
 
 type SubmitDocumentAnalyzeJobRequest struct {
+	// This parameter is required.
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
 	// example:
 	//
@@ -7702,6 +7703,7 @@ func (s *SubmitDocumentAnalyzeJobRequest) SetTemplateId(v string) *SubmitDocumen
 }
 
 type SubmitDocumentAnalyzeJobAdvanceRequest struct {
+	// This parameter is required.
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
 	// example:
 	//
