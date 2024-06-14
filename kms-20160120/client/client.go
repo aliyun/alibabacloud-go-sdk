@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
@@ -12,6 +13,8 @@ import (
 type AsymmetricDecryptRequest struct {
 	// The decryption algorithm.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// RSAES_OAEP_SHA_1
@@ -20,7 +23,9 @@ type AsymmetricDecryptRequest struct {
 	//
 	// > 	- The value is encoded in Base64.
 	//
-	// > 	- You can call the [AsymmetricEncrypt](~~148131~~) operation to generate the ciphertext.
+	// > 	- You can call the [AsymmetricEncrypt](https://help.aliyun.com/document_detail/148131.html) operation to generate the ciphertext.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -28,13 +33,17 @@ type AsymmetricDecryptRequest struct {
 	CiphertextBlob *string `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
 	// The ID of the customer master key (CMK). The ID must be globally unique.
 	//
-	// >  You can also set this parameter to an alias that is bound to the CMK. For more information, see [Alias overview](~~68522~~).
+	// >  You can also set this parameter to an alias that is bound to the CMK. For more information, see [Alias overview](https://help.aliyun.com/document_detail/68522.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// 5c438b18-05be-40ad-b6c2-3be6752c****
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	// The version ID of the CMK. The ID must be globally unique.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -159,13 +168,17 @@ func (s *AsymmetricDecryptResponse) SetBody(v *AsymmetricDecryptResponseBody) *A
 type AsymmetricEncryptRequest struct {
 	// The encryption algorithm.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// RSAES_OAEP_SHA_1
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
 	// The ID of the CMK. The ID must be globally unique.
 	//
-	// >  You can also set this parameter to an alias that is bound to the CMK. For more information, see [Overview of aliases](~~68522~~).
+	// >  You can also set this parameter to an alias that is bound to the CMK. For more information, see [Overview of aliases](https://help.aliyun.com/document_detail/68522.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -173,13 +186,17 @@ type AsymmetricEncryptRequest struct {
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	// The version ID of the CMK. The ID must be globally unique.
 	//
-	// >  You can call the [ListKeyVersions](~~133966~~) operation to query the versions of a CMK. The ID of a version is specified by the KeyVersionId parameter.
+	// >  You can call the [ListKeyVersions](https://help.aliyun.com/document_detail/133966.html) operation to query the versions of a CMK. The ID of a version is specified by the KeyVersionId parameter.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// 2ab1a983-7072-4bbc-a582-584b5bd8****
 	KeyVersionId *string `json:"KeyVersionId,omitempty" xml:"KeyVersionId,omitempty"`
 	// The plaintext that you want to encrypt. The plaintext must be Base64-encoded.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -304,11 +321,15 @@ func (s *AsymmetricEncryptResponse) SetBody(v *AsymmetricEncryptResponseBody) *A
 type AsymmetricSignRequest struct {
 	// The version ID of the CMK. The ID must be globally unique.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// RSA_PSS_SHA_256
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
 	// The signature algorithm.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -316,13 +337,17 @@ type AsymmetricSignRequest struct {
 	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
 	// The operation that you want to perform. Set the value to **AsymmetricSign**.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 5c438b18-05be-40ad-b6c2-3be6752c****
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	// The ID of the customer master key (CMK). The ID must be globally unique.
 	//
-	// >  You can also set this parameter to an alias that is bound to the CMK. For more information, see [Alias overview](~~68522~~).
+	// >  You can also set this parameter to an alias that is bound to the CMK. For more information, see [Alias overview](https://help.aliyun.com/document_detail/68522.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -369,7 +394,7 @@ type AsymmetricSignResponseBody struct {
 	//
 	// > 	- The value is encoded in Base64.
 	//
-	// > 	- For more information about how to calculate message digests, see the **Preprocess signature: compute a message digest*	- section of the [Generate and verify a signature by using an asymmetric CMK](~~148146~~) topic.
+	// > 	- For more information about how to calculate message digests, see the **Preprocess signature: compute a message digest*	- section of the [Generate and verify a signature by using an asymmetric CMK](https://help.aliyun.com/document_detail/148146.html) topic.
 	//
 	// example:
 	//
@@ -453,6 +478,8 @@ func (s *AsymmetricSignResponse) SetBody(v *AsymmetricSignResponseBody) *Asymmet
 type AsymmetricVerifyRequest struct {
 	// The signature algorithm.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// RSA_PSS_SHA_256
@@ -461,19 +488,25 @@ type AsymmetricVerifyRequest struct {
 	//
 	// >  The value is encoded in Base64.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ZOyIygCyaOW6GjVnihtTFtIS9PNmskdyMlNKiuy****=
 	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
 	// The ID of the CMK. The ID must be globally unique.
 	//
-	// >  You can also set this parameter to an alias that is bound to the CMK. For more information, see [Overview of aliases](~~68522~~).
+	// >  You can also set this parameter to an alias that is bound to the CMK. For more information, see [Overview of aliases](https://help.aliyun.com/document_detail/68522.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// 5c438b18-05be-40ad-b6c2-3be6752c****
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	// The version ID of the CMK. The ID must be globally unique.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -482,6 +515,8 @@ type AsymmetricVerifyRequest struct {
 	// The signature value to be verified.
 	//
 	// >  The value is encoded in Base64.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -611,6 +646,8 @@ func (s *AsymmetricVerifyResponse) SetBody(v *AsymmetricVerifyResponseBody) *Asy
 type CancelKeyDeletionRequest struct {
 	// The ID of the CMK. The ID must be globally unique.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1234abcd-12ab-34cd-56ef-12345678****
@@ -684,19 +721,23 @@ func (s *CancelKeyDeletionResponse) SetBody(v *CancelKeyDeletionResponseBody) *C
 type CertificatePrivateKeyDecryptRequest struct {
 	// The encryption algorithm. Valid values:
 	//
-	// 	- RSAES_OAEP_SHA\_1
+	// 	- RSAES_OAEP_SHA_1
 	//
-	// 	- RSAES_OAEP_SHA\_256
+	// 	- RSAES_OAEP_SHA_256
 	//
 	// 	- SM2PKE
 	//
-	// > The SM2PKE encryption algorithm is supported only in regions in mainland China. In these regions, managed hardware security modules (HSMs) are used. For more information, see [Managed HSM overview](~~125803~~).
+	// > The SM2PKE encryption algorithm is supported only in regions in mainland China. In these regions, managed hardware security modules (HSMs) are used. For more information, see [Managed HSM overview](https://help.aliyun.com/document_detail/125803.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// RSAES_OAEP_SHA_256
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
 	// The ID of the certificate. The ID must be globally unique in Certificates Manager.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -705,6 +746,8 @@ type CertificatePrivateKeyDecryptRequest struct {
 	// The data that you want to decrypt.
 	//
 	// The value is encoded in Base64.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -813,21 +856,25 @@ func (s *CertificatePrivateKeyDecryptResponse) SetBody(v *CertificatePrivateKeyD
 type CertificatePrivateKeySignRequest struct {
 	// The signature algorithm. Valid values:
 	//
-	// 	- RSA_PKCS1\_SHA\_256
+	// 	- RSA_PKCS1_SHA_256
 	//
-	// 	- RSA_PSS_SHA\_256
+	// 	- RSA_PSS_SHA_256
 	//
-	// 	- ECDSA_SHA\_256
+	// 	- ECDSA_SHA_256
 	//
 	// 	- SM2DSA
 	//
-	// >	- The SM2DSA signature algorithm is supported only in regions where managed hardware security modules (HSMs) are used in mainland China. For more information, see [Managed HSM overview](~~125803~~).
+	// >	- The SM2DSA signature algorithm is supported only in regions where managed hardware security modules (HSMs) are used in mainland China. For more information, see [Managed HSM overview](https://help.aliyun.com/document_detail/125803.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// ECDSA_SHA_256
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
 	// The ID of the certificate. The ID must be globally unique in Certificates Manager.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -841,11 +888,13 @@ type CertificatePrivateKeySignRequest struct {
 	//
 	// If the size of the data is greater than 4 KB, you can set the MessageType parameter to DIGEST and set the Message parameter to the digest of the data. The digest is also called hash value. You can compute the digest of the data on an on-premises machine. Certificates Manager uses the digest that you compute in your own certificate application system. The message digest algorithm that you use must match the specified signature algorithm. Comply with the following mapping between signature algorithms and message digest algorithms:
 	//
-	// 	- If the signature algorithm is RSA_PKCS1\_SHA\_256, RSA_PSS_SHA\_256, or ECDSA_SHA\_256, the message digest algorithm must be SHA-256.
+	// 	- If the signature algorithm is RSA_PKCS1_SHA_256, RSA_PSS_SHA_256, or ECDSA_SHA_256, the message digest algorithm must be SHA-256.
 	//
 	// 	- If the signature algorithm is SM2DSA, the message digest algorithm must be SM3.
 	//
 	// >  If the key type of the certificate is EC_SM2 and the MessageType parameter is set to DIGEST, the value of the Message parameter is `e` that is described in GB/T 32918.2-2016 6.1.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -856,6 +905,8 @@ type CertificatePrivateKeySignRequest struct {
 	// 	- RAW: the raw data. This is the default value.
 	//
 	// 	- DIGEST: the message digest (hash value) of the raw data.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -969,19 +1020,23 @@ func (s *CertificatePrivateKeySignResponse) SetBody(v *CertificatePrivateKeySign
 type CertificatePublicKeyEncryptRequest struct {
 	// The encryption algorithm. Valid values:
 	//
-	// 	- RSAES_OAEP_SHA\_1
+	// 	- RSAES_OAEP_SHA_1
 	//
-	// 	- RSAES_OAEP_SHA\_256
+	// 	- RSAES_OAEP_SHA_256
 	//
 	// 	- SM2PKE
 	//
-	// >The SM2PKE encryption algorithm is supported only in regions in mainland China. In these regions, managed hardware security modules (HSMs) are used. For more information, see [Managed HSM overview](~~125803~~).
+	// >The SM2PKE encryption algorithm is supported only in regions in mainland China. In these regions, managed hardware security modules (HSMs) are used. For more information, see [Managed HSM overview](https://help.aliyun.com/document_detail/125803.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// RSAES_OAEP_SHA_256
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
 	// The ID of the certificate. The ID must be globally unique in Certificates Manager.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -993,13 +1048,15 @@ type CertificatePublicKeyEncryptRequest struct {
 	//
 	// The size of data that can be encrypted varies based on the encryption algorithm that you use:
 	//
-	// 	- RSAES_OAEP_SHA\_1: 214 bytes
+	// 	- RSAES_OAEP_SHA_1: 214 bytes
 	//
-	// 	- RSAES_OAEP_SHA\_256: 190 bytes
+	// 	- RSAES_OAEP_SHA_256: 190 bytes
 	//
 	// 	- SM2PKE: 6,047 bytes
 	//
-	// If the size of data that you want to encrypt exceeds the preceding limits, you can call the [GenerateDataKey](~~28948~~) operation to generate a data key to encrypt the data. Then, call the CertificatePublicKeyEncrypt operation to encrypt the data key.
+	// If the size of data that you want to encrypt exceeds the preceding limits, you can call the [GenerateDataKey](https://help.aliyun.com/document_detail/28948.html) operation to generate a data key to encrypt the data. Then, call the CertificatePublicKeyEncrypt operation to encrypt the data key.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1108,21 +1165,25 @@ func (s *CertificatePublicKeyEncryptResponse) SetBody(v *CertificatePublicKeyEnc
 type CertificatePublicKeyVerifyRequest struct {
 	// The signature algorithm. Valid values:
 	//
-	// 	- RSA_PKCS1\_SHA\_256
+	// 	- RSA_PKCS1_SHA_256
 	//
-	// 	- RSA_PSS_SHA\_256
+	// 	- RSA_PSS_SHA_256
 	//
-	// 	- ECDSA_SHA\_256
+	// 	- ECDSA_SHA_256
 	//
 	// 	- SM2DSA
 	//
-	// > The SM2DSA signature algorithm is supported only in regions where managed hardware security modules (HSMs) are used in the Chinese mainland. For more information, see [Managed HSM overview](~~125803~~).
+	// > The SM2DSA signature algorithm is supported only in regions where managed hardware security modules (HSMs) are used in the Chinese mainland. For more information, see [Managed HSM overview](https://help.aliyun.com/document_detail/125803.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// ECDSA_SHA_256
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
 	// The ID of the certificate. The ID must be globally unique in Certificates Manager.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1136,11 +1197,13 @@ type CertificatePublicKeyVerifyRequest struct {
 	//
 	// If the size of the data is greater than 4 KB, you can set the MessageType parameter to DIGEST and set the Message parameter to the digest of the data. The digest is also called hash value. You can compute the digest of the data on an on-premises device. Certificates Manager uses the digest that you compute in your own certificate application system. The message digest algorithm that you use must match the specified signature algorithm. Comply with the following mapping between signature algorithms and message digest algorithms:
 	//
-	// 	- If the signature algorithm is RSA_PKCS1\_SHA\_256, RSA_PSS_SHA\_256, or ECDSA_SHA\_256, the message digest algorithm must be SHA-256.
+	// 	- If the signature algorithm is RSA_PKCS1_SHA_256, RSA_PSS_SHA_256, or ECDSA_SHA_256, the message digest algorithm must be SHA-256.
 	//
 	// 	- If the signature algorithm is SM2DSA, the message digest algorithm must be SM3.
 	//
 	// >  If the key type of the certificate is EC_SM2 and the MessageType parameter is set to DIGEST, the value of the Message parameter is `e` that is described in GB/T 32918.2-2016 6.1.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1152,6 +1215,8 @@ type CertificatePublicKeyVerifyRequest struct {
 	//
 	// 	- DIGEST: the message digest (hash value) of the raw data.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// RAW
@@ -1159,6 +1224,8 @@ type CertificatePublicKeyVerifyRequest struct {
 	// The signature value.
 	//
 	// The value is encoded in Base64.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1279,11 +1346,15 @@ func (s *CertificatePublicKeyVerifyResponse) SetBody(v *CertificatePublicKeyVeri
 type ConnectKmsInstanceRequest struct {
 	// The provider of the KMS instance. Set the value to Aliyun.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Aliyun
 	KMProvider *string `json:"KMProvider,omitempty" xml:"KMProvider,omitempty"`
 	// The ID of the KMS instance that you want to enable.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1291,17 +1362,23 @@ type ConnectKmsInstanceRequest struct {
 	KmsInstanceId *string `json:"KmsInstanceId,omitempty" xml:"KmsInstanceId,omitempty"`
 	// The vSwitch in the two zones. The vSwitch must have at least one available IP address.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// vsw-bp1i512amda6d10a0****
 	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
 	// The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// vpc-bp19z7cwmltad5dff****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The two zones for the KMS instance. Dual-zone deployment improves service availability and disaster recovery capabilities.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1398,11 +1475,15 @@ type CreateAliasRequest struct {
 	//
 	// The alias must be 1 to 255 characters in length and must contain the prefix `alias/`. The alias cannot be prefixed with the reserved word `alias/acs`.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// alias/example
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
 	// The ID of the CMK. The ID must be globally unique.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1494,6 +1575,8 @@ type CreateApplicationAccessPointRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the AAP.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// aap_test
@@ -1501,6 +1584,8 @@ type CreateApplicationAccessPointRequest struct {
 	// The permission policy.
 	//
 	// > You can bind up to three permission policies to each AAP.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1655,11 +1740,13 @@ type CreateCertificateRequest struct {
 	ExportablePrivateKey *bool `json:"ExportablePrivateKey,omitempty" xml:"ExportablePrivateKey,omitempty"`
 	// The type of the key. Valid values:
 	//
-	// 	- RSA\_2048
+	// 	- RSA_2048
 	//
 	// 	- EC_P256
 	//
 	// 	- EC_SM2
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1684,6 +1771,8 @@ type CreateCertificateRequest struct {
 	// 	- ST: optional. The name of the province, municipality, autonomous region, or special administrative region.
 	//
 	// 	- L: optional. The name of the city.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1740,11 +1829,13 @@ type CreateCertificateShrinkRequest struct {
 	ExportablePrivateKey *bool `json:"ExportablePrivateKey,omitempty" xml:"ExportablePrivateKey,omitempty"`
 	// The type of the key. Valid values:
 	//
-	// 	- RSA\_2048
+	// 	- RSA_2048
 	//
 	// 	- EC_P256
 	//
 	// 	- EC_SM2
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1769,6 +1860,8 @@ type CreateCertificateShrinkRequest struct {
 	// 	- ST: optional. The name of the province, municipality, autonomous region, or special administrative region.
 	//
 	// 	- L: optional. The name of the city.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1829,7 +1922,7 @@ type CreateCertificateResponseBody struct {
 	//
 	// example:
 	//
-	// -----BEGIN CERTIFICATE REQUEST-----\nMIIDADCCAegCAQAwgboxCzAJBgNVBAYTAkNOMREwDwYDVQQIEwhaaGVqaWFuZzER\n****\nmkj4rg==\n-----END CERTIFICATE REQUEST-----\n
+	// -----BEGIN CERTIFICATE REQUEST-----\\nMIIDADCCAegCAQAwgboxCzAJBgNVBAYTAkNOMREwDwYDVQQIEwhaaGVqaWFuZzER\\n****\\nmkj4rg==\\n-----END CERTIFICATE REQUEST-----\\n
 	Csr *string `json:"Csr,omitempty" xml:"Csr,omitempty"`
 	// The ID of the request.
 	//
@@ -1899,6 +1992,8 @@ func (s *CreateCertificateResponse) SetBody(v *CreateCertificateResponseBody) *C
 type CreateClientKeyRequest struct {
 	// The operation that you want to perform. Set the value to **CreateClientKey**.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// aap_test
@@ -1926,6 +2021,8 @@ type CreateClientKeyRequest struct {
 	// 2023-08-31T17:14:33Z
 	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
 	// The name of the AAP.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1986,7 +2083,7 @@ type CreateClientKeyResponseBody struct {
 	//
 	// 2023-08-31T17:14:33Z
 	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
-	// The algorithm that is used to encrypt the private key of the client key. Currently, only RSA\_2048 is supported.
+	// The algorithm that is used to encrypt the private key of the client key. Currently, only RSA_2048 is supported.
 	//
 	// example:
 	//
@@ -2098,13 +2195,13 @@ type CreateKeyRequest struct {
 	//
 	// - false (default)
 	//
-	// This parameter is valid only when the key belongs to an instance type that supports automatic rotation. For more information, see [Key rotation](~~2358146~~).
+	// This parameter is valid only when the key belongs to an instance type that supports automatic rotation. For more information, see [Key rotation](https://help.aliyun.com/document_detail/2358146.html).
 	//
 	// example:
 	//
 	// true
 	EnableAutomaticRotation *bool `json:"EnableAutomaticRotation,omitempty" xml:"EnableAutomaticRotation,omitempty"`
-	// The key specification. The valid values vary based on the KMS instance type. For more information, see [Overview](~~480159~~).
+	// The key specification. The valid values vary based on the KMS instance type. For more information, see [Overview](https://help.aliyun.com/document_detail/480159.html).
 	//
 	// > If you do not specify a value for this parameter, the default key specification is Aliyun_AES_256.
 	//
@@ -2135,7 +2232,7 @@ type CreateKeyRequest struct {
 	//
 	// > - Default keys of the customer master key (CMK) type support Aliyun_KMS and EXTERNAL. Keys in instances of the software key management type support only Aliyun_KMS. Keys in instances of the hardware key management type support Aliyun_KMS and EXTERNAL.
 	//
-	// > - If you set Origin to EXTERNAL, you must import key material. For more information, see [Import key material into a symmetric key](~~607841~~) or [Import key material into an asymmetric key](~~608827~~).
+	// > - If you set Origin to EXTERNAL, you must import key material. For more information, see [Import key material into a symmetric key](https://help.aliyun.com/document_detail/607841.html) or [Import key material into an asymmetric key](https://help.aliyun.com/document_detail/608827.html).
 	//
 	// example:
 	//
@@ -2177,7 +2274,7 @@ type CreateKeyRequest struct {
 	//
 	// You can enter up to 20 tags. Enter multiple tags in the [{"TagKey":"key1","TagValue":"value1"},{"TagKey":"key2","TagValue":"value2"},..] format.
 	//
-	// Each tag key or tag value can be up to 128 characters in length and can contain letters, digits, forward slashes (/), backslashes (\), underscores (_), hyphens (-), periods (.), plus signs (+), equal signs (=), colons (:), and at signs (@).
+	// Each tag key or tag value can be up to 128 characters in length and can contain letters, digits, forward slashes (/), backslashes (\\), underscores (_), hyphens (-), periods (.), plus signs (+), equal signs (=), colons (:), and at signs (@).
 	//
 	// > The tag key cannot start with aliyun or acs:.
 	//
@@ -2339,7 +2436,7 @@ type CreateKeyResponseBodyKeyMetadata struct {
 	KeySpec *string `json:"KeySpec,omitempty" xml:"KeySpec,omitempty"`
 	// The status of the key.
 	//
-	// For more information, see [Impacts of key status on API operations](~~44211~~).
+	// For more information, see [Impacts of key status on API operations](https://help.aliyun.com/document_detail/44211.html).
 	//
 	// example:
 	//
@@ -2533,7 +2630,9 @@ func (s *CreateKeyResponse) SetBody(v *CreateKeyResponseBody) *CreateKeyResponse
 type CreateKeyVersionRequest struct {
 	// The ID of the CMK. The ID must be globally unique.
 	//
-	// >  You can also set the value to an alias that is bound to the CMK. For more information, see [Overview of aliases](~~68522~~).
+	// >  You can also set the value to an alias that is bound to the CMK. For more information, see [Overview of aliases](https://help.aliyun.com/document_detail/68522.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2665,6 +2764,8 @@ type CreateNetworkRuleRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the access control rule.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// networkrule_test
@@ -2678,6 +2779,8 @@ type CreateNetworkRuleRequest struct {
 	// The network type.
 	//
 	// Only private IP addresses are supported. Set the value to Private.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2822,7 +2925,7 @@ func (s *CreateNetworkRuleResponse) SetBody(v *CreateNetworkRuleResponseBody) *C
 type CreatePolicyRequest struct {
 	// The name of the access control rule.
 	//
-	// > For more information about how to query created access control rules, see [ListNetworkRules](~~2539433~~).
+	// > For more information about how to query created access control rules, see [ListNetworkRules](https://help.aliyun.com/document_detail/2539433.html).
 	//
 	// example:
 	//
@@ -2842,6 +2945,8 @@ type CreatePolicyRequest struct {
 	KmsInstance *string `json:"KmsInstance,omitempty" xml:"KmsInstance,omitempty"`
 	// The name of the permission policy.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// policy_test
@@ -2854,15 +2959,19 @@ type CreatePolicyRequest struct {
 	//
 	// You can select both.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ["RbacPermission/Template/CryptoServiceKeyUser", "RbacPermission/Template/CryptoServiceSecretUser"]
 	Permissions *string `json:"Permissions,omitempty" xml:"Permissions,omitempty"`
 	// The key and secret that are allowed to access.
 	//
-	// 	- Key: Enter a key in the `key/${KeyId}` format. To allow access to all keys of a KMS instance, enter key/\*.
+	// 	- Key: Enter a key in the `key/${KeyId}` format. To allow access to all keys of a KMS instance, enter key/\\*.
 	//
-	// 	- Secret: Enter a secret in the `secret/${SecretName}` format. To allow access to all secrets of a KMS instance, enter secret/\*.
+	// 	- Secret: Enter a secret in the `secret/${SecretName}` format. To allow access to all secrets of a KMS instance, enter secret/\\*.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3094,6 +3203,8 @@ type CreateSecretRequest struct {
 	RotationInterval *string `json:"RotationInterval,omitempty" xml:"RotationInterval,omitempty"`
 	// The tags of the secret.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// The type of the secret. Valid values:
@@ -3164,6 +3275,8 @@ type CreateSecretRequest struct {
 	//
 	//     	- `{"UserName":"","PublicKey": "", "PrivateKey": ""}`: In the format, `PublicKey` indicates the SSH public key that is used to log on to the ECS instance, and `PrivateKey` specifies the SSH private key that is used to log on to the ECS instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// mydbconninfo
@@ -3184,7 +3297,7 @@ type CreateSecretRequest struct {
 	//
 	// example:
 	//
-	// [{\"TagKey\":\"key1\",\"TagValue\":\"val1\"},{\"TagKey\":\"key2\",\"TagValue\":\"val2\"}]
+	// [{\\"TagKey\\":\\"key1\\",\\"TagValue\\":\\"val1\\"},{\\"TagKey\\":\\"key2\\",\\"TagValue\\":\\"val2\\"}]
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The type of the secret value. Valid values:
 	//
@@ -3193,6 +3306,8 @@ type CreateSecretRequest struct {
 	// 	- binary
 	//
 	// >  If you set the SecretType parameter to Rds, RAMCredentials, or ECS, the SecretDataType parameter must be set to text.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3327,6 +3442,8 @@ type CreateSecretShrinkRequest struct {
 	RotationInterval *string `json:"RotationInterval,omitempty" xml:"RotationInterval,omitempty"`
 	// The tags of the secret.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// The type of the secret. Valid values:
@@ -3397,6 +3514,8 @@ type CreateSecretShrinkRequest struct {
 	//
 	//     	- `{"UserName":"","PublicKey": "", "PrivateKey": ""}`: In the format, `PublicKey` indicates the SSH public key that is used to log on to the ECS instance, and `PrivateKey` specifies the SSH private key that is used to log on to the ECS instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// mydbconninfo
@@ -3417,7 +3536,7 @@ type CreateSecretShrinkRequest struct {
 	//
 	// example:
 	//
-	// [{\"TagKey\":\"key1\",\"TagValue\":\"val1\"},{\"TagKey\":\"key2\",\"TagValue\":\"val2\"}]
+	// [{\\"TagKey\\":\\"key1\\",\\"TagValue\\":\\"val1\\"},{\\"TagKey\\":\\"key2\\",\\"TagValue\\":\\"val2\\"}]
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The type of the secret value. Valid values:
 	//
@@ -3426,6 +3545,8 @@ type CreateSecretShrinkRequest struct {
 	// 	- binary
 	//
 	// >  If you set the SecretType parameter to Rds, RAMCredentials, or ECS, the SecretDataType parameter must be set to text.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3531,7 +3652,7 @@ type CreateSecretResponseBody struct {
 	DKMSInstanceId *string `json:"DKMSInstanceId,omitempty" xml:"DKMSInstanceId,omitempty"`
 	// example:
 	//
-	// {\"SecretSubType\":\"SingleUser\", \"DBInstanceId\":\"rm-uf667446pc955****\",  \"CustomData\":{} }
+	// {\\"SecretSubType\\":\\"SingleUser\\", \\"DBInstanceId\\":\\"rm-uf667446pc955****\\",  \\"CustomData\\":{} }
 	ExtendedConfig *string `json:"ExtendedConfig,omitempty" xml:"ExtendedConfig,omitempty"`
 	// The extended configuration of the secret.
 	//
@@ -3669,11 +3790,13 @@ type DecryptRequest struct {
 	//
 	// You can generate the ciphertext by calling the following operations:
 	//
-	// 	- [GenerateDataKey](~~28948~~)
+	// 	- [GenerateDataKey](https://help.aliyun.com/document_detail/28948.html)
 	//
-	// 	- [Encrypt](~~28949~~)
+	// 	- [Encrypt](https://help.aliyun.com/document_detail/28949.html)
 	//
-	// 	- [GenerateDataKeyWithoutPlaintext](~~134043~~)
+	// 	- [GenerateDataKeyWithoutPlaintext](https://help.aliyun.com/document_detail/134043.html)
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3681,7 +3804,7 @@ type DecryptRequest struct {
 	CiphertextBlob *string `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
 	// The JSON string that consists of key-value pairs.
 	//
-	// >  If you specify the EncryptionContext parameter when you call the [GenerateDataKey](~~28948~~), [Encrypt](~~28949~~), or [GenerateDataKeyWithoutPlaintext](~~134043~~) operation, you must specify the same context when you call the Decrypt operation. For more information, see [EncryptionContext](~~42975~~).
+	// >  If you specify the EncryptionContext parameter when you call the [GenerateDataKey](https://help.aliyun.com/document_detail/28948.html), [Encrypt](https://help.aliyun.com/document_detail/28949.html), or [GenerateDataKeyWithoutPlaintext](https://help.aliyun.com/document_detail/134043.html) operation, you must specify the same context when you call the Decrypt operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
 	//
 	// example:
 	//
@@ -3712,11 +3835,13 @@ type DecryptShrinkRequest struct {
 	//
 	// You can generate the ciphertext by calling the following operations:
 	//
-	// 	- [GenerateDataKey](~~28948~~)
+	// 	- [GenerateDataKey](https://help.aliyun.com/document_detail/28948.html)
 	//
-	// 	- [Encrypt](~~28949~~)
+	// 	- [Encrypt](https://help.aliyun.com/document_detail/28949.html)
 	//
-	// 	- [GenerateDataKeyWithoutPlaintext](~~134043~~)
+	// 	- [GenerateDataKeyWithoutPlaintext](https://help.aliyun.com/document_detail/134043.html)
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3724,7 +3849,7 @@ type DecryptShrinkRequest struct {
 	CiphertextBlob *string `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
 	// The JSON string that consists of key-value pairs.
 	//
-	// >  If you specify the EncryptionContext parameter when you call the [GenerateDataKey](~~28948~~), [Encrypt](~~28949~~), or [GenerateDataKeyWithoutPlaintext](~~134043~~) operation, you must specify the same context when you call the Decrypt operation. For more information, see [EncryptionContext](~~42975~~).
+	// >  If you specify the EncryptionContext parameter when you call the [GenerateDataKey](https://help.aliyun.com/document_detail/28948.html), [Encrypt](https://help.aliyun.com/document_detail/28949.html), or [GenerateDataKeyWithoutPlaintext](https://help.aliyun.com/document_detail/134043.html) operation, you must specify the same context when you call the Decrypt operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
 	//
 	// example:
 	//
@@ -3841,6 +3966,8 @@ type DeleteAliasRequest struct {
 	//
 	// The value must be 1 to 255 characters in length and must include the alias/ prefix.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// alias/example
@@ -3913,6 +4040,8 @@ func (s *DeleteAliasResponse) SetBody(v *DeleteAliasResponseBody) *DeleteAliasRe
 
 type DeleteApplicationAccessPointRequest struct {
 	// The name of the AAP that you want to delete.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3987,6 +4116,8 @@ func (s *DeleteApplicationAccessPointResponse) SetBody(v *DeleteApplicationAcces
 type DeleteCertificateRequest struct {
 	// The ID of the certificate. It is the globally unique identifier (GUID) of the certificate in Alibaba Cloud Certificate Manager.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 9a28de48-8d8b-484d-a766-dec4****
@@ -4059,6 +4190,8 @@ func (s *DeleteCertificateResponse) SetBody(v *DeleteCertificateResponseBody) *D
 
 type DeleteClientKeyRequest struct {
 	// The ID of the client key.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -4133,6 +4266,8 @@ func (s *DeleteClientKeyResponse) SetBody(v *DeleteClientKeyResponseBody) *Delet
 type DeleteKeyMaterialRequest struct {
 	// The globally unique ID of the CMK.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1234abcd-12ab-34cd-56ef-12345678****
@@ -4206,6 +4341,8 @@ func (s *DeleteKeyMaterialResponse) SetBody(v *DeleteKeyMaterialResponseBody) *D
 type DeleteNetworkRuleRequest struct {
 	// The name of the network access rule that you want to delete.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// networkrule_test
@@ -4278,6 +4415,8 @@ func (s *DeleteNetworkRuleResponse) SetBody(v *DeleteNetworkRuleResponseBody) *D
 
 type DeletePolicyRequest struct {
 	// The name of the permission policy that you want to delete.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -4369,6 +4508,8 @@ type DeleteSecretRequest struct {
 	// 10
 	RecoveryWindowInDays *string `json:"RecoveryWindowInDays,omitempty" xml:"RecoveryWindowInDays,omitempty"`
 	// The name of the secret.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -4547,6 +4688,8 @@ func (s *DescribeAccountKmsStatusResponse) SetBody(v *DescribeAccountKmsStatusRe
 type DescribeApplicationAccessPointRequest struct {
 	// The name of the AAP that you want to query.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// aap_test
@@ -4674,6 +4817,8 @@ func (s *DescribeApplicationAccessPointResponse) SetBody(v *DescribeApplicationA
 
 type DescribeCertificateRequest struct {
 	// The ID of the certificate. The ID must be globally unique in Certificates Manager.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -4811,7 +4956,7 @@ type DescribeCertificateResponseBody struct {
 	//
 	// example:
 	//
-	// [{\"TagKey\":\"S1key1\",\"TagValue\":\"S1val1\"},{\"TagKey\":\"S1key2\",\"TagValue\":\"S2val2\"}]
+	// [{\\"TagKey\\":\\"S1key1\\",\\"TagValue\\":\\"S1val1\\"},{\\"TagKey\\":\\"S1key2\\",\\"TagValue\\":\\"S2val2\\"}]
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The time when the certificate was updated.
 	//
@@ -4951,7 +5096,9 @@ func (s *DescribeCertificateResponse) SetBody(v *DescribeCertificateResponseBody
 type DescribeKeyRequest struct {
 	// The ID of the CMK. The ID must be globally unique.
 	//
-	// You can also set this parameter to an alias that is bound to the CMK. For more information, see [Overview of aliases](~~68522~~).
+	// You can also set this parameter to an alias that is bound to the CMK. For more information, see [Overview of aliases](https://help.aliyun.com/document_detail/68522.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -5016,7 +5163,7 @@ type DescribeKeyResponseBodyKeyMetadata struct {
 	//
 	// 	- Suspended
 	//
-	// For more information, see [Automatic key rotation](~~134270~~).
+	// For more information, see [Automatic key rotation](https://help.aliyun.com/document_detail/134270.html).
 	//
 	// >  Only symmetric CMKs support automatic key rotation.
 	//
@@ -5044,7 +5191,7 @@ type DescribeKeyResponseBodyKeyMetadata struct {
 	DKMSInstanceId *string `json:"DKMSInstanceId,omitempty" xml:"DKMSInstanceId,omitempty"`
 	// The time at which the CMK is scheduled for deletion. The time is displayed in UTC.
 	//
-	// For more information, see [ScheduleKeyDeletion](~~44196~~).
+	// For more information, see [ScheduleKeyDeletion](https://help.aliyun.com/document_detail/44196.html).
 	//
 	// >  This parameter is returned only when the value of the KeyState parameter is PendingDeletion.
 	//
@@ -5088,7 +5235,7 @@ type DescribeKeyResponseBodyKeyMetadata struct {
 	KeySpec *string `json:"KeySpec,omitempty" xml:"KeySpec,omitempty"`
 	// The status of the CMK.
 	//
-	// For more information, see [Impact of CMK status on API operations](~~44211~~).
+	// For more information, see [Impact of CMK status on API operations](https://help.aliyun.com/document_detail/44211.html).
 	//
 	// example:
 	//
@@ -5292,7 +5439,9 @@ func (s *DescribeKeyResponse) SetBody(v *DescribeKeyResponseBody) *DescribeKeyRe
 type DescribeKeyVersionRequest struct {
 	// The globally unique ID of the CMK.
 	//
-	// You can also set this parameter to an alias that is bound to the CMK. For more information, see [Alias overview](~~68522~~).
+	// You can also set this parameter to an alias that is bound to the CMK. For more information, see [Alias overview](https://help.aliyun.com/document_detail/68522.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -5300,7 +5449,9 @@ type DescribeKeyVersionRequest struct {
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	// The globally unique ID of the CMK version.
 	//
-	// You can call the [ListKeyVersions](~~133966~~) operation to query the versions of the CMK.
+	// You can call the [ListKeyVersions](https://help.aliyun.com/document_detail/133966.html) operation to query the versions of the CMK.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -5433,6 +5584,8 @@ func (s *DescribeKeyVersionResponse) SetBody(v *DescribeKeyVersionResponseBody) 
 type DescribeNetworkRuleRequest struct {
 	// The name of the access control rule that you want to query.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// networkrule_test
@@ -5549,6 +5702,8 @@ func (s *DescribeNetworkRuleResponse) SetBody(v *DescribeNetworkRuleResponseBody
 
 type DescribePolicyRequest struct {
 	// The name of the permission policy that you want to query.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -5807,6 +5962,8 @@ type DescribeSecretRequest struct {
 	FetchTags *string `json:"FetchTags,omitempty" xml:"FetchTags,omitempty"`
 	// The name of the secret.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// secret001
@@ -5882,7 +6039,7 @@ type DescribeSecretResponseBody struct {
 	//
 	// example:
 	//
-	// {\"SecretSubType\":\"SingleUser\", \"DBInstanceId\":\"rm-uf667446pc955****\",  \"CustomData\":{} }
+	// {\\"SecretSubType\\":\\"SingleUser\\", \\"DBInstanceId\\":\\"rm-uf667446pc955****\\",  \\"CustomData\\":{} }
 	ExtendedConfig *string `json:"ExtendedConfig,omitempty" xml:"ExtendedConfig,omitempty"`
 	// The time when the last rotation was performed.
 	//
@@ -6124,6 +6281,8 @@ func (s *DescribeSecretResponse) SetBody(v *DescribeSecretResponseBody) *Describ
 type DisableKeyRequest struct {
 	// The ID of the CMK. The ID must be globally unique.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1234abcd-12ab-34cd-56ef-12345678****
@@ -6197,6 +6356,8 @@ func (s *DisableKeyResponse) SetBody(v *DisableKeyResponseBody) *DisableKeyRespo
 type EnableKeyRequest struct {
 	// The globally unique ID of the CMK.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1234abcd-12ab-34cd-56ef-12345678****
@@ -6268,19 +6429,23 @@ func (s *EnableKeyResponse) SetBody(v *EnableKeyResponseBody) *EnableKeyResponse
 }
 
 type EncryptRequest struct {
-	// A JSON string that consists of key-value pairs. If you specify this parameter, an equivalent value is required when you call the Decrypt operation. For more information, see [EncryptionContext](~~42975~~).
+	// A JSON string that consists of key-value pairs. If you specify this parameter, an equivalent value is required when you call the Decrypt operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
 	//
 	// example:
 	//
 	// {"Example":"Example"}
 	EncryptionContext map[string]interface{} `json:"EncryptionContext,omitempty" xml:"EncryptionContext,omitempty"`
-	// The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see [Use aliases](~~68522~~).
+	// The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see [Use aliases](https://help.aliyun.com/document_detail/68522.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234abcd-12ab-34cd-56ef-12345678****
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	// The plaintext to be encrypted. The plaintext must be Base64 encoded.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -6312,19 +6477,23 @@ func (s *EncryptRequest) SetPlaintext(v string) *EncryptRequest {
 }
 
 type EncryptShrinkRequest struct {
-	// A JSON string that consists of key-value pairs. If you specify this parameter, an equivalent value is required when you call the Decrypt operation. For more information, see [EncryptionContext](~~42975~~).
+	// A JSON string that consists of key-value pairs. If you specify this parameter, an equivalent value is required when you call the Decrypt operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
 	//
 	// example:
 	//
 	// {"Example":"Example"}
 	EncryptionContextShrink *string `json:"EncryptionContext,omitempty" xml:"EncryptionContext,omitempty"`
-	// The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see [Use aliases](~~68522~~).
+	// The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see [Use aliases](https://help.aliyun.com/document_detail/68522.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// 1234abcd-12ab-34cd-56ef-12345678****
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	// The plaintext to be encrypted. The plaintext must be Base64 encoded.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -6442,11 +6611,13 @@ func (s *EncryptResponse) SetBody(v *EncryptResponseBody) *EncryptResponse {
 type ExportDataKeyRequest struct {
 	// The ciphertext of the data key encrypted by using a CMK.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ODZhOWVmZDktM2QxNi00ODk0LWJkNGYtMWZjNDNmM2YyYWJmS7FmDBBQ0BkKsQrtRnidtPwirmDcS0ZuJCU41xxAAWk4Z8qsADfbV0b+i6kQmlvj79dJdGOvtX69Uycs901q********
 	CiphertextBlob *string `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
-	// A JSON string that consists of key-value pairs. If you specify this parameter when you use a CMK to encrypt the data key, an equivalent value is required here. For more information, see [EncryptionContext](~~42975~~).
+	// A JSON string that consists of key-value pairs. If you specify this parameter when you use a CMK to encrypt the data key, an equivalent value is required here. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
 	//
 	// example:
 	//
@@ -6454,31 +6625,37 @@ type ExportDataKeyRequest struct {
 	EncryptionContext map[string]interface{} `json:"EncryptionContext,omitempty" xml:"EncryptionContext,omitempty"`
 	// A Base64-encoded public key.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAndKfC2ReLL2+y8a0+ZBBeAft/uBYo86GZiYJuflqgUzKxpyuvlo3uQkBv6b+nx+0tz8g8v7GhpPWMSW5L9mNHYsvYFsa7jTxsYdt17yj6GlUHPuMIs8hr5qbwl38IHU1iIa7nYWwE2fb3ePOvLDACRJVgGpU0yxioW80d2QD+9aU4jF5dlAahcfgsNzo2CXzCUc1+xbmNuq7Rp+H9VJB9dyYOwqnW3RhOLBo21FzpORapf0UiRlrHRpk1V6ez+aE1dofaYh/9bh0m6ioxj7j5hpZbWccuEZTMBKd+cbuBkRhJzc6Tti6qwZbDiu4fUwbZS0Tqpuo1UadiyxMW********
 	PublicKeyBlob *string `json:"PublicKeyBlob,omitempty" xml:"PublicKeyBlob,omitempty"`
-	// The encryption algorithm based on which you want to use the public key specified by PublicKeyBlob to encrypt the data key. For more information about encryption algorithms, see [AsymmetricDecrypt](~~148130~~).
+	// The encryption algorithm based on which you want to use the public key specified by PublicKeyBlob to encrypt the data key. For more information about encryption algorithms, see [AsymmetricDecrypt](https://help.aliyun.com/document_detail/148130.html).
 	//
 	// Valid values:
 	//
-	// 	- RSAES_OAEP_SHA\_256
+	// 	- RSAES_OAEP_SHA_256
 	//
-	// 	- RSAES_OAEP_SHA\_1
+	// 	- RSAES_OAEP_SHA_1
 	//
 	// 	- SM2PKE
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// RSAES_OAEP_SHA_256
 	WrappingAlgorithm *string `json:"WrappingAlgorithm,omitempty" xml:"WrappingAlgorithm,omitempty"`
-	// The key type of the public key specified by PublicKeyBlob. For more information about key types, see [Introduction to asymmetric keys](~~148147~~).
+	// The key type of the public key specified by PublicKeyBlob. For more information about key types, see [Introduction to asymmetric keys](https://help.aliyun.com/document_detail/148147.html).
 	//
 	// Valid values:
 	//
-	// 	- RSA\_2048
+	// 	- RSA_2048
 	//
 	// 	- EC_SM2
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -6522,11 +6699,13 @@ func (s *ExportDataKeyRequest) SetWrappingKeySpec(v string) *ExportDataKeyReques
 type ExportDataKeyShrinkRequest struct {
 	// The ciphertext of the data key encrypted by using a CMK.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ODZhOWVmZDktM2QxNi00ODk0LWJkNGYtMWZjNDNmM2YyYWJmS7FmDBBQ0BkKsQrtRnidtPwirmDcS0ZuJCU41xxAAWk4Z8qsADfbV0b+i6kQmlvj79dJdGOvtX69Uycs901q********
 	CiphertextBlob *string `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
-	// A JSON string that consists of key-value pairs. If you specify this parameter when you use a CMK to encrypt the data key, an equivalent value is required here. For more information, see [EncryptionContext](~~42975~~).
+	// A JSON string that consists of key-value pairs. If you specify this parameter when you use a CMK to encrypt the data key, an equivalent value is required here. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
 	//
 	// example:
 	//
@@ -6534,31 +6713,37 @@ type ExportDataKeyShrinkRequest struct {
 	EncryptionContextShrink *string `json:"EncryptionContext,omitempty" xml:"EncryptionContext,omitempty"`
 	// A Base64-encoded public key.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAndKfC2ReLL2+y8a0+ZBBeAft/uBYo86GZiYJuflqgUzKxpyuvlo3uQkBv6b+nx+0tz8g8v7GhpPWMSW5L9mNHYsvYFsa7jTxsYdt17yj6GlUHPuMIs8hr5qbwl38IHU1iIa7nYWwE2fb3ePOvLDACRJVgGpU0yxioW80d2QD+9aU4jF5dlAahcfgsNzo2CXzCUc1+xbmNuq7Rp+H9VJB9dyYOwqnW3RhOLBo21FzpORapf0UiRlrHRpk1V6ez+aE1dofaYh/9bh0m6ioxj7j5hpZbWccuEZTMBKd+cbuBkRhJzc6Tti6qwZbDiu4fUwbZS0Tqpuo1UadiyxMW********
 	PublicKeyBlob *string `json:"PublicKeyBlob,omitempty" xml:"PublicKeyBlob,omitempty"`
-	// The encryption algorithm based on which you want to use the public key specified by PublicKeyBlob to encrypt the data key. For more information about encryption algorithms, see [AsymmetricDecrypt](~~148130~~).
+	// The encryption algorithm based on which you want to use the public key specified by PublicKeyBlob to encrypt the data key. For more information about encryption algorithms, see [AsymmetricDecrypt](https://help.aliyun.com/document_detail/148130.html).
 	//
 	// Valid values:
 	//
-	// 	- RSAES_OAEP_SHA\_256
+	// 	- RSAES_OAEP_SHA_256
 	//
-	// 	- RSAES_OAEP_SHA\_1
+	// 	- RSAES_OAEP_SHA_1
 	//
 	// 	- SM2PKE
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// RSAES_OAEP_SHA_256
 	WrappingAlgorithm *string `json:"WrappingAlgorithm,omitempty" xml:"WrappingAlgorithm,omitempty"`
-	// The key type of the public key specified by PublicKeyBlob. For more information about key types, see [Introduction to asymmetric keys](~~148147~~).
+	// The key type of the public key specified by PublicKeyBlob. For more information about key types, see [Introduction to asymmetric keys](https://help.aliyun.com/document_detail/148147.html).
 	//
 	// Valid values:
 	//
-	// 	- RSA\_2048
+	// 	- RSA_2048
 	//
 	// 	- EC_SM2
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -6686,13 +6871,15 @@ func (s *ExportDataKeyResponse) SetBody(v *ExportDataKeyResponseBody) *ExportDat
 }
 
 type GenerateAndExportDataKeyRequest struct {
-	// A JSON string of key-value pairs. If you specify this parameter here, an equivalent value is required when you decrypt or re-encrypt the data key. For more information, see [EncryptionContext](~~42975~~).
+	// A JSON string of key-value pairs. If you specify this parameter here, an equivalent value is required when you decrypt or re-encrypt the data key. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
 	//
 	// example:
 	//
 	// {"Example":"Example"}
 	EncryptionContext map[string]interface{} `json:"EncryptionContext,omitempty" xml:"EncryptionContext,omitempty"`
-	// The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see [Use aliases](~~68522~~).
+	// The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see [Use aliases](https://help.aliyun.com/document_detail/68522.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -6700,9 +6887,9 @@ type GenerateAndExportDataKeyRequest struct {
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	// The length of the data key that you want to generate. Valid values:
 	//
-	// 	- AES\_256: a 256-bit symmetric key
+	// 	- AES_256: a 256-bit symmetric key
 	//
-	// 	- AES\_128: a 128-bit symmetric key
+	// 	- AES_128: a 128-bit symmetric key
 	//
 	// >  We recommend that you use the KeySpec or NumberOfBytes parameter to specify the length of a data key. If both parameters are not specified, KMS generates a 256-bit data key. If both parameters are specified, KMS ignores the KeySpec parameter.
 	//
@@ -6722,31 +6909,37 @@ type GenerateAndExportDataKeyRequest struct {
 	NumberOfBytes *int32 `json:"NumberOfBytes,omitempty" xml:"NumberOfBytes,omitempty"`
 	// A Base64-encoded public key.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAndKfC2ReLL2+y8a0+ZBBeAft/uBYo86GZiYJuflqgUzKxpyuvlo3uQkBv6b+nx+0tz8g8v7GhpPWMSW5L9mNHYsvYFsa7jTxsYdt17yj6GlUHPuMIs8hr5qbwl38IHU1iIa7nYWwE2fb3ePOvLDACRJVgGpU0yxioW80d2QD+9aU4jF5dlAahcfgsNzo2CXzCUc1+xbmNuq7Rp+H9VJB9dyYOwqnW3RhOLBo21FzpORapf0UiRlrHRpk1V6ez+aE1dofaYh/9bh0m6ioxj7j5hpZbWccuEZTMBKd+cbuBkRhJzc6Tti6qwZbDiu4fUwbZS0Tqpuo1UadiyxMW********
 	PublicKeyBlob *string `json:"PublicKeyBlob,omitempty" xml:"PublicKeyBlob,omitempty"`
-	// The encryption algorithm based on which you want to use the public key specified by PublicKeyBlob to encrypt the data key. For more information about encryption algorithms, see [AsymmetricDecrypt](~~148130~~).
+	// The encryption algorithm based on which you want to use the public key specified by PublicKeyBlob to encrypt the data key. For more information about encryption algorithms, see [AsymmetricDecrypt](https://help.aliyun.com/document_detail/148130.html).
 	//
 	// Valid values:
 	//
-	// 	- RSAES_OAEP_SHA\_256
+	// 	- RSAES_OAEP_SHA_256
 	//
-	// 	- RSAES_OAEP_SHA\_1
+	// 	- RSAES_OAEP_SHA_1
 	//
 	// 	- SM2PKE
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// RSAES_OAEP_SHA_256
 	WrappingAlgorithm *string `json:"WrappingAlgorithm,omitempty" xml:"WrappingAlgorithm,omitempty"`
-	// The key type of the public key specified by PublicKeyBlob. For more information about key types, see [Introduction to asymmetric keys](~~148147~~).
+	// The key type of the public key specified by PublicKeyBlob. For more information about key types, see [Introduction to asymmetric keys](https://help.aliyun.com/document_detail/148147.html).
 	//
 	// Valid values:
 	//
-	// 	- RSA\_2048
+	// 	- RSA_2048
 	//
 	// 	- EC_SM2
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -6798,13 +6991,15 @@ func (s *GenerateAndExportDataKeyRequest) SetWrappingKeySpec(v string) *Generate
 }
 
 type GenerateAndExportDataKeyShrinkRequest struct {
-	// A JSON string of key-value pairs. If you specify this parameter here, an equivalent value is required when you decrypt or re-encrypt the data key. For more information, see [EncryptionContext](~~42975~~).
+	// A JSON string of key-value pairs. If you specify this parameter here, an equivalent value is required when you decrypt or re-encrypt the data key. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
 	//
 	// example:
 	//
 	// {"Example":"Example"}
 	EncryptionContextShrink *string `json:"EncryptionContext,omitempty" xml:"EncryptionContext,omitempty"`
-	// The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see [Use aliases](~~68522~~).
+	// The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see [Use aliases](https://help.aliyun.com/document_detail/68522.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -6812,9 +7007,9 @@ type GenerateAndExportDataKeyShrinkRequest struct {
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	// The length of the data key that you want to generate. Valid values:
 	//
-	// 	- AES\_256: a 256-bit symmetric key
+	// 	- AES_256: a 256-bit symmetric key
 	//
-	// 	- AES\_128: a 128-bit symmetric key
+	// 	- AES_128: a 128-bit symmetric key
 	//
 	// >  We recommend that you use the KeySpec or NumberOfBytes parameter to specify the length of a data key. If both parameters are not specified, KMS generates a 256-bit data key. If both parameters are specified, KMS ignores the KeySpec parameter.
 	//
@@ -6834,31 +7029,37 @@ type GenerateAndExportDataKeyShrinkRequest struct {
 	NumberOfBytes *int32 `json:"NumberOfBytes,omitempty" xml:"NumberOfBytes,omitempty"`
 	// A Base64-encoded public key.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAndKfC2ReLL2+y8a0+ZBBeAft/uBYo86GZiYJuflqgUzKxpyuvlo3uQkBv6b+nx+0tz8g8v7GhpPWMSW5L9mNHYsvYFsa7jTxsYdt17yj6GlUHPuMIs8hr5qbwl38IHU1iIa7nYWwE2fb3ePOvLDACRJVgGpU0yxioW80d2QD+9aU4jF5dlAahcfgsNzo2CXzCUc1+xbmNuq7Rp+H9VJB9dyYOwqnW3RhOLBo21FzpORapf0UiRlrHRpk1V6ez+aE1dofaYh/9bh0m6ioxj7j5hpZbWccuEZTMBKd+cbuBkRhJzc6Tti6qwZbDiu4fUwbZS0Tqpuo1UadiyxMW********
 	PublicKeyBlob *string `json:"PublicKeyBlob,omitempty" xml:"PublicKeyBlob,omitempty"`
-	// The encryption algorithm based on which you want to use the public key specified by PublicKeyBlob to encrypt the data key. For more information about encryption algorithms, see [AsymmetricDecrypt](~~148130~~).
+	// The encryption algorithm based on which you want to use the public key specified by PublicKeyBlob to encrypt the data key. For more information about encryption algorithms, see [AsymmetricDecrypt](https://help.aliyun.com/document_detail/148130.html).
 	//
 	// Valid values:
 	//
-	// 	- RSAES_OAEP_SHA\_256
+	// 	- RSAES_OAEP_SHA_256
 	//
-	// 	- RSAES_OAEP_SHA\_1
+	// 	- RSAES_OAEP_SHA_1
 	//
 	// 	- SM2PKE
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// RSAES_OAEP_SHA_256
 	WrappingAlgorithm *string `json:"WrappingAlgorithm,omitempty" xml:"WrappingAlgorithm,omitempty"`
-	// The key type of the public key specified by PublicKeyBlob. For more information about key types, see [Introduction to asymmetric keys](~~148147~~).
+	// The key type of the public key specified by PublicKeyBlob. For more information about key types, see [Introduction to asymmetric keys](https://help.aliyun.com/document_detail/148147.html).
 	//
 	// Valid values:
 	//
-	// 	- RSA\_2048
+	// 	- RSA_2048
 	//
 	// 	- EC_SM2
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -7009,7 +7210,7 @@ func (s *GenerateAndExportDataKeyResponse) SetBody(v *GenerateAndExportDataKeyRe
 type GenerateDataKeyRequest struct {
 	// The JSON string that consists of key-value pairs.
 	//
-	// If you specify this parameter, an equivalent value is required when you call the [Decrypt](~~28950~~) operation. For more information, see [EncryptionContext](~~42975~~).
+	// If you specify this parameter, an equivalent value is required when you call the [Decrypt](https://help.aliyun.com/document_detail/28950.html) operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
 	//
 	// example:
 	//
@@ -7017,7 +7218,9 @@ type GenerateDataKeyRequest struct {
 	EncryptionContext map[string]interface{} `json:"EncryptionContext,omitempty" xml:"EncryptionContext,omitempty"`
 	// The ID of the CMK. The ID must be globally unique.
 	//
-	// You can also set this parameter to an alias that is bound to the CMK. For more information, see [Alias overview](~~68522~~).
+	// You can also set this parameter to an alias that is bound to the CMK. For more information, see [Alias overview](https://help.aliyun.com/document_detail/68522.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -7025,9 +7228,9 @@ type GenerateDataKeyRequest struct {
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	// The type of the data key that you want to generate. Valid values:
 	//
-	// 	- AES\_256: a 256-bit symmetric key
+	// 	- AES_256: a 256-bit symmetric key
 	//
-	// 	- AES\_128: a 128-bit symmetric key
+	// 	- AES_128: a 128-bit symmetric key
 	//
 	// >  We recommend that you use the KeySpec or NumberOfBytes parameter to specify the length of a data key. If none of the parameters are specified, KMS generates a 256-bit data key. If both parameters are specified, KMS ignores the KeySpec parameter.
 	//
@@ -7041,9 +7244,9 @@ type GenerateDataKeyRequest struct {
 	//
 	// Default value:
 	//
-	// 	- If the KeySpec parameter is set to AES\_256, set the value of the NumberOfBytes parameter to 32.
+	// 	- If the KeySpec parameter is set to AES_256, set the value of the NumberOfBytes parameter to 32.
 	//
-	// 	- If the KeySpec parameter is set to AES\_128, set the value of the NumberOfBytes parameter to 16.
+	// 	- If the KeySpec parameter is set to AES_128, set the value of the NumberOfBytes parameter to 16.
 	//
 	// example:
 	//
@@ -7082,7 +7285,7 @@ func (s *GenerateDataKeyRequest) SetNumberOfBytes(v int32) *GenerateDataKeyReque
 type GenerateDataKeyShrinkRequest struct {
 	// The JSON string that consists of key-value pairs.
 	//
-	// If you specify this parameter, an equivalent value is required when you call the [Decrypt](~~28950~~) operation. For more information, see [EncryptionContext](~~42975~~).
+	// If you specify this parameter, an equivalent value is required when you call the [Decrypt](https://help.aliyun.com/document_detail/28950.html) operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
 	//
 	// example:
 	//
@@ -7090,7 +7293,9 @@ type GenerateDataKeyShrinkRequest struct {
 	EncryptionContextShrink *string `json:"EncryptionContext,omitempty" xml:"EncryptionContext,omitempty"`
 	// The ID of the CMK. The ID must be globally unique.
 	//
-	// You can also set this parameter to an alias that is bound to the CMK. For more information, see [Alias overview](~~68522~~).
+	// You can also set this parameter to an alias that is bound to the CMK. For more information, see [Alias overview](https://help.aliyun.com/document_detail/68522.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -7098,9 +7303,9 @@ type GenerateDataKeyShrinkRequest struct {
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	// The type of the data key that you want to generate. Valid values:
 	//
-	// 	- AES\_256: a 256-bit symmetric key
+	// 	- AES_256: a 256-bit symmetric key
 	//
-	// 	- AES\_128: a 128-bit symmetric key
+	// 	- AES_128: a 128-bit symmetric key
 	//
 	// >  We recommend that you use the KeySpec or NumberOfBytes parameter to specify the length of a data key. If none of the parameters are specified, KMS generates a 256-bit data key. If both parameters are specified, KMS ignores the KeySpec parameter.
 	//
@@ -7114,9 +7319,9 @@ type GenerateDataKeyShrinkRequest struct {
 	//
 	// Default value:
 	//
-	// 	- If the KeySpec parameter is set to AES\_256, set the value of the NumberOfBytes parameter to 32.
+	// 	- If the KeySpec parameter is set to AES_256, set the value of the NumberOfBytes parameter to 32.
 	//
-	// 	- If the KeySpec parameter is set to AES\_128, set the value of the NumberOfBytes parameter to 16.
+	// 	- If the KeySpec parameter is set to AES_128, set the value of the NumberOfBytes parameter to 16.
 	//
 	// example:
 	//
@@ -7250,7 +7455,7 @@ func (s *GenerateDataKeyResponse) SetBody(v *GenerateDataKeyResponseBody) *Gener
 }
 
 type GenerateDataKeyWithoutPlaintextRequest struct {
-	// A JSON string that consists of key-value pairs. If you specify this parameter, an equivalent value is required when you call the Decrypt operation. For more information, see [EncryptionContext](~~42975~~).
+	// A JSON string that consists of key-value pairs. If you specify this parameter, an equivalent value is required when you call the Decrypt operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
 	//
 	// example:
 	//
@@ -7258,15 +7463,17 @@ type GenerateDataKeyWithoutPlaintextRequest struct {
 	EncryptionContext map[string]interface{} `json:"EncryptionContext,omitempty" xml:"EncryptionContext,omitempty"`
 	// The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see Use aliases.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1234abcd-12ab-34cd-56ef-12345678****
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	// The length of the data key that you want to generate. Valid values:
 	//
-	// 	- AES\_256: 256-bit symmetric key
+	// 	- AES_256: 256-bit symmetric key
 	//
-	// 	- AES\_128: 128-bit symmetric key
+	// 	- AES_128: 128-bit symmetric key
 	//
 	// >  We recommend that you use the KeySpec or NumberOfBytes parameter to specify the length of a data key. If both of them are not specified, KMS generates a 256-bit data key. If both of them are specified, KMS ignores the KeySpec parameter.
 	//
@@ -7315,7 +7522,7 @@ func (s *GenerateDataKeyWithoutPlaintextRequest) SetNumberOfBytes(v int32) *Gene
 }
 
 type GenerateDataKeyWithoutPlaintextShrinkRequest struct {
-	// A JSON string that consists of key-value pairs. If you specify this parameter, an equivalent value is required when you call the Decrypt operation. For more information, see [EncryptionContext](~~42975~~).
+	// A JSON string that consists of key-value pairs. If you specify this parameter, an equivalent value is required when you call the Decrypt operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
 	//
 	// example:
 	//
@@ -7323,15 +7530,17 @@ type GenerateDataKeyWithoutPlaintextShrinkRequest struct {
 	EncryptionContextShrink *string `json:"EncryptionContext,omitempty" xml:"EncryptionContext,omitempty"`
 	// The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see Use aliases.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1234abcd-12ab-34cd-56ef-12345678****
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	// The length of the data key that you want to generate. Valid values:
 	//
-	// 	- AES\_256: 256-bit symmetric key
+	// 	- AES_256: 256-bit symmetric key
 	//
-	// 	- AES\_128: 128-bit symmetric key
+	// 	- AES_128: 128-bit symmetric key
 	//
 	// >  We recommend that you use the KeySpec or NumberOfBytes parameter to specify the length of a data key. If both of them are not specified, KMS generates a 256-bit data key. If both of them are specified, KMS ignores the KeySpec parameter.
 	//
@@ -7468,6 +7677,8 @@ func (s *GenerateDataKeyWithoutPlaintextResponse) SetBody(v *GenerateDataKeyWith
 type GetCertificateRequest struct {
 	// The ID of the certificate. It is the globally unique identifier (GUID) of the certificate in Certificates Manager.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 9a28de48-8d8b-484d-a766-dec4****
@@ -7585,6 +7796,8 @@ func (s *GetCertificateResponse) SetBody(v *GetCertificateResponseBody) *GetCert
 type GetClientKeyRequest struct {
 	// The ID of the client key.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// KAAP.66abf237-63f6-4625-b8cf-47e1086e****
@@ -7653,7 +7866,7 @@ type GetClientKeyResponseBody struct {
 	//
 	// example:
 	//
-	// -----BEGIN CERTIFICATE-----\nMIIDcjCCAlqgAwIBAgIQT/sAVRxwYp54mrw****-----END CERTIFICATE-----
+	// -----BEGIN CERTIFICATE-----\\nMIIDcjCCAlqgAwIBAgIQT/sAVRxwYp54mrw****-----END CERTIFICATE-----
 	PublicKeyData *string `json:"PublicKeyData,omitempty" xml:"PublicKeyData,omitempty"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
 	//
@@ -7746,7 +7959,15 @@ func (s *GetClientKeyResponse) SetBody(v *GetClientKeyResponseBody) *GetClientKe
 }
 
 type GetKeyPolicyRequest struct {
-	KeyId      *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// key-hzz630494463ejqjx****
+	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	// example:
+	//
+	// default
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 }
 
@@ -7769,7 +7990,13 @@ func (s *GetKeyPolicyRequest) SetPolicyName(v string) *GetKeyPolicyRequest {
 }
 
 type GetKeyPolicyResponseBody struct {
-	Policy    *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// example:
+	//
+	// {"Statement": [{"Action": ["kms:*"],"Effect": "Allow","Principal": {"RAM": ["acs:ram::190325303126****:*","acs:ram::119285303511****:*"]},"Resource": ["*"],"Sid": "kms default key policy"}],"Version": "1" }
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// example:
+	//
+	// 381D5D33-BB8F-395F-8EE4-AE3B84B523C8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7822,6 +8049,8 @@ func (s *GetKeyPolicyResponse) SetBody(v *GetKeyPolicyResponseBody) *GetKeyPolic
 
 type GetKmsInstanceRequest struct {
 	// The ID of the KMS instance that you want to query.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -7880,7 +8109,7 @@ type GetKmsInstanceResponseBodyKmsInstance struct {
 	//
 	// example:
 	//
-	// -----BEGIN CERTIFICATE-----\r\nMIIDuzCCAqOgAwIBAgIJALTKwWAjvbMiMA0GCSqGSIb3DQEBCwUAMHQxCzAJBgNV****-----END CERTIFICATE-----
+	// -----BEGIN CERTIFICATE-----\\r\\nMIIDuzCCAqOgAwIBAgIJALTKwWAjvbMiMA0GCSqGSIb3DQEBCwUAMHQxCzAJBgNV****-----END CERTIFICATE-----
 	CaCertificateChainPem *string `json:"CaCertificateChainPem,omitempty" xml:"CaCertificateChainPem,omitempty"`
 	// The time when the KMS instance is created.
 	//
@@ -8161,17 +8390,23 @@ type GetParametersForImportRequest struct {
 	//
 	// >  You can import key material only for CMKs whose Origin parameter is set to EXTERNAL.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 202b9877-5a25-46e3-a763-e20791b5****
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	// The algorithm that is used to encrypt key material.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// RSAES_PKCS1_V1_5
 	WrappingAlgorithm *string `json:"WrappingAlgorithm,omitempty" xml:"WrappingAlgorithm,omitempty"`
 	// The type of the public key that is used to encrypt key material.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -8205,7 +8440,7 @@ func (s *GetParametersForImportRequest) SetWrappingKeySpec(v string) *GetParamet
 type GetParametersForImportResponseBody struct {
 	// The token that is used to import key material.
 	//
-	// The token is valid for 24 hours. The value of this parameter is required when you call the [ImportKeyMaterial](~~68622~~) operation.
+	// The token is valid for 24 hours. The value of this parameter is required when you call the [ImportKeyMaterial](https://help.aliyun.com/document_detail/68622.html) operation.
 	//
 	// example:
 	//
@@ -8213,7 +8448,7 @@ type GetParametersForImportResponseBody struct {
 	ImportToken *string `json:"ImportToken,omitempty" xml:"ImportToken,omitempty"`
 	// The globally unique ID of the CMK.
 	//
-	// The value of this parameter is required when you call the [ImportKeyMaterial](~~68622~~) operation.
+	// The value of this parameter is required when you call the [ImportKeyMaterial](https://help.aliyun.com/document_detail/68622.html) operation.
 	//
 	// example:
 	//
@@ -8304,13 +8539,17 @@ func (s *GetParametersForImportResponse) SetBody(v *GetParametersForImportRespon
 }
 
 type GetPublicKeyRequest struct {
-	// The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see [Use aliases](~~68522~~).
+	// The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see [Use aliases](https://help.aliyun.com/document_detail/68522.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// 5c438b18-05be-40ad-b6c2-3be6752c****
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	// The globally unique ID of the CMK version.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -8355,7 +8594,7 @@ type GetPublicKeyResponseBody struct {
 	//
 	// example:
 	//
-	// -----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAs5Yu9AEgATN2/e3nUz1K\nEy6ng8MSPutcse2/VECG/NUF9C6D4IsJ64ShzY3dcn34WYzTOe916eMJFxyrNrSw\nHtc4UOR5AvaoRrfpgu2uq+i70/ZXrWL+pGb1hgZV8cWheIHMxwrR3IiQlM5qN7EF\n9BdyWtyBfUGsp0Bn1VqlPc5G0x0a9xU2z9YtP994yDenNVIoIQ6Cov1lIEuwXAb2\n7boC41ePXwD0JWt41sP+rgCmpjBx00puIG+IlnoReEgI1ZGYmK98GgA/XzmNjZiD\nyvXJZAcM33Ue85+PkR5iHTtSEbi4QAoqpJabprUzz3Fin2j1dRrcacxGb7p31A9c\nJQIDAQAB\n-----END PUBLIC KEY-----\n
+	// -----BEGIN PUBLIC KEY-----\\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAs5Yu9AEgATN2/e3nUz1K\\nEy6ng8MSPutcse2/VECG/NUF9C6D4IsJ64ShzY3dcn34WYzTOe916eMJFxyrNrSw\\nHtc4UOR5AvaoRrfpgu2uq+i70/ZXrWL+pGb1hgZV8cWheIHMxwrR3IiQlM5qN7EF\\n9BdyWtyBfUGsp0Bn1VqlPc5G0x0a9xU2z9YtP994yDenNVIoIQ6Cov1lIEuwXAb2\\n7boC41ePXwD0JWt41sP+rgCmpjBx00puIG+IlnoReEgI1ZGYmK98GgA/XzmNjZiD\\nyvXJZAcM33Ue85+PkR5iHTtSEbi4QAoqpJabprUzz3Fin2j1dRrcacxGb7p31A9c\\nJQIDAQAB\\n-----END PUBLIC KEY-----\\n
 	PublicKey *string `json:"PublicKey,omitempty" xml:"PublicKey,omitempty"`
 	// The ID of the request.
 	//
@@ -8427,7 +8666,7 @@ type GetRandomPasswordRequest struct {
 	//
 	// Valid values:
 	//
-	// ` Valid characters: 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ! \"#$%&\"()*+,-. /:;<=>? @[\] your_project_id} ~  `.
+	// ` Valid characters: 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ! \\"#$%&\\"()*+,-. /:;<=>? @[\\] your_project_id} ~  `.
 	//
 	// This parameter is empty by default.
 	//
@@ -8555,7 +8794,7 @@ type GetRandomPasswordResponseBody struct {
 	//
 	// example:
 	//
-	// IxGn>NMmNB(y?iZ<Yc,_H/{2GC\"U****
+	// IxGn>NMmNB(y?iZ<Yc,_H/{2GC\\"U****
 	RandomPassword *string `json:"RandomPassword,omitempty" xml:"RandomPassword,omitempty"`
 	// The ID of the request.
 	//
@@ -8613,7 +8852,15 @@ func (s *GetRandomPasswordResponse) SetBody(v *GetRandomPasswordResponseBody) *G
 }
 
 type GetSecretPolicyRequest struct {
+	// example:
+	//
+	// default
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// secret_test
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 }
 
@@ -8636,7 +8883,13 @@ func (s *GetSecretPolicyRequest) SetSecretName(v string) *GetSecretPolicyRequest
 }
 
 type GetSecretPolicyResponseBody struct {
-	Policy    *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// example:
+	//
+	// {"Version":"1","Statement": [{"Sid":"kms default secret policy","Effect":"Allow","Principal":{"RAM": ["acs:ram::119285303511****:*"]},"Action":["kms:*"],"Resource": ["*"] }] }
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// example:
+	//
+	// 381D5D33-BB8F-395F-8EE4-AE3BB4B523C8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8701,6 +8954,8 @@ type GetSecretValueRequest struct {
 	// true
 	FetchExtendedConfig *bool `json:"FetchExtendedConfig,omitempty" xml:"FetchExtendedConfig,omitempty"`
 	// The name of the secret.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -8781,7 +9036,7 @@ type GetSecretValueResponseBody struct {
 	//
 	// example:
 	//
-	// {\"SecretSubType\":\"SingleUser\", \"DBInstanceId\":\"rm-uf667446pc955****\",  \"CustomData\":{} }
+	// {\\"SecretSubType\\":\\"SingleUser\\", \\"DBInstanceId\\":\\"rm-uf667446pc955****\\",  \\"CustomData\\":{} }
 	ExtendedConfig *string `json:"ExtendedConfig,omitempty" xml:"ExtendedConfig,omitempty"`
 	// The time when the last rotation was performed.
 	//
@@ -8995,17 +9250,23 @@ func (s *GetSecretValueResponse) SetBody(v *GetSecretValueResponseBody) *GetSecr
 type ImportKeyMaterialRequest struct {
 	// Use **GetParametersForImport*	- the Returned public key and the base64-encoded key material.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// bCPZx7I6v6KXsqEpr2OXKxuj2CCRtKdwp75Bw+BGncYqBdfjFBYRtOE6HRlT0oeiRDWzwnw9OA54OL36smDJrq4Lo9x0CyYDiuKnRkcKtMtlzW0din7Pd7IlZWWRdVueiw2qpzl7PkUWQGTdsdbzpfJJQ+qj/cRIrk/E83UGyeyytSpgnb+lu0xEYcPajRyWNsbi98N3pqqQzHXNNHO2NJqHlnQgglqTiBEjkGeKFhfKmTc3vjulIdVa3EaVIN6lwWfgx+UUYSrvbA77WDYKlDsZ4SbK2/T7za9Tp1qU7Ynqba7OKGVVj7PMbiaO80AxWZnjUMYCgEp5w7V+seOXqw==
 	EncryptedKeyMaterial *string `json:"EncryptedKeyMaterial,omitempty" xml:"EncryptedKeyMaterial,omitempty"`
 	// By calling **GetParametersForImport*	- the import token.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Base64String
 	ImportToken *string `json:"ImportToken,omitempty" xml:"ImportToken,omitempty"`
 	// The ID of the CMK to be imported.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -9016,6 +9277,8 @@ type ImportKeyMaterialRequest struct {
 	// If this parameter is not specified or set this parameter to 0, the key material does not expire.
 	//
 	// >  The value cannot be earlier than the time when the API is called (based on the server time).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -9297,6 +9560,8 @@ func (s *ListAliasesResponse) SetBody(v *ListAliasesResponseBody) *ListAliasesRe
 
 type ListAliasesByKeyIdRequest struct {
 	// The globally unique ID of the CMK.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -9773,7 +10038,7 @@ type ListClientKeysResponseBodyClientKeys struct {
 	//
 	// example:
 	//
-	// -----BEGIN CERTIFICATE-----\nMIIDcjCCAlqgAwIBAgIQT/sAVRxwYp54mrw****-----END CERTIFICATE-----
+	// -----BEGIN CERTIFICATE-----\\nMIIDcjCCAlqgAwIBAgIQT/sAVRxwYp54mrw****-----END CERTIFICATE-----
 	PublicKeyData *string `json:"PublicKeyData,omitempty" xml:"PublicKeyData,omitempty"`
 }
 
@@ -9855,7 +10120,9 @@ func (s *ListClientKeysResponse) SetBody(v *ListClientKeysResponseBody) *ListCli
 }
 
 type ListKeyVersionsRequest struct {
-	// The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see [Use aliases](~~68522~~).
+	// The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see [Use aliases](https://help.aliyun.com/document_detail/68522.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -10093,15 +10360,15 @@ type ListKeysRequest struct {
 	//
 	//         	- When Key is set to KeyState, the value can be Enabled, Disabled, PendingDeletion, or PendingImport.
 	//
-	//         	- When Key is set to KeySpec, the value can be Aliyun_AES\_256, Aliyun_SM4, RSA\_2048, EC_P256, EC_P256K, or EC_SM2.
+	//         	- When Key is set to KeySpec, the value can be Aliyun_AES_256, Aliyun_SM4, RSA_2048, EC_P256, EC_P256K, or EC_SM2.
 	//
-	//             Note: You can create CMKs of the EC_SM2 or Aliyun_SM4 type only in regions where State Cryptography Administration (SCA)-certified managed HSMs reside. For more information about the regions, see [Supported regions](~~125803~~). If your region does not support EC_SM2 or Aliyun_SM4, the two values are ignored if they are specified.
+	//             Note: You can create CMKs of the EC_SM2 or Aliyun_SM4 type only in regions where State Cryptography Administration (SCA)-certified managed HSMs reside. For more information about the regions, see [Supported regions](https://help.aliyun.com/document_detail/125803.html). If your region does not support EC_SM2 or Aliyun_SM4, the two values are ignored if they are specified.
 	//
 	//         	- When Key is set to KeyUsage, the value can be ENCRYPT/DECRYPT or SIGN/VERIFY. ENCRYPT/DECRYPT indicates that the CMK is used to encrypt and decrypt data. SIGN/VERIFY indicates that the CMK is used to generate and verify digital signatures.
 	//
 	//         	- When Key is set to ProtectionLevel, the value can be SOFTWARE (software) or HSM (hardware).
 	//
-	//             You can set ProtectionLevel to HSM in only specific regions. For more information about the regions, see [Supported regions](~~125803~~). If your region does not support the value HSM, the value is ignored if the value is specified.
+	//             You can set ProtectionLevel to HSM in only specific regions. For more information about the regions, see [Supported regions](https://help.aliyun.com/document_detail/125803.html). If your region does not support the value HSM, the value is ignored if the value is specified.
 	//
 	//         	- If Key is set to CreatorType, the value can be User or Service. User indicates that CMKs created by the current account are queried. Service indicates that CMKs automatically created by other cloud services authorized by the current account are queried.
 	//
@@ -10813,6 +11080,8 @@ func (s *ListPoliciesResponse) SetBody(v *ListPoliciesResponseBody) *ListPolicie
 type ListResourceTagsRequest struct {
 	// The globally unique ID of the CMK.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1234abcd-12ab-34cd-56ef-12345678****
@@ -10979,6 +11248,8 @@ type ListSecretVersionIdsRequest struct {
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The name of the secret.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -11207,7 +11478,7 @@ type ListSecretsRequest struct {
 	//
 	// [{"Key":"SecretName", "Values":["Val1","Val2"]}]
 	Filters *string `json:"Filters,omitempty" xml:"Filters,omitempty"`
-	// The secret filter. The filter consists of one or more key-value pairs. You can specify one key-value pair or leave this parameter empty. If you use one tag key or tag value to filter resources, up to 4,000 resources can be queried. If you want to query more than 4,000 resources, call the [ListResourceTags](~~120090~~) operation.
+	// The secret filter. The filter consists of one or more key-value pairs. You can specify one key-value pair or leave this parameter empty. If you use one tag key or tag value to filter resources, up to 4,000 resources can be queried. If you want to query more than 4,000 resources, call the [ListResourceTags](https://help.aliyun.com/document_detail/120090.html) operation.
 	//
 	// 	- Key
 	//
@@ -11529,7 +11800,9 @@ type ListTagResourcesRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The region ID of the resource.
 	//
-	// >  You can call the [DescribeRegions](~~601478~~) to query the most recent region list.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/601478.html) to query the most recent region list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -11544,6 +11817,8 @@ type ListTagResourcesRequest struct {
 	// 	- key
 	//
 	// 	- secret
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -11824,6 +12099,8 @@ func (s *OpenKmsServiceResponse) SetBody(v *OpenKmsServiceResponseBody) *OpenKms
 type PutSecretValueRequest struct {
 	// The secret value. The value is encrypted and then stored in the new version.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// importantdata
@@ -11840,11 +12117,15 @@ type PutSecretValueRequest struct {
 	SecretDataType *string `json:"SecretDataType,omitempty" xml:"SecretDataType,omitempty"`
 	// The name of the secret.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// secret001
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 	// The new version of the secret value. Version numbers must be unique in each secret.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -11993,9 +12274,11 @@ type ReEncryptRequest struct {
 	//
 	// You can set this parameter to the ciphertext that is returned after a symmetric or asymmetric encryption operation.
 	//
-	// 	- Symmetric encryption: the ciphertext returned after you call the [Encrypt](~~28949~~), [GenerateDataKey](~~28948~~), [GenerateDataKeyWithoutPlaintext](~~134043~~), or [GenerateAndExportDataKey](~~176804~~) operation
+	// 	- Symmetric encryption: the ciphertext returned after you call the [Encrypt](https://help.aliyun.com/document_detail/28949.html), [GenerateDataKey](https://help.aliyun.com/document_detail/28948.html), [GenerateDataKeyWithoutPlaintext](https://help.aliyun.com/document_detail/134043.html), or [GenerateAndExportDataKey](https://help.aliyun.com/document_detail/176804.html) operation
 	//
-	// 	- Asymmetric encryption: the public key-encrypted ciphertext returned after you call the [GenerateAndExportDataKey](~~176804~~) operation, or the ciphertext encrypted by using the public key of an asymmetric key pair outside KMS
+	// 	- Asymmetric encryption: the public key-encrypted ciphertext returned after you call the [GenerateAndExportDataKey](https://help.aliyun.com/document_detail/176804.html) operation, or the ciphertext encrypted by using the public key of an asymmetric key pair outside KMS
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -12009,17 +12292,19 @@ type ReEncryptRequest struct {
 	DestinationEncryptionContext map[string]interface{} `json:"DestinationEncryptionContext,omitempty" xml:"DestinationEncryptionContext,omitempty"`
 	// The ID of the symmetric CMK that is used to re-encrypt the ciphertext after the ciphertext is decrypted.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1234abcd-12ab-34cd-56ef-12345678****
 	DestinationKeyId *string `json:"DestinationKeyId,omitempty" xml:"DestinationKeyId,omitempty"`
-	// The encryption algorithm based on which the public key is used to encrypt the ciphertext specified by CiphertextBlob. For more information about encryption algorithms, see [AsymmetricDecrypt](~~148130~~).
+	// The encryption algorithm based on which the public key is used to encrypt the ciphertext specified by CiphertextBlob. For more information about encryption algorithms, see [AsymmetricDecrypt](https://help.aliyun.com/document_detail/148130.html).
 	//
 	// Valid values:
 	//
-	// 	- RSAES_OAEP_SHA\_256
+	// 	- RSAES_OAEP_SHA_256
 	//
-	// 	- RSAES_OAEP_SHA\_1
+	// 	- RSAES_OAEP_SHA_1
 	//
 	// 	- SM2PKE
 	//
@@ -12029,7 +12314,7 @@ type ReEncryptRequest struct {
 	//
 	// RSAES_OAEP_SHA_256
 	SourceEncryptionAlgorithm *string `json:"SourceEncryptionAlgorithm,omitempty" xml:"SourceEncryptionAlgorithm,omitempty"`
-	// A JSON string that consists of key-value pairs. If you specify EncryptionContext when you call the [Encrypt](~~28949~~), [GenerateDataKey](~~28948~~), [GenerateDataKeyWithoutPlaintext](~~134043~~), or [GenerateAndExportDataKey](~~176804~~) operation to encrypt the data or data key, an equivalent value is required here. For more information, see [EncryptionContext](~~42975~~).
+	// A JSON string that consists of key-value pairs. If you specify EncryptionContext when you call the [Encrypt](https://help.aliyun.com/document_detail/28949.html), [GenerateDataKey](https://help.aliyun.com/document_detail/28948.html), [GenerateDataKeyWithoutPlaintext](https://help.aliyun.com/document_detail/134043.html), or [GenerateAndExportDataKey](https://help.aliyun.com/document_detail/176804.html) operation to encrypt the data or data key, an equivalent value is required here. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
 	//
 	// >  If you set CiphertextBlob to the ciphertext that is returned after a symmetric encryption operation, specify this parameter.
 	//
@@ -12105,9 +12390,11 @@ type ReEncryptShrinkRequest struct {
 	//
 	// You can set this parameter to the ciphertext that is returned after a symmetric or asymmetric encryption operation.
 	//
-	// 	- Symmetric encryption: the ciphertext returned after you call the [Encrypt](~~28949~~), [GenerateDataKey](~~28948~~), [GenerateDataKeyWithoutPlaintext](~~134043~~), or [GenerateAndExportDataKey](~~176804~~) operation
+	// 	- Symmetric encryption: the ciphertext returned after you call the [Encrypt](https://help.aliyun.com/document_detail/28949.html), [GenerateDataKey](https://help.aliyun.com/document_detail/28948.html), [GenerateDataKeyWithoutPlaintext](https://help.aliyun.com/document_detail/134043.html), or [GenerateAndExportDataKey](https://help.aliyun.com/document_detail/176804.html) operation
 	//
-	// 	- Asymmetric encryption: the public key-encrypted ciphertext returned after you call the [GenerateAndExportDataKey](~~176804~~) operation, or the ciphertext encrypted by using the public key of an asymmetric key pair outside KMS
+	// 	- Asymmetric encryption: the public key-encrypted ciphertext returned after you call the [GenerateAndExportDataKey](https://help.aliyun.com/document_detail/176804.html) operation, or the ciphertext encrypted by using the public key of an asymmetric key pair outside KMS
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -12121,17 +12408,19 @@ type ReEncryptShrinkRequest struct {
 	DestinationEncryptionContextShrink *string `json:"DestinationEncryptionContext,omitempty" xml:"DestinationEncryptionContext,omitempty"`
 	// The ID of the symmetric CMK that is used to re-encrypt the ciphertext after the ciphertext is decrypted.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1234abcd-12ab-34cd-56ef-12345678****
 	DestinationKeyId *string `json:"DestinationKeyId,omitempty" xml:"DestinationKeyId,omitempty"`
-	// The encryption algorithm based on which the public key is used to encrypt the ciphertext specified by CiphertextBlob. For more information about encryption algorithms, see [AsymmetricDecrypt](~~148130~~).
+	// The encryption algorithm based on which the public key is used to encrypt the ciphertext specified by CiphertextBlob. For more information about encryption algorithms, see [AsymmetricDecrypt](https://help.aliyun.com/document_detail/148130.html).
 	//
 	// Valid values:
 	//
-	// 	- RSAES_OAEP_SHA\_256
+	// 	- RSAES_OAEP_SHA_256
 	//
-	// 	- RSAES_OAEP_SHA\_1
+	// 	- RSAES_OAEP_SHA_1
 	//
 	// 	- SM2PKE
 	//
@@ -12141,7 +12430,7 @@ type ReEncryptShrinkRequest struct {
 	//
 	// RSAES_OAEP_SHA_256
 	SourceEncryptionAlgorithm *string `json:"SourceEncryptionAlgorithm,omitempty" xml:"SourceEncryptionAlgorithm,omitempty"`
-	// A JSON string that consists of key-value pairs. If you specify EncryptionContext when you call the [Encrypt](~~28949~~), [GenerateDataKey](~~28948~~), [GenerateDataKeyWithoutPlaintext](~~134043~~), or [GenerateAndExportDataKey](~~176804~~) operation to encrypt the data or data key, an equivalent value is required here. For more information, see [EncryptionContext](~~42975~~).
+	// A JSON string that consists of key-value pairs. If you specify EncryptionContext when you call the [Encrypt](https://help.aliyun.com/document_detail/28949.html), [GenerateDataKey](https://help.aliyun.com/document_detail/28948.html), [GenerateDataKeyWithoutPlaintext](https://help.aliyun.com/document_detail/134043.html), or [GenerateAndExportDataKey](https://help.aliyun.com/document_detail/176804.html) operation to encrypt the data or data key, an equivalent value is required here. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
 	//
 	// >  If you set CiphertextBlob to the ciphertext that is returned after a symmetric encryption operation, specify this parameter.
 	//
@@ -12301,6 +12590,8 @@ func (s *ReEncryptResponse) SetBody(v *ReEncryptResponseBody) *ReEncryptResponse
 type RestoreSecretRequest struct {
 	// The name of the secret you want to restore.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// secret001
@@ -12385,6 +12676,8 @@ func (s *RestoreSecretResponse) SetBody(v *RestoreSecretResponseBody) *RestoreSe
 type RotateSecretRequest struct {
 	// The name of the secret.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// RdsSecret/Mysql5.4/MyCred
@@ -12392,6 +12685,8 @@ type RotateSecretRequest struct {
 	// The version number of the secret after the secret is rotated.
 	//
 	// >  The version number is used to ensure the idempotence of the request. Secrets Manager uses this version number to prevent your application from creating the same version of the secret when the application retries a request. If a version number already exists, Secrets Manager ignores the request for rotation and returns a success message.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -12504,6 +12799,8 @@ func (s *RotateSecretResponse) SetBody(v *RotateSecretResponseBody) *RotateSecre
 type ScheduleKeyDeletionRequest struct {
 	// The ID of the customer master key (CMK). The ID must be globally unique.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 7906979c-8e06-46a2-be2d-68e3ccbc****
@@ -12513,6 +12810,8 @@ type ScheduleKeyDeletionRequest struct {
 	// Valid values: 7 to 366.
 	//
 	// Unit: days.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -12604,13 +12903,17 @@ type SetDeletionProtectionRequest struct {
 	//
 	// 	- false: disables deletion protection.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// true
 	EnableDeletionProtection *bool `json:"EnableDeletionProtection,omitempty" xml:"EnableDeletionProtection,omitempty"`
 	// The ARN of the CMK for which you want to set deletion protection.
 	//
-	// You can call the [DescribeKey](~~28952~~) operation to query the CMK ARN.
+	// You can call the [DescribeKey](https://help.aliyun.com/document_detail/28952.html) operation to query the CMK ARN.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -12693,8 +12996,21 @@ func (s *SetDeletionProtectionResponse) SetBody(v *SetDeletionProtectionResponse
 }
 
 type SetKeyPolicyRequest struct {
-	KeyId      *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	Policy     *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// key-hzz630494463ejqjx****
+	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"Statement":[{"Action":["kms:*"],"Effect":"Allow","Principal":{"RAM":["acs:ram::119285303511****:*"]},"Resource":["*"],"Sid":"kms default key policy"},{"Action":["kms:List*","kms:Describe*","kms:Create*","kms:Enable*","kms:Disable*","kms:Get*","kms:Set*","kms:Update*","kms:Delete*","kms:Cancel*","kms:TagResource","kms:UntagResource","kms:ImportKeyMaterial","kms:ScheduleKeyDeletion"],"Effect":"Allow","Principal":{"RAM":["acs:ram::119285303511****:user/for_test_policy"]},"Resource":["*"]}],"Version":"1"}
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// example:
+	//
+	// default
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 }
 
@@ -12722,6 +13038,9 @@ func (s *SetKeyPolicyRequest) SetPolicyName(v string) *SetKeyPolicyRequest {
 }
 
 type SetKeyPolicyResponseBody struct {
+	// example:
+	//
+	// 381D5D33-BB8F-395F-8EE4-AE3BB4B523C8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12768,8 +13087,21 @@ func (s *SetKeyPolicyResponse) SetBody(v *SetKeyPolicyResponseBody) *SetKeyPolic
 }
 
 type SetSecretPolicyRequest struct {
-	Policy     *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"Version":"1","Statement": [{"Sid":"kms default secret policy","Effect":"Allow","Principal":{"RAM": ["acs:ram::119285303511****:*"]},"Action":["kms:*"],"Resource": ["*"] }] }
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// example:
+	//
+	// default
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// secret_test
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 }
 
@@ -12797,6 +13129,9 @@ func (s *SetSecretPolicyRequest) SetSecretName(v string) *SetSecretPolicyRequest
 }
 
 type SetSecretPolicyResponseBody struct {
+	// example:
+	//
+	// 381D5D33-BB8F-395F-8EE4-AE3BB4B523C8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12874,6 +13209,8 @@ type TagResourceRequest struct {
 	// 	- TagKey: the tag key.
 	//
 	// 	- TagValue: the tag value.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -12963,7 +13300,9 @@ func (s *TagResourceResponse) SetBody(v *TagResourceResponseBody) *TagResourceRe
 type TagResourcesRequest struct {
 	// The region ID of the resource.
 	//
-	// >  You can call the [DescribeRegions](~~601478~~) to query the most recent region list.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/601478.html) to query the most recent region list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -12972,12 +13311,16 @@ type TagResourcesRequest struct {
 	// The IDs of the resources to which you want to add tags. You can enter a maximum of 50 resource IDs.
 	//
 	// Enter multiple resource IDs in the `["ResourceId. 1","ResourceId. 2",...]` format.
+	//
+	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of the resource to which you want to add tags. Valid values:
 	//
 	// 	- key
 	//
 	// 	- secret
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -12986,6 +13329,8 @@ type TagResourcesRequest struct {
 	// A list of tags. You can enter up to 20 tags.
 	//
 	// A tag consists of a key-value pair. Enter multiple tags in the `[{"Key":"key1","Value":"value1"},{"Key":"key2","Value":"value2"},..]` format.
+	//
+	// This parameter is required.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -13022,7 +13367,7 @@ type TagResourcesRequestTag struct {
 	//
 	// You can enter up to 20 tags. Enter multiple tags in the `[{"Key":"key1","Value":"value1"},{"Key":"key2","Value":"value2"},..]` format.
 	//
-	// Each key can be up to 128 characters in length and can contain letters, digits, forward slashes (/), backslashes (\\), underscores (\_), hyphens (-), periods (.), plus signs (+), equal signs (=), colons (:), and at signs (@).
+	// Each key can be up to 128 characters in length and can contain letters, digits, forward slashes (/), backslashes (\\\\), underscores (_), hyphens (-), periods (.), plus signs (+), equal signs (=), colons (:), and at signs (@).
 	//
 	// >  The key cannot start with aliyun or acs:.
 	//
@@ -13034,7 +13379,7 @@ type TagResourcesRequestTag struct {
 	//
 	// You can enter up to 20 tags. Enter multiple tags in the `[{"Key":"key1","Value":"value1"},{"Key":"key2","Value":"value2"},..]` format.
 	//
-	// Each value can be up to 128 characters in length and can contain letters, digits, forward slashes (/), backslashes (\\), underscores (\_), hyphens (-), periods (.), plus signs (+), equal signs (=), colons (:), and at signs (@).
+	// Each value can be up to 128 characters in length and can contain letters, digits, forward slashes (/), backslashes (\\\\), underscores (_), hyphens (-), periods (.), plus signs (+), equal signs (=), colons (:), and at signs (@).
 	//
 	// example:
 	//
@@ -13126,6 +13471,8 @@ type UntagResourceRequest struct {
 	//
 	// MyDbC****
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ["tagkey1","tagkey2"]
@@ -13224,7 +13571,9 @@ type UntagResourcesRequest struct {
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
 	// The region ID of the resource.
 	//
-	// >  You can call the [DescribeRegions](~~601478~~) operation to query the most recent region list.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/601478.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -13233,12 +13582,16 @@ type UntagResourcesRequest struct {
 	// The IDs of the resources from which you want to remove tags. You can enter up to 50 resource IDs.
 	//
 	// Enter multiple resource IDs in the `["ResourceId.1","ResourceId.2",...]` format.
+	//
+	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of the resource from which you want to remove tags. Valid values:
 	//
 	// 	- key
 	//
 	// 	- secret
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -13341,11 +13694,15 @@ type UpdateAliasRequest struct {
 	//
 	// The value must be 1 to 255 characters in length and must include the alias/ prefix.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// alias/example
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
 	// The ID of the CMK. The ID must be globally unique.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -13430,6 +13787,8 @@ type UpdateApplicationAccessPointRequest struct {
 	// aap description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the AAP that you want to update.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -13522,6 +13881,8 @@ func (s *UpdateApplicationAccessPointResponse) SetBody(v *UpdateApplicationAcces
 type UpdateCertificateStatusRequest struct {
 	// The ID of the certificate. The ID must be globally unique in Certificates Manager.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 9a28de48-8d8b-484d-a766-dec4****
@@ -13535,6 +13896,8 @@ type UpdateCertificateStatusRequest struct {
 	// 	- REVOKED: The certificate is revoked.
 	//
 	// > If the certificate is in the REVOKED state, you can use the certificate only to verify a signature, but not to generate a signature.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -13614,11 +13977,15 @@ func (s *UpdateCertificateStatusResponse) SetBody(v *UpdateCertificateStatusResp
 type UpdateKeyDescriptionRequest struct {
 	// The description of the CMK. This description includes the purpose of the CMK, such as the types of data that you want to protect and applications that can use the CMK.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// key description example
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the CMK. The ID must be globally unique.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -13708,11 +14075,15 @@ type UpdateKmsInstanceBindVpcRequest struct {
 	//
 	// Format: `[{"VpcId":"${VpcId}","VSwitchId":"${VSwitchId}","RegionId":"${RegionId}","VpcOwnerId":${VpcOwnerId}},..]`.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// [{"VpcId":"vpc-bp1go9qvmj78j4f4c****","VSwitchId":"vsw-bp16c5pvvcf0fp5b9****","RegionId":"cn-hangzhou","VpcOwnerId":120708975881****},{"VpcId":"vpc-bp14c07ucxg6h1xjm****","VSwitchId":"vsw-bp1wujtnspi1l3gvu****","RegionId":"cn-hangzhou","VpcOwnerId":119285303511****}]
 	BindVpcs *string `json:"BindVpcs,omitempty" xml:"BindVpcs,omitempty"`
 	// The ID of the KMS instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -13797,6 +14168,8 @@ type UpdateNetworkRuleRequest struct {
 	// Creat by kst-hzz62ee817bvyyr5****
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the access control rule that you want to update.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -13887,7 +14260,7 @@ func (s *UpdateNetworkRuleResponse) SetBody(v *UpdateNetworkRuleResponseBody) *U
 type UpdatePolicyRequest struct {
 	// The access control rule.
 	//
-	// > For more information about how to query created access control rules, see [ListNetworkRules](~~2539433~~).
+	// > For more information about how to query created access control rules, see [ListNetworkRules](https://help.aliyun.com/document_detail/2539433.html).
 	//
 	// example:
 	//
@@ -13900,6 +14273,8 @@ type UpdatePolicyRequest struct {
 	// policy  description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the permission policy that you want to update.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -13919,9 +14294,9 @@ type UpdatePolicyRequest struct {
 	Permissions *string `json:"Permissions,omitempty" xml:"Permissions,omitempty"`
 	// The key and secret that are allowed to access after the update.
 	//
-	// 	- Key: Enter a key in the `key/${KeyId}` format. To allow access to all keys of a KMS instance, enter key/\*.
+	// 	- Key: Enter a key in the `key/${KeyId}` format. To allow access to all keys of a KMS instance, enter key/\\*.
 	//
-	// 	- Secret: Enter a secret in the `secret/${SecretName}` format. To allow access to all secrets of a KMS instance, enter secret/\*.
+	// 	- Secret: Enter a secret in the `secret/${SecretName}` format. To allow access to all secrets of a KMS instance, enter secret/\\*.
 	//
 	// example:
 	//
@@ -14020,17 +14395,21 @@ type UpdateRotationPolicyRequest struct {
 	//
 	// 	- false: disables automatic key rotation.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// true
 	EnableAutomaticRotation *bool `json:"EnableAutomaticRotation,omitempty" xml:"EnableAutomaticRotation,omitempty"`
 	// The ID of the customer master key (CMK). The ID must be globally unique.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1234abcd-12ab-34cd-56ef-12345678****
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	// The period of automatic key rotation. Specify the value in the integer\[unit] format. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day period. The period can range from 7 days to 730 days.
+	// The period of automatic key rotation. Specify the value in the integer[unit] format. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day period. The period can range from 7 days to 730 days.
 	//
 	// >  If you set the EnableAutomaticRotation parameter to true, you must also specify this parameter. If you set the EnableAutomaticRotation parameter to false, you can leave this parameter unspecified.
 	//
@@ -14124,6 +14503,8 @@ type UpdateSecretRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the secret.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// secret001
@@ -14188,6 +14569,8 @@ type UpdateSecretShrinkRequest struct {
 	// datainfo
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the secret.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -14313,6 +14696,8 @@ type UpdateSecretRotationPolicyRequest struct {
 	//
 	// 	- false: does not enable automatic rotation. This is the default value.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// true
@@ -14330,6 +14715,8 @@ type UpdateSecretRotationPolicyRequest struct {
 	// 30d
 	RotationInterval *string `json:"RotationInterval,omitempty" xml:"RotationInterval,omitempty"`
 	// The name of the secret.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -14445,11 +14832,15 @@ type UpdateSecretVersionStageRequest struct {
 	RemoveFromVersion *string `json:"RemoveFromVersion,omitempty" xml:"RemoveFromVersion,omitempty"`
 	// The operation that you want to perform. Set the value to **UpdateSecretVersionStage**.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// secret001
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 	// The name of the secret.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -14554,6 +14945,8 @@ func (s *UpdateSecretVersionStageResponse) SetBody(v *UpdateSecretVersionStageRe
 type UploadCertificateRequest struct {
 	// The certificate issued by the CA, which is in the Privacy Enhanced Mail (PEM) format.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----  (X.509 Certificate PEM Content)  -----END CERTIFICATE-----
@@ -14565,6 +14958,8 @@ type UploadCertificateRequest struct {
 	// -----BEGIN CERTIFICATE-----  (Sub CA Certificate PEM Content)  -----END CERTIFICATE-----  -----BEGIN CERTIFICATE-----  (Sub CA Certificate PEM Content)  -----END CERTIFICATE-----  -----BEGIN CERTIFICATE-----  (Root CA Certificate PEM Content)  -----END CERTIFICATE-----
 	CertificateChain *string `json:"CertificateChain,omitempty" xml:"CertificateChain,omitempty"`
 	// The ID of the certificate. The ID must be globally unique in Certificates Manager.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -14661,6 +15056,13 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = tea.String("Kms")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = tea.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -14693,6 +15095,10 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Decrypts data by using an asymmetric key.
+//
 // Description:
 //
 // This operation supports only asymmetric keys for which the **Usage*	- parameter is set to **ENCRYPT/DECRYPT**. The following table lists supported encryption algorithms.
@@ -14754,15 +15160,30 @@ func (client *Client) AsymmetricDecryptWithOptions(request *AsymmetricDecryptReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AsymmetricDecryptResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AsymmetricDecryptResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AsymmetricDecryptResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Decrypts data by using an asymmetric key.
+//
 // Description:
 //
 // This operation supports only asymmetric keys for which the **Usage*	- parameter is set to **ENCRYPT/DECRYPT**. The following table lists supported encryption algorithms.
@@ -14797,6 +15218,10 @@ func (client *Client) AsymmetricDecrypt(request *AsymmetricDecryptRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Encrypts data by using an asymmetric customer master key (CMK).
+//
 // Description:
 //
 // This operation is supported only for asymmetric keys for which the **Usage*	- parameter is set to **ENCRYPT/DECRYPT**. The following table lists the supported encryption algorithms:
@@ -14858,15 +15283,30 @@ func (client *Client) AsymmetricEncryptWithOptions(request *AsymmetricEncryptReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AsymmetricEncryptResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AsymmetricEncryptResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AsymmetricEncryptResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Encrypts data by using an asymmetric customer master key (CMK).
+//
 // Description:
 //
 // This operation is supported only for asymmetric keys for which the **Usage*	- parameter is set to **ENCRYPT/DECRYPT**. The following table lists the supported encryption algorithms:
@@ -14901,6 +15341,10 @@ func (client *Client) AsymmetricEncrypt(request *AsymmetricEncryptRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// AsymmetricSign
+//
 // Description:
 //
 // Generates a signature by using an asymmetric key.
@@ -14946,15 +15390,30 @@ func (client *Client) AsymmetricSignWithOptions(request *AsymmetricSignRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AsymmetricSignResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AsymmetricSignResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AsymmetricSignResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// AsymmetricSign
+//
 // Description:
 //
 // Generates a signature by using an asymmetric key.
@@ -14973,6 +15432,10 @@ func (client *Client) AsymmetricSign(request *AsymmetricSignRequest) (_result *A
 	return _result, _err
 }
 
+// Summary:
+//
+// Verifies a signature by using an asymmetric key.
+//
 // Description:
 //
 // This operation supports only asymmetric keys for which the **Usage*	- parameter is set to **SIGN/VERIFY**. The following table describes the supported signature algorithms.
@@ -15042,15 +15505,30 @@ func (client *Client) AsymmetricVerifyWithOptions(request *AsymmetricVerifyReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AsymmetricVerifyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AsymmetricVerifyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AsymmetricVerifyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Verifies a signature by using an asymmetric key.
+//
 // Description:
 //
 // This operation supports only asymmetric keys for which the **Usage*	- parameter is set to **SIGN/VERIFY**. The following table describes the supported signature algorithms.
@@ -15122,13 +15600,24 @@ func (client *Client) CancelKeyDeletionWithOptions(request *CancelKeyDeletionReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CancelKeyDeletionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CancelKeyDeletionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CancelKeyDeletionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
@@ -15149,6 +15638,10 @@ func (client *Client) CancelKeyDeletion(request *CancelKeyDeletionRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Decrypts data by using a specific certificate.
+//
 // Description:
 //
 // Limit: The encryption algorithm in the request parameters must match the key type.
@@ -15204,15 +15697,30 @@ func (client *Client) CertificatePrivateKeyDecryptWithOptions(request *Certifica
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CertificatePrivateKeyDecryptResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CertificatePrivateKeyDecryptResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CertificatePrivateKeyDecryptResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Decrypts data by using a specific certificate.
+//
 // Description:
 //
 // Limit: The encryption algorithm in the request parameters must match the key type.
@@ -15245,6 +15753,10 @@ func (client *Client) CertificatePrivateKeyDecrypt(request *CertificatePrivateKe
 	return _result, _err
 }
 
+// Summary:
+//
+// Generates a signature by using a specified certificate.
+//
 // Description:
 //
 // The signature algorithm in the request parameters must match the key type. The following table describes the mapping between signature algorithms and key types.
@@ -15304,15 +15816,30 @@ func (client *Client) CertificatePrivateKeySignWithOptions(request *CertificateP
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CertificatePrivateKeySignResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CertificatePrivateKeySignResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CertificatePrivateKeySignResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Generates a signature by using a specified certificate.
+//
 // Description:
 //
 // The signature algorithm in the request parameters must match the key type. The following table describes the mapping between signature algorithms and key types.
@@ -15345,6 +15872,10 @@ func (client *Client) CertificatePrivateKeySign(request *CertificatePrivateKeySi
 	return _result, _err
 }
 
+// Summary:
+//
+// Encrypts data by using a specific certificate.
+//
 // Description:
 //
 // Limit: The encryption algorithm in the request parameters must match the key type.
@@ -15400,15 +15931,30 @@ func (client *Client) CertificatePublicKeyEncryptWithOptions(request *Certificat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CertificatePublicKeyEncryptResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CertificatePublicKeyEncryptResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CertificatePublicKeyEncryptResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Encrypts data by using a specific certificate.
+//
 // Description:
 //
 // Limit: The encryption algorithm in the request parameters must match the key type.
@@ -15441,6 +15987,10 @@ func (client *Client) CertificatePublicKeyEncrypt(request *CertificatePublicKeyE
 	return _result, _err
 }
 
+// Summary:
+//
+// Verifies a digital signature by using a specified certificate.
+//
 // Description:
 //
 // The signature algorithm in the request parameters must match the key type. The following table describes the mapping between signature algorithms and key types.
@@ -15504,15 +16054,30 @@ func (client *Client) CertificatePublicKeyVerifyWithOptions(request *Certificate
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CertificatePublicKeyVerifyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CertificatePublicKeyVerifyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CertificatePublicKeyVerifyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Verifies a digital signature by using a specified certificate.
+//
 // Description:
 //
 // The signature algorithm in the request parameters must match the key type. The following table describes the mapping between signature algorithms and key types.
@@ -15545,6 +16110,10 @@ func (client *Client) CertificatePublicKeyVerify(request *CertificatePublicKeyVe
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables a Key Management Service (KMS) instance.
+//
 // Description:
 //
 // ### [](#)Limits
@@ -15596,15 +16165,30 @@ func (client *Client) ConnectKmsInstanceWithOptions(request *ConnectKmsInstanceR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ConnectKmsInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ConnectKmsInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ConnectKmsInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Enables a Key Management Service (KMS) instance.
+//
 // Description:
 //
 // ### [](#)Limits
@@ -15627,7 +16211,7 @@ func (client *Client) ConnectKmsInstance(request *ConnectKmsInstanceRequest) (_r
 
 // Description:
 //
-// 	- Each alias can be bound to only one CMK at a time.
+//   Each alias can be bound to only one CMK at a time.
 //
 // 	- The aliases of CMKs in the same region must be unique.
 //
@@ -15666,18 +16250,29 @@ func (client *Client) CreateAliasWithOptions(request *CreateAliasRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateAliasResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateAliasResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateAliasResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
 //
-// 	- Each alias can be bound to only one CMK at a time.
+//   Each alias can be bound to only one CMK at a time.
 //
 // 	- The aliases of CMKs in the same region must be unique.
 //
@@ -15697,17 +16292,21 @@ func (client *Client) CreateAlias(request *CreateAliasRequest) (_result *CreateA
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an application access point (AAP)
+//
 // Description:
 //
 // To perform cryptographic operations and retrieve secret values, self-managed applications must use a client key to access a Key Management Service (KMS) instance. The following process shows how to create a client key-based AAP:
 //
-// 1.Create a network access rule: You can configure the private IP addresses or private CIDR blocks that are allowed to access KMS. For more information, see [CreateNetworkRule](~~2539407~~).
+// 1.Create a network access rule: You can configure the private IP addresses or private CIDR blocks that are allowed to access KMS. For more information, see [CreateNetworkRule](https://help.aliyun.com/document_detail/2539407.html).
 //
-// 2.Create a permission policy: You can configure the keys and secrets that are allowed to access and bind network access rules to the keys and secrets. For more information, see [CreatePolicy](~~2539454~~).
+// 2.Create a permission policy: You can configure the keys and secrets that are allowed to access and bind network access rules to the keys and secrets. For more information, see [CreatePolicy](https://help.aliyun.com/document_detail/2539454.html).
 //
 // 3.Create an AAP: You can configure an authentication method and bind a permission policy to an AAP. This topic describes how to create an AAP.
 //
-// 4.Create a client key: You can configure the encryption password and validity period of a client key and bind the client key to an AAP. For more information, see [CreateClientKey](~~2539509~~).
+// 4.Create a client key: You can configure the encryption password and validity period of a client key and bind the client key to an AAP. For more information, see [CreateClientKey](https://help.aliyun.com/document_detail/2539509.html).
 //
 // @param request - CreateApplicationAccessPointRequest
 //
@@ -15750,26 +16349,41 @@ func (client *Client) CreateApplicationAccessPointWithOptions(request *CreateApp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateApplicationAccessPointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateApplicationAccessPointResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateApplicationAccessPointResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Creates an application access point (AAP)
+//
 // Description:
 //
 // To perform cryptographic operations and retrieve secret values, self-managed applications must use a client key to access a Key Management Service (KMS) instance. The following process shows how to create a client key-based AAP:
 //
-// 1.Create a network access rule: You can configure the private IP addresses or private CIDR blocks that are allowed to access KMS. For more information, see [CreateNetworkRule](~~2539407~~).
+// 1.Create a network access rule: You can configure the private IP addresses or private CIDR blocks that are allowed to access KMS. For more information, see [CreateNetworkRule](https://help.aliyun.com/document_detail/2539407.html).
 //
-// 2.Create a permission policy: You can configure the keys and secrets that are allowed to access and bind network access rules to the keys and secrets. For more information, see [CreatePolicy](~~2539454~~).
+// 2.Create a permission policy: You can configure the keys and secrets that are allowed to access and bind network access rules to the keys and secrets. For more information, see [CreatePolicy](https://help.aliyun.com/document_detail/2539454.html).
 //
 // 3.Create an AAP: You can configure an authentication method and bind a permission policy to an AAP. This topic describes how to create an AAP.
 //
-// 4.Create a client key: You can configure the encryption password and validity period of a client key and bind the client key to an AAP. For more information, see [CreateClientKey](~~2539509~~).
+// 4.Create a client key: You can configure the encryption password and validity period of a client key and bind the client key to an AAP. For more information, see [CreateClientKey](https://help.aliyun.com/document_detail/2539509.html).
 //
 // @param request - CreateApplicationAccessPointRequest
 //
@@ -15787,7 +16401,7 @@ func (client *Client) CreateApplicationAccessPoint(request *CreateApplicationAcc
 
 // Description:
 //
-// To create a certificate, you must specify the type of the asymmetric key. Certificates Manager generates a private key and returns a certificate signing request (CSR). Submit the CSR in the Privacy Enhanced Mail (PEM) format to a certificate authority (CA) to obtain the formal certificate and certificate chain. Then, call the [UploadCertificate](~~212136~~) operation to import the certificate into Certificates Manager.
+// To create a certificate, you must specify the type of the asymmetric key. Certificates Manager generates a private key and returns a certificate signing request (CSR). Submit the CSR in the Privacy Enhanced Mail (PEM) format to a certificate authority (CA) to obtain the formal certificate and certificate chain. Then, call the [UploadCertificate](https://help.aliyun.com/document_detail/212136.html) operation to import the certificate into Certificates Manager.
 //
 // In this example, a certificate is created and the CSR is obtained.
 //
@@ -15838,18 +16452,29 @@ func (client *Client) CreateCertificateWithOptions(tmpReq *CreateCertificateRequ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateCertificateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
 //
-// To create a certificate, you must specify the type of the asymmetric key. Certificates Manager generates a private key and returns a certificate signing request (CSR). Submit the CSR in the Privacy Enhanced Mail (PEM) format to a certificate authority (CA) to obtain the formal certificate and certificate chain. Then, call the [UploadCertificate](~~212136~~) operation to import the certificate into Certificates Manager.
+// To create a certificate, you must specify the type of the asymmetric key. Certificates Manager generates a private key and returns a certificate signing request (CSR). Submit the CSR in the Privacy Enhanced Mail (PEM) format to a certificate authority (CA) to obtain the formal certificate and certificate chain. Then, call the [UploadCertificate](https://help.aliyun.com/document_detail/212136.html) operation to import the certificate into Certificates Manager.
 //
 // In this example, a certificate is created and the CSR is obtained.
 //
@@ -15867,15 +16492,19 @@ func (client *Client) CreateCertificate(request *CreateCertificateRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a client key.
+//
 // Description:
 //
 // To perform cryptographic operations and retrieve secret values, self-managed applications must use a client key to access a Key Management Service (KMS) instance. The following process shows how to create a client key-based application access point (AAP):
 //
-// 1.Create an access control rule: You can configure the private IP addresses or private CIDR blocks that are allowed to access a KMS instance. For more information, see [CreateNetworkRule](~~2539407~~).
+// 1.Create an access control rule: You can configure the private IP addresses or private CIDR blocks that are allowed to access a KMS instance. For more information, see [CreateNetworkRule](https://help.aliyun.com/document_detail/2539407.html).
 //
-// 2.Create a permission policy: You can configure the keys and secrets that are allowed to access and bind access control rules to the keys and secrets. For more information, see [CreatePolicy](~~2539454~~).
+// 2.Create a permission policy: You can configure the keys and secrets that are allowed to access and bind access control rules to the keys and secrets. For more information, see [CreatePolicy](https://help.aliyun.com/document_detail/2539454.html).
 //
-// 3.Create an AAP: You can configure an authentication method and bind a permission policy to an AAP. For more information, see [CreateApplicationAccessPoint](~~2539467~~).
+// 3.Create an AAP: You can configure an authentication method and bind a permission policy to an AAP. For more information, see [CreateApplicationAccessPoint](https://help.aliyun.com/document_detail/2539467.html).
 //
 // 4.Create a client key: You can configure the encryption password and validity period of a client key and bind the client key to an AAP.
 //
@@ -15924,24 +16553,39 @@ func (client *Client) CreateClientKeyWithOptions(request *CreateClientKeyRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateClientKeyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateClientKeyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateClientKeyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Creates a client key.
+//
 // Description:
 //
 // To perform cryptographic operations and retrieve secret values, self-managed applications must use a client key to access a Key Management Service (KMS) instance. The following process shows how to create a client key-based application access point (AAP):
 //
-// 1.Create an access control rule: You can configure the private IP addresses or private CIDR blocks that are allowed to access a KMS instance. For more information, see [CreateNetworkRule](~~2539407~~).
+// 1.Create an access control rule: You can configure the private IP addresses or private CIDR blocks that are allowed to access a KMS instance. For more information, see [CreateNetworkRule](https://help.aliyun.com/document_detail/2539407.html).
 //
-// 2.Create a permission policy: You can configure the keys and secrets that are allowed to access and bind access control rules to the keys and secrets. For more information, see [CreatePolicy](~~2539454~~).
+// 2.Create a permission policy: You can configure the keys and secrets that are allowed to access and bind access control rules to the keys and secrets. For more information, see [CreatePolicy](https://help.aliyun.com/document_detail/2539454.html).
 //
-// 3.Create an AAP: You can configure an authentication method and bind a permission policy to an AAP. For more information, see [CreateApplicationAccessPoint](~~2539467~~).
+// 3.Create an AAP: You can configure an authentication method and bind a permission policy to an AAP. For more information, see [CreateApplicationAccessPoint](https://help.aliyun.com/document_detail/2539467.html).
 //
 // 4.Create a client key: You can configure the encryption password and validity period of a client key and bind the client key to an AAP.
 //
@@ -15963,9 +16607,13 @@ func (client *Client) CreateClientKey(request *CreateClientKeyRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a customer master key (CMK).
+//
 // Description:
 //
-// KMS supports common symmetric keys and asymmetric keys. For more information, see [Key types and specifications](~~480161~~).
+// KMS supports common symmetric keys and asymmetric keys. For more information, see [Key types and specifications](https://help.aliyun.com/document_detail/480161.html).
 //
 // @param request - CreateKeyRequest
 //
@@ -16032,18 +16680,33 @@ func (client *Client) CreateKeyWithOptions(request *CreateKeyRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateKeyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateKeyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateKeyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Creates a customer master key (CMK).
+//
 // Description:
 //
-// KMS supports common symmetric keys and asymmetric keys. For more information, see [Key types and specifications](~~480161~~).
+// KMS supports common symmetric keys and asymmetric keys. For more information, see [Key types and specifications](https://help.aliyun.com/document_detail/480161.html).
 //
 // @param request - CreateKeyRequest
 //
@@ -16059,11 +16722,15 @@ func (client *Client) CreateKey(request *CreateKeyRequest) (_result *CreateKeyRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 为密钥创建新的密钥版本。
+//
 // Description:
 //
-// 	- You can create a version only for an asymmetric CMK that is in the Enabled state. You can call the [CreateKey](~~28947~~) operation to create an asymmetric CMK and the [DescribeKey](~~28952~~) operation to query the status of the CMK. The status is specified by the KeyState parameter.
+//   You can create a version only for an asymmetric CMK that is in the Enabled state. You can call the [CreateKey](https://help.aliyun.com/document_detail/28947.html) operation to create an asymmetric CMK and the [DescribeKey](https://help.aliyun.com/document_detail/28952.html) operation to query the status of the CMK. The status is specified by the KeyState parameter.
 //
-// 	- The minimum interval for creating a version of the same CMK is seven days. You can call the [DescribeKey](~~28952~~) operation to query the time when the last version of a CMK was created. The time is specified by the LastRotationDate parameter.
+// 	- The minimum interval for creating a version of the same CMK is seven days. You can call the [DescribeKey](https://help.aliyun.com/document_detail/28952.html) operation to query the time when the last version of a CMK was created. The time is specified by the LastRotationDate parameter.
 //
 // 	- If a CMK is in a private key store, you cannot create a version for the CMK.
 //
@@ -16100,20 +16767,35 @@ func (client *Client) CreateKeyVersionWithOptions(request *CreateKeyVersionReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateKeyVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateKeyVersionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateKeyVersionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// 为密钥创建新的密钥版本。
+//
 // Description:
 //
-// 	- You can create a version only for an asymmetric CMK that is in the Enabled state. You can call the [CreateKey](~~28947~~) operation to create an asymmetric CMK and the [DescribeKey](~~28952~~) operation to query the status of the CMK. The status is specified by the KeyState parameter.
+//   You can create a version only for an asymmetric CMK that is in the Enabled state. You can call the [CreateKey](https://help.aliyun.com/document_detail/28947.html) operation to create an asymmetric CMK and the [DescribeKey](https://help.aliyun.com/document_detail/28952.html) operation to query the status of the CMK. The status is specified by the KeyState parameter.
 //
-// 	- The minimum interval for creating a version of the same CMK is seven days. You can call the [DescribeKey](~~28952~~) operation to query the time when the last version of a CMK was created. The time is specified by the LastRotationDate parameter.
+// 	- The minimum interval for creating a version of the same CMK is seven days. You can call the [DescribeKey](https://help.aliyun.com/document_detail/28952.html) operation to query the time when the last version of a CMK was created. The time is specified by the LastRotationDate parameter.
 //
 // 	- If a CMK is in a private key store, you cannot create a version for the CMK.
 //
@@ -16135,17 +16817,21 @@ func (client *Client) CreateKeyVersion(request *CreateKeyVersionRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an access control rule to configure the private IP addresses or CIDR blocks that are allowed to access a Key Management Service (KMS) instance.
+//
 // Description:
 //
 // To perform cryptographic operations and retrieve secret values, self-managed applications must use a client key to access a KMS instance. The following process shows how to create a client key-based application access point (AAP):
 //
 // 1.Create an access control rule: You can configure the private IP addresses or private CIDR blocks that are allowed to access a KMS instance.
 //
-// 2.Create a permission policy: You can configure the keys and secrets that are allowed to access and bind access control rules to the keys and secrets. For more information, see [CreatePolicy](~~2539454~~).
+// 2.Create a permission policy: You can configure the keys and secrets that are allowed to access and bind access control rules to the keys and secrets. For more information, see [CreatePolicy](https://help.aliyun.com/document_detail/2539454.html).
 //
-// 3.Create an AAP: You can configure an authentication method and bind a permission policy to an AAP. For more information, see [CreateApplicationAccessPoint](~~2539467~~).
+// 3.Create an AAP: You can configure an authentication method and bind a permission policy to an AAP. For more information, see [CreateApplicationAccessPoint](https://help.aliyun.com/document_detail/2539467.html).
 //
-// 4.Create a client key: You can configure the encryption password and validity period of a client key and bind the client key to an AAP. For more information, see [CreateClientKey](~~2539509~~).
+// 4.Create a client key: You can configure the encryption password and validity period of a client key and bind the client key to an AAP. For more information, see [CreateClientKey](https://help.aliyun.com/document_detail/2539509.html).
 //
 // @param request - CreateNetworkRuleRequest
 //
@@ -16188,26 +16874,41 @@ func (client *Client) CreateNetworkRuleWithOptions(request *CreateNetworkRuleReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateNetworkRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateNetworkRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateNetworkRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Creates an access control rule to configure the private IP addresses or CIDR blocks that are allowed to access a Key Management Service (KMS) instance.
+//
 // Description:
 //
 // To perform cryptographic operations and retrieve secret values, self-managed applications must use a client key to access a KMS instance. The following process shows how to create a client key-based application access point (AAP):
 //
 // 1.Create an access control rule: You can configure the private IP addresses or private CIDR blocks that are allowed to access a KMS instance.
 //
-// 2.Create a permission policy: You can configure the keys and secrets that are allowed to access and bind access control rules to the keys and secrets. For more information, see [CreatePolicy](~~2539454~~).
+// 2.Create a permission policy: You can configure the keys and secrets that are allowed to access and bind access control rules to the keys and secrets. For more information, see [CreatePolicy](https://help.aliyun.com/document_detail/2539454.html).
 //
-// 3.Create an AAP: You can configure an authentication method and bind a permission policy to an AAP. For more information, see [CreateApplicationAccessPoint](~~2539467~~).
+// 3.Create an AAP: You can configure an authentication method and bind a permission policy to an AAP. For more information, see [CreateApplicationAccessPoint](https://help.aliyun.com/document_detail/2539467.html).
 //
-// 4.Create a client key: You can configure the encryption password and validity period of a client key and bind the client key to an AAP. For more information, see [CreateClientKey](~~2539509~~).
+// 4.Create a client key: You can configure the encryption password and validity period of a client key and bind the client key to an AAP. For more information, see [CreateClientKey](https://help.aliyun.com/document_detail/2539509.html).
 //
 // @param request - CreateNetworkRuleRequest
 //
@@ -16223,17 +16924,21 @@ func (client *Client) CreateNetworkRule(request *CreateNetworkRuleRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a permission policy to configure the keys and secrets that are allowed to access.
+//
 // Description:
 //
 // To perform cryptographic operations and retrieve secret values, self-managed applications must use a client key to access a Key Management Service (KMS) instance. The following process shows how to create a client key-based application access point (AAP):
 //
-// 1.Create an access control rule: You can configure the private IP addresses or private CIDR blocks that are allowed to access a KMS instance. For more information, see [CreateNetworkRule](~~2539407~~).
+// 1.Create an access control rule: You can configure the private IP addresses or private CIDR blocks that are allowed to access a KMS instance. For more information, see [CreateNetworkRule](https://help.aliyun.com/document_detail/2539407.html).
 //
 // 2.Create a permission policy: You can configure the keys and secrets that are allowed to access and bind access control rules to the keys and secrets.
 //
-// 3.Create an AAP: You can configure an authentication method and bind a permission policy to an AAP. For more information, see [CreateApplicationAccessPoint](~~2539467~~).
+// 3.Create an AAP: You can configure an authentication method and bind a permission policy to an AAP. For more information, see [CreateApplicationAccessPoint](https://help.aliyun.com/document_detail/2539467.html).
 //
-// 4.Create a client key: You can configure the encryption password and validity period of a client key and bind the client key to an AAP. For more information, see [CreateClientKey](~~2539509~~).
+// 4.Create a client key: You can configure the encryption password and validity period of a client key and bind the client key to an AAP. For more information, see [CreateClientKey](https://help.aliyun.com/document_detail/2539509.html).
 //
 // @param request - CreatePolicyRequest
 //
@@ -16284,26 +16989,41 @@ func (client *Client) CreatePolicyWithOptions(request *CreatePolicyRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreatePolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreatePolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreatePolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Creates a permission policy to configure the keys and secrets that are allowed to access.
+//
 // Description:
 //
 // To perform cryptographic operations and retrieve secret values, self-managed applications must use a client key to access a Key Management Service (KMS) instance. The following process shows how to create a client key-based application access point (AAP):
 //
-// 1.Create an access control rule: You can configure the private IP addresses or private CIDR blocks that are allowed to access a KMS instance. For more information, see [CreateNetworkRule](~~2539407~~).
+// 1.Create an access control rule: You can configure the private IP addresses or private CIDR blocks that are allowed to access a KMS instance. For more information, see [CreateNetworkRule](https://help.aliyun.com/document_detail/2539407.html).
 //
 // 2.Create a permission policy: You can configure the keys and secrets that are allowed to access and bind access control rules to the keys and secrets.
 //
-// 3.Create an AAP: You can configure an authentication method and bind a permission policy to an AAP. For more information, see [CreateApplicationAccessPoint](~~2539467~~).
+// 3.Create an AAP: You can configure an authentication method and bind a permission policy to an AAP. For more information, see [CreateApplicationAccessPoint](https://help.aliyun.com/document_detail/2539467.html).
 //
-// 4.Create a client key: You can configure the encryption password and validity period of a client key and bind the client key to an AAP. For more information, see [CreateClientKey](~~2539509~~).
+// 4.Create a client key: You can configure the encryption password and validity period of a client key and bind the client key to an AAP. For more information, see [CreateClientKey](https://help.aliyun.com/document_detail/2539509.html).
 //
 // @param request - CreatePolicyRequest
 //
@@ -16319,11 +17039,15 @@ func (client *Client) CreatePolicy(request *CreatePolicyRequest) (_result *Creat
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建凭据并存入凭据的初始版本。
+//
 // Description:
 //
 // The name of the secret.
 //
-// The value must be 1 to 64 characters in length and can contain letters, digits, underscores (\\_), forward slashes (/), plus signs (+), equal signs (=), periods (.), hyphens (-), and at signs (@). The following list describes the name requirements for different types of secrets:
+// The value must be 1 to 64 characters in length and can contain letters, digits, underscores (_), forward slashes (/), plus signs (+), equal signs (=), periods (.), hyphens (-), and at signs (@). The following list describes the name requirements for different types of secrets:
 //
 // 	- If the SecretType parameter is set to Generic or Rds, the name cannot start with `acs/`.
 //
@@ -16414,20 +17138,35 @@ func (client *Client) CreateSecretWithOptions(tmpReq *CreateSecretRequest, runti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateSecretResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateSecretResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateSecretResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// 创建凭据并存入凭据的初始版本。
+//
 // Description:
 //
 // The name of the secret.
 //
-// The value must be 1 to 64 characters in length and can contain letters, digits, underscores (\\_), forward slashes (/), plus signs (+), equal signs (=), periods (.), hyphens (-), and at signs (@). The following list describes the name requirements for different types of secrets:
+// The value must be 1 to 64 characters in length and can contain letters, digits, underscores (_), forward slashes (/), plus signs (+), equal signs (=), periods (.), hyphens (-), and at signs (@). The following list describes the name requirements for different types of secrets:
 //
 // 	- If the SecretType parameter is set to Generic or Rds, the name cannot start with `acs/`.
 //
@@ -16449,6 +17188,15 @@ func (client *Client) CreateSecret(request *CreateSecretRequest) (_result *Creat
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用Decrypt接口解密CiphertextBlob中的密文。
+//
+// @param tmpReq - DecryptRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DecryptResponse
 func (client *Client) DecryptWithOptions(tmpReq *DecryptRequest, runtime *util.RuntimeOptions) (_result *DecryptResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -16483,15 +17231,33 @@ func (client *Client) DecryptWithOptions(tmpReq *DecryptRequest, runtime *util.R
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DecryptResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DecryptResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DecryptResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// 调用Decrypt接口解密CiphertextBlob中的密文。
+//
+// @param request - DecryptRequest
+//
+// @return DecryptResponse
 func (client *Client) Decrypt(request *DecryptRequest) (_result *DecryptResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DecryptResponse{}
@@ -16503,6 +17269,11 @@ func (client *Client) Decrypt(request *DecryptRequest) (_result *DecryptResponse
 	return _result, _err
 }
 
+// @param request - DeleteAliasRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAliasResponse
 func (client *Client) DeleteAliasWithOptions(request *DeleteAliasRequest, runtime *util.RuntimeOptions) (_result *DeleteAliasResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16527,15 +17298,29 @@ func (client *Client) DeleteAliasWithOptions(request *DeleteAliasRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteAliasResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteAliasResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteAliasResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - DeleteAliasRequest
+//
+// @return DeleteAliasResponse
 func (client *Client) DeleteAlias(request *DeleteAliasRequest) (_result *DeleteAliasResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAliasResponse{}
@@ -16547,6 +17332,10 @@ func (client *Client) DeleteAlias(request *DeleteAliasRequest) (_result *DeleteA
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an application access point (AAP).
+//
 // Description:
 //
 // Before you delete an AAP, make sure that the AAP is no longer in use. If you delete an AAP that is in use, applications that use the AAP cannot access Key Management Service (KMS). Exercise caution when you delete an AAP.
@@ -16580,15 +17369,30 @@ func (client *Client) DeleteApplicationAccessPointWithOptions(request *DeleteApp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteApplicationAccessPointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteApplicationAccessPointResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteApplicationAccessPointResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Deletes an application access point (AAP).
+//
 // Description:
 //
 // Before you delete an AAP, make sure that the AAP is no longer in use. If you delete an AAP that is in use, applications that use the AAP cannot access Key Management Service (KMS). Exercise caution when you delete an AAP.
@@ -16642,13 +17446,24 @@ func (client *Client) DeleteCertificateWithOptions(request *DeleteCertificateReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteCertificateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
@@ -16704,13 +17519,24 @@ func (client *Client) DeleteClientKeyWithOptions(request *DeleteClientKeyRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteClientKeyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteClientKeyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteClientKeyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
@@ -16768,13 +17594,24 @@ func (client *Client) DeleteKeyMaterialWithOptions(request *DeleteKeyMaterialReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteKeyMaterialResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteKeyMaterialResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteKeyMaterialResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
@@ -16799,6 +17636,10 @@ func (client *Client) DeleteKeyMaterial(request *DeleteKeyMaterialRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a network access rule.
+//
 // Description:
 //
 // Before you delete a network access rule, make sure that the network access rule is not bound to permission policies. Otherwise, related applications cannot access Key Management Service (KMS).
@@ -16832,15 +17673,30 @@ func (client *Client) DeleteNetworkRuleWithOptions(request *DeleteNetworkRuleReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteNetworkRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteNetworkRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteNetworkRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Deletes a network access rule.
+//
 // Description:
 //
 // Before you delete a network access rule, make sure that the network access rule is not bound to permission policies. Otherwise, related applications cannot access Key Management Service (KMS).
@@ -16859,6 +17715,10 @@ func (client *Client) DeleteNetworkRule(request *DeleteNetworkRuleRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a permission policy.
+//
 // Description:
 //
 // Before you delete a permission policy, make sure that the permission policy is not associated with application access points (AAPs). Otherwise, related applications cannot access Key Management Service (KMS).
@@ -16892,15 +17752,30 @@ func (client *Client) DeletePolicyWithOptions(request *DeletePolicyRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeletePolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeletePolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeletePolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Deletes a permission policy.
+//
 // Description:
 //
 // Before you delete a permission policy, make sure that the permission policy is not associated with application access points (AAPs). Otherwise, related applications cannot access Key Management Service (KMS).
@@ -16962,13 +17837,24 @@ func (client *Client) DeleteSecretWithOptions(request *DeleteSecretRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteSecretResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteSecretResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteSecretResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
@@ -16991,6 +17877,11 @@ func (client *Client) DeleteSecret(request *DeleteSecretRequest) (_result *Delet
 	return _result, _err
 }
 
+// @param request - DescribeAccountKmsStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAccountKmsStatusResponse
 func (client *Client) DescribeAccountKmsStatusWithOptions(runtime *util.RuntimeOptions) (_result *DescribeAccountKmsStatusResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -17004,15 +17895,27 @@ func (client *Client) DescribeAccountKmsStatusWithOptions(runtime *util.RuntimeO
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeAccountKmsStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeAccountKmsStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeAccountKmsStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @return DescribeAccountKmsStatusResponse
 func (client *Client) DescribeAccountKmsStatus() (_result *DescribeAccountKmsStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAccountKmsStatusResponse{}
@@ -17024,6 +17927,15 @@ func (client *Client) DescribeAccountKmsStatus() (_result *DescribeAccountKmsSta
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an application access point (AAP).
+//
+// @param request - DescribeApplicationAccessPointRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApplicationAccessPointResponse
 func (client *Client) DescribeApplicationAccessPointWithOptions(request *DescribeApplicationAccessPointRequest, runtime *util.RuntimeOptions) (_result *DescribeApplicationAccessPointResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17048,15 +17960,33 @@ func (client *Client) DescribeApplicationAccessPointWithOptions(request *Describ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeApplicationAccessPointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeApplicationAccessPointResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeApplicationAccessPointResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the details of an application access point (AAP).
+//
+// @param request - DescribeApplicationAccessPointRequest
+//
+// @return DescribeApplicationAccessPointResponse
 func (client *Client) DescribeApplicationAccessPoint(request *DescribeApplicationAccessPointRequest) (_result *DescribeApplicationAccessPointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeApplicationAccessPointResponse{}
@@ -17101,13 +18031,24 @@ func (client *Client) DescribeCertificateWithOptions(request *DescribeCertificat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeCertificateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
@@ -17128,6 +18069,10 @@ func (client *Client) DescribeCertificate(request *DescribeCertificateRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a customer master key (CMK).
+//
 // Description:
 //
 // You can query the information about the CMK `05754286-3ba2-4fa6-8d41-4323aca6****` by using parameter settings provided in this topic. The information includes the creator, creation time, status, and deletion protection status of the CMK.
@@ -17161,15 +18106,30 @@ func (client *Client) DescribeKeyWithOptions(request *DescribeKeyRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeKeyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeKeyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeKeyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the information about a customer master key (CMK).
+//
 // Description:
 //
 // You can query the information about the CMK `05754286-3ba2-4fa6-8d41-4323aca6****` by using parameter settings provided in this topic. The information includes the creator, creation time, status, and deletion protection status of the CMK.
@@ -17225,13 +18185,24 @@ func (client *Client) DescribeKeyVersionWithOptions(request *DescribeKeyVersionR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeKeyVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeKeyVersionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeKeyVersionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
@@ -17252,6 +18223,15 @@ func (client *Client) DescribeKeyVersion(request *DescribeKeyVersionRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an access control rule.
+//
+// @param request - DescribeNetworkRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNetworkRuleResponse
 func (client *Client) DescribeNetworkRuleWithOptions(request *DescribeNetworkRuleRequest, runtime *util.RuntimeOptions) (_result *DescribeNetworkRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17276,15 +18256,33 @@ func (client *Client) DescribeNetworkRuleWithOptions(request *DescribeNetworkRul
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeNetworkRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeNetworkRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeNetworkRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the details of an access control rule.
+//
+// @param request - DescribeNetworkRuleRequest
+//
+// @return DescribeNetworkRuleResponse
 func (client *Client) DescribeNetworkRule(request *DescribeNetworkRuleRequest) (_result *DescribeNetworkRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeNetworkRuleResponse{}
@@ -17296,6 +18294,15 @@ func (client *Client) DescribeNetworkRule(request *DescribeNetworkRuleRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a permission policy.
+//
+// @param request - DescribePolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePolicyResponse
 func (client *Client) DescribePolicyWithOptions(request *DescribePolicyRequest, runtime *util.RuntimeOptions) (_result *DescribePolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17320,15 +18327,33 @@ func (client *Client) DescribePolicyWithOptions(request *DescribePolicyRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribePolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribePolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribePolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the details of a permission policy.
+//
+// @param request - DescribePolicyRequest
+//
+// @return DescribePolicyResponse
 func (client *Client) DescribePolicy(request *DescribePolicyRequest) (_result *DescribePolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePolicyResponse{}
@@ -17340,6 +18365,10 @@ func (client *Client) DescribePolicy(request *DescribePolicyRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries available regions.
+//
 // Description:
 //
 // ## Debugging
@@ -17364,15 +18393,30 @@ func (client *Client) DescribeRegionsWithOptions(runtime *util.RuntimeOptions) (
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeRegionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeRegionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries available regions.
+//
 // Description:
 //
 // ## Debugging
@@ -17430,13 +18474,24 @@ func (client *Client) DescribeSecretWithOptions(request *DescribeSecretRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSecretResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSecretResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSecretResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
@@ -17461,7 +18516,7 @@ func (client *Client) DescribeSecret(request *DescribeSecretRequest) (_result *D
 
 // Description:
 //
-// If a customer master key (CMK) is disabled, the ciphertext encrypted by using this CMK cannot be decrypted until you re-enable it. You can call the [EnableKey](~~35150~~) operation to enable the CMK.
+// If a customer master key (CMK) is disabled, the ciphertext encrypted by using this CMK cannot be decrypted until you re-enable it. You can call the [EnableKey](https://help.aliyun.com/document_detail/35150.html) operation to enable the CMK.
 //
 // In this example, the CMK whose ID is `1234abcd-12ab-34cd-56ef-12345678****` is disabled.
 //
@@ -17494,18 +18549,29 @@ func (client *Client) DisableKeyWithOptions(request *DisableKeyRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DisableKeyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DisableKeyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DisableKeyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
 //
-// If a customer master key (CMK) is disabled, the ciphertext encrypted by using this CMK cannot be decrypted until you re-enable it. You can call the [EnableKey](~~35150~~) operation to enable the CMK.
+// If a customer master key (CMK) is disabled, the ciphertext encrypted by using this CMK cannot be decrypted until you re-enable it. You can call the [EnableKey](https://help.aliyun.com/document_detail/35150.html) operation to enable the CMK.
 //
 // In this example, the CMK whose ID is `1234abcd-12ab-34cd-56ef-12345678****` is disabled.
 //
@@ -17523,6 +18589,11 @@ func (client *Client) DisableKey(request *DisableKeyRequest) (_result *DisableKe
 	return _result, _err
 }
 
+// @param request - EnableKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableKeyResponse
 func (client *Client) EnableKeyWithOptions(request *EnableKeyRequest, runtime *util.RuntimeOptions) (_result *EnableKeyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17547,15 +18618,29 @@ func (client *Client) EnableKeyWithOptions(request *EnableKeyRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &EnableKeyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EnableKeyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EnableKeyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - EnableKeyRequest
+//
+// @return EnableKeyResponse
 func (client *Client) EnableKey(request *EnableKeyRequest) (_result *EnableKeyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableKeyResponse{}
@@ -17569,11 +18654,11 @@ func (client *Client) EnableKey(request *EnableKeyRequest) (_result *EnableKeyRe
 
 // Description:
 //
-// 	- KMS uses the primary version of a specified CMK to encrypt data.
+//   KMS uses the primary version of a specified CMK to encrypt data.
 //
 // 	- Only data of 6 KB or less can be encrypted. For example, you can call this operation to encrypt RSA keys, database access passwords, or other sensitive information.
 //
-// 	- When you migrate encrypted data across regions, you can call this operation in the destination region to encrypt the plaintext of the data key that is used to encrypt the migrated data in the source region. This way, the ciphertext of the data key is generated in the destination region. You can also call the [Decrypt](~~28950~~) operation to decrypt the data key.
+// 	- When you migrate encrypted data across regions, you can call this operation in the destination region to encrypt the plaintext of the data key that is used to encrypt the migrated data in the source region. This way, the ciphertext of the data key is generated in the destination region. You can also call the [Decrypt](https://help.aliyun.com/document_detail/28950.html) operation to decrypt the data key.
 //
 // @param tmpReq - EncryptRequest
 //
@@ -17618,22 +18703,33 @@ func (client *Client) EncryptWithOptions(tmpReq *EncryptRequest, runtime *util.R
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &EncryptResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EncryptResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EncryptResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
 //
-// 	- KMS uses the primary version of a specified CMK to encrypt data.
+//   KMS uses the primary version of a specified CMK to encrypt data.
 //
 // 	- Only data of 6 KB or less can be encrypted. For example, you can call this operation to encrypt RSA keys, database access passwords, or other sensitive information.
 //
-// 	- When you migrate encrypted data across regions, you can call this operation in the destination region to encrypt the plaintext of the data key that is used to encrypt the migrated data in the source region. This way, the ciphertext of the data key is generated in the destination region. You can also call the [Decrypt](~~28950~~) operation to decrypt the data key.
+// 	- When you migrate encrypted data across regions, you can call this operation in the destination region to encrypt the plaintext of the data key that is used to encrypt the migrated data in the source region. This way, the ciphertext of the data key is generated in the destination region. You can also call the [Decrypt](https://help.aliyun.com/document_detail/28950.html) operation to decrypt the data key.
 //
 // @param request - EncryptRequest
 //
@@ -17651,7 +18747,7 @@ func (client *Client) Encrypt(request *EncryptRequest) (_result *EncryptResponse
 
 // Description:
 //
-// You can call the [GenerateDataKeyWithoutPlaintext](~~134043~~) operation to generate a data key, which is encrypted by a CMK. If you want to distribute the data key to other regions or cryptographic modules, you can call the ExportDataKey operation to use a public key to encrypt the data key.
+// You can call the [GenerateDataKeyWithoutPlaintext](https://help.aliyun.com/document_detail/134043.html) operation to generate a data key, which is encrypted by a CMK. If you want to distribute the data key to other regions or cryptographic modules, you can call the ExportDataKey operation to use a public key to encrypt the data key.
 //
 // Then, you can import the ciphertext of the data key to the cryptographic module where the private key is stored. This way, the data key is securely distributed from KMS to the cryptographic module. After the data key is imported to the cryptographic module, you can use it to encrypt or decrypt data.
 //
@@ -17706,18 +18802,29 @@ func (client *Client) ExportDataKeyWithOptions(tmpReq *ExportDataKeyRequest, run
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ExportDataKeyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExportDataKeyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExportDataKeyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
 //
-// You can call the [GenerateDataKeyWithoutPlaintext](~~134043~~) operation to generate a data key, which is encrypted by a CMK. If you want to distribute the data key to other regions or cryptographic modules, you can call the ExportDataKey operation to use a public key to encrypt the data key.
+// You can call the [GenerateDataKeyWithoutPlaintext](https://help.aliyun.com/document_detail/134043.html) operation to generate a data key, which is encrypted by a CMK. If you want to distribute the data key to other regions or cryptographic modules, you can call the ExportDataKey operation to use a public key to encrypt the data key.
 //
 // Then, you can import the ciphertext of the data key to the cryptographic module where the private key is stored. This way, the data key is securely distributed from KMS to the cryptographic module. After the data key is imported to the cryptographic module, you can use it to encrypt or decrypt data.
 //
@@ -17806,13 +18913,24 @@ func (client *Client) GenerateAndExportDataKeyWithOptions(tmpReq *GenerateAndExp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GenerateAndExportDataKeyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GenerateAndExportDataKeyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GenerateAndExportDataKeyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
@@ -17841,6 +18959,10 @@ func (client *Client) GenerateAndExportDataKey(request *GenerateAndExportDataKey
 	return _result, _err
 }
 
+// Summary:
+//
+// 生成一个数据密钥
+//
 // Description:
 //
 // This operation creates a random data key, encrypts the data key by using the specified customer master key (CMK), and returns the plaintext and ciphertext of the data key. You can use the plaintext of the data key to locally encrypt your data without using KMS and store the encrypted data together with the ciphertext of the data key. You can obtain the plaintext of the data key from the Plaintext parameter in the response and the ciphertext of the data key from the CiphertextBlob parameter in the response.
@@ -17857,7 +18979,7 @@ func (client *Client) GenerateAndExportDataKey(request *GenerateAndExportDataKey
 //
 // We recommend that you locally decrypt data by performing the following steps:
 //
-// 	- Call the [Decrypt](~~28950~~) operation to decrypt the locally stored ciphertext of the data key. The plaintext of data key is then returned.
+// 	- Call the [Decrypt](https://help.aliyun.com/document_detail/28950.html) operation to decrypt the locally stored ciphertext of the data key. The plaintext of data key is then returned.
 //
 // 	- Use the plaintext of the data key to locally decrypt data and then delete the plaintext of the data key from the memory.
 //
@@ -17910,15 +19032,30 @@ func (client *Client) GenerateDataKeyWithOptions(tmpReq *GenerateDataKeyRequest,
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GenerateDataKeyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GenerateDataKeyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GenerateDataKeyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// 生成一个数据密钥
+//
 // Description:
 //
 // This operation creates a random data key, encrypts the data key by using the specified customer master key (CMK), and returns the plaintext and ciphertext of the data key. You can use the plaintext of the data key to locally encrypt your data without using KMS and store the encrypted data together with the ciphertext of the data key. You can obtain the plaintext of the data key from the Plaintext parameter in the response and the ciphertext of the data key from the CiphertextBlob parameter in the response.
@@ -17935,7 +19072,7 @@ func (client *Client) GenerateDataKeyWithOptions(tmpReq *GenerateDataKeyRequest,
 //
 // We recommend that you locally decrypt data by performing the following steps:
 //
-// 	- Call the [Decrypt](~~28950~~) operation to decrypt the locally stored ciphertext of the data key. The plaintext of data key is then returned.
+// 	- Call the [Decrypt](https://help.aliyun.com/document_detail/28950.html) operation to decrypt the locally stored ciphertext of the data key. The plaintext of data key is then returned.
 //
 // 	- Use the plaintext of the data key to locally decrypt data and then delete the plaintext of the data key from the memory.
 //
@@ -17955,13 +19092,17 @@ func (client *Client) GenerateDataKey(request *GenerateDataKeyRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Generates a random data key, which can be used to encrypt local data.
+//
 // Description:
 //
-// This operation creates a random data key, encrypts the data key by using a specific symmetric CMK, and returns the ciphertext of the data key. This operation serves the same purpose as the [GenerateDataKey](~~28948~~) operation. The only difference is that this operation does not return the plaintext of the data key.
+// This operation creates a random data key, encrypts the data key by using a specific symmetric CMK, and returns the ciphertext of the data key. This operation serves the same purpose as the [GenerateDataKey](https://help.aliyun.com/document_detail/28948.html) operation. The only difference is that this operation does not return the plaintext of the data key.
 //
 // The CMK that you specify in the request of this operation is only used to encrypt the data key and is not involved in the generation of the data key. KMS does not record or store the generated data key.
 //
-// > 	- This operation applies to the scenario when you do not need to use the data key to immediately encrypt data. Before you can use the data key to encrypt data, you must call the [Decrypt](~~28950~~) operation to decrypt the ciphertext of the data key.
+// > 	- This operation applies to the scenario when you do not need to use the data key to immediately encrypt data. Before you can use the data key to encrypt data, you must call the [Decrypt](https://help.aliyun.com/document_detail/28950.html) operation to decrypt the ciphertext of the data key.
 //
 // > 	- This operation is also suitable for a distributed system with different trust levels. For example, a system stores data in different partitions based on a preset trust policy. A module creates different partitions and generates different data keys for each partition in advance. This module is not involved in data production and consumption after it completes initialization of the control plane. This module is the key provider. When producing and consuming data, modules on the control plane obtain the ciphertext of the data key for a partition first. After decrypting the ciphertext of the data key, modules on the control plane use the plaintext of the data key to encrypt or decrypt data and then clear the plaintext of the data key from the memory. In such a system, the key provider does not need to obtain the plaintext of the data key. It only needs to have the permissions to call the GenerateDataKeyWithoutPlaintext operation. The data producers or consumers do not need to generate new data keys. They only need to have the permissions to call the Decrypt operation.
 //
@@ -18012,22 +19153,37 @@ func (client *Client) GenerateDataKeyWithoutPlaintextWithOptions(tmpReq *Generat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GenerateDataKeyWithoutPlaintextResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GenerateDataKeyWithoutPlaintextResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GenerateDataKeyWithoutPlaintextResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Generates a random data key, which can be used to encrypt local data.
+//
 // Description:
 //
-// This operation creates a random data key, encrypts the data key by using a specific symmetric CMK, and returns the ciphertext of the data key. This operation serves the same purpose as the [GenerateDataKey](~~28948~~) operation. The only difference is that this operation does not return the plaintext of the data key.
+// This operation creates a random data key, encrypts the data key by using a specific symmetric CMK, and returns the ciphertext of the data key. This operation serves the same purpose as the [GenerateDataKey](https://help.aliyun.com/document_detail/28948.html) operation. The only difference is that this operation does not return the plaintext of the data key.
 //
 // The CMK that you specify in the request of this operation is only used to encrypt the data key and is not involved in the generation of the data key. KMS does not record or store the generated data key.
 //
-// > 	- This operation applies to the scenario when you do not need to use the data key to immediately encrypt data. Before you can use the data key to encrypt data, you must call the [Decrypt](~~28950~~) operation to decrypt the ciphertext of the data key.
+// > 	- This operation applies to the scenario when you do not need to use the data key to immediately encrypt data. Before you can use the data key to encrypt data, you must call the [Decrypt](https://help.aliyun.com/document_detail/28950.html) operation to decrypt the ciphertext of the data key.
 //
 // > 	- This operation is also suitable for a distributed system with different trust levels. For example, a system stores data in different partitions based on a preset trust policy. A module creates different partitions and generates different data keys for each partition in advance. This module is not involved in data production and consumption after it completes initialization of the control plane. This module is the key provider. When producing and consuming data, modules on the control plane obtain the ciphertext of the data key for a partition first. After decrypting the ciphertext of the data key, modules on the control plane use the plaintext of the data key to encrypt or decrypt data and then clear the plaintext of the data key from the memory. In such a system, the key provider does not need to obtain the plaintext of the data key. It only needs to have the permissions to call the GenerateDataKeyWithoutPlaintext operation. The data producers or consumers do not need to generate new data keys. They only need to have the permissions to call the Decrypt operation.
 //
@@ -18078,13 +19234,24 @@ func (client *Client) GetCertificateWithOptions(request *GetCertificateRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetCertificateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
@@ -18105,6 +19272,15 @@ func (client *Client) GetCertificate(request *GetCertificateRequest) (_result *G
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a client key.
+//
+// @param request - GetClientKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetClientKeyResponse
 func (client *Client) GetClientKeyWithOptions(request *GetClientKeyRequest, runtime *util.RuntimeOptions) (_result *GetClientKeyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18125,15 +19301,33 @@ func (client *Client) GetClientKeyWithOptions(request *GetClientKeyRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetClientKeyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetClientKeyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetClientKeyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the information about a client key.
+//
+// @param request - GetClientKeyRequest
+//
+// @return GetClientKeyResponse
 func (client *Client) GetClientKey(request *GetClientKeyRequest) (_result *GetClientKeyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetClientKeyResponse{}
@@ -18145,6 +19339,15 @@ func (client *Client) GetClientKey(request *GetClientKeyRequest) (_result *GetCl
 	return _result, _err
 }
 
+// Summary:
+//
+// 仅可查询名称为 default 的 Key Policy，否则提示 Not Found。
+//
+// @param request - GetKeyPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetKeyPolicyResponse
 func (client *Client) GetKeyPolicyWithOptions(request *GetKeyPolicyRequest, runtime *util.RuntimeOptions) (_result *GetKeyPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18173,15 +19376,33 @@ func (client *Client) GetKeyPolicyWithOptions(request *GetKeyPolicyRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetKeyPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetKeyPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetKeyPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// 仅可查询名称为 default 的 Key Policy，否则提示 Not Found。
+//
+// @param request - GetKeyPolicyRequest
+//
+// @return GetKeyPolicyResponse
 func (client *Client) GetKeyPolicy(request *GetKeyPolicyRequest) (_result *GetKeyPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetKeyPolicyResponse{}
@@ -18193,6 +19414,15 @@ func (client *Client) GetKeyPolicy(request *GetKeyPolicyRequest) (_result *GetKe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a Key Management Service (KMS) instance.
+//
+// @param request - GetKmsInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetKmsInstanceResponse
 func (client *Client) GetKmsInstanceWithOptions(request *GetKmsInstanceRequest, runtime *util.RuntimeOptions) (_result *GetKmsInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18217,15 +19447,33 @@ func (client *Client) GetKmsInstanceWithOptions(request *GetKmsInstanceRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetKmsInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetKmsInstanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetKmsInstanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the details of a Key Management Service (KMS) instance.
+//
+// @param request - GetKmsInstanceRequest
+//
+// @return GetKmsInstanceResponse
 func (client *Client) GetKmsInstance(request *GetKmsInstanceRequest) (_result *GetKmsInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetKmsInstanceResponse{}
@@ -18237,6 +19485,10 @@ func (client *Client) GetKmsInstance(request *GetKmsInstanceRequest) (_result *G
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the parameters that are used to import key material for a customer master key (CMK).
+//
 // Description:
 //
 // The returned parameters can be used to call the [ImportKeyMaterial](https://www.alibabacloud.com/help/en/key-management-service/latest/importkeymaterial) operation.
@@ -18302,15 +19554,30 @@ func (client *Client) GetParametersForImportWithOptions(request *GetParametersFo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetParametersForImportResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetParametersForImportResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetParametersForImportResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the parameters that are used to import key material for a customer master key (CMK).
+//
 // Description:
 //
 // The returned parameters can be used to call the [ImportKeyMaterial](https://www.alibabacloud.com/help/en/key-management-service/latest/importkeymaterial) operation.
@@ -18353,6 +19620,11 @@ func (client *Client) GetParametersForImport(request *GetParametersForImportRequ
 	return _result, _err
 }
 
+// @param request - GetPublicKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPublicKeyResponse
 func (client *Client) GetPublicKeyWithOptions(request *GetPublicKeyRequest, runtime *util.RuntimeOptions) (_result *GetPublicKeyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18381,15 +19653,29 @@ func (client *Client) GetPublicKeyWithOptions(request *GetPublicKeyRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetPublicKeyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetPublicKeyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetPublicKeyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - GetPublicKeyRequest
+//
+// @return GetPublicKeyResponse
 func (client *Client) GetPublicKey(request *GetPublicKeyRequest) (_result *GetPublicKeyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPublicKeyResponse{}
@@ -18401,6 +19687,11 @@ func (client *Client) GetPublicKey(request *GetPublicKeyRequest) (_result *GetPu
 	return _result, _err
 }
 
+// @param request - GetRandomPasswordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRandomPasswordResponse
 func (client *Client) GetRandomPasswordWithOptions(request *GetRandomPasswordRequest, runtime *util.RuntimeOptions) (_result *GetRandomPasswordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18449,15 +19740,29 @@ func (client *Client) GetRandomPasswordWithOptions(request *GetRandomPasswordReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetRandomPasswordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetRandomPasswordResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetRandomPasswordResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - GetRandomPasswordRequest
+//
+// @return GetRandomPasswordResponse
 func (client *Client) GetRandomPassword(request *GetRandomPasswordRequest) (_result *GetRandomPasswordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRandomPasswordResponse{}
@@ -18469,6 +19774,15 @@ func (client *Client) GetRandomPassword(request *GetRandomPasswordRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 仅可查询名称为 default 的 Secret Policy，否则提示 Not Found。
+//
+// @param request - GetSecretPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSecretPolicyResponse
 func (client *Client) GetSecretPolicyWithOptions(request *GetSecretPolicyRequest, runtime *util.RuntimeOptions) (_result *GetSecretPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18497,15 +19811,33 @@ func (client *Client) GetSecretPolicyWithOptions(request *GetSecretPolicyRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetSecretPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSecretPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSecretPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// 仅可查询名称为 default 的 Secret Policy，否则提示 Not Found。
+//
+// @param request - GetSecretPolicyRequest
+//
+// @return GetSecretPolicyResponse
 func (client *Client) GetSecretPolicy(request *GetSecretPolicyRequest) (_result *GetSecretPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSecretPolicyResponse{}
@@ -18517,6 +19849,10 @@ func (client *Client) GetSecretPolicy(request *GetSecretPolicyRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用GetSecretValue接口获取凭据值。
+//
 // Description:
 //
 // If you do not specify a version number or stage label, Secrets Manager returns the secret value of the version marked with ACSCurrent.
@@ -18566,15 +19902,30 @@ func (client *Client) GetSecretValueWithOptions(request *GetSecretValueRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetSecretValueResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSecretValueResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSecretValueResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// 调用GetSecretValue接口获取凭据值。
+//
 // Description:
 //
 // If you do not specify a version number or stage label, Secrets Manager returns the secret value of the version marked with ACSCurrent.
@@ -18597,15 +19948,19 @@ func (client *Client) GetSecretValue(request *GetSecretValueRequest) (_result *G
 	return _result, _err
 }
 
+// Summary:
+//
+// Call the ImportKeyMaterial operation to import the key material.
+//
 // Description:
 //
-// Call [CreateKey](~~28947~~) when creating a CMK, you can select its key material source as external. **Origin*	- set to **EXTERNAL**. This API is used to import the key material into the CMK.
+// Call [CreateKey](https://help.aliyun.com/document_detail/28947.html) when creating a CMK, you can select its key material source as external. **Origin*	- set to **EXTERNAL**. This API is used to import the key material into the CMK.
 //
-// 	- To view the CMK **Origin**, see [DescribeKey](~~28952~~).
+// 	- To view the CMK **Origin**, see [DescribeKey](https://help.aliyun.com/document_detail/28952.html).
 //
-// 	- Before importing key material, you need to call the [GetParametersForImport](~~68621~~) obtain the parameters required to import the key material, including the public key and import token.
+// 	- Before importing key material, you need to call the [GetParametersForImport](https://help.aliyun.com/document_detail/68621.html) obtain the parameters required to import the key material, including the public key and import token.
 //
-// > 	- The key type of the pair is **Aliyun\\_AES\\_256*	- the key material must be 256 bits. The key type must be **Aliyun\\_SM4*	- the CMK and key material must be 128 bits.
+// > 	- The key type of the pair is **Aliyun_AES_256*	- the key material must be 256 bits. The key type must be **Aliyun_SM4*	- the CMK and key material must be 128 bits.
 //
 // > 	- You can set the expiration time for the key material, or you can set it to never expire.
 //
@@ -18656,24 +20011,39 @@ func (client *Client) ImportKeyMaterialWithOptions(request *ImportKeyMaterialReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ImportKeyMaterialResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ImportKeyMaterialResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ImportKeyMaterialResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Call the ImportKeyMaterial operation to import the key material.
+//
 // Description:
 //
-// Call [CreateKey](~~28947~~) when creating a CMK, you can select its key material source as external. **Origin*	- set to **EXTERNAL**. This API is used to import the key material into the CMK.
+// Call [CreateKey](https://help.aliyun.com/document_detail/28947.html) when creating a CMK, you can select its key material source as external. **Origin*	- set to **EXTERNAL**. This API is used to import the key material into the CMK.
 //
-// 	- To view the CMK **Origin**, see [DescribeKey](~~28952~~).
+// 	- To view the CMK **Origin**, see [DescribeKey](https://help.aliyun.com/document_detail/28952.html).
 //
-// 	- Before importing key material, you need to call the [GetParametersForImport](~~68621~~) obtain the parameters required to import the key material, including the public key and import token.
+// 	- Before importing key material, you need to call the [GetParametersForImport](https://help.aliyun.com/document_detail/68621.html) obtain the parameters required to import the key material, including the public key and import token.
 //
-// > 	- The key type of the pair is **Aliyun\\_AES\\_256*	- the key material must be 256 bits. The key type must be **Aliyun\\_SM4*	- the CMK and key material must be 128 bits.
+// > 	- The key type of the pair is **Aliyun_AES_256*	- the key material must be 256 bits. The key type must be **Aliyun_SM4*	- the CMK and key material must be 128 bits.
 //
 // > 	- You can set the expiration time for the key material, or you can set it to never expire.
 //
@@ -18697,6 +20067,15 @@ func (client *Client) ImportKeyMaterial(request *ImportKeyMaterialRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all aliases in the current region for the current account.
+//
+// @param request - ListAliasesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAliasesResponse
 func (client *Client) ListAliasesWithOptions(request *ListAliasesRequest, runtime *util.RuntimeOptions) (_result *ListAliasesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18725,15 +20104,33 @@ func (client *Client) ListAliasesWithOptions(request *ListAliasesRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAliasesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAliasesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAliasesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries all aliases in the current region for the current account.
+//
+// @param request - ListAliasesRequest
+//
+// @return ListAliasesResponse
 func (client *Client) ListAliases(request *ListAliasesRequest) (_result *ListAliasesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAliasesResponse{}
@@ -18745,6 +20142,11 @@ func (client *Client) ListAliases(request *ListAliasesRequest) (_result *ListAli
 	return _result, _err
 }
 
+// @param request - ListAliasesByKeyIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAliasesByKeyIdResponse
 func (client *Client) ListAliasesByKeyIdWithOptions(request *ListAliasesByKeyIdRequest, runtime *util.RuntimeOptions) (_result *ListAliasesByKeyIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18777,15 +20179,29 @@ func (client *Client) ListAliasesByKeyIdWithOptions(request *ListAliasesByKeyIdR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAliasesByKeyIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAliasesByKeyIdResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAliasesByKeyIdResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - ListAliasesByKeyIdRequest
+//
+// @return ListAliasesByKeyIdResponse
 func (client *Client) ListAliasesByKeyId(request *ListAliasesByKeyIdRequest) (_result *ListAliasesByKeyIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAliasesByKeyIdResponse{}
@@ -18797,6 +20213,15 @@ func (client *Client) ListAliasesByKeyId(request *ListAliasesByKeyIdRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of application access points (AAPs).
+//
+// @param request - ListApplicationAccessPointsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApplicationAccessPointsResponse
 func (client *Client) ListApplicationAccessPointsWithOptions(request *ListApplicationAccessPointsRequest, runtime *util.RuntimeOptions) (_result *ListApplicationAccessPointsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18825,15 +20250,33 @@ func (client *Client) ListApplicationAccessPointsWithOptions(request *ListApplic
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListApplicationAccessPointsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListApplicationAccessPointsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListApplicationAccessPointsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries a list of application access points (AAPs).
+//
+// @param request - ListApplicationAccessPointsRequest
+//
+// @return ListApplicationAccessPointsResponse
 func (client *Client) ListApplicationAccessPoints(request *ListApplicationAccessPointsRequest) (_result *ListApplicationAccessPointsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListApplicationAccessPointsResponse{}
@@ -18845,6 +20288,11 @@ func (client *Client) ListApplicationAccessPoints(request *ListApplicationAccess
 	return _result, _err
 }
 
+// @param request - ListClientKeysRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListClientKeysResponse
 func (client *Client) ListClientKeysWithOptions(request *ListClientKeysRequest, runtime *util.RuntimeOptions) (_result *ListClientKeysResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18865,15 +20313,29 @@ func (client *Client) ListClientKeysWithOptions(request *ListClientKeysRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListClientKeysResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListClientKeysResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListClientKeysResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - ListClientKeysRequest
+//
+// @return ListClientKeysResponse
 func (client *Client) ListClientKeys(request *ListClientKeysRequest) (_result *ListClientKeysResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListClientKeysResponse{}
@@ -18885,6 +20347,15 @@ func (client *Client) ListClientKeys(request *ListClientKeysRequest) (_result *L
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all versions of a specified CMK.
+//
+// @param request - ListKeyVersionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListKeyVersionsResponse
 func (client *Client) ListKeyVersionsWithOptions(request *ListKeyVersionsRequest, runtime *util.RuntimeOptions) (_result *ListKeyVersionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18917,15 +20388,33 @@ func (client *Client) ListKeyVersionsWithOptions(request *ListKeyVersionsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListKeyVersionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListKeyVersionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListKeyVersionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries all versions of a specified CMK.
+//
+// @param request - ListKeyVersionsRequest
+//
+// @return ListKeyVersionsResponse
 func (client *Client) ListKeyVersions(request *ListKeyVersionsRequest) (_result *ListKeyVersionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListKeyVersionsResponse{}
@@ -18937,6 +20426,15 @@ func (client *Client) ListKeyVersions(request *ListKeyVersionsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all customer master keys (CMKs) of the current Alibaba Cloud account in the current region.
+//
+// @param request - ListKeysRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListKeysResponse
 func (client *Client) ListKeysWithOptions(request *ListKeysRequest, runtime *util.RuntimeOptions) (_result *ListKeysResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18969,15 +20467,33 @@ func (client *Client) ListKeysWithOptions(request *ListKeysRequest, runtime *uti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListKeysResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListKeysResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListKeysResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries all customer master keys (CMKs) of the current Alibaba Cloud account in the current region.
+//
+// @param request - ListKeysRequest
+//
+// @return ListKeysResponse
 func (client *Client) ListKeys(request *ListKeysRequest) (_result *ListKeysResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListKeysResponse{}
@@ -18989,6 +20505,15 @@ func (client *Client) ListKeys(request *ListKeysRequest) (_result *ListKeysRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of Key Management Service (KMS) instances.
+//
+// @param request - ListKmsInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListKmsInstancesResponse
 func (client *Client) ListKmsInstancesWithOptions(request *ListKmsInstancesRequest, runtime *util.RuntimeOptions) (_result *ListKmsInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19017,15 +20542,33 @@ func (client *Client) ListKmsInstancesWithOptions(request *ListKmsInstancesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListKmsInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListKmsInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListKmsInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries a list of Key Management Service (KMS) instances.
+//
+// @param request - ListKmsInstancesRequest
+//
+// @return ListKmsInstancesResponse
 func (client *Client) ListKmsInstances(request *ListKmsInstancesRequest) (_result *ListKmsInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListKmsInstancesResponse{}
@@ -19037,6 +20580,15 @@ func (client *Client) ListKmsInstances(request *ListKmsInstancesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of access control rules.
+//
+// @param request - ListNetworkRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListNetworkRulesResponse
 func (client *Client) ListNetworkRulesWithOptions(request *ListNetworkRulesRequest, runtime *util.RuntimeOptions) (_result *ListNetworkRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19065,15 +20617,33 @@ func (client *Client) ListNetworkRulesWithOptions(request *ListNetworkRulesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListNetworkRulesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListNetworkRulesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListNetworkRulesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries a list of access control rules.
+//
+// @param request - ListNetworkRulesRequest
+//
+// @return ListNetworkRulesResponse
 func (client *Client) ListNetworkRules(request *ListNetworkRulesRequest) (_result *ListNetworkRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListNetworkRulesResponse{}
@@ -19085,6 +20655,15 @@ func (client *Client) ListNetworkRules(request *ListNetworkRulesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of permission policies.
+//
+// @param request - ListPoliciesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPoliciesResponse
 func (client *Client) ListPoliciesWithOptions(request *ListPoliciesRequest, runtime *util.RuntimeOptions) (_result *ListPoliciesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19113,15 +20692,33 @@ func (client *Client) ListPoliciesWithOptions(request *ListPoliciesRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListPoliciesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListPoliciesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListPoliciesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries a list of permission policies.
+//
+// @param request - ListPoliciesRequest
+//
+// @return ListPoliciesResponse
 func (client *Client) ListPolicies(request *ListPoliciesRequest) (_result *ListPoliciesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPoliciesResponse{}
@@ -19166,13 +20763,24 @@ func (client *Client) ListResourceTagsWithOptions(request *ListResourceTagsReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListResourceTagsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListResourceTagsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListResourceTagsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
@@ -19238,13 +20846,24 @@ func (client *Client) ListSecretVersionIdsWithOptions(request *ListSecretVersion
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListSecretVersionIdsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListSecretVersionIdsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListSecretVersionIdsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
@@ -19314,13 +20933,24 @@ func (client *Client) ListSecretsWithOptions(request *ListSecretsRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListSecretsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListSecretsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListSecretsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
@@ -19345,6 +20975,15 @@ func (client *Client) ListSecrets(request *ListSecretsRequest) (_result *ListSec
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the tags of a key or a secret.
+//
+// @param request - ListTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19385,15 +21024,33 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the tags of a key or a secret.
+//
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagResourcesResponse{}
@@ -19405,6 +21062,10 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Activates Key Management Service (KMS) under your Alibaba cloud account.
+//
 // Description:
 //
 // When you call this operation, note that:
@@ -19433,15 +21094,30 @@ func (client *Client) OpenKmsServiceWithOptions(runtime *util.RuntimeOptions) (_
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &OpenKmsServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &OpenKmsServiceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &OpenKmsServiceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Activates Key Management Service (KMS) under your Alibaba cloud account.
+//
 // Description:
 //
 // When you call this operation, note that:
@@ -19527,13 +21203,24 @@ func (client *Client) PutSecretValueWithOptions(request *PutSecretValueRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &PutSecretValueResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PutSecretValueResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PutSecretValueResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
@@ -19572,7 +21259,7 @@ func (client *Client) PutSecretValue(request *PutSecretValueRequest) (_result *P
 //
 // You can call this operation in the following scenarios:
 //
-// 	- After the CMK that was used to encrypt your data is rotated, you can call this operation to use the latest CMK version to re-encrypt the data. For more information about automatic key rotation, see [Configure automatic key rotation](~~134270~~).
+// 	- After the CMK that was used to encrypt your data is rotated, you can call this operation to use the latest CMK version to re-encrypt the data. For more information about automatic key rotation, see [Configure automatic key rotation](https://help.aliyun.com/document_detail/134270.html).
 //
 // 	- The CMK that was used to encrypt your data remains unchanged, but EncryptionContext is changed. In this scenario, you can call this operation to re-encrypt the data.
 //
@@ -19649,20 +21336,31 @@ func (client *Client) ReEncryptWithOptions(tmpReq *ReEncryptRequest, runtime *ut
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ReEncryptResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ReEncryptResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ReEncryptResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
 //
 // You can call this operation in the following scenarios:
 //
-// 	- After the CMK that was used to encrypt your data is rotated, you can call this operation to use the latest CMK version to re-encrypt the data. For more information about automatic key rotation, see [Configure automatic key rotation](~~134270~~).
+// 	- After the CMK that was used to encrypt your data is rotated, you can call this operation to use the latest CMK version to re-encrypt the data. For more information about automatic key rotation, see [Configure automatic key rotation](https://help.aliyun.com/document_detail/134270.html).
 //
 // 	- The CMK that was used to encrypt your data remains unchanged, but EncryptionContext is changed. In this scenario, you can call this operation to re-encrypt the data.
 //
@@ -19723,13 +21421,24 @@ func (client *Client) RestoreSecretWithOptions(request *RestoreSecretRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RestoreSecretResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RestoreSecretResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RestoreSecretResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
@@ -19793,13 +21502,24 @@ func (client *Client) RotateSecretWithOptions(request *RotateSecretRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RotateSecretResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RotateSecretResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RotateSecretResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
@@ -19830,9 +21550,9 @@ func (client *Client) RotateSecret(request *RotateSecretRequest) (_result *Rotat
 //
 // During the scheduled period, the CMK is in the PendingDeletion state and cannot be used to encrypt data, decrypt data, or generate data keys.
 //
-// After a CMK is deleted, it cannot be recovered. Data that is encrypted and data keys that are generated by using the CMK cannot be decrypted. To prevent accidental deletion of CMKs, Key Management Service (KMS) allows you to only schedule key deletion tasks. You cannot directly delete CMKs. If you want to delete a CMK, call the [DisableKey](~~35151~~) operation to disable the CMK.
+// After a CMK is deleted, it cannot be recovered. Data that is encrypted and data keys that are generated by using the CMK cannot be decrypted. To prevent accidental deletion of CMKs, Key Management Service (KMS) allows you to only schedule key deletion tasks. You cannot directly delete CMKs. If you want to delete a CMK, call the [DisableKey](https://help.aliyun.com/document_detail/35151.html) operation to disable the CMK.
 //
-// When you call this operation, you must specify a scheduled period between 7 days to 366 days. The scheduled period starts from the time when you submit the request. You can call the [CancelKeyDeletion](~~44197~~) operation to cancel the key deletion task before the scheduled period ends.
+// When you call this operation, you must specify a scheduled period between 7 days to 366 days. The scheduled period starts from the time when you submit the request. You can call the [CancelKeyDeletion](https://help.aliyun.com/document_detail/44197.html) operation to cancel the key deletion task before the scheduled period ends.
 //
 // @param request - ScheduleKeyDeletionRequest
 //
@@ -19867,22 +21587,33 @@ func (client *Client) ScheduleKeyDeletionWithOptions(request *ScheduleKeyDeletio
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ScheduleKeyDeletionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ScheduleKeyDeletionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ScheduleKeyDeletionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
 //
 // During the scheduled period, the CMK is in the PendingDeletion state and cannot be used to encrypt data, decrypt data, or generate data keys.
 //
-// After a CMK is deleted, it cannot be recovered. Data that is encrypted and data keys that are generated by using the CMK cannot be decrypted. To prevent accidental deletion of CMKs, Key Management Service (KMS) allows you to only schedule key deletion tasks. You cannot directly delete CMKs. If you want to delete a CMK, call the [DisableKey](~~35151~~) operation to disable the CMK.
+// After a CMK is deleted, it cannot be recovered. Data that is encrypted and data keys that are generated by using the CMK cannot be decrypted. To prevent accidental deletion of CMKs, Key Management Service (KMS) allows you to only schedule key deletion tasks. You cannot directly delete CMKs. If you want to delete a CMK, call the [DisableKey](https://help.aliyun.com/document_detail/35151.html) operation to disable the CMK.
 //
-// When you call this operation, you must specify a scheduled period between 7 days to 366 days. The scheduled period starts from the time when you submit the request. You can call the [CancelKeyDeletion](~~44197~~) operation to cancel the key deletion task before the scheduled period ends.
+// When you call this operation, you must specify a scheduled period between 7 days to 366 days. The scheduled period starts from the time when you submit the request. You can call the [CancelKeyDeletion](https://help.aliyun.com/document_detail/44197.html) operation to cancel the key deletion task before the scheduled period ends.
 //
 // @param request - ScheduleKeyDeletionRequest
 //
@@ -19898,11 +21629,15 @@ func (client *Client) ScheduleKeyDeletion(request *ScheduleKeyDeletionRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables deletion protection for a customer master key (CMK).
+//
 // Description:
 //
-// 	- After you enable deletion protection for a CMK, you cannot delete the CMK. If you want to delete the CMK, you must first disable deletion protection for the CMK.
+//   After you enable deletion protection for a CMK, you cannot delete the CMK. If you want to delete the CMK, you must first disable deletion protection for the CMK.
 //
-// 	- Before you can call the SetDeletionProtection operation, make sure that the required CMK is not in the Pending Deletion state. You can call the [DescribeKey](~~28952~~) operation to query the CMK status, which is specified by the KeyState parameter.
+// 	- Before you can call the SetDeletionProtection operation, make sure that the required CMK is not in the Pending Deletion state. You can call the [DescribeKey](https://help.aliyun.com/document_detail/28952.html) operation to query the CMK status, which is specified by the KeyState parameter.
 //
 // You can enable deletion protection for the CMK whose Alibaba Cloud Resource Name (ARN) is `acs:kms:cn-hangzhou:123213123****:key/0225f411-b21d-46d1-be5b-93931c82****` by using parameter settings provided in this topic. The CMK ARN is specified by the ProtectedResourceArn parameter.
 //
@@ -19943,20 +21678,35 @@ func (client *Client) SetDeletionProtectionWithOptions(request *SetDeletionProte
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetDeletionProtectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetDeletionProtectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetDeletionProtectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Enables or disables deletion protection for a customer master key (CMK).
+//
 // Description:
 //
-// 	- After you enable deletion protection for a CMK, you cannot delete the CMK. If you want to delete the CMK, you must first disable deletion protection for the CMK.
+//   After you enable deletion protection for a CMK, you cannot delete the CMK. If you want to delete the CMK, you must first disable deletion protection for the CMK.
 //
-// 	- Before you can call the SetDeletionProtection operation, make sure that the required CMK is not in the Pending Deletion state. You can call the [DescribeKey](~~28952~~) operation to query the CMK status, which is specified by the KeyState parameter.
+// 	- Before you can call the SetDeletionProtection operation, make sure that the required CMK is not in the Pending Deletion state. You can call the [DescribeKey](https://help.aliyun.com/document_detail/28952.html) operation to query the CMK status, which is specified by the KeyState parameter.
 //
 // You can enable deletion protection for the CMK whose Alibaba Cloud Resource Name (ARN) is `acs:kms:cn-hangzhou:123213123****:key/0225f411-b21d-46d1-be5b-93931c82****` by using parameter settings provided in this topic. The CMK ARN is specified by the ProtectedResourceArn parameter.
 //
@@ -19974,6 +21724,15 @@ func (client *Client) SetDeletionProtection(request *SetDeletionProtectionReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 可以设置一条 Key Policy，且名称必须为 default。
+//
+// @param request - SetKeyPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetKeyPolicyResponse
 func (client *Client) SetKeyPolicyWithOptions(request *SetKeyPolicyRequest, runtime *util.RuntimeOptions) (_result *SetKeyPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20006,15 +21765,33 @@ func (client *Client) SetKeyPolicyWithOptions(request *SetKeyPolicyRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetKeyPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetKeyPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetKeyPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// 可以设置一条 Key Policy，且名称必须为 default。
+//
+// @param request - SetKeyPolicyRequest
+//
+// @return SetKeyPolicyResponse
 func (client *Client) SetKeyPolicy(request *SetKeyPolicyRequest) (_result *SetKeyPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetKeyPolicyResponse{}
@@ -20026,6 +21803,15 @@ func (client *Client) SetKeyPolicy(request *SetKeyPolicyRequest) (_result *SetKe
 	return _result, _err
 }
 
+// Summary:
+//
+// 可以设置一条 Secret Policy，且名称必须为 default。
+//
+// @param request - SetSecretPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetSecretPolicyResponse
 func (client *Client) SetSecretPolicyWithOptions(request *SetSecretPolicyRequest, runtime *util.RuntimeOptions) (_result *SetSecretPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20058,15 +21844,33 @@ func (client *Client) SetSecretPolicyWithOptions(request *SetSecretPolicyRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetSecretPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetSecretPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetSecretPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// 可以设置一条 Secret Policy，且名称必须为 default。
+//
+// @param request - SetSecretPolicyRequest
+//
+// @return SetSecretPolicyResponse
 func (client *Client) SetSecretPolicy(request *SetSecretPolicyRequest) (_result *SetSecretPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetSecretPolicyResponse{}
@@ -20125,13 +21929,24 @@ func (client *Client) TagResourceWithOptions(request *TagResourceRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &TagResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &TagResourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &TagResourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
@@ -20154,6 +21969,10 @@ func (client *Client) TagResource(request *TagResourceRequest) (_result *TagReso
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds tags to keys or secrets.
+//
 // Description:
 //
 // You can add multiple tags to multiple keys or multiple secrets at a time.
@@ -20199,15 +22018,30 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &TagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Adds tags to keys or secrets.
+//
 // Description:
 //
 // You can add multiple tags to multiple keys or multiple secrets at a time.
@@ -20275,13 +22109,24 @@ func (client *Client) UntagResourceWithOptions(request *UntagResourceRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UntagResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UntagResourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UntagResourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
@@ -20306,6 +22151,10 @@ func (client *Client) UntagResource(request *UntagResourceRequest) (_result *Unt
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes tags from keys or secrets.
+//
 // Description:
 //
 // You can remove multiple tags from multiple keys or multiple secrets at a time. You cannot remove tags that start with aliyun or acs:.
@@ -20357,15 +22206,30 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UntagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Removes tags from keys or secrets.
+//
 // Description:
 //
 // You can remove multiple tags from multiple keys or multiple secrets at a time. You cannot remove tags that start with aliyun or acs:.
@@ -20386,6 +22250,11 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	return _result, _err
 }
 
+// @param request - UpdateAliasRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAliasResponse
 func (client *Client) UpdateAliasWithOptions(request *UpdateAliasRequest, runtime *util.RuntimeOptions) (_result *UpdateAliasResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20414,15 +22283,29 @@ func (client *Client) UpdateAliasWithOptions(request *UpdateAliasRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateAliasResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateAliasResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateAliasResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// @param request - UpdateAliasRequest
+//
+// @return UpdateAliasResponse
 func (client *Client) UpdateAlias(request *UpdateAliasRequest) (_result *UpdateAliasResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAliasResponse{}
@@ -20475,13 +22358,24 @@ func (client *Client) UpdateApplicationAccessPointWithOptions(request *UpdateApp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateApplicationAccessPointResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateApplicationAccessPointResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateApplicationAccessPointResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
@@ -20539,13 +22433,24 @@ func (client *Client) UpdateCertificateStatusWithOptions(request *UpdateCertific
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateCertificateStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateCertificateStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateCertificateStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
@@ -20566,9 +22471,13 @@ func (client *Client) UpdateCertificateStatus(request *UpdateCertificateStatusRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 调用UpdateKeyDescription接口更新主密钥的描述信息。
+//
 // Description:
 //
-// This operation replaces the description of a customer master key (CMK) with the description that you specify. The original description of the CMK is specified by the Description parameter when you call the [DescribeKey](~~28952~~) operation. You can call this operation to add, modify, or delete the description of a CMK.
+// This operation replaces the description of a customer master key (CMK) with the description that you specify. The original description of the CMK is specified by the Description parameter when you call the [DescribeKey](https://help.aliyun.com/document_detail/28952.html) operation. You can call this operation to add, modify, or delete the description of a CMK.
 //
 // @param request - UpdateKeyDescriptionRequest
 //
@@ -20603,18 +22512,33 @@ func (client *Client) UpdateKeyDescriptionWithOptions(request *UpdateKeyDescript
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateKeyDescriptionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateKeyDescriptionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateKeyDescriptionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// 调用UpdateKeyDescription接口更新主密钥的描述信息。
+//
 // Description:
 //
-// This operation replaces the description of a customer master key (CMK) with the description that you specify. The original description of the CMK is specified by the Description parameter when you call the [DescribeKey](~~28952~~) operation. You can call this operation to add, modify, or delete the description of a CMK.
+// This operation replaces the description of a customer master key (CMK) with the description that you specify. The original description of the CMK is specified by the Description parameter when you call the [DescribeKey](https://help.aliyun.com/document_detail/28952.html) operation. You can call this operation to add, modify, or delete the description of a CMK.
 //
 // @param request - UpdateKeyDescriptionRequest
 //
@@ -20630,13 +22554,17 @@ func (client *Client) UpdateKeyDescription(request *UpdateKeyDescriptionRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the virtual private cloud (VPC) that is associated with a Key Management Service (KMS) instance.
+//
 // Description:
 //
 // If your own applications are deployed in multiple VPCs in the same region, you can associate the VPCs except the VPC in which the KMS instance resides with the KMS instance. This topic describes how to configure the VPCs.
 //
 // The VPCs can belong to the same Alibaba Cloud account or different Alibaba Cloud accounts. After the configuration is complete, the applications in these VPCs can access the KMS instance.
 //
-// > If the VPCs belong to different Alibaba Cloud accounts, you must first configure resource sharing to share the vSwitches of other Alibaba Cloud accounts with the Alibaba Cloud account to which the KMS instance belongs. For more information, see [Access a KMS instance from multiple VPCs in the same region](~~2393236~~).
+// > If the VPCs belong to different Alibaba Cloud accounts, you must first configure resource sharing to share the vSwitches of other Alibaba Cloud accounts with the Alibaba Cloud account to which the KMS instance belongs. For more information, see [Access a KMS instance from multiple VPCs in the same region](https://help.aliyun.com/document_detail/2393236.html).
 //
 // @param request - UpdateKmsInstanceBindVpcRequest
 //
@@ -20663,22 +22591,37 @@ func (client *Client) UpdateKmsInstanceBindVpcWithOptions(request *UpdateKmsInst
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateKmsInstanceBindVpcResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateKmsInstanceBindVpcResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateKmsInstanceBindVpcResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Updates the virtual private cloud (VPC) that is associated with a Key Management Service (KMS) instance.
+//
 // Description:
 //
 // If your own applications are deployed in multiple VPCs in the same region, you can associate the VPCs except the VPC in which the KMS instance resides with the KMS instance. This topic describes how to configure the VPCs.
 //
 // The VPCs can belong to the same Alibaba Cloud account or different Alibaba Cloud accounts. After the configuration is complete, the applications in these VPCs can access the KMS instance.
 //
-// > If the VPCs belong to different Alibaba Cloud accounts, you must first configure resource sharing to share the vSwitches of other Alibaba Cloud accounts with the Alibaba Cloud account to which the KMS instance belongs. For more information, see [Access a KMS instance from multiple VPCs in the same region](~~2393236~~).
+// > If the VPCs belong to different Alibaba Cloud accounts, you must first configure resource sharing to share the vSwitches of other Alibaba Cloud accounts with the Alibaba Cloud account to which the KMS instance belongs. For more information, see [Access a KMS instance from multiple VPCs in the same region](https://help.aliyun.com/document_detail/2393236.html).
 //
 // @param request - UpdateKmsInstanceBindVpcRequest
 //
@@ -20694,6 +22637,10 @@ func (client *Client) UpdateKmsInstanceBindVpc(request *UpdateKmsInstanceBindVpc
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates an access control rule.
+//
 // Description:
 //
 // - You can update only private IP addresses and description of an access control rule. You cannot update the name and network type of an access control rule.
@@ -20737,15 +22684,30 @@ func (client *Client) UpdateNetworkRuleWithOptions(request *UpdateNetworkRuleReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateNetworkRuleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateNetworkRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateNetworkRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Updates an access control rule.
+//
 // Description:
 //
 // - You can update only private IP addresses and description of an access control rule. You cannot update the name and network type of an access control rule.
@@ -20766,6 +22728,10 @@ func (client *Client) UpdateNetworkRule(request *UpdateNetworkRuleRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新一个权限策略
+//
 // Description:
 //
 // - You can update the role-based access control (RBAC) permissions, accessible resources, access control rules, and description of a permission policy. You cannot update the name or scope of a permission policy.
@@ -20817,15 +22783,30 @@ func (client *Client) UpdatePolicyWithOptions(request *UpdatePolicyRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdatePolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdatePolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdatePolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// 更新一个权限策略
+//
 // Description:
 //
 // - You can update the role-based access control (RBAC) permissions, accessible resources, access control rules, and description of a permission policy. You cannot update the name or scope of a permission policy.
@@ -20899,13 +22880,24 @@ func (client *Client) UpdateRotationPolicyWithOptions(request *UpdateRotationPol
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateRotationPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateRotationPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateRotationPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
@@ -20938,6 +22930,10 @@ func (client *Client) UpdateRotationPolicy(request *UpdateRotationPolicyRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the metadata of a secret.
+//
 // Description:
 //
 // In this example, the metadata of the `secret001` secret is updated. The `Description` parameter is set to `datainfo`.
@@ -20979,15 +22975,30 @@ func (client *Client) UpdateSecretWithOptions(request *UpdateSecretRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateSecretResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateSecretResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateSecretResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Updates the metadata of a secret.
+//
 // Description:
 //
 // In this example, the metadata of the `secret001` secret is updated. The `Description` parameter is set to `datainfo`.
@@ -21055,13 +23066,24 @@ func (client *Client) UpdateSecretRotationPolicyWithOptions(request *UpdateSecre
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateSecretRotationPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateSecretRotationPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateSecretRotationPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
@@ -21090,6 +23112,10 @@ func (client *Client) UpdateSecretRotationPolicy(request *UpdateSecretRotationPo
 	return _result, _err
 }
 
+// Summary:
+//
+// UpdateSecretVersionStage
+//
 // Description:
 //
 // Updates the stage label that marks a secret version.
@@ -21135,15 +23161,30 @@ func (client *Client) UpdateSecretVersionStageWithOptions(request *UpdateSecretV
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateSecretVersionStageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateSecretVersionStageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateSecretVersionStageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// UpdateSecretVersionStage
+//
 // Description:
 //
 // Updates the stage label that marks a secret version.
@@ -21203,13 +23244,24 @@ func (client *Client) UploadCertificateWithOptions(request *UploadCertificateReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UploadCertificateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UploadCertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UploadCertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
