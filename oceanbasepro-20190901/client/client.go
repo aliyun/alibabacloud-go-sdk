@@ -6227,13 +6227,27 @@ func (s *CreateTagResponse) SetBody(v *CreateTagResponseBody) *CreateTagResponse
 }
 
 type CreateTagValueRequest struct {
+	// The identifier of the client.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The name of the tag group.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Tag group 1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The name of the tag.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Tag 1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -6261,10 +6275,14 @@ func (s *CreateTagValueRequest) SetValue(v string) *CreateTagValueRequest {
 }
 
 type CreateTagValueResponseBody struct {
+	// The tag creation result.
+	//
 	// example:
 	//
 	// create tag value success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 4C91F7BA-xxxx-xxxx-xxxx-846ECA1A9908
@@ -11615,7 +11633,8 @@ type DescribeInstanceRequest struct {
 	// example:
 	//
 	// ob317v4uif****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxConnectionLimit *string `json:"MaxConnectionLimit,omitempty" xml:"MaxConnectionLimit,omitempty"`
 	// The information about the storage resources of the cluster.
 	//
 	// example:
@@ -11634,6 +11653,11 @@ func (s DescribeInstanceRequest) GoString() string {
 
 func (s *DescribeInstanceRequest) SetInstanceId(v string) *DescribeInstanceRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstanceRequest) SetMaxConnectionLimit(v string) *DescribeInstanceRequest {
+	s.MaxConnectionLimit = &v
 	return s
 }
 
@@ -11672,6 +11696,7 @@ func (s *DescribeInstanceResponseBody) SetRequestId(v string) *DescribeInstanceR
 }
 
 type DescribeInstanceResponseBodyInstance struct {
+	AllowModifyInternetAddressConnectionLimit *bool `json:"AllowModifyInternetAddressConnectionLimit,omitempty" xml:"AllowModifyInternetAddressConnectionLimit,omitempty"`
 	// The operation that you want to perform. <br>Set the value to **DescribeInstance**.
 	//
 	// example:
@@ -11811,6 +11836,7 @@ type DescribeInstanceResponseBodyInstance struct {
 	// Indicates whether the OBServer version is the latest.
 	Series             *string `json:"Series,omitempty" xml:"Series,omitempty"`
 	SharedUnitNumLimit *int32  `json:"SharedUnitNumLimit,omitempty" xml:"SharedUnitNumLimit,omitempty"`
+	SpecType           *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
 	// The information about cluster resources.
 	//
 	// example:
@@ -11834,6 +11860,11 @@ func (s DescribeInstanceResponseBodyInstance) String() string {
 
 func (s DescribeInstanceResponseBodyInstance) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInstanceResponseBodyInstance) SetAllowModifyInternetAddressConnectionLimit(v bool) *DescribeInstanceResponseBodyInstance {
+	s.AllowModifyInternetAddressConnectionLimit = &v
+	return s
 }
 
 func (s *DescribeInstanceResponseBodyInstance) SetAutoRenewal(v bool) *DescribeInstanceResponseBodyInstance {
@@ -12028,6 +12059,11 @@ func (s *DescribeInstanceResponseBodyInstance) SetSeries(v string) *DescribeInst
 
 func (s *DescribeInstanceResponseBodyInstance) SetSharedUnitNumLimit(v int32) *DescribeInstanceResponseBodyInstance {
 	s.SharedUnitNumLimit = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstance) SetSpecType(v string) *DescribeInstanceResponseBodyInstance {
+	s.SpecType = &v
 	return s
 }
 
@@ -13597,6 +13633,7 @@ func (s *DescribeInstanceTopologyResponseBody) SetRequestId(v string) *DescribeI
 }
 
 type DescribeInstanceTopologyResponseBodyInstanceTopology struct {
+	Replicas []*DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas `json:"Replicas,omitempty" xml:"Replicas,omitempty" type:"Repeated"`
 	// The total number of CPU cores for the node.
 	Tenants []*DescribeInstanceTopologyResponseBodyInstanceTopologyTenants `json:"Tenants,omitempty" xml:"Tenants,omitempty" type:"Repeated"`
 	// The information about resource units.
@@ -13611,6 +13648,11 @@ func (s DescribeInstanceTopologyResponseBodyInstanceTopology) GoString() string 
 	return s.String()
 }
 
+func (s *DescribeInstanceTopologyResponseBodyInstanceTopology) SetReplicas(v []*DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas) *DescribeInstanceTopologyResponseBodyInstanceTopology {
+	s.Replicas = v
+	return s
+}
+
 func (s *DescribeInstanceTopologyResponseBodyInstanceTopology) SetTenants(v []*DescribeInstanceTopologyResponseBodyInstanceTopologyTenants) *DescribeInstanceTopologyResponseBodyInstanceTopology {
 	s.Tenants = v
 	return s
@@ -13618,6 +13660,163 @@ func (s *DescribeInstanceTopologyResponseBodyInstanceTopology) SetTenants(v []*D
 
 func (s *DescribeInstanceTopologyResponseBodyInstanceTopology) SetZones(v []*DescribeInstanceTopologyResponseBodyInstanceTopologyZones) *DescribeInstanceTopologyResponseBodyInstanceTopology {
 	s.Zones = v
+	return s
+}
+
+type DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas struct {
+	LogicalZone     *string                                                                      `json:"LogicalZone,omitempty" xml:"LogicalZone,omitempty"`
+	NodeNum         *int32                                                                       `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
+	ReplicaResource *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResource `json:"ReplicaResource,omitempty" xml:"ReplicaResource,omitempty" type:"Struct"`
+	ReplicaType     *string                                                                      `json:"ReplicaType,omitempty" xml:"ReplicaType,omitempty"`
+	Status          *string                                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	ZoneLogicalId   *int32                                                                       `json:"ZoneLogicalId,omitempty" xml:"ZoneLogicalId,omitempty"`
+	ZoneLogicalName *string                                                                      `json:"ZoneLogicalName,omitempty" xml:"ZoneLogicalName,omitempty"`
+	ZoneRegionName  *string                                                                      `json:"ZoneRegionName,omitempty" xml:"ZoneRegionName,omitempty"`
+}
+
+func (s DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas) SetLogicalZone(v string) *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas {
+	s.LogicalZone = &v
+	return s
+}
+
+func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas) SetNodeNum(v int32) *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas {
+	s.NodeNum = &v
+	return s
+}
+
+func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas) SetReplicaResource(v *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResource) *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas {
+	s.ReplicaResource = v
+	return s
+}
+
+func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas) SetReplicaType(v string) *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas {
+	s.ReplicaType = &v
+	return s
+}
+
+func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas) SetStatus(v string) *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas) SetZoneLogicalId(v int32) *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas {
+	s.ZoneLogicalId = &v
+	return s
+}
+
+func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas) SetZoneLogicalName(v string) *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas {
+	s.ZoneLogicalName = &v
+	return s
+}
+
+func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas) SetZoneRegionName(v string) *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicas {
+	s.ZoneRegionName = &v
+	return s
+}
+
+type DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResource struct {
+	Cpu      *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceCpu      `json:"Cpu,omitempty" xml:"Cpu,omitempty" type:"Struct"`
+	DiskSize *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceDiskSize `json:"DiskSize,omitempty" xml:"DiskSize,omitempty" type:"Struct"`
+	Memory   *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceMemory   `json:"Memory,omitempty" xml:"Memory,omitempty" type:"Struct"`
+}
+
+func (s DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResource) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResource) SetCpu(v *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceCpu) *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResource {
+	s.Cpu = v
+	return s
+}
+
+func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResource) SetDiskSize(v *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceDiskSize) *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResource {
+	s.DiskSize = v
+	return s
+}
+
+func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResource) SetMemory(v *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceMemory) *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResource {
+	s.Memory = v
+	return s
+}
+
+type DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceCpu struct {
+	TotalCpu *int32 `json:"TotalCpu,omitempty" xml:"TotalCpu,omitempty"`
+	UsedCpu  *int32 `json:"UsedCpu,omitempty" xml:"UsedCpu,omitempty"`
+}
+
+func (s DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceCpu) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceCpu) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceCpu) SetTotalCpu(v int32) *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceCpu {
+	s.TotalCpu = &v
+	return s
+}
+
+func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceCpu) SetUsedCpu(v int32) *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceCpu {
+	s.UsedCpu = &v
+	return s
+}
+
+type DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceDiskSize struct {
+	TotalDiskSize *int64   `json:"TotalDiskSize,omitempty" xml:"TotalDiskSize,omitempty"`
+	UsedDiskSize  *float32 `json:"UsedDiskSize,omitempty" xml:"UsedDiskSize,omitempty"`
+}
+
+func (s DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceDiskSize) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceDiskSize) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceDiskSize) SetTotalDiskSize(v int64) *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceDiskSize {
+	s.TotalDiskSize = &v
+	return s
+}
+
+func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceDiskSize) SetUsedDiskSize(v float32) *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceDiskSize {
+	s.UsedDiskSize = &v
+	return s
+}
+
+type DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceMemory struct {
+	TotalMemory *int64 `json:"TotalMemory,omitempty" xml:"TotalMemory,omitempty"`
+	UsedMemory  *int64 `json:"UsedMemory,omitempty" xml:"UsedMemory,omitempty"`
+}
+
+func (s DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceMemory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceMemory) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceMemory) SetTotalMemory(v int64) *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceMemory {
+	s.TotalMemory = &v
+	return s
+}
+
+func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceMemory) SetUsedMemory(v int64) *DescribeInstanceTopologyResponseBodyInstanceTopologyReplicasReplicaResourceMemory {
+	s.UsedMemory = &v
 	return s
 }
 
@@ -13639,7 +13838,8 @@ type DescribeInstanceTopologyResponseBodyInstanceTopologyTenants struct {
 	// example:
 	//
 	// multiple
-	TenantDeployType *string `json:"TenantDeployType,omitempty" xml:"TenantDeployType,omitempty"`
+	TenantDeployType *string  `json:"TenantDeployType,omitempty" xml:"TenantDeployType,omitempty"`
+	TenantDiskSize   *float32 `json:"TenantDiskSize,omitempty" xml:"TenantDiskSize,omitempty"`
 	// The size of used memory of the node, in GB.
 	//
 	// example:
@@ -13669,7 +13869,9 @@ type DescribeInstanceTopologyResponseBodyInstanceTopologyTenants struct {
 	// example:
 	//
 	// ONLINE
-	TenantStatus *string `json:"TenantStatus,omitempty" xml:"TenantStatus,omitempty"`
+	TenantStatus     *string  `json:"TenantStatus,omitempty" xml:"TenantStatus,omitempty"`
+	TenantUnitCpu    *float32 `json:"TenantUnitCpu,omitempty" xml:"TenantUnitCpu,omitempty"`
+	TenantUnitMemory *float32 `json:"TenantUnitMemory,omitempty" xml:"TenantUnitMemory,omitempty"`
 	// The number of CPU cores of the tenant.
 	//
 	// example:
@@ -13703,6 +13905,11 @@ func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyTenants) SetTenantD
 	return s
 }
 
+func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyTenants) SetTenantDiskSize(v float32) *DescribeInstanceTopologyResponseBodyInstanceTopologyTenants {
+	s.TenantDiskSize = &v
+	return s
+}
+
 func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyTenants) SetTenantId(v string) *DescribeInstanceTopologyResponseBodyInstanceTopologyTenants {
 	s.TenantId = &v
 	return s
@@ -13728,6 +13935,16 @@ func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyTenants) SetTenantS
 	return s
 }
 
+func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyTenants) SetTenantUnitCpu(v float32) *DescribeInstanceTopologyResponseBodyInstanceTopologyTenants {
+	s.TenantUnitCpu = &v
+	return s
+}
+
+func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyTenants) SetTenantUnitMemory(v float32) *DescribeInstanceTopologyResponseBodyInstanceTopologyTenants {
+	s.TenantUnitMemory = &v
+	return s
+}
+
 func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyTenants) SetTenantUnitNum(v int32) *DescribeInstanceTopologyResponseBodyInstanceTopologyTenants {
 	s.TenantUnitNum = &v
 	return s
@@ -13744,7 +13961,9 @@ type DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZones stru
 	// example:
 	//
 	// true
-	IsPrimaryTenantZone *bool `json:"IsPrimaryTenantZone,omitempty" xml:"IsPrimaryTenantZone,omitempty"`
+	IsPrimaryTenantZone *bool   `json:"IsPrimaryTenantZone,omitempty" xml:"IsPrimaryTenantZone,omitempty"`
+	LogicalZone         *string `json:"LogicalZone,omitempty" xml:"LogicalZone,omitempty"`
+	ReplicaType         *string `json:"ReplicaType,omitempty" xml:"ReplicaType,omitempty"`
 	// The server with the highest disk usage.
 	//
 	// example:
@@ -13771,6 +13990,16 @@ func (s DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZones) 
 
 func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZones) SetIsPrimaryTenantZone(v bool) *DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZones {
 	s.IsPrimaryTenantZone = &v
+	return s
+}
+
+func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZones) SetLogicalZone(v string) *DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZones {
+	s.LogicalZone = &v
+	return s
+}
+
+func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZones) SetReplicaType(v string) *DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZones {
+	s.ReplicaType = &v
 	return s
 }
 
@@ -13968,7 +14197,8 @@ func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyZones) SetZoneResou
 }
 
 type DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes struct {
-	FullCopyId *int64 `json:"FullCopyId,omitempty" xml:"FullCopyId,omitempty"`
+	FullCopyId  *int64  `json:"FullCopyId,omitempty" xml:"FullCopyId,omitempty"`
+	LogicalZone *string `json:"LogicalZone,omitempty" xml:"LogicalZone,omitempty"`
 	// The information of zones.
 	//
 	// example:
@@ -14003,6 +14233,11 @@ func (s DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes) GoString
 
 func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes) SetFullCopyId(v int64) *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes {
 	s.FullCopyId = &v
+	return s
+}
+
+func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes) SetLogicalZone(v string) *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes {
+	s.LogicalZone = &v
 	return s
 }
 
@@ -14572,7 +14807,8 @@ type DescribeInstancesResponseBodyInstances struct {
 	// example:
 	//
 	// NORMAL
-	Series *string `json:"Series,omitempty" xml:"Series,omitempty"`
+	Series   *string `json:"Series,omitempty" xml:"Series,omitempty"`
+	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
 	// The status of the cluster. Valid values:
 	//
 	// - ONLINE: The cluster is running.
@@ -14820,6 +15056,11 @@ func (s *DescribeInstancesResponseBodyInstances) SetResourceGroupId(v string) *D
 
 func (s *DescribeInstancesResponseBodyInstances) SetSeries(v string) *DescribeInstancesResponseBodyInstances {
 	s.Series = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstances) SetSpecType(v string) *DescribeInstancesResponseBodyInstances {
+	s.SpecType = &v
 	return s
 }
 
@@ -18689,13 +18930,13 @@ type DescribeOasSlowSQLListResponseBodyData struct {
 	// example:
 	//
 	// 0
-	RetCode4012Count *float64 `json:"RetCode4012Count,omitempty" xml:"RetCode4012Count,omitempty"`
+	RetCode4012Count *int64 `json:"RetCode4012Count,omitempty" xml:"RetCode4012Count,omitempty"`
 	// Number of occurrences of code 4013 during the execution period.
 	//
 	// example:
 	//
 	// 0
-	RetCode4013Count *float64 `json:"RetCode4013Count,omitempty" xml:"RetCode4013Count,omitempty"`
+	RetCode4013Count *int64 `json:"RetCode4013Count,omitempty" xml:"RetCode4013Count,omitempty"`
 	// Number of occurrences of code 5001 during the execution period.
 	//
 	// example:
@@ -19105,12 +19346,12 @@ func (s *DescribeOasSlowSQLListResponseBodyData) SetRemotePlans(v float64) *Desc
 	return s
 }
 
-func (s *DescribeOasSlowSQLListResponseBodyData) SetRetCode4012Count(v float64) *DescribeOasSlowSQLListResponseBodyData {
+func (s *DescribeOasSlowSQLListResponseBodyData) SetRetCode4012Count(v int64) *DescribeOasSlowSQLListResponseBodyData {
 	s.RetCode4012Count = &v
 	return s
 }
 
-func (s *DescribeOasSlowSQLListResponseBodyData) SetRetCode4013Count(v float64) *DescribeOasSlowSQLListResponseBodyData {
+func (s *DescribeOasSlowSQLListResponseBodyData) SetRetCode4013Count(v int64) *DescribeOasSlowSQLListResponseBodyData {
 	s.RetCode4013Count = &v
 	return s
 }
@@ -32828,6 +33069,7 @@ type DescribeTenantResponseBodyTenant struct {
 	// RANDOM
 	PrimaryZoneDeployType *string                                           `json:"PrimaryZoneDeployType,omitempty" xml:"PrimaryZoneDeployType,omitempty"`
 	ReadOnlyResource      *DescribeTenantResponseBodyTenantReadOnlyResource `json:"ReadOnlyResource,omitempty" xml:"ReadOnlyResource,omitempty" type:"Struct"`
+	RecycleBinStatus      *string                                           `json:"RecycleBinStatus,omitempty" xml:"RecycleBinStatus,omitempty"`
 	// <DescribeTenantResponse>
 	//
 	//     <RequestId>EE205C00-30E4-XXXX-XXXX-87E3A8A2AA0C</RequestId>
@@ -33124,6 +33366,11 @@ func (s *DescribeTenantResponseBodyTenant) SetReadOnlyResource(v *DescribeTenant
 	return s
 }
 
+func (s *DescribeTenantResponseBodyTenant) SetRecycleBinStatus(v string) *DescribeTenantResponseBodyTenant {
+	s.RecycleBinStatus = &v
+	return s
+}
+
 func (s *DescribeTenantResponseBodyTenant) SetSeries(v string) *DescribeTenantResponseBodyTenant {
 	s.Series = &v
 	return s
@@ -33377,8 +33624,9 @@ type DescribeTenantResponseBodyTenantTenantConnections struct {
 	// example:
 	//
 	// MASTER
-	AddressType           *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	ConnectionReplicaType *string `json:"ConnectionReplicaType,omitempty" xml:"ConnectionReplicaType,omitempty"`
+	AddressType            *string   `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	ConnectionLogicalZones []*string `json:"ConnectionLogicalZones,omitempty" xml:"ConnectionLogicalZones,omitempty" type:"Repeated"`
+	ConnectionReplicaType  *string   `json:"ConnectionReplicaType,omitempty" xml:"ConnectionReplicaType,omitempty"`
 	// The Internet address for accessing the tenant.
 	//
 	// example:
@@ -33397,13 +33645,16 @@ type DescribeTenantResponseBodyTenantTenantConnections struct {
 	// example:
 	//
 	// CLOSED
-	InternetAddressStatus *string `json:"InternetAddressStatus,omitempty" xml:"InternetAddressStatus,omitempty"`
+	InternetAddressStatus      *string `json:"InternetAddressStatus,omitempty" xml:"InternetAddressStatus,omitempty"`
+	InternetMaxConnectionLimit *int64  `json:"InternetMaxConnectionLimit,omitempty" xml:"InternetMaxConnectionLimit,omitempty"`
+	InternetMaxConnectionNum   *int64  `json:"InternetMaxConnectionNum,omitempty" xml:"InternetMaxConnectionNum,omitempty"`
 	// 实例类型
 	//
 	// example:
 	//
 	// 3306
-	InternetPort *int32 `json:"InternetPort,omitempty" xml:"InternetPort,omitempty"`
+	InternetPort    *int32 `json:"InternetPort,omitempty" xml:"InternetPort,omitempty"`
+	InternetRpcPort *int32 `json:"InternetRpcPort,omitempty" xml:"InternetRpcPort,omitempty"`
 	// The deployment type of the cluster. Valid values:
 	//
 	// - multiple: multi-IDC deployment
@@ -33439,12 +33690,15 @@ type DescribeTenantResponseBodyTenantTenantConnections struct {
 	// example:
 	//
 	// 3306
-	IntranetPort *int32 `json:"IntranetPort,omitempty" xml:"IntranetPort,omitempty"`
+	IntranetPort       *int32 `json:"IntranetPort,omitempty" xml:"IntranetPort,omitempty"`
+	IntranetRpcPort    *int32 `json:"IntranetRpcPort,omitempty" xml:"IntranetRpcPort,omitempty"`
+	MaxConnectionLimit *int64 `json:"MaxConnectionLimit,omitempty" xml:"MaxConnectionLimit,omitempty"`
 	// example:
 	//
 	// 5000
-	MaxConnectionNum    *int64 `json:"MaxConnectionNum,omitempty" xml:"MaxConnectionNum,omitempty"`
-	ParallelQueryDegree *int64 `json:"ParallelQueryDegree,omitempty" xml:"ParallelQueryDegree,omitempty"`
+	MaxConnectionNum    *int64  `json:"MaxConnectionNum,omitempty" xml:"MaxConnectionNum,omitempty"`
+	ParallelQueryDegree *int64  `json:"ParallelQueryDegree,omitempty" xml:"ParallelQueryDegree,omitempty"`
+	ProxyClusterId      *string `json:"ProxyClusterId,omitempty" xml:"ProxyClusterId,omitempty"`
 	// example:
 	//
 	// obe-4tw51gp7****
@@ -33488,6 +33742,11 @@ func (s *DescribeTenantResponseBodyTenantTenantConnections) SetAddressType(v str
 	return s
 }
 
+func (s *DescribeTenantResponseBodyTenantTenantConnections) SetConnectionLogicalZones(v []*string) *DescribeTenantResponseBodyTenantTenantConnections {
+	s.ConnectionLogicalZones = v
+	return s
+}
+
 func (s *DescribeTenantResponseBodyTenantTenantConnections) SetConnectionReplicaType(v string) *DescribeTenantResponseBodyTenantTenantConnections {
 	s.ConnectionReplicaType = &v
 	return s
@@ -33513,8 +33772,23 @@ func (s *DescribeTenantResponseBodyTenantTenantConnections) SetInternetAddressSt
 	return s
 }
 
+func (s *DescribeTenantResponseBodyTenantTenantConnections) SetInternetMaxConnectionLimit(v int64) *DescribeTenantResponseBodyTenantTenantConnections {
+	s.InternetMaxConnectionLimit = &v
+	return s
+}
+
+func (s *DescribeTenantResponseBodyTenantTenantConnections) SetInternetMaxConnectionNum(v int64) *DescribeTenantResponseBodyTenantTenantConnections {
+	s.InternetMaxConnectionNum = &v
+	return s
+}
+
 func (s *DescribeTenantResponseBodyTenantTenantConnections) SetInternetPort(v int32) *DescribeTenantResponseBodyTenantTenantConnections {
 	s.InternetPort = &v
+	return s
+}
+
+func (s *DescribeTenantResponseBodyTenantTenantConnections) SetInternetRpcPort(v int32) *DescribeTenantResponseBodyTenantTenantConnections {
+	s.InternetRpcPort = &v
 	return s
 }
 
@@ -33543,6 +33817,16 @@ func (s *DescribeTenantResponseBodyTenantTenantConnections) SetIntranetPort(v in
 	return s
 }
 
+func (s *DescribeTenantResponseBodyTenantTenantConnections) SetIntranetRpcPort(v int32) *DescribeTenantResponseBodyTenantTenantConnections {
+	s.IntranetRpcPort = &v
+	return s
+}
+
+func (s *DescribeTenantResponseBodyTenantTenantConnections) SetMaxConnectionLimit(v int64) *DescribeTenantResponseBodyTenantTenantConnections {
+	s.MaxConnectionLimit = &v
+	return s
+}
+
 func (s *DescribeTenantResponseBodyTenantTenantConnections) SetMaxConnectionNum(v int64) *DescribeTenantResponseBodyTenantTenantConnections {
 	s.MaxConnectionNum = &v
 	return s
@@ -33550,6 +33834,11 @@ func (s *DescribeTenantResponseBodyTenantTenantConnections) SetMaxConnectionNum(
 
 func (s *DescribeTenantResponseBodyTenantTenantConnections) SetParallelQueryDegree(v int64) *DescribeTenantResponseBodyTenantTenantConnections {
 	s.ParallelQueryDegree = &v
+	return s
+}
+
+func (s *DescribeTenantResponseBodyTenantTenantConnections) SetProxyClusterId(v string) *DescribeTenantResponseBodyTenantTenantConnections {
+	s.ProxyClusterId = &v
 	return s
 }
 
@@ -34330,6 +34619,114 @@ func (s *DescribeTenantMetricsResponse) SetBody(v *DescribeTenantMetricsResponse
 	return s
 }
 
+type DescribeTenantReadableScnRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ob317v4uif****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// t33h8y08k****
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s DescribeTenantReadableScnRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTenantReadableScnRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTenantReadableScnRequest) SetInstanceId(v string) *DescribeTenantReadableScnRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeTenantReadableScnRequest) SetTenantId(v string) *DescribeTenantReadableScnRequest {
+	s.TenantId = &v
+	return s
+}
+
+type DescribeTenantReadableScnResponseBody struct {
+	Data *DescribeTenantReadableScnResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 8442BB1E-3171-1192-B9DC-F6F4E53B2673
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeTenantReadableScnResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTenantReadableScnResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTenantReadableScnResponseBody) SetData(v *DescribeTenantReadableScnResponseBodyData) *DescribeTenantReadableScnResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeTenantReadableScnResponseBody) SetRequestId(v string) *DescribeTenantReadableScnResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeTenantReadableScnResponseBodyData struct {
+	// example:
+	//
+	// 1715329164977
+	ReadableScn *int64 `json:"ReadableScn,omitempty" xml:"ReadableScn,omitempty"`
+}
+
+func (s DescribeTenantReadableScnResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTenantReadableScnResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTenantReadableScnResponseBodyData) SetReadableScn(v int64) *DescribeTenantReadableScnResponseBodyData {
+	s.ReadableScn = &v
+	return s
+}
+
+type DescribeTenantReadableScnResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeTenantReadableScnResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeTenantReadableScnResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTenantReadableScnResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTenantReadableScnResponse) SetHeaders(v map[string]*string) *DescribeTenantReadableScnResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeTenantReadableScnResponse) SetStatusCode(v int32) *DescribeTenantReadableScnResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeTenantReadableScnResponse) SetBody(v *DescribeTenantReadableScnResponseBody) *DescribeTenantReadableScnResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeTenantSecurityConfigsRequest struct {
 	// The unique identifier of the security check.
 	//
@@ -34802,7 +35199,7 @@ type DescribeTenantTagsRequest struct {
 	//
 	// example:
 	//
-	// [{"Key": "xxx", "Value", "xxx"},{}]
+	// [{"Key": "xxx", "Value", "xxx"}]
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The JSON string of the tenant ID.
 	//
@@ -34810,7 +35207,7 @@ type DescribeTenantTagsRequest struct {
 	//
 	// example:
 	//
-	// ["xxx", "xxx"]
+	// ["t5r0x2f6q****", "t33h8y08k****", "t5r41rtl7****"]
 	TenantIds *string `json:"TenantIds,omitempty" xml:"TenantIds,omitempty"`
 }
 
@@ -34867,7 +35264,7 @@ func (s *DescribeTenantTagsResponseBody) SetTagResources(v []*DescribeTenantTags
 }
 
 type DescribeTenantTagsResponseBodyTagResources struct {
-	// The resource ID.
+	// The ID of the resource.
 	//
 	// example:
 	//
@@ -44251,6 +44648,146 @@ func (s *ModifyInstanceNodeNumResponse) SetBody(v *ModifyInstanceNodeNumResponse
 	return s
 }
 
+type ModifyInstanceSSLRequest struct {
+	// The operation to modify the SSL status. Valid values:
+	//
+	// - open: Enable SSL encryption.
+	//
+	// - update: Update the CA certificate.
+	//
+	// - close: Disable SSL encryption.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// open
+	EnableSSL *string `json:"EnableSSL,omitempty" xml:"EnableSSL,omitempty"`
+	// The ID of the OceanBase cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ob317v4uif****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s ModifyInstanceSSLRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceSSLRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceSSLRequest) SetEnableSSL(v string) *ModifyInstanceSSLRequest {
+	s.EnableSSL = &v
+	return s
+}
+
+func (s *ModifyInstanceSSLRequest) SetInstanceId(v string) *ModifyInstanceSSLRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type ModifyInstanceSSLResponseBody struct {
+	// The SSL setting of the OceanBase cluster instance.
+	InstanceSSL *ModifyInstanceSSLResponseBodyInstanceSSL `json:"InstanceSSL,omitempty" xml:"InstanceSSL,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// EE205C00-30E4-****-****-87E3A8A2AA0C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyInstanceSSLResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceSSLResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceSSLResponseBody) SetInstanceSSL(v *ModifyInstanceSSLResponseBodyInstanceSSL) *ModifyInstanceSSLResponseBody {
+	s.InstanceSSL = v
+	return s
+}
+
+func (s *ModifyInstanceSSLResponseBody) SetRequestId(v string) *ModifyInstanceSSLResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyInstanceSSLResponseBodyInstanceSSL struct {
+	// The operation to modify the SSL status. Valid values:
+	//
+	// - open: Enable SSL encryption.
+	//
+	// - update: Update the CA certificate.
+	//
+	// - close: Disable SSL encryption.
+	//
+	// example:
+	//
+	// open
+	EnableSSL *string `json:"EnableSSL,omitempty" xml:"EnableSSL,omitempty"`
+	// The ID of the OceanBase cluster.
+	//
+	// example:
+	//
+	// ob317v4uif****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s ModifyInstanceSSLResponseBodyInstanceSSL) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceSSLResponseBodyInstanceSSL) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceSSLResponseBodyInstanceSSL) SetEnableSSL(v string) *ModifyInstanceSSLResponseBodyInstanceSSL {
+	s.EnableSSL = &v
+	return s
+}
+
+func (s *ModifyInstanceSSLResponseBodyInstanceSSL) SetInstanceId(v string) *ModifyInstanceSSLResponseBodyInstanceSSL {
+	s.InstanceId = &v
+	return s
+}
+
+type ModifyInstanceSSLResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyInstanceSSLResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyInstanceSSLResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceSSLResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceSSLResponse) SetHeaders(v map[string]*string) *ModifyInstanceSSLResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyInstanceSSLResponse) SetStatusCode(v int32) *ModifyInstanceSSLResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyInstanceSSLResponse) SetBody(v *ModifyInstanceSSLResponseBody) *ModifyInstanceSSLResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyInstanceSpecRequest struct {
 	// The size of the storage space, in GB. The required storage space varies based on the cluster specifications:
 	//
@@ -44303,7 +44840,8 @@ type ModifyInstanceSpecRequest struct {
 	// example:
 	//
 	// ob3h8ytroxxxxx
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	UpgradeSpecNative *bool   `json:"UpgradeSpecNative,omitempty" xml:"UpgradeSpecNative,omitempty"`
 }
 
 func (s ModifyInstanceSpecRequest) String() string {
@@ -44336,6 +44874,11 @@ func (s *ModifyInstanceSpecRequest) SetInstanceClass(v string) *ModifyInstanceSp
 
 func (s *ModifyInstanceSpecRequest) SetInstanceId(v string) *ModifyInstanceSpecRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyInstanceSpecRequest) SetUpgradeSpecNative(v bool) *ModifyInstanceSpecRequest {
+	s.UpgradeSpecNative = &v
 	return s
 }
 
@@ -44439,7 +44982,7 @@ func (s *ModifyInstanceSpecResponse) SetBody(v *ModifyInstanceSpecResponseBody) 
 }
 
 type ModifyInstanceTagsRequest struct {
-	// The tags.
+	// The ID of the OceanBase cluster.
 	//
 	// This parameter is required.
 	//
@@ -44447,7 +44990,7 @@ type ModifyInstanceTagsRequest struct {
 	//
 	// ob317v4uif****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// You can call this operation to modify the value of the cluster tags.
+	// The tags.
 	//
 	// This parameter is required.
 	//
@@ -44476,10 +45019,14 @@ func (s *ModifyInstanceTagsRequest) SetTags(v string) *ModifyInstanceTagsRequest
 }
 
 type ModifyInstanceTagsResponseBody struct {
+	// The tag modification result.
+	//
 	// example:
 	//
 	// done
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// EE205C00-30E4-XXXX-XXXX-87E3A8A2AA0C
@@ -45809,7 +46356,7 @@ type ModifyTenantTagsRequest struct {
 	//
 	// example:
 	//
-	// [{"Key": "xxx", "Value", "xxx"},{}]
+	// [{"Key": "xxx", "Value", "xxx"}]
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The ID of the tenant.
 	//
@@ -45817,7 +46364,7 @@ type ModifyTenantTagsRequest struct {
 	//
 	// example:
 	//
-	// xxx
+	// t33h8y08k****
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
@@ -45845,13 +46392,13 @@ func (s *ModifyTenantTagsRequest) SetTenantId(v string) *ModifyTenantTagsRequest
 }
 
 type ModifyTenantTagsResponseBody struct {
-	// The update status of the tags.
+	// The tag modification result.
 	//
 	// example:
 	//
 	// done
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -51010,6 +51557,10 @@ func (client *Client) CreateTag(request *CreateTagRequest) (_result *CreateTagRe
 	return _result, _err
 }
 
+// Summary:
+//
+// You can call this operation to create a tag.
+//
 // @param request - CreateTagValueRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -51056,6 +51607,10 @@ func (client *Client) CreateTagValueWithOptions(request *CreateTagValueRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// You can call this operation to create a tag.
+//
 // @param request - CreateTagValueRequest
 //
 // @return CreateTagValueResponse
@@ -52827,6 +53382,10 @@ func (client *Client) DescribeInstanceWithOptions(request *DescribeInstanceReque
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxConnectionLimit)) {
+		body["MaxConnectionLimit"] = request.MaxConnectionLimit
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
@@ -55808,6 +56367,70 @@ func (client *Client) DescribeTenantMetrics(request *DescribeTenantMetricsReques
 
 // Summary:
 //
+// 查询租户同步位点信息
+//
+// @param request - DescribeTenantReadableScnRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTenantReadableScnResponse
+func (client *Client) DescribeTenantReadableScnWithOptions(request *DescribeTenantReadableScnRequest, runtime *util.RuntimeOptions) (_result *DescribeTenantReadableScnResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeTenantReadableScn"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeTenantReadableScnResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询租户同步位点信息
+//
+// @param request - DescribeTenantReadableScnRequest
+//
+// @return DescribeTenantReadableScnResponse
+func (client *Client) DescribeTenantReadableScn(request *DescribeTenantReadableScnRequest) (_result *DescribeTenantReadableScnResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeTenantReadableScnResponse{}
+	_body, _err := client.DescribeTenantReadableScnWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // You can call this operation to query security check items of an OceanBase Database tenant.
 //
 // @param request - DescribeTenantSecurityConfigsRequest
@@ -55940,7 +56563,7 @@ func (client *Client) DescribeTenantSecurityIpGroups(request *DescribeTenantSecu
 
 // Summary:
 //
-// You can call this operation to view tenant tags.
+// You can call this operation to query the tags of tenants in a cluster.
 //
 // @param request - DescribeTenantTagsRequest
 //
@@ -55990,7 +56613,7 @@ func (client *Client) DescribeTenantTagsWithOptions(request *DescribeTenantTagsR
 
 // Summary:
 //
-// You can call this operation to view tenant tags.
+// You can call this operation to query the tags of tenants in a cluster.
 //
 // @param request - DescribeTenantTagsRequest
 //
@@ -57428,6 +58051,78 @@ func (client *Client) ModifyInstanceNodeNum(request *ModifyInstanceNodeNumReques
 
 // Summary:
 //
+// You can call this operation to modify the Secure Sockets Layer (SSL) setting for an OceanBase cluster instance.
+//
+// Description:
+//
+// There is currently no authorization information disclosed in the API.
+//
+// @param request - ModifyInstanceSSLRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyInstanceSSLResponse
+func (client *Client) ModifyInstanceSSLWithOptions(request *ModifyInstanceSSLRequest, runtime *util.RuntimeOptions) (_result *ModifyInstanceSSLResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnableSSL)) {
+		body["EnableSSL"] = request.EnableSSL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyInstanceSSL"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyInstanceSSLResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// You can call this operation to modify the Secure Sockets Layer (SSL) setting for an OceanBase cluster instance.
+//
+// Description:
+//
+// There is currently no authorization information disclosed in the API.
+//
+// @param request - ModifyInstanceSSLRequest
+//
+// @return ModifyInstanceSSLResponse
+func (client *Client) ModifyInstanceSSL(request *ModifyInstanceSSLRequest) (_result *ModifyInstanceSSLResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyInstanceSSLResponse{}
+	_body, _err := client.ModifyInstanceSSLWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // You can call this operation to modify the cluster specifications and storage space.
 //
 // @param request - ModifyInstanceSpecRequest
@@ -57459,6 +58154,10 @@ func (client *Client) ModifyInstanceSpecWithOptions(request *ModifyInstanceSpecR
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpgradeSpecNative)) {
+		body["UpgradeSpecNative"] = request.UpgradeSpecNative
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -57504,7 +58203,7 @@ func (client *Client) ModifyInstanceSpec(request *ModifyInstanceSpecRequest) (_r
 
 // Summary:
 //
-// The returned response.
+// You can call this operation to modify the tags of a cluster.
 //
 // @param request - ModifyInstanceTagsRequest
 //
@@ -57550,7 +58249,7 @@ func (client *Client) ModifyInstanceTagsWithOptions(request *ModifyInstanceTagsR
 
 // Summary:
 //
-// The returned response.
+// You can call this operation to modify the tags of a cluster.
 //
 // @param request - ModifyInstanceTagsRequest
 //
@@ -58224,7 +58923,7 @@ func (client *Client) ModifyTenantSecurityIpGroup(request *ModifyTenantSecurityI
 
 // Summary:
 //
-// You can call this operation to modify tenant tags.
+// You can call this operation to modify the tags of a tenant.
 //
 // @param request - ModifyTenantTagsRequest
 //
@@ -58274,7 +58973,7 @@ func (client *Client) ModifyTenantTagsWithOptions(request *ModifyTenantTagsReque
 
 // Summary:
 //
-// You can call this operation to modify tenant tags.
+// You can call this operation to modify the tags of a tenant.
 //
 // @param request - ModifyTenantTagsRequest
 //
