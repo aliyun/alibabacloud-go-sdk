@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,13 +10,42 @@ import (
 )
 
 type AttachExpressConnectRouterChildInstanceRequest struct {
-	ChildInstanceId       *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
-	ChildInstanceOwnerId  *int64  `json:"ChildInstanceOwnerId,omitempty" xml:"ChildInstanceOwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vbr-j6cwxhgg0s5nuephp****
+	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
+	// example:
+	//
+	// 190550144868****
+	ChildInstanceOwnerId *int64 `json:"ChildInstanceOwnerId,omitempty" xml:"ChildInstanceOwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
-	ChildInstanceType     *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
-	ClientToken           *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun                *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	EcrId                 *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// VBR
+	ChildInstanceType *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-00****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// true
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecr-a5xqrgbeidz1w8****
+	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
 }
 
 func (s AttachExpressConnectRouterChildInstanceRequest) String() string {
@@ -66,14 +92,38 @@ func (s *AttachExpressConnectRouterChildInstanceRequest) SetEcrId(v string) *Att
 }
 
 type AttachExpressConnectRouterChildInstanceResponseBody struct {
+	// example:
+	//
+	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode        *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage     *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode     *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message            *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success            *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// IllegalParamFormat.EcrId
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// The param format of EcrId ***	- is illegal.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AttachExpressConnectRouterChildInstanceResponseBody) String() string {
@@ -154,9 +204,25 @@ func (s *AttachExpressConnectRouterChildInstanceResponse) SetBody(v *AttachExpre
 }
 
 type CheckAddRegionToExpressConnectRouterRequest struct {
-	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun        *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	EcrId         *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-00****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecr-fu8rszhgv7623c****
+	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	FreshRegionId *string `json:"FreshRegionId,omitempty" xml:"FreshRegionId,omitempty"`
 }
 
@@ -189,19 +255,58 @@ func (s *CheckAddRegionToExpressConnectRouterRequest) SetFreshRegionId(v string)
 }
 
 type CheckAddRegionToExpressConnectRouterResponseBody struct {
-	AccessDeniedDetail                   *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	AnyCrossBorderLink                   *bool   `json:"AnyCrossBorderLink,omitempty" xml:"AnyCrossBorderLink,omitempty"`
-	AnyInterRegionLink                   *bool   `json:"AnyInterRegionLink,omitempty" xml:"AnyInterRegionLink,omitempty"`
-	Code                                 *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode                          *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage                       *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode                       *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	IsCdtCrossBorderEnabled              *bool   `json:"IsCdtCrossBorderEnabled,omitempty" xml:"IsCdtCrossBorderEnabled,omitempty"`
-	IsCdtInterRegionEnabled              *bool   `json:"IsCdtInterRegionEnabled,omitempty" xml:"IsCdtInterRegionEnabled,omitempty"`
-	IsUserAllowedToCreateCrossBorderLink *bool   `json:"IsUserAllowedToCreateCrossBorderLink,omitempty" xml:"IsUserAllowedToCreateCrossBorderLink,omitempty"`
-	Message                              *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId                            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success                              *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Authentication is failed for ****
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// true
+	AnyCrossBorderLink *bool `json:"AnyCrossBorderLink,omitempty" xml:"AnyCrossBorderLink,omitempty"`
+	// example:
+	//
+	// true
+	AnyInterRegionLink *bool `json:"AnyInterRegionLink,omitempty" xml:"AnyInterRegionLink,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// IllegalParamFormat.EcrId
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// The param format of EcrId ***	- is illegal.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// true
+	IsCdtCrossBorderEnabled *bool `json:"IsCdtCrossBorderEnabled,omitempty" xml:"IsCdtCrossBorderEnabled,omitempty"`
+	// example:
+	//
+	// true
+	IsCdtInterRegionEnabled *bool `json:"IsCdtInterRegionEnabled,omitempty" xml:"IsCdtInterRegionEnabled,omitempty"`
+	// example:
+	//
+	// true
+	IsUserAllowedToCreateCrossBorderLink *bool `json:"IsUserAllowedToCreateCrossBorderLink,omitempty" xml:"IsUserAllowedToCreateCrossBorderLink,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CheckAddRegionToExpressConnectRouterResponseBody) String() string {
@@ -307,12 +412,33 @@ func (s *CheckAddRegionToExpressConnectRouterResponse) SetBody(v *CheckAddRegion
 }
 
 type CreateExpressConnectRouterRequest struct {
-	AlibabaSideAsn  *int64  `json:"AlibabaSideAsn,omitempty" xml:"AlibabaSideAsn,omitempty"`
-	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DryRun          *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 45104
+	AlibabaSideAsn *int64 `json:"AlibabaSideAsn,omitempty" xml:"AlibabaSideAsn,omitempty"`
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-00****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// example:
+	//
+	// test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// rg-acfmvvajg5q****
+	ResourceGroupId *string                                  `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tags            []*CreateExpressConnectRouterRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s CreateExpressConnectRouterRequest) String() string {
@@ -353,16 +479,71 @@ func (s *CreateExpressConnectRouterRequest) SetResourceGroupId(v string) *Create
 	return s
 }
 
+func (s *CreateExpressConnectRouterRequest) SetTags(v []*CreateExpressConnectRouterRequestTags) *CreateExpressConnectRouterRequest {
+	s.Tags = v
+	return s
+}
+
+type CreateExpressConnectRouterRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateExpressConnectRouterRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateExpressConnectRouterRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateExpressConnectRouterRequestTags) SetKey(v string) *CreateExpressConnectRouterRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateExpressConnectRouterRequestTags) SetValue(v string) *CreateExpressConnectRouterRequestTags {
+	s.Value = &v
+	return s
+}
+
 type CreateExpressConnectRouterResponseBody struct {
+	// example:
+	//
+	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode        *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage     *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	EcrId              *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
-	HttpStatusCode     *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message            *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success            *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// IllegalParamFormat.Name
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// The param format of Name ***	- is illegal.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// ecr-fu8rszhgv7623c****
+	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateExpressConnectRouterResponseBody) String() string {
@@ -448,17 +629,51 @@ func (s *CreateExpressConnectRouterResponse) SetBody(v *CreateExpressConnectRout
 }
 
 type CreateExpressConnectRouterAssociationRequest struct {
-	AllowedPrefixes      []*string `json:"AllowedPrefixes,omitempty" xml:"AllowedPrefixes,omitempty" type:"Repeated"`
-	AssociationRegionId  *string   `json:"AssociationRegionId,omitempty" xml:"AssociationRegionId,omitempty"`
-	CenId                *string   `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	ClientToken          *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CreateAttachment     *bool     `json:"CreateAttachment,omitempty" xml:"CreateAttachment,omitempty"`
-	DryRun               *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	EcrId                *string   `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
-	TransitRouterId      *string   `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
-	TransitRouterOwnerId *int64    `json:"TransitRouterOwnerId,omitempty" xml:"TransitRouterOwnerId,omitempty"`
-	VpcId                *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpcOwnerId           *int64    `json:"VpcOwnerId,omitempty" xml:"VpcOwnerId,omitempty"`
+	AllowedPrefixes []*string `json:"AllowedPrefixes,omitempty" xml:"AllowedPrefixes,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	AssociationRegionId *string `json:"AssociationRegionId,omitempty" xml:"AssociationRegionId,omitempty"`
+	// example:
+	//
+	// cen-of3o1the3i4gwb****
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-00****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// true
+	CreateAttachment *bool `json:"CreateAttachment,omitempty" xml:"CreateAttachment,omitempty"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecr-mezk2idmsd0vx2****
+	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// example:
+	//
+	// tr-2ze4i71c6be454e2l****
+	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	// example:
+	//
+	// 189159362009****
+	TransitRouterOwnerId *int64 `json:"TransitRouterOwnerId,omitempty" xml:"TransitRouterOwnerId,omitempty"`
+	// example:
+	//
+	// vpc-bp1h37fchc6jmfyln****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// 132193271328****
+	VpcOwnerId *int64 `json:"VpcOwnerId,omitempty" xml:"VpcOwnerId,omitempty"`
 }
 
 func (s CreateExpressConnectRouterAssociationRequest) String() string {
@@ -525,15 +740,42 @@ func (s *CreateExpressConnectRouterAssociationRequest) SetVpcOwnerId(v int64) *C
 }
 
 type CreateExpressConnectRouterAssociationResponseBody struct {
+	// example:
+	//
+	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	AssociationId      *string `json:"AssociationId,omitempty" xml:"AssociationId,omitempty"`
-	Code               *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode        *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage     *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode     *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message            *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success            *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// ecr-assoc-9p2qxx5phpca2m****
+	AssociationId *string `json:"AssociationId,omitempty" xml:"AssociationId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// IllegalParamFormat.EcrId
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// The param format of EcrId ***	- is illegal.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 05130E79-588D-5C40-A718-C4863A59****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateExpressConnectRouterAssociationResponseBody) String() string {
@@ -619,9 +861,20 @@ func (s *CreateExpressConnectRouterAssociationResponse) SetBody(v *CreateExpress
 }
 
 type DeleteExpressConnectRouterRequest struct {
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	EcrId       *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecr-fu8rszhgv7623c****
+	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
 }
 
 func (s DeleteExpressConnectRouterRequest) String() string {
@@ -648,14 +901,38 @@ func (s *DeleteExpressConnectRouterRequest) SetEcrId(v string) *DeleteExpressCon
 }
 
 type DeleteExpressConnectRouterResponseBody struct {
+	// example:
+	//
+	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode        *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage     *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode     *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message            *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success            *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// IllegalParamFormat.EcrId
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// The param format of EcrId ***	- is illegal.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteExpressConnectRouterResponseBody) String() string {
@@ -736,11 +1013,30 @@ func (s *DeleteExpressConnectRouterResponse) SetBody(v *DeleteExpressConnectRout
 }
 
 type DeleteExpressConnectRouterAssociationRequest struct {
-	AssociationId    *string `json:"AssociationId,omitempty" xml:"AssociationId,omitempty"`
-	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DeleteAttachment *bool   `json:"DeleteAttachment,omitempty" xml:"DeleteAttachment,omitempty"`
-	DryRun           *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	EcrId            *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecr-assoc-9p2qxx5phpca2m****
+	AssociationId *string `json:"AssociationId,omitempty" xml:"AssociationId,omitempty"`
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-00****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// true
+	DeleteAttachment *bool `json:"DeleteAttachment,omitempty" xml:"DeleteAttachment,omitempty"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecr-mezk2idmsd0vx2****
+	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
 }
 
 func (s DeleteExpressConnectRouterAssociationRequest) String() string {
@@ -777,14 +1073,38 @@ func (s *DeleteExpressConnectRouterAssociationRequest) SetEcrId(v string) *Delet
 }
 
 type DeleteExpressConnectRouterAssociationResponseBody struct {
+	// example:
+	//
+	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode        *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage     *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode     *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message            *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success            *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// IllegalParamFormat.EcrId
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// The param format of EcrId ***	- is illegal.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 05130E79-588D-5C40-A718-C4863A59****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteExpressConnectRouterAssociationResponseBody) String() string {
@@ -865,11 +1185,28 @@ func (s *DeleteExpressConnectRouterAssociationResponse) SetBody(v *DeleteExpress
 }
 
 type DescribeDisabledExpressConnectRouterRouteEntriesRequest struct {
+	// example:
+	//
+	// FF9nMec/RZ6H9oqFn1pvyir/SLRlxCCyHJonbGzqL01hiM6Jb3wJowdHvjCfog7ww1b9rSHMRFJnrUBfVba68TJg==
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	EcrId       *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
-	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// true
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecr-mezk2idmsd0vx2****
+	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// FFv4fzkNPW8Z+cZ+DBXXQ3Gmf3XlCgpBH43oaTYTAAcGc708Zb+pDyAGVJBo/MKsyrtZfPnX9Ztf02vgdIDyaNe8UuZdf/JJk069qxGKzqSKg=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s DescribeDisabledExpressConnectRouterRouteEntriesRequest) String() string {
@@ -906,18 +1243,51 @@ func (s *DescribeDisabledExpressConnectRouterRouteEntriesRequest) SetNextToken(v
 }
 
 type DescribeDisabledExpressConnectRouterRouteEntriesResponseBody struct {
-	AccessDeniedDetail     *string                                                                               `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// Authentication is failed for ****
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// 200
 	Code                   *string                                                                               `json:"Code,omitempty" xml:"Code,omitempty"`
 	DisabledRouteEntryList []*DescribeDisabledExpressConnectRouterRouteEntriesResponseBodyDisabledRouteEntryList `json:"DisabledRouteEntryList,omitempty" xml:"DisabledRouteEntryList,omitempty" type:"Repeated"`
-	DynamicCode            *string                                                                               `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage         *string                                                                               `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode         *int32                                                                                `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	MaxResults             *int32                                                                                `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Message                *string                                                                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	NextToken              *string                                                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId              *string                                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success                *bool                                                                                 `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount             *int32                                                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// IllegalParamFormat.EcrId
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// The param format of EcrId ***	- is illegal.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 6
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// gAAAAABkDTaRFnmxUoMLVOn8YTIgYFeL2ch8j0sJs8VCIU8SS5438m3D9X1VqspCcaUEHRN9I_AfVwMhZHAhcNivifK_OtQxJQ==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 2
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDisabledExpressConnectRouterRouteEntriesResponseBody) String() string {
@@ -989,10 +1359,25 @@ func (s *DescribeDisabledExpressConnectRouterRouteEntriesResponseBody) SetTotalC
 }
 
 type DescribeDisabledExpressConnectRouterRouteEntriesResponseBodyDisabledRouteEntryList struct {
-	DestinationCidrBlock    *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	EcrId                   *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
-	GmtCreate               *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	NexthopInstanceId       *string `json:"NexthopInstanceId,omitempty" xml:"NexthopInstanceId,omitempty"`
+	// example:
+	//
+	// 192.168.100.110/32
+	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
+	// example:
+	//
+	// ecr-mezk2idmsd0vx2****
+	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// example:
+	//
+	// 1682317345
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// br-hp3u4u5f03tfuljis****
+	NexthopInstanceId *string `json:"NexthopInstanceId,omitempty" xml:"NexthopInstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
 	NexthopInstanceRegionId *string `json:"NexthopInstanceRegionId,omitempty" xml:"NexthopInstanceRegionId,omitempty"`
 }
 
@@ -1059,12 +1444,33 @@ func (s *DescribeDisabledExpressConnectRouterRouteEntriesResponse) SetBody(v *De
 }
 
 type DescribeExpressConnectRouterRequest struct {
-	ClientToken     *string                                         `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun          *bool                                           `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	EcrId           *string                                         `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
-	MaxResults      *int32                                          `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Name            *string                                         `json:"Name,omitempty" xml:"Name,omitempty"`
-	NextToken       *string                                         `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-00****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// example:
+	//
+	// ecr-fu8rszhgv7623c****
+	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// e0a2dbeb69a8beeeb8194e92b702df3fd3e7bfe6ce7bfc16e0b5e8707e68181f
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// rg-aek2aq7f4va****
 	ResourceGroupId *string                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	TagModels       []*DescribeExpressConnectRouterRequestTagModels `json:"TagModels,omitempty" xml:"TagModels,omitempty" type:"Repeated"`
 }
@@ -1118,7 +1524,13 @@ func (s *DescribeExpressConnectRouterRequest) SetTagModels(v []*DescribeExpressC
 }
 
 type DescribeExpressConnectRouterRequestTagModels struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// example:
+	//
+	// ecr-tag
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// example:
+	//
+	// testTagValueKZqhJi
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -1141,18 +1553,51 @@ func (s *DescribeExpressConnectRouterRequestTagModels) SetTagValue(v string) *De
 }
 
 type DescribeExpressConnectRouterResponseBody struct {
-	AccessDeniedDetail *string                                            `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string                                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode        *string                                            `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage     *string                                            `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	EcrList            []*DescribeExpressConnectRouterResponseBodyEcrList `json:"EcrList,omitempty" xml:"EcrList,omitempty" type:"Repeated"`
-	HttpStatusCode     *int32                                             `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	MaxResults         *int32                                             `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Message            *string                                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	NextToken          *string                                            `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId          *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success            *bool                                              `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount         *int32                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// Authentication is failed for ****
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// IllegalParamFormat.Name
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// The param format of Name ***	- is illegal.
+	DynamicMessage *string                                            `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	EcrList        []*DescribeExpressConnectRouterResponseBodyEcrList `json:"EcrList,omitempty" xml:"EcrList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// AAAAAdDWBF2w6Olxc+cMPjUtUMpttDGZkffvHCfhBKKNEyCVaq+WUEzuUWpp9+QOApNf6g==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 2
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeExpressConnectRouterResponseBody) String() string {
@@ -1224,17 +1669,47 @@ func (s *DescribeExpressConnectRouterResponseBody) SetTotalCount(v int32) *Descr
 }
 
 type DescribeExpressConnectRouterResponseBodyEcrList struct {
-	AlibabaSideAsn  *int64                                                 `json:"AlibabaSideAsn,omitempty" xml:"AlibabaSideAsn,omitempty"`
-	BizStatus       *string                                                `json:"BizStatus,omitempty" xml:"BizStatus,omitempty"`
-	Description     *string                                                `json:"Description,omitempty" xml:"Description,omitempty"`
-	EcrId           *string                                                `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
-	GmtCreate       *string                                                `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified     *string                                                `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Name            *string                                                `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId         *int64                                                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceGroupId *string                                                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Status          *string                                                `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags            []*DescribeExpressConnectRouterResponseBodyEcrListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 45104
+	AlibabaSideAsn *int64 `json:"AlibabaSideAsn,omitempty" xml:"AlibabaSideAsn,omitempty"`
+	// example:
+	//
+	// Normal
+	BizStatus *string `json:"BizStatus,omitempty" xml:"BizStatus,omitempty"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// ecr-mezk2idmsd0vx2****
+	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// example:
+	//
+	// 2023-02-16T01:44:50Z
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2023-02-16T01:44:50Z
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 170646818729****
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// rg-aekzuscospt****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// Active
+	Status *string                                                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   []*DescribeExpressConnectRouterResponseBodyEcrListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeExpressConnectRouterResponseBodyEcrList) String() string {
@@ -1301,15 +1776,42 @@ func (s *DescribeExpressConnectRouterResponseBodyEcrList) SetTags(v []*DescribeE
 }
 
 type DescribeExpressConnectRouterResponseBodyEcrListTags struct {
-	AliUid       *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	Category     *int32  `json:"Category,omitempty" xml:"Category,omitempty"`
-	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	RegionNo     *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// 181614792955****
+	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// example:
+	//
+	// 0
+	Category *int32 `json:"Category,omitempty" xml:"Category,omitempty"`
+	// example:
+	//
+	// 000000100089****
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// example:
+	//
+	// rg-aek2aq7f4va****
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// ECR
 	ResuorceType *string `json:"ResuorceType,omitempty" xml:"ResuorceType,omitempty"`
-	Scope        *int32  `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// example:
+	//
+	// 0
+	Scope *int32 `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// example:
+	//
+	// test
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// example:
+	//
+	// test
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s DescribeExpressConnectRouterResponseBodyEcrListTags) String() string {
@@ -1396,11 +1898,28 @@ func (s *DescribeExpressConnectRouterResponse) SetBody(v *DescribeExpressConnect
 
 type DescribeExpressConnectRouterAllowedPrefixHistoryRequest struct {
 	AssociationId *string `json:"AssociationId,omitempty" xml:"AssociationId,omitempty"`
-	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun        *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	EcrId         *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceType  *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// FF9nMec/RZ6H9oqFn1pvyir/SLRlxCCyHJonbGzqL01hiM6Jb3wJowdHvjCfog7ww1b9rSHMRFJnrUBfVba68TJg==
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// true
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecr-mezk2idmsd0vx2****
+	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// example:
+	//
+	// vbr-j6cwxhgg0s5nuephp****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// VPC
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 }
 
 func (s DescribeExpressConnectRouterAllowedPrefixHistoryRequest) String() string {
@@ -1442,15 +1961,39 @@ func (s *DescribeExpressConnectRouterAllowedPrefixHistoryRequest) SetInstanceTyp
 }
 
 type DescribeExpressConnectRouterAllowedPrefixHistoryResponseBody struct {
+	// example:
+	//
+	// Authentication is failed for ****
 	AccessDeniedDetail       *string                                                                                 `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	AllowedPrefixHistoryList []*DescribeExpressConnectRouterAllowedPrefixHistoryResponseBodyAllowedPrefixHistoryList `json:"AllowedPrefixHistoryList,omitempty" xml:"AllowedPrefixHistoryList,omitempty" type:"Repeated"`
-	Code                     *string                                                                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode              *string                                                                                 `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage           *string                                                                                 `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode           *int32                                                                                  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message                  *string                                                                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId                *string                                                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success                  *bool                                                                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// IllegalParamFormat.EcrId
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// The param format of EcrId ***	- is illegal.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeExpressConnectRouterAllowedPrefixHistoryResponseBody) String() string {
@@ -1508,7 +2051,10 @@ func (s *DescribeExpressConnectRouterAllowedPrefixHistoryResponseBody) SetSucces
 
 type DescribeExpressConnectRouterAllowedPrefixHistoryResponseBodyAllowedPrefixHistoryList struct {
 	AllowedPrefix []*string `json:"AllowedPrefix,omitempty" xml:"AllowedPrefix,omitempty" type:"Repeated"`
-	GmtCreate     *string   `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 1673751163000
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 }
 
 func (s DescribeExpressConnectRouterAllowedPrefixHistoryResponseBodyAllowedPrefixHistoryList) String() string {
@@ -1559,17 +2105,52 @@ func (s *DescribeExpressConnectRouterAllowedPrefixHistoryResponse) SetBody(v *De
 }
 
 type DescribeExpressConnectRouterAssociationRequest struct {
-	AssociationId       *string `json:"AssociationId,omitempty" xml:"AssociationId,omitempty"`
+	// example:
+	//
+	// ecr-assoc-9p2qxx5phpca2m****
+	AssociationId *string `json:"AssociationId,omitempty" xml:"AssociationId,omitempty"`
+	// example:
+	//
+	// VPC
 	AssociationNodeType *string `json:"AssociationNodeType,omitempty" xml:"AssociationNodeType,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
 	AssociationRegionId *string `json:"AssociationRegionId,omitempty" xml:"AssociationRegionId,omitempty"`
-	CenId               *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	ClientToken         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun              *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	EcrId               *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
-	MaxResults          *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken           *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	TransitRouterId     *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
-	VpcId               *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// cen-of3o1the3i4gwb****
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-00****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecr-mezk2idmsd0vx2****
+	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// AAAAAYws9fJ0Ur4MGm/5OkDoW/Zn0J0/sCjivzwX9oBcwFnWaaas/kSG+J/WzLOxJHS4****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// tr-2ze4i71c6be454e2l****
+	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	// example:
+	//
+	// vpc-bp1h37fchc6jmfyln****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeExpressConnectRouterAssociationRequest) String() string {
@@ -1636,18 +2217,51 @@ func (s *DescribeExpressConnectRouterAssociationRequest) SetVpcId(v string) *Des
 }
 
 type DescribeExpressConnectRouterAssociationResponseBody struct {
+	// example:
+	//
+	// Authentication is failed for ****
 	AccessDeniedDetail *string                                                               `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	AssociationList    []*DescribeExpressConnectRouterAssociationResponseBodyAssociationList `json:"AssociationList,omitempty" xml:"AssociationList,omitempty" type:"Repeated"`
-	Code               *string                                                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode        *string                                                               `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage     *string                                                               `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode     *int32                                                                `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	MaxResults         *int32                                                                `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Message            *string                                                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	NextToken          *string                                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId          *string                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success            *bool                                                                 `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount         *int32                                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// IllegalParamFormat.EcrId
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// The param format of EcrId ***	- is illegal.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// AAAAAYws9fJ0Ur4MGm/5OkDoW/Zn0J0/sCjivzwX9oBcwFnWaaas/kSG+J/WzLOxJHS4****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 05130E79-588D-5C40-A718-C4863A59****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeExpressConnectRouterAssociationResponseBody) String() string {
@@ -1719,20 +2333,59 @@ func (s *DescribeExpressConnectRouterAssociationResponseBody) SetTotalCount(v in
 }
 
 type DescribeExpressConnectRouterAssociationResponseBodyAssociationList struct {
-	AllowedPrefixes      []*string `json:"AllowedPrefixes,omitempty" xml:"AllowedPrefixes,omitempty" type:"Repeated"`
-	AssociationId        *string   `json:"AssociationId,omitempty" xml:"AssociationId,omitempty"`
-	AssociationNodeType  *string   `json:"AssociationNodeType,omitempty" xml:"AssociationNodeType,omitempty"`
-	CenId                *string   `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	EcrId                *string   `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
-	GmtCreate            *string   `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified          *string   `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status               *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	TransitRouterId      *string   `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
-	TransitRouterOwnerId *int64    `json:"TransitRouterOwnerId,omitempty" xml:"TransitRouterOwnerId,omitempty"`
-	VpcId                *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpcOwnerId           *int64    `json:"VpcOwnerId,omitempty" xml:"VpcOwnerId,omitempty"`
+	AllowedPrefixes []*string `json:"AllowedPrefixes,omitempty" xml:"AllowedPrefixes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ecr-assoc-9p2qxx5phpca2m****
+	AssociationId *string `json:"AssociationId,omitempty" xml:"AssociationId,omitempty"`
+	// example:
+	//
+	// VPC
+	AssociationNodeType *string `json:"AssociationNodeType,omitempty" xml:"AssociationNodeType,omitempty"`
+	// example:
+	//
+	// cen-5510frtx8zi54q****
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// example:
+	//
+	// ecr-fu8rszhgv7623c****
+	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// example:
+	//
+	// 2024-01-09T12:18:23Z
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2024-01-09T12:18:23Z
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// 167509154715****
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// ACTIVE
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// tr-2ze4i71c6be454e2l****
+	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	// example:
+	//
+	// 189159362009****
+	TransitRouterOwnerId *int64 `json:"TransitRouterOwnerId,omitempty" xml:"TransitRouterOwnerId,omitempty"`
+	// example:
+	//
+	// vpc-2zeeaxet4i2j1a7n7****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// 146757288406****
+	VpcOwnerId *int64 `json:"VpcOwnerId,omitempty" xml:"VpcOwnerId,omitempty"`
 }
 
 func (s DescribeExpressConnectRouterAssociationResponseBodyAssociationList) String() string {
@@ -1843,15 +2496,44 @@ func (s *DescribeExpressConnectRouterAssociationResponse) SetBody(v *DescribeExp
 }
 
 type DescribeExpressConnectRouterChildInstanceRequest struct {
-	AssociationId         *string `json:"AssociationId,omitempty" xml:"AssociationId,omitempty"`
-	ChildInstanceId       *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
+	// example:
+	//
+	// ecr-assoc-9p2qxx5phpca2m****
+	AssociationId *string `json:"AssociationId,omitempty" xml:"AssociationId,omitempty"`
+	// example:
+	//
+	// vbr-j6cwxhgg0s5nuephp****
+	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
 	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
-	ChildInstanceType     *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
-	ClientToken           *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun                *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	EcrId                 *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
-	MaxResults            *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken             *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// VBR
+	ChildInstanceType *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-00****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecr-mezk2idmsd0vx2****
+	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// AAAAAYws9fJ0Ur4MGm/5OkDoW/Zn0J0/sCjivzwX9oBcwFnWaaas/kSG+J/WzLOxJHS4****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s DescribeExpressConnectRouterChildInstanceRequest) String() string {
@@ -1908,18 +2590,51 @@ func (s *DescribeExpressConnectRouterChildInstanceRequest) SetNextToken(v string
 }
 
 type DescribeExpressConnectRouterChildInstanceResponseBody struct {
+	// example:
+	//
+	// Authentication is failed for ****
 	AccessDeniedDetail *string                                                                   `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	ChildInstanceList  []*DescribeExpressConnectRouterChildInstanceResponseBodyChildInstanceList `json:"ChildInstanceList,omitempty" xml:"ChildInstanceList,omitempty" type:"Repeated"`
-	Code               *string                                                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode        *string                                                                   `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage     *string                                                                   `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode     *int32                                                                    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	MaxResults         *int32                                                                    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Message            *string                                                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	NextToken          *string                                                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId          *string                                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success            *bool                                                                     `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount         *int32                                                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// IllegalParamFormat.EcrId
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// The param format of EcrId ***	- is illegal.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// AAAAAYws9fJ0Ur4MGm/5OkDoW/Zn0J0/sCjivzwX9oBcwFnWaaas/kSG+J/WzLOxJHS4****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 05130E79-588D-5C40-A718-C4863A59****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeExpressConnectRouterChildInstanceResponseBody) String() string {
@@ -1991,17 +2706,47 @@ func (s *DescribeExpressConnectRouterChildInstanceResponseBody) SetTotalCount(v 
 }
 
 type DescribeExpressConnectRouterChildInstanceResponseBodyChildInstanceList struct {
-	AssociationId         *string `json:"AssociationId,omitempty" xml:"AssociationId,omitempty"`
-	ChildInstanceId       *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
-	ChildInstanceOwnerId  *int64  `json:"ChildInstanceOwnerId,omitempty" xml:"ChildInstanceOwnerId,omitempty"`
+	// example:
+	//
+	// ecr-assoc-9p2qxx5phpca2m****
+	AssociationId *string `json:"AssociationId,omitempty" xml:"AssociationId,omitempty"`
+	// example:
+	//
+	// vbr-gw8vjq2zjux3ifsc9****
+	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
+	// example:
+	//
+	// 112101171212****
+	ChildInstanceOwnerId *int64 `json:"ChildInstanceOwnerId,omitempty" xml:"ChildInstanceOwnerId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
 	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
-	ChildInstanceType     *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
-	EcrId                 *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
-	GmtCreate             *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified           *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// VBR
+	ChildInstanceType *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
+	EcrId             *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// example:
+	//
+	// 2024-01-09T12:18:23Z
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2024-01-09T12:18:23Z
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// 167509154715****
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// ACTIVE
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeExpressConnectRouterChildInstanceResponseBodyChildInstanceList) String() string {
@@ -2097,9 +2842,20 @@ func (s *DescribeExpressConnectRouterChildInstanceResponse) SetBody(v *DescribeE
 }
 
 type DescribeExpressConnectRouterInterRegionTransitModeRequest struct {
+	// example:
+	//
+	// FF9nMec/RZ6H9oqFn1pvyir/SLRlxCCyHJonbGzqL01hiM6Jb3wJowdHvjCfog7ww1b9rSHMRFJnrUBfVba68TJg==
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	EcrId       *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// example:
+	//
+	// true
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecr-mezk2idmsd0vx2****
+	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
 }
 
 func (s DescribeExpressConnectRouterInterRegionTransitModeRequest) String() string {
@@ -2126,15 +2882,39 @@ func (s *DescribeExpressConnectRouterInterRegionTransitModeRequest) SetEcrId(v s
 }
 
 type DescribeExpressConnectRouterInterRegionTransitModeResponseBody struct {
-	AccessDeniedDetail         *string                                                                                     `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code                       *string                                                                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode                *string                                                                                     `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage             *string                                                                                     `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// Authentication is failed for ****
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// IllegalParamFormat.EcrId
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// The param format of EcrId ***	- is illegal.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
 	HttpStatusCode             *int32                                                                                      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	InterRegionTransitModeList []*DescribeExpressConnectRouterInterRegionTransitModeResponseBodyInterRegionTransitModeList `json:"InterRegionTransitModeList,omitempty" xml:"InterRegionTransitModeList,omitempty" type:"Repeated"`
-	Message                    *string                                                                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId                  *string                                                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success                    *bool                                                                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeExpressConnectRouterInterRegionTransitModeResponseBody) String() string {
@@ -2191,7 +2971,13 @@ func (s *DescribeExpressConnectRouterInterRegionTransitModeResponseBody) SetSucc
 }
 
 type DescribeExpressConnectRouterInterRegionTransitModeResponseBodyInterRegionTransitModeList struct {
-	Mode     *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// example:
+	//
+	// ECMP
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -2243,9 +3029,20 @@ func (s *DescribeExpressConnectRouterInterRegionTransitModeResponse) SetBody(v *
 }
 
 type DescribeExpressConnectRouterRegionRequest struct {
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	EcrId       *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecr-fu8rszhgv7623c****
+	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
 }
 
 func (s DescribeExpressConnectRouterRegionRequest) String() string {
@@ -2272,15 +3069,39 @@ func (s *DescribeExpressConnectRouterRegionRequest) SetEcrId(v string) *Describe
 }
 
 type DescribeExpressConnectRouterRegionResponseBody struct {
-	AccessDeniedDetail *string   `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string   `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode        *string   `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage     *string   `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode     *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message            *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RegionIdList       []*string `json:"RegionIdList,omitempty" xml:"RegionIdList,omitempty" type:"Repeated"`
-	RequestId          *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success            *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Authentication is failed for ****
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// IllegalParamFormat.EcrId
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// The param format of EcrId ***	- is illegal.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message      *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	RegionIdList []*string `json:"RegionIdList,omitempty" xml:"RegionIdList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeExpressConnectRouterRegionResponseBody) String() string {
@@ -2366,16 +3187,48 @@ func (s *DescribeExpressConnectRouterRegionResponse) SetBody(v *DescribeExpressC
 }
 
 type DescribeExpressConnectRouterRouteEntriesRequest struct {
-	AsPath               *string `json:"AsPath,omitempty" xml:"AsPath,omitempty"`
-	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Community            *string `json:"Community,omitempty" xml:"Community,omitempty"`
+	// example:
+	//
+	// [64993,64512]
+	AsPath *string `json:"AsPath,omitempty" xml:"AsPath,omitempty"`
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-00****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// 9001:9263
+	Community *string `json:"Community,omitempty" xml:"Community,omitempty"`
+	// example:
+	//
+	// 172.20.47.0/24
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	EcrId                *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
-	MaxResults           *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken            *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	NexthopInstanceId    *string `json:"NexthopInstanceId,omitempty" xml:"NexthopInstanceId,omitempty"`
-	QueryRegionId        *string `json:"QueryRegionId,omitempty" xml:"QueryRegionId,omitempty"`
+	// example:
+	//
+	// true
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecr-mezk2idmsd0vx2****
+	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// FF9nMec/RZ6H9oqFn1pvyir/SLRlxCCyHJonbGzqL01hiM6Jb3wJowdHvjCfog7ww1b9rSHMRFJnrUBfVba68TJg==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// br-hp3u4u5f03tfuljis****
+	NexthopInstanceId *string `json:"NexthopInstanceId,omitempty" xml:"NexthopInstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	QueryRegionId *string `json:"QueryRegionId,omitempty" xml:"QueryRegionId,omitempty"`
 }
 
 func (s DescribeExpressConnectRouterRouteEntriesRequest) String() string {
@@ -2437,18 +3290,51 @@ func (s *DescribeExpressConnectRouterRouteEntriesRequest) SetQueryRegionId(v str
 }
 
 type DescribeExpressConnectRouterRouteEntriesResponseBody struct {
-	AccessDeniedDetail *string                                                                 `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string                                                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode        *string                                                                 `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage     *string                                                                 `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode     *int32                                                                  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	MaxResults         *int32                                                                  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Message            *string                                                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	NextToken          *string                                                                 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId          *string                                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RouteEntriesList   []*DescribeExpressConnectRouterRouteEntriesResponseBodyRouteEntriesList `json:"RouteEntriesList,omitempty" xml:"RouteEntriesList,omitempty" type:"Repeated"`
-	Success            *bool                                                                   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount         *int32                                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// Authentication is failed for ****
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// IllegalParamFormat.EcrId
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// The param format of EcrId ***	- is illegal.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 6
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// gAAAAABkWwFTUMNCdWC0VMYOIylA56Hx6JUfCZlk5hQ5g_fnKmetN6303tqq5UJ2ouJzyT2fDOdzb-NqyEB5jcY8Z2euX7qHDA==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
+	RequestId        *string                                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RouteEntriesList []*DescribeExpressConnectRouterRouteEntriesResponseBodyRouteEntriesList `json:"RouteEntriesList,omitempty" xml:"RouteEntriesList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 2
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeExpressConnectRouterRouteEntriesResponseBody) String() string {
@@ -2520,12 +3406,30 @@ func (s *DescribeExpressConnectRouterRouteEntriesResponseBody) SetTotalCount(v i
 }
 
 type DescribeExpressConnectRouterRouteEntriesResponseBodyRouteEntriesList struct {
-	AsPath                  *string `json:"AsPath,omitempty" xml:"AsPath,omitempty"`
-	Community               *string `json:"Community,omitempty" xml:"Community,omitempty"`
-	DestinationCidrBlock    *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	NexthopInstanceId       *string `json:"NexthopInstanceId,omitempty" xml:"NexthopInstanceId,omitempty"`
+	// example:
+	//
+	// [64993,64512]
+	AsPath *string `json:"AsPath,omitempty" xml:"AsPath,omitempty"`
+	// example:
+	//
+	// 9001:9263
+	Community *string `json:"Community,omitempty" xml:"Community,omitempty"`
+	// example:
+	//
+	// 192.168.0.0/16
+	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
+	// example:
+	//
+	// br-hp3u4u5f03tfuljis****
+	NexthopInstanceId *string `json:"NexthopInstanceId,omitempty" xml:"NexthopInstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
 	NexthopInstanceRegionId *string `json:"NexthopInstanceRegionId,omitempty" xml:"NexthopInstanceRegionId,omitempty"`
-	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// ACTIVE
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeExpressConnectRouterRouteEntriesResponseBodyRouteEntriesList) String() string {
@@ -2596,17 +3500,49 @@ func (s *DescribeExpressConnectRouterRouteEntriesResponse) SetBody(v *DescribeEx
 }
 
 type DescribeInstanceGrantedToExpressConnectRouterRequest struct {
-	ClientToken      *string                                                          `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun           *bool                                                            `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	EcrId            *string                                                          `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
-	InstanceId       *string                                                          `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceOwnerId  *int64                                                           `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
-	InstanceRegionId *string                                                          `json:"InstanceRegionId,omitempty" xml:"InstanceRegionId,omitempty"`
-	InstanceType     *string                                                          `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	MaxResults       *int32                                                           `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken        *string                                                          `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ResourceGroupId  *string                                                          `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	TagModels        []*DescribeInstanceGrantedToExpressConnectRouterRequestTagModels `json:"TagModels,omitempty" xml:"TagModels,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-00****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// true
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecr-mezk2idmsd0vx2****
+	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// example:
+	//
+	// vbr-j6cwxhgg0s5nuephp****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 129845258050****
+	InstanceOwnerId *int64 `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	InstanceRegionId *string `json:"InstanceRegionId,omitempty" xml:"InstanceRegionId,omitempty"`
+	// example:
+	//
+	// VBR
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// 6
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// gAAAAABkyGzFbZR2NnxnyVk0EiL7F3qMBtBim8Es0mugRT3qb8yEHAMaHGanzuaHUmiEq9QRmok0RgxJAINBOJZa5KPjopEu_Q==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// rg-aek2tsvbnfe****
+	ResourceGroupId *string                                                          `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	TagModels       []*DescribeInstanceGrantedToExpressConnectRouterRequestTagModels `json:"TagModels,omitempty" xml:"TagModels,omitempty" type:"Repeated"`
 }
 
 func (s DescribeInstanceGrantedToExpressConnectRouterRequest) String() string {
@@ -2673,7 +3609,13 @@ func (s *DescribeInstanceGrantedToExpressConnectRouterRequest) SetTagModels(v []
 }
 
 type DescribeInstanceGrantedToExpressConnectRouterRequestTagModels struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// example:
+	//
+	// key
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// example:
+	//
+	// value
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -2696,18 +3638,51 @@ func (s *DescribeInstanceGrantedToExpressConnectRouterRequestTagModels) SetTagVa
 }
 
 type DescribeInstanceGrantedToExpressConnectRouterResponseBody struct {
-	AccessDeniedDetail     *string                                                                            `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code                   *string                                                                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode            *string                                                                            `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// Authentication is failed for ****
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// IllegalParamFormat.Name
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// The param format of Name ***	- is illegal.
 	DynamicMessage         *string                                                                            `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	EcrGrantedInstanceList []*DescribeInstanceGrantedToExpressConnectRouterResponseBodyEcrGrantedInstanceList `json:"EcrGrantedInstanceList,omitempty" xml:"EcrGrantedInstanceList,omitempty" type:"Repeated"`
-	HttpStatusCode         *int32                                                                             `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	MaxResults             *int32                                                                             `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Message                *string                                                                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	NextToken              *string                                                                            `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId              *string                                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success                *bool                                                                              `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount             *int32                                                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 6
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// FFlMqGuJ10uN3l+FX/cBrGDNXUOUifNeOuAJlT4dc3vsWD6DsNSFAC2FtpeH5QOSG2WFdyRoun7gSLCm5o69YnAQ==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeInstanceGrantedToExpressConnectRouterResponseBody) String() string {
@@ -2779,16 +3754,46 @@ func (s *DescribeInstanceGrantedToExpressConnectRouterResponseBody) SetTotalCoun
 }
 
 type DescribeInstanceGrantedToExpressConnectRouterResponseBodyEcrGrantedInstanceList struct {
-	EcrId        *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
-	GmtCreate    *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified  *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	GrantId      *string `json:"GrantId,omitempty" xml:"GrantId,omitempty"`
-	NodeId       *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// example:
+	//
+	// ecr-mezk2idmsd0vx2****
+	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// example:
+	//
+	// 1669023139000
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 1669023139000
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// gr-8gdelo13mi99g1****
+	GrantId *string `json:"GrantId,omitempty" xml:"GrantId,omitempty"`
+	// example:
+	//
+	// vbr-j6cwxhgg0s5nuephp****
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// example:
+	//
+	// 26842
 	NodeOwnerBid *string `json:"NodeOwnerBid,omitempty" xml:"NodeOwnerBid,omitempty"`
-	NodeOwnerUid *int64  `json:"NodeOwnerUid,omitempty" xml:"NodeOwnerUid,omitempty"`
+	// example:
+	//
+	// 129845258050****
+	NodeOwnerUid *int64 `json:"NodeOwnerUid,omitempty" xml:"NodeOwnerUid,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
 	NodeRegionId *string `json:"NodeRegionId,omitempty" xml:"NodeRegionId,omitempty"`
-	NodeType     *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// VBR
+	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	// example:
+	//
+	// Active
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeInstanceGrantedToExpressConnectRouterResponseBodyEcrGrantedInstanceList) String() string {
@@ -2879,11 +3884,32 @@ func (s *DescribeInstanceGrantedToExpressConnectRouterResponse) SetBody(v *Descr
 }
 
 type DetachExpressConnectRouterChildInstanceRequest struct {
-	ChildInstanceId   *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vbr-j6cwxhgg0s5nuephp****
+	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// VBR
 	ChildInstanceType *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
-	ClientToken       *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun            *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	EcrId             *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-00****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// true
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecr-mezk2idmsd0vx2****
+	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
 }
 
 func (s DetachExpressConnectRouterChildInstanceRequest) String() string {
@@ -2920,14 +3946,38 @@ func (s *DetachExpressConnectRouterChildInstanceRequest) SetEcrId(v string) *Det
 }
 
 type DetachExpressConnectRouterChildInstanceResponseBody struct {
+	// example:
+	//
+	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode        *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage     *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode     *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message            *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success            *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// IllegalParamFormat.EcrId
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// The param format of EcrId ***	- is illegal.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DetachExpressConnectRouterChildInstanceResponseBody) String() string {
@@ -3008,11 +4058,32 @@ func (s *DetachExpressConnectRouterChildInstanceResponse) SetBody(v *DetachExpre
 }
 
 type DisableExpressConnectRouterRouteEntriesRequest struct {
-	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// FF9nMec/RZ6H9oqFn1pvyir/SLRlxCCyHJonbGzqL01hiM6Jb3wJowdHvjCfog7ww1b9rSHMRFJnrUBfVba68TJg==
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10.153.32.16/28
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	EcrId                *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
-	NexthopInstanceId    *string `json:"NexthopInstanceId,omitempty" xml:"NexthopInstanceId,omitempty"`
+	// example:
+	//
+	// true
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecr-mezk2idmsd0vx2****
+	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tr-hp3u4u5f03tfuljis****
+	NexthopInstanceId *string `json:"NexthopInstanceId,omitempty" xml:"NexthopInstanceId,omitempty"`
 }
 
 func (s DisableExpressConnectRouterRouteEntriesRequest) String() string {
@@ -3049,14 +4120,38 @@ func (s *DisableExpressConnectRouterRouteEntriesRequest) SetNexthopInstanceId(v 
 }
 
 type DisableExpressConnectRouterRouteEntriesResponseBody struct {
+	// example:
+	//
+	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode        *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage     *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode     *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message            *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success            *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// IllegalParamFormat.EcrId
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// The param format of EcrId ***	- is illegal.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DisableExpressConnectRouterRouteEntriesResponseBody) String() string {
@@ -3137,11 +4232,32 @@ func (s *DisableExpressConnectRouterRouteEntriesResponse) SetBody(v *DisableExpr
 }
 
 type EnableExpressConnectRouterRouteEntriesRequest struct {
-	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// FF9nMec/RZ6H9oqFn1pvyir/SLRlxCCyHJonbGzqL01hiM6Jb3wJowdHvjCfog7ww1b9rSHMRFJnrUBfVba68TJg==
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10.153.32.16/28
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	EcrId                *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
-	NexthopInstanceId    *string `json:"NexthopInstanceId,omitempty" xml:"NexthopInstanceId,omitempty"`
+	// example:
+	//
+	// true
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecr-mezk2idmsd0vx2****
+	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tr-hp3u4u5f03tfuljis****
+	NexthopInstanceId *string `json:"NexthopInstanceId,omitempty" xml:"NexthopInstanceId,omitempty"`
 }
 
 func (s EnableExpressConnectRouterRouteEntriesRequest) String() string {
@@ -3178,14 +4294,38 @@ func (s *EnableExpressConnectRouterRouteEntriesRequest) SetNexthopInstanceId(v s
 }
 
 type EnableExpressConnectRouterRouteEntriesResponseBody struct {
+	// example:
+	//
+	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode        *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage     *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode     *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message            *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success            *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// IllegalParamFormat.EcrId
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// The param format of EcrId ***	- is illegal.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s EnableExpressConnectRouterRouteEntriesResponseBody) String() string {
@@ -3266,9 +4406,20 @@ func (s *EnableExpressConnectRouterRouteEntriesResponse) SetBody(v *EnableExpres
 }
 
 type ForceDeleteExpressConnectRouterRequest struct {
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	EcrId       *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// example:
+	//
+	// true
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecr-fu8rszhgv7623c****
+	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
 }
 
 func (s ForceDeleteExpressConnectRouterRequest) String() string {
@@ -3295,14 +4446,38 @@ func (s *ForceDeleteExpressConnectRouterRequest) SetEcrId(v string) *ForceDelete
 }
 
 type ForceDeleteExpressConnectRouterResponseBody struct {
+	// example:
+	//
+	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode        *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage     *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode     *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message            *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success            *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// IllegalParamFormat.EcrId
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// The param format of EcrId ***	- is illegal.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ForceDeleteExpressConnectRouterResponseBody) String() string {
@@ -3383,13 +4558,44 @@ func (s *ForceDeleteExpressConnectRouterResponse) SetBody(v *ForceDeleteExpressC
 }
 
 type GrantInstanceToExpressConnectRouterRequest struct {
-	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun           *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	EcrId            *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
-	EcrOwnerAliUid   *int64  `json:"EcrOwnerAliUid,omitempty" xml:"EcrOwnerAliUid,omitempty"`
-	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-00****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// true
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecr-mezk2idmsd0vx2****
+	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 121012345612****
+	EcrOwnerAliUid *int64 `json:"EcrOwnerAliUid,omitempty" xml:"EcrOwnerAliUid,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vbr-j6cwxhgg0s5nuephp****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	InstanceRegionId *string `json:"InstanceRegionId,omitempty" xml:"InstanceRegionId,omitempty"`
-	InstanceType     *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// VBR
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 }
 
 func (s GrantInstanceToExpressConnectRouterRequest) String() string {
@@ -3436,14 +4642,38 @@ func (s *GrantInstanceToExpressConnectRouterRequest) SetInstanceType(v string) *
 }
 
 type GrantInstanceToExpressConnectRouterResponseBody struct {
+	// example:
+	//
+	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode        *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage     *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode     *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message            *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success            *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// IllegalParamFormat.EcrId
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// The param format of EcrId ***	- is illegal.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GrantInstanceToExpressConnectRouterResponseBody) String() string {
@@ -3524,8 +4754,16 @@ func (s *GrantInstanceToExpressConnectRouterResponse) SetBody(v *GrantInstanceTo
 }
 
 type ListExpressConnectRouterSupportedRegionRequest struct {
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	NodeType    *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// VBR
+	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 }
 
 func (s ListExpressConnectRouterSupportedRegionRequest) String() string {
@@ -3547,10 +4785,25 @@ func (s *ListExpressConnectRouterSupportedRegionRequest) SetNodeType(v string) *
 }
 
 type ListExpressConnectRouterSupportedRegionResponseBody struct {
-	Code                  *string   `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode        *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message               *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId             *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
 	Success               *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
 	SupportedRegionIdList []*string `json:"SupportedRegionIdList,omitempty" xml:"SupportedRegionIdList,omitempty" type:"Repeated"`
 }
@@ -3622,12 +4875,267 @@ func (s *ListExpressConnectRouterSupportedRegionResponse) SetBody(v *ListExpress
 	return s
 }
 
+type ListTagResourcesRequest struct {
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// AAAAAYws9fJ0Ur4MGm/5OkDoW/Zn0J0/sCjivzwX9oBcwFnWaaas/kSG+J/WzLOxJHS4****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// This parameter is required.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// EXPRESSCONNECTROUTER
+	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequest) SetMaxResults(v int32) *ListTagResourcesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetNextToken(v string) *ListTagResourcesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceId(v []*string) *ListTagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceType(v string) *ListTagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListTagResourcesRequest {
+	s.Tag = v
+	return s
+}
+
+type ListTagResourcesRequestTag struct {
+	// example:
+	//
+	// TestKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// TestValue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListTagResourcesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequestTag) SetKey(v string) *ListTagResourcesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type ListTagResourcesResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// AAAAAYws9fJ0Ur4MGm/5OkDoW/Zn0J0/sCjivzwX9oBcwFnWaaas/kSG+J/WzLOxJHS4****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success      *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListTagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBody) SetCode(v string) *ListTagResourcesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetMaxResults(v int32) *ListTagResourcesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetMessage(v string) *ListTagResourcesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetNextToken(v string) *ListTagResourcesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetRequestId(v string) *ListTagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetSuccess(v bool) *ListTagResourcesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResponseBodyTagResources) *ListTagResourcesResponseBody {
+	s.TagResources = v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetTotalCount(v int32) *ListTagResourcesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListTagResourcesResponseBodyTagResources struct {
+	// example:
+	//
+	// ecr-897j0jooxyr1aq****
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// EXPRESSCONNECTROUTER
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// TestKey
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// example:
+	//
+	// TestValue
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListTagResourcesResponseBodyTagResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBodyTagResources) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetResourceId(v string) *ListTagResourcesResponseBodyTagResources {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetResourceType(v string) *ListTagResourcesResponseBodyTagResources {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetTagKey(v string) *ListTagResourcesResponseBodyTagResources {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetTagValue(v string) *ListTagResourcesResponseBodyTagResources {
+	s.TagValue = &v
+	return s
+}
+
+type ListTagResourcesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponse) SetHeaders(v map[string]*string) *ListTagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *ListTagResourcesResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyExpressConnectRouterRequest struct {
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	EcrId       *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecr-fu8rszhgv7623c****
+	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// example:
+	//
+	// test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s ModifyExpressConnectRouterRequest) String() string {
@@ -3664,14 +5172,38 @@ func (s *ModifyExpressConnectRouterRequest) SetName(v string) *ModifyExpressConn
 }
 
 type ModifyExpressConnectRouterResponseBody struct {
+	// example:
+	//
+	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode        *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage     *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode     *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message            *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success            *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// IllegalParamFormat.Name
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// The param format of Name ***	- is illegal.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyExpressConnectRouterResponseBody) String() string {
@@ -3753,11 +5285,27 @@ func (s *ModifyExpressConnectRouterResponse) SetBody(v *ModifyExpressConnectRout
 
 type ModifyExpressConnectRouterAssociationAllowedPrefixRequest struct {
 	AllowedPrefixes []*string `json:"AllowedPrefixes,omitempty" xml:"AllowedPrefixes,omitempty" type:"Repeated"`
-	AssociationId   *string   `json:"AssociationId,omitempty" xml:"AssociationId,omitempty"`
-	ClientToken     *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun          *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	EcrId           *string   `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
-	OwnerAccount    *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecr-assoc-9p2qxx5phpca2m****
+	AssociationId *string `json:"AssociationId,omitempty" xml:"AssociationId,omitempty"`
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-00****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecr-mezk2idmsd0vx2****
+	EcrId        *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 }
 
 func (s ModifyExpressConnectRouterAssociationAllowedPrefixRequest) String() string {
@@ -3799,14 +5347,38 @@ func (s *ModifyExpressConnectRouterAssociationAllowedPrefixRequest) SetOwnerAcco
 }
 
 type ModifyExpressConnectRouterAssociationAllowedPrefixResponseBody struct {
+	// example:
+	//
+	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode        *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage     *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode     *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message            *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success            *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// IllegalParamFormat.EcrId
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// The param format of EcrId ***	- is illegal.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 05130E79-588D-5C40-A718-C4863A59****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyExpressConnectRouterAssociationAllowedPrefixResponseBody) String() string {
@@ -3887,8 +5459,19 @@ func (s *ModifyExpressConnectRouterAssociationAllowedPrefixResponse) SetBody(v *
 }
 
 type ModifyExpressConnectRouterInterRegionTransitModeRequest struct {
-	ClientToken     *string                                                                   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun          *bool                                                                     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// example:
+	//
+	// FF9nMec/RZ6H9oqFn1pvyir/SLRlxCCyHJonbGzqL01hiM6Jb3wJowdHvjCfog7ww1b9rSHMRFJnrUBfVba68TJg==
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// true
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecr-mezk2idmsd0vx2****
 	EcrId           *string                                                                   `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
 	TransitModeList []*ModifyExpressConnectRouterInterRegionTransitModeRequestTransitModeList `json:"TransitModeList,omitempty" xml:"TransitModeList,omitempty" type:"Repeated"`
 }
@@ -3922,7 +5505,13 @@ func (s *ModifyExpressConnectRouterInterRegionTransitModeRequest) SetTransitMode
 }
 
 type ModifyExpressConnectRouterInterRegionTransitModeRequestTransitModeList struct {
-	Mode     *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// example:
+	//
+	// ECMP
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -3945,14 +5534,38 @@ func (s *ModifyExpressConnectRouterInterRegionTransitModeRequestTransitModeList)
 }
 
 type ModifyExpressConnectRouterInterRegionTransitModeResponseBody struct {
+	// example:
+	//
+	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode        *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage     *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode     *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message            *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success            *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// IllegalParamFormat.EcrId
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// The param format of EcrId ***	- is illegal.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyExpressConnectRouterInterRegionTransitModeResponseBody) String() string {
@@ -4032,14 +5645,183 @@ func (s *ModifyExpressConnectRouterInterRegionTransitModeResponse) SetBody(v *Mo
 	return s
 }
 
+type MoveResourceGroupRequest struct {
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-00****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rg-acfmvt3xpr5****
+	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecr-897j0jooxyr1aq****
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// EXPRESSCONNECTROUTER
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s MoveResourceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveResourceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MoveResourceGroupRequest) SetClientToken(v string) *MoveResourceGroupRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *MoveResourceGroupRequest) SetDryRun(v bool) *MoveResourceGroupRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *MoveResourceGroupRequest) SetNewResourceGroupId(v string) *MoveResourceGroupRequest {
+	s.NewResourceGroupId = &v
+	return s
+}
+
+func (s *MoveResourceGroupRequest) SetResourceId(v string) *MoveResourceGroupRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *MoveResourceGroupRequest) SetResourceType(v string) *MoveResourceGroupRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type MoveResourceGroupResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s MoveResourceGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveResourceGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *MoveResourceGroupResponseBody) SetCode(v string) *MoveResourceGroupResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *MoveResourceGroupResponseBody) SetMessage(v string) *MoveResourceGroupResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *MoveResourceGroupResponseBody) SetRequestId(v string) *MoveResourceGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *MoveResourceGroupResponseBody) SetSuccess(v bool) *MoveResourceGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type MoveResourceGroupResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MoveResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s MoveResourceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveResourceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *MoveResourceGroupResponse) SetHeaders(v map[string]*string) *MoveResourceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *MoveResourceGroupResponse) SetStatusCode(v int32) *MoveResourceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *MoveResourceGroupResponse) SetBody(v *MoveResourceGroupResponseBody) *MoveResourceGroupResponse {
+	s.Body = v
+	return s
+}
+
 type RevokeInstanceFromExpressConnectRouterRequest struct {
-	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun           *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	EcrId            *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
-	EcrOwnerAliUid   *int64  `json:"EcrOwnerAliUid,omitempty" xml:"EcrOwnerAliUid,omitempty"`
-	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-00****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// true
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecr-mezk2idmsd0vx2****
+	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 121012345612****
+	EcrOwnerAliUid *int64 `json:"EcrOwnerAliUid,omitempty" xml:"EcrOwnerAliUid,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vbr-j6cwxhgg0s5nuephp****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	InstanceRegionId *string `json:"InstanceRegionId,omitempty" xml:"InstanceRegionId,omitempty"`
-	InstanceType     *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// VBR
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 }
 
 func (s RevokeInstanceFromExpressConnectRouterRequest) String() string {
@@ -4086,14 +5868,38 @@ func (s *RevokeInstanceFromExpressConnectRouterRequest) SetInstanceType(v string
 }
 
 type RevokeInstanceFromExpressConnectRouterResponseBody struct {
+	// example:
+	//
+	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode        *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage     *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode     *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message            *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success            *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// IllegalParamFormat.EcrId
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// The param format of EcrId ***	- is illegal.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RevokeInstanceFromExpressConnectRouterResponseBody) String() string {
@@ -4174,9 +5980,20 @@ func (s *RevokeInstanceFromExpressConnectRouterResponse) SetBody(v *RevokeInstan
 }
 
 type SynchronizeExpressConnectRouterInterRegionBandwidthRequest struct {
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	EcrId       *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecr-fu8rszhgv7623c****
+	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
 }
 
 func (s SynchronizeExpressConnectRouterInterRegionBandwidthRequest) String() string {
@@ -4203,14 +6020,38 @@ func (s *SynchronizeExpressConnectRouterInterRegionBandwidthRequest) SetEcrId(v 
 }
 
 type SynchronizeExpressConnectRouterInterRegionBandwidthResponseBody struct {
+	// example:
+	//
+	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode        *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage     *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode     *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message            *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success            *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// IllegalParamFormat.EcrId
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// The param format of EcrId ***	- is illegal.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SynchronizeExpressConnectRouterInterRegionBandwidthResponseBody) String() string {
@@ -4290,6 +6131,303 @@ func (s *SynchronizeExpressConnectRouterInterRegionBandwidthResponse) SetBody(v 
 	return s
 }
 
+type TagResourcesRequest struct {
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-00****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// EXPRESSCONNECTROUTER
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// This parameter is required.
+	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s TagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesRequest) SetClientToken(v string) *TagResourcesRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetDryRun(v bool) *TagResourcesRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetResourceId(v []*string) *TagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *TagResourcesRequest) SetResourceType(v string) *TagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesRequest {
+	s.Tag = v
+	return s
+}
+
+type TagResourcesRequestTag struct {
+	// example:
+	//
+	// TestKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// TestValue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s TagResourcesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesRequestTag) SetKey(v string) *TagResourcesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type TagResourcesResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s TagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesResponseBody) SetCode(v string) *TagResourcesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *TagResourcesResponseBody) SetMessage(v string) *TagResourcesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *TagResourcesResponseBody) SetSuccess(v bool) *TagResourcesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type TagResourcesResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s TagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesResponse) SetHeaders(v map[string]*string) *TagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TagResourcesResponse) SetStatusCode(v int32) *TagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type UntagResourcesRequest struct {
+	// example:
+	//
+	// false
+	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// example:
+	//
+	// 02fb3da4-130e-11e9-8e44-00****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// EXPRESSCONNECTROUTER
+	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+}
+
+func (s UntagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesRequest) SetAll(v bool) *UntagResourcesRequest {
+	s.All = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetClientToken(v string) *UntagResourcesRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetDryRun(v bool) *UntagResourcesRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetResourceId(v []*string) *UntagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetResourceType(v string) *UntagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
+	s.TagKey = v
+	return s
+}
+
+type UntagResourcesResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UntagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesResponseBody) SetCode(v string) *UntagResourcesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UntagResourcesResponseBody) SetMessage(v string) *UntagResourcesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UntagResourcesResponseBody) SetSuccess(v bool) *UntagResourcesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UntagResourcesResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UntagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesResponse) SetHeaders(v map[string]*string) *UntagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagResourcesResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -4337,6 +6475,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// @param request - AttachExpressConnectRouterChildInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachExpressConnectRouterChildInstanceResponse
 func (client *Client) AttachExpressConnectRouterChildInstanceWithOptions(request *AttachExpressConnectRouterChildInstanceRequest, runtime *util.RuntimeOptions) (_result *AttachExpressConnectRouterChildInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4394,6 +6537,9 @@ func (client *Client) AttachExpressConnectRouterChildInstanceWithOptions(request
 	return _result, _err
 }
 
+// @param request - AttachExpressConnectRouterChildInstanceRequest
+//
+// @return AttachExpressConnectRouterChildInstanceResponse
 func (client *Client) AttachExpressConnectRouterChildInstance(request *AttachExpressConnectRouterChildInstanceRequest) (_result *AttachExpressConnectRouterChildInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AttachExpressConnectRouterChildInstanceResponse{}
@@ -4405,6 +6551,11 @@ func (client *Client) AttachExpressConnectRouterChildInstance(request *AttachExp
 	return _result, _err
 }
 
+// @param request - CheckAddRegionToExpressConnectRouterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckAddRegionToExpressConnectRouterResponse
 func (client *Client) CheckAddRegionToExpressConnectRouterWithOptions(request *CheckAddRegionToExpressConnectRouterRequest, runtime *util.RuntimeOptions) (_result *CheckAddRegionToExpressConnectRouterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4450,6 +6601,9 @@ func (client *Client) CheckAddRegionToExpressConnectRouterWithOptions(request *C
 	return _result, _err
 }
 
+// @param request - CheckAddRegionToExpressConnectRouterRequest
+//
+// @return CheckAddRegionToExpressConnectRouterResponse
 func (client *Client) CheckAddRegionToExpressConnectRouter(request *CheckAddRegionToExpressConnectRouterRequest) (_result *CheckAddRegionToExpressConnectRouterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckAddRegionToExpressConnectRouterResponse{}
@@ -4461,6 +6615,11 @@ func (client *Client) CheckAddRegionToExpressConnectRouter(request *CheckAddRegi
 	return _result, _err
 }
 
+// @param request - CreateExpressConnectRouterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateExpressConnectRouterResponse
 func (client *Client) CreateExpressConnectRouterWithOptions(request *CreateExpressConnectRouterRequest, runtime *util.RuntimeOptions) (_result *CreateExpressConnectRouterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4491,6 +6650,10 @@ func (client *Client) CreateExpressConnectRouterWithOptions(request *CreateExpre
 		body["ResourceGroupId"] = request.ResourceGroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		body["Tags"] = request.Tags
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -4514,6 +6677,9 @@ func (client *Client) CreateExpressConnectRouterWithOptions(request *CreateExpre
 	return _result, _err
 }
 
+// @param request - CreateExpressConnectRouterRequest
+//
+// @return CreateExpressConnectRouterResponse
 func (client *Client) CreateExpressConnectRouter(request *CreateExpressConnectRouterRequest) (_result *CreateExpressConnectRouterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateExpressConnectRouterResponse{}
@@ -4525,6 +6691,11 @@ func (client *Client) CreateExpressConnectRouter(request *CreateExpressConnectRo
 	return _result, _err
 }
 
+// @param request - CreateExpressConnectRouterAssociationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateExpressConnectRouterAssociationResponse
 func (client *Client) CreateExpressConnectRouterAssociationWithOptions(request *CreateExpressConnectRouterAssociationRequest, runtime *util.RuntimeOptions) (_result *CreateExpressConnectRouterAssociationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4598,6 +6769,9 @@ func (client *Client) CreateExpressConnectRouterAssociationWithOptions(request *
 	return _result, _err
 }
 
+// @param request - CreateExpressConnectRouterAssociationRequest
+//
+// @return CreateExpressConnectRouterAssociationResponse
 func (client *Client) CreateExpressConnectRouterAssociation(request *CreateExpressConnectRouterAssociationRequest) (_result *CreateExpressConnectRouterAssociationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateExpressConnectRouterAssociationResponse{}
@@ -4609,6 +6783,11 @@ func (client *Client) CreateExpressConnectRouterAssociation(request *CreateExpre
 	return _result, _err
 }
 
+// @param request - DeleteExpressConnectRouterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteExpressConnectRouterResponse
 func (client *Client) DeleteExpressConnectRouterWithOptions(request *DeleteExpressConnectRouterRequest, runtime *util.RuntimeOptions) (_result *DeleteExpressConnectRouterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4650,6 +6829,9 @@ func (client *Client) DeleteExpressConnectRouterWithOptions(request *DeleteExpre
 	return _result, _err
 }
 
+// @param request - DeleteExpressConnectRouterRequest
+//
+// @return DeleteExpressConnectRouterResponse
 func (client *Client) DeleteExpressConnectRouter(request *DeleteExpressConnectRouterRequest) (_result *DeleteExpressConnectRouterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteExpressConnectRouterResponse{}
@@ -4661,6 +6843,11 @@ func (client *Client) DeleteExpressConnectRouter(request *DeleteExpressConnectRo
 	return _result, _err
 }
 
+// @param request - DeleteExpressConnectRouterAssociationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteExpressConnectRouterAssociationResponse
 func (client *Client) DeleteExpressConnectRouterAssociationWithOptions(request *DeleteExpressConnectRouterAssociationRequest, runtime *util.RuntimeOptions) (_result *DeleteExpressConnectRouterAssociationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4710,6 +6897,9 @@ func (client *Client) DeleteExpressConnectRouterAssociationWithOptions(request *
 	return _result, _err
 }
 
+// @param request - DeleteExpressConnectRouterAssociationRequest
+//
+// @return DeleteExpressConnectRouterAssociationResponse
 func (client *Client) DeleteExpressConnectRouterAssociation(request *DeleteExpressConnectRouterAssociationRequest) (_result *DeleteExpressConnectRouterAssociationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteExpressConnectRouterAssociationResponse{}
@@ -4721,6 +6911,11 @@ func (client *Client) DeleteExpressConnectRouterAssociation(request *DeleteExpre
 	return _result, _err
 }
 
+// @param request - DescribeDisabledExpressConnectRouterRouteEntriesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDisabledExpressConnectRouterRouteEntriesResponse
 func (client *Client) DescribeDisabledExpressConnectRouterRouteEntriesWithOptions(request *DescribeDisabledExpressConnectRouterRouteEntriesRequest, runtime *util.RuntimeOptions) (_result *DescribeDisabledExpressConnectRouterRouteEntriesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4770,6 +6965,9 @@ func (client *Client) DescribeDisabledExpressConnectRouterRouteEntriesWithOption
 	return _result, _err
 }
 
+// @param request - DescribeDisabledExpressConnectRouterRouteEntriesRequest
+//
+// @return DescribeDisabledExpressConnectRouterRouteEntriesResponse
 func (client *Client) DescribeDisabledExpressConnectRouterRouteEntries(request *DescribeDisabledExpressConnectRouterRouteEntriesRequest) (_result *DescribeDisabledExpressConnectRouterRouteEntriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDisabledExpressConnectRouterRouteEntriesResponse{}
@@ -4781,6 +6979,11 @@ func (client *Client) DescribeDisabledExpressConnectRouterRouteEntries(request *
 	return _result, _err
 }
 
+// @param request - DescribeExpressConnectRouterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeExpressConnectRouterResponse
 func (client *Client) DescribeExpressConnectRouterWithOptions(request *DescribeExpressConnectRouterRequest, runtime *util.RuntimeOptions) (_result *DescribeExpressConnectRouterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4842,6 +7045,9 @@ func (client *Client) DescribeExpressConnectRouterWithOptions(request *DescribeE
 	return _result, _err
 }
 
+// @param request - DescribeExpressConnectRouterRequest
+//
+// @return DescribeExpressConnectRouterResponse
 func (client *Client) DescribeExpressConnectRouter(request *DescribeExpressConnectRouterRequest) (_result *DescribeExpressConnectRouterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeExpressConnectRouterResponse{}
@@ -4853,6 +7059,11 @@ func (client *Client) DescribeExpressConnectRouter(request *DescribeExpressConne
 	return _result, _err
 }
 
+// @param request - DescribeExpressConnectRouterAllowedPrefixHistoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeExpressConnectRouterAllowedPrefixHistoryResponse
 func (client *Client) DescribeExpressConnectRouterAllowedPrefixHistoryWithOptions(request *DescribeExpressConnectRouterAllowedPrefixHistoryRequest, runtime *util.RuntimeOptions) (_result *DescribeExpressConnectRouterAllowedPrefixHistoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4906,6 +7117,9 @@ func (client *Client) DescribeExpressConnectRouterAllowedPrefixHistoryWithOption
 	return _result, _err
 }
 
+// @param request - DescribeExpressConnectRouterAllowedPrefixHistoryRequest
+//
+// @return DescribeExpressConnectRouterAllowedPrefixHistoryResponse
 func (client *Client) DescribeExpressConnectRouterAllowedPrefixHistory(request *DescribeExpressConnectRouterAllowedPrefixHistoryRequest) (_result *DescribeExpressConnectRouterAllowedPrefixHistoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeExpressConnectRouterAllowedPrefixHistoryResponse{}
@@ -4917,6 +7131,11 @@ func (client *Client) DescribeExpressConnectRouterAllowedPrefixHistory(request *
 	return _result, _err
 }
 
+// @param request - DescribeExpressConnectRouterAssociationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeExpressConnectRouterAssociationResponse
 func (client *Client) DescribeExpressConnectRouterAssociationWithOptions(request *DescribeExpressConnectRouterAssociationRequest, runtime *util.RuntimeOptions) (_result *DescribeExpressConnectRouterAssociationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4990,6 +7209,9 @@ func (client *Client) DescribeExpressConnectRouterAssociationWithOptions(request
 	return _result, _err
 }
 
+// @param request - DescribeExpressConnectRouterAssociationRequest
+//
+// @return DescribeExpressConnectRouterAssociationResponse
 func (client *Client) DescribeExpressConnectRouterAssociation(request *DescribeExpressConnectRouterAssociationRequest) (_result *DescribeExpressConnectRouterAssociationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeExpressConnectRouterAssociationResponse{}
@@ -5001,6 +7223,11 @@ func (client *Client) DescribeExpressConnectRouterAssociation(request *DescribeE
 	return _result, _err
 }
 
+// @param request - DescribeExpressConnectRouterChildInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeExpressConnectRouterChildInstanceResponse
 func (client *Client) DescribeExpressConnectRouterChildInstanceWithOptions(request *DescribeExpressConnectRouterChildInstanceRequest, runtime *util.RuntimeOptions) (_result *DescribeExpressConnectRouterChildInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5066,6 +7293,9 @@ func (client *Client) DescribeExpressConnectRouterChildInstanceWithOptions(reque
 	return _result, _err
 }
 
+// @param request - DescribeExpressConnectRouterChildInstanceRequest
+//
+// @return DescribeExpressConnectRouterChildInstanceResponse
 func (client *Client) DescribeExpressConnectRouterChildInstance(request *DescribeExpressConnectRouterChildInstanceRequest) (_result *DescribeExpressConnectRouterChildInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeExpressConnectRouterChildInstanceResponse{}
@@ -5077,6 +7307,11 @@ func (client *Client) DescribeExpressConnectRouterChildInstance(request *Describ
 	return _result, _err
 }
 
+// @param request - DescribeExpressConnectRouterInterRegionTransitModeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeExpressConnectRouterInterRegionTransitModeResponse
 func (client *Client) DescribeExpressConnectRouterInterRegionTransitModeWithOptions(request *DescribeExpressConnectRouterInterRegionTransitModeRequest, runtime *util.RuntimeOptions) (_result *DescribeExpressConnectRouterInterRegionTransitModeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5118,6 +7353,9 @@ func (client *Client) DescribeExpressConnectRouterInterRegionTransitModeWithOpti
 	return _result, _err
 }
 
+// @param request - DescribeExpressConnectRouterInterRegionTransitModeRequest
+//
+// @return DescribeExpressConnectRouterInterRegionTransitModeResponse
 func (client *Client) DescribeExpressConnectRouterInterRegionTransitMode(request *DescribeExpressConnectRouterInterRegionTransitModeRequest) (_result *DescribeExpressConnectRouterInterRegionTransitModeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeExpressConnectRouterInterRegionTransitModeResponse{}
@@ -5129,6 +7367,11 @@ func (client *Client) DescribeExpressConnectRouterInterRegionTransitMode(request
 	return _result, _err
 }
 
+// @param request - DescribeExpressConnectRouterRegionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeExpressConnectRouterRegionResponse
 func (client *Client) DescribeExpressConnectRouterRegionWithOptions(request *DescribeExpressConnectRouterRegionRequest, runtime *util.RuntimeOptions) (_result *DescribeExpressConnectRouterRegionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5170,6 +7413,9 @@ func (client *Client) DescribeExpressConnectRouterRegionWithOptions(request *Des
 	return _result, _err
 }
 
+// @param request - DescribeExpressConnectRouterRegionRequest
+//
+// @return DescribeExpressConnectRouterRegionResponse
 func (client *Client) DescribeExpressConnectRouterRegion(request *DescribeExpressConnectRouterRegionRequest) (_result *DescribeExpressConnectRouterRegionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeExpressConnectRouterRegionResponse{}
@@ -5181,6 +7427,11 @@ func (client *Client) DescribeExpressConnectRouterRegion(request *DescribeExpres
 	return _result, _err
 }
 
+// @param request - DescribeExpressConnectRouterRouteEntriesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeExpressConnectRouterRouteEntriesResponse
 func (client *Client) DescribeExpressConnectRouterRouteEntriesWithOptions(request *DescribeExpressConnectRouterRouteEntriesRequest, runtime *util.RuntimeOptions) (_result *DescribeExpressConnectRouterRouteEntriesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5250,6 +7501,9 @@ func (client *Client) DescribeExpressConnectRouterRouteEntriesWithOptions(reques
 	return _result, _err
 }
 
+// @param request - DescribeExpressConnectRouterRouteEntriesRequest
+//
+// @return DescribeExpressConnectRouterRouteEntriesResponse
 func (client *Client) DescribeExpressConnectRouterRouteEntries(request *DescribeExpressConnectRouterRouteEntriesRequest) (_result *DescribeExpressConnectRouterRouteEntriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeExpressConnectRouterRouteEntriesResponse{}
@@ -5261,6 +7515,11 @@ func (client *Client) DescribeExpressConnectRouterRouteEntries(request *Describe
 	return _result, _err
 }
 
+// @param request - DescribeInstanceGrantedToExpressConnectRouterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceGrantedToExpressConnectRouterResponse
 func (client *Client) DescribeInstanceGrantedToExpressConnectRouterWithOptions(request *DescribeInstanceGrantedToExpressConnectRouterRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceGrantedToExpressConnectRouterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5334,6 +7593,9 @@ func (client *Client) DescribeInstanceGrantedToExpressConnectRouterWithOptions(r
 	return _result, _err
 }
 
+// @param request - DescribeInstanceGrantedToExpressConnectRouterRequest
+//
+// @return DescribeInstanceGrantedToExpressConnectRouterResponse
 func (client *Client) DescribeInstanceGrantedToExpressConnectRouter(request *DescribeInstanceGrantedToExpressConnectRouterRequest) (_result *DescribeInstanceGrantedToExpressConnectRouterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceGrantedToExpressConnectRouterResponse{}
@@ -5345,6 +7607,11 @@ func (client *Client) DescribeInstanceGrantedToExpressConnectRouter(request *Des
 	return _result, _err
 }
 
+// @param request - DetachExpressConnectRouterChildInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachExpressConnectRouterChildInstanceResponse
 func (client *Client) DetachExpressConnectRouterChildInstanceWithOptions(request *DetachExpressConnectRouterChildInstanceRequest, runtime *util.RuntimeOptions) (_result *DetachExpressConnectRouterChildInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5394,6 +7661,9 @@ func (client *Client) DetachExpressConnectRouterChildInstanceWithOptions(request
 	return _result, _err
 }
 
+// @param request - DetachExpressConnectRouterChildInstanceRequest
+//
+// @return DetachExpressConnectRouterChildInstanceResponse
 func (client *Client) DetachExpressConnectRouterChildInstance(request *DetachExpressConnectRouterChildInstanceRequest) (_result *DetachExpressConnectRouterChildInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DetachExpressConnectRouterChildInstanceResponse{}
@@ -5405,6 +7675,11 @@ func (client *Client) DetachExpressConnectRouterChildInstance(request *DetachExp
 	return _result, _err
 }
 
+// @param request - DisableExpressConnectRouterRouteEntriesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableExpressConnectRouterRouteEntriesResponse
 func (client *Client) DisableExpressConnectRouterRouteEntriesWithOptions(request *DisableExpressConnectRouterRouteEntriesRequest, runtime *util.RuntimeOptions) (_result *DisableExpressConnectRouterRouteEntriesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5454,6 +7729,9 @@ func (client *Client) DisableExpressConnectRouterRouteEntriesWithOptions(request
 	return _result, _err
 }
 
+// @param request - DisableExpressConnectRouterRouteEntriesRequest
+//
+// @return DisableExpressConnectRouterRouteEntriesResponse
 func (client *Client) DisableExpressConnectRouterRouteEntries(request *DisableExpressConnectRouterRouteEntriesRequest) (_result *DisableExpressConnectRouterRouteEntriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableExpressConnectRouterRouteEntriesResponse{}
@@ -5465,6 +7743,11 @@ func (client *Client) DisableExpressConnectRouterRouteEntries(request *DisableEx
 	return _result, _err
 }
 
+// @param request - EnableExpressConnectRouterRouteEntriesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableExpressConnectRouterRouteEntriesResponse
 func (client *Client) EnableExpressConnectRouterRouteEntriesWithOptions(request *EnableExpressConnectRouterRouteEntriesRequest, runtime *util.RuntimeOptions) (_result *EnableExpressConnectRouterRouteEntriesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5514,6 +7797,9 @@ func (client *Client) EnableExpressConnectRouterRouteEntriesWithOptions(request 
 	return _result, _err
 }
 
+// @param request - EnableExpressConnectRouterRouteEntriesRequest
+//
+// @return EnableExpressConnectRouterRouteEntriesResponse
 func (client *Client) EnableExpressConnectRouterRouteEntries(request *EnableExpressConnectRouterRouteEntriesRequest) (_result *EnableExpressConnectRouterRouteEntriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableExpressConnectRouterRouteEntriesResponse{}
@@ -5525,6 +7811,11 @@ func (client *Client) EnableExpressConnectRouterRouteEntries(request *EnableExpr
 	return _result, _err
 }
 
+// @param request - ForceDeleteExpressConnectRouterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ForceDeleteExpressConnectRouterResponse
 func (client *Client) ForceDeleteExpressConnectRouterWithOptions(request *ForceDeleteExpressConnectRouterRequest, runtime *util.RuntimeOptions) (_result *ForceDeleteExpressConnectRouterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5566,6 +7857,9 @@ func (client *Client) ForceDeleteExpressConnectRouterWithOptions(request *ForceD
 	return _result, _err
 }
 
+// @param request - ForceDeleteExpressConnectRouterRequest
+//
+// @return ForceDeleteExpressConnectRouterResponse
 func (client *Client) ForceDeleteExpressConnectRouter(request *ForceDeleteExpressConnectRouterRequest) (_result *ForceDeleteExpressConnectRouterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ForceDeleteExpressConnectRouterResponse{}
@@ -5577,6 +7871,11 @@ func (client *Client) ForceDeleteExpressConnectRouter(request *ForceDeleteExpres
 	return _result, _err
 }
 
+// @param request - GrantInstanceToExpressConnectRouterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GrantInstanceToExpressConnectRouterResponse
 func (client *Client) GrantInstanceToExpressConnectRouterWithOptions(request *GrantInstanceToExpressConnectRouterRequest, runtime *util.RuntimeOptions) (_result *GrantInstanceToExpressConnectRouterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5634,6 +7933,9 @@ func (client *Client) GrantInstanceToExpressConnectRouterWithOptions(request *Gr
 	return _result, _err
 }
 
+// @param request - GrantInstanceToExpressConnectRouterRequest
+//
+// @return GrantInstanceToExpressConnectRouterResponse
 func (client *Client) GrantInstanceToExpressConnectRouter(request *GrantInstanceToExpressConnectRouterRequest) (_result *GrantInstanceToExpressConnectRouterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GrantInstanceToExpressConnectRouterResponse{}
@@ -5645,6 +7947,11 @@ func (client *Client) GrantInstanceToExpressConnectRouter(request *GrantInstance
 	return _result, _err
 }
 
+// @param request - ListExpressConnectRouterSupportedRegionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListExpressConnectRouterSupportedRegionResponse
 func (client *Client) ListExpressConnectRouterSupportedRegionWithOptions(request *ListExpressConnectRouterSupportedRegionRequest, runtime *util.RuntimeOptions) (_result *ListExpressConnectRouterSupportedRegionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5682,6 +7989,9 @@ func (client *Client) ListExpressConnectRouterSupportedRegionWithOptions(request
 	return _result, _err
 }
 
+// @param request - ListExpressConnectRouterSupportedRegionRequest
+//
+// @return ListExpressConnectRouterSupportedRegionResponse
 func (client *Client) ListExpressConnectRouterSupportedRegion(request *ListExpressConnectRouterSupportedRegionRequest) (_result *ListExpressConnectRouterSupportedRegionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListExpressConnectRouterSupportedRegionResponse{}
@@ -5693,6 +8003,79 @@ func (client *Client) ListExpressConnectRouterSupportedRegion(request *ListExpre
 	return _result, _err
 }
 
+// @param request - ListTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
+func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		body["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		body["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		body["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTagResources"),
+		Version:     tea.String("2023-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
+func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ModifyExpressConnectRouterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyExpressConnectRouterResponse
 func (client *Client) ModifyExpressConnectRouterWithOptions(request *ModifyExpressConnectRouterRequest, runtime *util.RuntimeOptions) (_result *ModifyExpressConnectRouterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5742,6 +8125,9 @@ func (client *Client) ModifyExpressConnectRouterWithOptions(request *ModifyExpre
 	return _result, _err
 }
 
+// @param request - ModifyExpressConnectRouterRequest
+//
+// @return ModifyExpressConnectRouterResponse
 func (client *Client) ModifyExpressConnectRouter(request *ModifyExpressConnectRouterRequest) (_result *ModifyExpressConnectRouterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyExpressConnectRouterResponse{}
@@ -5753,6 +8139,11 @@ func (client *Client) ModifyExpressConnectRouter(request *ModifyExpressConnectRo
 	return _result, _err
 }
 
+// @param request - ModifyExpressConnectRouterAssociationAllowedPrefixRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyExpressConnectRouterAssociationAllowedPrefixResponse
 func (client *Client) ModifyExpressConnectRouterAssociationAllowedPrefixWithOptions(request *ModifyExpressConnectRouterAssociationAllowedPrefixRequest, runtime *util.RuntimeOptions) (_result *ModifyExpressConnectRouterAssociationAllowedPrefixResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5806,6 +8197,9 @@ func (client *Client) ModifyExpressConnectRouterAssociationAllowedPrefixWithOpti
 	return _result, _err
 }
 
+// @param request - ModifyExpressConnectRouterAssociationAllowedPrefixRequest
+//
+// @return ModifyExpressConnectRouterAssociationAllowedPrefixResponse
 func (client *Client) ModifyExpressConnectRouterAssociationAllowedPrefix(request *ModifyExpressConnectRouterAssociationAllowedPrefixRequest) (_result *ModifyExpressConnectRouterAssociationAllowedPrefixResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyExpressConnectRouterAssociationAllowedPrefixResponse{}
@@ -5817,6 +8211,11 @@ func (client *Client) ModifyExpressConnectRouterAssociationAllowedPrefix(request
 	return _result, _err
 }
 
+// @param request - ModifyExpressConnectRouterInterRegionTransitModeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyExpressConnectRouterInterRegionTransitModeResponse
 func (client *Client) ModifyExpressConnectRouterInterRegionTransitModeWithOptions(request *ModifyExpressConnectRouterInterRegionTransitModeRequest, runtime *util.RuntimeOptions) (_result *ModifyExpressConnectRouterInterRegionTransitModeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5862,6 +8261,9 @@ func (client *Client) ModifyExpressConnectRouterInterRegionTransitModeWithOption
 	return _result, _err
 }
 
+// @param request - ModifyExpressConnectRouterInterRegionTransitModeRequest
+//
+// @return ModifyExpressConnectRouterInterRegionTransitModeResponse
 func (client *Client) ModifyExpressConnectRouterInterRegionTransitMode(request *ModifyExpressConnectRouterInterRegionTransitModeRequest) (_result *ModifyExpressConnectRouterInterRegionTransitModeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyExpressConnectRouterInterRegionTransitModeResponse{}
@@ -5873,6 +8275,79 @@ func (client *Client) ModifyExpressConnectRouterInterRegionTransitMode(request *
 	return _result, _err
 }
 
+// @param request - MoveResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MoveResourceGroupResponse
+func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupRequest, runtime *util.RuntimeOptions) (_result *MoveResourceGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		body["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewResourceGroupId)) {
+		body["NewResourceGroupId"] = request.NewResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		body["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		body["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MoveResourceGroup"),
+		Version:     tea.String("2023-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &MoveResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - MoveResourceGroupRequest
+//
+// @return MoveResourceGroupResponse
+func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_result *MoveResourceGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &MoveResourceGroupResponse{}
+	_body, _err := client.MoveResourceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - RevokeInstanceFromExpressConnectRouterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeInstanceFromExpressConnectRouterResponse
 func (client *Client) RevokeInstanceFromExpressConnectRouterWithOptions(request *RevokeInstanceFromExpressConnectRouterRequest, runtime *util.RuntimeOptions) (_result *RevokeInstanceFromExpressConnectRouterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5930,6 +8405,9 @@ func (client *Client) RevokeInstanceFromExpressConnectRouterWithOptions(request 
 	return _result, _err
 }
 
+// @param request - RevokeInstanceFromExpressConnectRouterRequest
+//
+// @return RevokeInstanceFromExpressConnectRouterResponse
 func (client *Client) RevokeInstanceFromExpressConnectRouter(request *RevokeInstanceFromExpressConnectRouterRequest) (_result *RevokeInstanceFromExpressConnectRouterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RevokeInstanceFromExpressConnectRouterResponse{}
@@ -5941,6 +8419,11 @@ func (client *Client) RevokeInstanceFromExpressConnectRouter(request *RevokeInst
 	return _result, _err
 }
 
+// @param request - SynchronizeExpressConnectRouterInterRegionBandwidthRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SynchronizeExpressConnectRouterInterRegionBandwidthResponse
 func (client *Client) SynchronizeExpressConnectRouterInterRegionBandwidthWithOptions(request *SynchronizeExpressConnectRouterInterRegionBandwidthRequest, runtime *util.RuntimeOptions) (_result *SynchronizeExpressConnectRouterInterRegionBandwidthResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5982,10 +8465,153 @@ func (client *Client) SynchronizeExpressConnectRouterInterRegionBandwidthWithOpt
 	return _result, _err
 }
 
+// @param request - SynchronizeExpressConnectRouterInterRegionBandwidthRequest
+//
+// @return SynchronizeExpressConnectRouterInterRegionBandwidthResponse
 func (client *Client) SynchronizeExpressConnectRouterInterRegionBandwidth(request *SynchronizeExpressConnectRouterInterRegionBandwidthRequest) (_result *SynchronizeExpressConnectRouterInterRegionBandwidthResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SynchronizeExpressConnectRouterInterRegionBandwidthResponse{}
 	_body, _err := client.SynchronizeExpressConnectRouterInterRegionBandwidthWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - TagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
+func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		body["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		body["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		body["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		body["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TagResources"),
+		Version:     tea.String("2023-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
+func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.TagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - UntagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
+func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.All)) {
+		body["All"] = request.All
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		body["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		body["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		body["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKey)) {
+		body["TagKey"] = request.TagKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UntagResources"),
+		Version:     tea.String("2023-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UntagResourcesRequest
+//
+// @return UntagResourcesResponse
+func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.UntagResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
