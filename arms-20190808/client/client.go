@@ -6538,6 +6538,7 @@ type CreateEnvironmentRequest struct {
 	// if can be null:
 	// true
 	GrafanaWorkspaceId *string `json:"GrafanaWorkspaceId,omitempty" xml:"GrafanaWorkspaceId,omitempty"`
+	InitEnvironment    *bool   `json:"InitEnvironment,omitempty" xml:"InitEnvironment,omitempty"`
 	// Specifies whether agents or exporters are managed. Valid values:
 	//
 	// 	- none: No. By default, no managed agents or exporters are provided for ACK clusters.
@@ -6617,6 +6618,11 @@ func (s *CreateEnvironmentRequest) SetFeePackage(v string) *CreateEnvironmentReq
 
 func (s *CreateEnvironmentRequest) SetGrafanaWorkspaceId(v string) *CreateEnvironmentRequest {
 	s.GrafanaWorkspaceId = &v
+	return s
+}
+
+func (s *CreateEnvironmentRequest) SetInitEnvironment(v bool) *CreateEnvironmentRequest {
+	s.InitEnvironment = &v
 	return s
 }
 
@@ -68859,6 +68865,10 @@ func (client *Client) CreateEnvironmentWithOptions(request *CreateEnvironmentReq
 
 	if !tea.BoolValue(util.IsUnset(request.GrafanaWorkspaceId)) {
 		query["GrafanaWorkspaceId"] = request.GrafanaWorkspaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InitEnvironment)) {
+		query["InitEnvironment"] = request.InitEnvironment
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ManagedType)) {
