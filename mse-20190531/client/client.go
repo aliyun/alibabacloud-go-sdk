@@ -20061,6 +20061,169 @@ func (s *DeleteZnodeResponse) SetBody(v *DeleteZnodeResponseBody) *DeleteZnodeRe
 	return s
 }
 
+type EnableProxyProtocolRequest struct {
+	// example:
+	//
+	// zh
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	EnableProxyProtocol *bool `json:"EnableProxyProtocol,omitempty" xml:"EnableProxyProtocol,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gw-c9bc5afd61014165bd58f621b491*****
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+}
+
+func (s EnableProxyProtocolRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableProxyProtocolRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnableProxyProtocolRequest) SetAcceptLanguage(v string) *EnableProxyProtocolRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *EnableProxyProtocolRequest) SetEnableProxyProtocol(v bool) *EnableProxyProtocolRequest {
+	s.EnableProxyProtocol = &v
+	return s
+}
+
+func (s *EnableProxyProtocolRequest) SetGatewayUniqueId(v string) *EnableProxyProtocolRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+type EnableProxyProtocolResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// code
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// The specified parameter is invalid.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// Success
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 316F5F64-F73D-42DC-8632-01E308B6****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s EnableProxyProtocolResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableProxyProtocolResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnableProxyProtocolResponseBody) SetCode(v int32) *EnableProxyProtocolResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *EnableProxyProtocolResponseBody) SetData(v bool) *EnableProxyProtocolResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *EnableProxyProtocolResponseBody) SetDynamicCode(v string) *EnableProxyProtocolResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *EnableProxyProtocolResponseBody) SetDynamicMessage(v string) *EnableProxyProtocolResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *EnableProxyProtocolResponseBody) SetErrorCode(v string) *EnableProxyProtocolResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *EnableProxyProtocolResponseBody) SetHttpStatusCode(v int32) *EnableProxyProtocolResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *EnableProxyProtocolResponseBody) SetMessage(v string) *EnableProxyProtocolResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *EnableProxyProtocolResponseBody) SetRequestId(v string) *EnableProxyProtocolResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *EnableProxyProtocolResponseBody) SetSuccess(v bool) *EnableProxyProtocolResponseBody {
+	s.Success = &v
+	return s
+}
+
+type EnableProxyProtocolResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableProxyProtocolResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s EnableProxyProtocolResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableProxyProtocolResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableProxyProtocolResponse) SetHeaders(v map[string]*string) *EnableProxyProtocolResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableProxyProtocolResponse) SetStatusCode(v int32) *EnableProxyProtocolResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EnableProxyProtocolResponse) SetBody(v *EnableProxyProtocolResponseBody) *EnableProxyProtocolResponse {
+	s.Body = v
+	return s
+}
+
 type ExportNacosConfigRequest struct {
 	// The language of the response. Valid values:
 	//
@@ -80569,6 +80732,74 @@ func (client *Client) DeleteZnode(request *DeleteZnodeRequest) (_result *DeleteZ
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteZnodeResponse{}
 	_body, _err := client.DeleteZnodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Proxy Protocol开关
+//
+// @param request - EnableProxyProtocolRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableProxyProtocolResponse
+func (client *Client) EnableProxyProtocolWithOptions(request *EnableProxyProtocolRequest, runtime *util.RuntimeOptions) (_result *EnableProxyProtocolResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableProxyProtocol)) {
+		query["EnableProxyProtocol"] = request.EnableProxyProtocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableProxyProtocol"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EnableProxyProtocolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Proxy Protocol开关
+//
+// @param request - EnableProxyProtocolRequest
+//
+// @return EnableProxyProtocolResponse
+func (client *Client) EnableProxyProtocol(request *EnableProxyProtocolRequest) (_result *EnableProxyProtocolResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EnableProxyProtocolResponse{}
+	_body, _err := client.EnableProxyProtocolWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

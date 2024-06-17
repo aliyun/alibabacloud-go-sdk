@@ -1,3 +1,7 @@
+2024-06-17 Version: v5.8.0
+- Support API EnableProxyProtocol.
+
+
 2024-06-12 Version: v5.7.1
 - Update API QueryConfig: update response param.
 - Update API UpdateConfig: add param AuthEnabled.
