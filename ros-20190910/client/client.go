@@ -2765,6 +2765,7 @@ func (s *CreateStackInstancesRequest) SetTimeoutInMinutes(v int64) *CreateStackI
 }
 
 type CreateStackInstancesRequestDeploymentTargets struct {
+	AccountIds []*string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
 	// The folder IDs of the resource directory. You can add up to five folder IDs.
 	//
 	// You can create stacks within all the member accounts in the specified folders. If you create stacks in the Root folder, the stacks are created within all member accounts in the resource directory.
@@ -2779,6 +2780,11 @@ func (s CreateStackInstancesRequestDeploymentTargets) String() string {
 
 func (s CreateStackInstancesRequestDeploymentTargets) GoString() string {
 	return s.String()
+}
+
+func (s *CreateStackInstancesRequestDeploymentTargets) SetAccountIds(v []*string) *CreateStackInstancesRequestDeploymentTargets {
+	s.AccountIds = v
+	return s
 }
 
 func (s *CreateStackInstancesRequestDeploymentTargets) SetRdFolderIds(v []*string) *CreateStackInstancesRequestDeploymentTargets {
@@ -5960,7 +5966,7 @@ type GenerateTemplateByScratchRequest struct {
 	//
 	// cn-hangzhou
 	ProvisionRegionId *string `json:"ProvisionRegionId,omitempty" xml:"ProvisionRegionId,omitempty"`
-	// The region ID of the scenario.
+	// The region ID of the resource scenario.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/131035.html) operation to query the most recent region list.
 	//
@@ -5970,9 +5976,9 @@ type GenerateTemplateByScratchRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the scenario.
+	// The ID of the resource scenario.
 	//
-	// For more information about how to query the IDs of scenarios, see [ListTemplateScratches](https://help.aliyun.com/document_detail/363050.html).
+	// For more information about how to query the IDs of resource scenarios, see [ListTemplateScratches](https://help.aliyun.com/document_detail/363050.html).
 	//
 	// This parameter is required.
 	//
@@ -6023,11 +6029,11 @@ type GenerateTemplateByScratchResponseBody struct {
 	//
 	// D22C1D13-D74E-558C-AF68-1B4C05FA6F1A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resources that you want to import into a stack in the scenario.
+	// The resources that you want to import into a stack in the resource management scenario.
 	//
-	// > This parameter is returned only if the scenario is of the Resource Management type.
+	// > This parameter is returned only for a resource management scenario.
 	ResourcesToImport []*GenerateTemplateByScratchResponseBodyResourcesToImport `json:"ResourcesToImport,omitempty" xml:"ResourcesToImport,omitempty" type:"Repeated"`
-	// The template content of the scenario.
+	// The template content of the resource scenario.
 	//
 	// example:
 	//
@@ -14750,7 +14756,7 @@ type ListResourceTypeRegistrationsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The registration records.
+	// The registration records of the resource.
 	Registrations []*ListResourceTypeRegistrationsResponseBodyRegistrations `json:"Registrations,omitempty" xml:"Registrations,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -14795,7 +14801,7 @@ func (s *ListResourceTypeRegistrationsResponseBody) SetTotalCount(v int32) *List
 }
 
 type ListResourceTypeRegistrationsResponseBodyRegistrations struct {
-	// The time when the version was created. The time is displayed in UTC. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format.
+	// The creation time. The time is displayed in UTC. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format.
 	//
 	// example:
 	//
@@ -14821,11 +14827,11 @@ type ListResourceTypeRegistrationsResponseBodyRegistrations struct {
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The registration state. Valid values:
 	//
-	// 	- IN_PROGRESS
+	// 	- IN_PROGRESS: The registration is in progress.
 	//
-	// 	- COMPLETE
+	// 	- COMPLETE: The registration is successful.
 	//
-	// 	- FAILED
+	// 	- FAILED: The registration failed.
 	//
 	// example:
 	//
@@ -24540,16 +24546,22 @@ type UpdateTemplateScratchRequest struct {
 	// rg-acfmxazb4ph6aiy****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The source resource group.
+	//
+	// >  You must specify only one of the following parameters: SourceResources, SourceTag, and SourceResourceGroup.
 	SourceResourceGroup *UpdateTemplateScratchRequestSourceResourceGroup `json:"SourceResourceGroup,omitempty" xml:"SourceResourceGroup,omitempty" type:"Struct"`
 	// The source resources.
 	//
-	// If you specify SourceResources when TemplateScratchType is set to ArchitectureDetection, the system detects the architecture of all resources that are associated with the specified source resources. For example, if you set the value of SourceResources to an ID of a Classic Load Balancer (CLB) instance, the system detects the architecture of resources, such as Elastic Compute Service (ECS) instances, vSwitches, and virtual private clouds (VPCs), that are associated with the CLB instance.
-	//
-	// If you set TemplateScratchType to ArchitectureDetection, you can specify up to 20 source resources for SourceResources. In other cases, you can specify up to 200 source resources.
+	// >  You must specify only one of the following parameters: SourceResources, SourceTag, and SourceResourceGroup.
 	SourceResources []*UpdateTemplateScratchRequestSourceResources `json:"SourceResources,omitempty" xml:"SourceResources,omitempty" type:"Repeated"`
 	// The source tag.
+	//
+	// >  You must specify only one of the following parameters: SourceResources, SourceTag, and SourceResourceGroup.
 	SourceTag *UpdateTemplateScratchRequestSourceTag `json:"SourceTag,omitempty" xml:"SourceTag,omitempty" type:"Struct"`
-	// The ID of the scenario.
+	// The ID of the resource scenario.
+	//
+	// The valid values of the ParameterKey and ParameterValue request parameters vary based on the IDs of different types of resource scenarios. For more information, see the "Additional information about request parameters" section of this topic.
+	//
+	// >  You can call the [ListTemplateScratches](https://help.aliyun.com/document_detail/610832.html) operation to query the ID of a resource scenario.
 	//
 	// This parameter is required.
 	//
@@ -24678,7 +24690,7 @@ type UpdateTemplateScratchRequestSourceResourceGroup struct {
 	//
 	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The resource types.
+	// The resource types for filtering resources.
 	ResourceTypeFilter []*string `json:"ResourceTypeFilter,omitempty" xml:"ResourceTypeFilter,omitempty" type:"Repeated"`
 }
 
@@ -24738,11 +24750,11 @@ func (s *UpdateTemplateScratchRequestSourceResources) SetResourceType(v string) 
 }
 
 type UpdateTemplateScratchRequestSourceTag struct {
-	// The source tags that consist of key-value pairs.
+	// The source tags. A tag contains a tag key and a tag value.
 	//
-	// If you want to specify only the tag key, you must set the tag value to an empty string. Example: {"TagKey": ""}.
+	// If you want to specify only the tag key, you must leave the tag value empty. Example: {"TagKey": ""}.
 	//
-	// If you set TemplateScratchType to ArchitectureDetection, you can add up to five source tags. In other cases, you can add up to 10 source tags.
+	// If you set TemplateScratchType to ArchitectureDetection, you can add up to 5 source tags. In other cases, you can add up to 10 source tags.
 	//
 	// This parameter is required.
 	//
@@ -24832,16 +24844,22 @@ type UpdateTemplateScratchShrinkRequest struct {
 	// rg-acfmxazb4ph6aiy****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The source resource group.
+	//
+	// >  You must specify only one of the following parameters: SourceResources, SourceTag, and SourceResourceGroup.
 	SourceResourceGroupShrink *string `json:"SourceResourceGroup,omitempty" xml:"SourceResourceGroup,omitempty"`
 	// The source resources.
 	//
-	// If you specify SourceResources when TemplateScratchType is set to ArchitectureDetection, the system detects the architecture of all resources that are associated with the specified source resources. For example, if you set the value of SourceResources to an ID of a Classic Load Balancer (CLB) instance, the system detects the architecture of resources, such as Elastic Compute Service (ECS) instances, vSwitches, and virtual private clouds (VPCs), that are associated with the CLB instance.
-	//
-	// If you set TemplateScratchType to ArchitectureDetection, you can specify up to 20 source resources for SourceResources. In other cases, you can specify up to 200 source resources.
+	// >  You must specify only one of the following parameters: SourceResources, SourceTag, and SourceResourceGroup.
 	SourceResourcesShrink *string `json:"SourceResources,omitempty" xml:"SourceResources,omitempty"`
 	// The source tag.
+	//
+	// >  You must specify only one of the following parameters: SourceResources, SourceTag, and SourceResourceGroup.
 	SourceTagShrink *string `json:"SourceTag,omitempty" xml:"SourceTag,omitempty"`
-	// The ID of the scenario.
+	// The ID of the resource scenario.
+	//
+	// The valid values of the ParameterKey and ParameterValue request parameters vary based on the IDs of different types of resource scenarios. For more information, see the "Additional information about request parameters" section of this topic.
+	//
+	// >  You can call the [ListTemplateScratches](https://help.aliyun.com/document_detail/610832.html) operation to query the ID of a resource scenario.
 	//
 	// This parameter is required.
 	//
@@ -27702,11 +27720,13 @@ func (client *Client) ExecuteChangeSet(request *ExecuteChangeSetRequest) (_resul
 
 // Summary:
 //
-// Creates a template for a scenario.
+// Generates a template for a resource scenario.
 //
 // Description:
 //
-// In this example, a template is created for the scenario whose ID is `ts-aa9c62feab844a6b****`. The scenario is of the Resource Management type and resides in the China (Hangzhou) region.
+// In this example, a template is generated for a resource management scenario that resides in the China (Hangzhou) region. The ID of the resource scenario is `ts-aa9c62feab844a6b****`.
+//
+// >  You cannot generate a template for a resource detection scenario.
 //
 // @param request - GenerateTemplateByScratchRequest
 //
@@ -27760,11 +27780,13 @@ func (client *Client) GenerateTemplateByScratchWithOptions(request *GenerateTemp
 
 // Summary:
 //
-// Creates a template for a scenario.
+// Generates a template for a resource scenario.
 //
 // Description:
 //
-// In this example, a template is created for the scenario whose ID is `ts-aa9c62feab844a6b****`. The scenario is of the Resource Management type and resides in the China (Hangzhou) region.
+// In this example, a template is generated for a resource management scenario that resides in the China (Hangzhou) region. The ID of the resource scenario is `ts-aa9c62feab844a6b****`.
+//
+// >  You cannot generate a template for a resource detection scenario.
 //
 // @param request - GenerateTemplateByScratchRequest
 //
@@ -32918,7 +32940,29 @@ func (client *Client) UpdateTemplate(request *UpdateTemplateRequest) (_result *U
 //
 // Description:
 //
-// In this example, a scenario whose ID is `ts-7f7a704cf71c49a6****` is used. The scenario is created in the China (Hangzhou) region. In the scenario, the ID of a virtual private cloud (VPC) is updated to `vpc-bp1m6fww66xbntjyc****`.
+// ### [](#)Resource replication scenario
+//
+// Resource Orchestration Service (ROS) allows you to update a resource replication scenario. The updates that you make to a resource replication scenario do not affect the stack that is generated by using the resource scenario. You can call the [GenerateTemplateByScratch](https://help.aliyun.com/document_detail/610829.html) operation to generate a template for the resource scenario.
+//
+// ### [](#)Resource migration scenario
+//
+// 	- If you want to update a resource migration scenario in which the migrated source resources are retained, you can delete the source resources to manage the updated resource migration scenario. You can also call the [GenerateTemplateByScratch](https://help.aliyun.com/document_detail/610829.html) operation to generate a template for the resource scenario.
+//
+//     **
+//
+//     **Note*	- Make sure that the source resources that you want to delete from a resource migration scenario are associated only with the resource scenario. Otherwise, the source resources fail to be deleted.
+//
+// 	- If you want to update a resource migration scenario in which the migrated source resources are deleted, you can only call the [GenerateTemplateByScratch](https://help.aliyun.com/document_detail/610829.html) operation to generate a template for the resource scenario.
+//
+// ### [](#)Resource management scenario
+//
+// If you want to update a resource management scenario after you use the resource scenario to manage resources, you can only call the [GenerateTemplateByScratch](https://help.aliyun.com/document_detail/610829.html) operation to generate a template for the resource scenario.
+//
+// ### [](#)Resource detection scenario
+//
+// After you update a resource detection scenario, ROS obtains the most recent data from Resource Center and renders the architecture diagram.
+//
+// This topic provides an example on how to update a resource scenario. In this example, the ID of a virtual private cloud (VPC) in a resource scenario whose ID is `ts-7f7a704cf71c49a6****` is updated to `vpc-bp1m6fww66xbntjyc****`.
 //
 // @param tmpReq - UpdateTemplateScratchRequest
 //
@@ -33022,7 +33066,29 @@ func (client *Client) UpdateTemplateScratchWithOptions(tmpReq *UpdateTemplateScr
 //
 // Description:
 //
-// In this example, a scenario whose ID is `ts-7f7a704cf71c49a6****` is used. The scenario is created in the China (Hangzhou) region. In the scenario, the ID of a virtual private cloud (VPC) is updated to `vpc-bp1m6fww66xbntjyc****`.
+// ### [](#)Resource replication scenario
+//
+// Resource Orchestration Service (ROS) allows you to update a resource replication scenario. The updates that you make to a resource replication scenario do not affect the stack that is generated by using the resource scenario. You can call the [GenerateTemplateByScratch](https://help.aliyun.com/document_detail/610829.html) operation to generate a template for the resource scenario.
+//
+// ### [](#)Resource migration scenario
+//
+// 	- If you want to update a resource migration scenario in which the migrated source resources are retained, you can delete the source resources to manage the updated resource migration scenario. You can also call the [GenerateTemplateByScratch](https://help.aliyun.com/document_detail/610829.html) operation to generate a template for the resource scenario.
+//
+//     **
+//
+//     **Note*	- Make sure that the source resources that you want to delete from a resource migration scenario are associated only with the resource scenario. Otherwise, the source resources fail to be deleted.
+//
+// 	- If you want to update a resource migration scenario in which the migrated source resources are deleted, you can only call the [GenerateTemplateByScratch](https://help.aliyun.com/document_detail/610829.html) operation to generate a template for the resource scenario.
+//
+// ### [](#)Resource management scenario
+//
+// If you want to update a resource management scenario after you use the resource scenario to manage resources, you can only call the [GenerateTemplateByScratch](https://help.aliyun.com/document_detail/610829.html) operation to generate a template for the resource scenario.
+//
+// ### [](#)Resource detection scenario
+//
+// After you update a resource detection scenario, ROS obtains the most recent data from Resource Center and renders the architecture diagram.
+//
+// This topic provides an example on how to update a resource scenario. In this example, the ID of a virtual private cloud (VPC) in a resource scenario whose ID is `ts-7f7a704cf71c49a6****` is updated to `vpc-bp1m6fww66xbntjyc****`.
 //
 // @param request - UpdateTemplateScratchRequest
 //
