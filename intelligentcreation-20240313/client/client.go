@@ -496,7 +496,7 @@ type TextTask struct {
 	TextModeType   *string `json:"textModeType,omitempty" xml:"textModeType,omitempty"`
 	TextTaskId     *int64  `json:"textTaskId,omitempty" xml:"textTaskId,omitempty"`
 	TextTaskStatus *string `json:"textTaskStatus,omitempty" xml:"textTaskStatus,omitempty"`
-	Texts          *Text   `json:"texts,omitempty" xml:"texts,omitempty"`
+	Texts          []*Text `json:"texts,omitempty" xml:"texts,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 旅游路线
@@ -592,7 +592,7 @@ func (s *TextTask) SetTextTaskStatus(v string) *TextTask {
 	return s
 }
 
-func (s *TextTask) SetTexts(v *Text) *TextTask {
+func (s *TextTask) SetTexts(v []*Text) *TextTask {
 	s.Texts = v
 	return s
 }
