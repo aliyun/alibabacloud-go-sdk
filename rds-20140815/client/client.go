@@ -2152,13 +2152,13 @@ func (s *CheckServiceLinkedRoleResponse) SetBody(v *CheckServiceLinkedRoleRespon
 }
 
 type CloneDBInstanceRequest struct {
-	// Specifies whether to automatically complete the payment. Valid values:
+	// Specifies whether to enable the automatic payment feature. Valid values:
 	//
-	// 1.  **true**: automatically completes the payment. You must make sure that your account balance is sufficient.
+	// 1.  **true**: enables the feature. You must make sure that your account balance is sufficient.
 	//
-	// 2.  **false**: does not automatically complete the payment. An unpaid order is generated.
+	// 2.  **false**: disables the feature. An unpaid order is generated.
 	//
-	// > The default value is true. If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, you can pay for the order in the ApsaraDB RDS console.
+	// >  Default value: true. If your account balance is insufficient, you can set the AutoPay parameter to false to generate an unpaid order. Then, you can log on to the ApsaraDB RDS console to complete the payment.
 	//
 	// example:
 	//
@@ -2278,9 +2278,9 @@ type CloneDBInstanceRequest struct {
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
 	// Specifies whether to enable the release protection feature for the instance. Valid values:
 	//
-	// 	- **true**: enables the feature.
+	// 	- **true**
 	//
-	// 	- **false*	- (default): disables the feature.
+	// 	- **false*	- (default)
 	//
 	// example:
 	//
@@ -2324,7 +2324,7 @@ type CloneDBInstanceRequest struct {
 	//
 	// 	- **Month**
 	//
-	// > If you set the PayType parameter to **Prepaid**, you must also specify this parameter.
+	// >  If you set the PayType parameter to **Prepaid**, you must specify this parameter.
 	//
 	// example:
 	//
@@ -2675,13 +2675,13 @@ func (s *CloneDBInstanceRequestServerlessConfig) SetSwitchForce(v bool) *CloneDB
 }
 
 type CloneDBInstanceShrinkRequest struct {
-	// Specifies whether to automatically complete the payment. Valid values:
+	// Specifies whether to enable the automatic payment feature. Valid values:
 	//
-	// 1.  **true**: automatically completes the payment. You must make sure that your account balance is sufficient.
+	// 1.  **true**: enables the feature. You must make sure that your account balance is sufficient.
 	//
-	// 2.  **false**: does not automatically complete the payment. An unpaid order is generated.
+	// 2.  **false**: disables the feature. An unpaid order is generated.
 	//
-	// > The default value is true. If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, you can pay for the order in the ApsaraDB RDS console.
+	// >  Default value: true. If your account balance is insufficient, you can set the AutoPay parameter to false to generate an unpaid order. Then, you can log on to the ApsaraDB RDS console to complete the payment.
 	//
 	// example:
 	//
@@ -2801,9 +2801,9 @@ type CloneDBInstanceShrinkRequest struct {
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
 	// Specifies whether to enable the release protection feature for the instance. Valid values:
 	//
-	// 	- **true**: enables the feature.
+	// 	- **true**
 	//
-	// 	- **false*	- (default): disables the feature.
+	// 	- **false*	- (default)
 	//
 	// example:
 	//
@@ -2847,7 +2847,7 @@ type CloneDBInstanceShrinkRequest struct {
 	//
 	// 	- **Month**
 	//
-	// > If you set the PayType parameter to **Prepaid**, you must also specify this parameter.
+	// >  If you set the PayType parameter to **Prepaid**, you must specify this parameter.
 	//
 	// example:
 	//
@@ -4512,13 +4512,13 @@ type CreateDBInstanceRequest struct {
 	//
 	// 2
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// Specifies whether to automatically complete the payment. Default value: true. Valid values:
+	// Specifies whether to enable the automatic payment feature. Valid values:
 	//
 	// 	- **true**: automatically completes the payment. You must make sure that your account balance is sufficient.
 	//
 	// 	- **false**: does not automatically complete the payment. An unpaid order is generated.
 	//
-	// >  Default value: true. If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, you can pay for the order in the ApsaraDB RDS console.
+	// >  The default value is true. If your account balance is insufficient, you can set the AutoPay parameter to false to generate an unpaid order. Then, you can log on to the ApsaraDB RDS console to complete the payment.
 	//
 	// example:
 	//
@@ -4778,22 +4778,21 @@ type CreateDBInstanceRequest struct {
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs a dry run but does not perform the actual request. The system checks items such as the request parameters, request format, service limits, and available resources.
+	// 	- **true**: performs a dry run but does not create the instance. The system checks items such as the request parameters, request format, service limits, and available resources.
 	//
-	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, the instance is created.
+	// 	- **false*	- (default): performs a dry run and sends the request. If the request passes the dry run, the instance is created.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ID of the key that was used to encrypt the disk in the region where the disk is deployed. If this parameter is specified, disk encryption is enabled and you must also specify the **RoleARN*	- parameter. Disk encryption cannot be disabled after it is enabled.
+	// The ID of the key that is used for cloud disk encryption in the region in which the instance is deployed. If this parameter is specified, cloud disk encryption is enabled and you must also specify the **RoleARN*	- parameter. Cloud disk encryption cannot be disabled after it is enabled.
 	//
-	// You can obtain the ID of the key in the Key Management Service (KMS) console or create a key. For more information, see [Create a CMK](https://help.aliyun.com/document_detail/181610.html).
+	// You can obtain the ID of the key in the Key Management Service (KMS) console or create a key. For more information, see [Create a key](https://help.aliyun.com/document_detail/181610.html).
 	//
-	// > 	- This parameter is not required when you create an RDS instance that runs MySQL, PostgreSQL, or SQL Server. You need to only specify the **RoleARN*	- parameter to create an instance that has cloud disk encryption enabled by using the obtained key ID.
+	// > 	- This parameter is not required when you create an instance that runs MySQL, PostgreSQL, or SQL Server. You need to only specify the **RoleARN*	- parameter to create an instance that has cloud disk encryption enabled by using the obtained key ID.
 	//
 	// > 	- You can configure RAM authorization to require a RAM user to enable cloud disk encryption when the RAM user is used to create an instance. If cloud disk encryption is disabled during the instance creation, the creation operation fails. To complete the configuration, you can attach the following policy to the RAM user: `{"Version":"1","Statement":[{"Effect":"Deny","Action":"rds:CreateDBInstance","Resource":"*","Condition":{"StringEquals":{"rds:DiskEncryptionRequired":"false"}}}]}`
-	//
 	//
 	//
 	// 	Warning: The configuration also affects the CreateOrder operation that is called to create instances in the console.
@@ -4828,7 +4827,7 @@ type CreateDBInstanceRequest struct {
 	//
 	//     	- Valid values when you set Engine to PostgreSQL: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, **15.0**, and **16.0**
 	//
-	//     	- Valid values when you set Engine to MariaDB: **10.3**
+	//     	- Valid value if you set Engine to MariaDB: **10.3**
 	//
 	// 	- Serverless instance
 	//
@@ -4846,7 +4845,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// 	- RDS instances that run SQL Server 2014 are not available for purchase on the international site (alibabacloud.com).
 	//
-	// 	- Babelfish is supported only for ApsaraDB RDS for PostgreSQL instances that run PostgreSQL 15.
+	// 	- Babelfish is supported only for RDS instances that run PostgreSQL 15.
 	//
 	// This parameter is required.
 	//
@@ -4856,15 +4855,17 @@ type CreateDBInstanceRequest struct {
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The network type of the instance. Valid values:
 	//
-	// 	- **VPC**: virtual private cloud (VPC).
+	// 	- **VPC**: virtual private cloud (VPC)
 	//
 	// 	- **Classic**: the classic network
 	//
-	// > 	- If the instance runs MySQL and uses cloud disks, you must set this parameter to **VPC**.
+	// >
 	//
-	// > 	- If the instance runs PostgreSQL or MariaDB, you must set this parameter to **VPC**.
+	// 	- If the instance runs MySQL and uses cloud disks, you must set this parameter to **VPC**.
 	//
-	// > 	- RDS instances that run SQL Server Basic and SQL Server Web can reside in the classic network and virtual private clouds (VPCs). If the instance runs other database engines, you must set this parameter to **VPC**.
+	// 	- If the instance runs PostgreSQL or MariaDB, you must set this parameter to **VPC**.
+	//
+	// 	- If the instance runs SQL Server Basic or SQL Server Web, you can set this parameter to VPC or Classic. If the instance runs other database engine, you must set this parameter to **VPC**.
 	//
 	// example:
 	//
@@ -4898,7 +4899,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// 	- **Month**
 	//
-	// >  If you set the PayType parameter to **Prepaid**, you must specify the UsedTime parameter.
+	// >  If you set the PayType parameter to **Prepaid**, you must specify this parameter.
 	//
 	// example:
 	//
@@ -4957,19 +4958,19 @@ type CreateDBInstanceRequest struct {
 	//
 	// >  ApsaraDB RDS for MariaDB does not support serverless instances.
 	ServerlessConfig *CreateDBInstanceRequestServerlessConfig `json:"ServerlessConfig,omitempty" xml:"ServerlessConfig,omitempty" type:"Struct"`
-	// Specifies whether to enable the automatic storage expansion feature for the instance. This feature is supported if your RDS instance runs MySQL or PostgreSQL. Valid values:
+	// Specifies whether to enable the automatic storage expansion feature for the instance. This feature is supported if the instance runs MySQL or PostgreSQL. Valid values:
 	//
 	// 	- **Enable**
 	//
 	// 	- **Disable*	- (default)
 	//
-	// >  After the instance is created, you can call the ModifyDasInstanceConfig operation to adjust the settings of automatic storage expansion for the instance. For more information, see [Configure automatic storage expansion](https://help.aliyun.com/document_detail/173826.html).
+	// >  After the instance is created, you can call the ModifyDasInstanceConfig operation to adjust the settings. For more information, see [Configure automatic storage expansion](https://help.aliyun.com/document_detail/173826.html).
 	//
 	// example:
 	//
 	// Disable
 	StorageAutoScale *string `json:"StorageAutoScale,omitempty" xml:"StorageAutoScale,omitempty"`
-	// The threshold in percentage based on which automatic storage expansion is triggered.
+	// The threshold in percentage based on which automatic storage expansion is triggered. Valid values:
 	//
 	// 	- **10**
 	//
@@ -5071,7 +5072,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// 	- If you set the **Period*	- parameter to **Month**, the value of the **UsedTime*	- parameter ranges from **1 to 11**.
 	//
-	// >  If you set the PayType parameter to **Prepaid**, you must specify the UsedTime parameter.
+	// >  If you set the PayType parameter to **Prepaid**, you must specify this parameter.
 	//
 	// example:
 	//
@@ -5111,7 +5112,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// vsw-*****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The whitelists. If you enter more than one IP address or CIDR block, you must separate these IP addresses or CIDR blocks with commas (,). Do not add spaces preceding or following the commas. Example: `192.168.0.1,172.16.213.9`.
+	// The entries in the whitelist. If you enter multiple IP addresses or CIDR blocks, you must separate the IP addresses or CIDR blocks with commas (,). Do not add spaces preceding or following the commas. Example: `192.168.0.1,172.16.213.9`.
 	//
 	// example:
 	//
@@ -5486,9 +5487,11 @@ type CreateDBInstanceRequestServerlessConfig struct {
 	//
 	// 	- **false*	- (default)
 	//
-	// > 	- This parameter is required only for serverless instances that run MySQL and PostgreSQL. If you set this parameter to true, a service interruption that lasts approximately 30 to 120 seconds occurs during forced scaling. Process with caution.
+	// >
 	//
-	// > 	- The RCU scaling for a serverless instance immediately takes effect. In some cases, such as the execution of large transactions, the scaling does not immediately take effect. In this case, you can enable this feature to forcefully scale the RCUs of the instance.
+	// 	- This parameter is required only for serverless instances that run MySQL and PostgreSQL. If you set this parameter to true, a service interruption that lasts approximately 30 to 120 seconds occurs during forced scaling. Process with caution.
+	//
+	// 	- The RCU scaling for a serverless instance immediately takes effect. In some cases, such as the execution of large transactions, the scaling does not immediately take effect. In this case, you can enable this feature to forcefully scale the RCUs of the instance.
 	//
 	// example:
 	//
@@ -5586,13 +5589,13 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// 2
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// Specifies whether to automatically complete the payment. Default value: true. Valid values:
+	// Specifies whether to enable the automatic payment feature. Valid values:
 	//
 	// 	- **true**: automatically completes the payment. You must make sure that your account balance is sufficient.
 	//
 	// 	- **false**: does not automatically complete the payment. An unpaid order is generated.
 	//
-	// >  Default value: true. If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, you can pay for the order in the ApsaraDB RDS console.
+	// >  The default value is true. If your account balance is insufficient, you can set the AutoPay parameter to false to generate an unpaid order. Then, you can log on to the ApsaraDB RDS console to complete the payment.
 	//
 	// example:
 	//
@@ -5852,22 +5855,21 @@ type CreateDBInstanceShrinkRequest struct {
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs a dry run but does not perform the actual request. The system checks items such as the request parameters, request format, service limits, and available resources.
+	// 	- **true**: performs a dry run but does not create the instance. The system checks items such as the request parameters, request format, service limits, and available resources.
 	//
-	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, the instance is created.
+	// 	- **false*	- (default): performs a dry run and sends the request. If the request passes the dry run, the instance is created.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ID of the key that was used to encrypt the disk in the region where the disk is deployed. If this parameter is specified, disk encryption is enabled and you must also specify the **RoleARN*	- parameter. Disk encryption cannot be disabled after it is enabled.
+	// The ID of the key that is used for cloud disk encryption in the region in which the instance is deployed. If this parameter is specified, cloud disk encryption is enabled and you must also specify the **RoleARN*	- parameter. Cloud disk encryption cannot be disabled after it is enabled.
 	//
-	// You can obtain the ID of the key in the Key Management Service (KMS) console or create a key. For more information, see [Create a CMK](https://help.aliyun.com/document_detail/181610.html).
+	// You can obtain the ID of the key in the Key Management Service (KMS) console or create a key. For more information, see [Create a key](https://help.aliyun.com/document_detail/181610.html).
 	//
-	// > 	- This parameter is not required when you create an RDS instance that runs MySQL, PostgreSQL, or SQL Server. You need to only specify the **RoleARN*	- parameter to create an instance that has cloud disk encryption enabled by using the obtained key ID.
+	// > 	- This parameter is not required when you create an instance that runs MySQL, PostgreSQL, or SQL Server. You need to only specify the **RoleARN*	- parameter to create an instance that has cloud disk encryption enabled by using the obtained key ID.
 	//
 	// > 	- You can configure RAM authorization to require a RAM user to enable cloud disk encryption when the RAM user is used to create an instance. If cloud disk encryption is disabled during the instance creation, the creation operation fails. To complete the configuration, you can attach the following policy to the RAM user: `{"Version":"1","Statement":[{"Effect":"Deny","Action":"rds:CreateDBInstance","Resource":"*","Condition":{"StringEquals":{"rds:DiskEncryptionRequired":"false"}}}]}`
-	//
 	//
 	//
 	// 	Warning: The configuration also affects the CreateOrder operation that is called to create instances in the console.
@@ -5902,7 +5904,7 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	//     	- Valid values when you set Engine to PostgreSQL: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, **15.0**, and **16.0**
 	//
-	//     	- Valid values when you set Engine to MariaDB: **10.3**
+	//     	- Valid value if you set Engine to MariaDB: **10.3**
 	//
 	// 	- Serverless instance
 	//
@@ -5920,7 +5922,7 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// 	- RDS instances that run SQL Server 2014 are not available for purchase on the international site (alibabacloud.com).
 	//
-	// 	- Babelfish is supported only for ApsaraDB RDS for PostgreSQL instances that run PostgreSQL 15.
+	// 	- Babelfish is supported only for RDS instances that run PostgreSQL 15.
 	//
 	// This parameter is required.
 	//
@@ -5930,15 +5932,17 @@ type CreateDBInstanceShrinkRequest struct {
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The network type of the instance. Valid values:
 	//
-	// 	- **VPC**: virtual private cloud (VPC).
+	// 	- **VPC**: virtual private cloud (VPC)
 	//
 	// 	- **Classic**: the classic network
 	//
-	// > 	- If the instance runs MySQL and uses cloud disks, you must set this parameter to **VPC**.
+	// >
 	//
-	// > 	- If the instance runs PostgreSQL or MariaDB, you must set this parameter to **VPC**.
+	// 	- If the instance runs MySQL and uses cloud disks, you must set this parameter to **VPC**.
 	//
-	// > 	- RDS instances that run SQL Server Basic and SQL Server Web can reside in the classic network and virtual private clouds (VPCs). If the instance runs other database engines, you must set this parameter to **VPC**.
+	// 	- If the instance runs PostgreSQL or MariaDB, you must set this parameter to **VPC**.
+	//
+	// 	- If the instance runs SQL Server Basic or SQL Server Web, you can set this parameter to VPC or Classic. If the instance runs other database engine, you must set this parameter to **VPC**.
 	//
 	// example:
 	//
@@ -5972,7 +5976,7 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// 	- **Month**
 	//
-	// >  If you set the PayType parameter to **Prepaid**, you must specify the UsedTime parameter.
+	// >  If you set the PayType parameter to **Prepaid**, you must specify this parameter.
 	//
 	// example:
 	//
@@ -6031,19 +6035,19 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// >  ApsaraDB RDS for MariaDB does not support serverless instances.
 	ServerlessConfigShrink *string `json:"ServerlessConfig,omitempty" xml:"ServerlessConfig,omitempty"`
-	// Specifies whether to enable the automatic storage expansion feature for the instance. This feature is supported if your RDS instance runs MySQL or PostgreSQL. Valid values:
+	// Specifies whether to enable the automatic storage expansion feature for the instance. This feature is supported if the instance runs MySQL or PostgreSQL. Valid values:
 	//
 	// 	- **Enable**
 	//
 	// 	- **Disable*	- (default)
 	//
-	// >  After the instance is created, you can call the ModifyDasInstanceConfig operation to adjust the settings of automatic storage expansion for the instance. For more information, see [Configure automatic storage expansion](https://help.aliyun.com/document_detail/173826.html).
+	// >  After the instance is created, you can call the ModifyDasInstanceConfig operation to adjust the settings. For more information, see [Configure automatic storage expansion](https://help.aliyun.com/document_detail/173826.html).
 	//
 	// example:
 	//
 	// Disable
 	StorageAutoScale *string `json:"StorageAutoScale,omitempty" xml:"StorageAutoScale,omitempty"`
-	// The threshold in percentage based on which automatic storage expansion is triggered.
+	// The threshold in percentage based on which automatic storage expansion is triggered. Valid values:
 	//
 	// 	- **10**
 	//
@@ -6145,7 +6149,7 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// 	- If you set the **Period*	- parameter to **Month**, the value of the **UsedTime*	- parameter ranges from **1 to 11**.
 	//
-	// >  If you set the PayType parameter to **Prepaid**, you must specify the UsedTime parameter.
+	// >  If you set the PayType parameter to **Prepaid**, you must specify this parameter.
 	//
 	// example:
 	//
@@ -6185,7 +6189,7 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// vsw-*****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The whitelists. If you enter more than one IP address or CIDR block, you must separate these IP addresses or CIDR blocks with commas (,). Do not add spaces preceding or following the commas. Example: `192.168.0.1,172.16.213.9`.
+	// The entries in the whitelist. If you enter multiple IP addresses or CIDR blocks, you must separate the IP addresses or CIDR blocks with commas (,). Do not add spaces preceding or following the commas. Example: `192.168.0.1,172.16.213.9`.
 	//
 	// example:
 	//
@@ -9239,15 +9243,11 @@ type CreateGADInstanceRequestUnitNode struct {
 	//
 	// 	- The name cannot start with `http://` or `https://`.
 	//
-	// **N*	- in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
-	//
 	// example:
 	//
 	// test
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
 	// The storage capacity of the unit node that you want to create. Unit: GB You can adjust the storage capacity in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html). You can also call the DescribeAvailableResource operation to query the storage capacity range that is supported by the new instance type.
-	//
-	// **N*	- in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
 	//
 	// example:
 	//
@@ -9259,11 +9259,11 @@ type CreateGADInstanceRequestUnitNode struct {
 	//
 	// 	- **cloud_ssd**: standard SSD. This storage type is not recommended. Standard SSDs are no longer available for purchase in some Alibaba Cloud regions.
 	//
-	// 	- **cloud_essd**: enhanced SSD (ESSD) of performance level 1 (PL1).
+	// 	- **cloud_essd**: PL1 ESSD
 	//
-	// 	- **cloud_essd2**: ESSD of PL2.
+	// 	- **cloud_essd2**: PL2 ESSD
 	//
-	// 	- **cloud_essd3**: ESSD of PL3.
+	// 	- **cloud_essd3**: PL3 ESSD
 	//
 	// The default value of this parameter is determined by the instance type specified by the **DBInstanceClass*	- parameter.
 	//
@@ -9277,8 +9277,6 @@ type CreateGADInstanceRequestUnitNode struct {
 	DBInstanceStorageType *string `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
 	// The instance type of the unit node that you want to create. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html). You can call the DescribeAvailableResource operation to query the available instance types in a region.
 	//
-	// **N*	- in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
-	//
 	// example:
 	//
 	// rds.mysql.t1.small
@@ -9290,8 +9288,6 @@ type CreateGADInstanceRequestUnitNode struct {
 	// 	- **interrupt**: DTS stops the synchronization task, reports an error, and then exits.
 	//
 	// 	- **ignore**: DTS hides the conflicting primary key on the node.
-	//
-	// **N*	- in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
 	//
 	// This parameter is required.
 	//
@@ -9311,8 +9307,6 @@ type CreateGADInstanceRequestUnitNode struct {
 	//
 	// >  For more information, see [Specifications of data synchronization tasks](https://help.aliyun.com/document_detail/26605.html).
 	//
-	// **N*	- in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
-	//
 	// This parameter is required.
 	//
 	// example:
@@ -9320,8 +9314,6 @@ type CreateGADInstanceRequestUnitNode struct {
 	// medium
 	DtsInstanceClass *string `json:"DtsInstanceClass,omitempty" xml:"DtsInstanceClass,omitempty"`
 	// The database engine of the unit node that you want to create. Set the value to **MySQL**.
-	//
-	// **N*	- in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
 	//
 	// example:
 	//
@@ -9337,8 +9329,6 @@ type CreateGADInstanceRequestUnitNode struct {
 	//
 	// 	- **5.5**
 	//
-	// **N*	- in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
-	//
 	// example:
 	//
 	// 8.0
@@ -9351,15 +9341,11 @@ type CreateGADInstanceRequestUnitNode struct {
 	//
 	// >  The system automatically generates a purchase order and completes the payment. You do not need to manually confirm the purchase order or complete the payment.
 	//
-	// **N*	- in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
-	//
 	// example:
 	//
 	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The region ID of the unit node that you want to create. You can call the DescribeRegions operation to query the most recent region list.
-	//
-	// **N*	- in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
 	//
 	// This parameter is required.
 	//
@@ -9373,15 +9359,11 @@ type CreateGADInstanceRequestUnitNode struct {
 	//
 	// 	- CIDR blocks, such as `10.10.10.10/24`. In this example, **24*	- indicates that the prefix of the IP address in the whitelist is 24 bits in length. You can replace 24 with a value within the range of **1 to 32**.
 	//
-	// **N*	- in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
-	//
 	// example:
 	//
 	// 10.10.10.10
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
 	// The vSwitch ID of the unit node that you want to create.
-	//
-	// **N*	- in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
 	//
 	// example:
 	//
@@ -9389,39 +9371,31 @@ type CreateGADInstanceRequestUnitNode struct {
 	VSwitchID *string `json:"VSwitchID,omitempty" xml:"VSwitchID,omitempty"`
 	// The virtual private cloud (VPC) ID of the unit node that you want to create.
 	//
-	// **N*	- in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
-	//
 	// example:
 	//
 	// vpc-bp19ame5m1r3o********
 	VpcID *string `json:"VpcID,omitempty" xml:"VpcID,omitempty"`
 	// The zone ID of the unit node that you want to create. You can call the DescribeRegions operation to query the zone ID.
 	//
-	// **N*	- in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
-	//
 	// example:
 	//
 	// cn-hangzhou-h
 	ZoneID *string `json:"ZoneID,omitempty" xml:"ZoneID,omitempty"`
-	// The zone ID of the secondary node of the unit node that you want to create. You can call the DescribeRegions operation to query the ID of the zone.
+	// The zone ID of the secondary node of the unit node that you want to create. You can call the DescribeRegions operation to query the zone ID.
 	//
 	// 	- If the value of this parameter is the same as the **zone ID*	- of the unit node that you want to create, the single-zone deployment method is used.
 	//
 	// 	- If the value of this parameter is different from the **zone ID*	- of the unit node that you want to create, the multiple-zone deployment method is used.
-	//
-	// **N*	- in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
 	//
 	// example:
 	//
 	// cn-hangzhou-h
 	ZoneIDSlave1 *string `json:"ZoneIDSlave1,omitempty" xml:"ZoneIDSlave1,omitempty"`
-	// The zone ID of the logger node of the unit node that you want to create. You can call the DescribeRegions operation to query the ID of the zone.
+	// The zone ID of the logger node of the unit node that you want to create. You can call the DescribeRegions operation to query the zone ID.
 	//
 	// 	- If the value of this parameter is the same as the **zone ID*	- of the unit node that you want to create, the single-zone deployment method is used.
 	//
 	// 	- If the value of this parameter is different from the **zone ID*	- of the unit node that you want to create, the multiple-zone deployment method is used.
-	//
-	// **N*	- in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
 	//
 	// example:
 	//
@@ -9736,29 +9710,25 @@ type CreateGadInstanceMemberRequestUnitNode struct {
 	//
 	// 	- The name cannot start with `http://` or `https://`.
 	//
-	// **N*	- specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
-	//
 	// example:
 	//
 	// test
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	// The storage capacity of the unit node that you want to create. Unit: GB. You can adjust the storage capacity in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html). You can also call the DescribeAvailableResource operation to query the storage capacity range that is available for a specific instance type in a region.
-	//
-	// **N*	- specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
+	// The storage capacity of the unit node that you want to create. Unit: GB The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html). You can also call the DescribeAvailableResource operation to query the storage capacity range that is supported by the new instance type.
 	//
 	// example:
 	//
 	// 20
 	DBInstanceStorage *int64 `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
-	// The storage type of the new instance. Valid values:
+	// The storage type of the instance. Valid values:
 	//
-	// 	- **local_ssd**: local SSDs
+	// 	- **local_ssd**: local SSD
 	//
-	// 	- **cloud_ssd**: standard SSDs
+	// 	- **cloud_ssd**: standard SSD
 	//
-	// 	- **cloud_essd**: PL1 ESSDs
+	// 	- **cloud_essd**: PL1 ESSD
 	//
-	// 	- **cloud_essd2**: PL2 ESSDs
+	// 	- **cloud_essd2**: PL2 ESSD
 	//
 	// 	- **cloud_essd3**: PL3 ESSD
 	//
@@ -9767,8 +9737,6 @@ type CreateGadInstanceMemberRequestUnitNode struct {
 	// cloud_essd
 	DBInstanceStorageType *string `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
 	// The instance type of the unit node that you want to create. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html). You can call the DescribeAvailableResource operation to query the available instance types in a region.
-	//
-	// **N*	- specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
 	//
 	// example:
 	//
@@ -9781,8 +9749,6 @@ type CreateGadInstanceMemberRequestUnitNode struct {
 	// 	- **interrupt**: DTS stops the synchronization task, reports an error, and then exits.
 	//
 	// 	- **ignore**: DTS overwrites the conflicting primary key on the logger node.
-	//
-	// **N*	- specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
 	//
 	// This parameter is required.
 	//
@@ -9800,9 +9766,7 @@ type CreateGadInstanceMemberRequestUnitNode struct {
 	//
 	// 	- **micro**
 	//
-	// >  For more information, see [Specifications of data synchronization instances](https://help.aliyun.com/document_detail/26605.html).
-	//
-	// **N*	- specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
+	// >  For more information, see [Specifications of data synchronization tasks](https://help.aliyun.com/document_detail/26605.html).
 	//
 	// This parameter is required.
 	//
@@ -9811,8 +9775,6 @@ type CreateGadInstanceMemberRequestUnitNode struct {
 	// medium
 	DtsInstanceClass *string `json:"DtsInstanceClass,omitempty" xml:"DtsInstanceClass,omitempty"`
 	// The database engine of the unit node that you want to create. Set the value to **MySQL**.
-	//
-	// **N*	- specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
 	//
 	// example:
 	//
@@ -9828,15 +9790,11 @@ type CreateGadInstanceMemberRequestUnitNode struct {
 	//
 	// 	- **5.5**
 	//
-	// **N*	- specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
-	//
 	// example:
 	//
 	// 8.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The region ID of the unit node that you want to create. You can call the DescribeRegions operation to query the most recent region list.
-	//
-	// **N*	- specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
+	// The region ID of the unit node or secondary node that you want to create. You can call the DescribeRegions operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -9844,21 +9802,17 @@ type CreateGadInstanceMemberRequestUnitNode struct {
 	//
 	// cn-hangzhou
 	RegionID *string `json:"RegionID,omitempty" xml:"RegionID,omitempty"`
-	// The IP address whitelist of the unit node that you want to create. For more information, see [IP address whitelist](https://help.aliyun.com/document_detail/43185.html). If you want to add more than one entry to the IP address whitelist, separate the entries with commas (,). Each entry must be unique. The IP address whitelist can contain up to 1,000 entries. The entries in the IP address whitelist must be in one of the following formats:
+	// The [IP address whitelist](https://help.aliyun.com/document_detail/43185.html) of the unit node that you want to create. If you want to add more than one entry to the IP address whitelist, separate the entries with commas (,). Each entry must be unique. The IP address whitelist can contain up to 1,000 entries. The entries in the IP address whitelist must be in one of the following formats:
 	//
 	// 	- IP addresses, such as `10.10.XX.XX`.
 	//
 	// 	- CIDR blocks, such as `10.10.XX.XX/24`. In this example, **24*	- indicates that the prefix of each IP address in the IP address whitelist is 24 bits in length. You can replace 24 with a value within the range of **1 to 32**.
-	//
-	// **N*	- specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
 	//
 	// example:
 	//
 	// 10.10.XX.XX
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
 	// The vSwitch ID of the unit node that you want to create.
-	//
-	// **N*	- specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
 	//
 	// This parameter is required.
 	//
@@ -9868,17 +9822,13 @@ type CreateGadInstanceMemberRequestUnitNode struct {
 	VSwitchID *string `json:"VSwitchID,omitempty" xml:"VSwitchID,omitempty"`
 	// The virtual private cloud (VPC) ID of the unit node that you want to create.
 	//
-	// **N*	- specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// vpc-bp19ame5m1r3o****
 	VpcID *string `json:"VpcID,omitempty" xml:"VpcID,omitempty"`
-	// The zone ID of the unit node that you want to create. You can call the DescribeRegions operation to query zone ID.
-	//
-	// **N*	- specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
+	// The zone ID of the unit node that you want to create. You can call the DescribeRegions operation to query the zone ID.
 	//
 	// example:
 	//
@@ -9890,8 +9840,6 @@ type CreateGadInstanceMemberRequestUnitNode struct {
 	//
 	// 	- If the value of this parameter is different from the **zone ID*	- of the unit node that you want to create, the multiple-zone deployment method is used.
 	//
-	// **N*	- specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
-	//
 	// example:
 	//
 	// cn-hangzhou-h
@@ -9901,8 +9849,6 @@ type CreateGadInstanceMemberRequestUnitNode struct {
 	// 	- If the value of this parameter is the same as the **zone ID*	- of the unit node that you want to create, the single-zone deployment method is used.
 	//
 	// 	- If the value of this parameter is different from the **zone ID*	- of the unit node that you want to create, the multiple-zone deployment method is used.
-	//
-	// **N*	- specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
 	//
 	// example:
 	//
@@ -15866,7 +15812,7 @@ type DescribeAccountsRequest struct {
 	//
 	// rm-uf6wjk5*****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The page number. Default value: **1**. Valid values: any non-zero positive integer.
+	// The page number. Default value: **1**. Pages start from page 1.
 	//
 	// example:
 	//
@@ -24600,7 +24546,10 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// false
 	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
-	CanTempUpgrade  *bool `json:"CanTempUpgrade,omitempty" xml:"CanTempUpgrade,omitempty"`
+	// example:
+	//
+	// true
+	CanTempUpgrade *bool `json:"CanTempUpgrade,omitempty" xml:"CanTempUpgrade,omitempty"`
 	// The RDS edition. Valid values:
 	//
 	// 	- **Basic**: RDS Basic Edition
@@ -24659,7 +24608,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// 2
 	ConsoleVersion *string `json:"ConsoleVersion,omitempty" xml:"ConsoleVersion,omitempty"`
-	// The creation time of the instance. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The creation time. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -24733,7 +24682,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// Internet
 	DBInstanceNetType *string `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
-	// The status of the instance. For more information, see [Instance states](https://help.aliyun.com/document_detail/26315.html).
+	// The instance status. For more information, see [Instance statuses](https://help.aliyun.com/document_detail/26315.html).
 	//
 	// example:
 	//
@@ -24751,7 +24700,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// 	- **cloud_ssd**: standard SSD
 	//
-	// 	- **cloud_essd**: enhanced SSD (ESSD).
+	// 	- **cloud_essd**: Enterprise SSD (ESSD)
 	//
 	// 	- **general_essd**: general ESSD
 	//
@@ -24823,7 +24772,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// 2019-03-27T16:00:00Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The extended information.
+	// The extended information of the instance.
 	Extra *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra `json:"Extra,omitempty" xml:"Extra,omitempty" type:"Struct"`
 	// The name of the dedicated cluster to which the instance belongs. This parameter is returned only when the instance is created in an ApsaraDB MyBase cluster that runs MySQL on Standard Edition.
 	//
@@ -24957,7 +24906,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// 	- **Prepaid**: subscription
 	//
-	// 	- **SERVERLESS**
+	// 	- **SERVERLESS**: serverless
 	//
 	// example:
 	//
@@ -25036,8 +24985,14 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	// example:
 	//
 	// rm-uf64zsu*****
-	TempDBInstanceId     *string `json:"TempDBInstanceId,omitempty" xml:"TempDBInstanceId,omitempty"`
-	TempUpgradeTimeEnd   *string `json:"TempUpgradeTimeEnd,omitempty" xml:"TempUpgradeTimeEnd,omitempty"`
+	TempDBInstanceId *string `json:"TempDBInstanceId,omitempty" xml:"TempDBInstanceId,omitempty"`
+	// example:
+	//
+	// 2024-05-30 00:00:00
+	TempUpgradeTimeEnd *string `json:"TempUpgradeTimeEnd,omitempty" xml:"TempUpgradeTimeEnd,omitempty"`
+	// example:
+	//
+	// 2024-05-29 00:00:00
 	TempUpgradeTimeStart *string `json:"TempUpgradeTimeStart,omitempty" xml:"TempUpgradeTimeStart,omitempty"`
 	// The time zone.
 	//
@@ -25055,7 +25010,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// 	- **1**: The instance is normal.
 	//
-	// 	- **2**: The specifications of the read-only instances do not match the specifications of the primary instance, and instance performance may be affected. You must adjust the specifications of these instances based on your business requirements.
+	// 	- **2**: The specifications of the read-only instances do not match the specifications of the primary instance. You must adjust the specifications of these instances based on your business requirements.
 	//
 	// example:
 	//
@@ -25073,7 +25028,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// vpc-23rsxdf*****
 	VpcCloudInstanceId *string `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
-	// The virtual private cloud (VPC) ID.
+	// The VPC ID.
 	//
 	// example:
 	//
@@ -25550,7 +25505,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDBClusterNod
 	//
 	// mysql.n2.medium.xc
 	ClassCode *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
-	// The node type. Valid values:
+	// The node type. Default value: true. Valid values:
 	//
 	// 	- d: dedicated node type
 	//
@@ -25600,7 +25555,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDBClusterNod
 	//
 	// cn-beijing-h
 	NodeZoneId *string `json:"NodeZoneId,omitempty" xml:"NodeZoneId,omitempty"`
-	// The node status. Valid values:
+	// The node status. Default value: true. Valid values:
 	//
 	// 	- active
 	//
@@ -29992,7 +29947,7 @@ type DescribeDBInstanceSSLResponseBody struct {
 	//
 	// 	- **cert**
 	//
-	// 	- **perfer**
+	// 	- **prefer**
 	//
 	// 	- **verify-ca**
 	//
@@ -30068,7 +30023,7 @@ type DescribeDBInstanceSSLResponseBody struct {
 	//
 	// 	- **cert**
 	//
-	// 	- **perfer**
+	// 	- **prefer**
 	//
 	// 	- **verify-ca**
 	//
@@ -31911,13 +31866,13 @@ type DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// 	- **Performance**: standard mode.
 	//
-	// 	- **Safety**: safe mode.
+	// 	- **Safety**: enhanced mode
 	//
 	// example:
 	//
 	// Performance
 	ConnectionMode *string `json:"ConnectionMode,omitempty" xml:"ConnectionMode,omitempty"`
-	// The internal endpoint of the instance.
+	// The internal endpoint.
 	//
 	// example:
 	//
@@ -31947,7 +31902,7 @@ type DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// s
 	DBInstanceClassType *string `json:"DBInstanceClassType,omitempty" xml:"DBInstanceClassType,omitempty"`
-	// The description of the instance.
+	// The instance description.
 	//
 	// example:
 	//
@@ -31967,15 +31922,15 @@ type DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute struct {
 	DBInstanceMemory *int64 `json:"DBInstanceMemory,omitempty" xml:"DBInstanceMemory,omitempty"`
 	// The network type of the instance. Valid values:
 	//
-	// 	- **Internet**: Internet
+	// 	- **Internet**
 	//
-	// 	- **Intranet**: internal network
+	// 	- **Intranet**
 	//
 	// example:
 	//
 	// Internet
 	DBInstanceNetType *string `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
-	// The status of the instance.
+	// The instance status.
 	//
 	// example:
 	//
@@ -31987,11 +31942,11 @@ type DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// 10
 	DBInstanceStorage *int32 `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
-	// The type of the instance. Valid values:
+	// The instance type. Valid values:
 	//
 	// 	- **Primary**: primary instance
 	//
-	// 	- **Readonly**: read-only instance
+	// 	- **ReadOnly**: read-only instance
 	//
 	// 	- **Guard**: disaster recovery instance
 	//
@@ -32013,7 +31968,7 @@ type DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The engine version of the instance.
+	// The engine version.
 	//
 	// example:
 	//
@@ -32025,19 +31980,19 @@ type DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// 2019-03-27T16:00:00Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// A deprecated parameter. You do not need to configure this parameter.
+	// A deprecated parameter. You do not need to specify this parameter.
 	//
 	// example:
 	//
 	// API
 	ExportKey *string `json:"ExportKey,omitempty" xml:"ExportKey,omitempty"`
-	// The ID of the disaster recovery instance that is attached to the instance.
+	// The ID of the disaster recovery instance that is attached to the primary instance.
 	//
 	// example:
 	//
 	// rm-uf64zsuxxxxxxxxxx
 	GuardDBInstanceId *string `json:"GuardDBInstanceId,omitempty" xml:"GuardDBInstanceId,omitempty"`
-	// The ID of the instance from which incremental data comes. The incremental data of a disaster recovery instance or read-only instance comes from its primary instance. If this parameter is not returned, the instance is a primary instance.
+	// The ID of the instance from which incremental data comes. The incremental data of a disaster recovery instance comes from its primary instance. The incremental data of a read-only instance comes from its primary instance. If this parameter is not returned, the instance is a primary instance.
 	//
 	// example:
 	//
@@ -32061,13 +32016,13 @@ type DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// instance_expired
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	// The maintenance window of the instance. The time is displayed in UTC. Take note that the maintenance window that is displayed in the ApsaraDB RDS console is equal to the value of this parameter plus 8 hours.
+	// The maintenance window of the instance. The time follows the ISO 8601 standard and is displayed in UTC. In the ApsaraDB RDS console, the maintenance window is displayed in UTC+8.
 	//
 	// example:
 	//
 	// 00:00Z-02:00Z
 	MaintainTime *string `json:"MaintainTime,omitempty" xml:"MaintainTime,omitempty"`
-	// The ID of the primary instance.
+	// The primary instance ID.
 	//
 	// example:
 	//
@@ -32109,13 +32064,13 @@ type DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IP address whitelist.
+	// The IP addresses in the whitelist.
 	//
 	// example:
 	//
 	// 42.xx.xx.xx
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	// A deprecated parameter. You do not need to configure this parameter.
+	// A deprecated parameter. You do not need to specify this parameter.
 	SlaveZones *DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttributeSlaveZones `json:"SlaveZones,omitempty" xml:"SlaveZones,omitempty" type:"Struct"`
 	// N/A.
 	//
@@ -32129,7 +32084,7 @@ type DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// 0
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The ID of the temporary instance that is attached to the instance.
+	// The ID of the temporary instance that is attached to the primary instance.
 	//
 	// example:
 	//
@@ -32141,7 +32096,7 @@ type DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// vsw-uf6adz52c2pxxxxxxxxxx
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the virtual private cloud (VPC).
+	// The virtual private cloud (VPC) ID.
 	//
 	// example:
 	//
@@ -35901,7 +35856,7 @@ type DescribeDatabasesRequest struct {
 	DBStatus     *string `json:"DBStatus,omitempty" xml:"DBStatus,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Pages start from page 1.
+	// The number of the page to return. Valid values: any non-zero positive integer.
 	//
 	// Default value: **1**.
 	//
@@ -35992,7 +35947,7 @@ func (s *DescribeDatabasesRequest) SetResourceOwnerId(v int64) *DescribeDatabase
 }
 
 type DescribeDatabasesResponseBody struct {
-	// The information about the database.
+	// The information about the databases.
 	Databases *DescribeDatabasesResponseBodyDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -36054,7 +36009,7 @@ type DescribeDatabasesResponseBodyDatabasesDatabase struct {
 	//
 	// utf8
 	CharacterSetName *string `json:"CharacterSetName,omitempty" xml:"CharacterSetName,omitempty"`
-	// The collation of the character set. The example value C stands for localization.
+	// The collation of the character set. The example value C indicates localization.
 	//
 	// >  This parameter is returned only for instances that run PostgreSQL.
 	//
@@ -36104,6 +36059,8 @@ type DescribeDatabasesResponseBodyDatabasesDatabase struct {
 	//
 	// 	- **Deleting**
 	//
+	// 	- **Cold**
+	//
 	// example:
 	//
 	// Creating
@@ -36114,7 +36071,7 @@ type DescribeDatabasesResponseBodyDatabasesDatabase struct {
 	//
 	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The page number.
+	// The page number of the page to return.
 	//
 	// example:
 	//
@@ -42043,6 +42000,8 @@ type DescribeInstanceLinkedWhitelistTemplateRequest struct {
 	//
 	// rm-bp191w771kd3****
 	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
+	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -48573,7 +48532,9 @@ func (s *DescribePriceShrinkRequest) SetZoneId(v string) *DescribePriceShrinkReq
 }
 
 type DescribePriceResponseBody struct {
-	// Order parameters.
+	// The order parameters.
+	//
+	// >  If the **OrderParamOut*	- parameter is set to **true**, the value of the OrderParams parameter is returned.
 	//
 	// example:
 	//
@@ -48589,7 +48550,7 @@ type DescribePriceResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The details of the promotion rule.
 	Rules *DescribePriceResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
-	// Serverless price information.
+	// The pricing information about a serverless RDS instance.
 	ServerlessPrice *DescribePriceResponseBodyServerlessPrice `json:"ServerlessPrice,omitempty" xml:"ServerlessPrice,omitempty" type:"Struct"`
 	// Indicates whether discounts can be used.
 	//
@@ -48676,7 +48637,7 @@ type DescribePriceResponseBodyPriceInfo struct {
 	//
 	// 0
 	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
-	// Order Information
+	// The order information.
 	//
 	// example:
 	//
@@ -48690,13 +48651,13 @@ type DescribePriceResponseBodyPriceInfo struct {
 	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
 	// An array that consists of the ID of the promotion rule.
 	RuleIds *DescribePriceResponseBodyPriceInfoRuleIds `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Struct"`
-	// Estimated hourly cost calculated based on the maximum RCU selected by the user.
+	// The estimated hourly cost that is calculated based on the maximum number of RCUs you specify.
 	//
 	// example:
 	//
 	// 1**
 	TradeMaxRCUAmount *float32 `json:"TradeMaxRCUAmount,omitempty" xml:"TradeMaxRCUAmount,omitempty"`
-	// Estimated hourly cost calculated based on the minimum RCU selected by the user.
+	// The estimated hourly cost that is calculated based on the minimum number of RCUs you specify.
 	//
 	// example:
 	//
@@ -48963,37 +48924,37 @@ func (s *DescribePriceResponseBodyRulesRule) SetRuleId(v int64) *DescribePriceRe
 }
 
 type DescribePriceResponseBodyServerlessPrice struct {
-	// MaxRCU discount amount.
+	// The discount amount of the maximum number of RCUs.
 	//
 	// example:
 	//
 	// 1**.*
 	RCUDiscountMaxAmount *float32 `json:"RCUDiscountMaxAmount,omitempty" xml:"RCUDiscountMaxAmount,omitempty"`
-	// MinRCU discount amount.
+	// The discount amount of the minimum number of RCUs.
 	//
 	// example:
 	//
 	// 1*.*
 	RCUDiscountMinAmount *float32 `json:"RCUDiscountMinAmount,omitempty" xml:"RCUDiscountMinAmount,omitempty"`
-	// MaxRCU price.
+	// The price of the maximum number of RCUs.
 	//
 	// example:
 	//
 	// 2**.*
 	RCUOriginalMaxAmount *float32 `json:"RCUOriginalMaxAmount,omitempty" xml:"RCUOriginalMaxAmount,omitempty"`
-	// MinRCU price.
+	// The price of the minimum number of RCUs.
 	//
 	// example:
 	//
 	// 3*.*
 	RCUOriginalMinAmount *float32 `json:"RCUOriginalMinAmount,omitempty" xml:"RCUOriginalMinAmount,omitempty"`
-	// Original price of the disk.
+	// The original price of the disk capacity.
 	//
 	// example:
 	//
 	// 1*
 	StorageOriginalAmount *float32 `json:"StorageOriginalAmount,omitempty" xml:"StorageOriginalAmount,omitempty"`
-	// Maximum total price before discount.
+	// The maximum total price before the discount.
 	//
 	// example:
 	//
@@ -49005,19 +48966,19 @@ type DescribePriceResponseBodyServerlessPrice struct {
 	//
 	// 2*.*
 	TotalOriginalMinAmount *float32 `json:"TotalOriginalMinAmount,omitempty" xml:"TotalOriginalMinAmount,omitempty"`
-	// MaxRCU transaction price.
+	// The transaction price of the maximum number of RCUs.
 	//
 	// example:
 	//
 	// 1**.*
 	TradeMaxRCUAmount *float32 `json:"TradeMaxRCUAmount,omitempty" xml:"TradeMaxRCUAmount,omitempty"`
-	// MinRCU transaction price.
+	// The transaction price of the minimum number of RCUs.
 	//
 	// example:
 	//
 	// 2*.*
 	TradeMinRCUAmount *float32 `json:"TradeMinRCUAmount,omitempty" xml:"TradeMinRCUAmount,omitempty"`
-	// Disk discount price.
+	// The discounted price of the disk capacity.
 	//
 	// example:
 	//
@@ -50023,7 +49984,7 @@ func (s *DescribeRegionsResponseBodyRegions) SetRDSRegion(v []*DescribeRegionsRe
 type DescribeRegionsResponseBodyRegionsRDSRegion struct {
 	// The region name. The return value of this parameter is in the language that is specified by the **AcceptLanguage*	- parameter. For example, if the value of the RegionId parameter in the response is cn-hangzhou, the following values are returned for the LocalName parameter:
 	//
-	// 	- If the value of the **AcceptLanguage*	- parameter is **zh-CN**, the value `华东1（杭州）` is returned for the LocalName parameter.
+	// 	- If the value of the **AcceptLanguage*	- parameter is **zh-CN**, the value  1()is returned for the LocalName parameter.
 	//
 	// 	- If the value of the **AcceptLanguage*	- parameter is **en-US**, the value China (Hangzhou) is returned for the LocalName parameter.
 	//
@@ -50049,11 +50010,11 @@ type DescribeRegionsResponseBodyRegionsRDSRegion struct {
 	//
 	// cn-hangzhou-h
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	// The zone name. The return value of this parameter is in the language that is specified by the **AcceptLanguage*	- parameter. For example, if the value of the ZoneId parameter in the response is cn-hangzhou-h, the following values are returned for the ZoneName parameter:
+	// The zone name. The return value of this parameter is in the language that is specified by the **AcceptLanguage*	- parameter. For example, if the value of the ZoneId parameter in the response is cn-hangzhou-j, the following values are returned for the ZoneName parameter:
 	//
-	// 	- If the value of the **AcceptLanguage*	- parameter is **zh-CN**, the `杭州 可用区 H` is returned for the ZoneName parameter.
+	// 	- If the value of the **AcceptLanguage*	- parameter is **zh-CN**, the value   J is returned for the ZoneName parameter.
 	//
-	// 	- If the value of the **AcceptLanguage*	- parameter is **en-US**, the value Hangzhou Zone H is returned for the ZoneName parameter.
+	// 	- If the value of the **AcceptLanguage*	- parameter is **en-US**, the value Hangzhou Zone J is returned for the ZoneName parameter.
 	//
 	// example:
 	//
@@ -51758,7 +51719,7 @@ type DescribeSQLLogRecordsRequest struct {
 	//
 	// ETnLKlblzczshOTUbOCzxxxxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) operation to query the instance ID.
+	// The instance ID. You can call the DescribeDBInstances operation to query the ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -51782,11 +51743,11 @@ type DescribeSQLLogRecordsRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// Specifies whether to generate an SQL audit log file or return SQL audit log entries. Valid values:
 	//
-	// 	- **File**: If you set this parameter to File, this operation generates an SQL audit log file and returns only common response parameters. After you call this operation, you must call the [DescribeSQLLogFiles](https://help.aliyun.com/document_detail/26295.html) operation to obtain the download URL of the SQL audit log file.
+	// 	- **File**: If you set this parameter to File, this operation generates an SQL audit log file and returns only common response parameters. After you call this operation, you must call the DescribeSQLLogFiles operation to obtain the download URL of the SQL audit log file.
 	//
 	// 	- **Stream*	- (default): If you set this parameter to Stream, this operation returns SQL audit log entries.
 	//
-	// > If you set this parameter to **File**, only ApsaraDB RDS for MySQL instances that use local disks and ApsaraDB RDS for SQL Server instances are supported, and a maximum of 1 million log entries are returned.
+	// >  If you set this parameter to **File**, only ApsaraDB RDS for MySQL instances that use local disks and ApsaraDB RDS for SQL Server instances are supported, and a maximum of one million log entries are returned.
 	//
 	// example:
 	//
@@ -51794,7 +51755,7 @@ type DescribeSQLLogRecordsRequest struct {
 	Form         *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Valid values: any non-zero positive integer.
+	// The page number. Pages start from 1.
 	//
 	// Default value: **1**.
 	//
@@ -51802,7 +51763,7 @@ type DescribeSQLLogRecordsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values: **30*	- to **100**. Default value: **30**.
+	// The number of entries per page. Valid values: **30*	- to **100**. Default value: **30**.
 	//
 	// example:
 	//
@@ -56036,7 +55997,7 @@ func (s *DescribeUpgradeMajorVersionTasksResponse) SetBody(v *DescribeUpgradeMaj
 }
 
 type DescribeVSwitchesRequest struct {
-	// The dedicated cluster ID. You can call the DescribeDedicatedHostGroups operation to query the dedicated cluster ID. If you specify this parameter, the details of all vSwitches in the VPC to which the dedicated cluster belongs are returned.
+	// The dedicated cluster ID. You can call the DescribeDedicatedHostGroups operation to query the dedicated cluster ID. If you specify this parameter, the details of all VSwitches in the VPC to which the dedicated cluster belongs are returned.
 	//
 	// >  You must specify this parameter or the **VpcId*	- parameter.
 	//
@@ -56058,7 +56019,7 @@ type DescribeVSwitchesRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the vSwitch. You can call the DescribeRegions operation to query the most recent region list.
+	// The region ID of the VSwitch. You can call the DescribeRegions operation to query the most recent region list.
 	//
 	// example:
 	//
@@ -56073,7 +56034,7 @@ type DescribeVSwitchesRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the VPC to which the vSwitch belongs.
+	// The ID of the VPC to which the VSwitch belongs.
 	//
 	// > You must configure this parameter or **DedicatedHostGroupId**.
 	//
@@ -56081,7 +56042,7 @@ type DescribeVSwitchesRequest struct {
 	//
 	// vpc-bp1opxu1zkhn**********
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the zone to which the vSwitch belongs. You can call the DescribeAvailableZones operation to query zone IDs. If you specify this parameter, the query results are filtered based on the value of this parameter and only the details of the vSwitch that is deployed in the specified zone are returned.
+	// The ID of the zone to which the VSwitch belongs. You can call the DescribeAvailableZones operation to query zone IDs. If you specify this parameter, the query results are filtered based on the value of this parameter and only the details of the VSwitch that is deployed in the specified zone are returned.
 	//
 	// example:
 	//
@@ -61143,13 +61104,13 @@ type ModifyBackupPolicyRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// Specifies whether to enable the log backup feature. Valid values:
 	//
-	// 	- **True*	- or **1**: enables the feature.
+	// 	- **True*	- or **1**: enables the log backup feature.
 	//
-	// 	- **False*	- or **0**: disables the feature.
+	// 	- **False*	- or **0**: enables the log backup feature.
 	//
-	// > 	- This parameter must be specified when **BackupPolicyMode*	- is set to **LogBackupPolicy**.
+	// > 	- You must specify this parameter when you set the **BackupPolicyMode*	- parameter to **LogBackupPolicy**.
 	//
-	// > 	- This parameter takes effect only when **BackupPolicyMode*	- is set to **LogBackupPolicy**.
+	// > 	- This parameter takes effect only when you set the **BackupPolicyMode*	- parameter to **LogBackupPolicy**.
 	//
 	// example:
 	//
@@ -61215,9 +61176,9 @@ type ModifyBackupPolicyRequest struct {
 	LogBackupFrequency *string `json:"LogBackupFrequency,omitempty" xml:"LogBackupFrequency,omitempty"`
 	// The number of binary log files that you want to retain on the instance. Default value: **60**. Valid values: **6*	- to **100**.
 	//
-	// > 	- This parameter takes effect only when **BackupPolicyMode*	- is set to **LogBackupPolicy**.
+	// > 	- This parameter takes effect only when you set the **BackupPolicyMode*	- parameter to **LogBackupPolicy**.
 	//
-	// > 	- If the instance runs MySQL, you can set this parameter to \\*\\*-1\\*\\*. The value -1 specifies that no limits are imposed on the number of binary log files retained on the instance.
+	// > 	- If the instance runs MySQL, you can set this parameter to **-1**. The value **-1*	- specifies that an unlimited number of binary log files can be retained on the instance.
 	//
 	// example:
 	//
@@ -61599,11 +61560,9 @@ type ModifyCollationTimeZoneRequest struct {
 	//
 	// 	- **Chinese_Taiwan_Stroke_CS_AS**
 	//
-	// >
+	// > 	- The default character set collation of the instance is **Chinese_PRC_CI_AS**.
 	//
-	// 	- The default character set collation of the instance is **Chinese_PRC_CI_AS**.
-	//
-	// 	- You must specify one of the **Collation*	- and **Timezone*	- parameters.
+	// > 	- You must specify one of the **Collation*	- and **Timezone*	- parameters.
 	//
 	// example:
 	//
@@ -61622,11 +61581,9 @@ type ModifyCollationTimeZoneRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The time zone of the instance. By default, the system does not modify the time zone.
 	//
-	// >
+	// > 	- The default time zone of the instance is **China Standard Time**.
 	//
-	// 	- The default time zone of the instance is **China Standard Time**.
-	//
-	// 	- You must specify one of the **Collation*	- and **Timezone*	- parameters.
+	// > 	- You must specify one of the **Collation*	- and **Timezone*	- parameters.
 	//
 	// example:
 	//
@@ -62339,10 +62296,7 @@ type ModifyDBInstanceConnectionModeRequest struct {
 	// example:
 	//
 	// rm-uf6wjk5xxxxxx
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// example:
-	//
-	// testuser@aliyun.com
+	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -65137,6 +65091,8 @@ type ModifyDBInstanceSpecRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The specifications that you want to change for a serverless instance.
+	//
+	// >  This parameter is available only on the China site (aliyun.com).
 	ServerlessConfiguration *ModifyDBInstanceSpecRequestServerlessConfiguration `json:"ServerlessConfiguration,omitempty" xml:"ServerlessConfiguration,omitempty" type:"Struct"`
 	// A deprecated parameter. You do not need to specify this parameter.
 	//
@@ -65326,7 +65282,9 @@ type ModifyDBInstanceSpecRequestServerlessConfiguration struct {
 	//
 	// 	- **false*	- (default)
 	//
-	// >  This parameter is required only for serverless instances that run MySQL and PostgreSQL. After the automatic start and stop feature is enabled, if no connections to the instance are established within 10 minutes, the instance is suspended. After a connection to the instance is established, the instance is resumed.
+	// > 	- This parameter is required only for serverless instances that run MySQL and PostgreSQL. After the automatic start and stop feature is enabled, if no connections to the instance are established within 10 minutes, the instance is suspended. After a connection to the instance is established, the instance is automatically resumed.
+	//
+	// > 	- This parameter is available only on the China site (aliyun.com).
 	//
 	// if can be null:
 	// false
@@ -65343,7 +65301,9 @@ type ModifyDBInstanceSpecRequestServerlessConfiguration struct {
 	//
 	// 	- Serverless ApsaraDB RDS for PostgreSQL instances: **1 to 14**
 	//
-	// >  The value of this parameter must be greater than or equal to the value of **MinCapacity*	- and can be specified only to an **integer**.
+	// > 	- The value of this parameter must be greater than or equal to the value of **MinCapacity*	- and can be specified only to an **integer**.
+	//
+	// > 	- This parameter is available only on the China site (aliyun.com).
 	//
 	// example:
 	//
@@ -65357,7 +65317,9 @@ type ModifyDBInstanceSpecRequestServerlessConfiguration struct {
 	//
 	// 	- Serverless ApsaraDB RDS for PostgreSQL instances: **0.5 to 14**.
 	//
-	// >  The value of this parameter must be less than or equal to the value of **MaxCapacity**.
+	// > 	- The value of this parameter must be less than or equal to the value of MaxCapacity.
+	//
+	// > 	- This parameter is available only on the China site (aliyun.com).
 	//
 	// example:
 	//
@@ -65372,6 +65334,8 @@ type ModifyDBInstanceSpecRequestServerlessConfiguration struct {
 	// > 	- This parameter is required only for serverless instances that run MySQL and PostgreSQL. If you set this parameter to true, a service interruption that lasts 30 to 120 seconds occurs during forced scaling. Process with caution.
 	//
 	// > 	- The RCU scaling for a serverless instance immediately takes effect. In some cases, such as the execution of large transactions, the scaling does not immediately take effect. In this case, you can enable this feature to forcefully scale the RCUs of the instance.
+	//
+	// > 	- This parameter is available only on the China site (aliyun.com).
 	//
 	// example:
 	//
@@ -65593,6 +65557,8 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The specifications that you want to change for a serverless instance.
+	//
+	// >  This parameter is available only on the China site (aliyun.com).
 	ServerlessConfigurationShrink *string `json:"ServerlessConfiguration,omitempty" xml:"ServerlessConfiguration,omitempty"`
 	// A deprecated parameter. You do not need to specify this parameter.
 	//
@@ -67728,7 +67694,11 @@ type ModifyDatabaseConfigRequest struct {
 	//
 	// testDB
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The name of the database property that you want to modify.
+	// The database property that you want to modify.
+	//
+	// 	- **If you want to modify a property of the database**, set this parameter to the name of the database property.
+	//
+	// 	- **If you want to archive data from the database to an OSS bucket**, specify the database status. If you set this parameter to `covert_online_db_to_cold_storage`, the system converts an online database to a cold storage database. If you set this parameter to `convert_cold_storage_db_to_online`, the system converts a cold storage database to an online database.
 	//
 	// This parameter is required.
 	//
@@ -67737,6 +67707,10 @@ type ModifyDatabaseConfigRequest struct {
 	// compatibility_level
 	DatabasePropertyName *string `json:"DatabasePropertyName,omitempty" xml:"DatabasePropertyName,omitempty"`
 	// The value of the database property that you want to modify.
+	//
+	// 	- **If you want to modify a property of the database**, set this parameter to the property value.
+	//
+	// 	- **If you want to archive data from the database to an OSS bucket**, set this parameter to **1**. The system converts a database to a cold storage database or an online database.
 	//
 	// This parameter is required.
 	//
@@ -69571,11 +69545,11 @@ type ModifyParameterGroupRequest struct {
 	//
 	// 	- **Collectivity*	- (default): adds new parameters or modifies parameters in the original parameter template.
 	//
-	// > If ModifyMode is set to Collectivity, the system adds the value of **Parameters*	- to the parameter template or modifies the corresponding parameters in the parameter template. Other parameters in the original parameter template are not affected.
+	// >  If you set the ModifyMode parameter to Collectivity, the system adds the value of the **Parameters*	- parameter to the original parameter template or modifies the corresponding parameters in the original parameter template. Other parameters in the original parameter template are not affected.
 	//
 	// 	- **Individual**: overwrites original parameters.
 	//
-	// > If ModifyMode is set to Individual, the system uses the value of **Parameters*	- to overwrite the original parameter in the parameter template.
+	// >  If you set the ModifyMode parameter to Individual, the system uses the value of the **Parameters*	- parameter to overwrite the parameter settings in the original parameter template.
 	//
 	// example:
 	//
@@ -80917,19 +80891,19 @@ func (client *Client) CreateDBInstance(request *CreateDBInstanceRequest) (_resul
 
 // Summary:
 //
-// Creates an endpoint for an ApsaraDB RDS for MySQL instance or an ApsaraDB RDS for PostgreSQL instance that runs RDS Cluster Edition.
+// Creates an endpoint for an instance that runs RDS Cluster Edition.
 //
 // Description:
 //
-// ### Supported database engine
+// ### [](#)Supported database engines
 //
 // MySQL
 //
-// ### References
+// ### [](#)References
 //
-// > Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation:
+// > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
 //
-// [Add a read-only endpoint for a cluster](https://help.aliyun.com/document_detail/464132.html)
+// [Create a read-only endpoint for a cluster](https://help.aliyun.com/document_detail/464132.html)
 //
 // @param tmpReq - CreateDBInstanceEndpointRequest
 //
@@ -81021,19 +80995,19 @@ func (client *Client) CreateDBInstanceEndpointWithOptions(tmpReq *CreateDBInstan
 
 // Summary:
 //
-// Creates an endpoint for an ApsaraDB RDS for MySQL instance or an ApsaraDB RDS for PostgreSQL instance that runs RDS Cluster Edition.
+// Creates an endpoint for an instance that runs RDS Cluster Edition.
 //
 // Description:
 //
-// ### Supported database engine
+// ### [](#)Supported database engines
 //
 // MySQL
 //
-// ### References
+// ### [](#)References
 //
-// > Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation:
+// > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
 //
-// [Add a read-only endpoint for a cluster](https://help.aliyun.com/document_detail/464132.html)
+// [Create a read-only endpoint for a cluster](https://help.aliyun.com/document_detail/464132.html)
 //
 // @param request - CreateDBInstanceEndpointRequest
 //
@@ -81051,19 +81025,19 @@ func (client *Client) CreateDBInstanceEndpoint(request *CreateDBInstanceEndpoint
 
 // Summary:
 //
-// Creates a public endpoint for an ApsaraDB RDS for MySQL instance or an ApsaraDB RDS for PostgreSQL instance that runs RDS Cluster Edition.
+// Creates a public endpoint for an instance that runs RDS Cluster Edition.
 //
 // Description:
 //
-// ### Supported database engine
+// ### [](#)Supported database engine
 //
 // MySQL
 //
-// ### Precautions
+// ### [](#)Precautions
 //
 // 	- You can create a public endpoint of an endpoint type only when no public endpoint is created for this endpoint type.
 //
-// 	- The node weights and other configurations are the same as those of the internal endpoint of this endpoint type. Only one public endpoint and one internal endpoint can be created for each endpoint type.
+// 	- The node weights and other configurations are the same as those of the internal endpoint of this endpoint type. Each type of endpoint can contain an internal endpoint and a public endpoint.
 //
 // @param request - CreateDBInstanceEndpointAddressRequest
 //
@@ -81133,19 +81107,19 @@ func (client *Client) CreateDBInstanceEndpointAddressWithOptions(request *Create
 
 // Summary:
 //
-// Creates a public endpoint for an ApsaraDB RDS for MySQL instance or an ApsaraDB RDS for PostgreSQL instance that runs RDS Cluster Edition.
+// Creates a public endpoint for an instance that runs RDS Cluster Edition.
 //
 // Description:
 //
-// ### Supported database engine
+// ### [](#)Supported database engine
 //
 // MySQL
 //
-// ### Precautions
+// ### [](#)Precautions
 //
 // 	- You can create a public endpoint of an endpoint type only when no public endpoint is created for this endpoint type.
 //
-// 	- The node weights and other configurations are the same as those of the internal endpoint of this endpoint type. Only one public endpoint and one internal endpoint can be created for each endpoint type.
+// 	- The node weights and other configurations are the same as those of the internal endpoint of this endpoint type. Each type of endpoint can contain an internal endpoint and a public endpoint.
 //
 // @param request - CreateDBInstanceEndpointAddressRequest
 //
@@ -81745,7 +81719,7 @@ func (client *Client) CreateDatabase(request *CreateDatabaseRequest) (_result *C
 //
 // Description:
 //
-// >  Before restoration, you can call the [CheckCreateDdrDBInstance](https://help.aliyun.com/document_detail/121721.html) operation to check whether a cross-region backup set can be used for cross-region restoration.
+// >  Before restoration, you can call the CheckCreateDdrDBInstance operation to check whether a cross-region backup set can be used for cross-region restoration.
 //
 // ### [](#)Supported database engines
 //
@@ -81757,9 +81731,9 @@ func (client *Client) CreateDatabase(request *CreateDatabaseRequest) (_result *C
 //
 // ### [](#)References
 //
-// > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+// > Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
 //
-// 	- [Use the cross-region backup feature of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/120824.html)
+// 	- [Use the cross-region backup feature for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/120824.html)
 //
 // 	- [Use the cross-region backup feature for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/206671.html)
 //
@@ -81925,7 +81899,7 @@ func (client *Client) CreateDdrInstanceWithOptions(request *CreateDdrInstanceReq
 //
 // Description:
 //
-// >  Before restoration, you can call the [CheckCreateDdrDBInstance](https://help.aliyun.com/document_detail/121721.html) operation to check whether a cross-region backup set can be used for cross-region restoration.
+// >  Before restoration, you can call the CheckCreateDdrDBInstance operation to check whether a cross-region backup set can be used for cross-region restoration.
 //
 // ### [](#)Supported database engines
 //
@@ -81937,9 +81911,9 @@ func (client *Client) CreateDdrInstanceWithOptions(request *CreateDdrInstanceReq
 //
 // ### [](#)References
 //
-// > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+// > Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
 //
-// 	- [Use the cross-region backup feature of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/120824.html)
+// 	- [Use the cross-region backup feature for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/120824.html)
 //
 // 	- [Use the cross-region backup feature for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/206671.html)
 //
@@ -84273,17 +84247,17 @@ func (client *Client) DeleteDBInstance(request *DeleteDBInstanceRequest) (_resul
 
 // Summary:
 //
-// Deletes an endpoint for an ApsaraDB RDS for MySQL instance or an ApsaraDB RDS for PostgreSQL instance that runs RDS Cluster Edition.
+// Deletes an endpoint for an instance that runs RDS Cluster Edition.
 //
 // Description:
 //
-// ### Supported database engine
+// ### [](#)Supported database engines
 //
 // MySQL
 //
-// ### References
+// ### [](#)References
 //
-// > Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+// > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
 //
 // [Delete the read-only endpoint of an ApsaraDB RDS for MySQL cluster](https://help.aliyun.com/document_detail/464133.html)
 //
@@ -84339,17 +84313,17 @@ func (client *Client) DeleteDBInstanceEndpointWithOptions(request *DeleteDBInsta
 
 // Summary:
 //
-// Deletes an endpoint for an ApsaraDB RDS for MySQL instance or an ApsaraDB RDS for PostgreSQL instance that runs RDS Cluster Edition.
+// Deletes an endpoint for an instance that runs RDS Cluster Edition.
 //
 // Description:
 //
-// ### Supported database engine
+// ### [](#)Supported database engines
 //
 // MySQL
 //
-// ### References
+// ### [](#)References
 //
-// > Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+// > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
 //
 // [Delete the read-only endpoint of an ApsaraDB RDS for MySQL cluster](https://help.aliyun.com/document_detail/464133.html)
 //
@@ -84369,17 +84343,17 @@ func (client *Client) DeleteDBInstanceEndpoint(request *DeleteDBInstanceEndpoint
 
 // Summary:
 //
-// Releases the public endpoint of an ApsaraDB RDS for MySQL instance or an ApsaraDB RDS for PostgreSQL cluster instance that runs RDS Cluster Edition.
+// Releases the public endpoint of an instance that runs RDS Cluster Edition.
 //
 // Description:
 //
-// ### Supported database engine
+// ### [](#)Supported database engines
 //
 // MySQL
 //
-// ### Precautions
+// ### [](#)Precautions
 //
-// You can delete only the public endpoint of each endpoint type from the instance. If you want to delete an internal endpoint of any endpoint type, you can delete the type of endpoint.
+// You can delete only the public endpoint of each endpoint type from the instance. If you want to delete an internal endpoint of any endpoint type, you can directly delete the type of endpoint.
 //
 // @param request - DeleteDBInstanceEndpointAddressRequest
 //
@@ -84439,17 +84413,17 @@ func (client *Client) DeleteDBInstanceEndpointAddressWithOptions(request *Delete
 
 // Summary:
 //
-// Releases the public endpoint of an ApsaraDB RDS for MySQL instance or an ApsaraDB RDS for PostgreSQL cluster instance that runs RDS Cluster Edition.
+// Releases the public endpoint of an instance that runs RDS Cluster Edition.
 //
 // Description:
 //
-// ### Supported database engine
+// ### [](#)Supported database engines
 //
 // MySQL
 //
-// ### Precautions
+// ### [](#)Precautions
 //
-// You can delete only the public endpoint of each endpoint type from the instance. If you want to delete an internal endpoint of any endpoint type, you can delete the type of endpoint.
+// You can delete only the public endpoint of each endpoint type from the instance. If you want to delete an internal endpoint of any endpoint type, you can directly delete the type of endpoint.
 //
 // @param request - DeleteDBInstanceEndpointAddressRequest
 //
@@ -84467,19 +84441,21 @@ func (client *Client) DeleteDBInstanceEndpointAddress(request *DeleteDBInstanceE
 
 // Summary:
 //
-// Deletes a node from an ApsaraDB RDS for MySQL instance that runs RDS Cluster Edition.
+// Deletes a node from an instance that runs RDS Cluster Edition.
 //
 // Description:
 //
-// ### Supported database engine
+// ### [](#)Supported database engines
 //
-// MySQL
+// 	- MySQL
 //
-// ### References
+// 	- PostgreSQL
 //
-// > Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+// ### [](#)References
 //
-// [Delete a node from an ApsaraDB RDS for MySQL instance that runs RDS Cluster Edition](https://help.aliyun.com/document_detail/464130.html)
+// > Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+//
+// [Delete a node from an ApsaraDB RDS for MySQL cluster](https://help.aliyun.com/document_detail/464130.html)
 //
 // @param tmpReq - DeleteDBNodesRequest
 //
@@ -84555,19 +84531,21 @@ func (client *Client) DeleteDBNodesWithOptions(tmpReq *DeleteDBNodesRequest, run
 
 // Summary:
 //
-// Deletes a node from an ApsaraDB RDS for MySQL instance that runs RDS Cluster Edition.
+// Deletes a node from an instance that runs RDS Cluster Edition.
 //
 // Description:
 //
-// ### Supported database engine
+// ### [](#)Supported database engines
 //
-// MySQL
+// 	- MySQL
 //
-// ### References
+// 	- PostgreSQL
 //
-// > Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+// ### [](#)References
 //
-// [Delete a node from an ApsaraDB RDS for MySQL instance that runs RDS Cluster Edition](https://help.aliyun.com/document_detail/464130.html)
+// > Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+//
+// [Delete a node from an ApsaraDB RDS for MySQL cluster](https://help.aliyun.com/document_detail/464130.html)
 //
 // @param request - DeleteDBNodesRequest
 //
@@ -89141,13 +89119,13 @@ func (client *Client) DescribeDBInstanceEncryptionKey(request *DescribeDBInstanc
 
 // Summary:
 //
-// Queries the information about the endpoints of an ApsaraDB RDS for MySQL instance or ApsaraDB RDS for PostgreSQL instance that runs RDS Cluster Edition.
+// Queries the information about the endpoints of an instance that runs RDS Cluster Edition.
 //
 // Description:
 //
-// ### [](#)Supported database engines
+// ### [](#)Supported database engine
 //
-// RDS MySQL
+// MySQL
 //
 // @param request - DescribeDBInstanceEndpointsRequest
 //
@@ -89201,13 +89179,13 @@ func (client *Client) DescribeDBInstanceEndpointsWithOptions(request *DescribeDB
 
 // Summary:
 //
-// Queries the information about the endpoints of an ApsaraDB RDS for MySQL instance or ApsaraDB RDS for PostgreSQL instance that runs RDS Cluster Edition.
+// Queries the information about the endpoints of an instance that runs RDS Cluster Edition.
 //
 // Description:
 //
-// ### [](#)Supported database engines
+// ### [](#)Supported database engine
 //
-// RDS MySQL
+// MySQL
 //
 // @param request - DescribeDBInstanceEndpointsRequest
 //
@@ -98475,7 +98453,7 @@ func (client *Client) DescribeUpgradeMajorVersionTasks(request *DescribeUpgradeM
 
 // Summary:
 //
-// Queries the details of vSwitches that are available in a virtual private cloud (VPC).
+// Queries the details of VSwitch that are available in a virtual private cloud (VPC).
 //
 // Description:
 //
@@ -98573,7 +98551,7 @@ func (client *Client) DescribeVSwitchesWithOptions(request *DescribeVSwitchesReq
 
 // Summary:
 //
-// Queries the details of vSwitches that are available in a virtual private cloud (VPC).
+// Queries the details of VSwitch that are available in a virtual private cloud (VPC).
 //
 // Description:
 //
@@ -102481,13 +102459,13 @@ func (client *Client) ModifyDBInstanceDescription(request *ModifyDBInstanceDescr
 
 // Summary:
 //
-// Modifies the weight of an endpoint for an ApsaraDB RDS for MySQL instance or ApsaraDB RDS for PostgreSQL instance that runs RDS Cluster Edition.
+// Modifies the weight of an endpoint for an instance that runs RDS Cluster Edition.
 //
 // Description:
 //
-// ### [](#)Supported database engines
+// ### [](#)Supported database engine
 //
-// RDS MySQL
+// MySQL
 //
 // @param tmpReq - ModifyDBInstanceEndpointRequest
 //
@@ -102555,13 +102533,13 @@ func (client *Client) ModifyDBInstanceEndpointWithOptions(tmpReq *ModifyDBInstan
 
 // Summary:
 //
-// Modifies the weight of an endpoint for an ApsaraDB RDS for MySQL instance or ApsaraDB RDS for PostgreSQL instance that runs RDS Cluster Edition.
+// Modifies the weight of an endpoint for an instance that runs RDS Cluster Edition.
 //
 // Description:
 //
-// ### [](#)Supported database engines
+// ### [](#)Supported database engine
 //
-// RDS MySQL
+// MySQL
 //
 // @param request - ModifyDBInstanceEndpointRequest
 //
@@ -102579,7 +102557,7 @@ func (client *Client) ModifyDBInstanceEndpoint(request *ModifyDBInstanceEndpoint
 
 // Summary:
 //
-// Modifies the information about the endpoint of an ApsaraDB RDS for MySQL instance that runs RDS Cluster Edition.
+// Modifies the information about the endpoint of an instance that runs RDS Cluster Edition.
 //
 // Description:
 //
@@ -102669,7 +102647,7 @@ func (client *Client) ModifyDBInstanceEndpointAddressWithOptions(request *Modify
 
 // Summary:
 //
-// Modifies the information about the endpoint of an ApsaraDB RDS for MySQL instance that runs RDS Cluster Edition.
+// Modifies the information about the endpoint of an instance that runs RDS Cluster Edition.
 //
 // Description:
 //
@@ -105075,9 +105053,15 @@ func (client *Client) ModifyDasInstanceConfig(request *ModifyDasInstanceConfigRe
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### [](#)Supported database engines
 //
 // 	- SQL Server
+//
+// ### [](#)References
+//
+// You can call this operation to modify the database properties of an ApsaraDB RDS for SQL Server instance and archive data from an instance that uses general Enterprise SSDs (ESSDs) to an Object Storage Service (OSS) bucket. Before you call this operation to archive data to an OSS bucket, you must enable the data archiving feature in the ApsaraDB RDS console. For more information, see [Modify database properties](https://help.aliyun.com/document_detail/2401398.html) and [Archive cloud disk data to an OSS bucket](https://help.aliyun.com/document_detail/2767189.html).
+//
+// > : Before you call this operation, read the preceding topics and make sure that you fully understand the prerequisites and impacts of this operation.
 //
 // @param request - ModifyDatabaseConfigRequest
 //
@@ -105151,9 +105135,15 @@ func (client *Client) ModifyDatabaseConfigWithOptions(request *ModifyDatabaseCon
 //
 // Description:
 //
-// ### [](#)Supported database engine
+// ### [](#)Supported database engines
 //
 // 	- SQL Server
+//
+// ### [](#)References
+//
+// You can call this operation to modify the database properties of an ApsaraDB RDS for SQL Server instance and archive data from an instance that uses general Enterprise SSDs (ESSDs) to an Object Storage Service (OSS) bucket. Before you call this operation to archive data to an OSS bucket, you must enable the data archiving feature in the ApsaraDB RDS console. For more information, see [Modify database properties](https://help.aliyun.com/document_detail/2401398.html) and [Archive cloud disk data to an OSS bucket](https://help.aliyun.com/document_detail/2767189.html).
+//
+// > : Before you call this operation, read the preceding topics and make sure that you fully understand the prerequisites and impacts of this operation.
 //
 // @param request - ModifyDatabaseConfigRequest
 //
@@ -106745,7 +106735,7 @@ func (client *Client) ModifyResourceGroup(request *ModifyResourceGroupRequest) (
 //
 // Description:
 //
-// ### Supported database engines
+// ### [](#)Supported database engines
 //
 // 	- MySQL
 //
@@ -106753,9 +106743,11 @@ func (client *Client) ModifyResourceGroup(request *ModifyResourceGroupRequest) (
 //
 // 	- SQL Server
 //
-// ### References
+// >  If DAS Enterprise Edition is supported in the region in which the instance resides, the most recent version of DAS Enterprise Edition is enabled when you call the operation to enable the SQL Audit feature for the instance. For more information about the database engines and regions supported by each version of DAS Enterprise Edition, see [Supported databases and regions](https://help.aliyun.com/document_detail/156204.html).
 //
-// > Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+// ### [](#)References
+//
+// >  Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
 //
 // 	- [Use the SQL Explorer and Audit feature for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/476574.html)
 //
@@ -106831,7 +106823,7 @@ func (client *Client) ModifySQLCollectorPolicyWithOptions(request *ModifySQLColl
 //
 // Description:
 //
-// ### Supported database engines
+// ### [](#)Supported database engines
 //
 // 	- MySQL
 //
@@ -106839,9 +106831,11 @@ func (client *Client) ModifySQLCollectorPolicyWithOptions(request *ModifySQLColl
 //
 // 	- SQL Server
 //
-// ### References
+// >  If DAS Enterprise Edition is supported in the region in which the instance resides, the most recent version of DAS Enterprise Edition is enabled when you call the operation to enable the SQL Audit feature for the instance. For more information about the database engines and regions supported by each version of DAS Enterprise Edition, see [Supported databases and regions](https://help.aliyun.com/document_detail/156204.html).
 //
-// > Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+// ### [](#)References
+//
+// >  Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
 //
 // 	- [Use the SQL Explorer and Audit feature for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/476574.html)
 //
