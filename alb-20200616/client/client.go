@@ -550,7 +550,7 @@ func (s *ApplyHealthCheckTemplateToServerGroupResponse) SetBody(v *ApplyHealthCh
 }
 
 type AssociateAclsWithListenerRequest struct {
-	// The ACL IDs. You can specify up to three IDs in each call.
+	// The IDs of the ACLs. You can specify up to three IDs in each call.
 	//
 	// This parameter is required.
 	AclIds []*string `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Repeated"`
@@ -570,7 +570,7 @@ type AssociateAclsWithListenerRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
 	//
 	// example:
 	//
@@ -586,7 +586,7 @@ type AssociateAclsWithListenerRequest struct {
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The listener ID.
+	// The ID of the listener.
 	//
 	// This parameter is required.
 	//
@@ -692,7 +692,7 @@ func (s *AssociateAclsWithListenerResponse) SetBody(v *AssociateAclsWithListener
 }
 
 type AssociateAdditionalCertificatesWithListenerRequest struct {
-	// The additional certificates.
+	// The extended validation certificates that you want to add to the listener.
 	//
 	// This parameter is required.
 	Certificates []*AssociateAdditionalCertificatesWithListenerRequestCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
@@ -700,7 +700,7 @@ type AssociateAdditionalCertificatesWithListenerRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
 	//
 	// example:
 	//
@@ -716,7 +716,7 @@ type AssociateAdditionalCertificatesWithListenerRequest struct {
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The listener ID. You must specify the ID of an HTTPS listener or a QUIC listener.
+	// The listener ID. This parameter is supported only by HTTPS and QUIC listeners.
 	//
 	// This parameter is required.
 	//
@@ -755,7 +755,7 @@ func (s *AssociateAdditionalCertificatesWithListenerRequest) SetListenerId(v str
 }
 
 type AssociateAdditionalCertificatesWithListenerRequestCertificates struct {
-	// The certificate ID. Only server certificates are supported.
+	// The ID of the certificate. Only server certificates are supported.
 	//
 	// This parameter is required.
 	//
@@ -1560,7 +1560,7 @@ type CreateHealthCheckTemplateRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the value of RequestId as the value of ClientToken. The request ID may be different for each request.
+	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
 	//
 	// example:
 	//
@@ -1576,7 +1576,7 @@ type CreateHealthCheckTemplateRequest struct {
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The HTTP status codes that are used to indicate whether the backend server passes the health check.
+	// The HTTP status codes that indicate healthy backend servers.
 	//
 	// example:
 	//
@@ -1592,19 +1592,13 @@ type CreateHealthCheckTemplateRequest struct {
 	//
 	// 80
 	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// The domain name that you want to use for the health check.
+	// The domain name that is used for health checks. Valid values:
 	//
-	// Default value: **$SERVER_IP**. The domain name must be 1 to 80 characters in length. The domain name must meet the following requirements:
+	// 	- **$SERVER_IP**: the private IP addresses of backend servers. If an IP address is specified, or this parameter is not specified, the ALB instance uses the private IP addresses of backend servers as domain names for health checks.
 	//
-	// 	- The domain name can contain lowercase letters, digits, hyphens (-), and periods (.).
+	// 	- **domain**: The domain name must be 1 to 80 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
 	//
-	// 	- The domain name must contain at least one period (.) but cannot start or end with a period (.).
-	//
-	// 	- The rightmost domain label can contain only letters but cannot contain digits or hyphens (-).
-	//
-	// 	- Other fields cannot start or end with a hyphen (-).
-	//
-	// This parameter is required only if the **HealthCheckProtocol*	- parameter is set to **HTTP**.
+	// >  This parameter takes effect only when `HealthCheckProtocol` is set to **HTTP*	- or **HTTPS**. HTTPS is unavailable by default. If you want to use HTTPS, log on to the SLB console, go to the Quota Center page, click the **ALB*	- tab, and then apply for the privilege to use HTTPS.
 	//
 	// example:
 	//
@@ -1893,6 +1887,7 @@ func (s *CreateHealthCheckTemplateResponse) SetBody(v *CreateHealthCheckTemplate
 }
 
 type CreateListenerRequest struct {
+	// The certificate authority (CA) certificates.
 	CaCertificates []*CreateListenerRequestCaCertificates `json:"CaCertificates,omitempty" xml:"CaCertificates,omitempty" type:"Repeated"`
 	// Specifies whether to enable mutual authentication. Valid values:
 	//
@@ -1903,7 +1898,8 @@ type CreateListenerRequest struct {
 	// example:
 	//
 	// false
-	CaEnabled    *bool                                `json:"CaEnabled,omitempty" xml:"CaEnabled,omitempty"`
+	CaEnabled *bool `json:"CaEnabled,omitempty" xml:"CaEnabled,omitempty"`
+	// The details about each certificate.
 	Certificates []*CreateListenerRequestCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
@@ -1915,6 +1911,8 @@ type CreateListenerRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The actions of the forwarding rule.
+	//
 	// This parameter is required.
 	DefaultActions []*CreateListenerRequestDefaultActions `json:"DefaultActions,omitempty" xml:"DefaultActions,omitempty" type:"Repeated"`
 	// Specifies whether to perform only a precheck. Valid values:
@@ -1996,8 +1994,9 @@ type CreateListenerRequest struct {
 	// example:
 	//
 	// alb-n5qw04uq8vavfe****
-	LoadBalancerId *string                          `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	QuicConfig     *CreateListenerRequestQuicConfig `json:"QuicConfig,omitempty" xml:"QuicConfig,omitempty" type:"Struct"`
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// Select a QUIC listener and associate it with the ALB instance.
+	QuicConfig *CreateListenerRequestQuicConfig `json:"QuicConfig,omitempty" xml:"QuicConfig,omitempty" type:"Struct"`
 	// The timeout period of a request. Unit: seconds.
 	//
 	// Valid values: **1 to 180**.
@@ -2021,7 +2020,8 @@ type CreateListenerRequest struct {
 	// tls_cipher_policy_1_0
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 	// The tags.
-	Tag                 []*CreateListenerRequestTag               `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Tag []*CreateListenerRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The configuration of the XForward header.
 	XForwardedForConfig *CreateListenerRequestXForwardedForConfig `json:"XForwardedForConfig,omitempty" xml:"XForwardedForConfig,omitempty" type:"Struct"`
 }
 
@@ -2124,6 +2124,10 @@ func (s *CreateListenerRequest) SetXForwardedForConfig(v *CreateListenerRequestX
 }
 
 type CreateListenerRequestCaCertificates struct {
+	// The ID of the CA certificate. You can specify only one CA certificate.
+	//
+	// >  This parameter is required if you set **CaEnabled*	- to **true**.
+	//
 	// example:
 	//
 	// 12315790212_166f8204689_1714763408_70998****
@@ -2144,7 +2148,9 @@ func (s *CreateListenerRequestCaCertificates) SetCertificateId(v string) *Create
 }
 
 type CreateListenerRequestCertificates struct {
-	// The ID of the certificate. Only server certificates are supported. You can specify up to 20 certificate IDs.
+	// The ID of the certificate. Only server certificates are supported. You can specify at most 20 certificates IDs.
+	//
+	// >  This parameter is required when you set **ListenerProtocol*	- to **HTTPS*	- or **QUIC**.
 	//
 	// example:
 	//
@@ -2166,11 +2172,13 @@ func (s *CreateListenerRequestCertificates) SetCertificateId(v string) *CreateLi
 }
 
 type CreateListenerRequestDefaultActions struct {
+	// The configuration of the forwarding action. You can specify at most 20 actions.
+	//
 	// This parameter is required.
 	ForwardGroupConfig *CreateListenerRequestDefaultActionsForwardGroupConfig `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
-	// The action type. You can specify only one action type. Valid value:
+	// The action. You can specify only one type. Valid value example:
 	//
-	// **ForwardGroup**: forwards requests to multiple vServer groups.
+	// **ForwardGroup**: forwards requests to multiple server groups.
 	//
 	// This parameter is required.
 	//
@@ -2199,6 +2207,8 @@ func (s *CreateListenerRequestDefaultActions) SetType(v string) *CreateListenerR
 }
 
 type CreateListenerRequestDefaultActionsForwardGroupConfig struct {
+	// The destination server group to which requests are forwarded.
+	//
 	// This parameter is required.
 	ServerGroupTuples []*CreateListenerRequestDefaultActionsForwardGroupConfigServerGroupTuples `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
 }
@@ -2241,9 +2251,9 @@ func (s *CreateListenerRequestDefaultActionsForwardGroupConfigServerGroupTuples)
 }
 
 type CreateListenerRequestQuicConfig struct {
-	// The ID of the QUIC listener that you want to associate with the HTTPS listener. Only HTTPS listeners support this parameter. This parameter is required when **QuicUpgradeEnabled*	- is set to **true**.
+	// The ID of the QUIC listener that you want to associate with the ALB instance. This parameter is required if you set **QuicUpgradeEnabled*	- to **true**.
 	//
-	// >  The HTTPS listener and the QUIC listener must be added to the same ALB instance. Make sure that the QUIC listener is not associated with any other listeners.
+	// >  The original listener and the QUIC listener must belong to the same ALB instance.
 	//
 	// example:
 	//
@@ -2251,9 +2261,9 @@ type CreateListenerRequestQuicConfig struct {
 	QuicListenerId *string `json:"QuicListenerId,omitempty" xml:"QuicListenerId,omitempty"`
 	// Specifies whether to enable QUIC upgrade. Valid values:
 	//
-	// 	- **true**: enables QUIC upgrade.
+	// 	- **true**:
 	//
-	// 	- **false*	- (default): disables QUIC upgrade.
+	// 	- **false*	- (default)
 	//
 	// >  Only HTTPS listeners support this parameter.
 	//
@@ -2315,9 +2325,9 @@ func (s *CreateListenerRequestTag) SetValue(v string) *CreateListenerRequestTag 
 }
 
 type CreateListenerRequestXForwardedForConfig struct {
-	// The name of the custom header. This parameter takes effect only when **XForwardedForClientCertClientVerifyEnabled*	- is set to **true**.
+	// The name of the custom header. This parameter takes effect only when you set **XForwardedForClientCertClientVerifyEnabled*	- to **true**.
 	//
-	// The name must be 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (_), and digits.
+	// The name must be 1 to 40 characters in length. The name can contain letters, digits, hyphens (-), and underscores (_).
 	//
 	// >  Only HTTPS listeners support this parameter.
 	//
@@ -2327,9 +2337,9 @@ type CreateListenerRequestXForwardedForConfig struct {
 	XForwardedForClientCertClientVerifyAlias *string `json:"XForwardedForClientCertClientVerifyAlias,omitempty" xml:"XForwardedForClientCertClientVerifyAlias,omitempty"`
 	// Specifies whether to use the `X-Forwarded-Clientcert-clientverify` header to retrieve the verification result of the client certificate. Valid values:
 	//
-	// 	- **true**: uses the X-Forwarded-Clientcert-clientverify header.
+	// 	- **true**:
 	//
-	// 	- **false*	- (default): does not use the X-Forwarded-Clientcert-clientverify header.
+	// 	- **false*	- (default)
 	//
 	// >  Only HTTPS listeners support this parameter.
 	//
@@ -2339,7 +2349,7 @@ type CreateListenerRequestXForwardedForConfig struct {
 	XForwardedForClientCertClientVerifyEnabled *bool `json:"XForwardedForClientCertClientVerifyEnabled,omitempty" xml:"XForwardedForClientCertClientVerifyEnabled,omitempty"`
 	// The name of the custom header. This parameter takes effect only when **XForwardedForClientCertFingerprintEnabled*	- is set to **true**.
 	//
-	// The name must be 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (_), and digits.
+	// The name must be 1 to 40 characters in length, The name can contain letters, digits, hyphens (-), and underscores (_).
 	//
 	// >  Only HTTPS listeners support this parameter.
 	//
@@ -2349,9 +2359,9 @@ type CreateListenerRequestXForwardedForConfig struct {
 	XForwardedForClientCertFingerprintAlias *string `json:"XForwardedForClientCertFingerprintAlias,omitempty" xml:"XForwardedForClientCertFingerprintAlias,omitempty"`
 	// Specifies whether to use the `X-Forwarded-Clientcert-fingerprint` header to retrieve the fingerprint of the client certificate. Valid values:
 	//
-	// 	- **true**: uses the X-Forwarded-Clientcert-fingerprint header.
+	// 	- **true**
 	//
-	// 	- **false*	- (default): does not use the X-Forwarded-Clientcert-fingerprint header.
+	// 	- **false*	- (default)
 	//
 	// >  Only HTTPS listeners support this parameter.
 	//
@@ -2361,7 +2371,7 @@ type CreateListenerRequestXForwardedForConfig struct {
 	XForwardedForClientCertFingerprintEnabled *bool `json:"XForwardedForClientCertFingerprintEnabled,omitempty" xml:"XForwardedForClientCertFingerprintEnabled,omitempty"`
 	// The name of the custom header. This parameter takes effect only when **XForwardedForClientCertIssuerDNEnabled*	- is set to **true**.
 	//
-	// The name must be 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (_), and digits.
+	// The name must be 1 to 40 characters in length, The name can contain letters, digits, hyphens (-), and underscores (_).
 	//
 	// >  Only HTTPS listeners support this parameter.
 	//
@@ -2371,9 +2381,9 @@ type CreateListenerRequestXForwardedForConfig struct {
 	XForwardedForClientCertIssuerDNAlias *string `json:"XForwardedForClientCertIssuerDNAlias,omitempty" xml:"XForwardedForClientCertIssuerDNAlias,omitempty"`
 	// Specifies whether to use the `X-Forwarded-Clientcert-issuerdn` header to retrieve information about the authority that issues the client certificate. Valid values:
 	//
-	// 	- **true**: uses the X-Forwarded-Clientcert-issuerdn header.
+	// 	- **true**:
 	//
-	// 	- **false*	- (default): does not use the X-Forwarded-Clientcert-issuerdn header.
+	// 	- **false*	- (default)
 	//
 	// >  Only HTTPS listeners support this parameter.
 	//
@@ -2383,7 +2393,7 @@ type CreateListenerRequestXForwardedForConfig struct {
 	XForwardedForClientCertIssuerDNEnabled *bool `json:"XForwardedForClientCertIssuerDNEnabled,omitempty" xml:"XForwardedForClientCertIssuerDNEnabled,omitempty"`
 	// The name of the custom header. This parameter takes effect only when **XForwardedForClientCertSubjectDNEnabled*	- is set to **true**.
 	//
-	// The name must be 1 to 40 characters in length, and can contain lowercase letters, hyphens (-), underscores (_), and digits.
+	// The name must be 1 to 40 characters in length, The name can contain letters, digits, hyphens (-), and underscores (_).
 	//
 	// >  Only HTTPS listeners support this parameter.
 	//
@@ -2393,9 +2403,9 @@ type CreateListenerRequestXForwardedForConfig struct {
 	XForwardedForClientCertSubjectDNAlias *string `json:"XForwardedForClientCertSubjectDNAlias,omitempty" xml:"XForwardedForClientCertSubjectDNAlias,omitempty"`
 	// Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header to retrieve information about the owner of the client certificate. Valid values:
 	//
-	// 	- **true**: uses the X-Forwarded-Clientcert-subjectdn header.
+	// 	- **true**:
 	//
-	// 	- **false*	- (default): does not use the X-Forwarded-Clientcert-subjectdn header.
+	// 	- **false*	- (default)
 	//
 	// >  Only HTTPS listeners support this parameter.
 	//
@@ -2403,13 +2413,13 @@ type CreateListenerRequestXForwardedForConfig struct {
 	//
 	// true
 	XForwardedForClientCertSubjectDNEnabled *bool `json:"XForwardedForClientCertSubjectDNEnabled,omitempty" xml:"XForwardedForClientCertSubjectDNEnabled,omitempty"`
-	// Specifies whether to use the `X-Forwarded-Client-Ip` header to obtain the source IP address of the ALB instance. Valid values:
+	// Specifies whether to allow the ALB instance to retrieve client IP addresses from the X-Forwarded-For header. Valid values:
 	//
-	// 	- **true**: uses the X-Forwarded-Client-Ip header.
+	// 	- **true**:
 	//
-	// 	- **false*	- (default): does not use the X-Forwarded-Client-Ip header.
+	// 	- **false*	- (default)
 	//
-	// >  HTTP, HTTPS, and QUIC listeners support this parameter. The feature corresponding to this parameter is not available by default. If you want to use this feature, submit a ticket.
+	// >  This parameter is supported only by HTTP and HTTPS listeners.
 	//
 	// example:
 	//
@@ -2417,7 +2427,7 @@ type CreateListenerRequestXForwardedForConfig struct {
 	XForwardedForClientSourceIpsEnabled *bool `json:"XForwardedForClientSourceIpsEnabled,omitempty" xml:"XForwardedForClientSourceIpsEnabled,omitempty"`
 	// The trusted proxy IP address.
 	//
-	// ALB traverses `X-Forwarded-For` backwards and selects the first IP address that is not in the trusted IP list as the originating IP address of the client, which will be throttled if source IP address throttling is enabled.
+	// ALB instances traverse the IP addresses in the `X-Forwarded-For` header from the rightmost IP address to the leftmost IP address. The first IP address that is not on the trusted IP address list is considered the client IP address. Requests from the client IP address are throttled.
 	//
 	// example:
 	//
@@ -2425,11 +2435,11 @@ type CreateListenerRequestXForwardedForConfig struct {
 	XForwardedForClientSourceIpsTrusted *string `json:"XForwardedForClientSourceIpsTrusted,omitempty" xml:"XForwardedForClientSourceIpsTrusted,omitempty"`
 	// Specifies whether to use the `X-Forwarded-Client-Port` header to retrieve the client port. Valid values:
 	//
-	// 	- **true**: uses the X-Forwarded-Client-Port header.
+	// 	- **true**:
 	//
-	// 	- **false*	- (default): does not use the X-Forwarded-Client-Port header.
+	// 	- **false*	- (default)
 	//
-	// >  HTTP and HTTPS listeners support this parameter.
+	// >  This parameter is returned only for HTTP and HTTPS listeners.
 	//
 	// example:
 	//
@@ -2437,23 +2447,23 @@ type CreateListenerRequestXForwardedForConfig struct {
 	XForwardedForClientSrcPortEnabled *bool `json:"XForwardedForClientSrcPortEnabled,omitempty" xml:"XForwardedForClientSrcPortEnabled,omitempty"`
 	// Specifies whether to use the `X-Forwarded-For` header to retrieve client IP addresses. Valid values:
 	//
-	// 	- **true*	- (default): uses the X-Forwarded-For header.
+	// 	- **true*	- (default)
 	//
-	// 	- **false**: does not use the X-Forwarded-For header.
+	// 	- **false**
 	//
-	// >  HTTP and HTTPS listeners support this parameter.
+	// >  This parameter is returned only for HTTP and HTTPS listeners.
 	//
 	// example:
 	//
 	// true
 	XForwardedForEnabled *bool `json:"XForwardedForEnabled,omitempty" xml:"XForwardedForEnabled,omitempty"`
-	// Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listening protocol of the ALB instance. Valid values:
+	// Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listener protocol. Valid values:
 	//
-	// 	- **true**: uses the X-Forwarded-Proto header.
+	// 	- **true**:
 	//
-	// 	- **false*	- (default): does not use the X-Forwarded-Proto header.
+	// 	- **false*	- (default)
 	//
-	// >  HTTP, HTTPS, and QUIC listeners support this parameter.
+	// >  This parameter is supported by HTTP, HTTPS, and QUIC listeners.
 	//
 	// example:
 	//
@@ -2461,23 +2471,23 @@ type CreateListenerRequestXForwardedForConfig struct {
 	XForwardedForProtoEnabled *bool `json:"XForwardedForProtoEnabled,omitempty" xml:"XForwardedForProtoEnabled,omitempty"`
 	// Specifies whether to use the `SLB-ID` header to retrieve the ID of the ALB instance. Valid values:
 	//
-	// 	- **true**: uses the SLB-ID header.
+	// 	- **true**:
 	//
-	// 	- **false*	- (default): does not use the SLB-ID header.
+	// 	- **false*	- (default)
 	//
-	// >  HTTP, HTTPS, and QUIC listeners support this parameter.
+	// >  This parameter is supported by HTTP, HTTPS, and QUIC listeners.
 	//
 	// example:
 	//
 	// false
 	XForwardedForSLBIdEnabled *bool `json:"XForwardedForSLBIdEnabled,omitempty" xml:"XForwardedForSLBIdEnabled,omitempty"`
-	// Specifies whether to use the `X-Forwarded-Port` header to retrieve the listening port of the ALB instance. Valid values:
+	// Specifies whether to use the `X-Forwarded-Port` header to retrieve the listener port of the ALB instance. Valid values:
 	//
-	// 	- **true**: uses the X-Forwarded-Port header.
+	// 	- **true**:
 	//
-	// 	- **false*	- (default): does not use the X-Forwarded-Port header.
+	// 	- **false*	- (default)
 	//
-	// >  HTTP, HTTPS, and QUIC listeners support this parameter.
+	// >  This parameter is supported by HTTP, HTTPS, and QUIC listeners.
 	//
 	// example:
 	//
@@ -2575,13 +2585,13 @@ type CreateListenerResponseBody struct {
 	//
 	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The ID of the listener.
+	// The listener ID.
 	//
 	// example:
 	//
 	// lsr-bp1bpn0kn908w4nbw****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -2642,11 +2652,11 @@ func (s *CreateListenerResponse) SetBody(v *CreateListenerResponseBody) *CreateL
 }
 
 type CreateLoadBalancerRequest struct {
-	// The mode used to assign IP addresses to zones of the ALB instance. Default value: Dynamic. Valid values:
+	// The mode in which IP addresses are allocated. Valid values:
 	//
-	// 	- **Fixed:*	- assigns a static IP address to the ALB instance.
+	// 	- **Fixed**: The ALB instance uses a static IP address.
 	//
-	// 	- **Dynamic:*	- dynamically assigns an IP address to each zone of the ALB instance.
+	// 	- **Dynamic**: dynamically allocates an IP address to each zone of the ALB instance.
 	//
 	// example:
 	//
@@ -2704,7 +2714,7 @@ type CreateLoadBalancerRequest struct {
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The configuration of the billing method of the ALB instance.
+	// The billing method of the ALB instance.
 	//
 	// This parameter is required.
 	LoadBalancerBillingConfig *CreateLoadBalancerRequestLoadBalancerBillingConfig `json:"LoadBalancerBillingConfig,omitempty" xml:"LoadBalancerBillingConfig,omitempty" type:"Struct"`
@@ -2833,7 +2843,7 @@ func (s *CreateLoadBalancerRequest) SetZoneMappings(v []*CreateLoadBalancerReque
 }
 
 type CreateLoadBalancerRequestLoadBalancerBillingConfig struct {
-	// The ID of the Elastic IP Address (EIP) bandwidth plan that is associated with the ALB instance if the ALB instance uses a public IP address.
+	// The ID of the Internet Shared Bandwidth instance that is associated with the Internet-facing ALB instance.
 	//
 	// example:
 	//
@@ -2940,8 +2950,6 @@ func (s *CreateLoadBalancerRequestTag) SetValue(v string) *CreateLoadBalancerReq
 }
 
 type CreateLoadBalancerRequestZoneMappings struct {
-	// 公网实例绑定的EIP实例ID。至少需要添加2个可用区，最多支持添加10个可用区。
-	//
 	// example:
 	//
 	// eip-bp1aedxso6u80u0qf****
@@ -4397,7 +4405,7 @@ type CreateRulesRequest struct {
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The listener ID of the ALB instance.
+	// The ID of the Application Load Balancer (ALB) instance.
 	//
 	// This parameter is required.
 	//
@@ -4405,7 +4413,7 @@ type CreateRulesRequest struct {
 	//
 	// lsr-bp1bpn0kn908w4nbw****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The forwarding rules. You can specify at most 10 forwarding rules in each call.
+	// The forwarding rules. You can specify at most 10 forwarding rules in each request.
 	//
 	// This parameter is required.
 	Rules []*CreateRulesRequestRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
@@ -4442,19 +4450,19 @@ func (s *CreateRulesRequest) SetRules(v []*CreateRulesRequestRules) *CreateRules
 type CreateRulesRequestRules struct {
 	// The direction to which the forwarding rule is applied. You can specify only one direction. Valid values:
 	//
-	// 	- **Request*	- (default): The forwarding rule is applied to the client requests received by ALB.
+	// 	- **Request*	- (default): The forwarding rule applies to requests. Requests sent from clients to ALB are matches against the match conditions and processed based on the rule actions.
 	//
-	// 	- **Response**: The forwarding rule is applied to the responses returned by backend servers.
+	// 	- **Response**: The forwarding rule applies to responses. Responses from backend servers to ALB are matches against the match conditions and processed based on the rule actions.
 	//
-	// >  Basic ALB instances do not support forwarding rules of the **Response*	- type.
+	// >  Basic ALB instances do not support forwarding rules applied to the **Response*	- direction.
 	//
 	// example:
 	//
 	// Request
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The priority of the forwarding rule. Valid values: **1*	- to **10000**. A lower value specifies a higher priority. You can specify priorities for at most 10 forwarding rules.
+	// The priority of the forwarding rule. Valid values: **1*	- to **10000**. A lower value specifies a higher priority. You can specify at most 10 priorities.
 	//
-	// >  The priority of each forwarding rule added to a listener must be unique.
+	// >  The priorities of forwarding rules for the same listener must be unique.
 	//
 	// This parameter is required.
 	//
@@ -4470,11 +4478,11 @@ type CreateRulesRequestRules struct {
 	//
 	// This parameter is required.
 	RuleConditions []*CreateRulesRequestRulesRuleConditions `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
-	// The name of the forwarding rule. You can name at most 20 forwarding rules.
+	// The name of the forwarding rule. You can specify at most 20 rule names.
 	//
 	// 	- The name must be 2 to 128 characters in length.
 	//
-	// 	- It can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+	// 	- The name can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
 	//
 	// This parameter is required.
 	//
@@ -4527,13 +4535,13 @@ func (s *CreateRulesRequestRules) SetTag(v []*CreateRulesRequestRulesTag) *Creat
 type CreateRulesRequestRulesRuleActions struct {
 	// The CORS configuration.
 	CorsConfig *CreateRulesRequestRulesRuleActionsCorsConfig `json:"CorsConfig,omitempty" xml:"CorsConfig,omitempty" type:"Struct"`
-	// The configuration of the custom response. You can specify at most 20 responses.
+	// The configuration of the custom response. You can specify at most 20 custom responses.
 	FixedResponseConfig *CreateRulesRequestRulesRuleActionsFixedResponseConfig `json:"FixedResponseConfig,omitempty" xml:"FixedResponseConfig,omitempty" type:"Struct"`
-	// The configuration of the server group. You can add at most 20 server groups.
+	// The configuration of the server group. You can specify at most 20 server groups.
 	ForwardGroupConfig *CreateRulesRequestRulesRuleActionsForwardGroupConfig `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
-	// The configuration of the header to be inserted. You can specify at most 20 headers.
+	// The key of the header to be inserted. You can specify at most 20 headers.
 	InsertHeaderConfig *CreateRulesRequestRulesRuleActionsInsertHeaderConfig `json:"InsertHeaderConfig,omitempty" xml:"InsertHeaderConfig,omitempty" type:"Struct"`
-	// The priority of the action. Valid values: **1 to 50000**. A lower value indicates a higher priority. The actions of a forwarding rule are applied in descending order of priority. This parameter is required. The priority of each action within a forwarding rule must be unique. You can specify priorities for at most 20 actions.
+	// The priority of the action. Valid values: **1 to 50000**. A lower value indicates a higher priority. The actions of a forwarding rule are applied in descending order of priority. This parameter cannot empty. The priority of each action within a forwarding rule must be unique. You can specify at most 20 action priorities.
 	//
 	// This parameter is required.
 	//
@@ -4543,39 +4551,39 @@ type CreateRulesRequestRulesRuleActions struct {
 	Order *int32 `json:"Order,omitempty" xml:"Order,omitempty"`
 	// The redirect configuration. You can specify at most 20 redirects.
 	RedirectConfig *CreateRulesRequestRulesRuleActionsRedirectConfig `json:"RedirectConfig,omitempty" xml:"RedirectConfig,omitempty" type:"Struct"`
-	// The configuration of the header to be removed.
+	// The HTTP header to be removed.
 	RemoveHeaderConfig *CreateRulesRequestRulesRuleActionsRemoveHeaderConfig `json:"RemoveHeaderConfig,omitempty" xml:"RemoveHeaderConfig,omitempty" type:"Struct"`
 	// The rewrite configuration. You can specify at most 20 rewrites.
 	RewriteConfig *CreateRulesRequestRulesRuleActionsRewriteConfig `json:"RewriteConfig,omitempty" xml:"RewriteConfig,omitempty" type:"Struct"`
-	// The configuration of traffic throttling. You can add at most 20 configuration records.
+	// The configuration of traffic throttling. You can specify at most 20 traffic throttling rules.
 	TrafficLimitConfig *CreateRulesRequestRulesRuleActionsTrafficLimitConfig `json:"TrafficLimitConfig,omitempty" xml:"TrafficLimitConfig,omitempty" type:"Struct"`
-	// The configuration of traffic mirroring. You can add at most 20 traffic mirrors.
+	// The configuration of traffic mirroring. You can specify at most 20 traffic mirroring rules.
 	TrafficMirrorConfig *CreateRulesRequestRulesRuleActionsTrafficMirrorConfig `json:"TrafficMirrorConfig,omitempty" xml:"TrafficMirrorConfig,omitempty" type:"Struct"`
-	// The action type. You can specify at most 11 types of actions. Valid values:
+	// The action type. You can specify at most 11 types of action. Valid values:
 	//
 	// 	- **ForwardGroup**: distributes requests to multiple vServer groups.
 	//
-	// 	- **Redirect**: redirects a request.
+	// 	- **Redirect**: redirects requests.
 	//
 	// 	- **FixedResponse**: returns a custom response.
 	//
-	// 	- **Rewrite**: rewrites a request.
+	// 	- **Rewrite**: rewrites requests.
 	//
-	// 	- **InsertHeader**: inserts a header.
+	// 	- **InsertHeader**: inserts headers.
 	//
-	// 	- **RemoveHeaderConfig:*	- deletes the header of a request.
+	// 	- **RemoveHeaderConfig**: deletes a header.
 	//
 	// 	- **TrafficLimit**: throttles traffic.
 	//
-	// 	- **trafficMirror**: mirrors network traffic.
+	// 	- **TrafficMirror**: mirrors network traffic.
 	//
 	// 	- **Cors**: enables cross-origin resource sharing (CORS).
 	//
-	// The following action types are supported:
+	// You can specify the last action and the actions that you want to perform before the last action:
 	//
-	// 	- **FinalType**: the last action to be performed in a forwarding rule. Each forwarding rule can contain only one FinalType action. You can specify a **ForwardGroup**, **Redirect**, or **FixedResponse*	- action as the FinalType action.
+	// 	- **FinalType**: Each forwarding rule can contain only one FinalType action, which is performed at the end. You can specify only one of **ForwardGroup**, **Redirect**, and **FixedResponse**.
 	//
-	// 	- **ExtType**: one or more actions to be performed before the **FinalType*	- action. A forwarding rule can contain one or more **ExtType*	- actions. To specify an ExtType action, you must specify a **FinalType*	- action. You can specify multiple **InsertHeader*	- actions or one **Rewrite*	- action.
+	// 	- **ExtType**: Each forwarding rule can contain one or more **ExtType*	- actions, which are performed before the **FinalType*	- action. If you want to specify an ExtType action, you must also specify a **FinalType*	- action. You can specify multiple **InsertHeader*	- actions or one **Rewrite*	- action.
 	//
 	// This parameter is required.
 	//
@@ -4651,23 +4659,27 @@ func (s *CreateRulesRequestRulesRuleActions) SetType(v string) *CreateRulesReque
 type CreateRulesRequestRulesRuleActionsCorsConfig struct {
 	// Specifies whether to allow credentials to be carried in CORS requests. Valid values:
 	//
-	// 	- **on**: allows credentials to be carried in CORS requests.
+	// 	- **on**
 	//
-	// 	- **off**: does not allow credentials to be carried in CORS requests.
+	// 	- **off**
 	//
 	// example:
 	//
 	// on
 	AllowCredentials *string `json:"AllowCredentials,omitempty" xml:"AllowCredentials,omitempty"`
-	// The allowed headers for CORS requests.
+	// The trusted headers of CORS requests.
 	AllowHeaders []*string `json:"AllowHeaders,omitempty" xml:"AllowHeaders,omitempty" type:"Repeated"`
-	// The allowed HTTP methods for CORS requests.
+	// The trusted HTTP methods of CORS requests.
 	AllowMethods []*string `json:"AllowMethods,omitempty" xml:"AllowMethods,omitempty" type:"Repeated"`
-	// The allowed origins of CORS requests.
+	// The trusted origins of CORS requests. One or more values are supported. Asterisks (`*`) can be used as wildcard characters.
+	//
+	// 	- Each value must start with `http://` or `https://`, which must be followed by a valid domain name, including top-level domain names. Example: `http://*.test.abc.example.com`.
+	//
+	// 	- You can specify a port in each value or leave the port empty. Valid values: **1*	- to **65535**.
 	AllowOrigin []*string `json:"AllowOrigin,omitempty" xml:"AllowOrigin,omitempty" type:"Repeated"`
 	// The headers that can be exposed.
 	ExposeHeaders []*string `json:"ExposeHeaders,omitempty" xml:"ExposeHeaders,omitempty" type:"Repeated"`
-	// The maximum cache time of preflight requests in the browser. Unit: seconds.
+	// The maximum cache time of dry run requests in the browser. Unit: seconds.
 	//
 	// Valid values: **-1*	- to **172800**.
 	//
@@ -4716,7 +4728,7 @@ func (s *CreateRulesRequestRulesRuleActionsCorsConfig) SetMaxAge(v int64) *Creat
 }
 
 type CreateRulesRequestRulesRuleActionsFixedResponseConfig struct {
-	// The content of the custom response. The content can be up to 1 KB in size and can contain only ASCII characters.
+	// The content of the custom response. The content cannot exceed 1 KB in size, and can contain only ASCII characters.
 	//
 	// example:
 	//
@@ -4738,7 +4750,7 @@ type CreateRulesRequestRulesRuleActionsFixedResponseConfig struct {
 	//
 	// text/plain
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// The HTTP status code in the response. Valid values: **HTTP_2xx**, **HTTP_4xx**, and **HTTP_5xx**. **x*	- must be a digit.
+	// The HTTP status code in responses. Valid values: **2xx**, **4xx**, **5xx**. The value must be a numeric string. **x*	- must be a digit.
 	//
 	// example:
 	//
@@ -4770,7 +4782,7 @@ func (s *CreateRulesRequestRulesRuleActionsFixedResponseConfig) SetHttpCode(v st
 }
 
 type CreateRulesRequestRulesRuleActionsForwardGroupConfig struct {
-	// The configuration of session persistence for server groups.
+	// The configuration of session persistence for the server groups.
 	ServerGroupStickySession *CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession `json:"ServerGroupStickySession,omitempty" xml:"ServerGroupStickySession,omitempty" type:"Struct"`
 	// The server groups to which requests are forwarded.
 	ServerGroupTuples []*CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupTuples `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
@@ -4797,9 +4809,9 @@ func (s *CreateRulesRequestRulesRuleActionsForwardGroupConfig) SetServerGroupTup
 type CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession struct {
 	// Specifies whether to enable session persistence. Valid values:
 	//
-	// 	- **true**: enables session persistence.
+	// 	- **true**
 	//
-	// 	- **false*	- (default): disables session persistence.
+	// 	- **false*	- (default)
 	//
 	// example:
 	//
@@ -4840,9 +4852,9 @@ type CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupTuples struc
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 	// The weight of the server group. A larger value specifies a higher weight. A server group with a higher weight receives more requests. Valid values: **0*	- to **100**.
 	//
-	// 	- If only one destination server group exists and you do not specify a weight, the default value **100*	- is used.
+	// 	- If the number of destination server groups is 1, the default weight of the server group is **100**, unless you specify a weight.
 	//
-	// 	- If more than one destination server group exists, you must specify weights.
+	// 	- If the number of destination server groups is larger than 1, you must specify a weight.
 	//
 	// example:
 	//
@@ -4869,21 +4881,21 @@ func (s *CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupTuples) 
 }
 
 type CreateRulesRequestRulesRuleActionsInsertHeaderConfig struct {
-	// The key of the header. The key must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The header key specified by **InsertHeaderConfig*	- must be unique.
+	// The key of the header. The header key must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The header keys specified by **InsertHeaderConfig*	- must be unique.
 	//
-	// >  You cannot specify the following header keys: `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, and `authority`. The header keys are case-insensitive.
+	// >  The following header keys are not supported: `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, and `authority`. The header keys are not case-sensitive.
 	//
 	// example:
 	//
 	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the header.
+	// The value of the header to be inserted.
 	//
-	// 	- If **ValueType*	- is set to **SystemDefined**, one of the following values is supported:
+	// 	- If **ValueType*	- is set to **SystemDefined**, you can set the Value parameter to one of the following values:
 	//
 	//     	- **ClientSrcPort**: the client port.
 	//
-	//     	- **ClientSrcIp**: the client IP address.
+	//     	- **ClientSrcIp**: the IP address of the client.
 	//
 	//     	- **Protocol**: the request protocol (HTTP or HTTPS).
 	//
@@ -4891,9 +4903,9 @@ type CreateRulesRequestRulesRuleActionsInsertHeaderConfig struct {
 	//
 	//     	- **SLBPort**: the listener port.
 	//
-	// 	- If **ValueType*	- is set to **UserDefined**, a custom header value is supported. The header value must be 1 to 128 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and smaller than 127`. You can use asterisks (\\*) and question marks (?) as wildcard characters. The header value cannot start or end with a space character.
+	// 	- If **ValueType*	- is set to **UserDefined**, you can specify a custom header value. The header value must be 1 to 128 characters in length, and can contain wildcard characters, such as asterisks (\\*) and question marks (?), and printable characters whose ASCII values are `larger than or equal to 32 and smaller than 127`. The header value cannot start or end with a space character.
 	//
-	// 	- If **ValueType*	- is set to **ReferenceHeader**, you can reference one of the request headers. The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
+	// 	- If **ValueType*	- is set to **ReferenceHeader**, you can reference a value from request headers. The value must be 1 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), and underscores (_).
 	//
 	// example:
 	//
@@ -4937,43 +4949,43 @@ func (s *CreateRulesRequestRulesRuleActionsInsertHeaderConfig) SetValueType(v st
 }
 
 type CreateRulesRequestRulesRuleActionsRedirectConfig struct {
-	// The hostname to which requests are redirected. Valid values:
+	// The hostname to which requests are forwarded. Valid values:
 	//
 	// 	- **${host}*	- (default): If ${host} is returned, no other character is appended.
 	//
-	// 	- Limits on the value:
+	// 	- The hostname must meet the following requirements:
 	//
-	//     	- The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), and periods (.). Asterisks (\\*) and question marks (?) can be used as wildcards.
+	//     	- The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), periods (.), asterisks (\\*), and question marks (?).
 	//
-	//     	- The hostname contains at least one period (.) but does not start or end with a period (.).
+	//     	- The hostname must contain at least one period (.) but cannot start or end with a period (.).
 	//
 	//     	- The rightmost domain label can contain only letters and wildcard characters. It does not contain digits or hyphens (-).
 	//
-	//     	- The domain labels do not start or end with hyphens (-).
+	//     	- The domain labels cannot start or end with a hyphen (-).
 	//
-	//     	- You can use asterisks (\\*) and question marks (?) as wildcards anywhere in a domain label.
+	//     	- You can place an asterisk (\\*) or a question mark (?) anywhere in a domain label as wildcard characters.
 	//
 	// example:
 	//
 	// www.example.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The HTTP status code that indicates the redirect type. Valid values: **301**, **302**, **303**, **307**, and **308**.
+	// The redirect type. Valid values: **301**, **302**, **303**, **307**, and **308**.
 	//
 	// example:
 	//
 	// 301
 	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	// The path to which requests are redirected. Valid values:
+	// The URL to which requests are redirected. Valid values:
 	//
 	// 	- Default value: **${path}**. **${host}**, **${protocol}**, and **${port}*	- are also supported. Each variable can be specified only once. You can specify one or more of the preceding variables in each request. You can also combine them with a custom value.
 	//
-	// 	- Limits on the value:
+	// 	- The path must meet the following requirements:
 	//
-	//     	- The path must be 1 to 128 characters in length.
+	//     	- The URL must be 1 to 128 characters in length.
 	//
-	//     	- It must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ]^ , "`. You can use asterisks (\\*) and question marks (?) as wildcard characters.
+	//     	- The URL must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ]^ , "`. You can use asterisks (\\*) and question marks (?) as wildcard characters.
 	//
-	//     	- The path is case-sensitive.
+	//     	- The URL is case-sensitive.
 	//
 	// example:
 	//
@@ -4983,7 +4995,7 @@ type CreateRulesRequestRulesRuleActionsRedirectConfig struct {
 	//
 	// 	- **${port}*	- (default): If you set the value to ${port}, you cannot add other characters to the value.
 	//
-	// 	- Other valid values: **1 to 63335**.
+	// 	- You can also enter a port number. Valid values: **1 to 63335**.
 	//
 	// example:
 	//
@@ -4993,9 +5005,9 @@ type CreateRulesRequestRulesRuleActionsRedirectConfig struct {
 	//
 	// 	- **${protocol}*	- (default): If ${protocol} is returned, no other character is appended.
 	//
-	// 	- **HTTP*	- or **HTTPS**.
+	// 	- **HTTP*	- or **HTTPS**
 	//
-	// >  HTTPS listeners support only HTTPS to HTTPS redirects.
+	// >  HTTPS listeners supports only HTTPS redirects.
 	//
 	// example:
 	//
@@ -5005,11 +5017,11 @@ type CreateRulesRequestRulesRuleActionsRedirectConfig struct {
 	//
 	// 	- Default value: **${query}**. **${host}**, **${protocol}**, and **${port}*	- are also supported. Each variable can be specified only once. The preceding variables can be used at the same time or combined with a custom value.
 	//
-	// 	- Limits on the value:
+	// 	- The query string must meet the following requirements:
 	//
 	//     	- The query string must be 1 to 128 characters in length.
 	//
-	//     	- It can contain printable characters, except space characters, the special characters `# [ ] { } \\ | < > &`, and uppercase letters.
+	//     	- The query string can contain printable characters, but cannot contain space characters, the special characters `# [ ] { } \\ | < > &`, or uppercase letters.
 	//
 	// example:
 	//
@@ -5056,11 +5068,11 @@ func (s *CreateRulesRequestRulesRuleActionsRedirectConfig) SetQuery(v string) *C
 }
 
 type CreateRulesRequestRulesRuleActionsRemoveHeaderConfig struct {
-	// The key of the header to be removed. The key must be 1 to 40 characters in length and can contain letters, digits, underscores, and hyphens (-). The header key must be unique.
+	// The key of the header to be removed. The header key must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The header keys specified in RemoveHeader must be unique.
 	//
-	// 	- You cannot specify the following header keys for an inbound forwarding rule: `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, and `authority`. The preceding keys are case-insensitive.
+	// 	- If Direction is set to Request, the following header keys are not supported: `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, and `authority`. The header keys are not case-sensitive.
 	//
-	// 	- You cannot specify the following header keys for an outbound forwarding rule: `connection`, `upgrade`, `content-length`, and `transfer-encoding`. The preceding keys are case-insensitive.
+	// 	- If Direction is set to Response, the following header keys are not supported: `connection`, `upgrade`, `content-length`, and `transfer-encoding`. The header keys are not case-sensitive.
 	//
 	// example:
 	//
@@ -5082,49 +5094,49 @@ func (s *CreateRulesRequestRulesRuleActionsRemoveHeaderConfig) SetKey(v string) 
 }
 
 type CreateRulesRequestRulesRuleActionsRewriteConfig struct {
-	// The hostname to which requests are redirected. Valid values:
+	// The hostname to which requests are rewritten. Valid values:
 	//
 	// 	- **${host}*	- (default): If you set the value to ${host}, you cannot append other characters.
 	//
-	// 	- A custom value that meets the following requirements:
+	// 	- The hostname must meet the following requirements:
 	//
-	//     	- The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), and periods (.). You can use asterisks (\\*) and question marks (?) as wildcard characters.
+	//     	- The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), periods (.), asterisks (\\*), and question marks (?).
 	//
-	//     	- The hostname contains at least one period (.) but does not start or end with a period (.).
+	//     	- The hostname must contain at least one period (.) but cannot start or end with a period (.).
 	//
 	//     	- The rightmost domain label can contain only letters and wildcard characters. It does not contain digits or hyphens (-).
 	//
-	//     	- The domain labels do not start or end with hyphens (-). You can use asterisks (\\*) and question marks (?) anywhere in a domain label as wildcard characters.
+	//     	- The domain labels cannot start or end with hyphens (-). You can use asterisks (\\*) and question marks (?) anywhere in a domain label as wildcard characters.
 	//
 	// example:
 	//
 	// www.example.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The path to which requests are redirected. Valid values:
+	// The URL to which requests are redirected. Valid values:
 	//
 	// 	- Default value: **${path}**. **${host}**, **${protocol}**, and **${port}*	- are also supported. Each variable can be specified only once. You can specify one or more of the preceding variables in each request. You can also combine them with a custom value.
 	//
-	// 	- Limits on the value:
+	// 	- The URL must meet the following requirements:
 	//
-	//     	- The path must be 1 to 128 characters in length.
+	//     	- The value must be 1 to 128 characters in length,
 	//
-	//     	- It must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ]^ , "`. You can use asterisks (\\*) and question marks (?) as wildcard characters.
+	//     	- The URL must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ]^ , "`. You can use asterisks (\\*) and question marks (?) as wildcard characters.
 	//
-	//     	- The path is case-sensitive.
+	//     	- The URL is case-sensitive.
 	//
 	// example:
 	//
 	// /tsdf
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The query string of the URL to which requests are redirected.
+	// The query string of the URL to which requests are rewritten.
 	//
 	// 	- Default value: **${query}**. **${host}**, **${protocol}**, and **${port}*	- are also supported. Each variable can be specified only once. The preceding variables can be used at the same time or combined with a custom value.
 	//
-	// 	- Limits on the value:
+	// 	- The query string must meet the following requirements:
 	//
 	//     	- The query string must be 1 to 128 characters in length.
 	//
-	//     	- It can contain printable characters, except space characters, the special characters `# [ ] { } \\ | < > &`, and uppercase letters.
+	//     	- The query string can contain printable characters, but cannot contain space characters, the special characters `# [ ] { } \\ | < > &`, or uppercase letters.
 	//
 	// example:
 	//
@@ -5156,9 +5168,9 @@ func (s *CreateRulesRequestRulesRuleActionsRewriteConfig) SetQuery(v string) *Cr
 }
 
 type CreateRulesRequestRulesRuleActionsTrafficLimitConfig struct {
-	// The QPS of each IP address. Value range: **1 to 1000000**.
+	// The number of requests per IP address. Value range: **1 to 1000000**.
 	//
-	// >  If **QPS*	- and PerIpQps are specified, the value of **PerIpQps*	- must be smaller than the value of **QPS**.
+	// >  If both the **QPS*	- and **PerIpQps*	- parameters are specified, the value of the **QPS*	- parameter is smaller than the value of the PerIpQps parameter.
 	//
 	// example:
 	//
@@ -5193,7 +5205,7 @@ func (s *CreateRulesRequestRulesRuleActionsTrafficLimitConfig) SetQPS(v int32) *
 type CreateRulesRequestRulesRuleActionsTrafficMirrorConfig struct {
 	// The configuration of the server group to which traffic is mirrored.
 	MirrorGroupConfig *CreateRulesRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig `json:"MirrorGroupConfig,omitempty" xml:"MirrorGroupConfig,omitempty" type:"Struct"`
-	// The type of destination to which network traffic is mirrored. Valid values:
+	// The type of target to which network traffic is mirrored. Valid values:
 	//
 	// 	- **ForwardGroupMirror**: a server group.
 	//
@@ -5240,7 +5252,7 @@ func (s *CreateRulesRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig)
 }
 
 type CreateRulesRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples struct {
-	// The ID of the server group.
+	// The server group ID.
 	//
 	// example:
 	//
@@ -5262,43 +5274,43 @@ func (s *CreateRulesRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigS
 }
 
 type CreateRulesRequestRulesRuleConditions struct {
-	// The configurations of the cookies. You can add at most 20 cookies.
+	// The key-value pairs of the cookie. You can specify at most 20 cookies.
 	CookieConfig *CreateRulesRequestRulesRuleConditionsCookieConfig `json:"CookieConfig,omitempty" xml:"CookieConfig,omitempty" type:"Struct"`
-	// The configuration of the header. You can add at most 20 headers.
+	// The configuration of the header. You can specify at most 20 headers.
 	HeaderConfig *CreateRulesRequestRulesRuleConditionsHeaderConfig `json:"HeaderConfig,omitempty" xml:"HeaderConfig,omitempty" type:"Struct"`
-	// The configurations of the hosts. You can specify up to 20 resources.
+	// The configuration of the hosts. You can specify at most 20 hosts.
 	HostConfig *CreateRulesRequestRulesRuleConditionsHostConfig `json:"HostConfig,omitempty" xml:"HostConfig,omitempty" type:"Struct"`
 	// The configurations of the request methods. You can specify at most 20 request methods.
 	MethodConfig *CreateRulesRequestRulesRuleConditionsMethodConfig `json:"MethodConfig,omitempty" xml:"MethodConfig,omitempty" type:"Struct"`
-	// The configurations of the paths. You can specify at most 20 paths.
+	// The configurations of the forwarding URLs. You can specify at most 20 forwarding URLs.
 	PathConfig *CreateRulesRequestRulesRuleConditionsPathConfig `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
 	// The configuration of the query conditions. You can specify at most 20 query conditions.
 	QueryStringConfig *CreateRulesRequestRulesRuleConditionsQueryStringConfig `json:"QueryStringConfig,omitempty" xml:"QueryStringConfig,omitempty" type:"Struct"`
-	// The configuration of the header. You can add at most 20 headers.
+	// The configuration of the header. You can specify at most 20 headers.
 	ResponseHeaderConfig *CreateRulesRequestRulesRuleConditionsResponseHeaderConfig `json:"ResponseHeaderConfig,omitempty" xml:"ResponseHeaderConfig,omitempty" type:"Struct"`
 	// The configurations of the response status codes.
 	ResponseStatusCodeConfig *CreateRulesRequestRulesRuleConditionsResponseStatusCodeConfig `json:"ResponseStatusCodeConfig,omitempty" xml:"ResponseStatusCodeConfig,omitempty" type:"Struct"`
-	// The configuration of the source IP addresses based on which user traffic is matched. This parameter is required and takes effect only when **Type*	- is set to **SourceIP**. You can specify at most five values for **SourceIp**.
+	// Traffic matching based on source IP addresses. This parameter is required and valid when **Type*	- is set to **SourceIP**. You can specify up to five IP addresses or CIDR blocks in the **SourceIpConfig*	- parameter.
 	SourceIpConfig *CreateRulesRequestRulesRuleConditionsSourceIpConfig `json:"SourceIpConfig,omitempty" xml:"SourceIpConfig,omitempty" type:"Struct"`
-	// The type of forwarding rule. You can specify at most seven types. Valid values:
+	// The type of forwarding rule. You can specify at most seven types of forwarding rules. Valid values:
 	//
-	// 	- **Host**: Responses are forwarded based on hosts.
+	// 	- **Host**: Requests are forwarded based on hosts.
 	//
-	// 	- **Path**: Responses are forwarded based on paths.
+	// 	- **Path**: Requests are forwarded based on URLs.
 	//
-	// 	- **Header**: Responses are forwarded based on HTTP headers.
+	// 	- **Header**: Requests are forwarded based on HTTP headers.
 	//
-	// 	- **QueryString**: Responses are forwarded based on query strings.
+	// 	- **QueryString**: Requests are forwarded based on query strings.
 	//
-	// 	- **Method**: Responses are forwarded based on request methods.
+	// 	- **Method**: Requests are forwarded based on request methods.
 	//
-	// 	- **Cookie**: Responses are forwarded based on cookies.
+	// 	- **Cookie**: Requests are forwarded based on cookies.
 	//
-	// 	- **SourceIp:**: Responses are forwarded based on source IP addresses.
+	// 	- **SourceIp**: Requests are forwarded based on source IP addresses.
 	//
-	// 	- **ResponseHeader**: Responses are forwarded based on HTTP response headers.
+	// 	- **ResponseHeader**: Requests are forwarded based on HTTP response headers.
 	//
-	// 	- **ResponseStatusCode**: Responses are forwarded based on response status codes.
+	// 	- **ResponseStatusCode**: Requests are forwarded based on response status codes.
 	//
 	// This parameter is required.
 	//
@@ -5367,7 +5379,7 @@ func (s *CreateRulesRequestRulesRuleConditions) SetType(v string) *CreateRulesRe
 }
 
 type CreateRulesRequestRulesRuleConditionsCookieConfig struct {
-	// The key-value pairs of cookies.
+	// The cookie value.
 	Values []*CreateRulesRequestRulesRuleConditionsCookieConfigValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -5385,9 +5397,9 @@ func (s *CreateRulesRequestRulesRuleConditionsCookieConfig) SetValues(v []*Creat
 }
 
 type CreateRulesRequestRulesRuleConditionsCookieConfigValues struct {
-	// The key of the cookie.
+	// The cookie key.
 	//
-	// 	- The key must be 1 to 100 characters in length.
+	// 	- The cookie key must be 1 to 100 characters in length.
 	//
 	// 	- You can use asterisks (\\*) and question marks (?) as wildcard characters.
 	//
@@ -5397,9 +5409,9 @@ type CreateRulesRequestRulesRuleConditionsCookieConfigValues struct {
 	//
 	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the cookie.
+	// The cookie value.
 	//
-	// 	- The value must be 1 to 100 characters in length.
+	// 	- The cookie value must be 1 to 100 characters in length.
 	//
 	// 	- You can use asterisks (\\*) and question marks (?) as wildcard characters.
 	//
@@ -5432,17 +5444,17 @@ func (s *CreateRulesRequestRulesRuleConditionsCookieConfigValues) SetValue(v str
 type CreateRulesRequestRulesRuleConditionsHeaderConfig struct {
 	// The key of the header.
 	//
-	// 	- The key must be 1 to 40 characters in length.
+	// 	- The header key must be 1 to 40 characters in length,
 	//
-	// 	- It can contain lowercase letters, digits, hyphens (-), and underscores (_).
+	// 	- The header key can contain letters, digits, hyphens (-), and underscores (_).
 	//
-	// 	- You cannot specify Cookie or Host.
+	// 	- Cookie and Host are not supported.
 	//
 	// example:
 	//
 	// Port
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The values of the header.
+	// The value of the header.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -5465,7 +5477,7 @@ func (s *CreateRulesRequestRulesRuleConditionsHeaderConfig) SetValues(v []*strin
 }
 
 type CreateRulesRequestRulesRuleConditionsHostConfig struct {
-	// The hostnames.
+	// The hostname.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -5501,7 +5513,7 @@ func (s *CreateRulesRequestRulesRuleConditionsMethodConfig) SetValues(v []*strin
 }
 
 type CreateRulesRequestRulesRuleConditionsPathConfig struct {
-	// The paths.
+	// The URLs to which requests are forwarded.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -5539,7 +5551,7 @@ func (s *CreateRulesRequestRulesRuleConditionsQueryStringConfig) SetValues(v []*
 type CreateRulesRequestRulesRuleConditionsQueryStringConfigValues struct {
 	// They key of the query string.
 	//
-	// 	- It must be 1 to 100 characters in length.
+	// 	- The key must be 1 to 100 characters in length.
 	//
 	// 	- You can use asterisks (\\*) and question marks (?) as wildcards. The key can contain printable characters, excluding uppercase letters, space characters, and the following special characters: `# [ ] { } \\ | < > &`.
 	//
@@ -5549,9 +5561,9 @@ type CreateRulesRequestRulesRuleConditionsQueryStringConfigValues struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the query string.
 	//
-	// 	- The value must be 1 to 128 characters in length.
+	// 	- The value must be 1 to 128 characters in length,
 	//
-	// 	- It can contain printable characters, excluding uppercase letters, space characters, and the following special characters: `# [ ] { } \\ | < > &`. You can use asterisks (\\*) and question marks (?) as wildcards.
+	// 	- The value can contain printable characters, excluding uppercase letters, space characters, and the following special characters: `# [ ] { } \\ | < > &`. You can use asterisks (\\*) and question marks (?) as wildcard characters.
 	//
 	// example:
 	//
@@ -5580,17 +5592,17 @@ func (s *CreateRulesRequestRulesRuleConditionsQueryStringConfigValues) SetValue(
 type CreateRulesRequestRulesRuleConditionsResponseHeaderConfig struct {
 	// The key of the header.
 	//
-	// 	- The key must be 1 to 40 characters in length.
+	// 	- The header key must be 1 to 40 characters in length.
 	//
-	// 	- It can contain lowercase letters, digits, hyphens (-), and underscores (_).
+	// 	- It can contain letters, digits, hyphens (-), and underscores (_).
 	//
-	// 	- You cannot specify Cookie or Host.
+	// 	- Cookie and Host are not supported.
 	//
 	// example:
 	//
 	// Port
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The values of the header.
+	// The value of the header.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -5631,7 +5643,7 @@ func (s *CreateRulesRequestRulesRuleConditionsResponseStatusCodeConfig) SetValue
 }
 
 type CreateRulesRequestRulesRuleConditionsSourceIpConfig struct {
-	// The configuration of the source IP addresses based on which user traffic is matched.
+	// Traffic matching based on source IP addresses.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -5649,13 +5661,13 @@ func (s *CreateRulesRequestRulesRuleConditionsSourceIpConfig) SetValues(v []*str
 }
 
 type CreateRulesRequestRulesTag struct {
-	// The key of the tag. The tag key can be up to 128 characters in length, and cannot start with acs: or aliyun. It cannot contain http:// or https://.
+	// The tag key. The tag key can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag. The tag value can be up to 128 characters in length, and cannot start with acs: or aliyun. It cannot contain http:// or https://.
+	// The tag value. The tag value can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
 	//
 	// example:
 	//
@@ -6753,7 +6765,7 @@ func (s *DeleteAScriptsResponse) SetBody(v *DeleteAScriptsResponseBody) *DeleteA
 }
 
 type DeleteAclRequest struct {
-	// The ACL ID.
+	// The ID of the ACL.
 	//
 	// This parameter is required.
 	//
@@ -6765,7 +6777,7 @@ type DeleteAclRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
 	//
 	// example:
 	//
@@ -7779,7 +7791,7 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 type DescribeZonesRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- **zh-CN**: Chinese
+	// 	- **zh-CN*	- (default): Chinese
 	//
 	// 	- **en-US**: English
 	//
@@ -8364,7 +8376,7 @@ func (s *DisableLoadBalancerIpv6InternetResponse) SetBody(v *DisableLoadBalancer
 }
 
 type DissociateAclsFromListenerRequest struct {
-	// The ACL IDs.
+	// The access control list (ACL) IDs.
 	//
 	// This parameter is required.
 	AclIds []*string `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Repeated"`
@@ -8372,7 +8384,7 @@ type DissociateAclsFromListenerRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
 	//
 	// example:
 	//
@@ -8388,7 +8400,7 @@ type DissociateAclsFromListenerRequest struct {
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The listener ID.
+	// The ID of the listener.
 	//
 	// This parameter is required.
 	//
@@ -8552,7 +8564,7 @@ func (s *DissociateAdditionalCertificatesFromListenerRequest) SetListenerId(v st
 }
 
 type DissociateAdditionalCertificatesFromListenerRequestCertificates struct {
-	// The certificate ID. Only server certificates are supported. You can specify up to 20 IDs.
+	// The certificate ID. Only server certificates are supported. A maximum of 20 certificate IDs are supported.
 	//
 	// This parameter is required.
 	//
@@ -9008,13 +9020,7 @@ func (s *GetHealthCheckTemplateAttributeRequest) SetHealthCheckTemplateId(v stri
 }
 
 type GetHealthCheckTemplateAttributeResponseBody struct {
-	// The HTTP status codes that are used to determine whether the backend server passes the health check.
-	//
-	// 	- If **HealthCheckProtocol*	- is set to **HTTP**, **HealthCheckCodes*	- can be set to **http_2xx*	- (default), **http_3xx**, **http_4xx**, and **http_5xx**. Separate multiple HTTP status codes with a comma (,).
-	//
-	// 	- If **HealthCheckProtocol*	- is set to **gRPC**, **HealthCheckCodes*	- can be set to **0 to 99**. Default value: **0**. Value ranges are supported. You can enter up to 20 value ranges and separate them with a comma (,).
-	//
-	// > This parameter takes effect only when the **HealthCheckProtocol*	- parameter is set to **HTTP*	- or **gRPC**.
+	// The HTTP status codes that indicate healthy backend servers.
 	HealthCheckCodes []*string `json:"HealthCheckCodes,omitempty" xml:"HealthCheckCodes,omitempty" type:"Repeated"`
 	// The port that is used for health checks.
 	//
@@ -9222,13 +9228,13 @@ func (s *GetHealthCheckTemplateAttributeResponseBody) SetUnhealthyThreshold(v in
 }
 
 type GetHealthCheckTemplateAttributeResponseBodyTags struct {
-	// The tag key. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The tag key. The tag key can be up to 128 characters in length, and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The tag value. The tag value can be up to 128 characters in length, and cannot start with `acs:`. The tag value cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -10892,7 +10898,7 @@ type GetLoadBalancerAttributeResponseBody struct {
 	//
 	// Intranet
 	Ipv6AddressType *string `json:"Ipv6AddressType,omitempty" xml:"Ipv6AddressType,omitempty"`
-	// The configuration of the billing method of the ALB instance.
+	// The billing method of the ALB instance.
 	LoadBalancerBillingConfig *GetLoadBalancerAttributeResponseBodyLoadBalancerBillingConfig `json:"LoadBalancerBillingConfig,omitempty" xml:"LoadBalancerBillingConfig,omitempty" type:"Struct"`
 	// The service status of the ALB instance. Valid values:
 	//
@@ -10975,7 +10981,8 @@ type GetLoadBalancerAttributeResponseBody struct {
 	// example:
 	//
 	// rg-atstuj3rtop****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId  *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
 	// The tag value.
 	//
 	// The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag value cannot contain `http://` or `https://`.
@@ -11100,6 +11107,11 @@ func (s *GetLoadBalancerAttributeResponseBody) SetResourceGroupId(v string) *Get
 	return s
 }
 
+func (s *GetLoadBalancerAttributeResponseBody) SetSecurityGroupIds(v []*string) *GetLoadBalancerAttributeResponseBody {
+	s.SecurityGroupIds = v
+	return s
+}
+
 func (s *GetLoadBalancerAttributeResponseBody) SetTags(v []*GetLoadBalancerAttributeResponseBodyTags) *GetLoadBalancerAttributeResponseBody {
 	s.Tags = v
 	return s
@@ -11188,7 +11200,7 @@ func (s *GetLoadBalancerAttributeResponseBodyDeletionProtectionConfig) SetEnable
 type GetLoadBalancerAttributeResponseBodyLoadBalancerBillingConfig struct {
 	// The billing method.
 	//
-	// Only **PostPay*	- may be returned. The value indicates the pay-as-you-go billing method.
+	// Set the value to **PostPay**, which indicates the pay-as-you-go billing method.
 	//
 	// example:
 	//
@@ -11210,11 +11222,17 @@ func (s *GetLoadBalancerAttributeResponseBodyLoadBalancerBillingConfig) SetPayTy
 }
 
 type GetLoadBalancerAttributeResponseBodyLoadBalancerOperationLocks struct {
-	// The configuration of the configuration read-only mode.
+	// The reason why the ALB instance is locked. This parameter is valid only if **LoadBalancerBussinessStatus*	- is set to **Abnormal**.
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	// The reason why the configuration read-only mode was enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The reason must start with a letter.
+	// The type of the lock. Valid values:
 	//
-	// This parameter is valid only if you set the **ModificationProtectionStatus*	- parameter to **ConsoleProtection**.
+	// 	- **SecurityLocked**: The ALB instance is locked due to security reasons.
+	//
+	// 	- **RelatedResourceLocked**: The ALB instance is locked due to other resources that are associated with the ALB instance.
+	//
+	// 	- **FinancialLocked**: The ALB instance is locked due to overdue payments.
+	//
+	// 	- **ResidualLocked**: The ALB instance is locked because the associated resources have overdue payments and the resources are released.
 	//
 	// example:
 	//
@@ -11278,13 +11296,17 @@ func (s *GetLoadBalancerAttributeResponseBodyModificationProtectionConfig) SetSt
 }
 
 type GetLoadBalancerAttributeResponseBodyTags struct {
-	// The zones and the vSwitches. You must specify at least two zones.
+	// The tag key.
+	//
+	// The tag key can be up to 128 characters in length, and cannot contain `http://` or `https://`. It cannot start with `acs:` or `aliyun`.
 	//
 	// example:
 	//
 	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The IP addresses that are used by the ALB instance.
+	// The tag value.
+	//
+	// The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
 	//
 	// example:
 	//
@@ -11311,18 +11333,18 @@ func (s *GetLoadBalancerAttributeResponseBodyTags) SetValue(v string) *GetLoadBa
 }
 
 type GetLoadBalancerAttributeResponseBodyZoneMappings struct {
-	// The ID of the vSwitch in the zone. Each zone can contain only one vSwitch and one subnet.
+	// The IP address of the ALB instance.
 	LoadBalancerAddresses []*GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses `json:"LoadBalancerAddresses,omitempty" xml:"LoadBalancerAddresses,omitempty" type:"Repeated"`
-	// The type of IPv6 address that is used by the ALB instance. Valid values:
-	//
-	// 	- **Internet:*	- The ALB instance uses a public IP address. The domain name of the ALB instance is resolved to the public IP address. Therefore, the ALB instance can be accessed over the Internet.
-	//
-	// 	- **Intranet:*	- The ALB instance uses a private IP address. The domain name of the ALB instance is resolved to the private IP address. Therefore, the ALB instance can be accessed over the VPC in which the ALB instance is deployed.
+	// The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an ALB instance.
 	//
 	// example:
 	//
 	// vsw-bp12mw1f8k3jgy****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The zone ID of the ALB instance.
+	//
+	// You can call the [DescribeZones](https://help.aliyun.com/document_detail/189196.html) operation to query the most recent zone list.
+	//
 	// example:
 	//
 	// cn-hangzhou-a
@@ -11353,28 +11375,41 @@ func (s *GetLoadBalancerAttributeResponseBodyZoneMappings) SetZoneId(v string) *
 }
 
 type GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses struct {
-	// The ID of the zone where the ALB instance was deployed.
+	// An IPv4 address.
 	//
-	// You can call the [DescribeZones](https://help.aliyun.com/document_detail/189196.html) operation to query the zones of the ALB instance.
+	// This parameter takes effect when **AddressIPVersion*	- is set to **IPv4*	- or **DualStack**. The network type is determined by the value of **AddressType**.
 	//
 	// example:
 	//
 	// 192.168.10.1
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The elastic IP address (EIP).
+	//
 	// example:
 	//
 	// eip-uf6wm****1zj9
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
+	// The type of EIP. Valid values:
+	//
+	// 	- **Common**: an EIP.
+	//
+	// 	- **Anycast**: an Anycast EIP.
+	//
+	// >  For more information about the regions in which ALB supports Anycast EIPs, see [Limits](https://help.aliyun.com/document_detail/460727.html).
+	//
 	// example:
 	//
 	// Common
-	EipType         *string `json:"EipType,omitempty" xml:"EipType,omitempty"`
+	EipType *string `json:"EipType,omitempty" xml:"EipType,omitempty"`
+	// The private IPv4 address.
+	//
+	// example:
+	//
+	// 10.0.1.181
 	IntranetAddress *string `json:"IntranetAddress,omitempty" xml:"IntranetAddress,omitempty"`
-	// The protocol version. Valid values:
+	// An IPv6 address.
 	//
-	// 	- **IPv4:*	- IPv4.
-	//
-	// 	- **DualStack:*	- dual stack.
+	// This parameter takes effect only when **AddressIPVersion*	- is set to **DualStack**. The network type is determined by the value of **Ipv6AddressType**.
 	//
 	// example:
 	//
@@ -12080,7 +12115,7 @@ func (s *ListAclRelationsResponse) SetBody(v *ListAclRelationsResponseBody) *Lis
 }
 
 type ListAclsRequest struct {
-	// The ID of the network ACL. You can specify at most 20 network ACL IDs in each request.
+	// Filter access control lists (ACLs) by ACL ID.
 	AclIds []*string `json:"AclIds,omitempty" xml:"AclIds,omitempty" type:"Repeated"`
 	// The names of the network ACLs. You can specify at most 10 network ACL names in each request.
 	AclNames []*string `json:"AclNames,omitempty" xml:"AclNames,omitempty" type:"Repeated"`
@@ -12182,7 +12217,7 @@ func (s *ListAclsRequestTag) SetValue(v string) *ListAclsRequestTag {
 }
 
 type ListAclsResponseBody struct {
-	// The network ACLs.
+	// A list of ACLs.
 	Acls []*ListAclsResponseBodyAcls `json:"Acls,omitempty" xml:"Acls,omitempty" type:"Repeated"`
 	// The maximum number of network ACLs returned. This parameter is optional. Valid values: **1*	- to **100**. If this parameter is not set, the default value **20*	- is returned.
 	//
@@ -12200,7 +12235,7 @@ type ListAclsResponseBody struct {
 	//
 	// FFmyTO70t****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -12248,47 +12283,47 @@ func (s *ListAclsResponseBody) SetTotalCount(v int32) *ListAclsResponseBody {
 }
 
 type ListAclsResponseBodyAcls struct {
-	// The ID of the network ACL.
+	// The ACL ID.
 	//
 	// example:
 	//
 	// nacl-hp34s2h0xx1ht4nwo****
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The name of the network ACL.
+	// The name of the ACL.
 	//
 	// example:
 	//
 	// test-acl
 	AclName *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
-	// The status of the network ACL. Valid values:
+	// The status of the ACL. Valid values:
 	//
 	// 	- **Creating**: The network ACL is being created.
 	//
 	// 	- **Available**: The network ACL is available.
 	//
-	// 	- **Configuring**: The network ACL is being configured.
+	// 	- **Configuring**
 	//
 	// example:
 	//
 	// Available
 	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	// The IP version. **IPv4*	- is returned.
+	// The IP version of the ACL. Only **IPv4*	- may be returned.
 	//
 	// example:
 	//
 	// IPv4
 	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
-	// The status of configuration management. Valid values:
+	// Indicates whether configuration management is enabled. Valid values:
 	//
-	// 	- **true**: configuration management is enabled.
+	// 	- **true**
 	//
-	// 	- **false**: configuration management is disabled.
+	// 	- **false**
 	//
 	// example:
 	//
 	// false
 	ConfigManagedEnabled *bool `json:"ConfigManagedEnabled,omitempty" xml:"ConfigManagedEnabled,omitempty"`
-	// The time when the resource was created.
+	// The time when the ACL was created. The follows the `YYYY-MM-DDThh:mm:ssZ` format.
 	//
 	// example:
 	//
@@ -12353,13 +12388,13 @@ func (s *ListAclsResponseBodyAcls) SetTags(v []*ListAclsResponseBodyAclsTags) *L
 }
 
 type ListAclsResponseBodyAclsTags struct {
-	// The tag key.
+	// The tag key. The tag key can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The tag value. The tag value can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
 	//
 	// example:
 	//
@@ -12770,7 +12805,7 @@ type ListHealthCheckTemplatesRequest struct {
 	HealthCheckTemplateIds []*string `json:"HealthCheckTemplateIds,omitempty" xml:"HealthCheckTemplateIds,omitempty" type:"Repeated"`
 	// The health check templates.
 	HealthCheckTemplateNames []*string `json:"HealthCheckTemplateNames,omitempty" xml:"HealthCheckTemplateNames,omitempty" type:"Repeated"`
-	// The number of entries to return on each page. Valid values: **1*	- to **100**. Default value: **20**.
+	// The number of entries per page. Valid values: **1*	- to **100**. Default value: **20**.
 	//
 	// example:
 	//
@@ -12923,13 +12958,13 @@ func (s *ListHealthCheckTemplatesResponseBody) SetTotalCount(v int32) *ListHealt
 }
 
 type ListHealthCheckTemplatesResponseBodyHealthCheckTemplates struct {
-	// The HTTP status codes.
+	// The HTTP status codes that indicate healthy backend servers.
 	HealthCheckCodes []*string `json:"HealthCheckCodes,omitempty" xml:"HealthCheckCodes,omitempty" type:"Repeated"`
 	// The port that is used for health checks.
 	//
 	// Valid values: \\*\\	- 0 to 65535\\*\\*.
 	//
-	// Default value: **0**. This value indicates that the port on a backend server is used for health checks.
+	// The default value is **0**, which specifies that the port of a backend server is used for health checks.
 	//
 	// example:
 	//
@@ -12937,23 +12972,23 @@ type ListHealthCheckTemplatesResponseBodyHealthCheckTemplates struct {
 	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
 	// The domain name that is used for health checks. Valid values:
 	//
-	// **$SERVER_IP*	- (default): the private IP addresses of backend servers. If HealthCheckHost is not specified or set to $SERVER_IP, SLB uses the private IP addresses of backend servers for health checks.
+	// 	- **$SERVER_IP*	- (default): the private IP address of a backend server. If an IP address is specified, or this parameter is not specified, the ALB instance uses the private IP address of each backend server as the domain name for health checks.
 	//
-	// **domain**: The domain name must be 1 to 80 characters in length and can contain letters, digits, periods (.), and hyphens (-).
+	// 	- **domain**: The domain name must be 1 to 80 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
 	//
-	// >  This parameter takes effect only if `HealthCheckProtocol` is set to **HTTP**.
+	// >  This parameter takes effect only when `HealthCheckProtocol` is set to **HTTP*	- or **HTTPS**. HTTPS is unavailable by default. If you want to use HTTPS, log on to the SLB console, go to the Quota Center page, click the **ALB*	- tab, and then apply for the privilege to use HTTPs.
 	//
 	// example:
 	//
 	// $_ip
 	HealthCheckHost *string `json:"HealthCheckHost,omitempty" xml:"HealthCheckHost,omitempty"`
-	// The HTTP version that is used for health checks.
+	// The HTTP version for health checks.
 	//
 	// Valid values: **HTTP 1.0*	- and **HTTP 1.1**.
 	//
 	// Default value: **HTTP 1.1**.
 	//
-	// >  This parameter takes effect only if `HealthCheckProtocol` is set to **HTTP**.
+	// >  This parameter takes effect only when `HealthCheckProtocol` is set to **HTTP*	- or **HTTPS**. HTTPS is unavailable by default. If you want to use HTTPS, log on to the SLB console, go to the Quota Center page, click the **ALB*	- tab, and then apply for the privilege to use HTTPs.
 	//
 	// example:
 	//
@@ -12965,35 +13000,39 @@ type ListHealthCheckTemplatesResponseBodyHealthCheckTemplates struct {
 	//
 	// 5
 	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	// The HTTP method that is used for health checks. Valid values:
+	// The HTTP method that is used for health checks. Valid value:
 	//
-	// 	- **HEAD*	- (default): By default, HTTP health checks use the HEAD method.
+	// 	- **HEAD*	- (default): By default, HTTP and HTTPS health checks use the HEAD method.
 	//
 	// 	- **GET**: If the length of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
 	//
-	// 	- **POST**: By default, gRPC health checks use the POST method.
+	// 	- **POST**: gRPC health checks use the POST method by default.
 	//
-	// >  This parameter takes effect only if **HealthCheckProtocol*	- is set to **HTTP*	- or **gRPC**.
+	// >  This parameter takes effect only when **HealthCheckProtocol*	- is set to **HTTP**, **HTTPS**, or **gRPC**. HTTPS is unavailable by default. If you want to use HTTPS, log on to the SLB console, go to the Quota Center page, click the **ALB*	- tab, and then apply for the privilege to use HTTPs.
 	//
 	// example:
 	//
 	// HEAD
 	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	// The URL that is used for health checks.
+	// The URL path that you want to use for health checks.
 	//
-	// The URL must be 1 to 80 characters in length and can contain only letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: `_ ; ~ ! ( ) 	- [ ] @ $ ^ : \\" , +`. The URL must start with a forward slash (/).
+	// The URL must be 1 to 80 characters in length, and can contain letters, digits, the following special characters: - / . % ? # &, and the following extended characters: `_ ; ~ ! ( ) 	- [ ] @ $ ^ : \\" , +`. The URL must start with a forward slash (/).
 	//
 	// example:
 	//
 	// /test/index.html
 	HealthCheckPath *string `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
-	// The protocol that is used for health checks. Valid values:
+	// The protocol that is used for health checks. Valid value:
 	//
-	// 	- **HTTP*	- (default): The SLB instance sends HEAD or GET requests to a backend server to simulate access from a browser and check whether the backend server is healthy.
+	// 	- **HTTP*	- (default): The ALB instance sends HEAD or GET requests, which simulate browser requests, to check whether the backend server is healthy.
 	//
-	// 	- **TCP**: To perform TCP health checks, SLB sends SYN packets to the backend server to check whether the port of the backend server is available to receive requests.
+	// 	- **HTTPS**: The ALB instance sends HEAD or GET requests, which simulate browser requests, to check whether the backend server is healthy. HTTPS provides higher security because HTTPS supports data encryption.
 	//
-	// 	- **gRPC**: To perform gRPC health checks, SLB sends POST or GET requests to a backend server to check whether the backend server is healthy.
+	// 	- **TCP**: TCP health checks send TCP SYN packets to a backend server to check whether the port of the backend server is reachable.
+	//
+	// 	- **gRPC**: The ALB instance sends POST or GET requests to a backend server to check whether the backend server is healthy.
+	//
+	// >  HTTPS is unavailable by default. If you want to use HTTPS, log on to the SLB console, go to the Quota Center page, click the **ALB*	- tab, and then apply for the privilege to use HTTPs.
 	//
 	// example:
 	//
@@ -13007,19 +13046,19 @@ type ListHealthCheckTemplatesResponseBodyHealthCheckTemplates struct {
 	HealthCheckTemplateId *string `json:"HealthCheckTemplateId,omitempty" xml:"HealthCheckTemplateId,omitempty"`
 	// The name of the health check template.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	// The name must be 2 to 128 character characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
 	//
 	// example:
 	//
 	// HealthCheckTemplate1
 	HealthCheckTemplateName *string `json:"HealthCheckTemplateName,omitempty" xml:"HealthCheckTemplateName,omitempty"`
-	// The timeout period for a health check response. If a backend Elastic Compute Service (ECS) instance does not return a health check response within the specified timeout period, the backend server fails the health check.
+	// The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not respond within the specified timeout period, the ECS instance fails to pass the health check.
 	//
 	// Valid values: **1 to 300**. Unit: seconds.
 	//
 	// Default value: **5**.
 	//
-	// >  If the value of **HealthCHeckTimeout*	- is smaller than the value of **HealthCheckInterval**, the value of **HealthCHeckTimeout*	- is ignored and the value of **HealthCheckInterval*	- is used.
+	// >  If the value of **HealthCHeckTimeout*	- is smaller than the value of **HealthCheckInterval**, **HealthCHeckTimeout*	- does not take effect. The value of **HealthCheckInterval*	- specifies the timeout period.
 	//
 	// example:
 	//
@@ -13128,13 +13167,13 @@ func (s *ListHealthCheckTemplatesResponseBodyHealthCheckTemplates) SetUnhealthyT
 }
 
 type ListHealthCheckTemplatesResponseBodyHealthCheckTemplatesTags struct {
-	// The tag key.
+	// The tag key. The tag key can be up to 128 characters in length, and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The tag value. The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. The tag value cannot start with `acs:` or `aliyun`.
 	//
 	// example:
 	//
@@ -13417,7 +13456,7 @@ func (s *ListListenerCertificatesResponse) SetBody(v *ListListenerCertificatesRe
 }
 
 type ListListenersRequest struct {
-	// The listener IDs. You can specify up to 20 IDs.
+	// The listener IDs. You can specify at most 20 listener IDs.
 	ListenerIds []*string `json:"ListenerIds,omitempty" xml:"ListenerIds,omitempty" type:"Repeated"`
 	// The listener protocol. Valid values:
 	//
@@ -13605,7 +13644,7 @@ type ListListenersResponseBodyListeners struct {
 	//
 	// 	- **false**
 	//
-	// >  This parameter is returned only for HTTPS listeners.
+	// >  Only HTTPS listeners support this parameter.
 	//
 	// example:
 	//
@@ -13613,7 +13652,7 @@ type ListListenersResponseBodyListeners struct {
 	Http2Enabled *bool `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
 	// The timeout period of an idle connection. Unit: seconds. Valid values: **1 to 60**.
 	//
-	// If no request is received within the specified timeout period, ALB closes the connection. ALB re-establishes the connection when a new connection request is received.
+	// If no request is received within the specified timeout period, ALB closes the connection. ALB establishes the connection again when a new connection request is received.
 	//
 	// example:
 	//
@@ -13625,7 +13664,7 @@ type ListListenersResponseBodyListeners struct {
 	//
 	// test
 	ListenerDescription *string `json:"ListenerDescription,omitempty" xml:"ListenerDescription,omitempty"`
-	// The ID of the listener.
+	// The listener ID.
 	//
 	// example:
 	//
@@ -13637,7 +13676,7 @@ type ListListenersResponseBodyListeners struct {
 	//
 	// 80
 	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// The listener protocol. Valid values:
+	// The listener protocol of the instance. Valid values:
 	//
 	// 	- **HTTP**
 	//
@@ -13651,19 +13690,19 @@ type ListListenersResponseBodyListeners struct {
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
 	// The status of the listener. Valid values:
 	//
-	// 	- **Provisioning**
+	// 	- **Provisioning**: The listener is being created.
 	//
-	// 	- **Running**
+	// 	- **Running**: The listener is running.
 	//
-	// 	- **Configuring**
+	// 	- **Configuring**: The listener is being configured.
 	//
-	// 	- **Stopped**
+	// 	- **Stopped**: The listener is disabled.
 	//
 	// example:
 	//
 	// Running
 	ListenerStatus *string `json:"ListenerStatus,omitempty" xml:"ListenerStatus,omitempty"`
-	// The ID of the ALB instance.
+	// The ALB instance ID.
 	//
 	// example:
 	//
@@ -13671,7 +13710,7 @@ type ListListenersResponseBodyListeners struct {
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	// The configuration of logs.
 	LogConfig *ListListenersResponseBodyListenersLogConfig `json:"LogConfig,omitempty" xml:"LogConfig,omitempty" type:"Struct"`
-	// The configuration information when the listener is associated with a QUIC listener.
+	// The configurations of the QUIC listener associated with the ALB instance.
 	QuicConfig *ListListenersResponseBodyListenersQuicConfig `json:"QuicConfig,omitempty" xml:"QuicConfig,omitempty" type:"Struct"`
 	// The timeout period of a request. Unit: seconds. Valid values: **1 to 180**.
 	//
@@ -13683,15 +13722,15 @@ type ListListenersResponseBodyListeners struct {
 	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
 	// The security policy.
 	//
-	// >  This parameter is returned only for HTTPS listeners.
+	// >  Only HTTPS listeners support this parameter.
 	//
 	// example:
 	//
 	// tls_cipher_policy_1_1
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
-	// The tags.
+	// The tags of the dataset.
 	Tags []*ListListenersResponseBodyListenersTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The configuration of the `XForward` headers.
+	// The configuration of the `XForward` header.
 	XForwardedForConfig *ListListenersResponseBodyListenersXForwardedForConfig `json:"XForwardedForConfig,omitempty" xml:"XForwardedForConfig,omitempty" type:"Struct"`
 }
 
@@ -13784,9 +13823,9 @@ func (s *ListListenersResponseBodyListeners) SetXForwardedForConfig(v *ListListe
 }
 
 type ListListenersResponseBodyListenersDefaultActions struct {
-	// The configuration of the forwarding rule action. This parameter is required and takes effect only if the type of the action is **ForwardGroup**.
+	// The configuration of the forwarding rule action. This parameter takes effect only when the action is **ForwardGroup**.
 	ForwardGroupConfig *ListListenersResponseBodyListenersDefaultActionsForwardGroupConfig `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
-	// The type of the action. If **ForwardGroup*	- is returned, requests are forwarded to multiple vServer groups.
+	// The action. **ForwardGroup**: forwards requests to multiple server groups.
 	//
 	// example:
 	//
@@ -13863,7 +13902,7 @@ type ListListenersResponseBodyListenersLogConfig struct {
 	//
 	// true
 	AccessLogRecordCustomizedHeadersEnabled *bool `json:"AccessLogRecordCustomizedHeadersEnabled,omitempty" xml:"AccessLogRecordCustomizedHeadersEnabled,omitempty"`
-	// The configuration of Xtrace. Xtrace is used to record the requests that are sent to ALB.
+	// The configurations of xtrace.
 	AccessLogTracingConfig *ListListenersResponseBodyListenersLogConfigAccessLogTracingConfig `json:"AccessLogTracingConfig,omitempty" xml:"AccessLogTracingConfig,omitempty" type:"Struct"`
 }
 
@@ -13886,29 +13925,29 @@ func (s *ListListenersResponseBodyListenersLogConfig) SetAccessLogTracingConfig(
 }
 
 type ListListenersResponseBodyListenersLogConfigAccessLogTracingConfig struct {
-	// Indicates whether Xtrace is enabled. Valid values:
+	// Indicates whether xtrace is enabled. Valid values:
 	//
 	// 	- **true**
 	//
 	// 	- **false**
 	//
-	// >  This parameter can be set to **true*	- only if **AccessLogEnabled*	- is set to true.
+	// >  This parameter can be set to **true*	- only when the access log feature of ALB is enabled by setting **AccessLogEnabled*	- to true.
 	//
 	// example:
 	//
 	// true
 	TracingEnabled *bool `json:"TracingEnabled,omitempty" xml:"TracingEnabled,omitempty"`
-	// The sampling rate of Xtrace. Valid values: **1 to 10000**.
+	// The sampling rate of xtrace. Valid values: **1 to 10000**.
 	//
-	// >  This parameter takes effect only if **TracingEnabled*	- is set to **true**.
+	// >  This parameter takes effect when **TracingEnabled*	- is set to **true**.
 	//
 	// example:
 	//
 	// 100
 	TracingSample *int32 `json:"TracingSample,omitempty" xml:"TracingSample,omitempty"`
-	// The Xtrace type. Only **Zipkin*	- may be returned.
+	// The type of xtrace. The value is set to **Zipkin**.
 	//
-	// >  This parameter takes effect only if **TracingEnabled*	- is set to **true**.
+	// >  This parameter takes effect when **TracingEnabled*	- is set to **true**.
 	//
 	// example:
 	//
@@ -13940,9 +13979,9 @@ func (s *ListListenersResponseBodyListenersLogConfigAccessLogTracingConfig) SetT
 }
 
 type ListListenersResponseBodyListenersQuicConfig struct {
-	// The ID of the QUIC listener. This parameter is required when **QuicUpgradeEnabled*	- is set to **true**. Only HTTPS listeners support this parameter.
+	// The ID of the QUIC listener associated with the ALB instance. This parameter is required if the **QuicUpgradeEnabled*	- parameter is set to **true**. Only HTTPS listeners support this parameter.
 	//
-	// >  The HTTPS listener and the associated QUIC listener must belong to the same ALB instance. The QUIC listener cannot be associated with another listener.
+	// >  The existing listener and QUIC listener must be to the same ALB instance, and the QUIC listener has not been associated with an ALB instance.
 	//
 	// example:
 	//
@@ -13954,7 +13993,7 @@ type ListListenersResponseBodyListenersQuicConfig struct {
 	//
 	// 	- **false**
 	//
-	// >  This parameter takes effect only for HTTPS listeners.
+	// >  Only HTTPS listeners support this parameter.
 	//
 	// example:
 	//
@@ -13981,13 +14020,13 @@ func (s *ListListenersResponseBodyListenersQuicConfig) SetQuicUpgradeEnabled(v b
 }
 
 type ListListenersResponseBodyListenersTags struct {
-	// The tag key.
+	// The tag key. The tag key can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The tag value. The tag value can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
 	//
 	// example:
 	//
@@ -14014,11 +14053,11 @@ func (s *ListListenersResponseBodyListenersTags) SetValue(v string) *ListListene
 }
 
 type ListListenersResponseBodyListenersXForwardedForConfig struct {
-	// The name of the custom header. This parameter takes effect only if **XForwardedForClientCertClientVerifyEnabled*	- is set to **true**.
+	// The name of the custom header. This parameter takes effect only when **XForwardedForClientCertClientVerifyEnabled*	- is set to **true**.
 	//
-	// The name is 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (_).
+	// The name must be 1 to 40 characters in length, and can contain lowercase letters, digits, hyphens (-), and underscores (_).
 	//
-	// >  This parameter is returned only for HTTPS listeners.
+	// >  Only HTTPS listeners support this parameter.
 	//
 	// example:
 	//
@@ -14030,17 +14069,17 @@ type ListListenersResponseBodyListenersXForwardedForConfig struct {
 	//
 	// 	- **false**
 	//
-	// >  This parameter is returned only for HTTPS listeners.
+	// >  Only HTTPS listeners support this parameter.
 	//
 	// example:
 	//
 	// true
 	XForwardedForClientCertClientVerifyEnabled *bool `json:"XForwardedForClientCertClientVerifyEnabled,omitempty" xml:"XForwardedForClientCertClientVerifyEnabled,omitempty"`
-	// The name of the custom header. This parameter takes effect only if **XForwardedForClientCertFingerprintEnabled*	- is set to **true**.
+	// The name of the custom header. This parameter takes effect only when **XForwardedForClientCertFingerprintEnabled*	- is set to **true**.
 	//
-	// The name is 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (_).
+	// The name must be 1 to 40 characters in length, and can contain lowercase letters, digits, hyphens (-), and underscores (_).
 	//
-	// >  This parameter is returned only for HTTPS listeners.
+	// >  Only HTTPS listeners support this parameter.
 	//
 	// example:
 	//
@@ -14052,17 +14091,17 @@ type ListListenersResponseBodyListenersXForwardedForConfig struct {
 	//
 	// 	- **false**
 	//
-	// >  This parameter is returned only for HTTPS listeners.
+	// >  Only HTTPS listeners support this parameter.
 	//
 	// example:
 	//
 	// true
 	XForwardedForClientCertFingerprintEnabled *bool `json:"XForwardedForClientCertFingerprintEnabled,omitempty" xml:"XForwardedForClientCertFingerprintEnabled,omitempty"`
-	// The name of the custom header. This parameter takes effect only if **XForwardedForClientCertIssuerDNEnabled*	- is set to **true**.
+	// The name of the custom header. This parameter takes effect only when **XForwardedForClientCertIssuerDNEnabled*	- is set to **true**.
 	//
-	// The name is 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (_).
+	// The name must be 1 to 40 characters in length, and can contain lowercase letters, digits, hyphens (-), and underscores (_).
 	//
-	// >  This parameter is returned only for HTTPS listeners.
+	// >  Only HTTPS listeners support this parameter.
 	//
 	// example:
 	//
@@ -14074,17 +14113,17 @@ type ListListenersResponseBodyListenersXForwardedForConfig struct {
 	//
 	// 	- **false**
 	//
-	// >  This parameter is returned only for HTTPS listeners.
+	// >  Only HTTPS listeners support this parameter.
 	//
 	// example:
 	//
 	// true
 	XForwardedForClientCertIssuerDNEnabled *bool `json:"XForwardedForClientCertIssuerDNEnabled,omitempty" xml:"XForwardedForClientCertIssuerDNEnabled,omitempty"`
-	// The name of the custom header. This parameter takes effect only if **XForwardedForClientCertSubjectDNEnabled*	- is set to **true**.
+	// The name of the custom header. This parameter takes effect only when **XForwardedForClientCertSubjectDNEnabled*	- is set to **true**.
 	//
-	// The name is 1 to 40 characters in length, and can contain letters, digits, hyphens (-), and underscores (_).
+	// The name must be 1 to 40 characters in length, and can contain lowercase letters, digits, hyphens (-), and underscores (_).
 	//
-	// >  This parameter is returned only for HTTPS listeners.
+	// >  Only HTTPS listeners support this parameter.
 	//
 	// example:
 	//
@@ -14096,19 +14135,19 @@ type ListListenersResponseBodyListenersXForwardedForConfig struct {
 	//
 	// 	- **false**
 	//
-	// >  This parameter is returned only for HTTPS listeners.
+	// >  Only HTTPS listeners support this parameter.
 	//
 	// example:
 	//
 	// true
 	XForwardedForClientCertSubjectDNEnabled *bool `json:"XForwardedForClientCertSubjectDNEnabled,omitempty" xml:"XForwardedForClientCertSubjectDNEnabled,omitempty"`
-	// Indicates whether the `X-Forwarded-Client-Ip` header is used to retrieve the source port of the ALB instance. Valid values:
+	// Indicates whether the X-Forwarded-For header is used to preserver client IP addresses for the ALB instance. Valid values:
 	//
 	// 	- **true**
 	//
 	// 	- **false**
 	//
-	// >  HTTP, HTTPS, and QUIC listeners support this parameter.
+	// >  This parameter is returned only for HTTP and HTTPS listeners.
 	//
 	// example:
 	//
@@ -14116,7 +14155,7 @@ type ListListenersResponseBodyListenersXForwardedForConfig struct {
 	XForwardedForClientSourceIpsEnabled *bool `json:"XForwardedForClientSourceIpsEnabled,omitempty" xml:"XForwardedForClientSourceIpsEnabled,omitempty"`
 	// The trusted proxy IP address.
 	//
-	// ALB traverses `X-Forwarded-For` backward and selects the first IP address that is not in the trusted IP address list as the real IP address of the client. The IP address is used in source IP address throttling.
+	// ALB instances traverse the IP addresses in the `X-Forwarded-For` header from the rightmost IP address to the leftmost IP address. The first IP address that is not on the trusted IP address list is considered the client IP address. Requests from the client IP address are throttled.
 	//
 	// example:
 	//
@@ -14134,7 +14173,7 @@ type ListListenersResponseBodyListenersXForwardedForConfig struct {
 	//
 	// true
 	XForwardedForClientSrcPortEnabled *bool `json:"XForwardedForClientSrcPortEnabled,omitempty" xml:"XForwardedForClientSrcPortEnabled,omitempty"`
-	// Indicates whether the `X-Forwarded-For` header is used to retrieve the client IP address. Valid values:
+	// Specifies whether to use the `X-Forwarded-For` header to retrieve client IP addresses. Valid values:
 	//
 	// 	- **true**
 	//
@@ -14152,19 +14191,19 @@ type ListListenersResponseBodyListenersXForwardedForConfig struct {
 	//
 	// 	- **false**
 	//
-	// >  HTTP, HTTPS, and QUIC listeners support this parameter.
+	// >  This parameter is supported by HTTP, HTTPS, and QUIC listeners.
 	//
 	// example:
 	//
 	// true
 	XForwardedForProtoEnabled *bool `json:"XForwardedForProtoEnabled,omitempty" xml:"XForwardedForProtoEnabled,omitempty"`
-	// Indicates whether the `SLB-ID` header is used to retrieve the ID of the ALB instance. Valid values:
+	// Specifies whether to use the `SLB-ID` header to retrieve the ID of the ALB instance. Valid values:
 	//
 	// 	- **true**
 	//
 	// 	- **false**
 	//
-	// >  HTTP, HTTPS, and QUIC listeners support this parameter.
+	// >  This parameter is supported by HTTP, HTTPS, and QUIC listeners.
 	//
 	// example:
 	//
@@ -14176,7 +14215,7 @@ type ListListenersResponseBodyListenersXForwardedForConfig struct {
 	//
 	// 	- **false**
 	//
-	// >  HTTP, HTTPS, and QUIC listeners support this parameter.
+	// >  This parameter is supported by HTTP, HTTPS, and QUIC listeners.
 	//
 	// example:
 	//
@@ -15081,8 +15120,9 @@ type ListRulesRequest struct {
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The forwarding rules.
-	RuleIds []*string              `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
-	Tag     []*ListRulesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	RuleIds []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
+	// The tag.
+	Tag []*ListRulesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListRulesRequest) String() string {
@@ -15129,7 +15169,17 @@ func (s *ListRulesRequest) SetTag(v []*ListRulesRequestTag) *ListRulesRequest {
 }
 
 type ListRulesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key. The tag key can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
+	//
+	// example:
+	//
+	// env
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. The tag value can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
+	//
+	// example:
+	//
+	// product
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -15174,7 +15224,7 @@ type ListRulesResponseBody struct {
 	//
 	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The forwarding rules.
+	// The details about the forwarding rule.
 	Rules []*ListRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 	// The total number of entries returned.
 	//
@@ -15220,19 +15270,23 @@ func (s *ListRulesResponseBody) SetTotalCount(v int32) *ListRulesResponseBody {
 type ListRulesResponseBodyRules struct {
 	// The direction to which the forwarding rule is applied. Valid values:
 	//
-	// 	- Request (default): The rule applies to client requests.
+	// 	- Request (default): The forwarding rule is applied to requests. The forwarding action is performed on packets that are forwarded from clients to ALB.
 	//
-	// 	- Response: The rule applies to responses from backend servers.
+	// 	- Responses: The forwarding rule is applied to responses. The forwarding action is performed on packets that are returned from backend servers to ALB.
 	//
-	// > Response is not supported by basic ALB instances.
+	// >  Basic ALB instances support only the Response direction.
+	//
+	// example:
+	//
+	// Request
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The ID of the listener to which the forwarding rule belongs.
+	// The ID of the listener that is associated with the forwarding rule.
 	//
 	// example:
 	//
 	// lsn-i35udpz3pxsmnf****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The ID of the ALB instance to which the forwarding rule belongs.
+	// The ID of the Application Load Balancer (ALB) instance that is associated with the forwarding rule.
 	//
 	// example:
 	//
@@ -15240,7 +15294,7 @@ type ListRulesResponseBodyRules struct {
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	// The priority of the forwarding rule. Valid values: **1 to 10000**. A smaller value indicates a higher priority.
 	//
-	// > The priority of each forwarding rule added to a listener must be unique.
+	// >  The priority of each forwarding rule added to a listener must be unique.
 	//
 	// example:
 	//
@@ -15250,13 +15304,13 @@ type ListRulesResponseBodyRules struct {
 	RuleActions []*ListRulesResponseBodyRulesRuleActions `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
 	// The conditions of the forwarding rule.
 	RuleConditions []*ListRulesResponseBodyRulesRuleConditions `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
-	// The forwarding rule ID.
+	// The ID of the forwarding rule.
 	//
 	// example:
 	//
 	// rule-bpn0kn908w4nbw****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	// The name of the forwarding rule. The name must be 2 to 128 letters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
 	//
 	// example:
 	//
@@ -15264,17 +15318,18 @@ type ListRulesResponseBodyRules struct {
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The status of the forwarding rule. Valid values:
 	//
-	// 	- **Provisioning**
+	// 	- **Provisioning**: The forwarding rule is being created.
 	//
-	// 	- **Configuring**
+	// 	- **Configuring**: The forwarding rule is being modified.
 	//
-	// 	- **Available**
+	// 	- **Available**: The forwarding rule is available.
 	//
 	// example:
 	//
 	// Available
-	RuleStatus *string                           `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
-	Tags       []*ListRulesResponseBodyRulesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	RuleStatus *string `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
+	// The tags.
+	Tags []*ListRulesResponseBodyRulesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListRulesResponseBodyRules) String() string {
@@ -15342,9 +15397,9 @@ type ListRulesResponseBodyRulesRuleActions struct {
 	FixedResponseConfig *ListRulesResponseBodyRulesRuleActionsFixedResponseConfig `json:"FixedResponseConfig,omitempty" xml:"FixedResponseConfig,omitempty" type:"Struct"`
 	// The configurations of the server groups.
 	ForwardGroupConfig *ListRulesResponseBodyRulesRuleActionsForwardGroupConfig `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
-	// The configuration of the header to be inserted.
+	// The key of the header to be inserted.
 	InsertHeaderConfig *ListRulesResponseBodyRulesRuleActionsInsertHeaderConfig `json:"InsertHeaderConfig,omitempty" xml:"InsertHeaderConfig,omitempty" type:"Struct"`
-	// The priority of the action. Valid values: **1 to 50000**. A smaller value indicates a higher priority. The actions of a forwarding rule are applied in descending order of priority. This parameter is not empty. The priority of each action within a forwarding rule is unique.
+	// The priority of the action. Valid values: **1 to 50000**. A smaller value indicates a higher priority. The actions of a forwarding rule are applied in descending order of priority. This parameter cannot empty. The priority of each action within a forwarding rule must be unique.
 	//
 	// example:
 	//
@@ -15352,39 +15407,39 @@ type ListRulesResponseBodyRulesRuleActions struct {
 	Order *int32 `json:"Order,omitempty" xml:"Order,omitempty"`
 	// The configuration of the redirect action.
 	RedirectConfig *ListRulesResponseBodyRulesRuleActionsRedirectConfig `json:"RedirectConfig,omitempty" xml:"RedirectConfig,omitempty" type:"Struct"`
-	// The configuration of the header to be removed.
+	// The HTTP header to be removed.
 	RemoveHeaderConfig *ListRulesResponseBodyRulesRuleActionsRemoveHeaderConfig `json:"RemoveHeaderConfig,omitempty" xml:"RemoveHeaderConfig,omitempty" type:"Struct"`
 	// The configuration of the rewrite action.
 	RewriteConfig *ListRulesResponseBodyRulesRuleActionsRewriteConfig `json:"RewriteConfig,omitempty" xml:"RewriteConfig,omitempty" type:"Struct"`
-	// The configuration of the action to throttle traffic.
+	// The configuration of traffic throttling.
 	TrafficLimitConfig *ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig `json:"TrafficLimitConfig,omitempty" xml:"TrafficLimitConfig,omitempty" type:"Struct"`
-	// The configuration of the action to mirror traffic.
+	// The configuration of traffic mirroring.
 	TrafficMirrorConfig *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig `json:"TrafficMirrorConfig,omitempty" xml:"TrafficMirrorConfig,omitempty" type:"Struct"`
 	// The action. Valid values:
 	//
 	// 	- **ForwardGroup**: distributes requests to multiple vServer groups.
 	//
-	// 	- **Redirect**: redirects a request.
+	// 	- **Redirect**: redirects requests.
 	//
 	// 	- **FixedResponse**: returns a custom response.
 	//
-	// 	- **Rewrite**: rewrites a request.
+	// 	- **Rewrite**: rewrites requests.
 	//
-	// 	- **InsertHeader**: inserts a header.
+	// 	- **InsertHeader**: inserts headers.
 	//
-	// 	- **RemoveHeaderConfig**: deletes a header.
+	// 	- **RemoveHeaderConfig**: removes headers.
 	//
 	// 	- **TrafficLimitConfig**: throttles network traffic.
 	//
-	// 	- **TrafficMirrorConfig**: mirrors traffic.
+	// 	- **TrafficMirrorConfig**: mirrors network traffic.
 	//
 	// 	- **CorsConfig**: forwards requests based on CORS.
 	//
 	// The preceding actions can be classified into two broad types:
 	//
-	// 	- **FinalType**: the last action to be performed in a forwarding rule. Each forwarding rule can contain only one FinalType action. You can specify a **ForwardGroup**, **Redirect**, or **FixedResponse*	- action as the FinalType action.
+	// 	- **FinalType**: Each forwarding rule can contain only one FinalType action, which is performed at the end. You can specify only one of **ForwardGroup**, **Redirect**, and **FixedResponse**.
 	//
-	// 	- **ExtType**: one or more actions to be performed before the **FinalType*	- action. A forwarding rule can contain one or more **ExtType*	- actions. To specify an ExtType action, you must specify a **FinalType*	- action. You can specify multiple **InsertHeader*	- actions or one **Rewrite*	- action.
+	// 	- **ExtType**: Each forwarding rule can contain one or more **ExtType*	- actions, which are performed before the **FinalType*	- action. If you want to specify an ExtType action, you must also specify a **FinalType*	- action. You can specify multiple **InsertHeader*	- actions or one **Rewrite*	- action.
 	//
 	// example:
 	//
@@ -15466,15 +15521,15 @@ type ListRulesResponseBodyRulesRuleActionsCorsConfig struct {
 	//
 	// on
 	AllowCredentials *string `json:"AllowCredentials,omitempty" xml:"AllowCredentials,omitempty"`
-	// The allowed headers for CORS requests.
+	// The allowed headers of CORS requests.
 	AllowHeaders []*string `json:"AllowHeaders,omitempty" xml:"AllowHeaders,omitempty" type:"Repeated"`
-	// The allowed HTTP methods for CORS requests.
+	// The allowed HTTP methods of CORS requests.
 	AllowMethods []*string `json:"AllowMethods,omitempty" xml:"AllowMethods,omitempty" type:"Repeated"`
 	// The allowed origins of CORS requests.
 	AllowOrigin []*string `json:"AllowOrigin,omitempty" xml:"AllowOrigin,omitempty" type:"Repeated"`
 	// The headers that can be exposed.
 	ExposeHeaders []*string `json:"ExposeHeaders,omitempty" xml:"ExposeHeaders,omitempty" type:"Repeated"`
-	// The maximum cache time of dry run requests in the browser. Unit: seconds.
+	// The maximum cache time of dry runs in the browser. Unit: seconds.
 	//
 	// Valid values: **-1*	- to **172800**.
 	//
@@ -15523,13 +15578,13 @@ func (s *ListRulesResponseBodyRulesRuleActionsCorsConfig) SetMaxAge(v int64) *Li
 }
 
 type ListRulesResponseBodyRulesRuleActionsFixedResponseConfig struct {
-	// The content of the custom response. The content is up to 1 KB in size, and can contain only ASCII characters.
+	// The content of the custom response. The content can be up to 1 KB in size, and can contain only ASCII characters.
 	//
 	// example:
 	//
 	// dssacav
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The content type.
+	// The format of the response.
 	//
 	// Valid values: **text/plain**, **text/css**, **text/html**, **application/javascript**, and **application/json**.
 	//
@@ -15537,7 +15592,7 @@ type ListRulesResponseBodyRulesRuleActionsFixedResponseConfig struct {
 	//
 	// text/plain
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// The HTTP status code in the response. Valid values: **HTTP_2xx**, **HTTP_4xx**, and **HTTP_5xx**. **x*	- must be a digit.
+	// The HTTP status code in responses. Valid values: **HTTP_2xx**, **HTTP_4xx**, and **HTTP_5xx**. **x*	- is a digit.
 	//
 	// example:
 	//
@@ -15569,6 +15624,7 @@ func (s *ListRulesResponseBodyRulesRuleActionsFixedResponseConfig) SetHttpCode(v
 }
 
 type ListRulesResponseBodyRulesRuleActionsForwardGroupConfig struct {
+	// The session persistence configurations of the server group.
 	ServerGroupStickySession *ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupStickySession `json:"ServerGroupStickySession,omitempty" xml:"ServerGroupStickySession,omitempty" type:"Struct"`
 	// The server groups to which requests are forwarded.
 	ServerGroupTuples []*ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupTuples `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
@@ -15593,7 +15649,13 @@ func (s *ListRulesResponseBodyRulesRuleActionsForwardGroupConfig) SetServerGroup
 }
 
 type ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupStickySession struct {
-	Enabled *bool  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// If the value of N in ServerGroupTuple.N is larger than 1, you can enable or disable session persistence for server groups.
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// If Enabled is set to True, you can specify a session persistence timeout period.
+	//
+	// example:
+	//
+	// 100
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
@@ -15622,7 +15684,7 @@ type ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupTuples st
 	//
 	// sg-atstuj3rtoptyui****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// The weight. Valid values: **0*	- to **100**.
+	// The weight of the server group. Valid values: **0*	- to **100**.
 	//
 	// example:
 	//
@@ -15649,21 +15711,21 @@ func (s *ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupTuple
 }
 
 type ListRulesResponseBodyRulesRuleActionsInsertHeaderConfig struct {
-	// The key of the header. The key must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The key specified in `InsertHeader` must be unique.
+	// The key of the header. The header key must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The header key specified in `InsertHeader` must be unique.
 	//
-	// > **Cookie*	- and **Host*	- are not supported.
+	// >  **Cookie*	- and **Host*	- are not supported.
 	//
 	// example:
 	//
 	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the header.
+	// The value of the header to be inserted.
 	//
-	// 	- If **ValueType*	- is set to **SystemDefined**, one of the following values is supported:
+	// 	- If **ValueType*	- is set to **SystemDefined**, you can set the Value parameter to one of the following values:
 	//
 	//     	- **ClientSrcPort**: the client port.
 	//
-	//     	- **ClientSrcIp**: the client IP address.
+	//     	- **ClientSrcIp**: the IP address of the client.
 	//
 	//     	- **Protocol**: the request protocol (HTTP or HTTPS).
 	//
@@ -15671,21 +15733,21 @@ type ListRulesResponseBodyRulesRuleActionsInsertHeaderConfig struct {
 	//
 	//     	- **SLBPort**: the listener port.
 	//
-	// 	- If **ValueType*	- is set to **UserDefined**, a custom header value is supported. The header value must be 1 to 128 characters in length, and can contain printable characters whose ASCII values are `greater than or equal to 32 and lower than 127`. You can use asterisks (\\*) and question marks (?) as wildcard characters. The header value cannot start or end with a space character.
+	// 	- If **ValueType*	- is set to **UserDefined**, you can specify a custom header value. The header value must be 1 to 128 characters in length, and can contain wildcard characters, such as asterisks (\\*) and question marks (?), and printable characters whose ASCII values are `larger than or equal to 32 and smaller than 127`. The header value cannot start or end with a space character.
 	//
-	// 	- If **ValueType*	- is set to **ReferenceHeader**, one of the request headers is referenced. The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
+	// 	- If **ValueType*	- is set to **ReferenceHeader**, you can reference a value from a request header. The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), and underscores (_).
 	//
 	// example:
 	//
 	// ClientSrcPort
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// The type of the header. Valid values:
+	// The type of the header value. Valid values:
 	//
-	// 	- **UserDefined**: a user-defined header.
+	// 	- **UserDefined**: a user-defined header value.
 	//
-	// 	- **ReferenceHeader**: a header that is referenced from a request header.
+	// 	- **ReferenceHeader**: a header value that is referenced from a request header.
 	//
-	// 	- **SystemDefined**: a system-defined header.
+	// 	- **SystemDefined:*	- a system-defined header value.
 	//
 	// example:
 	//
@@ -15719,17 +15781,17 @@ func (s *ListRulesResponseBodyRulesRuleActionsInsertHeaderConfig) SetValueType(v
 type ListRulesResponseBodyRulesRuleActionsRedirectConfig struct {
 	// The hostname to which requests are redirected. Valid values:
 	//
-	// 	- **${host}*	- (default): If ${host} is returned, no other character is appended.
+	// 	- **${host}*	- (default): If ${host} is returned, no other characters are appended.
 	//
-	// 	- Limits on a custom value:
+	// 	- A custom value. Make sure that the custom value meets the following requirements:
 	//
-	//     	- The hostname is 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), and periods (.). Asterisks (\\*) and question marks (?) can be used as wildcard characters.
+	//     	- The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), periods (.), asterisks (\\*), and question marks (?).
 	//
-	//     	- The hostname contains at least one period (.) but does not start or end with a period (.).
+	//     	- The hostname must contain at least one period (.) but cannot start or end with a period (.).
 	//
-	//     	- The rightmost domain label contains only letters and wildcard characters. It does not contain digits or hyphens (-).
+	//     	- The rightmost domain label can contain only letters and wildcard characters. It cannot contain digits or hyphens (-).
 	//
-	//     	- The domain labels do not start or end with hyphens (-).
+	//     	- The domain labels cannot start or end with a hyphen (-).
 	//
 	//     	- You can use asterisks (\\*) and question marks (?) anywhere in a domain label as wildcard characters.
 	//
@@ -15737,21 +15799,21 @@ type ListRulesResponseBodyRulesRuleActionsRedirectConfig struct {
 	//
 	// www.example.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The redirect type. Valid values: **301**, **302**, **303**, **307**, and **308**.
+	// The forwarding method. Valid values: **301**, **302**, **303**, **307**, and **308**.
 	//
 	// example:
 	//
 	// 301
 	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	// The path to which requests are redirected. Valid values:
+	// The URL to which requests are redirected. Valid values:
 	//
-	// 	- **${path}*	- (default): You can reference \\*\\*${host}**, **${protocol}**, and**${port}**. The path can consist of **${host}**,**${protocol}**, and **${port}\\*\\*. Each variable can be used only once. The preceding variables can be used at the same time or combined with a custom value.
+	// 	- **${path}*	- (default): You can reference \\*\\*${host}**, **${protocol}**, and**${port}**. The URL can consist of **${host}**,**${protocol}**, and **${port}\\*\\*. Each variable can be used only once. The preceding variables can be used at the same time or combined with a custom value.
 	//
-	// 	- Limits on a custom value:
+	// 	- A custom value. Make sure that the custom value meets the following requirements:
 	//
-	//     	- The value is 1 to 128 characters in length.
+	//     	- The URL must be 1 to 128 characters in length.
 	//
-	//     	- It starts with a forward slash (/) and contains letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It does not contain the following special characters: `" % # ; ! ( ) [ ] ^ , "`. You can use asterisks (\\*) and question marks (?) as wildcard characters.
+	//     	- It must start with a forward slash (/) and can contain letters, digits, and the following special characters: `$ - _ .+ / & ~ @ :`. It cannot contain the following special characters: `" % # ; ! ( ) [ ] ^ , "`. You can use asterisks (\\*) and question marks (?) as wildcard characters.
 	//
 	// example:
 	//
@@ -15759,7 +15821,7 @@ type ListRulesResponseBodyRulesRuleActionsRedirectConfig struct {
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	// The port to which requests are redirected. Valid values:
 	//
-	// 	- **${port}*	- (default): If ${port} is returned, no other character is appended.
+	// 	- **${port}*	- (default): If ${port} is returned, no other characters are appended.
 	//
 	// 	- Other valid values: **1 to 63335**.
 	//
@@ -15769,17 +15831,17 @@ type ListRulesResponseBodyRulesRuleActionsRedirectConfig struct {
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The redirect protocol. Valid values:
 	//
-	// 	- **${protocol}*	- (default): If ${protocol} is returned, no other character is appended.
+	// 	- **${protocol}*	- (default): If ${protocol} is returned, no other characters are appended.
 	//
-	// 	- **HTTP*	- or **HTTPS**.
+	// 	- **HTTP*	- or **HTTPS**
 	//
-	// > HTTPS listeners support only HTTP to HTTPS redirection.
+	// >  HTTPS listeners supports only HTTPS redirects.
 	//
 	// example:
 	//
 	// HTTP
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The query string to which requests are redirected. The query string must be 1 to 128 characters in length, and can contain printable characters, excluding uppercase letters and the following special characters: `# [ ] { } \\ | < > &`.
+	// The query string of the URL to which requests are redirected. The query string must be 1 to 128 characters in length, and can contain printable characters, excluding uppercase letters and the following special characters: `# [ ] { } \\ | < > &`.
 	//
 	// example:
 	//
@@ -15826,11 +15888,15 @@ func (s *ListRulesResponseBodyRulesRuleActionsRedirectConfig) SetQuery(v string)
 }
 
 type ListRulesResponseBodyRulesRuleActionsRemoveHeaderConfig struct {
-	// The key of the header to be removed. The key must be 1 to 40 characters in length and can contain letters, digits, underscores, and hyphens (-). The header key must be unique.
+	// The key of the header to be removed. The header key must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The header keys specified in RemoveHeader must be unique.
 	//
-	// 	- You cannot specify the following header keys for an inbound forwarding rule: `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, and `authority`. The preceding keys are case-insensitive.
+	// 	- If Direction is set to Request, the specified headers are removed from requests. The following header keys are not supported (not case-sensitive): `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, and `authority`.
 	//
-	// 	- You cannot specify the following header keys for an outbound forwarding rule: `connection`, `upgrade`, `content-length`, and `transfer-encoding`. The preceding keys are case-insensitive.
+	// 	- If Direction is set to Response, the specified headers are removed from responses. The following header keys are not supported (not case-sensitive): `connection`, `upgrade`, `content-length`, and `transfer-encoding`.
+	//
+	// example:
+	//
+	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 }
 
@@ -15848,19 +15914,19 @@ func (s *ListRulesResponseBodyRulesRuleActionsRemoveHeaderConfig) SetKey(v strin
 }
 
 type ListRulesResponseBodyRulesRuleActionsRewriteConfig struct {
-	// The hostname to which requests are forwarded. Valid values:
+	// The hostname to which requests are redirected. Valid values:
 	//
-	// 	- **${host}*	- (default): If ${host} is returned, no other character is appended.
+	// 	- **${host}*	- (default): If ${host} is returned, no other characters are appended.
 	//
-	// 	- Limits on a custom value:
+	// 	- A custom value. Make sure that the custom value meets the following requirements:
 	//
-	//     	- The hostname is 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), and periods (.). Asterisks (\\*) and question marks (?) can be used as wildcard characters.
+	//     	- The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), periods (.), asterisks (\\*), and question marks (?).
 	//
-	//     	- The hostname contains at least one period (.) but does not start or end with a period (.).
+	//     	- The hostname must contain at least one period (.) but cannot start or end with a period (.).
 	//
-	//     	- The rightmost domain label contains only letters and wildcard characters. It does not contain digits or hyphens (-).
+	//     	- The rightmost domain label can contain only letters and wildcard characters. It cannot contain digits or hyphens (-).
 	//
-	//     	- The domain labels do not start or end with hyphens (-).
+	//     	- The domain labels cannot start or end with a hyphen (-).
 	//
 	//     	- You can use asterisks (\\*) and question marks (?) anywhere in a domain label as wildcard characters.
 	//
@@ -15868,13 +15934,13 @@ type ListRulesResponseBodyRulesRuleActionsRewriteConfig struct {
 	//
 	// www.example.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The path to which requests are forwarded. The path is 1 to 128 characters in length and starts with a forward slash (/). The path can contain letters, digits, asterisks (\\*), question marks (?), and the following special characters: `$ - _ . + / & ~ @ :`. The path does not contain the following special characters: `" % # ; ! ( ) [ ] ^ , "`.
+	// The URL to which requests are redirected. The URL must be 1 to 128 characters in length, and can contain letters, digits, asterisks (\\*), question marks (?), and the following special characters: `$ - _ . + / & ~ @ :`. It must start with a forward slash (/) and does not contain the following special characters: `" % # ; ! ( ) [ ] ^ , "`.
 	//
 	// example:
 	//
 	// /tsdf
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The query string of the URL to which requests are forwarded. The query string is 1 to 128 characters in length, and can contain printable characters, excluding uppercase letters and the following special characters: `# [ ] { } \\ | < > &`.
+	// The query string of the URL to which requests are redirected. The query string must be 1 to 128 characters in length, and can contain printable characters, excluding uppercase letters and the following special characters: `# [ ] { } \\ | < > &`.
 	//
 	// example:
 	//
@@ -15906,9 +15972,9 @@ func (s *ListRulesResponseBodyRulesRuleActionsRewriteConfig) SetQuery(v string) 
 }
 
 type ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig struct {
-	// The QPS of each IP address. Valid values: **1 to 100000**.
+	// The number of requests per IP address. Valid values: **1 to 100000**.
 	//
-	// > If you specify this parameter and **QPS**, the value of **PerIpQps*	- must be smaller than the value of **QPS**.
+	// >  If both the **QPS*	- and **PerIpQps*	- parameters are specified, the value of the **QPS*	- parameter is smaller than the value of the PerIpQps parameter.
 	//
 	// example:
 	//
@@ -15943,7 +16009,12 @@ func (s *ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig) SetQPS(v int32
 type ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig struct {
 	// The configuration of the server group to which traffic is mirrored.
 	MirrorGroupConfig *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig `json:"MirrorGroupConfig,omitempty" xml:"MirrorGroupConfig,omitempty" type:"Struct"`
-	TargetType        *string                                                                    `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The destination to which traffic is mirrored. The destination can be a server group.
+	//
+	// example:
+	//
+	// ForwardGroupMirror
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
 func (s ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig) String() string {
@@ -15983,13 +16054,13 @@ func (s *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConf
 }
 
 type ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples struct {
-	// The server group ID.
+	// The ID of the server group.
 	//
 	// example:
 	//
 	// srg-00mkgijak0w4qgz9****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// The weight. Valid values: **0*	- to **100**.
+	// The weight of the server group. Valid values: **0*	- to **100**.
 	//
 	// example:
 	//
@@ -16016,39 +16087,39 @@ func (s *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConf
 }
 
 type ListRulesResponseBodyRulesRuleConditions struct {
-	// The configuration of the cookie.
+	// The key-value pairs of the cookie.
 	CookieConfig *ListRulesResponseBodyRulesRuleConditionsCookieConfig `json:"CookieConfig,omitempty" xml:"CookieConfig,omitempty" type:"Struct"`
 	// The configuration of the header.
 	HeaderConfig *ListRulesResponseBodyRulesRuleConditionsHeaderConfig `json:"HeaderConfig,omitempty" xml:"HeaderConfig,omitempty" type:"Struct"`
-	// The configurations of the hosts.
+	// The configuration of the hosts.
 	HostConfig *ListRulesResponseBodyRulesRuleConditionsHostConfig `json:"HostConfig,omitempty" xml:"HostConfig,omitempty" type:"Struct"`
 	// The configurations of the request methods.
 	MethodConfig *ListRulesResponseBodyRulesRuleConditionsMethodConfig `json:"MethodConfig,omitempty" xml:"MethodConfig,omitempty" type:"Struct"`
-	// The configurations of the paths.
+	// The configurations of the forwarding URLs.
 	PathConfig *ListRulesResponseBodyRulesRuleConditionsPathConfig `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
 	// The configurations of the query strings.
 	QueryStringConfig *ListRulesResponseBodyRulesRuleConditionsQueryStringConfig `json:"QueryStringConfig,omitempty" xml:"QueryStringConfig,omitempty" type:"Struct"`
-	// The configuration of the HTTP response header.
+	// The HTTP header in responses.
 	ResponseHeaderConfig *ListRulesResponseBodyRulesRuleConditionsResponseHeaderConfig `json:"ResponseHeaderConfig,omitempty" xml:"ResponseHeaderConfig,omitempty" type:"Struct"`
 	// The configurations of the response status codes.
 	ResponseStatusCodeConfig *ListRulesResponseBodyRulesRuleConditionsResponseStatusCodeConfig `json:"ResponseStatusCodeConfig,omitempty" xml:"ResponseStatusCodeConfig,omitempty" type:"Struct"`
-	// The configuration of the source IP addresses based on which user traffic is matched.
+	// Traffic matching based on source IP addresses.
 	SourceIpConfig *ListRulesResponseBodyRulesRuleConditionsSourceIpConfig `json:"SourceIpConfig,omitempty" xml:"SourceIpConfig,omitempty" type:"Struct"`
 	// The type of forwarding rule. Valid values:
 	//
-	// 	- **Host**: Requests are forwarded based on hosts.
+	// 	- **Host**: Responses are forwarded based on hosts.
 	//
-	// 	- **Path**: Requests are forwarded based on paths.
+	// 	- **Path**: Responses are forwarded based on URLs.
 	//
-	// 	- **Header**: Requests are forwarded based on HTTP headers.
+	// 	- **Header**: Responses are forwarded based on HTTP headers.
 	//
-	// 	- **QueryString**: Requests are forwarded based on query strings.
+	// 	- **QueryString**: Responses are forwarded based on query strings.
 	//
-	// 	- **Method**: Requests are forwarded based on request methods.
+	// 	- **Method**: Responses are forwarded based on request methods.
 	//
-	// 	- **Cookie**: Requests are forwarded based on cookies.
+	// 	- **Cookie**: Responses are forwarded based on cookies.
 	//
-	// 	- **SourceIp**: Requests are distributed based on source IP addresses.
+	// 	- **SourceIp**: Responses are forwarded based on source IP addresses.
 	//
 	// example:
 	//
@@ -16115,7 +16186,7 @@ func (s *ListRulesResponseBodyRulesRuleConditions) SetType(v string) *ListRulesR
 }
 
 type ListRulesResponseBodyRulesRuleConditionsCookieConfig struct {
-	// The key-value pair of the cookie.
+	// The cookie value.
 	Values []*ListRulesResponseBodyRulesRuleConditionsCookieConfigValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -16133,13 +16204,13 @@ func (s *ListRulesResponseBodyRulesRuleConditionsCookieConfig) SetValues(v []*Li
 }
 
 type ListRulesResponseBodyRulesRuleConditionsCookieConfigValues struct {
-	// The key of the cookie. The key is 1 to 100 characters in length, and can contain printable characters such as lowercase letters, asterisks (\\*), and question marks (?). The key cannot contain uppercase letters, space characters, or the following special characters: `# [ ] { } \\ | < > &`.
+	// The cookie key. The cookie key must be 1 to 100 characters in length, and can contain lowercase letters, printable ASCII characters, asterisks (\\*), and question marks (?). It cannot contain space characters or the following special characters: `# [ ] { } \\ | < > &`.
 	//
 	// example:
 	//
 	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the cookie. The value is 1 to 128 characters in length, and can contain printable characters such as lowercase letters, asterisks (\\*), and question marks (?). Uppercase letters, space characters, and the following special characters are not supported: `# [ ] { } \\ | < > &`.
+	// The cookie value. The cookie value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters, asterisks (\\*), and question marks (?). It cannot contain space characters or the following special characters: `# [ ] { } \\ | < > &`.
 	//
 	// example:
 	//
@@ -16166,13 +16237,13 @@ func (s *ListRulesResponseBodyRulesRuleConditionsCookieConfigValues) SetValue(v 
 }
 
 type ListRulesResponseBodyRulesRuleConditionsHeaderConfig struct {
-	// The key of the header. The key must be 1 to 40 characters in length, and can contain lowercase letters, digits, hyphens (-), and underscores (_). Cookie and Host are not supported.
+	// The key of the header. The header key must be 1 to 40 characters in length. It can contain letters, digits, hyphens (-), and underscores (_). Cookie and Host are not supported.
 	//
 	// example:
 	//
 	// Port
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The values of the header.
+	// The value of the header.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -16231,7 +16302,7 @@ func (s *ListRulesResponseBodyRulesRuleConditionsMethodConfig) SetValues(v []*st
 }
 
 type ListRulesResponseBodyRulesRuleConditionsPathConfig struct {
-	// The paths.
+	// The URLs to which requests are forwarded.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -16267,13 +16338,13 @@ func (s *ListRulesResponseBodyRulesRuleConditionsQueryStringConfig) SetValues(v 
 }
 
 type ListRulesResponseBodyRulesRuleConditionsQueryStringConfigValues struct {
-	// They key of the query string. The key must be 1 to 100 characters in length, and can contain printable characters such as lowercase letters, asterisks (\\*), and question marks (?). The key cannot contain uppercase letters, space characters, or the following special characters: `# [ ] { } \\ | < > &`.
+	// They key of the query string. The key must be 1 to 100 characters in length, and can contain lowercase letters, printable ASCII characters, asterisks (\\*), and question marks (?). It cannot contain space characters or the following special characters: `# [ ] { } \\ | < > &`.
 	//
 	// example:
 	//
 	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the query string. The value must be 1 to 128 characters in length, and can contain printable characters such as lowercase letters, asterisks (\\*), and question marks (?). However, uppercase letters, space characters, and the following special characters are not supported: `# [ ] { } \\ | < > &`.
+	// The value of the query string. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters, asterisks (\\*), and question marks (?). It cannot contain space characters or the following special characters: `# [ ] { } \\ | < > &`.
 	//
 	// example:
 	//
@@ -16300,9 +16371,13 @@ func (s *ListRulesResponseBodyRulesRuleConditionsQueryStringConfigValues) SetVal
 }
 
 type ListRulesResponseBodyRulesRuleConditionsResponseHeaderConfig struct {
-	// The header key. The key must be 1 to 40 characters in length, and can contain lowercase letters, digits, hyphens (-), and underscores (_). Cookie and Host are not supported.
+	// The key of the HTTP header. The header key must be 1 to 40 characters in length, It can contain letters, digits, hyphens (-), and underscores (_). Cookie and Host are not supported.
+	//
+	// example:
+	//
+	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The header values.
+	// The values of the HTTP header.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -16361,7 +16436,17 @@ func (s *ListRulesResponseBodyRulesRuleConditionsSourceIpConfig) SetValues(v []*
 }
 
 type ListRulesResponseBodyRulesTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key. The tag key can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
+	//
+	// example:
+	//
+	// env
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. The tag value can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
+	//
+	// example:
+	//
+	// product
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -16435,7 +16520,7 @@ type ListSecurityPoliciesRequest struct {
 	//
 	// rg-atstuj3rtop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The security policy IDs. You can specify up to 20 IDs.
+	// The security policy IDs. You can specify at most 20 security policies.
 	SecurityPolicyIds []*string `json:"SecurityPolicyIds,omitempty" xml:"SecurityPolicyIds,omitempty" type:"Repeated"`
 	// The names of the security policies. You can specify up to 10 names.
 	SecurityPolicyNames []*string `json:"SecurityPolicyNames,omitempty" xml:"SecurityPolicyNames,omitempty" type:"Repeated"`
@@ -16583,7 +16668,7 @@ func (s *ListSecurityPoliciesResponseBody) SetTotalCount(v int32) *ListSecurityP
 type ListSecurityPoliciesResponseBodySecurityPolicies struct {
 	// The supported cipher suites.
 	Ciphers []*string `json:"Ciphers,omitempty" xml:"Ciphers,omitempty" type:"Repeated"`
-	// The time when the resource was created.
+	// The time when the ACL was created. The time follows the `YYYY-MM-DDThh:mm:ssZ` format.
 	//
 	// example:
 	//
@@ -16672,13 +16757,13 @@ func (s *ListSecurityPoliciesResponseBodySecurityPolicies) SetTags(v []*ListSecu
 }
 
 type ListSecurityPoliciesResponseBodySecurityPoliciesTags struct {
-	// The tag key.
+	// The tag key. The tag key can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The tag value. The tag value can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
 	//
 	// example:
 	//
@@ -17214,7 +17299,7 @@ func (s *ListServerGroupServersResponse) SetBody(v *ListServerGroupServersRespon
 }
 
 type ListServerGroupsRequest struct {
-	// The number of entries to return on each page. Valid values: **1*	- to **100**. Default value: **20**.
+	// The number of entries per page. Valid values: **1*	- to **100**. Default value: **20**.
 	//
 	// example:
 	//
@@ -17245,6 +17330,10 @@ type ListServerGroupsRequest struct {
 	// Instance
 	ServerGroupType *string `json:"ServerGroupType,omitempty" xml:"ServerGroupType,omitempty"`
 	// The tags that are added to the server group. You can specify up to 10 tags in each call.
+	//
+	// example:
+	//
+	// Instance
 	Tag []*ListServerGroupsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the virtual private cloud (VPC).
 	//
@@ -17406,7 +17495,7 @@ func (s *ListServerGroupsResponseBody) SetTotalCount(v int32) *ListServerGroupsR
 }
 
 type ListServerGroupsResponseBodyServerGroups struct {
-	// Indicates whether configuration management is enabled. Valid values:
+	// Indicates whether configuration management is enabled. Valid value:
 	//
 	// 	- **true**
 	//
@@ -17415,7 +17504,16 @@ type ListServerGroupsResponseBodyServerGroups struct {
 	// example:
 	//
 	// false
-	ConfigManagedEnabled  *bool                                                          `json:"ConfigManagedEnabled,omitempty" xml:"ConfigManagedEnabled,omitempty"`
+	ConfigManagedEnabled *bool `json:"ConfigManagedEnabled,omitempty" xml:"ConfigManagedEnabled,omitempty"`
+	// The configurations of connection draining.
+	//
+	// After connection draining is enabled, ALB maintains data transmission for a period of time after the backend server is removed or declared unhealthy.
+	//
+	// > 	- By default, connection draining is disabled. To enable connection draining, contact your account manager.
+	//
+	// >	- Basic ALB instances do not support connection draining. Standard and WAF-enabled ALB instances support connection draining.
+	//
+	// >	- Server groups of the instance and IP types support connection draining. Server groups of the Function Compute type do not support connection draining.
 	ConnectionDrainConfig *ListServerGroupsResponseBodyServerGroupsConnectionDrainConfig `json:"ConnectionDrainConfig,omitempty" xml:"ConnectionDrainConfig,omitempty" type:"Struct"`
 	// The time when the resource was created.
 	//
@@ -17423,9 +17521,9 @@ type ListServerGroupsResponseBodyServerGroups struct {
 	//
 	// 2022-07-02T02:49:05Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The health check configuration.
+	// The health check configurations.
 	HealthCheckConfig *ListServerGroupsResponseBodyServerGroupsHealthCheckConfig `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty" type:"Struct"`
-	// Indicates whether IPv6 is supported. Valid values:
+	// Indicates whether IPv6 is supported. Valid value:
 	//
 	// 	- **true**
 	//
@@ -17435,32 +17533,33 @@ type ListServerGroupsResponseBodyServerGroups struct {
 	//
 	// false
 	Ipv6Enabled *bool `json:"Ipv6Enabled,omitempty" xml:"Ipv6Enabled,omitempty"`
-	// The backend protocol. Valid values:
+	// The backend protocol. Valid value:
 	//
 	// 	- **HTTP**: allows you to associate HTTPS, HTTP, or QUIC listeners with backend servers.
 	//
-	// 	- **HTTPS**: allows you to associate an HTTPS listener with the server group.
+	// 	- **HTTPS**: allows you to associate HTTPS listeners with backend servers.
 	//
-	// 	- **GRPC**: allows you to associate an HTTPS or QUIC listener with the server group.
+	// 	- **GRPC**: allows you to associate HTTPS and QUIC listeners with backend servers.
 	//
 	// example:
 	//
 	// HTTP
-	Protocol               *string   `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The ID of the ALB instance associated with the server group.
 	RelatedLoadBalancerIds []*string `json:"RelatedLoadBalancerIds,omitempty" xml:"RelatedLoadBalancerIds,omitempty" type:"Repeated"`
-	// The resource group ID to which the GA instance belongs.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-atstuj3rtop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The scheduling algorithm. Valid values:
+	// The scheduling algorithm. Valid value:
 	//
 	// 	- **Wrr**: Backend servers with higher weights receive more requests than backend servers with lower weights.
 	//
 	// 	- **Wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections on a backend server. If multiple backend servers have the same weight, requests are forwarded to the backend server with the least number of connections.
 	//
-	// 	- **Sch**: The consistent hashing algorithm is used. Requests from the same source IP address are distributed to the same backend server.
+	// 	- **Sch**: consistent hashing. Requests that have the same hash factors are distributed to the same backend server. If you do not specify the UchConfig parameter, the source IP address is used as the hash factor by default. Requests that are from the same IP address are distributed to the same backend server. If you specify the UchConfig parameter, the URL string is used as the hash factor. Requests that have the same URL string are distributed to the same backend server.
 	//
 	// example:
 	//
@@ -17472,21 +17571,21 @@ type ListServerGroupsResponseBodyServerGroups struct {
 	//
 	// 1
 	ServerCount *int32 `json:"ServerCount,omitempty" xml:"ServerCount,omitempty"`
-	// The ID of the server group.
+	// The server group ID.
 	//
 	// example:
 	//
 	// sgp-cige6j****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// The name of the server group.
+	// The server group name.
 	//
 	// example:
 	//
 	// Group3
 	ServerGroupName *string `json:"ServerGroupName,omitempty" xml:"ServerGroupName,omitempty"`
-	// The status of the server group. Valid values:
+	// The status of the server group. Valid value:
 	//
-	// 	- **Creating**
+	// 	- **Creating**.
 	//
 	// 	- **Available**
 	//
@@ -17496,24 +17595,33 @@ type ListServerGroupsResponseBodyServerGroups struct {
 	//
 	// Available
 	ServerGroupStatus *string `json:"ServerGroupStatus,omitempty" xml:"ServerGroupStatus,omitempty"`
-	// The type of server group. Valid values:
+	// The server group type. Valid value:
 	//
-	// 	- **Instance**
+	// 	- **Instance**: instances, including Elastic Compute Service (ECS) instances, elastic network interfaces (ENIs), and elastic container instances.
 	//
-	// 	- **Ip**
+	// 	- **Ip**: IP addresses.
 	//
-	// 	- **Fc**
+	// 	- **Fc**: Function Compute
 	//
 	// example:
 	//
 	// Instance
 	ServerGroupType *string `json:"ServerGroupType,omitempty" xml:"ServerGroupType,omitempty"`
-	// The service name.
+	// The name of the server group.
 	//
 	// example:
 	//
 	// test
-	ServiceName     *string                                                  `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The configurations of slow starts.
+	//
+	// After slow starts are enabled, ALB prefetches data to newly added backend servers. Requests distributed to the backend servers gradually increase.
+	//
+	// > 	- Basic ALB instances do not support slow starts. Standard and WAF-enabled ALB instances support slow starts.
+	//
+	// >	- Server groups of the instance and IP types support slow starts. Server groups of the Function Compute type do not support slow starts.
+	//
+	// >	- Slow start is supported only by the weighted round-robin scheduling algorithm.
 	SlowStartConfig *ListServerGroupsResponseBodyServerGroupsSlowStartConfig `json:"SlowStartConfig,omitempty" xml:"SlowStartConfig,omitempty" type:"Struct"`
 	// The configuration of session persistence.
 	StickySessionConfig *ListServerGroupsResponseBodyServerGroupsStickySessionConfig `json:"StickySessionConfig,omitempty" xml:"StickySessionConfig,omitempty" type:"Struct"`
@@ -17521,7 +17629,7 @@ type ListServerGroupsResponseBodyServerGroups struct {
 	Tags []*ListServerGroupsResponseBodyServerGroupsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The configuration of consistent hashing based on URLs.
 	UchConfig *ListServerGroupsResponseBodyServerGroupsUchConfig `json:"UchConfig,omitempty" xml:"UchConfig,omitempty" type:"Struct"`
-	// Indicates whether long-lived TCP connections are enabled. Valid values:
+	// Indicates whether persistent TCP connections are enabled. Valid value:
 	//
 	// 	- **true**
 	//
@@ -17531,7 +17639,7 @@ type ListServerGroupsResponseBodyServerGroups struct {
 	//
 	// false
 	UpstreamKeepaliveEnabled *bool `json:"UpstreamKeepaliveEnabled,omitempty" xml:"UpstreamKeepaliveEnabled,omitempty"`
-	// The VPC ID.
+	// The ID of the VPC to which the ALB instance belongs.
 	//
 	// example:
 	//
@@ -17653,7 +17761,21 @@ func (s *ListServerGroupsResponseBodyServerGroups) SetVpcId(v string) *ListServe
 }
 
 type ListServerGroupsResponseBodyServerGroupsConnectionDrainConfig struct {
-	ConnectionDrainEnabled *bool  `json:"ConnectionDrainEnabled,omitempty" xml:"ConnectionDrainEnabled,omitempty"`
+	// Indicates whether connection draining is enabled. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
+	ConnectionDrainEnabled *bool `json:"ConnectionDrainEnabled,omitempty" xml:"ConnectionDrainEnabled,omitempty"`
+	// The timeout period of connection draining.
+	//
+	// example:
+	//
+	// 300
 	ConnectionDrainTimeout *int32 `json:"ConnectionDrainTimeout,omitempty" xml:"ConnectionDrainTimeout,omitempty"`
 }
 
@@ -17676,11 +17798,11 @@ func (s *ListServerGroupsResponseBodyServerGroupsConnectionDrainConfig) SetConne
 }
 
 type ListServerGroupsResponseBodyServerGroupsHealthCheckConfig struct {
-	// The HTTP status codes that indicate whether the backend server passes the health check.
+	// The HTTP status codes that indicate healthy backend servers.
 	HealthCheckCodes []*string `json:"HealthCheckCodes,omitempty" xml:"HealthCheckCodes,omitempty" type:"Repeated"`
-	// The port that you want to use for health checks on backend servers. Valid values: **0*	- to **65535**.
+	// The backend port that is used for health checks. Valid values: **0*	- to **65535**.
 	//
-	// A value of **0*	- indicates that the port on a backend server is used for health checks.
+	// A value of **0*	- indicates that the port of a backend server is used for health checks.
 	//
 	// example:
 	//
@@ -17698,77 +17820,77 @@ type ListServerGroupsResponseBodyServerGroupsHealthCheckConfig struct {
 	HealthCheckEnabled *bool `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
 	// The domain name that is used for health checks. The domain name meets the following requirements:
 	//
-	// 	- The domain name is 1 to 80 characters in length.
+	// 	- The domain name must be 1 to 80 characters in length.
 	//
-	// 	- The domain name contains lowercase letters, digits, hyphens (-), and periods (.).
+	// 	- The domain name can contain lowercase letters, digits, hyphens (-), and periods (.).
 	//
-	// 	- The domain name contains at least one period (.) but does not start or end with a period (.).
+	// 	- The domain name can contain at least one period (.) but cannot start or end with a period (.).
 	//
-	// 	- The rightmost domain label of the domain name contains only letters, and does not contain digits or hyphens (-).
+	// 	- The rightmost domain label of the domain name can contain only letters, and cannot contain digits or hyphens (-).
 	//
-	// 	- The domain name does not start or end with a hyphen (-).
+	// 	- The domain name cannot start or end with a hyphen (-).
 	//
-	// >  This parameter takes effect only when **HealthCheckProtocol*	- is set to **HTTP*	- or **HTTPS**. HTTPS is unavailable by default. If you want to use HTTPS, log on to the SLB console, go to the Quota Center page, and then apply for the privilege to use HTPS on the **ALB*	- tab.
+	// >  This parameter takes effect only when **HealthCheckProtocol*	- is set to **HTTP*	- or **HTTPS**. HTTPS is unavailable by default. If you want to use HTTPS, log on to the SLB console, go to the Quota Center page, click the **ALB*	- tab, and then apply for the privilege to use HTTPS.
 	//
 	// example:
 	//
 	// www.example.com
 	HealthCheckHost *string `json:"HealthCheckHost,omitempty" xml:"HealthCheckHost,omitempty"`
-	// The HTTP version that is used for health checks.
+	// The HTTP version for health checks.
 	//
 	// Valid values: **HTTP1.0*	- and **HTTP1.1**.
 	//
-	// >  This parameter takes effect when **HealthCheckProtocol*	- is set to **HTTP*	- or **HTTPS**. HTTPS is unavailable by default. If you want to use HTTPS, log on to the SLB console, go to the Quota Center page, and then apply for the privilege to use HTPS on the **ALB*	- tab.
+	// >  This parameter takes effect only when **HealthCheckProtocol*	- is set to **HTTP*	- or **HTTPS**. HTTPS is unavailable by default. If you want to use HTTPS, log on to the SLB console, go to the Quota Center page, click the **ALB*	- tab, and then apply for the privilege to use HTTPS.
 	//
 	// example:
 	//
 	// HTTP1.1
 	HealthCheckHttpVersion *string `json:"HealthCheckHttpVersion,omitempty" xml:"HealthCheckHttpVersion,omitempty"`
-	// The interval between two consecutive health checks. Unit: seconds. Valid values: **1*	- to **50**.
+	// The interval at which health checks are performed. Unit: seconds. Valid values: **1*	- to **50**.
 	//
 	// example:
 	//
 	// 5
 	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	// The HTTP method that is used for health checks. Valid values:
+	// The HTTP method that is used for health checks. Valid value:
 	//
 	// 	- **GET**: If the length of a response exceeds 8 KB, the response is truncated. However, the health check result is not affected.
 	//
-	// 	- **POST**: gRPC health checks on listeners use the POST method by default.
+	// 	- **POST**: gRPC health checks use the POST method by default.
 	//
-	// 	- **HEAD**: HTTP and HTTPS health checks on listeners use the HEAD method by default.
+	// 	- **HEAD**: HTTP and HTTPS health checks use the HEAD method by default.
 	//
-	// >  This parameter takes effect when **HealthCheckProtocol*	- is set to **HTTP**, **HTTPS**, or **gRPC**. HTTPS is unavailable by default. If you want to use HTTPS, log on to the SLB console, go to the Quota Center page, and then apply for the privilege to use HTTPS on the **ALB*	- tab.
+	// >  This parameter takes effect only when **HealthCheckProtocol*	- is set to **HTTP**, **HTTPS**, or **gRPC**. HTTPS is unavailable by default. If you want to use HTTPS, log on to the SLB console, go to the Quota Center page, click the **ALB*	- tab, and then apply for the privilege to use HTTPS.
 	//
 	// example:
 	//
 	// HEAD
 	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	// The path that is used for health checks.
+	// The URL that is used for health checks.
 	//
-	// >  This parameter takes effect only when **HealthCheckProtocol*	- is set to **HTTP*	- or **HTTPS**. HTTPS is unavailable by default. If you want to use HTTPS, log on to the SLB console, go to the Quota Center page, and then apply for the privilege to use HTPS on the **ALB*	- tab.
+	// >  This parameter takes effect only when **HealthCheckProtocol*	- is set to **HTTP*	- or **HTTPS**. HTTPS is unavailable by default. If you want to use HTTPS, log on to the SLB console, go to the Quota Center page, click the **ALB*	- tab, and then apply for the privilege to use HTTPS.
 	//
 	// example:
 	//
 	// /test/index.html
 	HealthCheckPath *string `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
-	// The protocol that you want to use for health checks. Valid values:
+	// The protocol that you want to use for health checks. Valid value:
 	//
-	// 	- **HTTP**: ALB performs HTTP health checks by sending HEAD or GET requests to a backend server to check whether the backend server is healthy.
+	// 	- **HTTP**: HTTP health checks simulate browser behaviors by sending HEAD or GET requests to probe the availability of backend servers.
 	//
-	// 	- **HTTPS**: ALB performs HTTPS health checks by sending HEAD or GET requests to a backend server to check whether the backend server is healthy. HTTPS supports data encryption and provides higher data security than HTTP.
+	// 	- **HTTPS**: HTTPS health checks simulate browser behaviors by sending HEAD or GET requests to probe the availability of backend servers. HTTPS supports encryption and provides higher security than HTTP.
 	//
-	// 	- **TCP**: To perform TCP health checks, ALB sends SYN packets to the backend server to check whether the port of the backend server is available to receive requests.
+	// 	- **TCP**: TCP health checks send TCP SYN packets to a backend server to check whether the port of the backend server is reachable.
 	//
-	// 	- **gRPC**: ALB performs gRPC health checks by sending POST or GET requests to a backend server to check whether the backend server is healthy.
+	// 	- **gRPC**: gRPC health checks send POST or GET requests to a backend server to check whether the backend server is healthy.
 	//
-	// >  HTTPS is unavailable by default. If you want to use HTTPS, log on to the SLB console, go to the Quota Center page, and then apply for the privilege to use HTTPS on the **ALB*	- tab.
+	// >  HTTPS is unavailable by default. If you want to use HTTPS, log on to the SLB console, go to the Quota Center page, click the **ALB*	- tab, and then apply for the privilege to use HTTPS.
 	//
 	// example:
 	//
 	// HTTP
 	HealthCheckProtocol *string `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
-	// The timeout period for a health check response. If a backend server does not respond within the specified timeout period, the backend server fails the health check. Unit: seconds.
+	// The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the backend server is declared unhealthy. Unit: seconds.
 	//
 	// example:
 	//
@@ -17857,8 +17979,22 @@ func (s *ListServerGroupsResponseBodyServerGroupsHealthCheckConfig) SetUnhealthy
 }
 
 type ListServerGroupsResponseBodyServerGroupsSlowStartConfig struct {
+	// The duration of a slow start.
+	//
+	// example:
+	//
+	// 30
 	SlowStartDuration *int32 `json:"SlowStartDuration,omitempty" xml:"SlowStartDuration,omitempty"`
-	SlowStartEnabled  *bool  `json:"SlowStartEnabled,omitempty" xml:"SlowStartEnabled,omitempty"`
+	// Indicates whether slow starts are enabled. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
+	SlowStartEnabled *bool `json:"SlowStartEnabled,omitempty" xml:"SlowStartEnabled,omitempty"`
 }
 
 func (s ListServerGroupsResponseBodyServerGroupsSlowStartConfig) String() string {
@@ -17880,13 +18016,13 @@ func (s *ListServerGroupsResponseBodyServerGroupsSlowStartConfig) SetSlowStartEn
 }
 
 type ListServerGroupsResponseBodyServerGroupsStickySessionConfig struct {
-	// The cookie that is configured on the server.
+	// The cookie configured for the server.
 	//
 	// example:
 	//
 	// B490B5EBF6F3CD402E515D22BCDA****
 	Cookie *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
-	// The timeout period of a cookie. Unit: seconds. Valid values: **1*	- to **86400**.
+	// The timeout period of the cookie. Unit: seconds. Valid values: **1*	- to **86400**.
 	//
 	// >  This parameter takes effect only when **StickySessionEnabled*	- is set to **true*	- and **StickySessionType*	- is set to **Insert**.
 	//
@@ -17894,7 +18030,7 @@ type ListServerGroupsResponseBodyServerGroupsStickySessionConfig struct {
 	//
 	// 1000
 	CookieTimeout *int32 `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
-	// Indicates whether session persistence is enabled. Valid values:
+	// Indicates whether session persistence is enabled. Valid value:
 	//
 	// 	- **true**
 	//
@@ -17904,11 +18040,11 @@ type ListServerGroupsResponseBodyServerGroupsStickySessionConfig struct {
 	//
 	// false
 	StickySessionEnabled *bool `json:"StickySessionEnabled,omitempty" xml:"StickySessionEnabled,omitempty"`
-	// The method that is used to handle a cookie. Valid values:
+	// The method that is used to handle the cookie. Valid value:
 	//
-	// 	- **Insert**: inserts a cookie. ALB inserts a cookie (SERVERID) into the first HTTP or HTTPS response packet that is sent to a client. The next request from the client contains this cookie and the listener distributes this request to the recorded backend server.
+	// 	- **insert**: inserts the cookie. The first time a client accesses ALB, ALB inserts the SERVERID cookie into the HTTP or HTTPS response packet. Subsequent requests from the client that carry this cookie are forwarded to the same backend server as the first request.
 	//
-	// 	- **Server**: rewrites a cookie. When ALB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. Subsequent requests to ALB carry this user-defined cookie, and ALB determines the destination servers of the requests based on the cookies.
+	// 	- **Server**: rewrites the cookie. ALB rewrites the custom cookies in requests from a client. Subsequent requests from the client that carry the new cookie are forwarded to the same backend server as the first request.
 	//
 	// example:
 	//
@@ -17978,13 +18114,13 @@ func (s *ListServerGroupsResponseBodyServerGroupsTags) SetValue(v string) *ListS
 }
 
 type ListServerGroupsResponseBodyServerGroupsUchConfig struct {
-	// The data type of the common parameter.
+	// The parameter type. Valid value: QueryString.
 	//
 	// example:
 	//
 	// QueryString
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The parameter value for consistent hashing.
+	// The hash value.
 	//
 	// example:
 	//
@@ -18780,6 +18916,216 @@ func (s *ListTagValuesResponse) SetStatusCode(v int32) *ListTagValuesResponse {
 }
 
 func (s *ListTagValuesResponse) SetBody(v *ListTagValuesResponseBody) *ListTagValuesResponse {
+	s.Body = v
+	return s
+}
+
+type LoadBalancerJoinSecurityGroupRequest struct {
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alb-h7kcw4g4nnvtqp****
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// This parameter is required.
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+}
+
+func (s LoadBalancerJoinSecurityGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LoadBalancerJoinSecurityGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *LoadBalancerJoinSecurityGroupRequest) SetClientToken(v string) *LoadBalancerJoinSecurityGroupRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *LoadBalancerJoinSecurityGroupRequest) SetDryRun(v bool) *LoadBalancerJoinSecurityGroupRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *LoadBalancerJoinSecurityGroupRequest) SetLoadBalancerId(v string) *LoadBalancerJoinSecurityGroupRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *LoadBalancerJoinSecurityGroupRequest) SetSecurityGroupIds(v []*string) *LoadBalancerJoinSecurityGroupRequest {
+	s.SecurityGroupIds = v
+	return s
+}
+
+type LoadBalancerJoinSecurityGroupResponseBody struct {
+	// example:
+	//
+	// 8fe81f25-79a0-4fa0-9036-f2601fda****
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// D3B9AE45-F5DB-58E3-A4B5-EE58F1EC****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s LoadBalancerJoinSecurityGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LoadBalancerJoinSecurityGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *LoadBalancerJoinSecurityGroupResponseBody) SetJobId(v string) *LoadBalancerJoinSecurityGroupResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *LoadBalancerJoinSecurityGroupResponseBody) SetRequestId(v string) *LoadBalancerJoinSecurityGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type LoadBalancerJoinSecurityGroupResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *LoadBalancerJoinSecurityGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s LoadBalancerJoinSecurityGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LoadBalancerJoinSecurityGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *LoadBalancerJoinSecurityGroupResponse) SetHeaders(v map[string]*string) *LoadBalancerJoinSecurityGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *LoadBalancerJoinSecurityGroupResponse) SetStatusCode(v int32) *LoadBalancerJoinSecurityGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *LoadBalancerJoinSecurityGroupResponse) SetBody(v *LoadBalancerJoinSecurityGroupResponseBody) *LoadBalancerJoinSecurityGroupResponse {
+	s.Body = v
+	return s
+}
+
+type LoadBalancerLeaveSecurityGroupRequest struct {
+	// example:
+	//
+	// 593B0448-D13E-4C56-AC0D-FDF0FDE0****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alb-iv9gj3lpak6fbj****
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// This parameter is required.
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+}
+
+func (s LoadBalancerLeaveSecurityGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LoadBalancerLeaveSecurityGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *LoadBalancerLeaveSecurityGroupRequest) SetClientToken(v string) *LoadBalancerLeaveSecurityGroupRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *LoadBalancerLeaveSecurityGroupRequest) SetDryRun(v bool) *LoadBalancerLeaveSecurityGroupRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *LoadBalancerLeaveSecurityGroupRequest) SetLoadBalancerId(v string) *LoadBalancerLeaveSecurityGroupRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *LoadBalancerLeaveSecurityGroupRequest) SetSecurityGroupIds(v []*string) *LoadBalancerLeaveSecurityGroupRequest {
+	s.SecurityGroupIds = v
+	return s
+}
+
+type LoadBalancerLeaveSecurityGroupResponseBody struct {
+	// example:
+	//
+	// 51c5b627-3500-487c-b17d-5cc583f0****
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// EC0C96E4-7CCB-599C-9329-3A5DB6FF****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s LoadBalancerLeaveSecurityGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LoadBalancerLeaveSecurityGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *LoadBalancerLeaveSecurityGroupResponseBody) SetJobId(v string) *LoadBalancerLeaveSecurityGroupResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *LoadBalancerLeaveSecurityGroupResponseBody) SetRequestId(v string) *LoadBalancerLeaveSecurityGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type LoadBalancerLeaveSecurityGroupResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *LoadBalancerLeaveSecurityGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s LoadBalancerLeaveSecurityGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LoadBalancerLeaveSecurityGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *LoadBalancerLeaveSecurityGroupResponse) SetHeaders(v map[string]*string) *LoadBalancerLeaveSecurityGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *LoadBalancerLeaveSecurityGroupResponse) SetStatusCode(v int32) *LoadBalancerLeaveSecurityGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *LoadBalancerLeaveSecurityGroupResponse) SetBody(v *LoadBalancerLeaveSecurityGroupResponseBody) *LoadBalancerLeaveSecurityGroupResponse {
 	s.Body = v
 	return s
 }
@@ -20827,7 +21173,7 @@ func (s *UpdateHealthCheckTemplateAttributeResponse) SetBody(v *UpdateHealthChec
 }
 
 type UpdateListenerAttributeRequest struct {
-	// The certificate authority (CA) certificates.
+	// The information about the CA certificate.
 	CaCertificates []*UpdateListenerAttributeRequestCaCertificates `json:"CaCertificates,omitempty" xml:"CaCertificates,omitempty" type:"Repeated"`
 	// Specifies whether to enable mutual authentication. Valid values:
 	//
@@ -20839,19 +21185,19 @@ type UpdateListenerAttributeRequest struct {
 	//
 	// false
 	CaEnabled *bool `json:"CaEnabled,omitempty" xml:"CaEnabled,omitempty"`
-	// The certificates.
+	// The details about the certificates.
 	Certificates []*UpdateListenerAttributeRequestCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
 	//
 	// example:
 	//
 	// 5A2CFF0E-5718-45B5-9D4D-70B3FF3898
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The default actions in the forwarding rules.
+	// The actions of the default forwarding rule.
 	DefaultActions []*UpdateListenerAttributeRequestDefaultActions `json:"DefaultActions,omitempty" xml:"DefaultActions,omitempty" type:"Repeated"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
@@ -20901,7 +21247,7 @@ type UpdateListenerAttributeRequest struct {
 	//
 	// HTTP_80
 	ListenerDescription *string `json:"ListenerDescription,omitempty" xml:"ListenerDescription,omitempty"`
-	// The ID of the Application Load Balancer (ALB) listener.
+	// The ID of the Application Load Balancer (ALB) instance.
 	//
 	// This parameter is required.
 	//
@@ -20927,7 +21273,7 @@ type UpdateListenerAttributeRequest struct {
 	//
 	// tls_cipher_policy_1_0
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
-	// The configuration of the XForwardFor headers.
+	// The configurations of the X-Forwarded-For header.
 	XForwardedForConfig *UpdateListenerAttributeRequestXForwardedForConfig `json:"XForwardedForConfig,omitempty" xml:"XForwardedForConfig,omitempty" type:"Struct"`
 }
 
@@ -21015,6 +21361,13 @@ func (s *UpdateListenerAttributeRequest) SetXForwardedForConfig(v *UpdateListene
 }
 
 type UpdateListenerAttributeRequestCaCertificates struct {
+	// The ID of the CA certificate. You can specify only one CA certificate.
+	//
+	// >  This parameter is required if **CaEnabled*	- is set to **true**.
+	//
+	// example:
+	//
+	// 123359******
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 }
 
@@ -21032,7 +21385,7 @@ func (s *UpdateListenerAttributeRequestCaCertificates) SetCertificateId(v string
 }
 
 type UpdateListenerAttributeRequestCertificates struct {
-	// The certificate ID. Only server certificates are supported. You can specify up to 20 certificate IDs.
+	// The ID of the certificate. Only server certificates are supported. You can specify at most 20 certificate IDs.
 	//
 	// example:
 	//
@@ -21054,11 +21407,11 @@ func (s *UpdateListenerAttributeRequestCertificates) SetCertificateId(v string) 
 }
 
 type UpdateListenerAttributeRequestDefaultActions struct {
-	// The configuration of the action. This parameter is required and takes effect when the **Type*	- parameter is set to **FowardGroup**. You can specify configurations for up to 20 forwarding actions.
+	// The forwarding action. This parameter takes effect only when you set **Type*	- to **ForwardGroup**. You can specify at most 20 actions.
 	ForwardGroupConfig *UpdateListenerAttributeRequestDefaultActionsForwardGroupConfig `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
-	// The type of the action. You can specify only one action type.
+	// The action type. You can specify only one type.
 	//
-	// Set the value to **ForwardGroup*	- to forward requests to multiple vServer groups.
+	// Set the value to **ForwardGroup**, which specifies that requests are forwarded to multiple server groups.
 	//
 	// This parameter is required.
 	//
@@ -21107,7 +21460,7 @@ func (s *UpdateListenerAttributeRequestDefaultActionsForwardGroupConfig) SetServ
 }
 
 type UpdateListenerAttributeRequestDefaultActionsForwardGroupConfigServerGroupTuples struct {
-	// The server group to which requests are forwarded.
+	// The ID of the server group to which requests are forwarded.
 	//
 	// This parameter is required.
 	//
@@ -21172,11 +21525,11 @@ func (s *UpdateListenerAttributeRequestQuicConfig) SetQuicUpgradeEnabled(v bool)
 }
 
 type UpdateListenerAttributeRequestXForwardedForConfig struct {
-	// The name of the custom header. This parameter takes effect only when the **XForwardedForClientCertClientVerifyEnabled*	- parameter is set to **true**.
+	// The name of the custom header. The header takes effect only when you set **XForwardedForClientCertClientVerifyEnabled*	- to **true**.
 	//
-	// The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+	// The name must be 1 to 40 characters in length. The name can contain lowercase letters, digits, hyphens (-), and underscores (-).
 	//
-	// > This parameter is available only when you create an HTTPS listener.
+	// >  Only HTTPS listeners support this parameter.
 	//
 	// example:
 	//
@@ -21188,85 +21541,85 @@ type UpdateListenerAttributeRequestXForwardedForConfig struct {
 	//
 	// 	- **false**
 	//
-	// > This parameter is available only when you create an HTTPS listener.
+	// >  Only HTTPS listeners support this parameter.
 	//
 	// example:
 	//
 	// false
 	XForwardedForClientCertClientVerifyEnabled *bool `json:"XForwardedForClientCertClientVerifyEnabled,omitempty" xml:"XForwardedForClientCertClientVerifyEnabled,omitempty"`
-	// The name of the custom header. This parameter takes effect only when the **XForwardedForClientCertFingerprintEnabled*	- parameter is set to **true**.
+	// The name of the custom header. The header takes effect only when you set **XForwardedForClientCertFingerprintEnabled*	- to **true**.
 	//
-	// The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+	// The name must be 1 to 40 characters in length. The name can contain lowercase letters, digits, hyphens (-), and underscores (-).
 	//
-	// > This parameter is available only when you create an HTTPS listener.
+	// >  Only HTTPS listeners support this parameter.
 	//
 	// example:
 	//
 	// test_finger-print-alias_123456
 	XForwardedForClientCertFingerprintAlias *string `json:"XForwardedForClientCertFingerprintAlias,omitempty" xml:"XForwardedForClientCertFingerprintAlias,omitempty"`
-	// Indicates whether the `X-Forwarded-Clientcert-fingerprint` header is used to retrieve the fingerprint of the client certificate. Valid values:
+	// Specifies whether to use the `X-Forwarded-Clientcert-fingerprint` header to retrieve the fingerprint of the client certificate. Valid values:
 	//
 	// 	- **true**
 	//
 	// 	- **false**
 	//
-	// > This parameter is available only when you create an HTTPS listener.
+	// >  Only HTTPS listeners support this parameter.
 	//
 	// example:
 	//
 	// false
 	XForwardedForClientCertFingerprintEnabled *bool `json:"XForwardedForClientCertFingerprintEnabled,omitempty" xml:"XForwardedForClientCertFingerprintEnabled,omitempty"`
-	// The name of the custom header. This parameter takes effect only when **XForwardedForClientCertIssuerDNEnabled*	- is set to **true**.
+	// The name of the custom header. The header takes effect only when you set **XForwardedForClientCertIssuerDNEnabled*	- to **true**.
 	//
-	// The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+	// The name must be 1 to 40 characters in length. The name can contain lowercase letters, digits, hyphens (-), and underscores (-).
 	//
-	// > This parameter is available only when you create an HTTPS listener.
+	// >  Only HTTPS listeners support this parameter.
 	//
 	// example:
 	//
 	// test_issue-dn-alias_123456
 	XForwardedForClientCertIssuerDNAlias *string `json:"XForwardedForClientCertIssuerDNAlias,omitempty" xml:"XForwardedForClientCertIssuerDNAlias,omitempty"`
-	// Indicates whether the `X-Forwarded-Clientcert-issuerdn` header is used to retrieve information about the authority that issues the client certificate. Valid values:
+	// Specifies whether to use the `X-Forwarded-Clientcert-issuerdn` header to retrieve information about the authority that issues the client certificate. Valid values:
 	//
 	// 	- **true**
 	//
 	// 	- **false**
 	//
-	// > This parameter is available only when you create an HTTPS listener.
+	// >  Only HTTPS listeners support this parameter.
 	//
 	// example:
 	//
 	// false
 	XForwardedForClientCertIssuerDNEnabled *bool `json:"XForwardedForClientCertIssuerDNEnabled,omitempty" xml:"XForwardedForClientCertIssuerDNEnabled,omitempty"`
-	// The name of the custom header. This parameter takes effect only when **XForwardedForClientCertSubjectDNEnabled*	- is set to **true**.
+	// The name of the custom header. This parameter is valid only if the **XForwardedForClientCertSubjectDNEnabled*	- parameter is set to true.****
 	//
-	// The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+	// The name must be 1 to 40 characters in length, The name can contain lowercase letters, digits, hyphens (-), and underscores (-).
 	//
-	// > This parameter is available only when you create an HTTPS listener.
+	// >  Only HTTPS listeners support this parameter.
 	//
 	// example:
 	//
 	// test_subject-dn-alias_123456
 	XForwardedForClientCertSubjectDNAlias *string `json:"XForwardedForClientCertSubjectDNAlias,omitempty" xml:"XForwardedForClientCertSubjectDNAlias,omitempty"`
-	// Indicates whether the `X-Forwarded-Clientcert-subjectdn` header is used to retrieve information about the owner of the client certificate. Valid values:
+	// Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header to retrieve information about the owner of the client certificate. Valid values:
 	//
 	// 	- **true**
 	//
 	// 	- **false**
 	//
-	// > This parameter is available only when you create an HTTPS listener.
+	// >  Only HTTPS listeners support this parameter.
 	//
 	// example:
 	//
 	// false
 	XForwardedForClientCertSubjectDNEnabled *bool `json:"XForwardedForClientCertSubjectDNEnabled,omitempty" xml:"XForwardedForClientCertSubjectDNEnabled,omitempty"`
-	// Specifies whether to use the `X-Forwarded-Client-Ip` header to retrieve the source IP addresses. Valid values:
+	// Specifies whether to use the X-Forwarded-For header to preserve client IP addresses. Valid values:
 	//
 	// 	- **true**
 	//
 	// 	- **false**
 	//
-	// > HTTP, HTTPS, and QUIC listeners support this parameter. By default, the feature that corresponds to this parameter is unavailable. If you want to use this feature, contact your account manager.
+	// >  This parameter is returned only for HTTP and HTTPS listeners.
 	//
 	// example:
 	//
@@ -21274,43 +21627,43 @@ type UpdateListenerAttributeRequestXForwardedForConfig struct {
 	XForwardedForClientSourceIpsEnabled *bool `json:"XForwardedForClientSourceIpsEnabled,omitempty" xml:"XForwardedForClientSourceIpsEnabled,omitempty"`
 	// The trusted proxy IP address.
 	//
-	// ALB traverses `X-Forwarded-For` backward and selects the first IP address that is not in the trusted IP address list as the real IP address of the client. The IP address is used in source IP address throttling.
+	// ALB instances traverse the IP addresses in the `X-Forwarded-For` header from the rightmost IP address to the leftmost IP address. The first IP address that is not on the trusted IP address list is considered the client IP address. Requests from the client IP address are throttled.
 	//
 	// example:
 	//
 	// 10.1.1.0/24
 	XForwardedForClientSourceIpsTrusted *string `json:"XForwardedForClientSourceIpsTrusted,omitempty" xml:"XForwardedForClientSourceIpsTrusted,omitempty"`
-	// Indicates whether the `X-Forwarded-Client-Port` header is used to retrieve the client port. Valid values:
+	// Specifies whether to use the `X-Forwarded-Client-Port` header to retrieve the client port. Valid values:
 	//
 	// 	- **true**
 	//
 	// 	- **false**
 	//
-	// > This parameter is available only when you create an HTTP or HTTPS listener.
+	// >  This parameter is returned only for HTTP and HTTPS listeners.
 	//
 	// example:
 	//
 	// false
 	XForwardedForClientSrcPortEnabled *bool `json:"XForwardedForClientSrcPortEnabled,omitempty" xml:"XForwardedForClientSrcPortEnabled,omitempty"`
-	// Indicates whether the `X-Forwarded-For` header is used to retrieve the client IP address. Valid values:
+	// Specifies whether to use the `X-Forwarded-For` header to retrieve client IP addresses. Valid values:
 	//
 	// 	- **true**
 	//
 	// 	- **false**
 	//
-	// > This parameter is available only when you create an HTTP or HTTPS listener.
+	// >  This parameter is returned only for HTTP and HTTPS listeners.
 	//
 	// example:
 	//
 	// true
 	XForwardedForEnabled *bool `json:"XForwardedForEnabled,omitempty" xml:"XForwardedForEnabled,omitempty"`
-	// Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listener protocol of the ALB instance. Valid values:
+	// Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listener protocol. Valid values:
 	//
 	// 	- **true**
 	//
 	// 	- **false**
 	//
-	// > HTTP, HTTPS, and QUIC listeners support this parameter.
+	// >  This parameter is supported by HTTP, HTTPS, and QUIC listeners.
 	//
 	// example:
 	//
@@ -21322,19 +21675,19 @@ type UpdateListenerAttributeRequestXForwardedForConfig struct {
 	//
 	// 	- **false**
 	//
-	// > HTTP, HTTPS, and QUIC listeners support this parameter.
+	// >  This parameter is supported by HTTP, HTTPS, and QUIC listeners.
 	//
 	// example:
 	//
 	// false
 	XForwardedForSLBIdEnabled *bool `json:"XForwardedForSLBIdEnabled,omitempty" xml:"XForwardedForSLBIdEnabled,omitempty"`
-	// Specifies whether to use the `X-Forwarded-Port` header to retrieve the listening port. Valid values:
+	// Specifies whether to use the `X-Forwarded-Port` header to retrieve the listener port of the ALB instance. Valid values:
 	//
 	// 	- **true**
 	//
 	// 	- **false**
 	//
-	// > HTTP, HTTPS, and QUIC listeners support this parameter.
+	// >  This parameter is supported by HTTP, HTTPS, and QUIC listeners.
 	//
 	// example:
 	//
@@ -30731,6 +31084,150 @@ func (client *Client) ListTagValues(request *ListTagValuesRequest) (_result *Lis
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagValuesResponse{}
 	_body, _err := client.ListTagValuesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建访问控制信息
+//
+// @param request - LoadBalancerJoinSecurityGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return LoadBalancerJoinSecurityGroupResponse
+func (client *Client) LoadBalancerJoinSecurityGroupWithOptions(request *LoadBalancerJoinSecurityGroupRequest, runtime *util.RuntimeOptions) (_result *LoadBalancerJoinSecurityGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupIds)) {
+		query["SecurityGroupIds"] = request.SecurityGroupIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("LoadBalancerJoinSecurityGroup"),
+		Version:     tea.String("2020-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &LoadBalancerJoinSecurityGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建访问控制信息
+//
+// @param request - LoadBalancerJoinSecurityGroupRequest
+//
+// @return LoadBalancerJoinSecurityGroupResponse
+func (client *Client) LoadBalancerJoinSecurityGroup(request *LoadBalancerJoinSecurityGroupRequest) (_result *LoadBalancerJoinSecurityGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &LoadBalancerJoinSecurityGroupResponse{}
+	_body, _err := client.LoadBalancerJoinSecurityGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建访问控制信息
+//
+// @param request - LoadBalancerLeaveSecurityGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return LoadBalancerLeaveSecurityGroupResponse
+func (client *Client) LoadBalancerLeaveSecurityGroupWithOptions(request *LoadBalancerLeaveSecurityGroupRequest, runtime *util.RuntimeOptions) (_result *LoadBalancerLeaveSecurityGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupIds)) {
+		query["SecurityGroupIds"] = request.SecurityGroupIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("LoadBalancerLeaveSecurityGroup"),
+		Version:     tea.String("2020-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &LoadBalancerLeaveSecurityGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建访问控制信息
+//
+// @param request - LoadBalancerLeaveSecurityGroupRequest
+//
+// @return LoadBalancerLeaveSecurityGroupResponse
+func (client *Client) LoadBalancerLeaveSecurityGroup(request *LoadBalancerLeaveSecurityGroupRequest) (_result *LoadBalancerLeaveSecurityGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &LoadBalancerLeaveSecurityGroupResponse{}
+	_body, _err := client.LoadBalancerLeaveSecurityGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
