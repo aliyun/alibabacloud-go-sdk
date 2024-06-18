@@ -7642,6 +7642,279 @@ func (s *ReleaseArtifactResponse) SetBody(v *ReleaseArtifactResponseBody) *Relea
 	return s
 }
 
+type RestartServiceInstanceRequest struct {
+	// example:
+	//
+	// 10CM943JP0EN9****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// si-d6ab3a63ccbb4b17****
+	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+}
+
+func (s RestartServiceInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartServiceInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RestartServiceInstanceRequest) SetClientToken(v string) *RestartServiceInstanceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *RestartServiceInstanceRequest) SetRegionId(v string) *RestartServiceInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *RestartServiceInstanceRequest) SetServiceInstanceId(v string) *RestartServiceInstanceRequest {
+	s.ServiceInstanceId = &v
+	return s
+}
+
+type RestartServiceInstanceResponseBody struct {
+	// example:
+	//
+	// B1A0198B-F316-1B72-B8DD-28B6F6D6XXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RestartServiceInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartServiceInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RestartServiceInstanceResponseBody) SetRequestId(v string) *RestartServiceInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RestartServiceInstanceResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RestartServiceInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RestartServiceInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartServiceInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RestartServiceInstanceResponse) SetHeaders(v map[string]*string) *RestartServiceInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RestartServiceInstanceResponse) SetStatusCode(v int32) *RestartServiceInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RestartServiceInstanceResponse) SetBody(v *RestartServiceInstanceResponseBody) *RestartServiceInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type StartServiceInstanceRequest struct {
+	// example:
+	//
+	// 10CM943JP0EN9****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// si-d6ab3a63ccbb4b17****
+	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+}
+
+func (s StartServiceInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartServiceInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartServiceInstanceRequest) SetClientToken(v string) *StartServiceInstanceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *StartServiceInstanceRequest) SetRegionId(v string) *StartServiceInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *StartServiceInstanceRequest) SetServiceInstanceId(v string) *StartServiceInstanceRequest {
+	s.ServiceInstanceId = &v
+	return s
+}
+
+type StartServiceInstanceResponseBody struct {
+	// example:
+	//
+	// 2E91D771-0183-52CE-86CB-882D99B2CB77
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StartServiceInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartServiceInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartServiceInstanceResponseBody) SetRequestId(v string) *StartServiceInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StartServiceInstanceResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartServiceInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StartServiceInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartServiceInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartServiceInstanceResponse) SetHeaders(v map[string]*string) *StartServiceInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartServiceInstanceResponse) SetStatusCode(v int32) *StartServiceInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartServiceInstanceResponse) SetBody(v *StartServiceInstanceResponseBody) *StartServiceInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type StopServiceInstanceRequest struct {
+	// example:
+	//
+	// 10CM943JP0EN9****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// si-c39ed4779cec449f****
+	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+}
+
+func (s StopServiceInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopServiceInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopServiceInstanceRequest) SetClientToken(v string) *StopServiceInstanceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *StopServiceInstanceRequest) SetRegionId(v string) *StopServiceInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *StopServiceInstanceRequest) SetServiceInstanceId(v string) *StopServiceInstanceRequest {
+	s.ServiceInstanceId = &v
+	return s
+}
+
+type StopServiceInstanceResponseBody struct {
+	// example:
+	//
+	// 49A369EF-A302-5006-B0CE-94CED47C38CF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StopServiceInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopServiceInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopServiceInstanceResponseBody) SetRequestId(v string) *StopServiceInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StopServiceInstanceResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopServiceInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StopServiceInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopServiceInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopServiceInstanceResponse) SetHeaders(v map[string]*string) *StopServiceInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopServiceInstanceResponse) SetStatusCode(v int32) *StopServiceInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopServiceInstanceResponse) SetBody(v *StopServiceInstanceResponseBody) *StopServiceInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateArtifactRequest struct {
 	// This parameter is required.
 	//
@@ -11082,6 +11355,210 @@ func (client *Client) ReleaseArtifact(request *ReleaseArtifactRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleaseArtifactResponse{}
 	_body, _err := client.ReleaseArtifactWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 重启服务实例
+//
+// @param request - RestartServiceInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestartServiceInstanceResponse
+func (client *Client) RestartServiceInstanceWithOptions(request *RestartServiceInstanceRequest, runtime *util.RuntimeOptions) (_result *RestartServiceInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceInstanceId)) {
+		query["ServiceInstanceId"] = request.ServiceInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RestartServiceInstance"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RestartServiceInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 重启服务实例
+//
+// @param request - RestartServiceInstanceRequest
+//
+// @return RestartServiceInstanceResponse
+func (client *Client) RestartServiceInstance(request *RestartServiceInstanceRequest) (_result *RestartServiceInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RestartServiceInstanceResponse{}
+	_body, _err := client.RestartServiceInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动服务实例
+//
+// @param request - StartServiceInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartServiceInstanceResponse
+func (client *Client) StartServiceInstanceWithOptions(request *StartServiceInstanceRequest, runtime *util.RuntimeOptions) (_result *StartServiceInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceInstanceId)) {
+		query["ServiceInstanceId"] = request.ServiceInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartServiceInstance"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartServiceInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动服务实例
+//
+// @param request - StartServiceInstanceRequest
+//
+// @return StartServiceInstanceResponse
+func (client *Client) StartServiceInstance(request *StartServiceInstanceRequest) (_result *StartServiceInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartServiceInstanceResponse{}
+	_body, _err := client.StartServiceInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止服务实例
+//
+// @param request - StopServiceInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopServiceInstanceResponse
+func (client *Client) StopServiceInstanceWithOptions(request *StopServiceInstanceRequest, runtime *util.RuntimeOptions) (_result *StopServiceInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceInstanceId)) {
+		query["ServiceInstanceId"] = request.ServiceInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopServiceInstance"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopServiceInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止服务实例
+//
+// @param request - StopServiceInstanceRequest
+//
+// @return StopServiceInstanceResponse
+func (client *Client) StopServiceInstance(request *StopServiceInstanceRequest) (_result *StopServiceInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopServiceInstanceResponse{}
+	_body, _err := client.StopServiceInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
