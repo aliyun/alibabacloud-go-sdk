@@ -666,10 +666,11 @@ type CreatePrivateAccessPolicyRequest struct {
 	// example:
 	//
 	// Application
-	ApplicationType      *string                                                 `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
-	CustomUserAttributes []*CreatePrivateAccessPolicyRequestCustomUserAttributes `json:"CustomUserAttributes,omitempty" xml:"CustomUserAttributes,omitempty" type:"Repeated"`
-	Description          *string                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
-	DeviceAttributeId    *string                                                 `json:"DeviceAttributeId,omitempty" xml:"DeviceAttributeId,omitempty"`
+	ApplicationType       *string                                                 `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	CustomUserAttributes  []*CreatePrivateAccessPolicyRequestCustomUserAttributes `json:"CustomUserAttributes,omitempty" xml:"CustomUserAttributes,omitempty" type:"Repeated"`
+	Description           *string                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
+	DeviceAttributeAction *string                                                 `json:"DeviceAttributeAction,omitempty" xml:"DeviceAttributeAction,omitempty"`
+	DeviceAttributeId     *string                                                 `json:"DeviceAttributeId,omitempty" xml:"DeviceAttributeId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -736,6 +737,11 @@ func (s *CreatePrivateAccessPolicyRequest) SetCustomUserAttributes(v []*CreatePr
 
 func (s *CreatePrivateAccessPolicyRequest) SetDescription(v string) *CreatePrivateAccessPolicyRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreatePrivateAccessPolicyRequest) SetDeviceAttributeAction(v string) *CreatePrivateAccessPolicyRequest {
+	s.DeviceAttributeAction = &v
 	return s
 }
 
@@ -3523,10 +3529,11 @@ type GetPrivateAccessPolicyResponseBodyPolicy struct {
 	// example:
 	//
 	// 2021-07-29 11:26:02
-	CreateTime           *string                                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CustomUserAttributes []*GetPrivateAccessPolicyResponseBodyPolicyCustomUserAttributes `json:"CustomUserAttributes,omitempty" xml:"CustomUserAttributes,omitempty" type:"Repeated"`
-	Description          *string                                                         `json:"Description,omitempty" xml:"Description,omitempty"`
-	DeviceAttributeId    *string                                                         `json:"DeviceAttributeId,omitempty" xml:"DeviceAttributeId,omitempty"`
+	CreateTime            *string                                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CustomUserAttributes  []*GetPrivateAccessPolicyResponseBodyPolicyCustomUserAttributes `json:"CustomUserAttributes,omitempty" xml:"CustomUserAttributes,omitempty" type:"Repeated"`
+	Description           *string                                                         `json:"Description,omitempty" xml:"Description,omitempty"`
+	DeviceAttributeAction *string                                                         `json:"DeviceAttributeAction,omitempty" xml:"DeviceAttributeAction,omitempty"`
+	DeviceAttributeId     *string                                                         `json:"DeviceAttributeId,omitempty" xml:"DeviceAttributeId,omitempty"`
 	// example:
 	//
 	// private_access_policy_name
@@ -3585,6 +3592,11 @@ func (s *GetPrivateAccessPolicyResponseBodyPolicy) SetCustomUserAttributes(v []*
 
 func (s *GetPrivateAccessPolicyResponseBodyPolicy) SetDescription(v string) *GetPrivateAccessPolicyResponseBodyPolicy {
 	s.Description = &v
+	return s
+}
+
+func (s *GetPrivateAccessPolicyResponseBodyPolicy) SetDeviceAttributeAction(v string) *GetPrivateAccessPolicyResponseBodyPolicy {
+	s.DeviceAttributeAction = &v
 	return s
 }
 
@@ -7820,10 +7832,11 @@ type ListPrivateAccessPolicesResponseBodyPolices struct {
 	// example:
 	//
 	// 2022-07-10 15:50:23
-	CreateTime           *string                                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CustomUserAttributes []*ListPrivateAccessPolicesResponseBodyPolicesCustomUserAttributes `json:"CustomUserAttributes,omitempty" xml:"CustomUserAttributes,omitempty" type:"Repeated"`
-	Description          *string                                                            `json:"Description,omitempty" xml:"Description,omitempty"`
-	DeviceAttributeId    *string                                                            `json:"DeviceAttributeId,omitempty" xml:"DeviceAttributeId,omitempty"`
+	CreateTime            *string                                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CustomUserAttributes  []*ListPrivateAccessPolicesResponseBodyPolicesCustomUserAttributes `json:"CustomUserAttributes,omitempty" xml:"CustomUserAttributes,omitempty" type:"Repeated"`
+	Description           *string                                                            `json:"Description,omitempty" xml:"Description,omitempty"`
+	DeviceAttributeAction *string                                                            `json:"DeviceAttributeAction,omitempty" xml:"DeviceAttributeAction,omitempty"`
+	DeviceAttributeId     *string                                                            `json:"DeviceAttributeId,omitempty" xml:"DeviceAttributeId,omitempty"`
 	// example:
 	//
 	// private_access_policy_name
@@ -7882,6 +7895,11 @@ func (s *ListPrivateAccessPolicesResponseBodyPolices) SetCustomUserAttributes(v 
 
 func (s *ListPrivateAccessPolicesResponseBodyPolices) SetDescription(v string) *ListPrivateAccessPolicesResponseBodyPolices {
 	s.Description = &v
+	return s
+}
+
+func (s *ListPrivateAccessPolicesResponseBodyPolices) SetDeviceAttributeAction(v string) *ListPrivateAccessPolicesResponseBodyPolices {
+	s.DeviceAttributeAction = &v
 	return s
 }
 
@@ -11639,8 +11657,9 @@ type UpdatePrivateAccessPolicyRequest struct {
 	CustomUserAttributes []*UpdatePrivateAccessPolicyRequestCustomUserAttributes `json:"CustomUserAttributes,omitempty" xml:"CustomUserAttributes,omitempty" type:"Repeated"`
 	// if can be null:
 	// true
-	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DeviceAttributeId *string `json:"DeviceAttributeId,omitempty" xml:"DeviceAttributeId,omitempty"`
+	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DeviceAttributeAction *string `json:"DeviceAttributeAction,omitempty" xml:"DeviceAttributeAction,omitempty"`
+	DeviceAttributeId     *string `json:"DeviceAttributeId,omitempty" xml:"DeviceAttributeId,omitempty"`
 	// example:
 	//
 	// Cover
@@ -11703,6 +11722,11 @@ func (s *UpdatePrivateAccessPolicyRequest) SetCustomUserAttributes(v []*UpdatePr
 
 func (s *UpdatePrivateAccessPolicyRequest) SetDescription(v string) *UpdatePrivateAccessPolicyRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *UpdatePrivateAccessPolicyRequest) SetDeviceAttributeAction(v string) *UpdatePrivateAccessPolicyRequest {
+	s.DeviceAttributeAction = &v
 	return s
 }
 
@@ -13681,6 +13705,10 @@ func (client *Client) CreatePrivateAccessPolicyWithOptions(request *CreatePrivat
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceAttributeAction)) {
+		body["DeviceAttributeAction"] = request.DeviceAttributeAction
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DeviceAttributeId)) {
@@ -17434,6 +17462,10 @@ func (client *Client) UpdatePrivateAccessPolicyWithOptions(request *UpdatePrivat
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceAttributeAction)) {
+		body["DeviceAttributeAction"] = request.DeviceAttributeAction
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DeviceAttributeId)) {
