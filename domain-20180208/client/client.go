@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,6 +10,11 @@ import (
 )
 
 type AcceptDemandRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SE20183A0Q7C5556
 	BizId   *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
@@ -36,7 +38,10 @@ func (s *AcceptDemandRequest) SetMessage(v string) *AcceptDemandRequest {
 }
 
 type AcceptDemandResponseBody struct {
-	BindUrl   *string `json:"BindUrl,omitempty" xml:"BindUrl,omitempty"`
+	BindUrl *string `json:"BindUrl,omitempty" xml:"BindUrl,omitempty"`
+	// example:
+	//
+	// 497F7522-82B0-4BD4-84FE-AE8749E4C2F9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -88,9 +93,24 @@ func (s *AcceptDemandResponse) SetBody(v *AcceptDemandResponseBody) *AcceptDeman
 }
 
 type BidDomainRequest struct {
-	AuctionId *string  `json:"AuctionId,omitempty" xml:"AuctionId,omitempty"`
-	Currency  *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	MaxBid    *float32 `json:"MaxBid,omitempty" xml:"MaxBid,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345678
+	AuctionId *string `json:"AuctionId,omitempty" xml:"AuctionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// RMB
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
+	MaxBid *float32 `json:"MaxBid,omitempty" xml:"MaxBid,omitempty"`
 }
 
 func (s BidDomainRequest) String() string {
@@ -117,7 +137,13 @@ func (s *BidDomainRequest) SetMaxBid(v float32) *BidDomainRequest {
 }
 
 type BidDomainResponseBody struct {
+	// example:
+	//
+	// 12345678
 	AuctionId *string `json:"AuctionId,omitempty" xml:"AuctionId,omitempty"`
+	// example:
+	//
+	// CC615585-9D93-4179-BD16-09337E32A3A7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -186,16 +212,20 @@ func (s *ChangeAuctionRequest) SetAuctionList(v []*ChangeAuctionRequestAuctionLi
 }
 
 type ChangeAuctionRequestAuctionList struct {
-	BidRecords   []*ChangeAuctionRequestAuctionListBidRecords `json:"BidRecords,omitempty" xml:"BidRecords,omitempty" type:"Repeated"`
-	DomainName   *string                                      `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	EndTime      *string                                      `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	IsReserve    *int32                                       `json:"IsReserve,omitempty" xml:"IsReserve,omitempty"`
-	ReservePrice *float32                                     `json:"ReservePrice,omitempty" xml:"ReservePrice,omitempty"`
-	ReserveRange *string                                      `json:"ReserveRange,omitempty" xml:"ReserveRange,omitempty"`
-	Status       *string                                      `json:"Status,omitempty" xml:"Status,omitempty"`
-	TimeLeft     *int64                                       `json:"TimeLeft,omitempty" xml:"TimeLeft,omitempty"`
-	Winner       *string                                      `json:"Winner,omitempty" xml:"Winner,omitempty"`
-	WinnerPrice  *float32                                     `json:"WinnerPrice,omitempty" xml:"WinnerPrice,omitempty"`
+	BidRecords []*ChangeAuctionRequestAuctionListBidRecords `json:"BidRecords,omitempty" xml:"BidRecords,omitempty" type:"Repeated"`
+	// This parameter is required.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// This parameter is required.
+	EndTime      *string  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	IsReserve    *int32   `json:"IsReserve,omitempty" xml:"IsReserve,omitempty"`
+	ReservePrice *float32 `json:"ReservePrice,omitempty" xml:"ReservePrice,omitempty"`
+	ReserveRange *string  `json:"ReserveRange,omitempty" xml:"ReserveRange,omitempty"`
+	Status       *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TimeLeft     *int64   `json:"TimeLeft,omitempty" xml:"TimeLeft,omitempty"`
+	// This parameter is required.
+	Winner *string `json:"Winner,omitempty" xml:"Winner,omitempty"`
+	// This parameter is required.
+	WinnerPrice *float32 `json:"WinnerPrice,omitempty" xml:"WinnerPrice,omitempty"`
 }
 
 func (s ChangeAuctionRequestAuctionList) String() string {
@@ -257,9 +287,12 @@ func (s *ChangeAuctionRequestAuctionList) SetWinnerPrice(v float32) *ChangeAucti
 }
 
 type ChangeAuctionRequestAuctionListBidRecords struct {
-	CreateTime *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Price      *float32 `json:"Price,omitempty" xml:"Price,omitempty"`
-	UserId     *string  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// This parameter is required.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// This parameter is required.
+	Price *float32 `json:"Price,omitempty" xml:"Price,omitempty"`
+	// This parameter is required.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ChangeAuctionRequestAuctionListBidRecords) String() string {
@@ -332,6 +365,7 @@ func (s *ChangeAuctionResponse) SetBody(v *ChangeAuctionResponseBody) *ChangeAuc
 }
 
 type CheckDomainStatusRequest struct {
+	// This parameter is required.
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 }
 
@@ -460,6 +494,11 @@ func (s *CheckDomainStatusResponse) SetBody(v *CheckDomainStatusResponseBody) *C
 }
 
 type CheckSelectedDomainStatusRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 }
 
@@ -477,11 +516,23 @@ func (s *CheckSelectedDomainStatusRequest) SetDomain(v string) *CheckSelectedDom
 }
 
 type CheckSelectedDomainStatusResponseBody struct {
-	ErrorCode      *string                                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// OssFileNotFound
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
 	HttpStatusCode *int32                                       `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	Module         *CheckSelectedDomainStatusResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
-	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// E2598CAF-DBFE-494E-95EF-B42A33C178AA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CheckSelectedDomainStatusResponseBody) String() string {
@@ -518,12 +569,27 @@ func (s *CheckSelectedDomainStatusResponseBody) SetSuccess(v bool) *CheckSelecte
 }
 
 type CheckSelectedDomainStatusResponseBodyModule struct {
-	DeadDate *int64   `json:"DeadDate,omitempty" xml:"DeadDate,omitempty"`
-	Domain   *string  `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	EndTime  *int64   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Premium  *bool    `json:"Premium,omitempty" xml:"Premium,omitempty"`
-	Price    *float64 `json:"Price,omitempty" xml:"Price,omitempty"`
-	RegDate  *int64   `json:"RegDate,omitempty" xml:"RegDate,omitempty"`
+	// example:
+	//
+	// 1567353497
+	DeadDate *int64 `json:"DeadDate,omitempty" xml:"DeadDate,omitempty"`
+	// example:
+	//
+	// example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// 1567353497
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Premium *bool  `json:"Premium,omitempty" xml:"Premium,omitempty"`
+	// example:
+	//
+	// 20.00
+	Price *float64 `json:"Price,omitempty" xml:"Price,omitempty"`
+	// example:
+	//
+	// 1566353497
+	RegDate *int64 `json:"RegDate,omitempty" xml:"RegDate,omitempty"`
 }
 
 func (s CheckSelectedDomainStatusResponseBodyModule) String() string {
@@ -728,11 +794,32 @@ func (s *CreateFixedPriceDemandOrderResponse) SetBody(v *CreateFixedPriceDemandO
 }
 
 type CreateFixedPriceSelectedOrderRequest struct {
-	Code          *string  `json:"Code,omitempty" xml:"Code,omitempty"`
-	ContactId     *string  `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
-	DomainName    *string  `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// DX123456
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 11935401
+	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20.00
 	ExpectedPrice *float64 `json:"ExpectedPrice,omitempty" xml:"ExpectedPrice,omitempty"`
-	Source        *string  `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// partnername
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 
 func (s CreateFixedPriceSelectedOrderRequest) String() string {
@@ -769,11 +856,23 @@ func (s *CreateFixedPriceSelectedOrderRequest) SetSource(v string) *CreateFixedP
 }
 
 type CreateFixedPriceSelectedOrderResponseBody struct {
-	ErrorCode      *string                                          `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// DomainNotOnSale
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
 	HttpStatusCode *int32                                           `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	Module         *CreateFixedPriceSelectedOrderResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
-	RequestId      *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// C50E41A0-09F1-4491-8DB8-AF55BD2D0CC8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateFixedPriceSelectedOrderResponseBody) String() string {
@@ -810,9 +909,18 @@ func (s *CreateFixedPriceSelectedOrderResponseBody) SetSuccess(v bool) *CreateFi
 }
 
 type CreateFixedPriceSelectedOrderResponseBodyModule struct {
-	Domain  *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// 31199295f2074ce895645d386cb22c36
 	OrderNo *string `json:"OrderNo,omitempty" xml:"OrderNo,omitempty"`
-	Price   *int64  `json:"Price,omitempty" xml:"Price,omitempty"`
+	// example:
+	//
+	// 20.00
+	Price *int64 `json:"Price,omitempty" xml:"Price,omitempty"`
 }
 
 func (s CreateFixedPriceSelectedOrderResponseBodyModule) String() string {
@@ -868,7 +976,15 @@ func (s *CreateFixedPriceSelectedOrderResponse) SetBody(v *CreateFixedPriceSelec
 }
 
 type FailDemandRequest struct {
-	BizId   *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SE20183A0Q7C5556
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// example:
+	//
+	// some message
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -891,6 +1007,9 @@ func (s *FailDemandRequest) SetMessage(v string) *FailDemandRequest {
 }
 
 type FailDemandResponseBody struct {
+	// example:
+	//
+	// 497F7522-82B0-4BD4-84FE-AE8749E4C2F9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -937,7 +1056,15 @@ func (s *FailDemandResponse) SetBody(v *FailDemandResponseBody) *FailDemandRespo
 }
 
 type FinishDemandRequest struct {
-	BizId   *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SE20183A0Q7C5556
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// example:
+	//
+	// some message
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -960,6 +1087,9 @@ func (s *FinishDemandRequest) SetMessage(v string) *FinishDemandRequest {
 }
 
 type FinishDemandResponseBody struct {
+	// example:
+	//
+	// 497F7522-82B0-4BD4-84FE-AE8749E4C2F9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1112,8 +1242,14 @@ func (s *GetIntlDomainDownloadUrlResponse) SetBody(v *GetIntlDomainDownloadUrlRe
 }
 
 type GetReserveDomainUrlResponseBody struct {
+	// example:
+	//
+	// D34B02AE-09AF-41C1-A6D3-951A2233EDB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Url       *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// http://example.com
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s GetReserveDomainUrlResponseBody) String() string {
@@ -1164,9 +1300,12 @@ func (s *GetReserveDomainUrlResponse) SetBody(v *GetReserveDomainUrlResponseBody
 }
 
 type PurchaseIntlDomainRequest struct {
-	AuctionId *string  `json:"AuctionId,omitempty" xml:"AuctionId,omitempty"`
-	Currency  *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	Price     *float64 `json:"Price,omitempty" xml:"Price,omitempty"`
+	// This parameter is required.
+	AuctionId *string `json:"AuctionId,omitempty" xml:"AuctionId,omitempty"`
+	// This parameter is required.
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// This parameter is required.
+	Price *float64 `json:"Price,omitempty" xml:"Price,omitempty"`
 }
 
 func (s PurchaseIntlDomainRequest) String() string {
@@ -1299,6 +1438,11 @@ func (s *PurchaseIntlDomainResponse) SetBody(v *PurchaseIntlDomainResponseBody) 
 }
 
 type QueryAuctionDetailRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
 	AuctionId *string `json:"AuctionId,omitempty" xml:"AuctionId,omitempty"`
 }
 
@@ -1316,30 +1460,99 @@ func (s *QueryAuctionDetailRequest) SetAuctionId(v string) *QueryAuctionDetailRe
 }
 
 type QueryAuctionDetailResponseBody struct {
-	AuctionEndTime  *int64   `json:"AuctionEndTime,omitempty" xml:"AuctionEndTime,omitempty"`
-	AuctionId       *string  `json:"AuctionId,omitempty" xml:"AuctionId,omitempty"`
-	BookEndTime     *int64   `json:"BookEndTime,omitempty" xml:"BookEndTime,omitempty"`
-	BookedPartner   *string  `json:"BookedPartner,omitempty" xml:"BookedPartner,omitempty"`
-	Currency        *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	DeliveryTime    *int64   `json:"DeliveryTime,omitempty" xml:"DeliveryTime,omitempty"`
-	DomainName      *string  `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	DomainType      *string  `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
-	FailCode        *string  `json:"FailCode,omitempty" xml:"FailCode,omitempty"`
-	HighBid         *float32 `json:"HighBid,omitempty" xml:"HighBid,omitempty"`
-	HighBidder      *string  `json:"HighBidder,omitempty" xml:"HighBidder,omitempty"`
-	NextValidBid    *float32 `json:"NextValidBid,omitempty" xml:"NextValidBid,omitempty"`
-	PartnerType     *string  `json:"PartnerType,omitempty" xml:"PartnerType,omitempty"`
-	PayEndTime      *int64   `json:"PayEndTime,omitempty" xml:"PayEndTime,omitempty"`
-	PayPrice        *float32 `json:"PayPrice,omitempty" xml:"PayPrice,omitempty"`
-	PayStatus       *string  `json:"PayStatus,omitempty" xml:"PayStatus,omitempty"`
-	ProduceStatus   *string  `json:"ProduceStatus,omitempty" xml:"ProduceStatus,omitempty"`
-	RequestId       *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ReserveMet      *bool    `json:"ReserveMet,omitempty" xml:"ReserveMet,omitempty"`
-	ReservePrice    *float32 `json:"ReservePrice,omitempty" xml:"ReservePrice,omitempty"`
-	Status          *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1515961936000
+	AuctionEndTime *int64 `json:"AuctionEndTime,omitempty" xml:"AuctionEndTime,omitempty"`
+	// example:
+	//
+	// 123456
+	AuctionId *string `json:"AuctionId,omitempty" xml:"AuctionId,omitempty"`
+	// example:
+	//
+	// 1515961936000
+	BookEndTime *int64 `json:"BookEndTime,omitempty" xml:"BookEndTime,omitempty"`
+	// example:
+	//
+	// 4
+	BookedPartner *string `json:"BookedPartner,omitempty" xml:"BookedPartner,omitempty"`
+	// example:
+	//
+	// RMB
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// example:
+	//
+	// 1515961936000
+	DeliveryTime *int64 `json:"DeliveryTime,omitempty" xml:"DeliveryTime,omitempty"`
+	// example:
+	//
+	// test.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// 0
+	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
+	// example:
+	//
+	// 0
+	FailCode *string `json:"FailCode,omitempty" xml:"FailCode,omitempty"`
+	// example:
+	//
+	// 100
+	HighBid *float32 `json:"HighBid,omitempty" xml:"HighBid,omitempty"`
+	// example:
+	//
+	// abc
+	HighBidder *string `json:"HighBidder,omitempty" xml:"HighBidder,omitempty"`
+	// example:
+	//
+	// 110
+	NextValidBid *float32 `json:"NextValidBid,omitempty" xml:"NextValidBid,omitempty"`
+	// example:
+	//
+	// 4
+	PartnerType *string `json:"PartnerType,omitempty" xml:"PartnerType,omitempty"`
+	// example:
+	//
+	// 1515961936000
+	PayEndTime *int64 `json:"PayEndTime,omitempty" xml:"PayEndTime,omitempty"`
+	// example:
+	//
+	// 200
+	PayPrice *float32 `json:"PayPrice,omitempty" xml:"PayPrice,omitempty"`
+	// example:
+	//
+	// 1
+	PayStatus *string `json:"PayStatus,omitempty" xml:"PayStatus,omitempty"`
+	// example:
+	//
+	// 0
+	ProduceStatus *string `json:"ProduceStatus,omitempty" xml:"ProduceStatus,omitempty"`
+	// example:
+	//
+	// UUID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	ReserveMet   *bool    `json:"ReserveMet,omitempty" xml:"ReserveMet,omitempty"`
+	ReservePrice *float32 `json:"ReservePrice,omitempty" xml:"ReservePrice,omitempty"`
+	// example:
+	//
+	// 2
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 50
 	TransferInPrice *float32 `json:"TransferInPrice,omitempty" xml:"TransferInPrice,omitempty"`
-	YourCurrentBid  *float32 `json:"YourCurrentBid,omitempty" xml:"YourCurrentBid,omitempty"`
-	YourMaxBid      *float32 `json:"YourMaxBid,omitempty" xml:"YourMaxBid,omitempty"`
+	// example:
+	//
+	// 100
+	YourCurrentBid *float32 `json:"YourCurrentBid,omitempty" xml:"YourCurrentBid,omitempty"`
+	// example:
+	//
+	// 120
+	YourMaxBid *float32 `json:"YourMaxBid,omitempty" xml:"YourMaxBid,omitempty"`
 }
 
 func (s QueryAuctionDetailResponseBody) String() string {
@@ -1500,9 +1713,20 @@ func (s *QueryAuctionDetailResponse) SetBody(v *QueryAuctionDetailResponseBody) 
 }
 
 type QueryAuctionsRequest struct {
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	AuctionEndTimeOrder *string `json:"AuctionEndTimeOrder,omitempty" xml:"AuctionEndTimeOrder,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 0
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Statuses *string `json:"Statuses,omitempty" xml:"Statuses,omitempty"`
 }
 
 func (s QueryAuctionsRequest) String() string {
@@ -1511,6 +1735,11 @@ func (s QueryAuctionsRequest) String() string {
 
 func (s QueryAuctionsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *QueryAuctionsRequest) SetAuctionEndTimeOrder(v string) *QueryAuctionsRequest {
+	s.AuctionEndTimeOrder = &v
+	return s
 }
 
 func (s *QueryAuctionsRequest) SetCurrentPage(v int32) *QueryAuctionsRequest {
@@ -1528,13 +1757,33 @@ func (s *QueryAuctionsRequest) SetStatus(v string) *QueryAuctionsRequest {
 	return s
 }
 
+func (s *QueryAuctionsRequest) SetStatuses(v string) *QueryAuctionsRequest {
+	s.Statuses = &v
+	return s
+}
+
 type QueryAuctionsResponseBody struct {
+	// example:
+	//
+	// 1
 	CurrentPageNum *int32                           `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
 	Data           []*QueryAuctionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	PageSize       *int32                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId      *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalItemNum   *int32                           `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
-	TotalPageNum   *int32                           `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// UUID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 5
+	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPageNum *int32 `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
 }
 
 func (s QueryAuctionsResponseBody) String() string {
@@ -1576,31 +1825,97 @@ func (s *QueryAuctionsResponseBody) SetTotalPageNum(v int32) *QueryAuctionsRespo
 }
 
 type QueryAuctionsResponseBodyData struct {
-	AuctionEndTime  *int64   `json:"AuctionEndTime,omitempty" xml:"AuctionEndTime,omitempty"`
-	AuctionId       *string  `json:"AuctionId,omitempty" xml:"AuctionId,omitempty"`
-	BookEndTime     *int64   `json:"BookEndTime,omitempty" xml:"BookEndTime,omitempty"`
-	BookedPartner   *string  `json:"BookedPartner,omitempty" xml:"BookedPartner,omitempty"`
-	Currency        *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	DeliveryTime    *int64   `json:"DeliveryTime,omitempty" xml:"DeliveryTime,omitempty"`
-	DomainName      *string  `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	DomainType      *string  `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
-	FailCode        *string  `json:"FailCode,omitempty" xml:"FailCode,omitempty"`
-	HighBid         *float32 `json:"HighBid,omitempty" xml:"HighBid,omitempty"`
-	HighBidder      *string  `json:"HighBidder,omitempty" xml:"HighBidder,omitempty"`
-	NextValidBid    *float32 `json:"NextValidBid,omitempty" xml:"NextValidBid,omitempty"`
-	PartnerType     *string  `json:"PartnerType,omitempty" xml:"PartnerType,omitempty"`
-	PayEndTime      *int64   `json:"PayEndTime,omitempty" xml:"PayEndTime,omitempty"`
-	PayPrice        *float32 `json:"PayPrice,omitempty" xml:"PayPrice,omitempty"`
-	PayStatus       *string  `json:"PayStatus,omitempty" xml:"PayStatus,omitempty"`
-	ProduceStatus   *string  `json:"ProduceStatus,omitempty" xml:"ProduceStatus,omitempty"`
-	ReserveMax      *int64   `json:"ReserveMax,omitempty" xml:"ReserveMax,omitempty"`
-	ReserveMet      *bool    `json:"ReserveMet,omitempty" xml:"ReserveMet,omitempty"`
-	ReserveMin      *int64   `json:"ReserveMin,omitempty" xml:"ReserveMin,omitempty"`
-	ReservePrice    *int64   `json:"ReservePrice,omitempty" xml:"ReservePrice,omitempty"`
-	Status          *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1515961936000
+	AuctionEndTime *int64 `json:"AuctionEndTime,omitempty" xml:"AuctionEndTime,omitempty"`
+	// example:
+	//
+	// 123456
+	AuctionId *string `json:"AuctionId,omitempty" xml:"AuctionId,omitempty"`
+	// example:
+	//
+	// 1515961936000
+	BookEndTime *int64 `json:"BookEndTime,omitempty" xml:"BookEndTime,omitempty"`
+	// example:
+	//
+	// 4
+	BookedPartner *string `json:"BookedPartner,omitempty" xml:"BookedPartner,omitempty"`
+	// example:
+	//
+	// RMB
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// example:
+	//
+	// 1515961936000
+	DeliveryTime *int64 `json:"DeliveryTime,omitempty" xml:"DeliveryTime,omitempty"`
+	// example:
+	//
+	// test.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// 0
+	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
+	// example:
+	//
+	// 0
+	FailCode *string `json:"FailCode,omitempty" xml:"FailCode,omitempty"`
+	// example:
+	//
+	// 100
+	HighBid *float32 `json:"HighBid,omitempty" xml:"HighBid,omitempty"`
+	// example:
+	//
+	// abc
+	HighBidder *string `json:"HighBidder,omitempty" xml:"HighBidder,omitempty"`
+	// example:
+	//
+	// 110
+	NextValidBid *float32 `json:"NextValidBid,omitempty" xml:"NextValidBid,omitempty"`
+	// example:
+	//
+	// 4
+	PartnerType *string `json:"PartnerType,omitempty" xml:"PartnerType,omitempty"`
+	// example:
+	//
+	// 1515961936000
+	PayEndTime *int64 `json:"PayEndTime,omitempty" xml:"PayEndTime,omitempty"`
+	// example:
+	//
+	// 200
+	PayPrice *float32 `json:"PayPrice,omitempty" xml:"PayPrice,omitempty"`
+	// example:
+	//
+	// 1
+	PayStatus *string `json:"PayStatus,omitempty" xml:"PayStatus,omitempty"`
+	// example:
+	//
+	// 0
+	ProduceStatus *string `json:"ProduceStatus,omitempty" xml:"ProduceStatus,omitempty"`
+	ReserveMax    *int64  `json:"ReserveMax,omitempty" xml:"ReserveMax,omitempty"`
+	// example:
+	//
+	// true
+	ReserveMet   *bool  `json:"ReserveMet,omitempty" xml:"ReserveMet,omitempty"`
+	ReserveMin   *int64 `json:"ReserveMin,omitempty" xml:"ReserveMin,omitempty"`
+	ReservePrice *int64 `json:"ReservePrice,omitempty" xml:"ReservePrice,omitempty"`
+	// example:
+	//
+	// 2
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 50
 	TransferInPrice *float32 `json:"TransferInPrice,omitempty" xml:"TransferInPrice,omitempty"`
-	YourCurrentBid  *float32 `json:"YourCurrentBid,omitempty" xml:"YourCurrentBid,omitempty"`
-	YourMaxBid      *float32 `json:"YourMaxBid,omitempty" xml:"YourMaxBid,omitempty"`
+	// example:
+	//
+	// 100
+	YourCurrentBid *float32 `json:"YourCurrentBid,omitempty" xml:"YourCurrentBid,omitempty"`
+	// example:
+	//
+	// 120
+	YourMaxBid *float32 `json:"YourMaxBid,omitempty" xml:"YourMaxBid,omitempty"`
 }
 
 func (s QueryAuctionsResponseBodyData) String() string {
@@ -1766,9 +2081,20 @@ func (s *QueryAuctionsResponse) SetBody(v *QueryAuctionsResponseBody) *QueryAuct
 }
 
 type QueryBidRecordsRequest struct {
-	AuctionId   *string `json:"AuctionId,omitempty" xml:"AuctionId,omitempty"`
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
+	AuctionId *string `json:"AuctionId,omitempty" xml:"AuctionId,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s QueryBidRecordsRequest) String() string {
@@ -1795,12 +2121,27 @@ func (s *QueryBidRecordsRequest) SetPageSize(v int32) *QueryBidRecordsRequest {
 }
 
 type QueryBidRecordsResponseBody struct {
+	// example:
+	//
+	// 1
 	CurrentPageNum *int32                             `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
 	Data           []*QueryBidRecordsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	PageSize       *int32                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId      *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalItemNum   *int32                             `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
-	TotalPageNum   *int32                             `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// UUID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 5
+	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPageNum *int32 `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
 }
 
 func (s QueryBidRecordsResponseBody) String() string {
@@ -1842,11 +2183,26 @@ func (s *QueryBidRecordsResponseBody) SetTotalPageNum(v int32) *QueryBidRecordsR
 }
 
 type QueryBidRecordsResponseBodyData struct {
-	Bid        *float32 `json:"Bid,omitempty" xml:"Bid,omitempty"`
-	BidTime    *int64   `json:"BidTime,omitempty" xml:"BidTime,omitempty"`
-	Bidder     *string  `json:"Bidder,omitempty" xml:"Bidder,omitempty"`
-	Currency   *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	DomainName *string  `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// 50
+	Bid *float32 `json:"Bid,omitempty" xml:"Bid,omitempty"`
+	// example:
+	//
+	// 1515961936000
+	BidTime *int64 `json:"BidTime,omitempty" xml:"BidTime,omitempty"`
+	// example:
+	//
+	// abc
+	Bidder *string `json:"Bidder,omitempty" xml:"Bidder,omitempty"`
+	// example:
+	//
+	// RMB
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// example:
+	//
+	// test.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 }
 
 func (s QueryBidRecordsResponseBodyData) String() string {
@@ -1912,6 +2268,11 @@ func (s *QueryBidRecordsResponse) SetBody(v *QueryBidRecordsResponseBody) *Query
 }
 
 type QueryBookingDomainInfoRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// abc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 }
 
@@ -1929,13 +2290,34 @@ func (s *QueryBookingDomainInfoRequest) SetDomainName(v string) *QueryBookingDom
 }
 
 type QueryBookingDomainInfoResponseBody struct {
-	AuctionId       *int32   `json:"AuctionId,omitempty" xml:"AuctionId,omitempty"`
-	BookEndTime     *int64   `json:"BookEndTime,omitempty" xml:"BookEndTime,omitempty"`
-	Currency        *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	MaxBid          *float32 `json:"MaxBid,omitempty" xml:"MaxBid,omitempty"`
-	PartnerType     *string  `json:"PartnerType,omitempty" xml:"PartnerType,omitempty"`
-	RequestId       *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SnatchNo        *string  `json:"SnatchNo,omitempty" xml:"SnatchNo,omitempty"`
+	// example:
+	//
+	// 1234
+	AuctionId *int32 `json:"AuctionId,omitempty" xml:"AuctionId,omitempty"`
+	// example:
+	//
+	// 1517985730419
+	BookEndTime *int64 `json:"BookEndTime,omitempty" xml:"BookEndTime,omitempty"`
+	// example:
+	//
+	// USD
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// example:
+	//
+	// 15
+	MaxBid *float32 `json:"MaxBid,omitempty" xml:"MaxBid,omitempty"`
+	// example:
+	//
+	// 4
+	PartnerType *string `json:"PartnerType,omitempty" xml:"PartnerType,omitempty"`
+	// example:
+	//
+	// 234234njhjkhkj
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SnatchNo  *string `json:"SnatchNo,omitempty" xml:"SnatchNo,omitempty"`
+	// example:
+	//
+	// 17
 	TransferInPrice *float32 `json:"TransferInPrice,omitempty" xml:"TransferInPrice,omitempty"`
 }
 
@@ -2017,10 +2399,22 @@ func (s *QueryBookingDomainInfoResponse) SetBody(v *QueryBookingDomainInfoRespon
 }
 
 type QueryBrokerDemandRequest struct {
-	BizId       *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// SE20183915FI0178
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s QueryBrokerDemandRequest) String() string {
@@ -2052,12 +2446,27 @@ func (s *QueryBrokerDemandRequest) SetStatus(v string) *QueryBrokerDemandRequest
 }
 
 type QueryBrokerDemandResponseBody struct {
+	// example:
+	//
+	// 1
 	CurrentPageNum *int32                               `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
 	Data           []*QueryBrokerDemandResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	PageSize       *int32                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId      *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalItemNum   *int32                               `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
-	TotalPageNum   *int32                               `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 497F7522-82B0-4BD4-84FE-AE8749E4C2F9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 20
+	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPageNum *int32 `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
 }
 
 func (s QueryBrokerDemandResponseBody) String() string {
@@ -2099,25 +2508,65 @@ func (s *QueryBrokerDemandResponseBody) SetTotalPageNum(v int32) *QueryBrokerDem
 }
 
 type QueryBrokerDemandResponseBodyData struct {
-	AuditStatus         *int32   `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	BargainSellerMobile *string  `json:"BargainSellerMobile,omitempty" xml:"BargainSellerMobile,omitempty"`
-	BargainSellerPrice  *float32 `json:"BargainSellerPrice,omitempty" xml:"BargainSellerPrice,omitempty"`
-	BizId               *string  `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	DemandDomain        *string  `json:"DemandDomain,omitempty" xml:"DemandDomain,omitempty"`
-	DemandPrice         *float32 `json:"DemandPrice,omitempty" xml:"DemandPrice,omitempty"`
-	Description         *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Email               *string  `json:"Email,omitempty" xml:"Email,omitempty"`
-	Mobile              *string  `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	OrderType           *int32   `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	PartnerDomain       *string  `json:"PartnerDomain,omitempty" xml:"PartnerDomain,omitempty"`
-	PayDomain           *string  `json:"PayDomain,omitempty" xml:"PayDomain,omitempty"`
-	PayPrice            *float32 `json:"PayPrice,omitempty" xml:"PayPrice,omitempty"`
-	PayTime             *int64   `json:"PayTime,omitempty" xml:"PayTime,omitempty"`
-	ProduceType         *int32   `json:"ProduceType,omitempty" xml:"ProduceType,omitempty"`
-	PublishTime         *int64   `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
-	PurchaseStatus      *int32   `json:"PurchaseStatus,omitempty" xml:"PurchaseStatus,omitempty"`
-	ServicePayPrice     *float32 `json:"ServicePayPrice,omitempty" xml:"ServicePayPrice,omitempty"`
-	Status              *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	AuditStatus *int32 `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	// example:
+	//
+	// 13300000001
+	BargainSellerMobile *string `json:"BargainSellerMobile,omitempty" xml:"BargainSellerMobile,omitempty"`
+	// example:
+	//
+	// 100
+	BargainSellerPrice *float32 `json:"BargainSellerPrice,omitempty" xml:"BargainSellerPrice,omitempty"`
+	// example:
+	//
+	// SE20183915FI0178
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// example:
+	//
+	// taobao.com
+	DemandDomain *string `json:"DemandDomain,omitempty" xml:"DemandDomain,omitempty"`
+	// example:
+	//
+	// 1
+	DemandPrice *float32 `json:"DemandPrice,omitempty" xml:"DemandPrice,omitempty"`
+	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	Email       *string  `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// 13300000000
+	Mobile        *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	OrderType     *int32  `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	PartnerDomain *string `json:"PartnerDomain,omitempty" xml:"PartnerDomain,omitempty"`
+	// example:
+	//
+	// test.com
+	PayDomain *string `json:"PayDomain,omitempty" xml:"PayDomain,omitempty"`
+	// example:
+	//
+	// 100
+	PayPrice *float32 `json:"PayPrice,omitempty" xml:"PayPrice,omitempty"`
+	// example:
+	//
+	// 1524800053000
+	PayTime *int64 `json:"PayTime,omitempty" xml:"PayTime,omitempty"`
+	// example:
+	//
+	// 1
+	ProduceType *int32 `json:"ProduceType,omitempty" xml:"ProduceType,omitempty"`
+	// example:
+	//
+	// 1524800053000
+	PublishTime    *int64 `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
+	PurchaseStatus *int32 `json:"PurchaseStatus,omitempty" xml:"PurchaseStatus,omitempty"`
+	// example:
+	//
+	// 18800
+	ServicePayPrice *float32 `json:"ServicePayPrice,omitempty" xml:"ServicePayPrice,omitempty"`
+	SettleBasePrice *float32 `json:"SettleBasePrice,omitempty" xml:"SettleBasePrice,omitempty"`
+	// example:
+	//
+	// 1
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s QueryBrokerDemandResponseBodyData) String() string {
@@ -2218,6 +2667,11 @@ func (s *QueryBrokerDemandResponseBodyData) SetServicePayPrice(v float32) *Query
 	return s
 }
 
+func (s *QueryBrokerDemandResponseBodyData) SetSettleBasePrice(v float32) *QueryBrokerDemandResponseBodyData {
+	s.SettleBasePrice = &v
+	return s
+}
+
 func (s *QueryBrokerDemandResponseBodyData) SetStatus(v string) *QueryBrokerDemandResponseBodyData {
 	s.Status = &v
 	return s
@@ -2253,9 +2707,20 @@ func (s *QueryBrokerDemandResponse) SetBody(v *QueryBrokerDemandResponseBody) *Q
 }
 
 type QueryBrokerDemandRecordRequest struct {
-	BizId       *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SE20183A0Q7C5556
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s QueryBrokerDemandRecordRequest) String() string {
@@ -2282,12 +2747,27 @@ func (s *QueryBrokerDemandRecordRequest) SetPageSize(v int32) *QueryBrokerDemand
 }
 
 type QueryBrokerDemandRecordResponseBody struct {
+	// example:
+	//
+	// 1
 	CurrentPageNum *int32                                   `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
 	Data           *QueryBrokerDemandRecordResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	PageSize       *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId      *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalItemNum   *int32                                   `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
-	TotalPageNum   *int32                                   `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 497F7522-82B0-4BD4-84FE-AE8749E4C2F9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 20
+	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPageNum *int32 `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
 }
 
 func (s QueryBrokerDemandRecordResponseBody) String() string {
@@ -2346,7 +2826,13 @@ func (s *QueryBrokerDemandRecordResponseBodyData) SetBrokerDemandRecord(v []*Que
 }
 
 type QueryBrokerDemandRecordResponseBodyDataBrokerDemandRecord struct {
-	BizId       *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// example:
+	//
+	// SE20183A0Q7C5556
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// example:
+	//
+	// 1525249317000
 	CreateTime  *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
@@ -2684,7 +3170,17 @@ func (s *QueryPurchasedDomainsResponse) SetBody(v *QueryPurchasedDomainsResponse
 }
 
 type RecordDemandRequest struct {
-	BizId   *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SE20183A0Q7C5556
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// some message
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -2707,6 +3203,9 @@ func (s *RecordDemandRequest) SetMessage(v string) *RecordDemandRequest {
 }
 
 type RecordDemandResponseBody struct {
+	// example:
+	//
+	// 497F7522-82B0-4BD4-84FE-AE8749E4C2F9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2753,7 +3252,15 @@ func (s *RecordDemandResponse) SetBody(v *RecordDemandResponseBody) *RecordDeman
 }
 
 type RefuseDemandRequest struct {
-	BizId   *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SE20183A0Q7C5556
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// example:
+	//
+	// some message
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -2776,6 +3283,9 @@ func (s *RefuseDemandRequest) SetMessage(v string) *RefuseDemandRequest {
 }
 
 type RefuseDemandResponseBody struct {
+	// example:
+	//
+	// 497F7522-82B0-4BD4-84FE-AE8749E4C2F9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2822,11 +3332,32 @@ func (s *RefuseDemandResponse) SetBody(v *RefuseDemandResponseBody) *RefuseDeman
 }
 
 type RequestPayDemandRequest struct {
-	BizId       *string  `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	DomainName  *string  `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Message     *string  `json:"Message,omitempty" xml:"Message,omitempty"`
-	Price       *float32 `json:"Price,omitempty" xml:"Price,omitempty"`
-	ProduceType *int32   `json:"ProduceType,omitempty" xml:"ProduceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SE20183A0Q7C5556
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// some message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
+	Price *float32 `json:"Price,omitempty" xml:"Price,omitempty"`
+	// example:
+	//
+	// 1
+	ProduceType *int32 `json:"ProduceType,omitempty" xml:"ProduceType,omitempty"`
 }
 
 func (s RequestPayDemandRequest) String() string {
@@ -2863,6 +3394,9 @@ func (s *RequestPayDemandRequest) SetProduceType(v int32) *RequestPayDemandReque
 }
 
 type RequestPayDemandResponseBody struct {
+	// example:
+	//
+	// 497F7522-82B0-4BD4-84FE-AE8749E4C2F9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2909,8 +3443,16 @@ func (s *RequestPayDemandResponse) SetBody(v *RequestPayDemandResponseBody) *Req
 }
 
 type ReserveDomainRequest struct {
-	Channels   []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
-	DomainName *string   `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// 4
+	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aliyun.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 }
 
 func (s ReserveDomainRequest) String() string {
@@ -2932,7 +3474,13 @@ func (s *ReserveDomainRequest) SetDomainName(v string) *ReserveDomainRequest {
 }
 
 type ReserveDomainResponseBody struct {
+	// example:
+	//
+	// 12080761
 	AuctionId *string `json:"AuctionId,omitempty" xml:"AuctionId,omitempty"`
+	// example:
+	//
+	// 64F63E07-3AF6-4D59-8616-55DF1A9E03ED
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2984,6 +3532,7 @@ func (s *ReserveDomainResponse) SetBody(v *ReserveDomainResponseBody) *ReserveDo
 }
 
 type ReserveIntlDomainRequest struct {
+	// This parameter is required.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 }
 
@@ -3107,6 +3656,11 @@ func (s *ReserveIntlDomainResponse) SetBody(v *ReserveIntlDomainResponseBody) *R
 }
 
 type SelectedDomainListRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20231109
 	ListDate *string `json:"ListDate,omitempty" xml:"ListDate,omitempty"`
 }
 
@@ -3124,11 +3678,21 @@ func (s *SelectedDomainListRequest) SetListDate(v string) *SelectedDomainListReq
 }
 
 type SelectedDomainListResponseBody struct {
+	// example:
+	//
+	// OssFileNotFound
 	ErrorCode *string                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	Module    *SelectedDomainListResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 80011ABC-F573-4795-B0E8-377BFBBA3422
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SelectedDomainListResponseBody) String() string {
@@ -3160,6 +3724,9 @@ func (s *SelectedDomainListResponseBody) SetSuccess(v bool) *SelectedDomainListR
 }
 
 type SelectedDomainListResponseBodyModule struct {
+	// example:
+	//
+	// http://selected-domain.oss-cn-zhangjiakou.aliyuncs.com/aliyun_selected_domain_20231109.gz?Expires=1699524493&OSSAccessKeyId=LTAI5tPMAybR4gfSEjdfAk1F&Signature=2Tpo7Eaf%2BqIop8SuMtI91m%2FAFpY%3D
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
 }
 
@@ -3347,9 +3914,13 @@ func (s *SubmitPurchaseInfoResponse) SetBody(v *SubmitPurchaseInfoResponseBody) 
 }
 
 type UpdatePartnerReservePriceRequest struct {
-	BiddingId    *int32   `json:"BiddingId,omitempty" xml:"BiddingId,omitempty"`
-	DomainName   *string  `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	PartnerType  *string  `json:"PartnerType,omitempty" xml:"PartnerType,omitempty"`
+	// This parameter is required.
+	BiddingId *int32 `json:"BiddingId,omitempty" xml:"BiddingId,omitempty"`
+	// This parameter is required.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// This parameter is required.
+	PartnerType *string `json:"PartnerType,omitempty" xml:"PartnerType,omitempty"`
+	// This parameter is required.
 	ReservePrice *float64 `json:"ReservePrice,omitempty" xml:"ReservePrice,omitempty"`
 }
 
@@ -3474,6 +4045,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// @param request - AcceptDemandRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AcceptDemandResponse
 func (client *Client) AcceptDemandWithOptions(request *AcceptDemandRequest, runtime *util.RuntimeOptions) (_result *AcceptDemandResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3511,6 +4087,9 @@ func (client *Client) AcceptDemandWithOptions(request *AcceptDemandRequest, runt
 	return _result, _err
 }
 
+// @param request - AcceptDemandRequest
+//
+// @return AcceptDemandResponse
 func (client *Client) AcceptDemand(request *AcceptDemandRequest) (_result *AcceptDemandResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AcceptDemandResponse{}
@@ -3522,6 +4101,11 @@ func (client *Client) AcceptDemand(request *AcceptDemandRequest) (_result *Accep
 	return _result, _err
 }
 
+// @param request - BidDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BidDomainResponse
 func (client *Client) BidDomainWithOptions(request *BidDomainRequest, runtime *util.RuntimeOptions) (_result *BidDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3563,6 +4147,9 @@ func (client *Client) BidDomainWithOptions(request *BidDomainRequest, runtime *u
 	return _result, _err
 }
 
+// @param request - BidDomainRequest
+//
+// @return BidDomainResponse
 func (client *Client) BidDomain(request *BidDomainRequest) (_result *BidDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BidDomainResponse{}
@@ -3574,6 +4161,11 @@ func (client *Client) BidDomain(request *BidDomainRequest) (_result *BidDomainRe
 	return _result, _err
 }
 
+// @param request - ChangeAuctionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeAuctionResponse
 func (client *Client) ChangeAuctionWithOptions(request *ChangeAuctionRequest, runtime *util.RuntimeOptions) (_result *ChangeAuctionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3607,6 +4199,9 @@ func (client *Client) ChangeAuctionWithOptions(request *ChangeAuctionRequest, ru
 	return _result, _err
 }
 
+// @param request - ChangeAuctionRequest
+//
+// @return ChangeAuctionResponse
 func (client *Client) ChangeAuction(request *ChangeAuctionRequest) (_result *ChangeAuctionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeAuctionResponse{}
@@ -3618,6 +4213,15 @@ func (client *Client) ChangeAuction(request *ChangeAuctionRequest) (_result *Cha
 	return _result, _err
 }
 
+// Summary:
+//
+// 校验域名在售状态
+//
+// @param request - CheckDomainStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckDomainStatusResponse
 func (client *Client) CheckDomainStatusWithOptions(request *CheckDomainStatusRequest, runtime *util.RuntimeOptions) (_result *CheckDomainStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3647,6 +4251,13 @@ func (client *Client) CheckDomainStatusWithOptions(request *CheckDomainStatusReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 校验域名在售状态
+//
+// @param request - CheckDomainStatusRequest
+//
+// @return CheckDomainStatusResponse
 func (client *Client) CheckDomainStatus(request *CheckDomainStatusRequest) (_result *CheckDomainStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckDomainStatusResponse{}
@@ -3658,6 +4269,15 @@ func (client *Client) CheckDomainStatus(request *CheckDomainStatusRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 一口价严选询价接口
+//
+// @param request - CheckSelectedDomainStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckSelectedDomainStatusResponse
 func (client *Client) CheckSelectedDomainStatusWithOptions(request *CheckSelectedDomainStatusRequest, runtime *util.RuntimeOptions) (_result *CheckSelectedDomainStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3691,6 +4311,13 @@ func (client *Client) CheckSelectedDomainStatusWithOptions(request *CheckSelecte
 	return _result, _err
 }
 
+// Summary:
+//
+// 一口价严选询价接口
+//
+// @param request - CheckSelectedDomainStatusRequest
+//
+// @return CheckSelectedDomainStatusResponse
 func (client *Client) CheckSelectedDomainStatus(request *CheckSelectedDomainStatusRequest) (_result *CheckSelectedDomainStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckSelectedDomainStatusResponse{}
@@ -3702,6 +4329,15 @@ func (client *Client) CheckSelectedDomainStatus(request *CheckSelectedDomainStat
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建一口价需求单
+//
+// @param request - CreateFixedPriceDemandOrderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFixedPriceDemandOrderResponse
 func (client *Client) CreateFixedPriceDemandOrderWithOptions(request *CreateFixedPriceDemandOrderRequest, runtime *util.RuntimeOptions) (_result *CreateFixedPriceDemandOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3747,6 +4383,13 @@ func (client *Client) CreateFixedPriceDemandOrderWithOptions(request *CreateFixe
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建一口价需求单
+//
+// @param request - CreateFixedPriceDemandOrderRequest
+//
+// @return CreateFixedPriceDemandOrderResponse
 func (client *Client) CreateFixedPriceDemandOrder(request *CreateFixedPriceDemandOrderRequest) (_result *CreateFixedPriceDemandOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateFixedPriceDemandOrderResponse{}
@@ -3758,6 +4401,15 @@ func (client *Client) CreateFixedPriceDemandOrder(request *CreateFixedPriceDeman
 	return _result, _err
 }
 
+// Summary:
+//
+// 一口价严选下单购买接口，阿里云账户余额直接扣费
+//
+// @param request - CreateFixedPriceSelectedOrderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFixedPriceSelectedOrderResponse
 func (client *Client) CreateFixedPriceSelectedOrderWithOptions(request *CreateFixedPriceSelectedOrderRequest, runtime *util.RuntimeOptions) (_result *CreateFixedPriceSelectedOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3807,6 +4459,13 @@ func (client *Client) CreateFixedPriceSelectedOrderWithOptions(request *CreateFi
 	return _result, _err
 }
 
+// Summary:
+//
+// 一口价严选下单购买接口，阿里云账户余额直接扣费
+//
+// @param request - CreateFixedPriceSelectedOrderRequest
+//
+// @return CreateFixedPriceSelectedOrderResponse
 func (client *Client) CreateFixedPriceSelectedOrder(request *CreateFixedPriceSelectedOrderRequest) (_result *CreateFixedPriceSelectedOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateFixedPriceSelectedOrderResponse{}
@@ -3818,6 +4477,11 @@ func (client *Client) CreateFixedPriceSelectedOrder(request *CreateFixedPriceSel
 	return _result, _err
 }
 
+// @param request - FailDemandRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FailDemandResponse
 func (client *Client) FailDemandWithOptions(request *FailDemandRequest, runtime *util.RuntimeOptions) (_result *FailDemandResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3855,6 +4519,9 @@ func (client *Client) FailDemandWithOptions(request *FailDemandRequest, runtime 
 	return _result, _err
 }
 
+// @param request - FailDemandRequest
+//
+// @return FailDemandResponse
 func (client *Client) FailDemand(request *FailDemandRequest) (_result *FailDemandResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &FailDemandResponse{}
@@ -3866,6 +4533,11 @@ func (client *Client) FailDemand(request *FailDemandRequest) (_result *FailDeman
 	return _result, _err
 }
 
+// @param request - FinishDemandRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FinishDemandResponse
 func (client *Client) FinishDemandWithOptions(request *FinishDemandRequest, runtime *util.RuntimeOptions) (_result *FinishDemandResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3903,6 +4575,9 @@ func (client *Client) FinishDemandWithOptions(request *FinishDemandRequest, runt
 	return _result, _err
 }
 
+// @param request - FinishDemandRequest
+//
+// @return FinishDemandResponse
 func (client *Client) FinishDemand(request *FinishDemandRequest) (_result *FinishDemandResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &FinishDemandResponse{}
@@ -3914,6 +4589,11 @@ func (client *Client) FinishDemand(request *FinishDemandRequest) (_result *Finis
 	return _result, _err
 }
 
+// @param request - GetIntlDomainDownloadUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetIntlDomainDownloadUrlResponse
 func (client *Client) GetIntlDomainDownloadUrlWithOptions(runtime *util.RuntimeOptions) (_result *GetIntlDomainDownloadUrlResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -3936,6 +4616,7 @@ func (client *Client) GetIntlDomainDownloadUrlWithOptions(runtime *util.RuntimeO
 	return _result, _err
 }
 
+// @return GetIntlDomainDownloadUrlResponse
 func (client *Client) GetIntlDomainDownloadUrl() (_result *GetIntlDomainDownloadUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetIntlDomainDownloadUrlResponse{}
@@ -3947,6 +4628,11 @@ func (client *Client) GetIntlDomainDownloadUrl() (_result *GetIntlDomainDownload
 	return _result, _err
 }
 
+// @param request - GetReserveDomainUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetReserveDomainUrlResponse
 func (client *Client) GetReserveDomainUrlWithOptions(runtime *util.RuntimeOptions) (_result *GetReserveDomainUrlResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -3969,6 +4655,7 @@ func (client *Client) GetReserveDomainUrlWithOptions(runtime *util.RuntimeOption
 	return _result, _err
 }
 
+// @return GetReserveDomainUrlResponse
 func (client *Client) GetReserveDomainUrl() (_result *GetReserveDomainUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetReserveDomainUrlResponse{}
@@ -3980,6 +4667,15 @@ func (client *Client) GetReserveDomainUrl() (_result *GetReserveDomainUrlRespons
 	return _result, _err
 }
 
+// Summary:
+//
+// 购买国际站预释放域名
+//
+// @param request - PurchaseIntlDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PurchaseIntlDomainResponse
 func (client *Client) PurchaseIntlDomainWithOptions(request *PurchaseIntlDomainRequest, runtime *util.RuntimeOptions) (_result *PurchaseIntlDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4021,6 +4717,13 @@ func (client *Client) PurchaseIntlDomainWithOptions(request *PurchaseIntlDomainR
 	return _result, _err
 }
 
+// Summary:
+//
+// 购买国际站预释放域名
+//
+// @param request - PurchaseIntlDomainRequest
+//
+// @return PurchaseIntlDomainResponse
 func (client *Client) PurchaseIntlDomain(request *PurchaseIntlDomainRequest) (_result *PurchaseIntlDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PurchaseIntlDomainResponse{}
@@ -4032,6 +4735,11 @@ func (client *Client) PurchaseIntlDomain(request *PurchaseIntlDomainRequest) (_r
 	return _result, _err
 }
 
+// @param request - QueryAuctionDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryAuctionDetailResponse
 func (client *Client) QueryAuctionDetailWithOptions(request *QueryAuctionDetailRequest, runtime *util.RuntimeOptions) (_result *QueryAuctionDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4065,6 +4773,9 @@ func (client *Client) QueryAuctionDetailWithOptions(request *QueryAuctionDetailR
 	return _result, _err
 }
 
+// @param request - QueryAuctionDetailRequest
+//
+// @return QueryAuctionDetailResponse
 func (client *Client) QueryAuctionDetail(request *QueryAuctionDetailRequest) (_result *QueryAuctionDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryAuctionDetailResponse{}
@@ -4076,12 +4787,21 @@ func (client *Client) QueryAuctionDetail(request *QueryAuctionDetailRequest) (_r
 	return _result, _err
 }
 
+// @param request - QueryAuctionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryAuctionsResponse
 func (client *Client) QueryAuctionsWithOptions(request *QueryAuctionsRequest, runtime *util.RuntimeOptions) (_result *QueryAuctionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuctionEndTimeOrder)) {
+		body["AuctionEndTimeOrder"] = request.AuctionEndTimeOrder
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
 		body["CurrentPage"] = request.CurrentPage
 	}
@@ -4092,6 +4812,10 @@ func (client *Client) QueryAuctionsWithOptions(request *QueryAuctionsRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
 		body["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Statuses)) {
+		body["Statuses"] = request.Statuses
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -4117,6 +4841,9 @@ func (client *Client) QueryAuctionsWithOptions(request *QueryAuctionsRequest, ru
 	return _result, _err
 }
 
+// @param request - QueryAuctionsRequest
+//
+// @return QueryAuctionsResponse
 func (client *Client) QueryAuctions(request *QueryAuctionsRequest) (_result *QueryAuctionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryAuctionsResponse{}
@@ -4128,6 +4855,11 @@ func (client *Client) QueryAuctions(request *QueryAuctionsRequest) (_result *Que
 	return _result, _err
 }
 
+// @param request - QueryBidRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryBidRecordsResponse
 func (client *Client) QueryBidRecordsWithOptions(request *QueryBidRecordsRequest, runtime *util.RuntimeOptions) (_result *QueryBidRecordsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4169,6 +4901,9 @@ func (client *Client) QueryBidRecordsWithOptions(request *QueryBidRecordsRequest
 	return _result, _err
 }
 
+// @param request - QueryBidRecordsRequest
+//
+// @return QueryBidRecordsResponse
 func (client *Client) QueryBidRecords(request *QueryBidRecordsRequest) (_result *QueryBidRecordsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryBidRecordsResponse{}
@@ -4180,6 +4915,11 @@ func (client *Client) QueryBidRecords(request *QueryBidRecordsRequest) (_result 
 	return _result, _err
 }
 
+// @param request - QueryBookingDomainInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryBookingDomainInfoResponse
 func (client *Client) QueryBookingDomainInfoWithOptions(request *QueryBookingDomainInfoRequest, runtime *util.RuntimeOptions) (_result *QueryBookingDomainInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4213,6 +4953,9 @@ func (client *Client) QueryBookingDomainInfoWithOptions(request *QueryBookingDom
 	return _result, _err
 }
 
+// @param request - QueryBookingDomainInfoRequest
+//
+// @return QueryBookingDomainInfoResponse
 func (client *Client) QueryBookingDomainInfo(request *QueryBookingDomainInfoRequest) (_result *QueryBookingDomainInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryBookingDomainInfoResponse{}
@@ -4224,6 +4967,15 @@ func (client *Client) QueryBookingDomainInfo(request *QueryBookingDomainInfoRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询回购订单列表
+//
+// @param request - QueryBrokerDemandRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryBrokerDemandResponse
 func (client *Client) QueryBrokerDemandWithOptions(request *QueryBrokerDemandRequest, runtime *util.RuntimeOptions) (_result *QueryBrokerDemandResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4269,6 +5021,13 @@ func (client *Client) QueryBrokerDemandWithOptions(request *QueryBrokerDemandReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询回购订单列表
+//
+// @param request - QueryBrokerDemandRequest
+//
+// @return QueryBrokerDemandResponse
 func (client *Client) QueryBrokerDemand(request *QueryBrokerDemandRequest) (_result *QueryBrokerDemandResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryBrokerDemandResponse{}
@@ -4280,6 +5039,11 @@ func (client *Client) QueryBrokerDemand(request *QueryBrokerDemandRequest) (_res
 	return _result, _err
 }
 
+// @param request - QueryBrokerDemandRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryBrokerDemandRecordResponse
 func (client *Client) QueryBrokerDemandRecordWithOptions(request *QueryBrokerDemandRecordRequest, runtime *util.RuntimeOptions) (_result *QueryBrokerDemandRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4321,6 +5085,9 @@ func (client *Client) QueryBrokerDemandRecordWithOptions(request *QueryBrokerDem
 	return _result, _err
 }
 
+// @param request - QueryBrokerDemandRecordRequest
+//
+// @return QueryBrokerDemandRecordResponse
 func (client *Client) QueryBrokerDemandRecord(request *QueryBrokerDemandRecordRequest) (_result *QueryBrokerDemandRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryBrokerDemandRecordResponse{}
@@ -4332,6 +5099,11 @@ func (client *Client) QueryBrokerDemandRecord(request *QueryBrokerDemandRecordRe
 	return _result, _err
 }
 
+// @param request - QueryDomainTransferStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDomainTransferStatusResponse
 func (client *Client) QueryDomainTransferStatusWithOptions(request *QueryDomainTransferStatusRequest, runtime *util.RuntimeOptions) (_result *QueryDomainTransferStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4365,6 +5137,9 @@ func (client *Client) QueryDomainTransferStatusWithOptions(request *QueryDomainT
 	return _result, _err
 }
 
+// @param request - QueryDomainTransferStatusRequest
+//
+// @return QueryDomainTransferStatusResponse
 func (client *Client) QueryDomainTransferStatus(request *QueryDomainTransferStatusRequest) (_result *QueryDomainTransferStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDomainTransferStatusResponse{}
@@ -4376,6 +5151,11 @@ func (client *Client) QueryDomainTransferStatus(request *QueryDomainTransferStat
 	return _result, _err
 }
 
+// @param request - QueryPurchasedDomainsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryPurchasedDomainsResponse
 func (client *Client) QueryPurchasedDomainsWithOptions(request *QueryPurchasedDomainsRequest, runtime *util.RuntimeOptions) (_result *QueryPurchasedDomainsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4441,6 +5221,9 @@ func (client *Client) QueryPurchasedDomainsWithOptions(request *QueryPurchasedDo
 	return _result, _err
 }
 
+// @param request - QueryPurchasedDomainsRequest
+//
+// @return QueryPurchasedDomainsResponse
 func (client *Client) QueryPurchasedDomains(request *QueryPurchasedDomainsRequest) (_result *QueryPurchasedDomainsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryPurchasedDomainsResponse{}
@@ -4452,6 +5235,11 @@ func (client *Client) QueryPurchasedDomains(request *QueryPurchasedDomainsReques
 	return _result, _err
 }
 
+// @param request - RecordDemandRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecordDemandResponse
 func (client *Client) RecordDemandWithOptions(request *RecordDemandRequest, runtime *util.RuntimeOptions) (_result *RecordDemandResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4489,6 +5277,9 @@ func (client *Client) RecordDemandWithOptions(request *RecordDemandRequest, runt
 	return _result, _err
 }
 
+// @param request - RecordDemandRequest
+//
+// @return RecordDemandResponse
 func (client *Client) RecordDemand(request *RecordDemandRequest) (_result *RecordDemandResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecordDemandResponse{}
@@ -4500,6 +5291,11 @@ func (client *Client) RecordDemand(request *RecordDemandRequest) (_result *Recor
 	return _result, _err
 }
 
+// @param request - RefuseDemandRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RefuseDemandResponse
 func (client *Client) RefuseDemandWithOptions(request *RefuseDemandRequest, runtime *util.RuntimeOptions) (_result *RefuseDemandResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4537,6 +5333,9 @@ func (client *Client) RefuseDemandWithOptions(request *RefuseDemandRequest, runt
 	return _result, _err
 }
 
+// @param request - RefuseDemandRequest
+//
+// @return RefuseDemandResponse
 func (client *Client) RefuseDemand(request *RefuseDemandRequest) (_result *RefuseDemandResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RefuseDemandResponse{}
@@ -4548,6 +5347,11 @@ func (client *Client) RefuseDemand(request *RefuseDemandRequest) (_result *Refus
 	return _result, _err
 }
 
+// @param request - RequestPayDemandRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RequestPayDemandResponse
 func (client *Client) RequestPayDemandWithOptions(request *RequestPayDemandRequest, runtime *util.RuntimeOptions) (_result *RequestPayDemandResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4597,6 +5401,9 @@ func (client *Client) RequestPayDemandWithOptions(request *RequestPayDemandReque
 	return _result, _err
 }
 
+// @param request - RequestPayDemandRequest
+//
+// @return RequestPayDemandResponse
 func (client *Client) RequestPayDemand(request *RequestPayDemandRequest) (_result *RequestPayDemandResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RequestPayDemandResponse{}
@@ -4608,6 +5415,11 @@ func (client *Client) RequestPayDemand(request *RequestPayDemandRequest) (_resul
 	return _result, _err
 }
 
+// @param request - ReserveDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReserveDomainResponse
 func (client *Client) ReserveDomainWithOptions(request *ReserveDomainRequest, runtime *util.RuntimeOptions) (_result *ReserveDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4645,6 +5457,9 @@ func (client *Client) ReserveDomainWithOptions(request *ReserveDomainRequest, ru
 	return _result, _err
 }
 
+// @param request - ReserveDomainRequest
+//
+// @return ReserveDomainResponse
 func (client *Client) ReserveDomain(request *ReserveDomainRequest) (_result *ReserveDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReserveDomainResponse{}
@@ -4656,6 +5471,11 @@ func (client *Client) ReserveDomain(request *ReserveDomainRequest) (_result *Res
 	return _result, _err
 }
 
+// @param request - ReserveIntlDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReserveIntlDomainResponse
 func (client *Client) ReserveIntlDomainWithOptions(request *ReserveIntlDomainRequest, runtime *util.RuntimeOptions) (_result *ReserveIntlDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4689,6 +5509,9 @@ func (client *Client) ReserveIntlDomainWithOptions(request *ReserveIntlDomainReq
 	return _result, _err
 }
 
+// @param request - ReserveIntlDomainRequest
+//
+// @return ReserveIntlDomainResponse
 func (client *Client) ReserveIntlDomain(request *ReserveIntlDomainRequest) (_result *ReserveIntlDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReserveIntlDomainResponse{}
@@ -4700,6 +5523,15 @@ func (client *Client) ReserveIntlDomain(request *ReserveIntlDomainRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 严选列表导出，明日凌晨2点前生成文件，导出凌晨1点前所有在售严选域名
+//
+// @param request - SelectedDomainListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SelectedDomainListResponse
 func (client *Client) SelectedDomainListWithOptions(request *SelectedDomainListRequest, runtime *util.RuntimeOptions) (_result *SelectedDomainListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4733,6 +5565,13 @@ func (client *Client) SelectedDomainListWithOptions(request *SelectedDomainListR
 	return _result, _err
 }
 
+// Summary:
+//
+// 严选列表导出，明日凌晨2点前生成文件，导出凌晨1点前所有在售严选域名
+//
+// @param request - SelectedDomainListRequest
+//
+// @return SelectedDomainListResponse
 func (client *Client) SelectedDomainList(request *SelectedDomainListRequest) (_result *SelectedDomainListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SelectedDomainListResponse{}
@@ -4744,6 +5583,15 @@ func (client *Client) SelectedDomainList(request *SelectedDomainListRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 提交采购信息
+//
+// @param request - SubmitPurchaseInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitPurchaseInfoResponse
 func (client *Client) SubmitPurchaseInfoWithOptions(request *SubmitPurchaseInfoRequest, runtime *util.RuntimeOptions) (_result *SubmitPurchaseInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4789,6 +5637,13 @@ func (client *Client) SubmitPurchaseInfoWithOptions(request *SubmitPurchaseInfoR
 	return _result, _err
 }
 
+// Summary:
+//
+// 提交采购信息
+//
+// @param request - SubmitPurchaseInfoRequest
+//
+// @return SubmitPurchaseInfoResponse
 func (client *Client) SubmitPurchaseInfo(request *SubmitPurchaseInfoRequest) (_result *SubmitPurchaseInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitPurchaseInfoResponse{}
@@ -4800,6 +5655,15 @@ func (client *Client) SubmitPurchaseInfo(request *SubmitPurchaseInfoRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 合作方同步报价
+//
+// @param request - UpdatePartnerReservePriceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePartnerReservePriceResponse
 func (client *Client) UpdatePartnerReservePriceWithOptions(request *UpdatePartnerReservePriceRequest, runtime *util.RuntimeOptions) (_result *UpdatePartnerReservePriceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4845,6 +5709,13 @@ func (client *Client) UpdatePartnerReservePriceWithOptions(request *UpdatePartne
 	return _result, _err
 }
 
+// Summary:
+//
+// 合作方同步报价
+//
+// @param request - UpdatePartnerReservePriceRequest
+//
+// @return UpdatePartnerReservePriceResponse
 func (client *Client) UpdatePartnerReservePrice(request *UpdatePartnerReservePriceRequest) (_result *UpdatePartnerReservePriceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdatePartnerReservePriceResponse{}
