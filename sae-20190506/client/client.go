@@ -16998,6 +16998,8 @@ func (s *DescribeApplicationSlbsResponseBodyData) SetIntranetSlbId(v string) *De
 }
 
 type DescribeApplicationSlbsResponseBodyDataInternet struct {
+	Cookie        *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
+	CookieTimeout *int32  `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
 	HttpsCaCertId *string `json:"HttpsCaCertId,omitempty" xml:"HttpsCaCertId,omitempty"`
 	// The supported protocol.
 	//
@@ -17016,7 +17018,9 @@ type DescribeApplicationSlbsResponseBodyDataInternet struct {
 	// example:
 	//
 	// TCP
-	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	Protocol          *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	StickySession     *bool   `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
+	StickySessionType *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
 	// The port specified for the SLB listener.
 	//
 	// example:
@@ -17031,6 +17035,16 @@ func (s DescribeApplicationSlbsResponseBodyDataInternet) String() string {
 
 func (s DescribeApplicationSlbsResponseBodyDataInternet) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeApplicationSlbsResponseBodyDataInternet) SetCookie(v string) *DescribeApplicationSlbsResponseBodyDataInternet {
+	s.Cookie = &v
+	return s
+}
+
+func (s *DescribeApplicationSlbsResponseBodyDataInternet) SetCookieTimeout(v int32) *DescribeApplicationSlbsResponseBodyDataInternet {
+	s.CookieTimeout = &v
+	return s
 }
 
 func (s *DescribeApplicationSlbsResponseBodyDataInternet) SetHttpsCaCertId(v string) *DescribeApplicationSlbsResponseBodyDataInternet {
@@ -17053,12 +17067,24 @@ func (s *DescribeApplicationSlbsResponseBodyDataInternet) SetProtocol(v string) 
 	return s
 }
 
+func (s *DescribeApplicationSlbsResponseBodyDataInternet) SetStickySession(v bool) *DescribeApplicationSlbsResponseBodyDataInternet {
+	s.StickySession = &v
+	return s
+}
+
+func (s *DescribeApplicationSlbsResponseBodyDataInternet) SetStickySessionType(v string) *DescribeApplicationSlbsResponseBodyDataInternet {
+	s.StickySessionType = &v
+	return s
+}
+
 func (s *DescribeApplicationSlbsResponseBodyDataInternet) SetTargetPort(v int32) *DescribeApplicationSlbsResponseBodyDataInternet {
 	s.TargetPort = &v
 	return s
 }
 
 type DescribeApplicationSlbsResponseBodyDataIntranet struct {
+	Cookie        *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
+	CookieTimeout *int32  `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
 	HttpsCaCertId *string `json:"HttpsCaCertId,omitempty" xml:"HttpsCaCertId,omitempty"`
 	// The supported protocol.
 	//
@@ -17077,7 +17103,9 @@ type DescribeApplicationSlbsResponseBodyDataIntranet struct {
 	// example:
 	//
 	// TCP
-	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	Protocol          *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	StickySession     *bool   `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
+	StickySessionType *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
 	// The port specified for the SLB listener.
 	//
 	// example:
@@ -17092,6 +17120,16 @@ func (s DescribeApplicationSlbsResponseBodyDataIntranet) String() string {
 
 func (s DescribeApplicationSlbsResponseBodyDataIntranet) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeApplicationSlbsResponseBodyDataIntranet) SetCookie(v string) *DescribeApplicationSlbsResponseBodyDataIntranet {
+	s.Cookie = &v
+	return s
+}
+
+func (s *DescribeApplicationSlbsResponseBodyDataIntranet) SetCookieTimeout(v int32) *DescribeApplicationSlbsResponseBodyDataIntranet {
+	s.CookieTimeout = &v
+	return s
 }
 
 func (s *DescribeApplicationSlbsResponseBodyDataIntranet) SetHttpsCaCertId(v string) *DescribeApplicationSlbsResponseBodyDataIntranet {
@@ -17111,6 +17149,16 @@ func (s *DescribeApplicationSlbsResponseBodyDataIntranet) SetPort(v int32) *Desc
 
 func (s *DescribeApplicationSlbsResponseBodyDataIntranet) SetProtocol(v string) *DescribeApplicationSlbsResponseBodyDataIntranet {
 	s.Protocol = &v
+	return s
+}
+
+func (s *DescribeApplicationSlbsResponseBodyDataIntranet) SetStickySession(v bool) *DescribeApplicationSlbsResponseBodyDataIntranet {
+	s.StickySession = &v
+	return s
+}
+
+func (s *DescribeApplicationSlbsResponseBodyDataIntranet) SetStickySessionType(v string) *DescribeApplicationSlbsResponseBodyDataIntranet {
+	s.StickySessionType = &v
 	return s
 }
 
