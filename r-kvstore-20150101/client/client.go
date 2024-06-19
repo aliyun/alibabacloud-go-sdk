@@ -14,7 +14,7 @@ type AddShardingNodeRequest struct {
 	//
 	// 	- **true**: enables automatic payment. Make sure that you have sufficient balance within your account.
 	//
-	// 	- **false**: disables automatic payment. In this case, you must manually renew the instance in the console before the instance expires. For more information, see [Renewal](~~26352~~).
+	// 	- **false**: disables automatic payment. In this case, you must manually renew the instance in the console before the instance expires. For more information, see [Renewal](https://help.aliyun.com/document_detail/26352.html).
 	//
 	// > The default value is **true**.
 	//
@@ -45,6 +45,8 @@ type AddShardingNodeRequest struct {
 	// false
 	ForceTrans *bool `json:"ForceTrans,omitempty" xml:"ForceTrans,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -228,6 +230,8 @@ type AllocateDirectConnectionRequest struct {
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	// The ID of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
@@ -349,11 +353,15 @@ type AllocateInstancePublicConnectionRequest struct {
 	//
 	// >  The endpoint is in the `<prefix>.redis.rds.aliyuncs.com` format.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
 	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -362,6 +370,8 @@ type AllocateInstancePublicConnectionRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The service port number of the instance. Valid values: **1024*	- to **65535**.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -472,7 +482,9 @@ func (s *AllocateInstancePublicConnectionResponse) SetBody(v *AllocateInstancePu
 }
 
 type CheckCloudResourceAuthorizedRequest struct {
-	// The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
+	// The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -547,7 +559,7 @@ type CheckCloudResourceAuthorizedResponseBody struct {
 	//
 	// 	- **1**: The instance is not authorized to use KMS.
 	//
-	// 	- **2**: KMS is not activated. For more information, see [Activate KMS](~~153781~~).
+	// 	- **2**: KMS is not activated. For more information, see [Activate KMS](https://help.aliyun.com/document_detail/153781.html).
 	//
 	// example:
 	//
@@ -613,7 +625,7 @@ type CreateAccountRequest struct {
 	//
 	// 	- The description must start with a letter, and cannot start with `http://` or `https://`.
 	//
-	// 	- The description can contain letters, digits, underscores (\_), and hyphens (-).
+	// 	- The description can contain letters, digits, underscores (_), and hyphens (-).
 	//
 	// 	- The description must be 2 to 256 characters in length.
 	//
@@ -627,13 +639,17 @@ type CreateAccountRequest struct {
 	//
 	// 	- The name can be up to 100 characters in length.
 	//
-	// 	- The name cannot be one of the reserved words in the [Reserved words for Redis account names](~~92665~~#title-84o-mok-b6h) section.
+	// 	- The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://help.aliyun.com/document_detail/92665.html#title-84o-mok-b6h) section.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// demoaccount
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The password of the account. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and specific special characters. These special characters include `! @ # $ % ^ & 	- ( ) _ + - =`
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -656,6 +672,8 @@ type CreateAccountRequest struct {
 	// Normal
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -807,6 +825,8 @@ func (s *CreateAccountResponse) SetBody(v *CreateAccountResponseBody) *CreateAcc
 type CreateBackupRequest struct {
 	// The ID of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
@@ -857,9 +877,9 @@ func (s *CreateBackupRequest) SetSecurityToken(v string) *CreateBackupRequest {
 }
 
 type CreateBackupResponseBody struct {
-	// The ID of the backup task.\
+	// The ID of the backup task.\\
 	//
-	// For cluster instances created before December 5, 2023, the return value is a comma-separated list composed of the job ID of each node within an instance. For example, if you have a cluster instance with two shards, the return value of BackupJobID is "10000,10001".\
+	// For cluster instances created before December 5, 2023, the return value is a comma-separated list composed of the job ID of each node within an instance. For example, if you have a cluster instance with two shards, the return value of BackupJobID is "10000,10001".\\
 	//
 	// For cluster instance created after December 5, 2023, all jobs for nodes in an instance are represented by a single job ID.
 	//
@@ -923,7 +943,9 @@ func (s *CreateBackupResponse) SetBody(v *CreateBackupResponseBody) *CreateBacku
 }
 
 type CreateCacheAnalysisTaskRequest struct {
-	// The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
+	// The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1042,6 +1064,8 @@ type CreateGlobalDistributeCacheRequest struct {
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The ID of the existing instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
@@ -1152,17 +1176,21 @@ type CreateGlobalSecurityIPGroupRequest struct {
 	//
 	// >  Separate multiple IP addresses with commas (,). The maximum number of IP addresses is 1,000.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 111.175.56.206,47.253.88.168,111.181.0.162
 	GIpList *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
 	// The name of the IP whitelist template. The name must meet the following requirements:
 	//
-	// 	- The name can contain lowercase letters, digits, and underscores (\_).
+	// 	- The name can contain lowercase letters, digits, and underscores (_).
 	//
 	// 	- The name must start with a letter and end with a letter or digit.
 	//
 	// 	- The name must be 2 to 120 characters in length.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1171,6 +1199,8 @@ type CreateGlobalSecurityIPGroupRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1396,7 +1426,7 @@ type CreateInstanceRequest struct {
 	//
 	// false
 	AutoUseCoupon *string `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	// The ID of the backup file of the original instance. If you want to create an instance based on a backup file of a specified instance, you can specify this parameter after you specify the **SrcDBInstanceId*	- parameter. Then, the system creates an instance based on the backup file that is specified by this parameter. You can call the [DescribeBackups](~~61081~~) operation to query the IDs of backup files.
+	// The ID of the backup file of the original instance. If you want to create an instance based on a backup file of a specified instance, you can specify this parameter after you specify the **SrcDBInstanceId*	- parameter. Then, the system creates an instance based on the backup file that is specified by this parameter. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/61081.html) operation to query the IDs of backup files.
 	//
 	// > After you specify the **SrcDBInstanceId*	- parameter, you must use the **BackupId*	- or **RestoreTime*	- parameter to specify the backup file.
 	//
@@ -1496,7 +1526,7 @@ type CreateInstanceRequest struct {
 	//
 	// g-zsldxfiwjmti0kcm****
 	GlobalSecurityGroupIds *string `json:"GlobalSecurityGroupIds,omitempty" xml:"GlobalSecurityGroupIds,omitempty"`
-	// The instance type. For example, redis.master.small.default indicates a Community Edition standard master-replica instance that has 1 GB of memory. For more information, see [Overview](~~26350~~).
+	// The instance type. For example, redis.master.small.default indicates a Community Edition standard master-replica instance that has 1 GB of memory. For more information, see [Overview](https://help.aliyun.com/document_detail/26350.html).
 	//
 	// **
 	//
@@ -1587,8 +1617,11 @@ type CreateInstanceRequest struct {
 	// example:
 	//
 	// 5
-	ReadOnlyCount *int32 `json:"ReadOnlyCount,omitempty" xml:"ReadOnlyCount,omitempty"`
-	// The ID of the region where you want to create the instance. You can call the [DescribeRegions](~~61012~~) operation to query the most recent region list.
+	ReadOnlyCount     *int32  `json:"ReadOnlyCount,omitempty" xml:"ReadOnlyCount,omitempty"`
+	RecoverConfigMode *string `json:"RecoverConfigMode,omitempty" xml:"RecoverConfigMode,omitempty"`
+	// The ID of the region where you want to create the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61012.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1610,7 +1643,7 @@ type CreateInstanceRequest struct {
 	//
 	// 2019-06-19T16:00:00Z
 	RestoreTime *string `json:"RestoreTime,omitempty" xml:"RestoreTime,omitempty"`
-	// The secondary zone ID of the instance. You can call the [DescribeZones](~~472448~~) operation to query the most recent zone list.
+	// The secondary zone ID of the instance. You can call the [DescribeZones](https://help.aliyun.com/document_detail/472448.html) operation to query the most recent zone list.
 	//
 	// > If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
 	//
@@ -1625,7 +1658,8 @@ type CreateInstanceRequest struct {
 	// example:
 	//
 	// 4
-	ShardCount *int32 `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
+	ShardCount         *int32 `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
+	SlaveReadOnlyCount *int32 `json:"SlaveReadOnlyCount,omitempty" xml:"SlaveReadOnlyCount,omitempty"`
 	// The ID of the original instance. If you want to create an instance based on a backup file of a specified instance, you can specify this parameter and use the **BackupId*	- or **RestoreTime*	- parameter to specify the backup file.
 	//
 	// example:
@@ -1652,7 +1686,7 @@ type CreateInstanceRequest struct {
 	//
 	// vpc-bp1nme44gek34slfc****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The primary zone ID of the instance. You can call the [DescribeRegions](~~61012~~) operation to query the most recent zone list.
+	// The primary zone ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61012.html) operation to query the most recent zone list.
 	//
 	// example:
 	//
@@ -1818,6 +1852,11 @@ func (s *CreateInstanceRequest) SetReadOnlyCount(v int32) *CreateInstanceRequest
 	return s
 }
 
+func (s *CreateInstanceRequest) SetRecoverConfigMode(v string) *CreateInstanceRequest {
+	s.RecoverConfigMode = &v
+	return s
+}
+
 func (s *CreateInstanceRequest) SetRegionId(v string) *CreateInstanceRequest {
 	s.RegionId = &v
 	return s
@@ -1855,6 +1894,11 @@ func (s *CreateInstanceRequest) SetSecurityToken(v string) *CreateInstanceReques
 
 func (s *CreateInstanceRequest) SetShardCount(v int32) *CreateInstanceRequest {
 	s.ShardCount = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetSlaveReadOnlyCount(v int32) *CreateInstanceRequest {
+	s.SlaveReadOnlyCount = &v
 	return s
 }
 
@@ -1956,7 +2000,7 @@ type CreateInstanceResponseBody struct {
 	//
 	// example:
 	//
-	// {\"EvictionPolicy\":\"volatile-lru\",\"hash-max-ziplist-entries\":512,\"zset-max-ziplist-entries\":128,\"zset-max-ziplist-value\":64,\"set-max-intset-entries\":512,\"hash-max-ziplist-value\":64}
+	// {\\"EvictionPolicy\\":\\"volatile-lru\\",\\"hash-max-ziplist-entries\\":512,\\"zset-max-ziplist-entries\\":128,\\"zset-max-ziplist-value\\":64,\\"set-max-intset-entries\\":512,\\"hash-max-ziplist-value\\":64}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The internal endpoint of the instance.
 	//
@@ -2015,6 +2059,8 @@ type CreateInstanceResponseBody struct {
 	// MASTER_SLAVE
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	// The ID of the order.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2278,6 +2324,8 @@ type CreateInstancesRequest struct {
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The JSON-formatted configurations of the instance. For more information, see the "Description of the Instances parameter" section of this topic.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// [{	"RegionId": "cn-hangzhou",	"izNo": "cn-hangzhou-b",	"quantity": 2,	"instanceType": "Redis",	"instanceClass": "redis.master.small.default",	"EngineVersion": "5.0",	"ChargeType": "PostPaid"}]
@@ -2477,6 +2525,180 @@ func (s *CreateInstancesResponse) SetBody(v *CreateInstancesResponseBody) *Creat
 	return s
 }
 
+type CreateParameterGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// enterprise
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// redis
+	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 6.0
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// test
+	ParameterGroupDesc *string `json:"ParameterGroupDesc,omitempty" xml:"ParameterGroupDesc,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tw_test1
+	ParameterGroupName *string `json:"ParameterGroupName,omitempty" xml:"ParameterGroupName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"hz":"15","#no_loose_disabled-commands":"flushall"}
+	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s CreateParameterGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateParameterGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateParameterGroupRequest) SetCategory(v string) *CreateParameterGroupRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *CreateParameterGroupRequest) SetEngineType(v string) *CreateParameterGroupRequest {
+	s.EngineType = &v
+	return s
+}
+
+func (s *CreateParameterGroupRequest) SetEngineVersion(v string) *CreateParameterGroupRequest {
+	s.EngineVersion = &v
+	return s
+}
+
+func (s *CreateParameterGroupRequest) SetOwnerAccount(v string) *CreateParameterGroupRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateParameterGroupRequest) SetOwnerId(v int64) *CreateParameterGroupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateParameterGroupRequest) SetParameterGroupDesc(v string) *CreateParameterGroupRequest {
+	s.ParameterGroupDesc = &v
+	return s
+}
+
+func (s *CreateParameterGroupRequest) SetParameterGroupName(v string) *CreateParameterGroupRequest {
+	s.ParameterGroupName = &v
+	return s
+}
+
+func (s *CreateParameterGroupRequest) SetParameters(v string) *CreateParameterGroupRequest {
+	s.Parameters = &v
+	return s
+}
+
+func (s *CreateParameterGroupRequest) SetRegionId(v string) *CreateParameterGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateParameterGroupRequest) SetResourceOwnerAccount(v string) *CreateParameterGroupRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateParameterGroupRequest) SetResourceOwnerId(v int64) *CreateParameterGroupRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateParameterGroupRequest) SetSecurityToken(v string) *CreateParameterGroupRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type CreateParameterGroupResponseBody struct {
+	// example:
+	//
+	// g-51ii2ienn0dg0xi8****
+	ParamGroupId *string `json:"ParamGroupId,omitempty" xml:"ParamGroupId,omitempty"`
+	// example:
+	//
+	// 62DA5BE5-F9C9-527C-ACCB-4D783C297A3A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateParameterGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateParameterGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateParameterGroupResponseBody) SetParamGroupId(v string) *CreateParameterGroupResponseBody {
+	s.ParamGroupId = &v
+	return s
+}
+
+func (s *CreateParameterGroupResponseBody) SetRequestId(v string) *CreateParameterGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateParameterGroupResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateParameterGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateParameterGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateParameterGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateParameterGroupResponse) SetHeaders(v map[string]*string) *CreateParameterGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateParameterGroupResponse) SetStatusCode(v int32) *CreateParameterGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateParameterGroupResponse) SetBody(v *CreateParameterGroupResponseBody) *CreateParameterGroupResponse {
+	s.Body = v
+	return s
+}
+
 type CreateTairInstanceRequest struct {
 	// Specifies whether to enable automatic payment. Set the value to **true**.
 	//
@@ -2512,9 +2734,7 @@ type CreateTairInstanceRequest struct {
 	//
 	// true
 	AutoUseCoupon *string `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	// The ID of the backup set of the source instance. If you want to create an instance based on a backup set of a specified instance, you can specify this parameter after you specify the **SrcDBInstanceId*	- parameter. Then, the system creates an instance based on the backup set that is specified by this parameter. You can call the [DescribeBackups](~~61081~~) operation to query the IDs of backup sets.
-	//
-	// >  If you want to create an instance based on a backup set of a specified instance, you must specify this parameter after you use the **SrcDBInstanceId*	- parameter to specify the ID of the source instance. Then, the system creates an instance based on the backup set that is specified by this parameter.
+	// The ID of the backup set of the source instance. The system uses the data stored in the backup set to create an instance. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/61081.html) operation to query the backup set ID.
 	//
 	// example:
 	//
@@ -2542,13 +2762,11 @@ type CreateTairInstanceRequest struct {
 	//
 	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// This parameter is supported for specific new cluster instances. You can query the backup set ID by using the [DescribeClusterBackupList](~~2679158~~) operation.
+	// This parameter is supported for specific new cluster instances. You can query the backup set ID by calling the [DescribeClusterBackupList](https://help.aliyun.com/document_detail/2679158.html) operation.
 	//
 	// 	- If this parameter is supported, you can specify the backup set ID. In this case, you do not need to specify the **BackupId*	- parameter.
 	//
-	// <!---->
-	//
-	// 	- If this parameter is not supported, set the BackupId parameter to the IDs of backup sets in all shards of the source instance, separated by commas (,). Example: "11101,11102".
+	// 	- If this parameter is not supported, set the BackupId parameter to the IDs of backup sets in all shards of the source instance, separated by commas (,). Example: "2158\\*\\*\\*\\*20,2158\\*\\*\\*\\*22".
 	//
 	// example:
 	//
@@ -2582,7 +2800,15 @@ type CreateTairInstanceRequest struct {
 	//
 	// 1.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The ID of the distributed instance.
+	// Specifies whether to use the created instance as a child instance of a distributed instance.
+	//
+	// 	- If you want the created instance to be used as the first child instance, enter **true**.
+	//
+	// 	- If you want the created instance to be used as the second or third child instance, enter the ID of the distributed instance, such as gr-bp14rkqrhac\\*\\*\\*\\*.
+	//
+	// 	- If you do not want the created instance to be used as a distributed instance, leave the parameter empty.
+	//
+	// >  If you want the created instance to be used as a distributed instance, the created instance must be a Tair DRAM-based instance.
 	//
 	// example:
 	//
@@ -2596,11 +2822,13 @@ type CreateTairInstanceRequest struct {
 	GlobalSecurityGroupIds *string `json:"GlobalSecurityGroupIds,omitempty" xml:"GlobalSecurityGroupIds,omitempty"`
 	// The instance type. For more information, see the following topics:
 	//
-	// 	- [DRAM-based instances](~~443844~~)
+	// 	- [DRAM-based instances](https://help.aliyun.com/document_detail/443844.html)
 	//
-	// 	- [Persistent memory-optimized instances](~~443845~~)
+	// 	- [Persistent memory-optimized instances](https://help.aliyun.com/document_detail/443845.html)
 	//
-	// 	- [ESSD-based instances](~~443846~~)
+	// 	- [ESSD-based instances](https://help.aliyun.com/document_detail/443846.html)
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2623,6 +2851,8 @@ type CreateTairInstanceRequest struct {
 	// 	- **tair_scm**: ApsaraDB for Redis Enhanced Edition (Tair) persistent memory-optimized instance
 	//
 	// 	- **tair_essd**: ApsaraDB for Redis Enhanced Edition (Tair) ESSD-based instance
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2662,19 +2892,24 @@ type CreateTairInstanceRequest struct {
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The private IP address of the instance.
 	//
-	// > The IP address must be within the CIDR block of the vSwitch to which you want the instance to connect. You can call the [DescribeVSwitches](~~35748~~) operation of the VPC API to query the CIDR block information.
+	// > The IP address must be within the CIDR block of the vSwitch to which you want the instance to connect. You can call the [DescribeVSwitches](https://help.aliyun.com/document_detail/35748.html) operation of the VPC API to query the CIDR block information.
 	//
 	// example:
 	//
 	// 172.16.88.***
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	// The number of read-only nodes of the instance. This parameter is available only if you create a read/write splitting instance that uses cloud disks. You can use this parameter to specify a custom number of read-only nodes for the instance. Valid value: 1 to 5.
+	// The number of read replicas in the primary zone. This parameter applies only to read/write splitting instances that use cloud disks. You can use this parameter to customize the number of read replicas. Valid values: 1 to 9.
+	//
+	// >  The sum of the values of this parameter and SlaveReadOnlyCount cannot be greater than 9.
 	//
 	// example:
 	//
 	// 5
-	ReadOnlyCount *int32 `json:"ReadOnlyCount,omitempty" xml:"ReadOnlyCount,omitempty"`
-	// The ID of the region where you want to create the instance. You can call the [DescribeRegions](~~61012~~) operation to query the most recent region list.
+	ReadOnlyCount     *int32  `json:"ReadOnlyCount,omitempty" xml:"ReadOnlyCount,omitempty"`
+	RecoverConfigMode *string `json:"RecoverConfigMode,omitempty" xml:"RecoverConfigMode,omitempty"`
+	// The ID of the region where you want to create the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61012.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2684,9 +2919,9 @@ type CreateTairInstanceRequest struct {
 	//
 	// >
 	//
-	// 	- You can query resource group IDs by using the ApsaraDB for Redis console or by calling the [ListResourceGroups](~~158855~~) operation. For more information, see [View basic information of a resource group](~~151181~~).
+	// 	- You can query resource group IDs by using the ApsaraDB for Redis console or by calling the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation. For more information, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
 	//
-	// 	- Before you modify the resource group to which an instance belongs, you can call the [ListResources](~~158866~~) operation to view the current resource group of the instance.
+	// 	- Before you modify the resource group to which an instance belongs, you can call the [ListResources](https://help.aliyun.com/document_detail/158866.html) operation to view the current resource group of the instance.
 	//
 	// example:
 	//
@@ -2694,8 +2929,13 @@ type CreateTairInstanceRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RestoreTime          *string `json:"RestoreTime,omitempty" xml:"RestoreTime,omitempty"`
-	// The ID of the secondary zone. You can call the [DescribeRegions](~~61012~~) operation to query the ID of the secondary zone.
+	// If data flashback is enabled for the source instance, you can use this parameter to specify a point in time within the backup retention period of the source instance. The system uses the backup data of the source instance at the point in time to create an instance. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2021-07-06T07:25:57Z
+	RestoreTime *string `json:"RestoreTime,omitempty" xml:"RestoreTime,omitempty"`
+	// The ID of the secondary zone. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61012.html) operation to query the ID of the secondary zone.
 	//
 	// > You cannot specify multiple zone IDs or set this parameter to a value that is the same as that of the ZoneId parameter.
 	//
@@ -2706,11 +2946,11 @@ type CreateTairInstanceRequest struct {
 	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The number of data nodes in the instance. Valid values:
 	//
-	// 	- **1**: You can create an instance in the standard architecture that contains only one data node. For more information about the standard architecture, see [Cluster master-replica instances](~~52228~~). This is the default value.
+	// 	- **1*	- (default): You can create a [standard instance](https://help.aliyun.com/document_detail/52228.html) that contains only a single data node.
 	//
-	// 	- **2*	- to **32**: You can create an instance in the cluster architecture that contains the specified number of data nodes. For more information about the cluster architecture, see [Cluster master-replica instances](~~52228~~).
+	// 	- **2*	- to **32**: You can create a [cluster instance](https://help.aliyun.com/document_detail/52228.html) that contains the specified number of data nodes.
 	//
-	// > Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from **2*	- to **32*	- only if you set the **InstanceType*	- parameter to **tair_scm**.
+	// >  When the **InstanceType*	- parameter is set to **tair_rdb*	- or **tair_scm**, this parameter can be set to **2*	- to **32**. Only DRAM-based and persistent memory-optimized instances support the cluster architecture.
 	//
 	// example:
 	//
@@ -2726,23 +2966,23 @@ type CreateTairInstanceRequest struct {
 	//
 	// MASTER_SLAVE
 	ShardType *string `json:"ShardType,omitempty" xml:"ShardType,omitempty"`
-	// The number of read replicas in the secondary zone. This parameter is used to create a read/write splitting instance that is deployed across multiple zones.
+	// The number of read replicas in the secondary zone when you create a multi-zone read/write splitting instance. The sum of the values of this parameter and ReadOnlyCount cannot be greater than 9.
 	//
-	// > To create a read/write splitting instance that is deployed across multiple zones, you must specify both SlaveReadOnlyCount and SecondaryZoneId.
+	// > When you create a multi-zone read/write splitting instance, you must specify both SlaveReadOnlyCount and SecondaryZoneId.
 	//
 	// example:
 	//
 	// 1
 	SlaveReadOnlyCount *int32 `json:"SlaveReadOnlyCount,omitempty" xml:"SlaveReadOnlyCount,omitempty"`
-	// The ID of the source instance.
+	// If you want to create an instance based on the backup set of an existing instance, set this parameter to the ID of the source instance.
 	//
-	// > If you want to create an instance based on the backup set of an existing instance, set this parameter to the ID of the source instance and the **BackupId*	- parameter to the backup set that you want to use.
+	// >  Then, you can use the **BackupId**, **ClusterBackupId**, or **RestoreTime*	- parameter to specify the backup set that you want to use or the point in time. This parameter must be used in combination with one of the preceding three parameters.
 	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
 	SrcDBInstanceId *string `json:"SrcDBInstanceId,omitempty" xml:"SrcDBInstanceId,omitempty"`
-	// The storage space of cloud disks. Valid values vary based on the instance specifications. For more information, see [ESSD-based instances](~~443846~~).
+	// The storage space of cloud disks. Valid values vary based on the instance specifications. For more information, see [ESSD-based instances](https://help.aliyun.com/document_detail/443846.html).
 	//
 	// > This parameter is available and required only if the **InstanceType*	- parameter is set to **tair_essd**.
 	//
@@ -2760,19 +3000,23 @@ type CreateTairInstanceRequest struct {
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	// The tags to add to the instance.
 	Tag []*CreateTairInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the vSwitch that belongs to the VPC. You can call the [DescribeVpcs](~~35739~~) operation to query the ID of the vSwitch.
+	// The ID of the vSwitch that belongs to the VPC. You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html) operation to query the ID of the vSwitch.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// vsw-bp1e7clcw529l773d****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the virtual private cloud (VPC). You can call the [DescribeVpcs](~~35739~~) operation to query the ID of the VPC.
+	// The ID of the virtual private cloud (VPC). You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html) operation to query the ID of the VPC.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// vpc-bp1nme44gek34slfc****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The primary zone ID of the instance. You can call the [DescribeRegions](~~61012~~) operation to query the IDs of available zones.
+	// The primary zone ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61012.html) operation to query the IDs of available zones.
 	//
 	// >  You can also set the SecondaryZoneId parameter to specify the secondary zone. The primary and secondary nodes will then be deployed in the specified primary and secondary zones to implement the master-replica zone-disaster recovery architecture. For example, you can set the ZoneId parameter to cn-hangzhou-h and the SecondaryZoneId parameter to cn-hangzhou-g.
 	//
@@ -2915,6 +3159,11 @@ func (s *CreateTairInstanceRequest) SetReadOnlyCount(v int32) *CreateTairInstanc
 	return s
 }
 
+func (s *CreateTairInstanceRequest) SetRecoverConfigMode(v string) *CreateTairInstanceRequest {
+	s.RecoverConfigMode = &v
+	return s
+}
+
 func (s *CreateTairInstanceRequest) SetRegionId(v string) *CreateTairInstanceRequest {
 	s.RegionId = &v
 	return s
@@ -3054,11 +3303,11 @@ type CreateTairInstanceResponseBody struct {
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The detailed configurations of the instance. The value is a JSON string. For more information about the parameter description, see [Modify the parameters of an ApsaraDB for Redis instance](~~43885~~).
+	// The detailed configurations of the instance. The value is a JSON string. For more information about the parameter description, see [Modify the parameters of an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/43885.html).
 	//
 	// example:
 	//
-	// {\"EvictionPolicy\":\"volatile-lru\",\"hash-max-ziplist-entries\":512,\"zset-max-ziplist-entries\":128,\"list-max-ziplist-entries\":512,\"list-max-ziplist-value\":64,\"zset-max-ziplist-value\":64,\"set-max-intset-entries\":512,\"hash-max-ziplist-value\":64}
+	// {\\"EvictionPolicy\\":\\"volatile-lru\\",\\"hash-max-ziplist-entries\\":512,\\"zset-max-ziplist-entries\\":128,\\"list-max-ziplist-entries\\":512,\\"list-max-ziplist-value\\":64,\\"zset-max-ziplist-value\\":64,\\"set-max-intset-entries\\":512,\\"hash-max-ziplist-value\\":64}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The internal endpoint of the instance.
 	//
@@ -3094,7 +3343,7 @@ type CreateTairInstanceResponseBody struct {
 	//
 	// Creating
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//
@@ -3251,13 +3500,17 @@ func (s *CreateTairInstanceResponse) SetBody(v *CreateTairInstanceResponseBody) 
 }
 
 type DeleteAccountRequest struct {
-	// The username of the account. You can call the [DescribeAccounts](~~95802~~) operation to query the username of the account.
+	// The username of the account. You can call the [DescribeAccounts](https://help.aliyun.com/document_detail/95802.html) operation to query the username of the account.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// demoaccount
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The instance ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3367,7 +3620,7 @@ func (s *DeleteAccountResponse) SetBody(v *DeleteAccountResponseBody) *DeleteAcc
 type DeleteGlobalSecurityIPGroupRequest struct {
 	// The name of the global IP whitelist template. The name must meet the following requirements:
 	//
-	// 	- The name can contain lowercase letters, digits, and underscores (\_).
+	// 	- The name can contain lowercase letters, digits, and underscores (_).
 	//
 	// 	- The name must start with a letter and end with a letter or a digit.
 	//
@@ -3379,6 +3632,8 @@ type DeleteGlobalSecurityIPGroupRequest struct {
 	GlobalIgName *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
 	// The ID of the IP whitelist template.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// g-kd2iop4aur9qwxnvh***
@@ -3386,6 +3641,8 @@ type DeleteGlobalSecurityIPGroupRequest struct {
 	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3515,6 +3772,8 @@ type DeleteInstanceRequest struct {
 	GlobalInstanceId *string `json:"GlobalInstanceId,omitempty" xml:"GlobalInstanceId,omitempty"`
 	// The ID of the instance that you want to release.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
@@ -3620,6 +3879,122 @@ func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteI
 	return s
 }
 
+type DeleteParameterGroupRequest struct {
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the parameter template.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rpg-sys-00*****
+	ParameterGroupId     *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DeleteParameterGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteParameterGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteParameterGroupRequest) SetOwnerAccount(v string) *DeleteParameterGroupRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeleteParameterGroupRequest) SetOwnerId(v int64) *DeleteParameterGroupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteParameterGroupRequest) SetParameterGroupId(v string) *DeleteParameterGroupRequest {
+	s.ParameterGroupId = &v
+	return s
+}
+
+func (s *DeleteParameterGroupRequest) SetResourceOwnerAccount(v string) *DeleteParameterGroupRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteParameterGroupRequest) SetResourceOwnerId(v int64) *DeleteParameterGroupRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DeleteParameterGroupRequest) SetSecurityToken(v string) *DeleteParameterGroupRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DeleteParameterGroupResponseBody struct {
+	// The parameter template ID, which is globally unique.
+	//
+	// example:
+	//
+	// sys-001*****
+	ParamGroupId *string `json:"ParamGroupId,omitempty" xml:"ParamGroupId,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 2BE6E619-A657-42E3-AD2D-18F8428A****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteParameterGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteParameterGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteParameterGroupResponseBody) SetParamGroupId(v string) *DeleteParameterGroupResponseBody {
+	s.ParamGroupId = &v
+	return s
+}
+
+func (s *DeleteParameterGroupResponseBody) SetRequestId(v string) *DeleteParameterGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteParameterGroupResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteParameterGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteParameterGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteParameterGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteParameterGroupResponse) SetHeaders(v map[string]*string) *DeleteParameterGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteParameterGroupResponse) SetStatusCode(v int32) *DeleteParameterGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteParameterGroupResponse) SetBody(v *DeleteParameterGroupResponseBody) *DeleteParameterGroupResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteShardingNodeRequest struct {
 	// Specifies whether to enable forced transmission during a configuration change. Valid values:
 	//
@@ -3632,6 +4007,8 @@ type DeleteShardingNodeRequest struct {
 	// false
 	ForceTrans *bool `json:"ForceTrans,omitempty" xml:"ForceTrans,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3785,6 +4162,8 @@ type DescribeAccountsRequest struct {
 	// demoaccount
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -4068,6 +4447,8 @@ type DescribeActiveOperationTaskRequest struct {
 	//
 	// > A value of **all*	- indicates all region IDs.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// all
@@ -4075,13 +4456,15 @@ type DescribeActiveOperationTaskRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The type of the O\&M task. Valid values:
+	// The type of the O\\&M task. Valid values:
 	//
 	// 	- **rds_apsaradb_ha**: master-replica switchover
 	//
 	// 	- **rds_apsaradb_transfer**: instance migration
 	//
 	// 	- **rds_apsaradb_upgrade**: minor version update
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -4148,7 +4531,7 @@ func (s *DescribeActiveOperationTaskRequest) SetTaskType(v string) *DescribeActi
 }
 
 type DescribeActiveOperationTaskResponseBody struct {
-	// Details of O\&M tasks.
+	// Details of O\\&M tasks.
 	Items []*DescribeActiveOperationTaskResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number of the returned page.
 	//
@@ -4210,7 +4593,7 @@ func (s *DescribeActiveOperationTaskResponseBody) SetTotalRecordCount(v int32) *
 }
 
 type DescribeActiveOperationTaskResponseBodyItems struct {
-	// The time when the O\&M task was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the O\\&M task was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -4240,7 +4623,7 @@ type DescribeActiveOperationTaskResponseBodyItems struct {
 	//
 	// r-bp1lgal1sdvxrz****
 	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
-	// The time when the O\&M task was modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the O\\&M task was modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -4258,7 +4641,7 @@ type DescribeActiveOperationTaskResponseBodyItems struct {
 	//
 	// cn-hanghzou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The time when the O\&M task was preformed. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the O\\&M task was preformed. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -4402,7 +4785,9 @@ func (s *DescribeActiveOperationTaskResponse) SetBody(v *DescribeActiveOperation
 }
 
 type DescribeAuditLogConfigRequest struct {
-	// The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
+	// The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -4410,7 +4795,9 @@ type DescribeAuditLogConfigRequest struct {
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance. You can call the [DescribeInstanceAttribute](~~60996~~) operation to query the region ID of the instance.
+	// The region ID of the instance. You can call the [DescribeInstanceAttribute](https://help.aliyun.com/document_detail/60996.html) operation to query the region ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -4471,7 +4858,7 @@ type DescribeAuditLogConfigResponseBody struct {
 	//
 	// 	- **false**: disabled
 	//
-	// > You can call the [ModifyAuditLogConfig](~~130206~~) operation to enable or disable the audit log feature for an ApsaraDB for Redis instance.
+	// > You can call the [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/130206.html) operation to enable or disable the audit log feature for an ApsaraDB for Redis instance.
 	//
 	// example:
 	//
@@ -4560,6 +4947,8 @@ type DescribeAuditRecordsRequest struct {
 	//
 	// > We recommend that you specify a time range of 10 minutes or less because audit logs contain a great number of entries. Do not specify a time range that is longer than one day.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2019-03-25T12:10:00Z
@@ -4572,6 +4961,8 @@ type DescribeAuditRecordsRequest struct {
 	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
 	// The ID of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
@@ -4582,7 +4973,7 @@ type DescribeAuditRecordsRequest struct {
 	//
 	// 	- This parameter is available only for read/write splitting or cluster instances of ApsaraDB for Redis.
 	//
-	// 	- You can call the [DescribeLogicInstanceTopology](~~94665~~) operation to query node IDs.
+	// 	- You can call the [DescribeLogicInstanceTopology](https://help.aliyun.com/document_detail/94665.html) operation to query node IDs.
 	//
 	// example:
 	//
@@ -4614,6 +5005,8 @@ type DescribeAuditRecordsRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -5006,7 +5399,7 @@ type DescribeAvailableResourceRequest struct {
 	//
 	// professional
 	InstanceScene *string `json:"InstanceScene,omitempty" xml:"InstanceScene,omitempty"`
-	// The ID of the data node for which you want to query available resources that can be created. You can call the [DescribeLogicInstanceTopology](~~94665~~) operation to query the ID of the data node. Remove the number sign (`#`) and the content that follows the number sign. For example, retain only r-bp10noxlhcoim2\*\*\*\*-db-0.
+	// The ID of the data node for which you want to query available resources that can be created. You can call the [DescribeLogicInstanceTopology](https://help.aliyun.com/document_detail/94665.html) operation to query the ID of the data node. Remove the number sign (`#`) and the content that follows the number sign. For example, retain only r-bp10noxlhcoim2\\*\\*\\*\\*-db-0.
 	//
 	// > Before you specify this parameter, you must set the **InstanceId*	- parameter to the ID of an instance that uses the cluster or read/write splitting architecture.
 	//
@@ -5044,15 +5437,17 @@ type DescribeAvailableResourceRequest struct {
 	//
 	// Local
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](~~61012~~) operation to query the most recent region list.
+	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61012.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the instance belongs. You can call the [ListResourceGroups](~~158855~~) operation to query the IDs of resource groups.
+	// The ID of the resource group to which the instance belongs. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query the IDs of resource groups.
 	//
-	// > You can also query the IDs of resource groups in the Resource Management console. For more information, see [View basic information about a resource group](~~151181~~).
+	// > You can also query the IDs of resource groups in the Resource Management console. For more information, see [View basic information about a resource group](https://help.aliyun.com/document_detail/151181.html).
 	//
 	// example:
 	//
@@ -5061,7 +5456,7 @@ type DescribeAvailableResourceRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The zone ID of the instance. You can call the [DescribeZones](~~94527~~) operation to query the most recent zone list.
+	// The zone ID of the instance. You can call the [DescribeZones](https://help.aliyun.com/document_detail/94527.html) operation to query the most recent zone list.
 	//
 	// example:
 	//
@@ -5687,6 +6082,8 @@ func (s *DescribeAvailableResourceResponse) SetBody(v *DescribeAvailableResource
 type DescribeBackupPolicyRequest struct {
 	// The ID of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
@@ -5979,13 +6376,15 @@ type DescribeBackupTasksRequest struct {
 	BackupJobId *string `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
 	// The details of the backup tasks.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The backup mode. Valid values:
 	//
-	// 	- **Automated**: automatic backup. You can call the [DescribeBackupPolicy](~~61078~~) operation to query the automatic backup policy.
+	// 	- **Automated**: automatic backup. You can call the [DescribeBackupPolicy](https://help.aliyun.com/document_detail/61078.html) operation to query the automatic backup policy.
 	//
 	// 	- **Manual**: manual backup.
 	//
@@ -6347,11 +6746,15 @@ type DescribeBackupsRequest struct {
 	BackupJobId *int64 `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
 	// The end of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2019-03-14T18:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the instance whose backup files you want to query.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -6387,6 +6790,8 @@ type DescribeBackupsRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -6782,7 +7187,8 @@ type DescribeBackupsResponseBodyBackupsBackup struct {
 	// example:
 	//
 	// r-bp10noxlhcoim2****-db-1
-	NodeInstanceId *string `json:"NodeInstanceId,omitempty" xml:"NodeInstanceId,omitempty"`
+	NodeInstanceId    *string `json:"NodeInstanceId,omitempty" xml:"NodeInstanceId,omitempty"`
+	RecoverConfigMode *string `json:"RecoverConfigMode,omitempty" xml:"RecoverConfigMode,omitempty"`
 }
 
 func (s DescribeBackupsResponseBodyBackupsBackup) String() string {
@@ -6863,6 +7269,11 @@ func (s *DescribeBackupsResponseBodyBackupsBackup) SetNodeInstanceId(v string) *
 	return s
 }
 
+func (s *DescribeBackupsResponseBodyBackupsBackup) SetRecoverConfigMode(v string) *DescribeBackupsResponseBodyBackupsBackup {
+	s.RecoverConfigMode = &v
+	return s
+}
+
 type DescribeBackupsResponse struct {
 	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -6895,17 +7306,23 @@ func (s *DescribeBackupsResponse) SetBody(v *DescribeBackupsResponseBody) *Descr
 type DescribeCacheAnalysisReportRequest struct {
 	// The type of analytics. Set the value to **BigKey**.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// BigKey
 	AnalysisType *string `json:"AnalysisType,omitempty" xml:"AnalysisType,omitempty"`
 	// The date to query. You can query the report for one day each time. Specify the date in the *yyyy-MM-dd*Z format. The time must be in UTC.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2019-08-05Z
 	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -7126,6 +7543,8 @@ type DescribeCacheAnalysisReportListRequest struct {
 	// 7
 	Days *int32 `json:"Days,omitempty" xml:"Days,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -7418,11 +7837,15 @@ type DescribeClusterBackupListRequest struct {
 	ClusterBackupId *string `json:"ClusterBackupId,omitempty" xml:"ClusterBackupId,omitempty"`
 	// The end of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2021-05-13T00:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -7442,7 +7865,9 @@ type DescribeClusterBackupListRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](~~61012~~) operation to query the most recent region list.
+	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61012.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -7452,6 +7877,8 @@ type DescribeClusterBackupListRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -7831,7 +8258,8 @@ type DescribeClusterBackupListResponseBodyClusterBackupsBackups struct {
 	// example:
 	//
 	// 1
-	IsAvail *string `json:"IsAvail,omitempty" xml:"IsAvail,omitempty"`
+	IsAvail           *string `json:"IsAvail,omitempty" xml:"IsAvail,omitempty"`
+	RecoverConfigMode *string `json:"RecoverConfigMode,omitempty" xml:"RecoverConfigMode,omitempty"`
 }
 
 func (s DescribeClusterBackupListResponseBodyClusterBackupsBackups) String() string {
@@ -7902,6 +8330,11 @@ func (s *DescribeClusterBackupListResponseBodyClusterBackupsBackups) SetIsAvail(
 	return s
 }
 
+func (s *DescribeClusterBackupListResponseBodyClusterBackupsBackups) SetRecoverConfigMode(v string) *DescribeClusterBackupListResponseBodyClusterBackupsBackups {
+	s.RecoverConfigMode = &v
+	return s
+}
+
 type DescribeClusterBackupListResponseBodyClusterBackupsBackupsExtraInfo struct {
 	// The engine version.
 	//
@@ -7954,7 +8387,9 @@ func (s *DescribeClusterBackupListResponse) SetBody(v *DescribeClusterBackupList
 }
 
 type DescribeClusterMemberInfoRequest struct {
-	// The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](~~60933~~) operation to query instance IDs.
+	// The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -8085,7 +8520,7 @@ type DescribeClusterMemberInfoResponseBodyClusterChildren struct {
 	//
 	// 1024
 	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// The specifications of the data node. For more information, see [Community Edition instances that use cloud disks](~~164477~~).
+	// The specifications of the data node. For more information, see [Community Edition instances that use cloud disks](https://help.aliyun.com/document_detail/164477.html).
 	//
 	// example:
 	//
@@ -8105,7 +8540,7 @@ type DescribeClusterMemberInfoResponseBodyClusterChildren struct {
 	//
 	// 100
 	CurrentBandWidth *int64 `json:"CurrentBandWidth,omitempty" xml:"CurrentBandWidth,omitempty"`
-	// The storage capacity of the [enhanced SSD (ESSD)](~~122389~~) that is used by the data node. Unit: MB.
+	// The storage capacity of the [enhanced SSD (ESSD)](https://help.aliyun.com/document_detail/122389.html) that is used by the data node. Unit: MB.
 	//
 	// > The ESSD is used only to store system operating data, such as Persistent Memory (PMEM). It is not used as a medium to write and read data.
 	//
@@ -8275,6 +8710,8 @@ func (s *DescribeClusterMemberInfoResponse) SetBody(v *DescribeClusterMemberInfo
 
 type DescribeDBInstanceNetInfoRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -8581,6 +9018,8 @@ func (s *DescribeDBInstanceNetInfoResponse) SetBody(v *DescribeDBInstanceNetInfo
 type DescribeDBNodeDirectVipInfoRequest struct {
 	// The instance ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
@@ -8776,7 +9215,7 @@ type DescribeDedicatedClusterInstanceListRequest struct {
 	//
 	// dhg-5f2v98840ioq****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the host in the dedicated cluster. You can call the [DescribeDedicatedHosts](~~200944~~) operation to query the host ID.
+	// The ID of the host in the dedicated cluster. You can call the [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/200944.html) operation to query the host ID.
 	//
 	// > Separate multiple IDs with commas (,).
 	//
@@ -8798,7 +9237,7 @@ type DescribeDedicatedClusterInstanceListRequest struct {
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The ID of the instance.
 	//
-	// > The instance must be created by using a dedicated cluster. For more information, see [What is ApsaraDB for MyBase?](~~141455~~)
+	// > The instance must be created by using a dedicated cluster. For more information, see [What is ApsaraDB for MyBase?](https://help.aliyun.com/document_detail/141455.html)
 	//
 	// example:
 	//
@@ -8852,7 +9291,9 @@ type DescribeDedicatedClusterInstanceListRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](~~61012~~) operation to query the most recent region list.
+	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61012.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -8861,7 +9302,7 @@ type DescribeDedicatedClusterInstanceListRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The zone ID of the instance. You can call the [DescribeZones](~~94527~~) operation to query the most recent zone list.
+	// The zone ID of the instance. You can call the [DescribeZones](https://help.aliyun.com/document_detail/94527.html) operation to query the most recent zone list.
 	//
 	// example:
 	//
@@ -9158,7 +9599,7 @@ type DescribeDedicatedClusterInstanceListResponseBodyInstances struct {
 	//
 	// 	- If the return value is **0**, the proxy mode is disabled for the instance. If the return value is an integer greater than **0**, such as **1**, the proxy mode is enabled for the instance.
 	//
-	// 	- This parameter is returned only when the instance is a cluster instance. For more information about cluster instances, see [Cluster master-replica instances](~~52228~~).
+	// 	- This parameter is returned only when the instance is a cluster instance. For more information about cluster instances, see [Cluster master-replica instances](https://help.aliyun.com/document_detail/52228.html).
 	//
 	// example:
 	//
@@ -9172,13 +9613,13 @@ type DescribeDedicatedClusterInstanceListResponseBodyInstances struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The number of shards.
 	//
-	// >  This parameter is returned only when the instance is a cluster instance. For more information about cluster instances, see [Cluster master-replica instances](~~52228~~).
+	// >  This parameter is returned only when the instance is a cluster instance. For more information about cluster instances, see [Cluster master-replica instances](https://help.aliyun.com/document_detail/52228.html).
 	//
 	// example:
 	//
 	// 3
 	ShardCount *int32 `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
-	// The storage type of the instance. The return value is LOCAL_SSD, which indicates [enhanced SSDs (ESSDs)](~~122389~~).
+	// The storage type of the instance. The return value is LOCAL_SSD, which indicates [enhanced SSDs (ESSDs)](https://help.aliyun.com/document_detail/122389.html).
 	//
 	// example:
 	//
@@ -9471,13 +9912,15 @@ func (s *DescribeDedicatedClusterInstanceListResponse) SetBody(v *DescribeDedica
 }
 
 type DescribeEncryptionKeyRequest struct {
-	// The ID of the custom key. You can call the [DescribeEncryptionKeyList](~~302339~~) operation to query the ID of the key.
+	// The ID of the custom key. You can call the [DescribeEncryptionKeyList](https://help.aliyun.com/document_detail/302339.html) operation to query the ID of the key.
 	//
 	// example:
 	//
 	// ad463061-992d-4195-8a94-ed63********
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
-	// The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
+	// The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -9590,7 +10033,7 @@ type DescribeEncryptionKeyResponseBody struct {
 	//
 	// 2021-09-24T18:22:03Z
 	MaterialExpireTime *string `json:"MaterialExpireTime,omitempty" xml:"MaterialExpireTime,omitempty"`
-	// The source of the custom key. A value of **Aliyun_KMS*	- indicates [Key Management Service (KMS)](~~28935~~) of Alibaba Cloud.
+	// The source of the custom key. A value of **Aliyun_KMS*	- indicates [Key Management Service (KMS)](https://help.aliyun.com/document_detail/28935.html) of Alibaba Cloud.
 	//
 	// example:
 	//
@@ -9703,7 +10146,9 @@ func (s *DescribeEncryptionKeyResponse) SetBody(v *DescribeEncryptionKeyResponse
 }
 
 type DescribeEncryptionKeyListRequest struct {
-	// The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
+	// The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -9830,7 +10275,9 @@ func (s *DescribeEncryptionKeyListResponse) SetBody(v *DescribeEncryptionKeyList
 }
 
 type DescribeEngineVersionRequest struct {
-	// The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query instance IDs.
+	// The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -9888,7 +10335,7 @@ type DescribeEngineVersionResponseBody struct {
 	//
 	// example:
 	//
-	// {\"releaseInfo\":{\"createTime\":\"2021-07-27\",\"level\":1,\"releaseVersion\":\"0.5.4\",\"releaseNote\":\"功能更新：增强稳定性。\"}],\"versionChangesLevel\":2}
+	// {\\"releaseInfo\\":{\\"createTime\\":\\"2021-07-27\\",\\"level\\":1,\\"releaseVersion\\":\\"0.5.4\\",\\"releaseNote\\":\\"功能更新：增强稳定性。\\"}],\\"versionChangesLevel\\":2}
 	DBVersionRelease *string `json:"DBVersionRelease,omitempty" xml:"DBVersionRelease,omitempty"`
 	// Indicates whether the major version can be upgraded for the instance. Valid values:
 	//
@@ -9896,7 +10343,7 @@ type DescribeEngineVersionResponseBody struct {
 	//
 	// 	- **false**: The major version is the latest version and cannot be upgraded.
 	//
-	// >  To upgrade the major version, call the [ModifyInstanceMajorVersion](~~95259~~) operation.
+	// >  To upgrade the major version, call the [ModifyInstanceMajorVersion](https://help.aliyun.com/document_detail/95259.html) operation.
 	//
 	// example:
 	//
@@ -9908,7 +10355,7 @@ type DescribeEngineVersionResponseBody struct {
 	//
 	// 	- **false**: The minor version is the latest version and cannot be updated.
 	//
-	// >  To update the minor version, call the [ModifyInstanceMinorVersion](~~129381~~) operation.
+	// >  To update the minor version, call the [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/129381.html) operation.
 	//
 	// example:
 	//
@@ -9983,7 +10430,7 @@ type DescribeEngineVersionResponseBody struct {
 	//
 	// example:
 	//
-	// {\"releaseInfo\":[{\"createTime\":\"2021-06-08\",\"level\":0,\"releaseVersion\":\"6.6.2\",\"releaseNote\":\"新特性：增加对部分内部命令的支持。\"}],\"versionChangesLevel\":2}
+	// {\\"releaseInfo\\":[{\\"createTime\\":\\"2021-06-08\\",\\"level\\":0,\\"releaseVersion\\":\\"6.6.2\\",\\"releaseNote\\":\\"新特性：增加对部分内部命令的支持。\\"}],\\"versionChangesLevel\\":2}
 	ProxyVersionRelease *string `json:"ProxyVersionRelease,omitempty" xml:"ProxyVersionRelease,omitempty"`
 	// The ID of the request.
 	//
@@ -10651,11 +11098,11 @@ type DescribeGlobalDistributeCacheResponseBodyGlobalDistributeCachesSubInstances
 	GlobalInstanceId *string `json:"GlobalInstanceId,omitempty" xml:"GlobalInstanceId,omitempty"`
 	// The instance type of the child instance. For more information, see the following topics:
 	//
-	// 	- [Standard DRAM-based instances](~~145228~~)
+	// 	- [Standard DRAM-based instances](https://help.aliyun.com/document_detail/145228.html)
 	//
-	// 	- [Cluster DRAM-based instances](~~150458~~)
+	// 	- [Cluster DRAM-based instances](https://help.aliyun.com/document_detail/150458.html)
 	//
-	// 	- [Read/write splitting DRAM-based instances](~~150459~~)
+	// 	- [Read/write splitting DRAM-based instances](https://help.aliyun.com/document_detail/150459.html)
 	//
 	// example:
 	//
@@ -10699,7 +11146,7 @@ type DescribeGlobalDistributeCacheResponseBodyGlobalDistributeCachesSubInstances
 	//
 	// 	- **MajorVersionUpgrading**: The major version of the instance is being upgraded. The instance remains available during the upgrade.
 	//
-	// >  For more information about instance states, see [Instance states and impacts](~~200740~~).
+	// >  For more information about instance states, see [Instance states and impacts](https://help.aliyun.com/document_detail/200740.html).
 	//
 	// example:
 	//
@@ -10785,6 +11232,8 @@ type DescribeGlobalSecurityIPGroupRequest struct {
 	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -10974,6 +11423,8 @@ func (s *DescribeGlobalSecurityIPGroupResponse) SetBody(v *DescribeGlobalSecurit
 type DescribeGlobalSecurityIPGroupRelationRequest struct {
 	// The instance ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// r-t4n885e834f6****
@@ -10981,6 +11432,8 @@ type DescribeGlobalSecurityIPGroupRelationRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -11178,11 +11631,15 @@ type DescribeHistoryMonitorValuesRequest struct {
 	//
 	// 	- If the number of data nodes in the instance is greater than 32, the time range to query for the Data Node Aggregation and Proxy Node Aggregation metrics cannot exceed 1 hour.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2022-11-06T00:30:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -11190,15 +11647,27 @@ type DescribeHistoryMonitorValuesRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The interval at which to collect monitoring data. Unit: minutes. Set the value to `01m`.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 01m
 	IntervalForHistory *string `json:"IntervalForHistory,omitempty" xml:"IntervalForHistory,omitempty"`
-	// The monitoring metrics. Separate the metrics with commas (,).
+	// The monitoring metrics. Separate the metrics with commas (,). Take CpuUsage as an example:
 	//
-	// 	- This parameter is empty by default. The UsedMemory and quotaMemory metrics are returned. For information about the metrics that are supported by ApsaraDB for Redis instances and their descriptions, see [View performance monitoring data](~~122091~~).
+	// 	- To query the overall CPU utilization of all data nodes, specify **CpuUsage$db**.
+	//
+	// 	- To query the CPU utilization of a single data node, specify **CpuUsage*	- and NodeId.
+	//
+	// For more information about the monitoring metrics, see **Additional description of MonitorKeys**.
+	//
+	// >
+	//
+	// 	- This parameter is empty by default, which indicates that the UsedMemory and quotaMemory metrics are returned.
 	//
 	// 	- To ensure query efficiency, we recommend that you specify no more than five metrics for a single node at a time, and specify only a single metric when you query aggregate metrics.
+	//
+	// [Additional description of MonitorKeys](https://help.aliyun.com/zh/redis/developer-reference/api-r-kvstore-2015-01-01-describehistorymonitorvalues-redis)
 	//
 	// example:
 	//
@@ -11208,12 +11677,19 @@ type DescribeHistoryMonitorValuesRequest struct {
 	//
 	// 	- This parameter is available only for read/write splitting or cluster instances of ApsaraDB for Redis.
 	//
-	// 	- You can call the [DescribeLogicInstanceTopology](~~94665~~) operation to query node IDs.
+	// 	- You can call the [DescribeLogicInstanceTopology](https://help.aliyun.com/document_detail/94665.html) operation to query node IDs.
 	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****-db-0#1679****
-	NodeId               *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// If you want to query the metrics of the read replicas in a cloud-native read/write splitting instance, you must set this parameter to **READONLY*	- and specify **NodeId**.
+	//
+	// > In other cases, you do not need to specify this parameter or you can set this parameter to **MASTER**.
+	//
+	// example:
+	//
+	// READONLY
 	NodeRole             *string `json:"NodeRole,omitempty" xml:"NodeRole,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -11221,6 +11697,8 @@ type DescribeHistoryMonitorValuesRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -11297,7 +11775,7 @@ func (s *DescribeHistoryMonitorValuesRequest) SetStartTime(v string) *DescribeHi
 }
 
 type DescribeHistoryMonitorValuesResponseBody struct {
-	// The monitoring information returned in the JSON format. For more information, see [View performance monitoring data](~~122091~~).
+	// The monitoring information returned in the JSON format. For more information, see [View performance monitoring data](https://help.aliyun.com/document_detail/122091.html).
 	//
 	// 	- Only metrics whose values are not 0 are returned. This improves data transmission efficiency. Metrics that are not displayed are represented by the **0*	- default value.
 	//
@@ -11305,7 +11783,7 @@ type DescribeHistoryMonitorValuesResponseBody struct {
 	//
 	// example:
 	//
-	// "{\"2022-11-06T00:00:00Z\":{\"memoryUsage\":\"6.67\"},\"2022-11-06T00:00:05Z\":{\"memoryUsage\":\"6.67\"},\"2022-11-06T00:00:10Z\":{\"memoryUsage\":\"6.67\"},\"2022-11-06T00:00:15Z\":{\"memoryUsage\":\"6.67\"},\"2022-11-06T00:00:20Z\":{\"memoryUsage\":\"6.67\"},\"2022-11-06T00:00:25Z\":{\"memoryUsage\":\"6.67\"}}"
+	// "{\\"2022-11-06T00:00:00Z\\":{\\"memoryUsage\\":\\"6.67\\"},\\"2022-11-06T00:00:05Z\\":{\\"memoryUsage\\":\\"6.67\\"},\\"2022-11-06T00:00:10Z\\":{\\"memoryUsage\\":\\"6.67\\"},\\"2022-11-06T00:00:15Z\\":{\\"memoryUsage\\":\\"6.67\\"},\\"2022-11-06T00:00:20Z\\":{\\"memoryUsage\\":\\"6.67\\"},\\"2022-11-06T00:00:25Z\\":{\\"memoryUsage\\":\\"6.67\\"}}"
 	MonitorHistory *string `json:"MonitorHistory,omitempty" xml:"MonitorHistory,omitempty"`
 	// The ID of the request.
 	//
@@ -11371,6 +11849,8 @@ type DescribeHistoryTasksRequest struct {
 	FromExecTime *int32 `json:"FromExecTime,omitempty" xml:"FromExecTime,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The start time can be up to 30 days earlier than the current time.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2022-01-02T11:31:03Z
@@ -11399,7 +11879,7 @@ type DescribeHistoryTasksRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID. You can call the [DescribeRegions](~~61012~~) operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61012.html) operation to query the most recent region list.
 	//
 	// example:
 	//
@@ -11465,6 +11945,8 @@ type DescribeHistoryTasksRequest struct {
 	// 0
 	ToExecTime *int32 `json:"ToExecTime,omitempty" xml:"ToExecTime,omitempty"`
 	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Only tasks that have a start time earlier than or equal to the time specified by this parameter are queried.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -11670,7 +12152,7 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	//
 	// example:
 	//
-	// {\"steps\":[{\"action_info\":{\"Waiting\":[\"modifySwitchTime\"]},\"step_name\":\"exec_task\"}]}
+	// {\\"steps\\":[{\\"action_info\\":{\\"Waiting\\":[\\"modifySwitchTime\\"]},\\"step_name\\":\\"exec_task\\"}]}
 	ActionInfo *string `json:"ActionInfo,omitempty" xml:"ActionInfo,omitempty"`
 	// The ID of the user who made the request. If CallerSource is set to User, CallerUid indicates the unique ID (UID) of the user.
 	//
@@ -11780,7 +12262,7 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	//
 	// example:
 	//
-	// {\"callerUid\":\"test\"}
+	// {\\"callerUid\\":\\"test\\"}
 	TaskDetail *string `json:"TaskDetail,omitempty" xml:"TaskDetail,omitempty"`
 	// The task ID.
 	//
@@ -11956,6 +12438,8 @@ func (s *DescribeHistoryTasksResponse) SetBody(v *DescribeHistoryTasksResponseBo
 type DescribeInstanceAttributeRequest struct {
 	// The ID of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
@@ -12064,7 +12548,7 @@ type DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute struct {
 	//
 	// standard
 	ArchitectureType *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
-	// The retention period of audit logs. Unit: day. A value of 0 indicates that the audit log feature is disabled. For information about how to enable the feature, see [Enable the audit log feature](~~102015~~).
+	// The retention period of audit logs. Unit: day. A value of 0 indicates that the audit log feature is disabled. For information about how to enable the feature, see [Enable the audit log feature](https://help.aliyun.com/document_detail/102015.html).
 	//
 	// example:
 	//
@@ -12080,9 +12564,9 @@ type DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute struct {
 	//
 	// >
 	//
-	// 	- This parameter is returned only when the data flashback feature is enabled for the instance. For more information, see [Restore data to a point in time by using the data flashback feature](~~148479~~).
+	// 	- This parameter is returned only when the data flashback feature is enabled for the instance. For more information, see [Restore data to a point in time by using the data flashback feature](https://help.aliyun.com/document_detail/148479.html).
 	//
-	// 	- When you call the [RestoreInstance](~~61083~~) operation to implement data flashback, you can obtain the earliest point in time for data flashback from the return value of this parameter and set the **RestoreTime*	- parameter to this point in time.
+	// 	- When you call the [RestoreInstance](https://help.aliyun.com/document_detail/61083.html) operation to implement data flashback, you can obtain the earliest point in time for data flashback from the return value of this parameter and set the **RestoreTime*	- parameter to this point in time.
 	//
 	// example:
 	//
@@ -12116,11 +12600,11 @@ type DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute struct {
 	//
 	// cloudbox
 	CloudType *string `json:"CloudType,omitempty" xml:"CloudType,omitempty"`
-	// The parameter configurations of the instance in the JSON format. For more information, see [Parameter descriptions](~~43885~~). You can use the [DescribeAuditLogConfig](~~473830~~) operation to query audit log configurations.
+	// The parameter configurations of the instance in the JSON format. For more information, see [Parameter descriptions](https://help.aliyun.com/document_detail/43885.html). You can use the [DescribeAuditLogConfig](https://help.aliyun.com/document_detail/473830.html) operation to query audit log configurations.
 	//
 	// example:
 	//
-	// {\"EvictionPolicy\":\"volatile-lru\",\"hash-max-ziplist-entries\":512,\"zset-max-ziplist-entries\":128,\"zset-max-ziplist-value\":64,\"set-max-intset-entries\":512,\"hash-max-ziplist-value\":64}
+	// {\\"EvictionPolicy\\":\\"volatile-lru\\",\\"hash-max-ziplist-entries\\":512,\\"zset-max-ziplist-entries\\":128,\\"zset-max-ziplist-value\\":64,\\"set-max-intset-entries\\":512,\\"hash-max-ziplist-value\\":64}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The internal endpoint of the instance.
 	//
@@ -12176,7 +12660,7 @@ type DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute struct {
 	//
 	// false
 	HasRenewChangeOrder *string `json:"HasRenewChangeOrder,omitempty" xml:"HasRenewChangeOrder,omitempty"`
-	// The instance type. For more information, see [Instance types](~~107984~~).
+	// The instance type. For more information, see [Instance types](https://help.aliyun.com/document_detail/107984.html).
 	//
 	// example:
 	//
@@ -12236,7 +12720,7 @@ type DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute struct {
 	//
 	// 	- **MajorVersionUpgrading**: The major version of the instance is being upgraded. The instance remains accessible during the upgrade.
 	//
-	// >  For more information about instance states, see [Instance states and impacts](~~200740~~).
+	// >  For more information about instance states, see [Instance states and impacts](https://help.aliyun.com/document_detail/200740.html).
 	//
 	// example:
 	//
@@ -12276,7 +12760,7 @@ type DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute struct {
 	IsRds *bool `json:"IsRds,omitempty" xml:"IsRds,omitempty"`
 	// Indicates whether the transparent data encryption (TDE) feature is supported for the instance. Valid values:
 	//
-	// 	- **true**: This feature is supported. This feature is available only for [DRAM-based](~~443827~~) instances that use local disks.
+	// 	- **true**: This feature is supported. This feature is available only for [DRAM-based](https://help.aliyun.com/document_detail/443827.html) instances that use local disks.
 	//
 	// 	- **false**: This feature is not supported.
 	//
@@ -12354,7 +12838,7 @@ type DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute struct {
 	ReadOnlyCount *int32 `json:"ReadOnlyCount,omitempty" xml:"ReadOnlyCount,omitempty"`
 	// If the instance is a cluster instance that uses cloud disks, this parameter indicates the actual instance type of individual shards in the instance. The InstanceClass parameter indicates the virtual instance type.
 	//
-	// >  To query fees for instances of the instance type, you can specify the instance type that is returned by this parameter in the [DescribePrice](~~95612~~) operation.
+	// >  To query fees for instances of the instance type, you can specify the instance type that is returned by this parameter in the [DescribePrice](https://help.aliyun.com/document_detail/95612.html) operation.
 	//
 	// example:
 	//
@@ -12438,7 +12922,7 @@ type DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute struct {
 	//
 	// 	- **Open**: Password authentication is enabled.
 	//
-	// 	- **Close**: Password authentication is disabled and [password-free access](~~85168~~) is enabled.
+	// 	- **Close**: Password authentication is disabled and [password-free access](https://help.aliyun.com/document_detail/85168.html) is enabled.
 	//
 	// example:
 	//
@@ -12859,6 +13343,8 @@ type DescribeInstanceAutoRenewalAttributeRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -13088,7 +13574,9 @@ func (s *DescribeInstanceAutoRenewalAttributeResponse) SetBody(v *DescribeInstan
 }
 
 type DescribeInstanceConfigRequest struct {
-	// The instance ID. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
+	// The instance ID. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -13140,11 +13628,11 @@ func (s *DescribeInstanceConfigRequest) SetSecurityToken(v string) *DescribeInst
 }
 
 type DescribeInstanceConfigResponseBody struct {
-	// The parameter settings of the instance. For more information, see [Parameter overview and configuration guide](~~43885~~).
+	// The parameter settings of the instance. For more information, see [Parameter overview and configuration guide](https://help.aliyun.com/document_detail/43885.html).
 	//
 	// example:
 	//
-	// {\"EvictionPolicy\":\"volatile-lru\",\"hash-max-ziplist-entries\":512,\"zset-max-ziplist-entries\":128,\"list-max-ziplist-entries\":512,\"list-max-ziplist-value\":64,\"zset-max-ziplist-value\":64,\"set-max-intset-entries\":512,\"hash-max-ziplist-value\":64}
+	// {\\"EvictionPolicy\\":\\"volatile-lru\\",\\"hash-max-ziplist-entries\\":512,\\"zset-max-ziplist-entries\\":128,\\"list-max-ziplist-entries\\":512,\\"list-max-ziplist-value\\":64,\\"zset-max-ziplist-value\\":64,\\"set-max-intset-entries\\":512,\\"hash-max-ziplist-value\\":64}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The request ID.
 	//
@@ -13203,6 +13691,8 @@ func (s *DescribeInstanceConfigResponse) SetBody(v *DescribeInstanceConfigRespon
 
 type DescribeInstanceSSLRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -13364,7 +13854,9 @@ func (s *DescribeInstanceSSLResponse) SetBody(v *DescribeInstanceSSLResponseBody
 }
 
 type DescribeInstanceTDEStatusRequest struct {
-	// The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](~~60933~~) operation to query instance IDs.
+	// The ID of the ApsaraDB for Redis instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -13554,7 +14046,7 @@ type DescribeInstancesRequest struct {
 	//
 	// true
 	GlobalInstance *bool `json:"GlobalInstance,omitempty" xml:"GlobalInstance,omitempty"`
-	// The instance type of the instance. For more information, see [Instance types](~~107984~~).
+	// The instance type of the instance. For more information, see [Instance types](https://help.aliyun.com/document_detail/107984.html).
 	//
 	// example:
 	//
@@ -13600,7 +14092,7 @@ type DescribeInstancesRequest struct {
 	//
 	// 	- **MajorVersionUpgrading**: The major version of the instance is being upgraded. The instance remains accessible during the upgrade.
 	//
-	// > For more information about instance states, see [Instance states and impacts](~~200740~~).
+	// > For more information about instance states, see [Instance states and impacts](https://help.aliyun.com/document_detail/200740.html).
 	//
 	// example:
 	//
@@ -13658,7 +14150,7 @@ type DescribeInstancesRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the instance belongs.
 	//
-	// > You can query resource group IDs by using the ApsaraDB for Redis console or by calling the [ListResourceGroups](~~158855~~) operation. For more information, see [View basic information of a resource group](~~151181~~).
+	// > You can query resource group IDs by using the ApsaraDB for Redis console or by calling the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation. For more information, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
 	//
 	// example:
 	//
@@ -13990,11 +14482,11 @@ type DescribeInstancesResponseBodyInstancesKVStoreInstance struct {
 	//
 	// cloudbox
 	CloudType *string `json:"CloudType,omitempty" xml:"CloudType,omitempty"`
-	// The parameter configurations of the instance. For more information, see [Modify parameters of an instance](~~43885~~).
+	// The parameter configurations of the instance. For more information, see [Modify parameters of an instance](https://help.aliyun.com/document_detail/43885.html).
 	//
 	// example:
 	//
-	// {\"maxmemory-policy\":\"volatile-lfu\",\"EvictionPolicy\":\"volatile-lru\",\"hash-max-ziplist-entries\":512,\"zset-max-ziplist-entries\":128,\"zset-max-ziplist-value\":64,\"set-max-intset-entries\":512,\"hash-max-ziplist-value\":64,\"#no_loose_disabled-commands\":\"flushall,flushdb\",\"lazyfree-lazy-eviction\":\"yes\"}
+	// {\\"maxmemory-policy\\":\\"volatile-lfu\\",\\"EvictionPolicy\\":\\"volatile-lru\\",\\"hash-max-ziplist-entries\\":512,\\"zset-max-ziplist-entries\\":128,\\"zset-max-ziplist-value\\":64,\\"set-max-intset-entries\\":512,\\"hash-max-ziplist-value\\":64,\\"#no_loose_disabled-commands\\":\\"flushall,flushdb\\",\\"lazyfree-lazy-eviction\\":\\"yes\\"}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The internal endpoint of the instance.
 	//
@@ -14222,7 +14714,7 @@ type DescribeInstancesResponseBodyInstancesKVStoreInstance struct {
 	//
 	// cn-hangzhou-h
 	SecondaryZoneId *string `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
-	// The shard class. For more information about shard classes, see [Overview](~~26350~~).
+	// The shard class. For more information about shard classes, see [Overview](https://help.aliyun.com/document_detail/26350.html).
 	//
 	// >  The overall performance of a cluster instance is calculated by multiplying the class of a single shard (ShardClass) by the number of shards (ShardCount).
 	//
@@ -14587,7 +15079,7 @@ type DescribeInstancesOverviewRequest struct {
 	//
 	// 4.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The instance type of the instance. For more information, see [Instance types](~~107984~~).
+	// The instance type of the instance. For more information, see [Instance types](https://help.aliyun.com/document_detail/107984.html).
 	//
 	// example:
 	//
@@ -14633,7 +15125,7 @@ type DescribeInstancesOverviewRequest struct {
 	//
 	// 	- **MajorVersionUpgrading**: The major version of the instance is being upgraded. The instance remains accessible during the upgrade.
 	//
-	// > For more information about instance states, see [Instance states and impacts](~~200740~~).
+	// > For more information about instance states, see [Instance states and impacts](https://help.aliyun.com/document_detail/200740.html).
 	//
 	// example:
 	//
@@ -14669,7 +15161,7 @@ type DescribeInstancesOverviewRequest struct {
 	//
 	// 172.16.49.***
 	PrivateIp *string `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
-	// The ID of the region in which the instances you want to query reside. You can call the [DescribeRegions](~~61012~~) operation to query the most recent region list.
+	// The ID of the region in which the instances you want to query reside. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61012.html) operation to query the most recent region list.
 	//
 	// example:
 	//
@@ -14677,7 +15169,7 @@ type DescribeInstancesOverviewRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the instances you want to query belong.
 	//
-	// > You can query resource group IDs by using the ApsaraDB for Redis console or by calling the [ListResourceGroups](~~158855~~) operation. For more information, see [View basic information of a resource group](~~151181~~).
+	// > You can query resource group IDs by using the ApsaraDB for Redis console or by calling the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation. For more information, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
 	//
 	// example:
 	//
@@ -15022,7 +15514,7 @@ type DescribeInstancesOverviewResponseBodyInstances struct {
 	//
 	// rg-acfmyiu4ekp****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Instance\"s secondary zone id.
+	// Instance\\"s secondary zone id.
 	//
 	// > This parameter is only returned when the instance has a secondary zone ID.
 	//
@@ -15194,6 +15686,8 @@ func (s *DescribeInstancesOverviewResponse) SetBody(v *DescribeInstancesOverview
 
 type DescribeIntranetAttributeRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -15394,6 +15888,8 @@ func (s *DescribeIntranetAttributeResponse) SetBody(v *DescribeIntranetAttribute
 
 type DescribeLogicInstanceTopologyRequest struct {
 	// The ID of the instance whose topology information you want to query.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -15753,9 +16249,9 @@ func (s *DescribeMonitorItemsRequest) SetSecurityToken(v string) *DescribeMonito
 type DescribeMonitorItemsResponseBody struct {
 	// The returned metrics.
 	//
-	// > 	- **memoryUsage**, **GetQps**, and **PutQps*	- are supported only by ApsaraDB for Redis instances that use Redis 4.0 or later. **GetQps*	- and **PutQps*	- require the latest minor version. You can upgrade the major version or minor version of the instance as needed. For more information, see [Upgrade the major version](~~101764~~) and [Upgrade the minor version](~~56450~~).
+	// > 	- **memoryUsage**, **GetQps**, and **PutQps*	- are supported only by ApsaraDB for Redis instances that use Redis 4.0 or later. **GetQps*	- and **PutQps*	- require the latest minor version. You can upgrade the major version or minor version of the instance as needed. For more information, see [Upgrade the major version](https://help.aliyun.com/document_detail/101764.html) and [Upgrade the minor version](https://help.aliyun.com/document_detail/56450.html).
 	//
-	// > 	- When you use instances of Redis 2.8, if the **hit_rate*	- metric is not displayed, you must upgrade the minor version of the instance. For more information, see [Upgrade the minor version](~~56450~~).
+	// > 	- When you use instances of Redis 2.8, if the **hit_rate*	- metric is not displayed, you must upgrade the minor version of the instance. For more information, see [Upgrade the minor version](https://help.aliyun.com/document_detail/56450.html).
 	MonitorItems *DescribeMonitorItemsResponseBodyMonitorItems `json:"MonitorItems,omitempty" xml:"MonitorItems,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -15862,14 +16358,980 @@ func (s *DescribeMonitorItemsResponse) SetBody(v *DescribeMonitorItemsResponseBo
 	return s
 }
 
+type DescribeParameterGroupRequest struct {
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the parameter template.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rpg-sys-00*****
+	ParameterGroupId     *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DescribeParameterGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterGroupRequest) SetOwnerAccount(v string) *DescribeParameterGroupRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeParameterGroupRequest) SetOwnerId(v int64) *DescribeParameterGroupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeParameterGroupRequest) SetParameterGroupId(v string) *DescribeParameterGroupRequest {
+	s.ParameterGroupId = &v
+	return s
+}
+
+func (s *DescribeParameterGroupRequest) SetRegionId(v string) *DescribeParameterGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeParameterGroupRequest) SetResourceOwnerAccount(v string) *DescribeParameterGroupRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeParameterGroupRequest) SetResourceOwnerId(v int64) *DescribeParameterGroupRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeParameterGroupRequest) SetSecurityToken(v string) *DescribeParameterGroupRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DescribeParameterGroupResponseBody struct {
+	// The information about the parameter template.
+	ParameterGroup *DescribeParameterGroupResponseBodyParameterGroup `json:"ParameterGroup,omitempty" xml:"ParameterGroup,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// A501A191-BD70-5E50-98A9-C2A486A82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeParameterGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterGroupResponseBody) SetParameterGroup(v *DescribeParameterGroupResponseBodyParameterGroup) *DescribeParameterGroupResponseBody {
+	s.ParameterGroup = v
+	return s
+}
+
+func (s *DescribeParameterGroupResponseBody) SetRequestId(v string) *DescribeParameterGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeParameterGroupResponseBodyParameterGroup struct {
+	// The service category. Valid values:
+	//
+	// 	- **0**: Community Edition
+	//
+	// 	- **1**: Enhanced Edition (Tair)
+	//
+	// example:
+	//
+	// 1
+	Category *int64 `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The time when the parameter template was created.
+	//
+	// example:
+	//
+	// 2023-04-18 16:32:45
+	Created *string `json:"Created,omitempty" xml:"Created,omitempty"`
+	// example:
+	//
+	// redis
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The compatible engine version.
+	//
+	// example:
+	//
+	// 5.0
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The time when the parameter template was last modified.
+	//
+	// example:
+	//
+	// 2023-04-18 16:32:45
+	Modified *string `json:"Modified,omitempty" xml:"Modified,omitempty"`
+	// The parameter template ID, which is globally unique.
+	//
+	// example:
+	//
+	// sys-001*****
+	ParamGroupId *string `json:"ParamGroupId,omitempty" xml:"ParamGroupId,omitempty"`
+	// The parameter details of the parameter template.
+	ParamGroupsDetails []*DescribeParameterGroupResponseBodyParameterGroupParamGroupsDetails `json:"ParamGroupsDetails,omitempty" xml:"ParamGroupsDetails,omitempty" type:"Repeated"`
+	// The description of the parameter template.
+	//
+	// example:
+	//
+	// test
+	ParameterGroupDesc *string `json:"ParameterGroupDesc,omitempty" xml:"ParameterGroupDesc,omitempty"`
+	// The name of the parameter template.
+	//
+	// example:
+	//
+	// testGroupName
+	ParameterGroupName *string `json:"ParameterGroupName,omitempty" xml:"ParameterGroupName,omitempty"`
+}
+
+func (s DescribeParameterGroupResponseBodyParameterGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterGroupResponseBodyParameterGroup) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterGroupResponseBodyParameterGroup) SetCategory(v int64) *DescribeParameterGroupResponseBodyParameterGroup {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribeParameterGroupResponseBodyParameterGroup) SetCreated(v string) *DescribeParameterGroupResponseBodyParameterGroup {
+	s.Created = &v
+	return s
+}
+
+func (s *DescribeParameterGroupResponseBodyParameterGroup) SetEngine(v string) *DescribeParameterGroupResponseBodyParameterGroup {
+	s.Engine = &v
+	return s
+}
+
+func (s *DescribeParameterGroupResponseBodyParameterGroup) SetEngineVersion(v string) *DescribeParameterGroupResponseBodyParameterGroup {
+	s.EngineVersion = &v
+	return s
+}
+
+func (s *DescribeParameterGroupResponseBodyParameterGroup) SetModified(v string) *DescribeParameterGroupResponseBodyParameterGroup {
+	s.Modified = &v
+	return s
+}
+
+func (s *DescribeParameterGroupResponseBodyParameterGroup) SetParamGroupId(v string) *DescribeParameterGroupResponseBodyParameterGroup {
+	s.ParamGroupId = &v
+	return s
+}
+
+func (s *DescribeParameterGroupResponseBodyParameterGroup) SetParamGroupsDetails(v []*DescribeParameterGroupResponseBodyParameterGroupParamGroupsDetails) *DescribeParameterGroupResponseBodyParameterGroup {
+	s.ParamGroupsDetails = v
+	return s
+}
+
+func (s *DescribeParameterGroupResponseBodyParameterGroup) SetParameterGroupDesc(v string) *DescribeParameterGroupResponseBodyParameterGroup {
+	s.ParameterGroupDesc = &v
+	return s
+}
+
+func (s *DescribeParameterGroupResponseBodyParameterGroup) SetParameterGroupName(v string) *DescribeParameterGroupResponseBodyParameterGroup {
+	s.ParameterGroupName = &v
+	return s
+}
+
+type DescribeParameterGroupResponseBodyParameterGroupParamGroupsDetails struct {
+	// The name of the parameter.
+	//
+	// example:
+	//
+	// timeout
+	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
+	// The value of the parameter.
+	//
+	// example:
+	//
+	// 1000
+	ParamValue *string `json:"ParamValue,omitempty" xml:"ParamValue,omitempty"`
+}
+
+func (s DescribeParameterGroupResponseBodyParameterGroupParamGroupsDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterGroupResponseBodyParameterGroupParamGroupsDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterGroupResponseBodyParameterGroupParamGroupsDetails) SetParamName(v string) *DescribeParameterGroupResponseBodyParameterGroupParamGroupsDetails {
+	s.ParamName = &v
+	return s
+}
+
+func (s *DescribeParameterGroupResponseBodyParameterGroupParamGroupsDetails) SetParamValue(v string) *DescribeParameterGroupResponseBodyParameterGroupParamGroupsDetails {
+	s.ParamValue = &v
+	return s
+}
+
+type DescribeParameterGroupResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeParameterGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeParameterGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterGroupResponse) SetHeaders(v map[string]*string) *DescribeParameterGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeParameterGroupResponse) SetStatusCode(v int32) *DescribeParameterGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeParameterGroupResponse) SetBody(v *DescribeParameterGroupResponseBody) *DescribeParameterGroupResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeParameterGroupSupportParamRequest struct {
+	// The service category. Valid values:
+	//
+	// 	- **standard**: Community Edition
+	//
+	// 	- **enterprise**: Enhanced Edition (Tair)
+	//
+	// example:
+	//
+	// standard
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The engine type. Valid values:
+	//
+	// 	- **redis**: Redis or Tair DRAM-based instances
+	//
+	// 	- **tair_pena**: Tair persistent memory-optimized instances
+	//
+	// 	- **tair_pdb**: Tair ESSD-based instances
+	//
+	// example:
+	//
+	// redis
+	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	// The engine version.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5
+	EngineVersion        *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DescribeParameterGroupSupportParamRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterGroupSupportParamRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterGroupSupportParamRequest) SetCategory(v string) *DescribeParameterGroupSupportParamRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribeParameterGroupSupportParamRequest) SetEngineType(v string) *DescribeParameterGroupSupportParamRequest {
+	s.EngineType = &v
+	return s
+}
+
+func (s *DescribeParameterGroupSupportParamRequest) SetEngineVersion(v string) *DescribeParameterGroupSupportParamRequest {
+	s.EngineVersion = &v
+	return s
+}
+
+func (s *DescribeParameterGroupSupportParamRequest) SetOwnerAccount(v string) *DescribeParameterGroupSupportParamRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeParameterGroupSupportParamRequest) SetOwnerId(v int64) *DescribeParameterGroupSupportParamRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeParameterGroupSupportParamRequest) SetResourceOwnerAccount(v string) *DescribeParameterGroupSupportParamRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeParameterGroupSupportParamRequest) SetResourceOwnerId(v int64) *DescribeParameterGroupSupportParamRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeParameterGroupSupportParamRequest) SetSecurityToken(v string) *DescribeParameterGroupSupportParamRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DescribeParameterGroupSupportParamResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// BB73740C-23E2-4392-9DA4-2660C74C****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The parameters.
+	ResourceList []*DescribeParameterGroupSupportParamResponseBodyResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeParameterGroupSupportParamResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterGroupSupportParamResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterGroupSupportParamResponseBody) SetRequestId(v string) *DescribeParameterGroupSupportParamResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeParameterGroupSupportParamResponseBody) SetResourceList(v []*DescribeParameterGroupSupportParamResponseBodyResourceList) *DescribeParameterGroupSupportParamResponseBody {
+	s.ResourceList = v
+	return s
+}
+
+type DescribeParameterGroupSupportParamResponseBodyResourceList struct {
+	// The service category.
+	//
+	// example:
+	//
+	// standard
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The engine type.
+	//
+	// example:
+	//
+	// redis
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The engine version.
+	//
+	// example:
+	//
+	// 5
+	DbVersion *string `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
+	// The name of the parameter.
+	//
+	// example:
+	//
+	// rt_threshold_ms
+	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
+}
+
+func (s DescribeParameterGroupSupportParamResponseBodyResourceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterGroupSupportParamResponseBodyResourceList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterGroupSupportParamResponseBodyResourceList) SetCategory(v string) *DescribeParameterGroupSupportParamResponseBodyResourceList {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribeParameterGroupSupportParamResponseBodyResourceList) SetDbType(v string) *DescribeParameterGroupSupportParamResponseBodyResourceList {
+	s.DbType = &v
+	return s
+}
+
+func (s *DescribeParameterGroupSupportParamResponseBodyResourceList) SetDbVersion(v string) *DescribeParameterGroupSupportParamResponseBodyResourceList {
+	s.DbVersion = &v
+	return s
+}
+
+func (s *DescribeParameterGroupSupportParamResponseBodyResourceList) SetParamName(v string) *DescribeParameterGroupSupportParamResponseBodyResourceList {
+	s.ParamName = &v
+	return s
+}
+
+type DescribeParameterGroupSupportParamResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeParameterGroupSupportParamResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeParameterGroupSupportParamResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterGroupSupportParamResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterGroupSupportParamResponse) SetHeaders(v map[string]*string) *DescribeParameterGroupSupportParamResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeParameterGroupSupportParamResponse) SetStatusCode(v int32) *DescribeParameterGroupSupportParamResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeParameterGroupSupportParamResponse) SetBody(v *DescribeParameterGroupSupportParamResponseBody) *DescribeParameterGroupSupportParamResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeParameterGroupTemplateListRequest struct {
+	// The service category. Valid values:
+	//
+	// standard: Community Edition enterprise: Enhanced Edition (Tair)
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// standard
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The role of the instance. Valid values: logic: logical instance. db: database instance. proxy: proxy node. cs: ConfigServer node. normal: master-replica database instance.
+	//
+	// example:
+	//
+	// db
+	CharacterType *string `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
+	// The engine type. Valid values:
+	//
+	// redis: Redis or Tair DRAM-based instance tair_pena: Tair persistent memory-optimized instance tair_pdb: Tair ESSD-based instance
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// redis
+	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	// The compatible engine version. Valid values:
+	//
+	// ApsaraDB for Redis Community Edition: 5.0, 6.0, and 7.0. Tair DRAM-based instances: 5.0 and 6.0. Tair persistent memory-optimized instances: 6.0. Tair ESSD-based instances: 4.0.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5.0
+	EngineVersion        *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DescribeParameterGroupTemplateListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterGroupTemplateListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterGroupTemplateListRequest) SetCategory(v string) *DescribeParameterGroupTemplateListRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribeParameterGroupTemplateListRequest) SetCharacterType(v string) *DescribeParameterGroupTemplateListRequest {
+	s.CharacterType = &v
+	return s
+}
+
+func (s *DescribeParameterGroupTemplateListRequest) SetEngineType(v string) *DescribeParameterGroupTemplateListRequest {
+	s.EngineType = &v
+	return s
+}
+
+func (s *DescribeParameterGroupTemplateListRequest) SetEngineVersion(v string) *DescribeParameterGroupTemplateListRequest {
+	s.EngineVersion = &v
+	return s
+}
+
+func (s *DescribeParameterGroupTemplateListRequest) SetOwnerAccount(v string) *DescribeParameterGroupTemplateListRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeParameterGroupTemplateListRequest) SetOwnerId(v int64) *DescribeParameterGroupTemplateListRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeParameterGroupTemplateListRequest) SetResourceOwnerAccount(v string) *DescribeParameterGroupTemplateListRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeParameterGroupTemplateListRequest) SetResourceOwnerId(v int64) *DescribeParameterGroupTemplateListRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeParameterGroupTemplateListRequest) SetSecurityToken(v string) *DescribeParameterGroupTemplateListRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DescribeParameterGroupTemplateListResponseBody struct {
+	// The compatible engine version. Valid values:
+	//
+	// ApsaraDB for Redis Community Edition: 5.0, 6.0, and 7.0. Tair DRAM-based instances: 5.0 and 6.0. Tair persistent memory-optimized instances: 6.0. Tair ESSD-based instances: 4.0.
+	//
+	// example:
+	//
+	// 5
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The information about parameters.
+	Parameters []*DescribeParameterGroupTemplateListResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 5D622714-AEDD-4609-9167-F5DDD3D1****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeParameterGroupTemplateListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterGroupTemplateListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterGroupTemplateListResponseBody) SetEngineVersion(v string) *DescribeParameterGroupTemplateListResponseBody {
+	s.EngineVersion = &v
+	return s
+}
+
+func (s *DescribeParameterGroupTemplateListResponseBody) SetParameters(v []*DescribeParameterGroupTemplateListResponseBodyParameters) *DescribeParameterGroupTemplateListResponseBody {
+	s.Parameters = v
+	return s
+}
+
+func (s *DescribeParameterGroupTemplateListResponseBody) SetRequestId(v string) *DescribeParameterGroupTemplateListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeParameterGroupTemplateListResponseBodyParameters struct {
+	// The regular expression used to validate input.
+	//
+	// example:
+	//
+	// "\\\\d+\\\\s+\\\\d+\\\\s+\\\\d+"
+	CheckingCode *string `json:"CheckingCode,omitempty" xml:"CheckingCode,omitempty"`
+	// Indicates whether the modification takes effect. Valid values: 0 and 1. A value of 0 indicates that the modification does not take effect. A value of 1 indicates that the modification takes effect.
+	//
+	// example:
+	//
+	// 1
+	Effective *int64 `json:"Effective,omitempty" xml:"Effective,omitempty"`
+	// A divisor of the parameter. For a parameter of the integer or byte type, the valid values must be a multiple of Factor unless you set Factor to 0.
+	//
+	// example:
+	//
+	// 1
+	Factor *int64 `json:"Factor,omitempty" xml:"Factor,omitempty"`
+	// The description of the parameter.
+	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
+	// The parameter name.
+	//
+	// example:
+	//
+	// appendonly
+	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// The default value of the parameter.
+	//
+	// example:
+	//
+	// 10
+	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+	// Indicates whether the parameter can be modified. Valid values:
+	//
+	// 	- **0: The parameter cannot be modified.**
+	//
+	// 	- **1**: The parameter can be modified.
+	//
+	// example:
+	//
+	// 0
+	Revisable *int64 `json:"Revisable,omitempty" xml:"Revisable,omitempty"`
+	// Indicates whether the minor version can be changed. Valid values: true and false.
+	//
+	// example:
+	//
+	// true
+	SupportModifyForMinorVersion *bool `json:"SupportModifyForMinorVersion,omitempty" xml:"SupportModifyForMinorVersion,omitempty"`
+	// The unit of the parameter value. Valid values: INT (ordinary integer), STRING (fixed string), and B (byte).
+	//
+	// example:
+	//
+	// STRING
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+}
+
+func (s DescribeParameterGroupTemplateListResponseBodyParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterGroupTemplateListResponseBodyParameters) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterGroupTemplateListResponseBodyParameters) SetCheckingCode(v string) *DescribeParameterGroupTemplateListResponseBodyParameters {
+	s.CheckingCode = &v
+	return s
+}
+
+func (s *DescribeParameterGroupTemplateListResponseBodyParameters) SetEffective(v int64) *DescribeParameterGroupTemplateListResponseBodyParameters {
+	s.Effective = &v
+	return s
+}
+
+func (s *DescribeParameterGroupTemplateListResponseBodyParameters) SetFactor(v int64) *DescribeParameterGroupTemplateListResponseBodyParameters {
+	s.Factor = &v
+	return s
+}
+
+func (s *DescribeParameterGroupTemplateListResponseBodyParameters) SetParameterDescription(v string) *DescribeParameterGroupTemplateListResponseBodyParameters {
+	s.ParameterDescription = &v
+	return s
+}
+
+func (s *DescribeParameterGroupTemplateListResponseBodyParameters) SetParameterName(v string) *DescribeParameterGroupTemplateListResponseBodyParameters {
+	s.ParameterName = &v
+	return s
+}
+
+func (s *DescribeParameterGroupTemplateListResponseBodyParameters) SetParameterValue(v string) *DescribeParameterGroupTemplateListResponseBodyParameters {
+	s.ParameterValue = &v
+	return s
+}
+
+func (s *DescribeParameterGroupTemplateListResponseBodyParameters) SetRevisable(v int64) *DescribeParameterGroupTemplateListResponseBodyParameters {
+	s.Revisable = &v
+	return s
+}
+
+func (s *DescribeParameterGroupTemplateListResponseBodyParameters) SetSupportModifyForMinorVersion(v bool) *DescribeParameterGroupTemplateListResponseBodyParameters {
+	s.SupportModifyForMinorVersion = &v
+	return s
+}
+
+func (s *DescribeParameterGroupTemplateListResponseBodyParameters) SetUnit(v string) *DescribeParameterGroupTemplateListResponseBodyParameters {
+	s.Unit = &v
+	return s
+}
+
+type DescribeParameterGroupTemplateListResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeParameterGroupTemplateListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeParameterGroupTemplateListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterGroupTemplateListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterGroupTemplateListResponse) SetHeaders(v map[string]*string) *DescribeParameterGroupTemplateListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeParameterGroupTemplateListResponse) SetStatusCode(v int32) *DescribeParameterGroupTemplateListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeParameterGroupTemplateListResponse) SetBody(v *DescribeParameterGroupTemplateListResponseBody) *DescribeParameterGroupTemplateListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeParameterGroupsRequest struct {
+	// The database type. Valid values: **redis*	- (default) and **tair**.
+	//
+	// example:
+	//
+	// redis
+	DbType       *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DescribeParameterGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterGroupsRequest) SetDbType(v string) *DescribeParameterGroupsRequest {
+	s.DbType = &v
+	return s
+}
+
+func (s *DescribeParameterGroupsRequest) SetOwnerAccount(v string) *DescribeParameterGroupsRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeParameterGroupsRequest) SetOwnerId(v int64) *DescribeParameterGroupsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeParameterGroupsRequest) SetRegionId(v string) *DescribeParameterGroupsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeParameterGroupsRequest) SetResourceOwnerAccount(v string) *DescribeParameterGroupsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeParameterGroupsRequest) SetResourceOwnerId(v int64) *DescribeParameterGroupsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeParameterGroupsRequest) SetSecurityToken(v string) *DescribeParameterGroupsRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DescribeParameterGroupsResponseBody struct {
+	// The list of parameter templates.
+	ParameterGroups []*DescribeParameterGroupsResponseBodyParameterGroups `json:"ParameterGroups,omitempty" xml:"ParameterGroups,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 686BB8A6-BBA5-47E5-8A75-D2ADE433****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeParameterGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterGroupsResponseBody) SetParameterGroups(v []*DescribeParameterGroupsResponseBodyParameterGroups) *DescribeParameterGroupsResponseBody {
+	s.ParameterGroups = v
+	return s
+}
+
+func (s *DescribeParameterGroupsResponseBody) SetRequestId(v string) *DescribeParameterGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeParameterGroupsResponseBodyParameterGroups struct {
+	// The service category. Valid values:
+	//
+	// 	- **0**: Community Edition
+	//
+	// 	- **1**: Enhanced Edition (Tair)
+	//
+	// example:
+	//
+	// 0
+	Category *int64 `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The time when the parameter template was created.
+	//
+	// example:
+	//
+	// 2023-04-18 16:32:45
+	Created *string `json:"Created,omitempty" xml:"Created,omitempty"`
+	// The engine type. Valid values:
+	//
+	// 	- **redis**: Redis or Tair DRAM-based instance
+	//
+	// 	- **tair_pena**: Tair persistent memory-optimized instance
+	//
+	// 	- **tair_pdb**: Tair ESSD-based instance
+	//
+	// example:
+	//
+	// redis
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The compatible engine version.
+	//
+	// example:
+	//
+	// 5
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The time when the parameter template was last modified.
+	//
+	// example:
+	//
+	// 2023-04-18 16:32:45
+	Modified *string `json:"Modified,omitempty" xml:"Modified,omitempty"`
+	// The parameter template ID.
+	//
+	// example:
+	//
+	// test01
+	ParamGroupId *string `json:"ParamGroupId,omitempty" xml:"ParamGroupId,omitempty"`
+	// The description of the parameter template.
+	//
+	// example:
+	//
+	// test
+	ParameterGroupDesc *string `json:"ParameterGroupDesc,omitempty" xml:"ParameterGroupDesc,omitempty"`
+	// The name of the parameter template.
+	//
+	// example:
+	//
+	// testGroupName
+	ParameterGroupName *string `json:"ParameterGroupName,omitempty" xml:"ParameterGroupName,omitempty"`
+}
+
+func (s DescribeParameterGroupsResponseBodyParameterGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterGroupsResponseBodyParameterGroups) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterGroupsResponseBodyParameterGroups) SetCategory(v int64) *DescribeParameterGroupsResponseBodyParameterGroups {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribeParameterGroupsResponseBodyParameterGroups) SetCreated(v string) *DescribeParameterGroupsResponseBodyParameterGroups {
+	s.Created = &v
+	return s
+}
+
+func (s *DescribeParameterGroupsResponseBodyParameterGroups) SetEngine(v string) *DescribeParameterGroupsResponseBodyParameterGroups {
+	s.Engine = &v
+	return s
+}
+
+func (s *DescribeParameterGroupsResponseBodyParameterGroups) SetEngineVersion(v string) *DescribeParameterGroupsResponseBodyParameterGroups {
+	s.EngineVersion = &v
+	return s
+}
+
+func (s *DescribeParameterGroupsResponseBodyParameterGroups) SetModified(v string) *DescribeParameterGroupsResponseBodyParameterGroups {
+	s.Modified = &v
+	return s
+}
+
+func (s *DescribeParameterGroupsResponseBodyParameterGroups) SetParamGroupId(v string) *DescribeParameterGroupsResponseBodyParameterGroups {
+	s.ParamGroupId = &v
+	return s
+}
+
+func (s *DescribeParameterGroupsResponseBodyParameterGroups) SetParameterGroupDesc(v string) *DescribeParameterGroupsResponseBodyParameterGroups {
+	s.ParameterGroupDesc = &v
+	return s
+}
+
+func (s *DescribeParameterGroupsResponseBodyParameterGroups) SetParameterGroupName(v string) *DescribeParameterGroupsResponseBodyParameterGroups {
+	s.ParameterGroupName = &v
+	return s
+}
+
+type DescribeParameterGroupsResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeParameterGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeParameterGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeParameterGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeParameterGroupsResponse) SetHeaders(v map[string]*string) *DescribeParameterGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeParameterGroupsResponse) SetStatusCode(v int32) *DescribeParameterGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeParameterGroupsResponse) SetBody(v *DescribeParameterGroupsResponseBody) *DescribeParameterGroupsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeParameterModificationHistoryRequest struct {
 	// The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// 2022-09-05T09:49:27Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
+	// The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -15895,6 +17357,8 @@ type DescribeParameterModificationHistoryRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -16091,11 +17555,13 @@ func (s *DescribeParameterModificationHistoryResponse) SetBody(v *DescribeParame
 }
 
 type DescribeParameterTemplatesRequest struct {
-	// The architecture of the instance. For more information, see [Overview](~~86132~~). Valid values:
+	// The architecture of the instance. For more information, see [Overview](https://help.aliyun.com/document_detail/86132.html). Valid values:
 	//
 	// 	- **logic**: The instance is a cluster master-replica instance or a read/write splitting instance.
 	//
 	// 	- **normal**: The instance is a standard master-replica instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -16103,11 +17569,15 @@ type DescribeParameterTemplatesRequest struct {
 	CharacterType *string `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
 	// The database engine that is run on the instance. Set the value to **Redis**.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Redis
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The major version that is run on the instance. Valid values: **2.8**, **4.0**, and **5.0**.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -16121,9 +17591,9 @@ type DescribeParameterTemplatesRequest struct {
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the resource group to which the instance belongs. You can call the [ListResourceGroups](~~158855~~) operation to query the IDs of resource groups.
+	// The ID of the resource group to which the instance belongs. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query the IDs of resource groups.
 	//
-	// >  You can also query the ID of a resource group in the Resource Management console. For more information, see [View the basic information of a resource group](~~151181~~).
+	// >  You can also query the ID of a resource group in the Resource Management console. For more information, see [View the basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
 	//
 	// example:
 	//
@@ -16304,7 +17774,7 @@ type DescribeParameterTemplatesResponseBodyParametersTemplateRecord struct {
 	//
 	// test description
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
-	// The name of the parameter. For more information about the parameters and the parameter settings, see [Parameters](~~259681~~).
+	// The name of the parameter. For more information about the parameters and the parameter settings, see [Parameters](https://help.aliyun.com/document_detail/259681.html).
 	//
 	// example:
 	//
@@ -16388,6 +17858,8 @@ func (s *DescribeParameterTemplatesResponse) SetBody(v *DescribeParameterTemplat
 type DescribeParametersRequest struct {
 	// The ID of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
@@ -16402,7 +17874,7 @@ type DescribeParametersRequest struct {
 	NodeId       *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](~~61012~~) operation to query the most recent region list.
+	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61012.html) operation to query the most recent region list.
 	//
 	// example:
 	//
@@ -16669,7 +18141,7 @@ type DescribeParametersResponseBodyRunningParametersParameter struct {
 	//
 	// example:
 	//
-	// You can disable some dangerous commands, for example \"keys,flushdb,flushall\", the commands must be in [flushall,flushdb,keys,hgetall,eval,evalsha,script].
+	// You can disable some dangerous commands, for example \\"keys,flushdb,flushall\\", the commands must be in [flushall,flushdb,keys,hgetall,eval,evalsha,script].
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
 	// The name of the parameter.
 	//
@@ -16797,7 +18269,7 @@ type DescribePriceRequest struct {
 	//
 	// **To view the instance type, perform the following steps:**
 	//
-	// 1.  In the [Overview](~~26350~~) topic, click the link in the **Reference*	- column corresponding to the instance type that you want to view.
+	// 1.  In the [Overview](https://help.aliyun.com/document_detail/26350.html) topic, click the link in the **Reference*	- column corresponding to the instance type that you want to view.
 	//
 	// 2.  In the instance type table of the page that appears, find the instance type in the **InstanceClass*	- column.
 	//
@@ -16857,6 +18329,8 @@ type DescribePriceRequest struct {
 	//
 	// 	- **CONVERT**: The order is used to change the billing methods of instances.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// BUY
@@ -16875,7 +18349,7 @@ type DescribePriceRequest struct {
 	//
 	// 1
 	Quantity *int64 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](~~61012~~) operation to query the most recent region list.
+	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61012.html) operation to query the most recent region list.
 	//
 	// example:
 	//
@@ -16884,7 +18358,7 @@ type DescribePriceRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The zone ID of the instance. You can call the [DescribeZones](~~94527~~) operation to query the most recent zone list.
+	// The zone ID of the instance. You can call the [DescribeZones](https://help.aliyun.com/document_detail/94527.html) operation to query the most recent zone list.
 	//
 	// example:
 	//
@@ -18382,7 +19856,9 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type DescribeRoleZoneInfoRequest struct {
-	// The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query instance IDs.
+	// The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -18554,7 +20030,7 @@ func (s *DescribeRoleZoneInfoResponseBodyNode) SetNodeInfo(v []*DescribeRoleZone
 type DescribeRoleZoneInfoResponseBodyNodeNodeInfo struct {
 	// The current bandwidth of the node, which consists of the default bandwidth and the increased bandwidth. Unit: MB/s.
 	//
-	// > 	- You can call the [EnableAdditionalBandwidth](~~206173~~) operation to specify the increased bandwidth.
+	// > 	- You can call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/206173.html) operation to specify the increased bandwidth.
 	//
 	// > 	- You can also use this parameter to calculate the increased bandwidth. For example, if the default bandwidth of the node is 96 MB/s and the returned value of this parameter is 100, the increased bandwidth is 4 MB/s.
 	//
@@ -18600,7 +20076,7 @@ type DescribeRoleZoneInfoResponseBodyNodeNodeInfo struct {
 	//
 	// 	- **1**: The minor version is the latest version.
 	//
-	// >  To update the minor version, call the [ModifyInstanceMinorVersion](~~129381~~) operation.
+	// >  To update the minor version, call the [ModifyInstanceMinorVersion](https://help.aliyun.com/document_detail/129381.html) operation.
 	//
 	// example:
 	//
@@ -18772,11 +20248,15 @@ type DescribeRunningLogRecordsRequest struct {
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	// The end of the time range to query. The end time must be later than the start time. The time range cannot exceed one day. We recommend that you specify 1 hour. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2018-12-03T08:01Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -18842,6 +20322,8 @@ type DescribeRunningLogRecordsRequest struct {
 	RoleType      *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -19154,6 +20636,8 @@ func (s *DescribeRunningLogRecordsResponse) SetBody(v *DescribeRunningLogRecords
 type DescribeSecurityGroupConfigurationRequest struct {
 	// The ID of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
@@ -19328,6 +20812,8 @@ func (s *DescribeSecurityGroupConfigurationResponse) SetBody(v *DescribeSecurity
 
 type DescribeSecurityIpsRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -19508,11 +20994,15 @@ type DescribeSlowLogRecordsRequest struct {
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	// The end of the time range to query. The end time must be later than the start time. The time range cannot exceed one day. We recommend that you specify 1 hour. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2019-03-22T14:11Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -19580,6 +21070,8 @@ type DescribeSlowLogRecordsRequest struct {
 	// proxy
 	SlowLogRecordType *string `json:"SlowLogRecordType,omitempty" xml:"SlowLogRecordType,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -19940,11 +21432,15 @@ func (s *DescribeSlowLogRecordsResponse) SetBody(v *DescribeSlowLogRecordsRespon
 type DescribeTasksRequest struct {
 	// The end of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2020-11-26T01:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query instance IDs.
+	// The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query instance IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -19969,6 +21465,8 @@ type DescribeTasksRequest struct {
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2020-11-20T01:00Z
@@ -19986,6 +21484,8 @@ type DescribeTasksRequest struct {
 	// 	- **7**: The task is paused.
 	//
 	// 	- **8**: The task is interrupted.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -20183,7 +21683,7 @@ type DescribeTasksResponseBodyItems struct {
 	//
 	// example:
 	//
-	// [{\"remain\":0,\"name\":\"init_instance\",\"progress\":100},{\"remain\":107,\"name\":\"init_redis\",\"progress\":12.3},{\"remain\":1881,\"name\":\"init_config\",\"progress\":0}]
+	// [{\\"remain\\":0,\\"name\\":\\"init_instance\\",\\"progress\\":100},{\\"remain\\":107,\\"name\\":\\"init_redis\\",\\"progress\\":12.3},{\\"remain\\":1881,\\"name\\":\\"init_config\\",\\"progress\\":0}]
 	StepsInfo *string `json:"StepsInfo,omitempty" xml:"StepsInfo,omitempty"`
 	// The identifier of the task.
 	//
@@ -20548,7 +22048,7 @@ type EnableAdditionalBandwidthRequest struct {
 	//
 	// >
 	//
-	// 	- You can call the [DescribeRoleZoneInfo](~~190794~~) operation to obtain the default maximum bandwidth returned by the **DefaultBandWidth*	- response parameter. For more information about instance types, see [Overview](~~26350~~).
+	// 	- You can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/190794.html) operation to obtain the default maximum bandwidth returned by the **DefaultBandWidth*	- response parameter. For more information about instance types, see [Overview](https://help.aliyun.com/document_detail/26350.html).
 	//
 	// 	- If you specify multiple data shard IDs in the **NodeId*	- parameter, you must specify the amount of bandwidth that you want to purchase for each specified data shard in the Bandwidth parameter. The bandwidth values that you specify in the Bandwidth parameter must be in the same sequence as the data shard IDs that you specify in the NodeId parameter. In addition, you must separate the bandwidth values with commas (,).
 	//
@@ -20572,15 +22072,17 @@ type EnableAdditionalBandwidthRequest struct {
 	//
 	// youhuiquan_promotion_option_id_for_blank
 	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	// The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the IDs of instances.
+	// The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the IDs of instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the data shard for which you want to purchase a specific amount of bandwidth. You can call the [DescribeLogicInstanceTopology](~~94665~~) operation to query the IDs of the data shards in an instance. If you specify multiple data shard IDs, separate the data shard IDs with commas (,). You can also set this parameter to **All**, which specifies all the data shards of the instance.
+	// The ID of the data shard for which you want to purchase a specific amount of bandwidth. You can call the [DescribeLogicInstanceTopology](https://help.aliyun.com/document_detail/94665.html) operation to query the IDs of the data shards in an instance. If you specify multiple data shard IDs, separate the data shard IDs with commas (,). You can also set this parameter to **All**, which specifies all the data shards of the instance.
 	//
-	// > This parameter is available and required only if the instance is a [cluster master-replica](~~52228~~) or [read/write splitting](~~62870~~) instance.
+	// > This parameter is available and required only if the instance is a [cluster master-replica](https://help.aliyun.com/document_detail/52228.html) or [read/write splitting](https://help.aliyun.com/document_detail/62870.html) instance.
 	//
 	// example:
 	//
@@ -20588,7 +22090,7 @@ type EnableAdditionalBandwidthRequest struct {
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The validity period of the bandwidth that you purchase. Unit: day. Valid values: **1**, **2**, **3**, **7**, **14**, **30**, **60**, **90**, **180**, **365**, **730**, **1095**, and **1825**.
 	//
-	// > If you want to continue using the purchased bandwidth after the specified period of time elapses, you must call the [RenewAdditionalBandwidth](~~211199~~) operation to submit a renewal order.
+	// > If you want to continue using the purchased bandwidth after the specified period of time elapses, you must call the [RenewAdditionalBandwidth](https://help.aliyun.com/document_detail/211199.html) operation to submit a renewal order.
 	//
 	// example:
 	//
@@ -20759,13 +22261,15 @@ type FlushExpireKeysRequest struct {
 	//
 	// 	- **MaintainTime**:deletes expired key in the maintenance window.
 	//
-	// >  You can call the [ModifyInstanceMaintainTime](~~61000~~) operation to modify the maintenance window of an ApsaraDB for Redis instance.
+	// >  You can call the [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/61000.html) operation to modify the maintenance window of an ApsaraDB for Redis instance.
 	//
 	// example:
 	//
 	// Immediately
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -20897,6 +22401,8 @@ func (s *FlushExpireKeysResponse) SetBody(v *FlushExpireKeysResponseBody) *Flush
 type FlushInstanceRequest struct {
 	// The ID of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
@@ -21000,11 +22506,15 @@ func (s *FlushInstanceResponse) SetBody(v *FlushInstanceResponseBody) *FlushInst
 type FlushInstanceForDBRequest struct {
 	// The index number of the database. Valid values: 0 to 255.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	DbIndex *int32 `json:"DbIndex,omitempty" xml:"DbIndex,omitempty"`
-	// The instance ID. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
+	// The instance ID. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -21108,6 +22618,8 @@ func (s *FlushInstanceForDBResponse) SetBody(v *FlushInstanceForDBResponseBody) 
 type GrantAccountPrivilegeRequest struct {
 	// The name of the account. You can call the [DescribeAccounts](~~DescribeAccounts~~) operation to obtain the name of the account.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// demoaccount
@@ -21118,11 +22630,15 @@ type GrantAccountPrivilegeRequest struct {
 	//
 	// 	- RoleReadWrite: The account has the read and write permissions.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// RoleReadWrite
 	AccountPrivilege *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
 	// The ID of the instance to which the account belongs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -21350,6 +22866,8 @@ type ListTagResourcesRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -21365,6 +22883,8 @@ type ListTagResourcesRequest struct {
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The resource type. Set the value to **INSTANCE**.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -21604,11 +23124,15 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 type LockDBInstanceWriteRequest struct {
 	// The instance ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The reason why write operations on the instance are locked.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -21751,6 +23275,8 @@ func (s *LockDBInstanceWriteResponse) SetBody(v *LockDBInstanceWriteResponseBody
 type MigrateToOtherZoneRequest struct {
 	// The ID of the ApsaraDB for Redis instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
@@ -21794,7 +23320,9 @@ type MigrateToOtherZoneRequest struct {
 	//
 	// vsw-bp1e7clcw529l773d****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the destination primary zone. You can call the [DescribeZones](~~94527~~) operation to query zone IDs.
+	// The ID of the destination primary zone. You can call the [DescribeZones](https://help.aliyun.com/document_detail/94527.html) operation to query zone IDs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -21916,21 +23444,27 @@ type ModifyAccountDescriptionRequest struct {
 	//
 	// 	- The description must start with a letter and cannot start with `http://` or `https://`.
 	//
-	// 	- The description can contain letters, digits, underscores (\_), and hyphens (-).
+	// 	- The description can contain letters, digits, underscores (_), and hyphens (-).
 	//
 	// 	- The description must be 2 to 256 characters in length.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// testescription
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
-	// The username of the account. You can call the [DescribeAccounts](~~95802~~) operation to query the username of the account.
+	// The username of the account. You can call the [DescribeAccounts](https://help.aliyun.com/document_detail/95802.html) operation to query the username of the account.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// demoaccount
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -22043,7 +23577,9 @@ func (s *ModifyAccountDescriptionResponse) SetBody(v *ModifyAccountDescriptionRe
 }
 
 type ModifyAccountPasswordRequest struct {
-	// The username of the account for which you want to change the password. You can call the [DescribeAccounts](~~95802~~) operation to query the username of the account.
+	// The username of the account for which you want to change the password. You can call the [DescribeAccounts](https://help.aliyun.com/document_detail/95802.html) operation to query the username of the account.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -22051,11 +23587,15 @@ type ModifyAccountPasswordRequest struct {
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The ID of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The new password to be set for the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and specific special characters. These special characters include `! @ # $ % ^ & 	- ( ) _ + - =`
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -22063,7 +23603,9 @@ type ModifyAccountPasswordRequest struct {
 	NewAccountPassword *string `json:"NewAccountPassword,omitempty" xml:"NewAccountPassword,omitempty"`
 	// The current password of the account.
 	//
-	// > If you forget your password, you can call the [ResetAccountPassword](~~95941~~) operation to reset your password.
+	// > If you forget your password, you can call the [ResetAccountPassword](https://help.aliyun.com/document_detail/95941.html) operation to reset your password.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -22181,9 +23723,11 @@ func (s *ModifyAccountPasswordResponse) SetBody(v *ModifyAccountPasswordResponse
 }
 
 type ModifyActiveOperationTaskRequest struct {
-	// The ID of the O\&M task. Separate multiple IDs with commas (,).
+	// The ID of the O\\&M task. Separate multiple IDs with commas (,).
 	//
-	// > You can call the [DescribeActiveOperationTask](~~197387~~) operation to query the ID of an O\&M task.
+	// > You can call the [DescribeActiveOperationTask](https://help.aliyun.com/document_detail/197387.html) operation to query the ID of an O\\&M task.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -22196,7 +23740,9 @@ type ModifyActiveOperationTaskRequest struct {
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The scheduled switchover time to be specified. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
 	//
-	// > The time cannot be later than the latest operation time. You can call the [DescribeActiveOperationTask](~~197387~~) operation to obtain the latest operation time, which is the value of the **Deadline*	- parameter in the response.
+	// > The time cannot be later than the latest operation time. You can call the [DescribeActiveOperationTask](https://help.aliyun.com/document_detail/197387.html) operation to obtain the latest operation time, which is the value of the **Deadline*	- parameter in the response.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -22248,7 +23794,7 @@ func (s *ModifyActiveOperationTaskRequest) SetSwitchTime(v string) *ModifyActive
 }
 
 type ModifyActiveOperationTaskResponseBody struct {
-	// The ID of the O\&M task. IDs are separated by commas (,).
+	// The ID of the O\\&M task. IDs are separated by commas (,).
 	//
 	// example:
 	//
@@ -22316,13 +23862,15 @@ type ModifyAuditLogConfigRequest struct {
 	//
 	// 	- **false**: disables the audit log feature.
 	//
-	// > If the instance uses the [cluster architecture](~~52228~~) or [read/write splitting architecture](~~62870~~), the audit log feature is enabled or disabled for both the data nodes and proxy nodes. You cannot separately enable the audit log feature for the data nodes or proxy nodes.
+	// > If the instance uses the [cluster architecture](https://help.aliyun.com/document_detail/52228.html) or [read/write splitting architecture](https://help.aliyun.com/document_detail/62870.html), the audit log feature is enabled or disabled for both the data nodes and proxy nodes. You cannot separately enable the audit log feature for the data nodes or proxy nodes.
 	//
 	// example:
 	//
 	// true
 	DbAudit *bool `json:"DbAudit,omitempty" xml:"DbAudit,omitempty"`
-	// The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
+	// The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -22445,25 +23993,27 @@ func (s *ModifyAuditLogConfigResponse) SetBody(v *ModifyAuditLogConfigResponseBo
 }
 
 type ModifyBackupPolicyRequest struct {
-	// The number of days for which data backup files are retained. Valid values: 7 to 730. Default value: 7.
+	// The number of days for which you want to retain data backup files. Valid values: 7 to 730. Default value: 7.
 	//
 	// example:
 	//
 	// 7
 	BackupRetentionPeriod *int32 `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
-	// Specifies whether to enable incremental data backup. Default value: 0. Valid values:
+	// Enables or disables the data flashback feature for the instance. Valid values:
 	//
-	// 	- **1**: enables incremental data backup.
+	// 	- **1**: enables the data flashback feature. You must also enable AOF persistence by setting `appendonly` to `yes` in the parameter settings of the instance. Then, you can use the data flashback feature.
 	//
-	// 	- **0**: disables incremental data backup.
+	// 	- **0*	- (default): disables the data flashback feature.
 	//
-	// >This parameter is available only for ApsaraDB for Redis Enhanced Edition (Tair) DRAM-based and persistent memory-optimized instances. For more information, see [Data flashback](~~443784~~).
+	// >  This parameter is available only for ApsaraDB for Redis Enhanced Edition (Tair) DRAM-based and persistent memory-optimized instances. For more information, see [Data flashback](https://help.aliyun.com/document_detail/443784.html).
 	//
 	// example:
 	//
 	// 1
 	EnableBackupLog *int32 `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -22489,6 +24039,8 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// > Separate multiple options with commas (,).
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Tuesday
@@ -22496,6 +24048,8 @@ type ModifyBackupPolicyRequest struct {
 	// The time range to back up data. Specify the time in the *HH:mm*Z-*HH:mm*Z format. The time is displayed in UTC.
 	//
 	// > The beginning and end of the time range must be on the hour. The duration must be an hour.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -22615,14 +24169,132 @@ func (s *ModifyBackupPolicyResponse) SetBody(v *ModifyBackupPolicyResponseBody) 
 	return s
 }
 
+type ModifyDBInstanceAutoUpgradeRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// r-bp1zxszhcgatnx****
+	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ModifyDBInstanceAutoUpgradeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBInstanceAutoUpgradeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBInstanceAutoUpgradeRequest) SetDBInstanceId(v string) *ModifyDBInstanceAutoUpgradeRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceAutoUpgradeRequest) SetOwnerAccount(v string) *ModifyDBInstanceAutoUpgradeRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyDBInstanceAutoUpgradeRequest) SetOwnerId(v int64) *ModifyDBInstanceAutoUpgradeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceAutoUpgradeRequest) SetResourceOwnerAccount(v string) *ModifyDBInstanceAutoUpgradeRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyDBInstanceAutoUpgradeRequest) SetResourceOwnerId(v int64) *ModifyDBInstanceAutoUpgradeRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceAutoUpgradeRequest) SetSecurityToken(v string) *ModifyDBInstanceAutoUpgradeRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *ModifyDBInstanceAutoUpgradeRequest) SetValue(v string) *ModifyDBInstanceAutoUpgradeRequest {
+	s.Value = &v
+	return s
+}
+
+type ModifyDBInstanceAutoUpgradeResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 2FF6158E-3394-4A90-B634-79C49184****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyDBInstanceAutoUpgradeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBInstanceAutoUpgradeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBInstanceAutoUpgradeResponseBody) SetRequestId(v string) *ModifyDBInstanceAutoUpgradeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyDBInstanceAutoUpgradeResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDBInstanceAutoUpgradeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyDBInstanceAutoUpgradeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBInstanceAutoUpgradeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBInstanceAutoUpgradeResponse) SetHeaders(v map[string]*string) *ModifyDBInstanceAutoUpgradeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyDBInstanceAutoUpgradeResponse) SetStatusCode(v int32) *ModifyDBInstanceAutoUpgradeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyDBInstanceAutoUpgradeResponse) SetBody(v *ModifyDBInstanceAutoUpgradeResponseBody) *ModifyDBInstanceAutoUpgradeResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyDBInstanceConnectionStringRequest struct {
 	// The current endpoint of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****.redis.rds.aliyuncs.com
 	CurrentConnectionString *string `json:"CurrentConnectionString,omitempty" xml:"CurrentConnectionString,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -22773,23 +24445,29 @@ func (s *ModifyDBInstanceConnectionStringResponse) SetBody(v *ModifyDBInstanceCo
 type ModifyGlobalSecurityIPGroupRequest struct {
 	// The IP addresses in the IP whitelist template.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 192.168.0.1,10.10.10.10,172.16.0.1
 	GIpList *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
 	// The name of the IP whitelist template. The name must meet the following requirements:
 	//
-	// 	- The name can contain lowercase letters, digits, and underscores (\_).
+	// 	- The name can contain lowercase letters, digits, and underscores (_).
 	//
 	// 	- The name must start with a letter and end with a letter or a digit.
 	//
 	// 	- The name must be 2 to 120 characters in length.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// test_123
 	GlobalIgName *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
 	// The ID of the IP whitelist template.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -22798,6 +24476,8 @@ type ModifyGlobalSecurityIPGroupRequest struct {
 	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -22926,17 +24606,21 @@ func (s *ModifyGlobalSecurityIPGroupResponse) SetBody(v *ModifyGlobalSecurityIPG
 type ModifyGlobalSecurityIPGroupNameRequest struct {
 	// The name of the global IP whitelist template. The name must meet the following requirements:
 	//
-	// 	- The name can contain lowercase letters, digits, and underscores (\_).
+	// 	- The name can contain lowercase letters, digits, and underscores (_).
 	//
 	// 	- The name must start with a letter and end with a letter or a digit.
 	//
 	// 	- The name must be 2 to 120 characters in length.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// test_123
 	GlobalIgName *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
 	// The ID of the IP whitelist template.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -22945,6 +24629,8 @@ type ModifyGlobalSecurityIPGroupNameRequest struct {
 	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -23068,11 +24754,15 @@ func (s *ModifyGlobalSecurityIPGroupNameResponse) SetBody(v *ModifyGlobalSecurit
 type ModifyGlobalSecurityIPGroupRelationRequest struct {
 	// The instance ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// r-t4n885e834f6****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The ID of the IP whitelist template.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -23081,6 +24771,8 @@ type ModifyGlobalSecurityIPGroupRelationRequest struct {
 	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -23204,6 +24896,8 @@ func (s *ModifyGlobalSecurityIPGroupRelationResponse) SetBody(v *ModifyGlobalSec
 type ModifyInstanceAttributeRequest struct {
 	// The ID of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
@@ -23214,7 +24908,7 @@ type ModifyInstanceAttributeRequest struct {
 	//
 	// newinstancename
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// [The release protection state of the instance.](~~165005~~) Valid values:
+	// [The release protection state of the instance.](https://help.aliyun.com/document_detail/165005.html) Valid values:
 	//
 	// 	- **true**: enabled
 	//
@@ -23226,7 +24920,7 @@ type ModifyInstanceAttributeRequest struct {
 	//
 	// true
 	InstanceReleaseProtection *bool `json:"InstanceReleaseProtection,omitempty" xml:"InstanceReleaseProtection,omitempty"`
-	// The new password for the default account. The default account is named after the instance ID. Example: r-bp10noxlhcoim2\*\*\*\*.
+	// The new password for the default account. The default account is named after the instance ID. Example: r-bp10noxlhcoim2\\*\\*\\*\\*.
 	//
 	// > The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. These special characters include `! @ # $ % ^ & 	- ( ) _ + - =`
 	//
@@ -23362,6 +25056,8 @@ type ModifyInstanceAutoRenewalAttributeRequest struct {
 	//
 	// > You can specify up to 30 instance IDs.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
@@ -23485,13 +25181,17 @@ type ModifyInstanceConfigRequest struct {
 	//
 	// **
 	//
-	// **Description*	- For more information, see [Supported parameters](~~259681~~).
+	// **Description*	- For more information, see [Supported parameters](https://help.aliyun.com/document_detail/259681.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// {"maxmemory-policy":"volatile-lru","zset-max-ziplist-entries":128,"zset-max-ziplist-value":64,"hash-max-ziplist-entries":512,"set-max-intset-entries":512}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -23601,6 +25301,8 @@ func (s *ModifyInstanceConfigResponse) SetBody(v *ModifyInstanceConfigResponseBo
 type ModifyInstanceMaintainTimeRequest struct {
 	// The ID of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
@@ -23609,11 +25311,15 @@ type ModifyInstanceMaintainTimeRequest struct {
 	//
 	// >  The interval between the start time and the end time cannot be less than 1 hour.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 04:00Z
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	// The start time of the maintenance window. The time is in the *HH:mm*Z format. The time is displayed in UTC. For example, if you want the maintenance to start at 1:00 (UTC+8), set this parameter to `17:00Z`. After you call the API operation, you can view the actual time in the ApsaraDB for Redis console. For more information, see [Set a maintenance window](~~55252~~).
+	// The start time of the maintenance window. The time is in the *HH:mm*Z format. The time is displayed in UTC. For example, if you want the maintenance to start at 1:00 (UTC+8), set this parameter to `17:00Z`. After you call the API operation, you can view the actual time in the ApsaraDB for Redis console. For more information, see [Set a maintenance window](https://help.aliyun.com/document_detail/55252.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -23732,7 +25438,7 @@ type ModifyInstanceMajorVersionRequest struct {
 	//
 	// 	- **MaintainTime**: upgrades the major version in the maintenance window.
 	//
-	// >  You can call the [ModifyInstanceMaintainTime](~~61000~~) operation to modify the maintenance window of an ApsaraDB for Redis instance.
+	// >  You can call the [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/61000.html) operation to modify the maintenance window of an ApsaraDB for Redis instance.
 	//
 	// example:
 	//
@@ -23740,11 +25446,15 @@ type ModifyInstanceMajorVersionRequest struct {
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
 	// The ID of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The major version to which you want to upgrade the instance. Valid values: **4.0*	- and **5.0**.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -23863,13 +25573,15 @@ type ModifyInstanceMinorVersionRequest struct {
 	//
 	// 	- **MaintainTime**: The minor version is updated within the maintenance window.
 	//
-	// >  You can call the [ModifyInstanceMaintainTime](~~61000~~) operation to modify the maintenance window of an ApsaraDB for Redis instance.
+	// >  You can call the [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/61000.html) operation to modify the maintenance window of an ApsaraDB for Redis instance.
 	//
 	// example:
 	//
 	// Immediately
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -23990,17 +25702,23 @@ func (s *ModifyInstanceMinorVersionResponse) SetBody(v *ModifyInstanceMinorVersi
 type ModifyInstanceNetExpireTimeRequest struct {
 	// The extension period to retain the classic network endpoint of the instance. Unit: days. Valid values: **14**, **30**, **60**, and **120**.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 14
 	ClassicExpiredDays *int32 `json:"ClassicExpiredDays,omitempty" xml:"ClassicExpiredDays,omitempty"`
 	// The endpoint of the classic network.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****.redis.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24214,6 +25932,8 @@ func (s *ModifyInstanceNetExpireTimeResponse) SetBody(v *ModifyInstanceNetExpire
 }
 
 type ModifyInstanceParameterRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
@@ -24353,6 +26073,8 @@ func (s *ModifyInstanceParameterResponse) SetBody(v *ModifyInstanceParameterResp
 type ModifyInstanceSSLRequest struct {
 	// The ID of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
@@ -24368,6 +26090,8 @@ type ModifyInstanceSSLRequest struct {
 	// 	- **Enable**: The SSL encryption is enabled.
 	//
 	// 	- **Update**: The SSL certificate is updated.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24497,7 +26221,7 @@ type ModifyInstanceSpecRequest struct {
 	//
 	// 	- **true**: enables auto-renewal.
 	//
-	// 	- **false**: disables auto-renewal. If you set this parameter to **false**, the instance must be manually renewed before it expires. For more information, see [Renew an instance](~~26352~~).
+	// 	- **false**: disables auto-renewal. If you set this parameter to **false**, the instance must be manually renewed before it expires. For more information, see [Renew an instance](https://help.aliyun.com/document_detail/26352.html).
 	//
 	// example:
 	//
@@ -24525,7 +26249,7 @@ type ModifyInstanceSpecRequest struct {
 	//
 	// 	- **Immediately**: The configurations are immediately changed.
 	//
-	// 	- **MaintainTime**: The configurations are changed within the maintenance window. You can call the [ModifyInstanceMaintainTime](~~61000~~) operation to change the maintenance window.
+	// 	- **MaintainTime**: The configurations are changed within the maintenance window. You can call the [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/61000.html) operation to change the maintenance window.
 	//
 	// example:
 	//
@@ -24551,15 +26275,17 @@ type ModifyInstanceSpecRequest struct {
 	//
 	// true
 	ForceUpgrade *bool `json:"ForceUpgrade,omitempty" xml:"ForceUpgrade,omitempty"`
-	// The new instance type. You can call the [DescribeAvailableResource](~~120580~~) operation to query the instance types available for configuration change within the zone to which the instance belongs.
+	// The new instance type. You can call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/120580.html) operation to query the instance types available for configuration change within the zone to which the instance belongs.
 	//
-	// >  For more information about the instance types, see [Overview](~~26350~~).
+	// >  For more information about the instance types, see [Overview](https://help.aliyun.com/document_detail/26350.html).
 	//
 	// example:
 	//
 	// redis.master.small.default
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
+	// The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24601,7 +26327,7 @@ type ModifyInstanceSpecRequest struct {
 	//
 	// 5
 	ReadOnlyCount *int32 `json:"ReadOnlyCount,omitempty" xml:"ReadOnlyCount,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](~~61012~~) operation to query the most recent region list.
+	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61012.html) operation to query the most recent region list.
 	//
 	// example:
 	//
@@ -24811,13 +26537,13 @@ func (s *ModifyInstanceSpecResponse) SetBody(v *ModifyInstanceSpecResponseBody) 
 }
 
 type ModifyInstanceTDERequest struct {
-	// The ID of the custom key. You can call the [DescribeEncryptionKeyList](~~302339~~) operation to query the key ID.
+	// The ID of the custom key. You can call the [DescribeEncryptionKeyList](https://help.aliyun.com/document_detail/302339.html) operation to query the key ID.
 	//
 	// >
 	//
-	// 	- If you do not specify this parameter, [Key Management Service (KMS)](~~28935~~) automatically generates a key.
+	// 	- If you do not specify this parameter, [Key Management Service (KMS)](https://help.aliyun.com/document_detail/28935.html) automatically generates a key.
 	//
-	// 	- To create a custom key, you can call the [CreateKey](~~28947~~) operation of the KMS API.
+	// 	- To create a custom key, you can call the [CreateKey](https://help.aliyun.com/document_detail/28947.html) operation of the KMS API.
 	//
 	// example:
 	//
@@ -24831,7 +26557,9 @@ type ModifyInstanceTDERequest struct {
 	//
 	// AES-CTR-256
 	EncryptionName *string `json:"EncryptionName,omitempty" xml:"EncryptionName,omitempty"`
-	// The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
+	// The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24856,7 +26584,9 @@ type ModifyInstanceTDERequest struct {
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// Specifies whether to enable TDE. Set the value to **Enabled**.
 	//
-	// > TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects your business. For more information, see [Enable TDE](~~265913~~).
+	// > TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects your business. For more information, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -24976,6 +26706,8 @@ func (s *ModifyInstanceTDEResponse) SetBody(v *ModifyInstanceTDEResponseBody) *M
 type ModifyInstanceVpcAuthModeRequest struct {
 	// The ID of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
@@ -24994,6 +26726,8 @@ type ModifyInstanceVpcAuthModeRequest struct {
 	// **
 	//
 	// **Description*	- Default value: **Open**.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -25096,11 +26830,11 @@ func (s *ModifyInstanceVpcAuthModeResponse) SetBody(v *ModifyInstanceVpcAuthMode
 }
 
 type ModifyIntranetAttributeRequest struct {
-	// The amount of bandwidth that you want to add. Unit: Mbit/s. The value must be an integer greater than or equal to 0. In most cases, the maximum bandwidth that can be added can be two times the default maximum bandwidth of the current instance type. For more information about the bandwidth specifications supported by different instance types, see [Overview](~~26350~~). The bandwidth is also subject to the following limits:
+	// The amount of bandwidth that you want to add. Unit: Mbit/s. The value must be an integer greater than or equal to 0. In most cases, the maximum bandwidth that can be added can be two times the default maximum bandwidth of the current instance type. For more information about the bandwidth specifications supported by different instance types, see [Overview](https://help.aliyun.com/document_detail/26350.html). The bandwidth is also subject to the following limits:
 	//
-	// 	- The bandwidth of an individual instance cannot exceed 75% of the bandwidth of the host. For more information about the host specifications and bandwidth, see [Instance types of hosts](~~206343~~).
+	// 	- The bandwidth of an individual instance cannot exceed 75% of the bandwidth of the host. For more information about the host specifications and bandwidth, see [Instance types of hosts](https://help.aliyun.com/document_detail/206343.html).
 	//
-	// 	- The total bandwidth of all of the instances on the host cannot exceed 150% of the bandwidth of the host. You can configure resource overcommitment to handle traffic spikes. For more information, see [Configure resource overcommitment to reduce costs](~~183798~~).
+	// 	- The total bandwidth of all of the instances on the host cannot exceed 150% of the bandwidth of the host. You can configure resource overcommitment to handle traffic spikes. For more information, see [Configure resource overcommitment to reduce costs](https://help.aliyun.com/document_detail/183798.html).
 	//
 	// > If you do not specify this parameter for a standard instance, the bandwidth of the instance is set to two times that of the current bandwidth.
 	//
@@ -25110,13 +26844,15 @@ type ModifyIntranetAttributeRequest struct {
 	BandWidth *int64 `json:"BandWidth,omitempty" xml:"BandWidth,omitempty"`
 	// The ID of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the data node. You can call the [DescribeClusterMemberInfo](~~193462~~) operation to query the node ID. Separate multiple IDs with commas (,).
+	// The ID of the data node. You can call the [DescribeClusterMemberInfo](https://help.aliyun.com/document_detail/193462.html) operation to query the node ID. Separate multiple IDs with commas (,).
 	//
-	// > This parameter is available and required only when the instance uses the [cluster architecture](~~52228~~).
+	// > This parameter is available and required only when the instance uses the [cluster architecture](https://help.aliyun.com/document_detail/52228.html).
 	//
 	// example:
 	//
@@ -25228,6 +26964,186 @@ func (s *ModifyIntranetAttributeResponse) SetBody(v *ModifyIntranetAttributeResp
 	return s
 }
 
+type ModifyParameterGroupRequest struct {
+	// The service category. Valid values:
+	//
+	// 	- **standard**: Community Edition
+	//
+	// 	- **enterprise**: Enhanced Edition (Tair)
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// enterprise
+	Category     *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The description of the parameter template. The description must be 0 to 200 characters in length.
+	//
+	// example:
+	//
+	// test
+	ParameterGroupDesc *string `json:"ParameterGroupDesc,omitempty" xml:"ParameterGroupDesc,omitempty"`
+	// The parameter template ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sys-001****
+	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
+	// The new name of the parameter template. The name must meet the following requirements:
+	//
+	// 	- The name can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
+	//
+	// 	- The name can be 8 to 64 characters in length.
+	//
+	// example:
+	//
+	// testGroupName
+	ParameterGroupName *string `json:"ParameterGroupName,omitempty" xml:"ParameterGroupName,omitempty"`
+	// A JSON-formatted object that specifies the parameter-value pairs. Format: {"Parameter 1":"Value 1","Parameter 2":"Value 2"...}. The specified value overwrites the original content.
+	//
+	// >  The parameters that can be added for different editions are displayed in the console.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"hz":"12"}
+	Parameters           *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s ModifyParameterGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyParameterGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyParameterGroupRequest) SetCategory(v string) *ModifyParameterGroupRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *ModifyParameterGroupRequest) SetOwnerAccount(v string) *ModifyParameterGroupRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyParameterGroupRequest) SetOwnerId(v int64) *ModifyParameterGroupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyParameterGroupRequest) SetParameterGroupDesc(v string) *ModifyParameterGroupRequest {
+	s.ParameterGroupDesc = &v
+	return s
+}
+
+func (s *ModifyParameterGroupRequest) SetParameterGroupId(v string) *ModifyParameterGroupRequest {
+	s.ParameterGroupId = &v
+	return s
+}
+
+func (s *ModifyParameterGroupRequest) SetParameterGroupName(v string) *ModifyParameterGroupRequest {
+	s.ParameterGroupName = &v
+	return s
+}
+
+func (s *ModifyParameterGroupRequest) SetParameters(v string) *ModifyParameterGroupRequest {
+	s.Parameters = &v
+	return s
+}
+
+func (s *ModifyParameterGroupRequest) SetRegionId(v string) *ModifyParameterGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyParameterGroupRequest) SetResourceOwnerAccount(v string) *ModifyParameterGroupRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyParameterGroupRequest) SetResourceOwnerId(v int64) *ModifyParameterGroupRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyParameterGroupRequest) SetSecurityToken(v string) *ModifyParameterGroupRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type ModifyParameterGroupResponseBody struct {
+	// The parameter template ID.
+	//
+	// example:
+	//
+	// testGroupName
+	ParamGroupId *string `json:"ParamGroupId,omitempty" xml:"ParamGroupId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// AD425AD3-CC7B-4EE2-A5CB-2F61BA73****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyParameterGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyParameterGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyParameterGroupResponseBody) SetParamGroupId(v string) *ModifyParameterGroupResponseBody {
+	s.ParamGroupId = &v
+	return s
+}
+
+func (s *ModifyParameterGroupResponseBody) SetRequestId(v string) *ModifyParameterGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyParameterGroupResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyParameterGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyParameterGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyParameterGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyParameterGroupResponse) SetHeaders(v map[string]*string) *ModifyParameterGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyParameterGroupResponse) SetStatusCode(v int32) *ModifyParameterGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyParameterGroupResponse) SetBody(v *ModifyParameterGroupResponseBody) *ModifyParameterGroupResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyResourceGroupRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the generated token is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
 	//
@@ -25237,6 +27153,8 @@ type ModifyResourceGroupRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
@@ -25244,6 +27162,8 @@ type ModifyResourceGroupRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -25253,9 +27173,11 @@ type ModifyResourceGroupRequest struct {
 	//
 	// >
 	//
-	// 	- You can query resource group IDs by using the ApsaraDB for Redis console or by calling the [ListResourceGroups](~~158855~~) operation. For more information, see [View basic information of a resource group](~~151181~~).
+	// 	- You can query resource group IDs by using the ApsaraDB for Redis console or by calling the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation. For more information, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
 	//
-	// 	- Before you modify the resource group to which an instance belongs, you can call the [ListResources](~~158866~~) operation to view the resource group of the instance.
+	// 	- Before you modify the resource group to which an instance belongs, you can call the [ListResources](https://help.aliyun.com/document_detail/158866.html) operation to view the resource group of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -25367,6 +27289,8 @@ func (s *ModifyResourceGroupResponse) SetBody(v *ModifyResourceGroupResponseBody
 type ModifySecurityGroupConfigurationRequest struct {
 	// The ID of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
@@ -25376,6 +27300,8 @@ type ModifySecurityGroupConfigurationRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The ID of the security group that you want to manage. You can specify up to 10 security groups. Separate multiple security group IDs with commas (,).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -25481,6 +27407,8 @@ func (s *ModifySecurityGroupConfigurationResponse) SetBody(v *ModifySecurityGrou
 type ModifySecurityIpsRequest struct {
 	// The ID of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
@@ -25509,13 +27437,15 @@ type ModifySecurityIpsRequest struct {
 	SecurityIpGroupAttribute *string `json:"SecurityIpGroupAttribute,omitempty" xml:"SecurityIpGroupAttribute,omitempty"`
 	// The name of the IP address whitelist.
 	//
-	// ><warning>You cannot modify the whitelist that is generated by the system. If you do not specify this parameter, the default whitelist is modified by default.></warning>
+	// 	Warning: You cannot modify the whitelist that is generated by the system. If you do not specify this parameter, the default whitelist is modified by default.
 	//
 	// example:
 	//
 	// default
 	SecurityIpGroupName *string `json:"SecurityIpGroupName,omitempty" xml:"SecurityIpGroupName,omitempty"`
 	// The IP addresses in the whitelist. Up to 1,000 IP addresses can be specified in a whitelist. Separate multiple IP addresses with a comma (,). Specify an IP address in the 0.0.0.0/0, 10.23.12.24, or 10.23.12.24/24 format. In CIDR block 10.23.12.24/24, /24 specifies the length of the prefix of an IP address. The prefix length ranges from 1 to 32.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -25636,6 +27566,8 @@ func (s *ModifySecurityIpsResponse) SetBody(v *ModifySecurityIpsResponseBody) *M
 type ReleaseDirectConnectionRequest struct {
 	// The ID of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
@@ -25739,11 +27671,15 @@ func (s *ReleaseDirectConnectionResponse) SetBody(v *ReleaseDirectConnectionResp
 type ReleaseInstancePublicConnectionRequest struct {
 	// The public endpoint to be released.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****.redis.rds.aliyuncs.com
 	CurrentConnectionString *string `json:"CurrentConnectionString,omitempty" xml:"CurrentConnectionString,omitempty"`
 	// The ID of the instance for which you want to release a public endpoint.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -25852,6 +27788,8 @@ func (s *ReleaseInstancePublicConnectionResponse) SetBody(v *ReleaseInstancePubl
 
 type RemoveSubInstanceRequest struct {
 	// Instance ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -25970,13 +27908,17 @@ type RenewAdditionalBandwidthRequest struct {
 	//
 	// youhuiquan_promotion_option_id_for_blank
 	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	// The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
+	// The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The validity period of the bandwidth that you purchase. Unit: days. Valid values: **1**, **2**, **3**, **7**, **14**, **30**, **60**, **90**, **180**, **365**, **730**, **1095**, and **1825**.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -26170,7 +28112,7 @@ type RenewInstanceRequest struct {
 	//
 	// OpenAPI
 	FromApp *string `json:"FromApp,omitempty" xml:"FromApp,omitempty"`
-	// The instance type code. For more information, see [Instance specifications overview](~~26350~~). When you renew the instance, you can specify this parameter to change specifications of the instance.
+	// The instance type code. For more information, see [Instance specifications overview](https://help.aliyun.com/document_detail/26350.html). When you renew the instance, you can specify this parameter to change specifications of the instance.
 	//
 	// > To change the specifications when you renew the instance, you must specify at least one of the `Capacity` and `InstanceClass` parameters.
 	//
@@ -26180,6 +28122,8 @@ type RenewInstanceRequest struct {
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
 	// The ID of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
@@ -26187,6 +28131,8 @@ type RenewInstanceRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The renewal period. Valid values: **1**, 2, 3, 4, 5, 6, 7, 8, **9**, **12**, **24**, and **36**. Unit: months.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -26356,17 +28302,23 @@ func (s *RenewInstanceResponse) SetBody(v *RenewInstanceResponseBody) *RenewInst
 type ResetAccountPasswordRequest struct {
 	// The name of the account. You can call the [DescribeAccounts](~~DescribeAccounts~~) operation to obtain the name of the account.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// demoaccount
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The new password for the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & 	- ( ) _ + - =`
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// uWonno_221****
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
 	// The ID of the instance to which the account belongs.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -26490,6 +28442,8 @@ type RestartInstanceRequest struct {
 	// Immediately
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -26636,7 +28590,7 @@ func (s *RestartInstanceResponse) SetBody(v *RestartInstanceResponseBody) *Resta
 }
 
 type RestoreInstanceRequest struct {
-	// The ID of the backup file. You can call the [DescribeBackups](~~61081~~) operation to query the IDs of backup files.
+	// The ID of the backup file. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/61081.html) operation to query the IDs of backup files.
 	//
 	// example:
 	//
@@ -26656,6 +28610,8 @@ type RestoreInstanceRequest struct {
 	FilterKey *string `json:"FilterKey,omitempty" xml:"FilterKey,omitempty"`
 	// The ID of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
@@ -26668,7 +28624,7 @@ type RestoreInstanceRequest struct {
 	//
 	// >
 	//
-	// 	- If the [data flashback](~~148479~~) feature is enabled for the instance, you can specify this parameter and the **FilterKey*	- parameter to restore the data of the specified key to the specified point in time that is accurate to the second. Other keys are not affected. This way, you can achieve more fine-grained data restoration.
+	// 	- If the [data flashback](https://help.aliyun.com/document_detail/148479.html) feature is enabled for the instance, you can specify this parameter and the **FilterKey*	- parameter to restore the data of the specified key to the specified point in time that is accurate to the second. Other keys are not affected. This way, you can achieve more fine-grained data restoration.
 	//
 	// 	- This parameter is available only if you set the **RestoreType*	- parameter to **1**.
 	//
@@ -26680,7 +28636,7 @@ type RestoreInstanceRequest struct {
 	//
 	// 	- **0**: restores data from the specified backup set.
 	//
-	// 	- **1**: restores data to a specified point in time. You can specify this value only if the [data flashback](~~148479~~) feature is enabled for the instance. If you specify this value, you must also specify the **RestoreTime*	- parameter.
+	// 	- **1**: restores data to a specified point in time. You can specify this value only if the [data flashback](https://help.aliyun.com/document_detail/148479.html) feature is enabled for the instance. If you specify this value, you must also specify the **RestoreTime*	- parameter.
 	//
 	// example:
 	//
@@ -26812,13 +28768,15 @@ func (s *RestoreInstanceResponse) SetBody(v *RestoreInstanceResponseBody) *Resto
 }
 
 type SwitchInstanceHARequest struct {
-	// The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
+	// The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// r-bp1zxszhcgatnx****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the data shard. You can call the [DescribeRoleZoneInfo](~~190794~~) operation to obtain the value of the CustinsId parameter. Separate multiple data shard IDs with commas (,). `all` indicates that all data shards are specified.
+	// The ID of the data shard. You can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/190794.html) operation to obtain the value of the CustinsId parameter. Separate multiple data shard IDs with commas (,). `all` indicates that all data shards are specified.
 	//
 	// > This parameter is available and required only for read/write splitting and cluster instances.
 	//
@@ -26837,7 +28795,7 @@ type SwitchInstanceHARequest struct {
 	//
 	// 	- **1**: performs the switchover during the maintenance window.
 	//
-	// > You can call the [ModifyInstanceMaintainTime](~~61000~~) operation to modify the maintenance window of an ApsaraDB for Redis instance.
+	// > You can call the [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/61000.html) operation to modify the maintenance window of an ApsaraDB for Redis instance.
 	//
 	// example:
 	//
@@ -26962,7 +28920,9 @@ func (s *SwitchInstanceHAResponse) SetBody(v *SwitchInstanceHAResponseBody) *Swi
 }
 
 type SwitchInstanceProxyRequest struct {
-	// The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
+	// The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -27071,13 +29031,15 @@ type SwitchNetworkRequest struct {
 	//
 	// 	- This parameter is available and required only when the **RetainClassic*	- parameter is set to **True**.
 	//
-	// 	- After you complete the switchover operation, you can also call the [ModifyInstanceNetExpireTime](~~61010~~) operation to modify the retention period of the classic network endpoint.
+	// 	- After you complete the switchover operation, you can also call the [ModifyInstanceNetExpireTime](https://help.aliyun.com/document_detail/61010.html) operation to modify the retention period of the classic network endpoint.
 	//
 	// example:
 	//
 	// 30
 	ClassicExpiredDays *string `json:"ClassicExpiredDays,omitempty" xml:"ClassicExpiredDays,omitempty"`
-	// The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
+	// The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/60933.html) operation to query the ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -27106,7 +29068,7 @@ type SwitchNetworkRequest struct {
 	//
 	// VPC
 	TargetNetworkType *string `json:"TargetNetworkType,omitempty" xml:"TargetNetworkType,omitempty"`
-	// The ID of the vSwitch that belongs to the VPC to which you want to switch. You can call the [DescribeVpcs](~~35739~~) operation to query the VPC ID.
+	// The ID of the vSwitch that belongs to the VPC to which you want to switch. You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html) operation to query the VPC ID.
 	//
 	// > The vSwitch and the ApsaraDB for Redis instance must be deployed in the same zone.
 	//
@@ -27114,7 +29076,7 @@ type SwitchNetworkRequest struct {
 	//
 	// vsw-bp1e7clcw529l773d****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC to which you want to switch. You can call the [DescribeVpcs](~~35739~~) operation to query the VPC ID.
+	// The ID of the VPC to which you want to switch. You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html) operation to query the VPC ID.
 	//
 	// >
 	//
@@ -27255,6 +29217,8 @@ func (s *SwitchNetworkResponse) SetBody(v *SwitchNetworkResponseBody) *SwitchNet
 
 type SyncDtsStatusRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -27400,11 +29364,15 @@ type TagResourcesRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -27414,11 +29382,15 @@ type TagResourcesRequest struct {
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The resource type. Set the value to **INSTANCE**.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tags of the instance.
+	//
+	// This parameter is required.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -27477,6 +29449,8 @@ type TagResourcesRequestTag struct {
 	//
 	// > 	- If the key of the tag does not exist, the key is automatically created.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// demokey
@@ -27484,6 +29458,8 @@ type TagResourcesRequestTag struct {
 	// The value of the tag associated with the instance.
 	//
 	// > **N*	- specifies the serial number of the tag. For example, **Tag.1.Value*	- specifies the value of the first tag and **Tag.2.Value*	- specifies the value of the second tag.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -27595,11 +29571,15 @@ type TransformInstanceChargeTypeRequest struct {
 	//
 	// 	- **PostPaid**: pay-as-you-go
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The ID of the instance. You can call the [DescribeInstances](~~DescribeInstances~~) operation to query the ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -27763,13 +29743,15 @@ type TransformToPrePaidRequest struct {
 	//
 	// 	- **true**: yes
 	//
-	// 	- **false**: no. In this case, you can renew your instance in the ApsaraDB for Redis console. For more information, see [Manually renew an instance](~~26352~~).
+	// 	- **false**: no. In this case, you can renew your instance in the ApsaraDB for Redis console. For more information, see [Manually renew an instance](https://help.aliyun.com/document_detail/26352.html).
 	//
 	// example:
 	//
 	// true
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// The ID of the instance. You can call the [DescribeInstances](~~DescribeInstances~~) operation to query the ID of the instance.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -27778,6 +29760,8 @@ type TransformToPrePaidRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The subscription duration of the instance. Unit: months. Valid values: **1*	- to **9**, **12**, **24**, and **36**.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -27911,6 +29895,8 @@ func (s *TransformToPrePaidResponse) SetBody(v *TransformToPrePaidResponseBody) 
 
 type UnlockDBInstanceWriteRequest struct {
 	// The instance ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -28049,13 +30035,17 @@ type UntagResourcesRequest struct {
 	All          *bool   `json:"All,omitempty" xml:"All,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](~~61012~~) operation to query the most recent region list.
+	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61012.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The IDs of the instances.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -28064,6 +30054,8 @@ type UntagResourcesRequest struct {
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The resource type. Set the value to **INSTANCE**.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -28207,7 +30199,6 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 		"cn-heyuan":                   tea.String("r-kvstore.aliyuncs.com"),
 		"cn-guangzhou":                tea.String("r-kvstore.aliyuncs.com"),
 		"cn-hongkong":                 tea.String("r-kvstore.aliyuncs.com"),
-		"ap-southeast-1":              tea.String("r-kvstore.aliyuncs.com"),
 		"cn-hangzhou-finance":         tea.String("r-kvstore.aliyuncs.com"),
 		"cn-shanghai-finance-1":       tea.String("r-kvstore.aliyuncs.com"),
 		"cn-shenzhen-finance-1":       tea.String("r-kvstore.aliyuncs.com"),
@@ -28275,6 +30266,10 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds one or more data shards to an ApsaraDB for Redis cluster instance.
+//
 // Description:
 //
 // This operation is available only for cluster instances that use cloud disks.
@@ -28365,6 +30360,10 @@ func (client *Client) AddShardingNodeWithOptions(request *AddShardingNodeRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds one or more data shards to an ApsaraDB for Redis cluster instance.
+//
 // Description:
 //
 // This operation is available only for cluster instances that use cloud disks.
@@ -28383,9 +30382,13 @@ func (client *Client) AddShardingNode(request *AddShardingNodeRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Applies for a private endpoint for an ApsaraDB for Redis cluster instance.
+//
 // Description:
 //
-// In direct connection mode, you can use private endpoints to bypass proxy nodes and connect to ApsaraDB for Redis instances from clients in the same manner as you connect to native Redis clusters. The direct connection mode can reduce communication overheads and accelerate the response speed. For more information, see [Enable the direct connection mode](~~146901~~).
+// In direct connection mode, you can use private endpoints to bypass proxy nodes and connect to ApsaraDB for Redis instances from clients in the same manner as you connect to native Redis clusters. The direct connection mode can reduce communication overheads and accelerate the response speed. For more information, see [Enable the direct connection mode](https://help.aliyun.com/document_detail/146901.html).
 //
 // To call this operation, the instance must meet the following requirements:
 //
@@ -28393,11 +30396,11 @@ func (client *Client) AddShardingNode(request *AddShardingNodeRequest) (_result 
 //
 // 	- The instance is a Community Edition instance that runs Redis 4.0 or 5.0, or an Enhanced Edition instance (Tair) that runs Redis 5.0.
 //
-// 	- The instance is deployed in a virtual private cloud (VPC). If the instance is deployed in the classic network, call the [SwitchNetwork](~~61005~~) operation to change the network type to VPC.
+// 	- The instance is deployed in a virtual private cloud (VPC). If the instance is deployed in the classic network, call the [SwitchNetwork](https://help.aliyun.com/document_detail/61005.html) operation to change the network type to VPC.
 //
-// 	- SSL encryption is disabled for the instance. If SSL encryption is enabled, you can call the [ModifyInstanceSSL](~~96194~~) operation to disable it.
+// 	- SSL encryption is disabled for the instance. If SSL encryption is enabled, you can call the [ModifyInstanceSSL](https://help.aliyun.com/document_detail/96194.html) operation to disable it.
 //
-// 	- The vSwitch to which the instance is connected has sufficient IP addresses to be allocated. For more information, see [Obtain the number of available IP addresses in the vSwitch to which an ApsaraDB for Redis instance is connected](~~183151~~).
+// 	- The vSwitch to which the instance is connected has sufficient IP addresses to be allocated. For more information, see [Obtain the number of available IP addresses in the vSwitch to which an ApsaraDB for Redis instance is connected](https://help.aliyun.com/document_detail/183151.html).
 //
 // @param request - AllocateDirectConnectionRequest
 //
@@ -28465,9 +30468,13 @@ func (client *Client) AllocateDirectConnectionWithOptions(request *AllocateDirec
 	return _result, _err
 }
 
+// Summary:
+//
+// Applies for a private endpoint for an ApsaraDB for Redis cluster instance.
+//
 // Description:
 //
-// In direct connection mode, you can use private endpoints to bypass proxy nodes and connect to ApsaraDB for Redis instances from clients in the same manner as you connect to native Redis clusters. The direct connection mode can reduce communication overheads and accelerate the response speed. For more information, see [Enable the direct connection mode](~~146901~~).
+// In direct connection mode, you can use private endpoints to bypass proxy nodes and connect to ApsaraDB for Redis instances from clients in the same manner as you connect to native Redis clusters. The direct connection mode can reduce communication overheads and accelerate the response speed. For more information, see [Enable the direct connection mode](https://help.aliyun.com/document_detail/146901.html).
 //
 // To call this operation, the instance must meet the following requirements:
 //
@@ -28475,11 +30482,11 @@ func (client *Client) AllocateDirectConnectionWithOptions(request *AllocateDirec
 //
 // 	- The instance is a Community Edition instance that runs Redis 4.0 or 5.0, or an Enhanced Edition instance (Tair) that runs Redis 5.0.
 //
-// 	- The instance is deployed in a virtual private cloud (VPC). If the instance is deployed in the classic network, call the [SwitchNetwork](~~61005~~) operation to change the network type to VPC.
+// 	- The instance is deployed in a virtual private cloud (VPC). If the instance is deployed in the classic network, call the [SwitchNetwork](https://help.aliyun.com/document_detail/61005.html) operation to change the network type to VPC.
 //
-// 	- SSL encryption is disabled for the instance. If SSL encryption is enabled, you can call the [ModifyInstanceSSL](~~96194~~) operation to disable it.
+// 	- SSL encryption is disabled for the instance. If SSL encryption is enabled, you can call the [ModifyInstanceSSL](https://help.aliyun.com/document_detail/96194.html) operation to disable it.
 //
-// 	- The vSwitch to which the instance is connected has sufficient IP addresses to be allocated. For more information, see [Obtain the number of available IP addresses in the vSwitch to which an ApsaraDB for Redis instance is connected](~~183151~~).
+// 	- The vSwitch to which the instance is connected has sufficient IP addresses to be allocated. For more information, see [Obtain the number of available IP addresses in the vSwitch to which an ApsaraDB for Redis instance is connected](https://help.aliyun.com/document_detail/183151.html).
 //
 // @param request - AllocateDirectConnectionRequest
 //
@@ -28495,9 +30502,13 @@ func (client *Client) AllocateDirectConnection(request *AllocateDirectConnection
 	return _result, _err
 }
 
+// Summary:
+//
+// Applies for a public endpoint for an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// You can also apply for public endpoints in the ApsaraDB for Redis console. For more information, see [Use a public endpoint to connect to an ApsaraDB for Redis instance](~~43850~~).
+// You can also apply for public endpoints in the ApsaraDB for Redis console. For more information, see [Use a public endpoint to connect to an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/43850.html).
 //
 // @param request - AllocateInstancePublicConnectionRequest
 //
@@ -28565,9 +30576,13 @@ func (client *Client) AllocateInstancePublicConnectionWithOptions(request *Alloc
 	return _result, _err
 }
 
+// Summary:
+//
+// Applies for a public endpoint for an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// You can also apply for public endpoints in the ApsaraDB for Redis console. For more information, see [Use a public endpoint to connect to an ApsaraDB for Redis instance](~~43850~~).
+// You can also apply for public endpoints in the ApsaraDB for Redis console. For more information, see [Use a public endpoint to connect to an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/43850.html).
 //
 // @param request - AllocateInstancePublicConnectionRequest
 //
@@ -28583,11 +30598,15 @@ func (client *Client) AllocateInstancePublicConnection(request *AllocateInstance
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether an ApsaraDB for Redis instance is authorized to use Key Management Service (KMS).
+//
 // Description:
 //
-// 	- For information about Transparent Data Encryption (TDE) and the usage notes of TDE, see [Enable TDE](~~265913~~).
+//   For information about Transparent Data Encryption (TDE) and the usage notes of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
 //
-// 	- If the ApsaraDB for Redis instance is authorized to use KMS, you can call the [ModifyInstanceTDE](~~302337~~) operation to enable TDE.
+// 	- If the ApsaraDB for Redis instance is authorized to use KMS, you can call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html) operation to enable TDE.
 //
 // @param request - CheckCloudResourceAuthorizedRequest
 //
@@ -28651,11 +30670,15 @@ func (client *Client) CheckCloudResourceAuthorizedWithOptions(request *CheckClou
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether an ApsaraDB for Redis instance is authorized to use Key Management Service (KMS).
+//
 // Description:
 //
-// 	- For information about Transparent Data Encryption (TDE) and the usage notes of TDE, see [Enable TDE](~~265913~~).
+//   For information about Transparent Data Encryption (TDE) and the usage notes of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
 //
-// 	- If the ApsaraDB for Redis instance is authorized to use KMS, you can call the [ModifyInstanceTDE](~~302337~~) operation to enable TDE.
+// 	- If the ApsaraDB for Redis instance is authorized to use KMS, you can call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html) operation to enable TDE.
 //
 // @param request - CheckCloudResourceAuthorizedRequest
 //
@@ -28671,6 +30694,10 @@ func (client *Client) CheckCloudResourceAuthorized(request *CheckCloudResourceAu
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an account that has specific permissions for an ApsaraDB for Redis instance.
+//
 // Description:
 //
 // >
@@ -28681,7 +30708,7 @@ func (client *Client) CheckCloudResourceAuthorized(request *CheckCloudResourceAu
 //
 // 	- You can create up to 18 accounts for an ApsaraDB for Redis instance.
 //
-// You can also create an account in the ApsaraDB for Redis console. For more information, see [Manage database accounts](~~92665~~).
+// You can also create an account in the ApsaraDB for Redis console. For more information, see [Manage database accounts](https://help.aliyun.com/document_detail/92665.html).
 //
 // @param request - CreateAccountRequest
 //
@@ -28761,6 +30788,10 @@ func (client *Client) CreateAccountWithOptions(request *CreateAccountRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an account that has specific permissions for an ApsaraDB for Redis instance.
+//
 // Description:
 //
 // >
@@ -28771,7 +30802,7 @@ func (client *Client) CreateAccountWithOptions(request *CreateAccountRequest, ru
 //
 // 	- You can create up to 18 accounts for an ApsaraDB for Redis instance.
 //
-// You can also create an account in the ApsaraDB for Redis console. For more information, see [Manage database accounts](~~92665~~).
+// You can also create an account in the ApsaraDB for Redis console. For more information, see [Manage database accounts](https://help.aliyun.com/document_detail/92665.html).
 //
 // @param request - CreateAccountRequest
 //
@@ -28787,9 +30818,13 @@ func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// Backs up an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// You can also back up an instance in the ApsaraDB for Redis console. For more information, see [Backup and recovery](~~43886~~).
+// You can also back up an instance in the ApsaraDB for Redis console. For more information, see [Backup and recovery](https://help.aliyun.com/document_detail/43886.html).
 //
 // @param request - CreateBackupRequest
 //
@@ -28849,9 +30884,13 @@ func (client *Client) CreateBackupWithOptions(request *CreateBackupRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Backs up an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// You can also back up an instance in the ApsaraDB for Redis console. For more information, see [Backup and recovery](~~43886~~).
+// You can also back up an instance in the ApsaraDB for Redis console. For more information, see [Backup and recovery](https://help.aliyun.com/document_detail/43886.html).
 //
 // @param request - CreateBackupRequest
 //
@@ -28867,21 +30906,13 @@ func (client *Client) CreateBackup(request *CreateBackupRequest) (_result *Creat
 	return _result, _err
 }
 
+// Summary:
+//
+// Manually creates a cache analytics task.
+//
 // Description:
 //
-// > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](~~186019~~).
-//
-// Before you call this operation, make sure that the instance meets the following requirements:
-//
-// 	- The engine version of the instance is Redis 4.0 or later.
-//
-// 	- The instance is a Community Edition instance or an Enhanced Edition (Tair) [DRAM-based instance](~~126164~~).
-//
-// This feature is unavailable for cloud disk-based cluster instances. For more information, see [Comparison between ApsaraDB for Redis instances that use local disks and those that use cloud disks](~~188068~~).
-//
-// 	- The instance is of the latest minor version. For more information about whether you must update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](~~129203~~)
-//
-// After you call this operation, you can call the [DescribeCacheAnalysisReport](~~128808~~) operation to view the analytic results.
+// This operation is no longer available. Use the new operation. For more information, see [Real-time key statistics and offline key analysis](https://help.aliyun.com/document_detail/184226.html).
 //
 // @param request - CreateCacheAnalysisTaskRequest
 //
@@ -28941,21 +30972,13 @@ func (client *Client) CreateCacheAnalysisTaskWithOptions(request *CreateCacheAna
 	return _result, _err
 }
 
+// Summary:
+//
+// Manually creates a cache analytics task.
+//
 // Description:
 //
-// > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](~~186019~~).
-//
-// Before you call this operation, make sure that the instance meets the following requirements:
-//
-// 	- The engine version of the instance is Redis 4.0 or later.
-//
-// 	- The instance is a Community Edition instance or an Enhanced Edition (Tair) [DRAM-based instance](~~126164~~).
-//
-// This feature is unavailable for cloud disk-based cluster instances. For more information, see [Comparison between ApsaraDB for Redis instances that use local disks and those that use cloud disks](~~188068~~).
-//
-// 	- The instance is of the latest minor version. For more information about whether you must update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](~~129203~~)
-//
-// After you call this operation, you can call the [DescribeCacheAnalysisReport](~~128808~~) operation to view the analytic results.
+// This operation is no longer available. Use the new operation. For more information, see [Real-time key statistics and offline key analysis](https://help.aliyun.com/document_detail/184226.html).
 //
 // @param request - CreateCacheAnalysisTaskRequest
 //
@@ -28971,15 +30994,19 @@ func (client *Client) CreateCacheAnalysisTask(request *CreateCacheAnalysisTaskRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Converts an existing ApsaraDB for Redis instance to the first child instance of a distributed ApsaraDB for Redis instance.
+//
 // Description:
 //
 // You cannot directly create a distributed instance. If you require a distributed instance, you must call this operation to convert an existing instance to the first child instance of the distributed instance. After the instance is converted, the distributed instance is created. Before you call this operation, make sure that the following requirements are met:
 //
-// 	- A [DRAM-based instance](~~126164~~) of Enhanced Edition is used.
+// 	- A [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html) of Enhanced Edition is used.
 //
-// 	- If the existing instance is a cluster instance, the direct connection mode must be disabled for the instance. For more information, see [Release a private endpoint](~~150047~~).
+// 	- If the existing instance is a cluster instance, the direct connection mode must be disabled for the instance. For more information, see [Release a private endpoint](https://help.aliyun.com/document_detail/150047.html).
 //
-// > You can also call the [CreateInstance](~~60873~~) operation to create an instance that is specified as the first child instance of a distributed instance. After the child instance is created, the distributed instance to which the child instance belongs is created.
+// > You can also call the [CreateInstance](https://help.aliyun.com/document_detail/60873.html) operation to create an instance that is specified as the first child instance of a distributed instance. After the child instance is created, the distributed instance to which the child instance belongs is created.
 //
 // @param request - CreateGlobalDistributeCacheRequest
 //
@@ -29047,15 +31074,19 @@ func (client *Client) CreateGlobalDistributeCacheWithOptions(request *CreateGlob
 	return _result, _err
 }
 
+// Summary:
+//
+// Converts an existing ApsaraDB for Redis instance to the first child instance of a distributed ApsaraDB for Redis instance.
+//
 // Description:
 //
 // You cannot directly create a distributed instance. If you require a distributed instance, you must call this operation to convert an existing instance to the first child instance of the distributed instance. After the instance is converted, the distributed instance is created. Before you call this operation, make sure that the following requirements are met:
 //
-// 	- A [DRAM-based instance](~~126164~~) of Enhanced Edition is used.
+// 	- A [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html) of Enhanced Edition is used.
 //
-// 	- If the existing instance is a cluster instance, the direct connection mode must be disabled for the instance. For more information, see [Release a private endpoint](~~150047~~).
+// 	- If the existing instance is a cluster instance, the direct connection mode must be disabled for the instance. For more information, see [Release a private endpoint](https://help.aliyun.com/document_detail/150047.html).
 //
-// > You can also call the [CreateInstance](~~60873~~) operation to create an instance that is specified as the first child instance of a distributed instance. After the child instance is created, the distributed instance to which the child instance belongs is created.
+// > You can also call the [CreateInstance](https://help.aliyun.com/document_detail/60873.html) operation to create an instance that is specified as the first child instance of a distributed instance. After the child instance is created, the distributed instance to which the child instance belongs is created.
 //
 // @param request - CreateGlobalDistributeCacheRequest
 //
@@ -29071,6 +31102,15 @@ func (client *Client) CreateGlobalDistributeCache(request *CreateGlobalDistribut
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a global IP whitelist template.
+//
+// @param request - CreateGlobalSecurityIPGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGlobalSecurityIPGroupResponse
 func (client *Client) CreateGlobalSecurityIPGroupWithOptions(request *CreateGlobalSecurityIPGroupRequest, runtime *util.RuntimeOptions) (_result *CreateGlobalSecurityIPGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29136,6 +31176,13 @@ func (client *Client) CreateGlobalSecurityIPGroupWithOptions(request *CreateGlob
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a global IP whitelist template.
+//
+// @param request - CreateGlobalSecurityIPGroupRequest
+//
+// @return CreateGlobalSecurityIPGroupResponse
 func (client *Client) CreateGlobalSecurityIPGroup(request *CreateGlobalSecurityIPGroupRequest) (_result *CreateGlobalSecurityIPGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateGlobalSecurityIPGroupResponse{}
@@ -29147,13 +31194,17 @@ func (client *Client) CreateGlobalSecurityIPGroup(request *CreateGlobalSecurityI
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
+// Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
 //
-// You can call this operation to create an ApsaraDB for Redis instance or a classic Tair DRAM-based instance. To create a cloud-native Tair instance, call the [CreateTairInstance](~~208271~~) operation.
+// You can call this operation to create an ApsaraDB for Redis instance or a classic Tair DRAM-based instance. To create a cloud-native Tair instance, call the [CreateTairInstance](https://help.aliyun.com/document_detail/208271.html) operation.
 //
-// > For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see [Step 1: Create an ApsaraDB for Redis instance](~~26351~~).
+// > For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see [Step 1: Create an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/26351.html).
 //
 // @param request - CreateInstanceRequest
 //
@@ -29286,6 +31337,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		query["ReadOnlyCount"] = request.ReadOnlyCount
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RecoverConfigMode)) {
+		query["RecoverConfigMode"] = request.RecoverConfigMode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -29316,6 +31371,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.ShardCount)) {
 		query["ShardCount"] = request.ShardCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SlaveReadOnlyCount)) {
+		query["SlaveReadOnlyCount"] = request.SlaveReadOnlyCount
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SrcDBInstanceId)) {
@@ -29365,13 +31424,17 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
+// Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
 //
-// You can call this operation to create an ApsaraDB for Redis instance or a classic Tair DRAM-based instance. To create a cloud-native Tair instance, call the [CreateTairInstance](~~208271~~) operation.
+// You can call this operation to create an ApsaraDB for Redis instance or a classic Tair DRAM-based instance. To create a cloud-native Tair instance, call the [CreateTairInstance](https://help.aliyun.com/document_detail/208271.html) operation.
 //
-// > For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see [Step 1: Create an ApsaraDB for Redis instance](~~26351~~).
+// > For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see [Step 1: Create an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/26351.html).
 //
 // @param request - CreateInstanceRequest
 //
@@ -29389,11 +31452,13 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
+// Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
 //
-// >  For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see Step 1: Create an ApsaraDB for Redis instance.[](~~26351~~)
+// >  You can call this operation to create an ApsaraDB for Redis classic instance or a Tair DRAM-based classic instance. We recommend that you use an API operation for creating a single instance:
 //
-// This operation can only be used to create ApsaraDB for Redis Community Edition instances and ApsaraDB for Redis Enhanced Edition (Tair) DRAM-based classic instances.
+// 	- [CreateInstance](https://help.aliyun.com/document_detail/473757.html): creates an ApsaraDB for Redis instance or a Tair DRAM-based classic instance.
+//
+// 	- [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html): creates a Tair cloud-native instance. The instance can be a DRAM-based, persistent memory-optimized, or ESSD/SSD-based instance.
 //
 // @param request - CreateInstancesRequest
 //
@@ -29487,11 +31552,13 @@ func (client *Client) CreateInstancesWithOptions(request *CreateInstancesRequest
 
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
+// Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
 //
-// >  For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see Step 1: Create an ApsaraDB for Redis instance.[](~~26351~~)
+// >  You can call this operation to create an ApsaraDB for Redis classic instance or a Tair DRAM-based classic instance. We recommend that you use an API operation for creating a single instance:
 //
-// This operation can only be used to create ApsaraDB for Redis Community Edition instances and ApsaraDB for Redis Enhanced Edition (Tair) DRAM-based classic instances.
+// 	- [CreateInstance](https://help.aliyun.com/document_detail/473757.html): creates an ApsaraDB for Redis instance or a Tair DRAM-based classic instance.
+//
+// 	- [CreateTairInstance](https://help.aliyun.com/document_detail/473770.html): creates a Tair cloud-native instance. The instance can be a DRAM-based, persistent memory-optimized, or ESSD/SSD-based instance.
 //
 // @param request - CreateInstancesRequest
 //
@@ -29507,15 +31574,123 @@ func (client *Client) CreateInstances(request *CreateInstancesRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建实例参数模板。
+//
+// @param request - CreateParameterGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateParameterGroupResponse
+func (client *Client) CreateParameterGroupWithOptions(request *CreateParameterGroupRequest, runtime *util.RuntimeOptions) (_result *CreateParameterGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EngineType)) {
+		query["EngineType"] = request.EngineType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EngineVersion)) {
+		query["EngineVersion"] = request.EngineVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParameterGroupDesc)) {
+		query["ParameterGroupDesc"] = request.ParameterGroupDesc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParameterGroupName)) {
+		query["ParameterGroupName"] = request.ParameterGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
+		query["Parameters"] = request.Parameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateParameterGroup"),
+		Version:     tea.String("2015-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateParameterGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建实例参数模板。
+//
+// @param request - CreateParameterGroupRequest
+//
+// @return CreateParameterGroupResponse
+func (client *Client) CreateParameterGroup(request *CreateParameterGroupRequest) (_result *CreateParameterGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateParameterGroupResponse{}
+	_body, _err := client.CreateParameterGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a Tair instance.
+//
 // Description:
 //
-// For information about instance selection, see [Select an ApsaraDB for Redis instance](~~223808~~).
+// For information about instance selection, see [Select an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/223808.html).
 //
-// Before you call this operation, make sure that you are familiar with the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
+// Before you call this operation, make sure that you are familiar with the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
 //
-// 	- For information about how to create a Tair instance in the Tair console, see [Create a Tair instance](~~443863~~).
+// 	- For information about how to create a Tair instance in the Tair console, see [Create a Tair instance](https://help.aliyun.com/document_detail/443863.html).
 //
-// 	- If you want to create other types of instances, such as Community Edition instances or [Tair DRAM-based](~~126164~~) instances, you can call the [CreateInstance](~~60873~~) operation.
+// 	- If you want to create other types of instances, such as Community Edition instances or [Tair DRAM-based](https://help.aliyun.com/document_detail/126164.html) instances, you can call the [CreateInstance](https://help.aliyun.com/document_detail/60873.html) operation.
 //
 // @param request - CreateTairInstanceRequest
 //
@@ -29628,6 +31803,10 @@ func (client *Client) CreateTairInstanceWithOptions(request *CreateTairInstanceR
 		query["ReadOnlyCount"] = request.ReadOnlyCount
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RecoverConfigMode)) {
+		query["RecoverConfigMode"] = request.RecoverConfigMode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -29719,15 +31898,19 @@ func (client *Client) CreateTairInstanceWithOptions(request *CreateTairInstanceR
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a Tair instance.
+//
 // Description:
 //
-// For information about instance selection, see [Select an ApsaraDB for Redis instance](~~223808~~).
+// For information about instance selection, see [Select an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/223808.html).
 //
-// Before you call this operation, make sure that you are familiar with the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
+// Before you call this operation, make sure that you are familiar with the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
 //
-// 	- For information about how to create a Tair instance in the Tair console, see [Create a Tair instance](~~443863~~).
+// 	- For information about how to create a Tair instance in the Tair console, see [Create a Tair instance](https://help.aliyun.com/document_detail/443863.html).
 //
-// 	- If you want to create other types of instances, such as Community Edition instances or [Tair DRAM-based](~~126164~~) instances, you can call the [CreateInstance](~~60873~~) operation.
+// 	- If you want to create other types of instances, such as Community Edition instances or [Tair DRAM-based](https://help.aliyun.com/document_detail/126164.html) instances, you can call the [CreateInstance](https://help.aliyun.com/document_detail/60873.html) operation.
 //
 // @param request - CreateTairInstanceRequest
 //
@@ -29743,9 +31926,13 @@ func (client *Client) CreateTairInstance(request *CreateTairInstanceRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an account from an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// 	- This operation is supported only for ApsaraDB for Redis instances that run Redis 4.0.
+//   This operation is supported only for ApsaraDB for Redis instances that run Redis 4.0.
 //
 // 	- The ApsaraDB for Redis instance must be in the Running state.
 //
@@ -29811,9 +31998,13 @@ func (client *Client) DeleteAccountWithOptions(request *DeleteAccountRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an account from an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// 	- This operation is supported only for ApsaraDB for Redis instances that run Redis 4.0.
+//   This operation is supported only for ApsaraDB for Redis instances that run Redis 4.0.
 //
 // 	- The ApsaraDB for Redis instance must be in the Running state.
 //
@@ -29831,6 +32022,10 @@ func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *Del
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a global IP whitelist template.
+//
 // Description:
 //
 // Before you delete an IP whitelist template, you must unbind (disassociate) the instances that are currently associated with the template.
@@ -29905,6 +32100,10 @@ func (client *Client) DeleteGlobalSecurityIPGroupWithOptions(request *DeleteGlob
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a global IP whitelist template.
+//
 // Description:
 //
 // Before you delete an IP whitelist template, you must unbind (disassociate) the instances that are currently associated with the template.
@@ -29923,9 +32122,13 @@ func (client *Client) DeleteGlobalSecurityIPGroup(request *DeleteGlobalSecurityI
 	return _result, _err
 }
 
+// Summary:
+//
+// Release the Redis instance.
+//
 // Description:
 //
-// For more information about how to perform the corresponding operation in the console, see [Release an instance](~~43882~~).
+// For more information about how to perform the corresponding operation in the console, see [Release an instance](https://help.aliyun.com/document_detail/43882.html).
 //
 // Before you call this operation, make sure that the following requirements are met:
 //
@@ -29997,9 +32200,13 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Release the Redis instance.
+//
 // Description:
 //
-// For more information about how to perform the corresponding operation in the console, see [Release an instance](~~43882~~).
+// For more information about how to perform the corresponding operation in the console, see [Release an instance](https://help.aliyun.com/document_detail/43882.html).
 //
 // Before you call this operation, make sure that the following requirements are met:
 //
@@ -30023,13 +32230,97 @@ func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a parameter template.
+//
+// @param request - DeleteParameterGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteParameterGroupResponse
+func (client *Client) DeleteParameterGroupWithOptions(request *DeleteParameterGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteParameterGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParameterGroupId)) {
+		query["ParameterGroupId"] = request.ParameterGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteParameterGroup"),
+		Version:     tea.String("2015-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteParameterGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a parameter template.
+//
+// @param request - DeleteParameterGroupRequest
+//
+// @return DeleteParameterGroupResponse
+func (client *Client) DeleteParameterGroup(request *DeleteParameterGroupRequest) (_result *DeleteParameterGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteParameterGroupResponse{}
+	_body, _err := client.DeleteParameterGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Removes one or more data shards from an ApsaraDB for Redis cluster instance.
+//
 // Description:
 //
-// You can also remove data shards from an instance in the ApsaraDB for Redis console. For more information, see [Adjust the number of shards for an ApsaraDB for Redis instance with cloud disks](~~198082~~).\\
+// You can also remove data shards from an instance in the ApsaraDB for Redis console. For more information, see [Adjust the number of shards for an ApsaraDB for Redis instance with cloud disks](https://help.aliyun.com/document_detail/198082.html).\\
 //
 // Before you call this operation, make sure that the instance meets the following requirements:
 //
-// 	- The instance is a persistent memory-optimized instance in the cluster architecture. For more information about persistent memory-optimized instances, see [Persistent memory-optimized instances](~~183956~~).
+// 	- The instance is a persistent memory-optimized instance in the cluster architecture. For more information about persistent memory-optimized instances, see [Persistent memory-optimized instances](https://help.aliyun.com/document_detail/183956.html).
 //
 // 	- The instance has more than one data shard.
 //
@@ -30103,13 +32394,17 @@ func (client *Client) DeleteShardingNodeWithOptions(request *DeleteShardingNodeR
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes one or more data shards from an ApsaraDB for Redis cluster instance.
+//
 // Description:
 //
-// You can also remove data shards from an instance in the ApsaraDB for Redis console. For more information, see [Adjust the number of shards for an ApsaraDB for Redis instance with cloud disks](~~198082~~).\\
+// You can also remove data shards from an instance in the ApsaraDB for Redis console. For more information, see [Adjust the number of shards for an ApsaraDB for Redis instance with cloud disks](https://help.aliyun.com/document_detail/198082.html).\\
 //
 // Before you call this operation, make sure that the instance meets the following requirements:
 //
-// 	- The instance is a persistent memory-optimized instance in the cluster architecture. For more information about persistent memory-optimized instances, see [Persistent memory-optimized instances](~~183956~~).
+// 	- The instance is a persistent memory-optimized instance in the cluster architecture. For more information about persistent memory-optimized instances, see [Persistent memory-optimized instances](https://help.aliyun.com/document_detail/183956.html).
 //
 // 	- The instance has more than one data shard.
 //
@@ -30127,6 +32422,10 @@ func (client *Client) DeleteShardingNode(request *DeleteShardingNodeRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all accounts or a specified account of an ApsaraDB for Redis instance.
+//
 // Description:
 //
 // >  Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
@@ -30193,6 +32492,10 @@ func (client *Client) DescribeAccountsWithOptions(request *DescribeAccountsReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all accounts or a specified account of an ApsaraDB for Redis instance.
+//
 // Description:
 //
 // >  Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
@@ -30211,6 +32514,10 @@ func (client *Client) DescribeAccounts(request *DescribeAccountsRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the detailed information about O&M tasks of an ApsaraDB for Redis instance.
+//
 // Description:
 //
 // After you have called this API operation and queried the information about a specific O&M task, you can also call the [ModifyActiveOperationTask](~~ModifyActiveOperationTask~~) operation to modify the scheduled switchover time of the O&M task.
@@ -30289,6 +32596,10 @@ func (client *Client) DescribeActiveOperationTaskWithOptions(request *DescribeAc
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the detailed information about O&M tasks of an ApsaraDB for Redis instance.
+//
 // Description:
 //
 // After you have called this API operation and queried the information about a specific O&M task, you can also call the [ModifyActiveOperationTask](~~ModifyActiveOperationTask~~) operation to modify the scheduled switchover time of the O&M task.
@@ -30307,17 +32618,21 @@ func (client *Client) DescribeActiveOperationTask(request *DescribeActiveOperati
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the audit log configurations of an ApsaraDB for Redis instance. The configurations include whether the audit log feature is enabled and the retention period of audit logs.
+//
 // Description:
 //
-// > You can call the [ModifyAuditLogConfig](~~130206~~) operation to enable or disable the audit log feature for an ApsaraDB for Redis instance. For more information, see [Enable the new audit log feature](~~102015~~).
+// > You can call the [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/130206.html) operation to enable or disable the audit log feature for an ApsaraDB for Redis instance. For more information, see [Enable the new audit log feature](https://help.aliyun.com/document_detail/102015.html).
 //
 // Before you call this operation, make sure that the ApsaraDB for Redis instance meets the following requirements:
 //
-// 	- The instance is an ApsaraDB for Redis Community Edition instance or ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](~~126164~~).
+// 	- The instance is an ApsaraDB for Redis Community Edition instance or ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html).
 //
-// 	- The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](~~95268~~) operation to check whether the instance uses the latest minor version.
+// 	- The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) operation to check whether the instance uses the latest minor version.
 //
-// 	- The audit log feature is enabled for the instance. For more information, see [ModifyAuditLogConfig](~~130206~~).
+// 	- The audit log feature is enabled for the instance. For more information, see [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/130206.html).
 //
 // @param request - DescribeAuditLogConfigRequest
 //
@@ -30381,17 +32696,21 @@ func (client *Client) DescribeAuditLogConfigWithOptions(request *DescribeAuditLo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the audit log configurations of an ApsaraDB for Redis instance. The configurations include whether the audit log feature is enabled and the retention period of audit logs.
+//
 // Description:
 //
-// > You can call the [ModifyAuditLogConfig](~~130206~~) operation to enable or disable the audit log feature for an ApsaraDB for Redis instance. For more information, see [Enable the new audit log feature](~~102015~~).
+// > You can call the [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/130206.html) operation to enable or disable the audit log feature for an ApsaraDB for Redis instance. For more information, see [Enable the new audit log feature](https://help.aliyun.com/document_detail/102015.html).
 //
 // Before you call this operation, make sure that the ApsaraDB for Redis instance meets the following requirements:
 //
-// 	- The instance is an ApsaraDB for Redis Community Edition instance or ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](~~126164~~).
+// 	- The instance is an ApsaraDB for Redis Community Edition instance or ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html).
 //
-// 	- The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](~~95268~~) operation to check whether the instance uses the latest minor version.
+// 	- The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) operation to check whether the instance uses the latest minor version.
 //
-// 	- The audit log feature is enabled for the instance. For more information, see [ModifyAuditLogConfig](~~130206~~).
+// 	- The audit log feature is enabled for the instance. For more information, see [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/130206.html).
 //
 // @param request - DescribeAuditLogConfigRequest
 //
@@ -30407,9 +32726,13 @@ func (client *Client) DescribeAuditLogConfig(request *DescribeAuditLogConfigRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the audit logs of an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// This operation can be called up to 100 times per minute. You can also query audit logs in the ApsaraDB for Redis console. For more information, see [Query audit logs of an instance](~~101937~~).
+// This operation can be called up to 100 times per minute. You can also query audit logs in the ApsaraDB for Redis console. For more information, see [Query audit logs of an instance](https://help.aliyun.com/document_detail/101937.html).
 //
 // Before you call this operation, make sure that the instance meets the following requirements:
 //
@@ -30417,7 +32740,7 @@ func (client *Client) DescribeAuditLogConfig(request *DescribeAuditLogConfigRequ
 //
 // 	- The engine version of the instance is Redis 4.0 or later.
 //
-// 	- The audit log feature is enabled for the instance. For more information, see [ModifyAuditLogConfig](~~130206~~).
+// 	- The audit log feature is enabled for the instance. For more information, see [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/130206.html).
 //
 // @param request - DescribeAuditRecordsRequest
 //
@@ -30513,9 +32836,13 @@ func (client *Client) DescribeAuditRecordsWithOptions(request *DescribeAuditReco
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the audit logs of an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// This operation can be called up to 100 times per minute. You can also query audit logs in the ApsaraDB for Redis console. For more information, see [Query audit logs of an instance](~~101937~~).
+// This operation can be called up to 100 times per minute. You can also query audit logs in the ApsaraDB for Redis console. For more information, see [Query audit logs of an instance](https://help.aliyun.com/document_detail/101937.html).
 //
 // Before you call this operation, make sure that the instance meets the following requirements:
 //
@@ -30523,7 +32850,7 @@ func (client *Client) DescribeAuditRecordsWithOptions(request *DescribeAuditReco
 //
 // 	- The engine version of the instance is Redis 4.0 or later.
 //
-// 	- The audit log feature is enabled for the instance. For more information, see [ModifyAuditLogConfig](~~130206~~).
+// 	- The audit log feature is enabled for the instance. For more information, see [ModifyAuditLogConfig](https://help.aliyun.com/document_detail/130206.html).
 //
 // @param request - DescribeAuditRecordsRequest
 //
@@ -30539,6 +32866,15 @@ func (client *Client) DescribeAuditRecords(request *DescribeAuditRecordsRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the types of ApsaraDB for Redis instances that can be created in a specified zone.
+//
+// @param request - DescribeAvailableResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAvailableResourceResponse
 func (client *Client) DescribeAvailableResourceWithOptions(request *DescribeAvailableResourceRequest, runtime *util.RuntimeOptions) (_result *DescribeAvailableResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30632,6 +32968,13 @@ func (client *Client) DescribeAvailableResourceWithOptions(request *DescribeAvai
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the types of ApsaraDB for Redis instances that can be created in a specified zone.
+//
+// @param request - DescribeAvailableResourceRequest
+//
+// @return DescribeAvailableResourceResponse
 func (client *Client) DescribeAvailableResource(request *DescribeAvailableResourceRequest) (_result *DescribeAvailableResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAvailableResourceResponse{}
@@ -30643,6 +32986,15 @@ func (client *Client) DescribeAvailableResource(request *DescribeAvailableResour
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the backup policy of an ApsaraDB for Redis instance, including the backup cycle and backup time.
+//
+// @param request - DescribeBackupPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackupPolicyResponse
 func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPolicyRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30696,6 +33048,13 @@ func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPol
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the backup policy of an ApsaraDB for Redis instance, including the backup cycle and backup time.
+//
+// @param request - DescribeBackupPolicyRequest
+//
+// @return DescribeBackupPolicyResponse
 func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest) (_result *DescribeBackupPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackupPolicyResponse{}
@@ -30707,6 +33066,15 @@ func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the states of backup tasks for an ApsaraDB for Redis instance.
+//
+// @param request - DescribeBackupTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackupTasksResponse
 func (client *Client) DescribeBackupTasksWithOptions(request *DescribeBackupTasksRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30768,6 +33136,13 @@ func (client *Client) DescribeBackupTasksWithOptions(request *DescribeBackupTask
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the states of backup tasks for an ApsaraDB for Redis instance.
+//
+// @param request - DescribeBackupTasksRequest
+//
+// @return DescribeBackupTasksResponse
 func (client *Client) DescribeBackupTasks(request *DescribeBackupTasksRequest) (_result *DescribeBackupTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackupTasksResponse{}
@@ -30779,6 +33154,15 @@ func (client *Client) DescribeBackupTasks(request *DescribeBackupTasksRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the backup files of the ApsaraDB for Redis instance.
+//
+// @param request - DescribeBackupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackupsResponse
 func (client *Client) DescribeBackupsWithOptions(request *DescribeBackupsRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30860,6 +33244,13 @@ func (client *Client) DescribeBackupsWithOptions(request *DescribeBackupsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the backup files of the ApsaraDB for Redis instance.
+//
+// @param request - DescribeBackupsRequest
+//
+// @return DescribeBackupsResponse
 func (client *Client) DescribeBackups(request *DescribeBackupsRequest) (_result *DescribeBackupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackupsResponse{}
@@ -30871,15 +33262,19 @@ func (client *Client) DescribeBackups(request *DescribeBackupsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the cache analytics report that is generated on a specified date for an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](~~186019~~).
+// > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](https://help.aliyun.com/document_detail/186019.html).
 //
 // Before you call this operation, make sure that the instance meets the following requirements:
 //
 // 	- The engine version of the instance is Redis 4.0 or later.
 //
-// 	- The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](~~129203~~)
+// 	- The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](https://help.aliyun.com/document_detail/129203.html)
 //
 // @param request - DescribeCacheAnalysisReportRequest
 //
@@ -30959,15 +33354,19 @@ func (client *Client) DescribeCacheAnalysisReportWithOptions(request *DescribeCa
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the cache analytics report that is generated on a specified date for an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](~~186019~~).
+// > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](https://help.aliyun.com/document_detail/186019.html).
 //
 // Before you call this operation, make sure that the instance meets the following requirements:
 //
 // 	- The engine version of the instance is Redis 4.0 or later.
 //
-// 	- The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](~~129203~~)
+// 	- The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](https://help.aliyun.com/document_detail/129203.html)
 //
 // @param request - DescribeCacheAnalysisReportRequest
 //
@@ -30983,15 +33382,19 @@ func (client *Client) DescribeCacheAnalysisReport(request *DescribeCacheAnalysis
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the cache analytics reports of an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](~~186019~~).
+// > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](https://help.aliyun.com/document_detail/186019.html).
 //
 // Before you call this operation, make sure that the instance meets the following requirements:
 //
 // 	- The engine version of the instance is Redis 4.0 or later.
 //
-// 	- The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](~~129203~~)
+// 	- The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](https://help.aliyun.com/document_detail/129203.html)
 //
 // @param request - DescribeCacheAnalysisReportListRequest
 //
@@ -31067,15 +33470,19 @@ func (client *Client) DescribeCacheAnalysisReportListWithOptions(request *Descri
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the cache analytics reports of an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](~~186019~~).
+// > ApsaraDB for Redis has optimized the cache analytics feature to improve user experience. This API operation is phased out. You can use the new API operation for cache analytics. For more information, see [API operations for cache analytics are upgraded](https://help.aliyun.com/document_detail/186019.html).
 //
 // Before you call this operation, make sure that the instance meets the following requirements:
 //
 // 	- The engine version of the instance is Redis 4.0 or later.
 //
-// 	- The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](~~129203~~)
+// 	- The instance uses the latest minor version. For more information about how to check whether to update the minor version of an instance, see [How do I check whether the minor version of an ApsaraDB for Redis instance is the latest?](https://help.aliyun.com/document_detail/129203.html)
 //
 // @param request - DescribeCacheAnalysisReportListRequest
 //
@@ -31091,6 +33498,15 @@ func (client *Client) DescribeCacheAnalysisReportList(request *DescribeCacheAnal
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the backup sets of an ApsaraDB for Redis or Tair cluster instance.
+//
+// @param request - DescribeClusterBackupListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeClusterBackupListResponse
 func (client *Client) DescribeClusterBackupListWithOptions(request *DescribeClusterBackupListRequest, runtime *util.RuntimeOptions) (_result *DescribeClusterBackupListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31120,6 +33536,13 @@ func (client *Client) DescribeClusterBackupListWithOptions(request *DescribeClus
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the backup sets of an ApsaraDB for Redis or Tair cluster instance.
+//
+// @param request - DescribeClusterBackupListRequest
+//
+// @return DescribeClusterBackupListResponse
 func (client *Client) DescribeClusterBackupList(request *DescribeClusterBackupListRequest) (_result *DescribeClusterBackupListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeClusterBackupListResponse{}
@@ -31131,9 +33554,13 @@ func (client *Client) DescribeClusterBackupList(request *DescribeClusterBackupLi
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the configuration information of nodes in an ApsaraDB for Redis cluster instance, such as the specifications and the maximum number of connections.
+//
 // Description:
 //
-// > This API operation is applicable only to ApsaraDB for Redis instances that use [cloud disks](~~188068~~) and the [cluster architecture](~~52228~~).
+// > This API operation is applicable only to ApsaraDB for Redis instances that use [cloud disks](https://help.aliyun.com/document_detail/188068.html) and the [cluster architecture](https://help.aliyun.com/document_detail/52228.html).
 //
 // @param request - DescribeClusterMemberInfoRequest
 //
@@ -31201,9 +33628,13 @@ func (client *Client) DescribeClusterMemberInfoWithOptions(request *DescribeClus
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the configuration information of nodes in an ApsaraDB for Redis cluster instance, such as the specifications and the maximum number of connections.
+//
 // Description:
 //
-// > This API operation is applicable only to ApsaraDB for Redis instances that use [cloud disks](~~188068~~) and the [cluster architecture](~~52228~~).
+// > This API operation is applicable only to ApsaraDB for Redis instances that use [cloud disks](https://help.aliyun.com/document_detail/188068.html) and the [cluster architecture](https://help.aliyun.com/document_detail/52228.html).
 //
 // @param request - DescribeClusterMemberInfoRequest
 //
@@ -31219,6 +33650,15 @@ func (client *Client) DescribeClusterMemberInfo(request *DescribeClusterMemberIn
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the network information of an ApsaraDB for Redis instance.
+//
+// @param request - DescribeDBInstanceNetInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBInstanceNetInfoResponse
 func (client *Client) DescribeDBInstanceNetInfoWithOptions(request *DescribeDBInstanceNetInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceNetInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31272,6 +33712,13 @@ func (client *Client) DescribeDBInstanceNetInfoWithOptions(request *DescribeDBIn
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the network information of an ApsaraDB for Redis instance.
+//
+// @param request - DescribeDBInstanceNetInfoRequest
+//
+// @return DescribeDBInstanceNetInfoResponse
 func (client *Client) DescribeDBInstanceNetInfo(request *DescribeDBInstanceNetInfoRequest) (_result *DescribeDBInstanceNetInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstanceNetInfoResponse{}
@@ -31283,6 +33730,10 @@ func (client *Client) DescribeDBInstanceNetInfo(request *DescribeDBInstanceNetIn
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about virtual IP addresses (VIPs) of child instances of a cluster instance in direct connection mode.
+//
 // Description:
 //
 // > Only instances that use cloud disks support this operation.
@@ -31341,6 +33792,10 @@ func (client *Client) DescribeDBNodeDirectVipInfoWithOptions(request *DescribeDB
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about virtual IP addresses (VIPs) of child instances of a cluster instance in direct connection mode.
+//
 // Description:
 //
 // > Only instances that use cloud disks support this operation.
@@ -31359,9 +33814,13 @@ func (client *Client) DescribeDBNodeDirectVipInfo(request *DescribeDBNodeDirectV
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of an ApsaraDB for Redis instance deployed in a dedicated cluster.
+//
 // Description:
 //
-// > If you want to query the information about ApsaraDB for Redis instances that are not deployed in a dedicated cluster, call the [DescribeInstanceAttribute](~~60996~~) operation.
+// > If you want to query the information about ApsaraDB for Redis instances that are not deployed in a dedicated cluster, call the [DescribeInstanceAttribute](https://help.aliyun.com/document_detail/60996.html) operation.
 //
 // @param request - DescribeDedicatedClusterInstanceListRequest
 //
@@ -31461,9 +33920,13 @@ func (client *Client) DescribeDedicatedClusterInstanceListWithOptions(request *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of an ApsaraDB for Redis instance deployed in a dedicated cluster.
+//
 // Description:
 //
-// > If you want to query the information about ApsaraDB for Redis instances that are not deployed in a dedicated cluster, call the [DescribeInstanceAttribute](~~60996~~) operation.
+// > If you want to query the information about ApsaraDB for Redis instances that are not deployed in a dedicated cluster, call the [DescribeInstanceAttribute](https://help.aliyun.com/document_detail/60996.html) operation.
 //
 // @param request - DescribeDedicatedClusterInstanceListRequest
 //
@@ -31479,11 +33942,15 @@ func (client *Client) DescribeDedicatedClusterInstanceList(request *DescribeDedi
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a Transparent Data Encryption (TDE) custom key for an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// Before you call this operation, TDE must be enabled for the ApsaraDB for Redis instance by using a custom key. For more information, see [ModifyInstanceTDE](~~302337~~).
+// Before you call this operation, TDE must be enabled for the ApsaraDB for Redis instance by using a custom key. For more information, see [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html).
 //
-// > For more information about TDE, see [Enable TDE](~~265913~~).
+// > For more information about TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
 //
 // @param request - DescribeEncryptionKeyRequest
 //
@@ -31547,11 +34014,15 @@ func (client *Client) DescribeEncryptionKeyWithOptions(request *DescribeEncrypti
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a Transparent Data Encryption (TDE) custom key for an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// Before you call this operation, TDE must be enabled for the ApsaraDB for Redis instance by using a custom key. For more information, see [ModifyInstanceTDE](~~302337~~).
+// Before you call this operation, TDE must be enabled for the ApsaraDB for Redis instance by using a custom key. For more information, see [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html).
 //
-// > For more information about TDE, see [Enable TDE](~~265913~~).
+// > For more information about TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
 //
 // @param request - DescribeEncryptionKeyRequest
 //
@@ -31567,11 +34038,15 @@ func (client *Client) DescribeEncryptionKey(request *DescribeEncryptionKeyReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the custom keys used by an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// 	- You can specify a custom key when you call the [ModifyInstanceTDE](~~302337~~) operation to enable Transparent Data Encryption (TDE). You can call the DescribeEncryptionKeyList operation to query the custom keys that are in use. To create a custom key, you can call the [CreateKey](~~28947~~) operation of Key Management Service (KMS).
+//   You can specify a custom key when you call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html) operation to enable Transparent Data Encryption (TDE). You can call the DescribeEncryptionKeyList operation to query the custom keys that are in use. To create a custom key, you can call the [CreateKey](https://help.aliyun.com/document_detail/28947.html) operation of Key Management Service (KMS).
 //
-// 	- For more information about TDE and the usage notes of TDE, see [Enable TDE](~~265913~~).
+// 	- For more information about TDE and the usage notes of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
 //
 // @param request - DescribeEncryptionKeyListRequest
 //
@@ -31631,11 +34106,15 @@ func (client *Client) DescribeEncryptionKeyListWithOptions(request *DescribeEncr
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the custom keys used by an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// 	- You can specify a custom key when you call the [ModifyInstanceTDE](~~302337~~) operation to enable Transparent Data Encryption (TDE). You can call the DescribeEncryptionKeyList operation to query the custom keys that are in use. To create a custom key, you can call the [CreateKey](~~28947~~) operation of Key Management Service (KMS).
+//   You can specify a custom key when you call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html) operation to enable Transparent Data Encryption (TDE). You can call the DescribeEncryptionKeyList operation to query the custom keys that are in use. To create a custom key, you can call the [CreateKey](https://help.aliyun.com/document_detail/28947.html) operation of Key Management Service (KMS).
 //
-// 	- For more information about TDE and the usage notes of TDE, see [Enable TDE](~~265913~~).
+// 	- For more information about TDE and the usage notes of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
 //
 // @param request - DescribeEncryptionKeyListRequest
 //
@@ -31651,6 +34130,10 @@ func (client *Client) DescribeEncryptionKeyList(request *DescribeEncryptionKeyLi
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the major version and minor version of an ApsaraDB for Redis instance and the release notes for minor versions.
+//
 // Description:
 //
 // ## Debugging
@@ -31715,6 +34198,10 @@ func (client *Client) DescribeEngineVersionWithOptions(request *DescribeEngineVe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the major version and minor version of an ApsaraDB for Redis instance and the release notes for minor versions.
+//
 // Description:
 //
 // ## Debugging
@@ -31735,6 +34222,10 @@ func (client *Client) DescribeEngineVersion(request *DescribeEngineVersionReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a distributed ApsaraDB for Redis instance.
+//
 // Description:
 //
 // ## Debugging
@@ -31811,6 +34302,10 @@ func (client *Client) DescribeGlobalDistributeCacheWithOptions(request *Describe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a distributed ApsaraDB for Redis instance.
+//
 // Description:
 //
 // ## Debugging
@@ -31831,6 +34326,15 @@ func (client *Client) DescribeGlobalDistributeCache(request *DescribeGlobalDistr
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries global IP whitelist templates.
+//
+// @param request - DescribeGlobalSecurityIPGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeGlobalSecurityIPGroupResponse
 func (client *Client) DescribeGlobalSecurityIPGroupWithOptions(request *DescribeGlobalSecurityIPGroupRequest, runtime *util.RuntimeOptions) (_result *DescribeGlobalSecurityIPGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31860,6 +34364,13 @@ func (client *Client) DescribeGlobalSecurityIPGroupWithOptions(request *Describe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries global IP whitelist templates.
+//
+// @param request - DescribeGlobalSecurityIPGroupRequest
+//
+// @return DescribeGlobalSecurityIPGroupResponse
 func (client *Client) DescribeGlobalSecurityIPGroup(request *DescribeGlobalSecurityIPGroupRequest) (_result *DescribeGlobalSecurityIPGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeGlobalSecurityIPGroupResponse{}
@@ -31871,6 +34382,15 @@ func (client *Client) DescribeGlobalSecurityIPGroup(request *DescribeGlobalSecur
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about the global IP whitelist templates associated with an instance.
+//
+// @param request - DescribeGlobalSecurityIPGroupRelationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeGlobalSecurityIPGroupRelationResponse
 func (client *Client) DescribeGlobalSecurityIPGroupRelationWithOptions(request *DescribeGlobalSecurityIPGroupRelationRequest, runtime *util.RuntimeOptions) (_result *DescribeGlobalSecurityIPGroupRelationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31900,6 +34420,13 @@ func (client *Client) DescribeGlobalSecurityIPGroupRelationWithOptions(request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about the global IP whitelist templates associated with an instance.
+//
+// @param request - DescribeGlobalSecurityIPGroupRelationRequest
+//
+// @return DescribeGlobalSecurityIPGroupRelationResponse
 func (client *Client) DescribeGlobalSecurityIPGroupRelation(request *DescribeGlobalSecurityIPGroupRelationRequest) (_result *DescribeGlobalSecurityIPGroupRelationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeGlobalSecurityIPGroupRelationResponse{}
@@ -31911,9 +34438,13 @@ func (client *Client) DescribeGlobalSecurityIPGroupRelation(request *DescribeGlo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the performance monitoring data of an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// You can also query the performance monitoring data of an instance in the ApsaraDB for Redis console. For more information, see [Metrics](~~43887~~).
+// You can also query the performance monitoring data of an instance in the ApsaraDB for Redis console. For more information, see [Metrics](https://help.aliyun.com/document_detail/43887.html).
 //
 // @param request - DescribeHistoryMonitorValuesRequest
 //
@@ -31997,9 +34528,13 @@ func (client *Client) DescribeHistoryMonitorValuesWithOptions(request *DescribeH
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the performance monitoring data of an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// You can also query the performance monitoring data of an instance in the ApsaraDB for Redis console. For more information, see [Metrics](~~43887~~).
+// You can also query the performance monitoring data of an instance in the ApsaraDB for Redis console. For more information, see [Metrics](https://help.aliyun.com/document_detail/43887.html).
 //
 // @param request - DescribeHistoryMonitorValuesRequest
 //
@@ -32015,6 +34550,15 @@ func (client *Client) DescribeHistoryMonitorValues(request *DescribeHistoryMonit
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of tasks in the task center.
+//
+// @param request - DescribeHistoryTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHistoryTasksResponse
 func (client *Client) DescribeHistoryTasksWithOptions(request *DescribeHistoryTasksRequest, runtime *util.RuntimeOptions) (_result *DescribeHistoryTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32104,6 +34648,13 @@ func (client *Client) DescribeHistoryTasksWithOptions(request *DescribeHistoryTa
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of tasks in the task center.
+//
+// @param request - DescribeHistoryTasksRequest
+//
+// @return DescribeHistoryTasksResponse
 func (client *Client) DescribeHistoryTasks(request *DescribeHistoryTasksRequest) (_result *DescribeHistoryTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeHistoryTasksResponse{}
@@ -32115,6 +34666,15 @@ func (client *Client) DescribeHistoryTasks(request *DescribeHistoryTasksRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an ApsaraDB for Redis instance.
+//
+// @param request - DescribeInstanceAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceAttributeResponse
 func (client *Client) DescribeInstanceAttributeWithOptions(request *DescribeInstanceAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32168,6 +34728,13 @@ func (client *Client) DescribeInstanceAttributeWithOptions(request *DescribeInst
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an ApsaraDB for Redis instance.
+//
+// @param request - DescribeInstanceAttributeRequest
+//
+// @return DescribeInstanceAttributeResponse
 func (client *Client) DescribeInstanceAttribute(request *DescribeInstanceAttributeRequest) (_result *DescribeInstanceAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceAttributeResponse{}
@@ -32179,6 +34746,15 @@ func (client *Client) DescribeInstanceAttribute(request *DescribeInstanceAttribu
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether auto-renewal is enabled for an ApsaraDB for Redis instance.
+//
+// @param request - DescribeInstanceAutoRenewalAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceAutoRenewalAttributeResponse
 func (client *Client) DescribeInstanceAutoRenewalAttributeWithOptions(request *DescribeInstanceAutoRenewalAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceAutoRenewalAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32244,6 +34820,13 @@ func (client *Client) DescribeInstanceAutoRenewalAttributeWithOptions(request *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether auto-renewal is enabled for an ApsaraDB for Redis instance.
+//
+// @param request - DescribeInstanceAutoRenewalAttributeRequest
+//
+// @return DescribeInstanceAutoRenewalAttributeResponse
 func (client *Client) DescribeInstanceAutoRenewalAttribute(request *DescribeInstanceAutoRenewalAttributeRequest) (_result *DescribeInstanceAutoRenewalAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceAutoRenewalAttributeResponse{}
@@ -32255,11 +34838,15 @@ func (client *Client) DescribeInstanceAutoRenewalAttribute(request *DescribeInst
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the parameter settings of an ApsaraDB for Redis instance.
+//
 // Description:
 //
 // This operation is available only for instances that use cloud disks.
 //
-// > You can call the [DescribeParameters](~~473847~~) operation to query the parameter settings of instances that use local disks.
+// > You can call the [DescribeParameters](https://help.aliyun.com/document_detail/473847.html) operation to query the parameter settings of instances that use local disks.
 //
 // @param request - DescribeInstanceConfigRequest
 //
@@ -32319,11 +34906,15 @@ func (client *Client) DescribeInstanceConfigWithOptions(request *DescribeInstanc
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the parameter settings of an ApsaraDB for Redis instance.
+//
 // Description:
 //
 // This operation is available only for instances that use cloud disks.
 //
-// > You can call the [DescribeParameters](~~473847~~) operation to query the parameter settings of instances that use local disks.
+// > You can call the [DescribeParameters](https://help.aliyun.com/document_detail/473847.html) operation to query the parameter settings of instances that use local disks.
 //
 // @param request - DescribeInstanceConfigRequest
 //
@@ -32339,15 +34930,19 @@ func (client *Client) DescribeInstanceConfig(request *DescribeInstanceConfigRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether TLS (SSL) encryption is enabled for an instance.
+//
 // Description:
 //
 // SSL encryption is supported for ApsaraDB for Redis 2.8 standard master-replica instances, ApsaraDB for Redis 2.8 master-replica cluster instances, and ApsaraDB for Redis 4.0 master-replica cluster instances. You can enable SSL encryption to enhance data transmission security.
 //
 // You can use one of the following methods to enable or disable SSL encryption or update the SSL certificate for an ApsaraDB for Redis instance:
 //
-// 	- Call the [ModifyInstanceSSL](~~96194~~) operation.
+// 	- Call the [ModifyInstanceSSL](https://help.aliyun.com/document_detail/96194.html) operation.
 //
-// 	- Enable or disable SSL encryption or update the SSL certificate in the ApsaraDB for Redis console. For more information, see [Configure SSL encryption](~~84898~~).
+// 	- Enable or disable SSL encryption or update the SSL certificate in the ApsaraDB for Redis console. For more information, see [Configure SSL encryption](https://help.aliyun.com/document_detail/84898.html).
 //
 // > After SSL encryption is enabled, the instance may respond slower.
 //
@@ -32409,15 +35004,19 @@ func (client *Client) DescribeInstanceSSLWithOptions(request *DescribeInstanceSS
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether TLS (SSL) encryption is enabled for an instance.
+//
 // Description:
 //
 // SSL encryption is supported for ApsaraDB for Redis 2.8 standard master-replica instances, ApsaraDB for Redis 2.8 master-replica cluster instances, and ApsaraDB for Redis 4.0 master-replica cluster instances. You can enable SSL encryption to enhance data transmission security.
 //
 // You can use one of the following methods to enable or disable SSL encryption or update the SSL certificate for an ApsaraDB for Redis instance:
 //
-// 	- Call the [ModifyInstanceSSL](~~96194~~) operation.
+// 	- Call the [ModifyInstanceSSL](https://help.aliyun.com/document_detail/96194.html) operation.
 //
-// 	- Enable or disable SSL encryption or update the SSL certificate in the ApsaraDB for Redis console. For more information, see [Configure SSL encryption](~~84898~~).
+// 	- Enable or disable SSL encryption or update the SSL certificate in the ApsaraDB for Redis console. For more information, see [Configure SSL encryption](https://help.aliyun.com/document_detail/84898.html).
 //
 // > After SSL encryption is enabled, the instance may respond slower.
 //
@@ -32435,11 +35034,15 @@ func (client *Client) DescribeInstanceSSL(request *DescribeInstanceSSLRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether transparent data encryption (TDE) is enabled for an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// For more information about TDE and the usage notes of TDE, see [Enable TDE](~~265913~~).
+// For more information about TDE and the usage notes of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
 //
-// >  You can call the [ModifyInstanceTDE](~~302337~~) to enable or disable TDE.
+// >  You can call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html) to enable or disable TDE.
 //
 // @param request - DescribeInstanceTDEStatusRequest
 //
@@ -32499,11 +35102,15 @@ func (client *Client) DescribeInstanceTDEStatusWithOptions(request *DescribeInst
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether transparent data encryption (TDE) is enabled for an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// For more information about TDE and the usage notes of TDE, see [Enable TDE](~~265913~~).
+// For more information about TDE and the usage notes of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
 //
-// >  You can call the [ModifyInstanceTDE](~~302337~~) to enable or disable TDE.
+// >  You can call the [ModifyInstanceTDE](https://help.aliyun.com/document_detail/302337.html) to enable or disable TDE.
 //
 // @param request - DescribeInstanceTDEStatusRequest
 //
@@ -32519,6 +35126,15 @@ func (client *Client) DescribeInstanceTDEStatus(request *DescribeInstanceTDEStat
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about one or more ApsaraDB for Redis instances.
+//
+// @param request - DescribeInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstancesResponse
 func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32652,6 +35268,13 @@ func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about one or more ApsaraDB for Redis instances.
+//
+// @param request - DescribeInstancesRequest
+//
+// @return DescribeInstancesResponse
 func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_result *DescribeInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstancesResponse{}
@@ -32663,6 +35286,10 @@ func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the overview information of one or more ApsaraDB for Redis instances.
+//
 // Description:
 //
 // If you do not specify the InstanceIds parameter when you call this operation, the overview information of all instances is returned.
@@ -32787,6 +35414,10 @@ func (client *Client) DescribeInstancesOverviewWithOptions(request *DescribeInst
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the overview information of one or more ApsaraDB for Redis instances.
+//
 // Description:
 //
 // If you do not specify the InstanceIds parameter when you call this operation, the overview information of all instances is returned.
@@ -32807,9 +35438,13 @@ func (client *Client) DescribeInstancesOverview(request *DescribeInstancesOvervi
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the internal bandwidth of an ApsaraDB for Redis instance. If you have purchased extra internal bandwidth, the expiration time of the purchased bandwidth is also returned.
+//
 // Description:
 //
-// You can call the [EnableAdditionalBandwidth](~~206173~~) operation to increase the internal bandwidth of an instance.
+// You can call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/206173.html) operation to increase the internal bandwidth of an instance.
 //
 // @param request - DescribeIntranetAttributeRequest
 //
@@ -32873,9 +35508,13 @@ func (client *Client) DescribeIntranetAttributeWithOptions(request *DescribeIntr
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the internal bandwidth of an ApsaraDB for Redis instance. If you have purchased extra internal bandwidth, the expiration time of the purchased bandwidth is also returned.
+//
 // Description:
 //
-// You can call the [EnableAdditionalBandwidth](~~206173~~) operation to increase the internal bandwidth of an instance.
+// You can call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/206173.html) operation to increase the internal bandwidth of an instance.
 //
 // @param request - DescribeIntranetAttributeRequest
 //
@@ -32891,6 +35530,10 @@ func (client *Client) DescribeIntranetAttribute(request *DescribeIntranetAttribu
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the logical topology of an ApsaraDB for Redis instance.
+//
 // Description:
 //
 // This parameter is supported only for cluster and read/write splitting instances.
@@ -32953,6 +35596,10 @@ func (client *Client) DescribeLogicInstanceTopologyWithOptions(request *Describe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the logical topology of an ApsaraDB for Redis instance.
+//
 // Description:
 //
 // This parameter is supported only for cluster and read/write splitting instances.
@@ -32971,9 +35618,13 @@ func (client *Client) DescribeLogicInstanceTopology(request *DescribeLogicInstan
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the metrics of an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// >  ApsaraDB for Redis has upgraded the monitoring metrics. The DescribeMonitorItems operation is phased out. For more information, see [The DescribeMonitorItems operation supported by ApsaraDB for Redis is phased out](~~189893~~).
+// >  ApsaraDB for Redis has upgraded the monitoring metrics. The DescribeMonitorItems operation is phased out. For more information, see [The DescribeMonitorItems operation supported by ApsaraDB for Redis is phased out](https://help.aliyun.com/document_detail/189893.html).
 //
 // After you call this operation to retrieve a list of metrics for a specified ApsaraDB for Redis instance, you can call the [DescribeHistoryMonitorValues](~~DescribeHistoryMonitorValues~~) operation to query monitoring history of the instance.
 //
@@ -33031,9 +35682,13 @@ func (client *Client) DescribeMonitorItemsWithOptions(request *DescribeMonitorIt
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the metrics of an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// >  ApsaraDB for Redis has upgraded the monitoring metrics. The DescribeMonitorItems operation is phased out. For more information, see [The DescribeMonitorItems operation supported by ApsaraDB for Redis is phased out](~~189893~~).
+// >  ApsaraDB for Redis has upgraded the monitoring metrics. The DescribeMonitorItems operation is phased out. For more information, see [The DescribeMonitorItems operation supported by ApsaraDB for Redis is phased out](https://help.aliyun.com/document_detail/189893.html).
 //
 // After you call this operation to retrieve a list of metrics for a specified ApsaraDB for Redis instance, you can call the [DescribeHistoryMonitorValues](~~DescribeHistoryMonitorValues~~) operation to query monitoring history of the instance.
 //
@@ -33051,6 +35706,327 @@ func (client *Client) DescribeMonitorItems(request *DescribeMonitorItemsRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the basic information about a parameter template.
+//
+// @param request - DescribeParameterGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeParameterGroupResponse
+func (client *Client) DescribeParameterGroupWithOptions(request *DescribeParameterGroupRequest, runtime *util.RuntimeOptions) (_result *DescribeParameterGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParameterGroupId)) {
+		query["ParameterGroupId"] = request.ParameterGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeParameterGroup"),
+		Version:     tea.String("2015-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeParameterGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the basic information about a parameter template.
+//
+// @param request - DescribeParameterGroupRequest
+//
+// @return DescribeParameterGroupResponse
+func (client *Client) DescribeParameterGroup(request *DescribeParameterGroupRequest) (_result *DescribeParameterGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeParameterGroupResponse{}
+	_body, _err := client.DescribeParameterGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of parameters that can be configured for different versions of parameter templates.
+//
+// @param request - DescribeParameterGroupSupportParamRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeParameterGroupSupportParamResponse
+func (client *Client) DescribeParameterGroupSupportParamWithOptions(request *DescribeParameterGroupSupportParamRequest, runtime *util.RuntimeOptions) (_result *DescribeParameterGroupSupportParamResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EngineType)) {
+		query["EngineType"] = request.EngineType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EngineVersion)) {
+		query["EngineVersion"] = request.EngineVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeParameterGroupSupportParam"),
+		Version:     tea.String("2015-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeParameterGroupSupportParamResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of parameters that can be configured for different versions of parameter templates.
+//
+// @param request - DescribeParameterGroupSupportParamRequest
+//
+// @return DescribeParameterGroupSupportParamResponse
+func (client *Client) DescribeParameterGroupSupportParam(request *DescribeParameterGroupSupportParamRequest) (_result *DescribeParameterGroupSupportParamResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeParameterGroupSupportParamResponse{}
+	_body, _err := client.DescribeParameterGroupSupportParamWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询参数模板支持设置的参数列表
+//
+// @param request - DescribeParameterGroupTemplateListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeParameterGroupTemplateListResponse
+func (client *Client) DescribeParameterGroupTemplateListWithOptions(request *DescribeParameterGroupTemplateListRequest, runtime *util.RuntimeOptions) (_result *DescribeParameterGroupTemplateListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeParameterGroupTemplateList"),
+		Version:     tea.String("2015-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeParameterGroupTemplateListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询参数模板支持设置的参数列表
+//
+// @param request - DescribeParameterGroupTemplateListRequest
+//
+// @return DescribeParameterGroupTemplateListResponse
+func (client *Client) DescribeParameterGroupTemplateList(request *DescribeParameterGroupTemplateListRequest) (_result *DescribeParameterGroupTemplateListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeParameterGroupTemplateListResponse{}
+	_body, _err := client.DescribeParameterGroupTemplateListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of available parameter templates.
+//
+// @param request - DescribeParameterGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeParameterGroupsResponse
+func (client *Client) DescribeParameterGroupsWithOptions(request *DescribeParameterGroupsRequest, runtime *util.RuntimeOptions) (_result *DescribeParameterGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbType)) {
+		query["DbType"] = request.DbType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeParameterGroups"),
+		Version:     tea.String("2015-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeParameterGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of available parameter templates.
+//
+// @param request - DescribeParameterGroupsRequest
+//
+// @return DescribeParameterGroupsResponse
+func (client *Client) DescribeParameterGroups(request *DescribeParameterGroupsRequest) (_result *DescribeParameterGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeParameterGroupsResponse{}
+	_body, _err := client.DescribeParameterGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the parameter modification history of a Tair or ApsaraDB for Redis instance.
+//
+// @param request - DescribeParameterModificationHistoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeParameterModificationHistoryResponse
 func (client *Client) DescribeParameterModificationHistoryWithOptions(request *DescribeParameterModificationHistoryRequest, runtime *util.RuntimeOptions) (_result *DescribeParameterModificationHistoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33120,6 +36096,13 @@ func (client *Client) DescribeParameterModificationHistoryWithOptions(request *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the parameter modification history of a Tair or ApsaraDB for Redis instance.
+//
+// @param request - DescribeParameterModificationHistoryRequest
+//
+// @return DescribeParameterModificationHistoryResponse
 func (client *Client) DescribeParameterModificationHistory(request *DescribeParameterModificationHistoryRequest) (_result *DescribeParameterModificationHistoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeParameterModificationHistoryResponse{}
@@ -33131,9 +36114,13 @@ func (client *Client) DescribeParameterModificationHistory(request *DescribePara
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the parameters and their default values that are supported by ApsaraDB for Redis instances of different architectures and major versions.
+//
 // Description:
 //
-// After you call this operation to query the parameters and default values of an instance, you can call the [ModifyInstanceConfig](~~61113~~) operation to reconfigure the parameters of the instance.
+// After you call this operation to query the parameters and default values of an instance, you can call the [ModifyInstanceConfig](https://help.aliyun.com/document_detail/61113.html) operation to reconfigure the parameters of the instance.
 //
 // @param request - DescribeParameterTemplatesRequest
 //
@@ -33209,9 +36196,13 @@ func (client *Client) DescribeParameterTemplatesWithOptions(request *DescribePar
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the parameters and their default values that are supported by ApsaraDB for Redis instances of different architectures and major versions.
+//
 // Description:
 //
-// After you call this operation to query the parameters and default values of an instance, you can call the [ModifyInstanceConfig](~~61113~~) operation to reconfigure the parameters of the instance.
+// After you call this operation to query the parameters and default values of an instance, you can call the [ModifyInstanceConfig](https://help.aliyun.com/document_detail/61113.html) operation to reconfigure the parameters of the instance.
 //
 // @param request - DescribeParameterTemplatesRequest
 //
@@ -33227,11 +36218,15 @@ func (client *Client) DescribeParameterTemplates(request *DescribeParameterTempl
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the configuration parameters and running parameters of an ApsaraDB for Redis instance.
+//
 // Description:
 //
 // This operation is available only for instances that use local disks.
 //
-// > You can call the [DescribeInstanceConfig](~~473846~~) operation to query the parameter settings of instances that use cloud disks.
+// > You can call the [DescribeInstanceConfig](https://help.aliyun.com/document_detail/473846.html) operation to query the parameter settings of instances that use cloud disks.
 //
 // @param request - DescribeParametersRequest
 //
@@ -33299,11 +36294,15 @@ func (client *Client) DescribeParametersWithOptions(request *DescribeParametersR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the configuration parameters and running parameters of an ApsaraDB for Redis instance.
+//
 // Description:
 //
 // This operation is available only for instances that use local disks.
 //
-// > You can call the [DescribeInstanceConfig](~~473846~~) operation to query the parameter settings of instances that use cloud disks.
+// > You can call the [DescribeInstanceConfig](https://help.aliyun.com/document_detail/473846.html) operation to query the parameter settings of instances that use cloud disks.
 //
 // @param request - DescribeParametersRequest
 //
@@ -33319,6 +36318,15 @@ func (client *Client) DescribeParameters(request *DescribeParametersRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the fees that you must pay when you create, upgrade, or renew an ApsaraDB for Redis instance.
+//
+// @param request - DescribePriceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePriceResponse
 func (client *Client) DescribePriceWithOptions(request *DescribePriceRequest, runtime *util.RuntimeOptions) (_result *DescribePriceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33428,6 +36436,13 @@ func (client *Client) DescribePriceWithOptions(request *DescribePriceRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the fees that you must pay when you create, upgrade, or renew an ApsaraDB for Redis instance.
+//
+// @param request - DescribePriceRequest
+//
+// @return DescribePriceResponse
 func (client *Client) DescribePrice(request *DescribePriceRequest) (_result *DescribePriceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePriceResponse{}
@@ -33439,6 +36454,15 @@ func (client *Client) DescribePrice(request *DescribePriceRequest) (_result *Des
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the regions in which ApsaraDB for Redis instances can be created.
+//
+// @param request - DescribeRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33492,6 +36516,13 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the regions in which ApsaraDB for Redis instances can be created.
+//
+// @param request - DescribeRegionsRequest
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRegionsResponse{}
@@ -33503,6 +36534,15 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the role, type, minor version, and zone of each node in an ApsaraDB for Redis instance.
+//
+// @param request - DescribeRoleZoneInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRoleZoneInfoResponse
 func (client *Client) DescribeRoleZoneInfoWithOptions(request *DescribeRoleZoneInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeRoleZoneInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33568,6 +36608,13 @@ func (client *Client) DescribeRoleZoneInfoWithOptions(request *DescribeRoleZoneI
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the role, type, minor version, and zone of each node in an ApsaraDB for Redis instance.
+//
+// @param request - DescribeRoleZoneInfoRequest
+//
+// @return DescribeRoleZoneInfoResponse
 func (client *Client) DescribeRoleZoneInfo(request *DescribeRoleZoneInfoRequest) (_result *DescribeRoleZoneInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRoleZoneInfoResponse{}
@@ -33579,9 +36626,13 @@ func (client *Client) DescribeRoleZoneInfo(request *DescribeRoleZoneInfoRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the active logs of an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// For more information about how to view the operational logs of an instance in the ApsaraDB for Redis console, see [View active logs](~~101713~~).
+// For more information about how to view the operational logs of an instance in the ApsaraDB for Redis console, see [View active logs](https://help.aliyun.com/document_detail/101713.html).
 //
 // This operation can be called up to 100 times per minute.
 //
@@ -33687,9 +36738,13 @@ func (client *Client) DescribeRunningLogRecordsWithOptions(request *DescribeRunn
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the active logs of an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// For more information about how to view the operational logs of an instance in the ApsaraDB for Redis console, see [View active logs](~~101713~~).
+// For more information about how to view the operational logs of an instance in the ApsaraDB for Redis console, see [View active logs](https://help.aliyun.com/document_detail/101713.html).
 //
 // This operation can be called up to 100 times per minute.
 //
@@ -33707,6 +36762,15 @@ func (client *Client) DescribeRunningLogRecords(request *DescribeRunningLogRecor
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the security groups that are added to the whitelists of an ApsaraDB for Redis instance.
+//
+// @param request - DescribeSecurityGroupConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSecurityGroupConfigurationResponse
 func (client *Client) DescribeSecurityGroupConfigurationWithOptions(request *DescribeSecurityGroupConfigurationRequest, runtime *util.RuntimeOptions) (_result *DescribeSecurityGroupConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33760,6 +36824,13 @@ func (client *Client) DescribeSecurityGroupConfigurationWithOptions(request *Des
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the security groups that are added to the whitelists of an ApsaraDB for Redis instance.
+//
+// @param request - DescribeSecurityGroupConfigurationRequest
+//
+// @return DescribeSecurityGroupConfigurationResponse
 func (client *Client) DescribeSecurityGroupConfiguration(request *DescribeSecurityGroupConfigurationRequest) (_result *DescribeSecurityGroupConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSecurityGroupConfigurationResponse{}
@@ -33771,6 +36842,15 @@ func (client *Client) DescribeSecurityGroupConfiguration(request *DescribeSecuri
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the IP address whitelists of an ApsaraDB for Redis instance.
+//
+// @param request - DescribeSecurityIpsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSecurityIpsResponse
 func (client *Client) DescribeSecurityIpsWithOptions(request *DescribeSecurityIpsRequest, runtime *util.RuntimeOptions) (_result *DescribeSecurityIpsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33824,6 +36904,13 @@ func (client *Client) DescribeSecurityIpsWithOptions(request *DescribeSecurityIp
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the IP address whitelists of an ApsaraDB for Redis instance.
+//
+// @param request - DescribeSecurityIpsRequest
+//
+// @return DescribeSecurityIpsResponse
 func (client *Client) DescribeSecurityIps(request *DescribeSecurityIpsRequest) (_result *DescribeSecurityIpsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSecurityIpsResponse{}
@@ -33835,9 +36922,13 @@ func (client *Client) DescribeSecurityIps(request *DescribeSecurityIpsRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the slow logs of an ApsaraDB for Redis instance that are generated within a specified period of time.
+//
 // Description:
 //
-// You can also query slow logs in the ApsaraDB for Redis console. For more information, see [Query slow logs of an instance](~~95874~~). This operation can be called up to 100 times per minute.
+// You can also query slow logs in the ApsaraDB for Redis console. For more information, see [Query slow logs of an instance](https://help.aliyun.com/document_detail/95874.html). This operation can be called up to 100 times per minute.
 //
 // @param request - DescribeSlowLogRecordsRequest
 //
@@ -33937,9 +37028,13 @@ func (client *Client) DescribeSlowLogRecordsWithOptions(request *DescribeSlowLog
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the slow logs of an ApsaraDB for Redis instance that are generated within a specified period of time.
+//
 // Description:
 //
-// You can also query slow logs in the ApsaraDB for Redis console. For more information, see [Query slow logs of an instance](~~95874~~). This operation can be called up to 100 times per minute.
+// You can also query slow logs in the ApsaraDB for Redis console. For more information, see [Query slow logs of an instance](https://help.aliyun.com/document_detail/95874.html). This operation can be called up to 100 times per minute.
 //
 // @param request - DescribeSlowLogRecordsRequest
 //
@@ -33955,6 +37050,10 @@ func (client *Client) DescribeSlowLogRecords(request *DescribeSlowLogRecordsRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all tasks that are performed on an ApsaraDB for Redis instance within a specified period of time.
+//
 // Description:
 //
 // You can call this operation to query the progress of a task when you perform time-consuming operations. You can also log on to the ApsaraDB for Redis console and click the Tasks icon in the upper-right corner of the **Instance Information*	- page to view the progress of the current task.
@@ -34037,6 +37136,10 @@ func (client *Client) DescribeTasksWithOptions(request *DescribeTasksRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all tasks that are performed on an ApsaraDB for Redis instance within a specified period of time.
+//
 // Description:
 //
 // You can call this operation to query the progress of a task when you perform time-consuming operations. You can also log on to the ApsaraDB for Redis console and click the Tasks icon in the upper-right corner of the **Instance Information*	- page to view the progress of the current task.
@@ -34055,6 +37158,15 @@ func (client *Client) DescribeTasks(request *DescribeTasksRequest) (_result *Des
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the zones available for ApsaraDB for Redis.
+//
+// @param request - DescribeZonesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeZonesResponse
 func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, runtime *util.RuntimeOptions) (_result *DescribeZonesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34112,6 +37224,13 @@ func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the zones available for ApsaraDB for Redis.
+//
+// @param request - DescribeZonesRequest
+//
+// @return DescribeZonesResponse
 func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *DescribeZonesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeZonesResponse{}
@@ -34123,11 +37242,15 @@ func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *Des
 	return _result, _err
 }
 
+// Summary:
+//
+// Adjusts the bandwidth of an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// If you enable the bandwidth auto scaling feature and call this operation at the same time, bandwidth auto scaling takes precedence. During bandwidth scale-back, the instance is scaled back to the default bandwidth of the instance type. For more information about the limits, costs, and FAQ about this feature, see [Adjust the bandwidth of an instance](~~102588~~).
+// If you enable the bandwidth auto scaling feature and call this operation at the same time, bandwidth auto scaling takes precedence. During bandwidth scale-back, the instance is scaled back to the default bandwidth of the instance type. For more information about the limits, costs, and FAQ about this feature, see [Adjust the bandwidth of an instance](https://help.aliyun.com/document_detail/102588.html).
 //
-// >  Before you call this operation, you can call the [DescribeRoleZoneInfo](~~190794~~) operation to query the current bandwidth of each data node in an instance.
+// >  Before you call this operation, you can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/190794.html) operation to query the current bandwidth of each data node in an instance.
 //
 // @param request - EnableAdditionalBandwidthRequest
 //
@@ -34223,11 +37346,15 @@ func (client *Client) EnableAdditionalBandwidthWithOptions(request *EnableAdditi
 	return _result, _err
 }
 
+// Summary:
+//
+// Adjusts the bandwidth of an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// If you enable the bandwidth auto scaling feature and call this operation at the same time, bandwidth auto scaling takes precedence. During bandwidth scale-back, the instance is scaled back to the default bandwidth of the instance type. For more information about the limits, costs, and FAQ about this feature, see [Adjust the bandwidth of an instance](~~102588~~).
+// If you enable the bandwidth auto scaling feature and call this operation at the same time, bandwidth auto scaling takes precedence. During bandwidth scale-back, the instance is scaled back to the default bandwidth of the instance type. For more information about the limits, costs, and FAQ about this feature, see [Adjust the bandwidth of an instance](https://help.aliyun.com/document_detail/102588.html).
 //
-// >  Before you call this operation, you can call the [DescribeRoleZoneInfo](~~190794~~) operation to query the current bandwidth of each data node in an instance.
+// >  Before you call this operation, you can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/190794.html) operation to query the current bandwidth of each data node in an instance.
 //
 // @param request - EnableAdditionalBandwidthRequest
 //
@@ -34243,9 +37370,13 @@ func (client *Client) EnableAdditionalBandwidth(request *EnableAdditionalBandwid
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the expired keys from an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// For more information about how to clear the expired keys in the ApsaraDB for Redis console, see [Clear data](~~43881~~).
+// For more information about how to clear the expired keys in the ApsaraDB for Redis console, see [Clear data](https://help.aliyun.com/document_detail/43881.html).
 //
 // >  Expired keys cannot be recovered after they are deleted. Exercise caution when you call this operation.
 //
@@ -34311,9 +37442,13 @@ func (client *Client) FlushExpireKeysWithOptions(request *FlushExpireKeysRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the expired keys from an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// For more information about how to clear the expired keys in the ApsaraDB for Redis console, see [Clear data](~~43881~~).
+// For more information about how to clear the expired keys in the ApsaraDB for Redis console, see [Clear data](https://help.aliyun.com/document_detail/43881.html).
 //
 // >  Expired keys cannot be recovered after they are deleted. Exercise caution when you call this operation.
 //
@@ -34331,6 +37466,15 @@ func (client *Client) FlushExpireKeys(request *FlushExpireKeysRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Clears the data of an ApsaraDB for Redis instance. The cleared data cannot be restored.
+//
+// @param request - FlushInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FlushInstanceResponse
 func (client *Client) FlushInstanceWithOptions(request *FlushInstanceRequest, runtime *util.RuntimeOptions) (_result *FlushInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34384,6 +37528,13 @@ func (client *Client) FlushInstanceWithOptions(request *FlushInstanceRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Clears the data of an ApsaraDB for Redis instance. The cleared data cannot be restored.
+//
+// @param request - FlushInstanceRequest
+//
+// @return FlushInstanceResponse
 func (client *Client) FlushInstance(request *FlushInstanceRequest) (_result *FlushInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &FlushInstanceResponse{}
@@ -34395,9 +37546,13 @@ func (client *Client) FlushInstance(request *FlushInstanceRequest) (_result *Flu
 	return _result, _err
 }
 
+// Summary:
+//
+// Cleans the data of specified databases in an instance.
+//
 // Description:
 //
-// Each ApsaraDB for Redis or Tair instance can contain up to 256 databases. Each database does not have a separate memory usage limit. The memory capacity that a database can use is subject to the total memory limit of the instance. You can execute the `SELECT` statement to switch between databases. For more information, see [What is the size of each database on an ApsaraDB for Redis instance, and how can I choose databases?](~~38688~~)
+// Each ApsaraDB for Redis or Tair instance can contain up to 256 databases. Each database does not have a separate memory usage limit. The memory capacity that a database can use is subject to the total memory limit of the instance. You can execute the `SELECT` statement to switch between databases. For more information, see [What is the size of each database on an ApsaraDB for Redis instance, and how can I choose databases?](https://help.aliyun.com/document_detail/38688.html)
 //
 // >  This operation is available only for cloud-native instances that use cloud disks.
 //
@@ -34459,9 +37614,13 @@ func (client *Client) FlushInstanceForDBWithOptions(request *FlushInstanceForDBR
 	return _result, _err
 }
 
+// Summary:
+//
+// Cleans the data of specified databases in an instance.
+//
 // Description:
 //
-// Each ApsaraDB for Redis or Tair instance can contain up to 256 databases. Each database does not have a separate memory usage limit. The memory capacity that a database can use is subject to the total memory limit of the instance. You can execute the `SELECT` statement to switch between databases. For more information, see [What is the size of each database on an ApsaraDB for Redis instance, and how can I choose databases?](~~38688~~)
+// Each ApsaraDB for Redis or Tair instance can contain up to 256 databases. Each database does not have a separate memory usage limit. The memory capacity that a database can use is subject to the total memory limit of the instance. You can execute the `SELECT` statement to switch between databases. For more information, see [What is the size of each database on an ApsaraDB for Redis instance, and how can I choose databases?](https://help.aliyun.com/document_detail/38688.html)
 //
 // >  This operation is available only for cloud-native instances that use cloud disks.
 //
@@ -34479,6 +37638,10 @@ func (client *Client) FlushInstanceForDB(request *FlushInstanceForDBRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the permissions of an account for an ApsaraDB for Redis instance.
+//
 // Description:
 //
 // >
@@ -34553,6 +37716,10 @@ func (client *Client) GrantAccountPrivilegeWithOptions(request *GrantAccountPriv
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the permissions of an account for an ApsaraDB for Redis instance.
+//
 // Description:
 //
 // >
@@ -34575,9 +37742,13 @@ func (client *Client) GrantAccountPrivilege(request *GrantAccountPrivilegeReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Assigns a service-linked role to ApsaraDB for Redis.
+//
 // Description:
 //
-// The log management feature of ApsaraDB for Redis requires the resources of [Log Service](~~48869~~). To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance. For more information, see [Associated RAM roles of ApsaraDB for Redis](~~184337~~).
+// The log management feature of ApsaraDB for Redis requires the resources of [Log Service](https://help.aliyun.com/document_detail/48869.html). To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance. For more information, see [Associated RAM roles of ApsaraDB for Redis](https://help.aliyun.com/document_detail/184337.html).
 //
 // @param request - InitializeKvstorePermissionRequest
 //
@@ -34637,9 +37808,13 @@ func (client *Client) InitializeKvstorePermissionWithOptions(request *Initialize
 	return _result, _err
 }
 
+// Summary:
+//
+// Assigns a service-linked role to ApsaraDB for Redis.
+//
 // Description:
 //
-// The log management feature of ApsaraDB for Redis requires the resources of [Log Service](~~48869~~). To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance. For more information, see [Associated RAM roles of ApsaraDB for Redis](~~184337~~).
+// The log management feature of ApsaraDB for Redis requires the resources of [Log Service](https://help.aliyun.com/document_detail/48869.html). To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance. For more information, see [Associated RAM roles of ApsaraDB for Redis](https://help.aliyun.com/document_detail/184337.html).
 //
 // @param request - InitializeKvstorePermissionRequest
 //
@@ -34655,9 +37830,13 @@ func (client *Client) InitializeKvstorePermission(request *InitializeKvstorePerm
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the relationships between ApsaraDB for Redis instances and tags.
+//
 // Description:
 //
-// You can also query the relationships between instances and tags in the ApsaraDB for Redis console. For more information, see [Filter ApsaraDB for Redis instances by tag](~~119160~~) and [View tags bound to an instance](~~134038~~).
+// You can also query the relationships between instances and tags in the ApsaraDB for Redis console. For more information, see [Filter ApsaraDB for Redis instances by tag](https://help.aliyun.com/document_detail/119160.html) and [View tags bound to an instance](https://help.aliyun.com/document_detail/134038.html).
 //
 // @param request - ListTagResourcesRequest
 //
@@ -34729,9 +37908,13 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the relationships between ApsaraDB for Redis instances and tags.
+//
 // Description:
 //
-// You can also query the relationships between instances and tags in the ApsaraDB for Redis console. For more information, see [Filter ApsaraDB for Redis instances by tag](~~119160~~) and [View tags bound to an instance](~~134038~~).
+// You can also query the relationships between instances and tags in the ApsaraDB for Redis console. For more information, see [Filter ApsaraDB for Redis instances by tag](https://help.aliyun.com/document_detail/119160.html) and [View tags bound to an instance](https://help.aliyun.com/document_detail/134038.html).
 //
 // @param request - ListTagResourcesRequest
 //
@@ -34747,6 +37930,15 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Places a write lock on an instance. After the instance is locked, it supports only read operations.
+//
+// @param request - LockDBInstanceWriteRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return LockDBInstanceWriteResponse
 func (client *Client) LockDBInstanceWriteWithOptions(request *LockDBInstanceWriteRequest, runtime *util.RuntimeOptions) (_result *LockDBInstanceWriteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34804,6 +37996,13 @@ func (client *Client) LockDBInstanceWriteWithOptions(request *LockDBInstanceWrit
 	return _result, _err
 }
 
+// Summary:
+//
+// Places a write lock on an instance. After the instance is locked, it supports only read operations.
+//
+// @param request - LockDBInstanceWriteRequest
+//
+// @return LockDBInstanceWriteResponse
 func (client *Client) LockDBInstanceWrite(request *LockDBInstanceWriteRequest) (_result *LockDBInstanceWriteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &LockDBInstanceWriteResponse{}
@@ -34815,13 +38014,19 @@ func (client *Client) LockDBInstanceWrite(request *LockDBInstanceWriteRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Migrates an ApsaraDB for Redis instance to another zone in the same region.
+//
 // Description:
 //
-// For more information about how to migrate an instance across zones in the ApsaraDB for Redis console, see [Migrate an instance across zones](~~106272~~).
+// Before you call this operation, you must release the public endpoint (if any) of the instance. For more information, see [Migrate an instance across zones](https://help.aliyun.com/document_detail/106272.html).
 //
-// > 	- If the network type of an ApsaraDB for Redis instance is switched from classic network to Virtual Private Cloud (VPC), and the endpoint of the classic network is retained, you can migrate the instance across zones only after the classic network endpoint is released upon expiration.
+// >
 //
-// > 	- After the data is migrated, the endpoint of an instance remains unchanged. However, the virtual IP address (VIP) is changed. We recommend that you use the endpoint instead of the VIP to connect to the instance.
+// 	- If the network type of an ApsaraDB for Redis instance is switched from classic network to Virtual Private Cloud (VPC), and the classic network endpoint is retained, you can migrate the instance across zones only after the classic network endpoint is released upon expiration.
+//
+// 	- After the instance is migrated, the endpoint of the instance remains unchanged. However, the virtual IP address (VIP) is changed. We recommend that you use the endpoint instead of the VIP to connect to the instance.
 //
 // @param request - MigrateToOtherZoneRequest
 //
@@ -34897,13 +38102,19 @@ func (client *Client) MigrateToOtherZoneWithOptions(request *MigrateToOtherZoneR
 	return _result, _err
 }
 
+// Summary:
+//
+// Migrates an ApsaraDB for Redis instance to another zone in the same region.
+//
 // Description:
 //
-// For more information about how to migrate an instance across zones in the ApsaraDB for Redis console, see [Migrate an instance across zones](~~106272~~).
+// Before you call this operation, you must release the public endpoint (if any) of the instance. For more information, see [Migrate an instance across zones](https://help.aliyun.com/document_detail/106272.html).
 //
-// > 	- If the network type of an ApsaraDB for Redis instance is switched from classic network to Virtual Private Cloud (VPC), and the endpoint of the classic network is retained, you can migrate the instance across zones only after the classic network endpoint is released upon expiration.
+// >
 //
-// > 	- After the data is migrated, the endpoint of an instance remains unchanged. However, the virtual IP address (VIP) is changed. We recommend that you use the endpoint instead of the VIP to connect to the instance.
+// 	- If the network type of an ApsaraDB for Redis instance is switched from classic network to Virtual Private Cloud (VPC), and the classic network endpoint is retained, you can migrate the instance across zones only after the classic network endpoint is released upon expiration.
+//
+// 	- After the instance is migrated, the endpoint of the instance remains unchanged. However, the virtual IP address (VIP) is changed. We recommend that you use the endpoint instead of the VIP to connect to the instance.
 //
 // @param request - MigrateToOtherZoneRequest
 //
@@ -34919,6 +38130,10 @@ func (client *Client) MigrateToOtherZone(request *MigrateToOtherZoneRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the description of an account for an ApsaraDB for Redis instance.
+//
 // Description:
 //
 // > This operation is supported only for instances that run Redis 4.0 or later.
@@ -34989,6 +38204,10 @@ func (client *Client) ModifyAccountDescriptionWithOptions(request *ModifyAccount
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the description of an account for an ApsaraDB for Redis instance.
+//
 // Description:
 //
 // > This operation is supported only for instances that run Redis 4.0 or later.
@@ -35007,6 +38226,15 @@ func (client *Client) ModifyAccountDescription(request *ModifyAccountDescription
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the password of a specific account for an ApsaraDB for Redis instance.
+//
+// @param request - ModifyAccountPasswordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAccountPasswordResponse
 func (client *Client) ModifyAccountPasswordWithOptions(request *ModifyAccountPasswordRequest, runtime *util.RuntimeOptions) (_result *ModifyAccountPasswordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35072,6 +38300,13 @@ func (client *Client) ModifyAccountPasswordWithOptions(request *ModifyAccountPas
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the password of a specific account for an ApsaraDB for Redis instance.
+//
+// @param request - ModifyAccountPasswordRequest
+//
+// @return ModifyAccountPasswordResponse
 func (client *Client) ModifyAccountPassword(request *ModifyAccountPasswordRequest) (_result *ModifyAccountPasswordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyAccountPasswordResponse{}
@@ -35083,9 +38318,13 @@ func (client *Client) ModifyAccountPassword(request *ModifyAccountPasswordReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the scheduled switchover time of an O&M task.
+//
 // Description:
 //
-// You can receive notifications for ApsaraDB for Redis events such as instance migration and version upgrade by text message, phone call, email, internal message, or by using the ApsaraDB for Redis console. You can also change the scheduled switchover time of a task in the ApsaraDB for Redis console. For more information, see [Query or manage pending events](~~187022~~).
+// You can receive notifications for ApsaraDB for Redis events such as instance migration and version upgrade by text message, phone call, email, internal message, or by using the ApsaraDB for Redis console. You can also change the scheduled switchover time of a task in the ApsaraDB for Redis console. For more information, see [Query or manage pending events](https://help.aliyun.com/document_detail/187022.html).
 //
 // @param request - ModifyActiveOperationTaskRequest
 //
@@ -35149,9 +38388,13 @@ func (client *Client) ModifyActiveOperationTaskWithOptions(request *ModifyActive
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the scheduled switchover time of an O&M task.
+//
 // Description:
 //
-// You can receive notifications for ApsaraDB for Redis events such as instance migration and version upgrade by text message, phone call, email, internal message, or by using the ApsaraDB for Redis console. You can also change the scheduled switchover time of a task in the ApsaraDB for Redis console. For more information, see [Query or manage pending events](~~187022~~).
+// You can receive notifications for ApsaraDB for Redis events such as instance migration and version upgrade by text message, phone call, email, internal message, or by using the ApsaraDB for Redis console. You can also change the scheduled switchover time of a task in the ApsaraDB for Redis console. For more information, see [Query or manage pending events](https://help.aliyun.com/document_detail/187022.html).
 //
 // @param request - ModifyActiveOperationTaskRequest
 //
@@ -35167,15 +38410,19 @@ func (client *Client) ModifyActiveOperationTask(request *ModifyActiveOperationTa
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the audit log settings of an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of the audit log feature.
+// Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of the audit log feature.
 //
 // Before you call this operation, make sure that the ApsaraDB for Redis instance meets the following requirements:
 //
-// 	- The instance is an ApsaraDB for Redis Community Edition instance or ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](~~126164~~).
+// 	- The instance is an ApsaraDB for Redis Community Edition instance or ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html).
 //
-// 	- The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](~~95268~~) operation to check whether the instance uses the latest major version and minor version.
+// 	- The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) operation to check whether the instance uses the latest major version and minor version.
 //
 // @param request - ModifyAuditLogConfigRequest
 //
@@ -35243,15 +38490,19 @@ func (client *Client) ModifyAuditLogConfigWithOptions(request *ModifyAuditLogCon
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the audit log settings of an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of the audit log feature.
+// Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of the audit log feature.
 //
 // Before you call this operation, make sure that the ApsaraDB for Redis instance meets the following requirements:
 //
-// 	- The instance is an ApsaraDB for Redis Community Edition instance or ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](~~126164~~).
+// 	- The instance is an ApsaraDB for Redis Community Edition instance or ApsaraDB for Redis Enhanced Edition (Tair) [DRAM-based instance](https://help.aliyun.com/document_detail/126164.html).
 //
-// 	- The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](~~95268~~) operation to check whether the instance uses the latest major version and minor version.
+// 	- The engine version of the instance is Redis 4.0 or later, and the latest minor version is used. You can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) operation to check whether the instance uses the latest major version and minor version.
 //
 // @param request - ModifyAuditLogConfigRequest
 //
@@ -35267,6 +38518,15 @@ func (client *Client) ModifyAuditLogConfig(request *ModifyAuditLogConfigRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the automatic backup policy of an ApsaraDB for Redis instance.
+//
+// @param request - ModifyBackupPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyBackupPolicyResponse
 func (client *Client) ModifyBackupPolicyWithOptions(request *ModifyBackupPolicyRequest, runtime *util.RuntimeOptions) (_result *ModifyBackupPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35336,6 +38596,13 @@ func (client *Client) ModifyBackupPolicyWithOptions(request *ModifyBackupPolicyR
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the automatic backup policy of an ApsaraDB for Redis instance.
+//
+// @param request - ModifyBackupPolicyRequest
+//
+// @return ModifyBackupPolicyResponse
 func (client *Client) ModifyBackupPolicy(request *ModifyBackupPolicyRequest) (_result *ModifyBackupPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyBackupPolicyResponse{}
@@ -35347,9 +38614,97 @@ func (client *Client) ModifyBackupPolicy(request *ModifyBackupPolicyRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改小版本自动升级开关
+//
+// @param request - ModifyDBInstanceAutoUpgradeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBInstanceAutoUpgradeResponse
+func (client *Client) ModifyDBInstanceAutoUpgradeWithOptions(request *ModifyDBInstanceAutoUpgradeRequest, runtime *util.RuntimeOptions) (_result *ModifyDBInstanceAutoUpgradeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Value)) {
+		query["Value"] = request.Value
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDBInstanceAutoUpgrade"),
+		Version:     tea.String("2015-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyDBInstanceAutoUpgradeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改小版本自动升级开关
+//
+// @param request - ModifyDBInstanceAutoUpgradeRequest
+//
+// @return ModifyDBInstanceAutoUpgradeResponse
+func (client *Client) ModifyDBInstanceAutoUpgrade(request *ModifyDBInstanceAutoUpgradeRequest) (_result *ModifyDBInstanceAutoUpgradeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDBInstanceAutoUpgradeResponse{}
+	_body, _err := client.ModifyDBInstanceAutoUpgradeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Changes the endpoint or port number of an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// You can also modify the endpoint or port number of an instance in the ApsaraDB for Redis console. For more information, see [Change the endpoint or port number of an instance](~~85683~~).
+// You can also modify the endpoint or port number of an instance in the ApsaraDB for Redis console. For more information, see [Change the endpoint or port number of an instance](https://help.aliyun.com/document_detail/85683.html).
 //
 // @param request - ModifyDBInstanceConnectionStringRequest
 //
@@ -35425,9 +38780,13 @@ func (client *Client) ModifyDBInstanceConnectionStringWithOptions(request *Modif
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the endpoint or port number of an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// You can also modify the endpoint or port number of an instance in the ApsaraDB for Redis console. For more information, see [Change the endpoint or port number of an instance](~~85683~~).
+// You can also modify the endpoint or port number of an instance in the ApsaraDB for Redis console. For more information, see [Change the endpoint or port number of an instance](https://help.aliyun.com/document_detail/85683.html).
 //
 // @param request - ModifyDBInstanceConnectionStringRequest
 //
@@ -35443,6 +38802,15 @@ func (client *Client) ModifyDBInstanceConnectionString(request *ModifyDBInstance
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a global IP whitelist template.
+//
+// @param request - ModifyGlobalSecurityIPGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyGlobalSecurityIPGroupResponse
 func (client *Client) ModifyGlobalSecurityIPGroupWithOptions(request *ModifyGlobalSecurityIPGroupRequest, runtime *util.RuntimeOptions) (_result *ModifyGlobalSecurityIPGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35512,6 +38880,13 @@ func (client *Client) ModifyGlobalSecurityIPGroupWithOptions(request *ModifyGlob
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a global IP whitelist template.
+//
+// @param request - ModifyGlobalSecurityIPGroupRequest
+//
+// @return ModifyGlobalSecurityIPGroupResponse
 func (client *Client) ModifyGlobalSecurityIPGroup(request *ModifyGlobalSecurityIPGroupRequest) (_result *ModifyGlobalSecurityIPGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyGlobalSecurityIPGroupResponse{}
@@ -35523,6 +38898,15 @@ func (client *Client) ModifyGlobalSecurityIPGroup(request *ModifyGlobalSecurityI
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the name of a global IP whitelist template.
+//
+// @param request - ModifyGlobalSecurityIPGroupNameRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyGlobalSecurityIPGroupNameResponse
 func (client *Client) ModifyGlobalSecurityIPGroupNameWithOptions(request *ModifyGlobalSecurityIPGroupNameRequest, runtime *util.RuntimeOptions) (_result *ModifyGlobalSecurityIPGroupNameResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35588,6 +38972,13 @@ func (client *Client) ModifyGlobalSecurityIPGroupNameWithOptions(request *Modify
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the name of a global IP whitelist template.
+//
+// @param request - ModifyGlobalSecurityIPGroupNameRequest
+//
+// @return ModifyGlobalSecurityIPGroupNameResponse
 func (client *Client) ModifyGlobalSecurityIPGroupName(request *ModifyGlobalSecurityIPGroupNameRequest) (_result *ModifyGlobalSecurityIPGroupNameResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyGlobalSecurityIPGroupNameResponse{}
@@ -35599,6 +38990,15 @@ func (client *Client) ModifyGlobalSecurityIPGroupName(request *ModifyGlobalSecur
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a specified instance to a specified IP whitelist template.
+//
+// @param request - ModifyGlobalSecurityIPGroupRelationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyGlobalSecurityIPGroupRelationResponse
 func (client *Client) ModifyGlobalSecurityIPGroupRelationWithOptions(request *ModifyGlobalSecurityIPGroupRelationRequest, runtime *util.RuntimeOptions) (_result *ModifyGlobalSecurityIPGroupRelationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35664,6 +39064,13 @@ func (client *Client) ModifyGlobalSecurityIPGroupRelationWithOptions(request *Mo
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a specified instance to a specified IP whitelist template.
+//
+// @param request - ModifyGlobalSecurityIPGroupRelationRequest
+//
+// @return ModifyGlobalSecurityIPGroupRelationResponse
 func (client *Client) ModifyGlobalSecurityIPGroupRelation(request *ModifyGlobalSecurityIPGroupRelationRequest) (_result *ModifyGlobalSecurityIPGroupRelationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyGlobalSecurityIPGroupRelationResponse{}
@@ -35675,9 +39082,13 @@ func (client *Client) ModifyGlobalSecurityIPGroupRelation(request *ModifyGlobalS
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the information of an ApsaraDB for Redis instance, such as the name and password.
+//
 // Description:
 //
-// You can also modify the information of an instance in the ApsaraDB for Redis console. For more information, see [Change or reset the password](~~43874~~).
+// You can also modify the information of an instance in the ApsaraDB for Redis console. For more information, see [Change or reset the password](https://help.aliyun.com/document_detail/43874.html).
 //
 // @param request - ModifyInstanceAttributeRequest
 //
@@ -35749,9 +39160,13 @@ func (client *Client) ModifyInstanceAttributeWithOptions(request *ModifyInstance
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the information of an ApsaraDB for Redis instance, such as the name and password.
+//
 // Description:
 //
-// You can also modify the information of an instance in the ApsaraDB for Redis console. For more information, see [Change or reset the password](~~43874~~).
+// You can also modify the information of an instance in the ApsaraDB for Redis console. For more information, see [Change or reset the password](https://help.aliyun.com/document_detail/43874.html).
 //
 // @param request - ModifyInstanceAttributeRequest
 //
@@ -35767,6 +39182,10 @@ func (client *Client) ModifyInstanceAttribute(request *ModifyInstanceAttributeRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables auto-renewal for an ApsaraDB for Redis instance.
+//
 // Description:
 //
 // > Auto-renewal is triggered seven days before the expiration date of the instance.
@@ -35837,6 +39256,10 @@ func (client *Client) ModifyInstanceAutoRenewalAttributeWithOptions(request *Mod
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables auto-renewal for an ApsaraDB for Redis instance.
+//
 // Description:
 //
 // > Auto-renewal is triggered seven days before the expiration date of the instance.
@@ -35855,6 +39278,15 @@ func (client *Client) ModifyInstanceAutoRenewalAttribute(request *ModifyInstance
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the parameter settings of an ApsaraDB for Redis instance.
+//
+// @param request - ModifyInstanceConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyInstanceConfigResponse
 func (client *Client) ModifyInstanceConfigWithOptions(request *ModifyInstanceConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyInstanceConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35912,6 +39344,13 @@ func (client *Client) ModifyInstanceConfigWithOptions(request *ModifyInstanceCon
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the parameter settings of an ApsaraDB for Redis instance.
+//
+// @param request - ModifyInstanceConfigRequest
+//
+// @return ModifyInstanceConfigResponse
 func (client *Client) ModifyInstanceConfig(request *ModifyInstanceConfigRequest) (_result *ModifyInstanceConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyInstanceConfigResponse{}
@@ -35923,9 +39362,13 @@ func (client *Client) ModifyInstanceConfig(request *ModifyInstanceConfigRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the maintenance window of an ApsaraDB for Redis instance. Alibaba Cloud maintains ApsaraDB for Redis instances during the specified maintenance window.
+//
 // Description:
 //
-// You can also modify the maintenance window of an instance in the ApsaraDB for Redis console. For more information, see [Set a maintenance window](~~55252~~).
+// You can also modify the maintenance window of an instance in the ApsaraDB for Redis console. For more information, see [Set a maintenance window](https://help.aliyun.com/document_detail/55252.html).
 //
 // @param request - ModifyInstanceMaintainTimeRequest
 //
@@ -35993,9 +39436,13 @@ func (client *Client) ModifyInstanceMaintainTimeWithOptions(request *ModifyInsta
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the maintenance window of an ApsaraDB for Redis instance. Alibaba Cloud maintains ApsaraDB for Redis instances during the specified maintenance window.
+//
 // Description:
 //
-// You can also modify the maintenance window of an instance in the ApsaraDB for Redis console. For more information, see [Set a maintenance window](~~55252~~).
+// You can also modify the maintenance window of an instance in the ApsaraDB for Redis console. For more information, see [Set a maintenance window](https://help.aliyun.com/document_detail/55252.html).
 //
 // @param request - ModifyInstanceMaintainTimeRequest
 //
@@ -36011,9 +39458,13 @@ func (client *Client) ModifyInstanceMaintainTime(request *ModifyInstanceMaintain
 	return _result, _err
 }
 
+// Summary:
+//
+// Upgrades the major version of an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// For more information about how to perform the corresponding operation in the console, see [Upgrade the major version](~~101764~~).
+// For more information about how to perform the corresponding operation in the console, see [Upgrade the major version](https://help.aliyun.com/document_detail/101764.html).
 //
 // @param request - ModifyInstanceMajorVersionRequest
 //
@@ -36081,9 +39532,13 @@ func (client *Client) ModifyInstanceMajorVersionWithOptions(request *ModifyInsta
 	return _result, _err
 }
 
+// Summary:
+//
+// Upgrades the major version of an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// For more information about how to perform the corresponding operation in the console, see [Upgrade the major version](~~101764~~).
+// For more information about how to perform the corresponding operation in the console, see [Upgrade the major version](https://help.aliyun.com/document_detail/101764.html).
 //
 // @param request - ModifyInstanceMajorVersionRequest
 //
@@ -36099,13 +39554,17 @@ func (client *Client) ModifyInstanceMajorVersion(request *ModifyInstanceMajorVer
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the minor version of an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// The procedure to update the minor version of an instance varies based on types of ApsaraDB for Redis instances. For more information, see [Upgrade the minor version](~~56450~~).
+// The procedure to update the minor version of an instance varies based on types of ApsaraDB for Redis instances. For more information, see [Upgrade the minor version](https://help.aliyun.com/document_detail/56450.html).
 //
 // >
 //
-// 	- Before you call this operation, you can call the [DescribeEngineVersion](~~95268~~) operation to query the minor version of the current instance.
+// 	- Before you call this operation, you can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) operation to query the minor version of the current instance.
 //
 // 	- When you switch your workloads over from the original instance to a new instance or from the master node to the replica node in the original instance, you may experience disconnections that last a few seconds. The original instance stays in the read-only state within 60 seconds until all data is synchronized. We recommend that you upgrade the original instance during off-peak hours and make sure that your application is configured to automatically reconnect to the original instance.
 //
@@ -36175,13 +39634,17 @@ func (client *Client) ModifyInstanceMinorVersionWithOptions(request *ModifyInsta
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the minor version of an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// The procedure to update the minor version of an instance varies based on types of ApsaraDB for Redis instances. For more information, see [Upgrade the minor version](~~56450~~).
+// The procedure to update the minor version of an instance varies based on types of ApsaraDB for Redis instances. For more information, see [Upgrade the minor version](https://help.aliyun.com/document_detail/56450.html).
 //
 // >
 //
-// 	- Before you call this operation, you can call the [DescribeEngineVersion](~~95268~~) operation to query the minor version of the current instance.
+// 	- Before you call this operation, you can call the [DescribeEngineVersion](https://help.aliyun.com/document_detail/95268.html) operation to query the minor version of the current instance.
 //
 // 	- When you switch your workloads over from the original instance to a new instance or from the master node to the replica node in the original instance, you may experience disconnections that last a few seconds. The original instance stays in the read-only state within 60 seconds until all data is synchronized. We recommend that you upgrade the original instance during off-peak hours and make sure that your application is configured to automatically reconnect to the original instance.
 //
@@ -36199,11 +39662,15 @@ func (client *Client) ModifyInstanceMinorVersion(request *ModifyInstanceMinorVer
 	return _result, _err
 }
 
+// Summary:
+//
+// Extends the retention period of the classic network endpoint of an ApsaraDB for Redis instance. You can call this operation after you change the network type of the ApsaraDB for Redis instance from classic network to Virtual Private Cloud (VPC) with the classic network endpoint retained.
+//
 // Description:
 //
-// You can also perform this operation in the ApsaraDB for Redis console. For more information, see [Change the expiration time for the endpoint of the classic network](~~60062~~).
+// You can also perform this operation in the ApsaraDB for Redis console. For more information, see [Change the expiration time for the endpoint of the classic network](https://help.aliyun.com/document_detail/60062.html).
 //
-// > For more information about how to switch the network type of an ApsaraDB for Redis instance from classic network to VPC, see [SwitchNetwork](~~61005~~).
+// > For more information about how to switch the network type of an ApsaraDB for Redis instance from classic network to VPC, see [SwitchNetwork](https://help.aliyun.com/document_detail/61005.html).
 //
 // @param request - ModifyInstanceNetExpireTimeRequest
 //
@@ -36271,11 +39738,15 @@ func (client *Client) ModifyInstanceNetExpireTimeWithOptions(request *ModifyInst
 	return _result, _err
 }
 
+// Summary:
+//
+// Extends the retention period of the classic network endpoint of an ApsaraDB for Redis instance. You can call this operation after you change the network type of the ApsaraDB for Redis instance from classic network to Virtual Private Cloud (VPC) with the classic network endpoint retained.
+//
 // Description:
 //
-// You can also perform this operation in the ApsaraDB for Redis console. For more information, see [Change the expiration time for the endpoint of the classic network](~~60062~~).
+// You can also perform this operation in the ApsaraDB for Redis console. For more information, see [Change the expiration time for the endpoint of the classic network](https://help.aliyun.com/document_detail/60062.html).
 //
-// > For more information about how to switch the network type of an ApsaraDB for Redis instance from classic network to VPC, see [SwitchNetwork](~~61005~~).
+// > For more information about how to switch the network type of an ApsaraDB for Redis instance from classic network to VPC, see [SwitchNetwork](https://help.aliyun.com/document_detail/61005.html).
 //
 // @param request - ModifyInstanceNetExpireTimeRequest
 //
@@ -36291,6 +39762,15 @@ func (client *Client) ModifyInstanceNetExpireTime(request *ModifyInstanceNetExpi
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改实例参数
+//
+// @param request - ModifyInstanceParameterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyInstanceParameterResponse
 func (client *Client) ModifyInstanceParameterWithOptions(request *ModifyInstanceParameterRequest, runtime *util.RuntimeOptions) (_result *ModifyInstanceParameterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36352,6 +39832,13 @@ func (client *Client) ModifyInstanceParameterWithOptions(request *ModifyInstance
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改实例参数
+//
+// @param request - ModifyInstanceParameterRequest
+//
+// @return ModifyInstanceParameterResponse
 func (client *Client) ModifyInstanceParameter(request *ModifyInstanceParameterRequest) (_result *ModifyInstanceParameterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyInstanceParameterResponse{}
@@ -36363,9 +39850,13 @@ func (client *Client) ModifyInstanceParameter(request *ModifyInstanceParameterRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the SSL settings of an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// You can also modify SSL encryption configurations in the ApsaraDB for Redis console. For more information, see [Configure SSL encryption](~~84898~~).
+// You can also modify SSL encryption configurations in the ApsaraDB for Redis console. For more information, see [Configure SSL encryption](https://help.aliyun.com/document_detail/84898.html).
 //
 // >  To specify the earliest supported SSL version, you can call the [ModifyInstanceConfig](~~ModifyInstanceConfig~~) operation to modify the required parameter.
 //
@@ -36431,9 +39922,13 @@ func (client *Client) ModifyInstanceSSLWithOptions(request *ModifyInstanceSSLReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the SSL settings of an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// You can also modify SSL encryption configurations in the ApsaraDB for Redis console. For more information, see [Configure SSL encryption](~~84898~~).
+// You can also modify SSL encryption configurations in the ApsaraDB for Redis console. For more information, see [Configure SSL encryption](https://help.aliyun.com/document_detail/84898.html).
 //
 // >  To specify the earliest supported SSL version, you can call the [ModifyInstanceConfig](~~ModifyInstanceConfig~~) operation to modify the required parameter.
 //
@@ -36451,9 +39946,13 @@ func (client *Client) ModifyInstanceSSL(request *ModifyInstanceSSLRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the specifications of an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// >  For more information about the procedure, impacts, limits, and fees of this operation, see [Change the configurations of an instance](~~26353~~).
+// >  For more information about the procedure, impacts, limits, and fees of this operation, see [Change the configurations of an instance](https://help.aliyun.com/document_detail/26353.html).
 //
 // @param request - ModifyInstanceSpecRequest
 //
@@ -36577,9 +40076,13 @@ func (client *Client) ModifyInstanceSpecWithOptions(request *ModifyInstanceSpecR
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the specifications of an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// >  For more information about the procedure, impacts, limits, and fees of this operation, see [Change the configurations of an instance](~~26353~~).
+// >  For more information about the procedure, impacts, limits, and fees of this operation, see [Change the configurations of an instance](https://help.aliyun.com/document_detail/26353.html).
 //
 // @param request - ModifyInstanceSpecRequest
 //
@@ -36595,9 +40098,13 @@ func (client *Client) ModifyInstanceSpec(request *ModifyInstanceSpecRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables transparent data encryption (TDE) for an ApsaraDB for Redis instance. You can use existing custom keys.
+//
 // Description:
 //
-// > For more information about TDE and the impact of TDE, see [Enable TDE](~~265913~~).
+// > For more information about TDE and the impact of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
 //
 // @param request - ModifyInstanceTDERequest
 //
@@ -36673,9 +40180,13 @@ func (client *Client) ModifyInstanceTDEWithOptions(request *ModifyInstanceTDEReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables transparent data encryption (TDE) for an ApsaraDB for Redis instance. You can use existing custom keys.
+//
 // Description:
 //
-// > For more information about TDE and the impact of TDE, see [Enable TDE](~~265913~~).
+// > For more information about TDE and the impact of TDE, see [Enable TDE](https://help.aliyun.com/document_detail/265913.html).
 //
 // @param request - ModifyInstanceTDERequest
 //
@@ -36691,11 +40202,15 @@ func (client *Client) ModifyInstanceTDE(request *ModifyInstanceTDERequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables password-free access for an ApsaraDB for Redis instance. This way, you can connect to a database in a convenient and secure manner.
+//
 // Description:
 //
 // When the password-free access feature is enabled, Elastic Compute Service (ECS) instances in the same virtual private cloud (VPC) can connect to the ApsaraDB for Redis instance without a password. You can also use the username and password to connect to the ApsaraDB for Redis instance.
 //
-// > The ApsaraDB for Redis instance is deployed in a VPC. For more information, see [Enable password-free access](~~85168~~).
+// > The ApsaraDB for Redis instance is deployed in a VPC. For more information, see [Enable password-free access](https://help.aliyun.com/document_detail/85168.html).
 //
 // @param request - ModifyInstanceVpcAuthModeRequest
 //
@@ -36759,11 +40274,15 @@ func (client *Client) ModifyInstanceVpcAuthModeWithOptions(request *ModifyInstan
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables password-free access for an ApsaraDB for Redis instance. This way, you can connect to a database in a convenient and secure manner.
+//
 // Description:
 //
 // When the password-free access feature is enabled, Elastic Compute Service (ECS) instances in the same virtual private cloud (VPC) can connect to the ApsaraDB for Redis instance without a password. You can also use the username and password to connect to the ApsaraDB for Redis instance.
 //
-// > The ApsaraDB for Redis instance is deployed in a VPC. For more information, see [Enable password-free access](~~85168~~).
+// > The ApsaraDB for Redis instance is deployed in a VPC. For more information, see [Enable password-free access](https://help.aliyun.com/document_detail/85168.html).
 //
 // @param request - ModifyInstanceVpcAuthModeRequest
 //
@@ -36779,11 +40298,15 @@ func (client *Client) ModifyInstanceVpcAuthMode(request *ModifyInstanceVpcAuthMo
 	return _result, _err
 }
 
+// Summary:
+//
+// Temporarily adjusts the internal bandwidth of an ApsaraDB for Redis instance that is deployed in a dedicated cluster.
+//
 // Description:
 //
 // >
 //
-// 	- This operation is applicable only to an ApsaraDB for Redis instance that is deployed in a dedicated cluster. To adjust the bandwidth of a standard ApsaraDB for Redis instance, call the [EnableAdditionalBandwidth](~~206173~~) operation.
+// 	- This operation is applicable only to an ApsaraDB for Redis instance that is deployed in a dedicated cluster. To adjust the bandwidth of a standard ApsaraDB for Redis instance, call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/206173.html) operation.
 //
 // @param request - ModifyIntranetAttributeRequest
 //
@@ -36851,11 +40374,15 @@ func (client *Client) ModifyIntranetAttributeWithOptions(request *ModifyIntranet
 	return _result, _err
 }
 
+// Summary:
+//
+// Temporarily adjusts the internal bandwidth of an ApsaraDB for Redis instance that is deployed in a dedicated cluster.
+//
 // Description:
 //
 // >
 //
-// 	- This operation is applicable only to an ApsaraDB for Redis instance that is deployed in a dedicated cluster. To adjust the bandwidth of a standard ApsaraDB for Redis instance, call the [EnableAdditionalBandwidth](~~206173~~) operation.
+// 	- This operation is applicable only to an ApsaraDB for Redis instance that is deployed in a dedicated cluster. To adjust the bandwidth of a standard ApsaraDB for Redis instance, call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/206173.html) operation.
 //
 // @param request - ModifyIntranetAttributeRequest
 //
@@ -36871,11 +40398,115 @@ func (client *Client) ModifyIntranetAttribute(request *ModifyIntranetAttributeRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the settings of a parameter template.
+//
+// @param request - ModifyParameterGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyParameterGroupResponse
+func (client *Client) ModifyParameterGroupWithOptions(request *ModifyParameterGroupRequest, runtime *util.RuntimeOptions) (_result *ModifyParameterGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParameterGroupDesc)) {
+		query["ParameterGroupDesc"] = request.ParameterGroupDesc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParameterGroupId)) {
+		query["ParameterGroupId"] = request.ParameterGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParameterGroupName)) {
+		query["ParameterGroupName"] = request.ParameterGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
+		query["Parameters"] = request.Parameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyParameterGroup"),
+		Version:     tea.String("2015-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyParameterGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the settings of a parameter template.
+//
+// @param request - ModifyParameterGroupRequest
+//
+// @return ModifyParameterGroupResponse
+func (client *Client) ModifyParameterGroup(request *ModifyParameterGroupRequest) (_result *ModifyParameterGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyParameterGroupResponse{}
+	_body, _err := client.ModifyParameterGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Changes the resource group to which an ApsaraDB for Redis instance belongs.
+//
 // Description:
 //
-// Resource groups allow you to sort resources owned by your Alibaba Cloud account into groups. This simplifies resource and permission management within your Alibaba Cloud account. For more information, see [What is Resource Management?](~~94475~~)
+// Resource groups allow you to sort resources owned by your Alibaba Cloud account into groups. This simplifies resource and permission management within your Alibaba Cloud account. For more information, see [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html)
 //
-// > For more information about resource group API operations, see [Resource Management API overview](~~160024~~).
+// > For more information about resource group API operations, see [Resource Management API overview](https://help.aliyun.com/document_detail/160024.html).
 //
 // @param request - ModifyResourceGroupRequest
 //
@@ -36943,11 +40574,15 @@ func (client *Client) ModifyResourceGroupWithOptions(request *ModifyResourceGrou
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the resource group to which an ApsaraDB for Redis instance belongs.
+//
 // Description:
 //
-// Resource groups allow you to sort resources owned by your Alibaba Cloud account into groups. This simplifies resource and permission management within your Alibaba Cloud account. For more information, see [What is Resource Management?](~~94475~~)
+// Resource groups allow you to sort resources owned by your Alibaba Cloud account into groups. This simplifies resource and permission management within your Alibaba Cloud account. For more information, see [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html)
 //
-// > For more information about resource group API operations, see [Resource Management API overview](~~160024~~).
+// > For more information about resource group API operations, see [Resource Management API overview](https://help.aliyun.com/document_detail/160024.html).
 //
 // @param request - ModifyResourceGroupRequest
 //
@@ -36963,9 +40598,13 @@ func (client *Client) ModifyResourceGroup(request *ModifyResourceGroupRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Resets the security groups that are added to the whitelists of an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// > After you call this operation, the security groups that are added to the whitelists of the ApsaraDB for Redis instance are deleted, and the security group specified by the **SecurityGroupId*	- parameter is added to the whitelists. For more information about how to reset security groups in the ApsaraDB for Redis console, see [Add security groups](~~148267~~).
+// > After you call this operation, the security groups that are added to the whitelists of the ApsaraDB for Redis instance are deleted, and the security group specified by the **SecurityGroupId*	- parameter is added to the whitelists. For more information about how to reset security groups in the ApsaraDB for Redis console, see [Add security groups](https://help.aliyun.com/document_detail/148267.html).
 //
 // @param request - ModifySecurityGroupConfigurationRequest
 //
@@ -37029,9 +40668,13 @@ func (client *Client) ModifySecurityGroupConfigurationWithOptions(request *Modif
 	return _result, _err
 }
 
+// Summary:
+//
+// Resets the security groups that are added to the whitelists of an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// > After you call this operation, the security groups that are added to the whitelists of the ApsaraDB for Redis instance are deleted, and the security group specified by the **SecurityGroupId*	- parameter is added to the whitelists. For more information about how to reset security groups in the ApsaraDB for Redis console, see [Add security groups](~~148267~~).
+// > After you call this operation, the security groups that are added to the whitelists of the ApsaraDB for Redis instance are deleted, and the security group specified by the **SecurityGroupId*	- parameter is added to the whitelists. For more information about how to reset security groups in the ApsaraDB for Redis console, see [Add security groups](https://help.aliyun.com/document_detail/148267.html).
 //
 // @param request - ModifySecurityGroupConfigurationRequest
 //
@@ -37047,9 +40690,13 @@ func (client *Client) ModifySecurityGroupConfiguration(request *ModifySecurityGr
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the IP address whitelists of an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// You can also modify the whitelists of an instance in the ApsaraDB for Redis console. For more information, see [Configure a whitelist for an instance](~~56464~~).
+// You can also modify the whitelists of an instance in the ApsaraDB for Redis console. For more information, see [Configure a whitelist for an instance](https://help.aliyun.com/document_detail/56464.html).
 //
 // @param request - ModifySecurityIpsRequest
 //
@@ -37125,9 +40772,13 @@ func (client *Client) ModifySecurityIpsWithOptions(request *ModifySecurityIpsReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the IP address whitelists of an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// You can also modify the whitelists of an instance in the ApsaraDB for Redis console. For more information, see [Configure a whitelist for an instance](~~56464~~).
+// You can also modify the whitelists of an instance in the ApsaraDB for Redis console. For more information, see [Configure a whitelist for an instance](https://help.aliyun.com/document_detail/56464.html).
 //
 // @param request - ModifySecurityIpsRequest
 //
@@ -37143,9 +40794,13 @@ func (client *Client) ModifySecurityIps(request *ModifySecurityIpsRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Releases the private endpoint of an ApsaraDB for Redis cluster instance.
+//
 // Description:
 //
-// In direct connection mode, clients can bypass proxy nodes and use private endpoints to connect to ApsaraDB for Redis instances. This is similar to the connection to a native Redis cluster. The direct connection mode can reduce communication overheads and the response time of ApsaraDB for Redis. For more information, see [Enable the direct connection mode](~~146901~~).
+// In direct connection mode, clients can bypass proxy nodes and use private endpoints to connect to ApsaraDB for Redis instances. This is similar to the connection to a native Redis cluster. The direct connection mode can reduce communication overheads and the response time of ApsaraDB for Redis. For more information, see [Enable the direct connection mode](https://help.aliyun.com/document_detail/146901.html).
 //
 // @param request - ReleaseDirectConnectionRequest
 //
@@ -37205,9 +40860,13 @@ func (client *Client) ReleaseDirectConnectionWithOptions(request *ReleaseDirectC
 	return _result, _err
 }
 
+// Summary:
+//
+// Releases the private endpoint of an ApsaraDB for Redis cluster instance.
+//
 // Description:
 //
-// In direct connection mode, clients can bypass proxy nodes and use private endpoints to connect to ApsaraDB for Redis instances. This is similar to the connection to a native Redis cluster. The direct connection mode can reduce communication overheads and the response time of ApsaraDB for Redis. For more information, see [Enable the direct connection mode](~~146901~~).
+// In direct connection mode, clients can bypass proxy nodes and use private endpoints to connect to ApsaraDB for Redis instances. This is similar to the connection to a native Redis cluster. The direct connection mode can reduce communication overheads and the response time of ApsaraDB for Redis. For more information, see [Enable the direct connection mode](https://help.aliyun.com/document_detail/146901.html).
 //
 // @param request - ReleaseDirectConnectionRequest
 //
@@ -37223,9 +40882,13 @@ func (client *Client) ReleaseDirectConnection(request *ReleaseDirectConnectionRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Releases the public endpoint of an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// For more information about how to perform the API operation in the ApsaraDB for Redis console, see [Release public endpoints](~~125424~~).
+// For more information about how to perform the API operation in the ApsaraDB for Redis console, see [Release public endpoints](https://help.aliyun.com/document_detail/125424.html).
 //
 // @param request - ReleaseInstancePublicConnectionRequest
 //
@@ -37289,9 +40952,13 @@ func (client *Client) ReleaseInstancePublicConnectionWithOptions(request *Releas
 	return _result, _err
 }
 
+// Summary:
+//
+// Releases the public endpoint of an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// For more information about how to perform the API operation in the ApsaraDB for Redis console, see [Release public endpoints](~~125424~~).
+// For more information about how to perform the API operation in the ApsaraDB for Redis console, see [Release public endpoints](https://help.aliyun.com/document_detail/125424.html).
 //
 // @param request - ReleaseInstancePublicConnectionRequest
 //
@@ -37307,6 +40974,10 @@ func (client *Client) ReleaseInstancePublicConnection(request *ReleaseInstancePu
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes a child instance from a distributed instance.
+//
 // Description:
 //
 // The operation that you want to perform. Set the value to **RemoveSubInstance**.
@@ -37369,6 +41040,10 @@ func (client *Client) RemoveSubInstanceWithOptions(request *RemoveSubInstanceReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes a child instance from a distributed instance.
+//
 // Description:
 //
 // The operation that you want to perform. Set the value to **RemoveSubInstance**.
@@ -37387,13 +41062,17 @@ func (client *Client) RemoveSubInstance(request *RemoveSubInstanceRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Renews the purchased bandwidth for an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
+// Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
 //
-// You can adjust the bandwidth of an instance in the ApsaraDB for Redis console. For more information, see [Adjust the bandwidth of an ApsaraDB for Redis instance](~~102588~~). You can also call the [EnableAdditionalBandwidth](~~206173~~) operation to adjust the bandwidth of an instance. If you want to continue using the bandwidth that you purchase after the validity period of the bandwidth, you must call the RenewAdditionalBandwidth operation to renew the bandwidth before the bandwidth expires.
+// You can adjust the bandwidth of an instance in the ApsaraDB for Redis console. For more information, see [Adjust the bandwidth of an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/102588.html). You can also call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/206173.html) operation to adjust the bandwidth of an instance. If you want to continue using the bandwidth that you purchase after the validity period of the bandwidth, you must call the RenewAdditionalBandwidth operation to renew the bandwidth before the bandwidth expires.
 //
-// > Before you call this operation, you can call the [DescribeIntranetAttribute](~~128715~~) operation, which returns the expiration time of the purchased bandwidth in the **BandwidthExpireTime*	- parameter.
+// > Before you call this operation, you can call the [DescribeIntranetAttribute](https://help.aliyun.com/document_detail/128715.html) operation, which returns the expiration time of the purchased bandwidth in the **BandwidthExpireTime*	- parameter.
 //
 // @param request - RenewAdditionalBandwidthRequest
 //
@@ -37469,13 +41148,17 @@ func (client *Client) RenewAdditionalBandwidthWithOptions(request *RenewAddition
 	return _result, _err
 }
 
+// Summary:
+//
+// Renews the purchased bandwidth for an ApsaraDB for Redis instance.
+//
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
+// Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/54532.html) of ApsaraDB for Redis.
 //
-// You can adjust the bandwidth of an instance in the ApsaraDB for Redis console. For more information, see [Adjust the bandwidth of an ApsaraDB for Redis instance](~~102588~~). You can also call the [EnableAdditionalBandwidth](~~206173~~) operation to adjust the bandwidth of an instance. If you want to continue using the bandwidth that you purchase after the validity period of the bandwidth, you must call the RenewAdditionalBandwidth operation to renew the bandwidth before the bandwidth expires.
+// You can adjust the bandwidth of an instance in the ApsaraDB for Redis console. For more information, see [Adjust the bandwidth of an ApsaraDB for Redis instance](https://help.aliyun.com/document_detail/102588.html). You can also call the [EnableAdditionalBandwidth](https://help.aliyun.com/document_detail/206173.html) operation to adjust the bandwidth of an instance. If you want to continue using the bandwidth that you purchase after the validity period of the bandwidth, you must call the RenewAdditionalBandwidth operation to renew the bandwidth before the bandwidth expires.
 //
-// > Before you call this operation, you can call the [DescribeIntranetAttribute](~~128715~~) operation, which returns the expiration time of the purchased bandwidth in the **BandwidthExpireTime*	- parameter.
+// > Before you call this operation, you can call the [DescribeIntranetAttribute](https://help.aliyun.com/document_detail/128715.html) operation, which returns the expiration time of the purchased bandwidth in the **BandwidthExpireTime*	- parameter.
 //
 // @param request - RenewAdditionalBandwidthRequest
 //
@@ -37491,6 +41174,10 @@ func (client *Client) RenewAdditionalBandwidth(request *RenewAdditionalBandwidth
 	return _result, _err
 }
 
+// Summary:
+//
+// Renews an ApsaraDB for Redis instance.
+//
 // Description:
 //
 // This operation is applicable only to subscription instances.
@@ -37589,6 +41276,10 @@ func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Renews an ApsaraDB for Redis instance.
+//
 // Description:
 //
 // This operation is applicable only to subscription instances.
@@ -37607,6 +41298,10 @@ func (client *Client) RenewInstance(request *RenewInstanceRequest) (_result *Ren
 	return _result, _err
 }
 
+// Summary:
+//
+// Resets the password of an account for an ApsaraDB for Redis instance.
+//
 // Description:
 //
 // >  Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
@@ -37677,6 +41372,10 @@ func (client *Client) ResetAccountPasswordWithOptions(request *ResetAccountPassw
 	return _result, _err
 }
 
+// Summary:
+//
+// Resets the password of an account for an ApsaraDB for Redis instance.
+//
 // Description:
 //
 // >  Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
@@ -37695,6 +41394,15 @@ func (client *Client) ResetAccountPassword(request *ResetAccountPasswordRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Restarts a running ApsaraDB for Redis instance.
+//
+// @param request - RestartInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestartInstanceResponse
 func (client *Client) RestartInstanceWithOptions(request *RestartInstanceRequest, runtime *util.RuntimeOptions) (_result *RestartInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -37756,6 +41464,13 @@ func (client *Client) RestartInstanceWithOptions(request *RestartInstanceRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Restarts a running ApsaraDB for Redis instance.
+//
+// @param request - RestartInstanceRequest
+//
+// @return RestartInstanceResponse
 func (client *Client) RestartInstance(request *RestartInstanceRequest) (_result *RestartInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RestartInstanceResponse{}
@@ -37767,11 +41482,15 @@ func (client *Client) RestartInstance(request *RestartInstanceRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Restores the data in a backup file to a specified ApsaraDB for Redis instance.
+//
 // Description:
 //
-// 	- If your instance is a [persistent memory-optimized instance](~~443828~~) or [DRAM-based instance](~~443827~~) that is compatible with Redis 5.0 and the [data flashback](~~443784~~) feature is enabled, you can call this operation to restore the data of a specified key to a specified point in time that is accurate to the second. Other keys are not affected. This way, you can achieve more fine-grained data restoration.
+//   If your instance is a [persistent memory-optimized instance](https://help.aliyun.com/document_detail/443828.html) or [DRAM-based instance](https://help.aliyun.com/document_detail/443827.html) that is compatible with Redis 5.0 and the [data flashback](https://help.aliyun.com/document_detail/443784.html) feature is enabled, you can call this operation to restore the data of a specified key to a specified point in time that is accurate to the second. Other keys are not affected. This way, you can achieve more fine-grained data restoration.
 //
-// 	- For other instance series, this operation overwrites the existing data of your instance with the backup data. Proceed with caution. We recommend that you call the [CreateInstance](~~60873~~) operation to create an instance. Then, you can restore data to the new instance.
+// 	- For other instance series, this operation overwrites the existing data of your instance with the backup data. Proceed with caution. We recommend that you call the [CreateInstance](https://help.aliyun.com/document_detail/60873.html) operation to create an instance. Then, you can restore data to the new instance.
 //
 // @param request - RestoreInstanceRequest
 //
@@ -37851,11 +41570,15 @@ func (client *Client) RestoreInstanceWithOptions(request *RestoreInstanceRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Restores the data in a backup file to a specified ApsaraDB for Redis instance.
+//
 // Description:
 //
-// 	- If your instance is a [persistent memory-optimized instance](~~443828~~) or [DRAM-based instance](~~443827~~) that is compatible with Redis 5.0 and the [data flashback](~~443784~~) feature is enabled, you can call this operation to restore the data of a specified key to a specified point in time that is accurate to the second. Other keys are not affected. This way, you can achieve more fine-grained data restoration.
+//   If your instance is a [persistent memory-optimized instance](https://help.aliyun.com/document_detail/443828.html) or [DRAM-based instance](https://help.aliyun.com/document_detail/443827.html) that is compatible with Redis 5.0 and the [data flashback](https://help.aliyun.com/document_detail/443784.html) feature is enabled, you can call this operation to restore the data of a specified key to a specified point in time that is accurate to the second. Other keys are not affected. This way, you can achieve more fine-grained data restoration.
 //
-// 	- For other instance series, this operation overwrites the existing data of your instance with the backup data. Proceed with caution. We recommend that you call the [CreateInstance](~~60873~~) operation to create an instance. Then, you can restore data to the new instance.
+// 	- For other instance series, this operation overwrites the existing data of your instance with the backup data. Proceed with caution. We recommend that you call the [CreateInstance](https://help.aliyun.com/document_detail/60873.html) operation to create an instance. Then, you can restore data to the new instance.
 //
 // @param request - RestoreInstanceRequest
 //
@@ -37871,11 +41594,15 @@ func (client *Client) RestoreInstance(request *RestoreInstanceRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Performs a master-replica switchover to switch node roles. This operation is applicable to disaster recovery drills and nearby access to applications that are deployed across zones.
+//
 // Description:
 //
-// > For more information about nearby access to applications that are deployed across zones, see [Switch node roles](~~164222~~).
+// > For more information about nearby access to applications that are deployed across zones, see [Switch node roles](https://help.aliyun.com/document_detail/164222.html).
 //
-// The instance must be an ApsaraDB for Redis Community Edition instance or Enhanced Edition (Tair) [DRAM-based](~~126164~~) instance that uses local disks.
+// The instance must be an ApsaraDB for Redis Community Edition instance or Enhanced Edition (Tair) [DRAM-based](https://help.aliyun.com/document_detail/126164.html) instance that uses local disks.
 //
 // A call to this operation has the following impacts on your instance:
 //
@@ -37953,11 +41680,15 @@ func (client *Client) SwitchInstanceHAWithOptions(request *SwitchInstanceHAReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Performs a master-replica switchover to switch node roles. This operation is applicable to disaster recovery drills and nearby access to applications that are deployed across zones.
+//
 // Description:
 //
-// > For more information about nearby access to applications that are deployed across zones, see [Switch node roles](~~164222~~).
+// > For more information about nearby access to applications that are deployed across zones, see [Switch node roles](https://help.aliyun.com/document_detail/164222.html).
 //
-// The instance must be an ApsaraDB for Redis Community Edition instance or Enhanced Edition (Tair) [DRAM-based](~~126164~~) instance that uses local disks.
+// The instance must be an ApsaraDB for Redis Community Edition instance or Enhanced Edition (Tair) [DRAM-based](https://help.aliyun.com/document_detail/126164.html) instance that uses local disks.
 //
 // A call to this operation has the following impacts on your instance:
 //
@@ -37979,15 +41710,19 @@ func (client *Client) SwitchInstanceHA(request *SwitchInstanceHARequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables the proxy mode for an ApsaraDB for Redis cluster instance in a dedicated cluster.
+//
 // Description:
 //
-// For more information about the proxy mode, see [Features of proxy nodes](~~142959~~). Before you call this operation, make sure that the following requirements are met:
+// For more information about the proxy mode, see [Features of proxy nodes](https://help.aliyun.com/document_detail/142959.html). Before you call this operation, make sure that the following requirements are met:
 //
-// 	- Your ApsaraDB for Redis instance is created by using a dedicated cluster. For more information, see [What is ApsaraDB MyBase?](~~141455~~)
+// 	- Your ApsaraDB for Redis instance is created by using a dedicated cluster. For more information, see [What is ApsaraDB MyBase?](https://help.aliyun.com/document_detail/141455.html)
 //
-// 	- The instance uses the cluster architecture. For more information about the cluster architecture, see [Cluster master-replica instances](~~52228~~).
+// 	- The instance uses the cluster architecture. For more information about the cluster architecture, see [Cluster master-replica instances](https://help.aliyun.com/document_detail/52228.html).
 //
-// > Before you call the SwitchInstanceProxy operation, you must call the [DescribeDedicatedClusterInstanceList](~~229522~~) operation and view the value of the **ProxyCount*	- response parameter to check whether the proxy mode is enabled. A value of 0 indicates that the proxy mode is disabled. A value that is greater than 0 indicates that the proxy mode is enabled.
+// > Before you call the SwitchInstanceProxy operation, you must call the [DescribeDedicatedClusterInstanceList](https://help.aliyun.com/document_detail/229522.html) operation and view the value of the **ProxyCount*	- response parameter to check whether the proxy mode is enabled. A value of 0 indicates that the proxy mode is disabled. A value that is greater than 0 indicates that the proxy mode is enabled.
 //
 // @param request - SwitchInstanceProxyRequest
 //
@@ -38047,15 +41782,19 @@ func (client *Client) SwitchInstanceProxyWithOptions(request *SwitchInstanceProx
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables the proxy mode for an ApsaraDB for Redis cluster instance in a dedicated cluster.
+//
 // Description:
 //
-// For more information about the proxy mode, see [Features of proxy nodes](~~142959~~). Before you call this operation, make sure that the following requirements are met:
+// For more information about the proxy mode, see [Features of proxy nodes](https://help.aliyun.com/document_detail/142959.html). Before you call this operation, make sure that the following requirements are met:
 //
-// 	- Your ApsaraDB for Redis instance is created by using a dedicated cluster. For more information, see [What is ApsaraDB MyBase?](~~141455~~)
+// 	- Your ApsaraDB for Redis instance is created by using a dedicated cluster. For more information, see [What is ApsaraDB MyBase?](https://help.aliyun.com/document_detail/141455.html)
 //
-// 	- The instance uses the cluster architecture. For more information about the cluster architecture, see [Cluster master-replica instances](~~52228~~).
+// 	- The instance uses the cluster architecture. For more information about the cluster architecture, see [Cluster master-replica instances](https://help.aliyun.com/document_detail/52228.html).
 //
-// > Before you call the SwitchInstanceProxy operation, you must call the [DescribeDedicatedClusterInstanceList](~~229522~~) operation and view the value of the **ProxyCount*	- response parameter to check whether the proxy mode is enabled. A value of 0 indicates that the proxy mode is disabled. A value that is greater than 0 indicates that the proxy mode is enabled.
+// > Before you call the SwitchInstanceProxy operation, you must call the [DescribeDedicatedClusterInstanceList](https://help.aliyun.com/document_detail/229522.html) operation and view the value of the **ProxyCount*	- response parameter to check whether the proxy mode is enabled. A value of 0 indicates that the proxy mode is disabled. A value that is greater than 0 indicates that the proxy mode is enabled.
 //
 // @param request - SwitchInstanceProxyRequest
 //
@@ -38071,6 +41810,15 @@ func (client *Client) SwitchInstanceProxy(request *SwitchInstanceProxyRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the virtual private cloud (VPC) or vSwitch of an ApsaraDB for Redis instance. If the instance is deployed in the classic network, the network type of the instance is changed from the classic network to VPC.
+//
+// @param request - SwitchNetworkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SwitchNetworkResponse
 func (client *Client) SwitchNetworkWithOptions(request *SwitchNetworkRequest, runtime *util.RuntimeOptions) (_result *SwitchNetworkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -38144,6 +41892,13 @@ func (client *Client) SwitchNetworkWithOptions(request *SwitchNetworkRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the virtual private cloud (VPC) or vSwitch of an ApsaraDB for Redis instance. If the instance is deployed in the classic network, the network type of the instance is changed from the classic network to VPC.
+//
+// @param request - SwitchNetworkRequest
+//
+// @return SwitchNetworkResponse
 func (client *Client) SwitchNetwork(request *SwitchNetworkRequest) (_result *SwitchNetworkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SwitchNetworkResponse{}
@@ -38155,6 +41910,15 @@ func (client *Client) SwitchNetwork(request *SwitchNetworkRequest) (_result *Swi
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables configuration changes for an ApsaraDB for Redis instance before you use Data Transmission Service (DTS) to migrate or synchronize data of the instance. This prevents migration and synchronization task failures due to the configuration change.
+//
+// @param request - SyncDtsStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SyncDtsStatusResponse
 func (client *Client) SyncDtsStatusWithOptions(request *SyncDtsStatusRequest, runtime *util.RuntimeOptions) (_result *SyncDtsStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -38220,6 +41984,13 @@ func (client *Client) SyncDtsStatusWithOptions(request *SyncDtsStatusRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables configuration changes for an ApsaraDB for Redis instance before you use Data Transmission Service (DTS) to migrate or synchronize data of the instance. This prevents migration and synchronization task failures due to the configuration change.
+//
+// @param request - SyncDtsStatusRequest
+//
+// @return SyncDtsStatusResponse
 func (client *Client) SyncDtsStatus(request *SyncDtsStatusRequest) (_result *SyncDtsStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SyncDtsStatusResponse{}
@@ -38231,6 +42002,10 @@ func (client *Client) SyncDtsStatus(request *SyncDtsStatusRequest) (_result *Syn
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds specified tags to one or more ApsaraDB for Redis instances.
+//
 // Description:
 //
 // If you have a large number of instances, you can create multiple tags and add these tags to the instances. Then, you can filter instances by tag.
@@ -38245,7 +42020,7 @@ func (client *Client) SyncDtsStatus(request *SyncDtsStatusRequest) (_result *Syn
 //
 // 	- You can add tags to up to 50 instances in each request.
 //
-// You can also add tags to instances in the ApsaraDB for Redis console. For more information, see [Create a tag](~~118779~~).
+// You can also add tags to instances in the ApsaraDB for Redis console. For more information, see [Create a tag](https://help.aliyun.com/document_detail/118779.html).
 //
 // @param request - TagResourcesRequest
 //
@@ -38313,6 +42088,10 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds specified tags to one or more ApsaraDB for Redis instances.
+//
 // Description:
 //
 // If you have a large number of instances, you can create multiple tags and add these tags to the instances. Then, you can filter instances by tag.
@@ -38327,7 +42106,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 //
 // 	- You can add tags to up to 50 instances in each request.
 //
-// You can also add tags to instances in the ApsaraDB for Redis console. For more information, see [Create a tag](~~118779~~).
+// You can also add tags to instances in the ApsaraDB for Redis console. For more information, see [Create a tag](https://help.aliyun.com/document_detail/118779.html).
 //
 // @param request - TagResourcesRequest
 //
@@ -38343,13 +42122,17 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the billing method of an ApsaraDB for Redis instance from subscription to pay-as-you-go or from pay-as-you-go to subscription.
+//
 // Description:
 //
 // Before you call this operation, make sure that you understand relevant precautions and billing rules. For more information, see the following topics:
 //
-// 	- [Change the billing method to subscription](~~54542~~).
+// 	- [Change the billing method to subscription](https://help.aliyun.com/document_detail/54542.html).
 //
-// 	- [Change the billing method to pay-as-you-go](~~211549~~).
+// 	- [Change the billing method to pay-as-you-go](https://help.aliyun.com/document_detail/211549.html).
 //
 // @param request - TransformInstanceChargeTypeRequest
 //
@@ -38429,13 +42212,17 @@ func (client *Client) TransformInstanceChargeTypeWithOptions(request *TransformI
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the billing method of an ApsaraDB for Redis instance from subscription to pay-as-you-go or from pay-as-you-go to subscription.
+//
 // Description:
 //
 // Before you call this operation, make sure that you understand relevant precautions and billing rules. For more information, see the following topics:
 //
-// 	- [Change the billing method to subscription](~~54542~~).
+// 	- [Change the billing method to subscription](https://help.aliyun.com/document_detail/54542.html).
 //
-// 	- [Change the billing method to pay-as-you-go](~~211549~~).
+// 	- [Change the billing method to pay-as-you-go](https://help.aliyun.com/document_detail/211549.html).
 //
 // @param request - TransformInstanceChargeTypeRequest
 //
@@ -38451,9 +42238,13 @@ func (client *Client) TransformInstanceChargeType(request *TransformInstanceChar
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the billing method of an ApsaraDB for Redis instance from pay-as-you-go to subscription.
+//
 // Description:
 //
-// For more information about how to change the billing method in the ApsaraDB for Redis console, see [Switch to subscription](~~54542~~).
+// For more information about how to change the billing method in the ApsaraDB for Redis console, see [Switch to subscription](https://help.aliyun.com/document_detail/54542.html).
 //
 // >  You cannot change the billing method of an ApsaraDB for Redis instance from subscription to pay-as-you-go.
 //
@@ -38523,9 +42314,13 @@ func (client *Client) TransformToPrePaidWithOptions(request *TransformToPrePaidR
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the billing method of an ApsaraDB for Redis instance from pay-as-you-go to subscription.
+//
 // Description:
 //
-// For more information about how to change the billing method in the ApsaraDB for Redis console, see [Switch to subscription](~~54542~~).
+// For more information about how to change the billing method in the ApsaraDB for Redis console, see [Switch to subscription](https://help.aliyun.com/document_detail/54542.html).
 //
 // >  You cannot change the billing method of an ApsaraDB for Redis instance from subscription to pay-as-you-go.
 //
@@ -38543,6 +42338,15 @@ func (client *Client) TransformToPrePaid(request *TransformToPrePaidRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes the write lock from an instance. After the instance is unlocked, it supports both read and write operations.
+//
+// @param request - UnlockDBInstanceWriteRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnlockDBInstanceWriteResponse
 func (client *Client) UnlockDBInstanceWriteWithOptions(request *UnlockDBInstanceWriteRequest, runtime *util.RuntimeOptions) (_result *UnlockDBInstanceWriteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -38596,6 +42400,13 @@ func (client *Client) UnlockDBInstanceWriteWithOptions(request *UnlockDBInstance
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes the write lock from an instance. After the instance is unlocked, it supports both read and write operations.
+//
+// @param request - UnlockDBInstanceWriteRequest
+//
+// @return UnlockDBInstanceWriteResponse
 func (client *Client) UnlockDBInstanceWrite(request *UnlockDBInstanceWriteRequest) (_result *UnlockDBInstanceWriteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UnlockDBInstanceWriteResponse{}
@@ -38607,13 +42418,17 @@ func (client *Client) UnlockDBInstanceWrite(request *UnlockDBInstanceWriteReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes tags from one or more ApsaraDB for Redis instances.
+//
 // Description:
 //
-// 	- You can remove up to 20 tags at a time.
+//   You can remove up to 20 tags at a time.
 //
 // 	- If a tag is removed from an instance and is not added to other instances, the tag is deleted.
 //
-// You can also remove tags from instances in the ApsaraDB for Redis console. For more information, see [Remove a tag](~~119157~~).
+// You can also remove tags from instances in the ApsaraDB for Redis console. For more information, see [Remove a tag](https://help.aliyun.com/document_detail/119157.html).
 //
 // @param request - UntagResourcesRequest
 //
@@ -38685,13 +42500,17 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes tags from one or more ApsaraDB for Redis instances.
+//
 // Description:
 //
-// 	- You can remove up to 20 tags at a time.
+//   You can remove up to 20 tags at a time.
 //
 // 	- If a tag is removed from an instance and is not added to other instances, the tag is deleted.
 //
-// You can also remove tags from instances in the ApsaraDB for Redis console. For more information, see [Remove a tag](~~119157~~).
+// You can also remove tags from instances in the ApsaraDB for Redis console. For more information, see [Remove a tag](https://help.aliyun.com/document_detail/119157.html).
 //
 // @param request - UntagResourcesRequest
 //
