@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,7 +10,9 @@ import (
 )
 
 type AlignStoragePrimaryAzoneRequest struct {
-	DBInstanceName      *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// This parameter is required.
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// This parameter is required.
 	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	StorageInstanceName *string `json:"StorageInstanceName,omitempty" xml:"StorageInstanceName,omitempty"`
 	SwitchTime          *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
@@ -83,9 +82,9 @@ func (s *AlignStoragePrimaryAzoneResponseBody) SetSuccess(v bool) *AlignStorageP
 }
 
 type AlignStoragePrimaryAzoneResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AlignStoragePrimaryAzoneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AlignStoragePrimaryAzoneResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AlignStoragePrimaryAzoneResponse) String() string {
@@ -112,8 +111,18 @@ func (s *AlignStoragePrimaryAzoneResponse) SetBody(v *AlignStoragePrimaryAzoneRe
 }
 
 type AllocateColdDataVolumeRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-hzravgpt8q****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s AllocateColdDataVolumeRequest) String() string {
@@ -135,6 +144,9 @@ func (s *AllocateColdDataVolumeRequest) SetRegionId(v string) *AllocateColdDataV
 }
 
 type AllocateColdDataVolumeResponseBody struct {
+	// example:
+	//
+	// D6A4256F-7B83-5BD7-9AC0-72E1FAC05330
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -152,9 +164,9 @@ func (s *AllocateColdDataVolumeResponseBody) SetRequestId(v string) *AllocateCol
 }
 
 type AllocateColdDataVolumeResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AllocateColdDataVolumeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AllocateColdDataVolumeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AllocateColdDataVolumeResponse) String() string {
@@ -181,14 +193,32 @@ func (s *AllocateColdDataVolumeResponse) SetBody(v *AllocateColdDataVolumeRespon
 }
 
 type AllocateInstancePublicConnectionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-**************
 	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
-	DBInstanceName         *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	OwnerAccount           *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Port                   *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount   *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId        *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-**************
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3306
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s AllocateInstancePublicConnectionRequest) String() string {
@@ -240,6 +270,9 @@ func (s *AllocateInstancePublicConnectionRequest) SetResourceOwnerId(v int64) *A
 }
 
 type AllocateInstancePublicConnectionResponseBody struct {
+	// example:
+	//
+	// 9B2F3840-5C98-475C-B269-2D5C3A31797C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -257,9 +290,9 @@ func (s *AllocateInstancePublicConnectionResponseBody) SetRequestId(v string) *A
 }
 
 type AllocateInstancePublicConnectionResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AllocateInstancePublicConnectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AllocateInstancePublicConnectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AllocateInstancePublicConnectionResponse) String() string {
@@ -286,7 +319,17 @@ func (s *AllocateInstancePublicConnectionResponse) SetBody(v *AllocateInstancePu
 }
 
 type CancelActiveOperationTasksRequest struct {
-	Ids      *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 111
+	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -309,7 +352,13 @@ func (s *CancelActiveOperationTasksRequest) SetRegionId(v string) *CancelActiveO
 }
 
 type CancelActiveOperationTasksResponseBody struct {
-	Ids       *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// example:
+	//
+	// 111,1223
+	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// example:
+	//
+	// AE4F6C34-065F-45AA-B5DC-4B8D816F6305
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -332,9 +381,9 @@ func (s *CancelActiveOperationTasksResponseBody) SetRequestId(v string) *CancelA
 }
 
 type CancelActiveOperationTasksResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CancelActiveOperationTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelActiveOperationTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CancelActiveOperationTasksResponse) String() string {
@@ -361,10 +410,30 @@ func (s *CancelActiveOperationTasksResponse) SetBody(v *CancelActiveOperationTas
 }
 
 type ChangeResourceGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rg-acfmwolx3j4****
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId         *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceType       *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-szrwrbp693****
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PolarDBXInstance
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s ChangeResourceGroupRequest) String() string {
@@ -396,6 +465,9 @@ func (s *ChangeResourceGroupRequest) SetResourceType(v string) *ChangeResourceGr
 }
 
 type ChangeResourceGroupResponseBody struct {
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3WE34
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -413,9 +485,9 @@ func (s *ChangeResourceGroupResponseBody) SetRequestId(v string) *ChangeResource
 }
 
 type ChangeResourceGroupResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ChangeResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChangeResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ChangeResourceGroupResponse) String() string {
@@ -442,9 +514,22 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 }
 
 type CheckCloudResourceAuthorizedRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleArn        *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// acs:ram::123456789012****:role/AliyunRdsInstanceEncryptionDefaultRole
+	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 }
 
 func (s CheckCloudResourceAuthorizedRequest) String() string {
@@ -471,8 +556,11 @@ func (s *CheckCloudResourceAuthorizedRequest) SetRoleArn(v string) *CheckCloudRe
 }
 
 type CheckCloudResourceAuthorizedResponseBody struct {
-	Data      *CheckCloudResourceAuthorizedResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *CheckCloudResourceAuthorizedResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// A501A191-BD70-5E50-98A9-C2A486A82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CheckCloudResourceAuthorizedResponseBody) String() string {
@@ -494,8 +582,14 @@ func (s *CheckCloudResourceAuthorizedResponseBody) SetRequestId(v string) *Check
 }
 
 type CheckCloudResourceAuthorizedResponseBodyData struct {
+	// example:
+	//
+	// 0
 	AuthorizationState *string `json:"AuthorizationState,omitempty" xml:"AuthorizationState,omitempty"`
-	RoleArn            *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// example:
+	//
+	// acs:ram::123456789012****:role/AliyunRdsInstanceEncryptionDefaultRole
+	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 }
 
 func (s CheckCloudResourceAuthorizedResponseBodyData) String() string {
@@ -517,9 +611,9 @@ func (s *CheckCloudResourceAuthorizedResponseBodyData) SetRoleArn(v string) *Che
 }
 
 type CheckCloudResourceAuthorizedResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CheckCloudResourceAuthorizedResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CheckCloudResourceAuthorizedResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CheckCloudResourceAuthorizedResponse) String() string {
@@ -546,14 +640,49 @@ func (s *CheckCloudResourceAuthorizedResponse) SetBody(v *CheckCloudResourceAuth
 }
 
 type CreateAccountRequest struct {
-	AccountDescription      *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
-	AccountName             *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AccountPassword         *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
-	AccountPrivilege        *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
-	DBInstanceName          *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	DBName                  *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SecurityAccountName     *string `json:"SecurityAccountName,omitempty" xml:"SecurityAccountName,omitempty"`
+	// example:
+	//
+	// test
+	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testAccount
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Test@1111
+	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
+	// example:
+	//
+	// ReadWrite
+	AccountPrivilege *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-**************
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// example:
+	//
+	// testdb
+	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// securityAccount
+	SecurityAccountName *string `json:"SecurityAccountName,omitempty" xml:"SecurityAccountName,omitempty"`
+	// example:
+	//
+	// securityPassword
 	SecurityAccountPassword *string `json:"SecurityAccountPassword,omitempty" xml:"SecurityAccountPassword,omitempty"`
 }
 
@@ -611,9 +740,18 @@ func (s *CreateAccountRequest) SetSecurityAccountPassword(v string) *CreateAccou
 }
 
 type CreateAccountResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ****
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 9B2F3840-5C98-475C-B269-2D5C3A31797C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateAccountResponseBody) String() string {
@@ -640,9 +778,9 @@ func (s *CreateAccountResponseBody) SetSuccess(v bool) *CreateAccountResponseBod
 }
 
 type CreateAccountResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAccountResponse) String() string {
@@ -669,9 +807,22 @@ func (s *CreateAccountResponse) SetBody(v *CreateAccountResponseBody) *CreateAcc
 }
 
 type CreateBackupRequest struct {
-	BackupType     *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	// example:
+	//
+	// 0
+	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-**************
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateBackupRequest) String() string {
@@ -698,10 +849,19 @@ func (s *CreateBackupRequest) SetRegionId(v string) *CreateBackupRequest {
 }
 
 type CreateBackupResponseBody struct {
-	Data      []*CreateBackupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data *CreateBackupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// *****
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 9B2F3840-5C98-475C-B269-2D5C3A31797C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateBackupResponseBody) String() string {
@@ -712,7 +872,7 @@ func (s CreateBackupResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateBackupResponseBody) SetData(v []*CreateBackupResponseBodyData) *CreateBackupResponseBody {
+func (s *CreateBackupResponseBody) SetData(v *CreateBackupResponseBodyData) *CreateBackupResponseBody {
 	s.Data = v
 	return s
 }
@@ -733,7 +893,7 @@ func (s *CreateBackupResponseBody) SetSuccess(v bool) *CreateBackupResponseBody 
 }
 
 type CreateBackupResponseBodyData struct {
-	BackupSetId *int64 `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
+	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
 }
 
 func (s CreateBackupResponseBodyData) String() string {
@@ -744,15 +904,15 @@ func (s CreateBackupResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *CreateBackupResponseBodyData) SetBackupSetId(v int64) *CreateBackupResponseBodyData {
+func (s *CreateBackupResponseBodyData) SetBackupSetId(v string) *CreateBackupResponseBodyData {
 	s.BackupSetId = &v
 	return s
 }
 
 type CreateBackupResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateBackupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateBackupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateBackupResponse) String() string {
@@ -779,15 +939,55 @@ func (s *CreateBackupResponse) SetBody(v *CreateBackupResponseBody) *CreateBacku
 }
 
 type CreateDBRequest struct {
-	AccountName             *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AccountPrivilege        *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
-	Charset                 *string `json:"Charset,omitempty" xml:"Charset,omitempty"`
-	DBInstanceName          *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	DbDescription           *string `json:"DbDescription,omitempty" xml:"DbDescription,omitempty"`
-	DbName                  *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	Mode                    *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SecurityAccountName     *string `json:"SecurityAccountName,omitempty" xml:"SecurityAccountName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testaccount
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// ReadWrite
+	AccountPrivilege *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// utf8mb4
+	Charset *string `json:"Charset,omitempty" xml:"Charset,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-**************
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// example:
+	//
+	// db for test
+	DbDescription *string `json:"DbDescription,omitempty" xml:"DbDescription,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testdb
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// example:
+	//
+	// auto
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// securityAccount
+	SecurityAccountName *string `json:"SecurityAccountName,omitempty" xml:"SecurityAccountName,omitempty"`
+	// example:
+	//
+	// securityPassword
 	SecurityAccountPassword *string `json:"SecurityAccountPassword,omitempty" xml:"SecurityAccountPassword,omitempty"`
 	StoragePoolName         *string `json:"StoragePoolName,omitempty" xml:"StoragePoolName,omitempty"`
 }
@@ -856,9 +1056,18 @@ func (s *CreateDBRequest) SetStoragePoolName(v string) *CreateDBRequest {
 }
 
 type CreateDBResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// *****
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 9B2F3840-5C98-475C-B269-2D5C3A31797C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateDBResponseBody) String() string {
@@ -885,9 +1094,9 @@ func (s *CreateDBResponseBody) SetSuccess(v bool) *CreateDBResponseBody {
 }
 
 type CreateDBResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateDBResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDBResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateDBResponse) String() string {
@@ -914,32 +1123,103 @@ func (s *CreateDBResponse) SetBody(v *CreateDBResponseBody) *CreateDBResponse {
 }
 
 type CreateDBInstanceRequest struct {
-	AutoRenew                *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	CNNodeCount              *string `json:"CNNodeCount,omitempty" xml:"CNNodeCount,omitempty"`
-	ClientToken              *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CnClass                  *string `json:"CnClass,omitempty" xml:"CnClass,omitempty"`
-	DBNodeClass              *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
-	DBNodeCount              *int32  `json:"DBNodeCount,omitempty" xml:"DBNodeCount,omitempty"`
-	DNNodeCount              *string `json:"DNNodeCount,omitempty" xml:"DNNodeCount,omitempty"`
-	DnClass                  *string `json:"DnClass,omitempty" xml:"DnClass,omitempty"`
+	// example:
+	//
+	// true
+	AutoRenew   *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	CNNodeCount *string `json:"CNNodeCount,omitempty" xml:"CNNodeCount,omitempty"`
+	// example:
+	//
+	// xxxxxx-xxx
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CnClass     *string `json:"CnClass,omitempty" xml:"CnClass,omitempty"`
+	// example:
+	//
+	// polarx.x4.2xlarge.2d
+	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
+	// example:
+	//
+	// 2
+	DBNodeCount    *int32  `json:"DBNodeCount,omitempty" xml:"DBNodeCount,omitempty"`
+	DNNodeCount    *string `json:"DNNodeCount,omitempty" xml:"DNNodeCount,omitempty"`
+	DnClass        *string `json:"DnClass,omitempty" xml:"DnClass,omitempty"`
+	DnStorageSpace *string `json:"DnStorageSpace,omitempty" xml:"DnStorageSpace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2.0
 	EngineVersion            *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	IsColumnarReadDBInstance *bool   `json:"IsColumnarReadDBInstance,omitempty" xml:"IsColumnarReadDBInstance,omitempty"`
-	IsReadDBInstance         *bool   `json:"IsReadDBInstance,omitempty" xml:"IsReadDBInstance,omitempty"`
-	NetworkType              *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	PayType                  *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	Period                   *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	PrimaryDBInstanceName    *string `json:"PrimaryDBInstanceName,omitempty" xml:"PrimaryDBInstanceName,omitempty"`
-	PrimaryZone              *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
-	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId          *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SecondaryZone            *string `json:"SecondaryZone,omitempty" xml:"SecondaryZone,omitempty"`
-	TertiaryZone             *string `json:"TertiaryZone,omitempty" xml:"TertiaryZone,omitempty"`
-	TopologyType             *string `json:"TopologyType,omitempty" xml:"TopologyType,omitempty"`
-	UsedTime                 *int32  `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	// example:
+	//
+	// false
+	IsReadDBInstance *bool `json:"IsReadDBInstance,omitempty" xml:"IsReadDBInstance,omitempty"`
+	// example:
+	//
+	// vpc
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PREPAY
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// example:
+	//
+	// Month
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// example:
+	//
+	// pxc-*********
+	PrimaryDBInstanceName *string `json:"PrimaryDBInstanceName,omitempty" xml:"PrimaryDBInstanceName,omitempty"`
+	// example:
+	//
+	// cn-shenzhen-e
+	PrimaryZone *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// null
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// cn-shenzhen-a
+	SecondaryZone *string `json:"SecondaryZone,omitempty" xml:"SecondaryZone,omitempty"`
+	Series        *string `json:"Series,omitempty" xml:"Series,omitempty"`
+	// example:
+	//
+	// cn-shenzhen-e
+	TertiaryZone *string `json:"TertiaryZone,omitempty" xml:"TertiaryZone,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3azones
+	TopologyType *string `json:"TopologyType,omitempty" xml:"TopologyType,omitempty"`
+	// example:
+	//
+	// 1
+	UsedTime *int32 `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
 	// VPC ID。
-	VPCId     *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	//
+	// example:
+	//
+	// vpc-*****
+	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	// example:
+	//
+	// vsw-*********
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-a
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateDBInstanceRequest) String() string {
@@ -987,6 +1267,11 @@ func (s *CreateDBInstanceRequest) SetDNNodeCount(v string) *CreateDBInstanceRequ
 
 func (s *CreateDBInstanceRequest) SetDnClass(v string) *CreateDBInstanceRequest {
 	s.DnClass = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequest) SetDnStorageSpace(v string) *CreateDBInstanceRequest {
+	s.DnStorageSpace = &v
 	return s
 }
 
@@ -1045,6 +1330,11 @@ func (s *CreateDBInstanceRequest) SetSecondaryZone(v string) *CreateDBInstanceRe
 	return s
 }
 
+func (s *CreateDBInstanceRequest) SetSeries(v string) *CreateDBInstanceRequest {
+	s.Series = &v
+	return s
+}
+
 func (s *CreateDBInstanceRequest) SetTertiaryZone(v string) *CreateDBInstanceRequest {
 	s.TertiaryZone = &v
 	return s
@@ -1076,9 +1366,18 @@ func (s *CreateDBInstanceRequest) SetZoneId(v string) *CreateDBInstanceRequest {
 }
 
 type CreateDBInstanceResponseBody struct {
+	// example:
+	//
+	// pxc-*********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	OrderId        *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 12345
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 9B2F3840-5C98-475C-B269-2D5C3A31797C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateDBInstanceResponseBody) String() string {
@@ -1105,9 +1404,9 @@ func (s *CreateDBInstanceResponseBody) SetRequestId(v string) *CreateDBInstanceR
 }
 
 type CreateDBInstanceResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateDBInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDBInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateDBInstanceResponse) String() string {
@@ -1134,11 +1433,34 @@ func (s *CreateDBInstanceResponse) SetBody(v *CreateDBInstanceResponseBody) *Cre
 }
 
 type CreateSuperAccountRequest struct {
+	// example:
+	//
+	// testdbadescription
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
-	AccountName        *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AccountPassword    *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
-	DBInstanceName     *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dba
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testdbapassword
+	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-************
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateSuperAccountRequest) String() string {
@@ -1175,9 +1497,18 @@ func (s *CreateSuperAccountRequest) SetRegionId(v string) *CreateSuperAccountReq
 }
 
 type CreateSuperAccountResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// *****
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 9B2F3840-5C98-475C-B269-2D5C3A31797C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateSuperAccountResponseBody) String() string {
@@ -1204,9 +1535,9 @@ func (s *CreateSuperAccountResponseBody) SetSuccess(v bool) *CreateSuperAccountR
 }
 
 type CreateSuperAccountResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateSuperAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSuperAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateSuperAccountResponse) String() string {
@@ -1233,10 +1564,31 @@ func (s *CreateSuperAccountResponse) SetBody(v *CreateSuperAccountResponseBody) 
 }
 
 type DeleteAccountRequest struct {
-	AccountName             *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	DBInstanceName          *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SecurityAccountName     *string `json:"SecurityAccountName,omitempty" xml:"SecurityAccountName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testaccount
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-*********
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// securityAccount
+	SecurityAccountName *string `json:"SecurityAccountName,omitempty" xml:"SecurityAccountName,omitempty"`
+	// example:
+	//
+	// securityPassword
 	SecurityAccountPassword *string `json:"SecurityAccountPassword,omitempty" xml:"SecurityAccountPassword,omitempty"`
 }
 
@@ -1274,9 +1626,18 @@ func (s *DeleteAccountRequest) SetSecurityAccountPassword(v string) *DeleteAccou
 }
 
 type DeleteAccountResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ****
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 9B2F3840-5C98-475C-B269-2D5C3A31797C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteAccountResponseBody) String() string {
@@ -1303,9 +1664,9 @@ func (s *DeleteAccountResponseBody) SetSuccess(v bool) *DeleteAccountResponseBod
 }
 
 type DeleteAccountResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteAccountResponse) String() string {
@@ -1332,9 +1693,24 @@ func (s *DeleteAccountResponse) SetBody(v *DeleteAccountResponseBody) *DeleteAcc
 }
 
 type DeleteDBRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testdb
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteDBRequest) String() string {
@@ -1361,9 +1737,18 @@ func (s *DeleteDBRequest) SetRegionId(v string) *DeleteDBRequest {
 }
 
 type DeleteDBResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// *****
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 9B2F3840-5C98-475C-B269-2D5C3A31797C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteDBResponseBody) String() string {
@@ -1390,9 +1775,9 @@ func (s *DeleteDBResponseBody) SetSuccess(v bool) *DeleteDBResponseBody {
 }
 
 type DeleteDBResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteDBResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDBResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteDBResponse) String() string {
@@ -1419,8 +1804,18 @@ func (s *DeleteDBResponse) SetBody(v *DeleteDBResponseBody) *DeleteDBResponse {
 }
 
 type DeleteDBInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteDBInstanceRequest) String() string {
@@ -1442,6 +1837,9 @@ func (s *DeleteDBInstanceRequest) SetRegionId(v string) *DeleteDBInstanceRequest
 }
 
 type DeleteDBInstanceResponseBody struct {
+	// example:
+	//
+	// 9B2F3840-5C98-475C-B269-2D5C3A31797C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1459,9 +1857,9 @@ func (s *DeleteDBInstanceResponseBody) SetRequestId(v string) *DeleteDBInstanceR
 }
 
 type DeleteDBInstanceResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteDBInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDBInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteDBInstanceResponse) String() string {
@@ -1488,10 +1886,26 @@ func (s *DeleteDBInstanceResponse) SetBody(v *DeleteDBInstanceResponseBody) *Del
 }
 
 type DescribeAccountListRequest struct {
-	AccountName    *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AccountType    *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// example:
+	//
+	// testaccount
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// 0
+	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeAccountListRequest) String() string {
@@ -1523,10 +1937,19 @@ func (s *DescribeAccountListRequest) SetRegionId(v string) *DescribeAccountListR
 }
 
 type DescribeAccountListResponseBody struct {
-	Data      []*DescribeAccountListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data []*DescribeAccountListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 9B2F3840-5C98-475C-B269-2D5C3A31797C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeAccountListResponseBody) String() string {
@@ -1558,13 +1981,34 @@ func (s *DescribeAccountListResponseBody) SetSuccess(v bool) *DescribeAccountLis
 }
 
 type DescribeAccountListResponseBodyData struct {
+	// example:
+	//
+	// testaccount desc
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
-	AccountName        *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AccountPrivilege   *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
-	AccountType        *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	DBInstanceName     *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	DBName             *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	GmtCreated         *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// example:
+	//
+	// testAccount
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// ReadWrite
+	AccountPrivilege *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
+	// example:
+	//
+	// 0
+	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// example:
+	//
+	// pxc-*********
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// example:
+	//
+	// testdb
+	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	// example:
+	//
+	// 2012-06-08T15:00Z
+	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
 }
 
 func (s DescribeAccountListResponseBodyData) String() string {
@@ -1611,9 +2055,9 @@ func (s *DescribeAccountListResponseBodyData) SetGmtCreated(v string) *DescribeA
 }
 
 type DescribeAccountListResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAccountListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAccountListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAccountListResponse) String() string {
@@ -1640,6 +2084,11 @@ func (s *DescribeAccountListResponse) SetBody(v *DescribeAccountListResponseBody
 }
 
 type DescribeActiveOperationMaintainConfRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -1657,9 +2106,15 @@ func (s *DescribeActiveOperationMaintainConfRequest) SetRegionId(v string) *Desc
 }
 
 type DescribeActiveOperationMaintainConfResponseBody struct {
-	Config    *DescribeActiveOperationMaintainConfResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-	HasConfig *int64                                                 `json:"HasConfig,omitempty" xml:"HasConfig,omitempty"`
-	RequestId *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Config *DescribeActiveOperationMaintainConfResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	HasConfig *int64 `json:"HasConfig,omitempty" xml:"HasConfig,omitempty"`
+	// example:
+	//
+	// 1A586DCB-39A6-4050-81CC-C7BD4CCDB49F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeActiveOperationMaintainConfResponseBody) String() string {
@@ -1686,13 +2141,34 @@ func (s *DescribeActiveOperationMaintainConfResponseBody) SetRequestId(v string)
 }
 
 type DescribeActiveOperationMaintainConfResponseBodyConfig struct {
-	CreatedTime       *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	CycleTime         *string `json:"CycleTime,omitempty" xml:"CycleTime,omitempty"`
-	CycleType         *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
-	MaintainEndTime   *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	// example:
+	//
+	// 2021-08-11T10:08:27Z
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// example:
+	//
+	// 1,2,3,4,5,6,7
+	CycleTime *string `json:"CycleTime,omitempty" xml:"CycleTime,omitempty"`
+	// example:
+	//
+	// Week
+	CycleType *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
+	// example:
+	//
+	// 04:00:00Z
+	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	// example:
+	//
+	// 04:00:00Z
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	ModifiedTime      *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	Status            *int64  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 2021-08-11T10:08:27Z
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeActiveOperationMaintainConfResponseBodyConfig) String() string {
@@ -1739,9 +2215,9 @@ func (s *DescribeActiveOperationMaintainConfResponseBodyConfig) SetStatus(v int6
 }
 
 type DescribeActiveOperationMaintainConfResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeActiveOperationMaintainConfResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeActiveOperationMaintainConfResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeActiveOperationMaintainConfResponse) String() string {
@@ -1768,8 +2244,19 @@ func (s *DescribeActiveOperationMaintainConfResponse) SetBody(v *DescribeActiveO
 }
 
 type DescribeActiveOperationTaskCountRequest struct {
+	// example:
+	//
+	// Category
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	Product  *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// example:
+	//
+	// polarx
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -1797,9 +2284,18 @@ func (s *DescribeActiveOperationTaskCountRequest) SetRegionId(v string) *Describ
 }
 
 type DescribeActiveOperationTaskCountResponseBody struct {
-	NeedPop   *int64  `json:"NeedPop,omitempty" xml:"NeedPop,omitempty"`
+	// example:
+	//
+	// 1
+	NeedPop *int64 `json:"NeedPop,omitempty" xml:"NeedPop,omitempty"`
+	// example:
+	//
+	// EC7E27FC-58F8-4722-89BB-D1B6D0971956
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskCount *int64  `json:"TaskCount,omitempty" xml:"TaskCount,omitempty"`
+	// example:
+	//
+	// 20
+	TaskCount *int64 `json:"TaskCount,omitempty" xml:"TaskCount,omitempty"`
 }
 
 func (s DescribeActiveOperationTaskCountResponseBody) String() string {
@@ -1826,9 +2322,9 @@ func (s *DescribeActiveOperationTaskCountResponseBody) SetTaskCount(v int64) *De
 }
 
 type DescribeActiveOperationTaskCountResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeActiveOperationTaskCountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeActiveOperationTaskCountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeActiveOperationTaskCountResponse) String() string {
@@ -1855,18 +2351,56 @@ func (s *DescribeActiveOperationTaskCountResponse) SetBody(v *DescribeActiveOper
 }
 
 type DescribeActiveOperationTasksRequest struct {
-	AllowCancel *int64  `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
-	AllowChange *int64  `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
+	// example:
+	//
+	// -1
+	AllowCancel *int64 `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
+	// example:
+	//
+	// -1
+	AllowChange *int64 `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
+	// example:
+	//
+	// all
 	ChangeLevel *string `json:"ChangeLevel,omitempty" xml:"ChangeLevel,omitempty"`
-	DbType      *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	InsName     *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
-	PageNumber  *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductId   *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	Region      *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status      *int64  `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskType    *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// example:
+	//
+	// polarx
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// example:
+	//
+	// pxc-xxxxx
+	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 25
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// polarx
+	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// -1
+	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// all
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s DescribeActiveOperationTasksRequest) String() string {
@@ -1938,11 +2472,23 @@ func (s *DescribeActiveOperationTasksRequest) SetTaskType(v string) *DescribeAct
 }
 
 type DescribeActiveOperationTasksResponseBody struct {
-	Items            []*DescribeActiveOperationTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageNumber       *int64                                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize         *int64                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId        *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalRecordCount *int64                                           `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+	Items []*DescribeActiveOperationTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 12
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// xxxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 23
+	TotalRecordCount *int64 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
 func (s DescribeActiveOperationTasksResponseBody) String() string {
@@ -1979,33 +2525,105 @@ func (s *DescribeActiveOperationTasksResponseBody) SetTotalRecordCount(v int64) 
 }
 
 type DescribeActiveOperationTasksResponseBodyItems struct {
-	AllowCancel     *string   `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
-	AllowChange     *string   `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
-	ChangeLevel     *string   `json:"ChangeLevel,omitempty" xml:"ChangeLevel,omitempty"`
-	ChangeLevelEn   *string   `json:"ChangeLevelEn,omitempty" xml:"ChangeLevelEn,omitempty"`
-	ChangeLevelZh   *string   `json:"ChangeLevelZh,omitempty" xml:"ChangeLevelZh,omitempty"`
-	CreatedTime     *string   `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	CurrentAVZ      *string   `json:"CurrentAVZ,omitempty" xml:"CurrentAVZ,omitempty"`
-	DbType          *string   `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	DbVersion       *string   `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
-	Deadline        *string   `json:"Deadline,omitempty" xml:"Deadline,omitempty"`
-	Id              *int64    `json:"Id,omitempty" xml:"Id,omitempty"`
-	Impact          *string   `json:"Impact,omitempty" xml:"Impact,omitempty"`
-	ImpactEn        *string   `json:"ImpactEn,omitempty" xml:"ImpactEn,omitempty"`
-	ImpactZh        *string   `json:"ImpactZh,omitempty" xml:"ImpactZh,omitempty"`
-	InsComment      *string   `json:"InsComment,omitempty" xml:"InsComment,omitempty"`
-	InsName         *string   `json:"InsName,omitempty" xml:"InsName,omitempty"`
-	ModifiedTime    *string   `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	PrepareInterval *string   `json:"PrepareInterval,omitempty" xml:"PrepareInterval,omitempty"`
-	Region          *string   `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResultInfo      *string   `json:"ResultInfo,omitempty" xml:"ResultInfo,omitempty"`
-	StartTime       *string   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status          *int64    `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubInsNames     []*string `json:"SubInsNames,omitempty" xml:"SubInsNames,omitempty" type:"Repeated"`
-	SwitchTime      *string   `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
-	TaskType        *string   `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	TaskTypeEn      *string   `json:"TaskTypeEn,omitempty" xml:"TaskTypeEn,omitempty"`
-	TaskTypeZh      *string   `json:"TaskTypeZh,omitempty" xml:"TaskTypeZh,omitempty"`
+	// example:
+	//
+	// 0
+	AllowCancel *string `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
+	// example:
+	//
+	// 0
+	AllowChange *string `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
+	// example:
+	//
+	// Risk
+	ChangeLevel *string `json:"ChangeLevel,omitempty" xml:"ChangeLevel,omitempty"`
+	// example:
+	//
+	// Risk repairment
+	ChangeLevelEn *string `json:"ChangeLevelEn,omitempty" xml:"ChangeLevelEn,omitempty"`
+	ChangeLevelZh *string `json:"ChangeLevelZh,omitempty" xml:"ChangeLevelZh,omitempty"`
+	// example:
+	//
+	// 2021-06-15T16:00:00Z
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// example:
+	//
+	// cn-shanghai-et-a
+	CurrentAVZ *string `json:"CurrentAVZ,omitempty" xml:"CurrentAVZ,omitempty"`
+	// example:
+	//
+	// polarx
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// example:
+	//
+	// 2.0
+	DbVersion *string `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
+	// example:
+	//
+	// 2021-06-15T16:00:00Z
+	Deadline *string `json:"Deadline,omitempty" xml:"Deadline,omitempty"`
+	// example:
+	//
+	// 1
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// --
+	Impact *string `json:"Impact,omitempty" xml:"Impact,omitempty"`
+	// example:
+	//
+	// Transient instance disconnection
+	ImpactEn *string `json:"ImpactEn,omitempty" xml:"ImpactEn,omitempty"`
+	ImpactZh *string `json:"ImpactZh,omitempty" xml:"ImpactZh,omitempty"`
+	// example:
+	//
+	// xxx
+	InsComment *string `json:"InsComment,omitempty" xml:"InsComment,omitempty"`
+	// example:
+	//
+	// pxc-dd
+	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
+	// example:
+	//
+	// 2021-06-15T16:00:00Z
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// example:
+	//
+	// 03:00:00
+	PrepareInterval *string `json:"PrepareInterval,omitempty" xml:"PrepareInterval,omitempty"`
+	// example:
+	//
+	// cn-shanghai-et15-b01
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// --
+	ResultInfo *string `json:"ResultInfo,omitempty" xml:"ResultInfo,omitempty"`
+	// example:
+	//
+	// 2021-06-15T16:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 3
+	Status      *int64    `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubInsNames []*string `json:"SubInsNames,omitempty" xml:"SubInsNames,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2021-06-15T16:00:00Z
+	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
+	// example:
+	//
+	// rds_apsaradb_transfer
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// example:
+	//
+	// --
+	TaskTypeEn *string `json:"TaskTypeEn,omitempty" xml:"TaskTypeEn,omitempty"`
+	// example:
+	//
+	// --
+	TaskTypeZh *string `json:"TaskTypeZh,omitempty" xml:"TaskTypeZh,omitempty"`
 }
 
 func (s DescribeActiveOperationTasksResponseBodyItems) String() string {
@@ -2152,9 +2770,9 @@ func (s *DescribeActiveOperationTasksResponseBodyItems) SetTaskTypeZh(v string) 
 }
 
 type DescribeActiveOperationTasksResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeActiveOperationTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeActiveOperationTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeActiveOperationTasksResponse) String() string {
@@ -2181,13 +2799,17 @@ func (s *DescribeActiveOperationTasksResponse) SetBody(v *DescribeActiveOperatio
 }
 
 type DescribeArchiveTableListRequest struct {
+	// This parameter is required.
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	PageIndex      *int64  `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	PageSize       *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SchemaName     *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TableName      *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// This parameter is required.
+	PageIndex *int64 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// This parameter is required.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TableName  *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s DescribeArchiveTableListRequest) String() string {
@@ -2369,9 +2991,9 @@ func (s *DescribeArchiveTableListResponseBodyDataTables) SetTableName(v string) 
 }
 
 type DescribeArchiveTableListResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeArchiveTableListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeArchiveTableListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeArchiveTableListResponse) String() string {
@@ -2398,8 +3020,18 @@ func (s *DescribeArchiveTableListResponse) SetBody(v *DescribeArchiveTableListRe
 }
 
 type DescribeBackupPolicyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeBackupPolicyRequest) String() string {
@@ -2421,10 +3053,19 @@ func (s *DescribeBackupPolicyRequest) SetRegionId(v string) *DescribeBackupPolic
 }
 
 type DescribeBackupPolicyResponseBody struct {
-	Data      []*DescribeBackupPolicyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data *DescribeBackupPolicyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// B87E2AB3-B7C9-4394-9160-7F639F732031
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeBackupPolicyResponseBody) String() string {
@@ -2435,7 +3076,7 @@ func (s DescribeBackupPolicyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeBackupPolicyResponseBody) SetData(v []*DescribeBackupPolicyResponseBodyData) *DescribeBackupPolicyResponseBody {
+func (s *DescribeBackupPolicyResponseBody) SetData(v *DescribeBackupPolicyResponseBodyData) *DescribeBackupPolicyResponseBody {
 	s.Data = v
 	return s
 }
@@ -2581,9 +3222,9 @@ func (s *DescribeBackupPolicyResponseBodyData) SetRemoveLogRetention(v int32) *D
 }
 
 type DescribeBackupPolicyResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeBackupPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeBackupPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeBackupPolicyResponse) String() string {
@@ -2610,10 +3251,23 @@ func (s *DescribeBackupPolicyResponse) SetBody(v *DescribeBackupPolicyResponseBo
 }
 
 type DescribeBackupSetRequest struct {
-	BackupSetId     *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 111
+	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-htri0ori2r****
 	DBInstanceName  *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	DestCrossRegion *string `json:"DestCrossRegion,omitempty" xml:"DestCrossRegion,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeBackupSetRequest) String() string {
@@ -2645,10 +3299,19 @@ func (s *DescribeBackupSetRequest) SetRegionId(v string) *DescribeBackupSetReque
 }
 
 type DescribeBackupSetResponseBody struct {
-	Data      []*DescribeBackupSetResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data []*DescribeBackupSetResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// successs
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1A6D328C-84B8-40DC-BF49-6C73984D7494
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeBackupSetResponseBody) String() string {
@@ -2680,14 +3343,35 @@ func (s *DescribeBackupSetResponseBody) SetSuccess(v bool) *DescribeBackupSetRes
 }
 
 type DescribeBackupSetResponseBodyData struct {
-	BackupModel   *int32                                      `json:"BackupModel,omitempty" xml:"BackupModel,omitempty"`
-	BackupSetId   *int64                                      `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
-	BackupSetSize *int64                                      `json:"BackupSetSize,omitempty" xml:"BackupSetSize,omitempty"`
-	BackupType    *int32                                      `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	BeginTime     *int64                                      `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	EndTime       *int64                                      `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OSSList       []*DescribeBackupSetResponseBodyDataOSSList `json:"OSSList,omitempty" xml:"OSSList,omitempty" type:"Repeated"`
-	Status        *int32                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 0
+	BackupModel *int32 `json:"BackupModel,omitempty" xml:"BackupModel,omitempty"`
+	// example:
+	//
+	// 111
+	BackupSetId *int64 `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
+	// example:
+	//
+	// 88803195
+	BackupSetSize *int64 `json:"BackupSetSize,omitempty" xml:"BackupSetSize,omitempty"`
+	// example:
+	//
+	// 1
+	BackupType *int32 `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	// example:
+	//
+	// 1650250861754
+	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// example:
+	//
+	// 1650251308000
+	EndTime *int64                                      `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	OSSList []*DescribeBackupSetResponseBodyDataOSSList `json:"OSSList,omitempty" xml:"OSSList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeBackupSetResponseBodyData) String() string {
@@ -2739,10 +3423,22 @@ func (s *DescribeBackupSetResponseBodyData) SetStatus(v int32) *DescribeBackupSe
 }
 
 type DescribeBackupSetResponseBodyDataOSSList struct {
-	BackupSetFile        *string `json:"BackupSetFile,omitempty" xml:"BackupSetFile,omitempty"`
-	DownloadLink         *string `json:"DownloadLink,omitempty" xml:"DownloadLink,omitempty"`
+	// example:
+	//
+	// hins3084_data_20220418110623_qp.xb
+	BackupSetFile *string `json:"BackupSetFile,omitempty" xml:"BackupSetFile,omitempty"`
+	// example:
+	//
+	// https://pre-rdsbak-cn-xxx.oss-cn-beijing.aliyuncs.com/custins2255/hins3084_data_20220418110623_qp.xb?OSSAccessKeyId=LTAI5tJEmRFdJ8aBPDR7****&Expires=1650441697&dd=7KJzkUSbXf6dwy
+	DownloadLink *string `json:"DownloadLink,omitempty" xml:"DownloadLink,omitempty"`
+	// example:
+	//
+	// http://pre-rdsbak-cn-beijing.oss-cn-beijing-internal.aliyuncs.com/custins2255/hins3084_data_20220418110623_qp.xb?
 	IntranetDownloadLink *string `json:"IntranetDownloadLink,omitempty" xml:"IntranetDownloadLink,omitempty"`
-	LinkExpiredTime      *string `json:"LinkExpiredTime,omitempty" xml:"LinkExpiredTime,omitempty"`
+	// example:
+	//
+	// 2022-04-20T08:01:37Z
+	LinkExpiredTime *string `json:"LinkExpiredTime,omitempty" xml:"LinkExpiredTime,omitempty"`
 }
 
 func (s DescribeBackupSetResponseBodyDataOSSList) String() string {
@@ -2774,9 +3470,9 @@ func (s *DescribeBackupSetResponseBodyDataOSSList) SetLinkExpiredTime(v string) 
 }
 
 type DescribeBackupSetResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeBackupSetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeBackupSetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeBackupSetResponse) String() string {
@@ -2803,13 +3499,35 @@ func (s *DescribeBackupSetResponse) SetBody(v *DescribeBackupSetResponseBody) *D
 }
 
 type DescribeBackupSetListRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-xxxxxx
 	DBInstanceName  *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	DestCrossRegion *string `json:"DestCrossRegion,omitempty" xml:"DestCrossRegion,omitempty"`
-	EndTime         *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StartTime       *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 1635707845000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 1635707845000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeBackupSetListRequest) String() string {
@@ -2856,10 +3574,19 @@ func (s *DescribeBackupSetListRequest) SetStartTime(v int64) *DescribeBackupSetL
 }
 
 type DescribeBackupSetListResponseBody struct {
-	Data      []*DescribeBackupSetListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data []*DescribeBackupSetListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1A6D328C-84B8-40DC-BF49-6C73984D7494
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeBackupSetListResponseBody) String() string {
@@ -2891,13 +3618,34 @@ func (s *DescribeBackupSetListResponseBody) SetSuccess(v bool) *DescribeBackupSe
 }
 
 type DescribeBackupSetListResponseBodyData struct {
-	BackupModel   *int32 `json:"BackupModel,omitempty" xml:"BackupModel,omitempty"`
-	BackupSetId   *int64 `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
+	// example:
+	//
+	// 0
+	BackupModel *int32 `json:"BackupModel,omitempty" xml:"BackupModel,omitempty"`
+	// example:
+	//
+	// 111
+	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
+	// example:
+	//
+	// 88803195
 	BackupSetSize *int64 `json:"BackupSetSize,omitempty" xml:"BackupSetSize,omitempty"`
-	BackupType    *int32 `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	BeginTime     *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	EndTime       *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Status        *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1
+	BackupType *int32 `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	// example:
+	//
+	// 1635706960956
+	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// example:
+	//
+	// 1635706960956
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeBackupSetListResponseBodyData) String() string {
@@ -2913,7 +3661,7 @@ func (s *DescribeBackupSetListResponseBodyData) SetBackupModel(v int32) *Describ
 	return s
 }
 
-func (s *DescribeBackupSetListResponseBodyData) SetBackupSetId(v int64) *DescribeBackupSetListResponseBodyData {
+func (s *DescribeBackupSetListResponseBodyData) SetBackupSetId(v string) *DescribeBackupSetListResponseBodyData {
 	s.BackupSetId = &v
 	return s
 }
@@ -2944,9 +3692,9 @@ func (s *DescribeBackupSetListResponseBodyData) SetStatus(v int32) *DescribeBack
 }
 
 type DescribeBackupSetListResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeBackupSetListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeBackupSetListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeBackupSetListResponse) String() string {
@@ -2973,13 +3721,39 @@ func (s *DescribeBackupSetListResponse) SetBody(v *DescribeBackupSetListResponse
 }
 
 type DescribeBinaryLogListRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-hz1fds
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	InstanceName   *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2021-11-09 10:27:46
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2021-09-09 10:27:46
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeBinaryLogListRequest) String() string {
@@ -3026,11 +3800,23 @@ func (s *DescribeBinaryLogListRequest) SetStartTime(v string) *DescribeBinaryLog
 }
 
 type DescribeBinaryLogListResponseBody struct {
-	LogList     []*DescribeBinaryLogListResponseBodyLogList `json:"LogList,omitempty" xml:"LogList,omitempty" type:"Repeated"`
-	PageNumber  *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalNumber *int32                                      `json:"TotalNumber,omitempty" xml:"TotalNumber,omitempty"`
+	LogList []*DescribeBinaryLogListResponseBodyLogList `json:"LogList,omitempty" xml:"LogList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 2DFF784E-DC31-5BBC-9B25-9261CD9E0AA9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 100
+	TotalNumber *int32 `json:"TotalNumber,omitempty" xml:"TotalNumber,omitempty"`
 }
 
 func (s DescribeBinaryLogListResponseBody) String() string {
@@ -3067,17 +3853,50 @@ func (s *DescribeBinaryLogListResponseBody) SetTotalNumber(v int32) *DescribeBin
 }
 
 type DescribeBinaryLogListResponseBodyLogList struct {
-	BeginTime    *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	CreatedTime  *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// example:
+	//
+	// 2021-09-09 10:27:46
+	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// example:
+	//
+	// 2021-09-09 10:27:46
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// example:
+	//
+	// http://polarx-cdc-binlog-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/polardbx_cdc/pxc-hzfd132143sfds1/binlog.000001?Expires=1636469502&OSSAccessKeyId=LT13fds12dsafddsf&Signature=fdpm%bdsfadsa%2F%bdsafdsaf%3D
 	DownloadLink *string `json:"DownloadLink,omitempty" xml:"DownloadLink,omitempty"`
-	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	FileName     *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	LogSize      *int64  `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
+	// example:
+	//
+	// 2021-11-09 10:27:46
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// binlog.000001
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// 100
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 536870912
+	LogSize *int64 `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
+	// example:
+	//
+	// 2021-11-09 10:27:46
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	PurgeStatus  *int32  `json:"PurgeStatus,omitempty" xml:"PurgeStatus,omitempty"`
-	UploadHost   *string `json:"UploadHost,omitempty" xml:"UploadHost,omitempty"`
-	UploadStatus *int32  `json:"UploadStatus,omitempty" xml:"UploadStatus,omitempty"`
+	// example:
+	//
+	// 0
+	PurgeStatus *int32 `json:"PurgeStatus,omitempty" xml:"PurgeStatus,omitempty"`
+	// example:
+	//
+	// 10.110.88.9
+	UploadHost *string `json:"UploadHost,omitempty" xml:"UploadHost,omitempty"`
+	// example:
+	//
+	// 2
+	UploadStatus *int32 `json:"UploadStatus,omitempty" xml:"UploadStatus,omitempty"`
 }
 
 func (s DescribeBinaryLogListResponseBodyLogList) String() string {
@@ -3144,9 +3963,9 @@ func (s *DescribeBinaryLogListResponseBodyLogList) SetUploadStatus(v int32) *Des
 }
 
 type DescribeBinaryLogListResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeBinaryLogListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeBinaryLogListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeBinaryLogListResponse) String() string {
@@ -3173,8 +3992,18 @@ func (s *DescribeBinaryLogListResponse) SetBody(v *DescribeBinaryLogListResponse
 }
 
 type DescribeCharacterSetRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-*********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeCharacterSetRequest) String() string {
@@ -3196,10 +4025,19 @@ func (s *DescribeCharacterSetRequest) SetRegionId(v string) *DescribeCharacterSe
 }
 
 type DescribeCharacterSetResponseBody struct {
-	Data      *DescribeCharacterSetResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data *DescribeCharacterSetResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 709C1E40-092D-4A3D-9958-6D7438******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeCharacterSetResponseBody) String() string {
@@ -3232,7 +4070,10 @@ func (s *DescribeCharacterSetResponseBody) SetSuccess(v bool) *DescribeCharacter
 
 type DescribeCharacterSetResponseBodyData struct {
 	CharacterSet []*string `json:"CharacterSet,omitempty" xml:"CharacterSet,omitempty" type:"Repeated"`
-	Engine       *string   `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// example:
+	//
+	// polarx
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 }
 
 func (s DescribeCharacterSetResponseBodyData) String() string {
@@ -3254,9 +4095,9 @@ func (s *DescribeCharacterSetResponseBodyData) SetEngine(v string) *DescribeChar
 }
 
 type DescribeCharacterSetResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeCharacterSetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCharacterSetResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeCharacterSetResponse) String() string {
@@ -3283,8 +4124,10 @@ func (s *DescribeCharacterSetResponse) SetBody(v *DescribeCharacterSetResponseBo
 }
 
 type DescribeColdDataBasicInfoRequest struct {
+	// This parameter is required.
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeColdDataBasicInfoRequest) String() string {
@@ -3400,9 +4243,9 @@ func (s *DescribeColdDataBasicInfoResponseBodyData) SetWriteAccessNum(v float64)
 }
 
 type DescribeColdDataBasicInfoResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeColdDataBasicInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeColdDataBasicInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeColdDataBasicInfoResponse) String() string {
@@ -3429,8 +4272,21 @@ func (s *DescribeColdDataBasicInfoResponse) SetBody(v *DescribeColdDataBasicInfo
 }
 
 type DescribeDBInstanceAttributeRequest struct {
-	DBInstanceName  *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-********
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-aekzaxhezhs5***
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -3459,7 +4315,10 @@ func (s *DescribeDBInstanceAttributeRequest) SetResourceGroupId(v string) *Descr
 
 type DescribeDBInstanceAttributeResponseBody struct {
 	DBInstance *DescribeDBInstanceAttributeResponseBodyDBInstance `json:"DBInstance,omitempty" xml:"DBInstance,omitempty" type:"Struct"`
-	RequestId  *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 9B2F3840-5C98-475C-B269-2D5C3A31797C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDBInstanceAttributeResponseBody) String() string {
@@ -3481,64 +4340,177 @@ func (s *DescribeDBInstanceAttributeResponseBody) SetRequestId(v string) *Descri
 }
 
 type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
-	CanNotCreateColumnar    *bool                                                         `json:"CanNotCreateColumnar,omitempty" xml:"CanNotCreateColumnar,omitempty"`
-	CnNodeClassCode         *string                                                       `json:"CnNodeClassCode,omitempty" xml:"CnNodeClassCode,omitempty"`
-	CnNodeCount             *int32                                                        `json:"CnNodeCount,omitempty" xml:"CnNodeCount,omitempty"`
-	ColumnarInstanceName    *string                                                       `json:"ColumnarInstanceName,omitempty" xml:"ColumnarInstanceName,omitempty"`
-	ColumnarReadDBInstances []*string                                                     `json:"ColumnarReadDBInstances,omitempty" xml:"ColumnarReadDBInstances,omitempty" type:"Repeated"`
-	CommodityCode           *string                                                       `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	ConnAddrs               []*DescribeDBInstanceAttributeResponseBodyDBInstanceConnAddrs `json:"ConnAddrs,omitempty" xml:"ConnAddrs,omitempty" type:"Repeated"`
-	ConnectionString        *string                                                       `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	CreateTime              *string                                                       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DBInstanceType          *string                                                       `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
-	DBNodeClass             *string                                                       `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
-	DBNodeCount             *int32                                                        `json:"DBNodeCount,omitempty" xml:"DBNodeCount,omitempty"`
-	DBNodes                 []*DescribeDBInstanceAttributeResponseBodyDBInstanceDBNodes   `json:"DBNodes,omitempty" xml:"DBNodes,omitempty" type:"Repeated"`
-	DBType                  *string                                                       `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	DBVersion               *string                                                       `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	Description             *string                                                       `json:"Description,omitempty" xml:"Description,omitempty"`
-	DifferentDNSpec         *bool                                                         `json:"DifferentDNSpec,omitempty" xml:"DifferentDNSpec,omitempty"`
-	DnNodeClassCode         *string                                                       `json:"DnNodeClassCode,omitempty" xml:"DnNodeClassCode,omitempty"`
-	DnNodeCount             *int32                                                        `json:"DnNodeCount,omitempty" xml:"DnNodeCount,omitempty"`
-	Engine                  *string                                                       `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	ExpireDate              *string                                                       `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
-	Expired                 *string                                                       `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	Id                      *string                                                       `json:"Id,omitempty" xml:"Id,omitempty"`
-	KindCode                *int32                                                        `json:"KindCode,omitempty" xml:"KindCode,omitempty"`
-	LTSVersions             []*string                                                     `json:"LTSVersions,omitempty" xml:"LTSVersions,omitempty" type:"Repeated"`
-	LatestMinorVersion      *string                                                       `json:"LatestMinorVersion,omitempty" xml:"LatestMinorVersion,omitempty"`
-	LockMode                *string                                                       `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	MaintainEndTime         *string                                                       `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	MaintainStartTime       *string                                                       `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	MinorVersion            *string                                                       `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
-	Network                 *string                                                       `json:"Network,omitempty" xml:"Network,omitempty"`
-	PayType                 *string                                                       `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	Port                    *string                                                       `json:"Port,omitempty" xml:"Port,omitempty"`
+	CanNotCreateColumnar *bool `json:"CanNotCreateColumnar,omitempty" xml:"CanNotCreateColumnar,omitempty"`
+	// example:
+	//
+	// polarx.x4.xlarge.2e
+	CnNodeClassCode *string `json:"CnNodeClassCode,omitempty" xml:"CnNodeClassCode,omitempty"`
+	// example:
+	//
+	// 2
+	CnNodeCount             *int32    `json:"CnNodeCount,omitempty" xml:"CnNodeCount,omitempty"`
+	ColumnarInstanceName    *string   `json:"ColumnarInstanceName,omitempty" xml:"ColumnarInstanceName,omitempty"`
+	ColumnarReadDBInstances []*string `json:"ColumnarReadDBInstances,omitempty" xml:"ColumnarReadDBInstances,omitempty" type:"Repeated"`
+	// example:
+	//
+	// drds_polarxpost_public_cn
+	CommodityCode    *string                                                       `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	ConnAddrs        []*DescribeDBInstanceAttributeResponseBodyDBInstanceConnAddrs `json:"ConnAddrs,omitempty" xml:"ConnAddrs,omitempty" type:"Repeated"`
+	ConnectionString *string                                                       `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	// example:
+	//
+	// 2021-08-31T08:56:25.000+0000
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// ReadWrite
+	DBInstanceType *string `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
+	// example:
+	//
+	// polarx.x4.large.2e
+	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
+	// example:
+	//
+	// 2
+	DBNodeCount *int32                                                      `json:"DBNodeCount,omitempty" xml:"DBNodeCount,omitempty"`
+	DBNodes     []*DescribeDBInstanceAttributeResponseBodyDBInstanceDBNodes `json:"DBNodes,omitempty" xml:"DBNodes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// polarx
+	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	// example:
+	//
+	// 5.5
+	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	// example:
+	//
+	// test instance
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DifferentDNSpec *bool   `json:"DifferentDNSpec,omitempty" xml:"DifferentDNSpec,omitempty"`
+	// example:
+	//
+	// mysql.x8.large.25
+	DnNodeClassCode *string `json:"DnNodeClassCode,omitempty" xml:"DnNodeClassCode,omitempty"`
+	// example:
+	//
+	// 2
+	DnNodeCount *int32 `json:"DnNodeCount,omitempty" xml:"DnNodeCount,omitempty"`
+	// example:
+	//
+	// polarx
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// example:
+	//
+	// 2022-08-31T16:00:00.000+0000
+	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	// example:
+	//
+	// false
+	Expired *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	// example:
+	//
+	// pxc-zkralxpc5d****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 18
+	KindCode *int32 `json:"KindCode,omitempty" xml:"KindCode,omitempty"`
+	// This parameter is required.
+	LTSVersions []*string `json:"LTSVersions,omitempty" xml:"LTSVersions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// polarx-kernel_5.4.11-16301083_xcluster-20210805
+	LatestMinorVersion *string `json:"LatestMinorVersion,omitempty" xml:"LatestMinorVersion,omitempty"`
+	// example:
+	//
+	// Unlock
+	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	// example:
+	//
+	// 06:00
+	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	// example:
+	//
+	// 06:00
+	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	// example:
+	//
+	// polarx-kernel_5.4.11-16301083_xcluster-20210805
+	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
+	// example:
+	//
+	// VPC
+	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	// example:
+	//
+	// Postpaid
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// example:
+	//
+	// 3306
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// 主可用区。
-	PrimaryZone             *string   `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
-	ReadDBInstances         []*string `json:"ReadDBInstances,omitempty" xml:"ReadDBInstances,omitempty" type:"Repeated"`
-	RegionId                *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId         *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	RightsSeparationEnabled *bool     `json:"RightsSeparationEnabled,omitempty" xml:"RightsSeparationEnabled,omitempty"`
-	RightsSeparationStatus  *string   `json:"RightsSeparationStatus,omitempty" xml:"RightsSeparationStatus,omitempty"`
+	//
+	// This parameter is required.
+	PrimaryZone     *string   `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
+	ReadDBInstances []*string `json:"ReadDBInstances,omitempty" xml:"ReadDBInstances,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-xxxx
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// false
+	RightsSeparationEnabled *bool `json:"RightsSeparationEnabled,omitempty" xml:"RightsSeparationEnabled,omitempty"`
+	// example:
+	//
+	// disabled
+	RightsSeparationStatus *string `json:"RightsSeparationStatus,omitempty" xml:"RightsSeparationStatus,omitempty"`
 	// 次可用区。
-	SecondaryZone *string                                                    `json:"SecondaryZone,omitempty" xml:"SecondaryZone,omitempty"`
-	Series        *string                                                    `json:"Series,omitempty" xml:"Series,omitempty"`
-	Status        *string                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
-	StorageUsed   *int64                                                     `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
-	TagSet        []*DescribeDBInstanceAttributeResponseBodyDBInstanceTagSet `json:"TagSet,omitempty" xml:"TagSet,omitempty" type:"Repeated"`
+	SecondaryZone *string `json:"SecondaryZone,omitempty" xml:"SecondaryZone,omitempty"`
+	// example:
+	//
+	// enterprise
+	Series       *string `json:"Series,omitempty" xml:"Series,omitempty"`
+	SpecCategory *string `json:"SpecCategory,omitempty" xml:"SpecCategory,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 17042505728
+	StorageUsed *int64                                                     `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
+	TagSet      []*DescribeDBInstanceAttributeResponseBodyDBInstanceTagSet `json:"TagSet,omitempty" xml:"TagSet,omitempty" type:"Repeated"`
 	// 第三可用区。
 	TertiaryZone *string `json:"TertiaryZone,omitempty" xml:"TertiaryZone,omitempty"`
 	// 拓扑类型：
 	//
 	// - **3azones**：三可用区；
+	//
 	// - **1azone**：单可用区。
+	//
+	// This parameter is required.
 	TopologyType *string `json:"TopologyType,omitempty" xml:"TopologyType,omitempty"`
-	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// ReadWrite
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// VPC ID。
+	//
+	// example:
+	//
+	// vpc-xxxxx
 	VPCId     *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-a
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDBInstanceAttributeResponseBodyDBInstance) String() string {
@@ -3754,6 +4726,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetSeries(v string) 
 	return s
 }
 
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetSpecCategory(v string) *DescribeDBInstanceAttributeResponseBodyDBInstance {
+	s.SpecCategory = &v
+	return s
+}
+
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetStatus(v string) *DescribeDBInstanceAttributeResponseBodyDBInstance {
 	s.Status = &v
 	return s
@@ -3800,12 +4777,28 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetZoneId(v string) 
 }
 
 type DescribeDBInstanceAttributeResponseBodyDBInstanceConnAddrs struct {
+	// example:
+	//
+	// polardbx-xxx.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	Port             *int64  `json:"Port,omitempty" xml:"Port,omitempty"`
-	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 3306
+	Port *int64 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// VPC
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// VPC ID。
-	VPCId         *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	VSwitchId     *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	//
+	// example:
+	//
+	// vpc-xxxxxx
+	VPCId     *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// example:
+	//
+	// pxc-zkralxpc5d****
 	VpcInstanceId *string `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
 }
 
@@ -3849,11 +4842,23 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstanceConnAddrs) SetVpcInsta
 
 type DescribeDBInstanceAttributeResponseBodyDBInstanceDBNodes struct {
 	ComputeNodeId *string `json:"ComputeNodeId,omitempty" xml:"ComputeNodeId,omitempty"`
-	DataNodeId    *string `json:"DataNodeId,omitempty" xml:"DataNodeId,omitempty"`
-	Id            *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	NodeClass     *string `json:"NodeClass,omitempty" xml:"NodeClass,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ZoneId        *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// pxc-xdb-xxxxxx
+	DataNodeId *string `json:"DataNodeId,omitempty" xml:"DataNodeId,omitempty"`
+	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// polarx.x4.large.2e
+	NodeClass *string `json:"NodeClass,omitempty" xml:"NodeClass,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-a
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDBInstanceAttributeResponseBodyDBInstanceDBNodes) String() string {
@@ -3895,7 +4900,13 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstanceDBNodes) SetZoneId(v s
 }
 
 type DescribeDBInstanceAttributeResponseBodyDBInstanceTagSet struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// key2
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value2
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3918,9 +4929,9 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstanceTagSet) SetValue(v str
 }
 
 type DescribeDBInstanceAttributeResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDBInstanceAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDBInstanceAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDBInstanceAttributeResponse) String() string {
@@ -3947,9 +4958,24 @@ func (s *DescribeDBInstanceAttributeResponse) SetBody(v *DescribeDBInstanceAttri
 }
 
 type DescribeDBInstanceConfigRequest struct {
-	ConfigName     *string `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// htap
+	ConfigName *string `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-*********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeDBInstanceConfigRequest) String() string {
@@ -3976,8 +5002,11 @@ func (s *DescribeDBInstanceConfigRequest) SetRegionId(v string) *DescribeDBInsta
 }
 
 type DescribeDBInstanceConfigResponseBody struct {
-	Data      *DescribeDBInstanceConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *DescribeDBInstanceConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// C458B1E8-1683-3645-B154-6BA32080EEA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDBInstanceConfigResponseBody) String() string {
@@ -3999,6 +5028,9 @@ func (s *DescribeDBInstanceConfigResponseBody) SetRequestId(v string) *DescribeD
 }
 
 type DescribeDBInstanceConfigResponseBodyData struct {
+	// example:
+	//
+	// htap
 	ConfigName     *string `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
 	ConfigValue    *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
 	DbInstanceName *string `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
@@ -4028,9 +5060,9 @@ func (s *DescribeDBInstanceConfigResponseBodyData) SetDbInstanceName(v string) *
 }
 
 type DescribeDBInstanceConfigResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDBInstanceConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDBInstanceConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDBInstanceConfigResponse) String() string {
@@ -4057,8 +5089,10 @@ func (s *DescribeDBInstanceConfigResponse) SetBody(v *DescribeDBInstanceConfigRe
 }
 
 type DescribeDBInstanceHARequest struct {
+	// This parameter is required.
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeDBInstanceHARequest) String() string {
@@ -4156,9 +5190,9 @@ func (s *DescribeDBInstanceHAResponseBodyData) SetTopologyType(v string) *Descri
 }
 
 type DescribeDBInstanceHAResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDBInstanceHAResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDBInstanceHAResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDBInstanceHAResponse) String() string {
@@ -4185,8 +5219,14 @@ func (s *DescribeDBInstanceHAResponse) SetBody(v *DescribeDBInstanceHAResponseBo
 }
 
 type DescribeDBInstanceSSLRequest struct {
+	// example:
+	//
+	// pxc-*********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeDBInstanceSSLRequest) String() string {
@@ -4208,8 +5248,11 @@ func (s *DescribeDBInstanceSSLRequest) SetRegionId(v string) *DescribeDBInstance
 }
 
 type DescribeDBInstanceSSLResponseBody struct {
-	Data      *DescribeDBInstanceSSLResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *DescribeDBInstanceSSLResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// C458B1E8-1683-3645-B154-6BA32080EEA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDBInstanceSSLResponseBody) String() string {
@@ -4231,8 +5274,17 @@ func (s *DescribeDBInstanceSSLResponseBody) SetRequestId(v string) *DescribeDBIn
 }
 
 type DescribeDBInstanceSSLResponseBodyData struct {
+	// example:
+	//
+	// pxc-sddddddcym7g7w****.polarx.singapore.rds.aliyuncs.com
 	CertCommonName *string `json:"CertCommonName,omitempty" xml:"CertCommonName,omitempty"`
-	SSLEnabled     *bool   `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
+	// example:
+	//
+	// false
+	SSLEnabled *bool `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
+	// example:
+	//
+	// 2022-11-04T09:39:07Z
 	SSLExpiredTime *string `json:"SSLExpiredTime,omitempty" xml:"SSLExpiredTime,omitempty"`
 }
 
@@ -4260,9 +5312,9 @@ func (s *DescribeDBInstanceSSLResponseBodyData) SetSSLExpiredTime(v string) *Des
 }
 
 type DescribeDBInstanceSSLResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDBInstanceSSLResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDBInstanceSSLResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDBInstanceSSLResponse) String() string {
@@ -4289,8 +5341,14 @@ func (s *DescribeDBInstanceSSLResponse) SetBody(v *DescribeDBInstanceSSLResponse
 }
 
 type DescribeDBInstanceTDERequest struct {
+	// example:
+	//
+	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeDBInstanceTDERequest) String() string {
@@ -4312,8 +5370,11 @@ func (s *DescribeDBInstanceTDERequest) SetRegionId(v string) *DescribeDBInstance
 }
 
 type DescribeDBInstanceTDEResponseBody struct {
-	Data      *DescribeDBInstanceTDEResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *DescribeDBInstanceTDEResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// C458B1E8-1683-3645-B154-6BA32080EEA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDBInstanceTDEResponseBody) String() string {
@@ -4335,6 +5396,9 @@ func (s *DescribeDBInstanceTDEResponseBody) SetRequestId(v string) *DescribeDBIn
 }
 
 type DescribeDBInstanceTDEResponseBodyData struct {
+	// example:
+	//
+	// 0
 	TDEStatus *string `json:"TDEStatus,omitempty" xml:"TDEStatus,omitempty"`
 }
 
@@ -4352,9 +5416,9 @@ func (s *DescribeDBInstanceTDEResponseBodyData) SetTDEStatus(v string) *Describe
 }
 
 type DescribeDBInstanceTDEResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDBInstanceTDEResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDBInstanceTDEResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDBInstanceTDEResponse) String() string {
@@ -4381,10 +5445,20 @@ func (s *DescribeDBInstanceTDEResponse) SetBody(v *DescribeDBInstanceTDEResponse
 }
 
 type DescribeDBInstanceTopologyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDBInstanceTopologyRequest) String() string {
@@ -4416,8 +5490,11 @@ func (s *DescribeDBInstanceTopologyRequest) SetStartTime(v string) *DescribeDBIn
 }
 
 type DescribeDBInstanceTopologyResponseBody struct {
-	Data      *DescribeDBInstanceTopologyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *DescribeDBInstanceTopologyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// C458B1E8-1683-3645-B154-6BA32080EEA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDBInstanceTopologyResponseBody) String() string {
@@ -4456,22 +5533,61 @@ func (s *DescribeDBInstanceTopologyResponseBodyData) SetLogicInstanceTopology(v 
 }
 
 type DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopology struct {
-	DBInstanceConnType          *string                                                                        `json:"DBInstanceConnType,omitempty" xml:"DBInstanceConnType,omitempty"`
-	DBInstanceCreateTime        *string                                                                        `json:"DBInstanceCreateTime,omitempty" xml:"DBInstanceCreateTime,omitempty"`
-	DBInstanceDescription       *string                                                                        `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	DBInstanceId                *string                                                                        `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DBInstanceName              *string                                                                        `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	DBInstanceStatus            *int32                                                                         `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	DBInstanceStatusDescription *string                                                                        `json:"DBInstanceStatusDescription,omitempty" xml:"DBInstanceStatusDescription,omitempty"`
-	DBInstanceStorage           *int32                                                                         `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
-	Engine                      *string                                                                        `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion               *string                                                                        `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	HistoryItems                []*DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyHistoryItems `json:"HistoryItems,omitempty" xml:"HistoryItems,omitempty" type:"Repeated"`
-	Items                       []*DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems        `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	LockMode                    *int32                                                                         `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	LockReason                  *string                                                                        `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	MaintainEndTime             *string                                                                        `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	MaintainStartTime           *string                                                                        `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	// example:
+	//
+	// lvs
+	DBInstanceConnType *string `json:"DBInstanceConnType,omitempty" xml:"DBInstanceConnType,omitempty"`
+	// example:
+	//
+	// 2021-10-21T10:30:45Z 04:00:00
+	DBInstanceCreateTime *string `json:"DBInstanceCreateTime,omitempty" xml:"DBInstanceCreateTime,omitempty"`
+	// example:
+	//
+	// pxc-sprcym7g7wj7k
+	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	// example:
+	//
+	// 304726047
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// pxc-sprcym7g7w****
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// example:
+	//
+	// 8
+	DBInstanceStatus *int32 `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
+	// example:
+	//
+	// TDE_MODIFYING
+	DBInstanceStatusDescription *string `json:"DBInstanceStatusDescription,omitempty" xml:"DBInstanceStatusDescription,omitempty"`
+	// example:
+	//
+	// 1
+	DBInstanceStorage *int32 `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
+	// example:
+	//
+	// polarx
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// example:
+	//
+	// 2.0
+	EngineVersion *string                                                                        `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	HistoryItems  []*DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyHistoryItems `json:"HistoryItems,omitempty" xml:"HistoryItems,omitempty" type:"Repeated"`
+	Items         []*DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems        `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
+	LockMode   *int32  `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
+	// example:
+	//
+	// 05:00:00
+	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	// example:
+	//
+	// 04:00:00
+	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
 }
 
 func (s DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopology) String() string {
@@ -4622,33 +5738,85 @@ func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyHistoryI
 }
 
 type DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems struct {
-	Activated                   *bool                                                                                `json:"Activated,omitempty" xml:"Activated,omitempty"`
-	Azone                       *string                                                                              `json:"Azone,omitempty" xml:"Azone,omitempty"`
-	AzoneRoleList               []*DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsAzoneRoleList `json:"AzoneRoleList,omitempty" xml:"AzoneRoleList,omitempty" type:"Repeated"`
-	CharacterType               *string                                                                              `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
-	ConnectionIp                []*DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsConnectionIp  `json:"ConnectionIp,omitempty" xml:"ConnectionIp,omitempty" type:"Repeated"`
-	DBInstanceConnType          *int32                                                                               `json:"DBInstanceConnType,omitempty" xml:"DBInstanceConnType,omitempty"`
-	DBInstanceCreateTime        *string                                                                              `json:"DBInstanceCreateTime,omitempty" xml:"DBInstanceCreateTime,omitempty"`
-	DBInstanceDescription       *string                                                                              `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	DBInstanceId                *string                                                                              `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DBInstanceName              *string                                                                              `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	DBInstanceStatus            *int32                                                                               `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	DBInstanceStatusDescription *string                                                                              `json:"DBInstanceStatusDescription,omitempty" xml:"DBInstanceStatusDescription,omitempty"`
-	DiskSize                    *int64                                                                               `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	Engine                      *string                                                                              `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion               *string                                                                              `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	LockMode                    *int32                                                                               `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	LockReason                  *string                                                                              `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	MaintainEndTime             *string                                                                              `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	MaintainStartTime           *string                                                                              `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	MaxConnections              *int32                                                                               `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
-	MaxIops                     *int32                                                                               `json:"MaxIops,omitempty" xml:"MaxIops,omitempty"`
-	NodeClass                   *string                                                                              `json:"NodeClass,omitempty" xml:"NodeClass,omitempty"`
-	PhyInstanceName             *string                                                                              `json:"PhyInstanceName,omitempty" xml:"PhyInstanceName,omitempty"`
-	Region                      *string                                                                              `json:"Region,omitempty" xml:"Region,omitempty"`
-	Role                        *string                                                                              `json:"Role,omitempty" xml:"Role,omitempty"`
-	Status                      *string                                                                              `json:"Status,omitempty" xml:"Status,omitempty"`
-	Version                     *string                                                                              `json:"Version,omitempty" xml:"Version,omitempty"`
+	// example:
+	//
+	// true
+	Activated *bool `json:"Activated,omitempty" xml:"Activated,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-a
+	Azone              *string                                                                              `json:"Azone,omitempty" xml:"Azone,omitempty"`
+	AzoneRoleList      []*DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsAzoneRoleList `json:"AzoneRoleList,omitempty" xml:"AzoneRoleList,omitempty" type:"Repeated"`
+	CharacterType      *string                                                                              `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
+	ConnectionIp       []*DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsConnectionIp  `json:"ConnectionIp,omitempty" xml:"ConnectionIp,omitempty" type:"Repeated"`
+	DBInstanceConnType *int32                                                                               `json:"DBInstanceConnType,omitempty" xml:"DBInstanceConnType,omitempty"`
+	// example:
+	//
+	// 2021-10-21T10:30:45Z
+	DBInstanceCreateTime  *string `json:"DBInstanceCreateTime,omitempty" xml:"DBInstanceCreateTime,omitempty"`
+	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	// example:
+	//
+	// 304726049
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// pxc-i-tk6t4z****
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// example:
+	//
+	// 8
+	DBInstanceStatus            *int32  `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
+	DBInstanceStatusDescription *string `json:"DBInstanceStatusDescription,omitempty" xml:"DBInstanceStatusDescription,omitempty"`
+	// example:
+	//
+	// 3145728
+	DiskSize *int64 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	// example:
+	//
+	// mysql
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// example:
+	//
+	// 5.7
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// example:
+	//
+	// 0
+	LockMode          *int32  `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	LockReason        *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
+	MaintainEndTime   *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	// example:
+	//
+	// 4000
+	MaxConnections *int32 `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
+	// example:
+	//
+	// 7000
+	MaxIops *int32 `json:"MaxIops,omitempty" xml:"MaxIops,omitempty"`
+	// example:
+	//
+	// polarx.x4.large.2e
+	NodeClass       *string `json:"NodeClass,omitempty" xml:"NodeClass,omitempty"`
+	PhyInstanceName *string `json:"PhyInstanceName,omitempty" xml:"PhyInstanceName,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// master
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// example:
+	//
+	// 0
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StorageUsed *string `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
+	// example:
+	//
+	// polarx-cdc-kernel-2.0.0-3985896
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems) String() string {
@@ -4789,14 +5957,25 @@ func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems) S
 	return s
 }
 
+func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems) SetStorageUsed(v string) *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems {
+	s.StorageUsed = &v
+	return s
+}
+
 func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems) SetVersion(v string) *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems {
 	s.Version = &v
 	return s
 }
 
 type DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsAzoneRoleList struct {
+	// example:
+	//
+	// cn-hangzhou-a
 	Azone *string `json:"Azone,omitempty" xml:"Azone,omitempty"`
-	Role  *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// example:
+	//
+	// leader
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 }
 
 func (s DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsAzoneRoleList) String() string {
@@ -4818,9 +5997,18 @@ func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsAzo
 }
 
 type DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsConnectionIp struct {
-	ConnectionString  *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	DBInstanceNetType *int32  `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
-	Port              *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// pxc-xdb-m-pxcdym7g7w********.mysql.singapore.rds.aliyuncs.com
+	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	// example:
+	//
+	// 1
+	DBInstanceNetType *int32 `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
+	// example:
+	//
+	// 3306
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 
 func (s DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsConnectionIp) String() string {
@@ -4847,9 +6035,9 @@ func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsCon
 }
 
 type DescribeDBInstanceTopologyResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDBInstanceTopologyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDBInstanceTopologyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDBInstanceTopologyResponse) String() string {
@@ -4876,7 +6064,13 @@ func (s *DescribeDBInstanceTopologyResponse) SetBody(v *DescribeDBInstanceTopolo
 }
 
 type DescribeDBInstanceViaEndpointRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-hz*******.polarx.rds.aliyuncs.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// This parameter is required.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -4900,7 +6094,10 @@ func (s *DescribeDBInstanceViaEndpointRequest) SetRegionId(v string) *DescribeDB
 
 type DescribeDBInstanceViaEndpointResponseBody struct {
 	DBInstance *DescribeDBInstanceViaEndpointResponseBodyDBInstance `json:"DBInstance,omitempty" xml:"DBInstance,omitempty" type:"Struct"`
-	RequestId  *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 14036EBE-CF2E-44DB-ACE9-AC6157D3A6FC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDBInstanceViaEndpointResponseBody) String() string {
@@ -4922,49 +6119,162 @@ func (s *DescribeDBInstanceViaEndpointResponseBody) SetRequestId(v string) *Desc
 }
 
 type DescribeDBInstanceViaEndpointResponseBodyDBInstance struct {
-	CnNodeClassCode         *string                                                         `json:"CnNodeClassCode,omitempty" xml:"CnNodeClassCode,omitempty"`
-	CnNodeCount             *int32                                                          `json:"CnNodeCount,omitempty" xml:"CnNodeCount,omitempty"`
-	CommodityCode           *string                                                         `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	ConnAddrs               []*DescribeDBInstanceViaEndpointResponseBodyDBInstanceConnAddrs `json:"ConnAddrs,omitempty" xml:"ConnAddrs,omitempty" type:"Repeated"`
-	ConnectionString        *string                                                         `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	CreateTime              *string                                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DBInstanceType          *string                                                         `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
-	DBNodeClass             *string                                                         `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
-	DBNodeCount             *int32                                                          `json:"DBNodeCount,omitempty" xml:"DBNodeCount,omitempty"`
-	DBNodes                 []*DescribeDBInstanceViaEndpointResponseBodyDBInstanceDBNodes   `json:"DBNodes,omitempty" xml:"DBNodes,omitempty" type:"Repeated"`
-	DBType                  *string                                                         `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	DBVersion               *string                                                         `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	Description             *string                                                         `json:"Description,omitempty" xml:"Description,omitempty"`
-	DnNodeClassCode         *string                                                         `json:"DnNodeClassCode,omitempty" xml:"DnNodeClassCode,omitempty"`
-	DnNodeCount             *int32                                                          `json:"DnNodeCount,omitempty" xml:"DnNodeCount,omitempty"`
-	Engine                  *string                                                         `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	ExpireDate              *string                                                         `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
-	Expired                 *string                                                         `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	Id                      *string                                                         `json:"Id,omitempty" xml:"Id,omitempty"`
-	KindCode                *int32                                                          `json:"KindCode,omitempty" xml:"KindCode,omitempty"`
-	LTSVersions             []*string                                                       `json:"LTSVersions,omitempty" xml:"LTSVersions,omitempty" type:"Repeated"`
-	LatestMinorVersion      *string                                                         `json:"LatestMinorVersion,omitempty" xml:"LatestMinorVersion,omitempty"`
-	LockMode                *string                                                         `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	MaintainEndTime         *string                                                         `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	MaintainStartTime       *string                                                         `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	MinorVersion            *string                                                         `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
-	Network                 *string                                                         `json:"Network,omitempty" xml:"Network,omitempty"`
-	PayType                 *string                                                         `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	Port                    *string                                                         `json:"Port,omitempty" xml:"Port,omitempty"`
-	ReadDBInstances         []*string                                                       `json:"ReadDBInstances,omitempty" xml:"ReadDBInstances,omitempty" type:"Repeated"`
-	RegionId                *string                                                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId         *string                                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	RightsSeparationEnabled *bool                                                           `json:"RightsSeparationEnabled,omitempty" xml:"RightsSeparationEnabled,omitempty"`
-	RightsSeparationStatus  *string                                                         `json:"RightsSeparationStatus,omitempty" xml:"RightsSeparationStatus,omitempty"`
-	Series                  *string                                                         `json:"Series,omitempty" xml:"Series,omitempty"`
-	Status                  *string                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
-	StorageUsed             *int64                                                          `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
-	TagSet                  []*DescribeDBInstanceViaEndpointResponseBodyDBInstanceTagSet    `json:"TagSet,omitempty" xml:"TagSet,omitempty" type:"Repeated"`
-	Type                    *string                                                         `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// polarx.x4.xlarge.2e
+	CnNodeClassCode *string `json:"CnNodeClassCode,omitempty" xml:"CnNodeClassCode,omitempty"`
+	// example:
+	//
+	// 2
+	CnNodeCount *int32 `json:"CnNodeCount,omitempty" xml:"CnNodeCount,omitempty"`
+	// example:
+	//
+	// drds_polarxpost_public_cn
+	CommodityCode *string                                                         `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	ConnAddrs     []*DescribeDBInstanceViaEndpointResponseBodyDBInstanceConnAddrs `json:"ConnAddrs,omitempty" xml:"ConnAddrs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// pxc-sprpx766vo****.polarx.singapore.rds.aliyuncs.com
+	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	// example:
+	//
+	// 2021-08-31T08:56:25.000+0000
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// ReadWrite
+	DBInstanceType *string `json:"DBInstanceType,omitempty" xml:"DBInstanceType,omitempty"`
+	// example:
+	//
+	// polarx.x4.large.2e
+	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
+	// example:
+	//
+	// 2
+	DBNodeCount *int32                                                        `json:"DBNodeCount,omitempty" xml:"DBNodeCount,omitempty"`
+	DBNodes     []*DescribeDBInstanceViaEndpointResponseBodyDBInstanceDBNodes `json:"DBNodes,omitempty" xml:"DBNodes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// polarx
+	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	// example:
+	//
+	// 5.5
+	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	// example:
+	//
+	// test instance
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// mysql.x8.large.25
+	DnNodeClassCode *string `json:"DnNodeClassCode,omitempty" xml:"DnNodeClassCode,omitempty"`
+	// example:
+	//
+	// 2
+	DnNodeCount *int32 `json:"DnNodeCount,omitempty" xml:"DnNodeCount,omitempty"`
+	// example:
+	//
+	// MySQL
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// example:
+	//
+	// 2022-08-31T16:00:00.000+0000
+	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	// example:
+	//
+	// false
+	Expired *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	// example:
+	//
+	// pxc-zkralxpc5d****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 18
+	KindCode *int32 `json:"KindCode,omitempty" xml:"KindCode,omitempty"`
+	// This parameter is required.
+	LTSVersions []*string `json:"LTSVersions,omitempty" xml:"LTSVersions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// polarx-kernel_5.4.11-16301083_xcluster-20210805
+	LatestMinorVersion *string `json:"LatestMinorVersion,omitempty" xml:"LatestMinorVersion,omitempty"`
+	// example:
+	//
+	// Unlock
+	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	// example:
+	//
+	// 06:00
+	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	// example:
+	//
+	// 06:00
+	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	// example:
+	//
+	// polarx-kernel_5.4.11-16301083_xcluster-20210805
+	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
+	// example:
+	//
+	// VPC
+	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	// example:
+	//
+	// Postpaid
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// example:
+	//
+	// 3306
+	Port            *string   `json:"Port,omitempty" xml:"Port,omitempty"`
+	ReadDBInstances []*string `json:"ReadDBInstances,omitempty" xml:"ReadDBInstances,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-xxxx
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// false
+	RightsSeparationEnabled *bool `json:"RightsSeparationEnabled,omitempty" xml:"RightsSeparationEnabled,omitempty"`
+	// example:
+	//
+	// disabled
+	RightsSeparationStatus *string `json:"RightsSeparationStatus,omitempty" xml:"RightsSeparationStatus,omitempty"`
+	// example:
+	//
+	// enterprise
+	Series *string `json:"Series,omitempty" xml:"Series,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 17042505728
+	StorageUsed *int64                                                       `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
+	TagSet      []*DescribeDBInstanceViaEndpointResponseBodyDBInstanceTagSet `json:"TagSet,omitempty" xml:"TagSet,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ReadWrite
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// VPC ID。
-	VPCId     *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	//
+	// example:
+	//
+	// vpc-xxxxx
+	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	// example:
+	//
+	// vsw-********
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-a
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDBInstanceViaEndpointResponseBodyDBInstance) String() string {
@@ -5186,12 +6496,31 @@ func (s *DescribeDBInstanceViaEndpointResponseBodyDBInstance) SetZoneId(v string
 }
 
 type DescribeDBInstanceViaEndpointResponseBodyDBInstanceConnAddrs struct {
+	// example:
+	//
+	// polardbx-xxx.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	Port             *int64  `json:"Port,omitempty" xml:"Port,omitempty"`
-	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 3306
+	Port *int64 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// VPC
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// VPC ID。
-	VPCId         *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	VSwitchId     *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	//
+	// example:
+	//
+	// vpc-xxxxxx
+	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	// example:
+	//
+	// vsw-*********
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// example:
+	//
+	// pxc-zkralxpc5d****
 	VpcInstanceId *string `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
 }
 
@@ -5234,12 +6563,30 @@ func (s *DescribeDBInstanceViaEndpointResponseBodyDBInstanceConnAddrs) SetVpcIns
 }
 
 type DescribeDBInstanceViaEndpointResponseBodyDBInstanceDBNodes struct {
+	// example:
+	//
+	// pxc-i-********
 	ComputeNodeId *string `json:"ComputeNodeId,omitempty" xml:"ComputeNodeId,omitempty"`
-	DataNodeId    *string `json:"DataNodeId,omitempty" xml:"DataNodeId,omitempty"`
-	Id            *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	NodeClass     *string `json:"NodeClass,omitempty" xml:"NodeClass,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ZoneId        *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// pxc-xdb-xxxxxx
+	DataNodeId *string `json:"DataNodeId,omitempty" xml:"DataNodeId,omitempty"`
+	// example:
+	//
+	// pxi-*********
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// polarx.x4.large.2e
+	NodeClass *string `json:"NodeClass,omitempty" xml:"NodeClass,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-a
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDBInstanceViaEndpointResponseBodyDBInstanceDBNodes) String() string {
@@ -5281,7 +6628,13 @@ func (s *DescribeDBInstanceViaEndpointResponseBodyDBInstanceDBNodes) SetZoneId(v
 }
 
 type DescribeDBInstanceViaEndpointResponseBodyDBInstanceTagSet struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// key2
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value2
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5304,9 +6657,9 @@ func (s *DescribeDBInstanceViaEndpointResponseBodyDBInstanceTagSet) SetValue(v s
 }
 
 type DescribeDBInstanceViaEndpointResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDBInstanceViaEndpointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDBInstanceViaEndpointResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDBInstanceViaEndpointResponse) String() string {
@@ -5333,14 +6686,37 @@ func (s *DescribeDBInstanceViaEndpointResponse) SetBody(v *DescribeDBInstanceVia
 }
 
 type DescribeDBInstancesRequest struct {
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MustHasCdc      *bool   `json:"MustHasCdc,omitempty" xml:"MustHasCdc,omitempty"`
-	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// dinga93c84f4d***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MustHasCdc *bool   `json:"MustHasCdc,omitempty" xml:"MustHasCdc,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfmyst47hjw***
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Series          *string `json:"Series,omitempty" xml:"Series,omitempty"`
-	Tags            *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// example:
+	//
+	// enterprise
+	Series *string `json:"Series,omitempty" xml:"Series,omitempty"`
+	// example:
+	//
+	// [{\\"TagKey\\":\\"test\\",\\"TagValue\\":\\"test-value\\"}]
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s DescribeDBInstancesRequest) String() string {
@@ -5393,10 +6769,22 @@ func (s *DescribeDBInstancesRequest) SetTags(v string) *DescribeDBInstancesReque
 
 type DescribeDBInstancesResponseBody struct {
 	DBInstances []*DescribeDBInstancesResponseBodyDBInstances `json:"DBInstances,omitempty" xml:"DBInstances,omitempty" type:"Repeated"`
-	PageNumber  *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalNumber *int32                                        `json:"TotalNumber,omitempty" xml:"TotalNumber,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// C458B1E8-1683-3645-B154-6BA32080EEA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 30
+	TotalNumber *int32 `json:"TotalNumber,omitempty" xml:"TotalNumber,omitempty"`
 }
 
 func (s DescribeDBInstancesResponseBody) String() string {
@@ -5433,42 +6821,126 @@ func (s *DescribeDBInstancesResponseBody) SetTotalNumber(v int32) *DescribeDBIns
 }
 
 type DescribeDBInstancesResponseBodyDBInstances struct {
-	CdcInstanceName         *string                                            `json:"CdcInstanceName,omitempty" xml:"CdcInstanceName,omitempty"`
-	CnNodeClassCode         *string                                            `json:"CnNodeClassCode,omitempty" xml:"CnNodeClassCode,omitempty"`
-	CnNodeCount             *int32                                             `json:"CnNodeCount,omitempty" xml:"CnNodeCount,omitempty"`
-	ColumnarInstanceName    *string                                            `json:"ColumnarInstanceName,omitempty" xml:"ColumnarInstanceName,omitempty"`
-	ColumnarReadDBInstances []*string                                          `json:"ColumnarReadDBInstances,omitempty" xml:"ColumnarReadDBInstances,omitempty" type:"Repeated"`
-	CommodityCode           *string                                            `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	ContainBinlogX          *bool                                              `json:"ContainBinlogX,omitempty" xml:"ContainBinlogX,omitempty"`
-	CreateTime              *string                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DBInstanceName          *string                                            `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	DBType                  *string                                            `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	DBVersion               *string                                            `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	Description             *string                                            `json:"Description,omitempty" xml:"Description,omitempty"`
-	DnNodeClassCode         *string                                            `json:"DnNodeClassCode,omitempty" xml:"DnNodeClassCode,omitempty"`
-	DnNodeCount             *int32                                             `json:"DnNodeCount,omitempty" xml:"DnNodeCount,omitempty"`
-	Engine                  *string                                            `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	ExpireTime              *string                                            `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	Expired                 *bool                                              `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	Id                      *string                                            `json:"Id,omitempty" xml:"Id,omitempty"`
-	LockMode                *string                                            `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	LockReason              *string                                            `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	MinorVersion            *string                                            `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
-	Network                 *string                                            `json:"Network,omitempty" xml:"Network,omitempty"`
-	NodeClass               *string                                            `json:"NodeClass,omitempty" xml:"NodeClass,omitempty"`
-	NodeCount               *int32                                             `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
-	Nodes                   []*DescribeDBInstancesResponseBodyDBInstancesNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	PayType                 *string                                            `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// example:
+	//
+	// pxc-c-dmlgit****
+	CdcInstanceName *string `json:"CdcInstanceName,omitempty" xml:"CdcInstanceName,omitempty"`
+	// example:
+	//
+	// polarx.x4.large.2e
+	CnNodeClassCode *string `json:"CnNodeClassCode,omitempty" xml:"CnNodeClassCode,omitempty"`
+	// example:
+	//
+	// 2
+	CnNodeCount             *int32    `json:"CnNodeCount,omitempty" xml:"CnNodeCount,omitempty"`
+	ColumnarInstanceName    *string   `json:"ColumnarInstanceName,omitempty" xml:"ColumnarInstanceName,omitempty"`
+	ColumnarReadDBInstances []*string `json:"ColumnarReadDBInstances,omitempty" xml:"ColumnarReadDBInstances,omitempty" type:"Repeated"`
+	// example:
+	//
+	// drds_polarxpre_public_cn
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// example:
+	//
+	// true
+	ContainBinlogX *bool   `json:"ContainBinlogX,omitempty" xml:"ContainBinlogX,omitempty"`
+	CpuType        *string `json:"CpuType,omitempty" xml:"CpuType,omitempty"`
+	// example:
+	//
+	// 2021-11-01T03:49:50.000+0000
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// pxc-xxxxx
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// example:
+	//
+	// polarx
+	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	// example:
+	//
+	// 5.7
+	DBVersion   *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// mysql.n4.medium.25
+	DnNodeClassCode *string `json:"DnNodeClassCode,omitempty" xml:"DnNodeClassCode,omitempty"`
+	// example:
+	//
+	// 2
+	DnNodeCount *int32 `json:"DnNodeCount,omitempty" xml:"DnNodeCount,omitempty"`
+	// example:
+	//
+	// polarx
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// example:
+	//
+	// 2021-12-01T16:00:00.000+0000
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// false
+	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	// example:
+	//
+	// pxc-hzr2yeov9jmg3z
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// Unlock
+	LockMode   *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
+	// example:
+	//
+	// polarx-kernel_5.4.12-16349923_xcluster-20210926
+	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
+	// example:
+	//
+	// VPC
+	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	// example:
+	//
+	// polarx.x4.large.2e
+	NodeClass *string `json:"NodeClass,omitempty" xml:"NodeClass,omitempty"`
+	// example:
+	//
+	// 5
+	NodeCount *int32                                             `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	Nodes     []*DescribeDBInstancesResponseBodyDBInstancesNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Prepaid
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// 主可用区。
+	//
+	// This parameter is required.
 	PrimaryZone     *string   `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
 	ReadDBInstances []*string `json:"ReadDBInstances,omitempty" xml:"ReadDBInstances,omitempty" type:"Repeated"`
-	RegionId        *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-xxxxxx
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// 次可用区。
-	SecondaryZone  *string                                             `json:"SecondaryZone,omitempty" xml:"SecondaryZone,omitempty"`
-	Series         *string                                             `json:"Series,omitempty" xml:"Series,omitempty"`
-	Status         *string                                             `json:"Status,omitempty" xml:"Status,omitempty"`
-	StorageUsed    *int64                                              `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
+	SecondaryZone *string `json:"SecondaryZone,omitempty" xml:"SecondaryZone,omitempty"`
+	// example:
+	//
+	// enterprise
+	Series *string `json:"Series,omitempty" xml:"Series,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 40658534400
+	StorageUsed *int64 `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
+	// example:
+	//
+	// true
 	SupportBinlogX *bool                                               `json:"SupportBinlogX,omitempty" xml:"SupportBinlogX,omitempty"`
 	TagSet         []*DescribeDBInstancesResponseBodyDBInstancesTagSet `json:"TagSet,omitempty" xml:"TagSet,omitempty" type:"Repeated"`
 	// 第三可用区。
@@ -5476,12 +6948,27 @@ type DescribeDBInstancesResponseBodyDBInstances struct {
 	// 拓扑类型：
 	//
 	// - **3azones**：三可用区；
+	//
 	// - **1azone**：单可用区。
+	//
+	// This parameter is required.
 	TopologyType *string `json:"TopologyType,omitempty" xml:"TopologyType,omitempty"`
-	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// ReadWrite
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// VPC ID。
-	VPCId  *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	//
+	// example:
+	//
+	// VPCID
+	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-g
+	ZoneId  *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	GdnRole *string `json:"gdnRole,omitempty" xml:"gdnRole,omitempty"`
+	IsInGdn *bool   `json:"isInGdn,omitempty" xml:"isInGdn,omitempty"`
 }
 
 func (s DescribeDBInstancesResponseBodyDBInstances) String() string {
@@ -5524,6 +7011,11 @@ func (s *DescribeDBInstancesResponseBodyDBInstances) SetCommodityCode(v string) 
 
 func (s *DescribeDBInstancesResponseBodyDBInstances) SetContainBinlogX(v bool) *DescribeDBInstancesResponseBodyDBInstances {
 	s.ContainBinlogX = &v
+	return s
+}
+
+func (s *DescribeDBInstancesResponseBodyDBInstances) SetCpuType(v string) *DescribeDBInstancesResponseBodyDBInstances {
+	s.CpuType = &v
 	return s
 }
 
@@ -5697,11 +7189,30 @@ func (s *DescribeDBInstancesResponseBodyDBInstances) SetZoneId(v string) *Descri
 	return s
 }
 
+func (s *DescribeDBInstancesResponseBodyDBInstances) SetGdnRole(v string) *DescribeDBInstancesResponseBodyDBInstances {
+	s.GdnRole = &v
+	return s
+}
+
+func (s *DescribeDBInstancesResponseBodyDBInstances) SetIsInGdn(v bool) *DescribeDBInstancesResponseBodyDBInstances {
+	s.IsInGdn = &v
+	return s
+}
+
 type DescribeDBInstancesResponseBodyDBInstancesNodes struct {
+	// example:
+	//
+	// polarx.x4.large.2e
 	ClassCode *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
 	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-g-aliyun
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-g
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDBInstancesResponseBodyDBInstancesNodes) String() string {
@@ -5733,7 +7244,13 @@ func (s *DescribeDBInstancesResponseBodyDBInstancesNodes) SetZoneId(v string) *D
 }
 
 type DescribeDBInstancesResponseBodyDBInstancesTagSet struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5756,9 +7273,9 @@ func (s *DescribeDBInstancesResponseBodyDBInstancesTagSet) SetValue(v string) *D
 }
 
 type DescribeDBInstancesResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDBInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDBInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDBInstancesResponse) String() string {
@@ -5785,14 +7302,52 @@ func (s *DescribeDBInstancesResponse) SetBody(v *DescribeDBInstancesResponseBody
 }
 
 type DescribeDBNodePerformanceRequest struct {
-	CharacterType  *string `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// polarx_cn
+	CharacterType *string `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-*******
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	DBNodeIds      *string `json:"DBNodeIds,omitempty" xml:"DBNodeIds,omitempty"`
-	DBNodeRole     *string `json:"DBNodeRole,omitempty" xml:"DBNodeRole,omitempty"`
-	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Key            *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-i-******,pxc-i-*******
+	DBNodeIds *string `json:"DBNodeIds,omitempty" xml:"DBNodeIds,omitempty"`
+	// example:
+	//
+	// master
+	DBNodeRole *string `json:"DBNodeRole,omitempty" xml:"DBNodeRole,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2012-06-18T15:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Cpu_Usage,Mem_Usage
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2012-06-08T15:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDBNodePerformanceRequest) String() string {
@@ -5844,11 +7399,23 @@ func (s *DescribeDBNodePerformanceRequest) SetStartTime(v string) *DescribeDBNod
 }
 
 type DescribeDBNodePerformanceResponseBody struct {
-	DBInstanceName  *string                                               `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// example:
+	//
+	// pxc-********
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// example:
+	//
+	// 2021-10-20T02:00Z
 	EndTime         *string                                               `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	PerformanceKeys *DescribeDBNodePerformanceResponseBodyPerformanceKeys `json:"PerformanceKeys,omitempty" xml:"PerformanceKeys,omitempty" type:"Struct"`
-	RequestId       *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StartTime       *string                                               `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// EFB5E10B-5268-170F-A378-9AF86CCEACC8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2021-10-20T00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDBNodePerformanceResponseBody) String() string {
@@ -5902,10 +7469,19 @@ func (s *DescribeDBNodePerformanceResponseBodyPerformanceKeys) SetPerformanceIte
 }
 
 type DescribeDBNodePerformanceResponseBodyPerformanceKeysPerformanceItem struct {
-	DBNodeId    *string                                                                    `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
-	Measurement *string                                                                    `json:"Measurement,omitempty" xml:"Measurement,omitempty"`
-	MetricName  *string                                                                    `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	Points      *DescribeDBNodePerformanceResponseBodyPerformanceKeysPerformanceItemPoints `json:"Points,omitempty" xml:"Points,omitempty" type:"Struct"`
+	// example:
+	//
+	// pxc-i-********
+	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
+	// example:
+	//
+	// Logic_TPS
+	Measurement *string `json:"Measurement,omitempty" xml:"Measurement,omitempty"`
+	// example:
+	//
+	// logic_tps
+	MetricName *string                                                                    `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	Points     *DescribeDBNodePerformanceResponseBodyPerformanceKeysPerformanceItemPoints `json:"Points,omitempty" xml:"Points,omitempty" type:"Struct"`
 }
 
 func (s DescribeDBNodePerformanceResponseBodyPerformanceKeysPerformanceItem) String() string {
@@ -5954,8 +7530,14 @@ func (s *DescribeDBNodePerformanceResponseBodyPerformanceKeysPerformanceItemPoin
 }
 
 type DescribeDBNodePerformanceResponseBodyPerformanceKeysPerformanceItemPointsPerformanceItemValue struct {
-	Timestamp *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// 1600822800000
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// example:
+	//
+	// 42.38
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeDBNodePerformanceResponseBodyPerformanceKeysPerformanceItemPointsPerformanceItemValue) String() string {
@@ -5977,9 +7559,9 @@ func (s *DescribeDBNodePerformanceResponseBodyPerformanceKeysPerformanceItemPoin
 }
 
 type DescribeDBNodePerformanceResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDBNodePerformanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDBNodePerformanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDBNodePerformanceResponse) String() string {
@@ -6006,9 +7588,22 @@ func (s *DescribeDBNodePerformanceResponse) SetBody(v *DescribeDBNodePerformance
 }
 
 type DescribeDbListRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	DBName         *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// db_name
+	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeDbListRequest) String() string {
@@ -6035,10 +7630,19 @@ func (s *DescribeDbListRequest) SetRegionId(v string) *DescribeDbListRequest {
 }
 
 type DescribeDbListResponseBody struct {
-	Data      []*DescribeDbListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data []*DescribeDbListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// C458B1E8-1683-3645-B154-6BA32080EEA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeDbListResponseBody) String() string {
@@ -6070,11 +7674,23 @@ func (s *DescribeDbListResponseBody) SetSuccess(v bool) *DescribeDbListResponseB
 }
 
 type DescribeDbListResponseBodyData struct {
-	Accounts         []*DescribeDbListResponseBodyDataAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Repeated"`
-	CharacterSetName *string                                   `json:"CharacterSetName,omitempty" xml:"CharacterSetName,omitempty"`
-	DBDescription    *string                                   `json:"DBDescription,omitempty" xml:"DBDescription,omitempty"`
-	DBInstanceName   *string                                   `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	DBName           *string                                   `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	Accounts []*DescribeDbListResponseBodyDataAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Repeated"`
+	// example:
+	//
+	// utf8mb4
+	CharacterSetName *string `json:"CharacterSetName,omitempty" xml:"CharacterSetName,omitempty"`
+	// example:
+	//
+	// test
+	DBDescription *string `json:"DBDescription,omitempty" xml:"DBDescription,omitempty"`
+	// example:
+	//
+	// pxc-********
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// example:
+	//
+	// test
+	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 }
 
 func (s DescribeDbListResponseBodyData) String() string {
@@ -6111,7 +7727,13 @@ func (s *DescribeDbListResponseBodyData) SetDBName(v string) *DescribeDbListResp
 }
 
 type DescribeDbListResponseBodyDataAccounts struct {
-	AccountName      *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// root4test
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// ReadWrite
 	AccountPrivilege *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
 }
 
@@ -6134,9 +7756,9 @@ func (s *DescribeDbListResponseBodyDataAccounts) SetAccountPrivilege(v string) *
 }
 
 type DescribeDbListResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDbListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDbListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDbListResponse) String() string {
@@ -6163,9 +7785,24 @@ func (s *DescribeDbListResponse) SetBody(v *DescribeDbListResponseBody) *Describ
 }
 
 type DescribeDistributeTableListRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sbtest1
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeDistributeTableListRequest) String() string {
@@ -6192,10 +7829,19 @@ func (s *DescribeDistributeTableListRequest) SetRegionId(v string) *DescribeDist
 }
 
 type DescribeDistributeTableListResponseBody struct {
-	Data      *DescribeDistributeTableListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data *DescribeDistributeTableListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// C458B1E8-1683-3645-B154-6BA32080EEA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeDistributeTableListResponseBody) String() string {
@@ -6244,10 +7890,22 @@ func (s *DescribeDistributeTableListResponseBodyData) SetTables(v []*DescribeDis
 }
 
 type DescribeDistributeTableListResponseBodyDataTables struct {
-	DbKey     *string `json:"DbKey,omitempty" xml:"DbKey,omitempty"`
+	// example:
+	//
+	// id
+	DbKey *string `json:"DbKey,omitempty" xml:"DbKey,omitempty"`
+	// example:
+	//
+	// sbtest1
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// multi
 	TableType *string `json:"TableType,omitempty" xml:"TableType,omitempty"`
-	TbKey     *string `json:"TbKey,omitempty" xml:"TbKey,omitempty"`
+	// example:
+	//
+	// “”
+	TbKey *string `json:"TbKey,omitempty" xml:"TbKey,omitempty"`
 }
 
 func (s DescribeDistributeTableListResponseBodyDataTables) String() string {
@@ -6279,9 +7937,9 @@ func (s *DescribeDistributeTableListResponseBodyDataTables) SetTbKey(v string) *
 }
 
 type DescribeDistributeTableListResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDistributeTableListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDistributeTableListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDistributeTableListResponse) String() string {
@@ -6308,11 +7966,28 @@ func (s *DescribeDistributeTableListResponse) SetBody(v *DescribeDistributeTable
 }
 
 type DescribeEventsRequest struct {
-	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 2021-10-18T03:07:25Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 2021-10-18T03:07:25Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeEventsRequest) String() string {
@@ -6349,11 +8024,23 @@ func (s *DescribeEventsRequest) SetStartTime(v string) *DescribeEventsRequest {
 }
 
 type DescribeEventsResponseBody struct {
-	EventItems       []*DescribeEventsResponseBodyEventItems `json:"EventItems,omitempty" xml:"EventItems,omitempty" type:"Repeated"`
-	PageNumber       *int64                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize         *int64                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId        *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalRecordCount *int64                                  `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+	EventItems []*DescribeEventsResponseBodyEventItems `json:"EventItems,omitempty" xml:"EventItems,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 4748127A-6D50-432C-B635-433467074C27
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 20
+	TotalRecordCount *int64 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
 func (s DescribeEventsResponseBody) String() string {
@@ -6390,17 +8077,50 @@ func (s *DescribeEventsResponseBody) SetTotalRecordCount(v int64) *DescribeEvent
 }
 
 type DescribeEventsResponseBodyEventItems struct {
-	EventId         *int64  `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	EventName       *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	EventPayload    *string `json:"EventPayload,omitempty" xml:"EventPayload,omitempty"`
-	EventReason     *string `json:"EventReason,omitempty" xml:"EventReason,omitempty"`
+	// example:
+	//
+	// 50421290
+	EventId *int64 `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// example:
+	//
+	// ModifySecurityIps
+	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	// example:
+	//
+	// {\\"Domain\\": \\"rds-cn-hangzhou.aliyuncs.com\\"}
+	EventPayload *string `json:"EventPayload,omitempty" xml:"EventPayload,omitempty"`
+	// example:
+	//
+	// FROM_USER
+	EventReason *string `json:"EventReason,omitempty" xml:"EventReason,omitempty"`
+	// example:
+	//
+	// 2021-10-15T06:39:49Z
 	EventRecordTime *string `json:"EventRecordTime,omitempty" xml:"EventRecordTime,omitempty"`
-	EventTime       *string `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
-	EventType       *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	EventUserType   *string `json:"EventUserType,omitempty" xml:"EventUserType,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceName    *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// 2021-10-15T06:35:00Z
+	EventTime *string `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
+	// example:
+	//
+	// SecurityManagement
+	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// example:
+	//
+	// USRE
+	EventUserType *string `json:"EventUserType,omitempty" xml:"EventUserType,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// px-bp1v8udesc89g156g
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// example:
+	//
+	// instance
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s DescribeEventsResponseBodyEventItems) String() string {
@@ -6467,9 +8187,9 @@ func (s *DescribeEventsResponseBodyEventItems) SetResourceType(v string) *Descri
 }
 
 type DescribeEventsResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeEventsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeEventsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeEventsResponse) String() string {
@@ -6496,9 +8216,22 @@ func (s *DescribeEventsResponse) SetBody(v *DescribeEventsResponseBody) *Describ
 }
 
 type DescribeParameterTemplatesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-********
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	ParamLevel   *string `json:"ParamLevel,omitempty" xml:"ParamLevel,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// compute
+	ParamLevel *string `json:"ParamLevel,omitempty" xml:"ParamLevel,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeParameterTemplatesRequest) String() string {
@@ -6525,8 +8258,11 @@ func (s *DescribeParameterTemplatesRequest) SetRegionId(v string) *DescribeParam
 }
 
 type DescribeParameterTemplatesResponseBody struct {
-	Data      *DescribeParameterTemplatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *DescribeParameterTemplatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// C458B1E8-1683-3645-B154-6BA32080EEA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeParameterTemplatesResponseBody) String() string {
@@ -6548,8 +8284,17 @@ func (s *DescribeParameterTemplatesResponseBody) SetRequestId(v string) *Describ
 }
 
 type DescribeParameterTemplatesResponseBodyData struct {
-	Engine         *string                                                 `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion  *string                                                 `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// example:
+	//
+	// polarx
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// example:
+	//
+	// 2.0
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// example:
+	//
+	// 218
 	ParameterCount *int32                                                  `json:"ParameterCount,omitempty" xml:"ParameterCount,omitempty"`
 	Parameters     []*DescribeParameterTemplatesResponseBodyDataParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 }
@@ -6583,12 +8328,30 @@ func (s *DescribeParameterTemplatesResponseBodyData) SetParameters(v []*Describe
 }
 
 type DescribeParameterTemplatesResponseBodyDataParameters struct {
-	CheckingCode         *string `json:"CheckingCode,omitempty" xml:"CheckingCode,omitempty"`
-	Dynamic              *int32  `json:"Dynamic,omitempty" xml:"Dynamic,omitempty"`
+	// example:
+	//
+	// [0|1]
+	CheckingCode *string `json:"CheckingCode,omitempty" xml:"CheckingCode,omitempty"`
+	// example:
+	//
+	// 0
+	Dynamic *int32 `json:"Dynamic,omitempty" xml:"Dynamic,omitempty"`
+	// example:
+	//
+	// polarx hatp addition param
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
-	ParameterName        *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	ParameterValue       *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
-	Revisable            *int32  `json:"Revisable,omitempty" xml:"Revisable,omitempty"`
+	// example:
+	//
+	// loose_enable_gts
+	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// example:
+	//
+	// 1
+	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+	// example:
+	//
+	// 0
+	Revisable *int32 `json:"Revisable,omitempty" xml:"Revisable,omitempty"`
 }
 
 func (s DescribeParameterTemplatesResponseBodyDataParameters) String() string {
@@ -6630,9 +8393,9 @@ func (s *DescribeParameterTemplatesResponseBodyDataParameters) SetRevisable(v in
 }
 
 type DescribeParameterTemplatesResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeParameterTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeParameterTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeParameterTemplatesResponse) String() string {
@@ -6659,9 +8422,22 @@ func (s *DescribeParameterTemplatesResponse) SetBody(v *DescribeParameterTemplat
 }
 
 type DescribeParametersRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-********
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	ParamLevel   *string `json:"ParamLevel,omitempty" xml:"ParamLevel,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// compute
+	ParamLevel *string `json:"ParamLevel,omitempty" xml:"ParamLevel,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeParametersRequest) String() string {
@@ -6688,8 +8464,11 @@ func (s *DescribeParametersRequest) SetRegionId(v string) *DescribeParametersReq
 }
 
 type DescribeParametersResponseBody struct {
-	Data      *DescribeParametersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *DescribeParametersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 6BA32080EEA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeParametersResponseBody) String() string {
@@ -6711,8 +8490,14 @@ func (s *DescribeParametersResponseBody) SetRequestId(v string) *DescribeParamet
 }
 
 type DescribeParametersResponseBodyData struct {
-	ConfigParameters  []*DescribeParametersResponseBodyDataConfigParameters  `json:"ConfigParameters,omitempty" xml:"ConfigParameters,omitempty" type:"Repeated"`
-	Engine            *string                                                `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	ConfigParameters []*DescribeParametersResponseBodyDataConfigParameters `json:"ConfigParameters,omitempty" xml:"ConfigParameters,omitempty" type:"Repeated"`
+	// example:
+	//
+	// polarx
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// example:
+	//
+	// 2.0
 	EngineVersion     *string                                                `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	RunningParameters []*DescribeParametersResponseBodyDataRunningParameters `json:"RunningParameters,omitempty" xml:"RunningParameters,omitempty" type:"Repeated"`
 }
@@ -6747,8 +8532,14 @@ func (s *DescribeParametersResponseBodyData) SetRunningParameters(v []*DescribeP
 
 type DescribeParametersResponseBodyDataConfigParameters struct {
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
-	ParameterName        *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	ParameterValue       *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+	// example:
+	//
+	// CONN_POOL_XPROTO_STORAGE_DB_PORT
+	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// example:
+	//
+	// -1
+	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 }
 
 func (s DescribeParametersResponseBodyDataConfigParameters) String() string {
@@ -6776,8 +8567,14 @@ func (s *DescribeParametersResponseBodyDataConfigParameters) SetParameterValue(v
 
 type DescribeParametersResponseBodyDataRunningParameters struct {
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
-	ParameterName        *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	ParameterValue       *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+	// example:
+	//
+	// CONN_POOL_XPROTO_STORAGE_DB_PORT
+	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// example:
+	//
+	// -1
+	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 }
 
 func (s DescribeParametersResponseBodyDataRunningParameters) String() string {
@@ -6804,9 +8601,9 @@ func (s *DescribeParametersResponseBodyDataRunningParameters) SetParameterValue(
 }
 
 type DescribeParametersResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeParametersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeParametersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeParametersResponse) String() string {
@@ -6833,12 +8630,27 @@ func (s *DescribeParametersResponse) SetBody(v *DescribeParametersResponseBody) 
 }
 
 type DescribeRegionsResponseBody struct {
-	Code      *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	ErrorCode *int32                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	Regions   *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	Regions *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
+	// example:
+	//
+	// C458B1E8-1683-3645-B154-6BA32080EEA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeRegionsResponseBody) String() string {
@@ -6897,8 +8709,17 @@ func (s *DescribeRegionsResponseBodyRegions) SetRegion(v []*DescribeRegionsRespo
 }
 
 type DescribeRegionsResponseBodyRegionsRegion struct {
-	RegionId        *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SupportPolarx10 *bool                                          `json:"SupportPolarx10,omitempty" xml:"SupportPolarx10,omitempty"`
+	// example:
+	//
+	// ch-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// true
+	SupportPolarx10 *bool `json:"SupportPolarx10,omitempty" xml:"SupportPolarx10,omitempty"`
+	// example:
+	//
+	// true
 	SupportPolarx20 *bool                                          `json:"SupportPolarx20,omitempty" xml:"SupportPolarx20,omitempty"`
 	Zones           *DescribeRegionsResponseBodyRegionsRegionZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
 }
@@ -6949,8 +8770,14 @@ func (s *DescribeRegionsResponseBodyRegionsRegionZones) SetZone(v []*DescribeReg
 }
 
 type DescribeRegionsResponseBodyRegionsRegionZonesZone struct {
-	VpcEnabled *bool   `json:"VpcEnabled,omitempty" xml:"VpcEnabled,omitempty"`
-	ZoneId     *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// true
+	VpcEnabled *bool `json:"VpcEnabled,omitempty" xml:"VpcEnabled,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-a
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyRegionsRegionZonesZone) String() string {
@@ -6972,9 +8799,9 @@ func (s *DescribeRegionsResponseBodyRegionsRegionZonesZone) SetZoneId(v string) 
 }
 
 type DescribeRegionsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeRegionsResponse) String() string {
@@ -7001,9 +8828,16 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type DescribeScaleOutMigrateTaskListRequest struct {
-	DBInstanceName       *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-********
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -7031,6 +8865,11 @@ func (s *DescribeScaleOutMigrateTaskListRequest) SetOwnerId(v int64) *DescribeSc
 	return s
 }
 
+func (s *DescribeScaleOutMigrateTaskListRequest) SetRegionId(v string) *DescribeScaleOutMigrateTaskListRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *DescribeScaleOutMigrateTaskListRequest) SetResourceOwnerAccount(v string) *DescribeScaleOutMigrateTaskListRequest {
 	s.ResourceOwnerAccount = &v
 	return s
@@ -7042,7 +8881,13 @@ func (s *DescribeScaleOutMigrateTaskListRequest) SetResourceOwnerId(v int64) *De
 }
 
 type DescribeScaleOutMigrateTaskListResponseBody struct {
-	Progress  *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// example:
+	//
+	// 32
+	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// example:
+	//
+	// C458B1E8-1683-3645-B154-6BA32080EEA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7065,9 +8910,9 @@ func (s *DescribeScaleOutMigrateTaskListResponseBody) SetRequestId(v string) *De
 }
 
 type DescribeScaleOutMigrateTaskListResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeScaleOutMigrateTaskListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeScaleOutMigrateTaskListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeScaleOutMigrateTaskListResponse) String() string {
@@ -7094,8 +8939,18 @@ func (s *DescribeScaleOutMigrateTaskListResponse) SetBody(v *DescribeScaleOutMig
 }
 
 type DescribeSecurityIpsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-hzjasd****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeSecurityIpsRequest) String() string {
@@ -7117,10 +8972,19 @@ func (s *DescribeSecurityIpsRequest) SetRegionId(v string) *DescribeSecurityIpsR
 }
 
 type DescribeSecurityIpsResponseBody struct {
-	Data      *DescribeSecurityIpsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data *DescribeSecurityIpsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 14036EBE-CF2E-44DB-ACE9-AC6157D3A6FC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeSecurityIpsResponseBody) String() string {
@@ -7152,6 +9016,9 @@ func (s *DescribeSecurityIpsResponseBody) SetSuccess(v bool) *DescribeSecurityIp
 }
 
 type DescribeSecurityIpsResponseBodyData struct {
+	// example:
+	//
+	// pxc-hzjasd****
 	DBInstanceName *string                                          `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	GroupItems     []*DescribeSecurityIpsResponseBodyDataGroupItems `json:"GroupItems,omitempty" xml:"GroupItems,omitempty" type:"Repeated"`
 }
@@ -7175,7 +9042,13 @@ func (s *DescribeSecurityIpsResponseBodyData) SetGroupItems(v []*DescribeSecurit
 }
 
 type DescribeSecurityIpsResponseBodyDataGroupItems struct {
-	GroupName      *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// example:
+	//
+	// defaultGroup
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// example:
+	//
+	// 127.0.0.1,172.168.0.0
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
 }
 
@@ -7198,9 +9071,9 @@ func (s *DescribeSecurityIpsResponseBodyDataGroupItems) SetSecurityIPList(v stri
 }
 
 type DescribeSecurityIpsResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeSecurityIpsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSecurityIpsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeSecurityIpsResponse) String() string {
@@ -7227,9 +9100,20 @@ func (s *DescribeSecurityIpsResponse) SetBody(v *DescribeSecurityIpsResponseBody
 }
 
 type DescribeTagsRequest struct {
+	// example:
+	//
+	// pxc-xxx
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TagKey         *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// test
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 }
 
 func (s DescribeTagsRequest) String() string {
@@ -7257,6 +9141,10 @@ func (s *DescribeTagsRequest) SetTagKey(v string) *DescribeTagsRequest {
 
 type DescribeTagsResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// requestid
 	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TagInfos  []*DescribeTagsResponseBodyTagInfos `json:"TagInfos,omitempty" xml:"TagInfos,omitempty" type:"Repeated"`
 }
@@ -7281,8 +9169,14 @@ func (s *DescribeTagsResponseBody) SetTagInfos(v []*DescribeTagsResponseBodyTagI
 
 type DescribeTagsResponseBodyTagInfos struct {
 	DBInstanceIds []*string `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty" type:"Repeated"`
-	TagKey        *string   `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValue      *string   `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// example:
+	//
+	// testKey
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// example:
+	//
+	// testValue
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s DescribeTagsResponseBodyTagInfos) String() string {
@@ -7309,9 +9203,9 @@ func (s *DescribeTagsResponseBodyTagInfos) SetTagValue(v string) *DescribeTagsRe
 }
 
 type DescribeTagsResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeTagsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeTagsResponse) String() string {
@@ -7338,16 +9232,39 @@ func (s *DescribeTagsResponse) SetBody(v *DescribeTagsResponseBody) *DescribeTag
 }
 
 type DescribeTasksRequest struct {
-	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	EndTime              *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-hzjasd****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2021-11-04
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 30
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	StartTime            *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2021-11-01
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeTasksRequest) String() string {
@@ -7409,11 +9326,23 @@ func (s *DescribeTasksRequest) SetStartTime(v string) *DescribeTasksRequest {
 }
 
 type DescribeTasksResponseBody struct {
-	Items            []*DescribeTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageNumber       *int32                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageRecordCount  *int32                            `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	RequestId        *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalRecordCount *int32                            `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+	Items []*DescribeTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// example:
+	//
+	// D6045D78-C119-5A17-9DEA-0F810394E008
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2
+	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
 func (s DescribeTasksResponseBody) String() string {
@@ -7450,17 +9379,50 @@ func (s *DescribeTasksResponseBody) SetTotalRecordCount(v int32) *DescribeTasksR
 }
 
 type DescribeTasksResponseBodyItems struct {
-	BeginTime        *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	DBName           *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	FinishTime       *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	Progress         *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	ProgressInfo     *string `json:"ProgressInfo,omitempty" xml:"ProgressInfo,omitempty"`
-	ScaleOutToken    *string `json:"ScaleOutToken,omitempty" xml:"ScaleOutToken,omitempty"`
-	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskAction       *string `json:"TaskAction,omitempty" xml:"TaskAction,omitempty"`
-	TaskErrorCode    *string `json:"TaskErrorCode,omitempty" xml:"TaskErrorCode,omitempty"`
+	// example:
+	//
+	// 2021-10-20T19:40:00Z
+	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// example:
+	//
+	// DBName
+	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	// example:
+	//
+	// 2021-10-20T20:00:00Z
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// example:
+	//
+	// 80
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// example:
+	//
+	// ProgressInfo
+	ProgressInfo *string `json:"ProgressInfo,omitempty" xml:"ProgressInfo,omitempty"`
+	// example:
+	//
+	// FEA5DC20-6D8A-5979-97AA-FC57546ADC20
+	ScaleOutToken *string `json:"ScaleOutToken,omitempty" xml:"ScaleOutToken,omitempty"`
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// multi_scale_out
+	TaskAction *string `json:"TaskAction,omitempty" xml:"TaskAction,omitempty"`
+	// example:
+	//
+	// TaskErrorCode
+	TaskErrorCode *string `json:"TaskErrorCode,omitempty" xml:"TaskErrorCode,omitempty"`
+	// example:
+	//
+	// TaskErrorMessage
 	TaskErrorMessage *string `json:"TaskErrorMessage,omitempty" xml:"TaskErrorMessage,omitempty"`
-	TaskId           *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 20089398
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s DescribeTasksResponseBodyItems) String() string {
@@ -7527,9 +9489,9 @@ func (s *DescribeTasksResponseBodyItems) SetTaskId(v string) *DescribeTasksRespo
 }
 
 type DescribeTasksResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeTasksResponse) String() string {
@@ -7556,8 +9518,14 @@ func (s *DescribeTasksResponse) SetBody(v *DescribeTasksResponseBody) *DescribeT
 }
 
 type DescribeUserEncryptionKeyListRequest struct {
+	// example:
+	//
+	// pxc-hzjasd****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeUserEncryptionKeyListRequest) String() string {
@@ -7579,8 +9547,11 @@ func (s *DescribeUserEncryptionKeyListRequest) SetRegionId(v string) *DescribeUs
 }
 
 type DescribeUserEncryptionKeyListResponseBody struct {
-	Data      *DescribeUserEncryptionKeyListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *DescribeUserEncryptionKeyListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// FEA5DC20-6D8A-5979-97AA-FC57546ADC20
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeUserEncryptionKeyListResponseBody) String() string {
@@ -7619,9 +9590,9 @@ func (s *DescribeUserEncryptionKeyListResponseBodyData) SetKeyIds(v []*string) *
 }
 
 type DescribeUserEncryptionKeyListResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeUserEncryptionKeyListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeUserEncryptionKeyListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeUserEncryptionKeyListResponse) String() string {
@@ -7648,10 +9619,30 @@ func (s *DescribeUserEncryptionKeyListResponse) SetBody(v *DescribeUserEncryptio
 }
 
 type DisableRightsSeparationRequest struct {
-	DBInstanceName     *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	DbaAccountName     *string `json:"DbaAccountName,omitempty" xml:"DbaAccountName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-sprcym7g7w****
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// account_1
+	DbaAccountName *string `json:"DbaAccountName,omitempty" xml:"DbaAccountName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// *****
 	DbaAccountPassword *string `json:"DbaAccountPassword,omitempty" xml:"DbaAccountPassword,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hanghzou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DisableRightsSeparationRequest) String() string {
@@ -7683,9 +9674,18 @@ func (s *DisableRightsSeparationRequest) SetRegionId(v string) *DisableRightsSep
 }
 
 type DisableRightsSeparationResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// FE5D94E3-3C93-3594-95D9-AAED2A980915
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DisableRightsSeparationResponseBody) String() string {
@@ -7712,9 +9712,9 @@ func (s *DisableRightsSeparationResponseBody) SetSuccess(v bool) *DisableRightsS
 }
 
 type DisableRightsSeparationResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DisableRightsSeparationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisableRightsSeparationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DisableRightsSeparationResponse) String() string {
@@ -7741,14 +9741,50 @@ func (s *DisableRightsSeparationResponse) SetBody(v *DisableRightsSeparationResp
 }
 
 type EnableRightsSeparationRequest struct {
-	AuditAccountDescription    *string `json:"AuditAccountDescription,omitempty" xml:"AuditAccountDescription,omitempty"`
-	AuditAccountName           *string `json:"AuditAccountName,omitempty" xml:"AuditAccountName,omitempty"`
-	AuditAccountPassword       *string `json:"AuditAccountPassword,omitempty" xml:"AuditAccountPassword,omitempty"`
-	DBInstanceName             *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	RegionId                   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// test123
+	AuditAccountDescription *string `json:"AuditAccountDescription,omitempty" xml:"AuditAccountDescription,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// account_audit
+	AuditAccountName *string `json:"AuditAccountName,omitempty" xml:"AuditAccountName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ******
+	AuditAccountPassword *string `json:"AuditAccountPassword,omitempty" xml:"AuditAccountPassword,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-htri0ori2r4k9p
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// test123
 	SecurityAccountDescription *string `json:"SecurityAccountDescription,omitempty" xml:"SecurityAccountDescription,omitempty"`
-	SecurityAccountName        *string `json:"SecurityAccountName,omitempty" xml:"SecurityAccountName,omitempty"`
-	SecurityAccountPassword    *string `json:"SecurityAccountPassword,omitempty" xml:"SecurityAccountPassword,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// account_sec
+	SecurityAccountName *string `json:"SecurityAccountName,omitempty" xml:"SecurityAccountName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// *****
+	SecurityAccountPassword *string `json:"SecurityAccountPassword,omitempty" xml:"SecurityAccountPassword,omitempty"`
 }
 
 func (s EnableRightsSeparationRequest) String() string {
@@ -7800,9 +9836,18 @@ func (s *EnableRightsSeparationRequest) SetSecurityAccountPassword(v string) *En
 }
 
 type EnableRightsSeparationResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 73559800-3c8c-11ec-bd40-99cfcff3fe1e
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s EnableRightsSeparationResponseBody) String() string {
@@ -7829,9 +9874,9 @@ func (s *EnableRightsSeparationResponseBody) SetSuccess(v bool) *EnableRightsSep
 }
 
 type EnableRightsSeparationResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EnableRightsSeparationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableRightsSeparationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EnableRightsSeparationResponse) String() string {
@@ -7858,9 +9903,22 @@ func (s *EnableRightsSeparationResponse) SetBody(v *EnableRightsSeparationRespon
 }
 
 type ListTagResourcesRequest struct {
-	NextToken    *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId     *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId   []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xxdds
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PolarDBXInstance
 	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -7899,7 +9957,13 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// 1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// 2
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7922,7 +9986,13 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
-	NextToken    *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// xxdd
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// xxxx-xxxxxx
 	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
@@ -7968,10 +10038,22 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagRe
 }
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// pxc-xxxx
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// PolarDBXInstance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// example:
+	//
+	// 1
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// example:
+	//
+	// 1
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResourcesTagResource) String() string {
@@ -8003,9 +10085,9 @@ func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagValue(v stri
 }
 
 type ListTagResourcesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagResourcesResponse) String() string {
@@ -8033,9 +10115,24 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 
 type ModifyAccountDescriptionRequest struct {
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
-	AccountName        *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	DBInstanceName     *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// account
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-hzjasd****
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ModifyAccountDescriptionRequest) String() string {
@@ -8067,9 +10164,18 @@ func (s *ModifyAccountDescriptionRequest) SetRegionId(v string) *ModifyAccountDe
 }
 
 type ModifyAccountDescriptionResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// msg
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// FEA5DC20-6D8A-5979-97AA-FC57546ADC20
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyAccountDescriptionResponseBody) String() string {
@@ -8096,9 +10202,9 @@ func (s *ModifyAccountDescriptionResponseBody) SetSuccess(v bool) *ModifyAccount
 }
 
 type ModifyAccountDescriptionResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyAccountDescriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyAccountDescriptionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyAccountDescriptionResponse) String() string {
@@ -8125,12 +10231,39 @@ func (s *ModifyAccountDescriptionResponse) SetBody(v *ModifyAccountDescriptionRe
 }
 
 type ModifyAccountPrivilegeRequest struct {
-	AccountName             *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AccountPrivilege        *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
-	DBInstanceName          *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	DbName                  *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SecurityAccountName     *string `json:"SecurityAccountName,omitempty" xml:"SecurityAccountName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// account_sec
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// ReadWrite
+	AccountPrivilege *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-htri0ori2r4k9p
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// example:
+	//
+	// sbtest
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// account_audit
+	SecurityAccountName *string `json:"SecurityAccountName,omitempty" xml:"SecurityAccountName,omitempty"`
+	// example:
+	//
+	// *****
 	SecurityAccountPassword *string `json:"SecurityAccountPassword,omitempty" xml:"SecurityAccountPassword,omitempty"`
 }
 
@@ -8178,9 +10311,18 @@ func (s *ModifyAccountPrivilegeRequest) SetSecurityAccountPassword(v string) *Mo
 }
 
 type ModifyAccountPrivilegeResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 73559800-3c8c-11ec-bd40-99cfcff3fe1e
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyAccountPrivilegeResponseBody) String() string {
@@ -8207,9 +10349,9 @@ func (s *ModifyAccountPrivilegeResponseBody) SetSuccess(v bool) *ModifyAccountPr
 }
 
 type ModifyAccountPrivilegeResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyAccountPrivilegeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyAccountPrivilegeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyAccountPrivilegeResponse) String() string {
@@ -8236,12 +10378,42 @@ func (s *ModifyAccountPrivilegeResponse) SetBody(v *ModifyAccountPrivilegeRespon
 }
 
 type ModifyActiveOperationMaintainConfRequest struct {
-	CycleTime         *string `json:"CycleTime,omitempty" xml:"CycleTime,omitempty"`
-	CycleType         *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
-	MaintainEndTime   *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1,2,3,4,5,6,7
+	CycleTime *string `json:"CycleTime,omitempty" xml:"CycleTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Week
+	CycleType *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 02:00:00Z
+	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 02:00:00Z
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status            *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ModifyActiveOperationMaintainConfRequest) String() string {
@@ -8283,6 +10455,9 @@ func (s *ModifyActiveOperationMaintainConfRequest) SetStatus(v int32) *ModifyAct
 }
 
 type ModifyActiveOperationMaintainConfResponseBody struct {
+	// example:
+	//
+	// 4035409E-7297-4115-ABC9-C1C3942BC069
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8300,9 +10475,9 @@ func (s *ModifyActiveOperationMaintainConfResponseBody) SetRequestId(v string) *
 }
 
 type ModifyActiveOperationMaintainConfResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyActiveOperationMaintainConfResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyActiveOperationMaintainConfResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyActiveOperationMaintainConfResponse) String() string {
@@ -8329,10 +10504,26 @@ func (s *ModifyActiveOperationMaintainConfResponse) SetBody(v *ModifyActiveOpera
 }
 
 type ModifyActiveOperationTasksRequest struct {
-	Ids            *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
-	ImmediateStart *int64  `json:"ImmediateStart,omitempty" xml:"ImmediateStart,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SwitchTime     *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// example:
+	//
+	// 1
+	ImmediateStart *int64 `json:"ImmediateStart,omitempty" xml:"ImmediateStart,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 2021-08-15T12:00:00Z
+	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
 }
 
 func (s ModifyActiveOperationTasksRequest) String() string {
@@ -8364,7 +10555,13 @@ func (s *ModifyActiveOperationTasksRequest) SetSwitchTime(v string) *ModifyActiv
 }
 
 type ModifyActiveOperationTasksResponseBody struct {
-	Ids       *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// example:
+	//
+	// 1
+	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// example:
+	//
+	// 8C9CC90A-9532-4752-B59F-580112C5A45B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8387,9 +10584,9 @@ func (s *ModifyActiveOperationTasksResponseBody) SetRequestId(v string) *ModifyA
 }
 
 type ModifyActiveOperationTasksResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyActiveOperationTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyActiveOperationTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyActiveOperationTasksResponse) String() string {
@@ -8416,16 +10613,32 @@ func (s *ModifyActiveOperationTasksResponse) SetBody(v *ModifyActiveOperationTas
 }
 
 type ModifyDBInstanceClassRequest struct {
-	ClientToken            *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CnClass                *string `json:"CnClass,omitempty" xml:"CnClass,omitempty"`
-	DBInstanceName         *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	DnClass                *string `json:"DnClass,omitempty" xml:"DnClass,omitempty"`
+	// example:
+	//
+	// FEA5DC20-6D8A-5979-97AA-FC57546ADC20
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CnClass     *string `json:"CnClass,omitempty" xml:"CnClass,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-hzjasd****
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	DnClass        *string `json:"DnClass,omitempty" xml:"DnClass,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SpecifiedDNScale       *bool   `json:"SpecifiedDNScale,omitempty" xml:"SpecifiedDNScale,omitempty"`
 	SpecifiedDNSpecMapJson *string `json:"SpecifiedDNSpecMapJson,omitempty" xml:"SpecifiedDNSpecMapJson,omitempty"`
 	SwitchTime             *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
 	SwitchTimeMode         *string `json:"SwitchTimeMode,omitempty" xml:"SwitchTimeMode,omitempty"`
-	TargetDBInstanceClass  *string `json:"TargetDBInstanceClass,omitempty" xml:"TargetDBInstanceClass,omitempty"`
+	// example:
+	//
+	// polarx.x4.xlarge.2e
+	TargetDBInstanceClass *string `json:"TargetDBInstanceClass,omitempty" xml:"TargetDBInstanceClass,omitempty"`
 }
 
 func (s ModifyDBInstanceClassRequest) String() string {
@@ -8487,7 +10700,13 @@ func (s *ModifyDBInstanceClassRequest) SetTargetDBInstanceClass(v string) *Modif
 }
 
 type ModifyDBInstanceClassResponseBody struct {
-	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 20211103105558
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// FEA5DC20-6D8A-5979-97AA-FC57546ADC20
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8510,9 +10729,9 @@ func (s *ModifyDBInstanceClassResponseBody) SetRequestId(v string) *ModifyDBInst
 }
 
 type ModifyDBInstanceClassResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyDBInstanceClassResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDBInstanceClassResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyDBInstanceClassResponse) String() string {
@@ -8539,10 +10758,30 @@ func (s *ModifyDBInstanceClassResponse) SetBody(v *ModifyDBInstanceClassResponse
 }
 
 type ModifyDBInstanceConfigRequest struct {
-	ConfigName     *string `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
-	ConfigValue    *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ENABLE_CONSISTENT_REPLICA_READ
+	ConfigName *string `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-hzjasd****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ModifyDBInstanceConfigRequest) String() string {
@@ -8574,6 +10813,9 @@ func (s *ModifyDBInstanceConfigRequest) SetRegionId(v string) *ModifyDBInstanceC
 }
 
 type ModifyDBInstanceConfigResponseBody struct {
+	// example:
+	//
+	// FEA5DC20-6D8A-5979-97AA-FC57546ADC20
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8591,9 +10833,9 @@ func (s *ModifyDBInstanceConfigResponseBody) SetRequestId(v string) *ModifyDBIns
 }
 
 type ModifyDBInstanceConfigResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyDBInstanceConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDBInstanceConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyDBInstanceConfigResponse) String() string {
@@ -8620,11 +10862,36 @@ func (s *ModifyDBInstanceConfigResponse) SetBody(v *ModifyDBInstanceConfigRespon
 }
 
 type ModifyDBInstanceConnectionStringRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-unrf5ssig0ecg8.polarx.huhehaote.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	DBInstanceName   *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	NewPort          *string `json:"NewPort,omitempty" xml:"NewPort,omitempty"`
-	NewPrefix        *string `json:"NewPrefix,omitempty" xml:"NewPrefix,omitempty"`
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-unrf5ssig0ecg8
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3300
+	NewPort *string `json:"NewPort,omitempty" xml:"NewPort,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test2
+	NewPrefix *string `json:"NewPrefix,omitempty" xml:"NewPrefix,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ModifyDBInstanceConnectionStringRequest) String() string {
@@ -8661,10 +10928,19 @@ func (s *ModifyDBInstanceConnectionStringRequest) SetRegionId(v string) *ModifyD
 }
 
 type ModifyDBInstanceConnectionStringResponseBody struct {
-	Code      *int64                                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ModifyDBInstanceConnectionStringResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int64                                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ModifyDBInstanceConnectionStringResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// c3cf535c-a585-11ea-8263-00163e04d3a7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyDBInstanceConnectionStringResponseBody) String() string {
@@ -8696,10 +10972,22 @@ func (s *ModifyDBInstanceConnectionStringResponseBody) SetRequestId(v string) *M
 }
 
 type ModifyDBInstanceConnectionStringResponseBodyData struct {
-	ConnectionString  *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	DBInstanceName    *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// example:
+	//
+	// test2.polarx.huhehaote.rds.aliyuncs.com
+	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	// example:
+	//
+	// pxc-unrf5ssig0ecg8
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// example:
+	//
+	// 1
 	DBInstanceNetType *string `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
-	Port              *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// 3300
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 
 func (s ModifyDBInstanceConnectionStringResponseBodyData) String() string {
@@ -8731,9 +11019,9 @@ func (s *ModifyDBInstanceConnectionStringResponseBodyData) SetPort(v string) *Mo
 }
 
 type ModifyDBInstanceConnectionStringResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyDBInstanceConnectionStringResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDBInstanceConnectionStringResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyDBInstanceConnectionStringResponse) String() string {
@@ -8760,9 +11048,20 @@ func (s *ModifyDBInstanceConnectionStringResponse) SetBody(v *ModifyDBInstanceCo
 }
 
 type ModifyDBInstanceDescriptionRequest struct {
+	// This parameter is required.
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	DBInstanceName        *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-hzjasd****
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ModifyDBInstanceDescriptionRequest) String() string {
@@ -8789,6 +11088,9 @@ func (s *ModifyDBInstanceDescriptionRequest) SetRegionId(v string) *ModifyDBInst
 }
 
 type ModifyDBInstanceDescriptionResponseBody struct {
+	// example:
+	//
+	// FEA5DC20-6D8A-5979-97AA-FC57546ADC20
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8806,9 +11108,9 @@ func (s *ModifyDBInstanceDescriptionResponseBody) SetRequestId(v string) *Modify
 }
 
 type ModifyDBInstanceDescriptionResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyDBInstanceDescriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDBInstanceDescriptionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyDBInstanceDescriptionResponse) String() string {
@@ -8835,10 +11137,26 @@ func (s *ModifyDBInstanceDescriptionResponse) SetBody(v *ModifyDBInstanceDescrip
 }
 
 type ModifyDatabaseDescriptionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-hzjasd****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	DbDescription  *string `json:"DbDescription,omitempty" xml:"DbDescription,omitempty"`
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	DbDescription *string `json:"DbDescription,omitempty" xml:"DbDescription,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testDB
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ModifyDatabaseDescriptionRequest) String() string {
@@ -8870,9 +11188,18 @@ func (s *ModifyDatabaseDescriptionRequest) SetRegionId(v string) *ModifyDatabase
 }
 
 type ModifyDatabaseDescriptionResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// FEA5DC20-6D8A-5979-97AA-FC57546ADC20
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyDatabaseDescriptionResponseBody) String() string {
@@ -8899,9 +11226,9 @@ func (s *ModifyDatabaseDescriptionResponseBody) SetSuccess(v bool) *ModifyDataba
 }
 
 type ModifyDatabaseDescriptionResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyDatabaseDescriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDatabaseDescriptionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyDatabaseDescriptionResponse) String() string {
@@ -8928,11 +11255,32 @@ func (s *ModifyDatabaseDescriptionResponse) SetBody(v *ModifyDatabaseDescription
 }
 
 type ModifyParameterRequest struct {
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// FEA5DC20-6D8A-5979-97AA-FC57546ADC20
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-hzjasdyuoo
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	ParamLevel   *string `json:"ParamLevel,omitempty" xml:"ParamLevel,omitempty"`
-	Parameters   *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// compute
+	ParamLevel *string `json:"ParamLevel,omitempty" xml:"ParamLevel,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"CONN_POOL_BLOCK_TIMEOUT":6000}
+	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ModifyParameterRequest) String() string {
@@ -8969,6 +11317,9 @@ func (s *ModifyParameterRequest) SetRegionId(v string) *ModifyParameterRequest {
 }
 
 type ModifyParameterResponseBody struct {
+	// example:
+	//
+	// FEA5DC20-6D8A-5979-97AA-FC57546ADC20
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8986,9 +11337,9 @@ func (s *ModifyParameterResponseBody) SetRequestId(v string) *ModifyParameterRes
 }
 
 type ModifyParameterResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyParameterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyParameterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyParameterResponse) String() string {
@@ -9015,10 +11366,31 @@ func (s *ModifyParameterResponse) SetBody(v *ModifyParameterResponseBody) *Modif
 }
 
 type ModifySecurityIpsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-hzjasd****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	GroupName      *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	ModifyMode     *string `json:"ModifyMode,omitempty" xml:"ModifyMode,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// default
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// example:
+	//
+	// 1
+	ModifyMode *string `json:"ModifyMode,omitempty" xml:"ModifyMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 127.0.0.1,192.168.0.0
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
 }
 
@@ -9056,9 +11428,18 @@ func (s *ModifySecurityIpsRequest) SetSecurityIPList(v string) *ModifySecurityIp
 }
 
 type ModifySecurityIpsResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// FEA5DC20-6D8A-5979-97AA-FC57546ADC20
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifySecurityIpsResponseBody) String() string {
@@ -9085,9 +11466,9 @@ func (s *ModifySecurityIpsResponseBody) SetSuccess(v bool) *ModifySecurityIpsRes
 }
 
 type ModifySecurityIpsResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifySecurityIpsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifySecurityIpsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifySecurityIpsResponse) String() string {
@@ -9114,8 +11495,18 @@ func (s *ModifySecurityIpsResponse) SetBody(v *ModifySecurityIpsResponseBody) *M
 }
 
 type ReleaseColdDataVolumeRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-hzravgpt8q****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ReleaseColdDataVolumeRequest) String() string {
@@ -9137,6 +11528,9 @@ func (s *ReleaseColdDataVolumeRequest) SetRegionId(v string) *ReleaseColdDataVol
 }
 
 type ReleaseColdDataVolumeResponseBody struct {
+	// example:
+	//
+	// EA330983-C895-57C0-AE82-5A63106EBB10
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9154,9 +11548,9 @@ func (s *ReleaseColdDataVolumeResponseBody) SetRequestId(v string) *ReleaseColdD
 }
 
 type ReleaseColdDataVolumeResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ReleaseColdDataVolumeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReleaseColdDataVolumeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ReleaseColdDataVolumeResponse) String() string {
@@ -9183,13 +11577,26 @@ func (s *ReleaseColdDataVolumeResponse) SetBody(v *ReleaseColdDataVolumeResponse
 }
 
 type ReleaseInstancePublicConnectionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-hzjasdyuoo.polarx.rds.aliyuncs.com
 	CurrentConnectionString *string `json:"CurrentConnectionString,omitempty" xml:"CurrentConnectionString,omitempty"`
-	DBInstanceName          *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	OwnerAccount            *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId                 *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount    *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId         *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-hzjasd****
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s ReleaseInstancePublicConnectionRequest) String() string {
@@ -9236,6 +11643,9 @@ func (s *ReleaseInstancePublicConnectionRequest) SetResourceOwnerId(v int64) *Re
 }
 
 type ReleaseInstancePublicConnectionResponseBody struct {
+	// example:
+	//
+	// FEA5DC20-6D8A-5979-97AA-FC57546ADC20
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9253,9 +11663,9 @@ func (s *ReleaseInstancePublicConnectionResponseBody) SetRequestId(v string) *Re
 }
 
 type ReleaseInstancePublicConnectionResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ReleaseInstancePublicConnectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReleaseInstancePublicConnectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ReleaseInstancePublicConnectionResponse) String() string {
@@ -9282,11 +11692,37 @@ func (s *ReleaseInstancePublicConnectionResponse) SetBody(v *ReleaseInstancePubl
 }
 
 type ResetAccountPasswordRequest struct {
-	AccountName             *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AccountPassword         *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
-	DBInstanceName          *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SecurityAccountName     *string `json:"SecurityAccountName,omitempty" xml:"SecurityAccountName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// account
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// *****
+	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-htri0ori2r4k9p
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// account_sec
+	SecurityAccountName *string `json:"SecurityAccountName,omitempty" xml:"SecurityAccountName,omitempty"`
+	// example:
+	//
+	// *****
 	SecurityAccountPassword *string `json:"SecurityAccountPassword,omitempty" xml:"SecurityAccountPassword,omitempty"`
 }
 
@@ -9329,9 +11765,18 @@ func (s *ResetAccountPasswordRequest) SetSecurityAccountPassword(v string) *Rese
 }
 
 type ResetAccountPasswordResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 73559800-3c8c-11ec-bd40-99cfcff3fe1e
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ResetAccountPasswordResponseBody) String() string {
@@ -9358,9 +11803,9 @@ func (s *ResetAccountPasswordResponseBody) SetSuccess(v bool) *ResetAccountPassw
 }
 
 type ResetAccountPasswordResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ResetAccountPasswordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ResetAccountPasswordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ResetAccountPasswordResponse) String() string {
@@ -9387,8 +11832,18 @@ func (s *ResetAccountPasswordResponse) SetBody(v *ResetAccountPasswordResponseBo
 }
 
 type RestartDBInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-hzjasd****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s RestartDBInstanceRequest) String() string {
@@ -9410,6 +11865,9 @@ func (s *RestartDBInstanceRequest) SetRegionId(v string) *RestartDBInstanceReque
 }
 
 type RestartDBInstanceResponseBody struct {
+	// example:
+	//
+	// FEA5DC20-6D8A-5979-97AA-FC57546ADC20
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9427,9 +11885,9 @@ func (s *RestartDBInstanceResponseBody) SetRequestId(v string) *RestartDBInstanc
 }
 
 type RestartDBInstanceResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RestartDBInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RestartDBInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RestartDBInstanceResponse) String() string {
@@ -9456,7 +11914,9 @@ func (s *RestartDBInstanceResponse) SetBody(v *RestartDBInstanceResponseBody) *R
 }
 
 type SwitchDBInstanceHARequest struct {
-	DBInstanceName        *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// This parameter is required.
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// This parameter is required.
 	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SwitchTime            *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
 	SwitchTimeMode        *string `json:"SwitchTimeMode,omitempty" xml:"SwitchTimeMode,omitempty"`
@@ -9532,9 +11992,9 @@ func (s *SwitchDBInstanceHAResponseBody) SetSuccess(v bool) *SwitchDBInstanceHAR
 }
 
 type SwitchDBInstanceHAResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SwitchDBInstanceHAResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SwitchDBInstanceHAResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SwitchDBInstanceHAResponse) String() string {
@@ -9561,10 +12021,22 @@ func (s *SwitchDBInstanceHAResponse) SetBody(v *SwitchDBInstanceHAResponseBody) 
 }
 
 type TagResourcesRequest struct {
-	RegionId     *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId   []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PolarDBXInstance
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// This parameter is required.
+	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -9596,7 +12068,13 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// 12
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// 22
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -9620,6 +12098,10 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 
 type TagResourcesResponseBody struct {
 	// requestId
+	//
+	// example:
+	//
+	// xxxx-xxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9637,9 +12119,9 @@ func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseB
 }
 
 type TagResourcesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TagResourcesResponse) String() string {
@@ -9666,9 +12148,20 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UntagResourcesRequest struct {
-	All          *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId   []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PolarDBXInstance
 	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
@@ -9708,6 +12201,10 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 
 type UntagResourcesResponseBody struct {
 	// RequestId
+	//
+	// example:
+	//
+	// xxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9725,9 +12222,9 @@ func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesRespo
 }
 
 type UntagResourcesResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UntagResourcesResponse) String() string {
@@ -9754,26 +12251,72 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateBackupPolicyRequest struct {
-	BackupPeriod                   *string `json:"BackupPeriod,omitempty" xml:"BackupPeriod,omitempty"`
-	BackupPlanBegin                *string `json:"BackupPlanBegin,omitempty" xml:"BackupPlanBegin,omitempty"`
-	BackupSetRetention             *int32  `json:"BackupSetRetention,omitempty" xml:"BackupSetRetention,omitempty"`
-	BackupType                     *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	BackupWay                      *string `json:"BackupWay,omitempty" xml:"BackupWay,omitempty"`
-	ColdDataBackupInterval         *int32  `json:"ColdDataBackupInterval,omitempty" xml:"ColdDataBackupInterval,omitempty"`
-	ColdDataBackupRetention        *int32  `json:"ColdDataBackupRetention,omitempty" xml:"ColdDataBackupRetention,omitempty"`
-	CrossRegionDataBackupRetention *int32  `json:"CrossRegionDataBackupRetention,omitempty" xml:"CrossRegionDataBackupRetention,omitempty"`
-	CrossRegionLogBackupRetention  *int32  `json:"CrossRegionLogBackupRetention,omitempty" xml:"CrossRegionLogBackupRetention,omitempty"`
-	DBInstanceName                 *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	DestCrossRegion                *string `json:"DestCrossRegion,omitempty" xml:"DestCrossRegion,omitempty"`
-	ForceCleanOnHighSpaceUsage     *int32  `json:"ForceCleanOnHighSpaceUsage,omitempty" xml:"ForceCleanOnHighSpaceUsage,omitempty"`
-	IsCrossRegionDataBackupEnabled *bool   `json:"IsCrossRegionDataBackupEnabled,omitempty" xml:"IsCrossRegionDataBackupEnabled,omitempty"`
-	IsCrossRegionLogBackupEnabled  *bool   `json:"IsCrossRegionLogBackupEnabled,omitempty" xml:"IsCrossRegionLogBackupEnabled,omitempty"`
-	IsEnabled                      *int32  `json:"IsEnabled,omitempty" xml:"IsEnabled,omitempty"`
-	LocalLogRetention              *int32  `json:"LocalLogRetention,omitempty" xml:"LocalLogRetention,omitempty"`
-	LocalLogRetentionNumber        *int32  `json:"LocalLogRetentionNumber,omitempty" xml:"LocalLogRetentionNumber,omitempty"`
-	LogLocalRetentionSpace         *int32  `json:"LogLocalRetentionSpace,omitempty" xml:"LogLocalRetentionSpace,omitempty"`
-	RegionId                       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RemoveLogRetention             *int32  `json:"RemoveLogRetention,omitempty" xml:"RemoveLogRetention,omitempty"`
+	// example:
+	//
+	// 1001000
+	BackupPeriod *string `json:"BackupPeriod,omitempty" xml:"BackupPeriod,omitempty"`
+	// example:
+	//
+	// 03:00Z
+	BackupPlanBegin *string `json:"BackupPlanBegin,omitempty" xml:"BackupPlanBegin,omitempty"`
+	// example:
+	//
+	// 30
+	BackupSetRetention *int32 `json:"BackupSetRetention,omitempty" xml:"BackupSetRetention,omitempty"`
+	// example:
+	//
+	// 0
+	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	// example:
+	//
+	// P
+	BackupWay *string `json:"BackupWay,omitempty" xml:"BackupWay,omitempty"`
+	// example:
+	//
+	// 30
+	ColdDataBackupInterval *int32 `json:"ColdDataBackupInterval,omitempty" xml:"ColdDataBackupInterval,omitempty"`
+	// example:
+	//
+	// 30
+	ColdDataBackupRetention        *int32 `json:"ColdDataBackupRetention,omitempty" xml:"ColdDataBackupRetention,omitempty"`
+	CrossRegionDataBackupRetention *int32 `json:"CrossRegionDataBackupRetention,omitempty" xml:"CrossRegionDataBackupRetention,omitempty"`
+	CrossRegionLogBackupRetention  *int32 `json:"CrossRegionLogBackupRetention,omitempty" xml:"CrossRegionLogBackupRetention,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-hzjasdyuoo
+	DBInstanceName  *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	DestCrossRegion *string `json:"DestCrossRegion,omitempty" xml:"DestCrossRegion,omitempty"`
+	// example:
+	//
+	// 1
+	ForceCleanOnHighSpaceUsage     *int32 `json:"ForceCleanOnHighSpaceUsage,omitempty" xml:"ForceCleanOnHighSpaceUsage,omitempty"`
+	IsCrossRegionDataBackupEnabled *bool  `json:"IsCrossRegionDataBackupEnabled,omitempty" xml:"IsCrossRegionDataBackupEnabled,omitempty"`
+	IsCrossRegionLogBackupEnabled  *bool  `json:"IsCrossRegionLogBackupEnabled,omitempty" xml:"IsCrossRegionLogBackupEnabled,omitempty"`
+	// example:
+	//
+	// 1
+	IsEnabled *int32 `json:"IsEnabled,omitempty" xml:"IsEnabled,omitempty"`
+	// example:
+	//
+	// 7
+	LocalLogRetention       *int32 `json:"LocalLogRetention,omitempty" xml:"LocalLogRetention,omitempty"`
+	LocalLogRetentionNumber *int32 `json:"LocalLogRetentionNumber,omitempty" xml:"LocalLogRetentionNumber,omitempty"`
+	// example:
+	//
+	// 30
+	LogLocalRetentionSpace *int32 `json:"LogLocalRetentionSpace,omitempty" xml:"LogLocalRetentionSpace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 7
+	RemoveLogRetention *int32 `json:"RemoveLogRetention,omitempty" xml:"RemoveLogRetention,omitempty"`
 }
 
 func (s UpdateBackupPolicyRequest) String() string {
@@ -9885,10 +12428,19 @@ func (s *UpdateBackupPolicyRequest) SetRemoveLogRetention(v int32) *UpdateBackup
 }
 
 type UpdateBackupPolicyResponseBody struct {
-	Data      []*UpdateBackupPolicyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data *UpdateBackupPolicyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// FEA5DC20-6D8A-5979-97AA-FC57546ADC20
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateBackupPolicyResponseBody) String() string {
@@ -9899,7 +12451,7 @@ func (s UpdateBackupPolicyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateBackupPolicyResponseBody) SetData(v []*UpdateBackupPolicyResponseBodyData) *UpdateBackupPolicyResponseBody {
+func (s *UpdateBackupPolicyResponseBody) SetData(v *UpdateBackupPolicyResponseBodyData) *UpdateBackupPolicyResponseBody {
 	s.Data = v
 	return s
 }
@@ -10045,9 +12597,9 @@ func (s *UpdateBackupPolicyResponseBodyData) SetRemoveLogRetention(v int32) *Upd
 }
 
 type UpdateBackupPolicyResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateBackupPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateBackupPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateBackupPolicyResponse) String() string {
@@ -10074,10 +12626,26 @@ func (s *UpdateBackupPolicyResponse) SetBody(v *UpdateBackupPolicyResponseBody) 
 }
 
 type UpdateDBInstanceSSLRequest struct {
+	// example:
+	//
+	// pxc-hzrqjarxdocd4t.polarx.rds.aliyuncs.com
 	CertCommonName *string `json:"CertCommonName,omitempty" xml:"CertCommonName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-hzjasd****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	EnableSSL      *bool   `json:"EnableSSL,omitempty" xml:"EnableSSL,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	EnableSSL *bool `json:"EnableSSL,omitempty" xml:"EnableSSL,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateDBInstanceSSLRequest) String() string {
@@ -10109,8 +12677,11 @@ func (s *UpdateDBInstanceSSLRequest) SetRegionId(v string) *UpdateDBInstanceSSLR
 }
 
 type UpdateDBInstanceSSLResponseBody struct {
-	Data      *UpdateDBInstanceSSLResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *UpdateDBInstanceSSLResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// FEA5DC20-6D8A-5979-97AA-FC57546ADC20
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateDBInstanceSSLResponseBody) String() string {
@@ -10132,6 +12703,9 @@ func (s *UpdateDBInstanceSSLResponseBody) SetRequestId(v string) *UpdateDBInstan
 }
 
 type UpdateDBInstanceSSLResponseBodyData struct {
+	// example:
+	//
+	// 2209883
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -10149,9 +12723,9 @@ func (s *UpdateDBInstanceSSLResponseBodyData) SetTaskId(v int64) *UpdateDBInstan
 }
 
 type UpdateDBInstanceSSLResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateDBInstanceSSLResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateDBInstanceSSLResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateDBInstanceSSLResponse) String() string {
@@ -10178,11 +12752,32 @@ func (s *UpdateDBInstanceSSLResponse) SetBody(v *UpdateDBInstanceSSLResponseBody
 }
 
 type UpdateDBInstanceTDERequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-hzjasd****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	EncryptionKey  *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RoleArn        *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	TDEStatus      *int32  `json:"TDEStatus,omitempty" xml:"TDEStatus,omitempty"`
+	// example:
+	//
+	// RkVBNURDMjAtNkQ4QS01OTc5LTk3QUEtRkM1NzU0Nk******
+	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// acs:ram::1406926****:role/aliyunrdsinstanceencryptiondefaultrole
+	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	TDEStatus *int32 `json:"TDEStatus,omitempty" xml:"TDEStatus,omitempty"`
 }
 
 func (s UpdateDBInstanceTDERequest) String() string {
@@ -10219,8 +12814,11 @@ func (s *UpdateDBInstanceTDERequest) SetTDEStatus(v int32) *UpdateDBInstanceTDER
 }
 
 type UpdateDBInstanceTDEResponseBody struct {
-	Data      *UpdateDBInstanceTDEResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *UpdateDBInstanceTDEResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// FEA5DC20-6D8A-5979-97AA-FC57546ADC20
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateDBInstanceTDEResponseBody) String() string {
@@ -10242,6 +12840,9 @@ func (s *UpdateDBInstanceTDEResponseBody) SetRequestId(v string) *UpdateDBInstan
 }
 
 type UpdateDBInstanceTDEResponseBodyData struct {
+	// example:
+	//
+	// 42292****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -10259,9 +12860,9 @@ func (s *UpdateDBInstanceTDEResponseBodyData) SetTaskId(v string) *UpdateDBInsta
 }
 
 type UpdateDBInstanceTDEResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateDBInstanceTDEResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateDBInstanceTDEResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateDBInstanceTDEResponse) String() string {
@@ -10288,15 +12889,37 @@ func (s *UpdateDBInstanceTDEResponse) SetBody(v *UpdateDBInstanceTDEResponseBody
 }
 
 type UpdatePolarDBXInstanceNodeRequest struct {
-	AddDNSpec           *string `json:"AddDNSpec,omitempty" xml:"AddDNSpec,omitempty"`
-	CNNodeCount         *string `json:"CNNodeCount,omitempty" xml:"CNNodeCount,omitempty"`
-	ClientToken         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DBInstanceName      *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	DNNodeCount         *string `json:"DNNodeCount,omitempty" xml:"DNNodeCount,omitempty"`
+	AddDNSpec *string `json:"AddDNSpec,omitempty" xml:"AddDNSpec,omitempty"`
+	// example:
+	//
+	// 2
+	CNNodeCount *string `json:"CNNodeCount,omitempty" xml:"CNNodeCount,omitempty"`
+	// example:
+	//
+	// FEA5DC20-6D8A-5979-97AA-FC57546ADC20
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-hzjasdyuoo
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// example:
+	//
+	// 2
+	DNNodeCount *string `json:"DNNodeCount,omitempty" xml:"DNNodeCount,omitempty"`
+	// example:
+	//
+	// 3
 	DbInstanceNodeCount *string `json:"DbInstanceNodeCount,omitempty" xml:"DbInstanceNodeCount,omitempty"`
 	DeleteDNIds         *string `json:"DeleteDNIds,omitempty" xml:"DeleteDNIds,omitempty"`
-	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StoragePoolName     *string `json:"StoragePoolName,omitempty" xml:"StoragePoolName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StoragePoolName *string `json:"StoragePoolName,omitempty" xml:"StoragePoolName,omitempty"`
 }
 
 func (s UpdatePolarDBXInstanceNodeRequest) String() string {
@@ -10353,7 +12976,13 @@ func (s *UpdatePolarDBXInstanceNodeRequest) SetStoragePoolName(v string) *Update
 }
 
 type UpdatePolarDBXInstanceNodeResponseBody struct {
-	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 20211103105558
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// FEA5DC20-6D8A-5979-97AA-FC57546ADC20
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10376,9 +13005,9 @@ func (s *UpdatePolarDBXInstanceNodeResponseBody) SetRequestId(v string) *UpdateP
 }
 
 type UpdatePolarDBXInstanceNodeResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdatePolarDBXInstanceNodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdatePolarDBXInstanceNodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdatePolarDBXInstanceNodeResponse) String() string {
@@ -10405,10 +13034,26 @@ func (s *UpdatePolarDBXInstanceNodeResponse) SetBody(v *UpdatePolarDBXInstanceNo
 }
 
 type UpgradeDBInstanceKernelVersionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pxc-hzjasd****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	MinorVersion   *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SwitchMode     *string `json:"SwitchMode,omitempty" xml:"SwitchMode,omitempty"`
+	// example:
+	//
+	// polarx-kernel_5.4.12-16349923_xcluster-20210926
+	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 0
+	SwitchMode *string `json:"SwitchMode,omitempty" xml:"SwitchMode,omitempty"`
 }
 
 func (s UpgradeDBInstanceKernelVersionRequest) String() string {
@@ -10440,10 +13085,22 @@ func (s *UpgradeDBInstanceKernelVersionRequest) SetSwitchMode(v string) *Upgrade
 }
 
 type UpgradeDBInstanceKernelVersionResponseBody struct {
-	DBInstanceName     *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// pxc-hzjasd****
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// example:
+	//
+	// FEA5DC20-6D8A-5979-97AA-FC57546ADC20
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// polarx-kernel_5.4.7-16001481_xcluster-20200910
 	TargetMinorVersion *string `json:"TargetMinorVersion,omitempty" xml:"TargetMinorVersion,omitempty"`
-	TaskId             *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 422922413
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s UpgradeDBInstanceKernelVersionResponseBody) String() string {
@@ -10475,9 +13132,9 @@ func (s *UpgradeDBInstanceKernelVersionResponseBody) SetTaskId(v string) *Upgrad
 }
 
 type UpgradeDBInstanceKernelVersionResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpgradeDBInstanceKernelVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpgradeDBInstanceKernelVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpgradeDBInstanceKernelVersionResponse) String() string {
@@ -10597,6 +13254,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// @param request - AlignStoragePrimaryAzoneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AlignStoragePrimaryAzoneResponse
 func (client *Client) AlignStoragePrimaryAzoneWithOptions(request *AlignStoragePrimaryAzoneRequest, runtime *util.RuntimeOptions) (_result *AlignStoragePrimaryAzoneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10646,6 +13308,9 @@ func (client *Client) AlignStoragePrimaryAzoneWithOptions(request *AlignStorageP
 	return _result, _err
 }
 
+// @param request - AlignStoragePrimaryAzoneRequest
+//
+// @return AlignStoragePrimaryAzoneResponse
 func (client *Client) AlignStoragePrimaryAzone(request *AlignStoragePrimaryAzoneRequest) (_result *AlignStoragePrimaryAzoneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AlignStoragePrimaryAzoneResponse{}
@@ -10657,6 +13322,15 @@ func (client *Client) AlignStoragePrimaryAzone(request *AlignStoragePrimaryAzone
 	return _result, _err
 }
 
+// Summary:
+//
+// 开通冷存储
+//
+// @param request - AllocateColdDataVolumeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AllocateColdDataVolumeResponse
 func (client *Client) AllocateColdDataVolumeWithOptions(request *AllocateColdDataVolumeRequest, runtime *util.RuntimeOptions) (_result *AllocateColdDataVolumeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10694,6 +13368,13 @@ func (client *Client) AllocateColdDataVolumeWithOptions(request *AllocateColdDat
 	return _result, _err
 }
 
+// Summary:
+//
+// 开通冷存储
+//
+// @param request - AllocateColdDataVolumeRequest
+//
+// @return AllocateColdDataVolumeResponse
 func (client *Client) AllocateColdDataVolume(request *AllocateColdDataVolumeRequest) (_result *AllocateColdDataVolumeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AllocateColdDataVolumeResponse{}
@@ -10705,6 +13386,11 @@ func (client *Client) AllocateColdDataVolume(request *AllocateColdDataVolumeRequ
 	return _result, _err
 }
 
+// @param request - AllocateInstancePublicConnectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AllocateInstancePublicConnectionResponse
 func (client *Client) AllocateInstancePublicConnectionWithOptions(request *AllocateInstancePublicConnectionRequest, runtime *util.RuntimeOptions) (_result *AllocateInstancePublicConnectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10766,6 +13452,9 @@ func (client *Client) AllocateInstancePublicConnectionWithOptions(request *Alloc
 	return _result, _err
 }
 
+// @param request - AllocateInstancePublicConnectionRequest
+//
+// @return AllocateInstancePublicConnectionResponse
 func (client *Client) AllocateInstancePublicConnection(request *AllocateInstancePublicConnectionRequest) (_result *AllocateInstancePublicConnectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AllocateInstancePublicConnectionResponse{}
@@ -10777,6 +13466,15 @@ func (client *Client) AllocateInstancePublicConnection(request *AllocateInstance
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消主动运维任务
+//
+// @param request - CancelActiveOperationTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelActiveOperationTasksResponse
 func (client *Client) CancelActiveOperationTasksWithOptions(request *CancelActiveOperationTasksRequest, runtime *util.RuntimeOptions) (_result *CancelActiveOperationTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10806,6 +13504,13 @@ func (client *Client) CancelActiveOperationTasksWithOptions(request *CancelActiv
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消主动运维任务
+//
+// @param request - CancelActiveOperationTasksRequest
+//
+// @return CancelActiveOperationTasksResponse
 func (client *Client) CancelActiveOperationTasks(request *CancelActiveOperationTasksRequest) (_result *CancelActiveOperationTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelActiveOperationTasksResponse{}
@@ -10817,6 +13522,15 @@ func (client *Client) CancelActiveOperationTasks(request *CancelActiveOperationT
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改实例所在资源组.
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10862,6 +13576,13 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改实例所在资源组.
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeResourceGroupResponse{}
@@ -10873,6 +13594,11 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 	return _result, _err
 }
 
+// @param request - CheckCloudResourceAuthorizedRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckCloudResourceAuthorizedResponse
 func (client *Client) CheckCloudResourceAuthorizedWithOptions(request *CheckCloudResourceAuthorizedRequest, runtime *util.RuntimeOptions) (_result *CheckCloudResourceAuthorizedResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10914,6 +13640,9 @@ func (client *Client) CheckCloudResourceAuthorizedWithOptions(request *CheckClou
 	return _result, _err
 }
 
+// @param request - CheckCloudResourceAuthorizedRequest
+//
+// @return CheckCloudResourceAuthorizedResponse
 func (client *Client) CheckCloudResourceAuthorized(request *CheckCloudResourceAuthorizedRequest) (_result *CheckCloudResourceAuthorizedResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckCloudResourceAuthorizedResponse{}
@@ -10925,6 +13654,11 @@ func (client *Client) CheckCloudResourceAuthorized(request *CheckCloudResourceAu
 	return _result, _err
 }
 
+// @param request - CreateAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAccountResponse
 func (client *Client) CreateAccountWithOptions(request *CreateAccountRequest, runtime *util.RuntimeOptions) (_result *CreateAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10990,6 +13724,9 @@ func (client *Client) CreateAccountWithOptions(request *CreateAccountRequest, ru
 	return _result, _err
 }
 
+// @param request - CreateAccountRequest
+//
+// @return CreateAccountResponse
 func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *CreateAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAccountResponse{}
@@ -11001,6 +13738,11 @@ func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *Cre
 	return _result, _err
 }
 
+// @param request - CreateBackupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateBackupResponse
 func (client *Client) CreateBackupWithOptions(request *CreateBackupRequest, runtime *util.RuntimeOptions) (_result *CreateBackupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11042,6 +13784,9 @@ func (client *Client) CreateBackupWithOptions(request *CreateBackupRequest, runt
 	return _result, _err
 }
 
+// @param request - CreateBackupRequest
+//
+// @return CreateBackupResponse
 func (client *Client) CreateBackup(request *CreateBackupRequest) (_result *CreateBackupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateBackupResponse{}
@@ -11053,6 +13798,11 @@ func (client *Client) CreateBackup(request *CreateBackupRequest) (_result *Creat
 	return _result, _err
 }
 
+// @param request - CreateDBRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDBResponse
 func (client *Client) CreateDBWithOptions(request *CreateDBRequest, runtime *util.RuntimeOptions) (_result *CreateDBResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11126,6 +13876,9 @@ func (client *Client) CreateDBWithOptions(request *CreateDBRequest, runtime *uti
 	return _result, _err
 }
 
+// @param request - CreateDBRequest
+//
+// @return CreateDBResponse
 func (client *Client) CreateDB(request *CreateDBRequest) (_result *CreateDBResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDBResponse{}
@@ -11137,6 +13890,11 @@ func (client *Client) CreateDB(request *CreateDBRequest) (_result *CreateDBRespo
 	return _result, _err
 }
 
+// @param request - CreateDBInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDBInstanceResponse
 func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateDBInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11173,6 +13931,10 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 
 	if !tea.BoolValue(util.IsUnset(request.DnClass)) {
 		query["DnClass"] = request.DnClass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DnStorageSpace)) {
+		query["DnStorageSpace"] = request.DnStorageSpace
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EngineVersion)) {
@@ -11217,6 +13979,10 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 
 	if !tea.BoolValue(util.IsUnset(request.SecondaryZone)) {
 		query["SecondaryZone"] = request.SecondaryZone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Series)) {
+		query["Series"] = request.Series
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TertiaryZone)) {
@@ -11266,6 +14032,9 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 	return _result, _err
 }
 
+// @param request - CreateDBInstanceRequest
+//
+// @return CreateDBInstanceResponse
 func (client *Client) CreateDBInstance(request *CreateDBInstanceRequest) (_result *CreateDBInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDBInstanceResponse{}
@@ -11277,6 +14046,11 @@ func (client *Client) CreateDBInstance(request *CreateDBInstanceRequest) (_resul
 	return _result, _err
 }
 
+// @param request - CreateSuperAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSuperAccountResponse
 func (client *Client) CreateSuperAccountWithOptions(request *CreateSuperAccountRequest, runtime *util.RuntimeOptions) (_result *CreateSuperAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11326,6 +14100,9 @@ func (client *Client) CreateSuperAccountWithOptions(request *CreateSuperAccountR
 	return _result, _err
 }
 
+// @param request - CreateSuperAccountRequest
+//
+// @return CreateSuperAccountResponse
 func (client *Client) CreateSuperAccount(request *CreateSuperAccountRequest) (_result *CreateSuperAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSuperAccountResponse{}
@@ -11337,6 +14114,11 @@ func (client *Client) CreateSuperAccount(request *CreateSuperAccountRequest) (_r
 	return _result, _err
 }
 
+// @param request - DeleteAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAccountResponse
 func (client *Client) DeleteAccountWithOptions(request *DeleteAccountRequest, runtime *util.RuntimeOptions) (_result *DeleteAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11386,6 +14168,9 @@ func (client *Client) DeleteAccountWithOptions(request *DeleteAccountRequest, ru
 	return _result, _err
 }
 
+// @param request - DeleteAccountRequest
+//
+// @return DeleteAccountResponse
 func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *DeleteAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAccountResponse{}
@@ -11397,6 +14182,11 @@ func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *Del
 	return _result, _err
 }
 
+// @param request - DeleteDBRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDBResponse
 func (client *Client) DeleteDBWithOptions(request *DeleteDBRequest, runtime *util.RuntimeOptions) (_result *DeleteDBResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11438,6 +14228,9 @@ func (client *Client) DeleteDBWithOptions(request *DeleteDBRequest, runtime *uti
 	return _result, _err
 }
 
+// @param request - DeleteDBRequest
+//
+// @return DeleteDBResponse
 func (client *Client) DeleteDB(request *DeleteDBRequest) (_result *DeleteDBResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDBResponse{}
@@ -11449,6 +14242,11 @@ func (client *Client) DeleteDB(request *DeleteDBRequest) (_result *DeleteDBRespo
 	return _result, _err
 }
 
+// @param request - DeleteDBInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDBInstanceResponse
 func (client *Client) DeleteDBInstanceWithOptions(request *DeleteDBInstanceRequest, runtime *util.RuntimeOptions) (_result *DeleteDBInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11486,6 +14284,9 @@ func (client *Client) DeleteDBInstanceWithOptions(request *DeleteDBInstanceReque
 	return _result, _err
 }
 
+// @param request - DeleteDBInstanceRequest
+//
+// @return DeleteDBInstanceResponse
 func (client *Client) DeleteDBInstance(request *DeleteDBInstanceRequest) (_result *DeleteDBInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDBInstanceResponse{}
@@ -11497,6 +14298,11 @@ func (client *Client) DeleteDBInstance(request *DeleteDBInstanceRequest) (_resul
 	return _result, _err
 }
 
+// @param request - DescribeAccountListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAccountListResponse
 func (client *Client) DescribeAccountListWithOptions(request *DescribeAccountListRequest, runtime *util.RuntimeOptions) (_result *DescribeAccountListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11542,6 +14348,9 @@ func (client *Client) DescribeAccountListWithOptions(request *DescribeAccountLis
 	return _result, _err
 }
 
+// @param request - DescribeAccountListRequest
+//
+// @return DescribeAccountListResponse
 func (client *Client) DescribeAccountList(request *DescribeAccountListRequest) (_result *DescribeAccountListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAccountListResponse{}
@@ -11553,6 +14362,15 @@ func (client *Client) DescribeAccountList(request *DescribeAccountListRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 展示全局运维窗口配置
+//
+// @param request - DescribeActiveOperationMaintainConfRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeActiveOperationMaintainConfResponse
 func (client *Client) DescribeActiveOperationMaintainConfWithOptions(request *DescribeActiveOperationMaintainConfRequest, runtime *util.RuntimeOptions) (_result *DescribeActiveOperationMaintainConfResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11586,6 +14404,13 @@ func (client *Client) DescribeActiveOperationMaintainConfWithOptions(request *De
 	return _result, _err
 }
 
+// Summary:
+//
+// 展示全局运维窗口配置
+//
+// @param request - DescribeActiveOperationMaintainConfRequest
+//
+// @return DescribeActiveOperationMaintainConfResponse
 func (client *Client) DescribeActiveOperationMaintainConf(request *DescribeActiveOperationMaintainConfRequest) (_result *DescribeActiveOperationMaintainConfResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeActiveOperationMaintainConfResponse{}
@@ -11597,6 +14422,15 @@ func (client *Client) DescribeActiveOperationMaintainConf(request *DescribeActiv
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取主动运维任务数量
+//
+// @param request - DescribeActiveOperationTaskCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeActiveOperationTaskCountResponse
 func (client *Client) DescribeActiveOperationTaskCountWithOptions(request *DescribeActiveOperationTaskCountRequest, runtime *util.RuntimeOptions) (_result *DescribeActiveOperationTaskCountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11626,6 +14460,13 @@ func (client *Client) DescribeActiveOperationTaskCountWithOptions(request *Descr
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取主动运维任务数量
+//
+// @param request - DescribeActiveOperationTaskCountRequest
+//
+// @return DescribeActiveOperationTaskCountResponse
 func (client *Client) DescribeActiveOperationTaskCount(request *DescribeActiveOperationTaskCountRequest) (_result *DescribeActiveOperationTaskCountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeActiveOperationTaskCountResponse{}
@@ -11637,6 +14478,15 @@ func (client *Client) DescribeActiveOperationTaskCount(request *DescribeActiveOp
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取待执行自动运维任务列表
+//
+// @param request - DescribeActiveOperationTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeActiveOperationTasksResponse
 func (client *Client) DescribeActiveOperationTasksWithOptions(request *DescribeActiveOperationTasksRequest, runtime *util.RuntimeOptions) (_result *DescribeActiveOperationTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11666,6 +14516,13 @@ func (client *Client) DescribeActiveOperationTasksWithOptions(request *DescribeA
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取待执行自动运维任务列表
+//
+// @param request - DescribeActiveOperationTasksRequest
+//
+// @return DescribeActiveOperationTasksResponse
 func (client *Client) DescribeActiveOperationTasks(request *DescribeActiveOperationTasksRequest) (_result *DescribeActiveOperationTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeActiveOperationTasksResponse{}
@@ -11677,6 +14534,15 @@ func (client *Client) DescribeActiveOperationTasks(request *DescribeActiveOperat
 	return _result, _err
 }
 
+// Summary:
+//
+// 冷存储表列表
+//
+// @param request - DescribeArchiveTableListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeArchiveTableListResponse
 func (client *Client) DescribeArchiveTableListWithOptions(request *DescribeArchiveTableListRequest, runtime *util.RuntimeOptions) (_result *DescribeArchiveTableListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11734,6 +14600,13 @@ func (client *Client) DescribeArchiveTableListWithOptions(request *DescribeArchi
 	return _result, _err
 }
 
+// Summary:
+//
+// 冷存储表列表
+//
+// @param request - DescribeArchiveTableListRequest
+//
+// @return DescribeArchiveTableListResponse
 func (client *Client) DescribeArchiveTableList(request *DescribeArchiveTableListRequest) (_result *DescribeArchiveTableListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeArchiveTableListResponse{}
@@ -11745,6 +14618,11 @@ func (client *Client) DescribeArchiveTableList(request *DescribeArchiveTableList
 	return _result, _err
 }
 
+// @param request - DescribeBackupPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackupPolicyResponse
 func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPolicyRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11782,6 +14660,9 @@ func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPol
 	return _result, _err
 }
 
+// @param request - DescribeBackupPolicyRequest
+//
+// @return DescribeBackupPolicyResponse
 func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest) (_result *DescribeBackupPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackupPolicyResponse{}
@@ -11793,6 +14674,15 @@ func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 备份集详情
+//
+// @param request - DescribeBackupSetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackupSetResponse
 func (client *Client) DescribeBackupSetWithOptions(request *DescribeBackupSetRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupSetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11838,6 +14728,13 @@ func (client *Client) DescribeBackupSetWithOptions(request *DescribeBackupSetReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 备份集详情
+//
+// @param request - DescribeBackupSetRequest
+//
+// @return DescribeBackupSetResponse
 func (client *Client) DescribeBackupSet(request *DescribeBackupSetRequest) (_result *DescribeBackupSetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackupSetResponse{}
@@ -11849,6 +14746,11 @@ func (client *Client) DescribeBackupSet(request *DescribeBackupSetRequest) (_res
 	return _result, _err
 }
 
+// @param request - DescribeBackupSetListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackupSetListResponse
 func (client *Client) DescribeBackupSetListWithOptions(request *DescribeBackupSetListRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupSetListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11878,6 +14780,9 @@ func (client *Client) DescribeBackupSetListWithOptions(request *DescribeBackupSe
 	return _result, _err
 }
 
+// @param request - DescribeBackupSetListRequest
+//
+// @return DescribeBackupSetListResponse
 func (client *Client) DescribeBackupSetList(request *DescribeBackupSetListRequest) (_result *DescribeBackupSetListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackupSetListResponse{}
@@ -11889,6 +14794,11 @@ func (client *Client) DescribeBackupSetList(request *DescribeBackupSetListReques
 	return _result, _err
 }
 
+// @param request - DescribeBinaryLogListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBinaryLogListResponse
 func (client *Client) DescribeBinaryLogListWithOptions(request *DescribeBinaryLogListRequest, runtime *util.RuntimeOptions) (_result *DescribeBinaryLogListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11946,6 +14856,9 @@ func (client *Client) DescribeBinaryLogListWithOptions(request *DescribeBinaryLo
 	return _result, _err
 }
 
+// @param request - DescribeBinaryLogListRequest
+//
+// @return DescribeBinaryLogListResponse
 func (client *Client) DescribeBinaryLogList(request *DescribeBinaryLogListRequest) (_result *DescribeBinaryLogListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBinaryLogListResponse{}
@@ -11957,6 +14870,11 @@ func (client *Client) DescribeBinaryLogList(request *DescribeBinaryLogListReques
 	return _result, _err
 }
 
+// @param request - DescribeCharacterSetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCharacterSetResponse
 func (client *Client) DescribeCharacterSetWithOptions(request *DescribeCharacterSetRequest, runtime *util.RuntimeOptions) (_result *DescribeCharacterSetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11994,6 +14912,9 @@ func (client *Client) DescribeCharacterSetWithOptions(request *DescribeCharacter
 	return _result, _err
 }
 
+// @param request - DescribeCharacterSetRequest
+//
+// @return DescribeCharacterSetResponse
 func (client *Client) DescribeCharacterSet(request *DescribeCharacterSetRequest) (_result *DescribeCharacterSetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCharacterSetResponse{}
@@ -12005,6 +14926,15 @@ func (client *Client) DescribeCharacterSet(request *DescribeCharacterSetRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 冷存储基础信息
+//
+// @param request - DescribeColdDataBasicInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeColdDataBasicInfoResponse
 func (client *Client) DescribeColdDataBasicInfoWithOptions(request *DescribeColdDataBasicInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeColdDataBasicInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12034,6 +14964,13 @@ func (client *Client) DescribeColdDataBasicInfoWithOptions(request *DescribeCold
 	return _result, _err
 }
 
+// Summary:
+//
+// 冷存储基础信息
+//
+// @param request - DescribeColdDataBasicInfoRequest
+//
+// @return DescribeColdDataBasicInfoResponse
 func (client *Client) DescribeColdDataBasicInfo(request *DescribeColdDataBasicInfoRequest) (_result *DescribeColdDataBasicInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeColdDataBasicInfoResponse{}
@@ -12045,6 +14982,11 @@ func (client *Client) DescribeColdDataBasicInfo(request *DescribeColdDataBasicIn
 	return _result, _err
 }
 
+// @param request - DescribeDBInstanceAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBInstanceAttributeResponse
 func (client *Client) DescribeDBInstanceAttributeWithOptions(request *DescribeDBInstanceAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12086,6 +15028,9 @@ func (client *Client) DescribeDBInstanceAttributeWithOptions(request *DescribeDB
 	return _result, _err
 }
 
+// @param request - DescribeDBInstanceAttributeRequest
+//
+// @return DescribeDBInstanceAttributeResponse
 func (client *Client) DescribeDBInstanceAttribute(request *DescribeDBInstanceAttributeRequest) (_result *DescribeDBInstanceAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstanceAttributeResponse{}
@@ -12097,6 +15042,11 @@ func (client *Client) DescribeDBInstanceAttribute(request *DescribeDBInstanceAtt
 	return _result, _err
 }
 
+// @param request - DescribeDBInstanceConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBInstanceConfigResponse
 func (client *Client) DescribeDBInstanceConfigWithOptions(request *DescribeDBInstanceConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12138,6 +15088,9 @@ func (client *Client) DescribeDBInstanceConfigWithOptions(request *DescribeDBIns
 	return _result, _err
 }
 
+// @param request - DescribeDBInstanceConfigRequest
+//
+// @return DescribeDBInstanceConfigResponse
 func (client *Client) DescribeDBInstanceConfig(request *DescribeDBInstanceConfigRequest) (_result *DescribeDBInstanceConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstanceConfigResponse{}
@@ -12149,6 +15102,11 @@ func (client *Client) DescribeDBInstanceConfig(request *DescribeDBInstanceConfig
 	return _result, _err
 }
 
+// @param request - DescribeDBInstanceHARequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBInstanceHAResponse
 func (client *Client) DescribeDBInstanceHAWithOptions(request *DescribeDBInstanceHARequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceHAResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12186,6 +15144,9 @@ func (client *Client) DescribeDBInstanceHAWithOptions(request *DescribeDBInstanc
 	return _result, _err
 }
 
+// @param request - DescribeDBInstanceHARequest
+//
+// @return DescribeDBInstanceHAResponse
 func (client *Client) DescribeDBInstanceHA(request *DescribeDBInstanceHARequest) (_result *DescribeDBInstanceHAResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstanceHAResponse{}
@@ -12197,6 +15158,11 @@ func (client *Client) DescribeDBInstanceHA(request *DescribeDBInstanceHARequest)
 	return _result, _err
 }
 
+// @param request - DescribeDBInstanceSSLRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBInstanceSSLResponse
 func (client *Client) DescribeDBInstanceSSLWithOptions(request *DescribeDBInstanceSSLRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceSSLResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12234,6 +15200,9 @@ func (client *Client) DescribeDBInstanceSSLWithOptions(request *DescribeDBInstan
 	return _result, _err
 }
 
+// @param request - DescribeDBInstanceSSLRequest
+//
+// @return DescribeDBInstanceSSLResponse
 func (client *Client) DescribeDBInstanceSSL(request *DescribeDBInstanceSSLRequest) (_result *DescribeDBInstanceSSLResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstanceSSLResponse{}
@@ -12245,6 +15214,11 @@ func (client *Client) DescribeDBInstanceSSL(request *DescribeDBInstanceSSLReques
 	return _result, _err
 }
 
+// @param request - DescribeDBInstanceTDERequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBInstanceTDEResponse
 func (client *Client) DescribeDBInstanceTDEWithOptions(request *DescribeDBInstanceTDERequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceTDEResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12282,6 +15256,9 @@ func (client *Client) DescribeDBInstanceTDEWithOptions(request *DescribeDBInstan
 	return _result, _err
 }
 
+// @param request - DescribeDBInstanceTDERequest
+//
+// @return DescribeDBInstanceTDEResponse
 func (client *Client) DescribeDBInstanceTDE(request *DescribeDBInstanceTDERequest) (_result *DescribeDBInstanceTDEResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstanceTDEResponse{}
@@ -12293,6 +15270,11 @@ func (client *Client) DescribeDBInstanceTDE(request *DescribeDBInstanceTDEReques
 	return _result, _err
 }
 
+// @param request - DescribeDBInstanceTopologyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBInstanceTopologyResponse
 func (client *Client) DescribeDBInstanceTopologyWithOptions(request *DescribeDBInstanceTopologyRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceTopologyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12338,6 +15320,9 @@ func (client *Client) DescribeDBInstanceTopologyWithOptions(request *DescribeDBI
 	return _result, _err
 }
 
+// @param request - DescribeDBInstanceTopologyRequest
+//
+// @return DescribeDBInstanceTopologyResponse
 func (client *Client) DescribeDBInstanceTopology(request *DescribeDBInstanceTopologyRequest) (_result *DescribeDBInstanceTopologyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstanceTopologyResponse{}
@@ -12349,6 +15334,15 @@ func (client *Client) DescribeDBInstanceTopology(request *DescribeDBInstanceTopo
 	return _result, _err
 }
 
+// Summary:
+//
+// 通过Endpoint查询实例
+//
+// @param request - DescribeDBInstanceViaEndpointRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBInstanceViaEndpointResponse
 func (client *Client) DescribeDBInstanceViaEndpointWithOptions(request *DescribeDBInstanceViaEndpointRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceViaEndpointResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12386,6 +15380,13 @@ func (client *Client) DescribeDBInstanceViaEndpointWithOptions(request *Describe
 	return _result, _err
 }
 
+// Summary:
+//
+// 通过Endpoint查询实例
+//
+// @param request - DescribeDBInstanceViaEndpointRequest
+//
+// @return DescribeDBInstanceViaEndpointResponse
 func (client *Client) DescribeDBInstanceViaEndpoint(request *DescribeDBInstanceViaEndpointRequest) (_result *DescribeDBInstanceViaEndpointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstanceViaEndpointResponse{}
@@ -12397,6 +15398,11 @@ func (client *Client) DescribeDBInstanceViaEndpoint(request *DescribeDBInstanceV
 	return _result, _err
 }
 
+// @param request - DescribeDBInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBInstancesResponse
 func (client *Client) DescribeDBInstancesWithOptions(request *DescribeDBInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12458,6 +15464,9 @@ func (client *Client) DescribeDBInstancesWithOptions(request *DescribeDBInstance
 	return _result, _err
 }
 
+// @param request - DescribeDBInstancesRequest
+//
+// @return DescribeDBInstancesResponse
 func (client *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (_result *DescribeDBInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstancesResponse{}
@@ -12469,6 +15478,11 @@ func (client *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (
 	return _result, _err
 }
 
+// @param request - DescribeDBNodePerformanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBNodePerformanceResponse
 func (client *Client) DescribeDBNodePerformanceWithOptions(request *DescribeDBNodePerformanceRequest, runtime *util.RuntimeOptions) (_result *DescribeDBNodePerformanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12530,6 +15544,9 @@ func (client *Client) DescribeDBNodePerformanceWithOptions(request *DescribeDBNo
 	return _result, _err
 }
 
+// @param request - DescribeDBNodePerformanceRequest
+//
+// @return DescribeDBNodePerformanceResponse
 func (client *Client) DescribeDBNodePerformance(request *DescribeDBNodePerformanceRequest) (_result *DescribeDBNodePerformanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBNodePerformanceResponse{}
@@ -12541,6 +15558,11 @@ func (client *Client) DescribeDBNodePerformance(request *DescribeDBNodePerforman
 	return _result, _err
 }
 
+// @param request - DescribeDbListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDbListResponse
 func (client *Client) DescribeDbListWithOptions(request *DescribeDbListRequest, runtime *util.RuntimeOptions) (_result *DescribeDbListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12582,6 +15604,9 @@ func (client *Client) DescribeDbListWithOptions(request *DescribeDbListRequest, 
 	return _result, _err
 }
 
+// @param request - DescribeDbListRequest
+//
+// @return DescribeDbListResponse
 func (client *Client) DescribeDbList(request *DescribeDbListRequest) (_result *DescribeDbListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDbListResponse{}
@@ -12593,6 +15618,11 @@ func (client *Client) DescribeDbList(request *DescribeDbListRequest) (_result *D
 	return _result, _err
 }
 
+// @param request - DescribeDistributeTableListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDistributeTableListResponse
 func (client *Client) DescribeDistributeTableListWithOptions(request *DescribeDistributeTableListRequest, runtime *util.RuntimeOptions) (_result *DescribeDistributeTableListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12634,6 +15664,9 @@ func (client *Client) DescribeDistributeTableListWithOptions(request *DescribeDi
 	return _result, _err
 }
 
+// @param request - DescribeDistributeTableListRequest
+//
+// @return DescribeDistributeTableListResponse
 func (client *Client) DescribeDistributeTableList(request *DescribeDistributeTableListRequest) (_result *DescribeDistributeTableListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDistributeTableListResponse{}
@@ -12645,6 +15678,15 @@ func (client *Client) DescribeDistributeTableList(request *DescribeDistributeTab
 	return _result, _err
 }
 
+// Summary:
+//
+// 历史事件
+//
+// @param request - DescribeEventsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeEventsResponse
 func (client *Client) DescribeEventsWithOptions(request *DescribeEventsRequest, runtime *util.RuntimeOptions) (_result *DescribeEventsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12674,6 +15716,13 @@ func (client *Client) DescribeEventsWithOptions(request *DescribeEventsRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 历史事件
+//
+// @param request - DescribeEventsRequest
+//
+// @return DescribeEventsResponse
 func (client *Client) DescribeEvents(request *DescribeEventsRequest) (_result *DescribeEventsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeEventsResponse{}
@@ -12685,6 +15734,11 @@ func (client *Client) DescribeEvents(request *DescribeEventsRequest) (_result *D
 	return _result, _err
 }
 
+// @param request - DescribeParameterTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeParameterTemplatesResponse
 func (client *Client) DescribeParameterTemplatesWithOptions(request *DescribeParameterTemplatesRequest, runtime *util.RuntimeOptions) (_result *DescribeParameterTemplatesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12726,6 +15780,9 @@ func (client *Client) DescribeParameterTemplatesWithOptions(request *DescribePar
 	return _result, _err
 }
 
+// @param request - DescribeParameterTemplatesRequest
+//
+// @return DescribeParameterTemplatesResponse
 func (client *Client) DescribeParameterTemplates(request *DescribeParameterTemplatesRequest) (_result *DescribeParameterTemplatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeParameterTemplatesResponse{}
@@ -12737,6 +15794,11 @@ func (client *Client) DescribeParameterTemplates(request *DescribeParameterTempl
 	return _result, _err
 }
 
+// @param request - DescribeParametersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeParametersResponse
 func (client *Client) DescribeParametersWithOptions(request *DescribeParametersRequest, runtime *util.RuntimeOptions) (_result *DescribeParametersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12778,6 +15840,9 @@ func (client *Client) DescribeParametersWithOptions(request *DescribeParametersR
 	return _result, _err
 }
 
+// @param request - DescribeParametersRequest
+//
+// @return DescribeParametersResponse
 func (client *Client) DescribeParameters(request *DescribeParametersRequest) (_result *DescribeParametersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeParametersResponse{}
@@ -12789,6 +15854,11 @@ func (client *Client) DescribeParameters(request *DescribeParametersRequest) (_r
 	return _result, _err
 }
 
+// @param request - DescribeRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithOptions(runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -12811,6 +15881,7 @@ func (client *Client) DescribeRegionsWithOptions(runtime *util.RuntimeOptions) (
 	return _result, _err
 }
 
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRegionsResponse{}
@@ -12822,6 +15893,11 @@ func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err 
 	return _result, _err
 }
 
+// @param request - DescribeScaleOutMigrateTaskListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeScaleOutMigrateTaskListResponse
 func (client *Client) DescribeScaleOutMigrateTaskListWithOptions(request *DescribeScaleOutMigrateTaskListRequest, runtime *util.RuntimeOptions) (_result *DescribeScaleOutMigrateTaskListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12838,6 +15914,10 @@ func (client *Client) DescribeScaleOutMigrateTaskListWithOptions(request *Descri
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -12871,6 +15951,9 @@ func (client *Client) DescribeScaleOutMigrateTaskListWithOptions(request *Descri
 	return _result, _err
 }
 
+// @param request - DescribeScaleOutMigrateTaskListRequest
+//
+// @return DescribeScaleOutMigrateTaskListResponse
 func (client *Client) DescribeScaleOutMigrateTaskList(request *DescribeScaleOutMigrateTaskListRequest) (_result *DescribeScaleOutMigrateTaskListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeScaleOutMigrateTaskListResponse{}
@@ -12882,6 +15965,11 @@ func (client *Client) DescribeScaleOutMigrateTaskList(request *DescribeScaleOutM
 	return _result, _err
 }
 
+// @param request - DescribeSecurityIpsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSecurityIpsResponse
 func (client *Client) DescribeSecurityIpsWithOptions(request *DescribeSecurityIpsRequest, runtime *util.RuntimeOptions) (_result *DescribeSecurityIpsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12919,6 +16007,9 @@ func (client *Client) DescribeSecurityIpsWithOptions(request *DescribeSecurityIp
 	return _result, _err
 }
 
+// @param request - DescribeSecurityIpsRequest
+//
+// @return DescribeSecurityIpsResponse
 func (client *Client) DescribeSecurityIps(request *DescribeSecurityIpsRequest) (_result *DescribeSecurityIpsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSecurityIpsResponse{}
@@ -12930,6 +16021,15 @@ func (client *Client) DescribeSecurityIps(request *DescribeSecurityIpsRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 标签列表查询
+//
+// @param request - DescribeTagsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTagsResponse
 func (client *Client) DescribeTagsWithOptions(request *DescribeTagsRequest, runtime *util.RuntimeOptions) (_result *DescribeTagsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12971,6 +16071,13 @@ func (client *Client) DescribeTagsWithOptions(request *DescribeTagsRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 标签列表查询
+//
+// @param request - DescribeTagsRequest
+//
+// @return DescribeTagsResponse
 func (client *Client) DescribeTags(request *DescribeTagsRequest) (_result *DescribeTagsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTagsResponse{}
@@ -12982,6 +16089,11 @@ func (client *Client) DescribeTags(request *DescribeTagsRequest) (_result *Descr
 	return _result, _err
 }
 
+// @param request - DescribeTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTasksResponse
 func (client *Client) DescribeTasksWithOptions(request *DescribeTasksRequest, runtime *util.RuntimeOptions) (_result *DescribeTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13051,6 +16163,9 @@ func (client *Client) DescribeTasksWithOptions(request *DescribeTasksRequest, ru
 	return _result, _err
 }
 
+// @param request - DescribeTasksRequest
+//
+// @return DescribeTasksResponse
 func (client *Client) DescribeTasks(request *DescribeTasksRequest) (_result *DescribeTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTasksResponse{}
@@ -13062,6 +16177,11 @@ func (client *Client) DescribeTasks(request *DescribeTasksRequest) (_result *Des
 	return _result, _err
 }
 
+// @param request - DescribeUserEncryptionKeyListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUserEncryptionKeyListResponse
 func (client *Client) DescribeUserEncryptionKeyListWithOptions(request *DescribeUserEncryptionKeyListRequest, runtime *util.RuntimeOptions) (_result *DescribeUserEncryptionKeyListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13099,6 +16219,9 @@ func (client *Client) DescribeUserEncryptionKeyListWithOptions(request *Describe
 	return _result, _err
 }
 
+// @param request - DescribeUserEncryptionKeyListRequest
+//
+// @return DescribeUserEncryptionKeyListResponse
 func (client *Client) DescribeUserEncryptionKeyList(request *DescribeUserEncryptionKeyListRequest) (_result *DescribeUserEncryptionKeyListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeUserEncryptionKeyListResponse{}
@@ -13110,6 +16233,11 @@ func (client *Client) DescribeUserEncryptionKeyList(request *DescribeUserEncrypt
 	return _result, _err
 }
 
+// @param request - DisableRightsSeparationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableRightsSeparationResponse
 func (client *Client) DisableRightsSeparationWithOptions(request *DisableRightsSeparationRequest, runtime *util.RuntimeOptions) (_result *DisableRightsSeparationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13155,6 +16283,9 @@ func (client *Client) DisableRightsSeparationWithOptions(request *DisableRightsS
 	return _result, _err
 }
 
+// @param request - DisableRightsSeparationRequest
+//
+// @return DisableRightsSeparationResponse
 func (client *Client) DisableRightsSeparation(request *DisableRightsSeparationRequest) (_result *DisableRightsSeparationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableRightsSeparationResponse{}
@@ -13166,6 +16297,15 @@ func (client *Client) DisableRightsSeparation(request *DisableRightsSeparationRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 开启三权分立
+//
+// @param request - EnableRightsSeparationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableRightsSeparationResponse
 func (client *Client) EnableRightsSeparationWithOptions(request *EnableRightsSeparationRequest, runtime *util.RuntimeOptions) (_result *EnableRightsSeparationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13227,6 +16367,13 @@ func (client *Client) EnableRightsSeparationWithOptions(request *EnableRightsSep
 	return _result, _err
 }
 
+// Summary:
+//
+// 开启三权分立
+//
+// @param request - EnableRightsSeparationRequest
+//
+// @return EnableRightsSeparationResponse
 func (client *Client) EnableRightsSeparation(request *EnableRightsSeparationRequest) (_result *EnableRightsSeparationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableRightsSeparationResponse{}
@@ -13238,6 +16385,15 @@ func (client *Client) EnableRightsSeparation(request *EnableRightsSeparationRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 查标签接口
+//
+// @param request - ListTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13287,6 +16443,13 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 查标签接口
+//
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagResourcesResponse{}
@@ -13298,6 +16461,11 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+// @param request - ModifyAccountDescriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAccountDescriptionResponse
 func (client *Client) ModifyAccountDescriptionWithOptions(request *ModifyAccountDescriptionRequest, runtime *util.RuntimeOptions) (_result *ModifyAccountDescriptionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13343,6 +16511,9 @@ func (client *Client) ModifyAccountDescriptionWithOptions(request *ModifyAccount
 	return _result, _err
 }
 
+// @param request - ModifyAccountDescriptionRequest
+//
+// @return ModifyAccountDescriptionResponse
 func (client *Client) ModifyAccountDescription(request *ModifyAccountDescriptionRequest) (_result *ModifyAccountDescriptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyAccountDescriptionResponse{}
@@ -13354,6 +16525,11 @@ func (client *Client) ModifyAccountDescription(request *ModifyAccountDescription
 	return _result, _err
 }
 
+// @param request - ModifyAccountPrivilegeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAccountPrivilegeResponse
 func (client *Client) ModifyAccountPrivilegeWithOptions(request *ModifyAccountPrivilegeRequest, runtime *util.RuntimeOptions) (_result *ModifyAccountPrivilegeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13411,6 +16587,9 @@ func (client *Client) ModifyAccountPrivilegeWithOptions(request *ModifyAccountPr
 	return _result, _err
 }
 
+// @param request - ModifyAccountPrivilegeRequest
+//
+// @return ModifyAccountPrivilegeResponse
 func (client *Client) ModifyAccountPrivilege(request *ModifyAccountPrivilegeRequest) (_result *ModifyAccountPrivilegeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyAccountPrivilegeResponse{}
@@ -13422,6 +16601,15 @@ func (client *Client) ModifyAccountPrivilege(request *ModifyAccountPrivilegeRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改全局运维窗口信息
+//
+// @param request - ModifyActiveOperationMaintainConfRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyActiveOperationMaintainConfResponse
 func (client *Client) ModifyActiveOperationMaintainConfWithOptions(request *ModifyActiveOperationMaintainConfRequest, runtime *util.RuntimeOptions) (_result *ModifyActiveOperationMaintainConfResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13451,6 +16639,13 @@ func (client *Client) ModifyActiveOperationMaintainConfWithOptions(request *Modi
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改全局运维窗口信息
+//
+// @param request - ModifyActiveOperationMaintainConfRequest
+//
+// @return ModifyActiveOperationMaintainConfResponse
 func (client *Client) ModifyActiveOperationMaintainConf(request *ModifyActiveOperationMaintainConfRequest) (_result *ModifyActiveOperationMaintainConfResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyActiveOperationMaintainConfResponse{}
@@ -13462,6 +16657,15 @@ func (client *Client) ModifyActiveOperationMaintainConf(request *ModifyActiveOpe
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改主动运维任务
+//
+// @param request - ModifyActiveOperationTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyActiveOperationTasksResponse
 func (client *Client) ModifyActiveOperationTasksWithOptions(request *ModifyActiveOperationTasksRequest, runtime *util.RuntimeOptions) (_result *ModifyActiveOperationTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13507,6 +16711,13 @@ func (client *Client) ModifyActiveOperationTasksWithOptions(request *ModifyActiv
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改主动运维任务
+//
+// @param request - ModifyActiveOperationTasksRequest
+//
+// @return ModifyActiveOperationTasksResponse
 func (client *Client) ModifyActiveOperationTasks(request *ModifyActiveOperationTasksRequest) (_result *ModifyActiveOperationTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyActiveOperationTasksResponse{}
@@ -13518,6 +16729,11 @@ func (client *Client) ModifyActiveOperationTasks(request *ModifyActiveOperationT
 	return _result, _err
 }
 
+// @param request - ModifyDBInstanceClassRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBInstanceClassResponse
 func (client *Client) ModifyDBInstanceClassWithOptions(request *ModifyDBInstanceClassRequest, runtime *util.RuntimeOptions) (_result *ModifyDBInstanceClassResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13587,6 +16803,9 @@ func (client *Client) ModifyDBInstanceClassWithOptions(request *ModifyDBInstance
 	return _result, _err
 }
 
+// @param request - ModifyDBInstanceClassRequest
+//
+// @return ModifyDBInstanceClassResponse
 func (client *Client) ModifyDBInstanceClass(request *ModifyDBInstanceClassRequest) (_result *ModifyDBInstanceClassResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBInstanceClassResponse{}
@@ -13598,6 +16817,15 @@ func (client *Client) ModifyDBInstanceClass(request *ModifyDBInstanceClassReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改实例配置
+//
+// @param request - ModifyDBInstanceConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBInstanceConfigResponse
 func (client *Client) ModifyDBInstanceConfigWithOptions(request *ModifyDBInstanceConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyDBInstanceConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13643,6 +16871,13 @@ func (client *Client) ModifyDBInstanceConfigWithOptions(request *ModifyDBInstanc
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改实例配置
+//
+// @param request - ModifyDBInstanceConfigRequest
+//
+// @return ModifyDBInstanceConfigResponse
 func (client *Client) ModifyDBInstanceConfig(request *ModifyDBInstanceConfigRequest) (_result *ModifyDBInstanceConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBInstanceConfigResponse{}
@@ -13654,6 +16889,15 @@ func (client *Client) ModifyDBInstanceConfig(request *ModifyDBInstanceConfigRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改实例链接串
+//
+// @param request - ModifyDBInstanceConnectionStringRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBInstanceConnectionStringResponse
 func (client *Client) ModifyDBInstanceConnectionStringWithOptions(request *ModifyDBInstanceConnectionStringRequest, runtime *util.RuntimeOptions) (_result *ModifyDBInstanceConnectionStringResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13703,6 +16947,13 @@ func (client *Client) ModifyDBInstanceConnectionStringWithOptions(request *Modif
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改实例链接串
+//
+// @param request - ModifyDBInstanceConnectionStringRequest
+//
+// @return ModifyDBInstanceConnectionStringResponse
 func (client *Client) ModifyDBInstanceConnectionString(request *ModifyDBInstanceConnectionStringRequest) (_result *ModifyDBInstanceConnectionStringResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBInstanceConnectionStringResponse{}
@@ -13714,6 +16965,11 @@ func (client *Client) ModifyDBInstanceConnectionString(request *ModifyDBInstance
 	return _result, _err
 }
 
+// @param request - ModifyDBInstanceDescriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBInstanceDescriptionResponse
 func (client *Client) ModifyDBInstanceDescriptionWithOptions(request *ModifyDBInstanceDescriptionRequest, runtime *util.RuntimeOptions) (_result *ModifyDBInstanceDescriptionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13755,6 +17011,9 @@ func (client *Client) ModifyDBInstanceDescriptionWithOptions(request *ModifyDBIn
 	return _result, _err
 }
 
+// @param request - ModifyDBInstanceDescriptionRequest
+//
+// @return ModifyDBInstanceDescriptionResponse
 func (client *Client) ModifyDBInstanceDescription(request *ModifyDBInstanceDescriptionRequest) (_result *ModifyDBInstanceDescriptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBInstanceDescriptionResponse{}
@@ -13766,6 +17025,11 @@ func (client *Client) ModifyDBInstanceDescription(request *ModifyDBInstanceDescr
 	return _result, _err
 }
 
+// @param request - ModifyDatabaseDescriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDatabaseDescriptionResponse
 func (client *Client) ModifyDatabaseDescriptionWithOptions(request *ModifyDatabaseDescriptionRequest, runtime *util.RuntimeOptions) (_result *ModifyDatabaseDescriptionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13811,6 +17075,9 @@ func (client *Client) ModifyDatabaseDescriptionWithOptions(request *ModifyDataba
 	return _result, _err
 }
 
+// @param request - ModifyDatabaseDescriptionRequest
+//
+// @return ModifyDatabaseDescriptionResponse
 func (client *Client) ModifyDatabaseDescription(request *ModifyDatabaseDescriptionRequest) (_result *ModifyDatabaseDescriptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDatabaseDescriptionResponse{}
@@ -13822,6 +17089,11 @@ func (client *Client) ModifyDatabaseDescription(request *ModifyDatabaseDescripti
 	return _result, _err
 }
 
+// @param request - ModifyParameterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyParameterResponse
 func (client *Client) ModifyParameterWithOptions(request *ModifyParameterRequest, runtime *util.RuntimeOptions) (_result *ModifyParameterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13871,6 +17143,9 @@ func (client *Client) ModifyParameterWithOptions(request *ModifyParameterRequest
 	return _result, _err
 }
 
+// @param request - ModifyParameterRequest
+//
+// @return ModifyParameterResponse
 func (client *Client) ModifyParameter(request *ModifyParameterRequest) (_result *ModifyParameterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyParameterResponse{}
@@ -13882,6 +17157,11 @@ func (client *Client) ModifyParameter(request *ModifyParameterRequest) (_result 
 	return _result, _err
 }
 
+// @param request - ModifySecurityIpsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifySecurityIpsResponse
 func (client *Client) ModifySecurityIpsWithOptions(request *ModifySecurityIpsRequest, runtime *util.RuntimeOptions) (_result *ModifySecurityIpsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13931,6 +17211,9 @@ func (client *Client) ModifySecurityIpsWithOptions(request *ModifySecurityIpsReq
 	return _result, _err
 }
 
+// @param request - ModifySecurityIpsRequest
+//
+// @return ModifySecurityIpsResponse
 func (client *Client) ModifySecurityIps(request *ModifySecurityIpsRequest) (_result *ModifySecurityIpsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifySecurityIpsResponse{}
@@ -13942,6 +17225,15 @@ func (client *Client) ModifySecurityIps(request *ModifySecurityIpsRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 关闭冷存储
+//
+// @param request - ReleaseColdDataVolumeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReleaseColdDataVolumeResponse
 func (client *Client) ReleaseColdDataVolumeWithOptions(request *ReleaseColdDataVolumeRequest, runtime *util.RuntimeOptions) (_result *ReleaseColdDataVolumeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13979,6 +17271,13 @@ func (client *Client) ReleaseColdDataVolumeWithOptions(request *ReleaseColdDataV
 	return _result, _err
 }
 
+// Summary:
+//
+// 关闭冷存储
+//
+// @param request - ReleaseColdDataVolumeRequest
+//
+// @return ReleaseColdDataVolumeResponse
 func (client *Client) ReleaseColdDataVolume(request *ReleaseColdDataVolumeRequest) (_result *ReleaseColdDataVolumeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleaseColdDataVolumeResponse{}
@@ -13990,6 +17289,11 @@ func (client *Client) ReleaseColdDataVolume(request *ReleaseColdDataVolumeReques
 	return _result, _err
 }
 
+// @param request - ReleaseInstancePublicConnectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReleaseInstancePublicConnectionResponse
 func (client *Client) ReleaseInstancePublicConnectionWithOptions(request *ReleaseInstancePublicConnectionRequest, runtime *util.RuntimeOptions) (_result *ReleaseInstancePublicConnectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14047,6 +17351,9 @@ func (client *Client) ReleaseInstancePublicConnectionWithOptions(request *Releas
 	return _result, _err
 }
 
+// @param request - ReleaseInstancePublicConnectionRequest
+//
+// @return ReleaseInstancePublicConnectionResponse
 func (client *Client) ReleaseInstancePublicConnection(request *ReleaseInstancePublicConnectionRequest) (_result *ReleaseInstancePublicConnectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleaseInstancePublicConnectionResponse{}
@@ -14058,6 +17365,11 @@ func (client *Client) ReleaseInstancePublicConnection(request *ReleaseInstancePu
 	return _result, _err
 }
 
+// @param request - ResetAccountPasswordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetAccountPasswordResponse
 func (client *Client) ResetAccountPasswordWithOptions(request *ResetAccountPasswordRequest, runtime *util.RuntimeOptions) (_result *ResetAccountPasswordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14111,6 +17423,9 @@ func (client *Client) ResetAccountPasswordWithOptions(request *ResetAccountPassw
 	return _result, _err
 }
 
+// @param request - ResetAccountPasswordRequest
+//
+// @return ResetAccountPasswordResponse
 func (client *Client) ResetAccountPassword(request *ResetAccountPasswordRequest) (_result *ResetAccountPasswordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResetAccountPasswordResponse{}
@@ -14122,6 +17437,11 @@ func (client *Client) ResetAccountPassword(request *ResetAccountPasswordRequest)
 	return _result, _err
 }
 
+// @param request - RestartDBInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestartDBInstanceResponse
 func (client *Client) RestartDBInstanceWithOptions(request *RestartDBInstanceRequest, runtime *util.RuntimeOptions) (_result *RestartDBInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14159,6 +17479,9 @@ func (client *Client) RestartDBInstanceWithOptions(request *RestartDBInstanceReq
 	return _result, _err
 }
 
+// @param request - RestartDBInstanceRequest
+//
+// @return RestartDBInstanceResponse
 func (client *Client) RestartDBInstance(request *RestartDBInstanceRequest) (_result *RestartDBInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RestartDBInstanceResponse{}
@@ -14170,6 +17493,11 @@ func (client *Client) RestartDBInstance(request *RestartDBInstanceRequest) (_res
 	return _result, _err
 }
 
+// @param request - SwitchDBInstanceHARequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SwitchDBInstanceHAResponse
 func (client *Client) SwitchDBInstanceHAWithOptions(request *SwitchDBInstanceHARequest, runtime *util.RuntimeOptions) (_result *SwitchDBInstanceHAResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14223,6 +17551,9 @@ func (client *Client) SwitchDBInstanceHAWithOptions(request *SwitchDBInstanceHAR
 	return _result, _err
 }
 
+// @param request - SwitchDBInstanceHARequest
+//
+// @return SwitchDBInstanceHAResponse
 func (client *Client) SwitchDBInstanceHA(request *SwitchDBInstanceHARequest) (_result *SwitchDBInstanceHAResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SwitchDBInstanceHAResponse{}
@@ -14234,6 +17565,15 @@ func (client *Client) SwitchDBInstanceHA(request *SwitchDBInstanceHARequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 打标签接口
+//
+// @param request - TagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14279,6 +17619,13 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 打标签接口
+//
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
 func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TagResourcesResponse{}
@@ -14290,6 +17637,15 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 删标签接口
+//
+// @param request - UntagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14339,6 +17695,13 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 删标签接口
+//
+// @param request - UntagResourcesRequest
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
@@ -14350,6 +17713,11 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	return _result, _err
 }
 
+// @param request - UpdateBackupPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateBackupPolicyResponse
 func (client *Client) UpdateBackupPolicyWithOptions(request *UpdateBackupPolicyRequest, runtime *util.RuntimeOptions) (_result *UpdateBackupPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14459,6 +17827,9 @@ func (client *Client) UpdateBackupPolicyWithOptions(request *UpdateBackupPolicyR
 	return _result, _err
 }
 
+// @param request - UpdateBackupPolicyRequest
+//
+// @return UpdateBackupPolicyResponse
 func (client *Client) UpdateBackupPolicy(request *UpdateBackupPolicyRequest) (_result *UpdateBackupPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateBackupPolicyResponse{}
@@ -14470,6 +17841,11 @@ func (client *Client) UpdateBackupPolicy(request *UpdateBackupPolicyRequest) (_r
 	return _result, _err
 }
 
+// @param request - UpdateDBInstanceSSLRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDBInstanceSSLResponse
 func (client *Client) UpdateDBInstanceSSLWithOptions(request *UpdateDBInstanceSSLRequest, runtime *util.RuntimeOptions) (_result *UpdateDBInstanceSSLResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14515,6 +17891,9 @@ func (client *Client) UpdateDBInstanceSSLWithOptions(request *UpdateDBInstanceSS
 	return _result, _err
 }
 
+// @param request - UpdateDBInstanceSSLRequest
+//
+// @return UpdateDBInstanceSSLResponse
 func (client *Client) UpdateDBInstanceSSL(request *UpdateDBInstanceSSLRequest) (_result *UpdateDBInstanceSSLResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateDBInstanceSSLResponse{}
@@ -14526,6 +17905,11 @@ func (client *Client) UpdateDBInstanceSSL(request *UpdateDBInstanceSSLRequest) (
 	return _result, _err
 }
 
+// @param request - UpdateDBInstanceTDERequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDBInstanceTDEResponse
 func (client *Client) UpdateDBInstanceTDEWithOptions(request *UpdateDBInstanceTDERequest, runtime *util.RuntimeOptions) (_result *UpdateDBInstanceTDEResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14575,6 +17959,9 @@ func (client *Client) UpdateDBInstanceTDEWithOptions(request *UpdateDBInstanceTD
 	return _result, _err
 }
 
+// @param request - UpdateDBInstanceTDERequest
+//
+// @return UpdateDBInstanceTDEResponse
 func (client *Client) UpdateDBInstanceTDE(request *UpdateDBInstanceTDERequest) (_result *UpdateDBInstanceTDEResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateDBInstanceTDEResponse{}
@@ -14586,6 +17973,11 @@ func (client *Client) UpdateDBInstanceTDE(request *UpdateDBInstanceTDERequest) (
 	return _result, _err
 }
 
+// @param request - UpdatePolarDBXInstanceNodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePolarDBXInstanceNodeResponse
 func (client *Client) UpdatePolarDBXInstanceNodeWithOptions(request *UpdatePolarDBXInstanceNodeRequest, runtime *util.RuntimeOptions) (_result *UpdatePolarDBXInstanceNodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14651,6 +18043,9 @@ func (client *Client) UpdatePolarDBXInstanceNodeWithOptions(request *UpdatePolar
 	return _result, _err
 }
 
+// @param request - UpdatePolarDBXInstanceNodeRequest
+//
+// @return UpdatePolarDBXInstanceNodeResponse
 func (client *Client) UpdatePolarDBXInstanceNode(request *UpdatePolarDBXInstanceNodeRequest) (_result *UpdatePolarDBXInstanceNodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdatePolarDBXInstanceNodeResponse{}
@@ -14662,6 +18057,11 @@ func (client *Client) UpdatePolarDBXInstanceNode(request *UpdatePolarDBXInstance
 	return _result, _err
 }
 
+// @param request - UpgradeDBInstanceKernelVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpgradeDBInstanceKernelVersionResponse
 func (client *Client) UpgradeDBInstanceKernelVersionWithOptions(request *UpgradeDBInstanceKernelVersionRequest, runtime *util.RuntimeOptions) (_result *UpgradeDBInstanceKernelVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14707,6 +18107,9 @@ func (client *Client) UpgradeDBInstanceKernelVersionWithOptions(request *Upgrade
 	return _result, _err
 }
 
+// @param request - UpgradeDBInstanceKernelVersionRequest
+//
+// @return UpgradeDBInstanceKernelVersionResponse
 func (client *Client) UpgradeDBInstanceKernelVersion(request *UpgradeDBInstanceKernelVersionRequest) (_result *UpgradeDBInstanceKernelVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpgradeDBInstanceKernelVersionResponse{}
