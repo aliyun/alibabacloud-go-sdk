@@ -1179,13 +1179,16 @@ type CreateAggregateCompliancePackRequest struct {
 	// example:
 	//
 	// Test compliance pack descripaiton.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description                  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExcludeRegionIdsScope        *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
+	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
 	// The ID of the resource that you do not want to evaluate by using the compliance package. Separate multiple resource IDs with commas (,).
 	//
 	// example:
 	//
 	// eip-8vbf3x310fn56ijfd****
-	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeResourceIdsScope *string                                                 `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeTagsScope        []*CreateAggregateCompliancePackRequestExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
 	// The ID of the region whose resources you want to evaluate by using the compliance package. Separate multiple region IDs with commas (,).
 	//
 	// example:
@@ -1198,6 +1201,7 @@ type CreateAggregateCompliancePackRequest struct {
 	//
 	// rg-aekzc7r7rhx****
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	ResourceIdsScope      *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
 	// The risk level of the resources that are not compliant with the rules in the compliance package. Default value: 2. Valid values:
 	//
 	// 	- 1: high.
@@ -1223,7 +1227,8 @@ type CreateAggregateCompliancePackRequest struct {
 	// example:
 	//
 	// test
-	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagValueScope *string                                          `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagsScope     []*CreateAggregateCompliancePackRequestTagsScope `json:"TagsScope,omitempty" xml:"TagsScope,omitempty" type:"Repeated"`
 	// The information about the template that is used to create the compliance package. You can call the GetAggregateCompliancePack operation to view the details of an existing compliance package or write a compliance package template. For more information, see [Write a compliance package template in a configuration file](https://help.aliyun.com/document_detail/2659733.html). You must specify one of ConfigRules and TemplateContent.
 	//
 	// example:
@@ -1275,8 +1280,23 @@ func (s *CreateAggregateCompliancePackRequest) SetDescription(v string) *CreateA
 	return s
 }
 
+func (s *CreateAggregateCompliancePackRequest) SetExcludeRegionIdsScope(v string) *CreateAggregateCompliancePackRequest {
+	s.ExcludeRegionIdsScope = &v
+	return s
+}
+
+func (s *CreateAggregateCompliancePackRequest) SetExcludeResourceGroupIdsScope(v string) *CreateAggregateCompliancePackRequest {
+	s.ExcludeResourceGroupIdsScope = &v
+	return s
+}
+
 func (s *CreateAggregateCompliancePackRequest) SetExcludeResourceIdsScope(v string) *CreateAggregateCompliancePackRequest {
 	s.ExcludeResourceIdsScope = &v
+	return s
+}
+
+func (s *CreateAggregateCompliancePackRequest) SetExcludeTagsScope(v []*CreateAggregateCompliancePackRequestExcludeTagsScope) *CreateAggregateCompliancePackRequest {
+	s.ExcludeTagsScope = v
 	return s
 }
 
@@ -1287,6 +1307,11 @@ func (s *CreateAggregateCompliancePackRequest) SetRegionIdsScope(v string) *Crea
 
 func (s *CreateAggregateCompliancePackRequest) SetResourceGroupIdsScope(v string) *CreateAggregateCompliancePackRequest {
 	s.ResourceGroupIdsScope = &v
+	return s
+}
+
+func (s *CreateAggregateCompliancePackRequest) SetResourceIdsScope(v string) *CreateAggregateCompliancePackRequest {
+	s.ResourceIdsScope = &v
 	return s
 }
 
@@ -1302,6 +1327,11 @@ func (s *CreateAggregateCompliancePackRequest) SetTagKeyScope(v string) *CreateA
 
 func (s *CreateAggregateCompliancePackRequest) SetTagValueScope(v string) *CreateAggregateCompliancePackRequest {
 	s.TagValueScope = &v
+	return s
+}
+
+func (s *CreateAggregateCompliancePackRequest) SetTagsScope(v []*CreateAggregateCompliancePackRequestTagsScope) *CreateAggregateCompliancePackRequest {
+	s.TagsScope = v
 	return s
 }
 
@@ -1430,6 +1460,52 @@ func (s *CreateAggregateCompliancePackRequestConfigRulesConfigRuleParameters) Se
 	return s
 }
 
+type CreateAggregateCompliancePackRequestExcludeTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s CreateAggregateCompliancePackRequestExcludeTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAggregateCompliancePackRequestExcludeTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAggregateCompliancePackRequestExcludeTagsScope) SetTagKey(v string) *CreateAggregateCompliancePackRequestExcludeTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *CreateAggregateCompliancePackRequestExcludeTagsScope) SetTagValue(v string) *CreateAggregateCompliancePackRequestExcludeTagsScope {
+	s.TagValue = &v
+	return s
+}
+
+type CreateAggregateCompliancePackRequestTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s CreateAggregateCompliancePackRequestTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAggregateCompliancePackRequestTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAggregateCompliancePackRequestTagsScope) SetTagKey(v string) *CreateAggregateCompliancePackRequestTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *CreateAggregateCompliancePackRequestTagsScope) SetTagValue(v string) *CreateAggregateCompliancePackRequestTagsScope {
+	s.TagValue = &v
+	return s
+}
+
 type CreateAggregateCompliancePackShrinkRequest struct {
 	// The ID of the account group.
 	//
@@ -1480,13 +1556,16 @@ type CreateAggregateCompliancePackShrinkRequest struct {
 	// example:
 	//
 	// Test compliance pack descripaiton.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description                  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExcludeRegionIdsScope        *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
+	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
 	// The ID of the resource that you do not want to evaluate by using the compliance package. Separate multiple resource IDs with commas (,).
 	//
 	// example:
 	//
 	// eip-8vbf3x310fn56ijfd****
-	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeResourceIdsScope *string                                                       `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeTagsScope        []*CreateAggregateCompliancePackShrinkRequestExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
 	// The ID of the region whose resources you want to evaluate by using the compliance package. Separate multiple region IDs with commas (,).
 	//
 	// example:
@@ -1499,6 +1578,7 @@ type CreateAggregateCompliancePackShrinkRequest struct {
 	//
 	// rg-aekzc7r7rhx****
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	ResourceIdsScope      *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
 	// The risk level of the resources that are not compliant with the rules in the compliance package. Default value: 2. Valid values:
 	//
 	// 	- 1: high.
@@ -1524,7 +1604,8 @@ type CreateAggregateCompliancePackShrinkRequest struct {
 	// example:
 	//
 	// test
-	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagValueScope *string                                                `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagsScope     []*CreateAggregateCompliancePackShrinkRequestTagsScope `json:"TagsScope,omitempty" xml:"TagsScope,omitempty" type:"Repeated"`
 	// The information about the template that is used to create the compliance package. You can call the GetAggregateCompliancePack operation to view the details of an existing compliance package or write a compliance package template. For more information, see [Write a compliance package template in a configuration file](https://help.aliyun.com/document_detail/2659733.html). You must specify one of ConfigRules and TemplateContent.
 	//
 	// example:
@@ -1576,8 +1657,23 @@ func (s *CreateAggregateCompliancePackShrinkRequest) SetDescription(v string) *C
 	return s
 }
 
+func (s *CreateAggregateCompliancePackShrinkRequest) SetExcludeRegionIdsScope(v string) *CreateAggregateCompliancePackShrinkRequest {
+	s.ExcludeRegionIdsScope = &v
+	return s
+}
+
+func (s *CreateAggregateCompliancePackShrinkRequest) SetExcludeResourceGroupIdsScope(v string) *CreateAggregateCompliancePackShrinkRequest {
+	s.ExcludeResourceGroupIdsScope = &v
+	return s
+}
+
 func (s *CreateAggregateCompliancePackShrinkRequest) SetExcludeResourceIdsScope(v string) *CreateAggregateCompliancePackShrinkRequest {
 	s.ExcludeResourceIdsScope = &v
+	return s
+}
+
+func (s *CreateAggregateCompliancePackShrinkRequest) SetExcludeTagsScope(v []*CreateAggregateCompliancePackShrinkRequestExcludeTagsScope) *CreateAggregateCompliancePackShrinkRequest {
+	s.ExcludeTagsScope = v
 	return s
 }
 
@@ -1588,6 +1684,11 @@ func (s *CreateAggregateCompliancePackShrinkRequest) SetRegionIdsScope(v string)
 
 func (s *CreateAggregateCompliancePackShrinkRequest) SetResourceGroupIdsScope(v string) *CreateAggregateCompliancePackShrinkRequest {
 	s.ResourceGroupIdsScope = &v
+	return s
+}
+
+func (s *CreateAggregateCompliancePackShrinkRequest) SetResourceIdsScope(v string) *CreateAggregateCompliancePackShrinkRequest {
+	s.ResourceIdsScope = &v
 	return s
 }
 
@@ -1606,8 +1707,59 @@ func (s *CreateAggregateCompliancePackShrinkRequest) SetTagValueScope(v string) 
 	return s
 }
 
+func (s *CreateAggregateCompliancePackShrinkRequest) SetTagsScope(v []*CreateAggregateCompliancePackShrinkRequestTagsScope) *CreateAggregateCompliancePackShrinkRequest {
+	s.TagsScope = v
+	return s
+}
+
 func (s *CreateAggregateCompliancePackShrinkRequest) SetTemplateContent(v string) *CreateAggregateCompliancePackShrinkRequest {
 	s.TemplateContent = &v
+	return s
+}
+
+type CreateAggregateCompliancePackShrinkRequestExcludeTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s CreateAggregateCompliancePackShrinkRequestExcludeTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAggregateCompliancePackShrinkRequestExcludeTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAggregateCompliancePackShrinkRequestExcludeTagsScope) SetTagKey(v string) *CreateAggregateCompliancePackShrinkRequestExcludeTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *CreateAggregateCompliancePackShrinkRequestExcludeTagsScope) SetTagValue(v string) *CreateAggregateCompliancePackShrinkRequestExcludeTagsScope {
+	s.TagValue = &v
+	return s
+}
+
+type CreateAggregateCompliancePackShrinkRequestTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s CreateAggregateCompliancePackShrinkRequestTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAggregateCompliancePackShrinkRequestTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAggregateCompliancePackShrinkRequestTagsScope) SetTagKey(v string) *CreateAggregateCompliancePackShrinkRequestTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *CreateAggregateCompliancePackShrinkRequestTagsScope) SetTagValue(v string) *CreateAggregateCompliancePackShrinkRequestTagsScope {
+	s.TagValue = &v
 	return s
 }
 
@@ -1945,6 +2097,7 @@ func (s *CreateAggregateConfigDeliveryChannelResponse) SetBody(v *CreateAggregat
 }
 
 type CreateAggregateConfigRuleRequest struct {
+	AccountIdsScope *string `json:"AccountIdsScope,omitempty" xml:"AccountIdsScope,omitempty"`
 	// The ID of the account group.
 	//
 	// For more information about how to obtain the ID of the account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
@@ -1998,7 +2151,9 @@ type CreateAggregateConfigRuleRequest struct {
 	// example:
 	//
 	// fd-pWmkqZ****
-	ExcludeFolderIdsScope *string `json:"ExcludeFolderIdsScope,omitempty" xml:"ExcludeFolderIdsScope,omitempty"`
+	ExcludeFolderIdsScope        *string `json:"ExcludeFolderIdsScope,omitempty" xml:"ExcludeFolderIdsScope,omitempty"`
+	ExcludeRegionIdsScope        *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
+	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
 	// The ID of the resource to be excluded from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
 	//
 	// > This parameter applies only to a managed rule.
@@ -2006,7 +2161,8 @@ type CreateAggregateConfigRuleRequest struct {
 	// example:
 	//
 	// lb-t4nbowvtbkss7t326****
-	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeResourceIdsScope *string                                             `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeTagsScope        []*CreateAggregateConfigRuleRequestExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
 	// The ID of the resource directory to which the rule applies, which means that the resources within member accounts in the resource directory are evaluated based on the rule.
 	//
 	// >
@@ -2059,6 +2215,7 @@ type CreateAggregateConfigRuleRequest struct {
 	//
 	// rg-aekzc7r7rhx****
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	ResourceIdsScope      *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
 	// The type of the resource evaluated by the rule. Separate multiple resource types with commas (,).
 	//
 	// This parameter is required.
@@ -2132,7 +2289,8 @@ type CreateAggregateConfigRuleRequest struct {
 	// example:
 	//
 	// test
-	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagValueScope *string                                      `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagsScope     []*CreateAggregateConfigRuleRequestTagsScope `json:"TagsScope,omitempty" xml:"TagsScope,omitempty" type:"Repeated"`
 }
 
 func (s CreateAggregateConfigRuleRequest) String() string {
@@ -2141,6 +2299,11 @@ func (s CreateAggregateConfigRuleRequest) String() string {
 
 func (s CreateAggregateConfigRuleRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateAggregateConfigRuleRequest) SetAccountIdsScope(v string) *CreateAggregateConfigRuleRequest {
+	s.AccountIdsScope = &v
+	return s
 }
 
 func (s *CreateAggregateConfigRuleRequest) SetAggregatorId(v string) *CreateAggregateConfigRuleRequest {
@@ -2178,8 +2341,23 @@ func (s *CreateAggregateConfigRuleRequest) SetExcludeFolderIdsScope(v string) *C
 	return s
 }
 
+func (s *CreateAggregateConfigRuleRequest) SetExcludeRegionIdsScope(v string) *CreateAggregateConfigRuleRequest {
+	s.ExcludeRegionIdsScope = &v
+	return s
+}
+
+func (s *CreateAggregateConfigRuleRequest) SetExcludeResourceGroupIdsScope(v string) *CreateAggregateConfigRuleRequest {
+	s.ExcludeResourceGroupIdsScope = &v
+	return s
+}
+
 func (s *CreateAggregateConfigRuleRequest) SetExcludeResourceIdsScope(v string) *CreateAggregateConfigRuleRequest {
 	s.ExcludeResourceIdsScope = &v
+	return s
+}
+
+func (s *CreateAggregateConfigRuleRequest) SetExcludeTagsScope(v []*CreateAggregateConfigRuleRequestExcludeTagsScope) *CreateAggregateConfigRuleRequest {
+	s.ExcludeTagsScope = v
 	return s
 }
 
@@ -2205,6 +2383,11 @@ func (s *CreateAggregateConfigRuleRequest) SetRegionIdsScope(v string) *CreateAg
 
 func (s *CreateAggregateConfigRuleRequest) SetResourceGroupIdsScope(v string) *CreateAggregateConfigRuleRequest {
 	s.ResourceGroupIdsScope = &v
+	return s
+}
+
+func (s *CreateAggregateConfigRuleRequest) SetResourceIdsScope(v string) *CreateAggregateConfigRuleRequest {
+	s.ResourceIdsScope = &v
 	return s
 }
 
@@ -2243,7 +2426,59 @@ func (s *CreateAggregateConfigRuleRequest) SetTagValueScope(v string) *CreateAgg
 	return s
 }
 
+func (s *CreateAggregateConfigRuleRequest) SetTagsScope(v []*CreateAggregateConfigRuleRequestTagsScope) *CreateAggregateConfigRuleRequest {
+	s.TagsScope = v
+	return s
+}
+
+type CreateAggregateConfigRuleRequestExcludeTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s CreateAggregateConfigRuleRequestExcludeTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAggregateConfigRuleRequestExcludeTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAggregateConfigRuleRequestExcludeTagsScope) SetTagKey(v string) *CreateAggregateConfigRuleRequestExcludeTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *CreateAggregateConfigRuleRequestExcludeTagsScope) SetTagValue(v string) *CreateAggregateConfigRuleRequestExcludeTagsScope {
+	s.TagValue = &v
+	return s
+}
+
+type CreateAggregateConfigRuleRequestTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s CreateAggregateConfigRuleRequestTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAggregateConfigRuleRequestTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAggregateConfigRuleRequestTagsScope) SetTagKey(v string) *CreateAggregateConfigRuleRequestTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *CreateAggregateConfigRuleRequestTagsScope) SetTagValue(v string) *CreateAggregateConfigRuleRequestTagsScope {
+	s.TagValue = &v
+	return s
+}
+
 type CreateAggregateConfigRuleShrinkRequest struct {
+	AccountIdsScope *string `json:"AccountIdsScope,omitempty" xml:"AccountIdsScope,omitempty"`
 	// The ID of the account group.
 	//
 	// For more information about how to obtain the ID of the account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
@@ -2297,7 +2532,9 @@ type CreateAggregateConfigRuleShrinkRequest struct {
 	// example:
 	//
 	// fd-pWmkqZ****
-	ExcludeFolderIdsScope *string `json:"ExcludeFolderIdsScope,omitempty" xml:"ExcludeFolderIdsScope,omitempty"`
+	ExcludeFolderIdsScope        *string `json:"ExcludeFolderIdsScope,omitempty" xml:"ExcludeFolderIdsScope,omitempty"`
+	ExcludeRegionIdsScope        *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
+	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
 	// The ID of the resource to be excluded from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
 	//
 	// > This parameter applies only to a managed rule.
@@ -2305,7 +2542,8 @@ type CreateAggregateConfigRuleShrinkRequest struct {
 	// example:
 	//
 	// lb-t4nbowvtbkss7t326****
-	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeResourceIdsScope *string                                                   `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeTagsScope        []*CreateAggregateConfigRuleShrinkRequestExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
 	// The ID of the resource directory to which the rule applies, which means that the resources within member accounts in the resource directory are evaluated based on the rule.
 	//
 	// >
@@ -2358,6 +2596,7 @@ type CreateAggregateConfigRuleShrinkRequest struct {
 	//
 	// rg-aekzc7r7rhx****
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	ResourceIdsScope      *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
 	// The type of the resource evaluated by the rule. Separate multiple resource types with commas (,).
 	//
 	// This parameter is required.
@@ -2431,7 +2670,8 @@ type CreateAggregateConfigRuleShrinkRequest struct {
 	// example:
 	//
 	// test
-	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagValueScope *string                                            `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagsScope     []*CreateAggregateConfigRuleShrinkRequestTagsScope `json:"TagsScope,omitempty" xml:"TagsScope,omitempty" type:"Repeated"`
 }
 
 func (s CreateAggregateConfigRuleShrinkRequest) String() string {
@@ -2440,6 +2680,11 @@ func (s CreateAggregateConfigRuleShrinkRequest) String() string {
 
 func (s CreateAggregateConfigRuleShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateAggregateConfigRuleShrinkRequest) SetAccountIdsScope(v string) *CreateAggregateConfigRuleShrinkRequest {
+	s.AccountIdsScope = &v
+	return s
 }
 
 func (s *CreateAggregateConfigRuleShrinkRequest) SetAggregatorId(v string) *CreateAggregateConfigRuleShrinkRequest {
@@ -2477,8 +2722,23 @@ func (s *CreateAggregateConfigRuleShrinkRequest) SetExcludeFolderIdsScope(v stri
 	return s
 }
 
+func (s *CreateAggregateConfigRuleShrinkRequest) SetExcludeRegionIdsScope(v string) *CreateAggregateConfigRuleShrinkRequest {
+	s.ExcludeRegionIdsScope = &v
+	return s
+}
+
+func (s *CreateAggregateConfigRuleShrinkRequest) SetExcludeResourceGroupIdsScope(v string) *CreateAggregateConfigRuleShrinkRequest {
+	s.ExcludeResourceGroupIdsScope = &v
+	return s
+}
+
 func (s *CreateAggregateConfigRuleShrinkRequest) SetExcludeResourceIdsScope(v string) *CreateAggregateConfigRuleShrinkRequest {
 	s.ExcludeResourceIdsScope = &v
+	return s
+}
+
+func (s *CreateAggregateConfigRuleShrinkRequest) SetExcludeTagsScope(v []*CreateAggregateConfigRuleShrinkRequestExcludeTagsScope) *CreateAggregateConfigRuleShrinkRequest {
+	s.ExcludeTagsScope = v
 	return s
 }
 
@@ -2504,6 +2764,11 @@ func (s *CreateAggregateConfigRuleShrinkRequest) SetRegionIdsScope(v string) *Cr
 
 func (s *CreateAggregateConfigRuleShrinkRequest) SetResourceGroupIdsScope(v string) *CreateAggregateConfigRuleShrinkRequest {
 	s.ResourceGroupIdsScope = &v
+	return s
+}
+
+func (s *CreateAggregateConfigRuleShrinkRequest) SetResourceIdsScope(v string) *CreateAggregateConfigRuleShrinkRequest {
+	s.ResourceIdsScope = &v
 	return s
 }
 
@@ -2539,6 +2804,57 @@ func (s *CreateAggregateConfigRuleShrinkRequest) SetTagKeyScope(v string) *Creat
 
 func (s *CreateAggregateConfigRuleShrinkRequest) SetTagValueScope(v string) *CreateAggregateConfigRuleShrinkRequest {
 	s.TagValueScope = &v
+	return s
+}
+
+func (s *CreateAggregateConfigRuleShrinkRequest) SetTagsScope(v []*CreateAggregateConfigRuleShrinkRequestTagsScope) *CreateAggregateConfigRuleShrinkRequest {
+	s.TagsScope = v
+	return s
+}
+
+type CreateAggregateConfigRuleShrinkRequestExcludeTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s CreateAggregateConfigRuleShrinkRequestExcludeTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAggregateConfigRuleShrinkRequestExcludeTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAggregateConfigRuleShrinkRequestExcludeTagsScope) SetTagKey(v string) *CreateAggregateConfigRuleShrinkRequestExcludeTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *CreateAggregateConfigRuleShrinkRequestExcludeTagsScope) SetTagValue(v string) *CreateAggregateConfigRuleShrinkRequestExcludeTagsScope {
+	s.TagValue = &v
+	return s
+}
+
+type CreateAggregateConfigRuleShrinkRequestTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s CreateAggregateConfigRuleShrinkRequestTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAggregateConfigRuleShrinkRequestTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAggregateConfigRuleShrinkRequestTagsScope) SetTagKey(v string) *CreateAggregateConfigRuleShrinkRequestTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *CreateAggregateConfigRuleShrinkRequestTagsScope) SetTagValue(v string) *CreateAggregateConfigRuleShrinkRequestTagsScope {
+	s.TagValue = &v
 	return s
 }
 
@@ -3166,13 +3482,16 @@ type CreateCompliancePackRequest struct {
 	// example:
 	//
 	// Test pack description.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description                  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExcludeRegionIdsScope        *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
+	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
 	// The ID of the resource that you do not want to evaluate by using the compliance package. Separate multiple resource IDs with commas (,).
 	//
 	// example:
 	//
 	// eip-8vbf3x310fn56ijfd****
-	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeResourceIdsScope *string                                        `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeTagsScope        []*CreateCompliancePackRequestExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
 	// The ID of the region whose resources you want to evaluate by using the compliance package. Separate multiple region IDs with commas (,).
 	//
 	// example:
@@ -3185,6 +3504,7 @@ type CreateCompliancePackRequest struct {
 	//
 	// rg-aekzdibsjjc****
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	ResourceIdsScope      *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
 	// The risk level of the resources that are not compliant with the rules in the compliance package. Default value: 2. Valid values:
 	//
 	// 	- 1: high.
@@ -3210,7 +3530,8 @@ type CreateCompliancePackRequest struct {
 	// example:
 	//
 	// test
-	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagValueScope *string                                 `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagsScope     []*CreateCompliancePackRequestTagsScope `json:"TagsScope,omitempty" xml:"TagsScope,omitempty" type:"Repeated"`
 	// The information about the template that is used to generate the compliance package. You can call an API operation to view the details of an existing compliance package or write a compliance package template. For more information, see [Write a compliance package template in a configuration file](https://help.aliyun.com/document_detail/2659733.html). You must specify one of ConfigRules and TemplateContent.
 	//
 	// example:
@@ -3257,8 +3578,23 @@ func (s *CreateCompliancePackRequest) SetDescription(v string) *CreateCompliance
 	return s
 }
 
+func (s *CreateCompliancePackRequest) SetExcludeRegionIdsScope(v string) *CreateCompliancePackRequest {
+	s.ExcludeRegionIdsScope = &v
+	return s
+}
+
+func (s *CreateCompliancePackRequest) SetExcludeResourceGroupIdsScope(v string) *CreateCompliancePackRequest {
+	s.ExcludeResourceGroupIdsScope = &v
+	return s
+}
+
 func (s *CreateCompliancePackRequest) SetExcludeResourceIdsScope(v string) *CreateCompliancePackRequest {
 	s.ExcludeResourceIdsScope = &v
+	return s
+}
+
+func (s *CreateCompliancePackRequest) SetExcludeTagsScope(v []*CreateCompliancePackRequestExcludeTagsScope) *CreateCompliancePackRequest {
+	s.ExcludeTagsScope = v
 	return s
 }
 
@@ -3269,6 +3605,11 @@ func (s *CreateCompliancePackRequest) SetRegionIdsScope(v string) *CreateComplia
 
 func (s *CreateCompliancePackRequest) SetResourceGroupIdsScope(v string) *CreateCompliancePackRequest {
 	s.ResourceGroupIdsScope = &v
+	return s
+}
+
+func (s *CreateCompliancePackRequest) SetResourceIdsScope(v string) *CreateCompliancePackRequest {
+	s.ResourceIdsScope = &v
 	return s
 }
 
@@ -3284,6 +3625,11 @@ func (s *CreateCompliancePackRequest) SetTagKeyScope(v string) *CreateCompliance
 
 func (s *CreateCompliancePackRequest) SetTagValueScope(v string) *CreateCompliancePackRequest {
 	s.TagValueScope = &v
+	return s
+}
+
+func (s *CreateCompliancePackRequest) SetTagsScope(v []*CreateCompliancePackRequestTagsScope) *CreateCompliancePackRequest {
+	s.TagsScope = v
 	return s
 }
 
@@ -3412,6 +3758,52 @@ func (s *CreateCompliancePackRequestConfigRulesConfigRuleParameters) SetParamete
 	return s
 }
 
+type CreateCompliancePackRequestExcludeTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s CreateCompliancePackRequestExcludeTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCompliancePackRequestExcludeTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCompliancePackRequestExcludeTagsScope) SetTagKey(v string) *CreateCompliancePackRequestExcludeTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *CreateCompliancePackRequestExcludeTagsScope) SetTagValue(v string) *CreateCompliancePackRequestExcludeTagsScope {
+	s.TagValue = &v
+	return s
+}
+
+type CreateCompliancePackRequestTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s CreateCompliancePackRequestTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCompliancePackRequestTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCompliancePackRequestTagsScope) SetTagKey(v string) *CreateCompliancePackRequestTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *CreateCompliancePackRequestTagsScope) SetTagValue(v string) *CreateCompliancePackRequestTagsScope {
+	s.TagValue = &v
+	return s
+}
+
 type CreateCompliancePackShrinkRequest struct {
 	// The client token that you want to use to ensure the idempotency of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.``
 	//
@@ -3455,13 +3847,16 @@ type CreateCompliancePackShrinkRequest struct {
 	// example:
 	//
 	// Test pack description.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description                  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExcludeRegionIdsScope        *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
+	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
 	// The ID of the resource that you do not want to evaluate by using the compliance package. Separate multiple resource IDs with commas (,).
 	//
 	// example:
 	//
 	// eip-8vbf3x310fn56ijfd****
-	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeResourceIdsScope *string                                              `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeTagsScope        []*CreateCompliancePackShrinkRequestExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
 	// The ID of the region whose resources you want to evaluate by using the compliance package. Separate multiple region IDs with commas (,).
 	//
 	// example:
@@ -3474,6 +3869,7 @@ type CreateCompliancePackShrinkRequest struct {
 	//
 	// rg-aekzdibsjjc****
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	ResourceIdsScope      *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
 	// The risk level of the resources that are not compliant with the rules in the compliance package. Default value: 2. Valid values:
 	//
 	// 	- 1: high.
@@ -3499,7 +3895,8 @@ type CreateCompliancePackShrinkRequest struct {
 	// example:
 	//
 	// test
-	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagValueScope *string                                       `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagsScope     []*CreateCompliancePackShrinkRequestTagsScope `json:"TagsScope,omitempty" xml:"TagsScope,omitempty" type:"Repeated"`
 	// The information about the template that is used to generate the compliance package. You can call an API operation to view the details of an existing compliance package or write a compliance package template. For more information, see [Write a compliance package template in a configuration file](https://help.aliyun.com/document_detail/2659733.html). You must specify one of ConfigRules and TemplateContent.
 	//
 	// example:
@@ -3546,8 +3943,23 @@ func (s *CreateCompliancePackShrinkRequest) SetDescription(v string) *CreateComp
 	return s
 }
 
+func (s *CreateCompliancePackShrinkRequest) SetExcludeRegionIdsScope(v string) *CreateCompliancePackShrinkRequest {
+	s.ExcludeRegionIdsScope = &v
+	return s
+}
+
+func (s *CreateCompliancePackShrinkRequest) SetExcludeResourceGroupIdsScope(v string) *CreateCompliancePackShrinkRequest {
+	s.ExcludeResourceGroupIdsScope = &v
+	return s
+}
+
 func (s *CreateCompliancePackShrinkRequest) SetExcludeResourceIdsScope(v string) *CreateCompliancePackShrinkRequest {
 	s.ExcludeResourceIdsScope = &v
+	return s
+}
+
+func (s *CreateCompliancePackShrinkRequest) SetExcludeTagsScope(v []*CreateCompliancePackShrinkRequestExcludeTagsScope) *CreateCompliancePackShrinkRequest {
+	s.ExcludeTagsScope = v
 	return s
 }
 
@@ -3558,6 +3970,11 @@ func (s *CreateCompliancePackShrinkRequest) SetRegionIdsScope(v string) *CreateC
 
 func (s *CreateCompliancePackShrinkRequest) SetResourceGroupIdsScope(v string) *CreateCompliancePackShrinkRequest {
 	s.ResourceGroupIdsScope = &v
+	return s
+}
+
+func (s *CreateCompliancePackShrinkRequest) SetResourceIdsScope(v string) *CreateCompliancePackShrinkRequest {
+	s.ResourceIdsScope = &v
 	return s
 }
 
@@ -3576,8 +3993,59 @@ func (s *CreateCompliancePackShrinkRequest) SetTagValueScope(v string) *CreateCo
 	return s
 }
 
+func (s *CreateCompliancePackShrinkRequest) SetTagsScope(v []*CreateCompliancePackShrinkRequestTagsScope) *CreateCompliancePackShrinkRequest {
+	s.TagsScope = v
+	return s
+}
+
 func (s *CreateCompliancePackShrinkRequest) SetTemplateContent(v string) *CreateCompliancePackShrinkRequest {
 	s.TemplateContent = &v
+	return s
+}
+
+type CreateCompliancePackShrinkRequestExcludeTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s CreateCompliancePackShrinkRequestExcludeTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCompliancePackShrinkRequestExcludeTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCompliancePackShrinkRequestExcludeTagsScope) SetTagKey(v string) *CreateCompliancePackShrinkRequestExcludeTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *CreateCompliancePackShrinkRequestExcludeTagsScope) SetTagValue(v string) *CreateCompliancePackShrinkRequestExcludeTagsScope {
+	s.TagValue = &v
+	return s
+}
+
+type CreateCompliancePackShrinkRequestTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s CreateCompliancePackShrinkRequestTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCompliancePackShrinkRequestTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCompliancePackShrinkRequestTagsScope) SetTagKey(v string) *CreateCompliancePackShrinkRequestTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *CreateCompliancePackShrinkRequestTagsScope) SetTagValue(v string) *CreateCompliancePackShrinkRequestTagsScope {
+	s.TagValue = &v
 	return s
 }
 
@@ -3925,7 +4393,9 @@ type CreateConfigRuleRequest struct {
 	// ConfigurationItemChangeNotification
 	ConfigRuleTriggerTypes *string `json:"ConfigRuleTriggerTypes,omitempty" xml:"ConfigRuleTriggerTypes,omitempty"`
 	// The description of the rule.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description                  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExcludeRegionIdsScope        *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
+	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
 	// The ID of the resource to be excluded from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
 	//
 	// >  This parameter applies only to managed rules.
@@ -3933,7 +4403,8 @@ type CreateConfigRuleRequest struct {
 	// example:
 	//
 	// lb-t4nbowvtbkss7t326****
-	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeResourceIdsScope *string                                    `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeTagsScope        []*CreateConfigRuleRequestExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
 	// The input parameter of the rule.
 	//
 	// example:
@@ -3974,6 +4445,7 @@ type CreateConfigRuleRequest struct {
 	//
 	// rg-aekzc7r7rhx****
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	ResourceIdsScope      *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
 	// The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
 	//
 	// This parameter is required.
@@ -4047,7 +4519,8 @@ type CreateConfigRuleRequest struct {
 	// example:
 	//
 	// test
-	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagValueScope *string                             `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagsScope     []*CreateConfigRuleRequestTagsScope `json:"TagsScope,omitempty" xml:"TagsScope,omitempty" type:"Repeated"`
 }
 
 func (s CreateConfigRuleRequest) String() string {
@@ -4078,8 +4551,23 @@ func (s *CreateConfigRuleRequest) SetDescription(v string) *CreateConfigRuleRequ
 	return s
 }
 
+func (s *CreateConfigRuleRequest) SetExcludeRegionIdsScope(v string) *CreateConfigRuleRequest {
+	s.ExcludeRegionIdsScope = &v
+	return s
+}
+
+func (s *CreateConfigRuleRequest) SetExcludeResourceGroupIdsScope(v string) *CreateConfigRuleRequest {
+	s.ExcludeResourceGroupIdsScope = &v
+	return s
+}
+
 func (s *CreateConfigRuleRequest) SetExcludeResourceIdsScope(v string) *CreateConfigRuleRequest {
 	s.ExcludeResourceIdsScope = &v
+	return s
+}
+
+func (s *CreateConfigRuleRequest) SetExcludeTagsScope(v []*CreateConfigRuleRequestExcludeTagsScope) *CreateConfigRuleRequest {
+	s.ExcludeTagsScope = v
 	return s
 }
 
@@ -4100,6 +4588,11 @@ func (s *CreateConfigRuleRequest) SetRegionIdsScope(v string) *CreateConfigRuleR
 
 func (s *CreateConfigRuleRequest) SetResourceGroupIdsScope(v string) *CreateConfigRuleRequest {
 	s.ResourceGroupIdsScope = &v
+	return s
+}
+
+func (s *CreateConfigRuleRequest) SetResourceIdsScope(v string) *CreateConfigRuleRequest {
+	s.ResourceIdsScope = &v
 	return s
 }
 
@@ -4138,6 +4631,57 @@ func (s *CreateConfigRuleRequest) SetTagValueScope(v string) *CreateConfigRuleRe
 	return s
 }
 
+func (s *CreateConfigRuleRequest) SetTagsScope(v []*CreateConfigRuleRequestTagsScope) *CreateConfigRuleRequest {
+	s.TagsScope = v
+	return s
+}
+
+type CreateConfigRuleRequestExcludeTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s CreateConfigRuleRequestExcludeTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateConfigRuleRequestExcludeTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *CreateConfigRuleRequestExcludeTagsScope) SetTagKey(v string) *CreateConfigRuleRequestExcludeTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *CreateConfigRuleRequestExcludeTagsScope) SetTagValue(v string) *CreateConfigRuleRequestExcludeTagsScope {
+	s.TagValue = &v
+	return s
+}
+
+type CreateConfigRuleRequestTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s CreateConfigRuleRequestTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateConfigRuleRequestTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *CreateConfigRuleRequestTagsScope) SetTagKey(v string) *CreateConfigRuleRequestTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *CreateConfigRuleRequestTagsScope) SetTagValue(v string) *CreateConfigRuleRequestTagsScope {
+	s.TagValue = &v
+	return s
+}
+
 type CreateConfigRuleShrinkRequest struct {
 	// The client token that you want to use to ensure the idempotency of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.``
 	//
@@ -4164,7 +4708,9 @@ type CreateConfigRuleShrinkRequest struct {
 	// ConfigurationItemChangeNotification
 	ConfigRuleTriggerTypes *string `json:"ConfigRuleTriggerTypes,omitempty" xml:"ConfigRuleTriggerTypes,omitempty"`
 	// The description of the rule.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description                  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExcludeRegionIdsScope        *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
+	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
 	// The ID of the resource to be excluded from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
 	//
 	// >  This parameter applies only to managed rules.
@@ -4172,7 +4718,8 @@ type CreateConfigRuleShrinkRequest struct {
 	// example:
 	//
 	// lb-t4nbowvtbkss7t326****
-	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeResourceIdsScope *string                                          `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeTagsScope        []*CreateConfigRuleShrinkRequestExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
 	// The input parameter of the rule.
 	//
 	// example:
@@ -4213,6 +4760,7 @@ type CreateConfigRuleShrinkRequest struct {
 	//
 	// rg-aekzc7r7rhx****
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	ResourceIdsScope      *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
 	// The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
 	//
 	// This parameter is required.
@@ -4286,7 +4834,8 @@ type CreateConfigRuleShrinkRequest struct {
 	// example:
 	//
 	// test
-	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagValueScope *string                                   `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagsScope     []*CreateConfigRuleShrinkRequestTagsScope `json:"TagsScope,omitempty" xml:"TagsScope,omitempty" type:"Repeated"`
 }
 
 func (s CreateConfigRuleShrinkRequest) String() string {
@@ -4317,8 +4866,23 @@ func (s *CreateConfigRuleShrinkRequest) SetDescription(v string) *CreateConfigRu
 	return s
 }
 
+func (s *CreateConfigRuleShrinkRequest) SetExcludeRegionIdsScope(v string) *CreateConfigRuleShrinkRequest {
+	s.ExcludeRegionIdsScope = &v
+	return s
+}
+
+func (s *CreateConfigRuleShrinkRequest) SetExcludeResourceGroupIdsScope(v string) *CreateConfigRuleShrinkRequest {
+	s.ExcludeResourceGroupIdsScope = &v
+	return s
+}
+
 func (s *CreateConfigRuleShrinkRequest) SetExcludeResourceIdsScope(v string) *CreateConfigRuleShrinkRequest {
 	s.ExcludeResourceIdsScope = &v
+	return s
+}
+
+func (s *CreateConfigRuleShrinkRequest) SetExcludeTagsScope(v []*CreateConfigRuleShrinkRequestExcludeTagsScope) *CreateConfigRuleShrinkRequest {
+	s.ExcludeTagsScope = v
 	return s
 }
 
@@ -4339,6 +4903,11 @@ func (s *CreateConfigRuleShrinkRequest) SetRegionIdsScope(v string) *CreateConfi
 
 func (s *CreateConfigRuleShrinkRequest) SetResourceGroupIdsScope(v string) *CreateConfigRuleShrinkRequest {
 	s.ResourceGroupIdsScope = &v
+	return s
+}
+
+func (s *CreateConfigRuleShrinkRequest) SetResourceIdsScope(v string) *CreateConfigRuleShrinkRequest {
+	s.ResourceIdsScope = &v
 	return s
 }
 
@@ -4374,6 +4943,57 @@ func (s *CreateConfigRuleShrinkRequest) SetTagKeyScope(v string) *CreateConfigRu
 
 func (s *CreateConfigRuleShrinkRequest) SetTagValueScope(v string) *CreateConfigRuleShrinkRequest {
 	s.TagValueScope = &v
+	return s
+}
+
+func (s *CreateConfigRuleShrinkRequest) SetTagsScope(v []*CreateConfigRuleShrinkRequestTagsScope) *CreateConfigRuleShrinkRequest {
+	s.TagsScope = v
+	return s
+}
+
+type CreateConfigRuleShrinkRequestExcludeTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s CreateConfigRuleShrinkRequestExcludeTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateConfigRuleShrinkRequestExcludeTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *CreateConfigRuleShrinkRequestExcludeTagsScope) SetTagKey(v string) *CreateConfigRuleShrinkRequestExcludeTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *CreateConfigRuleShrinkRequestExcludeTagsScope) SetTagValue(v string) *CreateConfigRuleShrinkRequestExcludeTagsScope {
+	s.TagValue = &v
+	return s
+}
+
+type CreateConfigRuleShrinkRequestTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s CreateConfigRuleShrinkRequestTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateConfigRuleShrinkRequestTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *CreateConfigRuleShrinkRequestTagsScope) SetTagKey(v string) *CreateConfigRuleShrinkRequestTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *CreateConfigRuleShrinkRequestTagsScope) SetTagValue(v string) *CreateConfigRuleShrinkRequestTagsScope {
+	s.TagValue = &v
 	return s
 }
 
@@ -8886,12 +9506,15 @@ func (s *GetAggregateCompliancePackResponseBodyCompliancePackConfigRulesConfigRu
 }
 
 type GetAggregateCompliancePackResponseBodyCompliancePackScope struct {
+	ExcludeRegionIdsScope        *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
+	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
 	// The ID of the resource that is not evaluated by using the compliance package.
 	//
 	// example:
 	//
 	// eip-8vbf3x310fn56ijfd****
-	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeResourceIdsScope *string                                                                      `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeTagsScope        []*GetAggregateCompliancePackResponseBodyCompliancePackScopeExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
 	// The ID of the region whose resources were evaluated by using the compliance package.
 	//
 	// example:
@@ -8904,6 +9527,7 @@ type GetAggregateCompliancePackResponseBodyCompliancePackScope struct {
 	//
 	// rg-aekzc7r7rhx****
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	ResourceIdsScope      *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
 	// The tag key of the resource that is evaluated by using the compliance package.
 	//
 	// example:
@@ -8915,7 +9539,8 @@ type GetAggregateCompliancePackResponseBodyCompliancePackScope struct {
 	// example:
 	//
 	// test
-	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagValueScope *string                                                               `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagsScope     []*GetAggregateCompliancePackResponseBodyCompliancePackScopeTagsScope `json:"TagsScope,omitempty" xml:"TagsScope,omitempty" type:"Repeated"`
 }
 
 func (s GetAggregateCompliancePackResponseBodyCompliancePackScope) String() string {
@@ -8926,8 +9551,23 @@ func (s GetAggregateCompliancePackResponseBodyCompliancePackScope) GoString() st
 	return s.String()
 }
 
+func (s *GetAggregateCompliancePackResponseBodyCompliancePackScope) SetExcludeRegionIdsScope(v string) *GetAggregateCompliancePackResponseBodyCompliancePackScope {
+	s.ExcludeRegionIdsScope = &v
+	return s
+}
+
+func (s *GetAggregateCompliancePackResponseBodyCompliancePackScope) SetExcludeResourceGroupIdsScope(v string) *GetAggregateCompliancePackResponseBodyCompliancePackScope {
+	s.ExcludeResourceGroupIdsScope = &v
+	return s
+}
+
 func (s *GetAggregateCompliancePackResponseBodyCompliancePackScope) SetExcludeResourceIdsScope(v string) *GetAggregateCompliancePackResponseBodyCompliancePackScope {
 	s.ExcludeResourceIdsScope = &v
+	return s
+}
+
+func (s *GetAggregateCompliancePackResponseBodyCompliancePackScope) SetExcludeTagsScope(v []*GetAggregateCompliancePackResponseBodyCompliancePackScopeExcludeTagsScope) *GetAggregateCompliancePackResponseBodyCompliancePackScope {
+	s.ExcludeTagsScope = v
 	return s
 }
 
@@ -8941,6 +9581,11 @@ func (s *GetAggregateCompliancePackResponseBodyCompliancePackScope) SetResourceG
 	return s
 }
 
+func (s *GetAggregateCompliancePackResponseBodyCompliancePackScope) SetResourceIdsScope(v string) *GetAggregateCompliancePackResponseBodyCompliancePackScope {
+	s.ResourceIdsScope = &v
+	return s
+}
+
 func (s *GetAggregateCompliancePackResponseBodyCompliancePackScope) SetTagKeyScope(v string) *GetAggregateCompliancePackResponseBodyCompliancePackScope {
 	s.TagKeyScope = &v
 	return s
@@ -8948,6 +9593,57 @@ func (s *GetAggregateCompliancePackResponseBodyCompliancePackScope) SetTagKeySco
 
 func (s *GetAggregateCompliancePackResponseBodyCompliancePackScope) SetTagValueScope(v string) *GetAggregateCompliancePackResponseBodyCompliancePackScope {
 	s.TagValueScope = &v
+	return s
+}
+
+func (s *GetAggregateCompliancePackResponseBodyCompliancePackScope) SetTagsScope(v []*GetAggregateCompliancePackResponseBodyCompliancePackScopeTagsScope) *GetAggregateCompliancePackResponseBodyCompliancePackScope {
+	s.TagsScope = v
+	return s
+}
+
+type GetAggregateCompliancePackResponseBodyCompliancePackScopeExcludeTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s GetAggregateCompliancePackResponseBodyCompliancePackScopeExcludeTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregateCompliancePackResponseBodyCompliancePackScopeExcludeTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregateCompliancePackResponseBodyCompliancePackScopeExcludeTagsScope) SetTagKey(v string) *GetAggregateCompliancePackResponseBodyCompliancePackScopeExcludeTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *GetAggregateCompliancePackResponseBodyCompliancePackScopeExcludeTagsScope) SetTagValue(v string) *GetAggregateCompliancePackResponseBodyCompliancePackScopeExcludeTagsScope {
+	s.TagValue = &v
+	return s
+}
+
+type GetAggregateCompliancePackResponseBodyCompliancePackScopeTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s GetAggregateCompliancePackResponseBodyCompliancePackScopeTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregateCompliancePackResponseBodyCompliancePackScopeTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregateCompliancePackResponseBodyCompliancePackScopeTagsScope) SetTagKey(v string) *GetAggregateCompliancePackResponseBodyCompliancePackScopeTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *GetAggregateCompliancePackResponseBodyCompliancePackScopeTagsScope) SetTagValue(v string) *GetAggregateCompliancePackResponseBodyCompliancePackScopeTagsScope {
+	s.TagValue = &v
 	return s
 }
 
@@ -9770,7 +10466,8 @@ type GetAggregateConfigRuleResponseBodyConfigRule struct {
 	// example:
 	//
 	// 120886317861****
-	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AccountId       *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AccountIdsScope *string `json:"AccountIdsScope,omitempty" xml:"AccountIdsScope,omitempty"`
 	// The details of compliance evaluation results.
 	Compliance *GetAggregateConfigRuleResponseBodyConfigRuleCompliance `json:"Compliance,omitempty" xml:"Compliance,omitempty" type:"Struct"`
 	// The ARN of the managed rule.
@@ -9842,13 +10539,16 @@ type GetAggregateConfigRuleResponseBodyConfigRule struct {
 	// example:
 	//
 	// fd-pWmkqZ****
-	ExcludeFolderIdsScope *string `json:"ExcludeFolderIdsScope,omitempty" xml:"ExcludeFolderIdsScope,omitempty"`
+	ExcludeFolderIdsScope        *string `json:"ExcludeFolderIdsScope,omitempty" xml:"ExcludeFolderIdsScope,omitempty"`
+	ExcludeRegionIdsScope        *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
+	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
 	// The ID of the resource excluded from the compliance evaluations performed by the rule.
 	//
 	// example:
 	//
 	// 23642660635687****
-	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeResourceIdsScope *string                                                         `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeTagsScope        []*GetAggregateConfigRuleResponseBodyConfigRuleExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
 	// The ID of the resource directory to which the rule applies, which means that the resources within member accounts in the resource directory are evaluated based on the rule.
 	//
 	// >
@@ -9903,6 +10603,7 @@ type GetAggregateConfigRuleResponseBodyConfigRule struct {
 	//
 	// rg-aekzdibsjjc****
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	ResourceIdsScope      *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
 	// The type of the resource evaluated by the rule.
 	//
 	// example:
@@ -9944,7 +10645,8 @@ type GetAggregateConfigRuleResponseBodyConfigRule struct {
 	// example:
 	//
 	// MFA
-	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagValueScope *string                                                  `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagsScope     []*GetAggregateConfigRuleResponseBodyConfigRuleTagsScope `json:"TagsScope,omitempty" xml:"TagsScope,omitempty" type:"Repeated"`
 }
 
 func (s GetAggregateConfigRuleResponseBodyConfigRule) String() string {
@@ -9957,6 +10659,11 @@ func (s GetAggregateConfigRuleResponseBodyConfigRule) GoString() string {
 
 func (s *GetAggregateConfigRuleResponseBodyConfigRule) SetAccountId(v int64) *GetAggregateConfigRuleResponseBodyConfigRule {
 	s.AccountId = &v
+	return s
+}
+
+func (s *GetAggregateConfigRuleResponseBodyConfigRule) SetAccountIdsScope(v string) *GetAggregateConfigRuleResponseBodyConfigRule {
+	s.AccountIdsScope = &v
 	return s
 }
 
@@ -10020,8 +10727,23 @@ func (s *GetAggregateConfigRuleResponseBodyConfigRule) SetExcludeFolderIdsScope(
 	return s
 }
 
+func (s *GetAggregateConfigRuleResponseBodyConfigRule) SetExcludeRegionIdsScope(v string) *GetAggregateConfigRuleResponseBodyConfigRule {
+	s.ExcludeRegionIdsScope = &v
+	return s
+}
+
+func (s *GetAggregateConfigRuleResponseBodyConfigRule) SetExcludeResourceGroupIdsScope(v string) *GetAggregateConfigRuleResponseBodyConfigRule {
+	s.ExcludeResourceGroupIdsScope = &v
+	return s
+}
+
 func (s *GetAggregateConfigRuleResponseBodyConfigRule) SetExcludeResourceIdsScope(v string) *GetAggregateConfigRuleResponseBodyConfigRule {
 	s.ExcludeResourceIdsScope = &v
+	return s
+}
+
+func (s *GetAggregateConfigRuleResponseBodyConfigRule) SetExcludeTagsScope(v []*GetAggregateConfigRuleResponseBodyConfigRuleExcludeTagsScope) *GetAggregateConfigRuleResponseBodyConfigRule {
+	s.ExcludeTagsScope = v
 	return s
 }
 
@@ -10060,6 +10782,11 @@ func (s *GetAggregateConfigRuleResponseBodyConfigRule) SetResourceGroupIdsScope(
 	return s
 }
 
+func (s *GetAggregateConfigRuleResponseBodyConfigRule) SetResourceIdsScope(v string) *GetAggregateConfigRuleResponseBodyConfigRule {
+	s.ResourceIdsScope = &v
+	return s
+}
+
 func (s *GetAggregateConfigRuleResponseBodyConfigRule) SetResourceTypesScope(v string) *GetAggregateConfigRuleResponseBodyConfigRule {
 	s.ResourceTypesScope = &v
 	return s
@@ -10087,6 +10814,11 @@ func (s *GetAggregateConfigRuleResponseBodyConfigRule) SetTagKeyScope(v string) 
 
 func (s *GetAggregateConfigRuleResponseBodyConfigRule) SetTagValueScope(v string) *GetAggregateConfigRuleResponseBodyConfigRule {
 	s.TagValueScope = &v
+	return s
+}
+
+func (s *GetAggregateConfigRuleResponseBodyConfigRule) SetTagsScope(v []*GetAggregateConfigRuleResponseBodyConfigRuleTagsScope) *GetAggregateConfigRuleResponseBodyConfigRule {
+	s.TagsScope = v
 	return s
 }
 
@@ -10315,6 +11047,29 @@ func (s *GetAggregateConfigRuleResponseBodyConfigRuleCreateBy) SetCreatorName(v 
 
 func (s *GetAggregateConfigRuleResponseBodyConfigRuleCreateBy) SetCreatorType(v string) *GetAggregateConfigRuleResponseBodyConfigRuleCreateBy {
 	s.CreatorType = &v
+	return s
+}
+
+type GetAggregateConfigRuleResponseBodyConfigRuleExcludeTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s GetAggregateConfigRuleResponseBodyConfigRuleExcludeTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregateConfigRuleResponseBodyConfigRuleExcludeTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregateConfigRuleResponseBodyConfigRuleExcludeTagsScope) SetTagKey(v string) *GetAggregateConfigRuleResponseBodyConfigRuleExcludeTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *GetAggregateConfigRuleResponseBodyConfigRuleExcludeTagsScope) SetTagValue(v string) *GetAggregateConfigRuleResponseBodyConfigRuleExcludeTagsScope {
+	s.TagValue = &v
 	return s
 }
 
@@ -10555,6 +11310,29 @@ func (s *GetAggregateConfigRuleResponseBodyConfigRuleSourceSourceDetails) SetMax
 
 func (s *GetAggregateConfigRuleResponseBodyConfigRuleSourceSourceDetails) SetMessageType(v string) *GetAggregateConfigRuleResponseBodyConfigRuleSourceSourceDetails {
 	s.MessageType = &v
+	return s
+}
+
+type GetAggregateConfigRuleResponseBodyConfigRuleTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s GetAggregateConfigRuleResponseBodyConfigRuleTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregateConfigRuleResponseBodyConfigRuleTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregateConfigRuleResponseBodyConfigRuleTagsScope) SetTagKey(v string) *GetAggregateConfigRuleResponseBodyConfigRuleTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *GetAggregateConfigRuleResponseBodyConfigRuleTagsScope) SetTagValue(v string) *GetAggregateConfigRuleResponseBodyConfigRuleTagsScope {
+	s.TagValue = &v
 	return s
 }
 
@@ -13996,12 +14774,16 @@ func (s *GetCompliancePackResponseBodyCompliancePackConfigRulesConfigRuleParamet
 }
 
 type GetCompliancePackResponseBodyCompliancePackScope struct {
+	ExcludeRegionIdsScope        *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
+	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
 	// The ID of the resource that you do not want to evaluate by using the compliance package.
 	//
 	// example:
 	//
 	// eip-8vbf3x310fn56ijfd****
 	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	// This parameter is required.
+	ExcludeTagsScope []*GetCompliancePackResponseBodyCompliancePackScopeExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
 	// The ID of the region whose resources you want to evaluate by using the compliance package.
 	//
 	// example:
@@ -14014,6 +14796,7 @@ type GetCompliancePackResponseBodyCompliancePackScope struct {
 	//
 	// rg-aekzc7r7rhx****
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	ResourceIdsScope      *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
 	// The tag key of the resource that you want to evaluate by using the compliance package.
 	//
 	// example:
@@ -14026,6 +14809,8 @@ type GetCompliancePackResponseBodyCompliancePackScope struct {
 	//
 	// test
 	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	// This parameter is required.
+	TagsScope []*GetCompliancePackResponseBodyCompliancePackScopeTagsScope `json:"TagsScope,omitempty" xml:"TagsScope,omitempty" type:"Repeated"`
 }
 
 func (s GetCompliancePackResponseBodyCompliancePackScope) String() string {
@@ -14036,8 +14821,23 @@ func (s GetCompliancePackResponseBodyCompliancePackScope) GoString() string {
 	return s.String()
 }
 
+func (s *GetCompliancePackResponseBodyCompliancePackScope) SetExcludeRegionIdsScope(v string) *GetCompliancePackResponseBodyCompliancePackScope {
+	s.ExcludeRegionIdsScope = &v
+	return s
+}
+
+func (s *GetCompliancePackResponseBodyCompliancePackScope) SetExcludeResourceGroupIdsScope(v string) *GetCompliancePackResponseBodyCompliancePackScope {
+	s.ExcludeResourceGroupIdsScope = &v
+	return s
+}
+
 func (s *GetCompliancePackResponseBodyCompliancePackScope) SetExcludeResourceIdsScope(v string) *GetCompliancePackResponseBodyCompliancePackScope {
 	s.ExcludeResourceIdsScope = &v
+	return s
+}
+
+func (s *GetCompliancePackResponseBodyCompliancePackScope) SetExcludeTagsScope(v []*GetCompliancePackResponseBodyCompliancePackScopeExcludeTagsScope) *GetCompliancePackResponseBodyCompliancePackScope {
+	s.ExcludeTagsScope = v
 	return s
 }
 
@@ -14051,6 +14851,11 @@ func (s *GetCompliancePackResponseBodyCompliancePackScope) SetResourceGroupIdsSc
 	return s
 }
 
+func (s *GetCompliancePackResponseBodyCompliancePackScope) SetResourceIdsScope(v string) *GetCompliancePackResponseBodyCompliancePackScope {
+	s.ResourceIdsScope = &v
+	return s
+}
+
 func (s *GetCompliancePackResponseBodyCompliancePackScope) SetTagKeyScope(v string) *GetCompliancePackResponseBodyCompliancePackScope {
 	s.TagKeyScope = &v
 	return s
@@ -14058,6 +14863,57 @@ func (s *GetCompliancePackResponseBodyCompliancePackScope) SetTagKeyScope(v stri
 
 func (s *GetCompliancePackResponseBodyCompliancePackScope) SetTagValueScope(v string) *GetCompliancePackResponseBodyCompliancePackScope {
 	s.TagValueScope = &v
+	return s
+}
+
+func (s *GetCompliancePackResponseBodyCompliancePackScope) SetTagsScope(v []*GetCompliancePackResponseBodyCompliancePackScopeTagsScope) *GetCompliancePackResponseBodyCompliancePackScope {
+	s.TagsScope = v
+	return s
+}
+
+type GetCompliancePackResponseBodyCompliancePackScopeExcludeTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s GetCompliancePackResponseBodyCompliancePackScopeExcludeTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCompliancePackResponseBodyCompliancePackScopeExcludeTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *GetCompliancePackResponseBodyCompliancePackScopeExcludeTagsScope) SetTagKey(v string) *GetCompliancePackResponseBodyCompliancePackScopeExcludeTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *GetCompliancePackResponseBodyCompliancePackScopeExcludeTagsScope) SetTagValue(v string) *GetCompliancePackResponseBodyCompliancePackScopeExcludeTagsScope {
+	s.TagValue = &v
+	return s
+}
+
+type GetCompliancePackResponseBodyCompliancePackScopeTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s GetCompliancePackResponseBodyCompliancePackScopeTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCompliancePackResponseBodyCompliancePackScopeTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *GetCompliancePackResponseBodyCompliancePackScopeTagsScope) SetTagKey(v string) *GetCompliancePackResponseBodyCompliancePackScopeTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *GetCompliancePackResponseBodyCompliancePackScopeTagsScope) SetTagValue(v string) *GetCompliancePackResponseBodyCompliancePackScopeTagsScope {
+	s.TagValue = &v
 	return s
 }
 
@@ -14849,13 +15705,16 @@ type GetConfigRuleResponseBodyConfigRule struct {
 	// 1604684022000
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
 	// The description of the managed rule.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description                  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExcludeRegionIdsScope        *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
+	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
 	// The ID of the resource excluded from the compliance evaluations performed by the rule.
 	//
 	// example:
 	//
 	// 23642660635687****
-	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeResourceIdsScope *string                                                `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeTagsScope        []*GetConfigRuleResponseBodyConfigRuleExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
 	// The input parameters of the rule.
 	InputParameters map[string]interface{} `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
 	// The details of the managed rule.
@@ -14896,6 +15755,7 @@ type GetConfigRuleResponseBodyConfigRule struct {
 	//
 	// rg-aekzdibsjjc****
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	ResourceIdsScope      *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
 	// The type of the resource to be evaluated by the rule.
 	//
 	// example:
@@ -14941,7 +15801,8 @@ type GetConfigRuleResponseBodyConfigRule struct {
 	// example:
 	//
 	// MFA
-	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagValueScope *string                                         `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagsScope     []*GetConfigRuleResponseBodyConfigRuleTagsScope `json:"TagsScope,omitempty" xml:"TagsScope,omitempty" type:"Repeated"`
 }
 
 func (s GetConfigRuleResponseBodyConfigRule) String() string {
@@ -15007,8 +15868,23 @@ func (s *GetConfigRuleResponseBodyConfigRule) SetDescription(v string) *GetConfi
 	return s
 }
 
+func (s *GetConfigRuleResponseBodyConfigRule) SetExcludeRegionIdsScope(v string) *GetConfigRuleResponseBodyConfigRule {
+	s.ExcludeRegionIdsScope = &v
+	return s
+}
+
+func (s *GetConfigRuleResponseBodyConfigRule) SetExcludeResourceGroupIdsScope(v string) *GetConfigRuleResponseBodyConfigRule {
+	s.ExcludeResourceGroupIdsScope = &v
+	return s
+}
+
 func (s *GetConfigRuleResponseBodyConfigRule) SetExcludeResourceIdsScope(v string) *GetConfigRuleResponseBodyConfigRule {
 	s.ExcludeResourceIdsScope = &v
+	return s
+}
+
+func (s *GetConfigRuleResponseBodyConfigRule) SetExcludeTagsScope(v []*GetConfigRuleResponseBodyConfigRuleExcludeTagsScope) *GetConfigRuleResponseBodyConfigRule {
+	s.ExcludeTagsScope = v
 	return s
 }
 
@@ -15039,6 +15915,11 @@ func (s *GetConfigRuleResponseBodyConfigRule) SetRegionIdsScope(v string) *GetCo
 
 func (s *GetConfigRuleResponseBodyConfigRule) SetResourceGroupIdsScope(v string) *GetConfigRuleResponseBodyConfigRule {
 	s.ResourceGroupIdsScope = &v
+	return s
+}
+
+func (s *GetConfigRuleResponseBodyConfigRule) SetResourceIdsScope(v string) *GetConfigRuleResponseBodyConfigRule {
+	s.ResourceIdsScope = &v
 	return s
 }
 
@@ -15074,6 +15955,11 @@ func (s *GetConfigRuleResponseBodyConfigRule) SetTagKeyScope(v string) *GetConfi
 
 func (s *GetConfigRuleResponseBodyConfigRule) SetTagValueScope(v string) *GetConfigRuleResponseBodyConfigRule {
 	s.TagValueScope = &v
+	return s
+}
+
+func (s *GetConfigRuleResponseBodyConfigRule) SetTagsScope(v []*GetConfigRuleResponseBodyConfigRuleTagsScope) *GetConfigRuleResponseBodyConfigRule {
+	s.TagsScope = v
 	return s
 }
 
@@ -15269,6 +16155,29 @@ func (s *GetConfigRuleResponseBodyConfigRuleCreateBy) SetCreatorId(v string) *Ge
 
 func (s *GetConfigRuleResponseBodyConfigRuleCreateBy) SetCreatorName(v string) *GetConfigRuleResponseBodyConfigRuleCreateBy {
 	s.CreatorName = &v
+	return s
+}
+
+type GetConfigRuleResponseBodyConfigRuleExcludeTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s GetConfigRuleResponseBodyConfigRuleExcludeTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConfigRuleResponseBodyConfigRuleExcludeTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *GetConfigRuleResponseBodyConfigRuleExcludeTagsScope) SetTagKey(v string) *GetConfigRuleResponseBodyConfigRuleExcludeTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *GetConfigRuleResponseBodyConfigRuleExcludeTagsScope) SetTagValue(v string) *GetConfigRuleResponseBodyConfigRuleExcludeTagsScope {
+	s.TagValue = &v
 	return s
 }
 
@@ -15523,6 +16432,29 @@ func (s *GetConfigRuleResponseBodyConfigRuleSourceSourceDetails) SetMaximumExecu
 
 func (s *GetConfigRuleResponseBodyConfigRuleSourceSourceDetails) SetMessageType(v string) *GetConfigRuleResponseBodyConfigRuleSourceSourceDetails {
 	s.MessageType = &v
+	return s
+}
+
+type GetConfigRuleResponseBodyConfigRuleTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s GetConfigRuleResponseBodyConfigRuleTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConfigRuleResponseBodyConfigRuleTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *GetConfigRuleResponseBodyConfigRuleTagsScope) SetTagKey(v string) *GetConfigRuleResponseBodyConfigRuleTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *GetConfigRuleResponseBodyConfigRuleTagsScope) SetTagValue(v string) *GetConfigRuleResponseBodyConfigRuleTagsScope {
+	s.TagValue = &v
 	return s
 }
 
@@ -30101,13 +31033,16 @@ type UpdateAggregateCompliancePackRequest struct {
 	// example:
 	//
 	// Test compliance pack description.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description                  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExcludeRegionIdsScope        *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
+	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
 	// The ID of the resource that you do not want to evaluate by using the compliance package. Separate multiple resource IDs with commas (,).
 	//
 	// example:
 	//
 	// eip-8vbf3x310fn56ijfd****
-	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeResourceIdsScope *string                                                 `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeTagsScope        []*UpdateAggregateCompliancePackRequestExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
 	// The ID of the region whose resources you want to evaluate by using the compliance package. Separate multiple region IDs with commas (,).
 	//
 	// example:
@@ -30120,6 +31055,7 @@ type UpdateAggregateCompliancePackRequest struct {
 	//
 	// rg-aekzc7r7rhx****
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	ResourceIdsScope      *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
 	// The risk level of the resources that are not compliant with the rules in the compliance package. Valid values:
 	//
 	// 	- 1: high
@@ -30145,7 +31081,8 @@ type UpdateAggregateCompliancePackRequest struct {
 	// example:
 	//
 	// test
-	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagValueScope *string                                          `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagsScope     []*UpdateAggregateCompliancePackRequestTagsScope `json:"TagsScope,omitempty" xml:"TagsScope,omitempty" type:"Repeated"`
 }
 
 func (s UpdateAggregateCompliancePackRequest) String() string {
@@ -30186,8 +31123,23 @@ func (s *UpdateAggregateCompliancePackRequest) SetDescription(v string) *UpdateA
 	return s
 }
 
+func (s *UpdateAggregateCompliancePackRequest) SetExcludeRegionIdsScope(v string) *UpdateAggregateCompliancePackRequest {
+	s.ExcludeRegionIdsScope = &v
+	return s
+}
+
+func (s *UpdateAggregateCompliancePackRequest) SetExcludeResourceGroupIdsScope(v string) *UpdateAggregateCompliancePackRequest {
+	s.ExcludeResourceGroupIdsScope = &v
+	return s
+}
+
 func (s *UpdateAggregateCompliancePackRequest) SetExcludeResourceIdsScope(v string) *UpdateAggregateCompliancePackRequest {
 	s.ExcludeResourceIdsScope = &v
+	return s
+}
+
+func (s *UpdateAggregateCompliancePackRequest) SetExcludeTagsScope(v []*UpdateAggregateCompliancePackRequestExcludeTagsScope) *UpdateAggregateCompliancePackRequest {
+	s.ExcludeTagsScope = v
 	return s
 }
 
@@ -30198,6 +31150,11 @@ func (s *UpdateAggregateCompliancePackRequest) SetRegionIdsScope(v string) *Upda
 
 func (s *UpdateAggregateCompliancePackRequest) SetResourceGroupIdsScope(v string) *UpdateAggregateCompliancePackRequest {
 	s.ResourceGroupIdsScope = &v
+	return s
+}
+
+func (s *UpdateAggregateCompliancePackRequest) SetResourceIdsScope(v string) *UpdateAggregateCompliancePackRequest {
+	s.ResourceIdsScope = &v
 	return s
 }
 
@@ -30213,6 +31170,11 @@ func (s *UpdateAggregateCompliancePackRequest) SetTagKeyScope(v string) *UpdateA
 
 func (s *UpdateAggregateCompliancePackRequest) SetTagValueScope(v string) *UpdateAggregateCompliancePackRequest {
 	s.TagValueScope = &v
+	return s
+}
+
+func (s *UpdateAggregateCompliancePackRequest) SetTagsScope(v []*UpdateAggregateCompliancePackRequestTagsScope) *UpdateAggregateCompliancePackRequest {
+	s.TagsScope = v
 	return s
 }
 
@@ -30336,6 +31298,52 @@ func (s *UpdateAggregateCompliancePackRequestConfigRulesConfigRuleParameters) Se
 	return s
 }
 
+type UpdateAggregateCompliancePackRequestExcludeTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s UpdateAggregateCompliancePackRequestExcludeTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAggregateCompliancePackRequestExcludeTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAggregateCompliancePackRequestExcludeTagsScope) SetTagKey(v string) *UpdateAggregateCompliancePackRequestExcludeTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *UpdateAggregateCompliancePackRequestExcludeTagsScope) SetTagValue(v string) *UpdateAggregateCompliancePackRequestExcludeTagsScope {
+	s.TagValue = &v
+	return s
+}
+
+type UpdateAggregateCompliancePackRequestTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s UpdateAggregateCompliancePackRequestTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAggregateCompliancePackRequestTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAggregateCompliancePackRequestTagsScope) SetTagKey(v string) *UpdateAggregateCompliancePackRequestTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *UpdateAggregateCompliancePackRequestTagsScope) SetTagValue(v string) *UpdateAggregateCompliancePackRequestTagsScope {
+	s.TagValue = &v
+	return s
+}
+
 type UpdateAggregateCompliancePackShrinkRequest struct {
 	// The ID of the account group.
 	//
@@ -30382,13 +31390,16 @@ type UpdateAggregateCompliancePackShrinkRequest struct {
 	// example:
 	//
 	// Test compliance pack description.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description                  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExcludeRegionIdsScope        *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
+	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
 	// The ID of the resource that you do not want to evaluate by using the compliance package. Separate multiple resource IDs with commas (,).
 	//
 	// example:
 	//
 	// eip-8vbf3x310fn56ijfd****
-	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeResourceIdsScope *string                                                       `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeTagsScope        []*UpdateAggregateCompliancePackShrinkRequestExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
 	// The ID of the region whose resources you want to evaluate by using the compliance package. Separate multiple region IDs with commas (,).
 	//
 	// example:
@@ -30401,6 +31412,7 @@ type UpdateAggregateCompliancePackShrinkRequest struct {
 	//
 	// rg-aekzc7r7rhx****
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	ResourceIdsScope      *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
 	// The risk level of the resources that are not compliant with the rules in the compliance package. Valid values:
 	//
 	// 	- 1: high
@@ -30426,7 +31438,8 @@ type UpdateAggregateCompliancePackShrinkRequest struct {
 	// example:
 	//
 	// test
-	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagValueScope *string                                                `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagsScope     []*UpdateAggregateCompliancePackShrinkRequestTagsScope `json:"TagsScope,omitempty" xml:"TagsScope,omitempty" type:"Repeated"`
 }
 
 func (s UpdateAggregateCompliancePackShrinkRequest) String() string {
@@ -30467,8 +31480,23 @@ func (s *UpdateAggregateCompliancePackShrinkRequest) SetDescription(v string) *U
 	return s
 }
 
+func (s *UpdateAggregateCompliancePackShrinkRequest) SetExcludeRegionIdsScope(v string) *UpdateAggregateCompliancePackShrinkRequest {
+	s.ExcludeRegionIdsScope = &v
+	return s
+}
+
+func (s *UpdateAggregateCompliancePackShrinkRequest) SetExcludeResourceGroupIdsScope(v string) *UpdateAggregateCompliancePackShrinkRequest {
+	s.ExcludeResourceGroupIdsScope = &v
+	return s
+}
+
 func (s *UpdateAggregateCompliancePackShrinkRequest) SetExcludeResourceIdsScope(v string) *UpdateAggregateCompliancePackShrinkRequest {
 	s.ExcludeResourceIdsScope = &v
+	return s
+}
+
+func (s *UpdateAggregateCompliancePackShrinkRequest) SetExcludeTagsScope(v []*UpdateAggregateCompliancePackShrinkRequestExcludeTagsScope) *UpdateAggregateCompliancePackShrinkRequest {
+	s.ExcludeTagsScope = v
 	return s
 }
 
@@ -30479,6 +31507,11 @@ func (s *UpdateAggregateCompliancePackShrinkRequest) SetRegionIdsScope(v string)
 
 func (s *UpdateAggregateCompliancePackShrinkRequest) SetResourceGroupIdsScope(v string) *UpdateAggregateCompliancePackShrinkRequest {
 	s.ResourceGroupIdsScope = &v
+	return s
+}
+
+func (s *UpdateAggregateCompliancePackShrinkRequest) SetResourceIdsScope(v string) *UpdateAggregateCompliancePackShrinkRequest {
+	s.ResourceIdsScope = &v
 	return s
 }
 
@@ -30494,6 +31527,57 @@ func (s *UpdateAggregateCompliancePackShrinkRequest) SetTagKeyScope(v string) *U
 
 func (s *UpdateAggregateCompliancePackShrinkRequest) SetTagValueScope(v string) *UpdateAggregateCompliancePackShrinkRequest {
 	s.TagValueScope = &v
+	return s
+}
+
+func (s *UpdateAggregateCompliancePackShrinkRequest) SetTagsScope(v []*UpdateAggregateCompliancePackShrinkRequestTagsScope) *UpdateAggregateCompliancePackShrinkRequest {
+	s.TagsScope = v
+	return s
+}
+
+type UpdateAggregateCompliancePackShrinkRequestExcludeTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s UpdateAggregateCompliancePackShrinkRequestExcludeTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAggregateCompliancePackShrinkRequestExcludeTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAggregateCompliancePackShrinkRequestExcludeTagsScope) SetTagKey(v string) *UpdateAggregateCompliancePackShrinkRequestExcludeTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *UpdateAggregateCompliancePackShrinkRequestExcludeTagsScope) SetTagValue(v string) *UpdateAggregateCompliancePackShrinkRequestExcludeTagsScope {
+	s.TagValue = &v
+	return s
+}
+
+type UpdateAggregateCompliancePackShrinkRequestTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s UpdateAggregateCompliancePackShrinkRequestTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAggregateCompliancePackShrinkRequestTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAggregateCompliancePackShrinkRequestTagsScope) SetTagKey(v string) *UpdateAggregateCompliancePackShrinkRequestTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *UpdateAggregateCompliancePackShrinkRequestTagsScope) SetTagValue(v string) *UpdateAggregateCompliancePackShrinkRequestTagsScope {
+	s.TagValue = &v
 	return s
 }
 
@@ -30847,6 +31931,7 @@ func (s *UpdateAggregateConfigDeliveryChannelResponse) SetBody(v *UpdateAggregat
 }
 
 type UpdateAggregateConfigRuleRequest struct {
+	AccountIdsScope *string `json:"AccountIdsScope,omitempty" xml:"AccountIdsScope,omitempty"`
 	// The ID of the account group.
 	//
 	// For more information about how to query the ID of an account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
@@ -30910,7 +31995,9 @@ type UpdateAggregateConfigRuleRequest struct {
 	// example:
 	//
 	// fd-pWmkqZ****
-	ExcludeFolderIdsScope *string `json:"ExcludeFolderIdsScope,omitempty" xml:"ExcludeFolderIdsScope,omitempty"`
+	ExcludeFolderIdsScope        *string `json:"ExcludeFolderIdsScope,omitempty" xml:"ExcludeFolderIdsScope,omitempty"`
+	ExcludeRegionIdsScope        *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
+	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
 	// The ID of the resource to be excluded from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
 	//
 	// >  This parameter applies only to a managed rule.
@@ -30918,7 +32005,8 @@ type UpdateAggregateConfigRuleRequest struct {
 	// example:
 	//
 	// lb-t4nbowvtbkss7t326****
-	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeResourceIdsScope *string                                             `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeTagsScope        []*UpdateAggregateConfigRuleRequestExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
 	// The ID of the resource directory to which the rule applies, which means that the resources within member accounts in the resource directory are evaluated based on the rule.
 	//
 	// >
@@ -30971,6 +32059,7 @@ type UpdateAggregateConfigRuleRequest struct {
 	//
 	// rg-aekzc7r7rhx****
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	ResourceIdsScope      *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
 	// The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
 	//
 	// example:
@@ -31014,7 +32103,8 @@ type UpdateAggregateConfigRuleRequest struct {
 	// example:
 	//
 	// test
-	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagValueScope *string                                      `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagsScope     []*UpdateAggregateConfigRuleRequestTagsScope `json:"TagsScope,omitempty" xml:"TagsScope,omitempty" type:"Repeated"`
 }
 
 func (s UpdateAggregateConfigRuleRequest) String() string {
@@ -31023,6 +32113,11 @@ func (s UpdateAggregateConfigRuleRequest) String() string {
 
 func (s UpdateAggregateConfigRuleRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateAggregateConfigRuleRequest) SetAccountIdsScope(v string) *UpdateAggregateConfigRuleRequest {
+	s.AccountIdsScope = &v
+	return s
 }
 
 func (s *UpdateAggregateConfigRuleRequest) SetAggregatorId(v string) *UpdateAggregateConfigRuleRequest {
@@ -31065,8 +32160,23 @@ func (s *UpdateAggregateConfigRuleRequest) SetExcludeFolderIdsScope(v string) *U
 	return s
 }
 
+func (s *UpdateAggregateConfigRuleRequest) SetExcludeRegionIdsScope(v string) *UpdateAggregateConfigRuleRequest {
+	s.ExcludeRegionIdsScope = &v
+	return s
+}
+
+func (s *UpdateAggregateConfigRuleRequest) SetExcludeResourceGroupIdsScope(v string) *UpdateAggregateConfigRuleRequest {
+	s.ExcludeResourceGroupIdsScope = &v
+	return s
+}
+
 func (s *UpdateAggregateConfigRuleRequest) SetExcludeResourceIdsScope(v string) *UpdateAggregateConfigRuleRequest {
 	s.ExcludeResourceIdsScope = &v
+	return s
+}
+
+func (s *UpdateAggregateConfigRuleRequest) SetExcludeTagsScope(v []*UpdateAggregateConfigRuleRequestExcludeTagsScope) *UpdateAggregateConfigRuleRequest {
+	s.ExcludeTagsScope = v
 	return s
 }
 
@@ -31095,6 +32205,11 @@ func (s *UpdateAggregateConfigRuleRequest) SetResourceGroupIdsScope(v string) *U
 	return s
 }
 
+func (s *UpdateAggregateConfigRuleRequest) SetResourceIdsScope(v string) *UpdateAggregateConfigRuleRequest {
+	s.ResourceIdsScope = &v
+	return s
+}
+
 func (s *UpdateAggregateConfigRuleRequest) SetResourceTypesScope(v []*string) *UpdateAggregateConfigRuleRequest {
 	s.ResourceTypesScope = v
 	return s
@@ -31120,7 +32235,59 @@ func (s *UpdateAggregateConfigRuleRequest) SetTagValueScope(v string) *UpdateAgg
 	return s
 }
 
+func (s *UpdateAggregateConfigRuleRequest) SetTagsScope(v []*UpdateAggregateConfigRuleRequestTagsScope) *UpdateAggregateConfigRuleRequest {
+	s.TagsScope = v
+	return s
+}
+
+type UpdateAggregateConfigRuleRequestExcludeTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s UpdateAggregateConfigRuleRequestExcludeTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAggregateConfigRuleRequestExcludeTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAggregateConfigRuleRequestExcludeTagsScope) SetTagKey(v string) *UpdateAggregateConfigRuleRequestExcludeTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *UpdateAggregateConfigRuleRequestExcludeTagsScope) SetTagValue(v string) *UpdateAggregateConfigRuleRequestExcludeTagsScope {
+	s.TagValue = &v
+	return s
+}
+
+type UpdateAggregateConfigRuleRequestTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s UpdateAggregateConfigRuleRequestTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAggregateConfigRuleRequestTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAggregateConfigRuleRequestTagsScope) SetTagKey(v string) *UpdateAggregateConfigRuleRequestTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *UpdateAggregateConfigRuleRequestTagsScope) SetTagValue(v string) *UpdateAggregateConfigRuleRequestTagsScope {
+	s.TagValue = &v
+	return s
+}
+
 type UpdateAggregateConfigRuleShrinkRequest struct {
+	AccountIdsScope *string `json:"AccountIdsScope,omitempty" xml:"AccountIdsScope,omitempty"`
 	// The ID of the account group.
 	//
 	// For more information about how to query the ID of an account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
@@ -31184,7 +32351,9 @@ type UpdateAggregateConfigRuleShrinkRequest struct {
 	// example:
 	//
 	// fd-pWmkqZ****
-	ExcludeFolderIdsScope *string `json:"ExcludeFolderIdsScope,omitempty" xml:"ExcludeFolderIdsScope,omitempty"`
+	ExcludeFolderIdsScope        *string `json:"ExcludeFolderIdsScope,omitempty" xml:"ExcludeFolderIdsScope,omitempty"`
+	ExcludeRegionIdsScope        *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
+	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
 	// The ID of the resource to be excluded from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
 	//
 	// >  This parameter applies only to a managed rule.
@@ -31192,7 +32361,8 @@ type UpdateAggregateConfigRuleShrinkRequest struct {
 	// example:
 	//
 	// lb-t4nbowvtbkss7t326****
-	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeResourceIdsScope *string                                                   `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeTagsScope        []*UpdateAggregateConfigRuleShrinkRequestExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
 	// The ID of the resource directory to which the rule applies, which means that the resources within member accounts in the resource directory are evaluated based on the rule.
 	//
 	// >
@@ -31245,6 +32415,7 @@ type UpdateAggregateConfigRuleShrinkRequest struct {
 	//
 	// rg-aekzc7r7rhx****
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	ResourceIdsScope      *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
 	// The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
 	//
 	// example:
@@ -31288,7 +32459,8 @@ type UpdateAggregateConfigRuleShrinkRequest struct {
 	// example:
 	//
 	// test
-	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagValueScope *string                                            `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagsScope     []*UpdateAggregateConfigRuleShrinkRequestTagsScope `json:"TagsScope,omitempty" xml:"TagsScope,omitempty" type:"Repeated"`
 }
 
 func (s UpdateAggregateConfigRuleShrinkRequest) String() string {
@@ -31297,6 +32469,11 @@ func (s UpdateAggregateConfigRuleShrinkRequest) String() string {
 
 func (s UpdateAggregateConfigRuleShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateAggregateConfigRuleShrinkRequest) SetAccountIdsScope(v string) *UpdateAggregateConfigRuleShrinkRequest {
+	s.AccountIdsScope = &v
+	return s
 }
 
 func (s *UpdateAggregateConfigRuleShrinkRequest) SetAggregatorId(v string) *UpdateAggregateConfigRuleShrinkRequest {
@@ -31339,8 +32516,23 @@ func (s *UpdateAggregateConfigRuleShrinkRequest) SetExcludeFolderIdsScope(v stri
 	return s
 }
 
+func (s *UpdateAggregateConfigRuleShrinkRequest) SetExcludeRegionIdsScope(v string) *UpdateAggregateConfigRuleShrinkRequest {
+	s.ExcludeRegionIdsScope = &v
+	return s
+}
+
+func (s *UpdateAggregateConfigRuleShrinkRequest) SetExcludeResourceGroupIdsScope(v string) *UpdateAggregateConfigRuleShrinkRequest {
+	s.ExcludeResourceGroupIdsScope = &v
+	return s
+}
+
 func (s *UpdateAggregateConfigRuleShrinkRequest) SetExcludeResourceIdsScope(v string) *UpdateAggregateConfigRuleShrinkRequest {
 	s.ExcludeResourceIdsScope = &v
+	return s
+}
+
+func (s *UpdateAggregateConfigRuleShrinkRequest) SetExcludeTagsScope(v []*UpdateAggregateConfigRuleShrinkRequestExcludeTagsScope) *UpdateAggregateConfigRuleShrinkRequest {
+	s.ExcludeTagsScope = v
 	return s
 }
 
@@ -31369,6 +32561,11 @@ func (s *UpdateAggregateConfigRuleShrinkRequest) SetResourceGroupIdsScope(v stri
 	return s
 }
 
+func (s *UpdateAggregateConfigRuleShrinkRequest) SetResourceIdsScope(v string) *UpdateAggregateConfigRuleShrinkRequest {
+	s.ResourceIdsScope = &v
+	return s
+}
+
 func (s *UpdateAggregateConfigRuleShrinkRequest) SetResourceTypesScopeShrink(v string) *UpdateAggregateConfigRuleShrinkRequest {
 	s.ResourceTypesScopeShrink = &v
 	return s
@@ -31391,6 +32588,57 @@ func (s *UpdateAggregateConfigRuleShrinkRequest) SetTagKeyScope(v string) *Updat
 
 func (s *UpdateAggregateConfigRuleShrinkRequest) SetTagValueScope(v string) *UpdateAggregateConfigRuleShrinkRequest {
 	s.TagValueScope = &v
+	return s
+}
+
+func (s *UpdateAggregateConfigRuleShrinkRequest) SetTagsScope(v []*UpdateAggregateConfigRuleShrinkRequestTagsScope) *UpdateAggregateConfigRuleShrinkRequest {
+	s.TagsScope = v
+	return s
+}
+
+type UpdateAggregateConfigRuleShrinkRequestExcludeTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s UpdateAggregateConfigRuleShrinkRequestExcludeTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAggregateConfigRuleShrinkRequestExcludeTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAggregateConfigRuleShrinkRequestExcludeTagsScope) SetTagKey(v string) *UpdateAggregateConfigRuleShrinkRequestExcludeTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *UpdateAggregateConfigRuleShrinkRequestExcludeTagsScope) SetTagValue(v string) *UpdateAggregateConfigRuleShrinkRequestExcludeTagsScope {
+	s.TagValue = &v
+	return s
+}
+
+type UpdateAggregateConfigRuleShrinkRequestTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s UpdateAggregateConfigRuleShrinkRequestTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAggregateConfigRuleShrinkRequestTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAggregateConfigRuleShrinkRequestTagsScope) SetTagKey(v string) *UpdateAggregateConfigRuleShrinkRequestTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *UpdateAggregateConfigRuleShrinkRequestTagsScope) SetTagValue(v string) *UpdateAggregateConfigRuleShrinkRequestTagsScope {
+	s.TagValue = &v
 	return s
 }
 
@@ -31920,13 +33168,16 @@ type UpdateCompliancePackRequest struct {
 	// The description of the compliance package.
 	//
 	// For more information about how to obtain the description of a compliance package, see [ListCompliancePacks](https://help.aliyun.com/document_detail/263332.html).
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description                  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExcludeRegionIdsScope        *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
+	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
 	// The ID of the resource that you do not want to evaluate by using the compliance package. Separate multiple resource IDs with commas (,).
 	//
 	// example:
 	//
 	// 23642660635687****
-	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeResourceIdsScope *string                                        `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeTagsScope        []*UpdateCompliancePackRequestExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
 	// The ID of the region whose resources you want to evaluate by using the compliance package. Separate multiple region IDs with commas (,).
 	//
 	// example:
@@ -31939,6 +33190,7 @@ type UpdateCompliancePackRequest struct {
 	//
 	// rg-aekzdibsjjc****
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	ResourceIdsScope      *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
 	// The risk level of the resources that are not compliant with the rules in the compliance package. Valid values:
 	//
 	// 	- 1: high
@@ -31964,7 +33216,8 @@ type UpdateCompliancePackRequest struct {
 	// example:
 	//
 	// test
-	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagValueScope *string                                 `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagsScope     []*UpdateCompliancePackRequestTagsScope `json:"TagsScope,omitempty" xml:"TagsScope,omitempty" type:"Repeated"`
 }
 
 func (s UpdateCompliancePackRequest) String() string {
@@ -32000,8 +33253,23 @@ func (s *UpdateCompliancePackRequest) SetDescription(v string) *UpdateCompliance
 	return s
 }
 
+func (s *UpdateCompliancePackRequest) SetExcludeRegionIdsScope(v string) *UpdateCompliancePackRequest {
+	s.ExcludeRegionIdsScope = &v
+	return s
+}
+
+func (s *UpdateCompliancePackRequest) SetExcludeResourceGroupIdsScope(v string) *UpdateCompliancePackRequest {
+	s.ExcludeResourceGroupIdsScope = &v
+	return s
+}
+
 func (s *UpdateCompliancePackRequest) SetExcludeResourceIdsScope(v string) *UpdateCompliancePackRequest {
 	s.ExcludeResourceIdsScope = &v
+	return s
+}
+
+func (s *UpdateCompliancePackRequest) SetExcludeTagsScope(v []*UpdateCompliancePackRequestExcludeTagsScope) *UpdateCompliancePackRequest {
+	s.ExcludeTagsScope = v
 	return s
 }
 
@@ -32012,6 +33280,11 @@ func (s *UpdateCompliancePackRequest) SetRegionIdsScope(v string) *UpdateComplia
 
 func (s *UpdateCompliancePackRequest) SetResourceGroupIdsScope(v string) *UpdateCompliancePackRequest {
 	s.ResourceGroupIdsScope = &v
+	return s
+}
+
+func (s *UpdateCompliancePackRequest) SetResourceIdsScope(v string) *UpdateCompliancePackRequest {
+	s.ResourceIdsScope = &v
 	return s
 }
 
@@ -32027,6 +33300,11 @@ func (s *UpdateCompliancePackRequest) SetTagKeyScope(v string) *UpdateCompliance
 
 func (s *UpdateCompliancePackRequest) SetTagValueScope(v string) *UpdateCompliancePackRequest {
 	s.TagValueScope = &v
+	return s
+}
+
+func (s *UpdateCompliancePackRequest) SetTagsScope(v []*UpdateCompliancePackRequestTagsScope) *UpdateCompliancePackRequest {
+	s.TagsScope = v
 	return s
 }
 
@@ -32142,6 +33420,52 @@ func (s *UpdateCompliancePackRequestConfigRulesConfigRuleParameters) SetParamete
 	return s
 }
 
+type UpdateCompliancePackRequestExcludeTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s UpdateCompliancePackRequestExcludeTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCompliancePackRequestExcludeTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCompliancePackRequestExcludeTagsScope) SetTagKey(v string) *UpdateCompliancePackRequestExcludeTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *UpdateCompliancePackRequestExcludeTagsScope) SetTagValue(v string) *UpdateCompliancePackRequestExcludeTagsScope {
+	s.TagValue = &v
+	return s
+}
+
+type UpdateCompliancePackRequestTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s UpdateCompliancePackRequestTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCompliancePackRequestTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCompliancePackRequestTagsScope) SetTagKey(v string) *UpdateCompliancePackRequestTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *UpdateCompliancePackRequestTagsScope) SetTagValue(v string) *UpdateCompliancePackRequestTagsScope {
+	s.TagValue = &v
+	return s
+}
+
 type UpdateCompliancePackShrinkRequest struct {
 	// The client token that you want to use to ensure the idempotency of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.``
 	//
@@ -32170,13 +33494,16 @@ type UpdateCompliancePackShrinkRequest struct {
 	// The description of the compliance package.
 	//
 	// For more information about how to obtain the description of a compliance package, see [ListCompliancePacks](https://help.aliyun.com/document_detail/263332.html).
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description                  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExcludeRegionIdsScope        *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
+	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
 	// The ID of the resource that you do not want to evaluate by using the compliance package. Separate multiple resource IDs with commas (,).
 	//
 	// example:
 	//
 	// 23642660635687****
-	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeResourceIdsScope *string                                              `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeTagsScope        []*UpdateCompliancePackShrinkRequestExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
 	// The ID of the region whose resources you want to evaluate by using the compliance package. Separate multiple region IDs with commas (,).
 	//
 	// example:
@@ -32189,6 +33516,7 @@ type UpdateCompliancePackShrinkRequest struct {
 	//
 	// rg-aekzdibsjjc****
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	ResourceIdsScope      *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
 	// The risk level of the resources that are not compliant with the rules in the compliance package. Valid values:
 	//
 	// 	- 1: high
@@ -32214,7 +33542,8 @@ type UpdateCompliancePackShrinkRequest struct {
 	// example:
 	//
 	// test
-	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagValueScope *string                                       `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagsScope     []*UpdateCompliancePackShrinkRequestTagsScope `json:"TagsScope,omitempty" xml:"TagsScope,omitempty" type:"Repeated"`
 }
 
 func (s UpdateCompliancePackShrinkRequest) String() string {
@@ -32250,8 +33579,23 @@ func (s *UpdateCompliancePackShrinkRequest) SetDescription(v string) *UpdateComp
 	return s
 }
 
+func (s *UpdateCompliancePackShrinkRequest) SetExcludeRegionIdsScope(v string) *UpdateCompliancePackShrinkRequest {
+	s.ExcludeRegionIdsScope = &v
+	return s
+}
+
+func (s *UpdateCompliancePackShrinkRequest) SetExcludeResourceGroupIdsScope(v string) *UpdateCompliancePackShrinkRequest {
+	s.ExcludeResourceGroupIdsScope = &v
+	return s
+}
+
 func (s *UpdateCompliancePackShrinkRequest) SetExcludeResourceIdsScope(v string) *UpdateCompliancePackShrinkRequest {
 	s.ExcludeResourceIdsScope = &v
+	return s
+}
+
+func (s *UpdateCompliancePackShrinkRequest) SetExcludeTagsScope(v []*UpdateCompliancePackShrinkRequestExcludeTagsScope) *UpdateCompliancePackShrinkRequest {
+	s.ExcludeTagsScope = v
 	return s
 }
 
@@ -32262,6 +33606,11 @@ func (s *UpdateCompliancePackShrinkRequest) SetRegionIdsScope(v string) *UpdateC
 
 func (s *UpdateCompliancePackShrinkRequest) SetResourceGroupIdsScope(v string) *UpdateCompliancePackShrinkRequest {
 	s.ResourceGroupIdsScope = &v
+	return s
+}
+
+func (s *UpdateCompliancePackShrinkRequest) SetResourceIdsScope(v string) *UpdateCompliancePackShrinkRequest {
+	s.ResourceIdsScope = &v
 	return s
 }
 
@@ -32277,6 +33626,57 @@ func (s *UpdateCompliancePackShrinkRequest) SetTagKeyScope(v string) *UpdateComp
 
 func (s *UpdateCompliancePackShrinkRequest) SetTagValueScope(v string) *UpdateCompliancePackShrinkRequest {
 	s.TagValueScope = &v
+	return s
+}
+
+func (s *UpdateCompliancePackShrinkRequest) SetTagsScope(v []*UpdateCompliancePackShrinkRequestTagsScope) *UpdateCompliancePackShrinkRequest {
+	s.TagsScope = v
+	return s
+}
+
+type UpdateCompliancePackShrinkRequestExcludeTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s UpdateCompliancePackShrinkRequestExcludeTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCompliancePackShrinkRequestExcludeTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCompliancePackShrinkRequestExcludeTagsScope) SetTagKey(v string) *UpdateCompliancePackShrinkRequestExcludeTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *UpdateCompliancePackShrinkRequestExcludeTagsScope) SetTagValue(v string) *UpdateCompliancePackShrinkRequestExcludeTagsScope {
+	s.TagValue = &v
+	return s
+}
+
+type UpdateCompliancePackShrinkRequestTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s UpdateCompliancePackShrinkRequestTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCompliancePackShrinkRequestTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCompliancePackShrinkRequestTagsScope) SetTagKey(v string) *UpdateCompliancePackShrinkRequestTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *UpdateCompliancePackShrinkRequestTagsScope) SetTagValue(v string) *UpdateCompliancePackShrinkRequestTagsScope {
+	s.TagValue = &v
 	return s
 }
 
@@ -32648,7 +34048,9 @@ type UpdateConfigRuleRequest struct {
 	// ConfigurationItemChangeNotification
 	ConfigRuleTriggerTypes *string `json:"ConfigRuleTriggerTypes,omitempty" xml:"ConfigRuleTriggerTypes,omitempty"`
 	// The description of the rule. You can enter up to 500 characters.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description                  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExcludeRegionIdsScope        *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
+	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
 	// The ID of the resource to be excluded from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
 	//
 	// >  This parameter applies only to managed rules.
@@ -32656,7 +34058,8 @@ type UpdateConfigRuleRequest struct {
 	// example:
 	//
 	// lb-t4nbowvtbkss7t326****
-	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeResourceIdsScope *string                                    `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeTagsScope        []*UpdateConfigRuleRequestExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
 	// The input parameters of the rule.
 	//
 	// example:
@@ -32697,6 +34100,7 @@ type UpdateConfigRuleRequest struct {
 	//
 	// rg-aekzc7r7rhx****
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	ResourceIdsScope      *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
 	// The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
 	//
 	// example:
@@ -32740,7 +34144,8 @@ type UpdateConfigRuleRequest struct {
 	// example:
 	//
 	// test
-	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagValueScope *string                             `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagsScope     []*UpdateConfigRuleRequestTagsScope `json:"TagsScope,omitempty" xml:"TagsScope,omitempty" type:"Repeated"`
 }
 
 func (s UpdateConfigRuleRequest) String() string {
@@ -32776,8 +34181,23 @@ func (s *UpdateConfigRuleRequest) SetDescription(v string) *UpdateConfigRuleRequ
 	return s
 }
 
+func (s *UpdateConfigRuleRequest) SetExcludeRegionIdsScope(v string) *UpdateConfigRuleRequest {
+	s.ExcludeRegionIdsScope = &v
+	return s
+}
+
+func (s *UpdateConfigRuleRequest) SetExcludeResourceGroupIdsScope(v string) *UpdateConfigRuleRequest {
+	s.ExcludeResourceGroupIdsScope = &v
+	return s
+}
+
 func (s *UpdateConfigRuleRequest) SetExcludeResourceIdsScope(v string) *UpdateConfigRuleRequest {
 	s.ExcludeResourceIdsScope = &v
+	return s
+}
+
+func (s *UpdateConfigRuleRequest) SetExcludeTagsScope(v []*UpdateConfigRuleRequestExcludeTagsScope) *UpdateConfigRuleRequest {
+	s.ExcludeTagsScope = v
 	return s
 }
 
@@ -32798,6 +34218,11 @@ func (s *UpdateConfigRuleRequest) SetRegionIdsScope(v string) *UpdateConfigRuleR
 
 func (s *UpdateConfigRuleRequest) SetResourceGroupIdsScope(v string) *UpdateConfigRuleRequest {
 	s.ResourceGroupIdsScope = &v
+	return s
+}
+
+func (s *UpdateConfigRuleRequest) SetResourceIdsScope(v string) *UpdateConfigRuleRequest {
+	s.ResourceIdsScope = &v
 	return s
 }
 
@@ -32823,6 +34248,57 @@ func (s *UpdateConfigRuleRequest) SetTagKeyScope(v string) *UpdateConfigRuleRequ
 
 func (s *UpdateConfigRuleRequest) SetTagValueScope(v string) *UpdateConfigRuleRequest {
 	s.TagValueScope = &v
+	return s
+}
+
+func (s *UpdateConfigRuleRequest) SetTagsScope(v []*UpdateConfigRuleRequestTagsScope) *UpdateConfigRuleRequest {
+	s.TagsScope = v
+	return s
+}
+
+type UpdateConfigRuleRequestExcludeTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s UpdateConfigRuleRequestExcludeTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConfigRuleRequestExcludeTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConfigRuleRequestExcludeTagsScope) SetTagKey(v string) *UpdateConfigRuleRequestExcludeTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *UpdateConfigRuleRequestExcludeTagsScope) SetTagValue(v string) *UpdateConfigRuleRequestExcludeTagsScope {
+	s.TagValue = &v
+	return s
+}
+
+type UpdateConfigRuleRequestTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s UpdateConfigRuleRequestTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConfigRuleRequestTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConfigRuleRequestTagsScope) SetTagKey(v string) *UpdateConfigRuleRequestTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *UpdateConfigRuleRequestTagsScope) SetTagValue(v string) *UpdateConfigRuleRequestTagsScope {
+	s.TagValue = &v
 	return s
 }
 
@@ -32860,7 +34336,9 @@ type UpdateConfigRuleShrinkRequest struct {
 	// ConfigurationItemChangeNotification
 	ConfigRuleTriggerTypes *string `json:"ConfigRuleTriggerTypes,omitempty" xml:"ConfigRuleTriggerTypes,omitempty"`
 	// The description of the rule. You can enter up to 500 characters.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description                  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExcludeRegionIdsScope        *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
+	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
 	// The ID of the resource to be excluded from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
 	//
 	// >  This parameter applies only to managed rules.
@@ -32868,7 +34346,8 @@ type UpdateConfigRuleShrinkRequest struct {
 	// example:
 	//
 	// lb-t4nbowvtbkss7t326****
-	ExcludeResourceIdsScope *string `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeResourceIdsScope *string                                          `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
+	ExcludeTagsScope        []*UpdateConfigRuleShrinkRequestExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
 	// The input parameters of the rule.
 	//
 	// example:
@@ -32909,6 +34388,7 @@ type UpdateConfigRuleShrinkRequest struct {
 	//
 	// rg-aekzc7r7rhx****
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
+	ResourceIdsScope      *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
 	// The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
 	//
 	// example:
@@ -32952,7 +34432,8 @@ type UpdateConfigRuleShrinkRequest struct {
 	// example:
 	//
 	// test
-	TagValueScope *string `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagValueScope *string                                   `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
+	TagsScope     []*UpdateConfigRuleShrinkRequestTagsScope `json:"TagsScope,omitempty" xml:"TagsScope,omitempty" type:"Repeated"`
 }
 
 func (s UpdateConfigRuleShrinkRequest) String() string {
@@ -32988,8 +34469,23 @@ func (s *UpdateConfigRuleShrinkRequest) SetDescription(v string) *UpdateConfigRu
 	return s
 }
 
+func (s *UpdateConfigRuleShrinkRequest) SetExcludeRegionIdsScope(v string) *UpdateConfigRuleShrinkRequest {
+	s.ExcludeRegionIdsScope = &v
+	return s
+}
+
+func (s *UpdateConfigRuleShrinkRequest) SetExcludeResourceGroupIdsScope(v string) *UpdateConfigRuleShrinkRequest {
+	s.ExcludeResourceGroupIdsScope = &v
+	return s
+}
+
 func (s *UpdateConfigRuleShrinkRequest) SetExcludeResourceIdsScope(v string) *UpdateConfigRuleShrinkRequest {
 	s.ExcludeResourceIdsScope = &v
+	return s
+}
+
+func (s *UpdateConfigRuleShrinkRequest) SetExcludeTagsScope(v []*UpdateConfigRuleShrinkRequestExcludeTagsScope) *UpdateConfigRuleShrinkRequest {
+	s.ExcludeTagsScope = v
 	return s
 }
 
@@ -33010,6 +34506,11 @@ func (s *UpdateConfigRuleShrinkRequest) SetRegionIdsScope(v string) *UpdateConfi
 
 func (s *UpdateConfigRuleShrinkRequest) SetResourceGroupIdsScope(v string) *UpdateConfigRuleShrinkRequest {
 	s.ResourceGroupIdsScope = &v
+	return s
+}
+
+func (s *UpdateConfigRuleShrinkRequest) SetResourceIdsScope(v string) *UpdateConfigRuleShrinkRequest {
+	s.ResourceIdsScope = &v
 	return s
 }
 
@@ -33035,6 +34536,57 @@ func (s *UpdateConfigRuleShrinkRequest) SetTagKeyScope(v string) *UpdateConfigRu
 
 func (s *UpdateConfigRuleShrinkRequest) SetTagValueScope(v string) *UpdateConfigRuleShrinkRequest {
 	s.TagValueScope = &v
+	return s
+}
+
+func (s *UpdateConfigRuleShrinkRequest) SetTagsScope(v []*UpdateConfigRuleShrinkRequestTagsScope) *UpdateConfigRuleShrinkRequest {
+	s.TagsScope = v
+	return s
+}
+
+type UpdateConfigRuleShrinkRequestExcludeTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s UpdateConfigRuleShrinkRequestExcludeTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConfigRuleShrinkRequestExcludeTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConfigRuleShrinkRequestExcludeTagsScope) SetTagKey(v string) *UpdateConfigRuleShrinkRequestExcludeTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *UpdateConfigRuleShrinkRequestExcludeTagsScope) SetTagValue(v string) *UpdateConfigRuleShrinkRequestExcludeTagsScope {
+	s.TagValue = &v
+	return s
+}
+
+type UpdateConfigRuleShrinkRequestTagsScope struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s UpdateConfigRuleShrinkRequestTagsScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConfigRuleShrinkRequestTagsScope) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConfigRuleShrinkRequestTagsScope) SetTagKey(v string) *UpdateConfigRuleShrinkRequestTagsScope {
+	s.TagKey = &v
+	return s
+}
+
+func (s *UpdateConfigRuleShrinkRequestTagsScope) SetTagValue(v string) *UpdateConfigRuleShrinkRequestTagsScope {
+	s.TagValue = &v
 	return s
 }
 
@@ -34413,8 +35965,21 @@ func (client *Client) CreateAggregateCompliancePackWithOptions(tmpReq *CreateAgg
 		body["Description"] = request.Description
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ExcludeRegionIdsScope)) {
+		body["ExcludeRegionIdsScope"] = request.ExcludeRegionIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExcludeResourceGroupIdsScope)) {
+		body["ExcludeResourceGroupIdsScope"] = request.ExcludeResourceGroupIdsScope
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ExcludeResourceIdsScope)) {
 		body["ExcludeResourceIdsScope"] = request.ExcludeResourceIdsScope
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExcludeTagsScope)) {
+		bodyFlat["ExcludeTagsScope"] = request.ExcludeTagsScope
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionIdsScope)) {
@@ -34423,6 +35988,10 @@ func (client *Client) CreateAggregateCompliancePackWithOptions(tmpReq *CreateAgg
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupIdsScope)) {
 		body["ResourceGroupIdsScope"] = request.ResourceGroupIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIdsScope)) {
+		body["ResourceIdsScope"] = request.ResourceIdsScope
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RiskLevel)) {
@@ -34437,10 +36006,16 @@ func (client *Client) CreateAggregateCompliancePackWithOptions(tmpReq *CreateAgg
 		body["TagValueScope"] = request.TagValueScope
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TagsScope)) {
+		bodyFlat["TagsScope"] = request.TagsScope
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TemplateContent)) {
 		body["TemplateContent"] = request.TemplateContent
 	}
 
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -34635,6 +36210,10 @@ func (client *Client) CreateAggregateConfigRuleWithOptions(tmpReq *CreateAggrega
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountIdsScope)) {
+		body["AccountIdsScope"] = request.AccountIdsScope
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
 		body["AggregatorId"] = request.AggregatorId
 	}
@@ -34663,8 +36242,21 @@ func (client *Client) CreateAggregateConfigRuleWithOptions(tmpReq *CreateAggrega
 		body["ExcludeFolderIdsScope"] = request.ExcludeFolderIdsScope
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ExcludeRegionIdsScope)) {
+		body["ExcludeRegionIdsScope"] = request.ExcludeRegionIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExcludeResourceGroupIdsScope)) {
+		body["ExcludeResourceGroupIdsScope"] = request.ExcludeResourceGroupIdsScope
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ExcludeResourceIdsScope)) {
 		body["ExcludeResourceIdsScope"] = request.ExcludeResourceIdsScope
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExcludeTagsScope)) {
+		bodyFlat["ExcludeTagsScope"] = request.ExcludeTagsScope
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.FolderIdsScope)) {
@@ -34685,6 +36277,10 @@ func (client *Client) CreateAggregateConfigRuleWithOptions(tmpReq *CreateAggrega
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupIdsScope)) {
 		body["ResourceGroupIdsScope"] = request.ResourceGroupIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIdsScope)) {
+		body["ResourceIdsScope"] = request.ResourceIdsScope
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceTypesScopeShrink)) {
@@ -34715,6 +36311,12 @@ func (client *Client) CreateAggregateConfigRuleWithOptions(tmpReq *CreateAggrega
 		body["TagValueScope"] = request.TagValueScope
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TagsScope)) {
+		bodyFlat["TagsScope"] = request.TagsScope
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -35031,8 +36633,21 @@ func (client *Client) CreateCompliancePackWithOptions(tmpReq *CreateCompliancePa
 		body["Description"] = request.Description
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ExcludeRegionIdsScope)) {
+		body["ExcludeRegionIdsScope"] = request.ExcludeRegionIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExcludeResourceGroupIdsScope)) {
+		body["ExcludeResourceGroupIdsScope"] = request.ExcludeResourceGroupIdsScope
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ExcludeResourceIdsScope)) {
 		body["ExcludeResourceIdsScope"] = request.ExcludeResourceIdsScope
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExcludeTagsScope)) {
+		bodyFlat["ExcludeTagsScope"] = request.ExcludeTagsScope
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionIdsScope)) {
@@ -35041,6 +36656,10 @@ func (client *Client) CreateCompliancePackWithOptions(tmpReq *CreateCompliancePa
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupIdsScope)) {
 		body["ResourceGroupIdsScope"] = request.ResourceGroupIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIdsScope)) {
+		body["ResourceIdsScope"] = request.ResourceIdsScope
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RiskLevel)) {
@@ -35055,10 +36674,16 @@ func (client *Client) CreateCompliancePackWithOptions(tmpReq *CreateCompliancePa
 		body["TagValueScope"] = request.TagValueScope
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TagsScope)) {
+		bodyFlat["TagsScope"] = request.TagsScope
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TemplateContent)) {
 		body["TemplateContent"] = request.TemplateContent
 	}
 
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -35261,8 +36886,21 @@ func (client *Client) CreateConfigRuleWithOptions(tmpReq *CreateConfigRuleReques
 		body["Description"] = request.Description
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ExcludeRegionIdsScope)) {
+		body["ExcludeRegionIdsScope"] = request.ExcludeRegionIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExcludeResourceGroupIdsScope)) {
+		body["ExcludeResourceGroupIdsScope"] = request.ExcludeResourceGroupIdsScope
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ExcludeResourceIdsScope)) {
 		body["ExcludeResourceIdsScope"] = request.ExcludeResourceIdsScope
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExcludeTagsScope)) {
+		bodyFlat["ExcludeTagsScope"] = request.ExcludeTagsScope
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InputParametersShrink)) {
@@ -35279,6 +36917,10 @@ func (client *Client) CreateConfigRuleWithOptions(tmpReq *CreateConfigRuleReques
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupIdsScope)) {
 		body["ResourceGroupIdsScope"] = request.ResourceGroupIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIdsScope)) {
+		body["ResourceIdsScope"] = request.ResourceIdsScope
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceTypesScopeShrink)) {
@@ -35309,6 +36951,12 @@ func (client *Client) CreateConfigRuleWithOptions(tmpReq *CreateConfigRuleReques
 		body["TagValueScope"] = request.TagValueScope
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TagsScope)) {
+		bodyFlat["TagsScope"] = request.TagsScope
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -37579,6 +39227,10 @@ func (client *Client) GetAggregateConfigDeliveryChannel(request *GetAggregateCon
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取账号组规则详情
+//
 // Description:
 //
 // This example shows how to query the details of the `cr-7f7d626622af0041****` rule in the `ca-7f00626622af0041****` account group.
@@ -37625,6 +39277,10 @@ func (client *Client) GetAggregateConfigRuleWithOptions(request *GetAggregateCon
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取账号组规则详情
+//
 // Description:
 //
 // This example shows how to query the details of the `cr-7f7d626622af0041****` rule in the `ca-7f00626622af0041****` account group.
@@ -43610,8 +45266,21 @@ func (client *Client) UpdateAggregateCompliancePackWithOptions(tmpReq *UpdateAgg
 		body["Description"] = request.Description
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ExcludeRegionIdsScope)) {
+		body["ExcludeRegionIdsScope"] = request.ExcludeRegionIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExcludeResourceGroupIdsScope)) {
+		body["ExcludeResourceGroupIdsScope"] = request.ExcludeResourceGroupIdsScope
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ExcludeResourceIdsScope)) {
 		body["ExcludeResourceIdsScope"] = request.ExcludeResourceIdsScope
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExcludeTagsScope)) {
+		bodyFlat["ExcludeTagsScope"] = request.ExcludeTagsScope
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionIdsScope)) {
@@ -43620,6 +45289,10 @@ func (client *Client) UpdateAggregateCompliancePackWithOptions(tmpReq *UpdateAgg
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupIdsScope)) {
 		body["ResourceGroupIdsScope"] = request.ResourceGroupIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIdsScope)) {
+		body["ResourceIdsScope"] = request.ResourceIdsScope
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RiskLevel)) {
@@ -43634,6 +45307,12 @@ func (client *Client) UpdateAggregateCompliancePackWithOptions(tmpReq *UpdateAgg
 		body["TagValueScope"] = request.TagValueScope
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TagsScope)) {
+		bodyFlat["TagsScope"] = request.TagsScope
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -43824,6 +45503,10 @@ func (client *Client) UpdateAggregateConfigRuleWithOptions(tmpReq *UpdateAggrega
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountIdsScope)) {
+		body["AccountIdsScope"] = request.AccountIdsScope
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
 		body["AggregatorId"] = request.AggregatorId
 	}
@@ -43856,8 +45539,21 @@ func (client *Client) UpdateAggregateConfigRuleWithOptions(tmpReq *UpdateAggrega
 		body["ExcludeFolderIdsScope"] = request.ExcludeFolderIdsScope
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ExcludeRegionIdsScope)) {
+		body["ExcludeRegionIdsScope"] = request.ExcludeRegionIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExcludeResourceGroupIdsScope)) {
+		body["ExcludeResourceGroupIdsScope"] = request.ExcludeResourceGroupIdsScope
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ExcludeResourceIdsScope)) {
 		body["ExcludeResourceIdsScope"] = request.ExcludeResourceIdsScope
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExcludeTagsScope)) {
+		bodyFlat["ExcludeTagsScope"] = request.ExcludeTagsScope
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.FolderIdsScope)) {
@@ -43880,6 +45576,10 @@ func (client *Client) UpdateAggregateConfigRuleWithOptions(tmpReq *UpdateAggrega
 		body["ResourceGroupIdsScope"] = request.ResourceGroupIdsScope
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceIdsScope)) {
+		body["ResourceIdsScope"] = request.ResourceIdsScope
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceTypesScopeShrink)) {
 		body["ResourceTypesScope"] = request.ResourceTypesScopeShrink
 	}
@@ -43900,6 +45600,12 @@ func (client *Client) UpdateAggregateConfigRuleWithOptions(tmpReq *UpdateAggrega
 		body["TagValueScope"] = request.TagValueScope
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TagsScope)) {
+		bodyFlat["TagsScope"] = request.TagsScope
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -44172,8 +45878,21 @@ func (client *Client) UpdateCompliancePackWithOptions(tmpReq *UpdateCompliancePa
 		body["Description"] = request.Description
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ExcludeRegionIdsScope)) {
+		body["ExcludeRegionIdsScope"] = request.ExcludeRegionIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExcludeResourceGroupIdsScope)) {
+		body["ExcludeResourceGroupIdsScope"] = request.ExcludeResourceGroupIdsScope
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ExcludeResourceIdsScope)) {
 		body["ExcludeResourceIdsScope"] = request.ExcludeResourceIdsScope
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExcludeTagsScope)) {
+		bodyFlat["ExcludeTagsScope"] = request.ExcludeTagsScope
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionIdsScope)) {
@@ -44182,6 +45901,10 @@ func (client *Client) UpdateCompliancePackWithOptions(tmpReq *UpdateCompliancePa
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupIdsScope)) {
 		body["ResourceGroupIdsScope"] = request.ResourceGroupIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIdsScope)) {
+		body["ResourceIdsScope"] = request.ResourceIdsScope
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RiskLevel)) {
@@ -44196,6 +45919,12 @@ func (client *Client) UpdateCompliancePackWithOptions(tmpReq *UpdateCompliancePa
 		body["TagValueScope"] = request.TagValueScope
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TagsScope)) {
+		bodyFlat["TagsScope"] = request.TagsScope
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -44402,8 +46131,21 @@ func (client *Client) UpdateConfigRuleWithOptions(tmpReq *UpdateConfigRuleReques
 		body["Description"] = request.Description
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ExcludeRegionIdsScope)) {
+		body["ExcludeRegionIdsScope"] = request.ExcludeRegionIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExcludeResourceGroupIdsScope)) {
+		body["ExcludeResourceGroupIdsScope"] = request.ExcludeResourceGroupIdsScope
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ExcludeResourceIdsScope)) {
 		body["ExcludeResourceIdsScope"] = request.ExcludeResourceIdsScope
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExcludeTagsScope)) {
+		bodyFlat["ExcludeTagsScope"] = request.ExcludeTagsScope
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InputParametersShrink)) {
@@ -44420,6 +46162,10 @@ func (client *Client) UpdateConfigRuleWithOptions(tmpReq *UpdateConfigRuleReques
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupIdsScope)) {
 		body["ResourceGroupIdsScope"] = request.ResourceGroupIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIdsScope)) {
+		body["ResourceIdsScope"] = request.ResourceIdsScope
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceTypesScopeShrink)) {
@@ -44442,6 +46188,12 @@ func (client *Client) UpdateConfigRuleWithOptions(tmpReq *UpdateConfigRuleReques
 		body["TagValueScope"] = request.TagValueScope
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TagsScope)) {
+		bodyFlat["TagsScope"] = request.TagsScope
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
