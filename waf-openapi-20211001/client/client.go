@@ -3748,6 +3748,157 @@ func (s *DescribeApisecEventDomainStatisticResponse) SetBody(v *DescribeApisecEv
 	return s
 }
 
+type DescribeApisecLogDeliveriesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3_public_cn-uqm2z****0a
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DescribeApisecLogDeliveriesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecLogDeliveriesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecLogDeliveriesRequest) SetInstanceId(v string) *DescribeApisecLogDeliveriesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeApisecLogDeliveriesRequest) SetRegionId(v string) *DescribeApisecLogDeliveriesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeApisecLogDeliveriesRequest) SetResourceManagerResourceGroupId(v string) *DescribeApisecLogDeliveriesRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DescribeApisecLogDeliveriesResponseBody struct {
+	DeliveryConfigs []*DescribeApisecLogDeliveriesResponseBodyDeliveryConfigs `json:"DeliveryConfigs,omitempty" xml:"DeliveryConfigs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2EFCFE18-78F8-5079-B312-07***48B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeApisecLogDeliveriesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecLogDeliveriesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecLogDeliveriesResponseBody) SetDeliveryConfigs(v []*DescribeApisecLogDeliveriesResponseBodyDeliveryConfigs) *DescribeApisecLogDeliveriesResponseBody {
+	s.DeliveryConfigs = v
+	return s
+}
+
+func (s *DescribeApisecLogDeliveriesResponseBody) SetRequestId(v string) *DescribeApisecLogDeliveriesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeApisecLogDeliveriesResponseBodyDeliveryConfigs struct {
+	// example:
+	//
+	// risk
+	AssertKey *string `json:"AssertKey,omitempty" xml:"AssertKey,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	LogRegionId *string `json:"LogRegionId,omitempty" xml:"LogRegionId,omitempty"`
+	// example:
+	//
+	// apisec-logstore***
+	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	// example:
+	//
+	// apisec-project-14316572********
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// true
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeApisecLogDeliveriesResponseBodyDeliveryConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecLogDeliveriesResponseBodyDeliveryConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecLogDeliveriesResponseBodyDeliveryConfigs) SetAssertKey(v string) *DescribeApisecLogDeliveriesResponseBodyDeliveryConfigs {
+	s.AssertKey = &v
+	return s
+}
+
+func (s *DescribeApisecLogDeliveriesResponseBodyDeliveryConfigs) SetLogRegionId(v string) *DescribeApisecLogDeliveriesResponseBodyDeliveryConfigs {
+	s.LogRegionId = &v
+	return s
+}
+
+func (s *DescribeApisecLogDeliveriesResponseBodyDeliveryConfigs) SetLogStoreName(v string) *DescribeApisecLogDeliveriesResponseBodyDeliveryConfigs {
+	s.LogStoreName = &v
+	return s
+}
+
+func (s *DescribeApisecLogDeliveriesResponseBodyDeliveryConfigs) SetProjectName(v string) *DescribeApisecLogDeliveriesResponseBodyDeliveryConfigs {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *DescribeApisecLogDeliveriesResponseBodyDeliveryConfigs) SetStatus(v bool) *DescribeApisecLogDeliveriesResponseBodyDeliveryConfigs {
+	s.Status = &v
+	return s
+}
+
+type DescribeApisecLogDeliveriesResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeApisecLogDeliveriesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeApisecLogDeliveriesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecLogDeliveriesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecLogDeliveriesResponse) SetHeaders(v map[string]*string) *DescribeApisecLogDeliveriesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeApisecLogDeliveriesResponse) SetStatusCode(v int32) *DescribeApisecLogDeliveriesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeApisecLogDeliveriesResponse) SetBody(v *DescribeApisecLogDeliveriesResponseBody) *DescribeApisecLogDeliveriesResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeApisecSensitiveDomainStatisticRequest struct {
 	// example:
 	//
@@ -3975,6 +4126,229 @@ func (s *DescribeApisecSensitiveDomainStatisticResponse) SetStatusCode(v int32) 
 }
 
 func (s *DescribeApisecSensitiveDomainStatisticResponse) SetBody(v *DescribeApisecSensitiveDomainStatisticResponseBody) *DescribeApisecSensitiveDomainStatisticResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeApisecSlsLogStoresRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3_public_cn-uqm2z****0a
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	LogRegionId *string `json:"LogRegionId,omitempty" xml:"LogRegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// apisec-project-14316572********
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DescribeApisecSlsLogStoresRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecSlsLogStoresRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecSlsLogStoresRequest) SetInstanceId(v string) *DescribeApisecSlsLogStoresRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeApisecSlsLogStoresRequest) SetLogRegionId(v string) *DescribeApisecSlsLogStoresRequest {
+	s.LogRegionId = &v
+	return s
+}
+
+func (s *DescribeApisecSlsLogStoresRequest) SetProjectName(v string) *DescribeApisecSlsLogStoresRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *DescribeApisecSlsLogStoresRequest) SetRegionId(v string) *DescribeApisecSlsLogStoresRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeApisecSlsLogStoresRequest) SetResourceManagerResourceGroupId(v string) *DescribeApisecSlsLogStoresRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DescribeApisecSlsLogStoresResponseBody struct {
+	LogStores []*string `json:"LogStores,omitempty" xml:"LogStores,omitempty" type:"Repeated"`
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19****5EB0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeApisecSlsLogStoresResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecSlsLogStoresResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecSlsLogStoresResponseBody) SetLogStores(v []*string) *DescribeApisecSlsLogStoresResponseBody {
+	s.LogStores = v
+	return s
+}
+
+func (s *DescribeApisecSlsLogStoresResponseBody) SetRequestId(v string) *DescribeApisecSlsLogStoresResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeApisecSlsLogStoresResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeApisecSlsLogStoresResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeApisecSlsLogStoresResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecSlsLogStoresResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecSlsLogStoresResponse) SetHeaders(v map[string]*string) *DescribeApisecSlsLogStoresResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeApisecSlsLogStoresResponse) SetStatusCode(v int32) *DescribeApisecSlsLogStoresResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeApisecSlsLogStoresResponse) SetBody(v *DescribeApisecSlsLogStoresResponseBody) *DescribeApisecSlsLogStoresResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeApisecSlsProjectsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3_public_cn-uqm2z****0a
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	LogRegionId *string `json:"LogRegionId,omitempty" xml:"LogRegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DescribeApisecSlsProjectsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecSlsProjectsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecSlsProjectsRequest) SetInstanceId(v string) *DescribeApisecSlsProjectsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeApisecSlsProjectsRequest) SetLogRegionId(v string) *DescribeApisecSlsProjectsRequest {
+	s.LogRegionId = &v
+	return s
+}
+
+func (s *DescribeApisecSlsProjectsRequest) SetRegionId(v string) *DescribeApisecSlsProjectsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeApisecSlsProjectsRequest) SetResourceManagerResourceGroupId(v string) *DescribeApisecSlsProjectsRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DescribeApisecSlsProjectsResponseBody struct {
+	Projects []*string `json:"Projects,omitempty" xml:"Projects,omitempty" type:"Repeated"`
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19****5EB0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeApisecSlsProjectsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecSlsProjectsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecSlsProjectsResponseBody) SetProjects(v []*string) *DescribeApisecSlsProjectsResponseBody {
+	s.Projects = v
+	return s
+}
+
+func (s *DescribeApisecSlsProjectsResponseBody) SetRequestId(v string) *DescribeApisecSlsProjectsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeApisecSlsProjectsResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeApisecSlsProjectsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeApisecSlsProjectsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApisecSlsProjectsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApisecSlsProjectsResponse) SetHeaders(v map[string]*string) *DescribeApisecSlsProjectsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeApisecSlsProjectsResponse) SetStatusCode(v int32) *DescribeApisecSlsProjectsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeApisecSlsProjectsResponse) SetBody(v *DescribeApisecSlsProjectsResponseBody) *DescribeApisecSlsProjectsResponse {
 	s.Body = v
 	return s
 }
@@ -8392,7 +8766,7 @@ type DescribeDomainDetailResponseBodyListen struct {
 	// example:
 	//
 	// 123-cn-hangzhou
-	SM2CertId *bool `json:"SM2CertId,omitempty" xml:"SM2CertId,omitempty"`
+	SM2CertId *string `json:"SM2CertId,omitempty" xml:"SM2CertId,omitempty"`
 	// Indicates whether SM certificate-based verification is enabled. Valid values:
 	//
 	// 	- **true**
@@ -8499,7 +8873,7 @@ func (s *DescribeDomainDetailResponseBodyListen) SetSM2AccessOnly(v bool) *Descr
 	return s
 }
 
-func (s *DescribeDomainDetailResponseBodyListen) SetSM2CertId(v bool) *DescribeDomainDetailResponseBodyListen {
+func (s *DescribeDomainDetailResponseBodyListen) SetSM2CertId(v string) *DescribeDomainDetailResponseBodyListen {
 	s.SM2CertId = &v
 	return s
 }
@@ -15679,13 +16053,13 @@ func (s *DescribeRuleHitsTopUrlRequest) SetStartTimestamp(v string) *DescribeRul
 }
 
 type DescribeRuleHitsTopUrlResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
-	// 3D8AF43B-08EB-51CE-B33A-93AAEF3F9B0C
+	// 3D8AF43B-08EB-51CE-B33A-93AA****9B0C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The array of the top 10 URLs that trigger protection rules.
+	// The top 10 URLs that match protection rules.
 	RuleHitsTopUrl []*DescribeRuleHitsTopUrlResponseBodyRuleHitsTopUrl `json:"RuleHitsTopUrl,omitempty" xml:"RuleHitsTopUrl,omitempty" type:"Repeated"`
 }
 
@@ -15708,7 +16082,7 @@ func (s *DescribeRuleHitsTopUrlResponseBody) SetRuleHitsTopUrl(v []*DescribeRule
 }
 
 type DescribeRuleHitsTopUrlResponseBodyRuleHitsTopUrl struct {
-	// The number of requests from the URL that match protection rules.
+	// The number of requests that match protection rules.
 	//
 	// example:
 	//
@@ -15716,9 +16090,11 @@ type DescribeRuleHitsTopUrlResponseBodyRuleHitsTopUrl struct {
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The request URL.
 	//
+	// >  The value is Base64-encoded.
+	//
 	// example:
 	//
-	// www.aliyundoc.com/path3
+	// d3d3LmFsaXl1bmRvYy5jb20vcGF0aDM=
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
@@ -17794,6 +18170,250 @@ func (s *ListTagValuesResponse) SetStatusCode(v int32) *ListTagValuesResponse {
 }
 
 func (s *ListTagValuesResponse) SetBody(v *ListTagValuesResponseBody) *ListTagValuesResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyApisecLogDeliveryRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// risk
+	AssertKey *string `json:"AssertKey,omitempty" xml:"AssertKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3_public_cn-uqm2z****0a
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	LogRegionId *string `json:"LogRegionId,omitempty" xml:"LogRegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// apisec-logstore***
+	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// apisec-project-14316572********
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s ModifyApisecLogDeliveryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApisecLogDeliveryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApisecLogDeliveryRequest) SetAssertKey(v string) *ModifyApisecLogDeliveryRequest {
+	s.AssertKey = &v
+	return s
+}
+
+func (s *ModifyApisecLogDeliveryRequest) SetInstanceId(v string) *ModifyApisecLogDeliveryRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyApisecLogDeliveryRequest) SetLogRegionId(v string) *ModifyApisecLogDeliveryRequest {
+	s.LogRegionId = &v
+	return s
+}
+
+func (s *ModifyApisecLogDeliveryRequest) SetLogStoreName(v string) *ModifyApisecLogDeliveryRequest {
+	s.LogStoreName = &v
+	return s
+}
+
+func (s *ModifyApisecLogDeliveryRequest) SetProjectName(v string) *ModifyApisecLogDeliveryRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *ModifyApisecLogDeliveryRequest) SetRegionId(v string) *ModifyApisecLogDeliveryRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyApisecLogDeliveryRequest) SetResourceManagerResourceGroupId(v string) *ModifyApisecLogDeliveryRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type ModifyApisecLogDeliveryResponseBody struct {
+	// example:
+	//
+	// F35F45B0-5D6B-4238-BE02-A62D****E840
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyApisecLogDeliveryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApisecLogDeliveryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApisecLogDeliveryResponseBody) SetRequestId(v string) *ModifyApisecLogDeliveryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyApisecLogDeliveryResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyApisecLogDeliveryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyApisecLogDeliveryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApisecLogDeliveryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApisecLogDeliveryResponse) SetHeaders(v map[string]*string) *ModifyApisecLogDeliveryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyApisecLogDeliveryResponse) SetStatusCode(v int32) *ModifyApisecLogDeliveryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyApisecLogDeliveryResponse) SetBody(v *ModifyApisecLogDeliveryResponseBody) *ModifyApisecLogDeliveryResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyApisecLogDeliveryStatusRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// risk
+	AssertKey *string `json:"AssertKey,omitempty" xml:"AssertKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3_public_cn-uqm2z****0a
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ModifyApisecLogDeliveryStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApisecLogDeliveryStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApisecLogDeliveryStatusRequest) SetAssertKey(v string) *ModifyApisecLogDeliveryStatusRequest {
+	s.AssertKey = &v
+	return s
+}
+
+func (s *ModifyApisecLogDeliveryStatusRequest) SetInstanceId(v string) *ModifyApisecLogDeliveryStatusRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyApisecLogDeliveryStatusRequest) SetRegionId(v string) *ModifyApisecLogDeliveryStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyApisecLogDeliveryStatusRequest) SetResourceManagerResourceGroupId(v string) *ModifyApisecLogDeliveryStatusRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *ModifyApisecLogDeliveryStatusRequest) SetStatus(v bool) *ModifyApisecLogDeliveryStatusRequest {
+	s.Status = &v
+	return s
+}
+
+type ModifyApisecLogDeliveryStatusResponseBody struct {
+	// example:
+	//
+	// F35F45B0-5D6B-4238-BE02-A62D****E840
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyApisecLogDeliveryStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApisecLogDeliveryStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApisecLogDeliveryStatusResponseBody) SetRequestId(v string) *ModifyApisecLogDeliveryStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyApisecLogDeliveryStatusResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyApisecLogDeliveryStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyApisecLogDeliveryStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApisecLogDeliveryStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApisecLogDeliveryStatusResponse) SetHeaders(v map[string]*string) *ModifyApisecLogDeliveryStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyApisecLogDeliveryStatusResponse) SetStatusCode(v int32) *ModifyApisecLogDeliveryStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyApisecLogDeliveryStatusResponse) SetBody(v *ModifyApisecLogDeliveryStatusResponseBody) *ModifyApisecLogDeliveryStatusResponse {
 	s.Body = v
 	return s
 }
@@ -22571,6 +23191,74 @@ func (client *Client) DescribeApisecEventDomainStatistic(request *DescribeApisec
 
 // Summary:
 //
+// 获取API安全日志订阅列表
+//
+// @param request - DescribeApisecLogDeliveriesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApisecLogDeliveriesResponse
+func (client *Client) DescribeApisecLogDeliveriesWithOptions(request *DescribeApisecLogDeliveriesRequest, runtime *util.RuntimeOptions) (_result *DescribeApisecLogDeliveriesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeApisecLogDeliveries"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeApisecLogDeliveriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取API安全日志订阅列表
+//
+// @param request - DescribeApisecLogDeliveriesRequest
+//
+// @return DescribeApisecLogDeliveriesResponse
+func (client *Client) DescribeApisecLogDeliveries(request *DescribeApisecLogDeliveriesRequest) (_result *DescribeApisecLogDeliveriesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeApisecLogDeliveriesResponse{}
+	_body, _err := client.DescribeApisecLogDeliveriesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询API安全敏感数据类型统计
 //
 // @param request - DescribeApisecSensitiveDomainStatisticRequest
@@ -22662,6 +23350,154 @@ func (client *Client) DescribeApisecSensitiveDomainStatistic(request *DescribeAp
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeApisecSensitiveDomainStatisticResponse{}
 	_body, _err := client.DescribeApisecSensitiveDomainStatisticWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询日志服务SLS的LogStore列表
+//
+// @param request - DescribeApisecSlsLogStoresRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApisecSlsLogStoresResponse
+func (client *Client) DescribeApisecSlsLogStoresWithOptions(request *DescribeApisecSlsLogStoresRequest, runtime *util.RuntimeOptions) (_result *DescribeApisecSlsLogStoresResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogRegionId)) {
+		query["LogRegionId"] = request.LogRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeApisecSlsLogStores"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeApisecSlsLogStoresResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询日志服务SLS的LogStore列表
+//
+// @param request - DescribeApisecSlsLogStoresRequest
+//
+// @return DescribeApisecSlsLogStoresResponse
+func (client *Client) DescribeApisecSlsLogStores(request *DescribeApisecSlsLogStoresRequest) (_result *DescribeApisecSlsLogStoresResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeApisecSlsLogStoresResponse{}
+	_body, _err := client.DescribeApisecSlsLogStoresWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询日志服务SLS的Project列表
+//
+// @param request - DescribeApisecSlsProjectsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApisecSlsProjectsResponse
+func (client *Client) DescribeApisecSlsProjectsWithOptions(request *DescribeApisecSlsProjectsRequest, runtime *util.RuntimeOptions) (_result *DescribeApisecSlsProjectsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogRegionId)) {
+		query["LogRegionId"] = request.LogRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeApisecSlsProjects"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeApisecSlsProjectsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询日志服务SLS的Project列表
+//
+// @param request - DescribeApisecSlsProjectsRequest
+//
+// @return DescribeApisecSlsProjectsResponse
+func (client *Client) DescribeApisecSlsProjects(request *DescribeApisecSlsProjectsRequest) (_result *DescribeApisecSlsProjectsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeApisecSlsProjectsResponse{}
+	_body, _err := client.DescribeApisecSlsProjectsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27062,6 +27898,166 @@ func (client *Client) ListTagValues(request *ListTagValuesRequest) (_result *Lis
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagValuesResponse{}
 	_body, _err := client.ListTagValuesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改API安全日志订阅
+//
+// @param request - ModifyApisecLogDeliveryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyApisecLogDeliveryResponse
+func (client *Client) ModifyApisecLogDeliveryWithOptions(request *ModifyApisecLogDeliveryRequest, runtime *util.RuntimeOptions) (_result *ModifyApisecLogDeliveryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssertKey)) {
+		query["AssertKey"] = request.AssertKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogRegionId)) {
+		query["LogRegionId"] = request.LogRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogStoreName)) {
+		query["LogStoreName"] = request.LogStoreName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyApisecLogDelivery"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyApisecLogDeliveryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改API安全日志订阅
+//
+// @param request - ModifyApisecLogDeliveryRequest
+//
+// @return ModifyApisecLogDeliveryResponse
+func (client *Client) ModifyApisecLogDelivery(request *ModifyApisecLogDeliveryRequest) (_result *ModifyApisecLogDeliveryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyApisecLogDeliveryResponse{}
+	_body, _err := client.ModifyApisecLogDeliveryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改API安全日志订阅状态
+//
+// @param request - ModifyApisecLogDeliveryStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyApisecLogDeliveryStatusResponse
+func (client *Client) ModifyApisecLogDeliveryStatusWithOptions(request *ModifyApisecLogDeliveryStatusRequest, runtime *util.RuntimeOptions) (_result *ModifyApisecLogDeliveryStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssertKey)) {
+		query["AssertKey"] = request.AssertKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyApisecLogDeliveryStatus"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyApisecLogDeliveryStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改API安全日志订阅状态
+//
+// @param request - ModifyApisecLogDeliveryStatusRequest
+//
+// @return ModifyApisecLogDeliveryStatusResponse
+func (client *Client) ModifyApisecLogDeliveryStatus(request *ModifyApisecLogDeliveryStatusRequest) (_result *ModifyApisecLogDeliveryStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyApisecLogDeliveryStatusResponse{}
+	_body, _err := client.ModifyApisecLogDeliveryStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
