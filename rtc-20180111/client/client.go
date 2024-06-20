@@ -8729,10 +8729,7 @@ type DescribeRecordFilesResponseBodyRecordFiles struct {
 	//
 	// yourTaskId
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// example:
-	//
-	// http://rtc-demo.oss-cn-****.aliyuncs.com/record/10-15-1/****/record-002_yourTaskId/example.m3u8
-	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	Url    *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s DescribeRecordFilesResponseBodyRecordFiles) String() string {
@@ -12321,7 +12318,13 @@ type StartCloudRecordRequest struct {
 	// example:
 	//
 	// testid
-	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	ChannelId    *string                                `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	ClockWidgets []*StartCloudRecordRequestClockWidgets `json:"ClockWidgets,omitempty" xml:"ClockWidgets,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2
+	CropMode *int32                           `json:"CropMode,omitempty" xml:"CropMode,omitempty"`
+	Images   []*StartCloudRecordRequestImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
 	// panes
 	Panes []*StartCloudRecordRequestPanes `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
 	// storageConfig
@@ -12341,7 +12344,8 @@ type StartCloudRecordRequest struct {
 	// example:
 	//
 	// 567
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId *string                         `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Texts      []*StartCloudRecordRequestTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
 }
 
 func (s StartCloudRecordRequest) String() string {
@@ -12359,6 +12363,21 @@ func (s *StartCloudRecordRequest) SetAppId(v string) *StartCloudRecordRequest {
 
 func (s *StartCloudRecordRequest) SetChannelId(v string) *StartCloudRecordRequest {
 	s.ChannelId = &v
+	return s
+}
+
+func (s *StartCloudRecordRequest) SetClockWidgets(v []*StartCloudRecordRequestClockWidgets) *StartCloudRecordRequest {
+	s.ClockWidgets = v
+	return s
+}
+
+func (s *StartCloudRecordRequest) SetCropMode(v int32) *StartCloudRecordRequest {
+	s.CropMode = &v
+	return s
+}
+
+func (s *StartCloudRecordRequest) SetImages(v []*StartCloudRecordRequestImages) *StartCloudRecordRequest {
+	s.Images = v
 	return s
 }
 
@@ -12382,7 +12401,300 @@ func (s *StartCloudRecordRequest) SetTemplateId(v string) *StartCloudRecordReque
 	return s
 }
 
+func (s *StartCloudRecordRequest) SetTexts(v []*StartCloudRecordRequestTexts) *StartCloudRecordRequest {
+	s.Texts = v
+	return s
+}
+
+type StartCloudRecordRequestClockWidgets struct {
+	// example:
+	//
+	// 0.9
+	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// 0.6
+	BoxAlpha *float64 `json:"BoxAlpha,omitempty" xml:"BoxAlpha,omitempty"`
+	// example:
+	//
+	// 5
+	BoxBorderw *int32                                       `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
+	BoxColor   *StartCloudRecordRequestClockWidgetsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	Font      *int32                                        `json:"Font,omitempty" xml:"Font,omitempty"`
+	FontColor *StartCloudRecordRequestClockWidgetsFontColor `json:"FontColor,omitempty" xml:"FontColor,omitempty" type:"Struct"`
+	// example:
+	//
+	// 30
+	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	HasBox   *bool  `json:"HasBox,omitempty" xml:"HasBox,omitempty"`
+	// example:
+	//
+	// 0
+	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 8
+	Zone *int32 `json:"Zone,omitempty" xml:"Zone,omitempty"`
+}
+
+func (s StartCloudRecordRequestClockWidgets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartCloudRecordRequestClockWidgets) GoString() string {
+	return s.String()
+}
+
+func (s *StartCloudRecordRequestClockWidgets) SetAlpha(v float64) *StartCloudRecordRequestClockWidgets {
+	s.Alpha = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestClockWidgets) SetBoxAlpha(v float64) *StartCloudRecordRequestClockWidgets {
+	s.BoxAlpha = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestClockWidgets) SetBoxBorderw(v int32) *StartCloudRecordRequestClockWidgets {
+	s.BoxBorderw = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestClockWidgets) SetBoxColor(v *StartCloudRecordRequestClockWidgetsBoxColor) *StartCloudRecordRequestClockWidgets {
+	s.BoxColor = v
+	return s
+}
+
+func (s *StartCloudRecordRequestClockWidgets) SetFont(v int32) *StartCloudRecordRequestClockWidgets {
+	s.Font = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestClockWidgets) SetFontColor(v *StartCloudRecordRequestClockWidgetsFontColor) *StartCloudRecordRequestClockWidgets {
+	s.FontColor = v
+	return s
+}
+
+func (s *StartCloudRecordRequestClockWidgets) SetFontSize(v int32) *StartCloudRecordRequestClockWidgets {
+	s.FontSize = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestClockWidgets) SetHasBox(v bool) *StartCloudRecordRequestClockWidgets {
+	s.HasBox = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestClockWidgets) SetLayer(v int32) *StartCloudRecordRequestClockWidgets {
+	s.Layer = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestClockWidgets) SetX(v float64) *StartCloudRecordRequestClockWidgets {
+	s.X = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestClockWidgets) SetY(v float64) *StartCloudRecordRequestClockWidgets {
+	s.Y = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestClockWidgets) SetZone(v int32) *StartCloudRecordRequestClockWidgets {
+	s.Zone = &v
+	return s
+}
+
+type StartCloudRecordRequestClockWidgetsBoxColor struct {
+	// example:
+	//
+	// 255
+	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// example:
+	//
+	// 255
+	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// example:
+	//
+	// 255
+	R *int32 `json:"R,omitempty" xml:"R,omitempty"`
+}
+
+func (s StartCloudRecordRequestClockWidgetsBoxColor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartCloudRecordRequestClockWidgetsBoxColor) GoString() string {
+	return s.String()
+}
+
+func (s *StartCloudRecordRequestClockWidgetsBoxColor) SetB(v int32) *StartCloudRecordRequestClockWidgetsBoxColor {
+	s.B = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestClockWidgetsBoxColor) SetG(v int32) *StartCloudRecordRequestClockWidgetsBoxColor {
+	s.G = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestClockWidgetsBoxColor) SetR(v int32) *StartCloudRecordRequestClockWidgetsBoxColor {
+	s.R = &v
+	return s
+}
+
+type StartCloudRecordRequestClockWidgetsFontColor struct {
+	// example:
+	//
+	// 255
+	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// example:
+	//
+	// 255
+	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// example:
+	//
+	// 255
+	R *int32 `json:"R,omitempty" xml:"R,omitempty"`
+}
+
+func (s StartCloudRecordRequestClockWidgetsFontColor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartCloudRecordRequestClockWidgetsFontColor) GoString() string {
+	return s.String()
+}
+
+func (s *StartCloudRecordRequestClockWidgetsFontColor) SetB(v int32) *StartCloudRecordRequestClockWidgetsFontColor {
+	s.B = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestClockWidgetsFontColor) SetG(v int32) *StartCloudRecordRequestClockWidgetsFontColor {
+	s.G = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestClockWidgetsFontColor) SetR(v int32) *StartCloudRecordRequestClockWidgetsFontColor {
+	s.R = &v
+	return s
+}
+
+type StartCloudRecordRequestImages struct {
+	// example:
+	//
+	// 0.9
+	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 2
+	ImageCropMode *int32 `json:"ImageCropMode,omitempty" xml:"ImageCropMode,omitempty"`
+	// example:
+	//
+	// 0
+	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://aliyun.com/123xxx.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.3
+	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s StartCloudRecordRequestImages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartCloudRecordRequestImages) GoString() string {
+	return s.String()
+}
+
+func (s *StartCloudRecordRequestImages) SetAlpha(v float64) *StartCloudRecordRequestImages {
+	s.Alpha = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestImages) SetHeight(v float64) *StartCloudRecordRequestImages {
+	s.Height = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestImages) SetImageCropMode(v int32) *StartCloudRecordRequestImages {
+	s.ImageCropMode = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestImages) SetLayer(v int32) *StartCloudRecordRequestImages {
+	s.Layer = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestImages) SetUrl(v string) *StartCloudRecordRequestImages {
+	s.Url = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestImages) SetWidth(v float64) *StartCloudRecordRequestImages {
+	s.Width = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestImages) SetX(v float64) *StartCloudRecordRequestImages {
+	s.X = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestImages) SetY(v float64) *StartCloudRecordRequestImages {
+	s.Y = &v
+	return s
+}
+
 type StartCloudRecordRequestPanes struct {
+	Images []*StartCloudRecordRequestPanesImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 3
+	PaneCropMode *int32 `json:"PaneCropMode,omitempty" xml:"PaneCropMode,omitempty"`
 	// paneId
 	//
 	// This parameter is required.
@@ -12391,12 +12703,15 @@ type StartCloudRecordRequestPanes struct {
 	//
 	// 0
 	PaneId *int32 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	// source
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// sourceType
 	//
 	// example:
 	//
 	// video
-	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	SourceType *string                              `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Texts      []*StartCloudRecordRequestPanesTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
 }
 
 func (s StartCloudRecordRequestPanes) String() string {
@@ -12407,13 +12722,318 @@ func (s StartCloudRecordRequestPanes) GoString() string {
 	return s.String()
 }
 
+func (s *StartCloudRecordRequestPanes) SetImages(v []*StartCloudRecordRequestPanesImages) *StartCloudRecordRequestPanes {
+	s.Images = v
+	return s
+}
+
+func (s *StartCloudRecordRequestPanes) SetPaneCropMode(v int32) *StartCloudRecordRequestPanes {
+	s.PaneCropMode = &v
+	return s
+}
+
 func (s *StartCloudRecordRequestPanes) SetPaneId(v int32) *StartCloudRecordRequestPanes {
 	s.PaneId = &v
 	return s
 }
 
+func (s *StartCloudRecordRequestPanes) SetSource(v string) *StartCloudRecordRequestPanes {
+	s.Source = &v
+	return s
+}
+
 func (s *StartCloudRecordRequestPanes) SetSourceType(v string) *StartCloudRecordRequestPanes {
 	s.SourceType = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestPanes) SetTexts(v []*StartCloudRecordRequestPanesTexts) *StartCloudRecordRequestPanes {
+	s.Texts = v
+	return s
+}
+
+type StartCloudRecordRequestPanesImages struct {
+	// example:
+	//
+	// 0.9
+	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 0
+	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// example:
+	//
+	// 2
+	PaneImageCropMode *int32 `json:"PaneImageCropMode,omitempty" xml:"PaneImageCropMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://aliyun.com/123xx.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s StartCloudRecordRequestPanesImages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartCloudRecordRequestPanesImages) GoString() string {
+	return s.String()
+}
+
+func (s *StartCloudRecordRequestPanesImages) SetAlpha(v float64) *StartCloudRecordRequestPanesImages {
+	s.Alpha = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestPanesImages) SetHeight(v float64) *StartCloudRecordRequestPanesImages {
+	s.Height = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestPanesImages) SetLayer(v int32) *StartCloudRecordRequestPanesImages {
+	s.Layer = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestPanesImages) SetPaneImageCropMode(v int32) *StartCloudRecordRequestPanesImages {
+	s.PaneImageCropMode = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestPanesImages) SetUrl(v string) *StartCloudRecordRequestPanesImages {
+	s.Url = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestPanesImages) SetWidth(v float64) *StartCloudRecordRequestPanesImages {
+	s.Width = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestPanesImages) SetX(v float64) *StartCloudRecordRequestPanesImages {
+	s.X = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestPanesImages) SetY(v float64) *StartCloudRecordRequestPanesImages {
+	s.Y = &v
+	return s
+}
+
+type StartCloudRecordRequestPanesTexts struct {
+	// example:
+	//
+	// 0.9
+	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// 0.6
+	BoxAlpha *float64 `json:"BoxAlpha,omitempty" xml:"BoxAlpha,omitempty"`
+	// example:
+	//
+	// 5
+	BoxBorderw *int32                                     `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
+	BoxColor   *StartCloudRecordRequestPanesTextsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	Font      *int32                                      `json:"Font,omitempty" xml:"Font,omitempty"`
+	FontColor *StartCloudRecordRequestPanesTextsFontColor `json:"FontColor,omitempty" xml:"FontColor,omitempty" type:"Struct"`
+	// example:
+	//
+	// 36
+	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	HasBox   *bool  `json:"HasBox,omitempty" xml:"HasBox,omitempty"`
+	// example:
+	//
+	// 0
+	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 文字水印
+	Texture *string `json:"Texture,omitempty" xml:"Texture,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s StartCloudRecordRequestPanesTexts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartCloudRecordRequestPanesTexts) GoString() string {
+	return s.String()
+}
+
+func (s *StartCloudRecordRequestPanesTexts) SetAlpha(v float64) *StartCloudRecordRequestPanesTexts {
+	s.Alpha = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestPanesTexts) SetBoxAlpha(v float64) *StartCloudRecordRequestPanesTexts {
+	s.BoxAlpha = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestPanesTexts) SetBoxBorderw(v int32) *StartCloudRecordRequestPanesTexts {
+	s.BoxBorderw = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestPanesTexts) SetBoxColor(v *StartCloudRecordRequestPanesTextsBoxColor) *StartCloudRecordRequestPanesTexts {
+	s.BoxColor = v
+	return s
+}
+
+func (s *StartCloudRecordRequestPanesTexts) SetFont(v int32) *StartCloudRecordRequestPanesTexts {
+	s.Font = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestPanesTexts) SetFontColor(v *StartCloudRecordRequestPanesTextsFontColor) *StartCloudRecordRequestPanesTexts {
+	s.FontColor = v
+	return s
+}
+
+func (s *StartCloudRecordRequestPanesTexts) SetFontSize(v int32) *StartCloudRecordRequestPanesTexts {
+	s.FontSize = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestPanesTexts) SetHasBox(v bool) *StartCloudRecordRequestPanesTexts {
+	s.HasBox = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestPanesTexts) SetLayer(v int32) *StartCloudRecordRequestPanesTexts {
+	s.Layer = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestPanesTexts) SetTexture(v string) *StartCloudRecordRequestPanesTexts {
+	s.Texture = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestPanesTexts) SetX(v float64) *StartCloudRecordRequestPanesTexts {
+	s.X = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestPanesTexts) SetY(v float64) *StartCloudRecordRequestPanesTexts {
+	s.Y = &v
+	return s
+}
+
+type StartCloudRecordRequestPanesTextsBoxColor struct {
+	// example:
+	//
+	// 255
+	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// example:
+	//
+	// 255
+	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// example:
+	//
+	// 255
+	R *int32 `json:"R,omitempty" xml:"R,omitempty"`
+}
+
+func (s StartCloudRecordRequestPanesTextsBoxColor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartCloudRecordRequestPanesTextsBoxColor) GoString() string {
+	return s.String()
+}
+
+func (s *StartCloudRecordRequestPanesTextsBoxColor) SetB(v int32) *StartCloudRecordRequestPanesTextsBoxColor {
+	s.B = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestPanesTextsBoxColor) SetG(v int32) *StartCloudRecordRequestPanesTextsBoxColor {
+	s.G = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestPanesTextsBoxColor) SetR(v int32) *StartCloudRecordRequestPanesTextsBoxColor {
+	s.R = &v
+	return s
+}
+
+type StartCloudRecordRequestPanesTextsFontColor struct {
+	// example:
+	//
+	// 255
+	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// example:
+	//
+	// 255
+	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// example:
+	//
+	// 255
+	R *int32 `json:"R,omitempty" xml:"R,omitempty"`
+}
+
+func (s StartCloudRecordRequestPanesTextsFontColor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartCloudRecordRequestPanesTextsFontColor) GoString() string {
+	return s.String()
+}
+
+func (s *StartCloudRecordRequestPanesTextsFontColor) SetB(v int32) *StartCloudRecordRequestPanesTextsFontColor {
+	s.B = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestPanesTextsFontColor) SetG(v int32) *StartCloudRecordRequestPanesTextsFontColor {
+	s.G = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestPanesTextsFontColor) SetR(v int32) *StartCloudRecordRequestPanesTextsFontColor {
+	s.R = &v
 	return s
 }
 
@@ -12490,6 +13110,198 @@ func (s *StartCloudRecordRequestStorageConfig) SetSecretKey(v string) *StartClou
 
 func (s *StartCloudRecordRequestStorageConfig) SetVendor(v int32) *StartCloudRecordRequestStorageConfig {
 	s.Vendor = &v
+	return s
+}
+
+type StartCloudRecordRequestTexts struct {
+	// example:
+	//
+	// 0.1
+	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// 0.6
+	BoxAlpha *float64 `json:"BoxAlpha,omitempty" xml:"BoxAlpha,omitempty"`
+	// example:
+	//
+	// 5
+	BoxBorderw *int32                                `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
+	BoxColor   *StartCloudRecordRequestTextsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	Font      *int32                                 `json:"Font,omitempty" xml:"Font,omitempty"`
+	FontColor *StartCloudRecordRequestTextsFontColor `json:"FontColor,omitempty" xml:"FontColor,omitempty" type:"Struct"`
+	// example:
+	//
+	// 36
+	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	HasBox   *bool  `json:"HasBox,omitempty" xml:"HasBox,omitempty"`
+	// example:
+	//
+	// 0
+	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 文字水印
+	Texture *string `json:"Texture,omitempty" xml:"Texture,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s StartCloudRecordRequestTexts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartCloudRecordRequestTexts) GoString() string {
+	return s.String()
+}
+
+func (s *StartCloudRecordRequestTexts) SetAlpha(v float64) *StartCloudRecordRequestTexts {
+	s.Alpha = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestTexts) SetBoxAlpha(v float64) *StartCloudRecordRequestTexts {
+	s.BoxAlpha = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestTexts) SetBoxBorderw(v int32) *StartCloudRecordRequestTexts {
+	s.BoxBorderw = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestTexts) SetBoxColor(v *StartCloudRecordRequestTextsBoxColor) *StartCloudRecordRequestTexts {
+	s.BoxColor = v
+	return s
+}
+
+func (s *StartCloudRecordRequestTexts) SetFont(v int32) *StartCloudRecordRequestTexts {
+	s.Font = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestTexts) SetFontColor(v *StartCloudRecordRequestTextsFontColor) *StartCloudRecordRequestTexts {
+	s.FontColor = v
+	return s
+}
+
+func (s *StartCloudRecordRequestTexts) SetFontSize(v int32) *StartCloudRecordRequestTexts {
+	s.FontSize = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestTexts) SetHasBox(v bool) *StartCloudRecordRequestTexts {
+	s.HasBox = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestTexts) SetLayer(v int32) *StartCloudRecordRequestTexts {
+	s.Layer = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestTexts) SetTexture(v string) *StartCloudRecordRequestTexts {
+	s.Texture = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestTexts) SetX(v float64) *StartCloudRecordRequestTexts {
+	s.X = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestTexts) SetY(v float64) *StartCloudRecordRequestTexts {
+	s.Y = &v
+	return s
+}
+
+type StartCloudRecordRequestTextsBoxColor struct {
+	// example:
+	//
+	// 255
+	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// example:
+	//
+	// 255
+	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// example:
+	//
+	// 255
+	R *int32 `json:"R,omitempty" xml:"R,omitempty"`
+}
+
+func (s StartCloudRecordRequestTextsBoxColor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartCloudRecordRequestTextsBoxColor) GoString() string {
+	return s.String()
+}
+
+func (s *StartCloudRecordRequestTextsBoxColor) SetB(v int32) *StartCloudRecordRequestTextsBoxColor {
+	s.B = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestTextsBoxColor) SetG(v int32) *StartCloudRecordRequestTextsBoxColor {
+	s.G = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestTextsBoxColor) SetR(v int32) *StartCloudRecordRequestTextsBoxColor {
+	s.R = &v
+	return s
+}
+
+type StartCloudRecordRequestTextsFontColor struct {
+	// example:
+	//
+	// 255
+	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// example:
+	//
+	// 255
+	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// example:
+	//
+	// 255
+	R *int32 `json:"R,omitempty" xml:"R,omitempty"`
+}
+
+func (s StartCloudRecordRequestTextsFontColor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartCloudRecordRequestTextsFontColor) GoString() string {
+	return s.String()
+}
+
+func (s *StartCloudRecordRequestTextsFontColor) SetB(v int32) *StartCloudRecordRequestTextsFontColor {
+	s.B = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestTextsFontColor) SetG(v int32) *StartCloudRecordRequestTextsFontColor {
+	s.G = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestTextsFontColor) SetR(v int32) *StartCloudRecordRequestTextsFontColor {
+	s.R = &v
 	return s
 }
 
@@ -13867,8 +14679,14 @@ type StartStreamingOutRequest struct {
 	// example:
 	//
 	// testid
-	ChannelId *string                          `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	Panes     []*StartStreamingOutRequestPanes `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
+	ChannelId    *string                                 `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	ClockWidgets []*StartStreamingOutRequestClockWidgets `json:"ClockWidgets,omitempty" xml:"ClockWidgets,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2
+	CropMode *int32                            `json:"CropMode,omitempty" xml:"CropMode,omitempty"`
+	Images   []*StartStreamingOutRequestImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	Panes    []*StartStreamingOutRequestPanes  `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 123
@@ -13878,7 +14696,8 @@ type StartStreamingOutRequest struct {
 	// example:
 	//
 	// 567
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId *string                          `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Texts      []*StartStreamingOutRequestTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
 	// This parameter is required.
 	//
 	// example:
@@ -13905,6 +14724,21 @@ func (s *StartStreamingOutRequest) SetChannelId(v string) *StartStreamingOutRequ
 	return s
 }
 
+func (s *StartStreamingOutRequest) SetClockWidgets(v []*StartStreamingOutRequestClockWidgets) *StartStreamingOutRequest {
+	s.ClockWidgets = v
+	return s
+}
+
+func (s *StartStreamingOutRequest) SetCropMode(v int32) *StartStreamingOutRequest {
+	s.CropMode = &v
+	return s
+}
+
+func (s *StartStreamingOutRequest) SetImages(v []*StartStreamingOutRequestImages) *StartStreamingOutRequest {
+	s.Images = v
+	return s
+}
+
 func (s *StartStreamingOutRequest) SetPanes(v []*StartStreamingOutRequestPanes) *StartStreamingOutRequest {
 	s.Panes = v
 	return s
@@ -13920,12 +14754,305 @@ func (s *StartStreamingOutRequest) SetTemplateId(v string) *StartStreamingOutReq
 	return s
 }
 
+func (s *StartStreamingOutRequest) SetTexts(v []*StartStreamingOutRequestTexts) *StartStreamingOutRequest {
+	s.Texts = v
+	return s
+}
+
 func (s *StartStreamingOutRequest) SetUrl(v string) *StartStreamingOutRequest {
 	s.Url = &v
 	return s
 }
 
+type StartStreamingOutRequestClockWidgets struct {
+	// example:
+	//
+	// 0.9
+	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// 0.6
+	BoxAlpha *float64 `json:"BoxAlpha,omitempty" xml:"BoxAlpha,omitempty"`
+	// example:
+	//
+	// 5
+	BoxBorderw *int32                                        `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
+	BoxColor   *StartStreamingOutRequestClockWidgetsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	Font      *int32                                         `json:"Font,omitempty" xml:"Font,omitempty"`
+	FontColor *StartStreamingOutRequestClockWidgetsFontColor `json:"FontColor,omitempty" xml:"FontColor,omitempty" type:"Struct"`
+	// example:
+	//
+	// 30
+	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	HasBox   *bool  `json:"HasBox,omitempty" xml:"HasBox,omitempty"`
+	// example:
+	//
+	// 0
+	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 8
+	Zone *int32 `json:"Zone,omitempty" xml:"Zone,omitempty"`
+}
+
+func (s StartStreamingOutRequestClockWidgets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartStreamingOutRequestClockWidgets) GoString() string {
+	return s.String()
+}
+
+func (s *StartStreamingOutRequestClockWidgets) SetAlpha(v float64) *StartStreamingOutRequestClockWidgets {
+	s.Alpha = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestClockWidgets) SetBoxAlpha(v float64) *StartStreamingOutRequestClockWidgets {
+	s.BoxAlpha = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestClockWidgets) SetBoxBorderw(v int32) *StartStreamingOutRequestClockWidgets {
+	s.BoxBorderw = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestClockWidgets) SetBoxColor(v *StartStreamingOutRequestClockWidgetsBoxColor) *StartStreamingOutRequestClockWidgets {
+	s.BoxColor = v
+	return s
+}
+
+func (s *StartStreamingOutRequestClockWidgets) SetFont(v int32) *StartStreamingOutRequestClockWidgets {
+	s.Font = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestClockWidgets) SetFontColor(v *StartStreamingOutRequestClockWidgetsFontColor) *StartStreamingOutRequestClockWidgets {
+	s.FontColor = v
+	return s
+}
+
+func (s *StartStreamingOutRequestClockWidgets) SetFontSize(v int32) *StartStreamingOutRequestClockWidgets {
+	s.FontSize = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestClockWidgets) SetHasBox(v bool) *StartStreamingOutRequestClockWidgets {
+	s.HasBox = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestClockWidgets) SetLayer(v int32) *StartStreamingOutRequestClockWidgets {
+	s.Layer = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestClockWidgets) SetX(v float64) *StartStreamingOutRequestClockWidgets {
+	s.X = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestClockWidgets) SetY(v float64) *StartStreamingOutRequestClockWidgets {
+	s.Y = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestClockWidgets) SetZone(v int32) *StartStreamingOutRequestClockWidgets {
+	s.Zone = &v
+	return s
+}
+
+type StartStreamingOutRequestClockWidgetsBoxColor struct {
+	// example:
+	//
+	// 255
+	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// example:
+	//
+	// 255
+	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// example:
+	//
+	// 255
+	R *int32 `json:"R,omitempty" xml:"R,omitempty"`
+}
+
+func (s StartStreamingOutRequestClockWidgetsBoxColor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartStreamingOutRequestClockWidgetsBoxColor) GoString() string {
+	return s.String()
+}
+
+func (s *StartStreamingOutRequestClockWidgetsBoxColor) SetB(v int32) *StartStreamingOutRequestClockWidgetsBoxColor {
+	s.B = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestClockWidgetsBoxColor) SetG(v int32) *StartStreamingOutRequestClockWidgetsBoxColor {
+	s.G = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestClockWidgetsBoxColor) SetR(v int32) *StartStreamingOutRequestClockWidgetsBoxColor {
+	s.R = &v
+	return s
+}
+
+type StartStreamingOutRequestClockWidgetsFontColor struct {
+	// example:
+	//
+	// 255
+	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// example:
+	//
+	// 255
+	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// example:
+	//
+	// 255
+	R *int32 `json:"R,omitempty" xml:"R,omitempty"`
+}
+
+func (s StartStreamingOutRequestClockWidgetsFontColor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartStreamingOutRequestClockWidgetsFontColor) GoString() string {
+	return s.String()
+}
+
+func (s *StartStreamingOutRequestClockWidgetsFontColor) SetB(v int32) *StartStreamingOutRequestClockWidgetsFontColor {
+	s.B = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestClockWidgetsFontColor) SetG(v int32) *StartStreamingOutRequestClockWidgetsFontColor {
+	s.G = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestClockWidgetsFontColor) SetR(v int32) *StartStreamingOutRequestClockWidgetsFontColor {
+	s.R = &v
+	return s
+}
+
+type StartStreamingOutRequestImages struct {
+	// example:
+	//
+	// 0.9
+	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 2
+	ImageCropMode *int32 `json:"ImageCropMode,omitempty" xml:"ImageCropMode,omitempty"`
+	// example:
+	//
+	// 0
+	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://aliyun.com/123xxx.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s StartStreamingOutRequestImages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartStreamingOutRequestImages) GoString() string {
+	return s.String()
+}
+
+func (s *StartStreamingOutRequestImages) SetAlpha(v float64) *StartStreamingOutRequestImages {
+	s.Alpha = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestImages) SetHeight(v float64) *StartStreamingOutRequestImages {
+	s.Height = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestImages) SetImageCropMode(v int32) *StartStreamingOutRequestImages {
+	s.ImageCropMode = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestImages) SetLayer(v int32) *StartStreamingOutRequestImages {
+	s.Layer = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestImages) SetUrl(v string) *StartStreamingOutRequestImages {
+	s.Url = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestImages) SetWidth(v float64) *StartStreamingOutRequestImages {
+	s.Width = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestImages) SetX(v float64) *StartStreamingOutRequestImages {
+	s.X = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestImages) SetY(v float64) *StartStreamingOutRequestImages {
+	s.Y = &v
+	return s
+}
+
 type StartStreamingOutRequestPanes struct {
+	Images []*StartStreamingOutRequestPanesImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2
+	PaneCropMode *int32 `json:"PaneCropMode,omitempty" xml:"PaneCropMode,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -13934,8 +15061,13 @@ type StartStreamingOutRequestPanes struct {
 	PaneId *string `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
 	// example:
 	//
+	// 1811****
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
 	// Video
-	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	SourceType *string                               `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Texts      []*StartStreamingOutRequestPanesTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
 }
 
 func (s StartStreamingOutRequestPanes) String() string {
@@ -13946,13 +15078,510 @@ func (s StartStreamingOutRequestPanes) GoString() string {
 	return s.String()
 }
 
+func (s *StartStreamingOutRequestPanes) SetImages(v []*StartStreamingOutRequestPanesImages) *StartStreamingOutRequestPanes {
+	s.Images = v
+	return s
+}
+
+func (s *StartStreamingOutRequestPanes) SetPaneCropMode(v int32) *StartStreamingOutRequestPanes {
+	s.PaneCropMode = &v
+	return s
+}
+
 func (s *StartStreamingOutRequestPanes) SetPaneId(v string) *StartStreamingOutRequestPanes {
 	s.PaneId = &v
 	return s
 }
 
+func (s *StartStreamingOutRequestPanes) SetSource(v string) *StartStreamingOutRequestPanes {
+	s.Source = &v
+	return s
+}
+
 func (s *StartStreamingOutRequestPanes) SetSourceType(v string) *StartStreamingOutRequestPanes {
 	s.SourceType = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestPanes) SetTexts(v []*StartStreamingOutRequestPanesTexts) *StartStreamingOutRequestPanes {
+	s.Texts = v
+	return s
+}
+
+type StartStreamingOutRequestPanesImages struct {
+	// example:
+	//
+	// 0.9
+	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 0
+	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// example:
+	//
+	// 2
+	PaneImageCropMode *int32 `json:"PaneImageCropMode,omitempty" xml:"PaneImageCropMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://aliyun.com/123xxx.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.3
+	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s StartStreamingOutRequestPanesImages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartStreamingOutRequestPanesImages) GoString() string {
+	return s.String()
+}
+
+func (s *StartStreamingOutRequestPanesImages) SetAlpha(v float64) *StartStreamingOutRequestPanesImages {
+	s.Alpha = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestPanesImages) SetHeight(v float64) *StartStreamingOutRequestPanesImages {
+	s.Height = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestPanesImages) SetLayer(v int32) *StartStreamingOutRequestPanesImages {
+	s.Layer = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestPanesImages) SetPaneImageCropMode(v int32) *StartStreamingOutRequestPanesImages {
+	s.PaneImageCropMode = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestPanesImages) SetUrl(v string) *StartStreamingOutRequestPanesImages {
+	s.Url = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestPanesImages) SetWidth(v float64) *StartStreamingOutRequestPanesImages {
+	s.Width = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestPanesImages) SetX(v float64) *StartStreamingOutRequestPanesImages {
+	s.X = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestPanesImages) SetY(v float64) *StartStreamingOutRequestPanesImages {
+	s.Y = &v
+	return s
+}
+
+type StartStreamingOutRequestPanesTexts struct {
+	// example:
+	//
+	// 0.9
+	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// 0.6
+	BoxAlpha *float64 `json:"BoxAlpha,omitempty" xml:"BoxAlpha,omitempty"`
+	// example:
+	//
+	// 5
+	BoxBorderw *int32                                      `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
+	BoxColor   *StartStreamingOutRequestPanesTextsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	Font      *int32                                       `json:"Font,omitempty" xml:"Font,omitempty"`
+	FontColor *StartStreamingOutRequestPanesTextsFontColor `json:"FontColor,omitempty" xml:"FontColor,omitempty" type:"Struct"`
+	// example:
+	//
+	// 36
+	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	HasBox   *bool  `json:"HasBox,omitempty" xml:"HasBox,omitempty"`
+	// example:
+	//
+	// 0
+	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 文字水印
+	Texture *string `json:"Texture,omitempty" xml:"Texture,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s StartStreamingOutRequestPanesTexts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartStreamingOutRequestPanesTexts) GoString() string {
+	return s.String()
+}
+
+func (s *StartStreamingOutRequestPanesTexts) SetAlpha(v float64) *StartStreamingOutRequestPanesTexts {
+	s.Alpha = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestPanesTexts) SetBoxAlpha(v float64) *StartStreamingOutRequestPanesTexts {
+	s.BoxAlpha = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestPanesTexts) SetBoxBorderw(v int32) *StartStreamingOutRequestPanesTexts {
+	s.BoxBorderw = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestPanesTexts) SetBoxColor(v *StartStreamingOutRequestPanesTextsBoxColor) *StartStreamingOutRequestPanesTexts {
+	s.BoxColor = v
+	return s
+}
+
+func (s *StartStreamingOutRequestPanesTexts) SetFont(v int32) *StartStreamingOutRequestPanesTexts {
+	s.Font = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestPanesTexts) SetFontColor(v *StartStreamingOutRequestPanesTextsFontColor) *StartStreamingOutRequestPanesTexts {
+	s.FontColor = v
+	return s
+}
+
+func (s *StartStreamingOutRequestPanesTexts) SetFontSize(v int32) *StartStreamingOutRequestPanesTexts {
+	s.FontSize = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestPanesTexts) SetHasBox(v bool) *StartStreamingOutRequestPanesTexts {
+	s.HasBox = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestPanesTexts) SetLayer(v int32) *StartStreamingOutRequestPanesTexts {
+	s.Layer = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestPanesTexts) SetTexture(v string) *StartStreamingOutRequestPanesTexts {
+	s.Texture = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestPanesTexts) SetX(v float64) *StartStreamingOutRequestPanesTexts {
+	s.X = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestPanesTexts) SetY(v float64) *StartStreamingOutRequestPanesTexts {
+	s.Y = &v
+	return s
+}
+
+type StartStreamingOutRequestPanesTextsBoxColor struct {
+	// example:
+	//
+	// 255
+	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// example:
+	//
+	// 255
+	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// example:
+	//
+	// 255
+	R *int32 `json:"R,omitempty" xml:"R,omitempty"`
+}
+
+func (s StartStreamingOutRequestPanesTextsBoxColor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartStreamingOutRequestPanesTextsBoxColor) GoString() string {
+	return s.String()
+}
+
+func (s *StartStreamingOutRequestPanesTextsBoxColor) SetB(v int32) *StartStreamingOutRequestPanesTextsBoxColor {
+	s.B = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestPanesTextsBoxColor) SetG(v int32) *StartStreamingOutRequestPanesTextsBoxColor {
+	s.G = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestPanesTextsBoxColor) SetR(v int32) *StartStreamingOutRequestPanesTextsBoxColor {
+	s.R = &v
+	return s
+}
+
+type StartStreamingOutRequestPanesTextsFontColor struct {
+	// example:
+	//
+	// 255
+	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// example:
+	//
+	// 255
+	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// example:
+	//
+	// 255
+	R *int32 `json:"R,omitempty" xml:"R,omitempty"`
+}
+
+func (s StartStreamingOutRequestPanesTextsFontColor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartStreamingOutRequestPanesTextsFontColor) GoString() string {
+	return s.String()
+}
+
+func (s *StartStreamingOutRequestPanesTextsFontColor) SetB(v int32) *StartStreamingOutRequestPanesTextsFontColor {
+	s.B = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestPanesTextsFontColor) SetG(v int32) *StartStreamingOutRequestPanesTextsFontColor {
+	s.G = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestPanesTextsFontColor) SetR(v int32) *StartStreamingOutRequestPanesTextsFontColor {
+	s.R = &v
+	return s
+}
+
+type StartStreamingOutRequestTexts struct {
+	// example:
+	//
+	// 0.1
+	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// 0.6
+	BoxAlpha *float64 `json:"BoxAlpha,omitempty" xml:"BoxAlpha,omitempty"`
+	// example:
+	//
+	// 5
+	BoxBorderw *int32                                 `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
+	BoxColor   *StartStreamingOutRequestTextsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	Font      *int32                                  `json:"Font,omitempty" xml:"Font,omitempty"`
+	FontColor *StartStreamingOutRequestTextsFontColor `json:"FontColor,omitempty" xml:"FontColor,omitempty" type:"Struct"`
+	// example:
+	//
+	// 36
+	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	HasBox   *bool  `json:"HasBox,omitempty" xml:"HasBox,omitempty"`
+	// example:
+	//
+	// 0
+	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 文字水印
+	Texture *string `json:"Texture,omitempty" xml:"Texture,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s StartStreamingOutRequestTexts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartStreamingOutRequestTexts) GoString() string {
+	return s.String()
+}
+
+func (s *StartStreamingOutRequestTexts) SetAlpha(v float64) *StartStreamingOutRequestTexts {
+	s.Alpha = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestTexts) SetBoxAlpha(v float64) *StartStreamingOutRequestTexts {
+	s.BoxAlpha = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestTexts) SetBoxBorderw(v int32) *StartStreamingOutRequestTexts {
+	s.BoxBorderw = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestTexts) SetBoxColor(v *StartStreamingOutRequestTextsBoxColor) *StartStreamingOutRequestTexts {
+	s.BoxColor = v
+	return s
+}
+
+func (s *StartStreamingOutRequestTexts) SetFont(v int32) *StartStreamingOutRequestTexts {
+	s.Font = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestTexts) SetFontColor(v *StartStreamingOutRequestTextsFontColor) *StartStreamingOutRequestTexts {
+	s.FontColor = v
+	return s
+}
+
+func (s *StartStreamingOutRequestTexts) SetFontSize(v int32) *StartStreamingOutRequestTexts {
+	s.FontSize = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestTexts) SetHasBox(v bool) *StartStreamingOutRequestTexts {
+	s.HasBox = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestTexts) SetLayer(v int32) *StartStreamingOutRequestTexts {
+	s.Layer = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestTexts) SetTexture(v string) *StartStreamingOutRequestTexts {
+	s.Texture = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestTexts) SetX(v float64) *StartStreamingOutRequestTexts {
+	s.X = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestTexts) SetY(v float64) *StartStreamingOutRequestTexts {
+	s.Y = &v
+	return s
+}
+
+type StartStreamingOutRequestTextsBoxColor struct {
+	// example:
+	//
+	// 255
+	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// example:
+	//
+	// 255
+	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// example:
+	//
+	// 255
+	R *int32 `json:"R,omitempty" xml:"R,omitempty"`
+}
+
+func (s StartStreamingOutRequestTextsBoxColor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartStreamingOutRequestTextsBoxColor) GoString() string {
+	return s.String()
+}
+
+func (s *StartStreamingOutRequestTextsBoxColor) SetB(v int32) *StartStreamingOutRequestTextsBoxColor {
+	s.B = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestTextsBoxColor) SetG(v int32) *StartStreamingOutRequestTextsBoxColor {
+	s.G = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestTextsBoxColor) SetR(v int32) *StartStreamingOutRequestTextsBoxColor {
+	s.R = &v
+	return s
+}
+
+type StartStreamingOutRequestTextsFontColor struct {
+	// example:
+	//
+	// 255
+	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// example:
+	//
+	// 255
+	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// example:
+	//
+	// 255
+	R *int32 `json:"R,omitempty" xml:"R,omitempty"`
+}
+
+func (s StartStreamingOutRequestTextsFontColor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartStreamingOutRequestTextsFontColor) GoString() string {
+	return s.String()
+}
+
+func (s *StartStreamingOutRequestTextsFontColor) SetB(v int32) *StartStreamingOutRequestTextsFontColor {
+	s.B = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestTextsFontColor) SetG(v int32) *StartStreamingOutRequestTextsFontColor {
+	s.G = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestTextsFontColor) SetR(v int32) *StartStreamingOutRequestTextsFontColor {
+	s.R = &v
 	return s
 }
 
@@ -14610,6 +16239,964 @@ func (s *UpdateAutoLiveStreamRuleResponse) SetStatusCode(v int32) *UpdateAutoLiv
 }
 
 func (s *UpdateAutoLiveStreamRuleResponse) SetBody(v *UpdateAutoLiveStreamRuleResponseBody) *UpdateAutoLiveStreamRuleResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateCloudRecordRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eo85****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testid
+	ChannelId    *string                                 `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	ClockWidgets []*UpdateCloudRecordRequestClockWidgets `json:"ClockWidgets,omitempty" xml:"ClockWidgets,omitempty" type:"Repeated"`
+	Images       []*UpdateCloudRecordRequestImages       `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	Panes        []*UpdateCloudRecordRequestPanes        `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 567
+	TemplateId *string                          `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Texts      []*UpdateCloudRecordRequestTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+}
+
+func (s UpdateCloudRecordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudRecordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudRecordRequest) SetAppId(v string) *UpdateCloudRecordRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequest) SetChannelId(v string) *UpdateCloudRecordRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequest) SetClockWidgets(v []*UpdateCloudRecordRequestClockWidgets) *UpdateCloudRecordRequest {
+	s.ClockWidgets = v
+	return s
+}
+
+func (s *UpdateCloudRecordRequest) SetImages(v []*UpdateCloudRecordRequestImages) *UpdateCloudRecordRequest {
+	s.Images = v
+	return s
+}
+
+func (s *UpdateCloudRecordRequest) SetPanes(v []*UpdateCloudRecordRequestPanes) *UpdateCloudRecordRequest {
+	s.Panes = v
+	return s
+}
+
+func (s *UpdateCloudRecordRequest) SetTaskId(v string) *UpdateCloudRecordRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequest) SetTemplateId(v string) *UpdateCloudRecordRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequest) SetTexts(v []*UpdateCloudRecordRequestTexts) *UpdateCloudRecordRequest {
+	s.Texts = v
+	return s
+}
+
+type UpdateCloudRecordRequestClockWidgets struct {
+	// example:
+	//
+	// 0.9
+	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// 0.6
+	BoxAlpha *float64 `json:"BoxAlpha,omitempty" xml:"BoxAlpha,omitempty"`
+	// example:
+	//
+	// 5
+	BoxBorderw *int32                                        `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
+	BoxColor   *UpdateCloudRecordRequestClockWidgetsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	Font      *int32                                         `json:"Font,omitempty" xml:"Font,omitempty"`
+	FontColor *UpdateCloudRecordRequestClockWidgetsFontColor `json:"FontColor,omitempty" xml:"FontColor,omitempty" type:"Struct"`
+	// example:
+	//
+	// 30
+	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	HasBox   *bool  `json:"HasBox,omitempty" xml:"HasBox,omitempty"`
+	// example:
+	//
+	// 0
+	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 8
+	Zone *int32 `json:"Zone,omitempty" xml:"Zone,omitempty"`
+}
+
+func (s UpdateCloudRecordRequestClockWidgets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudRecordRequestClockWidgets) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudRecordRequestClockWidgets) SetAlpha(v float64) *UpdateCloudRecordRequestClockWidgets {
+	s.Alpha = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestClockWidgets) SetBoxAlpha(v float64) *UpdateCloudRecordRequestClockWidgets {
+	s.BoxAlpha = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestClockWidgets) SetBoxBorderw(v int32) *UpdateCloudRecordRequestClockWidgets {
+	s.BoxBorderw = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestClockWidgets) SetBoxColor(v *UpdateCloudRecordRequestClockWidgetsBoxColor) *UpdateCloudRecordRequestClockWidgets {
+	s.BoxColor = v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestClockWidgets) SetFont(v int32) *UpdateCloudRecordRequestClockWidgets {
+	s.Font = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestClockWidgets) SetFontColor(v *UpdateCloudRecordRequestClockWidgetsFontColor) *UpdateCloudRecordRequestClockWidgets {
+	s.FontColor = v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestClockWidgets) SetFontSize(v int32) *UpdateCloudRecordRequestClockWidgets {
+	s.FontSize = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestClockWidgets) SetHasBox(v bool) *UpdateCloudRecordRequestClockWidgets {
+	s.HasBox = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestClockWidgets) SetLayer(v int32) *UpdateCloudRecordRequestClockWidgets {
+	s.Layer = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestClockWidgets) SetX(v float64) *UpdateCloudRecordRequestClockWidgets {
+	s.X = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestClockWidgets) SetY(v float64) *UpdateCloudRecordRequestClockWidgets {
+	s.Y = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestClockWidgets) SetZone(v int32) *UpdateCloudRecordRequestClockWidgets {
+	s.Zone = &v
+	return s
+}
+
+type UpdateCloudRecordRequestClockWidgetsBoxColor struct {
+	// example:
+	//
+	// 255
+	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// example:
+	//
+	// 255
+	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// example:
+	//
+	// 255
+	R *int32 `json:"R,omitempty" xml:"R,omitempty"`
+}
+
+func (s UpdateCloudRecordRequestClockWidgetsBoxColor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudRecordRequestClockWidgetsBoxColor) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudRecordRequestClockWidgetsBoxColor) SetB(v int32) *UpdateCloudRecordRequestClockWidgetsBoxColor {
+	s.B = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestClockWidgetsBoxColor) SetG(v int32) *UpdateCloudRecordRequestClockWidgetsBoxColor {
+	s.G = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestClockWidgetsBoxColor) SetR(v int32) *UpdateCloudRecordRequestClockWidgetsBoxColor {
+	s.R = &v
+	return s
+}
+
+type UpdateCloudRecordRequestClockWidgetsFontColor struct {
+	// example:
+	//
+	// 255
+	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// example:
+	//
+	// 255
+	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// example:
+	//
+	// 255
+	R *int32 `json:"R,omitempty" xml:"R,omitempty"`
+}
+
+func (s UpdateCloudRecordRequestClockWidgetsFontColor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudRecordRequestClockWidgetsFontColor) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudRecordRequestClockWidgetsFontColor) SetB(v int32) *UpdateCloudRecordRequestClockWidgetsFontColor {
+	s.B = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestClockWidgetsFontColor) SetG(v int32) *UpdateCloudRecordRequestClockWidgetsFontColor {
+	s.G = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestClockWidgetsFontColor) SetR(v int32) *UpdateCloudRecordRequestClockWidgetsFontColor {
+	s.R = &v
+	return s
+}
+
+type UpdateCloudRecordRequestImages struct {
+	// example:
+	//
+	// 0.9
+	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 2
+	ImageCropMode *int32 `json:"ImageCropMode,omitempty" xml:"ImageCropMode,omitempty"`
+	// example:
+	//
+	// 0
+	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://aliyun.com/123.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s UpdateCloudRecordRequestImages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudRecordRequestImages) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudRecordRequestImages) SetAlpha(v float64) *UpdateCloudRecordRequestImages {
+	s.Alpha = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestImages) SetHeight(v float64) *UpdateCloudRecordRequestImages {
+	s.Height = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestImages) SetImageCropMode(v int32) *UpdateCloudRecordRequestImages {
+	s.ImageCropMode = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestImages) SetLayer(v int32) *UpdateCloudRecordRequestImages {
+	s.Layer = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestImages) SetUrl(v string) *UpdateCloudRecordRequestImages {
+	s.Url = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestImages) SetWidth(v float64) *UpdateCloudRecordRequestImages {
+	s.Width = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestImages) SetX(v float64) *UpdateCloudRecordRequestImages {
+	s.X = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestImages) SetY(v float64) *UpdateCloudRecordRequestImages {
+	s.Y = &v
+	return s
+}
+
+type UpdateCloudRecordRequestPanes struct {
+	Images []*UpdateCloudRecordRequestPanesImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2
+	PaneCropMode *int32 `json:"PaneCropMode,omitempty" xml:"PaneCropMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	PaneId *int32 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	// example:
+	//
+	// 22
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// video
+	SourceType *string                               `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Texts      []*UpdateCloudRecordRequestPanesTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+}
+
+func (s UpdateCloudRecordRequestPanes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudRecordRequestPanes) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudRecordRequestPanes) SetImages(v []*UpdateCloudRecordRequestPanesImages) *UpdateCloudRecordRequestPanes {
+	s.Images = v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestPanes) SetPaneCropMode(v int32) *UpdateCloudRecordRequestPanes {
+	s.PaneCropMode = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestPanes) SetPaneId(v int32) *UpdateCloudRecordRequestPanes {
+	s.PaneId = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestPanes) SetSource(v string) *UpdateCloudRecordRequestPanes {
+	s.Source = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestPanes) SetSourceType(v string) *UpdateCloudRecordRequestPanes {
+	s.SourceType = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestPanes) SetTexts(v []*UpdateCloudRecordRequestPanesTexts) *UpdateCloudRecordRequestPanes {
+	s.Texts = v
+	return s
+}
+
+type UpdateCloudRecordRequestPanesImages struct {
+	// example:
+	//
+	// 0.9
+	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 0
+	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// example:
+	//
+	// 2
+	PaneImageCropMode *int32 `json:"PaneImageCropMode,omitempty" xml:"PaneImageCropMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://aliyun.com/123xxx.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s UpdateCloudRecordRequestPanesImages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudRecordRequestPanesImages) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudRecordRequestPanesImages) SetAlpha(v float64) *UpdateCloudRecordRequestPanesImages {
+	s.Alpha = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestPanesImages) SetHeight(v float64) *UpdateCloudRecordRequestPanesImages {
+	s.Height = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestPanesImages) SetLayer(v int32) *UpdateCloudRecordRequestPanesImages {
+	s.Layer = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestPanesImages) SetPaneImageCropMode(v int32) *UpdateCloudRecordRequestPanesImages {
+	s.PaneImageCropMode = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestPanesImages) SetUrl(v string) *UpdateCloudRecordRequestPanesImages {
+	s.Url = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestPanesImages) SetWidth(v float64) *UpdateCloudRecordRequestPanesImages {
+	s.Width = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestPanesImages) SetX(v float64) *UpdateCloudRecordRequestPanesImages {
+	s.X = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestPanesImages) SetY(v float64) *UpdateCloudRecordRequestPanesImages {
+	s.Y = &v
+	return s
+}
+
+type UpdateCloudRecordRequestPanesTexts struct {
+	// example:
+	//
+	// 0.9
+	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// 0.6
+	BoxAlpha *float64 `json:"BoxAlpha,omitempty" xml:"BoxAlpha,omitempty"`
+	// example:
+	//
+	// 5
+	BoxBorderw *int32                                      `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
+	BoxColor   *UpdateCloudRecordRequestPanesTextsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	Font      *int32                                       `json:"Font,omitempty" xml:"Font,omitempty"`
+	FontColor *UpdateCloudRecordRequestPanesTextsFontColor `json:"FontColor,omitempty" xml:"FontColor,omitempty" type:"Struct"`
+	// example:
+	//
+	// 36
+	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	HasBox   *bool  `json:"HasBox,omitempty" xml:"HasBox,omitempty"`
+	// example:
+	//
+	// 0
+	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 文字水印
+	Texture *string `json:"Texture,omitempty" xml:"Texture,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s UpdateCloudRecordRequestPanesTexts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudRecordRequestPanesTexts) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudRecordRequestPanesTexts) SetAlpha(v float64) *UpdateCloudRecordRequestPanesTexts {
+	s.Alpha = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestPanesTexts) SetBoxAlpha(v float64) *UpdateCloudRecordRequestPanesTexts {
+	s.BoxAlpha = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestPanesTexts) SetBoxBorderw(v int32) *UpdateCloudRecordRequestPanesTexts {
+	s.BoxBorderw = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestPanesTexts) SetBoxColor(v *UpdateCloudRecordRequestPanesTextsBoxColor) *UpdateCloudRecordRequestPanesTexts {
+	s.BoxColor = v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestPanesTexts) SetFont(v int32) *UpdateCloudRecordRequestPanesTexts {
+	s.Font = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestPanesTexts) SetFontColor(v *UpdateCloudRecordRequestPanesTextsFontColor) *UpdateCloudRecordRequestPanesTexts {
+	s.FontColor = v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestPanesTexts) SetFontSize(v int32) *UpdateCloudRecordRequestPanesTexts {
+	s.FontSize = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestPanesTexts) SetHasBox(v bool) *UpdateCloudRecordRequestPanesTexts {
+	s.HasBox = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestPanesTexts) SetLayer(v int32) *UpdateCloudRecordRequestPanesTexts {
+	s.Layer = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestPanesTexts) SetTexture(v string) *UpdateCloudRecordRequestPanesTexts {
+	s.Texture = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestPanesTexts) SetX(v float64) *UpdateCloudRecordRequestPanesTexts {
+	s.X = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestPanesTexts) SetY(v float64) *UpdateCloudRecordRequestPanesTexts {
+	s.Y = &v
+	return s
+}
+
+type UpdateCloudRecordRequestPanesTextsBoxColor struct {
+	// example:
+	//
+	// 255
+	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// example:
+	//
+	// 255
+	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// example:
+	//
+	// 255
+	R *int32 `json:"R,omitempty" xml:"R,omitempty"`
+}
+
+func (s UpdateCloudRecordRequestPanesTextsBoxColor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudRecordRequestPanesTextsBoxColor) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudRecordRequestPanesTextsBoxColor) SetB(v int32) *UpdateCloudRecordRequestPanesTextsBoxColor {
+	s.B = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestPanesTextsBoxColor) SetG(v int32) *UpdateCloudRecordRequestPanesTextsBoxColor {
+	s.G = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestPanesTextsBoxColor) SetR(v int32) *UpdateCloudRecordRequestPanesTextsBoxColor {
+	s.R = &v
+	return s
+}
+
+type UpdateCloudRecordRequestPanesTextsFontColor struct {
+	// example:
+	//
+	// 255
+	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// example:
+	//
+	// 255
+	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// example:
+	//
+	// 255
+	R *int32 `json:"R,omitempty" xml:"R,omitempty"`
+}
+
+func (s UpdateCloudRecordRequestPanesTextsFontColor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudRecordRequestPanesTextsFontColor) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudRecordRequestPanesTextsFontColor) SetB(v int32) *UpdateCloudRecordRequestPanesTextsFontColor {
+	s.B = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestPanesTextsFontColor) SetG(v int32) *UpdateCloudRecordRequestPanesTextsFontColor {
+	s.G = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestPanesTextsFontColor) SetR(v int32) *UpdateCloudRecordRequestPanesTextsFontColor {
+	s.R = &v
+	return s
+}
+
+type UpdateCloudRecordRequestTexts struct {
+	// example:
+	//
+	// 0.1
+	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// 0.6
+	BoxAlpha *float64 `json:"BoxAlpha,omitempty" xml:"BoxAlpha,omitempty"`
+	// example:
+	//
+	// 5
+	BoxBorderw *int32                                 `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
+	BoxColor   *UpdateCloudRecordRequestTextsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	Font      *int32                                  `json:"Font,omitempty" xml:"Font,omitempty"`
+	FontColor *UpdateCloudRecordRequestTextsFontColor `json:"FontColor,omitempty" xml:"FontColor,omitempty" type:"Struct"`
+	// example:
+	//
+	// 36
+	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	HasBox   *bool  `json:"HasBox,omitempty" xml:"HasBox,omitempty"`
+	// example:
+	//
+	// 0
+	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 文字水印
+	Texture *string `json:"Texture,omitempty" xml:"Texture,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s UpdateCloudRecordRequestTexts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudRecordRequestTexts) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudRecordRequestTexts) SetAlpha(v float64) *UpdateCloudRecordRequestTexts {
+	s.Alpha = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestTexts) SetBoxAlpha(v float64) *UpdateCloudRecordRequestTexts {
+	s.BoxAlpha = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestTexts) SetBoxBorderw(v int32) *UpdateCloudRecordRequestTexts {
+	s.BoxBorderw = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestTexts) SetBoxColor(v *UpdateCloudRecordRequestTextsBoxColor) *UpdateCloudRecordRequestTexts {
+	s.BoxColor = v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestTexts) SetFont(v int32) *UpdateCloudRecordRequestTexts {
+	s.Font = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestTexts) SetFontColor(v *UpdateCloudRecordRequestTextsFontColor) *UpdateCloudRecordRequestTexts {
+	s.FontColor = v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestTexts) SetFontSize(v int32) *UpdateCloudRecordRequestTexts {
+	s.FontSize = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestTexts) SetHasBox(v bool) *UpdateCloudRecordRequestTexts {
+	s.HasBox = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestTexts) SetLayer(v int32) *UpdateCloudRecordRequestTexts {
+	s.Layer = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestTexts) SetTexture(v string) *UpdateCloudRecordRequestTexts {
+	s.Texture = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestTexts) SetX(v float64) *UpdateCloudRecordRequestTexts {
+	s.X = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestTexts) SetY(v float64) *UpdateCloudRecordRequestTexts {
+	s.Y = &v
+	return s
+}
+
+type UpdateCloudRecordRequestTextsBoxColor struct {
+	// example:
+	//
+	// 255
+	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// example:
+	//
+	// 255
+	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// example:
+	//
+	// 255
+	R *int32 `json:"R,omitempty" xml:"R,omitempty"`
+}
+
+func (s UpdateCloudRecordRequestTextsBoxColor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudRecordRequestTextsBoxColor) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudRecordRequestTextsBoxColor) SetB(v int32) *UpdateCloudRecordRequestTextsBoxColor {
+	s.B = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestTextsBoxColor) SetG(v int32) *UpdateCloudRecordRequestTextsBoxColor {
+	s.G = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestTextsBoxColor) SetR(v int32) *UpdateCloudRecordRequestTextsBoxColor {
+	s.R = &v
+	return s
+}
+
+type UpdateCloudRecordRequestTextsFontColor struct {
+	// example:
+	//
+	// 255
+	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// example:
+	//
+	// 255
+	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// example:
+	//
+	// 255
+	R *int32 `json:"R,omitempty" xml:"R,omitempty"`
+}
+
+func (s UpdateCloudRecordRequestTextsFontColor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudRecordRequestTextsFontColor) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudRecordRequestTextsFontColor) SetB(v int32) *UpdateCloudRecordRequestTextsFontColor {
+	s.B = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestTextsFontColor) SetG(v int32) *UpdateCloudRecordRequestTextsFontColor {
+	s.G = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestTextsFontColor) SetR(v int32) *UpdateCloudRecordRequestTextsFontColor {
+	s.R = &v
+	return s
+}
+
+type UpdateCloudRecordResponseBody struct {
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CF8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 123
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s UpdateCloudRecordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudRecordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudRecordResponseBody) SetRequestId(v string) *UpdateCloudRecordResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateCloudRecordResponseBody) SetTaskId(v string) *UpdateCloudRecordResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type UpdateCloudRecordResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCloudRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateCloudRecordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudRecordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudRecordResponse) SetHeaders(v map[string]*string) *UpdateCloudRecordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCloudRecordResponse) SetStatusCode(v int32) *UpdateCloudRecordResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCloudRecordResponse) SetBody(v *UpdateCloudRecordResponseBody) *UpdateCloudRecordResponse {
 	s.Body = v
 	return s
 }
@@ -16216,6 +18803,962 @@ func (s *UpdateRecordTemplateResponse) SetStatusCode(v int32) *UpdateRecordTempl
 }
 
 func (s *UpdateRecordTemplateResponse) SetBody(v *UpdateRecordTemplateResponseBody) *UpdateRecordTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateStreamingOutRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eo85****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testid
+	ChannelId    *string                                  `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	ClockWidgets []*UpdateStreamingOutRequestClockWidgets `json:"ClockWidgets,omitempty" xml:"ClockWidgets,omitempty" type:"Repeated"`
+	Images       []*UpdateStreamingOutRequestImages       `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	Panes        []*UpdateStreamingOutRequestPanes        `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 567
+	TemplateId *string                           `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Texts      []*UpdateStreamingOutRequestTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+}
+
+func (s UpdateStreamingOutRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStreamingOutRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStreamingOutRequest) SetAppId(v string) *UpdateStreamingOutRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequest) SetChannelId(v string) *UpdateStreamingOutRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequest) SetClockWidgets(v []*UpdateStreamingOutRequestClockWidgets) *UpdateStreamingOutRequest {
+	s.ClockWidgets = v
+	return s
+}
+
+func (s *UpdateStreamingOutRequest) SetImages(v []*UpdateStreamingOutRequestImages) *UpdateStreamingOutRequest {
+	s.Images = v
+	return s
+}
+
+func (s *UpdateStreamingOutRequest) SetPanes(v []*UpdateStreamingOutRequestPanes) *UpdateStreamingOutRequest {
+	s.Panes = v
+	return s
+}
+
+func (s *UpdateStreamingOutRequest) SetTaskId(v string) *UpdateStreamingOutRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequest) SetTemplateId(v string) *UpdateStreamingOutRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequest) SetTexts(v []*UpdateStreamingOutRequestTexts) *UpdateStreamingOutRequest {
+	s.Texts = v
+	return s
+}
+
+type UpdateStreamingOutRequestClockWidgets struct {
+	// example:
+	//
+	// 0.9
+	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// 0.6
+	BoxAlpha *float64 `json:"BoxAlpha,omitempty" xml:"BoxAlpha,omitempty"`
+	// example:
+	//
+	// 5
+	BoxBorderw *int32                                         `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
+	BoxColor   *UpdateStreamingOutRequestClockWidgetsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	Font      *int32                                          `json:"Font,omitempty" xml:"Font,omitempty"`
+	FontColor *UpdateStreamingOutRequestClockWidgetsFontColor `json:"FontColor,omitempty" xml:"FontColor,omitempty" type:"Struct"`
+	// example:
+	//
+	// 30
+	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	HasBox   *bool  `json:"HasBox,omitempty" xml:"HasBox,omitempty"`
+	// example:
+	//
+	// 0
+	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 8
+	Zone *int32 `json:"Zone,omitempty" xml:"Zone,omitempty"`
+}
+
+func (s UpdateStreamingOutRequestClockWidgets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStreamingOutRequestClockWidgets) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStreamingOutRequestClockWidgets) SetAlpha(v float64) *UpdateStreamingOutRequestClockWidgets {
+	s.Alpha = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestClockWidgets) SetBoxAlpha(v float64) *UpdateStreamingOutRequestClockWidgets {
+	s.BoxAlpha = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestClockWidgets) SetBoxBorderw(v int32) *UpdateStreamingOutRequestClockWidgets {
+	s.BoxBorderw = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestClockWidgets) SetBoxColor(v *UpdateStreamingOutRequestClockWidgetsBoxColor) *UpdateStreamingOutRequestClockWidgets {
+	s.BoxColor = v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestClockWidgets) SetFont(v int32) *UpdateStreamingOutRequestClockWidgets {
+	s.Font = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestClockWidgets) SetFontColor(v *UpdateStreamingOutRequestClockWidgetsFontColor) *UpdateStreamingOutRequestClockWidgets {
+	s.FontColor = v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestClockWidgets) SetFontSize(v int32) *UpdateStreamingOutRequestClockWidgets {
+	s.FontSize = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestClockWidgets) SetHasBox(v bool) *UpdateStreamingOutRequestClockWidgets {
+	s.HasBox = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestClockWidgets) SetLayer(v int32) *UpdateStreamingOutRequestClockWidgets {
+	s.Layer = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestClockWidgets) SetX(v float64) *UpdateStreamingOutRequestClockWidgets {
+	s.X = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestClockWidgets) SetY(v float64) *UpdateStreamingOutRequestClockWidgets {
+	s.Y = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestClockWidgets) SetZone(v int32) *UpdateStreamingOutRequestClockWidgets {
+	s.Zone = &v
+	return s
+}
+
+type UpdateStreamingOutRequestClockWidgetsBoxColor struct {
+	// example:
+	//
+	// 255
+	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// example:
+	//
+	// 255
+	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// example:
+	//
+	// 255
+	R *int32 `json:"R,omitempty" xml:"R,omitempty"`
+}
+
+func (s UpdateStreamingOutRequestClockWidgetsBoxColor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStreamingOutRequestClockWidgetsBoxColor) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStreamingOutRequestClockWidgetsBoxColor) SetB(v int32) *UpdateStreamingOutRequestClockWidgetsBoxColor {
+	s.B = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestClockWidgetsBoxColor) SetG(v int32) *UpdateStreamingOutRequestClockWidgetsBoxColor {
+	s.G = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestClockWidgetsBoxColor) SetR(v int32) *UpdateStreamingOutRequestClockWidgetsBoxColor {
+	s.R = &v
+	return s
+}
+
+type UpdateStreamingOutRequestClockWidgetsFontColor struct {
+	// example:
+	//
+	// 255
+	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// example:
+	//
+	// 255
+	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// example:
+	//
+	// 255
+	R *int32 `json:"R,omitempty" xml:"R,omitempty"`
+}
+
+func (s UpdateStreamingOutRequestClockWidgetsFontColor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStreamingOutRequestClockWidgetsFontColor) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStreamingOutRequestClockWidgetsFontColor) SetB(v int32) *UpdateStreamingOutRequestClockWidgetsFontColor {
+	s.B = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestClockWidgetsFontColor) SetG(v int32) *UpdateStreamingOutRequestClockWidgetsFontColor {
+	s.G = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestClockWidgetsFontColor) SetR(v int32) *UpdateStreamingOutRequestClockWidgetsFontColor {
+	s.R = &v
+	return s
+}
+
+type UpdateStreamingOutRequestImages struct {
+	// example:
+	//
+	// 0.9
+	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 2
+	ImageCropMode *int32 `json:"ImageCropMode,omitempty" xml:"ImageCropMode,omitempty"`
+	// example:
+	//
+	// 0
+	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://aliyun.com/123.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s UpdateStreamingOutRequestImages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStreamingOutRequestImages) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStreamingOutRequestImages) SetAlpha(v float64) *UpdateStreamingOutRequestImages {
+	s.Alpha = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestImages) SetHeight(v float64) *UpdateStreamingOutRequestImages {
+	s.Height = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestImages) SetImageCropMode(v int32) *UpdateStreamingOutRequestImages {
+	s.ImageCropMode = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestImages) SetLayer(v int32) *UpdateStreamingOutRequestImages {
+	s.Layer = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestImages) SetUrl(v string) *UpdateStreamingOutRequestImages {
+	s.Url = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestImages) SetWidth(v float64) *UpdateStreamingOutRequestImages {
+	s.Width = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestImages) SetX(v float64) *UpdateStreamingOutRequestImages {
+	s.X = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestImages) SetY(v float64) *UpdateStreamingOutRequestImages {
+	s.Y = &v
+	return s
+}
+
+type UpdateStreamingOutRequestPanes struct {
+	Images []*UpdateStreamingOutRequestPanesImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2
+	PaneCropMode *int32 `json:"PaneCropMode,omitempty" xml:"PaneCropMode,omitempty"`
+	// example:
+	//
+	// 1
+	PaneId *int32 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	// example:
+	//
+	// 22
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// video
+	SourceType *string                                `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Texts      []*UpdateStreamingOutRequestPanesTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+}
+
+func (s UpdateStreamingOutRequestPanes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStreamingOutRequestPanes) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStreamingOutRequestPanes) SetImages(v []*UpdateStreamingOutRequestPanesImages) *UpdateStreamingOutRequestPanes {
+	s.Images = v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestPanes) SetPaneCropMode(v int32) *UpdateStreamingOutRequestPanes {
+	s.PaneCropMode = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestPanes) SetPaneId(v int32) *UpdateStreamingOutRequestPanes {
+	s.PaneId = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestPanes) SetSource(v string) *UpdateStreamingOutRequestPanes {
+	s.Source = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestPanes) SetSourceType(v string) *UpdateStreamingOutRequestPanes {
+	s.SourceType = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestPanes) SetTexts(v []*UpdateStreamingOutRequestPanesTexts) *UpdateStreamingOutRequestPanes {
+	s.Texts = v
+	return s
+}
+
+type UpdateStreamingOutRequestPanesImages struct {
+	// example:
+	//
+	// 0.9
+	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 0
+	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// example:
+	//
+	// 2
+	PaneImageCropMode *int32 `json:"PaneImageCropMode,omitempty" xml:"PaneImageCropMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://aliyun.com/123.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s UpdateStreamingOutRequestPanesImages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStreamingOutRequestPanesImages) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStreamingOutRequestPanesImages) SetAlpha(v float64) *UpdateStreamingOutRequestPanesImages {
+	s.Alpha = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestPanesImages) SetHeight(v float64) *UpdateStreamingOutRequestPanesImages {
+	s.Height = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestPanesImages) SetLayer(v int32) *UpdateStreamingOutRequestPanesImages {
+	s.Layer = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestPanesImages) SetPaneImageCropMode(v int32) *UpdateStreamingOutRequestPanesImages {
+	s.PaneImageCropMode = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestPanesImages) SetUrl(v string) *UpdateStreamingOutRequestPanesImages {
+	s.Url = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestPanesImages) SetWidth(v float64) *UpdateStreamingOutRequestPanesImages {
+	s.Width = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestPanesImages) SetX(v float64) *UpdateStreamingOutRequestPanesImages {
+	s.X = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestPanesImages) SetY(v float64) *UpdateStreamingOutRequestPanesImages {
+	s.Y = &v
+	return s
+}
+
+type UpdateStreamingOutRequestPanesTexts struct {
+	// example:
+	//
+	// 0.9
+	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// 0.6
+	BoxAlpha *float64 `json:"BoxAlpha,omitempty" xml:"BoxAlpha,omitempty"`
+	// example:
+	//
+	// 5
+	BoxBorderw *int32                                       `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
+	BoxColor   *UpdateStreamingOutRequestPanesTextsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	Font      *int32                                        `json:"Font,omitempty" xml:"Font,omitempty"`
+	FontColor *UpdateStreamingOutRequestPanesTextsFontColor `json:"FontColor,omitempty" xml:"FontColor,omitempty" type:"Struct"`
+	// example:
+	//
+	// 36
+	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	HasBox   *bool  `json:"HasBox,omitempty" xml:"HasBox,omitempty"`
+	// example:
+	//
+	// 0
+	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 文字水印
+	Texture *string `json:"Texture,omitempty" xml:"Texture,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s UpdateStreamingOutRequestPanesTexts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStreamingOutRequestPanesTexts) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStreamingOutRequestPanesTexts) SetAlpha(v float64) *UpdateStreamingOutRequestPanesTexts {
+	s.Alpha = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestPanesTexts) SetBoxAlpha(v float64) *UpdateStreamingOutRequestPanesTexts {
+	s.BoxAlpha = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestPanesTexts) SetBoxBorderw(v int32) *UpdateStreamingOutRequestPanesTexts {
+	s.BoxBorderw = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestPanesTexts) SetBoxColor(v *UpdateStreamingOutRequestPanesTextsBoxColor) *UpdateStreamingOutRequestPanesTexts {
+	s.BoxColor = v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestPanesTexts) SetFont(v int32) *UpdateStreamingOutRequestPanesTexts {
+	s.Font = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestPanesTexts) SetFontColor(v *UpdateStreamingOutRequestPanesTextsFontColor) *UpdateStreamingOutRequestPanesTexts {
+	s.FontColor = v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestPanesTexts) SetFontSize(v int32) *UpdateStreamingOutRequestPanesTexts {
+	s.FontSize = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestPanesTexts) SetHasBox(v bool) *UpdateStreamingOutRequestPanesTexts {
+	s.HasBox = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestPanesTexts) SetLayer(v int32) *UpdateStreamingOutRequestPanesTexts {
+	s.Layer = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestPanesTexts) SetTexture(v string) *UpdateStreamingOutRequestPanesTexts {
+	s.Texture = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestPanesTexts) SetX(v float64) *UpdateStreamingOutRequestPanesTexts {
+	s.X = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestPanesTexts) SetY(v float64) *UpdateStreamingOutRequestPanesTexts {
+	s.Y = &v
+	return s
+}
+
+type UpdateStreamingOutRequestPanesTextsBoxColor struct {
+	// example:
+	//
+	// 255
+	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// example:
+	//
+	// 255
+	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// example:
+	//
+	// 255
+	R *int32 `json:"R,omitempty" xml:"R,omitempty"`
+}
+
+func (s UpdateStreamingOutRequestPanesTextsBoxColor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStreamingOutRequestPanesTextsBoxColor) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStreamingOutRequestPanesTextsBoxColor) SetB(v int32) *UpdateStreamingOutRequestPanesTextsBoxColor {
+	s.B = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestPanesTextsBoxColor) SetG(v int32) *UpdateStreamingOutRequestPanesTextsBoxColor {
+	s.G = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestPanesTextsBoxColor) SetR(v int32) *UpdateStreamingOutRequestPanesTextsBoxColor {
+	s.R = &v
+	return s
+}
+
+type UpdateStreamingOutRequestPanesTextsFontColor struct {
+	// example:
+	//
+	// 255
+	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// example:
+	//
+	// 255
+	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// example:
+	//
+	// 255
+	R *int32 `json:"R,omitempty" xml:"R,omitempty"`
+}
+
+func (s UpdateStreamingOutRequestPanesTextsFontColor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStreamingOutRequestPanesTextsFontColor) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStreamingOutRequestPanesTextsFontColor) SetB(v int32) *UpdateStreamingOutRequestPanesTextsFontColor {
+	s.B = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestPanesTextsFontColor) SetG(v int32) *UpdateStreamingOutRequestPanesTextsFontColor {
+	s.G = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestPanesTextsFontColor) SetR(v int32) *UpdateStreamingOutRequestPanesTextsFontColor {
+	s.R = &v
+	return s
+}
+
+type UpdateStreamingOutRequestTexts struct {
+	// example:
+	//
+	// 0.1
+	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// 0.6
+	BoxAlpha *float64 `json:"BoxAlpha,omitempty" xml:"BoxAlpha,omitempty"`
+	// example:
+	//
+	// 5
+	BoxBorderw *int32                                  `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
+	BoxColor   *UpdateStreamingOutRequestTextsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	Font      *int32                                   `json:"Font,omitempty" xml:"Font,omitempty"`
+	FontColor *UpdateStreamingOutRequestTextsFontColor `json:"FontColor,omitempty" xml:"FontColor,omitempty" type:"Struct"`
+	// example:
+	//
+	// 36
+	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	HasBox   *bool  `json:"HasBox,omitempty" xml:"HasBox,omitempty"`
+	// example:
+	//
+	// 0
+	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 文字水印
+	Texture *string `json:"Texture,omitempty" xml:"Texture,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s UpdateStreamingOutRequestTexts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStreamingOutRequestTexts) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStreamingOutRequestTexts) SetAlpha(v float64) *UpdateStreamingOutRequestTexts {
+	s.Alpha = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestTexts) SetBoxAlpha(v float64) *UpdateStreamingOutRequestTexts {
+	s.BoxAlpha = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestTexts) SetBoxBorderw(v int32) *UpdateStreamingOutRequestTexts {
+	s.BoxBorderw = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestTexts) SetBoxColor(v *UpdateStreamingOutRequestTextsBoxColor) *UpdateStreamingOutRequestTexts {
+	s.BoxColor = v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestTexts) SetFont(v int32) *UpdateStreamingOutRequestTexts {
+	s.Font = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestTexts) SetFontColor(v *UpdateStreamingOutRequestTextsFontColor) *UpdateStreamingOutRequestTexts {
+	s.FontColor = v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestTexts) SetFontSize(v int32) *UpdateStreamingOutRequestTexts {
+	s.FontSize = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestTexts) SetHasBox(v bool) *UpdateStreamingOutRequestTexts {
+	s.HasBox = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestTexts) SetLayer(v int32) *UpdateStreamingOutRequestTexts {
+	s.Layer = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestTexts) SetTexture(v string) *UpdateStreamingOutRequestTexts {
+	s.Texture = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestTexts) SetX(v float64) *UpdateStreamingOutRequestTexts {
+	s.X = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestTexts) SetY(v float64) *UpdateStreamingOutRequestTexts {
+	s.Y = &v
+	return s
+}
+
+type UpdateStreamingOutRequestTextsBoxColor struct {
+	// example:
+	//
+	// 255
+	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// example:
+	//
+	// 255
+	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// example:
+	//
+	// 255
+	R *int32 `json:"R,omitempty" xml:"R,omitempty"`
+}
+
+func (s UpdateStreamingOutRequestTextsBoxColor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStreamingOutRequestTextsBoxColor) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStreamingOutRequestTextsBoxColor) SetB(v int32) *UpdateStreamingOutRequestTextsBoxColor {
+	s.B = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestTextsBoxColor) SetG(v int32) *UpdateStreamingOutRequestTextsBoxColor {
+	s.G = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestTextsBoxColor) SetR(v int32) *UpdateStreamingOutRequestTextsBoxColor {
+	s.R = &v
+	return s
+}
+
+type UpdateStreamingOutRequestTextsFontColor struct {
+	// example:
+	//
+	// 255
+	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// example:
+	//
+	// 255
+	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// example:
+	//
+	// 255
+	R *int32 `json:"R,omitempty" xml:"R,omitempty"`
+}
+
+func (s UpdateStreamingOutRequestTextsFontColor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStreamingOutRequestTextsFontColor) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStreamingOutRequestTextsFontColor) SetB(v int32) *UpdateStreamingOutRequestTextsFontColor {
+	s.B = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestTextsFontColor) SetG(v int32) *UpdateStreamingOutRequestTextsFontColor {
+	s.G = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestTextsFontColor) SetR(v int32) *UpdateStreamingOutRequestTextsFontColor {
+	s.R = &v
+	return s
+}
+
+type UpdateStreamingOutResponseBody struct {
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CF8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 123
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s UpdateStreamingOutResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStreamingOutResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStreamingOutResponseBody) SetRequestId(v string) *UpdateStreamingOutResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateStreamingOutResponseBody) SetTaskId(v string) *UpdateStreamingOutResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type UpdateStreamingOutResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateStreamingOutResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateStreamingOutResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStreamingOutResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStreamingOutResponse) SetHeaders(v map[string]*string) *UpdateStreamingOutResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateStreamingOutResponse) SetStatusCode(v int32) *UpdateStreamingOutResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateStreamingOutResponse) SetBody(v *UpdateStreamingOutResponseBody) *UpdateStreamingOutResponse {
 	s.Body = v
 	return s
 }
@@ -20602,6 +24145,18 @@ func (client *Client) StartCloudRecordWithOptions(request *StartCloudRecordReque
 		query["ChannelId"] = request.ChannelId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ClockWidgets)) {
+		query["ClockWidgets"] = request.ClockWidgets
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CropMode)) {
+		query["CropMode"] = request.CropMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Images)) {
+		query["Images"] = request.Images
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Panes)) {
 		query["Panes"] = request.Panes
 	}
@@ -20616,6 +24171,10 @@ func (client *Client) StartCloudRecordWithOptions(request *StartCloudRecordReque
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
 		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Texts)) {
+		query["Texts"] = request.Texts
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -20983,6 +24542,18 @@ func (client *Client) StartStreamingOutWithOptions(request *StartStreamingOutReq
 		query["ChannelId"] = request.ChannelId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ClockWidgets)) {
+		query["ClockWidgets"] = request.ClockWidgets
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CropMode)) {
+		query["CropMode"] = request.CropMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Images)) {
+		query["Images"] = request.Images
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Panes)) {
 		query["Panes"] = request.Panes
 	}
@@ -20993,6 +24564,10 @@ func (client *Client) StartStreamingOutWithOptions(request *StartStreamingOutReq
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
 		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Texts)) {
+		query["Texts"] = request.Texts
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Url)) {
@@ -21444,6 +25019,94 @@ func (client *Client) UpdateAutoLiveStreamRule(request *UpdateAutoLiveStreamRule
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新云端录制任务
+//
+// @param request - UpdateCloudRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCloudRecordResponse
+func (client *Client) UpdateCloudRecordWithOptions(request *UpdateCloudRecordRequest, runtime *util.RuntimeOptions) (_result *UpdateCloudRecordResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClockWidgets)) {
+		query["ClockWidgets"] = request.ClockWidgets
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Images)) {
+		query["Images"] = request.Images
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Panes)) {
+		query["Panes"] = request.Panes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Texts)) {
+		query["Texts"] = request.Texts
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCloudRecord"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateCloudRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新云端录制任务
+//
+// @param request - UpdateCloudRecordRequest
+//
+// @return UpdateCloudRecordResponse
+func (client *Client) UpdateCloudRecord(request *UpdateCloudRecordRequest) (_result *UpdateCloudRecordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateCloudRecordResponse{}
+	_body, _err := client.UpdateCloudRecordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - UpdateMPUTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -21813,6 +25476,94 @@ func (client *Client) UpdateRecordTemplate(request *UpdateRecordTemplateRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateRecordTemplateResponse{}
 	_body, _err := client.UpdateRecordTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新旁路推流任务
+//
+// @param request - UpdateStreamingOutRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateStreamingOutResponse
+func (client *Client) UpdateStreamingOutWithOptions(request *UpdateStreamingOutRequest, runtime *util.RuntimeOptions) (_result *UpdateStreamingOutResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClockWidgets)) {
+		query["ClockWidgets"] = request.ClockWidgets
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Images)) {
+		query["Images"] = request.Images
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Panes)) {
+		query["Panes"] = request.Panes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Texts)) {
+		query["Texts"] = request.Texts
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateStreamingOut"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateStreamingOutResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新旁路推流任务
+//
+// @param request - UpdateStreamingOutRequest
+//
+// @return UpdateStreamingOutResponse
+func (client *Client) UpdateStreamingOut(request *UpdateStreamingOutRequest) (_result *UpdateStreamingOutResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateStreamingOutResponse{}
+	_body, _err := client.UpdateStreamingOutWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
