@@ -4827,6 +4827,8 @@ type CheckCommercialStatusRequest struct {
 	//
 	// - xtrace: Managed Service for OpenTelemetry
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// apm
@@ -9761,6 +9763,10 @@ type CreateOrUpdateNotificationPolicyRequest struct {
 	//
 	// true
 	SendRecoverMessage *bool `json:"SendRecoverMessage,omitempty" xml:"SendRecoverMessage,omitempty"`
+	// example:
+	//
+	// enable
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s CreateOrUpdateNotificationPolicyRequest) String() string {
@@ -9833,6 +9839,11 @@ func (s *CreateOrUpdateNotificationPolicyRequest) SetRepeatInterval(v int64) *Cr
 
 func (s *CreateOrUpdateNotificationPolicyRequest) SetSendRecoverMessage(v bool) *CreateOrUpdateNotificationPolicyRequest {
 	s.SendRecoverMessage = &v
+	return s
+}
+
+func (s *CreateOrUpdateNotificationPolicyRequest) SetState(v string) *CreateOrUpdateNotificationPolicyRequest {
+	s.State = &v
 	return s
 }
 
@@ -9926,6 +9937,10 @@ type CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy struct {
 	//
 	// true
 	SendRecoverMessage *bool `json:"SendRecoverMessage,omitempty" xml:"SendRecoverMessage,omitempty"`
+	// example:
+	//
+	// enable
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy) String() string {
@@ -9993,6 +10008,11 @@ func (s *CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy) SetRepe
 
 func (s *CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy) SetSendRecoverMessage(v bool) *CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy {
 	s.SendRecoverMessage = &v
+	return s
+}
+
+func (s *CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy) SetState(v string) *CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy {
+	s.State = &v
 	return s
 }
 
@@ -26607,6 +26627,8 @@ func (s *GetClusterAllUrlResponse) SetBody(v *GetClusterAllUrlResponseBody) *Get
 }
 
 type GetCommercialStatusRequest struct {
+	// This parameter is required.
+	//
 	// example:
 	//
 	// arms_app_post
@@ -29894,6 +29916,8 @@ func (s *GetRecordingRuleResponse) SetBody(v *GetRecordingRuleResponseBody) *Get
 type GetRetcodeAppByPidRequest struct {
 	// The PID of the application. To obtain the PID of the application, perform the following steps: Log on to the Application Real-Time Monitoring Service (ARMS) console. In the left-side navigation pane, choose **Browser Monitoring*	- > **Browser Monitoring**. On the Browser Monitoring page, click the name of the application. The URL in the address bar contains the PID of the application. The PID is in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is xxx%4074xxx, you must replace %40 with the at sign (@) to obtain xxx@74xxx.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// b590lhguqs@9781be0f44dXXXX
@@ -31566,7 +31590,8 @@ type GetRumExceptionStackRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SourcemapType *string `json:"SourcemapType,omitempty" xml:"SourcemapType,omitempty"`
 }
 
 func (s GetRumExceptionStackRequest) String() string {
@@ -31599,6 +31624,11 @@ func (s *GetRumExceptionStackRequest) SetPid(v string) *GetRumExceptionStackRequ
 
 func (s *GetRumExceptionStackRequest) SetRegionId(v string) *GetRumExceptionStackRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *GetRumExceptionStackRequest) SetSourcemapType(v string) *GetRumExceptionStackRequest {
+	s.SourcemapType = &v
 	return s
 }
 
@@ -31917,10 +31947,6 @@ type GetSourceMapInfoRequest struct {
 	// 0.0.0
 	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// atc889zkcf@d8deedfa9bf****/0.0.0/test.sourcemap.js
 	ID *string `json:"ID,omitempty" xml:"ID,omitempty"`
 	// example:
 	//
@@ -32001,9 +32027,6 @@ func (s *GetSourceMapInfoResponseBody) SetSourceMapList(v []*GetSourceMapInfoRes
 }
 
 type GetSourceMapInfoResponseBodySourceMapList struct {
-	// example:
-	//
-	// atc889zkcf@d8deedfa9bf****/0.0.0/test.sourcemap.js
 	Fid *string `json:"Fid,omitempty" xml:"Fid,omitempty"`
 	// example:
 	//
@@ -36976,6 +36999,110 @@ func (s *GetTraceAppResponse) SetStatusCode(v int32) *GetTraceAppResponse {
 }
 
 func (s *GetTraceAppResponse) SetBody(v *GetTraceAppResponseBody) *GetTraceAppResponse {
+	s.Body = v
+	return s
+}
+
+type GetTraceAppConfigRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a2n80plglh@745eddxxx
+	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+}
+
+func (s GetTraceAppConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTraceAppConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTraceAppConfigRequest) SetPid(v string) *GetTraceAppConfigRequest {
+	s.Pid = &v
+	return s
+}
+
+type GetTraceAppConfigResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {"profiler":{"enable":true}}
+	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 78901766-3806-4E96-8E47-CFEF59E4****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetTraceAppConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTraceAppConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTraceAppConfigResponseBody) SetCode(v int64) *GetTraceAppConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetTraceAppConfigResponseBody) SetData(v string) *GetTraceAppConfigResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *GetTraceAppConfigResponseBody) SetMessage(v string) *GetTraceAppConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetTraceAppConfigResponseBody) SetRequestId(v string) *GetTraceAppConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTraceAppConfigResponseBody) SetSuccess(v bool) *GetTraceAppConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetTraceAppConfigResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTraceAppConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetTraceAppConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTraceAppConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTraceAppConfigResponse) SetHeaders(v map[string]*string) *GetTraceAppConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTraceAppConfigResponse) SetStatusCode(v int32) *GetTraceAppConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTraceAppConfigResponse) SetBody(v *GetTraceAppConfigResponseBody) *GetTraceAppConfigResponse {
 	s.Body = v
 	return s
 }
@@ -46256,6 +46383,10 @@ type ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies struct {
 	//
 	// true
 	SendRecoverMessage *bool `json:"SendRecoverMessage,omitempty" xml:"SendRecoverMessage,omitempty"`
+	// example:
+	//
+	// enable
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies) String() string {
@@ -46323,6 +46454,11 @@ func (s *ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies) SetRe
 
 func (s *ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies) SetSendRecoverMessage(v bool) *ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies {
 	s.SendRecoverMessage = &v
+	return s
+}
+
+func (s *ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies) SetState(v string) *ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies {
+	s.State = &v
 	return s
 }
 
@@ -66587,6 +66723,8 @@ type UploadRequest struct {
 	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
 	// The content of the SourceMap file.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// test file content
@@ -69699,6 +69837,10 @@ func (client *Client) CreateOrUpdateNotificationPolicyWithOptions(request *Creat
 
 	if !tea.BoolValue(util.IsUnset(request.SendRecoverMessage)) {
 		body["SendRecoverMessage"] = request.SendRecoverMessage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		body["State"] = request.State
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -76277,6 +76419,10 @@ func (client *Client) GetRumExceptionStackWithOptions(request *GetRumExceptionSt
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SourcemapType)) {
+		query["SourcemapType"] = request.SourcemapType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -77021,6 +77167,66 @@ func (client *Client) GetTraceApp(request *GetTraceAppRequest) (_result *GetTrac
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTraceAppResponse{}
 	_body, _err := client.GetTraceAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取应用监控自定义配置
+//
+// @param request - GetTraceAppConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTraceAppConfigResponse
+func (client *Client) GetTraceAppConfigWithOptions(request *GetTraceAppConfigRequest, runtime *util.RuntimeOptions) (_result *GetTraceAppConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Pid)) {
+		query["Pid"] = request.Pid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTraceAppConfig"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTraceAppConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取应用监控自定义配置
+//
+// @param request - GetTraceAppConfigRequest
+//
+// @return GetTraceAppConfigResponse
+func (client *Client) GetTraceAppConfig(request *GetTraceAppConfigRequest) (_result *GetTraceAppConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTraceAppConfigResponse{}
+	_body, _err := client.GetTraceAppConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
