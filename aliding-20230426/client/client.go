@@ -46052,6 +46052,297 @@ func (s *QueryMeetingRoomListResponse) SetBody(v *QueryMeetingRoomListResponseBo
 	return s
 }
 
+type QueryMinutesHeaders struct {
+	CommonHeaders  map[string]*string                 `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *QueryMinutesHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s QueryMinutesHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMinutesHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMinutesHeaders) SetCommonHeaders(v map[string]*string) *QueryMinutesHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *QueryMinutesHeaders) SetAccountContext(v *QueryMinutesHeadersAccountContext) *QueryMinutesHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type QueryMinutesHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s QueryMinutesHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMinutesHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMinutesHeadersAccountContext) SetAccountId(v string) *QueryMinutesHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type QueryMinutesShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s QueryMinutesShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMinutesShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMinutesShrinkHeaders) SetCommonHeaders(v map[string]*string) *QueryMinutesShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *QueryMinutesShrinkHeaders) SetAccountContextShrink(v string) *QueryMinutesShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type QueryMinutesRequest struct {
+	TenantContext *QueryMinutesRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 61289fxxx
+	ConferenceId *string `json:"conferenceId,omitempty" xml:"conferenceId,omitempty"`
+}
+
+func (s QueryMinutesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMinutesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMinutesRequest) SetTenantContext(v *QueryMinutesRequestTenantContext) *QueryMinutesRequest {
+	s.TenantContext = v
+	return s
+}
+
+func (s *QueryMinutesRequest) SetConferenceId(v string) *QueryMinutesRequest {
+	s.ConferenceId = &v
+	return s
+}
+
+type QueryMinutesRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s QueryMinutesRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMinutesRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMinutesRequestTenantContext) SetTenantId(v string) *QueryMinutesRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type QueryMinutesShrinkRequest struct {
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 61289fxxx
+	ConferenceId *string `json:"conferenceId,omitempty" xml:"conferenceId,omitempty"`
+}
+
+func (s QueryMinutesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMinutesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMinutesShrinkRequest) SetTenantContextShrink(v string) *QueryMinutesShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+func (s *QueryMinutesShrinkRequest) SetConferenceId(v string) *QueryMinutesShrinkRequest {
+	s.ConferenceId = &v
+	return s
+}
+
+type QueryMinutesResponseBody struct {
+	AudioList []*QueryMinutesResponseBodyAudioList `json:"audioList,omitempty" xml:"audioList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s QueryMinutesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMinutesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMinutesResponseBody) SetAudioList(v []*QueryMinutesResponseBodyAudioList) *QueryMinutesResponseBody {
+	s.AudioList = v
+	return s
+}
+
+func (s *QueryMinutesResponseBody) SetRequestId(v string) *QueryMinutesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryMinutesResponseBody) SetVendorRequestId(v string) *QueryMinutesResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *QueryMinutesResponseBody) SetVendorType(v string) *QueryMinutesResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type QueryMinutesResponseBodyAudioList struct {
+	// example:
+	//
+	// 1000
+	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// 1000000000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 1127942
+	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// example:
+	//
+	// https://xxx-hangzhou.oss-cn-hangzhou.aliyuncs.com/record_xxxx.mp3?Expires=1718045081&OSSAccessKeyId=TMP.3KdwHtvZxopmwacMZEdyb4WHLVmbArrNRB9CTKnR1MaJgmRjdmZczs6Rip66cgKgk2HhQon1yygvBnbY3uqEaZNeHBLcBa&Signature=OFWyAIY%2FdlzfwM9wIfEaKoAudkxxxxx
+	PlayUrl *string `json:"PlayUrl,omitempty" xml:"PlayUrl,omitempty"`
+	// example:
+	//
+	// 123
+	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// example:
+	//
+	// 1000000000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 012345
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s QueryMinutesResponseBodyAudioList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMinutesResponseBodyAudioList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMinutesResponseBodyAudioList) SetDuration(v int64) *QueryMinutesResponseBodyAudioList {
+	s.Duration = &v
+	return s
+}
+
+func (s *QueryMinutesResponseBodyAudioList) SetEndTime(v int64) *QueryMinutesResponseBodyAudioList {
+	s.EndTime = &v
+	return s
+}
+
+func (s *QueryMinutesResponseBodyAudioList) SetFileSize(v int64) *QueryMinutesResponseBodyAudioList {
+	s.FileSize = &v
+	return s
+}
+
+func (s *QueryMinutesResponseBodyAudioList) SetPlayUrl(v string) *QueryMinutesResponseBodyAudioList {
+	s.PlayUrl = &v
+	return s
+}
+
+func (s *QueryMinutesResponseBodyAudioList) SetRecordId(v string) *QueryMinutesResponseBodyAudioList {
+	s.RecordId = &v
+	return s
+}
+
+func (s *QueryMinutesResponseBodyAudioList) SetStartTime(v int64) *QueryMinutesResponseBodyAudioList {
+	s.StartTime = &v
+	return s
+}
+
+func (s *QueryMinutesResponseBodyAudioList) SetUserId(v string) *QueryMinutesResponseBodyAudioList {
+	s.UserId = &v
+	return s
+}
+
+type QueryMinutesResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryMinutesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryMinutesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMinutesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMinutesResponse) SetHeaders(v map[string]*string) *QueryMinutesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryMinutesResponse) SetStatusCode(v int32) *QueryMinutesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryMinutesResponse) SetBody(v *QueryMinutesResponseBody) *QueryMinutesResponse {
+	s.Body = v
+	return s
+}
+
 type QueryMinutesSummaryHeaders struct {
 	CommonHeaders  map[string]*string                        `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *QueryMinutesSummaryHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -55550,6 +55841,266 @@ func (s *StartInstanceResponse) SetBody(v *StartInstanceResponseBody) *StartInst
 	return s
 }
 
+type StartMinutesHeaders struct {
+	CommonHeaders  map[string]*string                 `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *StartMinutesHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s StartMinutesHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartMinutesHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *StartMinutesHeaders) SetCommonHeaders(v map[string]*string) *StartMinutesHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *StartMinutesHeaders) SetAccountContext(v *StartMinutesHeadersAccountContext) *StartMinutesHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type StartMinutesHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s StartMinutesHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartMinutesHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *StartMinutesHeadersAccountContext) SetAccountId(v string) *StartMinutesHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type StartMinutesShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s StartMinutesShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartMinutesShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *StartMinutesShrinkHeaders) SetCommonHeaders(v map[string]*string) *StartMinutesShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *StartMinutesShrinkHeaders) SetAccountContextShrink(v string) *StartMinutesShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type StartMinutesRequest struct {
+	TenantContext *StartMinutesRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 61289fxxx
+	ConferenceId *string `json:"conferenceId,omitempty" xml:"conferenceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	OwnerUserId *string `json:"ownerUserId,omitempty" xml:"ownerUserId,omitempty"`
+	// example:
+	//
+	// false
+	RecordAudio *bool `json:"recordAudio,omitempty" xml:"recordAudio,omitempty"`
+}
+
+func (s StartMinutesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartMinutesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartMinutesRequest) SetTenantContext(v *StartMinutesRequestTenantContext) *StartMinutesRequest {
+	s.TenantContext = v
+	return s
+}
+
+func (s *StartMinutesRequest) SetConferenceId(v string) *StartMinutesRequest {
+	s.ConferenceId = &v
+	return s
+}
+
+func (s *StartMinutesRequest) SetOwnerUserId(v string) *StartMinutesRequest {
+	s.OwnerUserId = &v
+	return s
+}
+
+func (s *StartMinutesRequest) SetRecordAudio(v bool) *StartMinutesRequest {
+	s.RecordAudio = &v
+	return s
+}
+
+type StartMinutesRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s StartMinutesRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartMinutesRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *StartMinutesRequestTenantContext) SetTenantId(v string) *StartMinutesRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type StartMinutesShrinkRequest struct {
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 61289fxxx
+	ConferenceId *string `json:"conferenceId,omitempty" xml:"conferenceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	OwnerUserId *string `json:"ownerUserId,omitempty" xml:"ownerUserId,omitempty"`
+	// example:
+	//
+	// false
+	RecordAudio *bool `json:"recordAudio,omitempty" xml:"recordAudio,omitempty"`
+}
+
+func (s StartMinutesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartMinutesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartMinutesShrinkRequest) SetTenantContextShrink(v string) *StartMinutesShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+func (s *StartMinutesShrinkRequest) SetConferenceId(v string) *StartMinutesShrinkRequest {
+	s.ConferenceId = &v
+	return s
+}
+
+func (s *StartMinutesShrinkRequest) SetOwnerUserId(v string) *StartMinutesShrinkRequest {
+	s.OwnerUserId = &v
+	return s
+}
+
+func (s *StartMinutesShrinkRequest) SetRecordAudio(v bool) *StartMinutesShrinkRequest {
+	s.RecordAudio = &v
+	return s
+}
+
+type StartMinutesResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s StartMinutesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartMinutesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartMinutesResponseBody) SetCode(v string) *StartMinutesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *StartMinutesResponseBody) SetRequestId(v string) *StartMinutesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StartMinutesResponseBody) SetVendorRequestId(v string) *StartMinutesResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *StartMinutesResponseBody) SetVendorType(v string) *StartMinutesResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type StartMinutesResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartMinutesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StartMinutesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartMinutesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartMinutesResponse) SetHeaders(v map[string]*string) *StartMinutesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartMinutesResponse) SetStatusCode(v int32) *StartMinutesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartMinutesResponse) SetBody(v *StartMinutesResponseBody) *StartMinutesResponse {
+	s.Body = v
+	return s
+}
+
 type StatisticsListByTypeReportHeaders struct {
 	CommonHeaders  map[string]*string                               `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *StatisticsListByTypeReportHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -56266,6 +56817,226 @@ func (s *StopCloudRecordResponse) SetStatusCode(v int32) *StopCloudRecordRespons
 }
 
 func (s *StopCloudRecordResponse) SetBody(v *StopCloudRecordResponseBody) *StopCloudRecordResponse {
+	s.Body = v
+	return s
+}
+
+type StopMinutesHeaders struct {
+	CommonHeaders  map[string]*string                `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *StopMinutesHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s StopMinutesHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopMinutesHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *StopMinutesHeaders) SetCommonHeaders(v map[string]*string) *StopMinutesHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *StopMinutesHeaders) SetAccountContext(v *StopMinutesHeadersAccountContext) *StopMinutesHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type StopMinutesHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s StopMinutesHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopMinutesHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *StopMinutesHeadersAccountContext) SetAccountId(v string) *StopMinutesHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type StopMinutesShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s StopMinutesShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopMinutesShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *StopMinutesShrinkHeaders) SetCommonHeaders(v map[string]*string) *StopMinutesShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *StopMinutesShrinkHeaders) SetAccountContextShrink(v string) *StopMinutesShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type StopMinutesRequest struct {
+	TenantContext *StopMinutesRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 61289fxxx
+	ConferenceId *string `json:"conferenceId,omitempty" xml:"conferenceId,omitempty"`
+}
+
+func (s StopMinutesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopMinutesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopMinutesRequest) SetTenantContext(v *StopMinutesRequestTenantContext) *StopMinutesRequest {
+	s.TenantContext = v
+	return s
+}
+
+func (s *StopMinutesRequest) SetConferenceId(v string) *StopMinutesRequest {
+	s.ConferenceId = &v
+	return s
+}
+
+type StopMinutesRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s StopMinutesRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopMinutesRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *StopMinutesRequestTenantContext) SetTenantId(v string) *StopMinutesRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type StopMinutesShrinkRequest struct {
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 61289fxxx
+	ConferenceId *string `json:"conferenceId,omitempty" xml:"conferenceId,omitempty"`
+}
+
+func (s StopMinutesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopMinutesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopMinutesShrinkRequest) SetTenantContextShrink(v string) *StopMinutesShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+func (s *StopMinutesShrinkRequest) SetConferenceId(v string) *StopMinutesShrinkRequest {
+	s.ConferenceId = &v
+	return s
+}
+
+type StopMinutesResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s StopMinutesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopMinutesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopMinutesResponseBody) SetCode(v string) *StopMinutesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *StopMinutesResponseBody) SetRequestId(v string) *StopMinutesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StopMinutesResponseBody) SetVendorRequestId(v string) *StopMinutesResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *StopMinutesResponseBody) SetVendorType(v string) *StopMinutesResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type StopMinutesResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopMinutesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StopMinutesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopMinutesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopMinutesResponse) SetHeaders(v map[string]*string) *StopMinutesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopMinutesResponse) SetStatusCode(v int32) *StopMinutesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopMinutesResponse) SetBody(v *StopMinutesResponseBody) *StopMinutesResponse {
 	s.Body = v
 	return s
 }
@@ -75026,6 +75797,95 @@ func (client *Client) QueryMeetingRoomList(request *QueryMeetingRoomListRequest)
 
 // Summary:
 //
+// 查询闪记录音
+//
+// @param tmpReq - QueryMinutesRequest
+//
+// @param tmpHeader - QueryMinutesHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryMinutesResponse
+func (client *Client) QueryMinutesWithOptions(tmpReq *QueryMinutesRequest, tmpHeader *QueryMinutesHeaders, runtime *util.RuntimeOptions) (_result *QueryMinutesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &QueryMinutesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &QueryMinutesShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConferenceId)) {
+		body["conferenceId"] = request.ConferenceId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryMinutes"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/ysp/queryMinutes"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryMinutesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询闪记录音
+//
+// @param request - QueryMinutesRequest
+//
+// @return QueryMinutesResponse
+func (client *Client) QueryMinutes(request *QueryMinutesRequest) (_result *QueryMinutesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &QueryMinutesHeaders{}
+	_result = &QueryMinutesResponse{}
+	_body, _err := client.QueryMinutesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询会议闪记智能纪要
 //
 // @param tmpReq - QueryMinutesSummaryRequest
@@ -78096,6 +78956,103 @@ func (client *Client) StartInstance(request *StartInstanceRequest) (_result *Sta
 
 // Summary:
 //
+// 开启闪记
+//
+// @param tmpReq - StartMinutesRequest
+//
+// @param tmpHeader - StartMinutesHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartMinutesResponse
+func (client *Client) StartMinutesWithOptions(tmpReq *StartMinutesRequest, tmpHeader *StartMinutesHeaders, runtime *util.RuntimeOptions) (_result *StartMinutesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &StartMinutesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &StartMinutesShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConferenceId)) {
+		body["conferenceId"] = request.ConferenceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerUserId)) {
+		body["ownerUserId"] = request.OwnerUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordAudio)) {
+		body["recordAudio"] = request.RecordAudio
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartMinutes"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/ysp/startMinutes"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartMinutesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 开启闪记
+//
+// @param request - StartMinutesRequest
+//
+// @return StartMinutesResponse
+func (client *Client) StartMinutes(request *StartMinutesRequest) (_result *StartMinutesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &StartMinutesHeaders{}
+	_result = &StartMinutesResponse{}
+	_body, _err := client.StartMinutesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取日志相关人员列表
 //
 // @param tmpReq - StatisticsListByTypeReportRequest
@@ -78366,6 +79323,95 @@ func (client *Client) StopCloudRecord(request *StopCloudRecordRequest) (_result 
 	headers := &StopCloudRecordHeaders{}
 	_result = &StopCloudRecordResponse{}
 	_body, _err := client.StopCloudRecordWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 暂停闪记
+//
+// @param tmpReq - StopMinutesRequest
+//
+// @param tmpHeader - StopMinutesHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopMinutesResponse
+func (client *Client) StopMinutesWithOptions(tmpReq *StopMinutesRequest, tmpHeader *StopMinutesHeaders, runtime *util.RuntimeOptions) (_result *StopMinutesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &StopMinutesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &StopMinutesShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConferenceId)) {
+		body["conferenceId"] = request.ConferenceId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopMinutes"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/ysp/stopMinutes"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopMinutesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 暂停闪记
+//
+// @param request - StopMinutesRequest
+//
+// @return StopMinutesResponse
+func (client *Client) StopMinutes(request *StopMinutesRequest) (_result *StopMinutesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &StopMinutesHeaders{}
+	_result = &StopMinutesResponse{}
+	_body, _err := client.StopMinutesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
