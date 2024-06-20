@@ -441,6 +441,83 @@ func (s *AttachSceneDefenseObjectResponse) SetBody(v *AttachSceneDefenseObjectRe
 	return s
 }
 
+type ConfigDomainSecurityProfileRequest struct {
+	Cluster *string `json:"Cluster,omitempty" xml:"Cluster,omitempty"`
+	// This parameter is required.
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// This parameter is required.
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+}
+
+func (s ConfigDomainSecurityProfileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfigDomainSecurityProfileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ConfigDomainSecurityProfileRequest) SetCluster(v string) *ConfigDomainSecurityProfileRequest {
+	s.Cluster = &v
+	return s
+}
+
+func (s *ConfigDomainSecurityProfileRequest) SetConfig(v string) *ConfigDomainSecurityProfileRequest {
+	s.Config = &v
+	return s
+}
+
+func (s *ConfigDomainSecurityProfileRequest) SetDomain(v string) *ConfigDomainSecurityProfileRequest {
+	s.Domain = &v
+	return s
+}
+
+type ConfigDomainSecurityProfileResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ConfigDomainSecurityProfileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfigDomainSecurityProfileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ConfigDomainSecurityProfileResponseBody) SetRequestId(v string) *ConfigDomainSecurityProfileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ConfigDomainSecurityProfileResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConfigDomainSecurityProfileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ConfigDomainSecurityProfileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfigDomainSecurityProfileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ConfigDomainSecurityProfileResponse) SetHeaders(v map[string]*string) *ConfigDomainSecurityProfileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ConfigDomainSecurityProfileResponse) SetStatusCode(v int32) *ConfigDomainSecurityProfileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ConfigDomainSecurityProfileResponse) SetBody(v *ConfigDomainSecurityProfileResponseBody) *ConfigDomainSecurityProfileResponse {
+	s.Body = v
+	return s
+}
+
 type ConfigL7RsPolicyRequest struct {
 	// The domain name of the website.
 	//
@@ -562,6 +639,86 @@ func (s *ConfigL7RsPolicyResponse) SetStatusCode(v int32) *ConfigL7RsPolicyRespo
 }
 
 func (s *ConfigL7RsPolicyResponse) SetBody(v *ConfigL7RsPolicyResponseBody) *ConfigL7RsPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type ConfigL7UsKeepaliveRequest struct {
+	// example:
+	//
+	// www.aliyun.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"enabled": true, "keepalive_requests": 1000,"keepalive_timeout": 30}
+	UpstreamKeepalive *string `json:"UpstreamKeepalive,omitempty" xml:"UpstreamKeepalive,omitempty"`
+}
+
+func (s ConfigL7UsKeepaliveRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfigL7UsKeepaliveRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ConfigL7UsKeepaliveRequest) SetDomain(v string) *ConfigL7UsKeepaliveRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *ConfigL7UsKeepaliveRequest) SetUpstreamKeepalive(v string) *ConfigL7UsKeepaliveRequest {
+	s.UpstreamKeepalive = &v
+	return s
+}
+
+type ConfigL7UsKeepaliveResponseBody struct {
+	// example:
+	//
+	// 6D48AED0-41DB-5D9B-B484-3B6AAD312AD1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ConfigL7UsKeepaliveResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfigL7UsKeepaliveResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ConfigL7UsKeepaliveResponseBody) SetRequestId(v string) *ConfigL7UsKeepaliveResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ConfigL7UsKeepaliveResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConfigL7UsKeepaliveResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ConfigL7UsKeepaliveResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfigL7UsKeepaliveResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ConfigL7UsKeepaliveResponse) SetHeaders(v map[string]*string) *ConfigL7UsKeepaliveResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ConfigL7UsKeepaliveResponse) SetStatusCode(v int32) *ConfigL7UsKeepaliveResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ConfigL7UsKeepaliveResponse) SetBody(v *ConfigL7UsKeepaliveResponseBody) *ConfigL7UsKeepaliveResponse {
 	s.Body = v
 	return s
 }
@@ -11570,12 +11727,14 @@ func (s *DescribeInstanceDetailsResponseBodyInstanceDetails) SetLine(v string) *
 }
 
 type DescribeInstanceDetailsResponseBodyInstanceDetailsEipInfos struct {
+	CertConfigured *bool `json:"CertConfigured,omitempty" xml:"CertConfigured,omitempty"`
 	// The IP address of the instance.
 	//
 	// example:
 	//
 	// 203.117.XX.XX
-	Eip *string `json:"Eip,omitempty" xml:"Eip,omitempty"`
+	Eip             *string `json:"Eip,omitempty" xml:"Eip,omitempty"`
+	FunctionVersion *string `json:"FunctionVersion,omitempty" xml:"FunctionVersion,omitempty"`
 	// The IP address-based forwarding mode of the instance. Valid values:
 	//
 	// 	- **fnat**: Requests from IPv4 addresses are forwarded to origin servers that use IPv4 addresses and requests from IPv6 addresses are forwarded to origin servers that use IPv6 addresses.
@@ -11595,7 +11754,8 @@ type DescribeInstanceDetailsResponseBodyInstanceDetailsEipInfos struct {
 	// example:
 	//
 	// Ipv4
-	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	IpVersion    *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	Ssl13Enabled *bool   `json:"Ssl13Enabled,omitempty" xml:"Ssl13Enabled,omitempty"`
 	// The status of the instance. Valid values:
 	//
 	// 	- **normal**: indicates that the instance is normal.
@@ -11611,7 +11771,8 @@ type DescribeInstanceDetailsResponseBodyInstanceDetailsEipInfos struct {
 	// example:
 	//
 	// normal
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TlsVersion *string `json:"TlsVersion,omitempty" xml:"TlsVersion,omitempty"`
 }
 
 func (s DescribeInstanceDetailsResponseBodyInstanceDetailsEipInfos) String() string {
@@ -11622,8 +11783,18 @@ func (s DescribeInstanceDetailsResponseBodyInstanceDetailsEipInfos) GoString() s
 	return s.String()
 }
 
+func (s *DescribeInstanceDetailsResponseBodyInstanceDetailsEipInfos) SetCertConfigured(v bool) *DescribeInstanceDetailsResponseBodyInstanceDetailsEipInfos {
+	s.CertConfigured = &v
+	return s
+}
+
 func (s *DescribeInstanceDetailsResponseBodyInstanceDetailsEipInfos) SetEip(v string) *DescribeInstanceDetailsResponseBodyInstanceDetailsEipInfos {
 	s.Eip = &v
+	return s
+}
+
+func (s *DescribeInstanceDetailsResponseBodyInstanceDetailsEipInfos) SetFunctionVersion(v string) *DescribeInstanceDetailsResponseBodyInstanceDetailsEipInfos {
+	s.FunctionVersion = &v
 	return s
 }
 
@@ -11637,8 +11808,18 @@ func (s *DescribeInstanceDetailsResponseBodyInstanceDetailsEipInfos) SetIpVersio
 	return s
 }
 
+func (s *DescribeInstanceDetailsResponseBodyInstanceDetailsEipInfos) SetSsl13Enabled(v bool) *DescribeInstanceDetailsResponseBodyInstanceDetailsEipInfos {
+	s.Ssl13Enabled = &v
+	return s
+}
+
 func (s *DescribeInstanceDetailsResponseBodyInstanceDetailsEipInfos) SetStatus(v string) *DescribeInstanceDetailsResponseBodyInstanceDetailsEipInfos {
 	s.Status = &v
+	return s
+}
+
+func (s *DescribeInstanceDetailsResponseBodyInstanceDetailsEipInfos) SetTlsVersion(v string) *DescribeInstanceDetailsResponseBodyInstanceDetailsEipInfos {
+	s.TlsVersion = &v
 	return s
 }
 
@@ -13250,6 +13431,119 @@ func (s *DescribeL7RsPolicyResponse) SetStatusCode(v int32) *DescribeL7RsPolicyR
 }
 
 func (s *DescribeL7RsPolicyResponse) SetBody(v *DescribeL7RsPolicyResponseBody) *DescribeL7RsPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeL7UsKeepaliveRequest struct {
+	// example:
+	//
+	// www.aliyun.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+}
+
+func (s DescribeL7UsKeepaliveRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeL7UsKeepaliveRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeL7UsKeepaliveRequest) SetDomain(v string) *DescribeL7UsKeepaliveRequest {
+	s.Domain = &v
+	return s
+}
+
+type DescribeL7UsKeepaliveResponseBody struct {
+	// example:
+	//
+	// 39499F01-19D9-4EA4-A0E9-C6014BA5CDBE
+	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RsKeepalive *DescribeL7UsKeepaliveResponseBodyRsKeepalive `json:"RsKeepalive,omitempty" xml:"RsKeepalive,omitempty" type:"Struct"`
+}
+
+func (s DescribeL7UsKeepaliveResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeL7UsKeepaliveResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeL7UsKeepaliveResponseBody) SetRequestId(v string) *DescribeL7UsKeepaliveResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeL7UsKeepaliveResponseBody) SetRsKeepalive(v *DescribeL7UsKeepaliveResponseBodyRsKeepalive) *DescribeL7UsKeepaliveResponseBody {
+	s.RsKeepalive = v
+	return s
+}
+
+type DescribeL7UsKeepaliveResponseBodyRsKeepalive struct {
+	// example:
+	//
+	// true
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// example:
+	//
+	// 1000
+	KeepaliveRequests *int64 `json:"KeepaliveRequests,omitempty" xml:"KeepaliveRequests,omitempty"`
+	// example:
+	//
+	// 30
+	KeepaliveTimeout *int64 `json:"KeepaliveTimeout,omitempty" xml:"KeepaliveTimeout,omitempty"`
+}
+
+func (s DescribeL7UsKeepaliveResponseBodyRsKeepalive) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeL7UsKeepaliveResponseBodyRsKeepalive) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeL7UsKeepaliveResponseBodyRsKeepalive) SetEnabled(v bool) *DescribeL7UsKeepaliveResponseBodyRsKeepalive {
+	s.Enabled = &v
+	return s
+}
+
+func (s *DescribeL7UsKeepaliveResponseBodyRsKeepalive) SetKeepaliveRequests(v int64) *DescribeL7UsKeepaliveResponseBodyRsKeepalive {
+	s.KeepaliveRequests = &v
+	return s
+}
+
+func (s *DescribeL7UsKeepaliveResponseBodyRsKeepalive) SetKeepaliveTimeout(v int64) *DescribeL7UsKeepaliveResponseBodyRsKeepalive {
+	s.KeepaliveTimeout = &v
+	return s
+}
+
+type DescribeL7UsKeepaliveResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeL7UsKeepaliveResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeL7UsKeepaliveResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeL7UsKeepaliveResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeL7UsKeepaliveResponse) SetHeaders(v map[string]*string) *DescribeL7UsKeepaliveResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeL7UsKeepaliveResponse) SetStatusCode(v int32) *DescribeL7UsKeepaliveResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeL7UsKeepaliveResponse) SetBody(v *DescribeL7UsKeepaliveResponseBody) *DescribeL7UsKeepaliveResponse {
 	s.Body = v
 	return s
 }
@@ -28067,6 +28361,74 @@ func (client *Client) AttachSceneDefenseObject(request *AttachSceneDefenseObject
 
 // Summary:
 //
+// 配置安全概要属性
+//
+// @param request - ConfigDomainSecurityProfileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigDomainSecurityProfileResponse
+func (client *Client) ConfigDomainSecurityProfileWithOptions(request *ConfigDomainSecurityProfileRequest, runtime *util.RuntimeOptions) (_result *ConfigDomainSecurityProfileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Cluster)) {
+		query["Cluster"] = request.Cluster
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		query["Config"] = request.Config
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ConfigDomainSecurityProfile"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ConfigDomainSecurityProfileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 配置安全概要属性
+//
+// @param request - ConfigDomainSecurityProfileRequest
+//
+// @return ConfigDomainSecurityProfileResponse
+func (client *Client) ConfigDomainSecurityProfile(request *ConfigDomainSecurityProfileRequest) (_result *ConfigDomainSecurityProfileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ConfigDomainSecurityProfileResponse{}
+	_body, _err := client.ConfigDomainSecurityProfileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Configures a back-to-origin policy for the forwarding rule of a website.
 //
 // Description:
@@ -28138,6 +28500,70 @@ func (client *Client) ConfigL7RsPolicy(request *ConfigL7RsPolicyRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ConfigL7RsPolicyResponse{}
 	_body, _err := client.ConfigL7RsPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 配置长连接
+//
+// @param request - ConfigL7UsKeepaliveRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigL7UsKeepaliveResponse
+func (client *Client) ConfigL7UsKeepaliveWithOptions(request *ConfigL7UsKeepaliveRequest, runtime *util.RuntimeOptions) (_result *ConfigL7UsKeepaliveResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpstreamKeepalive)) {
+		query["UpstreamKeepalive"] = request.UpstreamKeepalive
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ConfigL7UsKeepalive"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ConfigL7UsKeepaliveResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 配置长连接
+//
+// @param request - ConfigL7UsKeepaliveRequest
+//
+// @return ConfigL7UsKeepaliveResponse
+func (client *Client) ConfigL7UsKeepalive(request *ConfigL7UsKeepaliveRequest) (_result *ConfigL7UsKeepaliveResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ConfigL7UsKeepaliveResponse{}
+	_body, _err := client.ConfigL7UsKeepaliveWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33826,6 +34252,66 @@ func (client *Client) DescribeL7RsPolicy(request *DescribeL7RsPolicyRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeL7RsPolicyResponse{}
 	_body, _err := client.DescribeL7RsPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询长连接
+//
+// @param request - DescribeL7UsKeepaliveRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeL7UsKeepaliveResponse
+func (client *Client) DescribeL7UsKeepaliveWithOptions(request *DescribeL7UsKeepaliveRequest, runtime *util.RuntimeOptions) (_result *DescribeL7UsKeepaliveResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeL7UsKeepalive"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeL7UsKeepaliveResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询长连接
+//
+// @param request - DescribeL7UsKeepaliveRequest
+//
+// @return DescribeL7UsKeepaliveResponse
+func (client *Client) DescribeL7UsKeepalive(request *DescribeL7UsKeepaliveRequest) (_result *DescribeL7UsKeepaliveResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeL7UsKeepaliveResponse{}
+	_body, _err := client.DescribeL7UsKeepaliveWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
