@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,22 +10,70 @@ import (
 )
 
 type ChaincodePackage struct {
+	// example:
+	//
+	// cmcc-1.5:227c3cd472a8a2fcaa1c63f15812a1894348a985dc723006dd47d9f2848d10ed
 	ChaincodePackageId *string `json:"ChaincodePackageId,omitempty" xml:"ChaincodePackageId,omitempty"`
-	Checksum           *string `json:"Checksum,omitempty" xml:"Checksum,omitempty"`
-	DeleteTime         *string `json:"DeleteTime,omitempty" xml:"DeleteTime,omitempty"`
-	Deleted            *bool   `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
-	InstallTime        *string `json:"InstallTime,omitempty" xml:"InstallTime,omitempty"`
-	Label              *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	Md5sum             *string `json:"Md5sum,omitempty" xml:"Md5sum,omitempty"`
-	Message            *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	OrganizationId     *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	OssURL             *string `json:"OssURL,omitempty" xml:"OssURL,omitempty"`
-	ProviderBid        *string `json:"ProviderBid,omitempty" xml:"ProviderBid,omitempty"`
-	ProviderUid        *string `json:"ProviderUid,omitempty" xml:"ProviderUid,omitempty"`
-	State              *string `json:"State,omitempty" xml:"State,omitempty"`
-	Type               *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
-	TypeName           *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
-	UploadTime         *string `json:"UploadTime,omitempty" xml:"UploadTime,omitempty"`
+	// example:
+	//
+	// 15bab12c29edbc095c33545b9867aec9be469c74a6dd5783df6ee74a24334c77
+	Checksum *string `json:"Checksum,omitempty" xml:"Checksum,omitempty"`
+	// example:
+	//
+	// 1533025590
+	DeleteTime *string `json:"DeleteTime,omitempty" xml:"DeleteTime,omitempty"`
+	// example:
+	//
+	// false
+	Deleted *bool `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
+	// example:
+	//
+	// 1533025590
+	InstallTime *string `json:"InstallTime,omitempty" xml:"InstallTime,omitempty"`
+	// example:
+	//
+	// label
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// example:
+	//
+	// N02eVKuRJDA2ODtieMUxVw==
+	Md5sum *string `json:"Md5sum,omitempty" xml:"Md5sum,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// peers-aaaaaa2-1eqnj5o5w9dt3
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	// example:
+	//
+	// hi003/7efbe860-1a40-42c9-9e6b-0bc08d7ee3a4/cmcc.tar.gz
+	OssURL *string `json:"OssURL,omitempty" xml:"OssURL,omitempty"`
+	// example:
+	//
+	// 26842
+	ProviderBid *string `json:"ProviderBid,omitempty" xml:"ProviderBid,omitempty"`
+	// example:
+	//
+	// 1313158505072210
+	ProviderUid *string `json:"ProviderUid,omitempty" xml:"ProviderUid,omitempty"`
+	// example:
+	//
+	// Running
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// 0
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// golang
+	TypeName *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
+	// example:
+	//
+	// 1533025590
+	UploadTime *string `json:"UploadTime,omitempty" xml:"UploadTime,omitempty"`
 }
 
 func (s ChaincodePackage) String() string {
@@ -120,27 +165,90 @@ func (s *ChaincodePackage) SetUploadTime(v string) *ChaincodePackage {
 }
 
 type ChaincodeVO struct {
+	// example:
+	//
+	// a5f04baed775b016e8dc386783f40a2c8b13823cac22bc5fd11846cca4a13a9a
 	ChaincodeDefinitionId *string `json:"ChaincodeDefinitionId,omitempty" xml:"ChaincodeDefinitionId,omitempty"`
-	ChaincodeId           *string `json:"ChaincodeId,omitempty" xml:"ChaincodeId,omitempty"`
-	ChaincodePackageId    *string `json:"ChaincodePackageId,omitempty" xml:"ChaincodePackageId,omitempty"`
-	ChannelId             *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	ChannelName           *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	ConsortiumId          *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	CreateTime            *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeployTime            *string `json:"DeployTime,omitempty" xml:"DeployTime,omitempty"`
-	EndorsePolicy         *string `json:"EndorsePolicy,omitempty" xml:"EndorsePolicy,omitempty"`
-	InitRequired          *bool   `json:"InitRequired,omitempty" xml:"InitRequired,omitempty"`
-	Input                 *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	Install               *bool   `json:"Install,omitempty" xml:"Install,omitempty"`
-	Management            *bool   `json:"Management,omitempty" xml:"Management,omitempty"`
-	Message               *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Name                  *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Path                  *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	ProviderId            *string `json:"ProviderId,omitempty" xml:"ProviderId,omitempty"`
-	ProviderName          *string `json:"ProviderName,omitempty" xml:"ProviderName,omitempty"`
-	State                 *string `json:"State,omitempty" xml:"State,omitempty"`
-	Type                  *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
-	Version               *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// example:
+	//
+	// code-sacc-jbkuldd3i7ad
+	ChaincodeId *string `json:"ChaincodeId,omitempty" xml:"ChaincodeId,omitempty"`
+	// example:
+	//
+	// sacc_v1.0:698d4e73c5f1d0239fbf0313ac79ddfaf44d5a803ecb02a4d1983cca4a706860
+	ChaincodePackageId *string `json:"ChaincodePackageId,omitempty" xml:"ChaincodePackageId,omitempty"`
+	// example:
+	//
+	// chan-test-b0wx5suhgyb9p
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// example:
+	//
+	// f100
+	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// example:
+	//
+	// peers-aaaaaa2-1eqnj5o5w9dt3
+	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	// example:
+	//
+	// 1533025590
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1533025590
+	DeployTime *string `json:"DeployTime,omitempty" xml:"DeployTime,omitempty"`
+	// example:
+	//
+	// OR ("perf9141MSP.member")
+	EndorsePolicy *string `json:"EndorsePolicy,omitempty" xml:"EndorsePolicy,omitempty"`
+	// example:
+	//
+	// false
+	InitRequired *bool `json:"InitRequired,omitempty" xml:"InitRequired,omitempty"`
+	// example:
+	//
+	// args:"key" args:"val"
+	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// example:
+	//
+	// true
+	Install *bool `json:"Install,omitempty" xml:"Install,omitempty"`
+	// example:
+	//
+	// false
+	Management *bool `json:"Management,omitempty" xml:"Management,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// sacc
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// chaincode/sacc
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// peers-aaaaaa2-1eqnj5o5w9dt3
+	ProviderId *string `json:"ProviderId,omitempty" xml:"ProviderId,omitempty"`
+	// example:
+	//
+	// perf9141
+	ProviderName *string `json:"ProviderName,omitempty" xml:"ProviderName,omitempty"`
+	// example:
+	//
+	// Pending
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// 0
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 1.1
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ChaincodeVO) String() string {
@@ -257,8 +365,16 @@ func (s *ChaincodeVO) SetVersion(v string) *ChaincodeVO {
 }
 
 type AcceptFabricInvitationRequest struct {
-	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	IsAccepted *bool   `json:"IsAccepted,omitempty" xml:"IsAccepted,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// secrettoken
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	IsAccepted *bool `json:"IsAccepted,omitempty" xml:"IsAccepted,omitempty"`
 }
 
 func (s AcceptFabricInvitationRequest) String() string {
@@ -280,9 +396,18 @@ func (s *AcceptFabricInvitationRequest) SetIsAccepted(v bool) *AcceptFabricInvit
 }
 
 type AcceptFabricInvitationResponseBody struct {
-	ErrorCode *int32  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 52CC8D5B-79A8-4769-BC7B-8940556ADA49
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AcceptFabricInvitationResponseBody) String() string {
@@ -309,9 +434,9 @@ func (s *AcceptFabricInvitationResponseBody) SetSuccess(v bool) *AcceptFabricInv
 }
 
 type AcceptFabricInvitationResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AcceptFabricInvitationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AcceptFabricInvitationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AcceptFabricInvitationResponse) String() string {
@@ -338,8 +463,18 @@ func (s *AcceptFabricInvitationResponse) SetBody(v *AcceptFabricInvitationRespon
 }
 
 type ApplyAntChainCertificateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// bDXK6boZ
 	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
-	UploadReq  *string `json:"UploadReq,omitempty" xml:"UploadReq,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// LS0tLS1...
+	UploadReq *string `json:"UploadReq,omitempty" xml:"UploadReq,omitempty"`
 }
 
 func (s ApplyAntChainCertificateRequest) String() string {
@@ -361,8 +496,14 @@ func (s *ApplyAntChainCertificateRequest) SetUploadReq(v string) *ApplyAntChainC
 }
 
 type ApplyAntChainCertificateResponseBody struct {
+	// example:
+	//
+	// D3FB9E67-0E31-4B8B-8895-3660CCE8CA62
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// success
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s ApplyAntChainCertificateResponseBody) String() string {
@@ -384,9 +525,9 @@ func (s *ApplyAntChainCertificateResponseBody) SetResult(v string) *ApplyAntChai
 }
 
 type ApplyAntChainCertificateResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ApplyAntChainCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ApplyAntChainCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ApplyAntChainCertificateResponse) String() string {
@@ -413,15 +554,60 @@ func (s *ApplyAntChainCertificateResponse) SetBody(v *ApplyAntChainCertificateRe
 }
 
 type ApplyAntChainCertificateWithKeyAutoCreationRequest struct {
-	AntChainId           *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
-	CommonName           *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	ConsortiumId         *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	CountryName          *string `json:"CountryName,omitempty" xml:"CountryName,omitempty"`
-	LocalityName         *string `json:"LocalityName,omitempty" xml:"LocalityName,omitempty"`
-	OrganizationName     *string `json:"OrganizationName,omitempty" xml:"OrganizationName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1q8B5R9p
+	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// commonName
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DV80nJXq
+	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// countryName
+	CountryName *string `json:"CountryName,omitempty" xml:"CountryName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// localityName
+	LocalityName *string `json:"LocalityName,omitempty" xml:"LocalityName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// organizationName
+	OrganizationName *string `json:"OrganizationName,omitempty" xml:"OrganizationName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// organizationUnitName
 	OrganizationUnitName *string `json:"OrganizationUnitName,omitempty" xml:"OrganizationUnitName,omitempty"`
-	Password             *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	StateOrProvinceName  *string `json:"StateOrProvinceName,omitempty" xml:"StateOrProvinceName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// password
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// stateOrProvinceName
+	StateOrProvinceName *string `json:"StateOrProvinceName,omitempty" xml:"StateOrProvinceName,omitempty"`
 }
 
 func (s ApplyAntChainCertificateWithKeyAutoCreationRequest) String() string {
@@ -478,6 +664,9 @@ func (s *ApplyAntChainCertificateWithKeyAutoCreationRequest) SetStateOrProvinceN
 }
 
 type ApplyAntChainCertificateWithKeyAutoCreationResponseBody struct {
+	// example:
+	//
+	// 3E1894AF-FEE7-4C6C-8C2A-2B3EE0105B07
 	RequestId *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *ApplyAntChainCertificateWithKeyAutoCreationResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -502,7 +691,10 @@ func (s *ApplyAntChainCertificateWithKeyAutoCreationResponseBody) SetResult(v *A
 
 type ApplyAntChainCertificateWithKeyAutoCreationResponseBodyResult struct {
 	DownloadPath *ApplyAntChainCertificateWithKeyAutoCreationResponseBodyResultDownloadPath `json:"DownloadPath,omitempty" xml:"DownloadPath,omitempty" type:"Struct"`
-	PrivateKey   *string                                                                    `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
+	// example:
+	//
+	// -----BEGIN ENCRYPTED PRIVATE KEY-----\\nMII***A=\\n-----END ENCRYPTED PRIVATE KEY-----\\n
+	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
 }
 
 func (s ApplyAntChainCertificateWithKeyAutoCreationResponseBodyResult) String() string {
@@ -524,10 +716,22 @@ func (s *ApplyAntChainCertificateWithKeyAutoCreationResponseBodyResult) SetPriva
 }
 
 type ApplyAntChainCertificateWithKeyAutoCreationResponseBodyResultDownloadPath struct {
-	CaCrtUrl     *string `json:"CaCrtUrl,omitempty" xml:"CaCrtUrl,omitempty"`
+	// example:
+	//
+	// http://***ca.crt
+	CaCrtUrl *string `json:"CaCrtUrl,omitempty" xml:"CaCrtUrl,omitempty"`
+	// example:
+	//
+	// http://***client.crt
 	ClientCrtUrl *string `json:"ClientCrtUrl,omitempty" xml:"ClientCrtUrl,omitempty"`
-	SdkUrl       *string `json:"SdkUrl,omitempty" xml:"SdkUrl,omitempty"`
-	TrustCaUrl   *string `json:"TrustCaUrl,omitempty" xml:"TrustCaUrl,omitempty"`
+	// example:
+	//
+	// http://***
+	SdkUrl *string `json:"SdkUrl,omitempty" xml:"SdkUrl,omitempty"`
+	// example:
+	//
+	// http://***trustCa
+	TrustCaUrl *string `json:"TrustCaUrl,omitempty" xml:"TrustCaUrl,omitempty"`
 }
 
 func (s ApplyAntChainCertificateWithKeyAutoCreationResponseBodyResultDownloadPath) String() string {
@@ -559,9 +763,9 @@ func (s *ApplyAntChainCertificateWithKeyAutoCreationResponseBodyResultDownloadPa
 }
 
 type ApplyAntChainCertificateWithKeyAutoCreationResponse struct {
-	Headers    map[string]*string                                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ApplyAntChainCertificateWithKeyAutoCreationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ApplyAntChainCertificateWithKeyAutoCreationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ApplyAntChainCertificateWithKeyAutoCreationResponse) String() string {
@@ -588,10 +792,26 @@ func (s *ApplyAntChainCertificateWithKeyAutoCreationResponse) SetBody(v *ApplyAn
 }
 
 type ApproveFabricChaincodeDefinitionRequest struct {
-	ChaincodeId        *string `json:"ChaincodeId,omitempty" xml:"ChaincodeId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// code-sacc-jbkuldd3i7ad
+	ChaincodeId *string `json:"ChaincodeId,omitempty" xml:"ChaincodeId,omitempty"`
+	// example:
+	//
+	// sacc_v1.0:698d4e73c5f1d0239fbf0313ac79ddfaf44d5a803ecb02a4d1983cca4a706860
 	ChaincodePackageId *string `json:"ChaincodePackageId,omitempty" xml:"ChaincodePackageId,omitempty"`
-	Location           *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	OrganizationId     *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// peers-aaaaaa2-1eqnj5o5w9dt3
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 
 func (s ApproveFabricChaincodeDefinitionRequest) String() string {
@@ -623,11 +843,23 @@ func (s *ApproveFabricChaincodeDefinitionRequest) SetOrganizationId(v string) *A
 }
 
 type ApproveFabricChaincodeDefinitionResponseBody struct {
-	ErrorCode *int32       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string      `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *ChaincodeVO `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool        `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ApproveFabricChaincodeDefinitionResponseBody) String() string {
@@ -664,9 +896,9 @@ func (s *ApproveFabricChaincodeDefinitionResponseBody) SetSuccess(v bool) *Appro
 }
 
 type ApproveFabricChaincodeDefinitionResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ApproveFabricChaincodeDefinitionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ApproveFabricChaincodeDefinitionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ApproveFabricChaincodeDefinitionResponse) String() string {
@@ -693,8 +925,18 @@ func (s *ApproveFabricChaincodeDefinitionResponse) SetBody(v *ApproveFabricChain
 }
 
 type BatchAddAntChainMiniAppQRCodeAuthorizedUsersRequest struct {
-	AntChainId *string                `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
-	PhoneList  map[string]interface{} `json:"PhoneList,omitempty" xml:"PhoneList,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// bDXK6boZ
+	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ["1380013****", "1380013****"]
+	PhoneList map[string]interface{} `json:"PhoneList,omitempty" xml:"PhoneList,omitempty"`
 }
 
 func (s BatchAddAntChainMiniAppQRCodeAuthorizedUsersRequest) String() string {
@@ -716,7 +958,17 @@ func (s *BatchAddAntChainMiniAppQRCodeAuthorizedUsersRequest) SetPhoneList(v map
 }
 
 type BatchAddAntChainMiniAppQRCodeAuthorizedUsersShrinkRequest struct {
-	AntChainId      *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// bDXK6boZ
+	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ["1380013****", "1380013****"]
 	PhoneListShrink *string `json:"PhoneList,omitempty" xml:"PhoneList,omitempty"`
 }
 
@@ -739,8 +991,14 @@ func (s *BatchAddAntChainMiniAppQRCodeAuthorizedUsersShrinkRequest) SetPhoneList
 }
 
 type BatchAddAntChainMiniAppQRCodeAuthorizedUsersResponseBody struct {
+	// example:
+	//
+	// D68D66B6-1964-4073-8714-B49F5EF1AEFC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// success
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s BatchAddAntChainMiniAppQRCodeAuthorizedUsersResponseBody) String() string {
@@ -762,9 +1020,9 @@ func (s *BatchAddAntChainMiniAppQRCodeAuthorizedUsersResponseBody) SetResult(v s
 }
 
 type BatchAddAntChainMiniAppQRCodeAuthorizedUsersResponse struct {
-	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BatchAddAntChainMiniAppQRCodeAuthorizedUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchAddAntChainMiniAppQRCodeAuthorizedUsersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BatchAddAntChainMiniAppQRCodeAuthorizedUsersResponse) String() string {
@@ -791,6 +1049,11 @@ func (s *BatchAddAntChainMiniAppQRCodeAuthorizedUsersResponse) SetBody(v *BatchA
 }
 
 type CheckFabricConsortiumDomainRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// bank
 	DomainCode *string `json:"DomainCode,omitempty" xml:"DomainCode,omitempty"`
 }
 
@@ -808,10 +1071,19 @@ func (s *CheckFabricConsortiumDomainRequest) SetDomainCode(v string) *CheckFabri
 }
 
 type CheckFabricConsortiumDomainResponseBody struct {
-	ErrorCode *int32                                         `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 8F80A214-89FC-4348-9B3F-15446B3DC1FA
 	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *CheckFabricConsortiumDomainResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CheckFabricConsortiumDomainResponseBody) String() string {
@@ -843,9 +1115,18 @@ func (s *CheckFabricConsortiumDomainResponseBody) SetSuccess(v bool) *CheckFabri
 }
 
 type CheckFabricConsortiumDomainResponseBodyResult struct {
+	// example:
+	//
+	// bank
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// OK
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
-	Valid  *bool   `json:"Valid,omitempty" xml:"Valid,omitempty"`
+	// example:
+	//
+	// true
+	Valid *bool `json:"Valid,omitempty" xml:"Valid,omitempty"`
 }
 
 func (s CheckFabricConsortiumDomainResponseBodyResult) String() string {
@@ -872,9 +1153,9 @@ func (s *CheckFabricConsortiumDomainResponseBodyResult) SetValid(v bool) *CheckF
 }
 
 type CheckFabricConsortiumDomainResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CheckFabricConsortiumDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CheckFabricConsortiumDomainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CheckFabricConsortiumDomainResponse) String() string {
@@ -901,7 +1182,13 @@ func (s *CheckFabricConsortiumDomainResponse) SetBody(v *CheckFabricConsortiumDo
 }
 
 type CheckFabricOrganizationDomainRequest struct {
-	Domain     *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// bank
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// bank
 	DomainCode *string `json:"DomainCode,omitempty" xml:"DomainCode,omitempty"`
 }
 
@@ -924,10 +1211,19 @@ func (s *CheckFabricOrganizationDomainRequest) SetDomainCode(v string) *CheckFab
 }
 
 type CheckFabricOrganizationDomainResponseBody struct {
-	ErrorCode *int32                                           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// C30A14C7-800E-468B-9EB2-C704DA49295E
 	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *CheckFabricOrganizationDomainResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CheckFabricOrganizationDomainResponseBody) String() string {
@@ -959,9 +1255,18 @@ func (s *CheckFabricOrganizationDomainResponseBody) SetSuccess(v bool) *CheckFab
 }
 
 type CheckFabricOrganizationDomainResponseBodyResult struct {
+	// example:
+	//
+	// bank
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// OK
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
-	Valid  *bool   `json:"Valid,omitempty" xml:"Valid,omitempty"`
+	// example:
+	//
+	// true
+	Valid *bool `json:"Valid,omitempty" xml:"Valid,omitempty"`
 }
 
 func (s CheckFabricOrganizationDomainResponseBodyResult) String() string {
@@ -988,9 +1293,9 @@ func (s *CheckFabricOrganizationDomainResponseBodyResult) SetValid(v bool) *Chec
 }
 
 type CheckFabricOrganizationDomainResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CheckFabricOrganizationDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CheckFabricOrganizationDomainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CheckFabricOrganizationDomainResponse) String() string {
@@ -1017,7 +1322,13 @@ func (s *CheckFabricOrganizationDomainResponse) SetBody(v *CheckFabricOrganizati
 }
 
 type ConfirmFabricConsortiumMemberRequest struct {
-	ConsortiumId *string                                             `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// consortium-aaaaaa-akpcsjjac2jd
+	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	// This parameter is required.
 	Organization []*ConfirmFabricConsortiumMemberRequestOrganization `json:"Organization,omitempty" xml:"Organization,omitempty" type:"Repeated"`
 }
 
@@ -1040,6 +1351,11 @@ func (s *ConfirmFabricConsortiumMemberRequest) SetOrganization(v []*ConfirmFabri
 }
 
 type ConfirmFabricConsortiumMemberRequestOrganization struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// peers-aaaaaa1-1oxw31d046jtl
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 
@@ -1057,10 +1373,22 @@ func (s *ConfirmFabricConsortiumMemberRequestOrganization) SetOrganizationId(v s
 }
 
 type ConfirmFabricConsortiumMemberResponseBody struct {
-	ErrorCode *int32  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 50B3ACF3-CE12-433C-A834-9E8C657A4934
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ConfirmFabricConsortiumMemberResponseBody) String() string {
@@ -1092,9 +1420,9 @@ func (s *ConfirmFabricConsortiumMemberResponseBody) SetSuccess(v bool) *ConfirmF
 }
 
 type ConfirmFabricConsortiumMemberResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ConfirmFabricConsortiumMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConfirmFabricConsortiumMemberResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ConfirmFabricConsortiumMemberResponse) String() string {
@@ -1121,10 +1449,28 @@ func (s *ConfirmFabricConsortiumMemberResponse) SetBody(v *ConfirmFabricConsorti
 }
 
 type CopyAntChainContractProjectRequest struct {
+	// example:
+	//
+	// copy project description
 	ProjectDescription *string `json:"ProjectDescription,omitempty" xml:"ProjectDescription,omitempty"`
-	ProjectId          *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	ProjectVersion     *string `json:"ProjectVersion,omitempty" xml:"ProjectVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2L9VK68g
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// copyproject
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v1.0.1
+	ProjectVersion *string `json:"ProjectVersion,omitempty" xml:"ProjectVersion,omitempty"`
 }
 
 func (s CopyAntChainContractProjectRequest) String() string {
@@ -1156,6 +1502,9 @@ func (s *CopyAntChainContractProjectRequest) SetProjectVersion(v string) *CopyAn
 }
 
 type CopyAntChainContractProjectResponseBody struct {
+	// example:
+	//
+	// 45D67F6F-C723-4AD8-8462-F94EE5FF22E6
 	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *CopyAntChainContractProjectResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -1179,13 +1528,34 @@ func (s *CopyAntChainContractProjectResponseBody) SetResult(v *CopyAntChainContr
 }
 
 type CopyAntChainContractProjectResponseBodyResult struct {
-	ConsortiumId       *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	CreateTime         *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// DV80nJXq
+	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	// example:
+	//
+	// 1563953475248
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// copy project description
 	ProjectDescription *string `json:"ProjectDescription,omitempty" xml:"ProjectDescription,omitempty"`
-	ProjectId          *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	ProjectVersion     *string `json:"ProjectVersion,omitempty" xml:"ProjectVersion,omitempty"`
-	UpdateTime         *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// R6XMEdXe
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// copyproject
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// v1.0.1
+	ProjectVersion *string `json:"ProjectVersion,omitempty" xml:"ProjectVersion,omitempty"`
+	// example:
+	//
+	// 1563953475248
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s CopyAntChainContractProjectResponseBodyResult) String() string {
@@ -1232,9 +1602,9 @@ func (s *CopyAntChainContractProjectResponseBodyResult) SetUpdateTime(v int64) *
 }
 
 type CopyAntChainContractProjectResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CopyAntChainContractProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CopyAntChainContractProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CopyAntChainContractProjectResponse) String() string {
@@ -1261,10 +1631,30 @@ func (s *CopyAntChainContractProjectResponse) SetBody(v *CopyAntChainContractPro
 }
 
 type CreateAntChainAccountRequest struct {
-	Account              *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	AccountPubKey        *string `json:"AccountPubKey,omitempty" xml:"AccountPubKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
+	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AEDC32...
+	AccountPubKey *string `json:"AccountPubKey,omitempty" xml:"AccountPubKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AEDC32...
 	AccountRecoverPubKey *string `json:"AccountRecoverPubKey,omitempty" xml:"AccountRecoverPubKey,omitempty"`
-	AntChainId           *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// bDXK6boZ
+	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
 }
 
 func (s CreateAntChainAccountRequest) String() string {
@@ -1296,6 +1686,9 @@ func (s *CreateAntChainAccountRequest) SetAntChainId(v string) *CreateAntChainAc
 }
 
 type CreateAntChainAccountResponseBody struct {
+	// example:
+	//
+	// 0301F6CB-4FA6-4D03-8668-963623B63D0F
 	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *CreateAntChainAccountResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -1319,7 +1712,13 @@ func (s *CreateAntChainAccountResponseBody) SetResult(v *CreateAntChainAccountRe
 }
 
 type CreateAntChainAccountResponseBodyResult struct {
-	Account    *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// example:
+	//
+	// test
+	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// example:
+	//
+	// bDXK6boZ
 	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
 }
 
@@ -1342,9 +1741,9 @@ func (s *CreateAntChainAccountResponseBodyResult) SetAntChainId(v string) *Creat
 }
 
 type CreateAntChainAccountResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAntChainAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAntChainAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAntChainAccountResponse) String() string {
@@ -1371,9 +1770,29 @@ func (s *CreateAntChainAccountResponse) SetBody(v *CreateAntChainAccountResponse
 }
 
 type CreateAntChainAccountWithKeyPairAutoCreationRequest struct {
-	Account         *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	AntChainId      *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
-	Password        *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// accountname
+	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1q8B5R9p
+	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// password
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ************
 	RecoverPassword *string `json:"RecoverPassword,omitempty" xml:"RecoverPassword,omitempty"`
 }
 
@@ -1406,6 +1825,9 @@ func (s *CreateAntChainAccountWithKeyPairAutoCreationRequest) SetRecoverPassword
 }
 
 type CreateAntChainAccountWithKeyPairAutoCreationResponseBody struct {
+	// example:
+	//
+	// 5F058BB4-3043-4638-86D4-EED84AD1AE54
 	RequestId *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *CreateAntChainAccountWithKeyPairAutoCreationResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -1429,12 +1851,30 @@ func (s *CreateAntChainAccountWithKeyPairAutoCreationResponseBody) SetResult(v *
 }
 
 type CreateAntChainAccountWithKeyPairAutoCreationResponseBodyResult struct {
-	Account                  *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	AccountPrivateKey        *string `json:"AccountPrivateKey,omitempty" xml:"AccountPrivateKey,omitempty"`
-	AccountPublicKey         *string `json:"AccountPublicKey,omitempty" xml:"AccountPublicKey,omitempty"`
+	// example:
+	//
+	// accountname
+	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// example:
+	//
+	// -----BEGIN ENCRYPTED PRIVATE KEY-----\\nM***8=\\n-----END ENCRYPTED PRIVATE KEY-----\\n
+	AccountPrivateKey *string `json:"AccountPrivateKey,omitempty" xml:"AccountPrivateKey,omitempty"`
+	// example:
+	//
+	// b***7
+	AccountPublicKey *string `json:"AccountPublicKey,omitempty" xml:"AccountPublicKey,omitempty"`
+	// example:
+	//
+	// -----BEGIN ENCRYPTED PRIVATE KEY-----\\nM***Io=\\n-----END ENCRYPTED PRIVATE KEY-----\\n
 	AccountRecoverPrivateKey *string `json:"AccountRecoverPrivateKey,omitempty" xml:"AccountRecoverPrivateKey,omitempty"`
-	AccountRecoverPublicKey  *string `json:"AccountRecoverPublicKey,omitempty" xml:"AccountRecoverPublicKey,omitempty"`
-	AntChainId               *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// example:
+	//
+	// d***b
+	AccountRecoverPublicKey *string `json:"AccountRecoverPublicKey,omitempty" xml:"AccountRecoverPublicKey,omitempty"`
+	// example:
+	//
+	// 1q8B5R9p
+	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
 }
 
 func (s CreateAntChainAccountWithKeyPairAutoCreationResponseBodyResult) String() string {
@@ -1476,9 +1916,9 @@ func (s *CreateAntChainAccountWithKeyPairAutoCreationResponseBodyResult) SetAntC
 }
 
 type CreateAntChainAccountWithKeyPairAutoCreationResponse struct {
-	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAntChainAccountWithKeyPairAutoCreationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAntChainAccountWithKeyPairAutoCreationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAntChainAccountWithKeyPairAutoCreationResponse) String() string {
@@ -1506,7 +1946,8 @@ func (s *CreateAntChainAccountWithKeyPairAutoCreationResponse) SetBody(v *Create
 
 type CreateAntChainConsortiumRequest struct {
 	ConsortiumDescription *string `json:"ConsortiumDescription,omitempty" xml:"ConsortiumDescription,omitempty"`
-	ConsortiumName        *string `json:"ConsortiumName,omitempty" xml:"ConsortiumName,omitempty"`
+	// This parameter is required.
+	ConsortiumName *string `json:"ConsortiumName,omitempty" xml:"ConsortiumName,omitempty"`
 }
 
 func (s CreateAntChainConsortiumRequest) String() string {
@@ -1528,6 +1969,9 @@ func (s *CreateAntChainConsortiumRequest) SetConsortiumName(v string) *CreateAnt
 }
 
 type CreateAntChainConsortiumResponseBody struct {
+	// example:
+	//
+	// 87FAFC6B-E7AE-4626-B7F7-AE0B88E612D5
 	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *CreateAntChainConsortiumResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -1551,6 +1995,9 @@ func (s *CreateAntChainConsortiumResponseBody) SetResult(v *CreateAntChainConsor
 }
 
 type CreateAntChainConsortiumResponseBodyResult struct {
+	// example:
+	//
+	// A28nO1ow
 	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
 }
 
@@ -1568,9 +2015,9 @@ func (s *CreateAntChainConsortiumResponseBodyResult) SetConsortiumId(v string) *
 }
 
 type CreateAntChainConsortiumResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAntChainConsortiumResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAntChainConsortiumResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAntChainConsortiumResponse) String() string {
@@ -1597,11 +2044,32 @@ func (s *CreateAntChainConsortiumResponse) SetBody(v *CreateAntChainConsortiumRe
 }
 
 type CreateAntChainContractContentRequest struct {
-	Content         *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	ContentName     *string `json:"ContentName,omitempty" xml:"ContentName,omitempty"`
-	IsDirectory     *bool   `json:"IsDirectory,omitempty" xml:"IsDirectory,omitempty"`
+	// example:
+	//
+	// ""
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// newFile
+	ContentName *string `json:"ContentName,omitempty" xml:"ContentName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	IsDirectory *bool `json:"IsDirectory,omitempty" xml:"IsDirectory,omitempty"`
+	// example:
+	//
+	// R38DYDop
 	ParentContentId *string `json:"ParentContentId,omitempty" xml:"ParentContentId,omitempty"`
-	ProjectId       *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// bDXK1b8Z
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s CreateAntChainContractContentRequest) String() string {
@@ -1638,6 +2106,9 @@ func (s *CreateAntChainContractContentRequest) SetProjectId(v string) *CreateAnt
 }
 
 type CreateAntChainContractContentResponseBody struct {
+	// example:
+	//
+	// C407F102-062A-44B3-BBDC-E3B2718F633D
 	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *CreateAntChainContractContentResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -1661,14 +2132,38 @@ func (s *CreateAntChainContractContentResponseBody) SetResult(v *CreateAntChainC
 }
 
 type CreateAntChainContractContentResponseBodyResult struct {
-	Content         *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	ContentId       *string `json:"ContentId,omitempty" xml:"ContentId,omitempty"`
-	ContentName     *string `json:"ContentName,omitempty" xml:"ContentName,omitempty"`
-	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	IsDirectory     *bool   `json:"IsDirectory,omitempty" xml:"IsDirectory,omitempty"`
+	// example:
+	//
+	// ""
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// R6XMn59e
+	ContentId *string `json:"ContentId,omitempty" xml:"ContentId,omitempty"`
+	// example:
+	//
+	// newFile
+	ContentName *string `json:"ContentName,omitempty" xml:"ContentName,omitempty"`
+	// example:
+	//
+	// 1564024964404
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// false
+	IsDirectory *bool `json:"IsDirectory,omitempty" xml:"IsDirectory,omitempty"`
+	// example:
+	//
+	// R38DYDop
 	ParentContentId *string `json:"ParentContentId,omitempty" xml:"ParentContentId,omitempty"`
-	ProjectId       *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	UpdateTime      *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// bDXK1b8Z
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// 1564024964404
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s CreateAntChainContractContentResponseBodyResult) String() string {
@@ -1720,9 +2215,9 @@ func (s *CreateAntChainContractContentResponseBodyResult) SetUpdateTime(v string
 }
 
 type CreateAntChainContractContentResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAntChainContractContentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAntChainContractContentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAntChainContractContentResponse) String() string {
@@ -1749,10 +2244,28 @@ func (s *CreateAntChainContractContentResponse) SetBody(v *CreateAntChainContrac
 }
 
 type CreateAntChainContractProjectRequest struct {
-	ConsortiumId       *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DV80nJXq
+	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	// example:
+	//
+	// project description
 	ProjectDescription *string `json:"ProjectDescription,omitempty" xml:"ProjectDescription,omitempty"`
-	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	ProjectVersion     *string `json:"ProjectVersion,omitempty" xml:"ProjectVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// projectname
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v1.0.0
+	ProjectVersion *string `json:"ProjectVersion,omitempty" xml:"ProjectVersion,omitempty"`
 }
 
 func (s CreateAntChainContractProjectRequest) String() string {
@@ -1784,6 +2297,9 @@ func (s *CreateAntChainContractProjectRequest) SetProjectVersion(v string) *Crea
 }
 
 type CreateAntChainContractProjectResponseBody struct {
+	// example:
+	//
+	// 4261A4C3-B8B5-4555-AEBC-944C3EAB23DB
 	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *CreateAntChainContractProjectResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -1807,13 +2323,34 @@ func (s *CreateAntChainContractProjectResponseBody) SetResult(v *CreateAntChainC
 }
 
 type CreateAntChainContractProjectResponseBodyResult struct {
-	ConsortiumId       *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	CreateTime         *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// DV80nJXq
+	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	// example:
+	//
+	// 1563951889044
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// project description
 	ProjectDescription *string `json:"ProjectDescription,omitempty" xml:"ProjectDescription,omitempty"`
-	ProjectId          *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	ProjectVersion     *string `json:"ProjectVersion,omitempty" xml:"ProjectVersion,omitempty"`
-	UpdateTime         *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// R38DAbop
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// projectname
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// v1.0.0
+	ProjectVersion *string `json:"ProjectVersion,omitempty" xml:"ProjectVersion,omitempty"`
+	// example:
+	//
+	// 1563951889140
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s CreateAntChainContractProjectResponseBodyResult) String() string {
@@ -1860,9 +2397,9 @@ func (s *CreateAntChainContractProjectResponseBodyResult) SetUpdateTime(v int64)
 }
 
 type CreateAntChainContractProjectResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAntChainContractProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAntChainContractProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAntChainContractProjectResponse) String() string {
@@ -1889,7 +2426,13 @@ func (s *CreateAntChainContractProjectResponse) SetBody(v *CreateAntChainContrac
 }
 
 type CreateAntChainKmsAccountNewRequest struct {
-	Account    *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// example:
+	//
+	// accountname
+	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// example:
+	//
+	// 8bd720bde18c4b37b0f4a1c7834db163
 	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
 }
 
@@ -1912,14 +2455,32 @@ func (s *CreateAntChainKmsAccountNewRequest) SetAntChainId(v string) *CreateAntC
 }
 
 type CreateAntChainKmsAccountNewResponseBody struct {
-	Code           *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *string                                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result         *CreateAntChainKmsAccountNewResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	ResultCode     *string                                        `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	ResultMessage  *string                                        `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
-	Success        *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 063C2175-C755-5C85-9C42-5EB432B67D9B
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *CreateAntChainKmsAccountNewResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// example:
+	//
+	// OK
+	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateAntChainKmsAccountNewResponseBody) String() string {
@@ -1971,8 +2532,14 @@ func (s *CreateAntChainKmsAccountNewResponseBody) SetSuccess(v bool) *CreateAntC
 }
 
 type CreateAntChainKmsAccountNewResponseBodyResult struct {
+	// example:
+	//
+	// 1234565181228596659400e4-3bd7-4a83-b9af-d12654bb5779
 	MyKmsKeyId *string `json:"MyKmsKeyId,omitempty" xml:"MyKmsKeyId,omitempty"`
-	PubKey     *string `json:"PubKey,omitempty" xml:"PubKey,omitempty"`
+	// example:
+	//
+	// d408f5c5c3c118b23646f4059c81fbe5a1b067a12f96f4a7a5e09eae10c81288cdf64aa887af89738b9ec5d16bc124594bf820a4afa24fe0de9d8dcfd1d99500
+	PubKey *string `json:"PubKey,omitempty" xml:"PubKey,omitempty"`
 }
 
 func (s CreateAntChainKmsAccountNewResponseBodyResult) String() string {
@@ -1994,9 +2561,9 @@ func (s *CreateAntChainKmsAccountNewResponseBodyResult) SetPubKey(v string) *Cre
 }
 
 type CreateAntChainKmsAccountNewResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAntChainKmsAccountNewResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAntChainKmsAccountNewResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAntChainKmsAccountNewResponse) String() string {
@@ -2023,13 +2590,44 @@ func (s *CreateAntChainKmsAccountNewResponse) SetBody(v *CreateAntChainKmsAccoun
 }
 
 type CreateFabricChaincodeRequest struct {
-	ChannelId      *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	ConsortiumId   *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	EndorsePolicy  *string `json:"EndorsePolicy,omitempty" xml:"EndorsePolicy,omitempty"`
-	Location       *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chan-first-channel-1w55v3u39x2xz
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// consortium-aaaaaa-akpcsjjac2jd
+	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	// example:
+	//
+	// OR (\\"aaaaaa1MSP.peer\\")
+	EndorsePolicy *string `json:"EndorsePolicy,omitempty" xml:"EndorsePolicy,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// peers-aaaaaa1-1oxw31d046jtl
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	OssBucket      *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	OssUrl         *string `json:"OssUrl,omitempty" xml:"OssUrl,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://chaincode.oss-cn-beijing.aliyuncs.com
+	OssBucket *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aaaaaa1/a0cf8729-7d47-44c9-9ed5-6d2fdfc8dc2c/sacc.cc
+	OssUrl *string `json:"OssUrl,omitempty" xml:"OssUrl,omitempty"`
 }
 
 func (s CreateFabricChaincodeRequest) String() string {
@@ -2076,10 +2674,19 @@ func (s *CreateFabricChaincodeRequest) SetOssUrl(v string) *CreateFabricChaincod
 }
 
 type CreateFabricChaincodeResponseBody struct {
-	ErrorCode *int32                                   `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// CD264CC8-B892-4CDC-BD31-7D179EE6E396
 	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *CreateFabricChaincodeResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateFabricChaincodeResponseBody) String() string {
@@ -2111,22 +2718,70 @@ func (s *CreateFabricChaincodeResponseBody) SetSuccess(v bool) *CreateFabricChai
 }
 
 type CreateFabricChaincodeResponseBodyResult struct {
-	ChaincodeId      *string `json:"ChaincodeId,omitempty" xml:"ChaincodeId,omitempty"`
-	ChaincodeName    *string `json:"ChaincodeName,omitempty" xml:"ChaincodeName,omitempty"`
+	// example:
+	//
+	// code-sacc-1pr09q7jmo0np
+	ChaincodeId *string `json:"ChaincodeId,omitempty" xml:"ChaincodeId,omitempty"`
+	// example:
+	//
+	// mychaincode
+	ChaincodeName *string `json:"ChaincodeName,omitempty" xml:"ChaincodeName,omitempty"`
+	// example:
+	//
+	// 1.0
 	ChaincodeVersion *string `json:"ChaincodeVersion,omitempty" xml:"ChaincodeVersion,omitempty"`
-	ChannelName      *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	ConsortiumId     *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	CreateTime       *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeployTime       *string `json:"DeployTime,omitempty" xml:"DeployTime,omitempty"`
-	EndorsePolicy    *string `json:"EndorsePolicy,omitempty" xml:"EndorsePolicy,omitempty"`
-	Input            *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	Install          *bool   `json:"Install,omitempty" xml:"Install,omitempty"`
-	Message          *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Path             *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	ProviderId       *string `json:"ProviderId,omitempty" xml:"ProviderId,omitempty"`
-	ProviderName     *string `json:"ProviderName,omitempty" xml:"ProviderName,omitempty"`
-	State            *string `json:"State,omitempty" xml:"State,omitempty"`
-	Type             *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// first-channel
+	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// example:
+	//
+	// consortium-aaaaaa-akpcsjjac2jd
+	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	// example:
+	//
+	// 1544766801000
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1544766801000
+	DeployTime *string `json:"DeployTime,omitempty" xml:"DeployTime,omitempty"`
+	// example:
+	//
+	// OR (\\"aaaaaa1MSP.peer\\")
+	EndorsePolicy *string `json:"EndorsePolicy,omitempty" xml:"EndorsePolicy,omitempty"`
+	// example:
+	//
+	// string
+	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// example:
+	//
+	// true
+	Install *bool `json:"Install,omitempty" xml:"Install,omitempty"`
+	// example:
+	//
+	// string
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// go-sdk-demo/chaincode/src
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// peers-aaaaaa1-1oxw31d046jtl
+	ProviderId *string `json:"ProviderId,omitempty" xml:"ProviderId,omitempty"`
+	// example:
+	//
+	// peers-aaaaaa1-1oxw31d046jtl
+	ProviderName *string `json:"ProviderName,omitempty" xml:"ProviderName,omitempty"`
+	// example:
+	//
+	// Instantiatable
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// 1
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateFabricChaincodeResponseBodyResult) String() string {
@@ -2218,9 +2873,9 @@ func (s *CreateFabricChaincodeResponseBodyResult) SetType(v int32) *CreateFabric
 }
 
 type CreateFabricChaincodeResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateFabricChaincodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateFabricChaincodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateFabricChaincodeResponse) String() string {
@@ -2247,9 +2902,22 @@ func (s *CreateFabricChaincodeResponse) SetBody(v *CreateFabricChaincodeResponse
 }
 
 type CreateFabricChaincodePackageRequest struct {
-	Location       *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// peers-aaaaaa2-1eqnj5o5w9dt3
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	OssUrl         *string `json:"OssUrl,omitempty" xml:"OssUrl,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hi003/7efbe860-1a40-42c9-9e6b-0bc08d7ee3a4/cmcc.tar.gz
+	OssUrl *string `json:"OssUrl,omitempty" xml:"OssUrl,omitempty"`
 }
 
 func (s CreateFabricChaincodePackageRequest) String() string {
@@ -2276,11 +2944,23 @@ func (s *CreateFabricChaincodePackageRequest) SetOssUrl(v string) *CreateFabricC
 }
 
 type CreateFabricChaincodePackageResponseBody struct {
-	ErrorCode *int32            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string           `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *ChaincodePackage `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateFabricChaincodePackageResponseBody) String() string {
@@ -2317,9 +2997,9 @@ func (s *CreateFabricChaincodePackageResponseBody) SetSuccess(v bool) *CreateFab
 }
 
 type CreateFabricChaincodePackageResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateFabricChaincodePackageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateFabricChaincodePackageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateFabricChaincodePackageResponse) String() string {
@@ -2346,12 +3026,32 @@ func (s *CreateFabricChaincodePackageResponse) SetBody(v *CreateFabricChaincodeP
 }
 
 type CreateFabricChannelRequest struct {
-	BatchTimeout      *int32                                    `json:"BatchTimeout,omitempty" xml:"BatchTimeout,omitempty"`
-	ChannelName       *string                                   `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	ConsortiumId      *string                                   `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	MaxMessageCount   *int32                                    `json:"MaxMessageCount,omitempty" xml:"MaxMessageCount,omitempty"`
-	Organization      []*CreateFabricChannelRequestOrganization `json:"Organization,omitempty" xml:"Organization,omitempty" type:"Repeated"`
-	PreferredMaxBytes *int32                                    `json:"PreferredMaxBytes,omitempty" xml:"PreferredMaxBytes,omitempty"`
+	// example:
+	//
+	// 2
+	BatchTimeout *int32 `json:"BatchTimeout,omitempty" xml:"BatchTimeout,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// channelx
+	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// consortium-aaaaaa-akpcsjjac2jd
+	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	// example:
+	//
+	// 50
+	MaxMessageCount *int32 `json:"MaxMessageCount,omitempty" xml:"MaxMessageCount,omitempty"`
+	// This parameter is required.
+	Organization []*CreateFabricChannelRequestOrganization `json:"Organization,omitempty" xml:"Organization,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 12
+	PreferredMaxBytes *int32 `json:"PreferredMaxBytes,omitempty" xml:"PreferredMaxBytes,omitempty"`
 }
 
 func (s CreateFabricChannelRequest) String() string {
@@ -2393,6 +3093,9 @@ func (s *CreateFabricChannelRequest) SetPreferredMaxBytes(v int32) *CreateFabric
 }
 
 type CreateFabricChannelRequestOrganization struct {
+	// example:
+	//
+	// peers-aaaaaa1-1oxw31d046jtl
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -2410,10 +3113,19 @@ func (s *CreateFabricChannelRequestOrganization) SetId(v string) *CreateFabricCh
 }
 
 type CreateFabricChannelResponseBody struct {
-	ErrorCode *int32                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *CreateFabricChannelResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateFabricChannelResponseBody) String() string {
@@ -2445,24 +3157,78 @@ func (s *CreateFabricChannelResponseBody) SetSuccess(v bool) *CreateFabricChanne
 }
 
 type CreateFabricChannelResponseBodyResult struct {
-	BatchTimeout      *int32  `json:"BatchTimeout,omitempty" xml:"BatchTimeout,omitempty"`
-	BlockCount        *int32  `json:"BlockCount,omitempty" xml:"BlockCount,omitempty"`
-	ChaincodeCount    *int32  `json:"ChaincodeCount,omitempty" xml:"ChaincodeCount,omitempty"`
-	ChannelId         *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	ChannelName       *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	ConsortiumId      *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	ConsortiumName    *string `json:"ConsortiumName,omitempty" xml:"ConsortiumName,omitempty"`
-	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	MaxMessageCount   *int32  `json:"MaxMessageCount,omitempty" xml:"MaxMessageCount,omitempty"`
-	MemberCount       *int32  `json:"MemberCount,omitempty" xml:"MemberCount,omitempty"`
-	OwnerBid          *string `json:"OwnerBid,omitempty" xml:"OwnerBid,omitempty"`
-	OwnerName         *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	OwnerUid          *int64  `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
-	PreferredMaxBytes *int32  `json:"PreferredMaxBytes,omitempty" xml:"PreferredMaxBytes,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	State             *string `json:"State,omitempty" xml:"State,omitempty"`
-	SupportConfig     *bool   `json:"SupportConfig,omitempty" xml:"SupportConfig,omitempty"`
-	UpdateTime        *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 2
+	BatchTimeout *int32 `json:"BatchTimeout,omitempty" xml:"BatchTimeout,omitempty"`
+	// example:
+	//
+	// 2
+	BlockCount *int32 `json:"BlockCount,omitempty" xml:"BlockCount,omitempty"`
+	// example:
+	//
+	// 2
+	ChaincodeCount *int32 `json:"ChaincodeCount,omitempty" xml:"ChaincodeCount,omitempty"`
+	// example:
+	//
+	// chan-channelx-1l1hmckuuisxo
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// example:
+	//
+	// channelx
+	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// example:
+	//
+	// consortium-aaaaaa-akpcsjjac2jd
+	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	// example:
+	//
+	// aaaaaa
+	ConsortiumName *string `json:"ConsortiumName,omitempty" xml:"ConsortiumName,omitempty"`
+	// example:
+	//
+	// 1544768139624
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 50
+	MaxMessageCount *int32 `json:"MaxMessageCount,omitempty" xml:"MaxMessageCount,omitempty"`
+	// example:
+	//
+	// 1
+	MemberCount *int32 `json:"MemberCount,omitempty" xml:"MemberCount,omitempty"`
+	// example:
+	//
+	// 26842
+	OwnerBid *string `json:"OwnerBid,omitempty" xml:"OwnerBid,omitempty"`
+	// example:
+	//
+	// uid-
+	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// example:
+	//
+	// 1234
+	OwnerUid *int64 `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
+	// example:
+	//
+	// 12
+	PreferredMaxBytes *int32 `json:"PreferredMaxBytes,omitempty" xml:"PreferredMaxBytes,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Running
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// true
+	SupportConfig *bool `json:"SupportConfig,omitempty" xml:"SupportConfig,omitempty"`
+	// example:
+	//
+	// 1544768139624
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s CreateFabricChannelResponseBodyResult) String() string {
@@ -2564,9 +3330,9 @@ func (s *CreateFabricChannelResponseBodyResult) SetUpdateTime(v string) *CreateF
 }
 
 type CreateFabricChannelResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateFabricChannelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateFabricChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateFabricChannelResponse) String() string {
@@ -2593,7 +3359,13 @@ func (s *CreateFabricChannelResponse) SetBody(v *CreateFabricChannelResponseBody
 }
 
 type CreateFabricChannelMemberRequest struct {
-	ChannelId    *string                                         `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chan-channelx-1l1hmckuuisxo
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// This parameter is required.
 	Organization []*CreateFabricChannelMemberRequestOrganization `json:"Organization,omitempty" xml:"Organization,omitempty" type:"Repeated"`
 }
 
@@ -2616,6 +3388,11 @@ func (s *CreateFabricChannelMemberRequest) SetOrganization(v []*CreateFabricChan
 }
 
 type CreateFabricChannelMemberRequestOrganization struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// peers-aaaaaa1-1oxw31d046jtl
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 
@@ -2633,10 +3410,22 @@ func (s *CreateFabricChannelMemberRequestOrganization) SetOrganizationId(v strin
 }
 
 type CreateFabricChannelMemberResponseBody struct {
-	ErrorCode *int32  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateFabricChannelMemberResponseBody) String() string {
@@ -2668,9 +3457,9 @@ func (s *CreateFabricChannelMemberResponseBody) SetSuccess(v bool) *CreateFabric
 }
 
 type CreateFabricChannelMemberResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateFabricChannelMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateFabricChannelMemberResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateFabricChannelMemberResponse) String() string {
@@ -2697,19 +3486,71 @@ func (s *CreateFabricChannelMemberResponse) SetBody(v *CreateFabricChannelMember
 }
 
 type CreateFabricConsortiumRequest struct {
-	ChannelPolicy         *string                                      `json:"ChannelPolicy,omitempty" xml:"ChannelPolicy,omitempty"`
-	ConsortiumDescription *string                                      `json:"ConsortiumDescription,omitempty" xml:"ConsortiumDescription,omitempty"`
-	ConsortiumName        *string                                      `json:"ConsortiumName,omitempty" xml:"ConsortiumName,omitempty"`
-	Domain                *string                                      `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Location              *string                                      `json:"Location,omitempty" xml:"Location,omitempty"`
-	OrdererType           *string                                      `json:"OrdererType,omitempty" xml:"OrdererType,omitempty"`
-	OrderersCount         *int32                                       `json:"OrderersCount,omitempty" xml:"OrderersCount,omitempty"`
-	Organization          []*CreateFabricConsortiumRequestOrganization `json:"Organization,omitempty" xml:"Organization,omitempty" type:"Repeated"`
-	PaymentDuration       *int32                                       `json:"PaymentDuration,omitempty" xml:"PaymentDuration,omitempty"`
-	PaymentDurationUnit   *string                                      `json:"PaymentDurationUnit,omitempty" xml:"PaymentDurationUnit,omitempty"`
-	PeersCount            *int32                                       `json:"PeersCount,omitempty" xml:"PeersCount,omitempty"`
-	SpecName              *string                                      `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
-	ZoneId                *string                                      `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// all
+	ChannelPolicy *string `json:"ChannelPolicy,omitempty" xml:"ChannelPolicy,omitempty"`
+	// example:
+	//
+	// some
+	ConsortiumDescription *string `json:"ConsortiumDescription,omitempty" xml:"ConsortiumDescription,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aaaaa
+	ConsortiumName *string `json:"ConsortiumName,omitempty" xml:"ConsortiumName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// helloworld
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// etcdraft
+	OrdererType *string `json:"OrdererType,omitempty" xml:"OrdererType,omitempty"`
+	// example:
+	//
+	// 2
+	OrderersCount *int32                                       `json:"OrderersCount,omitempty" xml:"OrderersCount,omitempty"`
+	Organization  []*CreateFabricConsortiumRequestOrganization `json:"Organization,omitempty" xml:"Organization,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	PaymentDuration *int32 `json:"PaymentDuration,omitempty" xml:"PaymentDuration,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// month
+	PaymentDurationUnit *string `json:"PaymentDurationUnit,omitempty" xml:"PaymentDurationUnit,omitempty"`
+	// example:
+	//
+	// 2
+	PeersCount *int32 `json:"PeersCount,omitempty" xml:"PeersCount,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// basic
+	SpecName *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
+	// example:
+	//
+	// random
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateFabricConsortiumRequest) String() string {
@@ -2786,6 +3627,9 @@ func (s *CreateFabricConsortiumRequest) SetZoneId(v string) *CreateFabricConsort
 }
 
 type CreateFabricConsortiumRequestOrganization struct {
+	// example:
+	//
+	// peers-yidio-1tuigx42b1goc
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 
@@ -2803,10 +3647,19 @@ func (s *CreateFabricConsortiumRequestOrganization) SetOrganizationId(v string) 
 }
 
 type CreateFabricConsortiumResponseBody struct {
-	ErrorCode *int32                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *CreateFabricConsortiumResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateFabricConsortiumResponseBody) String() string {
@@ -2838,24 +3691,78 @@ func (s *CreateFabricConsortiumResponseBody) SetSuccess(v bool) *CreateFabricCon
 }
 
 type CreateFabricConsortiumResponseBodyResult struct {
-	ChannelCount   *int32  `json:"ChannelCount,omitempty" xml:"ChannelCount,omitempty"`
-	ChannelPolicy  *string `json:"ChannelPolicy,omitempty" xml:"ChannelPolicy,omitempty"`
-	ClusterState   *string `json:"ClusterState,omitempty" xml:"ClusterState,omitempty"`
-	CodeName       *string `json:"CodeName,omitempty" xml:"CodeName,omitempty"`
-	ConsortiumId   *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	// example:
+	//
+	// 0
+	ChannelCount *int32 `json:"ChannelCount,omitempty" xml:"ChannelCount,omitempty"`
+	// example:
+	//
+	// Any
+	ChannelPolicy *string `json:"ChannelPolicy,omitempty" xml:"ChannelPolicy,omitempty"`
+	// example:
+	//
+	// Pending
+	ClusterState *string `json:"ClusterState,omitempty" xml:"ClusterState,omitempty"`
+	// example:
+	//
+	// lianmenyumingyi
+	CodeName *string `json:"CodeName,omitempty" xml:"CodeName,omitempty"`
+	// example:
+	//
+	// consortium-lianmenyumingyi-hc5d1bwlulg7
+	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	// example:
+	//
+	// myconsortium
 	ConsortiumName *string `json:"ConsortiumName,omitempty" xml:"ConsortiumName,omitempty"`
-	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Domain         *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	MemberCount    *int32  `json:"MemberCount,omitempty" xml:"MemberCount,omitempty"`
-	OrdererCount   *int32  `json:"OrdererCount,omitempty" xml:"OrdererCount,omitempty"`
-	OrdererType    *string `json:"OrdererType,omitempty" xml:"OrdererType,omitempty"`
-	OwnerBid       *string `json:"OwnerBid,omitempty" xml:"OwnerBid,omitempty"`
-	OwnerUid       *int64  `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ServiceState   *string `json:"ServiceState,omitempty" xml:"ServiceState,omitempty"`
-	SpecName       *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
-	ZoneId         *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// 1544086901984
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// string
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// hello
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// 2
+	MemberCount *int32 `json:"MemberCount,omitempty" xml:"MemberCount,omitempty"`
+	// example:
+	//
+	// 1
+	OrdererCount *int32 `json:"OrdererCount,omitempty" xml:"OrdererCount,omitempty"`
+	// example:
+	//
+	// Kafka
+	OrdererType *string `json:"OrdererType,omitempty" xml:"OrdererType,omitempty"`
+	// example:
+	//
+	// 26842
+	OwnerBid *string `json:"OwnerBid,omitempty" xml:"OwnerBid,omitempty"`
+	// example:
+	//
+	// 1019556
+	OwnerUid *int64 `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// Pending
+	ServiceState *string `json:"ServiceState,omitempty" xml:"ServiceState,omitempty"`
+	// example:
+	//
+	// basic
+	SpecName *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateFabricConsortiumResponseBodyResult) String() string {
@@ -2957,9 +3864,9 @@ func (s *CreateFabricConsortiumResponseBodyResult) SetZoneId(v string) *CreateFa
 }
 
 type CreateFabricConsortiumResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateFabricConsortiumResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateFabricConsortiumResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateFabricConsortiumResponse) String() string {
@@ -2986,8 +3893,19 @@ func (s *CreateFabricConsortiumResponse) SetBody(v *CreateFabricConsortiumRespon
 }
 
 type CreateFabricConsortiumMemberRequest struct {
-	Code         *string                                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	ConsortiumId *string                                            `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// consortium-aaaaaa-akpcsjjac2jd
+	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	// This parameter is required.
 	Organization []*CreateFabricConsortiumMemberRequestOrganization `json:"Organization,omitempty" xml:"Organization,omitempty" type:"Repeated"`
 }
 
@@ -3015,6 +3933,9 @@ func (s *CreateFabricConsortiumMemberRequest) SetOrganization(v []*CreateFabricC
 }
 
 type CreateFabricConsortiumMemberRequestOrganization struct {
+	// example:
+	//
+	// peers-aaaaaa1-1oxw31d046jtl
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 
@@ -3032,10 +3953,22 @@ func (s *CreateFabricConsortiumMemberRequestOrganization) SetOrganizationId(v st
 }
 
 type CreateFabricConsortiumMemberResponseBody struct {
-	ErrorCode *int32  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateFabricConsortiumMemberResponseBody) String() string {
@@ -3067,9 +4000,9 @@ func (s *CreateFabricConsortiumMemberResponseBody) SetSuccess(v bool) *CreateFab
 }
 
 type CreateFabricConsortiumMemberResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateFabricConsortiumMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateFabricConsortiumMemberResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateFabricConsortiumMemberResponse) String() string {
@@ -3096,14 +4029,50 @@ func (s *CreateFabricConsortiumMemberResponse) SetBody(v *CreateFabricConsortium
 }
 
 type CreateFabricOrganizationRequest struct {
-	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Domain              *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Location            *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	OrganizationName    *string `json:"OrganizationName,omitempty" xml:"OrganizationName,omitempty"`
-	PaymentDuration     *int32  `json:"PaymentDuration,omitempty" xml:"PaymentDuration,omitempty"`
+	// example:
+	//
+	// description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// domain
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// name
+	OrganizationName *string `json:"OrganizationName,omitempty" xml:"OrganizationName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12
+	PaymentDuration *int32 `json:"PaymentDuration,omitempty" xml:"PaymentDuration,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
 	PaymentDurationUnit *string `json:"PaymentDurationUnit,omitempty" xml:"PaymentDurationUnit,omitempty"`
-	PeersCount          *int32  `json:"PeersCount,omitempty" xml:"PeersCount,omitempty"`
-	SpecName            *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
+	// example:
+	//
+	// 2
+	PeersCount *int32 `json:"PeersCount,omitempty" xml:"PeersCount,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// basic
+	SpecName *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
 }
 
 func (s CreateFabricOrganizationRequest) String() string {
@@ -3155,10 +4124,19 @@ func (s *CreateFabricOrganizationRequest) SetSpecName(v string) *CreateFabricOrg
 }
 
 type CreateFabricOrganizationResponseBody struct {
-	ErrorCode *int32                                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *CreateFabricOrganizationResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateFabricOrganizationResponseBody) String() string {
@@ -3190,24 +4168,78 @@ func (s *CreateFabricOrganizationResponseBody) SetSuccess(v bool) *CreateFabricO
 }
 
 type CreateFabricOrganizationResponseBodyResult struct {
-	ClusterState            *string `json:"ClusterState,omitempty" xml:"ClusterState,omitempty"`
-	CodeName                *string `json:"CodeName,omitempty" xml:"CodeName,omitempty"`
-	ConsortiumCount         *int32  `json:"ConsortiumCount,omitempty" xml:"ConsortiumCount,omitempty"`
-	CreateTime              *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Domain                  *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// Pending
+	ClusterState *string `json:"ClusterState,omitempty" xml:"ClusterState,omitempty"`
+	// example:
+	//
+	// name
+	CodeName *string `json:"CodeName,omitempty" xml:"CodeName,omitempty"`
+	// example:
+	//
+	// 2
+	ConsortiumCount *int32 `json:"ConsortiumCount,omitempty" xml:"ConsortiumCount,omitempty"`
+	// example:
+	//
+	// 1544086901984
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// domain
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// desc
 	OrganizationDescription *string `json:"OrganizationDescription,omitempty" xml:"OrganizationDescription,omitempty"`
-	OrganizationId          *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	OrganizationName        *string `json:"OrganizationName,omitempty" xml:"OrganizationName,omitempty"`
-	OwnerBid                *string `json:"OwnerBid,omitempty" xml:"OwnerBid,omitempty"`
-	OwnerName               *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	OwnerUid                *int64  `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
-	PeerCount               *int32  `json:"PeerCount,omitempty" xml:"PeerCount,omitempty"`
-	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId               *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ServiceState            *string `json:"ServiceState,omitempty" xml:"ServiceState,omitempty"`
-	SpecName                *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
-	UserCount               *int32  `json:"UserCount,omitempty" xml:"UserCount,omitempty"`
-	ZoneId                  *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// zuzhiyumingyi-hc5d1bwlulg7
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	// example:
+	//
+	// zuzhiyumingyi
+	OrganizationName *string `json:"OrganizationName,omitempty" xml:"OrganizationName,omitempty"`
+	// example:
+	//
+	// 26842
+	OwnerBid *string `json:"OwnerBid,omitempty" xml:"OwnerBid,omitempty"`
+	// example:
+	//
+	// name
+	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// example:
+	//
+	// 1019556
+	OwnerUid *int64 `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
+	// example:
+	//
+	// 3
+	PeerCount *int32 `json:"PeerCount,omitempty" xml:"PeerCount,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Pending
+	ServiceState *string `json:"ServiceState,omitempty" xml:"ServiceState,omitempty"`
+	// example:
+	//
+	// baisc
+	SpecName *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
+	// example:
+	//
+	// 2
+	UserCount *int32 `json:"UserCount,omitempty" xml:"UserCount,omitempty"`
+	// example:
+	//
+	// zone
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateFabricOrganizationResponseBodyResult) String() string {
@@ -3309,9 +4341,9 @@ func (s *CreateFabricOrganizationResponseBodyResult) SetZoneId(v string) *Create
 }
 
 type CreateFabricOrganizationResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateFabricOrganizationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateFabricOrganizationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateFabricOrganizationResponse) String() string {
@@ -3338,10 +4370,28 @@ func (s *CreateFabricOrganizationResponse) SetBody(v *CreateFabricOrganizationRe
 }
 
 type CreateFabricOrganizationUserRequest struct {
-	Attrs          *string `json:"Attrs,omitempty" xml:"Attrs,omitempty"`
+	// example:
+	//
+	// foo=foo1,bar=bar1
+	Attrs *string `json:"Attrs,omitempty" xml:"Attrs,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// peers-yidio-1tuigx42b****
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	Password       *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	Username       *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// password
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// username
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s CreateFabricOrganizationUserRequest) String() string {
@@ -3373,10 +4423,19 @@ func (s *CreateFabricOrganizationUserRequest) SetUsername(v string) *CreateFabri
 }
 
 type CreateFabricOrganizationUserResponseBody struct {
-	ErrorCode *int32                                          `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *CreateFabricOrganizationUserResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateFabricOrganizationUserResponseBody) String() string {
@@ -3408,12 +4467,30 @@ func (s *CreateFabricOrganizationUserResponseBody) SetSuccess(v bool) *CreateFab
 }
 
 type CreateFabricOrganizationUserResponseBodyResult struct {
-	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ExpireTime     *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	Fullname       *string `json:"Fullname,omitempty" xml:"Fullname,omitempty"`
+	// example:
+	//
+	// 1544086901984
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1544411108000
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// fullname
+	Fullname *string `json:"Fullname,omitempty" xml:"Fullname,omitempty"`
+	// example:
+	//
+	// peers-yidio-1tuigx42b****
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	Password       *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	Username       *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// example:
+	//
+	// password
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// example:
+	//
+	// username
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s CreateFabricOrganizationUserResponseBodyResult) String() string {
@@ -3455,9 +4532,9 @@ func (s *CreateFabricOrganizationUserResponseBodyResult) SetUsername(v string) *
 }
 
 type CreateFabricOrganizationUserResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateFabricOrganizationUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateFabricOrganizationUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateFabricOrganizationUserResponse) String() string {
@@ -3484,6 +4561,11 @@ func (s *CreateFabricOrganizationUserResponse) SetBody(v *CreateFabricOrganizati
 }
 
 type DeleteAntChainConsortiumRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// q0oWq92P
 	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
 }
 
@@ -3501,8 +4583,14 @@ func (s *DeleteAntChainConsortiumRequest) SetConsortiumId(v string) *DeleteAntCh
 }
 
 type DeleteAntChainConsortiumResponseBody struct {
+	// example:
+	//
+	// F3685787-9F2F-4D60-ADD6-07A5179552CA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// success
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s DeleteAntChainConsortiumResponseBody) String() string {
@@ -3524,9 +4612,9 @@ func (s *DeleteAntChainConsortiumResponseBody) SetResult(v string) *DeleteAntCha
 }
 
 type DeleteAntChainConsortiumResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAntChainConsortiumResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAntChainConsortiumResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteAntChainConsortiumResponse) String() string {
@@ -3553,6 +4641,11 @@ func (s *DeleteAntChainConsortiumResponse) SetBody(v *DeleteAntChainConsortiumRe
 }
 
 type DeleteAntChainContractContentRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// GKX7KZX0
 	ContentId *string `json:"ContentId,omitempty" xml:"ContentId,omitempty"`
 }
 
@@ -3570,8 +4663,14 @@ func (s *DeleteAntChainContractContentRequest) SetContentId(v string) *DeleteAnt
 }
 
 type DeleteAntChainContractContentResponseBody struct {
+	// example:
+	//
+	// 7E54F588-39DE-446F-9A16-B9BB0B05DF44
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// success
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s DeleteAntChainContractContentResponseBody) String() string {
@@ -3593,9 +4692,9 @@ func (s *DeleteAntChainContractContentResponseBody) SetResult(v string) *DeleteA
 }
 
 type DeleteAntChainContractContentResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAntChainContractContentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAntChainContractContentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteAntChainContractContentResponse) String() string {
@@ -3622,6 +4721,11 @@ func (s *DeleteAntChainContractContentResponse) SetBody(v *DeleteAntChainContrac
 }
 
 type DeleteAntChainContractProjectRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AVXeKq8R
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
@@ -3639,8 +4743,14 @@ func (s *DeleteAntChainContractProjectRequest) SetProjectId(v string) *DeleteAnt
 }
 
 type DeleteAntChainContractProjectResponseBody struct {
+	// example:
+	//
+	// 4FAC5F05-FDF0-4599-9522-0120525F0145
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// success
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s DeleteAntChainContractProjectResponseBody) String() string {
@@ -3662,9 +4772,9 @@ func (s *DeleteAntChainContractProjectResponseBody) SetResult(v string) *DeleteA
 }
 
 type DeleteAntChainContractProjectResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAntChainContractProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAntChainContractProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteAntChainContractProjectResponse) String() string {
@@ -3691,8 +4801,18 @@ func (s *DeleteAntChainContractProjectResponse) SetBody(v *DeleteAntChainContrac
 }
 
 type DeleteAntChainMiniAppQRCodeAuthorizedUserRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// bDXK6boZ
 	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
-	Phone      *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1380013****
+	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
 }
 
 func (s DeleteAntChainMiniAppQRCodeAuthorizedUserRequest) String() string {
@@ -3714,8 +4834,14 @@ func (s *DeleteAntChainMiniAppQRCodeAuthorizedUserRequest) SetPhone(v string) *D
 }
 
 type DeleteAntChainMiniAppQRCodeAuthorizedUserResponseBody struct {
+	// example:
+	//
+	// D68D66B6-1964-4073-8714-B49F5EF1AEFC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// success
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s DeleteAntChainMiniAppQRCodeAuthorizedUserResponseBody) String() string {
@@ -3737,9 +4863,9 @@ func (s *DeleteAntChainMiniAppQRCodeAuthorizedUserResponseBody) SetResult(v stri
 }
 
 type DeleteAntChainMiniAppQRCodeAuthorizedUserResponse struct {
-	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAntChainMiniAppQRCodeAuthorizedUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAntChainMiniAppQRCodeAuthorizedUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteAntChainMiniAppQRCodeAuthorizedUserResponse) String() string {
@@ -3766,6 +4892,11 @@ func (s *DeleteAntChainMiniAppQRCodeAuthorizedUserResponse) SetBody(v *DeleteAnt
 }
 
 type DeleteFabricChaincodeRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// code-sacc-1pr09q7jm****
 	ChaincodeId *string `json:"ChaincodeId,omitempty" xml:"ChaincodeId,omitempty"`
 }
 
@@ -3783,9 +4914,18 @@ func (s *DeleteFabricChaincodeRequest) SetChaincodeId(v string) *DeleteFabricCha
 }
 
 type DeleteFabricChaincodeResponseBody struct {
-	ErrorCode *int32  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteFabricChaincodeResponseBody) String() string {
@@ -3812,9 +4952,9 @@ func (s *DeleteFabricChaincodeResponseBody) SetSuccess(v bool) *DeleteFabricChai
 }
 
 type DeleteFabricChaincodeResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteFabricChaincodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteFabricChaincodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteFabricChaincodeResponse) String() string {
@@ -3841,9 +4981,22 @@ func (s *DeleteFabricChaincodeResponse) SetBody(v *DeleteFabricChaincodeResponse
 }
 
 type DescribeAntChainAccountsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pYogqb9v
 	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeAntChainAccountsRequest) String() string {
@@ -3870,6 +5023,9 @@ func (s *DescribeAntChainAccountsRequest) SetPageSize(v int32) *DescribeAntChain
 }
 
 type DescribeAntChainAccountsResponseBody struct {
+	// example:
+	//
+	// 1692940F-87C5-468F-8188-6C95FC05BBA5
 	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *DescribeAntChainAccountsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -3916,11 +5072,23 @@ func (s *DescribeAntChainAccountsResponseBodyResult) SetPagination(v *DescribeAn
 }
 
 type DescribeAntChainAccountsResponseBodyResultAccounts struct {
-	Account            *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	AccountPublicKey   *string `json:"AccountPublicKey,omitempty" xml:"AccountPublicKey,omitempty"`
+	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// example:
+	//
+	// de44334f1094cbd37e952ef691a837f36eab2e9afdf6bed9bf523c2dde40ff7b1ff526ec11b510d320f536685f75dd90f67fda8d41a69738a76a77c27b1373fb
+	AccountPublicKey *string `json:"AccountPublicKey,omitempty" xml:"AccountPublicKey,omitempty"`
+	// example:
+	//
+	// ee54a9c4511345f2de05889540eedb8dfed7b57ab0647c5894e4333596bc2ecef07a0469331d016ad9978b39367a0a5c217ef92ffffcbd6716db6667353891a9
 	AccountRecoveryKey *string `json:"AccountRecoveryKey,omitempty" xml:"AccountRecoveryKey,omitempty"`
-	AccountStatus      *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
-	AntChainId         *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// example:
+	//
+	// NORMAL
+	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
+	// example:
+	//
+	// pYogqb9v
+	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
 }
 
 func (s DescribeAntChainAccountsResponseBodyResultAccounts) String() string {
@@ -3957,8 +5125,17 @@ func (s *DescribeAntChainAccountsResponseBodyResultAccounts) SetAntChainId(v str
 }
 
 type DescribeAntChainAccountsResponseBodyResultPagination struct {
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -3986,9 +5163,9 @@ func (s *DescribeAntChainAccountsResponseBodyResultPagination) SetTotalCount(v i
 }
 
 type DescribeAntChainAccountsResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainAccountsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainAccountsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainAccountsResponse) String() string {
@@ -4015,10 +5192,22 @@ func (s *DescribeAntChainAccountsResponse) SetBody(v *DescribeAntChainAccountsRe
 }
 
 type DescribeAntChainAccountsV2Request struct {
-	AntChainId   *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// This parameter is required.
+	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// example:
+	//
+	// M8GaMEyX
 	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeAntChainAccountsV2Request) String() string {
@@ -4050,14 +5239,35 @@ func (s *DescribeAntChainAccountsV2Request) SetPageSize(v int32) *DescribeAntCha
 }
 
 type DescribeAntChainAccountsV2ResponseBody struct {
-	Code           *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *string                                       `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result         *DescribeAntChainAccountsV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	ResultCode     *string                                       `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	ResultMessage  *string                                       `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
-	Success        *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D68D66B6-1964-4073-8714-B49F5EF1AEFC
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *DescribeAntChainAccountsV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// example:
+	//
+	// OK
+	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeAntChainAccountsV2ResponseBody) String() string {
@@ -4132,11 +5342,26 @@ func (s *DescribeAntChainAccountsV2ResponseBodyResult) SetPagination(v *Describe
 }
 
 type DescribeAntChainAccountsV2ResponseBodyResultAccounts struct {
-	Account            *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	AccountPublicKey   *string `json:"AccountPublicKey,omitempty" xml:"AccountPublicKey,omitempty"`
+	// example:
+	//
+	// test
+	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// example:
+	//
+	// 2aa43bae103b6840ce8efdfe6f3fe5e52f8d1db0f44ff762df87ba17eb209979a0e22c934b2728c6c1bab864a6da52de60c5da89793bd839650a1a153e876e32
+	AccountPublicKey *string `json:"AccountPublicKey,omitempty" xml:"AccountPublicKey,omitempty"`
+	// example:
+	//
+	// 5a36312d78681794258bb33372586c676adf150ad69e67dbfcaae61bba3607705950bc9efe1bf4a17ac24b05b1615a410e48d2a005dca251c6173495bb47ae29
 	AccountRecoveryKey *string `json:"AccountRecoveryKey,omitempty" xml:"AccountRecoveryKey,omitempty"`
-	AccountStatus      *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
-	AntChainId         *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// example:
+	//
+	// NORMAL
+	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
+	// example:
+	//
+	// 8bd720bde18c4b37b0f4a1c7834db163
+	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
 }
 
 func (s DescribeAntChainAccountsV2ResponseBodyResultAccounts) String() string {
@@ -4173,8 +5398,17 @@ func (s *DescribeAntChainAccountsV2ResponseBodyResultAccounts) SetAntChainId(v s
 }
 
 type DescribeAntChainAccountsV2ResponseBodyResultPagination struct {
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 100
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -4202,9 +5436,9 @@ func (s *DescribeAntChainAccountsV2ResponseBodyResultPagination) SetTotalCount(v
 }
 
 type DescribeAntChainAccountsV2Response struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainAccountsV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainAccountsV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainAccountsV2Response) String() string {
@@ -4231,8 +5465,18 @@ func (s *DescribeAntChainAccountsV2Response) SetBody(v *DescribeAntChainAccounts
 }
 
 type DescribeAntChainBlockRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pYogqb9v
 	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
-	Height     *int64  `json:"Height,omitempty" xml:"Height,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	Height *int64 `json:"Height,omitempty" xml:"Height,omitempty"`
 }
 
 func (s DescribeAntChainBlockRequest) String() string {
@@ -4254,6 +5498,9 @@ func (s *DescribeAntChainBlockRequest) SetHeight(v int64) *DescribeAntChainBlock
 }
 
 type DescribeAntChainBlockResponseBody struct {
+	// example:
+	//
+	// 4DDA2E72-778A-4D79-BE70-448A26A57227
 	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *DescribeAntChainBlockResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -4277,15 +5524,42 @@ func (s *DescribeAntChainBlockResponseBody) SetResult(v *DescribeAntChainBlockRe
 }
 
 type DescribeAntChainBlockResponseBodyResult struct {
-	AntChainId       *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
-	BlockHash        *string `json:"BlockHash,omitempty" xml:"BlockHash,omitempty"`
-	CreateTime       *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Height           *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
-	PreviousHash     *string `json:"PreviousHash,omitempty" xml:"PreviousHash,omitempty"`
-	RootTxHash       *string `json:"RootTxHash,omitempty" xml:"RootTxHash,omitempty"`
+	// example:
+	//
+	// pYogqb9v
+	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// example:
+	//
+	// aeec5963f8deeeae820aaf302f0c925db9fa8d07b9898dac782335f817554e47
+	BlockHash *string `json:"BlockHash,omitempty" xml:"BlockHash,omitempty"`
+	// example:
+	//
+	// 1562851727742
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1234
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// e11767c7b9d92563663a76f10c69e8354788001e2c9e6bd9267239a81d3bb523
+	PreviousHash *string `json:"PreviousHash,omitempty" xml:"PreviousHash,omitempty"`
+	// example:
+	//
+	// 0000000000000000000000000000000000000000000000000000000000000000
+	RootTxHash *string `json:"RootTxHash,omitempty" xml:"RootTxHash,omitempty"`
+	// example:
+	//
+	// []
 	TransSummaryList *string `json:"TransSummaryList,omitempty" xml:"TransSummaryList,omitempty"`
-	TransactionSize  *int32  `json:"TransactionSize,omitempty" xml:"TransactionSize,omitempty"`
-	Version          *int64  `json:"Version,omitempty" xml:"Version,omitempty"`
+	// example:
+	//
+	// 0
+	TransactionSize *int32 `json:"TransactionSize,omitempty" xml:"TransactionSize,omitempty"`
+	// example:
+	//
+	// 2
+	Version *int64 `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeAntChainBlockResponseBodyResult) String() string {
@@ -4342,9 +5616,9 @@ func (s *DescribeAntChainBlockResponseBodyResult) SetVersion(v int64) *DescribeA
 }
 
 type DescribeAntChainBlockResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainBlockResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainBlockResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainBlockResponse) String() string {
@@ -4371,9 +5645,22 @@ func (s *DescribeAntChainBlockResponse) SetBody(v *DescribeAntChainBlockResponse
 }
 
 type DescribeAntChainBlockV2Request struct {
-	AntChainId   *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8bd720bde18c4b37b0f4a1c7834db163
+	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// example:
+	//
+	// M8GaMEyX
 	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	Height       *int64  `json:"Height,omitempty" xml:"Height,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
+	Height *int64 `json:"Height,omitempty" xml:"Height,omitempty"`
 }
 
 func (s DescribeAntChainBlockV2Request) String() string {
@@ -4400,14 +5687,35 @@ func (s *DescribeAntChainBlockV2Request) SetHeight(v int64) *DescribeAntChainBlo
 }
 
 type DescribeAntChainBlockV2ResponseBody struct {
-	Code           *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *string                                    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result         *DescribeAntChainBlockV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	ResultCode     *string                                    `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	ResultMessage  *string                                    `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
-	Success        *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D68D66B6-1964-4073-8714-B49F5EF1AEFC
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *DescribeAntChainBlockV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// example:
+	//
+	// OK
+	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeAntChainBlockV2ResponseBody) String() string {
@@ -4459,15 +5767,39 @@ func (s *DescribeAntChainBlockV2ResponseBody) SetSuccess(v bool) *DescribeAntCha
 }
 
 type DescribeAntChainBlockV2ResponseBodyResult struct {
-	AntChainId       *string                                                      `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
-	BlockHash        *string                                                      `json:"BlockHash,omitempty" xml:"BlockHash,omitempty"`
-	CreateTime       *int64                                                       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Height           *int32                                                       `json:"Height,omitempty" xml:"Height,omitempty"`
-	PreviousHash     *string                                                      `json:"PreviousHash,omitempty" xml:"PreviousHash,omitempty"`
+	// example:
+	//
+	// 8bd720bde18c4b37b0f4a1c7834db163
+	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// example:
+	//
+	// 5abf96debc87f1b64dcbaf4fa57fd46f2a06acdb5de0ba91ef9718d81aebafc7
+	BlockHash *string `json:"BlockHash,omitempty" xml:"BlockHash,omitempty"`
+	// example:
+	//
+	// 1609223363570
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 254761
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 2444ef0617e0c6845549dead70f118c5a58f03c04575ecb79e283ab5c34b491d
+	PreviousHash *string `json:"PreviousHash,omitempty" xml:"PreviousHash,omitempty"`
+	// example:
+	//
+	// 0000000000000000000000000000000000000000000000000000000000000000
 	RootTxHash       *string                                                      `json:"RootTxHash,omitempty" xml:"RootTxHash,omitempty"`
 	TransSummaryList []*DescribeAntChainBlockV2ResponseBodyResultTransSummaryList `json:"TransSummaryList,omitempty" xml:"TransSummaryList,omitempty" type:"Repeated"`
-	TransactionSize  *int32                                                       `json:"TransactionSize,omitempty" xml:"TransactionSize,omitempty"`
-	Version          *int64                                                       `json:"Version,omitempty" xml:"Version,omitempty"`
+	// example:
+	//
+	// 1
+	TransactionSize *int32 `json:"TransactionSize,omitempty" xml:"TransactionSize,omitempty"`
+	// example:
+	//
+	// 1
+	Version *int64 `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeAntChainBlockV2ResponseBodyResult) String() string {
@@ -4524,18 +5856,54 @@ func (s *DescribeAntChainBlockV2ResponseBodyResult) SetVersion(v int64) *Describ
 }
 
 type DescribeAntChainBlockV2ResponseBodyResultTransSummaryList struct {
-	Alias          *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	BlockHash      *string `json:"BlockHash,omitempty" xml:"BlockHash,omitempty"`
-	Category       *int32  `json:"Category,omitempty" xml:"Category,omitempty"`
-	CreateTime     *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	From           *string `json:"From,omitempty" xml:"From,omitempty"`
-	GasUsed        *int64  `json:"GasUsed,omitempty" xml:"GasUsed,omitempty"`
-	Hash           *string `json:"Hash,omitempty" xml:"Hash,omitempty"`
-	Height         *int64  `json:"Height,omitempty" xml:"Height,omitempty"`
-	ReferenceCount *int32  `json:"ReferenceCount,omitempty" xml:"ReferenceCount,omitempty"`
-	To             *string `json:"To,omitempty" xml:"To,omitempty"`
-	TransTypeV10   *string `json:"TransTypeV10,omitempty" xml:"TransTypeV10,omitempty"`
-	TransTypeV6    *string `json:"TransTypeV6,omitempty" xml:"TransTypeV6,omitempty"`
+	// example:
+	//
+	// 8bd720bde18c4b37b0f4a1c7834db163
+	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	// example:
+	//
+	// 5abf96debc87f1b64dcbaf4fa57fd46f2a06acdb5de0ba91ef9718d81aebafc7
+	BlockHash *string `json:"BlockHash,omitempty" xml:"BlockHash,omitempty"`
+	// example:
+	//
+	// 0
+	Category *int32 `json:"Category,omitempty" xml:"Category,omitempty"`
+	// example:
+	//
+	// 1609223363570
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// e7d3e769f3f593dadcb8634cc5b09fc90dd3a61c4a06a79cb0923662fe6fae6b
+	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	// example:
+	//
+	// 4000000
+	GasUsed *int64 `json:"GasUsed,omitempty" xml:"GasUsed,omitempty"`
+	// example:
+	//
+	// 076bba1b726b3bcb958cba6fffc03eaa5cbed59320271dcbc0e05648a18a94f2
+	Hash *string `json:"Hash,omitempty" xml:"Hash,omitempty"`
+	// example:
+	//
+	// 254761
+	Height *int64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 0
+	ReferenceCount *int32 `json:"ReferenceCount,omitempty" xml:"ReferenceCount,omitempty"`
+	// example:
+	//
+	// e93372533f323b2f12783aa3a586135cf421486439c2cdcde47411b78f9839ec
+	To *string `json:"To,omitempty" xml:"To,omitempty"`
+	// example:
+	//
+	// CALL_CONTRACT
+	TransTypeV10 *string `json:"TransTypeV10,omitempty" xml:"TransTypeV10,omitempty"`
+	// example:
+	//
+	// ""
+	TransTypeV6 *string `json:"TransTypeV6,omitempty" xml:"TransTypeV6,omitempty"`
 }
 
 func (s DescribeAntChainBlockV2ResponseBodyResultTransSummaryList) String() string {
@@ -4607,9 +5975,9 @@ func (s *DescribeAntChainBlockV2ResponseBodyResultTransSummaryList) SetTransType
 }
 
 type DescribeAntChainBlockV2Response struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainBlockV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainBlockV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainBlockV2Response) String() string {
@@ -4636,10 +6004,30 @@ func (s *DescribeAntChainBlockV2Response) SetBody(v *DescribeAntChainBlockV2Resp
 }
 
 type DescribeAntChainCertificateApplicationsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1q8B5R9p
 	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeAntChainCertificateApplicationsRequest) String() string {
@@ -4671,6 +6059,9 @@ func (s *DescribeAntChainCertificateApplicationsRequest) SetStatus(v string) *De
 }
 
 type DescribeAntChainCertificateApplicationsResponseBody struct {
+	// example:
+	//
+	// B232A84E-7944-4EB0-83D0-9D409E12E0A8
 	RequestId *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *DescribeAntChainCertificateApplicationsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -4717,13 +6108,32 @@ func (s *DescribeAntChainCertificateApplicationsResponseBodyResult) SetPaginatio
 }
 
 type DescribeAntChainCertificateApplicationsResponseBodyResultCertificateApplications struct {
+	// example:
+	//
+	// 1q8B5R9p
 	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
 	// Bid
-	Bid        *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
-	Createtime *int64  `json:"Createtime,omitempty" xml:"Createtime,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Updatetime *int64  `json:"Updatetime,omitempty" xml:"Updatetime,omitempty"`
-	Username   *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	//
+	// example:
+	//
+	// 26842
+	Bid *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
+	// example:
+	//
+	// 1563949275000
+	Createtime *int64 `json:"Createtime,omitempty" xml:"Createtime,omitempty"`
+	// example:
+	//
+	// 1
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1563949275000
+	Updatetime *int64 `json:"Updatetime,omitempty" xml:"Updatetime,omitempty"`
+	// example:
+	//
+	// uid-128712635330****
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s DescribeAntChainCertificateApplicationsResponseBodyResultCertificateApplications) String() string {
@@ -4765,8 +6175,17 @@ func (s *DescribeAntChainCertificateApplicationsResponseBodyResultCertificateApp
 }
 
 type DescribeAntChainCertificateApplicationsResponseBodyResultPagination struct {
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -4794,9 +6213,9 @@ func (s *DescribeAntChainCertificateApplicationsResponseBodyResultPagination) Se
 }
 
 type DescribeAntChainCertificateApplicationsResponse struct {
-	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainCertificateApplicationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainCertificateApplicationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainCertificateApplicationsResponse) String() string {
@@ -4823,11 +6242,34 @@ func (s *DescribeAntChainCertificateApplicationsResponse) SetBody(v *DescribeAnt
 }
 
 type DescribeAntChainCertificateApplicationsV2Request struct {
-	AntChainId   *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8bd720bde18c4b37b0f4a1c7834db163
+	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// example:
+	//
+	// M8GaMEyX
 	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeAntChainCertificateApplicationsV2Request) String() string {
@@ -4864,14 +6306,35 @@ func (s *DescribeAntChainCertificateApplicationsV2Request) SetStatus(v string) *
 }
 
 type DescribeAntChainCertificateApplicationsV2ResponseBody struct {
-	Code           *string                                                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *string                                                      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result         *DescribeAntChainCertificateApplicationsV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	ResultCode     *string                                                      `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	ResultMessage  *string                                                      `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
-	Success        *bool                                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D68D66B6-1964-4073-8714-B49F5EF1AEFC
+	RequestId *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *DescribeAntChainCertificateApplicationsV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// example:
+	//
+	// OK
+	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeAntChainCertificateApplicationsV2ResponseBody) String() string {
@@ -4946,12 +6409,30 @@ func (s *DescribeAntChainCertificateApplicationsV2ResponseBodyResult) SetPaginat
 }
 
 type DescribeAntChainCertificateApplicationsV2ResponseBodyResultCertificateApplications struct {
+	// example:
+	//
+	// 8bd720bde18c4b37b0f4a1c7834db163
 	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
-	Bid        *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
-	Createtime *int64  `json:"Createtime,omitempty" xml:"Createtime,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Updatetime *int64  `json:"Updatetime,omitempty" xml:"Updatetime,omitempty"`
-	Username   *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// example:
+	//
+	// 26842
+	Bid *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
+	// example:
+	//
+	// 1609848404000
+	Createtime *int64 `json:"Createtime,omitempty" xml:"Createtime,omitempty"`
+	// example:
+	//
+	// 1
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1609848404000
+	Updatetime *int64 `json:"Updatetime,omitempty" xml:"Updatetime,omitempty"`
+	// example:
+	//
+	// uid-103477475017****
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s DescribeAntChainCertificateApplicationsV2ResponseBodyResultCertificateApplications) String() string {
@@ -4993,8 +6474,17 @@ func (s *DescribeAntChainCertificateApplicationsV2ResponseBodyResultCertificateA
 }
 
 type DescribeAntChainCertificateApplicationsV2ResponseBodyResultPagination struct {
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 100
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -5022,9 +6512,9 @@ func (s *DescribeAntChainCertificateApplicationsV2ResponseBodyResultPagination) 
 }
 
 type DescribeAntChainCertificateApplicationsV2Response struct {
-	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainCertificateApplicationsV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainCertificateApplicationsV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainCertificateApplicationsV2Response) String() string {
@@ -5051,8 +6541,16 @@ func (s *DescribeAntChainCertificateApplicationsV2Response) SetBody(v *DescribeA
 }
 
 type DescribeAntChainConsortiumsRequest struct {
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeAntChainConsortiumsRequest) String() string {
@@ -5074,6 +6572,9 @@ func (s *DescribeAntChainConsortiumsRequest) SetPageSize(v int32) *DescribeAntCh
 }
 
 type DescribeAntChainConsortiumsResponseBody struct {
+	// example:
+	//
+	// D68D66B6-1964-4073-8714-B49F5EF1AEFC
 	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *DescribeAntChainConsortiumsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -5120,14 +6621,32 @@ func (s *DescribeAntChainConsortiumsResponseBodyResult) SetPagination(v *Describ
 }
 
 type DescribeAntChainConsortiumsResponseBodyResultAntConsortiums struct {
+	// example:
+	//
+	// 1
 	ChainNum              *int64  `json:"ChainNum,omitempty" xml:"ChainNum,omitempty"`
 	ConsortiumDescription *string `json:"ConsortiumDescription,omitempty" xml:"ConsortiumDescription,omitempty"`
-	ConsortiumId          *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	ConsortiumName        *string `json:"ConsortiumName,omitempty" xml:"ConsortiumName,omitempty"`
-	CreateTime            *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	MemberNum             *int64  `json:"MemberNum,omitempty" xml:"MemberNum,omitempty"`
-	Role                  *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// DV80nJXq
+	ConsortiumId   *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	ConsortiumName *string `json:"ConsortiumName,omitempty" xml:"ConsortiumName,omitempty"`
+	// example:
+	//
+	// 1562845453000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 2
+	MemberNum *int64 `json:"MemberNum,omitempty" xml:"MemberNum,omitempty"`
+	// example:
+	//
+	// SuperAdmin
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// example:
+	//
+	// Active
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeAntChainConsortiumsResponseBodyResultAntConsortiums) String() string {
@@ -5179,8 +6698,17 @@ func (s *DescribeAntChainConsortiumsResponseBodyResultAntConsortiums) SetStatus(
 }
 
 type DescribeAntChainConsortiumsResponseBodyResultPagination struct {
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -5208,9 +6736,9 @@ func (s *DescribeAntChainConsortiumsResponseBodyResultPagination) SetTotalCount(
 }
 
 type DescribeAntChainConsortiumsResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainConsortiumsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainConsortiumsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainConsortiumsResponse) String() string {
@@ -5237,8 +6765,16 @@ func (s *DescribeAntChainConsortiumsResponse) SetBody(v *DescribeAntChainConsort
 }
 
 type DescribeAntChainConsortiumsV2Request struct {
+	// example:
+	//
+	// 10
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeAntChainConsortiumsV2Request) String() string {
@@ -5260,14 +6796,35 @@ func (s *DescribeAntChainConsortiumsV2Request) SetPageSize(v int32) *DescribeAnt
 }
 
 type DescribeAntChainConsortiumsV2ResponseBody struct {
-	Code           *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *string                                          `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result         *DescribeAntChainConsortiumsV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	ResultCode     *string                                          `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	ResultMessage  *string                                          `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
-	Success        *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D68D66B6-1964-4073-8714-B49F5EF1AEFC
+	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *DescribeAntChainConsortiumsV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// example:
+	//
+	// OK
+	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeAntChainConsortiumsV2ResponseBody) String() string {
@@ -5342,15 +6899,39 @@ func (s *DescribeAntChainConsortiumsV2ResponseBodyResult) SetPagination(v *Descr
 }
 
 type DescribeAntChainConsortiumsV2ResponseBodyResultAntConsortiums struct {
-	ChainNum              *int64  `json:"ChainNum,omitempty" xml:"ChainNum,omitempty"`
+	// example:
+	//
+	// 2
+	ChainNum *int64 `json:"ChainNum,omitempty" xml:"ChainNum,omitempty"`
+	// example:
+	//
+	// test
 	ConsortiumDescription *string `json:"ConsortiumDescription,omitempty" xml:"ConsortiumDescription,omitempty"`
-	ConsortiumId          *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	ConsortiumName        *string `json:"ConsortiumName,omitempty" xml:"ConsortiumName,omitempty"`
-	CreateTime            *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	IsEmptyConsortium     *bool   `json:"IsEmptyConsortium,omitempty" xml:"IsEmptyConsortium,omitempty"`
-	MemberNum             *int64  `json:"MemberNum,omitempty" xml:"MemberNum,omitempty"`
-	Role                  *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// M8GaMEyX
+	ConsortiumId   *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	ConsortiumName *string `json:"ConsortiumName,omitempty" xml:"ConsortiumName,omitempty"`
+	// example:
+	//
+	// 1609745002000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// false
+	IsEmptyConsortium *bool `json:"IsEmptyConsortium,omitempty" xml:"IsEmptyConsortium,omitempty"`
+	// example:
+	//
+	// 2
+	MemberNum *int64 `json:"MemberNum,omitempty" xml:"MemberNum,omitempty"`
+	// example:
+	//
+	// Member
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// example:
+	//
+	// Active
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeAntChainConsortiumsV2ResponseBodyResultAntConsortiums) String() string {
@@ -5407,8 +6988,17 @@ func (s *DescribeAntChainConsortiumsV2ResponseBodyResultAntConsortiums) SetStatu
 }
 
 type DescribeAntChainConsortiumsV2ResponseBodyResultPagination struct {
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 10
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -5436,9 +7026,9 @@ func (s *DescribeAntChainConsortiumsV2ResponseBodyResultPagination) SetTotalCoun
 }
 
 type DescribeAntChainConsortiumsV2Response struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainConsortiumsV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainConsortiumsV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainConsortiumsV2Response) String() string {
@@ -5465,6 +7055,11 @@ func (s *DescribeAntChainConsortiumsV2Response) SetBody(v *DescribeAntChainConso
 }
 
 type DescribeAntChainContractProjectContentTreeRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2L9VK68g
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
@@ -5482,6 +7077,9 @@ func (s *DescribeAntChainContractProjectContentTreeRequest) SetProjectId(v strin
 }
 
 type DescribeAntChainContractProjectContentTreeResponseBody struct {
+	// example:
+	//
+	// A0DF307A-A44A-476F-99D8-BA4F205350BD
 	RequestId *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *DescribeAntChainContractProjectContentTreeResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -5505,11 +7103,23 @@ func (s *DescribeAntChainContractProjectContentTreeResponseBody) SetResult(v *De
 }
 
 type DescribeAntChainContractProjectContentTreeResponseBodyResult struct {
-	Children           []map[string]interface{} `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
-	ProjectDescription *string                  `json:"ProjectDescription,omitempty" xml:"ProjectDescription,omitempty"`
-	ProjectId          *string                  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectName        *string                  `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	ProjectVersion     *string                  `json:"ProjectVersion,omitempty" xml:"ProjectVersion,omitempty"`
+	Children []map[string]interface{} `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
+	// example:
+	//
+	// description
+	ProjectDescription *string `json:"ProjectDescription,omitempty" xml:"ProjectDescription,omitempty"`
+	// example:
+	//
+	// 2L9VK68g
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// projectname
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// 5
+	ProjectVersion *string `json:"ProjectVersion,omitempty" xml:"ProjectVersion,omitempty"`
 }
 
 func (s DescribeAntChainContractProjectContentTreeResponseBodyResult) String() string {
@@ -5546,9 +7156,9 @@ func (s *DescribeAntChainContractProjectContentTreeResponseBodyResult) SetProjec
 }
 
 type DescribeAntChainContractProjectContentTreeResponse struct {
-	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainContractProjectContentTreeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainContractProjectContentTreeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainContractProjectContentTreeResponse) String() string {
@@ -5575,8 +7185,18 @@ func (s *DescribeAntChainContractProjectContentTreeResponse) SetBody(v *Describe
 }
 
 type DescribeAntChainContractProjectContentTreeV2Request struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// M8GaMEyX
 	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	ProjectId    *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2L9VK68g
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
 func (s DescribeAntChainContractProjectContentTreeV2Request) String() string {
@@ -5598,14 +7218,38 @@ func (s *DescribeAntChainContractProjectContentTreeV2Request) SetProjectId(v str
 }
 
 type DescribeAntChainContractProjectContentTreeV2ResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result         *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	ResultCode     *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	ResultMessage  *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D68D66B6-1964-4073-8714-B49F5EF1AEFC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// "{"description":"","projectId":"","projectName":"","treeContractContent":[{"content":"","fileName":"","id":"","isDir":false,"parentId\\":""}],"type":"","version":""}"
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// OK
+	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// example:
+	//
+	// OK
+	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeAntChainContractProjectContentTreeV2ResponseBody) String() string {
@@ -5657,9 +7301,9 @@ func (s *DescribeAntChainContractProjectContentTreeV2ResponseBody) SetSuccess(v 
 }
 
 type DescribeAntChainContractProjectContentTreeV2Response struct {
-	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainContractProjectContentTreeV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainContractProjectContentTreeV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainContractProjectContentTreeV2Response) String() string {
@@ -5686,9 +7330,24 @@ func (s *DescribeAntChainContractProjectContentTreeV2Response) SetBody(v *Descri
 }
 
 type DescribeAntChainContractProjectsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DV80nJXq
 	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeAntChainContractProjectsRequest) String() string {
@@ -5715,6 +7374,9 @@ func (s *DescribeAntChainContractProjectsRequest) SetPageSize(v int32) *Describe
 }
 
 type DescribeAntChainContractProjectsResponseBody struct {
+	// example:
+	//
+	// 5EDAC16F-EA3E-4017-B223-D76220F985DF
 	RequestId *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *DescribeAntChainContractProjectsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -5761,13 +7423,34 @@ func (s *DescribeAntChainContractProjectsResponseBodyResult) SetPagination(v *De
 }
 
 type DescribeAntChainContractProjectsResponseBodyResultContractProjects struct {
-	ConsortiumId       *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	CreateTime         *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// DV80nJXq
+	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	// example:
+	//
+	// 1562847564000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// description
 	ProjectDescription *string `json:"ProjectDescription,omitempty" xml:"ProjectDescription,omitempty"`
-	ProjectId          *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	ProjectVersion     *string `json:"ProjectVersion,omitempty" xml:"ProjectVersion,omitempty"`
-	UpdateTime         *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 2L9VK68g
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// projectname
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// 5
+	ProjectVersion *string `json:"ProjectVersion,omitempty" xml:"ProjectVersion,omitempty"`
+	// example:
+	//
+	// 1563954499000
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s DescribeAntChainContractProjectsResponseBodyResultContractProjects) String() string {
@@ -5814,8 +7497,17 @@ func (s *DescribeAntChainContractProjectsResponseBodyResultContractProjects) Set
 }
 
 type DescribeAntChainContractProjectsResponseBodyResultPagination struct {
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -5843,9 +7535,9 @@ func (s *DescribeAntChainContractProjectsResponseBodyResultPagination) SetTotalC
 }
 
 type DescribeAntChainContractProjectsResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainContractProjectsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainContractProjectsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainContractProjectsResponse) String() string {
@@ -5872,9 +7564,24 @@ func (s *DescribeAntChainContractProjectsResponse) SetBody(v *DescribeAntChainCo
 }
 
 type DescribeAntChainContractProjectsV2Request struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// M8GaMEyX
 	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeAntChainContractProjectsV2Request) String() string {
@@ -5901,14 +7608,35 @@ func (s *DescribeAntChainContractProjectsV2Request) SetPageSize(v int32) *Descri
 }
 
 type DescribeAntChainContractProjectsV2ResponseBody struct {
-	Code           *string                                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *string                                               `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result         *DescribeAntChainContractProjectsV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	ResultCode     *string                                               `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	ResultMessage  *string                                               `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
-	Success        *bool                                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D68D66B6-1964-4073-8714-B49F5EF1AEFC
+	RequestId *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *DescribeAntChainContractProjectsV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// example:
+	//
+	// OK
+	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeAntChainContractProjectsV2ResponseBody) String() string {
@@ -5983,13 +7711,34 @@ func (s *DescribeAntChainContractProjectsV2ResponseBodyResult) SetPagination(v *
 }
 
 type DescribeAntChainContractProjectsV2ResponseBodyResultContractProjects struct {
-	ConsortiumId       *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	CreateTime         *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// M8GaMEyX
+	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	// example:
+	//
+	// 1609848383000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// test
 	ProjectDescription *string `json:"ProjectDescription,omitempty" xml:"ProjectDescription,omitempty"`
-	ProjectId          *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	ProjectVersion     *string `json:"ProjectVersion,omitempty" xml:"ProjectVersion,omitempty"`
-	UpdateTime         *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// RXwQj6m8
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// test
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// 1.0.0
+	ProjectVersion *string `json:"ProjectVersion,omitempty" xml:"ProjectVersion,omitempty"`
+	// example:
+	//
+	// 1609848383000
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s DescribeAntChainContractProjectsV2ResponseBodyResultContractProjects) String() string {
@@ -6036,8 +7785,17 @@ func (s *DescribeAntChainContractProjectsV2ResponseBodyResultContractProjects) S
 }
 
 type DescribeAntChainContractProjectsV2ResponseBodyResultPagination struct {
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 100
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -6065,9 +7823,9 @@ func (s *DescribeAntChainContractProjectsV2ResponseBodyResultPagination) SetTota
 }
 
 type DescribeAntChainContractProjectsV2Response struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainContractProjectsV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainContractProjectsV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainContractProjectsV2Response) String() string {
@@ -6094,6 +7852,11 @@ func (s *DescribeAntChainContractProjectsV2Response) SetBody(v *DescribeAntChain
 }
 
 type DescribeAntChainDownloadPathsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1q8B5R9p
 	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
 }
 
@@ -6111,6 +7874,9 @@ func (s *DescribeAntChainDownloadPathsRequest) SetAntChainId(v string) *Describe
 }
 
 type DescribeAntChainDownloadPathsResponseBody struct {
+	// example:
+	//
+	// E6F487D4-8606-41B5-B289-46D5EFBD3417
 	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *DescribeAntChainDownloadPathsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -6134,10 +7900,22 @@ func (s *DescribeAntChainDownloadPathsResponseBody) SetResult(v *DescribeAntChai
 }
 
 type DescribeAntChainDownloadPathsResponseBodyResult struct {
-	CaCrtUrl     *string `json:"CaCrtUrl,omitempty" xml:"CaCrtUrl,omitempty"`
+	// example:
+	//
+	// http://***ca.crt
+	CaCrtUrl *string `json:"CaCrtUrl,omitempty" xml:"CaCrtUrl,omitempty"`
+	// example:
+	//
+	// http://***client.crt
 	ClientCrtUrl *string `json:"ClientCrtUrl,omitempty" xml:"ClientCrtUrl,omitempty"`
-	SdkUrl       *string `json:"SdkUrl,omitempty" xml:"SdkUrl,omitempty"`
-	TrustCaUrl   *string `json:"TrustCaUrl,omitempty" xml:"TrustCaUrl,omitempty"`
+	// example:
+	//
+	// http://***
+	SdkUrl *string `json:"SdkUrl,omitempty" xml:"SdkUrl,omitempty"`
+	// example:
+	//
+	// http://***trustCa
+	TrustCaUrl *string `json:"TrustCaUrl,omitempty" xml:"TrustCaUrl,omitempty"`
 }
 
 func (s DescribeAntChainDownloadPathsResponseBodyResult) String() string {
@@ -6169,9 +7947,9 @@ func (s *DescribeAntChainDownloadPathsResponseBodyResult) SetTrustCaUrl(v string
 }
 
 type DescribeAntChainDownloadPathsResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainDownloadPathsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainDownloadPathsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainDownloadPathsResponse) String() string {
@@ -6198,7 +7976,15 @@ func (s *DescribeAntChainDownloadPathsResponse) SetBody(v *DescribeAntChainDownl
 }
 
 type DescribeAntChainDownloadPathsV2Request struct {
-	AntChainId   *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8bd720bde18c4b37b0f4a1c7834db163
+	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// example:
+	//
+	// M8GaMEyX
 	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
 }
 
@@ -6221,14 +8007,35 @@ func (s *DescribeAntChainDownloadPathsV2Request) SetConsortiumId(v string) *Desc
 }
 
 type DescribeAntChainDownloadPathsV2ResponseBody struct {
-	Code           *string                                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *string                                            `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result         *DescribeAntChainDownloadPathsV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	ResultCode     *string                                            `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	ResultMessage  *string                                            `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
-	Success        *bool                                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D68D66B6-1964-4073-8714-B49F5EF1AEFC
+	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *DescribeAntChainDownloadPathsV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// example:
+	//
+	// OK
+	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeAntChainDownloadPathsV2ResponseBody) String() string {
@@ -6280,10 +8087,22 @@ func (s *DescribeAntChainDownloadPathsV2ResponseBody) SetSuccess(v bool) *Descri
 }
 
 type DescribeAntChainDownloadPathsV2ResponseBodyResult struct {
-	CaCrtUrl     *string `json:"CaCrtUrl,omitempty" xml:"CaCrtUrl,omitempty"`
+	// example:
+	//
+	// http://***ca.crt
+	CaCrtUrl *string `json:"CaCrtUrl,omitempty" xml:"CaCrtUrl,omitempty"`
+	// example:
+	//
+	// http://***client.crt
 	ClientCrtUrl *string `json:"ClientCrtUrl,omitempty" xml:"ClientCrtUrl,omitempty"`
-	SdkUrl       *string `json:"SdkUrl,omitempty" xml:"SdkUrl,omitempty"`
-	TrustCaUrl   *string `json:"TrustCaUrl,omitempty" xml:"TrustCaUrl,omitempty"`
+	// example:
+	//
+	// http://***
+	SdkUrl *string `json:"SdkUrl,omitempty" xml:"SdkUrl,omitempty"`
+	// example:
+	//
+	// http://***trustCa
+	TrustCaUrl *string `json:"TrustCaUrl,omitempty" xml:"TrustCaUrl,omitempty"`
 }
 
 func (s DescribeAntChainDownloadPathsV2ResponseBodyResult) String() string {
@@ -6315,9 +8134,9 @@ func (s *DescribeAntChainDownloadPathsV2ResponseBodyResult) SetTrustCaUrl(v stri
 }
 
 type DescribeAntChainDownloadPathsV2Response struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainDownloadPathsV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainDownloadPathsV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainDownloadPathsV2Response) String() string {
@@ -6344,6 +8163,11 @@ func (s *DescribeAntChainDownloadPathsV2Response) SetBody(v *DescribeAntChainDow
 }
 
 type DescribeAntChainInformationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pYogqb9v
 	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
 }
 
@@ -6361,6 +8185,9 @@ func (s *DescribeAntChainInformationRequest) SetAntChainId(v string) *DescribeAn
 }
 
 type DescribeAntChainInformationResponseBody struct {
+	// example:
+	//
+	// 91246411-C7E9-4EFD-9074-3939AEDFC1BB
 	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *DescribeAntChainInformationResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -6384,15 +8211,39 @@ func (s *DescribeAntChainInformationResponseBody) SetResult(v *DescribeAntChainI
 }
 
 type DescribeAntChainInformationResponseBodyResult struct {
-	AbnormalNodes  *int32                                                    `json:"AbnormalNodes,omitempty" xml:"AbnormalNodes,omitempty"`
-	AntChainId     *string                                                   `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
-	BlockHeight    *int32                                                    `json:"BlockHeight,omitempty" xml:"BlockHeight,omitempty"`
-	CreateTime     *int64                                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	NodeInfos      []*DescribeAntChainInformationResponseBodyResultNodeInfos `json:"NodeInfos,omitempty" xml:"NodeInfos,omitempty" type:"Repeated"`
-	NodeNumber     *int32                                                    `json:"NodeNumber,omitempty" xml:"NodeNumber,omitempty"`
-	Normal         *bool                                                     `json:"Normal,omitempty" xml:"Normal,omitempty"`
-	TransactionSum *int32                                                    `json:"TransactionSum,omitempty" xml:"TransactionSum,omitempty"`
-	Version        *string                                                   `json:"Version,omitempty" xml:"Version,omitempty"`
+	// example:
+	//
+	// 0
+	AbnormalNodes *int32 `json:"AbnormalNodes,omitempty" xml:"AbnormalNodes,omitempty"`
+	// example:
+	//
+	// pYogqb9v
+	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// example:
+	//
+	// 365236
+	BlockHeight *int32 `json:"BlockHeight,omitempty" xml:"BlockHeight,omitempty"`
+	// example:
+	//
+	// 1562847396000
+	CreateTime *int64                                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	NodeInfos  []*DescribeAntChainInformationResponseBodyResultNodeInfos `json:"NodeInfos,omitempty" xml:"NodeInfos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 4
+	NodeNumber *int32 `json:"NodeNumber,omitempty" xml:"NodeNumber,omitempty"`
+	// example:
+	//
+	// true
+	Normal *bool `json:"Normal,omitempty" xml:"Normal,omitempty"`
+	// example:
+	//
+	// 42
+	TransactionSum *int32 `json:"TransactionSum,omitempty" xml:"TransactionSum,omitempty"`
+	// example:
+	//
+	// 0.10.2.4.7
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeAntChainInformationResponseBodyResult) String() string {
@@ -6449,10 +8300,22 @@ func (s *DescribeAntChainInformationResponseBodyResult) SetVersion(v string) *De
 }
 
 type DescribeAntChainInformationResponseBodyResultNodeInfos struct {
-	BlockHeight *int64  `json:"BlockHeight,omitempty" xml:"BlockHeight,omitempty"`
-	NodeName    *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	Status      *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
-	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// example:
+	//
+	// 365216
+	BlockHeight *int64 `json:"BlockHeight,omitempty" xml:"BlockHeight,omitempty"`
+	// example:
+	//
+	// 121.199.195.8 18130
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// example:
+	//
+	// true
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 0.10
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeAntChainInformationResponseBodyResultNodeInfos) String() string {
@@ -6484,9 +8347,9 @@ func (s *DescribeAntChainInformationResponseBodyResultNodeInfos) SetVersion(v st
 }
 
 type DescribeAntChainInformationResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainInformationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainInformationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainInformationResponse) String() string {
@@ -6513,7 +8376,15 @@ func (s *DescribeAntChainInformationResponse) SetBody(v *DescribeAntChainInforma
 }
 
 type DescribeAntChainInformationV2Request struct {
-	AntChainId   *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8bd720bde18c4b37b0f4a1c7834db163
+	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// example:
+	//
+	// M8GaMEyX
 	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
 }
 
@@ -6536,14 +8407,35 @@ func (s *DescribeAntChainInformationV2Request) SetConsortiumId(v string) *Descri
 }
 
 type DescribeAntChainInformationV2ResponseBody struct {
-	Code           *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *string                                          `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result         *DescribeAntChainInformationV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	ResultCode     *string                                          `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	ResultMessage  *string                                          `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
-	Success        *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D68D66B6-1964-4073-8714-B49F5EF1AEFC
+	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *DescribeAntChainInformationV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// example:
+	//
+	// OK
+	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeAntChainInformationV2ResponseBody) String() string {
@@ -6595,16 +8487,43 @@ func (s *DescribeAntChainInformationV2ResponseBody) SetSuccess(v bool) *Describe
 }
 
 type DescribeAntChainInformationV2ResponseBodyResult struct {
-	AbnormalNodes  *int32                                                      `json:"AbnormalNodes,omitempty" xml:"AbnormalNodes,omitempty"`
-	AntChainId     *string                                                     `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
-	BlockHeight    *int32                                                      `json:"BlockHeight,omitempty" xml:"BlockHeight,omitempty"`
-	CreateTime     *int64                                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	IsRole         *bool                                                       `json:"IsRole,omitempty" xml:"IsRole,omitempty"`
-	NodeInfos      []*DescribeAntChainInformationV2ResponseBodyResultNodeInfos `json:"NodeInfos,omitempty" xml:"NodeInfos,omitempty" type:"Repeated"`
-	NodeNumber     *int32                                                      `json:"NodeNumber,omitempty" xml:"NodeNumber,omitempty"`
-	Normal         *bool                                                       `json:"Normal,omitempty" xml:"Normal,omitempty"`
-	TransactionSum *int32                                                      `json:"TransactionSum,omitempty" xml:"TransactionSum,omitempty"`
-	Version        *string                                                     `json:"Version,omitempty" xml:"Version,omitempty"`
+	// example:
+	//
+	// 0
+	AbnormalNodes *int32 `json:"AbnormalNodes,omitempty" xml:"AbnormalNodes,omitempty"`
+	// example:
+	//
+	// 8bd720bde18c4b37b0f4a1c7834db163
+	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// example:
+	//
+	// 259988
+	BlockHeight *int32 `json:"BlockHeight,omitempty" xml:"BlockHeight,omitempty"`
+	// example:
+	//
+	// 1609221924000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// false
+	IsRole    *bool                                                       `json:"IsRole,omitempty" xml:"IsRole,omitempty"`
+	NodeInfos []*DescribeAntChainInformationV2ResponseBodyResultNodeInfos `json:"NodeInfos,omitempty" xml:"NodeInfos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 4
+	NodeNumber *int32 `json:"NodeNumber,omitempty" xml:"NodeNumber,omitempty"`
+	// example:
+	//
+	// true
+	Normal *bool `json:"Normal,omitempty" xml:"Normal,omitempty"`
+	// example:
+	//
+	// 6
+	TransactionSum *int32 `json:"TransactionSum,omitempty" xml:"TransactionSum,omitempty"`
+	// example:
+	//
+	// 0.10
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeAntChainInformationV2ResponseBodyResult) String() string {
@@ -6666,10 +8585,22 @@ func (s *DescribeAntChainInformationV2ResponseBodyResult) SetVersion(v string) *
 }
 
 type DescribeAntChainInformationV2ResponseBodyResultNodeInfos struct {
-	BlockHeight *int64  `json:"BlockHeight,omitempty" xml:"BlockHeight,omitempty"`
-	NodeName    *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	Status      *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
-	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// example:
+	//
+	// 259988
+	BlockHeight *int64 `json:"BlockHeight,omitempty" xml:"BlockHeight,omitempty"`
+	// example:
+	//
+	// 8.136.158.115 18130
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// example:
+	//
+	// true
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 0.10
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeAntChainInformationV2ResponseBodyResultNodeInfos) String() string {
@@ -6701,9 +8632,9 @@ func (s *DescribeAntChainInformationV2ResponseBodyResultNodeInfos) SetVersion(v 
 }
 
 type DescribeAntChainInformationV2Response struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainInformationV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainInformationV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainInformationV2Response) String() string {
@@ -6730,6 +8661,11 @@ func (s *DescribeAntChainInformationV2Response) SetBody(v *DescribeAntChainInfor
 }
 
 type DescribeAntChainLatestBlocksRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pYogqb9v
 	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
 }
 
@@ -6747,6 +8683,9 @@ func (s *DescribeAntChainLatestBlocksRequest) SetAntChainId(v string) *DescribeA
 }
 
 type DescribeAntChainLatestBlocksResponseBody struct {
+	// example:
+	//
+	// B52C552F-DDE6-4779-9BA2-9DD455275528
 	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []map[string]interface{} `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
@@ -6770,9 +8709,9 @@ func (s *DescribeAntChainLatestBlocksResponseBody) SetResult(v []map[string]inte
 }
 
 type DescribeAntChainLatestBlocksResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainLatestBlocksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainLatestBlocksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainLatestBlocksResponse) String() string {
@@ -6799,7 +8738,11 @@ func (s *DescribeAntChainLatestBlocksResponse) SetBody(v *DescribeAntChainLatest
 }
 
 type DescribeAntChainLatestBlocksV2Request struct {
-	AntChainId   *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// This parameter is required.
+	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// example:
+	//
+	// M8GaMEyX
 	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
 }
 
@@ -6822,14 +8765,35 @@ func (s *DescribeAntChainLatestBlocksV2Request) SetConsortiumId(v string) *Descr
 }
 
 type DescribeAntChainLatestBlocksV2ResponseBody struct {
-	Code           *string                                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *string                                             `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result         []*DescribeAntChainLatestBlocksV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	ResultCode     *string                                             `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	ResultMessage  *string                                             `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
-	Success        *bool                                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D68D66B6-1964-4073-8714-B49F5EF1AEFC
+	RequestId *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*DescribeAntChainLatestBlocksV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// OK
+	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// example:
+	//
+	// OK
+	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeAntChainLatestBlocksV2ResponseBody) String() string {
@@ -6881,16 +8845,46 @@ func (s *DescribeAntChainLatestBlocksV2ResponseBody) SetSuccess(v bool) *Describ
 }
 
 type DescribeAntChainLatestBlocksV2ResponseBodyResult struct {
-	Alias           *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	BizData         *string `json:"BizData,omitempty" xml:"BizData,omitempty"`
-	BlockHash       *string `json:"BlockHash,omitempty" xml:"BlockHash,omitempty"`
-	CreateTime      *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Height          *int64  `json:"Height,omitempty" xml:"Height,omitempty"`
-	PreviousHash    *string `json:"PreviousHash,omitempty" xml:"PreviousHash,omitempty"`
-	RootTxHash      *string `json:"RootTxHash,omitempty" xml:"RootTxHash,omitempty"`
-	Size            *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
-	TransactionSize *int64  `json:"TransactionSize,omitempty" xml:"TransactionSize,omitempty"`
-	Version         *int64  `json:"Version,omitempty" xml:"Version,omitempty"`
+	// example:
+	//
+	// 8bd720bde18c4b37b0f4a1c7834db163
+	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	// example:
+	//
+	// b21baa257788d97eb0006672ccc5008f465365e1dec88d0bbd833e150414b3d5
+	BizData *string `json:"BizData,omitempty" xml:"BizData,omitempty"`
+	// example:
+	//
+	// b21baa257788d97eb0006672ccc5008f465365e1dec88d0bbd833e150414b3d5
+	BlockHash *string `json:"BlockHash,omitempty" xml:"BlockHash,omitempty"`
+	// example:
+	//
+	// 1610002621000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 259808
+	Height *int64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// f208834bdc72bd6bb05c5ef1a35abbc8295a16deda9526b7b78c69ec24591b9f
+	PreviousHash *string `json:"PreviousHash,omitempty" xml:"PreviousHash,omitempty"`
+	// example:
+	//
+	// 0000000000000000000000000000000000000000000000000000000000000000
+	RootTxHash *string `json:"RootTxHash,omitempty" xml:"RootTxHash,omitempty"`
+	// example:
+	//
+	// 1024
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// 0
+	TransactionSize *int64 `json:"TransactionSize,omitempty" xml:"TransactionSize,omitempty"`
+	// example:
+	//
+	// 33556226
+	Version *int64 `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeAntChainLatestBlocksV2ResponseBodyResult) String() string {
@@ -6952,9 +8946,9 @@ func (s *DescribeAntChainLatestBlocksV2ResponseBodyResult) SetVersion(v int64) *
 }
 
 type DescribeAntChainLatestBlocksV2Response struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainLatestBlocksV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainLatestBlocksV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainLatestBlocksV2Response) String() string {
@@ -6981,6 +8975,11 @@ func (s *DescribeAntChainLatestBlocksV2Response) SetBody(v *DescribeAntChainLate
 }
 
 type DescribeAntChainLatestTransactionDigestsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pYogqb9v
 	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
 }
 
@@ -6998,6 +8997,9 @@ func (s *DescribeAntChainLatestTransactionDigestsRequest) SetAntChainId(v string
 }
 
 type DescribeAntChainLatestTransactionDigestsResponseBody struct {
+	// example:
+	//
+	// 3348160E-187B-47BD-B1B9-76AD4AFA4558
 	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []map[string]interface{} `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
@@ -7021,9 +9023,9 @@ func (s *DescribeAntChainLatestTransactionDigestsResponseBody) SetResult(v []map
 }
 
 type DescribeAntChainLatestTransactionDigestsResponse struct {
-	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainLatestTransactionDigestsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainLatestTransactionDigestsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainLatestTransactionDigestsResponse) String() string {
@@ -7050,7 +9052,15 @@ func (s *DescribeAntChainLatestTransactionDigestsResponse) SetBody(v *DescribeAn
 }
 
 type DescribeAntChainLatestTransactionDigestsV2Request struct {
-	AntChainId   *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8bd720bde18c4b37b0f4a1c7834db163
+	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// example:
+	//
+	// M8GaMEyX
 	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
 }
 
@@ -7073,14 +9083,35 @@ func (s *DescribeAntChainLatestTransactionDigestsV2Request) SetConsortiumId(v st
 }
 
 type DescribeAntChainLatestTransactionDigestsV2ResponseBody struct {
-	Code           *string   `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *string   `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result         []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	ResultCode     *string   `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	ResultMessage  *string   `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
-	Success        *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D68D66B6-1964-4073-8714-B49F5EF1AEFC
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// OK
+	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// example:
+	//
+	// OK
+	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeAntChainLatestTransactionDigestsV2ResponseBody) String() string {
@@ -7132,9 +9163,9 @@ func (s *DescribeAntChainLatestTransactionDigestsV2ResponseBody) SetSuccess(v bo
 }
 
 type DescribeAntChainLatestTransactionDigestsV2Response struct {
-	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainLatestTransactionDigestsV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainLatestTransactionDigestsV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainLatestTransactionDigestsV2Response) String() string {
@@ -7161,9 +9192,22 @@ func (s *DescribeAntChainLatestTransactionDigestsV2Response) SetBody(v *Describe
 }
 
 type DescribeAntChainMembersRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// q0oWq92P
 	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeAntChainMembersRequest) String() string {
@@ -7190,6 +9234,9 @@ func (s *DescribeAntChainMembersRequest) SetPageSize(v int32) *DescribeAntChainM
 }
 
 type DescribeAntChainMembersResponseBody struct {
+	// example:
+	//
+	// E0DB75A2-28C8-4295-8851-A157FFB3DFED
 	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *DescribeAntChainMembersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -7236,11 +9283,26 @@ func (s *DescribeAntChainMembersResponseBodyResult) SetPagination(v *DescribeAnt
 }
 
 type DescribeAntChainMembersResponseBodyResultMembers struct {
-	JoinTime   *int64  `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
-	MemberId   *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	// example:
+	//
+	// 1557477823000
+	JoinTime *int64 `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
+	// example:
+	//
+	// uid-1388601577407805
+	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	// example:
+	//
+	// uid-1562589998337656
 	MemberName *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
-	Role       *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// Member
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// example:
+	//
+	// AllianceNotJoined
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeAntChainMembersResponseBodyResultMembers) String() string {
@@ -7277,8 +9339,17 @@ func (s *DescribeAntChainMembersResponseBodyResultMembers) SetStatus(v string) *
 }
 
 type DescribeAntChainMembersResponseBodyResultPagination struct {
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 6
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -7306,9 +9377,9 @@ func (s *DescribeAntChainMembersResponseBodyResultPagination) SetTotalCount(v in
 }
 
 type DescribeAntChainMembersResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainMembersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainMembersResponse) String() string {
@@ -7335,9 +9406,22 @@ func (s *DescribeAntChainMembersResponse) SetBody(v *DescribeAntChainMembersResp
 }
 
 type DescribeAntChainMembersV2Request struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// M8GaMEyX
 	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeAntChainMembersV2Request) String() string {
@@ -7364,14 +9448,35 @@ func (s *DescribeAntChainMembersV2Request) SetPageSize(v int32) *DescribeAntChai
 }
 
 type DescribeAntChainMembersV2ResponseBody struct {
-	Code           *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *string                                      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result         *DescribeAntChainMembersV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	ResultCode     *string                                      `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	ResultMessage  *string                                      `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
-	Success        *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D68D66B6-1964-4073-8714-B49F5EF1AEFC
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *DescribeAntChainMembersV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// example:
+	//
+	// OK
+	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeAntChainMembersV2ResponseBody) String() string {
@@ -7446,11 +9551,26 @@ func (s *DescribeAntChainMembersV2ResponseBodyResult) SetPagination(v *DescribeA
 }
 
 type DescribeAntChainMembersV2ResponseBodyResultMembers struct {
-	JoinTime   *int64  `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
-	MemberId   *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	// example:
+	//
+	// 1609745002000
+	JoinTime *int64 `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
+	// example:
+	//
+	// 1034774750177934
+	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	// example:
+	//
+	// uid-1034774750177934
 	MemberName *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
-	Role       *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// Member
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// example:
+	//
+	// AllianceJoined
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeAntChainMembersV2ResponseBodyResultMembers) String() string {
@@ -7487,8 +9607,17 @@ func (s *DescribeAntChainMembersV2ResponseBodyResultMembers) SetStatus(v string)
 }
 
 type DescribeAntChainMembersV2ResponseBodyResultPagination struct {
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 100
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -7516,9 +9645,9 @@ func (s *DescribeAntChainMembersV2ResponseBodyResultPagination) SetTotalCount(v 
 }
 
 type DescribeAntChainMembersV2Response struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainMembersV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainMembersV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainMembersV2Response) String() string {
@@ -7545,7 +9674,17 @@ func (s *DescribeAntChainMembersV2Response) SetBody(v *DescribeAntChainMembersV2
 }
 
 type DescribeAntChainMiniAppBrowserQRCodeAccessLogRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// bDXK6boZ
 	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MINI_APP_BROWSER_TRANSACTION
 	QRCodeType *string `json:"QRCodeType,omitempty" xml:"QRCodeType,omitempty"`
 }
 
@@ -7568,6 +9707,9 @@ func (s *DescribeAntChainMiniAppBrowserQRCodeAccessLogRequest) SetQRCodeType(v s
 }
 
 type DescribeAntChainMiniAppBrowserQRCodeAccessLogResponseBody struct {
+	// example:
+	//
+	// D68D66B6-1964-4073-8714-B49F5EF1AEFC
 	RequestId *string                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *DescribeAntChainMiniAppBrowserQRCodeAccessLogResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -7591,8 +9733,14 @@ func (s *DescribeAntChainMiniAppBrowserQRCodeAccessLogResponseBody) SetResult(v 
 }
 
 type DescribeAntChainMiniAppBrowserQRCodeAccessLogResponseBodyResult struct {
+	// example:
+	//
+	// 100
 	AccessAlipayAccountCount *int64 `json:"AccessAlipayAccountCount,omitempty" xml:"AccessAlipayAccountCount,omitempty"`
-	AccessCount              *int64 `json:"AccessCount,omitempty" xml:"AccessCount,omitempty"`
+	// example:
+	//
+	// 1000
+	AccessCount *int64 `json:"AccessCount,omitempty" xml:"AccessCount,omitempty"`
 }
 
 func (s DescribeAntChainMiniAppBrowserQRCodeAccessLogResponseBodyResult) String() string {
@@ -7614,9 +9762,9 @@ func (s *DescribeAntChainMiniAppBrowserQRCodeAccessLogResponseBodyResult) SetAcc
 }
 
 type DescribeAntChainMiniAppBrowserQRCodeAccessLogResponse struct {
-	Headers    map[string]*string                                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainMiniAppBrowserQRCodeAccessLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainMiniAppBrowserQRCodeAccessLogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainMiniAppBrowserQRCodeAccessLogResponse) String() string {
@@ -7643,7 +9791,17 @@ func (s *DescribeAntChainMiniAppBrowserQRCodeAccessLogResponse) SetBody(v *Descr
 }
 
 type DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Request struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8bd720bde18c4b37b0f4a1c7834db163
 	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MINI_APP_BROWSER_TRANSACTION
 	QRCodeType *string `json:"QRCodeType,omitempty" xml:"QRCodeType,omitempty"`
 }
 
@@ -7666,14 +9824,35 @@ func (s *DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Request) SetQRCodeType(v
 }
 
 type DescribeAntChainMiniAppBrowserQRCodeAccessLogV2ResponseBody struct {
-	Code           *string                                                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *string                                                            `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result         *DescribeAntChainMiniAppBrowserQRCodeAccessLogV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	ResultCode     *string                                                            `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	ResultMessage  *string                                                            `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
-	Success        *bool                                                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D68D66B6-1964-4073-8714-B49F5EF1AEFC
+	RequestId *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *DescribeAntChainMiniAppBrowserQRCodeAccessLogV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// example:
+	//
+	// OK
+	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeAntChainMiniAppBrowserQRCodeAccessLogV2ResponseBody) String() string {
@@ -7725,8 +9904,14 @@ func (s *DescribeAntChainMiniAppBrowserQRCodeAccessLogV2ResponseBody) SetSuccess
 }
 
 type DescribeAntChainMiniAppBrowserQRCodeAccessLogV2ResponseBodyResult struct {
+	// example:
+	//
+	// 10
 	AccessAlipayAccountCount *int64 `json:"AccessAlipayAccountCount,omitempty" xml:"AccessAlipayAccountCount,omitempty"`
-	AccessCount              *int64 `json:"AccessCount,omitempty" xml:"AccessCount,omitempty"`
+	// example:
+	//
+	// 100
+	AccessCount *int64 `json:"AccessCount,omitempty" xml:"AccessCount,omitempty"`
 }
 
 func (s DescribeAntChainMiniAppBrowserQRCodeAccessLogV2ResponseBodyResult) String() string {
@@ -7748,9 +9933,9 @@ func (s *DescribeAntChainMiniAppBrowserQRCodeAccessLogV2ResponseBodyResult) SetA
 }
 
 type DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Response struct {
-	Headers    map[string]*string                                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainMiniAppBrowserQRCodeAccessLogV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainMiniAppBrowserQRCodeAccessLogV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Response) String() string {
@@ -7777,9 +9962,29 @@ func (s *DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Response) SetBody(v *Des
 }
 
 type DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// bDXK6boZ
 	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MINI_APP_BROWSER_TRANSACTION
 	QRCodeType *string `json:"QRCodeType,omitempty" xml:"QRCodeType,omitempty"`
 }
 
@@ -7812,6 +10017,9 @@ func (s *DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersRequest) SetQRCodeTy
 }
 
 type DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponseBody struct {
+	// example:
+	//
+	// D68D66B6-1964-4073-8714-B49F5EF1AEFC
 	RequestId *string                                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -7835,11 +10043,20 @@ func (s *DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponseBody) SetRes
 }
 
 type DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponseBodyResult struct {
-	AntChainId         *string                                                                                    `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// example:
+	//
+	// bDXK6boZ
+	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// example:
+	//
+	// ALL_USER_AUTHORIZATION
 	AuthorizationType  *string                                                                                    `json:"AuthorizationType,omitempty" xml:"AuthorizationType,omitempty"`
 	AuthorizedUserList []*DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponseBodyResultAuthorizedUserList `json:"AuthorizedUserList,omitempty" xml:"AuthorizedUserList,omitempty" type:"Repeated"`
 	Pagination         *DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponseBodyResultPagination           `json:"Pagination,omitempty" xml:"Pagination,omitempty" type:"Struct"`
-	QRCodeType         *string                                                                                    `json:"QRCodeType,omitempty" xml:"QRCodeType,omitempty"`
+	// example:
+	//
+	// MINI_APP_BROWSER_TRANSACTION
+	QRCodeType *string `json:"QRCodeType,omitempty" xml:"QRCodeType,omitempty"`
 }
 
 func (s DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponseBodyResult) String() string {
@@ -7876,8 +10093,14 @@ func (s *DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponseBodyResult) 
 }
 
 type DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponseBodyResultAuthorizedUserList struct {
+	// example:
+	//
+	// 1580958389000
 	GmtAuthorized *string `json:"GmtAuthorized,omitempty" xml:"GmtAuthorized,omitempty"`
-	Phone         *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	// example:
+	//
+	// 1380013****
+	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
 }
 
 func (s DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponseBodyResultAuthorizedUserList) String() string {
@@ -7899,8 +10122,17 @@ func (s *DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponseBodyResultAu
 }
 
 type DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponseBodyResultPagination struct {
+	// example:
+	//
+	// 10
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 100
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -7928,9 +10160,9 @@ func (s *DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponseBodyResultPa
 }
 
 type DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponse struct {
-	Headers    map[string]*string                                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponse) String() string {
@@ -7957,9 +10189,29 @@ func (s *DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponse) SetBody(v 
 }
 
 type DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Request struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8bd720bde18c4b37b0f4a1c7834db163
 	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MINI_APP_BROWSER_TRANSACTION
 	QRCodeType *string `json:"QRCodeType,omitempty" xml:"QRCodeType,omitempty"`
 }
 
@@ -7992,14 +10244,35 @@ func (s *DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Request) SetQRCode
 }
 
 type DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2ResponseBody struct {
-	Code           *string                                                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *string                                                                  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result         *DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	ResultCode     *string                                                                  `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	ResultMessage  *string                                                                  `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
-	Success        *bool                                                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D68D66B6-1964-4073-8714-B49F5EF1AEFC
+	RequestId *string                                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// example:
+	//
+	// OK
+	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2ResponseBody) String() string {
@@ -8051,11 +10324,20 @@ func (s *DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2ResponseBody) SetS
 }
 
 type DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2ResponseBodyResult struct {
-	AntChainId         *string                                                                                      `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// example:
+	//
+	// 4505A1E4-0EDD-4A02-A4D7-B49219328D49
+	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// example:
+	//
+	// SPECIFIC_USER_AUTHORIZATION
 	AuthorizationType  *string                                                                                      `json:"AuthorizationType,omitempty" xml:"AuthorizationType,omitempty"`
 	AuthorizedUserList []*DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2ResponseBodyResultAuthorizedUserList `json:"AuthorizedUserList,omitempty" xml:"AuthorizedUserList,omitempty" type:"Repeated"`
 	Pagination         *DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2ResponseBodyResultPagination           `json:"Pagination,omitempty" xml:"Pagination,omitempty" type:"Struct"`
-	QRCodeType         *string                                                                                      `json:"QRCodeType,omitempty" xml:"QRCodeType,omitempty"`
+	// example:
+	//
+	// MINI_APP_BROWSER_TRANSACTION
+	QRCodeType *string `json:"QRCodeType,omitempty" xml:"QRCodeType,omitempty"`
 }
 
 func (s DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2ResponseBodyResult) String() string {
@@ -8092,8 +10374,14 @@ func (s *DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2ResponseBodyResult
 }
 
 type DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2ResponseBodyResultAuthorizedUserList struct {
+	// example:
+	//
+	// 2021-01-07 10:55:42
 	GmtAuthorized *string `json:"GmtAuthorized,omitempty" xml:"GmtAuthorized,omitempty"`
-	Phone         *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	// example:
+	//
+	// 1380013****
+	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
 }
 
 func (s DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2ResponseBodyResultAuthorizedUserList) String() string {
@@ -8115,8 +10403,17 @@ func (s *DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2ResponseBodyResult
 }
 
 type DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2ResponseBodyResultPagination struct {
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 100
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -8144,9 +10441,9 @@ func (s *DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2ResponseBodyResult
 }
 
 type DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Response struct {
-	Headers    map[string]*string                                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Response) String() string {
@@ -8173,7 +10470,17 @@ func (s *DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Response) SetBody(
 }
 
 type DescribeAntChainMiniAppBrowserTransactionQRCodeRequest struct {
-	AntChainId      *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// bDXK6boZ
+	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4a1f1371012cf840a9e4c6bde430d5ba600e422e592d153bd2689783cd1f87d0
 	TransactionHash *string `json:"TransactionHash,omitempty" xml:"TransactionHash,omitempty"`
 }
 
@@ -8196,6 +10503,9 @@ func (s *DescribeAntChainMiniAppBrowserTransactionQRCodeRequest) SetTransactionH
 }
 
 type DescribeAntChainMiniAppBrowserTransactionQRCodeResponseBody struct {
+	// example:
+	//
+	// D68D66B6-1964-4073-8714-B49F5EF1AEFC
 	RequestId *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *DescribeAntChainMiniAppBrowserTransactionQRCodeResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -8219,9 +10529,21 @@ func (s *DescribeAntChainMiniAppBrowserTransactionQRCodeResponseBody) SetResult(
 }
 
 type DescribeAntChainMiniAppBrowserTransactionQRCodeResponseBodyResult struct {
-	AntChainId      *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// example:
+	//
+	// bDXK6boZ
+	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// example:
+	//
+	// iVBORw0KGgo......ABJRU5ErkJggg==
 	Base64QRCodePNG *string `json:"Base64QRCodePNG,omitempty" xml:"Base64QRCodePNG,omitempty"`
-	QRCodeContent   *string `json:"QRCodeContent,omitempty" xml:"QRCodeContent,omitempty"`
+	// example:
+	//
+	// https://render.antfin.com/p/s/miniapp-web/?type=trans&from=aliyun&bizid=bDXK6boZ&hash=10692388f8b729cbb42d2985eebd3567812def357eb826a7ec810ce97e1f295e
+	QRCodeContent *string `json:"QRCodeContent,omitempty" xml:"QRCodeContent,omitempty"`
+	// example:
+	//
+	// 10692388f8b729cbb42d2985eebd3567812def357eb826a7ec810ce97e1f295e
 	TransactionHash *string `json:"TransactionHash,omitempty" xml:"TransactionHash,omitempty"`
 }
 
@@ -8254,9 +10576,9 @@ func (s *DescribeAntChainMiniAppBrowserTransactionQRCodeResponseBodyResult) SetT
 }
 
 type DescribeAntChainMiniAppBrowserTransactionQRCodeResponse struct {
-	Headers    map[string]*string                                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainMiniAppBrowserTransactionQRCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainMiniAppBrowserTransactionQRCodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainMiniAppBrowserTransactionQRCodeResponse) String() string {
@@ -8283,8 +10605,21 @@ func (s *DescribeAntChainMiniAppBrowserTransactionQRCodeResponse) SetBody(v *Des
 }
 
 type DescribeAntChainMiniAppBrowserTransactionQRCodeNewRequest struct {
-	AntChainId      *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
-	ContractId      *string `json:"ContractId,omitempty" xml:"ContractId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// bDXK6boZ
+	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// example:
+	//
+	// 9782291a957d28bec9e02f3dcb27d78392815ede7670b70793e0fd9763309cda
+	ContractId *string `json:"ContractId,omitempty" xml:"ContractId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4a1f1371012cf840a9e4c6bde430d5ba600e422e592d153bd2689783cd1f87d0
 	TransactionHash *string `json:"TransactionHash,omitempty" xml:"TransactionHash,omitempty"`
 }
 
@@ -8312,14 +10647,35 @@ func (s *DescribeAntChainMiniAppBrowserTransactionQRCodeNewRequest) SetTransacti
 }
 
 type DescribeAntChainMiniAppBrowserTransactionQRCodeNewResponseBody struct {
-	Code           *string                                                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *string                                                               `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result         *DescribeAntChainMiniAppBrowserTransactionQRCodeNewResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	ResultCode     *string                                                               `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	ResultMessage  *string                                                               `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
-	Success        *bool                                                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D68D66B6-1964-4073-8714-B49F5EF1AEFC
+	RequestId *string                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *DescribeAntChainMiniAppBrowserTransactionQRCodeNewResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// example:
+	//
+	// OK
+	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeAntChainMiniAppBrowserTransactionQRCodeNewResponseBody) String() string {
@@ -8371,9 +10727,21 @@ func (s *DescribeAntChainMiniAppBrowserTransactionQRCodeNewResponseBody) SetSucc
 }
 
 type DescribeAntChainMiniAppBrowserTransactionQRCodeNewResponseBodyResult struct {
-	AntChainId      *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// example:
+	//
+	// 8bd720bde18c4b37b0f4a1c7834db163
+	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// example:
+	//
+	// iVBORw0KGgoAAAANSUhEUgAAAPAAAADwCAIAAACxN37FAAAcb0lEQVR42u3dCZAc1XkAYGlPSRZIGIwEtos4tlM4lE05hhBsU
 	Base64QRCodePNG *string `json:"Base64QRCodePNG,omitempty" xml:"Base64QRCodePNG,omitempty"`
-	QRCodeContent   *string `json:"QRCodeContent,omitempty" xml:"QRCodeContent,omitempty"`
+	// example:
+	//
+	// https://render.antfin.com/p/s/miniapp-web/?type=trans&from=aliyun&bizid=8bd720bde18c4b37b0f4a1c7834db163&hash=ac73c8fa158436513e0b398632d9a082e04cee3eac6f9fb50087a46d801bdfd1&contractId=
+	QRCodeContent *string `json:"QRCodeContent,omitempty" xml:"QRCodeContent,omitempty"`
+	// example:
+	//
+	// ac73c8fa158436513e0b398632d9a082e04cee3eac6f9fb50087a46d801bdfd1
 	TransactionHash *string `json:"TransactionHash,omitempty" xml:"TransactionHash,omitempty"`
 }
 
@@ -8406,9 +10774,9 @@ func (s *DescribeAntChainMiniAppBrowserTransactionQRCodeNewResponseBodyResult) S
 }
 
 type DescribeAntChainMiniAppBrowserTransactionQRCodeNewResponse struct {
-	Headers    map[string]*string                                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainMiniAppBrowserTransactionQRCodeNewResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainMiniAppBrowserTransactionQRCodeNewResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainMiniAppBrowserTransactionQRCodeNewResponse) String() string {
@@ -8435,6 +10803,11 @@ func (s *DescribeAntChainMiniAppBrowserTransactionQRCodeNewResponse) SetBody(v *
 }
 
 type DescribeAntChainNodesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1q8B5R9p
 	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
 }
 
@@ -8452,6 +10825,9 @@ func (s *DescribeAntChainNodesRequest) SetAntChainId(v string) *DescribeAntChain
 }
 
 type DescribeAntChainNodesResponseBody struct {
+	// example:
+	//
+	// BA9738FE-F427-44FD-A1D9-EB4EFB43075A
 	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []map[string]interface{} `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
@@ -8475,9 +10851,9 @@ func (s *DescribeAntChainNodesResponseBody) SetResult(v []map[string]interface{}
 }
 
 type DescribeAntChainNodesResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainNodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainNodesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainNodesResponse) String() string {
@@ -8504,7 +10880,15 @@ func (s *DescribeAntChainNodesResponse) SetBody(v *DescribeAntChainNodesResponse
 }
 
 type DescribeAntChainNodesV2Request struct {
-	AntChainId   *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8bd720bde18c4b37b0f4a1c7834db163
+	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// example:
+	//
+	// M8GaMEyX
 	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
 }
 
@@ -8527,14 +10911,35 @@ func (s *DescribeAntChainNodesV2Request) SetConsortiumId(v string) *DescribeAntC
 }
 
 type DescribeAntChainNodesV2ResponseBody struct {
-	Code           *string   `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *string   `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result         []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	ResultCode     *string   `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	ResultMessage  *string   `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
-	Success        *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D68D66B6-1964-4073-8714-B49F5EF1AEFC
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// OK
+	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// example:
+	//
+	// OK
+	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeAntChainNodesV2ResponseBody) String() string {
@@ -8586,9 +10991,9 @@ func (s *DescribeAntChainNodesV2ResponseBody) SetSuccess(v bool) *DescribeAntCha
 }
 
 type DescribeAntChainNodesV2Response struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainNodesV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainNodesV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainNodesV2Response) String() string {
@@ -8615,7 +11020,17 @@ func (s *DescribeAntChainNodesV2Response) SetBody(v *DescribeAntChainNodesV2Resp
 }
 
 type DescribeAntChainQRCodeAuthorizationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// bDXK6boZ
 	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MINI_APP_BROWSER_TRANSACTION
 	QRCodeType *string `json:"QRCodeType,omitempty" xml:"QRCodeType,omitempty"`
 }
 
@@ -8638,6 +11053,9 @@ func (s *DescribeAntChainQRCodeAuthorizationRequest) SetQRCodeType(v string) *De
 }
 
 type DescribeAntChainQRCodeAuthorizationResponseBody struct {
+	// example:
+	//
+	// D68D66B6-1964-4073-8714-B49F5EF1AEFC
 	RequestId *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *DescribeAntChainQRCodeAuthorizationResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -8661,9 +11079,18 @@ func (s *DescribeAntChainQRCodeAuthorizationResponseBody) SetResult(v *DescribeA
 }
 
 type DescribeAntChainQRCodeAuthorizationResponseBodyResult struct {
-	AntChainId        *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// example:
+	//
+	// bDXK6boZ
+	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// example:
+	//
+	// ALL_USER_AUTHORIZATION
 	AuthorizationType *string `json:"AuthorizationType,omitempty" xml:"AuthorizationType,omitempty"`
-	QRCodeType        *string `json:"QRCodeType,omitempty" xml:"QRCodeType,omitempty"`
+	// example:
+	//
+	// MINI_APP_BROWSER_TRANSACTION
+	QRCodeType *string `json:"QRCodeType,omitempty" xml:"QRCodeType,omitempty"`
 }
 
 func (s DescribeAntChainQRCodeAuthorizationResponseBodyResult) String() string {
@@ -8690,9 +11117,9 @@ func (s *DescribeAntChainQRCodeAuthorizationResponseBodyResult) SetQRCodeType(v 
 }
 
 type DescribeAntChainQRCodeAuthorizationResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainQRCodeAuthorizationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainQRCodeAuthorizationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainQRCodeAuthorizationResponse) String() string {
@@ -8719,7 +11146,17 @@ func (s *DescribeAntChainQRCodeAuthorizationResponse) SetBody(v *DescribeAntChai
 }
 
 type DescribeAntChainQRCodeAuthorizationV2Request struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8bd720bde18c4b37b0f4a1c7834db163
 	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MINI_APP_BROWSER_TRANSACTION
 	QRCodeType *string `json:"QRCodeType,omitempty" xml:"QRCodeType,omitempty"`
 }
 
@@ -8742,14 +11179,35 @@ func (s *DescribeAntChainQRCodeAuthorizationV2Request) SetQRCodeType(v string) *
 }
 
 type DescribeAntChainQRCodeAuthorizationV2ResponseBody struct {
-	Code           *string                                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *string                                                  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result         *DescribeAntChainQRCodeAuthorizationV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	ResultCode     *string                                                  `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	ResultMessage  *string                                                  `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
-	Success        *bool                                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 980061FC-058D-4298-8598-D9DDB10D0ED4
+	RequestId *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *DescribeAntChainQRCodeAuthorizationV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// example:
+	//
+	// OK
+	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeAntChainQRCodeAuthorizationV2ResponseBody) String() string {
@@ -8801,9 +11259,18 @@ func (s *DescribeAntChainQRCodeAuthorizationV2ResponseBody) SetSuccess(v bool) *
 }
 
 type DescribeAntChainQRCodeAuthorizationV2ResponseBodyResult struct {
-	AntChainId        *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// example:
+	//
+	// 8bd720bde18c4b37b0f4a1c7834db163
+	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// example:
+	//
+	// ALL_USER_AUTHORIZATION
 	AuthorizationType *string `json:"AuthorizationType,omitempty" xml:"AuthorizationType,omitempty"`
-	QRCodeType        *string `json:"QRCodeType,omitempty" xml:"QRCodeType,omitempty"`
+	// example:
+	//
+	// MINI_APP_BROWSER_TRANSACTION
+	QRCodeType *string `json:"QRCodeType,omitempty" xml:"QRCodeType,omitempty"`
 }
 
 func (s DescribeAntChainQRCodeAuthorizationV2ResponseBodyResult) String() string {
@@ -8830,9 +11297,9 @@ func (s *DescribeAntChainQRCodeAuthorizationV2ResponseBodyResult) SetQRCodeType(
 }
 
 type DescribeAntChainQRCodeAuthorizationV2Response struct {
-	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainQRCodeAuthorizationV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainQRCodeAuthorizationV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainQRCodeAuthorizationV2Response) String() string {
@@ -8859,8 +11326,18 @@ func (s *DescribeAntChainQRCodeAuthorizationV2Response) SetBody(v *DescribeAntCh
 }
 
 type DescribeAntChainTransactionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pYogqb9v
 	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
-	Hash       *string `json:"Hash,omitempty" xml:"Hash,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// b3b0d2db83d3e670449d1e2a39d1d13b7e0e6080b0f9c6945f79eca68d1dd2ca
+	Hash *string `json:"Hash,omitempty" xml:"Hash,omitempty"`
 }
 
 func (s DescribeAntChainTransactionRequest) String() string {
@@ -8882,6 +11359,9 @@ func (s *DescribeAntChainTransactionRequest) SetHash(v string) *DescribeAntChain
 }
 
 type DescribeAntChainTransactionResponseBody struct {
+	// example:
+	//
+	// 7DCE6520-E5DB-4859-90AC-BDDB8A5501C6
 	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *DescribeAntChainTransactionResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -8905,12 +11385,27 @@ func (s *DescribeAntChainTransactionResponseBody) SetResult(v *DescribeAntChainT
 }
 
 type DescribeAntChainTransactionResponseBodyResult struct {
-	BlockHash    *string                                                   `json:"BlockHash,omitempty" xml:"BlockHash,omitempty"`
-	BlockHeight  *int64                                                    `json:"BlockHeight,omitempty" xml:"BlockHeight,omitempty"`
-	BlockVersion *string                                                   `json:"BlockVersion,omitempty" xml:"BlockVersion,omitempty"`
-	CreateTime   *int64                                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Hash         *string                                                   `json:"Hash,omitempty" xml:"Hash,omitempty"`
-	Transaction  *DescribeAntChainTransactionResponseBodyResultTransaction `json:"Transaction,omitempty" xml:"Transaction,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1168bc5dd0b78d15446b15ea5a7f7822a7d07c007dd3a50becf98da220fc08f6
+	BlockHash *string `json:"BlockHash,omitempty" xml:"BlockHash,omitempty"`
+	// example:
+	//
+	// 368169
+	BlockHeight *int64 `json:"BlockHeight,omitempty" xml:"BlockHeight,omitempty"`
+	// example:
+	//
+	// 10
+	BlockVersion *string `json:"BlockVersion,omitempty" xml:"BlockVersion,omitempty"`
+	// example:
+	//
+	// 1563954336850
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// b3b0d2db83d3e670449d1e2a39d1d13b7e0e6080b0f9c6945f79eca68d1dd2ca
+	Hash        *string                                                   `json:"Hash,omitempty" xml:"Hash,omitempty"`
+	Transaction *DescribeAntChainTransactionResponseBodyResultTransaction `json:"Transaction,omitempty" xml:"Transaction,omitempty" type:"Struct"`
 }
 
 func (s DescribeAntChainTransactionResponseBodyResult) String() string {
@@ -8952,19 +11447,50 @@ func (s *DescribeAntChainTransactionResponseBodyResult) SetTransaction(v *Descri
 }
 
 type DescribeAntChainTransactionResponseBodyResultTransaction struct {
+	// example:
+	//
+	// “”
 	Data       *string   `json:"Data,omitempty" xml:"Data,omitempty"`
 	Extentions []*string `json:"Extentions,omitempty" xml:"Extentions,omitempty" type:"Repeated"`
-	From       *string   `json:"From,omitempty" xml:"From,omitempty"`
-	Gas        *string   `json:"Gas,omitempty" xml:"Gas,omitempty"`
-	Hash       *string   `json:"Hash,omitempty" xml:"Hash,omitempty"`
-	Nonce      *string   `json:"Nonce,omitempty" xml:"Nonce,omitempty"`
+	// example:
+	//
+	// e7d3e769f3f593dadcb8634cc5b09fc90dd3a61c4a06a79cb0923662fe6fae6b
+	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	// example:
+	//
+	// 4000000
+	Gas *string `json:"Gas,omitempty" xml:"Gas,omitempty"`
+	// example:
+	//
+	// b3b0d2db83d3e670449d1e2a39d1d13b7e0e6080b0f9c6945f79eca68d1dd2ca
+	Hash *string `json:"Hash,omitempty" xml:"Hash,omitempty"`
+	// example:
+	//
+	// 5675407026657953619
+	Nonce *string `json:"Nonce,omitempty" xml:"Nonce,omitempty"`
 	// Period
+	//
+	// example:
+	//
+	// 1563954336850
 	Period     *int64    `json:"Period,omitempty" xml:"Period,omitempty"`
 	Signatures []*string `json:"Signatures,omitempty" xml:"Signatures,omitempty" type:"Repeated"`
-	Timestamp  *int64    `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	To         *string   `json:"To,omitempty" xml:"To,omitempty"`
-	TxType     *string   `json:"TxType,omitempty" xml:"TxType,omitempty"`
-	Value      *string   `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// 1563954336850
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// example:
+	//
+	// 961085f3c7ef705ad587d0cbe11d7863a5a11af7451f4e9b1edadd74402addf5
+	To *string `json:"To,omitempty" xml:"To,omitempty"`
+	// example:
+	//
+	// UNFREEZE_ACCOUNT_CONTRACT
+	TxType *string `json:"TxType,omitempty" xml:"TxType,omitempty"`
+	// example:
+	//
+	// 0
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeAntChainTransactionResponseBodyResultTransaction) String() string {
@@ -9036,9 +11562,9 @@ func (s *DescribeAntChainTransactionResponseBodyResultTransaction) SetValue(v st
 }
 
 type DescribeAntChainTransactionResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainTransactionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainTransactionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainTransactionResponse) String() string {
@@ -9065,8 +11591,18 @@ func (s *DescribeAntChainTransactionResponse) SetBody(v *DescribeAntChainTransac
 }
 
 type DescribeAntChainTransactionReceiptRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pYogqb9v
 	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
-	Hash       *string `json:"Hash,omitempty" xml:"Hash,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// b3b0d2db83d3e670449d1e2a39d1d13b7e0e6080b0f9c6945f79eca68d1dd2ca
+	Hash *string `json:"Hash,omitempty" xml:"Hash,omitempty"`
 }
 
 func (s DescribeAntChainTransactionReceiptRequest) String() string {
@@ -9088,6 +11624,9 @@ func (s *DescribeAntChainTransactionReceiptRequest) SetHash(v string) *DescribeA
 }
 
 type DescribeAntChainTransactionReceiptResponseBody struct {
+	// example:
+	//
+	// 9EC8FDC1-ED32-4EC0-AEC2-AFAA906ADBAB
 	RequestId *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *DescribeAntChainTransactionReceiptResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -9111,10 +11650,19 @@ func (s *DescribeAntChainTransactionReceiptResponseBody) SetResult(v *DescribeAn
 }
 
 type DescribeAntChainTransactionReceiptResponseBodyResult struct {
-	Data    *string   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// data
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 20000
 	GasUsed *string   `json:"GasUsed,omitempty" xml:"GasUsed,omitempty"`
 	Logs    []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
-	Result  *int64    `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 0
+	Result *int64 `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s DescribeAntChainTransactionReceiptResponseBodyResult) String() string {
@@ -9146,9 +11694,9 @@ func (s *DescribeAntChainTransactionReceiptResponseBodyResult) SetResult(v int64
 }
 
 type DescribeAntChainTransactionReceiptResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainTransactionReceiptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainTransactionReceiptResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainTransactionReceiptResponse) String() string {
@@ -9175,9 +11723,22 @@ func (s *DescribeAntChainTransactionReceiptResponse) SetBody(v *DescribeAntChain
 }
 
 type DescribeAntChainTransactionReceiptV2Request struct {
-	AntChainId   *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8bd720bde18c4b37b0f4a1c7834db163
+	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// example:
+	//
+	// M8GaMEyX
 	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	Hash         *string `json:"Hash,omitempty" xml:"Hash,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8bd720bde18c4b37b0f4a1c7834db163
+	Hash *string `json:"Hash,omitempty" xml:"Hash,omitempty"`
 }
 
 func (s DescribeAntChainTransactionReceiptV2Request) String() string {
@@ -9204,14 +11765,35 @@ func (s *DescribeAntChainTransactionReceiptV2Request) SetHash(v string) *Describ
 }
 
 type DescribeAntChainTransactionReceiptV2ResponseBody struct {
-	Code           *string                                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *string                                                 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result         *DescribeAntChainTransactionReceiptV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	ResultCode     *string                                                 `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	ResultMessage  *string                                                 `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
-	Success        *bool                                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D68D66B6-1964-4073-8714-B49F5EF1AEFC
+	RequestId *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *DescribeAntChainTransactionReceiptV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// example:
+	//
+	// OK
+	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeAntChainTransactionReceiptV2ResponseBody) String() string {
@@ -9263,10 +11845,19 @@ func (s *DescribeAntChainTransactionReceiptV2ResponseBody) SetSuccess(v bool) *D
 }
 
 type DescribeAntChainTransactionReceiptV2ResponseBodyResult struct {
-	Data    *string   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// data
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 20000
 	GasUsed *string   `json:"GasUsed,omitempty" xml:"GasUsed,omitempty"`
 	Logs    []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
-	Result  *int64    `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// 0
+	Result *int64 `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s DescribeAntChainTransactionReceiptV2ResponseBodyResult) String() string {
@@ -9298,9 +11889,9 @@ func (s *DescribeAntChainTransactionReceiptV2ResponseBodyResult) SetResult(v int
 }
 
 type DescribeAntChainTransactionReceiptV2Response struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainTransactionReceiptV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainTransactionReceiptV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainTransactionReceiptV2Response) String() string {
@@ -9327,9 +11918,24 @@ func (s *DescribeAntChainTransactionReceiptV2Response) SetBody(v *DescribeAntCha
 }
 
 type DescribeAntChainTransactionStatisticsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pYogqb9v
 	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
-	End        *int64  `json:"End,omitempty" xml:"End,omitempty"`
-	Start      *int64  `json:"Start,omitempty" xml:"Start,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1563897600000
+	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1563206400000
+	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
 func (s DescribeAntChainTransactionStatisticsRequest) String() string {
@@ -9356,6 +11962,9 @@ func (s *DescribeAntChainTransactionStatisticsRequest) SetStart(v int64) *Descri
 }
 
 type DescribeAntChainTransactionStatisticsResponseBody struct {
+	// example:
+	//
+	// E93884AC-6C21-4FEA-8E3A-7377D33B194F
 	RequestId *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*DescribeAntChainTransactionStatisticsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
@@ -9379,11 +11988,26 @@ func (s *DescribeAntChainTransactionStatisticsResponseBody) SetResult(v []*Descr
 }
 
 type DescribeAntChainTransactionStatisticsResponseBodyResult struct {
-	AntChainId         *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
-	CreatTime          *int64  `json:"CreatTime,omitempty" xml:"CreatTime,omitempty"`
-	Dt                 *string `json:"Dt,omitempty" xml:"Dt,omitempty"`
-	LastSumBlockHeight *int64  `json:"LastSumBlockHeight,omitempty" xml:"LastSumBlockHeight,omitempty"`
-	TransCount         *int64  `json:"TransCount,omitempty" xml:"TransCount,omitempty"`
+	// example:
+	//
+	// pYogqb9v
+	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// example:
+	//
+	// 1563294007000
+	CreatTime *int64 `json:"CreatTime,omitempty" xml:"CreatTime,omitempty"`
+	// example:
+	//
+	// 2019-07-16
+	Dt *string `json:"Dt,omitempty" xml:"Dt,omitempty"`
+	// example:
+	//
+	// 148018
+	LastSumBlockHeight *int64 `json:"LastSumBlockHeight,omitempty" xml:"LastSumBlockHeight,omitempty"`
+	// example:
+	//
+	// 0
+	TransCount *int64 `json:"TransCount,omitempty" xml:"TransCount,omitempty"`
 }
 
 func (s DescribeAntChainTransactionStatisticsResponseBodyResult) String() string {
@@ -9420,9 +12044,9 @@ func (s *DescribeAntChainTransactionStatisticsResponseBodyResult) SetTransCount(
 }
 
 type DescribeAntChainTransactionStatisticsResponse struct {
-	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainTransactionStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainTransactionStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainTransactionStatisticsResponse) String() string {
@@ -9449,10 +12073,24 @@ func (s *DescribeAntChainTransactionStatisticsResponse) SetBody(v *DescribeAntCh
 }
 
 type DescribeAntChainTransactionStatisticsV2Request struct {
-	AntChainId   *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8bd720bde18c4b37b0f4a1c7834db163
+	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// example:
+	//
+	// M8GaMEyX
 	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	End          *int64  `json:"End,omitempty" xml:"End,omitempty"`
-	Start        *int64  `json:"Start,omitempty" xml:"Start,omitempty"`
+	// example:
+	//
+	// 1609776000000
+	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
+	// example:
+	//
+	// 1609084800000
+	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
 func (s DescribeAntChainTransactionStatisticsV2Request) String() string {
@@ -9484,14 +12122,35 @@ func (s *DescribeAntChainTransactionStatisticsV2Request) SetStart(v int64) *Desc
 }
 
 type DescribeAntChainTransactionStatisticsV2ResponseBody struct {
-	Code           *string                                                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *string                                                      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result         []*DescribeAntChainTransactionStatisticsV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	ResultCode     *string                                                      `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	ResultMessage  *string                                                      `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
-	Success        *bool                                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D68D66B6-1964-4073-8714-B49F5EF1AEFC
+	RequestId *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*DescribeAntChainTransactionStatisticsV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// OK
+	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// example:
+	//
+	// OK
+	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeAntChainTransactionStatisticsV2ResponseBody) String() string {
@@ -9543,11 +12202,26 @@ func (s *DescribeAntChainTransactionStatisticsV2ResponseBody) SetSuccess(v bool)
 }
 
 type DescribeAntChainTransactionStatisticsV2ResponseBodyResult struct {
-	AntChainId         *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
-	CreatTime          *int64  `json:"CreatTime,omitempty" xml:"CreatTime,omitempty"`
-	Dt                 *int64  `json:"Dt,omitempty" xml:"Dt,omitempty"`
-	LastSumBlockHeight *int64  `json:"LastSumBlockHeight,omitempty" xml:"LastSumBlockHeight,omitempty"`
-	TransCount         *int64  `json:"TransCount,omitempty" xml:"TransCount,omitempty"`
+	// example:
+	//
+	// 8bd720bde18c4b37b0f4a1c7834db163
+	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// example:
+	//
+	// 1609258222000
+	CreatTime *int64 `json:"CreatTime,omitempty" xml:"CreatTime,omitempty"`
+	// example:
+	//
+	// 1609171200000
+	Dt *int64 `json:"Dt,omitempty" xml:"Dt,omitempty"`
+	// example:
+	//
+	// 11511
+	LastSumBlockHeight *int64 `json:"LastSumBlockHeight,omitempty" xml:"LastSumBlockHeight,omitempty"`
+	// example:
+	//
+	// 4
+	TransCount *int64 `json:"TransCount,omitempty" xml:"TransCount,omitempty"`
 }
 
 func (s DescribeAntChainTransactionStatisticsV2ResponseBodyResult) String() string {
@@ -9584,9 +12258,9 @@ func (s *DescribeAntChainTransactionStatisticsV2ResponseBodyResult) SetTransCoun
 }
 
 type DescribeAntChainTransactionStatisticsV2Response struct {
-	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainTransactionStatisticsV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainTransactionStatisticsV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainTransactionStatisticsV2Response) String() string {
@@ -9613,9 +12287,22 @@ func (s *DescribeAntChainTransactionStatisticsV2Response) SetBody(v *DescribeAnt
 }
 
 type DescribeAntChainTransactionV2Request struct {
-	AntChainId   *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8bd720bde18c4b37b0f4a1c7834db163
+	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// example:
+	//
+	// M8GaMEyX
 	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	Hash         *string `json:"Hash,omitempty" xml:"Hash,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 227072dcd1a5d78098da99ccc8024304b9fb54fc6b65e37ef919d7f2da080061
+	Hash *string `json:"Hash,omitempty" xml:"Hash,omitempty"`
 }
 
 func (s DescribeAntChainTransactionV2Request) String() string {
@@ -9642,14 +12329,35 @@ func (s *DescribeAntChainTransactionV2Request) SetHash(v string) *DescribeAntCha
 }
 
 type DescribeAntChainTransactionV2ResponseBody struct {
-	Code           *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *string                                          `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result         *DescribeAntChainTransactionV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	ResultCode     *string                                          `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	ResultMessage  *string                                          `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
-	Success        *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D68D66B6-1964-4073-8714-B49F5EF1AEFC
+	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *DescribeAntChainTransactionV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// example:
+	//
+	// OK
+	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeAntChainTransactionV2ResponseBody) String() string {
@@ -9701,12 +12409,27 @@ func (s *DescribeAntChainTransactionV2ResponseBody) SetSuccess(v bool) *Describe
 }
 
 type DescribeAntChainTransactionV2ResponseBodyResult struct {
-	BlockHash    *string                                                     `json:"BlockHash,omitempty" xml:"BlockHash,omitempty"`
-	BlockHeight  *int64                                                      `json:"BlockHeight,omitempty" xml:"BlockHeight,omitempty"`
-	BlockVersion *string                                                     `json:"BlockVersion,omitempty" xml:"BlockVersion,omitempty"`
-	CreateTime   *int64                                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Hash         *string                                                     `json:"Hash,omitempty" xml:"Hash,omitempty"`
-	Transaction  *DescribeAntChainTransactionV2ResponseBodyResultTransaction `json:"Transaction,omitempty" xml:"Transaction,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1168bc5dd0b78d15446b15ea5a7f7822a7d07c007dd3a50becf98da220fc08f6
+	BlockHash *string `json:"BlockHash,omitempty" xml:"BlockHash,omitempty"`
+	// example:
+	//
+	// 100
+	BlockHeight *int64 `json:"BlockHeight,omitempty" xml:"BlockHeight,omitempty"`
+	// example:
+	//
+	// 10
+	BlockVersion *string `json:"BlockVersion,omitempty" xml:"BlockVersion,omitempty"`
+	// example:
+	//
+	// 1563954336850
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// b3b0d2db83d3e670449d1e2a39d1d13b7e0e6080b0f9c6945f79eca68d1dd2ca
+	Hash        *string                                                     `json:"Hash,omitempty" xml:"Hash,omitempty"`
+	Transaction *DescribeAntChainTransactionV2ResponseBodyResultTransaction `json:"Transaction,omitempty" xml:"Transaction,omitempty" type:"Struct"`
 }
 
 func (s DescribeAntChainTransactionV2ResponseBodyResult) String() string {
@@ -9748,18 +12471,48 @@ func (s *DescribeAntChainTransactionV2ResponseBodyResult) SetTransaction(v *Desc
 }
 
 type DescribeAntChainTransactionV2ResponseBodyResultTransaction struct {
+	// example:
+	//
+	// ""
 	Data       *string   `json:"Data,omitempty" xml:"Data,omitempty"`
 	Extentions []*string `json:"Extentions,omitempty" xml:"Extentions,omitempty" type:"Repeated"`
-	From       *string   `json:"From,omitempty" xml:"From,omitempty"`
-	Gas        *string   `json:"Gas,omitempty" xml:"Gas,omitempty"`
-	Hash       *string   `json:"Hash,omitempty" xml:"Hash,omitempty"`
-	Nonce      *string   `json:"Nonce,omitempty" xml:"Nonce,omitempty"`
+	// example:
+	//
+	// e7d3e769f3f593dadcb8634cc5b09fc90dd3a61c4a06a79cb0923662fe6fae6b
+	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	// example:
+	//
+	// 4000000
+	Gas *string `json:"Gas,omitempty" xml:"Gas,omitempty"`
+	// example:
+	//
+	// b3b0d2db83d3e670449d1e2a39d1d13b7e0e6080b0f9c6945f79eca68d1dd2ca
+	Hash *string `json:"Hash,omitempty" xml:"Hash,omitempty"`
+	// example:
+	//
+	// 5675407026657953619
+	Nonce *string `json:"Nonce,omitempty" xml:"Nonce,omitempty"`
+	// example:
+	//
+	// 1563954336850
 	Period     *int64    `json:"Period,omitempty" xml:"Period,omitempty"`
 	Signatures []*string `json:"Signatures,omitempty" xml:"Signatures,omitempty" type:"Repeated"`
-	Timestamp  *int64    `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	To         *string   `json:"To,omitempty" xml:"To,omitempty"`
-	TxType     *string   `json:"TxType,omitempty" xml:"TxType,omitempty"`
-	Value      *string   `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// 1563954336850
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// example:
+	//
+	// 961085f3c7ef705ad587d0cbe11d7863a5a11af7451f4e9b1edadd74402addf5
+	To *string `json:"To,omitempty" xml:"To,omitempty"`
+	// example:
+	//
+	// UNFREEZE_ACCOUNT_CONTRACT
+	TxType *string `json:"TxType,omitempty" xml:"TxType,omitempty"`
+	// example:
+	//
+	// 0
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeAntChainTransactionV2ResponseBodyResultTransaction) String() string {
@@ -9831,9 +12584,9 @@ func (s *DescribeAntChainTransactionV2ResponseBodyResultTransaction) SetValue(v 
 }
 
 type DescribeAntChainTransactionV2Response struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainTransactionV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainTransactionV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainTransactionV2Response) String() string {
@@ -9860,9 +12613,24 @@ func (s *DescribeAntChainTransactionV2Response) SetBody(v *DescribeAntChainTrans
 }
 
 type DescribeAntChainsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AroN3X2l
 	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeAntChainsRequest) String() string {
@@ -9889,6 +12657,9 @@ func (s *DescribeAntChainsRequest) SetPageSize(v int32) *DescribeAntChainsReques
 }
 
 type DescribeAntChainsResponseBody struct {
+	// example:
+	//
+	// 52EC3196-D0B8-4FBE-A8B6-6DDABABE11C9
 	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *DescribeAntChainsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
@@ -9912,9 +12683,12 @@ func (s *DescribeAntChainsResponseBody) SetResult(v *DescribeAntChainsResponseBo
 }
 
 type DescribeAntChainsResponseBodyResult struct {
-	AntChains  []*DescribeAntChainsResponseBodyResultAntChains `json:"AntChains,omitempty" xml:"AntChains,omitempty" type:"Repeated"`
-	IsExist    *bool                                           `json:"IsExist,omitempty" xml:"IsExist,omitempty"`
-	Pagination *DescribeAntChainsResponseBodyResultPagination  `json:"Pagination,omitempty" xml:"Pagination,omitempty" type:"Struct"`
+	AntChains []*DescribeAntChainsResponseBodyResultAntChains `json:"AntChains,omitempty" xml:"AntChains,omitempty" type:"Repeated"`
+	// example:
+	//
+	// false
+	IsExist    *bool                                          `json:"IsExist,omitempty" xml:"IsExist,omitempty"`
+	Pagination *DescribeAntChainsResponseBodyResultPagination `json:"Pagination,omitempty" xml:"Pagination,omitempty" type:"Struct"`
 }
 
 func (s DescribeAntChainsResponseBodyResult) String() string {
@@ -9941,21 +12715,63 @@ func (s *DescribeAntChainsResponseBodyResult) SetPagination(v *DescribeAntChains
 }
 
 type DescribeAntChainsResponseBodyResultAntChains struct {
-	AntChainId     *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
-	AntChainName   *string `json:"AntChainName,omitempty" xml:"AntChainName,omitempty"`
-	ChainType      *string `json:"ChainType,omitempty" xml:"ChainType,omitempty"`
-	CipherSuit     *string `json:"CipherSuit,omitempty" xml:"CipherSuit,omitempty"`
-	CreateTime     *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ExpireTime     *int64  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	IsAdmin        *bool   `json:"IsAdmin,omitempty" xml:"IsAdmin,omitempty"`
-	MemberStatus   *string `json:"MemberStatus,omitempty" xml:"MemberStatus,omitempty"`
+	// example:
+	//
+	// pYogqb9v
+	AntChainId   *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	AntChainName *string `json:"AntChainName,omitempty" xml:"AntChainName,omitempty"`
+	// example:
+	//
+	// Contract
+	ChainType *string `json:"ChainType,omitempty" xml:"ChainType,omitempty"`
+	// example:
+	//
+	// classic
+	CipherSuit *string `json:"CipherSuit,omitempty" xml:"CipherSuit,omitempty"`
+	// example:
+	//
+	// 1562847396000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1626019200000
+	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// true
+	IsAdmin *bool `json:"IsAdmin,omitempty" xml:"IsAdmin,omitempty"`
+	// example:
+	//
+	// ChainApplied
+	MemberStatus *string `json:"MemberStatus,omitempty" xml:"MemberStatus,omitempty"`
+	// example:
+	//
+	// fdmt
 	MerkleTreeSuit *string `json:"MerkleTreeSuit,omitempty" xml:"MerkleTreeSuit,omitempty"`
-	Network        *string `json:"Network,omitempty" xml:"Network,omitempty"`
-	NodeNum        *int32  `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceSize   *string `json:"ResourceSize,omitempty" xml:"ResourceSize,omitempty"`
-	TlsAlgo        *string `json:"TlsAlgo,omitempty" xml:"TlsAlgo,omitempty"`
-	Version        *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// example:
+	//
+	// Running
+	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	// example:
+	//
+	// 4
+	NodeNum *int32 `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// Basic
+	ResourceSize *string `json:"ResourceSize,omitempty" xml:"ResourceSize,omitempty"`
+	// example:
+	//
+	// rsa
+	TlsAlgo *string `json:"TlsAlgo,omitempty" xml:"TlsAlgo,omitempty"`
+	// example:
+	//
+	// 2.19.1
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeAntChainsResponseBodyResultAntChains) String() string {
@@ -10042,8 +12858,17 @@ func (s *DescribeAntChainsResponseBodyResultAntChains) SetVersion(v string) *Des
 }
 
 type DescribeAntChainsResponseBodyResultPagination struct {
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -10071,9 +12896,9 @@ func (s *DescribeAntChainsResponseBodyResultPagination) SetTotalCount(v int32) *
 }
 
 type DescribeAntChainsResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainsResponse) String() string {
@@ -10100,9 +12925,22 @@ func (s *DescribeAntChainsResponse) SetBody(v *DescribeAntChainsResponseBody) *D
 }
 
 type DescribeAntChainsV2Request struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// M8GaMEyX
 	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeAntChainsV2Request) String() string {
@@ -10129,14 +12967,35 @@ func (s *DescribeAntChainsV2Request) SetPageSize(v int32) *DescribeAntChainsV2Re
 }
 
 type DescribeAntChainsV2ResponseBody struct {
-	Code           *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *string                                `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result         *DescribeAntChainsV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	ResultCode     *string                                `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	ResultMessage  *string                                `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
-	Success        *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// DBD6C69E-22B9-419E-B072-7A715F3AA330
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *DescribeAntChainsV2ResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// example:
+	//
+	// OK
+	ResultMessage *string `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeAntChainsV2ResponseBody) String() string {
@@ -10188,9 +13047,12 @@ func (s *DescribeAntChainsV2ResponseBody) SetSuccess(v bool) *DescribeAntChainsV
 }
 
 type DescribeAntChainsV2ResponseBodyResult struct {
-	AntChains  []*DescribeAntChainsV2ResponseBodyResultAntChains `json:"AntChains,omitempty" xml:"AntChains,omitempty" type:"Repeated"`
-	IsExist    *bool                                             `json:"IsExist,omitempty" xml:"IsExist,omitempty"`
-	Pagination *DescribeAntChainsV2ResponseBodyResultPagination  `json:"Pagination,omitempty" xml:"Pagination,omitempty" type:"Struct"`
+	AntChains []*DescribeAntChainsV2ResponseBodyResultAntChains `json:"AntChains,omitempty" xml:"AntChains,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	IsExist    *bool                                            `json:"IsExist,omitempty" xml:"IsExist,omitempty"`
+	Pagination *DescribeAntChainsV2ResponseBodyResultPagination `json:"Pagination,omitempty" xml:"Pagination,omitempty" type:"Struct"`
 }
 
 func (s DescribeAntChainsV2ResponseBodyResult) String() string {
@@ -10217,24 +13079,75 @@ func (s *DescribeAntChainsV2ResponseBodyResult) SetPagination(v *DescribeAntChai
 }
 
 type DescribeAntChainsV2ResponseBodyResultAntChains struct {
-	AntChainId     *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
-	AntChainName   *string `json:"AntChainName,omitempty" xml:"AntChainName,omitempty"`
-	ChainType      *string `json:"ChainType,omitempty" xml:"ChainType,omitempty"`
-	CipherSuit     *string `json:"CipherSuit,omitempty" xml:"CipherSuit,omitempty"`
-	CreateTime     *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ExpireTime     *int64  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IsAdmin        *bool   `json:"IsAdmin,omitempty" xml:"IsAdmin,omitempty"`
-	MemberStatus   *string `json:"MemberStatus,omitempty" xml:"MemberStatus,omitempty"`
+	// example:
+	//
+	// 8bd720bde18c4b37b0f4a1c7834db163
+	AntChainId   *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	AntChainName *string `json:"AntChainName,omitempty" xml:"AntChainName,omitempty"`
+	// example:
+	//
+	// Contract
+	ChainType *string `json:"ChainType,omitempty" xml:"ChainType,omitempty"`
+	// example:
+	//
+	// classic
+	CipherSuit *string `json:"CipherSuit,omitempty" xml:"CipherSuit,omitempty"`
+	// example:
+	//
+	// 1609221924000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1672329600000
+	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// ALIYUN202012291405173265824745109
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// false
+	IsAdmin *bool `json:"IsAdmin,omitempty" xml:"IsAdmin,omitempty"`
+	// example:
+	//
+	// ChainApplied
+	MemberStatus *string `json:"MemberStatus,omitempty" xml:"MemberStatus,omitempty"`
+	// example:
+	//
+	// fdmt
 	MerkleTreeSuit *string `json:"MerkleTreeSuit,omitempty" xml:"MerkleTreeSuit,omitempty"`
-	MonitorStatus  *bool   `json:"MonitorStatus,omitempty" xml:"MonitorStatus,omitempty"`
-	Network        *string `json:"Network,omitempty" xml:"Network,omitempty"`
-	NodeNum        *int32  `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceSize   *string `json:"ResourceSize,omitempty" xml:"ResourceSize,omitempty"`
-	RestStatus     *string `json:"RestStatus,omitempty" xml:"RestStatus,omitempty"`
-	TlsAlgo        *string `json:"TlsAlgo,omitempty" xml:"TlsAlgo,omitempty"`
-	Version        *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// example:
+	//
+	// true
+	MonitorStatus *bool `json:"MonitorStatus,omitempty" xml:"MonitorStatus,omitempty"`
+	// example:
+	//
+	// Running
+	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	// example:
+	//
+	// 4
+	NodeNum *int32 `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// Basic
+	ResourceSize *string `json:"ResourceSize,omitempty" xml:"ResourceSize,omitempty"`
+	// example:
+	//
+	// CREATE
+	RestStatus *string `json:"RestStatus,omitempty" xml:"RestStatus,omitempty"`
+	// example:
+	//
+	// rsa
+	TlsAlgo *string `json:"TlsAlgo,omitempty" xml:"TlsAlgo,omitempty"`
+	// example:
+	//
+	// 2.19.1
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeAntChainsV2ResponseBodyResultAntChains) String() string {
@@ -10336,8 +13249,17 @@ func (s *DescribeAntChainsV2ResponseBodyResultAntChains) SetVersion(v string) *D
 }
 
 type DescribeAntChainsV2ResponseBodyResultPagination struct {
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 2
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -10365,9 +13287,9 @@ func (s *DescribeAntChainsV2ResponseBodyResultPagination) SetTotalCount(v int32)
 }
 
 type DescribeAntChainsV2Response struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeAntChainsV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAntChainsV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeAntChainsV2Response) String() string {
@@ -10394,6 +13316,11 @@ func (s *DescribeAntChainsV2Response) SetBody(v *DescribeAntChainsV2ResponseBody
 }
 
 type DescribeEthereumDeletableRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eth-1ilrhcav4ibdl
 	EthereumId *string `json:"EthereumId,omitempty" xml:"EthereumId,omitempty"`
 }
 
@@ -10411,10 +13338,19 @@ func (s *DescribeEthereumDeletableRequest) SetEthereumId(v string) *DescribeEthe
 }
 
 type DescribeEthereumDeletableResponseBody struct {
-	ErrorCode *int32                                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// D68D66B6-1964-4073-8714-B49F5EF1AEFC
 	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *DescribeEthereumDeletableResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeEthereumDeletableResponseBody) String() string {
@@ -10446,7 +13382,13 @@ func (s *DescribeEthereumDeletableResponseBody) SetSuccess(v bool) *DescribeEthe
 }
 
 type DescribeEthereumDeletableResponseBodyResult struct {
-	Deletable  *bool   `json:"Deletable,omitempty" xml:"Deletable,omitempty"`
+	// example:
+	//
+	// true
+	Deletable *bool `json:"Deletable,omitempty" xml:"Deletable,omitempty"`
+	// example:
+	//
+	// eth-1ilrhcav4ibdl
 	EthereumId *string `json:"EthereumId,omitempty" xml:"EthereumId,omitempty"`
 }
 
@@ -10469,9 +13411,9 @@ func (s *DescribeEthereumDeletableResponseBodyResult) SetEthereumId(v string) *D
 }
 
 type DescribeEthereumDeletableResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeEthereumDeletableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeEthereumDeletableResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeEthereumDeletableResponse) String() string {
@@ -10498,6 +13440,9 @@ func (s *DescribeEthereumDeletableResponse) SetBody(v *DescribeEthereumDeletable
 }
 
 type DescribeFabricCandidateOrganizationsRequest struct {
+	// example:
+	//
+	// cn-hangzhou
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
 }
 
@@ -10515,10 +13460,19 @@ func (s *DescribeFabricCandidateOrganizationsRequest) SetLocation(v string) *Des
 }
 
 type DescribeFabricCandidateOrganizationsResponseBody struct {
-	ErrorCode *int32                                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*DescribeFabricCandidateOrganizationsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeFabricCandidateOrganizationsResponseBody) String() string {
@@ -10550,10 +13504,22 @@ func (s *DescribeFabricCandidateOrganizationsResponseBody) SetSuccess(v bool) *D
 }
 
 type DescribeFabricCandidateOrganizationsResponseBodyResult struct {
-	ClusterState     *string `json:"ClusterState,omitempty" xml:"ClusterState,omitempty"`
-	OrganizationId   *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	// example:
+	//
+	// Running
+	ClusterState *string `json:"ClusterState,omitempty" xml:"ClusterState,omitempty"`
+	// example:
+	//
+	// peers-1oxw31d04****
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	// example:
+	//
+	// org1
 	OrganizationName *string `json:"OrganizationName,omitempty" xml:"OrganizationName,omitempty"`
-	ServiceState     *string `json:"ServiceState,omitempty" xml:"ServiceState,omitempty"`
+	// example:
+	//
+	// Running
+	ServiceState *string `json:"ServiceState,omitempty" xml:"ServiceState,omitempty"`
 }
 
 func (s DescribeFabricCandidateOrganizationsResponseBodyResult) String() string {
@@ -10585,9 +13551,9 @@ func (s *DescribeFabricCandidateOrganizationsResponseBodyResult) SetServiceState
 }
 
 type DescribeFabricCandidateOrganizationsResponse struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFabricCandidateOrganizationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFabricCandidateOrganizationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFabricCandidateOrganizationsResponse) String() string {
@@ -10614,7 +13580,17 @@ func (s *DescribeFabricCandidateOrganizationsResponse) SetBody(v *DescribeFabric
 }
 
 type DescribeFabricChaincodeDefinitionTaskRequest struct {
-	ChaincodeId    *string `json:"ChaincodeId,omitempty" xml:"ChaincodeId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// code-sacc-jbkuldd3i7ad
+	ChaincodeId *string `json:"ChaincodeId,omitempty" xml:"ChaincodeId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// peers-aaaaaa2-1eqnj5o5w9dt3
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 
@@ -10637,10 +13613,19 @@ func (s *DescribeFabricChaincodeDefinitionTaskRequest) SetOrganizationId(v strin
 }
 
 type DescribeFabricChaincodeDefinitionTaskResponseBody struct {
-	ErrorCode *int32                                                   `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *DescribeFabricChaincodeDefinitionTaskResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeFabricChaincodeDefinitionTaskResponseBody) String() string {
@@ -10672,15 +13657,36 @@ func (s *DescribeFabricChaincodeDefinitionTaskResponseBody) SetSuccess(v bool) *
 }
 
 type DescribeFabricChaincodeDefinitionTaskResponseBodyResult struct {
-	Approvers   []*string                                                       `json:"Approvers,omitempty" xml:"Approvers,omitempty" type:"Repeated"`
+	Approvers []*string `json:"Approvers,omitempty" xml:"Approvers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// f100
 	ChannelName *string                                                         `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
 	Content     *DescribeFabricChaincodeDefinitionTaskResponseBodyResultContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	CreateTime  *int64                                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Creator     *string                                                         `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	Description *string                                                         `json:"Description,omitempty" xml:"Description,omitempty"`
-	Status      *string                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId      *string                                                         `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	Type        *string                                                         `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 1533025590
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// perf9141MSP
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// example:
+	//
+	// description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// Pending
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// ChaincodeDefinition
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeFabricChaincodeDefinitionTaskResponseBodyResult) String() string {
@@ -10754,14 +13760,38 @@ func (s *DescribeFabricChaincodeDefinitionTaskResponseBodyResultContent) SetChai
 }
 
 type DescribeFabricChaincodeDefinitionTaskResponseBodyResultContentChaincodeDefinition struct {
+	// example:
+	//
+	// sacc_v1.0:698d4e73c5f1d0239fbf0313ac79ddfaf44d5a803ecb02a4d1983cca4a706860
 	ChaincodePackageId *string `json:"ChaincodePackageId,omitempty" xml:"ChaincodePackageId,omitempty"`
-	CollectionConfig   *string `json:"CollectionConfig,omitempty" xml:"CollectionConfig,omitempty"`
-	EndorsementPolicy  *string `json:"EndorsementPolicy,omitempty" xml:"EndorsementPolicy,omitempty"`
-	InitRequired       *bool   `json:"InitRequired,omitempty" xml:"InitRequired,omitempty"`
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Sequence           *int64  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	Uid                *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
-	Version            *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// example:
+	//
+	// collectionconfig
+	CollectionConfig *string `json:"CollectionConfig,omitempty" xml:"CollectionConfig,omitempty"`
+	// example:
+	//
+	// OR ("perf9141MSP.member")
+	EndorsementPolicy *string `json:"EndorsementPolicy,omitempty" xml:"EndorsementPolicy,omitempty"`
+	// example:
+	//
+	// true
+	InitRequired *bool `json:"InitRequired,omitempty" xml:"InitRequired,omitempty"`
+	// example:
+	//
+	// sacc
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1
+	Sequence *int64 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// example:
+	//
+	// 698d4e73c5f1d0239fbf0313ac79ddfaf44d5a803ecb02a4d1983cca4a706860
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// example:
+	//
+	// 1.1
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeFabricChaincodeDefinitionTaskResponseBodyResultContentChaincodeDefinition) String() string {
@@ -10813,9 +13843,9 @@ func (s *DescribeFabricChaincodeDefinitionTaskResponseBodyResultContentChaincode
 }
 
 type DescribeFabricChaincodeDefinitionTaskResponse struct {
-	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFabricChaincodeDefinitionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFabricChaincodeDefinitionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFabricChaincodeDefinitionTaskResponse) String() string {
@@ -10842,6 +13872,11 @@ func (s *DescribeFabricChaincodeDefinitionTaskResponse) SetBody(v *DescribeFabri
 }
 
 type DescribeFabricChaincodeUploadPolicyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// peers-aaaaaa1-1oxw31d04****
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 
@@ -10859,10 +13894,19 @@ func (s *DescribeFabricChaincodeUploadPolicyRequest) SetOrganizationId(v string)
 }
 
 type DescribeFabricChaincodeUploadPolicyResponseBody struct {
-	ErrorCode *int32                                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *DescribeFabricChaincodeUploadPolicyResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeFabricChaincodeUploadPolicyResponseBody) String() string {
@@ -10894,11 +13938,29 @@ func (s *DescribeFabricChaincodeUploadPolicyResponseBody) SetSuccess(v bool) *De
 }
 
 type DescribeFabricChaincodeUploadPolicyResponseBodyResult struct {
-	AccessId  *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
-	Dir       *string `json:"Dir,omitempty" xml:"Dir,omitempty"`
-	Expire    *int32  `json:"Expire,omitempty" xml:"Expire,omitempty"`
-	Host      *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	Policy    *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// example:
+	//
+	// accessId
+	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	// example:
+	//
+	// test3/4bd1de21-2fff-4405-a8e9-f864c4bee24f
+	Dir *string `json:"Dir,omitempty" xml:"Dir,omitempty"`
+	// example:
+	//
+	// 1533025590
+	Expire *int32 `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	// example:
+	//
+	// https://chaincode.oss-cn-beijing.aliyuncs.com
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// example:
+	//
+	// eyJleHBpcmF0aW9uIjoiMjAxOC0wNy0zMVQwODoyNjozMC40NzdaIiwiY29uZGl
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// example:
+	//
+	// signature
 	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
 }
 
@@ -10941,9 +14003,9 @@ func (s *DescribeFabricChaincodeUploadPolicyResponseBodyResult) SetSignature(v s
 }
 
 type DescribeFabricChaincodeUploadPolicyResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFabricChaincodeUploadPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFabricChaincodeUploadPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFabricChaincodeUploadPolicyResponse) String() string {
@@ -10970,6 +14032,11 @@ func (s *DescribeFabricChaincodeUploadPolicyResponse) SetBody(v *DescribeFabricC
 }
 
 type DescribeFabricChannelMembersRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chan-channelx-1l1hmckuu****
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 }
 
@@ -10987,10 +14054,19 @@ func (s *DescribeFabricChannelMembersRequest) SetChannelId(v string) *DescribeFa
 }
 
 type DescribeFabricChannelMembersResponseBody struct {
-	ErrorCode *int32                                            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*DescribeFabricChannelMembersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeFabricChannelMembersResponseBody) String() string {
@@ -11022,15 +14098,42 @@ func (s *DescribeFabricChannelMembersResponseBody) SetSuccess(v bool) *DescribeF
 }
 
 type DescribeFabricChannelMembersResponseBodyResult struct {
-	AcceptTime              *string `json:"AcceptTime,omitempty" xml:"AcceptTime,omitempty"`
-	ChannelId               *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	InviteTime              *string `json:"InviteTime,omitempty" xml:"InviteTime,omitempty"`
+	// example:
+	//
+	// 1544411108000
+	AcceptTime *string `json:"AcceptTime,omitempty" xml:"AcceptTime,omitempty"`
+	// example:
+	//
+	// chan-channelx-1l1hmckuuisxo
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// example:
+	//
+	// 1544411108000
+	InviteTime *string `json:"InviteTime,omitempty" xml:"InviteTime,omitempty"`
+	// example:
+	//
+	// description
 	OrganizationDescription *string `json:"OrganizationDescription,omitempty" xml:"OrganizationDescription,omitempty"`
-	OrganizationDomain      *string `json:"OrganizationDomain,omitempty" xml:"OrganizationDomain,omitempty"`
-	OrganizationId          *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	OrganizationName        *string `json:"OrganizationName,omitempty" xml:"OrganizationName,omitempty"`
-	State                   *string `json:"State,omitempty" xml:"State,omitempty"`
-	WithPeer                *bool   `json:"WithPeer,omitempty" xml:"WithPeer,omitempty"`
+	// example:
+	//
+	// hello
+	OrganizationDomain *string `json:"OrganizationDomain,omitempty" xml:"OrganizationDomain,omitempty"`
+	// example:
+	//
+	// peers-aaaaaa1-1oxw31d046jtl
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	// example:
+	//
+	// name
+	OrganizationName *string `json:"OrganizationName,omitempty" xml:"OrganizationName,omitempty"`
+	// example:
+	//
+	// Running
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// true
+	WithPeer *bool `json:"WithPeer,omitempty" xml:"WithPeer,omitempty"`
 }
 
 func (s DescribeFabricChannelMembersResponseBodyResult) String() string {
@@ -11087,9 +14190,9 @@ func (s *DescribeFabricChannelMembersResponseBodyResult) SetWithPeer(v bool) *De
 }
 
 type DescribeFabricChannelMembersResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFabricChannelMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFabricChannelMembersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFabricChannelMembersResponse) String() string {
@@ -11116,6 +14219,9 @@ func (s *DescribeFabricChannelMembersResponse) SetBody(v *DescribeFabricChannelM
 }
 
 type DescribeFabricConsortiumAdminStatusRequest struct {
+	// example:
+	//
+	// cn-hangzhou
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
 }
 
@@ -11133,10 +14239,19 @@ func (s *DescribeFabricConsortiumAdminStatusRequest) SetLocation(v string) *Desc
 }
 
 type DescribeFabricConsortiumAdminStatusResponseBody struct {
-	ErrorCode *int32                                                   `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*DescribeFabricConsortiumAdminStatusResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeFabricConsortiumAdminStatusResponseBody) String() string {
@@ -11168,8 +14283,14 @@ func (s *DescribeFabricConsortiumAdminStatusResponseBody) SetSuccess(v bool) *De
 }
 
 type DescribeFabricConsortiumAdminStatusResponseBodyResult struct {
-	ConsortiumAdministrator *bool   `json:"ConsortiumAdministrator,omitempty" xml:"ConsortiumAdministrator,omitempty"`
-	ConsortiumId            *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	// example:
+	//
+	// true
+	ConsortiumAdministrator *bool `json:"ConsortiumAdministrator,omitempty" xml:"ConsortiumAdministrator,omitempty"`
+	// example:
+	//
+	// consortium-lianmenyumingyi-hc5d1bwlulg7
+	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
 }
 
 func (s DescribeFabricConsortiumAdminStatusResponseBodyResult) String() string {
@@ -11191,9 +14312,9 @@ func (s *DescribeFabricConsortiumAdminStatusResponseBodyResult) SetConsortiumId(
 }
 
 type DescribeFabricConsortiumAdminStatusResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFabricConsortiumAdminStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFabricConsortiumAdminStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFabricConsortiumAdminStatusResponse) String() string {
@@ -11220,8 +14341,16 @@ func (s *DescribeFabricConsortiumAdminStatusResponse) SetBody(v *DescribeFabricC
 }
 
 type DescribeFabricConsortiumChaincodesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// consortium-lianmenyumingyi-hc5d1bwlulg7
 	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	Location     *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
 }
 
 func (s DescribeFabricConsortiumChaincodesRequest) String() string {
@@ -11243,10 +14372,19 @@ func (s *DescribeFabricConsortiumChaincodesRequest) SetLocation(v string) *Descr
 }
 
 type DescribeFabricConsortiumChaincodesResponseBody struct {
-	ErrorCode *int32                                                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*DescribeFabricConsortiumChaincodesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeFabricConsortiumChaincodesResponseBody) String() string {
@@ -11278,23 +14416,74 @@ func (s *DescribeFabricConsortiumChaincodesResponseBody) SetSuccess(v bool) *Des
 }
 
 type DescribeFabricConsortiumChaincodesResponseBodyResult struct {
-	ChaincodeId      *string `json:"ChaincodeId,omitempty" xml:"ChaincodeId,omitempty"`
-	ChaincodeName    *string `json:"ChaincodeName,omitempty" xml:"ChaincodeName,omitempty"`
+	// example:
+	//
+	// code-sacc-1pr09q7jmo0np
+	ChaincodeId *string `json:"ChaincodeId,omitempty" xml:"ChaincodeId,omitempty"`
+	// example:
+	//
+	// sacc
+	ChaincodeName *string `json:"ChaincodeName,omitempty" xml:"ChaincodeName,omitempty"`
+	// example:
+	//
+	// 1.0
 	ChaincodeVersion *string `json:"ChaincodeVersion,omitempty" xml:"ChaincodeVersion,omitempty"`
-	ChannelId        *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	ChannelName      *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	ConsortiumId     *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	CreateTime       *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeployTime       *string `json:"DeployTime,omitempty" xml:"DeployTime,omitempty"`
-	EndorsePolicy    *string `json:"EndorsePolicy,omitempty" xml:"EndorsePolicy,omitempty"`
-	Input            *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	Install          *bool   `json:"Install,omitempty" xml:"Install,omitempty"`
-	Message          *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Path             *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	ProviderId       *string `json:"ProviderId,omitempty" xml:"ProviderId,omitempty"`
-	ProviderName     *string `json:"ProviderName,omitempty" xml:"ProviderName,omitempty"`
-	State            *string `json:"State,omitempty" xml:"State,omitempty"`
-	Type             *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// chan-channelx-1l1hmckuuisxo
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// example:
+	//
+	// cname
+	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// example:
+	//
+	// consortium-lianmenyumingyi-hc5d1bwlulg7
+	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	// example:
+	//
+	// 1544411108000
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1544411108000
+	DeployTime *string `json:"DeployTime,omitempty" xml:"DeployTime,omitempty"`
+	// example:
+	//
+	// OR (\\"aaaaaa1MSP.peer\\")
+	EndorsePolicy *string `json:"EndorsePolicy,omitempty" xml:"EndorsePolicy,omitempty"`
+	// example:
+	//
+	// input
+	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// example:
+	//
+	// true
+	Install *bool `json:"Install,omitempty" xml:"Install,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// go-sdk-demo/chaincode/src
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// peers-aaaaaa2-1eqnj5o5w9dt3
+	ProviderId *string `json:"ProviderId,omitempty" xml:"ProviderId,omitempty"`
+	// example:
+	//
+	// name
+	ProviderName *string `json:"ProviderName,omitempty" xml:"ProviderName,omitempty"`
+	// example:
+	//
+	// Instantiatable
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// 1
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeFabricConsortiumChaincodesResponseBodyResult) String() string {
@@ -11391,9 +14580,9 @@ func (s *DescribeFabricConsortiumChaincodesResponseBodyResult) SetType(v int32) 
 }
 
 type DescribeFabricConsortiumChaincodesResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFabricConsortiumChaincodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFabricConsortiumChaincodesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFabricConsortiumChaincodesResponse) String() string {
@@ -11420,8 +14609,16 @@ func (s *DescribeFabricConsortiumChaincodesResponse) SetBody(v *DescribeFabricCo
 }
 
 type DescribeFabricConsortiumChannelsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// consortium-lianmenyumingyi-hc5d1bwlulg7
 	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	Location     *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
 }
 
 func (s DescribeFabricConsortiumChannelsRequest) String() string {
@@ -11443,10 +14640,19 @@ func (s *DescribeFabricConsortiumChannelsRequest) SetLocation(v string) *Describ
 }
 
 type DescribeFabricConsortiumChannelsResponseBody struct {
-	ErrorCode *int32                                                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*DescribeFabricConsortiumChannelsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeFabricConsortiumChannelsResponseBody) String() string {
@@ -11478,29 +14684,98 @@ func (s *DescribeFabricConsortiumChannelsResponseBody) SetSuccess(v bool) *Descr
 }
 
 type DescribeFabricConsortiumChannelsResponseBodyResult struct {
-	BatchTimeout         *int32  `json:"BatchTimeout,omitempty" xml:"BatchTimeout,omitempty"`
-	BlockCount           *int32  `json:"BlockCount,omitempty" xml:"BlockCount,omitempty"`
-	ChaincodeCount       *int32  `json:"ChaincodeCount,omitempty" xml:"ChaincodeCount,omitempty"`
-	ChannelId            *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	ChannelName          *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	ConsortiumChannelId  *int32  `json:"ConsortiumChannelId,omitempty" xml:"ConsortiumChannelId,omitempty"`
-	ConsortiumId         *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	ConsortiumName       *string `json:"ConsortiumName,omitempty" xml:"ConsortiumName,omitempty"`
-	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeleteTime           *string `json:"DeleteTime,omitempty" xml:"DeleteTime,omitempty"`
-	Deleted              *bool   `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
-	MaxMessageCount      *int32  `json:"MaxMessageCount,omitempty" xml:"MaxMessageCount,omitempty"`
-	MemberCount          *int32  `json:"MemberCount,omitempty" xml:"MemberCount,omitempty"`
-	MemberJoinedCount    *string `json:"MemberJoinedCount,omitempty" xml:"MemberJoinedCount,omitempty"`
-	NeedJoined           *bool   `json:"NeedJoined,omitempty" xml:"NeedJoined,omitempty"`
-	OwnerBid             *string `json:"OwnerBid,omitempty" xml:"OwnerBid,omitempty"`
-	OwnerName            *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	OwnerUid             *int64  `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
-	PreferredMaxBytes    *int32  `json:"PreferredMaxBytes,omitempty" xml:"PreferredMaxBytes,omitempty"`
-	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	State                *string `json:"State,omitempty" xml:"State,omitempty"`
-	SupportChannelConfig *bool   `json:"SupportChannelConfig,omitempty" xml:"SupportChannelConfig,omitempty"`
-	UpdateTime           *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 2
+	BatchTimeout *int32 `json:"BatchTimeout,omitempty" xml:"BatchTimeout,omitempty"`
+	// example:
+	//
+	// 2
+	BlockCount *int32 `json:"BlockCount,omitempty" xml:"BlockCount,omitempty"`
+	// example:
+	//
+	// 2
+	ChaincodeCount *int32 `json:"ChaincodeCount,omitempty" xml:"ChaincodeCount,omitempty"`
+	// example:
+	//
+	// chan-channelx-1l1hmckuuisxo
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// example:
+	//
+	// mychammel
+	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// example:
+	//
+	// 1
+	ConsortiumChannelId *int32 `json:"ConsortiumChannelId,omitempty" xml:"ConsortiumChannelId,omitempty"`
+	// example:
+	//
+	// consortium-lianmenyumingyi-hc5d1bwlulg7
+	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	// example:
+	//
+	// name
+	ConsortiumName *string `json:"ConsortiumName,omitempty" xml:"ConsortiumName,omitempty"`
+	// example:
+	//
+	// 1544411108000
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1544411108000
+	DeleteTime *string `json:"DeleteTime,omitempty" xml:"DeleteTime,omitempty"`
+	// example:
+	//
+	// true
+	Deleted *bool `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
+	// example:
+	//
+	// 200
+	MaxMessageCount *int32 `json:"MaxMessageCount,omitempty" xml:"MaxMessageCount,omitempty"`
+	// example:
+	//
+	// 3
+	MemberCount *int32 `json:"MemberCount,omitempty" xml:"MemberCount,omitempty"`
+	// example:
+	//
+	// 3
+	MemberJoinedCount *string `json:"MemberJoinedCount,omitempty" xml:"MemberJoinedCount,omitempty"`
+	// example:
+	//
+	// true
+	NeedJoined *bool `json:"NeedJoined,omitempty" xml:"NeedJoined,omitempty"`
+	// example:
+	//
+	// 26842
+	OwnerBid *string `json:"OwnerBid,omitempty" xml:"OwnerBid,omitempty"`
+	// example:
+	//
+	// uid-*
+	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// example:
+	//
+	// 212
+	OwnerUid *int64 `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
+	// example:
+	//
+	// 102410241
+	PreferredMaxBytes *int32 `json:"PreferredMaxBytes,omitempty" xml:"PreferredMaxBytes,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Running
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// true
+	SupportChannelConfig *bool `json:"SupportChannelConfig,omitempty" xml:"SupportChannelConfig,omitempty"`
+	// example:
+	//
+	// 1544411108000
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s DescribeFabricConsortiumChannelsResponseBodyResult) String() string {
@@ -11627,9 +14902,9 @@ func (s *DescribeFabricConsortiumChannelsResponseBodyResult) SetUpdateTime(v str
 }
 
 type DescribeFabricConsortiumChannelsResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFabricConsortiumChannelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFabricConsortiumChannelsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFabricConsortiumChannelsResponse) String() string {
@@ -11656,10 +14931,19 @@ func (s *DescribeFabricConsortiumChannelsResponse) SetBody(v *DescribeFabricCons
 }
 
 type DescribeFabricConsortiumConfigResponseBody struct {
-	ErrorCode *int32                                            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *DescribeFabricConsortiumConfigResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeFabricConsortiumConfigResponseBody) String() string {
@@ -11714,9 +14998,9 @@ func (s *DescribeFabricConsortiumConfigResponseBodyResult) SetOrdererType(v []*s
 }
 
 type DescribeFabricConsortiumConfigResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFabricConsortiumConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFabricConsortiumConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFabricConsortiumConfigResponse) String() string {
@@ -11743,8 +15027,16 @@ func (s *DescribeFabricConsortiumConfigResponse) SetBody(v *DescribeFabricConsor
 }
 
 type DescribeFabricConsortiumDeletableRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// consortium-lianmenyumingyi-hc5d1bwl****
 	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	Location     *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
 }
 
 func (s DescribeFabricConsortiumDeletableRequest) String() string {
@@ -11766,10 +15058,19 @@ func (s *DescribeFabricConsortiumDeletableRequest) SetLocation(v string) *Descri
 }
 
 type DescribeFabricConsortiumDeletableResponseBody struct {
-	ErrorCode *int32                                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *DescribeFabricConsortiumDeletableResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeFabricConsortiumDeletableResponseBody) String() string {
@@ -11801,15 +15102,42 @@ func (s *DescribeFabricConsortiumDeletableResponseBody) SetSuccess(v bool) *Desc
 }
 
 type DescribeFabricConsortiumDeletableResponseBodyResult struct {
-	CodeName       *string `json:"CodeName,omitempty" xml:"CodeName,omitempty"`
-	ConsortiumId   *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	// example:
+	//
+	// codename
+	CodeName *string `json:"CodeName,omitempty" xml:"CodeName,omitempty"`
+	// example:
+	//
+	// consortium-lianmenyumingyi-hc5d1bwlulg7
+	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	// example:
+	//
+	// myconsortium
 	ConsortiumName *string `json:"ConsortiumName,omitempty" xml:"ConsortiumName,omitempty"`
-	Deletable      *bool   `json:"Deletable,omitempty" xml:"Deletable,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Domain         *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	State          *string `json:"State,omitempty" xml:"State,omitempty"`
-	ZoneId         *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// true
+	Deletable *bool `json:"Deletable,omitempty" xml:"Deletable,omitempty"`
+	// example:
+	//
+	// description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// domain
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// Running
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeFabricConsortiumDeletableResponseBodyResult) String() string {
@@ -11866,9 +15194,9 @@ func (s *DescribeFabricConsortiumDeletableResponseBodyResult) SetZoneId(v string
 }
 
 type DescribeFabricConsortiumDeletableResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFabricConsortiumDeletableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFabricConsortiumDeletableResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFabricConsortiumDeletableResponse) String() string {
@@ -11895,8 +15223,16 @@ func (s *DescribeFabricConsortiumDeletableResponse) SetBody(v *DescribeFabricCon
 }
 
 type DescribeFabricConsortiumMemberApprovalRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// consortium-lianmenyumingyi-hc5d1bwlulg7
 	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	Location     *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
 }
 
 func (s DescribeFabricConsortiumMemberApprovalRequest) String() string {
@@ -11918,10 +15254,19 @@ func (s *DescribeFabricConsortiumMemberApprovalRequest) SetLocation(v string) *D
 }
 
 type DescribeFabricConsortiumMemberApprovalResponseBody struct {
-	ErrorCode *int32                                                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*DescribeFabricConsortiumMemberApprovalResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeFabricConsortiumMemberApprovalResponseBody) String() string {
@@ -11953,14 +15298,38 @@ func (s *DescribeFabricConsortiumMemberApprovalResponseBody) SetSuccess(v bool) 
 }
 
 type DescribeFabricConsortiumMemberApprovalResponseBodyResult struct {
+	// example:
+	//
+	// Any
 	ChannelCreatePolicy *string `json:"ChannelCreatePolicy,omitempty" xml:"ChannelCreatePolicy,omitempty"`
-	ConfirmTime         *string `json:"ConfirmTime,omitempty" xml:"ConfirmTime,omitempty"`
-	ConsortiumId        *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	ConsortiumName      *string `json:"ConsortiumName,omitempty" xml:"ConsortiumName,omitempty"`
-	DomainName          *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	OrganizationId      *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	OrganizationName    *string `json:"OrganizationName,omitempty" xml:"OrganizationName,omitempty"`
-	State               *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// 1544411108000
+	ConfirmTime *string `json:"ConfirmTime,omitempty" xml:"ConfirmTime,omitempty"`
+	// example:
+	//
+	// consortium-lianmenyumingyi-hc5d1bwlulg7
+	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	// example:
+	//
+	// name
+	ConsortiumName *string `json:"ConsortiumName,omitempty" xml:"ConsortiumName,omitempty"`
+	// example:
+	//
+	// domain
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// peers-aaaaaa2-1eqnj5o5w9dt3
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	// example:
+	//
+	// orgname
+	OrganizationName *string `json:"OrganizationName,omitempty" xml:"OrganizationName,omitempty"`
+	// example:
+	//
+	// Running
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s DescribeFabricConsortiumMemberApprovalResponseBodyResult) String() string {
@@ -12012,9 +15381,9 @@ func (s *DescribeFabricConsortiumMemberApprovalResponseBodyResult) SetState(v st
 }
 
 type DescribeFabricConsortiumMemberApprovalResponse struct {
-	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFabricConsortiumMemberApprovalResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFabricConsortiumMemberApprovalResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFabricConsortiumMemberApprovalResponse) String() string {
@@ -12041,8 +15410,16 @@ func (s *DescribeFabricConsortiumMemberApprovalResponse) SetBody(v *DescribeFabr
 }
 
 type DescribeFabricConsortiumMembersRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// consortium-lianmenyumingyi-hc5d1bwl****
 	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	Location     *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
 }
 
 func (s DescribeFabricConsortiumMembersRequest) String() string {
@@ -12064,10 +15441,19 @@ func (s *DescribeFabricConsortiumMembersRequest) SetLocation(v string) *Describe
 }
 
 type DescribeFabricConsortiumMembersResponseBody struct {
-	ErrorCode *int32                                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*DescribeFabricConsortiumMembersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeFabricConsortiumMembersResponseBody) String() string {
@@ -12099,11 +15485,29 @@ func (s *DescribeFabricConsortiumMembersResponseBody) SetSuccess(v bool) *Descri
 }
 
 type DescribeFabricConsortiumMembersResponseBodyResult struct {
-	ConsortiumId     *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Domain           *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	JoinedTime       *string `json:"JoinedTime,omitempty" xml:"JoinedTime,omitempty"`
-	OrganizationId   *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	// example:
+	//
+	// consortium-lianmenyumingyi-hc5d1bwlulg7
+	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	// example:
+	//
+	// description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// domain
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// 1544411108000
+	JoinedTime *string `json:"JoinedTime,omitempty" xml:"JoinedTime,omitempty"`
+	// example:
+	//
+	// peers-aaaaaa2-1eqnj5o5w9dt3
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	// example:
+	//
+	// name
 	OrganizationName *string `json:"OrganizationName,omitempty" xml:"OrganizationName,omitempty"`
 }
 
@@ -12146,9 +15550,9 @@ func (s *DescribeFabricConsortiumMembersResponseBodyResult) SetOrganizationName(
 }
 
 type DescribeFabricConsortiumMembersResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFabricConsortiumMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFabricConsortiumMembersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFabricConsortiumMembersResponse) String() string {
@@ -12175,8 +15579,16 @@ func (s *DescribeFabricConsortiumMembersResponse) SetBody(v *DescribeFabricConso
 }
 
 type DescribeFabricConsortiumOrderersRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// consortium-aaaaaa-akpcsjjac2jd
 	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	Location     *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
 }
 
 func (s DescribeFabricConsortiumOrderersRequest) String() string {
@@ -12198,10 +15610,19 @@ func (s *DescribeFabricConsortiumOrderersRequest) SetLocation(v string) *Describ
 }
 
 type DescribeFabricConsortiumOrderersResponseBody struct {
-	ErrorCode *int32                                                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*DescribeFabricConsortiumOrderersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeFabricConsortiumOrderersResponseBody) String() string {
@@ -12233,12 +15654,30 @@ func (s *DescribeFabricConsortiumOrderersResponseBody) SetSuccess(v bool) *Descr
 }
 
 type DescribeFabricConsortiumOrderersResponseBodyResult struct {
-	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Domain       *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// 1544411108000
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// domain
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// ecs.n1.small
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	OrdererName  *string `json:"OrdererName,omitempty" xml:"OrdererName,omitempty"`
-	Port         *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	UpdateTime   *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// order1
+	OrdererName *string `json:"OrdererName,omitempty" xml:"OrdererName,omitempty"`
+	// example:
+	//
+	// 7050
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// 1544411108000
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s DescribeFabricConsortiumOrderersResponseBodyResult) String() string {
@@ -12280,9 +15719,9 @@ func (s *DescribeFabricConsortiumOrderersResponseBodyResult) SetUpdateTime(v str
 }
 
 type DescribeFabricConsortiumOrderersResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFabricConsortiumOrderersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFabricConsortiumOrderersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFabricConsortiumOrderersResponse) String() string {
@@ -12309,10 +15748,19 @@ func (s *DescribeFabricConsortiumOrderersResponse) SetBody(v *DescribeFabricCons
 }
 
 type DescribeFabricConsortiumSpecsResponseBody struct {
-	ErrorCode *int32                                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*DescribeFabricConsortiumSpecsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeFabricConsortiumSpecsResponseBody) String() string {
@@ -12344,7 +15792,13 @@ func (s *DescribeFabricConsortiumSpecsResponseBody) SetSuccess(v bool) *Describe
 }
 
 type DescribeFabricConsortiumSpecsResponseBodyResult struct {
-	Enable    *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// true
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// basic
 	SpecName  *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
 	SpecTitle *string `json:"SpecTitle,omitempty" xml:"SpecTitle,omitempty"`
 }
@@ -12373,9 +15827,9 @@ func (s *DescribeFabricConsortiumSpecsResponseBodyResult) SetSpecTitle(v string)
 }
 
 type DescribeFabricConsortiumSpecsResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFabricConsortiumSpecsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFabricConsortiumSpecsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFabricConsortiumSpecsResponse) String() string {
@@ -12402,9 +15856,15 @@ func (s *DescribeFabricConsortiumSpecsResponse) SetBody(v *DescribeFabricConsort
 }
 
 type DescribeFabricConsortiumsRequest struct {
-	ConsortiumId *string                                `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	Location     *string                                `json:"Location,omitempty" xml:"Location,omitempty"`
-	Tag          []*DescribeFabricConsortiumsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// example:
+	//
+	// consortium-lianmenyumingyi-hc5d1bwl****
+	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Location *string                                `json:"Location,omitempty" xml:"Location,omitempty"`
+	Tag      []*DescribeFabricConsortiumsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeFabricConsortiumsRequest) String() string {
@@ -12431,7 +15891,15 @@ func (s *DescribeFabricConsortiumsRequest) SetTag(v []*DescribeFabricConsortiums
 }
 
 type DescribeFabricConsortiumsRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -12454,10 +15922,19 @@ func (s *DescribeFabricConsortiumsRequestTag) SetValue(v string) *DescribeFabric
 }
 
 type DescribeFabricConsortiumsResponseBody struct {
-	ErrorCode *int32                                         `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*DescribeFabricConsortiumsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeFabricConsortiumsResponseBody) String() string {
@@ -12489,23 +15966,74 @@ func (s *DescribeFabricConsortiumsResponseBody) SetSuccess(v bool) *DescribeFabr
 }
 
 type DescribeFabricConsortiumsResponseBodyResult struct {
-	ChannelCount         *int32                                             `json:"ChannelCount,omitempty" xml:"ChannelCount,omitempty"`
-	ChannelPolicy        *string                                            `json:"ChannelPolicy,omitempty" xml:"ChannelPolicy,omitempty"`
-	CodeName             *string                                            `json:"CodeName,omitempty" xml:"CodeName,omitempty"`
-	ConsortiumId         *string                                            `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	ConsortiumName       *string                                            `json:"ConsortiumName,omitempty" xml:"ConsortiumName,omitempty"`
-	CreateTime           *string                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Domain               *string                                            `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	ExpiredTime          *string                                            `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	MajorVersion         *string                                            `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
-	OrganizationCount    *int32                                             `json:"OrganizationCount,omitempty" xml:"OrganizationCount,omitempty"`
-	OwnerBid             *string                                            `json:"OwnerBid,omitempty" xml:"OwnerBid,omitempty"`
-	OwnerName            *string                                            `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	OwnerUid             *int64                                             `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
-	RegionId             *string                                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId            *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SpecName             *string                                            `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
-	State                *string                                            `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// 2
+	ChannelCount *int32 `json:"ChannelCount,omitempty" xml:"ChannelCount,omitempty"`
+	// example:
+	//
+	// Any
+	ChannelPolicy *string `json:"ChannelPolicy,omitempty" xml:"ChannelPolicy,omitempty"`
+	// example:
+	//
+	// code
+	CodeName *string `json:"CodeName,omitempty" xml:"CodeName,omitempty"`
+	// example:
+	//
+	// consortium-lianmenyumingyi-hc5d1bwl****
+	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	// example:
+	//
+	// name
+	ConsortiumName *string `json:"ConsortiumName,omitempty" xml:"ConsortiumName,omitempty"`
+	// example:
+	//
+	// 1544411108000
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// domain
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// 1544411108000
+	ExpiredTime  *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	MajorVersion *string `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
+	// example:
+	//
+	// 2
+	OrganizationCount *int32 `json:"OrganizationCount,omitempty" xml:"OrganizationCount,omitempty"`
+	// example:
+	//
+	// 26842
+	OwnerBid *string `json:"OwnerBid,omitempty" xml:"OwnerBid,omitempty"`
+	// example:
+	//
+	// uid-125566
+	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// example:
+	//
+	// 12042815
+	OwnerUid *int64 `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 3A929FAC-A82D-4EAB-A0FF-D867426D8B23
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// basic
+	SpecName *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
+	// example:
+	//
+	// Pending
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// true
 	SupportChannelConfig *bool                                              `json:"SupportChannelConfig,omitempty" xml:"SupportChannelConfig,omitempty"`
 	Tags                 []*DescribeFabricConsortiumsResponseBodyResultTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
@@ -12614,7 +16142,13 @@ func (s *DescribeFabricConsortiumsResponseBodyResult) SetTags(v []*DescribeFabri
 }
 
 type DescribeFabricConsortiumsResponseBodyResultTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// app
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// nat_internet
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -12637,9 +16171,9 @@ func (s *DescribeFabricConsortiumsResponseBodyResultTags) SetValue(v string) *De
 }
 
 type DescribeFabricConsortiumsResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFabricConsortiumsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFabricConsortiumsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFabricConsortiumsResponse) String() string {
@@ -12666,9 +16200,27 @@ func (s *DescribeFabricConsortiumsResponse) SetBody(v *DescribeFabricConsortiums
 }
 
 type DescribeFabricExplorerRequest struct {
-	ExBody         *string `json:"ExBody,omitempty" xml:"ExBody,omitempty"`
-	ExMethod       *string `json:"ExMethod,omitempty" xml:"ExMethod,omitempty"`
-	ExUrl          *string `json:"ExUrl,omitempty" xml:"ExUrl,omitempty"`
+	// example:
+	//
+	// {}
+	ExBody *string `json:"ExBody,omitempty" xml:"ExBody,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// GET
+	ExMethod *string `json:"ExMethod,omitempty" xml:"ExMethod,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// /api/v1/channel
+	ExUrl *string `json:"ExUrl,omitempty" xml:"ExUrl,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// peers-test11-tzwny25vqicq
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 
@@ -12701,12 +16253,30 @@ func (s *DescribeFabricExplorerRequest) SetOrganizationId(v string) *DescribeFab
 }
 
 type DescribeFabricExplorerResponseBody struct {
-	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// ExplorerException
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// An error in the monitoring service has occurred.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorCode      *int32  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result         *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 19E91C1D-9BD0-468F-A7DA-915263C6689F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// {}
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeFabricExplorerResponseBody) String() string {
@@ -12748,9 +16318,9 @@ func (s *DescribeFabricExplorerResponseBody) SetSuccess(v bool) *DescribeFabricE
 }
 
 type DescribeFabricExplorerResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFabricExplorerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFabricExplorerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFabricExplorerResponse) String() string {
@@ -12777,6 +16347,11 @@ func (s *DescribeFabricExplorerResponse) SetBody(v *DescribeFabricExplorerRespon
 }
 
 type DescribeFabricInvitationCodeRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// consortium-lianmenyumingyi-hc5d1bwl****
 	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
 }
 
@@ -12794,12 +16369,27 @@ func (s *DescribeFabricInvitationCodeRequest) SetConsortiumId(v string) *Describ
 }
 
 type DescribeFabricInvitationCodeResponseBody struct {
-	DynamicCode    *string                                         `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string                                         `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorCode      *int32                                          `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result         *DescribeFabricInvitationCodeResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success        *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// InvitationCodeNotFound
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// The invitation code could not found.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 77E25463-56CB-4F1C-8EB6-8ADDFE39EF0F
+	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *DescribeFabricInvitationCodeResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeFabricInvitationCodeResponseBody) String() string {
@@ -12841,17 +16431,50 @@ func (s *DescribeFabricInvitationCodeResponseBody) SetSuccess(v bool) *DescribeF
 }
 
 type DescribeFabricInvitationCodeResponseBodyResult struct {
-	Accepted     *bool   `json:"Accepted,omitempty" xml:"Accepted,omitempty"`
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	Accepted *bool `json:"Accepted,omitempty" xml:"Accepted,omitempty"`
+	// example:
+	//
+	// code
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// consortium-lianmenyumingyi-hc5d1bwlulg7
 	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	Email        *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	ExpireTime   *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	InvitationId *int32  `json:"InvitationId,omitempty" xml:"InvitationId,omitempty"`
-	SendTime     *string `json:"SendTime,omitempty" xml:"SendTime,omitempty"`
-	SenderBid    *string `json:"SenderBid,omitempty" xml:"SenderBid,omitempty"`
-	SenderId     *int64  `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
-	SenderName   *string `json:"SenderName,omitempty" xml:"SenderName,omitempty"`
-	Url          *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// abc@126.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// 1544411108000
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// 2
+	InvitationId *int32 `json:"InvitationId,omitempty" xml:"InvitationId,omitempty"`
+	// example:
+	//
+	// 1544411108000
+	SendTime *string `json:"SendTime,omitempty" xml:"SendTime,omitempty"`
+	// example:
+	//
+	// 27534
+	SenderBid *string `json:"SenderBid,omitempty" xml:"SenderBid,omitempty"`
+	// example:
+	//
+	// 26345345
+	SenderId *int64 `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
+	// example:
+	//
+	// uid-35324
+	SenderName *string `json:"SenderName,omitempty" xml:"SenderName,omitempty"`
+	// example:
+	//
+	// http://baas.console.aliyun.test/invite?code=92e7ef1934892
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s DescribeFabricInvitationCodeResponseBodyResult) String() string {
@@ -12918,9 +16541,9 @@ func (s *DescribeFabricInvitationCodeResponseBodyResult) SetUrl(v string) *Descr
 }
 
 type DescribeFabricInvitationCodeResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFabricInvitationCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFabricInvitationCodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFabricInvitationCodeResponse) String() string {
@@ -12947,6 +16570,11 @@ func (s *DescribeFabricInvitationCodeResponse) SetBody(v *DescribeFabricInvitati
 }
 
 type DescribeFabricInviterRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 }
 
@@ -12964,10 +16592,19 @@ func (s *DescribeFabricInviterRequest) SetCode(v string) *DescribeFabricInviterR
 }
 
 type DescribeFabricInviterResponseBody struct {
-	ErrorCode *int32                                   `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// C445762C-8909-4BD8-A2BD-BB45BF2441D8
 	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *DescribeFabricInviterResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeFabricInviterResponseBody) String() string {
@@ -12999,11 +16636,26 @@ func (s *DescribeFabricInviterResponseBody) SetSuccess(v bool) *DescribeFabricIn
 }
 
 type DescribeFabricInviterResponseBodyResult struct {
-	ConsortiumId   *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	// example:
+	//
+	// consortium-lianmenyumingyi-hc5d1bwl****
+	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	// example:
+	//
+	// name
 	ConsortiumName *string `json:"ConsortiumName,omitempty" xml:"ConsortiumName,omitempty"`
-	ExpireTime     *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	InviterId      *int64  `json:"InviterId,omitempty" xml:"InviterId,omitempty"`
-	InviterName    *string `json:"InviterName,omitempty" xml:"InviterName,omitempty"`
+	// example:
+	//
+	// 1544411108000
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// 3524234
+	InviterId *int64 `json:"InviterId,omitempty" xml:"InviterId,omitempty"`
+	// example:
+	//
+	// name
+	InviterName *string `json:"InviterName,omitempty" xml:"InviterName,omitempty"`
 }
 
 func (s DescribeFabricInviterResponseBodyResult) String() string {
@@ -13040,9 +16692,9 @@ func (s *DescribeFabricInviterResponseBodyResult) SetInviterName(v string) *Desc
 }
 
 type DescribeFabricInviterResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFabricInviterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFabricInviterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFabricInviterResponse) String() string {
@@ -13069,9 +16721,22 @@ func (s *DescribeFabricInviterResponse) SetBody(v *DescribeFabricInviterResponse
 }
 
 type DescribeFabricOrdererLogsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// consortium-test-iyuso3g773ki
 	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	Lines        *string `json:"Lines,omitempty" xml:"Lines,omitempty"`
-	OrdererName  *string `json:"OrdererName,omitempty" xml:"OrdererName,omitempty"`
+	// example:
+	//
+	// 50
+	Lines *string `json:"Lines,omitempty" xml:"Lines,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// orderer1
+	OrdererName *string `json:"OrdererName,omitempty" xml:"OrdererName,omitempty"`
 }
 
 func (s DescribeFabricOrdererLogsRequest) String() string {
@@ -13098,10 +16763,22 @@ func (s *DescribeFabricOrdererLogsRequest) SetOrdererName(v string) *DescribeFab
 }
 
 type DescribeFabricOrdererLogsResponseBody struct {
-	ErrorCode *int32  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 508EA949-6349-4C86-B8E7-1D90669382B1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Kafka.Retry.Producer.RetryMax=3
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeFabricOrdererLogsResponseBody) String() string {
@@ -13133,9 +16810,9 @@ func (s *DescribeFabricOrdererLogsResponseBody) SetSuccess(v bool) *DescribeFabr
 }
 
 type DescribeFabricOrdererLogsResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFabricOrdererLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFabricOrdererLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFabricOrdererLogsResponse) String() string {
@@ -13162,7 +16839,15 @@ func (s *DescribeFabricOrdererLogsResponse) SetBody(v *DescribeFabricOrdererLogs
 }
 
 type DescribeFabricOrganizationRequest struct {
-	Location       *string                                 `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// peers-aaaaaa2-1eqnj5o5w****
 	OrganizationId *string                                 `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 	Tag            []*DescribeFabricOrganizationRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -13191,7 +16876,15 @@ func (s *DescribeFabricOrganizationRequest) SetTag(v []*DescribeFabricOrganizati
 }
 
 type DescribeFabricOrganizationRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -13214,10 +16907,19 @@ func (s *DescribeFabricOrganizationRequestTag) SetValue(v string) *DescribeFabri
 }
 
 type DescribeFabricOrganizationResponseBody struct {
-	ErrorCode *int32                                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *DescribeFabricOrganizationResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeFabricOrganizationResponseBody) String() string {
@@ -13249,27 +16951,87 @@ func (s *DescribeFabricOrganizationResponseBody) SetSuccess(v bool) *DescribeFab
 }
 
 type DescribeFabricOrganizationResponseBodyResult struct {
-	CANAME                  *string                                             `json:"CANAME,omitempty" xml:"CANAME,omitempty"`
-	CAUrl                   *string                                             `json:"CAUrl,omitempty" xml:"CAUrl,omitempty"`
-	CodeName                *string                                             `json:"CodeName,omitempty" xml:"CodeName,omitempty"`
-	ConsortiumCount         *int32                                              `json:"ConsortiumCount,omitempty" xml:"ConsortiumCount,omitempty"`
-	CreateTime              *string                                             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Domain                  *string                                             `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	MSP                     *string                                             `json:"MSP,omitempty" xml:"MSP,omitempty"`
-	OrganizationDescription *string                                             `json:"OrganizationDescription,omitempty" xml:"OrganizationDescription,omitempty"`
-	OrganizationId          *string                                             `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	OrganizationName        *string                                             `json:"OrganizationName,omitempty" xml:"OrganizationName,omitempty"`
-	OwnerBid                *string                                             `json:"OwnerBid,omitempty" xml:"OwnerBid,omitempty"`
-	OwnerName               *string                                             `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	OwnerUid                *int64                                              `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
-	PeerCount               *int32                                              `json:"PeerCount,omitempty" xml:"PeerCount,omitempty"`
-	RegionId                *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId               *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SpecName                *string                                             `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
-	State                   *string                                             `json:"State,omitempty" xml:"State,omitempty"`
-	Tags                    []*DescribeFabricOrganizationResponseBodyResultTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	UserCount               *int32                                              `json:"UserCount,omitempty" xml:"UserCount,omitempty"`
-	ZoneId                  *string                                             `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// client
+	CANAME *string `json:"CANAME,omitempty" xml:"CANAME,omitempty"`
+	// example:
+	//
+	// https://ca1.org1.alibabacloudbaas.com:31154
+	CAUrl *string `json:"CAUrl,omitempty" xml:"CAUrl,omitempty"`
+	// example:
+	//
+	// org1
+	CodeName *string `json:"CodeName,omitempty" xml:"CodeName,omitempty"`
+	// example:
+	//
+	// 2
+	ConsortiumCount *int32 `json:"ConsortiumCount,omitempty" xml:"ConsortiumCount,omitempty"`
+	// example:
+	//
+	// 1533025590
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// org1.alibabacloudbaas.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// org1MSP
+	MSP *string `json:"MSP,omitempty" xml:"MSP,omitempty"`
+	// example:
+	//
+	// This is org1
+	OrganizationDescription *string `json:"OrganizationDescription,omitempty" xml:"OrganizationDescription,omitempty"`
+	// example:
+	//
+	// peers-aaaaaa2-1eqnj5o5w9dt3
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	// example:
+	//
+	// org1
+	OrganizationName *string `json:"OrganizationName,omitempty" xml:"OrganizationName,omitempty"`
+	// example:
+	//
+	// 2544
+	OwnerBid *string `json:"OwnerBid,omitempty" xml:"OwnerBid,omitempty"`
+	// example:
+	//
+	// uid-23434
+	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// example:
+	//
+	// 23434
+	OwnerUid *int64 `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
+	// example:
+	//
+	// 2
+	PeerCount *int32 `json:"PeerCount,omitempty" xml:"PeerCount,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// basic
+	SpecName *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
+	// example:
+	//
+	// Running
+	State *string                                             `json:"State,omitempty" xml:"State,omitempty"`
+	Tags  []*DescribeFabricOrganizationResponseBodyResultTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2
+	UserCount *int32 `json:"UserCount,omitempty" xml:"UserCount,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-1a
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeFabricOrganizationResponseBodyResult) String() string {
@@ -13386,7 +17148,13 @@ func (s *DescribeFabricOrganizationResponseBodyResult) SetZoneId(v string) *Desc
 }
 
 type DescribeFabricOrganizationResponseBodyResultTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// BlockChainOwner
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// DepartmentA
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -13409,9 +17177,9 @@ func (s *DescribeFabricOrganizationResponseBodyResultTags) SetValue(v string) *D
 }
 
 type DescribeFabricOrganizationResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFabricOrganizationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFabricOrganizationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFabricOrganizationResponse) String() string {
@@ -13438,6 +17206,11 @@ func (s *DescribeFabricOrganizationResponse) SetBody(v *DescribeFabricOrganizati
 }
 
 type DescribeFabricOrganizationChaincodePackageRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// peers-aaaaaa2-1eqnj5o5w9dt3
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 
@@ -13455,11 +17228,23 @@ func (s *DescribeFabricOrganizationChaincodePackageRequest) SetOrganizationId(v 
 }
 
 type DescribeFabricOrganizationChaincodePackageResponseBody struct {
-	ErrorCode *int32              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string             `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*ChaincodePackage `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool               `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeFabricOrganizationChaincodePackageResponseBody) String() string {
@@ -13496,9 +17281,9 @@ func (s *DescribeFabricOrganizationChaincodePackageResponseBody) SetSuccess(v bo
 }
 
 type DescribeFabricOrganizationChaincodePackageResponse struct {
-	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFabricOrganizationChaincodePackageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFabricOrganizationChaincodePackageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFabricOrganizationChaincodePackageResponse) String() string {
@@ -13525,7 +17310,15 @@ func (s *DescribeFabricOrganizationChaincodePackageResponse) SetBody(v *Describe
 }
 
 type DescribeFabricOrganizationChaincodesRequest struct {
-	Location       *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// peers-aaaaaa2-1eqnj5o5w****
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 
@@ -13548,10 +17341,19 @@ func (s *DescribeFabricOrganizationChaincodesRequest) SetOrganizationId(v string
 }
 
 type DescribeFabricOrganizationChaincodesResponseBody struct {
-	ErrorCode *int32                                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*DescribeFabricOrganizationChaincodesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeFabricOrganizationChaincodesResponseBody) String() string {
@@ -13583,19 +17385,58 @@ func (s *DescribeFabricOrganizationChaincodesResponseBody) SetSuccess(v bool) *D
 }
 
 type DescribeFabricOrganizationChaincodesResponseBodyResult struct {
-	ChaincodeId      *string `json:"ChaincodeId,omitempty" xml:"ChaincodeId,omitempty"`
-	ChaincodeName    *string `json:"ChaincodeName,omitempty" xml:"ChaincodeName,omitempty"`
+	// example:
+	//
+	// code-sacc-1pr09q7jmo0np
+	ChaincodeId *string `json:"ChaincodeId,omitempty" xml:"ChaincodeId,omitempty"`
+	// example:
+	//
+	// mycc
+	ChaincodeName *string `json:"ChaincodeName,omitempty" xml:"ChaincodeName,omitempty"`
+	// example:
+	//
+	// 0.3
 	ChaincodeVersion *string `json:"ChaincodeVersion,omitempty" xml:"ChaincodeVersion,omitempty"`
-	ChannelId        *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	ChannelName      *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	ConsortiumId     *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	CreateTime       *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Creator          *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	DeployTime       *string `json:"DeployTime,omitempty" xml:"DeployTime,omitempty"`
-	EndorsePolicy    *string `json:"EndorsePolicy,omitempty" xml:"EndorsePolicy,omitempty"`
-	Installed        *string `json:"Installed,omitempty" xml:"Installed,omitempty"`
-	Message          *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	State            *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// chan-first-channel-31hlgpen5k5lig
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// example:
+	//
+	// first-channel
+	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// example:
+	//
+	// consortium-lianmenyumingyi-hc5d1bwlulg7
+	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	// example:
+	//
+	// 1533025590
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// uid-23425
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// example:
+	//
+	// 1533025590
+	DeployTime *string `json:"DeployTime,omitempty" xml:"DeployTime,omitempty"`
+	// example:
+	//
+	// OR (&#39;perf9141MSP.member&#39;)
+	EndorsePolicy *string `json:"EndorsePolicy,omitempty" xml:"EndorsePolicy,omitempty"`
+	// example:
+	//
+	// Installed
+	Installed *string `json:"Installed,omitempty" xml:"Installed,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// RUNNING
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s DescribeFabricOrganizationChaincodesResponseBodyResult) String() string {
@@ -13672,9 +17513,9 @@ func (s *DescribeFabricOrganizationChaincodesResponseBodyResult) SetState(v stri
 }
 
 type DescribeFabricOrganizationChaincodesResponse struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFabricOrganizationChaincodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFabricOrganizationChaincodesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFabricOrganizationChaincodesResponse) String() string {
@@ -13701,7 +17542,15 @@ func (s *DescribeFabricOrganizationChaincodesResponse) SetBody(v *DescribeFabric
 }
 
 type DescribeFabricOrganizationChannelsRequest struct {
-	Location       *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// peers-aaaaaa2-1eqnj5o5****
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 
@@ -13724,10 +17573,19 @@ func (s *DescribeFabricOrganizationChannelsRequest) SetOrganizationId(v string) 
 }
 
 type DescribeFabricOrganizationChannelsResponseBody struct {
-	ErrorCode *int32                                                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*DescribeFabricOrganizationChannelsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeFabricOrganizationChannelsResponseBody) String() string {
@@ -13759,26 +17617,71 @@ func (s *DescribeFabricOrganizationChannelsResponseBody) SetSuccess(v bool) *Des
 }
 
 type DescribeFabricOrganizationChannelsResponseBodyResult struct {
-	BatchTimeout         *int32  `json:"BatchTimeout,omitempty" xml:"BatchTimeout,omitempty"`
-	BlockCount           *int32  `json:"BlockCount,omitempty" xml:"BlockCount,omitempty"`
-	ChaincodeCount       *int32  `json:"ChaincodeCount,omitempty" xml:"ChaincodeCount,omitempty"`
-	ChannelId            *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	ChannelName          *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	ConsortiumId         *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	ConsortiumName       *string `json:"ConsortiumName,omitempty" xml:"ConsortiumName,omitempty"`
-	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeleteTime           *string `json:"DeleteTime,omitempty" xml:"DeleteTime,omitempty"`
-	Deleted              *bool   `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
-	MaxMessageCount      *int32  `json:"MaxMessageCount,omitempty" xml:"MaxMessageCount,omitempty"`
-	MemberCount          *int32  `json:"MemberCount,omitempty" xml:"MemberCount,omitempty"`
-	OwnerBid             *string `json:"OwnerBid,omitempty" xml:"OwnerBid,omitempty"`
-	OwnerName            *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	OwnerUid             *int64  `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
-	PreferredMaxBytes    *int32  `json:"PreferredMaxBytes,omitempty" xml:"PreferredMaxBytes,omitempty"`
-	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	State                *string `json:"State,omitempty" xml:"State,omitempty"`
-	SupportChannelConfig *bool   `json:"SupportChannelConfig,omitempty" xml:"SupportChannelConfig,omitempty"`
-	UpdateTime           *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 2
+	BatchTimeout *int32 `json:"BatchTimeout,omitempty" xml:"BatchTimeout,omitempty"`
+	// example:
+	//
+	// 3
+	BlockCount *int32 `json:"BlockCount,omitempty" xml:"BlockCount,omitempty"`
+	// example:
+	//
+	// 2
+	ChaincodeCount *int32  `json:"ChaincodeCount,omitempty" xml:"ChaincodeCount,omitempty"`
+	ChannelId      *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// example:
+	//
+	// mychannel
+	ChannelName  *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	// example:
+	//
+	// name
+	ConsortiumName *string `json:"ConsortiumName,omitempty" xml:"ConsortiumName,omitempty"`
+	// example:
+	//
+	// 1533025590
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1533025590
+	DeleteTime *string `json:"DeleteTime,omitempty" xml:"DeleteTime,omitempty"`
+	// example:
+	//
+	// true
+	Deleted *bool `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
+	// example:
+	//
+	// 12
+	MaxMessageCount *int32 `json:"MaxMessageCount,omitempty" xml:"MaxMessageCount,omitempty"`
+	// example:
+	//
+	// 3
+	MemberCount *int32  `json:"MemberCount,omitempty" xml:"MemberCount,omitempty"`
+	OwnerBid    *string `json:"OwnerBid,omitempty" xml:"OwnerBid,omitempty"`
+	OwnerName   *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	OwnerUid    *int64  `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
+	// example:
+	//
+	// 24
+	PreferredMaxBytes *int32 `json:"PreferredMaxBytes,omitempty" xml:"PreferredMaxBytes,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Running
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// true
+	SupportChannelConfig *bool `json:"SupportChannelConfig,omitempty" xml:"SupportChannelConfig,omitempty"`
+	// example:
+	//
+	// 1533025590
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s DescribeFabricOrganizationChannelsResponseBodyResult) String() string {
@@ -13890,9 +17793,9 @@ func (s *DescribeFabricOrganizationChannelsResponseBodyResult) SetUpdateTime(v s
 }
 
 type DescribeFabricOrganizationChannelsResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFabricOrganizationChannelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFabricOrganizationChannelsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFabricOrganizationChannelsResponse) String() string {
@@ -13919,7 +17822,15 @@ func (s *DescribeFabricOrganizationChannelsResponse) SetBody(v *DescribeFabricOr
 }
 
 type DescribeFabricOrganizationDeletableRequest struct {
-	Location       *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// peers-aaaaaa2-1eqnj5o5w****
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 
@@ -13942,10 +17853,19 @@ func (s *DescribeFabricOrganizationDeletableRequest) SetOrganizationId(v string)
 }
 
 type DescribeFabricOrganizationDeletableResponseBody struct {
-	ErrorCode *int32                                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *DescribeFabricOrganizationDeletableResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeFabricOrganizationDeletableResponseBody) String() string {
@@ -13977,15 +17897,42 @@ func (s *DescribeFabricOrganizationDeletableResponseBody) SetSuccess(v bool) *De
 }
 
 type DescribeFabricOrganizationDeletableResponseBodyResult struct {
-	CodeName                *string `json:"CodeName,omitempty" xml:"CodeName,omitempty"`
-	Deletable               *bool   `json:"Deletable,omitempty" xml:"Deletable,omitempty"`
-	Domain                  *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// name
+	CodeName *string `json:"CodeName,omitempty" xml:"CodeName,omitempty"`
+	// example:
+	//
+	// true
+	Deletable *bool `json:"Deletable,omitempty" xml:"Deletable,omitempty"`
+	// example:
+	//
+	// domain
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// desc
 	OrganizationDescription *string `json:"OrganizationDescription,omitempty" xml:"OrganizationDescription,omitempty"`
-	OrganizationId          *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	OrganizationName        *string `json:"OrganizationName,omitempty" xml:"OrganizationName,omitempty"`
-	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	State                   *string `json:"State,omitempty" xml:"State,omitempty"`
-	ZoneId                  *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// peers-aaaaaa2-1eqnj5o5w****
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	// example:
+	//
+	// orgname
+	OrganizationName *string `json:"OrganizationName,omitempty" xml:"OrganizationName,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// Running
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// zone
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeFabricOrganizationDeletableResponseBodyResult) String() string {
@@ -14042,9 +17989,9 @@ func (s *DescribeFabricOrganizationDeletableResponseBodyResult) SetZoneId(v stri
 }
 
 type DescribeFabricOrganizationDeletableResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFabricOrganizationDeletableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFabricOrganizationDeletableResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFabricOrganizationDeletableResponse) String() string {
@@ -14071,7 +18018,15 @@ func (s *DescribeFabricOrganizationDeletableResponse) SetBody(v *DescribeFabricO
 }
 
 type DescribeFabricOrganizationMembersRequest struct {
-	Location       *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// peers-aaaaaa2-1eqnj5o5w****
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 
@@ -14094,10 +18049,19 @@ func (s *DescribeFabricOrganizationMembersRequest) SetOrganizationId(v string) *
 }
 
 type DescribeFabricOrganizationMembersResponseBody struct {
-	ErrorCode *int32                                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*DescribeFabricOrganizationMembersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeFabricOrganizationMembersResponseBody) String() string {
@@ -14129,14 +18093,38 @@ func (s *DescribeFabricOrganizationMembersResponseBody) SetSuccess(v bool) *Desc
 }
 
 type DescribeFabricOrganizationMembersResponseBodyResult struct {
-	ConsortiumId     *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	ConsortiumName   *string `json:"ConsortiumName,omitempty" xml:"ConsortiumName,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Domain           *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	JoinedTime       *string `json:"JoinedTime,omitempty" xml:"JoinedTime,omitempty"`
-	OrganizationId   *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	// example:
+	//
+	// consortium-lianmenyumingyi-hc5d1bwl****
+	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	// example:
+	//
+	// name
+	ConsortiumName *string `json:"ConsortiumName,omitempty" xml:"ConsortiumName,omitempty"`
+	// example:
+	//
+	// desc
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// domain
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// 1533025590
+	JoinedTime *string `json:"JoinedTime,omitempty" xml:"JoinedTime,omitempty"`
+	// example:
+	//
+	// peers-aaaaaa2-1eqnj5o5w****
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	// example:
+	//
+	// name
 	OrganizationName *string `json:"OrganizationName,omitempty" xml:"OrganizationName,omitempty"`
-	State            *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// Running
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s DescribeFabricOrganizationMembersResponseBodyResult) String() string {
@@ -14188,9 +18176,9 @@ func (s *DescribeFabricOrganizationMembersResponseBodyResult) SetState(v string)
 }
 
 type DescribeFabricOrganizationMembersResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFabricOrganizationMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFabricOrganizationMembersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFabricOrganizationMembersResponse) String() string {
@@ -14217,7 +18205,15 @@ func (s *DescribeFabricOrganizationMembersResponse) SetBody(v *DescribeFabricOrg
 }
 
 type DescribeFabricOrganizationPeersRequest struct {
-	Location       *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// peers-aaaaaa2-1eqnj5o5w****
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 
@@ -14240,10 +18236,19 @@ func (s *DescribeFabricOrganizationPeersRequest) SetOrganizationId(v string) *De
 }
 
 type DescribeFabricOrganizationPeersResponseBody struct {
-	ErrorCode *int32                                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*DescribeFabricOrganizationPeersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeFabricOrganizationPeersResponseBody) String() string {
@@ -14275,15 +18280,42 @@ func (s *DescribeFabricOrganizationPeersResponseBody) SetSuccess(v bool) *Descri
 }
 
 type DescribeFabricOrganizationPeersResponseBodyResult struct {
-	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Domain               *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	InstanceType         *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	InternetIp           *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	IntranetIp           *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	IsAnchor             *bool   `json:"IsAnchor,omitempty" xml:"IsAnchor,omitempty"`
+	// example:
+	//
+	// 1533025590
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// domain
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// basic
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// 10.0.0.2
+	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	// example:
+	//
+	// 10.0.0.2
+	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	// example:
+	//
+	// false
+	IsAnchor *bool `json:"IsAnchor,omitempty" xml:"IsAnchor,omitempty"`
+	// example:
+	//
+	// name
 	OrganizationPeerName *string `json:"OrganizationPeerName,omitempty" xml:"OrganizationPeerName,omitempty"`
-	Port                 *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	UpdateTime           *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 1234
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// 1533025590
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s DescribeFabricOrganizationPeersResponseBodyResult) String() string {
@@ -14340,9 +18372,9 @@ func (s *DescribeFabricOrganizationPeersResponseBodyResult) SetUpdateTime(v stri
 }
 
 type DescribeFabricOrganizationPeersResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFabricOrganizationPeersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFabricOrganizationPeersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFabricOrganizationPeersResponse) String() string {
@@ -14369,10 +18401,19 @@ func (s *DescribeFabricOrganizationPeersResponse) SetBody(v *DescribeFabricOrgan
 }
 
 type DescribeFabricOrganizationSpecsResponseBody struct {
-	ErrorCode *int32                                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*DescribeFabricOrganizationSpecsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeFabricOrganizationSpecsResponseBody) String() string {
@@ -14404,7 +18445,13 @@ func (s *DescribeFabricOrganizationSpecsResponseBody) SetSuccess(v bool) *Descri
 }
 
 type DescribeFabricOrganizationSpecsResponseBodyResult struct {
-	Enable                *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// true
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// basic
 	OrganizationSpecsName *string `json:"OrganizationSpecsName,omitempty" xml:"OrganizationSpecsName,omitempty"`
 	Title                 *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
@@ -14433,9 +18480,9 @@ func (s *DescribeFabricOrganizationSpecsResponseBodyResult) SetTitle(v string) *
 }
 
 type DescribeFabricOrganizationSpecsResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFabricOrganizationSpecsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFabricOrganizationSpecsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFabricOrganizationSpecsResponse) String() string {
@@ -14462,7 +18509,15 @@ func (s *DescribeFabricOrganizationSpecsResponse) SetBody(v *DescribeFabricOrgan
 }
 
 type DescribeFabricOrganizationUsersRequest struct {
-	Location       *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// peers-aaaaaa2-1eqnj5o5w****
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 
@@ -14485,10 +18540,19 @@ func (s *DescribeFabricOrganizationUsersRequest) SetOrganizationId(v string) *De
 }
 
 type DescribeFabricOrganizationUsersResponseBody struct {
-	ErrorCode *int32                                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*DescribeFabricOrganizationUsersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeFabricOrganizationUsersResponseBody) String() string {
@@ -14520,15 +18584,42 @@ func (s *DescribeFabricOrganizationUsersResponseBody) SetSuccess(v bool) *Descri
 }
 
 type DescribeFabricOrganizationUsersResponseBodyResult struct {
-	Attrs          *string `json:"Attrs,omitempty" xml:"Attrs,omitempty"`
-	CallerBid      *string `json:"CallerBid,omitempty" xml:"CallerBid,omitempty"`
-	CallerUid      *int64  `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
-	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ExpireTime     *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	FullName       *string `json:"FullName,omitempty" xml:"FullName,omitempty"`
+	// example:
+	//
+	// foo=foo1,bar=bar1
+	Attrs *string `json:"Attrs,omitempty" xml:"Attrs,omitempty"`
+	// example:
+	//
+	// 26842
+	CallerBid *string `json:"CallerBid,omitempty" xml:"CallerBid,omitempty"`
+	// example:
+	//
+	// 84927598****
+	CallerUid *int64 `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
+	// example:
+	//
+	// 1533025590
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1533025590
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// name
+	FullName *string `json:"FullName,omitempty" xml:"FullName,omitempty"`
+	// example:
+	//
+	// peers-aaaaaa2-1eqnj5o5w9dt3
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Username       *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// username
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s DescribeFabricOrganizationUsersResponseBodyResult) String() string {
@@ -14585,9 +18676,9 @@ func (s *DescribeFabricOrganizationUsersResponseBodyResult) SetUsername(v string
 }
 
 type DescribeFabricOrganizationUsersResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFabricOrganizationUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFabricOrganizationUsersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFabricOrganizationUsersResponse) String() string {
@@ -14614,6 +18705,9 @@ func (s *DescribeFabricOrganizationUsersResponse) SetBody(v *DescribeFabricOrgan
 }
 
 type DescribeFabricOrganizationsRequest struct {
+	// example:
+	//
+	// cn-hangzhou
 	Location *string                                  `json:"Location,omitempty" xml:"Location,omitempty"`
 	Tag      []*DescribeFabricOrganizationsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -14637,7 +18731,15 @@ func (s *DescribeFabricOrganizationsRequest) SetTag(v []*DescribeFabricOrganizat
 }
 
 type DescribeFabricOrganizationsRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -14660,10 +18762,19 @@ func (s *DescribeFabricOrganizationsRequestTag) SetValue(v string) *DescribeFabr
 }
 
 type DescribeFabricOrganizationsResponseBody struct {
-	ErrorCode *int32                                           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*DescribeFabricOrganizationsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeFabricOrganizationsResponseBody) String() string {
@@ -14695,25 +18806,76 @@ func (s *DescribeFabricOrganizationsResponseBody) SetSuccess(v bool) *DescribeFa
 }
 
 type DescribeFabricOrganizationsResponseBodyResult struct {
-	CodeName                *string                                              `json:"CodeName,omitempty" xml:"CodeName,omitempty"`
-	ConsortiumCount         *int32                                               `json:"ConsortiumCount,omitempty" xml:"ConsortiumCount,omitempty"`
-	CreateTime              *string                                              `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Domain                  *string                                              `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	MajorVersion            *string                                              `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
-	OrganizationDescription *string                                              `json:"OrganizationDescription,omitempty" xml:"OrganizationDescription,omitempty"`
-	OrganizationId          *string                                              `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	OrganizationName        *string                                              `json:"OrganizationName,omitempty" xml:"OrganizationName,omitempty"`
-	OwnerBid                *string                                              `json:"OwnerBid,omitempty" xml:"OwnerBid,omitempty"`
-	OwnerName               *string                                              `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	OwnerUid                *int64                                               `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
-	PeerCount               *int32                                               `json:"PeerCount,omitempty" xml:"PeerCount,omitempty"`
-	RegionId                *string                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId               *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SpecName                *string                                              `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
-	State                   *string                                              `json:"State,omitempty" xml:"State,omitempty"`
-	Tags                    []*DescribeFabricOrganizationsResponseBodyResultTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	UserCount               *int32                                               `json:"UserCount,omitempty" xml:"UserCount,omitempty"`
-	ZoneId                  *string                                              `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// name
+	CodeName *string `json:"CodeName,omitempty" xml:"CodeName,omitempty"`
+	// example:
+	//
+	// 2
+	ConsortiumCount *int32 `json:"ConsortiumCount,omitempty" xml:"ConsortiumCount,omitempty"`
+	// example:
+	//
+	// 1533025590
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// domain
+	Domain       *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	MajorVersion *string `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
+	// example:
+	//
+	// desc
+	OrganizationDescription *string `json:"OrganizationDescription,omitempty" xml:"OrganizationDescription,omitempty"`
+	// example:
+	//
+	// peers-aaaaaa2-1eqnj5o5w9dt3
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	// example:
+	//
+	// name
+	OrganizationName *string `json:"OrganizationName,omitempty" xml:"OrganizationName,omitempty"`
+	// example:
+	//
+	// bid
+	OwnerBid *string `json:"OwnerBid,omitempty" xml:"OwnerBid,omitempty"`
+	// example:
+	//
+	// name
+	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// example:
+	//
+	// 1232
+	OwnerUid *int64 `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
+	// example:
+	//
+	// 3
+	PeerCount *int32 `json:"PeerCount,omitempty" xml:"PeerCount,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// basic、
+	SpecName *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
+	// example:
+	//
+	// Running
+	State *string                                              `json:"State,omitempty" xml:"State,omitempty"`
+	Tags  []*DescribeFabricOrganizationsResponseBodyResultTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	UserCount *int32 `json:"UserCount,omitempty" xml:"UserCount,omitempty"`
+	// example:
+	//
+	// zone
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeFabricOrganizationsResponseBodyResult) String() string {
@@ -14820,7 +18982,13 @@ func (s *DescribeFabricOrganizationsResponseBodyResult) SetZoneId(v string) *Des
 }
 
 type DescribeFabricOrganizationsResponseBodyResultTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// BlockChainOwner
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// DepartmentA
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -14843,9 +19011,9 @@ func (s *DescribeFabricOrganizationsResponseBodyResultTags) SetValue(v string) *
 }
 
 type DescribeFabricOrganizationsResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFabricOrganizationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFabricOrganizationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFabricOrganizationsResponse) String() string {
@@ -14872,9 +19040,22 @@ func (s *DescribeFabricOrganizationsResponse) SetBody(v *DescribeFabricOrganizat
 }
 
 type DescribeFabricPeerLogsRequest struct {
-	Lines          *string `json:"Lines,omitempty" xml:"Lines,omitempty"`
+	// example:
+	//
+	// 50
+	Lines *string `json:"Lines,omitempty" xml:"Lines,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// peers-test11-tzwny25vqicq
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	PeerName       *string `json:"PeerName,omitempty" xml:"PeerName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// peer1
+	PeerName *string `json:"PeerName,omitempty" xml:"PeerName,omitempty"`
 }
 
 func (s DescribeFabricPeerLogsRequest) String() string {
@@ -14901,10 +19082,22 @@ func (s *DescribeFabricPeerLogsRequest) SetPeerName(v string) *DescribeFabricPee
 }
 
 type DescribeFabricPeerLogsResponseBody struct {
-	ErrorCode *int32  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 78A09CAF-4944-4CAE-B25D-F5B6BA27D9F5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// xxxx
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeFabricPeerLogsResponseBody) String() string {
@@ -14936,9 +19129,9 @@ func (s *DescribeFabricPeerLogsResponseBody) SetSuccess(v bool) *DescribeFabricP
 }
 
 type DescribeFabricPeerLogsResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFabricPeerLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeFabricPeerLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeFabricPeerLogsResponse) String() string {
@@ -14965,8 +19158,14 @@ func (s *DescribeFabricPeerLogsResponse) SetBody(v *DescribeFabricPeerLogsRespon
 }
 
 type DescribeRegionsRequest struct {
+	// example:
+	//
+	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeRegionsRequest) String() string {
@@ -14988,10 +19187,19 @@ func (s *DescribeRegionsRequest) SetRegionId(v string) *DescribeRegionsRequest {
 }
 
 type DescribeRegionsResponseBody struct {
+	// example:
+	//
+	// 200
 	ErrorCode *int32                                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	Regions   []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// D1597848-E708-522C-9275-3A202FC8B63A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeRegionsResponseBody) String() string {
@@ -15023,9 +19231,15 @@ func (s *DescribeRegionsResponseBody) SetSuccess(v bool) *DescribeRegionsRespons
 }
 
 type DescribeRegionsResponseBodyRegions struct {
-	LocalName      *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// example:
+	//
+	// baas.cn-hangzhou.aliyuncs.com
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyRegions) String() string {
@@ -15052,9 +19266,9 @@ func (s *DescribeRegionsResponseBodyRegions) SetRegionId(v string) *DescribeRegi
 }
 
 type DescribeRegionsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeRegionsResponse) String() string {
@@ -15081,10 +19295,22 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type DescribeRootDomainResponseBody struct {
-	ErrorCode *int32  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// onaliyunbaas.com
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeRootDomainResponseBody) String() string {
@@ -15116,9 +19342,9 @@ func (s *DescribeRootDomainResponseBody) SetSuccess(v bool) *DescribeRootDomainR
 }
 
 type DescribeRootDomainResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRootDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRootDomainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeRootDomainResponse) String() string {
@@ -15145,12 +19371,27 @@ func (s *DescribeRootDomainResponse) SetBody(v *DescribeRootDomainResponseBody) 
 }
 
 type DescribeTasksResponseBody struct {
-	DynamicCode    *string                            `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string                            `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	ErrorCode      *int32                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	RequestId      *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result         []*DescribeTasksResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success        *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// code
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// msg
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*DescribeTasksResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeTasksResponseBody) String() string {
@@ -15192,15 +19433,42 @@ func (s *DescribeTasksResponseBody) SetSuccess(v bool) *DescribeTasksResponseBod
 }
 
 type DescribeTasksResponseBodyResult struct {
-	Action        *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	Handled       *bool   `json:"Handled,omitempty" xml:"Handled,omitempty"`
+	// example:
+	//
+	// action
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// example:
+	//
+	// false
+	Handled *bool `json:"Handled,omitempty" xml:"Handled,omitempty"`
+	// example:
+	//
+	// type
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	RequestTime   *int64  `json:"RequestTime,omitempty" xml:"RequestTime,omitempty"`
-	ResponseTime  *string `json:"ResponseTime,omitempty" xml:"ResponseTime,omitempty"`
-	Result        *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	Sender        *string `json:"Sender,omitempty" xml:"Sender,omitempty"`
-	Target        *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	TaskId        *int32  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 1533025590
+	RequestTime *int64 `json:"RequestTime,omitempty" xml:"RequestTime,omitempty"`
+	// example:
+	//
+	// 1533025590
+	ResponseTime *string `json:"ResponseTime,omitempty" xml:"ResponseTime,omitempty"`
+	// example:
+	//
+	// result
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// sender
+	Sender *string `json:"Sender,omitempty" xml:"Sender,omitempty"`
+	// example:
+	//
+	// target
+	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// example:
+	//
+	// 33
+	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s DescribeTasksResponseBodyResult) String() string {
@@ -15257,9 +19525,9 @@ func (s *DescribeTasksResponseBodyResult) SetTaskId(v int32) *DescribeTasksRespo
 }
 
 type DescribeTasksResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeTasksResponse) String() string {
@@ -15286,9 +19554,22 @@ func (s *DescribeTasksResponse) SetBody(v *DescribeTasksResponseBody) *DescribeT
 }
 
 type DownloadFabricOrganizationSDKRequest struct {
-	Location       *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// peers-aaaaaa2-1eqnj5o5w****
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	Username       *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// username
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s DownloadFabricOrganizationSDKRequest) String() string {
@@ -15315,10 +19596,19 @@ func (s *DownloadFabricOrganizationSDKRequest) SetUsername(v string) *DownloadFa
 }
 
 type DownloadFabricOrganizationSDKResponseBody struct {
-	ErrorCode *int32                                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*DownloadFabricOrganizationSDKResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DownloadFabricOrganizationSDKResponseBody) String() string {
@@ -15350,8 +19640,14 @@ func (s *DownloadFabricOrganizationSDKResponseBody) SetSuccess(v bool) *Download
 }
 
 type DownloadFabricOrganizationSDKResponseBodyResult struct {
+	// example:
+	//
+	// base64string
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Path    *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// dir/file
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
 func (s DownloadFabricOrganizationSDKResponseBodyResult) String() string {
@@ -15373,9 +19669,9 @@ func (s *DownloadFabricOrganizationSDKResponseBodyResult) SetPath(v string) *Dow
 }
 
 type DownloadFabricOrganizationSDKResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DownloadFabricOrganizationSDKResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DownloadFabricOrganizationSDKResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DownloadFabricOrganizationSDKResponse) String() string {
@@ -15402,7 +19698,17 @@ func (s *DownloadFabricOrganizationSDKResponse) SetBody(v *DownloadFabricOrganiz
 }
 
 type FreezeAntChainAccountRequest struct {
-	Account    *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// accountname
+	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1q8B5R9p
 	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
 }
 
@@ -15425,8 +19731,14 @@ func (s *FreezeAntChainAccountRequest) SetAntChainId(v string) *FreezeAntChainAc
 }
 
 type FreezeAntChainAccountResponseBody struct {
+	// example:
+	//
+	// 9F862442-F6AD-4B5F-8969-CE23DE1413CB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// success
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s FreezeAntChainAccountResponseBody) String() string {
@@ -15448,9 +19760,9 @@ func (s *FreezeAntChainAccountResponseBody) SetResult(v string) *FreezeAntChainA
 }
 
 type FreezeAntChainAccountResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *FreezeAntChainAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *FreezeAntChainAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s FreezeAntChainAccountResponse) String() string {
@@ -15477,8 +19789,21 @@ func (s *FreezeAntChainAccountResponse) SetBody(v *FreezeAntChainAccountResponse
 }
 
 type InstallFabricChaincodeRequest struct {
-	ChaincodeId    *string `json:"ChaincodeId,omitempty" xml:"ChaincodeId,omitempty"`
-	Location       *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chan-channelx-1l1hmckuuisxo
+	ChaincodeId *string `json:"ChaincodeId,omitempty" xml:"ChaincodeId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// peers-aaaaaa2-1eqnj5o5w9dt3
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 
@@ -15506,10 +19831,19 @@ func (s *InstallFabricChaincodeRequest) SetOrganizationId(v string) *InstallFabr
 }
 
 type InstallFabricChaincodeResponseBody struct {
-	ErrorCode *int32                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *InstallFabricChaincodeResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s InstallFabricChaincodeResponseBody) String() string {
@@ -15541,22 +19875,70 @@ func (s *InstallFabricChaincodeResponseBody) SetSuccess(v bool) *InstallFabricCh
 }
 
 type InstallFabricChaincodeResponseBodyResult struct {
-	ChaincodeId      *string `json:"ChaincodeId,omitempty" xml:"ChaincodeId,omitempty"`
-	ChaincodeName    *string `json:"ChaincodeName,omitempty" xml:"ChaincodeName,omitempty"`
+	// example:
+	//
+	// cc-198jejf8f8chi8
+	ChaincodeId *string `json:"ChaincodeId,omitempty" xml:"ChaincodeId,omitempty"`
+	// example:
+	//
+	// mychannel
+	ChaincodeName *string `json:"ChaincodeName,omitempty" xml:"ChaincodeName,omitempty"`
+	// example:
+	//
+	// 1.0
 	ChaincodeVersion *string `json:"ChaincodeVersion,omitempty" xml:"ChaincodeVersion,omitempty"`
-	ChannelName      *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	ConsortiumId     *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	CreateTime       *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeployTime       *string `json:"DeployTime,omitempty" xml:"DeployTime,omitempty"`
-	EndorsePolicy    *string `json:"EndorsePolicy,omitempty" xml:"EndorsePolicy,omitempty"`
-	Input            *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	Install          *bool   `json:"Install,omitempty" xml:"Install,omitempty"`
-	Message          *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Path             *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	ProviderId       *string `json:"ProviderId,omitempty" xml:"ProviderId,omitempty"`
-	ProviderName     *string `json:"ProviderName,omitempty" xml:"ProviderName,omitempty"`
-	State            *string `json:"State,omitempty" xml:"State,omitempty"`
-	Type             *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// mychannel
+	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// example:
+	//
+	// consortium-lianmenyumingyi-hc5d1bwlulg7
+	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	// example:
+	//
+	// 1533025590
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1533025590
+	DeployTime *string `json:"DeployTime,omitempty" xml:"DeployTime,omitempty"`
+	// example:
+	//
+	// OR ("perf9141MSP.member")
+	EndorsePolicy *string `json:"EndorsePolicy,omitempty" xml:"EndorsePolicy,omitempty"`
+	// example:
+	//
+	// input
+	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// example:
+	//
+	// false
+	Install *bool `json:"Install,omitempty" xml:"Install,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// github.com/hyperledger/fabric-samples/chaincode/sacc
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// providerid
+	ProviderId *string `json:"ProviderId,omitempty" xml:"ProviderId,omitempty"`
+	// example:
+	//
+	// prividername
+	ProviderName *string `json:"ProviderName,omitempty" xml:"ProviderName,omitempty"`
+	// example:
+	//
+	// Pending
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// 1
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s InstallFabricChaincodeResponseBodyResult) String() string {
@@ -15648,9 +20030,9 @@ func (s *InstallFabricChaincodeResponseBodyResult) SetType(v int32) *InstallFabr
 }
 
 type InstallFabricChaincodeResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *InstallFabricChaincodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InstallFabricChaincodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s InstallFabricChaincodeResponse) String() string {
@@ -15677,9 +20059,22 @@ func (s *InstallFabricChaincodeResponse) SetBody(v *InstallFabricChaincodeRespon
 }
 
 type InstallFabricChaincodePackageRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chan-channelx-1l1hmckuuisxo
 	ChaincodePackageId *string `json:"ChaincodePackageId,omitempty" xml:"ChaincodePackageId,omitempty"`
-	Location           *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	OrganizationId     *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// peers-aaaaaa2-1eqnj5o5w9dt3
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 
 func (s InstallFabricChaincodePackageRequest) String() string {
@@ -15706,11 +20101,23 @@ func (s *InstallFabricChaincodePackageRequest) SetOrganizationId(v string) *Inst
 }
 
 type InstallFabricChaincodePackageResponseBody struct {
-	ErrorCode *int32            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string           `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *ChaincodePackage `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s InstallFabricChaincodePackageResponseBody) String() string {
@@ -15747,9 +20154,9 @@ func (s *InstallFabricChaincodePackageResponseBody) SetSuccess(v bool) *InstallF
 }
 
 type InstallFabricChaincodePackageResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *InstallFabricChaincodePackageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InstallFabricChaincodePackageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s InstallFabricChaincodePackageResponse) String() string {
@@ -15776,11 +20183,30 @@ func (s *InstallFabricChaincodePackageResponse) SetBody(v *InstallFabricChaincod
 }
 
 type InstantiateFabricChaincodeRequest struct {
-	ChaincodeId      *string `json:"ChaincodeId,omitempty" xml:"ChaincodeId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cc-198jejf8f8****
+	ChaincodeId *string `json:"ChaincodeId,omitempty" xml:"ChaincodeId,omitempty"`
+	// example:
+	//
+	// [{"requiredPeerCount":0,"name":"collectionName","maxPeerCount":3,"blockToLive":0,"policy":"OR(\\"Org1MSP.peer\\")"}]
 	CollectionConfig *string `json:"CollectionConfig,omitempty" xml:"CollectionConfig,omitempty"`
-	EndorsePolicy    *string `json:"EndorsePolicy,omitempty" xml:"EndorsePolicy,omitempty"`
-	Location         *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	OrganizationId   *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	// example:
+	//
+	// OR (&#39;perf9141MSP.member&#39;)
+	EndorsePolicy *string `json:"EndorsePolicy,omitempty" xml:"EndorsePolicy,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// peers-aaaaaa2-1eqnj5o5w****
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 
 func (s InstantiateFabricChaincodeRequest) String() string {
@@ -15817,10 +20243,19 @@ func (s *InstantiateFabricChaincodeRequest) SetOrganizationId(v string) *Instant
 }
 
 type InstantiateFabricChaincodeResponseBody struct {
-	ErrorCode *int32                                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *InstantiateFabricChaincodeResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s InstantiateFabricChaincodeResponseBody) String() string {
@@ -15852,22 +20287,70 @@ func (s *InstantiateFabricChaincodeResponseBody) SetSuccess(v bool) *Instantiate
 }
 
 type InstantiateFabricChaincodeResponseBodyResult struct {
-	ChaincodeId      *string `json:"ChaincodeId,omitempty" xml:"ChaincodeId,omitempty"`
-	ChaincodeName    *string `json:"ChaincodeName,omitempty" xml:"ChaincodeName,omitempty"`
+	// example:
+	//
+	// cc-198jejf8f8chi8
+	ChaincodeId *string `json:"ChaincodeId,omitempty" xml:"ChaincodeId,omitempty"`
+	// example:
+	//
+	// channelname
+	ChaincodeName *string `json:"ChaincodeName,omitempty" xml:"ChaincodeName,omitempty"`
+	// example:
+	//
+	// 1.0
 	ChaincodeVersion *string `json:"ChaincodeVersion,omitempty" xml:"ChaincodeVersion,omitempty"`
-	ChannelName      *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	ConsortiumId     *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	CreateTime       *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeployTime       *string `json:"DeployTime,omitempty" xml:"DeployTime,omitempty"`
-	EndorsePolicy    *string `json:"EndorsePolicy,omitempty" xml:"EndorsePolicy,omitempty"`
-	Input            *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	Install          *bool   `json:"Install,omitempty" xml:"Install,omitempty"`
-	Message          *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Path             *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	ProviderId       *string `json:"ProviderId,omitempty" xml:"ProviderId,omitempty"`
-	ProviderName     *string `json:"ProviderName,omitempty" xml:"ProviderName,omitempty"`
-	State            *string `json:"State,omitempty" xml:"State,omitempty"`
-	Type             *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// channelname
+	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// example:
+	//
+	// consortium-lianmenyumingyi-hc5d1bwlulg7
+	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	// example:
+	//
+	// 1533025590
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1533025590
+	DeployTime *string `json:"DeployTime,omitempty" xml:"DeployTime,omitempty"`
+	// example:
+	//
+	// OR (\\"aaaaaa1MSP.peer\\")
+	EndorsePolicy *string `json:"EndorsePolicy,omitempty" xml:"EndorsePolicy,omitempty"`
+	// example:
+	//
+	// input
+	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// example:
+	//
+	// false
+	Install *bool `json:"Install,omitempty" xml:"Install,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// go-sdk-demo/chaincode/src
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// id
+	ProviderId *string `json:"ProviderId,omitempty" xml:"ProviderId,omitempty"`
+	// example:
+	//
+	// name
+	ProviderName *string `json:"ProviderName,omitempty" xml:"ProviderName,omitempty"`
+	// example:
+	//
+	// Running
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// 1
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s InstantiateFabricChaincodeResponseBodyResult) String() string {
@@ -15959,9 +20442,9 @@ func (s *InstantiateFabricChaincodeResponseBodyResult) SetType(v int32) *Instant
 }
 
 type InstantiateFabricChaincodeResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *InstantiateFabricChaincodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InstantiateFabricChaincodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s InstantiateFabricChaincodeResponse) String() string {
@@ -15988,9 +20471,22 @@ func (s *InstantiateFabricChaincodeResponse) SetBody(v *InstantiateFabricChainco
 }
 
 type JoinFabricChannelRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chan-channelx-1l1hmckuu****
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	Do        *string `json:"Do,omitempty" xml:"Do,omitempty"`
-	Location  *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// accept
+	Do *string `json:"Do,omitempty" xml:"Do,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
 }
 
 func (s JoinFabricChannelRequest) String() string {
@@ -16017,10 +20513,19 @@ func (s *JoinFabricChannelRequest) SetLocation(v string) *JoinFabricChannelReque
 }
 
 type JoinFabricChannelResponseBody struct {
-	ErrorCode *int32                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*JoinFabricChannelResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s JoinFabricChannelResponseBody) String() string {
@@ -16052,15 +20557,42 @@ func (s *JoinFabricChannelResponseBody) SetSuccess(v bool) *JoinFabricChannelRes
 }
 
 type JoinFabricChannelResponseBodyResult struct {
-	AcceptTime     *string `json:"AcceptTime,omitempty" xml:"AcceptTime,omitempty"`
-	ApproveTime    *string `json:"ApproveTime,omitempty" xml:"ApproveTime,omitempty"`
-	ChannelId      *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	ConfirmTime    *string `json:"ConfirmTime,omitempty" xml:"ConfirmTime,omitempty"`
-	DestroyTime    *string `json:"DestroyTime,omitempty" xml:"DestroyTime,omitempty"`
-	InviteTime     *string `json:"InviteTime,omitempty" xml:"InviteTime,omitempty"`
+	// example:
+	//
+	// 1533025590
+	AcceptTime *string `json:"AcceptTime,omitempty" xml:"AcceptTime,omitempty"`
+	// example:
+	//
+	// 1533025590
+	ApproveTime *string `json:"ApproveTime,omitempty" xml:"ApproveTime,omitempty"`
+	// example:
+	//
+	// channelid
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// example:
+	//
+	// 1533025590
+	ConfirmTime *string `json:"ConfirmTime,omitempty" xml:"ConfirmTime,omitempty"`
+	// example:
+	//
+	// 1533025590
+	DestroyTime *string `json:"DestroyTime,omitempty" xml:"DestroyTime,omitempty"`
+	// example:
+	//
+	// 1533025590
+	InviteTime *string `json:"InviteTime,omitempty" xml:"InviteTime,omitempty"`
+	// example:
+	//
+	// peers-aaaaaa2-1eqnj5o5w9dt3
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	State          *string `json:"State,omitempty" xml:"State,omitempty"`
-	WithPeer       *bool   `json:"WithPeer,omitempty" xml:"WithPeer,omitempty"`
+	// example:
+	//
+	// Running
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// true
+	WithPeer *bool `json:"WithPeer,omitempty" xml:"WithPeer,omitempty"`
 }
 
 func (s JoinFabricChannelResponseBodyResult) String() string {
@@ -16117,9 +20649,9 @@ func (s *JoinFabricChannelResponseBodyResult) SetWithPeer(v bool) *JoinFabricCha
 }
 
 type JoinFabricChannelResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *JoinFabricChannelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *JoinFabricChannelResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s JoinFabricChannelResponse) String() string {
@@ -16146,8 +20678,19 @@ func (s *JoinFabricChannelResponse) SetBody(v *JoinFabricChannelResponseBody) *J
 }
 
 type ListTagResourcesRequest struct {
-	NextToken    *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ResourceId   []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// example:
+	//
+	// MWJlMTY4ZmY4MzdmMDQzYmRlMTdjMDMxNDM0MWM4NDI3MTA0N2IzMQo=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// peers-tf000eihjli000shanghai-yqxvj52lruxx
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// organization
 	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -16181,7 +20724,13 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value2
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -16204,7 +20753,13 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
-	NextToken    *string                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// MWJlMTY4ZmY4MzdmMDQzYmRlMTdjMDMxNDM0MWM4NDI3MTA0N2IzMQo=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 21B8738D-254C-4933-9FC1-3C31B2611482
 	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
@@ -16233,10 +20788,22 @@ func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResp
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// peers-tf000eihjli000shanghai-yqxvj52lruxx
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// organization
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// example:
+	//
+	// key1
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// example:
+	//
+	// value1
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResources) String() string {
@@ -16268,9 +20835,9 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagValue(v string) *ListTa
 }
 
 type ListTagResourcesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagResourcesResponse) String() string {
@@ -16297,6 +20864,11 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ResetAntChainCertificateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pYogqb9v
 	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
 }
 
@@ -16314,8 +20886,14 @@ func (s *ResetAntChainCertificateRequest) SetAntChainId(v string) *ResetAntChain
 }
 
 type ResetAntChainCertificateResponseBody struct {
+	// example:
+	//
+	// 6ED983D3-C131-4104-8BDD-1F37992258E1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// success
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s ResetAntChainCertificateResponseBody) String() string {
@@ -16337,9 +20915,9 @@ func (s *ResetAntChainCertificateResponseBody) SetResult(v string) *ResetAntChai
 }
 
 type ResetAntChainCertificateResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ResetAntChainCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ResetAntChainCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ResetAntChainCertificateResponse) String() string {
@@ -16366,8 +20944,18 @@ func (s *ResetAntChainCertificateResponse) SetBody(v *ResetAntChainCertificateRe
 }
 
 type ResetAntChainUserCertificateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// bDXK6boZ
 	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
-	Username   *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// uid-128712635330****
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s ResetAntChainUserCertificateRequest) String() string {
@@ -16389,8 +20977,14 @@ func (s *ResetAntChainUserCertificateRequest) SetUsername(v string) *ResetAntCha
 }
 
 type ResetAntChainUserCertificateResponseBody struct {
+	// example:
+	//
+	// 3EB828D1-1E9D-4EC2-A002-139FE998D674
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// success
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s ResetAntChainUserCertificateResponseBody) String() string {
@@ -16412,9 +21006,9 @@ func (s *ResetAntChainUserCertificateResponseBody) SetResult(v string) *ResetAnt
 }
 
 type ResetAntChainUserCertificateResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ResetAntChainUserCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ResetAntChainUserCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ResetAntChainUserCertificateResponse) String() string {
@@ -16441,10 +21035,28 @@ func (s *ResetAntChainUserCertificateResponse) SetBody(v *ResetAntChainUserCerti
 }
 
 type ResetFabricOrganizationUserPasswordRequest struct {
-	Location       *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// peers-aaaaaa2-1eqnj5o5w****
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	Password       *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	Username       *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pwd
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// username
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s ResetFabricOrganizationUserPasswordRequest) String() string {
@@ -16476,10 +21088,19 @@ func (s *ResetFabricOrganizationUserPasswordRequest) SetUsername(v string) *Rese
 }
 
 type ResetFabricOrganizationUserPasswordResponseBody struct {
-	ErrorCode *int32                                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *ResetFabricOrganizationUserPasswordResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ResetFabricOrganizationUserPasswordResponseBody) String() string {
@@ -16511,12 +21132,30 @@ func (s *ResetFabricOrganizationUserPasswordResponseBody) SetSuccess(v bool) *Re
 }
 
 type ResetFabricOrganizationUserPasswordResponseBodyResult struct {
-	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ExpireTime     *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	Fullname       *string `json:"Fullname,omitempty" xml:"Fullname,omitempty"`
+	// example:
+	//
+	// 1533025590
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1533025590
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// username
+	Fullname *string `json:"Fullname,omitempty" xml:"Fullname,omitempty"`
+	// example:
+	//
+	// peers-aaaaaa2-1eqnj5o5w****
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	Password       *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	Username       *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// example:
+	//
+	// password
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// example:
+	//
+	// username
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s ResetFabricOrganizationUserPasswordResponseBodyResult) String() string {
@@ -16558,9 +21197,9 @@ func (s *ResetFabricOrganizationUserPasswordResponseBodyResult) SetUsername(v st
 }
 
 type ResetFabricOrganizationUserPasswordResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ResetFabricOrganizationUserPasswordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ResetFabricOrganizationUserPasswordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ResetFabricOrganizationUserPasswordResponse) String() string {
@@ -16587,15 +21226,54 @@ func (s *ResetFabricOrganizationUserPasswordResponse) SetBody(v *ResetFabricOrga
 }
 
 type SubmitFabricChaincodeDefinitionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sacc_v1.0:698d4e73c5f1d0239fbf0313ac79ddfaf44d5a803ecb02a4d1983cca4a706860
 	ChaincodePackageId *string `json:"ChaincodePackageId,omitempty" xml:"ChaincodePackageId,omitempty"`
-	ChaincodeVersion   *string `json:"ChaincodeVersion,omitempty" xml:"ChaincodeVersion,omitempty"`
-	ChannelId          *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	CollectionConfig   *string `json:"CollectionConfig,omitempty" xml:"CollectionConfig,omitempty"`
-	EndorsePolicy      *string `json:"EndorsePolicy,omitempty" xml:"EndorsePolicy,omitempty"`
-	InitRequired       *bool   `json:"InitRequired,omitempty" xml:"InitRequired,omitempty"`
-	Location           *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OrganizationId     *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1.0
+	ChaincodeVersion *string `json:"ChaincodeVersion,omitempty" xml:"ChaincodeVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chan-channelx-1l1hmckuuisxo
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// example:
+	//
+	// collectionconfig
+	CollectionConfig *string `json:"CollectionConfig,omitempty" xml:"CollectionConfig,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// OR ("perf9141MSP.member")
+	EndorsePolicy *string `json:"EndorsePolicy,omitempty" xml:"EndorsePolicy,omitempty"`
+	// example:
+	//
+	// false
+	InitRequired *bool `json:"InitRequired,omitempty" xml:"InitRequired,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sacc
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// peers-aaaaaa2-1eqnj5o5w9dt3
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 
 func (s SubmitFabricChaincodeDefinitionRequest) String() string {
@@ -16652,11 +21330,23 @@ func (s *SubmitFabricChaincodeDefinitionRequest) SetOrganizationId(v string) *Su
 }
 
 type SubmitFabricChaincodeDefinitionResponseBody struct {
-	ErrorCode *int32       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string      `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *ChaincodeVO `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool        `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SubmitFabricChaincodeDefinitionResponseBody) String() string {
@@ -16693,9 +21383,9 @@ func (s *SubmitFabricChaincodeDefinitionResponseBody) SetSuccess(v bool) *Submit
 }
 
 type SubmitFabricChaincodeDefinitionResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitFabricChaincodeDefinitionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitFabricChaincodeDefinitionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitFabricChaincodeDefinitionResponse) String() string {
@@ -16722,7 +21412,17 @@ func (s *SubmitFabricChaincodeDefinitionResponse) SetBody(v *SubmitFabricChainco
 }
 
 type SynchronizeFabricChaincodeRequest struct {
-	ChaincodeId    *string `json:"ChaincodeId,omitempty" xml:"ChaincodeId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// code-sacc-1pr09q7jm****
+	ChaincodeId *string `json:"ChaincodeId,omitempty" xml:"ChaincodeId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// peers-aaaaaa2-1eqnj5o5w****
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 
@@ -16745,10 +21445,19 @@ func (s *SynchronizeFabricChaincodeRequest) SetOrganizationId(v string) *Synchro
 }
 
 type SynchronizeFabricChaincodeResponseBody struct {
-	ErrorCode *int32                                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 1890FA4F-067A-4CE9-AC9B-2BD2E58FB5D3
 	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *SynchronizeFabricChaincodeResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SynchronizeFabricChaincodeResponseBody) String() string {
@@ -16780,22 +21489,70 @@ func (s *SynchronizeFabricChaincodeResponseBody) SetSuccess(v bool) *Synchronize
 }
 
 type SynchronizeFabricChaincodeResponseBodyResult struct {
-	ChaincodeId      *string `json:"ChaincodeId,omitempty" xml:"ChaincodeId,omitempty"`
-	ChaincodeName    *string `json:"ChaincodeName,omitempty" xml:"ChaincodeName,omitempty"`
+	// example:
+	//
+	// code-sacc-1pr09q7jm****
+	ChaincodeId *string `json:"ChaincodeId,omitempty" xml:"ChaincodeId,omitempty"`
+	// example:
+	//
+	// mychaincode
+	ChaincodeName *string `json:"ChaincodeName,omitempty" xml:"ChaincodeName,omitempty"`
+	// example:
+	//
+	// 1.0
 	ChaincodeVersion *string `json:"ChaincodeVersion,omitempty" xml:"ChaincodeVersion,omitempty"`
-	ChannelName      *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	ConsortiumId     *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	CreateTime       *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeployTime       *string `json:"DeployTime,omitempty" xml:"DeployTime,omitempty"`
-	EndorsePolicy    *string `json:"EndorsePolicy,omitempty" xml:"EndorsePolicy,omitempty"`
-	Input            *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	Install          *bool   `json:"Install,omitempty" xml:"Install,omitempty"`
-	Message          *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Path             *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	ProviderId       *string `json:"ProviderId,omitempty" xml:"ProviderId,omitempty"`
-	ProviderName     *string `json:"ProviderName,omitempty" xml:"ProviderName,omitempty"`
-	State            *string `json:"State,omitempty" xml:"State,omitempty"`
-	Type             *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// chan-channelx-1l1hmckuuisxo
+	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// example:
+	//
+	// consortium-lianmenyumingyi-hc5d1bwl****
+	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	// example:
+	//
+	// 1533025590
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1533025590
+	DeployTime *string `json:"DeployTime,omitempty" xml:"DeployTime,omitempty"`
+	// example:
+	//
+	// OR (\\"aaaaaa1MSP.peer\\")
+	EndorsePolicy *string `json:"EndorsePolicy,omitempty" xml:"EndorsePolicy,omitempty"`
+	// example:
+	//
+	// input
+	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// example:
+	//
+	// false
+	Install *bool `json:"Install,omitempty" xml:"Install,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// go-sdk-demo/chaincode/src
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// provider
+	ProviderId *string `json:"ProviderId,omitempty" xml:"ProviderId,omitempty"`
+	// example:
+	//
+	// name
+	ProviderName *string `json:"ProviderName,omitempty" xml:"ProviderName,omitempty"`
+	// example:
+	//
+	// Running
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// 1
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s SynchronizeFabricChaincodeResponseBodyResult) String() string {
@@ -16887,9 +21644,9 @@ func (s *SynchronizeFabricChaincodeResponseBodyResult) SetType(v int32) *Synchro
 }
 
 type SynchronizeFabricChaincodeResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SynchronizeFabricChaincodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SynchronizeFabricChaincodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SynchronizeFabricChaincodeResponse) String() string {
@@ -16916,7 +21673,15 @@ func (s *SynchronizeFabricChaincodeResponse) SetBody(v *SynchronizeFabricChainco
 }
 
 type TagResourcesRequest struct {
-	ResourceId   []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// example:
+	//
+	// peers-tf000eihjli000beijing-bl6rdwi82tget
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// organization
 	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -16945,7 +21710,13 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -16968,10 +21739,22 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
-	ErrorCode *int32  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 21B8738D-254C-4933-9FC1-3C31B2611482
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s TagResourcesResponseBody) String() string {
@@ -17003,9 +21786,9 @@ func (s *TagResourcesResponseBody) SetSuccess(v bool) *TagResourcesResponseBody 
 }
 
 type TagResourcesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TagResourcesResponse) String() string {
@@ -17032,7 +21815,17 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UnfreezeAntChainAccountRequest struct {
-	Account    *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// accountname
+	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1q8B5R9p
 	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
 }
 
@@ -17055,8 +21848,14 @@ func (s *UnfreezeAntChainAccountRequest) SetAntChainId(v string) *UnfreezeAntCha
 }
 
 type UnfreezeAntChainAccountResponseBody struct {
+	// example:
+	//
+	// 6ED983D3-C131-4104-8BDD-1F37992258E1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// success
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s UnfreezeAntChainAccountResponseBody) String() string {
@@ -17078,9 +21877,9 @@ func (s *UnfreezeAntChainAccountResponseBody) SetResult(v string) *UnfreezeAntCh
 }
 
 type UnfreezeAntChainAccountResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UnfreezeAntChainAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnfreezeAntChainAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UnfreezeAntChainAccountResponse) String() string {
@@ -17107,10 +21906,24 @@ func (s *UnfreezeAntChainAccountResponse) SetBody(v *UnfreezeAntChainAccountResp
 }
 
 type UntagResourcesRequest struct {
-	All          *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	ResourceId   []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// example:
+	//
+	// peers-tf000eihjli000shanghai-yqxvj52lruxx
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// organization
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// key1
+	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -17142,10 +21955,22 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponseBody struct {
-	ErrorCode *int32  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 21B8738D-254C-4933-9FC1-3C31B2611482
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UntagResourcesResponseBody) String() string {
@@ -17177,9 +22002,9 @@ func (s *UntagResourcesResponseBody) SetSuccess(v bool) *UntagResourcesResponseB
 }
 
 type UntagResourcesResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UntagResourcesResponse) String() string {
@@ -17206,7 +22031,13 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateAntChainRequest struct {
-	AntChainId   *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pYogqb9v
+	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// This parameter is required.
 	AntChainName *string `json:"AntChainName,omitempty" xml:"AntChainName,omitempty"`
 }
 
@@ -17229,8 +22060,14 @@ func (s *UpdateAntChainRequest) SetAntChainName(v string) *UpdateAntChainRequest
 }
 
 type UpdateAntChainResponseBody struct {
+	// example:
+	//
+	// F6A52E53-2CCB-4C3C-A44D-45FAEBC24E47
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// success
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s UpdateAntChainResponseBody) String() string {
@@ -17252,9 +22089,9 @@ func (s *UpdateAntChainResponseBody) SetResult(v string) *UpdateAntChainResponse
 }
 
 type UpdateAntChainResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateAntChainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAntChainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateAntChainResponse) String() string {
@@ -17282,8 +22119,14 @@ func (s *UpdateAntChainResponse) SetBody(v *UpdateAntChainResponseBody) *UpdateA
 
 type UpdateAntChainConsortiumRequest struct {
 	ConsortiumDescription *string `json:"ConsortiumDescription,omitempty" xml:"ConsortiumDescription,omitempty"`
-	ConsortiumId          *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	ConsortiumName        *string `json:"ConsortiumName,omitempty" xml:"ConsortiumName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// q0oWq92P
+	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	// This parameter is required.
+	ConsortiumName *string `json:"ConsortiumName,omitempty" xml:"ConsortiumName,omitempty"`
 }
 
 func (s UpdateAntChainConsortiumRequest) String() string {
@@ -17310,8 +22153,14 @@ func (s *UpdateAntChainConsortiumRequest) SetConsortiumName(v string) *UpdateAnt
 }
 
 type UpdateAntChainConsortiumResponseBody struct {
+	// example:
+	//
+	// 1E55C947-19B4-4AAD-9D22-0B8DA8904B3D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// success
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s UpdateAntChainConsortiumResponseBody) String() string {
@@ -17333,9 +22182,9 @@ func (s *UpdateAntChainConsortiumResponseBody) SetResult(v string) *UpdateAntCha
 }
 
 type UpdateAntChainConsortiumResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateAntChainConsortiumResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAntChainConsortiumResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateAntChainConsortiumResponse) String() string {
@@ -17362,9 +22211,23 @@ func (s *UpdateAntChainConsortiumResponse) SetBody(v *UpdateAntChainConsortiumRe
 }
 
 type UpdateAntChainContractContentRequest struct {
-	Content         *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	ContentId       *string `json:"ContentId,omitempty" xml:"ContentId,omitempty"`
-	ContentName     *string `json:"ContentName,omitempty" xml:"ContentName,omitempty"`
+	// example:
+	//
+	// update content
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// R6XMn59e
+	ContentId *string `json:"ContentId,omitempty" xml:"ContentId,omitempty"`
+	// example:
+	//
+	// newFile
+	ContentName *string `json:"ContentName,omitempty" xml:"ContentName,omitempty"`
+	// example:
+	//
+	// R38DYDop
 	ParentContentId *string `json:"ParentContentId,omitempty" xml:"ParentContentId,omitempty"`
 }
 
@@ -17397,8 +22260,14 @@ func (s *UpdateAntChainContractContentRequest) SetParentContentId(v string) *Upd
 }
 
 type UpdateAntChainContractContentResponseBody struct {
+	// example:
+	//
+	// 08CBD579-C430-4F1F-9011-C120FA1E9B97
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// success
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s UpdateAntChainContractContentResponseBody) String() string {
@@ -17420,9 +22289,9 @@ func (s *UpdateAntChainContractContentResponseBody) SetResult(v string) *UpdateA
 }
 
 type UpdateAntChainContractContentResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateAntChainContractContentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAntChainContractContentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateAntChainContractContentResponse) String() string {
@@ -17450,9 +22319,17 @@ func (s *UpdateAntChainContractContentResponse) SetBody(v *UpdateAntChainContrac
 
 type UpdateAntChainContractProjectRequest struct {
 	ProjectDescription *string `json:"ProjectDescription,omitempty" xml:"ProjectDescription,omitempty"`
-	ProjectId          *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectName        *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	ProjectVersion     *string `json:"ProjectVersion,omitempty" xml:"ProjectVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// bDXK1b8Z
+	ProjectId   *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// v1.1.1
+	ProjectVersion *string `json:"ProjectVersion,omitempty" xml:"ProjectVersion,omitempty"`
 }
 
 func (s UpdateAntChainContractProjectRequest) String() string {
@@ -17484,8 +22361,14 @@ func (s *UpdateAntChainContractProjectRequest) SetProjectVersion(v string) *Upda
 }
 
 type UpdateAntChainContractProjectResponseBody struct {
+	// example:
+	//
+	// 9EBD381E-A19E-4875-8771-EDA08A0416D3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// success
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s UpdateAntChainContractProjectResponseBody) String() string {
@@ -17507,9 +22390,9 @@ func (s *UpdateAntChainContractProjectResponseBody) SetResult(v string) *UpdateA
 }
 
 type UpdateAntChainContractProjectResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateAntChainContractProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAntChainContractProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateAntChainContractProjectResponse) String() string {
@@ -17536,9 +22419,24 @@ func (s *UpdateAntChainContractProjectResponse) SetBody(v *UpdateAntChainContrac
 }
 
 type UpdateAntChainMemberRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AroN3X2l
 	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	MemberId     *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
-	MemberName   *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1287126353301234
+	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// updatename
+	MemberName *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
 }
 
 func (s UpdateAntChainMemberRequest) String() string {
@@ -17565,8 +22463,14 @@ func (s *UpdateAntChainMemberRequest) SetMemberName(v string) *UpdateAntChainMem
 }
 
 type UpdateAntChainMemberResponseBody struct {
+	// example:
+	//
+	// 5BA242B2-AB0C-4D06-94EB-23CEC4F7B95E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// success
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s UpdateAntChainMemberResponseBody) String() string {
@@ -17588,9 +22492,9 @@ func (s *UpdateAntChainMemberResponseBody) SetResult(v string) *UpdateAntChainMe
 }
 
 type UpdateAntChainMemberResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateAntChainMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAntChainMemberResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateAntChainMemberResponse) String() string {
@@ -17617,9 +22521,24 @@ func (s *UpdateAntChainMemberResponse) SetBody(v *UpdateAntChainMemberResponseBo
 }
 
 type UpdateAntChainQRCodeAuthorizationRequest struct {
-	AntChainId        *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// bDXK6boZ
+	AntChainId *string `json:"AntChainId,omitempty" xml:"AntChainId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ALL_USER_AUTHORIZATION
 	AuthorizationType *string `json:"AuthorizationType,omitempty" xml:"AuthorizationType,omitempty"`
-	QRCodeType        *string `json:"QRCodeType,omitempty" xml:"QRCodeType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MINI_APP_BROWSER_TRANSACTION
+	QRCodeType *string `json:"QRCodeType,omitempty" xml:"QRCodeType,omitempty"`
 }
 
 func (s UpdateAntChainQRCodeAuthorizationRequest) String() string {
@@ -17646,8 +22565,14 @@ func (s *UpdateAntChainQRCodeAuthorizationRequest) SetQRCodeType(v string) *Upda
 }
 
 type UpdateAntChainQRCodeAuthorizationResponseBody struct {
+	// example:
+	//
+	// D68D66B6-1964-4073-8714-B49F5EF1AEFC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// success
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s UpdateAntChainQRCodeAuthorizationResponseBody) String() string {
@@ -17669,9 +22594,9 @@ func (s *UpdateAntChainQRCodeAuthorizationResponseBody) SetResult(v string) *Upd
 }
 
 type UpdateAntChainQRCodeAuthorizationResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateAntChainQRCodeAuthorizationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAntChainQRCodeAuthorizationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateAntChainQRCodeAuthorizationResponse) String() string {
@@ -17698,11 +22623,30 @@ func (s *UpdateAntChainQRCodeAuthorizationResponse) SetBody(v *UpdateAntChainQRC
 }
 
 type UpgradeFabricChaincodeRequest struct {
-	ChaincodeId      *string `json:"ChaincodeId,omitempty" xml:"ChaincodeId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// code-sacc-fk9z4r97****
+	ChaincodeId *string `json:"ChaincodeId,omitempty" xml:"ChaincodeId,omitempty"`
+	// example:
+	//
+	// [{"requiredPeerCount":0,"name":"collectionName","maxPeerCount":3,"blockToLive":0,"policy":"OR(\\"Org1MSP.peer\\")"}]
 	CollectionConfig *string `json:"CollectionConfig,omitempty" xml:"CollectionConfig,omitempty"`
-	EndorsePolicy    *string `json:"EndorsePolicy,omitempty" xml:"EndorsePolicy,omitempty"`
-	Location         *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	OrganizationId   *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	// example:
+	//
+	// OR ("wholesalerMSP.peer")
+	EndorsePolicy *string `json:"EndorsePolicy,omitempty" xml:"EndorsePolicy,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// peers-wholesaler-15ix77tof****
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 
 func (s UpgradeFabricChaincodeRequest) String() string {
@@ -17739,10 +22683,19 @@ func (s *UpgradeFabricChaincodeRequest) SetOrganizationId(v string) *UpgradeFabr
 }
 
 type UpgradeFabricChaincodeResponseBody struct {
-	ErrorCode *int32                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// A6CC6C63-2D71-4D0C-AEBE-E95F0127C514
 	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *UpgradeFabricChaincodeResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpgradeFabricChaincodeResponseBody) String() string {
@@ -17774,22 +22727,70 @@ func (s *UpgradeFabricChaincodeResponseBody) SetSuccess(v bool) *UpgradeFabricCh
 }
 
 type UpgradeFabricChaincodeResponseBodyResult struct {
-	ChaincodeId      *string `json:"ChaincodeId,omitempty" xml:"ChaincodeId,omitempty"`
-	ChaincodeName    *string `json:"ChaincodeName,omitempty" xml:"ChaincodeName,omitempty"`
+	// example:
+	//
+	// code-sacc-fk9z4r97****
+	ChaincodeId *string `json:"ChaincodeId,omitempty" xml:"ChaincodeId,omitempty"`
+	// example:
+	//
+	// mychaincode
+	ChaincodeName *string `json:"ChaincodeName,omitempty" xml:"ChaincodeName,omitempty"`
+	// example:
+	//
+	// 1.0
 	ChaincodeVersion *string `json:"ChaincodeVersion,omitempty" xml:"ChaincodeVersion,omitempty"`
-	ChannelName      *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	ConsortiumId     *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
-	CreateTime       *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeployTime       *string `json:"DeployTime,omitempty" xml:"DeployTime,omitempty"`
-	EndorsePolicy    *string `json:"EndorsePolicy,omitempty" xml:"EndorsePolicy,omitempty"`
-	Input            *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	Install          *bool   `json:"Install,omitempty" xml:"Install,omitempty"`
-	Message          *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Path             *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	ProviderId       *string `json:"ProviderId,omitempty" xml:"ProviderId,omitempty"`
-	ProviderName     *string `json:"ProviderName,omitempty" xml:"ProviderName,omitempty"`
-	State            *string `json:"State,omitempty" xml:"State,omitempty"`
-	Type             *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// cc
+	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// example:
+	//
+	// consortium-supplychain-1pxzsp5tb****
+	ConsortiumId *string `json:"ConsortiumId,omitempty" xml:"ConsortiumId,omitempty"`
+	// example:
+	//
+	// 1545215617000
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1545215617000
+	DeployTime *string `json:"DeployTime,omitempty" xml:"DeployTime,omitempty"`
+	// example:
+	//
+	// OR ("wholesalerMSP.peer")
+	EndorsePolicy *string `json:"EndorsePolicy,omitempty" xml:"EndorsePolicy,omitempty"`
+	// example:
+	//
+	// input
+	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// example:
+	//
+	// false
+	Install *bool `json:"Install,omitempty" xml:"Install,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// github.com/sacc
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// 1928592
+	ProviderId *string `json:"ProviderId,omitempty" xml:"ProviderId,omitempty"`
+	// example:
+	//
+	// uid-1928592
+	ProviderName *string `json:"ProviderName,omitempty" xml:"ProviderName,omitempty"`
+	// example:
+	//
+	// Running
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// 1
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpgradeFabricChaincodeResponseBodyResult) String() string {
@@ -17881,9 +22882,9 @@ func (s *UpgradeFabricChaincodeResponseBodyResult) SetType(v int32) *UpgradeFabr
 }
 
 type UpgradeFabricChaincodeResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpgradeFabricChaincodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpgradeFabricChaincodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpgradeFabricChaincodeResponse) String() string {
@@ -17910,14 +22911,48 @@ func (s *UpgradeFabricChaincodeResponse) SetBody(v *UpgradeFabricChaincodeRespon
 }
 
 type UpgradeFabricChaincodeDefinitionRequest struct {
-	ChaincodeId        *string `json:"ChaincodeId,omitempty" xml:"ChaincodeId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// code-sacc-jbkuldd3i7ad
+	ChaincodeId *string `json:"ChaincodeId,omitempty" xml:"ChaincodeId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sacc_v1.0:698d4e73c5f1d0239fbf0313ac79ddfaf44d5a803ecb02a4d1983cca4a706860
 	ChaincodePackageId *string `json:"ChaincodePackageId,omitempty" xml:"ChaincodePackageId,omitempty"`
-	ChaincodeVersion   *string `json:"ChaincodeVersion,omitempty" xml:"ChaincodeVersion,omitempty"`
-	CollectionConfig   *string `json:"CollectionConfig,omitempty" xml:"CollectionConfig,omitempty"`
-	EndorsePolicy      *string `json:"EndorsePolicy,omitempty" xml:"EndorsePolicy,omitempty"`
-	InitRequired       *bool   `json:"InitRequired,omitempty" xml:"InitRequired,omitempty"`
-	Location           *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	OrganizationId     *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1.1
+	ChaincodeVersion *string `json:"ChaincodeVersion,omitempty" xml:"ChaincodeVersion,omitempty"`
+	// example:
+	//
+	// collectionconfig
+	CollectionConfig *string `json:"CollectionConfig,omitempty" xml:"CollectionConfig,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// OR ("perf9141MSP.member")
+	EndorsePolicy *string `json:"EndorsePolicy,omitempty" xml:"EndorsePolicy,omitempty"`
+	// example:
+	//
+	// true
+	InitRequired *bool `json:"InitRequired,omitempty" xml:"InitRequired,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// peers-aaaaaa2-1eqnj5o5w9dt3
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 }
 
 func (s UpgradeFabricChaincodeDefinitionRequest) String() string {
@@ -17969,11 +23004,23 @@ func (s *UpgradeFabricChaincodeDefinitionRequest) SetOrganizationId(v string) *U
 }
 
 type UpgradeFabricChaincodeDefinitionResponseBody struct {
-	ErrorCode *int32       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string      `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1E55C947-19B4-4AAD-9D22-0B8DA8904B3D
 	RequestId *string      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *ChaincodeVO `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool        `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpgradeFabricChaincodeDefinitionResponseBody) String() string {
@@ -18010,9 +23057,9 @@ func (s *UpgradeFabricChaincodeDefinitionResponseBody) SetSuccess(v bool) *Upgra
 }
 
 type UpgradeFabricChaincodeDefinitionResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpgradeFabricChaincodeDefinitionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpgradeFabricChaincodeDefinitionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpgradeFabricChaincodeDefinitionResponse) String() string {
@@ -18101,6 +23148,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// @param request - AcceptFabricInvitationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AcceptFabricInvitationResponse
 func (client *Client) AcceptFabricInvitationWithOptions(request *AcceptFabricInvitationRequest, runtime *util.RuntimeOptions) (_result *AcceptFabricInvitationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18138,6 +23190,9 @@ func (client *Client) AcceptFabricInvitationWithOptions(request *AcceptFabricInv
 	return _result, _err
 }
 
+// @param request - AcceptFabricInvitationRequest
+//
+// @return AcceptFabricInvitationResponse
 func (client *Client) AcceptFabricInvitation(request *AcceptFabricInvitationRequest) (_result *AcceptFabricInvitationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AcceptFabricInvitationResponse{}
@@ -18149,6 +23204,11 @@ func (client *Client) AcceptFabricInvitation(request *AcceptFabricInvitationRequ
 	return _result, _err
 }
 
+// @param request - ApplyAntChainCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ApplyAntChainCertificateResponse
 func (client *Client) ApplyAntChainCertificateWithOptions(request *ApplyAntChainCertificateRequest, runtime *util.RuntimeOptions) (_result *ApplyAntChainCertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18186,6 +23246,9 @@ func (client *Client) ApplyAntChainCertificateWithOptions(request *ApplyAntChain
 	return _result, _err
 }
 
+// @param request - ApplyAntChainCertificateRequest
+//
+// @return ApplyAntChainCertificateResponse
 func (client *Client) ApplyAntChainCertificate(request *ApplyAntChainCertificateRequest) (_result *ApplyAntChainCertificateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ApplyAntChainCertificateResponse{}
@@ -18197,6 +23260,11 @@ func (client *Client) ApplyAntChainCertificate(request *ApplyAntChainCertificate
 	return _result, _err
 }
 
+// @param request - ApplyAntChainCertificateWithKeyAutoCreationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ApplyAntChainCertificateWithKeyAutoCreationResponse
 func (client *Client) ApplyAntChainCertificateWithKeyAutoCreationWithOptions(request *ApplyAntChainCertificateWithKeyAutoCreationRequest, runtime *util.RuntimeOptions) (_result *ApplyAntChainCertificateWithKeyAutoCreationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18262,6 +23330,9 @@ func (client *Client) ApplyAntChainCertificateWithKeyAutoCreationWithOptions(req
 	return _result, _err
 }
 
+// @param request - ApplyAntChainCertificateWithKeyAutoCreationRequest
+//
+// @return ApplyAntChainCertificateWithKeyAutoCreationResponse
 func (client *Client) ApplyAntChainCertificateWithKeyAutoCreation(request *ApplyAntChainCertificateWithKeyAutoCreationRequest) (_result *ApplyAntChainCertificateWithKeyAutoCreationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ApplyAntChainCertificateWithKeyAutoCreationResponse{}
@@ -18273,6 +23344,15 @@ func (client *Client) ApplyAntChainCertificateWithKeyAutoCreation(request *Apply
 	return _result, _err
 }
 
+// Summary:
+//
+// ApproveFabricChaincodeDefinition
+//
+// @param request - ApproveFabricChaincodeDefinitionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ApproveFabricChaincodeDefinitionResponse
 func (client *Client) ApproveFabricChaincodeDefinitionWithOptions(request *ApproveFabricChaincodeDefinitionRequest, runtime *util.RuntimeOptions) (_result *ApproveFabricChaincodeDefinitionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18318,6 +23398,13 @@ func (client *Client) ApproveFabricChaincodeDefinitionWithOptions(request *Appro
 	return _result, _err
 }
 
+// Summary:
+//
+// ApproveFabricChaincodeDefinition
+//
+// @param request - ApproveFabricChaincodeDefinitionRequest
+//
+// @return ApproveFabricChaincodeDefinitionResponse
 func (client *Client) ApproveFabricChaincodeDefinition(request *ApproveFabricChaincodeDefinitionRequest) (_result *ApproveFabricChaincodeDefinitionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ApproveFabricChaincodeDefinitionResponse{}
@@ -18329,6 +23416,11 @@ func (client *Client) ApproveFabricChaincodeDefinition(request *ApproveFabricCha
 	return _result, _err
 }
 
+// @param tmpReq - BatchAddAntChainMiniAppQRCodeAuthorizedUsersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchAddAntChainMiniAppQRCodeAuthorizedUsersResponse
 func (client *Client) BatchAddAntChainMiniAppQRCodeAuthorizedUsersWithOptions(tmpReq *BatchAddAntChainMiniAppQRCodeAuthorizedUsersRequest, runtime *util.RuntimeOptions) (_result *BatchAddAntChainMiniAppQRCodeAuthorizedUsersResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -18372,6 +23464,9 @@ func (client *Client) BatchAddAntChainMiniAppQRCodeAuthorizedUsersWithOptions(tm
 	return _result, _err
 }
 
+// @param request - BatchAddAntChainMiniAppQRCodeAuthorizedUsersRequest
+//
+// @return BatchAddAntChainMiniAppQRCodeAuthorizedUsersResponse
 func (client *Client) BatchAddAntChainMiniAppQRCodeAuthorizedUsers(request *BatchAddAntChainMiniAppQRCodeAuthorizedUsersRequest) (_result *BatchAddAntChainMiniAppQRCodeAuthorizedUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchAddAntChainMiniAppQRCodeAuthorizedUsersResponse{}
@@ -18383,6 +23478,11 @@ func (client *Client) BatchAddAntChainMiniAppQRCodeAuthorizedUsers(request *Batc
 	return _result, _err
 }
 
+// @param request - CheckFabricConsortiumDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckFabricConsortiumDomainResponse
 func (client *Client) CheckFabricConsortiumDomainWithOptions(request *CheckFabricConsortiumDomainRequest, runtime *util.RuntimeOptions) (_result *CheckFabricConsortiumDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18416,6 +23516,9 @@ func (client *Client) CheckFabricConsortiumDomainWithOptions(request *CheckFabri
 	return _result, _err
 }
 
+// @param request - CheckFabricConsortiumDomainRequest
+//
+// @return CheckFabricConsortiumDomainResponse
 func (client *Client) CheckFabricConsortiumDomain(request *CheckFabricConsortiumDomainRequest) (_result *CheckFabricConsortiumDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckFabricConsortiumDomainResponse{}
@@ -18427,6 +23530,11 @@ func (client *Client) CheckFabricConsortiumDomain(request *CheckFabricConsortium
 	return _result, _err
 }
 
+// @param request - CheckFabricOrganizationDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckFabricOrganizationDomainResponse
 func (client *Client) CheckFabricOrganizationDomainWithOptions(request *CheckFabricOrganizationDomainRequest, runtime *util.RuntimeOptions) (_result *CheckFabricOrganizationDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18464,6 +23572,9 @@ func (client *Client) CheckFabricOrganizationDomainWithOptions(request *CheckFab
 	return _result, _err
 }
 
+// @param request - CheckFabricOrganizationDomainRequest
+//
+// @return CheckFabricOrganizationDomainResponse
 func (client *Client) CheckFabricOrganizationDomain(request *CheckFabricOrganizationDomainRequest) (_result *CheckFabricOrganizationDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckFabricOrganizationDomainResponse{}
@@ -18475,6 +23586,11 @@ func (client *Client) CheckFabricOrganizationDomain(request *CheckFabricOrganiza
 	return _result, _err
 }
 
+// @param request - ConfirmFabricConsortiumMemberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfirmFabricConsortiumMemberResponse
 func (client *Client) ConfirmFabricConsortiumMemberWithOptions(request *ConfirmFabricConsortiumMemberRequest, runtime *util.RuntimeOptions) (_result *ConfirmFabricConsortiumMemberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18512,6 +23628,9 @@ func (client *Client) ConfirmFabricConsortiumMemberWithOptions(request *ConfirmF
 	return _result, _err
 }
 
+// @param request - ConfirmFabricConsortiumMemberRequest
+//
+// @return ConfirmFabricConsortiumMemberResponse
 func (client *Client) ConfirmFabricConsortiumMember(request *ConfirmFabricConsortiumMemberRequest) (_result *ConfirmFabricConsortiumMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ConfirmFabricConsortiumMemberResponse{}
@@ -18523,6 +23642,11 @@ func (client *Client) ConfirmFabricConsortiumMember(request *ConfirmFabricConsor
 	return _result, _err
 }
 
+// @param request - CopyAntChainContractProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CopyAntChainContractProjectResponse
 func (client *Client) CopyAntChainContractProjectWithOptions(request *CopyAntChainContractProjectRequest, runtime *util.RuntimeOptions) (_result *CopyAntChainContractProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18568,6 +23692,9 @@ func (client *Client) CopyAntChainContractProjectWithOptions(request *CopyAntCha
 	return _result, _err
 }
 
+// @param request - CopyAntChainContractProjectRequest
+//
+// @return CopyAntChainContractProjectResponse
 func (client *Client) CopyAntChainContractProject(request *CopyAntChainContractProjectRequest) (_result *CopyAntChainContractProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CopyAntChainContractProjectResponse{}
@@ -18579,6 +23706,11 @@ func (client *Client) CopyAntChainContractProject(request *CopyAntChainContractP
 	return _result, _err
 }
 
+// @param request - CreateAntChainAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAntChainAccountResponse
 func (client *Client) CreateAntChainAccountWithOptions(request *CreateAntChainAccountRequest, runtime *util.RuntimeOptions) (_result *CreateAntChainAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18624,6 +23756,9 @@ func (client *Client) CreateAntChainAccountWithOptions(request *CreateAntChainAc
 	return _result, _err
 }
 
+// @param request - CreateAntChainAccountRequest
+//
+// @return CreateAntChainAccountResponse
 func (client *Client) CreateAntChainAccount(request *CreateAntChainAccountRequest) (_result *CreateAntChainAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAntChainAccountResponse{}
@@ -18635,6 +23770,11 @@ func (client *Client) CreateAntChainAccount(request *CreateAntChainAccountReques
 	return _result, _err
 }
 
+// @param request - CreateAntChainAccountWithKeyPairAutoCreationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAntChainAccountWithKeyPairAutoCreationResponse
 func (client *Client) CreateAntChainAccountWithKeyPairAutoCreationWithOptions(request *CreateAntChainAccountWithKeyPairAutoCreationRequest, runtime *util.RuntimeOptions) (_result *CreateAntChainAccountWithKeyPairAutoCreationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18680,6 +23820,9 @@ func (client *Client) CreateAntChainAccountWithKeyPairAutoCreationWithOptions(re
 	return _result, _err
 }
 
+// @param request - CreateAntChainAccountWithKeyPairAutoCreationRequest
+//
+// @return CreateAntChainAccountWithKeyPairAutoCreationResponse
 func (client *Client) CreateAntChainAccountWithKeyPairAutoCreation(request *CreateAntChainAccountWithKeyPairAutoCreationRequest) (_result *CreateAntChainAccountWithKeyPairAutoCreationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAntChainAccountWithKeyPairAutoCreationResponse{}
@@ -18691,6 +23834,11 @@ func (client *Client) CreateAntChainAccountWithKeyPairAutoCreation(request *Crea
 	return _result, _err
 }
 
+// @param request - CreateAntChainConsortiumRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAntChainConsortiumResponse
 func (client *Client) CreateAntChainConsortiumWithOptions(request *CreateAntChainConsortiumRequest, runtime *util.RuntimeOptions) (_result *CreateAntChainConsortiumResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18728,6 +23876,9 @@ func (client *Client) CreateAntChainConsortiumWithOptions(request *CreateAntChai
 	return _result, _err
 }
 
+// @param request - CreateAntChainConsortiumRequest
+//
+// @return CreateAntChainConsortiumResponse
 func (client *Client) CreateAntChainConsortium(request *CreateAntChainConsortiumRequest) (_result *CreateAntChainConsortiumResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAntChainConsortiumResponse{}
@@ -18739,6 +23890,11 @@ func (client *Client) CreateAntChainConsortium(request *CreateAntChainConsortium
 	return _result, _err
 }
 
+// @param request - CreateAntChainContractContentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAntChainContractContentResponse
 func (client *Client) CreateAntChainContractContentWithOptions(request *CreateAntChainContractContentRequest, runtime *util.RuntimeOptions) (_result *CreateAntChainContractContentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18788,6 +23944,9 @@ func (client *Client) CreateAntChainContractContentWithOptions(request *CreateAn
 	return _result, _err
 }
 
+// @param request - CreateAntChainContractContentRequest
+//
+// @return CreateAntChainContractContentResponse
 func (client *Client) CreateAntChainContractContent(request *CreateAntChainContractContentRequest) (_result *CreateAntChainContractContentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAntChainContractContentResponse{}
@@ -18799,6 +23958,11 @@ func (client *Client) CreateAntChainContractContent(request *CreateAntChainContr
 	return _result, _err
 }
 
+// @param request - CreateAntChainContractProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAntChainContractProjectResponse
 func (client *Client) CreateAntChainContractProjectWithOptions(request *CreateAntChainContractProjectRequest, runtime *util.RuntimeOptions) (_result *CreateAntChainContractProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18844,6 +24008,9 @@ func (client *Client) CreateAntChainContractProjectWithOptions(request *CreateAn
 	return _result, _err
 }
 
+// @param request - CreateAntChainContractProjectRequest
+//
+// @return CreateAntChainContractProjectResponse
 func (client *Client) CreateAntChainContractProject(request *CreateAntChainContractProjectRequest) (_result *CreateAntChainContractProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAntChainContractProjectResponse{}
@@ -18855,6 +24022,15 @@ func (client *Client) CreateAntChainContractProject(request *CreateAntChainContr
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建MyChain托管账户
+//
+// @param request - CreateAntChainKmsAccountNewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAntChainKmsAccountNewResponse
 func (client *Client) CreateAntChainKmsAccountNewWithOptions(request *CreateAntChainKmsAccountNewRequest, runtime *util.RuntimeOptions) (_result *CreateAntChainKmsAccountNewResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18892,6 +24068,13 @@ func (client *Client) CreateAntChainKmsAccountNewWithOptions(request *CreateAntC
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建MyChain托管账户
+//
+// @param request - CreateAntChainKmsAccountNewRequest
+//
+// @return CreateAntChainKmsAccountNewResponse
 func (client *Client) CreateAntChainKmsAccountNew(request *CreateAntChainKmsAccountNewRequest) (_result *CreateAntChainKmsAccountNewResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAntChainKmsAccountNewResponse{}
@@ -18903,6 +24086,11 @@ func (client *Client) CreateAntChainKmsAccountNew(request *CreateAntChainKmsAcco
 	return _result, _err
 }
 
+// @param request - CreateFabricChaincodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFabricChaincodeResponse
 func (client *Client) CreateFabricChaincodeWithOptions(request *CreateFabricChaincodeRequest, runtime *util.RuntimeOptions) (_result *CreateFabricChaincodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18960,6 +24148,9 @@ func (client *Client) CreateFabricChaincodeWithOptions(request *CreateFabricChai
 	return _result, _err
 }
 
+// @param request - CreateFabricChaincodeRequest
+//
+// @return CreateFabricChaincodeResponse
 func (client *Client) CreateFabricChaincode(request *CreateFabricChaincodeRequest) (_result *CreateFabricChaincodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateFabricChaincodeResponse{}
@@ -18971,6 +24162,15 @@ func (client *Client) CreateFabricChaincode(request *CreateFabricChaincodeReques
 	return _result, _err
 }
 
+// Summary:
+//
+// CreateFabricChaincodePackage
+//
+// @param request - CreateFabricChaincodePackageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFabricChaincodePackageResponse
 func (client *Client) CreateFabricChaincodePackageWithOptions(request *CreateFabricChaincodePackageRequest, runtime *util.RuntimeOptions) (_result *CreateFabricChaincodePackageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19012,6 +24212,13 @@ func (client *Client) CreateFabricChaincodePackageWithOptions(request *CreateFab
 	return _result, _err
 }
 
+// Summary:
+//
+// CreateFabricChaincodePackage
+//
+// @param request - CreateFabricChaincodePackageRequest
+//
+// @return CreateFabricChaincodePackageResponse
 func (client *Client) CreateFabricChaincodePackage(request *CreateFabricChaincodePackageRequest) (_result *CreateFabricChaincodePackageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateFabricChaincodePackageResponse{}
@@ -19023,6 +24230,11 @@ func (client *Client) CreateFabricChaincodePackage(request *CreateFabricChaincod
 	return _result, _err
 }
 
+// @param request - CreateFabricChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFabricChannelResponse
 func (client *Client) CreateFabricChannelWithOptions(request *CreateFabricChannelRequest, runtime *util.RuntimeOptions) (_result *CreateFabricChannelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19078,6 +24290,9 @@ func (client *Client) CreateFabricChannelWithOptions(request *CreateFabricChanne
 	return _result, _err
 }
 
+// @param request - CreateFabricChannelRequest
+//
+// @return CreateFabricChannelResponse
 func (client *Client) CreateFabricChannel(request *CreateFabricChannelRequest) (_result *CreateFabricChannelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateFabricChannelResponse{}
@@ -19089,6 +24304,11 @@ func (client *Client) CreateFabricChannel(request *CreateFabricChannelRequest) (
 	return _result, _err
 }
 
+// @param request - CreateFabricChannelMemberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFabricChannelMemberResponse
 func (client *Client) CreateFabricChannelMemberWithOptions(request *CreateFabricChannelMemberRequest, runtime *util.RuntimeOptions) (_result *CreateFabricChannelMemberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19126,6 +24346,9 @@ func (client *Client) CreateFabricChannelMemberWithOptions(request *CreateFabric
 	return _result, _err
 }
 
+// @param request - CreateFabricChannelMemberRequest
+//
+// @return CreateFabricChannelMemberResponse
 func (client *Client) CreateFabricChannelMember(request *CreateFabricChannelMemberRequest) (_result *CreateFabricChannelMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateFabricChannelMemberResponse{}
@@ -19137,6 +24360,11 @@ func (client *Client) CreateFabricChannelMember(request *CreateFabricChannelMemb
 	return _result, _err
 }
 
+// @param request - CreateFabricConsortiumRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFabricConsortiumResponse
 func (client *Client) CreateFabricConsortiumWithOptions(request *CreateFabricConsortiumRequest, runtime *util.RuntimeOptions) (_result *CreateFabricConsortiumResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19218,6 +24446,9 @@ func (client *Client) CreateFabricConsortiumWithOptions(request *CreateFabricCon
 	return _result, _err
 }
 
+// @param request - CreateFabricConsortiumRequest
+//
+// @return CreateFabricConsortiumResponse
 func (client *Client) CreateFabricConsortium(request *CreateFabricConsortiumRequest) (_result *CreateFabricConsortiumResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateFabricConsortiumResponse{}
@@ -19229,6 +24460,11 @@ func (client *Client) CreateFabricConsortium(request *CreateFabricConsortiumRequ
 	return _result, _err
 }
 
+// @param request - CreateFabricConsortiumMemberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFabricConsortiumMemberResponse
 func (client *Client) CreateFabricConsortiumMemberWithOptions(request *CreateFabricConsortiumMemberRequest, runtime *util.RuntimeOptions) (_result *CreateFabricConsortiumMemberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19270,6 +24506,9 @@ func (client *Client) CreateFabricConsortiumMemberWithOptions(request *CreateFab
 	return _result, _err
 }
 
+// @param request - CreateFabricConsortiumMemberRequest
+//
+// @return CreateFabricConsortiumMemberResponse
 func (client *Client) CreateFabricConsortiumMember(request *CreateFabricConsortiumMemberRequest) (_result *CreateFabricConsortiumMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateFabricConsortiumMemberResponse{}
@@ -19281,6 +24520,11 @@ func (client *Client) CreateFabricConsortiumMember(request *CreateFabricConsorti
 	return _result, _err
 }
 
+// @param request - CreateFabricOrganizationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFabricOrganizationResponse
 func (client *Client) CreateFabricOrganizationWithOptions(request *CreateFabricOrganizationRequest, runtime *util.RuntimeOptions) (_result *CreateFabricOrganizationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19344,6 +24588,9 @@ func (client *Client) CreateFabricOrganizationWithOptions(request *CreateFabricO
 	return _result, _err
 }
 
+// @param request - CreateFabricOrganizationRequest
+//
+// @return CreateFabricOrganizationResponse
 func (client *Client) CreateFabricOrganization(request *CreateFabricOrganizationRequest) (_result *CreateFabricOrganizationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateFabricOrganizationResponse{}
@@ -19355,6 +24602,11 @@ func (client *Client) CreateFabricOrganization(request *CreateFabricOrganization
 	return _result, _err
 }
 
+// @param request - CreateFabricOrganizationUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFabricOrganizationUserResponse
 func (client *Client) CreateFabricOrganizationUserWithOptions(request *CreateFabricOrganizationUserRequest, runtime *util.RuntimeOptions) (_result *CreateFabricOrganizationUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19400,6 +24652,9 @@ func (client *Client) CreateFabricOrganizationUserWithOptions(request *CreateFab
 	return _result, _err
 }
 
+// @param request - CreateFabricOrganizationUserRequest
+//
+// @return CreateFabricOrganizationUserResponse
 func (client *Client) CreateFabricOrganizationUser(request *CreateFabricOrganizationUserRequest) (_result *CreateFabricOrganizationUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateFabricOrganizationUserResponse{}
@@ -19411,6 +24666,11 @@ func (client *Client) CreateFabricOrganizationUser(request *CreateFabricOrganiza
 	return _result, _err
 }
 
+// @param request - DeleteAntChainConsortiumRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAntChainConsortiumResponse
 func (client *Client) DeleteAntChainConsortiumWithOptions(request *DeleteAntChainConsortiumRequest, runtime *util.RuntimeOptions) (_result *DeleteAntChainConsortiumResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19444,6 +24704,9 @@ func (client *Client) DeleteAntChainConsortiumWithOptions(request *DeleteAntChai
 	return _result, _err
 }
 
+// @param request - DeleteAntChainConsortiumRequest
+//
+// @return DeleteAntChainConsortiumResponse
 func (client *Client) DeleteAntChainConsortium(request *DeleteAntChainConsortiumRequest) (_result *DeleteAntChainConsortiumResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAntChainConsortiumResponse{}
@@ -19455,6 +24718,11 @@ func (client *Client) DeleteAntChainConsortium(request *DeleteAntChainConsortium
 	return _result, _err
 }
 
+// @param request - DeleteAntChainContractContentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAntChainContractContentResponse
 func (client *Client) DeleteAntChainContractContentWithOptions(request *DeleteAntChainContractContentRequest, runtime *util.RuntimeOptions) (_result *DeleteAntChainContractContentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19488,6 +24756,9 @@ func (client *Client) DeleteAntChainContractContentWithOptions(request *DeleteAn
 	return _result, _err
 }
 
+// @param request - DeleteAntChainContractContentRequest
+//
+// @return DeleteAntChainContractContentResponse
 func (client *Client) DeleteAntChainContractContent(request *DeleteAntChainContractContentRequest) (_result *DeleteAntChainContractContentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAntChainContractContentResponse{}
@@ -19499,6 +24770,11 @@ func (client *Client) DeleteAntChainContractContent(request *DeleteAntChainContr
 	return _result, _err
 }
 
+// @param request - DeleteAntChainContractProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAntChainContractProjectResponse
 func (client *Client) DeleteAntChainContractProjectWithOptions(request *DeleteAntChainContractProjectRequest, runtime *util.RuntimeOptions) (_result *DeleteAntChainContractProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19532,6 +24808,9 @@ func (client *Client) DeleteAntChainContractProjectWithOptions(request *DeleteAn
 	return _result, _err
 }
 
+// @param request - DeleteAntChainContractProjectRequest
+//
+// @return DeleteAntChainContractProjectResponse
 func (client *Client) DeleteAntChainContractProject(request *DeleteAntChainContractProjectRequest) (_result *DeleteAntChainContractProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAntChainContractProjectResponse{}
@@ -19543,6 +24822,11 @@ func (client *Client) DeleteAntChainContractProject(request *DeleteAntChainContr
 	return _result, _err
 }
 
+// @param request - DeleteAntChainMiniAppQRCodeAuthorizedUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAntChainMiniAppQRCodeAuthorizedUserResponse
 func (client *Client) DeleteAntChainMiniAppQRCodeAuthorizedUserWithOptions(request *DeleteAntChainMiniAppQRCodeAuthorizedUserRequest, runtime *util.RuntimeOptions) (_result *DeleteAntChainMiniAppQRCodeAuthorizedUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19580,6 +24864,9 @@ func (client *Client) DeleteAntChainMiniAppQRCodeAuthorizedUserWithOptions(reque
 	return _result, _err
 }
 
+// @param request - DeleteAntChainMiniAppQRCodeAuthorizedUserRequest
+//
+// @return DeleteAntChainMiniAppQRCodeAuthorizedUserResponse
 func (client *Client) DeleteAntChainMiniAppQRCodeAuthorizedUser(request *DeleteAntChainMiniAppQRCodeAuthorizedUserRequest) (_result *DeleteAntChainMiniAppQRCodeAuthorizedUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAntChainMiniAppQRCodeAuthorizedUserResponse{}
@@ -19591,6 +24878,11 @@ func (client *Client) DeleteAntChainMiniAppQRCodeAuthorizedUser(request *DeleteA
 	return _result, _err
 }
 
+// @param request - DeleteFabricChaincodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFabricChaincodeResponse
 func (client *Client) DeleteFabricChaincodeWithOptions(request *DeleteFabricChaincodeRequest, runtime *util.RuntimeOptions) (_result *DeleteFabricChaincodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19624,6 +24916,9 @@ func (client *Client) DeleteFabricChaincodeWithOptions(request *DeleteFabricChai
 	return _result, _err
 }
 
+// @param request - DeleteFabricChaincodeRequest
+//
+// @return DeleteFabricChaincodeResponse
 func (client *Client) DeleteFabricChaincode(request *DeleteFabricChaincodeRequest) (_result *DeleteFabricChaincodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteFabricChaincodeResponse{}
@@ -19635,6 +24930,11 @@ func (client *Client) DeleteFabricChaincode(request *DeleteFabricChaincodeReques
 	return _result, _err
 }
 
+// @param request - DescribeAntChainAccountsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainAccountsResponse
 func (client *Client) DescribeAntChainAccountsWithOptions(request *DescribeAntChainAccountsRequest, runtime *util.RuntimeOptions) (_result *DescribeAntChainAccountsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19676,6 +24976,9 @@ func (client *Client) DescribeAntChainAccountsWithOptions(request *DescribeAntCh
 	return _result, _err
 }
 
+// @param request - DescribeAntChainAccountsRequest
+//
+// @return DescribeAntChainAccountsResponse
 func (client *Client) DescribeAntChainAccounts(request *DescribeAntChainAccountsRequest) (_result *DescribeAntChainAccountsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainAccountsResponse{}
@@ -19687,6 +24990,11 @@ func (client *Client) DescribeAntChainAccounts(request *DescribeAntChainAccounts
 	return _result, _err
 }
 
+// @param request - DescribeAntChainAccountsV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainAccountsV2Response
 func (client *Client) DescribeAntChainAccountsV2WithOptions(request *DescribeAntChainAccountsV2Request, runtime *util.RuntimeOptions) (_result *DescribeAntChainAccountsV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19732,6 +25040,9 @@ func (client *Client) DescribeAntChainAccountsV2WithOptions(request *DescribeAnt
 	return _result, _err
 }
 
+// @param request - DescribeAntChainAccountsV2Request
+//
+// @return DescribeAntChainAccountsV2Response
 func (client *Client) DescribeAntChainAccountsV2(request *DescribeAntChainAccountsV2Request) (_result *DescribeAntChainAccountsV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainAccountsV2Response{}
@@ -19743,6 +25054,11 @@ func (client *Client) DescribeAntChainAccountsV2(request *DescribeAntChainAccoun
 	return _result, _err
 }
 
+// @param request - DescribeAntChainBlockRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainBlockResponse
 func (client *Client) DescribeAntChainBlockWithOptions(request *DescribeAntChainBlockRequest, runtime *util.RuntimeOptions) (_result *DescribeAntChainBlockResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19780,6 +25096,9 @@ func (client *Client) DescribeAntChainBlockWithOptions(request *DescribeAntChain
 	return _result, _err
 }
 
+// @param request - DescribeAntChainBlockRequest
+//
+// @return DescribeAntChainBlockResponse
 func (client *Client) DescribeAntChainBlock(request *DescribeAntChainBlockRequest) (_result *DescribeAntChainBlockResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainBlockResponse{}
@@ -19791,6 +25110,11 @@ func (client *Client) DescribeAntChainBlock(request *DescribeAntChainBlockReques
 	return _result, _err
 }
 
+// @param request - DescribeAntChainBlockV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainBlockV2Response
 func (client *Client) DescribeAntChainBlockV2WithOptions(request *DescribeAntChainBlockV2Request, runtime *util.RuntimeOptions) (_result *DescribeAntChainBlockV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19832,6 +25156,9 @@ func (client *Client) DescribeAntChainBlockV2WithOptions(request *DescribeAntCha
 	return _result, _err
 }
 
+// @param request - DescribeAntChainBlockV2Request
+//
+// @return DescribeAntChainBlockV2Response
 func (client *Client) DescribeAntChainBlockV2(request *DescribeAntChainBlockV2Request) (_result *DescribeAntChainBlockV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainBlockV2Response{}
@@ -19843,6 +25170,11 @@ func (client *Client) DescribeAntChainBlockV2(request *DescribeAntChainBlockV2Re
 	return _result, _err
 }
 
+// @param request - DescribeAntChainCertificateApplicationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainCertificateApplicationsResponse
 func (client *Client) DescribeAntChainCertificateApplicationsWithOptions(request *DescribeAntChainCertificateApplicationsRequest, runtime *util.RuntimeOptions) (_result *DescribeAntChainCertificateApplicationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19888,6 +25220,9 @@ func (client *Client) DescribeAntChainCertificateApplicationsWithOptions(request
 	return _result, _err
 }
 
+// @param request - DescribeAntChainCertificateApplicationsRequest
+//
+// @return DescribeAntChainCertificateApplicationsResponse
 func (client *Client) DescribeAntChainCertificateApplications(request *DescribeAntChainCertificateApplicationsRequest) (_result *DescribeAntChainCertificateApplicationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainCertificateApplicationsResponse{}
@@ -19899,6 +25234,11 @@ func (client *Client) DescribeAntChainCertificateApplications(request *DescribeA
 	return _result, _err
 }
 
+// @param request - DescribeAntChainCertificateApplicationsV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainCertificateApplicationsV2Response
 func (client *Client) DescribeAntChainCertificateApplicationsV2WithOptions(request *DescribeAntChainCertificateApplicationsV2Request, runtime *util.RuntimeOptions) (_result *DescribeAntChainCertificateApplicationsV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19948,6 +25288,9 @@ func (client *Client) DescribeAntChainCertificateApplicationsV2WithOptions(reque
 	return _result, _err
 }
 
+// @param request - DescribeAntChainCertificateApplicationsV2Request
+//
+// @return DescribeAntChainCertificateApplicationsV2Response
 func (client *Client) DescribeAntChainCertificateApplicationsV2(request *DescribeAntChainCertificateApplicationsV2Request) (_result *DescribeAntChainCertificateApplicationsV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainCertificateApplicationsV2Response{}
@@ -19959,6 +25302,11 @@ func (client *Client) DescribeAntChainCertificateApplicationsV2(request *Describ
 	return _result, _err
 }
 
+// @param request - DescribeAntChainConsortiumsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainConsortiumsResponse
 func (client *Client) DescribeAntChainConsortiumsWithOptions(request *DescribeAntChainConsortiumsRequest, runtime *util.RuntimeOptions) (_result *DescribeAntChainConsortiumsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19996,6 +25344,9 @@ func (client *Client) DescribeAntChainConsortiumsWithOptions(request *DescribeAn
 	return _result, _err
 }
 
+// @param request - DescribeAntChainConsortiumsRequest
+//
+// @return DescribeAntChainConsortiumsResponse
 func (client *Client) DescribeAntChainConsortiums(request *DescribeAntChainConsortiumsRequest) (_result *DescribeAntChainConsortiumsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainConsortiumsResponse{}
@@ -20007,6 +25358,11 @@ func (client *Client) DescribeAntChainConsortiums(request *DescribeAntChainConso
 	return _result, _err
 }
 
+// @param request - DescribeAntChainConsortiumsV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainConsortiumsV2Response
 func (client *Client) DescribeAntChainConsortiumsV2WithOptions(request *DescribeAntChainConsortiumsV2Request, runtime *util.RuntimeOptions) (_result *DescribeAntChainConsortiumsV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20044,6 +25400,9 @@ func (client *Client) DescribeAntChainConsortiumsV2WithOptions(request *Describe
 	return _result, _err
 }
 
+// @param request - DescribeAntChainConsortiumsV2Request
+//
+// @return DescribeAntChainConsortiumsV2Response
 func (client *Client) DescribeAntChainConsortiumsV2(request *DescribeAntChainConsortiumsV2Request) (_result *DescribeAntChainConsortiumsV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainConsortiumsV2Response{}
@@ -20055,6 +25414,11 @@ func (client *Client) DescribeAntChainConsortiumsV2(request *DescribeAntChainCon
 	return _result, _err
 }
 
+// @param request - DescribeAntChainContractProjectContentTreeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainContractProjectContentTreeResponse
 func (client *Client) DescribeAntChainContractProjectContentTreeWithOptions(request *DescribeAntChainContractProjectContentTreeRequest, runtime *util.RuntimeOptions) (_result *DescribeAntChainContractProjectContentTreeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20088,6 +25452,9 @@ func (client *Client) DescribeAntChainContractProjectContentTreeWithOptions(requ
 	return _result, _err
 }
 
+// @param request - DescribeAntChainContractProjectContentTreeRequest
+//
+// @return DescribeAntChainContractProjectContentTreeResponse
 func (client *Client) DescribeAntChainContractProjectContentTree(request *DescribeAntChainContractProjectContentTreeRequest) (_result *DescribeAntChainContractProjectContentTreeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainContractProjectContentTreeResponse{}
@@ -20099,6 +25466,11 @@ func (client *Client) DescribeAntChainContractProjectContentTree(request *Descri
 	return _result, _err
 }
 
+// @param request - DescribeAntChainContractProjectContentTreeV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainContractProjectContentTreeV2Response
 func (client *Client) DescribeAntChainContractProjectContentTreeV2WithOptions(request *DescribeAntChainContractProjectContentTreeV2Request, runtime *util.RuntimeOptions) (_result *DescribeAntChainContractProjectContentTreeV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20136,6 +25508,9 @@ func (client *Client) DescribeAntChainContractProjectContentTreeV2WithOptions(re
 	return _result, _err
 }
 
+// @param request - DescribeAntChainContractProjectContentTreeV2Request
+//
+// @return DescribeAntChainContractProjectContentTreeV2Response
 func (client *Client) DescribeAntChainContractProjectContentTreeV2(request *DescribeAntChainContractProjectContentTreeV2Request) (_result *DescribeAntChainContractProjectContentTreeV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainContractProjectContentTreeV2Response{}
@@ -20147,6 +25522,11 @@ func (client *Client) DescribeAntChainContractProjectContentTreeV2(request *Desc
 	return _result, _err
 }
 
+// @param request - DescribeAntChainContractProjectsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainContractProjectsResponse
 func (client *Client) DescribeAntChainContractProjectsWithOptions(request *DescribeAntChainContractProjectsRequest, runtime *util.RuntimeOptions) (_result *DescribeAntChainContractProjectsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20188,6 +25568,9 @@ func (client *Client) DescribeAntChainContractProjectsWithOptions(request *Descr
 	return _result, _err
 }
 
+// @param request - DescribeAntChainContractProjectsRequest
+//
+// @return DescribeAntChainContractProjectsResponse
 func (client *Client) DescribeAntChainContractProjects(request *DescribeAntChainContractProjectsRequest) (_result *DescribeAntChainContractProjectsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainContractProjectsResponse{}
@@ -20199,6 +25582,11 @@ func (client *Client) DescribeAntChainContractProjects(request *DescribeAntChain
 	return _result, _err
 }
 
+// @param request - DescribeAntChainContractProjectsV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainContractProjectsV2Response
 func (client *Client) DescribeAntChainContractProjectsV2WithOptions(request *DescribeAntChainContractProjectsV2Request, runtime *util.RuntimeOptions) (_result *DescribeAntChainContractProjectsV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20240,6 +25628,9 @@ func (client *Client) DescribeAntChainContractProjectsV2WithOptions(request *Des
 	return _result, _err
 }
 
+// @param request - DescribeAntChainContractProjectsV2Request
+//
+// @return DescribeAntChainContractProjectsV2Response
 func (client *Client) DescribeAntChainContractProjectsV2(request *DescribeAntChainContractProjectsV2Request) (_result *DescribeAntChainContractProjectsV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainContractProjectsV2Response{}
@@ -20251,6 +25642,11 @@ func (client *Client) DescribeAntChainContractProjectsV2(request *DescribeAntCha
 	return _result, _err
 }
 
+// @param request - DescribeAntChainDownloadPathsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainDownloadPathsResponse
 func (client *Client) DescribeAntChainDownloadPathsWithOptions(request *DescribeAntChainDownloadPathsRequest, runtime *util.RuntimeOptions) (_result *DescribeAntChainDownloadPathsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20284,6 +25680,9 @@ func (client *Client) DescribeAntChainDownloadPathsWithOptions(request *Describe
 	return _result, _err
 }
 
+// @param request - DescribeAntChainDownloadPathsRequest
+//
+// @return DescribeAntChainDownloadPathsResponse
 func (client *Client) DescribeAntChainDownloadPaths(request *DescribeAntChainDownloadPathsRequest) (_result *DescribeAntChainDownloadPathsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainDownloadPathsResponse{}
@@ -20295,6 +25694,11 @@ func (client *Client) DescribeAntChainDownloadPaths(request *DescribeAntChainDow
 	return _result, _err
 }
 
+// @param request - DescribeAntChainDownloadPathsV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainDownloadPathsV2Response
 func (client *Client) DescribeAntChainDownloadPathsV2WithOptions(request *DescribeAntChainDownloadPathsV2Request, runtime *util.RuntimeOptions) (_result *DescribeAntChainDownloadPathsV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20332,6 +25736,9 @@ func (client *Client) DescribeAntChainDownloadPathsV2WithOptions(request *Descri
 	return _result, _err
 }
 
+// @param request - DescribeAntChainDownloadPathsV2Request
+//
+// @return DescribeAntChainDownloadPathsV2Response
 func (client *Client) DescribeAntChainDownloadPathsV2(request *DescribeAntChainDownloadPathsV2Request) (_result *DescribeAntChainDownloadPathsV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainDownloadPathsV2Response{}
@@ -20343,6 +25750,11 @@ func (client *Client) DescribeAntChainDownloadPathsV2(request *DescribeAntChainD
 	return _result, _err
 }
 
+// @param request - DescribeAntChainInformationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainInformationResponse
 func (client *Client) DescribeAntChainInformationWithOptions(request *DescribeAntChainInformationRequest, runtime *util.RuntimeOptions) (_result *DescribeAntChainInformationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20376,6 +25788,9 @@ func (client *Client) DescribeAntChainInformationWithOptions(request *DescribeAn
 	return _result, _err
 }
 
+// @param request - DescribeAntChainInformationRequest
+//
+// @return DescribeAntChainInformationResponse
 func (client *Client) DescribeAntChainInformation(request *DescribeAntChainInformationRequest) (_result *DescribeAntChainInformationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainInformationResponse{}
@@ -20387,6 +25802,11 @@ func (client *Client) DescribeAntChainInformation(request *DescribeAntChainInfor
 	return _result, _err
 }
 
+// @param request - DescribeAntChainInformationV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainInformationV2Response
 func (client *Client) DescribeAntChainInformationV2WithOptions(request *DescribeAntChainInformationV2Request, runtime *util.RuntimeOptions) (_result *DescribeAntChainInformationV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20424,6 +25844,9 @@ func (client *Client) DescribeAntChainInformationV2WithOptions(request *Describe
 	return _result, _err
 }
 
+// @param request - DescribeAntChainInformationV2Request
+//
+// @return DescribeAntChainInformationV2Response
 func (client *Client) DescribeAntChainInformationV2(request *DescribeAntChainInformationV2Request) (_result *DescribeAntChainInformationV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainInformationV2Response{}
@@ -20435,6 +25858,11 @@ func (client *Client) DescribeAntChainInformationV2(request *DescribeAntChainInf
 	return _result, _err
 }
 
+// @param request - DescribeAntChainLatestBlocksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainLatestBlocksResponse
 func (client *Client) DescribeAntChainLatestBlocksWithOptions(request *DescribeAntChainLatestBlocksRequest, runtime *util.RuntimeOptions) (_result *DescribeAntChainLatestBlocksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20468,6 +25896,9 @@ func (client *Client) DescribeAntChainLatestBlocksWithOptions(request *DescribeA
 	return _result, _err
 }
 
+// @param request - DescribeAntChainLatestBlocksRequest
+//
+// @return DescribeAntChainLatestBlocksResponse
 func (client *Client) DescribeAntChainLatestBlocks(request *DescribeAntChainLatestBlocksRequest) (_result *DescribeAntChainLatestBlocksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainLatestBlocksResponse{}
@@ -20479,6 +25910,11 @@ func (client *Client) DescribeAntChainLatestBlocks(request *DescribeAntChainLate
 	return _result, _err
 }
 
+// @param request - DescribeAntChainLatestBlocksV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainLatestBlocksV2Response
 func (client *Client) DescribeAntChainLatestBlocksV2WithOptions(request *DescribeAntChainLatestBlocksV2Request, runtime *util.RuntimeOptions) (_result *DescribeAntChainLatestBlocksV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20516,6 +25952,9 @@ func (client *Client) DescribeAntChainLatestBlocksV2WithOptions(request *Describ
 	return _result, _err
 }
 
+// @param request - DescribeAntChainLatestBlocksV2Request
+//
+// @return DescribeAntChainLatestBlocksV2Response
 func (client *Client) DescribeAntChainLatestBlocksV2(request *DescribeAntChainLatestBlocksV2Request) (_result *DescribeAntChainLatestBlocksV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainLatestBlocksV2Response{}
@@ -20527,6 +25966,11 @@ func (client *Client) DescribeAntChainLatestBlocksV2(request *DescribeAntChainLa
 	return _result, _err
 }
 
+// @param request - DescribeAntChainLatestTransactionDigestsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainLatestTransactionDigestsResponse
 func (client *Client) DescribeAntChainLatestTransactionDigestsWithOptions(request *DescribeAntChainLatestTransactionDigestsRequest, runtime *util.RuntimeOptions) (_result *DescribeAntChainLatestTransactionDigestsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20560,6 +26004,9 @@ func (client *Client) DescribeAntChainLatestTransactionDigestsWithOptions(reques
 	return _result, _err
 }
 
+// @param request - DescribeAntChainLatestTransactionDigestsRequest
+//
+// @return DescribeAntChainLatestTransactionDigestsResponse
 func (client *Client) DescribeAntChainLatestTransactionDigests(request *DescribeAntChainLatestTransactionDigestsRequest) (_result *DescribeAntChainLatestTransactionDigestsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainLatestTransactionDigestsResponse{}
@@ -20571,6 +26018,11 @@ func (client *Client) DescribeAntChainLatestTransactionDigests(request *Describe
 	return _result, _err
 }
 
+// @param request - DescribeAntChainLatestTransactionDigestsV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainLatestTransactionDigestsV2Response
 func (client *Client) DescribeAntChainLatestTransactionDigestsV2WithOptions(request *DescribeAntChainLatestTransactionDigestsV2Request, runtime *util.RuntimeOptions) (_result *DescribeAntChainLatestTransactionDigestsV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20608,6 +26060,9 @@ func (client *Client) DescribeAntChainLatestTransactionDigestsV2WithOptions(requ
 	return _result, _err
 }
 
+// @param request - DescribeAntChainLatestTransactionDigestsV2Request
+//
+// @return DescribeAntChainLatestTransactionDigestsV2Response
 func (client *Client) DescribeAntChainLatestTransactionDigestsV2(request *DescribeAntChainLatestTransactionDigestsV2Request) (_result *DescribeAntChainLatestTransactionDigestsV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainLatestTransactionDigestsV2Response{}
@@ -20619,6 +26074,11 @@ func (client *Client) DescribeAntChainLatestTransactionDigestsV2(request *Descri
 	return _result, _err
 }
 
+// @param request - DescribeAntChainMembersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainMembersResponse
 func (client *Client) DescribeAntChainMembersWithOptions(request *DescribeAntChainMembersRequest, runtime *util.RuntimeOptions) (_result *DescribeAntChainMembersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20660,6 +26120,9 @@ func (client *Client) DescribeAntChainMembersWithOptions(request *DescribeAntCha
 	return _result, _err
 }
 
+// @param request - DescribeAntChainMembersRequest
+//
+// @return DescribeAntChainMembersResponse
 func (client *Client) DescribeAntChainMembers(request *DescribeAntChainMembersRequest) (_result *DescribeAntChainMembersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainMembersResponse{}
@@ -20671,6 +26134,11 @@ func (client *Client) DescribeAntChainMembers(request *DescribeAntChainMembersRe
 	return _result, _err
 }
 
+// @param request - DescribeAntChainMembersV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainMembersV2Response
 func (client *Client) DescribeAntChainMembersV2WithOptions(request *DescribeAntChainMembersV2Request, runtime *util.RuntimeOptions) (_result *DescribeAntChainMembersV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20712,6 +26180,9 @@ func (client *Client) DescribeAntChainMembersV2WithOptions(request *DescribeAntC
 	return _result, _err
 }
 
+// @param request - DescribeAntChainMembersV2Request
+//
+// @return DescribeAntChainMembersV2Response
 func (client *Client) DescribeAntChainMembersV2(request *DescribeAntChainMembersV2Request) (_result *DescribeAntChainMembersV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainMembersV2Response{}
@@ -20723,6 +26194,11 @@ func (client *Client) DescribeAntChainMembersV2(request *DescribeAntChainMembers
 	return _result, _err
 }
 
+// @param request - DescribeAntChainMiniAppBrowserQRCodeAccessLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainMiniAppBrowserQRCodeAccessLogResponse
 func (client *Client) DescribeAntChainMiniAppBrowserQRCodeAccessLogWithOptions(request *DescribeAntChainMiniAppBrowserQRCodeAccessLogRequest, runtime *util.RuntimeOptions) (_result *DescribeAntChainMiniAppBrowserQRCodeAccessLogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20760,6 +26236,9 @@ func (client *Client) DescribeAntChainMiniAppBrowserQRCodeAccessLogWithOptions(r
 	return _result, _err
 }
 
+// @param request - DescribeAntChainMiniAppBrowserQRCodeAccessLogRequest
+//
+// @return DescribeAntChainMiniAppBrowserQRCodeAccessLogResponse
 func (client *Client) DescribeAntChainMiniAppBrowserQRCodeAccessLog(request *DescribeAntChainMiniAppBrowserQRCodeAccessLogRequest) (_result *DescribeAntChainMiniAppBrowserQRCodeAccessLogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainMiniAppBrowserQRCodeAccessLogResponse{}
@@ -20771,6 +26250,11 @@ func (client *Client) DescribeAntChainMiniAppBrowserQRCodeAccessLog(request *Des
 	return _result, _err
 }
 
+// @param request - DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Response
 func (client *Client) DescribeAntChainMiniAppBrowserQRCodeAccessLogV2WithOptions(request *DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Request, runtime *util.RuntimeOptions) (_result *DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20808,6 +26292,9 @@ func (client *Client) DescribeAntChainMiniAppBrowserQRCodeAccessLogV2WithOptions
 	return _result, _err
 }
 
+// @param request - DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Request
+//
+// @return DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Response
 func (client *Client) DescribeAntChainMiniAppBrowserQRCodeAccessLogV2(request *DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Request) (_result *DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Response{}
@@ -20819,6 +26306,11 @@ func (client *Client) DescribeAntChainMiniAppBrowserQRCodeAccessLogV2(request *D
 	return _result, _err
 }
 
+// @param request - DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponse
 func (client *Client) DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersWithOptions(request *DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersRequest, runtime *util.RuntimeOptions) (_result *DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20864,6 +26356,9 @@ func (client *Client) DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersWithOpt
 	return _result, _err
 }
 
+// @param request - DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersRequest
+//
+// @return DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponse
 func (client *Client) DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsers(request *DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersRequest) (_result *DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponse{}
@@ -20875,6 +26370,11 @@ func (client *Client) DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsers(reques
 	return _result, _err
 }
 
+// @param request - DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Response
 func (client *Client) DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2WithOptions(request *DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Request, runtime *util.RuntimeOptions) (_result *DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20920,6 +26420,9 @@ func (client *Client) DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2WithO
 	return _result, _err
 }
 
+// @param request - DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Request
+//
+// @return DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Response
 func (client *Client) DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2(request *DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Request) (_result *DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Response{}
@@ -20931,6 +26434,11 @@ func (client *Client) DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2(requ
 	return _result, _err
 }
 
+// @param request - DescribeAntChainMiniAppBrowserTransactionQRCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainMiniAppBrowserTransactionQRCodeResponse
 func (client *Client) DescribeAntChainMiniAppBrowserTransactionQRCodeWithOptions(request *DescribeAntChainMiniAppBrowserTransactionQRCodeRequest, runtime *util.RuntimeOptions) (_result *DescribeAntChainMiniAppBrowserTransactionQRCodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20968,6 +26476,9 @@ func (client *Client) DescribeAntChainMiniAppBrowserTransactionQRCodeWithOptions
 	return _result, _err
 }
 
+// @param request - DescribeAntChainMiniAppBrowserTransactionQRCodeRequest
+//
+// @return DescribeAntChainMiniAppBrowserTransactionQRCodeResponse
 func (client *Client) DescribeAntChainMiniAppBrowserTransactionQRCode(request *DescribeAntChainMiniAppBrowserTransactionQRCodeRequest) (_result *DescribeAntChainMiniAppBrowserTransactionQRCodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainMiniAppBrowserTransactionQRCodeResponse{}
@@ -20979,6 +26490,11 @@ func (client *Client) DescribeAntChainMiniAppBrowserTransactionQRCode(request *D
 	return _result, _err
 }
 
+// @param request - DescribeAntChainMiniAppBrowserTransactionQRCodeNewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainMiniAppBrowserTransactionQRCodeNewResponse
 func (client *Client) DescribeAntChainMiniAppBrowserTransactionQRCodeNewWithOptions(request *DescribeAntChainMiniAppBrowserTransactionQRCodeNewRequest, runtime *util.RuntimeOptions) (_result *DescribeAntChainMiniAppBrowserTransactionQRCodeNewResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21020,6 +26536,9 @@ func (client *Client) DescribeAntChainMiniAppBrowserTransactionQRCodeNewWithOpti
 	return _result, _err
 }
 
+// @param request - DescribeAntChainMiniAppBrowserTransactionQRCodeNewRequest
+//
+// @return DescribeAntChainMiniAppBrowserTransactionQRCodeNewResponse
 func (client *Client) DescribeAntChainMiniAppBrowserTransactionQRCodeNew(request *DescribeAntChainMiniAppBrowserTransactionQRCodeNewRequest) (_result *DescribeAntChainMiniAppBrowserTransactionQRCodeNewResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainMiniAppBrowserTransactionQRCodeNewResponse{}
@@ -21031,6 +26550,11 @@ func (client *Client) DescribeAntChainMiniAppBrowserTransactionQRCodeNew(request
 	return _result, _err
 }
 
+// @param request - DescribeAntChainNodesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainNodesResponse
 func (client *Client) DescribeAntChainNodesWithOptions(request *DescribeAntChainNodesRequest, runtime *util.RuntimeOptions) (_result *DescribeAntChainNodesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21064,6 +26588,9 @@ func (client *Client) DescribeAntChainNodesWithOptions(request *DescribeAntChain
 	return _result, _err
 }
 
+// @param request - DescribeAntChainNodesRequest
+//
+// @return DescribeAntChainNodesResponse
 func (client *Client) DescribeAntChainNodes(request *DescribeAntChainNodesRequest) (_result *DescribeAntChainNodesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainNodesResponse{}
@@ -21075,6 +26602,11 @@ func (client *Client) DescribeAntChainNodes(request *DescribeAntChainNodesReques
 	return _result, _err
 }
 
+// @param request - DescribeAntChainNodesV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainNodesV2Response
 func (client *Client) DescribeAntChainNodesV2WithOptions(request *DescribeAntChainNodesV2Request, runtime *util.RuntimeOptions) (_result *DescribeAntChainNodesV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21112,6 +26644,9 @@ func (client *Client) DescribeAntChainNodesV2WithOptions(request *DescribeAntCha
 	return _result, _err
 }
 
+// @param request - DescribeAntChainNodesV2Request
+//
+// @return DescribeAntChainNodesV2Response
 func (client *Client) DescribeAntChainNodesV2(request *DescribeAntChainNodesV2Request) (_result *DescribeAntChainNodesV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainNodesV2Response{}
@@ -21123,6 +26658,11 @@ func (client *Client) DescribeAntChainNodesV2(request *DescribeAntChainNodesV2Re
 	return _result, _err
 }
 
+// @param request - DescribeAntChainQRCodeAuthorizationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainQRCodeAuthorizationResponse
 func (client *Client) DescribeAntChainQRCodeAuthorizationWithOptions(request *DescribeAntChainQRCodeAuthorizationRequest, runtime *util.RuntimeOptions) (_result *DescribeAntChainQRCodeAuthorizationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21160,6 +26700,9 @@ func (client *Client) DescribeAntChainQRCodeAuthorizationWithOptions(request *De
 	return _result, _err
 }
 
+// @param request - DescribeAntChainQRCodeAuthorizationRequest
+//
+// @return DescribeAntChainQRCodeAuthorizationResponse
 func (client *Client) DescribeAntChainQRCodeAuthorization(request *DescribeAntChainQRCodeAuthorizationRequest) (_result *DescribeAntChainQRCodeAuthorizationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainQRCodeAuthorizationResponse{}
@@ -21171,6 +26714,11 @@ func (client *Client) DescribeAntChainQRCodeAuthorization(request *DescribeAntCh
 	return _result, _err
 }
 
+// @param request - DescribeAntChainQRCodeAuthorizationV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainQRCodeAuthorizationV2Response
 func (client *Client) DescribeAntChainQRCodeAuthorizationV2WithOptions(request *DescribeAntChainQRCodeAuthorizationV2Request, runtime *util.RuntimeOptions) (_result *DescribeAntChainQRCodeAuthorizationV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21208,6 +26756,9 @@ func (client *Client) DescribeAntChainQRCodeAuthorizationV2WithOptions(request *
 	return _result, _err
 }
 
+// @param request - DescribeAntChainQRCodeAuthorizationV2Request
+//
+// @return DescribeAntChainQRCodeAuthorizationV2Response
 func (client *Client) DescribeAntChainQRCodeAuthorizationV2(request *DescribeAntChainQRCodeAuthorizationV2Request) (_result *DescribeAntChainQRCodeAuthorizationV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainQRCodeAuthorizationV2Response{}
@@ -21219,6 +26770,11 @@ func (client *Client) DescribeAntChainQRCodeAuthorizationV2(request *DescribeAnt
 	return _result, _err
 }
 
+// @param request - DescribeAntChainTransactionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainTransactionResponse
 func (client *Client) DescribeAntChainTransactionWithOptions(request *DescribeAntChainTransactionRequest, runtime *util.RuntimeOptions) (_result *DescribeAntChainTransactionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21256,6 +26812,9 @@ func (client *Client) DescribeAntChainTransactionWithOptions(request *DescribeAn
 	return _result, _err
 }
 
+// @param request - DescribeAntChainTransactionRequest
+//
+// @return DescribeAntChainTransactionResponse
 func (client *Client) DescribeAntChainTransaction(request *DescribeAntChainTransactionRequest) (_result *DescribeAntChainTransactionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainTransactionResponse{}
@@ -21267,6 +26826,11 @@ func (client *Client) DescribeAntChainTransaction(request *DescribeAntChainTrans
 	return _result, _err
 }
 
+// @param request - DescribeAntChainTransactionReceiptRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainTransactionReceiptResponse
 func (client *Client) DescribeAntChainTransactionReceiptWithOptions(request *DescribeAntChainTransactionReceiptRequest, runtime *util.RuntimeOptions) (_result *DescribeAntChainTransactionReceiptResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21304,6 +26868,9 @@ func (client *Client) DescribeAntChainTransactionReceiptWithOptions(request *Des
 	return _result, _err
 }
 
+// @param request - DescribeAntChainTransactionReceiptRequest
+//
+// @return DescribeAntChainTransactionReceiptResponse
 func (client *Client) DescribeAntChainTransactionReceipt(request *DescribeAntChainTransactionReceiptRequest) (_result *DescribeAntChainTransactionReceiptResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainTransactionReceiptResponse{}
@@ -21315,6 +26882,11 @@ func (client *Client) DescribeAntChainTransactionReceipt(request *DescribeAntCha
 	return _result, _err
 }
 
+// @param request - DescribeAntChainTransactionReceiptV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainTransactionReceiptV2Response
 func (client *Client) DescribeAntChainTransactionReceiptV2WithOptions(request *DescribeAntChainTransactionReceiptV2Request, runtime *util.RuntimeOptions) (_result *DescribeAntChainTransactionReceiptV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21356,6 +26928,9 @@ func (client *Client) DescribeAntChainTransactionReceiptV2WithOptions(request *D
 	return _result, _err
 }
 
+// @param request - DescribeAntChainTransactionReceiptV2Request
+//
+// @return DescribeAntChainTransactionReceiptV2Response
 func (client *Client) DescribeAntChainTransactionReceiptV2(request *DescribeAntChainTransactionReceiptV2Request) (_result *DescribeAntChainTransactionReceiptV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainTransactionReceiptV2Response{}
@@ -21367,6 +26942,11 @@ func (client *Client) DescribeAntChainTransactionReceiptV2(request *DescribeAntC
 	return _result, _err
 }
 
+// @param request - DescribeAntChainTransactionStatisticsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainTransactionStatisticsResponse
 func (client *Client) DescribeAntChainTransactionStatisticsWithOptions(request *DescribeAntChainTransactionStatisticsRequest, runtime *util.RuntimeOptions) (_result *DescribeAntChainTransactionStatisticsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21408,6 +26988,9 @@ func (client *Client) DescribeAntChainTransactionStatisticsWithOptions(request *
 	return _result, _err
 }
 
+// @param request - DescribeAntChainTransactionStatisticsRequest
+//
+// @return DescribeAntChainTransactionStatisticsResponse
 func (client *Client) DescribeAntChainTransactionStatistics(request *DescribeAntChainTransactionStatisticsRequest) (_result *DescribeAntChainTransactionStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainTransactionStatisticsResponse{}
@@ -21419,6 +27002,11 @@ func (client *Client) DescribeAntChainTransactionStatistics(request *DescribeAnt
 	return _result, _err
 }
 
+// @param request - DescribeAntChainTransactionStatisticsV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainTransactionStatisticsV2Response
 func (client *Client) DescribeAntChainTransactionStatisticsV2WithOptions(request *DescribeAntChainTransactionStatisticsV2Request, runtime *util.RuntimeOptions) (_result *DescribeAntChainTransactionStatisticsV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21464,6 +27052,9 @@ func (client *Client) DescribeAntChainTransactionStatisticsV2WithOptions(request
 	return _result, _err
 }
 
+// @param request - DescribeAntChainTransactionStatisticsV2Request
+//
+// @return DescribeAntChainTransactionStatisticsV2Response
 func (client *Client) DescribeAntChainTransactionStatisticsV2(request *DescribeAntChainTransactionStatisticsV2Request) (_result *DescribeAntChainTransactionStatisticsV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainTransactionStatisticsV2Response{}
@@ -21475,6 +27066,11 @@ func (client *Client) DescribeAntChainTransactionStatisticsV2(request *DescribeA
 	return _result, _err
 }
 
+// @param request - DescribeAntChainTransactionV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainTransactionV2Response
 func (client *Client) DescribeAntChainTransactionV2WithOptions(request *DescribeAntChainTransactionV2Request, runtime *util.RuntimeOptions) (_result *DescribeAntChainTransactionV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21516,6 +27112,9 @@ func (client *Client) DescribeAntChainTransactionV2WithOptions(request *Describe
 	return _result, _err
 }
 
+// @param request - DescribeAntChainTransactionV2Request
+//
+// @return DescribeAntChainTransactionV2Response
 func (client *Client) DescribeAntChainTransactionV2(request *DescribeAntChainTransactionV2Request) (_result *DescribeAntChainTransactionV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainTransactionV2Response{}
@@ -21527,6 +27126,11 @@ func (client *Client) DescribeAntChainTransactionV2(request *DescribeAntChainTra
 	return _result, _err
 }
 
+// @param request - DescribeAntChainsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainsResponse
 func (client *Client) DescribeAntChainsWithOptions(request *DescribeAntChainsRequest, runtime *util.RuntimeOptions) (_result *DescribeAntChainsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21568,6 +27172,9 @@ func (client *Client) DescribeAntChainsWithOptions(request *DescribeAntChainsReq
 	return _result, _err
 }
 
+// @param request - DescribeAntChainsRequest
+//
+// @return DescribeAntChainsResponse
 func (client *Client) DescribeAntChains(request *DescribeAntChainsRequest) (_result *DescribeAntChainsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainsResponse{}
@@ -21579,6 +27186,11 @@ func (client *Client) DescribeAntChains(request *DescribeAntChainsRequest) (_res
 	return _result, _err
 }
 
+// @param request - DescribeAntChainsV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAntChainsV2Response
 func (client *Client) DescribeAntChainsV2WithOptions(request *DescribeAntChainsV2Request, runtime *util.RuntimeOptions) (_result *DescribeAntChainsV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21620,6 +27232,9 @@ func (client *Client) DescribeAntChainsV2WithOptions(request *DescribeAntChainsV
 	return _result, _err
 }
 
+// @param request - DescribeAntChainsV2Request
+//
+// @return DescribeAntChainsV2Response
 func (client *Client) DescribeAntChainsV2(request *DescribeAntChainsV2Request) (_result *DescribeAntChainsV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAntChainsV2Response{}
@@ -21631,6 +27246,11 @@ func (client *Client) DescribeAntChainsV2(request *DescribeAntChainsV2Request) (
 	return _result, _err
 }
 
+// @param request - DescribeEthereumDeletableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeEthereumDeletableResponse
 func (client *Client) DescribeEthereumDeletableWithOptions(request *DescribeEthereumDeletableRequest, runtime *util.RuntimeOptions) (_result *DescribeEthereumDeletableResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21664,6 +27284,9 @@ func (client *Client) DescribeEthereumDeletableWithOptions(request *DescribeEthe
 	return _result, _err
 }
 
+// @param request - DescribeEthereumDeletableRequest
+//
+// @return DescribeEthereumDeletableResponse
 func (client *Client) DescribeEthereumDeletable(request *DescribeEthereumDeletableRequest) (_result *DescribeEthereumDeletableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeEthereumDeletableResponse{}
@@ -21675,6 +27298,11 @@ func (client *Client) DescribeEthereumDeletable(request *DescribeEthereumDeletab
 	return _result, _err
 }
 
+// @param request - DescribeFabricCandidateOrganizationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFabricCandidateOrganizationsResponse
 func (client *Client) DescribeFabricCandidateOrganizationsWithOptions(request *DescribeFabricCandidateOrganizationsRequest, runtime *util.RuntimeOptions) (_result *DescribeFabricCandidateOrganizationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21708,6 +27336,9 @@ func (client *Client) DescribeFabricCandidateOrganizationsWithOptions(request *D
 	return _result, _err
 }
 
+// @param request - DescribeFabricCandidateOrganizationsRequest
+//
+// @return DescribeFabricCandidateOrganizationsResponse
 func (client *Client) DescribeFabricCandidateOrganizations(request *DescribeFabricCandidateOrganizationsRequest) (_result *DescribeFabricCandidateOrganizationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFabricCandidateOrganizationsResponse{}
@@ -21719,6 +27350,15 @@ func (client *Client) DescribeFabricCandidateOrganizations(request *DescribeFabr
 	return _result, _err
 }
 
+// Summary:
+//
+// DescribeFabricChaincodeDefinitionTask
+//
+// @param request - DescribeFabricChaincodeDefinitionTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFabricChaincodeDefinitionTaskResponse
 func (client *Client) DescribeFabricChaincodeDefinitionTaskWithOptions(request *DescribeFabricChaincodeDefinitionTaskRequest, runtime *util.RuntimeOptions) (_result *DescribeFabricChaincodeDefinitionTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21756,6 +27396,13 @@ func (client *Client) DescribeFabricChaincodeDefinitionTaskWithOptions(request *
 	return _result, _err
 }
 
+// Summary:
+//
+// DescribeFabricChaincodeDefinitionTask
+//
+// @param request - DescribeFabricChaincodeDefinitionTaskRequest
+//
+// @return DescribeFabricChaincodeDefinitionTaskResponse
 func (client *Client) DescribeFabricChaincodeDefinitionTask(request *DescribeFabricChaincodeDefinitionTaskRequest) (_result *DescribeFabricChaincodeDefinitionTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFabricChaincodeDefinitionTaskResponse{}
@@ -21767,6 +27414,11 @@ func (client *Client) DescribeFabricChaincodeDefinitionTask(request *DescribeFab
 	return _result, _err
 }
 
+// @param request - DescribeFabricChaincodeUploadPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFabricChaincodeUploadPolicyResponse
 func (client *Client) DescribeFabricChaincodeUploadPolicyWithOptions(request *DescribeFabricChaincodeUploadPolicyRequest, runtime *util.RuntimeOptions) (_result *DescribeFabricChaincodeUploadPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21800,6 +27452,9 @@ func (client *Client) DescribeFabricChaincodeUploadPolicyWithOptions(request *De
 	return _result, _err
 }
 
+// @param request - DescribeFabricChaincodeUploadPolicyRequest
+//
+// @return DescribeFabricChaincodeUploadPolicyResponse
 func (client *Client) DescribeFabricChaincodeUploadPolicy(request *DescribeFabricChaincodeUploadPolicyRequest) (_result *DescribeFabricChaincodeUploadPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFabricChaincodeUploadPolicyResponse{}
@@ -21811,6 +27466,11 @@ func (client *Client) DescribeFabricChaincodeUploadPolicy(request *DescribeFabri
 	return _result, _err
 }
 
+// @param request - DescribeFabricChannelMembersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFabricChannelMembersResponse
 func (client *Client) DescribeFabricChannelMembersWithOptions(request *DescribeFabricChannelMembersRequest, runtime *util.RuntimeOptions) (_result *DescribeFabricChannelMembersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21844,6 +27504,9 @@ func (client *Client) DescribeFabricChannelMembersWithOptions(request *DescribeF
 	return _result, _err
 }
 
+// @param request - DescribeFabricChannelMembersRequest
+//
+// @return DescribeFabricChannelMembersResponse
 func (client *Client) DescribeFabricChannelMembers(request *DescribeFabricChannelMembersRequest) (_result *DescribeFabricChannelMembersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFabricChannelMembersResponse{}
@@ -21855,6 +27518,11 @@ func (client *Client) DescribeFabricChannelMembers(request *DescribeFabricChanne
 	return _result, _err
 }
 
+// @param request - DescribeFabricConsortiumAdminStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFabricConsortiumAdminStatusResponse
 func (client *Client) DescribeFabricConsortiumAdminStatusWithOptions(request *DescribeFabricConsortiumAdminStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeFabricConsortiumAdminStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21888,6 +27556,9 @@ func (client *Client) DescribeFabricConsortiumAdminStatusWithOptions(request *De
 	return _result, _err
 }
 
+// @param request - DescribeFabricConsortiumAdminStatusRequest
+//
+// @return DescribeFabricConsortiumAdminStatusResponse
 func (client *Client) DescribeFabricConsortiumAdminStatus(request *DescribeFabricConsortiumAdminStatusRequest) (_result *DescribeFabricConsortiumAdminStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFabricConsortiumAdminStatusResponse{}
@@ -21899,6 +27570,11 @@ func (client *Client) DescribeFabricConsortiumAdminStatus(request *DescribeFabri
 	return _result, _err
 }
 
+// @param request - DescribeFabricConsortiumChaincodesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFabricConsortiumChaincodesResponse
 func (client *Client) DescribeFabricConsortiumChaincodesWithOptions(request *DescribeFabricConsortiumChaincodesRequest, runtime *util.RuntimeOptions) (_result *DescribeFabricConsortiumChaincodesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21936,6 +27612,9 @@ func (client *Client) DescribeFabricConsortiumChaincodesWithOptions(request *Des
 	return _result, _err
 }
 
+// @param request - DescribeFabricConsortiumChaincodesRequest
+//
+// @return DescribeFabricConsortiumChaincodesResponse
 func (client *Client) DescribeFabricConsortiumChaincodes(request *DescribeFabricConsortiumChaincodesRequest) (_result *DescribeFabricConsortiumChaincodesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFabricConsortiumChaincodesResponse{}
@@ -21947,6 +27626,11 @@ func (client *Client) DescribeFabricConsortiumChaincodes(request *DescribeFabric
 	return _result, _err
 }
 
+// @param request - DescribeFabricConsortiumChannelsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFabricConsortiumChannelsResponse
 func (client *Client) DescribeFabricConsortiumChannelsWithOptions(request *DescribeFabricConsortiumChannelsRequest, runtime *util.RuntimeOptions) (_result *DescribeFabricConsortiumChannelsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21986,6 +27670,9 @@ func (client *Client) DescribeFabricConsortiumChannelsWithOptions(request *Descr
 	return _result, _err
 }
 
+// @param request - DescribeFabricConsortiumChannelsRequest
+//
+// @return DescribeFabricConsortiumChannelsResponse
 func (client *Client) DescribeFabricConsortiumChannels(request *DescribeFabricConsortiumChannelsRequest) (_result *DescribeFabricConsortiumChannelsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFabricConsortiumChannelsResponse{}
@@ -21997,6 +27684,11 @@ func (client *Client) DescribeFabricConsortiumChannels(request *DescribeFabricCo
 	return _result, _err
 }
 
+// @param request - DescribeFabricConsortiumConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFabricConsortiumConfigResponse
 func (client *Client) DescribeFabricConsortiumConfigWithOptions(runtime *util.RuntimeOptions) (_result *DescribeFabricConsortiumConfigResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -22019,6 +27711,7 @@ func (client *Client) DescribeFabricConsortiumConfigWithOptions(runtime *util.Ru
 	return _result, _err
 }
 
+// @return DescribeFabricConsortiumConfigResponse
 func (client *Client) DescribeFabricConsortiumConfig() (_result *DescribeFabricConsortiumConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFabricConsortiumConfigResponse{}
@@ -22030,6 +27723,11 @@ func (client *Client) DescribeFabricConsortiumConfig() (_result *DescribeFabricC
 	return _result, _err
 }
 
+// @param request - DescribeFabricConsortiumDeletableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFabricConsortiumDeletableResponse
 func (client *Client) DescribeFabricConsortiumDeletableWithOptions(request *DescribeFabricConsortiumDeletableRequest, runtime *util.RuntimeOptions) (_result *DescribeFabricConsortiumDeletableResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22069,6 +27767,9 @@ func (client *Client) DescribeFabricConsortiumDeletableWithOptions(request *Desc
 	return _result, _err
 }
 
+// @param request - DescribeFabricConsortiumDeletableRequest
+//
+// @return DescribeFabricConsortiumDeletableResponse
 func (client *Client) DescribeFabricConsortiumDeletable(request *DescribeFabricConsortiumDeletableRequest) (_result *DescribeFabricConsortiumDeletableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFabricConsortiumDeletableResponse{}
@@ -22080,6 +27781,11 @@ func (client *Client) DescribeFabricConsortiumDeletable(request *DescribeFabricC
 	return _result, _err
 }
 
+// @param request - DescribeFabricConsortiumMemberApprovalRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFabricConsortiumMemberApprovalResponse
 func (client *Client) DescribeFabricConsortiumMemberApprovalWithOptions(request *DescribeFabricConsortiumMemberApprovalRequest, runtime *util.RuntimeOptions) (_result *DescribeFabricConsortiumMemberApprovalResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22119,6 +27825,9 @@ func (client *Client) DescribeFabricConsortiumMemberApprovalWithOptions(request 
 	return _result, _err
 }
 
+// @param request - DescribeFabricConsortiumMemberApprovalRequest
+//
+// @return DescribeFabricConsortiumMemberApprovalResponse
 func (client *Client) DescribeFabricConsortiumMemberApproval(request *DescribeFabricConsortiumMemberApprovalRequest) (_result *DescribeFabricConsortiumMemberApprovalResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFabricConsortiumMemberApprovalResponse{}
@@ -22130,6 +27839,11 @@ func (client *Client) DescribeFabricConsortiumMemberApproval(request *DescribeFa
 	return _result, _err
 }
 
+// @param request - DescribeFabricConsortiumMembersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFabricConsortiumMembersResponse
 func (client *Client) DescribeFabricConsortiumMembersWithOptions(request *DescribeFabricConsortiumMembersRequest, runtime *util.RuntimeOptions) (_result *DescribeFabricConsortiumMembersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22167,6 +27881,9 @@ func (client *Client) DescribeFabricConsortiumMembersWithOptions(request *Descri
 	return _result, _err
 }
 
+// @param request - DescribeFabricConsortiumMembersRequest
+//
+// @return DescribeFabricConsortiumMembersResponse
 func (client *Client) DescribeFabricConsortiumMembers(request *DescribeFabricConsortiumMembersRequest) (_result *DescribeFabricConsortiumMembersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFabricConsortiumMembersResponse{}
@@ -22178,6 +27895,11 @@ func (client *Client) DescribeFabricConsortiumMembers(request *DescribeFabricCon
 	return _result, _err
 }
 
+// @param request - DescribeFabricConsortiumOrderersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFabricConsortiumOrderersResponse
 func (client *Client) DescribeFabricConsortiumOrderersWithOptions(request *DescribeFabricConsortiumOrderersRequest, runtime *util.RuntimeOptions) (_result *DescribeFabricConsortiumOrderersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22215,6 +27937,9 @@ func (client *Client) DescribeFabricConsortiumOrderersWithOptions(request *Descr
 	return _result, _err
 }
 
+// @param request - DescribeFabricConsortiumOrderersRequest
+//
+// @return DescribeFabricConsortiumOrderersResponse
 func (client *Client) DescribeFabricConsortiumOrderers(request *DescribeFabricConsortiumOrderersRequest) (_result *DescribeFabricConsortiumOrderersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFabricConsortiumOrderersResponse{}
@@ -22226,6 +27951,11 @@ func (client *Client) DescribeFabricConsortiumOrderers(request *DescribeFabricCo
 	return _result, _err
 }
 
+// @param request - DescribeFabricConsortiumSpecsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFabricConsortiumSpecsResponse
 func (client *Client) DescribeFabricConsortiumSpecsWithOptions(runtime *util.RuntimeOptions) (_result *DescribeFabricConsortiumSpecsResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -22248,6 +27978,7 @@ func (client *Client) DescribeFabricConsortiumSpecsWithOptions(runtime *util.Run
 	return _result, _err
 }
 
+// @return DescribeFabricConsortiumSpecsResponse
 func (client *Client) DescribeFabricConsortiumSpecs() (_result *DescribeFabricConsortiumSpecsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFabricConsortiumSpecsResponse{}
@@ -22259,6 +27990,11 @@ func (client *Client) DescribeFabricConsortiumSpecs() (_result *DescribeFabricCo
 	return _result, _err
 }
 
+// @param request - DescribeFabricConsortiumsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFabricConsortiumsResponse
 func (client *Client) DescribeFabricConsortiumsWithOptions(request *DescribeFabricConsortiumsRequest, runtime *util.RuntimeOptions) (_result *DescribeFabricConsortiumsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22302,6 +28038,9 @@ func (client *Client) DescribeFabricConsortiumsWithOptions(request *DescribeFabr
 	return _result, _err
 }
 
+// @param request - DescribeFabricConsortiumsRequest
+//
+// @return DescribeFabricConsortiumsResponse
 func (client *Client) DescribeFabricConsortiums(request *DescribeFabricConsortiumsRequest) (_result *DescribeFabricConsortiumsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFabricConsortiumsResponse{}
@@ -22313,6 +28052,11 @@ func (client *Client) DescribeFabricConsortiums(request *DescribeFabricConsortiu
 	return _result, _err
 }
 
+// @param request - DescribeFabricExplorerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFabricExplorerResponse
 func (client *Client) DescribeFabricExplorerWithOptions(request *DescribeFabricExplorerRequest, runtime *util.RuntimeOptions) (_result *DescribeFabricExplorerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22360,6 +28104,9 @@ func (client *Client) DescribeFabricExplorerWithOptions(request *DescribeFabricE
 	return _result, _err
 }
 
+// @param request - DescribeFabricExplorerRequest
+//
+// @return DescribeFabricExplorerResponse
 func (client *Client) DescribeFabricExplorer(request *DescribeFabricExplorerRequest) (_result *DescribeFabricExplorerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFabricExplorerResponse{}
@@ -22371,6 +28118,11 @@ func (client *Client) DescribeFabricExplorer(request *DescribeFabricExplorerRequ
 	return _result, _err
 }
 
+// @param request - DescribeFabricInvitationCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFabricInvitationCodeResponse
 func (client *Client) DescribeFabricInvitationCodeWithOptions(request *DescribeFabricInvitationCodeRequest, runtime *util.RuntimeOptions) (_result *DescribeFabricInvitationCodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22404,6 +28156,9 @@ func (client *Client) DescribeFabricInvitationCodeWithOptions(request *DescribeF
 	return _result, _err
 }
 
+// @param request - DescribeFabricInvitationCodeRequest
+//
+// @return DescribeFabricInvitationCodeResponse
 func (client *Client) DescribeFabricInvitationCode(request *DescribeFabricInvitationCodeRequest) (_result *DescribeFabricInvitationCodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFabricInvitationCodeResponse{}
@@ -22415,6 +28170,11 @@ func (client *Client) DescribeFabricInvitationCode(request *DescribeFabricInvita
 	return _result, _err
 }
 
+// @param request - DescribeFabricInviterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFabricInviterResponse
 func (client *Client) DescribeFabricInviterWithOptions(request *DescribeFabricInviterRequest, runtime *util.RuntimeOptions) (_result *DescribeFabricInviterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22448,6 +28208,9 @@ func (client *Client) DescribeFabricInviterWithOptions(request *DescribeFabricIn
 	return _result, _err
 }
 
+// @param request - DescribeFabricInviterRequest
+//
+// @return DescribeFabricInviterResponse
 func (client *Client) DescribeFabricInviter(request *DescribeFabricInviterRequest) (_result *DescribeFabricInviterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFabricInviterResponse{}
@@ -22459,6 +28222,11 @@ func (client *Client) DescribeFabricInviter(request *DescribeFabricInviterReques
 	return _result, _err
 }
 
+// @param request - DescribeFabricOrdererLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFabricOrdererLogsResponse
 func (client *Client) DescribeFabricOrdererLogsWithOptions(request *DescribeFabricOrdererLogsRequest, runtime *util.RuntimeOptions) (_result *DescribeFabricOrdererLogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22500,6 +28268,9 @@ func (client *Client) DescribeFabricOrdererLogsWithOptions(request *DescribeFabr
 	return _result, _err
 }
 
+// @param request - DescribeFabricOrdererLogsRequest
+//
+// @return DescribeFabricOrdererLogsResponse
 func (client *Client) DescribeFabricOrdererLogs(request *DescribeFabricOrdererLogsRequest) (_result *DescribeFabricOrdererLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFabricOrdererLogsResponse{}
@@ -22511,6 +28282,11 @@ func (client *Client) DescribeFabricOrdererLogs(request *DescribeFabricOrdererLo
 	return _result, _err
 }
 
+// @param request - DescribeFabricOrganizationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFabricOrganizationResponse
 func (client *Client) DescribeFabricOrganizationWithOptions(request *DescribeFabricOrganizationRequest, runtime *util.RuntimeOptions) (_result *DescribeFabricOrganizationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22554,6 +28330,9 @@ func (client *Client) DescribeFabricOrganizationWithOptions(request *DescribeFab
 	return _result, _err
 }
 
+// @param request - DescribeFabricOrganizationRequest
+//
+// @return DescribeFabricOrganizationResponse
 func (client *Client) DescribeFabricOrganization(request *DescribeFabricOrganizationRequest) (_result *DescribeFabricOrganizationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFabricOrganizationResponse{}
@@ -22565,6 +28344,15 @@ func (client *Client) DescribeFabricOrganization(request *DescribeFabricOrganiza
 	return _result, _err
 }
 
+// Summary:
+//
+// DescribeFabricOrganizationChaincodePackage
+//
+// @param request - DescribeFabricOrganizationChaincodePackageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFabricOrganizationChaincodePackageResponse
 func (client *Client) DescribeFabricOrganizationChaincodePackageWithOptions(request *DescribeFabricOrganizationChaincodePackageRequest, runtime *util.RuntimeOptions) (_result *DescribeFabricOrganizationChaincodePackageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22598,6 +28386,13 @@ func (client *Client) DescribeFabricOrganizationChaincodePackageWithOptions(requ
 	return _result, _err
 }
 
+// Summary:
+//
+// DescribeFabricOrganizationChaincodePackage
+//
+// @param request - DescribeFabricOrganizationChaincodePackageRequest
+//
+// @return DescribeFabricOrganizationChaincodePackageResponse
 func (client *Client) DescribeFabricOrganizationChaincodePackage(request *DescribeFabricOrganizationChaincodePackageRequest) (_result *DescribeFabricOrganizationChaincodePackageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFabricOrganizationChaincodePackageResponse{}
@@ -22609,6 +28404,11 @@ func (client *Client) DescribeFabricOrganizationChaincodePackage(request *Descri
 	return _result, _err
 }
 
+// @param request - DescribeFabricOrganizationChaincodesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFabricOrganizationChaincodesResponse
 func (client *Client) DescribeFabricOrganizationChaincodesWithOptions(request *DescribeFabricOrganizationChaincodesRequest, runtime *util.RuntimeOptions) (_result *DescribeFabricOrganizationChaincodesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22646,6 +28446,9 @@ func (client *Client) DescribeFabricOrganizationChaincodesWithOptions(request *D
 	return _result, _err
 }
 
+// @param request - DescribeFabricOrganizationChaincodesRequest
+//
+// @return DescribeFabricOrganizationChaincodesResponse
 func (client *Client) DescribeFabricOrganizationChaincodes(request *DescribeFabricOrganizationChaincodesRequest) (_result *DescribeFabricOrganizationChaincodesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFabricOrganizationChaincodesResponse{}
@@ -22657,6 +28460,11 @@ func (client *Client) DescribeFabricOrganizationChaincodes(request *DescribeFabr
 	return _result, _err
 }
 
+// @param request - DescribeFabricOrganizationChannelsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFabricOrganizationChannelsResponse
 func (client *Client) DescribeFabricOrganizationChannelsWithOptions(request *DescribeFabricOrganizationChannelsRequest, runtime *util.RuntimeOptions) (_result *DescribeFabricOrganizationChannelsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22696,6 +28504,9 @@ func (client *Client) DescribeFabricOrganizationChannelsWithOptions(request *Des
 	return _result, _err
 }
 
+// @param request - DescribeFabricOrganizationChannelsRequest
+//
+// @return DescribeFabricOrganizationChannelsResponse
 func (client *Client) DescribeFabricOrganizationChannels(request *DescribeFabricOrganizationChannelsRequest) (_result *DescribeFabricOrganizationChannelsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFabricOrganizationChannelsResponse{}
@@ -22707,6 +28518,11 @@ func (client *Client) DescribeFabricOrganizationChannels(request *DescribeFabric
 	return _result, _err
 }
 
+// @param request - DescribeFabricOrganizationDeletableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFabricOrganizationDeletableResponse
 func (client *Client) DescribeFabricOrganizationDeletableWithOptions(request *DescribeFabricOrganizationDeletableRequest, runtime *util.RuntimeOptions) (_result *DescribeFabricOrganizationDeletableResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22746,6 +28562,9 @@ func (client *Client) DescribeFabricOrganizationDeletableWithOptions(request *De
 	return _result, _err
 }
 
+// @param request - DescribeFabricOrganizationDeletableRequest
+//
+// @return DescribeFabricOrganizationDeletableResponse
 func (client *Client) DescribeFabricOrganizationDeletable(request *DescribeFabricOrganizationDeletableRequest) (_result *DescribeFabricOrganizationDeletableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFabricOrganizationDeletableResponse{}
@@ -22757,6 +28576,11 @@ func (client *Client) DescribeFabricOrganizationDeletable(request *DescribeFabri
 	return _result, _err
 }
 
+// @param request - DescribeFabricOrganizationMembersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFabricOrganizationMembersResponse
 func (client *Client) DescribeFabricOrganizationMembersWithOptions(request *DescribeFabricOrganizationMembersRequest, runtime *util.RuntimeOptions) (_result *DescribeFabricOrganizationMembersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22794,6 +28618,9 @@ func (client *Client) DescribeFabricOrganizationMembersWithOptions(request *Desc
 	return _result, _err
 }
 
+// @param request - DescribeFabricOrganizationMembersRequest
+//
+// @return DescribeFabricOrganizationMembersResponse
 func (client *Client) DescribeFabricOrganizationMembers(request *DescribeFabricOrganizationMembersRequest) (_result *DescribeFabricOrganizationMembersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFabricOrganizationMembersResponse{}
@@ -22805,6 +28632,11 @@ func (client *Client) DescribeFabricOrganizationMembers(request *DescribeFabricO
 	return _result, _err
 }
 
+// @param request - DescribeFabricOrganizationPeersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFabricOrganizationPeersResponse
 func (client *Client) DescribeFabricOrganizationPeersWithOptions(request *DescribeFabricOrganizationPeersRequest, runtime *util.RuntimeOptions) (_result *DescribeFabricOrganizationPeersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22844,6 +28676,9 @@ func (client *Client) DescribeFabricOrganizationPeersWithOptions(request *Descri
 	return _result, _err
 }
 
+// @param request - DescribeFabricOrganizationPeersRequest
+//
+// @return DescribeFabricOrganizationPeersResponse
 func (client *Client) DescribeFabricOrganizationPeers(request *DescribeFabricOrganizationPeersRequest) (_result *DescribeFabricOrganizationPeersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFabricOrganizationPeersResponse{}
@@ -22855,6 +28690,11 @@ func (client *Client) DescribeFabricOrganizationPeers(request *DescribeFabricOrg
 	return _result, _err
 }
 
+// @param request - DescribeFabricOrganizationSpecsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFabricOrganizationSpecsResponse
 func (client *Client) DescribeFabricOrganizationSpecsWithOptions(runtime *util.RuntimeOptions) (_result *DescribeFabricOrganizationSpecsResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -22877,6 +28717,7 @@ func (client *Client) DescribeFabricOrganizationSpecsWithOptions(runtime *util.R
 	return _result, _err
 }
 
+// @return DescribeFabricOrganizationSpecsResponse
 func (client *Client) DescribeFabricOrganizationSpecs() (_result *DescribeFabricOrganizationSpecsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFabricOrganizationSpecsResponse{}
@@ -22888,6 +28729,11 @@ func (client *Client) DescribeFabricOrganizationSpecs() (_result *DescribeFabric
 	return _result, _err
 }
 
+// @param request - DescribeFabricOrganizationUsersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFabricOrganizationUsersResponse
 func (client *Client) DescribeFabricOrganizationUsersWithOptions(request *DescribeFabricOrganizationUsersRequest, runtime *util.RuntimeOptions) (_result *DescribeFabricOrganizationUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22927,6 +28773,9 @@ func (client *Client) DescribeFabricOrganizationUsersWithOptions(request *Descri
 	return _result, _err
 }
 
+// @param request - DescribeFabricOrganizationUsersRequest
+//
+// @return DescribeFabricOrganizationUsersResponse
 func (client *Client) DescribeFabricOrganizationUsers(request *DescribeFabricOrganizationUsersRequest) (_result *DescribeFabricOrganizationUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFabricOrganizationUsersResponse{}
@@ -22938,6 +28787,11 @@ func (client *Client) DescribeFabricOrganizationUsers(request *DescribeFabricOrg
 	return _result, _err
 }
 
+// @param request - DescribeFabricOrganizationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFabricOrganizationsResponse
 func (client *Client) DescribeFabricOrganizationsWithOptions(request *DescribeFabricOrganizationsRequest, runtime *util.RuntimeOptions) (_result *DescribeFabricOrganizationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22977,6 +28831,9 @@ func (client *Client) DescribeFabricOrganizationsWithOptions(request *DescribeFa
 	return _result, _err
 }
 
+// @param request - DescribeFabricOrganizationsRequest
+//
+// @return DescribeFabricOrganizationsResponse
 func (client *Client) DescribeFabricOrganizations(request *DescribeFabricOrganizationsRequest) (_result *DescribeFabricOrganizationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFabricOrganizationsResponse{}
@@ -22988,6 +28845,11 @@ func (client *Client) DescribeFabricOrganizations(request *DescribeFabricOrganiz
 	return _result, _err
 }
 
+// @param request - DescribeFabricPeerLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFabricPeerLogsResponse
 func (client *Client) DescribeFabricPeerLogsWithOptions(request *DescribeFabricPeerLogsRequest, runtime *util.RuntimeOptions) (_result *DescribeFabricPeerLogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23029,6 +28891,9 @@ func (client *Client) DescribeFabricPeerLogsWithOptions(request *DescribeFabricP
 	return _result, _err
 }
 
+// @param request - DescribeFabricPeerLogsRequest
+//
+// @return DescribeFabricPeerLogsResponse
 func (client *Client) DescribeFabricPeerLogs(request *DescribeFabricPeerLogsRequest) (_result *DescribeFabricPeerLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFabricPeerLogsResponse{}
@@ -23040,6 +28905,11 @@ func (client *Client) DescribeFabricPeerLogs(request *DescribeFabricPeerLogsRequ
 	return _result, _err
 }
 
+// @param request - DescribeRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23077,6 +28947,9 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 	return _result, _err
 }
 
+// @param request - DescribeRegionsRequest
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRegionsResponse{}
@@ -23088,6 +28961,11 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	return _result, _err
 }
 
+// @param request - DescribeRootDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRootDomainResponse
 func (client *Client) DescribeRootDomainWithOptions(runtime *util.RuntimeOptions) (_result *DescribeRootDomainResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -23110,6 +28988,7 @@ func (client *Client) DescribeRootDomainWithOptions(runtime *util.RuntimeOptions
 	return _result, _err
 }
 
+// @return DescribeRootDomainResponse
 func (client *Client) DescribeRootDomain() (_result *DescribeRootDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRootDomainResponse{}
@@ -23121,6 +29000,11 @@ func (client *Client) DescribeRootDomain() (_result *DescribeRootDomainResponse,
 	return _result, _err
 }
 
+// @param request - DescribeTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTasksResponse
 func (client *Client) DescribeTasksWithOptions(runtime *util.RuntimeOptions) (_result *DescribeTasksResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -23143,6 +29027,7 @@ func (client *Client) DescribeTasksWithOptions(runtime *util.RuntimeOptions) (_r
 	return _result, _err
 }
 
+// @return DescribeTasksResponse
 func (client *Client) DescribeTasks() (_result *DescribeTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTasksResponse{}
@@ -23154,6 +29039,11 @@ func (client *Client) DescribeTasks() (_result *DescribeTasksResponse, _err erro
 	return _result, _err
 }
 
+// @param request - DownloadFabricOrganizationSDKRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DownloadFabricOrganizationSDKResponse
 func (client *Client) DownloadFabricOrganizationSDKWithOptions(request *DownloadFabricOrganizationSDKRequest, runtime *util.RuntimeOptions) (_result *DownloadFabricOrganizationSDKResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23197,6 +29087,9 @@ func (client *Client) DownloadFabricOrganizationSDKWithOptions(request *Download
 	return _result, _err
 }
 
+// @param request - DownloadFabricOrganizationSDKRequest
+//
+// @return DownloadFabricOrganizationSDKResponse
 func (client *Client) DownloadFabricOrganizationSDK(request *DownloadFabricOrganizationSDKRequest) (_result *DownloadFabricOrganizationSDKResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DownloadFabricOrganizationSDKResponse{}
@@ -23208,6 +29101,11 @@ func (client *Client) DownloadFabricOrganizationSDK(request *DownloadFabricOrgan
 	return _result, _err
 }
 
+// @param request - FreezeAntChainAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FreezeAntChainAccountResponse
 func (client *Client) FreezeAntChainAccountWithOptions(request *FreezeAntChainAccountRequest, runtime *util.RuntimeOptions) (_result *FreezeAntChainAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23245,6 +29143,9 @@ func (client *Client) FreezeAntChainAccountWithOptions(request *FreezeAntChainAc
 	return _result, _err
 }
 
+// @param request - FreezeAntChainAccountRequest
+//
+// @return FreezeAntChainAccountResponse
 func (client *Client) FreezeAntChainAccount(request *FreezeAntChainAccountRequest) (_result *FreezeAntChainAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &FreezeAntChainAccountResponse{}
@@ -23256,6 +29157,11 @@ func (client *Client) FreezeAntChainAccount(request *FreezeAntChainAccountReques
 	return _result, _err
 }
 
+// @param request - InstallFabricChaincodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InstallFabricChaincodeResponse
 func (client *Client) InstallFabricChaincodeWithOptions(request *InstallFabricChaincodeRequest, runtime *util.RuntimeOptions) (_result *InstallFabricChaincodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23297,6 +29203,9 @@ func (client *Client) InstallFabricChaincodeWithOptions(request *InstallFabricCh
 	return _result, _err
 }
 
+// @param request - InstallFabricChaincodeRequest
+//
+// @return InstallFabricChaincodeResponse
 func (client *Client) InstallFabricChaincode(request *InstallFabricChaincodeRequest) (_result *InstallFabricChaincodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &InstallFabricChaincodeResponse{}
@@ -23308,6 +29217,15 @@ func (client *Client) InstallFabricChaincode(request *InstallFabricChaincodeRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// InstallFabricChaincodePackage
+//
+// @param request - InstallFabricChaincodePackageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InstallFabricChaincodePackageResponse
 func (client *Client) InstallFabricChaincodePackageWithOptions(request *InstallFabricChaincodePackageRequest, runtime *util.RuntimeOptions) (_result *InstallFabricChaincodePackageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23349,6 +29267,13 @@ func (client *Client) InstallFabricChaincodePackageWithOptions(request *InstallF
 	return _result, _err
 }
 
+// Summary:
+//
+// InstallFabricChaincodePackage
+//
+// @param request - InstallFabricChaincodePackageRequest
+//
+// @return InstallFabricChaincodePackageResponse
 func (client *Client) InstallFabricChaincodePackage(request *InstallFabricChaincodePackageRequest) (_result *InstallFabricChaincodePackageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &InstallFabricChaincodePackageResponse{}
@@ -23360,6 +29285,11 @@ func (client *Client) InstallFabricChaincodePackage(request *InstallFabricChainc
 	return _result, _err
 }
 
+// @param request - InstantiateFabricChaincodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InstantiateFabricChaincodeResponse
 func (client *Client) InstantiateFabricChaincodeWithOptions(request *InstantiateFabricChaincodeRequest, runtime *util.RuntimeOptions) (_result *InstantiateFabricChaincodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23409,6 +29339,9 @@ func (client *Client) InstantiateFabricChaincodeWithOptions(request *Instantiate
 	return _result, _err
 }
 
+// @param request - InstantiateFabricChaincodeRequest
+//
+// @return InstantiateFabricChaincodeResponse
 func (client *Client) InstantiateFabricChaincode(request *InstantiateFabricChaincodeRequest) (_result *InstantiateFabricChaincodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &InstantiateFabricChaincodeResponse{}
@@ -23420,6 +29353,11 @@ func (client *Client) InstantiateFabricChaincode(request *InstantiateFabricChain
 	return _result, _err
 }
 
+// @param request - JoinFabricChannelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return JoinFabricChannelResponse
 func (client *Client) JoinFabricChannelWithOptions(request *JoinFabricChannelRequest, runtime *util.RuntimeOptions) (_result *JoinFabricChannelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23463,6 +29401,9 @@ func (client *Client) JoinFabricChannelWithOptions(request *JoinFabricChannelReq
 	return _result, _err
 }
 
+// @param request - JoinFabricChannelRequest
+//
+// @return JoinFabricChannelResponse
 func (client *Client) JoinFabricChannel(request *JoinFabricChannelRequest) (_result *JoinFabricChannelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &JoinFabricChannelResponse{}
@@ -23474,6 +29415,11 @@ func (client *Client) JoinFabricChannel(request *JoinFabricChannelRequest) (_res
 	return _result, _err
 }
 
+// @param request - ListTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23519,6 +29465,9 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 	return _result, _err
 }
 
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagResourcesResponse{}
@@ -23530,6 +29479,11 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+// @param request - ResetAntChainCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetAntChainCertificateResponse
 func (client *Client) ResetAntChainCertificateWithOptions(request *ResetAntChainCertificateRequest, runtime *util.RuntimeOptions) (_result *ResetAntChainCertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23563,6 +29517,9 @@ func (client *Client) ResetAntChainCertificateWithOptions(request *ResetAntChain
 	return _result, _err
 }
 
+// @param request - ResetAntChainCertificateRequest
+//
+// @return ResetAntChainCertificateResponse
 func (client *Client) ResetAntChainCertificate(request *ResetAntChainCertificateRequest) (_result *ResetAntChainCertificateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResetAntChainCertificateResponse{}
@@ -23574,6 +29531,11 @@ func (client *Client) ResetAntChainCertificate(request *ResetAntChainCertificate
 	return _result, _err
 }
 
+// @param request - ResetAntChainUserCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetAntChainUserCertificateResponse
 func (client *Client) ResetAntChainUserCertificateWithOptions(request *ResetAntChainUserCertificateRequest, runtime *util.RuntimeOptions) (_result *ResetAntChainUserCertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23611,6 +29573,9 @@ func (client *Client) ResetAntChainUserCertificateWithOptions(request *ResetAntC
 	return _result, _err
 }
 
+// @param request - ResetAntChainUserCertificateRequest
+//
+// @return ResetAntChainUserCertificateResponse
 func (client *Client) ResetAntChainUserCertificate(request *ResetAntChainUserCertificateRequest) (_result *ResetAntChainUserCertificateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResetAntChainUserCertificateResponse{}
@@ -23622,6 +29587,11 @@ func (client *Client) ResetAntChainUserCertificate(request *ResetAntChainUserCer
 	return _result, _err
 }
 
+// @param request - ResetFabricOrganizationUserPasswordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetFabricOrganizationUserPasswordResponse
 func (client *Client) ResetFabricOrganizationUserPasswordWithOptions(request *ResetFabricOrganizationUserPasswordRequest, runtime *util.RuntimeOptions) (_result *ResetFabricOrganizationUserPasswordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23667,6 +29637,9 @@ func (client *Client) ResetFabricOrganizationUserPasswordWithOptions(request *Re
 	return _result, _err
 }
 
+// @param request - ResetFabricOrganizationUserPasswordRequest
+//
+// @return ResetFabricOrganizationUserPasswordResponse
 func (client *Client) ResetFabricOrganizationUserPassword(request *ResetFabricOrganizationUserPasswordRequest) (_result *ResetFabricOrganizationUserPasswordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResetFabricOrganizationUserPasswordResponse{}
@@ -23678,6 +29651,15 @@ func (client *Client) ResetFabricOrganizationUserPassword(request *ResetFabricOr
 	return _result, _err
 }
 
+// Summary:
+//
+// SubmitFabricChaincodeDefinition
+//
+// @param request - SubmitFabricChaincodeDefinitionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitFabricChaincodeDefinitionResponse
 func (client *Client) SubmitFabricChaincodeDefinitionWithOptions(request *SubmitFabricChaincodeDefinitionRequest, runtime *util.RuntimeOptions) (_result *SubmitFabricChaincodeDefinitionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23743,6 +29725,13 @@ func (client *Client) SubmitFabricChaincodeDefinitionWithOptions(request *Submit
 	return _result, _err
 }
 
+// Summary:
+//
+// SubmitFabricChaincodeDefinition
+//
+// @param request - SubmitFabricChaincodeDefinitionRequest
+//
+// @return SubmitFabricChaincodeDefinitionResponse
 func (client *Client) SubmitFabricChaincodeDefinition(request *SubmitFabricChaincodeDefinitionRequest) (_result *SubmitFabricChaincodeDefinitionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitFabricChaincodeDefinitionResponse{}
@@ -23754,6 +29743,11 @@ func (client *Client) SubmitFabricChaincodeDefinition(request *SubmitFabricChain
 	return _result, _err
 }
 
+// @param request - SynchronizeFabricChaincodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SynchronizeFabricChaincodeResponse
 func (client *Client) SynchronizeFabricChaincodeWithOptions(request *SynchronizeFabricChaincodeRequest, runtime *util.RuntimeOptions) (_result *SynchronizeFabricChaincodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23791,6 +29785,9 @@ func (client *Client) SynchronizeFabricChaincodeWithOptions(request *Synchronize
 	return _result, _err
 }
 
+// @param request - SynchronizeFabricChaincodeRequest
+//
+// @return SynchronizeFabricChaincodeResponse
 func (client *Client) SynchronizeFabricChaincode(request *SynchronizeFabricChaincodeRequest) (_result *SynchronizeFabricChaincodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SynchronizeFabricChaincodeResponse{}
@@ -23802,6 +29799,11 @@ func (client *Client) SynchronizeFabricChaincode(request *SynchronizeFabricChain
 	return _result, _err
 }
 
+// @param request - TagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23843,6 +29845,9 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	return _result, _err
 }
 
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
 func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TagResourcesResponse{}
@@ -23854,6 +29859,11 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
+// @param request - UnfreezeAntChainAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnfreezeAntChainAccountResponse
 func (client *Client) UnfreezeAntChainAccountWithOptions(request *UnfreezeAntChainAccountRequest, runtime *util.RuntimeOptions) (_result *UnfreezeAntChainAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23891,6 +29901,9 @@ func (client *Client) UnfreezeAntChainAccountWithOptions(request *UnfreezeAntCha
 	return _result, _err
 }
 
+// @param request - UnfreezeAntChainAccountRequest
+//
+// @return UnfreezeAntChainAccountResponse
 func (client *Client) UnfreezeAntChainAccount(request *UnfreezeAntChainAccountRequest) (_result *UnfreezeAntChainAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UnfreezeAntChainAccountResponse{}
@@ -23902,6 +29915,11 @@ func (client *Client) UnfreezeAntChainAccount(request *UnfreezeAntChainAccountRe
 	return _result, _err
 }
 
+// @param request - UntagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23947,6 +29965,9 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 	return _result, _err
 }
 
+// @param request - UntagResourcesRequest
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
@@ -23958,6 +29979,11 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	return _result, _err
 }
 
+// @param request - UpdateAntChainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAntChainResponse
 func (client *Client) UpdateAntChainWithOptions(request *UpdateAntChainRequest, runtime *util.RuntimeOptions) (_result *UpdateAntChainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23995,6 +30021,9 @@ func (client *Client) UpdateAntChainWithOptions(request *UpdateAntChainRequest, 
 	return _result, _err
 }
 
+// @param request - UpdateAntChainRequest
+//
+// @return UpdateAntChainResponse
 func (client *Client) UpdateAntChain(request *UpdateAntChainRequest) (_result *UpdateAntChainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAntChainResponse{}
@@ -24006,6 +30035,11 @@ func (client *Client) UpdateAntChain(request *UpdateAntChainRequest) (_result *U
 	return _result, _err
 }
 
+// @param request - UpdateAntChainConsortiumRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAntChainConsortiumResponse
 func (client *Client) UpdateAntChainConsortiumWithOptions(request *UpdateAntChainConsortiumRequest, runtime *util.RuntimeOptions) (_result *UpdateAntChainConsortiumResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24047,6 +30081,9 @@ func (client *Client) UpdateAntChainConsortiumWithOptions(request *UpdateAntChai
 	return _result, _err
 }
 
+// @param request - UpdateAntChainConsortiumRequest
+//
+// @return UpdateAntChainConsortiumResponse
 func (client *Client) UpdateAntChainConsortium(request *UpdateAntChainConsortiumRequest) (_result *UpdateAntChainConsortiumResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAntChainConsortiumResponse{}
@@ -24058,6 +30095,11 @@ func (client *Client) UpdateAntChainConsortium(request *UpdateAntChainConsortium
 	return _result, _err
 }
 
+// @param request - UpdateAntChainContractContentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAntChainContractContentResponse
 func (client *Client) UpdateAntChainContractContentWithOptions(request *UpdateAntChainContractContentRequest, runtime *util.RuntimeOptions) (_result *UpdateAntChainContractContentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24103,6 +30145,9 @@ func (client *Client) UpdateAntChainContractContentWithOptions(request *UpdateAn
 	return _result, _err
 }
 
+// @param request - UpdateAntChainContractContentRequest
+//
+// @return UpdateAntChainContractContentResponse
 func (client *Client) UpdateAntChainContractContent(request *UpdateAntChainContractContentRequest) (_result *UpdateAntChainContractContentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAntChainContractContentResponse{}
@@ -24114,6 +30159,11 @@ func (client *Client) UpdateAntChainContractContent(request *UpdateAntChainContr
 	return _result, _err
 }
 
+// @param request - UpdateAntChainContractProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAntChainContractProjectResponse
 func (client *Client) UpdateAntChainContractProjectWithOptions(request *UpdateAntChainContractProjectRequest, runtime *util.RuntimeOptions) (_result *UpdateAntChainContractProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24159,6 +30209,9 @@ func (client *Client) UpdateAntChainContractProjectWithOptions(request *UpdateAn
 	return _result, _err
 }
 
+// @param request - UpdateAntChainContractProjectRequest
+//
+// @return UpdateAntChainContractProjectResponse
 func (client *Client) UpdateAntChainContractProject(request *UpdateAntChainContractProjectRequest) (_result *UpdateAntChainContractProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAntChainContractProjectResponse{}
@@ -24170,6 +30223,11 @@ func (client *Client) UpdateAntChainContractProject(request *UpdateAntChainContr
 	return _result, _err
 }
 
+// @param request - UpdateAntChainMemberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAntChainMemberResponse
 func (client *Client) UpdateAntChainMemberWithOptions(request *UpdateAntChainMemberRequest, runtime *util.RuntimeOptions) (_result *UpdateAntChainMemberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24211,6 +30269,9 @@ func (client *Client) UpdateAntChainMemberWithOptions(request *UpdateAntChainMem
 	return _result, _err
 }
 
+// @param request - UpdateAntChainMemberRequest
+//
+// @return UpdateAntChainMemberResponse
 func (client *Client) UpdateAntChainMember(request *UpdateAntChainMemberRequest) (_result *UpdateAntChainMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAntChainMemberResponse{}
@@ -24222,6 +30283,11 @@ func (client *Client) UpdateAntChainMember(request *UpdateAntChainMemberRequest)
 	return _result, _err
 }
 
+// @param request - UpdateAntChainQRCodeAuthorizationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAntChainQRCodeAuthorizationResponse
 func (client *Client) UpdateAntChainQRCodeAuthorizationWithOptions(request *UpdateAntChainQRCodeAuthorizationRequest, runtime *util.RuntimeOptions) (_result *UpdateAntChainQRCodeAuthorizationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24263,6 +30329,9 @@ func (client *Client) UpdateAntChainQRCodeAuthorizationWithOptions(request *Upda
 	return _result, _err
 }
 
+// @param request - UpdateAntChainQRCodeAuthorizationRequest
+//
+// @return UpdateAntChainQRCodeAuthorizationResponse
 func (client *Client) UpdateAntChainQRCodeAuthorization(request *UpdateAntChainQRCodeAuthorizationRequest) (_result *UpdateAntChainQRCodeAuthorizationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAntChainQRCodeAuthorizationResponse{}
@@ -24274,13 +30343,15 @@ func (client *Client) UpdateAntChainQRCodeAuthorization(request *UpdateAntChainQ
 	return _result, _err
 }
 
-/**
- * ****
- *
- * @param request UpgradeFabricChaincodeRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpgradeFabricChaincodeResponse
- */
+// Description:
+//
+// ***
+//
+// @param request - UpgradeFabricChaincodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpgradeFabricChaincodeResponse
 func (client *Client) UpgradeFabricChaincodeWithOptions(request *UpgradeFabricChaincodeRequest, runtime *util.RuntimeOptions) (_result *UpgradeFabricChaincodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24330,12 +30401,13 @@ func (client *Client) UpgradeFabricChaincodeWithOptions(request *UpgradeFabricCh
 	return _result, _err
 }
 
-/**
- * ****
- *
- * @param request UpgradeFabricChaincodeRequest
- * @return UpgradeFabricChaincodeResponse
- */
+// Description:
+//
+// ***
+//
+// @param request - UpgradeFabricChaincodeRequest
+//
+// @return UpgradeFabricChaincodeResponse
 func (client *Client) UpgradeFabricChaincode(request *UpgradeFabricChaincodeRequest) (_result *UpgradeFabricChaincodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpgradeFabricChaincodeResponse{}
@@ -24347,6 +30419,15 @@ func (client *Client) UpgradeFabricChaincode(request *UpgradeFabricChaincodeRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// UpgradeFabricChaincodeDefinition
+//
+// @param request - UpgradeFabricChaincodeDefinitionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpgradeFabricChaincodeDefinitionResponse
 func (client *Client) UpgradeFabricChaincodeDefinitionWithOptions(request *UpgradeFabricChaincodeDefinitionRequest, runtime *util.RuntimeOptions) (_result *UpgradeFabricChaincodeDefinitionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24408,6 +30489,13 @@ func (client *Client) UpgradeFabricChaincodeDefinitionWithOptions(request *Upgra
 	return _result, _err
 }
 
+// Summary:
+//
+// UpgradeFabricChaincodeDefinition
+//
+// @param request - UpgradeFabricChaincodeDefinitionRequest
+//
+// @return UpgradeFabricChaincodeDefinitionResponse
 func (client *Client) UpgradeFabricChaincodeDefinition(request *UpgradeFabricChaincodeDefinitionRequest) (_result *UpgradeFabricChaincodeDefinitionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpgradeFabricChaincodeDefinitionResponse{}
