@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,20 +10,59 @@ import (
 )
 
 type CodeSourceItem struct {
-	Accessibility       *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	CodeBranch          *string `json:"CodeBranch,omitempty" xml:"CodeBranch,omitempty"`
-	CodeCommit          *string `json:"CodeCommit,omitempty" xml:"CodeCommit,omitempty"`
+	// example:
+	//
+	// PUBLIC
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// example:
+	//
+	// master
+	CodeBranch *string `json:"CodeBranch,omitempty" xml:"CodeBranch,omitempty"`
+	// example:
+	//
+	// 44da109b59f8596152987eaa8f3b2487bb72ea63
+	CodeCommit *string `json:"CodeCommit,omitempty" xml:"CodeCommit,omitempty"`
+	// example:
+	//
+	// https://code.aliyun.com/pai-dlc/examples.git
 	CodeRepo            *string `json:"CodeRepo,omitempty" xml:"CodeRepo,omitempty"`
 	CodeRepoAccessToken *string `json:"CodeRepoAccessToken,omitempty" xml:"CodeRepoAccessToken,omitempty"`
-	CodeRepoUserName    *string `json:"CodeRepoUserName,omitempty" xml:"CodeRepoUserName,omitempty"`
-	CodeSourceId        *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
-	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DisplayName         *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	GmtCreateTime       *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifyTime       *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
-	MountPath           *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	UserId              *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	WorkspaceId         *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// user
+	CodeRepoUserName *string `json:"CodeRepoUserName,omitempty" xml:"CodeRepoUserName,omitempty"`
+	// example:
+	//
+	// code-20210111103721-85qz78ia96lu
+	CodeSourceId *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
+	// example:
+	//
+	// code source of dlc examples
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// MyCodeSourceName1
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// 2021-01-18T12:52:15Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-18T12:52:15Z
+	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
+	// example:
+	//
+	// /root/code/
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// example:
+	//
+	// 1157290171663117
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 1234
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CodeSourceItem) String() string {
@@ -108,11 +144,26 @@ func (s *CodeSourceItem) SetWorkspaceId(v string) *CodeSourceItem {
 }
 
 type Collection struct {
-	CollectionName  *string `json:"CollectionName,omitempty" xml:"CollectionName,omitempty"`
-	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// AI4D
+	CollectionName *string `json:"CollectionName,omitempty" xml:"CollectionName,omitempty"`
+	// example:
+	//
+	// 2021-01-21T17:12:35Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-21T17:12:35Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	UserId          *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 155770209******
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 155770209******
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s Collection) String() string {
@@ -149,24 +200,57 @@ func (s *Collection) SetUserId(v string) *Collection {
 }
 
 type Dataset struct {
-	Accessibility   *string  `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	DataSourceType  *string  `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	DataType        *string  `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// example:
+	//
+	// PRIVATE PUBLIC
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// example:
+	//
+	// OSS URL
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// example:
+	//
+	// COMMON PIC TEXT VIDEO AUDIO
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// example:
+	//
+	// d-c0h44g3wlwkj8o4348
 	DatasetId       *string  `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
 	Description     *string  `json:"Description,omitempty" xml:"Description,omitempty"`
 	GmtCreateTime   *string  `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	GmtModifiedTime *string  `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
 	Labels          []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	Name            *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Options         *string  `json:"Options,omitempty" xml:"Options,omitempty"`
-	OwnerId         *string  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Property        *string  `json:"Property,omitempty" xml:"Property,omitempty"`
-	ProviderType    *string  `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
-	SourceId        *string  `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	SourceType      *string  `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Uri             *string  `json:"Uri,omitempty" xml:"Uri,omitempty"`
-	UserId          *string  `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	WorkspaceId     *string  `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// jsonstring
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// FILE DIRECTORY TABULAR
+	Property *string `json:"Property,omitempty" xml:"Property,omitempty"`
+	// example:
+	//
+	// Ecs
+	ProviderType *string `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
+	// example:
+	//
+	// Source Id
+	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// example:
+	//
+	// USER ITAG  PAI_PUBLIC_DATASET
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// example:
+	//
+	// oss://xxx
+	Uri    *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// Workspace Id
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s Dataset) String() string {
@@ -362,11 +446,26 @@ func (s *Experiment) SetWorkspaceId(v string) *Experiment {
 }
 
 type ExperimentLabel struct {
-	ExperimentId    *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
-	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// exp-890waerw09a0f
+	ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	// example:
+	//
+	// 2023-12-27T03:30:04Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2023-12-27T03:30:04Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	Key             *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value           *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ExperimentLabel) String() string {
@@ -426,7 +525,13 @@ func (s *Label) SetValue(v string) *Label {
 }
 
 type LabelInfo struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -449,25 +554,67 @@ func (s *LabelInfo) SetValue(v string) *LabelInfo {
 }
 
 type Model struct {
-	Accessibility    *string                `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	Domain           *string                `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	ExtraInfo        map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
-	GmtCreateTime    *string                `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime  *string                `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	Labels           []*Label               `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	LatestVersion    *ModelVersion          `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
-	ModelDescription *string                `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
-	ModelDoc         *string                `json:"ModelDoc,omitempty" xml:"ModelDoc,omitempty"`
-	ModelId          *string                `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
-	ModelName        *string                `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	ModelType        *string                `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
-	OrderNumber      *int64                 `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
-	Origin           *string                `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	OwnerId          *string                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Provider         *string                `json:"Provider,omitempty" xml:"Provider,omitempty"`
-	Task             *string                `json:"Task,omitempty" xml:"Task,omitempty"`
-	UserId           *string                `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	WorkspaceId      *string                `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// PUBLIC
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// example:
+	//
+	// cv
+	Domain    *string                `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	ExtraInfo map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	// example:
+	//
+	// 2021-01-21T17:12:35Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-21T17:12:35Z
+	GmtModifiedTime  *string       `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	Labels           []*Label      `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	LatestVersion    *ModelVersion `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
+	ModelDescription *string       `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
+	// example:
+	//
+	// https://***.md
+	ModelDoc *string `json:"ModelDoc,omitempty" xml:"ModelDoc,omitempty"`
+	// example:
+	//
+	// model-1123*****
+	ModelId   *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// example:
+	//
+	// Checkpoint
+	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+	// example:
+	//
+	// 101
+	OrderNumber *int64 `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
+	// example:
+	//
+	// ModelScope
+	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	// example:
+	//
+	// 1557702098******
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// pai
+	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	// example:
+	//
+	// text-classifiaction
+	Task *string `json:"Task,omitempty" xml:"Task,omitempty"`
+	// example:
+	//
+	// 1557702098******
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 234**
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s Model) String() string {
@@ -574,25 +721,49 @@ func (s *Model) SetWorkspaceId(v string) *Model {
 }
 
 type ModelVersion struct {
-	ApprovalStatus     *string                `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
-	EvaluationSpec     map[string]interface{} `json:"EvaluationSpec,omitempty" xml:"EvaluationSpec,omitempty"`
-	ExtraInfo          map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
-	FormatType         *string                `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
-	FrameworkType      *string                `json:"FrameworkType,omitempty" xml:"FrameworkType,omitempty"`
-	GmtCreateTime      *string                `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime    *string                `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	InferenceSpec      map[string]interface{} `json:"InferenceSpec,omitempty" xml:"InferenceSpec,omitempty"`
-	Labels             []*Label               `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	Metrics            map[string]interface{} `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
-	Options            *string                `json:"Options,omitempty" xml:"Options,omitempty"`
-	OwnerId            *string                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	SourceId           *string                `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	SourceType         *string                `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	TrainingSpec       map[string]interface{} `json:"TrainingSpec,omitempty" xml:"TrainingSpec,omitempty"`
-	Uri                *string                `json:"Uri,omitempty" xml:"Uri,omitempty"`
-	UserId             *string                `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	VersionDescription *string                `json:"VersionDescription,omitempty" xml:"VersionDescription,omitempty"`
-	VersionName        *string                `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+	ApprovalStatus *string                `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
+	EvaluationSpec map[string]interface{} `json:"EvaluationSpec,omitempty" xml:"EvaluationSpec,omitempty"`
+	ExtraInfo      map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	// example:
+	//
+	// SavedModel
+	FormatType *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
+	// example:
+	//
+	// TensorFlow
+	FrameworkType *string `json:"FrameworkType,omitempty" xml:"FrameworkType,omitempty"`
+	// example:
+	//
+	// 2021-01-21T17:12:35Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-21T17:12:35Z
+	GmtModifiedTime *string                `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	InferenceSpec   map[string]interface{} `json:"InferenceSpec,omitempty" xml:"InferenceSpec,omitempty"`
+	Labels          []*Label               `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Metrics         map[string]interface{} `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	Options         *string                `json:"Options,omitempty" xml:"Options,omitempty"`
+	// example:
+	//
+	// 155770209******
+	OwnerId      *string                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	SourceId     *string                `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	SourceType   *string                `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	TrainingSpec map[string]interface{} `json:"TrainingSpec,omitempty" xml:"TrainingSpec,omitempty"`
+	// example:
+	//
+	// oss://bucket/path-to-model
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// example:
+	//
+	// 155770209******
+	UserId             *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	VersionDescription *string `json:"VersionDescription,omitempty" xml:"VersionDescription,omitempty"`
+	// example:
+	//
+	// 1.0.0
+	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
 func (s ModelVersion) String() string {
@@ -699,18 +870,51 @@ func (s *ModelVersion) SetVersionName(v string) *ModelVersion {
 }
 
 type ServiceTemplate struct {
-	GmtCreateTime              *string                `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime            *string                `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	InferenceSpec              map[string]interface{} `json:"InferenceSpec,omitempty" xml:"InferenceSpec,omitempty"`
-	Labels                     []*Label               `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	OrderNumber                *int64                 `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
-	OwnerId                    *string                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Provider                   *string                `json:"Provider,omitempty" xml:"Provider,omitempty"`
-	ServiceTemplateDescription *string                `json:"ServiceTemplateDescription,omitempty" xml:"ServiceTemplateDescription,omitempty"`
-	ServiceTemplateDoc         *string                `json:"ServiceTemplateDoc,omitempty" xml:"ServiceTemplateDoc,omitempty"`
-	ServiceTemplateId          *string                `json:"ServiceTemplateId,omitempty" xml:"ServiceTemplateId,omitempty"`
-	ServiceTemplateName        *string                `json:"ServiceTemplateName,omitempty" xml:"ServiceTemplateName,omitempty"`
-	UserId                     *string                `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 2021-01-21T17:12:35Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-21T17:12:35Z
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// {     "processor": "tensorflow_gpu_1.12" }
+	InferenceSpec map[string]interface{} `json:"InferenceSpec,omitempty" xml:"InferenceSpec,omitempty"`
+	Labels        []*Label               `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	OrderNumber *int64 `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
+	// example:
+	//
+	// 155770209****904
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// pai
+	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	// example:
+	//
+	// 这里是一个描述。
+	ServiceTemplateDescription *string `json:"ServiceTemplateDescription,omitempty" xml:"ServiceTemplateDescription,omitempty"`
+	// example:
+	//
+	// https://***.md
+	ServiceTemplateDoc *string `json:"ServiceTemplateDoc,omitempty" xml:"ServiceTemplateDoc,omitempty"`
+	// example:
+	//
+	// st-asdkjf**skdhh
+	ServiceTemplateId *string `json:"ServiceTemplateId,omitempty" xml:"ServiceTemplateId,omitempty"`
+	// example:
+	//
+	// foo
+	ServiceTemplateName *string `json:"ServiceTemplateName,omitempty" xml:"ServiceTemplateName,omitempty"`
+	// example:
+	//
+	// 155770209****904
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ServiceTemplate) String() string {
@@ -865,11 +1069,23 @@ func (s *Trial) SetWorkspaceId(v string) *Trial {
 }
 
 type TrialLabel struct {
-	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2023-12-27T03:30:04Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2023-12-27T03:30:04Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	Key             *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	TrialId         *string `json:"TrialId,omitempty" xml:"TrialId,omitempty"`
-	Value           *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// key
+	Key     *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	TrialId *string `json:"TrialId,omitempty" xml:"TrialId,omitempty"`
+	// example:
+	//
+	// value
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s TrialLabel) String() string {
@@ -906,14 +1122,30 @@ func (s *TrialLabel) SetValue(v string) *TrialLabel {
 }
 
 type AddImageRequest struct {
-	Accessibility *string                  `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	Description   *string                  `json:"Description,omitempty" xml:"Description,omitempty"`
-	ImageId       *string                  `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageUri      *string                  `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
-	Labels        []*AddImageRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	Name          *string                  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Size          *int32                   `json:"Size,omitempty" xml:"Size,omitempty"`
-	WorkspaceId   *string                  `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// PUBLIC
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ImageId       *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// registry.cn-hangzhou.aliyuncs.com/pai-compression/nlp:gpu
+	ImageUri *string                  `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
+	Labels   []*AddImageRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// nlp-compression
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Size *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// 15******45
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s AddImageRequest) String() string {
@@ -965,7 +1197,13 @@ func (s *AddImageRequest) SetWorkspaceId(v string) *AddImageRequest {
 }
 
 type AddImageRequestLabels struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// system.chipType
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// GPU
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -988,7 +1226,13 @@ func (s *AddImageRequestLabels) SetValue(v string) *AddImageRequestLabels {
 }
 
 type AddImageResponseBody struct {
-	ImageId   *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// image-4c62******53uor
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1040,6 +1284,7 @@ func (s *AddImageResponse) SetBody(v *AddImageResponseBody) *AddImageResponse {
 }
 
 type AddImageLabelsRequest struct {
+	// This parameter is required.
 	Labels []*AddImageLabelsRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 }
 
@@ -1057,7 +1302,13 @@ func (s *AddImageLabelsRequest) SetLabels(v []*AddImageLabelsRequestLabels) *Add
 }
 
 type AddImageLabelsRequestLabels struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// system.chipType
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// GPU
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1080,6 +1331,9 @@ func (s *AddImageLabelsRequestLabels) SetValue(v string) *AddImageLabelsRequestL
 }
 
 type AddImageLabelsResponseBody struct {
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1126,6 +1380,9 @@ func (s *AddImageLabelsResponse) SetBody(v *AddImageLabelsResponseBody) *AddImag
 }
 
 type AddMemberRoleResponseBody struct {
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1172,15 +1429,46 @@ func (s *AddMemberRoleResponse) SetBody(v *AddMemberRoleResponseBody) *AddMember
 }
 
 type CreateCodeSourceRequest struct {
-	Accessibility       *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	CodeBranch          *string `json:"CodeBranch,omitempty" xml:"CodeBranch,omitempty"`
-	CodeRepo            *string `json:"CodeRepo,omitempty" xml:"CodeRepo,omitempty"`
+	// example:
+	//
+	// PRIVATE
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// example:
+	//
+	// master
+	CodeBranch *string `json:"CodeBranch,omitempty" xml:"CodeBranch,omitempty"`
+	// example:
+	//
+	// https://code.aliyun.com/******
+	CodeRepo *string `json:"CodeRepo,omitempty" xml:"CodeRepo,omitempty"`
+	// example:
+	//
+	// ***
 	CodeRepoAccessToken *string `json:"CodeRepoAccessToken,omitempty" xml:"CodeRepoAccessToken,omitempty"`
-	CodeRepoUserName    *string `json:"CodeRepoUserName,omitempty" xml:"CodeRepoUserName,omitempty"`
-	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DisplayName         *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	MountPath           *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	WorkspaceId         *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// use***
+	CodeRepoUserName *string `json:"CodeRepoUserName,omitempty" xml:"CodeRepoUserName,omitempty"`
+	// example:
+	//
+	// code source of dlc examples
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MyCodeSource1
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// /root/code/code-source-1
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateCodeSourceRequest) String() string {
@@ -1237,8 +1525,14 @@ func (s *CreateCodeSourceRequest) SetWorkspaceId(v string) *CreateCodeSourceRequ
 }
 
 type CreateCodeSourceResponseBody struct {
+	// example:
+	//
+	// code-20********
 	CodeSourceId *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3**********
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateCodeSourceResponseBody) String() string {
@@ -1289,20 +1583,69 @@ func (s *CreateCodeSourceResponse) SetBody(v *CreateCodeSourceResponseBody) *Cre
 }
 
 type CreateDatasetRequest struct {
-	Accessibility  *string  `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	DataSourceType *string  `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	DataType       *string  `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	Description    *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Labels         []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	Name           *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Options        *string  `json:"Options,omitempty" xml:"Options,omitempty"`
-	Property       *string  `json:"Property,omitempty" xml:"Property,omitempty"`
-	Provider       *string  `json:"Provider,omitempty" xml:"Provider,omitempty"`
-	ProviderType   *string  `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
-	SourceId       *string  `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	SourceType     *string  `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Uri            *string  `json:"Uri,omitempty" xml:"Uri,omitempty"`
-	WorkspaceId    *string  `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// PRIVATE
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// NAS
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// example:
+	//
+	// COMMON
+	DataType    *string  `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	Labels      []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// myName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//   "mountPath": "/mnt/data/"
+	//
+	// }
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DIRECTORY
+	Property *string `json:"Property,omitempty" xml:"Property,omitempty"`
+	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	// example:
+	//
+	// Ecs
+	ProviderType *string `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
+	// example:
+	//
+	// jdnhf***fnrimv
+	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// example:
+	//
+	// USER
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// nas://09f****f2.cn-hangzhou/
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// example:
+	//
+	// 29884000000186970
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 478**
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateDatasetRequest) String() string {
@@ -1378,13 +1721,24 @@ func (s *CreateDatasetRequest) SetUri(v string) *CreateDatasetRequest {
 	return s
 }
 
+func (s *CreateDatasetRequest) SetUserId(v string) *CreateDatasetRequest {
+	s.UserId = &v
+	return s
+}
+
 func (s *CreateDatasetRequest) SetWorkspaceId(v string) *CreateDatasetRequest {
 	s.WorkspaceId = &v
 	return s
 }
 
 type CreateDatasetResponseBody struct {
+	// example:
+	//
+	// d-rbvg5*****jhc9ks92
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// example:
+	//
+	// B2C51F93-1C07-5477-9705-5FDB****F19F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1453,6 +1807,9 @@ func (s *CreateDatasetLabelsRequest) SetLabels(v []*Label) *CreateDatasetLabelsR
 }
 
 type CreateDatasetLabelsResponseBody struct {
+	// example:
+	//
+	// A083731B-4973-54D1-B324-E53****4DD44
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1499,6 +1856,7 @@ func (s *CreateDatasetLabelsResponse) SetBody(v *CreateDatasetLabelsResponseBody
 }
 
 type CreateMemberRequest struct {
+	// This parameter is required.
 	Members []*CreateMemberRequestMembers `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
 }
 
@@ -1516,8 +1874,14 @@ func (s *CreateMemberRequest) SetMembers(v []*CreateMemberRequestMembers) *Creat
 }
 
 type CreateMemberRequestMembers struct {
-	Roles  []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
-	UserId *string   `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// This parameter is required.
+	Roles []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 21513926******88039
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s CreateMemberRequestMembers) String() string {
@@ -1539,8 +1903,11 @@ func (s *CreateMemberRequestMembers) SetUserId(v string) *CreateMemberRequestMem
 }
 
 type CreateMemberResponseBody struct {
-	Members   []*CreateMemberResponseBodyMembers `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Members []*CreateMemberResponseBodyMembers `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
+	// example:
+	//
+	// DA869D1B-035A-43B2-ACC1-C56681BD9FAA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateMemberResponseBody) String() string {
@@ -1562,10 +1929,19 @@ func (s *CreateMemberResponseBody) SetRequestId(v string) *CreateMemberResponseB
 }
 
 type CreateMemberResponseBodyMembers struct {
-	DisplayName *string   `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	MemberId    *string   `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
-	Roles       []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
-	UserId      *string   `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// myDisplayName
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// 145883-21513926******88039
+	MemberId *string   `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	Roles    []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 21513926******88039
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s CreateMemberResponseBodyMembers) String() string {
@@ -1626,18 +2002,45 @@ func (s *CreateMemberResponse) SetBody(v *CreateMemberResponseBody) *CreateMembe
 }
 
 type CreateModelRequest struct {
-	Accessibility    *string                `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	Domain           *string                `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// PRIVATE
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// example:
+	//
+	// nlp
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// if can be null:
+	// true
 	ExtraInfo        map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
 	Labels           []*Label               `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	ModelDescription *string                `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
-	ModelDoc         *string                `json:"ModelDoc,omitempty" xml:"ModelDoc,omitempty"`
-	ModelName        *string                `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	ModelType        *string                `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
-	OrderNumber      *int64                 `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
-	Origin           *string                `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	Task             *string                `json:"Task,omitempty" xml:"Task,omitempty"`
-	WorkspaceId      *string                `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// https://*.md
+	ModelDoc *string `json:"ModelDoc,omitempty" xml:"ModelDoc,omitempty"`
+	// This parameter is required.
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// example:
+	//
+	// Checkpoint
+	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+	// example:
+	//
+	// 101
+	OrderNumber *int64 `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
+	// example:
+	//
+	// ModelScope
+	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	// example:
+	//
+	// text-classification
+	Task *string `json:"Task,omitempty" xml:"Task,omitempty"`
+	// example:
+	//
+	// 796**
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateModelRequest) String() string {
@@ -1709,7 +2112,13 @@ func (s *CreateModelRequest) SetWorkspaceId(v string) *CreateModelRequest {
 }
 
 type CreateModelResponseBody struct {
-	ModelId   *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	// example:
+	//
+	// model-rbvg5wzljz****ks92
+	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	// example:
+	//
+	// 9DAD3112-AE22-5563-9A02-5C7E8****E35
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1778,6 +2187,9 @@ func (s *CreateModelLabelsRequest) SetLabels(v []*Label) *CreateModelLabelsReque
 }
 
 type CreateModelLabelsResponseBody struct {
+	// example:
+	//
+	// F81D9EC0-1872-50F5-A96C-A0647D****1D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1824,21 +2236,66 @@ func (s *CreateModelLabelsResponse) SetBody(v *CreateModelLabelsResponseBody) *C
 }
 
 type CreateModelVersionRequest struct {
-	ApprovalStatus     *string                `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
-	EvaluationSpec     map[string]interface{} `json:"EvaluationSpec,omitempty" xml:"EvaluationSpec,omitempty"`
-	ExtraInfo          map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
-	FormatType         *string                `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
-	FrameworkType      *string                `json:"FrameworkType,omitempty" xml:"FrameworkType,omitempty"`
-	InferenceSpec      map[string]interface{} `json:"InferenceSpec,omitempty" xml:"InferenceSpec,omitempty"`
-	Labels             []*Label               `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	Metrics            map[string]interface{} `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
-	Options            *string                `json:"Options,omitempty" xml:"Options,omitempty"`
-	SourceId           *string                `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	SourceType         *string                `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	TrainingSpec       map[string]interface{} `json:"TrainingSpec,omitempty" xml:"TrainingSpec,omitempty"`
-	Uri                *string                `json:"Uri,omitempty" xml:"Uri,omitempty"`
-	VersionDescription *string                `json:"VersionDescription,omitempty" xml:"VersionDescription,omitempty"`
-	VersionName        *string                `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+	// example:
+	//
+	// Approved
+	ApprovalStatus *string `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
+	// example:
+	//
+	// {}
+	EvaluationSpec map[string]interface{} `json:"EvaluationSpec,omitempty" xml:"EvaluationSpec,omitempty"`
+	// example:
+	//
+	// {}
+	ExtraInfo map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	// example:
+	//
+	// SavedModel
+	FormatType *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
+	// example:
+	//
+	// TensorFlow
+	FrameworkType *string `json:"FrameworkType,omitempty" xml:"FrameworkType,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//     "processor": "tensorflow_gpu_1.12"
+	//
+	// }
+	InferenceSpec map[string]interface{} `json:"InferenceSpec,omitempty" xml:"InferenceSpec,omitempty"`
+	Labels        []*Label               `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// example:
+	//
+	// {}
+	Metrics map[string]interface{} `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	// example:
+	//
+	// {}
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// example:
+	//
+	// region=cn-shanghai,workspaceId=13**,kind=PipelineRun,id=run-sakdb****jdf
+	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// example:
+	//
+	// PAIFlow
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// example:
+	//
+	// {}
+	TrainingSpec map[string]interface{} `json:"TrainingSpec,omitempty" xml:"TrainingSpec,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://mybucket.oss-cn-beijing.aliyuncs.com/mypath/
+	Uri                *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	VersionDescription *string `json:"VersionDescription,omitempty" xml:"VersionDescription,omitempty"`
+	// example:
+	//
+	// 0.1.0
+	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
 func (s CreateModelVersionRequest) String() string {
@@ -1925,7 +2382,13 @@ func (s *CreateModelVersionRequest) SetVersionName(v string) *CreateModelVersion
 }
 
 type CreateModelVersionResponseBody struct {
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 21645FCD-BAB9-5742-89AE-AEB27****B2E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 0.1.0
 	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
@@ -1994,6 +2457,9 @@ func (s *CreateModelVersionLabelsRequest) SetLabels(v []*Label) *CreateModelVers
 }
 
 type CreateModelVersionLabelsResponseBody struct {
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2040,6 +2506,9 @@ func (s *CreateModelVersionLabelsResponse) SetBody(v *CreateModelVersionLabelsRe
 }
 
 type CreateProductOrdersRequest struct {
+	// example:
+	//
+	// true
 	AutoPay  *bool                                 `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	Products []*CreateProductOrdersRequestProducts `json:"Products,omitempty" xml:"Products,omitempty" type:"Repeated"`
 }
@@ -2063,13 +2532,31 @@ func (s *CreateProductOrdersRequest) SetProducts(v []*CreateProductOrdersRequest
 }
 
 type CreateProductOrdersRequestProducts struct {
-	AutoRenew          *bool                                                   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	ChargeType         *string                                                 `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// true
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// example:
+	//
+	// POSTPAY
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// 1
 	Duration           *int64                                                  `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	InstanceProperties []*CreateProductOrdersRequestProductsInstanceProperties `json:"InstanceProperties,omitempty" xml:"InstanceProperties,omitempty" type:"Repeated"`
-	OrderType          *string                                                 `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	PricingCycle       *string                                                 `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	ProductCode        *string                                                 `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// example:
+	//
+	// BUY
+	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// example:
+	//
+	// Month
+	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// example:
+	//
+	// DataWorks_share
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 }
 
 func (s CreateProductOrdersRequestProducts) String() string {
@@ -2116,8 +2603,14 @@ func (s *CreateProductOrdersRequestProducts) SetProductCode(v string) *CreatePro
 }
 
 type CreateProductOrdersRequestProductsInstanceProperties struct {
-	Code  *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// commodity_type。
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// oss。
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2145,10 +2638,19 @@ func (s *CreateProductOrdersRequestProductsInstanceProperties) SetValue(v string
 }
 
 type CreateProductOrdersResponseBody struct {
+	// example:
+	//
+	// 3ed6a882-0d85-4dd8-ad36-cd8d74ab9fdb
 	BuyProductRequestId *string `json:"BuyProductRequestId,omitempty" xml:"BuyProductRequestId,omitempty"`
 	Message             *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	OrderId             *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 210292536260646
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// ksdjf-jksd-*****slkdjf
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateProductOrdersResponseBody) String() string {
@@ -2209,10 +2711,24 @@ func (s *CreateProductOrdersResponse) SetBody(v *CreateProductOrdersResponseBody
 }
 
 type CreateWorkspaceRequest struct {
-	Description   *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	DisplayName   *string   `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	EnvTypes      []*string `json:"EnvTypes,omitempty" xml:"EnvTypes,omitempty" type:"Repeated"`
-	WorkspaceName *string   `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// display name
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// This parameter is required.
+	EnvTypes []*string `json:"EnvTypes,omitempty" xml:"EnvTypes,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// workspace_example
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
 func (s CreateWorkspaceRequest) String() string {
@@ -2244,7 +2760,13 @@ func (s *CreateWorkspaceRequest) SetWorkspaceName(v string) *CreateWorkspaceRequ
 }
 
 type CreateWorkspaceResponseBody struct {
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1e195c5116124202371861018d5bde
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1234
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -2296,7 +2818,11 @@ func (s *CreateWorkspaceResponse) SetBody(v *CreateWorkspaceResponseBody) *Creat
 }
 
 type CreateWorkspaceResourceRequest struct {
-	Option    *string                                    `json:"Option,omitempty" xml:"Option,omitempty"`
+	// example:
+	//
+	// CreateAndAttach
+	Option *string `json:"Option,omitempty" xml:"Option,omitempty"`
+	// This parameter is required.
 	Resources []*CreateWorkspaceResourceRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 }
 
@@ -2319,16 +2845,40 @@ func (s *CreateWorkspaceResourceRequest) SetResources(v []*CreateWorkspaceResour
 }
 
 type CreateWorkspaceResourceRequestResources struct {
-	EnvType      *string                                          `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	GroupName    *string                                          `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	IsDefault    *bool                                            `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	Labels       []*CreateWorkspaceResourceRequestResourcesLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	Name         *string                                          `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// prod
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// example:
+	//
+	// groupName
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// example:
+	//
+	// false
+	IsDefault *bool                                            `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	Labels    []*CreateWorkspaceResourceRequestResourcesLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ResourceName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// MaxCompute
 	ProductType  *string                                          `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	Quotas       []*CreateWorkspaceResourceRequestResourcesQuotas `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
 	ResourceType *string                                          `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Spec         map[string]interface{}                           `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	WorkspaceId  *string                                          `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateWorkspaceResourceRequestResources) String() string {
@@ -2413,6 +2963,11 @@ func (s *CreateWorkspaceResourceRequestResourcesLabels) SetValue(v string) *Crea
 }
 
 type CreateWorkspaceResourceRequestResourcesQuotas struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 232892******92912
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -2430,9 +2985,15 @@ func (s *CreateWorkspaceResourceRequestResourcesQuotas) SetId(v string) *CreateW
 }
 
 type CreateWorkspaceResourceResponseBody struct {
-	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Resources  []*CreateWorkspaceResourceResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
-	TotalCount *int64                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1e195c5116124202371861018d5bde
+	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Resources []*CreateWorkspaceResourceResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s CreateWorkspaceResourceResponseBody) String() string {
@@ -2459,6 +3020,9 @@ func (s *CreateWorkspaceResourceResponseBody) SetTotalCount(v int64) *CreateWork
 }
 
 type CreateWorkspaceResourceResponseBodyResources struct {
+	// example:
+	//
+	// 1234
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -2505,8 +3069,14 @@ func (s *CreateWorkspaceResourceResponse) SetBody(v *CreateWorkspaceResourceResp
 }
 
 type DeleteCodeSourceResponseBody struct {
+	// example:
+	//
+	// code-20210111103721-85qz78ia96lu
 	CodeSourceId *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteCodeSourceResponseBody) String() string {
@@ -2557,6 +3127,9 @@ func (s *DeleteCodeSourceResponse) SetBody(v *DeleteCodeSourceResponseBody) *Del
 }
 
 type DeleteDatasetResponseBody struct {
+	// example:
+	//
+	// A0F049F0-8D69-5BAC-8F10-B******A34C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2603,6 +3176,9 @@ func (s *DeleteDatasetResponse) SetBody(v *DeleteDatasetResponseBody) *DeleteDat
 }
 
 type DeleteDatasetLabelsRequest struct {
+	// example:
+	//
+	// key1,key2
 	LabelKeys *string `json:"LabelKeys,omitempty" xml:"LabelKeys,omitempty"`
 }
 
@@ -2620,6 +3196,9 @@ func (s *DeleteDatasetLabelsRequest) SetLabelKeys(v string) *DeleteDatasetLabels
 }
 
 type DeleteDatasetLabelsResponseBody struct {
+	// example:
+	//
+	// 64B50C1D-D4C2-560C-86A3-A6ED****16D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2666,6 +3245,11 @@ func (s *DeleteDatasetLabelsResponse) SetBody(v *DeleteDatasetLabelsResponseBody
 }
 
 type DeleteMembersRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 145883-21513926******88039,145883-2769726******87513
 	MemberIds *string `json:"MemberIds,omitempty" xml:"MemberIds,omitempty"`
 }
 
@@ -2683,8 +3267,11 @@ func (s *DeleteMembersRequest) SetMemberIds(v string) *DeleteMembersRequest {
 }
 
 type DeleteMembersResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D5BFFEE3-6025-443F-8A03-02D619B5C4B9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2741,6 +3328,9 @@ func (s *DeleteMembersResponse) SetBody(v *DeleteMembersResponseBody) *DeleteMem
 }
 
 type DeleteModelResponseBody struct {
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2787,6 +3377,9 @@ func (s *DeleteModelResponse) SetBody(v *DeleteModelResponseBody) *DeleteModelRe
 }
 
 type DeleteModelLabelsRequest struct {
+	// example:
+	//
+	// key1,key2
 	LabelKeys *string `json:"LabelKeys,omitempty" xml:"LabelKeys,omitempty"`
 }
 
@@ -2804,6 +3397,9 @@ func (s *DeleteModelLabelsRequest) SetLabelKeys(v string) *DeleteModelLabelsRequ
 }
 
 type DeleteModelLabelsResponseBody struct {
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2850,6 +3446,9 @@ func (s *DeleteModelLabelsResponse) SetBody(v *DeleteModelLabelsResponseBody) *D
 }
 
 type DeleteModelVersionResponseBody struct {
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2896,6 +3495,9 @@ func (s *DeleteModelVersionResponse) SetBody(v *DeleteModelVersionResponseBody) 
 }
 
 type DeleteModelVersionLabelsRequest struct {
+	// example:
+	//
+	// key1,key2
 	LabelKeys *string `json:"LabelKeys,omitempty" xml:"LabelKeys,omitempty"`
 }
 
@@ -2913,6 +3515,9 @@ func (s *DeleteModelVersionLabelsRequest) SetLabelKeys(v string) *DeleteModelVer
 }
 
 type DeleteModelVersionLabelsResponseBody struct {
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2959,6 +3564,9 @@ func (s *DeleteModelVersionLabelsResponse) SetBody(v *DeleteModelVersionLabelsRe
 }
 
 type DeleteWorkspaceResponseBody struct {
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3005,9 +3613,18 @@ func (s *DeleteWorkspaceResponse) SetBody(v *DeleteWorkspaceResponseBody) *Delet
 }
 
 type DeleteWorkspaceResourceRequest struct {
-	GroupName    *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	Labels       *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	Option       *string `json:"Option,omitempty" xml:"Option,omitempty"`
+	// example:
+	//
+	// group
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Labels    *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// example:
+	//
+	// DetachAndDelete
+	Option *string `json:"Option,omitempty" xml:"Option,omitempty"`
+	// example:
+	//
+	// DLC
 	ProductType  *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	ResourceIds  *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
@@ -3052,6 +3669,9 @@ func (s *DeleteWorkspaceResourceRequest) SetResourceType(v string) *DeleteWorksp
 }
 
 type DeleteWorkspaceResourceResponseBody struct {
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
 }
@@ -3104,21 +3724,66 @@ func (s *DeleteWorkspaceResourceResponse) SetBody(v *DeleteWorkspaceResourceResp
 }
 
 type GetCodeSourceResponseBody struct {
-	Accessibility       *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	CodeBranch          *string `json:"CodeBranch,omitempty" xml:"CodeBranch,omitempty"`
-	CodeCommit          *string `json:"CodeCommit,omitempty" xml:"CodeCommit,omitempty"`
-	CodeRepo            *string `json:"CodeRepo,omitempty" xml:"CodeRepo,omitempty"`
+	// example:
+	//
+	// PRIVATE
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// example:
+	//
+	// master
+	CodeBranch *string `json:"CodeBranch,omitempty" xml:"CodeBranch,omitempty"`
+	// example:
+	//
+	// 44da10***********
+	CodeCommit *string `json:"CodeCommit,omitempty" xml:"CodeCommit,omitempty"`
+	// example:
+	//
+	// https://code.aliyun.com/pai-dlc/examples.git
+	CodeRepo *string `json:"CodeRepo,omitempty" xml:"CodeRepo,omitempty"`
+	// example:
+	//
+	// xxxx
 	CodeRepoAccessToken *string `json:"CodeRepoAccessToken,omitempty" xml:"CodeRepoAccessToken,omitempty"`
-	CodeRepoUserName    *string `json:"CodeRepoUserName,omitempty" xml:"CodeRepoUserName,omitempty"`
-	CodeSourceId        *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
-	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DisplayName         *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	GmtCreateTime       *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifyTime       *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
-	MountPath           *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	UserId              *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	WorkspaceId         *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// user1
+	CodeRepoUserName *string `json:"CodeRepoUserName,omitempty" xml:"CodeRepoUserName,omitempty"`
+	// example:
+	//
+	// code-202**********
+	CodeSourceId *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
+	// example:
+	//
+	// This is my data source 1.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// MyCodeSource1
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// 2021-01-12T23:36:01.123Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-12T23:36:01.123Z
+	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
+	// example:
+	//
+	// /root/code
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1722********
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 1234
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s GetCodeSourceResponseBody) String() string {
@@ -3234,25 +3899,77 @@ func (s *GetCodeSourceResponse) SetBody(v *GetCodeSourceResponseBody) *GetCodeSo
 }
 
 type GetDatasetResponseBody struct {
-	Accessibility   *string  `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	DataSourceType  *string  `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	DataType        *string  `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	DatasetId       *string  `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	Description     *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	GmtCreateTime   *string  `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// PRIVATE
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// example:
+	//
+	// NAS
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// example:
+	//
+	// COMMON
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// example:
+	//
+	// d-rbvg5wz****c9ks92
+	DatasetId   *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 2021-01-30T12:51:33.028Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-30T12:51:33.028Z
 	GmtModifiedTime *string  `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
 	Labels          []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	Name            *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Options         *string  `json:"Options,omitempty" xml:"Options,omitempty"`
-	OwnerId         *string  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Property        *string  `json:"Property,omitempty" xml:"Property,omitempty"`
-	ProviderType    *string  `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
-	RequestId       *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SourceId        *string  `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	SourceType      *string  `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Uri             *string  `json:"Uri,omitempty" xml:"Uri,omitempty"`
-	UserId          *string  `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	WorkspaceId     *string  `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// myName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//   "mountPath": "/mnt/data/"
+	//
+	// }
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// example:
+	//
+	// 1631044****3440
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// DIRECTORY
+	Property     *string `json:"Property,omitempty" xml:"Property,omitempty"`
+	ProviderType *string `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// jdnhf***fnrimv
+	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// example:
+	//
+	// USER
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// example:
+	//
+	// nas://09f****f2.cn-hangzhou/
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// example:
+	//
+	// 2485765****023475
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 478**
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s GetDatasetResponseBody) String() string {
@@ -3388,6 +4105,9 @@ func (s *GetDatasetResponse) SetBody(v *GetDatasetResponseBody) *GetDatasetRespo
 }
 
 type GetDefaultWorkspaceRequest struct {
+	// example:
+	//
+	// false
 	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
 }
 
@@ -3405,18 +4125,45 @@ func (s *GetDefaultWorkspaceRequest) SetVerbose(v bool) *GetDefaultWorkspaceRequ
 }
 
 type GetDefaultWorkspaceResponseBody struct {
-	Conditions      []*GetDefaultWorkspaceResponseBodyConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
-	Creator         *string                                      `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	Description     *string                                      `json:"Description,omitempty" xml:"Description,omitempty"`
-	DisplayName     *string                                      `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	EnvTypes        []*string                                    `json:"EnvTypes,omitempty" xml:"EnvTypes,omitempty" type:"Repeated"`
-	GmtCreateTime   *string                                      `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime *string                                      `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	Owner           *GetDefaultWorkspaceResponseBodyOwner        `json:"Owner,omitempty" xml:"Owner,omitempty" type:"Struct"`
-	RequestId       *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status          *string                                      `json:"Status,omitempty" xml:"Status,omitempty"`
-	WorkspaceId     *string                                      `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	WorkspaceName   *string                                      `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	Conditions []*GetDefaultWorkspaceResponseBodyConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 17915******4216
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// example:
+	//
+	// workspace description example
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// workspace-example
+	DisplayName *string   `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	EnvTypes    []*string `json:"EnvTypes,omitempty" xml:"EnvTypes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2021-01-21T17:12:35.232Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-21T17:12:35.232Z
+	GmtModifiedTime *string                               `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	Owner           *GetDefaultWorkspaceResponseBodyOwner `json:"Owner,omitempty" xml:"Owner,omitempty" type:"Struct"`
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// ENABLED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1234
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// workspace-example
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
 func (s GetDefaultWorkspaceResponseBody) String() string {
@@ -3488,9 +4235,18 @@ func (s *GetDefaultWorkspaceResponseBody) SetWorkspaceName(v string) *GetDefault
 }
 
 type GetDefaultWorkspaceResponseBodyConditions struct {
-	Code    *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// Create Failed
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// CREATING
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetDefaultWorkspaceResponseBodyConditions) String() string {
@@ -3517,8 +4273,17 @@ func (s *GetDefaultWorkspaceResponseBodyConditions) SetType(v string) *GetDefaul
 }
 
 type GetDefaultWorkspaceResponseBodyOwner struct {
-	UserId   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserKp   *string `json:"UserKp,omitempty" xml:"UserKp,omitempty"`
+	// example:
+	//
+	// 17915******4216
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 17915******4216
+	UserKp *string `json:"UserKp,omitempty" xml:"UserKp,omitempty"`
+	// example:
+	//
+	// username
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -3575,6 +4340,9 @@ func (s *GetDefaultWorkspaceResponse) SetBody(v *GetDefaultWorkspaceResponseBody
 }
 
 type GetImageRequest struct {
+	// example:
+	//
+	// false
 	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
 }
 
@@ -3592,18 +4360,45 @@ func (s *GetImageRequest) SetVerbose(v bool) *GetImageRequest {
 }
 
 type GetImageResponseBody struct {
-	Accessibility   *string                       `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	Description     *string                       `json:"Description,omitempty" xml:"Description,omitempty"`
-	GmtCreateTime   *string                       `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime *string                       `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	ImageUri        *string                       `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
-	Labels          []*GetImageResponseBodyLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	Name            *string                       `json:"Name,omitempty" xml:"Name,omitempty"`
-	ParentUserId    *string                       `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
-	RequestId       *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Size            *int32                        `json:"Size,omitempty" xml:"Size,omitempty"`
-	UserId          *string                       `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	WorkspaceId     *string                       `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// PUBLIC
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 2021-01-21T17:12:35.232Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-21T17:12:35.232Z
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// registry.cn-hangzhou.aliyuncs.******ession/nlp:gpu
+	ImageUri *string                       `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
+	Labels   []*GetImageResponseBodyLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// example:
+	//
+	// nlp-compression
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 15577******8921
+	ParentUserId *string `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Size      *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// 15577******8921
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 15945
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s GetImageResponseBody) String() string {
@@ -3675,7 +4470,13 @@ func (s *GetImageResponseBody) SetWorkspaceId(v string) *GetImageResponseBody {
 }
 
 type GetImageResponseBodyLabels struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// system.chipType
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// GPU
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3728,7 +4529,10 @@ func (s *GetImageResponse) SetBody(v *GetImageResponseBody) *GetImageResponse {
 
 type GetMemberRequest struct {
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
-	UserId   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 21513926******88039
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GetMemberRequest) String() string {
@@ -3750,13 +4554,31 @@ func (s *GetMemberRequest) SetUserId(v string) *GetMemberRequest {
 }
 
 type GetMemberResponseBody struct {
-	DisplayName   *string   `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	GmtCreateTime *string   `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	MemberId      *string   `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
-	MemberName    *string   `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
-	RequestId     *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Roles         []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
-	UserId        *string   `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// myDisplayName
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// 2021-01-21T17:12:35.232Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 145883-21513926******88039
+	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	// example:
+	//
+	// user1
+	MemberName *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Roles     []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 21513926******88039
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GetMemberResponseBody) String() string {
@@ -3832,26 +4654,71 @@ func (s *GetMemberResponse) SetBody(v *GetMemberResponseBody) *GetMemberResponse
 }
 
 type GetModelResponseBody struct {
-	Accessibility    *string                `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	Domain           *string                `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	ExtraInfo        map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
-	GmtCreateTime    *string                `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime  *string                `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	Labels           []*Label               `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	LatestVersion    *ModelVersion          `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
-	ModelDescription *string                `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
-	ModelDoc         *string                `json:"ModelDoc,omitempty" xml:"ModelDoc,omitempty"`
-	ModelId          *string                `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
-	ModelName        *string                `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	ModelType        *string                `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
-	OrderNumber      *int64                 `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
-	Origin           *string                `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	OwnerId          *string                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Provider         *string                `json:"Provider,omitempty" xml:"Provider,omitempty"`
-	RequestId        *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Task             *string                `json:"Task,omitempty" xml:"Task,omitempty"`
-	UserId           *string                `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	WorkspaceId      *string                `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// PUBLIC
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// example:
+	//
+	// cv
+	Domain    *string                `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	ExtraInfo map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	// example:
+	//
+	// 2021-01-30T12:51:33.028Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-30T12:51:33.028Z
+	GmtModifiedTime  *string       `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	Labels           []*Label      `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	LatestVersion    *ModelVersion `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
+	ModelDescription *string       `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
+	// example:
+	//
+	// https://***.md
+	ModelDoc *string `json:"ModelDoc,omitempty" xml:"ModelDoc,omitempty"`
+	// example:
+	//
+	// model-rbvg5wzljz****ks92
+	ModelId   *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// example:
+	//
+	// Checkpoint
+	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+	// example:
+	//
+	// 1
+	OrderNumber *int64 `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
+	// example:
+	//
+	// ModelScope
+	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	// example:
+	//
+	// 1234567890******
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// pai
+	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// text-classification
+	Task *string `json:"Task,omitempty" xml:"Task,omitempty"`
+	// example:
+	//
+	// 1234567890******
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 234**
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s GetModelResponseBody) String() string {
@@ -3992,26 +4859,81 @@ func (s *GetModelResponse) SetBody(v *GetModelResponseBody) *GetModelResponse {
 }
 
 type GetModelVersionResponseBody struct {
-	ApprovalStatus     *string                `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
-	EvaluationSpec     map[string]interface{} `json:"EvaluationSpec,omitempty" xml:"EvaluationSpec,omitempty"`
-	ExtraInfo          map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
-	FormatType         *string                `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
-	FrameworkType      *string                `json:"FrameworkType,omitempty" xml:"FrameworkType,omitempty"`
-	GmtCreateTime      *string                `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime    *string                `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	InferenceSpec      map[string]interface{} `json:"InferenceSpec,omitempty" xml:"InferenceSpec,omitempty"`
-	Labels             []*Label               `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	Metrics            map[string]interface{} `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
-	Options            *string                `json:"Options,omitempty" xml:"Options,omitempty"`
-	OwnerId            *string                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RequestId          *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SourceId           *string                `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	SourceType         *string                `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	TrainingSpec       map[string]interface{} `json:"TrainingSpec,omitempty" xml:"TrainingSpec,omitempty"`
-	Uri                *string                `json:"Uri,omitempty" xml:"Uri,omitempty"`
-	UserId             *string                `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	VersionDescription *string                `json:"VersionDescription,omitempty" xml:"VersionDescription,omitempty"`
-	VersionName        *string                `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+	// example:
+	//
+	// Approved
+	ApprovalStatus *string `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
+	// example:
+	//
+	// {}
+	EvaluationSpec map[string]interface{} `json:"EvaluationSpec,omitempty" xml:"EvaluationSpec,omitempty"`
+	// example:
+	//
+	// {}
+	ExtraInfo map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	// example:
+	//
+	// SavedModel
+	FormatType *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
+	// example:
+	//
+	// TensorFlow
+	FrameworkType *string `json:"FrameworkType,omitempty" xml:"FrameworkType,omitempty"`
+	// example:
+	//
+	// 2021-01-30T12:51:33.028Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-30T12:51:33.028Z
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//     "Processor": "tensorflow_gpu_1.12"
+	//
+	// }
+	InferenceSpec map[string]interface{} `json:"InferenceSpec,omitempty" xml:"InferenceSpec,omitempty"`
+	Labels        []*Label               `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// example:
+	//
+	// {}
+	Metrics map[string]interface{} `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	// example:
+	//
+	// {}
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// example:
+	//
+	// 1234567890******
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// region=cn-shanghai,workspaceId=13**,kind=PipelineRun,id=run-sakdb****jdf
+	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// example:
+	//
+	// PAIFlow
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// example:
+	//
+	// {}
+	TrainingSpec map[string]interface{} `json:"TrainingSpec,omitempty" xml:"TrainingSpec,omitempty"`
+	Uri          *string                `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// example:
+	//
+	// 1234567890******
+	UserId             *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	VersionDescription *string `json:"VersionDescription,omitempty" xml:"VersionDescription,omitempty"`
+	// example:
+	//
+	// 0.1.0
+	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
 func (s GetModelVersionResponseBody) String() string {
@@ -4152,10 +5074,16 @@ func (s *GetModelVersionResponse) SetBody(v *GetModelVersionResponseBody) *GetMo
 }
 
 type GetPermissionRequest struct {
+	// example:
+	//
+	// PUBLIC
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	Creator       *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	Option        *string `json:"Option,omitempty" xml:"Option,omitempty"`
-	Resource      *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// example:
+	//
+	// 17915******4216
+	Creator  *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	Option   *string `json:"Option,omitempty" xml:"Option,omitempty"`
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 }
 
 func (s GetPermissionRequest) String() string {
@@ -4187,9 +5115,15 @@ func (s *GetPermissionRequest) SetResource(v string) *GetPermissionRequest {
 }
 
 type GetPermissionResponseBody struct {
+	// example:
+	//
+	// PaiDLC:ListJobs
 	PermissionCode  *string                                     `json:"PermissionCode,omitempty" xml:"PermissionCode,omitempty"`
 	PermissionRules []*GetPermissionResponseBodyPermissionRules `json:"PermissionRules,omitempty" xml:"PermissionRules,omitempty" type:"Repeated"`
-	RequestId       *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetPermissionResponseBody) String() string {
@@ -4216,7 +5150,13 @@ func (s *GetPermissionResponseBody) SetRequestId(v string) *GetPermissionRespons
 }
 
 type GetPermissionResponseBodyPermissionRules struct {
-	Accessibility    *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// example:
+	//
+	// PRIVATE
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// example:
+	//
+	// CREATOR
 	EntityAccessType *string `json:"EntityAccessType,omitempty" xml:"EntityAccessType,omitempty"`
 }
 
@@ -4268,18 +5208,55 @@ func (s *GetPermissionResponse) SetBody(v *GetPermissionResponseBody) *GetPermis
 }
 
 type GetServiceTemplateResponseBody struct {
-	GmtCreateTime              *string                `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime            *string                `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	InferenceSpec              map[string]interface{} `json:"InferenceSpec,omitempty" xml:"InferenceSpec,omitempty"`
-	Labels                     []*Label               `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	OwnerId                    *string                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Provider                   *string                `json:"Provider,omitempty" xml:"Provider,omitempty"`
-	RequestId                  *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ServiceTemplateDescription *string                `json:"ServiceTemplateDescription,omitempty" xml:"ServiceTemplateDescription,omitempty"`
-	ServiceTemplateDoc         *string                `json:"ServiceTemplateDoc,omitempty" xml:"ServiceTemplateDoc,omitempty"`
-	ServiceTemplateId          *string                `json:"ServiceTemplateId,omitempty" xml:"ServiceTemplateId,omitempty"`
-	ServiceTemplateName        *string                `json:"ServiceTemplateName,omitempty" xml:"ServiceTemplateName,omitempty"`
-	UserId                     *string                `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 2021-01-30T12:51:33.028Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-30T12:51:33.028Z
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//       "processor": "tensorflow_gpu_1.12"
+	//
+	// }
+	InferenceSpec map[string]interface{} `json:"InferenceSpec,omitempty" xml:"InferenceSpec,omitempty"`
+	Labels        []*Label               `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1234567890******
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// pai
+	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// stable diffusion 1.5
+	ServiceTemplateDescription *string `json:"ServiceTemplateDescription,omitempty" xml:"ServiceTemplateDescription,omitempty"`
+	// example:
+	//
+	// https://***.md
+	ServiceTemplateDoc *string `json:"ServiceTemplateDoc,omitempty" xml:"ServiceTemplateDoc,omitempty"`
+	// example:
+	//
+	// st-rbvg5wzlj****9ks92
+	ServiceTemplateId *string `json:"ServiceTemplateId,omitempty" xml:"ServiceTemplateId,omitempty"`
+	// example:
+	//
+	// stable_diffusion_aigc
+	ServiceTemplateName *string `json:"ServiceTemplateName,omitempty" xml:"ServiceTemplateName,omitempty"`
+	// example:
+	//
+	// 1234567890******
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GetServiceTemplateResponseBody) String() string {
@@ -4380,6 +5357,9 @@ func (s *GetServiceTemplateResponse) SetBody(v *GetServiceTemplateResponseBody) 
 }
 
 type GetWorkspaceRequest struct {
+	// example:
+	//
+	// true
 	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
 }
 
@@ -4397,20 +5377,53 @@ func (s *GetWorkspaceRequest) SetVerbose(v bool) *GetWorkspaceRequest {
 }
 
 type GetWorkspaceResponseBody struct {
-	AdminNames      []*string                      `json:"AdminNames,omitempty" xml:"AdminNames,omitempty" type:"Repeated"`
-	Creator         *string                        `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	Description     *string                        `json:"Description,omitempty" xml:"Description,omitempty"`
-	DisplayName     *string                        `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	EnvTypes        []*string                      `json:"EnvTypes,omitempty" xml:"EnvTypes,omitempty" type:"Repeated"`
-	ExtraInfos      map[string]interface{}         `json:"ExtraInfos,omitempty" xml:"ExtraInfos,omitempty"`
-	GmtCreateTime   *string                        `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime *string                        `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	IsDefault       *bool                          `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	Owner           *GetWorkspaceResponseBodyOwner `json:"Owner,omitempty" xml:"Owner,omitempty" type:"Struct"`
-	RequestId       *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status          *string                        `json:"Status,omitempty" xml:"Status,omitempty"`
-	WorkspaceId     *string                        `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	WorkspaceName   *string                        `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	AdminNames []*string `json:"AdminNames,omitempty" xml:"AdminNames,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1157******94123
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// example:
+	//
+	// workspace description example
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// workspace-example
+	DisplayName *string   `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	EnvTypes    []*string `json:"EnvTypes,omitempty" xml:"EnvTypes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// {"TenantId": "4286******98"}
+	ExtraInfos map[string]interface{} `json:"ExtraInfos,omitempty" xml:"ExtraInfos,omitempty"`
+	// example:
+	//
+	// 2021-01-21T17:12:35.232Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-21T17:12:35.232Z
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// true
+	IsDefault *bool                          `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	Owner     *GetWorkspaceResponseBodyOwner `json:"Owner,omitempty" xml:"Owner,omitempty" type:"Struct"`
+	// example:
+	//
+	// A0F049F0-8D69-5BAC-8F10-B4DED1B5A34C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// ENABLED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1234
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// workspace-example
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
 func (s GetWorkspaceResponseBody) String() string {
@@ -4492,10 +5505,22 @@ func (s *GetWorkspaceResponseBody) SetWorkspaceName(v string) *GetWorkspaceRespo
 }
 
 type GetWorkspaceResponseBodyOwner struct {
+	// example:
+	//
+	// mings****t
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserKp      *string `json:"UserKp,omitempty" xml:"UserKp,omitempty"`
-	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// example:
+	//
+	// 1157******94123
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 1157******94123
+	UserKp *string `json:"UserKp,omitempty" xml:"UserKp,omitempty"`
+	// example:
+	//
+	// mings****t
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s GetWorkspaceResponseBodyOwner) String() string {
@@ -4556,11 +5581,29 @@ func (s *GetWorkspaceResponse) SetBody(v *GetWorkspaceResponseBody) *GetWorkspac
 }
 
 type ListCodeSourcesRequest struct {
+	// example:
+	//
+	// MyDataSource
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Order       *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SortBy      *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// desc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// GmtModifyTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// 1234
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -4604,8 +5647,14 @@ func (s *ListCodeSourcesRequest) SetWorkspaceId(v string) *ListCodeSourcesReques
 
 type ListCodeSourcesResponseBody struct {
 	CodeSources []*CodeSourceItem `json:"CodeSources,omitempty" xml:"CodeSources,omitempty" type:"Repeated"`
-	RequestId   *string           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int64            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListCodeSourcesResponseBody) String() string {
@@ -4661,18 +5710,51 @@ func (s *ListCodeSourcesResponse) SetBody(v *ListCodeSourcesResponseBody) *ListC
 }
 
 type ListDatasetsRequest struct {
+	// example:
+	//
+	// OSS
 	DataSourceTypes *string `json:"DataSourceTypes,omitempty" xml:"DataSourceTypes,omitempty"`
-	DataTypes       *string `json:"DataTypes,omitempty" xml:"DataTypes,omitempty"`
-	Label           *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Order           *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Properties      *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	Provider        *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
-	SourceId        *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	SourceTypes     *string `json:"SourceTypes,omitempty" xml:"SourceTypes,omitempty"`
-	WorkspaceId     *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// COMMON,TEXT
+	DataTypes *string `json:"DataTypes,omitempty" xml:"DataTypes,omitempty"`
+	// example:
+	//
+	// test
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// example:
+	//
+	// myName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// ASC
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// FILE
+	Properties *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	Provider   *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	// example:
+	//
+	// d-rbvg5wzljzjhc9ks92
+	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// example:
+	//
+	// USER,ITAG
+	SourceTypes *string `json:"SourceTypes,omitempty" xml:"SourceTypes,omitempty"`
+	// example:
+	//
+	// 324**
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListDatasetsRequest) String() string {
@@ -4744,9 +5826,15 @@ func (s *ListDatasetsRequest) SetWorkspaceId(v string) *ListDatasetsRequest {
 }
 
 type ListDatasetsResponseBody struct {
-	Datasets   []*Dataset `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
-	RequestId  *string    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Datasets []*Dataset `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 15
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListDatasetsResponseBody) String() string {
@@ -4802,10 +5890,25 @@ func (s *ListDatasetsResponse) SetBody(v *ListDatasetsResponseBody) *ListDataset
 }
 
 type ListImageLabelsRequest struct {
-	ImageId     *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// image-4c62******53uor
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// system.framework=XGBoost 1.6.0,system.official=true
 	LabelFilter *string `json:"LabelFilter,omitempty" xml:"LabelFilter,omitempty"`
-	LabelKeys   *string `json:"LabelKeys,omitempty" xml:"LabelKeys,omitempty"`
-	Region      *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// system.framework,system.official
+	LabelKeys *string `json:"LabelKeys,omitempty" xml:"LabelKeys,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// 12345
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -4843,9 +5946,15 @@ func (s *ListImageLabelsRequest) SetWorkspaceId(v string) *ListImageLabelsReques
 }
 
 type ListImageLabelsResponseBody struct {
-	Labels     []*ListImageLabelsResponseBodyLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Labels []*ListImageLabelsResponseBodyLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListImageLabelsResponseBody) String() string {
@@ -4872,7 +5981,13 @@ func (s *ListImageLabelsResponseBody) SetTotalCount(v int64) *ListImageLabelsRes
 }
 
 type ListImageLabelsResponseBodyLabels struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// system.chipType
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// GPU
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4925,17 +6040,47 @@ func (s *ListImageLabelsResponse) SetBody(v *ListImageLabelsResponseBody) *ListI
 
 type ListImagesRequest struct {
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	Labels        *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Order         *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ParentUserId  *string `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
-	Query         *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	SortBy        *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	Verbose       *bool   `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
-	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// system.framework=XGBoost 1.6.0,system.official=true
+	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// example:
+	//
+	// tensorflow_2.9
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// DESC
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 155**********904
+	ParentUserId *string `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
+	Query        *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// example:
+	//
+	// GmtCreateTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// 155**********904
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// true
+	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+	// example:
+	//
+	// 20******55
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListImagesRequest) String() string {
@@ -5007,9 +6152,15 @@ func (s *ListImagesRequest) SetWorkspaceId(v string) *ListImagesRequest {
 }
 
 type ListImagesResponseBody struct {
-	Images     []*ListImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Images []*ListImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListImagesResponseBody) String() string {
@@ -5036,18 +6187,45 @@ func (s *ListImagesResponseBody) SetTotalCount(v int64) *ListImagesResponseBody 
 }
 
 type ListImagesResponseBodyImages struct {
-	Accessibility   *string                               `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	Description     *string                               `json:"Description,omitempty" xml:"Description,omitempty"`
-	GmtCreateTime   *string                               `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime *string                               `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	ImageId         *string                               `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageUri        *string                               `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
-	Labels          []*ListImagesResponseBodyImagesLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	Name            *string                               `json:"Name,omitempty" xml:"Name,omitempty"`
-	ParentUserId    *string                               `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
-	Size            *int32                                `json:"Size,omitempty" xml:"Size,omitempty"`
-	UserId          *string                               `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	WorkspaceId     *string                               `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// PUBLIC
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// example:
+	//
+	// desc
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 2021-01-21T17:12:35.232Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-21T17:12:35.232Z
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// image-tzi7f9******s45t
+	ImageId  *string                               `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageUri *string                               `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
+	Labels   []*ListImagesResponseBodyImagesLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// example:
+	//
+	// tensorflow_2.9
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 15577******82932
+	ParentUserId *string `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
+	Size         *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// 15577******82932
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 20******55
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListImagesResponseBodyImages) String() string {
@@ -5119,7 +6297,13 @@ func (s *ListImagesResponseBodyImages) SetWorkspaceId(v string) *ListImagesRespo
 }
 
 type ListImagesResponseBodyImagesLabels struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// system.chipType
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// GPU
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5171,10 +6355,22 @@ func (s *ListImagesResponse) SetBody(v *ListImagesResponseBody) *ListImagesRespo
 }
 
 type ListMembersRequest struct {
+	// example:
+	//
+	// zhangsan
 	MemberName *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
-	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Roles      *string `json:"Roles,omitempty" xml:"Roles,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// PAI.AlgoDeveloper
+	Roles *string `json:"Roles,omitempty" xml:"Roles,omitempty"`
 }
 
 func (s ListMembersRequest) String() string {
@@ -5206,9 +6402,15 @@ func (s *ListMembersRequest) SetRoles(v string) *ListMembersRequest {
 }
 
 type ListMembersResponseBody struct {
-	Members    []*ListMembersResponseBodyMembers `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
-	RequestId  *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Members []*ListMembersResponseBodyMembers `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListMembersResponseBody) String() string {
@@ -5235,12 +6437,27 @@ func (s *ListMembersResponseBody) SetTotalCount(v int64) *ListMembersResponseBod
 }
 
 type ListMembersResponseBodyMembers struct {
-	DisplayName   *string   `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	GmtCreateTime *string   `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	MemberId      *string   `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
-	MemberName    *string   `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
-	Roles         []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
-	UserId        *string   `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// myDisplayName
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// 2021-01-21T17:12:35.232Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 14588*****51688039
+	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	// example:
+	//
+	// user1
+	MemberName *string   `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
+	Roles      []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 215139******88039
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ListMembersResponseBodyMembers) String() string {
@@ -5311,17 +6528,50 @@ func (s *ListMembersResponse) SetBody(v *ListMembersResponseBody) *ListMembersRe
 }
 
 type ListModelVersionsRequest struct {
+	// example:
+	//
+	// Approved
 	ApprovalStatus *string `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
-	FormatType     *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
-	FrameworkType  *string `json:"FrameworkType,omitempty" xml:"FrameworkType,omitempty"`
-	Label          *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	Order          *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SortBy         *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	SourceId       *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	SourceType     *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	VersionName    *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+	// example:
+	//
+	// SavedModel
+	FormatType *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
+	// example:
+	//
+	// TensorFlow
+	FrameworkType *string `json:"FrameworkType,omitempty" xml:"FrameworkType,omitempty"`
+	// example:
+	//
+	// key1
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// example:
+	//
+	// DESC
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// GmtCreateTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// region=cn-shanghai,workspaceId=13**,kind=PipelineRun,id=run-sakdb****jdf
+	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// example:
+	//
+	// PAIFlow
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// example:
+	//
+	// 1.0.1
+	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
 func (s ListModelVersionsRequest) String() string {
@@ -5388,7 +6638,13 @@ func (s *ListModelVersionsRequest) SetVersionName(v string) *ListModelVersionsRe
 }
 
 type ListModelVersionsResponseBody struct {
-	RequestId  *string         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC***3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 15
 	TotalCount *int64          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	Versions   []*ModelVersion `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
 }
@@ -5446,19 +6702,58 @@ func (s *ListModelVersionsResponse) SetBody(v *ListModelVersionsResponseBody) *L
 }
 
 type ListModelsRequest struct {
+	// example:
+	//
+	// AI4D,QuickStart
 	Collections *string `json:"Collections,omitempty" xml:"Collections,omitempty"`
-	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Label       *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	ModelName   *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	ModelType   *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
-	Order       *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	Origin      *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Provider    *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
-	Query       *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	SortBy      *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	Task        *string `json:"Task,omitempty" xml:"Task,omitempty"`
+	// example:
+	//
+	// nlp
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// key1
+	Label     *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// example:
+	//
+	// Endpoint
+	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+	// example:
+	//
+	// DESC
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// ModelScope
+	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// pai
+	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	// example:
+	//
+	// nlp
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// example:
+	//
+	// GmtCreateTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// text-classification
+	Task *string `json:"Task,omitempty" xml:"Task,omitempty"`
+	// example:
+	//
+	// 324**
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -5541,9 +6836,15 @@ func (s *ListModelsRequest) SetWorkspaceId(v string) *ListModelsRequest {
 }
 
 type ListModelsResponseBody struct {
-	Models     []*Model `json:"Models,omitempty" xml:"Models,omitempty" type:"Repeated"`
-	RequestId  *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Models []*Model `json:"Models,omitempty" xml:"Models,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 15
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListModelsResponseBody) String() string {
@@ -5600,8 +6901,14 @@ func (s *ListModelsResponse) SetBody(v *ListModelsResponseBody) *ListModelsRespo
 
 type ListPermissionsResponseBody struct {
 	Permissions []*ListPermissionsResponseBodyPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
-	RequestId   *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int64                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 2AE63638-5420-56DC-B******8174039A0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListPermissionsResponseBody) String() string {
@@ -5628,6 +6935,9 @@ func (s *ListPermissionsResponseBody) SetTotalCount(v int64) *ListPermissionsRes
 }
 
 type ListPermissionsResponseBodyPermissions struct {
+	// example:
+	//
+	// PaiDLC:GetTensorboard
 	PermissionCode  *string                                                  `json:"PermissionCode,omitempty" xml:"PermissionCode,omitempty"`
 	PermissionRules []*ListPermissionsResponseBodyPermissionsPermissionRules `json:"PermissionRules,omitempty" xml:"PermissionRules,omitempty" type:"Repeated"`
 }
@@ -5651,7 +6961,13 @@ func (s *ListPermissionsResponseBodyPermissions) SetPermissionRules(v []*ListPer
 }
 
 type ListPermissionsResponseBodyPermissionsPermissionRules struct {
-	Accessibility    *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// example:
+	//
+	// PRIVATE
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// example:
+	//
+	// CREATOR
 	EntityAccessType *string `json:"EntityAccessType,omitempty" xml:"EntityAccessType,omitempty"`
 }
 
@@ -5703,7 +7019,13 @@ func (s *ListPermissionsResponse) SetBody(v *ListPermissionsResponseBody) *ListP
 }
 
 type ListProductsRequest struct {
+	// example:
+	//
+	// PAI_isolate
 	ProductCodes *string `json:"ProductCodes,omitempty" xml:"ProductCodes,omitempty"`
+	// example:
+	//
+	// oss
 	ServiceCodes *string `json:"ServiceCodes,omitempty" xml:"ServiceCodes,omitempty"`
 	Verbose      *bool   `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
 }
@@ -5732,7 +7054,10 @@ func (s *ListProductsRequest) SetVerbose(v bool) *ListProductsRequest {
 }
 
 type ListProductsResponseBody struct {
-	Products  []*ListProductsResponseBodyProducts `json:"Products,omitempty" xml:"Products,omitempty" type:"Repeated"`
+	Products []*ListProductsResponseBodyProducts `json:"Products,omitempty" xml:"Products,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1e195c5116124202371861018d5bde
 	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Services  []*ListProductsResponseBodyServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
 }
@@ -5761,11 +7086,20 @@ func (s *ListProductsResponseBody) SetServices(v []*ListProductsResponseBodyServ
 }
 
 type ListProductsResponseBodyProducts struct {
-	HasPermissionToPurchase *bool   `json:"HasPermissionToPurchase,omitempty" xml:"HasPermissionToPurchase,omitempty"`
-	IsPurchased             *bool   `json:"IsPurchased,omitempty" xml:"IsPurchased,omitempty"`
-	ProductCode             *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductInstanceId       *string `json:"ProductInstanceId,omitempty" xml:"ProductInstanceId,omitempty"`
-	PurchaseUrl             *string `json:"PurchaseUrl,omitempty" xml:"PurchaseUrl,omitempty"`
+	HasPermissionToPurchase *bool `json:"HasPermissionToPurchase,omitempty" xml:"HasPermissionToPurchase,omitempty"`
+	// example:
+	//
+	// true
+	IsPurchased *bool `json:"IsPurchased,omitempty" xml:"IsPurchased,omitempty"`
+	// example:
+	//
+	// DataWorks_isolate
+	ProductCode       *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductInstanceId *string `json:"ProductInstanceId,omitempty" xml:"ProductInstanceId,omitempty"`
+	// example:
+	//
+	// https://common-buy.aliy
+	PurchaseUrl *string `json:"PurchaseUrl,omitempty" xml:"PurchaseUrl,omitempty"`
 }
 
 func (s ListProductsResponseBodyProducts) String() string {
@@ -5802,8 +7136,14 @@ func (s *ListProductsResponseBodyProducts) SetPurchaseUrl(v string) *ListProduct
 }
 
 type ListProductsResponseBodyServices struct {
-	IsOpen      *bool   `json:"IsOpen,omitempty" xml:"IsOpen,omitempty"`
-	OpenUrl     *string `json:"OpenUrl,omitempty" xml:"OpenUrl,omitempty"`
+	// example:
+	//
+	// true
+	IsOpen  *bool   `json:"IsOpen,omitempty" xml:"IsOpen,omitempty"`
+	OpenUrl *string `json:"OpenUrl,omitempty" xml:"OpenUrl,omitempty"`
+	// example:
+	//
+	// oss
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
 }
 
@@ -5860,6 +7200,9 @@ func (s *ListProductsResponse) SetBody(v *ListProductsResponseBody) *ListProduct
 }
 
 type ListQuotasRequest struct {
+	// example:
+	//
+	// quota-name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -5877,9 +7220,15 @@ func (s *ListQuotasRequest) SetName(v string) *ListQuotasRequest {
 }
 
 type ListQuotasResponseBody struct {
-	Quotas     []*ListQuotasResponseBodyQuotas `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
-	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Quotas []*ListQuotasResponseBodyQuotas `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListQuotasResponseBody) String() string {
@@ -5906,13 +7255,31 @@ func (s *ListQuotasResponseBody) SetTotalCount(v int64) *ListQuotasResponseBody 
 }
 
 type ListQuotasResponseBodyQuotas struct {
-	DisplayName *string                              `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Id          *string                              `json:"Id,omitempty" xml:"Id,omitempty"`
-	Mode        *string                              `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	Name        *string                              `json:"Name,omitempty" xml:"Name,omitempty"`
-	ProductCode *string                              `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	QuotaType   *string                              `json:"QuotaType,omitempty" xml:"QuotaType,omitempty"`
-	Specs       []*ListQuotasResponseBodyQuotasSpecs `json:"Specs,omitempty" xml:"Specs,omitempty" type:"Repeated"`
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// 1828233
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// isolate
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// example:
+	//
+	// quota-name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// MaxCompute_share
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// example:
+	//
+	// MaxCompute
+	QuotaType *string `json:"QuotaType,omitempty" xml:"QuotaType,omitempty"`
+	// example:
+	//
+	// {\\"cu\\":\\"11500\\",\\"minCu\\":\\"2300\\",\\"parentId\\":\\"0\\"}
+	Specs []*ListQuotasResponseBodyQuotasSpecs `json:"Specs,omitempty" xml:"Specs,omitempty" type:"Repeated"`
 }
 
 func (s ListQuotasResponseBodyQuotas) String() string {
@@ -5959,8 +7326,17 @@ func (s *ListQuotasResponseBodyQuotas) SetSpecs(v []*ListQuotasResponseBodyQuota
 }
 
 type ListQuotasResponseBodyQuotasSpecs struct {
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// cu
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// string
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 11500
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -6017,18 +7393,42 @@ func (s *ListQuotasResponse) SetBody(v *ListQuotasResponseBody) *ListQuotasRespo
 }
 
 type ListResourcesRequest struct {
-	GroupName     *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	Labels        *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	Option        *string `json:"Option,omitempty" xml:"Option,omitempty"`
-	PageNumber    *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductTypes  *string `json:"ProductTypes,omitempty" xml:"ProductTypes,omitempty"`
-	QuotaIds      *string `json:"QuotaIds,omitempty" xml:"QuotaIds,omitempty"`
+	// example:
+	//
+	// group
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Labels    *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// example:
+	//
+	// ListResourceByWorkspace
+	Option *string `json:"Option,omitempty" xml:"Option,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// MaxCompute
+	ProductTypes *string `json:"ProductTypes,omitempty" xml:"ProductTypes,omitempty"`
+	QuotaIds     *string `json:"QuotaIds,omitempty" xml:"QuotaIds,omitempty"`
+	// example:
+	//
+	// resource
 	ResourceName  *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	ResourceTypes *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
+	// example:
+	//
+	// true
 	Verbose       *bool   `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
 	VerboseFields *string `json:"VerboseFields,omitempty" xml:"VerboseFields,omitempty"`
-	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// 123
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListResourcesRequest) String() string {
@@ -6100,9 +7500,15 @@ func (s *ListResourcesRequest) SetWorkspaceId(v string) *ListResourcesRequest {
 }
 
 type ListResourcesResponseBody struct {
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Resources  []*ListResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
-	TotalCount *int64                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1e195c5116124202371861018d5bde
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Resources []*ListResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListResourcesResponseBody) String() string {
@@ -6129,20 +7535,47 @@ func (s *ListResourcesResponseBody) SetTotalCount(v int64) *ListResourcesRespons
 }
 
 type ListResourcesResponseBodyResources struct {
-	Encryption    *ListResourcesResponseBodyResourcesEncryption `json:"Encryption,omitempty" xml:"Encryption,omitempty" type:"Struct"`
-	EnvType       *string                                       `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	Executor      *ListResourcesResponseBodyResourcesExecutor   `json:"Executor,omitempty" xml:"Executor,omitempty" type:"Struct"`
-	GmtCreateTime *string                                       `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GroupName     *string                                       `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	Id            *string                                       `json:"Id,omitempty" xml:"Id,omitempty"`
-	IsDefault     *bool                                         `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	Labels        []*ListResourcesResponseBodyResourcesLabels   `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	Name          *string                                       `json:"Name,omitempty" xml:"Name,omitempty"`
-	ProductType   *string                                       `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	Quotas        []*ListResourcesResponseBodyResourcesQuotas   `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
-	ResourceType  *string                                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Spec          map[string]interface{}                        `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	WorkspaceId   *string                                       `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	Encryption *ListResourcesResponseBodyResourcesEncryption `json:"Encryption,omitempty" xml:"Encryption,omitempty" type:"Struct"`
+	// example:
+	//
+	// prod
+	EnvType  *string                                     `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	Executor *ListResourcesResponseBodyResourcesExecutor `json:"Executor,omitempty" xml:"Executor,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2021-01-21T17:12:35.232Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// groupName
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// example:
+	//
+	// 123
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// true
+	IsDefault *bool                                       `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	Labels    []*ListResourcesResponseBodyResourcesLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ResourceName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// MaxCompute
+	ProductType  *string                                     `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	Quotas       []*ListResourcesResponseBodyResourcesQuotas `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
+	ResourceType *string                                     `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// 对于MaxCompute {"Endpoint": "odps.alibaba-inc.com", "Project": "mignshi"}
+	Spec map[string]interface{} `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// example:
+	//
+	// 123
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListResourcesResponseBodyResources) String() string {
@@ -6293,14 +7726,35 @@ func (s *ListResourcesResponseBodyResourcesLabels) SetValue(v string) *ListResou
 }
 
 type ListResourcesResponseBodyResourcesQuotas struct {
-	CardType    *string                                          `json:"CardType,omitempty" xml:"CardType,omitempty"`
-	DisplayName *string                                          `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Id          *string                                          `json:"Id,omitempty" xml:"Id,omitempty"`
-	Mode        *string                                          `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	Name        *string                                          `json:"Name,omitempty" xml:"Name,omitempty"`
-	ProductCode *string                                          `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	QuotaType   *string                                          `json:"QuotaType,omitempty" xml:"QuotaType,omitempty"`
-	Specs       []*ListResourcesResponseBodyResourcesQuotasSpecs `json:"Specs,omitempty" xml:"Specs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cpu
+	CardType    *string `json:"CardType,omitempty" xml:"CardType,omitempty"`
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// 123
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// develop
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// example:
+	//
+	// QuotaName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// MaxCompute_isolate
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// example:
+	//
+	// MaxCompute
+	QuotaType *string `json:"QuotaType,omitempty" xml:"QuotaType,omitempty"`
+	// example:
+	//
+	// {\\"cu\\":\\"11500\\",\\"minCu\\":\\"2300\\",\\"parentId\\":\\"0\\"}
+	Specs []*ListResourcesResponseBodyResourcesQuotasSpecs `json:"Specs,omitempty" xml:"Specs,omitempty" type:"Repeated"`
 }
 
 func (s ListResourcesResponseBodyResourcesQuotas) String() string {
@@ -6352,7 +7806,13 @@ func (s *ListResourcesResponseBodyResourcesQuotas) SetSpecs(v []*ListResourcesRe
 }
 
 type ListResourcesResponseBodyResourcesQuotasSpecs struct {
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// cu
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 11500
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -6404,14 +7864,38 @@ func (s *ListResourcesResponse) SetBody(v *ListResourcesResponseBody) *ListResou
 }
 
 type ListServiceTemplatesRequest struct {
-	Label               *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	Order               *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	PageNumber          *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize            *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Provider            *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
-	Query               *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// example:
+	//
+	// aigc
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// example:
+	//
+	// DESC
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// pai
+	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	// example:
+	//
+	// aigc
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// example:
+	//
+	// stable_diffusion_aigc
 	ServiceTemplateName *string `json:"ServiceTemplateName,omitempty" xml:"ServiceTemplateName,omitempty"`
-	SortBy              *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// GmtCreateTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 }
 
 func (s ListServiceTemplatesRequest) String() string {
@@ -6463,9 +7947,15 @@ func (s *ListServiceTemplatesRequest) SetSortBy(v string) *ListServiceTemplatesR
 }
 
 type ListServiceTemplatesResponseBody struct {
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId        *string            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ServiceTemplates []*ServiceTemplate `json:"ServiceTemplates,omitempty" xml:"ServiceTemplates,omitempty" type:"Repeated"`
-	TotalCount       *int64             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 15
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListServiceTemplatesResponseBody) String() string {
@@ -6538,7 +8028,13 @@ func (s *ListWorkspaceUsersRequest) SetUserName(v string) *ListWorkspaceUsersReq
 }
 
 type ListWorkspaceUsersResponseBody struct {
-	RequestId  *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1e195c5116124202371861018d5bde
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2
 	TotalCount *int64                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	Users      []*ListWorkspaceUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
@@ -6567,7 +8063,13 @@ func (s *ListWorkspaceUsersResponseBody) SetUsers(v []*ListWorkspaceUsersRespons
 }
 
 type ListWorkspaceUsersResponseBodyUsers struct {
-	UserId   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 1611******3000
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// she******mo
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -6619,16 +8121,49 @@ func (s *ListWorkspaceUsersResponse) SetBody(v *ListWorkspaceUsersResponseBody) 
 }
 
 type ListWorkspacesRequest struct {
-	Fields        *string `json:"Fields,omitempty" xml:"Fields,omitempty"`
-	ModuleList    *string `json:"ModuleList,omitempty" xml:"ModuleList,omitempty"`
-	Option        *string `json:"Option,omitempty" xml:"Option,omitempty"`
-	Order         *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	PageNumber    *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SortBy        *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Verbose       *bool   `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
-	WorkspaceIds  *string `json:"WorkspaceIds,omitempty" xml:"WorkspaceIds,omitempty"`
+	// example:
+	//
+	// Id
+	Fields *string `json:"Fields,omitempty" xml:"Fields,omitempty"`
+	// example:
+	//
+	// PAI
+	ModuleList *string `json:"ModuleList,omitempty" xml:"ModuleList,omitempty"`
+	// example:
+	//
+	// GetWorkspaces
+	Option *string `json:"Option,omitempty" xml:"Option,omitempty"`
+	// example:
+	//
+	// ASC
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// GmtCreateTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// ENABLED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// true
+	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+	// example:
+	//
+	// 123,234
+	WorkspaceIds *string `json:"WorkspaceIds,omitempty" xml:"WorkspaceIds,omitempty"`
+	// example:
+	//
+	// abc
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
@@ -6696,10 +8231,27 @@ func (s *ListWorkspacesRequest) SetWorkspaceName(v string) *ListWorkspacesReques
 }
 
 type ListWorkspacesResponseBody struct {
-	RequestId      *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceLimits map[string]interface{}                  `json:"ResourceLimits,omitempty" xml:"ResourceLimits,omitempty"`
-	TotalCount     *int64                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Workspaces     []*ListWorkspacesResponseBodyWorkspaces `json:"Workspaces,omitempty" xml:"Workspaces,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 8D7B2E70-F770-505B-A672-09F1D8F2EC1E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//    "MaxCompute_share": 1,
+	//
+	//    "MaxCompute_isolate": 1,
+	//
+	//    "DLC_share": 1
+	//
+	// }
+	ResourceLimits map[string]interface{} `json:"ResourceLimits,omitempty" xml:"ResourceLimits,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int64                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Workspaces []*ListWorkspacesResponseBodyWorkspaces `json:"Workspaces,omitempty" xml:"Workspaces,omitempty" type:"Repeated"`
 }
 
 func (s ListWorkspacesResponseBody) String() string {
@@ -6731,17 +8283,44 @@ func (s *ListWorkspacesResponseBody) SetWorkspaces(v []*ListWorkspacesResponseBo
 }
 
 type ListWorkspacesResponseBodyWorkspaces struct {
-	AdminNames      []*string              `json:"AdminNames,omitempty" xml:"AdminNames,omitempty" type:"Repeated"`
-	Creator         *string                `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	Description     *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnvTypes        []*string              `json:"EnvTypes,omitempty" xml:"EnvTypes,omitempty" type:"Repeated"`
-	ExtraInfos      map[string]interface{} `json:"ExtraInfos,omitempty" xml:"ExtraInfos,omitempty"`
-	GmtCreateTime   *string                `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime *string                `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	IsDefault       *bool                  `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	Status          *string                `json:"Status,omitempty" xml:"Status,omitempty"`
-	WorkspaceId     *string                `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	WorkspaceName   *string                `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	AdminNames []*string `json:"AdminNames,omitempty" xml:"AdminNames,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 122424353535
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// example:
+	//
+	// workspace description example
+	Description *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnvTypes    []*string `json:"EnvTypes,omitempty" xml:"EnvTypes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// {"TenantId": "4286******98"}
+	ExtraInfos map[string]interface{} `json:"ExtraInfos,omitempty" xml:"ExtraInfos,omitempty"`
+	// example:
+	//
+	// 2021-01-21T17:12:35.232Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2021-01-21T17:12:35.232Z
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// false
+	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// example:
+	//
+	// ENABLED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 123
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// example:
+	//
+	// workspace-example
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
 func (s ListWorkspacesResponseBodyWorkspaces) String() string {
@@ -6837,8 +8416,14 @@ func (s *ListWorkspacesResponse) SetBody(v *ListWorkspacesResponseBody) *ListWor
 }
 
 type PublishCodeSourceResponseBody struct {
+	// example:
+	//
+	// code-a797*******
 	CodeSourceId *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s PublishCodeSourceResponseBody) String() string {
@@ -6889,6 +8474,9 @@ func (s *PublishCodeSourceResponse) SetBody(v *PublishCodeSourceResponseBody) *P
 }
 
 type PublishDatasetResponseBody struct {
+	// example:
+	//
+	// A0F049F0-8D69-5BAC-8F10-B******A34C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6935,7 +8523,13 @@ func (s *PublishDatasetResponse) SetBody(v *PublishDatasetResponseBody) *Publish
 }
 
 type PublishImageResponseBody struct {
-	ImageId   *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// image-dk******fa
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// A0F049F0-8D69-5BAC-8F10-B******A34C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6987,6 +8581,9 @@ func (s *PublishImageResponse) SetBody(v *PublishImageResponseBody) *PublishImag
 }
 
 type RemoveImageResponseBody struct {
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7033,6 +8630,9 @@ func (s *RemoveImageResponse) SetBody(v *RemoveImageResponseBody) *RemoveImageRe
 }
 
 type RemoveImageLabelsResponseBody struct {
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7079,6 +8679,9 @@ func (s *RemoveImageLabelsResponse) SetBody(v *RemoveImageLabelsResponseBody) *R
 }
 
 type RemoveMemberRoleResponseBody struct {
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7126,8 +8729,18 @@ func (s *RemoveMemberRoleResponse) SetBody(v *RemoveMemberRoleResponseBody) *Rem
 
 type UpdateDatasetRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Options     *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// example:
+	//
+	// myName
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//   "mountPath": "/mnt/data/"
+	//
+	// }
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
 }
 
 func (s UpdateDatasetRequest) String() string {
@@ -7154,6 +8767,9 @@ func (s *UpdateDatasetRequest) SetOptions(v string) *UpdateDatasetRequest {
 }
 
 type UpdateDatasetResponseBody struct {
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7200,6 +8816,9 @@ func (s *UpdateDatasetResponse) SetBody(v *UpdateDatasetResponseBody) *UpdateDat
 }
 
 type UpdateDefaultWorkspaceRequest struct {
+	// example:
+	//
+	// 12345
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -7217,6 +8836,9 @@ func (s *UpdateDefaultWorkspaceRequest) SetWorkspaceId(v string) *UpdateDefaultW
 }
 
 type UpdateDefaultWorkspaceResponseBody struct {
+	// example:
+	//
+	// 17915******4216
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7263,16 +8885,37 @@ func (s *UpdateDefaultWorkspaceResponse) SetBody(v *UpdateDefaultWorkspaceRespon
 }
 
 type UpdateModelRequest struct {
-	Accessibility    *string                `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// example:
+	//
+	// PUBLIC
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// example:
+	//
+	// nlp
 	Domain           *string                `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	ExtraInfo        map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
 	ModelDescription *string                `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
-	ModelDoc         *string                `json:"ModelDoc,omitempty" xml:"ModelDoc,omitempty"`
-	ModelName        *string                `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	ModelType        *string                `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
-	OrderNumber      *int64                 `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
-	Origin           *string                `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	Task             *string                `json:"Task,omitempty" xml:"Task,omitempty"`
+	// example:
+	//
+	// https://*.md
+	ModelDoc  *string `json:"ModelDoc,omitempty" xml:"ModelDoc,omitempty"`
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// example:
+	//
+	// Checkpoint
+	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+	// example:
+	//
+	// 101
+	OrderNumber *int64 `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
+	// example:
+	//
+	// ModelScope
+	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	// example:
+	//
+	// text-classification
+	Task *string `json:"Task,omitempty" xml:"Task,omitempty"`
 }
 
 func (s UpdateModelRequest) String() string {
@@ -7334,6 +8977,9 @@ func (s *UpdateModelRequest) SetTask(v string) *UpdateModelRequest {
 }
 
 type UpdateModelResponseBody struct {
+	// example:
+	//
+	// A0F049F0-8D69-5BAC-8F10-B******A34C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7380,14 +9026,41 @@ func (s *UpdateModelResponse) SetBody(v *UpdateModelResponseBody) *UpdateModelRe
 }
 
 type UpdateModelVersionRequest struct {
-	ApprovalStatus     *string                `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
-	EvaluationSpec     map[string]interface{} `json:"EvaluationSpec,omitempty" xml:"EvaluationSpec,omitempty"`
-	ExtraInfo          map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
-	InferenceSpec      map[string]interface{} `json:"InferenceSpec,omitempty" xml:"InferenceSpec,omitempty"`
-	Metrics            map[string]interface{} `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
-	Options            *string                `json:"Options,omitempty" xml:"Options,omitempty"`
-	SourceId           *string                `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	SourceType         *string                `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// example:
+	//
+	// Approved
+	ApprovalStatus *string `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
+	// example:
+	//
+	// {}
+	EvaluationSpec map[string]interface{} `json:"EvaluationSpec,omitempty" xml:"EvaluationSpec,omitempty"`
+	// example:
+	//
+	// {}
+	ExtraInfo map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	// example:
+	//
+	// {     "processor": "tensorflow_gpu_1.12" }
+	InferenceSpec map[string]interface{} `json:"InferenceSpec,omitempty" xml:"InferenceSpec,omitempty"`
+	// example:
+	//
+	// {}
+	Metrics map[string]interface{} `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	// example:
+	//
+	// {}
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// example:
+	//
+	// region=cn-shanghai,workspaceId=13**,kind=PipelineRun,id=run-sakdb****jdf
+	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// example:
+	//
+	// PAIFlow
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// example:
+	//
+	// {}
 	TrainingSpec       map[string]interface{} `json:"TrainingSpec,omitempty" xml:"TrainingSpec,omitempty"`
 	VersionDescription *string                `json:"VersionDescription,omitempty" xml:"VersionDescription,omitempty"`
 }
@@ -7451,6 +9124,9 @@ func (s *UpdateModelVersionRequest) SetVersionDescription(v string) *UpdateModel
 }
 
 type UpdateModelVersionResponseBody struct {
+	// example:
+	//
+	// D5BFFEE3-6025-443F-8A03-02D61***C4B9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7497,7 +9173,13 @@ func (s *UpdateModelVersionResponse) SetBody(v *UpdateModelVersionResponseBody) 
 }
 
 type UpdateWorkspaceRequest struct {
+	// example:
+	//
+	// Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// workspace-example
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 }
 
@@ -7520,6 +9202,9 @@ func (s *UpdateWorkspaceRequest) SetDisplayName(v string) *UpdateWorkspaceReques
 }
 
 type UpdateWorkspaceResponseBody struct {
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7566,13 +9251,22 @@ func (s *UpdateWorkspaceResponse) SetBody(v *UpdateWorkspaceResponseBody) *Updat
 }
 
 type UpdateWorkspaceResourceRequest struct {
-	GroupName    *string                                 `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	IsDefault    *bool                                   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	Labels       []*UpdateWorkspaceResourceRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	ProductType  *string                                 `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	ResourceIds  []*string                               `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
-	ResourceType *string                                 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Spec         map[string]interface{}                  `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// example:
+	//
+	// group-kjds******sd
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// example:
+	//
+	// true
+	IsDefault *bool                                   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	Labels    []*UpdateWorkspaceResourceRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// example:
+	//
+	// MaxCompute
+	ProductType  *string                `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	ResourceIds  []*string              `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	ResourceType *string                `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Spec         map[string]interface{} `json:"Spec,omitempty" xml:"Spec,omitempty"`
 }
 
 func (s UpdateWorkspaceResourceRequest) String() string {
@@ -7642,6 +9336,9 @@ func (s *UpdateWorkspaceResourceRequestLabels) SetValue(v string) *UpdateWorkspa
 }
 
 type UpdateWorkspaceResourceResponseBody struct {
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
 }
@@ -7740,6 +9437,17 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 增加 Image
+//
+// @param request - AddImageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddImageResponse
 func (client *Client) AddImageWithOptions(request *AddImageRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddImageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7802,6 +9510,13 @@ func (client *Client) AddImageWithOptions(request *AddImageRequest, headers map[
 	return _result, _err
 }
 
+// Summary:
+//
+// 增加 Image
+//
+// @param request - AddImageRequest
+//
+// @return AddImageResponse
 func (client *Client) AddImage(request *AddImageRequest) (_result *AddImageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7814,6 +9529,17 @@ func (client *Client) AddImage(request *AddImageRequest) (_result *AddImageRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 增加 Image 的标签
+//
+// @param request - AddImageLabelsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddImageLabelsResponse
 func (client *Client) AddImageLabelsWithOptions(ImageId *string, request *AddImageLabelsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddImageLabelsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7848,6 +9574,13 @@ func (client *Client) AddImageLabelsWithOptions(ImageId *string, request *AddIma
 	return _result, _err
 }
 
+// Summary:
+//
+// 增加 Image 的标签
+//
+// @param request - AddImageLabelsRequest
+//
+// @return AddImageLabelsResponse
 func (client *Client) AddImageLabels(ImageId *string, request *AddImageLabelsRequest) (_result *AddImageLabelsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7860,6 +9593,15 @@ func (client *Client) AddImageLabels(ImageId *string, request *AddImageLabelsReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 增加成员角色
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddMemberRoleResponse
 func (client *Client) AddMemberRoleWithOptions(WorkspaceId *string, MemberId *string, RoleName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddMemberRoleResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -7884,6 +9626,11 @@ func (client *Client) AddMemberRoleWithOptions(WorkspaceId *string, MemberId *st
 	return _result, _err
 }
 
+// Summary:
+//
+// 增加成员角色
+//
+// @return AddMemberRoleResponse
 func (client *Client) AddMemberRole(WorkspaceId *string, MemberId *string, RoleName *string) (_result *AddMemberRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7896,6 +9643,17 @@ func (client *Client) AddMemberRole(WorkspaceId *string, MemberId *string, RoleN
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建一个代码源配置
+//
+// @param request - CreateCodeSourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCodeSourceResponse
 func (client *Client) CreateCodeSourceWithOptions(request *CreateCodeSourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateCodeSourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7962,6 +9720,13 @@ func (client *Client) CreateCodeSourceWithOptions(request *CreateCodeSourceReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建一个代码源配置
+//
+// @param request - CreateCodeSourceRequest
+//
+// @return CreateCodeSourceResponse
 func (client *Client) CreateCodeSource(request *CreateCodeSourceRequest) (_result *CreateCodeSourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7974,6 +9739,17 @@ func (client *Client) CreateCodeSource(request *CreateCodeSourceRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建数据集
+//
+// @param request - CreateDatasetRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDatasetResponse
 func (client *Client) CreateDatasetWithOptions(request *CreateDatasetRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDatasetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8032,6 +9808,10 @@ func (client *Client) CreateDatasetWithOptions(request *CreateDatasetRequest, he
 		body["Uri"] = request.Uri
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["UserId"] = request.UserId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
 		body["WorkspaceId"] = request.WorkspaceId
 	}
@@ -8060,6 +9840,13 @@ func (client *Client) CreateDatasetWithOptions(request *CreateDatasetRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建数据集
+//
+// @param request - CreateDatasetRequest
+//
+// @return CreateDatasetResponse
 func (client *Client) CreateDataset(request *CreateDatasetRequest) (_result *CreateDatasetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8072,6 +9859,17 @@ func (client *Client) CreateDataset(request *CreateDatasetRequest) (_result *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建或更新 Dataset 的标签
+//
+// @param request - CreateDatasetLabelsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDatasetLabelsResponse
 func (client *Client) CreateDatasetLabelsWithOptions(DatasetId *string, request *CreateDatasetLabelsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDatasetLabelsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8106,6 +9904,13 @@ func (client *Client) CreateDatasetLabelsWithOptions(DatasetId *string, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建或更新 Dataset 的标签
+//
+// @param request - CreateDatasetLabelsRequest
+//
+// @return CreateDatasetLabelsResponse
 func (client *Client) CreateDatasetLabels(DatasetId *string, request *CreateDatasetLabelsRequest) (_result *CreateDatasetLabelsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8118,6 +9923,17 @@ func (client *Client) CreateDatasetLabels(DatasetId *string, request *CreateData
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建成员
+//
+// @param request - CreateMemberRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMemberResponse
 func (client *Client) CreateMemberWithOptions(WorkspaceId *string, request *CreateMemberRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateMemberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8152,6 +9968,13 @@ func (client *Client) CreateMemberWithOptions(WorkspaceId *string, request *Crea
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建成员
+//
+// @param request - CreateMemberRequest
+//
+// @return CreateMemberResponse
 func (client *Client) CreateMember(WorkspaceId *string, request *CreateMemberRequest) (_result *CreateMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8164,6 +9987,17 @@ func (client *Client) CreateMember(WorkspaceId *string, request *CreateMemberReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建模型
+//
+// @param request - CreateModelRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateModelResponse
 func (client *Client) CreateModelWithOptions(request *CreateModelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateModelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8242,6 +10076,13 @@ func (client *Client) CreateModelWithOptions(request *CreateModelRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建模型
+//
+// @param request - CreateModelRequest
+//
+// @return CreateModelResponse
 func (client *Client) CreateModel(request *CreateModelRequest) (_result *CreateModelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8254,6 +10095,17 @@ func (client *Client) CreateModel(request *CreateModelRequest) (_result *CreateM
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建或更新模型的标签
+//
+// @param request - CreateModelLabelsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateModelLabelsResponse
 func (client *Client) CreateModelLabelsWithOptions(ModelId *string, request *CreateModelLabelsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateModelLabelsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8288,6 +10140,13 @@ func (client *Client) CreateModelLabelsWithOptions(ModelId *string, request *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建或更新模型的标签
+//
+// @param request - CreateModelLabelsRequest
+//
+// @return CreateModelLabelsResponse
 func (client *Client) CreateModelLabels(ModelId *string, request *CreateModelLabelsRequest) (_result *CreateModelLabelsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8300,6 +10159,17 @@ func (client *Client) CreateModelLabels(ModelId *string, request *CreateModelLab
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建模型版本
+//
+// @param request - CreateModelVersionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateModelVersionResponse
 func (client *Client) CreateModelVersionWithOptions(ModelId *string, request *CreateModelVersionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateModelVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8390,6 +10260,13 @@ func (client *Client) CreateModelVersionWithOptions(ModelId *string, request *Cr
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建模型版本
+//
+// @param request - CreateModelVersionRequest
+//
+// @return CreateModelVersionResponse
 func (client *Client) CreateModelVersion(ModelId *string, request *CreateModelVersionRequest) (_result *CreateModelVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8402,6 +10279,17 @@ func (client *Client) CreateModelVersion(ModelId *string, request *CreateModelVe
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建或更新模型版本的标签
+//
+// @param request - CreateModelVersionLabelsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateModelVersionLabelsResponse
 func (client *Client) CreateModelVersionLabelsWithOptions(ModelId *string, VersionName *string, request *CreateModelVersionLabelsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateModelVersionLabelsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8436,6 +10324,13 @@ func (client *Client) CreateModelVersionLabelsWithOptions(ModelId *string, Versi
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建或更新模型版本的标签
+//
+// @param request - CreateModelVersionLabelsRequest
+//
+// @return CreateModelVersionLabelsResponse
 func (client *Client) CreateModelVersionLabels(ModelId *string, VersionName *string, request *CreateModelVersionLabelsRequest) (_result *CreateModelVersionLabelsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8448,6 +10343,17 @@ func (client *Client) CreateModelVersionLabels(ModelId *string, VersionName *str
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建产品订单
+//
+// @param request - CreateProductOrdersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateProductOrdersResponse
 func (client *Client) CreateProductOrdersWithOptions(request *CreateProductOrdersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateProductOrdersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8486,6 +10392,13 @@ func (client *Client) CreateProductOrdersWithOptions(request *CreateProductOrder
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建产品订单
+//
+// @param request - CreateProductOrdersRequest
+//
+// @return CreateProductOrdersResponse
 func (client *Client) CreateProductOrders(request *CreateProductOrdersRequest) (_result *CreateProductOrdersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8498,6 +10411,17 @@ func (client *Client) CreateProductOrders(request *CreateProductOrdersRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建工作空间
+//
+// @param request - CreateWorkspaceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWorkspaceResponse
 func (client *Client) CreateWorkspaceWithOptions(request *CreateWorkspaceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateWorkspaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8544,6 +10468,13 @@ func (client *Client) CreateWorkspaceWithOptions(request *CreateWorkspaceRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建工作空间
+//
+// @param request - CreateWorkspaceRequest
+//
+// @return CreateWorkspaceResponse
 func (client *Client) CreateWorkspace(request *CreateWorkspaceRequest) (_result *CreateWorkspaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8556,6 +10487,17 @@ func (client *Client) CreateWorkspace(request *CreateWorkspaceRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建资源
+//
+// @param request - CreateWorkspaceResourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWorkspaceResourceResponse
 func (client *Client) CreateWorkspaceResourceWithOptions(WorkspaceId *string, request *CreateWorkspaceResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateWorkspaceResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8594,6 +10536,13 @@ func (client *Client) CreateWorkspaceResourceWithOptions(WorkspaceId *string, re
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建资源
+//
+// @param request - CreateWorkspaceResourceRequest
+//
+// @return CreateWorkspaceResourceResponse
 func (client *Client) CreateWorkspaceResource(WorkspaceId *string, request *CreateWorkspaceResourceRequest) (_result *CreateWorkspaceResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8606,6 +10555,15 @@ func (client *Client) CreateWorkspaceResource(WorkspaceId *string, request *Crea
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除一个代码源配置
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCodeSourceResponse
 func (client *Client) DeleteCodeSourceWithOptions(CodeSourceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteCodeSourceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -8630,6 +10588,11 @@ func (client *Client) DeleteCodeSourceWithOptions(CodeSourceId *string, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除一个代码源配置
+//
+// @return DeleteCodeSourceResponse
 func (client *Client) DeleteCodeSource(CodeSourceId *string) (_result *DeleteCodeSourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8642,6 +10605,15 @@ func (client *Client) DeleteCodeSource(CodeSourceId *string) (_result *DeleteCod
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除数据集
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDatasetResponse
 func (client *Client) DeleteDatasetWithOptions(DatasetId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteDatasetResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -8666,6 +10638,11 @@ func (client *Client) DeleteDatasetWithOptions(DatasetId *string, headers map[st
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除数据集
+//
+// @return DeleteDatasetResponse
 func (client *Client) DeleteDataset(DatasetId *string) (_result *DeleteDatasetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8678,6 +10655,17 @@ func (client *Client) DeleteDataset(DatasetId *string) (_result *DeleteDatasetRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除 Dataset 的标签
+//
+// @param request - DeleteDatasetLabelsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDatasetLabelsResponse
 func (client *Client) DeleteDatasetLabelsWithOptions(DatasetId *string, request *DeleteDatasetLabelsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteDatasetLabelsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8712,6 +10700,13 @@ func (client *Client) DeleteDatasetLabelsWithOptions(DatasetId *string, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除 Dataset 的标签
+//
+// @param request - DeleteDatasetLabelsRequest
+//
+// @return DeleteDatasetLabelsResponse
 func (client *Client) DeleteDatasetLabels(DatasetId *string, request *DeleteDatasetLabelsRequest) (_result *DeleteDatasetLabelsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8724,6 +10719,17 @@ func (client *Client) DeleteDatasetLabels(DatasetId *string, request *DeleteData
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除工作空间成员
+//
+// @param request - DeleteMembersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMembersResponse
 func (client *Client) DeleteMembersWithOptions(WorkspaceId *string, request *DeleteMembersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteMembersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8758,6 +10764,13 @@ func (client *Client) DeleteMembersWithOptions(WorkspaceId *string, request *Del
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除工作空间成员
+//
+// @param request - DeleteMembersRequest
+//
+// @return DeleteMembersResponse
 func (client *Client) DeleteMembers(WorkspaceId *string, request *DeleteMembersRequest) (_result *DeleteMembersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8770,6 +10783,15 @@ func (client *Client) DeleteMembers(WorkspaceId *string, request *DeleteMembersR
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除模型
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteModelResponse
 func (client *Client) DeleteModelWithOptions(ModelId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteModelResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -8794,6 +10816,11 @@ func (client *Client) DeleteModelWithOptions(ModelId *string, headers map[string
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除模型
+//
+// @return DeleteModelResponse
 func (client *Client) DeleteModel(ModelId *string) (_result *DeleteModelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8806,6 +10833,17 @@ func (client *Client) DeleteModel(ModelId *string) (_result *DeleteModelResponse
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除模型的标签
+//
+// @param request - DeleteModelLabelsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteModelLabelsResponse
 func (client *Client) DeleteModelLabelsWithOptions(ModelId *string, request *DeleteModelLabelsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteModelLabelsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8840,6 +10878,13 @@ func (client *Client) DeleteModelLabelsWithOptions(ModelId *string, request *Del
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除模型的标签
+//
+// @param request - DeleteModelLabelsRequest
+//
+// @return DeleteModelLabelsResponse
 func (client *Client) DeleteModelLabels(ModelId *string, request *DeleteModelLabelsRequest) (_result *DeleteModelLabelsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8852,6 +10897,15 @@ func (client *Client) DeleteModelLabels(ModelId *string, request *DeleteModelLab
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除模型版本
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteModelVersionResponse
 func (client *Client) DeleteModelVersionWithOptions(ModelId *string, VersionName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteModelVersionResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -8876,6 +10930,11 @@ func (client *Client) DeleteModelVersionWithOptions(ModelId *string, VersionName
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除模型版本
+//
+// @return DeleteModelVersionResponse
 func (client *Client) DeleteModelVersion(ModelId *string, VersionName *string) (_result *DeleteModelVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8888,6 +10947,17 @@ func (client *Client) DeleteModelVersion(ModelId *string, VersionName *string) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除模型版本的标签
+//
+// @param request - DeleteModelVersionLabelsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteModelVersionLabelsResponse
 func (client *Client) DeleteModelVersionLabelsWithOptions(ModelId *string, VersionName *string, request *DeleteModelVersionLabelsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteModelVersionLabelsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8922,6 +10992,13 @@ func (client *Client) DeleteModelVersionLabelsWithOptions(ModelId *string, Versi
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除模型版本的标签
+//
+// @param request - DeleteModelVersionLabelsRequest
+//
+// @return DeleteModelVersionLabelsResponse
 func (client *Client) DeleteModelVersionLabels(ModelId *string, VersionName *string, request *DeleteModelVersionLabelsRequest) (_result *DeleteModelVersionLabelsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8934,6 +11011,15 @@ func (client *Client) DeleteModelVersionLabels(ModelId *string, VersionName *str
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除工作空间
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWorkspaceResponse
 func (client *Client) DeleteWorkspaceWithOptions(WorkspaceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteWorkspaceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -8958,6 +11044,11 @@ func (client *Client) DeleteWorkspaceWithOptions(WorkspaceId *string, headers ma
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除工作空间
+//
+// @return DeleteWorkspaceResponse
 func (client *Client) DeleteWorkspace(WorkspaceId *string) (_result *DeleteWorkspaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8970,6 +11061,17 @@ func (client *Client) DeleteWorkspace(WorkspaceId *string) (_result *DeleteWorks
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除工作空间资源
+//
+// @param request - DeleteWorkspaceResourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWorkspaceResourceResponse
 func (client *Client) DeleteWorkspaceResourceWithOptions(WorkspaceId *string, request *DeleteWorkspaceResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteWorkspaceResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9024,6 +11126,13 @@ func (client *Client) DeleteWorkspaceResourceWithOptions(WorkspaceId *string, re
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除工作空间资源
+//
+// @param request - DeleteWorkspaceResourceRequest
+//
+// @return DeleteWorkspaceResourceResponse
 func (client *Client) DeleteWorkspaceResource(WorkspaceId *string, request *DeleteWorkspaceResourceRequest) (_result *DeleteWorkspaceResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9036,6 +11145,15 @@ func (client *Client) DeleteWorkspaceResource(WorkspaceId *string, request *Dele
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取一个代码源配置
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCodeSourceResponse
 func (client *Client) GetCodeSourceWithOptions(CodeSourceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetCodeSourceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -9060,6 +11178,11 @@ func (client *Client) GetCodeSourceWithOptions(CodeSourceId *string, headers map
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取一个代码源配置
+//
+// @return GetCodeSourceResponse
 func (client *Client) GetCodeSource(CodeSourceId *string) (_result *GetCodeSourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9072,6 +11195,15 @@ func (client *Client) GetCodeSource(CodeSourceId *string) (_result *GetCodeSourc
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取数据集
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDatasetResponse
 func (client *Client) GetDatasetWithOptions(DatasetId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDatasetResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -9096,6 +11228,11 @@ func (client *Client) GetDatasetWithOptions(DatasetId *string, headers map[strin
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取数据集
+//
+// @return GetDatasetResponse
 func (client *Client) GetDataset(DatasetId *string) (_result *GetDatasetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9108,6 +11245,17 @@ func (client *Client) GetDataset(DatasetId *string) (_result *GetDatasetResponse
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取默认工作空间
+//
+// @param request - GetDefaultWorkspaceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDefaultWorkspaceResponse
 func (client *Client) GetDefaultWorkspaceWithOptions(request *GetDefaultWorkspaceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDefaultWorkspaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9142,6 +11290,13 @@ func (client *Client) GetDefaultWorkspaceWithOptions(request *GetDefaultWorkspac
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取默认工作空间
+//
+// @param request - GetDefaultWorkspaceRequest
+//
+// @return GetDefaultWorkspaceResponse
 func (client *Client) GetDefaultWorkspace(request *GetDefaultWorkspaceRequest) (_result *GetDefaultWorkspaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9154,6 +11309,17 @@ func (client *Client) GetDefaultWorkspace(request *GetDefaultWorkspaceRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取镜像
+//
+// @param request - GetImageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetImageResponse
 func (client *Client) GetImageWithOptions(ImageId *string, request *GetImageRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetImageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9188,6 +11354,13 @@ func (client *Client) GetImageWithOptions(ImageId *string, request *GetImageRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取镜像
+//
+// @param request - GetImageRequest
+//
+// @return GetImageResponse
 func (client *Client) GetImage(ImageId *string, request *GetImageRequest) (_result *GetImageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9200,6 +11373,17 @@ func (client *Client) GetImage(ImageId *string, request *GetImageRequest) (_resu
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取成员
+//
+// @param request - GetMemberRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMemberResponse
 func (client *Client) GetMemberWithOptions(WorkspaceId *string, request *GetMemberRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetMemberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9238,6 +11422,13 @@ func (client *Client) GetMemberWithOptions(WorkspaceId *string, request *GetMemb
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取成员
+//
+// @param request - GetMemberRequest
+//
+// @return GetMemberResponse
 func (client *Client) GetMember(WorkspaceId *string, request *GetMemberRequest) (_result *GetMemberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9250,6 +11441,15 @@ func (client *Client) GetMember(WorkspaceId *string, request *GetMemberRequest) 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取模型
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetModelResponse
 func (client *Client) GetModelWithOptions(ModelId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetModelResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -9274,6 +11474,11 @@ func (client *Client) GetModelWithOptions(ModelId *string, headers map[string]*s
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取模型
+//
+// @return GetModelResponse
 func (client *Client) GetModel(ModelId *string) (_result *GetModelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9286,6 +11491,15 @@ func (client *Client) GetModel(ModelId *string) (_result *GetModelResponse, _err
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取模型版本
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetModelVersionResponse
 func (client *Client) GetModelVersionWithOptions(ModelId *string, VersionName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetModelVersionResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -9310,6 +11524,11 @@ func (client *Client) GetModelVersionWithOptions(ModelId *string, VersionName *s
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取模型版本
+//
+// @return GetModelVersionResponse
 func (client *Client) GetModelVersion(ModelId *string, VersionName *string) (_result *GetModelVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9322,6 +11541,17 @@ func (client *Client) GetModelVersion(ModelId *string, VersionName *string) (_re
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取权限，若无权限则返回错误
+//
+// @param request - GetPermissionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPermissionResponse
 func (client *Client) GetPermissionWithOptions(WorkspaceId *string, PermissionCode *string, request *GetPermissionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPermissionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9368,6 +11598,13 @@ func (client *Client) GetPermissionWithOptions(WorkspaceId *string, PermissionCo
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取权限，若无权限则返回错误
+//
+// @param request - GetPermissionRequest
+//
+// @return GetPermissionResponse
 func (client *Client) GetPermission(WorkspaceId *string, PermissionCode *string, request *GetPermissionRequest) (_result *GetPermissionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9380,6 +11617,15 @@ func (client *Client) GetPermission(WorkspaceId *string, PermissionCode *string,
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取服务模版
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetServiceTemplateResponse
 func (client *Client) GetServiceTemplateWithOptions(ServiceTemplateId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetServiceTemplateResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -9404,6 +11650,11 @@ func (client *Client) GetServiceTemplateWithOptions(ServiceTemplateId *string, h
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取服务模版
+//
+// @return GetServiceTemplateResponse
 func (client *Client) GetServiceTemplate(ServiceTemplateId *string) (_result *GetServiceTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9416,6 +11667,17 @@ func (client *Client) GetServiceTemplate(ServiceTemplateId *string) (_result *Ge
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取工作空间
+//
+// @param request - GetWorkspaceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWorkspaceResponse
 func (client *Client) GetWorkspaceWithOptions(WorkspaceId *string, request *GetWorkspaceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetWorkspaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9450,6 +11712,13 @@ func (client *Client) GetWorkspaceWithOptions(WorkspaceId *string, request *GetW
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取工作空间
+//
+// @param request - GetWorkspaceRequest
+//
+// @return GetWorkspaceResponse
 func (client *Client) GetWorkspace(WorkspaceId *string, request *GetWorkspaceRequest) (_result *GetWorkspaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9462,6 +11731,17 @@ func (client *Client) GetWorkspace(WorkspaceId *string, request *GetWorkspaceReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取代码源配置列表
+//
+// @param request - ListCodeSourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCodeSourcesResponse
 func (client *Client) ListCodeSourcesWithOptions(request *ListCodeSourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListCodeSourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9516,6 +11796,13 @@ func (client *Client) ListCodeSourcesWithOptions(request *ListCodeSourcesRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取代码源配置列表
+//
+// @param request - ListCodeSourcesRequest
+//
+// @return ListCodeSourcesResponse
 func (client *Client) ListCodeSources(request *ListCodeSourcesRequest) (_result *ListCodeSourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9528,6 +11815,17 @@ func (client *Client) ListCodeSources(request *ListCodeSourcesRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取数据集列表
+//
+// @param request - ListDatasetsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDatasetsResponse
 func (client *Client) ListDatasetsWithOptions(request *ListDatasetsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDatasetsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9606,6 +11904,13 @@ func (client *Client) ListDatasetsWithOptions(request *ListDatasetsRequest, head
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取数据集列表
+//
+// @param request - ListDatasetsRequest
+//
+// @return ListDatasetsResponse
 func (client *Client) ListDatasets(request *ListDatasetsRequest) (_result *ListDatasetsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9618,6 +11923,17 @@ func (client *Client) ListDatasets(request *ListDatasetsRequest) (_result *ListD
 	return _result, _err
 }
 
+// Summary:
+//
+// 列举标签
+//
+// @param request - ListImageLabelsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListImageLabelsResponse
 func (client *Client) ListImageLabelsWithOptions(request *ListImageLabelsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListImageLabelsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9668,6 +11984,13 @@ func (client *Client) ListImageLabelsWithOptions(request *ListImageLabelsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 列举标签
+//
+// @param request - ListImageLabelsRequest
+//
+// @return ListImageLabelsResponse
 func (client *Client) ListImageLabels(request *ListImageLabelsRequest) (_result *ListImageLabelsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9680,6 +12003,17 @@ func (client *Client) ListImageLabels(request *ListImageLabelsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 列举已注册镜像
+//
+// @param request - ListImagesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListImagesResponse
 func (client *Client) ListImagesWithOptions(request *ListImagesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListImagesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9758,6 +12092,13 @@ func (client *Client) ListImagesWithOptions(request *ListImagesRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// 列举已注册镜像
+//
+// @param request - ListImagesRequest
+//
+// @return ListImagesResponse
 func (client *Client) ListImages(request *ListImagesRequest) (_result *ListImagesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9770,6 +12111,17 @@ func (client *Client) ListImages(request *ListImagesRequest) (_result *ListImage
 	return _result, _err
 }
 
+// Summary:
+//
+// 列举工作空间成员
+//
+// @param request - ListMembersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMembersResponse
 func (client *Client) ListMembersWithOptions(WorkspaceId *string, request *ListMembersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListMembersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9816,6 +12168,13 @@ func (client *Client) ListMembersWithOptions(WorkspaceId *string, request *ListM
 	return _result, _err
 }
 
+// Summary:
+//
+// 列举工作空间成员
+//
+// @param request - ListMembersRequest
+//
+// @return ListMembersResponse
 func (client *Client) ListMembers(WorkspaceId *string, request *ListMembersRequest) (_result *ListMembersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9828,6 +12187,17 @@ func (client *Client) ListMembers(WorkspaceId *string, request *ListMembersReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取模型版本列表
+//
+// @param request - ListModelVersionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListModelVersionsResponse
 func (client *Client) ListModelVersionsWithOptions(ModelId *string, request *ListModelVersionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListModelVersionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9902,6 +12272,13 @@ func (client *Client) ListModelVersionsWithOptions(ModelId *string, request *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取模型版本列表
+//
+// @param request - ListModelVersionsRequest
+//
+// @return ListModelVersionsResponse
 func (client *Client) ListModelVersions(ModelId *string, request *ListModelVersionsRequest) (_result *ListModelVersionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9914,6 +12291,17 @@ func (client *Client) ListModelVersions(ModelId *string, request *ListModelVersi
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取模型列表
+//
+// @param request - ListModelsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListModelsResponse
 func (client *Client) ListModelsWithOptions(request *ListModelsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListModelsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10000,6 +12388,13 @@ func (client *Client) ListModelsWithOptions(request *ListModelsRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取模型列表
+//
+// @param request - ListModelsRequest
+//
+// @return ListModelsResponse
 func (client *Client) ListModels(request *ListModelsRequest) (_result *ListModelsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10012,6 +12407,15 @@ func (client *Client) ListModels(request *ListModelsRequest) (_result *ListModel
 	return _result, _err
 }
 
+// Summary:
+//
+// 列举权限
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPermissionsResponse
 func (client *Client) ListPermissionsWithOptions(WorkspaceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListPermissionsResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -10036,6 +12440,11 @@ func (client *Client) ListPermissionsWithOptions(WorkspaceId *string, headers ma
 	return _result, _err
 }
 
+// Summary:
+//
+// 列举权限
+//
+// @return ListPermissionsResponse
 func (client *Client) ListPermissions(WorkspaceId *string) (_result *ListPermissionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10048,6 +12457,17 @@ func (client *Client) ListPermissions(WorkspaceId *string) (_result *ListPermiss
 	return _result, _err
 }
 
+// Summary:
+//
+// 列举产品
+//
+// @param request - ListProductsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProductsResponse
 func (client *Client) ListProductsWithOptions(request *ListProductsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProductsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10090,6 +12510,13 @@ func (client *Client) ListProductsWithOptions(request *ListProductsRequest, head
 	return _result, _err
 }
 
+// Summary:
+//
+// 列举产品
+//
+// @param request - ListProductsRequest
+//
+// @return ListProductsResponse
 func (client *Client) ListProducts(request *ListProductsRequest) (_result *ListProductsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10102,6 +12529,17 @@ func (client *Client) ListProducts(request *ListProductsRequest) (_result *ListP
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取已有配额列表
+//
+// @param request - ListQuotasRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListQuotasResponse
 func (client *Client) ListQuotasWithOptions(request *ListQuotasRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListQuotasResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10136,6 +12574,13 @@ func (client *Client) ListQuotasWithOptions(request *ListQuotasRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取已有配额列表
+//
+// @param request - ListQuotasRequest
+//
+// @return ListQuotasResponse
 func (client *Client) ListQuotas(request *ListQuotasRequest) (_result *ListQuotasResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10148,6 +12593,17 @@ func (client *Client) ListQuotas(request *ListQuotasRequest) (_result *ListQuota
 	return _result, _err
 }
 
+// Summary:
+//
+// 列举工作空间资源
+//
+// @param request - ListResourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListResourcesResponse
 func (client *Client) ListResourcesWithOptions(request *ListResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10226,6 +12682,13 @@ func (client *Client) ListResourcesWithOptions(request *ListResourcesRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 列举工作空间资源
+//
+// @param request - ListResourcesRequest
+//
+// @return ListResourcesResponse
 func (client *Client) ListResources(request *ListResourcesRequest) (_result *ListResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10238,6 +12701,17 @@ func (client *Client) ListResources(request *ListResourcesRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取服务模版列表
+//
+// @param request - ListServiceTemplatesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListServiceTemplatesResponse
 func (client *Client) ListServiceTemplatesWithOptions(request *ListServiceTemplatesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListServiceTemplatesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10300,6 +12774,13 @@ func (client *Client) ListServiceTemplatesWithOptions(request *ListServiceTempla
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取服务模版列表
+//
+// @param request - ListServiceTemplatesRequest
+//
+// @return ListServiceTemplatesResponse
 func (client *Client) ListServiceTemplates(request *ListServiceTemplatesRequest) (_result *ListServiceTemplatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10312,6 +12793,17 @@ func (client *Client) ListServiceTemplates(request *ListServiceTemplatesRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 列出工作空间的可变为成员的用户
+//
+// @param request - ListWorkspaceUsersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWorkspaceUsersResponse
 func (client *Client) ListWorkspaceUsersWithOptions(WorkspaceId *string, request *ListWorkspaceUsersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListWorkspaceUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10346,6 +12838,13 @@ func (client *Client) ListWorkspaceUsersWithOptions(WorkspaceId *string, request
 	return _result, _err
 }
 
+// Summary:
+//
+// 列出工作空间的可变为成员的用户
+//
+// @param request - ListWorkspaceUsersRequest
+//
+// @return ListWorkspaceUsersResponse
 func (client *Client) ListWorkspaceUsers(WorkspaceId *string, request *ListWorkspaceUsersRequest) (_result *ListWorkspaceUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10358,6 +12857,17 @@ func (client *Client) ListWorkspaceUsers(WorkspaceId *string, request *ListWorks
 	return _result, _err
 }
 
+// Summary:
+//
+// 获得工作空间列表
+//
+// @param request - ListWorkspacesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWorkspacesResponse
 func (client *Client) ListWorkspacesWithOptions(request *ListWorkspacesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListWorkspacesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10432,6 +12942,13 @@ func (client *Client) ListWorkspacesWithOptions(request *ListWorkspacesRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获得工作空间列表
+//
+// @param request - ListWorkspacesRequest
+//
+// @return ListWorkspacesResponse
 func (client *Client) ListWorkspaces(request *ListWorkspacesRequest) (_result *ListWorkspacesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10444,6 +12961,15 @@ func (client *Client) ListWorkspaces(request *ListWorkspacesRequest) (_result *L
 	return _result, _err
 }
 
+// Summary:
+//
+// 发布一个代码源配置为本工作空间下所有人可见
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PublishCodeSourceResponse
 func (client *Client) PublishCodeSourceWithOptions(CodeSourceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PublishCodeSourceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -10468,6 +12994,11 @@ func (client *Client) PublishCodeSourceWithOptions(CodeSourceId *string, headers
 	return _result, _err
 }
 
+// Summary:
+//
+// 发布一个代码源配置为本工作空间下所有人可见
+//
+// @return PublishCodeSourceResponse
 func (client *Client) PublishCodeSource(CodeSourceId *string) (_result *PublishCodeSourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10480,6 +13011,15 @@ func (client *Client) PublishCodeSource(CodeSourceId *string) (_result *PublishC
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新数据集
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PublishDatasetResponse
 func (client *Client) PublishDatasetWithOptions(DatasetId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PublishDatasetResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -10504,6 +13044,11 @@ func (client *Client) PublishDatasetWithOptions(DatasetId *string, headers map[s
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新数据集
+//
+// @return PublishDatasetResponse
 func (client *Client) PublishDataset(DatasetId *string) (_result *PublishDatasetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10516,6 +13061,15 @@ func (client *Client) PublishDataset(DatasetId *string) (_result *PublishDataset
 	return _result, _err
 }
 
+// Summary:
+//
+// 发布 Image
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PublishImageResponse
 func (client *Client) PublishImageWithOptions(ImageId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PublishImageResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -10540,6 +13094,11 @@ func (client *Client) PublishImageWithOptions(ImageId *string, headers map[strin
 	return _result, _err
 }
 
+// Summary:
+//
+// 发布 Image
+//
+// @return PublishImageResponse
 func (client *Client) PublishImage(ImageId *string) (_result *PublishImageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10552,6 +13111,15 @@ func (client *Client) PublishImage(ImageId *string) (_result *PublishImageRespon
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除 Image
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveImageResponse
 func (client *Client) RemoveImageWithOptions(ImageId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveImageResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -10576,6 +13144,11 @@ func (client *Client) RemoveImageWithOptions(ImageId *string, headers map[string
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除 Image
+//
+// @return RemoveImageResponse
 func (client *Client) RemoveImage(ImageId *string) (_result *RemoveImageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10588,6 +13161,15 @@ func (client *Client) RemoveImage(ImageId *string) (_result *RemoveImageResponse
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除 Image 的标签
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveImageLabelsResponse
 func (client *Client) RemoveImageLabelsWithOptions(ImageId *string, LabelKey *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveImageLabelsResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -10612,6 +13194,11 @@ func (client *Client) RemoveImageLabelsWithOptions(ImageId *string, LabelKey *st
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除 Image 的标签
+//
+// @return RemoveImageLabelsResponse
 func (client *Client) RemoveImageLabels(ImageId *string, LabelKey *string) (_result *RemoveImageLabelsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10624,6 +13211,15 @@ func (client *Client) RemoveImageLabels(ImageId *string, LabelKey *string) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除成员角色
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveMemberRoleResponse
 func (client *Client) RemoveMemberRoleWithOptions(WorkspaceId *string, MemberId *string, RoleName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveMemberRoleResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -10648,6 +13244,11 @@ func (client *Client) RemoveMemberRoleWithOptions(WorkspaceId *string, MemberId 
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除成员角色
+//
+// @return RemoveMemberRoleResponse
 func (client *Client) RemoveMemberRole(WorkspaceId *string, MemberId *string, RoleName *string) (_result *RemoveMemberRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10660,6 +13261,17 @@ func (client *Client) RemoveMemberRole(WorkspaceId *string, MemberId *string, Ro
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新数据集
+//
+// @param request - UpdateDatasetRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDatasetResponse
 func (client *Client) UpdateDatasetWithOptions(DatasetId *string, request *UpdateDatasetRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateDatasetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10702,6 +13314,13 @@ func (client *Client) UpdateDatasetWithOptions(DatasetId *string, request *Updat
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新数据集
+//
+// @param request - UpdateDatasetRequest
+//
+// @return UpdateDatasetResponse
 func (client *Client) UpdateDataset(DatasetId *string, request *UpdateDatasetRequest) (_result *UpdateDatasetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10714,6 +13333,17 @@ func (client *Client) UpdateDataset(DatasetId *string, request *UpdateDatasetReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新默认工作空间
+//
+// @param request - UpdateDefaultWorkspaceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDefaultWorkspaceResponse
 func (client *Client) UpdateDefaultWorkspaceWithOptions(request *UpdateDefaultWorkspaceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateDefaultWorkspaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10748,6 +13378,13 @@ func (client *Client) UpdateDefaultWorkspaceWithOptions(request *UpdateDefaultWo
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新默认工作空间
+//
+// @param request - UpdateDefaultWorkspaceRequest
+//
+// @return UpdateDefaultWorkspaceResponse
 func (client *Client) UpdateDefaultWorkspace(request *UpdateDefaultWorkspaceRequest) (_result *UpdateDefaultWorkspaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10760,6 +13397,17 @@ func (client *Client) UpdateDefaultWorkspace(request *UpdateDefaultWorkspaceRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新模型
+//
+// @param request - UpdateModelRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateModelResponse
 func (client *Client) UpdateModelWithOptions(ModelId *string, request *UpdateModelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateModelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10830,6 +13478,13 @@ func (client *Client) UpdateModelWithOptions(ModelId *string, request *UpdateMod
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新模型
+//
+// @param request - UpdateModelRequest
+//
+// @return UpdateModelResponse
 func (client *Client) UpdateModel(ModelId *string, request *UpdateModelRequest) (_result *UpdateModelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10842,6 +13497,17 @@ func (client *Client) UpdateModel(ModelId *string, request *UpdateModelRequest) 
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新模型版本
+//
+// @param request - UpdateModelVersionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateModelVersionResponse
 func (client *Client) UpdateModelVersionWithOptions(ModelId *string, VersionName *string, request *UpdateModelVersionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateModelVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10912,6 +13578,13 @@ func (client *Client) UpdateModelVersionWithOptions(ModelId *string, VersionName
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新模型版本
+//
+// @param request - UpdateModelVersionRequest
+//
+// @return UpdateModelVersionResponse
 func (client *Client) UpdateModelVersion(ModelId *string, VersionName *string, request *UpdateModelVersionRequest) (_result *UpdateModelVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10924,6 +13597,17 @@ func (client *Client) UpdateModelVersion(ModelId *string, VersionName *string, r
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新工作空间
+//
+// @param request - UpdateWorkspaceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateWorkspaceResponse
 func (client *Client) UpdateWorkspaceWithOptions(WorkspaceId *string, request *UpdateWorkspaceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateWorkspaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10962,6 +13646,13 @@ func (client *Client) UpdateWorkspaceWithOptions(WorkspaceId *string, request *U
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新工作空间
+//
+// @param request - UpdateWorkspaceRequest
+//
+// @return UpdateWorkspaceResponse
 func (client *Client) UpdateWorkspace(WorkspaceId *string, request *UpdateWorkspaceRequest) (_result *UpdateWorkspaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10974,6 +13665,17 @@ func (client *Client) UpdateWorkspace(WorkspaceId *string, request *UpdateWorksp
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新工作空间资源
+//
+// @param request - UpdateWorkspaceResourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateWorkspaceResourceResponse
 func (client *Client) UpdateWorkspaceResourceWithOptions(WorkspaceId *string, request *UpdateWorkspaceResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateWorkspaceResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11032,6 +13734,13 @@ func (client *Client) UpdateWorkspaceResourceWithOptions(WorkspaceId *string, re
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新工作空间资源
+//
+// @param request - UpdateWorkspaceResourceRequest
+//
+// @return UpdateWorkspaceResourceResponse
 func (client *Client) UpdateWorkspaceResource(WorkspaceId *string, request *UpdateWorkspaceResourceRequest) (_result *UpdateWorkspaceResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
