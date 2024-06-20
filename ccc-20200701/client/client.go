@@ -506,6 +506,112 @@ func (s *AbortCampaignResponse) SetBody(v *AbortCampaignResponseBody) *AbortCamp
 	return s
 }
 
+type AcceptChatRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chat-65382141036853491
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s AcceptChatRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AcceptChatRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AcceptChatRequest) SetInstanceId(v string) *AcceptChatRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *AcceptChatRequest) SetJobId(v string) *AcceptChatRequest {
+	s.JobId = &v
+	return s
+}
+
+type AcceptChatResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 2263B273-AC1B-44EB-BA98-87F2322C6780
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AcceptChatResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AcceptChatResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AcceptChatResponseBody) SetCode(v string) *AcceptChatResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AcceptChatResponseBody) SetHttpStatusCode(v int32) *AcceptChatResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *AcceptChatResponseBody) SetMessage(v string) *AcceptChatResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AcceptChatResponseBody) SetRequestId(v string) *AcceptChatResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AcceptChatResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AcceptChatResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AcceptChatResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AcceptChatResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AcceptChatResponse) SetHeaders(v map[string]*string) *AcceptChatResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AcceptChatResponse) SetStatusCode(v int32) *AcceptChatResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AcceptChatResponse) SetBody(v *AcceptChatResponseBody) *AcceptChatResponse {
+	s.Body = v
+	return s
+}
+
 type AddBlacklistCallTaggingRequest struct {
 	// This parameter is required.
 	//
@@ -4941,6 +5047,378 @@ func (s *ChangeWorkModeResponse) SetStatusCode(v int32) *ChangeWorkModeResponse 
 }
 
 func (s *ChangeWorkModeResponse) SetBody(v *ChangeWorkModeResponseBody) *ChangeWorkModeResponse {
+	s.Body = v
+	return s
+}
+
+type ClaimChatRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chat-65382141036853491
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// skillgroup@ccc-test
+	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+}
+
+func (s ClaimChatRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClaimChatRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ClaimChatRequest) SetInstanceId(v string) *ClaimChatRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ClaimChatRequest) SetJobId(v string) *ClaimChatRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *ClaimChatRequest) SetSkillGroupId(v string) *ClaimChatRequest {
+	s.SkillGroupId = &v
+	return s
+}
+
+type ClaimChatResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ClaimChatResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// BC976D32-AC4C-4E0F-8AA9-F4BC6C4E2B3E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ClaimChatResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClaimChatResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ClaimChatResponseBody) SetCode(v string) *ClaimChatResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ClaimChatResponseBody) SetData(v *ClaimChatResponseBodyData) *ClaimChatResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ClaimChatResponseBody) SetHttpStatusCode(v int32) *ClaimChatResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ClaimChatResponseBody) SetMessage(v string) *ClaimChatResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ClaimChatResponseBody) SetParams(v []*string) *ClaimChatResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *ClaimChatResponseBody) SetRequestId(v string) *ClaimChatResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ClaimChatResponseBodyData struct {
+	ChatContexts []*ClaimChatResponseBodyDataChatContexts `json:"ChatContexts,omitempty" xml:"ChatContexts,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 123456789
+	ContextId   *int64                                `json:"ContextId,omitempty" xml:"ContextId,omitempty"`
+	UserContext *ClaimChatResponseBodyDataUserContext `json:"UserContext,omitempty" xml:"UserContext,omitempty" type:"Struct"`
+}
+
+func (s ClaimChatResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClaimChatResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ClaimChatResponseBodyData) SetChatContexts(v []*ClaimChatResponseBodyDataChatContexts) *ClaimChatResponseBodyData {
+	s.ChatContexts = v
+	return s
+}
+
+func (s *ClaimChatResponseBodyData) SetContextId(v int64) *ClaimChatResponseBodyData {
+	s.ContextId = &v
+	return s
+}
+
+func (s *ClaimChatResponseBodyData) SetUserContext(v *ClaimChatResponseBodyDataUserContext) *ClaimChatResponseBodyData {
+	s.UserContext = v
+	return s
+}
+
+type ClaimChatResponseBodyDataChatContexts struct {
+	// example:
+	//
+	// 226****-cbb6-****-8fea-1e71baf7bfa7
+	AccessChannelId   *string `json:"AccessChannelId,omitempty" xml:"AccessChannelId,omitempty"`
+	AccessChannelName *string `json:"AccessChannelName,omitempty" xml:"AccessChannelName,omitempty"`
+	// example:
+	//
+	// Web
+	AccessChannelType *string `json:"AccessChannelType,omitempty" xml:"AccessChannelType,omitempty"`
+	// example:
+	//
+	// true
+	BeingAssigned *bool   `json:"BeingAssigned,omitempty" xml:"BeingAssigned,omitempty"`
+	CallVariables *string `json:"CallVariables,omitempty" xml:"CallVariables,omitempty"`
+	// example:
+	//
+	// INBOUND
+	ChatType *string `json:"ChatType,omitempty" xml:"ChatType,omitempty"`
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// chat-65382141036853491
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s ClaimChatResponseBodyDataChatContexts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClaimChatResponseBodyDataChatContexts) GoString() string {
+	return s.String()
+}
+
+func (s *ClaimChatResponseBodyDataChatContexts) SetAccessChannelId(v string) *ClaimChatResponseBodyDataChatContexts {
+	s.AccessChannelId = &v
+	return s
+}
+
+func (s *ClaimChatResponseBodyDataChatContexts) SetAccessChannelName(v string) *ClaimChatResponseBodyDataChatContexts {
+	s.AccessChannelName = &v
+	return s
+}
+
+func (s *ClaimChatResponseBodyDataChatContexts) SetAccessChannelType(v string) *ClaimChatResponseBodyDataChatContexts {
+	s.AccessChannelType = &v
+	return s
+}
+
+func (s *ClaimChatResponseBodyDataChatContexts) SetBeingAssigned(v bool) *ClaimChatResponseBodyDataChatContexts {
+	s.BeingAssigned = &v
+	return s
+}
+
+func (s *ClaimChatResponseBodyDataChatContexts) SetCallVariables(v string) *ClaimChatResponseBodyDataChatContexts {
+	s.CallVariables = &v
+	return s
+}
+
+func (s *ClaimChatResponseBodyDataChatContexts) SetChatType(v string) *ClaimChatResponseBodyDataChatContexts {
+	s.ChatType = &v
+	return s
+}
+
+func (s *ClaimChatResponseBodyDataChatContexts) SetInstanceId(v string) *ClaimChatResponseBodyDataChatContexts {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ClaimChatResponseBodyDataChatContexts) SetJobId(v string) *ClaimChatResponseBodyDataChatContexts {
+	s.JobId = &v
+	return s
+}
+
+type ClaimChatResponseBodyDataUserContext struct {
+	// example:
+	//
+	// Warm-up
+	BreakCode *string `json:"BreakCode,omitempty" xml:"BreakCode,omitempty"`
+	// example:
+	//
+	// CCC-169.254.165.2-browser125.0.0-bs48b41903450e6c8
+	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// example:
+	//
+	// ONLINE
+	DeviceState *string `json:"DeviceState,omitempty" xml:"DeviceState,omitempty"`
+	// example:
+	//
+	// 8032****
+	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// example:
+	//
+	// 1609136956378
+	Heartbeat *int64 `json:"Heartbeat,omitempty" xml:"Heartbeat,omitempty"`
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// chat-65382141036853491
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// 18******102
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// example:
+	//
+	// false
+	OutboundScenario *bool `json:"OutboundScenario,omitempty" xml:"OutboundScenario,omitempty"`
+	// example:
+	//
+	// false
+	Reserved               *int64    `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	SignedSkillGroupIdList []*string `json:"SignedSkillGroupIdList,omitempty" xml:"SignedSkillGroupIdList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// userId@ccc-test
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// TALKING
+	UserState *string `json:"UserState,omitempty" xml:"UserState,omitempty"`
+	// example:
+	//
+	// ON_SITE
+	WorkMode *string `json:"WorkMode,omitempty" xml:"WorkMode,omitempty"`
+}
+
+func (s ClaimChatResponseBodyDataUserContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClaimChatResponseBodyDataUserContext) GoString() string {
+	return s.String()
+}
+
+func (s *ClaimChatResponseBodyDataUserContext) SetBreakCode(v string) *ClaimChatResponseBodyDataUserContext {
+	s.BreakCode = &v
+	return s
+}
+
+func (s *ClaimChatResponseBodyDataUserContext) SetDeviceId(v string) *ClaimChatResponseBodyDataUserContext {
+	s.DeviceId = &v
+	return s
+}
+
+func (s *ClaimChatResponseBodyDataUserContext) SetDeviceState(v string) *ClaimChatResponseBodyDataUserContext {
+	s.DeviceState = &v
+	return s
+}
+
+func (s *ClaimChatResponseBodyDataUserContext) SetExtension(v string) *ClaimChatResponseBodyDataUserContext {
+	s.Extension = &v
+	return s
+}
+
+func (s *ClaimChatResponseBodyDataUserContext) SetHeartbeat(v int64) *ClaimChatResponseBodyDataUserContext {
+	s.Heartbeat = &v
+	return s
+}
+
+func (s *ClaimChatResponseBodyDataUserContext) SetInstanceId(v string) *ClaimChatResponseBodyDataUserContext {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ClaimChatResponseBodyDataUserContext) SetJobId(v string) *ClaimChatResponseBodyDataUserContext {
+	s.JobId = &v
+	return s
+}
+
+func (s *ClaimChatResponseBodyDataUserContext) SetMobile(v string) *ClaimChatResponseBodyDataUserContext {
+	s.Mobile = &v
+	return s
+}
+
+func (s *ClaimChatResponseBodyDataUserContext) SetOutboundScenario(v bool) *ClaimChatResponseBodyDataUserContext {
+	s.OutboundScenario = &v
+	return s
+}
+
+func (s *ClaimChatResponseBodyDataUserContext) SetReserved(v int64) *ClaimChatResponseBodyDataUserContext {
+	s.Reserved = &v
+	return s
+}
+
+func (s *ClaimChatResponseBodyDataUserContext) SetSignedSkillGroupIdList(v []*string) *ClaimChatResponseBodyDataUserContext {
+	s.SignedSkillGroupIdList = v
+	return s
+}
+
+func (s *ClaimChatResponseBodyDataUserContext) SetUserId(v string) *ClaimChatResponseBodyDataUserContext {
+	s.UserId = &v
+	return s
+}
+
+func (s *ClaimChatResponseBodyDataUserContext) SetUserState(v string) *ClaimChatResponseBodyDataUserContext {
+	s.UserState = &v
+	return s
+}
+
+func (s *ClaimChatResponseBodyDataUserContext) SetWorkMode(v string) *ClaimChatResponseBodyDataUserContext {
+	s.WorkMode = &v
+	return s
+}
+
+type ClaimChatResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ClaimChatResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ClaimChatResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ClaimChatResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ClaimChatResponse) SetHeaders(v map[string]*string) *ClaimChatResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ClaimChatResponse) SetStatusCode(v int32) *ClaimChatResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ClaimChatResponse) SetBody(v *ClaimChatResponseBody) *ClaimChatResponse {
 	s.Body = v
 	return s
 }
@@ -17468,6 +17946,207 @@ func (s *GetVideoResponse) SetStatusCode(v int32) *GetVideoResponse {
 }
 
 func (s *GetVideoResponse) SetBody(v *GetVideoResponseBody) *GetVideoResponse {
+	s.Body = v
+	return s
+}
+
+type GetVisitorLoginDetailsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4c51c9116c36537cb850dc1081d745df
+	ChatDeviceId *string `json:"ChatDeviceId,omitempty" xml:"ChatDeviceId,omitempty"`
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 9XYGTGWtq2wFi_Bpg7aUnIoYi_vG_rO3b***YtsxbHRHrYHlz1LDBLJAyZcLxieRQR4h_6AnWvTjJeNU5jgxzO*****bHwej7WgWrmA
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// fcd020fe-d8e4-40e5-8c77-1a272a174a7d
+	VisitorId *string `json:"VisitorId,omitempty" xml:"VisitorId,omitempty"`
+}
+
+func (s GetVisitorLoginDetailsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVisitorLoginDetailsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetVisitorLoginDetailsRequest) SetChatDeviceId(v string) *GetVisitorLoginDetailsRequest {
+	s.ChatDeviceId = &v
+	return s
+}
+
+func (s *GetVisitorLoginDetailsRequest) SetInstanceId(v string) *GetVisitorLoginDetailsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetVisitorLoginDetailsRequest) SetToken(v string) *GetVisitorLoginDetailsRequest {
+	s.Token = &v
+	return s
+}
+
+func (s *GetVisitorLoginDetailsRequest) SetVisitorId(v string) *GetVisitorLoginDetailsRequest {
+	s.VisitorId = &v
+	return s
+}
+
+type GetVisitorLoginDetailsResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetVisitorLoginDetailsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 19D09CCC-F298-4124-849A-AFA217819011
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetVisitorLoginDetailsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVisitorLoginDetailsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetVisitorLoginDetailsResponseBody) SetCode(v string) *GetVisitorLoginDetailsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetVisitorLoginDetailsResponseBody) SetData(v *GetVisitorLoginDetailsResponseBodyData) *GetVisitorLoginDetailsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetVisitorLoginDetailsResponseBody) SetHttpStatusCode(v int32) *GetVisitorLoginDetailsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetVisitorLoginDetailsResponseBody) SetMessage(v string) *GetVisitorLoginDetailsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetVisitorLoginDetailsResponseBody) SetParams(v []*string) *GetVisitorLoginDetailsResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *GetVisitorLoginDetailsResponseBody) SetRequestId(v string) *GetVisitorLoginDetailsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetVisitorLoginDetailsResponseBodyData struct {
+	// example:
+	//
+	// 7pjxxx
+	ChatAppId *string `json:"ChatAppId,omitempty" xml:"ChatAppId,omitempty"`
+	// example:
+	//
+	// 955e4bd7xxxxxxxxxxxxxd7898ba9fa0d0
+	ChatAppKey *string `json:"ChatAppKey,omitempty" xml:"ChatAppKey,omitempty"`
+	// example:
+	//
+	// 4c51c9116c36537cb850dc1081d745df
+	ChatDeviceId *string `json:"ChatDeviceId,omitempty" xml:"ChatDeviceId,omitempty"`
+	// example:
+	//
+	// {"accessToken":"oauth_cloud_key:+4oJXUAFSWxGD2YuRW4V/oUN0/8qJGNc0I*********n1E3DOr3Q3lX00ZnTpyqRi8Y6hYoLYA7n2ZkWuv485hVtXeSgnIQkKxXPbMgwoLxWaK//lI5Dn/mb4YuDifigv+ZyFzc+07vxm9ZFu/NjA==","accessTokenExpiredTime":86400000,"refreshToken":"oauth_cloud_key:/U+8UueDmpeUszhXC+SWow4pNLZp2C***********U/377BNXF+Mjo1lFgDk6GtEjNNoJpapX2mHH8GcRke2+yKQs/w4gAN9xSMn543Ciung+93pXV6IpQGbEVlu"}
+	ChatLoginToken *string `json:"ChatLoginToken,omitempty" xml:"ChatLoginToken,omitempty"`
+	// example:
+	//
+	// wss://wss.im.dingtalk.cn
+	ChatServerUrl *string `json:"ChatServerUrl,omitempty" xml:"ChatServerUrl,omitempty"`
+	// example:
+	//
+	// dac9c001****a15684ea91a81317
+	ChatUserId *string `json:"ChatUserId,omitempty" xml:"ChatUserId,omitempty"`
+}
+
+func (s GetVisitorLoginDetailsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVisitorLoginDetailsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetVisitorLoginDetailsResponseBodyData) SetChatAppId(v string) *GetVisitorLoginDetailsResponseBodyData {
+	s.ChatAppId = &v
+	return s
+}
+
+func (s *GetVisitorLoginDetailsResponseBodyData) SetChatAppKey(v string) *GetVisitorLoginDetailsResponseBodyData {
+	s.ChatAppKey = &v
+	return s
+}
+
+func (s *GetVisitorLoginDetailsResponseBodyData) SetChatDeviceId(v string) *GetVisitorLoginDetailsResponseBodyData {
+	s.ChatDeviceId = &v
+	return s
+}
+
+func (s *GetVisitorLoginDetailsResponseBodyData) SetChatLoginToken(v string) *GetVisitorLoginDetailsResponseBodyData {
+	s.ChatLoginToken = &v
+	return s
+}
+
+func (s *GetVisitorLoginDetailsResponseBodyData) SetChatServerUrl(v string) *GetVisitorLoginDetailsResponseBodyData {
+	s.ChatServerUrl = &v
+	return s
+}
+
+func (s *GetVisitorLoginDetailsResponseBodyData) SetChatUserId(v string) *GetVisitorLoginDetailsResponseBodyData {
+	s.ChatUserId = &v
+	return s
+}
+
+type GetVisitorLoginDetailsResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetVisitorLoginDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetVisitorLoginDetailsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVisitorLoginDetailsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetVisitorLoginDetailsResponse) SetHeaders(v map[string]*string) *GetVisitorLoginDetailsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetVisitorLoginDetailsResponse) SetStatusCode(v int32) *GetVisitorLoginDetailsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetVisitorLoginDetailsResponse) SetBody(v *GetVisitorLoginDetailsResponseBody) *GetVisitorLoginDetailsResponse {
 	s.Body = v
 	return s
 }
@@ -53633,6 +54312,248 @@ func (s *StartBack2BackCallResponse) SetBody(v *StartBack2BackCallResponseBody) 
 	return s
 }
 
+type StartChatRequest struct {
+	// example:
+	//
+	// cf584733-***-***-9699-cb77aa3b7aa6
+	AccessChannelId *string `json:"AccessChannelId,omitempty" xml:"AccessChannelId,omitempty"`
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 9XYGTGWtq2wFi_Bpg7aUnIoYi_vG_rO3bjEn0YtsxbHRHrYHlz1LDBLJAyZcLxieRQR4h_6AnWvTjJeNU5jg************Hwej7WgWrmA=
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// This parameter is required.
+	UserList []*StartChatRequestUserList `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
+}
+
+func (s StartChatRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartChatRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartChatRequest) SetAccessChannelId(v string) *StartChatRequest {
+	s.AccessChannelId = &v
+	return s
+}
+
+func (s *StartChatRequest) SetInstanceId(v string) *StartChatRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *StartChatRequest) SetToken(v string) *StartChatRequest {
+	s.Token = &v
+	return s
+}
+
+func (s *StartChatRequest) SetUserList(v []*StartChatRequestUserList) *StartChatRequest {
+	s.UserList = v
+	return s
+}
+
+type StartChatRequestUserList struct {
+	// example:
+	//
+	// http://xxx.com/image
+	AvatarUrl *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
+	Nickname  *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
+	// example:
+	//
+	// fcd020fe-d8e4-40e5-8c77-1a272a174a7d
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// CUSTOMER
+	UserType *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
+}
+
+func (s StartChatRequestUserList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartChatRequestUserList) GoString() string {
+	return s.String()
+}
+
+func (s *StartChatRequestUserList) SetAvatarUrl(v string) *StartChatRequestUserList {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *StartChatRequestUserList) SetNickname(v string) *StartChatRequestUserList {
+	s.Nickname = &v
+	return s
+}
+
+func (s *StartChatRequestUserList) SetUserId(v string) *StartChatRequestUserList {
+	s.UserId = &v
+	return s
+}
+
+func (s *StartChatRequestUserList) SetUserType(v string) *StartChatRequestUserList {
+	s.UserType = &v
+	return s
+}
+
+type StartChatShrinkRequest struct {
+	// example:
+	//
+	// cf584733-***-***-9699-cb77aa3b7aa6
+	AccessChannelId *string `json:"AccessChannelId,omitempty" xml:"AccessChannelId,omitempty"`
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 9XYGTGWtq2wFi_Bpg7aUnIoYi_vG_rO3bjEn0YtsxbHRHrYHlz1LDBLJAyZcLxieRQR4h_6AnWvTjJeNU5jg************Hwej7WgWrmA=
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// This parameter is required.
+	UserListShrink *string `json:"UserList,omitempty" xml:"UserList,omitempty"`
+}
+
+func (s StartChatShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartChatShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartChatShrinkRequest) SetAccessChannelId(v string) *StartChatShrinkRequest {
+	s.AccessChannelId = &v
+	return s
+}
+
+func (s *StartChatShrinkRequest) SetInstanceId(v string) *StartChatShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *StartChatShrinkRequest) SetToken(v string) *StartChatShrinkRequest {
+	s.Token = &v
+	return s
+}
+
+func (s *StartChatShrinkRequest) SetUserListShrink(v string) *StartChatShrinkRequest {
+	s.UserListShrink = &v
+	return s
+}
+
+type StartChatResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *StartChatResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EEEE671A-3E24-4A04-81E6-6C4F5B39DF75
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StartChatResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartChatResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartChatResponseBody) SetCode(v string) *StartChatResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *StartChatResponseBody) SetData(v *StartChatResponseBodyData) *StartChatResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *StartChatResponseBody) SetHttpStatusCode(v int32) *StartChatResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *StartChatResponseBody) SetMessage(v string) *StartChatResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *StartChatResponseBody) SetRequestId(v string) *StartChatResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StartChatResponseBodyData struct {
+	// example:
+	//
+	// $23086709$EAUNIT
+	ChatConversationId *string `json:"ChatConversationId,omitempty" xml:"ChatConversationId,omitempty"`
+	// example:
+	//
+	// chat-525523618219921408
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s StartChatResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartChatResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *StartChatResponseBodyData) SetChatConversationId(v string) *StartChatResponseBodyData {
+	s.ChatConversationId = &v
+	return s
+}
+
+func (s *StartChatResponseBodyData) SetJobId(v string) *StartChatResponseBodyData {
+	s.JobId = &v
+	return s
+}
+
+type StartChatResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartChatResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StartChatResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartChatResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartChatResponse) SetHeaders(v map[string]*string) *StartChatResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartChatResponse) SetStatusCode(v int32) *StartChatResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartChatResponse) SetBody(v *StartChatResponseBody) *StartChatResponse {
+	s.Body = v
+	return s
+}
+
 type StartConferenceRequest struct {
 	// This parameter is required.
 	//
@@ -57016,6 +57937,62 @@ func (client *Client) AbortCampaign(request *AbortCampaignRequest) (_result *Abo
 	return _result, _err
 }
 
+// @param request - AcceptChatRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AcceptChatResponse
+func (client *Client) AcceptChatWithOptions(request *AcceptChatRequest, runtime *util.RuntimeOptions) (_result *AcceptChatResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AcceptChat"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AcceptChatResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - AcceptChatRequest
+//
+// @return AcceptChatResponse
+func (client *Client) AcceptChat(request *AcceptChatRequest) (_result *AcceptChatResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AcceptChatResponse{}
+	_body, _err := client.AcceptChatWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // 编辑呼入控制号码
@@ -58335,6 +59312,66 @@ func (client *Client) ChangeWorkMode(request *ChangeWorkModeRequest) (_result *C
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeWorkModeResponse{}
 	_body, _err := client.ChangeWorkModeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ClaimChatRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClaimChatResponse
+func (client *Client) ClaimChatWithOptions(request *ClaimChatRequest, runtime *util.RuntimeOptions) (_result *ClaimChatResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupId)) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ClaimChat"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ClaimChatResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ClaimChatRequest
+//
+// @return ClaimChatResponse
+func (client *Client) ClaimChat(request *ClaimChatRequest) (_result *ClaimChatResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ClaimChatResponse{}
+	_body, _err := client.ClaimChatWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -62005,6 +63042,70 @@ func (client *Client) GetVideo(request *GetVideoRequest) (_result *GetVideoRespo
 	runtime := &util.RuntimeOptions{}
 	_result = &GetVideoResponse{}
 	_body, _err := client.GetVideoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - GetVisitorLoginDetailsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVisitorLoginDetailsResponse
+func (client *Client) GetVisitorLoginDetailsWithOptions(request *GetVisitorLoginDetailsRequest, runtime *util.RuntimeOptions) (_result *GetVisitorLoginDetailsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChatDeviceId)) {
+		query["ChatDeviceId"] = request.ChatDeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Token)) {
+		query["Token"] = request.Token
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VisitorId)) {
+		query["VisitorId"] = request.VisitorId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetVisitorLoginDetails"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetVisitorLoginDetailsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - GetVisitorLoginDetailsRequest
+//
+// @return GetVisitorLoginDetailsResponse
+func (client *Client) GetVisitorLoginDetails(request *GetVisitorLoginDetailsRequest) (_result *GetVisitorLoginDetailsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetVisitorLoginDetailsResponse{}
+	_body, _err := client.GetVisitorLoginDetailsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -69447,6 +70548,76 @@ func (client *Client) StartBack2BackCall(request *StartBack2BackCallRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &StartBack2BackCallResponse{}
 	_body, _err := client.StartBack2BackCallWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param tmpReq - StartChatRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartChatResponse
+func (client *Client) StartChatWithOptions(tmpReq *StartChatRequest, runtime *util.RuntimeOptions) (_result *StartChatResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &StartChatShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserList)) {
+		request.UserListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserList, tea.String("UserList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessChannelId)) {
+		query["AccessChannelId"] = request.AccessChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Token)) {
+		query["Token"] = request.Token
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserListShrink)) {
+		query["UserList"] = request.UserListShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartChat"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartChatResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - StartChatRequest
+//
+// @return StartChatResponse
+func (client *Client) StartChat(request *StartChatRequest) (_result *StartChatResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartChatResponse{}
+	_body, _err := client.StartChatWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
