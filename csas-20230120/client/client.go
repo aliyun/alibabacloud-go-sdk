@@ -1618,6 +1618,962 @@ func (s *CreateUserGroupResponse) SetBody(v *CreateUserGroupResponseBody) *Creat
 	return s
 }
 
+type CreateWmBaseImageRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1080
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 255
+	Opacity *int32 `json:"Opacity,omitempty" xml:"Opacity,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Scale *int32 `json:"Scale,omitempty" xml:"Scale,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1920
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// aGVsbG8gc2F*****
+	WmInfoBytesB64 *string `json:"WmInfoBytesB64,omitempty" xml:"WmInfoBytesB64,omitempty"`
+	// example:
+	//
+	// 32
+	WmInfoSize *int64 `json:"WmInfoSize,omitempty" xml:"WmInfoSize,omitempty"`
+	// example:
+	//
+	// 12*****
+	WmInfoUint *string `json:"WmInfoUint,omitempty" xml:"WmInfoUint,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PureWebappInvisible
+	WmType *string `json:"WmType,omitempty" xml:"WmType,omitempty"`
+}
+
+func (s CreateWmBaseImageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWmBaseImageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmBaseImageRequest) SetHeight(v int32) *CreateWmBaseImageRequest {
+	s.Height = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequest) SetOpacity(v int32) *CreateWmBaseImageRequest {
+	s.Opacity = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequest) SetScale(v int32) *CreateWmBaseImageRequest {
+	s.Scale = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequest) SetWidth(v int32) *CreateWmBaseImageRequest {
+	s.Width = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequest) SetWmInfoBytesB64(v string) *CreateWmBaseImageRequest {
+	s.WmInfoBytesB64 = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequest) SetWmInfoSize(v int64) *CreateWmBaseImageRequest {
+	s.WmInfoSize = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequest) SetWmInfoUint(v string) *CreateWmBaseImageRequest {
+	s.WmInfoUint = &v
+	return s
+}
+
+func (s *CreateWmBaseImageRequest) SetWmType(v string) *CreateWmBaseImageRequest {
+	s.WmType = &v
+	return s
+}
+
+type CreateWmBaseImageResponseBody struct {
+	Data *CreateWmBaseImageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 58D6B23E-E5DA-5418-8F61-51A3B5A30049
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateWmBaseImageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWmBaseImageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmBaseImageResponseBody) SetData(v *CreateWmBaseImageResponseBodyData) *CreateWmBaseImageResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateWmBaseImageResponseBody) SetRequestId(v string) *CreateWmBaseImageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateWmBaseImageResponseBodyData struct {
+	// example:
+	//
+	// fafb432cdede9b20640e12105845386e-496883833-8242409229217337*****
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// https://example.com/test-*****.png
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// example:
+	//
+	// 17185*****
+	ImageUrlExp *int64 `json:"ImageUrlExp,omitempty" xml:"ImageUrlExp,omitempty"`
+}
+
+func (s CreateWmBaseImageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWmBaseImageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmBaseImageResponseBodyData) SetImageId(v string) *CreateWmBaseImageResponseBodyData {
+	s.ImageId = &v
+	return s
+}
+
+func (s *CreateWmBaseImageResponseBodyData) SetImageUrl(v string) *CreateWmBaseImageResponseBodyData {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *CreateWmBaseImageResponseBodyData) SetImageUrlExp(v int64) *CreateWmBaseImageResponseBodyData {
+	s.ImageUrlExp = &v
+	return s
+}
+
+type CreateWmBaseImageResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateWmBaseImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateWmBaseImageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWmBaseImageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmBaseImageResponse) SetHeaders(v map[string]*string) *CreateWmBaseImageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateWmBaseImageResponse) SetStatusCode(v int32) *CreateWmBaseImageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateWmBaseImageResponse) SetBody(v *CreateWmBaseImageResponseBody) *CreateWmBaseImageResponse {
+	s.Body = v
+	return s
+}
+
+type CreateWmEmbedTaskRequest struct {
+	DocumentControl *CreateWmEmbedTaskRequestDocumentControl `json:"DocumentControl,omitempty" xml:"DocumentControl,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://example.com/abc****.pdf
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// abc****.pdf
+	Filename *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	// example:
+	//
+	// 95
+	ImageEmbedJpegQuality *int64 `json:"ImageEmbedJpegQuality,omitempty" xml:"ImageEmbedJpegQuality,omitempty"`
+	// example:
+	//
+	// 2
+	ImageEmbedLevel *int64 `json:"ImageEmbedLevel,omitempty" xml:"ImageEmbedLevel,omitempty"`
+	// example:
+	//
+	// 3000k
+	VideoBitrate *string `json:"VideoBitrate,omitempty" xml:"VideoBitrate,omitempty"`
+	// example:
+	//
+	// false
+	VideoIsLong *bool `json:"VideoIsLong,omitempty" xml:"VideoIsLong,omitempty"`
+	// example:
+	//
+	// aGVsbG8gc2F*****
+	WmInfoBytesB64 *string `json:"WmInfoBytesB64,omitempty" xml:"WmInfoBytesB64,omitempty"`
+	// example:
+	//
+	// 32
+	WmInfoSize *int64 `json:"WmInfoSize,omitempty" xml:"WmInfoSize,omitempty"`
+	// example:
+	//
+	// 123***
+	WmInfoUint *string `json:"WmInfoUint,omitempty" xml:"WmInfoUint,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PureDocument
+	WmType *string `json:"WmType,omitempty" xml:"WmType,omitempty"`
+}
+
+func (s CreateWmEmbedTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWmEmbedTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmEmbedTaskRequest) SetDocumentControl(v *CreateWmEmbedTaskRequestDocumentControl) *CreateWmEmbedTaskRequest {
+	s.DocumentControl = v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequest) SetFileUrl(v string) *CreateWmEmbedTaskRequest {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequest) SetFilename(v string) *CreateWmEmbedTaskRequest {
+	s.Filename = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequest) SetImageEmbedJpegQuality(v int64) *CreateWmEmbedTaskRequest {
+	s.ImageEmbedJpegQuality = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequest) SetImageEmbedLevel(v int64) *CreateWmEmbedTaskRequest {
+	s.ImageEmbedLevel = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequest) SetVideoBitrate(v string) *CreateWmEmbedTaskRequest {
+	s.VideoBitrate = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequest) SetVideoIsLong(v bool) *CreateWmEmbedTaskRequest {
+	s.VideoIsLong = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequest) SetWmInfoBytesB64(v string) *CreateWmEmbedTaskRequest {
+	s.WmInfoBytesB64 = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequest) SetWmInfoSize(v int64) *CreateWmEmbedTaskRequest {
+	s.WmInfoSize = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequest) SetWmInfoUint(v string) *CreateWmEmbedTaskRequest {
+	s.WmInfoUint = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequest) SetWmType(v string) *CreateWmEmbedTaskRequest {
+	s.WmType = &v
+	return s
+}
+
+type CreateWmEmbedTaskRequestDocumentControl struct {
+	BackgroundControl *CreateWmEmbedTaskRequestDocumentControlBackgroundControl `json:"BackgroundControl,omitempty" xml:"BackgroundControl,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	InvisibleAntiAllCopy *bool `json:"InvisibleAntiAllCopy,omitempty" xml:"InvisibleAntiAllCopy,omitempty"`
+	// example:
+	//
+	// true
+	InvisibleAntiTextCopy *bool `json:"InvisibleAntiTextCopy,omitempty" xml:"InvisibleAntiTextCopy,omitempty"`
+}
+
+func (s CreateWmEmbedTaskRequestDocumentControl) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWmEmbedTaskRequestDocumentControl) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmEmbedTaskRequestDocumentControl) SetBackgroundControl(v *CreateWmEmbedTaskRequestDocumentControlBackgroundControl) *CreateWmEmbedTaskRequestDocumentControl {
+	s.BackgroundControl = v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestDocumentControl) SetInvisibleAntiAllCopy(v bool) *CreateWmEmbedTaskRequestDocumentControl {
+	s.InvisibleAntiAllCopy = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestDocumentControl) SetInvisibleAntiTextCopy(v bool) *CreateWmEmbedTaskRequestDocumentControl {
+	s.InvisibleAntiTextCopy = &v
+	return s
+}
+
+type CreateWmEmbedTaskRequestDocumentControlBackgroundControl struct {
+	// example:
+	//
+	// true
+	BgAddInvisible *bool `json:"BgAddInvisible,omitempty" xml:"BgAddInvisible,omitempty"`
+	// example:
+	//
+	// true
+	BgAddVisible       *bool                                                                       `json:"BgAddVisible,omitempty" xml:"BgAddVisible,omitempty"`
+	BgInvisibleControl *CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgInvisibleControl `json:"BgInvisibleControl,omitempty" xml:"BgInvisibleControl,omitempty" type:"Struct"`
+	BgVisibleControl   *CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgVisibleControl   `json:"BgVisibleControl,omitempty" xml:"BgVisibleControl,omitempty" type:"Struct"`
+}
+
+func (s CreateWmEmbedTaskRequestDocumentControlBackgroundControl) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWmEmbedTaskRequestDocumentControlBackgroundControl) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmEmbedTaskRequestDocumentControlBackgroundControl) SetBgAddInvisible(v bool) *CreateWmEmbedTaskRequestDocumentControlBackgroundControl {
+	s.BgAddInvisible = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestDocumentControlBackgroundControl) SetBgAddVisible(v bool) *CreateWmEmbedTaskRequestDocumentControlBackgroundControl {
+	s.BgAddVisible = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestDocumentControlBackgroundControl) SetBgInvisibleControl(v *CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgInvisibleControl) *CreateWmEmbedTaskRequestDocumentControlBackgroundControl {
+	s.BgInvisibleControl = v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestDocumentControlBackgroundControl) SetBgVisibleControl(v *CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgVisibleControl) *CreateWmEmbedTaskRequestDocumentControlBackgroundControl {
+	s.BgVisibleControl = v
+	return s
+}
+
+type CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgInvisibleControl struct {
+	// example:
+	//
+	// 10
+	Opacity *int64 `json:"Opacity,omitempty" xml:"Opacity,omitempty"`
+}
+
+func (s CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgInvisibleControl) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgInvisibleControl) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgInvisibleControl) SetOpacity(v int64) *CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgInvisibleControl {
+	s.Opacity = &v
+	return s
+}
+
+type CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgVisibleControl struct {
+	// example:
+	//
+	// 30
+	Angle *int64 `json:"Angle,omitempty" xml:"Angle,omitempty"`
+	// example:
+	//
+	// 0x000000
+	FontColor *string `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	// example:
+	//
+	// 30
+	FontSize *int64 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	// example:
+	//
+	// 3
+	HorizontalNumber *int64 `json:"HorizontalNumber,omitempty" xml:"HorizontalNumber,omitempty"`
+	// example:
+	//
+	// pos
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// example:
+	//
+	// 100
+	Opacity *int64 `json:"Opacity,omitempty" xml:"Opacity,omitempty"`
+	// example:
+	//
+	// 0.5
+	PosX *string `json:"PosX,omitempty" xml:"PosX,omitempty"`
+	// example:
+	//
+	// 0.5
+	PosY *string `json:"PosY,omitempty" xml:"PosY,omitempty"`
+	// example:
+	//
+	// 3
+	VerticalNumber *int64 `json:"VerticalNumber,omitempty" xml:"VerticalNumber,omitempty"`
+	// example:
+	//
+	// hello ****
+	VisibleText *string `json:"VisibleText,omitempty" xml:"VisibleText,omitempty"`
+}
+
+func (s CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgVisibleControl) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgVisibleControl) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgVisibleControl) SetAngle(v int64) *CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgVisibleControl {
+	s.Angle = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgVisibleControl) SetFontColor(v string) *CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgVisibleControl {
+	s.FontColor = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgVisibleControl) SetFontSize(v int64) *CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgVisibleControl {
+	s.FontSize = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgVisibleControl) SetHorizontalNumber(v int64) *CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgVisibleControl {
+	s.HorizontalNumber = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgVisibleControl) SetMode(v string) *CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgVisibleControl {
+	s.Mode = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgVisibleControl) SetOpacity(v int64) *CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgVisibleControl {
+	s.Opacity = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgVisibleControl) SetPosX(v string) *CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgVisibleControl {
+	s.PosX = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgVisibleControl) SetPosY(v string) *CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgVisibleControl {
+	s.PosY = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgVisibleControl) SetVerticalNumber(v int64) *CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgVisibleControl {
+	s.VerticalNumber = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgVisibleControl) SetVisibleText(v string) *CreateWmEmbedTaskRequestDocumentControlBackgroundControlBgVisibleControl {
+	s.VisibleText = &v
+	return s
+}
+
+type CreateWmEmbedTaskShrinkRequest struct {
+	DocumentControlShrink *string `json:"DocumentControl,omitempty" xml:"DocumentControl,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://example.com/abc****.pdf
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// abc****.pdf
+	Filename *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	// example:
+	//
+	// 95
+	ImageEmbedJpegQuality *int64 `json:"ImageEmbedJpegQuality,omitempty" xml:"ImageEmbedJpegQuality,omitempty"`
+	// example:
+	//
+	// 2
+	ImageEmbedLevel *int64 `json:"ImageEmbedLevel,omitempty" xml:"ImageEmbedLevel,omitempty"`
+	// example:
+	//
+	// 3000k
+	VideoBitrate *string `json:"VideoBitrate,omitempty" xml:"VideoBitrate,omitempty"`
+	// example:
+	//
+	// false
+	VideoIsLong *bool `json:"VideoIsLong,omitempty" xml:"VideoIsLong,omitempty"`
+	// example:
+	//
+	// aGVsbG8gc2F*****
+	WmInfoBytesB64 *string `json:"WmInfoBytesB64,omitempty" xml:"WmInfoBytesB64,omitempty"`
+	// example:
+	//
+	// 32
+	WmInfoSize *int64 `json:"WmInfoSize,omitempty" xml:"WmInfoSize,omitempty"`
+	// example:
+	//
+	// 123***
+	WmInfoUint *string `json:"WmInfoUint,omitempty" xml:"WmInfoUint,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PureDocument
+	WmType *string `json:"WmType,omitempty" xml:"WmType,omitempty"`
+}
+
+func (s CreateWmEmbedTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWmEmbedTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmEmbedTaskShrinkRequest) SetDocumentControlShrink(v string) *CreateWmEmbedTaskShrinkRequest {
+	s.DocumentControlShrink = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskShrinkRequest) SetFileUrl(v string) *CreateWmEmbedTaskShrinkRequest {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskShrinkRequest) SetFilename(v string) *CreateWmEmbedTaskShrinkRequest {
+	s.Filename = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskShrinkRequest) SetImageEmbedJpegQuality(v int64) *CreateWmEmbedTaskShrinkRequest {
+	s.ImageEmbedJpegQuality = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskShrinkRequest) SetImageEmbedLevel(v int64) *CreateWmEmbedTaskShrinkRequest {
+	s.ImageEmbedLevel = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskShrinkRequest) SetVideoBitrate(v string) *CreateWmEmbedTaskShrinkRequest {
+	s.VideoBitrate = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskShrinkRequest) SetVideoIsLong(v bool) *CreateWmEmbedTaskShrinkRequest {
+	s.VideoIsLong = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskShrinkRequest) SetWmInfoBytesB64(v string) *CreateWmEmbedTaskShrinkRequest {
+	s.WmInfoBytesB64 = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskShrinkRequest) SetWmInfoSize(v int64) *CreateWmEmbedTaskShrinkRequest {
+	s.WmInfoSize = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskShrinkRequest) SetWmInfoUint(v string) *CreateWmEmbedTaskShrinkRequest {
+	s.WmInfoUint = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskShrinkRequest) SetWmType(v string) *CreateWmEmbedTaskShrinkRequest {
+	s.WmType = &v
+	return s
+}
+
+type CreateWmEmbedTaskResponseBody struct {
+	Data *CreateWmEmbedTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// BE4FB974-11BC-5453-9BE1-1606A73EACA6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateWmEmbedTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWmEmbedTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmEmbedTaskResponseBody) SetData(v *CreateWmEmbedTaskResponseBodyData) *CreateWmEmbedTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateWmEmbedTaskResponseBody) SetRequestId(v string) *CreateWmEmbedTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateWmEmbedTaskResponseBodyData struct {
+	// example:
+	//
+	// job:5GfrJYsoaffmCE7Z5bZtjUefzxfd****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s CreateWmEmbedTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWmEmbedTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmEmbedTaskResponseBodyData) SetTaskId(v string) *CreateWmEmbedTaskResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type CreateWmEmbedTaskResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateWmEmbedTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateWmEmbedTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWmEmbedTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmEmbedTaskResponse) SetHeaders(v map[string]*string) *CreateWmEmbedTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateWmEmbedTaskResponse) SetStatusCode(v int32) *CreateWmEmbedTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateWmEmbedTaskResponse) SetBody(v *CreateWmEmbedTaskResponseBody) *CreateWmEmbedTaskResponse {
+	s.Body = v
+	return s
+}
+
+type CreateWmExtractTaskRequest struct {
+	// example:
+	//
+	// false
+	DocumentIsCapture *bool `json:"DocumentIsCapture,omitempty" xml:"DocumentIsCapture,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://example.com/test-****.pdf
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-****.pdf
+	Filename *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	// example:
+	//
+	// false
+	VideoIsLong *bool `json:"VideoIsLong,omitempty" xml:"VideoIsLong,omitempty"`
+	// example:
+	//
+	// 1
+	VideoSpeed *string `json:"VideoSpeed,omitempty" xml:"VideoSpeed,omitempty"`
+	// example:
+	//
+	// 32
+	WmInfoSize *int64 `json:"WmInfoSize,omitempty" xml:"WmInfoSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PureDocument
+	WmType *string `json:"WmType,omitempty" xml:"WmType,omitempty"`
+}
+
+func (s CreateWmExtractTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWmExtractTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmExtractTaskRequest) SetDocumentIsCapture(v bool) *CreateWmExtractTaskRequest {
+	s.DocumentIsCapture = &v
+	return s
+}
+
+func (s *CreateWmExtractTaskRequest) SetFileUrl(v string) *CreateWmExtractTaskRequest {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *CreateWmExtractTaskRequest) SetFilename(v string) *CreateWmExtractTaskRequest {
+	s.Filename = &v
+	return s
+}
+
+func (s *CreateWmExtractTaskRequest) SetVideoIsLong(v bool) *CreateWmExtractTaskRequest {
+	s.VideoIsLong = &v
+	return s
+}
+
+func (s *CreateWmExtractTaskRequest) SetVideoSpeed(v string) *CreateWmExtractTaskRequest {
+	s.VideoSpeed = &v
+	return s
+}
+
+func (s *CreateWmExtractTaskRequest) SetWmInfoSize(v int64) *CreateWmExtractTaskRequest {
+	s.WmInfoSize = &v
+	return s
+}
+
+func (s *CreateWmExtractTaskRequest) SetWmType(v string) *CreateWmExtractTaskRequest {
+	s.WmType = &v
+	return s
+}
+
+type CreateWmExtractTaskResponseBody struct {
+	Data *CreateWmExtractTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// D6707286-A50E-57B1-B2CF-EFAC59E850D8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateWmExtractTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWmExtractTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmExtractTaskResponseBody) SetData(v *CreateWmExtractTaskResponseBodyData) *CreateWmExtractTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateWmExtractTaskResponseBody) SetRequestId(v string) *CreateWmExtractTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateWmExtractTaskResponseBodyData struct {
+	// example:
+	//
+	// wmt-9648c22d2eb2cb57bb855dcae7898464********
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s CreateWmExtractTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWmExtractTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmExtractTaskResponseBodyData) SetTaskId(v string) *CreateWmExtractTaskResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type CreateWmExtractTaskResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateWmExtractTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateWmExtractTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWmExtractTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmExtractTaskResponse) SetHeaders(v map[string]*string) *CreateWmExtractTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateWmExtractTaskResponse) SetStatusCode(v int32) *CreateWmExtractTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateWmExtractTaskResponse) SetBody(v *CreateWmExtractTaskResponseBody) *CreateWmExtractTaskResponse {
+	s.Body = v
+	return s
+}
+
+type CreateWmInfoMappingRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aGVsbG8gc2F*****
+	WmInfoBytesB64 *string `json:"WmInfoBytesB64,omitempty" xml:"WmInfoBytesB64,omitempty"`
+	// example:
+	//
+	// 32
+	WmInfoSize *int64 `json:"WmInfoSize,omitempty" xml:"WmInfoSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PureDocument
+	WmType *string `json:"WmType,omitempty" xml:"WmType,omitempty"`
+}
+
+func (s CreateWmInfoMappingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWmInfoMappingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmInfoMappingRequest) SetWmInfoBytesB64(v string) *CreateWmInfoMappingRequest {
+	s.WmInfoBytesB64 = &v
+	return s
+}
+
+func (s *CreateWmInfoMappingRequest) SetWmInfoSize(v int64) *CreateWmInfoMappingRequest {
+	s.WmInfoSize = &v
+	return s
+}
+
+func (s *CreateWmInfoMappingRequest) SetWmType(v string) *CreateWmInfoMappingRequest {
+	s.WmType = &v
+	return s
+}
+
+type CreateWmInfoMappingResponseBody struct {
+	Data *CreateWmInfoMappingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 7E9D7ACD-53D5-56EF-A913-79D148D06299
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateWmInfoMappingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWmInfoMappingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmInfoMappingResponseBody) SetData(v *CreateWmInfoMappingResponseBodyData) *CreateWmInfoMappingResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateWmInfoMappingResponseBody) SetRequestId(v string) *CreateWmInfoMappingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateWmInfoMappingResponseBodyData struct {
+	// example:
+	//
+	// 123***
+	WmInfoUint *int64 `json:"WmInfoUint,omitempty" xml:"WmInfoUint,omitempty"`
+}
+
+func (s CreateWmInfoMappingResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWmInfoMappingResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmInfoMappingResponseBodyData) SetWmInfoUint(v int64) *CreateWmInfoMappingResponseBodyData {
+	s.WmInfoUint = &v
+	return s
+}
+
+type CreateWmInfoMappingResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateWmInfoMappingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateWmInfoMappingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWmInfoMappingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWmInfoMappingResponse) SetHeaders(v map[string]*string) *CreateWmInfoMappingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateWmInfoMappingResponse) SetStatusCode(v int32) *CreateWmInfoMappingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateWmInfoMappingResponse) SetBody(v *CreateWmInfoMappingResponseBody) *CreateWmInfoMappingResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteClientUserRequest struct {
 	// This parameter is required.
 	//
@@ -4439,6 +5395,317 @@ func (s *GetUserGroupResponse) SetStatusCode(v int32) *GetUserGroupResponse {
 }
 
 func (s *GetUserGroupResponse) SetBody(v *GetUserGroupResponseBody) *GetUserGroupResponse {
+	s.Body = v
+	return s
+}
+
+type GetWmEmbedTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// job:5GfrJYsoaffmCE7Z5bZtjU********
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GetWmEmbedTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWmEmbedTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetWmEmbedTaskRequest) SetTaskId(v string) *GetWmEmbedTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetWmEmbedTaskResponseBody struct {
+	Data *GetWmEmbedTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// D6707286-A50E-57B1-B2CF-EFAC59E850D8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetWmEmbedTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWmEmbedTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetWmEmbedTaskResponseBody) SetData(v *GetWmEmbedTaskResponseBodyData) *GetWmEmbedTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetWmEmbedTaskResponseBody) SetRequestId(v string) *GetWmEmbedTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetWmEmbedTaskResponseBodyData struct {
+	// example:
+	//
+	// https://example.com/embed-****.pdf
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// 171859****
+	FileUrlExp *string `json:"FileUrlExp,omitempty" xml:"FileUrlExp,omitempty"`
+	// example:
+	//
+	// embed-****.pdf
+	Filename *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	// example:
+	//
+	// d41d8cd98f00b204e9800998ecf8****
+	OutFileHashMd5 *string `json:"OutFileHashMd5,omitempty" xml:"OutFileHashMd5,omitempty"`
+	// example:
+	//
+	// 123**
+	OutFileSize *int64 `json:"OutFileSize,omitempty" xml:"OutFileSize,omitempty"`
+	// example:
+	//
+	// job:5GfrJYsoaffmCE7Z5bZtjUxxxxxxxxxx
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// Success
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+}
+
+func (s GetWmEmbedTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWmEmbedTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetWmEmbedTaskResponseBodyData) SetFileUrl(v string) *GetWmEmbedTaskResponseBodyData {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *GetWmEmbedTaskResponseBodyData) SetFileUrlExp(v string) *GetWmEmbedTaskResponseBodyData {
+	s.FileUrlExp = &v
+	return s
+}
+
+func (s *GetWmEmbedTaskResponseBodyData) SetFilename(v string) *GetWmEmbedTaskResponseBodyData {
+	s.Filename = &v
+	return s
+}
+
+func (s *GetWmEmbedTaskResponseBodyData) SetOutFileHashMd5(v string) *GetWmEmbedTaskResponseBodyData {
+	s.OutFileHashMd5 = &v
+	return s
+}
+
+func (s *GetWmEmbedTaskResponseBodyData) SetOutFileSize(v int64) *GetWmEmbedTaskResponseBodyData {
+	s.OutFileSize = &v
+	return s
+}
+
+func (s *GetWmEmbedTaskResponseBodyData) SetTaskId(v string) *GetWmEmbedTaskResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetWmEmbedTaskResponseBodyData) SetTaskStatus(v string) *GetWmEmbedTaskResponseBodyData {
+	s.TaskStatus = &v
+	return s
+}
+
+type GetWmEmbedTaskResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetWmEmbedTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetWmEmbedTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWmEmbedTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetWmEmbedTaskResponse) SetHeaders(v map[string]*string) *GetWmEmbedTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetWmEmbedTaskResponse) SetStatusCode(v int32) *GetWmEmbedTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetWmEmbedTaskResponse) SetBody(v *GetWmEmbedTaskResponseBody) *GetWmEmbedTaskResponse {
+	s.Body = v
+	return s
+}
+
+type GetWmExtractTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// wmt-9648c22d2eb2cb57bb855dcae7898464********
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GetWmExtractTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWmExtractTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetWmExtractTaskRequest) SetTaskId(v string) *GetWmExtractTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetWmExtractTaskResponseBody struct {
+	Data *GetWmExtractTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 102350E7-1A20-58F5-9D63-ABEA820AE6E1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetWmExtractTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWmExtractTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetWmExtractTaskResponseBody) SetData(v *GetWmExtractTaskResponseBodyData) *GetWmExtractTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetWmExtractTaskResponseBody) SetRequestId(v string) *GetWmExtractTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetWmExtractTaskResponseBodyData struct {
+	// example:
+	//
+	// 2024-01-01 11:22:33
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// test-****.pdf
+	Filename *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
+	// example:
+	//
+	// Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// wmt-9648c22d2eb2cb57bb855dcae7898464********
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// aGVsbG8gc2Fz****
+	WmInfoBytesB64 *string `json:"WmInfoBytesB64,omitempty" xml:"WmInfoBytesB64,omitempty"`
+	// example:
+	//
+	// 32
+	WmInfoSize *int64 `json:"WmInfoSize,omitempty" xml:"WmInfoSize,omitempty"`
+	// example:
+	//
+	// 123**
+	WmInfoUint *int64 `json:"WmInfoUint,omitempty" xml:"WmInfoUint,omitempty"`
+	// example:
+	//
+	// PureDocument
+	WmType *string `json:"WmType,omitempty" xml:"WmType,omitempty"`
+}
+
+func (s GetWmExtractTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWmExtractTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetWmExtractTaskResponseBodyData) SetCreateTime(v string) *GetWmExtractTaskResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetWmExtractTaskResponseBodyData) SetFilename(v string) *GetWmExtractTaskResponseBodyData {
+	s.Filename = &v
+	return s
+}
+
+func (s *GetWmExtractTaskResponseBodyData) SetStatus(v string) *GetWmExtractTaskResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetWmExtractTaskResponseBodyData) SetTaskId(v string) *GetWmExtractTaskResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetWmExtractTaskResponseBodyData) SetWmInfoBytesB64(v string) *GetWmExtractTaskResponseBodyData {
+	s.WmInfoBytesB64 = &v
+	return s
+}
+
+func (s *GetWmExtractTaskResponseBodyData) SetWmInfoSize(v int64) *GetWmExtractTaskResponseBodyData {
+	s.WmInfoSize = &v
+	return s
+}
+
+func (s *GetWmExtractTaskResponseBodyData) SetWmInfoUint(v int64) *GetWmExtractTaskResponseBodyData {
+	s.WmInfoUint = &v
+	return s
+}
+
+func (s *GetWmExtractTaskResponseBodyData) SetWmType(v string) *GetWmExtractTaskResponseBodyData {
+	s.WmType = &v
+	return s
+}
+
+type GetWmExtractTaskResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetWmExtractTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetWmExtractTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWmExtractTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetWmExtractTaskResponse) SetHeaders(v map[string]*string) *GetWmExtractTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetWmExtractTaskResponse) SetStatusCode(v int32) *GetWmExtractTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetWmExtractTaskResponse) SetBody(v *GetWmExtractTaskResponseBody) *GetWmExtractTaskResponse {
 	s.Body = v
 	return s
 }
@@ -10700,6 +11967,123 @@ func (s *ListUsersResponse) SetBody(v *ListUsersResponseBody) *ListUsersResponse
 	return s
 }
 
+type LookupWmInfoMappingRequest struct {
+	// example:
+	//
+	// 32
+	WmInfoSize *int64 `json:"WmInfoSize,omitempty" xml:"WmInfoSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123***
+	WmInfoUint *string `json:"WmInfoUint,omitempty" xml:"WmInfoUint,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PureDocument
+	WmType *string `json:"WmType,omitempty" xml:"WmType,omitempty"`
+}
+
+func (s LookupWmInfoMappingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LookupWmInfoMappingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *LookupWmInfoMappingRequest) SetWmInfoSize(v int64) *LookupWmInfoMappingRequest {
+	s.WmInfoSize = &v
+	return s
+}
+
+func (s *LookupWmInfoMappingRequest) SetWmInfoUint(v string) *LookupWmInfoMappingRequest {
+	s.WmInfoUint = &v
+	return s
+}
+
+func (s *LookupWmInfoMappingRequest) SetWmType(v string) *LookupWmInfoMappingRequest {
+	s.WmType = &v
+	return s
+}
+
+type LookupWmInfoMappingResponseBody struct {
+	Data *LookupWmInfoMappingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 7E9D7ACD-53D5-56EF-A913-79D148D06299
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s LookupWmInfoMappingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LookupWmInfoMappingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *LookupWmInfoMappingResponseBody) SetData(v *LookupWmInfoMappingResponseBodyData) *LookupWmInfoMappingResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *LookupWmInfoMappingResponseBody) SetRequestId(v string) *LookupWmInfoMappingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type LookupWmInfoMappingResponseBodyData struct {
+	// example:
+	//
+	// aGVsbG8gc2F*****
+	WmInfoBytesB64 *string `json:"WmInfoBytesB64,omitempty" xml:"WmInfoBytesB64,omitempty"`
+}
+
+func (s LookupWmInfoMappingResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LookupWmInfoMappingResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *LookupWmInfoMappingResponseBodyData) SetWmInfoBytesB64(v string) *LookupWmInfoMappingResponseBodyData {
+	s.WmInfoBytesB64 = &v
+	return s
+}
+
+type LookupWmInfoMappingResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *LookupWmInfoMappingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s LookupWmInfoMappingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LookupWmInfoMappingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *LookupWmInfoMappingResponse) SetHeaders(v map[string]*string) *LookupWmInfoMappingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *LookupWmInfoMappingResponse) SetStatusCode(v int32) *LookupWmInfoMappingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *LookupWmInfoMappingResponse) SetBody(v *LookupWmInfoMappingResponseBody) *LookupWmInfoMappingResponse {
+	s.Body = v
+	return s
+}
+
 type RevokeUserSessionRequest struct {
 	// This parameter is required.
 	//
@@ -14036,6 +15420,352 @@ func (client *Client) CreateUserGroup(request *CreateUserGroupRequest) (_result 
 
 // Summary:
 //
+// 创建数字水印暗水印透明底图
+//
+// @param request - CreateWmBaseImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWmBaseImageResponse
+func (client *Client) CreateWmBaseImageWithOptions(request *CreateWmBaseImageRequest, runtime *util.RuntimeOptions) (_result *CreateWmBaseImageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Height)) {
+		body["Height"] = request.Height
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Opacity)) {
+		body["Opacity"] = request.Opacity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scale)) {
+		body["Scale"] = request.Scale
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Width)) {
+		body["Width"] = request.Width
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WmInfoBytesB64)) {
+		body["WmInfoBytesB64"] = request.WmInfoBytesB64
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WmInfoSize)) {
+		body["WmInfoSize"] = request.WmInfoSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WmInfoUint)) {
+		body["WmInfoUint"] = request.WmInfoUint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WmType)) {
+		body["WmType"] = request.WmType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateWmBaseImage"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateWmBaseImageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建数字水印暗水印透明底图
+//
+// @param request - CreateWmBaseImageRequest
+//
+// @return CreateWmBaseImageResponse
+func (client *Client) CreateWmBaseImage(request *CreateWmBaseImageRequest) (_result *CreateWmBaseImageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateWmBaseImageResponse{}
+	_body, _err := client.CreateWmBaseImageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建嵌入水印任务
+//
+// @param tmpReq - CreateWmEmbedTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWmEmbedTaskResponse
+func (client *Client) CreateWmEmbedTaskWithOptions(tmpReq *CreateWmEmbedTaskRequest, runtime *util.RuntimeOptions) (_result *CreateWmEmbedTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateWmEmbedTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DocumentControl)) {
+		request.DocumentControlShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DocumentControl, tea.String("DocumentControl"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DocumentControlShrink)) {
+		body["DocumentControl"] = request.DocumentControlShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
+		body["FileUrl"] = request.FileUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Filename)) {
+		body["Filename"] = request.Filename
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageEmbedJpegQuality)) {
+		body["ImageEmbedJpegQuality"] = request.ImageEmbedJpegQuality
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageEmbedLevel)) {
+		body["ImageEmbedLevel"] = request.ImageEmbedLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoBitrate)) {
+		body["VideoBitrate"] = request.VideoBitrate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoIsLong)) {
+		body["VideoIsLong"] = request.VideoIsLong
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WmInfoBytesB64)) {
+		body["WmInfoBytesB64"] = request.WmInfoBytesB64
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WmInfoSize)) {
+		body["WmInfoSize"] = request.WmInfoSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WmInfoUint)) {
+		body["WmInfoUint"] = request.WmInfoUint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WmType)) {
+		body["WmType"] = request.WmType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateWmEmbedTask"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateWmEmbedTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建嵌入水印任务
+//
+// @param request - CreateWmEmbedTaskRequest
+//
+// @return CreateWmEmbedTaskResponse
+func (client *Client) CreateWmEmbedTask(request *CreateWmEmbedTaskRequest) (_result *CreateWmEmbedTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateWmEmbedTaskResponse{}
+	_body, _err := client.CreateWmEmbedTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建文件水印提取任务
+//
+// @param request - CreateWmExtractTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWmExtractTaskResponse
+func (client *Client) CreateWmExtractTaskWithOptions(request *CreateWmExtractTaskRequest, runtime *util.RuntimeOptions) (_result *CreateWmExtractTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DocumentIsCapture)) {
+		body["DocumentIsCapture"] = request.DocumentIsCapture
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
+		body["FileUrl"] = request.FileUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Filename)) {
+		body["Filename"] = request.Filename
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoIsLong)) {
+		body["VideoIsLong"] = request.VideoIsLong
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoSpeed)) {
+		body["VideoSpeed"] = request.VideoSpeed
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WmInfoSize)) {
+		body["WmInfoSize"] = request.WmInfoSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WmType)) {
+		body["WmType"] = request.WmType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateWmExtractTask"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateWmExtractTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建文件水印提取任务
+//
+// @param request - CreateWmExtractTaskRequest
+//
+// @return CreateWmExtractTaskResponse
+func (client *Client) CreateWmExtractTask(request *CreateWmExtractTaskRequest) (_result *CreateWmExtractTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateWmExtractTaskResponse{}
+	_body, _err := client.CreateWmExtractTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建一条字符串水印信息到数字水印信息的映射记录
+//
+// @param request - CreateWmInfoMappingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWmInfoMappingResponse
+func (client *Client) CreateWmInfoMappingWithOptions(request *CreateWmInfoMappingRequest, runtime *util.RuntimeOptions) (_result *CreateWmInfoMappingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WmInfoBytesB64)) {
+		body["WmInfoBytesB64"] = request.WmInfoBytesB64
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WmInfoSize)) {
+		body["WmInfoSize"] = request.WmInfoSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WmType)) {
+		body["WmType"] = request.WmType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateWmInfoMapping"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateWmInfoMappingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建一条字符串水印信息到数字水印信息的映射记录
+//
+// @param request - CreateWmInfoMappingRequest
+//
+// @return CreateWmInfoMappingResponse
+func (client *Client) CreateWmInfoMapping(request *CreateWmInfoMappingRequest) (_result *CreateWmInfoMappingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateWmInfoMappingResponse{}
+	_body, _err := client.CreateWmInfoMappingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除自定义身份源指定用户
 //
 // @param request - DeleteClientUserRequest
@@ -15261,6 +16991,118 @@ func (client *Client) GetUserGroup(request *GetUserGroupRequest) (_result *GetUs
 	runtime := &util.RuntimeOptions{}
 	_result = &GetUserGroupResponse{}
 	_body, _err := client.GetUserGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询嵌入水印任务
+//
+// @param request - GetWmEmbedTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWmEmbedTaskResponse
+func (client *Client) GetWmEmbedTaskWithOptions(request *GetWmEmbedTaskRequest, runtime *util.RuntimeOptions) (_result *GetWmEmbedTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetWmEmbedTask"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetWmEmbedTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询嵌入水印任务
+//
+// @param request - GetWmEmbedTaskRequest
+//
+// @return GetWmEmbedTaskResponse
+func (client *Client) GetWmEmbedTask(request *GetWmEmbedTaskRequest) (_result *GetWmEmbedTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetWmEmbedTaskResponse{}
+	_body, _err := client.GetWmEmbedTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询文件水印提取任务详情
+//
+// @param request - GetWmExtractTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWmExtractTaskResponse
+func (client *Client) GetWmExtractTaskWithOptions(request *GetWmExtractTaskRequest, runtime *util.RuntimeOptions) (_result *GetWmExtractTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetWmExtractTask"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetWmExtractTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询文件水印提取任务详情
+//
+// @param request - GetWmExtractTaskRequest
+//
+// @return GetWmExtractTaskResponse
+func (client *Client) GetWmExtractTask(request *GetWmExtractTaskRequest) (_result *GetWmExtractTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetWmExtractTaskResponse{}
+	_body, _err := client.GetWmExtractTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16820,6 +18662,62 @@ func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUsersResponse{}
 	_body, _err := client.ListUsersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据数字水印信息查询字符串水印信息
+//
+// @param request - LookupWmInfoMappingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return LookupWmInfoMappingResponse
+func (client *Client) LookupWmInfoMappingWithOptions(request *LookupWmInfoMappingRequest, runtime *util.RuntimeOptions) (_result *LookupWmInfoMappingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("LookupWmInfoMapping"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &LookupWmInfoMappingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据数字水印信息查询字符串水印信息
+//
+// @param request - LookupWmInfoMappingRequest
+//
+// @return LookupWmInfoMappingResponse
+func (client *Client) LookupWmInfoMapping(request *LookupWmInfoMappingRequest) (_result *LookupWmInfoMappingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &LookupWmInfoMappingResponse{}
+	_body, _err := client.LookupWmInfoMappingWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
