@@ -8233,6 +8233,7 @@ type UpdateServiceRequest struct {
 	//
 	// {\\"CmsTemplateId\\":1162921,\\"TemplateUrl\\":\\"https://service-info-private.oss-cn-hangzhou.aliyuncs.com/1760465342xxxxxx/template/c072ef50-6c03-4d9c-8f0e-d1c440xxxxxx.json\\"}
 	AlarmMetadata *string `json:"AlarmMetadata,omitempty" xml:"AlarmMetadata,omitempty"`
+	ApprovalType  *string `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
 	// example:
 	//
 	// 788E7CP0EN9D51P
@@ -8285,6 +8286,7 @@ type UpdateServiceRequest struct {
 	//
 	// 1
 	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+	ShareType      *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// example:
 	//
 	// SingleTenant
@@ -8314,6 +8316,11 @@ func (s UpdateServiceRequest) GoString() string {
 
 func (s *UpdateServiceRequest) SetAlarmMetadata(v string) *UpdateServiceRequest {
 	s.AlarmMetadata = &v
+	return s
+}
+
+func (s *UpdateServiceRequest) SetApprovalType(v string) *UpdateServiceRequest {
+	s.ApprovalType = &v
 	return s
 }
 
@@ -8389,6 +8396,11 @@ func (s *UpdateServiceRequest) SetServiceType(v string) *UpdateServiceRequest {
 
 func (s *UpdateServiceRequest) SetServiceVersion(v string) *UpdateServiceRequest {
 	s.ServiceVersion = &v
+	return s
+}
+
+func (s *UpdateServiceRequest) SetShareType(v string) *UpdateServiceRequest {
+	s.ShareType = &v
 	return s
 }
 
@@ -8515,6 +8527,7 @@ type UpdateServiceShrinkRequest struct {
 	//
 	// {\\"CmsTemplateId\\":1162921,\\"TemplateUrl\\":\\"https://service-info-private.oss-cn-hangzhou.aliyuncs.com/1760465342xxxxxx/template/c072ef50-6c03-4d9c-8f0e-d1c440xxxxxx.json\\"}
 	AlarmMetadata *string `json:"AlarmMetadata,omitempty" xml:"AlarmMetadata,omitempty"`
+	ApprovalType  *string `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
 	// example:
 	//
 	// 788E7CP0EN9D51P
@@ -8567,6 +8580,7 @@ type UpdateServiceShrinkRequest struct {
 	//
 	// 1
 	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+	ShareType      *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// example:
 	//
 	// SingleTenant
@@ -8596,6 +8610,11 @@ func (s UpdateServiceShrinkRequest) GoString() string {
 
 func (s *UpdateServiceShrinkRequest) SetAlarmMetadata(v string) *UpdateServiceShrinkRequest {
 	s.AlarmMetadata = &v
+	return s
+}
+
+func (s *UpdateServiceShrinkRequest) SetApprovalType(v string) *UpdateServiceShrinkRequest {
+	s.ApprovalType = &v
 	return s
 }
 
@@ -8671,6 +8690,11 @@ func (s *UpdateServiceShrinkRequest) SetServiceType(v string) *UpdateServiceShri
 
 func (s *UpdateServiceShrinkRequest) SetServiceVersion(v string) *UpdateServiceShrinkRequest {
 	s.ServiceVersion = &v
+	return s
+}
+
+func (s *UpdateServiceShrinkRequest) SetShareType(v string) *UpdateServiceShrinkRequest {
+	s.ShareType = &v
 	return s
 }
 
@@ -11669,6 +11693,10 @@ func (client *Client) UpdateServiceWithOptions(tmpReq *UpdateServiceRequest, run
 		query["AlarmMetadata"] = request.AlarmMetadata
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ApprovalType)) {
+		query["ApprovalType"] = request.ApprovalType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
 	}
@@ -11727,6 +11755,10 @@ func (client *Client) UpdateServiceWithOptions(tmpReq *UpdateServiceRequest, run
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceVersion)) {
 		query["ServiceVersion"] = request.ServiceVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShareType)) {
+		query["ShareType"] = request.ShareType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TenantType)) {
