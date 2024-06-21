@@ -257,12 +257,6 @@ type AttachAssetGroupToInstanceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The source IP address of the request. The system specifies this parameter.
-	//
-	// example:
-	//
-	// 180.169.XX.XX
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s AttachAssetGroupToInstanceRequest) String() string {
@@ -285,11 +279,6 @@ func (s *AttachAssetGroupToInstanceRequest) SetInstanceId(v string) *AttachAsset
 
 func (s *AttachAssetGroupToInstanceRequest) SetRegionId(v string) *AttachAssetGroupToInstanceRequest {
 	s.RegionId = &v
-	return s
-}
-
-func (s *AttachAssetGroupToInstanceRequest) SetSourceIp(v string) *AttachAssetGroupToInstanceRequest {
-	s.SourceIp = &v
 	return s
 }
 
@@ -377,12 +366,6 @@ type AttachAssetGroupToInstanceShrinkRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The source IP address of the request. The system specifies this parameter.
-	//
-	// example:
-	//
-	// 180.169.XX.XX
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s AttachAssetGroupToInstanceShrinkRequest) String() string {
@@ -405,11 +388,6 @@ func (s *AttachAssetGroupToInstanceShrinkRequest) SetInstanceId(v string) *Attac
 
 func (s *AttachAssetGroupToInstanceShrinkRequest) SetRegionId(v string) *AttachAssetGroupToInstanceShrinkRequest {
 	s.RegionId = &v
-	return s
-}
-
-func (s *AttachAssetGroupToInstanceShrinkRequest) SetSourceIp(v string) *AttachAssetGroupToInstanceShrinkRequest {
-	s.SourceIp = &v
 	return s
 }
 
@@ -923,6 +901,97 @@ func (s *ConfigSchedruleOnDemandResponse) SetBody(v *ConfigSchedruleOnDemandResp
 	return s
 }
 
+type CreatePolicyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// l3
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreatePolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyRequest) SetName(v string) *CreatePolicyRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreatePolicyRequest) SetType(v string) *CreatePolicyRequest {
+	s.Type = &v
+	return s
+}
+
+type CreatePolicyResponseBody struct {
+	// example:
+	//
+	// 83967609-7ea5-4f6d-a6ea-380b09e****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 864FE2F4-CB2E-4024-B9EF-D59FD08A****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreatePolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyResponseBody) SetId(v string) *CreatePolicyResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *CreatePolicyResponseBody) SetRequestId(v string) *CreatePolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreatePolicyResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreatePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreatePolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyResponse) SetHeaders(v map[string]*string) *CreatePolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreatePolicyResponse) SetStatusCode(v int32) *CreatePolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreatePolicyResponse) SetBody(v *CreatePolicyResponseBody) *CreatePolicyResponse {
+	s.Body = v
+	return s
+}
+
 type CreateSchedruleOnDemandRequest struct {
 	// The ID of the on-demand instance.
 	//
@@ -1399,6 +1468,77 @@ func (s *DeleteIpResponse) SetBody(v *DeleteIpResponseBody) *DeleteIpResponse {
 	return s
 }
 
+type DeletePolicyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 90300b1a-ced8-4437-b4bf-f9a5*******
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s DeletePolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePolicyRequest) SetId(v string) *DeletePolicyRequest {
+	s.Id = &v
+	return s
+}
+
+type DeletePolicyResponseBody struct {
+	// example:
+	//
+	// BD06F539-2FBE-450D-9391-7EFF7871****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeletePolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePolicyResponseBody) SetRequestId(v string) *DeletePolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeletePolicyResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeletePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeletePolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePolicyResponse) SetHeaders(v map[string]*string) *DeletePolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeletePolicyResponse) SetStatusCode(v int32) *DeletePolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeletePolicyResponse) SetBody(v *DeletePolicyResponseBody) *DeletePolicyResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteRdMemberListRequest struct {
 	// This parameter is required.
 	MemberList []*DeleteRdMemberListRequestMemberList `json:"MemberList,omitempty" xml:"MemberList,omitempty" type:"Repeated"`
@@ -1630,12 +1770,6 @@ type DescribeAssetGroupRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The source IP address of the request. The system specifies this parameter.
-	//
-	// example:
-	//
-	// 180.169.XX.XX
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The type of the asset. Valid values:
 	//
 	// 	- **waf**: WAF instance
@@ -1670,11 +1804,6 @@ func (s *DescribeAssetGroupRequest) SetRegion(v string) *DescribeAssetGroupReque
 
 func (s *DescribeAssetGroupRequest) SetRegionId(v string) *DescribeAssetGroupRequest {
 	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeAssetGroupRequest) SetSourceIp(v string) *DescribeAssetGroupRequest {
-	s.SourceIp = &v
 	return s
 }
 
@@ -1831,12 +1960,6 @@ type DescribeAssetGroupToInstanceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The source IP address of the request. The system specifies this parameter.
-	//
-	// example:
-	//
-	// 115.238.XX.XX
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The type of the asset. Valid values:
 	//
 	// 	- **waf**: WAF instance
@@ -1879,11 +2002,6 @@ func (s *DescribeAssetGroupToInstanceRequest) SetRegion(v string) *DescribeAsset
 
 func (s *DescribeAssetGroupToInstanceRequest) SetRegionId(v string) *DescribeAssetGroupToInstanceRequest {
 	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeAssetGroupToInstanceRequest) SetSourceIp(v string) *DescribeAssetGroupToInstanceRequest {
-	s.SourceIp = &v
 	return s
 }
 
@@ -5313,6 +5431,153 @@ func (s *DescribeTrafficResponse) SetBody(v *DescribeTrafficResponseBody) *Descr
 	return s
 }
 
+type DetachFromPolicyRequest struct {
+	// This parameter is required.
+	IpPortProtocolList []*DetachFromPolicyRequestIpPortProtocolList `json:"IpPortProtocolList,omitempty" xml:"IpPortProtocolList,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// l3
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+}
+
+func (s DetachFromPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachFromPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetachFromPolicyRequest) SetIpPortProtocolList(v []*DetachFromPolicyRequestIpPortProtocolList) *DetachFromPolicyRequest {
+	s.IpPortProtocolList = v
+	return s
+}
+
+func (s *DetachFromPolicyRequest) SetPolicyType(v string) *DetachFromPolicyRequest {
+	s.PolicyType = &v
+	return s
+}
+
+type DetachFromPolicyRequestIpPortProtocolList struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 47.118.172.***
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// example:
+	//
+	// 8*
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// tcp
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+}
+
+func (s DetachFromPolicyRequestIpPortProtocolList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachFromPolicyRequestIpPortProtocolList) GoString() string {
+	return s.String()
+}
+
+func (s *DetachFromPolicyRequestIpPortProtocolList) SetIp(v string) *DetachFromPolicyRequestIpPortProtocolList {
+	s.Ip = &v
+	return s
+}
+
+func (s *DetachFromPolicyRequestIpPortProtocolList) SetPort(v int32) *DetachFromPolicyRequestIpPortProtocolList {
+	s.Port = &v
+	return s
+}
+
+func (s *DetachFromPolicyRequestIpPortProtocolList) SetProtocol(v string) *DetachFromPolicyRequestIpPortProtocolList {
+	s.Protocol = &v
+	return s
+}
+
+type DetachFromPolicyShrinkRequest struct {
+	// This parameter is required.
+	IpPortProtocolListShrink *string `json:"IpPortProtocolList,omitempty" xml:"IpPortProtocolList,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// l3
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+}
+
+func (s DetachFromPolicyShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachFromPolicyShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetachFromPolicyShrinkRequest) SetIpPortProtocolListShrink(v string) *DetachFromPolicyShrinkRequest {
+	s.IpPortProtocolListShrink = &v
+	return s
+}
+
+func (s *DetachFromPolicyShrinkRequest) SetPolicyType(v string) *DetachFromPolicyShrinkRequest {
+	s.PolicyType = &v
+	return s
+}
+
+type DetachFromPolicyResponseBody struct {
+	// example:
+	//
+	// 1B0F7EC6-51D7-4D70-B0EC-CD8A9E99****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DetachFromPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachFromPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DetachFromPolicyResponseBody) SetRequestId(v string) *DetachFromPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DetachFromPolicyResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetachFromPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DetachFromPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachFromPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetachFromPolicyResponse) SetHeaders(v map[string]*string) *DetachFromPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DetachFromPolicyResponse) SetStatusCode(v int32) *DetachFromPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DetachFromPolicyResponse) SetBody(v *DetachFromPolicyResponseBody) *DetachFromPolicyResponse {
+	s.Body = v
+	return s
+}
+
 type DettachAssetGroupToInstanceRequest struct {
 	// The information about the asset that you want to dissociate.
 	//
@@ -5336,12 +5601,6 @@ type DettachAssetGroupToInstanceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The source IP address of the request. The system specifies this parameter.
-	//
-	// example:
-	//
-	// 115.238.XX.XX
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DettachAssetGroupToInstanceRequest) String() string {
@@ -5364,11 +5623,6 @@ func (s *DettachAssetGroupToInstanceRequest) SetInstanceId(v string) *DettachAss
 
 func (s *DettachAssetGroupToInstanceRequest) SetRegionId(v string) *DettachAssetGroupToInstanceRequest {
 	s.RegionId = &v
-	return s
-}
-
-func (s *DettachAssetGroupToInstanceRequest) SetSourceIp(v string) *DettachAssetGroupToInstanceRequest {
-	s.SourceIp = &v
 	return s
 }
 
@@ -5449,12 +5703,6 @@ type DettachAssetGroupToInstanceShrinkRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The source IP address of the request. The system specifies this parameter.
-	//
-	// example:
-	//
-	// 115.238.XX.XX
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s DettachAssetGroupToInstanceShrinkRequest) String() string {
@@ -5477,11 +5725,6 @@ func (s *DettachAssetGroupToInstanceShrinkRequest) SetInstanceId(v string) *Dett
 
 func (s *DettachAssetGroupToInstanceShrinkRequest) SetRegionId(v string) *DettachAssetGroupToInstanceShrinkRequest {
 	s.RegionId = &v
-	return s
-}
-
-func (s *DettachAssetGroupToInstanceShrinkRequest) SetSourceIp(v string) *DettachAssetGroupToInstanceShrinkRequest {
-	s.SourceIp = &v
 	return s
 }
 
@@ -5787,6 +6030,990 @@ func (s *ListOpenedAccessLogInstancesResponse) SetStatusCode(v int32) *ListOpene
 }
 
 func (s *ListOpenedAccessLogInstancesResponse) SetBody(v *ListOpenedAccessLogInstancesResponseBody) *ListOpenedAccessLogInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type ListPolicyRequest struct {
+	// example:
+	//
+	// test**
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// l3
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPolicyRequest) SetName(v string) *ListPolicyRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListPolicyRequest) SetPageNo(v int64) *ListPolicyRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListPolicyRequest) SetPageSize(v int64) *ListPolicyRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListPolicyRequest) SetType(v string) *ListPolicyRequest {
+	s.Type = &v
+	return s
+}
+
+type ListPolicyResponseBody struct {
+	PolicyList []*ListPolicyResponseBodyPolicyList `json:"PolicyList,omitempty" xml:"PolicyList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// B4B379C2-9319-4C6B-B579-FE36831B09F4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListPolicyResponseBody) SetPolicyList(v []*ListPolicyResponseBodyPolicyList) *ListPolicyResponseBody {
+	s.PolicyList = v
+	return s
+}
+
+func (s *ListPolicyResponseBody) SetRequestId(v string) *ListPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListPolicyResponseBody) SetTotal(v int64) *ListPolicyResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListPolicyResponseBodyPolicyList struct {
+	// example:
+	//
+	// 0
+	AttachedCount *int32                                   `json:"AttachedCount,omitempty" xml:"AttachedCount,omitempty"`
+	Content       *ListPolicyResponseBodyPolicyListContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// example:
+	//
+	// 877afbdf-3982-4d36-9886-f043********
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// test**
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// l3
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListPolicyResponseBodyPolicyList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPolicyResponseBodyPolicyList) GoString() string {
+	return s.String()
+}
+
+func (s *ListPolicyResponseBodyPolicyList) SetAttachedCount(v int32) *ListPolicyResponseBodyPolicyList {
+	s.AttachedCount = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyList) SetContent(v *ListPolicyResponseBodyPolicyListContent) *ListPolicyResponseBodyPolicyList {
+	s.Content = v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyList) SetId(v string) *ListPolicyResponseBodyPolicyList {
+	s.Id = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyList) SetName(v string) *ListPolicyResponseBodyPolicyList {
+	s.Name = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyList) SetType(v string) *ListPolicyResponseBodyPolicyList {
+	s.Type = &v
+	return s
+}
+
+type ListPolicyResponseBodyPolicyListContent struct {
+	// example:
+	//
+	// 1716878000
+	BlackIpListExpireAt *int64 `json:"BlackIpListExpireAt,omitempty" xml:"BlackIpListExpireAt,omitempty"`
+	// example:
+	//
+	// false
+	EnableDropIcmp *bool `json:"EnableDropIcmp,omitempty" xml:"EnableDropIcmp,omitempty"`
+	// example:
+	//
+	// true
+	EnableIntelligence *bool `json:"EnableIntelligence,omitempty" xml:"EnableIntelligence,omitempty"`
+	// example:
+	//
+	// true
+	EnableL4Defense     *bool                                                         `json:"EnableL4Defense,omitempty" xml:"EnableL4Defense,omitempty"`
+	FingerPrintRuleList []*ListPolicyResponseBodyPolicyListContentFingerPrintRuleList `json:"FingerPrintRuleList,omitempty" xml:"FingerPrintRuleList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// default
+	IntelligenceLevel       *string                                                   `json:"IntelligenceLevel,omitempty" xml:"IntelligenceLevel,omitempty"`
+	L4RuleList              []*ListPolicyResponseBodyPolicyListContentL4RuleList      `json:"L4RuleList,omitempty" xml:"L4RuleList,omitempty" type:"Repeated"`
+	PortRuleList            []*ListPolicyResponseBodyPolicyListContentPortRuleList    `json:"PortRuleList,omitempty" xml:"PortRuleList,omitempty" type:"Repeated"`
+	ReflectBlockUdpPortList []*int32                                                  `json:"ReflectBlockUdpPortList,omitempty" xml:"ReflectBlockUdpPortList,omitempty" type:"Repeated"`
+	RegionBlockCountryList  []*int32                                                  `json:"RegionBlockCountryList,omitempty" xml:"RegionBlockCountryList,omitempty" type:"Repeated"`
+	RegionBlockProvinceList []*int32                                                  `json:"RegionBlockProvinceList,omitempty" xml:"RegionBlockProvinceList,omitempty" type:"Repeated"`
+	SourceBlockList         []*ListPolicyResponseBodyPolicyListContentSourceBlockList `json:"SourceBlockList,omitempty" xml:"SourceBlockList,omitempty" type:"Repeated"`
+	SourceLimit             *ListPolicyResponseBodyPolicyListContentSourceLimit       `json:"SourceLimit,omitempty" xml:"SourceLimit,omitempty" type:"Struct"`
+	// example:
+	//
+	// false
+	WhitenGfbrNets *bool `json:"WhitenGfbrNets,omitempty" xml:"WhitenGfbrNets,omitempty"`
+}
+
+func (s ListPolicyResponseBodyPolicyListContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPolicyResponseBodyPolicyListContent) GoString() string {
+	return s.String()
+}
+
+func (s *ListPolicyResponseBodyPolicyListContent) SetBlackIpListExpireAt(v int64) *ListPolicyResponseBodyPolicyListContent {
+	s.BlackIpListExpireAt = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContent) SetEnableDropIcmp(v bool) *ListPolicyResponseBodyPolicyListContent {
+	s.EnableDropIcmp = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContent) SetEnableIntelligence(v bool) *ListPolicyResponseBodyPolicyListContent {
+	s.EnableIntelligence = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContent) SetEnableL4Defense(v bool) *ListPolicyResponseBodyPolicyListContent {
+	s.EnableL4Defense = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContent) SetFingerPrintRuleList(v []*ListPolicyResponseBodyPolicyListContentFingerPrintRuleList) *ListPolicyResponseBodyPolicyListContent {
+	s.FingerPrintRuleList = v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContent) SetIntelligenceLevel(v string) *ListPolicyResponseBodyPolicyListContent {
+	s.IntelligenceLevel = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContent) SetL4RuleList(v []*ListPolicyResponseBodyPolicyListContentL4RuleList) *ListPolicyResponseBodyPolicyListContent {
+	s.L4RuleList = v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContent) SetPortRuleList(v []*ListPolicyResponseBodyPolicyListContentPortRuleList) *ListPolicyResponseBodyPolicyListContent {
+	s.PortRuleList = v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContent) SetReflectBlockUdpPortList(v []*int32) *ListPolicyResponseBodyPolicyListContent {
+	s.ReflectBlockUdpPortList = v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContent) SetRegionBlockCountryList(v []*int32) *ListPolicyResponseBodyPolicyListContent {
+	s.RegionBlockCountryList = v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContent) SetRegionBlockProvinceList(v []*int32) *ListPolicyResponseBodyPolicyListContent {
+	s.RegionBlockProvinceList = v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContent) SetSourceBlockList(v []*ListPolicyResponseBodyPolicyListContentSourceBlockList) *ListPolicyResponseBodyPolicyListContent {
+	s.SourceBlockList = v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContent) SetSourceLimit(v *ListPolicyResponseBodyPolicyListContentSourceLimit) *ListPolicyResponseBodyPolicyListContent {
+	s.SourceLimit = v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContent) SetWhitenGfbrNets(v bool) *ListPolicyResponseBodyPolicyListContent {
+	s.WhitenGfbrNets = &v
+	return s
+}
+
+type ListPolicyResponseBodyPolicyListContentFingerPrintRuleList struct {
+	// example:
+	//
+	// 65535
+	DstPortEnd *int32 `json:"DstPortEnd,omitempty" xml:"DstPortEnd,omitempty"`
+	// example:
+	//
+	// 0
+	DstPortStart *int32 `json:"DstPortStart,omitempty" xml:"DstPortStart,omitempty"`
+	// example:
+	//
+	// 2c0b09cd-a565-4481-9acb-418b********
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// drop
+	MatchAction *string `json:"MatchAction,omitempty" xml:"MatchAction,omitempty"`
+	// example:
+	//
+	// 1500
+	MaxPktLen *int32 `json:"MaxPktLen,omitempty" xml:"MaxPktLen,omitempty"`
+	// example:
+	//
+	// 1
+	MinPktLen *int32 `json:"MinPktLen,omitempty" xml:"MinPktLen,omitempty"`
+	// example:
+	//
+	// 0
+	Offset *int32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// example:
+	//
+	// abcd
+	PayloadBytes *string `json:"PayloadBytes,omitempty" xml:"PayloadBytes,omitempty"`
+	// example:
+	//
+	// udp
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// example:
+	//
+	// 1000
+	RateValue *int32 `json:"RateValue,omitempty" xml:"RateValue,omitempty"`
+	// example:
+	//
+	// 1
+	SeqNo *int32 `json:"SeqNo,omitempty" xml:"SeqNo,omitempty"`
+	// example:
+	//
+	// 65535
+	SrcPortEnd *int32 `json:"SrcPortEnd,omitempty" xml:"SrcPortEnd,omitempty"`
+	// example:
+	//
+	// 0
+	SrcPortStart *int32 `json:"SrcPortStart,omitempty" xml:"SrcPortStart,omitempty"`
+}
+
+func (s ListPolicyResponseBodyPolicyListContentFingerPrintRuleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPolicyResponseBodyPolicyListContentFingerPrintRuleList) GoString() string {
+	return s.String()
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentFingerPrintRuleList) SetDstPortEnd(v int32) *ListPolicyResponseBodyPolicyListContentFingerPrintRuleList {
+	s.DstPortEnd = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentFingerPrintRuleList) SetDstPortStart(v int32) *ListPolicyResponseBodyPolicyListContentFingerPrintRuleList {
+	s.DstPortStart = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentFingerPrintRuleList) SetId(v string) *ListPolicyResponseBodyPolicyListContentFingerPrintRuleList {
+	s.Id = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentFingerPrintRuleList) SetMatchAction(v string) *ListPolicyResponseBodyPolicyListContentFingerPrintRuleList {
+	s.MatchAction = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentFingerPrintRuleList) SetMaxPktLen(v int32) *ListPolicyResponseBodyPolicyListContentFingerPrintRuleList {
+	s.MaxPktLen = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentFingerPrintRuleList) SetMinPktLen(v int32) *ListPolicyResponseBodyPolicyListContentFingerPrintRuleList {
+	s.MinPktLen = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentFingerPrintRuleList) SetOffset(v int32) *ListPolicyResponseBodyPolicyListContentFingerPrintRuleList {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentFingerPrintRuleList) SetPayloadBytes(v string) *ListPolicyResponseBodyPolicyListContentFingerPrintRuleList {
+	s.PayloadBytes = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentFingerPrintRuleList) SetProtocol(v string) *ListPolicyResponseBodyPolicyListContentFingerPrintRuleList {
+	s.Protocol = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentFingerPrintRuleList) SetRateValue(v int32) *ListPolicyResponseBodyPolicyListContentFingerPrintRuleList {
+	s.RateValue = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentFingerPrintRuleList) SetSeqNo(v int32) *ListPolicyResponseBodyPolicyListContentFingerPrintRuleList {
+	s.SeqNo = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentFingerPrintRuleList) SetSrcPortEnd(v int32) *ListPolicyResponseBodyPolicyListContentFingerPrintRuleList {
+	s.SrcPortEnd = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentFingerPrintRuleList) SetSrcPortStart(v int32) *ListPolicyResponseBodyPolicyListContentFingerPrintRuleList {
+	s.SrcPortStart = &v
+	return s
+}
+
+type ListPolicyResponseBodyPolicyListContentL4RuleList struct {
+	// example:
+	//
+	// 2
+	Action        *string                                                           `json:"Action,omitempty" xml:"Action,omitempty"`
+	ConditionList []*ListPolicyResponseBodyPolicyListContentL4RuleListConditionList `json:"ConditionList,omitempty" xml:"ConditionList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
+	Limited *int32 `json:"Limited,omitempty" xml:"Limited,omitempty"`
+	// example:
+	//
+	// 1
+	Match *string `json:"Match,omitempty" xml:"Match,omitempty"`
+	// example:
+	//
+	// char
+	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// example:
+	//
+	// test**
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+}
+
+func (s ListPolicyResponseBodyPolicyListContentL4RuleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPolicyResponseBodyPolicyListContentL4RuleList) GoString() string {
+	return s.String()
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentL4RuleList) SetAction(v string) *ListPolicyResponseBodyPolicyListContentL4RuleList {
+	s.Action = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentL4RuleList) SetConditionList(v []*ListPolicyResponseBodyPolicyListContentL4RuleListConditionList) *ListPolicyResponseBodyPolicyListContentL4RuleList {
+	s.ConditionList = v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentL4RuleList) SetLimited(v int32) *ListPolicyResponseBodyPolicyListContentL4RuleList {
+	s.Limited = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentL4RuleList) SetMatch(v string) *ListPolicyResponseBodyPolicyListContentL4RuleList {
+	s.Match = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentL4RuleList) SetMethod(v string) *ListPolicyResponseBodyPolicyListContentL4RuleList {
+	s.Method = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentL4RuleList) SetName(v string) *ListPolicyResponseBodyPolicyListContentL4RuleList {
+	s.Name = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentL4RuleList) SetPriority(v int32) *ListPolicyResponseBodyPolicyListContentL4RuleList {
+	s.Priority = &v
+	return s
+}
+
+type ListPolicyResponseBodyPolicyListContentL4RuleListConditionList struct {
+	// example:
+	//
+	// test
+	Arg *string `json:"Arg,omitempty" xml:"Arg,omitempty"`
+	// example:
+	//
+	// 32
+	Depth *int32 `json:"Depth,omitempty" xml:"Depth,omitempty"`
+	// example:
+	//
+	// 0
+	Position *int32 `json:"Position,omitempty" xml:"Position,omitempty"`
+}
+
+func (s ListPolicyResponseBodyPolicyListContentL4RuleListConditionList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPolicyResponseBodyPolicyListContentL4RuleListConditionList) GoString() string {
+	return s.String()
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentL4RuleListConditionList) SetArg(v string) *ListPolicyResponseBodyPolicyListContentL4RuleListConditionList {
+	s.Arg = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentL4RuleListConditionList) SetDepth(v int32) *ListPolicyResponseBodyPolicyListContentL4RuleListConditionList {
+	s.Depth = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentL4RuleListConditionList) SetPosition(v int32) *ListPolicyResponseBodyPolicyListContentL4RuleListConditionList {
+	s.Position = &v
+	return s
+}
+
+type ListPolicyResponseBodyPolicyListContentPortRuleList struct {
+	// example:
+	//
+	// 65535
+	DstPortEnd *int32 `json:"DstPortEnd,omitempty" xml:"DstPortEnd,omitempty"`
+	// example:
+	//
+	// 0
+	DstPortStart *int32 `json:"DstPortStart,omitempty" xml:"DstPortStart,omitempty"`
+	// example:
+	//
+	// 8f3c3062-6c20-425d-8405-2bd1********
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// drop
+	MatchAction *string `json:"MatchAction,omitempty" xml:"MatchAction,omitempty"`
+	// example:
+	//
+	// udp
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// example:
+	//
+	// 1
+	SeqNo *int32 `json:"SeqNo,omitempty" xml:"SeqNo,omitempty"`
+	// example:
+	//
+	// 65535
+	SrcPortEnd *int32 `json:"SrcPortEnd,omitempty" xml:"SrcPortEnd,omitempty"`
+	// example:
+	//
+	// 0
+	SrcPortStart *int32 `json:"SrcPortStart,omitempty" xml:"SrcPortStart,omitempty"`
+}
+
+func (s ListPolicyResponseBodyPolicyListContentPortRuleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPolicyResponseBodyPolicyListContentPortRuleList) GoString() string {
+	return s.String()
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentPortRuleList) SetDstPortEnd(v int32) *ListPolicyResponseBodyPolicyListContentPortRuleList {
+	s.DstPortEnd = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentPortRuleList) SetDstPortStart(v int32) *ListPolicyResponseBodyPolicyListContentPortRuleList {
+	s.DstPortStart = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentPortRuleList) SetId(v string) *ListPolicyResponseBodyPolicyListContentPortRuleList {
+	s.Id = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentPortRuleList) SetMatchAction(v string) *ListPolicyResponseBodyPolicyListContentPortRuleList {
+	s.MatchAction = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentPortRuleList) SetProtocol(v string) *ListPolicyResponseBodyPolicyListContentPortRuleList {
+	s.Protocol = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentPortRuleList) SetSeqNo(v int32) *ListPolicyResponseBodyPolicyListContentPortRuleList {
+	s.SeqNo = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentPortRuleList) SetSrcPortEnd(v int32) *ListPolicyResponseBodyPolicyListContentPortRuleList {
+	s.SrcPortEnd = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentPortRuleList) SetSrcPortStart(v int32) *ListPolicyResponseBodyPolicyListContentPortRuleList {
+	s.SrcPortStart = &v
+	return s
+}
+
+type ListPolicyResponseBodyPolicyListContentSourceBlockList struct {
+	// example:
+	//
+	// 120
+	BlockExpireSeconds *int32 `json:"BlockExpireSeconds,omitempty" xml:"BlockExpireSeconds,omitempty"`
+	// example:
+	//
+	// 60
+	EverySeconds *int32 `json:"EverySeconds,omitempty" xml:"EverySeconds,omitempty"`
+	// example:
+	//
+	// 5
+	ExceedLimitTimes *int32 `json:"ExceedLimitTimes,omitempty" xml:"ExceedLimitTimes,omitempty"`
+	// example:
+	//
+	// 3
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListPolicyResponseBodyPolicyListContentSourceBlockList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPolicyResponseBodyPolicyListContentSourceBlockList) GoString() string {
+	return s.String()
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentSourceBlockList) SetBlockExpireSeconds(v int32) *ListPolicyResponseBodyPolicyListContentSourceBlockList {
+	s.BlockExpireSeconds = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentSourceBlockList) SetEverySeconds(v int32) *ListPolicyResponseBodyPolicyListContentSourceBlockList {
+	s.EverySeconds = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentSourceBlockList) SetExceedLimitTimes(v int32) *ListPolicyResponseBodyPolicyListContentSourceBlockList {
+	s.ExceedLimitTimes = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentSourceBlockList) SetType(v int32) *ListPolicyResponseBodyPolicyListContentSourceBlockList {
+	s.Type = &v
+	return s
+}
+
+type ListPolicyResponseBodyPolicyListContentSourceLimit struct {
+	// example:
+	//
+	// 2048
+	Bps *int32 `json:"Bps,omitempty" xml:"Bps,omitempty"`
+	// example:
+	//
+	// 64
+	Pps *int32 `json:"Pps,omitempty" xml:"Pps,omitempty"`
+	// example:
+	//
+	// 2048
+	SynBps *int32 `json:"SynBps,omitempty" xml:"SynBps,omitempty"`
+	// example:
+	//
+	// 64
+	SynPps *int32 `json:"SynPps,omitempty" xml:"SynPps,omitempty"`
+}
+
+func (s ListPolicyResponseBodyPolicyListContentSourceLimit) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPolicyResponseBodyPolicyListContentSourceLimit) GoString() string {
+	return s.String()
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentSourceLimit) SetBps(v int32) *ListPolicyResponseBodyPolicyListContentSourceLimit {
+	s.Bps = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentSourceLimit) SetPps(v int32) *ListPolicyResponseBodyPolicyListContentSourceLimit {
+	s.Pps = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentSourceLimit) SetSynBps(v int32) *ListPolicyResponseBodyPolicyListContentSourceLimit {
+	s.SynBps = &v
+	return s
+}
+
+func (s *ListPolicyResponseBodyPolicyListContentSourceLimit) SetSynPps(v int32) *ListPolicyResponseBodyPolicyListContentSourceLimit {
+	s.SynPps = &v
+	return s
+}
+
+type ListPolicyResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPolicyResponse) SetHeaders(v map[string]*string) *ListPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPolicyResponse) SetStatusCode(v int32) *ListPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListPolicyResponse) SetBody(v *ListPolicyResponseBody) *ListPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type ListPolicyAttachmentRequest struct {
+	IpPortProtocolList []*ListPolicyAttachmentRequestIpPortProtocolList `json:"IpPortProtocolList,omitempty" xml:"IpPortProtocolList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// f38f6520-92b7-451e-b520-9ab3********
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// l3
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+}
+
+func (s ListPolicyAttachmentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPolicyAttachmentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPolicyAttachmentRequest) SetIpPortProtocolList(v []*ListPolicyAttachmentRequestIpPortProtocolList) *ListPolicyAttachmentRequest {
+	s.IpPortProtocolList = v
+	return s
+}
+
+func (s *ListPolicyAttachmentRequest) SetPageNo(v int64) *ListPolicyAttachmentRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListPolicyAttachmentRequest) SetPageSize(v int64) *ListPolicyAttachmentRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListPolicyAttachmentRequest) SetPolicyId(v string) *ListPolicyAttachmentRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *ListPolicyAttachmentRequest) SetPolicyType(v string) *ListPolicyAttachmentRequest {
+	s.PolicyType = &v
+	return s
+}
+
+type ListPolicyAttachmentRequestIpPortProtocolList struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 47.118.172.***
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// example:
+	//
+	// 8*
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// tcp
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+}
+
+func (s ListPolicyAttachmentRequestIpPortProtocolList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPolicyAttachmentRequestIpPortProtocolList) GoString() string {
+	return s.String()
+}
+
+func (s *ListPolicyAttachmentRequestIpPortProtocolList) SetIp(v string) *ListPolicyAttachmentRequestIpPortProtocolList {
+	s.Ip = &v
+	return s
+}
+
+func (s *ListPolicyAttachmentRequestIpPortProtocolList) SetPort(v int32) *ListPolicyAttachmentRequestIpPortProtocolList {
+	s.Port = &v
+	return s
+}
+
+func (s *ListPolicyAttachmentRequestIpPortProtocolList) SetProtocol(v string) *ListPolicyAttachmentRequestIpPortProtocolList {
+	s.Protocol = &v
+	return s
+}
+
+type ListPolicyAttachmentShrinkRequest struct {
+	IpPortProtocolListShrink *string `json:"IpPortProtocolList,omitempty" xml:"IpPortProtocolList,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// f38f6520-92b7-451e-b520-9ab3********
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// l3
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+}
+
+func (s ListPolicyAttachmentShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPolicyAttachmentShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPolicyAttachmentShrinkRequest) SetIpPortProtocolListShrink(v string) *ListPolicyAttachmentShrinkRequest {
+	s.IpPortProtocolListShrink = &v
+	return s
+}
+
+func (s *ListPolicyAttachmentShrinkRequest) SetPageNo(v int64) *ListPolicyAttachmentShrinkRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListPolicyAttachmentShrinkRequest) SetPageSize(v int64) *ListPolicyAttachmentShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListPolicyAttachmentShrinkRequest) SetPolicyId(v string) *ListPolicyAttachmentShrinkRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *ListPolicyAttachmentShrinkRequest) SetPolicyType(v string) *ListPolicyAttachmentShrinkRequest {
+	s.PolicyType = &v
+	return s
+}
+
+type ListPolicyAttachmentResponseBody struct {
+	AttachmentList []*ListPolicyAttachmentResponseBodyAttachmentList `json:"AttachmentList,omitempty" xml:"AttachmentList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// B4B379C2-9319-4C6B-B579-FE36831B09F4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 28
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListPolicyAttachmentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPolicyAttachmentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListPolicyAttachmentResponseBody) SetAttachmentList(v []*ListPolicyAttachmentResponseBodyAttachmentList) *ListPolicyAttachmentResponseBody {
+	s.AttachmentList = v
+	return s
+}
+
+func (s *ListPolicyAttachmentResponseBody) SetRequestId(v string) *ListPolicyAttachmentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListPolicyAttachmentResponseBody) SetTotal(v int64) *ListPolicyAttachmentResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListPolicyAttachmentResponseBodyAttachmentList struct {
+	// example:
+	//
+	// 147.139.183.***
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// example:
+	//
+	// 177699790631****
+	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// example:
+	//
+	// 1b43f44e-65e1-411a-b0c0-d6c1********
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// example:
+	//
+	// test**
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// example:
+	//
+	// l3
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// example:
+	//
+	// 8*
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// udp
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+}
+
+func (s ListPolicyAttachmentResponseBodyAttachmentList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPolicyAttachmentResponseBodyAttachmentList) GoString() string {
+	return s.String()
+}
+
+func (s *ListPolicyAttachmentResponseBodyAttachmentList) SetIp(v string) *ListPolicyAttachmentResponseBodyAttachmentList {
+	s.Ip = &v
+	return s
+}
+
+func (s *ListPolicyAttachmentResponseBodyAttachmentList) SetMemberUid(v string) *ListPolicyAttachmentResponseBodyAttachmentList {
+	s.MemberUid = &v
+	return s
+}
+
+func (s *ListPolicyAttachmentResponseBodyAttachmentList) SetPolicyId(v string) *ListPolicyAttachmentResponseBodyAttachmentList {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *ListPolicyAttachmentResponseBodyAttachmentList) SetPolicyName(v string) *ListPolicyAttachmentResponseBodyAttachmentList {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *ListPolicyAttachmentResponseBodyAttachmentList) SetPolicyType(v string) *ListPolicyAttachmentResponseBodyAttachmentList {
+	s.PolicyType = &v
+	return s
+}
+
+func (s *ListPolicyAttachmentResponseBodyAttachmentList) SetPort(v int32) *ListPolicyAttachmentResponseBodyAttachmentList {
+	s.Port = &v
+	return s
+}
+
+func (s *ListPolicyAttachmentResponseBodyAttachmentList) SetProtocol(v string) *ListPolicyAttachmentResponseBodyAttachmentList {
+	s.Protocol = &v
+	return s
+}
+
+func (s *ListPolicyAttachmentResponseBodyAttachmentList) SetRegion(v string) *ListPolicyAttachmentResponseBodyAttachmentList {
+	s.Region = &v
+	return s
+}
+
+type ListPolicyAttachmentResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPolicyAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListPolicyAttachmentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPolicyAttachmentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPolicyAttachmentResponse) SetHeaders(v map[string]*string) *ListPolicyAttachmentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPolicyAttachmentResponse) SetStatusCode(v int32) *ListPolicyAttachmentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListPolicyAttachmentResponse) SetBody(v *ListPolicyAttachmentResponseBody) *ListPolicyAttachmentResponse {
 	s.Body = v
 	return s
 }
@@ -6242,6 +7469,1452 @@ func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesRespo
 }
 
 func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *ListTagResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyPolicyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 11
+	ActionType *int32                      `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
+	Content    *ModifyPolicyRequestContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c52c2fa6-fdac-40c4-8753-be7c********
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// demo**
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ModifyPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPolicyRequest) SetActionType(v int32) *ModifyPolicyRequest {
+	s.ActionType = &v
+	return s
+}
+
+func (s *ModifyPolicyRequest) SetContent(v *ModifyPolicyRequestContent) *ModifyPolicyRequest {
+	s.Content = v
+	return s
+}
+
+func (s *ModifyPolicyRequest) SetId(v string) *ModifyPolicyRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *ModifyPolicyRequest) SetName(v string) *ModifyPolicyRequest {
+	s.Name = &v
+	return s
+}
+
+type ModifyPolicyRequestContent struct {
+	BlackIpList []*string `json:"BlackIpList,omitempty" xml:"BlackIpList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1716878000
+	BlackIpListExpireAt *int64 `json:"BlackIpListExpireAt,omitempty" xml:"BlackIpListExpireAt,omitempty"`
+	// example:
+	//
+	// true
+	EnableDropIcmp *bool `json:"EnableDropIcmp,omitempty" xml:"EnableDropIcmp,omitempty"`
+	// example:
+	//
+	// true
+	EnableIntelligence  *bool                                            `json:"EnableIntelligence,omitempty" xml:"EnableIntelligence,omitempty"`
+	EnableL4Defense     *bool                                            `json:"EnableL4Defense,omitempty" xml:"EnableL4Defense,omitempty"`
+	FingerPrintRuleList []*ModifyPolicyRequestContentFingerPrintRuleList `json:"FingerPrintRuleList,omitempty" xml:"FingerPrintRuleList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// default
+	IntelligenceLevel       *string                                      `json:"IntelligenceLevel,omitempty" xml:"IntelligenceLevel,omitempty"`
+	L4RuleList              []*ModifyPolicyRequestContentL4RuleList      `json:"L4RuleList,omitempty" xml:"L4RuleList,omitempty" type:"Repeated"`
+	PortRuleList            []*ModifyPolicyRequestContentPortRuleList    `json:"PortRuleList,omitempty" xml:"PortRuleList,omitempty" type:"Repeated"`
+	ReflectBlockUdpPortList []*int32                                     `json:"ReflectBlockUdpPortList,omitempty" xml:"ReflectBlockUdpPortList,omitempty" type:"Repeated"`
+	RegionBlockCountryList  []*int32                                     `json:"RegionBlockCountryList,omitempty" xml:"RegionBlockCountryList,omitempty" type:"Repeated"`
+	RegionBlockProvinceList []*int32                                     `json:"RegionBlockProvinceList,omitempty" xml:"RegionBlockProvinceList,omitempty" type:"Repeated"`
+	SourceBlockList         []*ModifyPolicyRequestContentSourceBlockList `json:"SourceBlockList,omitempty" xml:"SourceBlockList,omitempty" type:"Repeated"`
+	SourceLimit             *ModifyPolicyRequestContentSourceLimit       `json:"SourceLimit,omitempty" xml:"SourceLimit,omitempty" type:"Struct"`
+	WhiteIpList             []*string                                    `json:"WhiteIpList,omitempty" xml:"WhiteIpList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// false
+	WhitenGfbrNets *bool `json:"WhitenGfbrNets,omitempty" xml:"WhitenGfbrNets,omitempty"`
+}
+
+func (s ModifyPolicyRequestContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPolicyRequestContent) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPolicyRequestContent) SetBlackIpList(v []*string) *ModifyPolicyRequestContent {
+	s.BlackIpList = v
+	return s
+}
+
+func (s *ModifyPolicyRequestContent) SetBlackIpListExpireAt(v int64) *ModifyPolicyRequestContent {
+	s.BlackIpListExpireAt = &v
+	return s
+}
+
+func (s *ModifyPolicyRequestContent) SetEnableDropIcmp(v bool) *ModifyPolicyRequestContent {
+	s.EnableDropIcmp = &v
+	return s
+}
+
+func (s *ModifyPolicyRequestContent) SetEnableIntelligence(v bool) *ModifyPolicyRequestContent {
+	s.EnableIntelligence = &v
+	return s
+}
+
+func (s *ModifyPolicyRequestContent) SetEnableL4Defense(v bool) *ModifyPolicyRequestContent {
+	s.EnableL4Defense = &v
+	return s
+}
+
+func (s *ModifyPolicyRequestContent) SetFingerPrintRuleList(v []*ModifyPolicyRequestContentFingerPrintRuleList) *ModifyPolicyRequestContent {
+	s.FingerPrintRuleList = v
+	return s
+}
+
+func (s *ModifyPolicyRequestContent) SetIntelligenceLevel(v string) *ModifyPolicyRequestContent {
+	s.IntelligenceLevel = &v
+	return s
+}
+
+func (s *ModifyPolicyRequestContent) SetL4RuleList(v []*ModifyPolicyRequestContentL4RuleList) *ModifyPolicyRequestContent {
+	s.L4RuleList = v
+	return s
+}
+
+func (s *ModifyPolicyRequestContent) SetPortRuleList(v []*ModifyPolicyRequestContentPortRuleList) *ModifyPolicyRequestContent {
+	s.PortRuleList = v
+	return s
+}
+
+func (s *ModifyPolicyRequestContent) SetReflectBlockUdpPortList(v []*int32) *ModifyPolicyRequestContent {
+	s.ReflectBlockUdpPortList = v
+	return s
+}
+
+func (s *ModifyPolicyRequestContent) SetRegionBlockCountryList(v []*int32) *ModifyPolicyRequestContent {
+	s.RegionBlockCountryList = v
+	return s
+}
+
+func (s *ModifyPolicyRequestContent) SetRegionBlockProvinceList(v []*int32) *ModifyPolicyRequestContent {
+	s.RegionBlockProvinceList = v
+	return s
+}
+
+func (s *ModifyPolicyRequestContent) SetSourceBlockList(v []*ModifyPolicyRequestContentSourceBlockList) *ModifyPolicyRequestContent {
+	s.SourceBlockList = v
+	return s
+}
+
+func (s *ModifyPolicyRequestContent) SetSourceLimit(v *ModifyPolicyRequestContentSourceLimit) *ModifyPolicyRequestContent {
+	s.SourceLimit = v
+	return s
+}
+
+func (s *ModifyPolicyRequestContent) SetWhiteIpList(v []*string) *ModifyPolicyRequestContent {
+	s.WhiteIpList = v
+	return s
+}
+
+func (s *ModifyPolicyRequestContent) SetWhitenGfbrNets(v bool) *ModifyPolicyRequestContent {
+	s.WhitenGfbrNets = &v
+	return s
+}
+
+type ModifyPolicyRequestContentFingerPrintRuleList struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 65535
+	DstPortEnd *int32 `json:"DstPortEnd,omitempty" xml:"DstPortEnd,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	DstPortStart *int32 `json:"DstPortStart,omitempty" xml:"DstPortStart,omitempty"`
+	// example:
+	//
+	// 5fbe941f-a0cf-4a49-9c7c-8fac********
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drop
+	MatchAction *string `json:"MatchAction,omitempty" xml:"MatchAction,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1500
+	MaxPktLen *int32 `json:"MaxPktLen,omitempty" xml:"MaxPktLen,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	MinPktLen *int32 `json:"MinPktLen,omitempty" xml:"MinPktLen,omitempty"`
+	// example:
+	//
+	// 0
+	Offset *int32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// example:
+	//
+	// abcd
+	PayloadBytes *string `json:"PayloadBytes,omitempty" xml:"PayloadBytes,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// udp
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// example:
+	//
+	// 100
+	RateValue *int32 `json:"RateValue,omitempty" xml:"RateValue,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	SeqNo *int32 `json:"SeqNo,omitempty" xml:"SeqNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 65535
+	SrcPortEnd *int32 `json:"SrcPortEnd,omitempty" xml:"SrcPortEnd,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	SrcPortStart *int32 `json:"SrcPortStart,omitempty" xml:"SrcPortStart,omitempty"`
+}
+
+func (s ModifyPolicyRequestContentFingerPrintRuleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPolicyRequestContentFingerPrintRuleList) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPolicyRequestContentFingerPrintRuleList) SetDstPortEnd(v int32) *ModifyPolicyRequestContentFingerPrintRuleList {
+	s.DstPortEnd = &v
+	return s
+}
+
+func (s *ModifyPolicyRequestContentFingerPrintRuleList) SetDstPortStart(v int32) *ModifyPolicyRequestContentFingerPrintRuleList {
+	s.DstPortStart = &v
+	return s
+}
+
+func (s *ModifyPolicyRequestContentFingerPrintRuleList) SetId(v string) *ModifyPolicyRequestContentFingerPrintRuleList {
+	s.Id = &v
+	return s
+}
+
+func (s *ModifyPolicyRequestContentFingerPrintRuleList) SetMatchAction(v string) *ModifyPolicyRequestContentFingerPrintRuleList {
+	s.MatchAction = &v
+	return s
+}
+
+func (s *ModifyPolicyRequestContentFingerPrintRuleList) SetMaxPktLen(v int32) *ModifyPolicyRequestContentFingerPrintRuleList {
+	s.MaxPktLen = &v
+	return s
+}
+
+func (s *ModifyPolicyRequestContentFingerPrintRuleList) SetMinPktLen(v int32) *ModifyPolicyRequestContentFingerPrintRuleList {
+	s.MinPktLen = &v
+	return s
+}
+
+func (s *ModifyPolicyRequestContentFingerPrintRuleList) SetOffset(v int32) *ModifyPolicyRequestContentFingerPrintRuleList {
+	s.Offset = &v
+	return s
+}
+
+func (s *ModifyPolicyRequestContentFingerPrintRuleList) SetPayloadBytes(v string) *ModifyPolicyRequestContentFingerPrintRuleList {
+	s.PayloadBytes = &v
+	return s
+}
+
+func (s *ModifyPolicyRequestContentFingerPrintRuleList) SetProtocol(v string) *ModifyPolicyRequestContentFingerPrintRuleList {
+	s.Protocol = &v
+	return s
+}
+
+func (s *ModifyPolicyRequestContentFingerPrintRuleList) SetRateValue(v int32) *ModifyPolicyRequestContentFingerPrintRuleList {
+	s.RateValue = &v
+	return s
+}
+
+func (s *ModifyPolicyRequestContentFingerPrintRuleList) SetSeqNo(v int32) *ModifyPolicyRequestContentFingerPrintRuleList {
+	s.SeqNo = &v
+	return s
+}
+
+func (s *ModifyPolicyRequestContentFingerPrintRuleList) SetSrcPortEnd(v int32) *ModifyPolicyRequestContentFingerPrintRuleList {
+	s.SrcPortEnd = &v
+	return s
+}
+
+func (s *ModifyPolicyRequestContentFingerPrintRuleList) SetSrcPortStart(v int32) *ModifyPolicyRequestContentFingerPrintRuleList {
+	s.SrcPortStart = &v
+	return s
+}
+
+type ModifyPolicyRequestContentL4RuleList struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// This parameter is required.
+	ConditionList []*ModifyPolicyRequestContentL4RuleListConditionList `json:"ConditionList,omitempty" xml:"ConditionList,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	Limited *int32 `json:"Limited,omitempty" xml:"Limited,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	Match *string `json:"Match,omitempty" xml:"Match,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// char
+	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test****
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+}
+
+func (s ModifyPolicyRequestContentL4RuleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPolicyRequestContentL4RuleList) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPolicyRequestContentL4RuleList) SetAction(v string) *ModifyPolicyRequestContentL4RuleList {
+	s.Action = &v
+	return s
+}
+
+func (s *ModifyPolicyRequestContentL4RuleList) SetConditionList(v []*ModifyPolicyRequestContentL4RuleListConditionList) *ModifyPolicyRequestContentL4RuleList {
+	s.ConditionList = v
+	return s
+}
+
+func (s *ModifyPolicyRequestContentL4RuleList) SetLimited(v int32) *ModifyPolicyRequestContentL4RuleList {
+	s.Limited = &v
+	return s
+}
+
+func (s *ModifyPolicyRequestContentL4RuleList) SetMatch(v string) *ModifyPolicyRequestContentL4RuleList {
+	s.Match = &v
+	return s
+}
+
+func (s *ModifyPolicyRequestContentL4RuleList) SetMethod(v string) *ModifyPolicyRequestContentL4RuleList {
+	s.Method = &v
+	return s
+}
+
+func (s *ModifyPolicyRequestContentL4RuleList) SetName(v string) *ModifyPolicyRequestContentL4RuleList {
+	s.Name = &v
+	return s
+}
+
+func (s *ModifyPolicyRequestContentL4RuleList) SetPriority(v int32) *ModifyPolicyRequestContentL4RuleList {
+	s.Priority = &v
+	return s
+}
+
+type ModifyPolicyRequestContentL4RuleListConditionList struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// abcd
+	Arg *string `json:"Arg,omitempty" xml:"Arg,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1200
+	Depth *int32 `json:"Depth,omitempty" xml:"Depth,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	Position *int32 `json:"Position,omitempty" xml:"Position,omitempty"`
+}
+
+func (s ModifyPolicyRequestContentL4RuleListConditionList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPolicyRequestContentL4RuleListConditionList) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPolicyRequestContentL4RuleListConditionList) SetArg(v string) *ModifyPolicyRequestContentL4RuleListConditionList {
+	s.Arg = &v
+	return s
+}
+
+func (s *ModifyPolicyRequestContentL4RuleListConditionList) SetDepth(v int32) *ModifyPolicyRequestContentL4RuleListConditionList {
+	s.Depth = &v
+	return s
+}
+
+func (s *ModifyPolicyRequestContentL4RuleListConditionList) SetPosition(v int32) *ModifyPolicyRequestContentL4RuleListConditionList {
+	s.Position = &v
+	return s
+}
+
+type ModifyPolicyRequestContentPortRuleList struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 65535
+	DstPortEnd *int32 `json:"DstPortEnd,omitempty" xml:"DstPortEnd,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	DstPortStart *int32 `json:"DstPortStart,omitempty" xml:"DstPortStart,omitempty"`
+	// example:
+	//
+	// c52c2fa6-fdac-40c4-8753-be7c*********
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drop
+	MatchAction *string `json:"MatchAction,omitempty" xml:"MatchAction,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tcp
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	SeqNo *int32 `json:"SeqNo,omitempty" xml:"SeqNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 65535
+	SrcPortEnd *int32 `json:"SrcPortEnd,omitempty" xml:"SrcPortEnd,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	SrcPortStart *int32 `json:"SrcPortStart,omitempty" xml:"SrcPortStart,omitempty"`
+}
+
+func (s ModifyPolicyRequestContentPortRuleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPolicyRequestContentPortRuleList) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPolicyRequestContentPortRuleList) SetDstPortEnd(v int32) *ModifyPolicyRequestContentPortRuleList {
+	s.DstPortEnd = &v
+	return s
+}
+
+func (s *ModifyPolicyRequestContentPortRuleList) SetDstPortStart(v int32) *ModifyPolicyRequestContentPortRuleList {
+	s.DstPortStart = &v
+	return s
+}
+
+func (s *ModifyPolicyRequestContentPortRuleList) SetId(v string) *ModifyPolicyRequestContentPortRuleList {
+	s.Id = &v
+	return s
+}
+
+func (s *ModifyPolicyRequestContentPortRuleList) SetMatchAction(v string) *ModifyPolicyRequestContentPortRuleList {
+	s.MatchAction = &v
+	return s
+}
+
+func (s *ModifyPolicyRequestContentPortRuleList) SetProtocol(v string) *ModifyPolicyRequestContentPortRuleList {
+	s.Protocol = &v
+	return s
+}
+
+func (s *ModifyPolicyRequestContentPortRuleList) SetSeqNo(v int32) *ModifyPolicyRequestContentPortRuleList {
+	s.SeqNo = &v
+	return s
+}
+
+func (s *ModifyPolicyRequestContentPortRuleList) SetSrcPortEnd(v int32) *ModifyPolicyRequestContentPortRuleList {
+	s.SrcPortEnd = &v
+	return s
+}
+
+func (s *ModifyPolicyRequestContentPortRuleList) SetSrcPortStart(v int32) *ModifyPolicyRequestContentPortRuleList {
+	s.SrcPortStart = &v
+	return s
+}
+
+type ModifyPolicyRequestContentSourceBlockList struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 120
+	BlockExpireSeconds *int32 `json:"BlockExpireSeconds,omitempty" xml:"BlockExpireSeconds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 60
+	EverySeconds *int32 `json:"EverySeconds,omitempty" xml:"EverySeconds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5
+	ExceedLimitTimes *int32 `json:"ExceedLimitTimes,omitempty" xml:"ExceedLimitTimes,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ModifyPolicyRequestContentSourceBlockList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPolicyRequestContentSourceBlockList) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPolicyRequestContentSourceBlockList) SetBlockExpireSeconds(v int32) *ModifyPolicyRequestContentSourceBlockList {
+	s.BlockExpireSeconds = &v
+	return s
+}
+
+func (s *ModifyPolicyRequestContentSourceBlockList) SetEverySeconds(v int32) *ModifyPolicyRequestContentSourceBlockList {
+	s.EverySeconds = &v
+	return s
+}
+
+func (s *ModifyPolicyRequestContentSourceBlockList) SetExceedLimitTimes(v int32) *ModifyPolicyRequestContentSourceBlockList {
+	s.ExceedLimitTimes = &v
+	return s
+}
+
+func (s *ModifyPolicyRequestContentSourceBlockList) SetType(v int32) *ModifyPolicyRequestContentSourceBlockList {
+	s.Type = &v
+	return s
+}
+
+type ModifyPolicyRequestContentSourceLimit struct {
+	// example:
+	//
+	// 2048
+	Bps *int32 `json:"Bps,omitempty" xml:"Bps,omitempty"`
+	// example:
+	//
+	// 64
+	Pps *int32 `json:"Pps,omitempty" xml:"Pps,omitempty"`
+	// example:
+	//
+	// 2048
+	SynBps *int32 `json:"SynBps,omitempty" xml:"SynBps,omitempty"`
+	// example:
+	//
+	// 64
+	SynPps *int32 `json:"SynPps,omitempty" xml:"SynPps,omitempty"`
+}
+
+func (s ModifyPolicyRequestContentSourceLimit) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPolicyRequestContentSourceLimit) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPolicyRequestContentSourceLimit) SetBps(v int32) *ModifyPolicyRequestContentSourceLimit {
+	s.Bps = &v
+	return s
+}
+
+func (s *ModifyPolicyRequestContentSourceLimit) SetPps(v int32) *ModifyPolicyRequestContentSourceLimit {
+	s.Pps = &v
+	return s
+}
+
+func (s *ModifyPolicyRequestContentSourceLimit) SetSynBps(v int32) *ModifyPolicyRequestContentSourceLimit {
+	s.SynBps = &v
+	return s
+}
+
+func (s *ModifyPolicyRequestContentSourceLimit) SetSynPps(v int32) *ModifyPolicyRequestContentSourceLimit {
+	s.SynPps = &v
+	return s
+}
+
+type ModifyPolicyShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 11
+	ActionType    *int32  `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
+	ContentShrink *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c52c2fa6-fdac-40c4-8753-be7c********
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// demo**
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ModifyPolicyShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPolicyShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPolicyShrinkRequest) SetActionType(v int32) *ModifyPolicyShrinkRequest {
+	s.ActionType = &v
+	return s
+}
+
+func (s *ModifyPolicyShrinkRequest) SetContentShrink(v string) *ModifyPolicyShrinkRequest {
+	s.ContentShrink = &v
+	return s
+}
+
+func (s *ModifyPolicyShrinkRequest) SetId(v string) *ModifyPolicyShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *ModifyPolicyShrinkRequest) SetName(v string) *ModifyPolicyShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+type ModifyPolicyResponseBody struct {
+	// example:
+	//
+	// B4B379C2-9319-4C6B-B579-FE36831****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPolicyResponseBody) SetRequestId(v string) *ModifyPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyPolicyResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPolicyResponse) SetHeaders(v map[string]*string) *ModifyPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyPolicyResponse) SetStatusCode(v int32) *ModifyPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyPolicyResponse) SetBody(v *ModifyPolicyResponseBody) *ModifyPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyPolicyContentRequest struct {
+	Content *ModifyPolicyContentRequestContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 83967609-7ea5-4f6d-a6ea-380b09e****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// demo**
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ModifyPolicyContentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPolicyContentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPolicyContentRequest) SetContent(v *ModifyPolicyContentRequestContent) *ModifyPolicyContentRequest {
+	s.Content = v
+	return s
+}
+
+func (s *ModifyPolicyContentRequest) SetId(v string) *ModifyPolicyContentRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequest) SetName(v string) *ModifyPolicyContentRequest {
+	s.Name = &v
+	return s
+}
+
+type ModifyPolicyContentRequestContent struct {
+	// example:
+	//
+	// 1716878000
+	BlackIpListExpireAt *int64 `json:"BlackIpListExpireAt,omitempty" xml:"BlackIpListExpireAt,omitempty"`
+	// example:
+	//
+	// true
+	EnableDropIcmp *bool `json:"EnableDropIcmp,omitempty" xml:"EnableDropIcmp,omitempty"`
+	// example:
+	//
+	// true
+	EnableIntelligence  *bool                                                   `json:"EnableIntelligence,omitempty" xml:"EnableIntelligence,omitempty"`
+	EnableL4Defense     *bool                                                   `json:"EnableL4Defense,omitempty" xml:"EnableL4Defense,omitempty"`
+	FingerPrintRuleList []*ModifyPolicyContentRequestContentFingerPrintRuleList `json:"FingerPrintRuleList,omitempty" xml:"FingerPrintRuleList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// default
+	IntelligenceLevel       *string                                             `json:"IntelligenceLevel,omitempty" xml:"IntelligenceLevel,omitempty"`
+	L4RuleList              []*ModifyPolicyContentRequestContentL4RuleList      `json:"L4RuleList,omitempty" xml:"L4RuleList,omitempty" type:"Repeated"`
+	PortRuleList            []*ModifyPolicyContentRequestContentPortRuleList    `json:"PortRuleList,omitempty" xml:"PortRuleList,omitempty" type:"Repeated"`
+	ReflectBlockUdpPortList []*int32                                            `json:"ReflectBlockUdpPortList,omitempty" xml:"ReflectBlockUdpPortList,omitempty" type:"Repeated"`
+	RegionBlockCountryList  []*int32                                            `json:"RegionBlockCountryList,omitempty" xml:"RegionBlockCountryList,omitempty" type:"Repeated"`
+	RegionBlockProvinceList []*int32                                            `json:"RegionBlockProvinceList,omitempty" xml:"RegionBlockProvinceList,omitempty" type:"Repeated"`
+	SourceBlockList         []*ModifyPolicyContentRequestContentSourceBlockList `json:"SourceBlockList,omitempty" xml:"SourceBlockList,omitempty" type:"Repeated"`
+	SourceLimit             *ModifyPolicyContentRequestContentSourceLimit       `json:"SourceLimit,omitempty" xml:"SourceLimit,omitempty" type:"Struct"`
+	// example:
+	//
+	// false
+	WhitenGfbrNets *bool `json:"WhitenGfbrNets,omitempty" xml:"WhitenGfbrNets,omitempty"`
+}
+
+func (s ModifyPolicyContentRequestContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPolicyContentRequestContent) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPolicyContentRequestContent) SetBlackIpListExpireAt(v int64) *ModifyPolicyContentRequestContent {
+	s.BlackIpListExpireAt = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContent) SetEnableDropIcmp(v bool) *ModifyPolicyContentRequestContent {
+	s.EnableDropIcmp = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContent) SetEnableIntelligence(v bool) *ModifyPolicyContentRequestContent {
+	s.EnableIntelligence = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContent) SetEnableL4Defense(v bool) *ModifyPolicyContentRequestContent {
+	s.EnableL4Defense = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContent) SetFingerPrintRuleList(v []*ModifyPolicyContentRequestContentFingerPrintRuleList) *ModifyPolicyContentRequestContent {
+	s.FingerPrintRuleList = v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContent) SetIntelligenceLevel(v string) *ModifyPolicyContentRequestContent {
+	s.IntelligenceLevel = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContent) SetL4RuleList(v []*ModifyPolicyContentRequestContentL4RuleList) *ModifyPolicyContentRequestContent {
+	s.L4RuleList = v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContent) SetPortRuleList(v []*ModifyPolicyContentRequestContentPortRuleList) *ModifyPolicyContentRequestContent {
+	s.PortRuleList = v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContent) SetReflectBlockUdpPortList(v []*int32) *ModifyPolicyContentRequestContent {
+	s.ReflectBlockUdpPortList = v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContent) SetRegionBlockCountryList(v []*int32) *ModifyPolicyContentRequestContent {
+	s.RegionBlockCountryList = v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContent) SetRegionBlockProvinceList(v []*int32) *ModifyPolicyContentRequestContent {
+	s.RegionBlockProvinceList = v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContent) SetSourceBlockList(v []*ModifyPolicyContentRequestContentSourceBlockList) *ModifyPolicyContentRequestContent {
+	s.SourceBlockList = v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContent) SetSourceLimit(v *ModifyPolicyContentRequestContentSourceLimit) *ModifyPolicyContentRequestContent {
+	s.SourceLimit = v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContent) SetWhitenGfbrNets(v bool) *ModifyPolicyContentRequestContent {
+	s.WhitenGfbrNets = &v
+	return s
+}
+
+type ModifyPolicyContentRequestContentFingerPrintRuleList struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 65535
+	DstPortEnd *int32 `json:"DstPortEnd,omitempty" xml:"DstPortEnd,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	DstPortStart *int32 `json:"DstPortStart,omitempty" xml:"DstPortStart,omitempty"`
+	// example:
+	//
+	// 83967609-7ea5-4f6d-a6ea-380b09e****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drop
+	MatchAction *string `json:"MatchAction,omitempty" xml:"MatchAction,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1500
+	MaxPktLen *int32 `json:"MaxPktLen,omitempty" xml:"MaxPktLen,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	MinPktLen *int32 `json:"MinPktLen,omitempty" xml:"MinPktLen,omitempty"`
+	// example:
+	//
+	// 0
+	Offset *int32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// example:
+	//
+	// abcd
+	PayloadBytes *string `json:"PayloadBytes,omitempty" xml:"PayloadBytes,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tcp
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// example:
+	//
+	// 100
+	RateValue *int32 `json:"RateValue,omitempty" xml:"RateValue,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	SeqNo *int32 `json:"SeqNo,omitempty" xml:"SeqNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 65535
+	SrcPortEnd *int32 `json:"SrcPortEnd,omitempty" xml:"SrcPortEnd,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	SrcPortStart *int32 `json:"SrcPortStart,omitempty" xml:"SrcPortStart,omitempty"`
+}
+
+func (s ModifyPolicyContentRequestContentFingerPrintRuleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPolicyContentRequestContentFingerPrintRuleList) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPolicyContentRequestContentFingerPrintRuleList) SetDstPortEnd(v int32) *ModifyPolicyContentRequestContentFingerPrintRuleList {
+	s.DstPortEnd = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContentFingerPrintRuleList) SetDstPortStart(v int32) *ModifyPolicyContentRequestContentFingerPrintRuleList {
+	s.DstPortStart = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContentFingerPrintRuleList) SetId(v string) *ModifyPolicyContentRequestContentFingerPrintRuleList {
+	s.Id = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContentFingerPrintRuleList) SetMatchAction(v string) *ModifyPolicyContentRequestContentFingerPrintRuleList {
+	s.MatchAction = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContentFingerPrintRuleList) SetMaxPktLen(v int32) *ModifyPolicyContentRequestContentFingerPrintRuleList {
+	s.MaxPktLen = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContentFingerPrintRuleList) SetMinPktLen(v int32) *ModifyPolicyContentRequestContentFingerPrintRuleList {
+	s.MinPktLen = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContentFingerPrintRuleList) SetOffset(v int32) *ModifyPolicyContentRequestContentFingerPrintRuleList {
+	s.Offset = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContentFingerPrintRuleList) SetPayloadBytes(v string) *ModifyPolicyContentRequestContentFingerPrintRuleList {
+	s.PayloadBytes = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContentFingerPrintRuleList) SetProtocol(v string) *ModifyPolicyContentRequestContentFingerPrintRuleList {
+	s.Protocol = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContentFingerPrintRuleList) SetRateValue(v int32) *ModifyPolicyContentRequestContentFingerPrintRuleList {
+	s.RateValue = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContentFingerPrintRuleList) SetSeqNo(v int32) *ModifyPolicyContentRequestContentFingerPrintRuleList {
+	s.SeqNo = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContentFingerPrintRuleList) SetSrcPortEnd(v int32) *ModifyPolicyContentRequestContentFingerPrintRuleList {
+	s.SrcPortEnd = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContentFingerPrintRuleList) SetSrcPortStart(v int32) *ModifyPolicyContentRequestContentFingerPrintRuleList {
+	s.SrcPortStart = &v
+	return s
+}
+
+type ModifyPolicyContentRequestContentL4RuleList struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// This parameter is required.
+	ConditionList []*ModifyPolicyContentRequestContentL4RuleListConditionList `json:"ConditionList,omitempty" xml:"ConditionList,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	Limited *int32 `json:"Limited,omitempty" xml:"Limited,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	Match *string `json:"Match,omitempty" xml:"Match,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// char
+	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test**
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+}
+
+func (s ModifyPolicyContentRequestContentL4RuleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPolicyContentRequestContentL4RuleList) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPolicyContentRequestContentL4RuleList) SetAction(v string) *ModifyPolicyContentRequestContentL4RuleList {
+	s.Action = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContentL4RuleList) SetConditionList(v []*ModifyPolicyContentRequestContentL4RuleListConditionList) *ModifyPolicyContentRequestContentL4RuleList {
+	s.ConditionList = v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContentL4RuleList) SetLimited(v int32) *ModifyPolicyContentRequestContentL4RuleList {
+	s.Limited = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContentL4RuleList) SetMatch(v string) *ModifyPolicyContentRequestContentL4RuleList {
+	s.Match = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContentL4RuleList) SetMethod(v string) *ModifyPolicyContentRequestContentL4RuleList {
+	s.Method = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContentL4RuleList) SetName(v string) *ModifyPolicyContentRequestContentL4RuleList {
+	s.Name = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContentL4RuleList) SetPriority(v int32) *ModifyPolicyContentRequestContentL4RuleList {
+	s.Priority = &v
+	return s
+}
+
+type ModifyPolicyContentRequestContentL4RuleListConditionList struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// abcd
+	Arg *string `json:"Arg,omitempty" xml:"Arg,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1200
+	Depth *int32 `json:"Depth,omitempty" xml:"Depth,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	Position *int32 `json:"Position,omitempty" xml:"Position,omitempty"`
+}
+
+func (s ModifyPolicyContentRequestContentL4RuleListConditionList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPolicyContentRequestContentL4RuleListConditionList) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPolicyContentRequestContentL4RuleListConditionList) SetArg(v string) *ModifyPolicyContentRequestContentL4RuleListConditionList {
+	s.Arg = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContentL4RuleListConditionList) SetDepth(v int32) *ModifyPolicyContentRequestContentL4RuleListConditionList {
+	s.Depth = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContentL4RuleListConditionList) SetPosition(v int32) *ModifyPolicyContentRequestContentL4RuleListConditionList {
+	s.Position = &v
+	return s
+}
+
+type ModifyPolicyContentRequestContentPortRuleList struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 65535
+	DstPortEnd *int32 `json:"DstPortEnd,omitempty" xml:"DstPortEnd,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	DstPortStart *int32 `json:"DstPortStart,omitempty" xml:"DstPortStart,omitempty"`
+	// example:
+	//
+	// 412a7312-58ff-4e32-a202-0ab0*******
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// drop
+	MatchAction *string `json:"MatchAction,omitempty" xml:"MatchAction,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tcp
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	SeqNo *int32 `json:"SeqNo,omitempty" xml:"SeqNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 65535
+	SrcPortEnd *int32 `json:"SrcPortEnd,omitempty" xml:"SrcPortEnd,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	SrcPortStart *int32 `json:"SrcPortStart,omitempty" xml:"SrcPortStart,omitempty"`
+}
+
+func (s ModifyPolicyContentRequestContentPortRuleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPolicyContentRequestContentPortRuleList) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPolicyContentRequestContentPortRuleList) SetDstPortEnd(v int32) *ModifyPolicyContentRequestContentPortRuleList {
+	s.DstPortEnd = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContentPortRuleList) SetDstPortStart(v int32) *ModifyPolicyContentRequestContentPortRuleList {
+	s.DstPortStart = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContentPortRuleList) SetId(v string) *ModifyPolicyContentRequestContentPortRuleList {
+	s.Id = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContentPortRuleList) SetMatchAction(v string) *ModifyPolicyContentRequestContentPortRuleList {
+	s.MatchAction = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContentPortRuleList) SetProtocol(v string) *ModifyPolicyContentRequestContentPortRuleList {
+	s.Protocol = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContentPortRuleList) SetSeqNo(v int32) *ModifyPolicyContentRequestContentPortRuleList {
+	s.SeqNo = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContentPortRuleList) SetSrcPortEnd(v int32) *ModifyPolicyContentRequestContentPortRuleList {
+	s.SrcPortEnd = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContentPortRuleList) SetSrcPortStart(v int32) *ModifyPolicyContentRequestContentPortRuleList {
+	s.SrcPortStart = &v
+	return s
+}
+
+type ModifyPolicyContentRequestContentSourceBlockList struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 120
+	BlockExpireSeconds *int32 `json:"BlockExpireSeconds,omitempty" xml:"BlockExpireSeconds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 60
+	EverySeconds *int32 `json:"EverySeconds,omitempty" xml:"EverySeconds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5
+	ExceedLimitTimes *int32 `json:"ExceedLimitTimes,omitempty" xml:"ExceedLimitTimes,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ModifyPolicyContentRequestContentSourceBlockList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPolicyContentRequestContentSourceBlockList) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPolicyContentRequestContentSourceBlockList) SetBlockExpireSeconds(v int32) *ModifyPolicyContentRequestContentSourceBlockList {
+	s.BlockExpireSeconds = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContentSourceBlockList) SetEverySeconds(v int32) *ModifyPolicyContentRequestContentSourceBlockList {
+	s.EverySeconds = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContentSourceBlockList) SetExceedLimitTimes(v int32) *ModifyPolicyContentRequestContentSourceBlockList {
+	s.ExceedLimitTimes = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContentSourceBlockList) SetType(v int32) *ModifyPolicyContentRequestContentSourceBlockList {
+	s.Type = &v
+	return s
+}
+
+type ModifyPolicyContentRequestContentSourceLimit struct {
+	// example:
+	//
+	// 2048
+	Bps *int32 `json:"Bps,omitempty" xml:"Bps,omitempty"`
+	// example:
+	//
+	// 64
+	Pps *int32 `json:"Pps,omitempty" xml:"Pps,omitempty"`
+	// example:
+	//
+	// 2048
+	SynBps *int32 `json:"SynBps,omitempty" xml:"SynBps,omitempty"`
+	// example:
+	//
+	// 64
+	SynPps *int32 `json:"SynPps,omitempty" xml:"SynPps,omitempty"`
+}
+
+func (s ModifyPolicyContentRequestContentSourceLimit) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPolicyContentRequestContentSourceLimit) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPolicyContentRequestContentSourceLimit) SetBps(v int32) *ModifyPolicyContentRequestContentSourceLimit {
+	s.Bps = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContentSourceLimit) SetPps(v int32) *ModifyPolicyContentRequestContentSourceLimit {
+	s.Pps = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContentSourceLimit) SetSynBps(v int32) *ModifyPolicyContentRequestContentSourceLimit {
+	s.SynBps = &v
+	return s
+}
+
+func (s *ModifyPolicyContentRequestContentSourceLimit) SetSynPps(v int32) *ModifyPolicyContentRequestContentSourceLimit {
+	s.SynPps = &v
+	return s
+}
+
+type ModifyPolicyContentShrinkRequest struct {
+	ContentShrink *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 83967609-7ea5-4f6d-a6ea-380b09e****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// demo**
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ModifyPolicyContentShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPolicyContentShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPolicyContentShrinkRequest) SetContentShrink(v string) *ModifyPolicyContentShrinkRequest {
+	s.ContentShrink = &v
+	return s
+}
+
+func (s *ModifyPolicyContentShrinkRequest) SetId(v string) *ModifyPolicyContentShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *ModifyPolicyContentShrinkRequest) SetName(v string) *ModifyPolicyContentShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+type ModifyPolicyContentResponseBody struct {
+	// example:
+	//
+	// 3777EF25-940B-51F4-BB1D-99B5********
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyPolicyContentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPolicyContentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPolicyContentResponseBody) SetRequestId(v string) *ModifyPolicyContentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyPolicyContentResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyPolicyContentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyPolicyContentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPolicyContentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPolicyContentResponse) SetHeaders(v map[string]*string) *ModifyPolicyContentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyPolicyContentResponse) SetStatusCode(v int32) *ModifyPolicyContentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyPolicyContentResponse) SetBody(v *ModifyPolicyContentResponseBody) *ModifyPolicyContentResponse {
 	s.Body = v
 	return s
 }
@@ -7369,10 +10042,6 @@ func (client *Client) AttachAssetGroupToInstanceWithOptions(tmpReq *AttachAssetG
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
-		query["SourceIp"] = request.SourceIp
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7639,6 +10308,70 @@ func (client *Client) ConfigSchedruleOnDemand(request *ConfigSchedruleOnDemandRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ConfigSchedruleOnDemandResponse{}
 	_body, _err := client.ConfigSchedruleOnDemandWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建策略
+//
+// @param request - CreatePolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePolicyResponse
+func (client *Client) CreatePolicyWithOptions(request *CreatePolicyRequest, runtime *util.RuntimeOptions) (_result *CreatePolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreatePolicy"),
+		Version:     tea.String("2018-07-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreatePolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建策略
+//
+// @param request - CreatePolicyRequest
+//
+// @return CreatePolicyResponse
+func (client *Client) CreatePolicy(request *CreatePolicyRequest) (_result *CreatePolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreatePolicyResponse{}
+	_body, _err := client.CreatePolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7924,6 +10657,66 @@ func (client *Client) DeleteIp(request *DeleteIpRequest) (_result *DeleteIpRespo
 
 // Summary:
 //
+// 删除策略
+//
+// @param request - DeletePolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePolicyResponse
+func (client *Client) DeletePolicyWithOptions(request *DeletePolicyRequest, runtime *util.RuntimeOptions) (_result *DeletePolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeletePolicy"),
+		Version:     tea.String("2018-07-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeletePolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除策略
+//
+// @param request - DeletePolicyRequest
+//
+// @return DeletePolicyResponse
+func (client *Client) DeletePolicy(request *DeletePolicyRequest) (_result *DeletePolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeletePolicyResponse{}
+	_body, _err := client.DeletePolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除资源目录成员账号列表
 //
 // @param tmpReq - DeleteRdMemberListRequest
@@ -8075,10 +10868,6 @@ func (client *Client) DescribeAssetGroupWithOptions(request *DescribeAssetGroupR
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
-		query["SourceIp"] = request.SourceIp
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
 		query["Type"] = request.Type
 	}
@@ -8157,10 +10946,6 @@ func (client *Client) DescribeAssetGroupToInstanceWithOptions(request *DescribeA
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
-		query["SourceIp"] = request.SourceIp
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
@@ -9305,6 +12090,76 @@ func (client *Client) DescribeTraffic(request *DescribeTrafficRequest) (_result 
 
 // Summary:
 //
+// 策略解绑
+//
+// @param tmpReq - DetachFromPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachFromPolicyResponse
+func (client *Client) DetachFromPolicyWithOptions(tmpReq *DetachFromPolicyRequest, runtime *util.RuntimeOptions) (_result *DetachFromPolicyResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DetachFromPolicyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.IpPortProtocolList)) {
+		request.IpPortProtocolListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IpPortProtocolList, tea.String("IpPortProtocolList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IpPortProtocolListShrink)) {
+		query["IpPortProtocolList"] = request.IpPortProtocolListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyType)) {
+		query["PolicyType"] = request.PolicyType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetachFromPolicy"),
+		Version:     tea.String("2018-07-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DetachFromPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 策略解绑
+//
+// @param request - DetachFromPolicyRequest
+//
+// @return DetachFromPolicyResponse
+func (client *Client) DetachFromPolicy(request *DetachFromPolicyRequest) (_result *DetachFromPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetachFromPolicyResponse{}
+	_body, _err := client.DetachFromPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Dissociates an asset from an Anti-DDoS Origin instance of a paid edition.
 //
 // @param tmpReq - DettachAssetGroupToInstanceRequest
@@ -9334,10 +12189,6 @@ func (client *Client) DettachAssetGroupToInstanceWithOptions(tmpReq *DettachAsse
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
-		query["SourceIp"] = request.SourceIp
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -9515,6 +12366,160 @@ func (client *Client) ListOpenedAccessLogInstances(request *ListOpenedAccessLogI
 
 // Summary:
 //
+// 查询策略
+//
+// @param request - ListPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPolicyResponse
+func (client *Client) ListPolicyWithOptions(request *ListPolicyRequest, runtime *util.RuntimeOptions) (_result *ListPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPolicy"),
+		Version:     tea.String("2018-07-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询策略
+//
+// @param request - ListPolicyRequest
+//
+// @return ListPolicyResponse
+func (client *Client) ListPolicy(request *ListPolicyRequest) (_result *ListPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListPolicyResponse{}
+	_body, _err := client.ListPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询策略绑定
+//
+// @param tmpReq - ListPolicyAttachmentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPolicyAttachmentResponse
+func (client *Client) ListPolicyAttachmentWithOptions(tmpReq *ListPolicyAttachmentRequest, runtime *util.RuntimeOptions) (_result *ListPolicyAttachmentResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListPolicyAttachmentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.IpPortProtocolList)) {
+		request.IpPortProtocolListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IpPortProtocolList, tea.String("IpPortProtocolList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IpPortProtocolListShrink)) {
+		query["IpPortProtocolList"] = request.IpPortProtocolListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyType)) {
+		query["PolicyType"] = request.PolicyType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPolicyAttachment"),
+		Version:     tea.String("2018-07-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListPolicyAttachmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询策略绑定
+//
+// @param request - ListPolicyAttachmentRequest
+//
+// @return ListPolicyAttachmentResponse
+func (client *Client) ListPolicyAttachment(request *ListPolicyAttachmentRequest) (_result *ListPolicyAttachmentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListPolicyAttachmentResponse{}
+	_body, _err := client.ListPolicyAttachmentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries all tags.
 //
 // @param request - ListTagKeysRequest
@@ -9662,6 +12667,158 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagResourcesResponse{}
 	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改策略
+//
+// @param tmpReq - ModifyPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyPolicyResponse
+func (client *Client) ModifyPolicyWithOptions(tmpReq *ModifyPolicyRequest, runtime *util.RuntimeOptions) (_result *ModifyPolicyResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ModifyPolicyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Content)) {
+		request.ContentShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Content, tea.String("Content"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ActionType)) {
+		query["ActionType"] = request.ActionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContentShrink)) {
+		query["Content"] = request.ContentShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyPolicy"),
+		Version:     tea.String("2018-07-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改策略
+//
+// @param request - ModifyPolicyRequest
+//
+// @return ModifyPolicyResponse
+func (client *Client) ModifyPolicy(request *ModifyPolicyRequest) (_result *ModifyPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyPolicyResponse{}
+	_body, _err := client.ModifyPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改策略
+//
+// @param tmpReq - ModifyPolicyContentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyPolicyContentResponse
+func (client *Client) ModifyPolicyContentWithOptions(tmpReq *ModifyPolicyContentRequest, runtime *util.RuntimeOptions) (_result *ModifyPolicyContentResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ModifyPolicyContentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Content)) {
+		request.ContentShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Content, tea.String("Content"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContentShrink)) {
+		query["Content"] = request.ContentShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyPolicyContent"),
+		Version:     tea.String("2018-07-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyPolicyContentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改策略
+//
+// @param request - ModifyPolicyContentRequest
+//
+// @return ModifyPolicyContentResponse
+func (client *Client) ModifyPolicyContent(request *ModifyPolicyContentRequest) (_result *ModifyPolicyContentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyPolicyContentResponse{}
+	_body, _err := client.ModifyPolicyContentWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
