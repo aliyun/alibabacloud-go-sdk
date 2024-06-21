@@ -3052,6 +3052,8 @@ type CreateChatappTemplateRequestComponentsButtons struct {
 	//
 	// SIGN_UP
 	NavigateScreen *string `json:"NavigateScreen,omitempty" xml:"NavigateScreen,omitempty"`
+	// Deprecated
+	//
 	// The app package name that WhatsApp uses to load your app. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP for a WhatsApp message template.
 	//
 	// example:
@@ -3064,12 +3066,15 @@ type CreateChatappTemplateRequestComponentsButtons struct {
 	//
 	// +861368897****
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// Deprecated
+	//
 	// The app signing key hash that WhatsApp uses to load your app. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP for a WhatsApp message template.
 	//
 	// example:
 	//
 	// wi299382
-	SignatureHash *string `json:"SignatureHash,omitempty" xml:"SignatureHash,omitempty"`
+	SignatureHash *string                                                       `json:"SignatureHash,omitempty" xml:"SignatureHash,omitempty"`
+	SupportedApps []*CreateChatappTemplateRequestComponentsButtonsSupportedApps `json:"SupportedApps,omitempty" xml:"SupportedApps,omitempty" type:"Repeated"`
 	// The display name of the button.
 	//
 	// example:
@@ -3175,6 +3180,11 @@ func (s *CreateChatappTemplateRequestComponentsButtons) SetSignatureHash(v strin
 	return s
 }
 
+func (s *CreateChatappTemplateRequestComponentsButtons) SetSupportedApps(v []*CreateChatappTemplateRequestComponentsButtonsSupportedApps) *CreateChatappTemplateRequestComponentsButtons {
+	s.SupportedApps = v
+	return s
+}
+
 func (s *CreateChatappTemplateRequestComponentsButtons) SetText(v string) *CreateChatappTemplateRequestComponentsButtons {
 	s.Text = &v
 	return s
@@ -3192,6 +3202,35 @@ func (s *CreateChatappTemplateRequestComponentsButtons) SetUrl(v string) *Create
 
 func (s *CreateChatappTemplateRequestComponentsButtons) SetUrlType(v string) *CreateChatappTemplateRequestComponentsButtons {
 	s.UrlType = &v
+	return s
+}
+
+type CreateChatappTemplateRequestComponentsButtonsSupportedApps struct {
+	// example:
+	//
+	// com.aliyun.pack.***
+	PackageName *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
+	// example:
+	//
+	// kdikie9398k
+	SignatureHash *string `json:"SignatureHash,omitempty" xml:"SignatureHash,omitempty"`
+}
+
+func (s CreateChatappTemplateRequestComponentsButtonsSupportedApps) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateChatappTemplateRequestComponentsButtonsSupportedApps) GoString() string {
+	return s.String()
+}
+
+func (s *CreateChatappTemplateRequestComponentsButtonsSupportedApps) SetPackageName(v string) *CreateChatappTemplateRequestComponentsButtonsSupportedApps {
+	s.PackageName = &v
+	return s
+}
+
+func (s *CreateChatappTemplateRequestComponentsButtonsSupportedApps) SetSignatureHash(v string) *CreateChatappTemplateRequestComponentsButtonsSupportedApps {
+	s.SignatureHash = &v
 	return s
 }
 
@@ -5496,7 +5535,8 @@ type GetChatappTemplateDetailResponseBodyDataComponentsButtons struct {
 	// example:
 	//
 	// 2993839
-	SignatureHash *string `json:"SignatureHash,omitempty" xml:"SignatureHash,omitempty"`
+	SignatureHash *string                                                                   `json:"SignatureHash,omitempty" xml:"SignatureHash,omitempty"`
+	SupportedApps []*GetChatappTemplateDetailResponseBodyDataComponentsButtonsSupportedApps `json:"SupportedApps,omitempty" xml:"SupportedApps,omitempty" type:"Repeated"`
 	// The display name of the button.
 	//
 	// example:
@@ -5599,6 +5639,11 @@ func (s *GetChatappTemplateDetailResponseBodyDataComponentsButtons) SetSignature
 	return s
 }
 
+func (s *GetChatappTemplateDetailResponseBodyDataComponentsButtons) SetSupportedApps(v []*GetChatappTemplateDetailResponseBodyDataComponentsButtonsSupportedApps) *GetChatappTemplateDetailResponseBodyDataComponentsButtons {
+	s.SupportedApps = v
+	return s
+}
+
 func (s *GetChatappTemplateDetailResponseBodyDataComponentsButtons) SetText(v string) *GetChatappTemplateDetailResponseBodyDataComponentsButtons {
 	s.Text = &v
 	return s
@@ -5682,6 +5727,29 @@ func (s *GetChatappTemplateDetailResponseBodyDataComponentsButtonsExtendAttrs) S
 
 func (s *GetChatappTemplateDetailResponseBodyDataComponentsButtonsExtendAttrs) SetNextTemplateName(v string) *GetChatappTemplateDetailResponseBodyDataComponentsButtonsExtendAttrs {
 	s.NextTemplateName = &v
+	return s
+}
+
+type GetChatappTemplateDetailResponseBodyDataComponentsButtonsSupportedApps struct {
+	PackageName   *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
+	SignatureHash *string `json:"SignatureHash,omitempty" xml:"SignatureHash,omitempty"`
+}
+
+func (s GetChatappTemplateDetailResponseBodyDataComponentsButtonsSupportedApps) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatappTemplateDetailResponseBodyDataComponentsButtonsSupportedApps) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatappTemplateDetailResponseBodyDataComponentsButtonsSupportedApps) SetPackageName(v string) *GetChatappTemplateDetailResponseBodyDataComponentsButtonsSupportedApps {
+	s.PackageName = &v
+	return s
+}
+
+func (s *GetChatappTemplateDetailResponseBodyDataComponentsButtonsSupportedApps) SetSignatureHash(v string) *GetChatappTemplateDetailResponseBodyDataComponentsButtonsSupportedApps {
+	s.SignatureHash = &v
 	return s
 }
 
@@ -10181,6 +10249,8 @@ type ModifyChatappTemplateRequestComponentsButtons struct {
 	//
 	// SIGN_UP
 	NavigateScreen *string `json:"NavigateScreen,omitempty" xml:"NavigateScreen,omitempty"`
+	// Deprecated
+	//
 	// The app package name that WhatsApp uses to load your app. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP for a WhatsApp message template.
 	//
 	// example:
@@ -10193,12 +10263,15 @@ type ModifyChatappTemplateRequestComponentsButtons struct {
 	//
 	// +8613888887889
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// Deprecated
+	//
 	// The app signing key hash that WhatsApp uses to load your app. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP for a WhatsApp message template.
 	//
 	// example:
 	//
 	// 29dkeke
-	SignatureHash *string `json:"SignatureHash,omitempty" xml:"SignatureHash,omitempty"`
+	SignatureHash *string                                                       `json:"SignatureHash,omitempty" xml:"SignatureHash,omitempty"`
+	SupportedApps []*ModifyChatappTemplateRequestComponentsButtonsSupportedApps `json:"SupportedApps,omitempty" xml:"SupportedApps,omitempty" type:"Repeated"`
 	// The text of the button.
 	//
 	// example:
@@ -10304,6 +10377,11 @@ func (s *ModifyChatappTemplateRequestComponentsButtons) SetSignatureHash(v strin
 	return s
 }
 
+func (s *ModifyChatappTemplateRequestComponentsButtons) SetSupportedApps(v []*ModifyChatappTemplateRequestComponentsButtonsSupportedApps) *ModifyChatappTemplateRequestComponentsButtons {
+	s.SupportedApps = v
+	return s
+}
+
 func (s *ModifyChatappTemplateRequestComponentsButtons) SetText(v string) *ModifyChatappTemplateRequestComponentsButtons {
 	s.Text = &v
 	return s
@@ -10321,6 +10399,35 @@ func (s *ModifyChatappTemplateRequestComponentsButtons) SetUrl(v string) *Modify
 
 func (s *ModifyChatappTemplateRequestComponentsButtons) SetUrlType(v string) *ModifyChatappTemplateRequestComponentsButtons {
 	s.UrlType = &v
+	return s
+}
+
+type ModifyChatappTemplateRequestComponentsButtonsSupportedApps struct {
+	// example:
+	//
+	// com.aliyun.pack.***
+	PackageName *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
+	// example:
+	//
+	// kdikie9398k
+	SignatureHash *string `json:"SignatureHash,omitempty" xml:"SignatureHash,omitempty"`
+}
+
+func (s ModifyChatappTemplateRequestComponentsButtonsSupportedApps) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyChatappTemplateRequestComponentsButtonsSupportedApps) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyChatappTemplateRequestComponentsButtonsSupportedApps) SetPackageName(v string) *ModifyChatappTemplateRequestComponentsButtonsSupportedApps {
+	s.PackageName = &v
+	return s
+}
+
+func (s *ModifyChatappTemplateRequestComponentsButtonsSupportedApps) SetSignatureHash(v string) *ModifyChatappTemplateRequestComponentsButtonsSupportedApps {
+	s.SignatureHash = &v
 	return s
 }
 
