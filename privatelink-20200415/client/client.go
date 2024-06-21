@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -16,19 +13,48 @@ type AddUserToVpcEndpointServiceRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// example:
+	//
+	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The region ID of the endpoint service. You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	// The region ID of the endpoint service. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eu-west-1
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The endpoint service ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// epsrv-hp3vpx8yqxblby3i****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The whitelist in the format of Aliyun Resource Name (ARN).
+	//
+	// example:
+	//
+	// acs:ram:*:<account-id>:*
 	UserARN *string `json:"UserARN,omitempty" xml:"UserARN,omitempty"`
 	// The account ID that you want to add to the whitelist.
+	//
+	// example:
+	//
+	// 132193271328****
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -72,6 +98,10 @@ func (s *AddUserToVpcEndpointServiceRequest) SetUserId(v int64) *AddUserToVpcEnd
 
 type AddUserToVpcEndpointServiceResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -121,23 +151,60 @@ type AddZoneToVpcEndpointRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// example:
+	//
+	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the endpoint to which you want to add the zone.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ep-hp33b2e43fays7s8****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
 	// The region ID of the endpoint.
 	//
-	// You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the vSwitch in the zone that you want to add. The system automatically creates an endpoint ENI in the vSwitch.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vsw-hjkshjvdkdvd****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The ID of the zone that you want to add.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou-b
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 	// The IP address of the endpoint elastic network interface (ENI) in the zone that you want to add.
+	//
+	// example:
+	//
+	// 192.XX.XX.32
 	Ip *string `json:"ip,omitempty" xml:"ip,omitempty"`
 }
 
@@ -186,6 +253,10 @@ func (s *AddZoneToVpcEndpointRequest) SetIp(v string) *AddZoneToVpcEndpointReque
 
 type AddZoneToVpcEndpointResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -235,27 +306,66 @@ type AttachResourceToVpcEndpointServiceRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// example:
+	//
+	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The region ID of the endpoint service to which you want to add the service resource.
 	//
-	// You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The service resource ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lb-hp32z1wp5peaoox2q****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The type of the service resource. Valid values:
 	//
-	// *   **slb**: a Classic Load Balancer (CLB) instance
-	// *   **alb**: an Application Load Balancer (ALB) instance
-	// *   **nlb**: a Network Load Balancer (NLB) instance
+	// 	- **slb**: a Classic Load Balancer (CLB) instance
+	//
+	// 	- **alb**: an Application Load Balancer (ALB) instance
+	//
+	// 	- **nlb**: a Network Load Balancer (NLB) instance
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// slb
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The ID of the endpoint service to which you want to add the service resource.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// epsrv-hp3vpx8yqxblby3i****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The zone ID of the service resource.
+	//
+	// example:
+	//
+	// cn-hangzhou-j
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -304,6 +414,10 @@ func (s *AttachResourceToVpcEndpointServiceRequest) SetZoneId(v string) *AttachR
 
 type AttachResourceToVpcEndpointServiceResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -353,17 +467,44 @@ type AttachSecurityGroupToVpcEndpointRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// example:
+	//
+	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the endpoint with which you want to associate the security group.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ep-hp33b2e43fays7s8****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The region ID of the endpoint with which you want to associate with the security group. You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	// The region ID of the endpoint with which you want to associate with the security group. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eu-west-1
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the security group with which you want to associate the endpoint.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sg-hp3c8qj1tyct90ej****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 }
 
@@ -402,6 +543,10 @@ func (s *AttachSecurityGroupToVpcEndpointRequest) SetSecurityGroupId(v string) *
 
 type AttachSecurityGroupToVpcEndpointResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 8D778FF9-7640-4C13-BCD6-9265CA9A2F81
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -449,13 +594,30 @@ func (s *AttachSecurityGroupToVpcEndpointResponse) SetBody(v *AttachSecurityGrou
 
 type ChangeResourceGroupRequest struct {
 	// The resource group ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rg-acfmy*****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The resource IDs. You can specify up to 50 resource IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ep-hp3i05294c2d2d****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The type of resource. Valid values:
 	//
-	// *   **vpcendpoint**: endpoint
-	// *   **vpcendpointservice**: endpoint service
+	// 	- **VpcEndpoint**: endpoint
+	//
+	// 	- **VpcEndpointService**: endpoint service
+	//
+	// example:
+	//
+	// VpcEndpoint
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -484,6 +646,10 @@ func (s *ChangeResourceGroupRequest) SetResourceType(v string) *ChangeResourceGr
 
 type ChangeResourceGroupResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 8D8992C1-6712-423C-BAC5-E5E817484C6B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -531,10 +697,18 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 
 type CheckProductOpenResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 8D8992C1-6712-423C-BAC5-E5E817484C6B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether PrivateLink is activated.
 	//
-	// Only **true** is returned. The value indicates that PrivateLink is activated.
+	// Only **true*	- is returned. The value indicates that PrivateLink is activated.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -589,48 +763,107 @@ type CreateVpcEndpointRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// example:
+	//
+	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The description of the endpoint.
 	//
 	// The description must be 2 to 256 characters in length, and cannot start with `http://` or `https://`.
+	//
+	// example:
+	//
+	// This is my Endpoint.
 	EndpointDescription *string `json:"EndpointDescription,omitempty" xml:"EndpointDescription,omitempty"`
 	// The name of the endpoint.
 	//
-	// The name must be 2 to 128 characters in length, and can contain digits, underscores (\_), and hyphens (-). The name must start with a letter.
+	// The name must be 2 to 128 characters in length, and can contain digits, underscores (_), and hyphens (-). The name must start with a letter.
+	//
+	// example:
+	//
+	// test
 	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
 	// The type of the endpoint.
 	//
 	// Set the value to **Interface**. Then, you can specify Application Load Balancer (ALB) and Classic Load Balancer (CLB) instances as service resources for the endpoint service.
-	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	//
+	// example:
+	//
+	// Interface
+	EndpointType   *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
 	// Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
 	//
-	// *   **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
-	// *   **false** (default): disables user authentication.
+	// 	- **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
+	//
+	// 	- **false*	- (default): disables user authentication.
+	//
+	// example:
+	//
+	// false
 	ProtectedEnabled *bool `json:"ProtectedEnabled,omitempty" xml:"ProtectedEnabled,omitempty"`
 	// The region ID of the endpoint.
 	//
-	// You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-huhehaote
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmy*****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The IDs of security groups that are associated with the endpoint elastic network interface (ENI).
+	//
+	// example:
+	//
+	// sg-hp33bw6ynvm2yb0e****
 	SecurityGroupId []*string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty" type:"Repeated"`
 	// The ID of the endpoint service with which the endpoint is associated.
+	//
+	// example:
+	//
+	// epsrv-hp3xdsq46ael67lo****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The name of the endpoint service with which the endpoint is associated.
+	//
+	// example:
+	//
+	// com.aliyuncs.privatelink.cn-huhehaote.epsrv-hp3vpx8yqxblby3i****
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The tags to add to the resource.
 	Tag []*CreateVpcEndpointRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the virtual private cloud (VPC) to which the endpoint belongs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpc-hp356stwkxg3fn2xe****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The zones where the endpoint is deployed.
 	Zone []*CreateVpcEndpointRequestZone `json:"Zone,omitempty" xml:"Zone,omitempty" type:"Repeated"`
 	// The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Set the value to **1**.
+	//
+	// example:
+	//
+	// 1
 	ZonePrivateIpAddressCount *int64 `json:"ZonePrivateIpAddressCount,omitempty" xml:"ZonePrivateIpAddressCount,omitempty"`
 }
 
@@ -664,6 +897,11 @@ func (s *CreateVpcEndpointRequest) SetEndpointName(v string) *CreateVpcEndpointR
 
 func (s *CreateVpcEndpointRequest) SetEndpointType(v string) *CreateVpcEndpointRequest {
 	s.EndpointType = &v
+	return s
+}
+
+func (s *CreateVpcEndpointRequest) SetPolicyDocument(v string) *CreateVpcEndpointRequest {
+	s.PolicyDocument = &v
 	return s
 }
 
@@ -719,8 +957,16 @@ func (s *CreateVpcEndpointRequest) SetZonePrivateIpAddressCount(v int64) *Create
 
 type CreateVpcEndpointRequestTag struct {
 	// The key of the tag to add to the resource.
+	//
+	// example:
+	//
+	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag to add to the resource.
+	//
+	// example:
+	//
+	// prod
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -744,14 +990,26 @@ func (s *CreateVpcEndpointRequestTag) SetValue(v string) *CreateVpcEndpointReque
 
 type CreateVpcEndpointRequestZone struct {
 	// The ID of the vSwitch where you want to create the endpoint ENI in the zone. You can specify up to 10 vSwitch IDs.
+	//
+	// example:
+	//
+	// vsw-hp3uf6045ljdhd5zr****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The ID of the zone in which the endpoint is deployed.
 	//
 	// You can specify up to 10 zone IDs.
+	//
+	// example:
+	//
+	// cn-huhehaote-b
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 	// The IP address of the zone in which the endpoint is deployed.
 	//
 	// You can specify up to 10 IP addresses.
+	//
+	// example:
+	//
+	// 192.168.XX.XX
 	Ip *string `json:"ip,omitempty" xml:"ip,omitempty"`
 }
 
@@ -780,45 +1038,106 @@ func (s *CreateVpcEndpointRequestZone) SetIp(v string) *CreateVpcEndpointRequest
 
 type CreateVpcEndpointResponseBody struct {
 	// The bandwidth of the endpoint connection. Unit: Mbit/s.
+	//
+	// example:
+	//
+	// 200
 	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The state of the endpoint connection. Valid values:
 	//
-	// *   **Pending**: The connection is being modified.
-	// *   **Connecting**: The connection is being established.
-	// *   **Connected**: The connection is established.
-	// *   **Disconnecting**: The endpoint is being disconnected from the endpoint service.
-	// *   **Disconnected**: The endpoint is disconnected from the endpoint service.
-	// *   **Deleting**: The connection is being deleted.
+	// 	- **Pending**: The connection is being modified.
+	//
+	// 	- **Connecting**: The connection is being established.
+	//
+	// 	- **Connected**: The connection is established.
+	//
+	// 	- **Disconnecting**: The endpoint is being disconnected from the endpoint service.
+	//
+	// 	- **Disconnected**: The endpoint is disconnected from the endpoint service.
+	//
+	// 	- **Deleting**: The connection is being deleted.
+	//
+	// example:
+	//
+	// Disconnected
 	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
 	// The time when the endpoint was created.
+	//
+	// example:
+	//
+	// 2022-01-02T19:11:12Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The service state of the endpoint. Valid values:
 	//
-	// *   **Normal**: The endpoint runs as expected.
-	// *   **FinancialLocked**: The endpoint is locked due to overdue payments.
+	// 	- **Normal**: The endpoint runs as expected.
+	//
+	// 	- **FinancialLocked**: The endpoint is locked due to overdue payments.
+	//
+	// example:
+	//
+	// Normal
 	EndpointBusinessStatus *string `json:"EndpointBusinessStatus,omitempty" xml:"EndpointBusinessStatus,omitempty"`
 	// The description of the endpoint.
+	//
+	// example:
+	//
+	// This is my Endpoint.
 	EndpointDescription *string `json:"EndpointDescription,omitempty" xml:"EndpointDescription,omitempty"`
 	// The domain name of the endpoint.
+	//
+	// example:
+	//
+	// ep-hp33b2e43fays7s8****.epsrv-hp3xdsq46ael67lo****.cn-huhehaote.privatelink.aliyuncs.com
 	EndpointDomain *string `json:"EndpointDomain,omitempty" xml:"EndpointDomain,omitempty"`
 	// The endpoint ID.
+	//
+	// example:
+	//
+	// ep-hp33b2e43fays7s8****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
 	// The name of the endpoint.
+	//
+	// example:
+	//
+	// test
 	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
 	// The state of the endpoint. Valid values:
 	//
-	// *   **Creating**: The endpoint is being created.
-	// *   **Active**: The endpoint is available.
-	// *   **Pending**: The endpoint is being modified.
-	// *   **Deleting**: The endpoint is being deleted.
+	// 	- **Creating**: The endpoint is being created.
+	//
+	// 	- **Active**: The endpoint is available.
+	//
+	// 	- **Pending**: The endpoint is being modified.
+	//
+	// 	- **Deleting**: The endpoint is being deleted.
+	//
+	// example:
+	//
+	// Active
 	EndpointStatus *string `json:"EndpointStatus,omitempty" xml:"EndpointStatus,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the endpoint service with which the endpoint is associated.
+	//
+	// example:
+	//
+	// epsrv-hp3vpx8yqxblby3i****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The name of the endpoint service with which the endpoint is associated.
+	//
+	// example:
+	//
+	// com.aliyuncs.privatelink.cn-huhehaote.epsrv-hp3xdsq46ael67lo****
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The ID of the VPC to which the endpoint belongs.
+	//
+	// example:
+	//
+	// vpc-hp356stwkxg3fn2xe****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -927,52 +1246,101 @@ func (s *CreateVpcEndpointResponse) SetBody(v *CreateVpcEndpointResponseBody) *C
 type CreateVpcEndpointServiceRequest struct {
 	// Specifies whether to automatically accept endpoint connection requests. Valid values:
 	//
-	// *   **true**
-	// *   **false** (default)
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
+	// example:
+	//
+	// false
 	AutoAcceptEnabled *bool `json:"AutoAcceptEnabled,omitempty" xml:"AutoAcceptEnabled,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// example:
+	//
+	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request.
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The payer of the endpoint service. Valid values:
 	//
-	// *   **Endpoint**: the service consumer
-	// *   **EndpointService**: the service provider
+	// 	- **Endpoint**: the service consumer
 	//
-	// > By default, the feature of allowing the service provider to pay is unavailable. To use this feature, log on to the [Quota Center console](https://quotas.console.aliyun.com/white-list-products/privatelink/quotas) and click Privileges in the left-side navigation pane. On the **Privileges** page, enter the quota ID `privatelink_whitelist/epsvc_payer_mode`, and click Apply in the Actions column.
+	// 	- **EndpointService**: the service provider
+	//
+	// > By default, the feature of allowing the service provider to pay is unavailable. To use this feature, log on to the [Quota Center console](https://quotas.console.aliyun.com/white-list-products/privatelink/quotas) and click Privileges in the left-side navigation pane. On the **Privileges*	- page, enter the quota ID `privatelink_whitelist/epsvc_payer_mode`, and click Apply in the Actions column.
+	//
+	// example:
+	//
+	// Endpoint
 	Payer *string `json:"Payer,omitempty" xml:"Payer,omitempty"`
 	// The region ID of the endpoint service.
 	//
-	// You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-huhehaote
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The service resources of the endpoint service.
 	Resource []*CreateVpcEndpointServiceRequestResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Repeated"`
 	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmy*****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The description of the endpoint service.
+	//
+	// example:
+	//
+	// This is my EndpointService.
 	ServiceDescription *string `json:"ServiceDescription,omitempty" xml:"ServiceDescription,omitempty"`
 	// The type of the service resource. Valid values:
 	//
-	// *   **slb**: a Classic Load Balancer (CLB) instance
-	// *   **alb**: an Application Load Balancer (ALB) instance
-	// *   **nlb**: a Network Load Balancer (NLB) instance
+	// 	- **slb**: a Classic Load Balancer (CLB) instance
+	//
+	// 	- **alb**: an Application Load Balancer (ALB) instance
+	//
+	// 	- **nlb**: a Network Load Balancer (NLB) instance
+	//
+	// example:
+	//
+	// slb
 	ServiceResourceType *string `json:"ServiceResourceType,omitempty" xml:"ServiceResourceType,omitempty"`
 	// Specifies whether to enable IPv6 for the endpoint service. Valid values:
 	//
-	// *   **true**
-	// *   **false** (default)
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
+	// example:
+	//
+	// false
 	ServiceSupportIPv6 *bool `json:"ServiceSupportIPv6,omitempty" xml:"ServiceSupportIPv6,omitempty"`
 	// The tags to add to the resource.
 	Tag []*CreateVpcEndpointServiceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
 	//
-	// *   **true**
-	// *   **false** (default)
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
+	// example:
+	//
+	// false
 	ZoneAffinityEnabled *bool `json:"ZoneAffinityEnabled,omitempty" xml:"ZoneAffinityEnabled,omitempty"`
 }
 
@@ -1046,16 +1414,30 @@ func (s *CreateVpcEndpointServiceRequest) SetZoneAffinityEnabled(v bool) *Create
 
 type CreateVpcEndpointServiceRequestResource struct {
 	// The ID of the service resource that is added to the endpoint service. You can specify up to 20 service resource IDs.
+	//
+	// example:
+	//
+	// lb-hp32z1wp5peaoox2q****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The type of the service resource that is added to the endpoint service. You can add up to 20 service resources to the endpoint service. Valid values:
 	//
-	// *   **slb**: Classic Load Balancer (CLB) instance
-	// *   **alb**: Application Load Balancer (ALB) instance
-	// *   **nlb**: Network Load Balancer (NLB) instance
+	// 	- **slb**: Classic Load Balancer (CLB) instance
+	//
+	// 	- **alb**: Application Load Balancer (ALB) instance
+	//
+	// 	- **nlb**: Network Load Balancer (NLB) instance
 	//
 	// >  In regions where PrivateLink is supported, CLB instances deployed in virtual private clouds (VPCs) can serve as the service resources of the endpoint service.
+	//
+	// example:
+	//
+	// slb
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The zone ID.
+	//
+	// example:
+	//
+	// cn-huhehaote-a
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -1086,10 +1468,18 @@ type CreateVpcEndpointServiceRequestTag struct {
 	// The key of the tag to add to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
 	// The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
+	//
+	// example:
+	//
+	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag to add to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
 	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
+	//
+	// example:
+	//
+	// prod
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1114,44 +1504,99 @@ func (s *CreateVpcEndpointServiceRequestTag) SetValue(v string) *CreateVpcEndpoi
 type CreateVpcEndpointServiceResponseBody struct {
 	// Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	AutoAcceptEnabled *bool `json:"AutoAcceptEnabled,omitempty" xml:"AutoAcceptEnabled,omitempty"`
 	// The time when the endpoint service was created.
+	//
+	// example:
+	//
+	// 2022-01-02T19:11:12Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 8D8992C1-6712-423C-BAC5-E5E817484C6B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmy*****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The service state of the endpoint service. Valid values:
 	//
-	// *   **Normal**: The endpoint service runs as expected.
-	// *   **FinancialLocked**: The endpoint service is locked due to overdue payments.
+	// 	- **Normal**: The endpoint service runs as expected.
+	//
+	// 	- **FinancialLocked**: The endpoint service is locked due to overdue payments.
+	//
+	// example:
+	//
+	// Normal
 	ServiceBusinessStatus *string `json:"ServiceBusinessStatus,omitempty" xml:"ServiceBusinessStatus,omitempty"`
 	// The description of the endpoint service.
+	//
+	// example:
+	//
+	// This is my EndpointService.
 	ServiceDescription *string `json:"ServiceDescription,omitempty" xml:"ServiceDescription,omitempty"`
 	// The domain name of the endpoint service.
+	//
+	// example:
+	//
+	// epsrv-hp3vpx8yqxblby3i****.cn-huhehaote.privatelink.aliyuncs.com
 	ServiceDomain *string `json:"ServiceDomain,omitempty" xml:"ServiceDomain,omitempty"`
 	// The endpoint service ID.
+	//
+	// example:
+	//
+	// epsrv-hp3vpx8yqxblby3i****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The name of the endpoint service.
+	//
+	// example:
+	//
+	// com.aliyuncs.privatelink.cn-huhehaote.epsrv-hp3vpx8yqxblby3i****
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The state of the endpoint service. Valid values:
 	//
-	// *   **Creating**: The endpoint service is being created.
-	// *   **Pending**: The endpoint service is being modified.
-	// *   **Active**: The endpoint service is available.
-	// *   **Deleting**: The endpoint service is being deleted.
+	// 	- **Creating**: The endpoint service is being created.
+	//
+	// 	- **Pending**: The endpoint service is being modified.
+	//
+	// 	- **Active**: The endpoint service is available.
+	//
+	// 	- **Deleting**: The endpoint service is being deleted.
+	//
+	// example:
+	//
+	// Active
 	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
 	// Indicates whether IPv6 was enabled for the endpoint service. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	ServiceSupportIPv6 *bool `json:"ServiceSupportIPv6,omitempty" xml:"ServiceSupportIPv6,omitempty"`
 	// Indicates whether the domain name of the nearest endpoint that is associated with the endpoint service is resolved first. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	ZoneAffinityEnabled *bool `json:"ZoneAffinityEnabled,omitempty" xml:"ZoneAffinityEnabled,omitempty"`
 }
 
@@ -1256,15 +1701,36 @@ type DeleteVpcEndpointRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// example:
+	//
+	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the endpoint that you want to delete.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ep-hp33b2e43fays7s8****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The region ID of the endpoint that you want to delete. You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	// The region ID of the endpoint that you want to delete. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eu-west-1
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -1298,6 +1764,10 @@ func (s *DeleteVpcEndpointRequest) SetRegionId(v string) *DeleteVpcEndpointReque
 
 type DeleteVpcEndpointResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 8D8992C1-6712-423C-BAC5-E5E817484C6B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1347,15 +1817,36 @@ type DeleteVpcEndpointServiceRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// example:
+	//
+	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The region ID of the endpoint service. You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	// The region ID of the endpoint service. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eu-west-1
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the endpoint service that you want to delete.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// epsrv-hp3vpx8yqxblby3i****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 }
 
@@ -1389,6 +1880,10 @@ func (s *DeleteVpcEndpointServiceRequest) SetServiceId(v string) *DeleteVpcEndpo
 
 type DeleteVpcEndpointServiceResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1436,6 +1931,10 @@ func (s *DeleteVpcEndpointServiceResponse) SetBody(v *DeleteVpcEndpointServiceRe
 
 type DescribeRegionsRequest struct {
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -1456,6 +1955,10 @@ type DescribeRegionsResponseBody struct {
 	// The available regions.
 	Regions *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 611CB80C-B6A9-43DB-9E38-0B0AC3D9B58F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1496,10 +1999,22 @@ func (s *DescribeRegionsResponseBodyRegions) SetRegion(v []*DescribeRegionsRespo
 
 type DescribeRegionsResponseBodyRegionsRegion struct {
 	// The name of the region.
+	//
+	// example:
+	//
+	// China (Hangzhou)
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// The endpoint of the region.
+	//
+	// example:
+	//
+	// privatelink.cn-hangzhou.aliyuncs.com
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -1556,7 +2071,13 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type DescribeZonesRequest struct {
-	// The region ID of the zone. You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	// The region ID of the zone. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -1575,6 +2096,10 @@ func (s *DescribeZonesRequest) SetRegionId(v string) *DescribeZonesRequest {
 
 type DescribeZonesResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 611CB80C-B6A9-43DB-9E38-0B0AC3D9B58F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The returned zones.
 	Zones *DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
@@ -1617,8 +2142,16 @@ func (s *DescribeZonesResponseBodyZones) SetZone(v []*DescribeZonesResponseBodyZ
 
 type DescribeZonesResponseBodyZonesZone struct {
 	// The name of the zone.
+	//
+	// example:
+	//
+	// Hangzhou Zone B
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// The zone ID.
+	//
+	// example:
+	//
+	// cn-hangzhou-b
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -1673,26 +2206,62 @@ type DetachResourceFromVpcEndpointServiceRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate a value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters.
+	//
+	// example:
+	//
+	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The region ID of the endpoint.
 	//
-	// You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The service resource ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lb-hp32z1wp5peaoox2q****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The type of the service resource. Valid values:
 	//
-	// *   **slb**: a Classic Load Balancer (CLB) instance that supports PrivateLink. In addition, the CLB instance is deployed in a virtual private cloud (VPC).
-	// *   **alb**: an Application Load Balancer (ALB) instance that supports PrivateLink. In addition, the ALB instance is deployed in a VPC.
+	// 	- **slb**: a Classic Load Balancer (CLB) instance that supports PrivateLink. In addition, the CLB instance is deployed in a virtual private cloud (VPC).
+	//
+	// 	- **alb**: an Application Load Balancer (ALB) instance that supports PrivateLink. In addition, the ALB instance is deployed in a VPC.
+	//
+	// example:
+	//
+	// slb
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The endpoint service ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// epsrv-hp3vpx8yqxblby3i****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The ID of the zone that you want to remove.
+	//
+	// example:
+	//
+	// cn-hangzhou-c
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -1741,6 +2310,10 @@ func (s *DetachResourceFromVpcEndpointServiceRequest) SetZoneId(v string) *Detac
 
 type DetachResourceFromVpcEndpointServiceResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1790,17 +2363,44 @@ type DetachSecurityGroupFromVpcEndpointRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// example:
+	//
+	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the endpoint that you want to disassociate from the security group.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ep-hp33b2e43fays7s8****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The region ID of the endpoint that you want to disassociate from the security group. You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	// The region ID of the endpoint that you want to disassociate from the security group. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eu-west-1
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the security group from which you want to disassociate the endpoint.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sg-hp3c8qj1tyct90ej****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 }
 
@@ -1839,6 +2439,10 @@ func (s *DetachSecurityGroupFromVpcEndpointRequest) SetSecurityGroupId(v string)
 
 type DetachSecurityGroupFromVpcEndpointResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 8D778FF9-7640-4C13-BCD6-9265CA9A2F81
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1888,17 +2492,44 @@ type DisableVpcEndpointConnectionRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// example:
+	//
+	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The endpoint ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ep-hp33b2e43fays7s8****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The ID of the region where the connection request from the endpoint is rejected. You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	// The ID of the region where the connection request from the endpoint is rejected. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eu-west-1
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The endpoint service ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// epsrv-hp3vpx8yqxblby3i****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 }
 
@@ -1937,6 +2568,10 @@ func (s *DisableVpcEndpointConnectionRequest) SetServiceId(v string) *DisableVpc
 
 type DisableVpcEndpointConnectionResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1986,28 +2621,66 @@ type DisableVpcEndpointZoneConnectionRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// example:
+	//
+	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The endpoint ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ep-hp33b2e43fays7s8****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
 	// The ID of the region where the connection request from the endpoint is rejected.
 	//
-	// You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Specifies whether to disconnect the endpoint from the previous connection after the service resource is smoothly migrated. Valid values:
 	//
-	// *   **true**
-	// *   **false** (default)
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
 	//
 	// > Set the value to true if you want to disconnect the endpoint from the previous connection in the zone after the service resource is smoothly migrated.
+	//
+	// example:
+	//
+	// false
 	ReplacedResource *bool `json:"ReplacedResource,omitempty" xml:"ReplacedResource,omitempty"`
 	// The endpoint service ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// epsrv-hp3vpx8yqxblby3i****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The ID of the zone that is associated with the endpoint.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou-b
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -2056,6 +2729,10 @@ func (s *DisableVpcEndpointZoneConnectionRequest) SetZoneId(v string) *DisableVp
 
 type DisableVpcEndpointZoneConnectionResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2104,24 +2781,55 @@ func (s *DisableVpcEndpointZoneConnectionResponse) SetBody(v *DisableVpcEndpoint
 type EnableVpcEndpointConnectionRequest struct {
 	// The bandwidth of the endpoint connection. Unit: Mbit/s. Valid values: **3072 to 10240**.
 	//
-	// >  The bandwidth of an endpoint connection is in the range of **100 to 10,240** Mbit/s. The default bandwidth is **3,072** Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is **3,072 to 10,240** Mbit/s. If Classic Load Balancer (CLB) instances or Application Load Balancer (ALB) instances are specified as service resources, you can modify the endpoint connection bandwidth based on your business requirements. This parameter is invalid if Network Load Balancer (NLB) instances are specified as service resources.
+	// >  The bandwidth of an endpoint connection is in the range of **100 to 10,240*	- Mbit/s. The default bandwidth is **3,072*	- Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is **3,072 to 10,240*	- Mbit/s. If Classic Load Balancer (CLB) instances or Application Load Balancer (ALB) instances are specified as service resources, you can modify the endpoint connection bandwidth based on your business requirements. This parameter is invalid if Network Load Balancer (NLB) instances are specified as service resources.
+	//
+	// example:
+	//
+	// 1024
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// example:
+	//
+	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The endpoint ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ep-hp33b2e43fays7s8****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
 	// The ID of the region where the connection request is accepted.
 	//
-	// You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-huhehaote
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The endpoint service ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// epsrv-hp3vpx8yqxblby3i****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 }
 
@@ -2165,6 +2873,10 @@ func (s *EnableVpcEndpointConnectionRequest) SetServiceId(v string) *EnableVpcEn
 
 type EnableVpcEndpointConnectionResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2214,19 +2926,52 @@ type EnableVpcEndpointZoneConnectionRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// example:
+	//
+	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The endpoint ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ep-hp33b2e43fays7s8****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The ID of the region where the endpoint connection request is accepted. You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	// The ID of the region where the endpoint connection request is accepted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The endpoint service ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// epsrv-hp3vpx8yqxblby3i****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The ID of the zone that is associated with the endpoint.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou-b
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -2270,6 +3015,10 @@ func (s *EnableVpcEndpointZoneConnectionRequest) SetZoneId(v string) *EnableVpcE
 
 type EnableVpcEndpointZoneConnectionResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2317,10 +3066,22 @@ func (s *EnableVpcEndpointZoneConnectionResponse) SetBody(v *EnableVpcEndpointZo
 
 type GetVpcEndpointAttributeRequest struct {
 	// The ID of the endpoint whose attributes you want to query.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ep-hp33b2e43fays7s8****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
 	// The region ID of the endpoint whose attributes you want to query.
 	//
-	// You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-huhehaote
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -2344,70 +3105,163 @@ func (s *GetVpcEndpointAttributeRequest) SetRegionId(v string) *GetVpcEndpointAt
 
 type GetVpcEndpointAttributeResponseBody struct {
 	// The bandwidth of the endpoint connection. Unit: Mbit/s.
+	//
+	// example:
+	//
+	// 1024
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The state of the endpoint connection. Valid values:
 	//
-	// *   **Pending**: The connection is being modified.
-	// *   **Connecting**: The connection is being established.
-	// *   **Connected**: The connection is established.
-	// *   **Disconnecting**: The endpoint is being disconnected from the endpoint service.
-	// *   **Disconnected**: The endpoint is disconnected from the endpoint service.
-	// *   **Deleting**: The connection is being deleted.
+	// 	- **Pending**: The connection is being modified.
+	//
+	// 	- **Connecting**: The connection is being established.
+	//
+	// 	- **Connected**: The connection is established.
+	//
+	// 	- **Disconnecting**: The endpoint is being disconnected from the endpoint service.
+	//
+	// 	- **Disconnected**: The endpoint is disconnected from the endpoint service.
+	//
+	// 	- **Deleting**: The connection is being deleted.
+	//
+	// example:
+	//
+	// Connected
 	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
 	// The time when the endpoint was created.
+	//
+	// example:
+	//
+	// 2021-09-24T18:00:07Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The service state of the endpoint. Valid values:
 	//
-	// *   **Normal**: The endpoint runs as expected.
-	// *   **FinancialLocked**: The endpoint is locked due to overdue payments.
+	// 	- **Normal**: The endpoint runs as expected.
+	//
+	// 	- **FinancialLocked**: The endpoint is locked due to overdue payments.
+	//
+	// example:
+	//
+	// Normal
 	EndpointBusinessStatus *string `json:"EndpointBusinessStatus,omitempty" xml:"EndpointBusinessStatus,omitempty"`
 	// The description of the endpoint.
+	//
+	// example:
+	//
+	// This is my Endpoint.
 	EndpointDescription *string `json:"EndpointDescription,omitempty" xml:"EndpointDescription,omitempty"`
 	// The domain name of the endpoint.
+	//
+	// example:
+	//
+	// ep-hp33b2e43fays7s8****.epsrv-hp3xdsq46ael67lo****.cn-huhehaote.privatelink.aliyuncs.com
 	EndpointDomain *string `json:"EndpointDomain,omitempty" xml:"EndpointDomain,omitempty"`
 	// The endpoint ID.
+	//
+	// example:
+	//
+	// ep-hp33b2e43fays7s8****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
 	// The name of the endpoint.
+	//
+	// example:
+	//
+	// test
 	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
 	// The state of the endpoint. Valid values:
 	//
-	// *   **Creating**: The endpoint is being created.
-	// *   **Active**: The endpoint is available.
-	// *   **Pending**: The endpoint is being modified.
-	// *   **Deleting**: The endpoint is being deleted.
+	// 	- **Creating**: The endpoint is being created.
+	//
+	// 	- **Active**: The endpoint is available.
+	//
+	// 	- **Pending**: The endpoint is being modified.
+	//
+	// 	- **Deleting**: The endpoint is being deleted.
+	//
+	// example:
+	//
+	// Active
 	EndpointStatus *string `json:"EndpointStatus,omitempty" xml:"EndpointStatus,omitempty"`
 	// The type of the endpoint.
 	//
-	// **Interface** is returned. The value indicates the interface endpoint with which the Classic Load Balancer (CLB) instances are associated.
+	// **Interface*	- is returned. The value indicates the interface endpoint with which the Classic Load Balancer (CLB) instances are associated.
+	//
+	// example:
+	//
+	// Interface
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
 	// The payer. Valid values:
 	//
-	// *   **Endpoint**: the service consumer.
-	// *   **EndpointService**: the service provider.
-	Payer *string `json:"Payer,omitempty" xml:"Payer,omitempty"`
+	// 	- **Endpoint**: the service consumer.
+	//
+	// 	- **EndpointService**: the service provider.
+	//
+	// example:
+	//
+	// Endpoint
+	Payer          *string `json:"Payer,omitempty" xml:"Payer,omitempty"`
+	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
 	// The region ID of the endpoint.
+	//
+	// example:
+	//
+	// cn-huhehaote
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 8D8992C1-6712-423C-BAC5-E5E817484C6B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmz7nocpei***
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Indicates whether the endpoint and the endpoint service belong to the same Alibaba Cloud account. Valid values:
 	//
-	// *   **true**: The endpoint and the endpoint service belong to the same Alibaba Cloud account.
-	// *   **false**: The endpoint and the endpoint service do not belong to the same Alibaba Cloud account.
+	// 	- **true**: The endpoint and the endpoint service belong to the same Alibaba Cloud account.
+	//
+	// 	- **false**: The endpoint and the endpoint service do not belong to the same Alibaba Cloud account.
+	//
+	// example:
+	//
+	// true
 	ResourceOwner *bool `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
 	// The ID of the endpoint service with which the endpoint is associated.
+	//
+	// example:
+	//
+	// epsrv-hp3vpx8yqxblby3i****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The name of the endpoint service with which the endpoint is associated.
+	//
+	// example:
+	//
+	// com.aliyuncs.privatelink.cn-huhehaote.epsrv-hp3xdsq46ael67lo****
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The ID of the virtual private cloud (VPC) to which the endpoint belongs.
+	//
+	// example:
+	//
+	// vpc-fdfhkjafhjvcvdjf****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// Indicates whether the domain name of the nearest endpoint that is associated with the endpoint service is resolved first. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	ZoneAffinityEnabled *bool `json:"ZoneAffinityEnabled,omitempty" xml:"ZoneAffinityEnabled,omitempty"`
-	// The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only **1** is returned.
+	// The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only **1*	- is returned.
+	//
+	// example:
+	//
+	// 1
 	ZonePrivateIpAddressCount *int64 `json:"ZonePrivateIpAddressCount,omitempty" xml:"ZonePrivateIpAddressCount,omitempty"`
 }
 
@@ -2471,6 +3325,11 @@ func (s *GetVpcEndpointAttributeResponseBody) SetEndpointType(v string) *GetVpcE
 
 func (s *GetVpcEndpointAttributeResponseBody) SetPayer(v string) *GetVpcEndpointAttributeResponseBody {
 	s.Payer = &v
+	return s
+}
+
+func (s *GetVpcEndpointAttributeResponseBody) SetPolicyDocument(v string) *GetVpcEndpointAttributeResponseBody {
+	s.PolicyDocument = &v
 	return s
 }
 
@@ -2551,9 +3410,21 @@ func (s *GetVpcEndpointAttributeResponse) SetBody(v *GetVpcEndpointAttributeResp
 type GetVpcEndpointServiceAttributeRequest struct {
 	// The region ID of the endpoint service.
 	//
-	// You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-huhehaote
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The endpoint service ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// epsrv-hp3vpx8yqxblby3i****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 }
 
@@ -2578,67 +3449,153 @@ func (s *GetVpcEndpointServiceAttributeRequest) SetServiceId(v string) *GetVpcEn
 type GetVpcEndpointServiceAttributeResponseBody struct {
 	// Indicates whether endpoint connection requests are automatically accepted. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	AutoAcceptEnabled *bool `json:"AutoAcceptEnabled,omitempty" xml:"AutoAcceptEnabled,omitempty"`
-	// The default maximum bandwidth of the endpoint connection. Unit: Mbit/s. Valid values: **100** to 10240.
+	// The default maximum bandwidth of the endpoint connection. Unit: Mbit/s. Valid values: **100*	- to 10240.
+	//
+	// example:
+	//
+	// 1024
 	ConnectBandwidth *int32 `json:"ConnectBandwidth,omitempty" xml:"ConnectBandwidth,omitempty"`
 	// The time when the endpoint service was created.
+	//
+	// example:
+	//
+	// 2020-01-02T19:11:12Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The maximum bandwidth of the endpoint connection. Unit: Mbit/s.
+	//
+	// example:
+	//
+	// 1024
 	MaxBandwidth *int32 `json:"MaxBandwidth,omitempty" xml:"MaxBandwidth,omitempty"`
 	// The minimum bandwidth of the endpoint connection. Unit: Mbit/s.
+	//
+	// example:
+	//
+	// 100
 	MinBandwidth *int32 `json:"MinBandwidth,omitempty" xml:"MinBandwidth,omitempty"`
 	// The payer of the endpoint service. Valid values:
 	//
-	// *   **Endpoint**: the service consumer.
-	// *   **EndpointService**: the service provider.
+	// 	- **Endpoint**: the service consumer.
+	//
+	// 	- **EndpointService**: the service provider.
+	//
+	// example:
+	//
+	// Endpoint
 	Payer *string `json:"Payer,omitempty" xml:"Payer,omitempty"`
 	// The region ID of the endpoint service.
+	//
+	// example:
+	//
+	// cn-huhehaote
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 8D8992C1-6712-423C-BAC5-E5E817484C6B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmy*****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The service state of the endpoint service. Valid values:
 	//
-	// *   **Normal**: The endpoint service runs as expected.
-	// *   **FinacialLocked**: The endpoint service is locked due to overdue payments.
+	// 	- **Normal**: The endpoint service runs as expected.
+	//
+	// 	- **FinacialLocked**: The endpoint service is locked due to overdue payments.
+	//
+	// example:
+	//
+	// Normal
 	ServiceBusinessStatus *string `json:"ServiceBusinessStatus,omitempty" xml:"ServiceBusinessStatus,omitempty"`
 	// The description of the endpoint service.
+	//
+	// example:
+	//
+	// This is my EndpointService.
 	ServiceDescription *string `json:"ServiceDescription,omitempty" xml:"ServiceDescription,omitempty"`
 	// The domain name of the endpoint service.
+	//
+	// example:
+	//
+	// epsrv-hp3vpx8yqxblby3i****.cn-huhehaote.privatelink.aliyuncs.com
 	ServiceDomain *string `json:"ServiceDomain,omitempty" xml:"ServiceDomain,omitempty"`
 	// The endpoint service ID.
+	//
+	// example:
+	//
+	// epsrv-hp3vpx8yqxblby3i****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The name of the endpoint service.
+	//
+	// example:
+	//
+	// com.aliyuncs.privatelink.cn-huhehaote.epsrv-hp3vpx8yqxblby3i****
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The type of the service resource. Valid values:
 	//
-	// *   **slb**: a CLB instance.
-	// *   **alb**: an ALB instance.
+	// 	- **slb**: a CLB instance.
+	//
+	// 	- **alb**: an ALB instance.
+	//
+	// example:
+	//
+	// slb
 	ServiceResourceType *string `json:"ServiceResourceType,omitempty" xml:"ServiceResourceType,omitempty"`
 	// The state of the endpoint service. Valid values:
 	//
-	// *   **Creating**: The endpoint service is being created.
-	// *   **Pending**: The endpoint service is being modified.
-	// *   **Active**: The endpoint service is available.
-	// *   **Deleting**: The endpoint service is being deleted.
-	// *   **Inactive**: The endpoint service is unavailable.
+	// 	- **Creating**: The endpoint service is being created.
+	//
+	// 	- **Pending**: The endpoint service is being modified.
+	//
+	// 	- **Active**: The endpoint service is available.
+	//
+	// 	- **Deleting**: The endpoint service is being deleted.
+	//
+	// 	- **Inactive**: The endpoint service is unavailable.
+	//
+	// example:
+	//
+	// Active
 	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
 	// Indicates whether IPv6 is enabled for the endpoint service. Valid values:
 	//
-	// *   **true**
-	// *   **false** (default)
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
+	// example:
+	//
+	// false
 	ServiceSupportIPv6 *bool `json:"ServiceSupportIPv6,omitempty" xml:"ServiceSupportIPv6,omitempty"`
 	// The type of the endpoint.
 	//
-	// Only **Interface** is returned. The value indicates the interface endpoint. Then, you can specify ALB and CLB instances as service resources for the endpoint service.
+	// Only **Interface*	- is returned. The value indicates the interface endpoint. Then, you can specify ALB and CLB instances as service resources for the endpoint service.
+	//
+	// example:
+	//
+	// Interface
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 	// Indicates whether the domain name of the nearest endpoint that is associated with the endpoint service is resolved first. Valid values:
 	//
-	// *   **true** (default)
-	// *   **false**
+	// 	- **true*	- (default)
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	ZoneAffinityEnabled *bool `json:"ZoneAffinityEnabled,omitempty" xml:"ZoneAffinityEnabled,omitempty"`
 	// The zones to which the service resources belong.
 	Zones []*string `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
@@ -2785,20 +3742,42 @@ type ListTagResourcesRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// example:
+	//
+	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
 	//
-	// *   If this is your first request or no next requests are to be sent, you do not need to specify this parameter.
-	// *   If a next request is to be sent, you must specify the token that is obtained from the previous request as the value of **NextToken**.
+	// 	- If this is your first request or no next requests are to be sent, you do not need to specify this parameter.
+	//
+	// 	- If a next request is to be sent, you must specify the token that is obtained from the previous request as the value of **NextToken**.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the region where the resource resides. You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	// The ID of the region where the resource resides. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource IDs. You can specify up to 50 resource IDs.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of the resource. Valid values:
 	//
-	// *   **vpcendpoint**: endpoint
-	// *   **vpcendpointservice**: endpoint service
+	// 	- **vpcendpoint**: endpoint
+	//
+	// 	- **vpcendpointservice**: endpoint service
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpcendpoint
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tags to add to the resource.
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -2845,11 +3824,19 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 type ListTagResourcesRequestTag struct {
 	// The key of tag N to add to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The tag key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The tag key must start with a letter but cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+	// The tag key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The tag key must start with a letter but cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of tag N to add to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The tag value must start with a letter but cannot start with `aliyun` or `acs:`. The tag value cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The tag value must start with a letter but cannot start with `aliyun` or `acs:`. The tag value cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// FinanceJoshua
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2874,10 +3861,19 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 type ListTagResourcesResponseBody struct {
 	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If this is your first request and no next requests are to be performed, you do not need to specify this parameter.
-	// *   If a next request is to be performed, set the parameter to the value of NextToken that is returned from the last call.
+	// 	- If this is your first request and no next requests are to be performed, you do not need to specify this parameter.
+	//
+	// 	- If a next request is to be performed, set the parameter to the value of NextToken that is returned from the last call.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 8D8992C1-6712-423C-BAC5-E5E817484C6B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The resources to which the tags are added.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
@@ -2908,15 +3904,32 @@ func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResp
 
 type ListTagResourcesResponseBodyTagResources struct {
 	// The resource ID.
+	//
+	// example:
+	//
+	// ep-hp3i05294c2d2d******
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The type of the resource. Valid values:
 	//
-	// *   **vpcendpoint**: endpoint
-	// *   **vpcendpointservice**: endpoint service
+	// 	- **vpcendpoint**: endpoint
+	//
+	// 	- **vpcendpointservice**: endpoint service
+	//
+	// example:
+	//
+	// vpcendpoint
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The key of tag N added to the resource.
+	//
+	// example:
+	//
+	// endpoint
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// The value of tag N added to the resource.
+	//
+	// example:
+	//
+	// FinanceJoshua
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -2980,38 +3993,91 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 type ListVpcEndpointConnectionsRequest struct {
 	// The state of the endpoint connection. Valid values:
 	//
-	// *   **Pending**: The endpoint connection is being modified.
-	// *   **Connecting**: The endpoint connection is being established.
-	// *   **Connected**: The endpoint connection is established.
-	// *   **Disconnecting**: The endpoint is being disconnected from the endpoint service.
-	// *   **Disconnected**: The endpoint is disconnected from the endpoint service.
-	// *   **Deleting**: The connection is being deleted.
-	// *   **ServiceDeleted**: The corresponding endpoint service has been deleted.
+	// 	- **Pending**: The endpoint connection is being modified.
+	//
+	// 	- **Connecting**: The endpoint connection is being established.
+	//
+	// 	- **Connected**: The endpoint connection is established.
+	//
+	// 	- **Disconnecting**: The endpoint is being disconnected from the endpoint service.
+	//
+	// 	- **Disconnected**: The endpoint is disconnected from the endpoint service.
+	//
+	// 	- **Deleting**: The connection is being deleted.
+	//
+	// 	- **ServiceDeleted**: The corresponding endpoint service has been deleted.
+	//
+	// example:
+	//
+	// Disconnected
 	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
 	// The endpoint ID.
+	//
+	// example:
+	//
+	// ep-hp33b2e43fays7s8****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
 	// The ID of the Alibaba Cloud account to which the endpoint belongs.
+	//
+	// example:
+	//
+	// 25346073170691****
 	EndpointOwnerId *int64 `json:"EndpointOwnerId,omitempty" xml:"EndpointOwnerId,omitempty"`
 	// The ID of the endpoint elastic network interface (ENI).
+	//
+	// example:
+	//
+	// eni-hp32lk0pyv6o94hs****
 	EniId *string `json:"EniId,omitempty" xml:"EniId,omitempty"`
-	// The number of entries to return on each page. Valid values: **1** to **50**. Default value: **50**.
+	// The number of entries to return on each page. Valid values: **1*	- to **50**. Default value: **50**.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If this is your first request and no next requests are to be performed, you do not need to specify this parameter.
-	// *   If a next request is to be performed, set the value to the value of **NextToken** that is returned from the last call.
+	// 	- If this is your first request and no next requests are to be performed, you do not need to specify this parameter.
+	//
+	// 	- If a next request is to be performed, set the value to the value of **NextToken*	- that is returned from the last call.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The region ID of the endpoint connection.
 	//
-	// You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-huhehaote
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the replaced service resource in smooth migration scenarios.
+	//
+	// example:
+	//
+	// lb-hp32z1wp5peaoox2q****
 	ReplacedResourceId *string `json:"ReplacedResourceId,omitempty" xml:"ReplacedResourceId,omitempty"`
 	// The ID of the resource group to which the endpoint belongs.
+	//
+	// example:
+	//
+	// rg-acfmy*****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The service resource ID.
+	//
+	// example:
+	//
+	// lb-hp32z1wp5peaoox2q****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The endpoint service ID.
+	//
+	// example:
+	//
+	// epsrv-hp3vpx8yqxblby3i****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 }
 
@@ -3082,15 +4148,32 @@ type ListVpcEndpointConnectionsResponseBody struct {
 	// The endpoint connections.
 	Connections []*ListVpcEndpointConnectionsResponseBodyConnections `json:"Connections,omitempty" xml:"Connections,omitempty" type:"Repeated"`
 	// The number of entries returned on each page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If no value is returned for **NextToken**, no next requests are performed.
-	// *   If a value is returned for **NextToken**, the value can be used in the next request to retrieve a new page of results.
+	// 	- If no value is returned for **NextToken**, no next requests are performed.
+	//
+	// 	- If a value is returned for **NextToken**, the value can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -3129,33 +4212,76 @@ func (s *ListVpcEndpointConnectionsResponseBody) SetTotalCount(v string) *ListVp
 
 type ListVpcEndpointConnectionsResponseBodyConnections struct {
 	// The bandwidth of the endpoint connection. Valid values: **1024 to 10240**. Unit: Mbit/s.
+	//
+	// example:
+	//
+	// 1024
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The state of the endpoint connection. Valid values:
 	//
-	// *   **Pending**: The connection is being modified.
-	// *   **Connecting**: The connection is being established.
-	// *   **Connected**: The connection is established.
-	// *   **Disconnecting**: The endpoint is being disconnected from the endpoint service.
-	// *   **Disconnected**: The endpoint is disconnected from the endpoint service.
-	// *   **Deleting**: The connection is being deleted.
-	// *   **ServiceDeleted**: The corresponding endpoint service has been deleted.
+	// 	- **Pending**: The connection is being modified.
+	//
+	// 	- **Connecting**: The connection is being established.
+	//
+	// 	- **Connected**: The connection is established.
+	//
+	// 	- **Disconnecting**: The endpoint is being disconnected from the endpoint service.
+	//
+	// 	- **Disconnected**: The endpoint is disconnected from the endpoint service.
+	//
+	// 	- **Deleting**: The connection is being deleted.
+	//
+	// 	- **ServiceDeleted**: The corresponding endpoint service has been deleted.
+	//
+	// example:
+	//
+	// Disconnected
 	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
 	// The endpoint ID.
+	//
+	// example:
+	//
+	// ep-hp33b2e43fays7s8****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
 	// The ID of the Alibaba Cloud account to which the endpoint belongs.
+	//
+	// example:
+	//
+	// 25346073170691****
 	EndpointOwnerId *int64 `json:"EndpointOwnerId,omitempty" xml:"EndpointOwnerId,omitempty"`
 	// The ID of the virtual private cloud (VPC) to which the endpoint belongs.
+	//
+	// example:
+	//
+	// vpc-hp356stwkxg3fn2xe****
 	EndpointVpcId *string `json:"EndpointVpcId,omitempty" xml:"EndpointVpcId,omitempty"`
 	// The time when the endpoint connection was modified.
+	//
+	// example:
+	//
+	// 2021-09-28T10:34:46Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	// The ID of the resource group to which the endpoint belongs.
+	//
+	// example:
+	//
+	// rg-acfmw353z35v***
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Indicates whether the endpoint and the endpoint service belong to the same Alibaba Cloud account. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	ResourceOwner *bool `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
 	// The endpoint service ID.
+	//
+	// example:
+	//
+	// epsrv-hp3vpx8yqxblby3i****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The zones.
 	Zones []*ListVpcEndpointConnectionsResponseBodyConnectionsZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
@@ -3221,30 +4347,70 @@ func (s *ListVpcEndpointConnectionsResponseBodyConnections) SetZones(v []*ListVp
 
 type ListVpcEndpointConnectionsResponseBodyConnectionsZones struct {
 	// The endpoint ENI ID.
+	//
+	// example:
+	//
+	// eni-hp32lk0pyv6o94hs****
 	EniId *string `json:"EniId,omitempty" xml:"EniId,omitempty"`
 	// The ID of the replaced endpoint ENI in smooth migration scenarios.
+	//
+	// example:
+	//
+	// eni-hp32lk0pyv6o94hs****
 	ReplacedEniId *string `json:"ReplacedEniId,omitempty" xml:"ReplacedEniId,omitempty"`
 	// The ID of the replaced service resource in smooth migration scenarios.
+	//
+	// example:
+	//
+	// lb-hp32z1wp5peaoox2q****
 	ReplacedResourceId *string `json:"ReplacedResourceId,omitempty" xml:"ReplacedResourceId,omitempty"`
 	// The service resource ID.
+	//
+	// example:
+	//
+	// lb-hp32z1wp5peaoox2q****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The ID of the vSwitch to which the endpoint belongs.
+	//
+	// example:
+	//
+	// vsw-hp3uf6045ljdhd5zr****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The domain name of the zone.
+	//
+	// example:
+	//
+	// ep-hp34jaz8ykl0exwt****-cn-huhehaote.epsrv-hp3vpx8yqxblby3i****.cn-huhehaote-b.privatelink.aliyuncs.com
 	ZoneDomain *string `json:"ZoneDomain,omitempty" xml:"ZoneDomain,omitempty"`
 	// The zone ID.
+	//
+	// example:
+	//
+	// cn-huhehaote-b
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 	// The state of the zone. Valid values:
 	//
-	// *   **Creating**: The zone is being created.
-	// *   **Wait**: The zone is to be connected.
-	// *   **Connected**: The zone is connected.
-	// *   **Deleting**: The zone is being deleted.
-	// *   **Disconnecting**: The zone is being disconnected.
-	// *   **Disconnected**: The zone is disconnected.
-	// *   **Connecting**: The zone is being connected.
-	// *   **Migrating**: The zone is being migrated.
-	// *   **Migrated**: The zone is migrated.
+	// 	- **Creating**: The zone is being created.
+	//
+	// 	- **Wait**: The zone is to be connected.
+	//
+	// 	- **Connected**: The zone is connected.
+	//
+	// 	- **Deleting**: The zone is being deleted.
+	//
+	// 	- **Disconnecting**: The zone is being disconnected.
+	//
+	// 	- **Disconnected**: The zone is disconnected.
+	//
+	// 	- **Connecting**: The zone is being connected.
+	//
+	// 	- **Migrating**: The zone is being migrated.
+	//
+	// 	- **Migrated**: The zone is migrated.
+	//
+	// example:
+	//
+	// Connected
 	ZoneStatus *string `json:"ZoneStatus,omitempty" xml:"ZoneStatus,omitempty"`
 }
 
@@ -3327,17 +4493,38 @@ func (s *ListVpcEndpointConnectionsResponse) SetBody(v *ListVpcEndpointConnectio
 
 type ListVpcEndpointSecurityGroupsRequest struct {
 	// The ID of the endpoint that you want to query.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ep-hp33b2e43fays7s8****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The number of entries to return on each page. Valid values:**1** to **50**. Default value: **50**.
+	// The number of entries to return on each page. Valid values:**1*	- to **50**. Default value: **50**.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If this is your first request and no next requests are to be performed, you do not need to specify this parameter.
-	// *   If a next request is to be performed, set the parameter to the value of **NextToken** that is returned from the last call.
+	// 	- If this is your first request and no next requests are to be performed, you do not need to specify this parameter.
+	//
+	// 	- If a next request is to be performed, set the parameter to the value of **NextToken*	- that is returned from the last call.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The region ID of the endpoint that you want to query.
 	//
-	// You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-huhehaote
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -3371,16 +4558,35 @@ func (s *ListVpcEndpointSecurityGroupsRequest) SetRegionId(v string) *ListVpcEnd
 
 type ListVpcEndpointSecurityGroupsResponseBody struct {
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If no value is returned for **NextToken**, no next requests are performed.
-	// *   If a value is returned for **NextToken**, the value can be used in the next request to retrieve a new page of results.
+	// 	- If no value is returned for **NextToken**, no next requests are performed.
+	//
+	// 	- If a value is returned for **NextToken**, the value can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the security groups.
 	SecurityGroups []*ListVpcEndpointSecurityGroupsResponseBodySecurityGroups `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 12
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListVpcEndpointSecurityGroupsResponseBody) String() string {
@@ -3411,9 +4617,30 @@ func (s *ListVpcEndpointSecurityGroupsResponseBody) SetSecurityGroups(v []*ListV
 	return s
 }
 
+func (s *ListVpcEndpointSecurityGroupsResponseBody) SetTotalCount(v int32) *ListVpcEndpointSecurityGroupsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
 type ListVpcEndpointSecurityGroupsResponseBodySecurityGroups struct {
 	// The ID of the security group that is associated with the endpoint.
+	//
+	// example:
+	//
+	// sg-hp33bw6ynvm2yb0e****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The associate status of the security group, valid values:
+	//
+	// - Attaching: The security group is being attached.
+	//
+	// - Attached: The security group is attached.
+	//
+	// - Detaching: The security group is being detached.
+	//
+	// example:
+	//
+	// Attached
+	SecurityGroupStatus *string `json:"SecurityGroupStatus,omitempty" xml:"SecurityGroupStatus,omitempty"`
 }
 
 func (s ListVpcEndpointSecurityGroupsResponseBodySecurityGroups) String() string {
@@ -3426,6 +4653,11 @@ func (s ListVpcEndpointSecurityGroupsResponseBodySecurityGroups) GoString() stri
 
 func (s *ListVpcEndpointSecurityGroupsResponseBodySecurityGroups) SetSecurityGroupId(v string) *ListVpcEndpointSecurityGroupsResponseBodySecurityGroups {
 	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *ListVpcEndpointSecurityGroupsResponseBodySecurityGroups) SetSecurityGroupStatus(v string) *ListVpcEndpointSecurityGroupsResponseBodySecurityGroups {
+	s.SecurityGroupStatus = &v
 	return s
 }
 
@@ -3459,18 +4691,39 @@ func (s *ListVpcEndpointSecurityGroupsResponse) SetBody(v *ListVpcEndpointSecuri
 }
 
 type ListVpcEndpointServiceResourcesRequest struct {
-	// The number of entries to return on each page. Valid values: **1** to **50**. Default value: **50**.
+	// The number of entries to return on each page. Valid values: **1*	- to **50**. Default value: **50**.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If this is your first request and no next requests are to be performed, you do not need to specify this parameter.
-	// *   If a next request is to be performed, set the parameter to the value of NextToken that is returned from the last call.
+	// 	- If this is your first request and no next requests are to be performed, you do not need to specify this parameter.
+	//
+	// 	- If a next request is to be performed, set the parameter to the value of NextToken that is returned from the last call.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The region ID of the service resource.
 	//
-	// You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-huhehaote
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The endpoint service ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// epsrv-hp3vpx8yqxblby3i****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 }
 
@@ -3504,13 +4757,26 @@ func (s *ListVpcEndpointServiceResourcesRequest) SetServiceId(v string) *ListVpc
 
 type ListVpcEndpointServiceResourcesResponseBody struct {
 	// The number of entries returned on each page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If no value is returned for **NextToken**, no next requests are performed.
-	// *   If a value is returned for **NextToken**, the value can be used in the next request to retrieve a new page of results.
+	// 	- If no value is returned for **NextToken**, no next requests are performed.
+	//
+	// 	- If a value is returned for **NextToken**, the value can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The service resources.
 	Resources []*ListVpcEndpointServiceResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
@@ -3547,33 +4813,79 @@ func (s *ListVpcEndpointServiceResourcesResponseBody) SetResources(v []*ListVpcE
 type ListVpcEndpointServiceResourcesResponseBodyResources struct {
 	// Indicates whether automatic resource allocation is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	AutoAllocatedEnabled *bool `json:"AutoAllocatedEnabled,omitempty" xml:"AutoAllocatedEnabled,omitempty"`
 	// The IP address of the service resource.
+	//
+	// example:
+	//
+	// 192.168.10.23
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The ID of the region where the service resource is deployed.
+	//
+	// example:
+	//
+	// cn-huhehaote
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The number of endpoints that are associated with the service resource that is smoothly migrated.
+	//
+	// example:
+	//
+	// 10
 	RelatedDeprecatedEndpointCount *int64 `json:"RelatedDeprecatedEndpointCount,omitempty" xml:"RelatedDeprecatedEndpointCount,omitempty"`
 	// The number of endpoints that are associated with the service resource.
+	//
+	// example:
+	//
+	// 10
 	RelatedEndpointCount *int64 `json:"RelatedEndpointCount,omitempty" xml:"RelatedEndpointCount,omitempty"`
 	// The service resource ID.
+	//
+	// example:
+	//
+	// lb-hp32z1wp5peaoox2q****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// Indicates whether IPv6 is enabled for the endpoint service. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	ResourceSupportIPv6 *bool `json:"ResourceSupportIPv6,omitempty" xml:"ResourceSupportIPv6,omitempty"`
 	// The type of the service resource.
 	//
-	// Only **slb** is returned. This value indicates a Classic Load Balancer (CLB) instance.
+	// Only **slb*	- is returned. This value indicates a Classic Load Balancer (CLB) instance.
+	//
+	// example:
+	//
+	// slb
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The ID of the vSwitch to which the service resource belongs.
+	//
+	// example:
+	//
+	// vsw-hp3uf6045ljdhd5zr****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The ID of the virtual private cloud (VPC) to which the service resource belongs.
+	//
+	// example:
+	//
+	// vpc-hp356stwkxg3fn2xe****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The ID of the zone to which the service resource belongs.
+	//
+	// example:
+	//
+	// cn-huhehaote-b
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -3671,21 +4983,50 @@ func (s *ListVpcEndpointServiceResourcesResponse) SetBody(v *ListVpcEndpointServ
 
 type ListVpcEndpointServiceUsersRequest struct {
 	// The number of entries to return on each page. Valid values: **1 to 50**. Default value: **50**.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If this is your first request and no next requests are to be performed, you do not need to specify this parameter.
-	// *   If a next request is to be performed, set the value to the value of **NextToken** that is returned from the last call.
+	// 	- If this is your first request and no next requests are to be performed, you do not need to specify this parameter.
+	//
+	// 	- If a next request is to be performed, set the value to the value of **NextToken*	- that is returned from the last call.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The region ID of the endpoint service that you want to query.
 	//
-	// You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-huhehaote
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The endpoint service ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// epsrv-hp3vpx8yqxblby3i****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The ID of the Alibaba Cloud account in the whitelist of the endpoint service.
+	//
+	// example:
+	//
+	// 12345678
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The type of the user list in the whitelist of the endpoint service.
+	//
+	// example:
+	//
+	// Users
 	UserListType *string `json:"UserListType,omitempty" xml:"UserListType,omitempty"`
 }
 
@@ -3729,15 +5070,32 @@ func (s *ListVpcEndpointServiceUsersRequest) SetUserListType(v string) *ListVpcE
 
 type ListVpcEndpointServiceUsersResponseBody struct {
 	// The number of entries returned on each page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If no value is returned for **NextToken**, no next requests are performed.
-	// *   If a value is returned for **NextToken**, the value can be used in the next request to retrieve a new page of results.
+	// 	- If no value is returned for **NextToken**, no next requests are performed.
+	//
+	// 	- If a value is returned for **NextToken**, the value can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 3
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	// The whitelists in the format of Aliyun Resource Name (ARN).
 	UserARNs []*ListVpcEndpointServiceUsersResponseBodyUserARNs `json:"UserARNs,omitempty" xml:"UserARNs,omitempty" type:"Repeated"`
@@ -3785,6 +5143,10 @@ func (s *ListVpcEndpointServiceUsersResponseBody) SetUsers(v []*ListVpcEndpointS
 
 type ListVpcEndpointServiceUsersResponseBodyUserARNs struct {
 	// The whitelist in the format of ARN.
+	//
+	// example:
+	//
+	// acs:ram:*::*
 	UserARN *string `json:"UserARN,omitempty" xml:"UserARN,omitempty"`
 }
 
@@ -3803,6 +5165,10 @@ func (s *ListVpcEndpointServiceUsersResponseBodyUserARNs) SetUserARN(v string) *
 
 type ListVpcEndpointServiceUsersResponseBodyUsers struct {
 	// The ID of the Alibaba Cloud account in the whitelist of the endpoint service.
+	//
+	// example:
+	//
+	// 12345678
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -3851,51 +5217,109 @@ func (s *ListVpcEndpointServiceUsersResponse) SetBody(v *ListVpcEndpointServiceU
 type ListVpcEndpointServicesRequest struct {
 	// Specifies whether to automatically accept endpoint connection requests. Valid values:
 	//
-	// *   **true**
-	// *   **false** (default)
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
+	// example:
+	//
+	// false
 	AutoAcceptEnabled *bool `json:"AutoAcceptEnabled,omitempty" xml:"AutoAcceptEnabled,omitempty"`
-	// The number of entries to return on each page. Valid values: **1** to **50**. Default value: **50**.
+	// The number of entries to return on each page. Valid values: **1*	- to **50**. Default value: **50**.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If this is your first request and no next requests are to be performed, you do not need to specify this parameter.
-	// *   If a next request is to be performed, set the parameter to the value of NextToken that is returned from the last call.
+	// 	- If this is your first request and no next requests are to be performed, you do not need to specify this parameter.
+	//
+	// 	- If a next request is to be performed, set the parameter to the value of NextToken that is returned from the last call.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The region ID of the endpoint service.
 	//
-	// You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-huhehaote
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmy*****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The service resource ID.
+	//
+	// example:
+	//
+	// lb-hp32z1wp5peaoox2q****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The service state of the endpoint service. Valid values:
 	//
-	// *   **Normal**: The endpoint service runs as expected.
-	// *   **FinancialLocked**: The endpoint service is locked due to overdue payments.
+	// 	- **Normal**: The endpoint service runs as expected.
+	//
+	// 	- **FinancialLocked**: The endpoint service is locked due to overdue payments.
+	//
+	// example:
+	//
+	// Normal
 	ServiceBusinessStatus *string `json:"ServiceBusinessStatus,omitempty" xml:"ServiceBusinessStatus,omitempty"`
 	// The endpoint service ID.
+	//
+	// example:
+	//
+	// epsrv-hp3vpx8yqxblby3i****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The name of the endpoint service.
+	//
+	// example:
+	//
+	// com.aliyuncs.privatelink.cn-huhehaote.epsrv-hp3vpx8yqxblby3i****
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The type of the service resource. Valid values:
 	//
-	// *   **slb**: a Classic Load Balancer (CLB) instance
-	// *   **alb**: an Application Load Balancer (ALB) instance
+	// 	- **slb**: a Classic Load Balancer (CLB) instance
+	//
+	// 	- **alb**: an Application Load Balancer (ALB) instance
+	//
+	// example:
+	//
+	// slb
 	ServiceResourceType *string `json:"ServiceResourceType,omitempty" xml:"ServiceResourceType,omitempty"`
 	// The state of the endpoint service. Valid values:
 	//
-	// *   **Creating**: The endpoint service is being created.
-	// *   **Pending**: The endpoint service is being modified.
-	// *   **Active**: The endpoint service is available.
-	// *   **Deleting**: The endpoint service is being deleted
+	// 	- **Creating**: The endpoint service is being created.
+	//
+	// 	- **Pending**: The endpoint service is being modified.
+	//
+	// 	- **Active**: The endpoint service is available.
+	//
+	// 	- **Deleting**: The endpoint service is being deleted
+	//
+	// example:
+	//
+	// Active
 	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
 	// The list of tags.
 	Tag []*ListVpcEndpointServicesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
 	//
-	// *   **true** (default)
-	// *   **false**
+	// 	- **true*	- (default)
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	ZoneAffinityEnabled *bool `json:"ZoneAffinityEnabled,omitempty" xml:"ZoneAffinityEnabled,omitempty"`
 }
 
@@ -3976,10 +5400,18 @@ type ListVpcEndpointServicesRequestTag struct {
 	// The key of the tag. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
 	// The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
 	// The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// FinanceJoshua
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4003,17 +5435,34 @@ func (s *ListVpcEndpointServicesRequestTag) SetValue(v string) *ListVpcEndpointS
 
 type ListVpcEndpointServicesResponseBody struct {
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If no value is returned for **NextToken**, no next requests are performed.
-	// *   If a value is returned for **NextToken**, the value can be used in the next request to retrieve a new page of results.
+	// 	- If no value is returned for **NextToken**, no next requests are performed.
+	//
+	// 	- If a value is returned for **NextToken**, the value can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The endpoint services.
 	Services []*ListVpcEndpointServicesResponseBodyServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 12
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -4053,67 +5502,149 @@ func (s *ListVpcEndpointServicesResponseBody) SetTotalCount(v int32) *ListVpcEnd
 type ListVpcEndpointServicesResponseBodyServices struct {
 	// Indicates whether endpoint connection requests are automatically accepted. Valid values:
 	//
-	// *   **true**: Endpoint connection requests are automatically accepted.
-	// *   **false**: Endpoint connection requests are not automatically accepted.
+	// 	- **true**: Endpoint connection requests are automatically accepted.
+	//
+	// 	- **false**: Endpoint connection requests are not automatically accepted.
+	//
+	// example:
+	//
+	// true
 	AutoAcceptEnabled *bool `json:"AutoAcceptEnabled,omitempty" xml:"AutoAcceptEnabled,omitempty"`
 	// The default maximum bandwidth of the endpoint connection. Unit: Mbit/s.
+	//
+	// example:
+	//
+	// 1024
 	ConnectBandwidth *int32 `json:"ConnectBandwidth,omitempty" xml:"ConnectBandwidth,omitempty"`
 	// The time when the endpoint service was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2021-09-24T17:15:10Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The maximum bandwidth of the endpoint connection. Unit: Mbit/s.
+	//
+	// example:
+	//
+	// 1024
 	MaxBandwidth *int32 `json:"MaxBandwidth,omitempty" xml:"MaxBandwidth,omitempty"`
 	// The minimum bandwidth of the endpoint connection. Unit: Mbit/s.
+	//
+	// example:
+	//
+	// 100
 	MinBandwidth *int32 `json:"MinBandwidth,omitempty" xml:"MinBandwidth,omitempty"`
 	// The payer. Valid values:
 	//
-	// *   **Endpoint**: service consumer
-	// *   **EndpointService**: service provider
+	// 	- **Endpoint**: service consumer
+	//
+	// 	- **EndpointService**: service provider
+	//
+	// example:
+	//
+	// Endpoint
 	Payer *string `json:"Payer,omitempty" xml:"Payer,omitempty"`
 	// The region ID of the endpoint service.
+	//
+	// example:
+	//
+	// cn-huhehaote
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmy*****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The service state of the endpoint service. Valid values:
 	//
-	// *   **Normal**: The endpoint service runs as expected.
-	// *   **FinancialLocked**: The endpoint service is locked due to overdue payments.
+	// 	- **Normal**: The endpoint service runs as expected.
+	//
+	// 	- **FinancialLocked**: The endpoint service is locked due to overdue payments.
+	//
+	// example:
+	//
+	// Normal
 	ServiceBusinessStatus *string `json:"ServiceBusinessStatus,omitempty" xml:"ServiceBusinessStatus,omitempty"`
 	// The description of the endpoint service.
+	//
+	// example:
+	//
+	// This is my EndpointService.
 	ServiceDescription *string `json:"ServiceDescription,omitempty" xml:"ServiceDescription,omitempty"`
 	// The domain name of the endpoint service.
+	//
+	// example:
+	//
+	// epsrv-hp3vpx8yqxblby3i****.cn-huhehaote.privatelink.aliyuncs.com
 	ServiceDomain *string `json:"ServiceDomain,omitempty" xml:"ServiceDomain,omitempty"`
 	// The ID of the endpoint service.
+	//
+	// example:
+	//
+	// epsrv-hp3vpx8yqxblby3i****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The name of the endpoint service.
+	//
+	// example:
+	//
+	// com.aliyuncs.privatelink.cn-huhehaote.epsrv-hp3vpx8yqxblby3i****
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The type of the service resource. Valid values:
 	//
-	// *   **slb**: Classic Load Balancer (CLB) instance
-	// *   **alb**: Application Load Balancer (ALB) instance
-	// *   **nlb**: Network Load Balancer (NLB) instance
+	// 	- **slb**: Classic Load Balancer (CLB) instance
+	//
+	// 	- **alb**: Application Load Balancer (ALB) instance
+	//
+	// 	- **nlb**: Network Load Balancer (NLB) instance
+	//
+	// example:
+	//
+	// slb
 	ServiceResourceType *string `json:"ServiceResourceType,omitempty" xml:"ServiceResourceType,omitempty"`
 	// The state of the endpoint service. Valid values:
 	//
-	// *   **Creating**: The endpoint service is being created.
-	// *   **Pending**: The endpoint service is being modified.
-	// *   **Active**: The endpoint service is available.
-	// *   **Deleting**: The endpoint service is being deleted.
+	// 	- **Creating**: The endpoint service is being created.
+	//
+	// 	- **Pending**: The endpoint service is being modified.
+	//
+	// 	- **Active**: The endpoint service is available.
+	//
+	// 	- **Deleting**: The endpoint service is being deleted.
+	//
+	// example:
+	//
+	// Active
 	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
 	// Indicates whether the endpoint service supports IPv6. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	ServiceSupportIPv6 *bool `json:"ServiceSupportIPv6,omitempty" xml:"ServiceSupportIPv6,omitempty"`
 	// The type of the endpoint service.
 	//
-	// *   Only **Interface** may be returned. You can specify CLB, ALB, and NLB instances as the service resources of the endpoint service.
+	// 	- Only **Interface*	- may be returned. You can specify CLB, ALB, and NLB instances as the service resources of the endpoint service.
+	//
+	// example:
+	//
+	// Interface
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 	// The tags added to the resource.
 	Tags []*ListVpcEndpointServicesResponseBodyServicesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// Indicates whether zone affinity is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	ZoneAffinityEnabled *bool `json:"ZoneAffinityEnabled,omitempty" xml:"ZoneAffinityEnabled,omitempty"`
 }
 
@@ -4222,8 +5753,16 @@ func (s *ListVpcEndpointServicesResponseBodyServices) SetZoneAffinityEnabled(v b
 
 type ListVpcEndpointServicesResponseBodyServicesTags struct {
 	// The key of the tag added to the resource.
+	//
+	// example:
+	//
+	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag added to the resource.
+	//
+	// example:
+	//
+	// FinanceJoshua
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4275,26 +5814,57 @@ func (s *ListVpcEndpointServicesResponse) SetBody(v *ListVpcEndpointServicesResp
 }
 
 type ListVpcEndpointServicesByEndUserRequest struct {
-	// The number of entries to return on each page. Valid values: **1** to **50**. Default value: **50**.
+	// The number of entries to return on each page. Valid values: **1*	- to **50**. Default value: **50**.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If this is your first request and no next requests are to be performed, you do not need to specify this parameter.
-	// *   If a next request is to be performed, set the value to the value of **NextToken** that is returned from the last call.
+	// 	- If this is your first request and no next requests are to be performed, you do not need to specify this parameter.
+	//
+	// 	- If a next request is to be performed, set the value to the value of **NextToken*	- that is returned from the last call.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The region ID of the endpoint.
 	//
 	// You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-huhehaote
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmy*****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the endpoint service that you want to query.
+	//
+	// example:
+	//
+	// epsrv-hp3vpx8yqxblby3i****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The name of the endpoint service that you want to query.
+	//
+	// example:
+	//
+	// com.aliyuncs.privatelink.cn-huhehaote.epsrv-hp3xdsq46ael67lo****
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The type of the endpoint service.
 	//
 	// Set the value to **Interface**. You can specify CLB and ALB instances as service resources for the endpoint service.
+	//
+	// example:
+	//
+	// Interface
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 	// The list of tags.
 	Tag []*ListVpcEndpointServicesByEndUserRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -4352,10 +5922,18 @@ type ListVpcEndpointServicesByEndUserRequestTag struct {
 	// The key of the tag. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
 	// The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
 	// The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// FinanceJoshua
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4379,17 +5957,34 @@ func (s *ListVpcEndpointServicesByEndUserRequestTag) SetValue(v string) *ListVpc
 
 type ListVpcEndpointServicesByEndUserResponseBody struct {
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If no value is returned for **NextToken**, no next requests are performed.
-	// *   If a value is returned for **NextToken**, the value can be used in the next request to retrieve a new page of results.
+	// 	- If no value is returned for **NextToken**, no next requests are performed.
+	//
+	// 	- If a value is returned for **NextToken**, the value can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The endpoint services.
 	Services []*ListVpcEndpointServicesByEndUserResponseBodyServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 29
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -4429,31 +6024,67 @@ func (s *ListVpcEndpointServicesByEndUserResponseBody) SetTotalCount(v string) *
 type ListVpcEndpointServicesByEndUserResponseBodyServices struct {
 	// The payer. Valid values:
 	//
-	// *   **Endpoint**: the service consumer
-	// *   **EndpointService**: the service provider
+	// 	- **Endpoint**: the service consumer
+	//
+	// 	- **EndpointService**: the service provider
+	//
+	// example:
+	//
+	// Endpoint
 	Payer *string `json:"Payer,omitempty" xml:"Payer,omitempty"`
 	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmy*****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The domain name of the endpoint service that can be associated with the endpoint.
+	//
+	// example:
+	//
+	// epsrv-hp3vpx8yqxblby3i****.cn-huhehaote.privatelink.aliyuncs.com
 	ServiceDomain *string `json:"ServiceDomain,omitempty" xml:"ServiceDomain,omitempty"`
 	// The ID of the endpoint service that can be associated with the endpoint.
+	//
+	// example:
+	//
+	// epsrv-hp3vpx8yqxblby3i****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The name of the endpoint service that can be associated with the endpoint.
+	//
+	// example:
+	//
+	// com.aliyuncs.privatelink.cn-huhehaote.epsrv-hp3vpx8yqxblby3i****
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The type of the service resource. Valid values:
 	//
-	// *   **slb**: Classic Load Balancer (CLB) instance
-	// *   **alb**: Application Load Balancer (ALB) instance
-	// *   **nlb**: Network Load Balancer (NLB) instance
+	// 	- **slb**: Classic Load Balancer (CLB) instance
+	//
+	// 	- **alb**: Application Load Balancer (ALB) instance
+	//
+	// 	- **nlb**: Network Load Balancer (NLB) instance
+	//
+	// example:
+	//
+	// slb
 	ServiceResourceType *string `json:"ServiceResourceType,omitempty" xml:"ServiceResourceType,omitempty"`
 	// Indicates whether IPv6 is enabled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	ServiceSupportIPv6 *bool `json:"ServiceSupportIPv6,omitempty" xml:"ServiceSupportIPv6,omitempty"`
 	// The type of the endpoint service.
 	//
-	// Only **Interface** is returned, which indicates an interface endpoint. You can specify **CLB** and **ALB** instances as service resources.
+	// Only **Interface*	- is returned, which indicates an interface endpoint. You can specify **CLB*	- and **ALB*	- instances as service resources.
+	//
+	// example:
+	//
+	// Interface
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 	// The list of tags.
 	Tags []*ListVpcEndpointServicesByEndUserResponseBodyServicesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -4521,8 +6152,16 @@ func (s *ListVpcEndpointServicesByEndUserResponseBodyServices) SetZones(v []*str
 
 type ListVpcEndpointServicesByEndUserResponseBodyServicesTags struct {
 	// The key of the tag.
+	//
+	// example:
+	//
+	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag.
+	//
+	// example:
+	//
+	// FinanceJoshua
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4577,17 +6216,38 @@ type ListVpcEndpointZonesRequest struct {
 	// The ID of the endpoint for which you want to query zones.
 	//
 	// After you specify an endpoint ID, the system queries the zones of the specified endpoint.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ep-hp33b2e43fays7s8****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The number of entries to return on each page. Valid values: **1** to **50**. Default value: **50**.
+	// The number of entries to return on each page. Valid values: **1*	- to **50**. Default value: **50**.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If this is your first request and no next requests are to be performed, you do not need to specify this parameter.
-	// *   If a next request is to be performed, set the parameter to the value of **NextToken** that is returned from the last call.
+	// 	- If this is your first request and no next requests are to be performed, you do not need to specify this parameter.
+	//
+	// 	- If a next request is to be performed, set the parameter to the value of **NextToken*	- that is returned from the last call.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The region ID of the endpoint.
 	//
-	// You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-huhehaote
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -4621,14 +6281,33 @@ func (s *ListVpcEndpointZonesRequest) SetRegionId(v string) *ListVpcEndpointZone
 
 type ListVpcEndpointZonesResponseBody struct {
 	// The number of entries returned on each page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If no value is returned for **NextToken**, no next requests are performed.
-	// *   If a value is returned for **NextToken**, the value can be used in the next request to retrieve a new page of results.
+	// 	- If no value is returned for **NextToken**, no next requests are performed.
+	//
+	// 	- If a value is returned for **NextToken**, the value can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 3
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	// The information about the zones.
 	Zones []*ListVpcEndpointZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
@@ -4656,6 +6335,11 @@ func (s *ListVpcEndpointZonesResponseBody) SetRequestId(v string) *ListVpcEndpoi
 	return s
 }
 
+func (s *ListVpcEndpointZonesResponseBody) SetTotalCount(v int32) *ListVpcEndpointZonesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
 func (s *ListVpcEndpointZonesResponseBody) SetZones(v []*ListVpcEndpointZonesResponseBodyZones) *ListVpcEndpointZonesResponseBody {
 	s.Zones = v
 	return s
@@ -4663,33 +6347,72 @@ func (s *ListVpcEndpointZonesResponseBody) SetZones(v []*ListVpcEndpointZonesRes
 
 type ListVpcEndpointZonesResponseBodyZones struct {
 	// The ID of the endpoint ENI.
+	//
+	// example:
+	//
+	// eni-hp3c8qj1tyct8aqy****
 	EniId *string `json:"EniId,omitempty" xml:"EniId,omitempty"`
 	// The IP address of the endpoint ENI.
+	//
+	// example:
+	//
+	// 192.168.2.23
 	EniIp *string `json:"EniIp,omitempty" xml:"EniIp,omitempty"`
 	// The region ID of the endpoint.
+	//
+	// example:
+	//
+	// cn-huhehaote
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the vSwitch in the zone. The system automatically creates an endpoint elastic network interface (ENI) in the vSwitch.
+	//
+	// example:
+	//
+	// vsw-hjkshjvdkdvd****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The domain name of the zone.
 	//
 	// After the endpoint in the zone is connected to the endpoint service, you can access the service resources of the endpoint service by using the domain name of the zone.
+	//
+	// example:
+	//
+	// ep-hp3f033dp24c5yc9****-cn-huhehaote.epsrv-hp3itcpowf37m3d5****.cn-huhehaote-a.privatelink.aliyuncs.com
 	ZoneDomain *string `json:"ZoneDomain,omitempty" xml:"ZoneDomain,omitempty"`
 	// The zone ID.
+	//
+	// example:
+	//
+	// cn-huhehaote-a
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 	// Indicates whether the endpoint service supports IPv6. Valid values:
 	//
-	// *   **true**
-	// *   **false** (default)
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
+	// example:
+	//
+	// false
 	ZoneIpv6Address *string `json:"ZoneIpv6Address,omitempty" xml:"ZoneIpv6Address,omitempty"`
 	// The state of the zone. Valid values:
 	//
-	// *   **Creating**: The zone is being created.
-	// *   **Wait**: The zone is to be connected.
-	// *   **Connected**: The zone is connected.
-	// *   **Deleting**: The zone is being deleted.
-	// *   **Disconnecting**: The zone is being disconnected.
-	// *   **Disconnected**: The zone is disconnected.
-	// *   **Connecting**: The zone is being connected.
+	// 	- **Creating**: The zone is being created.
+	//
+	// 	- **Wait**: The zone is to be connected.
+	//
+	// 	- **Connected**: The zone is connected.
+	//
+	// 	- **Deleting**: The zone is being deleted.
+	//
+	// 	- **Disconnecting**: The zone is being disconnected.
+	//
+	// 	- **Disconnected**: The zone is disconnected.
+	//
+	// 	- **Connecting**: The zone is being connected.
+	//
+	// example:
+	//
+	// Wait
 	ZoneStatus *string `json:"ZoneStatus,omitempty" xml:"ZoneStatus,omitempty"`
 }
 
@@ -4773,47 +6496,103 @@ func (s *ListVpcEndpointZonesResponse) SetBody(v *ListVpcEndpointZonesResponseBo
 type ListVpcEndpointsRequest struct {
 	// The state of the endpoint connection. Valid values:
 	//
-	// *   **Pending**: The endpoint connection is being modified.
-	// *   **Connecting**: The endpoint connection is being established.
-	// *   **Connected**: The endpoint connection is established.
-	// *   **Disconnecting**: The endpoint is being disconnected from the endpoint service.
-	// *   **Disconnected**: The endpoint is disconnected from the endpoint service.
-	// *   **Deleting**: The connection is being deleted.
-	// *   **ServiceDeleted**: The corresponding endpoint service has been deleted.
+	// 	- **Pending**: The endpoint connection is being modified.
+	//
+	// 	- **Connecting**: The endpoint connection is being established.
+	//
+	// 	- **Connected**: The endpoint connection is established.
+	//
+	// 	- **Disconnecting**: The endpoint is being disconnected from the endpoint service.
+	//
+	// 	- **Disconnected**: The endpoint is disconnected from the endpoint service.
+	//
+	// 	- **Deleting**: The connection is being deleted.
+	//
+	// 	- **ServiceDeleted**: The corresponding endpoint service has been deleted.
+	//
+	// example:
+	//
+	// Disconnected
 	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
 	// The ID of the endpoint.
+	//
+	// example:
+	//
+	// ep-hp33b2e43fays7s8****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
 	// The name of the endpoint.
+	//
+	// example:
+	//
+	// test
 	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
 	// The state of the endpoint. Valid values:
 	//
-	// *   **Creating**: The endpoint is being created.
-	// *   **Active**: The endpoint is available.
-	// *   **Pending**: The endpoint is being modified.
-	// *   **Deleting**: The endpoint is being deleted.
+	// 	- **Creating**: The endpoint is being created.
+	//
+	// 	- **Active**: The endpoint is available.
+	//
+	// 	- **Pending**: The endpoint is being modified.
+	//
+	// 	- **Deleting**: The endpoint is being deleted.
+	//
+	// example:
+	//
+	// Active
 	EndpointStatus *string `json:"EndpointStatus,omitempty" xml:"EndpointStatus,omitempty"`
 	// The type of the endpoint.
 	//
 	// Set the value to **Interface**. Then, you can specify Application Load Balancer (ALB) and Classic Load Balancer (CLB) instances as service resources for the endpoint service.
+	//
+	// example:
+	//
+	// Interface
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
 	// The number of entries returned on each page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If this is your first request and no next requests are to be performed, you do not need to specify this parameter.
-	// *   If a next request is to be performed, set the parameter to the value of **NextToken** that is returned from the last call.
+	// 	- If this is your first request and no next requests are to be performed, you do not need to specify this parameter.
+	//
+	// 	- If a next request is to be performed, set the parameter to the value of **NextToken*	- that is returned from the last call.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The region ID of the endpoint.
 	//
-	// You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-huhehaote
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// 1
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The name of the endpoint service with which the endpoint is associated.
+	//
+	// example:
+	//
+	// com.aliyuncs.privatelink.cn-huhehaote.epsrv-hp3vpx8yqxblby3i****
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The list of tags.
 	Tag []*ListVpcEndpointsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the VPC to which the endpoint belongs.
+	//
+	// example:
+	//
+	// vpc-fdjkf789dfdfdfde****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -4889,10 +6668,18 @@ type ListVpcEndpointsRequestTag struct {
 	// The key of the tag. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
 	// The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
 	// The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// FinanceJoshua
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4918,15 +6705,32 @@ type ListVpcEndpointsResponseBody struct {
 	// The information about the endpoints.
 	Endpoints []*ListVpcEndpointsResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
 	// The number of entries returned on each page.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// *   If this is your first request and no next requests are to be performed, you do not need to specify this parameter.
-	// *   If a next request is to be performed, set the parameter to the value of **NextToken** that is returned from the last call.
+	// 	- If this is your first request and no next requests are to be performed, you do not need to specify this parameter.
+	//
+	// 	- If a next request is to be performed, set the parameter to the value of **NextToken*	- that is returned from the last call.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 12
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -4965,64 +6769,145 @@ func (s *ListVpcEndpointsResponseBody) SetTotalCount(v int32) *ListVpcEndpointsR
 
 type ListVpcEndpointsResponseBodyEndpoints struct {
 	// The bandwidth of the endpoint connection. Unit: Mbit/s.
+	//
+	// example:
+	//
+	// 1024
 	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The state of the endpoint connection. Valid values:
 	//
-	// *   **Pending**: The endpoint connection is being modified.
-	// *   **Connecting**: The endpoint connection is being established.
-	// *   **Connected**: The endpoint connection is established.
-	// *   **Disconnecting**: The endpoint is being disconnected from the endpoint service.
-	// *   **Disconnected**: The endpoint is disconnected from the endpoint service.
-	// *   **Deleting**: The endpoint connection is being deleted.
-	// *   **ServiceDeleted**: The corresponding service is deleted.
+	// 	- **Pending**: The endpoint connection is being modified.
+	//
+	// 	- **Connecting**: The endpoint connection is being established.
+	//
+	// 	- **Connected**: The endpoint connection is established.
+	//
+	// 	- **Disconnecting**: The endpoint is being disconnected from the endpoint service.
+	//
+	// 	- **Disconnected**: The endpoint is disconnected from the endpoint service.
+	//
+	// 	- **Deleting**: The endpoint connection is being deleted.
+	//
+	// 	- **ServiceDeleted**: The corresponding service is deleted.
+	//
+	// example:
+	//
+	// Disconnected
 	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
 	// The time when the endpoint was created.
+	//
+	// example:
+	//
+	// 2021-09-24T18:00:07Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The service state of the endpoint. Valid values:
 	//
-	// *   **Normal**: The endpoint runs as expected.
-	// *   **FinancialLocked**: The endpoint is locked due to overdue payments.
+	// 	- **Normal**: The endpoint runs as expected.
+	//
+	// 	- **FinancialLocked**: The endpoint is locked due to overdue payments.
+	//
+	// example:
+	//
+	// Normal
 	EndpointBusinessStatus *string `json:"EndpointBusinessStatus,omitempty" xml:"EndpointBusinessStatus,omitempty"`
 	// The description of the endpoint.
+	//
+	// example:
+	//
+	// This is my Endpoint.
 	EndpointDescription *string `json:"EndpointDescription,omitempty" xml:"EndpointDescription,omitempty"`
 	// The domain name of the endpoint.
+	//
+	// example:
+	//
+	// ep-hp33b2e43fays7s8****.epsrv-hp3xdsq46ael67lo****.cn-huhehaote.privatelink.aliyuncs.com
 	EndpointDomain *string `json:"EndpointDomain,omitempty" xml:"EndpointDomain,omitempty"`
 	// The ID of the endpoint.
+	//
+	// example:
+	//
+	// ep-hp33b2e43fays7s8****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
 	// The name of the endpoint.
+	//
+	// example:
+	//
+	// test
 	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
 	// The state of the endpoint. Valid values:
 	//
-	// *   **Creating**: The endpoint is being created.
-	// *   **Active**: The endpoint is available.
-	// *   **Pending**: The endpoint is being modified.
-	// *   **Deleting**: The endpoint is being deleted.
+	// 	- **Creating**: The endpoint is being created.
+	//
+	// 	- **Active**: The endpoint is available.
+	//
+	// 	- **Pending**: The endpoint is being modified.
+	//
+	// 	- **Deleting**: The endpoint is being deleted.
+	//
+	// example:
+	//
+	// Active
 	EndpointStatus *string `json:"EndpointStatus,omitempty" xml:"EndpointStatus,omitempty"`
 	// The type of the endpoint.
 	//
-	// Only **Interface** may be returned, which indicates an interface endpoint. You can specify Application Load Balancer (ALB) instances, Classic Load Balancer (CLB) instances, and Network Load Balancer (NLB) instances as service resources.
-	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	// Only **Interface*	- may be returned, which indicates an interface endpoint. You can specify Application Load Balancer (ALB) instances, Classic Load Balancer (CLB) instances, and Network Load Balancer (NLB) instances as service resources.
+	//
+	// example:
+	//
+	// Interface
+	EndpointType   *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
 	// The region ID of the endpoint.
+	//
+	// example:
+	//
+	// cn-huhehaote
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// 1
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Indicates whether the endpoint and the endpoint service belong to the same Alibaba Cloud account. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	ResourceOwner *bool `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
 	// The ID of the endpoint service that is associated with the endpoint.
+	//
+	// example:
+	//
+	// epsrv-hp3vpx8yqxblby3i****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The name of the endpoint service that is associated with the endpoint.
+	//
+	// example:
+	//
+	// com.aliyuncs.privatelink.cn-huhehaote.epsrv-hp3xdsq46ael67lo****
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The tags added to the resource.
 	Tags []*ListVpcEndpointsResponseBodyEndpointsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The ID of the virtual private cloud (VPC) to which the endpoint belongs.
+	//
+	// example:
+	//
+	// vpc-hp356stwkxg3fn2xe****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// Indicates whether the domain name of the nearest endpoint that is associated with the endpoint service is resolved first. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	ZoneAffinityEnabled *bool `json:"ZoneAffinityEnabled,omitempty" xml:"ZoneAffinityEnabled,omitempty"`
 }
 
@@ -5084,6 +6969,11 @@ func (s *ListVpcEndpointsResponseBodyEndpoints) SetEndpointType(v string) *ListV
 	return s
 }
 
+func (s *ListVpcEndpointsResponseBodyEndpoints) SetPolicyDocument(v string) *ListVpcEndpointsResponseBodyEndpoints {
+	s.PolicyDocument = &v
+	return s
+}
+
 func (s *ListVpcEndpointsResponseBodyEndpoints) SetRegionId(v string) *ListVpcEndpointsResponseBodyEndpoints {
 	s.RegionId = &v
 	return s
@@ -5126,8 +7016,16 @@ func (s *ListVpcEndpointsResponseBodyEndpoints) SetZoneAffinityEnabled(v bool) *
 
 type ListVpcEndpointsResponseBodyEndpointsTags struct {
 	// The key of the tag added to the resource.
+	//
+	// example:
+	//
+	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag added to the resource.
+	//
+	// example:
+	//
+	// FinanceJoshua
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5197,8 +7095,16 @@ func (s *OpenPrivateLinkServiceRequest) SetOwnerId(v int64) *OpenPrivateLinkServ
 
 type OpenPrivateLinkServiceResponseBody struct {
 	// The order ID.
+	//
+	// example:
+	//
+	// 3245****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 427688B8-ADFB-4C4E-9D45-EF5C1FD6E23D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5251,19 +7157,48 @@ func (s *OpenPrivateLinkServiceResponse) SetBody(v *OpenPrivateLinkServiceRespon
 
 type RemoveUserFromVpcEndpointServiceRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// example:
+	//
+	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the AccessKey pair, the permissions of the RAM user, and the required parameters. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the AccessKey pair, the permissions of the RAM user, and the required parameters. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The region ID of the endpoint service for which you want to remove the account ID from the whitelist. You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	// The region ID of the endpoint service for which you want to remove the account ID from the whitelist. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eu-west-1
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The endpoint service ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// epsrv-hp3vpx8yqxblby3i****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The whitelist in the format of Aliyun Resource Name (ARN).
+	//
+	// example:
+	//
+	// acs:ram:*:<account-id>:*
 	UserARN *string `json:"UserARN,omitempty" xml:"UserARN,omitempty"`
 	// The account ID that you want to remove from the whitelist.
+	//
+	// example:
+	//
+	// 12345678
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -5307,6 +7242,10 @@ func (s *RemoveUserFromVpcEndpointServiceRequest) SetUserId(v int64) *RemoveUser
 
 type RemoveUserFromVpcEndpointServiceResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5356,17 +7295,44 @@ type RemoveZoneFromVpcEndpointRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// example:
+	//
+	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the endpoint for which you want to delete the zone.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ep-hp33b2e43fays7s8****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The region ID of the endpoint for which you want to delete the zone. You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	// The region ID of the endpoint for which you want to delete the zone. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eu-west-1
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the zone that you want to delete.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eu-west-1a
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -5405,6 +7371,10 @@ func (s *RemoveZoneFromVpcEndpointRequest) SetZoneId(v string) *RemoveZoneFromVp
 
 type RemoveZoneFromVpcEndpointResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5455,25 +7425,51 @@ type TagResourcesRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token.******** The request ID may be different for each request.
+	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token.*******	- The request ID may be different for each request.
+	//
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The region ID of the PrivateLink instance.
 	//
-	// You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource IDs. Up to 50 resource IDs are supported.
+	//
+	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of resource. Valid values:
 	//
-	// *   **vpcendpoint**: endpoint
-	// *   **vpcendpointservice**: endpoint service
+	// 	- **vpcendpoint**: endpoint
+	//
+	// 	- **vpcendpointservice**: endpoint service
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tags to add to the resources.
+	//
+	// This parameter is required.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -5519,10 +7515,22 @@ type TagResourcesRequestTag struct {
 	// The key of tag N to add to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
 	// The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FinanceDept
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of tag N to add to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
 	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `acs:` or `aliyun`.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FinanceJoshua
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5546,6 +7554,10 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 
 type TagResourcesResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// C46FF5A8-C5F0-4024-8262-B16B639225A0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5594,32 +7606,61 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 type UntagResourcesRequest struct {
 	// Specifies whether to remove all tags from the resource. Valid values:
 	//
-	// *   **true**: removes all tags from the resource.
-	// *   **false**: does not remove all tags from the resource.
+	// 	- **true**: removes all tags from the resource.
+	//
+	// 	- **false**: does not remove all tags from the resource.
 	//
 	// >  If you specify both this parameter and **TagKey**, this parameter is invalid.
+	//
+	// example:
+	//
+	// true
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token.******** The request ID may be different for each request.
+	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token.*******	- The request ID may be different for each request.
+	//
+	// example:
+	//
+	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The region ID of the PrivateLink instance.
 	//
-	// You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource IDs. You can specify up to 50 resource IDs.
+	//
+	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The resource type. Valid values:
 	//
-	// *   **vpcendpoint**: endpoint
-	// *   **vpcendpointservice**: endpoint service
+	// 	- **vpcendpoint**: endpoint
+	//
+	// 	- **vpcendpointservice**: endpoint service
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// slb
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The keys of the tags that you want to remove from the resource. You can specify up to 20 tag keys.
 	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
@@ -5670,6 +7711,10 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 
 type UntagResourcesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5719,23 +7764,53 @@ type UpdateVpcEndpointAttributeRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// example:
+	//
+	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The description of the endpoint.
 	//
 	// The description must be 2 to 256 characters in length. It cannot start with `http://` or `https://`.
+	//
+	// example:
+	//
+	// This is my Endpoint.
 	EndpointDescription *string `json:"EndpointDescription,omitempty" xml:"EndpointDescription,omitempty"`
 	// The endpoint ID whose attributes you want to modify.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ep-hp33b2e43fays7s8****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
 	// The name of the endpoint.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
-	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
-	// The region ID of the endpoint whose attributes you want to modify. You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+	//
+	// example:
+	//
+	// test
+	EndpointName   *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
+	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
+	// The region ID of the endpoint whose attributes you want to modify. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eu-west-1
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -5772,6 +7847,11 @@ func (s *UpdateVpcEndpointAttributeRequest) SetEndpointName(v string) *UpdateVpc
 	return s
 }
 
+func (s *UpdateVpcEndpointAttributeRequest) SetPolicyDocument(v string) *UpdateVpcEndpointAttributeRequest {
+	s.PolicyDocument = &v
+	return s
+}
+
 func (s *UpdateVpcEndpointAttributeRequest) SetRegionId(v string) *UpdateVpcEndpointAttributeRequest {
 	s.RegionId = &v
 	return s
@@ -5779,6 +7859,10 @@ func (s *UpdateVpcEndpointAttributeRequest) SetRegionId(v string) *UpdateVpcEndp
 
 type UpdateVpcEndpointAttributeResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5825,24 +7909,55 @@ func (s *UpdateVpcEndpointAttributeResponse) SetBody(v *UpdateVpcEndpointAttribu
 }
 
 type UpdateVpcEndpointConnectionAttributeRequest struct {
-	// The bandwidth of the endpoint connection that you want to modify. Unit: Mbit/s. Valid values: **3072** to **10240**.
+	// The bandwidth of the endpoint connection that you want to modify. Unit: Mbit/s. Valid values: **3072*	- to **10240**.
 	//
-	// >  The bandwidth of an endpoint connection is in the range of **100** to **10,240** Mbit/s. The default bandwidth is **3,072** Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is **3,072** to **10,240** Mbit/s. If Classic Load Balancer (CLB) instances or Application Load Balancer (ALB) instances are specified as service resources, you can modify the endpoint connection bandwidth based on your business requirements. This parameter is invalid if Network Load Balancer (NLB) instances are specified as service resources.
+	// >  The bandwidth of an endpoint connection is in the range of **100*	- to **10,240*	- Mbit/s. The default bandwidth is **3,072*	- Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is **3,072*	- to **10,240*	- Mbit/s. If Classic Load Balancer (CLB) instances or Application Load Balancer (ALB) instances are specified as service resources, you can modify the endpoint connection bandwidth based on your business requirements. This parameter is invalid if Network Load Balancer (NLB) instances are specified as service resources.
+	//
+	// example:
+	//
+	// 1000
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// example:
+	//
+	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The endpoint ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ep-hp33b2e43fays7s8****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The region ID of the endpoint connection whose bandwidth you want to modify. You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	// The region ID of the endpoint connection whose bandwidth you want to modify. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eu-west-1
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The endpoint service ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// epsrv-hp3vpx8yqxblby3i****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 }
 
@@ -5886,6 +8001,10 @@ func (s *UpdateVpcEndpointConnectionAttributeRequest) SetServiceId(v string) *Up
 
 type UpdateVpcEndpointConnectionAttributeResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5934,41 +8053,85 @@ func (s *UpdateVpcEndpointConnectionAttributeResponse) SetBody(v *UpdateVpcEndpo
 type UpdateVpcEndpointServiceAttributeRequest struct {
 	// Specifies whether to automatically accept endpoint connection requests. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	AutoAcceptEnabled *bool `json:"AutoAcceptEnabled,omitempty" xml:"AutoAcceptEnabled,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// example:
+	//
+	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The default maximum bandwidth of the endpoint connection. Unit: Mbit/s. Default value: **3072**.
 	//
-	// Valid values: **100** to **10240**.
+	// Valid values: **100*	- to **10240**.
 	//
 	// >  You can specify this parameter only if you specify Classic Load Balancer (CLB) instances or Application Load Balancer (ALB) instances as service resources.
+	//
+	// example:
+	//
+	// 200
 	ConnectBandwidth *int32 `json:"ConnectBandwidth,omitempty" xml:"ConnectBandwidth,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The region ID of the endpoint service.
 	//
-	// You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The description of the endpoint service.
+	//
+	// example:
+	//
+	// This is my EndpointService.
 	ServiceDescription *string `json:"ServiceDescription,omitempty" xml:"ServiceDescription,omitempty"`
 	// The endpoint service ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// epsrv-hp3vpx8yqxblby3i****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// Specifies whether to enable IPv6. Valid values:
 	//
-	// *   **true**
-	// *   **false** (default)
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
+	// example:
+	//
+	// false
 	ServiceSupportIPv6 *bool `json:"ServiceSupportIPv6,omitempty" xml:"ServiceSupportIPv6,omitempty"`
 	// Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
 	//
-	// *   **true** (default)
-	// *   **false**
+	// 	- **true*	- (default)
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	ZoneAffinityEnabled *bool `json:"ZoneAffinityEnabled,omitempty" xml:"ZoneAffinityEnabled,omitempty"`
 }
 
@@ -6027,6 +8190,10 @@ func (s *UpdateVpcEndpointServiceAttributeRequest) SetZoneAffinityEnabled(v bool
 
 type UpdateVpcEndpointServiceAttributeResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 8D8992C1-6712-423C-BAC5-E5E817484C6B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6075,27 +8242,65 @@ func (s *UpdateVpcEndpointServiceAttributeResponse) SetBody(v *UpdateVpcEndpoint
 type UpdateVpcEndpointServiceResourceAttributeRequest struct {
 	// Specifies whether to enable automatic resource allocation. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
 	AutoAllocatedEnabled *bool `json:"AutoAllocatedEnabled,omitempty" xml:"AutoAllocatedEnabled,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// example:
+	//
+	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
-	// *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false**: performs a dry run and sends the request. If the request passes the dry run, an HTTP 2xx status code is returned and the operation is performed. This is the default value.
+	// 	- **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false**: performs a dry run and sends the request. If the request passes the dry run, an HTTP 2xx status code is returned and the operation is performed. This is the default value.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the region where the service resource is deployed.
 	//
-	// You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The service resource ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lb-hp32z1wp5peaoox2q****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The endpoint service ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// epsrv-hp3vpx8yqxblby3i****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The zone ID of the service resource.
+	//
+	// example:
+	//
+	// cn-hangzhou-i
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -6144,6 +8349,10 @@ func (s *UpdateVpcEndpointServiceResourceAttributeRequest) SetZoneId(v string) *
 
 type UpdateVpcEndpointServiceResourceAttributeResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6193,44 +8402,96 @@ type UpdateVpcEndpointZoneConnectionResourceAttributeRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// example:
+	//
+	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The endpoint ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ep-hp33b2e43fays7s8****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
 	// The region ID of the endpoint connection whose bandwidth you want to modify.
 	//
-	// You can call the [DescribeRegions](~~120468~~) operation to query the most recent region list.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource allocation mode. You can change the resource allocation mode only if the endpoint connection is in the **Disconnected** state. Valid values:
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
 	//
-	// *   **Auto**: automatically and randomly allocates service resources. In this mode, the specified service resource is deleted.
-	// *   **Manual**: manually allocates service resources. If you set the value to Manual, you must also specify the **ResourceId** and **ResourceType** parameters.
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource allocation mode. You can change the resource allocation mode only if the endpoint connection is in the **Disconnected*	- state. Valid values:
+	//
+	// 	- **Auto**: automatically and randomly allocates service resources. In this mode, the specified service resource is deleted.
+	//
+	// 	- **Manual**: manually allocates service resources. If you set the value to Manual, you must also specify the **ResourceId*	- and **ResourceType*	- parameters.
+	//
+	// example:
+	//
+	// Auto
 	ResourceAllocateMode *string `json:"ResourceAllocateMode,omitempty" xml:"ResourceAllocateMode,omitempty"`
 	// The ID of the service resource that you want to manually allocate or migrate in the zone where the endpoint connection is deployed.
 	//
-	// > If **ResourceAllocateMode** is set to **Mannual**, or **ResourceReplaceMode** is set, this parameter is required.
+	// > If **ResourceAllocateMode*	- is set to **Mannual**, or **ResourceReplaceMode*	- is set, this parameter is required.
+	//
+	// example:
+	//
+	// lb-hp32z1wp5peaoox2q****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The migration mode of the service resource. Valid values:
 	//
-	// *   **Graceful**: smooth migration. Service resources in the zone are smoothly migrated.
-	// *   **Force**: forced migration. Service resources in the zone are forcefully migrated.
+	// 	- **Graceful**: smooth migration. Service resources in the zone are smoothly migrated.
 	//
-	// >  You need to specify this parameter only if you want to migrate service resources and the endpoint connection is in the **Connected** state. If you specify this parameter, you must also specify the **ResourceId** and **ResourceType** parameters.
+	// 	- **Force**: forced migration. Service resources in the zone are forcefully migrated.
+	//
+	// >  You need to specify this parameter only if you want to migrate service resources and the endpoint connection is in the **Connected*	- state. If you specify this parameter, you must also specify the **ResourceId*	- and **ResourceType*	- parameters.
+	//
+	// example:
+	//
+	// Graceful
 	ResourceReplaceMode *string `json:"ResourceReplaceMode,omitempty" xml:"ResourceReplaceMode,omitempty"`
 	// The type of the service resource. Valid values:
 	//
-	// *   **slb**: a CLB instance that supports PrivateLink. In addition, the CLB instance is deployed in a VPC.
-	// *   **alb**: an Application Load Balancer (ALB) instance that supports PrivateLink. In addition, the ALB instance is deployed in a VPC.
+	// 	- **slb**: a CLB instance that supports PrivateLink. In addition, the CLB instance is deployed in a VPC.
 	//
-	// > If **ResourceAllocateMode** is set to **Mannual**, or **ResourceReplaceMode** is set, this parameter is required.
+	// 	- **alb**: an Application Load Balancer (ALB) instance that supports PrivateLink. In addition, the ALB instance is deployed in a VPC.
+	//
+	// > If **ResourceAllocateMode*	- is set to **Mannual**, or **ResourceReplaceMode*	- is set, this parameter is required.
+	//
+	// example:
+	//
+	// slb
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The endpoint service ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// epsrv-hp3vpx8yqxblby3i****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The zone ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou-b
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -6294,6 +8555,10 @@ func (s *UpdateVpcEndpointZoneConnectionResourceAttributeRequest) SetZoneId(v st
 
 type UpdateVpcEndpointZoneConnectionResourceAttributeResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6386,14 +8651,21 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-/**
- * *   Before you add an account ID to the whitelist of an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](~~469330~~) operation to query the status of the endpoint service.
- * *   You cannot repeatedly call the **AddUserToVpcEndpointService** operation to add the ID of an Alibaba Cloud account to the whitelist of an endpoint service within a specified period of time.
- *
- * @param request AddUserToVpcEndpointServiceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return AddUserToVpcEndpointServiceResponse
- */
+// Summary:
+//
+// Adds an account ID to the whitelist of an endpoint service.
+//
+// Description:
+//
+//   Before you add an account ID to the whitelist of an endpoint service, make sure that the endpoint service is in the **Active*	- state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
+//
+// 	- You cannot repeatedly call the **AddUserToVpcEndpointService*	- operation to add the ID of an Alibaba Cloud account to the whitelist of an endpoint service within a specified period of time.
+//
+// @param request - AddUserToVpcEndpointServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddUserToVpcEndpointServiceResponse
 func (client *Client) AddUserToVpcEndpointServiceWithOptions(request *AddUserToVpcEndpointServiceRequest, runtime *util.RuntimeOptions) (_result *AddUserToVpcEndpointServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6451,13 +8723,19 @@ func (client *Client) AddUserToVpcEndpointServiceWithOptions(request *AddUserToV
 	return _result, _err
 }
 
-/**
- * *   Before you add an account ID to the whitelist of an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](~~469330~~) operation to query the status of the endpoint service.
- * *   You cannot repeatedly call the **AddUserToVpcEndpointService** operation to add the ID of an Alibaba Cloud account to the whitelist of an endpoint service within a specified period of time.
- *
- * @param request AddUserToVpcEndpointServiceRequest
- * @return AddUserToVpcEndpointServiceResponse
- */
+// Summary:
+//
+// Adds an account ID to the whitelist of an endpoint service.
+//
+// Description:
+//
+//   Before you add an account ID to the whitelist of an endpoint service, make sure that the endpoint service is in the **Active*	- state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
+//
+// 	- You cannot repeatedly call the **AddUserToVpcEndpointService*	- operation to add the ID of an Alibaba Cloud account to the whitelist of an endpoint service within a specified period of time.
+//
+// @param request - AddUserToVpcEndpointServiceRequest
+//
+// @return AddUserToVpcEndpointServiceResponse
 func (client *Client) AddUserToVpcEndpointService(request *AddUserToVpcEndpointServiceRequest) (_result *AddUserToVpcEndpointServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddUserToVpcEndpointServiceResponse{}
@@ -6469,16 +8747,25 @@ func (client *Client) AddUserToVpcEndpointService(request *AddUserToVpcEndpointS
 	return _result, _err
 }
 
-/**
- * *   **AddZoneToVpcEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](~~183560~~) operation to query the state of the zone.
- *     *   If the zone is in the **Creating** state, the zone is being added.
- *     *   If the zone is in the Wait state, the zone is added.
- * *   You cannot repeatedly call the **AddZoneToVpcEndpoint** operation to add a zone to an endpoint within a specified period of time.
- *
- * @param request AddZoneToVpcEndpointRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return AddZoneToVpcEndpointResponse
- */
+// Summary:
+//
+// Adds a zone to an endpoint.
+//
+// Description:
+//
+//   **AddZoneToVpcEndpoint*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to query the state of the zone.
+//
+//     	- If the zone is in the **Creating*	- state, the zone is being added.
+//
+//     	- If the zone is in the Wait state, the zone is added.
+//
+// 	- You cannot repeatedly call the **AddZoneToVpcEndpoint*	- operation to add a zone to an endpoint within a specified period of time.
+//
+// @param request - AddZoneToVpcEndpointRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddZoneToVpcEndpointResponse
 func (client *Client) AddZoneToVpcEndpointWithOptions(request *AddZoneToVpcEndpointRequest, runtime *util.RuntimeOptions) (_result *AddZoneToVpcEndpointResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6540,15 +8827,23 @@ func (client *Client) AddZoneToVpcEndpointWithOptions(request *AddZoneToVpcEndpo
 	return _result, _err
 }
 
-/**
- * *   **AddZoneToVpcEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](~~183560~~) operation to query the state of the zone.
- *     *   If the zone is in the **Creating** state, the zone is being added.
- *     *   If the zone is in the Wait state, the zone is added.
- * *   You cannot repeatedly call the **AddZoneToVpcEndpoint** operation to add a zone to an endpoint within a specified period of time.
- *
- * @param request AddZoneToVpcEndpointRequest
- * @return AddZoneToVpcEndpointResponse
- */
+// Summary:
+//
+// Adds a zone to an endpoint.
+//
+// Description:
+//
+//   **AddZoneToVpcEndpoint*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to query the state of the zone.
+//
+//     	- If the zone is in the **Creating*	- state, the zone is being added.
+//
+//     	- If the zone is in the Wait state, the zone is added.
+//
+// 	- You cannot repeatedly call the **AddZoneToVpcEndpoint*	- operation to add a zone to an endpoint within a specified period of time.
+//
+// @param request - AddZoneToVpcEndpointRequest
+//
+// @return AddZoneToVpcEndpointResponse
 func (client *Client) AddZoneToVpcEndpoint(request *AddZoneToVpcEndpointRequest) (_result *AddZoneToVpcEndpointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddZoneToVpcEndpointResponse{}
@@ -6560,14 +8855,21 @@ func (client *Client) AddZoneToVpcEndpoint(request *AddZoneToVpcEndpointRequest)
 	return _result, _err
 }
 
-/**
- * *   Before you add a service resource to an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](~~469330~~) operation to query the status of the endpoint service.
- * *   You cannot repeatedly call the **AttachResourceToVpcEndpointService** operation to add a service resource to an endpoint service within a specified period of time.
- *
- * @param request AttachResourceToVpcEndpointServiceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return AttachResourceToVpcEndpointServiceResponse
- */
+// Summary:
+//
+// Adds a service resource to an endpoint service.
+//
+// Description:
+//
+//   Before you add a service resource to an endpoint service, make sure that the endpoint service is in the **Active*	- state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
+//
+// 	- You cannot repeatedly call the **AttachResourceToVpcEndpointService*	- operation to add a service resource to an endpoint service within a specified period of time.
+//
+// @param request - AttachResourceToVpcEndpointServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachResourceToVpcEndpointServiceResponse
 func (client *Client) AttachResourceToVpcEndpointServiceWithOptions(request *AttachResourceToVpcEndpointServiceRequest, runtime *util.RuntimeOptions) (_result *AttachResourceToVpcEndpointServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6629,13 +8931,19 @@ func (client *Client) AttachResourceToVpcEndpointServiceWithOptions(request *Att
 	return _result, _err
 }
 
-/**
- * *   Before you add a service resource to an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](~~469330~~) operation to query the status of the endpoint service.
- * *   You cannot repeatedly call the **AttachResourceToVpcEndpointService** operation to add a service resource to an endpoint service within a specified period of time.
- *
- * @param request AttachResourceToVpcEndpointServiceRequest
- * @return AttachResourceToVpcEndpointServiceResponse
- */
+// Summary:
+//
+// Adds a service resource to an endpoint service.
+//
+// Description:
+//
+//   Before you add a service resource to an endpoint service, make sure that the endpoint service is in the **Active*	- state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
+//
+// 	- You cannot repeatedly call the **AttachResourceToVpcEndpointService*	- operation to add a service resource to an endpoint service within a specified period of time.
+//
+// @param request - AttachResourceToVpcEndpointServiceRequest
+//
+// @return AttachResourceToVpcEndpointServiceResponse
 func (client *Client) AttachResourceToVpcEndpointService(request *AttachResourceToVpcEndpointServiceRequest) (_result *AttachResourceToVpcEndpointServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AttachResourceToVpcEndpointServiceResponse{}
@@ -6647,16 +8955,25 @@ func (client *Client) AttachResourceToVpcEndpointService(request *AttachResource
 	return _result, _err
 }
 
-/**
- * *   **AttachSecurityGroupToVpcEndpoint** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpoints](~~183558~~) operation to query the state of the endpoint.
- *     *   If the endpoint is in the **Pending** state, the endpoint is being associated with the security group.
- *     *   If the endpoint is in the **Active** state, the endpoint is associated with the security group.
- * *   You cannot repeatedly call the **AttachSecurityGroupToVpcEndpoint** operation to associate an endpoint with a security group within a specified period of time.
- *
- * @param request AttachSecurityGroupToVpcEndpointRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return AttachSecurityGroupToVpcEndpointResponse
- */
+// Summary:
+//
+// Associates an endpoint with a security group.
+//
+// Description:
+//
+//   **AttachSecurityGroupToVpcEndpoint*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpoints](https://help.aliyun.com/document_detail/183558.html) operation to query the state of the endpoint.
+//
+//     	- If the endpoint is in the **Pending*	- state, the endpoint is being associated with the security group.
+//
+//     	- If the endpoint is in the **Active*	- state, the endpoint is associated with the security group.
+//
+// 	- You cannot repeatedly call the **AttachSecurityGroupToVpcEndpoint*	- operation to associate an endpoint with a security group within a specified period of time.
+//
+// @param request - AttachSecurityGroupToVpcEndpointRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachSecurityGroupToVpcEndpointResponse
 func (client *Client) AttachSecurityGroupToVpcEndpointWithOptions(request *AttachSecurityGroupToVpcEndpointRequest, runtime *util.RuntimeOptions) (_result *AttachSecurityGroupToVpcEndpointResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6710,15 +9027,23 @@ func (client *Client) AttachSecurityGroupToVpcEndpointWithOptions(request *Attac
 	return _result, _err
 }
 
-/**
- * *   **AttachSecurityGroupToVpcEndpoint** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpoints](~~183558~~) operation to query the state of the endpoint.
- *     *   If the endpoint is in the **Pending** state, the endpoint is being associated with the security group.
- *     *   If the endpoint is in the **Active** state, the endpoint is associated with the security group.
- * *   You cannot repeatedly call the **AttachSecurityGroupToVpcEndpoint** operation to associate an endpoint with a security group within a specified period of time.
- *
- * @param request AttachSecurityGroupToVpcEndpointRequest
- * @return AttachSecurityGroupToVpcEndpointResponse
- */
+// Summary:
+//
+// Associates an endpoint with a security group.
+//
+// Description:
+//
+//   **AttachSecurityGroupToVpcEndpoint*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpoints](https://help.aliyun.com/document_detail/183558.html) operation to query the state of the endpoint.
+//
+//     	- If the endpoint is in the **Pending*	- state, the endpoint is being associated with the security group.
+//
+//     	- If the endpoint is in the **Active*	- state, the endpoint is associated with the security group.
+//
+// 	- You cannot repeatedly call the **AttachSecurityGroupToVpcEndpoint*	- operation to associate an endpoint with a security group within a specified period of time.
+//
+// @param request - AttachSecurityGroupToVpcEndpointRequest
+//
+// @return AttachSecurityGroupToVpcEndpointResponse
 func (client *Client) AttachSecurityGroupToVpcEndpoint(request *AttachSecurityGroupToVpcEndpointRequest) (_result *AttachSecurityGroupToVpcEndpointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AttachSecurityGroupToVpcEndpointResponse{}
@@ -6730,6 +9055,15 @@ func (client *Client) AttachSecurityGroupToVpcEndpoint(request *AttachSecurityGr
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a resource group.
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6771,6 +9105,13 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a resource group.
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeResourceGroupResponse{}
@@ -6782,6 +9123,15 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether PrivateLink is activated.
+//
+// @param request - CheckProductOpenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckProductOpenResponse
 func (client *Client) CheckProductOpenWithOptions(runtime *util.RuntimeOptions) (_result *CheckProductOpenResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -6804,6 +9154,11 @@ func (client *Client) CheckProductOpenWithOptions(runtime *util.RuntimeOptions) 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether PrivateLink is activated.
+//
+// @return CheckProductOpenResponse
 func (client *Client) CheckProductOpen() (_result *CheckProductOpenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckProductOpenResponse{}
@@ -6815,15 +9170,23 @@ func (client *Client) CheckProductOpen() (_result *CheckProductOpenResponse, _er
 	return _result, _err
 }
 
-/**
- * **CreateVpcEndpoint** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](~~183568~~) operation to check whether the endpoint is created.
- * *   If the endpoint is in the **Creating** state, the endpoint is being created.
- * *   If the endpoint is in the **Active** state, the endpoint is created.
- *
- * @param request CreateVpcEndpointRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateVpcEndpointResponse
- */
+// Summary:
+//
+// Creates an endpoint.
+//
+// Description:
+//
+// *CreateVpcEndpoint*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to check whether the endpoint is created.
+//
+// 	- If the endpoint is in the **Creating*	- state, the endpoint is being created.
+//
+// 	- If the endpoint is in the **Active*	- state, the endpoint is created.
+//
+// @param request - CreateVpcEndpointRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVpcEndpointResponse
 func (client *Client) CreateVpcEndpointWithOptions(request *CreateVpcEndpointRequest, runtime *util.RuntimeOptions) (_result *CreateVpcEndpointResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6848,6 +9211,10 @@ func (client *Client) CreateVpcEndpointWithOptions(request *CreateVpcEndpointReq
 
 	if !tea.BoolValue(util.IsUnset(request.EndpointType)) {
 		query["EndpointType"] = request.EndpointType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyDocument)) {
+		query["PolicyDocument"] = request.PolicyDocument
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ProtectedEnabled)) {
@@ -6917,14 +9284,21 @@ func (client *Client) CreateVpcEndpointWithOptions(request *CreateVpcEndpointReq
 	return _result, _err
 }
 
-/**
- * **CreateVpcEndpoint** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](~~183568~~) operation to check whether the endpoint is created.
- * *   If the endpoint is in the **Creating** state, the endpoint is being created.
- * *   If the endpoint is in the **Active** state, the endpoint is created.
- *
- * @param request CreateVpcEndpointRequest
- * @return CreateVpcEndpointResponse
- */
+// Summary:
+//
+// Creates an endpoint.
+//
+// Description:
+//
+// *CreateVpcEndpoint*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to check whether the endpoint is created.
+//
+// 	- If the endpoint is in the **Creating*	- state, the endpoint is being created.
+//
+// 	- If the endpoint is in the **Active*	- state, the endpoint is created.
+//
+// @param request - CreateVpcEndpointRequest
+//
+// @return CreateVpcEndpointResponse
 func (client *Client) CreateVpcEndpoint(request *CreateVpcEndpointRequest) (_result *CreateVpcEndpointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateVpcEndpointResponse{}
@@ -6936,16 +9310,25 @@ func (client *Client) CreateVpcEndpoint(request *CreateVpcEndpointRequest) (_res
 	return _result, _err
 }
 
-/**
- * *   Before you create an endpoint service, make sure that you have created a Server Load Balancer (SLB) instance that supports PrivateLink. For more information, see [CreateLoadBalancer](~~174064~~).
- * *   **CreateVpcEndpointService** is an asynchronous operation. After a request is sent, the system returns a request ID and an instance ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](~~183542~~) operation to query the status of the endpoint service.
- *     *   If the endpoint service is in the **Creating** state, the endpoint service is being created.
- *     *   If the endpoint service is in the **Active** state, the endpoint service is created.
- *
- * @param request CreateVpcEndpointServiceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateVpcEndpointServiceResponse
- */
+// Summary:
+//
+// Creates an endpoint service.
+//
+// Description:
+//
+//   Before you create an endpoint service, make sure that you have created a Server Load Balancer (SLB) instance that supports PrivateLink. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/174064.html).
+//
+// 	- **CreateVpcEndpointService*	- is an asynchronous operation. After a request is sent, the system returns a request ID and an instance ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/183542.html) operation to query the status of the endpoint service.
+//
+//     	- If the endpoint service is in the **Creating*	- state, the endpoint service is being created.
+//
+//     	- If the endpoint service is in the **Active*	- state, the endpoint service is created.
+//
+// @param request - CreateVpcEndpointServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVpcEndpointServiceResponse
 func (client *Client) CreateVpcEndpointServiceWithOptions(request *CreateVpcEndpointServiceRequest, runtime *util.RuntimeOptions) (_result *CreateVpcEndpointServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7027,15 +9410,23 @@ func (client *Client) CreateVpcEndpointServiceWithOptions(request *CreateVpcEndp
 	return _result, _err
 }
 
-/**
- * *   Before you create an endpoint service, make sure that you have created a Server Load Balancer (SLB) instance that supports PrivateLink. For more information, see [CreateLoadBalancer](~~174064~~).
- * *   **CreateVpcEndpointService** is an asynchronous operation. After a request is sent, the system returns a request ID and an instance ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](~~183542~~) operation to query the status of the endpoint service.
- *     *   If the endpoint service is in the **Creating** state, the endpoint service is being created.
- *     *   If the endpoint service is in the **Active** state, the endpoint service is created.
- *
- * @param request CreateVpcEndpointServiceRequest
- * @return CreateVpcEndpointServiceResponse
- */
+// Summary:
+//
+// Creates an endpoint service.
+//
+// Description:
+//
+//   Before you create an endpoint service, make sure that you have created a Server Load Balancer (SLB) instance that supports PrivateLink. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/174064.html).
+//
+// 	- **CreateVpcEndpointService*	- is an asynchronous operation. After a request is sent, the system returns a request ID and an instance ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/183542.html) operation to query the status of the endpoint service.
+//
+//     	- If the endpoint service is in the **Creating*	- state, the endpoint service is being created.
+//
+//     	- If the endpoint service is in the **Active*	- state, the endpoint service is created.
+//
+// @param request - CreateVpcEndpointServiceRequest
+//
+// @return CreateVpcEndpointServiceResponse
 func (client *Client) CreateVpcEndpointService(request *CreateVpcEndpointServiceRequest) (_result *CreateVpcEndpointServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateVpcEndpointServiceResponse{}
@@ -7047,16 +9438,25 @@ func (client *Client) CreateVpcEndpointService(request *CreateVpcEndpointService
 	return _result, _err
 }
 
-/**
- * *   Before you delete an endpoint, you must delete the zones that are added to the endpoint.
- * *   **DeleteVpcEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](~~183568~~) operation to check whether the endpoint is deleted.
- *     *   If the endpoint is in the **Deleting** state, the endpoint is being deleted.
- *     *   If the endpoint cannot be queried, the endpoint is deleted.
- *
- * @param request DeleteVpcEndpointRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteVpcEndpointResponse
- */
+// Summary:
+//
+// Deletes an endpoint.
+//
+// Description:
+//
+//   Before you delete an endpoint, you must delete the zones that are added to the endpoint.
+//
+// 	- **DeleteVpcEndpoint*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to check whether the endpoint is deleted.
+//
+//     	- If the endpoint is in the **Deleting*	- state, the endpoint is being deleted.
+//
+//     	- If the endpoint cannot be queried, the endpoint is deleted.
+//
+// @param request - DeleteVpcEndpointRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteVpcEndpointResponse
 func (client *Client) DeleteVpcEndpointWithOptions(request *DeleteVpcEndpointRequest, runtime *util.RuntimeOptions) (_result *DeleteVpcEndpointResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7106,15 +9506,23 @@ func (client *Client) DeleteVpcEndpointWithOptions(request *DeleteVpcEndpointReq
 	return _result, _err
 }
 
-/**
- * *   Before you delete an endpoint, you must delete the zones that are added to the endpoint.
- * *   **DeleteVpcEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](~~183568~~) operation to check whether the endpoint is deleted.
- *     *   If the endpoint is in the **Deleting** state, the endpoint is being deleted.
- *     *   If the endpoint cannot be queried, the endpoint is deleted.
- *
- * @param request DeleteVpcEndpointRequest
- * @return DeleteVpcEndpointResponse
- */
+// Summary:
+//
+// Deletes an endpoint.
+//
+// Description:
+//
+//   Before you delete an endpoint, you must delete the zones that are added to the endpoint.
+//
+// 	- **DeleteVpcEndpoint*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to check whether the endpoint is deleted.
+//
+//     	- If the endpoint is in the **Deleting*	- state, the endpoint is being deleted.
+//
+//     	- If the endpoint cannot be queried, the endpoint is deleted.
+//
+// @param request - DeleteVpcEndpointRequest
+//
+// @return DeleteVpcEndpointResponse
 func (client *Client) DeleteVpcEndpoint(request *DeleteVpcEndpointRequest) (_result *DeleteVpcEndpointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteVpcEndpointResponse{}
@@ -7126,17 +9534,27 @@ func (client *Client) DeleteVpcEndpoint(request *DeleteVpcEndpointRequest) (_res
 	return _result, _err
 }
 
-/**
- * *   Before you delete an endpoint service, you must disconnect the endpoint from the endpoint service and remove the service resources.
- * *   **DeleteVpcEndpointService** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](~~183542~~) operation to check whether the endpoint service is deleted.
- *     *   If the endpoint service is in the **Deleting** state, the endpoint service is being deleted.
- *     *   If the endpoint service cannot be queried, the endpoint service is deleted.
- * *   You cannot repeatedly call the **DeleteVpcEndpointService** operation to delete an endpoint service that belongs to an Alibaba Cloud account within a specified period of time.
- *
- * @param request DeleteVpcEndpointServiceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteVpcEndpointServiceResponse
- */
+// Summary:
+//
+// Deletes an endpoint service.
+//
+// Description:
+//
+//   Before you delete an endpoint service, you must disconnect the endpoint from the endpoint service and remove the service resources.
+//
+// 	- **DeleteVpcEndpointService*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/183542.html) operation to check whether the endpoint service is deleted.
+//
+//     	- If the endpoint service is in the **Deleting*	- state, the endpoint service is being deleted.
+//
+//     	- If the endpoint service cannot be queried, the endpoint service is deleted.
+//
+// 	- You cannot repeatedly call the **DeleteVpcEndpointService*	- operation to delete an endpoint service that belongs to an Alibaba Cloud account within a specified period of time.
+//
+// @param request - DeleteVpcEndpointServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteVpcEndpointServiceResponse
 func (client *Client) DeleteVpcEndpointServiceWithOptions(request *DeleteVpcEndpointServiceRequest, runtime *util.RuntimeOptions) (_result *DeleteVpcEndpointServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7186,16 +9604,25 @@ func (client *Client) DeleteVpcEndpointServiceWithOptions(request *DeleteVpcEndp
 	return _result, _err
 }
 
-/**
- * *   Before you delete an endpoint service, you must disconnect the endpoint from the endpoint service and remove the service resources.
- * *   **DeleteVpcEndpointService** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](~~183542~~) operation to check whether the endpoint service is deleted.
- *     *   If the endpoint service is in the **Deleting** state, the endpoint service is being deleted.
- *     *   If the endpoint service cannot be queried, the endpoint service is deleted.
- * *   You cannot repeatedly call the **DeleteVpcEndpointService** operation to delete an endpoint service that belongs to an Alibaba Cloud account within a specified period of time.
- *
- * @param request DeleteVpcEndpointServiceRequest
- * @return DeleteVpcEndpointServiceResponse
- */
+// Summary:
+//
+// Deletes an endpoint service.
+//
+// Description:
+//
+//   Before you delete an endpoint service, you must disconnect the endpoint from the endpoint service and remove the service resources.
+//
+// 	- **DeleteVpcEndpointService*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/183542.html) operation to check whether the endpoint service is deleted.
+//
+//     	- If the endpoint service is in the **Deleting*	- state, the endpoint service is being deleted.
+//
+//     	- If the endpoint service cannot be queried, the endpoint service is deleted.
+//
+// 	- You cannot repeatedly call the **DeleteVpcEndpointService*	- operation to delete an endpoint service that belongs to an Alibaba Cloud account within a specified period of time.
+//
+// @param request - DeleteVpcEndpointServiceRequest
+//
+// @return DeleteVpcEndpointServiceResponse
 func (client *Client) DeleteVpcEndpointService(request *DeleteVpcEndpointServiceRequest) (_result *DeleteVpcEndpointServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteVpcEndpointServiceResponse{}
@@ -7207,6 +9634,15 @@ func (client *Client) DeleteVpcEndpointService(request *DeleteVpcEndpointService
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries available regions and zones.
+//
+// @param request - DescribeRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7244,6 +9680,13 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries available regions and zones.
+//
+// @param request - DescribeRegionsRequest
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRegionsResponse{}
@@ -7255,6 +9698,15 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of zones in a specified region.
+//
+// @param request - DescribeZonesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeZonesResponse
 func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, runtime *util.RuntimeOptions) (_result *DescribeZonesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7292,6 +9744,13 @@ func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of zones in a specified region.
+//
+// @param request - DescribeZonesRequest
+//
+// @return DescribeZonesResponse
 func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *DescribeZonesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeZonesResponse{}
@@ -7303,14 +9762,21 @@ func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *Des
 	return _result, _err
 }
 
-/**
- * *   Before you remove a service resource from an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](~~469330~~) operation to query the status of the endpoint service.
- * *   You cannot repeatedly call the **DetachResourceFromVpcEndpointService** operation to remove a service resource from an endpoint service within a specified period of time.
- *
- * @param request DetachResourceFromVpcEndpointServiceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DetachResourceFromVpcEndpointServiceResponse
- */
+// Summary:
+//
+// Removes a service resource from an endpoint service.
+//
+// Description:
+//
+//   Before you remove a service resource from an endpoint service, make sure that the endpoint service is in the **Active*	- state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
+//
+// 	- You cannot repeatedly call the **DetachResourceFromVpcEndpointService*	- operation to remove a service resource from an endpoint service within a specified period of time.
+//
+// @param request - DetachResourceFromVpcEndpointServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachResourceFromVpcEndpointServiceResponse
 func (client *Client) DetachResourceFromVpcEndpointServiceWithOptions(request *DetachResourceFromVpcEndpointServiceRequest, runtime *util.RuntimeOptions) (_result *DetachResourceFromVpcEndpointServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7372,13 +9838,19 @@ func (client *Client) DetachResourceFromVpcEndpointServiceWithOptions(request *D
 	return _result, _err
 }
 
-/**
- * *   Before you remove a service resource from an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](~~469330~~) operation to query the status of the endpoint service.
- * *   You cannot repeatedly call the **DetachResourceFromVpcEndpointService** operation to remove a service resource from an endpoint service within a specified period of time.
- *
- * @param request DetachResourceFromVpcEndpointServiceRequest
- * @return DetachResourceFromVpcEndpointServiceResponse
- */
+// Summary:
+//
+// Removes a service resource from an endpoint service.
+//
+// Description:
+//
+//   Before you remove a service resource from an endpoint service, make sure that the endpoint service is in the **Active*	- state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
+//
+// 	- You cannot repeatedly call the **DetachResourceFromVpcEndpointService*	- operation to remove a service resource from an endpoint service within a specified period of time.
+//
+// @param request - DetachResourceFromVpcEndpointServiceRequest
+//
+// @return DetachResourceFromVpcEndpointServiceResponse
 func (client *Client) DetachResourceFromVpcEndpointService(request *DetachResourceFromVpcEndpointServiceRequest) (_result *DetachResourceFromVpcEndpointServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DetachResourceFromVpcEndpointServiceResponse{}
@@ -7390,16 +9862,25 @@ func (client *Client) DetachResourceFromVpcEndpointService(request *DetachResour
 	return _result, _err
 }
 
-/**
- * *   **DetachSecurityGroupFromVpcEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpoints](~~183558~~) to check whether the endpoint is disassociated from the security group.
- *     *   If the endpoint is in the **Pending** state, the endpoint is being disassociated from the security group.
- *     *   If you cannot query the endpoint in the security group, the endpoint is disassociated from the security group.
- * *   You cannot repeatedly call the **DetachSecurityGroupFromVpcEndpoint** operation to disassociate an endpoint from a security group within a specified period of time.
- *
- * @param request DetachSecurityGroupFromVpcEndpointRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DetachSecurityGroupFromVpcEndpointResponse
- */
+// Summary:
+//
+// Disassociates an endpoint from a security group.
+//
+// Description:
+//
+//   **DetachSecurityGroupFromVpcEndpoint*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpoints](https://help.aliyun.com/document_detail/183558.html) to check whether the endpoint is disassociated from the security group.
+//
+//     	- If the endpoint is in the **Pending*	- state, the endpoint is being disassociated from the security group.
+//
+//     	- If you cannot query the endpoint in the security group, the endpoint is disassociated from the security group.
+//
+// 	- You cannot repeatedly call the **DetachSecurityGroupFromVpcEndpoint*	- operation to disassociate an endpoint from a security group within a specified period of time.
+//
+// @param request - DetachSecurityGroupFromVpcEndpointRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachSecurityGroupFromVpcEndpointResponse
 func (client *Client) DetachSecurityGroupFromVpcEndpointWithOptions(request *DetachSecurityGroupFromVpcEndpointRequest, runtime *util.RuntimeOptions) (_result *DetachSecurityGroupFromVpcEndpointResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7453,15 +9934,23 @@ func (client *Client) DetachSecurityGroupFromVpcEndpointWithOptions(request *Det
 	return _result, _err
 }
 
-/**
- * *   **DetachSecurityGroupFromVpcEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpoints](~~183558~~) to check whether the endpoint is disassociated from the security group.
- *     *   If the endpoint is in the **Pending** state, the endpoint is being disassociated from the security group.
- *     *   If you cannot query the endpoint in the security group, the endpoint is disassociated from the security group.
- * *   You cannot repeatedly call the **DetachSecurityGroupFromVpcEndpoint** operation to disassociate an endpoint from a security group within a specified period of time.
- *
- * @param request DetachSecurityGroupFromVpcEndpointRequest
- * @return DetachSecurityGroupFromVpcEndpointResponse
- */
+// Summary:
+//
+// Disassociates an endpoint from a security group.
+//
+// Description:
+//
+//   **DetachSecurityGroupFromVpcEndpoint*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpoints](https://help.aliyun.com/document_detail/183558.html) to check whether the endpoint is disassociated from the security group.
+//
+//     	- If the endpoint is in the **Pending*	- state, the endpoint is being disassociated from the security group.
+//
+//     	- If you cannot query the endpoint in the security group, the endpoint is disassociated from the security group.
+//
+// 	- You cannot repeatedly call the **DetachSecurityGroupFromVpcEndpoint*	- operation to disassociate an endpoint from a security group within a specified period of time.
+//
+// @param request - DetachSecurityGroupFromVpcEndpointRequest
+//
+// @return DetachSecurityGroupFromVpcEndpointResponse
 func (client *Client) DetachSecurityGroupFromVpcEndpoint(request *DetachSecurityGroupFromVpcEndpointRequest) (_result *DetachSecurityGroupFromVpcEndpointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DetachSecurityGroupFromVpcEndpointResponse{}
@@ -7473,16 +9962,25 @@ func (client *Client) DetachSecurityGroupFromVpcEndpoint(request *DetachSecurity
 	return _result, _err
 }
 
-/**
- * *   **DisableVpcEndpointConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](~~183568~~) operation to query the state of the endpoint connection.
- *     *   If the endpoint connection is in the **Disconnecting** state, the endpoint is being disconnected from the endpoint service.
- *     *   If the endpoint connection is in the **Disconnected** state, the endpoint is disconnected from the endpoint service.
- * *   You cannot repeatedly call the **DisableVpcEndpointConnection** operation to allow an endpoint service to reject a connection request from an endpoint within a specified period of time.
- *
- * @param request DisableVpcEndpointConnectionRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DisableVpcEndpointConnectionResponse
- */
+// Summary:
+//
+// Rejects a connection request from an endpoint.
+//
+// Description:
+//
+//   **DisableVpcEndpointConnection*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to query the state of the endpoint connection.
+//
+//     	- If the endpoint connection is in the **Disconnecting*	- state, the endpoint is being disconnected from the endpoint service.
+//
+//     	- If the endpoint connection is in the **Disconnected*	- state, the endpoint is disconnected from the endpoint service.
+//
+// 	- You cannot repeatedly call the **DisableVpcEndpointConnection*	- operation to allow an endpoint service to reject a connection request from an endpoint within a specified period of time.
+//
+// @param request - DisableVpcEndpointConnectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableVpcEndpointConnectionResponse
 func (client *Client) DisableVpcEndpointConnectionWithOptions(request *DisableVpcEndpointConnectionRequest, runtime *util.RuntimeOptions) (_result *DisableVpcEndpointConnectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7536,15 +10034,23 @@ func (client *Client) DisableVpcEndpointConnectionWithOptions(request *DisableVp
 	return _result, _err
 }
 
-/**
- * *   **DisableVpcEndpointConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](~~183568~~) operation to query the state of the endpoint connection.
- *     *   If the endpoint connection is in the **Disconnecting** state, the endpoint is being disconnected from the endpoint service.
- *     *   If the endpoint connection is in the **Disconnected** state, the endpoint is disconnected from the endpoint service.
- * *   You cannot repeatedly call the **DisableVpcEndpointConnection** operation to allow an endpoint service to reject a connection request from an endpoint within a specified period of time.
- *
- * @param request DisableVpcEndpointConnectionRequest
- * @return DisableVpcEndpointConnectionResponse
- */
+// Summary:
+//
+// Rejects a connection request from an endpoint.
+//
+// Description:
+//
+//   **DisableVpcEndpointConnection*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to query the state of the endpoint connection.
+//
+//     	- If the endpoint connection is in the **Disconnecting*	- state, the endpoint is being disconnected from the endpoint service.
+//
+//     	- If the endpoint connection is in the **Disconnected*	- state, the endpoint is disconnected from the endpoint service.
+//
+// 	- You cannot repeatedly call the **DisableVpcEndpointConnection*	- operation to allow an endpoint service to reject a connection request from an endpoint within a specified period of time.
+//
+// @param request - DisableVpcEndpointConnectionRequest
+//
+// @return DisableVpcEndpointConnectionResponse
 func (client *Client) DisableVpcEndpointConnection(request *DisableVpcEndpointConnectionRequest) (_result *DisableVpcEndpointConnectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableVpcEndpointConnectionResponse{}
@@ -7556,17 +10062,27 @@ func (client *Client) DisableVpcEndpointConnection(request *DisableVpcEndpointCo
 	return _result, _err
 }
 
-/**
- * *   You can call this operation only when the state of the endpoint is **Connected** and the state of the zone associated with the endpoint is **Connected** or **Migrated**.
- * *   **DisableVpcEndpointZoneConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](~~183560~~) operation to query the status of the task.
- *     *   If the zone is in the **Disconnecting** state, the task is running.
- *     *   If the zone is in the **Disconnected** state, the task is successful.
- * *   You cannot repeatedly call the **DisableVpcEndpointZoneConnection** operation to allow an endpoint service to reject a connection request from the endpoint in the zone within a specified period of time.
- *
- * @param request DisableVpcEndpointZoneConnectionRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DisableVpcEndpointZoneConnectionResponse
- */
+// Summary:
+//
+// Disconnects an endpoint from a connection in the specified zone.
+//
+// Description:
+//
+//   You can call this operation only when the state of the endpoint is **Connected*	- and the state of the zone associated with the endpoint is **Connected*	- or **Migrated**.
+//
+// 	- **DisableVpcEndpointZoneConnection*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to query the status of the task.
+//
+//     	- If the zone is in the **Disconnecting*	- state, the task is running.
+//
+//     	- If the zone is in the **Disconnected*	- state, the task is successful.
+//
+// 	- You cannot repeatedly call the **DisableVpcEndpointZoneConnection*	- operation to allow an endpoint service to reject a connection request from the endpoint in the zone within a specified period of time.
+//
+// @param request - DisableVpcEndpointZoneConnectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableVpcEndpointZoneConnectionResponse
 func (client *Client) DisableVpcEndpointZoneConnectionWithOptions(request *DisableVpcEndpointZoneConnectionRequest, runtime *util.RuntimeOptions) (_result *DisableVpcEndpointZoneConnectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7628,16 +10144,25 @@ func (client *Client) DisableVpcEndpointZoneConnectionWithOptions(request *Disab
 	return _result, _err
 }
 
-/**
- * *   You can call this operation only when the state of the endpoint is **Connected** and the state of the zone associated with the endpoint is **Connected** or **Migrated**.
- * *   **DisableVpcEndpointZoneConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](~~183560~~) operation to query the status of the task.
- *     *   If the zone is in the **Disconnecting** state, the task is running.
- *     *   If the zone is in the **Disconnected** state, the task is successful.
- * *   You cannot repeatedly call the **DisableVpcEndpointZoneConnection** operation to allow an endpoint service to reject a connection request from the endpoint in the zone within a specified period of time.
- *
- * @param request DisableVpcEndpointZoneConnectionRequest
- * @return DisableVpcEndpointZoneConnectionResponse
- */
+// Summary:
+//
+// Disconnects an endpoint from a connection in the specified zone.
+//
+// Description:
+//
+//   You can call this operation only when the state of the endpoint is **Connected*	- and the state of the zone associated with the endpoint is **Connected*	- or **Migrated**.
+//
+// 	- **DisableVpcEndpointZoneConnection*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to query the status of the task.
+//
+//     	- If the zone is in the **Disconnecting*	- state, the task is running.
+//
+//     	- If the zone is in the **Disconnected*	- state, the task is successful.
+//
+// 	- You cannot repeatedly call the **DisableVpcEndpointZoneConnection*	- operation to allow an endpoint service to reject a connection request from the endpoint in the zone within a specified period of time.
+//
+// @param request - DisableVpcEndpointZoneConnectionRequest
+//
+// @return DisableVpcEndpointZoneConnectionResponse
 func (client *Client) DisableVpcEndpointZoneConnection(request *DisableVpcEndpointZoneConnectionRequest) (_result *DisableVpcEndpointZoneConnectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableVpcEndpointZoneConnectionResponse{}
@@ -7649,16 +10174,25 @@ func (client *Client) DisableVpcEndpointZoneConnection(request *DisableVpcEndpoi
 	return _result, _err
 }
 
-/**
- * *   **EnableVpcEndpointConnection** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](~~183568~~) operation to query the state of the endpoint connection.
- *     *   If the state is **Connecting**, the endpoint connection is being established.
- *     *   If the state is **Connected**, the endpoint connection is established.
- * *   You cannot repeatedly call the **EnableVpcEndpointConnection** operation to allow an endpoint service of an Alibaba Cloud account to accept a connection request from an endpoint within a specified period of time.
- *
- * @param request EnableVpcEndpointConnectionRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return EnableVpcEndpointConnectionResponse
- */
+// Summary:
+//
+// Accepts connection requests from an endpoint.
+//
+// Description:
+//
+//   **EnableVpcEndpointConnection*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to query the state of the endpoint connection.
+//
+//     	- If the state is **Connecting**, the endpoint connection is being established.
+//
+//     	- If the state is **Connected**, the endpoint connection is established.
+//
+// 	- You cannot repeatedly call the **EnableVpcEndpointConnection*	- operation to allow an endpoint service of an Alibaba Cloud account to accept a connection request from an endpoint within a specified period of time.
+//
+// @param request - EnableVpcEndpointConnectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableVpcEndpointConnectionResponse
 func (client *Client) EnableVpcEndpointConnectionWithOptions(request *EnableVpcEndpointConnectionRequest, runtime *util.RuntimeOptions) (_result *EnableVpcEndpointConnectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7716,15 +10250,23 @@ func (client *Client) EnableVpcEndpointConnectionWithOptions(request *EnableVpcE
 	return _result, _err
 }
 
-/**
- * *   **EnableVpcEndpointConnection** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](~~183568~~) operation to query the state of the endpoint connection.
- *     *   If the state is **Connecting**, the endpoint connection is being established.
- *     *   If the state is **Connected**, the endpoint connection is established.
- * *   You cannot repeatedly call the **EnableVpcEndpointConnection** operation to allow an endpoint service of an Alibaba Cloud account to accept a connection request from an endpoint within a specified period of time.
- *
- * @param request EnableVpcEndpointConnectionRequest
- * @return EnableVpcEndpointConnectionResponse
- */
+// Summary:
+//
+// Accepts connection requests from an endpoint.
+//
+// Description:
+//
+//   **EnableVpcEndpointConnection*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointAttribute](https://help.aliyun.com/document_detail/183568.html) operation to query the state of the endpoint connection.
+//
+//     	- If the state is **Connecting**, the endpoint connection is being established.
+//
+//     	- If the state is **Connected**, the endpoint connection is established.
+//
+// 	- You cannot repeatedly call the **EnableVpcEndpointConnection*	- operation to allow an endpoint service of an Alibaba Cloud account to accept a connection request from an endpoint within a specified period of time.
+//
+// @param request - EnableVpcEndpointConnectionRequest
+//
+// @return EnableVpcEndpointConnectionResponse
 func (client *Client) EnableVpcEndpointConnection(request *EnableVpcEndpointConnectionRequest) (_result *EnableVpcEndpointConnectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableVpcEndpointConnectionResponse{}
@@ -7736,17 +10278,27 @@ func (client *Client) EnableVpcEndpointConnection(request *EnableVpcEndpointConn
 	return _result, _err
 }
 
-/**
- * *   You can call this operation only when the state of the endpoint is **Connected** and the state of the associated zone is **Disconnected**.
- * *   **EnableVpcEndpointZoneConnection** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](~~183560~~) operation to check whether the endpoint service accepts a connection request from the endpoint in the associated zone.
- *     *   If the zone is in the **Connecting** state, the endpoint service is accepting the connection request from the endpoint.
- *     *   If the zone is in the **Connected** state, the endpoint service has accepted the connection request from the endpoint.
- * *   You cannot repeatedly call the **EnableVpcEndpointZoneConnection** operation to allow an endpoint service to accept a connection request from an endpoint in the associated zone within a specified period of time.
- *
- * @param request EnableVpcEndpointZoneConnectionRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return EnableVpcEndpointZoneConnectionResponse
- */
+// Summary:
+//
+// Accepts a connection request from an endpoint in the specified zone.
+//
+// Description:
+//
+//   You can call this operation only when the state of the endpoint is **Connected*	- and the state of the associated zone is **Disconnected**.
+//
+// 	- **EnableVpcEndpointZoneConnection*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to check whether the endpoint service accepts a connection request from the endpoint in the associated zone.
+//
+//     	- If the zone is in the **Connecting*	- state, the endpoint service is accepting the connection request from the endpoint.
+//
+//     	- If the zone is in the **Connected*	- state, the endpoint service has accepted the connection request from the endpoint.
+//
+// 	- You cannot repeatedly call the **EnableVpcEndpointZoneConnection*	- operation to allow an endpoint service to accept a connection request from an endpoint in the associated zone within a specified period of time.
+//
+// @param request - EnableVpcEndpointZoneConnectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableVpcEndpointZoneConnectionResponse
 func (client *Client) EnableVpcEndpointZoneConnectionWithOptions(request *EnableVpcEndpointZoneConnectionRequest, runtime *util.RuntimeOptions) (_result *EnableVpcEndpointZoneConnectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7804,16 +10356,25 @@ func (client *Client) EnableVpcEndpointZoneConnectionWithOptions(request *Enable
 	return _result, _err
 }
 
-/**
- * *   You can call this operation only when the state of the endpoint is **Connected** and the state of the associated zone is **Disconnected**.
- * *   **EnableVpcEndpointZoneConnection** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](~~183560~~) operation to check whether the endpoint service accepts a connection request from the endpoint in the associated zone.
- *     *   If the zone is in the **Connecting** state, the endpoint service is accepting the connection request from the endpoint.
- *     *   If the zone is in the **Connected** state, the endpoint service has accepted the connection request from the endpoint.
- * *   You cannot repeatedly call the **EnableVpcEndpointZoneConnection** operation to allow an endpoint service to accept a connection request from an endpoint in the associated zone within a specified period of time.
- *
- * @param request EnableVpcEndpointZoneConnectionRequest
- * @return EnableVpcEndpointZoneConnectionResponse
- */
+// Summary:
+//
+// Accepts a connection request from an endpoint in the specified zone.
+//
+// Description:
+//
+//   You can call this operation only when the state of the endpoint is **Connected*	- and the state of the associated zone is **Disconnected**.
+//
+// 	- **EnableVpcEndpointZoneConnection*	- is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to check whether the endpoint service accepts a connection request from the endpoint in the associated zone.
+//
+//     	- If the zone is in the **Connecting*	- state, the endpoint service is accepting the connection request from the endpoint.
+//
+//     	- If the zone is in the **Connected*	- state, the endpoint service has accepted the connection request from the endpoint.
+//
+// 	- You cannot repeatedly call the **EnableVpcEndpointZoneConnection*	- operation to allow an endpoint service to accept a connection request from an endpoint in the associated zone within a specified period of time.
+//
+// @param request - EnableVpcEndpointZoneConnectionRequest
+//
+// @return EnableVpcEndpointZoneConnectionResponse
 func (client *Client) EnableVpcEndpointZoneConnection(request *EnableVpcEndpointZoneConnectionRequest) (_result *EnableVpcEndpointZoneConnectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableVpcEndpointZoneConnectionResponse{}
@@ -7825,6 +10386,15 @@ func (client *Client) EnableVpcEndpointZoneConnection(request *EnableVpcEndpoint
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the attributes of an endpoint.
+//
+// @param request - GetVpcEndpointAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVpcEndpointAttributeResponse
 func (client *Client) GetVpcEndpointAttributeWithOptions(request *GetVpcEndpointAttributeRequest, runtime *util.RuntimeOptions) (_result *GetVpcEndpointAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7866,6 +10436,13 @@ func (client *Client) GetVpcEndpointAttributeWithOptions(request *GetVpcEndpoint
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the attributes of an endpoint.
+//
+// @param request - GetVpcEndpointAttributeRequest
+//
+// @return GetVpcEndpointAttributeResponse
 func (client *Client) GetVpcEndpointAttribute(request *GetVpcEndpointAttributeRequest) (_result *GetVpcEndpointAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetVpcEndpointAttributeResponse{}
@@ -7877,6 +10454,15 @@ func (client *Client) GetVpcEndpointAttribute(request *GetVpcEndpointAttributeRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the attributes of an endpoint service.
+//
+// @param request - GetVpcEndpointServiceAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVpcEndpointServiceAttributeResponse
 func (client *Client) GetVpcEndpointServiceAttributeWithOptions(request *GetVpcEndpointServiceAttributeRequest, runtime *util.RuntimeOptions) (_result *GetVpcEndpointServiceAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7918,6 +10504,13 @@ func (client *Client) GetVpcEndpointServiceAttributeWithOptions(request *GetVpcE
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the attributes of an endpoint service.
+//
+// @param request - GetVpcEndpointServiceAttributeRequest
+//
+// @return GetVpcEndpointServiceAttributeResponse
 func (client *Client) GetVpcEndpointServiceAttribute(request *GetVpcEndpointServiceAttributeRequest) (_result *GetVpcEndpointServiceAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetVpcEndpointServiceAttributeResponse{}
@@ -7929,16 +10522,25 @@ func (client *Client) GetVpcEndpointServiceAttribute(request *GetVpcEndpointServ
 	return _result, _err
 }
 
-/**
- * *   You must specify **ResourceId.N** or **Tag.N** in the request to specify the object that you want to query.
- * *   **Tag.N** is a resource tag that consists of a key-value pair (Tag.N.Key and Tag.N.Value). If you specify only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you specify only **Tag.N.Value**, an error message is returned.
- * *   If you specify **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
- * *   If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
- *
- * @param request ListTagResourcesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListTagResourcesResponse
- */
+// Summary:
+//
+// Queries the tags that are added to resources.
+//
+// Description:
+//
+//   You must specify **ResourceId.N*	- or **Tag.N*	- in the request to specify the object that you want to query.
+//
+// 	- **Tag.N*	- is a resource tag that consists of a key-value pair (Tag.N.Key and Tag.N.Value). If you specify only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you specify only **Tag.N.Value**, an error message is returned.
+//
+// 	- If you specify **Tag.N*	- and **ResourceId.N*	- to filter tags, **ResourceId.N*	- must match all specified key-value pairs.
+//
+// 	- If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
+//
+// @param request - ListTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7992,15 +10594,23 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 	return _result, _err
 }
 
-/**
- * *   You must specify **ResourceId.N** or **Tag.N** in the request to specify the object that you want to query.
- * *   **Tag.N** is a resource tag that consists of a key-value pair (Tag.N.Key and Tag.N.Value). If you specify only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you specify only **Tag.N.Value**, an error message is returned.
- * *   If you specify **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
- * *   If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
- *
- * @param request ListTagResourcesRequest
- * @return ListTagResourcesResponse
- */
+// Summary:
+//
+// Queries the tags that are added to resources.
+//
+// Description:
+//
+//   You must specify **ResourceId.N*	- or **Tag.N*	- in the request to specify the object that you want to query.
+//
+// 	- **Tag.N*	- is a resource tag that consists of a key-value pair (Tag.N.Key and Tag.N.Value). If you specify only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you specify only **Tag.N.Value**, an error message is returned.
+//
+// 	- If you specify **Tag.N*	- and **ResourceId.N*	- to filter tags, **ResourceId.N*	- must match all specified key-value pairs.
+//
+// 	- If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
+//
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagResourcesResponse{}
@@ -8012,6 +10622,15 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries endpoint connections.
+//
+// @param request - ListVpcEndpointConnectionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVpcEndpointConnectionsResponse
 func (client *Client) ListVpcEndpointConnectionsWithOptions(request *ListVpcEndpointConnectionsRequest, runtime *util.RuntimeOptions) (_result *ListVpcEndpointConnectionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8089,6 +10708,13 @@ func (client *Client) ListVpcEndpointConnectionsWithOptions(request *ListVpcEndp
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries endpoint connections.
+//
+// @param request - ListVpcEndpointConnectionsRequest
+//
+// @return ListVpcEndpointConnectionsResponse
 func (client *Client) ListVpcEndpointConnections(request *ListVpcEndpointConnectionsRequest) (_result *ListVpcEndpointConnectionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListVpcEndpointConnectionsResponse{}
@@ -8100,6 +10726,15 @@ func (client *Client) ListVpcEndpointConnections(request *ListVpcEndpointConnect
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the security groups that are associated with an endpoint.
+//
+// @param request - ListVpcEndpointSecurityGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVpcEndpointSecurityGroupsResponse
 func (client *Client) ListVpcEndpointSecurityGroupsWithOptions(request *ListVpcEndpointSecurityGroupsRequest, runtime *util.RuntimeOptions) (_result *ListVpcEndpointSecurityGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8149,6 +10784,13 @@ func (client *Client) ListVpcEndpointSecurityGroupsWithOptions(request *ListVpcE
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the security groups that are associated with an endpoint.
+//
+// @param request - ListVpcEndpointSecurityGroupsRequest
+//
+// @return ListVpcEndpointSecurityGroupsResponse
 func (client *Client) ListVpcEndpointSecurityGroups(request *ListVpcEndpointSecurityGroupsRequest) (_result *ListVpcEndpointSecurityGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListVpcEndpointSecurityGroupsResponse{}
@@ -8160,6 +10802,15 @@ func (client *Client) ListVpcEndpointSecurityGroups(request *ListVpcEndpointSecu
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the service resources that are added to an endpoint service.
+//
+// @param request - ListVpcEndpointServiceResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVpcEndpointServiceResourcesResponse
 func (client *Client) ListVpcEndpointServiceResourcesWithOptions(request *ListVpcEndpointServiceResourcesRequest, runtime *util.RuntimeOptions) (_result *ListVpcEndpointServiceResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8209,6 +10860,13 @@ func (client *Client) ListVpcEndpointServiceResourcesWithOptions(request *ListVp
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the service resources that are added to an endpoint service.
+//
+// @param request - ListVpcEndpointServiceResourcesRequest
+//
+// @return ListVpcEndpointServiceResourcesResponse
 func (client *Client) ListVpcEndpointServiceResources(request *ListVpcEndpointServiceResourcesRequest) (_result *ListVpcEndpointServiceResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListVpcEndpointServiceResourcesResponse{}
@@ -8220,6 +10878,15 @@ func (client *Client) ListVpcEndpointServiceResources(request *ListVpcEndpointSe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the whitelist of an endpoint service.
+//
+// @param request - ListVpcEndpointServiceUsersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVpcEndpointServiceUsersResponse
 func (client *Client) ListVpcEndpointServiceUsersWithOptions(request *ListVpcEndpointServiceUsersRequest, runtime *util.RuntimeOptions) (_result *ListVpcEndpointServiceUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8277,6 +10944,13 @@ func (client *Client) ListVpcEndpointServiceUsersWithOptions(request *ListVpcEnd
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the whitelist of an endpoint service.
+//
+// @param request - ListVpcEndpointServiceUsersRequest
+//
+// @return ListVpcEndpointServiceUsersResponse
 func (client *Client) ListVpcEndpointServiceUsers(request *ListVpcEndpointServiceUsersRequest) (_result *ListVpcEndpointServiceUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListVpcEndpointServiceUsersResponse{}
@@ -8288,6 +10962,15 @@ func (client *Client) ListVpcEndpointServiceUsers(request *ListVpcEndpointServic
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of endpoint services.
+//
+// @param request - ListVpcEndpointServicesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVpcEndpointServicesResponse
 func (client *Client) ListVpcEndpointServicesWithOptions(request *ListVpcEndpointServicesRequest, runtime *util.RuntimeOptions) (_result *ListVpcEndpointServicesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8373,6 +11056,13 @@ func (client *Client) ListVpcEndpointServicesWithOptions(request *ListVpcEndpoin
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of endpoint services.
+//
+// @param request - ListVpcEndpointServicesRequest
+//
+// @return ListVpcEndpointServicesResponse
 func (client *Client) ListVpcEndpointServices(request *ListVpcEndpointServicesRequest) (_result *ListVpcEndpointServicesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListVpcEndpointServicesResponse{}
@@ -8384,6 +11074,15 @@ func (client *Client) ListVpcEndpointServices(request *ListVpcEndpointServicesRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of endpoint services that can be associated with the endpoint created within the current account.
+//
+// @param request - ListVpcEndpointServicesByEndUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVpcEndpointServicesByEndUserResponse
 func (client *Client) ListVpcEndpointServicesByEndUserWithOptions(request *ListVpcEndpointServicesByEndUserRequest, runtime *util.RuntimeOptions) (_result *ListVpcEndpointServicesByEndUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8449,6 +11148,13 @@ func (client *Client) ListVpcEndpointServicesByEndUserWithOptions(request *ListV
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of endpoint services that can be associated with the endpoint created within the current account.
+//
+// @param request - ListVpcEndpointServicesByEndUserRequest
+//
+// @return ListVpcEndpointServicesByEndUserResponse
 func (client *Client) ListVpcEndpointServicesByEndUser(request *ListVpcEndpointServicesByEndUserRequest) (_result *ListVpcEndpointServicesByEndUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListVpcEndpointServicesByEndUserResponse{}
@@ -8460,6 +11166,15 @@ func (client *Client) ListVpcEndpointServicesByEndUser(request *ListVpcEndpointS
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the zones of an endpoint.
+//
+// @param request - ListVpcEndpointZonesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVpcEndpointZonesResponse
 func (client *Client) ListVpcEndpointZonesWithOptions(request *ListVpcEndpointZonesRequest, runtime *util.RuntimeOptions) (_result *ListVpcEndpointZonesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8509,6 +11224,13 @@ func (client *Client) ListVpcEndpointZonesWithOptions(request *ListVpcEndpointZo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the zones of an endpoint.
+//
+// @param request - ListVpcEndpointZonesRequest
+//
+// @return ListVpcEndpointZonesResponse
 func (client *Client) ListVpcEndpointZones(request *ListVpcEndpointZonesRequest) (_result *ListVpcEndpointZonesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListVpcEndpointZonesResponse{}
@@ -8520,6 +11242,15 @@ func (client *Client) ListVpcEndpointZones(request *ListVpcEndpointZonesRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of endpoints.
+//
+// @param request - ListVpcEndpointsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVpcEndpointsResponse
 func (client *Client) ListVpcEndpointsWithOptions(request *ListVpcEndpointsRequest, runtime *util.RuntimeOptions) (_result *ListVpcEndpointsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8601,6 +11332,13 @@ func (client *Client) ListVpcEndpointsWithOptions(request *ListVpcEndpointsReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of endpoints.
+//
+// @param request - ListVpcEndpointsRequest
+//
+// @return ListVpcEndpointsResponse
 func (client *Client) ListVpcEndpoints(request *ListVpcEndpointsRequest) (_result *ListVpcEndpointsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListVpcEndpointsResponse{}
@@ -8612,6 +11350,15 @@ func (client *Client) ListVpcEndpoints(request *ListVpcEndpointsRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Activates PrivateLink.
+//
+// @param request - OpenPrivateLinkServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OpenPrivateLinkServiceResponse
 func (client *Client) OpenPrivateLinkServiceWithOptions(request *OpenPrivateLinkServiceRequest, runtime *util.RuntimeOptions) (_result *OpenPrivateLinkServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8645,6 +11392,13 @@ func (client *Client) OpenPrivateLinkServiceWithOptions(request *OpenPrivateLink
 	return _result, _err
 }
 
+// Summary:
+//
+// Activates PrivateLink.
+//
+// @param request - OpenPrivateLinkServiceRequest
+//
+// @return OpenPrivateLinkServiceResponse
 func (client *Client) OpenPrivateLinkService(request *OpenPrivateLinkServiceRequest) (_result *OpenPrivateLinkServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenPrivateLinkServiceResponse{}
@@ -8656,14 +11410,21 @@ func (client *Client) OpenPrivateLinkService(request *OpenPrivateLinkServiceRequ
 	return _result, _err
 }
 
-/**
- * *   Before you remove an account ID from the whitelist of an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](~~469330~~) operation to query the status of the endpoint service.
- * *   You cannot repeatedly call the **RemoveUserFromVpcEndpointService** operation to remove the ID of an Alibaba Cloud account from the whitelist of an endpoint service within a specified period of time.
- *
- * @param request RemoveUserFromVpcEndpointServiceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return RemoveUserFromVpcEndpointServiceResponse
- */
+// Summary:
+//
+// Removes an account ID from the whitelist of an endpoint service.
+//
+// Description:
+//
+//   Before you remove an account ID from the whitelist of an endpoint service, make sure that the endpoint service is in the **Active*	- state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
+//
+// 	- You cannot repeatedly call the **RemoveUserFromVpcEndpointService*	- operation to remove the ID of an Alibaba Cloud account from the whitelist of an endpoint service within a specified period of time.
+//
+// @param request - RemoveUserFromVpcEndpointServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveUserFromVpcEndpointServiceResponse
 func (client *Client) RemoveUserFromVpcEndpointServiceWithOptions(request *RemoveUserFromVpcEndpointServiceRequest, runtime *util.RuntimeOptions) (_result *RemoveUserFromVpcEndpointServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8721,13 +11482,19 @@ func (client *Client) RemoveUserFromVpcEndpointServiceWithOptions(request *Remov
 	return _result, _err
 }
 
-/**
- * *   Before you remove an account ID from the whitelist of an endpoint service, make sure that the endpoint service is in the **Active** state. You can call the [GetVpcEndpointServiceAttribute](~~469330~~) operation to query the status of the endpoint service.
- * *   You cannot repeatedly call the **RemoveUserFromVpcEndpointService** operation to remove the ID of an Alibaba Cloud account from the whitelist of an endpoint service within a specified period of time.
- *
- * @param request RemoveUserFromVpcEndpointServiceRequest
- * @return RemoveUserFromVpcEndpointServiceResponse
- */
+// Summary:
+//
+// Removes an account ID from the whitelist of an endpoint service.
+//
+// Description:
+//
+//   Before you remove an account ID from the whitelist of an endpoint service, make sure that the endpoint service is in the **Active*	- state. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to query the status of the endpoint service.
+//
+// 	- You cannot repeatedly call the **RemoveUserFromVpcEndpointService*	- operation to remove the ID of an Alibaba Cloud account from the whitelist of an endpoint service within a specified period of time.
+//
+// @param request - RemoveUserFromVpcEndpointServiceRequest
+//
+// @return RemoveUserFromVpcEndpointServiceResponse
 func (client *Client) RemoveUserFromVpcEndpointService(request *RemoveUserFromVpcEndpointServiceRequest) (_result *RemoveUserFromVpcEndpointServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveUserFromVpcEndpointServiceResponse{}
@@ -8739,16 +11506,25 @@ func (client *Client) RemoveUserFromVpcEndpointService(request *RemoveUserFromVp
 	return _result, _err
 }
 
-/**
- * *   **RemoveZoneFromVpcEndpoint** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](~~183560~~) operation to check whether the zone of the endpoint is deleted.
- *     *   If the zone of the endpoint is in the **Deleting** state, the zone is being deleted.
- *     *   If the zone cannot be queried, the zone is deleted.
- * *   You cannot repeatedly call the **RemoveZoneFromVpcEndpoint** operation to delete a zone of an endpoint within a specified period of time.
- *
- * @param request RemoveZoneFromVpcEndpointRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return RemoveZoneFromVpcEndpointResponse
- */
+// Summary:
+//
+// Deletes a zone of an endpoint.
+//
+// Description:
+//
+//   **RemoveZoneFromVpcEndpoint*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to check whether the zone of the endpoint is deleted.
+//
+//     	- If the zone of the endpoint is in the **Deleting*	- state, the zone is being deleted.
+//
+//     	- If the zone cannot be queried, the zone is deleted.
+//
+// 	- You cannot repeatedly call the **RemoveZoneFromVpcEndpoint*	- operation to delete a zone of an endpoint within a specified period of time.
+//
+// @param request - RemoveZoneFromVpcEndpointRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveZoneFromVpcEndpointResponse
 func (client *Client) RemoveZoneFromVpcEndpointWithOptions(request *RemoveZoneFromVpcEndpointRequest, runtime *util.RuntimeOptions) (_result *RemoveZoneFromVpcEndpointResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8802,15 +11578,23 @@ func (client *Client) RemoveZoneFromVpcEndpointWithOptions(request *RemoveZoneFr
 	return _result, _err
 }
 
-/**
- * *   **RemoveZoneFromVpcEndpoint** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](~~183560~~) operation to check whether the zone of the endpoint is deleted.
- *     *   If the zone of the endpoint is in the **Deleting** state, the zone is being deleted.
- *     *   If the zone cannot be queried, the zone is deleted.
- * *   You cannot repeatedly call the **RemoveZoneFromVpcEndpoint** operation to delete a zone of an endpoint within a specified period of time.
- *
- * @param request RemoveZoneFromVpcEndpointRequest
- * @return RemoveZoneFromVpcEndpointResponse
- */
+// Summary:
+//
+// Deletes a zone of an endpoint.
+//
+// Description:
+//
+//   **RemoveZoneFromVpcEndpoint*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListVpcEndpointZones](https://help.aliyun.com/document_detail/183560.html) operation to check whether the zone of the endpoint is deleted.
+//
+//     	- If the zone of the endpoint is in the **Deleting*	- state, the zone is being deleted.
+//
+//     	- If the zone cannot be queried, the zone is deleted.
+//
+// 	- You cannot repeatedly call the **RemoveZoneFromVpcEndpoint*	- operation to delete a zone of an endpoint within a specified period of time.
+//
+// @param request - RemoveZoneFromVpcEndpointRequest
+//
+// @return RemoveZoneFromVpcEndpointResponse
 func (client *Client) RemoveZoneFromVpcEndpoint(request *RemoveZoneFromVpcEndpointRequest) (_result *RemoveZoneFromVpcEndpointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveZoneFromVpcEndpointResponse{}
@@ -8822,13 +11606,19 @@ func (client *Client) RemoveZoneFromVpcEndpoint(request *RemoveZoneFromVpcEndpoi
 	return _result, _err
 }
 
-/**
- * > You can add up to 20 tags to an instance. Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number is reached, an error message is returned.
- *
- * @param request TagResourcesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return TagResourcesResponse
- */
+// Summary:
+//
+// Adds tags to resources. You can call this API operation to add tags to one or more endpoints or endpoint services.
+//
+// Description:
+//
+// > You can add up to 20 tags to an instance. Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number is reached, an error message is returned.
+//
+// @param request - TagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8885,12 +11675,17 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	return _result, _err
 }
 
-/**
- * > You can add up to 20 tags to an instance. Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number is reached, an error message is returned.
- *
- * @param request TagResourcesRequest
- * @return TagResourcesResponse
- */
+// Summary:
+//
+// Adds tags to resources. You can call this API operation to add tags to one or more endpoints or endpoint services.
+//
+// Description:
+//
+// > You can add up to 20 tags to an instance. Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number is reached, an error message is returned.
+//
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
 func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TagResourcesResponse{}
@@ -8902,6 +11697,15 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes tags from resources. You can call the UntagResources operation to remove tags from one or more endpoints or endpoint services.
+//
+// @param request - UntagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8966,6 +11770,13 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes tags from resources. You can call the UntagResources operation to remove tags from one or more endpoints or endpoint services.
+//
+// @param request - UntagResourcesRequest
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
@@ -8977,13 +11788,19 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	return _result, _err
 }
 
-/**
- * You cannot repeatedly call the **UpdateVpcEndpointAttribute** operation to modify the attributes of an endpoint that belongs to an Alibaba Cloud account within a specified period of time.
- *
- * @param request UpdateVpcEndpointAttributeRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateVpcEndpointAttributeResponse
- */
+// Summary:
+//
+// Modifies the attributes of an endpoint.
+//
+// Description:
+//
+// You cannot repeatedly call the **UpdateVpcEndpointAttribute*	- operation to modify the attributes of an endpoint that belongs to an Alibaba Cloud account within a specified period of time.
+//
+// @param request - UpdateVpcEndpointAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateVpcEndpointAttributeResponse
 func (client *Client) UpdateVpcEndpointAttributeWithOptions(request *UpdateVpcEndpointAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateVpcEndpointAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9008,6 +11825,10 @@ func (client *Client) UpdateVpcEndpointAttributeWithOptions(request *UpdateVpcEn
 
 	if !tea.BoolValue(util.IsUnset(request.EndpointName)) {
 		query["EndpointName"] = request.EndpointName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyDocument)) {
+		query["PolicyDocument"] = request.PolicyDocument
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -9041,12 +11862,17 @@ func (client *Client) UpdateVpcEndpointAttributeWithOptions(request *UpdateVpcEn
 	return _result, _err
 }
 
-/**
- * You cannot repeatedly call the **UpdateVpcEndpointAttribute** operation to modify the attributes of an endpoint that belongs to an Alibaba Cloud account within a specified period of time.
- *
- * @param request UpdateVpcEndpointAttributeRequest
- * @return UpdateVpcEndpointAttributeResponse
- */
+// Summary:
+//
+// Modifies the attributes of an endpoint.
+//
+// Description:
+//
+// You cannot repeatedly call the **UpdateVpcEndpointAttribute*	- operation to modify the attributes of an endpoint that belongs to an Alibaba Cloud account within a specified period of time.
+//
+// @param request - UpdateVpcEndpointAttributeRequest
+//
+// @return UpdateVpcEndpointAttributeResponse
 func (client *Client) UpdateVpcEndpointAttribute(request *UpdateVpcEndpointAttributeRequest) (_result *UpdateVpcEndpointAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateVpcEndpointAttributeResponse{}
@@ -9058,13 +11884,19 @@ func (client *Client) UpdateVpcEndpointAttribute(request *UpdateVpcEndpointAttri
 	return _result, _err
 }
 
-/**
- * You cannot repeatedly call the **UpdateVpcEndpointConnectionAttribute** operation to modify the bandwidth of an endpoint connection that belongs to an Alibaba Cloud account within a specified period of time.
- *
- * @param request UpdateVpcEndpointConnectionAttributeRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateVpcEndpointConnectionAttributeResponse
- */
+// Summary:
+//
+// Modifies the attributes of an endpoint connection.
+//
+// Description:
+//
+// You cannot repeatedly call the **UpdateVpcEndpointConnectionAttribute*	- operation to modify the bandwidth of an endpoint connection that belongs to an Alibaba Cloud account within a specified period of time.
+//
+// @param request - UpdateVpcEndpointConnectionAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateVpcEndpointConnectionAttributeResponse
 func (client *Client) UpdateVpcEndpointConnectionAttributeWithOptions(request *UpdateVpcEndpointConnectionAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateVpcEndpointConnectionAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9122,12 +11954,17 @@ func (client *Client) UpdateVpcEndpointConnectionAttributeWithOptions(request *U
 	return _result, _err
 }
 
-/**
- * You cannot repeatedly call the **UpdateVpcEndpointConnectionAttribute** operation to modify the bandwidth of an endpoint connection that belongs to an Alibaba Cloud account within a specified period of time.
- *
- * @param request UpdateVpcEndpointConnectionAttributeRequest
- * @return UpdateVpcEndpointConnectionAttributeResponse
- */
+// Summary:
+//
+// Modifies the attributes of an endpoint connection.
+//
+// Description:
+//
+// You cannot repeatedly call the **UpdateVpcEndpointConnectionAttribute*	- operation to modify the bandwidth of an endpoint connection that belongs to an Alibaba Cloud account within a specified period of time.
+//
+// @param request - UpdateVpcEndpointConnectionAttributeRequest
+//
+// @return UpdateVpcEndpointConnectionAttributeResponse
 func (client *Client) UpdateVpcEndpointConnectionAttribute(request *UpdateVpcEndpointConnectionAttributeRequest) (_result *UpdateVpcEndpointConnectionAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateVpcEndpointConnectionAttributeResponse{}
@@ -9139,13 +11976,19 @@ func (client *Client) UpdateVpcEndpointConnectionAttribute(request *UpdateVpcEnd
 	return _result, _err
 }
 
-/**
- * You cannot repeatedly call the **UpdateVpcEndpointServiceAttribute** operation to modify the attributes of an endpoint service that belongs to an Alibaba Cloud account within a specified period of time.
- *
- * @param request UpdateVpcEndpointServiceAttributeRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateVpcEndpointServiceAttributeResponse
- */
+// Summary:
+//
+// Modifies the attributes of an endpoint service.
+//
+// Description:
+//
+// You cannot repeatedly call the **UpdateVpcEndpointServiceAttribute*	- operation to modify the attributes of an endpoint service that belongs to an Alibaba Cloud account within a specified period of time.
+//
+// @param request - UpdateVpcEndpointServiceAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateVpcEndpointServiceAttributeResponse
 func (client *Client) UpdateVpcEndpointServiceAttributeWithOptions(request *UpdateVpcEndpointServiceAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateVpcEndpointServiceAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9215,12 +12058,17 @@ func (client *Client) UpdateVpcEndpointServiceAttributeWithOptions(request *Upda
 	return _result, _err
 }
 
-/**
- * You cannot repeatedly call the **UpdateVpcEndpointServiceAttribute** operation to modify the attributes of an endpoint service that belongs to an Alibaba Cloud account within a specified period of time.
- *
- * @param request UpdateVpcEndpointServiceAttributeRequest
- * @return UpdateVpcEndpointServiceAttributeResponse
- */
+// Summary:
+//
+// Modifies the attributes of an endpoint service.
+//
+// Description:
+//
+// You cannot repeatedly call the **UpdateVpcEndpointServiceAttribute*	- operation to modify the attributes of an endpoint service that belongs to an Alibaba Cloud account within a specified period of time.
+//
+// @param request - UpdateVpcEndpointServiceAttributeRequest
+//
+// @return UpdateVpcEndpointServiceAttributeResponse
 func (client *Client) UpdateVpcEndpointServiceAttribute(request *UpdateVpcEndpointServiceAttributeRequest) (_result *UpdateVpcEndpointServiceAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateVpcEndpointServiceAttributeResponse{}
@@ -9232,13 +12080,19 @@ func (client *Client) UpdateVpcEndpointServiceAttribute(request *UpdateVpcEndpoi
 	return _result, _err
 }
 
-/**
- * You cannot repeatedly call the **UpdateVpcEndpointServiceResourceAttribute** operation to modify the attributes of a service resource that is added to an endpoint service within a specified period of time.
- *
- * @param request UpdateVpcEndpointServiceResourceAttributeRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateVpcEndpointServiceResourceAttributeResponse
- */
+// Summary:
+//
+// Modifies the attributes of a service resource that is added to an endpoint service.
+//
+// Description:
+//
+// You cannot repeatedly call the **UpdateVpcEndpointServiceResourceAttribute*	- operation to modify the attributes of a service resource that is added to an endpoint service within a specified period of time.
+//
+// @param request - UpdateVpcEndpointServiceResourceAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateVpcEndpointServiceResourceAttributeResponse
 func (client *Client) UpdateVpcEndpointServiceResourceAttributeWithOptions(request *UpdateVpcEndpointServiceResourceAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateVpcEndpointServiceResourceAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9300,12 +12154,17 @@ func (client *Client) UpdateVpcEndpointServiceResourceAttributeWithOptions(reque
 	return _result, _err
 }
 
-/**
- * You cannot repeatedly call the **UpdateVpcEndpointServiceResourceAttribute** operation to modify the attributes of a service resource that is added to an endpoint service within a specified period of time.
- *
- * @param request UpdateVpcEndpointServiceResourceAttributeRequest
- * @return UpdateVpcEndpointServiceResourceAttributeResponse
- */
+// Summary:
+//
+// Modifies the attributes of a service resource that is added to an endpoint service.
+//
+// Description:
+//
+// You cannot repeatedly call the **UpdateVpcEndpointServiceResourceAttribute*	- operation to modify the attributes of a service resource that is added to an endpoint service within a specified period of time.
+//
+// @param request - UpdateVpcEndpointServiceResourceAttributeRequest
+//
+// @return UpdateVpcEndpointServiceResourceAttributeResponse
 func (client *Client) UpdateVpcEndpointServiceResourceAttribute(request *UpdateVpcEndpointServiceResourceAttributeRequest) (_result *UpdateVpcEndpointServiceResourceAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateVpcEndpointServiceResourceAttributeResponse{}
@@ -9317,21 +12176,35 @@ func (client *Client) UpdateVpcEndpointServiceResourceAttribute(request *UpdateV
 	return _result, _err
 }
 
-/**
- * ### Prerequisites
- * By default, the feature of modifying a service resource of a zone to which an endpoint connection belongs is unavailable. To use this feature, log on to the [Quota Center console](https://quotas.console.aliyun.com/white-list-products/privatelink/quotas). Click Whitelist Quotas in the left-side navigation pane and click PrivateLink in the Networking section. On the page that appears, search for `privatelink_whitelist/svc_res_mgt_uat` and click Apply in the Actions column.
- * ### Usage notes
- * *   If the endpoint connection is in the **Disconnected** state, you can manually allocate the service resource in the zone.
- * *   If the endpoint connection is in the **Connected** state, you can manually migrate the service resource in the zone. In this case, the connection might be interrupted.
- * *   **UpdateVpcEndpointZoneConnectionResourceAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](~~469330~~) operation to check whether the service resource is modified.
- *     *   If the endpoint service is in the **Pending** state, the service resource is being modified.
- *     *   If the endpoint service is in the **Active** state, the service resource is modified.
- * *   You cannot repeatedly call the **UpdateVpcEndpointZoneConnectionResourceAttribute** operation to modify a service resource in the zone to which an endpoint connection belongs within a specified period of time.
- *
- * @param request UpdateVpcEndpointZoneConnectionResourceAttributeRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateVpcEndpointZoneConnectionResourceAttributeResponse
- */
+// Summary:
+//
+// Modifies a service resource of a zone to which an endpoint connection belongs.
+//
+// Description:
+//
+// ### Prerequisites
+//
+// By default, the feature of modifying a service resource of a zone to which an endpoint connection belongs is unavailable. To use this feature, log on to the [Quota Center console](https://quotas.console.aliyun.com/white-list-products/privatelink/quotas). Click Whitelist Quotas in the left-side navigation pane and click PrivateLink in the Networking section. On the page that appears, search for `privatelink_whitelist/svc_res_mgt_uat` and click Apply in the Actions column.
+//
+// ### Usage notes
+//
+// 	- If the endpoint connection is in the **Disconnected*	- state, you can manually allocate the service resource in the zone.
+//
+// 	- If the endpoint connection is in the **Connected*	- state, you can manually migrate the service resource in the zone. In this case, the connection might be interrupted.
+//
+// 	- **UpdateVpcEndpointZoneConnectionResourceAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to check whether the service resource is modified.
+//
+//     	- If the endpoint service is in the **Pending*	- state, the service resource is being modified.
+//
+//     	- If the endpoint service is in the **Active*	- state, the service resource is modified.
+//
+// 	- You cannot repeatedly call the **UpdateVpcEndpointZoneConnectionResourceAttribute*	- operation to modify a service resource in the zone to which an endpoint connection belongs within a specified period of time.
+//
+// @param request - UpdateVpcEndpointZoneConnectionResourceAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateVpcEndpointZoneConnectionResourceAttributeResponse
 func (client *Client) UpdateVpcEndpointZoneConnectionResourceAttributeWithOptions(request *UpdateVpcEndpointZoneConnectionResourceAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateVpcEndpointZoneConnectionResourceAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9405,20 +12278,33 @@ func (client *Client) UpdateVpcEndpointZoneConnectionResourceAttributeWithOption
 	return _result, _err
 }
 
-/**
- * ### Prerequisites
- * By default, the feature of modifying a service resource of a zone to which an endpoint connection belongs is unavailable. To use this feature, log on to the [Quota Center console](https://quotas.console.aliyun.com/white-list-products/privatelink/quotas). Click Whitelist Quotas in the left-side navigation pane and click PrivateLink in the Networking section. On the page that appears, search for `privatelink_whitelist/svc_res_mgt_uat` and click Apply in the Actions column.
- * ### Usage notes
- * *   If the endpoint connection is in the **Disconnected** state, you can manually allocate the service resource in the zone.
- * *   If the endpoint connection is in the **Connected** state, you can manually migrate the service resource in the zone. In this case, the connection might be interrupted.
- * *   **UpdateVpcEndpointZoneConnectionResourceAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](~~469330~~) operation to check whether the service resource is modified.
- *     *   If the endpoint service is in the **Pending** state, the service resource is being modified.
- *     *   If the endpoint service is in the **Active** state, the service resource is modified.
- * *   You cannot repeatedly call the **UpdateVpcEndpointZoneConnectionResourceAttribute** operation to modify a service resource in the zone to which an endpoint connection belongs within a specified period of time.
- *
- * @param request UpdateVpcEndpointZoneConnectionResourceAttributeRequest
- * @return UpdateVpcEndpointZoneConnectionResourceAttributeResponse
- */
+// Summary:
+//
+// Modifies a service resource of a zone to which an endpoint connection belongs.
+//
+// Description:
+//
+// ### Prerequisites
+//
+// By default, the feature of modifying a service resource of a zone to which an endpoint connection belongs is unavailable. To use this feature, log on to the [Quota Center console](https://quotas.console.aliyun.com/white-list-products/privatelink/quotas). Click Whitelist Quotas in the left-side navigation pane and click PrivateLink in the Networking section. On the page that appears, search for `privatelink_whitelist/svc_res_mgt_uat` and click Apply in the Actions column.
+//
+// ### Usage notes
+//
+// 	- If the endpoint connection is in the **Disconnected*	- state, you can manually allocate the service resource in the zone.
+//
+// 	- If the endpoint connection is in the **Connected*	- state, you can manually migrate the service resource in the zone. In this case, the connection might be interrupted.
+//
+// 	- **UpdateVpcEndpointZoneConnectionResourceAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcEndpointServiceAttribute](https://help.aliyun.com/document_detail/469330.html) operation to check whether the service resource is modified.
+//
+//     	- If the endpoint service is in the **Pending*	- state, the service resource is being modified.
+//
+//     	- If the endpoint service is in the **Active*	- state, the service resource is modified.
+//
+// 	- You cannot repeatedly call the **UpdateVpcEndpointZoneConnectionResourceAttribute*	- operation to modify a service resource in the zone to which an endpoint connection belongs within a specified period of time.
+//
+// @param request - UpdateVpcEndpointZoneConnectionResourceAttributeRequest
+//
+// @return UpdateVpcEndpointZoneConnectionResourceAttributeResponse
 func (client *Client) UpdateVpcEndpointZoneConnectionResourceAttribute(request *UpdateVpcEndpointZoneConnectionResourceAttributeRequest) (_result *UpdateVpcEndpointZoneConnectionResourceAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateVpcEndpointZoneConnectionResourceAttributeResponse{}
