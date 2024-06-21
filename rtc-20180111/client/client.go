@@ -1766,6 +1766,341 @@ func (s *DescribeAppKeyResponse) SetBody(v *DescribeAppKeyResponseBody) *Describ
 	return s
 }
 
+type DescribeAppRecordingFilesRequest struct {
+	// APP ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testappid
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 311
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// example:
+	//
+	// 1712376532000
+	EndTs *int64 `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1712376032000
+	StartTs *int64    `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
+	TaskIds []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAppRecordingFilesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppRecordingFilesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppRecordingFilesRequest) SetAppId(v string) *DescribeAppRecordingFilesRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeAppRecordingFilesRequest) SetChannelId(v string) *DescribeAppRecordingFilesRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *DescribeAppRecordingFilesRequest) SetEndTs(v int64) *DescribeAppRecordingFilesRequest {
+	s.EndTs = &v
+	return s
+}
+
+func (s *DescribeAppRecordingFilesRequest) SetPageNo(v int32) *DescribeAppRecordingFilesRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *DescribeAppRecordingFilesRequest) SetPageSize(v int32) *DescribeAppRecordingFilesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeAppRecordingFilesRequest) SetStartTs(v int64) *DescribeAppRecordingFilesRequest {
+	s.StartTs = &v
+	return s
+}
+
+func (s *DescribeAppRecordingFilesRequest) SetTaskIds(v []*string) *DescribeAppRecordingFilesRequest {
+	s.TaskIds = v
+	return s
+}
+
+type DescribeAppRecordingFilesShrinkRequest struct {
+	// APP ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testappid
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 311
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// example:
+	//
+	// 1712376532000
+	EndTs *int64 `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1712376032000
+	StartTs       *int64  `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
+	TaskIdsShrink *string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty"`
+}
+
+func (s DescribeAppRecordingFilesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppRecordingFilesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppRecordingFilesShrinkRequest) SetAppId(v string) *DescribeAppRecordingFilesShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeAppRecordingFilesShrinkRequest) SetChannelId(v string) *DescribeAppRecordingFilesShrinkRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *DescribeAppRecordingFilesShrinkRequest) SetEndTs(v int64) *DescribeAppRecordingFilesShrinkRequest {
+	s.EndTs = &v
+	return s
+}
+
+func (s *DescribeAppRecordingFilesShrinkRequest) SetPageNo(v int32) *DescribeAppRecordingFilesShrinkRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *DescribeAppRecordingFilesShrinkRequest) SetPageSize(v int32) *DescribeAppRecordingFilesShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeAppRecordingFilesShrinkRequest) SetStartTs(v int64) *DescribeAppRecordingFilesShrinkRequest {
+	s.StartTs = &v
+	return s
+}
+
+func (s *DescribeAppRecordingFilesShrinkRequest) SetTaskIdsShrink(v string) *DescribeAppRecordingFilesShrinkRequest {
+	s.TaskIdsShrink = &v
+	return s
+}
+
+type DescribeAppRecordingFilesResponseBody struct {
+	Items []*DescribeAppRecordingFilesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CF8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCnt *int32 `json:"TotalCnt,omitempty" xml:"TotalCnt,omitempty"`
+}
+
+func (s DescribeAppRecordingFilesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppRecordingFilesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppRecordingFilesResponseBody) SetItems(v []*DescribeAppRecordingFilesResponseBodyItems) *DescribeAppRecordingFilesResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeAppRecordingFilesResponseBody) SetPageNo(v int32) *DescribeAppRecordingFilesResponseBody {
+	s.PageNo = &v
+	return s
+}
+
+func (s *DescribeAppRecordingFilesResponseBody) SetPageSize(v int32) *DescribeAppRecordingFilesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeAppRecordingFilesResponseBody) SetRequestId(v string) *DescribeAppRecordingFilesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAppRecordingFilesResponseBody) SetTotalCnt(v int32) *DescribeAppRecordingFilesResponseBody {
+	s.TotalCnt = &v
+	return s
+}
+
+type DescribeAppRecordingFilesResponseBodyItems struct {
+	// example:
+	//
+	// rtc-bucket
+	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// example:
+	//
+	// testchannelId
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// example:
+	//
+	// 1712376032000
+	FileCreateTs *int64 `json:"FileCreateTs,omitempty" xml:"FileCreateTs,omitempty"`
+	// example:
+	//
+	// 200
+	FileDuration *int32 `json:"FileDuration,omitempty" xml:"FileDuration,omitempty"`
+	// example:
+	//
+	// record/appid/12_task_local1/1712279809158_1712279844691/playlist.mp4
+	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// example:
+	//
+	// 10000
+	FileSize *int32 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// example:
+	//
+	// 1
+	Region *int32 `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// 1712376012000
+	StartTs *int32 `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
+	// example:
+	//
+	// test001
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 1
+	Vendor *int32 `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+}
+
+func (s DescribeAppRecordingFilesResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppRecordingFilesResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppRecordingFilesResponseBodyItems) SetBucket(v string) *DescribeAppRecordingFilesResponseBodyItems {
+	s.Bucket = &v
+	return s
+}
+
+func (s *DescribeAppRecordingFilesResponseBodyItems) SetChannelId(v string) *DescribeAppRecordingFilesResponseBodyItems {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *DescribeAppRecordingFilesResponseBodyItems) SetFileCreateTs(v int64) *DescribeAppRecordingFilesResponseBodyItems {
+	s.FileCreateTs = &v
+	return s
+}
+
+func (s *DescribeAppRecordingFilesResponseBodyItems) SetFileDuration(v int32) *DescribeAppRecordingFilesResponseBodyItems {
+	s.FileDuration = &v
+	return s
+}
+
+func (s *DescribeAppRecordingFilesResponseBodyItems) SetFilePath(v string) *DescribeAppRecordingFilesResponseBodyItems {
+	s.FilePath = &v
+	return s
+}
+
+func (s *DescribeAppRecordingFilesResponseBodyItems) SetFileSize(v int32) *DescribeAppRecordingFilesResponseBodyItems {
+	s.FileSize = &v
+	return s
+}
+
+func (s *DescribeAppRecordingFilesResponseBodyItems) SetRegion(v int32) *DescribeAppRecordingFilesResponseBodyItems {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeAppRecordingFilesResponseBodyItems) SetStartTs(v int32) *DescribeAppRecordingFilesResponseBodyItems {
+	s.StartTs = &v
+	return s
+}
+
+func (s *DescribeAppRecordingFilesResponseBodyItems) SetTaskId(v string) *DescribeAppRecordingFilesResponseBodyItems {
+	s.TaskId = &v
+	return s
+}
+
+func (s *DescribeAppRecordingFilesResponseBodyItems) SetVendor(v int32) *DescribeAppRecordingFilesResponseBodyItems {
+	s.Vendor = &v
+	return s
+}
+
+type DescribeAppRecordingFilesResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAppRecordingFilesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeAppRecordingFilesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppRecordingFilesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppRecordingFilesResponse) SetHeaders(v map[string]*string) *DescribeAppRecordingFilesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAppRecordingFilesResponse) SetStatusCode(v int32) *DescribeAppRecordingFilesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAppRecordingFilesResponse) SetBody(v *DescribeAppRecordingFilesResponseBody) *DescribeAppRecordingFilesResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeAppStreamingOutTemplatesRequest struct {
 	// This parameter is required.
 	//
@@ -20663,6 +20998,68 @@ func (client *Client) DescribeAppKey(request *DescribeAppKeyRequest) (_result *D
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAppKeyResponse{}
 	_body, _err := client.DescribeAppKeyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询录制列表
+//
+// @param tmpReq - DescribeAppRecordingFilesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAppRecordingFilesResponse
+func (client *Client) DescribeAppRecordingFilesWithOptions(tmpReq *DescribeAppRecordingFilesRequest, runtime *util.RuntimeOptions) (_result *DescribeAppRecordingFilesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DescribeAppRecordingFilesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.TaskIds)) {
+		request.TaskIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TaskIds, tea.String("TaskIds"), tea.String("json"))
+	}
+
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAppRecordingFiles"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAppRecordingFilesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询录制列表
+//
+// @param request - DescribeAppRecordingFilesRequest
+//
+// @return DescribeAppRecordingFilesResponse
+func (client *Client) DescribeAppRecordingFiles(request *DescribeAppRecordingFilesRequest) (_result *DescribeAppRecordingFilesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAppRecordingFilesResponse{}
+	_body, _err := client.DescribeAppRecordingFilesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
