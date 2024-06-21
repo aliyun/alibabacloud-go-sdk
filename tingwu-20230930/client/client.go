@@ -305,10 +305,11 @@ func (s *CreateTaskRequestParametersCustomPromptContents) SetTransType(v string)
 }
 
 type CreateTaskRequestParametersExtraParams struct {
-	DomainEducationEnabled *bool  `json:"DomainEducationEnabled,omitempty" xml:"DomainEducationEnabled,omitempty"`
-	MaxKeywords            *int32 `json:"MaxKeywords,omitempty" xml:"MaxKeywords,omitempty"`
-	NfixEnabled            *bool  `json:"NfixEnabled,omitempty" xml:"NfixEnabled,omitempty"`
-	OcrAuxiliaryEnabled    *bool  `json:"OcrAuxiliaryEnabled,omitempty" xml:"OcrAuxiliaryEnabled,omitempty"`
+	DomainEducationEnabled   *bool  `json:"DomainEducationEnabled,omitempty" xml:"DomainEducationEnabled,omitempty"`
+	MaxKeywords              *int32 `json:"MaxKeywords,omitempty" xml:"MaxKeywords,omitempty"`
+	NfixEnabled              *bool  `json:"NfixEnabled,omitempty" xml:"NfixEnabled,omitempty"`
+	OcrAuxiliaryEnabled      *bool  `json:"OcrAuxiliaryEnabled,omitempty" xml:"OcrAuxiliaryEnabled,omitempty"`
+	TranslateLlmSceneEnabled *bool  `json:"TranslateLlmSceneEnabled,omitempty" xml:"TranslateLlmSceneEnabled,omitempty"`
 }
 
 func (s CreateTaskRequestParametersExtraParams) String() string {
@@ -336,6 +337,11 @@ func (s *CreateTaskRequestParametersExtraParams) SetNfixEnabled(v bool) *CreateT
 
 func (s *CreateTaskRequestParametersExtraParams) SetOcrAuxiliaryEnabled(v bool) *CreateTaskRequestParametersExtraParams {
 	s.OcrAuxiliaryEnabled = &v
+	return s
+}
+
+func (s *CreateTaskRequestParametersExtraParams) SetTranslateLlmSceneEnabled(v bool) *CreateTaskRequestParametersExtraParams {
+	s.TranslateLlmSceneEnabled = &v
 	return s
 }
 
