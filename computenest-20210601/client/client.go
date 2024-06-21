@@ -3596,6 +3596,264 @@ func (s *StopServiceInstanceResponse) SetBody(v *StopServiceInstanceResponseBody
 	return s
 }
 
+type UpdateServiceInstanceSpecRequest struct {
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-42665544****
+	ClientToken *string                                    `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Commodity   *UpdateServiceInstanceSpecRequestCommodity `json:"Commodity,omitempty" xml:"Commodity,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// example:
+	//
+	// true
+	EnableUserPrometheus *bool   `json:"EnableUserPrometheus,omitempty" xml:"EnableUserPrometheus,omitempty"`
+	OperationName        *string `json:"OperationName,omitempty" xml:"OperationName,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//   "InstanceType": "ecs.g8ise.2xlarge"
+	//
+	// }
+	Parameters               map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	PredefinedParametersName *string                `json:"PredefinedParametersName,omitempty" xml:"PredefinedParametersName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// si-d6ab3a63ccbb4b17****
+	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+}
+
+func (s UpdateServiceInstanceSpecRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceInstanceSpecRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceInstanceSpecRequest) SetClientToken(v string) *UpdateServiceInstanceSpecRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateServiceInstanceSpecRequest) SetCommodity(v *UpdateServiceInstanceSpecRequestCommodity) *UpdateServiceInstanceSpecRequest {
+	s.Commodity = v
+	return s
+}
+
+func (s *UpdateServiceInstanceSpecRequest) SetDryRun(v bool) *UpdateServiceInstanceSpecRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *UpdateServiceInstanceSpecRequest) SetEnableUserPrometheus(v bool) *UpdateServiceInstanceSpecRequest {
+	s.EnableUserPrometheus = &v
+	return s
+}
+
+func (s *UpdateServiceInstanceSpecRequest) SetOperationName(v string) *UpdateServiceInstanceSpecRequest {
+	s.OperationName = &v
+	return s
+}
+
+func (s *UpdateServiceInstanceSpecRequest) SetParameters(v map[string]interface{}) *UpdateServiceInstanceSpecRequest {
+	s.Parameters = v
+	return s
+}
+
+func (s *UpdateServiceInstanceSpecRequest) SetPredefinedParametersName(v string) *UpdateServiceInstanceSpecRequest {
+	s.PredefinedParametersName = &v
+	return s
+}
+
+func (s *UpdateServiceInstanceSpecRequest) SetServiceInstanceId(v string) *UpdateServiceInstanceSpecRequest {
+	s.ServiceInstanceId = &v
+	return s
+}
+
+type UpdateServiceInstanceSpecRequestCommodity struct {
+	// example:
+	//
+	// true
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+}
+
+func (s UpdateServiceInstanceSpecRequestCommodity) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceInstanceSpecRequestCommodity) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceInstanceSpecRequestCommodity) SetAutoPay(v bool) *UpdateServiceInstanceSpecRequestCommodity {
+	s.AutoPay = &v
+	return s
+}
+
+type UpdateServiceInstanceSpecShrinkRequest struct {
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-42665544****
+	ClientToken *string                                          `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Commodity   *UpdateServiceInstanceSpecShrinkRequestCommodity `json:"Commodity,omitempty" xml:"Commodity,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// example:
+	//
+	// true
+	EnableUserPrometheus *bool   `json:"EnableUserPrometheus,omitempty" xml:"EnableUserPrometheus,omitempty"`
+	OperationName        *string `json:"OperationName,omitempty" xml:"OperationName,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//   "InstanceType": "ecs.g8ise.2xlarge"
+	//
+	// }
+	ParametersShrink         *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	PredefinedParametersName *string `json:"PredefinedParametersName,omitempty" xml:"PredefinedParametersName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// si-d6ab3a63ccbb4b17****
+	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+}
+
+func (s UpdateServiceInstanceSpecShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceInstanceSpecShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceInstanceSpecShrinkRequest) SetClientToken(v string) *UpdateServiceInstanceSpecShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateServiceInstanceSpecShrinkRequest) SetCommodity(v *UpdateServiceInstanceSpecShrinkRequestCommodity) *UpdateServiceInstanceSpecShrinkRequest {
+	s.Commodity = v
+	return s
+}
+
+func (s *UpdateServiceInstanceSpecShrinkRequest) SetDryRun(v bool) *UpdateServiceInstanceSpecShrinkRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *UpdateServiceInstanceSpecShrinkRequest) SetEnableUserPrometheus(v bool) *UpdateServiceInstanceSpecShrinkRequest {
+	s.EnableUserPrometheus = &v
+	return s
+}
+
+func (s *UpdateServiceInstanceSpecShrinkRequest) SetOperationName(v string) *UpdateServiceInstanceSpecShrinkRequest {
+	s.OperationName = &v
+	return s
+}
+
+func (s *UpdateServiceInstanceSpecShrinkRequest) SetParametersShrink(v string) *UpdateServiceInstanceSpecShrinkRequest {
+	s.ParametersShrink = &v
+	return s
+}
+
+func (s *UpdateServiceInstanceSpecShrinkRequest) SetPredefinedParametersName(v string) *UpdateServiceInstanceSpecShrinkRequest {
+	s.PredefinedParametersName = &v
+	return s
+}
+
+func (s *UpdateServiceInstanceSpecShrinkRequest) SetServiceInstanceId(v string) *UpdateServiceInstanceSpecShrinkRequest {
+	s.ServiceInstanceId = &v
+	return s
+}
+
+type UpdateServiceInstanceSpecShrinkRequestCommodity struct {
+	// example:
+	//
+	// true
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+}
+
+func (s UpdateServiceInstanceSpecShrinkRequestCommodity) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceInstanceSpecShrinkRequestCommodity) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceInstanceSpecShrinkRequestCommodity) SetAutoPay(v bool) *UpdateServiceInstanceSpecShrinkRequestCommodity {
+	s.AutoPay = &v
+	return s
+}
+
+type UpdateServiceInstanceSpecResponseBody struct {
+	// example:
+	//
+	// 23396265896****
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 06BF8F22-02DC-4750-83DF-3FFC11C065EA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateServiceInstanceSpecResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceInstanceSpecResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceInstanceSpecResponseBody) SetOrderId(v string) *UpdateServiceInstanceSpecResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *UpdateServiceInstanceSpecResponseBody) SetRequestId(v string) *UpdateServiceInstanceSpecResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateServiceInstanceSpecResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateServiceInstanceSpecResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateServiceInstanceSpecResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceInstanceSpecResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceInstanceSpecResponse) SetHeaders(v map[string]*string) *UpdateServiceInstanceSpecResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateServiceInstanceSpecResponse) SetStatusCode(v int32) *UpdateServiceInstanceSpecResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateServiceInstanceSpecResponse) SetBody(v *UpdateServiceInstanceSpecResponseBody) *UpdateServiceInstanceSpecResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -4602,6 +4860,92 @@ func (client *Client) StopServiceInstance(request *StopServiceInstanceRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &StopServiceInstanceResponse{}
 	_body, _err := client.StopServiceInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param tmpReq - UpdateServiceInstanceSpecRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateServiceInstanceSpecResponse
+func (client *Client) UpdateServiceInstanceSpecWithOptions(tmpReq *UpdateServiceInstanceSpecRequest, runtime *util.RuntimeOptions) (_result *UpdateServiceInstanceSpecResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateServiceInstanceSpecShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Parameters)) {
+		request.ParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Parameters, tea.String("Parameters"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Commodity)) {
+		query["Commodity"] = request.Commodity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableUserPrometheus)) {
+		query["EnableUserPrometheus"] = request.EnableUserPrometheus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationName)) {
+		query["OperationName"] = request.OperationName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParametersShrink)) {
+		query["Parameters"] = request.ParametersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PredefinedParametersName)) {
+		query["PredefinedParametersName"] = request.PredefinedParametersName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceInstanceId)) {
+		query["ServiceInstanceId"] = request.ServiceInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateServiceInstanceSpec"),
+		Version:     tea.String("2021-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateServiceInstanceSpecResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpdateServiceInstanceSpecRequest
+//
+// @return UpdateServiceInstanceSpecResponse
+func (client *Client) UpdateServiceInstanceSpec(request *UpdateServiceInstanceSpecRequest) (_result *UpdateServiceInstanceSpecResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateServiceInstanceSpecResponse{}
+	_body, _err := client.UpdateServiceInstanceSpecWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
