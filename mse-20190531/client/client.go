@@ -1784,7 +1784,8 @@ type AddGatewayRequest struct {
 	// example:
 	//
 	// POSTPAY
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ChargeType     *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ClbNetworkType *string `json:"ClbNetworkType,omitempty" xml:"ClbNetworkType,omitempty"`
 	// Specifies whether to activate Tracing Analysis.
 	//
 	// example:
@@ -1964,6 +1965,11 @@ func (s *AddGatewayRequest) SetAcceptLanguage(v string) *AddGatewayRequest {
 
 func (s *AddGatewayRequest) SetChargeType(v string) *AddGatewayRequest {
 	s.ChargeType = &v
+	return s
+}
+
+func (s *AddGatewayRequest) SetClbNetworkType(v string) *AddGatewayRequest {
+	s.ClbNetworkType = &v
 	return s
 }
 
@@ -2175,7 +2181,8 @@ type AddGatewayShrinkRequest struct {
 	// example:
 	//
 	// POSTPAY
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ChargeType     *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ClbNetworkType *string `json:"ClbNetworkType,omitempty" xml:"ClbNetworkType,omitempty"`
 	// Specifies whether to activate Tracing Analysis.
 	//
 	// example:
@@ -2355,6 +2362,11 @@ func (s *AddGatewayShrinkRequest) SetAcceptLanguage(v string) *AddGatewayShrinkR
 
 func (s *AddGatewayShrinkRequest) SetChargeType(v string) *AddGatewayShrinkRequest {
 	s.ChargeType = &v
+	return s
+}
+
+func (s *AddGatewayShrinkRequest) SetClbNetworkType(v string) *AddGatewayShrinkRequest {
+	s.ClbNetworkType = &v
 	return s
 }
 
@@ -5495,10 +5507,6 @@ type AddGatewaySlbRequestVServiceList struct {
 	// rsp-bp1j**t0fyl**
 	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
 	// The name of the virtual server group.
-	//
-	// example:
-	//
-	// k8s/31**0/***/istio-system/clusterid
 	VServerGroupName *string `json:"VServerGroupName,omitempty" xml:"VServerGroupName,omitempty"`
 }
 
@@ -30459,10 +30467,6 @@ type GetPluginsResponseBodyData struct {
 	// v1
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 	// The URL of the Object Storage Service (OSS) bucket that stores the WebAssembly plug-in.
-	//
-	// example:
-	//
-	// https://mse-shared-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/cfg/import/1917515******/gw-0adf3ad751284cc69fcf9669fba*****/2022/11/02/4d390496-2c17-4b42-a479-f9068ba****/16673573***5.wasm
 	WasmFile *string `json:"WasmFile,omitempty" xml:"WasmFile,omitempty"`
 	// The WebAssembly language. Valid values:
 	//
@@ -75318,6 +75322,10 @@ func (client *Client) AddGatewayWithOptions(tmpReq *AddGatewayRequest, runtime *
 
 	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
 		query["ChargeType"] = request.ChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClbNetworkType)) {
+		query["ClbNetworkType"] = request.ClbNetworkType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EnableHardwareAcceleration)) {
