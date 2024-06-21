@@ -20993,7 +20993,9 @@ type LaunchSurveyRequest struct {
 	// example:
 	//
 	// IVR
-	SurveyChannel *string `json:"SurveyChannel,omitempty" xml:"SurveyChannel,omitempty"`
+	SurveyChannel           *string `json:"SurveyChannel,omitempty" xml:"SurveyChannel,omitempty"`
+	SurveyTemplateId        *string `json:"SurveyTemplateId,omitempty" xml:"SurveyTemplateId,omitempty"`
+	SurveyTemplateVariables *string `json:"SurveyTemplateVariables,omitempty" xml:"SurveyTemplateVariables,omitempty"`
 	// example:
 	//
 	// agent@ccc-test
@@ -21040,6 +21042,16 @@ func (s *LaunchSurveyRequest) SetSmsMetadataId(v string) *LaunchSurveyRequest {
 
 func (s *LaunchSurveyRequest) SetSurveyChannel(v string) *LaunchSurveyRequest {
 	s.SurveyChannel = &v
+	return s
+}
+
+func (s *LaunchSurveyRequest) SetSurveyTemplateId(v string) *LaunchSurveyRequest {
+	s.SurveyTemplateId = &v
+	return s
+}
+
+func (s *LaunchSurveyRequest) SetSurveyTemplateVariables(v string) *LaunchSurveyRequest {
+	s.SurveyTemplateVariables = &v
 	return s
 }
 
@@ -40766,6 +40778,7 @@ type ListRealtimeAgentStatesRequest struct {
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MediaType  *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 	// example:
 	//
 	// false
@@ -40825,6 +40838,11 @@ func (s *ListRealtimeAgentStatesRequest) SetCallTypeList(v string) *ListRealtime
 
 func (s *ListRealtimeAgentStatesRequest) SetInstanceId(v string) *ListRealtimeAgentStatesRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ListRealtimeAgentStatesRequest) SetMediaType(v string) *ListRealtimeAgentStatesRequest {
+	s.MediaType = &v
 	return s
 }
 
@@ -41130,6 +41148,7 @@ type ListRealtimeSkillGroupStatesRequest struct {
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MediaType  *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -41158,6 +41177,11 @@ func (s ListRealtimeSkillGroupStatesRequest) GoString() string {
 
 func (s *ListRealtimeSkillGroupStatesRequest) SetInstanceId(v string) *ListRealtimeSkillGroupStatesRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ListRealtimeSkillGroupStatesRequest) SetMediaType(v string) *ListRealtimeSkillGroupStatesRequest {
+	s.MediaType = &v
 	return s
 }
 
@@ -63866,6 +63890,14 @@ func (client *Client) LaunchSurveyWithOptions(request *LaunchSurveyRequest, runt
 		query["SurveyChannel"] = request.SurveyChannel
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SurveyTemplateId)) {
+		query["SurveyTemplateId"] = request.SurveyTemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SurveyTemplateVariables)) {
+		query["SurveyTemplateVariables"] = request.SurveyTemplateVariables
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.UserId)) {
 		query["UserId"] = request.UserId
 	}
@@ -66812,6 +66844,10 @@ func (client *Client) ListRealtimeAgentStatesWithOptions(request *ListRealtimeAg
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MediaType)) {
+		query["MediaType"] = request.MediaType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OutboundScenario)) {
 		query["OutboundScenario"] = request.OutboundScenario
 	}
@@ -66896,6 +66932,10 @@ func (client *Client) ListRealtimeSkillGroupStatesWithOptions(request *ListRealt
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaType)) {
+		query["MediaType"] = request.MediaType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
