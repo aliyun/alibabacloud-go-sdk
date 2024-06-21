@@ -4142,6 +4142,7 @@ func (s *DeleteDiagnosticResponse) SetBody(v *DeleteDiagnosticResponseBody) *Del
 type DeleteStackRequest struct {
 	// The options for deleting the stack.
 	DeleteOptions []*string `json:"DeleteOptions,omitempty" xml:"DeleteOptions,omitempty" type:"Repeated"`
+	Parallelism   *int64    `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
 	// The name of the RAM role. Resource Orchestration Service (ROS) assumes the RAM role to create the stack and uses the credentials of the role to call the APIs of Alibaba Cloud services.\\
 	//
 	// ROS assumes the role to perform operations on the stack. If you have permissions to perform operations on the stack but do not have permissions to use the RAM role, ROS still assumes the RAM role. You must make sure that the least privileges are granted to the RAM role.\\
@@ -4200,6 +4201,11 @@ func (s DeleteStackRequest) GoString() string {
 
 func (s *DeleteStackRequest) SetDeleteOptions(v []*string) *DeleteStackRequest {
 	s.DeleteOptions = v
+	return s
+}
+
+func (s *DeleteStackRequest) SetParallelism(v int64) *DeleteStackRequest {
+	s.Parallelism = &v
 	return s
 }
 
@@ -26883,6 +26889,10 @@ func (client *Client) DeleteStackWithOptions(request *DeleteStackRequest, runtim
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DeleteOptions)) {
 		query["DeleteOptions"] = request.DeleteOptions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parallelism)) {
+		query["Parallelism"] = request.Parallelism
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RamRoleName)) {
