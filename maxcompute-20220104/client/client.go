@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -14,8 +11,96 @@ import (
 
 type CreatePackageRequest struct {
 	// The request body parameters.
+	//
+	// example:
+	//
+	// {
+	//
+	// "name": "test_packege",
+	//
+	//     "resourceList": {
+	//
+	//         "table": [
+	//
+	//             {
+	//
+	//                 "name": "table_name",
+	//
+	//                 "actions": [
+	//
+	//                     "Describe",
+	//
+	//                     "Select"
+	//
+	//                 ]
+	//
+	//             },
+	//
+	//             {
+	//
+	//                 "name": "table_name",
+	//
+	//                 "actions": [
+	//
+	//                     "Describe",
+	//
+	//                     "Select"
+	//
+	//                 ]
+	//
+	//             }
+	//
+	//         ],
+	//
+	//         "resource": [
+	//
+	//             {
+	//
+	//                 "name": "",
+	//
+	//                 "actions": []
+	//
+	//             },
+	//
+	//             {
+	//
+	//                 "name": "",
+	//
+	//                 "actions": []
+	//
+	//             }
+	//
+	//         ],
+	//
+	//         "function": [
+	//
+	//             {
+	//
+	//                 "name": "",
+	//
+	//                 "actions": []
+	//
+	//             },
+	//
+	//             {
+	//
+	//                 "name": "",
+	//
+	//                 "actions": []
+	//
+	//             }
+	//
+	//         ]
+	//
+	//     }
+	//
+	// }
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 	// Specifies whether to install the package.
+	//
+	// example:
+	//
+	// false
 	IsInstall *bool `json:"isInstall,omitempty" xml:"isInstall,omitempty"`
 }
 
@@ -39,8 +124,16 @@ func (s *CreatePackageRequest) SetIsInstall(v bool) *CreatePackageRequest {
 
 type CreatePackageResponseBody struct {
 	// The returned data.
+	//
+	// example:
+	//
+	// success
 	Data *string `json:"data,omitempty" xml:"data,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bc3b4ab16684833172127321e2c25
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -93,6 +186,10 @@ func (s *CreatePackageResponse) SetBody(v *CreatePackageResponseBody) *CreatePac
 
 type CreateProjectRequest struct {
 	// The request body parameters.
+	//
+	// example:
+	//
+	// { "name": "project_name", "comment": "", "productType":"payasyougo/subscription/dev", /\\*\\	- \\	- "PAYASYOUGO": specifies a pay-as-you-go project. \\	- "SUBSCRIPTION": specifies a subscription project. \\	- "DEV": specifies that the project is created in Developer Edition. \\*/ "defaultQuota": "quota_nick_name", "properties": { "sqlMeteringMax":"", "typeSystem": "",// The string type. Valid values: 1, 2, and hive. "encryption": { "enable": true, "algorithm":"" , // The name of the encryption algorithm. "key":"" // The key of the encryption algorithm. } // json: This field is required only when data encryption is enabled. } }
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -111,8 +208,16 @@ func (s *CreateProjectRequest) SetBody(v string) *CreateProjectRequest {
 
 type CreateProjectResponseBody struct {
 	// The returned result.
+	//
+	// example:
+	//
+	// success
 	Data *string `json:"data,omitempty" xml:"data,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0b87b7a316654730544735643e9200
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -165,10 +270,22 @@ func (s *CreateProjectResponse) SetBody(v *CreateProjectResponseBody) *CreatePro
 
 type CreateQuotaPlanRequest struct {
 	// The request body parameters.
+	//
+	// example:
+	//
+	// { "name": "planA", // The quota is a level-1 quota. You can select only the fields that are related to the quota plan. "quota": { "name": "a", "nickName": "aaa_nick", "tenantId": "10001", "regionId": "cn-hangzhou", "parentId": "0", "cluster": "AT-ODPS-TEST3", "parameter": { "minCU": 40, "maxCU": 40, "adhocCU": 0, "elasticMinCU": 40, "elasticMaxCU": 40, "enablePreemptiveScheduling": false, "forceReservedMin":true, "enablePriority":false, "singleJobCULimit":100, "adhocQuotaBeginTimeInSec": 1345, "adhocQuotaEndTimeInSec": 1234, "ignoreAdhocQuota":false }, "subQuotaInfoList": [ { "nickName": "WlmFuxiSecondaryOnlineQuotaTest", "name": "WlmFuxiSecondaryOnlineQuotaTest", "type": "FUXI_ONLINE", "tenantId": "10001", "regionId": "cn-hangzhou", "cluster": "AT-ODPS-TEST3", "parameter": { "minCU": 40, "maxCU": 40, "adhocCU": 0, "elasticMinCU": 40, "elasticMaxCU": 40, "enablePreemptiveScheduling": false, "forceReservedMin":true, "enablePriority":false, "singleJobCULimit":100, "adhocQuotaBeginTimeInSec": 1345, "adhocQuotaEndTimeInSec": 1234, "ignoreAdhocQuota":false } } ] } }
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-beijing
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
 	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 228451885265153
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 
@@ -197,8 +314,16 @@ func (s *CreateQuotaPlanRequest) SetTenantId(v string) *CreateQuotaPlanRequest {
 
 type CreateQuotaPlanResponseBody struct {
 	// The returned result.
+	//
+	// example:
+	//
+	// success
 	Data *string `json:"data,omitempty" xml:"data,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bc3b4b016674434996033675e71ee
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -251,10 +376,22 @@ func (s *CreateQuotaPlanResponse) SetBody(v *CreateQuotaPlanResponseBody) *Creat
 
 type CreateQuotaScheduleRequest struct {
 	// The request body parameters.
+	//
+	// example:
+	//
+	// \\# The quota plan immediately takes effect. [ { "type": "once", "plan": "planA", "operator":"xxx" } ] # The quota plan is scheduled on a regular basis. [ { "id": "bi", "type": "daily", "condition": { "at": "0800", "after": "2022-04-25T04:23:04Z" // optional }, "plan": "planA" }, { "id": "bi", "type": "daily", "condition": { "at": "0900", "after": "2022-04-25T04:23:04Z" // optional }, "plan": "planB" }, ]
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-chengdu
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
 	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 407137536592384
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 
@@ -283,8 +420,16 @@ func (s *CreateQuotaScheduleRequest) SetTenantId(v string) *CreateQuotaScheduleR
 
 type CreateQuotaScheduleResponseBody struct {
 	// The returned result.
+	//
+	// example:
+	//
+	// success
 	Data *string `json:"data,omitempty" xml:"data,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0be3e0b716671885050924814e3623
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -336,7 +481,11 @@ func (s *CreateQuotaScheduleResponse) SetBody(v *CreateQuotaScheduleResponseBody
 }
 
 type CreateRoleRequest struct {
-	// The request body parameters. For valid values, see [MaxCompute permissions](~~27935~~).
+	// The request body parameters. For valid values, see [MaxCompute permissions](https://help.aliyun.com/document_detail/27935.html).
+	//
+	// example:
+	//
+	// {"name": "role_name","type": "resource/adminn","policy": "", // The document of the policy. This parameter is not required if an access-control list (ACL) is used. "acl": { // This parameter is not required if a policy is used. "table": [{"name": "", "actions":["","",]}, {"name": "", "actions":[]}],"resource":[{"name": "", "actions":["","",]}, {"name": "", "actions":[]}],"function":[{"name": "", "actions":["","",]}, {"name": "", "actions":[]}],"package":[{"name": "", "actions":["","",]}, {"name": "", "actions":[]}],"project":[{"name": "", "actions":[]}], // Only the current project is displayed in the console. "instance":[{"name": "", "actions":[]}] // The parameter name must be set to an asterisk (\\*) in the console. }}// An asterisk (\\*) can be specified for name.
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -355,8 +504,16 @@ func (s *CreateRoleRequest) SetBody(v string) *CreateRoleRequest {
 
 type CreateRoleResponseBody struct {
 	// The returned data.
+	//
+	// example:
+	//
+	// success
 	Data *string `json:"data,omitempty" xml:"data,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0b87b7e716665825896565060e87a4
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -409,8 +566,16 @@ func (s *CreateRoleResponse) SetBody(v *CreateRoleResponseBody) *CreateRoleRespo
 
 type DeleteQuotaPlanRequest struct {
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
 	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 416441016836866
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 
@@ -434,8 +599,16 @@ func (s *DeleteQuotaPlanRequest) SetTenantId(v string) *DeleteQuotaPlanRequest {
 
 type DeleteQuotaPlanResponseBody struct {
 	// The returned result.
+	//
+	// example:
+	//
+	// success
 	Data *string `json:"data,omitempty" xml:"data,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0b57ff7616612271051086500ea3ce
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -488,12 +661,26 @@ func (s *DeleteQuotaPlanResponse) SetBody(v *DeleteQuotaPlanResponseBody) *Delet
 
 type GetJobResourceUsageRequest struct {
 	// The date that is accurate to the day part for the query. The date must be in the yyyy-MM-dd format.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-05-15
 	Date *string `json:"date,omitempty" xml:"date,omitempty"`
 	// The list of job executors.
 	JobOwnerList []*string `json:"jobOwnerList,omitempty" xml:"jobOwnerList,omitempty" type:"Repeated"`
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	// The number of entries per page. Default value: 10. Maximum value: 100.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// The list of nicknames of quotas that are used by jobs.
 	QuotaNicknameList []*string `json:"quotaNicknameList,omitempty" xml:"quotaNicknameList,omitempty" type:"Repeated"`
@@ -534,12 +721,26 @@ func (s *GetJobResourceUsageRequest) SetQuotaNicknameList(v []*string) *GetJobRe
 
 type GetJobResourceUsageShrinkRequest struct {
 	// The date that is accurate to the day part for the query. The date must be in the yyyy-MM-dd format.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-05-15
 	Date *string `json:"date,omitempty" xml:"date,omitempty"`
 	// The list of job executors.
 	JobOwnerListShrink *string `json:"jobOwnerList,omitempty" xml:"jobOwnerList,omitempty"`
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	// The number of entries per page. Default value: 10. Maximum value: 100.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// The list of nicknames of quotas that are used by jobs.
 	QuotaNicknameListShrink *string `json:"quotaNicknameList,omitempty" xml:"quotaNicknameList,omitempty"`
@@ -582,12 +783,28 @@ type GetJobResourceUsageResponseBody struct {
 	// The data returned.
 	Data *GetJobResourceUsageResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The error code returned if the request failed.
+	//
+	// example:
+	//
+	// success
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	// The error message returned if the request failed.
+	//
+	// example:
+	//
+	// 0A3B1E82006A23A918C70905BF08AEC7
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
 	// Indicates whether the request was successful. If this parameter was not empty and the value of this parameter was not 200, the request failed.
+	//
+	// example:
+	//
+	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 0b57ff7616612271051086500ea3ce
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -628,10 +845,22 @@ type GetJobResourceUsageResponseBodyData struct {
 	// The data list returned.
 	JobResourceUsageList []*GetJobResourceUsageResponseBodyDataJobResourceUsageList `json:"jobResourceUsageList,omitempty" xml:"jobResourceUsageList,omitempty" type:"Repeated"`
 	// The page number.
+	//
+	// example:
+	//
+	// 2
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 64
 	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
@@ -665,14 +894,34 @@ func (s *GetJobResourceUsageResponseBodyData) SetTotalCount(v int64) *GetJobReso
 
 type GetJobResourceUsageResponseBodyDataJobResourceUsageList struct {
 	// The total number of used compute units (CUs).
+	//
+	// example:
+	//
+	// 1185100
 	CuUsage *int64 `json:"cuUsage,omitempty" xml:"cuUsage,omitempty"`
 	// The start date of the query in the format of yyyy-MM-dd.
+	//
+	// example:
+	//
+	// 2023-05-09
 	Date *string `json:"date,omitempty" xml:"date,omitempty"`
 	// The job executor.
+	//
+	// example:
+	//
+	// ALIYUN$xxx@test.aliyunid.com
 	JobOwner *string `json:"jobOwner,omitempty" xml:"jobOwner,omitempty"`
 	// The total memory usage.
+	//
+	// example:
+	//
+	// 15169536
 	MemoryUsage *int64 `json:"memoryUsage,omitempty" xml:"memoryUsage,omitempty"`
 	// The quota nickname.
+	//
+	// example:
+	//
+	// my_quota
 	QuotaNickname *string `json:"quotaNickname,omitempty" xml:"quotaNickname,omitempty"`
 }
 
@@ -740,6 +989,10 @@ func (s *GetJobResourceUsageResponse) SetBody(v *GetJobResourceUsageResponseBody
 
 type GetPackageRequest struct {
 	// The project to which the package belongs. This parameter is required if the package is installed in the MaxCompute project.
+	//
+	// example:
+	//
+	// projectB
 	SourceProject *string `json:"sourceProject,omitempty" xml:"sourceProject,omitempty"`
 }
 
@@ -760,12 +1013,28 @@ type GetPackageResponseBody struct {
 	// The returned data.
 	Data *GetPackageResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The error code returned if the request failed.
+	//
+	// example:
+	//
+	// 040002
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	// The error message.
+	//
+	// example:
+	//
+	// error message.
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
 	// Indicates whether the request was successful. If this parameter was not empty and the value of this parameter was not 200, the request failed.
+	//
+	// example:
+	//
+	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0b57ff8316614119858417939e3e54
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -829,8 +1098,16 @@ func (s *GetPackageResponseBodyData) SetResourceList(v *GetPackageResponseBodyDa
 
 type GetPackageResponseBodyDataAllowedProjectList struct {
 	// The security level for sensitive data.
+	//
+	// example:
+	//
+	// 2
 	Label *string `json:"label,omitempty" xml:"label,omitempty"`
 	// The name of the MaxCompute project.
+	//
+	// example:
+	//
+	// proejctB
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
 }
 
@@ -888,8 +1165,16 @@ type GetPackageResponseBodyDataResourceListFunction struct {
 	// The operations that were performed on the function.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 	// The name of the function.
+	//
+	// example:
+	//
+	// function_1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The name of schema.
+	//
+	// example:
+	//
+	// default
 	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
@@ -920,8 +1205,16 @@ type GetPackageResponseBodyDataResourceListResource struct {
 	// The operations that were performed on the resource.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 	// The name of the resource.
+	//
+	// example:
+	//
+	// res_1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The name of schema.
+	//
+	// example:
+	//
+	// default
 	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
@@ -952,8 +1245,16 @@ type GetPackageResponseBodyDataResourceListTable struct {
 	// The operations that were performed on the table.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 	// The name of the table.
+	//
+	// example:
+	//
+	// dim_odps
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The name of schema.
+	//
+	// example:
+	//
+	// default
 	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
@@ -1011,6 +1312,10 @@ func (s *GetPackageResponse) SetBody(v *GetPackageResponseBody) *GetPackageRespo
 
 type GetProjectRequest struct {
 	// Specifies whether to use additional information.
+	//
+	// example:
+	//
+	// true
 	Verbose *bool `json:"verbose,omitempty" xml:"verbose,omitempty"`
 }
 
@@ -1031,12 +1336,28 @@ type GetProjectResponseBody struct {
 	// The returned data.
 	Data *GetProjectResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The error code.
+	//
+	// example:
+	//
+	// 040002
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	// The error message.
+	//
+	// example:
+	//
+	// error message.
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
 	// Indicates whether the request was successful. If this parameter was not empty and the value of this parameter was not 200, the request failed.
+	//
+	// example:
+	//
+	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0b87b7b316643495896551555e855b
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -1075,36 +1396,80 @@ func (s *GetProjectResponseBody) SetRequestId(v string) *GetProjectResponseBody 
 
 type GetProjectResponseBodyData struct {
 	// The comment of the project.
+	//
+	// example:
+	//
+	// maxcompute project
 	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
 	// The storage usage.
+	//
+	// example:
+	//
+	// 16489027
 	CostStorage *string `json:"costStorage,omitempty" xml:"costStorage,omitempty"`
 	// Create time
+	//
+	// example:
+	//
+	// 1704380838000
 	CreatedTime *int64 `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
 	// The default computing quota.
+	//
+	// example:
+	//
+	// quota_a
 	DefaultQuota *string `json:"defaultQuota,omitempty" xml:"defaultQuota,omitempty"`
 	// The IP address whitelist.
 	IpWhiteList *GetProjectResponseBodyDataIpWhiteList `json:"ipWhiteList,omitempty" xml:"ipWhiteList,omitempty" type:"Struct"`
 	// The name of the MaxCompute project.
+	//
+	// example:
+	//
+	// odps_project
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The owner of the project.
+	//
+	// example:
+	//
+	// 1565950907343451
 	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
 	// The billing method of the project.
+	//
+	// example:
+	//
+	// PayAsYouGo
 	ProductType *string `json:"productType,omitempty" xml:"productType,omitempty"`
 	// The properties of the project.
 	Properties *GetProjectResponseBodyDataProperties `json:"properties,omitempty" xml:"properties,omitempty" type:"Struct"`
 	// RegionID
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	// The tag.
 	SaleTag *GetProjectResponseBodyDataSaleTag `json:"saleTag,omitempty" xml:"saleTag,omitempty" type:"Struct"`
 	// The permission properties.
 	SecurityProperties *GetProjectResponseBodyDataSecurityProperties `json:"securityProperties,omitempty" xml:"securityProperties,omitempty" type:"Struct"`
 	// The status of the project. Valid values: -**AVAILABLE**: The project was available. -**READONLY**: The project was read only. -**FROZEN**: The project was frozen. -**DELETING**: The project was being deleted.
+	//
+	// example:
+	//
+	// AVAILABLE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The Super_Administrator role.
 	SuperAdmins []*string `json:"superAdmins,omitempty" xml:"superAdmins,omitempty" type:"Repeated"`
 	// Indicates whether the current project supports the three-layer model of MaxCompute.
+	//
+	// example:
+	//
+	// true
 	ThreeTierModel *bool `json:"threeTierModel,omitempty" xml:"threeTierModel,omitempty"`
 	// The type of the project. Valid values: -**managed**: The project is an internal project. -**external**: The project is an external project.
+	//
+	// example:
+	//
+	// managed
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -1198,8 +1563,16 @@ func (s *GetProjectResponseBodyData) SetType(v string) *GetProjectResponseBodyDa
 
 type GetProjectResponseBodyDataIpWhiteList struct {
 	// The list of IP addresses.
+	//
+	// example:
+	//
+	// 10.88.111.3
 	IpList *string `json:"ipList,omitempty" xml:"ipList,omitempty"`
 	// The list of virtual private cloud (VPC) IP addresses.
+	//
+	// example:
+	//
+	// 10.88.111.3
 	VpcIpList *string `json:"vpcIpList,omitempty" xml:"vpcIpList,omitempty"`
 }
 
@@ -1223,30 +1596,68 @@ func (s *GetProjectResponseBodyDataIpWhiteList) SetVpcIpList(v string) *GetProje
 
 type GetProjectResponseBodyDataProperties struct {
 	// Indicates whether a full table scan on the project is enabled.
+	//
+	// example:
+	//
+	// false
 	AllowFullScan *bool `json:"allowFullScan,omitempty" xml:"allowFullScan,omitempty"`
 	// This operation does not return a value for this parameter.
+	//
+	// example:
+	//
+	// No value
 	ElderTunnelQuota *string `json:"elderTunnelQuota,omitempty" xml:"elderTunnelQuota,omitempty"`
 	// Indicates whether the DECIMAL data type in MaxCompute V2.0 is enabled.
+	//
+	// example:
+	//
+	// true
 	EnableDecimal2      *bool `json:"enableDecimal2,omitempty" xml:"enableDecimal2,omitempty"`
 	EnableFdcCacheForce *bool `json:"enableFdcCacheForce,omitempty" xml:"enableFdcCacheForce,omitempty"`
+	EnableTieredStorage *bool `json:"enableTieredStorage,omitempty" xml:"enableTieredStorage,omitempty"`
 	// Indicates whether tunnel quota routing is enabled.
+	//
+	// example:
+	//
+	// true
 	EnableTunnelQuotaRoute *bool `json:"enableTunnelQuotaRoute,omitempty" xml:"enableTunnelQuotaRoute,omitempty"`
 	// The encryption information.
 	Encryption *GetProjectResponseBodyDataPropertiesEncryption `json:"encryption,omitempty" xml:"encryption,omitempty" type:"Struct"`
 	FdcQuota   *string                                         `json:"fdcQuota,omitempty" xml:"fdcQuota,omitempty"`
 	// The number of days for which backup data can be retained.
+	//
+	// example:
+	//
+	// 1
 	RetentionDays *int64 `json:"retentionDays,omitempty" xml:"retentionDays,omitempty"`
 	// The upper limit for the resources that are consumed by an SQL statement.
+	//
+	// example:
+	//
+	// 1500
 	SqlMeteringMax *string `json:"sqlMeteringMax,omitempty" xml:"sqlMeteringMax,omitempty"`
 	// The information about the tiered storage.
 	StorageTierInfo *GetProjectResponseBodyDataPropertiesStorageTierInfo `json:"storageTierInfo,omitempty" xml:"storageTierInfo,omitempty" type:"Struct"`
 	// The lifecycle of the table in the project.
-	TableLifecycle *GetProjectResponseBodyDataPropertiesTableLifecycle `json:"tableLifecycle,omitempty" xml:"tableLifecycle,omitempty" type:"Struct"`
+	TableLifecycle       *GetProjectResponseBodyDataPropertiesTableLifecycle       `json:"tableLifecycle,omitempty" xml:"tableLifecycle,omitempty" type:"Struct"`
+	TableLifecycleConfig *GetProjectResponseBodyDataPropertiesTableLifecycleConfig `json:"tableLifecycleConfig,omitempty" xml:"tableLifecycleConfig,omitempty" type:"Struct"`
 	// The time zone of the project.
+	//
+	// example:
+	//
+	// Asia/Shanghai
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
 	// The name of the tunnel quota.
+	//
+	// example:
+	//
+	// Quota
 	TunnelQuota *string `json:"tunnelQuota,omitempty" xml:"tunnelQuota,omitempty"`
 	// The data type edition. Valid values: -**1**: MaxCompute V1.0 data type edition. -**2**: MaxCompute V2.0 data type edition. -**hive**: Hive-compatible data type edition.
+	//
+	// example:
+	//
+	// 2.0
 	TypeSystem *string `json:"typeSystem,omitempty" xml:"typeSystem,omitempty"`
 }
 
@@ -1275,6 +1686,11 @@ func (s *GetProjectResponseBodyDataProperties) SetEnableDecimal2(v bool) *GetPro
 
 func (s *GetProjectResponseBodyDataProperties) SetEnableFdcCacheForce(v bool) *GetProjectResponseBodyDataProperties {
 	s.EnableFdcCacheForce = &v
+	return s
+}
+
+func (s *GetProjectResponseBodyDataProperties) SetEnableTieredStorage(v bool) *GetProjectResponseBodyDataProperties {
+	s.EnableTieredStorage = &v
 	return s
 }
 
@@ -1313,6 +1729,11 @@ func (s *GetProjectResponseBodyDataProperties) SetTableLifecycle(v *GetProjectRe
 	return s
 }
 
+func (s *GetProjectResponseBodyDataProperties) SetTableLifecycleConfig(v *GetProjectResponseBodyDataPropertiesTableLifecycleConfig) *GetProjectResponseBodyDataProperties {
+	s.TableLifecycleConfig = v
+	return s
+}
+
 func (s *GetProjectResponseBodyDataProperties) SetTimezone(v string) *GetProjectResponseBodyDataProperties {
 	s.Timezone = &v
 	return s
@@ -1330,10 +1751,22 @@ func (s *GetProjectResponseBodyDataProperties) SetTypeSystem(v string) *GetProje
 
 type GetProjectResponseBodyDataPropertiesEncryption struct {
 	// The name of the encryption algorithm.
+	//
+	// example:
+	//
+	// SHA1
 	Algorithm *string `json:"algorithm,omitempty" xml:"algorithm,omitempty"`
 	// Indicates whether data encryption is enabled. Valid values: true and false.
+	//
+	// example:
+	//
+	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
 	// The key of the encryption algorithm.
+	//
+	// example:
+	//
+	// dafault
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
 }
 
@@ -1362,8 +1795,16 @@ func (s *GetProjectResponseBodyDataPropertiesEncryption) SetKey(v string) *GetPr
 
 type GetProjectResponseBodyDataPropertiesStorageTierInfo struct {
 	// The backup storage.
+	//
+	// example:
+	//
+	// 86672917
 	ProjectBackupSize *int64 `json:"projectBackupSize,omitempty" xml:"projectBackupSize,omitempty"`
 	// The total storage.
+	//
+	// example:
+	//
+	// 56066037
 	ProjectTotalSize *int64 `json:"projectTotalSize,omitempty" xml:"projectTotalSize,omitempty"`
 	// The tiered storage.
 	StorageTierSize *GetProjectResponseBodyDataPropertiesStorageTierInfoStorageTierSize `json:"storageTierSize,omitempty" xml:"storageTierSize,omitempty" type:"Struct"`
@@ -1394,10 +1835,22 @@ func (s *GetProjectResponseBodyDataPropertiesStorageTierInfo) SetStorageTierSize
 
 type GetProjectResponseBodyDataPropertiesStorageTierInfoStorageTierSize struct {
 	// The long-term storage.
+	//
+	// example:
+	//
+	// 21764917
 	LongTermSize *int64 `json:"longTermSize,omitempty" xml:"longTermSize,omitempty"`
 	// The IA storage.
+	//
+	// example:
+	//
+	// 767693
 	LowFrequencySize *int64 `json:"lowFrequencySize,omitempty" xml:"lowFrequencySize,omitempty"`
 	// The standard storage.
+	//
+	// example:
+	//
+	// 27649172
 	StandardSize *int64 `json:"standardSize,omitempty" xml:"standardSize,omitempty"`
 }
 
@@ -1426,8 +1879,16 @@ func (s *GetProjectResponseBodyDataPropertiesStorageTierInfoStorageTierSize) Set
 
 type GetProjectResponseBodyDataPropertiesTableLifecycle struct {
 	// The type of the lifecycle. Valid values: -**mandatory**: The lifecycle clause is required. You must configure a lifecycle for a table. -**optional**: The lifecycle clause is optional in a table creation statement. If you do not configure a lifecycle for a table, the table does not expire. -**inherit**: If you do not configure a lifecycle for a table when you create the table, the value of the odps.table.lifecycle.value parameter is used by default.
+	//
+	// example:
+	//
+	// optional
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The retention period of a table. Unit: days.
+	//
+	// example:
+	//
+	// 37231
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -1449,10 +1910,237 @@ func (s *GetProjectResponseBodyDataPropertiesTableLifecycle) SetValue(v string) 
 	return s
 }
 
+type GetProjectResponseBodyDataPropertiesTableLifecycleConfig struct {
+	TierToLongterm     *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongterm     `json:"TierToLongterm,omitempty" xml:"TierToLongterm,omitempty" type:"Struct"`
+	TierToLowFrequency *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequency `json:"TierToLowFrequency,omitempty" xml:"TierToLowFrequency,omitempty" type:"Struct"`
+}
+
+func (s GetProjectResponseBodyDataPropertiesTableLifecycleConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectResponseBodyDataPropertiesTableLifecycleConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectResponseBodyDataPropertiesTableLifecycleConfig) SetTierToLongterm(v *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongterm) *GetProjectResponseBodyDataPropertiesTableLifecycleConfig {
+	s.TierToLongterm = v
+	return s
+}
+
+func (s *GetProjectResponseBodyDataPropertiesTableLifecycleConfig) SetTierToLowFrequency(v *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequency) *GetProjectResponseBodyDataPropertiesTableLifecycleConfig {
+	s.TierToLowFrequency = v
+	return s
+}
+
+type GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongterm struct {
+	DaysAfterLastAccessGreaterThan           *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongtermDaysAfterLastAccessGreaterThan           `json:"daysAfterLastAccessGreaterThan,omitempty" xml:"daysAfterLastAccessGreaterThan,omitempty" type:"Struct"`
+	DaysAfterLastModificationGreaterThan     *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongtermDaysAfterLastModificationGreaterThan     `json:"daysAfterLastModificationGreaterThan,omitempty" xml:"daysAfterLastModificationGreaterThan,omitempty" type:"Struct"`
+	DaysAfterLastTierModificationGreaterThan *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongtermDaysAfterLastTierModificationGreaterThan `json:"daysAfterLastTierModificationGreaterThan,omitempty" xml:"daysAfterLastTierModificationGreaterThan,omitempty" type:"Struct"`
+}
+
+func (s GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongterm) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongterm) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongterm) SetDaysAfterLastAccessGreaterThan(v *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongtermDaysAfterLastAccessGreaterThan) *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongterm {
+	s.DaysAfterLastAccessGreaterThan = v
+	return s
+}
+
+func (s *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongterm) SetDaysAfterLastModificationGreaterThan(v *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongtermDaysAfterLastModificationGreaterThan) *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongterm {
+	s.DaysAfterLastModificationGreaterThan = v
+	return s
+}
+
+func (s *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongterm) SetDaysAfterLastTierModificationGreaterThan(v *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongtermDaysAfterLastTierModificationGreaterThan) *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongterm {
+	s.DaysAfterLastTierModificationGreaterThan = v
+	return s
+}
+
+type GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongtermDaysAfterLastAccessGreaterThan struct {
+	ConditionCode *string `json:"conditionCode,omitempty" xml:"conditionCode,omitempty"`
+	Value         *int64  `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongtermDaysAfterLastAccessGreaterThan) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongtermDaysAfterLastAccessGreaterThan) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongtermDaysAfterLastAccessGreaterThan) SetConditionCode(v string) *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongtermDaysAfterLastAccessGreaterThan {
+	s.ConditionCode = &v
+	return s
+}
+
+func (s *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongtermDaysAfterLastAccessGreaterThan) SetValue(v int64) *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongtermDaysAfterLastAccessGreaterThan {
+	s.Value = &v
+	return s
+}
+
+type GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongtermDaysAfterLastModificationGreaterThan struct {
+	ConditionCode *string `json:"conditionCode,omitempty" xml:"conditionCode,omitempty"`
+	Value         *int64  `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongtermDaysAfterLastModificationGreaterThan) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongtermDaysAfterLastModificationGreaterThan) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongtermDaysAfterLastModificationGreaterThan) SetConditionCode(v string) *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongtermDaysAfterLastModificationGreaterThan {
+	s.ConditionCode = &v
+	return s
+}
+
+func (s *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongtermDaysAfterLastModificationGreaterThan) SetValue(v int64) *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongtermDaysAfterLastModificationGreaterThan {
+	s.Value = &v
+	return s
+}
+
+type GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongtermDaysAfterLastTierModificationGreaterThan struct {
+	ConditionCode *string `json:"conditionCode,omitempty" xml:"conditionCode,omitempty"`
+	Value         *int64  `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongtermDaysAfterLastTierModificationGreaterThan) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongtermDaysAfterLastTierModificationGreaterThan) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongtermDaysAfterLastTierModificationGreaterThan) SetConditionCode(v string) *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongtermDaysAfterLastTierModificationGreaterThan {
+	s.ConditionCode = &v
+	return s
+}
+
+func (s *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongtermDaysAfterLastTierModificationGreaterThan) SetValue(v int64) *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLongtermDaysAfterLastTierModificationGreaterThan {
+	s.Value = &v
+	return s
+}
+
+type GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequency struct {
+	DaysAfterLastAccessGreaterThan           *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequencyDaysAfterLastAccessGreaterThan           `json:"daysAfterLastAccessGreaterThan,omitempty" xml:"daysAfterLastAccessGreaterThan,omitempty" type:"Struct"`
+	DaysAfterLastModificationGreaterThan     *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequencyDaysAfterLastModificationGreaterThan     `json:"daysAfterLastModificationGreaterThan,omitempty" xml:"daysAfterLastModificationGreaterThan,omitempty" type:"Struct"`
+	DaysAfterLastTierModificationGreaterThan *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequencyDaysAfterLastTierModificationGreaterThan `json:"daysAfterLastTierModificationGreaterThan,omitempty" xml:"daysAfterLastTierModificationGreaterThan,omitempty" type:"Struct"`
+}
+
+func (s GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequency) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequency) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequency) SetDaysAfterLastAccessGreaterThan(v *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequencyDaysAfterLastAccessGreaterThan) *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequency {
+	s.DaysAfterLastAccessGreaterThan = v
+	return s
+}
+
+func (s *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequency) SetDaysAfterLastModificationGreaterThan(v *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequencyDaysAfterLastModificationGreaterThan) *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequency {
+	s.DaysAfterLastModificationGreaterThan = v
+	return s
+}
+
+func (s *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequency) SetDaysAfterLastTierModificationGreaterThan(v *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequencyDaysAfterLastTierModificationGreaterThan) *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequency {
+	s.DaysAfterLastTierModificationGreaterThan = v
+	return s
+}
+
+type GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequencyDaysAfterLastAccessGreaterThan struct {
+	ConditionCode *string `json:"conditionCode,omitempty" xml:"conditionCode,omitempty"`
+	Value         *int64  `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequencyDaysAfterLastAccessGreaterThan) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequencyDaysAfterLastAccessGreaterThan) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequencyDaysAfterLastAccessGreaterThan) SetConditionCode(v string) *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequencyDaysAfterLastAccessGreaterThan {
+	s.ConditionCode = &v
+	return s
+}
+
+func (s *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequencyDaysAfterLastAccessGreaterThan) SetValue(v int64) *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequencyDaysAfterLastAccessGreaterThan {
+	s.Value = &v
+	return s
+}
+
+type GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequencyDaysAfterLastModificationGreaterThan struct {
+	ConditionCode *string `json:"conditionCode,omitempty" xml:"conditionCode,omitempty"`
+	Value         *int64  `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequencyDaysAfterLastModificationGreaterThan) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequencyDaysAfterLastModificationGreaterThan) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequencyDaysAfterLastModificationGreaterThan) SetConditionCode(v string) *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequencyDaysAfterLastModificationGreaterThan {
+	s.ConditionCode = &v
+	return s
+}
+
+func (s *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequencyDaysAfterLastModificationGreaterThan) SetValue(v int64) *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequencyDaysAfterLastModificationGreaterThan {
+	s.Value = &v
+	return s
+}
+
+type GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequencyDaysAfterLastTierModificationGreaterThan struct {
+	ConditionCode *string `json:"conditionCode,omitempty" xml:"conditionCode,omitempty"`
+	Value         *int64  `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequencyDaysAfterLastTierModificationGreaterThan) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequencyDaysAfterLastTierModificationGreaterThan) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequencyDaysAfterLastTierModificationGreaterThan) SetConditionCode(v string) *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequencyDaysAfterLastTierModificationGreaterThan {
+	s.ConditionCode = &v
+	return s
+}
+
+func (s *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequencyDaysAfterLastTierModificationGreaterThan) SetValue(v int64) *GetProjectResponseBodyDataPropertiesTableLifecycleConfigTierToLowFrequencyDaysAfterLastTierModificationGreaterThan {
+	s.Value = &v
+	return s
+}
+
 type GetProjectResponseBodyDataSaleTag struct {
 	// The ID of the resource.
+	//
+	// example:
+	//
+	// project_name
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
 	// The type of the resource.
+	//
+	// example:
+	//
+	// project
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 }
 
@@ -1476,18 +2164,42 @@ func (s *GetProjectResponseBodyDataSaleTag) SetResourceType(v string) *GetProjec
 
 type GetProjectResponseBodyDataSecurityProperties struct {
 	// Indicates whether Download control is enabled.
+	//
+	// example:
+	//
+	// false
 	EnableDownloadPrivilege *bool `json:"enableDownloadPrivilege,omitempty" xml:"enableDownloadPrivilege,omitempty"`
 	// Indicates whether label-based access control is enabled.
+	//
+	// example:
+	//
+	// false
 	LabelSecurity *bool `json:"labelSecurity,omitempty" xml:"labelSecurity,omitempty"`
 	// Indicates whether the object creator is allowed to perform operations on objects.
+	//
+	// example:
+	//
+	// true
 	ObjectCreatorHasAccessPermission *bool `json:"objectCreatorHasAccessPermission,omitempty" xml:"objectCreatorHasAccessPermission,omitempty"`
 	// Indicates whether the object creator is allowed to authorize other users to perform operations on objects.
+	//
+	// example:
+	//
+	// true
 	ObjectCreatorHasGrantPermission *bool `json:"objectCreatorHasGrantPermission,omitempty" xml:"objectCreatorHasGrantPermission,omitempty"`
 	// Indicates whether project data protection is enabled.
 	ProjectProtection *GetProjectResponseBodyDataSecurityPropertiesProjectProtection `json:"projectProtection,omitempty" xml:"projectProtection,omitempty" type:"Struct"`
 	// Indicates whether ACL-based access control is enabled.
+	//
+	// example:
+	//
+	// true
 	UsingAcl *bool `json:"usingAcl,omitempty" xml:"usingAcl,omitempty"`
 	// Indicates whether policy-based access control is enabled.
+	//
+	// example:
+	//
+	// true
 	UsingPolicy *bool `json:"usingPolicy,omitempty" xml:"usingPolicy,omitempty"`
 }
 
@@ -1536,8 +2248,44 @@ func (s *GetProjectResponseBodyDataSecurityProperties) SetUsingPolicy(v bool) *G
 
 type GetProjectResponseBodyDataSecurityPropertiesProjectProtection struct {
 	// The exception policy. If cross-project data access operations are required, the project owner must configure an exception policy in advance to allow the specified user to transfer data of a specified object from the current project to a specified project. After the exception policy is configured, data of the object can be transferred to the specified project even if the project data protection feature is enabled.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "Version": "1",
+	//
+	//     "Statement":
+	//
+	//     [{
+	//
+	//         "Effect":"Allow",
+	//
+	//         "Principal":"<Principal>",
+	//
+	//         "Action":["odps:<Action1>[, <Action2>, ...]"],
+	//
+	//         "Resource":"acs:odps:*:<Resource>",
+	//
+	//         "Condition":{
+	//
+	//             "StringEquals": {
+	//
+	//                 "odps:TaskType":["<Tasktype>"]
+	//
+	//             }
+	//
+	//         }
+	//
+	//     }]
+	//
+	//     }
 	ExceptionPolicy *string `json:"exceptionPolicy,omitempty" xml:"exceptionPolicy,omitempty"`
 	// Indicates whether project data protection is enabled.
+	//
+	// example:
+	//
+	// true
 	Protected *bool `json:"protected,omitempty" xml:"protected,omitempty"`
 }
 
@@ -1590,12 +2338,28 @@ func (s *GetProjectResponse) SetBody(v *GetProjectResponseBody) *GetProjectRespo
 
 type GetQuotaRequest struct {
 	// The trusted AccessKey pairs.
+	//
+	// example:
+	//
+	// null
 	AkProven *string `json:"AkProven,omitempty" xml:"AkProven,omitempty"`
 	// Specifies whether to include submodules. Valid values: -true: The request includes submodules. -false: The request does not include submodules. This is the default value.
+	//
+	// example:
+	//
+	// false
 	Mock *bool `json:"mock,omitempty" xml:"mock,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-chengdu
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
 	// The tenant ID.
+	//
+	// example:
+	//
+	// 520539530998273
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 
@@ -1631,42 +2395,110 @@ type GetQuotaResponseBody struct {
 	// The information about the order.
 	BillingPolicy *GetQuotaResponseBodyBillingPolicy `json:"billingPolicy,omitempty" xml:"billingPolicy,omitempty" type:"Struct"`
 	// The cluster ID.
+	//
+	// example:
+	//
+	// AT-120N
 	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
 	// The time when the resource was created.
+	//
+	// example:
+	//
+	// 2022-09-06T02:14:44Z
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to create the resource.
+	//
+	// example:
+	//
+	// 672863518
 	CreatorId *string `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
 	// The returned data.
 	Data *GetQuotaResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The quota ID.
+	//
+	// example:
+	//
+	// 0
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// The name of the quota.
+	//
+	// example:
+	//
+	// quota_a
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The alias of the quota.
+	//
+	// example:
+	//
+	// quota_nickname
 	NickName *string `json:"nickName,omitempty" xml:"nickName,omitempty"`
 	// The description of the quota.
+	//
+	// example:
+	//
+	// {"minCU":10,
+	//
+	// "adhocCU":0,
+	//
+	// "maxCU":10,
+	//
+	// "schedulerType":"Fair",
+	//
+	// }
 	Parameter map[string]interface{} `json:"parameter,omitempty" xml:"parameter,omitempty"`
 	// The ID of the parent resource.
+	//
+	// example:
+	//
+	// null
 	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 0b87b7a316654730544735643e9200
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The identifier of an object in a MaxCompute quota. This identifier is the same as the identifier in the sales bill of Alibaba Cloud. This parameter is used for tags.
 	SaleTag *GetQuotaResponseBodySaleTag `json:"saleTag,omitempty" xml:"saleTag,omitempty" type:"Struct"`
 	// The information about the scheduling plan.
 	ScheduleInfo *GetQuotaResponseBodyScheduleInfo `json:"scheduleInfo,omitempty" xml:"scheduleInfo,omitempty" type:"Struct"`
 	// The status of the resource.
+	//
+	// example:
+	//
+	// ON
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The information about the level-2 quota.
 	SubQuotaInfoList []*GetQuotaResponseBodySubQuotaInfoList `json:"subQuotaInfoList,omitempty" xml:"subQuotaInfoList,omitempty" type:"Repeated"`
 	// The tag of the resource for the quota.
+	//
+	// example:
+	//
+	// abc
 	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
 	// The tenant ID.
+	//
+	// example:
+	//
+	// 478403690625249
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 	// The type of the resource system. This parameter corresponds to the resourceSystemType parameter of the cluster.
+	//
+	// example:
+	//
+	// FUXI_ONLINE
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The version number.
+	//
+	// example:
+	//
+	// 1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
@@ -1781,12 +2613,25 @@ func (s *GetQuotaResponseBody) SetVersion(v string) *GetQuotaResponseBody {
 type GetQuotaResponseBodyBillingPolicy struct {
 	// The billing method of the quota. Valid values:
 	//
-	// *   subscription: a subscription quota.
-	// *   payasyougo: a pay-as-you-go quota.
+	// 	- subscription: a subscription quota.
+	//
+	// 	- payasyougo: a pay-as-you-go quota.
+	//
+	// example:
+	//
+	// subscription
 	BillingMethod *string `json:"billingMethod,omitempty" xml:"billingMethod,omitempty"`
 	// The specifications of the order.
+	//
+	// example:
+	//
+	// OdpsStandard
 	OdpsSpecCode *string `json:"odpsSpecCode,omitempty" xml:"odpsSpecCode,omitempty"`
 	// The order ID.
+	//
+	// example:
+	//
+	// 45245678
 	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
 }
 
@@ -1817,38 +2662,102 @@ type GetQuotaResponseBodyData struct {
 	// The information about the order.
 	BillingPolicy *GetQuotaResponseBodyDataBillingPolicy `json:"billingPolicy,omitempty" xml:"billingPolicy,omitempty" type:"Struct"`
 	// The cluster ID.
+	//
+	// example:
+	//
+	// AT-120N
 	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
 	// The time when the resource was created.
+	//
+	// example:
+	//
+	// 2022-09-06T02:14:44Z
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to create the resource.
+	//
+	// example:
+	//
+	// 672863518
 	CreatorId *string `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
 	// The quota ID.
+	//
+	// example:
+	//
+	// 0
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// The name of the quota.
+	//
+	// example:
+	//
+	// quota_a
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The alias of the quota.
+	//
+	// example:
+	//
+	// quota_nickname
 	NickName *string `json:"nickName,omitempty" xml:"nickName,omitempty"`
 	// The description of the quota.
+	//
+	// example:
+	//
+	// {"minCU":10,
+	//
+	// "adhocCU":0,
+	//
+	// "maxCU":10,
+	//
+	// "schedulerType":"Fair",
+	//
+	// }
 	Parameter map[string]interface{} `json:"parameter,omitempty" xml:"parameter,omitempty"`
 	// The ID of the parent resource.
+	//
+	// example:
+	//
+	// null
 	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	// The identifier of an object in a MaxCompute quota. This identifier is the same as the identifier in the sales bill of Alibaba Cloud. This parameter is used for tags.
 	SaleTag *GetQuotaResponseBodyDataSaleTag `json:"saleTag,omitempty" xml:"saleTag,omitempty" type:"Struct"`
 	// The information about the scheduling plan.
 	ScheduleInfo *GetQuotaResponseBodyDataScheduleInfo `json:"scheduleInfo,omitempty" xml:"scheduleInfo,omitempty" type:"Struct"`
 	// The status of the resource.
+	//
+	// example:
+	//
+	// ON
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The information about the level-2 quota.
 	SubQuotaInfoList []*GetQuotaResponseBodyDataSubQuotaInfoList `json:"subQuotaInfoList,omitempty" xml:"subQuotaInfoList,omitempty" type:"Repeated"`
 	// The tag of the resource for the quota.
+	//
+	// example:
+	//
+	// abc
 	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
 	// The tenant ID.
+	//
+	// example:
+	//
+	// 478403690625249
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 	// The type of the resource system. This parameter corresponds to the resourceSystemType parameter of the cluster.
+	//
+	// example:
+	//
+	// FUXI_ONLINE
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The version number.
+	//
+	// example:
+	//
+	// 1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
@@ -1953,12 +2862,25 @@ func (s *GetQuotaResponseBodyData) SetVersion(v string) *GetQuotaResponseBodyDat
 type GetQuotaResponseBodyDataBillingPolicy struct {
 	// The billing method of the quota. Valid values:
 	//
-	// *   subscription: a subscription quota.
-	// *   payasyougo: a pay-as-you-go quota.
+	// 	- subscription: a subscription quota.
+	//
+	// 	- payasyougo: a pay-as-you-go quota.
+	//
+	// example:
+	//
+	// subscription
 	BillingMethod *string `json:"billingMethod,omitempty" xml:"billingMethod,omitempty"`
 	// The specifications of the order.
+	//
+	// example:
+	//
+	// OdpsStandard
 	OdpsSpecCode *string `json:"odpsSpecCode,omitempty" xml:"odpsSpecCode,omitempty"`
 	// The order ID.
+	//
+	// example:
+	//
+	// 45245678
 	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
 }
 
@@ -1989,6 +2911,10 @@ type GetQuotaResponseBodyDataSaleTag struct {
 	// The identifier of an object in a MaxCompute quota. This identifier exists in the sales bill of Alibaba Cloud. You can use this identifier to associate the cost of a quota object with a tag.
 	ResourceIds []*string `json:"resourceIds,omitempty" xml:"resourceIds,omitempty" type:"Repeated"`
 	// The type of the object. Valid values: quota and project.
+	//
+	// example:
+	//
+	// "quota"
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 }
 
@@ -2012,20 +2938,52 @@ func (s *GetQuotaResponseBodyDataSaleTag) SetResourceType(v string) *GetQuotaRes
 
 type GetQuotaResponseBodyDataScheduleInfo struct {
 	// The quota plan that takes effect based on the scheduling plan.
+	//
+	// example:
+	//
+	// planA
 	CurrPlan *string `json:"currPlan,omitempty" xml:"currPlan,omitempty"`
 	// The time when the current quota plan is scheduled.
+	//
+	// example:
+	//
+	// 0800
 	CurrTime *string `json:"currTime,omitempty" xml:"currTime,omitempty"`
 	// The next quota plan that will take effect based on the scheduling plan.
+	//
+	// example:
+	//
+	// planB
 	NextPlan *string `json:"nextPlan,omitempty" xml:"nextPlan,omitempty"`
 	// The time when the next quota plan is scheduled.
+	//
+	// example:
+	//
+	// 1700
 	NextTime *string `json:"nextTime,omitempty" xml:"nextTime,omitempty"`
 	// The quota plan that immediately takes effect. If the quota plan that immediately takes effect is different from the current quota plan, this parameter is not empty.
+	//
+	// example:
+	//
+	// planC
 	OncePlan *string `json:"oncePlan,omitempty" xml:"oncePlan,omitempty"`
 	// The time when the quota plan immediately takes effect.
+	//
+	// example:
+	//
+	// 1500
 	OnceTime *string `json:"onceTime,omitempty" xml:"onceTime,omitempty"`
 	// The name of the operator.
+	//
+	// example:
+	//
+	// userA
 	OperatorName *string `json:"operatorName,omitempty" xml:"operatorName,omitempty"`
 	// The time zone of the project.
+	//
+	// example:
+	//
+	// UTC+8
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
 }
 
@@ -2081,36 +3039,88 @@ type GetQuotaResponseBodyDataSubQuotaInfoList struct {
 	// The information about the order.
 	BillingPolicy *GetQuotaResponseBodyDataSubQuotaInfoListBillingPolicy `json:"billingPolicy,omitempty" xml:"billingPolicy,omitempty" type:"Struct"`
 	// The cluster ID.
+	//
+	// example:
+	//
+	// AT-120N
 	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
 	// The time when the resource was created.
+	//
+	// example:
+	//
+	// 2022-09-06T02:14:44Z
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to create the resource.
+	//
+	// example:
+	//
+	// 672863518
 	CreatorId *string `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
 	// The ID of the level-2 quota.
+	//
+	// example:
+	//
+	// 1000048
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// The name of the level-2 quota.
+	//
+	// example:
+	//
+	// subquotaA
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The nickname of the level-2 quota.
+	//
+	// example:
+	//
+	// subquotaA
 	NickName *string `json:"nickName,omitempty" xml:"nickName,omitempty"`
 	// The description of the quota.
 	Parameter map[string]interface{} `json:"parameter,omitempty" xml:"parameter,omitempty"`
 	// The ID of the parent resource.
+	//
+	// example:
+	//
+	// 0
 	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	// The identifier of an object in a MaxCompute quota. This identifier is the same as the identifier in the sales bill of Alibaba Cloud. This parameter is used for tags.
 	SaleTag *GetQuotaResponseBodyDataSubQuotaInfoListSaleTag `json:"saleTag,omitempty" xml:"saleTag,omitempty" type:"Struct"`
 	// The information about the scheduling plan.
 	ScheduleInfo *GetQuotaResponseBodyDataSubQuotaInfoListScheduleInfo `json:"scheduleInfo,omitempty" xml:"scheduleInfo,omitempty" type:"Struct"`
 	// The status of the resource.
+	//
+	// example:
+	//
+	// ON
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The tag of the resource for the quota.
+	//
+	// example:
+	//
+	// abc
 	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
 	// The tenant ID.
+	//
+	// example:
+	//
+	// 478403690625249
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 	// The type of the resource system. This parameter corresponds to the resourceSystemType parameter of the cluster.
+	//
+	// example:
+	//
+	// FUXI_ONLINE
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The version number.
+	//
+	// example:
+	//
+	// 1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
@@ -2210,12 +3220,25 @@ func (s *GetQuotaResponseBodyDataSubQuotaInfoList) SetVersion(v string) *GetQuot
 type GetQuotaResponseBodyDataSubQuotaInfoListBillingPolicy struct {
 	// The billing method of the quota. Valid values:
 	//
-	// *   subscription: a subscription quota.
-	// *   payasyougo: a pay-as-you-go quota.
+	// 	- subscription: a subscription quota.
+	//
+	// 	- payasyougo: a pay-as-you-go quota.
+	//
+	// example:
+	//
+	// subscription
 	BillingMethod *string `json:"billingMethod,omitempty" xml:"billingMethod,omitempty"`
 	// The specifications of the order.
+	//
+	// example:
+	//
+	// OdpsStandard
 	OdpsSpecCode *string `json:"odpsSpecCode,omitempty" xml:"odpsSpecCode,omitempty"`
 	// The order ID.
+	//
+	// example:
+	//
+	// 45245678
 	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
 }
 
@@ -2246,6 +3269,10 @@ type GetQuotaResponseBodyDataSubQuotaInfoListSaleTag struct {
 	// The identifier of an object in a MaxCompute quota. This identifier exists in the sales bill of Alibaba Cloud. You can use this identifier to associate the cost of a quota object with a tag.
 	ResourceIds []*string `json:"resourceIds,omitempty" xml:"resourceIds,omitempty" type:"Repeated"`
 	// The type of the object. Valid values: quota and project.
+	//
+	// example:
+	//
+	// "quota"
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 }
 
@@ -2269,20 +3296,52 @@ func (s *GetQuotaResponseBodyDataSubQuotaInfoListSaleTag) SetResourceType(v stri
 
 type GetQuotaResponseBodyDataSubQuotaInfoListScheduleInfo struct {
 	// The quota plan that takes effect based on the scheduling plan.
+	//
+	// example:
+	//
+	// planA
 	CurrPlan *string `json:"currPlan,omitempty" xml:"currPlan,omitempty"`
 	// The time when the current quota plan is scheduled.
+	//
+	// example:
+	//
+	// 0800
 	CurrTime *string `json:"currTime,omitempty" xml:"currTime,omitempty"`
 	// The next quota plan that will take effect based on the scheduling plan.
+	//
+	// example:
+	//
+	// planB
 	NextPlan *string `json:"nextPlan,omitempty" xml:"nextPlan,omitempty"`
 	// The time when the next quota plan is scheduled.
+	//
+	// example:
+	//
+	// 1700
 	NextTime *string `json:"nextTime,omitempty" xml:"nextTime,omitempty"`
 	// The quota plan that immediately takes effect. If the quota plan that immediately takes effect is different from the current quota plan, this parameter is not empty.
+	//
+	// example:
+	//
+	// planC
 	OncePlan *string `json:"oncePlan,omitempty" xml:"oncePlan,omitempty"`
 	// The time when the quota plan immediately takes effect.
+	//
+	// example:
+	//
+	// 1500
 	OnceTime *string `json:"onceTime,omitempty" xml:"onceTime,omitempty"`
 	// The name of the operator.
+	//
+	// example:
+	//
+	// userA
 	OperatorName *string `json:"operatorName,omitempty" xml:"operatorName,omitempty"`
 	// The time zone of the project.
+	//
+	// example:
+	//
+	// UTC+8
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
 }
 
@@ -2338,6 +3397,10 @@ type GetQuotaResponseBodySaleTag struct {
 	// The identifier of an object in a MaxCompute quota. This identifier exists in the sales bill of Alibaba Cloud. You can use this identifier to associate the cost of a quota object with a tag.
 	ResourceIds []*string `json:"resourceIds,omitempty" xml:"resourceIds,omitempty" type:"Repeated"`
 	// The type of the object. Valid values: quota and project.
+	//
+	// example:
+	//
+	// "quota"
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 }
 
@@ -2361,20 +3424,52 @@ func (s *GetQuotaResponseBodySaleTag) SetResourceType(v string) *GetQuotaRespons
 
 type GetQuotaResponseBodyScheduleInfo struct {
 	// The quota plan that takes effect based on the scheduling plan.
+	//
+	// example:
+	//
+	// planA
 	CurrPlan *string `json:"currPlan,omitempty" xml:"currPlan,omitempty"`
 	// The time when the current quota plan is scheduled.
+	//
+	// example:
+	//
+	// 0800
 	CurrTime *string `json:"currTime,omitempty" xml:"currTime,omitempty"`
 	// The next quota plan that will take effect based on the scheduling plan.
+	//
+	// example:
+	//
+	// planB
 	NextPlan *string `json:"nextPlan,omitempty" xml:"nextPlan,omitempty"`
 	// The time when the next quota plan is scheduled.
+	//
+	// example:
+	//
+	// 1700
 	NextTime *string `json:"nextTime,omitempty" xml:"nextTime,omitempty"`
 	// The quota plan that immediately takes effect. If the quota plan that immediately takes effect is different from the current quota plan, this parameter is not empty.
+	//
+	// example:
+	//
+	// planC
 	OncePlan *string `json:"oncePlan,omitempty" xml:"oncePlan,omitempty"`
 	// The time when the quota plan immediately takes effect.
+	//
+	// example:
+	//
+	// 1500
 	OnceTime *string `json:"onceTime,omitempty" xml:"onceTime,omitempty"`
 	// The name of the operator.
+	//
+	// example:
+	//
+	// userA
 	OperatorName *string `json:"operatorName,omitempty" xml:"operatorName,omitempty"`
 	// The time zone of the project.
+	//
+	// example:
+	//
+	// UTC+8
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
 }
 
@@ -2430,36 +3525,100 @@ type GetQuotaResponseBodySubQuotaInfoList struct {
 	// The information about the order.
 	BillingPolicy *GetQuotaResponseBodySubQuotaInfoListBillingPolicy `json:"billingPolicy,omitempty" xml:"billingPolicy,omitempty" type:"Struct"`
 	// The cluster ID.
+	//
+	// example:
+	//
+	// AT-120N
 	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
 	// The time when the resource was created.
+	//
+	// example:
+	//
+	// 2022-09-06T02:14:44Z
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to create the resource.
+	//
+	// example:
+	//
+	// 672863518
 	CreatorId *string `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
 	// The ID of the level-2 quota.
+	//
+	// example:
+	//
+	// 1000048
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// The name of the level-2 quota.
+	//
+	// example:
+	//
+	// subquotaA
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The alias of the level-2 quota.
+	//
+	// example:
+	//
+	// subquotaA
 	NickName *string `json:"nickName,omitempty" xml:"nickName,omitempty"`
 	// The description of the quota.
+	//
+	// example:
+	//
+	// {"minCU":10,
+	//
+	// "adhocCU":0,
+	//
+	// "maxCU":10,
+	//
+	// "schedulerType":"Fair",
+	//
+	// }
 	Parameter map[string]interface{} `json:"parameter,omitempty" xml:"parameter,omitempty"`
 	// The ID of the parent resource.
+	//
+	// example:
+	//
+	// 0
 	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	// The identifier of an object in a MaxCompute quota. This identifier is the same as the identifier in the sales bill of Alibaba Cloud. This parameter is used for tags.
 	SaleTag *GetQuotaResponseBodySubQuotaInfoListSaleTag `json:"saleTag,omitempty" xml:"saleTag,omitempty" type:"Struct"`
 	// The information about the scheduling plan.
 	ScheduleInfo *GetQuotaResponseBodySubQuotaInfoListScheduleInfo `json:"scheduleInfo,omitempty" xml:"scheduleInfo,omitempty" type:"Struct"`
 	// The status of the resource.
+	//
+	// example:
+	//
+	// ON
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The tag of the resource for the quota.
+	//
+	// example:
+	//
+	// abc
 	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
 	// The tenant ID.
+	//
+	// example:
+	//
+	// 478403690625249
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 	// The type of the resource system. This parameter corresponds to the resourceSystemType parameter of the cluster.
+	//
+	// example:
+	//
+	// FUXI_ONLINE
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The version number.
+	//
+	// example:
+	//
+	// 1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
@@ -2559,12 +3718,25 @@ func (s *GetQuotaResponseBodySubQuotaInfoList) SetVersion(v string) *GetQuotaRes
 type GetQuotaResponseBodySubQuotaInfoListBillingPolicy struct {
 	// The billing method of the quota. Valid values:
 	//
-	// *   subscription: a subscription quota.
-	// *   payasyougo: a pay-as-you-go quota.
+	// 	- subscription: a subscription quota.
+	//
+	// 	- payasyougo: a pay-as-you-go quota.
+	//
+	// example:
+	//
+	// subscription
 	BillingMethod *string `json:"billingMethod,omitempty" xml:"billingMethod,omitempty"`
 	// The specifications of the order.
+	//
+	// example:
+	//
+	// OdpsStandard
 	OdpsSpecCode *string `json:"odpsSpecCode,omitempty" xml:"odpsSpecCode,omitempty"`
 	// The order ID.
+	//
+	// example:
+	//
+	// 45245678
 	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
 }
 
@@ -2595,6 +3767,10 @@ type GetQuotaResponseBodySubQuotaInfoListSaleTag struct {
 	// The identifier of an object in a MaxCompute quota. This identifier exists in the sales bill of Alibaba Cloud. You can use this identifier to associate the cost of a quota object with a tag.
 	ResourceIds []*string `json:"resourceIds,omitempty" xml:"resourceIds,omitempty" type:"Repeated"`
 	// The type of the object. Valid values: quota and project.
+	//
+	// example:
+	//
+	// "quota"
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 }
 
@@ -2618,20 +3794,52 @@ func (s *GetQuotaResponseBodySubQuotaInfoListSaleTag) SetResourceType(v string) 
 
 type GetQuotaResponseBodySubQuotaInfoListScheduleInfo struct {
 	// The quota plan that takes effect based on the scheduling plan.
+	//
+	// example:
+	//
+	// planA
 	CurrPlan *string `json:"currPlan,omitempty" xml:"currPlan,omitempty"`
 	// The time when the current quota plan is scheduled.
+	//
+	// example:
+	//
+	// 0800
 	CurrTime *string `json:"currTime,omitempty" xml:"currTime,omitempty"`
 	// The next quota plan that will take effect based on the scheduling plan.
+	//
+	// example:
+	//
+	// planB
 	NextPlan *string `json:"nextPlan,omitempty" xml:"nextPlan,omitempty"`
 	// The time when the next quota plan is scheduled.
+	//
+	// example:
+	//
+	// 1700
 	NextTime *string `json:"nextTime,omitempty" xml:"nextTime,omitempty"`
 	// The quota plan that immediately takes effect. If the quota plan that immediately takes effect is different from the current quota plan, this parameter is not empty.
+	//
+	// example:
+	//
+	// planC
 	OncePlan *string `json:"oncePlan,omitempty" xml:"oncePlan,omitempty"`
 	// The time when the quota plan immediately takes effect.
+	//
+	// example:
+	//
+	// 1500
 	OnceTime *string `json:"onceTime,omitempty" xml:"onceTime,omitempty"`
 	// The name of the operator.
+	//
+	// example:
+	//
+	// userA
 	OperatorName *string `json:"operatorName,omitempty" xml:"operatorName,omitempty"`
 	// The time zone of the project.
+	//
+	// example:
+	//
+	// UTC+8
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
 }
 
@@ -2714,8 +3922,16 @@ func (s *GetQuotaResponse) SetBody(v *GetQuotaResponseBody) *GetQuotaResponse {
 
 type GetQuotaPlanRequest struct {
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-beijing
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
 	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 483212237127906
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 
@@ -2741,6 +3957,10 @@ type GetQuotaPlanResponseBody struct {
 	// The returned data.
 	Data *GetQuotaPlanResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0be3e0aa16667684362147582e038f
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -2764,8 +3984,16 @@ func (s *GetQuotaPlanResponseBody) SetRequestId(v string) *GetQuotaPlanResponseB
 
 type GetQuotaPlanResponseBodyData struct {
 	// The time when the quota plan was created.
+	//
+	// example:
+	//
+	// 2022-05-16T06:07:45Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The name of the quota plan.
+	//
+	// example:
+	//
+	// planA
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The details of the quota.
 	Quota *GetQuotaPlanResponseBodyDataQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
@@ -2798,36 +4026,88 @@ type GetQuotaPlanResponseBodyDataQuota struct {
 	// The information of the order.
 	BillingPolicy *GetQuotaPlanResponseBodyDataQuotaBillingPolicy `json:"billingPolicy,omitempty" xml:"billingPolicy,omitempty" type:"Struct"`
 	// The ID of the cluster.
+	//
+	// example:
+	//
+	// AT-120N
 	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
 	// The time when the quota plan was created.
+	//
+	// example:
+	//
+	// 2022-09-06T02:14:44Z
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to create the resource.
+	//
+	// example:
+	//
+	// 672863518
 	CreatorId *string `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
 	// The ID of the quota.
+	//
+	// example:
+	//
+	// 0
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// The name of the quota.
+	//
+	// example:
+	//
+	// quota_a
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The alias of the quota.
+	//
+	// example:
+	//
+	// quota_nickname
 	NickName *string `json:"nickName,omitempty" xml:"nickName,omitempty"`
 	// The description of the quota.
 	Parameter map[string]interface{} `json:"parameter,omitempty" xml:"parameter,omitempty"`
 	// The ID of the parent resource.
+	//
+	// example:
+	//
+	// null
 	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	// The information of the scheduling plan.
 	ScheduleInfo *GetQuotaPlanResponseBodyDataQuotaScheduleInfo `json:"scheduleInfo,omitempty" xml:"scheduleInfo,omitempty" type:"Struct"`
 	// The status of the resource.
+	//
+	// example:
+	//
+	// ON
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The information of the level-2 quota.
 	SubQuotaInfoList []*GetQuotaPlanResponseBodyDataQuotaSubQuotaInfoList `json:"subQuotaInfoList,omitempty" xml:"subQuotaInfoList,omitempty" type:"Repeated"`
 	// The tag of the resource for the quota.
+	//
+	// example:
+	//
+	// abc
 	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
 	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 478403690625249
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 	// The type of the resource system. This parameter corresponds to the resourceSystemType parameter of the cluster.
+	//
+	// example:
+	//
+	// FUXI_ONLINE
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The version number.
+	//
+	// example:
+	//
+	// 1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
@@ -2927,12 +4207,25 @@ func (s *GetQuotaPlanResponseBodyDataQuota) SetVersion(v string) *GetQuotaPlanRe
 type GetQuotaPlanResponseBodyDataQuotaBillingPolicy struct {
 	// The billing method of the quota. Valid values:
 	//
-	// *   subscription: a subscription quota.
-	// *   payasyougo: a pay-as-you-go quota.
+	// 	- subscription: a subscription quota.
+	//
+	// 	- payasyougo: a pay-as-you-go quota.
+	//
+	// example:
+	//
+	// subscription
 	BillingMethod *string `json:"billingMethod,omitempty" xml:"billingMethod,omitempty"`
 	// The specifications of the order.
+	//
+	// example:
+	//
+	// OdpsStandard
 	OdpsSpecCode *string `json:"odpsSpecCode,omitempty" xml:"odpsSpecCode,omitempty"`
 	// The ID of the order.
+	//
+	// example:
+	//
+	// 45245678
 	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
 }
 
@@ -2961,18 +4254,46 @@ func (s *GetQuotaPlanResponseBodyDataQuotaBillingPolicy) SetOrderId(v string) *G
 
 type GetQuotaPlanResponseBodyDataQuotaScheduleInfo struct {
 	// The quota plan that takes effect based on the scheduling plan.
+	//
+	// example:
+	//
+	// planA
 	CurrPlan *string `json:"currPlan,omitempty" xml:"currPlan,omitempty"`
 	// The time when the current quota plan is scheduled.
+	//
+	// example:
+	//
+	// 0800
 	CurrTime *string `json:"currTime,omitempty" xml:"currTime,omitempty"`
 	// The next quota plan that will take effect based on the scheduling plan.
+	//
+	// example:
+	//
+	// planB
 	NextPlan *string `json:"nextPlan,omitempty" xml:"nextPlan,omitempty"`
 	// The time when the next quota plan is scheduled.
+	//
+	// example:
+	//
+	// 1700
 	NextTime *string `json:"nextTime,omitempty" xml:"nextTime,omitempty"`
 	// If the quota plan that immediately takes effect is different from the current quota plan, this parameter is not empty.
+	//
+	// example:
+	//
+	// planC
 	OncePlan *string `json:"oncePlan,omitempty" xml:"oncePlan,omitempty"`
 	// The time when the quota plan immediately takes effect.
+	//
+	// example:
+	//
+	// 1500
 	OnceTime *string `json:"onceTime,omitempty" xml:"onceTime,omitempty"`
 	// The name of the operator.
+	//
+	// example:
+	//
+	// userA
 	OperatorName *string `json:"operatorName,omitempty" xml:"operatorName,omitempty"`
 }
 
@@ -3023,34 +4344,86 @@ type GetQuotaPlanResponseBodyDataQuotaSubQuotaInfoList struct {
 	// The information of the order.
 	BillingPolicy *GetQuotaPlanResponseBodyDataQuotaSubQuotaInfoListBillingPolicy `json:"billingPolicy,omitempty" xml:"billingPolicy,omitempty" type:"Struct"`
 	// The ID of the cluster.
+	//
+	// example:
+	//
+	// AT-120N
 	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
 	// The time when the resource was created.
+	//
+	// example:
+	//
+	// 2022-09-06T02:14:44Z
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The ID of the user who created the quota plan.
+	//
+	// example:
+	//
+	// 672863518
 	CreatorId *string `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
 	// The ID of the level-2 quota.
+	//
+	// example:
+	//
+	// 1000048
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// The name of the level-2 quota.
+	//
+	// example:
+	//
+	// subquotaA
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The alias of the level-2 quota.
+	//
+	// example:
+	//
+	// subquotaA
 	NickName *string `json:"nickName,omitempty" xml:"nickName,omitempty"`
 	// The description of the quota.
 	Parameter map[string]interface{} `json:"parameter,omitempty" xml:"parameter,omitempty"`
 	// The ID of the parent resource.
+	//
+	// example:
+	//
+	// 0
 	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	// The information of the scheduling plan.
 	ScheduleInfo *GetQuotaPlanResponseBodyDataQuotaSubQuotaInfoListScheduleInfo `json:"scheduleInfo,omitempty" xml:"scheduleInfo,omitempty" type:"Struct"`
 	// The status of the resource.
+	//
+	// example:
+	//
+	// ON
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The tag of the resource for the quota.
+	//
+	// example:
+	//
+	// abc
 	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
 	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 478403690625249
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 	// The type of the resource system. This parameter corresponds to the resourceSystemType parameter of the cluster.
+	//
+	// example:
+	//
+	// FUXI_ONLINE
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The version number.
+	//
+	// example:
+	//
+	// 1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
@@ -3145,12 +4518,25 @@ func (s *GetQuotaPlanResponseBodyDataQuotaSubQuotaInfoList) SetVersion(v string)
 type GetQuotaPlanResponseBodyDataQuotaSubQuotaInfoListBillingPolicy struct {
 	// The billing method of the quota. Valid values:
 	//
-	// *   subscription: a subscription quota.
-	// *   payasyougo: a pay-as-you-go quota.
+	// 	- subscription: a subscription quota.
+	//
+	// 	- payasyougo: a pay-as-you-go quota.
+	//
+	// example:
+	//
+	// subscription
 	BillingMethod *string `json:"billingMethod,omitempty" xml:"billingMethod,omitempty"`
 	// The specifications of the order.
+	//
+	// example:
+	//
+	// OdpsStandard
 	OdpsSpecCode *string `json:"odpsSpecCode,omitempty" xml:"odpsSpecCode,omitempty"`
 	// The ID of the order.
+	//
+	// example:
+	//
+	// 45245678
 	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
 }
 
@@ -3179,18 +4565,46 @@ func (s *GetQuotaPlanResponseBodyDataQuotaSubQuotaInfoListBillingPolicy) SetOrde
 
 type GetQuotaPlanResponseBodyDataQuotaSubQuotaInfoListScheduleInfo struct {
 	// The quota plan that takes effect based on the scheduling plan.
+	//
+	// example:
+	//
+	// planA
 	CurrPlan *string `json:"currPlan,omitempty" xml:"currPlan,omitempty"`
 	// The time when the current quota plan is scheduled.
+	//
+	// example:
+	//
+	// 0800
 	CurrTime *string `json:"currTime,omitempty" xml:"currTime,omitempty"`
 	// The next quota plan that will take effect based on the scheduling plan.
+	//
+	// example:
+	//
+	// planB
 	NextPlan *string `json:"nextPlan,omitempty" xml:"nextPlan,omitempty"`
 	// The time when the next quota plan is scheduled.
+	//
+	// example:
+	//
+	// 1700
 	NextTime *string `json:"nextTime,omitempty" xml:"nextTime,omitempty"`
 	// If the quota plan that immediately takes effect is different from the current quota plan, this parameter is not empty.
+	//
+	// example:
+	//
+	// planC
 	OncePlan *string `json:"oncePlan,omitempty" xml:"oncePlan,omitempty"`
 	// The time when the quota plan immediately takes effect.
+	//
+	// example:
+	//
+	// 1500
 	OnceTime *string `json:"onceTime,omitempty" xml:"onceTime,omitempty"`
 	// The name of the operator.
+	//
+	// example:
+	//
+	// userA
 	OperatorName *string `json:"operatorName,omitempty" xml:"operatorName,omitempty"`
 }
 
@@ -3268,10 +4682,22 @@ func (s *GetQuotaPlanResponse) SetBody(v *GetQuotaPlanResponseBody) *GetQuotaPla
 
 type GetQuotaScheduleRequest struct {
 	// The time zone.
+	//
+	// example:
+	//
+	// UTC+8
 	DisplayTimezone *string `json:"displayTimezone,omitempty" xml:"displayTimezone,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-beijing
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
 	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 478403690625249
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 
@@ -3301,14 +4727,31 @@ func (s *GetQuotaScheduleRequest) SetTenantId(v string) *GetQuotaScheduleRequest
 type GetQuotaScheduleResponseBody struct {
 	// The returned data.
 	Data []*GetQuotaScheduleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// *   If the value of success was false, an error code was returned.
-	// *   If the value of success was true, a null value was returned.
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
+	// example:
+	//
+	// success
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	// The error message.
+	//
+	// example:
+	//
+	// errorMsg
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
 	// Indicates whether the request was successful. If this parameter was not empty and the value of this parameter was not 200, the request failed.
+	//
+	// example:
+	//
+	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bc059b716696296266308790e0d3e
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -3349,14 +4792,34 @@ type GetQuotaScheduleResponseBodyData struct {
 	// The condition value.
 	Condition *GetQuotaScheduleResponseBodyDataCondition `json:"condition,omitempty" xml:"condition,omitempty" type:"Struct"`
 	// The ID of the quota plan.
+	//
+	// example:
+	//
+	// 63
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// The name of the operator.
+	//
+	// example:
+	//
+	// userA
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
 	// The name of the quota plan.
+	//
+	// example:
+	//
+	// planA
 	Plan *string `json:"plan,omitempty" xml:"plan,omitempty"`
 	// The time zone.
+	//
+	// example:
+	//
+	// UTC+8
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
 	// The type of the quota plan.
+	//
+	// example:
+	//
+	// once
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -3400,8 +4863,16 @@ func (s *GetQuotaScheduleResponseBodyData) SetType(v string) *GetQuotaScheduleRe
 
 type GetQuotaScheduleResponseBodyDataCondition struct {
 	// The start time when the quota plan takes effect.
+	//
+	// example:
+	//
+	// 2022-04-25T04:23:04Z
 	After *string `json:"after,omitempty" xml:"after,omitempty"`
 	// The time when the quota plan takes effect.
+	//
+	// example:
+	//
+	// 0900
 	At *string `json:"at,omitempty" xml:"at,omitempty"`
 }
 
@@ -3456,12 +4927,28 @@ type GetRoleAclResponseBody struct {
 	// The returned data.
 	Data *GetRoleAclResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The error code returned if the request failed.
+	//
+	// example:
+	//
+	// 040002
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	// The error message.
+	//
+	// example:
+	//
+	// error message
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0a06dc0916696898838762018e9564
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -3555,8 +5042,16 @@ type GetRoleAclResponseBodyDataFunction struct {
 	// The operations that were performed on the function.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 	// The name of the function.
+	//
+	// example:
+	//
+	// functionA
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The Schema name.
+	//
+	// example:
+	//
+	// default
 	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
@@ -3587,8 +5082,16 @@ type GetRoleAclResponseBodyDataInstance struct {
 	// The operations that were performed on the instance.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 	// The name of the instance.
+	//
+	// example:
+	//
+	// instanceA
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The Schema name.
+	//
+	// example:
+	//
+	// default
 	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
@@ -3619,8 +5122,16 @@ type GetRoleAclResponseBodyDataPackage struct {
 	// The operations that were performed on the package.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 	// The name of the package.
+	//
+	// example:
+	//
+	// packageA
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The Schema name.
+	//
+	// example:
+	//
+	// default
 	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
@@ -3651,8 +5162,16 @@ type GetRoleAclResponseBodyDataProject struct {
 	// The operations that were performed on the project.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 	// The name of the MaxCompute project.
+	//
+	// example:
+	//
+	// projectA
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The Schema name.
+	//
+	// example:
+	//
+	// default
 	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
@@ -3683,8 +5202,16 @@ type GetRoleAclResponseBodyDataResource struct {
 	// The operations that were performed on the resource.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 	// The name of the resource.
+	//
+	// example:
+	//
+	// resourceA
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The Schema name.
+	//
+	// example:
+	//
+	// default
 	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
@@ -3715,8 +5242,16 @@ type GetRoleAclResponseBodyDataTable struct {
 	// The operations that were performed on the table.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 	// The name of the table.
+	//
+	// example:
+	//
+	// tableA
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The Schema name.
+	//
+	// example:
+	//
+	// default
 	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
@@ -3774,8 +5309,20 @@ func (s *GetRoleAclResponse) SetBody(v *GetRoleAclResponseBody) *GetRoleAclRespo
 
 type GetRoleAclOnObjectRequest struct {
 	// The name of the object.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tableA
 	ObjectName *string `json:"objectName,omitempty" xml:"objectName,omitempty"`
 	// The type of the object.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// table
 	ObjectType *string `json:"objectType,omitempty" xml:"objectType,omitempty"`
 }
 
@@ -3801,6 +5348,10 @@ type GetRoleAclOnObjectResponseBody struct {
 	// The returned data.
 	Data *GetRoleAclOnObjectResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bc1366d16686529650188023ef87f
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -3826,6 +5377,10 @@ type GetRoleAclOnObjectResponseBodyData struct {
 	// The operations that were performed on the object.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 	// The name of the object.
+	//
+	// example:
+	//
+	// tableA
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
@@ -3878,8 +5433,42 @@ func (s *GetRoleAclOnObjectResponse) SetBody(v *GetRoleAclOnObjectResponseBody) 
 
 type GetRolePolicyResponseBody struct {
 	// The returned data.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "Statement": [
+	//
+	//             {
+	//
+	//                   "Action": [
+	//
+	//                         "odps:*"
+	//
+	//                   ],
+	//
+	//                   "Effect": "Allow",
+	//
+	//                   "Resource": [
+	//
+	//                         "acs:odps:*:projects/{projectname}/authorization/packages"
+	//
+	//                   ]
+	//
+	//             }
+	//
+	//       ],
+	//
+	//       "Version": "1"
+	//
+	// }
 	Data *string `json:"data,omitempty" xml:"data,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bc1eeed16675342848904412e08dd
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -3933,21 +5522,43 @@ func (s *GetRolePolicyResponse) SetBody(v *GetRolePolicyResponseBody) *GetRolePo
 type GetRunningJobsRequest struct {
 	// The time when the query starts. This parameter specifies the time when a job is submitted.
 	//
-	// *   The time range that is specified by the **from** and **to** request parameters is a closed interval. The start time and end time are included in the range. If the value of **from** is the same as the value of **to**, the time range is invalid, and a null value is returned.
-	// *   The value is a UNIX timestamp that represents the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// 	- The time range that is specified by the **from*	- and **to*	- request parameters is a closed interval. The start time and end time are included in the range. If the value of **from*	- is the same as the value of **to**, the time range is invalid, and a null value is returned.
+	//
+	// 	- The value is a UNIX timestamp that represents the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1683785928
 	From *int64 `json:"from,omitempty" xml:"from,omitempty"`
 	// The list of job executors.
 	JobOwnerList []*string `json:"jobOwnerList,omitempty" xml:"jobOwnerList,omitempty" type:"Repeated"`
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	// The number of entries per page. Default value: 10. Maximum value: 20.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// The list of nicknames of quotas that are used by jobs.
 	QuotaNicknameList []*string `json:"quotaNicknameList,omitempty" xml:"quotaNicknameList,omitempty" type:"Repeated"`
 	// The time when the query ends. This parameter specifies the time when a job is submitted.
 	//
-	// *   The time interval that is specified by the **from** and **to** request parameters is a closed interval. The start time and end time are included in the interval. If the value of **from** is the same as the value of **to**, the interval is invalid, and a null value is returned.
-	// *   The value is a UNIX timestamp that represents the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// 	- The time interval that is specified by the **from*	- and **to*	- request parameters is a closed interval. The start time and end time are included in the interval. If the value of **from*	- is the same as the value of **to**, the interval is invalid, and a null value is returned.
+	//
+	// 	- The value is a UNIX timestamp that represents the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1683612946
 	To *int64 `json:"to,omitempty" xml:"to,omitempty"`
 }
 
@@ -3992,21 +5603,43 @@ func (s *GetRunningJobsRequest) SetTo(v int64) *GetRunningJobsRequest {
 type GetRunningJobsShrinkRequest struct {
 	// The time when the query starts. This parameter specifies the time when a job is submitted.
 	//
-	// *   The time range that is specified by the **from** and **to** request parameters is a closed interval. The start time and end time are included in the range. If the value of **from** is the same as the value of **to**, the time range is invalid, and a null value is returned.
-	// *   The value is a UNIX timestamp that represents the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// 	- The time range that is specified by the **from*	- and **to*	- request parameters is a closed interval. The start time and end time are included in the range. If the value of **from*	- is the same as the value of **to**, the time range is invalid, and a null value is returned.
+	//
+	// 	- The value is a UNIX timestamp that represents the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1683785928
 	From *int64 `json:"from,omitempty" xml:"from,omitempty"`
 	// The list of job executors.
 	JobOwnerListShrink *string `json:"jobOwnerList,omitempty" xml:"jobOwnerList,omitempty"`
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	// The number of entries per page. Default value: 10. Maximum value: 20.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// The list of nicknames of quotas that are used by jobs.
 	QuotaNicknameListShrink *string `json:"quotaNicknameList,omitempty" xml:"quotaNicknameList,omitempty"`
 	// The time when the query ends. This parameter specifies the time when a job is submitted.
 	//
-	// *   The time interval that is specified by the **from** and **to** request parameters is a closed interval. The start time and end time are included in the interval. If the value of **from** is the same as the value of **to**, the interval is invalid, and a null value is returned.
-	// *   The value is a UNIX timestamp that represents the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// 	- The time interval that is specified by the **from*	- and **to*	- request parameters is a closed interval. The start time and end time are included in the interval. If the value of **from*	- is the same as the value of **to**, the interval is invalid, and a null value is returned.
+	//
+	// 	- The value is a UNIX timestamp that represents the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1683612946
 	To *int64 `json:"to,omitempty" xml:"to,omitempty"`
 }
 
@@ -4051,14 +5684,31 @@ func (s *GetRunningJobsShrinkRequest) SetTo(v int64) *GetRunningJobsShrinkReques
 type GetRunningJobsResponseBody struct {
 	// The returned data.
 	Data *GetRunningJobsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// *   If the value of success was false, an error code was returned.
-	// *   If the value of success was true, a null value was returned.
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
+	// example:
+	//
+	// success
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	// The error message.
+	//
+	// example:
+	//
+	// 0A3B1FD2006A24C8D8BE65CDAC028298
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
 	// Indicates whether the request was successful. If this parameter was not empty and the value of this parameter was not 200, the request failed.
+	//
+	// example:
+	//
+	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bc3b4ab16684833172127321e2c25
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -4097,12 +5747,24 @@ func (s *GetRunningJobsResponseBody) SetRequestId(v string) *GetRunningJobsRespo
 
 type GetRunningJobsResponseBodyData struct {
 	// The page number.
+	//
+	// example:
+	//
+	// 2
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// The list of jobs in the running state.
 	RunningJobInfoList []*GetRunningJobsResponseBodyDataRunningJobInfoList `json:"runningJobInfoList,omitempty" xml:"runningJobInfoList,omitempty" type:"Repeated"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 64
 	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
@@ -4136,22 +5798,58 @@ func (s *GetRunningJobsResponseBodyData) SetTotalCount(v int64) *GetRunningJobsR
 
 type GetRunningJobsResponseBodyDataRunningJobInfoList struct {
 	// The compute unit (CU) snapshot proportion of the job.
+	//
+	// example:
+	//
+	// 0.45
 	CuSnapshot *float64 `json:"cuSnapshot,omitempty" xml:"cuSnapshot,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// 2023050206371544gomgtp3ljcr4
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	// The account that submits the job.
+	//
+	// example:
+	//
+	// ALIYUN$xxx@test.aliyunid.com
 	JobOwner *string `json:"jobOwner,omitempty" xml:"jobOwner,omitempty"`
 	// The memory snapshot proportion of the job.
+	//
+	// example:
+	//
+	// 0.45
 	MemorySnapshot *float64 `json:"memorySnapshot,omitempty" xml:"memorySnapshot,omitempty"`
 	// The progress of the job.
+	//
+	// example:
+	//
+	// 0
 	Progress *float64 `json:"progress,omitempty" xml:"progress,omitempty"`
 	// The name of the MaxCompute project.
+	//
+	// example:
+	//
+	// project_20221021123044_981b
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
 	// The nickname of the quota that is used by the job.
+	//
+	// example:
+	//
+	// my_quota
 	QuotaNickname *string `json:"quotaNickname,omitempty" xml:"quotaNickname,omitempty"`
 	// The time when the job starts to run.
+	//
+	// example:
+	//
+	// 1689746864
 	RunningAtTime *int64 `json:"runningAtTime,omitempty" xml:"runningAtTime,omitempty"`
 	// The time when the job is submitted.
+	//
+	// example:
+	//
+	// 1689746864
 	SubmittedAtTime *int64 `json:"submittedAtTime,omitempty" xml:"submittedAtTime,omitempty"`
 }
 
@@ -4238,8 +5936,14 @@ func (s *GetRunningJobsResponse) SetBody(v *GetRunningJobsResponseBody) *GetRunn
 }
 
 type GetTableInfoRequest struct {
+	// example:
+	//
+	// default
 	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
-	Type       *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// internal
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s GetTableInfoRequest) String() string {
@@ -4261,8 +5965,11 @@ func (s *GetTableInfoRequest) SetType(v string) *GetTableInfoRequest {
 }
 
 type GetTableInfoResponseBody struct {
-	Data      *GetTableInfoResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	RequestId *string                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Data *GetTableInfoResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0a06dd4516687375802853481ec9fd
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
 func (s GetTableInfoResponseBody) String() string {
@@ -4284,38 +5991,122 @@ func (s *GetTableInfoResponseBody) SetRequestId(v string) *GetTableInfoResponseB
 }
 
 type GetTableInfoResponseBodyData struct {
-	AutoRefreshEnabled             *bool                                           `json:"autoRefreshEnabled,omitempty" xml:"autoRefreshEnabled,omitempty"`
-	Comment                        *string                                         `json:"comment,omitempty" xml:"comment,omitempty"`
-	CreateTableDDL                 *string                                         `json:"createTableDDL,omitempty" xml:"createTableDDL,omitempty"`
-	CreationTime                   *int64                                          `json:"creationTime,omitempty" xml:"creationTime,omitempty"`
-	DisplayName                    *string                                         `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	FileNum                        *int64                                          `json:"fileNum,omitempty" xml:"fileNum,omitempty"`
-	IsExternalTable                *bool                                           `json:"isExternalTable,omitempty" xml:"isExternalTable,omitempty"`
-	IsOutdated                     *bool                                           `json:"isOutdated,omitempty" xml:"isOutdated,omitempty"`
-	LastAccessTime                 *int64                                          `json:"lastAccessTime,omitempty" xml:"lastAccessTime,omitempty"`
-	LastDDLTime                    *int64                                          `json:"lastDDLTime,omitempty" xml:"lastDDLTime,omitempty"`
-	LastModifiedTime               *int64                                          `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	Lifecycle                      *string                                         `json:"lifecycle,omitempty" xml:"lifecycle,omitempty"`
-	Location                       *string                                         `json:"location,omitempty" xml:"location,omitempty"`
-	MaterializedView               *bool                                           `json:"materializedView,omitempty" xml:"materializedView,omitempty"`
-	Name                           *string                                         `json:"name,omitempty" xml:"name,omitempty"`
-	NativeColumns                  []*GetTableInfoResponseBodyDataNativeColumns    `json:"nativeColumns,omitempty" xml:"nativeColumns,omitempty" type:"Repeated"`
-	OdpsPropertiesRolearn          *string                                         `json:"odpsPropertiesRolearn,omitempty" xml:"odpsPropertiesRolearn,omitempty"`
-	OdpsSqlTextOptionFlushHeader   *bool                                           `json:"odpsSqlTextOptionFlushHeader,omitempty" xml:"odpsSqlTextOptionFlushHeader,omitempty"`
-	OdpsTextOptionHeaderLinesCount *int64                                          `json:"odpsTextOptionHeaderLinesCount,omitempty" xml:"odpsTextOptionHeaderLinesCount,omitempty"`
-	Owner                          *string                                         `json:"owner,omitempty" xml:"owner,omitempty"`
-	PartitionColumns               []*GetTableInfoResponseBodyDataPartitionColumns `json:"partitionColumns,omitempty" xml:"partitionColumns,omitempty" type:"Repeated"`
-	PhysicalSize                   *int64                                          `json:"physicalSize,omitempty" xml:"physicalSize,omitempty"`
-	ProjectName                    *string                                         `json:"projectName,omitempty" xml:"projectName,omitempty"`
-	RewriteEnabled                 *bool                                           `json:"rewriteEnabled,omitempty" xml:"rewriteEnabled,omitempty"`
-	Schema                         *string                                         `json:"schema,omitempty" xml:"schema,omitempty"`
-	Size                           *int64                                          `json:"size,omitempty" xml:"size,omitempty"`
-	StorageHandler                 *string                                         `json:"storageHandler,omitempty" xml:"storageHandler,omitempty"`
-	TableLabel                     *string                                         `json:"tableLabel,omitempty" xml:"tableLabel,omitempty"`
-	TablesotreTableName            *string                                         `json:"tablesotreTableName,omitempty" xml:"tablesotreTableName,omitempty"`
-	TablestoreColumnsMapping       *string                                         `json:"tablestoreColumnsMapping,omitempty" xml:"tablestoreColumnsMapping,omitempty"`
-	Type                           *string                                         `json:"type,omitempty" xml:"type,omitempty"`
-	ViewText                       *string                                         `json:"viewText,omitempty" xml:"viewText,omitempty"`
+	// example:
+	//
+	// false
+	AutoRefreshEnabled *bool `json:"autoRefreshEnabled,omitempty" xml:"autoRefreshEnabled,omitempty"`
+	// example:
+	//
+	// sale_detail
+	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	// example:
+	//
+	// create table if not exists sale_detail( shop_name STRING, customer_id STRING, total_price DOUBLE) partitioned by (sale_date STRING, region STRING);
+	CreateTableDDL *string `json:"createTableDDL,omitempty" xml:"createTableDDL,omitempty"`
+	// example:
+	//
+	// 2022-01-17T07:07:47Z
+	CreationTime *int64 `json:"creationTime,omitempty" xml:"creationTime,omitempty"`
+	// example:
+	//
+	// project_name.schema_name.table_name
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// example:
+	//
+	// 200
+	FileNum *int64 `json:"fileNum,omitempty" xml:"fileNum,omitempty"`
+	// example:
+	//
+	// false
+	IsExternalTable *bool `json:"isExternalTable,omitempty" xml:"isExternalTable,omitempty"`
+	// example:
+	//
+	// false
+	IsOutdated *bool `json:"isOutdated,omitempty" xml:"isOutdated,omitempty"`
+	// example:
+	//
+	// 2023-11-21T02:05:56Z
+	LastAccessTime *int64 `json:"lastAccessTime,omitempty" xml:"lastAccessTime,omitempty"`
+	// example:
+	//
+	// 2023-11-21T02:05:56Z
+	LastDDLTime *int64 `json:"lastDDLTime,omitempty" xml:"lastDDLTime,omitempty"`
+	// example:
+	//
+	// 2023-11-21T02:05:56Z
+	LastModifiedTime *int64 `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	// example:
+	//
+	// -1
+	Lifecycle *string `json:"lifecycle,omitempty" xml:"lifecycle,omitempty"`
+	Location  *string `json:"location,omitempty" xml:"location,omitempty"`
+	// example:
+	//
+	// false
+	MaterializedView *bool `json:"materializedView,omitempty" xml:"materializedView,omitempty"`
+	// example:
+	//
+	// sale_detail
+	Name          *string                                      `json:"name,omitempty" xml:"name,omitempty"`
+	NativeColumns []*GetTableInfoResponseBodyDataNativeColumns `json:"nativeColumns,omitempty" xml:"nativeColumns,omitempty" type:"Repeated"`
+	// example:
+	//
+	// acs:ram::xxxxx:role/aliyunodpsdefaultrole
+	OdpsPropertiesRolearn *string `json:"odpsPropertiesRolearn,omitempty" xml:"odpsPropertiesRolearn,omitempty"`
+	// example:
+	//
+	// true
+	OdpsSqlTextOptionFlushHeader *bool `json:"odpsSqlTextOptionFlushHeader,omitempty" xml:"odpsSqlTextOptionFlushHeader,omitempty"`
+	// example:
+	//
+	// 1
+	OdpsTextOptionHeaderLinesCount *int64 `json:"odpsTextOptionHeaderLinesCount,omitempty" xml:"odpsTextOptionHeaderLinesCount,omitempty"`
+	// example:
+	//
+	// 188785396123****
+	Owner            *string                                         `json:"owner,omitempty" xml:"owner,omitempty"`
+	PartitionColumns []*GetTableInfoResponseBodyDataPartitionColumns `json:"partitionColumns,omitempty" xml:"partitionColumns,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2763
+	PhysicalSize *int64 `json:"physicalSize,omitempty" xml:"physicalSize,omitempty"`
+	// example:
+	//
+	// projectA
+	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
+	// example:
+	//
+	// false
+	RewriteEnabled *bool `json:"rewriteEnabled,omitempty" xml:"rewriteEnabled,omitempty"`
+	// example:
+	//
+	// default
+	Schema *string `json:"schema,omitempty" xml:"schema,omitempty"`
+	// example:
+	//
+	// 5372
+	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
+	// example:
+	//
+	// com.aliyun.odps.CsvStorageHandler
+	StorageHandler *string `json:"storageHandler,omitempty" xml:"storageHandler,omitempty"`
+	// example:
+	//
+	// 0
+	TableLabel *string `json:"tableLabel,omitempty" xml:"tableLabel,omitempty"`
+	// example:
+	//
+	// ots_tpch_orders
+	TablesotreTableName *string `json:"tablesotreTableName,omitempty" xml:"tablesotreTableName,omitempty"`
+	// example:
+	//
+	// :o_orderkey,:o_orderdate,o_custkey,o_orderstatus,o_totalprice
+	TablestoreColumnsMapping *string `json:"tablestoreColumnsMapping,omitempty" xml:"tablestoreColumnsMapping,omitempty"`
+	Type                     *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// select shop_name, sum(total_price) from sale_detail group by shop_name
+	ViewText *string `json:"viewText,omitempty" xml:"viewText,omitempty"`
 }
 
 func (s GetTableInfoResponseBodyData) String() string {
@@ -4488,9 +6279,18 @@ func (s *GetTableInfoResponseBodyData) SetViewText(v string) *GetTableInfoRespon
 
 type GetTableInfoResponseBodyDataNativeColumns struct {
 	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
-	Label   *string `json:"label,omitempty" xml:"label,omitempty"`
-	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
-	Type    *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// 0
+	Label *string `json:"label,omitempty" xml:"label,omitempty"`
+	// example:
+	//
+	// shop_name
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// STRING
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s GetTableInfoResponseBodyDataNativeColumns) String() string {
@@ -4523,9 +6323,18 @@ func (s *GetTableInfoResponseBodyDataNativeColumns) SetType(v string) *GetTableI
 
 type GetTableInfoResponseBodyDataPartitionColumns struct {
 	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
-	Label   *string `json:"label,omitempty" xml:"label,omitempty"`
-	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
-	Type    *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// 0
+	Label *string `json:"label,omitempty" xml:"label,omitempty"`
+	// example:
+	//
+	// sale_date
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// STRING
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s GetTableInfoResponseBodyDataPartitionColumns) String() string {
@@ -4589,6 +6398,10 @@ type GetTrustedProjectsResponseBody struct {
 	// The returned data.
 	Data []*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bc0590416675329272834336e4387
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -4641,10 +6454,40 @@ func (s *GetTrustedProjectsResponse) SetBody(v *GetTrustedProjectsResponseBody) 
 
 type KillJobsRequest struct {
 	// The request body parameters.
+	//
+	// example:
+	//
+	// [
+	//
+	//       {
+	//
+	//             "instanceId": "",
+	//
+	//             "projectName": ""
+	//
+	//       },
+	//
+	//       {
+	//
+	//             "instanceId": "",
+	//
+	//             "projectName": ""
+	//
+	//       }
+	//
+	// ]
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 	// The ID of the region in which the instance resides.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
 	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 478403690625249
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 
@@ -4673,10 +6516,22 @@ func (s *KillJobsRequest) SetTenantId(v string) *KillJobsRequest {
 
 type KillJobsResponseBody struct {
 	// The returned data.
+	//
+	// example:
+	//
+	// success
 	Data *string `json:"data,omitempty" xml:"data,omitempty"`
 	// Indicates whether the request was successful. If this parameter was not empty and the value of this parameter was not 200, the request failed.
+	//
+	// example:
+	//
+	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0abb7ede16814560741256732e91b6
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -4734,12 +6589,28 @@ func (s *KillJobsResponse) SetBody(v *KillJobsResponseBody) *KillJobsResponse {
 
 type ListFunctionsRequest struct {
 	// Specifies the marker after which the returned list begins.
+	//
+	// example:
+	//
+	// cHlvZHBzX3VkZl8xMDExNV8xNDU3NDI4NDkzKg==
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 	// The maximum number of entries to return on each page.
+	//
+	// example:
+	//
+	// 10
 	MaxItem *int32 `json:"maxItem,omitempty" xml:"maxItem,omitempty"`
 	// The names of the returned resources. The names must start with the value specified by the prefix parameter. If the prefix parameter is set to a, the names of the returned resources must start with a.
+	//
+	// example:
+	//
+	// a
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
 	// the name of schema.
+	//
+	// example:
+	//
+	// default
 	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
@@ -4775,6 +6646,10 @@ type ListFunctionsResponseBody struct {
 	// The returned data.
 	Data *ListFunctionsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0be3e0b716671885050924814e3623
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -4800,8 +6675,16 @@ type ListFunctionsResponseBodyData struct {
 	// The information about each function.
 	Functions []*ListFunctionsResponseBodyDataFunctions `json:"functions,omitempty" xml:"functions,omitempty" type:"Repeated"`
 	// Indicates the marker after which the returned list begins.
+	//
+	// example:
+	//
+	// cHlvZHBzX3VkZl8xMDExNV8xNDU3NDI4NDkzKg==
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 	// The maximum number of entries returned per page.
+	//
+	// example:
+	//
+	// 10
 	MaxItem *int32 `json:"maxItem,omitempty" xml:"maxItem,omitempty"`
 }
 
@@ -4830,18 +6713,46 @@ func (s *ListFunctionsResponseBodyData) SetMaxItem(v int32) *ListFunctionsRespon
 
 type ListFunctionsResponseBodyDataFunctions struct {
 	// The class in which the function was defined.
+	//
+	// example:
+	//
+	// abc
 	Class *string `json:"class,omitempty" xml:"class,omitempty"`
 	// The time when the function was created. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1664505167000
 	CreationTime *int64 `json:"creationTime,omitempty" xml:"creationTime,omitempty"`
 	// The display name of the function.
+	//
+	// example:
+	//
+	// getdate
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// The name of the function.
+	//
+	// example:
+	//
+	// getdate
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The owner of the function.
+	//
+	// example:
+	//
+	// odpsowner
 	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
 	// The name of the resource that was associated with the function.
+	//
+	// example:
+	//
+	// abc
 	Resources *string `json:"resources,omitempty" xml:"resources,omitempty"`
 	// The schema of the function.
+	//
+	// example:
+	//
+	// abc
 	Schema *string `json:"schema,omitempty" xml:"schema,omitempty"`
 }
 
@@ -4919,18 +6830,76 @@ func (s *ListFunctionsResponse) SetBody(v *ListFunctionsResponseBody) *ListFunct
 
 type ListJobInfosRequest struct {
 	// Specifies whether to sort query results in ascending or descending order.
+	//
+	// example:
+	//
+	// true
 	AscOrder *bool `json:"ascOrder,omitempty" xml:"ascOrder,omitempty"`
 	// The request body parameters.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "from":1672112000,
+	//
+	//   "to":1672112130,
+	//
+	//   "statusList":[],
+	//
+	//   "quotaNickname":"quota_nickname",
+	//
+	//   "projectList":[],
+	//
+	//   "typeList":[],
+	//
+	//   "jobOwnerList":[],
+	//
+	//   "signatureList":[],
+	//
+	//   "extNodeIdList":[],
+	//
+	//   "instanceIdList":[],
+	//
+	//   "priorityList":[],
+	//
+	//   "settings":{
+	//
+	//     "key":"value"
+	//
+	//   }
+	//
+	// }
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 	// The column based on which you want to sort query results.
+	//
+	// example:
+	//
+	// cuUsage
 	OrderColumn *string `json:"orderColumn,omitempty" xml:"orderColumn,omitempty"`
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
 	// The tenant ID.
+	//
+	// example:
+	//
+	// 478403690625249
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 
@@ -4981,8 +6950,16 @@ type ListJobInfosResponseBody struct {
 	// The returned data.
 	Data *ListJobInfosResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Indicates whether the request was successful. If this parameter was not empty and the value of this parameter was not 200, the request failed.
+	//
+	// example:
+	//
+	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 0bc13a9516807484336515320e38f5
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -5013,10 +6990,22 @@ type ListJobInfosResponseBodyData struct {
 	// The list of the information about the jobs.
 	JobInfoList []*ListJobInfosResponseBodyDataJobInfoList `json:"jobInfoList,omitempty" xml:"jobInfoList,omitempty" type:"Repeated"`
 	// The page number.
+	//
+	// example:
+	//
+	// 2
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 64
 	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
@@ -5050,58 +7039,166 @@ func (s *ListJobInfosResponseBodyData) SetTotalCount(v int64) *ListJobInfosRespo
 
 type ListJobInfosResponseBodyDataJobInfoList struct {
 	// The cluster ID.
+	//
+	// example:
+	//
+	// AY20A
 	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
 	// The CU snapshot proportion of the job.
+	//
+	// example:
+	//
+	// 0.48
 	CuSnapshot *float64 `json:"cuSnapshot,omitempty" xml:"cuSnapshot,omitempty"`
 	// The total number of used compute units (CUs).
+	//
+	// example:
+	//
+	// 10
 	CuUsage *int64 `json:"cuUsage,omitempty" xml:"cuUsage,omitempty"`
 	// The time when the job stops running.
+	//
+	// example:
+	//
+	// 0
 	EndAtTime *int64 `json:"endAtTime,omitempty" xml:"endAtTime,omitempty"`
 	// The node ID of DataWorks.
+	//
+	// example:
+	//
+	// node_4
 	ExtNodeId *string `json:"extNodeId,omitempty" xml:"extNodeId,omitempty"`
 	// The account of the node owner.
+	//
+	// example:
+	//
+	// duty_2
 	ExtNodeOnDuty *string `json:"extNodeOnDuty,omitempty" xml:"extNodeOnDuty,omitempty"`
 	// The upstream platform.
+	//
+	// example:
+	//
+	// platform_3
 	ExtPlantFrom *string `json:"extPlantFrom,omitempty" xml:"extPlantFrom,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// 20230410050036549gfmsdwf60gg
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	// The account that commits the job.
+	//
+	// example:
+	//
+	// ALIYUN$xxx@test.aliyunid.com
 	JobOwner *string `json:"jobOwner,omitempty" xml:"jobOwner,omitempty"`
 	// The type of the job.
+	//
+	// example:
+	//
+	// SQL
 	JobType *string `json:"jobType,omitempty" xml:"jobType,omitempty"`
 	// The memory snapshot proportion of the job.
+	//
+	// example:
+	//
+	// 0.42
 	MemorySnapshot *float64 `json:"memorySnapshot,omitempty" xml:"memorySnapshot,omitempty"`
 	// The total memory usage.
+	//
+	// example:
+	//
+	// 40
 	MemoryUsage *int64 `json:"memoryUsage,omitempty" xml:"memoryUsage,omitempty"`
 	// The priority of the job.
+	//
+	// example:
+	//
+	// 1
 	Priority *int64 `json:"priority,omitempty" xml:"priority,omitempty"`
 	// The name of the MaxCompute project.
+	//
+	// example:
+	//
+	// openrec_new
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
 	// The nickname of the quota that is used by the job.
+	//
+	// example:
+	//
+	// my_quota
 	QuotaNickname *string `json:"quotaNickname,omitempty" xml:"quotaNickname,omitempty"`
 	// The type of the quota.
+	//
+	// example:
+	//
+	// subscription
 	QuotaType *string `json:"quotaType,omitempty" xml:"quotaType,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
 	// The time when the job starts to run.
+	//
+	// example:
+	//
+	// 1672112113
 	RunningAtTime *int64 `json:"runningAtTime,omitempty" xml:"runningAtTime,omitempty"`
 	// The period for which the job runs.
+	//
+	// example:
+	//
+	// 800
 	RunningTime *int64 `json:"runningTime,omitempty" xml:"runningTime,omitempty"`
 	// The signature of the SQL job.
+	//
+	// example:
+	//
+	// i094KijGrN3kOXZ74kbexB77XQY=
 	Signature *string `json:"signature,omitempty" xml:"signature,omitempty"`
 	// The status of the job.
+	//
+	// example:
+	//
+	// running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The status of the snapshot.
+	//
+	// example:
+	//
+	// running
 	StatusSnapshot *string `json:"statusSnapshot,omitempty" xml:"statusSnapshot,omitempty"`
 	// The time when the job was committed.
+	//
+	// example:
+	//
+	// 1672112013
 	SubmittedAtTime *int64 `json:"submittedAtTime,omitempty" xml:"submittedAtTime,omitempty"`
 	// The tags.
+	//
+	// example:
+	//
+	// []
 	Tags *string `json:"tags,omitempty" xml:"tags,omitempty"`
 	// The tenant ID.
+	//
+	// example:
+	//
+	// 213065738244354
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 	// The total period for which the job runs.
+	//
+	// example:
+	//
+	// 900
 	TotalTime *int64 `json:"totalTime,omitempty" xml:"totalTime,omitempty"`
 	// The duration for which the job waits to start.
+	//
+	// example:
+	//
+	// 100
 	WaitingTime *int64 `json:"waitingTime,omitempty" xml:"waitingTime,omitempty"`
 }
 
@@ -5281,6 +7378,10 @@ type ListPackagesResponseBody struct {
 	// The returned data.
 	Data *ListPackagesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bc3b4aa16677927210252786e4cb6
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -5329,8 +7430,16 @@ func (s *ListPackagesResponseBodyData) SetInstalledPackages(v []*ListPackagesRes
 
 type ListPackagesResponseBodyDataCreatedPackages struct {
 	// The time when the package was created.
+	//
+	// example:
+	//
+	// 2022-08-02T02:30:34Z
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The name of the package.
+	//
+	// example:
+	//
+	// packageA
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
@@ -5354,12 +7463,28 @@ func (s *ListPackagesResponseBodyDataCreatedPackages) SetName(v string) *ListPac
 
 type ListPackagesResponseBodyDataInstalledPackages struct {
 	// The time when the package was installed.
+	//
+	// example:
+	//
+	// 2022-09-02T02:30:34Z
 	InstallTime *int64 `json:"installTime,omitempty" xml:"installTime,omitempty"`
 	// The name of the package.
+	//
+	// example:
+	//
+	// packageB
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The project to which the package belongs. This parameter is required if the package is installed in the MaxCompute project.
+	//
+	// example:
+	//
+	// projectB
 	SourceProject *string `json:"sourceProject,omitempty" xml:"sourceProject,omitempty"`
 	// The status of the package.
+	//
+	// example:
+	//
+	// OK
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
@@ -5424,6 +7549,10 @@ type ListProjectUsersResponseBody struct {
 	// The returned data.
 	Data *ListProjectUsersResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 0b87b7b316643495896551555e855b
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -5465,6 +7594,10 @@ func (s *ListProjectUsersResponseBodyData) SetUsers(v []*ListProjectUsersRespons
 
 type ListProjectUsersResponseBodyDataUsers struct {
 	// The name of the user.
+	//
+	// example:
+	//
+	// userA
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
@@ -5515,7 +7648,7 @@ type ListProjectsRequest struct {
 	//
 	// Valid values:
 	//
-	// *   true
+	// 	- true
 	//
 	//     <!-- -->
 	//
@@ -5523,31 +7656,71 @@ type ListProjectsRequest struct {
 	//
 	//     <!-- -->
 	//
-	// *   false
+	// 	- false
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
+	//
+	// example:
+	//
+	// true
 	ListSystemCatalog *bool `json:"listSystemCatalog,omitempty" xml:"listSystemCatalog,omitempty"`
 	// The maximum number of entries to return on each page.
+	//
+	// example:
+	//
+	// cHlvZHBzX3VkZl8xMDExNV8xNDU3NDI4NDkzKg==
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 	// The maximum number of entries returned per page.
+	//
+	// example:
+	//
+	// 10
 	MaxItem *int32 `json:"maxItem,omitempty" xml:"maxItem,omitempty"`
 	// Specifies the marker after which the returned list begins.
+	//
+	// example:
+	//
+	// a
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
 	// The name of the quota. The value of this parameter is the identifier of the quota in MaxCompute, which differs from the quotaNickname parameter. You can configure the quotaNickname parameter. The system automatically generates a value for the quotaName parameter. This parameter is only used to describe the tunnel quota.
+	//
+	// example:
+	//
+	// "hsajkdgbkaubh"
 	QuotaName *string `json:"quotaName,omitempty" xml:"quotaName,omitempty"`
 	// The name of the quota.
+	//
+	// example:
+	//
+	// quotaA
 	QuotaNickName *string `json:"quotaNickName,omitempty" xml:"quotaNickName,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-beijing
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
 	// The identifier of an object in a MaxCompute quota. This identifier is the same as the identifier in the sales bill of Alibaba Cloud. This parameter is used for tags.
+	//
+	// example:
+	//
+	// "aaaa-bbbb"
 	SaleTags *string `json:"saleTags,omitempty" xml:"saleTags,omitempty"`
 	// The tenant ID.
+	//
+	// example:
+	//
+	// 549532154333697
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 	// The project type. Valid values: external and managed. The value external indicates an external project, which is used in the data lakehouse solution. The value managed indicates an internal project.
+	//
+	// example:
+	//
+	// "managed"
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -5613,6 +7786,10 @@ type ListProjectsResponseBody struct {
 	// The returned data.
 	Data *ListProjectsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 0b16399216671970335563173e2340
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -5636,10 +7813,22 @@ func (s *ListProjectsResponseBody) SetRequestId(v string) *ListProjectsResponseB
 
 type ListProjectsResponseBodyData struct {
 	// A pagination token. Only continuous page turning is supported. If NextToken is not empty, the next page exists. The value of NextToken can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// AAAAAV3MpHK1AP0pfERHZN5pu6kvikyUl3ChyRxN+qLPvtOb
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// Indicates the marker after which the returned list begins.
+	//
+	// example:
+	//
+	// cHlvZHBzX3VkZl8xMDExNV8xNDU3NDI4NDkzKg==
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 	// The maximum number of entries returned per page.
+	//
+	// example:
+	//
+	// 10
 	MaxItem *int32 `json:"maxItem,omitempty" xml:"maxItem,omitempty"`
 	// The description of the project.
 	Projects []*ListProjectsResponseBodyDataProjects `json:"projects,omitempty" xml:"projects,omitempty" type:"Repeated"`
@@ -5677,34 +7866,66 @@ type ListProjectsResponseBodyDataProjects struct {
 	// The tags.
 	Tags []*ListProjectsResponseBodyDataProjectsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The remarks.
+	//
+	// example:
+	//
+	// maxcompute projects
 	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
 	// The storage usage.
+	//
+	// example:
+	//
+	// 16489027
 	CostStorage *string `json:"costStorage,omitempty" xml:"costStorage,omitempty"`
 	// Create time
+	//
+	// example:
+	//
+	// 1704380838000
 	CreatedTime *int64 `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
 	// The default computing quota.
+	//
+	// example:
+	//
+	// quotaA
 	DefaultQuota *string `json:"defaultQuota,omitempty" xml:"defaultQuota,omitempty"`
 	// The IP address whitelist.
 	IpWhiteList *ListProjectsResponseBodyDataProjectsIpWhiteList `json:"ipWhiteList,omitempty" xml:"ipWhiteList,omitempty" type:"Struct"`
 	// The name of the project.
+	//
+	// example:
+	//
+	// odps_project
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The owner of the project.
+	//
+	// example:
+	//
+	// 1139815775606813
 	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
 	// The properties of the project.
 	Properties *ListProjectsResponseBodyDataProjectsProperties `json:"properties,omitempty" xml:"properties,omitempty" type:"Struct"`
 	// Region Id
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	// The identifier of an object in a MaxCompute quota. This identifier is the same as the identifier in the sales bill of Alibaba Cloud. This parameter is used for tags.
 	SaleTag *ListProjectsResponseBodyDataProjectsSaleTag `json:"saleTag,omitempty" xml:"saleTag,omitempty" type:"Struct"`
 	// The permission properties.
 	SecurityProperties *ListProjectsResponseBodyDataProjectsSecurityProperties `json:"securityProperties,omitempty" xml:"securityProperties,omitempty" type:"Struct"`
 	// The status of the project. Valid values: -AVAILABLE: The project is available. -READONLY: The project is read-only. -FROZEN: The project is frozen. -DELETING: The project is being deleted.
+	//
+	// example:
+	//
+	// AVAILABLE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// Indicates whether the current project supports the MaxCompute three-layer model.
 	//
 	// Valid values:
 	//
-	// *   true
+	// 	- true
 	//
 	//     <!-- -->
 	//
@@ -5712,15 +7933,23 @@ type ListProjectsResponseBodyDataProjects struct {
 	//
 	//     <!-- -->
 	//
-	// *   false
+	// 	- false
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
+	//
+	// example:
+	//
+	// true
 	ThreeTierModel *bool `json:"threeTierModel,omitempty" xml:"threeTierModel,omitempty"`
 	// The project type. Valid values: -managed: The project is an internal project. -external: The project is an external project.
+	//
+	// example:
+	//
+	// managed
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -5809,8 +8038,16 @@ func (s *ListProjectsResponseBodyDataProjects) SetType(v string) *ListProjectsRe
 
 type ListProjectsResponseBodyDataProjectsTags struct {
 	// The tag key.
+	//
+	// example:
+	//
+	// Department
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// The tag value.
+	//
+	// example:
+	//
+	// acceptance test
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -5834,8 +8071,16 @@ func (s *ListProjectsResponseBodyDataProjectsTags) SetTagValue(v string) *ListPr
 
 type ListProjectsResponseBodyDataProjectsIpWhiteList struct {
 	// The list of IP addresses.
+	//
+	// example:
+	//
+	// 10.88.111.3
 	IpList *string `json:"ipList,omitempty" xml:"ipList,omitempty"`
 	// The list of virtual private cloud (VPC) IP addresses.
+	//
+	// example:
+	//
+	// 10.88.111.3
 	VpcIpList *string `json:"vpcIpList,omitempty" xml:"vpcIpList,omitempty"`
 }
 
@@ -5859,24 +8104,56 @@ func (s *ListProjectsResponseBodyDataProjectsIpWhiteList) SetVpcIpList(v string)
 
 type ListProjectsResponseBodyDataProjectsProperties struct {
 	// Indicates whether a full table scan on the project is enabled.
+	//
+	// example:
+	//
+	// false
 	AllowFullScan *bool `json:"allowFullScan,omitempty" xml:"allowFullScan,omitempty"`
 	// Indicates whether the DECIMAL data type in the MaxCompute V2.0 data type edition is enabled.
+	//
+	// example:
+	//
+	// true
 	EnableDecimal2 *bool `json:"enableDecimal2,omitempty" xml:"enableDecimal2,omitempty"`
 	// Indicates whether tunnel quota routing is enabled.
+	//
+	// example:
+	//
+	// true
 	EnableTunnelQuotaRoute *bool `json:"enableTunnelQuotaRoute,omitempty" xml:"enableTunnelQuotaRoute,omitempty"`
 	// The encryption information.
 	Encryption *ListProjectsResponseBodyDataProjectsPropertiesEncryption `json:"encryption,omitempty" xml:"encryption,omitempty" type:"Struct"`
 	// The maximum number of days for which backup data can be retained.
+	//
+	// example:
+	//
+	// 1
 	RetentionDays *int64 `json:"retentionDays,omitempty" xml:"retentionDays,omitempty"`
 	// The upper limit for the resources that are consumed by an SQL statement.
+	//
+	// example:
+	//
+	// 1500
 	SqlMeteringMax *string `json:"sqlMeteringMax,omitempty" xml:"sqlMeteringMax,omitempty"`
 	// The lifecycle of a table in the project.
 	TableLifecycle *ListProjectsResponseBodyDataProjectsPropertiesTableLifecycle `json:"tableLifecycle,omitempty" xml:"tableLifecycle,omitempty" type:"Struct"`
 	// The time zone of the instance.
+	//
+	// example:
+	//
+	// Asia/Shanghai
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
 	// The name of the tunnel quota.
+	//
+	// example:
+	//
+	// quota_tunnel
 	TunnelQuota *string `json:"tunnelQuota,omitempty" xml:"tunnelQuota,omitempty"`
 	// The data type edition. Valid values: -1: MaxCompute V1.0 data type edition. -2: MaxCompute V2.0 data type edition. -hive: Hive-compatible data type edition.
+	//
+	// example:
+	//
+	// 2
 	TypeSystem *string `json:"typeSystem,omitempty" xml:"typeSystem,omitempty"`
 }
 
@@ -5940,10 +8217,22 @@ func (s *ListProjectsResponseBodyDataProjectsProperties) SetTypeSystem(v string)
 
 type ListProjectsResponseBodyDataProjectsPropertiesEncryption struct {
 	// The name of the encryption algorithm.
+	//
+	// example:
+	//
+	// SHA1
 	Algorithm *string `json:"algorithm,omitempty" xml:"algorithm,omitempty"`
 	// Indicates whether data encryption is enabled. Valid values: true and false.
+	//
+	// example:
+	//
+	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
 	// The key of the encryption algorithm.
+	//
+	// example:
+	//
+	// dafault
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
 }
 
@@ -5972,8 +8261,16 @@ func (s *ListProjectsResponseBodyDataProjectsPropertiesEncryption) SetKey(v stri
 
 type ListProjectsResponseBodyDataProjectsPropertiesTableLifecycle struct {
 	// The type of the lifecycle. Valid values: -mandatory: The lifecycle clause is required. You must configure a lifecycle for a table. -optional: The lifecycle clause is optional in a table creation statement. If you do not configure a lifecycle for a table, the table does not expire. -inherit: If you do not configure a lifecycle for a table when you create the table, the value of odps.table.lifecycle.value is used by default.
+	//
+	// example:
+	//
+	// optional
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The retention period of a table. Unit: days.
+	//
+	// example:
+	//
+	// 37231
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -5997,8 +8294,16 @@ func (s *ListProjectsResponseBodyDataProjectsPropertiesTableLifecycle) SetValue(
 
 type ListProjectsResponseBodyDataProjectsSaleTag struct {
 	// The identifier of an object in a MaxCompute quota. This identifier is the same as the identifier in the sales bill of Alibaba Cloud. This parameter is used for tags.
+	//
+	// example:
+	//
+	// "aaaa-bbbb"
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
 	// The type of the object. Valid values: quota and project.
+	//
+	// example:
+	//
+	// "project"
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 }
 
@@ -6022,18 +8327,42 @@ func (s *ListProjectsResponseBodyDataProjectsSaleTag) SetResourceType(v string) 
 
 type ListProjectsResponseBodyDataProjectsSecurityProperties struct {
 	// Indicates whether Download control is enabled.
+	//
+	// example:
+	//
+	// false
 	EnableDownloadPrivilege *bool `json:"enableDownloadPrivilege,omitempty" xml:"enableDownloadPrivilege,omitempty"`
 	// Indicates whether label-based access control is enabled.
+	//
+	// example:
+	//
+	// false
 	LabelSecurity *bool `json:"labelSecurity,omitempty" xml:"labelSecurity,omitempty"`
 	// Indicates whether the object creator is allowed to perform operations on objects.
+	//
+	// example:
+	//
+	// true
 	ObjectCreatorHasAccessPermission *bool `json:"objectCreatorHasAccessPermission,omitempty" xml:"objectCreatorHasAccessPermission,omitempty"`
 	// Indicates whether the object creator is allowed to authorize other users to perform operations on objects.
+	//
+	// example:
+	//
+	// true
 	ObjectCreatorHasGrantPermission *bool `json:"objectCreatorHasGrantPermission,omitempty" xml:"objectCreatorHasGrantPermission,omitempty"`
 	// Indicates whether project data protection is enabled.
 	ProjectProtection *ListProjectsResponseBodyDataProjectsSecurityPropertiesProjectProtection `json:"projectProtection,omitempty" xml:"projectProtection,omitempty" type:"Struct"`
 	// Indicates whether ACL-based access control is enabled.
+	//
+	// example:
+	//
+	// true
 	UsingAcl *bool `json:"usingAcl,omitempty" xml:"usingAcl,omitempty"`
 	// Indicates whether policy-based access control is enabled.
+	//
+	// example:
+	//
+	// true
 	UsingPolicy *bool `json:"usingPolicy,omitempty" xml:"usingPolicy,omitempty"`
 }
 
@@ -6082,8 +8411,54 @@ func (s *ListProjectsResponseBodyDataProjectsSecurityProperties) SetUsingPolicy(
 
 type ListProjectsResponseBodyDataProjectsSecurityPropertiesProjectProtection struct {
 	// The exception policy. If cross-project data access operations are required, the project owner must configure an exception policy in advance to allow the specified user to transfer data of a specified object from the current project to a specified project. After the exception policy is configured, data of the object can be transferred to the specified project even if the project data protection feature is enabled.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "Version": "1",
+	//
+	//       "Statement": [
+	//
+	//             {
+	//
+	//                   "Effect": "Allow",
+	//
+	//                   "Principal": "",
+	//
+	//                   "Action": [
+	//
+	//                         "odps:[, , ...]"
+	//
+	//                   ],
+	//
+	//                   "Resource": "acs:odps:*:",
+	//
+	//                   "Condition": {
+	//
+	//                         "StringEquals": {
+	//
+	//                               "odps:TaskType": [
+	//
+	//                                     ""
+	//
+	//                               ]
+	//
+	//                         }
+	//
+	//                   }
+	//
+	//             }
+	//
+	//       ]
+	//
+	// }
 	ExceptionPolicy *string `json:"exceptionPolicy,omitempty" xml:"exceptionPolicy,omitempty"`
 	// Indicates whether project data protection is enabled.
+	//
+	// example:
+	//
+	// true
 	Protected *bool `json:"protected,omitempty" xml:"protected,omitempty"`
 }
 
@@ -6136,18 +8511,46 @@ func (s *ListProjectsResponse) SetBody(v *ListProjectsResponseBody) *ListProject
 
 type ListQuotasRequest struct {
 	// The billing method of the quota.
+	//
+	// example:
+	//
+	// subscription
 	BillingType *string `json:"billingType,omitempty" xml:"billingType,omitempty"`
 	// Specifies the marker after which the returned list begins.
+	//
+	// example:
+	//
+	// cHlvZHBzX3VkZl8xMDExNV8xNDU3NDI4NDkzKg==
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 	// The maximum number of entries to return on each page.
+	//
+	// example:
+	//
+	// 100
 	MaxItem *int64 `json:"maxItem,omitempty" xml:"maxItem,omitempty"`
 	// The service ID.
+	//
+	// example:
+	//
+	// ODPS
 	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-beijing
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
 	// The cost tag. You can filter out quota objects based on the cost tag. The cost tag is created when you tag a service.
+	//
+	// example:
+	//
+	// {"tag":"this_is_tag_demo"}
 	SaleTags *string `json:"saleTags,omitempty" xml:"saleTags,omitempty"`
 	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 280747109771520
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 
@@ -6196,16 +8599,32 @@ func (s *ListQuotasRequest) SetTenantId(v string) *ListQuotasRequest {
 
 type ListQuotasResponseBody struct {
 	// A pagination token. Only continuous page turning is supported. If NextToken is not empty, the next page exists. The value of NextToken can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// AAAAAdDWBF2w6Olxc+cMPjUtUMo/CvPe4IK7f7kIQFrIZjyc
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The returned data.
 	Data *ListQuotasResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Indicates the marker after which the returned list begins.
+	//
+	// example:
+	//
+	// cHlvZHBzX3VkZl8xMDExNV8xNDU3NDI4NDkzKg==
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 	// The maximum number of entries returned per page.
+	//
+	// example:
+	//
+	// 10
 	MaxItem *int64 `json:"maxItem,omitempty" xml:"maxItem,omitempty"`
 	// The list of quotas.
 	QuotaInfoList []*ListQuotasResponseBodyQuotaInfoList `json:"quotaInfoList,omitempty" xml:"quotaInfoList,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bc12e6f16677875480593081d2956
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -6249,10 +8668,22 @@ func (s *ListQuotasResponseBody) SetRequestId(v string) *ListQuotasResponseBody 
 
 type ListQuotasResponseBodyData struct {
 	// A pagination token. Only continuous page turning is supported. If NextToken is not empty, the next page exists. The value of NextToken can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// "abcde"
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// Indicates the marker after which the returned list begins.
+	//
+	// example:
+	//
+	// cHlvZHBzX3VkZl8xMDExNV8xNDU3NDI4NDkzKg==
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 	// The maximum number of entries returned per page.
+	//
+	// example:
+	//
+	// 10
 	MaxItem *int64 `json:"maxItem,omitempty" xml:"maxItem,omitempty"`
 	// The list of quotas.
 	QuotaInfoList []*ListQuotasResponseBodyDataQuotaInfoList `json:"quotaInfoList,omitempty" xml:"quotaInfoList,omitempty" type:"Repeated"`
@@ -6292,38 +8723,102 @@ type ListQuotasResponseBodyDataQuotaInfoList struct {
 	// The information of the order.
 	BillingPolicy *ListQuotasResponseBodyDataQuotaInfoListBillingPolicy `json:"billingPolicy,omitempty" xml:"billingPolicy,omitempty" type:"Struct"`
 	// The cluster ID.
+	//
+	// example:
+	//
+	// AT-120N
 	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
 	// The time when the resource was created.
+	//
+	// example:
+	//
+	// 2022-09-06T02:14:44Z
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to create the resource.
+	//
+	// example:
+	//
+	// 672863518
 	CreatorId *string `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
 	// The quota ID.
+	//
+	// example:
+	//
+	// 0
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// The name of the quota.
+	//
+	// example:
+	//
+	// quota_a
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The alias of the quota.
+	//
+	// example:
+	//
+	// quota_nickname
 	NickName *string `json:"nickName,omitempty" xml:"nickName,omitempty"`
 	// The description of the quota.
+	//
+	// example:
+	//
+	// {"minCU":10,
+	//
+	// "adhocCU":0,
+	//
+	// "maxCU":10,
+	//
+	// "schedulerType":"Fair",
+	//
+	// }
 	Parameter map[string]interface{} `json:"parameter,omitempty" xml:"parameter,omitempty"`
 	// The ID of the parent resource.
+	//
+	// example:
+	//
+	// null
 	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	// The identifier of an object in a MaxCompute quota. This identifier is the same as the identifier in the sales bill of Alibaba Cloud. This parameter is used for tags.
 	SaleTag *ListQuotasResponseBodyDataQuotaInfoListSaleTag `json:"saleTag,omitempty" xml:"saleTag,omitempty" type:"Struct"`
 	// The information of the scheduling plan.
 	ScheduleInfo *ListQuotasResponseBodyDataQuotaInfoListScheduleInfo `json:"scheduleInfo,omitempty" xml:"scheduleInfo,omitempty" type:"Struct"`
 	// The status of the endpoint group.
+	//
+	// example:
+	//
+	// ON
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The information of the level-2 quota.
 	SubQuotaInfoList []*ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoList `json:"subQuotaInfoList,omitempty" xml:"subQuotaInfoList,omitempty" type:"Repeated"`
 	// The tag of the resource for the quota.
+	//
+	// example:
+	//
+	// abc
 	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
 	// The tenant ID.
+	//
+	// example:
+	//
+	// 280747109771520
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 	// The type of the resource system. This parameter corresponds to the resourceSystemType parameter of the cluster.
+	//
+	// example:
+	//
+	// FUXI_ONLINE
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The version number.
+	//
+	// example:
+	//
+	// 1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
@@ -6432,8 +8927,16 @@ func (s *ListQuotasResponseBodyDataQuotaInfoList) SetVersion(v string) *ListQuot
 
 type ListQuotasResponseBodyDataQuotaInfoListTags struct {
 	// The key of the tag.
+	//
+	// example:
+	//
+	// Department
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// The value of the tag.
+	//
+	// example:
+	//
+	// a12351qHDP6YEQMt
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -6458,12 +8961,25 @@ func (s *ListQuotasResponseBodyDataQuotaInfoListTags) SetTagValue(v string) *Lis
 type ListQuotasResponseBodyDataQuotaInfoListBillingPolicy struct {
 	// The billing method of the quota. Valid values:
 	//
-	// *   subscription: a subscription quota.
-	// *   payasyougo: a pay-as-you-go quota.
+	// 	- subscription: a subscription quota.
+	//
+	// 	- payasyougo: a pay-as-you-go quota.
+	//
+	// example:
+	//
+	// subscription
 	BillingMethod *string `json:"billingMethod,omitempty" xml:"billingMethod,omitempty"`
 	// The specifications of the order.
+	//
+	// example:
+	//
+	// OdpsStandard
 	OdpsSpecCode *string `json:"odpsSpecCode,omitempty" xml:"odpsSpecCode,omitempty"`
 	// The order ID.
+	//
+	// example:
+	//
+	// 45245678
 	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
 }
 
@@ -6494,6 +9010,10 @@ type ListQuotasResponseBodyDataQuotaInfoListSaleTag struct {
 	// The identifier of an object in a MaxCompute quota. This identifier exists in the sales bill of Alibaba Cloud. You can use this identifier to associate the cost of a quota object with a tag.
 	ResourceIds []*string `json:"resourceIds,omitempty" xml:"resourceIds,omitempty" type:"Repeated"`
 	// The type of the object. Valid values: quota and project.
+	//
+	// example:
+	//
+	// "quota"
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 }
 
@@ -6517,20 +9037,52 @@ func (s *ListQuotasResponseBodyDataQuotaInfoListSaleTag) SetResourceType(v strin
 
 type ListQuotasResponseBodyDataQuotaInfoListScheduleInfo struct {
 	// The quota plan that takes effect based on the scheduling plan.
+	//
+	// example:
+	//
+	// planA
 	CurrPlan *string `json:"currPlan,omitempty" xml:"currPlan,omitempty"`
 	// The time when the current quota plan is scheduled.
+	//
+	// example:
+	//
+	// 0800
 	CurrTime *string `json:"currTime,omitempty" xml:"currTime,omitempty"`
 	// The next quota plan that will take effect based on the scheduling plan.
+	//
+	// example:
+	//
+	// planB
 	NextPlan *string `json:"nextPlan,omitempty" xml:"nextPlan,omitempty"`
 	// The time when the next quota plan is scheduled.
+	//
+	// example:
+	//
+	// 1700
 	NextTime *string `json:"nextTime,omitempty" xml:"nextTime,omitempty"`
 	// The quota plan that immediately takes effect. If the quota plan that immediately takes effect is different from the current quota plan, this parameter is not empty.
+	//
+	// example:
+	//
+	// planC
 	OncePlan *string `json:"oncePlan,omitempty" xml:"oncePlan,omitempty"`
 	// The time when the quota plan immediately takes effect.
+	//
+	// example:
+	//
+	// 1500
 	OnceTime *string `json:"onceTime,omitempty" xml:"onceTime,omitempty"`
 	// The name of the operator.
+	//
+	// example:
+	//
+	// userA
 	OperatorName *string `json:"operatorName,omitempty" xml:"operatorName,omitempty"`
 	// The time zone of the project.
+	//
+	// example:
+	//
+	// UTC+8
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
 }
 
@@ -6586,36 +9138,100 @@ type ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoList struct {
 	// The information of the order.
 	BillingPolicy *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListBillingPolicy `json:"billingPolicy,omitempty" xml:"billingPolicy,omitempty" type:"Struct"`
 	// The cluster ID.
+	//
+	// example:
+	//
+	// AT-120N
 	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
 	// The time when the resource was created.
+	//
+	// example:
+	//
+	// 2022-09-06T02:14:44Z
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to create the resource.
+	//
+	// example:
+	//
+	// 672863518
 	CreatorId *string `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
 	// The ID of the level-2 quota.
+	//
+	// example:
+	//
+	// 1000048
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// The name of the level-2 quota.
+	//
+	// example:
+	//
+	// subquotaA
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The nickname of the level-2 quota.
+	//
+	// example:
+	//
+	// subquotaA
 	NickName *string `json:"nickName,omitempty" xml:"nickName,omitempty"`
 	// The description of the quota.
+	//
+	// example:
+	//
+	// {"minCU":10,
+	//
+	// "adhocCU":0,
+	//
+	// "maxCU":10,
+	//
+	// "schedulerType":"Fair",
+	//
+	// }
 	Parameter map[string]interface{} `json:"parameter,omitempty" xml:"parameter,omitempty"`
 	// The ID of the parent resource.
+	//
+	// example:
+	//
+	// 0
 	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	// The identifier of an object in a MaxCompute quota. This identifier is the same as the identifier in the sales bill of Alibaba Cloud. This parameter is used for tags.
 	SaleTag *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListSaleTag `json:"saleTag,omitempty" xml:"saleTag,omitempty" type:"Struct"`
 	// The information of the scheduling plan.
 	ScheduleInfo *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListScheduleInfo `json:"scheduleInfo,omitempty" xml:"scheduleInfo,omitempty" type:"Struct"`
 	// The status of the endpoint group.
+	//
+	// example:
+	//
+	// ON
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The tag of the resource for the quota.
+	//
+	// example:
+	//
+	// abc
 	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
 	// The tenant ID.
+	//
+	// example:
+	//
+	// 280747109771520
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 	// The type of the resource system. This parameter corresponds to the resourceSystemType parameter of the cluster.
+	//
+	// example:
+	//
+	// FUXI_ONLINE
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The version of the algorithm image.
+	//
+	// example:
+	//
+	// 1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
@@ -6715,12 +9331,25 @@ func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoList) SetVersion(v s
 type ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListBillingPolicy struct {
 	// The billing method of the quota. Valid values:
 	//
-	// *   subscription: a subscription quota.
-	// *   payasyougo: a pay-as-you-go quota.
+	// 	- subscription: a subscription quota.
+	//
+	// 	- payasyougo: a pay-as-you-go quota.
+	//
+	// example:
+	//
+	// subscription
 	BillingMethod *string `json:"billingMethod,omitempty" xml:"billingMethod,omitempty"`
 	// The specifications of the order.
+	//
+	// example:
+	//
+	// OdpsStandard
 	OdpsSpecCode *string `json:"odpsSpecCode,omitempty" xml:"odpsSpecCode,omitempty"`
 	// The order ID.
+	//
+	// example:
+	//
+	// 45245678
 	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
 }
 
@@ -6751,6 +9380,10 @@ type ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListSaleTag struct {
 	// The identifier of an object in a MaxCompute quota. This identifier exists in the sales bill of Alibaba Cloud. You can use this identifier to associate the cost of a quota object with a tag.
 	ResourceIds []*string `json:"resourceIds,omitempty" xml:"resourceIds,omitempty" type:"Repeated"`
 	// The type of the object. Valid values: quota and project.
+	//
+	// example:
+	//
+	// "quota"
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 }
 
@@ -6774,20 +9407,52 @@ func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListSaleTag) SetReso
 
 type ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListScheduleInfo struct {
 	// The quota plan that takes effect based on the scheduling plan.
+	//
+	// example:
+	//
+	// planA
 	CurrPlan *string `json:"currPlan,omitempty" xml:"currPlan,omitempty"`
 	// The time when the current quota plan is scheduled.
+	//
+	// example:
+	//
+	// 0800
 	CurrTime *string `json:"currTime,omitempty" xml:"currTime,omitempty"`
 	// The next quota plan that will take effect based on the scheduling plan.
+	//
+	// example:
+	//
+	// planB
 	NextPlan *string `json:"nextPlan,omitempty" xml:"nextPlan,omitempty"`
 	// The time when the next quota plan is scheduled.
+	//
+	// example:
+	//
+	// 1700
 	NextTime *string `json:"nextTime,omitempty" xml:"nextTime,omitempty"`
 	// The quota plan that immediately takes effect. If the quota plan that immediately takes effect is different from the current quota plan, this parameter is not empty.
+	//
+	// example:
+	//
+	// planC
 	OncePlan *string `json:"oncePlan,omitempty" xml:"oncePlan,omitempty"`
 	// The time when the quota plan immediately takes effect.
+	//
+	// example:
+	//
+	// 1500
 	OnceTime *string `json:"onceTime,omitempty" xml:"onceTime,omitempty"`
 	// The name of the operator.
+	//
+	// example:
+	//
+	// userA
 	OperatorName *string `json:"operatorName,omitempty" xml:"operatorName,omitempty"`
 	// The time zone of the project.
+	//
+	// example:
+	//
+	// UTC+8
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
 }
 
@@ -6845,38 +9510,102 @@ type ListQuotasResponseBodyQuotaInfoList struct {
 	// The information of the order.
 	BillingPolicy *ListQuotasResponseBodyQuotaInfoListBillingPolicy `json:"billingPolicy,omitempty" xml:"billingPolicy,omitempty" type:"Struct"`
 	// The cluster ID.
+	//
+	// example:
+	//
+	// AT-120N
 	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
 	// The time when the resource was created.
+	//
+	// example:
+	//
+	// 2022-09-06T02:14:44Z
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to create the resource.
+	//
+	// example:
+	//
+	// 672863518
 	CreatorId *string `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
 	// The quota ID.
+	//
+	// example:
+	//
+	// 0
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// The name of the quota.
+	//
+	// example:
+	//
+	// quota_a
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The alias of the quota.
+	//
+	// example:
+	//
+	// quota_nickname
 	NickName *string `json:"nickName,omitempty" xml:"nickName,omitempty"`
 	// The description of the quota.
+	//
+	// example:
+	//
+	// {"minCU":10,
+	//
+	// "adhocCU":0,
+	//
+	// "maxCU":10,
+	//
+	// "schedulerType":"Fair",
+	//
+	// }
 	Parameter map[string]interface{} `json:"parameter,omitempty" xml:"parameter,omitempty"`
 	// The ID of the parent resource.
+	//
+	// example:
+	//
+	// null
 	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	// The identifier of an object in a MaxCompute quota. This identifier is the same as the identifier in the sales bill of Alibaba Cloud. This parameter is used for tags.
 	SaleTag *ListQuotasResponseBodyQuotaInfoListSaleTag `json:"saleTag,omitempty" xml:"saleTag,omitempty" type:"Struct"`
 	// The information of the scheduling plan.
 	ScheduleInfo *ListQuotasResponseBodyQuotaInfoListScheduleInfo `json:"scheduleInfo,omitempty" xml:"scheduleInfo,omitempty" type:"Struct"`
 	// The status of the endpoint group.
+	//
+	// example:
+	//
+	// ON
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The information of the level-2 quota.
 	SubQuotaInfoList []*ListQuotasResponseBodyQuotaInfoListSubQuotaInfoList `json:"subQuotaInfoList,omitempty" xml:"subQuotaInfoList,omitempty" type:"Repeated"`
 	// The tag of the resource for the quota.
+	//
+	// example:
+	//
+	// abc
 	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
 	// The tenant ID.
+	//
+	// example:
+	//
+	// 280747109771520
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 	// The type of the resource system. This parameter corresponds to the resourceSystemType parameter of the cluster.
+	//
+	// example:
+	//
+	// FUXI_ONLINE
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The version.
+	//
+	// example:
+	//
+	// 1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
@@ -6985,8 +9714,16 @@ func (s *ListQuotasResponseBodyQuotaInfoList) SetVersion(v string) *ListQuotasRe
 
 type ListQuotasResponseBodyQuotaInfoListTags struct {
 	// The key of the tag.
+	//
+	// example:
+	//
+	// Department
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// The value of the tag.
+	//
+	// example:
+	//
+	// 1
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -7011,12 +9748,25 @@ func (s *ListQuotasResponseBodyQuotaInfoListTags) SetTagValue(v string) *ListQuo
 type ListQuotasResponseBodyQuotaInfoListBillingPolicy struct {
 	// The billing method of the quota. Valid values:
 	//
-	// *   subscription: a subscription quota.
-	// *   payasyougo: a pay-as-you-go quota.
+	// 	- subscription: a subscription quota.
+	//
+	// 	- payasyougo: a pay-as-you-go quota.
+	//
+	// example:
+	//
+	// subscription
 	BillingMethod *string `json:"billingMethod,omitempty" xml:"billingMethod,omitempty"`
 	// The specifications of the order.
+	//
+	// example:
+	//
+	// OdpsStandard
 	OdpsSpecCode *string `json:"odpsSpecCode,omitempty" xml:"odpsSpecCode,omitempty"`
 	// The order ID.
+	//
+	// example:
+	//
+	// 45245678
 	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
 }
 
@@ -7047,6 +9797,10 @@ type ListQuotasResponseBodyQuotaInfoListSaleTag struct {
 	// The identifier of an object in a MaxCompute quota. This identifier exists in the sales bill of Alibaba Cloud. You can use this identifier to associate the cost of a quota object with a tag.
 	ResourceIds []*string `json:"resourceIds,omitempty" xml:"resourceIds,omitempty" type:"Repeated"`
 	// The type of the object. Valid values: quota and project.
+	//
+	// example:
+	//
+	// "project"
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 }
 
@@ -7070,20 +9824,52 @@ func (s *ListQuotasResponseBodyQuotaInfoListSaleTag) SetResourceType(v string) *
 
 type ListQuotasResponseBodyQuotaInfoListScheduleInfo struct {
 	// The quota plan that takes effect based on the scheduling plan.
+	//
+	// example:
+	//
+	// planA
 	CurrPlan *string `json:"currPlan,omitempty" xml:"currPlan,omitempty"`
 	// The time when the current quota plan is scheduled.
+	//
+	// example:
+	//
+	// 0800
 	CurrTime *string `json:"currTime,omitempty" xml:"currTime,omitempty"`
 	// The next quota plan that will take effect based on the scheduling plan.
+	//
+	// example:
+	//
+	// planB
 	NextPlan *string `json:"nextPlan,omitempty" xml:"nextPlan,omitempty"`
 	// The time when the next quota plan is scheduled.
+	//
+	// example:
+	//
+	// 1700
 	NextTime *string `json:"nextTime,omitempty" xml:"nextTime,omitempty"`
 	// The quota plan that immediately takes effect. If the quota plan that immediately takes effect is different from the current quota plan, this parameter is not empty.
+	//
+	// example:
+	//
+	// planC
 	OncePlan *string `json:"oncePlan,omitempty" xml:"oncePlan,omitempty"`
 	// The time when the quota plan immediately takes effect.
+	//
+	// example:
+	//
+	// 1500
 	OnceTime *string `json:"onceTime,omitempty" xml:"onceTime,omitempty"`
 	// The name of the operator.
+	//
+	// example:
+	//
+	// userA
 	OperatorName *string `json:"operatorName,omitempty" xml:"operatorName,omitempty"`
 	// The time zone of the project.
+	//
+	// example:
+	//
+	// UTC+8
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
 }
 
@@ -7139,36 +9925,100 @@ type ListQuotasResponseBodyQuotaInfoListSubQuotaInfoList struct {
 	// The information of the order.
 	BillingPolicy *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListBillingPolicy `json:"billingPolicy,omitempty" xml:"billingPolicy,omitempty" type:"Struct"`
 	// The cluster ID.
+	//
+	// example:
+	//
+	// AT-120N
 	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
 	// The time when the resource was created.
+	//
+	// example:
+	//
+	// 2022-09-06T02:14:44Z
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to create the resource.
+	//
+	// example:
+	//
+	// 672863518
 	CreatorId *string `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
 	// The ID of the level-2 quota.
+	//
+	// example:
+	//
+	// 1000048
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// The name of the level-2 quota.
+	//
+	// example:
+	//
+	// subquotaA
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The alias of the level-2 quota.
+	//
+	// example:
+	//
+	// subquotaA
 	NickName *string `json:"nickName,omitempty" xml:"nickName,omitempty"`
 	// The description of the quota.
+	//
+	// example:
+	//
+	// {"minCU":10,
+	//
+	// "adhocCU":0,
+	//
+	// "maxCU":10,
+	//
+	// "schedulerType":"Fair",
+	//
+	// }
 	Parameter map[string]interface{} `json:"parameter,omitempty" xml:"parameter,omitempty"`
 	// The ID of the parent resource.
+	//
+	// example:
+	//
+	// 0
 	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	// The identifier of an object in a MaxCompute quota. This identifier is the same as the identifier in the sales bill of Alibaba Cloud. This parameter is used for tags.
 	SaleTag *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListSaleTag `json:"saleTag,omitempty" xml:"saleTag,omitempty" type:"Struct"`
 	// The information of the scheduling plan.
 	ScheduleInfo *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListScheduleInfo `json:"scheduleInfo,omitempty" xml:"scheduleInfo,omitempty" type:"Struct"`
 	// The status of the endpoint group.
+	//
+	// example:
+	//
+	// ON
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The tag of the resource for the quota.
+	//
+	// example:
+	//
+	// abc
 	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
 	// The tenant ID.
+	//
+	// example:
+	//
+	// 280747109771520
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 	// The type of the resource system. This parameter corresponds to the resourceSystemType parameter of the cluster.
+	//
+	// example:
+	//
+	// FUXI_ONLINE
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The version number.
+	//
+	// example:
+	//
+	// 1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
@@ -7268,12 +10118,25 @@ func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoList) SetVersion(v strin
 type ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListBillingPolicy struct {
 	// The billing method of the quota. Valid values:
 	//
-	// *   subscription: a subscription quota.
-	// *   payasyougo: a pay-as-you-go quota.
+	// 	- subscription: a subscription quota.
+	//
+	// 	- payasyougo: a pay-as-you-go quota.
+	//
+	// example:
+	//
+	// subscription
 	BillingMethod *string `json:"billingMethod,omitempty" xml:"billingMethod,omitempty"`
 	// The specifications of the order.
+	//
+	// example:
+	//
+	// OdpsStandard
 	OdpsSpecCode *string `json:"odpsSpecCode,omitempty" xml:"odpsSpecCode,omitempty"`
 	// The order ID.
+	//
+	// example:
+	//
+	// 45245678
 	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
 }
 
@@ -7304,6 +10167,10 @@ type ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListSaleTag struct {
 	// The identifier of an object in a MaxCompute quota. This identifier exists in the sales bill of Alibaba Cloud. You can use this identifier to associate the cost of a quota object with a tag.
 	ResourceIds []*string `json:"resourceIds,omitempty" xml:"resourceIds,omitempty" type:"Repeated"`
 	// The type of the object. Valid values: quota and project.
+	//
+	// example:
+	//
+	// "quota"
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 }
 
@@ -7327,20 +10194,52 @@ func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListSaleTag) SetResource
 
 type ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListScheduleInfo struct {
 	// The quota plan that takes effect based on the scheduling plan.
+	//
+	// example:
+	//
+	// planA
 	CurrPlan *string `json:"currPlan,omitempty" xml:"currPlan,omitempty"`
 	// The time when the current quota plan is scheduled.
+	//
+	// example:
+	//
+	// 0800
 	CurrTime *string `json:"currTime,omitempty" xml:"currTime,omitempty"`
 	// The next quota plan that will take effect based on the scheduling plan.
+	//
+	// example:
+	//
+	// planB
 	NextPlan *string `json:"nextPlan,omitempty" xml:"nextPlan,omitempty"`
 	// The time when the next quota plan is scheduled.
+	//
+	// example:
+	//
+	// 1700
 	NextTime *string `json:"nextTime,omitempty" xml:"nextTime,omitempty"`
 	// The quota plan that immediately takes effect. If the quota plan that immediately takes effect is different from the current quota plan, this parameter is not empty.
+	//
+	// example:
+	//
+	// planC
 	OncePlan *string `json:"oncePlan,omitempty" xml:"oncePlan,omitempty"`
 	// The time when the quota plan immediately takes effect.
+	//
+	// example:
+	//
+	// 1500
 	OnceTime *string `json:"onceTime,omitempty" xml:"onceTime,omitempty"`
 	// The name of the operator.
+	//
+	// example:
+	//
+	// userA
 	OperatorName *string `json:"operatorName,omitempty" xml:"operatorName,omitempty"`
 	// The time zone of the project.
+	//
+	// example:
+	//
+	// UTC+8
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
 }
 
@@ -7423,8 +10322,16 @@ func (s *ListQuotasResponse) SetBody(v *ListQuotasResponseBody) *ListQuotasRespo
 
 type ListQuotasPlansRequest struct {
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-beijing
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
 	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 478403690625249
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 
@@ -7450,6 +10357,10 @@ type ListQuotasPlansResponseBody struct {
 	// The returned data.
 	Data *ListQuotasPlansResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0be3e0bd16661643917136451ebf55
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -7491,8 +10402,16 @@ func (s *ListQuotasPlansResponseBodyData) SetPlanList(v []*ListQuotasPlansRespon
 
 type ListQuotasPlansResponseBodyDataPlanList struct {
 	// The time when the quota plan was created.
+	//
+	// example:
+	//
+	// 2022-05-16T06:07:45Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The name of the quota plan.
+	//
+	// example:
+	//
+	// planA
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The details of the quota.
 	Quota *ListQuotasPlansResponseBodyDataPlanListQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
@@ -7525,36 +10444,88 @@ type ListQuotasPlansResponseBodyDataPlanListQuota struct {
 	// The information of the order.
 	BillingPolicy *ListQuotasPlansResponseBodyDataPlanListQuotaBillingPolicy `json:"billingPolicy,omitempty" xml:"billingPolicy,omitempty" type:"Struct"`
 	// The ID of the cluster.
+	//
+	// example:
+	//
+	// AT-120N
 	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
 	// The time when the quota plan was created.
+	//
+	// example:
+	//
+	// 2022-09-06T02:14:44Z
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to create the resource.
+	//
+	// example:
+	//
+	// 672863518
 	CreatorId *string `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
 	// The ID of the quota.
+	//
+	// example:
+	//
+	// 0
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// The name of the quota.
+	//
+	// example:
+	//
+	// quota_a
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The alias of the quota.
+	//
+	// example:
+	//
+	// quota_nickname
 	NickName *string `json:"nickName,omitempty" xml:"nickName,omitempty"`
 	// The description of the quota.
 	Parameter map[string]interface{} `json:"parameter,omitempty" xml:"parameter,omitempty"`
 	// The ID of the parent resource.
+	//
+	// example:
+	//
+	// null
 	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	// The information of the scheduling plan.
 	ScheduleInfo *ListQuotasPlansResponseBodyDataPlanListQuotaScheduleInfo `json:"scheduleInfo,omitempty" xml:"scheduleInfo,omitempty" type:"Struct"`
 	// The status of the resource.
+	//
+	// example:
+	//
+	// ON
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The information of the level-2 quota.
 	SubQuotaInfoList []*ListQuotasPlansResponseBodyDataPlanListQuotaSubQuotaInfoList `json:"subQuotaInfoList,omitempty" xml:"subQuotaInfoList,omitempty" type:"Repeated"`
 	// The tag of the resource for the quota.
+	//
+	// example:
+	//
+	// abc
 	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
 	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 478403690625249
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 	// The type of the resource system. This parameter corresponds to the resourceSystemType parameter of the cluster.
+	//
+	// example:
+	//
+	// FUXI_ONLINE
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The version number.
+	//
+	// example:
+	//
+	// 1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
@@ -7654,12 +10625,25 @@ func (s *ListQuotasPlansResponseBodyDataPlanListQuota) SetVersion(v string) *Lis
 type ListQuotasPlansResponseBodyDataPlanListQuotaBillingPolicy struct {
 	// The billing method of the quota. Valid values:
 	//
-	// *   subscription: a subscription quota.
-	// *   payasyougo: a pay-as-you-go quota.
+	// 	- subscription: a subscription quota.
+	//
+	// 	- payasyougo: a pay-as-you-go quota.
+	//
+	// example:
+	//
+	// subscription
 	BillingMethod *string `json:"billingMethod,omitempty" xml:"billingMethod,omitempty"`
 	// The specifications of the order.
+	//
+	// example:
+	//
+	// OdpsStandard
 	OdpsSpecCode *string `json:"odpsSpecCode,omitempty" xml:"odpsSpecCode,omitempty"`
 	// The ID of the order.
+	//
+	// example:
+	//
+	// 45245678
 	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
 }
 
@@ -7688,18 +10672,46 @@ func (s *ListQuotasPlansResponseBodyDataPlanListQuotaBillingPolicy) SetOrderId(v
 
 type ListQuotasPlansResponseBodyDataPlanListQuotaScheduleInfo struct {
 	// The quota plan that takes effect based on the scheduling plan.
+	//
+	// example:
+	//
+	// planA
 	CurrPlan *string `json:"currPlan,omitempty" xml:"currPlan,omitempty"`
 	// The time when the current quota plan is scheduled.
+	//
+	// example:
+	//
+	// 0800
 	CurrTime *string `json:"currTime,omitempty" xml:"currTime,omitempty"`
 	// The next quota plan that will take effect based on the scheduling plan.
+	//
+	// example:
+	//
+	// planB
 	NextPlan *string `json:"nextPlan,omitempty" xml:"nextPlan,omitempty"`
 	// The time when the next quota plan is scheduled.
+	//
+	// example:
+	//
+	// 1700
 	NextTime *string `json:"nextTime,omitempty" xml:"nextTime,omitempty"`
 	// If the quota plan that immediately takes effect is different from the current quota plan, this parameter is not empty.
+	//
+	// example:
+	//
+	// planC
 	OncePlan *string `json:"oncePlan,omitempty" xml:"oncePlan,omitempty"`
 	// The time when the quota plan immediately takes effect.
+	//
+	// example:
+	//
+	// 1500
 	OnceTime *string `json:"onceTime,omitempty" xml:"onceTime,omitempty"`
 	// The name of the operator.
+	//
+	// example:
+	//
+	// userA
 	OperatorName *string `json:"operatorName,omitempty" xml:"operatorName,omitempty"`
 }
 
@@ -7750,34 +10762,86 @@ type ListQuotasPlansResponseBodyDataPlanListQuotaSubQuotaInfoList struct {
 	// The information of the order.
 	BillingPolicy *ListQuotasPlansResponseBodyDataPlanListQuotaSubQuotaInfoListBillingPolicy `json:"billingPolicy,omitempty" xml:"billingPolicy,omitempty" type:"Struct"`
 	// The ID of the cluster.
+	//
+	// example:
+	//
+	// AT-120N
 	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
 	// The time when the quota plan was created.
+	//
+	// example:
+	//
+	// 2022-09-06T02:14:44Z
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to create the resource.
+	//
+	// example:
+	//
+	// 672863518
 	CreatorId *string `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
 	// The ID of the level-2 quota.
+	//
+	// example:
+	//
+	// 1000048
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
 	// The name of the level-2 quota.
+	//
+	// example:
+	//
+	// subquotaA
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The nickname of the level-2 quota.
+	//
+	// example:
+	//
+	// subquotaA
 	NickName *string `json:"nickName,omitempty" xml:"nickName,omitempty"`
 	// The description of the quota.
 	Parameter map[string]interface{} `json:"parameter,omitempty" xml:"parameter,omitempty"`
 	// The ID of the parent resource.
+	//
+	// example:
+	//
+	// 0
 	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	// The information of the scheduling plan.
 	ScheduleInfo *ListQuotasPlansResponseBodyDataPlanListQuotaSubQuotaInfoListScheduleInfo `json:"scheduleInfo,omitempty" xml:"scheduleInfo,omitempty" type:"Struct"`
 	// The status of the resource.
+	//
+	// example:
+	//
+	// ON
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The tag of the resource for the quota.
+	//
+	// example:
+	//
+	// abc
 	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
 	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 478403690625249
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 	// The type of the resource system. This parameter corresponds to the resourceSystemType parameter of the cluster.
+	//
+	// example:
+	//
+	// FUXI_ONLINE
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The version number.
+	//
+	// example:
+	//
+	// 1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
@@ -7872,12 +10936,25 @@ func (s *ListQuotasPlansResponseBodyDataPlanListQuotaSubQuotaInfoList) SetVersio
 type ListQuotasPlansResponseBodyDataPlanListQuotaSubQuotaInfoListBillingPolicy struct {
 	// The billing method of the quota. Valid values:
 	//
-	// *   subscription: a subscription quota.
-	// *   payasyougo: a pay-as-you-go quota.
+	// 	- subscription: a subscription quota.
+	//
+	// 	- payasyougo: a pay-as-you-go quota.
+	//
+	// example:
+	//
+	// subscription
 	BillingMethod *string `json:"billingMethod,omitempty" xml:"billingMethod,omitempty"`
 	// The specifications of the order.
+	//
+	// example:
+	//
+	// OdpsStandard
 	OdpsSpecCode *string `json:"odpsSpecCode,omitempty" xml:"odpsSpecCode,omitempty"`
 	// The ID of the order.
+	//
+	// example:
+	//
+	// 45245678
 	OrderId *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
 }
 
@@ -7906,18 +10983,46 @@ func (s *ListQuotasPlansResponseBodyDataPlanListQuotaSubQuotaInfoListBillingPoli
 
 type ListQuotasPlansResponseBodyDataPlanListQuotaSubQuotaInfoListScheduleInfo struct {
 	// The quota plan that takes effect based on the scheduling plan.
+	//
+	// example:
+	//
+	// planA
 	CurrPlan *string `json:"currPlan,omitempty" xml:"currPlan,omitempty"`
 	// The time when the current quota plan is scheduled.
+	//
+	// example:
+	//
+	// 0800
 	CurrTime *string `json:"currTime,omitempty" xml:"currTime,omitempty"`
 	// The next quota plan that will take effect based on the scheduling plan.
+	//
+	// example:
+	//
+	// planB
 	NextPlan *string `json:"nextPlan,omitempty" xml:"nextPlan,omitempty"`
 	// The time when the next quota plan is scheduled.
+	//
+	// example:
+	//
+	// 1700
 	NextTime *string `json:"nextTime,omitempty" xml:"nextTime,omitempty"`
 	// If the quota plan that immediately takes effect is different from the current quota plan, this parameter is not empty.
+	//
+	// example:
+	//
+	// planC
 	OncePlan *string `json:"oncePlan,omitempty" xml:"oncePlan,omitempty"`
 	// The time when the quota plan immediately takes effect.
+	//
+	// example:
+	//
+	// 1500
 	OnceTime *string `json:"onceTime,omitempty" xml:"onceTime,omitempty"`
 	// The name of the operator.
+	//
+	// example:
+	//
+	// userA
 	OperatorName *string `json:"operatorName,omitempty" xml:"operatorName,omitempty"`
 }
 
@@ -7995,12 +11100,28 @@ func (s *ListQuotasPlansResponse) SetBody(v *ListQuotasPlansResponseBody) *ListQ
 
 type ListResourcesRequest struct {
 	// Specifies the marker after which the returned list begins.
+	//
+	// example:
+	//
+	// cHlvZHBzX3VkZl8xMDExNV8xNDU3NDI4NDkzKg==
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 	// The maximum number of entries to return on each page.
+	//
+	// example:
+	//
+	// 10
 	MaxItem *int32 `json:"maxItem,omitempty" xml:"maxItem,omitempty"`
 	// The name of the resource.
+	//
+	// example:
+	//
+	// res
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The name of the schema.
+	//
+	// example:
+	//
+	// default
 	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
@@ -8036,6 +11157,10 @@ type ListResourcesResponseBody struct {
 	// The returned data.
 	Data *ListResourcesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bc3b4ae16685836687916212e7850
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -8059,8 +11184,16 @@ func (s *ListResourcesResponseBody) SetRequestId(v string) *ListResourcesRespons
 
 type ListResourcesResponseBodyData struct {
 	// Indicates the marker after which the returned list begins.
+	//
+	// example:
+	//
+	// ZmN0X21vbnRoX3Rhb2Jhb19pbmRleCE=
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 	// The maximum number of entries returned per page.
+	//
+	// example:
+	//
+	// 10
 	MaxItem *int32 `json:"maxItem,omitempty" xml:"maxItem,omitempty"`
 	// The list of resources.
 	Resources []*ListResourcesResponseBodyDataResources `json:"resources,omitempty" xml:"resources,omitempty" type:"Repeated"`
@@ -8091,30 +11224,70 @@ func (s *ListResourcesResponseBodyData) SetResources(v []*ListResourcesResponseB
 
 type ListResourcesResponseBodyDataResources struct {
 	// The remarks.
+	//
+	// example:
+	//
+	// file
 	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
 	// The Base64-encoded 128-bit MD5 hash value of the HTTP request body.
+	//
+	// example:
+	//
+	// MACiECZtnLiNkNS1v5****=1
 	ContentMD5 *string `json:"contentMD5,omitempty" xml:"contentMD5,omitempty"`
 	// The time when the resource was created.
+	//
+	// example:
+	//
+	// 2022-01-29T03:34:09Z
 	CreationTime *int64 `json:"creationTime,omitempty" xml:"creationTime,omitempty"`
 	// The display name.
+	//
+	// example:
+	//
+	// res_1
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// The time when the resource was modified.
+	//
+	// example:
+	//
+	// 2023-04-18T06:15:05Z
 	LastModifiedTime *int64 `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
 	// The user who updated the resource.
+	//
+	// example:
+	//
+	// ALIYUN$xxx@test.aliyunid.com
 	LastUpdator *string `json:"lastUpdator,omitempty" xml:"lastUpdator,omitempty"`
 	// The name of the resource.
+	//
+	// example:
+	//
+	// res_1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The owner of the resource.
+	//
+	// example:
+	//
+	// 1265860483008101
 	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
 	// The schema to which the resource belongs.
+	//
+	// example:
+	//
+	// schemaA
 	Schema *string `json:"schema,omitempty" xml:"schema,omitempty"`
 	// The size of the resource.
+	//
+	// example:
+	//
+	// 10
 	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
 	// The resource type.
 	//
 	// Valid values:
 	//
-	// *   file
+	// 	- file
 	//
 	//     <!-- -->
 	//
@@ -8122,7 +11295,7 @@ type ListResourcesResponseBodyDataResources struct {
 	//
 	//     <!-- -->
 	//
-	// *   py
+	// 	- py
 	//
 	//     <!-- -->
 	//
@@ -8130,7 +11303,7 @@ type ListResourcesResponseBodyDataResources struct {
 	//
 	//     <!-- -->
 	//
-	// *   jar
+	// 	- jar
 	//
 	//     <!-- -->
 	//
@@ -8138,7 +11311,7 @@ type ListResourcesResponseBodyDataResources struct {
 	//
 	//     <!-- -->
 	//
-	// *   volumefile
+	// 	- volumefile
 	//
 	//     <!-- -->
 	//
@@ -8146,13 +11319,17 @@ type ListResourcesResponseBodyDataResources struct {
 	//
 	//     <!-- -->
 	//
-	// *   table
+	// 	- table
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
+	//
+	// example:
+	//
+	// file
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -8252,6 +11429,10 @@ type ListRolesResponseBody struct {
 	// The returned data.
 	Data *ListRolesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0a06dfe716686526652451361e80ae
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -8295,10 +11476,48 @@ type ListRolesResponseBodyDataRoles struct {
 	// The ACL-based permissions that are granted to the role.
 	Acl *ListRolesResponseBodyDataRolesAcl `json:"acl,omitempty" xml:"acl,omitempty" type:"Struct"`
 	// The name of the role.
+	//
+	// example:
+	//
+	// roleA
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The policy that is attached to the role.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "Statement": [
+	//
+	//             {
+	//
+	//                   "Action": [
+	//
+	//                         "odps:*"
+	//
+	//                   ],
+	//
+	//                   "Effect": "Allow",
+	//
+	//                   "Resource": [
+	//
+	//                         "acs:odps:*:projects/{projectname}/authorization/packages"
+	//
+	//                   ]
+	//
+	//             }
+	//
+	//       ],
+	//
+	//       "Version": "1"
+	//
+	// }
 	Policy *string `json:"policy,omitempty" xml:"policy,omitempty"`
 	// The type of the role.
+	//
+	// example:
+	//
+	// admin
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -8387,6 +11606,10 @@ type ListRolesResponseBodyDataRolesAclFunction struct {
 	// The operations that were performed on the function.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 	// The name of the function.
+	//
+	// example:
+	//
+	// functionA
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
@@ -8412,6 +11635,10 @@ type ListRolesResponseBodyDataRolesAclInstance struct {
 	// The operations that were performed on the instance.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 	// The name of the instance.
+	//
+	// example:
+	//
+	// instanceA
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
@@ -8437,6 +11664,10 @@ type ListRolesResponseBodyDataRolesAclPackage struct {
 	// The operations that were performed on the package.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 	// The name of the package.
+	//
+	// example:
+	//
+	// packageA
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
@@ -8462,6 +11693,10 @@ type ListRolesResponseBodyDataRolesAclProject struct {
 	// The operations that were performed on the project.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 	// The name of the MaxCompute project.
+	//
+	// example:
+	//
+	// projectA
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
@@ -8487,6 +11722,10 @@ type ListRolesResponseBodyDataRolesAclResource struct {
 	// The operations that were performed on the resource.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 	// The name of the resource.
+	//
+	// example:
+	//
+	// resourceA
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
@@ -8512,6 +11751,10 @@ type ListRolesResponseBodyDataRolesAclTable struct {
 	// The operations that were performed on the table.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 	// The name of the table.
+	//
+	// example:
+	//
+	// tableA
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
@@ -8564,14 +11807,34 @@ func (s *ListRolesResponse) SetBody(v *ListRolesResponseBody) *ListRolesResponse
 
 type ListTablesRequest struct {
 	// Specifies the marker after which the returned list begins.
+	//
+	// example:
+	//
+	// Y29tbWlzc2lvbl9leHRlcm5hbF91cmdlXzFfd3Ih
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 	// The maximum number of entries to return on each page.
+	//
+	// example:
+	//
+	// 10
 	MaxItem *int32 `json:"maxItem,omitempty" xml:"maxItem,omitempty"`
 	// The names of the returned resources. The names must start with the value specified by the prefix parameter. If the prefix parameter is set to a, the names of the returned resources must start with a.
+	//
+	// example:
+	//
+	// a
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
 	// The name of the schema.
+	//
+	// example:
+	//
+	// default
 	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 	// The type of the table.
+	//
+	// example:
+	//
+	// internal
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -8612,6 +11875,10 @@ type ListTablesResponseBody struct {
 	// The returned data.
 	Data *ListTablesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 0a06dd4516687375802853481ec9fd
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -8635,8 +11902,16 @@ func (s *ListTablesResponseBody) SetRequestId(v string) *ListTablesResponseBody 
 
 type ListTablesResponseBodyData struct {
 	// Indicates the marker after which the returned list begins.
+	//
+	// example:
+	//
+	// cHlvZHBzX3VkZl8xMDExNV8xNDU3NDI4NDkzKg==
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
 	// The maximum number of entries returned per page.
+	//
+	// example:
+	//
+	// 10
 	MaxItem *int32 `json:"maxItem,omitempty" xml:"maxItem,omitempty"`
 	// The information about tables.
 	Tables []*ListTablesResponseBodyDataTables `json:"tables,omitempty" xml:"tables,omitempty" type:"Repeated"`
@@ -8667,68 +11942,198 @@ func (s *ListTablesResponseBodyData) SetTables(v []*ListTablesResponseBodyDataTa
 
 type ListTablesResponseBodyDataTables struct {
 	// Indicates whether to enable the scheduled update feature for the materialized view.
+	//
+	// example:
+	//
+	// false
 	AutoRefreshEnabled *bool `json:"autoRefreshEnabled,omitempty" xml:"autoRefreshEnabled,omitempty"`
 	// The DDL statement that is used to create the table.
+	//
+	// example:
+	//
+	// create table if not exists sale_detail(
+	//
+	//  shop_name     STRING,
+	//
+	//  customer_id   STRING,
+	//
+	//  total_price   DOUBLE)
+	//
+	// partitioned by (sale_date STRING, region STRING);
 	CreateTableDDL *string `json:"createTableDDL,omitempty" xml:"createTableDDL,omitempty"`
 	// The time when the table was created.
+	//
+	// example:
+	//
+	// 2022-01-17T07:07:47Z
 	CreationTime *int64 `json:"creationTime,omitempty" xml:"creationTime,omitempty"`
 	// The display name of the table.
+	//
+	// example:
+	//
+	// sale_detail
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// The number of files.
+	//
+	// example:
+	//
+	// 200
 	FileNum *int64 `json:"fileNum,omitempty" xml:"fileNum,omitempty"`
 	// Indicates whether the table is an external table.
+	//
+	// example:
+	//
+	// False
 	IsExternalTable *bool `json:"isExternalTable,omitempty" xml:"isExternalTable,omitempty"`
 	// Indicates whether the data in the materialized view is invalid due to data changes in the source table.
+	//
+	// example:
+	//
+	// false
 	IsOutdated *bool `json:"isOutdated,omitempty" xml:"isOutdated,omitempty"`
 	// The time when the data was last accessed.
+	//
+	// example:
+	//
+	// 2023-12-21T02:05:56Z
 	LastAccessTime *int64 `json:"lastAccessTime,omitempty" xml:"lastAccessTime,omitempty"`
 	// The last time when the DDL statement of the table was updated.
+	//
+	// example:
+	//
+	// 2023-11-21T02:05:56Z
 	LastDDLTime *int64 `json:"lastDDLTime,omitempty" xml:"lastDDLTime,omitempty"`
 	// The time when the data was last updated.
+	//
+	// example:
+	//
+	// 2023-11-21T02:05:56Z
 	LastModifiedTime *int64 `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
 	// The lifecycle of the table.
+	//
+	// example:
+	//
+	// -1
 	Lifecycle *string `json:"lifecycle,omitempty" xml:"lifecycle,omitempty"`
 	// The storage location of the external table.
+	//
+	// example:
+	//
+	// oss://oss-cn-hangzhou-internal.aliyuncs.com/oss-mc-test/Demo1/
 	Location *string `json:"location,omitempty" xml:"location,omitempty"`
 	// Indicates whether a materialized view is created.
+	//
+	// example:
+	//
+	// false
 	MaterializedView *bool `json:"materializedView,omitempty" xml:"materializedView,omitempty"`
 	// The name of the table.
+	//
+	// example:
+	//
+	// dim_odps
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The information about columns.
 	NativeColumns []*ListTablesResponseBodyDataTablesNativeColumns `json:"nativeColumns,omitempty" xml:"nativeColumns,omitempty" type:"Repeated"`
 	// The Alibaba Cloud Resource Name (ARN) of AliyunODPSDefaultRole in Resource Access Management (RAM).
+	//
+	// example:
+	//
+	// acs:ram::xxxxx:role/aliyunodpsdefaultrole
 	OdpsPropertiesRolearn *string `json:"odpsPropertiesRolearn,omitempty" xml:"odpsPropertiesRolearn,omitempty"`
 	// Indicates whether to ignore the table header.
+	//
+	// example:
+	//
+	// true
 	OdpsSqlTextOptionFlushHeader *bool `json:"odpsSqlTextOptionFlushHeader,omitempty" xml:"odpsSqlTextOptionFlushHeader,omitempty"`
 	// Indicates whether to ignore the first N rows of the table header.
+	//
+	// example:
+	//
+	// 1
 	OdpsTextOptionHeaderLinesCount *int64 `json:"odpsTextOptionHeaderLinesCount,omitempty" xml:"odpsTextOptionHeaderLinesCount,omitempty"`
 	// The owner of the table.
+	//
+	// example:
+	//
+	// 1887853961230110
 	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
 	// The information about the partition column.
 	PartitionColumns []*ListTablesResponseBodyDataTablesPartitionColumns `json:"partitionColumns,omitempty" xml:"partitionColumns,omitempty" type:"Repeated"`
 	// The physical size of the table.
+	//
+	// example:
+	//
+	// 2763
 	PhysicalSize *int64 `json:"physicalSize,omitempty" xml:"physicalSize,omitempty"`
 	// The name of the project.
+	//
+	// example:
+	//
+	// projectA
 	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
 	// Indicates whether to enable the query rewrite operation that is performed based on the materialized view.
+	//
+	// example:
+	//
+	// false
 	RewriteEnabled *bool `json:"rewriteEnabled,omitempty" xml:"rewriteEnabled,omitempty"`
 	// The schema to which the table belongs.
+	//
+	// example:
+	//
+	// default
 	Schema *string `json:"schema,omitempty" xml:"schema,omitempty"`
 	// The size of the table.
+	//
+	// example:
+	//
+	// 5372
 	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
 	// The extractor of the external table.
+	//
+	// example:
+	//
+	// com.aliyun.odps.CsvStorageHandler
 	StorageHandler *string `json:"storageHandler,omitempty" xml:"storageHandler,omitempty"`
 	// The description of the table.
+	//
+	// example:
+	//
+	// sale_detail
 	TableComment *string `json:"tableComment,omitempty" xml:"tableComment,omitempty"`
 	// The security level of the table.
+	//
+	// example:
+	//
+	// 0
 	TableLabel *string `json:"tableLabel,omitempty" xml:"tableLabel,omitempty"`
 	// The name of the Tablestore table that you want MaxCompute to access.
+	//
+	// example:
+	//
+	// ots_tpch_orders
 	TablesotreTableName *string `json:"tablesotreTableName,omitempty" xml:"tablesotreTableName,omitempty"`
 	// The columns of the Tablestore table that you want MaxCompute to access. The columns include primary key columns and attribute columns.
+	//
+	// example:
+	//
+	// :o_orderkey,:o_orderdate,o_custkey,o_orderstatus,o_totalprice
 	TablestoreColumnsMapping *string `json:"tablestoreColumnsMapping,omitempty" xml:"tablestoreColumnsMapping,omitempty"`
 	// The type of the table.
+	//
+	// example:
+	//
+	// internal
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The statement that is used to generate the view.
+	//
+	// example:
+	//
+	// select shop_name, sum(total_price)
+	//
+	// from sale_detail group by shop_name
 	ViewText *string `json:"viewText,omitempty" xml:"viewText,omitempty"`
 }
 
@@ -8902,12 +12307,28 @@ func (s *ListTablesResponseBodyDataTables) SetViewText(v string) *ListTablesResp
 
 type ListTablesResponseBodyDataTablesNativeColumns struct {
 	// The remarks.
+	//
+	// example:
+	//
+	// Store name
 	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
 	// The security level of the column.
+	//
+	// example:
+	//
+	// 0
 	Label *string `json:"label,omitempty" xml:"label,omitempty"`
 	// The name of the column.
+	//
+	// example:
+	//
+	// shop_name
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The type of the column.
+	//
+	// example:
+	//
+	// STRING
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -8941,12 +12362,28 @@ func (s *ListTablesResponseBodyDataTablesNativeColumns) SetType(v string) *ListT
 
 type ListTablesResponseBodyDataTablesPartitionColumns struct {
 	// The remarks.
+	//
+	// example:
+	//
+	// Sale date
 	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
 	// The security level of the partition column.
+	//
+	// example:
+	//
+	// 0
 	Label *string `json:"label,omitempty" xml:"label,omitempty"`
 	// The name of the partition column.
+	//
+	// example:
+	//
+	// sale_date
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The type of the partition column.
+	//
+	// example:
+	//
+	// STRING
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -9009,8 +12446,16 @@ func (s *ListTablesResponse) SetBody(v *ListTablesResponseBody) *ListTablesRespo
 
 type ListUsersRequest struct {
 	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 }
 
@@ -9036,6 +12481,10 @@ type ListUsersResponseBody struct {
 	// The returned data.
 	Data *ListUsersResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0a06dd4816687424611405643e3730
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -9059,10 +12508,22 @@ func (s *ListUsersResponseBody) SetRequestId(v string) *ListUsersResponseBody {
 
 type ListUsersResponseBodyData struct {
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 2
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 64
 	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 	// The users.
 	Users []*ListUsersResponseBodyDataUsers `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
@@ -9098,14 +12559,34 @@ func (s *ListUsersResponseBodyData) SetUsers(v []*ListUsersResponseBodyDataUsers
 
 type ListUsersResponseBodyDataUsers struct {
 	// The ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 167835629082
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
 	// The username of the account.
+	//
+	// example:
+	//
+	// Bob@
 	AccountName *string `json:"accountName,omitempty" xml:"accountName,omitempty"`
 	// The type of the account.
+	//
+	// example:
+	//
+	// ALIYUN
 	AccountType *string `json:"accountType,omitempty" xml:"accountType,omitempty"`
 	// The display name.
+	//
+	// example:
+	//
+	// Bob
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 1567253789
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 
@@ -9175,6 +12656,10 @@ type ListUsersByRoleResponseBody struct {
 	// The returned data.
 	Data *ListUsersByRoleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0be3e0bb16654558425251398e27a9
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -9216,6 +12701,10 @@ func (s *ListUsersByRoleResponseBodyData) SetUsers(v []*ListUsersByRoleResponseB
 
 type ListUsersByRoleResponseBodyDataUsers struct {
 	// The name of the user.
+	//
+	// example:
+	//
+	// ALIYUN${account_name}
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
@@ -9263,6 +12752,176 @@ func (s *ListUsersByRoleResponse) SetBody(v *ListUsersByRoleResponseBody) *ListU
 
 type UpdatePackageRequest struct {
 	// The request body parameters.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "add": {
+	//
+	//         "allowedProjectList": [
+	//
+	//             {
+	//
+	//                 "label": "2",
+	//
+	//                 "project": "project_name"
+	//
+	//             }
+	//
+	//         ],
+	//
+	//         "resourceList": {
+	//
+	//             "table": [
+	//
+	//                 {
+	//
+	//                     "name": "table_name",
+	//
+	//                     "actions": [
+	//
+	//                         "Describe",
+	//
+	//                         "Select"
+	//
+	//                     ]
+	//
+	//                 },
+	//
+	//                 {
+	//
+	//                     "name": "table_name",
+	//
+	//                     "actions": [
+	//
+	//                         "Describe",
+	//
+	//                         "Select"
+	//
+	//                     ]
+	//
+	//                 }
+	//
+	//             ],
+	//
+	//             "resource": [
+	//
+	//                 {
+	//
+	//                     "name": "",
+	//
+	//                     "actions": []
+	//
+	//                 },
+	//
+	//                 {
+	//
+	//                     "name": "",
+	//
+	//                     "actions": []
+	//
+	//                 }
+	//
+	//             ],
+	//
+	//             "function": [
+	//
+	//                 {
+	//
+	//                     "name": "",
+	//
+	//                     "actions": []
+	//
+	//                 },
+	//
+	//                 {
+	//
+	//                     "name": "",
+	//
+	//                     "actions": []
+	//
+	//                 }
+	//
+	//             ]
+	//
+	//         }
+	//
+	//     },
+	//
+	//     "remove": {
+	//
+	//         "allowedProjectList": [
+	//
+	//             {
+	//
+	//                 "project": "project_name"
+	//
+	//             },
+	//
+	//             {
+	//
+	//                 "project": "project_2"
+	//
+	//             }
+	//
+	//         ],
+	//
+	//         "resourceList": {
+	//
+	//             "table": [
+	//
+	//                 {
+	//
+	//                     "name": "table_name"
+	//
+	//                 },
+	//
+	//                 {
+	//
+	//                     "name": "table_name"
+	//
+	//                 }
+	//
+	//             ],
+	//
+	//             "resource": [
+	//
+	//                 {
+	//
+	//                     "name": ""
+	//
+	//                 },
+	//
+	//                 {
+	//
+	//                     "name": ""
+	//
+	//                 }
+	//
+	//             ],
+	//
+	//             "function": [
+	//
+	//                 {
+	//
+	//                     "name": ""
+	//
+	//                 },
+	//
+	//                 {
+	//
+	//                     "name": ""
+	//
+	//                 }
+	//
+	//             ]
+	//
+	//         }
+	//
+	//     }
+	//
+	// }
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -9281,8 +12940,16 @@ func (s *UpdatePackageRequest) SetBody(v string) *UpdatePackageRequest {
 
 type UpdatePackageResponseBody struct {
 	// The returned data.
+	//
+	// example:
+	//
+	// success
 	Data *string `json:"data,omitempty" xml:"data,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bc1ec4016697018733156991e0888
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -9335,6 +13002,10 @@ func (s *UpdatePackageResponse) SetBody(v *UpdatePackageResponseBody) *UpdatePac
 
 type UpdateProjectIpWhiteListRequest struct {
 	// The request body parameters.
+	//
+	// example:
+	//
+	// json {"ipWhiteList":{"ipList": "", // The IP address whitelists are of the STRING data type. Separate multiple IP address whitelists with commas (,). "vpcIpList": "", //} }
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -9353,8 +13024,16 @@ func (s *UpdateProjectIpWhiteListRequest) SetBody(v string) *UpdateProjectIpWhit
 
 type UpdateProjectIpWhiteListResponseBody struct {
 	// The returned result.
+	//
+	// example:
+	//
+	// success
 	Data *string `json:"data,omitempty" xml:"data,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0bc12e4316675560945192024e1044
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -9408,6 +13087,10 @@ func (s *UpdateProjectIpWhiteListResponse) SetBody(v *UpdateProjectIpWhiteListRe
 type UpdateQuotaHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// The trusted AccessKey pairs.
+	//
+	// example:
+	//
+	// null
 	AkProven *string `json:"AkProven,omitempty" xml:"AkProven,omitempty"`
 }
 
@@ -9431,10 +13114,144 @@ func (s *UpdateQuotaHeaders) SetAkProven(v string) *UpdateQuotaHeaders {
 
 type UpdateQuotaRequest struct {
 	// The request body parameter.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "id": "0",
+	//
+	//       "name": "a",
+	//
+	//       "nickName": "VIRTUAL",
+	//
+	//       "type": "",
+	//
+	//       "status": "ON",
+	//
+	//       "tenantId": "10001",
+	//
+	//       "regionId": "cn-hangzhou",
+	//
+	//       "parentId": "0",
+	//
+	//       "cluster": "AT-ODPS-TEST3",
+	//
+	//       "version": "",
+	//
+	//       "billingPolicy": {
+	//
+	//             "odpsSpecCode": "",
+	//
+	//             "billingMethod": "subscription"
+	//
+	//       },
+	//
+	//       "parameter": {
+	//
+	//             "minCU": 40,
+	//
+	//             "maxCU": 40,
+	//
+	//             "adhocCU": 0,
+	//
+	//             "elasticMinCU": 40,
+	//
+	//             "elasticMaxCU": 40,
+	//
+	//             "enablePreemptiveScheduling": false,
+	//
+	//             "forceReservedMin": true,
+	//
+	//             "enablePriority": false,
+	//
+	//             "singleJobCULimit": 100,
+	//
+	//             "adhocQuotaBeginTimeInSec": 1345,
+	//
+	//             "adhocQuotaEndTimeInSec": 1234,
+	//
+	//             "ignoreAdhocQuota": false
+	//
+	//       },
+	//
+	//       "subQuotaInfoList": [
+	//
+	//             {
+	//
+	//                   "id": "1000048",
+	//
+	//                   "nickName": "WlmFuxiSecondaryOnlineQuotaTest",
+	//
+	//                   "name": "WlmFuxiSecondaryOnlineQuotaTest",
+	//
+	//                   "type": "FUXI_ONLINE",
+	//
+	//                   "status": "ON",
+	//
+	//                   "tenantId": "10001",
+	//
+	//                   "regionId": "cn-hangzhou",
+	//
+	//                   "parentId": "0",
+	//
+	//                   "cluster": "AT-ODPS-TEST3",
+	//
+	//                   "version": "",
+	//
+	//                   "billingPolicy": {
+	//
+	//                         "odpsSpecCode": "",
+	//
+	//                         "billingMethod": "subscription"
+	//
+	//                   },
+	//
+	//                   "parameter": {
+	//
+	//                         "minCU": 40,
+	//
+	//                         "maxCU": 40,
+	//
+	//                         "adhocCU": 0,
+	//
+	//                         "elasticMinCU": 40,
+	//
+	//                         "elasticMaxCU": 40,
+	//
+	//                         "enablePreemptiveScheduling": false,
+	//
+	//                         "forceReservedMin": true,
+	//
+	//                         "enablePriority": false,
+	//
+	//                         "singleJobCULimit": 100,
+	//
+	//                         "adhocQuotaBeginTimeInSec": 1345,
+	//
+	//                         "adhocQuotaEndTimeInSec": 1234,
+	//
+	//                         "ignoreAdhocQuota": false
+	//
+	//                   }
+	//
+	//             }
+	//
+	//       ]
+	//
+	// }
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
 	// The tenant ID.
+	//
+	// example:
+	//
+	// 196871833188896
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 
@@ -9463,8 +13280,16 @@ func (s *UpdateQuotaRequest) SetTenantId(v string) *UpdateQuotaRequest {
 
 type UpdateQuotaResponseBody struct {
 	// The returned data.
+	//
+	// example:
+	//
+	// success
 	Data *string `json:"data,omitempty" xml:"data,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 0bc12e6a16679892465424670db3eb
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -9517,10 +13342,22 @@ func (s *UpdateQuotaResponse) SetBody(v *UpdateQuotaResponseBody) *UpdateQuotaRe
 
 type UpdateQuotaPlanRequest struct {
 	// The request body parameters.
+	//
+	// example:
+	//
+	// { "name": "planA", // The quota is a level-1 quota. You can select only the fields that are related to the quota plan. "quota": { "name": "a", "nickName": "aaa_nick", "tenantId": "10001", "regionId": "cn-hangzhou", "parentId": "0", "cluster": "AT-ODPS-TEST3", "parameter": { "minCU": 40, "maxCU": 40, "adhocCU": 0, "elasticMinCU": 40, "elasticMaxCU": 40, "enablePreemptiveScheduling": false, "forceReservedMin":true, "enablePriority":false, "singleJobCULimit":100, "adhocQuotaBeginTimeInSec": 1345, "adhocQuotaEndTimeInSec": 1234, "ignoreAdhocQuota":false }, "subQuotaInfoList": [ { "nickName": "WlmFuxiSecondaryOnlineQuotaTest", "name": "WlmFuxiSecondaryOnlineQuotaTest", "type": "FUXI_ONLINE", "tenantId": "10001", "regionId": "cn-hangzhou", "cluster": "AT-ODPS-TEST3", "parameter": { "minCU": 40, "maxCU": 40, "adhocCU": 0, "elasticMinCU": 40, "elasticMaxCU": 40, "enablePreemptiveScheduling": false, "forceReservedMin":true, "enablePriority":false, "singleJobCULimit":100, "adhocQuotaBeginTimeInSec": 1345, "adhocQuotaEndTimeInSec": 1234, "ignoreAdhocQuota":false } } ] } }
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
 	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 478403690625249
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 
@@ -9549,8 +13386,16 @@ func (s *UpdateQuotaPlanRequest) SetTenantId(v string) *UpdateQuotaPlanRequest {
 
 type UpdateQuotaPlanResponseBody struct {
 	// The returned result.
+	//
+	// example:
+	//
+	// success
 	Data *string `json:"data,omitempty" xml:"data,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0a06dfe516688379832875789e2c65
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -9603,10 +13448,22 @@ func (s *UpdateQuotaPlanResponse) SetBody(v *UpdateQuotaPlanResponseBody) *Updat
 
 type UpdateQuotaScheduleRequest struct {
 	// The request body parameters.
+	//
+	// example:
+	//
+	// \\# The quota plan immediately takes effect. [ { "type": "once", "plan": "planA", "operator":"userA" } ] # The quota plan is scheduled on a regular basis. [ { "id": "etl_time", "type": "daily", "condition": { "at": "0800", "after": "2022-04-25T04:23:04Z" // optional }, "plan": "planA" }, { "id": "bi", "type": "daily", "condition": { "at": "0900", "after": "2022-04-25T04:23:04Z" // optional }, "plan": "planB" }, ]
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-chengdu
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
 	// The ID of the tenant.
+	//
+	// example:
+	//
+	// 478403690625249
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 
@@ -9635,8 +13492,16 @@ func (s *UpdateQuotaScheduleRequest) SetTenantId(v string) *UpdateQuotaScheduleR
 
 type UpdateQuotaScheduleResponseBody struct {
 	// The returned result.
+	//
+	// example:
+	//
+	// success
 	Data *string `json:"data,omitempty" xml:"data,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0a06dfe516691014920015940e1c9d
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 
@@ -9790,6 +13655,17 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a package.
+//
+// @param request - CreatePackageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePackageResponse
 func (client *Client) CreatePackageWithOptions(projectName *string, request *CreatePackageRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreatePackageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9825,6 +13701,13 @@ func (client *Client) CreatePackageWithOptions(projectName *string, request *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a package.
+//
+// @param request - CreatePackageRequest
+//
+// @return CreatePackageResponse
 func (client *Client) CreatePackage(projectName *string, request *CreatePackageRequest) (_result *CreatePackageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9837,6 +13720,17 @@ func (client *Client) CreatePackage(projectName *string, request *CreatePackageR
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a MaxCompute project.
+//
+// @param request - CreateProjectRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateProjectResponse
 func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9866,6 +13760,13 @@ func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a MaxCompute project.
+//
+// @param request - CreateProjectRequest
+//
+// @return CreateProjectResponse
 func (client *Client) CreateProject(request *CreateProjectRequest) (_result *CreateProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9878,6 +13779,17 @@ func (client *Client) CreateProject(request *CreateProjectRequest) (_result *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a quota plan.
+//
+// @param request - CreateQuotaPlanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateQuotaPlanResponse
 func (client *Client) CreateQuotaPlanWithOptions(nickname *string, request *CreateQuotaPlanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateQuotaPlanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9917,6 +13829,13 @@ func (client *Client) CreateQuotaPlanWithOptions(nickname *string, request *Crea
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a quota plan.
+//
+// @param request - CreateQuotaPlanRequest
+//
+// @return CreateQuotaPlanResponse
 func (client *Client) CreateQuotaPlan(nickname *string, request *CreateQuotaPlanRequest) (_result *CreateQuotaPlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9929,6 +13848,17 @@ func (client *Client) CreateQuotaPlan(nickname *string, request *CreateQuotaPlan
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a scheduling plan for a quota plan.
+//
+// @param request - CreateQuotaScheduleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateQuotaScheduleResponse
 func (client *Client) CreateQuotaScheduleWithOptions(nickname *string, request *CreateQuotaScheduleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateQuotaScheduleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9968,6 +13898,13 @@ func (client *Client) CreateQuotaScheduleWithOptions(nickname *string, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a scheduling plan for a quota plan.
+//
+// @param request - CreateQuotaScheduleRequest
+//
+// @return CreateQuotaScheduleResponse
 func (client *Client) CreateQuotaSchedule(nickname *string, request *CreateQuotaScheduleRequest) (_result *CreateQuotaScheduleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9980,6 +13917,17 @@ func (client *Client) CreateQuotaSchedule(nickname *string, request *CreateQuota
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a role at the MaxCompute project level.
+//
+// @param request - CreateRoleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRoleResponse
 func (client *Client) CreateRoleWithOptions(projectName *string, request *CreateRoleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateRoleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10009,6 +13957,13 @@ func (client *Client) CreateRoleWithOptions(projectName *string, request *Create
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a role at the MaxCompute project level.
+//
+// @param request - CreateRoleRequest
+//
+// @return CreateRoleResponse
 func (client *Client) CreateRole(projectName *string, request *CreateRoleRequest) (_result *CreateRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10021,6 +13976,17 @@ func (client *Client) CreateRole(projectName *string, request *CreateRoleRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a quota plan.
+//
+// @param request - DeleteQuotaPlanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteQuotaPlanResponse
 func (client *Client) DeleteQuotaPlanWithOptions(nickname *string, planName *string, request *DeleteQuotaPlanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteQuotaPlanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10059,6 +14025,13 @@ func (client *Client) DeleteQuotaPlanWithOptions(nickname *string, planName *str
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a quota plan.
+//
+// @param request - DeleteQuotaPlanRequest
+//
+// @return DeleteQuotaPlanResponse
 func (client *Client) DeleteQuotaPlan(nickname *string, planName *string, request *DeleteQuotaPlanRequest) (_result *DeleteQuotaPlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10071,6 +14044,17 @@ func (client *Client) DeleteQuotaPlan(nickname *string, planName *string, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Performs statistics on all jobs that are complete on a specified day and obtains the total resource usage of each job executor on a daily basis.
+//
+// @param tmpReq - GetJobResourceUsageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetJobResourceUsageResponse
 func (client *Client) GetJobResourceUsageWithOptions(tmpReq *GetJobResourceUsageRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetJobResourceUsageResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -10131,6 +14115,13 @@ func (client *Client) GetJobResourceUsageWithOptions(tmpReq *GetJobResourceUsage
 	return _result, _err
 }
 
+// Summary:
+//
+// Performs statistics on all jobs that are complete on a specified day and obtains the total resource usage of each job executor on a daily basis.
+//
+// @param request - GetJobResourceUsageRequest
+//
+// @return GetJobResourceUsageResponse
 func (client *Client) GetJobResourceUsage(request *GetJobResourceUsageRequest) (_result *GetJobResourceUsageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10143,6 +14134,17 @@ func (client *Client) GetJobResourceUsage(request *GetJobResourceUsageRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the information about a package.
+//
+// @param request - GetPackageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPackageResponse
 func (client *Client) GetPackageWithOptions(projectName *string, packageName *string, request *GetPackageRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPackageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10177,6 +14179,13 @@ func (client *Client) GetPackageWithOptions(projectName *string, packageName *st
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the information about a package.
+//
+// @param request - GetPackageRequest
+//
+// @return GetPackageResponse
 func (client *Client) GetPackage(projectName *string, packageName *string, request *GetPackageRequest) (_result *GetPackageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10189,6 +14198,17 @@ func (client *Client) GetPackage(projectName *string, packageName *string, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a MaxCompute project.
+//
+// @param request - GetProjectRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetProjectResponse
 func (client *Client) GetProjectWithOptions(projectName *string, request *GetProjectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10223,6 +14243,13 @@ func (client *Client) GetProjectWithOptions(projectName *string, request *GetPro
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a MaxCompute project.
+//
+// @param request - GetProjectRequest
+//
+// @return GetProjectResponse
 func (client *Client) GetProject(projectName *string, request *GetProjectRequest) (_result *GetProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10235,6 +14262,17 @@ func (client *Client) GetProject(projectName *string, request *GetProjectRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the information about a specified level-1 quota.
+//
+// @param request - GetQuotaRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQuotaResponse
 func (client *Client) GetQuotaWithOptions(nickname *string, request *GetQuotaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetQuotaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10281,6 +14319,13 @@ func (client *Client) GetQuotaWithOptions(nickname *string, request *GetQuotaReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the information about a specified level-1 quota.
+//
+// @param request - GetQuotaRequest
+//
+// @return GetQuotaResponse
 func (client *Client) GetQuota(nickname *string, request *GetQuotaRequest) (_result *GetQuotaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10293,6 +14338,17 @@ func (client *Client) GetQuota(nickname *string, request *GetQuotaRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the information of a quota plan.
+//
+// @param request - GetQuotaPlanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQuotaPlanResponse
 func (client *Client) GetQuotaPlanWithOptions(nickname *string, planName *string, request *GetQuotaPlanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetQuotaPlanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10331,6 +14387,13 @@ func (client *Client) GetQuotaPlanWithOptions(nickname *string, planName *string
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the information of a quota plan.
+//
+// @param request - GetQuotaPlanRequest
+//
+// @return GetQuotaPlanResponse
 func (client *Client) GetQuotaPlan(nickname *string, planName *string, request *GetQuotaPlanRequest) (_result *GetQuotaPlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10343,6 +14406,17 @@ func (client *Client) GetQuotaPlan(nickname *string, planName *string, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the scheduling plan for a quota plan.
+//
+// @param request - GetQuotaScheduleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQuotaScheduleResponse
 func (client *Client) GetQuotaScheduleWithOptions(nickname *string, request *GetQuotaScheduleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetQuotaScheduleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10385,6 +14459,13 @@ func (client *Client) GetQuotaScheduleWithOptions(nickname *string, request *Get
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the scheduling plan for a quota plan.
+//
+// @param request - GetQuotaScheduleRequest
+//
+// @return GetQuotaScheduleResponse
 func (client *Client) GetQuotaSchedule(nickname *string, request *GetQuotaScheduleRequest) (_result *GetQuotaScheduleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10397,6 +14478,15 @@ func (client *Client) GetQuotaSchedule(nickname *string, request *GetQuotaSchedu
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the ACL-based permissions that is granted to a project-level role.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRoleAclResponse
 func (client *Client) GetRoleAclWithOptions(projectName *string, roleName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetRoleAclResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -10421,6 +14511,11 @@ func (client *Client) GetRoleAclWithOptions(projectName *string, roleName *strin
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the ACL-based permissions that is granted to a project-level role.
+//
+// @return GetRoleAclResponse
 func (client *Client) GetRoleAcl(projectName *string, roleName *string) (_result *GetRoleAclResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10433,6 +14528,17 @@ func (client *Client) GetRoleAcl(projectName *string, roleName *string) (_result
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains ACL-based permissions on an object that are granted to a project-level role.
+//
+// @param request - GetRoleAclOnObjectRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRoleAclOnObjectResponse
 func (client *Client) GetRoleAclOnObjectWithOptions(projectName *string, roleName *string, request *GetRoleAclOnObjectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetRoleAclOnObjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10471,6 +14577,13 @@ func (client *Client) GetRoleAclOnObjectWithOptions(projectName *string, roleNam
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains ACL-based permissions on an object that are granted to a project-level role.
+//
+// @param request - GetRoleAclOnObjectRequest
+//
+// @return GetRoleAclOnObjectResponse
 func (client *Client) GetRoleAclOnObject(projectName *string, roleName *string, request *GetRoleAclOnObjectRequest) (_result *GetRoleAclOnObjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10483,6 +14596,15 @@ func (client *Client) GetRoleAclOnObject(projectName *string, roleName *string, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the policy that is attached to a project-level role.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRolePolicyResponse
 func (client *Client) GetRolePolicyWithOptions(projectName *string, roleName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetRolePolicyResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -10507,6 +14629,11 @@ func (client *Client) GetRolePolicyWithOptions(projectName *string, roleName *st
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the policy that is attached to a project-level role.
+//
+// @return GetRolePolicyResponse
 func (client *Client) GetRolePolicy(projectName *string, roleName *string) (_result *GetRolePolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10519,6 +14646,17 @@ func (client *Client) GetRolePolicy(projectName *string, roleName *string) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the running state data of jobs that are in the running state in a specified period of time.
+//
+// @param tmpReq - GetRunningJobsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRunningJobsResponse
 func (client *Client) GetRunningJobsWithOptions(tmpReq *GetRunningJobsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetRunningJobsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -10583,6 +14721,13 @@ func (client *Client) GetRunningJobsWithOptions(tmpReq *GetRunningJobsRequest, h
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the running state data of jobs that are in the running state in a specified period of time.
+//
+// @param request - GetRunningJobsRequest
+//
+// @return GetRunningJobsResponse
 func (client *Client) GetRunningJobs(request *GetRunningJobsRequest) (_result *GetRunningJobsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10595,6 +14740,13 @@ func (client *Client) GetRunningJobs(request *GetRunningJobsRequest) (_result *G
 	return _result, _err
 }
 
+// @param request - GetTableInfoRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTableInfoResponse
 func (client *Client) GetTableInfoWithOptions(projectName *string, tableName *string, request *GetTableInfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTableInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10633,6 +14785,9 @@ func (client *Client) GetTableInfoWithOptions(projectName *string, tableName *st
 	return _result, _err
 }
 
+// @param request - GetTableInfoRequest
+//
+// @return GetTableInfoResponse
 func (client *Client) GetTableInfo(projectName *string, tableName *string, request *GetTableInfoRequest) (_result *GetTableInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10645,6 +14800,15 @@ func (client *Client) GetTableInfo(projectName *string, tableName *string, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the trusted projects of the current project.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTrustedProjectsResponse
 func (client *Client) GetTrustedProjectsWithOptions(projectName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTrustedProjectsResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -10669,6 +14833,11 @@ func (client *Client) GetTrustedProjectsWithOptions(projectName *string, headers
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the trusted projects of the current project.
+//
+// @return GetTrustedProjectsResponse
 func (client *Client) GetTrustedProjects(projectName *string) (_result *GetTrustedProjectsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10681,6 +14850,17 @@ func (client *Client) GetTrustedProjects(projectName *string) (_result *GetTrust
 	return _result, _err
 }
 
+// Summary:
+//
+// Terminates a running job.
+//
+// @param request - KillJobsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return KillJobsResponse
 func (client *Client) KillJobsWithOptions(request *KillJobsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *KillJobsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10720,6 +14900,13 @@ func (client *Client) KillJobsWithOptions(request *KillJobsRequest, headers map[
 	return _result, _err
 }
 
+// Summary:
+//
+// Terminates a running job.
+//
+// @param request - KillJobsRequest
+//
+// @return KillJobsResponse
 func (client *Client) KillJobs(request *KillJobsRequest) (_result *KillJobsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10732,6 +14919,17 @@ func (client *Client) KillJobs(request *KillJobsRequest) (_result *KillJobsRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains functions in a MaxCompute project.
+//
+// @param request - ListFunctionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFunctionsResponse
 func (client *Client) ListFunctionsWithOptions(projectName *string, request *ListFunctionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFunctionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10778,6 +14976,13 @@ func (client *Client) ListFunctionsWithOptions(projectName *string, request *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains functions in a MaxCompute project.
+//
+// @param request - ListFunctionsRequest
+//
+// @return ListFunctionsResponse
 func (client *Client) ListFunctions(projectName *string, request *ListFunctionsRequest) (_result *ListFunctionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10790,6 +14995,17 @@ func (client *Client) ListFunctions(projectName *string, request *ListFunctionsR
 	return _result, _err
 }
 
+// Summary:
+//
+// Views a list of jobs.
+//
+// @param request - ListJobInfosRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListJobInfosResponse
 func (client *Client) ListJobInfosWithOptions(request *ListJobInfosRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListJobInfosResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10845,6 +15061,13 @@ func (client *Client) ListJobInfosWithOptions(request *ListJobInfosRequest, head
 	return _result, _err
 }
 
+// Summary:
+//
+// Views a list of jobs.
+//
+// @param request - ListJobInfosRequest
+//
+// @return ListJobInfosResponse
 func (client *Client) ListJobInfos(request *ListJobInfosRequest) (_result *ListJobInfosResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10857,6 +15080,15 @@ func (client *Client) ListJobInfos(request *ListJobInfosRequest) (_result *ListJ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the packages in a MaxCompute project.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPackagesResponse
 func (client *Client) ListPackagesWithOptions(projectName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListPackagesResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -10881,6 +15113,11 @@ func (client *Client) ListPackagesWithOptions(projectName *string, headers map[s
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the packages in a MaxCompute project.
+//
+// @return ListPackagesResponse
 func (client *Client) ListPackages(projectName *string) (_result *ListPackagesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10893,6 +15130,15 @@ func (client *Client) ListPackages(projectName *string) (_result *ListPackagesRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of users in a project.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProjectUsersResponse
 func (client *Client) ListProjectUsersWithOptions(projectName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProjectUsersResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -10917,6 +15163,11 @@ func (client *Client) ListProjectUsersWithOptions(projectName *string, headers m
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of users in a project.
+//
+// @return ListProjectUsersResponse
 func (client *Client) ListProjectUsers(projectName *string) (_result *ListProjectUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10929,6 +15180,17 @@ func (client *Client) ListProjectUsers(projectName *string) (_result *ListProjec
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of MaxCompute projects.
+//
+// @param request - ListProjectsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProjectsResponse
 func (client *Client) ListProjectsWithOptions(request *ListProjectsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProjectsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10999,6 +15261,13 @@ func (client *Client) ListProjectsWithOptions(request *ListProjectsRequest, head
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of MaxCompute projects.
+//
+// @param request - ListProjectsRequest
+//
+// @return ListProjectsResponse
 func (client *Client) ListProjects(request *ListProjectsRequest) (_result *ListProjectsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11011,6 +15280,17 @@ func (client *Client) ListProjects(request *ListProjectsRequest) (_result *ListP
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries quotas.
+//
+// @param request - ListQuotasRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListQuotasResponse
 func (client *Client) ListQuotasWithOptions(request *ListQuotasRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListQuotasResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11069,6 +15349,13 @@ func (client *Client) ListQuotasWithOptions(request *ListQuotasRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries quotas.
+//
+// @param request - ListQuotasRequest
+//
+// @return ListQuotasResponse
 func (client *Client) ListQuotas(request *ListQuotasRequest) (_result *ListQuotasResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11081,6 +15368,17 @@ func (client *Client) ListQuotas(request *ListQuotasRequest) (_result *ListQuota
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains quota plans.
+//
+// @param request - ListQuotasPlansRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListQuotasPlansResponse
 func (client *Client) ListQuotasPlansWithOptions(nickname *string, request *ListQuotasPlansRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListQuotasPlansResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11119,6 +15417,13 @@ func (client *Client) ListQuotasPlansWithOptions(nickname *string, request *List
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains quota plans.
+//
+// @param request - ListQuotasPlansRequest
+//
+// @return ListQuotasPlansResponse
 func (client *Client) ListQuotasPlans(nickname *string, request *ListQuotasPlansRequest) (_result *ListQuotasPlansResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11131,6 +15436,17 @@ func (client *Client) ListQuotasPlans(nickname *string, request *ListQuotasPlans
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains resources in a MaxCompute project.
+//
+// @param request - ListResourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListResourcesResponse
 func (client *Client) ListResourcesWithOptions(projectName *string, request *ListResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11177,6 +15493,13 @@ func (client *Client) ListResourcesWithOptions(projectName *string, request *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains resources in a MaxCompute project.
+//
+// @param request - ListResourcesRequest
+//
+// @return ListResourcesResponse
 func (client *Client) ListResources(projectName *string, request *ListResourcesRequest) (_result *ListResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11189,6 +15512,15 @@ func (client *Client) ListResources(projectName *string, request *ListResourcesR
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains MaxCompute project-level roles.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRolesResponse
 func (client *Client) ListRolesWithOptions(projectName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListRolesResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -11213,6 +15545,11 @@ func (client *Client) ListRolesWithOptions(projectName *string, headers map[stri
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains MaxCompute project-level roles.
+//
+// @return ListRolesResponse
 func (client *Client) ListRoles(projectName *string) (_result *ListRolesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11225,6 +15562,17 @@ func (client *Client) ListRoles(projectName *string) (_result *ListRolesResponse
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains tables in a MaxCompute project.
+//
+// @param request - ListTablesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTablesResponse
 func (client *Client) ListTablesWithOptions(projectName *string, request *ListTablesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTablesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11275,6 +15623,13 @@ func (client *Client) ListTablesWithOptions(projectName *string, request *ListTa
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains tables in a MaxCompute project.
+//
+// @param request - ListTablesRequest
+//
+// @return ListTablesResponse
 func (client *Client) ListTables(projectName *string, request *ListTablesRequest) (_result *ListTablesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11287,6 +15642,17 @@ func (client *Client) ListTables(projectName *string, request *ListTablesRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of all users under a tenant.
+//
+// @param request - ListUsersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUsersResponse
 func (client *Client) ListUsersWithOptions(request *ListUsersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11325,6 +15691,13 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, headers ma
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of all users under a tenant.
+//
+// @param request - ListUsersRequest
+//
+// @return ListUsersResponse
 func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11337,6 +15710,15 @@ func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains information about the users who are assigned a project-level role.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUsersByRoleResponse
 func (client *Client) ListUsersByRoleWithOptions(projectName *string, roleName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListUsersByRoleResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -11361,6 +15743,11 @@ func (client *Client) ListUsersByRoleWithOptions(projectName *string, roleName *
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains information about the users who are assigned a project-level role.
+//
+// @return ListUsersByRoleResponse
 func (client *Client) ListUsersByRole(projectName *string, roleName *string) (_result *ListUsersByRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11373,6 +15760,17 @@ func (client *Client) ListUsersByRole(projectName *string, roleName *string) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the objects in a package and projects in which the package can be installed.
+//
+// @param request - UpdatePackageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePackageResponse
 func (client *Client) UpdatePackageWithOptions(projectName *string, packageName *string, request *UpdatePackageRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdatePackageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11402,6 +15800,13 @@ func (client *Client) UpdatePackageWithOptions(projectName *string, packageName 
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the objects in a package and projects in which the package can be installed.
+//
+// @param request - UpdatePackageRequest
+//
+// @return UpdatePackageResponse
 func (client *Client) UpdatePackage(projectName *string, packageName *string, request *UpdatePackageRequest) (_result *UpdatePackageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11414,6 +15819,17 @@ func (client *Client) UpdatePackage(projectName *string, packageName *string, re
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the IP address whitelist of a MaxCompute project.
+//
+// @param request - UpdateProjectIpWhiteListRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateProjectIpWhiteListResponse
 func (client *Client) UpdateProjectIpWhiteListWithOptions(projectName *string, request *UpdateProjectIpWhiteListRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateProjectIpWhiteListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11443,6 +15859,13 @@ func (client *Client) UpdateProjectIpWhiteListWithOptions(projectName *string, r
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the IP address whitelist of a MaxCompute project.
+//
+// @param request - UpdateProjectIpWhiteListRequest
+//
+// @return UpdateProjectIpWhiteListResponse
 func (client *Client) UpdateProjectIpWhiteList(projectName *string, request *UpdateProjectIpWhiteListRequest) (_result *UpdateProjectIpWhiteListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11455,6 +15878,17 @@ func (client *Client) UpdateProjectIpWhiteList(projectName *string, request *Upd
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a quota.
+//
+// @param request - UpdateQuotaRequest
+//
+// @param headers - UpdateQuotaHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateQuotaResponse
 func (client *Client) UpdateQuotaWithOptions(nickname *string, request *UpdateQuotaRequest, headers *UpdateQuotaHeaders, runtime *util.RuntimeOptions) (_result *UpdateQuotaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11503,6 +15937,13 @@ func (client *Client) UpdateQuotaWithOptions(nickname *string, request *UpdateQu
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a quota.
+//
+// @param request - UpdateQuotaRequest
+//
+// @return UpdateQuotaResponse
 func (client *Client) UpdateQuota(nickname *string, request *UpdateQuotaRequest) (_result *UpdateQuotaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &UpdateQuotaHeaders{}
@@ -11515,6 +15956,17 @@ func (client *Client) UpdateQuota(nickname *string, request *UpdateQuotaRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a quota plan.
+//
+// @param request - UpdateQuotaPlanRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateQuotaPlanResponse
 func (client *Client) UpdateQuotaPlanWithOptions(nickname *string, planName *string, request *UpdateQuotaPlanRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateQuotaPlanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11554,6 +16006,13 @@ func (client *Client) UpdateQuotaPlanWithOptions(nickname *string, planName *str
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a quota plan.
+//
+// @param request - UpdateQuotaPlanRequest
+//
+// @return UpdateQuotaPlanResponse
 func (client *Client) UpdateQuotaPlan(nickname *string, planName *string, request *UpdateQuotaPlanRequest) (_result *UpdateQuotaPlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11566,6 +16025,17 @@ func (client *Client) UpdateQuotaPlan(nickname *string, planName *string, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the scheduling plan for a quota plan.
+//
+// @param request - UpdateQuotaScheduleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateQuotaScheduleResponse
 func (client *Client) UpdateQuotaScheduleWithOptions(nickname *string, request *UpdateQuotaScheduleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateQuotaScheduleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11605,6 +16075,13 @@ func (client *Client) UpdateQuotaScheduleWithOptions(nickname *string, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the scheduling plan for a quota plan.
+//
+// @param request - UpdateQuotaScheduleRequest
+//
+// @return UpdateQuotaScheduleResponse
 func (client *Client) UpdateQuotaSchedule(nickname *string, request *UpdateQuotaScheduleRequest) (_result *UpdateQuotaScheduleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
