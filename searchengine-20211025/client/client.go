@@ -646,6 +646,86 @@ func (s *BuildIndexResponse) SetBody(v *BuildIndexResponseBody) *BuildIndexRespo
 	return s
 }
 
+type ChangeResourceGroupRequest struct {
+	// example:
+	//
+	// rg-acfmxr3gs*****
+	NewResourceGroupId *string `json:"newResourceGroupId,omitempty" xml:"newResourceGroupId,omitempty"`
+	// example:
+	//
+	// instance
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+}
+
+func (s ChangeResourceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceGroupRequest) SetNewResourceGroupId(v string) *ChangeResourceGroupRequest {
+	s.NewResourceGroupId = &v
+	return s
+}
+
+func (s *ChangeResourceGroupRequest) SetResourceType(v string) *ChangeResourceGroupRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type ChangeResourceGroupResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 10D5E615-69F7-5F49-B850-00169ADE513C
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ChangeResourceGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceGroupResponseBody) SetRequestId(v string) *ChangeResourceGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ChangeResourceGroupResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChangeResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ChangeResourceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceGroupResponse) SetHeaders(v map[string]*string) *ChangeResourceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChangeResourceGroupResponse) SetStatusCode(v int32) *ChangeResourceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody) *ChangeResourceGroupResponse {
+	s.Body = v
+	return s
+}
+
 type CreateClusterRequest struct {
 	// The remarks of the query node
 	//
@@ -817,10 +897,14 @@ func (s *CreateClusterResponse) SetBody(v *CreateClusterResponseBody) *CreateClu
 }
 
 type CreateConfigDirRequest struct {
+	// The name of the directory
+	//
 	// example:
 	//
 	// /clusters
 	DirName *string `json:"dirName,omitempty" xml:"dirName,omitempty"`
+	// Parent file path
+	//
 	// example:
 	//
 	// /
@@ -7939,7 +8023,7 @@ type ListClustersResponseBody struct {
 	//
 	// F43E8AB4-419C-5F4C-90D6-615590DFAA3C
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The list of clusters.
+	// The clusters.
 	Result []*ListClustersResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
@@ -7970,13 +8054,13 @@ type ListClustersResponseBodyResult struct {
 	// " "
 	ConfigUpdateTime *string `json:"configUpdateTime,omitempty" xml:"configUpdateTime,omitempty"`
 	CreateTime       *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The effective advanced version.
+	// The effective advanced configuration version.
 	//
 	// example:
 	//
 	// " "
 	CurrentAdvanceConfigVersion *string `json:"currentAdvanceConfigVersion,omitempty" xml:"currentAdvanceConfigVersion,omitempty"`
-	// 词典配置生效版本
+	// The effective dictionary configuration version.
 	CurrentOfflineDictConfigVersion *string `json:"currentOfflineDictConfigVersion,omitempty" xml:"currentOfflineDictConfigVersion,omitempty"`
 	// The effective online configuration version.
 	//
@@ -7984,9 +8068,9 @@ type ListClustersResponseBodyResult struct {
 	//
 	// " "
 	CurrentOnlineConfigVersion *string `json:"currentOnlineConfigVersion,omitempty" xml:"currentOnlineConfigVersion,omitempty"`
-	// 查询配置生效版本
+	// The effective query configuration version.
 	CurrentOnlineQueryConfigVersion *string `json:"currentOnlineQueryConfigVersion,omitempty" xml:"currentOnlineQueryConfigVersion,omitempty"`
-	// The information about the node in the cluster.
+	// The information about Searcher workers.
 	DataNode *ListClustersResponseBodyResultDataNode `json:"dataNode,omitempty" xml:"dataNode,omitempty" type:"Struct"`
 	// The description of the cluster.
 	//
@@ -8000,7 +8084,7 @@ type ListClustersResponseBodyResult struct {
 	//
 	// " "
 	LatestAdvanceConfigVersion *string `json:"latestAdvanceConfigVersion,omitempty" xml:"latestAdvanceConfigVersion,omitempty"`
-	// 词典配置最新版本
+	// The latest dictionary configuration version.
 	LatestOfflineDictConfigVersion *string `json:"latestOfflineDictConfigVersion,omitempty" xml:"latestOfflineDictConfigVersion,omitempty"`
 	// The latest online configuration version.
 	//
@@ -8008,17 +8092,17 @@ type ListClustersResponseBodyResult struct {
 	//
 	// " "
 	LatestOnlineConfigVersion *string `json:"latestOnlineConfigVersion,omitempty" xml:"latestOnlineConfigVersion,omitempty"`
-	// 查询配置最新版本
+	// The latest query configuration version.
 	LatestOnlineQueryConfigVersion *string `json:"latestOnlineQueryConfigVersion,omitempty" xml:"latestOnlineQueryConfigVersion,omitempty"`
-	// The name of the cluster.
+	// The cluster name.
 	//
 	// example:
 	//
 	// ha-cn-7pp2pcna701_qrs
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The query node of the cluster.
+	// The information about Query Result Searcher (QRS) workers.
 	QueryNode *ListClustersResponseBodyResultQueryNode `json:"queryNode,omitempty" xml:"queryNode,omitempty" type:"Struct"`
-	// The status of the cluster. Valid values: running, starting, stopping, and stopped. running indicates the cluster is running, starting indicates the cluster is starting, stopping indicates the cluster is stopping, and stopped indicates the cluster has stopped.
+	// The status of the cluster. Valid values: running: The cluster is running. starting: The cluster is being started. stopping: The cluster is being stopped. stopped: The cluster is stopped.
 	//
 	// example:
 	//
@@ -8115,19 +8199,19 @@ func (s *ListClustersResponseBodyResult) SetStatus(v string) *ListClustersRespon
 }
 
 type ListClustersResponseBodyResultDataNode struct {
-	// The name of the node.
+	// The name of the Searcher worker.
 	//
 	// example:
 	//
 	// ha-cn-8ed2k7brm05_qrs
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The number of nodes.
+	// The number of Searcher workers.
 	//
 	// example:
 	//
 	// 1
 	Number *int32 `json:"number,omitempty" xml:"number,omitempty"`
-	// The partition ID of the node.
+	// The ID of the partition that is stored on the Searcher worker.
 	//
 	// example:
 	//
@@ -8159,19 +8243,19 @@ func (s *ListClustersResponseBodyResultDataNode) SetPartition(v int32) *ListClus
 }
 
 type ListClustersResponseBodyResultQueryNode struct {
-	// The name of the node.
+	// The name of the QRS worker.
 	//
 	// example:
 	//
 	// test_0704
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The number of nodes.
+	// The number of QRS workers.
 	//
 	// example:
 	//
 	// 1
 	Number *int32 `json:"number,omitempty" xml:"number,omitempty"`
-	// The number o replicas.
+	// The ID of the partition that is stored on the QRS worker.
 	//
 	// example:
 	//
@@ -11072,6 +11156,232 @@ func (s *ListTablesResponse) SetStatusCode(v int32) *ListTablesResponse {
 }
 
 func (s *ListTablesResponse) SetBody(v *ListTablesResponseBody) *ListTablesResponse {
+	s.Body = v
+	return s
+}
+
+type ListTagResourcesRequest struct {
+	// example:
+	//
+	// 600********33
+	NextToken  *string   `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	ResourceId []*string `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// instance
+	ResourceType *string                       `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	Tag          []*ListTagResourcesRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequest) SetNextToken(v string) *ListTagResourcesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceId(v []*string) *ListTagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceType(v string) *ListTagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListTagResourcesRequest {
+	s.Tag = v
+	return s
+}
+
+type ListTagResourcesRequestTag struct {
+	// example:
+	//
+	// opensearch
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// example:
+	//
+	// opensearch
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ListTagResourcesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequestTag) SetKey(v string) *ListTagResourcesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type ListTagResourcesShrinkRequest struct {
+	// example:
+	//
+	// 600********33
+	NextToken        *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	ResourceIdShrink *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// instance
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	TagShrink    *string `json:"tag,omitempty" xml:"tag,omitempty"`
+}
+
+func (s ListTagResourcesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesShrinkRequest) SetNextToken(v string) *ListTagResourcesShrinkRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesShrinkRequest) SetResourceIdShrink(v string) *ListTagResourcesShrinkRequest {
+	s.ResourceIdShrink = &v
+	return s
+}
+
+func (s *ListTagResourcesShrinkRequest) SetResourceType(v string) *ListTagResourcesShrinkRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesShrinkRequest) SetTagShrink(v string) *ListTagResourcesShrinkRequest {
+	s.TagShrink = &v
+	return s
+}
+
+type ListTagResourcesResponseBody struct {
+	// example:
+	//
+	// b56*******de4a7eca
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// 2AE63638-5420-56DC-BF59-37D8174039A0
+	RequestId    *string                                     `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TagResources []*ListTagResourcesResponseBodyTagResources `json:"tagResources,omitempty" xml:"tagResources,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBody) SetNextToken(v string) *ListTagResourcesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetRequestId(v string) *ListTagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResponseBodyTagResources) *ListTagResourcesResponseBody {
+	s.TagResources = v
+	return s
+}
+
+type ListTagResourcesResponseBodyTagResources struct {
+	// example:
+	//
+	// rmq-cn-jeo3mn55j01
+	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// example:
+	//
+	// instance
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// example:
+	//
+	// opensearch
+	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	// example:
+	//
+	// opensearch
+	TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
+}
+
+func (s ListTagResourcesResponseBodyTagResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBodyTagResources) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetResourceId(v string) *ListTagResourcesResponseBodyTagResources {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetResourceType(v string) *ListTagResourcesResponseBodyTagResources {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetTagKey(v string) *ListTagResourcesResponseBodyTagResources {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetTagValue(v string) *ListTagResourcesResponseBodyTagResources {
+	s.TagValue = &v
+	return s
+}
+
+type ListTagResourcesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponse) SetHeaders(v map[string]*string) *ListTagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *ListTagResourcesResponse {
 	s.Body = v
 	return s
 }
@@ -15120,6 +15430,257 @@ func (s *StopTaskResponse) SetBody(v *StopTaskResponseBody) *StopTaskResponse {
 	return s
 }
 
+type TagResourcesRequest struct {
+	// This parameter is required.
+	ResourceId []*string `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// instance
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// This parameter is required.
+	Tag []*TagResourcesRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
+}
+
+func (s TagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesRequest) SetResourceId(v []*string) *TagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *TagResourcesRequest) SetResourceType(v string) *TagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesRequest {
+	s.Tag = v
+	return s
+}
+
+type TagResourcesRequestTag struct {
+	// example:
+	//
+	// opensearch
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// example:
+	//
+	// opensearch
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s TagResourcesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesRequestTag) SetKey(v string) *TagResourcesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type TagResourcesResponseBody struct {
+	// example:
+	//
+	// E7B7D598-B080-5C8E-AA35-D43EC0D5F886
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s TagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type TagResourcesResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s TagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesResponse) SetHeaders(v map[string]*string) *TagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TagResourcesResponse) SetStatusCode(v int32) *TagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type UntagResourcesRequest struct {
+	// example:
+	//
+	// true
+	All *bool `json:"all,omitempty" xml:"all,omitempty"`
+	// This parameter is required.
+	ResourceId []*string `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// instance
+	ResourceType *string   `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	TagKey       []*string `json:"tagKey,omitempty" xml:"tagKey,omitempty" type:"Repeated"`
+}
+
+func (s UntagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesRequest) SetAll(v bool) *UntagResourcesRequest {
+	s.All = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetResourceId(v []*string) *UntagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetResourceType(v string) *UntagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
+	s.TagKey = v
+	return s
+}
+
+type UntagResourcesShrinkRequest struct {
+	// example:
+	//
+	// true
+	All *bool `json:"all,omitempty" xml:"all,omitempty"`
+	// This parameter is required.
+	ResourceIdShrink *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// instance
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	TagKeyShrink *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+}
+
+func (s UntagResourcesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesShrinkRequest) SetAll(v bool) *UntagResourcesShrinkRequest {
+	s.All = &v
+	return s
+}
+
+func (s *UntagResourcesShrinkRequest) SetResourceIdShrink(v string) *UntagResourcesShrinkRequest {
+	s.ResourceIdShrink = &v
+	return s
+}
+
+func (s *UntagResourcesShrinkRequest) SetResourceType(v string) *UntagResourcesShrinkRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *UntagResourcesShrinkRequest) SetTagKeyShrink(v string) *UntagResourcesShrinkRequest {
+	s.TagKeyShrink = &v
+	return s
+}
+
+type UntagResourcesResponseBody struct {
+	// example:
+	//
+	// E7B7D598-B080-5C8E-AA35-D43EC0D5F886
+	TequestId *string `json:"tequestId,omitempty" xml:"tequestId,omitempty"`
+}
+
+func (s UntagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesResponseBody) SetTequestId(v string) *UntagResourcesResponseBody {
+	s.TequestId = &v
+	return s
+}
+
+type UntagResourcesResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UntagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesResponse) SetHeaders(v map[string]*string) *UntagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagResourcesResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateInstanceRequest struct {
 	// A list of instance-related specifications.
 	Components []*UpdateInstanceRequestComponents `json:"components,omitempty" xml:"components,omitempty" type:"Repeated"`
@@ -15529,6 +16090,74 @@ func (client *Client) BuildIndex(instanceId *string, request *BuildIndexRequest)
 	headers := make(map[string]*string)
 	_result = &BuildIndexResponse{}
 	_body, _err := client.BuildIndexWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更换实例资源组
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeResourceGroupResponse
+func (client *Client) ChangeResourceGroupWithOptions(instanceId *string, request *ChangeResourceGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NewResourceGroupId)) {
+		body["newResourceGroupId"] = request.NewResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		body["resourceType"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChangeResourceGroup"),
+		Version:     tea.String("2021-10-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/ha3/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/actions/change-resource-group"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ChangeResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更换实例资源组
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @return ChangeResourceGroupResponse
+func (client *Client) ChangeResourceGroup(instanceId *string, request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ChangeResourceGroupResponse{}
+	_body, _err := client.ChangeResourceGroupWithOptions(instanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18294,7 +18923,7 @@ func (client *Client) ListClusterTasks(instanceId *string) (_result *ListCluster
 
 // Summary:
 //
-// Queries the list of clusters.
+// Queries clusters.
 //
 // Description:
 //
@@ -18345,7 +18974,7 @@ func (client *Client) ListClustersWithOptions(instanceId *string, headers map[st
 
 // Summary:
 //
-// Queries the list of clusters.
+// Queries clusters.
 //
 // Description:
 //
@@ -19577,6 +20206,92 @@ func (client *Client) ListTables(instanceId *string, request *ListTablesRequest)
 	headers := make(map[string]*string)
 	_result = &ListTablesResponse{}
 	_body, _err := client.ListTablesWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查标签接口
+//
+// @param tmpReq - ListTagResourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
+func (client *Client) ListTagResourcesWithOptions(tmpReq *ListTagResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListTagResourcesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ResourceId)) {
+		request.ResourceIdShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceId, tea.String("resourceId"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("tag"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIdShrink)) {
+		query["resourceId"] = request.ResourceIdShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["resourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["tag"] = request.TagShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTagResources"),
+		Version:     tea.String("2021-10-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/ha3/resource-tags"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查标签接口
+//
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
+func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.ListTagResourcesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21997,6 +22712,164 @@ func (client *Client) StopTask(instanceId *string, fsmId *string) (_result *Stop
 	headers := make(map[string]*string)
 	_result = &StopTaskResponse{}
 	_body, _err := client.StopTaskWithOptions(instanceId, fsmId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 打标签接口
+//
+// @param request - TagResourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
+func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		body["resourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		body["resourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		body["tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TagResources"),
+		Version:     tea.String("2021-10-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/ha3/resource-tags"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 打标签接口
+//
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
+func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &TagResourcesResponse{}
+	_body, _err := client.TagResourcesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删标签接口
+//
+// @param tmpReq - UntagResourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
+func (client *Client) UntagResourcesWithOptions(tmpReq *UntagResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UntagResourcesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ResourceId)) {
+		request.ResourceIdShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceId, tea.String("resourceId"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TagKey)) {
+		request.TagKeyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagKey, tea.String("tagKey"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.All)) {
+		query["all"] = request.All
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIdShrink)) {
+		query["resourceId"] = request.ResourceIdShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["resourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKeyShrink)) {
+		query["tagKey"] = request.TagKeyShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UntagResources"),
+		Version:     tea.String("2021-10-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/ha3/resource-tags"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删标签接口
+//
+// @param request - UntagResourcesRequest
+//
+// @return UntagResourcesResponse
+func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.UntagResourcesWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
