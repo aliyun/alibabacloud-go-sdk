@@ -49568,6 +49568,144 @@ func (s *SubmitTranscodeJobResponse) SetBody(v *SubmitTranscodeJobResponseBody) 
 	return s
 }
 
+type SubmitVideoTranslationJobRequest struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// {"SourceLanguage":"zh","TargetLanguage":"en","DetextArea":"Auto"}
+	EditingConfig *string `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
+	// example:
+	//
+	// {"Type":"Video","Media":"https://your-bucket.oss-cn-shanghai.aliyuncs.com/xxx.mp4"}
+	InputConfig *string `json:"InputConfig,omitempty" xml:"InputConfig,omitempty"`
+	// example:
+	//
+	// {"MediaURL": "https://your-bucket.oss-cn-shanghai.aliyuncs.com/your-object.mp4"}
+	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
+	Title        *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	UserData     *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s SubmitVideoTranslationJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitVideoTranslationJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitVideoTranslationJobRequest) SetClientToken(v string) *SubmitVideoTranslationJobRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *SubmitVideoTranslationJobRequest) SetDescription(v string) *SubmitVideoTranslationJobRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *SubmitVideoTranslationJobRequest) SetEditingConfig(v string) *SubmitVideoTranslationJobRequest {
+	s.EditingConfig = &v
+	return s
+}
+
+func (s *SubmitVideoTranslationJobRequest) SetInputConfig(v string) *SubmitVideoTranslationJobRequest {
+	s.InputConfig = &v
+	return s
+}
+
+func (s *SubmitVideoTranslationJobRequest) SetOutputConfig(v string) *SubmitVideoTranslationJobRequest {
+	s.OutputConfig = &v
+	return s
+}
+
+func (s *SubmitVideoTranslationJobRequest) SetTitle(v string) *SubmitVideoTranslationJobRequest {
+	s.Title = &v
+	return s
+}
+
+func (s *SubmitVideoTranslationJobRequest) SetUserData(v string) *SubmitVideoTranslationJobRequest {
+	s.UserData = &v
+	return s
+}
+
+type SubmitVideoTranslationJobResponseBody struct {
+	Data *SubmitVideoTranslationJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SubmitVideoTranslationJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitVideoTranslationJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitVideoTranslationJobResponseBody) SetData(v *SubmitVideoTranslationJobResponseBodyData) *SubmitVideoTranslationJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SubmitVideoTranslationJobResponseBody) SetRequestId(v string) *SubmitVideoTranslationJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitVideoTranslationJobResponseBody) SetSuccess(v bool) *SubmitVideoTranslationJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SubmitVideoTranslationJobResponseBodyData struct {
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s SubmitVideoTranslationJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitVideoTranslationJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitVideoTranslationJobResponseBodyData) SetJobId(v string) *SubmitVideoTranslationJobResponseBodyData {
+	s.JobId = &v
+	return s
+}
+
+type SubmitVideoTranslationJobResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitVideoTranslationJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitVideoTranslationJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitVideoTranslationJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitVideoTranslationJobResponse) SetHeaders(v map[string]*string) *SubmitVideoTranslationJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitVideoTranslationJobResponse) SetStatusCode(v int32) *SubmitVideoTranslationJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitVideoTranslationJobResponse) SetBody(v *SubmitVideoTranslationJobResponseBody) *SubmitVideoTranslationJobResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateAvatarTrainingJobRequest struct {
 	AvatarDescription *string `json:"AvatarDescription,omitempty" xml:"AvatarDescription,omitempty"`
 	AvatarName        *string `json:"AvatarName,omitempty" xml:"AvatarName,omitempty"`
@@ -64638,6 +64776,90 @@ func (client *Client) SubmitTranscodeJob(request *SubmitTranscodeJobRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitTranscodeJobResponse{}
 	_body, _err := client.SubmitTranscodeJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交视频翻译任务
+//
+// @param request - SubmitVideoTranslationJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitVideoTranslationJobResponse
+func (client *Client) SubmitVideoTranslationJobWithOptions(request *SubmitVideoTranslationJobRequest, runtime *util.RuntimeOptions) (_result *SubmitVideoTranslationJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EditingConfig)) {
+		query["EditingConfig"] = request.EditingConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputConfig)) {
+		query["InputConfig"] = request.InputConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputConfig)) {
+		query["OutputConfig"] = request.OutputConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitVideoTranslationJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitVideoTranslationJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交视频翻译任务
+//
+// @param request - SubmitVideoTranslationJobRequest
+//
+// @return SubmitVideoTranslationJobResponse
+func (client *Client) SubmitVideoTranslationJob(request *SubmitVideoTranslationJobRequest) (_result *SubmitVideoTranslationJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitVideoTranslationJobResponse{}
+	_body, _err := client.SubmitVideoTranslationJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
