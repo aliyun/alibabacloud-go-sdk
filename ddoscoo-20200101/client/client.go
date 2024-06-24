@@ -14030,9 +14030,9 @@ func (s *DescribeNetworkRegionBlockResponseBody) SetRequestId(v string) *Describ
 
 type DescribeNetworkRegionBlockResponseBodyConfig struct {
 	// An array consisting of the codes of the countries or areas from which the requests are blocked.
-	Countries []*string `json:"Countries,omitempty" xml:"Countries,omitempty" type:"Repeated"`
+	Countries []*int64 `json:"Countries,omitempty" xml:"Countries,omitempty" type:"Repeated"`
 	// An array consisting of the codes of the administrative regions in China from which the requests are blocked.
-	Provinces []*string `json:"Provinces,omitempty" xml:"Provinces,omitempty" type:"Repeated"`
+	Provinces []*int64 `json:"Provinces,omitempty" xml:"Provinces,omitempty" type:"Repeated"`
 	// The status of the Location Blacklist policy. Valid values:
 	//
 	// 	- **on**: enabled
@@ -14053,12 +14053,12 @@ func (s DescribeNetworkRegionBlockResponseBodyConfig) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeNetworkRegionBlockResponseBodyConfig) SetCountries(v []*string) *DescribeNetworkRegionBlockResponseBodyConfig {
+func (s *DescribeNetworkRegionBlockResponseBodyConfig) SetCountries(v []*int64) *DescribeNetworkRegionBlockResponseBodyConfig {
 	s.Countries = v
 	return s
 }
 
-func (s *DescribeNetworkRegionBlockResponseBodyConfig) SetProvinces(v []*string) *DescribeNetworkRegionBlockResponseBodyConfig {
+func (s *DescribeNetworkRegionBlockResponseBodyConfig) SetProvinces(v []*int64) *DescribeNetworkRegionBlockResponseBodyConfig {
 	s.Provinces = v
 	return s
 }
