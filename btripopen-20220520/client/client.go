@@ -9,6 +9,113 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type KeywordSuggestInfo struct {
+	Address              *string             `json:"address,omitempty" xml:"address,omitempty"`
+	BusinessAreaWithCity *KeywordSuggestInfo `json:"business_area_with_city,omitempty" xml:"business_area_with_city,omitempty"`
+	// example:
+	//
+	// 300100
+	CityCode *int32 `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	// example:
+	//
+	// 杭州
+	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+	// example:
+	//
+	// 杭州东站
+	DisplayName *string `json:"display_name,omitempty" xml:"display_name,omitempty"`
+	// example:
+	//
+	// 53853318
+	HotelId *string `json:"hotel_id,omitempty" xml:"hotel_id,omitempty"`
+	Icon    *string `json:"icon,omitempty" xml:"icon,omitempty"`
+	// example:
+	//
+	// 4.8分
+	Point *string `json:"point,omitempty" xml:"point,omitempty"`
+	// example:
+	//
+	// 524
+	Price *string `json:"price,omitempty" xml:"price,omitempty"`
+	// example:
+	//
+	// 0
+	Region *int32 `json:"region,omitempty" xml:"region,omitempty"`
+	Type   *int32 `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// 景点
+	TypeDesc *string `json:"type_desc,omitempty" xml:"type_desc,omitempty"`
+}
+
+func (s KeywordSuggestInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s KeywordSuggestInfo) GoString() string {
+	return s.String()
+}
+
+func (s *KeywordSuggestInfo) SetAddress(v string) *KeywordSuggestInfo {
+	s.Address = &v
+	return s
+}
+
+func (s *KeywordSuggestInfo) SetBusinessAreaWithCity(v *KeywordSuggestInfo) *KeywordSuggestInfo {
+	s.BusinessAreaWithCity = v
+	return s
+}
+
+func (s *KeywordSuggestInfo) SetCityCode(v int32) *KeywordSuggestInfo {
+	s.CityCode = &v
+	return s
+}
+
+func (s *KeywordSuggestInfo) SetCityName(v string) *KeywordSuggestInfo {
+	s.CityName = &v
+	return s
+}
+
+func (s *KeywordSuggestInfo) SetDisplayName(v string) *KeywordSuggestInfo {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *KeywordSuggestInfo) SetHotelId(v string) *KeywordSuggestInfo {
+	s.HotelId = &v
+	return s
+}
+
+func (s *KeywordSuggestInfo) SetIcon(v string) *KeywordSuggestInfo {
+	s.Icon = &v
+	return s
+}
+
+func (s *KeywordSuggestInfo) SetPoint(v string) *KeywordSuggestInfo {
+	s.Point = &v
+	return s
+}
+
+func (s *KeywordSuggestInfo) SetPrice(v string) *KeywordSuggestInfo {
+	s.Price = &v
+	return s
+}
+
+func (s *KeywordSuggestInfo) SetRegion(v int32) *KeywordSuggestInfo {
+	s.Region = &v
+	return s
+}
+
+func (s *KeywordSuggestInfo) SetType(v int32) *KeywordSuggestInfo {
+	s.Type = &v
+	return s
+}
+
+func (s *KeywordSuggestInfo) SetTypeDesc(v string) *KeywordSuggestInfo {
+	s.TypeDesc = &v
+	return s
+}
+
 type ModuleFlightItemListBestPriceItemFlightRuleInfosValue struct {
 	RefundChangeRuleDesc *string `json:"refund_change_rule_desc,omitempty" xml:"refund_change_rule_desc,omitempty"`
 	BaggageDesc          *string `json:"baggage_desc,omitempty" xml:"baggage_desc,omitempty"`
@@ -14526,6 +14633,7 @@ func (s *CarApplyQueryResponseBody) SetTraceId(v string) *CarApplyQueryResponseB
 
 type CarApplyQueryResponseBodyApplyList struct {
 	ApproverList []*CarApplyQueryResponseBodyApplyListApproverList `json:"approver_list,omitempty" xml:"approver_list,omitempty" type:"Repeated"`
+	BusinessType *string                                           `json:"business_type,omitempty" xml:"business_type,omitempty"`
 	// example:
 	//
 	// depart1
@@ -14569,6 +14677,11 @@ func (s CarApplyQueryResponseBodyApplyList) GoString() string {
 
 func (s *CarApplyQueryResponseBodyApplyList) SetApproverList(v []*CarApplyQueryResponseBodyApplyListApproverList) *CarApplyQueryResponseBodyApplyList {
 	s.ApproverList = v
+	return s
+}
+
+func (s *CarApplyQueryResponseBodyApplyList) SetBusinessType(v string) *CarApplyQueryResponseBodyApplyList {
+	s.BusinessType = &v
 	return s
 }
 
@@ -39114,16 +39227,17 @@ func (s *FlightOrderQueryResponseBodyModuleFlightInfoList) SetFlightNo(v string)
 }
 
 type FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList struct {
-	ApplyId        *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	ArrAirport     *string `json:"arr_airport,omitempty" xml:"arr_airport,omitempty"`
-	ArrAirportCode *string `json:"arr_airport_code,omitempty" xml:"arr_airport_code,omitempty"`
-	ArrCity        *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
-	ArrCityCode    *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
-	DepAirport     *string `json:"dep_airport,omitempty" xml:"dep_airport,omitempty"`
-	DepAirportCode *string `json:"dep_airport_code,omitempty" xml:"dep_airport_code,omitempty"`
-	DepCity        *string `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
-	DepCityCode    *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
-	FlightNo       *string `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
+	ApplyId                *string  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	ArrAirport             *string  `json:"arr_airport,omitempty" xml:"arr_airport,omitempty"`
+	ArrAirportCode         *string  `json:"arr_airport_code,omitempty" xml:"arr_airport_code,omitempty"`
+	ArrCity                *string  `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
+	ArrCityCode            *string  `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	CompanyRefundTicketFee *float64 `json:"company_refund_ticket_fee,omitempty" xml:"company_refund_ticket_fee,omitempty"`
+	DepAirport             *string  `json:"dep_airport,omitempty" xml:"dep_airport,omitempty"`
+	DepAirportCode         *string  `json:"dep_airport_code,omitempty" xml:"dep_airport_code,omitempty"`
+	DepCity                *string  `json:"dep_city,omitempty" xml:"dep_city,omitempty"`
+	DepCityCode            *string  `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	FlightNo               *string  `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
 	// example:
 	//
 	// 2022-07-20T10:40Z
@@ -39131,8 +39245,9 @@ type FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList struct {
 	// example:
 	//
 	// 2022-07-20T10:40Z
-	GmtModify  *string `json:"gmt_modify,omitempty" xml:"gmt_modify,omitempty"`
-	OutApplyId *string `json:"out_apply_id,omitempty" xml:"out_apply_id,omitempty"`
+	GmtModify               *string  `json:"gmt_modify,omitempty" xml:"gmt_modify,omitempty"`
+	OutApplyId              *string  `json:"out_apply_id,omitempty" xml:"out_apply_id,omitempty"`
+	PersonalRefundTicketFee *float64 `json:"personal_refund_ticket_fee,omitempty" xml:"personal_refund_ticket_fee,omitempty"`
 	// example:
 	//
 	// 43667
@@ -39185,6 +39300,11 @@ func (s *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList) SetArrCit
 	return s
 }
 
+func (s *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList) SetCompanyRefundTicketFee(v float64) *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList {
+	s.CompanyRefundTicketFee = &v
+	return s
+}
+
 func (s *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList) SetDepAirport(v string) *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList {
 	s.DepAirport = &v
 	return s
@@ -39222,6 +39342,11 @@ func (s *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList) SetGmtMod
 
 func (s *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList) SetOutApplyId(v string) *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList {
 	s.OutApplyId = &v
+	return s
+}
+
+func (s *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList) SetPersonalRefundTicketFee(v float64) *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList {
+	s.PersonalRefundTicketFee = &v
 	return s
 }
 
@@ -39283,7 +39408,8 @@ type FlightOrderQueryResponseBodyModuleFlightTicketInfoList struct {
 	// example:
 	//
 	// 1
-	PayType *int32 `json:"pay_type,omitempty" xml:"pay_type,omitempty"`
+	PayType       *int32   `json:"pay_type,omitempty" xml:"pay_type,omitempty"`
+	PersonalPrice *float64 `json:"personal_price,omitempty" xml:"personal_price,omitempty"`
 	// example:
 	//
 	// 100
@@ -39372,6 +39498,11 @@ func (s *FlightOrderQueryResponseBodyModuleFlightTicketInfoList) SetOilPrice(v f
 
 func (s *FlightOrderQueryResponseBodyModuleFlightTicketInfoList) SetPayType(v int32) *FlightOrderQueryResponseBodyModuleFlightTicketInfoList {
 	s.PayType = &v
+	return s
+}
+
+func (s *FlightOrderQueryResponseBodyModuleFlightTicketInfoList) SetPersonalPrice(v float64) *FlightOrderQueryResponseBodyModuleFlightTicketInfoList {
+	s.PersonalPrice = &v
 	return s
 }
 
@@ -57534,6 +57665,7 @@ type HotelOrderDetailInfoResponseBodyModule struct {
 	// 1
 	OrderStatus     *int32  `json:"order_status,omitempty" xml:"order_status,omitempty"`
 	OrderStatusDesc *string `json:"order_status_desc,omitempty" xml:"order_status_desc,omitempty"`
+	OutConfirmCode  *string `json:"out_confirm_code,omitempty" xml:"out_confirm_code,omitempty"`
 	// example:
 	//
 	// 2000-00-00 00:00:00
@@ -57710,6 +57842,11 @@ func (s *HotelOrderDetailInfoResponseBodyModule) SetOrderStatus(v int32) *HotelO
 
 func (s *HotelOrderDetailInfoResponseBodyModule) SetOrderStatusDesc(v string) *HotelOrderDetailInfoResponseBodyModule {
 	s.OrderStatusDesc = &v
+	return s
+}
+
+func (s *HotelOrderDetailInfoResponseBodyModule) SetOutConfirmCode(v string) *HotelOrderDetailInfoResponseBodyModule {
+	s.OutConfirmCode = &v
 	return s
 }
 
