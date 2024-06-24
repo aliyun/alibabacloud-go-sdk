@@ -653,7 +653,13 @@ type CreateInstanceRequestDatasets struct {
 	// example:
 	//
 	// /mnt/data
-	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	MountPath  *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	OptionType *string `json:"OptionType,omitempty" xml:"OptionType,omitempty"`
+	Options    *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// example:
+	//
+	// oss://bucket.oss-cn-shanghai.aliyuncs.com/data/path/
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s CreateInstanceRequestDatasets) String() string {
@@ -671,6 +677,21 @@ func (s *CreateInstanceRequestDatasets) SetDatasetId(v string) *CreateInstanceRe
 
 func (s *CreateInstanceRequestDatasets) SetMountPath(v string) *CreateInstanceRequestDatasets {
 	s.MountPath = &v
+	return s
+}
+
+func (s *CreateInstanceRequestDatasets) SetOptionType(v string) *CreateInstanceRequestDatasets {
+	s.OptionType = &v
+	return s
+}
+
+func (s *CreateInstanceRequestDatasets) SetOptions(v string) *CreateInstanceRequestDatasets {
+	s.Options = &v
+	return s
+}
+
+func (s *CreateInstanceRequestDatasets) SetUri(v string) *CreateInstanceRequestDatasets {
+	s.Uri = &v
 	return s
 }
 
@@ -2177,7 +2198,13 @@ type GetInstanceResponseBodyDatasets struct {
 	// example:
 	//
 	// /mnt/data
-	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	MountPath  *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	OptionType *string `json:"OptionType,omitempty" xml:"OptionType,omitempty"`
+	Options    *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// example:
+	//
+	// oss://bucket.oss-cn-shanghai.aliyuncs.com/data/path/
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s GetInstanceResponseBodyDatasets) String() string {
@@ -2195,6 +2222,21 @@ func (s *GetInstanceResponseBodyDatasets) SetDatasetId(v string) *GetInstanceRes
 
 func (s *GetInstanceResponseBodyDatasets) SetMountPath(v string) *GetInstanceResponseBodyDatasets {
 	s.MountPath = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyDatasets) SetOptionType(v string) *GetInstanceResponseBodyDatasets {
+	s.OptionType = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyDatasets) SetOptions(v string) *GetInstanceResponseBodyDatasets {
+	s.Options = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyDatasets) SetUri(v string) *GetInstanceResponseBodyDatasets {
+	s.Uri = &v
 	return s
 }
 
@@ -6644,7 +6686,13 @@ type UpdateInstanceRequestDatasets struct {
 	// example:
 	//
 	// /mnt/data
-	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	MountPath  *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	OptionType *string `json:"OptionType,omitempty" xml:"OptionType,omitempty"`
+	Options    *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// example:
+	//
+	// oss://bucket.oss-cn-shanghai.aliyuncs.com/data/path/
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s UpdateInstanceRequestDatasets) String() string {
@@ -6662,6 +6710,21 @@ func (s *UpdateInstanceRequestDatasets) SetDatasetId(v string) *UpdateInstanceRe
 
 func (s *UpdateInstanceRequestDatasets) SetMountPath(v string) *UpdateInstanceRequestDatasets {
 	s.MountPath = &v
+	return s
+}
+
+func (s *UpdateInstanceRequestDatasets) SetOptionType(v string) *UpdateInstanceRequestDatasets {
+	s.OptionType = &v
+	return s
+}
+
+func (s *UpdateInstanceRequestDatasets) SetOptions(v string) *UpdateInstanceRequestDatasets {
+	s.Options = &v
+	return s
+}
+
+func (s *UpdateInstanceRequestDatasets) SetUri(v string) *UpdateInstanceRequestDatasets {
+	s.Uri = &v
 	return s
 }
 
