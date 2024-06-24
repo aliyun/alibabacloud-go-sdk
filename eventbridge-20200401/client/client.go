@@ -1088,7 +1088,10 @@ type CreateEventSourceRequest struct {
 	// example:
 	//
 	// myrabbitmq.sourc
-	EventSourceName *string `json:"EventSourceName,omitempty" xml:"EventSourceName,omitempty"`
+	EventSourceName      *string                `json:"EventSourceName,omitempty" xml:"EventSourceName,omitempty"`
+	ExternalSourceConfig map[string]interface{} `json:"ExternalSourceConfig,omitempty" xml:"ExternalSourceConfig,omitempty"`
+	ExternalSourceType   []byte                 `json:"ExternalSourceType,omitempty" xml:"ExternalSourceType,omitempty"`
+	LinkedExternalSource *bool                  `json:"LinkedExternalSource,omitempty" xml:"LinkedExternalSource,omitempty"`
 	// The parameters that are configured if the event source is HTTP events.
 	SourceHttpEventParameters *CreateEventSourceRequestSourceHttpEventParameters `json:"SourceHttpEventParameters,omitempty" xml:"SourceHttpEventParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if the event source is Message Queue for Apache Kafka.
@@ -1125,6 +1128,21 @@ func (s *CreateEventSourceRequest) SetEventBusName(v string) *CreateEventSourceR
 
 func (s *CreateEventSourceRequest) SetEventSourceName(v string) *CreateEventSourceRequest {
 	s.EventSourceName = &v
+	return s
+}
+
+func (s *CreateEventSourceRequest) SetExternalSourceConfig(v map[string]interface{}) *CreateEventSourceRequest {
+	s.ExternalSourceConfig = v
+	return s
+}
+
+func (s *CreateEventSourceRequest) SetExternalSourceType(v []byte) *CreateEventSourceRequest {
+	s.ExternalSourceType = v
+	return s
+}
+
+func (s *CreateEventSourceRequest) SetLinkedExternalSource(v bool) *CreateEventSourceRequest {
+	s.LinkedExternalSource = &v
 	return s
 }
 
@@ -1773,7 +1791,10 @@ type CreateEventSourceShrinkRequest struct {
 	// example:
 	//
 	// myrabbitmq.sourc
-	EventSourceName *string `json:"EventSourceName,omitempty" xml:"EventSourceName,omitempty"`
+	EventSourceName            *string `json:"EventSourceName,omitempty" xml:"EventSourceName,omitempty"`
+	ExternalSourceConfigShrink *string `json:"ExternalSourceConfig,omitempty" xml:"ExternalSourceConfig,omitempty"`
+	ExternalSourceType         []byte  `json:"ExternalSourceType,omitempty" xml:"ExternalSourceType,omitempty"`
+	LinkedExternalSource       *bool   `json:"LinkedExternalSource,omitempty" xml:"LinkedExternalSource,omitempty"`
 	// The parameters that are configured if the event source is HTTP events.
 	SourceHttpEventParametersShrink *string `json:"SourceHttpEventParameters,omitempty" xml:"SourceHttpEventParameters,omitempty"`
 	// The parameters that are configured if the event source is Message Queue for Apache Kafka.
@@ -1810,6 +1831,21 @@ func (s *CreateEventSourceShrinkRequest) SetEventBusName(v string) *CreateEventS
 
 func (s *CreateEventSourceShrinkRequest) SetEventSourceName(v string) *CreateEventSourceShrinkRequest {
 	s.EventSourceName = &v
+	return s
+}
+
+func (s *CreateEventSourceShrinkRequest) SetExternalSourceConfigShrink(v string) *CreateEventSourceShrinkRequest {
+	s.ExternalSourceConfigShrink = &v
+	return s
+}
+
+func (s *CreateEventSourceShrinkRequest) SetExternalSourceType(v []byte) *CreateEventSourceShrinkRequest {
+	s.ExternalSourceType = v
+	return s
+}
+
+func (s *CreateEventSourceShrinkRequest) SetLinkedExternalSource(v bool) *CreateEventSourceShrinkRequest {
+	s.LinkedExternalSource = &v
 	return s
 }
 
@@ -2054,15 +2090,20 @@ type CreateEventStreamingRequestRunOptions struct {
 	// example:
 	//
 	// ALL
-	ErrorsTolerance *string `json:"ErrorsTolerance,omitempty" xml:"ErrorsTolerance,omitempty"`
+	ErrorsTolerance *string                                           `json:"ErrorsTolerance,omitempty" xml:"ErrorsTolerance,omitempty"`
+	LogDelivery     *CreateEventStreamingRequestRunOptionsLogDelivery `json:"LogDelivery,omitempty" xml:"LogDelivery,omitempty" type:"Struct"`
 	// The maximum number of concurrent threads.
 	//
 	// example:
 	//
 	// 2
-	MaximumTasks *int64 `json:"MaximumTasks,omitempty" xml:"MaximumTasks,omitempty"`
+	MaximumTasks *int64                                             `json:"MaximumTasks,omitempty" xml:"MaximumTasks,omitempty"`
+	Network      *CreateEventStreamingRequestRunOptionsNetwork      `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
+	ResourceSpec *CreateEventStreamingRequestRunOptionsResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
 	// The retry policy that you want to use if events fail to be pushed.
 	RetryStrategy *CreateEventStreamingRequestRunOptionsRetryStrategy `json:"RetryStrategy,omitempty" xml:"RetryStrategy,omitempty" type:"Struct"`
+	RoleName      *string                                             `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	ScaledObject  *CreateEventStreamingRequestRunOptionsScaledObject  `json:"ScaledObject,omitempty" xml:"ScaledObject,omitempty" type:"Struct"`
 }
 
 func (s CreateEventStreamingRequestRunOptions) String() string {
@@ -2088,13 +2129,38 @@ func (s *CreateEventStreamingRequestRunOptions) SetErrorsTolerance(v string) *Cr
 	return s
 }
 
+func (s *CreateEventStreamingRequestRunOptions) SetLogDelivery(v *CreateEventStreamingRequestRunOptionsLogDelivery) *CreateEventStreamingRequestRunOptions {
+	s.LogDelivery = v
+	return s
+}
+
 func (s *CreateEventStreamingRequestRunOptions) SetMaximumTasks(v int64) *CreateEventStreamingRequestRunOptions {
 	s.MaximumTasks = &v
 	return s
 }
 
+func (s *CreateEventStreamingRequestRunOptions) SetNetwork(v *CreateEventStreamingRequestRunOptionsNetwork) *CreateEventStreamingRequestRunOptions {
+	s.Network = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestRunOptions) SetResourceSpec(v *CreateEventStreamingRequestRunOptionsResourceSpec) *CreateEventStreamingRequestRunOptions {
+	s.ResourceSpec = v
+	return s
+}
+
 func (s *CreateEventStreamingRequestRunOptions) SetRetryStrategy(v *CreateEventStreamingRequestRunOptionsRetryStrategy) *CreateEventStreamingRequestRunOptions {
 	s.RetryStrategy = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestRunOptions) SetRoleName(v string) *CreateEventStreamingRequestRunOptions {
+	s.RoleName = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestRunOptions) SetScaledObject(v *CreateEventStreamingRequestRunOptionsScaledObject) *CreateEventStreamingRequestRunOptions {
+	s.ScaledObject = v
 	return s
 }
 
@@ -2153,6 +2219,150 @@ func (s *CreateEventStreamingRequestRunOptionsDeadLetterQueue) SetArn(v string) 
 	return s
 }
 
+type CreateEventStreamingRequestRunOptionsLogDelivery struct {
+	KafkaLogParameters []*CreateEventStreamingRequestRunOptionsLogDeliveryKafkaLogParameters `json:"KafkaLogParameters,omitempty" xml:"KafkaLogParameters,omitempty" type:"Repeated"`
+	SLSLogParameters   []*CreateEventStreamingRequestRunOptionsLogDeliverySLSLogParameters   `json:"SLSLogParameters,omitempty" xml:"SLSLogParameters,omitempty" type:"Repeated"`
+}
+
+func (s CreateEventStreamingRequestRunOptionsLogDelivery) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventStreamingRequestRunOptionsLogDelivery) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventStreamingRequestRunOptionsLogDelivery) SetKafkaLogParameters(v []*CreateEventStreamingRequestRunOptionsLogDeliveryKafkaLogParameters) *CreateEventStreamingRequestRunOptionsLogDelivery {
+	s.KafkaLogParameters = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestRunOptionsLogDelivery) SetSLSLogParameters(v []*CreateEventStreamingRequestRunOptionsLogDeliverySLSLogParameters) *CreateEventStreamingRequestRunOptionsLogDelivery {
+	s.SLSLogParameters = v
+	return s
+}
+
+type CreateEventStreamingRequestRunOptionsLogDeliveryKafkaLogParameters struct {
+	Endpoint   *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+}
+
+func (s CreateEventStreamingRequestRunOptionsLogDeliveryKafkaLogParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventStreamingRequestRunOptionsLogDeliveryKafkaLogParameters) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventStreamingRequestRunOptionsLogDeliveryKafkaLogParameters) SetEndpoint(v string) *CreateEventStreamingRequestRunOptionsLogDeliveryKafkaLogParameters {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestRunOptionsLogDeliveryKafkaLogParameters) SetInstanceId(v string) *CreateEventStreamingRequestRunOptionsLogDeliveryKafkaLogParameters {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestRunOptionsLogDeliveryKafkaLogParameters) SetTopic(v string) *CreateEventStreamingRequestRunOptionsLogDeliveryKafkaLogParameters {
+	s.Topic = &v
+	return s
+}
+
+type CreateEventStreamingRequestRunOptionsLogDeliverySLSLogParameters struct {
+	LogstoreName *string `json:"LogstoreName,omitempty" xml:"LogstoreName,omitempty"`
+	ProjectName  *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+}
+
+func (s CreateEventStreamingRequestRunOptionsLogDeliverySLSLogParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventStreamingRequestRunOptionsLogDeliverySLSLogParameters) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventStreamingRequestRunOptionsLogDeliverySLSLogParameters) SetLogstoreName(v string) *CreateEventStreamingRequestRunOptionsLogDeliverySLSLogParameters {
+	s.LogstoreName = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestRunOptionsLogDeliverySLSLogParameters) SetProjectName(v string) *CreateEventStreamingRequestRunOptionsLogDeliverySLSLogParameters {
+	s.ProjectName = &v
+	return s
+}
+
+type CreateEventStreamingRequestRunOptionsNetwork struct {
+	SecurityGroupId *string   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	VSwitchIds      []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	VpcId           *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s CreateEventStreamingRequestRunOptionsNetwork) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventStreamingRequestRunOptionsNetwork) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventStreamingRequestRunOptionsNetwork) SetSecurityGroupId(v string) *CreateEventStreamingRequestRunOptionsNetwork {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestRunOptionsNetwork) SetVSwitchIds(v []*string) *CreateEventStreamingRequestRunOptionsNetwork {
+	s.VSwitchIds = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestRunOptionsNetwork) SetVpcId(v string) *CreateEventStreamingRequestRunOptionsNetwork {
+	s.VpcId = &v
+	return s
+}
+
+type CreateEventStreamingRequestRunOptionsResourceSpec struct {
+	Resources []*CreateEventStreamingRequestRunOptionsResourceSpecResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+}
+
+func (s CreateEventStreamingRequestRunOptionsResourceSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventStreamingRequestRunOptionsResourceSpec) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventStreamingRequestRunOptionsResourceSpec) SetResources(v []*CreateEventStreamingRequestRunOptionsResourceSpecResources) *CreateEventStreamingRequestRunOptionsResourceSpec {
+	s.Resources = v
+	return s
+}
+
+type CreateEventStreamingRequestRunOptionsResourceSpecResources struct {
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value *int32  `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateEventStreamingRequestRunOptionsResourceSpecResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventStreamingRequestRunOptionsResourceSpecResources) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventStreamingRequestRunOptionsResourceSpecResources) SetType(v string) *CreateEventStreamingRequestRunOptionsResourceSpecResources {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestRunOptionsResourceSpecResources) SetValue(v int32) *CreateEventStreamingRequestRunOptionsResourceSpecResources {
+	s.Value = &v
+	return s
+}
+
 type CreateEventStreamingRequestRunOptionsRetryStrategy struct {
 	// The maximum timeout period for a retry.
 	//
@@ -2201,7 +2411,84 @@ func (s *CreateEventStreamingRequestRunOptionsRetryStrategy) SetPushRetryStrateg
 	return s
 }
 
+type CreateEventStreamingRequestRunOptionsScaledObject struct {
+	MaxReplicaCount *int32                                                       `json:"MaxReplicaCount,omitempty" xml:"MaxReplicaCount,omitempty"`
+	MinReplicaCount *int32                                                       `json:"MinReplicaCount,omitempty" xml:"MinReplicaCount,omitempty"`
+	Triggers        []*CreateEventStreamingRequestRunOptionsScaledObjectTriggers `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
+}
+
+func (s CreateEventStreamingRequestRunOptionsScaledObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventStreamingRequestRunOptionsScaledObject) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventStreamingRequestRunOptionsScaledObject) SetMaxReplicaCount(v int32) *CreateEventStreamingRequestRunOptionsScaledObject {
+	s.MaxReplicaCount = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestRunOptionsScaledObject) SetMinReplicaCount(v int32) *CreateEventStreamingRequestRunOptionsScaledObject {
+	s.MinReplicaCount = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestRunOptionsScaledObject) SetTriggers(v []*CreateEventStreamingRequestRunOptionsScaledObjectTriggers) *CreateEventStreamingRequestRunOptionsScaledObject {
+	s.Triggers = v
+	return s
+}
+
+type CreateEventStreamingRequestRunOptionsScaledObjectTriggers struct {
+	Metadata *CreateEventStreamingRequestRunOptionsScaledObjectTriggersMetadata `json:"Metadata,omitempty" xml:"Metadata,omitempty" type:"Struct"`
+	Type     *string                                                            `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateEventStreamingRequestRunOptionsScaledObjectTriggers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventStreamingRequestRunOptionsScaledObjectTriggers) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventStreamingRequestRunOptionsScaledObjectTriggers) SetMetadata(v *CreateEventStreamingRequestRunOptionsScaledObjectTriggersMetadata) *CreateEventStreamingRequestRunOptionsScaledObjectTriggers {
+	s.Metadata = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestRunOptionsScaledObjectTriggers) SetType(v string) *CreateEventStreamingRequestRunOptionsScaledObjectTriggers {
+	s.Type = &v
+	return s
+}
+
+type CreateEventStreamingRequestRunOptionsScaledObjectTriggersMetadata struct {
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value *int32  `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateEventStreamingRequestRunOptionsScaledObjectTriggersMetadata) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventStreamingRequestRunOptionsScaledObjectTriggersMetadata) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventStreamingRequestRunOptionsScaledObjectTriggersMetadata) SetType(v string) *CreateEventStreamingRequestRunOptionsScaledObjectTriggersMetadata {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestRunOptionsScaledObjectTriggersMetadata) SetValue(v int32) *CreateEventStreamingRequestRunOptionsScaledObjectTriggersMetadata {
+	s.Value = &v
+	return s
+}
+
 type CreateEventStreamingRequestSink struct {
+	SinkCustomizedKafkaConnectorParameters *CreateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParameters `json:"SinkCustomizedKafkaConnectorParameters,omitempty" xml:"SinkCustomizedKafkaConnectorParameters,omitempty" type:"Struct"`
+	SinkCustomizedKafkaParameters          *CreateEventStreamingRequestSinkSinkCustomizedKafkaParameters          `json:"SinkCustomizedKafkaParameters,omitempty" xml:"SinkCustomizedKafkaParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify DataHub as the event target.
 	SinkDataHubParameters *CreateEventStreamingRequestSinkSinkDataHubParameters `json:"SinkDataHubParameters,omitempty" xml:"SinkDataHubParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify Function Compute as the event target.
@@ -2228,6 +2515,16 @@ func (s CreateEventStreamingRequestSink) String() string {
 
 func (s CreateEventStreamingRequestSink) GoString() string {
 	return s.String()
+}
+
+func (s *CreateEventStreamingRequestSink) SetSinkCustomizedKafkaConnectorParameters(v *CreateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParameters) *CreateEventStreamingRequestSink {
+	s.SinkCustomizedKafkaConnectorParameters = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSink) SetSinkCustomizedKafkaParameters(v *CreateEventStreamingRequestSinkSinkCustomizedKafkaParameters) *CreateEventStreamingRequestSink {
+	s.SinkCustomizedKafkaParameters = v
+	return s
 }
 
 func (s *CreateEventStreamingRequestSink) SetSinkDataHubParameters(v *CreateEventStreamingRequestSinkSinkDataHubParameters) *CreateEventStreamingRequestSink {
@@ -2272,6 +2569,75 @@ func (s *CreateEventStreamingRequestSink) SetSinkRocketMQParameters(v *CreateEve
 
 func (s *CreateEventStreamingRequestSink) SetSinkSLSParameters(v *CreateEventStreamingRequestSinkSinkSLSParameters) *CreateEventStreamingRequestSink {
 	s.SinkSLSParameters = v
+	return s
+}
+
+type CreateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParameters struct {
+	ConnectorPackageUrl *string                                                                                   `json:"ConnectorPackageUrl,omitempty" xml:"ConnectorPackageUrl,omitempty"`
+	ConnectorParameters *CreateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParametersConnectorParameters `json:"ConnectorParameters,omitempty" xml:"ConnectorParameters,omitempty" type:"Struct"`
+	WorkerParameters    map[string]interface{}                                                                    `json:"WorkerParameters,omitempty" xml:"WorkerParameters,omitempty"`
+}
+
+func (s CreateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParameters) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParameters) SetConnectorPackageUrl(v string) *CreateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParameters {
+	s.ConnectorPackageUrl = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParameters) SetConnectorParameters(v *CreateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParametersConnectorParameters) *CreateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParameters {
+	s.ConnectorParameters = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParameters) SetWorkerParameters(v map[string]interface{}) *CreateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParameters {
+	s.WorkerParameters = v
+	return s
+}
+
+type CreateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParametersConnectorParameters struct {
+	Config map[string]interface{} `json:"Config,omitempty" xml:"Config,omitempty"`
+	Name   *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s CreateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParametersConnectorParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParametersConnectorParameters) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParametersConnectorParameters) SetConfig(v map[string]interface{}) *CreateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParametersConnectorParameters {
+	s.Config = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParametersConnectorParameters) SetName(v string) *CreateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParametersConnectorParameters {
+	s.Name = &v
+	return s
+}
+
+type CreateEventStreamingRequestSinkSinkCustomizedKafkaParameters struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s CreateEventStreamingRequestSinkSinkCustomizedKafkaParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventStreamingRequestSinkSinkCustomizedKafkaParameters) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventStreamingRequestSinkSinkCustomizedKafkaParameters) SetInstanceId(v string) *CreateEventStreamingRequestSinkSinkCustomizedKafkaParameters {
+	s.InstanceId = &v
 	return s
 }
 
@@ -5185,7 +5551,9 @@ func (s *CreateEventStreamingRequestSinkSinkRocketMQParametersVpcId) SetValue(v 
 
 type CreateEventStreamingRequestSinkSinkSLSParameters struct {
 	// The message body that you want to deliver to Simple Log Service.
-	Body *CreateEventStreamingRequestSinkSinkSLSParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
+	Body          *CreateEventStreamingRequestSinkSinkSLSParametersBody          `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
+	ContentSchema *CreateEventStreamingRequestSinkSinkSLSParametersContentSchema `json:"ContentSchema,omitempty" xml:"ContentSchema,omitempty" type:"Struct"`
+	ContentType   *CreateEventStreamingRequestSinkSinkSLSParametersContentType   `json:"ContentType,omitempty" xml:"ContentType,omitempty" type:"Struct"`
 	// The Simple Log Service Logstore.
 	LogStore *CreateEventStreamingRequestSinkSinkSLSParametersLogStore `json:"LogStore,omitempty" xml:"LogStore,omitempty" type:"Struct"`
 	// The Simple Log Service project.
@@ -5206,6 +5574,16 @@ func (s CreateEventStreamingRequestSinkSinkSLSParameters) GoString() string {
 
 func (s *CreateEventStreamingRequestSinkSinkSLSParameters) SetBody(v *CreateEventStreamingRequestSinkSinkSLSParametersBody) *CreateEventStreamingRequestSinkSinkSLSParameters {
 	s.Body = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkSLSParameters) SetContentSchema(v *CreateEventStreamingRequestSinkSinkSLSParametersContentSchema) *CreateEventStreamingRequestSinkSinkSLSParameters {
+	s.ContentSchema = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkSLSParameters) SetContentType(v *CreateEventStreamingRequestSinkSinkSLSParametersContentType) *CreateEventStreamingRequestSinkSinkSLSParameters {
+	s.ContentType = v
 	return s
 }
 
@@ -5273,6 +5651,64 @@ func (s *CreateEventStreamingRequestSinkSinkSLSParametersBody) SetTemplate(v str
 }
 
 func (s *CreateEventStreamingRequestSinkSinkSLSParametersBody) SetValue(v string) *CreateEventStreamingRequestSinkSinkSLSParametersBody {
+	s.Value = &v
+	return s
+}
+
+type CreateEventStreamingRequestSinkSinkSLSParametersContentSchema struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateEventStreamingRequestSinkSinkSLSParametersContentSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventStreamingRequestSinkSinkSLSParametersContentSchema) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventStreamingRequestSinkSinkSLSParametersContentSchema) SetForm(v string) *CreateEventStreamingRequestSinkSinkSLSParametersContentSchema {
+	s.Form = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkSLSParametersContentSchema) SetTemplate(v string) *CreateEventStreamingRequestSinkSinkSLSParametersContentSchema {
+	s.Template = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkSLSParametersContentSchema) SetValue(v string) *CreateEventStreamingRequestSinkSinkSLSParametersContentSchema {
+	s.Value = &v
+	return s
+}
+
+type CreateEventStreamingRequestSinkSinkSLSParametersContentType struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateEventStreamingRequestSinkSinkSLSParametersContentType) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventStreamingRequestSinkSinkSLSParametersContentType) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventStreamingRequestSinkSinkSLSParametersContentType) SetForm(v string) *CreateEventStreamingRequestSinkSinkSLSParametersContentType {
+	s.Form = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkSLSParametersContentType) SetTemplate(v string) *CreateEventStreamingRequestSinkSinkSLSParametersContentType {
+	s.Template = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkSLSParametersContentType) SetValue(v string) *CreateEventStreamingRequestSinkSinkSLSParametersContentType {
 	s.Value = &v
 	return s
 }
@@ -5438,7 +5874,9 @@ func (s *CreateEventStreamingRequestSinkSinkSLSParametersTopic) SetValue(v strin
 }
 
 type CreateEventStreamingRequestSource struct {
-	SourceApacheKafkaParameters *CreateEventStreamingRequestSourceSourceApacheKafkaParameters `json:"SourceApacheKafkaParameters,omitempty" xml:"SourceApacheKafkaParameters,omitempty" type:"Struct"`
+	SourceApacheKafkaParameters              *CreateEventStreamingRequestSourceSourceApacheKafkaParameters              `json:"SourceApacheKafkaParameters,omitempty" xml:"SourceApacheKafkaParameters,omitempty" type:"Struct"`
+	SourceCustomizedKafkaConnectorParameters *CreateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParameters `json:"SourceCustomizedKafkaConnectorParameters,omitempty" xml:"SourceCustomizedKafkaConnectorParameters,omitempty" type:"Struct"`
+	SourceCustomizedKafkaParameters          *CreateEventStreamingRequestSourceSourceCustomizedKafkaParameters          `json:"SourceCustomizedKafkaParameters,omitempty" xml:"SourceCustomizedKafkaParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify Data Transmission Service (DTS) as the event source.
 	SourceDTSParameters *CreateEventStreamingRequestSourceSourceDTSParameters `json:"SourceDTSParameters,omitempty" xml:"SourceDTSParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify ApsaraMQ for Kafka as the event source.
@@ -5467,6 +5905,16 @@ func (s CreateEventStreamingRequestSource) GoString() string {
 
 func (s *CreateEventStreamingRequestSource) SetSourceApacheKafkaParameters(v *CreateEventStreamingRequestSourceSourceApacheKafkaParameters) *CreateEventStreamingRequestSource {
 	s.SourceApacheKafkaParameters = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSource) SetSourceCustomizedKafkaConnectorParameters(v *CreateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParameters) *CreateEventStreamingRequestSource {
+	s.SourceCustomizedKafkaConnectorParameters = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSource) SetSourceCustomizedKafkaParameters(v *CreateEventStreamingRequestSourceSourceCustomizedKafkaParameters) *CreateEventStreamingRequestSource {
+	s.SourceCustomizedKafkaParameters = v
 	return s
 }
 
@@ -5596,6 +6044,75 @@ func (s *CreateEventStreamingRequestSourceSourceApacheKafkaParameters) SetValueD
 
 func (s *CreateEventStreamingRequestSourceSourceApacheKafkaParameters) SetVpcId(v string) *CreateEventStreamingRequestSourceSourceApacheKafkaParameters {
 	s.VpcId = &v
+	return s
+}
+
+type CreateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParameters struct {
+	ConnectorPackageUrl *string                                                                                       `json:"ConnectorPackageUrl,omitempty" xml:"ConnectorPackageUrl,omitempty"`
+	ConnectorParameters *CreateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParametersConnectorParameters `json:"ConnectorParameters,omitempty" xml:"ConnectorParameters,omitempty" type:"Struct"`
+	WorkerParameters    map[string]interface{}                                                                        `json:"WorkerParameters,omitempty" xml:"WorkerParameters,omitempty"`
+}
+
+func (s CreateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParameters) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParameters) SetConnectorPackageUrl(v string) *CreateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParameters {
+	s.ConnectorPackageUrl = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParameters) SetConnectorParameters(v *CreateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParametersConnectorParameters) *CreateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParameters {
+	s.ConnectorParameters = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParameters) SetWorkerParameters(v map[string]interface{}) *CreateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParameters {
+	s.WorkerParameters = v
+	return s
+}
+
+type CreateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParametersConnectorParameters struct {
+	Config map[string]interface{} `json:"Config,omitempty" xml:"Config,omitempty"`
+	Name   *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s CreateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParametersConnectorParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParametersConnectorParameters) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParametersConnectorParameters) SetConfig(v map[string]interface{}) *CreateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParametersConnectorParameters {
+	s.Config = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParametersConnectorParameters) SetName(v string) *CreateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParametersConnectorParameters {
+	s.Name = &v
+	return s
+}
+
+type CreateEventStreamingRequestSourceSourceCustomizedKafkaParameters struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s CreateEventStreamingRequestSourceSourceCustomizedKafkaParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventStreamingRequestSourceSourceCustomizedKafkaParameters) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventStreamingRequestSourceSourceCustomizedKafkaParameters) SetInstanceId(v string) *CreateEventStreamingRequestSourceSourceCustomizedKafkaParameters {
+	s.InstanceId = &v
 	return s
 }
 
@@ -7303,6 +7820,7 @@ type DeleteEventBusResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned error message.
 	//
 	// example:
@@ -7333,6 +7851,11 @@ func (s DeleteEventBusResponseBody) GoString() string {
 
 func (s *DeleteEventBusResponseBody) SetCode(v string) *DeleteEventBusResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *DeleteEventBusResponseBody) SetData(v bool) *DeleteEventBusResponseBody {
+	s.Data = &v
 	return s
 }
 
@@ -10103,7 +10626,8 @@ type GetEventStreamingResponseBodyData struct {
 	// example:
 	//
 	// RocketMQ-to-RocketMQ
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description    *string                                          `json:"Description,omitempty" xml:"Description,omitempty"`
+	DetailedStatus *GetEventStreamingResponseBodyDataDetailedStatus `json:"DetailedStatus,omitempty" xml:"DetailedStatus,omitempty" type:"Struct"`
 	// The name of the event stream that is returned.
 	//
 	// example:
@@ -10137,6 +10661,11 @@ func (s GetEventStreamingResponseBodyData) GoString() string {
 
 func (s *GetEventStreamingResponseBodyData) SetDescription(v string) *GetEventStreamingResponseBodyData {
 	s.Description = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyData) SetDetailedStatus(v *GetEventStreamingResponseBodyDataDetailedStatus) *GetEventStreamingResponseBodyData {
+	s.DetailedStatus = v
 	return s
 }
 
@@ -10175,6 +10704,41 @@ func (s *GetEventStreamingResponseBodyData) SetTransforms(v []*GetEventStreaming
 	return s
 }
 
+type GetEventStreamingResponseBodyDataDetailedStatus struct {
+	DelayTime  *int64                 `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
+	DiffOffset *int64                 `json:"DiffOffset,omitempty" xml:"DiffOffset,omitempty"`
+	Extensions map[string]interface{} `json:"Extensions,omitempty" xml:"Extensions,omitempty"`
+	TPS        *float64               `json:"TPS,omitempty" xml:"TPS,omitempty"`
+}
+
+func (s GetEventStreamingResponseBodyDataDetailedStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataDetailedStatus) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataDetailedStatus) SetDelayTime(v int64) *GetEventStreamingResponseBodyDataDetailedStatus {
+	s.DelayTime = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataDetailedStatus) SetDiffOffset(v int64) *GetEventStreamingResponseBodyDataDetailedStatus {
+	s.DiffOffset = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataDetailedStatus) SetExtensions(v map[string]interface{}) *GetEventStreamingResponseBodyDataDetailedStatus {
+	s.Extensions = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataDetailedStatus) SetTPS(v float64) *GetEventStreamingResponseBodyDataDetailedStatus {
+	s.TPS = &v
+	return s
+}
+
 type GetEventStreamingResponseBodyDataRunOptions struct {
 	// The batch window.
 	BatchWindow *GetEventStreamingResponseBodyDataRunOptionsBatchWindow `json:"BatchWindow,omitempty" xml:"BatchWindow,omitempty" type:"Struct"`
@@ -10185,15 +10749,20 @@ type GetEventStreamingResponseBodyDataRunOptions struct {
 	// example:
 	//
 	// ALL
-	ErrorsTolerance *string `json:"ErrorsTolerance,omitempty" xml:"ErrorsTolerance,omitempty"`
+	ErrorsTolerance *string                                                 `json:"ErrorsTolerance,omitempty" xml:"ErrorsTolerance,omitempty"`
+	LogDelivery     *GetEventStreamingResponseBodyDataRunOptionsLogDelivery `json:"LogDelivery,omitempty" xml:"LogDelivery,omitempty" type:"Struct"`
 	// The concurrency level.
 	//
 	// example:
 	//
 	// 2
-	MaximumTasks *int32 `json:"MaximumTasks,omitempty" xml:"MaximumTasks,omitempty"`
+	MaximumTasks *int32                                                   `json:"MaximumTasks,omitempty" xml:"MaximumTasks,omitempty"`
+	Network      *GetEventStreamingResponseBodyDataRunOptionsNetwork      `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
+	ResourceSpec *GetEventStreamingResponseBodyDataRunOptionsResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
 	// The information about the retry policy that is used if the event fails to be pushed.
 	RetryStrategy *GetEventStreamingResponseBodyDataRunOptionsRetryStrategy `json:"RetryStrategy,omitempty" xml:"RetryStrategy,omitempty" type:"Struct"`
+	RoleName      *string                                                   `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	ScaledObject  *GetEventStreamingResponseBodyDataRunOptionsScaledObject  `json:"ScaledObject,omitempty" xml:"ScaledObject,omitempty" type:"Struct"`
 }
 
 func (s GetEventStreamingResponseBodyDataRunOptions) String() string {
@@ -10219,13 +10788,38 @@ func (s *GetEventStreamingResponseBodyDataRunOptions) SetErrorsTolerance(v strin
 	return s
 }
 
+func (s *GetEventStreamingResponseBodyDataRunOptions) SetLogDelivery(v *GetEventStreamingResponseBodyDataRunOptionsLogDelivery) *GetEventStreamingResponseBodyDataRunOptions {
+	s.LogDelivery = v
+	return s
+}
+
 func (s *GetEventStreamingResponseBodyDataRunOptions) SetMaximumTasks(v int32) *GetEventStreamingResponseBodyDataRunOptions {
 	s.MaximumTasks = &v
 	return s
 }
 
+func (s *GetEventStreamingResponseBodyDataRunOptions) SetNetwork(v *GetEventStreamingResponseBodyDataRunOptionsNetwork) *GetEventStreamingResponseBodyDataRunOptions {
+	s.Network = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataRunOptions) SetResourceSpec(v *GetEventStreamingResponseBodyDataRunOptionsResourceSpec) *GetEventStreamingResponseBodyDataRunOptions {
+	s.ResourceSpec = v
+	return s
+}
+
 func (s *GetEventStreamingResponseBodyDataRunOptions) SetRetryStrategy(v *GetEventStreamingResponseBodyDataRunOptionsRetryStrategy) *GetEventStreamingResponseBodyDataRunOptions {
 	s.RetryStrategy = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataRunOptions) SetRoleName(v string) *GetEventStreamingResponseBodyDataRunOptions {
+	s.RoleName = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataRunOptions) SetScaledObject(v *GetEventStreamingResponseBodyDataRunOptionsScaledObject) *GetEventStreamingResponseBodyDataRunOptions {
+	s.ScaledObject = v
 	return s
 }
 
@@ -10284,6 +10878,150 @@ func (s *GetEventStreamingResponseBodyDataRunOptionsDeadLetterQueue) SetArn(v st
 	return s
 }
 
+type GetEventStreamingResponseBodyDataRunOptionsLogDelivery struct {
+	KafkaLogParameters []*GetEventStreamingResponseBodyDataRunOptionsLogDeliveryKafkaLogParameters `json:"KafkaLogParameters,omitempty" xml:"KafkaLogParameters,omitempty" type:"Repeated"`
+	SLSLogParameters   []*GetEventStreamingResponseBodyDataRunOptionsLogDeliverySLSLogParameters   `json:"SLSLogParameters,omitempty" xml:"SLSLogParameters,omitempty" type:"Repeated"`
+}
+
+func (s GetEventStreamingResponseBodyDataRunOptionsLogDelivery) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataRunOptionsLogDelivery) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataRunOptionsLogDelivery) SetKafkaLogParameters(v []*GetEventStreamingResponseBodyDataRunOptionsLogDeliveryKafkaLogParameters) *GetEventStreamingResponseBodyDataRunOptionsLogDelivery {
+	s.KafkaLogParameters = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataRunOptionsLogDelivery) SetSLSLogParameters(v []*GetEventStreamingResponseBodyDataRunOptionsLogDeliverySLSLogParameters) *GetEventStreamingResponseBodyDataRunOptionsLogDelivery {
+	s.SLSLogParameters = v
+	return s
+}
+
+type GetEventStreamingResponseBodyDataRunOptionsLogDeliveryKafkaLogParameters struct {
+	Endpoint   *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+}
+
+func (s GetEventStreamingResponseBodyDataRunOptionsLogDeliveryKafkaLogParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataRunOptionsLogDeliveryKafkaLogParameters) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataRunOptionsLogDeliveryKafkaLogParameters) SetEndpoint(v string) *GetEventStreamingResponseBodyDataRunOptionsLogDeliveryKafkaLogParameters {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataRunOptionsLogDeliveryKafkaLogParameters) SetInstanceId(v string) *GetEventStreamingResponseBodyDataRunOptionsLogDeliveryKafkaLogParameters {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataRunOptionsLogDeliveryKafkaLogParameters) SetTopic(v string) *GetEventStreamingResponseBodyDataRunOptionsLogDeliveryKafkaLogParameters {
+	s.Topic = &v
+	return s
+}
+
+type GetEventStreamingResponseBodyDataRunOptionsLogDeliverySLSLogParameters struct {
+	LogstoreName *string `json:"LogstoreName,omitempty" xml:"LogstoreName,omitempty"`
+	ProjectName  *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+}
+
+func (s GetEventStreamingResponseBodyDataRunOptionsLogDeliverySLSLogParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataRunOptionsLogDeliverySLSLogParameters) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataRunOptionsLogDeliverySLSLogParameters) SetLogstoreName(v string) *GetEventStreamingResponseBodyDataRunOptionsLogDeliverySLSLogParameters {
+	s.LogstoreName = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataRunOptionsLogDeliverySLSLogParameters) SetProjectName(v string) *GetEventStreamingResponseBodyDataRunOptionsLogDeliverySLSLogParameters {
+	s.ProjectName = &v
+	return s
+}
+
+type GetEventStreamingResponseBodyDataRunOptionsNetwork struct {
+	SecurityGroupId *string   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	VSwitchIds      []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	VpcId           *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s GetEventStreamingResponseBodyDataRunOptionsNetwork) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataRunOptionsNetwork) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataRunOptionsNetwork) SetSecurityGroupId(v string) *GetEventStreamingResponseBodyDataRunOptionsNetwork {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataRunOptionsNetwork) SetVSwitchIds(v []*string) *GetEventStreamingResponseBodyDataRunOptionsNetwork {
+	s.VSwitchIds = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataRunOptionsNetwork) SetVpcId(v string) *GetEventStreamingResponseBodyDataRunOptionsNetwork {
+	s.VpcId = &v
+	return s
+}
+
+type GetEventStreamingResponseBodyDataRunOptionsResourceSpec struct {
+	Resources []*GetEventStreamingResponseBodyDataRunOptionsResourceSpecResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+}
+
+func (s GetEventStreamingResponseBodyDataRunOptionsResourceSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataRunOptionsResourceSpec) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataRunOptionsResourceSpec) SetResources(v []*GetEventStreamingResponseBodyDataRunOptionsResourceSpecResources) *GetEventStreamingResponseBodyDataRunOptionsResourceSpec {
+	s.Resources = v
+	return s
+}
+
+type GetEventStreamingResponseBodyDataRunOptionsResourceSpecResources struct {
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value *int32  `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetEventStreamingResponseBodyDataRunOptionsResourceSpecResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataRunOptionsResourceSpecResources) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataRunOptionsResourceSpecResources) SetType(v string) *GetEventStreamingResponseBodyDataRunOptionsResourceSpecResources {
+	s.Type = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataRunOptionsResourceSpecResources) SetValue(v int32) *GetEventStreamingResponseBodyDataRunOptionsResourceSpecResources {
+	s.Value = &v
+	return s
+}
+
 type GetEventStreamingResponseBodyDataRunOptionsRetryStrategy struct {
 	// The maximum period of time during which retries are performed.
 	//
@@ -10328,7 +11066,85 @@ func (s *GetEventStreamingResponseBodyDataRunOptionsRetryStrategy) SetPushRetryS
 	return s
 }
 
+type GetEventStreamingResponseBodyDataRunOptionsScaledObject struct {
+	MaxReplicaCount *int32                                                             `json:"MaxReplicaCount,omitempty" xml:"MaxReplicaCount,omitempty"`
+	MinReplicaCount *int32                                                             `json:"MinReplicaCount,omitempty" xml:"MinReplicaCount,omitempty"`
+	Triggers        []*GetEventStreamingResponseBodyDataRunOptionsScaledObjectTriggers `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
+}
+
+func (s GetEventStreamingResponseBodyDataRunOptionsScaledObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataRunOptionsScaledObject) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataRunOptionsScaledObject) SetMaxReplicaCount(v int32) *GetEventStreamingResponseBodyDataRunOptionsScaledObject {
+	s.MaxReplicaCount = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataRunOptionsScaledObject) SetMinReplicaCount(v int32) *GetEventStreamingResponseBodyDataRunOptionsScaledObject {
+	s.MinReplicaCount = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataRunOptionsScaledObject) SetTriggers(v []*GetEventStreamingResponseBodyDataRunOptionsScaledObjectTriggers) *GetEventStreamingResponseBodyDataRunOptionsScaledObject {
+	s.Triggers = v
+	return s
+}
+
+type GetEventStreamingResponseBodyDataRunOptionsScaledObjectTriggers struct {
+	Metadata *GetEventStreamingResponseBodyDataRunOptionsScaledObjectTriggersMetadata `json:"Metadata,omitempty" xml:"Metadata,omitempty" type:"Struct"`
+	Type     *string                                                                  `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetEventStreamingResponseBodyDataRunOptionsScaledObjectTriggers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataRunOptionsScaledObjectTriggers) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataRunOptionsScaledObjectTriggers) SetMetadata(v *GetEventStreamingResponseBodyDataRunOptionsScaledObjectTriggersMetadata) *GetEventStreamingResponseBodyDataRunOptionsScaledObjectTriggers {
+	s.Metadata = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataRunOptionsScaledObjectTriggers) SetType(v string) *GetEventStreamingResponseBodyDataRunOptionsScaledObjectTriggers {
+	s.Type = &v
+	return s
+}
+
+type GetEventStreamingResponseBodyDataRunOptionsScaledObjectTriggersMetadata struct {
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value *int32  `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetEventStreamingResponseBodyDataRunOptionsScaledObjectTriggersMetadata) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataRunOptionsScaledObjectTriggersMetadata) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataRunOptionsScaledObjectTriggersMetadata) SetType(v string) *GetEventStreamingResponseBodyDataRunOptionsScaledObjectTriggersMetadata {
+	s.Type = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataRunOptionsScaledObjectTriggersMetadata) SetValue(v int32) *GetEventStreamingResponseBodyDataRunOptionsScaledObjectTriggersMetadata {
+	s.Value = &v
+	return s
+}
+
 type GetEventStreamingResponseBodyDataSink struct {
+	SinkCustomizedKafkaConnectorParameters *GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaConnectorParameters `json:"SinkCustomizedKafkaConnectorParameters,omitempty" xml:"SinkCustomizedKafkaConnectorParameters,omitempty" type:"Struct"`
+	SinkCustomizedKafkaParameters          *GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaParameters          `json:"SinkCustomizedKafkaParameters,omitempty" xml:"SinkCustomizedKafkaParameters,omitempty" type:"Struct"`
+	SinkDataHubParameters                  *GetEventStreamingResponseBodyDataSinkSinkDataHubParameters                  `json:"SinkDataHubParameters,omitempty" xml:"SinkDataHubParameters,omitempty" type:"Struct"`
 	// The parameters that are returned if the event target is Function Compute.
 	SinkFcParameters *GetEventStreamingResponseBodyDataSinkSinkFcParameters `json:"SinkFcParameters,omitempty" xml:"SinkFcParameters,omitempty" type:"Struct"`
 	// The Sink Fnf parameters.
@@ -10351,6 +11167,21 @@ func (s GetEventStreamingResponseBodyDataSink) String() string {
 
 func (s GetEventStreamingResponseBodyDataSink) GoString() string {
 	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataSink) SetSinkCustomizedKafkaConnectorParameters(v *GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaConnectorParameters) *GetEventStreamingResponseBodyDataSink {
+	s.SinkCustomizedKafkaConnectorParameters = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSink) SetSinkCustomizedKafkaParameters(v *GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaParameters) *GetEventStreamingResponseBodyDataSink {
+	s.SinkCustomizedKafkaParameters = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSink) SetSinkDataHubParameters(v *GetEventStreamingResponseBodyDataSinkSinkDataHubParameters) *GetEventStreamingResponseBodyDataSink {
+	s.SinkDataHubParameters = v
+	return s
 }
 
 func (s *GetEventStreamingResponseBodyDataSink) SetSinkFcParameters(v *GetEventStreamingResponseBodyDataSinkSinkFcParameters) *GetEventStreamingResponseBodyDataSink {
@@ -10385,6 +11216,296 @@ func (s *GetEventStreamingResponseBodyDataSink) SetSinkRocketMQParameters(v *Get
 
 func (s *GetEventStreamingResponseBodyDataSink) SetSinkSLSParameters(v *GetEventStreamingResponseBodyDataSinkSinkSLSParameters) *GetEventStreamingResponseBodyDataSink {
 	s.SinkSLSParameters = v
+	return s
+}
+
+type GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaConnectorParameters struct {
+	ConnectorPackageUrl *string                                                                                         `json:"ConnectorPackageUrl,omitempty" xml:"ConnectorPackageUrl,omitempty"`
+	ConnectorParameters *GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaConnectorParametersConnectorParameters `json:"ConnectorParameters,omitempty" xml:"ConnectorParameters,omitempty" type:"Struct"`
+	WorkerParameters    map[string]interface{}                                                                          `json:"WorkerParameters,omitempty" xml:"WorkerParameters,omitempty"`
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaConnectorParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaConnectorParameters) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaConnectorParameters) SetConnectorPackageUrl(v string) *GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaConnectorParameters {
+	s.ConnectorPackageUrl = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaConnectorParameters) SetConnectorParameters(v *GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaConnectorParametersConnectorParameters) *GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaConnectorParameters {
+	s.ConnectorParameters = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaConnectorParameters) SetWorkerParameters(v map[string]interface{}) *GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaConnectorParameters {
+	s.WorkerParameters = v
+	return s
+}
+
+type GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaConnectorParametersConnectorParameters struct {
+	Config map[string]interface{} `json:"Config,omitempty" xml:"Config,omitempty"`
+	Name   *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaConnectorParametersConnectorParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaConnectorParametersConnectorParameters) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaConnectorParametersConnectorParameters) SetConfig(v map[string]interface{}) *GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaConnectorParametersConnectorParameters {
+	s.Config = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaConnectorParametersConnectorParameters) SetName(v string) *GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaConnectorParametersConnectorParameters {
+	s.Name = &v
+	return s
+}
+
+type GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaParameters struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaParameters) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaParameters) SetInstanceId(v string) *GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaParameters {
+	s.InstanceId = &v
+	return s
+}
+
+type GetEventStreamingResponseBodyDataSinkSinkDataHubParameters struct {
+	Body        *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersBody        `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
+	Project     *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersProject     `json:"Project,omitempty" xml:"Project,omitempty" type:"Struct"`
+	RoleName    *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersRoleName    `json:"RoleName,omitempty" xml:"RoleName,omitempty" type:"Struct"`
+	Topic       *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersTopic       `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Struct"`
+	TopicSchema *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersTopicSchema `json:"TopicSchema,omitempty" xml:"TopicSchema,omitempty" type:"Struct"`
+	TopicType   *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersTopicType   `json:"TopicType,omitempty" xml:"TopicType,omitempty" type:"Struct"`
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkDataHubParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkDataHubParameters) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDataHubParameters) SetBody(v *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersBody) *GetEventStreamingResponseBodyDataSinkSinkDataHubParameters {
+	s.Body = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDataHubParameters) SetProject(v *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersProject) *GetEventStreamingResponseBodyDataSinkSinkDataHubParameters {
+	s.Project = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDataHubParameters) SetRoleName(v *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersRoleName) *GetEventStreamingResponseBodyDataSinkSinkDataHubParameters {
+	s.RoleName = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDataHubParameters) SetTopic(v *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersTopic) *GetEventStreamingResponseBodyDataSinkSinkDataHubParameters {
+	s.Topic = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDataHubParameters) SetTopicSchema(v *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersTopicSchema) *GetEventStreamingResponseBodyDataSinkSinkDataHubParameters {
+	s.TopicSchema = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDataHubParameters) SetTopicType(v *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersTopicType) *GetEventStreamingResponseBodyDataSinkSinkDataHubParameters {
+	s.TopicType = v
+	return s
+}
+
+type GetEventStreamingResponseBodyDataSinkSinkDataHubParametersBody struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkDataHubParametersBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkDataHubParametersBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersBody) SetForm(v string) *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersBody {
+	s.Form = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersBody) SetTemplate(v string) *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersBody {
+	s.Template = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersBody) SetValue(v string) *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersBody {
+	s.Value = &v
+	return s
+}
+
+type GetEventStreamingResponseBodyDataSinkSinkDataHubParametersProject struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkDataHubParametersProject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkDataHubParametersProject) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersProject) SetForm(v string) *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersProject {
+	s.Form = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersProject) SetTemplate(v string) *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersProject {
+	s.Template = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersProject) SetValue(v string) *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersProject {
+	s.Value = &v
+	return s
+}
+
+type GetEventStreamingResponseBodyDataSinkSinkDataHubParametersRoleName struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkDataHubParametersRoleName) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkDataHubParametersRoleName) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersRoleName) SetForm(v string) *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersRoleName {
+	s.Form = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersRoleName) SetTemplate(v string) *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersRoleName {
+	s.Template = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersRoleName) SetValue(v string) *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersRoleName {
+	s.Value = &v
+	return s
+}
+
+type GetEventStreamingResponseBodyDataSinkSinkDataHubParametersTopic struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkDataHubParametersTopic) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkDataHubParametersTopic) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersTopic) SetForm(v string) *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersTopic {
+	s.Form = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersTopic) SetTemplate(v string) *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersTopic {
+	s.Template = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersTopic) SetValue(v string) *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersTopic {
+	s.Value = &v
+	return s
+}
+
+type GetEventStreamingResponseBodyDataSinkSinkDataHubParametersTopicSchema struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkDataHubParametersTopicSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkDataHubParametersTopicSchema) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersTopicSchema) SetForm(v string) *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersTopicSchema {
+	s.Form = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersTopicSchema) SetTemplate(v string) *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersTopicSchema {
+	s.Template = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersTopicSchema) SetValue(v string) *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersTopicSchema {
+	s.Value = &v
+	return s
+}
+
+type GetEventStreamingResponseBodyDataSinkSinkDataHubParametersTopicType struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkDataHubParametersTopicType) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkDataHubParametersTopicType) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersTopicType) SetForm(v string) *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersTopicType {
+	s.Form = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersTopicType) SetTemplate(v string) *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersTopicType {
+	s.Template = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersTopicType) SetValue(v string) *GetEventStreamingResponseBodyDataSinkSinkDataHubParametersTopicType {
+	s.Value = &v
 	return s
 }
 
@@ -11782,17 +12903,25 @@ func (s *GetEventStreamingResponseBodyDataSinkSinkRabbitMQParametersVirtualHostN
 
 type GetEventStreamingResponseBodyDataSinkSinkRocketMQParameters struct {
 	// The message content.
-	Body *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
+	Body             *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersBody             `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
+	InstanceEndpoint *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceEndpoint `json:"InstanceEndpoint,omitempty" xml:"InstanceEndpoint,omitempty" type:"Struct"`
 	// The target service type is Message Queue for Apache RocketMQ.
-	InstanceId *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceId `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Struct"`
+	InstanceId       *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceId       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Struct"`
+	InstancePassword *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstancePassword `json:"InstancePassword,omitempty" xml:"InstancePassword,omitempty" type:"Struct"`
+	InstanceType     *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceType     `json:"InstanceType,omitempty" xml:"InstanceType,omitempty" type:"Struct"`
+	InstanceUsername *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceUsername `json:"InstanceUsername,omitempty" xml:"InstanceUsername,omitempty" type:"Struct"`
 	// The tags that are used to filter messages.
-	Keys *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersKeys `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Struct"`
+	Keys    *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersKeys    `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Struct"`
+	Network *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
 	// The tags that are used to filter messages.
-	Properties *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
+	Properties      *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersProperties      `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
+	SecurityGroupId *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersSecurityGroupId `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty" type:"Struct"`
 	// The tags that are used to filter messages.
 	Tags *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The name of the topic in the Message Queue for Apache RocketMQ instance.
-	Topic *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersTopic `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Struct"`
+	Topic      *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersTopic      `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Struct"`
+	VSwitchIds *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersVSwitchIds `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
+	VpcId      *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersVpcId      `json:"VpcId,omitempty" xml:"VpcId,omitempty" type:"Struct"`
 }
 
 func (s GetEventStreamingResponseBodyDataSinkSinkRocketMQParameters) String() string {
@@ -11808,8 +12937,28 @@ func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParameters) SetBody(v 
 	return s
 }
 
+func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParameters) SetInstanceEndpoint(v *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceEndpoint) *GetEventStreamingResponseBodyDataSinkSinkRocketMQParameters {
+	s.InstanceEndpoint = v
+	return s
+}
+
 func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParameters) SetInstanceId(v *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceId) *GetEventStreamingResponseBodyDataSinkSinkRocketMQParameters {
 	s.InstanceId = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParameters) SetInstancePassword(v *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstancePassword) *GetEventStreamingResponseBodyDataSinkSinkRocketMQParameters {
+	s.InstancePassword = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParameters) SetInstanceType(v *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceType) *GetEventStreamingResponseBodyDataSinkSinkRocketMQParameters {
+	s.InstanceType = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParameters) SetInstanceUsername(v *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceUsername) *GetEventStreamingResponseBodyDataSinkSinkRocketMQParameters {
+	s.InstanceUsername = v
 	return s
 }
 
@@ -11818,8 +12967,18 @@ func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParameters) SetKeys(v 
 	return s
 }
 
+func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParameters) SetNetwork(v *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersNetwork) *GetEventStreamingResponseBodyDataSinkSinkRocketMQParameters {
+	s.Network = v
+	return s
+}
+
 func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParameters) SetProperties(v *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersProperties) *GetEventStreamingResponseBodyDataSinkSinkRocketMQParameters {
 	s.Properties = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParameters) SetSecurityGroupId(v *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersSecurityGroupId) *GetEventStreamingResponseBodyDataSinkSinkRocketMQParameters {
+	s.SecurityGroupId = v
 	return s
 }
 
@@ -11830,6 +12989,16 @@ func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParameters) SetTags(v 
 
 func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParameters) SetTopic(v *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersTopic) *GetEventStreamingResponseBodyDataSinkSinkRocketMQParameters {
 	s.Topic = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParameters) SetVSwitchIds(v *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersVSwitchIds) *GetEventStreamingResponseBodyDataSinkSinkRocketMQParameters {
+	s.VSwitchIds = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParameters) SetVpcId(v *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersVpcId) *GetEventStreamingResponseBodyDataSinkSinkRocketMQParameters {
+	s.VpcId = v
 	return s
 }
 
@@ -11881,6 +13050,35 @@ func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersBody) SetVal
 	return s
 }
 
+type GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceEndpoint struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceEndpoint) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceEndpoint) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceEndpoint) SetForm(v string) *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceEndpoint {
+	s.Form = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceEndpoint) SetTemplate(v string) *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceEndpoint {
+	s.Template = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceEndpoint) SetValue(v string) *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceEndpoint {
+	s.Value = &v
+	return s
+}
+
 type GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceId struct {
 	// The method that is used to transform the event. Default value: CONSTANT.
 	//
@@ -11917,6 +13115,93 @@ func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceId) 
 }
 
 func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceId) SetValue(v string) *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceId {
+	s.Value = &v
+	return s
+}
+
+type GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstancePassword struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstancePassword) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstancePassword) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstancePassword) SetForm(v string) *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstancePassword {
+	s.Form = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstancePassword) SetTemplate(v string) *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstancePassword {
+	s.Template = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstancePassword) SetValue(v string) *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstancePassword {
+	s.Value = &v
+	return s
+}
+
+type GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceType struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceType) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceType) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceType) SetForm(v string) *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceType {
+	s.Form = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceType) SetTemplate(v string) *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceType {
+	s.Template = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceType) SetValue(v string) *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceType {
+	s.Value = &v
+	return s
+}
+
+type GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceUsername struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceUsername) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceUsername) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceUsername) SetForm(v string) *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceUsername {
+	s.Form = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceUsername) SetTemplate(v string) *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceUsername {
+	s.Template = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceUsername) SetValue(v string) *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersInstanceUsername {
 	s.Value = &v
 	return s
 }
@@ -11969,6 +13254,35 @@ func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersKeys) SetVal
 	return s
 }
 
+type GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersNetwork struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersNetwork) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersNetwork) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersNetwork) SetForm(v string) *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersNetwork {
+	s.Form = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersNetwork) SetTemplate(v string) *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersNetwork {
+	s.Template = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersNetwork) SetValue(v string) *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersNetwork {
+	s.Value = &v
+	return s
+}
+
 type GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersProperties struct {
 	// The method that is used to transform the event.
 	//
@@ -12013,6 +13327,35 @@ func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersProperties) 
 }
 
 func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersProperties) SetValue(v string) *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersProperties {
+	s.Value = &v
+	return s
+}
+
+type GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersSecurityGroupId struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersSecurityGroupId) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersSecurityGroupId) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersSecurityGroupId) SetForm(v string) *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersSecurityGroupId {
+	s.Form = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersSecurityGroupId) SetTemplate(v string) *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersSecurityGroupId {
+	s.Template = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersSecurityGroupId) SetValue(v string) *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersSecurityGroupId {
 	s.Value = &v
 	return s
 }
@@ -12105,9 +13448,69 @@ func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersTopic) SetVa
 	return s
 }
 
+type GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersVSwitchIds struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersVSwitchIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersVSwitchIds) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersVSwitchIds) SetForm(v string) *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersVSwitchIds {
+	s.Form = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersVSwitchIds) SetTemplate(v string) *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersVSwitchIds {
+	s.Template = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersVSwitchIds) SetValue(v string) *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersVSwitchIds {
+	s.Value = &v
+	return s
+}
+
+type GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersVpcId struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersVpcId) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersVpcId) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersVpcId) SetForm(v string) *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersVpcId {
+	s.Form = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersVpcId) SetTemplate(v string) *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersVpcId {
+	s.Template = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersVpcId) SetValue(v string) *GetEventStreamingResponseBodyDataSinkSinkRocketMQParametersVpcId {
+	s.Value = &v
+	return s
+}
+
 type GetEventStreamingResponseBodyDataSinkSinkSLSParameters struct {
 	// The message content.
-	Body *GetEventStreamingResponseBodyDataSinkSinkSLSParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
+	Body          *GetEventStreamingResponseBodyDataSinkSinkSLSParametersBody          `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
+	ContentSchema *GetEventStreamingResponseBodyDataSinkSinkSLSParametersContentSchema `json:"ContentSchema,omitempty" xml:"ContentSchema,omitempty" type:"Struct"`
+	ContentType   *GetEventStreamingResponseBodyDataSinkSinkSLSParametersContentType   `json:"ContentType,omitempty" xml:"ContentType,omitempty" type:"Struct"`
 	// The Simple Log Service Logstore.
 	LogStore *GetEventStreamingResponseBodyDataSinkSinkSLSParametersLogStore `json:"LogStore,omitempty" xml:"LogStore,omitempty" type:"Struct"`
 	// The Simple Log Service project.
@@ -12128,6 +13531,16 @@ func (s GetEventStreamingResponseBodyDataSinkSinkSLSParameters) GoString() strin
 
 func (s *GetEventStreamingResponseBodyDataSinkSinkSLSParameters) SetBody(v *GetEventStreamingResponseBodyDataSinkSinkSLSParametersBody) *GetEventStreamingResponseBodyDataSinkSinkSLSParameters {
 	s.Body = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkSLSParameters) SetContentSchema(v *GetEventStreamingResponseBodyDataSinkSinkSLSParametersContentSchema) *GetEventStreamingResponseBodyDataSinkSinkSLSParameters {
+	s.ContentSchema = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkSLSParameters) SetContentType(v *GetEventStreamingResponseBodyDataSinkSinkSLSParametersContentType) *GetEventStreamingResponseBodyDataSinkSinkSLSParameters {
+	s.ContentType = v
 	return s
 }
 
@@ -12195,6 +13608,64 @@ func (s *GetEventStreamingResponseBodyDataSinkSinkSLSParametersBody) SetTemplate
 }
 
 func (s *GetEventStreamingResponseBodyDataSinkSinkSLSParametersBody) SetValue(v string) *GetEventStreamingResponseBodyDataSinkSinkSLSParametersBody {
+	s.Value = &v
+	return s
+}
+
+type GetEventStreamingResponseBodyDataSinkSinkSLSParametersContentSchema struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkSLSParametersContentSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkSLSParametersContentSchema) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkSLSParametersContentSchema) SetForm(v string) *GetEventStreamingResponseBodyDataSinkSinkSLSParametersContentSchema {
+	s.Form = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkSLSParametersContentSchema) SetTemplate(v string) *GetEventStreamingResponseBodyDataSinkSinkSLSParametersContentSchema {
+	s.Template = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkSLSParametersContentSchema) SetValue(v string) *GetEventStreamingResponseBodyDataSinkSinkSLSParametersContentSchema {
+	s.Value = &v
+	return s
+}
+
+type GetEventStreamingResponseBodyDataSinkSinkSLSParametersContentType struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkSLSParametersContentType) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkSLSParametersContentType) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkSLSParametersContentType) SetForm(v string) *GetEventStreamingResponseBodyDataSinkSinkSLSParametersContentType {
+	s.Form = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkSLSParametersContentType) SetTemplate(v string) *GetEventStreamingResponseBodyDataSinkSinkSLSParametersContentType {
+	s.Template = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkSLSParametersContentType) SetValue(v string) *GetEventStreamingResponseBodyDataSinkSinkSLSParametersContentType {
 	s.Value = &v
 	return s
 }
@@ -12360,7 +13831,9 @@ func (s *GetEventStreamingResponseBodyDataSinkSinkSLSParametersTopic) SetValue(v
 }
 
 type GetEventStreamingResponseBodyDataSource struct {
-	SourceApacheKafkaParameters *GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters `json:"SourceApacheKafkaParameters,omitempty" xml:"SourceApacheKafkaParameters,omitempty" type:"Struct"`
+	SourceApacheKafkaParameters              *GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters              `json:"SourceApacheKafkaParameters,omitempty" xml:"SourceApacheKafkaParameters,omitempty" type:"Struct"`
+	SourceCustomizedKafkaConnectorParameters *GetEventStreamingResponseBodyDataSourceSourceCustomizedKafkaConnectorParameters `json:"SourceCustomizedKafkaConnectorParameters,omitempty" xml:"SourceCustomizedKafkaConnectorParameters,omitempty" type:"Struct"`
+	SourceCustomizedKafkaParameters          *GetEventStreamingResponseBodyDataSourceSourceCustomizedKafkaParameters          `json:"SourceCustomizedKafkaParameters,omitempty" xml:"SourceCustomizedKafkaParameters,omitempty" type:"Struct"`
 	// The parameters that are returned if the event source is Data Transmission Service (DTS).
 	SourceDTSParameters *GetEventStreamingResponseBodyDataSourceSourceDTSParameters `json:"SourceDTSParameters,omitempty" xml:"SourceDTSParameters,omitempty" type:"Struct"`
 	// The parameters that are returned if ApsaraMQ for Kafka is specified as the event source.
@@ -12388,6 +13861,16 @@ func (s GetEventStreamingResponseBodyDataSource) GoString() string {
 
 func (s *GetEventStreamingResponseBodyDataSource) SetSourceApacheKafkaParameters(v *GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters) *GetEventStreamingResponseBodyDataSource {
 	s.SourceApacheKafkaParameters = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSource) SetSourceCustomizedKafkaConnectorParameters(v *GetEventStreamingResponseBodyDataSourceSourceCustomizedKafkaConnectorParameters) *GetEventStreamingResponseBodyDataSource {
+	s.SourceCustomizedKafkaConnectorParameters = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSource) SetSourceCustomizedKafkaParameters(v *GetEventStreamingResponseBodyDataSourceSourceCustomizedKafkaParameters) *GetEventStreamingResponseBodyDataSource {
+	s.SourceCustomizedKafkaParameters = v
 	return s
 }
 
@@ -12517,6 +14000,75 @@ func (s *GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters) Set
 
 func (s *GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters) SetVpcId(v string) *GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters {
 	s.VpcId = &v
+	return s
+}
+
+type GetEventStreamingResponseBodyDataSourceSourceCustomizedKafkaConnectorParameters struct {
+	ConnectorPackageUrl *string                                                                                             `json:"ConnectorPackageUrl,omitempty" xml:"ConnectorPackageUrl,omitempty"`
+	ConnectorParameters *GetEventStreamingResponseBodyDataSourceSourceCustomizedKafkaConnectorParametersConnectorParameters `json:"ConnectorParameters,omitempty" xml:"ConnectorParameters,omitempty" type:"Struct"`
+	WorkerParameters    map[string]interface{}                                                                              `json:"WorkerParameters,omitempty" xml:"WorkerParameters,omitempty"`
+}
+
+func (s GetEventStreamingResponseBodyDataSourceSourceCustomizedKafkaConnectorParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataSourceSourceCustomizedKafkaConnectorParameters) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourceCustomizedKafkaConnectorParameters) SetConnectorPackageUrl(v string) *GetEventStreamingResponseBodyDataSourceSourceCustomizedKafkaConnectorParameters {
+	s.ConnectorPackageUrl = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourceCustomizedKafkaConnectorParameters) SetConnectorParameters(v *GetEventStreamingResponseBodyDataSourceSourceCustomizedKafkaConnectorParametersConnectorParameters) *GetEventStreamingResponseBodyDataSourceSourceCustomizedKafkaConnectorParameters {
+	s.ConnectorParameters = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourceCustomizedKafkaConnectorParameters) SetWorkerParameters(v map[string]interface{}) *GetEventStreamingResponseBodyDataSourceSourceCustomizedKafkaConnectorParameters {
+	s.WorkerParameters = v
+	return s
+}
+
+type GetEventStreamingResponseBodyDataSourceSourceCustomizedKafkaConnectorParametersConnectorParameters struct {
+	Config map[string]interface{} `json:"Config,omitempty" xml:"Config,omitempty"`
+	Name   *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetEventStreamingResponseBodyDataSourceSourceCustomizedKafkaConnectorParametersConnectorParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataSourceSourceCustomizedKafkaConnectorParametersConnectorParameters) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourceCustomizedKafkaConnectorParametersConnectorParameters) SetConfig(v map[string]interface{}) *GetEventStreamingResponseBodyDataSourceSourceCustomizedKafkaConnectorParametersConnectorParameters {
+	s.Config = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourceCustomizedKafkaConnectorParametersConnectorParameters) SetName(v string) *GetEventStreamingResponseBodyDataSourceSourceCustomizedKafkaConnectorParametersConnectorParameters {
+	s.Name = &v
+	return s
+}
+
+type GetEventStreamingResponseBodyDataSourceSourceCustomizedKafkaParameters struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s GetEventStreamingResponseBodyDataSourceSourceCustomizedKafkaParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataSourceSourceCustomizedKafkaParameters) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourceCustomizedKafkaParameters) SetInstanceId(v string) *GetEventStreamingResponseBodyDataSourceSourceCustomizedKafkaParameters {
+	s.InstanceId = &v
 	return s
 }
 
@@ -12770,6 +14322,7 @@ func (s *GetEventStreamingResponseBodyDataSourceSourceMNSParameters) SetRegionId
 }
 
 type GetEventStreamingResponseBodyDataSourceSourceMQTTParameters struct {
+	BodyDataType *string `json:"BodyDataType,omitempty" xml:"BodyDataType,omitempty"`
 	// The instance ID.
 	//
 	// example:
@@ -12796,6 +14349,11 @@ func (s GetEventStreamingResponseBodyDataSourceSourceMQTTParameters) String() st
 
 func (s GetEventStreamingResponseBodyDataSourceSourceMQTTParameters) GoString() string {
 	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourceMQTTParameters) SetBodyDataType(v string) *GetEventStreamingResponseBodyDataSourceSourceMQTTParameters {
+	s.BodyDataType = &v
+	return s
 }
 
 func (s *GetEventStreamingResponseBodyDataSourceSourceMQTTParameters) SetInstanceId(v string) *GetEventStreamingResponseBodyDataSourceSourceMQTTParameters {
@@ -12918,6 +14476,8 @@ type GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters struct {
 	// ACL
 	AuthType     *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
 	BodyDataType *string `json:"BodyDataType,omitempty" xml:"BodyDataType,omitempty"`
+	FilterSql    *string `json:"FilterSql,omitempty" xml:"FilterSql,omitempty"`
+	FilterType   *string `json:"FilterType,omitempty" xml:"FilterType,omitempty"`
 	// The ID of the consumer group in the Message Queue for Apache RocketMQ instance.
 	//
 	// example:
@@ -12962,6 +14522,7 @@ type GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters struct {
 	//
 	// vpc-m5e3sv4b12345****
 	InstanceVpcId *string `json:"InstanceVpcId,omitempty" xml:"InstanceVpcId,omitempty"`
+	Network       *string `json:"Network,omitempty" xml:"Network,omitempty"`
 	// The consumer offset of messages. Valid values: CONSUME_FROM_LAST_OFFSET: Start consumption from the latest offset. CONSUME_FROM_FIRST_OFFSET: Start consumption from the earliest offset. CONSUME_FROM_TIMESTAMP: Start consumption from the offset at the specified point in time.
 	//
 	// example:
@@ -12973,7 +14534,8 @@ type GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The tags that are used to filter messages.
 	//
 	// example:
@@ -12991,7 +14553,9 @@ type GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters struct {
 	// example:
 	//
 	// topic_add_anima
-	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	VpcId      *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters) String() string {
@@ -13009,6 +14573,16 @@ func (s *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters) SetAut
 
 func (s *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters) SetBodyDataType(v string) *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters {
 	s.BodyDataType = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters) SetFilterSql(v string) *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters {
+	s.FilterSql = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters) SetFilterType(v string) *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters {
+	s.FilterType = &v
 	return s
 }
 
@@ -13062,6 +14636,11 @@ func (s *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters) SetIns
 	return s
 }
 
+func (s *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters) SetNetwork(v string) *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters {
+	s.Network = &v
+	return s
+}
+
 func (s *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters) SetOffset(v string) *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters {
 	s.Offset = &v
 	return s
@@ -13069,6 +14648,11 @@ func (s *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters) SetOff
 
 func (s *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters) SetRegionId(v string) *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters {
 	s.RegionId = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters) SetSecurityGroupId(v string) *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters {
+	s.SecurityGroupId = &v
 	return s
 }
 
@@ -13084,6 +14668,16 @@ func (s *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters) SetTim
 
 func (s *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters) SetTopic(v string) *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters {
 	s.Topic = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters) SetVSwitchIds(v string) *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters {
+	s.VSwitchIds = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters) SetVpcId(v string) *GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters {
+	s.VpcId = &v
 	return s
 }
 
@@ -13397,6 +14991,7 @@ func (s *GetRuleResponseBodyData) SetTargets(v []*GetRuleResponseBodyDataTargets
 }
 
 type GetRuleResponseBodyDataTargets struct {
+	ConcurrentConfig *GetRuleResponseBodyDataTargetsConcurrentConfig `json:"ConcurrentConfig,omitempty" xml:"ConcurrentConfig,omitempty" type:"Struct"`
 	// The dead-letter queue.
 	DeadLetterQueue *GetRuleResponseBodyDataTargetsDeadLetterQueue `json:"DeadLetterQueue,omitempty" xml:"DeadLetterQueue,omitempty" type:"Struct"`
 	// The information about the event target.
@@ -13449,6 +15044,11 @@ func (s GetRuleResponseBodyDataTargets) GoString() string {
 	return s.String()
 }
 
+func (s *GetRuleResponseBodyDataTargets) SetConcurrentConfig(v *GetRuleResponseBodyDataTargetsConcurrentConfig) *GetRuleResponseBodyDataTargets {
+	s.ConcurrentConfig = v
+	return s
+}
+
 func (s *GetRuleResponseBodyDataTargets) SetDeadLetterQueue(v *GetRuleResponseBodyDataTargetsDeadLetterQueue) *GetRuleResponseBodyDataTargets {
 	s.DeadLetterQueue = v
 	return s
@@ -13491,6 +15091,23 @@ func (s *GetRuleResponseBodyDataTargets) SetPushSelector(v string) *GetRuleRespo
 
 func (s *GetRuleResponseBodyDataTargets) SetType(v string) *GetRuleResponseBodyDataTargets {
 	s.Type = &v
+	return s
+}
+
+type GetRuleResponseBodyDataTargetsConcurrentConfig struct {
+	Concurrency *int64 `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+}
+
+func (s GetRuleResponseBodyDataTargetsConcurrentConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRuleResponseBodyDataTargetsConcurrentConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetRuleResponseBodyDataTargetsConcurrentConfig) SetConcurrency(v int64) *GetRuleResponseBodyDataTargetsConcurrentConfig {
+	s.Concurrency = &v
 	return s
 }
 
@@ -15322,15 +16939,20 @@ type ListEventStreamingsResponseBodyDataEventStreamingsRunOptions struct {
 	// example:
 	//
 	// ALL
-	ErrorsTolerance *string `json:"ErrorsTolerance,omitempty" xml:"ErrorsTolerance,omitempty"`
+	ErrorsTolerance *string                                                                  `json:"ErrorsTolerance,omitempty" xml:"ErrorsTolerance,omitempty"`
+	LogDelivery     *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsLogDelivery `json:"LogDelivery,omitempty" xml:"LogDelivery,omitempty" type:"Struct"`
 	// The number of concurrent threads.
 	//
 	// example:
 	//
 	// 2
-	MaximumTasks *int32 `json:"MaximumTasks,omitempty" xml:"MaximumTasks,omitempty"`
+	MaximumTasks *int32                                                                    `json:"MaximumTasks,omitempty" xml:"MaximumTasks,omitempty"`
+	Network      *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsNetwork      `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
+	ResourceSpec *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
 	// The retry policy that is used if events fail to be pushed.
 	RetryStrategy *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsRetryStrategy `json:"RetryStrategy,omitempty" xml:"RetryStrategy,omitempty" type:"Struct"`
+	RoleName      *string                                                                    `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	ScaledObject  *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsScaledObject  `json:"ScaledObject,omitempty" xml:"ScaledObject,omitempty" type:"Struct"`
 }
 
 func (s ListEventStreamingsResponseBodyDataEventStreamingsRunOptions) String() string {
@@ -15356,13 +16978,38 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptions) SetErrors
 	return s
 }
 
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptions) SetLogDelivery(v *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsLogDelivery) *ListEventStreamingsResponseBodyDataEventStreamingsRunOptions {
+	s.LogDelivery = v
+	return s
+}
+
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptions) SetMaximumTasks(v int32) *ListEventStreamingsResponseBodyDataEventStreamingsRunOptions {
 	s.MaximumTasks = &v
 	return s
 }
 
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptions) SetNetwork(v *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsNetwork) *ListEventStreamingsResponseBodyDataEventStreamingsRunOptions {
+	s.Network = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptions) SetResourceSpec(v *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsResourceSpec) *ListEventStreamingsResponseBodyDataEventStreamingsRunOptions {
+	s.ResourceSpec = v
+	return s
+}
+
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptions) SetRetryStrategy(v *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsRetryStrategy) *ListEventStreamingsResponseBodyDataEventStreamingsRunOptions {
 	s.RetryStrategy = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptions) SetRoleName(v string) *ListEventStreamingsResponseBodyDataEventStreamingsRunOptions {
+	s.RoleName = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptions) SetScaledObject(v *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsScaledObject) *ListEventStreamingsResponseBodyDataEventStreamingsRunOptions {
+	s.ScaledObject = v
 	return s
 }
 
@@ -15421,6 +17068,150 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsDeadLetterQ
 	return s
 }
 
+type ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsLogDelivery struct {
+	KafkaLogParameters []*ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsLogDeliveryKafkaLogParameters `json:"KafkaLogParameters,omitempty" xml:"KafkaLogParameters,omitempty" type:"Repeated"`
+	SLSLogParameters   []*ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsLogDeliverySLSLogParameters   `json:"SLSLogParameters,omitempty" xml:"SLSLogParameters,omitempty" type:"Repeated"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsLogDelivery) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsLogDelivery) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsLogDelivery) SetKafkaLogParameters(v []*ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsLogDeliveryKafkaLogParameters) *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsLogDelivery {
+	s.KafkaLogParameters = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsLogDelivery) SetSLSLogParameters(v []*ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsLogDeliverySLSLogParameters) *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsLogDelivery {
+	s.SLSLogParameters = v
+	return s
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsLogDeliveryKafkaLogParameters struct {
+	Endpoint   *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsLogDeliveryKafkaLogParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsLogDeliveryKafkaLogParameters) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsLogDeliveryKafkaLogParameters) SetEndpoint(v string) *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsLogDeliveryKafkaLogParameters {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsLogDeliveryKafkaLogParameters) SetInstanceId(v string) *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsLogDeliveryKafkaLogParameters {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsLogDeliveryKafkaLogParameters) SetTopic(v string) *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsLogDeliveryKafkaLogParameters {
+	s.Topic = &v
+	return s
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsLogDeliverySLSLogParameters struct {
+	LogstoreName *string `json:"LogstoreName,omitempty" xml:"LogstoreName,omitempty"`
+	ProjectName  *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsLogDeliverySLSLogParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsLogDeliverySLSLogParameters) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsLogDeliverySLSLogParameters) SetLogstoreName(v string) *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsLogDeliverySLSLogParameters {
+	s.LogstoreName = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsLogDeliverySLSLogParameters) SetProjectName(v string) *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsLogDeliverySLSLogParameters {
+	s.ProjectName = &v
+	return s
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsNetwork struct {
+	SecurityGroupId *string   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	VSwitchIds      []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	VpcId           *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsNetwork) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsNetwork) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsNetwork) SetSecurityGroupId(v string) *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsNetwork {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsNetwork) SetVSwitchIds(v []*string) *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsNetwork {
+	s.VSwitchIds = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsNetwork) SetVpcId(v string) *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsNetwork {
+	s.VpcId = &v
+	return s
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsResourceSpec struct {
+	Resources []*ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsResourceSpecResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsResourceSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsResourceSpec) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsResourceSpec) SetResources(v []*ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsResourceSpecResources) *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsResourceSpec {
+	s.Resources = v
+	return s
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsResourceSpecResources struct {
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value *int32  `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsResourceSpecResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsResourceSpecResources) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsResourceSpecResources) SetType(v string) *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsResourceSpecResources {
+	s.Type = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsResourceSpecResources) SetValue(v int32) *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsResourceSpecResources {
+	s.Value = &v
+	return s
+}
+
 type ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsRetryStrategy struct {
 	// The maximum timeout period for a retry.
 	//
@@ -15465,7 +17256,85 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsRetryStrate
 	return s
 }
 
+type ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsScaledObject struct {
+	MaxReplicaCount *int32                                                                              `json:"MaxReplicaCount,omitempty" xml:"MaxReplicaCount,omitempty"`
+	MinReplicaCount *int32                                                                              `json:"MinReplicaCount,omitempty" xml:"MinReplicaCount,omitempty"`
+	Triggers        []*ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsScaledObjectTriggers `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsScaledObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsScaledObject) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsScaledObject) SetMaxReplicaCount(v int32) *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsScaledObject {
+	s.MaxReplicaCount = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsScaledObject) SetMinReplicaCount(v int32) *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsScaledObject {
+	s.MinReplicaCount = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsScaledObject) SetTriggers(v []*ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsScaledObjectTriggers) *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsScaledObject {
+	s.Triggers = v
+	return s
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsScaledObjectTriggers struct {
+	Metadata *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsScaledObjectTriggersMetadata `json:"Metadata,omitempty" xml:"Metadata,omitempty" type:"Struct"`
+	Type     *string                                                                                   `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsScaledObjectTriggers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsScaledObjectTriggers) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsScaledObjectTriggers) SetMetadata(v *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsScaledObjectTriggersMetadata) *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsScaledObjectTriggers {
+	s.Metadata = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsScaledObjectTriggers) SetType(v string) *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsScaledObjectTriggers {
+	s.Type = &v
+	return s
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsScaledObjectTriggersMetadata struct {
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value *int32  `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsScaledObjectTriggersMetadata) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsScaledObjectTriggersMetadata) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsScaledObjectTriggersMetadata) SetType(v string) *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsScaledObjectTriggersMetadata {
+	s.Type = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsScaledObjectTriggersMetadata) SetValue(v int32) *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsScaledObjectTriggersMetadata {
+	s.Value = &v
+	return s
+}
+
 type ListEventStreamingsResponseBodyDataEventStreamingsSink struct {
+	SinkCustomizedKafkaConnectorParameters *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaConnectorParameters `json:"SinkCustomizedKafkaConnectorParameters,omitempty" xml:"SinkCustomizedKafkaConnectorParameters,omitempty" type:"Struct"`
+	SinkCustomizedKafkaParameters          *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaParameters          `json:"SinkCustomizedKafkaParameters,omitempty" xml:"SinkCustomizedKafkaParameters,omitempty" type:"Struct"`
+	SinkDataHubParameters                  *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameters                  `json:"SinkDataHubParameters,omitempty" xml:"SinkDataHubParameters,omitempty" type:"Struct"`
 	// The parameters that are returned if Function Compute is specified as the event target.
 	SinkFcParameters *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParameters `json:"SinkFcParameters,omitempty" xml:"SinkFcParameters,omitempty" type:"Struct"`
 	// The parameters that are returned if Serverless Workflow is specified as the event target.
@@ -15488,6 +17357,21 @@ func (s ListEventStreamingsResponseBodyDataEventStreamingsSink) String() string 
 
 func (s ListEventStreamingsResponseBodyDataEventStreamingsSink) GoString() string {
 	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkCustomizedKafkaConnectorParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaConnectorParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSink {
+	s.SinkCustomizedKafkaConnectorParameters = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkCustomizedKafkaParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSink {
+	s.SinkCustomizedKafkaParameters = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkDataHubParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSink {
+	s.SinkDataHubParameters = v
+	return s
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkFcParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSink {
@@ -15522,6 +17406,296 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkRocketMQ
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkSLSParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSink {
 	s.SinkSLSParameters = v
+	return s
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaConnectorParameters struct {
+	ConnectorPackageUrl *string                                                                                                          `json:"ConnectorPackageUrl,omitempty" xml:"ConnectorPackageUrl,omitempty"`
+	ConnectorParameters *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaConnectorParametersConnectorParameters `json:"ConnectorParameters,omitempty" xml:"ConnectorParameters,omitempty" type:"Struct"`
+	WorkerParameters    map[string]interface{}                                                                                           `json:"WorkerParameters,omitempty" xml:"WorkerParameters,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaConnectorParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaConnectorParameters) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaConnectorParameters) SetConnectorPackageUrl(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaConnectorParameters {
+	s.ConnectorPackageUrl = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaConnectorParameters) SetConnectorParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaConnectorParametersConnectorParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaConnectorParameters {
+	s.ConnectorParameters = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaConnectorParameters) SetWorkerParameters(v map[string]interface{}) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaConnectorParameters {
+	s.WorkerParameters = v
+	return s
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaConnectorParametersConnectorParameters struct {
+	Config map[string]interface{} `json:"Config,omitempty" xml:"Config,omitempty"`
+	Name   *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaConnectorParametersConnectorParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaConnectorParametersConnectorParameters) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaConnectorParametersConnectorParameters) SetConfig(v map[string]interface{}) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaConnectorParametersConnectorParameters {
+	s.Config = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaConnectorParametersConnectorParameters) SetName(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaConnectorParametersConnectorParameters {
+	s.Name = &v
+	return s
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaParameters struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaParameters) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaParameters) SetInstanceId(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaParameters {
+	s.InstanceId = &v
+	return s
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameters struct {
+	Body        *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersBody        `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
+	Project     *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersProject     `json:"Project,omitempty" xml:"Project,omitempty" type:"Struct"`
+	RoleName    *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersRoleName    `json:"RoleName,omitempty" xml:"RoleName,omitempty" type:"Struct"`
+	Topic       *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersTopic       `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Struct"`
+	TopicSchema *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersTopicSchema `json:"TopicSchema,omitempty" xml:"TopicSchema,omitempty" type:"Struct"`
+	TopicType   *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersTopicType   `json:"TopicType,omitempty" xml:"TopicType,omitempty" type:"Struct"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameters) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameters) SetBody(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersBody) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameters {
+	s.Body = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameters) SetProject(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersProject) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameters {
+	s.Project = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameters) SetRoleName(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersRoleName) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameters {
+	s.RoleName = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameters) SetTopic(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersTopic) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameters {
+	s.Topic = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameters) SetTopicSchema(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersTopicSchema) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameters {
+	s.TopicSchema = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameters) SetTopicType(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersTopicType) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameters {
+	s.TopicType = v
+	return s
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersBody struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersBody) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersBody {
+	s.Form = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersBody) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersBody {
+	s.Template = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersBody) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersBody {
+	s.Value = &v
+	return s
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersProject struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersProject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersProject) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersProject) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersProject {
+	s.Form = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersProject) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersProject {
+	s.Template = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersProject) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersProject {
+	s.Value = &v
+	return s
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersRoleName struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersRoleName) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersRoleName) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersRoleName) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersRoleName {
+	s.Form = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersRoleName) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersRoleName {
+	s.Template = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersRoleName) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersRoleName {
+	s.Value = &v
+	return s
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersTopic struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersTopic) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersTopic) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersTopic) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersTopic {
+	s.Form = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersTopic) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersTopic {
+	s.Template = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersTopic) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersTopic {
+	s.Value = &v
+	return s
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersTopicSchema struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersTopicSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersTopicSchema) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersTopicSchema) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersTopicSchema {
+	s.Form = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersTopicSchema) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersTopicSchema {
+	s.Template = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersTopicSchema) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersTopicSchema {
+	s.Value = &v
+	return s
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersTopicType struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersTopicType) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersTopicType) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersTopicType) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersTopicType {
+	s.Form = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersTopicType) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersTopicType {
+	s.Template = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersTopicType) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParametersTopicType {
+	s.Value = &v
 	return s
 }
 
@@ -17260,7 +19434,9 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParam
 
 type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParameters struct {
 	// The message body that is delivered to Log Service.
-	Body *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
+	Body          *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersBody          `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
+	ContentSchema *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersContentSchema `json:"ContentSchema,omitempty" xml:"ContentSchema,omitempty" type:"Struct"`
+	ContentType   *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersContentType   `json:"ContentType,omitempty" xml:"ContentType,omitempty" type:"Struct"`
 	// The Log Service Logstore.
 	LogStore *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersLogStore `json:"LogStore,omitempty" xml:"LogStore,omitempty" type:"Struct"`
 	// The Log Service project.
@@ -17281,6 +19457,16 @@ func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParameters)
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParameters) SetBody(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersBody) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParameters {
 	s.Body = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParameters) SetContentSchema(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersContentSchema) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParameters {
+	s.ContentSchema = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParameters) SetContentType(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersContentType) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParameters {
+	s.ContentType = v
 	return s
 }
 
@@ -17348,6 +19534,64 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParameters
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersBody) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersBody {
+	s.Value = &v
+	return s
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersContentSchema struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersContentSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersContentSchema) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersContentSchema) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersContentSchema {
+	s.Form = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersContentSchema) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersContentSchema {
+	s.Template = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersContentSchema) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersContentSchema {
+	s.Value = &v
+	return s
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersContentType struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersContentType) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersContentType) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersContentType) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersContentType {
+	s.Form = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersContentType) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersContentType {
+	s.Template = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersContentType) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParametersContentType {
 	s.Value = &v
 	return s
 }
@@ -17513,7 +19757,9 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkSLSParameters
 }
 
 type ListEventStreamingsResponseBodyDataEventStreamingsSource struct {
-	SourceApacheKafkaParameters *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters `json:"SourceApacheKafkaParameters,omitempty" xml:"SourceApacheKafkaParameters,omitempty" type:"Struct"`
+	SourceApacheKafkaParameters              *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters              `json:"SourceApacheKafkaParameters,omitempty" xml:"SourceApacheKafkaParameters,omitempty" type:"Struct"`
+	SourceCustomizedKafkaConnectorParameters *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaConnectorParameters `json:"SourceCustomizedKafkaConnectorParameters,omitempty" xml:"SourceCustomizedKafkaConnectorParameters,omitempty" type:"Struct"`
+	SourceCustomizedKafkaParameters          *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaParameters          `json:"SourceCustomizedKafkaParameters,omitempty" xml:"SourceCustomizedKafkaParameters,omitempty" type:"Struct"`
 	// The parameters that are returned if Data Transmission Service (DTS) is specified as the event source.
 	SourceDTSParameters *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceDTSParameters `json:"SourceDTSParameters,omitempty" xml:"SourceDTSParameters,omitempty" type:"Struct"`
 	// The parameters that are returned if Message Queue for Apache Kafka is specified as the event source.
@@ -17541,6 +19787,16 @@ func (s ListEventStreamingsResponseBodyDataEventStreamingsSource) GoString() str
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) SetSourceApacheKafkaParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSource {
 	s.SourceApacheKafkaParameters = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) SetSourceCustomizedKafkaConnectorParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaConnectorParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSource {
+	s.SourceCustomizedKafkaConnectorParameters = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) SetSourceCustomizedKafkaParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSource {
+	s.SourceCustomizedKafkaParameters = v
 	return s
 }
 
@@ -17670,6 +19926,75 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKaf
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters) SetVpcId(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters {
 	s.VpcId = &v
+	return s
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaConnectorParameters struct {
+	ConnectorPackageUrl *string                                                                                                              `json:"ConnectorPackageUrl,omitempty" xml:"ConnectorPackageUrl,omitempty"`
+	ConnectorParameters *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaConnectorParametersConnectorParameters `json:"ConnectorParameters,omitempty" xml:"ConnectorParameters,omitempty" type:"Struct"`
+	WorkerParameters    map[string]interface{}                                                                                               `json:"WorkerParameters,omitempty" xml:"WorkerParameters,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaConnectorParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaConnectorParameters) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaConnectorParameters) SetConnectorPackageUrl(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaConnectorParameters {
+	s.ConnectorPackageUrl = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaConnectorParameters) SetConnectorParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaConnectorParametersConnectorParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaConnectorParameters {
+	s.ConnectorParameters = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaConnectorParameters) SetWorkerParameters(v map[string]interface{}) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaConnectorParameters {
+	s.WorkerParameters = v
+	return s
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaConnectorParametersConnectorParameters struct {
+	Config map[string]interface{} `json:"Config,omitempty" xml:"Config,omitempty"`
+	Name   *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaConnectorParametersConnectorParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaConnectorParametersConnectorParameters) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaConnectorParametersConnectorParameters) SetConfig(v map[string]interface{}) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaConnectorParametersConnectorParameters {
+	s.Config = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaConnectorParametersConnectorParameters) SetName(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaConnectorParametersConnectorParameters {
+	s.Name = &v
+	return s
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaParameters struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaParameters) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaParameters) SetInstanceId(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceCustomizedKafkaParameters {
+	s.InstanceId = &v
 	return s
 }
 
@@ -17805,7 +20130,8 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceKafkaParamete
 	// example:
 	//
 	// vsw-bp1rmi8rind7eo50cbied
-	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	VSwitchIds    *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	ValueDataType *string `json:"ValueDataType,omitempty" xml:"ValueDataType,omitempty"`
 	// The VPC ID.
 	//
 	// example:
@@ -17862,6 +20188,11 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceKafkaPara
 	return s
 }
 
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceKafkaParameters) SetValueDataType(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceKafkaParameters {
+	s.ValueDataType = &v
+	return s
+}
+
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceKafkaParameters) SetVpcId(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceKafkaParameters {
 	s.VpcId = &v
 	return s
@@ -17912,6 +20243,7 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMNSParame
 }
 
 type ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameters struct {
+	BodyDataType *string `json:"BodyDataType,omitempty" xml:"BodyDataType,omitempty"`
 	// The ID of the Message Queue for MQTT instance.
 	//
 	// example:
@@ -17938,6 +20270,11 @@ func (s ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParame
 
 func (s ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameters) GoString() string {
 	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameters) SetBodyDataType(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameters {
+	s.BodyDataType = &v
+	return s
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameters) SetInstanceId(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameters {
@@ -18053,6 +20390,8 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParam
 	// ACL
 	AuthType     *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
 	BodyDataType *string `json:"BodyDataType,omitempty" xml:"BodyDataType,omitempty"`
+	FilterSql    *string `json:"FilterSql,omitempty" xml:"FilterSql,omitempty"`
+	FilterType   *string `json:"FilterType,omitempty" xml:"FilterType,omitempty"`
 	// The ID of the group on the Message Queue for Apache RocketMQ instance.
 	//
 	// example:
@@ -18117,6 +20456,7 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParam
 	//
 	// vpc-bp1a4gmlk31hy***l3ss
 	InstanceVpcId *string `json:"InstanceVpcId,omitempty" xml:"InstanceVpcId,omitempty"`
+	Network       *string `json:"Network,omitempty" xml:"Network,omitempty"`
 	// The consumer offset of the message. Valid values: CONSUMEFROMLASTOFFSET: Messages are consumed from the latest offset. CONSUMEFROMFIRSTOFFSET: Messages are consumed from the earliest offset. CONSUMEFROMTIMESTAMP: Messages are consumed from the offset at the specified point in time.
 	//
 	// example:
@@ -18128,7 +20468,8 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParam
 	// example:
 	//
 	// cn-chengdu
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The tag that is used to filter messages.
 	//
 	// example:
@@ -18146,7 +20487,9 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParam
 	// example:
 	//
 	// topic_add_anima
-	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	VpcId      *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters) String() string {
@@ -18164,6 +20507,16 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQP
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters) SetBodyDataType(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters {
 	s.BodyDataType = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters) SetFilterSql(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters {
+	s.FilterSql = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters) SetFilterType(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters {
+	s.FilterType = &v
 	return s
 }
 
@@ -18217,6 +20570,11 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQP
 	return s
 }
 
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters) SetNetwork(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters {
+	s.Network = &v
+	return s
+}
+
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters) SetOffset(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters {
 	s.Offset = &v
 	return s
@@ -18224,6 +20582,11 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQP
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters) SetRegionId(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters) SetSecurityGroupId(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters {
+	s.SecurityGroupId = &v
 	return s
 }
 
@@ -18239,6 +20602,16 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQP
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters) SetTopic(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters {
 	s.Topic = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters) SetVSwitchIds(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters {
+	s.VSwitchIds = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters) SetVpcId(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters {
+	s.VpcId = &v
 	return s
 }
 
@@ -22765,7 +25138,10 @@ type UpdateEventSourceRequest struct {
 	// example:
 	//
 	// myrabbitmq.source
-	EventSourceName *string `json:"EventSourceName,omitempty" xml:"EventSourceName,omitempty"`
+	EventSourceName      *string                `json:"EventSourceName,omitempty" xml:"EventSourceName,omitempty"`
+	ExternalSourceConfig map[string]interface{} `json:"ExternalSourceConfig,omitempty" xml:"ExternalSourceConfig,omitempty"`
+	ExternalSourceType   *string                `json:"ExternalSourceType,omitempty" xml:"ExternalSourceType,omitempty"`
+	LinkedExternalSource *bool                  `json:"LinkedExternalSource,omitempty" xml:"LinkedExternalSource,omitempty"`
 	// The parameters that are configured if the event source is HTTP events.
 	SourceHttpEventParameters *UpdateEventSourceRequestSourceHttpEventParameters `json:"SourceHttpEventParameters,omitempty" xml:"SourceHttpEventParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if the event source is Message Queue for Apache Kafka.
@@ -22802,6 +25178,21 @@ func (s *UpdateEventSourceRequest) SetEventBusName(v string) *UpdateEventSourceR
 
 func (s *UpdateEventSourceRequest) SetEventSourceName(v string) *UpdateEventSourceRequest {
 	s.EventSourceName = &v
+	return s
+}
+
+func (s *UpdateEventSourceRequest) SetExternalSourceConfig(v map[string]interface{}) *UpdateEventSourceRequest {
+	s.ExternalSourceConfig = v
+	return s
+}
+
+func (s *UpdateEventSourceRequest) SetExternalSourceType(v string) *UpdateEventSourceRequest {
+	s.ExternalSourceType = &v
+	return s
+}
+
+func (s *UpdateEventSourceRequest) SetLinkedExternalSource(v bool) *UpdateEventSourceRequest {
+	s.LinkedExternalSource = &v
 	return s
 }
 
@@ -23411,6 +25802,11 @@ type UpdateEventSourceRequestSourceScheduledEventParameters struct {
 	//
 	// GMT+0:00
 	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
+	// The user data that is displayed in a JSON string.
+	//
+	// example:
+	//
+	// {"a": "b"}
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
@@ -23455,7 +25851,10 @@ type UpdateEventSourceShrinkRequest struct {
 	// example:
 	//
 	// myrabbitmq.source
-	EventSourceName *string `json:"EventSourceName,omitempty" xml:"EventSourceName,omitempty"`
+	EventSourceName            *string `json:"EventSourceName,omitempty" xml:"EventSourceName,omitempty"`
+	ExternalSourceConfigShrink *string `json:"ExternalSourceConfig,omitempty" xml:"ExternalSourceConfig,omitempty"`
+	ExternalSourceType         *string `json:"ExternalSourceType,omitempty" xml:"ExternalSourceType,omitempty"`
+	LinkedExternalSource       *bool   `json:"LinkedExternalSource,omitempty" xml:"LinkedExternalSource,omitempty"`
 	// The parameters that are configured if the event source is HTTP events.
 	SourceHttpEventParametersShrink *string `json:"SourceHttpEventParameters,omitempty" xml:"SourceHttpEventParameters,omitempty"`
 	// The parameters that are configured if the event source is Message Queue for Apache Kafka.
@@ -23492,6 +25891,21 @@ func (s *UpdateEventSourceShrinkRequest) SetEventBusName(v string) *UpdateEventS
 
 func (s *UpdateEventSourceShrinkRequest) SetEventSourceName(v string) *UpdateEventSourceShrinkRequest {
 	s.EventSourceName = &v
+	return s
+}
+
+func (s *UpdateEventSourceShrinkRequest) SetExternalSourceConfigShrink(v string) *UpdateEventSourceShrinkRequest {
+	s.ExternalSourceConfigShrink = &v
+	return s
+}
+
+func (s *UpdateEventSourceShrinkRequest) SetExternalSourceType(v string) *UpdateEventSourceShrinkRequest {
+	s.ExternalSourceType = &v
+	return s
+}
+
+func (s *UpdateEventSourceShrinkRequest) SetLinkedExternalSource(v bool) *UpdateEventSourceShrinkRequest {
+	s.LinkedExternalSource = &v
 	return s
 }
 
@@ -23714,15 +26128,20 @@ type UpdateEventStreamingRequestRunOptions struct {
 	// example:
 	//
 	// ALL
-	ErrorsTolerance *string `json:"ErrorsTolerance,omitempty" xml:"ErrorsTolerance,omitempty"`
+	ErrorsTolerance *string                                           `json:"ErrorsTolerance,omitempty" xml:"ErrorsTolerance,omitempty"`
+	LogDelivery     *UpdateEventStreamingRequestRunOptionsLogDelivery `json:"LogDelivery,omitempty" xml:"LogDelivery,omitempty" type:"Struct"`
 	// The maximum number of concurrent tasks.
 	//
 	// example:
 	//
 	// 2
-	MaximumTasks *int64 `json:"MaximumTasks,omitempty" xml:"MaximumTasks,omitempty"`
+	MaximumTasks *int64                                             `json:"MaximumTasks,omitempty" xml:"MaximumTasks,omitempty"`
+	Network      *UpdateEventStreamingRequestRunOptionsNetwork      `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
+	ResourceSpec *UpdateEventStreamingRequestRunOptionsResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
 	// The retry policy that you want to use if events fail to be pushed.
 	RetryStrategy *UpdateEventStreamingRequestRunOptionsRetryStrategy `json:"RetryStrategy,omitempty" xml:"RetryStrategy,omitempty" type:"Struct"`
+	RoleName      *string                                             `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	ScaledObject  *UpdateEventStreamingRequestRunOptionsScaledObject  `json:"ScaledObject,omitempty" xml:"ScaledObject,omitempty" type:"Struct"`
 }
 
 func (s UpdateEventStreamingRequestRunOptions) String() string {
@@ -23748,13 +26167,38 @@ func (s *UpdateEventStreamingRequestRunOptions) SetErrorsTolerance(v string) *Up
 	return s
 }
 
+func (s *UpdateEventStreamingRequestRunOptions) SetLogDelivery(v *UpdateEventStreamingRequestRunOptionsLogDelivery) *UpdateEventStreamingRequestRunOptions {
+	s.LogDelivery = v
+	return s
+}
+
 func (s *UpdateEventStreamingRequestRunOptions) SetMaximumTasks(v int64) *UpdateEventStreamingRequestRunOptions {
 	s.MaximumTasks = &v
 	return s
 }
 
+func (s *UpdateEventStreamingRequestRunOptions) SetNetwork(v *UpdateEventStreamingRequestRunOptionsNetwork) *UpdateEventStreamingRequestRunOptions {
+	s.Network = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestRunOptions) SetResourceSpec(v *UpdateEventStreamingRequestRunOptionsResourceSpec) *UpdateEventStreamingRequestRunOptions {
+	s.ResourceSpec = v
+	return s
+}
+
 func (s *UpdateEventStreamingRequestRunOptions) SetRetryStrategy(v *UpdateEventStreamingRequestRunOptionsRetryStrategy) *UpdateEventStreamingRequestRunOptions {
 	s.RetryStrategy = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestRunOptions) SetRoleName(v string) *UpdateEventStreamingRequestRunOptions {
+	s.RoleName = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestRunOptions) SetScaledObject(v *UpdateEventStreamingRequestRunOptionsScaledObject) *UpdateEventStreamingRequestRunOptions {
+	s.ScaledObject = v
 	return s
 }
 
@@ -23813,6 +26257,150 @@ func (s *UpdateEventStreamingRequestRunOptionsDeadLetterQueue) SetArn(v string) 
 	return s
 }
 
+type UpdateEventStreamingRequestRunOptionsLogDelivery struct {
+	KafkaLogParameters []*UpdateEventStreamingRequestRunOptionsLogDeliveryKafkaLogParameters `json:"KafkaLogParameters,omitempty" xml:"KafkaLogParameters,omitempty" type:"Repeated"`
+	SLSLogParameters   []*UpdateEventStreamingRequestRunOptionsLogDeliverySLSLogParameters   `json:"SLSLogParameters,omitempty" xml:"SLSLogParameters,omitempty" type:"Repeated"`
+}
+
+func (s UpdateEventStreamingRequestRunOptionsLogDelivery) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestRunOptionsLogDelivery) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestRunOptionsLogDelivery) SetKafkaLogParameters(v []*UpdateEventStreamingRequestRunOptionsLogDeliveryKafkaLogParameters) *UpdateEventStreamingRequestRunOptionsLogDelivery {
+	s.KafkaLogParameters = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestRunOptionsLogDelivery) SetSLSLogParameters(v []*UpdateEventStreamingRequestRunOptionsLogDeliverySLSLogParameters) *UpdateEventStreamingRequestRunOptionsLogDelivery {
+	s.SLSLogParameters = v
+	return s
+}
+
+type UpdateEventStreamingRequestRunOptionsLogDeliveryKafkaLogParameters struct {
+	Endpoint   *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestRunOptionsLogDeliveryKafkaLogParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestRunOptionsLogDeliveryKafkaLogParameters) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestRunOptionsLogDeliveryKafkaLogParameters) SetEndpoint(v string) *UpdateEventStreamingRequestRunOptionsLogDeliveryKafkaLogParameters {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestRunOptionsLogDeliveryKafkaLogParameters) SetInstanceId(v string) *UpdateEventStreamingRequestRunOptionsLogDeliveryKafkaLogParameters {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestRunOptionsLogDeliveryKafkaLogParameters) SetTopic(v string) *UpdateEventStreamingRequestRunOptionsLogDeliveryKafkaLogParameters {
+	s.Topic = &v
+	return s
+}
+
+type UpdateEventStreamingRequestRunOptionsLogDeliverySLSLogParameters struct {
+	LogstoreName *string `json:"LogstoreName,omitempty" xml:"LogstoreName,omitempty"`
+	ProjectName  *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestRunOptionsLogDeliverySLSLogParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestRunOptionsLogDeliverySLSLogParameters) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestRunOptionsLogDeliverySLSLogParameters) SetLogstoreName(v string) *UpdateEventStreamingRequestRunOptionsLogDeliverySLSLogParameters {
+	s.LogstoreName = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestRunOptionsLogDeliverySLSLogParameters) SetProjectName(v string) *UpdateEventStreamingRequestRunOptionsLogDeliverySLSLogParameters {
+	s.ProjectName = &v
+	return s
+}
+
+type UpdateEventStreamingRequestRunOptionsNetwork struct {
+	SecurityGroupId *string   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	VSwitchIds      []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	VpcId           *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestRunOptionsNetwork) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestRunOptionsNetwork) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestRunOptionsNetwork) SetSecurityGroupId(v string) *UpdateEventStreamingRequestRunOptionsNetwork {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestRunOptionsNetwork) SetVSwitchIds(v []*string) *UpdateEventStreamingRequestRunOptionsNetwork {
+	s.VSwitchIds = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestRunOptionsNetwork) SetVpcId(v string) *UpdateEventStreamingRequestRunOptionsNetwork {
+	s.VpcId = &v
+	return s
+}
+
+type UpdateEventStreamingRequestRunOptionsResourceSpec struct {
+	Resources []*UpdateEventStreamingRequestRunOptionsResourceSpecResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+}
+
+func (s UpdateEventStreamingRequestRunOptionsResourceSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestRunOptionsResourceSpec) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestRunOptionsResourceSpec) SetResources(v []*UpdateEventStreamingRequestRunOptionsResourceSpecResources) *UpdateEventStreamingRequestRunOptionsResourceSpec {
+	s.Resources = v
+	return s
+}
+
+type UpdateEventStreamingRequestRunOptionsResourceSpecResources struct {
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value *int32  `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestRunOptionsResourceSpecResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestRunOptionsResourceSpecResources) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestRunOptionsResourceSpecResources) SetType(v string) *UpdateEventStreamingRequestRunOptionsResourceSpecResources {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestRunOptionsResourceSpecResources) SetValue(v int32) *UpdateEventStreamingRequestRunOptionsResourceSpecResources {
+	s.Value = &v
+	return s
+}
+
 type UpdateEventStreamingRequestRunOptionsRetryStrategy struct {
 	// The maximum timeout period for a retry.
 	//
@@ -23857,7 +26445,85 @@ func (s *UpdateEventStreamingRequestRunOptionsRetryStrategy) SetPushRetryStrateg
 	return s
 }
 
+type UpdateEventStreamingRequestRunOptionsScaledObject struct {
+	MaxReplicaCount *int32                                                       `json:"MaxReplicaCount,omitempty" xml:"MaxReplicaCount,omitempty"`
+	MinReplicaCount *int32                                                       `json:"MinReplicaCount,omitempty" xml:"MinReplicaCount,omitempty"`
+	Triggers        []*UpdateEventStreamingRequestRunOptionsScaledObjectTriggers `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
+}
+
+func (s UpdateEventStreamingRequestRunOptionsScaledObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestRunOptionsScaledObject) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestRunOptionsScaledObject) SetMaxReplicaCount(v int32) *UpdateEventStreamingRequestRunOptionsScaledObject {
+	s.MaxReplicaCount = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestRunOptionsScaledObject) SetMinReplicaCount(v int32) *UpdateEventStreamingRequestRunOptionsScaledObject {
+	s.MinReplicaCount = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestRunOptionsScaledObject) SetTriggers(v []*UpdateEventStreamingRequestRunOptionsScaledObjectTriggers) *UpdateEventStreamingRequestRunOptionsScaledObject {
+	s.Triggers = v
+	return s
+}
+
+type UpdateEventStreamingRequestRunOptionsScaledObjectTriggers struct {
+	Metadata *UpdateEventStreamingRequestRunOptionsScaledObjectTriggersMetadata `json:"Metadata,omitempty" xml:"Metadata,omitempty" type:"Struct"`
+	Type     *string                                                            `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestRunOptionsScaledObjectTriggers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestRunOptionsScaledObjectTriggers) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestRunOptionsScaledObjectTriggers) SetMetadata(v *UpdateEventStreamingRequestRunOptionsScaledObjectTriggersMetadata) *UpdateEventStreamingRequestRunOptionsScaledObjectTriggers {
+	s.Metadata = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestRunOptionsScaledObjectTriggers) SetType(v string) *UpdateEventStreamingRequestRunOptionsScaledObjectTriggers {
+	s.Type = &v
+	return s
+}
+
+type UpdateEventStreamingRequestRunOptionsScaledObjectTriggersMetadata struct {
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value *int32  `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestRunOptionsScaledObjectTriggersMetadata) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestRunOptionsScaledObjectTriggersMetadata) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestRunOptionsScaledObjectTriggersMetadata) SetType(v string) *UpdateEventStreamingRequestRunOptionsScaledObjectTriggersMetadata {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestRunOptionsScaledObjectTriggersMetadata) SetValue(v int32) *UpdateEventStreamingRequestRunOptionsScaledObjectTriggersMetadata {
+	s.Value = &v
+	return s
+}
+
 type UpdateEventStreamingRequestSink struct {
+	SinkCustomizedKafkaConnectorParameters *UpdateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParameters `json:"SinkCustomizedKafkaConnectorParameters,omitempty" xml:"SinkCustomizedKafkaConnectorParameters,omitempty" type:"Struct"`
+	SinkCustomizedKafkaParameters          *UpdateEventStreamingRequestSinkSinkCustomizedKafkaParameters          `json:"SinkCustomizedKafkaParameters,omitempty" xml:"SinkCustomizedKafkaParameters,omitempty" type:"Struct"`
+	SinkDataHubParameters                  *UpdateEventStreamingRequestSinkSinkDataHubParameters                  `json:"SinkDataHubParameters,omitempty" xml:"SinkDataHubParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify Function Compute as the event target.
 	SinkFcParameters *UpdateEventStreamingRequestSinkSinkFcParameters `json:"SinkFcParameters,omitempty" xml:"SinkFcParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify CloudFlow as the event target.
@@ -23882,6 +26548,21 @@ func (s UpdateEventStreamingRequestSink) String() string {
 
 func (s UpdateEventStreamingRequestSink) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSink) SetSinkCustomizedKafkaConnectorParameters(v *UpdateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParameters) *UpdateEventStreamingRequestSink {
+	s.SinkCustomizedKafkaConnectorParameters = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSink) SetSinkCustomizedKafkaParameters(v *UpdateEventStreamingRequestSinkSinkCustomizedKafkaParameters) *UpdateEventStreamingRequestSink {
+	s.SinkCustomizedKafkaParameters = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSink) SetSinkDataHubParameters(v *UpdateEventStreamingRequestSinkSinkDataHubParameters) *UpdateEventStreamingRequestSink {
+	s.SinkDataHubParameters = v
+	return s
 }
 
 func (s *UpdateEventStreamingRequestSink) SetSinkFcParameters(v *UpdateEventStreamingRequestSinkSinkFcParameters) *UpdateEventStreamingRequestSink {
@@ -23921,6 +26602,366 @@ func (s *UpdateEventStreamingRequestSink) SetSinkRocketMQParameters(v *UpdateEve
 
 func (s *UpdateEventStreamingRequestSink) SetSinkSLSParameters(v *UpdateEventStreamingRequestSinkSinkSLSParameters) *UpdateEventStreamingRequestSink {
 	s.SinkSLSParameters = v
+	return s
+}
+
+type UpdateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParameters struct {
+	ConnectorPackageUrl *string                                                                                   `json:"ConnectorPackageUrl,omitempty" xml:"ConnectorPackageUrl,omitempty"`
+	ConnectorParameters *UpdateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParametersConnectorParameters `json:"ConnectorParameters,omitempty" xml:"ConnectorParameters,omitempty" type:"Struct"`
+	WorkerParameters    map[string]interface{}                                                                    `json:"WorkerParameters,omitempty" xml:"WorkerParameters,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParameters) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParameters) SetConnectorPackageUrl(v string) *UpdateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParameters {
+	s.ConnectorPackageUrl = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParameters) SetConnectorParameters(v *UpdateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParametersConnectorParameters) *UpdateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParameters {
+	s.ConnectorParameters = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParameters) SetWorkerParameters(v map[string]interface{}) *UpdateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParameters {
+	s.WorkerParameters = v
+	return s
+}
+
+type UpdateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParametersConnectorParameters struct {
+	Config map[string]interface{} `json:"Config,omitempty" xml:"Config,omitempty"`
+	Name   *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParametersConnectorParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParametersConnectorParameters) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParametersConnectorParameters) SetConfig(v map[string]interface{}) *UpdateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParametersConnectorParameters {
+	s.Config = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParametersConnectorParameters) SetName(v string) *UpdateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParametersConnectorParameters {
+	s.Name = &v
+	return s
+}
+
+type UpdateEventStreamingRequestSinkSinkCustomizedKafkaParameters struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestSinkSinkCustomizedKafkaParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSinkSinkCustomizedKafkaParameters) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkCustomizedKafkaParameters) SetInstanceId(v string) *UpdateEventStreamingRequestSinkSinkCustomizedKafkaParameters {
+	s.InstanceId = &v
+	return s
+}
+
+type UpdateEventStreamingRequestSinkSinkDataHubParameters struct {
+	Body          *UpdateEventStreamingRequestSinkSinkDataHubParametersBody          `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
+	ContentSchema *UpdateEventStreamingRequestSinkSinkDataHubParametersContentSchema `json:"ContentSchema,omitempty" xml:"ContentSchema,omitempty" type:"Struct"`
+	ContentType   *UpdateEventStreamingRequestSinkSinkDataHubParametersContentType   `json:"ContentType,omitempty" xml:"ContentType,omitempty" type:"Struct"`
+	Project       *UpdateEventStreamingRequestSinkSinkDataHubParametersProject       `json:"Project,omitempty" xml:"Project,omitempty" type:"Struct"`
+	RoleName      *UpdateEventStreamingRequestSinkSinkDataHubParametersRoleName      `json:"RoleName,omitempty" xml:"RoleName,omitempty" type:"Struct"`
+	Topic         *UpdateEventStreamingRequestSinkSinkDataHubParametersTopic         `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Struct"`
+	TopicSchema   *UpdateEventStreamingRequestSinkSinkDataHubParametersTopicSchema   `json:"TopicSchema,omitempty" xml:"TopicSchema,omitempty" type:"Struct"`
+	TopicType     *UpdateEventStreamingRequestSinkSinkDataHubParametersTopicType     `json:"TopicType,omitempty" xml:"TopicType,omitempty" type:"Struct"`
+}
+
+func (s UpdateEventStreamingRequestSinkSinkDataHubParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSinkSinkDataHubParameters) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDataHubParameters) SetBody(v *UpdateEventStreamingRequestSinkSinkDataHubParametersBody) *UpdateEventStreamingRequestSinkSinkDataHubParameters {
+	s.Body = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDataHubParameters) SetContentSchema(v *UpdateEventStreamingRequestSinkSinkDataHubParametersContentSchema) *UpdateEventStreamingRequestSinkSinkDataHubParameters {
+	s.ContentSchema = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDataHubParameters) SetContentType(v *UpdateEventStreamingRequestSinkSinkDataHubParametersContentType) *UpdateEventStreamingRequestSinkSinkDataHubParameters {
+	s.ContentType = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDataHubParameters) SetProject(v *UpdateEventStreamingRequestSinkSinkDataHubParametersProject) *UpdateEventStreamingRequestSinkSinkDataHubParameters {
+	s.Project = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDataHubParameters) SetRoleName(v *UpdateEventStreamingRequestSinkSinkDataHubParametersRoleName) *UpdateEventStreamingRequestSinkSinkDataHubParameters {
+	s.RoleName = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDataHubParameters) SetTopic(v *UpdateEventStreamingRequestSinkSinkDataHubParametersTopic) *UpdateEventStreamingRequestSinkSinkDataHubParameters {
+	s.Topic = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDataHubParameters) SetTopicSchema(v *UpdateEventStreamingRequestSinkSinkDataHubParametersTopicSchema) *UpdateEventStreamingRequestSinkSinkDataHubParameters {
+	s.TopicSchema = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDataHubParameters) SetTopicType(v *UpdateEventStreamingRequestSinkSinkDataHubParametersTopicType) *UpdateEventStreamingRequestSinkSinkDataHubParameters {
+	s.TopicType = v
+	return s
+}
+
+type UpdateEventStreamingRequestSinkSinkDataHubParametersBody struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestSinkSinkDataHubParametersBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSinkSinkDataHubParametersBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDataHubParametersBody) SetForm(v string) *UpdateEventStreamingRequestSinkSinkDataHubParametersBody {
+	s.Form = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDataHubParametersBody) SetTemplate(v string) *UpdateEventStreamingRequestSinkSinkDataHubParametersBody {
+	s.Template = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDataHubParametersBody) SetValue(v string) *UpdateEventStreamingRequestSinkSinkDataHubParametersBody {
+	s.Value = &v
+	return s
+}
+
+type UpdateEventStreamingRequestSinkSinkDataHubParametersContentSchema struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestSinkSinkDataHubParametersContentSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSinkSinkDataHubParametersContentSchema) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDataHubParametersContentSchema) SetForm(v string) *UpdateEventStreamingRequestSinkSinkDataHubParametersContentSchema {
+	s.Form = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDataHubParametersContentSchema) SetTemplate(v string) *UpdateEventStreamingRequestSinkSinkDataHubParametersContentSchema {
+	s.Template = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDataHubParametersContentSchema) SetValue(v string) *UpdateEventStreamingRequestSinkSinkDataHubParametersContentSchema {
+	s.Value = &v
+	return s
+}
+
+type UpdateEventStreamingRequestSinkSinkDataHubParametersContentType struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestSinkSinkDataHubParametersContentType) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSinkSinkDataHubParametersContentType) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDataHubParametersContentType) SetForm(v string) *UpdateEventStreamingRequestSinkSinkDataHubParametersContentType {
+	s.Form = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDataHubParametersContentType) SetTemplate(v string) *UpdateEventStreamingRequestSinkSinkDataHubParametersContentType {
+	s.Template = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDataHubParametersContentType) SetValue(v string) *UpdateEventStreamingRequestSinkSinkDataHubParametersContentType {
+	s.Value = &v
+	return s
+}
+
+type UpdateEventStreamingRequestSinkSinkDataHubParametersProject struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestSinkSinkDataHubParametersProject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSinkSinkDataHubParametersProject) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDataHubParametersProject) SetForm(v string) *UpdateEventStreamingRequestSinkSinkDataHubParametersProject {
+	s.Form = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDataHubParametersProject) SetTemplate(v string) *UpdateEventStreamingRequestSinkSinkDataHubParametersProject {
+	s.Template = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDataHubParametersProject) SetValue(v string) *UpdateEventStreamingRequestSinkSinkDataHubParametersProject {
+	s.Value = &v
+	return s
+}
+
+type UpdateEventStreamingRequestSinkSinkDataHubParametersRoleName struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestSinkSinkDataHubParametersRoleName) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSinkSinkDataHubParametersRoleName) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDataHubParametersRoleName) SetForm(v string) *UpdateEventStreamingRequestSinkSinkDataHubParametersRoleName {
+	s.Form = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDataHubParametersRoleName) SetTemplate(v string) *UpdateEventStreamingRequestSinkSinkDataHubParametersRoleName {
+	s.Template = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDataHubParametersRoleName) SetValue(v string) *UpdateEventStreamingRequestSinkSinkDataHubParametersRoleName {
+	s.Value = &v
+	return s
+}
+
+type UpdateEventStreamingRequestSinkSinkDataHubParametersTopic struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestSinkSinkDataHubParametersTopic) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSinkSinkDataHubParametersTopic) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDataHubParametersTopic) SetForm(v string) *UpdateEventStreamingRequestSinkSinkDataHubParametersTopic {
+	s.Form = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDataHubParametersTopic) SetTemplate(v string) *UpdateEventStreamingRequestSinkSinkDataHubParametersTopic {
+	s.Template = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDataHubParametersTopic) SetValue(v string) *UpdateEventStreamingRequestSinkSinkDataHubParametersTopic {
+	s.Value = &v
+	return s
+}
+
+type UpdateEventStreamingRequestSinkSinkDataHubParametersTopicSchema struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestSinkSinkDataHubParametersTopicSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSinkSinkDataHubParametersTopicSchema) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDataHubParametersTopicSchema) SetForm(v string) *UpdateEventStreamingRequestSinkSinkDataHubParametersTopicSchema {
+	s.Form = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDataHubParametersTopicSchema) SetTemplate(v string) *UpdateEventStreamingRequestSinkSinkDataHubParametersTopicSchema {
+	s.Template = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDataHubParametersTopicSchema) SetValue(v string) *UpdateEventStreamingRequestSinkSinkDataHubParametersTopicSchema {
+	s.Value = &v
+	return s
+}
+
+type UpdateEventStreamingRequestSinkSinkDataHubParametersTopicType struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestSinkSinkDataHubParametersTopicType) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSinkSinkDataHubParametersTopicType) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDataHubParametersTopicType) SetForm(v string) *UpdateEventStreamingRequestSinkSinkDataHubParametersTopicType {
+	s.Form = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDataHubParametersTopicType) SetTemplate(v string) *UpdateEventStreamingRequestSinkSinkDataHubParametersTopicType {
+	s.Template = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDataHubParametersTopicType) SetValue(v string) *UpdateEventStreamingRequestSinkSinkDataHubParametersTopicType {
+	s.Value = &v
 	return s
 }
 
@@ -26330,7 +29371,9 @@ func (s *UpdateEventStreamingRequestSinkSinkSLSParametersTopic) SetValue(v strin
 }
 
 type UpdateEventStreamingRequestSource struct {
-	SourceApacheKafkaParameters *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters `json:"SourceApacheKafkaParameters,omitempty" xml:"SourceApacheKafkaParameters,omitempty" type:"Struct"`
+	SourceApacheKafkaParameters              *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters              `json:"SourceApacheKafkaParameters,omitempty" xml:"SourceApacheKafkaParameters,omitempty" type:"Struct"`
+	SourceCustomizedKafkaConnectorParameters *UpdateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParameters `json:"SourceCustomizedKafkaConnectorParameters,omitempty" xml:"SourceCustomizedKafkaConnectorParameters,omitempty" type:"Struct"`
+	SourceCustomizedKafkaParameters          *UpdateEventStreamingRequestSourceSourceCustomizedKafkaParameters          `json:"SourceCustomizedKafkaParameters,omitempty" xml:"SourceCustomizedKafkaParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify Data Transmission Service (DTS) as the event source.
 	SourceDTSParameters *UpdateEventStreamingRequestSourceSourceDTSParameters `json:"SourceDTSParameters,omitempty" xml:"SourceDTSParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify ApsaraMQ for Kafka as the event source.
@@ -26359,6 +29402,16 @@ func (s UpdateEventStreamingRequestSource) GoString() string {
 
 func (s *UpdateEventStreamingRequestSource) SetSourceApacheKafkaParameters(v *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters) *UpdateEventStreamingRequestSource {
 	s.SourceApacheKafkaParameters = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSource) SetSourceCustomizedKafkaConnectorParameters(v *UpdateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParameters) *UpdateEventStreamingRequestSource {
+	s.SourceCustomizedKafkaConnectorParameters = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSource) SetSourceCustomizedKafkaParameters(v *UpdateEventStreamingRequestSourceSourceCustomizedKafkaParameters) *UpdateEventStreamingRequestSource {
+	s.SourceCustomizedKafkaParameters = v
 	return s
 }
 
@@ -26488,6 +29541,75 @@ func (s *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters) SetValueD
 
 func (s *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters) SetVpcId(v string) *UpdateEventStreamingRequestSourceSourceApacheKafkaParameters {
 	s.VpcId = &v
+	return s
+}
+
+type UpdateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParameters struct {
+	ConnectorPackageUrl *string                                                                                       `json:"ConnectorPackageUrl,omitempty" xml:"ConnectorPackageUrl,omitempty"`
+	ConnectorParameters *UpdateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParametersConnectorParameters `json:"ConnectorParameters,omitempty" xml:"ConnectorParameters,omitempty" type:"Struct"`
+	WorkerParameters    map[string]interface{}                                                                        `json:"WorkerParameters,omitempty" xml:"WorkerParameters,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParameters) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParameters) SetConnectorPackageUrl(v string) *UpdateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParameters {
+	s.ConnectorPackageUrl = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParameters) SetConnectorParameters(v *UpdateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParametersConnectorParameters) *UpdateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParameters {
+	s.ConnectorParameters = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParameters) SetWorkerParameters(v map[string]interface{}) *UpdateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParameters {
+	s.WorkerParameters = v
+	return s
+}
+
+type UpdateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParametersConnectorParameters struct {
+	Config map[string]interface{} `json:"Config,omitempty" xml:"Config,omitempty"`
+	Name   *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParametersConnectorParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParametersConnectorParameters) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParametersConnectorParameters) SetConfig(v map[string]interface{}) *UpdateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParametersConnectorParameters {
+	s.Config = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParametersConnectorParameters) SetName(v string) *UpdateEventStreamingRequestSourceSourceCustomizedKafkaConnectorParametersConnectorParameters {
+	s.Name = &v
+	return s
+}
+
+type UpdateEventStreamingRequestSourceSourceCustomizedKafkaParameters struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestSourceSourceCustomizedKafkaParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSourceSourceCustomizedKafkaParameters) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceCustomizedKafkaParameters) SetInstanceId(v string) *UpdateEventStreamingRequestSourceSourceCustomizedKafkaParameters {
+	s.InstanceId = &v
 	return s
 }
 
@@ -26897,6 +30019,8 @@ type UpdateEventStreamingRequestSourceSourceRocketMQParameters struct {
 	// ACL
 	AuthType     *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
 	BodyDataType *string `json:"BodyDataType,omitempty" xml:"BodyDataType,omitempty"`
+	FilterSql    *string `json:"FilterSql,omitempty" xml:"FilterSql,omitempty"`
+	FilterType   *string `json:"FilterType,omitempty" xml:"FilterType,omitempty"`
 	// The ID of the consumer group on the ApsaraMQ for RocketMQ instance.
 	//
 	// example:
@@ -26959,6 +30083,7 @@ type UpdateEventStreamingRequestSourceSourceRocketMQParameters struct {
 	//
 	// vpc-m5e3sv4b12345****
 	InstanceVpcId *string `json:"InstanceVpcId,omitempty" xml:"InstanceVpcId,omitempty"`
+	Network       *string `json:"Network,omitempty" xml:"Network,omitempty"`
 	// The offset from which messages are consumed. Valid values:
 	//
 	// 	- CONSUMEFROMLASTOFFSET: Messages are consumed from the latest offset.
@@ -26978,7 +30103,8 @@ type UpdateEventStreamingRequestSourceSourceRocketMQParameters struct {
 	// example:
 	//
 	// cn-shanghai
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The tag that you want to use to filter messages.
 	//
 	// example:
@@ -26996,7 +30122,9 @@ type UpdateEventStreamingRequestSourceSourceRocketMQParameters struct {
 	// example:
 	//
 	// TOPIC-cainiao-pcs-order-process-inBoundConditionCheck
-	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	VpcId      *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s UpdateEventStreamingRequestSourceSourceRocketMQParameters) String() string {
@@ -27014,6 +30142,16 @@ func (s *UpdateEventStreamingRequestSourceSourceRocketMQParameters) SetAuthType(
 
 func (s *UpdateEventStreamingRequestSourceSourceRocketMQParameters) SetBodyDataType(v string) *UpdateEventStreamingRequestSourceSourceRocketMQParameters {
 	s.BodyDataType = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceRocketMQParameters) SetFilterSql(v string) *UpdateEventStreamingRequestSourceSourceRocketMQParameters {
+	s.FilterSql = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceRocketMQParameters) SetFilterType(v string) *UpdateEventStreamingRequestSourceSourceRocketMQParameters {
+	s.FilterType = &v
 	return s
 }
 
@@ -27067,6 +30205,11 @@ func (s *UpdateEventStreamingRequestSourceSourceRocketMQParameters) SetInstanceV
 	return s
 }
 
+func (s *UpdateEventStreamingRequestSourceSourceRocketMQParameters) SetNetwork(v string) *UpdateEventStreamingRequestSourceSourceRocketMQParameters {
+	s.Network = &v
+	return s
+}
+
 func (s *UpdateEventStreamingRequestSourceSourceRocketMQParameters) SetOffset(v string) *UpdateEventStreamingRequestSourceSourceRocketMQParameters {
 	s.Offset = &v
 	return s
@@ -27074,6 +30217,11 @@ func (s *UpdateEventStreamingRequestSourceSourceRocketMQParameters) SetOffset(v 
 
 func (s *UpdateEventStreamingRequestSourceSourceRocketMQParameters) SetRegionId(v string) *UpdateEventStreamingRequestSourceSourceRocketMQParameters {
 	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceRocketMQParameters) SetSecurityGroupId(v string) *UpdateEventStreamingRequestSourceSourceRocketMQParameters {
+	s.SecurityGroupId = &v
 	return s
 }
 
@@ -27089,6 +30237,16 @@ func (s *UpdateEventStreamingRequestSourceSourceRocketMQParameters) SetTimestamp
 
 func (s *UpdateEventStreamingRequestSourceSourceRocketMQParameters) SetTopic(v string) *UpdateEventStreamingRequestSourceSourceRocketMQParameters {
 	s.Topic = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceRocketMQParameters) SetVSwitchIds(v string) *UpdateEventStreamingRequestSourceSourceRocketMQParameters {
+	s.VSwitchIds = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceRocketMQParameters) SetVpcId(v string) *UpdateEventStreamingRequestSourceSourceRocketMQParameters {
+	s.VpcId = &v
 	return s
 }
 
@@ -27777,6 +30935,10 @@ func (client *Client) CreateEventSourceWithOptions(tmpReq *CreateEventSourceRequ
 	}
 	request := &CreateEventSourceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ExternalSourceConfig)) {
+		request.ExternalSourceConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExternalSourceConfig, tea.String("ExternalSourceConfig"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.SourceHttpEventParameters)) {
 		request.SourceHttpEventParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceHttpEventParameters, tea.String("SourceHttpEventParameters"), tea.String("json"))
 	}
@@ -27816,6 +30978,18 @@ func (client *Client) CreateEventSourceWithOptions(tmpReq *CreateEventSourceRequ
 
 	if !tea.BoolValue(util.IsUnset(request.EventSourceName)) {
 		body["EventSourceName"] = request.EventSourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExternalSourceConfigShrink)) {
+		body["ExternalSourceConfig"] = request.ExternalSourceConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExternalSourceType)) {
+		body["ExternalSourceType"] = request.ExternalSourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LinkedExternalSource)) {
+		body["LinkedExternalSource"] = request.LinkedExternalSource
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceHttpEventParametersShrink)) {
@@ -30855,6 +34029,10 @@ func (client *Client) UpdateEventSourceWithOptions(tmpReq *UpdateEventSourceRequ
 	}
 	request := &UpdateEventSourceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ExternalSourceConfig)) {
+		request.ExternalSourceConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExternalSourceConfig, tea.String("ExternalSourceConfig"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.SourceHttpEventParameters)) {
 		request.SourceHttpEventParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceHttpEventParameters, tea.String("SourceHttpEventParameters"), tea.String("json"))
 	}
@@ -30894,6 +34072,18 @@ func (client *Client) UpdateEventSourceWithOptions(tmpReq *UpdateEventSourceRequ
 
 	if !tea.BoolValue(util.IsUnset(request.EventSourceName)) {
 		body["EventSourceName"] = request.EventSourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExternalSourceConfigShrink)) {
+		body["ExternalSourceConfig"] = request.ExternalSourceConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExternalSourceType)) {
+		body["ExternalSourceType"] = request.ExternalSourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LinkedExternalSource)) {
+		body["LinkedExternalSource"] = request.LinkedExternalSource
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceHttpEventParametersShrink)) {
