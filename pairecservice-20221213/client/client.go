@@ -8712,8 +8712,8 @@ func (s *GetTrafficControlTaskTrafficRequest) SetInstanceId(v string) *GetTraffi
 }
 
 type GetTrafficControlTaskTrafficResponseBody struct {
-	RequestId                 *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TrafficControlTaskTraffic *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTraffic `json:"TrafficControlTaskTraffic,omitempty" xml:"TrafficControlTaskTraffic,omitempty" type:"Struct"`
+	RequestId                     *string                                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TrafficControlTaskTrafficInfo *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfo `json:"TrafficControlTaskTrafficInfo,omitempty" xml:"TrafficControlTaskTrafficInfo,omitempty" type:"Struct"`
 }
 
 func (s GetTrafficControlTaskTrafficResponseBody) String() string {
@@ -8729,53 +8729,53 @@ func (s *GetTrafficControlTaskTrafficResponseBody) SetRequestId(v string) *GetTr
 	return s
 }
 
-func (s *GetTrafficControlTaskTrafficResponseBody) SetTrafficControlTaskTraffic(v *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTraffic) *GetTrafficControlTaskTrafficResponseBody {
-	s.TrafficControlTaskTraffic = v
+func (s *GetTrafficControlTaskTrafficResponseBody) SetTrafficControlTaskTrafficInfo(v *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfo) *GetTrafficControlTaskTrafficResponseBody {
+	s.TrafficControlTaskTrafficInfo = v
 	return s
 }
 
-type GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTraffic struct {
-	TargetTraffics []*GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficTargetTraffics `json:"TargetTraffics,omitempty" xml:"TargetTraffics,omitempty" type:"Repeated"`
-	TaskTraffics   map[string]interface{}                                                             `json:"TaskTraffics,omitempty" xml:"TaskTraffics,omitempty"`
+type GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfo struct {
+	TargetTraffics []*GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics `json:"TargetTraffics,omitempty" xml:"TargetTraffics,omitempty" type:"Repeated"`
+	TaskTraffics   map[string]interface{}                                                                 `json:"TaskTraffics,omitempty" xml:"TaskTraffics,omitempty"`
 }
 
-func (s GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTraffic) String() string {
+func (s GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfo) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTraffic) GoString() string {
+func (s GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfo) GoString() string {
 	return s.String()
 }
 
-func (s *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTraffic) SetTargetTraffics(v []*GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficTargetTraffics) *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTraffic {
+func (s *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfo) SetTargetTraffics(v []*GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics) *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfo {
 	s.TargetTraffics = v
 	return s
 }
 
-func (s *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTraffic) SetTaskTraffics(v map[string]interface{}) *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTraffic {
+func (s *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfo) SetTaskTraffics(v map[string]interface{}) *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfo {
 	s.TaskTraffics = v
 	return s
 }
 
-type GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficTargetTraffics struct {
+type GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics struct {
 	Data                   []map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	TrafficContorlTargetId *string                  `json:"TrafficContorlTargetId,omitempty" xml:"TrafficContorlTargetId,omitempty"`
 }
 
-func (s GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficTargetTraffics) String() string {
+func (s GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficTargetTraffics) GoString() string {
+func (s GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics) GoString() string {
 	return s.String()
 }
 
-func (s *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficTargetTraffics) SetData(v []map[string]interface{}) *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficTargetTraffics {
+func (s *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics) SetData(v []map[string]interface{}) *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics {
 	s.Data = v
 	return s
 }
 
-func (s *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficTargetTraffics) SetTrafficContorlTargetId(v string) *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficTargetTraffics {
+func (s *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics) SetTrafficContorlTargetId(v string) *GetTrafficControlTaskTrafficResponseBodyTrafficControlTaskTrafficInfoTargetTraffics {
 	s.TrafficContorlTargetId = &v
 	return s
 }
@@ -9793,7 +9793,9 @@ type ListExperimentGroupsRequest struct {
 	// example:
 	//
 	// Online
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TimeRangeEnd   *string `json:"TimeRangeEnd,omitempty" xml:"TimeRangeEnd,omitempty"`
+	TimeRangeStart *string `json:"TimeRangeStart,omitempty" xml:"TimeRangeStart,omitempty"`
 }
 
 func (s ListExperimentGroupsRequest) String() string {
@@ -9821,6 +9823,16 @@ func (s *ListExperimentGroupsRequest) SetRegionId(v string) *ListExperimentGroup
 
 func (s *ListExperimentGroupsRequest) SetStatus(v string) *ListExperimentGroupsRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *ListExperimentGroupsRequest) SetTimeRangeEnd(v string) *ListExperimentGroupsRequest {
+	s.TimeRangeEnd = &v
+	return s
+}
+
+func (s *ListExperimentGroupsRequest) SetTimeRangeStart(v string) *ListExperimentGroupsRequest {
+	s.TimeRangeStart = &v
 	return s
 }
 
@@ -21804,7 +21816,7 @@ func (client *Client) GenerateTrafficControlTaskCodeWithOptions(TrafficControlTa
 		Action:      tea.String("GenerateTrafficControlTaskCode"),
 		Version:     tea.String("2022-12-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/trafficcontroltasks/" + tea.StringValue(openapiutil.GetEncodeParam(TrafficControlTaskId)) + "/action/code"),
+		Pathname:    tea.String("/api/v1/trafficcontroltasks/" + tea.StringValue(openapiutil.GetEncodeParam(TrafficControlTaskId)) + "/action/generatecode"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -21868,7 +21880,7 @@ func (client *Client) GenerateTrafficControlTaskConfigWithOptions(TrafficControl
 		Action:      tea.String("GenerateTrafficControlTaskConfig"),
 		Version:     tea.String("2022-12-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/trafficcontroltasks/" + tea.StringValue(openapiutil.GetEncodeParam(TrafficControlTaskId)) + "/action/config"),
+		Pathname:    tea.String("/api/v1/trafficcontroltasks/" + tea.StringValue(openapiutil.GetEncodeParam(TrafficControlTaskId)) + "/action/generateconfig"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -23062,7 +23074,7 @@ func (client *Client) GetTrafficControlTaskTrafficWithOptions(TrafficControlTask
 		Action:      tea.String("GetTrafficControlTaskTraffic"),
 		Version:     tea.String("2022-12-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/trafficcontroltasks/" + tea.StringValue(openapiutil.GetEncodeParam(TrafficControlTaskId)) + "/action/traffic"),
+		Pathname:    tea.String("/api/v1/trafficcontroltasks/" + tea.StringValue(openapiutil.GetEncodeParam(TrafficControlTaskId)) + "/trafficinfo"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -23516,6 +23528,14 @@ func (client *Client) ListExperimentGroupsWithOptions(request *ListExperimentGro
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
 		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeRangeEnd)) {
+		query["TimeRangeEnd"] = request.TimeRangeEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeRangeStart)) {
+		query["TimeRangeStart"] = request.TimeRangeStart
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -24700,7 +24720,7 @@ func (client *Client) ListTrafficControlTargetTrafficHistoryWithOptions(TrafficC
 		Action:      tea.String("ListTrafficControlTargetTrafficHistory"),
 		Version:     tea.String("2022-12-13"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/trafficcontroltargets/" + tea.StringValue(openapiutil.GetEncodeParam(TrafficControlTargetId)) + "/action/traffichistory"),
+		Pathname:    tea.String("/api/v1/trafficcontroltargets/" + tea.StringValue(openapiutil.GetEncodeParam(TrafficControlTargetId)) + "/traffichistories"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
