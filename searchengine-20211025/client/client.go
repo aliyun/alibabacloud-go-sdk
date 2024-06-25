@@ -70,6 +70,35 @@ func (s *ResultClusterValue) SetMergeParallelNum(v int32) *ResultClusterValue {
 	return s
 }
 
+type ResultDatabasesFunctionsValue struct {
+	// example:
+	//
+	// test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// gfasdds2****2wfrkv
+	Signatures *string `json:"signatures,omitempty" xml:"signatures,omitempty"`
+}
+
+func (s ResultDatabasesFunctionsValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResultDatabasesFunctionsValue) GoString() string {
+	return s.String()
+}
+
+func (s *ResultDatabasesFunctionsValue) SetName(v string) *ResultDatabasesFunctionsValue {
+	s.Name = &v
+	return s
+}
+
+func (s *ResultDatabasesFunctionsValue) SetSignatures(v string) *ResultDatabasesFunctionsValue {
+	s.Signatures = &v
+	return s
+}
+
 type ResultValue struct {
 	// example:
 	//
@@ -726,6 +755,191 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 	return s
 }
 
+type CloneSqlInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	TargetFolderId *int64 `json:"targetFolderId,omitempty" xml:"targetFolderId,omitempty"`
+}
+
+func (s CloneSqlInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloneSqlInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CloneSqlInstanceRequest) SetName(v string) *CloneSqlInstanceRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CloneSqlInstanceRequest) SetTargetFolderId(v int64) *CloneSqlInstanceRequest {
+	s.TargetFolderId = &v
+	return s
+}
+
+type CloneSqlInstanceResponseBody struct {
+	// id of request
+	//
+	// example:
+	//
+	// 10D5E615-69F7-5F49-B850-00169ADE513C
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// NodeVO
+	Result *CloneSqlInstanceResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+}
+
+func (s CloneSqlInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloneSqlInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CloneSqlInstanceResponseBody) SetRequestId(v string) *CloneSqlInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CloneSqlInstanceResponseBody) SetResult(v *CloneSqlInstanceResponseBodyResult) *CloneSqlInstanceResponseBody {
+	s.Result = v
+	return s
+}
+
+type CloneSqlInstanceResponseBodyResult struct {
+	// example:
+	//
+	// 1719221186114
+	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// example:
+	//
+	// 1719221186114
+	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// example:
+	//
+	// 1
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// -cn-pl32rf0****
+	InstanceId *int64 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// True
+	IsDir *int32 `json:"isDir,omitempty" xml:"isDir,omitempty"`
+	// example:
+	//
+	// general
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 1
+	Parent *int64 `json:"parent,omitempty" xml:"parent,omitempty"`
+	// example:
+	//
+	// 1
+	TemplateId *int64 `json:"templateId,omitempty" xml:"templateId,omitempty"`
+	// table, instance, template, function
+	//
+	// example:
+	//
+	// instance
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CloneSqlInstanceResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloneSqlInstanceResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *CloneSqlInstanceResponseBodyResult) SetGmtCreate(v string) *CloneSqlInstanceResponseBodyResult {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *CloneSqlInstanceResponseBodyResult) SetGmtModified(v string) *CloneSqlInstanceResponseBodyResult {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *CloneSqlInstanceResponseBodyResult) SetId(v int64) *CloneSqlInstanceResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *CloneSqlInstanceResponseBodyResult) SetInstanceId(v int64) *CloneSqlInstanceResponseBodyResult {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CloneSqlInstanceResponseBodyResult) SetIsDir(v int32) *CloneSqlInstanceResponseBodyResult {
+	s.IsDir = &v
+	return s
+}
+
+func (s *CloneSqlInstanceResponseBodyResult) SetName(v string) *CloneSqlInstanceResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *CloneSqlInstanceResponseBodyResult) SetParent(v int64) *CloneSqlInstanceResponseBodyResult {
+	s.Parent = &v
+	return s
+}
+
+func (s *CloneSqlInstanceResponseBodyResult) SetTemplateId(v int64) *CloneSqlInstanceResponseBodyResult {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *CloneSqlInstanceResponseBodyResult) SetType(v string) *CloneSqlInstanceResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+type CloneSqlInstanceResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CloneSqlInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CloneSqlInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloneSqlInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CloneSqlInstanceResponse) SetHeaders(v map[string]*string) *CloneSqlInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CloneSqlInstanceResponse) SetStatusCode(v int32) *CloneSqlInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CloneSqlInstanceResponse) SetBody(v *CloneSqlInstanceResponseBody) *CloneSqlInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type CreateClusterRequest struct {
 	// The remarks of the query node
 	//
@@ -1301,6 +1515,204 @@ func (s *CreateDataSourceResponse) SetStatusCode(v int32) *CreateDataSourceRespo
 }
 
 func (s *CreateDataSourceResponse) SetBody(v *CreateDataSourceResponseBody) *CreateDataSourceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateFolderRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gist_qc
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Parent *int64 `json:"parent,omitempty" xml:"parent,omitempty"`
+	// table, instance, template, function
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// instance
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreateFolderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFolderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFolderRequest) SetName(v string) *CreateFolderRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateFolderRequest) SetParent(v int64) *CreateFolderRequest {
+	s.Parent = &v
+	return s
+}
+
+func (s *CreateFolderRequest) SetType(v string) *CreateFolderRequest {
+	s.Type = &v
+	return s
+}
+
+type CreateFolderResponseBody struct {
+	// id of request
+	//
+	// example:
+	//
+	// E7B7D598-B080-5C8E-AA35-D43EC0D5F886
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// NodeVO
+	Result *CreateFolderResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+}
+
+func (s CreateFolderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFolderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFolderResponseBody) SetRequestId(v string) *CreateFolderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateFolderResponseBody) SetResult(v *CreateFolderResponseBodyResult) *CreateFolderResponseBody {
+	s.Result = v
+	return s
+}
+
+type CreateFolderResponseBodyResult struct {
+	// example:
+	//
+	// 1719221186114
+	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// example:
+	//
+	// 1719221186114
+	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// example:
+	//
+	// 25030
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// ha-cn-pl32rf0****
+	InstanceId *int64 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// True
+	IsDir *int32 `json:"isDir,omitempty" xml:"isDir,omitempty"`
+	// example:
+	//
+	// test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// -1
+	Parent *int64 `json:"parent,omitempty" xml:"parent,omitempty"`
+	// example:
+	//
+	// 1
+	TemplateId *int64 `json:"templateId,omitempty" xml:"templateId,omitempty"`
+	// table, instance, template, function
+	//
+	// example:
+	//
+	// instance
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreateFolderResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFolderResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFolderResponseBodyResult) SetGmtCreate(v string) *CreateFolderResponseBodyResult {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *CreateFolderResponseBodyResult) SetGmtModified(v string) *CreateFolderResponseBodyResult {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *CreateFolderResponseBodyResult) SetId(v int64) *CreateFolderResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateFolderResponseBodyResult) SetInstanceId(v int64) *CreateFolderResponseBodyResult {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateFolderResponseBodyResult) SetIsDir(v int32) *CreateFolderResponseBodyResult {
+	s.IsDir = &v
+	return s
+}
+
+func (s *CreateFolderResponseBodyResult) SetName(v string) *CreateFolderResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateFolderResponseBodyResult) SetParent(v int64) *CreateFolderResponseBodyResult {
+	s.Parent = &v
+	return s
+}
+
+func (s *CreateFolderResponseBodyResult) SetTemplateId(v int64) *CreateFolderResponseBodyResult {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *CreateFolderResponseBodyResult) SetType(v string) *CreateFolderResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+type CreateFolderResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateFolderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateFolderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFolderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFolderResponse) SetHeaders(v map[string]*string) *CreateFolderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateFolderResponse) SetStatusCode(v int32) *CreateFolderResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateFolderResponse) SetBody(v *CreateFolderResponseBody) *CreateFolderResponse {
 	s.Body = v
 	return s
 }
@@ -1977,6 +2389,191 @@ func (s *CreatePublicUrlResponse) SetStatusCode(v int32) *CreatePublicUrlRespons
 }
 
 func (s *CreatePublicUrlResponse) SetBody(v *CreatePublicUrlResponseBody) *CreatePublicUrlResponse {
+	s.Body = v
+	return s
+}
+
+type CreateSqlInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// -1
+	Parent *int64 `json:"parent,omitempty" xml:"parent,omitempty"`
+}
+
+func (s CreateSqlInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSqlInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSqlInstanceRequest) SetName(v string) *CreateSqlInstanceRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateSqlInstanceRequest) SetParent(v int64) *CreateSqlInstanceRequest {
+	s.Parent = &v
+	return s
+}
+
+type CreateSqlInstanceResponseBody struct {
+	// id of request
+	//
+	// example:
+	//
+	// B43CD1BB-ABD7-59C5-B89A-6E5F6FE60A84
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// NodeVO
+	Result *CreateSqlInstanceResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+}
+
+func (s CreateSqlInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSqlInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSqlInstanceResponseBody) SetRequestId(v string) *CreateSqlInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSqlInstanceResponseBody) SetResult(v *CreateSqlInstanceResponseBodyResult) *CreateSqlInstanceResponseBody {
+	s.Result = v
+	return s
+}
+
+type CreateSqlInstanceResponseBodyResult struct {
+	// example:
+	//
+	// 1719220182844
+	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// example:
+	//
+	// 1719220182844
+	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// example:
+	//
+	// 22
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// ha-cn-pl32rf0****
+	InstanceId *int64 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// true
+	IsDir *int32 `json:"isDir,omitempty" xml:"isDir,omitempty"`
+	// example:
+	//
+	// test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// -1
+	Parent *int64 `json:"parent,omitempty" xml:"parent,omitempty"`
+	// example:
+	//
+	// 1
+	TemplateId *int64 `json:"templateId,omitempty" xml:"templateId,omitempty"`
+	// table, instance, template, function
+	//
+	// example:
+	//
+	// instance
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreateSqlInstanceResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSqlInstanceResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSqlInstanceResponseBodyResult) SetGmtCreate(v string) *CreateSqlInstanceResponseBodyResult {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *CreateSqlInstanceResponseBodyResult) SetGmtModified(v string) *CreateSqlInstanceResponseBodyResult {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *CreateSqlInstanceResponseBodyResult) SetId(v int64) *CreateSqlInstanceResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateSqlInstanceResponseBodyResult) SetInstanceId(v int64) *CreateSqlInstanceResponseBodyResult {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateSqlInstanceResponseBodyResult) SetIsDir(v int32) *CreateSqlInstanceResponseBodyResult {
+	s.IsDir = &v
+	return s
+}
+
+func (s *CreateSqlInstanceResponseBodyResult) SetName(v string) *CreateSqlInstanceResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateSqlInstanceResponseBodyResult) SetParent(v int64) *CreateSqlInstanceResponseBodyResult {
+	s.Parent = &v
+	return s
+}
+
+func (s *CreateSqlInstanceResponseBodyResult) SetTemplateId(v int64) *CreateSqlInstanceResponseBodyResult {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *CreateSqlInstanceResponseBodyResult) SetType(v string) *CreateSqlInstanceResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+type CreateSqlInstanceResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSqlInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateSqlInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSqlInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSqlInstanceResponse) SetHeaders(v map[string]*string) *CreateSqlInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSqlInstanceResponse) SetStatusCode(v int32) *CreateSqlInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSqlInstanceResponse) SetBody(v *CreateSqlInstanceResponseBody) *CreateSqlInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -2830,6 +3427,90 @@ func (s *DeleteDataSourceResponse) SetBody(v *DeleteDataSourceResponseBody) *Del
 	return s
 }
 
+type DeleteFolderResponseBody struct {
+	// id of request
+	//
+	// example:
+	//
+	// 022F36C7-9FB4-5D67-BEBC-3D14B0984463
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Response<Map<String, String>>
+	Result *DeleteFolderResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+}
+
+func (s DeleteFolderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFolderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFolderResponseBody) SetRequestId(v string) *DeleteFolderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteFolderResponseBody) SetResult(v *DeleteFolderResponseBodyResult) *DeleteFolderResponseBody {
+	s.Result = v
+	return s
+}
+
+type DeleteFolderResponseBodyResult struct {
+	// example:
+	//
+	// 022F36C7-9FB4-5D67-BEBC-3D14B0984463
+	RequestId *string            `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    map[string]*string `json:"result,omitempty" xml:"result,omitempty"`
+}
+
+func (s DeleteFolderResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFolderResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFolderResponseBodyResult) SetRequestId(v string) *DeleteFolderResponseBodyResult {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteFolderResponseBodyResult) SetResult(v map[string]*string) *DeleteFolderResponseBodyResult {
+	s.Result = v
+	return s
+}
+
+type DeleteFolderResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteFolderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteFolderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFolderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFolderResponse) SetHeaders(v map[string]*string) *DeleteFolderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteFolderResponse) SetStatusCode(v int32) *DeleteFolderResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteFolderResponse) SetBody(v *DeleteFolderResponseBody) *DeleteFolderResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteIndexRequest struct {
 	// The data source
 	//
@@ -3108,6 +3789,90 @@ func (s *DeletePublicUrlResponse) SetBody(v *DeletePublicUrlResponseBody) *Delet
 	return s
 }
 
+type DeleteSqlInstanceResponseBody struct {
+	// id of request
+	//
+	// example:
+	//
+	// 2AE63638-5420-56DC-BF59-37D8174039A0
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Response<Map<String, String>>
+	Result *DeleteSqlInstanceResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+}
+
+func (s DeleteSqlInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSqlInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSqlInstanceResponseBody) SetRequestId(v string) *DeleteSqlInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteSqlInstanceResponseBody) SetResult(v *DeleteSqlInstanceResponseBodyResult) *DeleteSqlInstanceResponseBody {
+	s.Result = v
+	return s
+}
+
+type DeleteSqlInstanceResponseBodyResult struct {
+	// example:
+	//
+	// 2AE63638-5420-56DC-BF59-37D8174039A0
+	RequestId *string            `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    map[string]*string `json:"result,omitempty" xml:"result,omitempty"`
+}
+
+func (s DeleteSqlInstanceResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSqlInstanceResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSqlInstanceResponseBodyResult) SetRequestId(v string) *DeleteSqlInstanceResponseBodyResult {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteSqlInstanceResponseBodyResult) SetResult(v map[string]*string) *DeleteSqlInstanceResponseBodyResult {
+	s.Result = v
+	return s
+}
+
+type DeleteSqlInstanceResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteSqlInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteSqlInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSqlInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSqlInstanceResponse) SetHeaders(v map[string]*string) *DeleteSqlInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteSqlInstanceResponse) SetStatusCode(v int32) *DeleteSqlInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteSqlInstanceResponse) SetBody(v *DeleteSqlInstanceResponseBody) *DeleteSqlInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteTableResponseBody struct {
 	// requestId
 	//
@@ -3279,6 +4044,219 @@ func (s *DescribeRegionsResponse) SetStatusCode(v int32) *DescribeRegionsRespons
 }
 
 func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *DescribeRegionsResponse {
+	s.Body = v
+	return s
+}
+
+type ExecuteSqlInstanceRequest struct {
+	CombineParam map[string]interface{} `json:"combineParam,omitempty" xml:"combineParam,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// select 	- from test
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// vpc_hz_domain_1
+	Domain       *string                `json:"domain,omitempty" xml:"domain,omitempty"`
+	DynamicParam map[string]interface{} `json:"dynamicParam,omitempty" xml:"dynamicParam,omitempty"`
+	Kvpair       map[string]interface{} `json:"kvpair,omitempty" xml:"kvpair,omitempty"`
+	Params       map[string]interface{} `json:"params,omitempty" xml:"params,omitempty"`
+	StaticParam  map[string]interface{} `json:"staticParam,omitempty" xml:"staticParam,omitempty"`
+}
+
+func (s ExecuteSqlInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteSqlInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteSqlInstanceRequest) SetCombineParam(v map[string]interface{}) *ExecuteSqlInstanceRequest {
+	s.CombineParam = v
+	return s
+}
+
+func (s *ExecuteSqlInstanceRequest) SetContent(v string) *ExecuteSqlInstanceRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *ExecuteSqlInstanceRequest) SetDomain(v string) *ExecuteSqlInstanceRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *ExecuteSqlInstanceRequest) SetDynamicParam(v map[string]interface{}) *ExecuteSqlInstanceRequest {
+	s.DynamicParam = v
+	return s
+}
+
+func (s *ExecuteSqlInstanceRequest) SetKvpair(v map[string]interface{}) *ExecuteSqlInstanceRequest {
+	s.Kvpair = v
+	return s
+}
+
+func (s *ExecuteSqlInstanceRequest) SetParams(v map[string]interface{}) *ExecuteSqlInstanceRequest {
+	s.Params = v
+	return s
+}
+
+func (s *ExecuteSqlInstanceRequest) SetStaticParam(v map[string]interface{}) *ExecuteSqlInstanceRequest {
+	s.StaticParam = v
+	return s
+}
+
+type ExecuteSqlInstanceResponseBody struct {
+	// id of request
+	//
+	// example:
+	//
+	// FE03180A-0E29-5474-8A86-33F0683294A4
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// NodeVO
+	Result *ExecuteSqlInstanceResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+}
+
+func (s ExecuteSqlInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteSqlInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteSqlInstanceResponseBody) SetRequestId(v string) *ExecuteSqlInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExecuteSqlInstanceResponseBody) SetResult(v *ExecuteSqlInstanceResponseBodyResult) *ExecuteSqlInstanceResponseBody {
+	s.Result = v
+	return s
+}
+
+type ExecuteSqlInstanceResponseBodyResult struct {
+	// example:
+	//
+	// 1719221186114
+	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// example:
+	//
+	// 1719220182844
+	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// example:
+	//
+	// 22
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// ha-cn-pl32rf0****
+	InstanceId *int64 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// true
+	IsDir *int32 `json:"isDir,omitempty" xml:"isDir,omitempty"`
+	// example:
+	//
+	// test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// -1
+	Parent *int64 `json:"parent,omitempty" xml:"parent,omitempty"`
+	// example:
+	//
+	// 1
+	TemplateId *int64 `json:"templateId,omitempty" xml:"templateId,omitempty"`
+	// table, instance, template, function
+	//
+	// example:
+	//
+	// instance
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ExecuteSqlInstanceResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteSqlInstanceResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteSqlInstanceResponseBodyResult) SetGmtCreate(v string) *ExecuteSqlInstanceResponseBodyResult {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ExecuteSqlInstanceResponseBodyResult) SetGmtModified(v string) *ExecuteSqlInstanceResponseBodyResult {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ExecuteSqlInstanceResponseBodyResult) SetId(v int64) *ExecuteSqlInstanceResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *ExecuteSqlInstanceResponseBodyResult) SetInstanceId(v int64) *ExecuteSqlInstanceResponseBodyResult {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ExecuteSqlInstanceResponseBodyResult) SetIsDir(v int32) *ExecuteSqlInstanceResponseBodyResult {
+	s.IsDir = &v
+	return s
+}
+
+func (s *ExecuteSqlInstanceResponseBodyResult) SetName(v string) *ExecuteSqlInstanceResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *ExecuteSqlInstanceResponseBodyResult) SetParent(v int64) *ExecuteSqlInstanceResponseBodyResult {
+	s.Parent = &v
+	return s
+}
+
+func (s *ExecuteSqlInstanceResponseBodyResult) SetTemplateId(v int64) *ExecuteSqlInstanceResponseBodyResult {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ExecuteSqlInstanceResponseBodyResult) SetType(v string) *ExecuteSqlInstanceResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+type ExecuteSqlInstanceResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecuteSqlInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExecuteSqlInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteSqlInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteSqlInstanceResponse) SetHeaders(v map[string]*string) *ExecuteSqlInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExecuteSqlInstanceResponse) SetStatusCode(v int32) *ExecuteSqlInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExecuteSqlInstanceResponse) SetBody(v *ExecuteSqlInstanceResponseBody) *ExecuteSqlInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -5073,6 +6051,120 @@ func (s *GetDataSourceDeployResponse) SetBody(v *GetDataSourceDeployResponseBody
 	return s
 }
 
+type GetDatabaseSchemaResponseBody struct {
+	// id of request
+	//
+	// example:
+	//
+	// 022F36C7-9FB4-5D67-BEBC-3D14B0984463
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// List
+	Result []*GetDatabaseSchemaResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+}
+
+func (s GetDatabaseSchemaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatabaseSchemaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatabaseSchemaResponseBody) SetRequestId(v string) *GetDatabaseSchemaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDatabaseSchemaResponseBody) SetResult(v []*GetDatabaseSchemaResponseBodyResult) *GetDatabaseSchemaResponseBody {
+	s.Result = v
+	return s
+}
+
+type GetDatabaseSchemaResponseBodyResult struct {
+	// example:
+	//
+	// id
+	FieldName *string `json:"fieldName,omitempty" xml:"fieldName,omitempty"`
+	// example:
+	//
+	// STRING
+	FieldType *string `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
+	// example:
+	//
+	// FT_UINT64
+	FieldTypeDetail map[string]interface{} `json:"fieldTypeDetail,omitempty" xml:"fieldTypeDetail,omitempty"`
+	// example:
+	//
+	// test_tusou_v2
+	IndexName *string `json:"indexName,omitempty" xml:"indexName,omitempty"`
+	// example:
+	//
+	// NUMBER
+	IndexType *string `json:"indexType,omitempty" xml:"indexType,omitempty"`
+}
+
+func (s GetDatabaseSchemaResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatabaseSchemaResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatabaseSchemaResponseBodyResult) SetFieldName(v string) *GetDatabaseSchemaResponseBodyResult {
+	s.FieldName = &v
+	return s
+}
+
+func (s *GetDatabaseSchemaResponseBodyResult) SetFieldType(v string) *GetDatabaseSchemaResponseBodyResult {
+	s.FieldType = &v
+	return s
+}
+
+func (s *GetDatabaseSchemaResponseBodyResult) SetFieldTypeDetail(v map[string]interface{}) *GetDatabaseSchemaResponseBodyResult {
+	s.FieldTypeDetail = v
+	return s
+}
+
+func (s *GetDatabaseSchemaResponseBodyResult) SetIndexName(v string) *GetDatabaseSchemaResponseBodyResult {
+	s.IndexName = &v
+	return s
+}
+
+func (s *GetDatabaseSchemaResponseBodyResult) SetIndexType(v string) *GetDatabaseSchemaResponseBodyResult {
+	s.IndexType = &v
+	return s
+}
+
+type GetDatabaseSchemaResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDatabaseSchemaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDatabaseSchemaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatabaseSchemaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatabaseSchemaResponse) SetHeaders(v map[string]*string) *GetDatabaseSchemaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDatabaseSchemaResponse) SetStatusCode(v int32) *GetDatabaseSchemaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDatabaseSchemaResponse) SetBody(v *GetDatabaseSchemaResponseBody) *GetDatabaseSchemaResponse {
+	s.Body = v
+	return s
+}
+
 type GetDeployGraphResponseBody struct {
 	// Id of the request
 	//
@@ -6627,6 +7719,203 @@ func (s *GetNodeConfigResponse) SetStatusCode(v int32) *GetNodeConfigResponse {
 }
 
 func (s *GetNodeConfigResponse) SetBody(v *GetNodeConfigResponseBody) *GetNodeConfigResponse {
+	s.Body = v
+	return s
+}
+
+type GetSqlInstanceRequest struct {
+	// example:
+	//
+	// 1
+	Version *int64 `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s GetSqlInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSqlInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSqlInstanceRequest) SetVersion(v int64) *GetSqlInstanceRequest {
+	s.Version = &v
+	return s
+}
+
+type GetSqlInstanceResponseBody struct {
+	// id of request
+	//
+	// example:
+	//
+	// 10D5E615-69F7-5F49-B850-00169ADE513C
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// InstanceVersionVO
+	Result *GetSqlInstanceResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+}
+
+func (s GetSqlInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSqlInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSqlInstanceResponseBody) SetRequestId(v string) *GetSqlInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSqlInstanceResponseBody) SetResult(v *GetSqlInstanceResponseBodyResult) *GetSqlInstanceResponseBody {
+	s.Result = v
+	return s
+}
+
+type GetSqlInstanceResponseBodyResult struct {
+	// example:
+	//
+	// {\\"trace\\":\\"INFO\\",\\"databaseName\\":\\"general\\",\\"iquan.plan.cache.enable\\":true,\\"iquan.plan.prepare.level\\":\\"jni.post.optimize\\",\\"urlencode_data\\":false,\\"formatType\\":\\"string\\",\\"timeout\\":1000}
+	CombineParams *string `json:"combineParams,omitempty" xml:"combineParams,omitempty"`
+	// example:
+	//
+	// init version
+	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	// example:
+	//
+	// select 	- from test
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// {\\"trace\\":\\"INFO\\",\\"databaseName\\":\\"general\\",\\"iquan.plan.cache.enable\\":true,\\"iquan.plan.prepare.level\\":\\"jni.post.optimize\\",\\"urlencode_data\\":false,\\"formatType\\":\\"string\\",\\"timeout\\":1000}
+	DynamicParams *string `json:"dynamicParams,omitempty" xml:"dynamicParams,omitempty"`
+	// example:
+	//
+	// 1719220182844
+	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// example:
+	//
+	// 1719221186114
+	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// example:
+	//
+	// ha-cn-pl32rf0****
+	InstanceId *int64 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// {\\"trace\\":\\"INFO\\",\\"databaseName\\":\\"general\\",\\"iquan.plan.cache.enable\\":true,\\"iquan.plan.prepare.level\\":\\"jni.post.optimize\\",\\"urlencode_data\\":false,\\"formatType\\":\\"string\\",\\"timeout\\":1000}
+	Kvpairs *string `json:"kvpairs,omitempty" xml:"kvpairs,omitempty"`
+	// example:
+	//
+	// 1
+	RelatedTemplateId *int64 `json:"relatedTemplateId,omitempty" xml:"relatedTemplateId,omitempty"`
+	// example:
+	//
+	// {\\"trace\\":\\"INFO\\",\\"databaseName\\":\\"general\\",\\"iquan.plan.cache.enable\\":true,\\"iquan.plan.prepare.level\\":\\"jni.post.optimize\\",\\"urlencode_data\\":false,\\"formatType\\":\\"string\\",\\"timeout\\":1000}
+	StaticParams *string `json:"staticParams,omitempty" xml:"staticParams,omitempty"`
+	// example:
+	//
+	// {\\"trace\\":\\"INFO\\",\\"databaseName\\":\\"general\\",\\"iquan.plan.cache.enable\\":true,\\"iquan.plan.prepare.level\\":\\"jni.post.optimize\\",\\"urlencode_data\\":false,\\"formatType\\":\\"string\\",\\"timeout\\":1000}
+	TemplateParams *string `json:"templateParams,omitempty" xml:"templateParams,omitempty"`
+	// example:
+	//
+	// 1
+	Version *int64 `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s GetSqlInstanceResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSqlInstanceResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetSqlInstanceResponseBodyResult) SetCombineParams(v string) *GetSqlInstanceResponseBodyResult {
+	s.CombineParams = &v
+	return s
+}
+
+func (s *GetSqlInstanceResponseBodyResult) SetComment(v string) *GetSqlInstanceResponseBodyResult {
+	s.Comment = &v
+	return s
+}
+
+func (s *GetSqlInstanceResponseBodyResult) SetContent(v string) *GetSqlInstanceResponseBodyResult {
+	s.Content = &v
+	return s
+}
+
+func (s *GetSqlInstanceResponseBodyResult) SetDynamicParams(v string) *GetSqlInstanceResponseBodyResult {
+	s.DynamicParams = &v
+	return s
+}
+
+func (s *GetSqlInstanceResponseBodyResult) SetGmtCreate(v string) *GetSqlInstanceResponseBodyResult {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetSqlInstanceResponseBodyResult) SetGmtModified(v string) *GetSqlInstanceResponseBodyResult {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *GetSqlInstanceResponseBodyResult) SetInstanceId(v int64) *GetSqlInstanceResponseBodyResult {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetSqlInstanceResponseBodyResult) SetKvpairs(v string) *GetSqlInstanceResponseBodyResult {
+	s.Kvpairs = &v
+	return s
+}
+
+func (s *GetSqlInstanceResponseBodyResult) SetRelatedTemplateId(v int64) *GetSqlInstanceResponseBodyResult {
+	s.RelatedTemplateId = &v
+	return s
+}
+
+func (s *GetSqlInstanceResponseBodyResult) SetStaticParams(v string) *GetSqlInstanceResponseBodyResult {
+	s.StaticParams = &v
+	return s
+}
+
+func (s *GetSqlInstanceResponseBodyResult) SetTemplateParams(v string) *GetSqlInstanceResponseBodyResult {
+	s.TemplateParams = &v
+	return s
+}
+
+func (s *GetSqlInstanceResponseBodyResult) SetVersion(v int64) *GetSqlInstanceResponseBodyResult {
+	s.Version = &v
+	return s
+}
+
+type GetSqlInstanceResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSqlInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSqlInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSqlInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSqlInstanceResponse) SetHeaders(v map[string]*string) *GetSqlInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSqlInstanceResponse) SetStatusCode(v int32) *GetSqlInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSqlInstanceResponse) SetBody(v *GetSqlInstanceResponseBody) *GetSqlInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -8894,6 +10183,371 @@ func (s *ListDataSourcesResponse) SetStatusCode(v int32) *ListDataSourcesRespons
 }
 
 func (s *ListDataSourcesResponse) SetBody(v *ListDataSourcesResponseBody) *ListDataSourcesResponse {
+	s.Body = v
+	return s
+}
+
+type ListDatabasesResponseBody struct {
+	// id of request
+	//
+	// example:
+	//
+	// E45380E8-994A-5402-9806-F114B3295FCF
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// NodeTreeVO
+	Result *ListDatabasesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+}
+
+func (s ListDatabasesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabasesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabasesResponseBody) SetRequestId(v string) *ListDatabasesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBody) SetResult(v *ListDatabasesResponseBodyResult) *ListDatabasesResponseBody {
+	s.Result = v
+	return s
+}
+
+type ListDatabasesResponseBodyResult struct {
+	Databases []*ListDatabasesResponseBodyResultDatabases `json:"databases,omitempty" xml:"databases,omitempty" type:"Repeated"`
+}
+
+func (s ListDatabasesResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabasesResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabasesResponseBodyResult) SetDatabases(v []*ListDatabasesResponseBodyResultDatabases) *ListDatabasesResponseBodyResult {
+	s.Databases = v
+	return s
+}
+
+type ListDatabasesResponseBodyResultDatabases struct {
+	// example:
+	//
+	// general
+	Database     *string                                                 `json:"database,omitempty" xml:"database,omitempty"`
+	Functions    map[string][]*ResultDatabasesFunctionsValue             `json:"functions,omitempty" xml:"functions,omitempty"`
+	SqlInstances []*ListDatabasesResponseBodyResultDatabasesSqlInstances `json:"sqlInstances,omitempty" xml:"sqlInstances,omitempty" type:"Repeated"`
+	Tables       []*ListDatabasesResponseBodyResultDatabasesTables       `json:"tables,omitempty" xml:"tables,omitempty" type:"Repeated"`
+	Templates    []*ListDatabasesResponseBodyResultDatabasesTemplates    `json:"templates,omitempty" xml:"templates,omitempty" type:"Repeated"`
+}
+
+func (s ListDatabasesResponseBodyResultDatabases) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabasesResponseBodyResultDatabases) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabasesResponseBodyResultDatabases) SetDatabase(v string) *ListDatabasesResponseBodyResultDatabases {
+	s.Database = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyResultDatabases) SetFunctions(v map[string][]*ResultDatabasesFunctionsValue) *ListDatabasesResponseBodyResultDatabases {
+	s.Functions = v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyResultDatabases) SetSqlInstances(v []*ListDatabasesResponseBodyResultDatabasesSqlInstances) *ListDatabasesResponseBodyResultDatabases {
+	s.SqlInstances = v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyResultDatabases) SetTables(v []*ListDatabasesResponseBodyResultDatabasesTables) *ListDatabasesResponseBodyResultDatabases {
+	s.Tables = v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyResultDatabases) SetTemplates(v []*ListDatabasesResponseBodyResultDatabasesTemplates) *ListDatabasesResponseBodyResultDatabases {
+	s.Templates = v
+	return s
+}
+
+type ListDatabasesResponseBodyResultDatabasesSqlInstances struct {
+	Children []interface{} `json:"children,omitempty" xml:"children,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 12190
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 1
+	InstanceId *int64 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// true
+	IsDir *int32 `json:"isDir,omitempty" xml:"isDir,omitempty"`
+	// example:
+	//
+	// general
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// -1
+	Parent *int64 `json:"parent,omitempty" xml:"parent,omitempty"`
+	// example:
+	//
+	// 1
+	TemplateId *int64 `json:"templateId,omitempty" xml:"templateId,omitempty"`
+	// table, instance, template, function
+	//
+	// example:
+	//
+	// instance
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListDatabasesResponseBodyResultDatabasesSqlInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabasesResponseBodyResultDatabasesSqlInstances) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabasesResponseBodyResultDatabasesSqlInstances) SetChildren(v []interface{}) *ListDatabasesResponseBodyResultDatabasesSqlInstances {
+	s.Children = v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyResultDatabasesSqlInstances) SetId(v int64) *ListDatabasesResponseBodyResultDatabasesSqlInstances {
+	s.Id = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyResultDatabasesSqlInstances) SetInstanceId(v int64) *ListDatabasesResponseBodyResultDatabasesSqlInstances {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyResultDatabasesSqlInstances) SetIsDir(v int32) *ListDatabasesResponseBodyResultDatabasesSqlInstances {
+	s.IsDir = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyResultDatabasesSqlInstances) SetName(v string) *ListDatabasesResponseBodyResultDatabasesSqlInstances {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyResultDatabasesSqlInstances) SetParent(v int64) *ListDatabasesResponseBodyResultDatabasesSqlInstances {
+	s.Parent = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyResultDatabasesSqlInstances) SetTemplateId(v int64) *ListDatabasesResponseBodyResultDatabasesSqlInstances {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyResultDatabasesSqlInstances) SetType(v string) *ListDatabasesResponseBodyResultDatabasesSqlInstances {
+	s.Type = &v
+	return s
+}
+
+type ListDatabasesResponseBodyResultDatabasesTables struct {
+	Children []interface{} `json:"children,omitempty" xml:"children,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 56
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 1
+	InstanceId *int64 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// true
+	IsDir *int32 `json:"isDir,omitempty" xml:"isDir,omitempty"`
+	// example:
+	//
+	// general
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// -1
+	Parent *int64 `json:"parent,omitempty" xml:"parent,omitempty"`
+	// example:
+	//
+	// 1
+	TemplateId *int64 `json:"templateId,omitempty" xml:"templateId,omitempty"`
+	// table, instance, template, function
+	//
+	// example:
+	//
+	// table
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListDatabasesResponseBodyResultDatabasesTables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabasesResponseBodyResultDatabasesTables) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabasesResponseBodyResultDatabasesTables) SetChildren(v []interface{}) *ListDatabasesResponseBodyResultDatabasesTables {
+	s.Children = v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyResultDatabasesTables) SetId(v int64) *ListDatabasesResponseBodyResultDatabasesTables {
+	s.Id = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyResultDatabasesTables) SetInstanceId(v int64) *ListDatabasesResponseBodyResultDatabasesTables {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyResultDatabasesTables) SetIsDir(v int32) *ListDatabasesResponseBodyResultDatabasesTables {
+	s.IsDir = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyResultDatabasesTables) SetName(v string) *ListDatabasesResponseBodyResultDatabasesTables {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyResultDatabasesTables) SetParent(v int64) *ListDatabasesResponseBodyResultDatabasesTables {
+	s.Parent = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyResultDatabasesTables) SetTemplateId(v int64) *ListDatabasesResponseBodyResultDatabasesTables {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyResultDatabasesTables) SetType(v string) *ListDatabasesResponseBodyResultDatabasesTables {
+	s.Type = &v
+	return s
+}
+
+type ListDatabasesResponseBodyResultDatabasesTemplates struct {
+	Children []interface{} `json:"children,omitempty" xml:"children,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 1
+	InstanceId *int64 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// true
+	IsDir *int32 `json:"isDir,omitempty" xml:"isDir,omitempty"`
+	// example:
+	//
+	// c26_schema
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// -1
+	Parent *int64 `json:"parent,omitempty" xml:"parent,omitempty"`
+	// example:
+	//
+	// 1
+	TemplateId *int64 `json:"templateId,omitempty" xml:"templateId,omitempty"`
+	// table, instance, template, function
+	//
+	// example:
+	//
+	// template
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListDatabasesResponseBodyResultDatabasesTemplates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabasesResponseBodyResultDatabasesTemplates) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabasesResponseBodyResultDatabasesTemplates) SetChildren(v []interface{}) *ListDatabasesResponseBodyResultDatabasesTemplates {
+	s.Children = v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyResultDatabasesTemplates) SetId(v int64) *ListDatabasesResponseBodyResultDatabasesTemplates {
+	s.Id = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyResultDatabasesTemplates) SetInstanceId(v int64) *ListDatabasesResponseBodyResultDatabasesTemplates {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyResultDatabasesTemplates) SetIsDir(v int32) *ListDatabasesResponseBodyResultDatabasesTemplates {
+	s.IsDir = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyResultDatabasesTemplates) SetName(v string) *ListDatabasesResponseBodyResultDatabasesTemplates {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyResultDatabasesTemplates) SetParent(v int64) *ListDatabasesResponseBodyResultDatabasesTemplates {
+	s.Parent = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyResultDatabasesTemplates) SetTemplateId(v int64) *ListDatabasesResponseBodyResultDatabasesTemplates {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyResultDatabasesTemplates) SetType(v string) *ListDatabasesResponseBodyResultDatabasesTemplates {
+	s.Type = &v
+	return s
+}
+
+type ListDatabasesResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDatabasesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDatabasesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabasesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabasesResponse) SetHeaders(v map[string]*string) *ListDatabasesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDatabasesResponse) SetStatusCode(v int32) *ListDatabasesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDatabasesResponse) SetBody(v *ListDatabasesResponseBody) *ListDatabasesResponse {
 	s.Body = v
 	return s
 }
@@ -12201,101 +13855,6 @@ func (s *ModifyClusterOnlineConfigResponse) SetBody(v *ModifyClusterOnlineConfig
 	return s
 }
 
-type ModifyDataSourceRequest struct {
-	// The request body.
-	//
-	// example:
-	//
-	// {}
-	Body map[string]interface{} `json:"body,omitempty" xml:"body,omitempty"`
-	// Specifies whether the data source is created by using the dryRun feature. This parameter only checks whether the data source is valid. Valid values: true and false. true indicates that the data source is created by using the dryRun feature, and false indicates that the data source is not created by using the dryRun feature.
-	//
-	// example:
-	//
-	// true
-	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
-}
-
-func (s ModifyDataSourceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyDataSourceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyDataSourceRequest) SetBody(v map[string]interface{}) *ModifyDataSourceRequest {
-	s.Body = v
-	return s
-}
-
-func (s *ModifyDataSourceRequest) SetDryRun(v bool) *ModifyDataSourceRequest {
-	s.DryRun = &v
-	return s
-}
-
-type ModifyDataSourceResponseBody struct {
-	// The ID of the request
-	//
-	// example:
-	//
-	// 2AE63638-5420-56DC-BF59-37D8174039A0
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The result returned
-	//
-	// example:
-	//
-	// {}
-	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
-}
-
-func (s ModifyDataSourceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyDataSourceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyDataSourceResponseBody) SetRequestId(v string) *ModifyDataSourceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ModifyDataSourceResponseBody) SetResult(v map[string]interface{}) *ModifyDataSourceResponseBody {
-	s.Result = v
-	return s
-}
-
-type ModifyDataSourceResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *ModifyDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s ModifyDataSourceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyDataSourceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyDataSourceResponse) SetHeaders(v map[string]*string) *ModifyDataSourceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ModifyDataSourceResponse) SetStatusCode(v int32) *ModifyDataSourceResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ModifyDataSourceResponse) SetBody(v *ModifyDataSourceResponseBody) *ModifyDataSourceResponse {
-	s.Body = v
-	return s
-}
-
 type ModifyDataSourceDeployRequest struct {
 	// example:
 	//
@@ -15244,6 +16803,180 @@ func (s *RemoveClusterResponse) SetBody(v *RemoveClusterResponseBody) *RemoveClu
 	return s
 }
 
+type RenameFolderRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s RenameFolderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenameFolderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RenameFolderRequest) SetName(v string) *RenameFolderRequest {
+	s.Name = &v
+	return s
+}
+
+type RenameFolderResponseBody struct {
+	// id of request
+	//
+	// example:
+	//
+	// 10D5E615-69F7-5F49-B850-00169ADE513C
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// NodeVO
+	Result *RenameFolderResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+}
+
+func (s RenameFolderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenameFolderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RenameFolderResponseBody) SetRequestId(v string) *RenameFolderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RenameFolderResponseBody) SetResult(v *RenameFolderResponseBodyResult) *RenameFolderResponseBody {
+	s.Result = v
+	return s
+}
+
+type RenameFolderResponseBodyResult struct {
+	// example:
+	//
+	// 1719221186114
+	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// example:
+	//
+	// 1719221186114
+	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// example:
+	//
+	// 1
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 1
+	InstanceId *int64 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// True
+	IsDir *int32 `json:"isDir,omitempty" xml:"isDir,omitempty"`
+	// example:
+	//
+	// test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// -1
+	Parent *int64 `json:"parent,omitempty" xml:"parent,omitempty"`
+	// example:
+	//
+	// 1
+	TemplateId *int64 `json:"templateId,omitempty" xml:"templateId,omitempty"`
+	// table, instance, template, function
+	//
+	// example:
+	//
+	// template
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s RenameFolderResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenameFolderResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *RenameFolderResponseBodyResult) SetGmtCreate(v string) *RenameFolderResponseBodyResult {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *RenameFolderResponseBodyResult) SetGmtModified(v string) *RenameFolderResponseBodyResult {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *RenameFolderResponseBodyResult) SetId(v int64) *RenameFolderResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *RenameFolderResponseBodyResult) SetInstanceId(v int64) *RenameFolderResponseBodyResult {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *RenameFolderResponseBodyResult) SetIsDir(v int32) *RenameFolderResponseBodyResult {
+	s.IsDir = &v
+	return s
+}
+
+func (s *RenameFolderResponseBodyResult) SetName(v string) *RenameFolderResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *RenameFolderResponseBodyResult) SetParent(v int64) *RenameFolderResponseBodyResult {
+	s.Parent = &v
+	return s
+}
+
+func (s *RenameFolderResponseBodyResult) SetTemplateId(v int64) *RenameFolderResponseBodyResult {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *RenameFolderResponseBodyResult) SetType(v string) *RenameFolderResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+type RenameFolderResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RenameFolderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RenameFolderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenameFolderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RenameFolderResponse) SetHeaders(v map[string]*string) *RenameFolderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RenameFolderResponse) SetStatusCode(v int32) *RenameFolderResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RenameFolderResponse) SetBody(v *RenameFolderResponseBody) *RenameFolderResponse {
+	s.Body = v
+	return s
+}
+
 type StartIndexResponseBody struct {
 	// id of request
 	//
@@ -15942,6 +17675,591 @@ func (s *UpdateInstanceResponse) SetBody(v *UpdateInstanceResponseBody) *UpdateI
 	return s
 }
 
+type UpdateSqlInstanceContentRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// select 	- from test
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+}
+
+func (s UpdateSqlInstanceContentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSqlInstanceContentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSqlInstanceContentRequest) SetContent(v string) *UpdateSqlInstanceContentRequest {
+	s.Content = &v
+	return s
+}
+
+type UpdateSqlInstanceContentResponseBody struct {
+	// id of request
+	//
+	// example:
+	//
+	// E45380E8-994A-5402-9806-F114B3295FCF
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// InstanceVersionVO
+	Result *UpdateSqlInstanceContentResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+}
+
+func (s UpdateSqlInstanceContentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSqlInstanceContentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSqlInstanceContentResponseBody) SetRequestId(v string) *UpdateSqlInstanceContentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateSqlInstanceContentResponseBody) SetResult(v *UpdateSqlInstanceContentResponseBodyResult) *UpdateSqlInstanceContentResponseBody {
+	s.Result = v
+	return s
+}
+
+type UpdateSqlInstanceContentResponseBodyResult struct {
+	// example:
+	//
+	// {\\"trace\\":\\"INFO\\",\\"databaseName\\":\\"general\\",\\"iquan.plan.cache.enable\\":true,\\"iquan.plan.prepare.level\\":\\"jni.post.optimize\\",\\"urlencode_data\\":false,\\"formatType\\":\\"string\\",\\"timeout\\":1000}
+	CombineParams *string `json:"combineParams,omitempty" xml:"combineParams,omitempty"`
+	Comment       *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	// example:
+	//
+	// select 	- from test
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// {\\"trace\\":\\"INFO\\",\\"databaseName\\":\\"general\\",\\"iquan.plan.cache.enable\\":true,\\"iquan.plan.prepare.level\\":\\"jni.post.optimize\\",\\"urlencode_data\\":false,\\"formatType\\":\\"string\\",\\"timeout\\":1000}
+	DynamicParams *string `json:"dynamicParams,omitempty" xml:"dynamicParams,omitempty"`
+	// example:
+	//
+	// 1719221186114
+	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// example:
+	//
+	// 1719221186114
+	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// example:
+	//
+	// 1
+	InstanceId *int64 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// {\\"trace\\":\\"INFO\\",\\"databaseName\\":\\"general\\",\\"iquan.plan.cache.enable\\":true,\\"iquan.plan.prepare.level\\":\\"jni.post.optimize\\",\\"urlencode_data\\":false,\\"formatType\\":\\"string\\",\\"timeout\\":1000}
+	Kvpairs *string `json:"kvpairs,omitempty" xml:"kvpairs,omitempty"`
+	// example:
+	//
+	// 1
+	RelatedTemplateId *int64 `json:"relatedTemplateId,omitempty" xml:"relatedTemplateId,omitempty"`
+	// example:
+	//
+	// {\\"trace\\":\\"INFO\\",\\"databaseName\\":\\"general\\",\\"iquan.plan.cache.enable\\":true,\\"iquan.plan.prepare.level\\":\\"jni.post.optimize\\",\\"urlencode_data\\":false,\\"formatType\\":\\"string\\",\\"timeout\\":1000}
+	StaticParams *string `json:"staticParams,omitempty" xml:"staticParams,omitempty"`
+	// example:
+	//
+	// {\\"trace\\":\\"INFO\\",\\"databaseName\\":\\"general\\",\\"iquan.plan.cache.enable\\":true,\\"iquan.plan.prepare.level\\":\\"jni.post.optimize\\",\\"urlencode_data\\":false,\\"formatType\\":\\"string\\",\\"timeout\\":1000}
+	TemplateParams *string `json:"templateParams,omitempty" xml:"templateParams,omitempty"`
+	// example:
+	//
+	// 1
+	Version *int64 `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s UpdateSqlInstanceContentResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSqlInstanceContentResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSqlInstanceContentResponseBodyResult) SetCombineParams(v string) *UpdateSqlInstanceContentResponseBodyResult {
+	s.CombineParams = &v
+	return s
+}
+
+func (s *UpdateSqlInstanceContentResponseBodyResult) SetComment(v string) *UpdateSqlInstanceContentResponseBodyResult {
+	s.Comment = &v
+	return s
+}
+
+func (s *UpdateSqlInstanceContentResponseBodyResult) SetContent(v string) *UpdateSqlInstanceContentResponseBodyResult {
+	s.Content = &v
+	return s
+}
+
+func (s *UpdateSqlInstanceContentResponseBodyResult) SetDynamicParams(v string) *UpdateSqlInstanceContentResponseBodyResult {
+	s.DynamicParams = &v
+	return s
+}
+
+func (s *UpdateSqlInstanceContentResponseBodyResult) SetGmtCreate(v string) *UpdateSqlInstanceContentResponseBodyResult {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *UpdateSqlInstanceContentResponseBodyResult) SetGmtModified(v string) *UpdateSqlInstanceContentResponseBodyResult {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *UpdateSqlInstanceContentResponseBodyResult) SetInstanceId(v int64) *UpdateSqlInstanceContentResponseBodyResult {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateSqlInstanceContentResponseBodyResult) SetKvpairs(v string) *UpdateSqlInstanceContentResponseBodyResult {
+	s.Kvpairs = &v
+	return s
+}
+
+func (s *UpdateSqlInstanceContentResponseBodyResult) SetRelatedTemplateId(v int64) *UpdateSqlInstanceContentResponseBodyResult {
+	s.RelatedTemplateId = &v
+	return s
+}
+
+func (s *UpdateSqlInstanceContentResponseBodyResult) SetStaticParams(v string) *UpdateSqlInstanceContentResponseBodyResult {
+	s.StaticParams = &v
+	return s
+}
+
+func (s *UpdateSqlInstanceContentResponseBodyResult) SetTemplateParams(v string) *UpdateSqlInstanceContentResponseBodyResult {
+	s.TemplateParams = &v
+	return s
+}
+
+func (s *UpdateSqlInstanceContentResponseBodyResult) SetVersion(v int64) *UpdateSqlInstanceContentResponseBodyResult {
+	s.Version = &v
+	return s
+}
+
+type UpdateSqlInstanceContentResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateSqlInstanceContentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateSqlInstanceContentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSqlInstanceContentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSqlInstanceContentResponse) SetHeaders(v map[string]*string) *UpdateSqlInstanceContentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSqlInstanceContentResponse) SetStatusCode(v int32) *UpdateSqlInstanceContentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSqlInstanceContentResponse) SetBody(v *UpdateSqlInstanceContentResponseBody) *UpdateSqlInstanceContentResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateSqlInstanceNameRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s UpdateSqlInstanceNameRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSqlInstanceNameRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSqlInstanceNameRequest) SetName(v string) *UpdateSqlInstanceNameRequest {
+	s.Name = &v
+	return s
+}
+
+type UpdateSqlInstanceNameResponseBody struct {
+	// id of request
+	//
+	// example:
+	//
+	// E7B7D598-B080-5C8E-AA35-D43EC0D5F886
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// NodeVO
+	Result *UpdateSqlInstanceNameResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+}
+
+func (s UpdateSqlInstanceNameResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSqlInstanceNameResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSqlInstanceNameResponseBody) SetRequestId(v string) *UpdateSqlInstanceNameResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateSqlInstanceNameResponseBody) SetResult(v *UpdateSqlInstanceNameResponseBodyResult) *UpdateSqlInstanceNameResponseBody {
+	s.Result = v
+	return s
+}
+
+type UpdateSqlInstanceNameResponseBodyResult struct {
+	// example:
+	//
+	// 1719220182844
+	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// example:
+	//
+	// 1719221186114
+	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// example:
+	//
+	// 22
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 1
+	InstanceId *int64 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// true
+	IsDir *int32 `json:"isDir,omitempty" xml:"isDir,omitempty"`
+	// example:
+	//
+	// general
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// -1
+	Parent *int64 `json:"parent,omitempty" xml:"parent,omitempty"`
+	// example:
+	//
+	// 1
+	TemplateId *int64 `json:"templateId,omitempty" xml:"templateId,omitempty"`
+	// table, instance, template, function
+	//
+	// example:
+	//
+	// instance
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s UpdateSqlInstanceNameResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSqlInstanceNameResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSqlInstanceNameResponseBodyResult) SetGmtCreate(v string) *UpdateSqlInstanceNameResponseBodyResult {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *UpdateSqlInstanceNameResponseBodyResult) SetGmtModified(v string) *UpdateSqlInstanceNameResponseBodyResult {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *UpdateSqlInstanceNameResponseBodyResult) SetId(v int64) *UpdateSqlInstanceNameResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateSqlInstanceNameResponseBodyResult) SetInstanceId(v int64) *UpdateSqlInstanceNameResponseBodyResult {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateSqlInstanceNameResponseBodyResult) SetIsDir(v int32) *UpdateSqlInstanceNameResponseBodyResult {
+	s.IsDir = &v
+	return s
+}
+
+func (s *UpdateSqlInstanceNameResponseBodyResult) SetName(v string) *UpdateSqlInstanceNameResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateSqlInstanceNameResponseBodyResult) SetParent(v int64) *UpdateSqlInstanceNameResponseBodyResult {
+	s.Parent = &v
+	return s
+}
+
+func (s *UpdateSqlInstanceNameResponseBodyResult) SetTemplateId(v int64) *UpdateSqlInstanceNameResponseBodyResult {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *UpdateSqlInstanceNameResponseBodyResult) SetType(v string) *UpdateSqlInstanceNameResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+type UpdateSqlInstanceNameResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateSqlInstanceNameResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateSqlInstanceNameResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSqlInstanceNameResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSqlInstanceNameResponse) SetHeaders(v map[string]*string) *UpdateSqlInstanceNameResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSqlInstanceNameResponse) SetStatusCode(v int32) *UpdateSqlInstanceNameResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSqlInstanceNameResponse) SetBody(v *UpdateSqlInstanceNameResponseBody) *UpdateSqlInstanceNameResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateSqlInstanceParamsRequest struct {
+	CombineParam map[string]interface{} `json:"combineParam,omitempty" xml:"combineParam,omitempty"`
+	DynamicParam map[string]interface{} `json:"dynamicParam,omitempty" xml:"dynamicParam,omitempty"`
+	Kvpair       map[string]interface{} `json:"kvpair,omitempty" xml:"kvpair,omitempty"`
+	Params       map[string]interface{} `json:"params,omitempty" xml:"params,omitempty"`
+	StaticParam  map[string]interface{} `json:"staticParam,omitempty" xml:"staticParam,omitempty"`
+}
+
+func (s UpdateSqlInstanceParamsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSqlInstanceParamsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSqlInstanceParamsRequest) SetCombineParam(v map[string]interface{}) *UpdateSqlInstanceParamsRequest {
+	s.CombineParam = v
+	return s
+}
+
+func (s *UpdateSqlInstanceParamsRequest) SetDynamicParam(v map[string]interface{}) *UpdateSqlInstanceParamsRequest {
+	s.DynamicParam = v
+	return s
+}
+
+func (s *UpdateSqlInstanceParamsRequest) SetKvpair(v map[string]interface{}) *UpdateSqlInstanceParamsRequest {
+	s.Kvpair = v
+	return s
+}
+
+func (s *UpdateSqlInstanceParamsRequest) SetParams(v map[string]interface{}) *UpdateSqlInstanceParamsRequest {
+	s.Params = v
+	return s
+}
+
+func (s *UpdateSqlInstanceParamsRequest) SetStaticParam(v map[string]interface{}) *UpdateSqlInstanceParamsRequest {
+	s.StaticParam = v
+	return s
+}
+
+type UpdateSqlInstanceParamsResponseBody struct {
+	// id of request
+	//
+	// example:
+	//
+	// 022F36C7-9FB4-5D67-BEBC-3D14B0984463
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// InstanceVersionVO
+	Result *UpdateSqlInstanceParamsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+}
+
+func (s UpdateSqlInstanceParamsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSqlInstanceParamsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSqlInstanceParamsResponseBody) SetRequestId(v string) *UpdateSqlInstanceParamsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateSqlInstanceParamsResponseBody) SetResult(v *UpdateSqlInstanceParamsResponseBodyResult) *UpdateSqlInstanceParamsResponseBody {
+	s.Result = v
+	return s
+}
+
+type UpdateSqlInstanceParamsResponseBodyResult struct {
+	// example:
+	//
+	// {\\"trace\\":\\"INFO\\",\\"databaseName\\":\\"general\\",\\"iquan.plan.cache.enable\\":true,\\"iquan.plan.prepare.level\\":\\"jni.post.optimize\\",\\"urlencode_data\\":false,\\"formatType\\":\\"string\\",\\"timeout\\":1000}
+	CombineParams *string `json:"combineParams,omitempty" xml:"combineParams,omitempty"`
+	Comment       *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	// example:
+	//
+	// select 	- from test
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// {\\"trace\\":\\"INFO\\",\\"databaseName\\":\\"general\\",\\"iquan.plan.cache.enable\\":true,\\"iquan.plan.prepare.level\\":\\"jni.post.optimize\\",\\"urlencode_data\\":false,\\"formatType\\":\\"string\\",\\"timeout\\":1000}
+	DynamicParams *string `json:"dynamicParams,omitempty" xml:"dynamicParams,omitempty"`
+	// example:
+	//
+	// 1719221186114
+	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// example:
+	//
+	// 1719220182844
+	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// example:
+	//
+	// 1
+	InstanceId *int64 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// {\\"trace\\":\\"INFO\\",\\"databaseName\\":\\"general\\",\\"iquan.plan.cache.enable\\":true,\\"iquan.plan.prepare.level\\":\\"jni.post.optimize\\",\\"urlencode_data\\":false,\\"formatType\\":\\"string\\",\\"timeout\\":1000}
+	Kvpairs *string `json:"kvpairs,omitempty" xml:"kvpairs,omitempty"`
+	// example:
+	//
+	// 1
+	RelatedTemplateId *int64 `json:"relatedTemplateId,omitempty" xml:"relatedTemplateId,omitempty"`
+	// example:
+	//
+	// {\\"trace\\":\\"INFO\\",\\"databaseName\\":\\"general\\",\\"iquan.plan.cache.enable\\":true,\\"iquan.plan.prepare.level\\":\\"jni.post.optimize\\",\\"urlencode_data\\":false,\\"formatType\\":\\"string\\",\\"timeout\\":1000}
+	StaticParams *string `json:"staticParams,omitempty" xml:"staticParams,omitempty"`
+	// example:
+	//
+	// {\\"trace\\":\\"INFO\\",\\"databaseName\\":\\"general\\",\\"iquan.plan.cache.enable\\":true,\\"iquan.plan.prepare.level\\":\\"jni.post.optimize\\",\\"urlencode_data\\":false,\\"formatType\\":\\"string\\",\\"timeout\\":1000}
+	TemplateParams *string `json:"templateParams,omitempty" xml:"templateParams,omitempty"`
+	// example:
+	//
+	// 1
+	Version *int64 `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s UpdateSqlInstanceParamsResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSqlInstanceParamsResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSqlInstanceParamsResponseBodyResult) SetCombineParams(v string) *UpdateSqlInstanceParamsResponseBodyResult {
+	s.CombineParams = &v
+	return s
+}
+
+func (s *UpdateSqlInstanceParamsResponseBodyResult) SetComment(v string) *UpdateSqlInstanceParamsResponseBodyResult {
+	s.Comment = &v
+	return s
+}
+
+func (s *UpdateSqlInstanceParamsResponseBodyResult) SetContent(v string) *UpdateSqlInstanceParamsResponseBodyResult {
+	s.Content = &v
+	return s
+}
+
+func (s *UpdateSqlInstanceParamsResponseBodyResult) SetDynamicParams(v string) *UpdateSqlInstanceParamsResponseBodyResult {
+	s.DynamicParams = &v
+	return s
+}
+
+func (s *UpdateSqlInstanceParamsResponseBodyResult) SetGmtCreate(v string) *UpdateSqlInstanceParamsResponseBodyResult {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *UpdateSqlInstanceParamsResponseBodyResult) SetGmtModified(v string) *UpdateSqlInstanceParamsResponseBodyResult {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *UpdateSqlInstanceParamsResponseBodyResult) SetInstanceId(v int64) *UpdateSqlInstanceParamsResponseBodyResult {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateSqlInstanceParamsResponseBodyResult) SetKvpairs(v string) *UpdateSqlInstanceParamsResponseBodyResult {
+	s.Kvpairs = &v
+	return s
+}
+
+func (s *UpdateSqlInstanceParamsResponseBodyResult) SetRelatedTemplateId(v int64) *UpdateSqlInstanceParamsResponseBodyResult {
+	s.RelatedTemplateId = &v
+	return s
+}
+
+func (s *UpdateSqlInstanceParamsResponseBodyResult) SetStaticParams(v string) *UpdateSqlInstanceParamsResponseBodyResult {
+	s.StaticParams = &v
+	return s
+}
+
+func (s *UpdateSqlInstanceParamsResponseBodyResult) SetTemplateParams(v string) *UpdateSqlInstanceParamsResponseBodyResult {
+	s.TemplateParams = &v
+	return s
+}
+
+func (s *UpdateSqlInstanceParamsResponseBodyResult) SetVersion(v int64) *UpdateSqlInstanceParamsResponseBodyResult {
+	s.Version = &v
+	return s
+}
+
+type UpdateSqlInstanceParamsResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateSqlInstanceParamsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateSqlInstanceParamsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSqlInstanceParamsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSqlInstanceParamsResponse) SetHeaders(v map[string]*string) *UpdateSqlInstanceParamsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSqlInstanceParamsResponse) SetStatusCode(v int32) *UpdateSqlInstanceParamsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSqlInstanceParamsResponse) SetBody(v *UpdateSqlInstanceParamsResponseBody) *UpdateSqlInstanceParamsResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -16158,6 +18476,66 @@ func (client *Client) ChangeResourceGroup(instanceId *string, request *ChangeRes
 	headers := make(map[string]*string)
 	_result = &ChangeResourceGroupResponse{}
 	_body, _err := client.ChangeResourceGroupWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - CloneSqlInstanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloneSqlInstanceResponse
+func (client *Client) CloneSqlInstanceWithOptions(instanceId *string, database *string, sqlInstanceId *string, request *CloneSqlInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CloneSqlInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetFolderId)) {
+		body["targetFolderId"] = request.TargetFolderId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CloneSqlInstance"),
+		Version:     tea.String("2021-10-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/ha3/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/sql-studio/databases/" + tea.StringValue(openapiutil.GetEncodeParam(database)) + "/sql-instances/" + tea.StringValue(openapiutil.GetEncodeParam(sqlInstanceId)) + "/actions/clone"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CloneSqlInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - CloneSqlInstanceRequest
+//
+// @return CloneSqlInstanceResponse
+func (client *Client) CloneSqlInstance(instanceId *string, database *string, sqlInstanceId *string, request *CloneSqlInstanceRequest) (_result *CloneSqlInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CloneSqlInstanceResponse{}
+	_body, _err := client.CloneSqlInstanceWithOptions(instanceId, database, sqlInstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16479,6 +18857,70 @@ func (client *Client) CreateDataSource(instanceId *string, request *CreateDataSo
 	return _result, _err
 }
 
+// @param request - CreateFolderRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFolderResponse
+func (client *Client) CreateFolderWithOptions(instanceId *string, database *string, request *CreateFolderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateFolderResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parent)) {
+		body["parent"] = request.Parent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateFolder"),
+		Version:     tea.String("2021-10-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/ha3/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/sql-studio/databases/" + tea.StringValue(openapiutil.GetEncodeParam(database)) + "/folders"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateFolderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - CreateFolderRequest
+//
+// @return CreateFolderResponse
+func (client *Client) CreateFolder(instanceId *string, database *string, request *CreateFolderRequest) (_result *CreateFolderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateFolderResponse{}
+	_body, _err := client.CreateFolderWithOptions(instanceId, database, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Creates an index.
@@ -16752,6 +19194,66 @@ func (client *Client) CreatePublicUrl(instanceId *string) (_result *CreatePublic
 	headers := make(map[string]*string)
 	_result = &CreatePublicUrlResponse{}
 	_body, _err := client.CreatePublicUrlWithOptions(instanceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - CreateSqlInstanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSqlInstanceResponse
+func (client *Client) CreateSqlInstanceWithOptions(instanceId *string, database *string, request *CreateSqlInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateSqlInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parent)) {
+		body["parent"] = request.Parent
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSqlInstance"),
+		Version:     tea.String("2021-10-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/ha3/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/sql-studio/databases/" + tea.StringValue(openapiutil.GetEncodeParam(database)) + "/sql-instances"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSqlInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - CreateSqlInstanceRequest
+//
+// @return CreateSqlInstanceResponse
+func (client *Client) CreateSqlInstance(instanceId *string, database *string, request *CreateSqlInstanceRequest) (_result *CreateSqlInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateSqlInstanceResponse{}
+	_body, _err := client.CreateSqlInstanceWithOptions(instanceId, database, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17121,6 +19623,48 @@ func (client *Client) DeleteDataSource(instanceId *string, dataSourceName *strin
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFolderResponse
+func (client *Client) DeleteFolderWithOptions(instanceId *string, database *string, folderId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteFolderResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteFolder"),
+		Version:     tea.String("2021-10-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/ha3/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/sql-studio/databases/" + tea.StringValue(openapiutil.GetEncodeParam(database)) + "/folders/" + tea.StringValue(openapiutil.GetEncodeParam(folderId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteFolderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @return DeleteFolderResponse
+func (client *Client) DeleteFolder(instanceId *string, database *string, folderId *string) (_result *DeleteFolderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteFolderResponse{}
+	_body, _err := client.DeleteFolderWithOptions(instanceId, database, folderId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Deletes an index.
@@ -17399,6 +19943,48 @@ func (client *Client) DeletePublicUrl(instanceId *string) (_result *DeletePublic
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSqlInstanceResponse
+func (client *Client) DeleteSqlInstanceWithOptions(instanceId *string, database *string, sqlInstanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteSqlInstanceResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSqlInstance"),
+		Version:     tea.String("2021-10-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/ha3/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/sql-studio/databases/" + tea.StringValue(openapiutil.GetEncodeParam(database)) + "/sql-instances/" + tea.StringValue(openapiutil.GetEncodeParam(sqlInstanceId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteSqlInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @return DeleteSqlInstanceResponse
+func (client *Client) DeleteSqlInstance(instanceId *string, database *string, sqlInstanceId *string) (_result *DeleteSqlInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteSqlInstanceResponse{}
+	_body, _err := client.DeleteSqlInstanceWithOptions(instanceId, database, sqlInstanceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // 删除索引表V2
@@ -17498,6 +20084,86 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	headers := make(map[string]*string)
 	_result = &DescribeRegionsResponse{}
 	_body, _err := client.DescribeRegionsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ExecuteSqlInstanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteSqlInstanceResponse
+func (client *Client) ExecuteSqlInstanceWithOptions(instanceId *string, database *string, sqlInstanceId *string, request *ExecuteSqlInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecuteSqlInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CombineParam)) {
+		body["combineParam"] = request.CombineParam
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		body["domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DynamicParam)) {
+		body["dynamicParam"] = request.DynamicParam
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Kvpair)) {
+		body["kvpair"] = request.Kvpair
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		body["params"] = request.Params
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StaticParam)) {
+		body["staticParam"] = request.StaticParam
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteSqlInstance"),
+		Version:     tea.String("2021-10-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/ha3/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/sql-studio/databases/" + tea.StringValue(openapiutil.GetEncodeParam(database)) + "/sql-instances/" + tea.StringValue(openapiutil.GetEncodeParam(sqlInstanceId)) + "/actions/execution"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExecuteSqlInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ExecuteSqlInstanceRequest
+//
+// @return ExecuteSqlInstanceResponse
+func (client *Client) ExecuteSqlInstance(instanceId *string, database *string, sqlInstanceId *string, request *ExecuteSqlInstanceRequest) (_result *ExecuteSqlInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ExecuteSqlInstanceResponse{}
+	_body, _err := client.ExecuteSqlInstanceWithOptions(instanceId, database, sqlInstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18019,6 +20685,48 @@ func (client *Client) GetDataSourceDeploy(instanceId *string, deployName *string
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDatabaseSchemaResponse
+func (client *Client) GetDatabaseSchemaWithOptions(instanceId *string, database *string, tableName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDatabaseSchemaResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDatabaseSchema"),
+		Version:     tea.String("2021-10-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/ha3/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/sql-studio/databases/" + tea.StringValue(openapiutil.GetEncodeParam(database)) + "/tables/" + tea.StringValue(openapiutil.GetEncodeParam(tableName)) + "/schema"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDatabaseSchemaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @return GetDatabaseSchemaResponse
+func (client *Client) GetDatabaseSchema(instanceId *string, database *string, tableName *string) (_result *GetDatabaseSchemaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetDatabaseSchemaResponse{}
+	_body, _err := client.GetDatabaseSchemaWithOptions(instanceId, database, tableName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Displays the overview of the deployment.
@@ -18486,6 +21194,62 @@ func (client *Client) GetNodeConfig(instanceId *string, request *GetNodeConfigRe
 	headers := make(map[string]*string)
 	_result = &GetNodeConfigResponse{}
 	_body, _err := client.GetNodeConfigWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - GetSqlInstanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSqlInstanceResponse
+func (client *Client) GetSqlInstanceWithOptions(instanceId *string, database *string, sqlInstanceId *string, request *GetSqlInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSqlInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["version"] = request.Version
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSqlInstance"),
+		Version:     tea.String("2021-10-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/ha3/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/sql-studio/databases/" + tea.StringValue(openapiutil.GetEncodeParam(database)) + "/sql-instances/" + tea.StringValue(openapiutil.GetEncodeParam(sqlInstanceId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSqlInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - GetSqlInstanceRequest
+//
+// @return GetSqlInstanceResponse
+func (client *Client) GetSqlInstance(instanceId *string, database *string, sqlInstanceId *string, request *GetSqlInstanceRequest) (_result *GetSqlInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetSqlInstanceResponse{}
+	_body, _err := client.GetSqlInstanceWithOptions(instanceId, database, sqlInstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19226,6 +21990,48 @@ func (client *Client) ListDataSources(instanceId *string) (_result *ListDataSour
 	headers := make(map[string]*string)
 	_result = &ListDataSourcesResponse{}
 	_body, _err := client.ListDataSourcesWithOptions(instanceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDatabasesResponse
+func (client *Client) ListDatabasesWithOptions(instanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDatabasesResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDatabases"),
+		Version:     tea.String("2021-10-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/ha3/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/sql-studio/databases"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDatabasesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @return ListDatabasesResponse
+func (client *Client) ListDatabases(instanceId *string) (_result *ListDatabasesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListDatabasesResponse{}
+	_body, _err := client.ListDatabasesWithOptions(instanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20893,96 +23699,6 @@ func (client *Client) ModifyClusterOnlineConfig(instanceId *string, request *Mod
 
 // Summary:
 //
-// Modifies a data source.
-//
-// Description:
-//
-// ## Method
-//
-// `PUT`
-//
-// ## URI
-//
-// `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}`
-//
-// @param request - ModifyDataSourceRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ModifyDataSourceResponse
-func (client *Client) ModifyDataSourceWithOptions(instanceId *string, dataSourceName *string, request *ModifyDataSourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ModifyDataSourceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
-		query["dryRun"] = request.DryRun
-	}
-
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Body)) {
-		body["body"] = request.Body
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ModifyDataSource"),
-		Version:     tea.String("2021-10-25"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/openapi/ha3/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/data-sources/" + tea.StringValue(openapiutil.GetEncodeParam(dataSourceName))),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ModifyDataSourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies a data source.
-//
-// Description:
-//
-// ## Method
-//
-// `PUT`
-//
-// ## URI
-//
-// `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}`
-//
-// @param request - ModifyDataSourceRequest
-//
-// @return ModifyDataSourceResponse
-func (client *Client) ModifyDataSource(instanceId *string, dataSourceName *string, request *ModifyDataSourceRequest) (_result *ModifyDataSourceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ModifyDataSourceResponse{}
-	_body, _err := client.ModifyDataSourceWithOptions(instanceId, dataSourceName, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // 修改数据源部署信息
 //
 // @param request - ModifyDataSourceDeployRequest
@@ -22549,6 +25265,62 @@ func (client *Client) RemoveCluster(instanceId *string, clusterName *string) (_r
 	return _result, _err
 }
 
+// @param request - RenameFolderRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RenameFolderResponse
+func (client *Client) RenameFolderWithOptions(instanceId *string, database *string, folderId *string, request *RenameFolderRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RenameFolderResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RenameFolder"),
+		Version:     tea.String("2021-10-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/ha3/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/sql-studio/databases/" + tea.StringValue(openapiutil.GetEncodeParam(database)) + "/folders/" + tea.StringValue(openapiutil.GetEncodeParam(folderId)) + "/name"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RenameFolderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - RenameFolderRequest
+//
+// @return RenameFolderResponse
+func (client *Client) RenameFolder(instanceId *string, database *string, folderId *string, request *RenameFolderRequest) (_result *RenameFolderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RenameFolderResponse{}
+	_body, _err := client.RenameFolderWithOptions(instanceId, database, folderId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -22962,6 +25734,190 @@ func (client *Client) UpdateInstance(instanceId *string, request *UpdateInstance
 	headers := make(map[string]*string)
 	_result = &UpdateInstanceResponse{}
 	_body, _err := client.UpdateInstanceWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - UpdateSqlInstanceContentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSqlInstanceContentResponse
+func (client *Client) UpdateSqlInstanceContentWithOptions(instanceId *string, database *string, sqlInstanceId *string, request *UpdateSqlInstanceContentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateSqlInstanceContentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["content"] = request.Content
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSqlInstanceContent"),
+		Version:     tea.String("2021-10-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/ha3/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/sql-studio/databases/" + tea.StringValue(openapiutil.GetEncodeParam(database)) + "/sql-instances/" + tea.StringValue(openapiutil.GetEncodeParam(sqlInstanceId)) + "/content"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateSqlInstanceContentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpdateSqlInstanceContentRequest
+//
+// @return UpdateSqlInstanceContentResponse
+func (client *Client) UpdateSqlInstanceContent(instanceId *string, database *string, sqlInstanceId *string, request *UpdateSqlInstanceContentRequest) (_result *UpdateSqlInstanceContentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateSqlInstanceContentResponse{}
+	_body, _err := client.UpdateSqlInstanceContentWithOptions(instanceId, database, sqlInstanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - UpdateSqlInstanceNameRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSqlInstanceNameResponse
+func (client *Client) UpdateSqlInstanceNameWithOptions(instanceId *string, database *string, sqlInstanceId *string, request *UpdateSqlInstanceNameRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateSqlInstanceNameResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSqlInstanceName"),
+		Version:     tea.String("2021-10-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/ha3/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/sql-studio/databases/" + tea.StringValue(openapiutil.GetEncodeParam(database)) + "/sql-instances/" + tea.StringValue(openapiutil.GetEncodeParam(sqlInstanceId)) + "/name"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateSqlInstanceNameResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpdateSqlInstanceNameRequest
+//
+// @return UpdateSqlInstanceNameResponse
+func (client *Client) UpdateSqlInstanceName(instanceId *string, database *string, sqlInstanceId *string, request *UpdateSqlInstanceNameRequest) (_result *UpdateSqlInstanceNameResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateSqlInstanceNameResponse{}
+	_body, _err := client.UpdateSqlInstanceNameWithOptions(instanceId, database, sqlInstanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - UpdateSqlInstanceParamsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSqlInstanceParamsResponse
+func (client *Client) UpdateSqlInstanceParamsWithOptions(instanceId *string, database *string, sqlInstanceId *string, request *UpdateSqlInstanceParamsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateSqlInstanceParamsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CombineParam)) {
+		body["combineParam"] = request.CombineParam
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DynamicParam)) {
+		body["dynamicParam"] = request.DynamicParam
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Kvpair)) {
+		body["kvpair"] = request.Kvpair
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		body["params"] = request.Params
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StaticParam)) {
+		body["staticParam"] = request.StaticParam
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSqlInstanceParams"),
+		Version:     tea.String("2021-10-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/ha3/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/sql-studio/databases/" + tea.StringValue(openapiutil.GetEncodeParam(database)) + "/sql-instances/" + tea.StringValue(openapiutil.GetEncodeParam(sqlInstanceId)) + "/params"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateSqlInstanceParamsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpdateSqlInstanceParamsRequest
+//
+// @return UpdateSqlInstanceParamsResponse
+func (client *Client) UpdateSqlInstanceParams(instanceId *string, database *string, sqlInstanceId *string, request *UpdateSqlInstanceParamsRequest) (_result *UpdateSqlInstanceParamsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateSqlInstanceParamsResponse{}
+	_body, _err := client.UpdateSqlInstanceParamsWithOptions(instanceId, database, sqlInstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

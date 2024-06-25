@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/searchengine-20211025/v2
+module github.com/alibabacloud-go/searchengine-20211025/v3
 
 go 1.15
 
