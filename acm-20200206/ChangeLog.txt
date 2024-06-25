@@ -1,3 +1,7 @@
+2024-06-25 Version: v2.0.1
+- Update API DescribeConfiguration: update response param.
+
+
 2022-09-23 Version: v2.0.0
 - Generated golang 2020-02-06 for acm.
 

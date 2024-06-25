@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,7 +10,9 @@ import (
 )
 
 type BatchExportConfigurationsRequest struct {
-	Data        *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// This parameter is required.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// This parameter is required.
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 }
 
@@ -71,9 +70,9 @@ func (s *BatchExportConfigurationsResponseBody) SetRequestId(v string) *BatchExp
 }
 
 type BatchExportConfigurationsResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BatchExportConfigurationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchExportConfigurationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BatchExportConfigurationsResponse) String() string {
@@ -100,9 +99,12 @@ func (s *BatchExportConfigurationsResponse) SetBody(v *BatchExportConfigurations
 }
 
 type BatchImportConfigurationsRequest struct {
-	FileUrl     *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// This parameter is required.
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// This parameter is required.
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	Policy      *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// This parameter is required.
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 }
 
 func (s BatchImportConfigurationsRequest) String() string {
@@ -158,9 +160,9 @@ func (s *BatchImportConfigurationsResponseBody) SetRequestId(v string) *BatchImp
 }
 
 type BatchImportConfigurationsResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BatchImportConfigurationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchImportConfigurationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BatchImportConfigurationsResponse) String() string {
@@ -187,10 +189,14 @@ func (s *BatchImportConfigurationsResponse) SetBody(v *BatchImportConfigurations
 }
 
 type CheckConfigurationCloneRequest struct {
-	Data          *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// This parameter is required.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// This parameter is required.
 	NamespaceFrom *string `json:"NamespaceFrom,omitempty" xml:"NamespaceFrom,omitempty"`
-	NamespaceTo   *string `json:"NamespaceTo,omitempty" xml:"NamespaceTo,omitempty"`
-	Policy        *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// This parameter is required.
+	NamespaceTo *string `json:"NamespaceTo,omitempty" xml:"NamespaceTo,omitempty"`
+	// This parameter is required.
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 }
 
 func (s CheckConfigurationCloneRequest) String() string {
@@ -309,9 +315,9 @@ func (s *CheckConfigurationCloneResponseBodyResultSuccessItems) SetGroup(v strin
 }
 
 type CheckConfigurationCloneResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CheckConfigurationCloneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CheckConfigurationCloneResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CheckConfigurationCloneResponse) String() string {
@@ -338,7 +344,9 @@ func (s *CheckConfigurationCloneResponse) SetBody(v *CheckConfigurationCloneResp
 }
 
 type CheckConfigurationExportRequest struct {
-	Data        *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// This parameter is required.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// This parameter is required.
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 }
 
@@ -413,9 +421,9 @@ func (s *CheckConfigurationExportResponseBodyResult) SetTotalCount(v int32) *Che
 }
 
 type CheckConfigurationExportResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CheckConfigurationExportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CheckConfigurationExportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CheckConfigurationExportResponse) String() string {
@@ -442,10 +450,14 @@ func (s *CheckConfigurationExportResponse) SetBody(v *CheckConfigurationExportRe
 }
 
 type CloneConfigurationRequest struct {
-	Data          *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// This parameter is required.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// This parameter is required.
 	NamespaceFrom *string `json:"NamespaceFrom,omitempty" xml:"NamespaceFrom,omitempty"`
-	NamespaceTo   *string `json:"NamespaceTo,omitempty" xml:"NamespaceTo,omitempty"`
-	Policy        *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// This parameter is required.
+	NamespaceTo *string `json:"NamespaceTo,omitempty" xml:"NamespaceTo,omitempty"`
+	// This parameter is required.
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 }
 
 func (s CloneConfigurationRequest) String() string {
@@ -564,9 +576,9 @@ func (s *CloneConfigurationResponseBodyResultSuccessItems) SetGroup(v string) *C
 }
 
 type CloneConfigurationResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CloneConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CloneConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CloneConfigurationResponse) String() string {
@@ -593,14 +605,45 @@ func (s *CloneConfigurationResponse) SetBody(v *CloneConfigurationResponseBody) 
 }
 
 type CreateConfigurationRequest struct {
-	AppName     *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	DataId      *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	Desc        *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	Group       *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// example:
+	//
+	// app
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// key=Hello;value=World
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// com.aliyun.acm.example
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	Desc   *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DEFAULT_GROUP
+	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 01146121-decf-4b47-****
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	Tags        *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// tag1,tag2
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// text
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateConfigurationRequest) String() string {
@@ -652,8 +695,17 @@ func (s *CreateConfigurationRequest) SetType(v string) *CreateConfigurationReque
 }
 
 type CreateConfigurationResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 132BF104-A660-40C7-936B-F805967*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -681,9 +733,9 @@ func (s *CreateConfigurationResponseBody) SetRequestId(v string) *CreateConfigur
 }
 
 type CreateConfigurationResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateConfigurationResponse) String() string {
@@ -710,6 +762,7 @@ func (s *CreateConfigurationResponse) SetBody(v *CreateConfigurationResponseBody
 }
 
 type CreateNamespaceRequest struct {
+	// This parameter is required.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -727,10 +780,22 @@ func (s *CreateNamespaceRequest) SetName(v string) *CreateNamespaceRequest {
 }
 
 type CreateNamespaceResponseBody struct {
-	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 3115d2bf-1f44-47bf-a855-****
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 6F7CC94A-7711-4873-8848-****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateNamespaceResponseBody) String() string {
@@ -762,9 +827,9 @@ func (s *CreateNamespaceResponseBody) SetRequestId(v string) *CreateNamespaceRes
 }
 
 type CreateNamespaceResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateNamespaceResponse) String() string {
@@ -791,8 +856,23 @@ func (s *CreateNamespaceResponse) SetBody(v *CreateNamespaceResponseBody) *Creat
 }
 
 type DeleteConfigurationRequest struct {
-	DataId      *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	Group       *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// com.aliyun.acm.example
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DEFAULT_GROUP
+	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10d1110d2-ca66-42ba-b706-****
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 }
 
@@ -820,8 +900,17 @@ func (s *DeleteConfigurationRequest) SetNamespaceId(v string) *DeleteConfigurati
 }
 
 type DeleteConfigurationResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 617CC94A-0019-4873-8848-****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -849,9 +938,9 @@ func (s *DeleteConfigurationResponseBody) SetRequestId(v string) *DeleteConfigur
 }
 
 type DeleteConfigurationResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteConfigurationResponse) String() string {
@@ -878,6 +967,11 @@ func (s *DeleteConfigurationResponse) SetBody(v *DeleteConfigurationResponseBody
 }
 
 type DeleteNamespaceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 112300d2-ca66-42ba-b706-****
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 }
 
@@ -895,8 +989,17 @@ func (s *DeleteNamespaceRequest) SetNamespaceId(v string) *DeleteNamespaceReques
 }
 
 type DeleteNamespaceResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 611CC94A-7711-4873-8848-****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -924,9 +1027,9 @@ func (s *DeleteNamespaceResponseBody) SetRequestId(v string) *DeleteNamespaceRes
 }
 
 type DeleteNamespaceResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteNamespaceResponse) String() string {
@@ -953,15 +1056,47 @@ func (s *DeleteNamespaceResponse) SetBody(v *DeleteNamespaceResponseBody) *Delet
 }
 
 type DeployConfigurationRequest struct {
-	AppName     *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	BetaIps     *string `json:"BetaIps,omitempty" xml:"BetaIps,omitempty"`
-	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	DataId      *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	Desc        *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	Group       *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// example:
+	//
+	// app
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	BetaIps *string `json:"BetaIps,omitempty" xml:"BetaIps,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Hello World
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// com.aliyun.acm.example
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	Desc   *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DEFAULT_GROUP
+	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 111000d2-ca66-42ba-b706-****
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	Tags        *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// tag1,tag2
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// example:
+	//
+	// text
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DeployConfigurationRequest) String() string {
@@ -1018,8 +1153,17 @@ func (s *DeployConfigurationRequest) SetType(v string) *DeployConfigurationReque
 }
 
 type DeployConfigurationResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 611CC94A-7711-4873-8848-****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1047,9 +1191,9 @@ func (s *DeployConfigurationResponseBody) SetRequestId(v string) *DeployConfigur
 }
 
 type DeployConfigurationResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeployConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeployConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeployConfigurationResponse) String() string {
@@ -1076,8 +1220,23 @@ func (s *DeployConfigurationResponse) SetBody(v *DeployConfigurationResponseBody
 }
 
 type DescribeConfigurationRequest struct {
-	DataId      *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	Group       *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// com.aliyun.acm.example
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DEFAULT_GROUP
+	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 101100d2-ca66-42ba-b706-****
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 }
 
@@ -1105,10 +1264,19 @@ func (s *DescribeConfigurationRequest) SetNamespaceId(v string) *DescribeConfigu
 }
 
 type DescribeConfigurationResponseBody struct {
+	// example:
+	//
+	// OK
 	Code          *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
 	Configuration *DescribeConfigurationResponseBodyConfiguration `json:"Configuration,omitempty" xml:"Configuration,omitempty" type:"Struct"`
-	Message       *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 611CC94A-7711-4873-8848-****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeConfigurationResponseBody) String() string {
@@ -1140,14 +1308,41 @@ func (s *DescribeConfigurationResponseBody) SetRequestId(v string) *DescribeConf
 }
 
 type DescribeConfigurationResponseBodyConfiguration struct {
+	// example:
+	//
+	// app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// Hello World
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	DataId  *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	Desc    *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	Group   *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	Md5     *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	Tags    *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// com.aliyun.acm.example
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	Desc   *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// if can be null:
+	// true
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// if can be null:
+	// true
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// DEFAULT_GROUP
+	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// example:
+	//
+	// 18d2e20****
+	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	// example:
+	//
+	// tag1,tag2
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// example:
+	//
+	// text
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeConfigurationResponseBodyConfiguration) String() string {
@@ -1178,6 +1373,16 @@ func (s *DescribeConfigurationResponseBodyConfiguration) SetDesc(v string) *Desc
 	return s
 }
 
+func (s *DescribeConfigurationResponseBodyConfiguration) SetGmtCreate(v string) *DescribeConfigurationResponseBodyConfiguration {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeConfigurationResponseBodyConfiguration) SetGmtModified(v string) *DescribeConfigurationResponseBodyConfiguration {
+	s.GmtModified = &v
+	return s
+}
+
 func (s *DescribeConfigurationResponseBodyConfiguration) SetGroup(v string) *DescribeConfigurationResponseBodyConfiguration {
 	s.Group = &v
 	return s
@@ -1199,9 +1404,9 @@ func (s *DescribeConfigurationResponseBodyConfiguration) SetType(v string) *Desc
 }
 
 type DescribeConfigurationResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeConfigurationResponse) String() string {
@@ -1228,6 +1433,7 @@ func (s *DescribeConfigurationResponse) SetBody(v *DescribeConfigurationResponse
 }
 
 type DescribeImportFileUrlRequest struct {
+	// This parameter is required.
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
 }
 
@@ -1280,9 +1486,9 @@ func (s *DescribeImportFileUrlResponseBody) SetRequestId(v string) *DescribeImpo
 }
 
 type DescribeImportFileUrlResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeImportFileUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeImportFileUrlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeImportFileUrlResponse) String() string {
@@ -1309,6 +1515,11 @@ func (s *DescribeImportFileUrlResponse) SetBody(v *DescribeImportFileUrlResponse
 }
 
 type DescribeNamespaceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3115d2bf-1f44-47bf-a855-****
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 }
 
@@ -1326,10 +1537,19 @@ func (s *DescribeNamespaceRequest) SetNamespaceId(v string) *DescribeNamespaceRe
 }
 
 type DescribeNamespaceResponseBody struct {
-	Code      *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// Success
 	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
 	Namespace *DescribeNamespaceResponseBodyNamespace `json:"Namespace,omitempty" xml:"Namespace,omitempty" type:"Struct"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 3116581E-C664-4D3A-A055-****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeNamespaceResponseBody) String() string {
@@ -1361,10 +1581,22 @@ func (s *DescribeNamespaceResponseBody) SetRequestId(v string) *DescribeNamespac
 }
 
 type DescribeNamespaceResponseBodyNamespace struct {
+	// example:
+	//
+	// 2c017****
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
-	Endpoint  *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// acm.aliyun.com
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 6/eQ0****
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
 }
 
@@ -1402,9 +1634,9 @@ func (s *DescribeNamespaceResponseBodyNamespace) SetSecretKey(v string) *Describ
 }
 
 type DescribeNamespaceResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeNamespaceResponse) String() string {
@@ -1431,10 +1663,19 @@ func (s *DescribeNamespaceResponse) SetBody(v *DescribeNamespaceResponseBody) *D
 }
 
 type DescribeNamespacesResponseBody struct {
-	Code       *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// Success
 	Message    *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
 	Namespaces []*DescribeNamespacesResponseBodyNamespaces `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
-	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 3116581E-C664-4D3A-A055-****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeNamespacesResponseBody) String() string {
@@ -1466,11 +1707,23 @@ func (s *DescribeNamespacesResponseBody) SetRequestId(v string) *DescribeNamespa
 }
 
 type DescribeNamespacesResponseBodyNamespaces struct {
-	ConfigCount   *int32  `json:"ConfigCount,omitempty" xml:"ConfigCount,omitempty"`
+	// example:
+	//
+	// 20
+	ConfigCount *int32 `json:"ConfigCount,omitempty" xml:"ConfigCount,omitempty"`
+	// example:
+	//
+	// 3115d2bf-1f44-47bf-a855-****
 	NamespaceId   *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	Quota         *int32  `json:"Quota,omitempty" xml:"Quota,omitempty"`
-	Type          *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 200
+	Quota *int32 `json:"Quota,omitempty" xml:"Quota,omitempty"`
+	// example:
+	//
+	// 1
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeNamespacesResponseBodyNamespaces) String() string {
@@ -1507,9 +1760,9 @@ func (s *DescribeNamespacesResponseBodyNamespaces) SetType(v int32) *DescribeNam
 }
 
 type DescribeNamespacesResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeNamespacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeNamespacesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeNamespacesResponse) String() string {
@@ -1612,9 +1865,9 @@ func (s *DescribeNamespacesWithCreateResponseBodyNamespaces) SetType(v int32) *D
 }
 
 type DescribeNamespacesWithCreateResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeNamespacesWithCreateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeNamespacesWithCreateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeNamespacesWithCreateResponse) String() string {
@@ -1641,9 +1894,12 @@ func (s *DescribeNamespacesWithCreateResponse) SetBody(v *DescribeNamespacesWith
 }
 
 type DescribeTraceByConfigurationRequest struct {
-	DataId      *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	EndTs       *string `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	Group       *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// This parameter is required.
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	EndTs  *string `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	// This parameter is required.
+	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// This parameter is required.
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	StartTs     *string `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
 }
@@ -1840,9 +2096,9 @@ func (s *DescribeTraceByConfigurationResponseBodyTracesEventGroupsEventDetails) 
 }
 
 type DescribeTraceByConfigurationResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeTraceByConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeTraceByConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeTraceByConfigurationResponse) String() string {
@@ -1869,7 +2125,13 @@ func (s *DescribeTraceByConfigurationResponse) SetBody(v *DescribeTraceByConfigu
 }
 
 type UpdateNamespaceRequest struct {
-	NamespaceId   *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 710b2fbe-0da3-4388-****
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// This parameter is required.
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 }
 
@@ -1892,8 +2154,17 @@ func (s *UpdateNamespaceRequest) SetNamespaceName(v string) *UpdateNamespaceRequ
 }
 
 type UpdateNamespaceResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 51193061-ED0D-4EC6-B160-****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1921,9 +2192,9 @@ func (s *UpdateNamespaceResponseBody) SetRequestId(v string) *UpdateNamespaceRes
 }
 
 type UpdateNamespaceResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateNamespaceResponse) String() string {
@@ -1996,18 +2267,13 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) BatchExportConfigurations(request *BatchExportConfigurationsRequest) (_result *BatchExportConfigurationsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &BatchExportConfigurationsResponse{}
-	_body, _err := client.BatchExportConfigurationsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
+// @param request - BatchExportConfigurationsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchExportConfigurationsResponse
 func (client *Client) BatchExportConfigurationsWithOptions(request *BatchExportConfigurationsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BatchExportConfigurationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2046,11 +2312,14 @@ func (client *Client) BatchExportConfigurationsWithOptions(request *BatchExportC
 	return _result, _err
 }
 
-func (client *Client) BatchImportConfigurations(request *BatchImportConfigurationsRequest) (_result *BatchImportConfigurationsResponse, _err error) {
+// @param request - BatchExportConfigurationsRequest
+//
+// @return BatchExportConfigurationsResponse
+func (client *Client) BatchExportConfigurations(request *BatchExportConfigurationsRequest) (_result *BatchExportConfigurationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &BatchImportConfigurationsResponse{}
-	_body, _err := client.BatchImportConfigurationsWithOptions(request, headers, runtime)
+	_result = &BatchExportConfigurationsResponse{}
+	_body, _err := client.BatchExportConfigurationsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2058,6 +2327,13 @@ func (client *Client) BatchImportConfigurations(request *BatchImportConfiguratio
 	return _result, _err
 }
 
+// @param request - BatchImportConfigurationsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchImportConfigurationsResponse
 func (client *Client) BatchImportConfigurationsWithOptions(request *BatchImportConfigurationsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BatchImportConfigurationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2100,11 +2376,14 @@ func (client *Client) BatchImportConfigurationsWithOptions(request *BatchImportC
 	return _result, _err
 }
 
-func (client *Client) CheckConfigurationClone(request *CheckConfigurationCloneRequest) (_result *CheckConfigurationCloneResponse, _err error) {
+// @param request - BatchImportConfigurationsRequest
+//
+// @return BatchImportConfigurationsResponse
+func (client *Client) BatchImportConfigurations(request *BatchImportConfigurationsRequest) (_result *BatchImportConfigurationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CheckConfigurationCloneResponse{}
-	_body, _err := client.CheckConfigurationCloneWithOptions(request, headers, runtime)
+	_result = &BatchImportConfigurationsResponse{}
+	_body, _err := client.BatchImportConfigurationsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2112,6 +2391,13 @@ func (client *Client) CheckConfigurationClone(request *CheckConfigurationCloneRe
 	return _result, _err
 }
 
+// @param request - CheckConfigurationCloneRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckConfigurationCloneResponse
 func (client *Client) CheckConfigurationCloneWithOptions(request *CheckConfigurationCloneRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CheckConfigurationCloneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2158,11 +2444,14 @@ func (client *Client) CheckConfigurationCloneWithOptions(request *CheckConfigura
 	return _result, _err
 }
 
-func (client *Client) CheckConfigurationExport(request *CheckConfigurationExportRequest) (_result *CheckConfigurationExportResponse, _err error) {
+// @param request - CheckConfigurationCloneRequest
+//
+// @return CheckConfigurationCloneResponse
+func (client *Client) CheckConfigurationClone(request *CheckConfigurationCloneRequest) (_result *CheckConfigurationCloneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CheckConfigurationExportResponse{}
-	_body, _err := client.CheckConfigurationExportWithOptions(request, headers, runtime)
+	_result = &CheckConfigurationCloneResponse{}
+	_body, _err := client.CheckConfigurationCloneWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2170,6 +2459,13 @@ func (client *Client) CheckConfigurationExport(request *CheckConfigurationExport
 	return _result, _err
 }
 
+// @param request - CheckConfigurationExportRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckConfigurationExportResponse
 func (client *Client) CheckConfigurationExportWithOptions(request *CheckConfigurationExportRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CheckConfigurationExportResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2208,11 +2504,14 @@ func (client *Client) CheckConfigurationExportWithOptions(request *CheckConfigur
 	return _result, _err
 }
 
-func (client *Client) CloneConfiguration(request *CloneConfigurationRequest) (_result *CloneConfigurationResponse, _err error) {
+// @param request - CheckConfigurationExportRequest
+//
+// @return CheckConfigurationExportResponse
+func (client *Client) CheckConfigurationExport(request *CheckConfigurationExportRequest) (_result *CheckConfigurationExportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CloneConfigurationResponse{}
-	_body, _err := client.CloneConfigurationWithOptions(request, headers, runtime)
+	_result = &CheckConfigurationExportResponse{}
+	_body, _err := client.CheckConfigurationExportWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2220,6 +2519,13 @@ func (client *Client) CloneConfiguration(request *CloneConfigurationRequest) (_r
 	return _result, _err
 }
 
+// @param request - CloneConfigurationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloneConfigurationResponse
 func (client *Client) CloneConfigurationWithOptions(request *CloneConfigurationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CloneConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2266,11 +2572,14 @@ func (client *Client) CloneConfigurationWithOptions(request *CloneConfigurationR
 	return _result, _err
 }
 
-func (client *Client) CreateConfiguration(request *CreateConfigurationRequest) (_result *CreateConfigurationResponse, _err error) {
+// @param request - CloneConfigurationRequest
+//
+// @return CloneConfigurationResponse
+func (client *Client) CloneConfiguration(request *CloneConfigurationRequest) (_result *CloneConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateConfigurationResponse{}
-	_body, _err := client.CreateConfigurationWithOptions(request, headers, runtime)
+	_result = &CloneConfigurationResponse{}
+	_body, _err := client.CloneConfigurationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2278,6 +2587,13 @@ func (client *Client) CreateConfiguration(request *CreateConfigurationRequest) (
 	return _result, _err
 }
 
+// @param request - CreateConfigurationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateConfigurationResponse
 func (client *Client) CreateConfigurationWithOptions(request *CreateConfigurationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2340,11 +2656,14 @@ func (client *Client) CreateConfigurationWithOptions(request *CreateConfiguratio
 	return _result, _err
 }
 
-func (client *Client) CreateNamespace(request *CreateNamespaceRequest) (_result *CreateNamespaceResponse, _err error) {
+// @param request - CreateConfigurationRequest
+//
+// @return CreateConfigurationResponse
+func (client *Client) CreateConfiguration(request *CreateConfigurationRequest) (_result *CreateConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreateNamespaceResponse{}
-	_body, _err := client.CreateNamespaceWithOptions(request, headers, runtime)
+	_result = &CreateConfigurationResponse{}
+	_body, _err := client.CreateConfigurationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2352,6 +2671,13 @@ func (client *Client) CreateNamespace(request *CreateNamespaceRequest) (_result 
 	return _result, _err
 }
 
+// @param request - CreateNamespaceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateNamespaceResponse
 func (client *Client) CreateNamespaceWithOptions(request *CreateNamespaceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateNamespaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2386,11 +2712,14 @@ func (client *Client) CreateNamespaceWithOptions(request *CreateNamespaceRequest
 	return _result, _err
 }
 
-func (client *Client) DeleteConfiguration(request *DeleteConfigurationRequest) (_result *DeleteConfigurationResponse, _err error) {
+// @param request - CreateNamespaceRequest
+//
+// @return CreateNamespaceResponse
+func (client *Client) CreateNamespace(request *CreateNamespaceRequest) (_result *CreateNamespaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteConfigurationResponse{}
-	_body, _err := client.DeleteConfigurationWithOptions(request, headers, runtime)
+	_result = &CreateNamespaceResponse{}
+	_body, _err := client.CreateNamespaceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2398,6 +2727,13 @@ func (client *Client) DeleteConfiguration(request *DeleteConfigurationRequest) (
 	return _result, _err
 }
 
+// @param request - DeleteConfigurationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteConfigurationResponse
 func (client *Client) DeleteConfigurationWithOptions(request *DeleteConfigurationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2440,11 +2776,14 @@ func (client *Client) DeleteConfigurationWithOptions(request *DeleteConfiguratio
 	return _result, _err
 }
 
-func (client *Client) DeleteNamespace(request *DeleteNamespaceRequest) (_result *DeleteNamespaceResponse, _err error) {
+// @param request - DeleteConfigurationRequest
+//
+// @return DeleteConfigurationResponse
+func (client *Client) DeleteConfiguration(request *DeleteConfigurationRequest) (_result *DeleteConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeleteNamespaceResponse{}
-	_body, _err := client.DeleteNamespaceWithOptions(request, headers, runtime)
+	_result = &DeleteConfigurationResponse{}
+	_body, _err := client.DeleteConfigurationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2452,6 +2791,13 @@ func (client *Client) DeleteNamespace(request *DeleteNamespaceRequest) (_result 
 	return _result, _err
 }
 
+// @param request - DeleteNamespaceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteNamespaceResponse
 func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteNamespaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2486,11 +2832,14 @@ func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest
 	return _result, _err
 }
 
-func (client *Client) DeployConfiguration(request *DeployConfigurationRequest) (_result *DeployConfigurationResponse, _err error) {
+// @param request - DeleteNamespaceRequest
+//
+// @return DeleteNamespaceResponse
+func (client *Client) DeleteNamespace(request *DeleteNamespaceRequest) (_result *DeleteNamespaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DeployConfigurationResponse{}
-	_body, _err := client.DeployConfigurationWithOptions(request, headers, runtime)
+	_result = &DeleteNamespaceResponse{}
+	_body, _err := client.DeleteNamespaceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2498,6 +2847,13 @@ func (client *Client) DeployConfiguration(request *DeployConfigurationRequest) (
 	return _result, _err
 }
 
+// @param request - DeployConfigurationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeployConfigurationResponse
 func (client *Client) DeployConfigurationWithOptions(request *DeployConfigurationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeployConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2564,11 +2920,14 @@ func (client *Client) DeployConfigurationWithOptions(request *DeployConfiguratio
 	return _result, _err
 }
 
-func (client *Client) DescribeConfiguration(request *DescribeConfigurationRequest) (_result *DescribeConfigurationResponse, _err error) {
+// @param request - DeployConfigurationRequest
+//
+// @return DeployConfigurationResponse
+func (client *Client) DeployConfiguration(request *DeployConfigurationRequest) (_result *DeployConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeConfigurationResponse{}
-	_body, _err := client.DescribeConfigurationWithOptions(request, headers, runtime)
+	_result = &DeployConfigurationResponse{}
+	_body, _err := client.DeployConfigurationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2576,6 +2935,13 @@ func (client *Client) DescribeConfiguration(request *DescribeConfigurationReques
 	return _result, _err
 }
 
+// @param request - DescribeConfigurationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeConfigurationResponse
 func (client *Client) DescribeConfigurationWithOptions(request *DescribeConfigurationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2618,11 +2984,14 @@ func (client *Client) DescribeConfigurationWithOptions(request *DescribeConfigur
 	return _result, _err
 }
 
-func (client *Client) DescribeImportFileUrl(request *DescribeImportFileUrlRequest) (_result *DescribeImportFileUrlResponse, _err error) {
+// @param request - DescribeConfigurationRequest
+//
+// @return DescribeConfigurationResponse
+func (client *Client) DescribeConfiguration(request *DescribeConfigurationRequest) (_result *DescribeConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeImportFileUrlResponse{}
-	_body, _err := client.DescribeImportFileUrlWithOptions(request, headers, runtime)
+	_result = &DescribeConfigurationResponse{}
+	_body, _err := client.DescribeConfigurationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2630,6 +2999,13 @@ func (client *Client) DescribeImportFileUrl(request *DescribeImportFileUrlReques
 	return _result, _err
 }
 
+// @param request - DescribeImportFileUrlRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeImportFileUrlResponse
 func (client *Client) DescribeImportFileUrlWithOptions(request *DescribeImportFileUrlRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeImportFileUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2664,11 +3040,14 @@ func (client *Client) DescribeImportFileUrlWithOptions(request *DescribeImportFi
 	return _result, _err
 }
 
-func (client *Client) DescribeNamespace(request *DescribeNamespaceRequest) (_result *DescribeNamespaceResponse, _err error) {
+// @param request - DescribeImportFileUrlRequest
+//
+// @return DescribeImportFileUrlResponse
+func (client *Client) DescribeImportFileUrl(request *DescribeImportFileUrlRequest) (_result *DescribeImportFileUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeNamespaceResponse{}
-	_body, _err := client.DescribeNamespaceWithOptions(request, headers, runtime)
+	_result = &DescribeImportFileUrlResponse{}
+	_body, _err := client.DescribeImportFileUrlWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2676,6 +3055,13 @@ func (client *Client) DescribeNamespace(request *DescribeNamespaceRequest) (_res
 	return _result, _err
 }
 
+// @param request - DescribeNamespaceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNamespaceResponse
 func (client *Client) DescribeNamespaceWithOptions(request *DescribeNamespaceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeNamespaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2710,11 +3096,14 @@ func (client *Client) DescribeNamespaceWithOptions(request *DescribeNamespaceReq
 	return _result, _err
 }
 
-func (client *Client) DescribeNamespaces() (_result *DescribeNamespacesResponse, _err error) {
+// @param request - DescribeNamespaceRequest
+//
+// @return DescribeNamespaceResponse
+func (client *Client) DescribeNamespace(request *DescribeNamespaceRequest) (_result *DescribeNamespaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeNamespacesResponse{}
-	_body, _err := client.DescribeNamespacesWithOptions(headers, runtime)
+	_result = &DescribeNamespaceResponse{}
+	_body, _err := client.DescribeNamespaceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2722,6 +3111,11 @@ func (client *Client) DescribeNamespaces() (_result *DescribeNamespacesResponse,
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNamespacesResponse
 func (client *Client) DescribeNamespacesWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeNamespacesResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -2746,11 +3140,12 @@ func (client *Client) DescribeNamespacesWithOptions(headers map[string]*string, 
 	return _result, _err
 }
 
-func (client *Client) DescribeNamespacesWithCreate() (_result *DescribeNamespacesWithCreateResponse, _err error) {
+// @return DescribeNamespacesResponse
+func (client *Client) DescribeNamespaces() (_result *DescribeNamespacesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeNamespacesWithCreateResponse{}
-	_body, _err := client.DescribeNamespacesWithCreateWithOptions(headers, runtime)
+	_result = &DescribeNamespacesResponse{}
+	_body, _err := client.DescribeNamespacesWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2758,6 +3153,11 @@ func (client *Client) DescribeNamespacesWithCreate() (_result *DescribeNamespace
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNamespacesWithCreateResponse
 func (client *Client) DescribeNamespacesWithCreateWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeNamespacesWithCreateResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -2782,11 +3182,12 @@ func (client *Client) DescribeNamespacesWithCreateWithOptions(headers map[string
 	return _result, _err
 }
 
-func (client *Client) DescribeTraceByConfiguration(request *DescribeTraceByConfigurationRequest) (_result *DescribeTraceByConfigurationResponse, _err error) {
+// @return DescribeNamespacesWithCreateResponse
+func (client *Client) DescribeNamespacesWithCreate() (_result *DescribeNamespacesWithCreateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeTraceByConfigurationResponse{}
-	_body, _err := client.DescribeTraceByConfigurationWithOptions(request, headers, runtime)
+	_result = &DescribeNamespacesWithCreateResponse{}
+	_body, _err := client.DescribeNamespacesWithCreateWithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2794,6 +3195,13 @@ func (client *Client) DescribeTraceByConfiguration(request *DescribeTraceByConfi
 	return _result, _err
 }
 
+// @param request - DescribeTraceByConfigurationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTraceByConfigurationResponse
 func (client *Client) DescribeTraceByConfigurationWithOptions(request *DescribeTraceByConfigurationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeTraceByConfigurationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2844,11 +3252,14 @@ func (client *Client) DescribeTraceByConfigurationWithOptions(request *DescribeT
 	return _result, _err
 }
 
-func (client *Client) UpdateNamespace(request *UpdateNamespaceRequest) (_result *UpdateNamespaceResponse, _err error) {
+// @param request - DescribeTraceByConfigurationRequest
+//
+// @return DescribeTraceByConfigurationResponse
+func (client *Client) DescribeTraceByConfiguration(request *DescribeTraceByConfigurationRequest) (_result *DescribeTraceByConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateNamespaceResponse{}
-	_body, _err := client.UpdateNamespaceWithOptions(request, headers, runtime)
+	_result = &DescribeTraceByConfigurationResponse{}
+	_body, _err := client.DescribeTraceByConfigurationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2856,6 +3267,13 @@ func (client *Client) UpdateNamespace(request *UpdateNamespaceRequest) (_result 
 	return _result, _err
 }
 
+// @param request - UpdateNamespaceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateNamespaceResponse
 func (client *Client) UpdateNamespaceWithOptions(request *UpdateNamespaceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateNamespaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2891,5 +3309,20 @@ func (client *Client) UpdateNamespaceWithOptions(request *UpdateNamespaceRequest
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpdateNamespaceRequest
+//
+// @return UpdateNamespaceResponse
+func (client *Client) UpdateNamespace(request *UpdateNamespaceRequest) (_result *UpdateNamespaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateNamespaceResponse{}
+	_body, _err := client.UpdateNamespaceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
