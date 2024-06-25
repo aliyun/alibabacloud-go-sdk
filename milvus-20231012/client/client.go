@@ -419,6 +419,10 @@ type GetInstanceDetailResponseBodyData struct {
 	PayType *int32 `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// example:
 	//
+	// milvus_milvuspre_public_cn
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// example:
+	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// example:
@@ -520,6 +524,11 @@ func (s *GetInstanceDetailResponseBodyData) SetPackageType(v string) *GetInstanc
 
 func (s *GetInstanceDetailResponseBodyData) SetPayType(v int32) *GetInstanceDetailResponseBodyData {
 	s.PayType = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBodyData) SetProductCode(v string) *GetInstanceDetailResponseBodyData {
+	s.ProductCode = &v
 	return s
 }
 
@@ -914,6 +923,10 @@ type ListInstancesResponseBodyData struct {
 	PayType *int32 `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// example:
 	//
+	// milvus_milvuspre_public_cn
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// example:
+	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// example:
@@ -988,6 +1001,11 @@ func (s *ListInstancesResponseBodyData) SetPackageType(v string) *ListInstancesR
 
 func (s *ListInstancesResponseBodyData) SetPayType(v int32) *ListInstancesResponseBodyData {
 	s.PayType = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyData) SetProductCode(v string) *ListInstancesResponseBodyData {
+	s.ProductCode = &v
 	return s
 }
 
