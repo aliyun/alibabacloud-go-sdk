@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,12 +10,33 @@ import (
 )
 
 type AddShortUrlRequest struct {
+	// The validity period of the short URL. Unit: days. The maximum validity period is 90 days.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 7
 	EffectiveDays        *string `json:"EffectiveDays,omitempty" xml:"EffectiveDays,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ShortUrlName         *string `json:"ShortUrlName,omitempty" xml:"ShortUrlName,omitempty"`
-	SourceUrl            *string `json:"SourceUrl,omitempty" xml:"SourceUrl,omitempty"`
+	// The service name of the short URL. The name cannot exceed 13 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// The Alibaba Cloud Short Link service.
+	ShortUrlName *string `json:"ShortUrlName,omitempty" xml:"ShortUrlName,omitempty"`
+	// The source URL. The URL cannot exceed 1,000 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://www.****.com/product/sms
+	SourceUrl *string `json:"SourceUrl,omitempty" xml:"SourceUrl,omitempty"`
 }
 
 func (s AddShortUrlRequest) String() string {
@@ -60,10 +78,30 @@ func (s *AddShortUrlRequest) SetSourceUrl(v string) *AddShortUrlRequest {
 }
 
 type AddShortUrlResponseBody struct {
-	Code      *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *AddShortUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of the short URL.
+	Data *AddShortUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 819BE656-D2E0-4858-8B21-B2E477085AAF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AddShortUrlResponseBody) String() string {
@@ -95,9 +133,26 @@ func (s *AddShortUrlResponseBody) SetRequestId(v string) *AddShortUrlResponseBod
 }
 
 type AddShortUrlResponseBodyData struct {
+	// The time when the short URL expires.
+	//
+	// > The value of **ExpireDate*	- is on the hour.
+	//
+	// example:
+	//
+	// 2021-09-19 00:00:00
 	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
-	ShortUrl   *string `json:"ShortUrl,omitempty" xml:"ShortUrl,omitempty"`
-	SourceUrl  *string `json:"SourceUrl,omitempty" xml:"SourceUrl,omitempty"`
+	// The short URL.
+	//
+	// example:
+	//
+	// http://****.cn/6y8uy7
+	ShortUrl *string `json:"ShortUrl,omitempty" xml:"ShortUrl,omitempty"`
+	// The source URL.
+	//
+	// example:
+	//
+	// https://www.****.com/product/sms
+	SourceUrl *string `json:"SourceUrl,omitempty" xml:"SourceUrl,omitempty"`
 }
 
 func (s AddShortUrlResponseBodyData) String() string {
@@ -124,9 +179,9 @@ func (s *AddShortUrlResponseBodyData) SetSourceUrl(v string) *AddShortUrlRespons
 }
 
 type AddShortUrlResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddShortUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddShortUrlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddShortUrlResponse) String() string {
@@ -153,14 +208,65 @@ func (s *AddShortUrlResponse) SetBody(v *AddShortUrlResponseBody) *AddShortUrlRe
 }
 
 type AddSmsSignRequest struct {
-	OwnerId              *int64                           `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Remark               *string                          `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	ResourceOwnerAccount *string                          `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                           `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SignFileList         []*AddSmsSignRequestSignFileList `json:"SignFileList,omitempty" xml:"SignFileList,omitempty" type:"Repeated"`
-	SignName             *string                          `json:"SignName,omitempty" xml:"SignName,omitempty"`
-	SignSource           *int32                           `json:"SignSource,omitempty" xml:"SignSource,omitempty"`
-	SignType             *int32                           `json:"SignType,omitempty" xml:"SignType,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The description of the signature application. The description cannot exceed 200 characters in length. The description is one of the reference information for signature review. We recommend that you describe the use scenarios of your services in detail, and provide information that can verify the services, such as a website URL, a domain name with an ICP filing, an app download URL, an official account name, or a mini program name. For sign-in scenarios, you must also provide an account and password for tests. A detailed description can improve the review efficiency of signatures and templates.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// This is the abbreviation of our company.
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The signature files.
+	//
+	// This parameter is required.
+	SignFileList []*AddSmsSignRequestSignFileList `json:"SignFileList,omitempty" xml:"SignFileList,omitempty" type:"Repeated"`
+	// The name of the signature.
+	//
+	// >
+	//
+	// 	- The signature name is not case-sensitive. For example, [Alibaba Cloud Communication] and [alibaba cloud communication] are considered as the same name.
+	//
+	// 	- If your verification code signature and general-purpose signature have the same name, the system uses the general-purpose signature to send messages by default.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Aliyun
+	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// The source of the signature. Valid values:
+	//
+	// 	- **0**: the full name or abbreviation of an enterprise or institution
+	//
+	// 	- **1**: the full name or abbreviation of a website that has obtained an ICP filing from the Ministry of Industry and Information Technology (MIIT) of China
+	//
+	// 	- **2**: the full name or abbreviation of an app
+	//
+	// 	- **3**: the full name or abbreviation of an official account or mini-program
+	//
+	// 	- **4**: the full name or abbreviation of an e-commerce store
+	//
+	// 	- **5**: the full name or abbreviation of a trademark
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	SignSource *int32 `json:"SignSource,omitempty" xml:"SignSource,omitempty"`
+	// The type of the signature. Valid values:
+	//
+	// 	- **0**: verification code
+	//
+	// 	- **1**: general-purpose
+	//
+	// example:
+	//
+	// 1
+	SignType *int32 `json:"SignType,omitempty" xml:"SignType,omitempty"`
 }
 
 func (s AddSmsSignRequest) String() string {
@@ -212,8 +318,26 @@ func (s *AddSmsSignRequest) SetSignType(v int32) *AddSmsSignRequest {
 }
 
 type AddSmsSignRequestSignFileList struct {
+	// The Base64-encoded string of the qualification document. An image cannot exceed 2 MB in size. In some scenarios, you must upload supporting documents to apply for signatures. For more information, see [SMS signature specifications](https://help.aliyun.com/document_detail/108076.html).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// R0lGODlhHAAmAKIHAKqqqsvLy0hISObm5vf394uL****
 	FileContents *string `json:"FileContents,omitempty" xml:"FileContents,omitempty"`
-	FileSuffix   *string `json:"FileSuffix,omitempty" xml:"FileSuffix,omitempty"`
+	// The format of the qualification document. You can upload multiple images. Images in JPG, PNG, GIF, or JPEG format are supported.
+	//
+	// In some scenarios, you must upload supporting documents to apply for signatures. For more information, see [SMS signature specifications](https://help.aliyun.com/document_detail/108076.html).
+	//
+	// > If you apply for a signature for other users or if the signature source is the name of an enterprise or public institution, you must upload a certificate and a letter of authorization. For more information, see [Certificate](https://help.aliyun.com/document_detail/108076.html) and [Letter of authorization](https://help.aliyun.com/document_detail/56741.html).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// jpg
+	FileSuffix *string `json:"FileSuffix,omitempty" xml:"FileSuffix,omitempty"`
 }
 
 func (s AddSmsSignRequestSignFileList) String() string {
@@ -235,10 +359,34 @@ func (s *AddSmsSignRequestSignFileList) SetFileSuffix(v string) *AddSmsSignReque
 }
 
 type AddSmsSignResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// F655A8D5-B967-440B-8683-DAD6FF8DE990
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SignName  *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// The name of the signature.
+	//
+	// example:
+	//
+	// Aliyun
+	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
 }
 
 func (s AddSmsSignResponseBody) String() string {
@@ -270,9 +418,9 @@ func (s *AddSmsSignResponseBody) SetSignName(v string) *AddSmsSignResponseBody {
 }
 
 type AddSmsSignResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddSmsSignResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddSmsSignResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddSmsSignResponse) String() string {
@@ -299,13 +447,51 @@ func (s *AddSmsSignResponse) SetBody(v *AddSmsSignResponseBody) *AddSmsSignRespo
 }
 
 type AddSmsTemplateRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The description of the message template. It is one of the reference information for template review. The description cannot exceed 100 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Apply for a template to send verification codes.
 	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TemplateContent      *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
-	TemplateName         *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	TemplateType         *int32  `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	// The content of the template. The content can be up to 500 characters in length. For more information, see [Message template specifications](https://help.aliyun.com/document_detail/108253.html).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// You are applying for mobile registration. The verification code is: ${code}, valid for 5 minutes!
+	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
+	// The name of the template. The name can be up to 30 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Aliyun Test
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The type of the message. Valid values:
+	//
+	// 	- **0**: verification code
+	//
+	// 	- **1**: notification
+	//
+	// 	- **2**: promotional message
+	//
+	// 	- **3**: message sent to countries or regions outside the Chinese mainland
+	//
+	// > Only enterprise users can send promotional messages, or send messages to countries or regions outside the Chinese mainland.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	TemplateType *int32 `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
 func (s AddSmsTemplateRequest) String() string {
@@ -352,9 +538,33 @@ func (s *AddSmsTemplateRequest) SetTemplateType(v int32) *AddSmsTemplateRequest 
 }
 
 type AddSmsTemplateResponseBody struct {
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/101346.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// F655A8D5-B967-440B-8683-DAD6FF8DE990
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The code of the message template.
+	//
+	// example:
+	//
+	// SMS_15255****
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 }
 
@@ -387,9 +597,9 @@ func (s *AddSmsTemplateResponseBody) SetTemplateCode(v string) *AddSmsTemplateRe
 }
 
 type AddSmsTemplateResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddSmsTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddSmsTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddSmsTemplateResponse) String() string {
@@ -416,8 +626,20 @@ func (s *AddSmsTemplateResponse) SetBody(v *AddSmsTemplateResponseBody) *AddSmsT
 }
 
 type CheckMobilesCardSupportRequest struct {
-	Mobiles      []map[string]interface{} `json:"Mobiles,omitempty" xml:"Mobiles,omitempty" type:"Repeated"`
-	TemplateCode *string                  `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// The list of mobile phone numbers that receive messages.
+	//
+	// This parameter is required.
+	Mobiles []map[string]interface{} `json:"Mobiles,omitempty" xml:"Mobiles,omitempty" type:"Repeated"`
+	// The code of the message template. You can view the template code in the **Template Code*	- column on the **Templates*	- tab of the **Go China*	- page in the Alibaba Cloud SMS console.
+	//
+	// > Make sure that the message template has been approved.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CARD_SMS_****
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 }
 
 func (s CheckMobilesCardSupportRequest) String() string {
@@ -439,10 +661,34 @@ func (s *CheckMobilesCardSupportRequest) SetTemplateCode(v string) *CheckMobiles
 }
 
 type CheckMobilesCardSupportResponseBody struct {
-	Code      *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *CheckMobilesCardSupportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *CheckMobilesCardSupportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 819BE656-D2E0-4858-8B21-B2E477085AAF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CheckMobilesCardSupportResponseBody) String() string {
@@ -474,6 +720,7 @@ func (s *CheckMobilesCardSupportResponseBody) SetSuccess(v bool) *CheckMobilesCa
 }
 
 type CheckMobilesCardSupportResponseBodyData struct {
+	// The list of returned results.
 	QueryResult []*CheckMobilesCardSupportResponseBodyDataQueryResult `json:"queryResult,omitempty" xml:"queryResult,omitempty" type:"Repeated"`
 }
 
@@ -491,8 +738,22 @@ func (s *CheckMobilesCardSupportResponseBodyData) SetQueryResult(v []*CheckMobil
 }
 
 type CheckMobilesCardSupportResponseBodyDataQueryResult struct {
-	Mobile  *string `json:"mobile,omitempty" xml:"mobile,omitempty"`
-	Support *bool   `json:"support,omitempty" xml:"support,omitempty"`
+	// The mobile phone number.
+	//
+	// example:
+	//
+	// 1390000****
+	Mobile *string `json:"mobile,omitempty" xml:"mobile,omitempty"`
+	// Indicates whether the mobile phone number supports card messages.
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	Support *bool `json:"support,omitempty" xml:"support,omitempty"`
 }
 
 func (s CheckMobilesCardSupportResponseBodyDataQueryResult) String() string {
@@ -514,9 +775,9 @@ func (s *CheckMobilesCardSupportResponseBodyDataQueryResult) SetSupport(v bool) 
 }
 
 type CheckMobilesCardSupportResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CheckMobilesCardSupportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CheckMobilesCardSupportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CheckMobilesCardSupportResponse) String() string {
@@ -543,8 +804,24 @@ func (s *CheckMobilesCardSupportResponse) SetBody(v *CheckMobilesCardSupportResp
 }
 
 type ConversionDataIntlRequest struct {
-	ConversionRate       *string `json:"ConversionRate,omitempty" xml:"ConversionRate,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The conversion rate.
+	//
+	// > The value of this parameter is a double, and ranges from 0 to 1.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.53
+	ConversionRate *string `json:"ConversionRate,omitempty" xml:"ConversionRate,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The time point at which the conversion rate is monitored. The value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// > If you do not specify this parameter, the current timestamp is used by default.
+	//
+	// example:
+	//
+	// 1349055900000
 	ReportTime           *int64  `json:"ReportTime,omitempty" xml:"ReportTime,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -584,8 +861,23 @@ func (s *ConversionDataIntlRequest) SetResourceOwnerId(v int64) *ConversionDataI
 }
 
 type ConversionDataIntlResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The status code. If OK is returned, the request is successful. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html?spm=a2c4g.101345.0.0.74326ff2J5EZyt).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// F655A8D5-B967-440B-8683-DAD6FF8D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -613,9 +905,9 @@ func (s *ConversionDataIntlResponseBody) SetRequestId(v string) *ConversionDataI
 }
 
 type ConversionDataIntlResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ConversionDataIntlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConversionDataIntlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ConversionDataIntlResponse) String() string {
@@ -642,10 +934,40 @@ func (s *ConversionDataIntlResponse) SetBody(v *ConversionDataIntlResponseBody) 
 }
 
 type CreateCardSmsTemplateRequest struct {
-	Factorys     *string                `json:"Factorys,omitempty" xml:"Factorys,omitempty"`
-	Memo         *string                `json:"Memo,omitempty" xml:"Memo,omitempty"`
-	Template     map[string]interface{} `json:"Template,omitempty" xml:"Template,omitempty"`
-	TemplateName *string                `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The mobile phone manufacturer. Valid values:
+	//
+	// 	- **HuaWei**: HUAWEI
+	//
+	// 	- **XiaoMi**: Xiaomi
+	//
+	// 	- **OPPO**: OPPO
+	//
+	// 	- **VIVO**: vivo
+	//
+	// 	- **MEIZU**: MEIZU
+	//
+	// > If this parameter is not specified, the system automatically specifies a supported mobile phone manufacturer.
+	//
+	// example:
+	//
+	// XiaoMi
+	Factorys *string `json:"Factorys,omitempty" xml:"Factorys,omitempty"`
+	// The description of the message template.
+	Memo *string `json:"Memo,omitempty" xml:"Memo,omitempty"`
+	// The content of the card message template.
+	//
+	// >
+	//
+	// 	- For information about fields such as Template, ExtendInfo, TemplateContent, TmpCard, and Action, see [Parameters of card message templates](https://help.aliyun.com/document_detail/434929.html).
+	//
+	// 	- Message template content varies based on the template type. For more information, see [Sample message templates](https://help.aliyun.com/document_detail/435361.html).
+	//
+	// This parameter is required.
+	Template map[string]interface{} `json:"Template,omitempty" xml:"Template,omitempty"`
+	// The name of the card message template.
+	//
+	// This parameter is required.
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
 func (s CreateCardSmsTemplateRequest) String() string {
@@ -677,10 +999,40 @@ func (s *CreateCardSmsTemplateRequest) SetTemplateName(v string) *CreateCardSmsT
 }
 
 type CreateCardSmsTemplateShrinkRequest struct {
-	Factorys       *string `json:"Factorys,omitempty" xml:"Factorys,omitempty"`
-	Memo           *string `json:"Memo,omitempty" xml:"Memo,omitempty"`
+	// The mobile phone manufacturer. Valid values:
+	//
+	// 	- **HuaWei**: HUAWEI
+	//
+	// 	- **XiaoMi**: Xiaomi
+	//
+	// 	- **OPPO**: OPPO
+	//
+	// 	- **VIVO**: vivo
+	//
+	// 	- **MEIZU**: MEIZU
+	//
+	// > If this parameter is not specified, the system automatically specifies a supported mobile phone manufacturer.
+	//
+	// example:
+	//
+	// XiaoMi
+	Factorys *string `json:"Factorys,omitempty" xml:"Factorys,omitempty"`
+	// The description of the message template.
+	Memo *string `json:"Memo,omitempty" xml:"Memo,omitempty"`
+	// The content of the card message template.
+	//
+	// >
+	//
+	// 	- For information about fields such as Template, ExtendInfo, TemplateContent, TmpCard, and Action, see [Parameters of card message templates](https://help.aliyun.com/document_detail/434929.html).
+	//
+	// 	- Message template content varies based on the template type. For more information, see [Sample message templates](https://help.aliyun.com/document_detail/435361.html).
+	//
+	// This parameter is required.
 	TemplateShrink *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	TemplateName   *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The name of the card message template.
+	//
+	// This parameter is required.
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
 func (s CreateCardSmsTemplateShrinkRequest) String() string {
@@ -712,10 +1064,34 @@ func (s *CreateCardSmsTemplateShrinkRequest) SetTemplateName(v string) *CreateCa
 }
 
 type CreateCardSmsTemplateResponseBody struct {
-	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *CreateCardSmsTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The response code.
+	//
+	// 	- If OK is returned, the request is successful.
+	//
+	// 	- Other values indicate that the request fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *CreateCardSmsTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// F655A8D5-B967-440B-8683-DAD6FF8DE990
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateCardSmsTemplateResponseBody) String() string {
@@ -747,6 +1123,15 @@ func (s *CreateCardSmsTemplateResponseBody) SetSuccess(v bool) *CreateCardSmsTem
 }
 
 type CreateCardSmsTemplateResponseBodyData struct {
+	// The code of the message template.
+	//
+	// You can view the template code in the **Template Code*	- column on the **Templates*	- tab of the **Go China*	- page in the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm?spm=5176.12818093.categories-n-products.ddysms.3b2816d0xml2NA#/overview).
+	//
+	// > Make sure that the message template has been approved.
+	//
+	// example:
+	//
+	// CARD_SMS_60000****
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 }
 
@@ -764,9 +1149,9 @@ func (s *CreateCardSmsTemplateResponseBodyData) SetTemplateCode(v string) *Creat
 }
 
 type CreateCardSmsTemplateResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateCardSmsTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCardSmsTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateCardSmsTemplateResponse) String() string {
@@ -793,13 +1178,25 @@ func (s *CreateCardSmsTemplateResponse) SetBody(v *CreateCardSmsTemplateResponse
 }
 
 type CreateSmartShortUrlRequest struct {
-	Expiration           *int64  `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	OutId   *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 15900195***
 	PhoneNumbers         *string `json:"PhoneNumbers,omitempty" xml:"PhoneNumbers,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SourceName           *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
-	SourceUrl            *string `json:"SourceUrl,omitempty" xml:"SourceUrl,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值
+	SourceUrl *string `json:"SourceUrl,omitempty" xml:"SourceUrl,omitempty"`
 }
 
 func (s CreateSmartShortUrlRequest) String() string {
@@ -810,8 +1207,8 @@ func (s CreateSmartShortUrlRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateSmartShortUrlRequest) SetExpiration(v int64) *CreateSmartShortUrlRequest {
-	s.Expiration = &v
+func (s *CreateSmartShortUrlRequest) SetOutId(v string) *CreateSmartShortUrlRequest {
+	s.OutId = &v
 	return s
 }
 
@@ -835,21 +1232,25 @@ func (s *CreateSmartShortUrlRequest) SetResourceOwnerId(v int64) *CreateSmartSho
 	return s
 }
 
-func (s *CreateSmartShortUrlRequest) SetSourceName(v string) *CreateSmartShortUrlRequest {
-	s.SourceName = &v
-	return s
-}
-
 func (s *CreateSmartShortUrlRequest) SetSourceUrl(v string) *CreateSmartShortUrlRequest {
 	s.SourceUrl = &v
 	return s
 }
 
 type CreateSmartShortUrlResponseBody struct {
-	Code      *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model     []*CreateSmartShortUrlResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 示例值示例值示例值
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 示例值示例值示例值
+	Message *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model   []*CreateSmartShortUrlResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 示例值示例值
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateSmartShortUrlResponseBody) String() string {
@@ -881,11 +1282,26 @@ func (s *CreateSmartShortUrlResponseBody) SetRequestId(v string) *CreateSmartSho
 }
 
 type CreateSmartShortUrlResponseBodyModel struct {
-	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Expiration  *int64  `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	// example:
+	//
+	// 示例值
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// 11
+	Expiration *int64 `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	// example:
+	//
+	// 示例值
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	ShortName   *string `json:"ShortName,omitempty" xml:"ShortName,omitempty"`
-	ShortUrl    *string `json:"ShortUrl,omitempty" xml:"ShortUrl,omitempty"`
+	// example:
+	//
+	// 示例值
+	ShortName *string `json:"ShortName,omitempty" xml:"ShortName,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	ShortUrl *string `json:"ShortUrl,omitempty" xml:"ShortUrl,omitempty"`
 }
 
 func (s CreateSmartShortUrlResponseBodyModel) String() string {
@@ -922,9 +1338,9 @@ func (s *CreateSmartShortUrlResponseBodyModel) SetShortUrl(v string) *CreateSmar
 }
 
 type CreateSmartShortUrlResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateSmartShortUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSmartShortUrlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateSmartShortUrlResponse) String() string {
@@ -950,11 +1366,583 @@ func (s *CreateSmartShortUrlResponse) SetBody(v *CreateSmartShortUrlResponseBody
 	return s
 }
 
+type CreateSmsSignRequest struct {
+	// example:
+	//
+	// http://www.aliyun.com/
+	ApplySceneContent *string   `json:"ApplySceneContent,omitempty" xml:"ApplySceneContent,omitempty"`
+	MoreData          []*string `json:"MoreData,omitempty" xml:"MoreData,omitempty" type:"Repeated"`
+	OwnerId           *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2004393xxxx
+	QualificationId      *int64  `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	SignSource *int32 `json:"SignSource,omitempty" xml:"SignSource,omitempty"`
+	// example:
+	//
+	// 1
+	SignType *int32 `json:"SignType,omitempty" xml:"SignType,omitempty"`
+	// example:
+	//
+	// false
+	ThirdParty *bool `json:"ThirdParty,omitempty" xml:"ThirdParty,omitempty"`
+}
+
+func (s CreateSmsSignRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSmsSignRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSmsSignRequest) SetApplySceneContent(v string) *CreateSmsSignRequest {
+	s.ApplySceneContent = &v
+	return s
+}
+
+func (s *CreateSmsSignRequest) SetMoreData(v []*string) *CreateSmsSignRequest {
+	s.MoreData = v
+	return s
+}
+
+func (s *CreateSmsSignRequest) SetOwnerId(v int64) *CreateSmsSignRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateSmsSignRequest) SetQualificationId(v int64) *CreateSmsSignRequest {
+	s.QualificationId = &v
+	return s
+}
+
+func (s *CreateSmsSignRequest) SetRemark(v string) *CreateSmsSignRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *CreateSmsSignRequest) SetResourceOwnerAccount(v string) *CreateSmsSignRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateSmsSignRequest) SetResourceOwnerId(v int64) *CreateSmsSignRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateSmsSignRequest) SetSignName(v string) *CreateSmsSignRequest {
+	s.SignName = &v
+	return s
+}
+
+func (s *CreateSmsSignRequest) SetSignSource(v int32) *CreateSmsSignRequest {
+	s.SignSource = &v
+	return s
+}
+
+func (s *CreateSmsSignRequest) SetSignType(v int32) *CreateSmsSignRequest {
+	s.SignType = &v
+	return s
+}
+
+func (s *CreateSmsSignRequest) SetThirdParty(v bool) *CreateSmsSignRequest {
+	s.ThirdParty = &v
+	return s
+}
+
+type CreateSmsSignShrinkRequest struct {
+	// example:
+	//
+	// http://www.aliyun.com/
+	ApplySceneContent *string `json:"ApplySceneContent,omitempty" xml:"ApplySceneContent,omitempty"`
+	MoreDataShrink    *string `json:"MoreData,omitempty" xml:"MoreData,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2004393xxxx
+	QualificationId      *int64  `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	SignSource *int32 `json:"SignSource,omitempty" xml:"SignSource,omitempty"`
+	// example:
+	//
+	// 1
+	SignType *int32 `json:"SignType,omitempty" xml:"SignType,omitempty"`
+	// example:
+	//
+	// false
+	ThirdParty *bool `json:"ThirdParty,omitempty" xml:"ThirdParty,omitempty"`
+}
+
+func (s CreateSmsSignShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSmsSignShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSmsSignShrinkRequest) SetApplySceneContent(v string) *CreateSmsSignShrinkRequest {
+	s.ApplySceneContent = &v
+	return s
+}
+
+func (s *CreateSmsSignShrinkRequest) SetMoreDataShrink(v string) *CreateSmsSignShrinkRequest {
+	s.MoreDataShrink = &v
+	return s
+}
+
+func (s *CreateSmsSignShrinkRequest) SetOwnerId(v int64) *CreateSmsSignShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateSmsSignShrinkRequest) SetQualificationId(v int64) *CreateSmsSignShrinkRequest {
+	s.QualificationId = &v
+	return s
+}
+
+func (s *CreateSmsSignShrinkRequest) SetRemark(v string) *CreateSmsSignShrinkRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *CreateSmsSignShrinkRequest) SetResourceOwnerAccount(v string) *CreateSmsSignShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateSmsSignShrinkRequest) SetResourceOwnerId(v int64) *CreateSmsSignShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateSmsSignShrinkRequest) SetSignName(v string) *CreateSmsSignShrinkRequest {
+	s.SignName = &v
+	return s
+}
+
+func (s *CreateSmsSignShrinkRequest) SetSignSource(v int32) *CreateSmsSignShrinkRequest {
+	s.SignSource = &v
+	return s
+}
+
+func (s *CreateSmsSignShrinkRequest) SetSignType(v int32) *CreateSmsSignShrinkRequest {
+	s.SignType = &v
+	return s
+}
+
+func (s *CreateSmsSignShrinkRequest) SetThirdParty(v bool) *CreateSmsSignShrinkRequest {
+	s.ThirdParty = &v
+	return s
+}
+
+type CreateSmsSignResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 20044156924
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// CCA2BCFF-2BA7-427C-90EE-AC6994748607
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SignName  *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+}
+
+func (s CreateSmsSignResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSmsSignResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSmsSignResponseBody) SetCode(v string) *CreateSmsSignResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateSmsSignResponseBody) SetMessage(v string) *CreateSmsSignResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateSmsSignResponseBody) SetOrderId(v string) *CreateSmsSignResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *CreateSmsSignResponseBody) SetRequestId(v string) *CreateSmsSignResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSmsSignResponseBody) SetSignName(v string) *CreateSmsSignResponseBody {
+	s.SignName = &v
+	return s
+}
+
+type CreateSmsSignResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSmsSignResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateSmsSignResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSmsSignResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSmsSignResponse) SetHeaders(v map[string]*string) *CreateSmsSignResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSmsSignResponse) SetStatusCode(v int32) *CreateSmsSignResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSmsSignResponse) SetBody(v *CreateSmsSignResponseBody) *CreateSmsSignResponse {
+	s.Body = v
+	return s
+}
+
+type CreateSmsTemplateRequest struct {
+	// example:
+	//
+	// http://www.aliyun.com/
+	ApplySceneContent *string `json:"ApplySceneContent,omitempty" xml:"ApplySceneContent,omitempty"`
+	// example:
+	//
+	// 0
+	IntlType             *int32    `json:"IntlType,omitempty" xml:"IntlType,omitempty"`
+	MoreData             []*string `json:"MoreData,omitempty" xml:"MoreData,omitempty" type:"Repeated"`
+	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RelatedSignName      *string   `json:"RelatedSignName,omitempty" xml:"RelatedSignName,omitempty"`
+	Remark               *string   `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
+	// This parameter is required.
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// example:
+	//
+	// {"code":"characterWithNumber"}
+	TemplateRule *string `json:"TemplateRule,omitempty" xml:"TemplateRule,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	TemplateType *int32 `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+}
+
+func (s CreateSmsTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSmsTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSmsTemplateRequest) SetApplySceneContent(v string) *CreateSmsTemplateRequest {
+	s.ApplySceneContent = &v
+	return s
+}
+
+func (s *CreateSmsTemplateRequest) SetIntlType(v int32) *CreateSmsTemplateRequest {
+	s.IntlType = &v
+	return s
+}
+
+func (s *CreateSmsTemplateRequest) SetMoreData(v []*string) *CreateSmsTemplateRequest {
+	s.MoreData = v
+	return s
+}
+
+func (s *CreateSmsTemplateRequest) SetOwnerId(v int64) *CreateSmsTemplateRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateSmsTemplateRequest) SetRelatedSignName(v string) *CreateSmsTemplateRequest {
+	s.RelatedSignName = &v
+	return s
+}
+
+func (s *CreateSmsTemplateRequest) SetRemark(v string) *CreateSmsTemplateRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *CreateSmsTemplateRequest) SetResourceOwnerAccount(v string) *CreateSmsTemplateRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateSmsTemplateRequest) SetResourceOwnerId(v int64) *CreateSmsTemplateRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateSmsTemplateRequest) SetTemplateContent(v string) *CreateSmsTemplateRequest {
+	s.TemplateContent = &v
+	return s
+}
+
+func (s *CreateSmsTemplateRequest) SetTemplateName(v string) *CreateSmsTemplateRequest {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *CreateSmsTemplateRequest) SetTemplateRule(v string) *CreateSmsTemplateRequest {
+	s.TemplateRule = &v
+	return s
+}
+
+func (s *CreateSmsTemplateRequest) SetTemplateType(v int32) *CreateSmsTemplateRequest {
+	s.TemplateType = &v
+	return s
+}
+
+type CreateSmsTemplateShrinkRequest struct {
+	// example:
+	//
+	// http://www.aliyun.com/
+	ApplySceneContent *string `json:"ApplySceneContent,omitempty" xml:"ApplySceneContent,omitempty"`
+	// example:
+	//
+	// 0
+	IntlType             *int32  `json:"IntlType,omitempty" xml:"IntlType,omitempty"`
+	MoreDataShrink       *string `json:"MoreData,omitempty" xml:"MoreData,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RelatedSignName      *string `json:"RelatedSignName,omitempty" xml:"RelatedSignName,omitempty"`
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
+	// This parameter is required.
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// example:
+	//
+	// {"code":"characterWithNumber"}
+	TemplateRule *string `json:"TemplateRule,omitempty" xml:"TemplateRule,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	TemplateType *int32 `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+}
+
+func (s CreateSmsTemplateShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSmsTemplateShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSmsTemplateShrinkRequest) SetApplySceneContent(v string) *CreateSmsTemplateShrinkRequest {
+	s.ApplySceneContent = &v
+	return s
+}
+
+func (s *CreateSmsTemplateShrinkRequest) SetIntlType(v int32) *CreateSmsTemplateShrinkRequest {
+	s.IntlType = &v
+	return s
+}
+
+func (s *CreateSmsTemplateShrinkRequest) SetMoreDataShrink(v string) *CreateSmsTemplateShrinkRequest {
+	s.MoreDataShrink = &v
+	return s
+}
+
+func (s *CreateSmsTemplateShrinkRequest) SetOwnerId(v int64) *CreateSmsTemplateShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateSmsTemplateShrinkRequest) SetRelatedSignName(v string) *CreateSmsTemplateShrinkRequest {
+	s.RelatedSignName = &v
+	return s
+}
+
+func (s *CreateSmsTemplateShrinkRequest) SetRemark(v string) *CreateSmsTemplateShrinkRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *CreateSmsTemplateShrinkRequest) SetResourceOwnerAccount(v string) *CreateSmsTemplateShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateSmsTemplateShrinkRequest) SetResourceOwnerId(v int64) *CreateSmsTemplateShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateSmsTemplateShrinkRequest) SetTemplateContent(v string) *CreateSmsTemplateShrinkRequest {
+	s.TemplateContent = &v
+	return s
+}
+
+func (s *CreateSmsTemplateShrinkRequest) SetTemplateName(v string) *CreateSmsTemplateShrinkRequest {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *CreateSmsTemplateShrinkRequest) SetTemplateRule(v string) *CreateSmsTemplateShrinkRequest {
+	s.TemplateRule = &v
+	return s
+}
+
+func (s *CreateSmsTemplateShrinkRequest) SetTemplateType(v int32) *CreateSmsTemplateShrinkRequest {
+	s.TemplateType = &v
+	return s
+}
+
+type CreateSmsTemplateResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 20044158441
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// F655A8D5-B967-440B-8683-DAD6FF8DE990
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// SMS_100000056
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s CreateSmsTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSmsTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSmsTemplateResponseBody) SetCode(v string) *CreateSmsTemplateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateSmsTemplateResponseBody) SetMessage(v string) *CreateSmsTemplateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateSmsTemplateResponseBody) SetOrderId(v string) *CreateSmsTemplateResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *CreateSmsTemplateResponseBody) SetRequestId(v string) *CreateSmsTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSmsTemplateResponseBody) SetTemplateCode(v string) *CreateSmsTemplateResponseBody {
+	s.TemplateCode = &v
+	return s
+}
+
+func (s *CreateSmsTemplateResponseBody) SetTemplateName(v string) *CreateSmsTemplateResponseBody {
+	s.TemplateName = &v
+	return s
+}
+
+type CreateSmsTemplateResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSmsTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateSmsTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSmsTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSmsTemplateResponse) SetHeaders(v map[string]*string) *CreateSmsTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSmsTemplateResponse) SetStatusCode(v int32) *CreateSmsTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSmsTemplateResponse) SetBody(v *CreateSmsTemplateResponseBody) *CreateSmsTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteShortUrlRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SourceUrl            *string `json:"SourceUrl,omitempty" xml:"SourceUrl,omitempty"`
+	// The source address. The address can be up to 1,000 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://www.****.com/product/sms
+	SourceUrl *string `json:"SourceUrl,omitempty" xml:"SourceUrl,omitempty"`
 }
 
 func (s DeleteShortUrlRequest) String() string {
@@ -986,8 +1974,27 @@ func (s *DeleteShortUrlRequest) SetSourceUrl(v string) *DeleteShortUrlRequest {
 }
 
 type DeleteShortUrlResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	//
+	// 	- If OK is returned, the request is successful.
+	//
+	// 	- Other values indicate that the request fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 819BE656-D2E0-4858-8B21-B2E477085AAF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1015,9 +2022,9 @@ func (s *DeleteShortUrlResponseBody) SetRequestId(v string) *DeleteShortUrlRespo
 }
 
 type DeleteShortUrlResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteShortUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteShortUrlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteShortUrlResponse) String() string {
@@ -1047,7 +2054,16 @@ type DeleteSmsSignRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SignName             *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// The signature.
+	//
+	// > The signature must be submitted by the current Alibaba Cloud account, and has been approved.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Aliyun
+	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
 }
 
 func (s DeleteSmsSignRequest) String() string {
@@ -1079,10 +2095,34 @@ func (s *DeleteSmsSignRequest) SetSignName(v string) *DeleteSmsSignRequest {
 }
 
 type DeleteSmsSignResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	//
+	// 	- If OK is returned, the request is successful.
+	//
+	// 	- Other values indicate that the request fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// F655A8D5-B967-440B-8683-DAD6FF8D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SignName  *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// The signature.
+	//
+	// example:
+	//
+	// Aliyun
+	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
 }
 
 func (s DeleteSmsSignResponseBody) String() string {
@@ -1114,9 +2154,9 @@ func (s *DeleteSmsSignResponseBody) SetSignName(v string) *DeleteSmsSignResponse
 }
 
 type DeleteSmsSignResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteSmsSignResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteSmsSignResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteSmsSignResponse) String() string {
@@ -1146,7 +2186,16 @@ type DeleteSmsTemplateRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TemplateCode         *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// The code of the message template.
+	//
+	// You can log on to the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm) and obtain the message template code on the **Message Templates*	- tab. You can also obtain the message template code by calling the [AddSmsTemplate](https://help.aliyun.com/document_detail/121208.html) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SMS_152550****
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 }
 
 func (s DeleteSmsTemplateRequest) String() string {
@@ -1178,9 +2227,33 @@ func (s *DeleteSmsTemplateRequest) SetTemplateCode(v string) *DeleteSmsTemplateR
 }
 
 type DeleteSmsTemplateResponseBody struct {
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/101346.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// CCA2BCFF-2BA7-427C-90EE-AC6994748607
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The code of the message template.
+	//
+	// example:
+	//
+	// SMS_20375****
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 }
 
@@ -1213,9 +2286,9 @@ func (s *DeleteSmsTemplateResponseBody) SetTemplateCode(v string) *DeleteSmsTemp
 }
 
 type DeleteSmsTemplateResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteSmsTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteSmsTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteSmsTemplateResponse) String() string {
@@ -1242,15 +2315,90 @@ func (s *DeleteSmsTemplateResponse) SetBody(v *DeleteSmsTemplateResponseBody) *D
 }
 
 type GetCardSmsLinkRequest struct {
-	CardCodeType          *int32  `json:"CardCodeType,omitempty" xml:"CardCodeType,omitempty"`
-	CardLinkType          *int32  `json:"CardLinkType,omitempty" xml:"CardLinkType,omitempty"`
-	CardTemplateCode      *string `json:"CardTemplateCode,omitempty" xml:"CardTemplateCode,omitempty"`
+	// The code type of the URLs.
+	//
+	// 	- **1**: group texting
+	//
+	// 	- **2**: personalization
+	//
+	// example:
+	//
+	// 2
+	CardCodeType *int32 `json:"CardCodeType,omitempty" xml:"CardCodeType,omitempty"`
+	// The type of the short URLs.
+	//
+	// 	- 1: standard short code.
+	//
+	// 	- 2: custom short code.
+	//
+	// > If the **CardLinkType*	- is not specified, standard short codes are generated. If you need to generate custom short codes, contact Alibaba Cloud SMS technical support.
+	//
+	// example:
+	//
+	// 1
+	CardLinkType *int32 `json:"CardLinkType,omitempty" xml:"CardLinkType,omitempty"`
+	// The code of the message template. You can view the template code in the **Template Code*	- column on the **Templates*	- tab of the **Go China*	- page in the Alibaba Cloud SMS console.
+	//
+	// > Make sure that the message template has been approved.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CARD_SMS_****
+	CardTemplateCode *string `json:"CardTemplateCode,omitempty" xml:"CardTemplateCode,omitempty"`
+	// The variables of the message template.
 	CardTemplateParamJson *string `json:"CardTemplateParamJson,omitempty" xml:"CardTemplateParamJson,omitempty"`
-	CustomShortCodeJson   *string `json:"CustomShortCodeJson,omitempty" xml:"CustomShortCodeJson,omitempty"`
-	Domain                *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	OutId                 *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	PhoneNumberJson       *string `json:"PhoneNumberJson,omitempty" xml:"PhoneNumberJson,omitempty"`
-	SignNameJson          *string `json:"SignNameJson,omitempty" xml:"SignNameJson,omitempty"`
+	// The custom short code. It can contain 4 to 8 digits or letters.
+	//
+	// > If the CardLinkType parameter is set to 2, the CustomShortCodeJson parameter is required.
+	//
+	// example:
+	//
+	// abCde
+	CustomShortCodeJson *string `json:"CustomShortCodeJson,omitempty" xml:"CustomShortCodeJson,omitempty"`
+	// The original domain name. You must submit domain names for approval in advance.
+	//
+	// >
+	//
+	// 	- If the **CardLinkType*	- parameter is set to **2**, the **Domain*	- parameter is required.
+	//
+	// 	- The **Domain*	- parameter cannot exceed 100 characters in length. If the parameter is not specified, a default domain name is used.
+	//
+	// example:
+	//
+	// xxx.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The extension field.
+	//
+	// example:
+	//
+	// BC20220608102511660860762****
+	OutId *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	// The mobile phone numbers of recipients, custom identifiers, or system identifiers.
+	//
+	// >
+	//
+	// 	- A maximum of 10,000 mobile phone numbers are supported.
+	//
+	// 	- You can enter custom identifier. Each identifier can be a maximum of 60 characters in length.
+	//
+	// 	- You can apply for a maximum of 10 OPPO templates at a time.
+	//
+	// example:
+	//
+	// [\\"1390000****
+	//
+	// \\",\\"1370000****
+	//
+	// \\"]
+	PhoneNumberJson *string `json:"PhoneNumberJson,omitempty" xml:"PhoneNumberJson,omitempty"`
+	// The signature. You can view the template code in the **Signature*	- column on the **Signaturess*	- tab of the **Go China*	- page in the Alibaba Cloud SMS console.
+	//
+	// > The signatures must be approved and correspond to the mobile numbers in sequence.
+	//
+	// This parameter is required.
+	SignNameJson *string `json:"SignNameJson,omitempty" xml:"SignNameJson,omitempty"`
 }
 
 func (s GetCardSmsLinkRequest) String() string {
@@ -1307,10 +2455,34 @@ func (s *GetCardSmsLinkRequest) SetSignNameJson(v string) *GetCardSmsLinkRequest
 }
 
 type GetCardSmsLinkResponseBody struct {
-	Code      *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetCardSmsLinkResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *GetCardSmsLinkResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// CC89A90C-978F-46AC-B80D-54738371E7CA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetCardSmsLinkResponseBody) String() string {
@@ -1342,11 +2514,40 @@ func (s *GetCardSmsLinkResponseBody) SetSuccess(v bool) *GetCardSmsLinkResponseB
 }
 
 type GetCardSmsLinkResponseBodyData struct {
+	// The mobile phone numbers that support card messages.
+	//
+	// example:
+	//
+	// [\\"1390000****\\",\\"1370000****\\"]
 	CardPhoneNumbers *string `json:"CardPhoneNumbers,omitempty" xml:"CardPhoneNumbers,omitempty"`
-	CardSignNames    *string `json:"CardSignNames,omitempty" xml:"CardSignNames,omitempty"`
-	CardSmsLinks     *string `json:"CardSmsLinks,omitempty" xml:"CardSmsLinks,omitempty"`
-	CardTmpState     *int32  `json:"CardTmpState,omitempty" xml:"CardTmpState,omitempty"`
-	NotMediaMobiles  *string `json:"NotMediaMobiles,omitempty" xml:"NotMediaMobiles,omitempty"`
+	// The signatures must correspond to the mobile numbers and short URLs in sequence.
+	CardSignNames *string `json:"CardSignNames,omitempty" xml:"CardSignNames,omitempty"`
+	// The short URLs.
+	//
+	// example:
+	//
+	// [\\"mw2m.cn/LAaGGa\\",\\"mw2m.cn/LAAaes\\"]
+	CardSmsLinks *string `json:"CardSmsLinks,omitempty" xml:"CardSmsLinks,omitempty"`
+	// The review status of the card message template.
+	//
+	// 	- **0**: pending approval
+	//
+	// 	- **1**: approved
+	//
+	// 	- **2**: rejected
+	//
+	// > Unapproved card messages are rolled back.
+	//
+	// example:
+	//
+	// 0
+	CardTmpState *int32 `json:"CardTmpState,omitempty" xml:"CardTmpState,omitempty"`
+	// The mobile phone numbers that do not support card messages.
+	//
+	// example:
+	//
+	// 1390000****
+	NotMediaMobiles *string `json:"NotMediaMobiles,omitempty" xml:"NotMediaMobiles,omitempty"`
 }
 
 func (s GetCardSmsLinkResponseBodyData) String() string {
@@ -1383,9 +2584,9 @@ func (s *GetCardSmsLinkResponseBodyData) SetNotMediaMobiles(v string) *GetCardSm
 }
 
 type GetCardSmsLinkResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetCardSmsLinkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCardSmsLinkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetCardSmsLinkResponse) String() string {
@@ -1412,11 +2613,60 @@ func (s *GetCardSmsLinkResponse) SetBody(v *GetCardSmsLinkResponseBody) *GetCard
 }
 
 type GetMediaResourceIdRequest struct {
-	ExtendInfo   *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
-	FileSize     *int64  `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	Memo         *string `json:"Memo,omitempty" xml:"Memo,omitempty"`
-	OssKey       *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
-	ResourceType *int32  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The extended fields.
+	//
+	// > If you set the ResourceType parameter to **2**, this parameter is required.
+	//
+	// example:
+	//
+	// {\\"img_rate\\":\\"oneToOne\\"}
+	ExtendInfo *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
+	// The size of the resource. Unit: bytes.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12
+	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// The description of the resource.
+	Memo *string `json:"Memo,omitempty" xml:"Memo,omitempty"`
+	// The address of the resource.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://alicom-fc-media/1947741454322274/alicom-fc-media/pic/202205191526575398603697152.png
+	OssKey *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
+	// The type of the resource.
+	//
+	// 	- **1**: text.
+	//
+	// 	- **2**: image. A small image cannot exceed 100 KB in size, and a large image cannot exceed 2 MB in size. The image must be clear. Supported format: JPG, JPEG, and PNG.
+	//
+	// 	- **3**: audio.
+	//
+	// 	- **4**: video. Supported format: MP4.
+	//
+	// >
+	//
+	// 	- If you set the ResourceType parameter to 2, the **img_rate*	- required is required. Valid values:
+	//
+	// 	- 1:1
+	//
+	// 	- 16:9
+	//
+	// 	- 3:1
+	//
+	// 	- 48:65
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ResourceType *int32 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s GetMediaResourceIdRequest) String() string {
@@ -1453,10 +2703,34 @@ func (s *GetMediaResourceIdRequest) SetResourceType(v int32) *GetMediaResourceId
 }
 
 type GetMediaResourceIdResponseBody struct {
-	Code      *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetMediaResourceIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The response code.
+	//
+	// 	- If OK is returned, the request is successful.
+	//
+	// 	- Other values indicate that the request fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *GetMediaResourceIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// F07CF237-F6E3-5F77-B91B-F9B7C5DE84AB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetMediaResourceIdResponseBody) String() string {
@@ -1488,8 +2762,18 @@ func (s *GetMediaResourceIdResponseBody) SetSuccess(v bool) *GetMediaResourceIdR
 }
 
 type GetMediaResourceIdResponseBodyData struct {
+	// The download URL of the resource.
+	//
+	// example:
+	//
+	// http://test-example.com/download.jpg
 	ResUrlDownload *string `json:"ResUrlDownload,omitempty" xml:"ResUrlDownload,omitempty"`
-	ResourceId     *int64  `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource ID.
+	//
+	// example:
+	//
+	// SMS_14571****
+	ResourceId *int64 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 }
 
 func (s GetMediaResourceIdResponseBodyData) String() string {
@@ -1511,9 +2795,9 @@ func (s *GetMediaResourceIdResponseBodyData) SetResourceId(v int64) *GetMediaRes
 }
 
 type GetMediaResourceIdResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetMediaResourceIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMediaResourceIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetMediaResourceIdResponse) String() string {
@@ -1540,10 +2824,34 @@ func (s *GetMediaResourceIdResponse) SetBody(v *GetMediaResourceIdResponseBody) 
 }
 
 type GetOSSInfoForCardTemplateResponseBody struct {
-	Code      *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetOSSInfoForCardTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/101346.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *GetOSSInfoForCardTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// A90E4451-FED7-49D2-87C8-00700A8C4D0D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetOSSInfoForCardTemplateResponseBody) String() string {
@@ -1575,14 +2883,54 @@ func (s *GetOSSInfoForCardTemplateResponseBody) SetSuccess(v bool) *GetOSSInfoFo
 }
 
 type GetOSSInfoForCardTemplateResponseBodyData struct {
+	// The AccessKey ID.
+	//
+	// example:
+	//
+	// LTAIxetqt1Dg****
 	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
-	AliUid      *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	Bucket      *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	ExpireTime  *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	Host        *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	Policy      *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	Signature   *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
-	StartPath   *string `json:"StartPath,omitempty" xml:"StartPath,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 599333677478****
+	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The name of the OSS bucket.
+	//
+	// example:
+	//
+	// alicom-cardsms-resources
+	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// The timeout period.
+	//
+	// example:
+	//
+	// 1634209418
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The hostname.
+	//
+	// example:
+	//
+	// https://alicom-cardsms-resources.oss-cn-zhangjiakou.aliyuncs.com
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The signature policy.
+	//
+	// example:
+	//
+	// eyJxxx0=
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// The signature.
+	//
+	// example:
+	//
+	// Aliyun
+	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
+	// The path of the policy.
+	//
+	// example:
+	//
+	// 1631792777
+	StartPath *string `json:"StartPath,omitempty" xml:"StartPath,omitempty"`
 }
 
 func (s GetOSSInfoForCardTemplateResponseBodyData) String() string {
@@ -1634,9 +2982,9 @@ func (s *GetOSSInfoForCardTemplateResponseBodyData) SetStartPath(v string) *GetO
 }
 
 type GetOSSInfoForCardTemplateResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetOSSInfoForCardTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetOSSInfoForCardTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetOSSInfoForCardTemplateResponse) String() string {
@@ -1662,17 +3010,758 @@ func (s *GetOSSInfoForCardTemplateResponse) SetBody(v *GetOSSInfoForCardTemplate
 	return s
 }
 
+type GetOSSInfoForUploadFileRequest struct {
+	// example:
+	//
+	// fcMediaSms
+	BizType              *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s GetOSSInfoForUploadFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOSSInfoForUploadFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetOSSInfoForUploadFileRequest) SetBizType(v string) *GetOSSInfoForUploadFileRequest {
+	s.BizType = &v
+	return s
+}
+
+func (s *GetOSSInfoForUploadFileRequest) SetOwnerId(v int64) *GetOSSInfoForUploadFileRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetOSSInfoForUploadFileRequest) SetResourceOwnerAccount(v string) *GetOSSInfoForUploadFileRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetOSSInfoForUploadFileRequest) SetResourceOwnerId(v int64) *GetOSSInfoForUploadFileRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type GetOSSInfoForUploadFileResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model   *GetOSSInfoForUploadFileResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	// example:
+	//
+	// A90E4451-FED7-49D2-87C8-00700EDCFD0D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetOSSInfoForUploadFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOSSInfoForUploadFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetOSSInfoForUploadFileResponseBody) SetCode(v string) *GetOSSInfoForUploadFileResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetOSSInfoForUploadFileResponseBody) SetMessage(v string) *GetOSSInfoForUploadFileResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetOSSInfoForUploadFileResponseBody) SetModel(v *GetOSSInfoForUploadFileResponseBodyModel) *GetOSSInfoForUploadFileResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *GetOSSInfoForUploadFileResponseBody) SetRequestId(v string) *GetOSSInfoForUploadFileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetOSSInfoForUploadFileResponseBody) SetSuccess(v bool) *GetOSSInfoForUploadFileResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetOSSInfoForUploadFileResponseBodyModel struct {
+	// example:
+	//
+	// LTAIxetqt1Dg****
+	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	// example:
+	//
+	// 1719297445
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// https://alicom-fc-media.oss-cn-zhangjiakou.aliyuncs.com
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// example:
+	//
+	// eyJleHBpcmF0aW9uIjoiMjAyN***Ni0yNVQwNjozNzoyNS45NzBaI**iY29uZGl0aW9ucyI6W1siY29udGVudC1sZW5ndGgtcmFuZ2UiLDAsMTA0ODU3NjAwMF0sWyJzdGFydHMtd2l0***sIiRrZXkiLCIiXV19
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// example:
+	//
+	// BXnwCWPrhVb*****aoZHZfli5KE=
+	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
+	// example:
+	//
+	// 123456
+	StartPath *string `json:"StartPath,omitempty" xml:"StartPath,omitempty"`
+}
+
+func (s GetOSSInfoForUploadFileResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOSSInfoForUploadFileResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *GetOSSInfoForUploadFileResponseBodyModel) SetAccessKeyId(v string) *GetOSSInfoForUploadFileResponseBodyModel {
+	s.AccessKeyId = &v
+	return s
+}
+
+func (s *GetOSSInfoForUploadFileResponseBodyModel) SetExpireTime(v string) *GetOSSInfoForUploadFileResponseBodyModel {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *GetOSSInfoForUploadFileResponseBodyModel) SetHost(v string) *GetOSSInfoForUploadFileResponseBodyModel {
+	s.Host = &v
+	return s
+}
+
+func (s *GetOSSInfoForUploadFileResponseBodyModel) SetPolicy(v string) *GetOSSInfoForUploadFileResponseBodyModel {
+	s.Policy = &v
+	return s
+}
+
+func (s *GetOSSInfoForUploadFileResponseBodyModel) SetSignature(v string) *GetOSSInfoForUploadFileResponseBodyModel {
+	s.Signature = &v
+	return s
+}
+
+func (s *GetOSSInfoForUploadFileResponseBodyModel) SetStartPath(v string) *GetOSSInfoForUploadFileResponseBodyModel {
+	s.StartPath = &v
+	return s
+}
+
+type GetOSSInfoForUploadFileResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetOSSInfoForUploadFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetOSSInfoForUploadFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOSSInfoForUploadFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetOSSInfoForUploadFileResponse) SetHeaders(v map[string]*string) *GetOSSInfoForUploadFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetOSSInfoForUploadFileResponse) SetStatusCode(v int32) *GetOSSInfoForUploadFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetOSSInfoForUploadFileResponse) SetBody(v *GetOSSInfoForUploadFileResponseBody) *GetOSSInfoForUploadFileResponse {
+	s.Body = v
+	return s
+}
+
+type GetSmsSignRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+}
+
+func (s GetSmsSignRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSmsSignRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSmsSignRequest) SetOwnerId(v int64) *GetSmsSignRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetSmsSignRequest) SetResourceOwnerAccount(v string) *GetSmsSignRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetSmsSignRequest) SetResourceOwnerId(v int64) *GetSmsSignRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *GetSmsSignRequest) SetSignName(v string) *GetSmsSignRequest {
+	s.SignName = &v
+	return s
+}
+
+type GetSmsSignResponseBody struct {
+	// example:
+	//
+	// http://www.aliyun.com/
+	ApplyScene *string                          `json:"ApplyScene,omitempty" xml:"ApplyScene,omitempty"`
+	AuditInfo  *GetSmsSignResponseBodyAuditInfo `json:"AuditInfo,omitempty" xml:"AuditInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 2024-06-03 10:02:34
+	CreateDate  *string   `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	FileUrlList []*string `json:"FileUrlList,omitempty" xml:"FileUrlList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 20044156924
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 2004393xxxx
+	QualificationId *int64  `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
+	Remark          *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// F655A8D5-B967-440B-8683-DAD6FF8DE990
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// SIGN_100xxx077042023_16884xxxx64065_hrsdB
+	SignCode *string `json:"SignCode,omitempty" xml:"SignCode,omitempty"`
+	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// example:
+	//
+	// 1
+	SignStatus *int64 `json:"SignStatus,omitempty" xml:"SignStatus,omitempty"`
+	// example:
+	//
+	// 2
+	SignTag   *string `json:"SignTag,omitempty" xml:"SignTag,omitempty"`
+	SignUsage *string `json:"SignUsage,omitempty" xml:"SignUsage,omitempty"`
+	// example:
+	//
+	// false
+	ThirdParty *bool `json:"ThirdParty,omitempty" xml:"ThirdParty,omitempty"`
+}
+
+func (s GetSmsSignResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSmsSignResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSmsSignResponseBody) SetApplyScene(v string) *GetSmsSignResponseBody {
+	s.ApplyScene = &v
+	return s
+}
+
+func (s *GetSmsSignResponseBody) SetAuditInfo(v *GetSmsSignResponseBodyAuditInfo) *GetSmsSignResponseBody {
+	s.AuditInfo = v
+	return s
+}
+
+func (s *GetSmsSignResponseBody) SetCode(v string) *GetSmsSignResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetSmsSignResponseBody) SetCreateDate(v string) *GetSmsSignResponseBody {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *GetSmsSignResponseBody) SetFileUrlList(v []*string) *GetSmsSignResponseBody {
+	s.FileUrlList = v
+	return s
+}
+
+func (s *GetSmsSignResponseBody) SetMessage(v string) *GetSmsSignResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetSmsSignResponseBody) SetOrderId(v string) *GetSmsSignResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *GetSmsSignResponseBody) SetQualificationId(v int64) *GetSmsSignResponseBody {
+	s.QualificationId = &v
+	return s
+}
+
+func (s *GetSmsSignResponseBody) SetRemark(v string) *GetSmsSignResponseBody {
+	s.Remark = &v
+	return s
+}
+
+func (s *GetSmsSignResponseBody) SetRequestId(v string) *GetSmsSignResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSmsSignResponseBody) SetSignCode(v string) *GetSmsSignResponseBody {
+	s.SignCode = &v
+	return s
+}
+
+func (s *GetSmsSignResponseBody) SetSignName(v string) *GetSmsSignResponseBody {
+	s.SignName = &v
+	return s
+}
+
+func (s *GetSmsSignResponseBody) SetSignStatus(v int64) *GetSmsSignResponseBody {
+	s.SignStatus = &v
+	return s
+}
+
+func (s *GetSmsSignResponseBody) SetSignTag(v string) *GetSmsSignResponseBody {
+	s.SignTag = &v
+	return s
+}
+
+func (s *GetSmsSignResponseBody) SetSignUsage(v string) *GetSmsSignResponseBody {
+	s.SignUsage = &v
+	return s
+}
+
+func (s *GetSmsSignResponseBody) SetThirdParty(v bool) *GetSmsSignResponseBody {
+	s.ThirdParty = &v
+	return s
+}
+
+type GetSmsSignResponseBodyAuditInfo struct {
+	// example:
+	//
+	// 2024-06-03 12:02:34
+	AuditDate  *string `json:"AuditDate,omitempty" xml:"AuditDate,omitempty"`
+	RejectInfo *string `json:"RejectInfo,omitempty" xml:"RejectInfo,omitempty"`
+}
+
+func (s GetSmsSignResponseBodyAuditInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSmsSignResponseBodyAuditInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetSmsSignResponseBodyAuditInfo) SetAuditDate(v string) *GetSmsSignResponseBodyAuditInfo {
+	s.AuditDate = &v
+	return s
+}
+
+func (s *GetSmsSignResponseBodyAuditInfo) SetRejectInfo(v string) *GetSmsSignResponseBodyAuditInfo {
+	s.RejectInfo = &v
+	return s
+}
+
+type GetSmsSignResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSmsSignResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSmsSignResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSmsSignResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSmsSignResponse) SetHeaders(v map[string]*string) *GetSmsSignResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSmsSignResponse) SetStatusCode(v int32) *GetSmsSignResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSmsSignResponse) SetBody(v *GetSmsSignResponseBody) *GetSmsSignResponse {
+	s.Body = v
+	return s
+}
+
+type GetSmsTemplateRequest struct {
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SMS_20375****
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+}
+
+func (s GetSmsTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSmsTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSmsTemplateRequest) SetOwnerId(v int64) *GetSmsTemplateRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetSmsTemplateRequest) SetResourceOwnerAccount(v string) *GetSmsTemplateRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetSmsTemplateRequest) SetResourceOwnerId(v int64) *GetSmsTemplateRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *GetSmsTemplateRequest) SetTemplateCode(v string) *GetSmsTemplateRequest {
+	s.TemplateCode = &v
+	return s
+}
+
+type GetSmsTemplateResponseBody struct {
+	// example:
+	//
+	// http://www.aliyun.com/
+	ApplyScene *string                              `json:"ApplyScene,omitempty" xml:"ApplyScene,omitempty"`
+	AuditInfo  *GetSmsTemplateResponseBodyAuditInfo `json:"AuditInfo,omitempty" xml:"AuditInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 2024-06-03 10:02:34
+	CreateDate  *string                                `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	FileUrlList *GetSmsTemplateResponseBodyFileUrlList `json:"FileUrlList,omitempty" xml:"FileUrlList,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	IntlType *int32 `json:"IntlType,omitempty" xml:"IntlType,omitempty"`
+	// example:
+	//
+	// OK
+	Message             *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	MoreDataFileUrlList *GetSmsTemplateResponseBodyMoreDataFileUrlList `json:"MoreDataFileUrlList,omitempty" xml:"MoreDataFileUrlList,omitempty" type:"Struct"`
+	// example:
+	//
+	// 20030193785
+	OrderId         *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RelatedSignName *string `json:"RelatedSignName,omitempty" xml:"RelatedSignName,omitempty"`
+	Remark          *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// 819BE656-D2E0-4858-8B21-B2E47708****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// SMS_2322****
+	TemplateCode    *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
+	TemplateName    *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// example:
+	//
+	// 1
+	TemplateStatus *string `json:"TemplateStatus,omitempty" xml:"TemplateStatus,omitempty"`
+	// example:
+	//
+	// 2
+	TemplateTag *int32 `json:"TemplateTag,omitempty" xml:"TemplateTag,omitempty"`
+	// example:
+	//
+	// 1
+	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	// example:
+	//
+	// {"code":"characterWithNumber"}
+	VariableAttribute *string `json:"VariableAttribute,omitempty" xml:"VariableAttribute,omitempty"`
+}
+
+func (s GetSmsTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSmsTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSmsTemplateResponseBody) SetApplyScene(v string) *GetSmsTemplateResponseBody {
+	s.ApplyScene = &v
+	return s
+}
+
+func (s *GetSmsTemplateResponseBody) SetAuditInfo(v *GetSmsTemplateResponseBodyAuditInfo) *GetSmsTemplateResponseBody {
+	s.AuditInfo = v
+	return s
+}
+
+func (s *GetSmsTemplateResponseBody) SetCode(v string) *GetSmsTemplateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetSmsTemplateResponseBody) SetCreateDate(v string) *GetSmsTemplateResponseBody {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *GetSmsTemplateResponseBody) SetFileUrlList(v *GetSmsTemplateResponseBodyFileUrlList) *GetSmsTemplateResponseBody {
+	s.FileUrlList = v
+	return s
+}
+
+func (s *GetSmsTemplateResponseBody) SetIntlType(v int32) *GetSmsTemplateResponseBody {
+	s.IntlType = &v
+	return s
+}
+
+func (s *GetSmsTemplateResponseBody) SetMessage(v string) *GetSmsTemplateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetSmsTemplateResponseBody) SetMoreDataFileUrlList(v *GetSmsTemplateResponseBodyMoreDataFileUrlList) *GetSmsTemplateResponseBody {
+	s.MoreDataFileUrlList = v
+	return s
+}
+
+func (s *GetSmsTemplateResponseBody) SetOrderId(v string) *GetSmsTemplateResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *GetSmsTemplateResponseBody) SetRelatedSignName(v string) *GetSmsTemplateResponseBody {
+	s.RelatedSignName = &v
+	return s
+}
+
+func (s *GetSmsTemplateResponseBody) SetRemark(v string) *GetSmsTemplateResponseBody {
+	s.Remark = &v
+	return s
+}
+
+func (s *GetSmsTemplateResponseBody) SetRequestId(v string) *GetSmsTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSmsTemplateResponseBody) SetTemplateCode(v string) *GetSmsTemplateResponseBody {
+	s.TemplateCode = &v
+	return s
+}
+
+func (s *GetSmsTemplateResponseBody) SetTemplateContent(v string) *GetSmsTemplateResponseBody {
+	s.TemplateContent = &v
+	return s
+}
+
+func (s *GetSmsTemplateResponseBody) SetTemplateName(v string) *GetSmsTemplateResponseBody {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *GetSmsTemplateResponseBody) SetTemplateStatus(v string) *GetSmsTemplateResponseBody {
+	s.TemplateStatus = &v
+	return s
+}
+
+func (s *GetSmsTemplateResponseBody) SetTemplateTag(v int32) *GetSmsTemplateResponseBody {
+	s.TemplateTag = &v
+	return s
+}
+
+func (s *GetSmsTemplateResponseBody) SetTemplateType(v string) *GetSmsTemplateResponseBody {
+	s.TemplateType = &v
+	return s
+}
+
+func (s *GetSmsTemplateResponseBody) SetVariableAttribute(v string) *GetSmsTemplateResponseBody {
+	s.VariableAttribute = &v
+	return s
+}
+
+type GetSmsTemplateResponseBodyAuditInfo struct {
+	// example:
+	//
+	// 2024-06-03 11:20:34
+	AuditDate  *string `json:"AuditDate,omitempty" xml:"AuditDate,omitempty"`
+	RejectInfo *string `json:"RejectInfo,omitempty" xml:"RejectInfo,omitempty"`
+}
+
+func (s GetSmsTemplateResponseBodyAuditInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSmsTemplateResponseBodyAuditInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetSmsTemplateResponseBodyAuditInfo) SetAuditDate(v string) *GetSmsTemplateResponseBodyAuditInfo {
+	s.AuditDate = &v
+	return s
+}
+
+func (s *GetSmsTemplateResponseBodyAuditInfo) SetRejectInfo(v string) *GetSmsTemplateResponseBodyAuditInfo {
+	s.RejectInfo = &v
+	return s
+}
+
+type GetSmsTemplateResponseBodyFileUrlList struct {
+	FileUrl []*string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty" type:"Repeated"`
+}
+
+func (s GetSmsTemplateResponseBodyFileUrlList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSmsTemplateResponseBodyFileUrlList) GoString() string {
+	return s.String()
+}
+
+func (s *GetSmsTemplateResponseBodyFileUrlList) SetFileUrl(v []*string) *GetSmsTemplateResponseBodyFileUrlList {
+	s.FileUrl = v
+	return s
+}
+
+type GetSmsTemplateResponseBodyMoreDataFileUrlList struct {
+	MoreDataFileUrl []*string `json:"MoreDataFileUrl,omitempty" xml:"MoreDataFileUrl,omitempty" type:"Repeated"`
+}
+
+func (s GetSmsTemplateResponseBodyMoreDataFileUrlList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSmsTemplateResponseBodyMoreDataFileUrlList) GoString() string {
+	return s.String()
+}
+
+func (s *GetSmsTemplateResponseBodyMoreDataFileUrlList) SetMoreDataFileUrl(v []*string) *GetSmsTemplateResponseBodyMoreDataFileUrlList {
+	s.MoreDataFileUrl = v
+	return s
+}
+
+type GetSmsTemplateResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSmsTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSmsTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSmsTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSmsTemplateResponse) SetHeaders(v map[string]*string) *GetSmsTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSmsTemplateResponse) SetStatusCode(v int32) *GetSmsTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSmsTemplateResponse) SetBody(v *GetSmsTemplateResponseBody) *GetSmsTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type ListTagResourcesRequest struct {
-	NextToken            *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerId              *int64                        `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageSize             *int32                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProdCode             *string                       `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
-	RegionId             *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId           []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceOwnerAccount *string                       `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                        `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ResourceType         *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag                  []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The token used to query the next page.
+	//
+	// example:
+	//
+	// 23432453245
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the cloud service. Set the value to **dysms**.
+	//
+	// example:
+	//
+	// dysms
+	ProdCode *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
+	// The region ID. Set the value to **cn-hangzhou**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The code of the message template. Specify either the Tag or the ResourceId parameter.
+	//
+	// example:
+	//
+	// SMS_23423423
+	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The type of the resource. Set the value to TEMPLATE.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// TEMPLATE
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tag list. Specify either the Tag or the ResourceId parameter. You can specify a maximum of 20 tags.
+	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -1734,7 +3823,17 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag.
+	//
+	// example:
+	//
+	// TestKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
+	//
+	// example:
+	//
+	// TestValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1757,9 +3856,29 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
-	Code         *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	NextToken    *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code.
+	//
+	// 	- If OK is returned, the request is successful.
+	//
+	// 	- Other values indicate that the request fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The token used to query the next page.
+	//
+	// example:
+	//
+	// "23432453245"
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// A90E4451-FED7-49D2-87C8-00700A8C4D0D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of tags.
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
 
@@ -1809,10 +3928,30 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagRe
 }
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The code of the message template.
+	//
+	// example:
+	//
+	// SMS_23423****
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of resource.
+	//
+	// example:
+	//
+	// ALIYUN::DYSMS::TEMPLATE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// TestKey
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// TestValue
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResourcesTagResource) String() string {
@@ -1844,9 +3983,9 @@ func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagValue(v stri
 }
 
 type ListTagResourcesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagResourcesResponse) String() string {
@@ -1873,14 +4012,61 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ModifySmsSignRequest struct {
-	OwnerId              *int64                              `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Remark               *string                             `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	ResourceOwnerAccount *string                             `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                              `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SignFileList         []*ModifySmsSignRequestSignFileList `json:"SignFileList,omitempty" xml:"SignFileList,omitempty" type:"Repeated"`
-	SignName             *string                             `json:"SignName,omitempty" xml:"SignName,omitempty"`
-	SignSource           *int32                              `json:"SignSource,omitempty" xml:"SignSource,omitempty"`
-	SignType             *int32                              `json:"SignType,omitempty" xml:"SignType,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The scenario description of your released services. Provide the information of your services, such as a website URL, a domain name with an ICP filing, an app download URL, or the name of your WeChat official account or mini program. For sign-in scenarios, you must also provide an account and password for tests. A detailed description can improve the review efficiency of signatures and templates.
+	//
+	// > The description can be up to 200 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// This is the abbreviation of our company.
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The list of signature files.
+	//
+	// This parameter is required.
+	SignFileList []*ModifySmsSignRequestSignFileList `json:"SignFileList,omitempty" xml:"SignFileList,omitempty" type:"Repeated"`
+	// The signature.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Aliyun
+	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// The source of the signature. Valid values:
+	//
+	// 	- **0**: full name or abbreviation of an enterprise or institution.
+	//
+	// 	- **1**: full name or abbreviation of a website with Ministry of Industry and Information Technology (MIIT) filing.
+	//
+	// 	- **2**: full name or abbreviation of an app.
+	//
+	// 	- **3**: full name or abbreviation of a WeChat official account or applet.
+	//
+	// 	- **4**: full name or abbreviation of an e-commerce store.
+	//
+	// 	- **5**: full name or abbreviation of a trademark.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	SignSource *int32 `json:"SignSource,omitempty" xml:"SignSource,omitempty"`
+	// The type of the signature. Valid values:
+	//
+	// 	- **0**: verification-code signature
+	//
+	// 	- **1**: general-purpose signature
+	//
+	// example:
+	//
+	// 1
+	SignType *int32 `json:"SignType,omitempty" xml:"SignType,omitempty"`
 }
 
 func (s ModifySmsSignRequest) String() string {
@@ -1932,8 +4118,28 @@ func (s *ModifySmsSignRequest) SetSignType(v int32) *ModifySmsSignRequest {
 }
 
 type ModifySmsSignRequestSignFileList struct {
+	// The base64-encoded string of the signed files. The size of the image cannot exceed 2 MB.
+	//
+	// In some scenarios, documents are required to prove your identity. For more information, see [Signature specifications](https://help.aliyun.com/document_detail/108076.html).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// R0lGODlhHAAmAKIHAKqqqsvLy0hISObm5vf394uLiwAA
 	FileContents *string `json:"FileContents,omitempty" xml:"FileContents,omitempty"`
-	FileSuffix   *string `json:"FileSuffix,omitempty" xml:"FileSuffix,omitempty"`
+	// The format of the documents. You can upload multiple images. JPG, PNG, GIF, and JPEG are supported.
+	//
+	// In some scenarios, documents are required to prove your identity. For more information, see [Signature specifications](https://help.aliyun.com/document_detail/108076.html).
+	//
+	// > If the signature is used for other purposes or the signature source is an enterprise or public institution, you must upload some documents and an authorization letter. For more information, see [Documents](https://help.aliyun.com/document_detail/108076.html) and [Letter of authorization](https://help.aliyun.com/document_detail/56741.html).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// jpg
+	FileSuffix *string `json:"FileSuffix,omitempty" xml:"FileSuffix,omitempty"`
 }
 
 func (s ModifySmsSignRequestSignFileList) String() string {
@@ -1955,10 +4161,34 @@ func (s *ModifySmsSignRequestSignFileList) SetFileSuffix(v string) *ModifySmsSig
 }
 
 type ModifySmsSignResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/101346.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// F655A8D5-B967-440B-8683-DAD6FF8DE990
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SignName  *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// The signature.
+	//
+	// example:
+	//
+	// Aliyun
+	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
 }
 
 func (s ModifySmsSignResponseBody) String() string {
@@ -1990,9 +4220,9 @@ func (s *ModifySmsSignResponseBody) SetSignName(v string) *ModifySmsSignResponse
 }
 
 type ModifySmsSignResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifySmsSignResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifySmsSignResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifySmsSignResponse) String() string {
@@ -2019,14 +4249,61 @@ func (s *ModifySmsSignResponse) SetBody(v *ModifySmsSignResponseBody) *ModifySms
 }
 
 type ModifySmsTemplateRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The description of the message template. It is one of the reference information for template review. The description cannot exceed 100 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Modify the parameters of the template.
 	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TemplateCode         *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	TemplateContent      *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
-	TemplateName         *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	TemplateType         *int32  `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	// The code of the message template.
+	//
+	// You can log on to the [Short Message Service (SMS) console](https://dysms.console.aliyun.com/dysms.htm), click **Go China*	- or **Go Globe*	- in the left-side navigation pane, and then view the template code on the **Templates*	- tab. You can also call the [AddSmsTemplate](https://help.aliyun.com/document_detail/121208.html) operation to obtain the template code.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SMS_15255****
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// The content of the template. The content must be 1 to 500 characters in length.
+	//
+	// > When you modify a template, design the template content based on the review comments.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// You are applying for mobile registration. The verification code is: ${code}, valid for 5 minutes!
+	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
+	// The name of the template. The name must be 1 to 30 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aliyun verification code
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The type of the message. Valid values:
+	//
+	// 	- **0**: verification code
+	//
+	// 	- **1**: text message
+	//
+	// 	- **2**: promotional message
+	//
+	// 	- **3**: message sent to countries or regions outside the Chinese mainland
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	TemplateType *int32 `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
 func (s ModifySmsTemplateRequest) String() string {
@@ -2078,9 +4355,33 @@ func (s *ModifySmsTemplateRequest) SetTemplateType(v int32) *ModifySmsTemplateRe
 }
 
 type ModifySmsTemplateResponseBody struct {
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// F655A8D5-B967-440B-8683-DAD6FF8DE990
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The code of the message template.
+	//
+	// example:
+	//
+	// SMS_15255****
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 }
 
@@ -2113,9 +4414,9 @@ func (s *ModifySmsTemplateResponseBody) SetTemplateCode(v string) *ModifySmsTemp
 }
 
 type ModifySmsTemplateResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifySmsTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifySmsTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifySmsTemplateResponse) String() string {
@@ -2142,6 +4443,17 @@ func (s *ModifySmsTemplateResponse) SetBody(v *ModifySmsTemplateResponseBody) *M
 }
 
 type QueryCardSmsTemplateRequest struct {
+	// The code of the message template.
+	//
+	// You can view the template code in the **Template Code*	- column on the **Templates*	- tab of the **Go China*	- page in the Alibaba Cloud SMS console.
+	//
+	// > Make sure that the message template has been approved.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CARD_SMS_4139
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 }
 
@@ -2159,10 +4471,34 @@ func (s *QueryCardSmsTemplateRequest) SetTemplateCode(v string) *QueryCardSmsTem
 }
 
 type QueryCardSmsTemplateResponseBody struct {
-	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *QueryCardSmsTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/101346.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *QueryCardSmsTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// F655A8D5-B967-440B-8683-DAD6FF8DE990
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryCardSmsTemplateResponseBody) String() string {
@@ -2194,6 +4530,7 @@ func (s *QueryCardSmsTemplateResponseBody) SetSuccess(v bool) *QueryCardSmsTempl
 }
 
 type QueryCardSmsTemplateResponseBodyData struct {
+	// The array of objects.
 	Templates []map[string]interface{} `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
 }
 
@@ -2211,9 +4548,9 @@ func (s *QueryCardSmsTemplateResponseBodyData) SetTemplates(v []map[string]inter
 }
 
 type QueryCardSmsTemplateResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryCardSmsTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryCardSmsTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryCardSmsTemplateResponse) String() string {
@@ -2240,8 +4577,21 @@ func (s *QueryCardSmsTemplateResponse) SetBody(v *QueryCardSmsTemplateResponseBo
 }
 
 type QueryCardSmsTemplateReportRequest struct {
-	EndDate       *string   `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	StartDate     *string   `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// The end of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
+	//
+	// example:
+	//
+	// 2020-10-11 00:00:01
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The beginning of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
+	//
+	// example:
+	//
+	// 2020-10-10 00:00:01
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// The array of message templates.
+	//
+	// This parameter is required.
 	TemplateCodes []*string `json:"TemplateCodes,omitempty" xml:"TemplateCodes,omitempty" type:"Repeated"`
 }
 
@@ -2269,10 +4619,34 @@ func (s *QueryCardSmsTemplateReportRequest) SetTemplateCodes(v []*string) *Query
 }
 
 type QueryCardSmsTemplateReportResponseBody struct {
-	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *QueryCardSmsTemplateReportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *QueryCardSmsTemplateReportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// CC89A90C-978F-46AC-B80D-54738371E7CA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryCardSmsTemplateReportResponseBody) String() string {
@@ -2304,6 +4678,7 @@ func (s *QueryCardSmsTemplateReportResponseBody) SetSuccess(v bool) *QueryCardSm
 }
 
 type QueryCardSmsTemplateReportResponseBodyData struct {
+	// The details of the data returned.
 	Model []map[string]interface{} `json:"model,omitempty" xml:"model,omitempty" type:"Repeated"`
 }
 
@@ -2321,9 +4696,9 @@ func (s *QueryCardSmsTemplateReportResponseBodyData) SetModel(v []map[string]int
 }
 
 type QueryCardSmsTemplateReportResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryCardSmsTemplateReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryCardSmsTemplateReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryCardSmsTemplateReportResponse) String() string {
@@ -2350,8 +4725,20 @@ func (s *QueryCardSmsTemplateReportResponse) SetBody(v *QueryCardSmsTemplateRepo
 }
 
 type QueryMobilesCardSupportRequest struct {
-	Mobiles      []map[string]interface{} `json:"Mobiles,omitempty" xml:"Mobiles,omitempty" type:"Repeated"`
-	TemplateCode *string                  `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// The list of mobile phone numbers.
+	//
+	// This parameter is required.
+	Mobiles []map[string]interface{} `json:"Mobiles,omitempty" xml:"Mobiles,omitempty" type:"Repeated"`
+	// The code of the message template. You can view the template code in the **Template Code*	- column on the **Templates*	- tab of the **Go China*	- page in the Alibaba Cloud SMS console.
+	//
+	// > Make sure that the message template has been approved.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CARD_SMS_0000
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 }
 
 func (s QueryMobilesCardSupportRequest) String() string {
@@ -2373,8 +4760,20 @@ func (s *QueryMobilesCardSupportRequest) SetTemplateCode(v string) *QueryMobiles
 }
 
 type QueryMobilesCardSupportShrinkRequest struct {
+	// The list of mobile phone numbers.
+	//
+	// This parameter is required.
 	MobilesShrink *string `json:"Mobiles,omitempty" xml:"Mobiles,omitempty"`
-	TemplateCode  *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// The code of the message template. You can view the template code in the **Template Code*	- column on the **Templates*	- tab of the **Go China*	- page in the Alibaba Cloud SMS console.
+	//
+	// > Make sure that the message template has been approved.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CARD_SMS_0000
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 }
 
 func (s QueryMobilesCardSupportShrinkRequest) String() string {
@@ -2396,10 +4795,34 @@ func (s *QueryMobilesCardSupportShrinkRequest) SetTemplateCode(v string) *QueryM
 }
 
 type QueryMobilesCardSupportResponseBody struct {
-	Code      *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *QueryMobilesCardSupportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *QueryMobilesCardSupportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 08C17DFE-2E10-54F4-BAFB-7180039CC217
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryMobilesCardSupportResponseBody) String() string {
@@ -2431,6 +4854,7 @@ func (s *QueryMobilesCardSupportResponseBody) SetSuccess(v bool) *QueryMobilesCa
 }
 
 type QueryMobilesCardSupportResponseBodyData struct {
+	// The list of returned results.
 	QueryResult []*QueryMobilesCardSupportResponseBodyDataQueryResult `json:"QueryResult,omitempty" xml:"QueryResult,omitempty" type:"Repeated"`
 }
 
@@ -2448,8 +4872,22 @@ func (s *QueryMobilesCardSupportResponseBodyData) SetQueryResult(v []*QueryMobil
 }
 
 type QueryMobilesCardSupportResponseBodyDataQueryResult struct {
-	Mobile  *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	Support *bool   `json:"Support,omitempty" xml:"Support,omitempty"`
+	// The mobile phone number.
+	//
+	// example:
+	//
+	// 1380000****
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// Indicates whether the mobile phone number supports card messages. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	Support *bool `json:"Support,omitempty" xml:"Support,omitempty"`
 }
 
 func (s QueryMobilesCardSupportResponseBodyDataQueryResult) String() string {
@@ -2471,9 +4909,9 @@ func (s *QueryMobilesCardSupportResponseBodyDataQueryResult) SetSupport(v bool) 
 }
 
 type QueryMobilesCardSupportResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryMobilesCardSupportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryMobilesCardSupportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryMobilesCardSupportResponse) String() string {
@@ -2500,19 +4938,41 @@ func (s *QueryMobilesCardSupportResponse) SetBody(v *QueryMobilesCardSupportResp
 }
 
 type QueryPageSmartShortUrlLogRequest struct {
-	ClickState           *int64  `json:"ClickState,omitempty" xml:"ClickState,omitempty"`
-	CreateDateEnd        *int64  `json:"CreateDateEnd,omitempty" xml:"CreateDateEnd,omitempty"`
-	CreateDateStart      *int64  `json:"CreateDateStart,omitempty" xml:"CreateDateStart,omitempty"`
-	EndId                *int64  `json:"EndId,omitempty" xml:"EndId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNo               *int64  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20181225
+	CreateDateEnd *int64 `json:"CreateDateEnd,omitempty" xml:"CreateDateEnd,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20181225
+	CreateDateStart *int64 `json:"CreateDateStart,omitempty" xml:"CreateDateStart,omitempty"`
+	OwnerId         *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1390000****
 	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ShortName            *string `json:"ShortName,omitempty" xml:"ShortName,omitempty"`
-	ShortUrl             *string `json:"ShortUrl,omitempty" xml:"ShortUrl,omitempty"`
-	StartId              *int64  `json:"StartId,omitempty" xml:"StartId,omitempty"`
+	// example:
+	//
+	// http://ays.cn/****
+	ShortUrl *string `json:"ShortUrl,omitempty" xml:"ShortUrl,omitempty"`
 }
 
 func (s QueryPageSmartShortUrlLogRequest) String() string {
@@ -2523,11 +4983,6 @@ func (s QueryPageSmartShortUrlLogRequest) GoString() string {
 	return s.String()
 }
 
-func (s *QueryPageSmartShortUrlLogRequest) SetClickState(v int64) *QueryPageSmartShortUrlLogRequest {
-	s.ClickState = &v
-	return s
-}
-
 func (s *QueryPageSmartShortUrlLogRequest) SetCreateDateEnd(v int64) *QueryPageSmartShortUrlLogRequest {
 	s.CreateDateEnd = &v
 	return s
@@ -2535,11 +4990,6 @@ func (s *QueryPageSmartShortUrlLogRequest) SetCreateDateEnd(v int64) *QueryPageS
 
 func (s *QueryPageSmartShortUrlLogRequest) SetCreateDateStart(v int64) *QueryPageSmartShortUrlLogRequest {
 	s.CreateDateStart = &v
-	return s
-}
-
-func (s *QueryPageSmartShortUrlLogRequest) SetEndId(v int64) *QueryPageSmartShortUrlLogRequest {
-	s.EndId = &v
 	return s
 }
 
@@ -2573,27 +5023,29 @@ func (s *QueryPageSmartShortUrlLogRequest) SetResourceOwnerId(v int64) *QueryPag
 	return s
 }
 
-func (s *QueryPageSmartShortUrlLogRequest) SetShortName(v string) *QueryPageSmartShortUrlLogRequest {
-	s.ShortName = &v
-	return s
-}
-
 func (s *QueryPageSmartShortUrlLogRequest) SetShortUrl(v string) *QueryPageSmartShortUrlLogRequest {
 	s.ShortUrl = &v
 	return s
 }
 
-func (s *QueryPageSmartShortUrlLogRequest) SetStartId(v int64) *QueryPageSmartShortUrlLogRequest {
-	s.StartId = &v
-	return s
-}
-
 type QueryPageSmartShortUrlLogResponseBody struct {
-	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model     *QueryPageSmartShortUrlLogResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Message *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model   *QueryPageSmartShortUrlLogResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	// example:
+	//
+	// 示例值示例值
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryPageSmartShortUrlLogResponseBody) String() string {
@@ -2630,11 +5082,23 @@ func (s *QueryPageSmartShortUrlLogResponseBody) SetSuccess(v bool) *QueryPageSma
 }
 
 type QueryPageSmartShortUrlLogResponseBodyModel struct {
-	List       []*QueryPageSmartShortUrlLogResponseBodyModelList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	PageNo     *int64                                            `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize   *int64                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount *int64                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalPage  *int64                                            `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	List []*QueryPageSmartShortUrlLogResponseBodyModelList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 74
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 15
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 66
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 86
+	TotalPage *int64 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s QueryPageSmartShortUrlLogResponseBodyModel) String() string {
@@ -2671,12 +5135,30 @@ func (s *QueryPageSmartShortUrlLogResponseBodyModel) SetTotalPage(v int64) *Quer
 }
 
 type QueryPageSmartShortUrlLogResponseBodyModelList struct {
-	ClickState  *int64  `json:"ClickState,omitempty" xml:"ClickState,omitempty"`
-	ClickTime   *int64  `json:"ClickTime,omitempty" xml:"ClickTime,omitempty"`
-	CreateTime  *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 87
+	ClickState *int64 `json:"ClickState,omitempty" xml:"ClickState,omitempty"`
+	// example:
+	//
+	// 51
+	ClickTime *int64 `json:"ClickTime,omitempty" xml:"ClickTime,omitempty"`
+	// example:
+	//
+	// 64
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 示例值示例值
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	ShortName   *string `json:"ShortName,omitempty" xml:"ShortName,omitempty"`
-	ShortUrl    *string `json:"ShortUrl,omitempty" xml:"ShortUrl,omitempty"`
+	// example:
+	//
+	// 示例值示例值示例值
+	ShortName *string `json:"ShortName,omitempty" xml:"ShortName,omitempty"`
+	// example:
+	//
+	// 示例值示例值示例值
+	ShortUrl *string `json:"ShortUrl,omitempty" xml:"ShortUrl,omitempty"`
 }
 
 func (s QueryPageSmartShortUrlLogResponseBodyModelList) String() string {
@@ -2718,9 +5200,9 @@ func (s *QueryPageSmartShortUrlLogResponseBodyModelList) SetShortUrl(v string) *
 }
 
 type QueryPageSmartShortUrlLogResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryPageSmartShortUrlLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryPageSmartShortUrlLogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryPageSmartShortUrlLogResponse) String() string {
@@ -2747,14 +5229,55 @@ func (s *QueryPageSmartShortUrlLogResponse) SetBody(v *QueryPageSmartShortUrlLog
 }
 
 type QuerySendDetailsRequest struct {
-	BizId                *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	CurrentPage          *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the delivery receipt. The delivery receipt ID is the value of the BizId parameter that is returned when you call the SendSms or SendBatchSms operation.
+	//
+	// example:
+	//
+	// 134523^435****
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The page number of the first page.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	OwnerId     *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The number of items displayed per page.
+	//
+	// Valid values: 1 to 50.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The mobile numbers of the recipients. Format:
+	//
+	// 	- If you send messages in the Chinese mainland, specify an 11-digit mobile number, for example, 1390000\\*\\*\\*\\*.
+	//
+	// 	- If you send messages to countries or regions outside the Chinese mainland, specify this parameter in the \\<Area code>\\<Mobile number> format. Example: 8520000\\*\\*\\*\\*.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1390000****
 	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SendDate             *string `json:"SendDate,omitempty" xml:"SendDate,omitempty"`
+	// The date when the message was sent. You can query messages that were sent within the last 30 days.
+	//
+	// Format: yyyyMMdd. Example: 20181225.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20181228
+	SendDate *string `json:"SendDate,omitempty" xml:"SendDate,omitempty"`
 }
 
 func (s QuerySendDetailsRequest) String() string {
@@ -2806,11 +5329,36 @@ func (s *QuerySendDetailsRequest) SetSendDate(v string) *QuerySendDetailsRequest
 }
 
 type QuerySendDetailsResponseBody struct {
-	Code              *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message           *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId         *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 819BE656-D2E0-4858-8B21-B2E477085AAF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the message.
 	SmsSendDetailDTOs *QuerySendDetailsResponseBodySmsSendDetailDTOs `json:"SmsSendDetailDTOs,omitempty" xml:"SmsSendDetailDTOs,omitempty" type:"Struct"`
-	TotalCount        *string                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of sent messages.
+	//
+	// example:
+	//
+	// 1
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s QuerySendDetailsResponseBody) String() string {
@@ -2864,13 +5412,63 @@ func (s *QuerySendDetailsResponseBodySmsSendDetailDTOs) SetSmsSendDetailDTO(v []
 }
 
 type QuerySendDetailsResponseBodySmsSendDetailDTOsSmsSendDetailDTO struct {
-	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	ErrCode      *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	OutId        *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	PhoneNum     *string `json:"PhoneNum,omitempty" xml:"PhoneNum,omitempty"`
-	ReceiveDate  *string `json:"ReceiveDate,omitempty" xml:"ReceiveDate,omitempty"`
-	SendDate     *string `json:"SendDate,omitempty" xml:"SendDate,omitempty"`
-	SendStatus   *int64  `json:"SendStatus,omitempty" xml:"SendStatus,omitempty"`
+	// The content of the message.
+	//
+	// example:
+	//
+	// 【Aliyun】This is a test message.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The status code returned by the carrier.
+	//
+	// 	- If the message is delivered, "DELIVERED" is returned.
+	//
+	// 	- For information about the error codes that may be returned if the message is not delivered, see [error codes](https://help.aliyun.com/document_detail/101347.html).
+	//
+	// example:
+	//
+	// DELIVERED
+	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The extended field.
+	//
+	// example:
+	//
+	// 123
+	OutId *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	// The mobile numbers of the recipients.
+	//
+	// example:
+	//
+	// 1390000****
+	PhoneNum *string `json:"PhoneNum,omitempty" xml:"PhoneNum,omitempty"`
+	// The date and time when the message was received.
+	//
+	// example:
+	//
+	// 2019-01-08 16:44:13
+	ReceiveDate *string `json:"ReceiveDate,omitempty" xml:"ReceiveDate,omitempty"`
+	// The date and time when the message was sent.
+	//
+	// example:
+	//
+	// 2019-01-08 16:44:10
+	SendDate *string `json:"SendDate,omitempty" xml:"SendDate,omitempty"`
+	// The delivery status of the message. Valid values:
+	//
+	// 	- **1**: The message has not received a delivery receipt yet.
+	//
+	// 	- **2**: The message failed to be delivered.
+	//
+	// 	- **3**: The message was delivered.
+	//
+	// example:
+	//
+	// 3
+	SendStatus *int64 `json:"SendStatus,omitempty" xml:"SendStatus,omitempty"`
+	// The ID of the message template.
+	//
+	// example:
+	//
+	// SMS_12231****
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 }
 
@@ -2923,9 +5521,9 @@ func (s *QuerySendDetailsResponseBodySmsSendDetailDTOsSmsSendDetailDTO) SetTempl
 }
 
 type QuerySendDetailsResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QuerySendDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QuerySendDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QuerySendDetailsResponse) String() string {
@@ -2952,16 +5550,75 @@ func (s *QuerySendDetailsResponse) SetBody(v *QuerySendDetailsResponseBody) *Que
 }
 
 type QuerySendStatisticsRequest struct {
-	EndDate              *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	IsGlobe              *int32  `json:"IsGlobe,omitempty" xml:"IsGlobe,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageIndex            *int32  `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// The end of the time range to query. Format: yyyyMMdd. Example: 20181225.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20201003
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The site from where the message is sent. Valid values:
+	//
+	// 	- **1**: China site
+	//
+	// 	- **2**: international site
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	IsGlobe *int32 `json:"IsGlobe,omitempty" xml:"IsGlobe,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. Default value: **1**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// The number of entries to return on each page. Valid values: **1 to 50**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SignName             *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
-	StartDate            *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	TemplateType         *int32  `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	// The signature.
+	//
+	// example:
+	//
+	// Aliyun
+	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// The beginning of the time range to query. Format: yyyyMMdd. Example: 20181225.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20201002
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// The type of the message template. Valid values: Valid values:
+	//
+	// 	- **0**: verification code
+	//
+	// 	- **1**: notification
+	//
+	// 	- **2**: promotional message (Enterprise users only)
+	//
+	// 	- **3**: international purpose (Enterprise users only)
+	//
+	// 	- **7**: digital message
+	//
+	// example:
+	//
+	// 0
+	TemplateType *int32 `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
 func (s QuerySendStatisticsRequest) String() string {
@@ -3023,10 +5680,30 @@ func (s *QuerySendStatisticsRequest) SetTemplateType(v int32) *QuerySendStatisti
 }
 
 type QuerySendStatisticsResponseBody struct {
-	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *QuerySendStatisticsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code.
+	//
+	// 	- If OK is returned, the request is successful.
+	//
+	// 	- Other values indicate that the request fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *QuerySendStatisticsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 819BE656-D2E0-4858-8B21-B2E47708****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QuerySendStatisticsResponseBody) String() string {
@@ -3058,8 +5735,14 @@ func (s *QuerySendStatisticsResponseBody) SetRequestId(v string) *QuerySendStati
 }
 
 type QuerySendStatisticsResponseBodyData struct {
+	// The details of the data returned.
 	TargetList []*QuerySendStatisticsResponseBodyDataTargetList `json:"TargetList,omitempty" xml:"TargetList,omitempty" type:"Repeated"`
-	TotalSize  *int64                                           `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 20
+	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
 func (s QuerySendStatisticsResponseBodyData) String() string {
@@ -3081,11 +5764,36 @@ func (s *QuerySendStatisticsResponseBodyData) SetTotalSize(v int64) *QuerySendSt
 }
 
 type QuerySendStatisticsResponseBodyDataTargetList struct {
-	NoRespondedCount      *int64  `json:"NoRespondedCount,omitempty" xml:"NoRespondedCount,omitempty"`
-	RespondedFailCount    *int64  `json:"RespondedFailCount,omitempty" xml:"RespondedFailCount,omitempty"`
-	RespondedSuccessCount *int64  `json:"RespondedSuccessCount,omitempty" xml:"RespondedSuccessCount,omitempty"`
-	SendDate              *string `json:"SendDate,omitempty" xml:"SendDate,omitempty"`
-	TotalCount            *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of messages without a delivery receipt.
+	//
+	// example:
+	//
+	// 1
+	NoRespondedCount *int64 `json:"NoRespondedCount,omitempty" xml:"NoRespondedCount,omitempty"`
+	// The number of messages with a delivery receipt that indicates a failure.
+	//
+	// example:
+	//
+	// 2
+	RespondedFailCount *int64 `json:"RespondedFailCount,omitempty" xml:"RespondedFailCount,omitempty"`
+	// The number of messages with a delivery receipt that indicates a success.
+	//
+	// example:
+	//
+	// 17
+	RespondedSuccessCount *int64 `json:"RespondedSuccessCount,omitempty" xml:"RespondedSuccessCount,omitempty"`
+	// The date when the message is sent. Format: yyyyMMdd. Example: 20181225.
+	//
+	// example:
+	//
+	// 20201010
+	SendDate *string `json:"SendDate,omitempty" xml:"SendDate,omitempty"`
+	// The number of delivered messages.
+	//
+	// example:
+	//
+	// 20
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s QuerySendStatisticsResponseBodyDataTargetList) String() string {
@@ -3122,9 +5830,9 @@ func (s *QuerySendStatisticsResponseBodyDataTargetList) SetTotalCount(v int64) *
 }
 
 type QuerySendStatisticsResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QuerySendStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QuerySendStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QuerySendStatisticsResponse) String() string {
@@ -3154,7 +5862,14 @@ type QueryShortUrlRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ShortUrl             *string `json:"ShortUrl,omitempty" xml:"ShortUrl,omitempty"`
+	// The short URL. You can query the short URL by calling the [AddShortUrl](https://help.aliyun.com/document_detail/186774.html) operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://****.cn/6y8uy7
+	ShortUrl *string `json:"ShortUrl,omitempty" xml:"ShortUrl,omitempty"`
 }
 
 func (s QueryShortUrlRequest) String() string {
@@ -3186,10 +5901,30 @@ func (s *QueryShortUrlRequest) SetShortUrl(v string) *QueryShortUrlRequest {
 }
 
 type QueryShortUrlResponseBody struct {
-	Code      *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *QueryShortUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code.
+	//
+	// 	- If OK is returned, the request is successful.
+	//
+	// 	- Other values indicate that the request fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of the short URL.
+	Data *QueryShortUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 819BE656-D2E0-4858-8B21-B2E477085AAF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryShortUrlResponseBody) String() string {
@@ -3221,13 +5956,61 @@ func (s *QueryShortUrlResponseBody) SetRequestId(v string) *QueryShortUrlRespons
 }
 
 type QueryShortUrlResponseBodyData struct {
-	CreateDate         *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	ExpireDate         *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
-	PageViewCount      *string `json:"PageViewCount,omitempty" xml:"PageViewCount,omitempty"`
-	ShortUrl           *string `json:"ShortUrl,omitempty" xml:"ShortUrl,omitempty"`
-	ShortUrlName       *string `json:"ShortUrlName,omitempty" xml:"ShortUrlName,omitempty"`
-	ShortUrlStatus     *string `json:"ShortUrlStatus,omitempty" xml:"ShortUrlStatus,omitempty"`
-	SourceUrl          *string `json:"SourceUrl,omitempty" xml:"SourceUrl,omitempty"`
+	// The time when the short URL was created.
+	//
+	// example:
+	//
+	// 2019-01-08 16:44:13
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The time when the short URL expires.
+	//
+	// example:
+	//
+	// 2019-01-22 11:21:11
+	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	// The PV.
+	//
+	// example:
+	//
+	// 300
+	PageViewCount *string `json:"PageViewCount,omitempty" xml:"PageViewCount,omitempty"`
+	// The short URL.
+	//
+	// example:
+	//
+	// http://****.cn/6y8uy7
+	ShortUrl *string `json:"ShortUrl,omitempty" xml:"ShortUrl,omitempty"`
+	// The service name of the short URL.
+	//
+	// example:
+	//
+	// The Alibaba Cloud Short Link service.
+	ShortUrlName *string `json:"ShortUrlName,omitempty" xml:"ShortUrlName,omitempty"`
+	// The status of the short URL. Valid values:
+	//
+	// 	- **expired**
+	//
+	// 	- **effective**
+	//
+	// 	- **audit**
+	//
+	// 	- **reject**
+	//
+	// example:
+	//
+	// expired
+	ShortUrlStatus *string `json:"ShortUrlStatus,omitempty" xml:"ShortUrlStatus,omitempty"`
+	// The source address.
+	//
+	// example:
+	//
+	// https://www.****.com/product/sms
+	SourceUrl *string `json:"SourceUrl,omitempty" xml:"SourceUrl,omitempty"`
+	// The UV.
+	//
+	// example:
+	//
+	// 23
 	UniqueVisitorCount *string `json:"UniqueVisitorCount,omitempty" xml:"UniqueVisitorCount,omitempty"`
 }
 
@@ -3280,9 +6063,9 @@ func (s *QueryShortUrlResponseBodyData) SetUniqueVisitorCount(v string) *QuerySh
 }
 
 type QueryShortUrlResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryShortUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryShortUrlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryShortUrlResponse) String() string {
@@ -3312,7 +6095,14 @@ type QuerySmsSignRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SignName             *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// The signature.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Aliyun
+	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
 }
 
 func (s QuerySmsSignRequest) String() string {
@@ -3344,13 +6134,64 @@ func (s *QuerySmsSignRequest) SetSignName(v string) *QuerySmsSignRequest {
 }
 
 type QuerySmsSignResponseBody struct {
-	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response code.
+	//
+	// 	- If OK is returned, the request is successful.
+	//
+	// 	- Other values indicate that the request fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The date and time when the signature was created.
+	//
+	// example:
+	//
+	// 2019-01-08 16:44:13
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Reason     *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SignName   *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
-	SignStatus *int32  `json:"SignStatus,omitempty" xml:"SignStatus,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The remarks of the review. Valid values:
+	//
+	// 	- If the signature is in the **Approved*	- or **Pending Approval*	- state, No Remarks is returned.
+	//
+	// 	- If the signature is in the **Not Approved*	- state, the reason why the signature is rejected is returned.
+	//
+	// example:
+	//
+	// The document cannot verify the authenticity of the information. Please upload it again.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// CC89A90C-978F-46AC-B80D-54738371E7CA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The signature.
+	//
+	// example:
+	//
+	// Aliyun
+	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// The status of the signature. Valid values:
+	//
+	// 	- **0**: The signature is pending approval.
+	//
+	// 	- **1**: The signature is approved.
+	//
+	// 	- **2**: The signature is rejected. The Reason parameter indicates the reason why the signature is rejected.
+	//
+	// 	- **10**: The signature is cancelled.
+	//
+	// example:
+	//
+	// 1
+	SignStatus *int32 `json:"SignStatus,omitempty" xml:"SignStatus,omitempty"`
 }
 
 func (s QuerySmsSignResponseBody) String() string {
@@ -3397,9 +6238,9 @@ func (s *QuerySmsSignResponseBody) SetSignStatus(v int32) *QuerySmsSignResponseB
 }
 
 type QuerySmsSignResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QuerySmsSignResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QuerySmsSignResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QuerySmsSignResponse) String() string {
@@ -3426,8 +6267,18 @@ func (s *QuerySmsSignResponse) SetBody(v *QuerySmsSignResponseBody) *QuerySmsSig
 }
 
 type QuerySmsSignListRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageIndex            *int32  `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
+	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// The number of signatures per page. Valid values: **1 to 50**.
+	//
+	// example:
+	//
+	// 10
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -3467,13 +6318,48 @@ func (s *QuerySmsSignListRequest) SetResourceOwnerId(v int64) *QuerySmsSignListR
 }
 
 type QuerySmsSignListResponseBody struct {
-	Code        *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	CurrentPage *int32                                     `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Message     *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageSize    *int32                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The page number. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The number of signatures per page. Valid values: **1 to 50**.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 819BE656-D2E0-4858-8B21-B2E47708****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The queried message signatures.
 	SmsSignList []*QuerySmsSignListResponseBodySmsSignList `json:"SmsSignList,omitempty" xml:"SmsSignList,omitempty" type:"Repeated"`
-	TotalCount  *int64                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of signatures.
+	//
+	// example:
+	//
+	// 100
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s QuerySmsSignListResponseBody) String() string {
@@ -3520,12 +6406,54 @@ func (s *QuerySmsSignListResponseBody) SetTotalCount(v int64) *QuerySmsSignListR
 }
 
 type QuerySmsSignListResponseBodySmsSignList struct {
-	AuditStatus  *string                                        `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	BusinessType *string                                        `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	CreateDate   *string                                        `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	OrderId      *string                                        `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Reason       *QuerySmsSignListResponseBodySmsSignListReason `json:"Reason,omitempty" xml:"Reason,omitempty" type:"Struct"`
-	SignName     *string                                        `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// The approval status of the signature. Valid values:
+	//
+	// 	- **AUDIT_STATE_INIT**: The signature is pending approval.
+	//
+	// 	- **AUDIT_STATE_PASS**: The signature is approved.
+	//
+	// 	- **AUDIT_STATE_NOT_PASS**: The signature is rejected. You can view the reason in the Reason response parameter.
+	//
+	// 	- **AUDIT_STATE_CANCEL**: The approval is canceled.
+	//
+	// example:
+	//
+	// AUDIT_STATE_NOT_PASS
+	AuditStatus *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	// The type of the signature scenario. The return value ends with "type". Valid values:
+	//
+	// 	- Verification code type
+	//
+	// 	- General-purpose type
+	//
+	// example:
+	//
+	// Verification code type
+	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// The time when the signature was created. Format: yyyy-MM-dd HH:mm:ss.
+	//
+	// example:
+	//
+	// 2020-01-08 16:44:13
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The ticket ID.
+	//
+	// example:
+	//
+	// 236****5
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The approval remarks.
+	//
+	// 	- If the value of AuditStatus is **AUDIT_STATE_PASS*	- or **AUDIT_STATE_INIT**, the value of Reason is No Approval Remarks.
+	//
+	// 	- If the value of AuditStatus is **AUDIT_STATE_NOT_PASS**, the reason why the signature is rejected is returned.
+	Reason *QuerySmsSignListResponseBodySmsSignListReason `json:"Reason,omitempty" xml:"Reason,omitempty" type:"Struct"`
+	// The name of the signature.
+	//
+	// example:
+	//
+	// Aliyun
+	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
 }
 
 func (s QuerySmsSignListResponseBodySmsSignList) String() string {
@@ -3567,8 +6495,23 @@ func (s *QuerySmsSignListResponseBodySmsSignList) SetSignName(v string) *QuerySm
 }
 
 type QuerySmsSignListResponseBodySmsSignListReason struct {
-	RejectDate    *string `json:"RejectDate,omitempty" xml:"RejectDate,omitempty"`
-	RejectInfo    *string `json:"RejectInfo,omitempty" xml:"RejectInfo,omitempty"`
+	// The time when the signature was rejected. Format: yyyy-MM-dd HH:mm:ss.
+	//
+	// example:
+	//
+	// 2020-01-08 19:02:13
+	RejectDate *string `json:"RejectDate,omitempty" xml:"RejectDate,omitempty"`
+	// The reason why the signature was rejected.
+	//
+	// example:
+	//
+	// The document cannot verify the authenticity of the information. Please upload it again.
+	RejectInfo *string `json:"RejectInfo,omitempty" xml:"RejectInfo,omitempty"`
+	// The remarks about the rejection.
+	//
+	// example:
+	//
+	// The document cannot verify the authenticity of the information. Please upload it again.
 	RejectSubInfo *string `json:"RejectSubInfo,omitempty" xml:"RejectSubInfo,omitempty"`
 }
 
@@ -3596,9 +6539,9 @@ func (s *QuerySmsSignListResponseBodySmsSignListReason) SetRejectSubInfo(v strin
 }
 
 type QuerySmsSignListResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QuerySmsSignListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QuerySmsSignListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QuerySmsSignListResponse) String() string {
@@ -3628,7 +6571,16 @@ type QuerySmsTemplateRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TemplateCode         *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// The code of the message template.
+	//
+	// You can log on to the [Short Message Service (SMS) console](https://dysms.console.aliyun.com/dysms.htm), click **Go China*	- or **Go Globe*	- in the left-side navigation pane, and then view the template code on the **Templates*	- tab. You can also call the [AddSmsTemplate](https://help.aliyun.com/document_detail/121208.html) operation to obtain the template code.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SMS_1525***
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 }
 
 func (s QuerySmsTemplateRequest) String() string {
@@ -3660,16 +6612,90 @@ func (s *QuerySmsTemplateRequest) SetTemplateCode(v string) *QuerySmsTemplateReq
 }
 
 type QuerySmsTemplateResponseBody struct {
-	Code            *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	CreateDate      *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	Message         *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Reason          *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TemplateCode    *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// The HTTP status code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The time when the message template was created.
+	//
+	// example:
+	//
+	// 2019-06-04 11:42:17
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The approval remarks.
+	//
+	// 	- If the value of AuditStatus is **AUDIT_STATE_PASS*	- or **AUDIT_STATE_INIT**, the value of Reason is No Approval Remarks.
+	//
+	// 	- If the value of AuditStatus is **AUDIT_STATE_NOT_PASS**, the reason why the message template is rejected is returned.
+	//
+	// example:
+	//
+	// The document cannot verify the authenticity of the information. Please upload it again.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 0A974B78-02BF-4C79-ADF3-90CFBA1B55B1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The code of the message template.
+	//
+	// example:
+	//
+	// SMS_16703****
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// The content of the message template.
+	//
+	// example:
+	//
+	// You are applying for mobile registration. The verification code is: ${code}, valid for 5 minutes!
 	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
-	TemplateName    *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	TemplateStatus  *int32  `json:"TemplateStatus,omitempty" xml:"TemplateStatus,omitempty"`
-	TemplateType    *int32  `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	// The name of the message template.
+	//
+	// example:
+	//
+	// aliyun verification code
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The approval status of the message template. Valid values:
+	//
+	// 	- **0**: The message template is pending approval.
+	//
+	// 	- **1**: The message template is approved.
+	//
+	// 	- **AUDIT_STATE_NOT_PASS**: The message template is rejected. You can view the reason in the Reason response parameter.
+	//
+	// 	- **10**: The approval is canceled.
+	//
+	// example:
+	//
+	// 1
+	TemplateStatus *int32 `json:"TemplateStatus,omitempty" xml:"TemplateStatus,omitempty"`
+	// The type of the message. Valid values:
+	//
+	// 	- **0**: verification code
+	//
+	// 	- **1**: notification message
+	//
+	// 	- **2**: promotional message
+	//
+	// 	- **3**: message sent to countries or regions outside the Chinese mainland
+	//
+	// example:
+	//
+	// 1
+	TemplateType *int32 `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
 func (s QuerySmsTemplateResponseBody) String() string {
@@ -3731,9 +6757,9 @@ func (s *QuerySmsTemplateResponseBody) SetTemplateType(v int32) *QuerySmsTemplat
 }
 
 type QuerySmsTemplateResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QuerySmsTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QuerySmsTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QuerySmsTemplateResponse) String() string {
@@ -3760,8 +6786,18 @@ func (s *QuerySmsTemplateResponse) SetBody(v *QuerySmsTemplateResponseBody) *Que
 }
 
 type QuerySmsTemplateListRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageIndex            *int32  `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
+	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// The number of templates per page. Valid values: **1 to 50**.
+	//
+	// example:
+	//
+	// 10
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -3801,13 +6837,48 @@ func (s *QuerySmsTemplateListRequest) SetResourceOwnerId(v int64) *QuerySmsTempl
 }
 
 type QuerySmsTemplateListResponseBody struct {
-	Code            *string                                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	CurrentPage     *int32                                             `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Message         *string                                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageSize        *int32                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId       *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The page number. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The number of templates per page. Valid values: **1 to 50**.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 819BE656-D2E0-4858-8B21-B2E47708****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The queried message templates.
 	SmsTemplateList []*QuerySmsTemplateListResponseBodySmsTemplateList `json:"SmsTemplateList,omitempty" xml:"SmsTemplateList,omitempty" type:"Repeated"`
-	TotalCount      *int64                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of templates.
+	//
+	// example:
+	//
+	// 100
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s QuerySmsTemplateListResponseBody) String() string {
@@ -3854,15 +6925,92 @@ func (s *QuerySmsTemplateListResponseBody) SetTotalCount(v int64) *QuerySmsTempl
 }
 
 type QuerySmsTemplateListResponseBodySmsTemplateList struct {
-	AuditStatus       *string                                                `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	CreateDate        *string                                                `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	OrderId           *string                                                `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	OuterTemplateType *int32                                                 `json:"OuterTemplateType,omitempty" xml:"OuterTemplateType,omitempty"`
-	Reason            *QuerySmsTemplateListResponseBodySmsTemplateListReason `json:"Reason,omitempty" xml:"Reason,omitempty" type:"Struct"`
-	TemplateCode      *string                                                `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	TemplateContent   *string                                                `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
-	TemplateName      *string                                                `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	TemplateType      *int32                                                 `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	// The approval status of the message template. Valid values:
+	//
+	// 	- **AUDIT_STATE_INIT**: The message template is pending approval.
+	//
+	// 	- **AUDIT_STATE_PASS**: The message template is approved.
+	//
+	// 	- **AUDIT_STATE_NOT_PASS**: The message template is rejected. You can view the reason in the Reason response parameter.
+	//
+	// 	- **AUDIT_STATE_CANCEL*	- or **AUDIT_SATE_CANCEL**: The approval is canceled.
+	//
+	// example:
+	//
+	// AUDIT_STATE_PASS
+	AuditStatus *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	// The time when the message template was created. The time is in the yyyy-MM-dd HH:mm:ss format.
+	//
+	// example:
+	//
+	// 2020-06-04 11:42:17
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The ticket ID.
+	//
+	// example:
+	//
+	// 2361****
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The type of the message template. We recommend that you specify this parameter. Valid values:
+	//
+	// 	- **0**: verification code
+	//
+	// 	- **1**: notification message
+	//
+	// 	- **2**: promotional message
+	//
+	// 	- **3**: message sent to countries or regions outside the Chinese mainland
+	//
+	// 	- **7**: digital message
+	//
+	// > The template type is the same as the value of the TemplateType parameter in the AddSmsTemplate and ModifySmsTemplate operations.
+	//
+	// example:
+	//
+	// 0
+	OuterTemplateType *int32 `json:"OuterTemplateType,omitempty" xml:"OuterTemplateType,omitempty"`
+	// The approval remarks.
+	//
+	// 	- If the value of AuditStatus is **AUDIT_STATE_PASS*	- or **AUDIT_STATE_INIT**, the value of Reason is No Approval Remarks.
+	//
+	// 	- If the value of AuditStatus is **AUDIT_STATE_NOT_PASS**, the reason why the message template is rejected is returned.
+	Reason *QuerySmsTemplateListResponseBodySmsTemplateListReason `json:"Reason,omitempty" xml:"Reason,omitempty" type:"Struct"`
+	// The code of the message template.
+	//
+	// You can log on to the [Short Message Service (SMS) console](https://dysms.console.aliyun.com/dysms.htm), click **Go China*	- or **Go Globe*	- in the left-side navigation pane, and then view the template code on the **Templates*	- tab. You can also call the [AddSmsTemplate](https://help.aliyun.com/document_detail/121208.html) operation to obtain the template code.
+	//
+	// example:
+	//
+	// SMS_1525***
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// The content of the message template.
+	//
+	// example:
+	//
+	// 123456789
+	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
+	// The name of the message template.
+	//
+	// example:
+	//
+	// aliyun verification code
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The type of the message template. Valid values:
+	//
+	// 	- **0**: notification message
+	//
+	// 	- **1**: promotional message
+	//
+	// 	- **2**: verification code
+	//
+	// 	- **6**: message sent to countries or regions outside the Chinese mainland
+	//
+	// 	- **7**: digital message
+	//
+	// example:
+	//
+	// 7
+	TemplateType *int32 `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
 func (s QuerySmsTemplateListResponseBodySmsTemplateList) String() string {
@@ -3919,8 +7067,23 @@ func (s *QuerySmsTemplateListResponseBodySmsTemplateList) SetTemplateType(v int3
 }
 
 type QuerySmsTemplateListResponseBodySmsTemplateListReason struct {
-	RejectDate    *string `json:"RejectDate,omitempty" xml:"RejectDate,omitempty"`
-	RejectInfo    *string `json:"RejectInfo,omitempty" xml:"RejectInfo,omitempty"`
+	// The time when the message template was rejected. Format: yyyy-MM-dd HH:mm:ss.
+	//
+	// example:
+	//
+	// 2020-06-04 16:01:17
+	RejectDate *string `json:"RejectDate,omitempty" xml:"RejectDate,omitempty"`
+	// The reason why the message template was rejected.
+	//
+	// example:
+	//
+	// The document cannot verify the authenticity of the information. Please upload it again.
+	RejectInfo *string `json:"RejectInfo,omitempty" xml:"RejectInfo,omitempty"`
+	// The remarks about the rejection.
+	//
+	// example:
+	//
+	// The document cannot verify the authenticity of the information. Please upload it again.
 	RejectSubInfo *string `json:"RejectSubInfo,omitempty" xml:"RejectSubInfo,omitempty"`
 }
 
@@ -3948,9 +7111,9 @@ func (s *QuerySmsTemplateListResponseBodySmsTemplateListReason) SetRejectSubInfo
 }
 
 type QuerySmsTemplateListResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QuerySmsTemplateListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QuerySmsTemplateListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QuerySmsTemplateListResponse) String() string {
@@ -3977,19 +7140,108 @@ func (s *QuerySmsTemplateListResponse) SetBody(v *QuerySmsTemplateListResponseBo
 }
 
 type SendBatchCardSmsRequest struct {
-	CardTemplateCode         *string `json:"CardTemplateCode,omitempty" xml:"CardTemplateCode,omitempty"`
-	CardTemplateParamJson    *string `json:"CardTemplateParamJson,omitempty" xml:"CardTemplateParamJson,omitempty"`
-	DigitalTemplateCode      *string `json:"DigitalTemplateCode,omitempty" xml:"DigitalTemplateCode,omitempty"`
+	// The code of the message template. You can view the template code in the **Template Code*	- column on the **Templates*	- tab of the **Go China*	- page in the Alibaba Cloud SMS console.
+	//
+	// > Make sure that the message template has been approved.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CARD_SMS_3245
+	CardTemplateCode *string `json:"CardTemplateCode,omitempty" xml:"CardTemplateCode,omitempty"`
+	// The variables of the card message template.
+	//
+	// example:
+	//
+	// [{\\"customurl\\":\\"http://www.alibaba.com\\",\\"dyncParams\\":\\"{\\\\\\"a\\\\\\":\\\\\\"hello\\\\\\",\\\\\\"b\\\\\\":\\\\\\"world\\\\\\"}\\"}]
+	CardTemplateParamJson *string `json:"CardTemplateParamJson,omitempty" xml:"CardTemplateParamJson,omitempty"`
+	// The code of the digital message template that applies when the card message is rolled back. You can view the template code in the **Template Code*	- column on the **Templates*	- tab of the **Go China*	- page in the Alibaba Cloud SMS console.
+	//
+	// > Make sure that the message template has been approved.
+	//
+	// example:
+	//
+	// DIGITAL_SMS_234080176
+	DigitalTemplateCode *string `json:"DigitalTemplateCode,omitempty" xml:"DigitalTemplateCode,omitempty"`
+	// The variables of the digital message template.
+	//
+	// example:
+	//
+	// [{"a":1,"b":2},{"a":9,"b":8}]
 	DigitalTemplateParamJson *string `json:"DigitalTemplateParamJson,omitempty" xml:"DigitalTemplateParamJson,omitempty"`
-	FallbackType             *string `json:"FallbackType,omitempty" xml:"FallbackType,omitempty"`
-	OutId                    *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	PhoneNumberJson          *string `json:"PhoneNumberJson,omitempty" xml:"PhoneNumberJson,omitempty"`
-	SignNameJson             *string `json:"SignNameJson,omitempty" xml:"SignNameJson,omitempty"`
-	SmsTemplateCode          *string `json:"SmsTemplateCode,omitempty" xml:"SmsTemplateCode,omitempty"`
-	SmsTemplateParamJson     *string `json:"SmsTemplateParamJson,omitempty" xml:"SmsTemplateParamJson,omitempty"`
-	SmsUpExtendCodeJson      *string `json:"SmsUpExtendCodeJson,omitempty" xml:"SmsUpExtendCodeJson,omitempty"`
-	TemplateCode             *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	TemplateParamJson        *string `json:"TemplateParamJson,omitempty" xml:"TemplateParamJson,omitempty"`
+	// The rollback type. Valid values:
+	//
+	// 	- **SMS**: text message
+	//
+	// 	- **DIGITALSMS**: digital message
+	//
+	// 	- **NONE**: none
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SMS
+	FallbackType *string `json:"FallbackType,omitempty" xml:"FallbackType,omitempty"`
+	// The ID that is reserved for the caller of the operation.
+	//
+	// example:
+	//
+	// 16545681783595370
+	OutId *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	// The mobile numbers of the recipients.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [\\"1390000****\\",\\"1370000****\\"]"
+	PhoneNumberJson *string `json:"PhoneNumberJson,omitempty" xml:"PhoneNumberJson,omitempty"`
+	// The signature. You can view the template code in the **Signature*	- column on the **Signaturess*	- tab of the **Go China*	- page in the Alibaba Cloud SMS console.
+	//
+	// > The signatures must be approved and correspond to the mobile numbers in sequence.
+	//
+	// This parameter is required.
+	SignNameJson *string `json:"SignNameJson,omitempty" xml:"SignNameJson,omitempty"`
+	// The code of the text message template that applies when the card message is rolled back. You can view the template code in the **Template Code*	- column on the **Templates*	- tab of the **Go China*	- page in the Alibaba Cloud SMS console.
+	//
+	// > Make sure that the message template has been approved.
+	//
+	// example:
+	//
+	// SMS_234251075
+	SmsTemplateCode *string `json:"SmsTemplateCode,omitempty" xml:"SmsTemplateCode,omitempty"`
+	// The variables of the text message template.
+	//
+	// example:
+	//
+	// [{"a":1,"b":2},{"a":9,"b":8}]
+	SmsTemplateParamJson *string `json:"SmsTemplateParamJson,omitempty" xml:"SmsTemplateParamJson,omitempty"`
+	// The extension code of the upstream message.
+	//
+	// example:
+	//
+	// [\\"6\\",\\"6\\"]
+	SmsUpExtendCodeJson *string `json:"SmsUpExtendCodeJson,omitempty" xml:"SmsUpExtendCodeJson,omitempty"`
+	// The code of the message template.
+	//
+	// You can log on to the [Alibaba Cloud console](https://dysms.console.aliyun.com/dysms.htm?spm=5176.12818093.categories-n-products.ddysms.3b2816d0xml2NA#/overview), click **Go China*	- or **Go Globe*	- in the left-side navigation pane, and then view the **template code*	- on the **Templates*	- tab.
+	//
+	// > You must specify a message template that is created in the SMS console and approved by Alibaba Cloud. If you send messages to countries or regions outside the Chinese mainland, use the corresponding message templates.
+	//
+	// example:
+	//
+	// SMS_20375****
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// The value of the variable in the message template.
+	//
+	// > If you need to add line breaks to the JSON template, make sure that the format is valid. In addition, the sequence of variable values must be the same as that of the mobile numbers and signatures.
+	//
+	// example:
+	//
+	// [{"name":"TemplateParamJson"},{"name":"TemplateParamJson"}]
+	TemplateParamJson *string `json:"TemplateParamJson,omitempty" xml:"TemplateParamJson,omitempty"`
 }
 
 func (s SendBatchCardSmsRequest) String() string {
@@ -4066,10 +7318,34 @@ func (s *SendBatchCardSmsRequest) SetTemplateParamJson(v string) *SendBatchCardS
 }
 
 type SendBatchCardSmsResponseBody struct {
-	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *SendBatchCardSmsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/101346.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *SendBatchCardSmsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// A90E4451-FED7-49D2-87C8-00700A8C4D0D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SendBatchCardSmsResponseBody) String() string {
@@ -4101,11 +7377,49 @@ func (s *SendBatchCardSmsResponseBody) SetSuccess(v bool) *SendBatchCardSmsRespo
 }
 
 type SendBatchCardSmsResponseBodyData struct {
-	BizCardId       *string `json:"BizCardId,omitempty" xml:"BizCardId,omitempty"`
-	BizDigitalId    *string `json:"BizDigitalId,omitempty" xml:"BizDigitalId,omitempty"`
-	BizSmsId        *string `json:"BizSmsId,omitempty" xml:"BizSmsId,omitempty"`
-	CardTmpState    *int32  `json:"CardTmpState,omitempty" xml:"CardTmpState,omitempty"`
-	MediaMobiles    *string `json:"MediaMobiles,omitempty" xml:"MediaMobiles,omitempty"`
+	// The ID of the card message.
+	//
+	// example:
+	//
+	// 123
+	BizCardId *string `json:"BizCardId,omitempty" xml:"BizCardId,omitempty"`
+	// The ID of the digital message.
+	//
+	// example:
+	//
+	// 3214
+	BizDigitalId *string `json:"BizDigitalId,omitempty" xml:"BizDigitalId,omitempty"`
+	// The ID of the text message.
+	//
+	// example:
+	//
+	// 3256
+	BizSmsId *string `json:"BizSmsId,omitempty" xml:"BizSmsId,omitempty"`
+	// The review status of the card message template.
+	//
+	// 	- **0**: pending approval
+	//
+	// 	- **1**: approved
+	//
+	// 	- **2**: rejected
+	//
+	// > Unapproved card messages are rolled back.
+	//
+	// example:
+	//
+	// 0
+	CardTmpState *int32 `json:"CardTmpState,omitempty" xml:"CardTmpState,omitempty"`
+	// The mobile phone number from which the card message is sent.
+	//
+	// example:
+	//
+	// 1390000****
+	MediaMobiles *string `json:"MediaMobiles,omitempty" xml:"MediaMobiles,omitempty"`
+	// The mobile phone number whose card message is rolled back.
+	//
+	// example:
+	//
+	// 1390000****
 	NotMediaMobiles *string `json:"NotMediaMobiles,omitempty" xml:"NotMediaMobiles,omitempty"`
 }
 
@@ -4148,9 +7462,9 @@ func (s *SendBatchCardSmsResponseBodyData) SetNotMediaMobiles(v string) *SendBat
 }
 
 type SendBatchCardSmsResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SendBatchCardSmsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SendBatchCardSmsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SendBatchCardSmsResponse) String() string {
@@ -4177,15 +7491,71 @@ func (s *SendBatchCardSmsResponse) SetBody(v *SendBatchCardSmsResponseBody) *Sen
 }
 
 type SendBatchSmsRequest struct {
-	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The extension field of the external record. The value is a string that contains no more than 256 characters.
+	//
+	// > The parameter is optional.
+	//
+	// example:
+	//
+	// abcdefg
+	OutId   *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The mobile number of the recipient. Format:
+	//
+	// 	- Message delivery to the Chinese mainland: +/+86/0086/86 or an 11-digit mobile number without a prefix. Example: 1590000\\*\\*\\*\\*.
+	//
+	// 	- Message delivery to countries or regions outside the Chinese mainland: Dialing code + Mobile number. Example: 852000012\\*\\*\\*\\*.
+	//
+	// > We recommend that you call the SendSms operation to send verification codes.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ["1590000****","1350000****"]
 	PhoneNumberJson      *string `json:"PhoneNumberJson,omitempty" xml:"PhoneNumberJson,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SignNameJson         *string `json:"SignNameJson,omitempty" xml:"SignNameJson,omitempty"`
-	SmsUpExtendCodeJson  *string `json:"SmsUpExtendCodeJson,omitempty" xml:"SmsUpExtendCodeJson,omitempty"`
-	TemplateCode         *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	TemplateParamJson    *string `json:"TemplateParamJson,omitempty" xml:"TemplateParamJson,omitempty"`
+	// The signature.
+	//
+	// Log on to the Alibaba Cloud SMS console. In the left-side navigation pane, click **Go Globe*	- or **Go China**. You can view the signature in the **Signature*	- column on the **Signatures*	- tab.
+	//
+	// > The signatures must be approved and correspond to the mobile numbers in sequence.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ["Aliyun","Alibaba"]
+	SignNameJson *string `json:"SignNameJson,omitempty" xml:"SignNameJson,omitempty"`
+	// The extension code of the MO message. Format: JSON array.
+	//
+	// > The parameter is optional.
+	//
+	// example:
+	//
+	// ["90999","90998"]
+	SmsUpExtendCodeJson *string `json:"SmsUpExtendCodeJson,omitempty" xml:"SmsUpExtendCodeJson,omitempty"`
+	// The code of the message template.
+	//
+	// Log on to the Alibaba Cloud SMS console. In the left-side navigation pane, click **Go Globe*	- or **Go China**. You can view the message template in the **Template Code*	- column on the **Message Templates*	- tab.
+	//
+	// > The message templates must be created on the Go Globe page and approved.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SMS_15255****
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// The value of the variable in the message template.
+	//
+	// > If you need to add line breaks to the JSON template, make sure that the format is valid. In addition, the sequence of variable values must be the same as that of the mobile numbers and signatures.
+	//
+	// example:
+	//
+	// [{"name":"TemplateParamJson"},{"name":"TemplateParamJson"}]
+	TemplateParamJson *string `json:"TemplateParamJson,omitempty" xml:"TemplateParamJson,omitempty"`
 }
 
 func (s SendBatchSmsRequest) String() string {
@@ -4242,9 +7612,37 @@ func (s *SendBatchSmsRequest) SetTemplateParamJson(v string) *SendBatchSmsReques
 }
 
 type SendBatchSmsResponseBody struct {
-	BizId     *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the delivery receipt. You can use one of the following methods to query the delivery status of a message based on the ID.
+	//
+	// 	- Call the [QuerySendDetails](https://help.aliyun.com/document_detail/102352.html) operation.
+	//
+	// 	- Log on to the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview). In the left-side navigation pane, choose **Analytics*	- > **Delivery Report**.
+	//
+	// example:
+	//
+	// 9006197469364984400
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The response code.
+	//
+	// 	- If OK is returned, the request is successful.
+	//
+	// 	- Other values indicate that the request fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// F655A8D5-B967-440B-8683-DAD6FF8D230E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4277,9 +7675,9 @@ func (s *SendBatchSmsResponseBody) SetRequestId(v string) *SendBatchSmsResponseB
 }
 
 type SendBatchSmsResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SendBatchSmsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SendBatchSmsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SendBatchSmsResponse) String() string {
@@ -4306,18 +7704,104 @@ func (s *SendBatchSmsResponse) SetBody(v *SendBatchSmsResponseBody) *SendBatchSm
 }
 
 type SendCardSmsRequest struct {
-	CardObjects          []*SendCardSmsRequestCardObjects `json:"CardObjects,omitempty" xml:"CardObjects,omitempty" type:"Repeated"`
-	CardTemplateCode     *string                          `json:"CardTemplateCode,omitempty" xml:"CardTemplateCode,omitempty"`
-	DigitalTemplateCode  *string                          `json:"DigitalTemplateCode,omitempty" xml:"DigitalTemplateCode,omitempty"`
-	DigitalTemplateParam *string                          `json:"DigitalTemplateParam,omitempty" xml:"DigitalTemplateParam,omitempty"`
-	FallbackType         *string                          `json:"FallbackType,omitempty" xml:"FallbackType,omitempty"`
-	OutId                *string                          `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	SignName             *string                          `json:"SignName,omitempty" xml:"SignName,omitempty"`
-	SmsTemplateCode      *string                          `json:"SmsTemplateCode,omitempty" xml:"SmsTemplateCode,omitempty"`
-	SmsTemplateParam     *string                          `json:"SmsTemplateParam,omitempty" xml:"SmsTemplateParam,omitempty"`
-	SmsUpExtendCode      *string                          `json:"SmsUpExtendCode,omitempty" xml:"SmsUpExtendCode,omitempty"`
-	TemplateCode         *string                          `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	TemplateParam        *string                          `json:"TemplateParam,omitempty" xml:"TemplateParam,omitempty"`
+	// The objects of the message template.
+	//
+	// This parameter is required.
+	CardObjects []*SendCardSmsRequestCardObjects `json:"CardObjects,omitempty" xml:"CardObjects,omitempty" type:"Repeated"`
+	// The code of the message template. You can view the template code in the **Template Code*	- column on the **Templates*	- tab of the **Go China*	- page in the Alibaba Cloud SMS console.
+	//
+	// > Make sure that the message template has been approved.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CARD_SMS_70
+	CardTemplateCode *string `json:"CardTemplateCode,omitempty" xml:"CardTemplateCode,omitempty"`
+	// The code of the digital message template that applies when the card message is rolled back. You can view the template code in the **Template Code*	- column on the **Templates*	- tab of the **Go China*	- page in the Alibaba Cloud SMS console.
+	//
+	// > Make sure that the message template has been approved.
+	//
+	// example:
+	//
+	// SMS_003
+	DigitalTemplateCode *string `json:"DigitalTemplateCode,omitempty" xml:"DigitalTemplateCode,omitempty"`
+	// The variables of the digital message template.
+	//
+	// > If you need to add line breaks to the JSON template, make sure that the format is valid.
+	//
+	// example:
+	//
+	// {\\"msg\\",\\"xxxd\\"}
+	DigitalTemplateParam *string `json:"DigitalTemplateParam,omitempty" xml:"DigitalTemplateParam,omitempty"`
+	// The rollback type. Valid values:
+	//
+	// 	- **SMS**: text message
+	//
+	// 	- **DIGITALSMS**: digital message
+	//
+	// 	- **NONE**: none
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SMS
+	FallbackType *string `json:"FallbackType,omitempty" xml:"FallbackType,omitempty"`
+	// The ID that is reserved for the caller of the operation.
+	//
+	// example:
+	//
+	// 38d76c9b-4a9a-4c89-afae-61fd8e0e****
+	OutId *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	// The signature. You can view the template code in the **Signature*	- column on the **Signaturess*	- tab of the **Go China*	- page in the Alibaba Cloud SMS console.
+	//
+	// > The signature must be approved.
+	//
+	// This parameter is required.
+	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// The code of the text message template that applies when the card message is rolled back. You can view the template code in the **Template Code*	- column on the **Templates*	- tab of the **Go China*	- page in the Alibaba Cloud SMS console.
+	//
+	// > Make sure that the message template has been approved. If you set the **FallbackType*	- parameter to **SMS**, this parameter is required.
+	//
+	// example:
+	//
+	// SIER_TEST_01
+	SmsTemplateCode *string `json:"SmsTemplateCode,omitempty" xml:"SmsTemplateCode,omitempty"`
+	// The variables of the text message template.
+	//
+	// > If you need to add line breaks to the JSON template, make sure that the format is valid.
+	SmsTemplateParam *string `json:"SmsTemplateParam,omitempty" xml:"SmsTemplateParam,omitempty"`
+	// The extension code of the upstream message. Upstream messages are messages sent to the communication service provider. Upstream messages are used to customize a service, complete an inquiry, or send a request. You are charged for sending upstream messages based on the billing standards of the service provider.
+	//
+	// > If you do not need upstream messages, ignore this parameter.
+	//
+	// example:
+	//
+	// 1
+	SmsUpExtendCode *string `json:"SmsUpExtendCode,omitempty" xml:"SmsUpExtendCode,omitempty"`
+	// The code of the text message template.
+	//
+	// Log on to the Alibaba Cloud SMS console. In the left-side navigation pane, click **Go Globe*	- or **Go China**. You can view the message template in the **Template Code*	- column on the **Message Templates*	- tab.
+	//
+	// > The message templates must be created on the Go Globe page and approved.
+	//
+	// example:
+	//
+	// SMS_2322****
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// The variables of the message template. Format: JSON.
+	//
+	// > If you need to add line breaks to the JSON template, make sure that the format is valid.
+	//
+	// example:
+	//
+	// {
+	//
+	//       \\"code\\": \\"1111\\"
+	//
+	// }
+	TemplateParam *string `json:"TemplateParam,omitempty" xml:"TemplateParam,omitempty"`
 }
 
 func (s SendCardSmsRequest) String() string {
@@ -4389,9 +7873,20 @@ func (s *SendCardSmsRequest) SetTemplateParam(v string) *SendCardSmsRequest {
 }
 
 type SendCardSmsRequestCardObjects struct {
-	CustomUrl  *string `json:"customUrl,omitempty" xml:"customUrl,omitempty"`
+	// The URL to which the message is redirected if the message fails to be rendered.
+	//
+	// example:
+	//
+	// https://alibaba.com
+	CustomUrl *string `json:"customUrl,omitempty" xml:"customUrl,omitempty"`
+	// The variables. Special characters, such as $ and {}, do not need to be entered.
 	DyncParams *string `json:"dyncParams,omitempty" xml:"dyncParams,omitempty"`
-	Mobile     *string `json:"mobile,omitempty" xml:"mobile,omitempty"`
+	// The mobile phone number.
+	//
+	// example:
+	//
+	// 1390000****
+	Mobile *string `json:"mobile,omitempty" xml:"mobile,omitempty"`
 }
 
 func (s SendCardSmsRequestCardObjects) String() string {
@@ -4418,10 +7913,34 @@ func (s *SendCardSmsRequestCardObjects) SetMobile(v string) *SendCardSmsRequestC
 }
 
 type SendCardSmsResponseBody struct {
-	Code      *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *SendCardSmsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The response code.
+	//
+	// 	- If OK is returned, the request is successful.
+	//
+	// 	- Other values indicate that the request fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *SendCardSmsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// F655A8D5-B967-440B-8683-DAD6FF8D28D0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SendCardSmsResponseBody) String() string {
@@ -4453,11 +7972,49 @@ func (s *SendCardSmsResponseBody) SetSuccess(v bool) *SendCardSmsResponseBody {
 }
 
 type SendCardSmsResponseBodyData struct {
-	BizCardId       *string `json:"BizCardId,omitempty" xml:"BizCardId,omitempty"`
-	BizDigitalId    *string `json:"BizDigitalId,omitempty" xml:"BizDigitalId,omitempty"`
-	BizSmsId        *string `json:"BizSmsId,omitempty" xml:"BizSmsId,omitempty"`
-	CardTmpState    *int32  `json:"CardTmpState,omitempty" xml:"CardTmpState,omitempty"`
-	MediaMobiles    *string `json:"MediaMobiles,omitempty" xml:"MediaMobiles,omitempty"`
+	// The ID of the card message.
+	//
+	// example:
+	//
+	// 123
+	BizCardId *string `json:"BizCardId,omitempty" xml:"BizCardId,omitempty"`
+	// The ID of the digital message.
+	//
+	// example:
+	//
+	// 232
+	BizDigitalId *string `json:"BizDigitalId,omitempty" xml:"BizDigitalId,omitempty"`
+	// The ID of the text message.
+	//
+	// example:
+	//
+	// 524
+	BizSmsId *string `json:"BizSmsId,omitempty" xml:"BizSmsId,omitempty"`
+	// The review status of the card message template.
+	//
+	// 	- **0**: pending approval
+	//
+	// 	- **1**: approved
+	//
+	// 	- **2**: rejected
+	//
+	// > Unapproved card messages are rolled back.
+	//
+	// example:
+	//
+	// 0
+	CardTmpState *int32 `json:"CardTmpState,omitempty" xml:"CardTmpState,omitempty"`
+	// The mobile phone number from which the card message is sent.
+	//
+	// example:
+	//
+	// 1390000****
+	MediaMobiles *string `json:"MediaMobiles,omitempty" xml:"MediaMobiles,omitempty"`
+	// The mobile phone number whose card message is rolled back.
+	//
+	// example:
+	//
+	// 1390000****
 	NotMediaMobiles *string `json:"NotMediaMobiles,omitempty" xml:"NotMediaMobiles,omitempty"`
 }
 
@@ -4500,9 +8057,9 @@ func (s *SendCardSmsResponseBodyData) SetNotMediaMobiles(v string) *SendCardSmsR
 }
 
 type SendCardSmsResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SendCardSmsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SendCardSmsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SendCardSmsResponse) String() string {
@@ -4529,15 +8086,77 @@ func (s *SendCardSmsResponse) SetBody(v *SendCardSmsResponseBody) *SendCardSmsRe
 }
 
 type SendSmsRequest struct {
-	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The extension field.
+	//
+	// > You can ignore this parameter if you do not have special requirements.
+	//
+	// example:
+	//
+	// abcdefgh
+	OutId   *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The mobile numbers of the recipients. Format:
+	//
+	// 	- If you send messages to the Chinese mainland, specify mobile numbers that are prefixed with +, +86, 0086, or 86, or 11-digit mobile numbers without prefixes. Example: 1390000\\*\\*\\*\\*.
+	//
+	// 	- If you send messages to countries or regions outside the Chinese mainland, specify this parameter in the \\<Area code>\\<Mobile number> format. Example: 852000012\\*\\*\\*\\*.
+	//
+	// You can send messages to multiple mobile numbers, separate the mobile numbers with commas (,). You can specify up to 1,000 mobile numbers in each request. Compared with sending messages to a single mobile number, sending messages to multiple mobile numbers requires longer response time.
+	//
+	// > We recommend that you send one verification code message to a mobile number in each request.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1390000****
 	PhoneNumbers         *string `json:"PhoneNumbers,omitempty" xml:"PhoneNumbers,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SignName             *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
-	SmsUpExtendCode      *string `json:"SmsUpExtendCode,omitempty" xml:"SmsUpExtendCode,omitempty"`
-	TemplateCode         *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	TemplateParam        *string `json:"TemplateParam,omitempty" xml:"TemplateParam,omitempty"`
+	// The signature.
+	//
+	// You can log on to the [Short Message Service (SMS) console](https://dysms.console.aliyun.com/dysms.htm?spm=5176.12818093.categories-n-products.ddysms.3b2816d0xml2NA#/overview), click **Go China*	- or **Go Globe*	- in the left-side navigation pane, and then view the signature on the **Signatures*	- tab.
+	//
+	// > You must specify a signature that is created in the SMS console and approved by Alibaba Cloud. For more information about SMS signature specifications, see [SMS signature specifications](https://help.aliyun.com/document_detail/108076.html).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Aliyun
+	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// The extension code of the upstream message. Upstream messages are messages sent to the communication service provider. Upstream messages are used to customize a service, complete an inquiry, or send a request. You are charged for sending upstream messages based on the billing standards of the service provider.
+	//
+	// > The extension code is automatically generated by the system when the signature is generated. You do not need to specify the extension code. You can ignore this parameter if you do not have special requirements.
+	//
+	// example:
+	//
+	// 90999
+	SmsUpExtendCode *string `json:"SmsUpExtendCode,omitempty" xml:"SmsUpExtendCode,omitempty"`
+	// The code of the message template.
+	//
+	// You can log on to the [Short Message Service (SMS) console](https://dysms.console.aliyun.com/dysms.htm?spm=5176.12818093.categories-n-products.ddysms.3b2816d0xml2NA#/overview), click **Go China*	- or **Go Globe*	- in the left-side navigation pane, and then view the **template code*	- on the **Templates*	- tab.
+	//
+	// > You must specify a message template that is created in the SMS console and approved by Alibaba Cloud. If you send messages to countries or regions outside the Chinese mainland, use the corresponding message templates.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SMS_15305****
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// The value of the variable in the message template. You can specify multiple parameter values. Example:{"name":"Sam","number":"1390000\\*\\*\\*\\*"}.
+	//
+	// >
+	//
+	// 	- If line breaks are required in JSON-formatted data, they must meet the relevant requirements that are specified in the standard JSON protocol.
+	//
+	// 	- For more information about template variables, see [SMS template specifications](https://help.aliyun.com/document_detail/108253.html).
+	//
+	// example:
+	//
+	// {"code":"1111"}
+	TemplateParam *string `json:"TemplateParam,omitempty" xml:"TemplateParam,omitempty"`
 }
 
 func (s SendSmsRequest) String() string {
@@ -4594,9 +8213,35 @@ func (s *SendSmsRequest) SetTemplateParam(v string) *SendSmsRequest {
 }
 
 type SendSmsResponseBody struct {
-	BizId     *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the delivery receipt.
+	//
+	// You can call the [QuerySendDetails](~~QuerySendDetails~~) operation to query the delivery status based on the receipt ID.
+	//
+	// example:
+	//
+	// 9006197469364984****
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The HTTP status code.
+	//
+	// 	- The value OK indicates that the request was successful.
+	//
+	// 	- Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// F655A8D5-B967-440B-8683-DAD6FF8DE990
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4629,9 +8274,9 @@ func (s *SendSmsResponseBody) SetRequestId(v string) *SendSmsResponseBody {
 }
 
 type SendSmsResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SendSmsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SendSmsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SendSmsResponse) String() string {
@@ -4658,8 +8303,31 @@ func (s *SendSmsResponse) SetBody(v *SendSmsResponseBody) *SendSmsResponse {
 }
 
 type SmsConversionIntlRequest struct {
-	ConversionTime       *int64  `json:"ConversionTime,omitempty" xml:"ConversionTime,omitempty"`
-	Delivered            *bool   `json:"Delivered,omitempty" xml:"Delivered,omitempty"`
+	// The time when the OTP message was delivered. The value is a UNIX timestamp. Unit: milliseconds.
+	//
+	// 	- If you leave the parameter empty, the current timestamp is specified by default.
+	//
+	// 	- If you specify the parameter, the timestamp must be greater than the message sending time and less than the current timestamp.
+	//
+	// example:
+	//
+	// 1349055900000
+	ConversionTime *int64 `json:"ConversionTime,omitempty" xml:"ConversionTime,omitempty"`
+	// Specifies whether customers replied to the OTP message. Valid values: true and false.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	Delivered *bool `json:"Delivered,omitempty" xml:"Delivered,omitempty"`
+	// The ID of the message.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1008030300****
 	MessageId            *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -4705,8 +8373,23 @@ func (s *SmsConversionIntlRequest) SetResourceOwnerId(v int64) *SmsConversionInt
 }
 
 type SmsConversionIntlResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code. If OK is returned, the request is successful. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html?spm=a2c4g.101345.0.0.74326ff2J5EZyt).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// F655A8D5-B967-440B-8683-DAD6FF8D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4734,9 +8417,9 @@ func (s *SmsConversionIntlResponseBody) SetRequestId(v string) *SmsConversionInt
 }
 
 type SmsConversionIntlResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SmsConversionIntlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SmsConversionIntlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SmsConversionIntlResponse) String() string {
@@ -4763,14 +8446,41 @@ func (s *SmsConversionIntlResponse) SetBody(v *SmsConversionIntlResponseBody) *S
 }
 
 type TagResourcesRequest struct {
-	OwnerId              *int64                    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ProdCode             *string                   `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
-	RegionId             *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId           []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceOwnerAccount *string                   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ResourceType         *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag                  []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The name of the cloud service. Set the value to **dysms**.
+	//
+	// example:
+	//
+	// dysms
+	ProdCode *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
+	// The region ID. Set the value to **cn-hangzhou**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The code of the message template.
+	//
+	// example:
+	//
+	// SMS_23423423
+	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The type of the resource. Set the value to **TEMPLATE**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// TEMPLATE
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tag.
+	//
+	// This parameter is required.
+	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -4822,7 +8532,17 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The array of tag keys. Valid values of N: 1 to 20.
+	//
+	// example:
+	//
+	// TestKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The array of tag values. Valid values of N: 1 to 20.
+	//
+	// example:
+	//
+	// TestValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4845,8 +8565,31 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The response code.
+	//
+	// 	- If OK is returned, the request is successful.
+	//
+	// 	- Other values indicate that the request fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether tags were attached. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// A90E4451-FED7-49D2-87C8-00700A8C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4874,9 +8617,9 @@ func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseB
 }
 
 type TagResourcesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TagResourcesResponse) String() string {
@@ -4903,15 +8646,37 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UntagResourcesRequest struct {
-	All                  *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ProdCode             *string   `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// false
+	All     *bool  `json:"All,omitempty" xml:"All,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// dysms
+	ProdCode *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// SMS_23423423
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ResourceType         *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey               []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// TEMPLATE
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// TestKey
+	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -4968,8 +8733,17 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// A90E4451-FED7-49D2-87C8-00700A8C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4997,9 +8771,9 @@ func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesRespo
 }
 
 type UntagResourcesResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UntagResourcesResponse) String() string {
@@ -5021,6 +8795,593 @@ func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse 
 }
 
 func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateSmsSignRequest struct {
+	// example:
+	//
+	// http://www.aliyun.com/
+	ApplySceneContent *string   `json:"ApplySceneContent,omitempty" xml:"ApplySceneContent,omitempty"`
+	MoreData          []*string `json:"MoreData,omitempty" xml:"MoreData,omitempty" type:"Repeated"`
+	OwnerId           *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2004393xxxx
+	QualificationId      *int64  `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	SignSource *int32 `json:"SignSource,omitempty" xml:"SignSource,omitempty"`
+	// example:
+	//
+	// 1
+	SignType *int32 `json:"SignType,omitempty" xml:"SignType,omitempty"`
+	// example:
+	//
+	// false
+	ThirdParty *bool `json:"ThirdParty,omitempty" xml:"ThirdParty,omitempty"`
+}
+
+func (s UpdateSmsSignRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmsSignRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmsSignRequest) SetApplySceneContent(v string) *UpdateSmsSignRequest {
+	s.ApplySceneContent = &v
+	return s
+}
+
+func (s *UpdateSmsSignRequest) SetMoreData(v []*string) *UpdateSmsSignRequest {
+	s.MoreData = v
+	return s
+}
+
+func (s *UpdateSmsSignRequest) SetOwnerId(v int64) *UpdateSmsSignRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateSmsSignRequest) SetQualificationId(v int64) *UpdateSmsSignRequest {
+	s.QualificationId = &v
+	return s
+}
+
+func (s *UpdateSmsSignRequest) SetRemark(v string) *UpdateSmsSignRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *UpdateSmsSignRequest) SetResourceOwnerAccount(v string) *UpdateSmsSignRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UpdateSmsSignRequest) SetResourceOwnerId(v int64) *UpdateSmsSignRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *UpdateSmsSignRequest) SetSignName(v string) *UpdateSmsSignRequest {
+	s.SignName = &v
+	return s
+}
+
+func (s *UpdateSmsSignRequest) SetSignSource(v int32) *UpdateSmsSignRequest {
+	s.SignSource = &v
+	return s
+}
+
+func (s *UpdateSmsSignRequest) SetSignType(v int32) *UpdateSmsSignRequest {
+	s.SignType = &v
+	return s
+}
+
+func (s *UpdateSmsSignRequest) SetThirdParty(v bool) *UpdateSmsSignRequest {
+	s.ThirdParty = &v
+	return s
+}
+
+type UpdateSmsSignShrinkRequest struct {
+	// example:
+	//
+	// http://www.aliyun.com/
+	ApplySceneContent *string `json:"ApplySceneContent,omitempty" xml:"ApplySceneContent,omitempty"`
+	MoreDataShrink    *string `json:"MoreData,omitempty" xml:"MoreData,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2004393xxxx
+	QualificationId      *int64  `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	SignSource *int32 `json:"SignSource,omitempty" xml:"SignSource,omitempty"`
+	// example:
+	//
+	// 1
+	SignType *int32 `json:"SignType,omitempty" xml:"SignType,omitempty"`
+	// example:
+	//
+	// false
+	ThirdParty *bool `json:"ThirdParty,omitempty" xml:"ThirdParty,omitempty"`
+}
+
+func (s UpdateSmsSignShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmsSignShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmsSignShrinkRequest) SetApplySceneContent(v string) *UpdateSmsSignShrinkRequest {
+	s.ApplySceneContent = &v
+	return s
+}
+
+func (s *UpdateSmsSignShrinkRequest) SetMoreDataShrink(v string) *UpdateSmsSignShrinkRequest {
+	s.MoreDataShrink = &v
+	return s
+}
+
+func (s *UpdateSmsSignShrinkRequest) SetOwnerId(v int64) *UpdateSmsSignShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateSmsSignShrinkRequest) SetQualificationId(v int64) *UpdateSmsSignShrinkRequest {
+	s.QualificationId = &v
+	return s
+}
+
+func (s *UpdateSmsSignShrinkRequest) SetRemark(v string) *UpdateSmsSignShrinkRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *UpdateSmsSignShrinkRequest) SetResourceOwnerAccount(v string) *UpdateSmsSignShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UpdateSmsSignShrinkRequest) SetResourceOwnerId(v int64) *UpdateSmsSignShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *UpdateSmsSignShrinkRequest) SetSignName(v string) *UpdateSmsSignShrinkRequest {
+	s.SignName = &v
+	return s
+}
+
+func (s *UpdateSmsSignShrinkRequest) SetSignSource(v int32) *UpdateSmsSignShrinkRequest {
+	s.SignSource = &v
+	return s
+}
+
+func (s *UpdateSmsSignShrinkRequest) SetSignType(v int32) *UpdateSmsSignShrinkRequest {
+	s.SignType = &v
+	return s
+}
+
+func (s *UpdateSmsSignShrinkRequest) SetThirdParty(v bool) *UpdateSmsSignShrinkRequest {
+	s.ThirdParty = &v
+	return s
+}
+
+type UpdateSmsSignResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 20044174408
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// A90E4451-FED7-49D2-87C8-00700A8C4D0D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SignName  *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+}
+
+func (s UpdateSmsSignResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmsSignResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmsSignResponseBody) SetCode(v string) *UpdateSmsSignResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateSmsSignResponseBody) SetMessage(v string) *UpdateSmsSignResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateSmsSignResponseBody) SetOrderId(v string) *UpdateSmsSignResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *UpdateSmsSignResponseBody) SetRequestId(v string) *UpdateSmsSignResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateSmsSignResponseBody) SetSignName(v string) *UpdateSmsSignResponseBody {
+	s.SignName = &v
+	return s
+}
+
+type UpdateSmsSignResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateSmsSignResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateSmsSignResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmsSignResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmsSignResponse) SetHeaders(v map[string]*string) *UpdateSmsSignResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSmsSignResponse) SetStatusCode(v int32) *UpdateSmsSignResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSmsSignResponse) SetBody(v *UpdateSmsSignResponseBody) *UpdateSmsSignResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateSmsTemplateRequest struct {
+	// example:
+	//
+	// http://www.aliyun.com/
+	ApplySceneContent *string `json:"ApplySceneContent,omitempty" xml:"ApplySceneContent,omitempty"`
+	// example:
+	//
+	// 0
+	IntlType             *int32    `json:"IntlType,omitempty" xml:"IntlType,omitempty"`
+	MoreData             []*string `json:"MoreData,omitempty" xml:"MoreData,omitempty" type:"Repeated"`
+	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RelatedSignName      *string   `json:"RelatedSignName,omitempty" xml:"RelatedSignName,omitempty"`
+	Remark               *string   `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SMS_152550****
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// This parameter is required.
+	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
+	// This parameter is required.
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// example:
+	//
+	// {"code":"characterWithNumber"}
+	TemplateRule *string `json:"TemplateRule,omitempty" xml:"TemplateRule,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	TemplateType *int32 `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+}
+
+func (s UpdateSmsTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmsTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmsTemplateRequest) SetApplySceneContent(v string) *UpdateSmsTemplateRequest {
+	s.ApplySceneContent = &v
+	return s
+}
+
+func (s *UpdateSmsTemplateRequest) SetIntlType(v int32) *UpdateSmsTemplateRequest {
+	s.IntlType = &v
+	return s
+}
+
+func (s *UpdateSmsTemplateRequest) SetMoreData(v []*string) *UpdateSmsTemplateRequest {
+	s.MoreData = v
+	return s
+}
+
+func (s *UpdateSmsTemplateRequest) SetOwnerId(v int64) *UpdateSmsTemplateRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateSmsTemplateRequest) SetRelatedSignName(v string) *UpdateSmsTemplateRequest {
+	s.RelatedSignName = &v
+	return s
+}
+
+func (s *UpdateSmsTemplateRequest) SetRemark(v string) *UpdateSmsTemplateRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *UpdateSmsTemplateRequest) SetResourceOwnerAccount(v string) *UpdateSmsTemplateRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UpdateSmsTemplateRequest) SetResourceOwnerId(v int64) *UpdateSmsTemplateRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *UpdateSmsTemplateRequest) SetTemplateCode(v string) *UpdateSmsTemplateRequest {
+	s.TemplateCode = &v
+	return s
+}
+
+func (s *UpdateSmsTemplateRequest) SetTemplateContent(v string) *UpdateSmsTemplateRequest {
+	s.TemplateContent = &v
+	return s
+}
+
+func (s *UpdateSmsTemplateRequest) SetTemplateName(v string) *UpdateSmsTemplateRequest {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *UpdateSmsTemplateRequest) SetTemplateRule(v string) *UpdateSmsTemplateRequest {
+	s.TemplateRule = &v
+	return s
+}
+
+func (s *UpdateSmsTemplateRequest) SetTemplateType(v int32) *UpdateSmsTemplateRequest {
+	s.TemplateType = &v
+	return s
+}
+
+type UpdateSmsTemplateShrinkRequest struct {
+	// example:
+	//
+	// http://www.aliyun.com/
+	ApplySceneContent *string `json:"ApplySceneContent,omitempty" xml:"ApplySceneContent,omitempty"`
+	// example:
+	//
+	// 0
+	IntlType             *int32  `json:"IntlType,omitempty" xml:"IntlType,omitempty"`
+	MoreDataShrink       *string `json:"MoreData,omitempty" xml:"MoreData,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RelatedSignName      *string `json:"RelatedSignName,omitempty" xml:"RelatedSignName,omitempty"`
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SMS_152550****
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// This parameter is required.
+	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
+	// This parameter is required.
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// example:
+	//
+	// {"code":"characterWithNumber"}
+	TemplateRule *string `json:"TemplateRule,omitempty" xml:"TemplateRule,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	TemplateType *int32 `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+}
+
+func (s UpdateSmsTemplateShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmsTemplateShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmsTemplateShrinkRequest) SetApplySceneContent(v string) *UpdateSmsTemplateShrinkRequest {
+	s.ApplySceneContent = &v
+	return s
+}
+
+func (s *UpdateSmsTemplateShrinkRequest) SetIntlType(v int32) *UpdateSmsTemplateShrinkRequest {
+	s.IntlType = &v
+	return s
+}
+
+func (s *UpdateSmsTemplateShrinkRequest) SetMoreDataShrink(v string) *UpdateSmsTemplateShrinkRequest {
+	s.MoreDataShrink = &v
+	return s
+}
+
+func (s *UpdateSmsTemplateShrinkRequest) SetOwnerId(v int64) *UpdateSmsTemplateShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateSmsTemplateShrinkRequest) SetRelatedSignName(v string) *UpdateSmsTemplateShrinkRequest {
+	s.RelatedSignName = &v
+	return s
+}
+
+func (s *UpdateSmsTemplateShrinkRequest) SetRemark(v string) *UpdateSmsTemplateShrinkRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *UpdateSmsTemplateShrinkRequest) SetResourceOwnerAccount(v string) *UpdateSmsTemplateShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UpdateSmsTemplateShrinkRequest) SetResourceOwnerId(v int64) *UpdateSmsTemplateShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *UpdateSmsTemplateShrinkRequest) SetTemplateCode(v string) *UpdateSmsTemplateShrinkRequest {
+	s.TemplateCode = &v
+	return s
+}
+
+func (s *UpdateSmsTemplateShrinkRequest) SetTemplateContent(v string) *UpdateSmsTemplateShrinkRequest {
+	s.TemplateContent = &v
+	return s
+}
+
+func (s *UpdateSmsTemplateShrinkRequest) SetTemplateName(v string) *UpdateSmsTemplateShrinkRequest {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *UpdateSmsTemplateShrinkRequest) SetTemplateRule(v string) *UpdateSmsTemplateShrinkRequest {
+	s.TemplateRule = &v
+	return s
+}
+
+func (s *UpdateSmsTemplateShrinkRequest) SetTemplateType(v int32) *UpdateSmsTemplateShrinkRequest {
+	s.TemplateType = &v
+	return s
+}
+
+type UpdateSmsTemplateResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200412717818
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 819BE656-D2E0-4858-8B21-B2E477085AAF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// SMS_2322****
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s UpdateSmsTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmsTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmsTemplateResponseBody) SetCode(v string) *UpdateSmsTemplateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateSmsTemplateResponseBody) SetMessage(v string) *UpdateSmsTemplateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateSmsTemplateResponseBody) SetOrderId(v string) *UpdateSmsTemplateResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *UpdateSmsTemplateResponseBody) SetRequestId(v string) *UpdateSmsTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateSmsTemplateResponseBody) SetTemplateCode(v string) *UpdateSmsTemplateResponseBody {
+	s.TemplateCode = &v
+	return s
+}
+
+func (s *UpdateSmsTemplateResponseBody) SetTemplateName(v string) *UpdateSmsTemplateResponseBody {
+	s.TemplateName = &v
+	return s
+}
+
+type UpdateSmsTemplateResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateSmsTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateSmsTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmsTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmsTemplateResponse) SetHeaders(v map[string]*string) *UpdateSmsTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSmsTemplateResponse) SetStatusCode(v int32) *UpdateSmsTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSmsTemplateResponse) SetBody(v *UpdateSmsTemplateResponseBody) *UpdateSmsTemplateResponse {
 	s.Body = v
 	return s
 }
@@ -5080,6 +9441,23 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a short URL.
+//
+// Description:
+//
+//   Before you call this operation, you must register the primary domain name of the source URL in the Short Message Service (SMS) console. After the domain name is registered, you can call this operation to create a short URL. For more information, see [Domain name registration](https://help.aliyun.com/document_detail/302325.html#title-mau-zdh-hd0).
+//
+// 	- You can create up to 3,000 short URLs within a natural day.
+//
+// 	- After a short URL is generated, a security review is required. Generally, the review takes 10 minutes to 2 hours to complete. Before the security review is passed, the short URL cannot be directly accessed.
+//
+// @param request - AddShortUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddShortUrlResponse
 func (client *Client) AddShortUrlWithOptions(request *AddShortUrlRequest, runtime *util.RuntimeOptions) (_result *AddShortUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5135,6 +9513,21 @@ func (client *Client) AddShortUrlWithOptions(request *AddShortUrlRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a short URL.
+//
+// Description:
+//
+//   Before you call this operation, you must register the primary domain name of the source URL in the Short Message Service (SMS) console. After the domain name is registered, you can call this operation to create a short URL. For more information, see [Domain name registration](https://help.aliyun.com/document_detail/302325.html#title-mau-zdh-hd0).
+//
+// 	- You can create up to 3,000 short URLs within a natural day.
+//
+// 	- After a short URL is generated, a security review is required. Generally, the review takes 10 minutes to 2 hours to complete. Before the security review is passed, the short URL cannot be directly accessed.
+//
+// @param request - AddShortUrlRequest
+//
+// @return AddShortUrlResponse
 func (client *Client) AddShortUrl(request *AddShortUrlRequest) (_result *AddShortUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddShortUrlResponse{}
@@ -5146,6 +9539,37 @@ func (client *Client) AddShortUrl(request *AddShortUrlRequest) (_result *AddShor
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a signature.
+//
+// Description:
+//
+// You can call the AddSmsSign operation or use the [Short Message Service (SMS) console](https://dysms.console.aliyun.com/dysms.htm#/overview) to create an SMS signature. The signature must comply with the [SMS signature specifications](https://help.aliyun.com/document_detail/108076.html). You can call the QuerySmsSign operation or use the SMS console to query the review status of the signature.
+//
+// For more information, see [Usage notes](https://help.aliyun.com/document_detail/55324.html).
+//
+// ### QPS limit
+//
+// You can call this operation only once per second. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// >
+//
+// 	- You cannot cancel the review of a signature.
+//
+// 	- Individual users can create only one verification code signature, and can create only one general-purpose signature within a natural day. If you need to apply for multiple signatures, we recommend that you upgrade your account to an enterprise user.
+//
+// 	- If you need to use the same signature for messages sent to recipients both in and outside the Chinese mainland, the signature must be a general-purpose signature.
+//
+// 	- If you apply for a signature or message template, you must specify the signature scenario or template type. You must also provide the information of your services, such as a website URL, a domain name with an ICP filing, an application download URL, or the name of your WeChat official account or mini program. For sign-in scenarios, you must also provide an account and password for tests. A detailed description can improve the review efficiency of signatures and templates.
+//
+// 	- An SMS signature must undergo a thorough review process before it can be approved for use.
+//
+// @param request - AddSmsSignRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddSmsSignResponse
 func (client *Client) AddSmsSignWithOptions(request *AddSmsSignRequest, runtime *util.RuntimeOptions) (_result *AddSmsSignResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5209,6 +9633,35 @@ func (client *Client) AddSmsSignWithOptions(request *AddSmsSignRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a signature.
+//
+// Description:
+//
+// You can call the AddSmsSign operation or use the [Short Message Service (SMS) console](https://dysms.console.aliyun.com/dysms.htm#/overview) to create an SMS signature. The signature must comply with the [SMS signature specifications](https://help.aliyun.com/document_detail/108076.html). You can call the QuerySmsSign operation or use the SMS console to query the review status of the signature.
+//
+// For more information, see [Usage notes](https://help.aliyun.com/document_detail/55324.html).
+//
+// ### QPS limit
+//
+// You can call this operation only once per second. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// >
+//
+// 	- You cannot cancel the review of a signature.
+//
+// 	- Individual users can create only one verification code signature, and can create only one general-purpose signature within a natural day. If you need to apply for multiple signatures, we recommend that you upgrade your account to an enterprise user.
+//
+// 	- If you need to use the same signature for messages sent to recipients both in and outside the Chinese mainland, the signature must be a general-purpose signature.
+//
+// 	- If you apply for a signature or message template, you must specify the signature scenario or template type. You must also provide the information of your services, such as a website URL, a domain name with an ICP filing, an application download URL, or the name of your WeChat official account or mini program. For sign-in scenarios, you must also provide an account and password for tests. A detailed description can improve the review efficiency of signatures and templates.
+//
+// 	- An SMS signature must undergo a thorough review process before it can be approved for use.
+//
+// @param request - AddSmsSignRequest
+//
+// @return AddSmsSignResponse
 func (client *Client) AddSmsSign(request *AddSmsSignRequest) (_result *AddSmsSignResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddSmsSignResponse{}
@@ -5220,6 +9673,37 @@ func (client *Client) AddSmsSign(request *AddSmsSignRequest) (_result *AddSmsSig
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a message template.
+//
+// Description:
+//
+// You can call the operation or use the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview) to apply for a message template. The template must comply with the [message template specifications](https://help.aliyun.com/document_detail/108253.html). You can call the [QuerySmsTemplate](https://help.aliyun.com/document_detail/419289.html) operation or use the Alibaba Cloud SMS console to check whether the message template is approved.
+//
+// >
+//
+// 	- Message templates pending approval can be withdrawn. You can withdraw a message template pending approval on the Message Templates tab in the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview).
+//
+// 	- Message templates that have been approved can be deleted, and cannot be modified. You can delete a message template pending approval on the Message Templates tab in the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview).
+//
+// 	- If you call the AddSmsTemplate operation, you can apply for a maximum of 100 message templates in a calendar day. After you apply for a message template, we recommend that you wait for at least 30 seconds before you apply for another one. If you use the Alibaba Cloud SMS console, you can apply for an unlimited number of message templates.
+//
+// 	- Messages sent to the Chinese mainland and messages sent to countries or regions outside the Chinese mainland use separate message templates. Create message templates based on your needs.
+//
+// 	- If you apply for a signature or message template, you must specify the signature scenario or template type. You must also provide the information of your services, such as a website URL, a domain name with an ICP filing, an application download URL, or the name of your WeChat official account or mini program. For sign-in scenarios, you must also provide an account and password for tests. A detailed description can improve the review efficiency of signatures and templates.
+//
+// 	- A signature must undergo a thorough review process before it can be approved for use. For more information, see [Usage notes](https://help.aliyun.com/document_detail/55324.html).
+//
+// ### QPS limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - AddSmsTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddSmsTemplateResponse
 func (client *Client) AddSmsTemplateWithOptions(request *AddSmsTemplateRequest, runtime *util.RuntimeOptions) (_result *AddSmsTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5277,6 +9761,35 @@ func (client *Client) AddSmsTemplateWithOptions(request *AddSmsTemplateRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a message template.
+//
+// Description:
+//
+// You can call the operation or use the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview) to apply for a message template. The template must comply with the [message template specifications](https://help.aliyun.com/document_detail/108253.html). You can call the [QuerySmsTemplate](https://help.aliyun.com/document_detail/419289.html) operation or use the Alibaba Cloud SMS console to check whether the message template is approved.
+//
+// >
+//
+// 	- Message templates pending approval can be withdrawn. You can withdraw a message template pending approval on the Message Templates tab in the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview).
+//
+// 	- Message templates that have been approved can be deleted, and cannot be modified. You can delete a message template pending approval on the Message Templates tab in the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview).
+//
+// 	- If you call the AddSmsTemplate operation, you can apply for a maximum of 100 message templates in a calendar day. After you apply for a message template, we recommend that you wait for at least 30 seconds before you apply for another one. If you use the Alibaba Cloud SMS console, you can apply for an unlimited number of message templates.
+//
+// 	- Messages sent to the Chinese mainland and messages sent to countries or regions outside the Chinese mainland use separate message templates. Create message templates based on your needs.
+//
+// 	- If you apply for a signature or message template, you must specify the signature scenario or template type. You must also provide the information of your services, such as a website URL, a domain name with an ICP filing, an application download URL, or the name of your WeChat official account or mini program. For sign-in scenarios, you must also provide an account and password for tests. A detailed description can improve the review efficiency of signatures and templates.
+//
+// 	- A signature must undergo a thorough review process before it can be approved for use. For more information, see [Usage notes](https://help.aliyun.com/document_detail/55324.html).
+//
+// ### QPS limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - AddSmsTemplateRequest
+//
+// @return AddSmsTemplateResponse
 func (client *Client) AddSmsTemplate(request *AddSmsTemplateRequest) (_result *AddSmsTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddSmsTemplateResponse{}
@@ -5288,6 +9801,21 @@ func (client *Client) AddSmsTemplate(request *AddSmsTemplateRequest) (_result *A
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether a mobile phone number can receive card messages.
+//
+// Description:
+//
+// ### QPS limit
+//
+// You can call this operation up to 2,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - CheckMobilesCardSupportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckMobilesCardSupportResponse
 func (client *Client) CheckMobilesCardSupportWithOptions(request *CheckMobilesCardSupportRequest, runtime *util.RuntimeOptions) (_result *CheckMobilesCardSupportResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5325,6 +9853,19 @@ func (client *Client) CheckMobilesCardSupportWithOptions(request *CheckMobilesCa
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether a mobile phone number can receive card messages.
+//
+// Description:
+//
+// ### QPS limit
+//
+// You can call this operation up to 2,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - CheckMobilesCardSupportRequest
+//
+// @return CheckMobilesCardSupportResponse
 func (client *Client) CheckMobilesCardSupport(request *CheckMobilesCardSupportRequest) (_result *CheckMobilesCardSupportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckMobilesCardSupportResponse{}
@@ -5336,6 +9877,15 @@ func (client *Client) CheckMobilesCardSupport(request *CheckMobilesCardSupportRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Sends conversion rate information to Alibaba Cloud SMS.
+//
+// @param request - ConversionDataIntlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConversionDataIntlResponse
 func (client *Client) ConversionDataIntlWithOptions(request *ConversionDataIntlRequest, runtime *util.RuntimeOptions) (_result *ConversionDataIntlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5385,6 +9935,13 @@ func (client *Client) ConversionDataIntlWithOptions(request *ConversionDataIntlR
 	return _result, _err
 }
 
+// Summary:
+//
+// Sends conversion rate information to Alibaba Cloud SMS.
+//
+// @param request - ConversionDataIntlRequest
+//
+// @return ConversionDataIntlResponse
 func (client *Client) ConversionDataIntl(request *ConversionDataIntlRequest) (_result *ConversionDataIntlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ConversionDataIntlResponse{}
@@ -5396,6 +9953,27 @@ func (client *Client) ConversionDataIntl(request *ConversionDataIntlRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a card message template.
+//
+// Description:
+//
+//   The CreateCardSmsTemplate operation saves the card message template information, submits it to the mobile phone manufacturer for approval, and returns the message template ID.
+//
+// 	- If the type of the message template is not supported or events that are not supported by the mobile phone manufacturer are specified, the template is not submitted. For more information, see [Supported message templates](https://help.aliyun.com/document_detail/434611.html).
+//
+// 	- For information about sample card message templates, see [Sample card message templates](https://help.aliyun.com/document_detail/435361.html).
+//
+// ### QPS limit
+//
+// You can call this operation up to 300 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param tmpReq - CreateCardSmsTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCardSmsTemplateResponse
 func (client *Client) CreateCardSmsTemplateWithOptions(tmpReq *CreateCardSmsTemplateRequest, runtime *util.RuntimeOptions) (_result *CreateCardSmsTemplateResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5447,6 +10025,25 @@ func (client *Client) CreateCardSmsTemplateWithOptions(tmpReq *CreateCardSmsTemp
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a card message template.
+//
+// Description:
+//
+//   The CreateCardSmsTemplate operation saves the card message template information, submits it to the mobile phone manufacturer for approval, and returns the message template ID.
+//
+// 	- If the type of the message template is not supported or events that are not supported by the mobile phone manufacturer are specified, the template is not submitted. For more information, see [Supported message templates](https://help.aliyun.com/document_detail/434611.html).
+//
+// 	- For information about sample card message templates, see [Sample card message templates](https://help.aliyun.com/document_detail/435361.html).
+//
+// ### QPS limit
+//
+// You can call this operation up to 300 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - CreateCardSmsTemplateRequest
+//
+// @return CreateCardSmsTemplateResponse
 func (client *Client) CreateCardSmsTemplate(request *CreateCardSmsTemplateRequest) (_result *CreateCardSmsTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateCardSmsTemplateResponse{}
@@ -5458,14 +10055,23 @@ func (client *Client) CreateCardSmsTemplate(request *CreateCardSmsTemplateReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建短链
+//
+// @param request - CreateSmartShortUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSmartShortUrlResponse
 func (client *Client) CreateSmartShortUrlWithOptions(request *CreateSmartShortUrlRequest, runtime *util.RuntimeOptions) (_result *CreateSmartShortUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Expiration)) {
-		query["Expiration"] = request.Expiration
+	if !tea.BoolValue(util.IsUnset(request.OutId)) {
+		query["OutId"] = request.OutId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
@@ -5482,10 +10088,6 @@ func (client *Client) CreateSmartShortUrlWithOptions(request *CreateSmartShortUr
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SourceName)) {
-		query["SourceName"] = request.SourceName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceUrl)) {
@@ -5515,6 +10117,13 @@ func (client *Client) CreateSmartShortUrlWithOptions(request *CreateSmartShortUr
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建短链
+//
+// @param request - CreateSmartShortUrlRequest
+//
+// @return CreateSmartShortUrlResponse
 func (client *Client) CreateSmartShortUrl(request *CreateSmartShortUrlRequest) (_result *CreateSmartShortUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSmartShortUrlResponse{}
@@ -5526,6 +10135,237 @@ func (client *Client) CreateSmartShortUrl(request *CreateSmartShortUrlRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建短信签名
+//
+// @param tmpReq - CreateSmsSignRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSmsSignResponse
+func (client *Client) CreateSmsSignWithOptions(tmpReq *CreateSmsSignRequest, runtime *util.RuntimeOptions) (_result *CreateSmsSignResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateSmsSignShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.MoreData)) {
+		request.MoreDataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MoreData, tea.String("MoreData"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplySceneContent)) {
+		query["ApplySceneContent"] = request.ApplySceneContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MoreDataShrink)) {
+		query["MoreData"] = request.MoreDataShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QualificationId)) {
+		query["QualificationId"] = request.QualificationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignName)) {
+		query["SignName"] = request.SignName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignSource)) {
+		query["SignSource"] = request.SignSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignType)) {
+		query["SignType"] = request.SignType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdParty)) {
+		query["ThirdParty"] = request.ThirdParty
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSmsSign"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSmsSignResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建短信签名
+//
+// @param request - CreateSmsSignRequest
+//
+// @return CreateSmsSignResponse
+func (client *Client) CreateSmsSign(request *CreateSmsSignRequest) (_result *CreateSmsSignResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSmsSignResponse{}
+	_body, _err := client.CreateSmsSignWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建短信模板
+//
+// @param tmpReq - CreateSmsTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSmsTemplateResponse
+func (client *Client) CreateSmsTemplateWithOptions(tmpReq *CreateSmsTemplateRequest, runtime *util.RuntimeOptions) (_result *CreateSmsTemplateResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateSmsTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.MoreData)) {
+		request.MoreDataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MoreData, tea.String("MoreData"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplySceneContent)) {
+		query["ApplySceneContent"] = request.ApplySceneContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntlType)) {
+		query["IntlType"] = request.IntlType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MoreDataShrink)) {
+		query["MoreData"] = request.MoreDataShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelatedSignName)) {
+		query["RelatedSignName"] = request.RelatedSignName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateContent)) {
+		query["TemplateContent"] = request.TemplateContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateRule)) {
+		query["TemplateRule"] = request.TemplateRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateType)) {
+		query["TemplateType"] = request.TemplateType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSmsTemplate"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSmsTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建短信模板
+//
+// @param request - CreateSmsTemplateRequest
+//
+// @return CreateSmsTemplateResponse
+func (client *Client) CreateSmsTemplate(request *CreateSmsTemplateRequest) (_result *CreateSmsTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSmsTemplateResponse{}
+	_body, _err := client.CreateSmsTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a short URL. After you delete a short URL, it cannot be changed to its original state.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DeleteShortUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteShortUrlResponse
 func (client *Client) DeleteShortUrlWithOptions(request *DeleteShortUrlRequest, runtime *util.RuntimeOptions) (_result *DeleteShortUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5573,6 +10413,19 @@ func (client *Client) DeleteShortUrlWithOptions(request *DeleteShortUrlRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a short URL. After you delete a short URL, it cannot be changed to its original state.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DeleteShortUrlRequest
+//
+// @return DeleteShortUrlResponse
 func (client *Client) DeleteShortUrl(request *DeleteShortUrlRequest) (_result *DeleteShortUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteShortUrlResponse{}
@@ -5584,6 +10437,25 @@ func (client *Client) DeleteShortUrl(request *DeleteShortUrlRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a signature.
+//
+// Description:
+//
+//   You cannot delete a signature that has not been approved.
+//
+// 	- After you delete a signature, you cannot recover it. Proceed with caution.
+//
+// ### QPS limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DeleteSmsSignRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSmsSignResponse
 func (client *Client) DeleteSmsSignWithOptions(request *DeleteSmsSignRequest, runtime *util.RuntimeOptions) (_result *DeleteSmsSignResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5629,6 +10501,23 @@ func (client *Client) DeleteSmsSignWithOptions(request *DeleteSmsSignRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a signature.
+//
+// Description:
+//
+//   You cannot delete a signature that has not been approved.
+//
+// 	- After you delete a signature, you cannot recover it. Proceed with caution.
+//
+// ### QPS limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DeleteSmsSignRequest
+//
+// @return DeleteSmsSignResponse
 func (client *Client) DeleteSmsSign(request *DeleteSmsSignRequest) (_result *DeleteSmsSignResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSmsSignResponse{}
@@ -5640,6 +10529,27 @@ func (client *Client) DeleteSmsSign(request *DeleteSmsSignRequest) (_result *Del
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a message template.
+//
+// Description:
+//
+//   Message templates pending approval can be withdrawn. You can delete a message template pending approval on the Message Templates tab in the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview).
+//
+// 	- Message templates that have been approved can be deleted, and cannot be modified. You can delete a message template pending approval on the Message Templates tab in the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview).
+//
+// 	- You cannot recover deleted message templates. Proceed with caution.
+//
+// ### QPS limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DeleteSmsTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSmsTemplateResponse
 func (client *Client) DeleteSmsTemplateWithOptions(request *DeleteSmsTemplateRequest, runtime *util.RuntimeOptions) (_result *DeleteSmsTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5685,6 +10595,25 @@ func (client *Client) DeleteSmsTemplateWithOptions(request *DeleteSmsTemplateReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a message template.
+//
+// Description:
+//
+//   Message templates pending approval can be withdrawn. You can delete a message template pending approval on the Message Templates tab in the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview).
+//
+// 	- Message templates that have been approved can be deleted, and cannot be modified. You can delete a message template pending approval on the Message Templates tab in the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview).
+//
+// 	- You cannot recover deleted message templates. Proceed with caution.
+//
+// ### QPS limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - DeleteSmsTemplateRequest
+//
+// @return DeleteSmsTemplateResponse
 func (client *Client) DeleteSmsTemplate(request *DeleteSmsTemplateRequest) (_result *DeleteSmsTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSmsTemplateResponse{}
@@ -5696,6 +10625,21 @@ func (client *Client) DeleteSmsTemplate(request *DeleteSmsTemplateRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the short URLs of a card messages template.
+//
+// Description:
+//
+// ### QPS limit
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - GetCardSmsLinkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCardSmsLinkResponse
 func (client *Client) GetCardSmsLinkWithOptions(request *GetCardSmsLinkRequest, runtime *util.RuntimeOptions) (_result *GetCardSmsLinkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5761,6 +10705,19 @@ func (client *Client) GetCardSmsLinkWithOptions(request *GetCardSmsLinkRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the short URLs of a card messages template.
+//
+// Description:
+//
+// ### QPS limit
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - GetCardSmsLinkRequest
+//
+// @return GetCardSmsLinkResponse
 func (client *Client) GetCardSmsLink(request *GetCardSmsLinkRequest) (_result *GetCardSmsLinkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetCardSmsLinkResponse{}
@@ -5772,6 +10729,21 @@ func (client *Client) GetCardSmsLink(request *GetCardSmsLinkRequest) (_result *G
 	return _result, _err
 }
 
+// Summary:
+//
+// Converts a resource uploaded to the specified Object Storage Service (OSS) bucket for unified management. Then, a resource ID is returned. You can manage the resource based on the ID.
+//
+// Description:
+//
+// ### QPS limit
+//
+// You can call this operation up to 300 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - GetMediaResourceIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMediaResourceIdResponse
 func (client *Client) GetMediaResourceIdWithOptions(request *GetMediaResourceIdRequest, runtime *util.RuntimeOptions) (_result *GetMediaResourceIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5821,6 +10793,19 @@ func (client *Client) GetMediaResourceIdWithOptions(request *GetMediaResourceIdR
 	return _result, _err
 }
 
+// Summary:
+//
+// Converts a resource uploaded to the specified Object Storage Service (OSS) bucket for unified management. Then, a resource ID is returned. You can manage the resource based on the ID.
+//
+// Description:
+//
+// ### QPS limit
+//
+// You can call this operation up to 300 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - GetMediaResourceIdRequest
+//
+// @return GetMediaResourceIdResponse
 func (client *Client) GetMediaResourceId(request *GetMediaResourceIdRequest) (_result *GetMediaResourceIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMediaResourceIdResponse{}
@@ -5832,6 +10817,23 @@ func (client *Client) GetMediaResourceId(request *GetMediaResourceIdRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the OSS configuration information about card messages.
+//
+// Description:
+//
+// Resources such as images and videos used for card message templates can be uploaded to Object Storage Service (OSS) buckets for storage. For more information, see [Upload files to OSS](https://help.aliyun.com/document_detail/437303.html).
+//
+// ### QPS limit
+//
+// You can call this operation up to 300 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - GetOSSInfoForCardTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOSSInfoForCardTemplateResponse
 func (client *Client) GetOSSInfoForCardTemplateWithOptions(runtime *util.RuntimeOptions) (_result *GetOSSInfoForCardTemplateResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -5854,6 +10856,19 @@ func (client *Client) GetOSSInfoForCardTemplateWithOptions(runtime *util.Runtime
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the OSS configuration information about card messages.
+//
+// Description:
+//
+// Resources such as images and videos used for card message templates can be uploaded to Object Storage Service (OSS) buckets for storage. For more information, see [Upload files to OSS](https://help.aliyun.com/document_detail/437303.html).
+//
+// ### QPS limit
+//
+// You can call this operation up to 300 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @return GetOSSInfoForCardTemplateResponse
 func (client *Client) GetOSSInfoForCardTemplate() (_result *GetOSSInfoForCardTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetOSSInfoForCardTemplateResponse{}
@@ -5865,6 +10880,237 @@ func (client *Client) GetOSSInfoForCardTemplate() (_result *GetOSSInfoForCardTem
 	return _result, _err
 }
 
+// Summary:
+//
+// 短信上传文件，获取授权信息
+//
+// @param request - GetOSSInfoForUploadFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOSSInfoForUploadFileResponse
+func (client *Client) GetOSSInfoForUploadFileWithOptions(request *GetOSSInfoForUploadFileRequest, runtime *util.RuntimeOptions) (_result *GetOSSInfoForUploadFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizType)) {
+		query["BizType"] = request.BizType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetOSSInfoForUploadFile"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetOSSInfoForUploadFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 短信上传文件，获取授权信息
+//
+// @param request - GetOSSInfoForUploadFileRequest
+//
+// @return GetOSSInfoForUploadFileResponse
+func (client *Client) GetOSSInfoForUploadFile(request *GetOSSInfoForUploadFileRequest) (_result *GetOSSInfoForUploadFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetOSSInfoForUploadFileResponse{}
+	_body, _err := client.GetOSSInfoForUploadFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询短信签名详情
+//
+// @param request - GetSmsSignRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSmsSignResponse
+func (client *Client) GetSmsSignWithOptions(request *GetSmsSignRequest, runtime *util.RuntimeOptions) (_result *GetSmsSignResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignName)) {
+		query["SignName"] = request.SignName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSmsSign"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSmsSignResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询短信签名详情
+//
+// @param request - GetSmsSignRequest
+//
+// @return GetSmsSignResponse
+func (client *Client) GetSmsSign(request *GetSmsSignRequest) (_result *GetSmsSignResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSmsSignResponse{}
+	_body, _err := client.GetSmsSignWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询文本短信模板详情
+//
+// @param request - GetSmsTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSmsTemplateResponse
+func (client *Client) GetSmsTemplateWithOptions(request *GetSmsTemplateRequest, runtime *util.RuntimeOptions) (_result *GetSmsTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateCode)) {
+		query["TemplateCode"] = request.TemplateCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSmsTemplate"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSmsTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询文本短信模板详情
+//
+// @param request - GetSmsTemplateRequest
+//
+// @return GetSmsTemplateResponse
+func (client *Client) GetSmsTemplate(request *GetSmsTemplateRequest) (_result *GetSmsTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSmsTemplateResponse{}
+	_body, _err := client.GetSmsTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the tags of a message template.
+//
+// Description:
+//
+// ### QPS limit
+//
+// You can call this operation up to 50 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - ListTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5934,6 +11180,19 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the tags of a message template.
+//
+// Description:
+//
+// ### QPS limit
+//
+// You can call this operation up to 50 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagResourcesResponse{}
@@ -5945,6 +11204,33 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a rejected signature and submit it for approval. Signatures that are pending approval or have been approved cannot be modified.
+//
+// Description:
+//
+// You can call the operation or use the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview) to modify an existing signature and submit the signature for approval. The signature must comply with the [signature specifications](https://help.aliyun.com/document_detail/108076.html).
+//
+// For more information, see [Usage notes](https://help.aliyun.com/document_detail/55324.html).
+//
+// ### QPS limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// >
+//
+// 	- Signatures pending approval cannot be modified.
+//
+// 	- You cannot modify a signature after it is approved. If you no longer need the signature, you can delete it.
+//
+// 	- If you are an individual user, you cannot apply for a new signature on the same day that your signature is rejected or deleted. We recommend that you modify the rejected signature and submit it again.
+//
+// @param request - ModifySmsSignRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifySmsSignResponse
 func (client *Client) ModifySmsSignWithOptions(request *ModifySmsSignRequest, runtime *util.RuntimeOptions) (_result *ModifySmsSignResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6008,6 +11294,31 @@ func (client *Client) ModifySmsSignWithOptions(request *ModifySmsSignRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a rejected signature and submit it for approval. Signatures that are pending approval or have been approved cannot be modified.
+//
+// Description:
+//
+// You can call the operation or use the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm#/overview) to modify an existing signature and submit the signature for approval. The signature must comply with the [signature specifications](https://help.aliyun.com/document_detail/108076.html).
+//
+// For more information, see [Usage notes](https://help.aliyun.com/document_detail/55324.html).
+//
+// ### QPS limits
+//
+// You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// >
+//
+// 	- Signatures pending approval cannot be modified.
+//
+// 	- You cannot modify a signature after it is approved. If you no longer need the signature, you can delete it.
+//
+// 	- If you are an individual user, you cannot apply for a new signature on the same day that your signature is rejected or deleted. We recommend that you modify the rejected signature and submit it again.
+//
+// @param request - ModifySmsSignRequest
+//
+// @return ModifySmsSignResponse
 func (client *Client) ModifySmsSign(request *ModifySmsSignRequest) (_result *ModifySmsSignResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifySmsSignResponse{}
@@ -6019,6 +11330,27 @@ func (client *Client) ModifySmsSign(request *ModifySmsSignRequest) (_result *Mod
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the information of an unapproved message template and submits it for review again.
+//
+// Description:
+//
+// After you apply for a message template, if the template fails to pass the review, you can call this operation to modify the template and submit the template again. You can call this operation to modify only a template for a specific message type.
+//
+// The template content must comply with the [SMS template specifications](https://help.aliyun.com/document_detail/108253.html).
+//
+// For more information, see [Usage notes](https://help.aliyun.com/document_detail/55324.html).
+//
+// ### QPS limit
+//
+// You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - ModifySmsTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifySmsTemplateResponse
 func (client *Client) ModifySmsTemplateWithOptions(request *ModifySmsTemplateRequest, runtime *util.RuntimeOptions) (_result *ModifySmsTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6080,6 +11412,25 @@ func (client *Client) ModifySmsTemplateWithOptions(request *ModifySmsTemplateReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the information of an unapproved message template and submits it for review again.
+//
+// Description:
+//
+// After you apply for a message template, if the template fails to pass the review, you can call this operation to modify the template and submit the template again. You can call this operation to modify only a template for a specific message type.
+//
+// The template content must comply with the [SMS template specifications](https://help.aliyun.com/document_detail/108253.html).
+//
+// For more information, see [Usage notes](https://help.aliyun.com/document_detail/55324.html).
+//
+// ### QPS limit
+//
+// You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - ModifySmsTemplateRequest
+//
+// @return ModifySmsTemplateResponse
 func (client *Client) ModifySmsTemplate(request *ModifySmsTemplateRequest) (_result *ModifySmsTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifySmsTemplateResponse{}
@@ -6091,6 +11442,21 @@ func (client *Client) ModifySmsTemplate(request *ModifySmsTemplateRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the review status of a message template.
+//
+// Description:
+//
+// ### QPS limit
+//
+// You can call this operation up to 300 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - QueryCardSmsTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryCardSmsTemplateResponse
 func (client *Client) QueryCardSmsTemplateWithOptions(request *QueryCardSmsTemplateRequest, runtime *util.RuntimeOptions) (_result *QueryCardSmsTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6124,6 +11490,19 @@ func (client *Client) QueryCardSmsTemplateWithOptions(request *QueryCardSmsTempl
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the review status of a message template.
+//
+// Description:
+//
+// ### QPS limit
+//
+// You can call this operation up to 300 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - QueryCardSmsTemplateRequest
+//
+// @return QueryCardSmsTemplateResponse
 func (client *Client) QueryCardSmsTemplate(request *QueryCardSmsTemplateRequest) (_result *QueryCardSmsTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryCardSmsTemplateResponse{}
@@ -6135,6 +11514,21 @@ func (client *Client) QueryCardSmsTemplate(request *QueryCardSmsTemplateRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries sent card messages.
+//
+// Description:
+//
+// ### QPS limit
+//
+// You can call this operation up to 300 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - QueryCardSmsTemplateReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryCardSmsTemplateReportResponse
 func (client *Client) QueryCardSmsTemplateReportWithOptions(request *QueryCardSmsTemplateReportRequest, runtime *util.RuntimeOptions) (_result *QueryCardSmsTemplateReportResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6176,6 +11570,19 @@ func (client *Client) QueryCardSmsTemplateReportWithOptions(request *QueryCardSm
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries sent card messages.
+//
+// Description:
+//
+// ### QPS limit
+//
+// You can call this operation up to 300 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - QueryCardSmsTemplateReportRequest
+//
+// @return QueryCardSmsTemplateReportResponse
 func (client *Client) QueryCardSmsTemplateReport(request *QueryCardSmsTemplateReportRequest) (_result *QueryCardSmsTemplateReportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryCardSmsTemplateReportResponse{}
@@ -6187,6 +11594,15 @@ func (client *Client) QueryCardSmsTemplateReport(request *QueryCardSmsTemplateRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether a mobile phone number can receive card messages.
+//
+// @param tmpReq - QueryMobilesCardSupportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryMobilesCardSupportResponse
 func (client *Client) QueryMobilesCardSupportWithOptions(tmpReq *QueryMobilesCardSupportRequest, runtime *util.RuntimeOptions) (_result *QueryMobilesCardSupportResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -6230,6 +11646,13 @@ func (client *Client) QueryMobilesCardSupportWithOptions(tmpReq *QueryMobilesCar
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether a mobile phone number can receive card messages.
+//
+// @param request - QueryMobilesCardSupportRequest
+//
+// @return QueryMobilesCardSupportResponse
 func (client *Client) QueryMobilesCardSupport(request *QueryMobilesCardSupportRequest) (_result *QueryMobilesCardSupportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryMobilesCardSupportResponse{}
@@ -6241,26 +11664,27 @@ func (client *Client) QueryMobilesCardSupport(request *QueryMobilesCardSupportRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 点击明细查询
+//
+// @param request - QueryPageSmartShortUrlLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryPageSmartShortUrlLogResponse
 func (client *Client) QueryPageSmartShortUrlLogWithOptions(request *QueryPageSmartShortUrlLogRequest, runtime *util.RuntimeOptions) (_result *QueryPageSmartShortUrlLogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClickState)) {
-		query["ClickState"] = request.ClickState
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.CreateDateEnd)) {
 		query["CreateDateEnd"] = request.CreateDateEnd
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CreateDateStart)) {
 		query["CreateDateStart"] = request.CreateDateStart
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndId)) {
-		query["EndId"] = request.EndId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
@@ -6287,16 +11711,8 @@ func (client *Client) QueryPageSmartShortUrlLogWithOptions(request *QueryPageSma
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ShortName)) {
-		query["ShortName"] = request.ShortName
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ShortUrl)) {
 		query["ShortUrl"] = request.ShortUrl
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartId)) {
-		query["StartId"] = request.StartId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -6322,6 +11738,13 @@ func (client *Client) QueryPageSmartShortUrlLogWithOptions(request *QueryPageSma
 	return _result, _err
 }
 
+// Summary:
+//
+// 点击明细查询
+//
+// @param request - QueryPageSmartShortUrlLogRequest
+//
+// @return QueryPageSmartShortUrlLogResponse
 func (client *Client) QueryPageSmartShortUrlLog(request *QueryPageSmartShortUrlLogRequest) (_result *QueryPageSmartShortUrlLogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryPageSmartShortUrlLogResponse{}
@@ -6333,6 +11756,15 @@ func (client *Client) QueryPageSmartShortUrlLog(request *QueryPageSmartShortUrlL
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a message.
+//
+// @param request - QuerySendDetailsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySendDetailsResponse
 func (client *Client) QuerySendDetailsWithOptions(request *QuerySendDetailsRequest, runtime *util.RuntimeOptions) (_result *QuerySendDetailsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6394,6 +11826,13 @@ func (client *Client) QuerySendDetailsWithOptions(request *QuerySendDetailsReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a message.
+//
+// @param request - QuerySendDetailsRequest
+//
+// @return QuerySendDetailsResponse
 func (client *Client) QuerySendDetails(request *QuerySendDetailsRequest) (_result *QuerySendDetailsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QuerySendDetailsResponse{}
@@ -6405,6 +11844,23 @@ func (client *Client) QuerySendDetails(request *QuerySendDetailsRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries message delivery details.
+//
+// Description:
+//
+// You can call the operation to query message delivery details, including the number of delivered messages, the number of messages with delivery receipts, and the time that a message is sent. If a large number of messages are sent on the specified date, you can specify the number of items displayed on each page and the number of pages to view the details by page.
+//
+// ### QPS limits
+//
+// You can call this operation up to 20 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - QuerySendStatisticsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySendStatisticsResponse
 func (client *Client) QuerySendStatisticsWithOptions(request *QuerySendStatisticsRequest, runtime *util.RuntimeOptions) (_result *QuerySendStatisticsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6474,6 +11930,21 @@ func (client *Client) QuerySendStatisticsWithOptions(request *QuerySendStatistic
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries message delivery details.
+//
+// Description:
+//
+// You can call the operation to query message delivery details, including the number of delivered messages, the number of messages with delivery receipts, and the time that a message is sent. If a large number of messages are sent on the specified date, you can specify the number of items displayed on each page and the number of pages to view the details by page.
+//
+// ### QPS limits
+//
+// You can call this operation up to 20 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - QuerySendStatisticsRequest
+//
+// @return QuerySendStatisticsResponse
 func (client *Client) QuerySendStatistics(request *QuerySendStatisticsRequest) (_result *QuerySendStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QuerySendStatisticsResponse{}
@@ -6485,6 +11956,21 @@ func (client *Client) QuerySendStatistics(request *QuerySendStatisticsRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the status of a short URL.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 20 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - QueryShortUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryShortUrlResponse
 func (client *Client) QueryShortUrlWithOptions(request *QueryShortUrlRequest, runtime *util.RuntimeOptions) (_result *QueryShortUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6532,6 +12018,19 @@ func (client *Client) QueryShortUrlWithOptions(request *QueryShortUrlRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the status of a short URL.
+//
+// Description:
+//
+// ### QPS limits
+//
+// You can call this operation up to 20 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - QueryShortUrlRequest
+//
+// @return QueryShortUrlResponse
 func (client *Client) QueryShortUrl(request *QueryShortUrlRequest) (_result *QueryShortUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryShortUrlResponse{}
@@ -6543,6 +12042,23 @@ func (client *Client) QueryShortUrl(request *QueryShortUrlRequest) (_result *Que
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the status of a signature.
+//
+// Description:
+//
+// After you apply for an SMS signature, you can query its status by using the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm) or calling the operation. If the signature is rejected, you can modify the signature based on the reason why it is rejected.
+//
+// ### QPS limits
+//
+// You can call this API operation up to 500 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - QuerySmsSignRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySmsSignResponse
 func (client *Client) QuerySmsSignWithOptions(request *QuerySmsSignRequest, runtime *util.RuntimeOptions) (_result *QuerySmsSignResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6588,6 +12104,21 @@ func (client *Client) QuerySmsSignWithOptions(request *QuerySmsSignRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the status of a signature.
+//
+// Description:
+//
+// After you apply for an SMS signature, you can query its status by using the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm) or calling the operation. If the signature is rejected, you can modify the signature based on the reason why it is rejected.
+//
+// ### QPS limits
+//
+// You can call this API operation up to 500 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - QuerySmsSignRequest
+//
+// @return QuerySmsSignResponse
 func (client *Client) QuerySmsSign(request *QuerySmsSignRequest) (_result *QuerySmsSignResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QuerySmsSignResponse{}
@@ -6599,6 +12130,23 @@ func (client *Client) QuerySmsSign(request *QuerySmsSignRequest) (_result *Query
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries message signatures by page.
+//
+// Description:
+//
+// You can call this operation to query the details of message signatures, including the name, creation time, and approval status of each signature. If a message template is rejected, the reason is returned. Modify the message signature based on the reason.
+//
+// ### QPS limit
+//
+// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - QuerySmsSignListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySmsSignListResponse
 func (client *Client) QuerySmsSignListWithOptions(request *QuerySmsSignListRequest, runtime *util.RuntimeOptions) (_result *QuerySmsSignListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6648,6 +12196,21 @@ func (client *Client) QuerySmsSignListWithOptions(request *QuerySmsSignListReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries message signatures by page.
+//
+// Description:
+//
+// You can call this operation to query the details of message signatures, including the name, creation time, and approval status of each signature. If a message template is rejected, the reason is returned. Modify the message signature based on the reason.
+//
+// ### QPS limit
+//
+// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - QuerySmsSignListRequest
+//
+// @return QuerySmsSignListResponse
 func (client *Client) QuerySmsSignList(request *QuerySmsSignListRequest) (_result *QuerySmsSignListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QuerySmsSignListResponse{}
@@ -6659,6 +12222,23 @@ func (client *Client) QuerySmsSignList(request *QuerySmsSignListRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the approval status of a message template.
+//
+// Description:
+//
+// After you create a message template, you can call this operation to query the approval status of the template. If a message template is rejected, the reason is returned. Modify the message template based on the reason.
+//
+// ### QPS limit
+//
+// You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - QuerySmsTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySmsTemplateResponse
 func (client *Client) QuerySmsTemplateWithOptions(request *QuerySmsTemplateRequest, runtime *util.RuntimeOptions) (_result *QuerySmsTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6704,6 +12284,21 @@ func (client *Client) QuerySmsTemplateWithOptions(request *QuerySmsTemplateReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the approval status of a message template.
+//
+// Description:
+//
+// After you create a message template, you can call this operation to query the approval status of the template. If a message template is rejected, the reason is returned. Modify the message template based on the reason.
+//
+// ### QPS limit
+//
+// You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - QuerySmsTemplateRequest
+//
+// @return QuerySmsTemplateResponse
 func (client *Client) QuerySmsTemplate(request *QuerySmsTemplateRequest) (_result *QuerySmsTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QuerySmsTemplateResponse{}
@@ -6715,6 +12310,23 @@ func (client *Client) QuerySmsTemplate(request *QuerySmsTemplateRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries message templates.
+//
+// Description:
+//
+// You can call this operation to query the details of message templates, including the name, creation time, and approval status of each template. If a message template is rejected, the reason is returned. Modify the message template based on the reason.
+//
+// ### QPS limit
+//
+// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - QuerySmsTemplateListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySmsTemplateListResponse
 func (client *Client) QuerySmsTemplateListWithOptions(request *QuerySmsTemplateListRequest, runtime *util.RuntimeOptions) (_result *QuerySmsTemplateListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6764,6 +12376,21 @@ func (client *Client) QuerySmsTemplateListWithOptions(request *QuerySmsTemplateL
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries message templates.
+//
+// Description:
+//
+// You can call this operation to query the details of message templates, including the name, creation time, and approval status of each template. If a message template is rejected, the reason is returned. Modify the message template based on the reason.
+//
+// ### QPS limit
+//
+// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - QuerySmsTemplateListRequest
+//
+// @return QuerySmsTemplateListResponse
 func (client *Client) QuerySmsTemplateList(request *QuerySmsTemplateListRequest) (_result *QuerySmsTemplateListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QuerySmsTemplateListResponse{}
@@ -6775,6 +12402,23 @@ func (client *Client) QuerySmsTemplateList(request *QuerySmsTemplateListRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Sends multiple card messages at a time.
+//
+// Description:
+//
+// You can call the operation to send multiple card messages to a maximum of mobile phone numbers at a time. Different signatures and rollback settings can be specified for the mobile phone numbers.
+//
+// ### QPS limit
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - SendBatchCardSmsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendBatchCardSmsResponse
 func (client *Client) SendBatchCardSmsWithOptions(request *SendBatchCardSmsRequest, runtime *util.RuntimeOptions) (_result *SendBatchCardSmsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6856,6 +12500,21 @@ func (client *Client) SendBatchCardSmsWithOptions(request *SendBatchCardSmsReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Sends multiple card messages at a time.
+//
+// Description:
+//
+// You can call the operation to send multiple card messages to a maximum of mobile phone numbers at a time. Different signatures and rollback settings can be specified for the mobile phone numbers.
+//
+// ### QPS limit
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - SendBatchCardSmsRequest
+//
+// @return SendBatchCardSmsResponse
 func (client *Client) SendBatchCardSms(request *SendBatchCardSmsRequest) (_result *SendBatchCardSmsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SendBatchCardSmsResponse{}
@@ -6867,6 +12526,19 @@ func (client *Client) SendBatchCardSms(request *SendBatchCardSmsRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Uses a single message template and multiple signatures to send messages to multiple recipients.
+//
+// Description:
+//
+// You can call the operation to send messages to a maximum of 100 recipients at a time.
+//
+// @param request - SendBatchSmsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendBatchSmsResponse
 func (client *Client) SendBatchSmsWithOptions(request *SendBatchSmsRequest, runtime *util.RuntimeOptions) (_result *SendBatchSmsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6934,6 +12606,17 @@ func (client *Client) SendBatchSmsWithOptions(request *SendBatchSmsRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Uses a single message template and multiple signatures to send messages to multiple recipients.
+//
+// Description:
+//
+// You can call the operation to send messages to a maximum of 100 recipients at a time.
+//
+// @param request - SendBatchSmsRequest
+//
+// @return SendBatchSmsResponse
 func (client *Client) SendBatchSms(request *SendBatchSmsRequest) (_result *SendBatchSmsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SendBatchSmsResponse{}
@@ -6945,6 +12628,25 @@ func (client *Client) SendBatchSms(request *SendBatchSmsRequest) (_result *SendB
 	return _result, _err
 }
 
+// Summary:
+//
+// Sends a card message.
+//
+// Description:
+//
+//   Make sure that the message template that you want to use has been approved. If the mobile phone number of a recipient does not support card messages, the SendCardSms operation allows the rollback feature to ensure successful delivery.
+//
+// 	- When you call the SendCardSms operation to send card messages, the operation checks whether the mobile phone numbers of the recipients support card messages. If the mobile phone numbers do not support card messages, you can specify whether to enable rollback. Otherwise, the card message cannot be delivered.
+//
+// ### QPS limit
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - SendCardSmsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendCardSmsResponse
 func (client *Client) SendCardSmsWithOptions(request *SendCardSmsRequest, runtime *util.RuntimeOptions) (_result *SendCardSmsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7022,6 +12724,23 @@ func (client *Client) SendCardSmsWithOptions(request *SendCardSmsRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Sends a card message.
+//
+// Description:
+//
+//   Make sure that the message template that you want to use has been approved. If the mobile phone number of a recipient does not support card messages, the SendCardSms operation allows the rollback feature to ensure successful delivery.
+//
+// 	- When you call the SendCardSms operation to send card messages, the operation checks whether the mobile phone numbers of the recipients support card messages. If the mobile phone numbers do not support card messages, you can specify whether to enable rollback. Otherwise, the card message cannot be delivered.
+//
+// ### QPS limit
+//
+// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - SendCardSmsRequest
+//
+// @return SendCardSmsResponse
 func (client *Client) SendCardSms(request *SendCardSmsRequest) (_result *SendCardSmsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SendCardSmsResponse{}
@@ -7033,6 +12752,25 @@ func (client *Client) SendCardSms(request *SendCardSmsRequest) (_result *SendCar
 	return _result, _err
 }
 
+// Summary:
+//
+// Sends a message. Before you call this operation, submit a message signature and message template, and make sure that the signature and template are approved.
+//
+// Description:
+//
+//   This operation is mainly used to send a single message. In special scenarios, you can send multiple messages with the same content to a maximum of 1,000 mobile numbers. Note that group sending may be delayed.
+//
+// 	- To send messages with different signatures and template content to multiple mobile numbers in a single request, call the [SendBatchSms](https://help.aliyun.com/document_detail/102364.html) operation.
+//
+// 	- You are charged for using Alibaba Cloud Short Message Service (SMS) based on the amount of messages sent. For more information, see [Pricing](https://www.aliyun.com/price/product#/sms/detail).
+//
+// 	- If your verification code signature and general-purpose signature have the same name, the system uses the general-purpose signature to send messages by default.
+//
+// @param request - SendSmsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendSmsResponse
 func (client *Client) SendSmsWithOptions(request *SendSmsRequest, runtime *util.RuntimeOptions) (_result *SendSmsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7098,6 +12836,23 @@ func (client *Client) SendSmsWithOptions(request *SendSmsRequest, runtime *util.
 	return _result, _err
 }
 
+// Summary:
+//
+// Sends a message. Before you call this operation, submit a message signature and message template, and make sure that the signature and template are approved.
+//
+// Description:
+//
+//   This operation is mainly used to send a single message. In special scenarios, you can send multiple messages with the same content to a maximum of 1,000 mobile numbers. Note that group sending may be delayed.
+//
+// 	- To send messages with different signatures and template content to multiple mobile numbers in a single request, call the [SendBatchSms](https://help.aliyun.com/document_detail/102364.html) operation.
+//
+// 	- You are charged for using Alibaba Cloud Short Message Service (SMS) based on the amount of messages sent. For more information, see [Pricing](https://www.aliyun.com/price/product#/sms/detail).
+//
+// 	- If your verification code signature and general-purpose signature have the same name, the system uses the general-purpose signature to send messages by default.
+//
+// @param request - SendSmsRequest
+//
+// @return SendSmsResponse
 func (client *Client) SendSms(request *SendSmsRequest) (_result *SendSmsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SendSmsResponse{}
@@ -7109,6 +12864,27 @@ func (client *Client) SendSms(request *SendSmsRequest) (_result *SendSmsResponse
 	return _result, _err
 }
 
+// Summary:
+//
+// Reports the status of an OTP message to Alibaba Cloud SMS.
+//
+// Description:
+//
+// Metrics:
+//
+// 	- Requested OTP messages
+//
+// 	- Verified OTP messages
+//
+// An OTP conversion rate is calculated based on the following formula: OTP conversion rate = Number of verified OTP messages/Number of requested OTP messages.
+//
+// > If you call the SmsConversion operation to query OTP conversion rates, your business may be affected. We recommend that you perform the following operations: 1. Call the SmsConversion operation in an asynchronous manner by configuring queues or events. 2. Manually degrade your services or use a circuit breaker to automatically degrade services.
+//
+// @param request - SmsConversionIntlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SmsConversionIntlResponse
 func (client *Client) SmsConversionIntlWithOptions(request *SmsConversionIntlRequest, runtime *util.RuntimeOptions) (_result *SmsConversionIntlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7162,6 +12938,25 @@ func (client *Client) SmsConversionIntlWithOptions(request *SmsConversionIntlReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Reports the status of an OTP message to Alibaba Cloud SMS.
+//
+// Description:
+//
+// Metrics:
+//
+// 	- Requested OTP messages
+//
+// 	- Verified OTP messages
+//
+// An OTP conversion rate is calculated based on the following formula: OTP conversion rate = Number of verified OTP messages/Number of requested OTP messages.
+//
+// > If you call the SmsConversion operation to query OTP conversion rates, your business may be affected. We recommend that you perform the following operations: 1. Call the SmsConversion operation in an asynchronous manner by configuring queues or events. 2. Manually degrade your services or use a circuit breaker to automatically degrade services.
+//
+// @param request - SmsConversionIntlRequest
+//
+// @return SmsConversionIntlResponse
 func (client *Client) SmsConversionIntl(request *SmsConversionIntlRequest) (_result *SmsConversionIntlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SmsConversionIntlResponse{}
@@ -7173,6 +12968,21 @@ func (client *Client) SmsConversionIntl(request *SmsConversionIntlRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Attaches tags to a message template.
+//
+// Description:
+//
+// ### QPS limit
+//
+// You can call this operation up to 50 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - TagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7234,6 +13044,19 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Attaches tags to a message template.
+//
+// Description:
+//
+// ### QPS limit
+//
+// You can call this operation up to 50 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+//
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
 func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TagResourcesResponse{}
@@ -7245,6 +13068,11 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
+// @param request - UntagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7310,10 +13138,233 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 	return _result, _err
 }
 
+// @param request - UntagResourcesRequest
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
 	_body, _err := client.UntagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改文本短信签名
+//
+// @param tmpReq - UpdateSmsSignRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSmsSignResponse
+func (client *Client) UpdateSmsSignWithOptions(tmpReq *UpdateSmsSignRequest, runtime *util.RuntimeOptions) (_result *UpdateSmsSignResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateSmsSignShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.MoreData)) {
+		request.MoreDataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MoreData, tea.String("MoreData"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplySceneContent)) {
+		query["ApplySceneContent"] = request.ApplySceneContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MoreDataShrink)) {
+		query["MoreData"] = request.MoreDataShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QualificationId)) {
+		query["QualificationId"] = request.QualificationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignName)) {
+		query["SignName"] = request.SignName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignSource)) {
+		query["SignSource"] = request.SignSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignType)) {
+		query["SignType"] = request.SignType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdParty)) {
+		query["ThirdParty"] = request.ThirdParty
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSmsSign"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateSmsSignResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改文本短信签名
+//
+// @param request - UpdateSmsSignRequest
+//
+// @return UpdateSmsSignResponse
+func (client *Client) UpdateSmsSign(request *UpdateSmsSignRequest) (_result *UpdateSmsSignResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateSmsSignResponse{}
+	_body, _err := client.UpdateSmsSignWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改文本短信模板
+//
+// @param tmpReq - UpdateSmsTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSmsTemplateResponse
+func (client *Client) UpdateSmsTemplateWithOptions(tmpReq *UpdateSmsTemplateRequest, runtime *util.RuntimeOptions) (_result *UpdateSmsTemplateResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateSmsTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.MoreData)) {
+		request.MoreDataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MoreData, tea.String("MoreData"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplySceneContent)) {
+		query["ApplySceneContent"] = request.ApplySceneContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntlType)) {
+		query["IntlType"] = request.IntlType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MoreDataShrink)) {
+		query["MoreData"] = request.MoreDataShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelatedSignName)) {
+		query["RelatedSignName"] = request.RelatedSignName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateCode)) {
+		query["TemplateCode"] = request.TemplateCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateContent)) {
+		query["TemplateContent"] = request.TemplateContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateRule)) {
+		query["TemplateRule"] = request.TemplateRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateType)) {
+		query["TemplateType"] = request.TemplateType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSmsTemplate"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateSmsTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改文本短信模板
+//
+// @param request - UpdateSmsTemplateRequest
+//
+// @return UpdateSmsTemplateResponse
+func (client *Client) UpdateSmsTemplate(request *UpdateSmsTemplateRequest) (_result *UpdateSmsTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateSmsTemplateResponse{}
+	_body, _err := client.UpdateSmsTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
