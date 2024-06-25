@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -14,11 +11,25 @@ import (
 
 type AddBlacklistRequest struct {
 	// 有效天数
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	ExpiredDay *string `json:"ExpiredDay,omitempty" xml:"ExpiredDay,omitempty"`
 	// 号码列表
+	//
+	// This parameter is required.
 	Numbers []*string `json:"Numbers,omitempty" xml:"Numbers,omitempty" type:"Repeated"`
 	OwnerId *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// 备注
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值
 	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -64,11 +75,25 @@ func (s *AddBlacklistRequest) SetResourceOwnerId(v int64) *AddBlacklistRequest {
 
 type AddBlacklistShrinkRequest struct {
 	// 有效天数
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	ExpiredDay *string `json:"ExpiredDay,omitempty" xml:"ExpiredDay,omitempty"`
 	// 号码列表
+	//
+	// This parameter is required.
 	NumbersShrink *string `json:"Numbers,omitempty" xml:"Numbers,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// 备注
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值
 	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -113,12 +138,27 @@ func (s *AddBlacklistShrinkRequest) SetResourceOwnerId(v int64) *AddBlacklistShr
 }
 
 type AddBlacklistResponseBody struct {
-	Code      *int64                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model     *AddBlacklistResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                        `json:"Success,omitempty" xml:"Success,omitempty"`
-	Timestamp *int64                         `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Message *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model   *AddBlacklistResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	// example:
+	//
+	// 8EFC6D10-307B-1ECA-A8C6-7CBDF776AAD2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 1683440860035
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s AddBlacklistResponseBody) String() string {
@@ -178,9 +218,9 @@ func (s *AddBlacklistResponseBodyModel) SetUnHandleNumbers(v []*string) *AddBlac
 }
 
 type AddBlacklistResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddBlacklistResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddBlacklistResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddBlacklistResponse) String() string {
@@ -210,23 +250,61 @@ type AddTaskRequest struct {
 	// 外呼时间
 	CallTimeList []*AddTaskRequestCallTimeList `json:"CallTimeList,omitempty" xml:"CallTimeList,omitempty" type:"Repeated"`
 	// 回调地址
+	//
+	// example:
+	//
+	// 示例值示例值示例值
 	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
 	// 并发数
+	//
+	// example:
+	//
+	// 99
 	MaxConcurrency *int64 `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
 	// 任务名称
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值示例值
 	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// 播放间隔时长
+	//
+	// example:
+	//
+	// 89
 	PlaySleepVal *int64 `json:"PlaySleepVal,omitempty" xml:"PlaySleepVal,omitempty"`
 	// 录音播放次数
+	//
+	// example:
+	//
+	// 51
 	PlayTimes *int64 `json:"PlayTimes,omitempty" xml:"PlayTimes,omitempty"`
 	// 重呼配置
+	//
+	// example:
+	//
+	// 53
 	RecallType *int64 `json:"RecallType,omitempty" xml:"RecallType,omitempty"`
 	// 录音地址
+	//
+	// example:
+	//
+	// 示例值
 	RecordPath *string `json:"RecordPath,omitempty" xml:"RecordPath,omitempty"`
 	// 重呼次数
+	//
+	// example:
+	//
+	// 37
 	RepeatCount *int64 `json:"RepeatCount,omitempty" xml:"RepeatCount,omitempty"`
 	// 重呼间隔
+	//
+	// example:
+	//
+	// 14
 	RepeatInterval *int64 `json:"RepeatInterval,omitempty" xml:"RepeatInterval,omitempty"`
 	// 重呼条件
 	RepeatReason []*string `json:"RepeatReason,omitempty" xml:"RepeatReason,omitempty" type:"Repeated"`
@@ -237,12 +315,30 @@ type AddTaskRequest struct {
 	// 短信发送规则
 	SendSmsPlan []*AddTaskRequestSendSmsPlan `json:"SendSmsPlan,omitempty" xml:"SendSmsPlan,omitempty" type:"Repeated"`
 	// 任务启动日期
+	//
+	// example:
+	//
+	// 2022-09-16
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// 任务类型
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	TaskType *int64 `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 	// 话术模板ID
+	//
+	// example:
+	//
+	// 17
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// 话术模板类型
+	//
+	// example:
+	//
+	// 1
 	TemplateType *int64 `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
@@ -375,6 +471,10 @@ type AddTaskRequestSendSmsPlan struct {
 	// 意向标签
 	IntentTags []*string `json:"IntentTags,omitempty" xml:"IntentTags,omitempty" type:"Repeated"`
 	// 短信模板ID
+	//
+	// example:
+	//
+	// 71
 	SmsTemplateId *int64 `json:"SmsTemplateId,omitempty" xml:"SmsTemplateId,omitempty"`
 }
 
@@ -400,23 +500,61 @@ type AddTaskShrinkRequest struct {
 	// 外呼时间
 	CallTimeListShrink *string `json:"CallTimeList,omitempty" xml:"CallTimeList,omitempty"`
 	// 回调地址
+	//
+	// example:
+	//
+	// 示例值示例值示例值
 	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
 	// 并发数
+	//
+	// example:
+	//
+	// 99
 	MaxConcurrency *int64 `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
 	// 任务名称
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值示例值
 	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// 播放间隔时长
+	//
+	// example:
+	//
+	// 89
 	PlaySleepVal *int64 `json:"PlaySleepVal,omitempty" xml:"PlaySleepVal,omitempty"`
 	// 录音播放次数
+	//
+	// example:
+	//
+	// 51
 	PlayTimes *int64 `json:"PlayTimes,omitempty" xml:"PlayTimes,omitempty"`
 	// 重呼配置
+	//
+	// example:
+	//
+	// 53
 	RecallType *int64 `json:"RecallType,omitempty" xml:"RecallType,omitempty"`
 	// 录音地址
+	//
+	// example:
+	//
+	// 示例值
 	RecordPath *string `json:"RecordPath,omitempty" xml:"RecordPath,omitempty"`
 	// 重呼次数
+	//
+	// example:
+	//
+	// 37
 	RepeatCount *int64 `json:"RepeatCount,omitempty" xml:"RepeatCount,omitempty"`
 	// 重呼间隔
+	//
+	// example:
+	//
+	// 14
 	RepeatInterval *int64 `json:"RepeatInterval,omitempty" xml:"RepeatInterval,omitempty"`
 	// 重呼条件
 	RepeatReasonShrink *string `json:"RepeatReason,omitempty" xml:"RepeatReason,omitempty"`
@@ -427,12 +565,30 @@ type AddTaskShrinkRequest struct {
 	// 短信发送规则
 	SendSmsPlanShrink *string `json:"SendSmsPlan,omitempty" xml:"SendSmsPlan,omitempty"`
 	// 任务启动日期
+	//
+	// example:
+	//
+	// 2022-09-16
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// 任务类型
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	TaskType *int64 `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 	// 话术模板ID
+	//
+	// example:
+	//
+	// 17
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// 话术模板类型
+	//
+	// example:
+	//
+	// 1
 	TemplateType *int64 `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
@@ -545,12 +701,27 @@ func (s *AddTaskShrinkRequest) SetTemplateType(v int64) *AddTaskShrinkRequest {
 }
 
 type AddTaskResponseBody struct {
-	Code      *int64                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model     *AddTaskResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
-	RequestId *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                     `json:"Success,omitempty" xml:"Success,omitempty"`
-	Timestamp *int64                    `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 示例值
+	Message *string                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model   *AddTaskResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	// example:
+	//
+	// 5453cc9b-02bc-4dbb-9527-f28a9100b912
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 1686225227338
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s AddTaskResponseBody) String() string {
@@ -593,6 +764,10 @@ func (s *AddTaskResponseBody) SetTimestamp(v int64) *AddTaskResponseBody {
 
 type AddTaskResponseBodyModel struct {
 	// 任务ID
+	//
+	// example:
+	//
+	// 47
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -610,9 +785,9 @@ func (s *AddTaskResponseBodyModel) SetTaskId(v int64) *AddTaskResponseBodyModel 
 }
 
 type AddTaskResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AddTaskResponse) String() string {
@@ -640,8 +815,16 @@ func (s *AddTaskResponse) SetBody(v *AddTaskResponseBody) *AddTaskResponse {
 
 type AgentCancelCallRequest struct {
 	// 坐席ID
+	//
+	// example:
+	//
+	// 64
 	AgentId *int64 `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
 	// 坐席标签
+	//
+	// example:
+	//
+	// abc
 	AgentTag *string `json:"AgentTag,omitempty" xml:"AgentTag,omitempty"`
 	// 号码列表
 	Numbers              []*string `json:"Numbers,omitempty" xml:"Numbers,omitempty" type:"Repeated"`
@@ -697,8 +880,16 @@ func (s *AgentCancelCallRequest) SetTags(v []*string) *AgentCancelCallRequest {
 
 type AgentCancelCallShrinkRequest struct {
 	// 坐席ID
+	//
+	// example:
+	//
+	// 64
 	AgentId *int64 `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
 	// 坐席标签
+	//
+	// example:
+	//
+	// abc
 	AgentTag *string `json:"AgentTag,omitempty" xml:"AgentTag,omitempty"`
 	// 号码列表
 	NumbersShrink        *string `json:"Numbers,omitempty" xml:"Numbers,omitempty"`
@@ -753,12 +944,27 @@ func (s *AgentCancelCallShrinkRequest) SetTagsShrink(v string) *AgentCancelCallS
 }
 
 type AgentCancelCallResponseBody struct {
-	Code      *int64                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model     *AgentCancelCallResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                           `json:"Success,omitempty" xml:"Success,omitempty"`
-	Timestamp *int64                            `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 示例值
+	Message *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model   *AgentCancelCallResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	// example:
+	//
+	// 8EFC6D10-307B-1ECA-A8C6-7CBDF776AAD2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 1683440860035
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s AgentCancelCallResponseBody) String() string {
@@ -818,9 +1024,9 @@ func (s *AgentCancelCallResponseBodyModel) SetUnHandleNumbers(v []*string) *Agen
 }
 
 type AgentCancelCallResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AgentCancelCallResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AgentCancelCallResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AgentCancelCallResponse) String() string {
@@ -848,12 +1054,28 @@ func (s *AgentCancelCallResponse) SetBody(v *AgentCancelCallResponseBody) *Agent
 
 type AgentRecoverCallRequest struct {
 	// 坐席ID
+	//
+	// example:
+	//
+	// 5
 	AgentId *int64 `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
 	// 坐席标签
+	//
+	// example:
+	//
+	// abc
 	AgentTag *string `json:"AgentTag,omitempty" xml:"AgentTag,omitempty"`
 	// 查询开始导入时间
+	//
+	// example:
+	//
+	// 2020-03-06 10:10:10
 	BeginImportTime *string `json:"BeginImportTime,omitempty" xml:"BeginImportTime,omitempty"`
 	// 查询结束导入时间
+	//
+	// example:
+	//
+	// 2021-03-06 10:10:10
 	EndImportTime *string `json:"EndImportTime,omitempty" xml:"EndImportTime,omitempty"`
 	// 号码列表
 	Numbers              []*string `json:"Numbers,omitempty" xml:"Numbers,omitempty" type:"Repeated"`
@@ -919,12 +1141,28 @@ func (s *AgentRecoverCallRequest) SetTags(v []*string) *AgentRecoverCallRequest 
 
 type AgentRecoverCallShrinkRequest struct {
 	// 坐席ID
+	//
+	// example:
+	//
+	// 5
 	AgentId *int64 `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
 	// 坐席标签
+	//
+	// example:
+	//
+	// abc
 	AgentTag *string `json:"AgentTag,omitempty" xml:"AgentTag,omitempty"`
 	// 查询开始导入时间
+	//
+	// example:
+	//
+	// 2020-03-06 10:10:10
 	BeginImportTime *string `json:"BeginImportTime,omitempty" xml:"BeginImportTime,omitempty"`
 	// 查询结束导入时间
+	//
+	// example:
+	//
+	// 2021-03-06 10:10:10
 	EndImportTime *string `json:"EndImportTime,omitempty" xml:"EndImportTime,omitempty"`
 	// 号码列表
 	NumbersShrink        *string `json:"Numbers,omitempty" xml:"Numbers,omitempty"`
@@ -989,13 +1227,29 @@ func (s *AgentRecoverCallShrinkRequest) SetTagsShrink(v string) *AgentRecoverCal
 }
 
 type AgentRecoverCallResponseBody struct {
-	Code      *int64                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model     *AgentRecoverCallResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Message *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model   *AgentRecoverCallResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	// example:
+	//
+	// 8EFC6D10-307B-1ECA-A8C6-7CBDF776AAD2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// 坐席标签
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	Timestamp *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	//
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 1683440860035
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s AgentRecoverCallResponseBody) String() string {
@@ -1055,9 +1309,9 @@ func (s *AgentRecoverCallResponseBodyModel) SetUnHandleNumbers(v []*string) *Age
 }
 
 type AgentRecoverCallResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AgentRecoverCallResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AgentRecoverCallResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AgentRecoverCallResponse) String() string {
@@ -1085,23 +1339,55 @@ func (s *AgentRecoverCallResponse) SetBody(v *AgentRecoverCallResponseBody) *Age
 
 type DetailsRequest struct {
 	// 批次id
+	//
+	// example:
+	//
+	// 75
 	BatchId *int64 `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
 	// 结束导入时间
+	//
+	// example:
+	//
+	// 2023-04-25 15:19:02
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// 号码状态
+	//
+	// example:
+	//
+	// 1
 	NumberStatus *int64 `json:"NumberStatus,omitempty" xml:"NumberStatus,omitempty"`
 	// 号码列表
 	Numbers []*string `json:"Numbers,omitempty" xml:"Numbers,omitempty" type:"Repeated"`
 	OwnerId *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// 页数
+	//
+	// example:
+	//
+	// 77
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// 每页条数
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
 	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// 开始导入时间
+	//
+	// example:
+	//
+	// 2023-04-25 15:19:02
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// 任务id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 90
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -1170,23 +1456,55 @@ func (s *DetailsRequest) SetTaskId(v int64) *DetailsRequest {
 
 type DetailsShrinkRequest struct {
 	// 批次id
+	//
+	// example:
+	//
+	// 75
 	BatchId *int64 `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
 	// 结束导入时间
+	//
+	// example:
+	//
+	// 2023-04-25 15:19:02
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// 号码状态
+	//
+	// example:
+	//
+	// 1
 	NumberStatus *int64 `json:"NumberStatus,omitempty" xml:"NumberStatus,omitempty"`
 	// 号码列表
 	NumbersShrink *string `json:"Numbers,omitempty" xml:"Numbers,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// 页数
+	//
+	// example:
+	//
+	// 77
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// 每页条数
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
 	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// 开始导入时间
+	//
+	// example:
+	//
+	// 2023-04-25 15:19:02
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// 任务id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 90
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -1254,12 +1572,27 @@ func (s *DetailsShrinkRequest) SetTaskId(v int64) *DetailsShrinkRequest {
 }
 
 type DetailsResponseBody struct {
-	Code      *int64                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model     *DetailsResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
-	RequestId *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                     `json:"Success,omitempty" xml:"Success,omitempty"`
-	Timestamp *int64                    `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 示例值
+	Message *string                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model   *DetailsResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	// example:
+	//
+	// 389b2d0a-37e2-406d-b576-1fc0827be46a
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 1686279332221
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s DetailsResponseBody) String() string {
@@ -1301,11 +1634,23 @@ func (s *DetailsResponseBody) SetTimestamp(v int64) *DetailsResponseBody {
 }
 
 type DetailsResponseBodyModel struct {
-	List       []*DetailsResponseBodyModelList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	PageNo     *int64                          `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize   *int64                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount *int64                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalPage  *float32                        `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	List []*DetailsResponseBodyModelList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 94
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 79
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 71.8132
+	TotalPage *float32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s DetailsResponseBodyModel) String() string {
@@ -1343,30 +1688,82 @@ func (s *DetailsResponseBodyModel) SetTotalPage(v float32) *DetailsResponseBodyM
 
 type DetailsResponseBodyModelList struct {
 	// 批次号
+	//
+	// example:
+	//
+	// 27
 	BatchId *int64 `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
 	// 呼叫状态描述
+	//
+	// example:
+	//
+	// 示例值示例值
 	CallDesc *string `json:"CallDesc,omitempty" xml:"CallDesc,omitempty"`
 	// 外呼ID
+	//
+	// example:
+	//
+	// 28dd74a4-30ec-43c0-9bec-272924c51eeb
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
 	// 呼叫状态
+	//
+	// example:
+	//
+	// 1
 	CallStatus *int64 `json:"CallStatus,omitempty" xml:"CallStatus,omitempty"`
 	// 外呼类型
+	//
+	// example:
+	//
+	// 2001
 	CallType *int64 `json:"CallType,omitempty" xml:"CallType,omitempty"`
 	// 导入时间
+	//
+	// example:
+	//
+	// 2023-04-25 15:19:02
 	ImportTime *string `json:"ImportTime,omitempty" xml:"ImportTime,omitempty"`
 	// 拦截原因
+	//
+	// example:
+	//
+	// 示例值示例值示例值
 	InterceptReason *string `json:"InterceptReason,omitempty" xml:"InterceptReason,omitempty"`
 	// 外呼号码
+	//
+	// example:
+	//
+	// 188******454
 	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
 	// 号码状态描述
+	//
+	// example:
+	//
+	// 示例值
 	NumberDesc *string `json:"NumberDesc,omitempty" xml:"NumberDesc,omitempty"`
 	// 外呼号码MD5
+	//
+	// example:
+	//
+	// cbe1b40f76f2cca4735954886b706ffa
 	NumberMD5 *string `json:"NumberMD5,omitempty" xml:"NumberMD5,omitempty"`
 	// 号码状态
+	//
+	// example:
+	//
+	// 1
 	NumberStatus *int64 `json:"NumberStatus,omitempty" xml:"NumberStatus,omitempty"`
 	// 用户自定义标签
+	//
+	// example:
+	//
+	// A
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	// 任务ID
+	//
+	// example:
+	//
+	// 28
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -1444,9 +1841,9 @@ func (s *DetailsResponseBodyModelList) SetTaskId(v int64) *DetailsResponseBodyMo
 }
 
 type DetailsResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DetailsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetailsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DetailsResponse) String() string {
@@ -1476,23 +1873,59 @@ type EditTaskRequest struct {
 	// 外呼时间
 	CallTimeList []*EditTaskRequestCallTimeList `json:"CallTimeList,omitempty" xml:"CallTimeList,omitempty" type:"Repeated"`
 	// 回调地址
+	//
+	// example:
+	//
+	// 示例值示例值示例值
 	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
 	// 并发数
+	//
+	// example:
+	//
+	// 83
 	MaxConcurrency *int64 `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
 	// 任务名称
+	//
+	// example:
+	//
+	// 示例值示例值
 	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// 播放间隔时长
+	//
+	// example:
+	//
+	// 29
 	PlaySleepVal *int64 `json:"PlaySleepVal,omitempty" xml:"PlaySleepVal,omitempty"`
 	// 录音播放次数
+	//
+	// example:
+	//
+	// 60
 	PlayTimes *int64 `json:"PlayTimes,omitempty" xml:"PlayTimes,omitempty"`
 	// 重呼配置
+	//
+	// example:
+	//
+	// 1
 	RecallType *int64 `json:"RecallType,omitempty" xml:"RecallType,omitempty"`
 	// 录音地址
+	//
+	// example:
+	//
+	// 示例值示例值示例值
 	RecordPath *string `json:"RecordPath,omitempty" xml:"RecordPath,omitempty"`
 	// 重呼次数
+	//
+	// example:
+	//
+	// 51
 	RepeatCount *int64 `json:"RepeatCount,omitempty" xml:"RepeatCount,omitempty"`
 	// 重呼间隔
+	//
+	// example:
+	//
+	// 91
 	RepeatInterval *int64 `json:"RepeatInterval,omitempty" xml:"RepeatInterval,omitempty"`
 	// 重呼条件
 	RepeatReason []*int64 `json:"RepeatReason,omitempty" xml:"RepeatReason,omitempty" type:"Repeated"`
@@ -1503,12 +1936,30 @@ type EditTaskRequest struct {
 	// 短信发送规则
 	SendSmsPlan []*EditTaskRequestSendSmsPlan `json:"SendSmsPlan,omitempty" xml:"SendSmsPlan,omitempty" type:"Repeated"`
 	// 任务状态
+	//
+	// example:
+	//
+	// 2
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 任务id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 29
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// 话术模板ID
+	//
+	// example:
+	//
+	// 24
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// 话术模板类型
+	//
+	// example:
+	//
+	// 1
 	TemplateType *int64 `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
@@ -1641,6 +2092,10 @@ type EditTaskRequestSendSmsPlan struct {
 	// 意向标签
 	IntentTags []*string `json:"IntentTags,omitempty" xml:"IntentTags,omitempty" type:"Repeated"`
 	// 短信模板ID
+	//
+	// example:
+	//
+	// 1
 	SmsTemplateId *int64 `json:"SmsTemplateId,omitempty" xml:"SmsTemplateId,omitempty"`
 }
 
@@ -1666,23 +2121,59 @@ type EditTaskShrinkRequest struct {
 	// 外呼时间
 	CallTimeListShrink *string `json:"CallTimeList,omitempty" xml:"CallTimeList,omitempty"`
 	// 回调地址
+	//
+	// example:
+	//
+	// 示例值示例值示例值
 	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
 	// 并发数
+	//
+	// example:
+	//
+	// 83
 	MaxConcurrency *int64 `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
 	// 任务名称
+	//
+	// example:
+	//
+	// 示例值示例值
 	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// 播放间隔时长
+	//
+	// example:
+	//
+	// 29
 	PlaySleepVal *int64 `json:"PlaySleepVal,omitempty" xml:"PlaySleepVal,omitempty"`
 	// 录音播放次数
+	//
+	// example:
+	//
+	// 60
 	PlayTimes *int64 `json:"PlayTimes,omitempty" xml:"PlayTimes,omitempty"`
 	// 重呼配置
+	//
+	// example:
+	//
+	// 1
 	RecallType *int64 `json:"RecallType,omitempty" xml:"RecallType,omitempty"`
 	// 录音地址
+	//
+	// example:
+	//
+	// 示例值示例值示例值
 	RecordPath *string `json:"RecordPath,omitempty" xml:"RecordPath,omitempty"`
 	// 重呼次数
+	//
+	// example:
+	//
+	// 51
 	RepeatCount *int64 `json:"RepeatCount,omitempty" xml:"RepeatCount,omitempty"`
 	// 重呼间隔
+	//
+	// example:
+	//
+	// 91
 	RepeatInterval *int64 `json:"RepeatInterval,omitempty" xml:"RepeatInterval,omitempty"`
 	// 重呼条件
 	RepeatReasonShrink *string `json:"RepeatReason,omitempty" xml:"RepeatReason,omitempty"`
@@ -1693,12 +2184,30 @@ type EditTaskShrinkRequest struct {
 	// 短信发送规则
 	SendSmsPlanShrink *string `json:"SendSmsPlan,omitempty" xml:"SendSmsPlan,omitempty"`
 	// 任务状态
+	//
+	// example:
+	//
+	// 2
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 任务id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 29
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// 话术模板ID
+	//
+	// example:
+	//
+	// 24
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// 话术模板类型
+	//
+	// example:
+	//
+	// 1
 	TemplateType *int64 `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
@@ -1811,12 +2320,27 @@ func (s *EditTaskShrinkRequest) SetTemplateType(v int64) *EditTaskShrinkRequest 
 }
 
 type EditTaskResponseBody struct {
-	Code      *int64                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model     *EditTaskResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
-	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                      `json:"Success,omitempty" xml:"Success,omitempty"`
-	Timestamp *int64                     `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Message *string                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model   *EditTaskResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	// example:
+	//
+	// 5453cc9b-02bc-4dbb-9527-f28a9100b912
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 1686225227338
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s EditTaskResponseBody) String() string {
@@ -1859,6 +2383,10 @@ func (s *EditTaskResponseBody) SetTimestamp(v int64) *EditTaskResponseBody {
 
 type EditTaskResponseBodyModel struct {
 	// 任务ID
+	//
+	// example:
+	//
+	// 92
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -1876,9 +2404,9 @@ func (s *EditTaskResponseBodyModel) SetTaskId(v int64) *EditTaskResponseBodyMode
 }
 
 type EditTaskResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EditTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EditTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EditTaskResponse) String() string {
@@ -1905,13 +2433,27 @@ func (s *EditTaskResponse) SetBody(v *EditTaskResponseBody) *EditTaskResponse {
 }
 
 type ImportNumberRequest struct {
-	Customers            []*ImportNumberRequestCustomers `json:"Customers,omitempty" xml:"Customers,omitempty" type:"Repeated"`
-	FailReturn           *int64                          `json:"FailReturn,omitempty" xml:"FailReturn,omitempty"`
-	OutId                *string                         `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	OwnerId              *int64                          `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string                         `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                          `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TaskId               *int64                          `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	Customers []*ImportNumberRequestCustomers `json:"Customers,omitempty" xml:"Customers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
+	FailReturn *int64 `json:"FailReturn,omitempty" xml:"FailReturn,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值
+	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 92
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ImportNumberRequest) String() string {
@@ -1958,11 +2500,26 @@ func (s *ImportNumberRequest) SetTaskId(v int64) *ImportNumberRequest {
 }
 
 type ImportNumberRequestCustomers struct {
-	ClientUrl  *string                `json:"ClientUrl,omitempty" xml:"ClientUrl,omitempty"`
-	Number     *string                `json:"Number,omitempty" xml:"Number,omitempty"`
-	NumberMD5  *string                `json:"NumberMD5,omitempty" xml:"NumberMD5,omitempty"`
+	// example:
+	//
+	// http://test.com
+	ClientUrl *string `json:"ClientUrl,omitempty" xml:"ClientUrl,omitempty"`
+	// example:
+	//
+	// 13541251222,18665214444
+	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	// example:
+	//
+	// 示例值
+	NumberMD5 *string `json:"NumberMD5,omitempty" xml:"NumberMD5,omitempty"`
+	// example:
+	//
+	// {"testt":"123"}
 	Properties map[string]interface{} `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	Tag        *string                `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// example:
+	//
+	// tag1
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s ImportNumberRequestCustomers) String() string {
@@ -1999,13 +2556,27 @@ func (s *ImportNumberRequestCustomers) SetTag(v string) *ImportNumberRequestCust
 }
 
 type ImportNumberShrinkRequest struct {
-	CustomersShrink      *string `json:"Customers,omitempty" xml:"Customers,omitempty"`
-	FailReturn           *int64  `json:"FailReturn,omitempty" xml:"FailReturn,omitempty"`
+	// This parameter is required.
+	CustomersShrink *string `json:"Customers,omitempty" xml:"Customers,omitempty"`
+	// example:
+	//
+	// 0
+	FailReturn *int64 `json:"FailReturn,omitempty" xml:"FailReturn,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值
 	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TaskId               *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 92
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ImportNumberShrinkRequest) String() string {
@@ -2052,12 +2623,27 @@ func (s *ImportNumberShrinkRequest) SetTaskId(v int64) *ImportNumberShrinkReques
 }
 
 type ImportNumberResponseBody struct {
-	Code      *int64                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model     *ImportNumberResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                        `json:"Success,omitempty" xml:"Success,omitempty"`
-	Timestamp *int64                         `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 示例值示例值示例值
+	Message *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model   *ImportNumberResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	// example:
+	//
+	// 8EFC6D10-307B-1ECA-A8C6-7CBDF776AAD2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 1683440860035
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s ImportNumberResponseBody) String() string {
@@ -2099,11 +2685,26 @@ func (s *ImportNumberResponseBody) SetTimestamp(v int64) *ImportNumberResponseBo
 }
 
 type ImportNumberResponseBodyModel struct {
-	BatchId   *int64  `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
-	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	ImportNum *int64  `json:"ImportNum,omitempty" xml:"ImportNum,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 54
+	BatchId *int64 `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
+	// example:
+	//
+	// 94
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 26
+	ImportNum *int64 `json:"ImportNum,omitempty" xml:"ImportNum,omitempty"`
+	// example:
+	//
+	// 示例值示例值示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
 func (s ImportNumberResponseBodyModel) String() string {
@@ -2140,9 +2741,9 @@ func (s *ImportNumberResponseBodyModel) SetMessage(v string) *ImportNumberRespon
 }
 
 type ImportNumberResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ImportNumberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ImportNumberResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ImportNumberResponse) String() string {
@@ -2169,12 +2770,18 @@ func (s *ImportNumberResponse) SetBody(v *ImportNumberResponseBody) *ImportNumbe
 }
 
 type PageRequest struct {
-	Numbers              []*string `json:"Numbers,omitempty" xml:"Numbers,omitempty" type:"Repeated"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNo               *int64    `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize             *int64    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Numbers []*string `json:"Numbers,omitempty" xml:"Numbers,omitempty" type:"Repeated"`
+	OwnerId *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s PageRequest) String() string {
@@ -2216,9 +2823,15 @@ func (s *PageRequest) SetResourceOwnerId(v int64) *PageRequest {
 }
 
 type PageShrinkRequest struct {
-	NumbersShrink        *string `json:"Numbers,omitempty" xml:"Numbers,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNo               *int64  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	NumbersShrink *string `json:"Numbers,omitempty" xml:"Numbers,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 20
 	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -2263,12 +2876,27 @@ func (s *PageShrinkRequest) SetResourceOwnerId(v int64) *PageShrinkRequest {
 }
 
 type PageResponseBody struct {
-	Code      *int64                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model     *PageResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                `json:"Success,omitempty" xml:"Success,omitempty"`
-	Timestamp *int64                 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 示例值示例值示例值
+	Message *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model   *PageResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	// example:
+	//
+	// 8EFC6D10-307B-1ECA-A8C6-7CBDF776AAD2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 1683440860035
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s PageResponseBody) String() string {
@@ -2310,11 +2938,23 @@ func (s *PageResponseBody) SetTimestamp(v int64) *PageResponseBody {
 }
 
 type PageResponseBodyModel struct {
-	List       []*PageResponseBodyModelList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	PageNo     *int64                       `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize   *int64                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount *int64                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalPage  *int64                       `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	List []*PageResponseBodyModelList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 97
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 5
+	TotalPage *int64 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s PageResponseBodyModel) String() string {
@@ -2352,14 +2992,34 @@ func (s *PageResponseBodyModel) SetTotalPage(v int64) *PageResponseBodyModel {
 
 type PageResponseBodyModelList struct {
 	// 添加时间
+	//
+	// example:
+	//
+	// 2020-03-06 10:10:10
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// 过期时间
+	//
+	// example:
+	//
+	// 1
 	ExpirationTime *string `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
 	// 手机号码
+	//
+	// example:
+	//
+	// 13314206082
 	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
 	// 手机号MD5
+	//
+	// example:
+	//
+	// e10adc3949ba59abbe56e057f20f883e
 	NumberMD5 *string `json:"NumberMD5,omitempty" xml:"NumberMD5,omitempty"`
 	// 备注
+	//
+	// example:
+	//
+	// 示例值
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
@@ -2397,9 +3057,9 @@ func (s *PageResponseBodyModelList) SetRemark(v string) *PageResponseBodyModelLi
 }
 
 type PageResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PageResponseBody  `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PageResponseBody  `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PageResponse) String() string {
@@ -2427,17 +3087,43 @@ func (s *PageResponse) SetBody(v *PageResponseBody) *PageResponse {
 
 type SmsTemplateCreateRequest struct {
 	// 短信内容
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值示例值
 	Content              *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// 短信签名
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ef2i29fsljf
 	Sign *string `json:"Sign,omitempty" xml:"Sign,omitempty"`
 	// 短信类型
+	//
+	// example:
+	//
+	// 73
 	SmsType *int64 `json:"SmsType,omitempty" xml:"SmsType,omitempty"`
 	// 模板名称
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// 模板类型
+	//
+	// example:
+	//
+	// 56
 	TemplateType *int64 `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
@@ -2490,12 +3176,30 @@ func (s *SmsTemplateCreateRequest) SetTemplateType(v int64) *SmsTemplateCreateRe
 }
 
 type SmsTemplateCreateResponseBody struct {
-	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model     *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// example:
+	//
+	// 23
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// example:
+	//
+	// 8EFC6D10-307B-1ECA-A8C6-7CBDF776AAD2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	Timestamp *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 1683440860035
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s SmsTemplateCreateResponseBody) String() string {
@@ -2537,9 +3241,9 @@ func (s *SmsTemplateCreateResponseBody) SetTimestamp(v int64) *SmsTemplateCreate
 }
 
 type SmsTemplateCreateResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SmsTemplateCreateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SmsTemplateCreateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SmsTemplateCreateResponse) String() string {
@@ -2568,20 +3272,48 @@ func (s *SmsTemplateCreateResponse) SetBody(v *SmsTemplateCreateResponseBody) *S
 type SmsTemplatePageListRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// 页码
+	//
+	// example:
+	//
+	// 24
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// 每页条数
+	//
+	// example:
+	//
+	// 97
 	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// 短信签名
+	//
+	// example:
+	//
+	// 114ah23m
 	Sign *string `json:"Sign,omitempty" xml:"Sign,omitempty"`
 	// 短信类型
+	//
+	// example:
+	//
+	// 42
 	SmsType *int64 `json:"SmsType,omitempty" xml:"SmsType,omitempty"`
 	// 模板状态
+	//
+	// example:
+	//
+	// 92
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 模板ID
+	//
+	// example:
+	//
+	// 83
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// 模板类型
+	//
+	// example:
+	//
+	// 19
 	TemplateType *int64 `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
@@ -2644,12 +3376,27 @@ func (s *SmsTemplatePageListRequest) SetTemplateType(v int64) *SmsTemplatePageLi
 }
 
 type SmsTemplatePageListResponseBody struct {
-	Code      *int64                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model     *SmsTemplatePageListResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
-	Timestamp *int64                                `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 示例值
+	Message *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model   *SmsTemplatePageListResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	// example:
+	//
+	// 8EFC6D10-307B-1ECA-A8C6-7CBDF776AAD2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 1683440860035
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s SmsTemplatePageListResponseBody) String() string {
@@ -2691,11 +3438,23 @@ func (s *SmsTemplatePageListResponseBody) SetTimestamp(v int64) *SmsTemplatePage
 }
 
 type SmsTemplatePageListResponseBodyModel struct {
-	List       []*SmsTemplatePageListResponseBodyModelList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	PageNo     *int64                                      `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize   *int64                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount *int64                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalPage  *int64                                      `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	List []*SmsTemplatePageListResponseBodyModelList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 53
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 42
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 2
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 31
+	TotalPage *int64 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s SmsTemplatePageListResponseBodyModel) String() string {
@@ -2733,24 +3492,64 @@ func (s *SmsTemplatePageListResponseBodyModel) SetTotalPage(v int64) *SmsTemplat
 
 type SmsTemplatePageListResponseBodyModelList struct {
 	// 短信内容
+	//
+	// example:
+	//
+	// 示例值示例值示例值
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// 创建时间
+	//
+	// example:
+	//
+	// 2021-09-26 11:34:59
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// 模板所需参数
+	//
+	// example:
+	//
+	// 示例值示例值
 	Properties *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
 	// 智能短链ID
+	//
+	// example:
+	//
+	// 46
 	ShortUrlTaskId *int64 `json:"ShortUrlTaskId,omitempty" xml:"ShortUrlTaskId,omitempty"`
 	// 短信签名
+	//
+	// example:
+	//
+	// a234n
 	Sign *string `json:"Sign,omitempty" xml:"Sign,omitempty"`
 	// 短信类型
+	//
+	// example:
+	//
+	// 示例值示例值
 	SmsType *string `json:"SmsType,omitempty" xml:"SmsType,omitempty"`
 	// 模板状态
+	//
+	// example:
+	//
+	// 18
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 模板ID
+	//
+	// example:
+	//
+	// 67
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// 模板名称
+	//
+	// example:
+	//
+	// 示例值示例值示例值
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// 模板类型
+	//
+	// example:
+	//
+	// 56
 	TemplateType *int64 `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
@@ -2813,9 +3612,9 @@ func (s *SmsTemplatePageListResponseBodyModelList) SetTemplateType(v int64) *Sms
 }
 
 type SmsTemplatePageListResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SmsTemplatePageListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SmsTemplatePageListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SmsTemplatePageListResponse) String() string {
@@ -2843,15 +3642,33 @@ func (s *SmsTemplatePageListResponse) SetBody(v *SmsTemplatePageListResponseBody
 
 type TaskCallChatsRequest struct {
 	// 坐席ID
+	//
+	// example:
+	//
+	// 72
 	AgentId *int64 `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
 	// 坐席标签
+	//
+	// example:
+	//
+	// AA
 	AgentTag *string `json:"AgentTag,omitempty" xml:"AgentTag,omitempty"`
 	// 外呼ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 9b2eb6b8-7a27-4357-b5ec-104450086e24
 	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// 任务ID
+	//
+	// example:
+	//
+	// 26
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -2899,12 +3716,27 @@ func (s *TaskCallChatsRequest) SetTaskId(v int64) *TaskCallChatsRequest {
 }
 
 type TaskCallChatsResponseBody struct {
-	Code      *int64                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model     []*TaskCallChatsResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
-	Timestamp *int64                            `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Message *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model   []*TaskCallChatsResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 8EFC6D10-307B-1ECA-A8C6-7CBDF776AAD2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 1683440860035
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s TaskCallChatsResponseBody) String() string {
@@ -2947,10 +3779,22 @@ func (s *TaskCallChatsResponseBody) SetTimestamp(v int64) *TaskCallChatsResponse
 
 type TaskCallChatsResponseBodyModel struct {
 	// 说话内容
+	//
+	// example:
+	//
+	// 示例值示例值
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// 说话时间
+	//
+	// example:
+	//
+	// 2022-01-13 14:56:46.604
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// 说话号码
+	//
+	// example:
+	//
+	// 138*****265
 	FromNumber *string `json:"FromNumber,omitempty" xml:"FromNumber,omitempty"`
 }
 
@@ -2978,9 +3822,9 @@ func (s *TaskCallChatsResponseBodyModel) SetFromNumber(v string) *TaskCallChatsR
 }
 
 type TaskCallChatsResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TaskCallChatsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TaskCallChatsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TaskCallChatsResponse) String() string {
@@ -3010,7 +3854,12 @@ type TaskCallInfoRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TaskId               *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s TaskCallInfoRequest) String() string {
@@ -3042,12 +3891,27 @@ func (s *TaskCallInfoRequest) SetTaskId(v int64) *TaskCallInfoRequest {
 }
 
 type TaskCallInfoResponseBody struct {
-	Code      *int64                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model     *TaskCallInfoResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
-	Timestamp *int64                         `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// example:
+	//
+	// 15
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Message *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model   *TaskCallInfoResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	// example:
+	//
+	// 示例值示例值示例值
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 62
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s TaskCallInfoResponseBody) String() string {
@@ -3089,8 +3953,17 @@ func (s *TaskCallInfoResponseBody) SetTimestamp(v int64) *TaskCallInfoResponseBo
 }
 
 type TaskCallInfoResponseBodyModel struct {
+	// example:
+	//
+	// 75
 	FinishTotal *int64 `json:"FinishTotal,omitempty" xml:"FinishTotal,omitempty"`
-	Total       *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 59
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 3
 	UnCallTotal *int64 `json:"UnCallTotal,omitempty" xml:"UnCallTotal,omitempty"`
 }
 
@@ -3118,9 +3991,9 @@ func (s *TaskCallInfoResponseBodyModel) SetUnCallTotal(v int64) *TaskCallInfoRes
 }
 
 type TaskCallInfoResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TaskCallInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TaskCallInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TaskCallInfoResponse) String() string {
@@ -3148,10 +4021,26 @@ func (s *TaskCallInfoResponse) SetBody(v *TaskCallInfoResponseBody) *TaskCallInf
 
 type TaskCallListRequest struct {
 	// 导入号码时返回的批次号
+	//
+	// example:
+	//
+	// 1
 	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
 	// 开始外呼时间
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2022-01-25 00:00:00
 	CallDate *string `json:"CallDate,omitempty" xml:"CallDate,omitempty"`
 	// 结束外呼时间
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2022-01-25 00:00:00
 	EndCallDate *string `json:"EndCallDate,omitempty" xml:"EndCallDate,omitempty"`
 	// 意向标签
 	IntentTags []*string `json:"IntentTags,omitempty" xml:"IntentTags,omitempty" type:"Repeated"`
@@ -3159,12 +4048,28 @@ type TaskCallListRequest struct {
 	Numbers []*string `json:"Numbers,omitempty" xml:"Numbers,omitempty" type:"Repeated"`
 	OwnerId *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// 页数
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 39
 	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
 	// 每页外呼记录数,正整数，默认10000
+	//
+	// example:
+	//
+	// 97
 	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// 任务ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 93
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -3233,10 +4138,26 @@ func (s *TaskCallListRequest) SetTaskId(v int64) *TaskCallListRequest {
 
 type TaskCallListShrinkRequest struct {
 	// 导入号码时返回的批次号
+	//
+	// example:
+	//
+	// 1
 	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
 	// 开始外呼时间
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2022-01-25 00:00:00
 	CallDate *string `json:"CallDate,omitempty" xml:"CallDate,omitempty"`
 	// 结束外呼时间
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2022-01-25 00:00:00
 	EndCallDate *string `json:"EndCallDate,omitempty" xml:"EndCallDate,omitempty"`
 	// 意向标签
 	IntentTagsShrink *string `json:"IntentTags,omitempty" xml:"IntentTags,omitempty"`
@@ -3244,12 +4165,28 @@ type TaskCallListShrinkRequest struct {
 	NumbersShrink *string `json:"Numbers,omitempty" xml:"Numbers,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// 页数
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 39
 	Page *int64 `json:"Page,omitempty" xml:"Page,omitempty"`
 	// 每页外呼记录数,正整数，默认10000
+	//
+	// example:
+	//
+	// 97
 	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// 任务ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 93
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -3317,12 +4254,27 @@ func (s *TaskCallListShrinkRequest) SetTaskId(v int64) *TaskCallListShrinkReques
 }
 
 type TaskCallListResponseBody struct {
-	Code      *int64                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model     *TaskCallListResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                        `json:"Success,omitempty" xml:"Success,omitempty"`
-	Timestamp *int64                         `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Message *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model   *TaskCallListResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	// example:
+	//
+	// 8EFC6D10-307B-1ECA-A8C6-7CBDF776AAD2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 1683440860035
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s TaskCallListResponseBody) String() string {
@@ -3364,11 +4316,23 @@ func (s *TaskCallListResponseBody) SetTimestamp(v int64) *TaskCallListResponseBo
 }
 
 type TaskCallListResponseBodyModel struct {
-	List       []*TaskCallListResponseBodyModelList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	PageNo     *int64                               `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize   *int64                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount *int64                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalPage  *int64                               `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	List []*TaskCallListResponseBodyModelList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 62
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 95
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 80
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 39
+	TotalPage *int64 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s TaskCallListResponseBodyModel) String() string {
@@ -3406,86 +4370,250 @@ func (s *TaskCallListResponseBodyModel) SetTotalPage(v int64) *TaskCallListRespo
 
 type TaskCallListResponseBodyModelList struct {
 	// 加微
+	//
+	// example:
+	//
+	// 0
 	AddWx *int64 `json:"AddWx,omitempty" xml:"AddWx,omitempty"`
 	// 加微进度
+	//
+	// example:
+	//
+	// 示例值示例值
 	AddWxStatus *string `json:"AddWxStatus,omitempty" xml:"AddWxStatus,omitempty"`
 	// 坐席分机
+	//
+	// example:
+	//
+	// 112
 	AgentExtension *string `json:"AgentExtension,omitempty" xml:"AgentExtension,omitempty"`
 	// 坐席ID
+	//
+	// example:
+	//
+	// 87
 	AgentId *int64 `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
 	// 人工通话时长
+	//
+	// example:
+	//
+	// 98
 	AgentSpeakingDuration *int64 `json:"AgentSpeakingDuration,omitempty" xml:"AgentSpeakingDuration,omitempty"`
 	// 人工通话时长
+	//
+	// example:
+	//
+	// 示例值示例值
 	AgentSpeakingTime *string `json:"AgentSpeakingTime,omitempty" xml:"AgentSpeakingTime,omitempty"`
 	// 坐席标签
+	//
+	// example:
+	//
+	// A
 	AgentTag *string `json:"AgentTag,omitempty" xml:"AgentTag,omitempty"`
 	// 是否接通重呼
+	//
+	// example:
+	//
+	// 24
 	AnswerRecall *int64 `json:"AnswerRecall,omitempty" xml:"AnswerRecall,omitempty"`
 	// 接通时间
+	//
+	// example:
+	//
+	// 2022-01-26 18:58:25
 	AnswerTime *string `json:"AnswerTime,omitempty" xml:"AnswerTime,omitempty"`
 	// 批次ID
+	//
+	// example:
+	//
+	// 1
 	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
 	// 开始通话时间
+	//
+	// example:
+	//
+	// 2022-01-26 18:58:25
 	CallBeginTime *string `json:"CallBeginTime,omitempty" xml:"CallBeginTime,omitempty"`
 	// 外呼ID
+	//
+	// example:
+	//
+	// 9197ed9e-ceda-42a5-b683-823b23ef208e
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
 	// 呼叫次数
+	//
+	// example:
+	//
+	// 1
 	CallTimes *string `json:"CallTimes,omitempty" xml:"CallTimes,omitempty"`
 	// 外呼类型
+	//
+	// example:
+	//
+	// 1001
 	CallType *int64 `json:"CallType,omitempty" xml:"CallType,omitempty"`
 	// 对话录音
+	//
+	// example:
+	//
+	// 示例值示例值
 	ChatRecord *string `json:"ChatRecord,omitempty" xml:"ChatRecord,omitempty"`
 	// 外呼网关
+	//
+	// example:
+	//
+	// 123
 	Gateway *string `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
 	// 挂断时间
+	//
+	// example:
+	//
+	// 2022-01-26 18:58:25
 	HangupTime *string `json:"HangupTime,omitempty" xml:"HangupTime,omitempty"`
 	// 挂机方式
+	//
+	// example:
+	//
+	// 1
 	HangupType *int64 `json:"HangupType,omitempty" xml:"HangupType,omitempty"`
 	// 导入时间
+	//
+	// example:
+	//
+	// 2022-01-26 18:58:25
 	ImportTime *string `json:"ImportTime,omitempty" xml:"ImportTime,omitempty"`
 	// 个性标签
+	//
+	// example:
+	//
+	// A
 	IndividualTag *string `json:"IndividualTag,omitempty" xml:"IndividualTag,omitempty"`
 	// 意向说明
+	//
+	// example:
+	//
+	// 示例值示例值示例值
 	IntentDescription *string `json:"IntentDescription,omitempty" xml:"IntentDescription,omitempty"`
 	// 意向标签
+	//
+	// example:
+	//
+	// “C”
 	IntentTag *string `json:"IntentTag,omitempty" xml:"IntentTag,omitempty"`
 	// 拦截原因
+	//
+	// example:
+	//
+	// 示例值
 	InterceptReason *string `json:"InterceptReason,omitempty" xml:"InterceptReason,omitempty"`
 	// 回复关键词
+	//
+	// example:
+	//
+	// 示例值示例值
 	Keywords *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
 	// 外呼号码
+	//
+	// example:
+	//
+	// 138*****123
 	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
 	// 外呼号码MD5
+	//
+	// example:
+	//
+	// 75916b635568954583783d
 	NumberMD5 *string `json:"NumberMD5,omitempty" xml:"NumberMD5,omitempty"`
 	// 参数
+	//
+	// example:
+	//
+	// 示例值示例值
 	Properties *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
 	// 备注
+	//
+	// example:
+	//
+	// 示例值示例值
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// 振铃时长
+	//
+	// example:
+	//
+	// 66
 	RingTime *int64 `json:"RingTime,omitempty" xml:"RingTime,omitempty"`
 	// 挂机短信
+	//
+	// example:
+	//
+	// 示例值
 	Sms *string `json:"Sms,omitempty" xml:"Sms,omitempty"`
 	// AI通话时长
+	//
+	// example:
+	//
+	// 45
 	SpeakingDuration *int64 `json:"SpeakingDuration,omitempty" xml:"SpeakingDuration,omitempty"`
 	// AI通话时长
+	//
+	// example:
+	//
+	// 示例值示例值示例值
 	SpeakingTime *string `json:"SpeakingTime,omitempty" xml:"SpeakingTime,omitempty"`
 	// 对话轮次
+	//
+	// example:
+	//
+	// 0
 	SpeakingTurns *string `json:"SpeakingTurns,omitempty" xml:"SpeakingTurns,omitempty"`
 	// 外呼状态
+	//
+	// example:
+	//
+	// 示例值示例值示例值
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 外呼状态编码
+	//
+	// example:
+	//
+	// 1
 	StatusCode *int64 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 	// 外呼状态描述
+	//
+	// example:
+	//
+	// 示例值示例值
 	StatusDescription *string `json:"StatusDescription,omitempty" xml:"StatusDescription,omitempty"`
 	// 用户自定义标签
+	//
+	// example:
+	//
+	// 示例值
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	// 外呼任务ID
+	//
+	// example:
+	//
+	// 70
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// AI话术ID
+	//
+	// example:
+	//
+	// 66
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// 转人工状态
+	//
+	// example:
+	//
+	// 示例值
 	TransferStatus *string `json:"TransferStatus,omitempty" xml:"TransferStatus,omitempty"`
 	// 转人工状态编码
+	//
+	// example:
+	//
+	// 1
 	TransferStatusCode *int64 `json:"TransferStatusCode,omitempty" xml:"TransferStatusCode,omitempty"`
 }
 
@@ -3703,9 +4831,9 @@ func (s *TaskCallListResponseBodyModelList) SetTransferStatusCode(v int64) *Task
 }
 
 type TaskCallListResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TaskCallListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TaskCallListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TaskCallListResponse) String() string {
@@ -3738,6 +4866,12 @@ type TaskCancelCallRequest struct {
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	Tags                 []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// 任务ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -3786,6 +4920,12 @@ type TaskCancelCallShrinkRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	TagsShrink           *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// 任务ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -3828,12 +4968,27 @@ func (s *TaskCancelCallShrinkRequest) SetTaskId(v int64) *TaskCancelCallShrinkRe
 }
 
 type TaskCancelCallResponseBody struct {
-	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model     *TaskCancelCallResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                          `json:"Success,omitempty" xml:"Success,omitempty"`
-	Timestamp *int64                           `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// example:
+	//
+	// 0
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Message *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model   *TaskCancelCallResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	// example:
+	//
+	// 8EFC6D10-307B-1ECA-A8C6-7CBDF776AAD2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 1683440860035
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s TaskCancelCallResponseBody) String() string {
@@ -3893,9 +5048,9 @@ func (s *TaskCancelCallResponseBodyModel) SetUnHandleNumbers(v []*string) *TaskC
 }
 
 type TaskCancelCallResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TaskCancelCallResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TaskCancelCallResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TaskCancelCallResponse) String() string {
@@ -3923,13 +5078,31 @@ func (s *TaskCancelCallResponse) SetBody(v *TaskCancelCallResponseBody) *TaskCan
 
 type TaskListRequest struct {
 	// 创建时间
+	//
+	// example:
+	//
+	// 2023-04-05 12:11:11
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// 最后外呼时间
+	//
+	// example:
+	//
+	// 2023-04-05 12:11:11
 	LastCallTime         *string `json:"LastCallTime,omitempty" xml:"LastCallTime,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 任务状态。1 未启用，2 启用中，4 已停止
+	//
+	// example:
+	//
+	// 2
+	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 任务ID
+	//
+	// example:
+	//
+	// 2
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -3966,18 +5139,39 @@ func (s *TaskListRequest) SetResourceOwnerId(v int64) *TaskListRequest {
 	return s
 }
 
+func (s *TaskListRequest) SetStatus(v int64) *TaskListRequest {
+	s.Status = &v
+	return s
+}
+
 func (s *TaskListRequest) SetTaskId(v int64) *TaskListRequest {
 	s.TaskId = &v
 	return s
 }
 
 type TaskListResponseBody struct {
-	Code      *int64                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model     []*TaskListResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
-	Timestamp *int64                       `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// 30
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 示例值示例值示例值
+	Message *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model   []*TaskListResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 8EFC6D10-307B-1ECA-A8C6-7CBDF776AAD2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 80
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s TaskListResponseBody) String() string {
@@ -3986,6 +5180,11 @@ func (s TaskListResponseBody) String() string {
 
 func (s TaskListResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *TaskListResponseBody) SetAccessDeniedDetail(v string) *TaskListResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *TaskListResponseBody) SetCode(v int64) *TaskListResponseBody {
@@ -4020,44 +5219,122 @@ func (s *TaskListResponseBody) SetTimestamp(v int64) *TaskListResponseBody {
 
 type TaskListResponseBodyModel struct {
 	// 外呼时间段
+	//
+	// example:
+	//
+	// “8:00~20:30”
 	AllowCallTime *string `json:"AllowCallTime,omitempty" xml:"AllowCallTime,omitempty"`
 	// 外呼时间段格式化
+	//
+	// example:
+	//
+	// “8:00 ~ 20:00”
 	AllowCallTimeFormat *string `json:"AllowCallTimeFormat,omitempty" xml:"AllowCallTimeFormat,omitempty"`
 	// 外呼时间
+	//
+	// example:
+	//
+	// “1,2,3”
 	AllowDayOfWeek *string `json:"AllowDayOfWeek,omitempty" xml:"AllowDayOfWeek,omitempty"`
 	// 外呼类型
+	//
+	// example:
+	//
+	// 95
 	CallType *int64 `json:"CallType,omitempty" xml:"CallType,omitempty"`
 	// 创建时间
+	//
+	// example:
+	//
+	// 2023-04-05 12:11:11
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// 最近导入时间
+	//
+	// example:
+	//
+	// 2023-04-05 12:11:11
 	ImportTime *string `json:"ImportTime,omitempty" xml:"ImportTime,omitempty"`
 	// 意向标签列表
 	IntentTags []*TaskListResponseBodyModelIntentTags `json:"IntentTags,omitempty" xml:"IntentTags,omitempty" type:"Repeated"`
 	// 接通重呼次数
+	//
+	// example:
+	//
+	// 31
 	InvalidReCall *int64 `json:"InvalidReCall,omitempty" xml:"InvalidReCall,omitempty"`
 	// 最后外呼时间
+	//
+	// example:
+	//
+	// 2023-04-05 12:11:11
 	LastCallTime *string `json:"LastCallTime,omitempty" xml:"LastCallTime,omitempty"`
 	// 最大并发数
+	//
+	// example:
+	//
+	// 95
 	MaxConcurrency *int64 `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
 	// 个性标签列表
 	PersonalityTags []*string `json:"PersonalityTags,omitempty" xml:"PersonalityTags,omitempty" type:"Repeated"`
 	// 优先任务
+	//
+	// example:
+	//
+	// 66
 	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// 任务所需参数
+	//
+	// example:
+	//
+	// 示例值示例值
 	Properties *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
 	// 自动重呼
+	//
+	// example:
+	//
+	// 20
 	RecallType *int64 `json:"RecallType,omitempty" xml:"RecallType,omitempty"`
 	// 发送短信
+	//
+	// example:
+	//
+	// 39
 	SendSms *int64 `json:"SendSms,omitempty" xml:"SendSms,omitempty"`
 	// 短信模板
+	//
+	// example:
+	//
+	// 示例值示例值
 	SmsName *string `json:"SmsName,omitempty" xml:"SmsName,omitempty"`
 	// 任务状态
+	//
+	// example:
+	//
+	// 79
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 任务ID
+	//
+	// example:
+	//
+	// 68
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// 任务名称
+	//
+	// example:
+	//
+	// 示例值示例值
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// 话术模板Id
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// 话术模板名称
+	//
+	// example:
+	//
+	// 示例值示例值
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
@@ -4164,6 +5441,11 @@ func (s *TaskListResponseBodyModel) SetTaskName(v string) *TaskListResponseBodyM
 	return s
 }
 
+func (s *TaskListResponseBodyModel) SetTemplateId(v string) *TaskListResponseBodyModel {
+	s.TemplateId = &v
+	return s
+}
+
 func (s *TaskListResponseBodyModel) SetTemplateName(v string) *TaskListResponseBodyModel {
 	s.TemplateName = &v
 	return s
@@ -4171,8 +5453,16 @@ func (s *TaskListResponseBodyModel) SetTemplateName(v string) *TaskListResponseB
 
 type TaskListResponseBodyModelIntentTags struct {
 	// 意向标签描述
+	//
+	// example:
+	//
+	// 示例值示例值
 	IntentDescription *string `json:"IntentDescription,omitempty" xml:"IntentDescription,omitempty"`
 	// 意向标签ID
+	//
+	// example:
+	//
+	// 示例值示例值
 	IntentTag *string `json:"IntentTag,omitempty" xml:"IntentTag,omitempty"`
 }
 
@@ -4195,9 +5485,9 @@ func (s *TaskListResponseBodyModelIntentTags) SetIntentTag(v string) *TaskListRe
 }
 
 type TaskListResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TaskListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TaskListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TaskListResponse) String() string {
@@ -4225,8 +5515,16 @@ func (s *TaskListResponse) SetBody(v *TaskListResponseBody) *TaskListResponse {
 
 type TaskRecoverCallRequest struct {
 	// 查询开始导入时间
+	//
+	// example:
+	//
+	// "2023-01-09 18:58:19"
 	BeginImportTime *string `json:"BeginImportTime,omitempty" xml:"BeginImportTime,omitempty"`
 	// 查询结束导入时间
+	//
+	// example:
+	//
+	// "2023-01-09 18:58:19"
 	EndImportTime *string `json:"EndImportTime,omitempty" xml:"EndImportTime,omitempty"`
 	// 号码列表
 	Numbers              []*string `json:"Numbers,omitempty" xml:"Numbers,omitempty" type:"Repeated"`
@@ -4236,6 +5534,12 @@ type TaskRecoverCallRequest struct {
 	// 用户自定义标签列表
 	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// 任务ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 93
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -4289,8 +5593,16 @@ func (s *TaskRecoverCallRequest) SetTaskId(v int64) *TaskRecoverCallRequest {
 
 type TaskRecoverCallShrinkRequest struct {
 	// 查询开始导入时间
+	//
+	// example:
+	//
+	// "2023-01-09 18:58:19"
 	BeginImportTime *string `json:"BeginImportTime,omitempty" xml:"BeginImportTime,omitempty"`
 	// 查询结束导入时间
+	//
+	// example:
+	//
+	// "2023-01-09 18:58:19"
 	EndImportTime *string `json:"EndImportTime,omitempty" xml:"EndImportTime,omitempty"`
 	// 号码列表
 	NumbersShrink        *string `json:"Numbers,omitempty" xml:"Numbers,omitempty"`
@@ -4300,6 +5612,12 @@ type TaskRecoverCallShrinkRequest struct {
 	// 用户自定义标签列表
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// 任务ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 93
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -4352,12 +5670,27 @@ func (s *TaskRecoverCallShrinkRequest) SetTaskId(v int64) *TaskRecoverCallShrink
 }
 
 type TaskRecoverCallResponseBody struct {
-	Code      *int64                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model     map[string]interface{} `json:"Model,omitempty" xml:"Model,omitempty"`
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                `json:"Success,omitempty" xml:"Success,omitempty"`
-	Timestamp *int64                 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 示例值
+	Message *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model   map[string]interface{} `json:"Model,omitempty" xml:"Model,omitempty"`
+	// example:
+	//
+	// 8EFC6D10-307B-1ECA-A8C6-7CBDF776AAD2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 1683440860035
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s TaskRecoverCallResponseBody) String() string {
@@ -4399,9 +5732,9 @@ func (s *TaskRecoverCallResponseBody) SetTimestamp(v int64) *TaskRecoverCallResp
 }
 
 type TaskRecoverCallResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TaskRecoverCallResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TaskRecoverCallResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TaskRecoverCallResponse) String() string {
@@ -4432,6 +5765,10 @@ type TemplateListRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// 必须空参
+	//
+	// example:
+	//
+	// 9
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -4464,12 +5801,27 @@ func (s *TemplateListRequest) SetTemplateId(v int64) *TemplateListRequest {
 }
 
 type TemplateListResponseBody struct {
-	Code      *int64                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model     []*TemplateListResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
-	Timestamp *int64                           `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Message *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model   []*TemplateListResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 8EFC6D10-307B-1ECA-A8C6-7CBDF776AAD2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 1683440860035
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s TemplateListResponseBody) String() string {
@@ -4516,12 +5868,28 @@ type TemplateListResponseBodyModel struct {
 	// 个性标签
 	PersonalityTags []*string `json:"PersonalityTags,omitempty" xml:"PersonalityTags,omitempty" type:"Repeated"`
 	// 话术所需参数
+	//
+	// example:
+	//
+	// 示例值示例值
 	Properties *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
 	// AI话术ID
+	//
+	// example:
+	//
+	// 59
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// 话术模板名称
+	//
+	// example:
+	//
+	// 示例值示例值
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// 模板类型
+	//
+	// example:
+	//
+	// 55
 	TemplateType *int64 `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
@@ -4564,9 +5932,9 @@ func (s *TemplateListResponseBodyModel) SetTemplateType(v int64) *TemplateListRe
 }
 
 type TemplateListResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TemplateListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TemplateListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TemplateListResponse) String() string {
@@ -4594,10 +5962,22 @@ func (s *TemplateListResponse) SetBody(v *TemplateListResponseBody) *TemplateLis
 
 type UpdateAgentStatusRequest struct {
 	// 坐席ID
+	//
+	// example:
+	//
+	// 58
 	AgentId *int64 `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
 	// 坐席状态 1:在线；2:忙碌；3:小休；4:离线
+	//
+	// example:
+	//
+	// 1
 	AgentStatus *int64 `json:"AgentStatus,omitempty" xml:"AgentStatus,omitempty"`
 	// 坐席标签
+	//
+	// example:
+	//
+	// abac
 	AgentTag             *string `json:"AgentTag,omitempty" xml:"AgentTag,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -4643,12 +6023,27 @@ func (s *UpdateAgentStatusRequest) SetResourceOwnerId(v int64) *UpdateAgentStatu
 }
 
 type UpdateAgentStatusResponseBody struct {
-	Code      *int64                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model     map[string]interface{} `json:"Model,omitempty" xml:"Model,omitempty"`
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                `json:"Success,omitempty" xml:"Success,omitempty"`
-	Timestamp *int64                 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 示例值示例值示例值
+	Message *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model   map[string]interface{} `json:"Model,omitempty" xml:"Model,omitempty"`
+	// example:
+	//
+	// 8EFC6D10-307B-1ECA-A8C6-7CBDF776AAD2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 1683440860035
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s UpdateAgentStatusResponseBody) String() string {
@@ -4690,9 +6085,9 @@ func (s *UpdateAgentStatusResponseBody) SetTimestamp(v int64) *UpdateAgentStatus
 }
 
 type UpdateAgentStatusResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateAgentStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAgentStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateAgentStatusResponse) String() string {
@@ -4720,11 +6115,19 @@ func (s *UpdateAgentStatusResponse) SetBody(v *UpdateAgentStatusResponseBody) *U
 
 type UpdateTaskCustomerRequest struct {
 	// 外呼客户
+	//
+	// This parameter is required.
 	Customers            []*UpdateTaskCustomerRequestCustomers `json:"Customers,omitempty" xml:"Customers,omitempty" type:"Repeated"`
 	OwnerId              *int64                                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string                               `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64                                `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// 任务ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 59
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -4763,12 +6166,28 @@ func (s *UpdateTaskCustomerRequest) SetTaskId(v int64) *UpdateTaskCustomerReques
 
 type UpdateTaskCustomerRequestCustomers struct {
 	// 是否取消外呼 0否，1是
+	//
+	// example:
+	//
+	// 0
 	Cancel *int64 `json:"Cancel,omitempty" xml:"Cancel,omitempty"`
 	// 电话号码
+	//
+	// example:
+	//
+	// 13661109390
 	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
 	// 需根据具体任务参数要求传输
+	//
+	// example:
+	//
+	// {"test":"234"}
 	Properties map[string]interface{} `json:"Properties,omitempty" xml:"Properties,omitempty"`
 	// 用户自定义标签
+	//
+	// example:
+	//
+	// tag1
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
@@ -4802,11 +6221,19 @@ func (s *UpdateTaskCustomerRequestCustomers) SetTag(v string) *UpdateTaskCustome
 
 type UpdateTaskCustomerShrinkRequest struct {
 	// 外呼客户
+	//
+	// This parameter is required.
 	CustomersShrink      *string `json:"Customers,omitempty" xml:"Customers,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// 任务ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 59
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -4844,12 +6271,27 @@ func (s *UpdateTaskCustomerShrinkRequest) SetTaskId(v int64) *UpdateTaskCustomer
 }
 
 type UpdateTaskCustomerResponseBody struct {
-	Code      *int64                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	Model     *UpdateTaskCustomerResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                              `json:"Success,omitempty" xml:"Success,omitempty"`
-	Timestamp *int64                               `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Message *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model   *UpdateTaskCustomerResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	// example:
+	//
+	// 8EFC6D10-307B-1ECA-A8C6-7CBDF776AAD2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 1683440860035
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s UpdateTaskCustomerResponseBody) String() string {
@@ -4909,9 +6351,9 @@ func (s *UpdateTaskCustomerResponseBodyModel) SetUnHandleNumbers(v []*string) *U
 }
 
 type UpdateTaskCustomerResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateTaskCustomerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateTaskCustomerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateTaskCustomerResponse) String() string {
@@ -4984,6 +6426,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加黑名单接口
+//
+// @param tmpReq - AddBlacklistRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddBlacklistResponse
 func (client *Client) AddBlacklistWithOptions(tmpReq *AddBlacklistRequest, runtime *util.RuntimeOptions) (_result *AddBlacklistResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5043,6 +6494,13 @@ func (client *Client) AddBlacklistWithOptions(tmpReq *AddBlacklistRequest, runti
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加黑名单接口
+//
+// @param request - AddBlacklistRequest
+//
+// @return AddBlacklistResponse
 func (client *Client) AddBlacklist(request *AddBlacklistRequest) (_result *AddBlacklistResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddBlacklistResponse{}
@@ -5054,6 +6512,15 @@ func (client *Client) AddBlacklist(request *AddBlacklistRequest) (_result *AddBl
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建任务接口
+//
+// @param tmpReq - AddTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddTaskResponse
 func (client *Client) AddTaskWithOptions(tmpReq *AddTaskRequest, runtime *util.RuntimeOptions) (_result *AddTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5181,6 +6648,13 @@ func (client *Client) AddTaskWithOptions(tmpReq *AddTaskRequest, runtime *util.R
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建任务接口
+//
+// @param request - AddTaskRequest
+//
+// @return AddTaskResponse
 func (client *Client) AddTask(request *AddTaskRequest) (_result *AddTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddTaskResponse{}
@@ -5192,6 +6666,15 @@ func (client *Client) AddTask(request *AddTaskRequest) (_result *AddTaskResponse
 	return _result, _err
 }
 
+// Summary:
+//
+// 坐席取消号码外呼
+//
+// @param tmpReq - AgentCancelCallRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AgentCancelCallResponse
 func (client *Client) AgentCancelCallWithOptions(tmpReq *AgentCancelCallRequest, runtime *util.RuntimeOptions) (_result *AgentCancelCallResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5259,6 +6742,13 @@ func (client *Client) AgentCancelCallWithOptions(tmpReq *AgentCancelCallRequest,
 	return _result, _err
 }
 
+// Summary:
+//
+// 坐席取消号码外呼
+//
+// @param request - AgentCancelCallRequest
+//
+// @return AgentCancelCallResponse
 func (client *Client) AgentCancelCall(request *AgentCancelCallRequest) (_result *AgentCancelCallResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AgentCancelCallResponse{}
@@ -5270,6 +6760,15 @@ func (client *Client) AgentCancelCall(request *AgentCancelCallRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 坐席任务恢复号码
+//
+// @param tmpReq - AgentRecoverCallRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AgentRecoverCallResponse
 func (client *Client) AgentRecoverCallWithOptions(tmpReq *AgentRecoverCallRequest, runtime *util.RuntimeOptions) (_result *AgentRecoverCallResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5345,6 +6844,13 @@ func (client *Client) AgentRecoverCallWithOptions(tmpReq *AgentRecoverCallReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 坐席任务恢复号码
+//
+// @param request - AgentRecoverCallRequest
+//
+// @return AgentRecoverCallResponse
 func (client *Client) AgentRecoverCall(request *AgentRecoverCallRequest) (_result *AgentRecoverCallResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AgentRecoverCallResponse{}
@@ -5356,6 +6862,15 @@ func (client *Client) AgentRecoverCall(request *AgentRecoverCallRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// AI批量任务查询号码状态接口
+//
+// @param tmpReq - DetailsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetailsResponse
 func (client *Client) DetailsWithOptions(tmpReq *DetailsRequest, runtime *util.RuntimeOptions) (_result *DetailsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5435,6 +6950,13 @@ func (client *Client) DetailsWithOptions(tmpReq *DetailsRequest, runtime *util.R
 	return _result, _err
 }
 
+// Summary:
+//
+// AI批量任务查询号码状态接口
+//
+// @param request - DetailsRequest
+//
+// @return DetailsResponse
 func (client *Client) Details(request *DetailsRequest) (_result *DetailsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DetailsResponse{}
@@ -5446,6 +6968,15 @@ func (client *Client) Details(request *DetailsRequest) (_result *DetailsResponse
 	return _result, _err
 }
 
+// Summary:
+//
+// 编辑任务接口
+//
+// @param tmpReq - EditTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EditTaskResponse
 func (client *Client) EditTaskWithOptions(tmpReq *EditTaskRequest, runtime *util.RuntimeOptions) (_result *EditTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5573,6 +7104,13 @@ func (client *Client) EditTaskWithOptions(tmpReq *EditTaskRequest, runtime *util
 	return _result, _err
 }
 
+// Summary:
+//
+// 编辑任务接口
+//
+// @param request - EditTaskRequest
+//
+// @return EditTaskResponse
 func (client *Client) EditTask(request *EditTaskRequest) (_result *EditTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EditTaskResponse{}
@@ -5584,6 +7122,15 @@ func (client *Client) EditTask(request *EditTaskRequest) (_result *EditTaskRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 导入号码
+//
+// @param tmpReq - ImportNumberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImportNumberResponse
 func (client *Client) ImportNumberWithOptions(tmpReq *ImportNumberRequest, runtime *util.RuntimeOptions) (_result *ImportNumberResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5647,6 +7194,13 @@ func (client *Client) ImportNumberWithOptions(tmpReq *ImportNumberRequest, runti
 	return _result, _err
 }
 
+// Summary:
+//
+// 导入号码
+//
+// @param request - ImportNumberRequest
+//
+// @return ImportNumberResponse
 func (client *Client) ImportNumber(request *ImportNumberRequest) (_result *ImportNumberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ImportNumberResponse{}
@@ -5658,6 +7212,15 @@ func (client *Client) ImportNumber(request *ImportNumberRequest) (_result *Impor
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询企业黑名单
+//
+// @param tmpReq - PageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PageResponse
 func (client *Client) PageWithOptions(tmpReq *PageRequest, runtime *util.RuntimeOptions) (_result *PageResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5717,6 +7280,13 @@ func (client *Client) PageWithOptions(tmpReq *PageRequest, runtime *util.Runtime
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询企业黑名单
+//
+// @param request - PageRequest
+//
+// @return PageResponse
 func (client *Client) Page(request *PageRequest) (_result *PageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PageResponse{}
@@ -5728,6 +7298,15 @@ func (client *Client) Page(request *PageRequest) (_result *PageResponse, _err er
 	return _result, _err
 }
 
+// Summary:
+//
+// 短信模板创建
+//
+// @param request - SmsTemplateCreateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SmsTemplateCreateResponse
 func (client *Client) SmsTemplateCreateWithOptions(request *SmsTemplateCreateRequest, runtime *util.RuntimeOptions) (_result *SmsTemplateCreateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5789,6 +7368,13 @@ func (client *Client) SmsTemplateCreateWithOptions(request *SmsTemplateCreateReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 短信模板创建
+//
+// @param request - SmsTemplateCreateRequest
+//
+// @return SmsTemplateCreateResponse
 func (client *Client) SmsTemplateCreate(request *SmsTemplateCreateRequest) (_result *SmsTemplateCreateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SmsTemplateCreateResponse{}
@@ -5800,6 +7386,15 @@ func (client *Client) SmsTemplateCreate(request *SmsTemplateCreateRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 短信模板列表查询
+//
+// @param request - SmsTemplatePageListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SmsTemplatePageListResponse
 func (client *Client) SmsTemplatePageListWithOptions(request *SmsTemplatePageListRequest, runtime *util.RuntimeOptions) (_result *SmsTemplatePageListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5869,6 +7464,13 @@ func (client *Client) SmsTemplatePageListWithOptions(request *SmsTemplatePageLis
 	return _result, _err
 }
 
+// Summary:
+//
+// 短信模板列表查询
+//
+// @param request - SmsTemplatePageListRequest
+//
+// @return SmsTemplatePageListResponse
 func (client *Client) SmsTemplatePageList(request *SmsTemplatePageListRequest) (_result *SmsTemplatePageListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SmsTemplatePageListResponse{}
@@ -5880,6 +7482,15 @@ func (client *Client) SmsTemplatePageList(request *SmsTemplatePageListRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询聊天记录接口
+//
+// @param request - TaskCallChatsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TaskCallChatsResponse
 func (client *Client) TaskCallChatsWithOptions(request *TaskCallChatsRequest, runtime *util.RuntimeOptions) (_result *TaskCallChatsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5937,6 +7548,13 @@ func (client *Client) TaskCallChatsWithOptions(request *TaskCallChatsRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询聊天记录接口
+//
+// @param request - TaskCallChatsRequest
+//
+// @return TaskCallChatsResponse
 func (client *Client) TaskCallChats(request *TaskCallChatsRequest) (_result *TaskCallChatsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TaskCallChatsResponse{}
@@ -5948,6 +7566,15 @@ func (client *Client) TaskCallChats(request *TaskCallChatsRequest) (_result *Tas
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务外呼情况接口
+//
+// @param request - TaskCallInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TaskCallInfoResponse
 func (client *Client) TaskCallInfoWithOptions(request *TaskCallInfoRequest, runtime *util.RuntimeOptions) (_result *TaskCallInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5993,6 +7620,13 @@ func (client *Client) TaskCallInfoWithOptions(request *TaskCallInfoRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取任务外呼情况接口
+//
+// @param request - TaskCallInfoRequest
+//
+// @return TaskCallInfoResponse
 func (client *Client) TaskCallInfo(request *TaskCallInfoRequest) (_result *TaskCallInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TaskCallInfoResponse{}
@@ -6004,6 +7638,15 @@ func (client *Client) TaskCallInfo(request *TaskCallInfoRequest) (_result *TaskC
 	return _result, _err
 }
 
+// Summary:
+//
+// AI批量任务查询外呼记录接口
+//
+// @param tmpReq - TaskCallListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TaskCallListResponse
 func (client *Client) TaskCallListWithOptions(tmpReq *TaskCallListRequest, runtime *util.RuntimeOptions) (_result *TaskCallListResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -6087,6 +7730,13 @@ func (client *Client) TaskCallListWithOptions(tmpReq *TaskCallListRequest, runti
 	return _result, _err
 }
 
+// Summary:
+//
+// AI批量任务查询外呼记录接口
+//
+// @param request - TaskCallListRequest
+//
+// @return TaskCallListResponse
 func (client *Client) TaskCallList(request *TaskCallListRequest) (_result *TaskCallListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TaskCallListResponse{}
@@ -6098,6 +7748,15 @@ func (client *Client) TaskCallList(request *TaskCallListRequest) (_result *TaskC
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量任务取消号码外呼
+//
+// @param tmpReq - TaskCancelCallRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TaskCancelCallResponse
 func (client *Client) TaskCancelCallWithOptions(tmpReq *TaskCancelCallRequest, runtime *util.RuntimeOptions) (_result *TaskCancelCallResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -6161,6 +7820,13 @@ func (client *Client) TaskCancelCallWithOptions(tmpReq *TaskCancelCallRequest, r
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量任务取消号码外呼
+//
+// @param request - TaskCancelCallRequest
+//
+// @return TaskCancelCallResponse
 func (client *Client) TaskCancelCall(request *TaskCancelCallRequest) (_result *TaskCancelCallResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TaskCancelCallResponse{}
@@ -6172,6 +7838,15 @@ func (client *Client) TaskCancelCall(request *TaskCancelCallRequest) (_result *T
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询任务列表接口
+//
+// @param request - TaskListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TaskListResponse
 func (client *Client) TaskListWithOptions(request *TaskListRequest, runtime *util.RuntimeOptions) (_result *TaskListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6196,6 +7871,10 @@ func (client *Client) TaskListWithOptions(request *TaskListRequest, runtime *uti
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
@@ -6225,6 +7904,13 @@ func (client *Client) TaskListWithOptions(request *TaskListRequest, runtime *uti
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询任务列表接口
+//
+// @param request - TaskListRequest
+//
+// @return TaskListResponse
 func (client *Client) TaskList(request *TaskListRequest) (_result *TaskListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TaskListResponse{}
@@ -6236,6 +7922,15 @@ func (client *Client) TaskList(request *TaskListRequest) (_result *TaskListRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量任务恢复号码
+//
+// @param tmpReq - TaskRecoverCallRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TaskRecoverCallResponse
 func (client *Client) TaskRecoverCallWithOptions(tmpReq *TaskRecoverCallRequest, runtime *util.RuntimeOptions) (_result *TaskRecoverCallResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -6307,6 +8002,13 @@ func (client *Client) TaskRecoverCallWithOptions(tmpReq *TaskRecoverCallRequest,
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量任务恢复号码
+//
+// @param request - TaskRecoverCallRequest
+//
+// @return TaskRecoverCallResponse
 func (client *Client) TaskRecoverCall(request *TaskRecoverCallRequest) (_result *TaskRecoverCallResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TaskRecoverCallResponse{}
@@ -6318,6 +8020,15 @@ func (client *Client) TaskRecoverCall(request *TaskRecoverCallRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 话术模板列表查询接口
+//
+// @param request - TemplateListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TemplateListResponse
 func (client *Client) TemplateListWithOptions(request *TemplateListRequest, runtime *util.RuntimeOptions) (_result *TemplateListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6363,6 +8074,13 @@ func (client *Client) TemplateListWithOptions(request *TemplateListRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 话术模板列表查询接口
+//
+// @param request - TemplateListRequest
+//
+// @return TemplateListResponse
 func (client *Client) TemplateList(request *TemplateListRequest) (_result *TemplateListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TemplateListResponse{}
@@ -6374,6 +8092,15 @@ func (client *Client) TemplateList(request *TemplateListRequest) (_result *Templ
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改坐席状态
+//
+// @param request - UpdateAgentStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAgentStatusResponse
 func (client *Client) UpdateAgentStatusWithOptions(request *UpdateAgentStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateAgentStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6427,6 +8154,13 @@ func (client *Client) UpdateAgentStatusWithOptions(request *UpdateAgentStatusReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改坐席状态
+//
+// @param request - UpdateAgentStatusRequest
+//
+// @return UpdateAgentStatusResponse
 func (client *Client) UpdateAgentStatus(request *UpdateAgentStatusRequest) (_result *UpdateAgentStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAgentStatusResponse{}
@@ -6438,6 +8172,15 @@ func (client *Client) UpdateAgentStatus(request *UpdateAgentStatusRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新当天导入的号码
+//
+// @param tmpReq - UpdateTaskCustomerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTaskCustomerResponse
 func (client *Client) UpdateTaskCustomerWithOptions(tmpReq *UpdateTaskCustomerRequest, runtime *util.RuntimeOptions) (_result *UpdateTaskCustomerResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -6493,6 +8236,13 @@ func (client *Client) UpdateTaskCustomerWithOptions(tmpReq *UpdateTaskCustomerRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新当天导入的号码
+//
+// @param request - UpdateTaskCustomerRequest
+//
+// @return UpdateTaskCustomerResponse
 func (client *Client) UpdateTaskCustomer(request *UpdateTaskCustomerRequest) (_result *UpdateTaskCustomerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateTaskCustomerResponse{}
