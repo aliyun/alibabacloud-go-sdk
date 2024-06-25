@@ -16241,7 +16241,8 @@ type DescribeNodePoolVulsResponseBodyVulRecordsVulList struct {
 	// example:
 	//
 	// asap
-	Necessity *string `json:"necessity,omitempty" xml:"necessity,omitempty"`
+	Necessity  *string `json:"necessity,omitempty" xml:"necessity,omitempty"`
+	NeedReboot *bool   `json:"need_reboot,omitempty" xml:"need_reboot,omitempty"`
 }
 
 func (s DescribeNodePoolVulsResponseBodyVulRecordsVulList) String() string {
@@ -16269,6 +16270,11 @@ func (s *DescribeNodePoolVulsResponseBodyVulRecordsVulList) SetName(v string) *D
 
 func (s *DescribeNodePoolVulsResponseBodyVulRecordsVulList) SetNecessity(v string) *DescribeNodePoolVulsResponseBodyVulRecordsVulList {
 	s.Necessity = &v
+	return s
+}
+
+func (s *DescribeNodePoolVulsResponseBodyVulRecordsVulList) SetNeedReboot(v bool) *DescribeNodePoolVulsResponseBodyVulRecordsVulList {
+	s.NeedReboot = &v
 	return s
 }
 
@@ -27191,6 +27197,8 @@ func (client *Client) CancelClusterUpgrade(ClusterId *string) (_result *CancelCl
 	return _result, _err
 }
 
+// Deprecated: OpenAPI CancelComponentUpgrade is deprecated
+//
 // Summary:
 //
 // You can call the CancelComponentUpgrade operation to cancel the update of a component.
@@ -27200,6 +27208,7 @@ func (client *Client) CancelClusterUpgrade(ClusterId *string) (_result *CancelCl
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CancelComponentUpgradeResponse
+// Deprecated
 func (client *Client) CancelComponentUpgradeWithOptions(clusterId *string, componentId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelComponentUpgradeResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -27224,11 +27233,14 @@ func (client *Client) CancelComponentUpgradeWithOptions(clusterId *string, compo
 	return _result, _err
 }
 
+// Deprecated: OpenAPI CancelComponentUpgrade is deprecated
+//
 // Summary:
 //
 // You can call the CancelComponentUpgrade operation to cancel the update of a component.
 //
 // @return CancelComponentUpgradeResponse
+// Deprecated
 func (client *Client) CancelComponentUpgrade(clusterId *string, componentId *string) (_result *CancelComponentUpgradeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -32639,6 +32651,8 @@ func (client *Client) GetKubernetesTrigger(ClusterId *string, request *GetKubern
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetUpgradeStatus is deprecated
+//
 // Summary:
 //
 // You can call the GetUpgradeStatus operation to query the update progress of a cluster by cluster ID.
@@ -32648,6 +32662,7 @@ func (client *Client) GetKubernetesTrigger(ClusterId *string, request *GetKubern
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetUpgradeStatusResponse
+// Deprecated
 func (client *Client) GetUpgradeStatusWithOptions(ClusterId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetUpgradeStatusResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -32672,11 +32687,14 @@ func (client *Client) GetUpgradeStatusWithOptions(ClusterId *string, headers map
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetUpgradeStatus is deprecated
+//
 // Summary:
 //
 // You can call the GetUpgradeStatus operation to query the update progress of a cluster by cluster ID.
 //
 // @return GetUpgradeStatusResponse
+// Deprecated
 func (client *Client) GetUpgradeStatus(ClusterId *string) (_result *GetUpgradeStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -33958,6 +33976,8 @@ func (client *Client) PauseClusterUpgrade(ClusterId *string) (_result *PauseClus
 	return _result, _err
 }
 
+// Deprecated: OpenAPI PauseComponentUpgrade is deprecated
+//
 // Summary:
 //
 // You can call the PauseComponentUpgrade operation to pause the update of a component.
@@ -33967,6 +33987,7 @@ func (client *Client) PauseClusterUpgrade(ClusterId *string) (_result *PauseClus
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PauseComponentUpgradeResponse
+// Deprecated
 func (client *Client) PauseComponentUpgradeWithOptions(clusterid *string, componentid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PauseComponentUpgradeResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -33991,11 +34012,14 @@ func (client *Client) PauseComponentUpgradeWithOptions(clusterid *string, compon
 	return _result, _err
 }
 
+// Deprecated: OpenAPI PauseComponentUpgrade is deprecated
+//
 // Summary:
 //
 // You can call the PauseComponentUpgrade operation to pause the update of a component.
 //
 // @return PauseComponentUpgradeResponse
+// Deprecated
 func (client *Client) PauseComponentUpgrade(clusterid *string, componentid *string) (_result *PauseComponentUpgradeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -34394,6 +34418,8 @@ func (client *Client) RepairClusterNodePool(clusterId *string, nodepoolId *strin
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ResumeComponentUpgrade is deprecated
+//
 // Summary:
 //
 // You can call the ResumeComponentUpgrade operation to resume the update of a component.
@@ -34403,6 +34429,7 @@ func (client *Client) RepairClusterNodePool(clusterId *string, nodepoolId *strin
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ResumeComponentUpgradeResponse
+// Deprecated
 func (client *Client) ResumeComponentUpgradeWithOptions(clusterid *string, componentid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ResumeComponentUpgradeResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -34427,11 +34454,14 @@ func (client *Client) ResumeComponentUpgradeWithOptions(clusterid *string, compo
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ResumeComponentUpgrade is deprecated
+//
 // Summary:
 //
 // You can call the ResumeComponentUpgrade operation to resume the update of a component.
 //
 // @return ResumeComponentUpgradeResponse
+// Deprecated
 func (client *Client) ResumeComponentUpgrade(clusterid *string, componentid *string) (_result *ResumeComponentUpgradeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
