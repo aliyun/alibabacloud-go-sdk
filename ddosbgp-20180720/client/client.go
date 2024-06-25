@@ -442,6 +442,153 @@ func (s *AttachAssetGroupToInstanceResponse) SetBody(v *AttachAssetGroupToInstan
 	return s
 }
 
+type AttachToPolicyRequest struct {
+	// This parameter is required.
+	IpPortProtocolList []*AttachToPolicyRequestIpPortProtocolList `json:"IpPortProtocolList,omitempty" xml:"IpPortProtocolList,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cd8b4d70-e4e0-413a-b390-e71d********
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+}
+
+func (s AttachToPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachToPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AttachToPolicyRequest) SetIpPortProtocolList(v []*AttachToPolicyRequestIpPortProtocolList) *AttachToPolicyRequest {
+	s.IpPortProtocolList = v
+	return s
+}
+
+func (s *AttachToPolicyRequest) SetPolicyId(v string) *AttachToPolicyRequest {
+	s.PolicyId = &v
+	return s
+}
+
+type AttachToPolicyRequestIpPortProtocolList struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 112.124.241.***
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// example:
+	//
+	// 8*
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// tcp
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+}
+
+func (s AttachToPolicyRequestIpPortProtocolList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachToPolicyRequestIpPortProtocolList) GoString() string {
+	return s.String()
+}
+
+func (s *AttachToPolicyRequestIpPortProtocolList) SetIp(v string) *AttachToPolicyRequestIpPortProtocolList {
+	s.Ip = &v
+	return s
+}
+
+func (s *AttachToPolicyRequestIpPortProtocolList) SetPort(v int32) *AttachToPolicyRequestIpPortProtocolList {
+	s.Port = &v
+	return s
+}
+
+func (s *AttachToPolicyRequestIpPortProtocolList) SetProtocol(v string) *AttachToPolicyRequestIpPortProtocolList {
+	s.Protocol = &v
+	return s
+}
+
+type AttachToPolicyShrinkRequest struct {
+	// This parameter is required.
+	IpPortProtocolListShrink *string `json:"IpPortProtocolList,omitempty" xml:"IpPortProtocolList,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cd8b4d70-e4e0-413a-b390-e71d********
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+}
+
+func (s AttachToPolicyShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachToPolicyShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AttachToPolicyShrinkRequest) SetIpPortProtocolListShrink(v string) *AttachToPolicyShrinkRequest {
+	s.IpPortProtocolListShrink = &v
+	return s
+}
+
+func (s *AttachToPolicyShrinkRequest) SetPolicyId(v string) *AttachToPolicyShrinkRequest {
+	s.PolicyId = &v
+	return s
+}
+
+type AttachToPolicyResponseBody struct {
+	// example:
+	//
+	// DC245DEE-9800-5579-BF99-189D6A5****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AttachToPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachToPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AttachToPolicyResponseBody) SetRequestId(v string) *AttachToPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AttachToPolicyResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachToPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AttachToPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachToPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AttachToPolicyResponse) SetHeaders(v map[string]*string) *AttachToPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AttachToPolicyResponse) SetStatusCode(v int32) *AttachToPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AttachToPolicyResponse) SetBody(v *AttachToPolicyResponseBody) *AttachToPolicyResponse {
+	s.Body = v
+	return s
+}
+
 type CheckAccessLogAuthRequest struct {
 	// The ID of the region where the Anti-DDoS Origin instance resides.
 	//
@@ -10076,6 +10223,76 @@ func (client *Client) AttachAssetGroupToInstance(request *AttachAssetGroupToInst
 	runtime := &util.RuntimeOptions{}
 	_result = &AttachAssetGroupToInstanceResponse{}
 	_body, _err := client.AttachAssetGroupToInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 策略绑定
+//
+// @param tmpReq - AttachToPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachToPolicyResponse
+func (client *Client) AttachToPolicyWithOptions(tmpReq *AttachToPolicyRequest, runtime *util.RuntimeOptions) (_result *AttachToPolicyResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AttachToPolicyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.IpPortProtocolList)) {
+		request.IpPortProtocolListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IpPortProtocolList, tea.String("IpPortProtocolList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IpPortProtocolListShrink)) {
+		query["IpPortProtocolList"] = request.IpPortProtocolListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AttachToPolicy"),
+		Version:     tea.String("2018-07-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AttachToPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 策略绑定
+//
+// @param request - AttachToPolicyRequest
+//
+// @return AttachToPolicyResponse
+func (client *Client) AttachToPolicy(request *AttachToPolicyRequest) (_result *AttachToPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AttachToPolicyResponse{}
+	_body, _err := client.AttachToPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
