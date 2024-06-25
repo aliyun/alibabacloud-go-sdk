@@ -437,6 +437,10 @@ type MaintenanceWindow struct {
 	MaintenanceTime *string `json:"maintenance_time,omitempty" xml:"maintenance_time,omitempty"`
 	// example:
 	//
+	// FREQ=WEEKLY;INTERVAL=4;BYDAY=MO,TU
+	Recurrence *string `json:"recurrence,omitempty" xml:"recurrence,omitempty"`
+	// example:
+	//
 	// Monday,Thursday
 	WeeklyPeriod *string `json:"weekly_period,omitempty" xml:"weekly_period,omitempty"`
 }
@@ -461,6 +465,11 @@ func (s *MaintenanceWindow) SetEnable(v bool) *MaintenanceWindow {
 
 func (s *MaintenanceWindow) SetMaintenanceTime(v string) *MaintenanceWindow {
 	s.MaintenanceTime = &v
+	return s
+}
+
+func (s *MaintenanceWindow) SetRecurrence(v string) *MaintenanceWindow {
+	s.Recurrence = &v
 	return s
 }
 
@@ -13772,7 +13781,8 @@ type DescribeClustersRequest struct {
 	// example:
 	//
 	// test
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name            *string `json:"name,omitempty" xml:"name,omitempty"`
+	ResourceGroupId *string `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
 }
 
 func (s DescribeClustersRequest) String() string {
@@ -13790,6 +13800,11 @@ func (s *DescribeClustersRequest) SetClusterType(v string) *DescribeClustersRequ
 
 func (s *DescribeClustersRequest) SetName(v string) *DescribeClustersRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *DescribeClustersRequest) SetResourceGroupId(v string) *DescribeClustersRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -15433,10 +15448,6 @@ type DescribeEventsResponseBodyEvents struct {
 	// A234-1234-1234
 	EventId *string `json:"event_id,omitempty" xml:"event_id,omitempty"`
 	// The source of the event.
-	//
-	// example:
-	//
-	// /clusters/cf62854ac2130470897be7a27ed1f****/nodepools
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
 	// The subject of the event.
 	//
@@ -30645,6 +30656,10 @@ func (client *Client) DescribeClustersWithOptions(request *DescribeClustersReque
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["resource_group_id"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
