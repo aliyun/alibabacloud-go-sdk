@@ -4196,10 +4196,6 @@ type CreateEventStreamingRequestSinkSinkPrometheusParametersURL struct {
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The URL for the remote write configuration item of the Managed Service for Prometheus instance.
-	//
-	// example:
-	//
-	// https://cn-hangzhou.arms.aliyuncs.com/prometheus/167275****/c5b7faeb2e8994641*****d5c559f/cn-hangzhou/api/v3/write
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -16705,10 +16701,6 @@ type ListEventStreamingsRequest struct {
 	// acs:fc:cn-hangzhou:118609547428****:services/fw1.LATEST/functions/log1
 	SinkArn *string `json:"SinkArn,omitempty" xml:"SinkArn,omitempty"`
 	// The Alibaba Cloud Resource Name (ARN) of the event source.
-	//
-	// example:
-	//
-	// acs:alikafka:cn-hangzhou:118609547428****:instance/alikafka_pre-cn-zxu36kvi****/topic/test-topic
 	SourceArn *string `json:"SourceArn,omitempty" xml:"SourceArn,omitempty"`
 }
 
@@ -28179,10 +28171,6 @@ type UpdateEventStreamingRequestSinkSinkPrometheusParametersURL struct {
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The URL for the remote write configuration item of the Managed Service for Prometheus instance.
-	//
-	// example:
-	//
-	// https://cn-hangzhou.arms.aliyuncs.com/prometheus/167275****/c5b7faeb2e8994641*****d5c559f/cn-hangzhou/api/v3/write
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
