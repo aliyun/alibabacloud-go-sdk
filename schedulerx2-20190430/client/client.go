@@ -642,6 +642,10 @@ type CreateAppGroupRequest struct {
 	//
 	// 1
 	AppType *int32 `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// example:
+	//
+	// 2
+	AppVersion *int32 `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
 	// The description of the application.
 	//
 	// example:
@@ -716,10 +720,6 @@ type CreateAppGroupRequest struct {
 	//
 	// false
 	ScheduleBusyWorkers *bool `json:"ScheduleBusyWorkers,omitempty" xml:"ScheduleBusyWorkers,omitempty"`
-	// example:
-	//
-	// 2
-	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s CreateAppGroupRequest) String() string {
@@ -742,6 +742,11 @@ func (s *CreateAppGroupRequest) SetAppName(v string) *CreateAppGroupRequest {
 
 func (s *CreateAppGroupRequest) SetAppType(v int32) *CreateAppGroupRequest {
 	s.AppType = &v
+	return s
+}
+
+func (s *CreateAppGroupRequest) SetAppVersion(v int32) *CreateAppGroupRequest {
+	s.AppVersion = &v
 	return s
 }
 
@@ -797,11 +802,6 @@ func (s *CreateAppGroupRequest) SetRegionId(v string) *CreateAppGroupRequest {
 
 func (s *CreateAppGroupRequest) SetScheduleBusyWorkers(v bool) *CreateAppGroupRequest {
 	s.ScheduleBusyWorkers = &v
-	return s
-}
-
-func (s *CreateAppGroupRequest) SetVersion(v int32) *CreateAppGroupRequest {
-	s.Version = &v
 	return s
 }
 
@@ -2050,6 +2050,8 @@ type CreateWorkflowRequest struct {
 	//
 	// 	- 100: api
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -2834,6 +2836,23 @@ func (s *DeleteWorkflowResponse) SetStatusCode(v int32) *DeleteWorkflowResponse 
 
 func (s *DeleteWorkflowResponse) SetBody(v *DeleteWorkflowResponseBody) *DeleteWorkflowResponse {
 	s.Body = v
+	return s
+}
+
+type DescribeRegionsRequest struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeRegionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionsRequest) SetRegionId(v string) *DescribeRegionsRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -4366,6 +4385,10 @@ type GetAppGroupResponseBodyData struct {
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// example:
 	//
+	// 2
+	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// example:
+	//
 	// 1
 	CurJobs *int32 `json:"CurJobs,omitempty" xml:"CurJobs,omitempty"`
 	// example:
@@ -4401,6 +4424,11 @@ func (s *GetAppGroupResponseBodyData) SetAppKey(v string) *GetAppGroupResponseBo
 
 func (s *GetAppGroupResponseBodyData) SetAppName(v string) *GetAppGroupResponseBodyData {
 	s.AppName = &v
+	return s
+}
+
+func (s *GetAppGroupResponseBodyData) SetAppVersion(v string) *GetAppGroupResponseBodyData {
+	s.AppVersion = &v
 	return s
 }
 
@@ -7869,6 +7897,10 @@ type ListGroupsResponseBodyDataAppGroups struct {
 	//
 	// DocTest
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// 2
+	AppVersion *int32 `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
 	// The description of the application.
 	//
 	// example:
@@ -7881,7 +7913,6 @@ type ListGroupsResponseBodyDataAppGroups struct {
 	//
 	// DocTest.Group
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Version *int32  `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ListGroupsResponseBodyDataAppGroups) String() string {
@@ -7907,6 +7938,11 @@ func (s *ListGroupsResponseBodyDataAppGroups) SetAppName(v string) *ListGroupsRe
 	return s
 }
 
+func (s *ListGroupsResponseBodyDataAppGroups) SetAppVersion(v int32) *ListGroupsResponseBodyDataAppGroups {
+	s.AppVersion = &v
+	return s
+}
+
 func (s *ListGroupsResponseBodyDataAppGroups) SetDescription(v string) *ListGroupsResponseBodyDataAppGroups {
 	s.Description = &v
 	return s
@@ -7914,11 +7950,6 @@ func (s *ListGroupsResponseBodyDataAppGroups) SetDescription(v string) *ListGrou
 
 func (s *ListGroupsResponseBodyDataAppGroups) SetGroupId(v string) *ListGroupsResponseBodyDataAppGroups {
 	s.GroupId = &v
-	return s
-}
-
-func (s *ListGroupsResponseBodyDataAppGroups) SetVersion(v int32) *ListGroupsResponseBodyDataAppGroups {
-	s.Version = &v
 	return s
 }
 
@@ -10220,6 +10251,10 @@ func (s *StopInstanceResponse) SetBody(v *StopInstanceResponseBody) *StopInstanc
 type UpdateAppGroupRequest struct {
 	// example:
 	//
+	// 2
+	AppVersion *int32 `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// example:
+	//
 	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// This parameter is required.
@@ -10244,10 +10279,6 @@ type UpdateAppGroupRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// example:
-	//
-	// 2
-	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s UpdateAppGroupRequest) String() string {
@@ -10256,6 +10287,11 @@ func (s UpdateAppGroupRequest) String() string {
 
 func (s UpdateAppGroupRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateAppGroupRequest) SetAppVersion(v int32) *UpdateAppGroupRequest {
+	s.AppVersion = &v
+	return s
 }
 
 func (s *UpdateAppGroupRequest) SetDescription(v string) *UpdateAppGroupRequest {
@@ -10280,11 +10316,6 @@ func (s *UpdateAppGroupRequest) SetNamespace(v string) *UpdateAppGroupRequest {
 
 func (s *UpdateAppGroupRequest) SetRegionId(v string) *UpdateAppGroupRequest {
 	s.RegionId = &v
-	return s
-}
-
-func (s *UpdateAppGroupRequest) SetVersion(v int32) *UpdateAppGroupRequest {
-	s.Version = &v
 	return s
 }
 
@@ -12599,8 +12630,19 @@ func (client *Client) DeleteWorkflow(request *DeleteWorkflowRequest) (_result *D
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeRegionsResponse
-func (client *Client) DescribeRegionsWithOptions(runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
+func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeRegions"),
 		Version:     tea.String("2019-04-30"),
@@ -12625,11 +12667,13 @@ func (client *Client) DescribeRegionsWithOptions(runtime *util.RuntimeOptions) (
 //
 // Returns available regions.
 //
+// @param request - DescribeRegionsRequest
+//
 // @return DescribeRegionsResponse
-func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err error) {
+func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRegionsResponse{}
-	_body, _err := client.DescribeRegionsWithOptions(runtime)
+	_body, _err := client.DescribeRegionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14488,6 +14532,10 @@ func (client *Client) UpdateAppGroupWithOptions(request *UpdateAppGroupRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppVersion)) {
+		query["AppVersion"] = request.AppVersion
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
 	}
@@ -14506,10 +14554,6 @@ func (client *Client) UpdateAppGroupWithOptions(request *UpdateAppGroupRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Version)) {
-		query["Version"] = request.Version
 	}
 
 	req := &openapi.OpenApiRequest{
