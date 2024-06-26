@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,9 +10,24 @@ import (
 )
 
 type BindAliasRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_alias
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	AppKey    *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	DeviceId  *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23267207
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e2ba19de97604f55b16557673****
+	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 }
 
 func (s BindAliasRequest) String() string {
@@ -42,6 +54,9 @@ func (s *BindAliasRequest) SetDeviceId(v string) *BindAliasRequest {
 }
 
 type BindAliasResponseBody struct {
+	// example:
+	//
+	// 159E4422-6624-4750-8943-DFD98D34858C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -59,9 +74,9 @@ func (s *BindAliasResponseBody) SetRequestId(v string) *BindAliasResponseBody {
 }
 
 type BindAliasResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BindAliasResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BindAliasResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BindAliasResponse) String() string {
@@ -88,8 +103,23 @@ func (s *BindAliasResponse) SetBody(v *BindAliasResponseBody) *BindAliasResponse
 }
 
 type BindPhoneRequest struct {
-	AppKey      *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	DeviceId    *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 27725900
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eb5f741d83d04d34807d229999eefa52
+	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1381111****
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 }
 
@@ -117,6 +147,9 @@ func (s *BindPhoneRequest) SetPhoneNumber(v string) *BindPhoneRequest {
 }
 
 type BindPhoneResponseBody struct {
+	// example:
+	//
+	// 0D1126F0-F8FF-513D-BAFA-F140447BDED4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -134,9 +167,9 @@ func (s *BindPhoneResponseBody) SetRequestId(v string) *BindPhoneResponseBody {
 }
 
 type BindPhoneResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BindPhoneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BindPhoneResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BindPhoneResponse) String() string {
@@ -163,10 +196,30 @@ func (s *BindPhoneResponse) SetBody(v *BindPhoneResponseBody) *BindPhoneResponse
 }
 
 type BindTagRequest struct {
-	AppKey    *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23267207
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e2ba19de97604f55b16557673****
 	ClientKey *string `json:"ClientKey,omitempty" xml:"ClientKey,omitempty"`
-	KeyType   *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
-	TagName   *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DEVICE
+	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_tag,test_tag2
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
 func (s BindTagRequest) String() string {
@@ -198,6 +251,9 @@ func (s *BindTagRequest) SetTagName(v string) *BindTagRequest {
 }
 
 type BindTagResponseBody struct {
+	// example:
+	//
+	// 82FD0A09-5BB8-40FB-8221-9A11FE92D620
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -215,9 +271,9 @@ func (s *BindTagResponseBody) SetRequestId(v string) *BindTagResponseBody {
 }
 
 type BindTagResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BindTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BindTagResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BindTagResponse) String() string {
@@ -244,7 +300,17 @@ func (s *BindTagResponse) SetBody(v *BindTagResponseBody) *BindTagResponse {
 }
 
 type CancelPushRequest struct {
-	AppKey    *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23267207
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 501029
 	MessageId *int64 `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
 }
 
@@ -267,6 +333,9 @@ func (s *CancelPushRequest) SetMessageId(v int64) *CancelPushRequest {
 }
 
 type CancelPushResponseBody struct {
+	// example:
+	//
+	// 9998B3CC-ED9E-4CB3-A8FB-DCC61296BFBC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -284,9 +353,9 @@ func (s *CancelPushResponseBody) SetRequestId(v string) *CancelPushResponseBody 
 }
 
 type CancelPushResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CancelPushResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelPushResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CancelPushResponse) String() string {
@@ -313,6 +382,11 @@ func (s *CancelPushResponse) SetBody(v *CancelPushResponseBody) *CancelPushRespo
 }
 
 type CheckCertificateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23267207
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
 }
 
@@ -330,11 +404,20 @@ func (s *CheckCertificateRequest) SetAppKey(v int64) *CheckCertificateRequest {
 }
 
 type CheckCertificateResponseBody struct {
+	// example:
+	//
+	// false
 	Android             *bool                                            `json:"Android,omitempty" xml:"Android,omitempty"`
 	DevelopmentCertInfo *CheckCertificateResponseBodyDevelopmentCertInfo `json:"DevelopmentCertInfo,omitempty" xml:"DevelopmentCertInfo,omitempty" type:"Struct"`
-	IOS                 *bool                                            `json:"IOS,omitempty" xml:"IOS,omitempty"`
-	ProductionCertInfo  *CheckCertificateResponseBodyProductionCertInfo  `json:"ProductionCertInfo,omitempty" xml:"ProductionCertInfo,omitempty" type:"Struct"`
-	RequestId           *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	IOS                *bool                                           `json:"IOS,omitempty" xml:"IOS,omitempty"`
+	ProductionCertInfo *CheckCertificateResponseBodyProductionCertInfo `json:"ProductionCertInfo,omitempty" xml:"ProductionCertInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 9998B3CC-ED9E-4CB3-A8FB-DCC61296BFBC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CheckCertificateResponseBody) String() string {
@@ -371,8 +454,14 @@ func (s *CheckCertificateResponseBody) SetRequestId(v string) *CheckCertificateR
 }
 
 type CheckCertificateResponseBodyDevelopmentCertInfo struct {
-	ExipreTime *int64  `json:"ExipreTime,omitempty" xml:"ExipreTime,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1470024000000
+	ExipreTime *int64 `json:"ExipreTime,omitempty" xml:"ExipreTime,omitempty"`
+	// example:
+	//
+	// EXPIRED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CheckCertificateResponseBodyDevelopmentCertInfo) String() string {
@@ -394,8 +483,14 @@ func (s *CheckCertificateResponseBodyDevelopmentCertInfo) SetStatus(v string) *C
 }
 
 type CheckCertificateResponseBodyProductionCertInfo struct {
-	ExipreTime *int64  `json:"ExipreTime,omitempty" xml:"ExipreTime,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1764561600000
+	ExipreTime *int64 `json:"ExipreTime,omitempty" xml:"ExipreTime,omitempty"`
+	// example:
+	//
+	// OK
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CheckCertificateResponseBodyProductionCertInfo) String() string {
@@ -417,9 +512,9 @@ func (s *CheckCertificateResponseBodyProductionCertInfo) SetStatus(v string) *Ch
 }
 
 type CheckCertificateResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CheckCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CheckCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CheckCertificateResponse) String() string {
@@ -446,7 +541,17 @@ func (s *CheckCertificateResponse) SetBody(v *CheckCertificateResponseBody) *Che
 }
 
 type CheckDeviceRequest struct {
-	AppKey   *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23419851
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ae296f3b04a58a05b30c95f****
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 }
 
@@ -469,7 +574,13 @@ func (s *CheckDeviceRequest) SetDeviceId(v string) *CheckDeviceRequest {
 }
 
 type CheckDeviceResponseBody struct {
-	Available *bool   `json:"Available,omitempty" xml:"Available,omitempty"`
+	// example:
+	//
+	// ture
+	Available *bool `json:"Available,omitempty" xml:"Available,omitempty"`
+	// example:
+	//
+	// 9998B3CC-ED9E-4CB3-A8FB-DCC61296BFBC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -492,9 +603,9 @@ func (s *CheckDeviceResponseBody) SetRequestId(v string) *CheckDeviceResponseBod
 }
 
 type CheckDeviceResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CheckDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CheckDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CheckDeviceResponse) String() string {
@@ -521,7 +632,17 @@ func (s *CheckDeviceResponse) SetBody(v *CheckDeviceResponseBody) *CheckDeviceRe
 }
 
 type CheckDevicesRequest struct {
-	AppKey    *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23419851
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ae296f3b04a58a05b30c95f****,ae296f3b04a58a05b30c95f****,ae296f3b04a58a05b30c95f****
 	DeviceIds *string `json:"DeviceIds,omitempty" xml:"DeviceIds,omitempty"`
 }
 
@@ -545,7 +666,10 @@ func (s *CheckDevicesRequest) SetDeviceIds(v string) *CheckDevicesRequest {
 
 type CheckDevicesResponseBody struct {
 	DeviceCheckInfos *CheckDevicesResponseBodyDeviceCheckInfos `json:"DeviceCheckInfos,omitempty" xml:"DeviceCheckInfos,omitempty" type:"Struct"`
-	RequestId        *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 9998B3CC-ED9E-4CB3-A8FB-DCC61296BFBC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CheckDevicesResponseBody) String() string {
@@ -584,8 +708,14 @@ func (s *CheckDevicesResponseBodyDeviceCheckInfos) SetDeviceCheckInfo(v []*Check
 }
 
 type CheckDevicesResponseBodyDeviceCheckInfosDeviceCheckInfo struct {
-	Available *bool   `json:"Available,omitempty" xml:"Available,omitempty"`
-	DeviceId  *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// example:
+	//
+	// true
+	Available *bool `json:"Available,omitempty" xml:"Available,omitempty"`
+	// example:
+	//
+	// ae296f3b04a58a05b30c95f****
+	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 }
 
 func (s CheckDevicesResponseBodyDeviceCheckInfosDeviceCheckInfo) String() string {
@@ -607,9 +737,9 @@ func (s *CheckDevicesResponseBodyDeviceCheckInfosDeviceCheckInfo) SetDeviceId(v 
 }
 
 type CheckDevicesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CheckDevicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CheckDevicesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CheckDevicesResponse) String() string {
@@ -636,7 +766,17 @@ func (s *CheckDevicesResponse) SetBody(v *CheckDevicesResponseBody) *CheckDevice
 }
 
 type CompleteContinuouslyPushRequest struct {
-	AppKey    *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23267207
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4010290149170430
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
 }
 
@@ -659,7 +799,13 @@ func (s *CompleteContinuouslyPushRequest) SetMessageId(v string) *CompleteContin
 }
 
 type CompleteContinuouslyPushResponseBody struct {
+	// example:
+	//
+	// 4010290149170430
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// example:
+	//
+	// 9998B3CC-ED9E-4CB3-A8FB-DCC61296BFBC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -682,9 +828,9 @@ func (s *CompleteContinuouslyPushResponseBody) SetRequestId(v string) *CompleteC
 }
 
 type CompleteContinuouslyPushResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CompleteContinuouslyPushResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CompleteContinuouslyPushResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CompleteContinuouslyPushResponse) String() string {
@@ -711,9 +857,29 @@ func (s *CompleteContinuouslyPushResponse) SetBody(v *CompleteContinuouslyPushRe
 }
 
 type ContinuouslyPushRequest struct {
-	AppKey      *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	MessageId   *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	Target      *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23267207
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 500131
+	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DEVICE
+	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a692961a92534047ad3625****
 	TargetValue *string `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
 }
 
@@ -746,7 +912,13 @@ func (s *ContinuouslyPushRequest) SetTargetValue(v string) *ContinuouslyPushRequ
 }
 
 type ContinuouslyPushResponseBody struct {
+	// example:
+	//
+	// 9998B3CC-ED9E-4CB3-A8FB-DCC61296BFBC
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// example:
+	//
+	// 500131
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -769,9 +941,9 @@ func (s *ContinuouslyPushResponseBody) SetRequestId(v string) *ContinuouslyPushR
 }
 
 type ContinuouslyPushResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ContinuouslyPushResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ContinuouslyPushResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ContinuouslyPushResponse) String() string {
@@ -798,6 +970,9 @@ func (s *ContinuouslyPushResponse) SetBody(v *ContinuouslyPushResponseBody) *Con
 }
 
 type ListSummaryAppsResponseBody struct {
+	// example:
+	//
+	// 9998B3CC-ED9E-4CB3-A8FB-DCC61296BFBC
 	RequestId       *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SummaryAppInfos *ListSummaryAppsResponseBodySummaryAppInfos `json:"SummaryAppInfos,omitempty" xml:"SummaryAppInfos,omitempty" type:"Struct"`
 }
@@ -838,7 +1013,13 @@ func (s *ListSummaryAppsResponseBodySummaryAppInfos) SetSummaryAppInfo(v []*List
 }
 
 type ListSummaryAppsResponseBodySummaryAppInfosSummaryAppInfo struct {
-	AppKey  *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// example:
+	//
+	// 23****07
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// example:
+	//
+	// abc
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 }
 
@@ -861,9 +1042,9 @@ func (s *ListSummaryAppsResponseBodySummaryAppInfosSummaryAppInfo) SetAppName(v 
 }
 
 type ListSummaryAppsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListSummaryAppsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSummaryAppsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListSummaryAppsResponse) String() string {
@@ -890,6 +1071,11 @@ func (s *ListSummaryAppsResponse) SetBody(v *ListSummaryAppsResponseBody) *ListS
 }
 
 type ListTagsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23267207
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
 }
 
@@ -907,6 +1093,9 @@ func (s *ListTagsRequest) SetAppKey(v int64) *ListTagsRequest {
 }
 
 type ListTagsResponseBody struct {
+	// example:
+	//
+	// 6EEF262B-EA7D-41DC-89B9-20F3D1E28194
 	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TagInfos  *ListTagsResponseBodyTagInfos `json:"TagInfos,omitempty" xml:"TagInfos,omitempty" type:"Struct"`
 }
@@ -947,6 +1136,9 @@ func (s *ListTagsResponseBodyTagInfos) SetTagInfo(v []*ListTagsResponseBodyTagIn
 }
 
 type ListTagsResponseBodyTagInfosTagInfo struct {
+	// example:
+	//
+	// test_tag2
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
@@ -964,9 +1156,9 @@ func (s *ListTagsResponseBodyTagInfosTagInfo) SetTagName(v string) *ListTagsResp
 }
 
 type ListTagsResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTagsResponse) String() string {
@@ -993,7 +1185,13 @@ func (s *ListTagsResponse) SetBody(v *ListTagsResponseBody) *ListTagsResponse {
 }
 
 type MassPushRequest struct {
-	AppKey   *int64                     `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23267207
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
 	PushTask []*MassPushRequestPushTask `json:"PushTask,omitempty" xml:"PushTask,omitempty" type:"Repeated"`
 }
 
@@ -1016,77 +1214,271 @@ func (s *MassPushRequest) SetPushTask(v []*MassPushRequestPushTask) *MassPushReq
 }
 
 type MassPushRequestPushTask struct {
-	AndroidActivity                  *string `json:"AndroidActivity,omitempty" xml:"AndroidActivity,omitempty"`
-	AndroidBigBody                   *string `json:"AndroidBigBody,omitempty" xml:"AndroidBigBody,omitempty"`
-	AndroidBigPictureUrl             *string `json:"AndroidBigPictureUrl,omitempty" xml:"AndroidBigPictureUrl,omitempty"`
-	AndroidBigTitle                  *string `json:"AndroidBigTitle,omitempty" xml:"AndroidBigTitle,omitempty"`
-	AndroidExtParameters             *string `json:"AndroidExtParameters,omitempty" xml:"AndroidExtParameters,omitempty"`
-	AndroidHonorTargetUserType       *int32  `json:"AndroidHonorTargetUserType,omitempty" xml:"AndroidHonorTargetUserType,omitempty"`
-	AndroidHuaweiReceiptId           *string `json:"AndroidHuaweiReceiptId,omitempty" xml:"AndroidHuaweiReceiptId,omitempty"`
-	AndroidHuaweiTargetUserType      *int32  `json:"AndroidHuaweiTargetUserType,omitempty" xml:"AndroidHuaweiTargetUserType,omitempty"`
-	AndroidImageUrl                  *string `json:"AndroidImageUrl,omitempty" xml:"AndroidImageUrl,omitempty"`
-	AndroidInboxBody                 *string `json:"AndroidInboxBody,omitempty" xml:"AndroidInboxBody,omitempty"`
-	AndroidMessageHuaweiCategory     *string `json:"AndroidMessageHuaweiCategory,omitempty" xml:"AndroidMessageHuaweiCategory,omitempty"`
-	AndroidMessageHuaweiUrgency      *string `json:"AndroidMessageHuaweiUrgency,omitempty" xml:"AndroidMessageHuaweiUrgency,omitempty"`
-	AndroidMessageVivoCategory       *string `json:"AndroidMessageVivoCategory,omitempty" xml:"AndroidMessageVivoCategory,omitempty"`
-	AndroidMusic                     *string `json:"AndroidMusic,omitempty" xml:"AndroidMusic,omitempty"`
-	AndroidNotificationBarPriority   *int32  `json:"AndroidNotificationBarPriority,omitempty" xml:"AndroidNotificationBarPriority,omitempty"`
-	AndroidNotificationBarType       *int32  `json:"AndroidNotificationBarType,omitempty" xml:"AndroidNotificationBarType,omitempty"`
-	AndroidNotificationChannel       *string `json:"AndroidNotificationChannel,omitempty" xml:"AndroidNotificationChannel,omitempty"`
-	AndroidNotificationGroup         *string `json:"AndroidNotificationGroup,omitempty" xml:"AndroidNotificationGroup,omitempty"`
-	AndroidNotificationHonorChannel  *string `json:"AndroidNotificationHonorChannel,omitempty" xml:"AndroidNotificationHonorChannel,omitempty"`
+	// example:
+	//
+	// com.alibaba.cloudpushdemo.bizactivity
+	AndroidActivity *string `json:"AndroidActivity,omitempty" xml:"AndroidActivity,omitempty"`
+	AndroidBigBody  *string `json:"AndroidBigBody,omitempty" xml:"AndroidBigBody,omitempty"`
+	// example:
+	//
+	// https://imag.example.com/image.png
+	AndroidBigPictureUrl *string `json:"AndroidBigPictureUrl,omitempty" xml:"AndroidBigPictureUrl,omitempty"`
+	AndroidBigTitle      *string `json:"AndroidBigTitle,omitempty" xml:"AndroidBigTitle,omitempty"`
+	// example:
+	//
+	// {"key1":"value1","api_name":"PushNoticeToAndroidRequest"}
+	AndroidExtParameters       *string `json:"AndroidExtParameters,omitempty" xml:"AndroidExtParameters,omitempty"`
+	AndroidHonorTargetUserType *int32  `json:"AndroidHonorTargetUserType,omitempty" xml:"AndroidHonorTargetUserType,omitempty"`
+	// example:
+	//
+	// RCP4C123456
+	AndroidHuaweiReceiptId *string `json:"AndroidHuaweiReceiptId,omitempty" xml:"AndroidHuaweiReceiptId,omitempty"`
+	// example:
+	//
+	// 1
+	AndroidHuaweiTargetUserType *int32 `json:"AndroidHuaweiTargetUserType,omitempty" xml:"AndroidHuaweiTargetUserType,omitempty"`
+	// example:
+	//
+	// https://imag.example.com/image.png
+	AndroidImageUrl  *string `json:"AndroidImageUrl,omitempty" xml:"AndroidImageUrl,omitempty"`
+	AndroidInboxBody *string `json:"AndroidInboxBody,omitempty" xml:"AndroidInboxBody,omitempty"`
+	// example:
+	//
+	// VOIP
+	AndroidMessageHuaweiCategory *string `json:"AndroidMessageHuaweiCategory,omitempty" xml:"AndroidMessageHuaweiCategory,omitempty"`
+	// example:
+	//
+	// HIGH
+	AndroidMessageHuaweiUrgency *string `json:"AndroidMessageHuaweiUrgency,omitempty" xml:"AndroidMessageHuaweiUrgency,omitempty"`
+	// example:
+	//
+	// TODO
+	AndroidMessageVivoCategory *string `json:"AndroidMessageVivoCategory,omitempty" xml:"AndroidMessageVivoCategory,omitempty"`
+	AndroidMusic               *string `json:"AndroidMusic,omitempty" xml:"AndroidMusic,omitempty"`
+	// example:
+	//
+	// 0
+	AndroidNotificationBarPriority *int32 `json:"AndroidNotificationBarPriority,omitempty" xml:"AndroidNotificationBarPriority,omitempty"`
+	// example:
+	//
+	// 2
+	AndroidNotificationBarType *int32 `json:"AndroidNotificationBarType,omitempty" xml:"AndroidNotificationBarType,omitempty"`
+	// example:
+	//
+	// 1
+	AndroidNotificationChannel *string `json:"AndroidNotificationChannel,omitempty" xml:"AndroidNotificationChannel,omitempty"`
+	// example:
+	//
+	// group-1
+	AndroidNotificationGroup *string `json:"AndroidNotificationGroup,omitempty" xml:"AndroidNotificationGroup,omitempty"`
+	// example:
+	//
+	// LOW
+	AndroidNotificationHonorChannel *string `json:"AndroidNotificationHonorChannel,omitempty" xml:"AndroidNotificationHonorChannel,omitempty"`
+	// example:
+	//
+	// LOW
 	AndroidNotificationHuaweiChannel *string `json:"AndroidNotificationHuaweiChannel,omitempty" xml:"AndroidNotificationHuaweiChannel,omitempty"`
-	AndroidNotificationNotifyId      *int32  `json:"AndroidNotificationNotifyId,omitempty" xml:"AndroidNotificationNotifyId,omitempty"`
-	AndroidNotificationVivoChannel   *string `json:"AndroidNotificationVivoChannel,omitempty" xml:"AndroidNotificationVivoChannel,omitempty"`
+	// example:
+	//
+	// 100001
+	AndroidNotificationNotifyId *int32 `json:"AndroidNotificationNotifyId,omitempty" xml:"AndroidNotificationNotifyId,omitempty"`
+	// example:
+	//
+	// 0
+	AndroidNotificationVivoChannel *string `json:"AndroidNotificationVivoChannel,omitempty" xml:"AndroidNotificationVivoChannel,omitempty"`
+	// example:
+	//
+	// michannel
 	AndroidNotificationXiaomiChannel *string `json:"AndroidNotificationXiaomiChannel,omitempty" xml:"AndroidNotificationXiaomiChannel,omitempty"`
-	AndroidNotifyType                *string `json:"AndroidNotifyType,omitempty" xml:"AndroidNotifyType,omitempty"`
-	AndroidOpenType                  *string `json:"AndroidOpenType,omitempty" xml:"AndroidOpenType,omitempty"`
-	AndroidOpenUrl                   *string `json:"AndroidOpenUrl,omitempty" xml:"AndroidOpenUrl,omitempty"`
-	AndroidPopupActivity             *string `json:"AndroidPopupActivity,omitempty" xml:"AndroidPopupActivity,omitempty"`
-	AndroidPopupBody                 *string `json:"AndroidPopupBody,omitempty" xml:"AndroidPopupBody,omitempty"`
-	AndroidPopupTitle                *string `json:"AndroidPopupTitle,omitempty" xml:"AndroidPopupTitle,omitempty"`
-	AndroidRemind                    *bool   `json:"AndroidRemind,omitempty" xml:"AndroidRemind,omitempty"`
-	AndroidRenderStyle               *string `json:"AndroidRenderStyle,omitempty" xml:"AndroidRenderStyle,omitempty"`
-	AndroidTargetUserType            *int32  `json:"AndroidTargetUserType,omitempty" xml:"AndroidTargetUserType,omitempty"`
-	AndroidVivoPushMode              *int32  `json:"AndroidVivoPushMode,omitempty" xml:"AndroidVivoPushMode,omitempty"`
-	AndroidVivoReceiptId             *string `json:"AndroidVivoReceiptId,omitempty" xml:"AndroidVivoReceiptId,omitempty"`
+	// example:
+	//
+	// VIBRATE
+	AndroidNotifyType *string `json:"AndroidNotifyType,omitempty" xml:"AndroidNotifyType,omitempty"`
+	// example:
+	//
+	// APPLICATION
+	AndroidOpenType *string `json:"AndroidOpenType,omitempty" xml:"AndroidOpenType,omitempty"`
+	// example:
+	//
+	// https://xxxx.xxx
+	AndroidOpenUrl *string `json:"AndroidOpenUrl,omitempty" xml:"AndroidOpenUrl,omitempty"`
+	// example:
+	//
+	// com.alibaba.cloudpushdemo.bizactivity
+	AndroidPopupActivity *string `json:"AndroidPopupActivity,omitempty" xml:"AndroidPopupActivity,omitempty"`
+	// example:
+	//
+	// hello
+	AndroidPopupBody *string `json:"AndroidPopupBody,omitempty" xml:"AndroidPopupBody,omitempty"`
+	// example:
+	//
+	// hello
+	AndroidPopupTitle *string `json:"AndroidPopupTitle,omitempty" xml:"AndroidPopupTitle,omitempty"`
+	// example:
+	//
+	// true
+	AndroidRemind *bool `json:"AndroidRemind,omitempty" xml:"AndroidRemind,omitempty"`
+	// example:
+	//
+	// 1
+	AndroidRenderStyle    *string `json:"AndroidRenderStyle,omitempty" xml:"AndroidRenderStyle,omitempty"`
+	AndroidTargetUserType *int32  `json:"AndroidTargetUserType,omitempty" xml:"AndroidTargetUserType,omitempty"`
+	// example:
+	//
+	// 1
+	AndroidVivoPushMode  *int32  `json:"AndroidVivoPushMode,omitempty" xml:"AndroidVivoPushMode,omitempty"`
+	AndroidVivoReceiptId *string `json:"AndroidVivoReceiptId,omitempty" xml:"AndroidVivoReceiptId,omitempty"`
 	// Deprecated
 	AndroidXiaoMiActivity *string `json:"AndroidXiaoMiActivity,omitempty" xml:"AndroidXiaoMiActivity,omitempty"`
 	// Deprecated
 	AndroidXiaoMiNotifyBody *string `json:"AndroidXiaoMiNotifyBody,omitempty" xml:"AndroidXiaoMiNotifyBody,omitempty"`
 	// Deprecated
-	AndroidXiaoMiNotifyTitle   *string `json:"AndroidXiaoMiNotifyTitle,omitempty" xml:"AndroidXiaoMiNotifyTitle,omitempty"`
+	AndroidXiaoMiNotifyTitle *string `json:"AndroidXiaoMiNotifyTitle,omitempty" xml:"AndroidXiaoMiNotifyTitle,omitempty"`
+	// example:
+	//
+	// https://f6.market.xiaomi.com/download/MiPass/aaa/bbb.png
 	AndroidXiaomiBigPictureUrl *string `json:"AndroidXiaomiBigPictureUrl,omitempty" xml:"AndroidXiaomiBigPictureUrl,omitempty"`
-	AndroidXiaomiImageUrl      *string `json:"AndroidXiaomiImageUrl,omitempty" xml:"AndroidXiaomiImageUrl,omitempty"`
-	Body                       *string `json:"Body,omitempty" xml:"Body,omitempty"`
-	DeviceType                 *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	ExpireTime                 *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	JobKey                     *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
-	PushTime                   *string `json:"PushTime,omitempty" xml:"PushTime,omitempty"`
-	PushType                   *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
-	SendChannels               *string `json:"SendChannels,omitempty" xml:"SendChannels,omitempty"`
+	// example:
+	//
+	// https://imag.example.com/image.png
+	AndroidXiaomiImageUrl *string `json:"AndroidXiaomiImageUrl,omitempty" xml:"AndroidXiaomiImageUrl,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hello
+	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ALL
+	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// example:
+	//
+	// 2019-02-20T00:00:00Z
+	ExpireTime                  *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	HarmonyAction               *string `json:"HarmonyAction,omitempty" xml:"HarmonyAction,omitempty"`
+	HarmonyActionType           *string `json:"HarmonyActionType,omitempty" xml:"HarmonyActionType,omitempty"`
+	HarmonyCategory             *string `json:"HarmonyCategory,omitempty" xml:"HarmonyCategory,omitempty"`
+	HarmonyExtParameters        *string `json:"HarmonyExtParameters,omitempty" xml:"HarmonyExtParameters,omitempty"`
+	HarmonyImageUrl             *string `json:"HarmonyImageUrl,omitempty" xml:"HarmonyImageUrl,omitempty"`
+	HarmonyInboxContent         *string `json:"HarmonyInboxContent,omitempty" xml:"HarmonyInboxContent,omitempty"`
+	HarmonyNotificationSlotType *string `json:"HarmonyNotificationSlotType,omitempty" xml:"HarmonyNotificationSlotType,omitempty"`
+	HarmonyNotifyId             *int32  `json:"HarmonyNotifyId,omitempty" xml:"HarmonyNotifyId,omitempty"`
+	HarmonyReceiptId            *string `json:"HarmonyReceiptId,omitempty" xml:"HarmonyReceiptId,omitempty"`
+	HarmonyRemind               *bool   `json:"HarmonyRemind,omitempty" xml:"HarmonyRemind,omitempty"`
+	HarmonyRemindBody           *string `json:"HarmonyRemindBody,omitempty" xml:"HarmonyRemindBody,omitempty"`
+	HarmonyRemindTitle          *string `json:"HarmonyRemindTitle,omitempty" xml:"HarmonyRemindTitle,omitempty"`
+	HarmonyRenderStyle          *string `json:"HarmonyRenderStyle,omitempty" xml:"HarmonyRenderStyle,omitempty"`
+	HarmonyTestMessage          *bool   `json:"HarmonyTestMessage,omitempty" xml:"HarmonyTestMessage,omitempty"`
+	HarmonyUri                  *string `json:"HarmonyUri,omitempty" xml:"HarmonyUri,omitempty"`
+	// example:
+	//
+	// 123
+	JobKey *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
+	// example:
+	//
+	// 2019-02-20T00:00:00Z
+	PushTime *string `json:"PushTime,omitempty" xml:"PushTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MESSAGE
+	PushType *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
+	// example:
+	//
+	// accs,huawei,xiaomi
+	SendChannels *string `json:"SendChannels,omitempty" xml:"SendChannels,omitempty"`
 	// Deprecated
-	SendSpeed                 *int32   `json:"SendSpeed,omitempty" xml:"SendSpeed,omitempty"`
-	StoreOffline              *bool    `json:"StoreOffline,omitempty" xml:"StoreOffline,omitempty"`
-	Target                    *string  `json:"Target,omitempty" xml:"Target,omitempty"`
-	TargetValue               *string  `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
-	Title                     *string  `json:"Title,omitempty" xml:"Title,omitempty"`
-	Trim                      *bool    `json:"Trim,omitempty" xml:"Trim,omitempty"`
-	IOSApnsEnv                *string  `json:"iOSApnsEnv,omitempty" xml:"iOSApnsEnv,omitempty"`
-	IOSBadge                  *int32   `json:"iOSBadge,omitempty" xml:"iOSBadge,omitempty"`
-	IOSBadgeAutoIncrement     *bool    `json:"iOSBadgeAutoIncrement,omitempty" xml:"iOSBadgeAutoIncrement,omitempty"`
-	IOSExtParameters          *string  `json:"iOSExtParameters,omitempty" xml:"iOSExtParameters,omitempty"`
-	IOSInterruptionLevel      *string  `json:"iOSInterruptionLevel,omitempty" xml:"iOSInterruptionLevel,omitempty"`
-	IOSMusic                  *string  `json:"iOSMusic,omitempty" xml:"iOSMusic,omitempty"`
-	IOSMutableContent         *bool    `json:"iOSMutableContent,omitempty" xml:"iOSMutableContent,omitempty"`
-	IOSNotificationCategory   *string  `json:"iOSNotificationCategory,omitempty" xml:"iOSNotificationCategory,omitempty"`
-	IOSNotificationCollapseId *string  `json:"iOSNotificationCollapseId,omitempty" xml:"iOSNotificationCollapseId,omitempty"`
-	IOSNotificationThreadId   *string  `json:"iOSNotificationThreadId,omitempty" xml:"iOSNotificationThreadId,omitempty"`
-	IOSRelevanceScore         *float64 `json:"iOSRelevanceScore,omitempty" xml:"iOSRelevanceScore,omitempty"`
-	IOSRemind                 *bool    `json:"iOSRemind,omitempty" xml:"iOSRemind,omitempty"`
-	IOSRemindBody             *string  `json:"iOSRemindBody,omitempty" xml:"iOSRemindBody,omitempty"`
-	IOSSilentNotification     *bool    `json:"iOSSilentNotification,omitempty" xml:"iOSSilentNotification,omitempty"`
-	IOSSubtitle               *string  `json:"iOSSubtitle,omitempty" xml:"iOSSubtitle,omitempty"`
+	//
+	// example:
+	//
+	// 0
+	SendSpeed *int32 `json:"SendSpeed,omitempty" xml:"SendSpeed,omitempty"`
+	// example:
+	//
+	// true
+	StoreOffline *bool `json:"StoreOffline,omitempty" xml:"StoreOffline,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DEVICE
+	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// deviceid1,deviceid2
+	TargetValue *string `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
+	// example:
+	//
+	// title
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// false
+	Trim *bool `json:"Trim,omitempty" xml:"Trim,omitempty"`
+	// example:
+	//
+	// DEV
+	IOSApnsEnv *string `json:"iOSApnsEnv,omitempty" xml:"iOSApnsEnv,omitempty"`
+	// example:
+	//
+	// 0
+	IOSBadge *int32 `json:"iOSBadge,omitempty" xml:"iOSBadge,omitempty"`
+	// example:
+	//
+	// true
+	IOSBadgeAutoIncrement *bool `json:"iOSBadgeAutoIncrement,omitempty" xml:"iOSBadgeAutoIncrement,omitempty"`
+	// example:
+	//
+	// {“attachment”: “https://xxxx.xxx/notification_pic.png"}
+	IOSExtParameters *string `json:"iOSExtParameters,omitempty" xml:"iOSExtParameters,omitempty"`
+	// example:
+	//
+	// active
+	IOSInterruptionLevel *string `json:"iOSInterruptionLevel,omitempty" xml:"iOSInterruptionLevel,omitempty"`
+	// example:
+	//
+	// ””
+	IOSMusic *string `json:"iOSMusic,omitempty" xml:"iOSMusic,omitempty"`
+	// example:
+	//
+	// true
+	IOSMutableContent *bool `json:"iOSMutableContent,omitempty" xml:"iOSMutableContent,omitempty"`
+	// example:
+	//
+	// ios
+	IOSNotificationCategory *string `json:"iOSNotificationCategory,omitempty" xml:"iOSNotificationCategory,omitempty"`
+	// example:
+	//
+	// ZD2011
+	IOSNotificationCollapseId *string `json:"iOSNotificationCollapseId,omitempty" xml:"iOSNotificationCollapseId,omitempty"`
+	// example:
+	//
+	// abc
+	IOSNotificationThreadId *string `json:"iOSNotificationThreadId,omitempty" xml:"iOSNotificationThreadId,omitempty"`
+	// example:
+	//
+	// 0.01
+	IOSRelevanceScore *float64 `json:"iOSRelevanceScore,omitempty" xml:"iOSRelevanceScore,omitempty"`
+	// example:
+	//
+	// true
+	IOSRemind     *bool   `json:"iOSRemind,omitempty" xml:"iOSRemind,omitempty"`
+	IOSRemindBody *string `json:"iOSRemindBody,omitempty" xml:"iOSRemindBody,omitempty"`
+	// example:
+	//
+	// true
+	IOSSilentNotification *bool `json:"iOSSilentNotification,omitempty" xml:"iOSSilentNotification,omitempty"`
+	// example:
+	//
+	// subtitle
+	IOSSubtitle *string `json:"iOSSubtitle,omitempty" xml:"iOSSubtitle,omitempty"`
 }
 
 func (s MassPushRequestPushTask) String() string {
@@ -1307,6 +1699,81 @@ func (s *MassPushRequestPushTask) SetExpireTime(v string) *MassPushRequestPushTa
 	return s
 }
 
+func (s *MassPushRequestPushTask) SetHarmonyAction(v string) *MassPushRequestPushTask {
+	s.HarmonyAction = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetHarmonyActionType(v string) *MassPushRequestPushTask {
+	s.HarmonyActionType = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetHarmonyCategory(v string) *MassPushRequestPushTask {
+	s.HarmonyCategory = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetHarmonyExtParameters(v string) *MassPushRequestPushTask {
+	s.HarmonyExtParameters = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetHarmonyImageUrl(v string) *MassPushRequestPushTask {
+	s.HarmonyImageUrl = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetHarmonyInboxContent(v string) *MassPushRequestPushTask {
+	s.HarmonyInboxContent = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetHarmonyNotificationSlotType(v string) *MassPushRequestPushTask {
+	s.HarmonyNotificationSlotType = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetHarmonyNotifyId(v int32) *MassPushRequestPushTask {
+	s.HarmonyNotifyId = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetHarmonyReceiptId(v string) *MassPushRequestPushTask {
+	s.HarmonyReceiptId = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetHarmonyRemind(v bool) *MassPushRequestPushTask {
+	s.HarmonyRemind = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetHarmonyRemindBody(v string) *MassPushRequestPushTask {
+	s.HarmonyRemindBody = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetHarmonyRemindTitle(v string) *MassPushRequestPushTask {
+	s.HarmonyRemindTitle = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetHarmonyRenderStyle(v string) *MassPushRequestPushTask {
+	s.HarmonyRenderStyle = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetHarmonyTestMessage(v bool) *MassPushRequestPushTask {
+	s.HarmonyTestMessage = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetHarmonyUri(v string) *MassPushRequestPushTask {
+	s.HarmonyUri = &v
+	return s
+}
+
 func (s *MassPushRequestPushTask) SetJobKey(v string) *MassPushRequestPushTask {
 	s.JobKey = &v
 	return s
@@ -1434,7 +1901,10 @@ func (s *MassPushRequestPushTask) SetIOSSubtitle(v string) *MassPushRequestPushT
 
 type MassPushResponseBody struct {
 	MessageIds *MassPushResponseBodyMessageIds `json:"MessageIds,omitempty" xml:"MessageIds,omitempty" type:"Struct"`
-	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 9998B3CC-ED9E-4CB3-A8FB-DCC61296BFBC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s MassPushResponseBody) String() string {
@@ -1473,9 +1943,9 @@ func (s *MassPushResponseBodyMessageIds) SetMessageId(v []*string) *MassPushResp
 }
 
 type MassPushResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *MassPushResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MassPushResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s MassPushResponse) String() string {
@@ -1502,83 +1972,291 @@ func (s *MassPushResponse) SetBody(v *MassPushResponseBody) *MassPushResponse {
 }
 
 type PushRequest struct {
-	AndroidActivity                  *string `json:"AndroidActivity,omitempty" xml:"AndroidActivity,omitempty"`
-	AndroidBigBody                   *string `json:"AndroidBigBody,omitempty" xml:"AndroidBigBody,omitempty"`
-	AndroidBigPictureUrl             *string `json:"AndroidBigPictureUrl,omitempty" xml:"AndroidBigPictureUrl,omitempty"`
-	AndroidBigTitle                  *string `json:"AndroidBigTitle,omitempty" xml:"AndroidBigTitle,omitempty"`
-	AndroidExtParameters             *string `json:"AndroidExtParameters,omitempty" xml:"AndroidExtParameters,omitempty"`
-	AndroidHonorTargetUserType       *int32  `json:"AndroidHonorTargetUserType,omitempty" xml:"AndroidHonorTargetUserType,omitempty"`
-	AndroidHuaweiReceiptId           *string `json:"AndroidHuaweiReceiptId,omitempty" xml:"AndroidHuaweiReceiptId,omitempty"`
-	AndroidHuaweiTargetUserType      *int32  `json:"AndroidHuaweiTargetUserType,omitempty" xml:"AndroidHuaweiTargetUserType,omitempty"`
-	AndroidImageUrl                  *string `json:"AndroidImageUrl,omitempty" xml:"AndroidImageUrl,omitempty"`
-	AndroidInboxBody                 *string `json:"AndroidInboxBody,omitempty" xml:"AndroidInboxBody,omitempty"`
-	AndroidMessageHuaweiCategory     *string `json:"AndroidMessageHuaweiCategory,omitempty" xml:"AndroidMessageHuaweiCategory,omitempty"`
-	AndroidMessageHuaweiUrgency      *string `json:"AndroidMessageHuaweiUrgency,omitempty" xml:"AndroidMessageHuaweiUrgency,omitempty"`
-	AndroidMessageVivoCategory       *string `json:"AndroidMessageVivoCategory,omitempty" xml:"AndroidMessageVivoCategory,omitempty"`
-	AndroidMusic                     *string `json:"AndroidMusic,omitempty" xml:"AndroidMusic,omitempty"`
-	AndroidNotificationBarPriority   *int32  `json:"AndroidNotificationBarPriority,omitempty" xml:"AndroidNotificationBarPriority,omitempty"`
-	AndroidNotificationBarType       *int32  `json:"AndroidNotificationBarType,omitempty" xml:"AndroidNotificationBarType,omitempty"`
-	AndroidNotificationChannel       *string `json:"AndroidNotificationChannel,omitempty" xml:"AndroidNotificationChannel,omitempty"`
-	AndroidNotificationGroup         *string `json:"AndroidNotificationGroup,omitempty" xml:"AndroidNotificationGroup,omitempty"`
-	AndroidNotificationHonorChannel  *string `json:"AndroidNotificationHonorChannel,omitempty" xml:"AndroidNotificationHonorChannel,omitempty"`
+	// example:
+	//
+	// com.alibaba.cloudpushdemo.bizactivity
+	AndroidActivity *string `json:"AndroidActivity,omitempty" xml:"AndroidActivity,omitempty"`
+	AndroidBigBody  *string `json:"AndroidBigBody,omitempty" xml:"AndroidBigBody,omitempty"`
+	// example:
+	//
+	// https://imag.example.com/image.png
+	AndroidBigPictureUrl *string `json:"AndroidBigPictureUrl,omitempty" xml:"AndroidBigPictureUrl,omitempty"`
+	AndroidBigTitle      *string `json:"AndroidBigTitle,omitempty" xml:"AndroidBigTitle,omitempty"`
+	// example:
+	//
+	// {"key1":"value1","api_name":"PushNoticeToAndroidRequest"}
+	AndroidExtParameters       *string `json:"AndroidExtParameters,omitempty" xml:"AndroidExtParameters,omitempty"`
+	AndroidHonorTargetUserType *int32  `json:"AndroidHonorTargetUserType,omitempty" xml:"AndroidHonorTargetUserType,omitempty"`
+	// example:
+	//
+	// RCP4C123456
+	AndroidHuaweiReceiptId *string `json:"AndroidHuaweiReceiptId,omitempty" xml:"AndroidHuaweiReceiptId,omitempty"`
+	// example:
+	//
+	// 0
+	AndroidHuaweiTargetUserType *int32 `json:"AndroidHuaweiTargetUserType,omitempty" xml:"AndroidHuaweiTargetUserType,omitempty"`
+	// example:
+	//
+	// https://imag.example.com/image.png
+	AndroidImageUrl  *string `json:"AndroidImageUrl,omitempty" xml:"AndroidImageUrl,omitempty"`
+	AndroidInboxBody *string `json:"AndroidInboxBody,omitempty" xml:"AndroidInboxBody,omitempty"`
+	// example:
+	//
+	// VOIP
+	AndroidMessageHuaweiCategory *string `json:"AndroidMessageHuaweiCategory,omitempty" xml:"AndroidMessageHuaweiCategory,omitempty"`
+	// example:
+	//
+	// HIGH
+	AndroidMessageHuaweiUrgency *string `json:"AndroidMessageHuaweiUrgency,omitempty" xml:"AndroidMessageHuaweiUrgency,omitempty"`
+	// example:
+	//
+	// TODO
+	AndroidMessageVivoCategory *string `json:"AndroidMessageVivoCategory,omitempty" xml:"AndroidMessageVivoCategory,omitempty"`
+	AndroidMusic               *string `json:"AndroidMusic,omitempty" xml:"AndroidMusic,omitempty"`
+	// example:
+	//
+	// 0
+	AndroidNotificationBarPriority *int32 `json:"AndroidNotificationBarPriority,omitempty" xml:"AndroidNotificationBarPriority,omitempty"`
+	// example:
+	//
+	// 2
+	AndroidNotificationBarType *int32 `json:"AndroidNotificationBarType,omitempty" xml:"AndroidNotificationBarType,omitempty"`
+	// example:
+	//
+	// 1
+	AndroidNotificationChannel *string `json:"AndroidNotificationChannel,omitempty" xml:"AndroidNotificationChannel,omitempty"`
+	// example:
+	//
+	// group-1
+	AndroidNotificationGroup *string `json:"AndroidNotificationGroup,omitempty" xml:"AndroidNotificationGroup,omitempty"`
+	// example:
+	//
+	// LOW
+	AndroidNotificationHonorChannel *string `json:"AndroidNotificationHonorChannel,omitempty" xml:"AndroidNotificationHonorChannel,omitempty"`
+	// example:
+	//
+	// LOW
 	AndroidNotificationHuaweiChannel *string `json:"AndroidNotificationHuaweiChannel,omitempty" xml:"AndroidNotificationHuaweiChannel,omitempty"`
-	AndroidNotificationNotifyId      *int32  `json:"AndroidNotificationNotifyId,omitempty" xml:"AndroidNotificationNotifyId,omitempty"`
-	AndroidNotificationVivoChannel   *string `json:"AndroidNotificationVivoChannel,omitempty" xml:"AndroidNotificationVivoChannel,omitempty"`
+	// example:
+	//
+	// 100001
+	AndroidNotificationNotifyId *int32 `json:"AndroidNotificationNotifyId,omitempty" xml:"AndroidNotificationNotifyId,omitempty"`
+	// example:
+	//
+	// classification
+	AndroidNotificationVivoChannel *string `json:"AndroidNotificationVivoChannel,omitempty" xml:"AndroidNotificationVivoChannel,omitempty"`
+	// example:
+	//
+	// michannel
 	AndroidNotificationXiaomiChannel *string `json:"AndroidNotificationXiaomiChannel,omitempty" xml:"AndroidNotificationXiaomiChannel,omitempty"`
-	AndroidNotifyType                *string `json:"AndroidNotifyType,omitempty" xml:"AndroidNotifyType,omitempty"`
-	AndroidOpenType                  *string `json:"AndroidOpenType,omitempty" xml:"AndroidOpenType,omitempty"`
-	AndroidOpenUrl                   *string `json:"AndroidOpenUrl,omitempty" xml:"AndroidOpenUrl,omitempty"`
-	AndroidPopupActivity             *string `json:"AndroidPopupActivity,omitempty" xml:"AndroidPopupActivity,omitempty"`
-	AndroidPopupBody                 *string `json:"AndroidPopupBody,omitempty" xml:"AndroidPopupBody,omitempty"`
-	AndroidPopupTitle                *string `json:"AndroidPopupTitle,omitempty" xml:"AndroidPopupTitle,omitempty"`
-	AndroidRemind                    *bool   `json:"AndroidRemind,omitempty" xml:"AndroidRemind,omitempty"`
-	AndroidRenderStyle               *int32  `json:"AndroidRenderStyle,omitempty" xml:"AndroidRenderStyle,omitempty"`
-	AndroidTargetUserType            *int32  `json:"AndroidTargetUserType,omitempty" xml:"AndroidTargetUserType,omitempty"`
-	AndroidVivoPushMode              *int32  `json:"AndroidVivoPushMode,omitempty" xml:"AndroidVivoPushMode,omitempty"`
-	AndroidVivoReceiptId             *string `json:"AndroidVivoReceiptId,omitempty" xml:"AndroidVivoReceiptId,omitempty"`
+	// example:
+	//
+	// BOTH
+	AndroidNotifyType *string `json:"AndroidNotifyType,omitempty" xml:"AndroidNotifyType,omitempty"`
+	// example:
+	//
+	// APPLICATION
+	AndroidOpenType *string `json:"AndroidOpenType,omitempty" xml:"AndroidOpenType,omitempty"`
+	// example:
+	//
+	// https://xxxx.xxx
+	AndroidOpenUrl *string `json:"AndroidOpenUrl,omitempty" xml:"AndroidOpenUrl,omitempty"`
+	// example:
+	//
+	// com.alibaba.cloudpushdemo.bizactivity
+	AndroidPopupActivity *string `json:"AndroidPopupActivity,omitempty" xml:"AndroidPopupActivity,omitempty"`
+	// example:
+	//
+	// hello
+	AndroidPopupBody *string `json:"AndroidPopupBody,omitempty" xml:"AndroidPopupBody,omitempty"`
+	// example:
+	//
+	// hello
+	AndroidPopupTitle *string `json:"AndroidPopupTitle,omitempty" xml:"AndroidPopupTitle,omitempty"`
+	// example:
+	//
+	// true
+	AndroidRemind *bool `json:"AndroidRemind,omitempty" xml:"AndroidRemind,omitempty"`
+	// example:
+	//
+	// 1
+	AndroidRenderStyle    *int32 `json:"AndroidRenderStyle,omitempty" xml:"AndroidRenderStyle,omitempty"`
+	AndroidTargetUserType *int32 `json:"AndroidTargetUserType,omitempty" xml:"AndroidTargetUserType,omitempty"`
+	// example:
+	//
+	// 0
+	AndroidVivoPushMode  *int32  `json:"AndroidVivoPushMode,omitempty" xml:"AndroidVivoPushMode,omitempty"`
+	AndroidVivoReceiptId *string `json:"AndroidVivoReceiptId,omitempty" xml:"AndroidVivoReceiptId,omitempty"`
 	// Deprecated
 	AndroidXiaoMiActivity *string `json:"AndroidXiaoMiActivity,omitempty" xml:"AndroidXiaoMiActivity,omitempty"`
 	// Deprecated
 	AndroidXiaoMiNotifyBody *string `json:"AndroidXiaoMiNotifyBody,omitempty" xml:"AndroidXiaoMiNotifyBody,omitempty"`
 	// Deprecated
-	AndroidXiaoMiNotifyTitle   *string `json:"AndroidXiaoMiNotifyTitle,omitempty" xml:"AndroidXiaoMiNotifyTitle,omitempty"`
+	AndroidXiaoMiNotifyTitle *string `json:"AndroidXiaoMiNotifyTitle,omitempty" xml:"AndroidXiaoMiNotifyTitle,omitempty"`
+	// example:
+	//
+	// https://f6.market.xiaomi.com/download/MiPass/aaa/bbb.png
 	AndroidXiaomiBigPictureUrl *string `json:"AndroidXiaomiBigPictureUrl,omitempty" xml:"AndroidXiaomiBigPictureUrl,omitempty"`
-	AndroidXiaomiImageUrl      *string `json:"AndroidXiaomiImageUrl,omitempty" xml:"AndroidXiaomiImageUrl,omitempty"`
-	AppKey                     *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	Body                       *string `json:"Body,omitempty" xml:"Body,omitempty"`
-	DeviceType                 *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	ExpireTime                 *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	JobKey                     *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
-	PushTime                   *string `json:"PushTime,omitempty" xml:"PushTime,omitempty"`
-	PushType                   *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
-	SendChannels               *string `json:"SendChannels,omitempty" xml:"SendChannels,omitempty"`
+	// example:
+	//
+	// https://imag.example.com/image.png
+	AndroidXiaomiImageUrl *string `json:"AndroidXiaomiImageUrl,omitempty" xml:"AndroidXiaomiImageUrl,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23267207
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hello
+	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ALL
+	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// example:
+	//
+	// 2019-02-20T00:00:00Z
+	ExpireTime                  *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	HarmonyAction               *string `json:"HarmonyAction,omitempty" xml:"HarmonyAction,omitempty"`
+	HarmonyActionType           *string `json:"HarmonyActionType,omitempty" xml:"HarmonyActionType,omitempty"`
+	HarmonyCategory             *string `json:"HarmonyCategory,omitempty" xml:"HarmonyCategory,omitempty"`
+	HarmonyExtParameters        *string `json:"HarmonyExtParameters,omitempty" xml:"HarmonyExtParameters,omitempty"`
+	HarmonyImageUrl             *string `json:"HarmonyImageUrl,omitempty" xml:"HarmonyImageUrl,omitempty"`
+	HarmonyInboxContent         *string `json:"HarmonyInboxContent,omitempty" xml:"HarmonyInboxContent,omitempty"`
+	HarmonyNotificationSlotType *string `json:"HarmonyNotificationSlotType,omitempty" xml:"HarmonyNotificationSlotType,omitempty"`
+	HarmonyNotifyId             *int32  `json:"HarmonyNotifyId,omitempty" xml:"HarmonyNotifyId,omitempty"`
+	HarmonyReceiptId            *string `json:"HarmonyReceiptId,omitempty" xml:"HarmonyReceiptId,omitempty"`
+	HarmonyRemind               *bool   `json:"HarmonyRemind,omitempty" xml:"HarmonyRemind,omitempty"`
+	HarmonyRemindBody           *string `json:"HarmonyRemindBody,omitempty" xml:"HarmonyRemindBody,omitempty"`
+	HarmonyRemindTitle          *string `json:"HarmonyRemindTitle,omitempty" xml:"HarmonyRemindTitle,omitempty"`
+	HarmonyRenderStyle          *string `json:"HarmonyRenderStyle,omitempty" xml:"HarmonyRenderStyle,omitempty"`
+	HarmonyTestMessage          *bool   `json:"HarmonyTestMessage,omitempty" xml:"HarmonyTestMessage,omitempty"`
+	HarmonyUri                  *string `json:"HarmonyUri,omitempty" xml:"HarmonyUri,omitempty"`
+	// example:
+	//
+	// 123
+	JobKey *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
+	// example:
+	//
+	// 2019-02-20T00:00:00Z
+	PushTime *string `json:"PushTime,omitempty" xml:"PushTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MESSAGE
+	PushType *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
+	// example:
+	//
+	// accs,huawei,xiaomi
+	SendChannels *string `json:"SendChannels,omitempty" xml:"SendChannels,omitempty"`
 	// Deprecated
-	SendSpeed                 *int32   `json:"SendSpeed,omitempty" xml:"SendSpeed,omitempty"`
-	SmsDelaySecs              *int32   `json:"SmsDelaySecs,omitempty" xml:"SmsDelaySecs,omitempty"`
-	SmsParams                 *string  `json:"SmsParams,omitempty" xml:"SmsParams,omitempty"`
-	SmsSendPolicy             *int32   `json:"SmsSendPolicy,omitempty" xml:"SmsSendPolicy,omitempty"`
-	SmsSignName               *string  `json:"SmsSignName,omitempty" xml:"SmsSignName,omitempty"`
-	SmsTemplateName           *string  `json:"SmsTemplateName,omitempty" xml:"SmsTemplateName,omitempty"`
-	StoreOffline              *bool    `json:"StoreOffline,omitempty" xml:"StoreOffline,omitempty"`
-	Target                    *string  `json:"Target,omitempty" xml:"Target,omitempty"`
-	TargetValue               *string  `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
-	Title                     *string  `json:"Title,omitempty" xml:"Title,omitempty"`
-	Trim                      *bool    `json:"Trim,omitempty" xml:"Trim,omitempty"`
-	IOSApnsEnv                *string  `json:"iOSApnsEnv,omitempty" xml:"iOSApnsEnv,omitempty"`
-	IOSBadge                  *int32   `json:"iOSBadge,omitempty" xml:"iOSBadge,omitempty"`
-	IOSBadgeAutoIncrement     *bool    `json:"iOSBadgeAutoIncrement,omitempty" xml:"iOSBadgeAutoIncrement,omitempty"`
-	IOSExtParameters          *string  `json:"iOSExtParameters,omitempty" xml:"iOSExtParameters,omitempty"`
-	IOSInterruptionLevel      *string  `json:"iOSInterruptionLevel,omitempty" xml:"iOSInterruptionLevel,omitempty"`
-	IOSMusic                  *string  `json:"iOSMusic,omitempty" xml:"iOSMusic,omitempty"`
-	IOSMutableContent         *bool    `json:"iOSMutableContent,omitempty" xml:"iOSMutableContent,omitempty"`
-	IOSNotificationCategory   *string  `json:"iOSNotificationCategory,omitempty" xml:"iOSNotificationCategory,omitempty"`
-	IOSNotificationCollapseId *string  `json:"iOSNotificationCollapseId,omitempty" xml:"iOSNotificationCollapseId,omitempty"`
-	IOSNotificationThreadId   *string  `json:"iOSNotificationThreadId,omitempty" xml:"iOSNotificationThreadId,omitempty"`
-	IOSRelevanceScore         *float64 `json:"iOSRelevanceScore,omitempty" xml:"iOSRelevanceScore,omitempty"`
-	IOSRemind                 *bool    `json:"iOSRemind,omitempty" xml:"iOSRemind,omitempty"`
-	IOSRemindBody             *string  `json:"iOSRemindBody,omitempty" xml:"iOSRemindBody,omitempty"`
-	IOSSilentNotification     *bool    `json:"iOSSilentNotification,omitempty" xml:"iOSSilentNotification,omitempty"`
-	IOSSubtitle               *string  `json:"iOSSubtitle,omitempty" xml:"iOSSubtitle,omitempty"`
+	//
+	// example:
+	//
+	// 0
+	SendSpeed *int32 `json:"SendSpeed,omitempty" xml:"SendSpeed,omitempty"`
+	// example:
+	//
+	// 15
+	SmsDelaySecs *int32 `json:"SmsDelaySecs,omitempty" xml:"SmsDelaySecs,omitempty"`
+	// example:
+	//
+	// key1=value1
+	SmsParams *string `json:"SmsParams,omitempty" xml:"SmsParams,omitempty"`
+	// example:
+	//
+	// 0
+	SmsSendPolicy   *int32  `json:"SmsSendPolicy,omitempty" xml:"SmsSendPolicy,omitempty"`
+	SmsSignName     *string `json:"SmsSignName,omitempty" xml:"SmsSignName,omitempty"`
+	SmsTemplateName *string `json:"SmsTemplateName,omitempty" xml:"SmsTemplateName,omitempty"`
+	// example:
+	//
+	// false
+	StoreOffline *bool `json:"StoreOffline,omitempty" xml:"StoreOffline,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ALL
+	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ALL
+	TargetValue *string `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
+	// example:
+	//
+	// title
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// false
+	Trim *bool `json:"Trim,omitempty" xml:"Trim,omitempty"`
+	// example:
+	//
+	// DEV
+	IOSApnsEnv *string `json:"iOSApnsEnv,omitempty" xml:"iOSApnsEnv,omitempty"`
+	// example:
+	//
+	// 0
+	IOSBadge *int32 `json:"iOSBadge,omitempty" xml:"iOSBadge,omitempty"`
+	// example:
+	//
+	// true
+	IOSBadgeAutoIncrement *bool `json:"iOSBadgeAutoIncrement,omitempty" xml:"iOSBadgeAutoIncrement,omitempty"`
+	// example:
+	//
+	// {“attachment”: “https://xxxx.xxx/notification_pic.png"}
+	IOSExtParameters *string `json:"iOSExtParameters,omitempty" xml:"iOSExtParameters,omitempty"`
+	// example:
+	//
+	// active
+	IOSInterruptionLevel *string `json:"iOSInterruptionLevel,omitempty" xml:"iOSInterruptionLevel,omitempty"`
+	// example:
+	//
+	// ""
+	IOSMusic *string `json:"iOSMusic,omitempty" xml:"iOSMusic,omitempty"`
+	// example:
+	//
+	// true
+	IOSMutableContent *bool `json:"iOSMutableContent,omitempty" xml:"iOSMutableContent,omitempty"`
+	// example:
+	//
+	// ios
+	IOSNotificationCategory *string `json:"iOSNotificationCategory,omitempty" xml:"iOSNotificationCategory,omitempty"`
+	// example:
+	//
+	// ZD2011
+	IOSNotificationCollapseId *string `json:"iOSNotificationCollapseId,omitempty" xml:"iOSNotificationCollapseId,omitempty"`
+	// example:
+	//
+	// abc
+	IOSNotificationThreadId *string `json:"iOSNotificationThreadId,omitempty" xml:"iOSNotificationThreadId,omitempty"`
+	// example:
+	//
+	// 0.01
+	IOSRelevanceScore *float64 `json:"iOSRelevanceScore,omitempty" xml:"iOSRelevanceScore,omitempty"`
+	// example:
+	//
+	// true
+	IOSRemind     *bool   `json:"iOSRemind,omitempty" xml:"iOSRemind,omitempty"`
+	IOSRemindBody *string `json:"iOSRemindBody,omitempty" xml:"iOSRemindBody,omitempty"`
+	// example:
+	//
+	// true
+	IOSSilentNotification *bool `json:"iOSSilentNotification,omitempty" xml:"iOSSilentNotification,omitempty"`
+	// example:
+	//
+	// su\\"b
+	IOSSubtitle *string `json:"iOSSubtitle,omitempty" xml:"iOSSubtitle,omitempty"`
 }
 
 func (s PushRequest) String() string {
@@ -1804,6 +2482,81 @@ func (s *PushRequest) SetExpireTime(v string) *PushRequest {
 	return s
 }
 
+func (s *PushRequest) SetHarmonyAction(v string) *PushRequest {
+	s.HarmonyAction = &v
+	return s
+}
+
+func (s *PushRequest) SetHarmonyActionType(v string) *PushRequest {
+	s.HarmonyActionType = &v
+	return s
+}
+
+func (s *PushRequest) SetHarmonyCategory(v string) *PushRequest {
+	s.HarmonyCategory = &v
+	return s
+}
+
+func (s *PushRequest) SetHarmonyExtParameters(v string) *PushRequest {
+	s.HarmonyExtParameters = &v
+	return s
+}
+
+func (s *PushRequest) SetHarmonyImageUrl(v string) *PushRequest {
+	s.HarmonyImageUrl = &v
+	return s
+}
+
+func (s *PushRequest) SetHarmonyInboxContent(v string) *PushRequest {
+	s.HarmonyInboxContent = &v
+	return s
+}
+
+func (s *PushRequest) SetHarmonyNotificationSlotType(v string) *PushRequest {
+	s.HarmonyNotificationSlotType = &v
+	return s
+}
+
+func (s *PushRequest) SetHarmonyNotifyId(v int32) *PushRequest {
+	s.HarmonyNotifyId = &v
+	return s
+}
+
+func (s *PushRequest) SetHarmonyReceiptId(v string) *PushRequest {
+	s.HarmonyReceiptId = &v
+	return s
+}
+
+func (s *PushRequest) SetHarmonyRemind(v bool) *PushRequest {
+	s.HarmonyRemind = &v
+	return s
+}
+
+func (s *PushRequest) SetHarmonyRemindBody(v string) *PushRequest {
+	s.HarmonyRemindBody = &v
+	return s
+}
+
+func (s *PushRequest) SetHarmonyRemindTitle(v string) *PushRequest {
+	s.HarmonyRemindTitle = &v
+	return s
+}
+
+func (s *PushRequest) SetHarmonyRenderStyle(v string) *PushRequest {
+	s.HarmonyRenderStyle = &v
+	return s
+}
+
+func (s *PushRequest) SetHarmonyTestMessage(v bool) *PushRequest {
+	s.HarmonyTestMessage = &v
+	return s
+}
+
+func (s *PushRequest) SetHarmonyUri(v string) *PushRequest {
+	s.HarmonyUri = &v
+	return s
+}
+
 func (s *PushRequest) SetJobKey(v string) *PushRequest {
 	s.JobKey = &v
 	return s
@@ -1955,7 +2708,13 @@ func (s *PushRequest) SetIOSSubtitle(v string) *PushRequest {
 }
 
 type PushResponseBody struct {
+	// example:
+	//
+	// 501029
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// example:
+	//
+	// 9998B3CC-ED9E-4CB3-A8FB-DCC61296BFBC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1978,9 +2737,9 @@ func (s *PushResponseBody) SetRequestId(v string) *PushResponseBody {
 }
 
 type PushResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PushResponseBody  `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PushResponseBody  `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PushResponse) String() string {
@@ -2007,13 +2766,41 @@ func (s *PushResponse) SetBody(v *PushResponseBody) *PushResponse {
 }
 
 type PushMessageToAndroidRequest struct {
-	AppKey       *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	Body         *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23267207
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// my body
+	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	// example:
+	//
+	// 123
 	JobKey       *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
 	StoreOffline *bool   `json:"StoreOffline,omitempty" xml:"StoreOffline,omitempty"`
-	Target       *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	TargetValue  *string `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
-	Title        *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ALL
+	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// all
+	TargetValue *string `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// my title
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s PushMessageToAndroidRequest) String() string {
@@ -2060,7 +2847,13 @@ func (s *PushMessageToAndroidRequest) SetTitle(v string) *PushMessageToAndroidRe
 }
 
 type PushMessageToAndroidResponseBody struct {
+	// example:
+	//
+	// 501029
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// example:
+	//
+	// 9998B3CC-ED9E-4CB3-A8FB-DCC61296BFBC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2083,9 +2876,9 @@ func (s *PushMessageToAndroidResponseBody) SetRequestId(v string) *PushMessageTo
 }
 
 type PushMessageToAndroidResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PushMessageToAndroidResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PushMessageToAndroidResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PushMessageToAndroidResponse) String() string {
@@ -2112,13 +2905,41 @@ func (s *PushMessageToAndroidResponse) SetBody(v *PushMessageToAndroidResponseBo
 }
 
 type PushMessageToiOSRequest struct {
-	AppKey       *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	Body         *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 24780725
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// my body
+	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	// example:
+	//
+	// 123
 	JobKey       *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
 	StoreOffline *bool   `json:"StoreOffline,omitempty" xml:"StoreOffline,omitempty"`
-	Target       *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	TargetValue  *string `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
-	Title        *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ALL
+	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// all
+	TargetValue *string `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// my title
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s PushMessageToiOSRequest) String() string {
@@ -2165,7 +2986,13 @@ func (s *PushMessageToiOSRequest) SetTitle(v string) *PushMessageToiOSRequest {
 }
 
 type PushMessageToiOSResponseBody struct {
+	// example:
+	//
+	// 501029
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// example:
+	//
+	// 9998B3CC-ED9E-4CB3-A8FB-DCC61296BFBC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2188,9 +3015,9 @@ func (s *PushMessageToiOSResponseBody) SetRequestId(v string) *PushMessageToiOSR
 }
 
 type PushMessageToiOSResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PushMessageToiOSResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PushMessageToiOSResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PushMessageToiOSResponse) String() string {
@@ -2217,14 +3044,45 @@ func (s *PushMessageToiOSResponse) SetBody(v *PushMessageToiOSResponseBody) *Pus
 }
 
 type PushNoticeToAndroidRequest struct {
-	AppKey        *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	Body          *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23267207
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// body
+	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	// example:
+	//
+	// {"key1":"value1","api_name":"PushNoticeToAndroidRequest"}
 	ExtParameters *string `json:"ExtParameters,omitempty" xml:"ExtParameters,omitempty"`
-	JobKey        *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
-	StoreOffline  *bool   `json:"StoreOffline,omitempty" xml:"StoreOffline,omitempty"`
-	Target        *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	TargetValue   *string `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
-	Title         *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// 123
+	JobKey       *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
+	StoreOffline *bool   `json:"StoreOffline,omitempty" xml:"StoreOffline,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ALL
+	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ALL
+	TargetValue *string `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// title
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s PushNoticeToAndroidRequest) String() string {
@@ -2276,7 +3134,13 @@ func (s *PushNoticeToAndroidRequest) SetTitle(v string) *PushNoticeToAndroidRequ
 }
 
 type PushNoticeToAndroidResponseBody struct {
+	// example:
+	//
+	// 501029
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// example:
+	//
+	// 9998B3CC-ED9E-4CB3-A8FB-DCC61296BFBC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2299,9 +3163,9 @@ func (s *PushNoticeToAndroidResponseBody) SetRequestId(v string) *PushNoticeToAn
 }
 
 type PushNoticeToAndroidResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PushNoticeToAndroidResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PushNoticeToAndroidResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PushNoticeToAndroidResponse) String() string {
@@ -2328,14 +3192,48 @@ func (s *PushNoticeToAndroidResponse) SetBody(v *PushNoticeToAndroidResponseBody
 }
 
 type PushNoticeToiOSRequest struct {
-	ApnsEnv       *string `json:"ApnsEnv,omitempty" xml:"ApnsEnv,omitempty"`
-	AppKey        *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	Body          *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DEV
+	ApnsEnv *string `json:"ApnsEnv,omitempty" xml:"ApnsEnv,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 24780725
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Hello World
+	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	// example:
+	//
+	// {"k1":"ios","k2":"v2"}
 	ExtParameters *string `json:"ExtParameters,omitempty" xml:"ExtParameters,omitempty"`
-	JobKey        *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
-	Target        *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	TargetValue   *string `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
-	Title         *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// 123
+	JobKey *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ALL
+	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ALL
+	TargetValue *string `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
+	// example:
+	//
+	// title
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s PushNoticeToiOSRequest) String() string {
@@ -2387,7 +3285,13 @@ func (s *PushNoticeToiOSRequest) SetTitle(v string) *PushNoticeToiOSRequest {
 }
 
 type PushNoticeToiOSResponseBody struct {
+	// example:
+	//
+	// 9998B3CC-ED9E-4CB3-A8FB-DCC61296BFBC
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// example:
+	//
+	// 501029
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2410,9 +3314,9 @@ func (s *PushNoticeToiOSResponseBody) SetRequestId(v string) *PushNoticeToiOSRes
 }
 
 type PushNoticeToiOSResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PushNoticeToiOSResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PushNoticeToiOSResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PushNoticeToiOSResponse) String() string {
@@ -2439,7 +3343,17 @@ func (s *PushNoticeToiOSResponse) SetBody(v *PushNoticeToiOSResponseBody) *PushN
 }
 
 type QueryAliasesRequest struct {
-	AppKey   *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23267207
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e2ba19de97604f55b165576****
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 }
 
@@ -2463,7 +3377,10 @@ func (s *QueryAliasesRequest) SetDeviceId(v string) *QueryAliasesRequest {
 
 type QueryAliasesResponseBody struct {
 	AliasInfos *QueryAliasesResponseBodyAliasInfos `json:"AliasInfos,omitempty" xml:"AliasInfos,omitempty" type:"Struct"`
-	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 159E4422-6624-4750-8943-DFD98D34858C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryAliasesResponseBody) String() string {
@@ -2502,6 +3419,9 @@ func (s *QueryAliasesResponseBodyAliasInfos) SetAliasInfo(v []*QueryAliasesRespo
 }
 
 type QueryAliasesResponseBodyAliasInfosAliasInfo struct {
+	// example:
+	//
+	// test_alias1
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
 }
 
@@ -2519,9 +3439,9 @@ func (s *QueryAliasesResponseBodyAliasInfosAliasInfo) SetAliasName(v string) *Qu
 }
 
 type QueryAliasesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryAliasesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryAliasesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryAliasesResponse) String() string {
@@ -2548,7 +3468,17 @@ func (s *QueryAliasesResponse) SetBody(v *QueryAliasesResponseBody) *QueryAliase
 }
 
 type QueryDeviceInfoRequest struct {
-	AppKey   *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23419851
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a64ae296f3b04a58a05b30c9****
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 }
 
@@ -2572,7 +3502,10 @@ func (s *QueryDeviceInfoRequest) SetDeviceId(v string) *QueryDeviceInfoRequest {
 
 type QueryDeviceInfoResponseBody struct {
 	DeviceInfo *QueryDeviceInfoResponseBodyDeviceInfo `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty" type:"Struct"`
-	RequestId  *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 6EEF262B-EA7D-41DC-89B9-20F3D1E28194
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryDeviceInfoResponseBody) String() string {
@@ -2594,18 +3527,48 @@ func (s *QueryDeviceInfoResponseBody) SetRequestId(v string) *QueryDeviceInfoRes
 }
 
 type QueryDeviceInfoResponseBodyDeviceInfo struct {
-	Account        *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	Alias          *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	Brand          *string `json:"Brand,omitempty" xml:"Brand,omitempty"`
-	DeviceId       *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	DeviceToken    *string `json:"DeviceToken,omitempty" xml:"DeviceToken,omitempty"`
-	DeviceType     *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// example:
+	//
+	// test@aliyun.com
+	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// example:
+	//
+	// test_alias,test_alias2
+	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	Brand *string `json:"Brand,omitempty" xml:"Brand,omitempty"`
+	// example:
+	//
+	// a64ae296f3b04a58a05b30c95****
+	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// example:
+	//
+	// 5ecc7b4012aaa801b63******5543ccbda6b4930d09629e936e1ac4b762a7df
+	DeviceToken *string `json:"DeviceToken,omitempty" xml:"DeviceToken,omitempty"`
+	// example:
+	//
+	// iOS
+	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// example:
+	//
+	// 2018-03-27T02:19:40Z
 	LastOnlineTime *string `json:"LastOnlineTime,omitempty" xml:"LastOnlineTime,omitempty"`
 	Model          *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	Online         *bool   `json:"Online,omitempty" xml:"Online,omitempty"`
-	PhoneNumber    *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	PushEnabled    *bool   `json:"PushEnabled,omitempty" xml:"PushEnabled,omitempty"`
-	Tags           *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// example:
+	//
+	// false
+	Online *bool `json:"Online,omitempty" xml:"Online,omitempty"`
+	// example:
+	//
+	// 133********
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// example:
+	//
+	// true
+	PushEnabled *bool `json:"PushEnabled,omitempty" xml:"PushEnabled,omitempty"`
+	// example:
+	//
+	// test_tag,test_tag2
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s QueryDeviceInfoResponseBodyDeviceInfo) String() string {
@@ -2677,9 +3640,9 @@ func (s *QueryDeviceInfoResponseBodyDeviceInfo) SetTags(v string) *QueryDeviceIn
 }
 
 type QueryDeviceInfoResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryDeviceInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryDeviceInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryDeviceInfoResponse) String() string {
@@ -2706,11 +3669,36 @@ func (s *QueryDeviceInfoResponse) SetBody(v *QueryDeviceInfoResponseBody) *Query
 }
 
 type QueryDeviceStatRequest struct {
-	AppKey     *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23267207
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// iOS
 	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	QueryType  *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
-	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2016-07-29T00:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// TOTAL
+	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2016-07-28T00:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s QueryDeviceStatRequest) String() string {
@@ -2748,7 +3736,10 @@ func (s *QueryDeviceStatRequest) SetStartTime(v string) *QueryDeviceStatRequest 
 
 type QueryDeviceStatResponseBody struct {
 	AppDeviceStats *QueryDeviceStatResponseBodyAppDeviceStats `json:"AppDeviceStats,omitempty" xml:"AppDeviceStats,omitempty" type:"Struct"`
-	RequestId      *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 9998B3CC-ED9E-4CB3-A8FB-DCC61296BFBC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryDeviceStatResponseBody) String() string {
@@ -2787,9 +3778,18 @@ func (s *QueryDeviceStatResponseBodyAppDeviceStats) SetAppDeviceStat(v []*QueryD
 }
 
 type QueryDeviceStatResponseBodyAppDeviceStatsAppDeviceStat struct {
-	Count      *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// 100
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// iOS
 	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	Time       *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	// example:
+	//
+	// 2016-07-28T16:00:00Z
+	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s QueryDeviceStatResponseBodyAppDeviceStatsAppDeviceStat) String() string {
@@ -2816,9 +3816,9 @@ func (s *QueryDeviceStatResponseBodyAppDeviceStatsAppDeviceStat) SetTime(v strin
 }
 
 type QueryDeviceStatResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryDeviceStatResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryDeviceStatResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryDeviceStatResponse) String() string {
@@ -2845,8 +3845,18 @@ func (s *QueryDeviceStatResponse) SetBody(v *QueryDeviceStatResponseBody) *Query
 }
 
 type QueryDevicesByAccountRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// accountName
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	AppKey  *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23267207
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
 }
 
 func (s QueryDevicesByAccountRequest) String() string {
@@ -2869,7 +3879,10 @@ func (s *QueryDevicesByAccountRequest) SetAppKey(v int64) *QueryDevicesByAccount
 
 type QueryDevicesByAccountResponseBody struct {
 	DeviceIds *QueryDevicesByAccountResponseBodyDeviceIds `json:"DeviceIds,omitempty" xml:"DeviceIds,omitempty" type:"Struct"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// A8A24108-2AD0-4F6E-81C7-A8A24C2C2AD0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryDevicesByAccountResponseBody) String() string {
@@ -2908,9 +3921,9 @@ func (s *QueryDevicesByAccountResponseBodyDeviceIds) SetDeviceId(v []*string) *Q
 }
 
 type QueryDevicesByAccountResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryDevicesByAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryDevicesByAccountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryDevicesByAccountResponse) String() string {
@@ -2937,8 +3950,18 @@ func (s *QueryDevicesByAccountResponse) SetBody(v *QueryDevicesByAccountResponse
 }
 
 type QueryDevicesByAliasRequest struct {
-	Alias  *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	AppKey *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aliasName
+	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23267207
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
 }
 
 func (s QueryDevicesByAliasRequest) String() string {
@@ -2961,7 +3984,10 @@ func (s *QueryDevicesByAliasRequest) SetAppKey(v int64) *QueryDevicesByAliasRequ
 
 type QueryDevicesByAliasResponseBody struct {
 	DeviceIds *QueryDevicesByAliasResponseBodyDeviceIds `json:"DeviceIds,omitempty" xml:"DeviceIds,omitempty" type:"Struct"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 6A9FD644-35A5-40E4-89B0-2021CAEDC1B4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryDevicesByAliasResponseBody) String() string {
@@ -3000,9 +4026,9 @@ func (s *QueryDevicesByAliasResponseBodyDeviceIds) SetDeviceId(v []*string) *Que
 }
 
 type QueryDevicesByAliasResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryDevicesByAliasResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryDevicesByAliasResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryDevicesByAliasResponse) String() string {
@@ -3029,16 +4055,49 @@ func (s *QueryDevicesByAliasResponse) SetBody(v *QueryDevicesByAliasResponseBody
 }
 
 type QueryPushRecordsRequest struct {
-	AppKey    *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Keyword   *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 333526247
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2021-09-29T06:24:58Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// example:
+	//
+	// FFPpkmhCPm*****************xjk=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Page      *int32  `json:"Page,omitempty" xml:"Page,omitempty"`
-	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PushType  *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
-	Source    *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// 8
+	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// NOTICE
+	PushType *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
+	// example:
+	//
+	// API
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2021-09-15T02:05:24Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Target    *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// example:
+	//
+	// DEVICE
+	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
 }
 
 func (s QueryPushRecordsRequest) String() string {
@@ -3100,12 +4159,27 @@ func (s *QueryPushRecordsRequest) SetTarget(v string) *QueryPushRecordsRequest {
 }
 
 type QueryPushRecordsResponseBody struct {
-	NextToken *string                                `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Page      *int32                                 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// example:
+	//
+	// i91D***********kXIh/dVBEQ==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 11
+	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// example:
+	//
+	// 20
 	PageSize  *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PushInfos *QueryPushRecordsResponseBodyPushInfos `json:"PushInfos,omitempty" xml:"PushInfos,omitempty" type:"Struct"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total     *int32                                 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 9B24B396-249D-55E4-8CA1-66C9B50BB734
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 193
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s QueryPushRecordsResponseBody) String() string {
@@ -3164,16 +4238,46 @@ func (s *QueryPushRecordsResponseBodyPushInfos) SetPushInfo(v []*QueryPushRecord
 }
 
 type QueryPushRecordsResponseBodyPushInfosPushInfo struct {
-	AppKey     *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	Body       *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	// example:
+	//
+	// 333526247
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// example:
+	//
+	// abcd
+	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	// example:
+	//
+	// ANDROID
 	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	MessageId  *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	PushTime   *string `json:"PushTime,omitempty" xml:"PushTime,omitempty"`
-	PushType   *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
-	Source     *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Target     *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	Title      *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// 510431
+	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// example:
+	//
+	// 2021-09-15T02:05:24Z
+	PushTime *string `json:"PushTime,omitempty" xml:"PushTime,omitempty"`
+	// example:
+	//
+	// NOTICE
+	PushType *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
+	// example:
+	//
+	// DEVICE
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// SENT
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// DEVICE
+	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// example:
+	//
+	// sssss
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s QueryPushRecordsResponseBodyPushInfosPushInfo) String() string {
@@ -3235,9 +4339,9 @@ func (s *QueryPushRecordsResponseBodyPushInfosPushInfo) SetTitle(v string) *Quer
 }
 
 type QueryPushRecordsResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryPushRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryPushRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryPushRecordsResponse) String() string {
@@ -3264,10 +4368,30 @@ func (s *QueryPushRecordsResponse) SetBody(v *QueryPushRecordsResponseBody) *Que
 }
 
 type QueryPushStatByAppRequest struct {
-	AppKey      *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23267207
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2016-07-29T00:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DAY
 	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
-	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2016-07-25T00:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s QueryPushStatByAppRequest) String() string {
@@ -3300,7 +4424,10 @@ func (s *QueryPushStatByAppRequest) SetStartTime(v string) *QueryPushStatByAppRe
 
 type QueryPushStatByAppResponseBody struct {
 	AppPushStats *QueryPushStatByAppResponseBodyAppPushStats `json:"AppPushStats,omitempty" xml:"AppPushStats,omitempty" type:"Struct"`
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 9998B3CC-ED9E-4CB3-A8FB-DCC61296BFBC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryPushStatByAppResponseBody) String() string {
@@ -3339,17 +4466,50 @@ func (s *QueryPushStatByAppResponseBodyAppPushStats) SetAppPushStat(v []*QueryPu
 }
 
 type QueryPushStatByAppResponseBodyAppPushStatsAppPushStat struct {
-	AcceptCount            *int64  `json:"AcceptCount,omitempty" xml:"AcceptCount,omitempty"`
-	DeletedCount           *int64  `json:"DeletedCount,omitempty" xml:"DeletedCount,omitempty"`
-	OpenedCount            *int64  `json:"OpenedCount,omitempty" xml:"OpenedCount,omitempty"`
-	ReceivedCount          *int64  `json:"ReceivedCount,omitempty" xml:"ReceivedCount,omitempty"`
-	SentCount              *int64  `json:"SentCount,omitempty" xml:"SentCount,omitempty"`
-	SmsFailedCount         *int64  `json:"SmsFailedCount,omitempty" xml:"SmsFailedCount,omitempty"`
-	SmsReceiveFailedCount  *int64  `json:"SmsReceiveFailedCount,omitempty" xml:"SmsReceiveFailedCount,omitempty"`
-	SmsReceiveSuccessCount *int64  `json:"SmsReceiveSuccessCount,omitempty" xml:"SmsReceiveSuccessCount,omitempty"`
-	SmsSentCount           *int64  `json:"SmsSentCount,omitempty" xml:"SmsSentCount,omitempty"`
-	SmsSkipCount           *int64  `json:"SmsSkipCount,omitempty" xml:"SmsSkipCount,omitempty"`
-	Time                   *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	// example:
+	//
+	// 120
+	AcceptCount *int64 `json:"AcceptCount,omitempty" xml:"AcceptCount,omitempty"`
+	// example:
+	//
+	// 10
+	DeletedCount *int64 `json:"DeletedCount,omitempty" xml:"DeletedCount,omitempty"`
+	// example:
+	//
+	// 30
+	OpenedCount *int64 `json:"OpenedCount,omitempty" xml:"OpenedCount,omitempty"`
+	// example:
+	//
+	// 60
+	ReceivedCount *int64 `json:"ReceivedCount,omitempty" xml:"ReceivedCount,omitempty"`
+	// example:
+	//
+	// 100
+	SentCount *int64 `json:"SentCount,omitempty" xml:"SentCount,omitempty"`
+	// example:
+	//
+	// 0
+	SmsFailedCount *int64 `json:"SmsFailedCount,omitempty" xml:"SmsFailedCount,omitempty"`
+	// example:
+	//
+	// 0
+	SmsReceiveFailedCount *int64 `json:"SmsReceiveFailedCount,omitempty" xml:"SmsReceiveFailedCount,omitempty"`
+	// example:
+	//
+	// 0
+	SmsReceiveSuccessCount *int64 `json:"SmsReceiveSuccessCount,omitempty" xml:"SmsReceiveSuccessCount,omitempty"`
+	// example:
+	//
+	// 0
+	SmsSentCount *int64 `json:"SmsSentCount,omitempty" xml:"SmsSentCount,omitempty"`
+	// example:
+	//
+	// 0
+	SmsSkipCount *int64 `json:"SmsSkipCount,omitempty" xml:"SmsSkipCount,omitempty"`
+	// example:
+	//
+	// 2016-07-25T00:00:00Z
+	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s QueryPushStatByAppResponseBodyAppPushStatsAppPushStat) String() string {
@@ -3416,9 +4576,9 @@ func (s *QueryPushStatByAppResponseBodyAppPushStatsAppPushStat) SetTime(v string
 }
 
 type QueryPushStatByAppResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryPushStatByAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryPushStatByAppResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryPushStatByAppResponse) String() string {
@@ -3445,7 +4605,17 @@ func (s *QueryPushStatByAppResponse) SetBody(v *QueryPushStatByAppResponseBody) 
 }
 
 type QueryPushStatByMsgRequest struct {
-	AppKey    *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23267207
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 510427
 	MessageId *int64 `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
 }
 
@@ -3469,7 +4639,10 @@ func (s *QueryPushStatByMsgRequest) SetMessageId(v int64) *QueryPushStatByMsgReq
 
 type QueryPushStatByMsgResponseBody struct {
 	PushStats *QueryPushStatByMsgResponseBodyPushStats `json:"PushStats,omitempty" xml:"PushStats,omitempty" type:"Struct"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// CF195C34-98FB-491A-98D7-19CBC1FA880B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryPushStatByMsgResponseBody) String() string {
@@ -3508,17 +4681,50 @@ func (s *QueryPushStatByMsgResponseBodyPushStats) SetPushStat(v []*QueryPushStat
 }
 
 type QueryPushStatByMsgResponseBodyPushStatsPushStat struct {
-	AcceptCount            *int64  `json:"AcceptCount,omitempty" xml:"AcceptCount,omitempty"`
-	DeletedCount           *int64  `json:"DeletedCount,omitempty" xml:"DeletedCount,omitempty"`
-	MessageId              *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	OpenedCount            *int64  `json:"OpenedCount,omitempty" xml:"OpenedCount,omitempty"`
-	ReceivedCount          *int64  `json:"ReceivedCount,omitempty" xml:"ReceivedCount,omitempty"`
-	SentCount              *int64  `json:"SentCount,omitempty" xml:"SentCount,omitempty"`
-	SmsFailedCount         *int64  `json:"SmsFailedCount,omitempty" xml:"SmsFailedCount,omitempty"`
-	SmsReceiveFailedCount  *int64  `json:"SmsReceiveFailedCount,omitempty" xml:"SmsReceiveFailedCount,omitempty"`
-	SmsReceiveSuccessCount *int64  `json:"SmsReceiveSuccessCount,omitempty" xml:"SmsReceiveSuccessCount,omitempty"`
-	SmsSentCount           *int64  `json:"SmsSentCount,omitempty" xml:"SmsSentCount,omitempty"`
-	SmsSkipCount           *int64  `json:"SmsSkipCount,omitempty" xml:"SmsSkipCount,omitempty"`
+	// example:
+	//
+	// 120
+	AcceptCount *int64 `json:"AcceptCount,omitempty" xml:"AcceptCount,omitempty"`
+	// example:
+	//
+	// 10
+	DeletedCount *int64 `json:"DeletedCount,omitempty" xml:"DeletedCount,omitempty"`
+	// example:
+	//
+	// 510427
+	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// example:
+	//
+	// 30
+	OpenedCount *int64 `json:"OpenedCount,omitempty" xml:"OpenedCount,omitempty"`
+	// example:
+	//
+	// 60
+	ReceivedCount *int64 `json:"ReceivedCount,omitempty" xml:"ReceivedCount,omitempty"`
+	// example:
+	//
+	// 100
+	SentCount *int64 `json:"SentCount,omitempty" xml:"SentCount,omitempty"`
+	// example:
+	//
+	// 0
+	SmsFailedCount *int64 `json:"SmsFailedCount,omitempty" xml:"SmsFailedCount,omitempty"`
+	// example:
+	//
+	// 0
+	SmsReceiveFailedCount *int64 `json:"SmsReceiveFailedCount,omitempty" xml:"SmsReceiveFailedCount,omitempty"`
+	// example:
+	//
+	// 0
+	SmsReceiveSuccessCount *int64 `json:"SmsReceiveSuccessCount,omitempty" xml:"SmsReceiveSuccessCount,omitempty"`
+	// example:
+	//
+	// 0
+	SmsSentCount *int64 `json:"SmsSentCount,omitempty" xml:"SmsSentCount,omitempty"`
+	// example:
+	//
+	// 0
+	SmsSkipCount *int64 `json:"SmsSkipCount,omitempty" xml:"SmsSkipCount,omitempty"`
 }
 
 func (s QueryPushStatByMsgResponseBodyPushStatsPushStat) String() string {
@@ -3585,9 +4791,9 @@ func (s *QueryPushStatByMsgResponseBodyPushStatsPushStat) SetSmsSkipCount(v int6
 }
 
 type QueryPushStatByMsgResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryPushStatByMsgResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryPushStatByMsgResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryPushStatByMsgResponse) String() string {
@@ -3614,9 +4820,24 @@ func (s *QueryPushStatByMsgResponse) SetBody(v *QueryPushStatByMsgResponseBody) 
 }
 
 type QueryTagsRequest struct {
-	AppKey    *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23267207
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e2ba19de97604f55b165576****
 	ClientKey *string `json:"ClientKey,omitempty" xml:"ClientKey,omitempty"`
-	KeyType   *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DEVICE
+	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
 }
 
 func (s QueryTagsRequest) String() string {
@@ -3643,6 +4864,9 @@ func (s *QueryTagsRequest) SetKeyType(v string) *QueryTagsRequest {
 }
 
 type QueryTagsResponseBody struct {
+	// example:
+	//
+	// D68AE5C6-8AAF-46C9-B627-3FDACD1A4168
 	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TagInfos  *QueryTagsResponseBodyTagInfos `json:"TagInfos,omitempty" xml:"TagInfos,omitempty" type:"Struct"`
 }
@@ -3683,6 +4907,9 @@ func (s *QueryTagsResponseBodyTagInfos) SetTagInfo(v []*QueryTagsResponseBodyTag
 }
 
 type QueryTagsResponseBodyTagInfosTagInfo struct {
+	// example:
+	//
+	// test_tag2
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
@@ -3700,9 +4927,9 @@ func (s *QueryTagsResponseBodyTagInfosTagInfo) SetTagName(v string) *QueryTagsRe
 }
 
 type QueryTagsResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryTagsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryTagsResponse) String() string {
@@ -3729,10 +4956,30 @@ func (s *QueryTagsResponse) SetBody(v *QueryTagsResponseBody) *QueryTagsResponse
 }
 
 type QueryUniqueDeviceStatRequest struct {
-	AppKey      *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23267207
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2016-07-26T00:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DAY
 	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
-	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2016-07-25T00:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s QueryUniqueDeviceStatRequest) String() string {
@@ -3765,7 +5012,10 @@ func (s *QueryUniqueDeviceStatRequest) SetStartTime(v string) *QueryUniqueDevice
 
 type QueryUniqueDeviceStatResponseBody struct {
 	AppDeviceStats *QueryUniqueDeviceStatResponseBodyAppDeviceStats `json:"AppDeviceStats,omitempty" xml:"AppDeviceStats,omitempty" type:"Struct"`
-	RequestId      *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 9998B3CC-ED9E-4CB3-A8FB-DCC61296BFBC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryUniqueDeviceStatResponseBody) String() string {
@@ -3804,8 +5054,14 @@ func (s *QueryUniqueDeviceStatResponseBodyAppDeviceStats) SetAppDeviceStat(v []*
 }
 
 type QueryUniqueDeviceStatResponseBodyAppDeviceStatsAppDeviceStat struct {
-	Count *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
-	Time  *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	// example:
+	//
+	// 100
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// 2016-07-25T00:00:00Z
+	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s QueryUniqueDeviceStatResponseBodyAppDeviceStatsAppDeviceStat) String() string {
@@ -3827,9 +5083,9 @@ func (s *QueryUniqueDeviceStatResponseBodyAppDeviceStatsAppDeviceStat) SetTime(v
 }
 
 type QueryUniqueDeviceStatResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryUniqueDeviceStatResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryUniqueDeviceStatResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryUniqueDeviceStatResponse) String() string {
@@ -3856,7 +5112,17 @@ func (s *QueryUniqueDeviceStatResponse) SetBody(v *QueryUniqueDeviceStatResponse
 }
 
 type RemoveTagRequest struct {
-	AppKey  *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23267207
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_tag
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
@@ -3879,6 +5145,9 @@ func (s *RemoveTagRequest) SetTagName(v string) *RemoveTagRequest {
 }
 
 type RemoveTagResponseBody struct {
+	// example:
+	//
+	// 23000F3C-0EFE-4C89-82EE-E04F42D37B3C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3896,9 +5165,9 @@ func (s *RemoveTagResponseBody) SetRequestId(v string) *RemoveTagResponseBody {
 }
 
 type RemoveTagResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RemoveTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveTagResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RemoveTagResponse) String() string {
@@ -3925,10 +5194,26 @@ func (s *RemoveTagResponse) SetBody(v *RemoveTagResponseBody) *RemoveTagResponse
 }
 
 type UnbindAliasRequest struct {
+	// example:
+	//
+	// test_alias
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	AppKey    *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	DeviceId  *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	UnbindAll *bool   `json:"UnbindAll,omitempty" xml:"UnbindAll,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23267207
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e2ba19de97604f55b16557673****
+	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// example:
+	//
+	// true
+	UnbindAll *bool `json:"UnbindAll,omitempty" xml:"UnbindAll,omitempty"`
 }
 
 func (s UnbindAliasRequest) String() string {
@@ -3960,6 +5245,9 @@ func (s *UnbindAliasRequest) SetUnbindAll(v bool) *UnbindAliasRequest {
 }
 
 type UnbindAliasResponseBody struct {
+	// example:
+	//
+	// 159E4422-6624-4750-8943-DFD98D34858C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3977,9 +5265,9 @@ func (s *UnbindAliasResponseBody) SetRequestId(v string) *UnbindAliasResponseBod
 }
 
 type UnbindAliasResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UnbindAliasResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnbindAliasResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UnbindAliasResponse) String() string {
@@ -4006,7 +5294,17 @@ func (s *UnbindAliasResponse) SetBody(v *UnbindAliasResponseBody) *UnbindAliasRe
 }
 
 type UnbindPhoneRequest struct {
-	AppKey   *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23267207
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eb5f741d83d04d34807d229999eefa52
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 }
 
@@ -4029,6 +5327,9 @@ func (s *UnbindPhoneRequest) SetDeviceId(v string) *UnbindPhoneRequest {
 }
 
 type UnbindPhoneResponseBody struct {
+	// example:
+	//
+	// 0D1126F0-F8FF-513D-BAFA-F140447BDED4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4046,9 +5347,9 @@ func (s *UnbindPhoneResponseBody) SetRequestId(v string) *UnbindPhoneResponseBod
 }
 
 type UnbindPhoneResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UnbindPhoneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnbindPhoneResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UnbindPhoneResponse) String() string {
@@ -4075,10 +5376,30 @@ func (s *UnbindPhoneResponse) SetBody(v *UnbindPhoneResponseBody) *UnbindPhoneRe
 }
 
 type UnbindTagRequest struct {
-	AppKey    *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23267207
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e2ba19de97604f55b16557673****
 	ClientKey *string `json:"ClientKey,omitempty" xml:"ClientKey,omitempty"`
-	KeyType   *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
-	TagName   *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DEVICE
+	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_tag1,test_tag2
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
 func (s UnbindTagRequest) String() string {
@@ -4110,6 +5431,9 @@ func (s *UnbindTagRequest) SetTagName(v string) *UnbindTagRequest {
 }
 
 type UnbindTagResponseBody struct {
+	// example:
+	//
+	// 159E4422-6624-4750-8943-DFD98D34858C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4127,9 +5451,9 @@ func (s *UnbindTagResponseBody) SetRequestId(v string) *UnbindTagResponseBody {
 }
 
 type UnbindTagResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UnbindTagResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnbindTagResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UnbindTagResponse) String() string {
@@ -4258,6 +5582,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// @param request - BindAliasRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BindAliasResponse
 func (client *Client) BindAliasWithOptions(request *BindAliasRequest, runtime *util.RuntimeOptions) (_result *BindAliasResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4299,6 +5628,9 @@ func (client *Client) BindAliasWithOptions(request *BindAliasRequest, runtime *u
 	return _result, _err
 }
 
+// @param request - BindAliasRequest
+//
+// @return BindAliasResponse
 func (client *Client) BindAlias(request *BindAliasRequest) (_result *BindAliasResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BindAliasResponse{}
@@ -4310,6 +5642,11 @@ func (client *Client) BindAlias(request *BindAliasRequest) (_result *BindAliasRe
 	return _result, _err
 }
 
+// @param request - BindPhoneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BindPhoneResponse
 func (client *Client) BindPhoneWithOptions(request *BindPhoneRequest, runtime *util.RuntimeOptions) (_result *BindPhoneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4351,6 +5688,9 @@ func (client *Client) BindPhoneWithOptions(request *BindPhoneRequest, runtime *u
 	return _result, _err
 }
 
+// @param request - BindPhoneRequest
+//
+// @return BindPhoneResponse
 func (client *Client) BindPhone(request *BindPhoneRequest) (_result *BindPhoneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BindPhoneResponse{}
@@ -4362,6 +5702,11 @@ func (client *Client) BindPhone(request *BindPhoneRequest) (_result *BindPhoneRe
 	return _result, _err
 }
 
+// @param request - BindTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BindTagResponse
 func (client *Client) BindTagWithOptions(request *BindTagRequest, runtime *util.RuntimeOptions) (_result *BindTagResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4407,6 +5752,9 @@ func (client *Client) BindTagWithOptions(request *BindTagRequest, runtime *util.
 	return _result, _err
 }
 
+// @param request - BindTagRequest
+//
+// @return BindTagResponse
 func (client *Client) BindTag(request *BindTagRequest) (_result *BindTagResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BindTagResponse{}
@@ -4418,6 +5766,11 @@ func (client *Client) BindTag(request *BindTagRequest) (_result *BindTagResponse
 	return _result, _err
 }
 
+// @param request - CancelPushRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelPushResponse
 func (client *Client) CancelPushWithOptions(request *CancelPushRequest, runtime *util.RuntimeOptions) (_result *CancelPushResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4455,6 +5808,9 @@ func (client *Client) CancelPushWithOptions(request *CancelPushRequest, runtime 
 	return _result, _err
 }
 
+// @param request - CancelPushRequest
+//
+// @return CancelPushResponse
 func (client *Client) CancelPush(request *CancelPushRequest) (_result *CancelPushResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelPushResponse{}
@@ -4466,6 +5822,11 @@ func (client *Client) CancelPush(request *CancelPushRequest) (_result *CancelPus
 	return _result, _err
 }
 
+// @param request - CheckCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckCertificateResponse
 func (client *Client) CheckCertificateWithOptions(request *CheckCertificateRequest, runtime *util.RuntimeOptions) (_result *CheckCertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4499,6 +5860,9 @@ func (client *Client) CheckCertificateWithOptions(request *CheckCertificateReque
 	return _result, _err
 }
 
+// @param request - CheckCertificateRequest
+//
+// @return CheckCertificateResponse
 func (client *Client) CheckCertificate(request *CheckCertificateRequest) (_result *CheckCertificateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckCertificateResponse{}
@@ -4510,13 +5874,13 @@ func (client *Client) CheckCertificate(request *CheckCertificateRequest) (_resul
 	return _result, _err
 }
 
-/**
- * @deprecated : CheckDevice is deprecated, please use Push::2016-08-01::CheckDevices instead.
- *
- * @param request CheckDeviceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CheckDeviceResponse
- */
+// Deprecated: OpenAPI CheckDevice is deprecated, please use Push::2016-08-01::CheckDevices instead.
+//
+// @param request - CheckDeviceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckDeviceResponse
 // Deprecated
 func (client *Client) CheckDeviceWithOptions(request *CheckDeviceRequest, runtime *util.RuntimeOptions) (_result *CheckDeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
@@ -4555,12 +5919,11 @@ func (client *Client) CheckDeviceWithOptions(request *CheckDeviceRequest, runtim
 	return _result, _err
 }
 
-/**
- * @deprecated : CheckDevice is deprecated, please use Push::2016-08-01::CheckDevices instead.
- *
- * @param request CheckDeviceRequest
- * @return CheckDeviceResponse
- */
+// Deprecated: OpenAPI CheckDevice is deprecated, please use Push::2016-08-01::CheckDevices instead.
+//
+// @param request - CheckDeviceRequest
+//
+// @return CheckDeviceResponse
 // Deprecated
 func (client *Client) CheckDevice(request *CheckDeviceRequest) (_result *CheckDeviceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
@@ -4573,6 +5936,11 @@ func (client *Client) CheckDevice(request *CheckDeviceRequest) (_result *CheckDe
 	return _result, _err
 }
 
+// @param request - CheckDevicesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckDevicesResponse
 func (client *Client) CheckDevicesWithOptions(request *CheckDevicesRequest, runtime *util.RuntimeOptions) (_result *CheckDevicesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4610,6 +5978,9 @@ func (client *Client) CheckDevicesWithOptions(request *CheckDevicesRequest, runt
 	return _result, _err
 }
 
+// @param request - CheckDevicesRequest
+//
+// @return CheckDevicesResponse
 func (client *Client) CheckDevices(request *CheckDevicesRequest) (_result *CheckDevicesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckDevicesResponse{}
@@ -4621,6 +5992,11 @@ func (client *Client) CheckDevices(request *CheckDevicesRequest) (_result *Check
 	return _result, _err
 }
 
+// @param request - CompleteContinuouslyPushRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CompleteContinuouslyPushResponse
 func (client *Client) CompleteContinuouslyPushWithOptions(request *CompleteContinuouslyPushRequest, runtime *util.RuntimeOptions) (_result *CompleteContinuouslyPushResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4658,6 +6034,9 @@ func (client *Client) CompleteContinuouslyPushWithOptions(request *CompleteConti
 	return _result, _err
 }
 
+// @param request - CompleteContinuouslyPushRequest
+//
+// @return CompleteContinuouslyPushResponse
 func (client *Client) CompleteContinuouslyPush(request *CompleteContinuouslyPushRequest) (_result *CompleteContinuouslyPushResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CompleteContinuouslyPushResponse{}
@@ -4669,6 +6048,11 @@ func (client *Client) CompleteContinuouslyPush(request *CompleteContinuouslyPush
 	return _result, _err
 }
 
+// @param request - ContinuouslyPushRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ContinuouslyPushResponse
 func (client *Client) ContinuouslyPushWithOptions(request *ContinuouslyPushRequest, runtime *util.RuntimeOptions) (_result *ContinuouslyPushResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4714,6 +6098,9 @@ func (client *Client) ContinuouslyPushWithOptions(request *ContinuouslyPushReque
 	return _result, _err
 }
 
+// @param request - ContinuouslyPushRequest
+//
+// @return ContinuouslyPushResponse
 func (client *Client) ContinuouslyPush(request *ContinuouslyPushRequest) (_result *ContinuouslyPushResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ContinuouslyPushResponse{}
@@ -4725,13 +6112,13 @@ func (client *Client) ContinuouslyPush(request *ContinuouslyPushRequest) (_resul
 	return _result, _err
 }
 
-/**
- * @deprecated : ListSummaryApps is deprecated, please use Mhub::2017-08-25::ListApps instead.
- *
- * @param request ListSummaryAppsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListSummaryAppsResponse
- */
+// Deprecated: OpenAPI ListSummaryApps is deprecated, please use Mhub::2017-08-25::ListApps instead.
+//
+// @param request - ListSummaryAppsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSummaryAppsResponse
 // Deprecated
 func (client *Client) ListSummaryAppsWithOptions(runtime *util.RuntimeOptions) (_result *ListSummaryAppsResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
@@ -4755,11 +6142,9 @@ func (client *Client) ListSummaryAppsWithOptions(runtime *util.RuntimeOptions) (
 	return _result, _err
 }
 
-/**
- * @deprecated : ListSummaryApps is deprecated, please use Mhub::2017-08-25::ListApps instead.
- *
- * @return ListSummaryAppsResponse
- */
+// Deprecated: OpenAPI ListSummaryApps is deprecated, please use Mhub::2017-08-25::ListApps instead.
+//
+// @return ListSummaryAppsResponse
 // Deprecated
 func (client *Client) ListSummaryApps() (_result *ListSummaryAppsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
@@ -4772,6 +6157,11 @@ func (client *Client) ListSummaryApps() (_result *ListSummaryAppsResponse, _err 
 	return _result, _err
 }
 
+// @param request - ListTagsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagsResponse
 func (client *Client) ListTagsWithOptions(request *ListTagsRequest, runtime *util.RuntimeOptions) (_result *ListTagsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4805,6 +6195,9 @@ func (client *Client) ListTagsWithOptions(request *ListTagsRequest, runtime *uti
 	return _result, _err
 }
 
+// @param request - ListTagsRequest
+//
+// @return ListTagsResponse
 func (client *Client) ListTags(request *ListTagsRequest) (_result *ListTagsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagsResponse{}
@@ -4816,6 +6209,11 @@ func (client *Client) ListTags(request *ListTagsRequest) (_result *ListTagsRespo
 	return _result, _err
 }
 
+// @param request - MassPushRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MassPushResponse
 func (client *Client) MassPushWithOptions(request *MassPushRequest, runtime *util.RuntimeOptions) (_result *MassPushResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4855,6 +6253,9 @@ func (client *Client) MassPushWithOptions(request *MassPushRequest, runtime *uti
 	return _result, _err
 }
 
+// @param request - MassPushRequest
+//
+// @return MassPushResponse
 func (client *Client) MassPush(request *MassPushRequest) (_result *MassPushResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &MassPushResponse{}
@@ -4866,6 +6267,11 @@ func (client *Client) MassPush(request *MassPushRequest) (_result *MassPushRespo
 	return _result, _err
 }
 
+// @param request - PushRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PushResponse
 func (client *Client) PushWithOptions(request *PushRequest, runtime *util.RuntimeOptions) (_result *PushResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5044,6 +6450,66 @@ func (client *Client) PushWithOptions(request *PushRequest, runtime *util.Runtim
 		query["ExpireTime"] = request.ExpireTime
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.HarmonyAction)) {
+		query["HarmonyAction"] = request.HarmonyAction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HarmonyActionType)) {
+		query["HarmonyActionType"] = request.HarmonyActionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HarmonyCategory)) {
+		query["HarmonyCategory"] = request.HarmonyCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HarmonyExtParameters)) {
+		query["HarmonyExtParameters"] = request.HarmonyExtParameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HarmonyImageUrl)) {
+		query["HarmonyImageUrl"] = request.HarmonyImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HarmonyInboxContent)) {
+		query["HarmonyInboxContent"] = request.HarmonyInboxContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HarmonyNotificationSlotType)) {
+		query["HarmonyNotificationSlotType"] = request.HarmonyNotificationSlotType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HarmonyNotifyId)) {
+		query["HarmonyNotifyId"] = request.HarmonyNotifyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HarmonyReceiptId)) {
+		query["HarmonyReceiptId"] = request.HarmonyReceiptId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HarmonyRemind)) {
+		query["HarmonyRemind"] = request.HarmonyRemind
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HarmonyRemindBody)) {
+		query["HarmonyRemindBody"] = request.HarmonyRemindBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HarmonyRemindTitle)) {
+		query["HarmonyRemindTitle"] = request.HarmonyRemindTitle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HarmonyRenderStyle)) {
+		query["HarmonyRenderStyle"] = request.HarmonyRenderStyle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HarmonyTestMessage)) {
+		query["HarmonyTestMessage"] = request.HarmonyTestMessage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HarmonyUri)) {
+		query["HarmonyUri"] = request.HarmonyUri
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.JobKey)) {
 		query["JobKey"] = request.JobKey
 	}
@@ -5187,6 +6653,9 @@ func (client *Client) PushWithOptions(request *PushRequest, runtime *util.Runtim
 	return _result, _err
 }
 
+// @param request - PushRequest
+//
+// @return PushResponse
 func (client *Client) Push(request *PushRequest) (_result *PushResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PushResponse{}
@@ -5198,6 +6667,11 @@ func (client *Client) Push(request *PushRequest) (_result *PushResponse, _err er
 	return _result, _err
 }
 
+// @param request - PushMessageToAndroidRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PushMessageToAndroidResponse
 func (client *Client) PushMessageToAndroidWithOptions(request *PushMessageToAndroidRequest, runtime *util.RuntimeOptions) (_result *PushMessageToAndroidResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5255,6 +6729,9 @@ func (client *Client) PushMessageToAndroidWithOptions(request *PushMessageToAndr
 	return _result, _err
 }
 
+// @param request - PushMessageToAndroidRequest
+//
+// @return PushMessageToAndroidResponse
 func (client *Client) PushMessageToAndroid(request *PushMessageToAndroidRequest) (_result *PushMessageToAndroidResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PushMessageToAndroidResponse{}
@@ -5266,6 +6743,11 @@ func (client *Client) PushMessageToAndroid(request *PushMessageToAndroidRequest)
 	return _result, _err
 }
 
+// @param request - PushMessageToiOSRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PushMessageToiOSResponse
 func (client *Client) PushMessageToiOSWithOptions(request *PushMessageToiOSRequest, runtime *util.RuntimeOptions) (_result *PushMessageToiOSResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5323,6 +6805,9 @@ func (client *Client) PushMessageToiOSWithOptions(request *PushMessageToiOSReque
 	return _result, _err
 }
 
+// @param request - PushMessageToiOSRequest
+//
+// @return PushMessageToiOSResponse
 func (client *Client) PushMessageToiOS(request *PushMessageToiOSRequest) (_result *PushMessageToiOSResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PushMessageToiOSResponse{}
@@ -5334,6 +6819,11 @@ func (client *Client) PushMessageToiOS(request *PushMessageToiOSRequest) (_resul
 	return _result, _err
 }
 
+// @param request - PushNoticeToAndroidRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PushNoticeToAndroidResponse
 func (client *Client) PushNoticeToAndroidWithOptions(request *PushNoticeToAndroidRequest, runtime *util.RuntimeOptions) (_result *PushNoticeToAndroidResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5395,6 +6885,9 @@ func (client *Client) PushNoticeToAndroidWithOptions(request *PushNoticeToAndroi
 	return _result, _err
 }
 
+// @param request - PushNoticeToAndroidRequest
+//
+// @return PushNoticeToAndroidResponse
 func (client *Client) PushNoticeToAndroid(request *PushNoticeToAndroidRequest) (_result *PushNoticeToAndroidResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PushNoticeToAndroidResponse{}
@@ -5406,6 +6899,11 @@ func (client *Client) PushNoticeToAndroid(request *PushNoticeToAndroidRequest) (
 	return _result, _err
 }
 
+// @param request - PushNoticeToiOSRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PushNoticeToiOSResponse
 func (client *Client) PushNoticeToiOSWithOptions(request *PushNoticeToiOSRequest, runtime *util.RuntimeOptions) (_result *PushNoticeToiOSResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5467,6 +6965,9 @@ func (client *Client) PushNoticeToiOSWithOptions(request *PushNoticeToiOSRequest
 	return _result, _err
 }
 
+// @param request - PushNoticeToiOSRequest
+//
+// @return PushNoticeToiOSResponse
 func (client *Client) PushNoticeToiOS(request *PushNoticeToiOSRequest) (_result *PushNoticeToiOSResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PushNoticeToiOSResponse{}
@@ -5478,6 +6979,11 @@ func (client *Client) PushNoticeToiOS(request *PushNoticeToiOSRequest) (_result 
 	return _result, _err
 }
 
+// @param request - QueryAliasesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryAliasesResponse
 func (client *Client) QueryAliasesWithOptions(request *QueryAliasesRequest, runtime *util.RuntimeOptions) (_result *QueryAliasesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5515,6 +7021,9 @@ func (client *Client) QueryAliasesWithOptions(request *QueryAliasesRequest, runt
 	return _result, _err
 }
 
+// @param request - QueryAliasesRequest
+//
+// @return QueryAliasesResponse
 func (client *Client) QueryAliases(request *QueryAliasesRequest) (_result *QueryAliasesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryAliasesResponse{}
@@ -5526,6 +7035,11 @@ func (client *Client) QueryAliases(request *QueryAliasesRequest) (_result *Query
 	return _result, _err
 }
 
+// @param request - QueryDeviceInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDeviceInfoResponse
 func (client *Client) QueryDeviceInfoWithOptions(request *QueryDeviceInfoRequest, runtime *util.RuntimeOptions) (_result *QueryDeviceInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5563,6 +7077,9 @@ func (client *Client) QueryDeviceInfoWithOptions(request *QueryDeviceInfoRequest
 	return _result, _err
 }
 
+// @param request - QueryDeviceInfoRequest
+//
+// @return QueryDeviceInfoResponse
 func (client *Client) QueryDeviceInfo(request *QueryDeviceInfoRequest) (_result *QueryDeviceInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDeviceInfoResponse{}
@@ -5574,6 +7091,11 @@ func (client *Client) QueryDeviceInfo(request *QueryDeviceInfoRequest) (_result 
 	return _result, _err
 }
 
+// @param request - QueryDeviceStatRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDeviceStatResponse
 func (client *Client) QueryDeviceStatWithOptions(request *QueryDeviceStatRequest, runtime *util.RuntimeOptions) (_result *QueryDeviceStatResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5623,6 +7145,9 @@ func (client *Client) QueryDeviceStatWithOptions(request *QueryDeviceStatRequest
 	return _result, _err
 }
 
+// @param request - QueryDeviceStatRequest
+//
+// @return QueryDeviceStatResponse
 func (client *Client) QueryDeviceStat(request *QueryDeviceStatRequest) (_result *QueryDeviceStatResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDeviceStatResponse{}
@@ -5634,6 +7159,11 @@ func (client *Client) QueryDeviceStat(request *QueryDeviceStatRequest) (_result 
 	return _result, _err
 }
 
+// @param request - QueryDevicesByAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDevicesByAccountResponse
 func (client *Client) QueryDevicesByAccountWithOptions(request *QueryDevicesByAccountRequest, runtime *util.RuntimeOptions) (_result *QueryDevicesByAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5671,6 +7201,9 @@ func (client *Client) QueryDevicesByAccountWithOptions(request *QueryDevicesByAc
 	return _result, _err
 }
 
+// @param request - QueryDevicesByAccountRequest
+//
+// @return QueryDevicesByAccountResponse
 func (client *Client) QueryDevicesByAccount(request *QueryDevicesByAccountRequest) (_result *QueryDevicesByAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDevicesByAccountResponse{}
@@ -5682,6 +7215,11 @@ func (client *Client) QueryDevicesByAccount(request *QueryDevicesByAccountReques
 	return _result, _err
 }
 
+// @param request - QueryDevicesByAliasRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDevicesByAliasResponse
 func (client *Client) QueryDevicesByAliasWithOptions(request *QueryDevicesByAliasRequest, runtime *util.RuntimeOptions) (_result *QueryDevicesByAliasResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5719,6 +7257,9 @@ func (client *Client) QueryDevicesByAliasWithOptions(request *QueryDevicesByAlia
 	return _result, _err
 }
 
+// @param request - QueryDevicesByAliasRequest
+//
+// @return QueryDevicesByAliasResponse
 func (client *Client) QueryDevicesByAlias(request *QueryDevicesByAliasRequest) (_result *QueryDevicesByAliasResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDevicesByAliasResponse{}
@@ -5730,6 +7271,11 @@ func (client *Client) QueryDevicesByAlias(request *QueryDevicesByAliasRequest) (
 	return _result, _err
 }
 
+// @param request - QueryPushRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryPushRecordsResponse
 func (client *Client) QueryPushRecordsWithOptions(request *QueryPushRecordsRequest, runtime *util.RuntimeOptions) (_result *QueryPushRecordsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5799,6 +7345,9 @@ func (client *Client) QueryPushRecordsWithOptions(request *QueryPushRecordsReque
 	return _result, _err
 }
 
+// @param request - QueryPushRecordsRequest
+//
+// @return QueryPushRecordsResponse
 func (client *Client) QueryPushRecords(request *QueryPushRecordsRequest) (_result *QueryPushRecordsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryPushRecordsResponse{}
@@ -5810,6 +7359,11 @@ func (client *Client) QueryPushRecords(request *QueryPushRecordsRequest) (_resul
 	return _result, _err
 }
 
+// @param request - QueryPushStatByAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryPushStatByAppResponse
 func (client *Client) QueryPushStatByAppWithOptions(request *QueryPushStatByAppRequest, runtime *util.RuntimeOptions) (_result *QueryPushStatByAppResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5855,6 +7409,9 @@ func (client *Client) QueryPushStatByAppWithOptions(request *QueryPushStatByAppR
 	return _result, _err
 }
 
+// @param request - QueryPushStatByAppRequest
+//
+// @return QueryPushStatByAppResponse
 func (client *Client) QueryPushStatByApp(request *QueryPushStatByAppRequest) (_result *QueryPushStatByAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryPushStatByAppResponse{}
@@ -5866,6 +7423,11 @@ func (client *Client) QueryPushStatByApp(request *QueryPushStatByAppRequest) (_r
 	return _result, _err
 }
 
+// @param request - QueryPushStatByMsgRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryPushStatByMsgResponse
 func (client *Client) QueryPushStatByMsgWithOptions(request *QueryPushStatByMsgRequest, runtime *util.RuntimeOptions) (_result *QueryPushStatByMsgResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5903,6 +7465,9 @@ func (client *Client) QueryPushStatByMsgWithOptions(request *QueryPushStatByMsgR
 	return _result, _err
 }
 
+// @param request - QueryPushStatByMsgRequest
+//
+// @return QueryPushStatByMsgResponse
 func (client *Client) QueryPushStatByMsg(request *QueryPushStatByMsgRequest) (_result *QueryPushStatByMsgResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryPushStatByMsgResponse{}
@@ -5914,6 +7479,11 @@ func (client *Client) QueryPushStatByMsg(request *QueryPushStatByMsgRequest) (_r
 	return _result, _err
 }
 
+// @param request - QueryTagsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryTagsResponse
 func (client *Client) QueryTagsWithOptions(request *QueryTagsRequest, runtime *util.RuntimeOptions) (_result *QueryTagsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5955,6 +7525,9 @@ func (client *Client) QueryTagsWithOptions(request *QueryTagsRequest, runtime *u
 	return _result, _err
 }
 
+// @param request - QueryTagsRequest
+//
+// @return QueryTagsResponse
 func (client *Client) QueryTags(request *QueryTagsRequest) (_result *QueryTagsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryTagsResponse{}
@@ -5966,6 +7539,11 @@ func (client *Client) QueryTags(request *QueryTagsRequest) (_result *QueryTagsRe
 	return _result, _err
 }
 
+// @param request - QueryUniqueDeviceStatRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryUniqueDeviceStatResponse
 func (client *Client) QueryUniqueDeviceStatWithOptions(request *QueryUniqueDeviceStatRequest, runtime *util.RuntimeOptions) (_result *QueryUniqueDeviceStatResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6011,6 +7589,9 @@ func (client *Client) QueryUniqueDeviceStatWithOptions(request *QueryUniqueDevic
 	return _result, _err
 }
 
+// @param request - QueryUniqueDeviceStatRequest
+//
+// @return QueryUniqueDeviceStatResponse
 func (client *Client) QueryUniqueDeviceStat(request *QueryUniqueDeviceStatRequest) (_result *QueryUniqueDeviceStatResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryUniqueDeviceStatResponse{}
@@ -6022,6 +7603,11 @@ func (client *Client) QueryUniqueDeviceStat(request *QueryUniqueDeviceStatReques
 	return _result, _err
 }
 
+// @param request - RemoveTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveTagResponse
 func (client *Client) RemoveTagWithOptions(request *RemoveTagRequest, runtime *util.RuntimeOptions) (_result *RemoveTagResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6059,6 +7645,9 @@ func (client *Client) RemoveTagWithOptions(request *RemoveTagRequest, runtime *u
 	return _result, _err
 }
 
+// @param request - RemoveTagRequest
+//
+// @return RemoveTagResponse
 func (client *Client) RemoveTag(request *RemoveTagRequest) (_result *RemoveTagResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveTagResponse{}
@@ -6070,6 +7659,11 @@ func (client *Client) RemoveTag(request *RemoveTagRequest) (_result *RemoveTagRe
 	return _result, _err
 }
 
+// @param request - UnbindAliasRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnbindAliasResponse
 func (client *Client) UnbindAliasWithOptions(request *UnbindAliasRequest, runtime *util.RuntimeOptions) (_result *UnbindAliasResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6115,6 +7709,9 @@ func (client *Client) UnbindAliasWithOptions(request *UnbindAliasRequest, runtim
 	return _result, _err
 }
 
+// @param request - UnbindAliasRequest
+//
+// @return UnbindAliasResponse
 func (client *Client) UnbindAlias(request *UnbindAliasRequest) (_result *UnbindAliasResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UnbindAliasResponse{}
@@ -6126,6 +7723,11 @@ func (client *Client) UnbindAlias(request *UnbindAliasRequest) (_result *UnbindA
 	return _result, _err
 }
 
+// @param request - UnbindPhoneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnbindPhoneResponse
 func (client *Client) UnbindPhoneWithOptions(request *UnbindPhoneRequest, runtime *util.RuntimeOptions) (_result *UnbindPhoneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6163,6 +7765,9 @@ func (client *Client) UnbindPhoneWithOptions(request *UnbindPhoneRequest, runtim
 	return _result, _err
 }
 
+// @param request - UnbindPhoneRequest
+//
+// @return UnbindPhoneResponse
 func (client *Client) UnbindPhone(request *UnbindPhoneRequest) (_result *UnbindPhoneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UnbindPhoneResponse{}
@@ -6174,6 +7779,11 @@ func (client *Client) UnbindPhone(request *UnbindPhoneRequest) (_result *UnbindP
 	return _result, _err
 }
 
+// @param request - UnbindTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnbindTagResponse
 func (client *Client) UnbindTagWithOptions(request *UnbindTagRequest, runtime *util.RuntimeOptions) (_result *UnbindTagResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6219,6 +7829,9 @@ func (client *Client) UnbindTagWithOptions(request *UnbindTagRequest, runtime *u
 	return _result, _err
 }
 
+// @param request - UnbindTagRequest
+//
+// @return UnbindTagResponse
 func (client *Client) UnbindTag(request *UnbindTagRequest) (_result *UnbindTagResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UnbindTagResponse{}
