@@ -253,10 +253,6 @@ type BackupFileRequest struct {
 	// This parameter is required.
 	AndroidInstanceIdList []*string `json:"AndroidInstanceIdList,omitempty" xml:"AndroidInstanceIdList,omitempty" type:"Repeated"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// oss://cloudphone-saved-bucket-****/mabo/aic-i3b83gk0rw6p24jx3_2024051409****.ab
 	BackupFilePath *string `json:"BackupFilePath,omitempty" xml:"BackupFilePath,omitempty"`
 	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// This parameter is required.
@@ -700,14 +696,12 @@ func (s *CreateAndroidInstanceGroupResponse) SetBody(v *CreateAndroidInstanceGro
 type CreateAppRequest struct {
 	// This parameter is required.
 	AppName     *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// example:
 	//
 	// testApp.apk
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// example:
-	//
-	// tenant/1642150****/
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
 	// example:
 	//
@@ -733,6 +727,11 @@ func (s CreateAppRequest) GoString() string {
 
 func (s *CreateAppRequest) SetAppName(v string) *CreateAppRequest {
 	s.AppName = &v
+	return s
+}
+
+func (s *CreateAppRequest) SetBizRegionId(v string) *CreateAppRequest {
+	s.BizRegionId = &v
 	return s
 }
 
@@ -2280,8 +2279,9 @@ func (s *DescribeAndroidInstancesResponse) SetBody(v *DescribeAndroidInstancesRe
 }
 
 type DescribeAppsRequest struct {
-	AppIdList []*string `json:"AppIdList,omitempty" xml:"AppIdList,omitempty" type:"Repeated"`
-	AppName   *string   `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppIdList   []*string `json:"AppIdList,omitempty" xml:"AppIdList,omitempty" type:"Repeated"`
+	AppName     *string   `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	BizRegionId *string   `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
 	// example:
 	//
 	// INSTALLING
@@ -2315,6 +2315,11 @@ func (s *DescribeAppsRequest) SetAppIdList(v []*string) *DescribeAppsRequest {
 
 func (s *DescribeAppsRequest) SetAppName(v string) *DescribeAppsRequest {
 	s.AppName = &v
+	return s
+}
+
+func (s *DescribeAppsRequest) SetBizRegionId(v string) *DescribeAppsRequest {
+	s.BizRegionId = &v
 	return s
 }
 
@@ -2395,6 +2400,7 @@ type DescribeAppsResponseBodyData struct {
 	//
 	// testapp
 	AppName     *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// example:
 	//
@@ -2439,6 +2445,11 @@ func (s *DescribeAppsResponseBodyData) SetAppId(v int32) *DescribeAppsResponseBo
 
 func (s *DescribeAppsResponseBodyData) SetAppName(v string) *DescribeAppsResponseBodyData {
 	s.AppName = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyData) SetBizRegionId(v string) *DescribeAppsResponseBodyData {
+	s.BizRegionId = &v
 	return s
 }
 
@@ -3983,10 +3994,6 @@ type FetchFileRequest struct {
 	// OSS
 	UploadType *string `json:"UploadType,omitempty" xml:"UploadType,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// oss://cloudphone-saved-bucket-cn-hangzhou-165955035250****/backup/
 	UploadUrl *string `json:"UploadUrl,omitempty" xml:"UploadUrl,omitempty"`
 }
 
@@ -5142,10 +5149,6 @@ type RecoveryFileRequest struct {
 	// bf-azhps4rdyi2th****
 	BackupFileId *string `json:"BackupFileId,omitempty" xml:"BackupFileId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// oss://cloudphone-saved-bucket-cn-hangzhou-****/aaa/acp-ig2bdpk374l12****_2024052014****.ab
 	BackupFilePath *string `json:"BackupFilePath,omitempty" xml:"BackupFilePath,omitempty"`
 	// example:
 	//
@@ -5531,10 +5534,6 @@ type SendFileRequest struct {
 	// OSS
 	UploadType *string `json:"UploadType,omitempty" xml:"UploadType,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// oss://cloudphone-saved-bucket-cn-hangzhou-165955035250****/backup/a.txt
 	UploadUrl *string `json:"UploadUrl,omitempty" xml:"UploadUrl,omitempty"`
 }
 
@@ -6646,6 +6645,10 @@ func (client *Client) CreateAppWithOptions(request *CreateAppRequest, runtime *u
 		query["AppName"] = request.AppName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.BizRegionId)) {
+		query["BizRegionId"] = request.BizRegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
 	}
@@ -7422,6 +7425,10 @@ func (client *Client) DescribeAppsWithOptions(request *DescribeAppsRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.AppName)) {
 		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizRegionId)) {
+		query["BizRegionId"] = request.BizRegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstallationStatus)) {
