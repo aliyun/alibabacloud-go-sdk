@@ -1121,7 +1121,7 @@ type CreateDomainRequestRedirect struct {
 	//
 	// true
 	CnameEnabled *bool `json:"CnameEnabled,omitempty" xml:"CnameEnabled,omitempty"`
-	// The timeout period of connections. Unit: seconds. Valid values: 1 to 3600.
+	// The timeout period for connections. Unit: seconds. Valid values: 1 to 3600.
 	//
 	// example:
 	//
@@ -1155,9 +1155,9 @@ type CreateDomainRequestRedirect struct {
 	//
 	// 1000
 	KeepaliveRequests *int32 `json:"KeepaliveRequests,omitempty" xml:"KeepaliveRequests,omitempty"`
-	// The timeout period of idle persistent connections. Valid values: 1 to 60. Default value: 15. Unit: seconds.
+	// The timeout period for idle persistent connections. Valid values: 1 to 60. Default value: 15. Unit: seconds.
 	//
-	// >  This parameter specifies the period of time during which a reused persistent connection is allowed to remain in the Idle state before the persistent connection is released.
+	// >  This parameter specifies the time for which a reused persistent connection can remain in the Idle state before the persistent connection is closed.
 	//
 	// example:
 	//
@@ -1177,7 +1177,7 @@ type CreateDomainRequestRedirect struct {
 	//
 	// roundRobin
 	Loadbalance *string `json:"Loadbalance,omitempty" xml:"Loadbalance,omitempty"`
-	// The timeout period of read connections. Unit: seconds. Valid values: 1 to 3600.
+	// The timeout period for read connections. Unit: seconds. Valid values: 1 to 3600.
 	//
 	// example:
 	//
@@ -1237,19 +1237,19 @@ type CreateDomainRequestRedirect struct {
 	SniEnabled *bool `json:"SniEnabled,omitempty" xml:"SniEnabled,omitempty"`
 	// The value of the SNI field. If you do not specify this parameter, the value of the **Host*	- field is automatically used. This parameter is optional. If you want WAF to use an SNI field value that is different from the Host field value in back-to-origin requests, you can specify a custom value for the SNI field.
 	//
-	// >  This parameter is required only if you set **SniEnalbed*	- to **true**.
+	// >  This parameter is required only if you set **SniEnabled*	- to **true**.
 	//
 	// example:
 	//
 	// www.aliyundoc.com
 	SniHost *string `json:"SniHost,omitempty" xml:"SniHost,omitempty"`
-	// The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600.
+	// The timeout period for write connections. Unit: seconds. Valid values: 1 to 3600.
 	//
 	// example:
 	//
 	// 200
 	WriteTimeout *int32 `json:"WriteTimeout,omitempty" xml:"WriteTimeout,omitempty"`
-	// Indicates whether the X-Forward-For-Proto header is used to identify the protocol used by WAF to forward requests to the origin server. Valid values:
+	// Specifies whether to use X-Forward-For-Proto to pass the protocol used by WAF to forward requests to the origin server. Valid values:
 	//
 	// 	- **true*	- (default)
 	//
@@ -12940,6 +12940,104 @@ func (s *DescribeMemberAccountsResponse) SetBody(v *DescribeMemberAccountsRespon
 	return s
 }
 
+type DescribePauseProtectionStatusRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-tl32ast****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DescribePauseProtectionStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePauseProtectionStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePauseProtectionStatusRequest) SetInstanceId(v string) *DescribePauseProtectionStatusRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribePauseProtectionStatusRequest) SetRegionId(v string) *DescribePauseProtectionStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribePauseProtectionStatusRequest) SetResourceManagerResourceGroupId(v string) *DescribePauseProtectionStatusRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DescribePauseProtectionStatusResponseBody struct {
+	// example:
+	//
+	// 0
+	PauseStatus *int32 `json:"PauseStatus,omitempty" xml:"PauseStatus,omitempty"`
+	// example:
+	//
+	// D7861F61-****-46CE-A47C-6B19****5EB0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribePauseProtectionStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePauseProtectionStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePauseProtectionStatusResponseBody) SetPauseStatus(v int32) *DescribePauseProtectionStatusResponseBody {
+	s.PauseStatus = &v
+	return s
+}
+
+func (s *DescribePauseProtectionStatusResponseBody) SetRequestId(v string) *DescribePauseProtectionStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribePauseProtectionStatusResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePauseProtectionStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribePauseProtectionStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePauseProtectionStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePauseProtectionStatusResponse) SetHeaders(v map[string]*string) *DescribePauseProtectionStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribePauseProtectionStatusResponse) SetStatusCode(v int32) *DescribePauseProtectionStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribePauseProtectionStatusResponse) SetBody(v *DescribePauseProtectionStatusResponseBody) *DescribePauseProtectionStatusResponse {
+	s.Body = v
+	return s
+}
+
 type DescribePeakTrendRequest struct {
 	// The end of the time range to query. Unit: seconds. If you do not specify this parameter, the current time is used.
 	//
@@ -20769,6 +20867,106 @@ func (s *ModifyMemberAccountResponse) SetBody(v *ModifyMemberAccountResponseBody
 	return s
 }
 
+type ModifyPauseProtectionStatusRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-tl32ast****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	PauseStatus *int32 `json:"PauseStatus,omitempty" xml:"PauseStatus,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s ModifyPauseProtectionStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPauseProtectionStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPauseProtectionStatusRequest) SetInstanceId(v string) *ModifyPauseProtectionStatusRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyPauseProtectionStatusRequest) SetPauseStatus(v int32) *ModifyPauseProtectionStatusRequest {
+	s.PauseStatus = &v
+	return s
+}
+
+func (s *ModifyPauseProtectionStatusRequest) SetRegionId(v string) *ModifyPauseProtectionStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyPauseProtectionStatusRequest) SetResourceManagerResourceGroupId(v string) *ModifyPauseProtectionStatusRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type ModifyPauseProtectionStatusResponseBody struct {
+	// example:
+	//
+	// D7861F61-*****-******-D5EB0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyPauseProtectionStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPauseProtectionStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPauseProtectionStatusResponseBody) SetRequestId(v string) *ModifyPauseProtectionStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyPauseProtectionStatusResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyPauseProtectionStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyPauseProtectionStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPauseProtectionStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPauseProtectionStatusResponse) SetHeaders(v map[string]*string) *ModifyPauseProtectionStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyPauseProtectionStatusResponse) SetStatusCode(v int32) *ModifyPauseProtectionStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyPauseProtectionStatusResponse) SetBody(v *ModifyPauseProtectionStatusResponseBody) *ModifyPauseProtectionStatusResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyResourceLogStatusRequest struct {
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
@@ -25695,6 +25893,74 @@ func (client *Client) DescribeMemberAccounts(request *DescribeMemberAccountsRequ
 
 // Summary:
 //
+// 获取用户暂停防护状态
+//
+// @param request - DescribePauseProtectionStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePauseProtectionStatusResponse
+func (client *Client) DescribePauseProtectionStatusWithOptions(request *DescribePauseProtectionStatusRequest, runtime *util.RuntimeOptions) (_result *DescribePauseProtectionStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePauseProtectionStatus"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribePauseProtectionStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取用户暂停防护状态
+//
+// @param request - DescribePauseProtectionStatusRequest
+//
+// @return DescribePauseProtectionStatusResponse
+func (client *Client) DescribePauseProtectionStatus(request *DescribePauseProtectionStatusRequest) (_result *DescribePauseProtectionStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribePauseProtectionStatusResponse{}
+	_body, _err := client.DescribePauseProtectionStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the queries per second (QPS) statistics of a WAF instance.
 //
 // @param request - DescribePeakTrendRequest
@@ -29024,6 +29290,78 @@ func (client *Client) ModifyMemberAccount(request *ModifyMemberAccountRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyMemberAccountResponse{}
 	_body, _err := client.ModifyMemberAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改用户暂停防护状态
+//
+// @param request - ModifyPauseProtectionStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyPauseProtectionStatusResponse
+func (client *Client) ModifyPauseProtectionStatusWithOptions(request *ModifyPauseProtectionStatusRequest, runtime *util.RuntimeOptions) (_result *ModifyPauseProtectionStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PauseStatus)) {
+		query["PauseStatus"] = request.PauseStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyPauseProtectionStatus"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyPauseProtectionStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改用户暂停防护状态
+//
+// @param request - ModifyPauseProtectionStatusRequest
+//
+// @return ModifyPauseProtectionStatusResponse
+func (client *Client) ModifyPauseProtectionStatus(request *ModifyPauseProtectionStatusRequest) (_result *ModifyPauseProtectionStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyPauseProtectionStatusResponse{}
+	_body, _err := client.ModifyPauseProtectionStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
