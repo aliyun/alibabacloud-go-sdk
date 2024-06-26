@@ -17244,6 +17244,193 @@ func (s *GetSnapshotUrlsResponse) SetBody(v *GetSnapshotUrlsResponseBody) *GetSn
 	return s
 }
 
+type GetStorageListRequest struct {
+	// example:
+	//
+	// app-****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// Normal
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// vod_oss_bucket
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+}
+
+func (s GetStorageListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStorageListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetStorageListRequest) SetAppId(v string) *GetStorageListRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetStorageListRequest) SetStatus(v string) *GetStorageListRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *GetStorageListRequest) SetStorageType(v string) *GetStorageListRequest {
+	s.StorageType = &v
+	return s
+}
+
+type GetStorageListResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// ******73-8B78-5D86-A50C-49B96C******
+	RequestId       *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StorageInfoList []*GetStorageListResponseBodyStorageInfoList `json:"StorageInfoList,omitempty" xml:"StorageInfoList,omitempty" type:"Repeated"`
+}
+
+func (s GetStorageListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStorageListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetStorageListResponseBody) SetRequestId(v string) *GetStorageListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetStorageListResponseBody) SetStorageInfoList(v []*GetStorageListResponseBodyStorageInfoList) *GetStorageListResponseBody {
+	s.StorageInfoList = v
+	return s
+}
+
+type GetStorageListResponseBodyStorageInfoList struct {
+	// example:
+	//
+	// app-****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 2024-06-06T01:55:07Z
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// example:
+	//
+	// true
+	DefaultStorage *bool `json:"DefaultStorage,omitempty" xml:"DefaultStorage,omitempty"`
+	// example:
+	//
+	// false
+	EditingTempFileStorage *bool `json:"EditingTempFileStorage,omitempty" xml:"EditingTempFileStorage,omitempty"`
+	// example:
+	//
+	// 2024-06-06T03:07:07Z
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// example:
+	//
+	// your-path/
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// Normal
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// your-bucket
+	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
+	// example:
+	//
+	// vod_oss_bucket
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+}
+
+func (s GetStorageListResponseBodyStorageInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStorageListResponseBodyStorageInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *GetStorageListResponseBodyStorageInfoList) SetAppId(v string) *GetStorageListResponseBodyStorageInfoList {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetStorageListResponseBodyStorageInfoList) SetCreationTime(v string) *GetStorageListResponseBodyStorageInfoList {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *GetStorageListResponseBodyStorageInfoList) SetDefaultStorage(v bool) *GetStorageListResponseBodyStorageInfoList {
+	s.DefaultStorage = &v
+	return s
+}
+
+func (s *GetStorageListResponseBodyStorageInfoList) SetEditingTempFileStorage(v bool) *GetStorageListResponseBodyStorageInfoList {
+	s.EditingTempFileStorage = &v
+	return s
+}
+
+func (s *GetStorageListResponseBodyStorageInfoList) SetModifiedTime(v string) *GetStorageListResponseBodyStorageInfoList {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *GetStorageListResponseBodyStorageInfoList) SetPath(v string) *GetStorageListResponseBodyStorageInfoList {
+	s.Path = &v
+	return s
+}
+
+func (s *GetStorageListResponseBodyStorageInfoList) SetStatus(v string) *GetStorageListResponseBodyStorageInfoList {
+	s.Status = &v
+	return s
+}
+
+func (s *GetStorageListResponseBodyStorageInfoList) SetStorageLocation(v string) *GetStorageListResponseBodyStorageInfoList {
+	s.StorageLocation = &v
+	return s
+}
+
+func (s *GetStorageListResponseBodyStorageInfoList) SetStorageType(v string) *GetStorageListResponseBodyStorageInfoList {
+	s.StorageType = &v
+	return s
+}
+
+type GetStorageListResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetStorageListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetStorageListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStorageListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetStorageListResponse) SetHeaders(v map[string]*string) *GetStorageListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetStorageListResponse) SetStatusCode(v int32) *GetStorageListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetStorageListResponse) SetBody(v *GetStorageListResponseBody) *GetStorageListResponse {
+	s.Body = v
+	return s
+}
+
 type GetSystemTemplateRequest struct {
 	// This parameter is required.
 	//
@@ -17774,18 +17961,12 @@ func (s *GetTemplateParamsResponseBody) SetTemplateId(v string) *GetTemplatePara
 }
 
 type GetTemplateParamsResponseBodyParamList struct {
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// example:
-	//
-	// https://ice-materials-***.alicdn.com/***/********20221****.jpg
+	Content  *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
 	// example:
 	//
 	// video1
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// example:
-	//
-	// https://ice-materials-***.alicdn.com/***/********2022111618012453120c2a81*******.mp4
+	Key      *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	MediaUrl *string `json:"MediaUrl,omitempty" xml:"MediaUrl,omitempty"`
 	// example:
 	//
@@ -24128,10 +24309,7 @@ type ListLiveRecordFilesResponseBodyFiles struct {
 	//
 	// { "Type": "oss", "Endpoint":"oss-cn-shanghai.aliyuncs.com", "Bucket": "test-bucket" }
 	RecordOutput *string `json:"RecordOutput,omitempty" xml:"RecordOutput,omitempty"`
-	// example:
-	//
-	// http://****/atestObject****.m3u8
-	RecordUrl *string `json:"RecordUrl,omitempty" xml:"RecordUrl,omitempty"`
+	RecordUrl    *string `json:"RecordUrl,omitempty" xml:"RecordUrl,omitempty"`
 	// example:
 	//
 	// 2015-12-01T07:36:00Z
@@ -24990,10 +25168,7 @@ type ListLiveSnapshotFilesResponseBodyFileList struct {
 	//
 	// oss-cn-shanghai.aliyuncs.com
 	OssEndpoint *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-	// example:
-	//
-	// snapshot/****a046-263c-3560-978a-fb287782****/1660638613798.jpg
-	OssObject *string `json:"OssObject,omitempty" xml:"OssObject,omitempty"`
+	OssObject   *string `json:"OssObject,omitempty" xml:"OssObject,omitempty"`
 }
 
 func (s ListLiveSnapshotFilesResponseBodyFileList) String() string {
@@ -57851,6 +58026,74 @@ func (client *Client) GetSnapshotUrls(request *GetSnapshotUrlsRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSnapshotUrlsResponse{}
 	_body, _err := client.GetSnapshotUrlsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取存储地址列表
+//
+// @param request - GetStorageListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetStorageListResponse
+func (client *Client) GetStorageListWithOptions(request *GetStorageListRequest, runtime *util.RuntimeOptions) (_result *GetStorageListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageType)) {
+		query["StorageType"] = request.StorageType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetStorageList"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetStorageListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取存储地址列表
+//
+// @param request - GetStorageListRequest
+//
+// @return GetStorageListResponse
+func (client *Client) GetStorageList(request *GetStorageListRequest) (_result *GetStorageListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetStorageListResponse{}
+	_body, _err := client.GetStorageListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
