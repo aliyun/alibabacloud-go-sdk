@@ -1793,7 +1793,8 @@ type CreateMySqlDataSourceRequest struct {
 	// example:
 	//
 	// VPC
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UseSsl *bool   `json:"UseSsl,omitempty" xml:"UseSsl,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -1856,6 +1857,11 @@ func (s *CreateMySqlDataSourceRequest) SetSchema(v string) *CreateMySqlDataSourc
 
 func (s *CreateMySqlDataSourceRequest) SetType(v string) *CreateMySqlDataSourceRequest {
 	s.Type = &v
+	return s
+}
+
+func (s *CreateMySqlDataSourceRequest) SetUseSsl(v bool) *CreateMySqlDataSourceRequest {
+	s.UseSsl = &v
 	return s
 }
 
@@ -3003,6 +3009,8 @@ type CreateProjectRequestCommonTransferConfig struct {
 	//
 	// null
 	RocketMqSendMsgTimeout *int64  `json:"RocketMqSendMsgTimeout,omitempty" xml:"RocketMqSendMsgTimeout,omitempty"`
+	SinkStoreFormat        *string `json:"SinkStoreFormat,omitempty" xml:"SinkStoreFormat,omitempty"`
+	SourceStoreFormat      *string `json:"SourceStoreFormat,omitempty" xml:"SourceStoreFormat,omitempty"`
 	SyncSchema             *bool   `json:"SyncSchema,omitempty" xml:"SyncSchema,omitempty"`
 	SyncSchemaColumnName   *string `json:"SyncSchemaColumnName,omitempty" xml:"SyncSchemaColumnName,omitempty"`
 	// example:
@@ -3071,6 +3079,16 @@ func (s *CreateProjectRequestCommonTransferConfig) SetRocketMqProducerGroup(v st
 
 func (s *CreateProjectRequestCommonTransferConfig) SetRocketMqSendMsgTimeout(v int64) *CreateProjectRequestCommonTransferConfig {
 	s.RocketMqSendMsgTimeout = &v
+	return s
+}
+
+func (s *CreateProjectRequestCommonTransferConfig) SetSinkStoreFormat(v string) *CreateProjectRequestCommonTransferConfig {
+	s.SinkStoreFormat = &v
+	return s
+}
+
+func (s *CreateProjectRequestCommonTransferConfig) SetSourceStoreFormat(v string) *CreateProjectRequestCommonTransferConfig {
+	s.SourceStoreFormat = &v
 	return s
 }
 
@@ -16190,10 +16208,6 @@ type DescribeOasAnomalySQLListResponseBodyData struct {
 	SqlId   *string                                             `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
 	SqlList []*DescribeOasAnomalySQLListResponseBodyDataSqlList `json:"SqlList,omitempty" xml:"SqlList,omitempty" type:"Repeated"`
 	// Prefix of the SQL text.
-	//
-	// example:
-	//
-	// delete /*+ XXX PARALLEL(4) */ from
 	SqlTextShort *string `json:"SqlTextShort,omitempty" xml:"SqlTextShort,omitempty"`
 	// Suggestion for the suspicious SQL.
 	//
@@ -20598,10 +20612,6 @@ type DescribeOasTopSQLListResponseBodyData struct {
 	SqlId   *string                                         `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
 	SqlList []*DescribeOasTopSQLListResponseBodyDataSqlList `json:"SqlList,omitempty" xml:"SqlList,omitempty" type:"Repeated"`
 	// SQL text (the first 100 characters).
-	//
-	// example:
-	//
-	// delete /*+ XXX PARALLEL(4) */ fro
 	SqlTextShort *string `json:"SqlTextShort,omitempty" xml:"SqlTextShort,omitempty"`
 	// SQL type.
 	//
@@ -23336,7 +23346,9 @@ type DescribeProjectResponseBodyDataCommonTransferConfig struct {
 	// example:
 	//
 	// null
-	RocketMqSendMsgTimeout *int64 `json:"RocketMqSendMsgTimeout,omitempty" xml:"RocketMqSendMsgTimeout,omitempty"`
+	RocketMqSendMsgTimeout *int64  `json:"RocketMqSendMsgTimeout,omitempty" xml:"RocketMqSendMsgTimeout,omitempty"`
+	SinkStoreFormat        *string `json:"SinkStoreFormat,omitempty" xml:"SinkStoreFormat,omitempty"`
+	SourceStoreFormat      *string `json:"SourceStoreFormat,omitempty" xml:"SourceStoreFormat,omitempty"`
 	// example:
 	//
 	// ALL
@@ -23398,6 +23410,16 @@ func (s *DescribeProjectResponseBodyDataCommonTransferConfig) SetRocketMqProduce
 
 func (s *DescribeProjectResponseBodyDataCommonTransferConfig) SetRocketMqSendMsgTimeout(v int64) *DescribeProjectResponseBodyDataCommonTransferConfig {
 	s.RocketMqSendMsgTimeout = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataCommonTransferConfig) SetSinkStoreFormat(v string) *DescribeProjectResponseBodyDataCommonTransferConfig {
+	s.SinkStoreFormat = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataCommonTransferConfig) SetSourceStoreFormat(v string) *DescribeProjectResponseBodyDataCommonTransferConfig {
+	s.SourceStoreFormat = &v
 	return s
 }
 
@@ -29943,10 +29965,6 @@ type DescribeSQLPlansResponseBodySQLPlans struct {
 	// i-bp16niirq4zdmgvm****
 	NodeIp *string `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
 	// The outline data.
-	//
-	// example:
-	//
-	// /*+ BEGIN_OUTLINE_DATA FULL(@\\"SEL$1\\" \\"testdb1.bmsql_order_line\\"@\\"SEL$1\\") END_OUTLINE_DATA*/
 	OutlineData *string `json:"OutlineData,omitempty" xml:"OutlineData,omitempty"`
 	// OutlineID.
 	//
@@ -49791,7 +49809,8 @@ func (s *SwitchoverInstanceResponse) SetBody(v *SwitchoverInstanceResponseBody) 
 }
 
 type UpdateProjectConfigRequest struct {
-	FullTransferConfig *UpdateProjectConfigRequestFullTransferConfig `json:"FullTransferConfig,omitempty" xml:"FullTransferConfig,omitempty" type:"Struct"`
+	CommonTransferConfig *UpdateProjectConfigRequestCommonTransferConfig `json:"CommonTransferConfig,omitempty" xml:"CommonTransferConfig,omitempty" type:"Struct"`
+	FullTransferConfig   *UpdateProjectConfigRequestFullTransferConfig   `json:"FullTransferConfig,omitempty" xml:"FullTransferConfig,omitempty" type:"Struct"`
 	// This parameter is required.
 	//
 	// example:
@@ -49808,6 +49827,11 @@ func (s UpdateProjectConfigRequest) String() string {
 
 func (s UpdateProjectConfigRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateProjectConfigRequest) SetCommonTransferConfig(v *UpdateProjectConfigRequestCommonTransferConfig) *UpdateProjectConfigRequest {
+	s.CommonTransferConfig = v
+	return s
 }
 
 func (s *UpdateProjectConfigRequest) SetFullTransferConfig(v *UpdateProjectConfigRequestFullTransferConfig) *UpdateProjectConfigRequest {
@@ -49827,6 +49851,29 @@ func (s *UpdateProjectConfigRequest) SetIncrTransferConfig(v *UpdateProjectConfi
 
 func (s *UpdateProjectConfigRequest) SetReverseIncrTransferConfig(v *UpdateProjectConfigRequestReverseIncrTransferConfig) *UpdateProjectConfigRequest {
 	s.ReverseIncrTransferConfig = v
+	return s
+}
+
+type UpdateProjectConfigRequestCommonTransferConfig struct {
+	SinkStoreFormat   *string `json:"SinkStoreFormat,omitempty" xml:"SinkStoreFormat,omitempty"`
+	SourceStoreFormat *string `json:"SourceStoreFormat,omitempty" xml:"SourceStoreFormat,omitempty"`
+}
+
+func (s UpdateProjectConfigRequestCommonTransferConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateProjectConfigRequestCommonTransferConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateProjectConfigRequestCommonTransferConfig) SetSinkStoreFormat(v string) *UpdateProjectConfigRequestCommonTransferConfig {
+	s.SinkStoreFormat = &v
+	return s
+}
+
+func (s *UpdateProjectConfigRequestCommonTransferConfig) SetSourceStoreFormat(v string) *UpdateProjectConfigRequestCommonTransferConfig {
+	s.SourceStoreFormat = &v
 	return s
 }
 
@@ -49978,7 +50025,8 @@ func (s *UpdateProjectConfigRequestReverseIncrTransferConfig) SetThrottleRps(v i
 }
 
 type UpdateProjectConfigShrinkRequest struct {
-	FullTransferConfigShrink *string `json:"FullTransferConfig,omitempty" xml:"FullTransferConfig,omitempty"`
+	CommonTransferConfigShrink *string `json:"CommonTransferConfig,omitempty" xml:"CommonTransferConfig,omitempty"`
+	FullTransferConfigShrink   *string `json:"FullTransferConfig,omitempty" xml:"FullTransferConfig,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -49995,6 +50043,11 @@ func (s UpdateProjectConfigShrinkRequest) String() string {
 
 func (s UpdateProjectConfigShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateProjectConfigShrinkRequest) SetCommonTransferConfigShrink(v string) *UpdateProjectConfigShrinkRequest {
+	s.CommonTransferConfigShrink = &v
+	return s
 }
 
 func (s *UpdateProjectConfigShrinkRequest) SetFullTransferConfigShrink(v string) *UpdateProjectConfigShrinkRequest {
@@ -50830,6 +50883,10 @@ func (client *Client) CreateMySqlDataSourceWithOptions(request *CreateMySqlDataS
 
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
 		body["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseSsl)) {
+		body["UseSsl"] = request.UseSsl
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserName)) {
@@ -59909,6 +59966,10 @@ func (client *Client) UpdateProjectConfigWithOptions(tmpReq *UpdateProjectConfig
 	}
 	request := &UpdateProjectConfigShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CommonTransferConfig)) {
+		request.CommonTransferConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CommonTransferConfig, tea.String("CommonTransferConfig"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.FullTransferConfig)) {
 		request.FullTransferConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FullTransferConfig, tea.String("FullTransferConfig"), tea.String("json"))
 	}
@@ -59922,6 +59983,10 @@ func (client *Client) UpdateProjectConfigWithOptions(tmpReq *UpdateProjectConfig
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CommonTransferConfigShrink)) {
+		body["CommonTransferConfig"] = request.CommonTransferConfigShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.FullTransferConfigShrink)) {
 		body["FullTransferConfig"] = request.FullTransferConfigShrink
 	}
