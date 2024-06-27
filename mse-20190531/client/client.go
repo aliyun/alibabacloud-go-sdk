@@ -5834,6 +5834,7 @@ type AddMigrationTaskRequest struct {
 	//
 	// {}
 	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
+	SyncType    *string `json:"SyncType,omitempty" xml:"SyncType,omitempty"`
 	// The name of the destination instance.
 	//
 	// example:
@@ -5894,6 +5895,11 @@ func (s *AddMigrationTaskRequest) SetProjectDesc(v string) *AddMigrationTaskRequ
 
 func (s *AddMigrationTaskRequest) SetRequestPars(v string) *AddMigrationTaskRequest {
 	s.RequestPars = &v
+	return s
+}
+
+func (s *AddMigrationTaskRequest) SetSyncType(v string) *AddMigrationTaskRequest {
+	s.SyncType = &v
 	return s
 }
 
@@ -6021,6 +6027,7 @@ type AddMigrationTaskResponseBodyData struct {
 	//
 	// testsdfsdfsd
 	ProjectDesc *string `json:"ProjectDesc,omitempty" xml:"ProjectDesc,omitempty"`
+	SyncType    *string `json:"SyncType,omitempty" xml:"SyncType,omitempty"`
 	// The name of the destination instance.
 	//
 	// example:
@@ -6082,6 +6089,11 @@ func (s *AddMigrationTaskResponseBodyData) SetOriginInstanceNamespace(v string) 
 
 func (s *AddMigrationTaskResponseBodyData) SetProjectDesc(v string) *AddMigrationTaskResponseBodyData {
 	s.ProjectDesc = &v
+	return s
+}
+
+func (s *AddMigrationTaskResponseBodyData) SetSyncType(v string) *AddMigrationTaskResponseBodyData {
+	s.SyncType = &v
 	return s
 }
 
@@ -31317,6 +31329,8 @@ type GetServiceListenersRequest struct {
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// Deprecated
+	//
 	// The ID of the MSE instance to which the service belongs.
 	//
 	// > You must specify InstanceId or ClusterId.
@@ -32718,7 +32732,8 @@ type ImportNacosConfigResponseBodyDataFailData struct {
 	// example:
 	//
 	// test
-	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	Group  *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 }
 
 func (s ImportNacosConfigResponseBodyDataFailData) String() string {
@@ -32736,6 +32751,11 @@ func (s *ImportNacosConfigResponseBodyDataFailData) SetDataId(v string) *ImportN
 
 func (s *ImportNacosConfigResponseBodyDataFailData) SetGroup(v string) *ImportNacosConfigResponseBodyDataFailData {
 	s.Group = &v
+	return s
+}
+
+func (s *ImportNacosConfigResponseBodyDataFailData) SetReason(v string) *ImportNacosConfigResponseBodyDataFailData {
+	s.Reason = &v
 	return s
 }
 
@@ -33420,6 +33440,8 @@ type ListAnsInstancesRequest struct {
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// Deprecated
+	//
 	// The ID of the Nacos instance.
 	//
 	// > This operation contains both the InstanceId and ClusterId parameters. You must specify one of them.
@@ -33941,6 +33963,8 @@ type ListAnsServiceClustersRequest struct {
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// Deprecated
+	//
 	// The ID of the MSE cluster.
 	//
 	// > The MSE cluster is different from the cluster of the Nacos service.
@@ -34483,6 +34507,8 @@ type ListAnsServicesRequest struct {
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// Deprecated
+	//
 	// The ID of the cluster.
 	//
 	// > This operation contains both the InstanceId and ClusterId parameters. You must specify one of them.
@@ -49463,6 +49489,7 @@ type ListMigrationTaskResponseBodyData struct {
 	//
 	// test
 	ProjectDesc *string `json:"ProjectDesc,omitempty" xml:"ProjectDesc,omitempty"`
+	SyncType    *string `json:"SyncType,omitempty" xml:"SyncType,omitempty"`
 	// The name of the destination instance.
 	//
 	// example:
@@ -49534,6 +49561,11 @@ func (s *ListMigrationTaskResponseBodyData) SetOriginInstanceNamespace(v string)
 
 func (s *ListMigrationTaskResponseBodyData) SetProjectDesc(v string) *ListMigrationTaskResponseBodyData {
 	s.ProjectDesc = &v
+	return s
+}
+
+func (s *ListMigrationTaskResponseBodyData) SetSyncType(v string) *ListMigrationTaskResponseBodyData {
+	s.SyncType = &v
 	return s
 }
 
@@ -72307,6 +72339,7 @@ type UpdateMigrationTaskRequest struct {
 	//
 	// {}
 	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
+	SyncType    *string `json:"SyncType,omitempty" xml:"SyncType,omitempty"`
 	// The name of the destination instance.
 	//
 	// example:
@@ -72372,6 +72405,11 @@ func (s *UpdateMigrationTaskRequest) SetProjectDesc(v string) *UpdateMigrationTa
 
 func (s *UpdateMigrationTaskRequest) SetRequestPars(v string) *UpdateMigrationTaskRequest {
 	s.RequestPars = &v
+	return s
+}
+
+func (s *UpdateMigrationTaskRequest) SetSyncType(v string) *UpdateMigrationTaskRequest {
+	s.SyncType = &v
 	return s
 }
 
@@ -72522,6 +72560,7 @@ type UpdateMigrationTaskResponseBodyData struct {
 	//
 	// 1232345
 	ProjectDesc *string `json:"ProjectDesc,omitempty" xml:"ProjectDesc,omitempty"`
+	SyncType    *string `json:"SyncType,omitempty" xml:"SyncType,omitempty"`
 	// The name of the destination instance.
 	//
 	// example:
@@ -72593,6 +72632,11 @@ func (s *UpdateMigrationTaskResponseBodyData) SetOriginInstanceNamespace(v strin
 
 func (s *UpdateMigrationTaskResponseBodyData) SetProjectDesc(v string) *UpdateMigrationTaskResponseBodyData {
 	s.ProjectDesc = &v
+	return s
+}
+
+func (s *UpdateMigrationTaskResponseBodyData) SetSyncType(v string) *UpdateMigrationTaskResponseBodyData {
+	s.SyncType = &v
 	return s
 }
 
@@ -76176,6 +76220,10 @@ func (client *Client) AddMigrationTaskWithOptions(request *AddMigrationTaskReque
 
 	if !tea.BoolValue(util.IsUnset(request.RequestPars)) {
 		query["RequestPars"] = request.RequestPars
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SyncType)) {
+		query["SyncType"] = request.SyncType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TargetClusterName)) {
@@ -83695,7 +83743,47 @@ func (client *Client) ListAnsInstancesWithOptions(request *ListAnsInstancesReque
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterName)) {
+		query["ClusterName"] = request.ClusterName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestPars)) {
+		query["RequestPars"] = request.RequestPars
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
+		query["ServiceName"] = request.ServiceName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -83704,7 +83792,7 @@ func (client *Client) ListAnsInstancesWithOptions(request *ListAnsInstancesReque
 		Version:     tea.String("2019-05-31"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -92564,6 +92652,10 @@ func (client *Client) UpdateMigrationTaskWithOptions(request *UpdateMigrationTas
 
 	if !tea.BoolValue(util.IsUnset(request.RequestPars)) {
 		query["RequestPars"] = request.RequestPars
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SyncType)) {
+		query["SyncType"] = request.SyncType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TargetClusterName)) {
