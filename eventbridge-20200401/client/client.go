@@ -3916,7 +3916,8 @@ type CreateEventStreamingRequestSinkSinkPrometheusParameters struct {
 	// The authentication method.
 	AuthorizationType *CreateEventStreamingRequestSinkSinkPrometheusParametersAuthorizationType `json:"AuthorizationType,omitempty" xml:"AuthorizationType,omitempty" type:"Struct"`
 	// The metric data.
-	Data *CreateEventStreamingRequestSinkSinkPrometheusParametersData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Data             *CreateEventStreamingRequestSinkSinkPrometheusParametersData             `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HeaderParameters *CreateEventStreamingRequestSinkSinkPrometheusParametersHeaderParameters `json:"HeaderParameters,omitempty" xml:"HeaderParameters,omitempty" type:"Struct"`
 	// The network type.
 	NetworkType *CreateEventStreamingRequestSinkSinkPrometheusParametersNetworkType `json:"NetworkType,omitempty" xml:"NetworkType,omitempty" type:"Struct"`
 	// The password.
@@ -3948,6 +3949,11 @@ func (s *CreateEventStreamingRequestSinkSinkPrometheusParameters) SetAuthorizati
 
 func (s *CreateEventStreamingRequestSinkSinkPrometheusParameters) SetData(v *CreateEventStreamingRequestSinkSinkPrometheusParametersData) *CreateEventStreamingRequestSinkSinkPrometheusParameters {
 	s.Data = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkPrometheusParameters) SetHeaderParameters(v *CreateEventStreamingRequestSinkSinkPrometheusParametersHeaderParameters) *CreateEventStreamingRequestSinkSinkPrometheusParameters {
+	s.HeaderParameters = v
 	return s
 }
 
@@ -4062,6 +4068,35 @@ func (s *CreateEventStreamingRequestSinkSinkPrometheusParametersData) SetTemplat
 }
 
 func (s *CreateEventStreamingRequestSinkSinkPrometheusParametersData) SetValue(v string) *CreateEventStreamingRequestSinkSinkPrometheusParametersData {
+	s.Value = &v
+	return s
+}
+
+type CreateEventStreamingRequestSinkSinkPrometheusParametersHeaderParameters struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateEventStreamingRequestSinkSinkPrometheusParametersHeaderParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventStreamingRequestSinkSinkPrometheusParametersHeaderParameters) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventStreamingRequestSinkSinkPrometheusParametersHeaderParameters) SetForm(v string) *CreateEventStreamingRequestSinkSinkPrometheusParametersHeaderParameters {
+	s.Form = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkPrometheusParametersHeaderParameters) SetTemplate(v string) *CreateEventStreamingRequestSinkSinkPrometheusParametersHeaderParameters {
+	s.Template = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkPrometheusParametersHeaderParameters) SetValue(v string) *CreateEventStreamingRequestSinkSinkPrometheusParametersHeaderParameters {
 	s.Value = &v
 	return s
 }
@@ -27891,7 +27926,8 @@ type UpdateEventStreamingRequestSinkSinkPrometheusParameters struct {
 	// The authentication method.
 	AuthorizationType *UpdateEventStreamingRequestSinkSinkPrometheusParametersAuthorizationType `json:"AuthorizationType,omitempty" xml:"AuthorizationType,omitempty" type:"Struct"`
 	// The metric data.
-	Data *UpdateEventStreamingRequestSinkSinkPrometheusParametersData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Data             *UpdateEventStreamingRequestSinkSinkPrometheusParametersData             `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HeaderParameters *UpdateEventStreamingRequestSinkSinkPrometheusParametersHeaderParameters `json:"HeaderParameters,omitempty" xml:"HeaderParameters,omitempty" type:"Struct"`
 	// The network type.
 	NetworkType *UpdateEventStreamingRequestSinkSinkPrometheusParametersNetworkType `json:"NetworkType,omitempty" xml:"NetworkType,omitempty" type:"Struct"`
 	// The password.
@@ -27923,6 +27959,11 @@ func (s *UpdateEventStreamingRequestSinkSinkPrometheusParameters) SetAuthorizati
 
 func (s *UpdateEventStreamingRequestSinkSinkPrometheusParameters) SetData(v *UpdateEventStreamingRequestSinkSinkPrometheusParametersData) *UpdateEventStreamingRequestSinkSinkPrometheusParameters {
 	s.Data = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkPrometheusParameters) SetHeaderParameters(v *UpdateEventStreamingRequestSinkSinkPrometheusParametersHeaderParameters) *UpdateEventStreamingRequestSinkSinkPrometheusParameters {
+	s.HeaderParameters = v
 	return s
 }
 
@@ -28037,6 +28078,35 @@ func (s *UpdateEventStreamingRequestSinkSinkPrometheusParametersData) SetTemplat
 }
 
 func (s *UpdateEventStreamingRequestSinkSinkPrometheusParametersData) SetValue(v string) *UpdateEventStreamingRequestSinkSinkPrometheusParametersData {
+	s.Value = &v
+	return s
+}
+
+type UpdateEventStreamingRequestSinkSinkPrometheusParametersHeaderParameters struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestSinkSinkPrometheusParametersHeaderParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSinkSinkPrometheusParametersHeaderParameters) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkPrometheusParametersHeaderParameters) SetForm(v string) *UpdateEventStreamingRequestSinkSinkPrometheusParametersHeaderParameters {
+	s.Form = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkPrometheusParametersHeaderParameters) SetTemplate(v string) *UpdateEventStreamingRequestSinkSinkPrometheusParametersHeaderParameters {
+	s.Template = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkPrometheusParametersHeaderParameters) SetValue(v string) *UpdateEventStreamingRequestSinkSinkPrometheusParametersHeaderParameters {
 	s.Value = &v
 	return s
 }
