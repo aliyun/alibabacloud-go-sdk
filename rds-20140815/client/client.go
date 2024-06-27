@@ -25625,6 +25625,7 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDBCluste
 type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra struct {
 	// The instance IDs.
 	DBInstanceIds *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtraDBInstanceIds `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty" type:"Struct"`
+	RecoveryModel *string                                                                            `json:"RecoveryModel,omitempty" xml:"RecoveryModel,omitempty"`
 }
 
 func (s DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra) String() string {
@@ -25637,6 +25638,11 @@ func (s DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra) Go
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra) SetDBInstanceIds(v *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtraDBInstanceIds) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra {
 	s.DBInstanceIds = v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra) SetRecoveryModel(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra {
+	s.RecoveryModel = &v
 	return s
 }
 
@@ -47370,6 +47376,7 @@ func (s *DescribeParametersResponseBodyRunningParameters) SetDBInstanceParameter
 }
 
 type DescribeParametersResponseBodyRunningParametersDBInstanceParameter struct {
+	ParameterDefaultValue *string `json:"ParameterDefaultValue,omitempty" xml:"ParameterDefaultValue,omitempty"`
 	// The description of the parameter.
 	//
 	// example:
@@ -47387,7 +47394,8 @@ type DescribeParametersResponseBodyRunningParametersDBInstanceParameter struct {
 	// example:
 	//
 	// 0
-	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+	ParameterValue      *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+	ParameterValueRange *string `json:"ParameterValueRange,omitempty" xml:"ParameterValueRange,omitempty"`
 }
 
 func (s DescribeParametersResponseBodyRunningParametersDBInstanceParameter) String() string {
@@ -47396,6 +47404,11 @@ func (s DescribeParametersResponseBodyRunningParametersDBInstanceParameter) Stri
 
 func (s DescribeParametersResponseBodyRunningParametersDBInstanceParameter) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeParametersResponseBodyRunningParametersDBInstanceParameter) SetParameterDefaultValue(v string) *DescribeParametersResponseBodyRunningParametersDBInstanceParameter {
+	s.ParameterDefaultValue = &v
+	return s
 }
 
 func (s *DescribeParametersResponseBodyRunningParametersDBInstanceParameter) SetParameterDescription(v string) *DescribeParametersResponseBodyRunningParametersDBInstanceParameter {
@@ -47410,6 +47423,11 @@ func (s *DescribeParametersResponseBodyRunningParametersDBInstanceParameter) Set
 
 func (s *DescribeParametersResponseBodyRunningParametersDBInstanceParameter) SetParameterValue(v string) *DescribeParametersResponseBodyRunningParametersDBInstanceParameter {
 	s.ParameterValue = &v
+	return s
+}
+
+func (s *DescribeParametersResponseBodyRunningParametersDBInstanceParameter) SetParameterValueRange(v string) *DescribeParametersResponseBodyRunningParametersDBInstanceParameter {
+	s.ParameterValueRange = &v
 	return s
 }
 
