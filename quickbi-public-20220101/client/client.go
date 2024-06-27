@@ -2719,6 +2719,225 @@ func (s *CreateUserGroupResponse) SetBody(v *CreateUserGroupResponseBody) *Creat
 	return s
 }
 
+type DataSetBloodRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 234235234,234235235,234235235
+	DataSetIds *string `json:"DataSetIds,omitempty" xml:"DataSetIds,omitempty"`
+	// example:
+	//
+	// dasasgaj342351
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// PAGE
+	WorksType *string `json:"WorksType,omitempty" xml:"WorksType,omitempty"`
+}
+
+func (s DataSetBloodRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataSetBloodRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DataSetBloodRequest) SetDataSetIds(v string) *DataSetBloodRequest {
+	s.DataSetIds = &v
+	return s
+}
+
+func (s *DataSetBloodRequest) SetUserId(v string) *DataSetBloodRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *DataSetBloodRequest) SetWorksType(v string) *DataSetBloodRequest {
+	s.WorksType = &v
+	return s
+}
+
+type DataSetBloodResponseBody struct {
+	// example:
+	//
+	// 46e537a5****,3dadsu****
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*DataSetBloodResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DataSetBloodResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataSetBloodResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DataSetBloodResponseBody) SetRequestId(v string) *DataSetBloodResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DataSetBloodResponseBody) SetResult(v []*DataSetBloodResponseBodyResult) *DataSetBloodResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *DataSetBloodResponseBody) SetSuccess(v bool) *DataSetBloodResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DataSetBloodResponseBodyResult struct {
+	// example:
+	//
+	// ccd3428c-****-****-a608-26bae29dffee
+	WorksId *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
+	// example:
+	//
+	// PAGE
+	WorksType *string `json:"WorksType,omitempty" xml:"WorksType,omitempty"`
+}
+
+func (s DataSetBloodResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataSetBloodResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *DataSetBloodResponseBodyResult) SetWorksId(v string) *DataSetBloodResponseBodyResult {
+	s.WorksId = &v
+	return s
+}
+
+func (s *DataSetBloodResponseBodyResult) SetWorksType(v string) *DataSetBloodResponseBodyResult {
+	s.WorksType = &v
+	return s
+}
+
+type DataSetBloodResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DataSetBloodResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DataSetBloodResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataSetBloodResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DataSetBloodResponse) SetHeaders(v map[string]*string) *DataSetBloodResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DataSetBloodResponse) SetStatusCode(v int32) *DataSetBloodResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DataSetBloodResponse) SetBody(v *DataSetBloodResponseBody) *DataSetBloodResponse {
+	s.Body = v
+	return s
+}
+
+type DataSourceBloodRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 44051300991327000048
+	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+}
+
+func (s DataSourceBloodRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataSourceBloodRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DataSourceBloodRequest) SetDataSourceId(v string) *DataSourceBloodRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+type DataSourceBloodResponseBody struct {
+	// example:
+	//
+	// 46e537a5****,3dadsu****
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DataSourceBloodResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataSourceBloodResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DataSourceBloodResponseBody) SetRequestId(v string) *DataSourceBloodResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DataSourceBloodResponseBody) SetResult(v []*string) *DataSourceBloodResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *DataSourceBloodResponseBody) SetSuccess(v bool) *DataSourceBloodResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DataSourceBloodResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DataSourceBloodResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DataSourceBloodResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataSourceBloodResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DataSourceBloodResponse) SetHeaders(v map[string]*string) *DataSourceBloodResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DataSourceBloodResponse) SetStatusCode(v int32) *DataSourceBloodResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DataSourceBloodResponse) SetBody(v *DataSourceBloodResponseBody) *DataSourceBloodResponse {
+	s.Body = v
+	return s
+}
+
 type DelayTicketExpireTimeRequest struct {
 	// The time to postpone.
 	//
@@ -3800,10 +4019,7 @@ type GetUserGroupInfoResponseBodyResult struct {
 	// example:
 	//
 	// 46e5374665ba4b679ee22e2a2927****
-	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	// example:
-	//
-	// 2fe4fbd8-588f-489a-b3e1-e92c7af0****/34fd141d-4598-4093-8c33-8e066dcb****
+	CreateUser     *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
 	IdentifiedPath *string `json:"IdentifiedPath,omitempty" xml:"IdentifiedPath,omitempty"`
 	// example:
 	//
@@ -6421,10 +6637,7 @@ type ListUserGroupsByUserIdResponseBodyResult struct {
 	// example:
 	//
 	// 46e5374665ba4b679ee22e2a2927****
-	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	// example:
-	//
-	// 2fe4fbd8-588f-489a-b3e1-e92c7af0****/3d2c23d4-2b41-4af8-a1f5-f6390f32****/f5eeb52e-d9c2-4a8b-80e3-47ab55c2****
+	CreateUser     *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
 	IdentifiedPath *string `json:"IdentifiedPath,omitempty" xml:"IdentifiedPath,omitempty"`
 	// example:
 	//
@@ -7003,6 +7216,538 @@ func (s *ModifyApiDatasourceParametersResponse) SetStatusCode(v int32) *ModifyAp
 }
 
 func (s *ModifyApiDatasourceParametersResponse) SetBody(v *ModifyApiDatasourceParametersResponseBody) *ModifyApiDatasourceParametersResponse {
+	s.Body = v
+	return s
+}
+
+type QueryApprovalInfoRequest struct {
+	// example:
+	//
+	// 1
+	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// example:
+	//
+	// 1000
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12352fasdavsa
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s QueryApprovalInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryApprovalInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryApprovalInfoRequest) SetPage(v int32) *QueryApprovalInfoRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *QueryApprovalInfoRequest) SetPageSize(v int32) *QueryApprovalInfoRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryApprovalInfoRequest) SetStatus(v int32) *QueryApprovalInfoRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryApprovalInfoRequest) SetUserId(v string) *QueryApprovalInfoRequest {
+	s.UserId = &v
+	return s
+}
+
+type QueryApprovalInfoResponseBody struct {
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *QueryApprovalInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryApprovalInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryApprovalInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryApprovalInfoResponseBody) SetRequestId(v string) *QueryApprovalInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryApprovalInfoResponseBody) SetResult(v *QueryApprovalInfoResponseBodyResult) *QueryApprovalInfoResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *QueryApprovalInfoResponseBody) SetSuccess(v bool) *QueryApprovalInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryApprovalInfoResponseBodyResult struct {
+	Data []*QueryApprovalInfoResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// example:
+	//
+	// 1000
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 0
+	Start *int32 `json:"Start,omitempty" xml:"Start,omitempty"`
+	// example:
+	//
+	// 3
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+}
+
+func (s QueryApprovalInfoResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryApprovalInfoResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *QueryApprovalInfoResponseBodyResult) SetData(v []*QueryApprovalInfoResponseBodyResultData) *QueryApprovalInfoResponseBodyResult {
+	s.Data = v
+	return s
+}
+
+func (s *QueryApprovalInfoResponseBodyResult) SetPage(v int32) *QueryApprovalInfoResponseBodyResult {
+	s.Page = &v
+	return s
+}
+
+func (s *QueryApprovalInfoResponseBodyResult) SetPageSize(v int32) *QueryApprovalInfoResponseBodyResult {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryApprovalInfoResponseBodyResult) SetStart(v int32) *QueryApprovalInfoResponseBodyResult {
+	s.Start = &v
+	return s
+}
+
+func (s *QueryApprovalInfoResponseBodyResult) SetTotal(v int32) *QueryApprovalInfoResponseBodyResult {
+	s.Total = &v
+	return s
+}
+
+func (s *QueryApprovalInfoResponseBodyResult) SetTotalPages(v int32) *QueryApprovalInfoResponseBodyResult {
+	s.TotalPages = &v
+	return s
+}
+
+type QueryApprovalInfoResponseBodyResultData struct {
+	// example:
+	//
+	// 1359508
+	ApplicantId   *string `json:"ApplicantId,omitempty" xml:"ApplicantId,omitempty"`
+	ApplicantName *string `json:"ApplicantName,omitempty" xml:"ApplicantName,omitempty"`
+	// example:
+	//
+	// 64813ef6da58e80eef8ed2f9
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	ApplyReason   *string `json:"ApplyReason,omitempty" xml:"ApplyReason,omitempty"`
+	// example:
+	//
+	// sdasascasxasd
+	ApproverId *string `json:"ApproverId,omitempty" xml:"ApproverId,omitempty"`
+	// example:
+	//
+	// data_fusion_002
+	ApproverName *string `json:"ApproverName,omitempty" xml:"ApproverName,omitempty"`
+	// example:
+	//
+	// true
+	DeleteFlag *bool `json:"DeleteFlag,omitempty" xml:"DeleteFlag,omitempty"`
+	// example:
+	//
+	// 1708568097135
+	ExpireDate *int64 `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	// example:
+	//
+	// 0
+	FlagStatus *int32 `json:"FlagStatus,omitempty" xml:"FlagStatus,omitempty"`
+	// example:
+	//
+	// 1687315758
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 1640595729000
+	GmtModified  *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	HandleReason *string `json:"HandleReason,omitempty" xml:"HandleReason,omitempty"`
+	// example:
+	//
+	// acl-ct4t2e4u2x4ej1bzur
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// example:
+	//
+	// DASHBOARD
+	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+}
+
+func (s QueryApprovalInfoResponseBodyResultData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryApprovalInfoResponseBodyResultData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryApprovalInfoResponseBodyResultData) SetApplicantId(v string) *QueryApprovalInfoResponseBodyResultData {
+	s.ApplicantId = &v
+	return s
+}
+
+func (s *QueryApprovalInfoResponseBodyResultData) SetApplicantName(v string) *QueryApprovalInfoResponseBodyResultData {
+	s.ApplicantName = &v
+	return s
+}
+
+func (s *QueryApprovalInfoResponseBodyResultData) SetApplicationId(v string) *QueryApprovalInfoResponseBodyResultData {
+	s.ApplicationId = &v
+	return s
+}
+
+func (s *QueryApprovalInfoResponseBodyResultData) SetApplyReason(v string) *QueryApprovalInfoResponseBodyResultData {
+	s.ApplyReason = &v
+	return s
+}
+
+func (s *QueryApprovalInfoResponseBodyResultData) SetApproverId(v string) *QueryApprovalInfoResponseBodyResultData {
+	s.ApproverId = &v
+	return s
+}
+
+func (s *QueryApprovalInfoResponseBodyResultData) SetApproverName(v string) *QueryApprovalInfoResponseBodyResultData {
+	s.ApproverName = &v
+	return s
+}
+
+func (s *QueryApprovalInfoResponseBodyResultData) SetDeleteFlag(v bool) *QueryApprovalInfoResponseBodyResultData {
+	s.DeleteFlag = &v
+	return s
+}
+
+func (s *QueryApprovalInfoResponseBodyResultData) SetExpireDate(v int64) *QueryApprovalInfoResponseBodyResultData {
+	s.ExpireDate = &v
+	return s
+}
+
+func (s *QueryApprovalInfoResponseBodyResultData) SetFlagStatus(v int32) *QueryApprovalInfoResponseBodyResultData {
+	s.FlagStatus = &v
+	return s
+}
+
+func (s *QueryApprovalInfoResponseBodyResultData) SetGmtCreate(v int64) *QueryApprovalInfoResponseBodyResultData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *QueryApprovalInfoResponseBodyResultData) SetGmtModified(v int64) *QueryApprovalInfoResponseBodyResultData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *QueryApprovalInfoResponseBodyResultData) SetHandleReason(v string) *QueryApprovalInfoResponseBodyResultData {
+	s.HandleReason = &v
+	return s
+}
+
+func (s *QueryApprovalInfoResponseBodyResultData) SetResourceId(v string) *QueryApprovalInfoResponseBodyResultData {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *QueryApprovalInfoResponseBodyResultData) SetResourceName(v string) *QueryApprovalInfoResponseBodyResultData {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *QueryApprovalInfoResponseBodyResultData) SetResourceType(v string) *QueryApprovalInfoResponseBodyResultData {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *QueryApprovalInfoResponseBodyResultData) SetWorkspaceName(v string) *QueryApprovalInfoResponseBodyResultData {
+	s.WorkspaceName = &v
+	return s
+}
+
+type QueryApprovalInfoResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryApprovalInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryApprovalInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryApprovalInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryApprovalInfoResponse) SetHeaders(v map[string]*string) *QueryApprovalInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryApprovalInfoResponse) SetStatusCode(v int32) *QueryApprovalInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryApprovalInfoResponse) SetBody(v *QueryApprovalInfoResponseBody) *QueryApprovalInfoResponse {
+	s.Body = v
+	return s
+}
+
+type QueryAuditLogRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1715856218001
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// function
+	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
+	// example:
+	//
+	// 95296e95-ca89-4c7d-8af9-dedf0ad0***
+	OperatorId *string `json:"OperatorId,omitempty" xml:"OperatorId,omitempty"`
+	// example:
+	//
+	// MODIFY
+	OperatorTypes *string `json:"OperatorTypes,omitempty" xml:"OperatorTypes,omitempty"`
+	// example:
+	//
+	// cube
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1715856218001
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// example:
+	//
+	// 95296e95-ca89-4c7d-8af9-dedf0ad0****
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s QueryAuditLogRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAuditLogRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAuditLogRequest) SetEndDate(v string) *QueryAuditLogRequest {
+	s.EndDate = &v
+	return s
+}
+
+func (s *QueryAuditLogRequest) SetLogType(v string) *QueryAuditLogRequest {
+	s.LogType = &v
+	return s
+}
+
+func (s *QueryAuditLogRequest) SetOperatorId(v string) *QueryAuditLogRequest {
+	s.OperatorId = &v
+	return s
+}
+
+func (s *QueryAuditLogRequest) SetOperatorTypes(v string) *QueryAuditLogRequest {
+	s.OperatorTypes = &v
+	return s
+}
+
+func (s *QueryAuditLogRequest) SetResourceType(v string) *QueryAuditLogRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *QueryAuditLogRequest) SetStartDate(v string) *QueryAuditLogRequest {
+	s.StartDate = &v
+	return s
+}
+
+func (s *QueryAuditLogRequest) SetWorkspaceId(v string) *QueryAuditLogRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type QueryAuditLogResponseBody struct {
+	// example:
+	//
+	// 78C1AA2D-9201-599E-A0BA-6FC462E57A95
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*QueryAuditLogResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryAuditLogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAuditLogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAuditLogResponseBody) SetRequestId(v string) *QueryAuditLogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryAuditLogResponseBody) SetResult(v []*QueryAuditLogResponseBodyResult) *QueryAuditLogResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *QueryAuditLogResponseBody) SetSuccess(v bool) *QueryAuditLogResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryAuditLogResponseBodyResult struct {
+	// example:
+	//
+	// 2024-04-16 13:17:39
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// wukaibis
+	OperatorAccountName *string `json:"OperatorAccountName,omitempty" xml:"OperatorAccountName,omitempty"`
+	// example:
+	//
+	// buc_344078
+	OperatorName *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
+	// example:
+	//
+	// CREATE
+	OperatorType *string `json:"OperatorType,omitempty" xml:"OperatorType,omitempty"`
+	TargetName   *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
+	// example:
+	//
+	// USER
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// example:
+	//
+	// 87c6b145-090c-43e1-9426-8f93be23****
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s QueryAuditLogResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAuditLogResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAuditLogResponseBodyResult) SetGmtCreate(v string) *QueryAuditLogResponseBodyResult {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *QueryAuditLogResponseBodyResult) SetOperatorAccountName(v string) *QueryAuditLogResponseBodyResult {
+	s.OperatorAccountName = &v
+	return s
+}
+
+func (s *QueryAuditLogResponseBodyResult) SetOperatorName(v string) *QueryAuditLogResponseBodyResult {
+	s.OperatorName = &v
+	return s
+}
+
+func (s *QueryAuditLogResponseBodyResult) SetOperatorType(v string) *QueryAuditLogResponseBodyResult {
+	s.OperatorType = &v
+	return s
+}
+
+func (s *QueryAuditLogResponseBodyResult) SetTargetName(v string) *QueryAuditLogResponseBodyResult {
+	s.TargetName = &v
+	return s
+}
+
+func (s *QueryAuditLogResponseBodyResult) SetTargetType(v string) *QueryAuditLogResponseBodyResult {
+	s.TargetType = &v
+	return s
+}
+
+func (s *QueryAuditLogResponseBodyResult) SetWorkspaceId(v string) *QueryAuditLogResponseBodyResult {
+	s.WorkspaceId = &v
+	return s
+}
+
+type QueryAuditLogResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryAuditLogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryAuditLogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAuditLogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAuditLogResponse) SetHeaders(v map[string]*string) *QueryAuditLogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryAuditLogResponse) SetStatusCode(v int32) *QueryAuditLogResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryAuditLogResponse) SetBody(v *QueryAuditLogResponseBody) *QueryAuditLogResponse {
 	s.Body = v
 	return s
 }
@@ -8276,6 +9021,501 @@ func (s *QueryDataServiceResponse) SetStatusCode(v int32) *QueryDataServiceRespo
 }
 
 func (s *QueryDataServiceResponse) SetBody(v *QueryDataServiceResponseBody) *QueryDataServiceResponse {
+	s.Body = v
+	return s
+}
+
+type QueryDataServiceListRequest struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// dasdfdsa-csddf-dsadsa
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s QueryDataServiceListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDataServiceListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDataServiceListRequest) SetName(v string) *QueryDataServiceListRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *QueryDataServiceListRequest) SetPageNo(v int32) *QueryDataServiceListRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *QueryDataServiceListRequest) SetPageSize(v int32) *QueryDataServiceListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryDataServiceListRequest) SetUserId(v string) *QueryDataServiceListRequest {
+	s.UserId = &v
+	return s
+}
+
+type QueryDataServiceListResponseBody struct {
+	// example:
+	//
+	// 78C1AA2D-9201-599E-A0BA-6FC462E57A95
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *QueryDataServiceListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryDataServiceListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDataServiceListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDataServiceListResponseBody) SetRequestId(v string) *QueryDataServiceListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryDataServiceListResponseBody) SetResult(v *QueryDataServiceListResponseBodyResult) *QueryDataServiceListResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *QueryDataServiceListResponseBody) SetSuccess(v bool) *QueryDataServiceListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryDataServiceListResponseBodyResult struct {
+	Data []*QueryDataServiceListResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+}
+
+func (s QueryDataServiceListResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDataServiceListResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDataServiceListResponseBodyResult) SetData(v []*QueryDataServiceListResponseBodyResultData) *QueryDataServiceListResponseBodyResult {
+	s.Data = v
+	return s
+}
+
+func (s *QueryDataServiceListResponseBodyResult) SetPageNum(v int32) *QueryDataServiceListResponseBodyResult {
+	s.PageNum = &v
+	return s
+}
+
+func (s *QueryDataServiceListResponseBodyResult) SetPageSize(v int32) *QueryDataServiceListResponseBodyResult {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryDataServiceListResponseBodyResult) SetTotalNum(v int32) *QueryDataServiceListResponseBodyResult {
+	s.TotalNum = &v
+	return s
+}
+
+func (s *QueryDataServiceListResponseBodyResult) SetTotalPages(v int32) *QueryDataServiceListResponseBodyResult {
+	s.TotalPages = &v
+	return s
+}
+
+type QueryDataServiceListResponseBodyResultData struct {
+	Content *QueryDataServiceListResponseBodyResultDataContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	// example:
+	//
+	// 7cb94cd48701
+	CreatorId   *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	// example:
+	//
+	// d14e7448-0eb3-40d3-9375-4afef8de29fd
+	CubeId   *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	CubeName *string `json:"CubeName,omitempty" xml:"CubeName,omitempty"`
+	Desc     *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// example:
+	//
+	// 2023-05-18 14:00:02.0
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2023-03-21 18:02:36
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// 7cb94cd48701
+	ModifierId   *string `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
+	ModifierName *string `json:"ModifierName,omitempty" xml:"ModifierName,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 862801339
+	OwnerId   *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// example:
+	//
+	// dtsuq3i31f5j8v848b
+	Sid *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
+	// example:
+	//
+	// 7350a155-0e94-4c6c-8620-57bbec38****
+	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+}
+
+func (s QueryDataServiceListResponseBodyResultData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDataServiceListResponseBodyResultData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDataServiceListResponseBodyResultData) SetContent(v *QueryDataServiceListResponseBodyResultDataContent) *QueryDataServiceListResponseBodyResultData {
+	s.Content = v
+	return s
+}
+
+func (s *QueryDataServiceListResponseBodyResultData) SetCreatorId(v string) *QueryDataServiceListResponseBodyResultData {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *QueryDataServiceListResponseBodyResultData) SetCreatorName(v string) *QueryDataServiceListResponseBodyResultData {
+	s.CreatorName = &v
+	return s
+}
+
+func (s *QueryDataServiceListResponseBodyResultData) SetCubeId(v string) *QueryDataServiceListResponseBodyResultData {
+	s.CubeId = &v
+	return s
+}
+
+func (s *QueryDataServiceListResponseBodyResultData) SetCubeName(v string) *QueryDataServiceListResponseBodyResultData {
+	s.CubeName = &v
+	return s
+}
+
+func (s *QueryDataServiceListResponseBodyResultData) SetDesc(v string) *QueryDataServiceListResponseBodyResultData {
+	s.Desc = &v
+	return s
+}
+
+func (s *QueryDataServiceListResponseBodyResultData) SetGmtCreate(v string) *QueryDataServiceListResponseBodyResultData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *QueryDataServiceListResponseBodyResultData) SetGmtModified(v string) *QueryDataServiceListResponseBodyResultData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *QueryDataServiceListResponseBodyResultData) SetModifierId(v string) *QueryDataServiceListResponseBodyResultData {
+	s.ModifierId = &v
+	return s
+}
+
+func (s *QueryDataServiceListResponseBodyResultData) SetModifierName(v string) *QueryDataServiceListResponseBodyResultData {
+	s.ModifierName = &v
+	return s
+}
+
+func (s *QueryDataServiceListResponseBodyResultData) SetName(v string) *QueryDataServiceListResponseBodyResultData {
+	s.Name = &v
+	return s
+}
+
+func (s *QueryDataServiceListResponseBodyResultData) SetOwnerId(v string) *QueryDataServiceListResponseBodyResultData {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QueryDataServiceListResponseBodyResultData) SetOwnerName(v string) *QueryDataServiceListResponseBodyResultData {
+	s.OwnerName = &v
+	return s
+}
+
+func (s *QueryDataServiceListResponseBodyResultData) SetSid(v string) *QueryDataServiceListResponseBodyResultData {
+	s.Sid = &v
+	return s
+}
+
+func (s *QueryDataServiceListResponseBodyResultData) SetWorkspaceId(v string) *QueryDataServiceListResponseBodyResultData {
+	s.WorkspaceId = &v
+	return s
+}
+
+func (s *QueryDataServiceListResponseBodyResultData) SetWorkspaceName(v string) *QueryDataServiceListResponseBodyResultData {
+	s.WorkspaceName = &v
+	return s
+}
+
+type QueryDataServiceListResponseBodyResultDataContent struct {
+	// example:
+	//
+	// 56f9f34a-bdba-496a-91a3-a18b1ff73a80
+	CubeId   *string `json:"CubeId,omitempty" xml:"CubeId,omitempty"`
+	CubeName *string `json:"CubeName,omitempty" xml:"CubeName,omitempty"`
+	// example:
+	//
+	// true
+	Detail       *bool                                                            `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	Filter       *QueryDataServiceListResponseBodyResultDataContentFilter         `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
+	ReturnFields []*QueryDataServiceListResponseBodyResultDataContentReturnFields `json:"ReturnFields,omitempty" xml:"ReturnFields,omitempty" type:"Repeated"`
+}
+
+func (s QueryDataServiceListResponseBodyResultDataContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDataServiceListResponseBodyResultDataContent) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDataServiceListResponseBodyResultDataContent) SetCubeId(v string) *QueryDataServiceListResponseBodyResultDataContent {
+	s.CubeId = &v
+	return s
+}
+
+func (s *QueryDataServiceListResponseBodyResultDataContent) SetCubeName(v string) *QueryDataServiceListResponseBodyResultDataContent {
+	s.CubeName = &v
+	return s
+}
+
+func (s *QueryDataServiceListResponseBodyResultDataContent) SetDetail(v bool) *QueryDataServiceListResponseBodyResultDataContent {
+	s.Detail = &v
+	return s
+}
+
+func (s *QueryDataServiceListResponseBodyResultDataContent) SetFilter(v *QueryDataServiceListResponseBodyResultDataContentFilter) *QueryDataServiceListResponseBodyResultDataContent {
+	s.Filter = v
+	return s
+}
+
+func (s *QueryDataServiceListResponseBodyResultDataContent) SetReturnFields(v []*QueryDataServiceListResponseBodyResultDataContentReturnFields) *QueryDataServiceListResponseBodyResultDataContent {
+	s.ReturnFields = v
+	return s
+}
+
+type QueryDataServiceListResponseBodyResultDataContentFilter struct {
+	Filters []map[string]interface{} `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	// example:
+	//
+	// and
+	LogicalOperator *string `json:"LogicalOperator,omitempty" xml:"LogicalOperator,omitempty"`
+	// example:
+	//
+	// basic
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s QueryDataServiceListResponseBodyResultDataContentFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDataServiceListResponseBodyResultDataContentFilter) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDataServiceListResponseBodyResultDataContentFilter) SetFilters(v []map[string]interface{}) *QueryDataServiceListResponseBodyResultDataContentFilter {
+	s.Filters = v
+	return s
+}
+
+func (s *QueryDataServiceListResponseBodyResultDataContentFilter) SetLogicalOperator(v string) *QueryDataServiceListResponseBodyResultDataContentFilter {
+	s.LogicalOperator = &v
+	return s
+}
+
+func (s *QueryDataServiceListResponseBodyResultDataContentFilter) SetType(v string) *QueryDataServiceListResponseBodyResultDataContentFilter {
+	s.Type = &v
+	return s
+}
+
+type QueryDataServiceListResponseBodyResultDataContentReturnFields struct {
+	// example:
+	//
+	// SUM
+	Aggregator *string `json:"Aggregator,omitempty" xml:"Aggregator,omitempty"`
+	// example:
+	//
+	// s_number
+	Alias *string                                                             `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	Desc  *string                                                             `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	Field *QueryDataServiceListResponseBodyResultDataContentReturnFieldsField `json:"Field,omitempty" xml:"Field,omitempty" type:"Struct"`
+	// example:
+	//
+	// no
+	Orderby *string `json:"Orderby,omitempty" xml:"Orderby,omitempty"`
+}
+
+func (s QueryDataServiceListResponseBodyResultDataContentReturnFields) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDataServiceListResponseBodyResultDataContentReturnFields) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDataServiceListResponseBodyResultDataContentReturnFields) SetAggregator(v string) *QueryDataServiceListResponseBodyResultDataContentReturnFields {
+	s.Aggregator = &v
+	return s
+}
+
+func (s *QueryDataServiceListResponseBodyResultDataContentReturnFields) SetAlias(v string) *QueryDataServiceListResponseBodyResultDataContentReturnFields {
+	s.Alias = &v
+	return s
+}
+
+func (s *QueryDataServiceListResponseBodyResultDataContentReturnFields) SetDesc(v string) *QueryDataServiceListResponseBodyResultDataContentReturnFields {
+	s.Desc = &v
+	return s
+}
+
+func (s *QueryDataServiceListResponseBodyResultDataContentReturnFields) SetField(v *QueryDataServiceListResponseBodyResultDataContentReturnFieldsField) *QueryDataServiceListResponseBodyResultDataContentReturnFields {
+	s.Field = v
+	return s
+}
+
+func (s *QueryDataServiceListResponseBodyResultDataContentReturnFields) SetOrderby(v string) *QueryDataServiceListResponseBodyResultDataContentReturnFields {
+	s.Orderby = &v
+	return s
+}
+
+type QueryDataServiceListResponseBodyResultDataContentReturnFieldsField struct {
+	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
+	// example:
+	//
+	// shid_star
+	Column *string `json:"Column,omitempty" xml:"Column,omitempty"`
+	// example:
+	//
+	// datetime
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// example:
+	//
+	// 1c1f88cb7d
+	Fid *string `json:"Fid,omitempty" xml:"Fid,omitempty"`
+	// example:
+	//
+	// yearRegion
+	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
+	// example:
+	//
+	// sss
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// dimension
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s QueryDataServiceListResponseBodyResultDataContentReturnFieldsField) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDataServiceListResponseBodyResultDataContentReturnFieldsField) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDataServiceListResponseBodyResultDataContentReturnFieldsField) SetCaption(v string) *QueryDataServiceListResponseBodyResultDataContentReturnFieldsField {
+	s.Caption = &v
+	return s
+}
+
+func (s *QueryDataServiceListResponseBodyResultDataContentReturnFieldsField) SetColumn(v string) *QueryDataServiceListResponseBodyResultDataContentReturnFieldsField {
+	s.Column = &v
+	return s
+}
+
+func (s *QueryDataServiceListResponseBodyResultDataContentReturnFieldsField) SetDataType(v string) *QueryDataServiceListResponseBodyResultDataContentReturnFieldsField {
+	s.DataType = &v
+	return s
+}
+
+func (s *QueryDataServiceListResponseBodyResultDataContentReturnFieldsField) SetFid(v string) *QueryDataServiceListResponseBodyResultDataContentReturnFieldsField {
+	s.Fid = &v
+	return s
+}
+
+func (s *QueryDataServiceListResponseBodyResultDataContentReturnFieldsField) SetGranularity(v string) *QueryDataServiceListResponseBodyResultDataContentReturnFieldsField {
+	s.Granularity = &v
+	return s
+}
+
+func (s *QueryDataServiceListResponseBodyResultDataContentReturnFieldsField) SetName(v string) *QueryDataServiceListResponseBodyResultDataContentReturnFieldsField {
+	s.Name = &v
+	return s
+}
+
+func (s *QueryDataServiceListResponseBodyResultDataContentReturnFieldsField) SetType(v string) *QueryDataServiceListResponseBodyResultDataContentReturnFieldsField {
+	s.Type = &v
+	return s
+}
+
+type QueryDataServiceListResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryDataServiceListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryDataServiceListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDataServiceListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDataServiceListResponse) SetHeaders(v map[string]*string) *QueryDataServiceListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryDataServiceListResponse) SetStatusCode(v int32) *QueryDataServiceListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryDataServiceListResponse) SetBody(v *QueryDataServiceListResponseBody) *QueryDataServiceListResponse {
 	s.Body = v
 	return s
 }
@@ -11526,10 +12766,6 @@ type QuerySharesToUserListResponseBodyResultDirectory struct {
 	// Chart Report
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The path ID of the directory where the resource is located.
-	//
-	// example:
-	//
-	// 66ffe22b-83be-47fd-b49d-9ca58d29****/f7f6e22b-83be-47fd-b49d-9ca686a9****
 	PathId *string `json:"PathId,omitempty" xml:"PathId,omitempty"`
 	// The path name of the directory where the resource is located.
 	//
@@ -11874,10 +13110,6 @@ type QueryUserGroupListByParentIdResponseBodyResult struct {
 	// 136516262323****
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
 	// Directory level of the sub-user group.
-	//
-	// example:
-	//
-	// 2fe4fbd8-588f-489a-b3e1-e92c7af0****/3d2c23d4-2b41-4af8-a1f5-f6390f32****/f5eeb52e-d9c2-4a8b-80e3-47ab55c2****
 	IdentifiedPath *string `json:"IdentifiedPath,omitempty" xml:"IdentifiedPath,omitempty"`
 	// The time when the sub-user group was last modified.
 	//
@@ -12748,6 +13980,8 @@ type QueryUserListResponseBodyResultData struct {
 	//
 	// true
 	AuthAdminUser *bool    `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
+	JoinedDate    *int64   `json:"JoinedDate,omitempty" xml:"JoinedDate,omitempty"`
+	LastLoginTime *int64   `json:"LastLoginTime,omitempty" xml:"LastLoginTime,omitempty"`
 	NickName      *string  `json:"NickName,omitempty" xml:"NickName,omitempty"`
 	RoleIdList    []*int64 `json:"RoleIdList,omitempty" xml:"RoleIdList,omitempty" type:"Repeated"`
 	// example:
@@ -12785,6 +14019,16 @@ func (s *QueryUserListResponseBodyResultData) SetAdminUser(v bool) *QueryUserLis
 
 func (s *QueryUserListResponseBodyResultData) SetAuthAdminUser(v bool) *QueryUserListResponseBodyResultData {
 	s.AuthAdminUser = &v
+	return s
+}
+
+func (s *QueryUserListResponseBodyResultData) SetJoinedDate(v int64) *QueryUserListResponseBodyResultData {
+	s.JoinedDate = &v
+	return s
+}
+
+func (s *QueryUserListResponseBodyResultData) SetLastLoginTime(v int64) *QueryUserListResponseBodyResultData {
+	s.LastLoginTime = &v
 	return s
 }
 
@@ -13261,8 +14505,10 @@ type QueryWorksResponseBodyResult struct {
 	// example:
 	//
 	// 9187a612aa474e2a8ac1414d5529****
-	OwnerId   *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	OwnerId           *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerName         *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	PublicFlag        *bool   `json:"PublicFlag,omitempty" xml:"PublicFlag,omitempty"`
+	PublicInvalidTime *int64  `json:"PublicInvalidTime,omitempty" xml:"PublicInvalidTime,omitempty"`
 	// example:
 	//
 	// 0
@@ -13332,6 +14578,16 @@ func (s *QueryWorksResponseBodyResult) SetOwnerId(v string) *QueryWorksResponseB
 
 func (s *QueryWorksResponseBodyResult) SetOwnerName(v string) *QueryWorksResponseBodyResult {
 	s.OwnerName = &v
+	return s
+}
+
+func (s *QueryWorksResponseBodyResult) SetPublicFlag(v bool) *QueryWorksResponseBodyResult {
+	s.PublicFlag = &v
+	return s
+}
+
+func (s *QueryWorksResponseBodyResult) SetPublicInvalidTime(v int64) *QueryWorksResponseBodyResult {
+	s.PublicInvalidTime = &v
 	return s
 }
 
@@ -13964,7 +15220,9 @@ type QueryWorksByOrganizationResponseBodyResultData struct {
 	// example:
 	//
 	// Tom
-	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	OwnerName         *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	PublicFlag        *bool   `json:"PublicFlag,omitempty" xml:"PublicFlag,omitempty"`
+	PublicInvalidTime *int64  `json:"PublicInvalidTime,omitempty" xml:"PublicInvalidTime,omitempty"`
 	// The directory to which the work belongs.
 	//
 	// example:
@@ -14054,6 +15312,16 @@ func (s *QueryWorksByOrganizationResponseBodyResultData) SetOwnerId(v string) *Q
 
 func (s *QueryWorksByOrganizationResponseBodyResultData) SetOwnerName(v string) *QueryWorksByOrganizationResponseBodyResultData {
 	s.OwnerName = &v
+	return s
+}
+
+func (s *QueryWorksByOrganizationResponseBodyResultData) SetPublicFlag(v bool) *QueryWorksByOrganizationResponseBodyResultData {
+	s.PublicFlag = &v
+	return s
+}
+
+func (s *QueryWorksByOrganizationResponseBodyResultData) SetPublicInvalidTime(v int64) *QueryWorksByOrganizationResponseBodyResultData {
+	s.PublicInvalidTime = &v
 	return s
 }
 
@@ -14419,7 +15687,9 @@ type QueryWorksByWorkspaceResponseBodyResultData struct {
 	// example:
 	//
 	// Li Si
-	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	OwnerName         *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	PublicFlag        *bool   `json:"PublicFlag,omitempty" xml:"PublicFlag,omitempty"`
+	PublicInvalidTime *int64  `json:"PublicInvalidTime,omitempty" xml:"PublicInvalidTime,omitempty"`
 	// Security policies for collaborative authorization of works. Valid values:
 	//
 	// 	- 0: private
@@ -14543,6 +15813,16 @@ func (s *QueryWorksByWorkspaceResponseBodyResultData) SetOwnerId(v string) *Quer
 
 func (s *QueryWorksByWorkspaceResponseBodyResultData) SetOwnerName(v string) *QueryWorksByWorkspaceResponseBodyResultData {
 	s.OwnerName = &v
+	return s
+}
+
+func (s *QueryWorksByWorkspaceResponseBodyResultData) SetPublicFlag(v bool) *QueryWorksByWorkspaceResponseBodyResultData {
+	s.PublicFlag = &v
+	return s
+}
+
+func (s *QueryWorksByWorkspaceResponseBodyResultData) SetPublicInvalidTime(v int64) *QueryWorksByWorkspaceResponseBodyResultData {
+	s.PublicInvalidTime = &v
 	return s
 }
 
@@ -15919,6 +17199,7 @@ type UpdateUserRequest struct {
 	//
 	// true
 	AuthAdminUser *bool `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
+	IsDeleted     *bool `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
 	// The nickname of the account.
 	//
 	// 	- Format check: The value can be up to 50 characters in length.
@@ -15967,6 +17248,11 @@ func (s *UpdateUserRequest) SetAdminUser(v bool) *UpdateUserRequest {
 
 func (s *UpdateUserRequest) SetAuthAdminUser(v bool) *UpdateUserRequest {
 	s.AuthAdminUser = &v
+	return s
+}
+
+func (s *UpdateUserRequest) SetIsDeleted(v bool) *UpdateUserRequest {
+	s.IsDeleted = &v
 	return s
 }
 
@@ -18238,6 +19524,134 @@ func (client *Client) CreateUserGroup(request *CreateUserGroupRequest) (_result 
 
 // Summary:
 //
+// 查询引用指定数据集下的作品信息
+//
+// @param request - DataSetBloodRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DataSetBloodResponse
+func (client *Client) DataSetBloodWithOptions(request *DataSetBloodRequest, runtime *util.RuntimeOptions) (_result *DataSetBloodResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataSetIds)) {
+		query["DataSetIds"] = request.DataSetIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorksType)) {
+		query["WorksType"] = request.WorksType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DataSetBlood"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DataSetBloodResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询引用指定数据集下的作品信息
+//
+// @param request - DataSetBloodRequest
+//
+// @return DataSetBloodResponse
+func (client *Client) DataSetBlood(request *DataSetBloodRequest) (_result *DataSetBloodResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DataSetBloodResponse{}
+	_body, _err := client.DataSetBloodWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询引用指定数据源下的数据集信息
+//
+// @param request - DataSourceBloodRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DataSourceBloodResponse
+func (client *Client) DataSourceBloodWithOptions(request *DataSourceBloodRequest, runtime *util.RuntimeOptions) (_result *DataSourceBloodResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["DataSourceId"] = request.DataSourceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DataSourceBlood"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DataSourceBloodResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询引用指定数据源下的数据集信息
+//
+// @param request - DataSourceBloodRequest
+//
+// @return DataSourceBloodResponse
+func (client *Client) DataSourceBlood(request *DataSourceBloodRequest) (_result *DataSourceBloodResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DataSourceBloodResponse{}
+	_body, _err := client.DataSourceBloodWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Update the expiration time of the ticket embedded in the report.
 //
 // @param request - DelayTicketExpireTimeRequest
@@ -19989,6 +21403,162 @@ func (client *Client) ModifyApiDatasourceParameters(request *ModifyApiDatasource
 
 // Summary:
 //
+// 根据审批人获取相应的审批流信息
+//
+// @param request - QueryApprovalInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryApprovalInfoResponse
+func (client *Client) QueryApprovalInfoWithOptions(request *QueryApprovalInfoRequest, runtime *util.RuntimeOptions) (_result *QueryApprovalInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["Page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryApprovalInfo"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryApprovalInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据审批人获取相应的审批流信息
+//
+// @param request - QueryApprovalInfoRequest
+//
+// @return QueryApprovalInfoResponse
+func (client *Client) QueryApprovalInfo(request *QueryApprovalInfoRequest) (_result *QueryApprovalInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryApprovalInfoResponse{}
+	_body, _err := client.QueryApprovalInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询审计日志信息
+//
+// @param request - QueryAuditLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryAuditLogResponse
+func (client *Client) QueryAuditLogWithOptions(request *QueryAuditLogRequest, runtime *util.RuntimeOptions) (_result *QueryAuditLogResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogType)) {
+		query["LogType"] = request.LogType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperatorId)) {
+		query["OperatorId"] = request.OperatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperatorTypes)) {
+		query["OperatorTypes"] = request.OperatorTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		query["StartDate"] = request.StartDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryAuditLog"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryAuditLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询审计日志信息
+//
+// @param request - QueryAuditLogRequest
+//
+// @return QueryAuditLogResponse
+func (client *Client) QueryAuditLog(request *QueryAuditLogRequest) (_result *QueryAuditLogResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryAuditLogResponse{}
+	_body, _err := client.QueryAuditLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询组件性能列表
 //
 // @param request - QueryComponentPerformanceRequest
@@ -20280,6 +21850,78 @@ func (client *Client) QueryDataService(request *QueryDataServiceRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDataServiceResponse{}
 	_body, _err := client.QueryDataServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询数据服务API列表
+//
+// @param request - QueryDataServiceListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDataServiceListResponse
+func (client *Client) QueryDataServiceListWithOptions(request *QueryDataServiceListRequest, runtime *util.RuntimeOptions) (_result *QueryDataServiceListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryDataServiceList"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryDataServiceListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询数据服务API列表
+//
+// @param request - QueryDataServiceListRequest
+//
+// @return QueryDataServiceListResponse
+func (client *Client) QueryDataServiceList(request *QueryDataServiceListRequest) (_result *QueryDataServiceListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryDataServiceListResponse{}
+	_body, _err := client.QueryDataServiceListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22518,6 +24160,10 @@ func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.AuthAdminUser)) {
 		query["AuthAdminUser"] = request.AuthAdminUser
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsDeleted)) {
+		query["IsDeleted"] = request.IsDeleted
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NickName)) {
