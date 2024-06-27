@@ -2586,54 +2586,112 @@ func (s *DescribeColumnsResponse) SetBody(v *DescribeColumnsResponseBody) *Descr
 }
 
 type DescribeColumnsV2Request struct {
+	// The page number. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The ID of the instance to which data in the column of the table belongs.
+	//
+	// >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/141708.html) operation to obtain the ID of the instance to which the data in the column of the table belongs.
+	//
 	// example:
 	//
 	// 1
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the instance to which data in the column of the table belongs.
+	//
 	// example:
 	//
 	// rm-bp17t1htja573l5i8****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+	//
+	// 	- **zh_cn**: simplified Chinese
+	//
+	// 	- **en_us**: English
+	//
 	// example:
 	//
 	// zh_cn
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The search keyword. Fuzzy match is supported.
+	//
+	// For example, if you enter **test**, all columns whose names contain **test*	- are retrieved.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of entries per page. Default value: **10**.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the service to which data in the column of the table belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+	//
 	// example:
 	//
 	// MaxCompute
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The ID of the sensitivity level of the data that hits the sensitive data detection rule. Valid values:
+	//
+	// 	- **1**: N/A
+	//
+	// 	- **2**: S1
+	//
+	// 	- **3**: S2
+	//
+	// 	- **4**: S3
+	//
+	// 	- **5**: S4
+	//
 	// example:
 	//
 	// 2
 	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	// The ID of the sensitive data detection rule that data in the column of the table hits.
+	//
+	// >  You can call the [DescribeRules](https://help.aliyun.com/document_detail/141389.html) operation to obtain the ID of the sensitive data detection rule.
+	//
 	// example:
 	//
 	// 11122200
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the sensitive data detection rule that data in the column of the table hits.
+	//
 	// example:
 	//
 	// name
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The name of the sensitivity level. Valid values:
+	//
+	// 	- **N/A**: indicates that no sensitive data is detected.
+	//
+	// 	- **S1**: indicates the low sensitivity level.
+	//
+	// 	- **S2**: indicates the medium sensitivity level.
+	//
+	// 	- **S3**: indicates the high sensitivity level.
+	//
+	// 	- **S4**: indicates the highest sensitivity level.
+	//
 	// example:
 	//
 	// S2
 	SensLevelName *string `json:"SensLevelName,omitempty" xml:"SensLevelName,omitempty"`
+	// The ID of the table to which the column belongs.
+	//
+	// >  You can call the [DescribeTables](https://help.aliyun.com/document_detail/141709.html) operation to obtain the ID of the table.
+	//
 	// example:
 	//
 	// 11132334
 	TableId *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
+	// The name of the table.
+	//
 	// example:
 	//
 	// it_table
@@ -2714,19 +2772,28 @@ func (s *DescribeColumnsV2Request) SetTableName(v string) *DescribeColumnsV2Requ
 }
 
 type DescribeColumnsV2ResponseBody struct {
+	// The page number. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32                                `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*DescribeColumnsV2ResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// A list of column recognition results of the data table.
+	Items []*DescribeColumnsV2ResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The number of entries per page. Default value: **10**.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B1F2BB1F-04EC-5D36-B136-B4DE17FD8DE0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 12
@@ -2767,79 +2834,180 @@ func (s *DescribeColumnsV2ResponseBody) SetTotalCount(v int32) *DescribeColumnsV
 }
 
 type DescribeColumnsV2ResponseBodyItems struct {
+	// The time when the data in the column of the table is created. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1536751124000
 	CreationTime *int64 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The type of data in the column of the table.
+	//
 	// example:
 	//
 	// varchar
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The ID of the column of the table.
+	//
 	// example:
 	//
 	// 111111
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the instance to which data in the column of the table belongs.
+	//
 	// example:
 	//
 	// 1232122
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the instance to which data in the column of the table belongs.
+	//
 	// example:
 	//
 	// rm-1234
-	InstanceName *string                                        `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	ModelTags    []*DescribeColumnsV2ResponseBodyItemsModelTags `json:"ModelTags,omitempty" xml:"ModelTags,omitempty" type:"Repeated"`
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// A list of data tags.
+	ModelTags []*DescribeColumnsV2ResponseBodyItemsModelTags `json:"ModelTags,omitempty" xml:"ModelTags,omitempty" type:"Repeated"`
+	// The name of the column of the table.
+	//
 	// example:
 	//
 	// obj_id
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the sensitivity level for asset. Valid values:
+	//
+	// 	- **N/A**: indicates that no sensitive data is detected.
+	//
+	// 	- **S1**: indicates the low sensitivity level.
+	//
+	// 	- **S2**: indicates the medium sensitivity level.
+	//
+	// 	- **S3**: indicates the high sensitivity level.
+	//
+	// 	- **S4**: indicates the highest sensitivity level.
+	//
 	// example:
 	//
 	// S4
 	OdpsRiskLevelName *string `json:"OdpsRiskLevelName,omitempty" xml:"OdpsRiskLevelName,omitempty"`
+	// The ID of the sensitivity level of the asset. Valid values:
+	//
+	// 	- **1**: N/A
+	//
+	// 	- **2**: S1
+	//
+	// 	- **3**: S2
+	//
+	// 	- **4**: S3
+	//
+	// 	- **5**: S4
+	//
+	// >The return value <=1 means N/A.
+	//
 	// example:
 	//
 	// 3
 	OdpsRiskLevelValue *int32 `json:"OdpsRiskLevelValue,omitempty" xml:"OdpsRiskLevelValue,omitempty"`
+	// The name of the service to which data in the column of the table belongs. Valid values: **MaxCompute, OSS, ADS, OTS, and RDS**.
+	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The ID of the revision record.
+	//
 	// example:
 	//
 	// 12
 	RevisionId *int64 `json:"RevisionId,omitempty" xml:"RevisionId,omitempty"`
+	// Indicates whether the column is revised. Valid values:
+	//
+	// 	- 1: yes
+	//
+	// 	- 0: no
+	//
 	// example:
 	//
 	// 1
 	RevisionStatus *int64 `json:"RevisionStatus,omitempty" xml:"RevisionStatus,omitempty"`
+	// The ID of the sensitivity level of data in the column of the table. Valid values:
+	//
+	// 	- **1**: N/A
+	//
+	// 	- **2**: S1
+	//
+	// 	- **3**: S2
+	//
+	// 	- **4**: S3
+	//
+	// 	- **5**: S4
+	//
+	// >The return value <=1 means N/A.
+	//
 	// example:
 	//
 	// 4
 	RiskLevelId *int64 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
+	// The name of the sensitivity level for data in the column of the table. Valid values:
+	//
+	// 	- **N/A**: indicates that no sensitive data is detected.
+	//
+	// 	- **S1**: indicates the low sensitivity level.
+	//
+	// 	- **S2**: indicates the medium sensitivity level.
+	//
+	// 	- **S3**: indicates the high sensitivity level.
+	//
+	// 	- **S4**: indicates the highest sensitivity level.
+	//
 	// example:
 	//
 	// S1
 	RiskLevelName *string `json:"RiskLevelName,omitempty" xml:"RiskLevelName,omitempty"`
+	// The ID of the sensitive data detection rule that data in the column of the table hits.
+	//
 	// example:
 	//
 	// 1004
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the sensitive data detection rule that data in the column of the table hits.
+	//
 	// example:
 	//
 	// name
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The name of the sensitivity level. Valid values:
+	//
+	// 	- **N/A**: indicates that no sensitive data is detected.
+	//
+	// 	- **S1**: indicates the low sensitivity level.
+	//
+	// 	- **S2**: indicates the medium sensitivity level.
+	//
+	// 	- **S3**: indicates the high sensitivity level.
+	//
+	// 	- **S4**: indicates the highest sensitivity level.
+	//
 	// example:
 	//
 	// S2
 	SensLevelName *string `json:"SensLevelName,omitempty" xml:"SensLevelName,omitempty"`
+	// Indicates whether the column contains sensitive data. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	Sensitive *bool `json:"Sensitive,omitempty" xml:"Sensitive,omitempty"`
+	// The ID of the table.
+	//
 	// example:
 	//
 	// 123
 	TableId *int64 `json:"TableId,omitempty" xml:"TableId,omitempty"`
+	// The name of the table to which the revised column belongs.
+	//
 	// example:
 	//
 	// it_table
@@ -2955,10 +3123,26 @@ func (s *DescribeColumnsV2ResponseBodyItems) SetTableName(v string) *DescribeCol
 }
 
 type DescribeColumnsV2ResponseBodyItemsModelTags struct {
+	// The tag ID. Valid values:
+	//
+	// 	- **101**: personal sensitive information
+	//
+	// 	- **102**: personal information
+	//
+	// 	- **107**: general information
+	//
 	// example:
 	//
 	// 101
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The tag name. Valid values:
+	//
+	// 	- Personal sensitive information
+	//
+	// 	- Personal information
+	//
+	// 	- General information
+	//
 	// example:
 	//
 	// personal sensitive information
@@ -4482,8 +4666,13 @@ type DescribeDataLimitsRequest struct {
 	// example:
 	//
 	// zh
-	Lang          *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	MemberAccount *int64  `json:"MemberAccount,omitempty" xml:"MemberAccount,omitempty"`
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the member.
+	//
+	// example:
+	//
+	// **********8103
+	MemberAccount *int64 `json:"MemberAccount,omitempty" xml:"MemberAccount,omitempty"`
 	// The number of entries to return on each page.
 	//
 	// example:
@@ -4502,7 +4691,7 @@ type DescribeDataLimitsRequest struct {
 	//
 	// 1112
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	// The type of the service to which the data asset to be queried belongs. Valid values:
+	// The type of the service to which the data asset belongs. This parameter is required. Valid values:
 	//
 	// 	- **1**: MaxCompute
 	//
@@ -4624,7 +4813,7 @@ type DescribeDataLimitsResponseBody struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// An array that consists of the data assets.
+	// A list of data assets.
 	Items []*DescribeDataLimitsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The number of entries returned per page.
 	//
@@ -4708,7 +4897,7 @@ type DescribeDataLimitsResponseBodyItems struct {
 	//
 	// 	- **2**: The connectivity test is in progress.
 	//
-	// 	- **3**: The connectivity test passed.
+	// 	- **3**: The connectivity test is passed.
 	//
 	// 	- **4**: The connectivity test failed.
 	//
@@ -4732,13 +4921,13 @@ type DescribeDataLimitsResponseBodyItems struct {
 	//
 	// 1
 	DatamaskStatus *int32 `json:"DatamaskStatus,omitempty" xml:"DatamaskStatus,omitempty"`
-	// The database engine version of the instance.
+	// The database engine version.
 	//
 	// example:
 	//
 	// 2.0
 	DbVersion *string `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
-	// Indicates whether DSC has the data detection permissions on the data asset. Valid values:
+	// Indicates whether DSC has the data identification permissions on the data asset. Valid values:
 	//
 	// 	- **1**: yes
 	//
@@ -4754,7 +4943,7 @@ type DescribeDataLimitsResponseBodyItems struct {
 	//
 	// MySQL
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	// The error code that is returned.
+	// The error code.
 	//
 	// example:
 	//
@@ -4770,7 +4959,7 @@ type DescribeDataLimitsResponseBodyItems struct {
 	//
 	// 	- **0**: no
 	//
-	// 	- **1**: yes (default value)
+	// 	- **1**: yes (default)
 	//
 	// example:
 	//
@@ -4782,7 +4971,7 @@ type DescribeDataLimitsResponseBodyItems struct {
 	//
 	// 145600000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The ID of the data asset.
+	// The unique ID of the data asset.
 	//
 	// example:
 	//
@@ -4794,13 +4983,13 @@ type DescribeDataLimitsResponseBodyItems struct {
 	//
 	// 123
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
-	// The ID of the instance to which the table belongs.
+	// The ID of the data asset to which the table belongs.
 	//
 	// example:
 	//
 	// 12332
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time when the last scan was finished.
+	// The time when the last scan is performed.
 	//
 	// 	- The value is a UNIX timestamp.
 	//
@@ -4821,7 +5010,12 @@ type DescribeDataLimitsResponseBodyItems struct {
 	// example:
 	//
 	// 30
-	LogStoreDay   *int32 `json:"LogStoreDay,omitempty" xml:"LogStoreDay,omitempty"`
+	LogStoreDay *int32 `json:"LogStoreDay,omitempty" xml:"LogStoreDay,omitempty"`
+	// The ID of the member.
+	//
+	// example:
+	//
+	// **********8103
 	MemberAccount *int64 `json:"MemberAccount,omitempty" xml:"MemberAccount,omitempty"`
 	// The next time when the data asset is scanned. The value is a UNIX timestamp. Unit: milliseconds.
 	//
@@ -4839,7 +5033,7 @@ type DescribeDataLimitsResponseBodyItems struct {
 	//
 	// 1
 	OcrStatus *int32 `json:"OcrStatus,omitempty" xml:"OcrStatus,omitempty"`
-	// The parent ID of the data asset. Valid values include **bucket, db, and project**.
+	// The parent ID of the data asset that you want to query. Valid values include **bucket, db, and project**.
 	//
 	// example:
 	//
@@ -4873,7 +5067,7 @@ type DescribeDataLimitsResponseBodyItems struct {
 	//
 	// 100
 	ProcessTotalCount *int32 `json:"ProcessTotalCount,omitempty" xml:"ProcessTotalCount,omitempty"`
-	// The region in which the data asset resides.
+	// The region in which the asset resides.
 	//
 	// example:
 	//
@@ -4897,7 +5091,7 @@ type DescribeDataLimitsResponseBodyItems struct {
 	//
 	// 5
 	ResourceType *int64 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The code of the service to which the data asset belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+	// The code of the service to which the data asset belongs. Valid values: **MaxCompute, OSS, ADS, OTS, and RDS**.
 	//
 	// example:
 	//
@@ -4909,7 +5103,7 @@ type DescribeDataLimitsResponseBodyItems struct {
 	//
 	// 5
 	SamplingSize *int32 `json:"SamplingSize,omitempty" xml:"SamplingSize,omitempty"`
-	// The array consisting of the IDs of the security groups that are used by PrivateLink when you install the DSC agent.
+	// A list of the IDs of the security groups that are used by PrivateLink when you install the DSC agent.
 	SecurityGroupIdList []*string `json:"SecurityGroupIdList,omitempty" xml:"SecurityGroupIdList,omitempty" type:"Repeated"`
 	// Indicates whether the security audit feature is supported. Valid values:
 	//
@@ -4921,7 +5115,7 @@ type DescribeDataLimitsResponseBodyItems struct {
 	//
 	// true
 	SupportAudit *bool `json:"SupportAudit,omitempty" xml:"SupportAudit,omitempty"`
-	// Indicates whether data de-identification is supported. Valid values:
+	// Indicates whether the data de-identification feature is supported. Valid values:
 	//
 	// 	- **true**: yes
 	//
@@ -4933,9 +5127,9 @@ type DescribeDataLimitsResponseBodyItems struct {
 	SupportDatamask *bool `json:"SupportDatamask,omitempty" xml:"SupportDatamask,omitempty"`
 	// Indicates whether anomalous event detection is supported. Valid values:
 	//
-	// 	- **true**: yes
+	// 	- **true**
 	//
-	// 	- **false**: no
+	// 	- **false**
 	//
 	// example:
 	//
@@ -4979,7 +5173,7 @@ type DescribeDataLimitsResponseBodyItems struct {
 	//
 	// tsts
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// The array consisting of the IDs of the vSwitches that are used by PrivateLink when you install the DSC agent.
+	// A list of the IDs of the vSwitches that are used by PrivateLink when you install the DSC agent.
 	VSwitchIdList []*string `json:"VSwitchIdList,omitempty" xml:"VSwitchIdList,omitempty" type:"Repeated"`
 	// The ID of the virtual private cloud (VPC) to which the data asset belongs.
 	//
@@ -5806,7 +6000,7 @@ type DescribeDataMaskingTasksResponseBody struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// An array that consists of de-identification tasks.
+	// A list of de-identification tasks.
 	Items []*DescribeDataMaskingTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The number of entries returned per page.
 	//
@@ -5862,12 +6056,13 @@ func (s *DescribeDataMaskingTasksResponseBody) SetTotalCount(v int32) *DescribeD
 }
 
 type DescribeDataMaskingTasksResponseBodyItems struct {
-	DstMemberAccount *int64 `json:"DstMemberAccount,omitempty" xml:"DstMemberAccount,omitempty"`
-	// The destination directory.
+	// The member account to which the desensitization target belongs.
 	//
 	// example:
 	//
-	// ***/table1
+	// 192479427903xxxx
+	DstMemberAccount *int64 `json:"DstMemberAccount,omitempty" xml:"DstMemberAccount,omitempty"`
+	// The destination path.
 	DstPath *string `json:"DstPath,omitempty" xml:"DstPath,omitempty"`
 	// The service to which the data to be de-identified belongs. Valid values: **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates OSS. The value 3 indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
 	//
@@ -5875,13 +6070,13 @@ type DescribeDataMaskingTasksResponseBodyItems struct {
 	//
 	// 5
 	DstType *int32 `json:"DstType,omitempty" xml:"DstType,omitempty"`
-	// The service to which the de-identified data belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+	// The type of the service to which the de-identified data belongs. Valid values: **MaxCompute, OSS, ADS, OTS, and RDS**.
 	//
 	// example:
 	//
 	// RDS
 	DstTypeCode *string `json:"DstTypeCode,omitempty" xml:"DstTypeCode,omitempty"`
-	// The time when the task was created. The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the de-identification task is created. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -5893,7 +6088,7 @@ type DescribeDataMaskingTasksResponseBodyItems struct {
 	//
 	// false
 	HasUnfinishProcess *bool `json:"HasUnfinishProcess,omitempty" xml:"HasUnfinishProcess,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//
@@ -5916,21 +6111,22 @@ type DescribeDataMaskingTasksResponseBodyItems struct {
 	// example:
 	//
 	// 1
-	RunCount         *int32 `json:"RunCount,omitempty" xml:"RunCount,omitempty"`
-	SrcMemberAccount *int64 `json:"SrcMemberAccount,omitempty" xml:"SrcMemberAccount,omitempty"`
-	// The source path.
+	RunCount *int32 `json:"RunCount,omitempty" xml:"RunCount,omitempty"`
+	// The member account to which the desensitization source belongs.
 	//
 	// example:
 	//
-	// ***/table2
+	// 192479427903xxxx
+	SrcMemberAccount *int64 `json:"SrcMemberAccount,omitempty" xml:"SrcMemberAccount,omitempty"`
+	// The source path.
 	SrcPath *string `json:"SrcPath,omitempty" xml:"SrcPath,omitempty"`
-	// The code of the service to which the data to be de-identified belongs. Valid values: **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates OSS. The value indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
+	// The type of the service to which the data to be de-identified belongs. Valid values: **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates OSS. The value 3 indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
 	//
 	// example:
 	//
 	// 5
 	SrcType *int32 `json:"SrcType,omitempty" xml:"SrcType,omitempty"`
-	// The service to which the data to be de-identified belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+	// The type of the service to which the data to be de-identified belongs. Valid values: **MaxCompute, OSS, ADS, OTS, and RDS**.
 	//
 	// example:
 	//
@@ -7417,7 +7613,16 @@ type DescribeEventDetailResponseBodyEvent struct {
 	//
 	// det1111
 	LoginName *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
-	NewAlarm  *bool   `json:"NewAlarm,omitempty" xml:"NewAlarm,omitempty"`
+	// Whether it is a new version of the alarm. Value:
+	//
+	// - **true**: Yes.
+	//
+	// - **false**: No.
+	//
+	// example:
+	//
+	// true
+	NewAlarm *bool `json:"NewAlarm,omitempty" xml:"NewAlarm,omitempty"`
 	// The name of the service in which the anomalous event was detected. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
 	//
 	// example:
@@ -7609,9 +7814,9 @@ func (s *DescribeEventDetailResponseBodyEvent) SetUserId(v int64) *DescribeEvent
 }
 
 type DescribeEventDetailResponseBodyEventDetail struct {
-	// An array that consists of the baseline behavior chart of the anomalous event.
+	// The baseline behavior chart of the anomalous event.
 	Chart []*DescribeEventDetailResponseBodyEventDetailChart `json:"Chart,omitempty" xml:"Chart,omitempty" type:"Repeated"`
-	// An array that consists of the content in the anomalous event.
+	// The content in the anomalous event.
 	Content []*DescribeEventDetailResponseBodyEventDetailContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
 	// An array that consists of the source from which the information of the anomalous event is recorded.
 	ResourceInfo []*DescribeEventDetailResponseBodyEventDetailResourceInfo `json:"ResourceInfo,omitempty" xml:"ResourceInfo,omitempty" type:"Repeated"`
@@ -7641,6 +7846,17 @@ func (s *DescribeEventDetailResponseBodyEventDetail) SetResourceInfo(v []*Descri
 }
 
 type DescribeEventDetailResponseBodyEventDetailChart struct {
+	// The type of the chart. Valid values:
+	//
+	// 	- **1**: column chart
+	//
+	// 	- **2**: line chart
+	//
+	// >This field will be returned only when NewAlarm is true.
+	//
+	// example:
+	//
+	// 1
 	ChatType *int32 `json:"ChatType,omitempty" xml:"ChatType,omitempty"`
 	// The data in the baseline behavior profile of the anomalous event.
 	Data *DescribeEventDetailResponseBodyEventDetailChartData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -7650,7 +7866,14 @@ type DescribeEventDetailResponseBodyEventDetailChart struct {
 	//
 	// Baseline behavior chart
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Icon title.
+	//
+	// >This field will be returned only when NewAlarm is true.
+	//
+	// example:
+	//
+	// misskingm
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type of the chart. Valid values:
 	//
 	// 	- **1**: column chart
@@ -7661,18 +7884,25 @@ type DescribeEventDetailResponseBodyEventDetailChart struct {
 	//
 	// 1
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The descriptive label of data on the x-axis.
+	// The descriptive label of data items on the X axis.
 	//
 	// example:
 	//
 	// Number of days
 	XLabel *string `json:"XLabel,omitempty" xml:"XLabel,omitempty"`
-	// The descriptive label of data on the y-axis.
+	// The descriptive label of data items on the Y axis.
 	//
 	// example:
 	//
 	// Value
 	YLabel *string `json:"YLabel,omitempty" xml:"YLabel,omitempty"`
+	// The descriptive label of data items on the Z axis.
+	//
+	// >This field will be returned only when NewAlarm is true.
+	//
+	// example:
+	//
+	// chart description
 	ZLabel *string `json:"ZLabel,omitempty" xml:"ZLabel,omitempty"`
 }
 
@@ -7725,18 +7955,19 @@ func (s *DescribeEventDetailResponseBodyEventDetailChart) SetZLabel(v string) *D
 }
 
 type DescribeEventDetailResponseBodyEventDetailChartData struct {
-	// The values of data on the x-axis.
+	// The value of the data item on the X axis.
 	//
 	// example:
 	//
 	// [test1,test2,...]
 	X []*string `json:"X,omitempty" xml:"X,omitempty" type:"Repeated"`
-	// The values of data on the y-axis.
+	// The value of the data item on the Y axis.
 	//
 	// example:
 	//
 	// [1,2,3,...]
 	Y []*string `json:"Y,omitempty" xml:"Y,omitempty" type:"Repeated"`
+	// The value of the data item for the Z axis.
 	Z []*string `json:"Z,omitempty" xml:"Z,omitempty" type:"Repeated"`
 }
 
@@ -7770,7 +8001,12 @@ type DescribeEventDetailResponseBodyEventDetailContent struct {
 	//
 	// Anomaly description
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Exception event name.
+	//
+	// example:
+	//
+	// daliaoyuncom
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The description of the content in the anomalous event.
 	//
 	// example:
@@ -7842,13 +8078,13 @@ type DescribeEventDetailResponseBodyEventHandleInfoList struct {
 	//
 	// sddp-test2
 	CurrentValue *string `json:"CurrentValue,omitempty" xml:"CurrentValue,omitempty"`
-	// The point in time when the account was locked. The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the account is disabled. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1611139155000
 	DisableTime *int64 `json:"DisableTime,omitempty" xml:"DisableTime,omitempty"`
-	// The point in time when the account was unlocked. The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the disabled account is enabled. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -7872,7 +8108,7 @@ type DescribeEventDetailResponseBodyEventHandleInfoList struct {
 	//
 	// 10
 	HandlerValue *int32 `json:"HandlerValue,omitempty" xml:"HandlerValue,omitempty"`
-	// The ID of the handling record.
+	// The ID of the handling rule.
 	//
 	// example:
 	//
@@ -7880,11 +8116,11 @@ type DescribeEventDetailResponseBodyEventHandleInfoList struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The status of the account that triggered the anomalous event. Valid values:
 	//
-	// 	- **0**: locked
+	// 	- **0**: disabled
 	//
-	// 	- **1**: unlocked
+	// 	- **1**: enabled
 	//
-	// 	- **-1**: failed to unlock the account
+	// 	- **-1**: failed to disable the account
 	//
 	// 	- **-2**: failed to enable the account
 	//
@@ -10797,7 +11033,12 @@ type DescribeOssObjectsResponseBodyItems struct {
 	// example:
 	//
 	// 1232122
-	InstanceId       *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The time when the file was last modified.
+	//
+	// example:
+	//
+	// 1536751124000
 	LastModifiedTime *int64 `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
 	// The name of the OSS object.
 	//
@@ -11554,6 +11795,7 @@ type DescribeParentInstanceResponseBodyItems struct {
 	//
 	// 1
 	AuthStatus *int32 `json:"AuthStatus,omitempty" xml:"AuthStatus,omitempty"`
+	AuthTime   *int64 `json:"AuthTime,omitempty" xml:"AuthTime,omitempty"`
 	// example:
 	//
 	// Running
@@ -11632,6 +11874,11 @@ func (s *DescribeParentInstanceResponseBodyItems) SetAuditStatus(v int32) *Descr
 
 func (s *DescribeParentInstanceResponseBodyItems) SetAuthStatus(v int32) *DescribeParentInstanceResponseBodyItems {
 	s.AuthStatus = &v
+	return s
+}
+
+func (s *DescribeParentInstanceResponseBodyItems) SetAuthTime(v int64) *DescribeParentInstanceResponseBodyItems {
+	s.AuthTime = &v
 	return s
 }
 
@@ -16301,7 +16548,7 @@ func (client *Client) DescribeColumns(request *DescribeColumnsRequest) (_result 
 
 // Summary:
 //
-// 查询数据安全中心连接授权的MaxCompute、RDS等数据资产表中列的数据
+// Queries the columns of tables in instances, such as MaxCompute projects and ApsaraDB RDS instances, that you authorize Data Security Center (DSC) to access.
 //
 // @param request - DescribeColumnsV2Request
 //
@@ -16391,7 +16638,7 @@ func (client *Client) DescribeColumnsV2WithOptions(request *DescribeColumnsV2Req
 
 // Summary:
 //
-// 查询数据安全中心连接授权的MaxCompute、RDS等数据资产表中列的数据
+// Queries the columns of tables in instances, such as MaxCompute projects and ApsaraDB RDS instances, that you authorize Data Security Center (DSC) to access.
 //
 // @param request - DescribeColumnsV2Request
 //
