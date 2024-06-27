@@ -2600,11 +2600,9 @@ type CloneDBInstanceRequestServerlessConfig struct {
 	//
 	// 	- Serverless ApsaraDB RDS for PostgreSQL instances: **1 to 12**
 	//
-	// >
+	// > 	- The value of this parameter must be greater than or equal to the value of **MinCapacity*	- and can be specified only to an **integer**.
 	//
-	// 	- The value of this parameter must be greater than or equal to the value of **MinCapacity*	- and can be specified only to an **integer**.
-	//
-	// 	- This parameter is available only on the China site (aliyun.com).
+	// > 	- This parameter is available only on the China site (aliyun.com).
 	//
 	// example:
 	//
@@ -2618,11 +2616,9 @@ type CloneDBInstanceRequestServerlessConfig struct {
 	//
 	// 	- Serverless ApsaraDB RDS for PostgreSQL instances: **0.5 to 12**.
 	//
-	// >
+	// > 	- The value of this parameter must be less than or equal to the value of **MaxCapacity**.
 	//
-	// 	- The value of this parameter must be less than or equal to the value of **MaxCapacity**.
-	//
-	// 	- This parameter is available only on the China site (aliyun.com).
+	// > 	- This parameter is available only on the China site (aliyun.com).
 	//
 	// example:
 	//
@@ -72503,7 +72499,7 @@ type RebuildDBInstanceResponseBody struct {
 	//
 	// example:
 	//
-	// 3298015
+	// 329****
 	MigrationId *int32 `json:"MigrationId,omitempty" xml:"MigrationId,omitempty"`
 	// The request ID.
 	//
@@ -72515,7 +72511,7 @@ type RebuildDBInstanceResponseBody struct {
 	//
 	// example:
 	//
-	// 208676661
+	// 20867****
 	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -72741,11 +72737,9 @@ type RecoveryDBInstanceRequest struct {
 	//
 	// local_ssd
 	DBInstanceStorageType *string `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
-	// The name of the database.
+	// The name of the database. When you restore data to a new instance, the format of the database name is `Original database name 1,New database name 2`.
 	//
-	// 	- If you want to restore databases to a new instance, the value is in the format of `Original database name 1,New database name 2`.
-	//
-	// 	- If you want to restore databases to an existing instance, the value is in the format of `{"Original database name 1":"New database name 1","Original database name 2":"New database name 2"`.
+	// >  For more information about how to restore data to an existing instance, see [CopyDatabaseBetweenInstances](https://help.aliyun.com/document_detail/2628854.html).
 	//
 	// This parameter is required.
 	//
