@@ -11225,10 +11225,6 @@ func (s *DescribeDataCheckReportUrlRequest) SetTbName(v string) *DescribeDataChe
 
 type DescribeDataCheckReportUrlResponseBody struct {
 	// The URL for downloading the verification report.
-	//
-	// example:
-	//
-	// https://check-result-file-sh.oss-cn-shanghai.aliyuncs.com/dw612cru18e****/dtsdb/diff/student.diff.zip?Expires=****
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The error code returned if the request failed.
 	//
@@ -18078,6 +18074,7 @@ type DescribeDtsJobsRequest struct {
 	//
 	// dtscluster_atyl3b5214uk***
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
+	DestProductType    *string `json:"DestProductType,omitempty" xml:"DestProductType,omitempty"`
 	// The environment tag of the DTS instance. Valid values:
 	//
 	// - **normal**
@@ -18185,6 +18182,7 @@ type DescribeDtsJobsRequest struct {
 	//
 	// rg-acfmzawhxxc****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SrcProductType  *string `json:"SrcProductType,omitempty" xml:"SrcProductType,omitempty"`
 	// The state of the DTS task.
 	//
 	// Valid values for a data migration task:
@@ -18329,6 +18327,11 @@ func (s *DescribeDtsJobsRequest) SetDedicatedClusterId(v string) *DescribeDtsJob
 	return s
 }
 
+func (s *DescribeDtsJobsRequest) SetDestProductType(v string) *DescribeDtsJobsRequest {
+	s.DestProductType = &v
+	return s
+}
+
 func (s *DescribeDtsJobsRequest) SetDtsBisLabel(v string) *DescribeDtsJobsRequest {
 	s.DtsBisLabel = &v
 	return s
@@ -18406,6 +18409,11 @@ func (s *DescribeDtsJobsRequest) SetRegionId(v string) *DescribeDtsJobsRequest {
 
 func (s *DescribeDtsJobsRequest) SetResourceGroupId(v string) *DescribeDtsJobsRequest {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeDtsJobsRequest) SetSrcProductType(v string) *DescribeDtsJobsRequest {
+	s.SrcProductType = &v
 	return s
 }
 
@@ -50367,6 +50375,10 @@ func (client *Client) DescribeDtsJobsWithOptions(request *DescribeDtsJobsRequest
 		query["DedicatedClusterId"] = request.DedicatedClusterId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DestProductType)) {
+		query["DestProductType"] = request.DestProductType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DtsBisLabel)) {
 		query["DtsBisLabel"] = request.DtsBisLabel
 	}
@@ -50429,6 +50441,10 @@ func (client *Client) DescribeDtsJobsWithOptions(request *DescribeDtsJobsRequest
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SrcProductType)) {
+		query["SrcProductType"] = request.SrcProductType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
